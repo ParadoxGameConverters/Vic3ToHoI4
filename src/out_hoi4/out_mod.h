@@ -7,7 +7,8 @@
 
 
 
-void output(std::string_view output_name);
+void ClearOutputFolder(std::string_view output_name);
+void Output(std::string_view output_name);
 
 
 

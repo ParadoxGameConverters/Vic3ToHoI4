@@ -17,9 +17,9 @@ void CreateOutputFolder(const std::string_view output_name)
    {
       throw std::runtime_error("Could not create output folder");
    }
-   if (!commonItems::CopyFolder("blankMod/output", std::string("output/").append(output_name)))
+   if (!commonItems::CopyFolder("blank_mod", std::string("output/").append(output_name)))
    {
-      throw std::runtime_error("Could not copy blankMod");
+      throw std::runtime_error("Could not copy blank_mod");
    }
 }
 
@@ -58,7 +58,22 @@ void CreateModFiles(const std::string_view output_name)
 }  // namespace
 
 
-void output(const std::string_view output_name)
+void ClearOutputFolder(std::string_view output_name)
+{
+   const auto output_folder = std::string("output/").append(output_name);
+   if (commonItems::DoesFolderExist(output_folder))
+   {
+      Log(LogLevel::Info) << "Removing pre-existing copy of " << output_name;
+      if (!commonItems::DeleteFolder(output_folder))
+      {
+         throw std::runtime_error("Could not remove pre-existing output folder " + output_folder +
+                                  ". Please delete folder and try converting again.");
+      }
+   }
+}
+
+
+void Output(const std::string_view output_name)
 {
    Log(LogLevel::Progress) << "80%";
    Log(LogLevel::Info) << "Outputting mod";
