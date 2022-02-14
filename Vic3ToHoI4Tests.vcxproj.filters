@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="external">
+      <UniqueIdentifier>{3169ef4b-59c4-4b5c-9a2f-cad199ed51fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{67273c84-c3ac-42ae-b373-811d2cf300c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4">
+      <UniqueIdentifier>{1bfc8f00-885c-4450-8476-4c26ab6d4d4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\commonItems">
+      <UniqueIdentifier>{39e93c8a-8929-4bb6-b27d-2f1ee273f807}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\googletest">
+      <UniqueIdentifier>{d948b0ac-652a-4229-b11b-fa3a10a85248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\googletest\googlemock">
+      <UniqueIdentifier>{242bb24a-483f-4ccf-9820-35a2814694e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\googletest\googlemock\src">
+      <UniqueIdentifier>{656dfd3a-4056-4e48-bfce-06e3c771f46f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\googletest\googletest">
+      <UniqueIdentifier>{67df624e-20b0-4110-b9c9-8bdbab5951a6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\out_mod.cpp">
+      <Filter>src\out_hoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
+      <Filter>src\out_hoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\CommonFunctions.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\ConvenientParser.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\ConverterVersion.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\GameVersion.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\iconvlite.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\Log.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\OSCommonLayer.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\Parser.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\ParserHelpers.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\StringUtils.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\WinUtils.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\googletest\googlemock\src\gmock-all.cc">
+      <Filter>external\googletest\googlemock\src</Filter>
+    </ClCompile>
+    <ClCompile Include="external\googletest\googletest\src\gtest_main.cc">
+      <Filter>external\googletest\googletest</Filter>
+    </ClCompile>
+    <ClCompile Include="external\googletest\googletest\src\gtest-all.cc">
+      <Filter>external\googletest\googletest</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\vic3_to_hoi4_converter.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\out_mod.h">
+      <Filter>src\out_hoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\CommonFunctions.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\ConvenientParser.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\ConverterVersion.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\GameVersion.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\iconvlite.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\Log.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\OSCompatibilityLayer.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\Parser.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\ParserHelpers.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\StringUtils.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
