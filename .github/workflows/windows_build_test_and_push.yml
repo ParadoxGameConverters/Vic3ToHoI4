@@ -2,10 +2,10 @@ name: Build, test and publish
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build_test_and_publish:
