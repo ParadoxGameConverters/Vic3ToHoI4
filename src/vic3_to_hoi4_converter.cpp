@@ -5,10 +5,10 @@
 
 
 
-void ConvertVic3ToHoi4(std::string_view output_name)
+void ConvertVic3ToHoi4(std::string_view output_name, const GameVersion& game_version)
 {
    out::ClearOutputFolder(output_name);
-   out::Output(output_name);
+   out::Output(output_name, game_version);
    Log(LogLevel::Progress) << "100%";
    Log(LogLevel::Notice) << "* Conversion complete *";
 }

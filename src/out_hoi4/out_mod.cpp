@@ -28,7 +28,7 @@ void CreateOutputFolder(const std::string_view output_name)
 }
 
 
-void CreateModFiles(const std::string_view output_name)
+void CreateModFiles(const std::string_view output_name, const GameVersion& game_version)
 {
    Log(LogLevel::Info) << "\tCreating .mod files";
 
@@ -43,7 +43,7 @@ void CreateModFiles(const std::string_view output_name)
    modFile << "replace_path=\"common/ideologies\"\n";
    modFile << "replace_path=\"history/countries\"\n";
    modFile << "replace_path=\"history/states\"\n";
-   modFile << "supported_version=\"1.11.*\"";
+   modFile << "supported_version=\"" << game_version.toWildCard() << "\"";
    modFile.close();
 
    std::ofstream descriptorFile(std::string("output/").append(output_name).append("/descriptor.mod"));
@@ -55,7 +55,7 @@ void CreateModFiles(const std::string_view output_name)
    descriptorFile << "replace_path=\"common/ideologies\"\n";
    descriptorFile << "replace_path=\"history/countries\"\n";
    descriptorFile << "replace_path=\"history/states\"\n";
-   descriptorFile << "supported_version=\"1.11.*\"";
+   descriptorFile << "supported_version=\"" << game_version.toWildCard() << "\"";
    descriptorFile.close();
 }
 
@@ -78,13 +78,13 @@ void ClearOutputFolder(std::string_view output_name)
 }
 
 
-void Output(const std::string_view output_name)
+void Output(const std::string_view output_name, const GameVersion& game_version)
 {
    Log(LogLevel::Progress) << "80%";
    Log(LogLevel::Info) << "Outputting mod";
 
    CreateOutputFolder(output_name);
-   CreateModFiles(output_name);
+   CreateModFiles(output_name, game_version);
    Log(LogLevel::Progress) << "85%";
 }
 

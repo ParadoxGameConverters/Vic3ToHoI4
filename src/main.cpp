@@ -11,7 +11,7 @@ int main()
       converterVersion.loadVersion("../version.txt");
       Log(LogLevel::Info) << converterVersion;
       Log(LogLevel::Progress) << "0%";
-      ConvertVic3ToHoi4("default_mod");
+      ConvertVic3ToHoi4("default_mod", converterVersion.getMaxTarget());
 
       return 0;
    }

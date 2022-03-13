@@ -2,10 +2,9 @@ cmake_minimum_required(VERSION 3.16)
 #set(CMAKE_VERBOSE_MAKEFILE on)
 
 project(Vic3ToHoi4)
-#set(DATA_FILE_DIR ${CMAKE_SOURCE_DIR}/Vic2ToHoI4/Data_Files)
 #set(FRONTER_DATA_FILE_DIR ${CMAKE_SOURCE_DIR}/Fronter/Fronter/Resources)
-#set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Release-Linux)
-set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux)
+set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux)
+set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux/Vic3ToHoi4)
 set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/test/Release-Linux)
 set(CMAKE_CXX_STANDARD 20)
 if (WIN32)
@@ -19,6 +18,8 @@ include_directories("./external/googletest/googletest")
 include_directories("./external/googletest/googletest/include")
 include_directories("./external/googletest/googlemock")
 include_directories("./external/googletest/googlemock/include")
+
+configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
 
 set(OUT_HOI4_SOURCES ${OUT_HOI4_SOURCES} "src/out_hoi4/out_mod.cpp")
 add_library(
@@ -60,7 +61,7 @@ set_target_properties( Vic3ToHoi4
 target_link_libraries(Vic3ToHoi4 OutHoi4)
 
 file(COPY "data/blank_mod" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
-add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > ${CONVERTER_OUTPUT_DIRECTORY}/commit_id.txt)
+add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > ${CONVERTER_OUTPUT_DIRECTORY}/../commit_id.txt)
 
 set(OUT_HOI4_TEST_SOURCES ${OUT_HOI4_TEST_SOURCES} "src/out_hoi4/out_mod_test.cpp")
 add_library(

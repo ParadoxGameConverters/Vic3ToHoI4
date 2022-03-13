@@ -9,7 +9,7 @@
 
 
 
-void ConvertVic3ToHoi4(std::string_view output_name);
+void ConvertVic3ToHoi4(std::string_view output_name, const GameVersion& game_version);
 
 
 
