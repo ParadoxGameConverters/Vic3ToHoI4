@@ -13,6 +13,7 @@
 
 TEST(OutHoi4OutModTest, ModFolderIsCleared)
 {
+   commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/test_output");
    EXPECT_TRUE(commonItems::DoesFolderExist("output/test_output"));
 
@@ -23,6 +24,7 @@ TEST(OutHoi4OutModTest, ModFolderIsCleared)
 
 TEST(OutHoi4OutModTest, FolderIsLoggedWhenCleared)
 {
+   commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/test_output");
 
    std::stringstream log;
@@ -62,8 +64,6 @@ TEST(OutHoi4OutModTest, FolderIsNotLoggedWhenNotCleared)
 
 TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
 {
-   commonItems::TryCreateFolder("output/test_output");
-
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
