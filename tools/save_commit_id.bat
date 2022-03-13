@@ -1,0 +1,1 @@
+git rev-parse HEAD > build\Release\output\commit_id.txt
