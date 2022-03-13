@@ -7,8 +7,8 @@
 
 void ConvertVic3ToHoi4(std::string_view output_name)
 {
-   ClearOutputFolder(output_name);
-   Output(output_name);
+   out::ClearOutputFolder(output_name);
+   out::Output(output_name);
    Log(LogLevel::Progress) << "100%";
    Log(LogLevel::Notice) << "* Conversion complete *";
 }

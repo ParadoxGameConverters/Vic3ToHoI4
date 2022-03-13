@@ -8,8 +8,12 @@
 
 
 
+namespace out
+{
+
 namespace
 {
+
 void CreateOutputFolder(const std::string_view output_name)
 {
    Log(LogLevel::Info) << "\tCopying blank mod";
@@ -82,3 +86,5 @@ void Output(const std::string_view output_name)
    CreateModFiles(output_name);
    Log(LogLevel::Progress) << "85%";
 }
+
+}  // namespace out

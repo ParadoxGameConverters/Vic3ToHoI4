@@ -7,8 +7,13 @@
 
 
 
+namespace out
+{
+
 void ClearOutputFolder(std::string_view output_name);
 void Output(std::string_view output_name);
+
+}  // namespace out
 
 
 
