@@ -64,15 +64,16 @@ void CreateModFiles(const std::string_view output_name)
 
 void ClearOutputFolder(std::string_view output_name)
 {
-   const auto output_folder = std::string("output/").append(output_name);
+   const std::string output_folder = std::string("output/").append(output_name);
    if (commonItems::DoesFolderExist(output_folder))
    {
       Log(LogLevel::Info) << "Removing pre-existing copy of " << output_name;
-      if (!commonItems::DeleteFolder(output_folder))
-      {
-         throw std::runtime_error("Could not remove pre-existing output folder " + output_folder +
-                                  ". Please delete folder and try converting again.");
-      }
+   }
+
+   if (!commonItems::DeleteFolder(output_folder))
+   {
+      throw std::runtime_error("Could not remove pre-existing output folder " + output_folder +
+                               ". Please delete folder and try converting again.");
    }
 }
 
