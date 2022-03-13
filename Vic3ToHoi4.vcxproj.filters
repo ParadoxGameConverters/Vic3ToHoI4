@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{1ae62be8-0c58-4d75-a21c-0fa7a6ab7198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4">
+      <UniqueIdentifier>{ea397ec9-b871-4d56-8081-24c3bac6d3ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{5a76a355-e7ae-45cb-bbfc-db790ab9d382}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\commonItems">
+      <UniqueIdentifier>{bc2f621e-d434-41ec-bb46-ce695f0b48e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{a4e6787c-758c-4138-901f-43afb0707675}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\out_hoi4\out_mod.cpp">
+      <Filter>src\out_hoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\CommonFunctions.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\ConvenientParser.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\ConverterVersion.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\GameVersion.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\iconvlite.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\Log.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\OSCommonLayer.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\Parser.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\ParserHelpers.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\StringUtils.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\WinUtils.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\out_hoi4\out_mod.h">
+      <Filter>src\out_hoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_to_hoi4_converter.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\CommonFunctions.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\ConvenientParser.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\ConverterVersion.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\GameVersion.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\iconvlite.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\Log.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\OSCompatibilityLayer.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\Parser.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\ParserHelpers.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\StringUtils.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\version.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+</Project>
