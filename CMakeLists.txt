@@ -90,6 +90,6 @@ file(COPY "data/blank_mod" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 
 if (MSVC)
 	target_link_libraries(Vic3ToHoI4Tests OutHoi4Tests)
-else (MSVC)
+else ()
 	target_link_libraries(Vic3ToHoI4Tests OutHoi4Tests pthread)
 endif()
