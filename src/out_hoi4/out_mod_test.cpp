@@ -1,6 +1,7 @@
 #include "out_mod.h"
 
 #include <algorithm>
+#include <filesystem>
 #include <fstream>
 #include <iterator>
 #include <sstream>
@@ -10,20 +11,93 @@
 
 
 
-TEST(OutHoi4OutModTest, ModFolderIsCreatedAndCleared)
+TEST(OutHoi4OutModTest, ModFolderIsCleared)
 {
-   Output("test_output");
+   commonItems::TryCreateFolder("output/test_output");
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/test_output"));
+
+   out::ClearOutputFolder("test_output");
+   EXPECT_FALSE(commonItems::DoesFolderExist("output/test_output"));
+}
+
+
+TEST(OutHoi4OutModTest, FolderIsLoggedWhenCleared)
+{
+   commonItems::TryCreateFolder("output/test_output");
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   out::ClearOutputFolder("test_output");
+
+   EXPECT_EQ(log.str(), "    [INFO] Removing pre-existing copy of test_output\n");
+
+   std::cout.rdbuf(cout_buffer);
+}
+
+
+TEST(OutHoi4OutModTest, NoOperationOnMissingModFolder)
+{
+   EXPECT_FALSE(commonItems::DoesFolderExist("output/test_output"));
+
+   out::ClearOutputFolder("test_output");
+   EXPECT_FALSE(commonItems::DoesFolderExist("output/test_output"));
+}
+
+
+TEST(OutHoi4OutModTest, FolderIsNotLoggedWhenNotCleared)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   out::ClearOutputFolder("test_output");
+
+   EXPECT_EQ(log.str(), "");
+
+   std::cout.rdbuf(cout_buffer);
+}
+
+
+TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
+{
+   commonItems::TryCreateFolder("output/test_output");
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   out::Output("test_output");
+
+   std::stringstream expected;
+   expected << "[PROGRESS] 80%\n";
+   expected << "    [INFO] Outputting mod\n";
+   expected << "    [INFO] \tCopying blank mod\n";
+   expected << "    [INFO] \tCreating .mod files\n";
+   expected << "[PROGRESS] 85%\n";
+   EXPECT_EQ(log.str(), expected.str());
+
+   std::cout.rdbuf(cout_buffer);
+   out::ClearOutputFolder("test_output");
+   std::filesystem::remove("output/test_output.mod");
+}
+
+
+TEST(OutHoi4OutModTest, ModFolderIsCreated)
+{
+   out::Output("test_output");
 
    EXPECT_TRUE(commonItems::DoesFolderExist("output/test_output"));
 
-   ClearOutputFolder("test_output");
-   EXPECT_FALSE(commonItems::DoesFolderExist("output/test_output"));
+   out::ClearOutputFolder("test_output");
+   std::filesystem::remove("output/test_output.mod");
 }
 
 
 TEST(OutHoi4OutModTest, ModFileIsCreated)
 {
-   Output("test_output");
+   out::Output("test_output");
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/test_output"));
 
@@ -46,13 +120,14 @@ TEST(OutHoi4OutModTest, ModFileIsCreated)
 
    EXPECT_EQ(mod_file_stream.str(), expected.str());
 
-   ClearOutputFolder("test_output");
+   out::ClearOutputFolder("test_output");
+   std::filesystem::remove("output/test_output.mod");
 }
 
 
 TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
 {
-   Output("test_output");
+   out::Output("test_output");
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/test_output"));
 
@@ -75,5 +150,6 @@ TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
 
    EXPECT_EQ(descriptor_file_stream.str(), expected.str());
 
-   ClearOutputFolder("test_output");
+   out::ClearOutputFolder("test_output");
+   std::filesystem::remove("output/test_output.mod");
 }
