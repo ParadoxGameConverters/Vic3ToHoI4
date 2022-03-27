@@ -1,0 +1,10 @@
+l_italian:
+ YES: "Sì"
+ NO: "No"
+ MODNAME: "Nome della mod (opzionale):"
+ MODNAMETIP: "Per favore, usa solo lettere latine"
+ MODNAMETIP2: "Nome facoltativo per la mod convertita (il nome predefinito è quello del salvataggio)"
+ DEBUG: "Debug (solo per test / sviluppo)"
+ DEBUGTIP: "Se produrre o meno un mod di debug."
+ DEBUGNOTIP: "Emette un mod normale."
+ DEBUGYESTIP: "Emette un mod di debug."
