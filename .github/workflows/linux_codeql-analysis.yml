@@ -113,7 +113,8 @@ jobs:
        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
        sudo apt-get update
        sudo apt-get install gcc-11 g++-11
-       sudo apt-get install libwxbase3.1-0-unofficial3 libwxbase3.1unofficial3-dev libwxgtk3.1-0-unofficial3 libwxgtk3.1unofficial3-dev wx3.1-headers wx-common
+       sudo apt-get install libwxbase3.1-0-unofficial3 libwxbase3.1unofficial3-dev libwxgtk3.1-0-unofficial3 libwxgtk3.1unofficial3-dev wx3.1-headers wx-common libgtk-3-0 libcurl4-openssl-dev libnotify-dev
+       sudo apt-get install libwxbase3.1-0-unofficial libwxbase3.1unofficial-dev libwxgtk3.1-0-unofficial libwxgtk3.1unofficial-dev wx3.1-headers wx-common libwxgtk-media3.1-0-unofficial libwxgtk-media3.1unofficial-dev libwxgtk-webview3.1-0-unofficial libwxgtk-webview3.1unofficial-dev libwxgtk-webview3.1-0-unofficial-dbg libwxbase3.1-0-unofficial-dbg libwxgtk3.1-0-unofficial-dbg libwxgtk-media3.1-0-unofficial-dbg wx3.1-i18n wx3.1-examples
        # Link gcc-11 and g++-11 to their standard commands
        sudo ln -s /usr/bin/gcc-11 /usr/local/bin/gcc
        sudo ln -s /usr/bin/g++-11 /usr/local/bin/g++
