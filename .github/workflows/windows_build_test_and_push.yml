@@ -47,7 +47,7 @@ jobs:
        .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-0.0Null-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
        .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-latest-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
        
-    - name: "Upload binaries to release"
+    - name: "Upload binaries to named release"
       if: ${{ github.event_name == 'push' }}
       uses: ncipollo/release-action@v1
       with:
@@ -55,7 +55,18 @@ jobs:
         allowUpdates: true
         omitBodyDuringUpdate: true
         omitNameDuringUpdate: true
-        artifacts: Vic3ToHoI4-0.0Null-win-x64.zip, Vic3ToHoI4-latest-win-x64.zip
+        artifacts: Vic3ToHoI4-0.0Null-win-x64.zip
+        token: ${{ secrets.API_TOKEN_GITHUB }}
+
+    - name: "Upload binaries to latest release"
+      if: ${{ github.event_name == 'push' }}
+      uses: ncipollo/release-action@v1
+      with:
+        tag: 0.0Null
+        allowUpdates: true
+        omitBodyDuringUpdate: true
+        omitNameDuringUpdate: true
+        artifacts: Vic3ToHoI4-latest-win-x64.zip
         token: ${{ secrets.API_TOKEN_GITHUB }}
 
     - name: "Cleanup"
