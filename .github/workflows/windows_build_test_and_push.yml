@@ -14,16 +14,14 @@ jobs:
     runs-on: [self-hosted, windows]
 
     steps:
+    - name: work around permission issue
+        run: git config --global --add safe.directory /github/workspace
+
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
         submodules: recursive
 
-    - name: "Get previous tag"
-      if: ${{ github.event_name == 'push' }}
-      id: previoustag
-      uses: "WyriHaximus/github-action-get-previous-tag@v1"
-      
     - name: "Build solution"
       run: |
        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
@@ -57,7 +55,7 @@ jobs:
         allowUpdates: true
         omitBodyDuringUpdate: true
         omitNameDuringUpdate: true
-        artifacts: Vic3ToHoI4-0.0Null-win-x64.zip Vic3ToHoI4-latest-win-x64.zip
+        artifacts: Vic3ToHoI4-0.0Null-win-x64.zip, Vic3ToHoI4-latest-win-x64.zip
         token: ${{ secrets.API_TOKEN_GITHUB }}
 
     - name: "Cleanup"
