@@ -1,0 +1,10 @@
+* Add new banner to data/resources/images
+* Create new tag on github
+* Update data/version.txt with new version and name
+* Update .github/workflows/windows_build_test_and_push.yml with new filename, tag, and artifact
+* Push and merge on github
+* Wait for build, confirm updates
+* New post on forum thread
+* Update first post on forum thread
+* Post on Patreon
+* Post on reddit

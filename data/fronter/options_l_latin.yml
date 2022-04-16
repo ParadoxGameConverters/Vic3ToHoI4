@@ -1,0 +1,10 @@
+l_latin:
+ YES: "Age"
+ NO: "Noli agere"
+ MODNAME: "Nomen correctionis (facultativum):"
+ MODNAMETIP: "Quaeso, tantum utere litteris Latinis."
+ MODNAMETIP2: "Nomen facultativum correctionis versae (nomen predefinitum est idem conditi ludi)"
+ DEBUG: "Debug (tantum ad testandum)"
+ DEBUGTIP: "Uter creare vel non creare correctionem genus debug?"
+ DEBUGNOTIP: "Creatur solita correctio."
+ DEBUGYESTIP: "Creatur correctio genus debug"

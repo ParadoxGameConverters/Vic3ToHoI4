@@ -45,13 +45,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>build/$(Configuration)/output/Vic3ToHoi4</OutDir>
-    <IntDir>build/$(Configuration)/intermediate/</IntDir>
+    <OutDir>$(SolutionDir)build/$(Configuration)/Vic3ToHoi4/</OutDir>
+    <IntDir>$(SolutionDir)build/$(Configuration)-intermediate/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>build/$(Configuration)/output/Vic3ToHoi4</OutDir>
-    <IntDir>build/$(Configuration)/intermediate/</IntDir>
+    <OutDir>$(SolutionDir)build/$(Configuration)/Vic3ToHoi4/</OutDir>
+    <IntDir>$(SolutionDir)build/$(Configuration)-intermediate/</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -128,6 +128,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
       <Link>blank_mod\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Release\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+      <Link>..\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\fronter\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+      <Link>..\Configuration\%(RecursiveDir)\%(Filename)%(Extension)</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>

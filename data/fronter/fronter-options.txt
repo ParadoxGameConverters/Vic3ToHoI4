@@ -1,0 +1,29 @@
+option = {
+	name = debug
+	displayName = DEBUG
+	tooltip = DEBUGTIP
+	radioSelector = {
+		radioOption = {
+			name = no
+			displayName = NO
+			tooltip = DEBUGNOTIP
+			default = true
+		}
+		radioOption = {
+			name = yes
+			displayName = YES
+			tooltip = DEBUGYESTIP
+			default = false
+		}
+	}
+}
+option = {
+	name = output_name
+	displayName = MODNAME
+	tooltip = MODNAMETIP
+	textSelector = {	
+		value = ""
+		editable = true
+		tooltip = MODNAMETIP2
+	}
+}

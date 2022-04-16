@@ -33,3 +33,5 @@
 
 build/
 .vs/
+Release/
+Debug/

@@ -1,0 +1,10 @@
+l_french:
+ YES: "Oui"
+ NO: "Non"
+ MODNAME: "Nom de sortie du mod (facultatif):"
+ MODNAMETIP: "Veuillez vous en tenir aux lettres latines"
+ MODNAMETIP2: "Nom facultatif pour le mod converti (le nom par défaut est celui de la sauvegarde)"
+ DEBUG: "Débogage (pour test / développement uniquement)"
+ DEBUGTIP: "Indique s'il faut ou non afficher un mod de débogage."
+ DEBUGNOTIP: "Sortie d'un mod normal."
+ DEBUGYESTIP: "Sortie d'un mod de débogage."

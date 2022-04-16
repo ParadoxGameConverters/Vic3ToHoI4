@@ -45,13 +45,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>build/test/$(Configuration)/output/</OutDir>
-    <IntDir>build/test/$(Configuration)/intermediate/</IntDir>
+    <OutDir>$(SolutionDir)build/test/$(Configuration)/</OutDir>
+    <IntDir>$(SolutionDir)build/test/$(Configuration)-intermediate/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>build/test/$(Configuration)/output/</OutDir>
-    <IntDir>build/test/$(Configuration)/intermediate/</IntDir>
+    <OutDir>$(SolutionDir)build/test/$(Configuration)/</OutDir>
+    <IntDir>$(SolutionDir)build/test/$(Configuration)-intermediate/</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

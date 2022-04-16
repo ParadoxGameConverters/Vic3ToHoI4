@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 #set(CMAKE_VERBOSE_MAKEFILE on)
 
 project(Vic3ToHoi4)
-#set(FRONTER_DATA_FILE_DIR ${CMAKE_SOURCE_DIR}/Fronter/Fronter/Resources)
+set(FRONTER_SOURCE_DIR ${PROJECT_SOURCE_DIR}/external/Fronter/Fronter/Source)
+set(FRONTER_COMMONS_SOURCE_DIR ${PROJECT_SOURCE_DIR}/external/Fronter/commonItems)
 set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux)
 set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux/Vic3ToHoi4)
 set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/test/Release-Linux)
@@ -19,7 +20,75 @@ include_directories("./external/googletest/googletest/include")
 include_directories("./external/googletest/googlemock")
 include_directories("./external/googletest/googlemock/include")
 
-configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
+
+#### Fronter ####
+
+set(CURL_LIBRARY "-lcurl")
+find_package(CURL REQUIRED)
+include_directories(${CURL_INCLUDE_DIR})
+
+include_directories("./external/Fronter/commonItems")
+include_directories("./external/Fronter/single_include")
+include_directories("/usr/include/wx-3.1-unofficial")
+include_directories("/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.1-unofficial3")
+
+file(GLOB FRONTER_MAIN_SOURCES "${FRONTER_SOURCE_DIR}/*.cpp")
+file(GLOB FRONTER_CONFIGURATION_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/*.cpp")
+file(GLOB FRONTER_CONFIGURATION_OPTIONS_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/Options/*.cpp")
+file(GLOB FRONTER_FRAMES_SOURCES "${FRONTER_SOURCE_DIR}/Frames/*.cpp")
+file(GLOB FRONTER_FRAMES_TABS_SOURCES "${FRONTER_SOURCE_DIR}/Frames/Tabs/*.cpp")
+file(GLOB FRONTER_UTILS_SOURCES "${FRONTER_SOURCE_DIR}/Utils/*.cpp")
+list(REMOVE_ITEM FRONTER_UTILS_SOURCES "${FRONTER_SOURCE_DIR}/Utils/WinFunctions.cpp")
+file(GLOB FRONTER_UTILS_LOCALIZATION_SOURCES "${FRONTER_SOURCE_DIR}/Utils/Localization/*.cpp")
+file(GLOB FRONTER_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/*.cpp")
+list(REMOVE_ITEM FRONTER_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/WinConverterLauncher.cpp")
+file(GLOB FRONTER_LOGWATCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/LogWatcher/*.cpp")
+file(GLOB FRONTER_MODCOPIER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ModCopier/*.cpp")
+file(GLOB FRONTER_UPDATECHECKER_SOURCES "${FRONTER_SOURCE_DIR}/UpdateChecker/*.cpp")
+set(FRONTER_COMMON_SOURCES "${FRONTER_COMMONS_SOURCE_DIR}/CommonFunctions.cpp")
+set(FRONTER_COMMON_SOURCES ${FRONTER_COMMON_SOURCES} "${FRONTER_COMMONS_SOURCE_DIR}/LinuxUtils.cpp")
+set(FRONTER_COMMON_SOURCES ${FRONTER_COMMON_SOURCES} "${FRONTER_COMMONS_SOURCE_DIR}/Log.cpp")
+set(FRONTER_COMMON_SOURCES ${FRONTER_COMMON_SOURCES} "${FRONTER_COMMONS_SOURCE_DIR}/OSCommonLayer.cpp")
+set(FRONTER_COMMON_SOURCES ${FRONTER_COMMON_SOURCES} "${FRONTER_COMMONS_SOURCE_DIR}/Parser.cpp")
+set(FRONTER_COMMON_SOURCES ${FRONTER_COMMON_SOURCES} "${FRONTER_COMMONS_SOURCE_DIR}/ParserHelpers.cpp")
+set(FRONTER_COMMON_SOURCES ${FRONTER_COMMON_SOURCES} "${FRONTER_COMMONS_SOURCE_DIR}/StringUtils.cpp")
+
+add_executable(ConverterFrontend
+	${FRONTER_MAIN_SOURCES}
+	${FRONTER_CONFIGURATION_SOURCES}
+	${FRONTER_CONFIGURATION_OPTIONS_SOURCES}
+	${FRONTER_FRAMES_SOURCES}
+	${FRONTER_FRAMES_TABS_SOURCES}
+	${FRONTER_UTILS_SOURCES}
+	${FRONTER_UTILS_LOCALIZATION_SOURCES}
+	${FRONTER_CONVERTERLAUNCHER_SOURCES}
+	${FRONTER_LOGWATCHER_SOURCES}
+	${FRONTER_MODCOPIER_SOURCES}
+	${FRONTER_UPDATECHECKER_SOURCES}
+	${FRONTER_COMMON_SOURCES}
+)
+find_package(wxWidgets REQUIRED COMPONENTS net core base)
+include(${wxWidgets_USE_FILE})
+target_link_libraries(ConverterFrontend ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES})
+set_target_properties( ConverterFrontend
+    PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
+)
+
+configure_file("external/Fronter/Fronter/Resources/converter.ico" "${FRONTER_OUTPUT_DIRECTORY}/converter.ico" COPYONLY)
+configure_file("external/Fronter/Fronter/Resources/converter_l_english.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_english.yml" COPYONLY)
+configure_file("external/Fronter/Fronter/Resources/converter_l_french.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_french.yml" COPYONLY)
+configure_file("external/Fronter/Fronter/Resources/converter_l_german.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_german.yml" COPYONLY)
+configure_file("external/Fronter/Fronter/Resources/converter_l_italian.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_italian.yml" COPYONLY)
+configure_file("external/Fronter/Fronter/Resources/converter_l_latin.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_latin.yml" COPYONLY)
+configure_file("external/Fronter/Fronter/Resources/converter_l_russian.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_russian.yml" COPYONLY)
+configure_file("external/Fronter/Fronter/Resources/converter_l_simp_chinese.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_simp_chinese.yml" COPYONLY)
+configure_file("external/Fronter/Fronter/Resources/converter_languages.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_languages.yml" COPYONLY)
+configure_file("external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt" "${FRONTER_OUTPUT_DIRECTORY}/GeneralFAQ-READ.ME.FIRST.txt" COPYONLY)
+file(COPY "data/fronter/" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration")
+
+
+#### Converter ####
 
 set(OUT_HOI4_SOURCES ${OUT_HOI4_SOURCES} "src/out_hoi4/out_mod.cpp")
 add_library(
@@ -60,8 +129,12 @@ set_target_properties( Vic3ToHoi4
 )
 target_link_libraries(Vic3ToHoi4 OutHoi4)
 
+configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
 file(COPY "data/blank_mod" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
 add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > ${CONVERTER_OUTPUT_DIRECTORY}/../commit_id.txt)
+
+
+#### Tests ####
 
 set(OUT_HOI4_TEST_SOURCES ${OUT_HOI4_TEST_SOURCES} "src/out_hoi4/out_mod_test.cpp")
 add_library(

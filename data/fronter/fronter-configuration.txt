@@ -1,0 +1,58 @@
+name = Vic3ToHoI4
+converterFolder = Vic3ToHoi4
+backendExePath = Vic3ToHoi4
+enableUpdateChecker = true
+checkForUpdatesOnStartup = true
+latestGitHubConverterReleaseUrl = "https://github.com/ParadoxGameConverters/Vic3ToHoI4/releases/latest/Vic3ToHoI4-0.latest-win-x64.zip"
+converterReleaseForumThread = "https://forum.paradoxplaza.com/forum/threads/vic3-to-hoi4-converter-thread.1475076/"
+pagesCommitIdUrl = "https://paradoxgameconverters.com/commit_ids/Vic3ToHoI4.txt"
+displayName = VIC3DISPLAYNAME
+sourceGame = VIC3GAME
+targetGame = HOI4GAME
+
+requiredFile = {
+	name = SaveGame
+	displayName = VIC3SAVE
+	tooltip = VIC3SAVETIP
+	mandatory = false
+	outputtable = true
+	searchPathType = windowsUsersFolder
+	searchPath = "Paradox Interactive\Victoria III\save games"
+	allowedExtension = "*.v3"
+}
+
+requiredFolder = {
+	name = Vic3directory
+	displayName = VIC3FOLDER
+	tooltip = VIC3FOLDERTIP
+	mandatory = false
+	searchPathType = steamFolder
+	searchPathID = 42960
+}
+
+requiredFolder = {
+	name = sourceGameModPath
+	displayName = VIC3MOD
+	tooltip = VIC3MODTIP
+	mandatory = false
+	searchPathType = steamFolder
+	searchPathID = "Paradox Interactive\Victoria III\mod"
+}
+
+requiredFolder = {
+	name = HoI4directory
+	displayName = HOI4FOLDER
+	tooltip = HOI4FOLDERTIP
+	mandatory = true
+	searchPathType = steamFolder
+	searchPathID = 394360
+}
+
+requiredFolder = {
+	name = targetGameModPath
+	displayName = HOI4MOD
+	tooltip = HOI4MODTIP
+	mandatory = true
+	searchPathType = windowsUsersFolder
+	searchPath = "Paradox Interactive\Hearts of Iron IV\mod"
+}

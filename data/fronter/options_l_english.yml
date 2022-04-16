@@ -1,0 +1,10 @@
+l_english:
+ YES: "Yes"
+ NO: "No"
+ MODNAME: "Mod Output Name (optional):"
+ MODNAMETIP: "Please, stick to Latin letters"
+ MODNAMETIP2: "Optional name for the converted mod (default name is the one of the savegame)"
+ DEBUG: "Debug (for test/development only)"
+ DEBUGTIP: "Whether or not to output a debug mod."
+ DEBUGNOTIP: "Output a normal mod."
+ DEBUGYESTIP: "Output a debug mod."
