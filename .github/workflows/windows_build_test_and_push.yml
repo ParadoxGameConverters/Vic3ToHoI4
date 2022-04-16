@@ -47,16 +47,17 @@ jobs:
       run: |
        cd "C:\Program Files\7-Zip\"
        .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-0.0Null-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-latest-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
        
     - name: "Upload binaries to release"
       if: ${{ github.event_name == 'push' }}
       uses: ncipollo/release-action@v1
       with:
-        tag: ${{ steps.previoustag.outputs.tag }}
+        tag: 0.0Null
         allowUpdates: true
         omitBodyDuringUpdate: true
         omitNameDuringUpdate: true
-        artifacts: Vic3ToHoI4-0.0Null-win-x64.zip
+        artifacts: Vic3ToHoI4-0.0Null-win-x64.zip Vic3ToHoI4-latest-win-x64.zip
         token: ${{ secrets.API_TOKEN_GITHUB }}
 
     - name: "Cleanup"
