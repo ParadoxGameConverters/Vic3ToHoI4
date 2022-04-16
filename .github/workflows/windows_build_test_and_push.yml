@@ -62,7 +62,7 @@ jobs:
       if: ${{ github.event_name == 'push' }}
       uses: ncipollo/release-action@v1
       with:
-        tag: 0.0Null
+        tag: latest
         allowUpdates: true
         omitBodyDuringUpdate: true
         omitNameDuringUpdate: true
