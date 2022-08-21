@@ -12,12 +12,12 @@ updates:
     directory: "external/googletest"
     schedule:
       interval: "monthly"
-      
+
   - package-ecosystem: "gitsubmodule"
     directory: "external/common_items"
     schedule:
       interval: "daily"
-      
+
   - package-ecosystem: "gitsubmodule"
     directory: "external/Fronter"
     schedule:

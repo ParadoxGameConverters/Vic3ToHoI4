@@ -26,12 +26,12 @@ jobs:
       run: |
        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
        .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
-       
+
     - name: "Run tests"
       run: |
        cd $Env:GITHUB_WORKSPACE\build\test\Release
        .\Vic3ToHoI4Tests.exe
-       
+
     - name: "Build updater executable"
       run: |
        cd external/Fronter/Updater
@@ -39,14 +39,14 @@ jobs:
        pyinstaller --onefile --icon=updater.ico updater.py
        mkdir ../../../build/Release/Updater
        mv dist/updater.exe ../../../build/Release/Updater/updater.exe
-       
+
     - name: "Prepare release"
       if: ${{ github.event_name == 'push' }}
       run: |
        cd "C:\Program Files\7-Zip\"
        .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-0.0Null-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
        .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-latest-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
-       
+
     - name: "Upload binaries to named release"
       if: ${{ github.event_name == 'push' }}
       uses: ncipollo/release-action@v1
