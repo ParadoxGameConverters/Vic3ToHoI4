@@ -7,3 +7,6 @@
 [submodule "external/fmt"]
 	path = external/fmt
 	url = git@github.com:fmtlib/fmt.git
+[submodule "external/Fronter.NET"]
+	path = external/Fronter.NET
+	url = git@github.com:ParadoxGameConverters/Fronter.NET.git
