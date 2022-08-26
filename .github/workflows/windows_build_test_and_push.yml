@@ -24,7 +24,7 @@ jobs:
 
     - name: "Build solution"
       run: |
-       dotnet restore
+       dotnet restore Vic3ToHoi4.sln
        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
        .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
 
