@@ -24,8 +24,8 @@ jobs:
 
     - name: "Build solution"
       run: |
-       cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
        dotnet restore
+       cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
        .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
 
     - name: "Run tests"
