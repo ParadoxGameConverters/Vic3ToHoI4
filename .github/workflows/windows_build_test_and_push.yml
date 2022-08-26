@@ -21,10 +21,17 @@ jobs:
       with:
         fetch-depth: 0
         submodules: recursive
+    
+    - name: Setup Dotnet for use with actions
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '7.*'
+        include-prerelease: true
 
     - name: "Build solution"
       run: |
        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
+       dotnet restore
        .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
 
     - name: "Run tests"
