@@ -35,7 +35,7 @@ jobs:
 
     - name: "Build updater executable"
       run: |
-       cd external/Fronter/Updater
+       cd external/Fronter.NET/Updater
        pip3 install -r requirements.txt
        pyinstaller --onefile --icon=updater.ico updater.py
        mkdir ../../../build/Release/Updater
