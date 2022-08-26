@@ -52,6 +52,12 @@ jobs:
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
 
+    - name: Setup Dotnet for use with actions
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '7.*'
+        include-prerelease: true
+
     - name: Build solution
       run: |
        cmake -H. -Bbuild && cmake --build ./build -- -j40
@@ -98,6 +104,12 @@ jobs:
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
+
+    - name: Setup Dotnet for use with actions
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '7.*'
+        include-prerelease: true
 
     - name: Build solution
       run: |

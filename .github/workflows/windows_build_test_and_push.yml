@@ -24,6 +24,7 @@ jobs:
 
     - name: "Build solution"
       run: |
+       dotnet restore Vic3ToHoi4.sln
        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
        .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
 
@@ -34,7 +35,7 @@ jobs:
 
     - name: "Build updater executable"
       run: |
-       cd external/Fronter/Updater
+       cd external/Fronter.NET/Updater
        pip3 install -r requirements.txt
        pyinstaller --onefile --icon=updater.ico updater.py
        mkdir ../../../build/Release/Updater
