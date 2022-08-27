@@ -1,0 +1,13 @@
+name: "Find braces mismatches"
+on: [push]
+jobs:
+  find_braces_mismatches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Download and run script"
+        run: |
+          cd data
+          wget https://raw.githubusercontent.com/IhateTrains/braces-mismatch-finder/main/bracket_script.py &&
+          echo "Script downloaded" &&
+          python3 bracket_script.py
