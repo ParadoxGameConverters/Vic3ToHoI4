@@ -113,6 +113,10 @@ jobs:
        # Link gcc-11 and g++-11 to their standard commands
        sudo ln -s /usr/bin/gcc-11 /usr/local/bin/gcc
        sudo ln -s /usr/bin/g++-11 /usr/local/bin/g++
+       sudo ln -s /usr/bin/gcov-11 /usr/local/bin/gcov
+       sudo ln -s /usr/bin/lcov /usr/local/bin/lcov
+       sudo ln -s /usr/bin/geninfo /usr/local/bin/geninfo
+       gcov --version
        # Export CC and CXX to tell cmake which compiler to use
        export CC=/usr/bin/gcc-11
        export CXX=/usr/bin/g++-11
