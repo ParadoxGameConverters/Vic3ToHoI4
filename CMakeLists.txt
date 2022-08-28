@@ -50,9 +50,9 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ParserHelpers.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/StringUtils.cpp")
 if (MSVC)
 	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/WinUtils.cpp")
-else()
+else(MSVC)
 	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/LinuxUtils.cpp")
-endif()
+endif(MSVC)
 
 add_executable(
 	Vic3ToHoi4
@@ -73,8 +73,11 @@ add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE
 
 #### Fronter ####
 
-file(COPY "data/fronter/" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration")
-add_custom_command(TARGET Vic3ToHoi4 PRE_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND tools/build_fronter.sh)
+if (COVERAGE)
+else (COVERAGE)
+	file(COPY "data/fronter/" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration")
+	add_custom_command(TARGET Vic3ToHoi4 PRE_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND tools/build_fronter.sh)
+endif (COVERAGE)
 
 
 #### Tests ####
