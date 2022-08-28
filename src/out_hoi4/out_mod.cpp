@@ -5,6 +5,7 @@
 
 #include "external/commonItems/Log.h"
 #include "external/commonItems/OSCompatibilityLayer.h"
+#include "external/fmt/include/fmt/format.h"
 
 
 
@@ -37,13 +38,18 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
    {
       throw std::runtime_error("Could not create .mod file");
    }
-   modFile << "name = \"Converted - " << output_name << "\"\n";
-   modFile << "path = \"mod/" << output_name << "/\"\n";
-   modFile << "user_dir = \"" << output_name << "_user_dir\"\n";
-   modFile << "replace_path=\"common/ideologies\"\n";
-   modFile << "replace_path=\"history/countries\"\n";
-   modFile << "replace_path=\"history/states\"\n";
-   modFile << "supported_version=\"" << game_version.toWildCard() << "\"";
+   modFile << fmt::format(
+       "name = \"Converted - {}\"\n"
+       "path = \"mod/{}/\"\n"
+       "user_dir = \"{}_user_dir\"\n"
+       "replace_path=\"common/ideologies\"\n"
+       "replace_path=\"history/countries\"\n"
+       "replace_path=\"history/states\"\n"
+       "supported_version=\"{}\"",
+       output_name,
+       output_name,
+       output_name,
+       game_version.toWildCard());
    modFile.close();
 
    std::ofstream descriptorFile(std::string("output/").append(output_name).append("/descriptor.mod"));
@@ -51,11 +57,14 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
    {
       throw std::runtime_error("Could not create descriptor.mod");
    }
-   descriptorFile << "name = \"Converted - " << output_name << "\"\n";
-   descriptorFile << "replace_path=\"common/ideologies\"\n";
-   descriptorFile << "replace_path=\"history/countries\"\n";
-   descriptorFile << "replace_path=\"history/states\"\n";
-   descriptorFile << "supported_version=\"" << game_version.toWildCard() << "\"";
+   descriptorFile << fmt::format(
+       "name = \"Converted - {}\"\n"
+       "replace_path=\"common/ideologies\"\n"
+       "replace_path=\"history/countries\"\n"
+       "replace_path=\"history/states\"\n"
+       "supported_version=\"{}\"",
+       output_name,
+       game_version.toWildCard());
    descriptorFile.close();
 }
 

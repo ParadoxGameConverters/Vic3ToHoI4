@@ -25,6 +25,18 @@
     <Filter Include="external\googletest\googletest">
       <UniqueIdentifier>{67df624e-20b0-4110-b9c9-8bdbab5951a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="external\fmt">
+      <UniqueIdentifier>{d07b90c3-5d9e-4270-a633-40f507c289b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\fmt\include">
+      <UniqueIdentifier>{d7712442-02b3-4089-8435-fbb5f9312f24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\fmt\src">
+      <UniqueIdentifier>{6750f694-1889-430f-b265-1e906d7981ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\fmt\include\fmt">
+      <UniqueIdentifier>{b64e8cd6-a2c9-4d56-9e54-b45368cfaa7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -78,6 +90,12 @@
     <ClCompile Include="external\googletest\googletest\src\gtest-all.cc">
       <Filter>external\googletest\googletest</Filter>
     </ClCompile>
+    <ClCompile Include="external\fmt\src\format.cc">
+      <Filter>external\fmt\src</Filter>
+    </ClCompile>
+    <ClCompile Include="external\fmt\src\os.cc">
+      <Filter>external\fmt\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -115,6 +133,18 @@
     </ClInclude>
     <ClInclude Include="external\commonItems\StringUtils.h">
       <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\fmt\include\fmt\format.h">
+      <Filter>external\fmt\include\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="external\fmt\include\fmt\format-inl.h">
+      <Filter>external\fmt\include\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="external\fmt\include\fmt\core.h">
+      <Filter>external\fmt\include\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="external\fmt\include\fmt\os.h">
+      <Filter>external\fmt\include\fmt</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

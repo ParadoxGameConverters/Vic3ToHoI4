@@ -19,6 +19,7 @@ if (DEFINED ENV{COVERAGE})
 endif (DEFINED ENV{COVERAGE})
 
 include_directories(.)
+include_directories("./external/fmt/include")
 include_directories("./external/googletest/googletest")
 include_directories("./external/googletest/googletest/include")
 include_directories("./external/googletest/googlemock")
@@ -54,11 +55,15 @@ else(MSVC)
 	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/LinuxUtils.cpp")
 endif(MSVC)
 
+set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/format.cc")
+set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/os.cc")
+
 add_executable(
 	Vic3ToHoi4
 	${MAIN_SOURCE}
 	${CONVERTER_SOURCES}
 	${COMMON_SOURCES}
+	${FORMAT_SOURCES}
 )
 set_target_properties( Vic3ToHoi4
     PROPERTIES
@@ -98,6 +103,7 @@ add_executable(
 	${GTEST_SOURCES}
 	${CONVERTER_SOURCES}
 	${COMMON_SOURCES}
+	${FORMAT_SOURCES}
 	${TEST_SOURCES}
 )
 set_target_properties( Vic3ToHoi4Tests

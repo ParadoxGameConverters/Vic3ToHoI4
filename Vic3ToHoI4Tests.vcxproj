@@ -44,7 +44,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/googletest/googletest/;$(SolutionDir)/external/googletest/googletest/include/;$(SolutionDir)/external/googletest/googlemock/;$(SolutionDir)/external/googletest/googlemock/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/fmt/include;$(SolutionDir)/external/googletest/googletest/;$(SolutionDir)/external/googletest/googletest/include/;$(SolutionDir)/external/googletest/googlemock/;$(SolutionDir)/external/googletest/googlemock/include/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -65,6 +65,8 @@
     <ClCompile Include="external\commonItems\ParserHelpers.cpp" />
     <ClCompile Include="external\commonItems\StringUtils.cpp" />
     <ClCompile Include="external\commonItems\WinUtils.cpp" />
+    <ClCompile Include="external\fmt\src\format.cc" />
+    <ClCompile Include="external\fmt\src\os.cc" />
     <ClCompile Include="external\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="external\googletest\googletest\src\gtest_main.cc" />
@@ -83,6 +85,10 @@
     <ClInclude Include="external\commonItems\Parser.h" />
     <ClInclude Include="external\commonItems\ParserHelpers.h" />
     <ClInclude Include="external\commonItems\StringUtils.h" />
+    <ClInclude Include="external\fmt\include\fmt\core.h" />
+    <ClInclude Include="external\fmt\include\fmt\format-inl.h" />
+    <ClInclude Include="external\fmt\include\fmt\format.h" />
+    <ClInclude Include="external\fmt\include\fmt\os.h" />
     <ClInclude Include="src\out_hoi4\out_mod.h" />
     <ClInclude Include="src\vic3_to_hoi4_converter.h" />
   </ItemGroup>
