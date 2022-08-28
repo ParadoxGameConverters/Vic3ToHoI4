@@ -40,6 +40,14 @@ jobs:
         fetch-depth: 0
         submodules: recursive
 
+    - name: "Check versions of gcc, g++ and cmake"
+      run: |
+       gcc -v && g++ -v && cmake --version
+
+    - name: "Check version of gcov"
+      run: |
+       gcov --version
+
     - name: Build solution
       run: |
        cmake -H. -Bbuild && cmake --build ./build -- -j40
@@ -93,6 +101,14 @@ jobs:
         # a pull request then we can checkout the head.
         fetch-depth: 0
         submodules: recursive
+
+    - name: "Check versions of gcc, g++ and cmake"
+      run: |
+       gcc -v && g++ -v && cmake --version
+
+    - name: "Check version of gcov"
+      run: |
+       gcov --version
 
     - name: Build solution
       run: |
