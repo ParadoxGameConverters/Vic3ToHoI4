@@ -14,7 +14,7 @@ else (WIN32)
   set (UNICODE_DEFAULT OFF)
 endif (WIN32)
 if (DEFINED ENV{COVERAGE})
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall -fprofile-arcs --coverage")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall -fprofile-arcs -ftest-coverage")
 	set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
 endif (DEFINED ENV{COVERAGE})
 
@@ -120,7 +120,7 @@ if (DEFINED ENV{COVERAGE})
 	)
 	add_custom_command(TARGET gcov
 		COMMAND echo "=================== GCOV ===================="
-		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src
+		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_to_hoi4_converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src
 		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4
 		COMMAND echo "-- Source directories:"
 		COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
