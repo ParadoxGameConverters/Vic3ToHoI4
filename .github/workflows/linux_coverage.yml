@@ -60,7 +60,7 @@ jobs:
       run: |
        cd build
        make gcov
-       
+
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
@@ -135,7 +135,7 @@ jobs:
       run: |
        cd build
        make gcov
-       
+
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
