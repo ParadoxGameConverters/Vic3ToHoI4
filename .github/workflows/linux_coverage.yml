@@ -40,6 +40,14 @@ jobs:
         fetch-depth: 0
         submodules: recursive
 
+    - name: "Link gcc-11 and g++-11 to their standard commands"
+      run: |
+       sudo ln -s /usr/bin/gcc-11 /usr/local/bin/gcc
+       sudo ln -s /usr/bin/g++-11 /usr/local/bin/g++
+       sudo ln -s /usr/bin/gcov-11 /usr/local/bin/gcov
+       sudo ln -s /usr/bin/lcov /usr/local/bin/lcov
+       sudo ln -s /usr/bin/geninfo /usr/local/bin/geninfo
+
     - name: "Check versions of gcc, g++ and cmake"
       run: |
        gcc -v && g++ -v && cmake --version
