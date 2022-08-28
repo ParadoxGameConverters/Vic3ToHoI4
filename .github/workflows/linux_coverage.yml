@@ -33,7 +33,6 @@ jobs:
 
     steps:
     - name: Confirm variable
-      uses: actions/checkout@v3
       run: |
         echo "COVERAGE is set to $COVERAGE"
     
