@@ -54,7 +54,7 @@ jobs:
        cd build
        pwd
        make gcov
-       
+
     - name: Run lcov
       run: |
        cd build
