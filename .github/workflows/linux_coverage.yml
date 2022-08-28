@@ -52,6 +52,7 @@ jobs:
     - name: Run gcov
       run: |
        cd ../..
+       pwd
        make gcov
 
     - name: Coveralls
