@@ -13,10 +13,10 @@ if (WIN32)
 else (WIN32)
   set (UNICODE_DEFAULT OFF)
 endif (WIN32)
-if (COVERAGE)
+if (DEFINED ENV{COVERAGE})
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall -fprofile-arcs -ftest-coverage")
 	set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
-endif (COVERAGE)
+endif (DEFINED ENV{COVERAGE})
 
 include_directories(.)
 include_directories("./external/googletest/googletest")
@@ -73,10 +73,10 @@ add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE
 
 #### Fronter ####
 
-if (NOT COVERAGE)
+if (NOT DEFINED ENV{COVERAGE})
 	file(COPY "data/fronter/" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration")
 	add_custom_command(TARGET Vic3ToHoi4 PRE_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND tools/build_fronter.sh)
-endif (NOT COVERAGE)
+endif (NOT DEFINED ENV{COVERAGE})
 
 
 #### Tests ####
@@ -113,7 +113,7 @@ else (MSVC)
 	target_link_libraries(Vic3ToHoi4Tests OutHoi4Tests pthread)
 endif(MSVC)
 
-if (COVERAGE)
+if (DEFINED ENV{COVERAGE})
 	add_custom_target(gcov
 		COMMAND mkdir -p gcoverage
 		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
@@ -157,4 +157,4 @@ if (COVERAGE)
 	enable_testing()
 
 	add_test(Vic3ToHoI4Tests ${CMAKE_CURRENT_BINARY_DIR}/test/Release-Linux/Vic3ToHoI4Tests)
-endif (COVERAGE)
+endif (DEFINED ENV{COVERAGE})
