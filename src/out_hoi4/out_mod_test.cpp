@@ -7,6 +7,7 @@
 #include <sstream>
 
 #include "external/commonItems/OSCompatibilityLayer.h"
+#include "external/fmt/include/fmt/format.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
 
 
@@ -70,13 +71,12 @@ TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
 
    out::Output("test_output", GameVersion());
 
-   std::stringstream expected;
-   expected << "[PROGRESS] 80%\n";
-   expected << "    [INFO] Outputting mod\n";
-   expected << "    [INFO] \tCopying blank mod\n";
-   expected << "    [INFO] \tCreating .mod files\n";
-   expected << "[PROGRESS] 85%\n";
-   EXPECT_EQ(log.str(), expected.str());
+   EXPECT_EQ(log.str(),
+       fmt::format("[PROGRESS] 80%\n"
+                   "    [INFO] Outputting mod\n"
+                   "    [INFO] \tCopying blank mod\n"
+                   "    [INFO] \tCreating .mod files\n"
+                   "[PROGRESS] 85%\n"));
 
    std::cout.rdbuf(cout_buffer);
    out::ClearOutputFolder("test_output");
@@ -109,16 +109,14 @@ TEST(OutHoi4OutModTest, ModFileIsCreated)
        std::ostreambuf_iterator<char>(mod_file_stream));
    mod_file.close();
 
-   std::stringstream expected;
-   expected << "name = \"Converted - test_output\"\n";
-   expected << "path = \"mod/test_output/\"\n";
-   expected << "user_dir = \"test_output_user_dir\"\n";
-   expected << "replace_path=\"common/ideologies\"\n";
-   expected << "replace_path=\"history/countries\"\n";
-   expected << "replace_path=\"history/states\"\n";
-   expected << "supported_version=\"*\"";
-
-   EXPECT_EQ(mod_file_stream.str(), expected.str());
+   EXPECT_EQ(mod_file_stream.str(),
+       fmt::format("name = \"Converted - test_output\"\n"
+                   "path = \"mod/test_output/\"\n"
+                   "user_dir = \"test_output_user_dir\"\n"
+                   "replace_path=\"common/ideologies\"\n"
+                   "replace_path=\"history/countries\"\n"
+                   "replace_path=\"history/states\"\n"
+                   "supported_version=\"*\""));
 
    out::ClearOutputFolder("test_output");
    std::filesystem::remove("output/test_output.mod");
@@ -139,16 +137,14 @@ TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
        std::ostreambuf_iterator<char>(descriptor_file_stream));
    descriptor_file.close();
 
-   std::stringstream expected;
-   expected << "name = \"Converted - test_output\"\n";
-   expected << "path = \"mod/test_output/\"\n";
-   expected << "user_dir = \"test_output_user_dir\"\n";
-   expected << "replace_path=\"common/ideologies\"\n";
-   expected << "replace_path=\"history/countries\"\n";
-   expected << "replace_path=\"history/states\"\n";
-   expected << "supported_version=\"*\"";
-
-   EXPECT_EQ(descriptor_file_stream.str(), expected.str());
+   EXPECT_EQ(descriptor_file_stream.str(),
+       fmt::format("name = \"Converted - test_output\"\n"
+                   "path = \"mod/test_output/\"\n"
+                   "user_dir = \"test_output_user_dir\"\n"
+                   "replace_path=\"common/ideologies\"\n"
+                   "replace_path=\"history/countries\"\n"
+                   "replace_path=\"history/states\"\n"
+                   "supported_version=\"*\""));
 
    out::ClearOutputFolder("test_output");
    std::filesystem::remove("output/test_output.mod");
@@ -169,16 +165,14 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
        std::ostreambuf_iterator<char>(mod_file_stream));
    mod_file.close();
 
-   std::stringstream expected_mod;
-   expected_mod << "name = \"Converted - test_output\"\n";
-   expected_mod << "path = \"mod/test_output/\"\n";
-   expected_mod << "user_dir = \"test_output_user_dir\"\n";
-   expected_mod << "replace_path=\"common/ideologies\"\n";
-   expected_mod << "replace_path=\"history/countries\"\n";
-   expected_mod << "replace_path=\"history/states\"\n";
-   expected_mod << "supported_version=\"42.13.*\"";
-
-   EXPECT_EQ(mod_file_stream.str(), expected_mod.str());
+   EXPECT_EQ(mod_file_stream.str(),
+       fmt::format("name = \"Converted - test_output\"\n"
+                   "path = \"mod/test_output/\"\n"
+                   "user_dir = \"test_output_user_dir\"\n"
+                   "replace_path=\"common/ideologies\"\n"
+                   "replace_path=\"history/countries\"\n"
+                   "replace_path=\"history/states\"\n"
+                   "supported_version=\"42.13.*\""));
 
    std::ifstream descriptor_file("output/test_output.mod");
    ASSERT_TRUE(descriptor_file.is_open());
@@ -188,16 +182,14 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
        std::ostreambuf_iterator<char>(descriptor_file_stream));
    descriptor_file.close();
 
-   std::stringstream expected_descriptor;
-   expected_descriptor << "name = \"Converted - test_output\"\n";
-   expected_descriptor << "path = \"mod/test_output/\"\n";
-   expected_descriptor << "user_dir = \"test_output_user_dir\"\n";
-   expected_descriptor << "replace_path=\"common/ideologies\"\n";
-   expected_descriptor << "replace_path=\"history/countries\"\n";
-   expected_descriptor << "replace_path=\"history/states\"\n";
-   expected_descriptor << "supported_version=\"42.13.*\"";
-
-   EXPECT_EQ(descriptor_file_stream.str(), expected_descriptor.str());
+   EXPECT_EQ(descriptor_file_stream.str(),
+       fmt::format("name = \"Converted - test_output\"\n"
+                   "path = \"mod/test_output/\"\n"
+                   "user_dir = \"test_output_user_dir\"\n"
+                   "replace_path=\"common/ideologies\"\n"
+                   "replace_path=\"history/countries\"\n"
+                   "replace_path=\"history/states\"\n"
+                   "supported_version=\"42.13.*\""));
 
    out::ClearOutputFolder("test_output");
    std::filesystem::remove("output/test_output.mod");

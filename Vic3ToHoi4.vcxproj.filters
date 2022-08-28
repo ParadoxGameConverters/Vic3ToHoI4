@@ -16,6 +16,18 @@
     <Filter Include="data">
       <UniqueIdentifier>{a4e6787c-758c-4138-901f-43afb0707675}</UniqueIdentifier>
     </Filter>
+    <Filter Include="external\fmt">
+      <UniqueIdentifier>{214a1949-c33f-4a38-a66f-d5826c2ce5fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\fmt\src">
+      <UniqueIdentifier>{089628fb-7190-49d5-b469-2f008a4b41c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\fmt\include">
+      <UniqueIdentifier>{1450a8f3-f13b-47ca-bab0-9db0b578ad82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\fmt\include\fmt">
+      <UniqueIdentifier>{439ed6ea-bd04-4d19-acfc-705c790522c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod.cpp">
@@ -60,6 +72,12 @@
     <ClCompile Include="external\commonItems\WinUtils.cpp">
       <Filter>external\commonItems</Filter>
     </ClCompile>
+    <ClCompile Include="external\fmt\src\format.cc">
+      <Filter>external\fmt\src</Filter>
+    </ClCompile>
+    <ClCompile Include="external\fmt\src\os.cc">
+      <Filter>external\fmt\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\out_hoi4\out_mod.h">
@@ -97,6 +115,18 @@
     </ClInclude>
     <ClInclude Include="external\commonItems\StringUtils.h">
       <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="external\fmt\include\fmt\format.h">
+      <Filter>external\fmt\include\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="external\fmt\include\fmt\format-inl.h">
+      <Filter>external\fmt\include\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="external\fmt\include\fmt\core.h">
+      <Filter>external\fmt\include\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="external\fmt\include\fmt\os.h">
+      <Filter>external\fmt\include\fmt</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
