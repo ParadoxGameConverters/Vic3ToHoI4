@@ -6,7 +6,7 @@
 name: "Coverage"
 
 env:
-  COVERAGE: true
+  COVERAGE: YES
 
 on:
   push:
@@ -32,6 +32,11 @@ jobs:
         # https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#overriding-automatic-language-detection
 
     steps:
+    - name: Confirm variable
+      uses: actions/checkout@v3
+      run: |
+        echo "COVERAGE is set to $COVERAGE"
+    
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
