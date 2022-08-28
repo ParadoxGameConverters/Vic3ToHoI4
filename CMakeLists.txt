@@ -73,8 +73,7 @@ add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE
 
 #### Fronter ####
 
-if (COVERAGE)
-else (COVERAGE)
+if (NOT COVERAGE)
 	file(COPY "data/fronter/" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration")
 	add_custom_command(TARGET Vic3ToHoi4 PRE_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND tools/build_fronter.sh)
 endif (COVERAGE)
