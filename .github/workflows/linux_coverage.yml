@@ -40,23 +40,18 @@ jobs:
         fetch-depth: 0
         submodules: recursive
 
-    - name: Setup Dotnet for use with actions
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '7.*'
-        include-prerelease: true
-
     - name: Build solution
       run: |
        cmake -H. -Bbuild && cmake --build ./build -- -j40
 
     - name: Run tests
       run: |
-       build/test/Release-Linux/Vic3ToHoi4Tests
+       cd build/test/Release-Linux/
+       ./Vic3ToHoi4Tests
 
     - name: Run gcov
       run: |
-       cd build
+       cd ../..
        make gcov
 
     - name: Coveralls
@@ -91,12 +86,6 @@ jobs:
         # a pull request then we can checkout the head.
         fetch-depth: 0
         submodules: recursive
-
-    - name: Setup Dotnet for use with actions
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '7.*'
-        include-prerelease: true
 
     - name: Build solution
       run: |
