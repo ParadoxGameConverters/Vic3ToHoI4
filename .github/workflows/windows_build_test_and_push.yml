@@ -30,6 +30,8 @@ jobs:
 
     - name: "Run tests"
       run: |
+       cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
+       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln -target:Vic3ToHoi4Tests
        cd $Env:GITHUB_WORKSPACE\build\test\Release
        .\Vic3ToHoI4Tests.exe
 
