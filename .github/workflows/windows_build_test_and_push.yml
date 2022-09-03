@@ -36,7 +36,7 @@ jobs:
        .\Vic3ToHoI4Tests.exe
 
     - name: "Build frontend"
-      uses: ./Fronter.NET/.github/actions/build_frontend
+      uses: ./external/Fronter.NET/.github/actions/build_frontend
       with:
         fronter_dir: 'external/Fronter.NET'
         release_dir: 'build/Release'
