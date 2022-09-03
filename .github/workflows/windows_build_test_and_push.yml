@@ -22,11 +22,11 @@ jobs:
         fetch-depth: 0
         submodules: recursive
 
-    - name: "Build solution"
+    - name: "Build backend"
       run: |
        dotnet restore Vic3ToHoi4.sln
        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
-       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
+       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln -target:Vic3ToHoi4
 
     - name: "Run tests"
       run: |
