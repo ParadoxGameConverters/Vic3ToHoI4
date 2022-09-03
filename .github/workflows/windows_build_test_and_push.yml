@@ -33,13 +33,11 @@ jobs:
        cd $Env:GITHUB_WORKSPACE\build\test\Release
        .\Vic3ToHoI4Tests.exe
 
-    - name: "Build updater executable"
-      run: |
-       cd external/Fronter.NET/Updater
-       pip3 install -r requirements.txt
-       pyinstaller --onefile --icon=updater.ico updater.py
-       mkdir ../../../build/Release/Updater
-       mv dist/updater.exe ../../../build/Release/Updater/updater.exe
+    - name: "Build frontend"
+      uses: ./Fronter.NET/.github/actions/build_frontend
+      with:
+        fronter_dir: 'external/Fronter.NET'
+        release_dir: 'build/Release'
 
     - name: "Prepare release"
       if: ${{ github.event_name == 'push' }}
