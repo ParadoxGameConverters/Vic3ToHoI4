@@ -73,7 +73,7 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: build/lcoverage/main_coverage.info
+        path-to-lcov: build/lcoverage/coverage.info
 
     - name: Cleanup
       uses: colpal/actions-clean@v1

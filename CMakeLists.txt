@@ -13,10 +13,8 @@ if (WIN32)
 else (WIN32)
   set (UNICODE_DEFAULT OFF)
 endif (WIN32)
-if (DEFINED ENV{COVERAGE})
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall -fprofile-arcs -ftest-coverage")
-	set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
-endif (DEFINED ENV{COVERAGE})
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
 
 include_directories(.)
 include_directories("./external/fmt/include")
@@ -119,48 +117,58 @@ else (MSVC)
 	target_link_libraries(Vic3ToHoi4Tests OutHoi4Tests pthread)
 endif(MSVC)
 
-if (DEFINED ENV{COVERAGE})
-	add_custom_target(gcov
-		COMMAND mkdir -p gcoverage
-		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-	)
-	add_custom_command(TARGET gcov
-		COMMAND echo "=================== GCOV ===================="
-		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_to_hoi4_converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src
-		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4
-		COMMAND echo "-- Source directories:"
-		COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
-		COMMAND echo "		${CMAKE_SOURCE_DIR}/src/out_hoi4/"
-		COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
-		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/gcoverage
-	)
+add_custom_target(gcov
+	COMMAND mkdir -p gcoverage
+	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
+add_custom_command(TARGET gcov
+	COMMAND echo "=================== GCOV ===================="
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_to_hoi4_converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4
+	COMMAND echo "-- Source directories:"
+	COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
+	COMMAND echo "		${CMAKE_SOURCE_DIR}/src/out_hoi4/"
+	COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
+	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/gcoverage
+)
 
-	add_custom_target(lcov
-		COMMAND mkdir -p lcoverage
-	)
-	add_custom_command(TARGET lcov
-		COMMAND echo "=================== LCOV ===================="
-		COMMAND echo "-- Passing lcov tool under code coverage"
-		COMMAND lcov --capture --directory CMakeFiles/Vic3ToHoi4Tests.dir/src/ --output-file lcoverage/main_coverage.info
-		COMMAND echo "-- Generating HTML output files"
-		COMMAND genhtml lcoverage/main_coverage.info --output-directory lcoverage
-	)
-	add_dependencies(gcov Vic3ToHoi4Tests)
+add_custom_target(lcov
+	COMMAND mkdir -p lcoverage
+)
+add_custom_command(TARGET lcov
+	COMMAND echo "=================== LCOV ===================="
+	COMMAND echo "-- Passing lcov tool under code coverage"
+	COMMAND lcov --c --d CMakeFiles/Vic3ToHoi4Tests.dir/src/ --o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/ext/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/11/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/ext/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/12/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/external/commonItems/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/external/fmt/include/fmt/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/gtest/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/gtest/internal/*' -o lcoverage/coverage.info
+	COMMAND echo "-- Generating HTML output files"
+	COMMAND genhtml lcoverage/coverage.info --output-directory lcoverage
+)
+add_dependencies(gcov Vic3ToHoi4Tests)
 
-	# Make sure to clean up the coverage folder
-	set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES gcoverage)
+# Make sure to clean up the coverage folder
+set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES gcoverage)
 
-	# Create the gcov-clean target. This cleans the build as well as generated 
-	# .gcda and .gcno files.
-	add_custom_target(init
-		COMMAND ${CMAKE_MAKE_PROGRAM} clean
-		COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcno
-		COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcda
-		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-	)
+# Create the gcov-clean target. This cleans the build as well as generated 
+# .gcda and .gcno files.
+add_custom_target(init
+	COMMAND ${CMAKE_MAKE_PROGRAM} clean
+	COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcno
+	COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcda
+	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
 
-	# Testing
-	enable_testing()
+# Testing
+enable_testing()
 
-	add_test(Vic3ToHoI4Tests ${CMAKE_CURRENT_BINARY_DIR}/test/Release-Linux/Vic3ToHoI4Tests)
-endif (DEFINED ENV{COVERAGE})
+add_test(Vic3ToHoI4Tests ${CMAKE_CURRENT_BINARY_DIR}/test/Release-Linux/Vic3ToHoI4Tests)
