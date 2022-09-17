@@ -138,9 +138,21 @@ add_custom_target(lcov
 add_custom_command(TARGET lcov
 	COMMAND echo "=================== LCOV ===================="
 	COMMAND echo "-- Passing lcov tool under code coverage"
-	COMMAND rm -rf CMakeFiles/Vic3ToHoi4Tests.dir/external
-	COMMAND rm -rf CMakeFiles/Vic3ToHoi4.dir/external
+	#COMMAND rm -rf CMakeFiles/Vic3ToHoi4Tests.dir/external
+	#COMMAND rm -rf CMakeFiles/Vic3ToHoi4.dir/external
 	COMMAND lcov --c --d CMakeFiles/Vic3ToHoi4Tests.dir/src/ --o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/ext/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/11/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/ext/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/12/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/external/commonItems/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/external/fmt/include/fmt/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/gtest/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/gtest/internal/*' -o lcoverage/coverage.info
 	COMMAND echo "-- Generating HTML output files"
 	COMMAND genhtml lcoverage/coverage.info --output-directory lcoverage
 )
