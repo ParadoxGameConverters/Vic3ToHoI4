@@ -1,8 +1,8 @@
 #!/bin/bash
 cmake -H. -Bbuild && cmake --build ./build -- -j40
-cd build
-cd test/Release-Linux
+cd build || exit
+cd test/Release-Linux || exit
 ./Vic3ToHoi4Tests
-cd ../..
+cd ../.. || exit
 make gcov
 make lcov
