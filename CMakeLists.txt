@@ -138,9 +138,11 @@ add_custom_target(lcov
 add_custom_command(TARGET lcov
 	COMMAND echo "=================== LCOV ===================="
 	COMMAND echo "-- Passing lcov tool under code coverage"
-	COMMAND lcov --capture --directory CMakeFiles/Vic3ToHoi4Tests.dir/src/ --output-file lcoverage/main_coverage.info
+	COMMAND rm -rf CMakeFiles/Vic3ToHoi4Tests.dir/external
+	COMMAND rm -rf CMakeFiles/Vic3ToHoi4.dir/external
+	COMMAND lcov --c --d CMakeFiles/Vic3ToHoi4Tests.dir/src/ --o lcoverage/coverage.info
 	COMMAND echo "-- Generating HTML output files"
-	COMMAND genhtml lcoverage/main_coverage.info --output-directory lcoverage
+	COMMAND genhtml lcoverage/coverage.info --output-directory lcoverage
 )
 add_dependencies(gcov Vic3ToHoi4Tests)
 
