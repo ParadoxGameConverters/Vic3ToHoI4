@@ -6,6 +6,7 @@
 #include "external/commonItems/Log.h"
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
+#include "external/fmt/include/fmt/ostream.h"
 
 
 
@@ -33,12 +34,12 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
 {
    Log(LogLevel::Info) << "\tCreating .mod files";
 
-   std::ofstream modFile(std::string("output/").append(output_name).append(".mod"));
-   if (!modFile.is_open())
+   std::ofstream mod_file(std::string("output/").append(output_name).append(".mod"));
+   if (!mod_file.is_open())
    {
       throw std::runtime_error("Could not create .mod file");
    }
-   modFile << fmt::format(
+   fmt::print(mod_file,
        "name = \"Converted - {}\"\n"
        "path = \"mod/{}/\"\n"
        "user_dir = \"{}_user_dir\"\n"
@@ -50,14 +51,14 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
        output_name,
        output_name,
        game_version.toWildCard());
-   modFile.close();
+   mod_file.close();
 
-   std::ofstream descriptorFile(std::string("output/").append(output_name).append("/descriptor.mod"));
-   if (!descriptorFile.is_open())
+   std::ofstream descriptor_file(std::string("output/").append(output_name).append("/descriptor.mod"));
+   if (!descriptor_file.is_open())
    {
       throw std::runtime_error("Could not create descriptor.mod");
    }
-   descriptorFile << fmt::format(
+   fmt::print(descriptor_file,
        "name = \"Converted - {}\"\n"
        "replace_path=\"common/ideologies\"\n"
        "replace_path=\"history/countries\"\n"
@@ -65,7 +66,7 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
        "supported_version=\"{}\"",
        output_name,
        game_version.toWildCard());
-   descriptorFile.close();
+   descriptor_file.close();
 }
 
 }  // namespace
