@@ -5,6 +5,9 @@
 # or to provide custom queries or build logic.
 name: "Coverage"
 
+env:
+  COVERAGE: YES
+
 on:
   push:
     branches: [main]
