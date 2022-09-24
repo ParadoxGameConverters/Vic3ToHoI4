@@ -50,7 +50,7 @@ jobs:
 
     - name: Build solution
       run: |
-       cmake -H. -Bbuild && cmake --build ./build -- -j40
+       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 Vic3ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
