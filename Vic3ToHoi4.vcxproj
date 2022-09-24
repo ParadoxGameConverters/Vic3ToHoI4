@@ -34,6 +34,8 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)build/$(Configuration)/Vic3ToHoi4/</OutDir>
     <IntDir>$(SolutionDir)build/$(Configuration)-intermediate/</IntDir>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

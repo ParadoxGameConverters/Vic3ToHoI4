@@ -8,13 +8,13 @@ set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux)
 set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux/Vic3ToHoi4)
 set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/test/Release-Linux)
 set(CMAKE_CXX_STANDARD 20)
-if (WIN32)
-  add_definitions(-DUNICODE -D_UNICODE)
-else (WIN32)
-  set (UNICODE_DEFAULT OFF)
-endif (WIN32)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall -fprofile-arcs -ftest-coverage")
-set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
+set (UNICODE_DEFAULT OFF)
+#if (DEFINED ENV{COVERAGE})
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall -fprofile-arcs -ftest-coverage")
+	set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
+#else (DEFINED ENV{COVERAGE})
+#	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall")
+#endif (DEFINED ENV{COVERAGE})
 
 include_directories(.)
 include_directories("./external/fmt/include")
@@ -47,11 +47,7 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/OSCommonLayer.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Parser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ParserHelpers.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/StringUtils.cpp")
-if (MSVC)
-	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/WinUtils.cpp")
-else(MSVC)
-	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/LinuxUtils.cpp")
-endif(MSVC)
+set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/LinuxUtils.cpp")
 
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/format.cc")
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/os.cc")
@@ -76,10 +72,14 @@ add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE
 
 #### Fronter ####
 
-if (NOT DEFINED ENV{COVERAGE})
-	file(COPY "data/fronter/" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration")
-	add_custom_command(TARGET Vic3ToHoi4 PRE_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND tools/build_fronter.sh)
-endif (NOT DEFINED ENV{COVERAGE})
+add_custom_target(Fronter
+	COMMAND tools/build_fronter.sh
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
+add_custom_command(TARGET Fronter
+	COMMAND cp -r "data/fronter/" "${FRONTER_OUTPUT_DIRECTORY}/Configuration"
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
 
 
 #### Tests ####
@@ -111,11 +111,10 @@ set_target_properties( Vic3ToHoi4Tests
 
 file(COPY "data/blank_mod" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 
-if (MSVC)
-	target_link_libraries(Vic3ToHoi4Tests OutHoi4Tests)
-else (MSVC)
-	target_link_libraries(Vic3ToHoi4Tests OutHoi4Tests pthread)
-endif(MSVC)
+target_link_libraries(Vic3ToHoi4Tests OutHoi4Tests pthread)
+
+
+####  Coverage ####
 
 add_custom_target(gcov
 	COMMAND mkdir -p gcoverage
@@ -172,3 +171,19 @@ add_custom_target(init
 enable_testing()
 
 add_test(Vic3ToHoI4Tests ${CMAKE_CURRENT_BINARY_DIR}/test/Release-Linux/Vic3ToHoI4Tests)
+
+
+#### Clang-tidy ####
+
+find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
+set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}")
+# checks to maybe add:
+#  cert-*
+#  cppcoreguidelines-*,
+
+add_library(run_clang_tidy
+	${CONVERTER_SOURCES}
+	${TEST_SOURCES}
+)
+target_link_libraries(run_clang_tidy pthread)
+set_target_properties(run_clang_tidy PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
