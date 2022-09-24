@@ -1,5 +1,5 @@
 #!/bin/bash
-cmake -H. -Bbuild && cmake --build ./build -- -j40
+cmake -H. -Bbuild -DCOVERAGE=TRUE && cmake --build ./build -- -j40
 cd build || exit
 cd test/Release-Linux || exit
 ./Vic3ToHoi4Tests
