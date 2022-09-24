@@ -176,7 +176,11 @@ add_test(Vic3ToHoI4Tests ${CMAKE_CURRENT_BINARY_DIR}/test/Release-Linux/Vic3ToHo
 #### Clang-tidy ####
 
 find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
-set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "-checks=-*,modernize-*")
+set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}")
+# checks to maybe add:
+#  cert-*
+#  cppcoreguidelines-*,
+
 add_library(run_clang_tidy
 	${CONVERTER_SOURCES}
 	${TEST_SOURCES}
