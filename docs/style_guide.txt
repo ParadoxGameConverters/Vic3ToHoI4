@@ -1,0 +1,9 @@
+Coding Style
+------------
+
+The coding style for Vic3 to HoI4 is derived from the Google C++ Style Guide: https://google.github.io/styleguide/cppguide.html
+Notable changes are longer line lengths and braced blocks starting on folloing lines.
+
+Code formatting is enforced via clang format. There is a check on pull requests that will point out formatting errors, and they can be corrected via automated tools. In Visual Studio, select the relevant code (Ctrl + A will do the whole file), then press Ctrl+K,F to automatically format.
+
+Naming should adhere to Google style as much as possible, but as yet there are no automated checks, so programmers and reviewers should do their best. If updating code that does not adhere to these rules, please update it.
