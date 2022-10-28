@@ -1,9 +1,9 @@
 0.0.0 = {
 	link = { comment = "* **********" }
-	link = { comment = west_europe }
+	link = { comment = "west_europe" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_SVEALAND " }
+	link = { comment = "* * STATE_SVEALAND " }
 	link = { comment = "* * STATE_GOTALAND " }
 	link = { comment = "* * STATE_SCANIA " }
 	link = { comment = "* * STATE_NORRLAND " }
@@ -82,10 +82,10 @@
 	link = { comment = "* * STATE_MECKLENBURG " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = south_europe }
+	link = { comment = "south_europe" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_LOMBARDY " }
+	link = { comment = "* * STATE_LOMBARDY " }
 	link = { comment = "* * STATE_PIEDMONT " }
 	link = { comment = "* * STATE_SARDINIA " }
 	link = { comment = "* * STATE_MALTA " }
@@ -147,10 +147,10 @@
 	link = { comment = "* * STATE_PELOPONNESE " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = east_europe }
+	link = { comment = "east_europe" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_INGRIA " }
+	link = { comment = "* * STATE_INGRIA " }
 	link = { comment = "* * STATE_MOSCOW " }
 	link = { comment = "* * STATE_BREST " }
 	link = { comment = "* * STATE_VOLHYNIA " }
@@ -196,10 +196,10 @@
 	link = { comment = "* * STATE_BESSARABIA " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = north_africa }
+	link = { comment = "north_africa" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_LOWER_EGYPT " }
+	link = { comment = "* * STATE_LOWER_EGYPT " }
 	link = { comment = "* * STATE_UPPER_EGYPT " }
 	link = { comment = "* * STATE_MIDDLE_EGYPT " }
 	link = { comment = "* * STATE_EGYPTIAN_DESERT " }
@@ -233,10 +233,10 @@
 	link = { comment = "* * STATE_CHAD " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = subsaharan_africa }
+	link = { comment = "subsaharan_africa" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_IVORY_COAST " }
+	link = { comment = "* * STATE_IVORY_COAST " }
 	link = { comment = "* * STATE_WINDWARD_COAST " }
 	link = { comment = "* * STATE_SENEGAL " }
 	link = { comment = "* * STATE_GAMBIA " }
@@ -299,10 +299,10 @@
 	link = { comment = "* * STATE_LOURENCO_MARQUES " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = north_america }
+	link = { comment = "north_america" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_DISTRICT_OF_COLUMBIA " }
+	link = { comment = "* * STATE_DISTRICT_OF_COLUMBIA " }
 	link = { comment = "* * STATE_LOUISIANA " }
 	link = { comment = "* * STATE_NEW_YORK " }
 	link = { comment = "* * STATE_VIRGINIA " }
@@ -365,6 +365,62 @@
 	link = { comment = "* * STATE_ARIZONA " }
 	link = { comment = "* * STATE_NEW_MEXICO " }
 	link = { comment = "* * STATE_CALIFORNIA " }
+	link = { vic3 = 0xDAABF7 vic3 = 0x42B7D9 hoi4 = 3644 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xC4A8E9 vic3 = 0x33EE3B vic3 = 0x0425B3 hoi4 = 6482 } # (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0x5A4650 vic3 = 0xAF199E hoi4 = 6665 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x307D50 hoi4 = 4331 } # (Unknown) -> land
+	link = { vic3 = 0x1C6782 hoi4 = 610 } # (Unknown) -> land
+	link = { vic3 = 0xE644D vic3 = 0x607BA8 hoi4 = 781 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xC9F623 vic3 = 0xC8C8C8 hoi4 = 3588 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xF7DB50 vic3 = 0x577D8 vic3 = 0x37658 vic3 = 0x9C28A4 hoi4 = 10159 } # (Unknown), (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0xC1F518 hoi4 = 9730 } # (Unknown) -> land
+	link = { vic3 = 0xC78CD3 hoi4 = 6772 } # (Unknown) -> land
+	link = { vic3 = 0xB8F452 hoi4 = 768 hoi4 = 9697 } # (Unknown) -> land, land
+	link = { vic3 = 0xA65FC5 vic3 = 0xA24DA3 hoi4 = 766 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xB72458 hoi4 = 11698 } # (Unknown) -> land
+	link = { vic3 = 0x10800 vic3 = 0xE97768 hoi4 = 6757 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x2A91D8 vic3 = 0xAB1AA2 hoi4 = 6745 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xD6A835 vic3 = 0x3F27C8 hoi4 = 6681 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xE4FC42 hoi4 = 677 } # (Unknown) -> land
+	link = { vic3 = 0x5EF8F5 hoi4 = 11658 } # (Unknown) -> land
+	link = { vic3 = 0x1116AA vic3 = 0x108080 hoi4 = 9671 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xDBCBC6 hoi4 = 3678 } # (Unknown) -> land
+	link = { vic3 = 0xA06435 hoi4 = 3677 } # (Unknown) -> land
+	link = { vic3 = 0x8CFB9B hoi4 = 9637 } # (Unknown) -> land
+	link = { vic3 = 0x2F3B45 vic3 = 0x6B8E78 vic3 = 0x7B05B hoi4 = 6861 } # (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0x2099C1 hoi4 = 3840 } # (Unknown) -> land
+	link = { vic3 = 0x8F1372 hoi4 = 986 } # (Unknown) -> land
+	link = { vic3 = 0x76A57D hoi4 = 3784 } # (Unknown) -> land
+	link = { vic3 = 0xFE6E88 vic3 = 0x1169B8 vic3 = 0xC5487 vic3 = 0x25A37F vic3 = 0x90800 hoi4 = 9713 } # (Unknown), (Unknown), (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0xD41D0 vic3 = 0x56F5CB vic3 = 0x6F44CB hoi4 = 710 } # (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0x50CAD vic3 = 0x2C84C4 hoi4 = 6699 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x8D4E6D vic3 = 0x161979 hoi4 = 6694 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x7A5DA6 vic3 = 0x7E8E1A hoi4 = 6876 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xF6B075 vic3 = 0x0AF8FD vic3 = 0x519529 hoi4 = 1601 } # (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0xDE208B vic3 = 0x2CE673 vic3 = 0x441749 hoi4 = 1432 } # (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0xFDC52 vic3 = 0x298876 hoi4 = 4518 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x93A4C5 vic3 = 0x209FC3 vic3 = 0xCBA1C9 hoi4 = 11763 } # (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0x0AE895 vic3 = 0x1FE069 hoi4 = 7667 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x0898A3 hoi4 = 6881 } # (Unknown) -> land
+	link = { vic3 = 0x908080 hoi4 = 11876 } # (Unknown) -> land
+	link = { vic3 = 0x61A555 vic3 = 0xBDF3 hoi4 = 9911 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x783D1D hoi4 = 941 } # (Unknown) -> land
+	link = { vic3 = 0x6E6D40 vic3 = 0xB881EE vic3 = 0x5EAA35 vic3 = 0x2B124 hoi4 = 1651 } # (Unknown), (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0x2F8F36 hoi4 = 11859 } # (Unknown) -> land
+	link = { vic3 = 0x8CC57E vic3 = 0xC2E1AA hoi4 = 9814 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x4C2D30 vic3 = 0xD000 hoi4 = 11757 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x0E8D26 hoi4 = 9855 } # (Unknown) -> land
+	link = { vic3 = 0x3117AA hoi4 = 7517 } # (Unknown) -> land
+	link = { vic3 = 0xA45ACA vic3 = 0x50800 hoi4 = 1562 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x2A2B4 vic3 = 0x2D1BB hoi4 = 12374 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xEBF5A0 vic3 = 0x4AB8EE vic3 = 0xFD459 hoi4 = 7986 } # (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0xCDB47 vic3 = 0x6CCFDB vic3 = 0x8A35D2 vic3 = 0x032BE2 vic3 = 0xCC7D4 hoi4 = 4727 } # (Unknown), (Unknown), (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0xF16E88 vic3 = 0xF49BCD vic3 = 0x914E48 vic3 = 0xC539E hoi4 = 4657 } # (Unknown), (Unknown), (Unknown), (Unknown) -> land
+	link = { vic3 = 0x864B45 vic3 = 0x4160C1 hoi4 = 823 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xCA5813 vic3 = 0xD57FA hoi4 = 12303 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0xB21AB9 vic3 = 0x25842F hoi4 = 10483 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x995EF vic3 = 0x7BCC6D hoi4 = 10387 } # (Unknown), (Unknown) -> land
+	link = { vic3 = 0x5625EF hoi4 = 11795 } # (Unknown) -> land
 	link = { comment = "* * STATE_SONORA " }
 	link = { comment = "* * STATE_CHIHUAHUA " }
 	link = { comment = "* * STATE_RIO_GRANDE " }
@@ -382,10 +438,10 @@
 	link = { comment = "* * STATE_BAJA_CALIFORNIA " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = central_america }
+	link = { comment = "central_america" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_SAN_SALVADOR " }
+	link = { comment = "* * STATE_SAN_SALVADOR " }
 	link = { comment = "* * STATE_GUATEMALA " }
 	link = { comment = "* * STATE_HONDURAS " }
 	link = { comment = "* * STATE_NICARAGUA " }
@@ -400,10 +456,10 @@
 	link = { comment = "* * STATE_CUBA " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = south_america }
+	link = { comment = "south_america" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_ECUADOR " }
+	link = { comment = "* * STATE_ECUADOR " }
 	link = { comment = "* * STATE_GUAYANA " }
 	link = { comment = "* * STATE_ZULIA " }
 	link = { comment = "* * STATE_MIRANDA " }
@@ -458,10 +514,10 @@
 	link = { comment = "* * STATE_PERNAMBUCO " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = middle_east }
+	link = { comment = "middle_east" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_NEJD " }
+	link = { comment = "* * STATE_NEJD " }
 	link = { comment = "* * STATE_OMAN " }
 	link = { comment = "* * STATE_ABU_DHABI " }
 	link = { comment = "* * STATE_YEMEN " }
@@ -499,10 +555,10 @@
 	link = { comment = "* * STATE_KARS " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = central_asia }
+	link = { comment = "central_asia" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_DAGESTAN " }
+	link = { comment = "* * STATE_DAGESTAN " }
 	link = { comment = "* * STATE_KUBAN " }
 	link = { comment = "* * STATE_ARMENIA " }
 	link = { comment = "* * STATE_AZERBAIJAN " }
@@ -529,10 +585,10 @@
 	link = { comment = "* * STATE_HIMALAYAS " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = india }
+	link = { comment = "india" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_BIHAR " }
+	link = { comment = "* * STATE_BIHAR " }
 	link = { comment = "* * STATE_NORTH_BENGAL " }
 	link = { comment = "* * STATE_ASSAM " }
 	link = { comment = "* * STATE_DELHI " }
@@ -556,10 +612,10 @@
 	link = { comment = "* * STATE_BOMBAY " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = east_asia }
+	link = { comment = "east_asia" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_DZUNGARIA " }
+	link = { comment = "* * STATE_DZUNGARIA " }
 	link = { comment = "* * STATE_TIANSHAN " }
 	link = { comment = "* * STATE_SICHUAN " }
 	link = { comment = "* * STATE_YUNNAN " }
@@ -627,10 +683,10 @@
 	link = { comment = "* * STATE_PYONGYANG " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = indonesia }
+	link = { comment = "indonesia" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_MALAYA " }
+	link = { comment = "* * STATE_MALAYA " }
 	link = { comment = "* * STATE_NORTH_BORNEO " }
 	link = { comment = "* * STATE_WEST_BORNEO " }
 	link = { comment = "* * STATE_EAST_BORNEO " }
@@ -660,10 +716,10 @@
 	link = { comment = "* * STATE_TONGA " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = australasia }
+	link = { comment = "australasia" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_NEW_SOUTH_WALES " }
+	link = { comment = "* * STATE_NEW_SOUTH_WALES " }
 	link = { comment = "* * STATE_VICTORIA " }
 	link = { comment = "* * STATE_TASMANIA " }
 	link = { comment = "* * STATE_QUEENSLAND " }
@@ -674,10 +730,10 @@
 	link = { comment = "* * STATE_SOUTH_ISLAND " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = siberia }
+	link = { comment = "siberia" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_URAL " }
+	link = { comment = "* * STATE_URAL " }
 	link = { comment = "* * STATE_TOMSK " }
 	link = { comment = "* * STATE_TUVA " }
 	link = { comment = "* * STATE_TOBOLSK " }
@@ -692,10 +748,10 @@
 	link = { comment = "* * STATE_IRKUTSK " }
 	link = { comment = "* " }
 	link = { comment = "* **********" }
-	link = { comment = seas }
+	link = { comment = "seas" }
 	link = { comment = "* **********" }
 	link = { comment = "* " }
-	link = { comment = "* * ﻿STATE_BALTIC_SEA " }
+	link = { comment = "* * STATE_BALTIC_SEA " }
 	link = { comment = "* * STATE_HAWAIIAN_SEAMOUNT_CHAIN " }
 	link = { comment = "* * STATE_MICRONESIAN_SEA " }
 	link = { comment = "* * STATE_SOUTH_PACIFIC_LANE_1 " }

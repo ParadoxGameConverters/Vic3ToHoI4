@@ -13,7 +13,7 @@ for filename in os.listdir(directory):
     print('\tlink = { comment = "* **********" }')
     print('\tlink = { comment = "* " }')
 
-    file = open(filename)
+    file = open(filename, encoding='utf-8-sig')
     bracket_level = 0
     for line in file:
       if not line:
