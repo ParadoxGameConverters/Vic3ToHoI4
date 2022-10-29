@@ -2,6 +2,7 @@
 
 #include "external/commonItems/CommonFunctions.h"
 #include "external/commonItems/Log.h"
+#include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/commonItems/ParserHelpers.h"
 
 
@@ -29,21 +30,46 @@ configuration::ConfigurationImporter::ConfigurationImporter()
 {
    configuration_parser_.registerKeyword("Vic3directory", [this](std::istream& stream) {
       configuration_.vic3_directory = commonItems::getString(stream);
+      if (configuration_.vic3_directory.empty() || !commonItems::DoesFolderExist(configuration_.vic3_directory))
+      {
+         throw std::runtime_error("No Victoria 3 path was set or the path doesn't exist.");
+      }
+      if (!commonItems::DoesFileExist(configuration_.vic3_directory + "/binaries/victoria3.exe"))
+      {
+         throw std::runtime_error("The specified Victoria 3 path does not contain Victoria 3.");
+      }
+      Log(LogLevel::Info) << "\tVictoria 3 install path is " << configuration_.vic3_directory;
    });
    configuration_parser_.registerKeyword("sourceGameModPath", [this](std::istream& stream) {
       configuration_.vic3_mod_path = commonItems::getString(stream);
+      Log(LogLevel::Info) << "\tVictoria 3 mod path is " << configuration_.vic3_mod_path;
    });
    configuration_parser_.registerKeyword("HoI4directory", [this](std::istream& stream) {
       configuration_.hoi4_directory = commonItems::getString(stream);
+      if (configuration_.hoi4_directory.empty() || !commonItems::DoesFolderExist(configuration_.hoi4_directory))
+      {
+         throw std::runtime_error("No Hearts of Iron 4 path was set or the path doesn't exist.");
+      }
+      if (!commonItems::DoesFileExist(configuration_.hoi4_directory + "/hoi4.exe"))
+      {
+         throw std::runtime_error("The specified Hearts of Iron 4 path does not contain Hearts of Iron 4.");
+      }
+      Log(LogLevel::Info) << "\tHearts of Iron 4 install path is " << configuration_.hoi4_directory;
    });
    configuration_parser_.registerKeyword("targetGameModPath", [this](std::istream& stream) {
       configuration_.hoi4_mod_path = commonItems::getString(stream);
+      Log(LogLevel::Info) << "\tHearts of Iron 4 mod path is " << configuration_.hoi4_mod_path;
    });
    configuration_parser_.registerKeyword("SaveGame", [this](std::istream& stream) {
       configuration_.save_game = commonItems::getString(stream);
+      Log(LogLevel::Info) << "\tSave game is " << configuration_.save_game;
    });
    configuration_parser_.registerKeyword("debug", [this](std::istream& stream) {
       configuration_.debug = commonItems::getString(stream) == "yes";
+      if (configuration_.debug)
+      {
+         Log(LogLevel::Info) << "\tDebug is active";
+      }
    });
    configuration_parser_.registerKeyword("output_name", [this](std::istream& stream) {
       configuration_.output_name = commonItems::getString(stream);
