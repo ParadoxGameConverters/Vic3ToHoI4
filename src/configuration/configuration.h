@@ -18,8 +18,6 @@ struct Configuration
    std::string save_game;
    bool debug = false;
    std::string output_name;
-
-   bool operator==(const Configuration&) const = default;
 };
 
 
