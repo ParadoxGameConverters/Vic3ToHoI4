@@ -17,7 +17,7 @@ class ConfigurationImporter
   public:
    ConfigurationImporter();
 
-   Configuration ImportConfiguration(std::string_view configuration_file);
+   [[nodiscard]] Configuration ImportConfiguration(std::string_view configuration_file);
 
   private:
    commonItems::parser configuration_parser_;

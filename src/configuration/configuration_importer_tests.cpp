@@ -7,10 +7,23 @@
 namespace configuration
 {
 
+
+TEST(ConfigurationTest, DefaultsAreDefaulted)
+{
+   const auto configuration =
+       configuration::ConfigurationImporter{}.ImportConfiguration("test_files/configuration/blank_configuration.txt");
+
+   EXPECT_TRUE(configuration.vic3_directory.empty());
+   EXPECT_TRUE(configuration.vic3_mod_path.empty());
+   EXPECT_TRUE(configuration.hoi4_directory.empty());
+   EXPECT_TRUE(configuration.hoi4_mod_path.empty());
+   EXPECT_FALSE(configuration.debug);
+}
+
 TEST(ConfigurationTest, ExceptionForMissingVic3Directory)
 {
-   EXPECT_THROW(configuration::ConfigurationImporter{}.ImportConfiguration(
-                    "test_files/configuration/missing_vic3_directory.txt"),
+   EXPECT_THROW(const auto _ =
+                    ConfigurationImporter{}.ImportConfiguration("test_files/configuration/missing_vic3_directory.txt"),
        std::runtime_error);
 }
 
@@ -18,15 +31,15 @@ TEST(ConfigurationTest, ExceptionForMissingVic3Directory)
 TEST(ConfigurationTest, ExceptionForBadVic3Directory)
 {
    EXPECT_THROW(
-       configuration::ConfigurationImporter{}.ImportConfiguration("test_files/configuration/bad_vic3_directory.txt"),
+       const auto _ = ConfigurationImporter{}.ImportConfiguration("test_files/configuration/bad_vic3_directory.txt"),
        std::runtime_error);
 }
 
 
 TEST(ConfigurationTest, ExceptionForMissingHoI4Directory)
 {
-   EXPECT_THROW(configuration::ConfigurationImporter{}.ImportConfiguration(
-                    "test_files/configuration/missing_hoi4_directory.txt"),
+   EXPECT_THROW(const auto _ =
+                    ConfigurationImporter{}.ImportConfiguration("test_files/configuration/missing_hoi4_directory.txt"),
        std::runtime_error);
 }
 
@@ -34,7 +47,7 @@ TEST(ConfigurationTest, ExceptionForMissingHoI4Directory)
 TEST(ConfigurationTest, ExceptionForBadHoI4Directory)
 {
    EXPECT_THROW(
-       configuration::ConfigurationImporter{}.ImportConfiguration("test_files/configuration/bad_vic3_directory.txt"),
+       const auto _ = ConfigurationImporter{}.ImportConfiguration("test_files/configuration/bad_vic3_directory.txt"),
        std::runtime_error);
 }
 
@@ -42,11 +55,11 @@ TEST(ConfigurationTest, ExceptionForBadHoI4Directory)
 TEST(ConfigurationTest, ItemsCanBeImported)
 {
    const auto configuration =
-       configuration::ConfigurationImporter{}.ImportConfiguration("test_files/configuration/test_configuration.txt");
+       ConfigurationImporter{}.ImportConfiguration("test_files/configuration/test_configuration.txt");
 
-   EXPECT_EQ(configuration.vic3_directory, R"(test_files\test_folders\vic3_folder)");
+   EXPECT_EQ(configuration.vic3_directory, R"(test_files/test_folders/vic3_folder)");
    EXPECT_EQ(configuration.vic3_mod_path, "vic3_mod_directory");
-   EXPECT_EQ(configuration.hoi4_directory, R"(test_files\test_folders\hoi4_folder)");
+   EXPECT_EQ(configuration.hoi4_directory, R"(test_files/test_folders/hoi4_folder)");
    EXPECT_EQ(configuration.hoi4_mod_path, "hoi4_mod_directory");
    EXPECT_EQ(configuration.save_game, "test_save.v3");
    EXPECT_TRUE(configuration.debug);
@@ -60,12 +73,12 @@ TEST(ConfigurationTest, ItemsAreLoggedWhenImported)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   configuration::ConfigurationImporter{}.ImportConfiguration("test_files/configuration/test_configuration.txt");
+   const auto _ = ConfigurationImporter{}.ImportConfiguration("test_files/configuration/test_configuration.txt");
 
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 install path is test_files\test_folders\vic3_folder)"));
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 install path is test_files/test_folders/vic3_folder)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 mod path is vic3_mod_directory)"));
    EXPECT_THAT(log.str(),
-       testing::HasSubstr(R"(Hearts of Iron 4 install path is test_files\test_folders\hoi4_folder)"));
+       testing::HasSubstr(R"(Hearts of Iron 4 install path is test_files/test_folders/hoi4_folder)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Hearts of Iron 4 mod path is hoi4_mod_directory)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Save game is test_save.v3)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Debug is active)"));
@@ -79,15 +92,15 @@ TEST(ConfigurationTest, ItemsAreLoggedWhenImported)
 TEST(ConfigurationTest, BadSaveNameThrowsException)
 {
    EXPECT_THROW(
-       configuration::ConfigurationImporter{}.ImportConfiguration("test_files/configuration/bad_save_name.txt"),
+       const auto _ = ConfigurationImporter{}.ImportConfiguration("test_files/configuration/bad_save_name.txt"),
        std::invalid_argument);
 }
 
 
 TEST(ConfigurationTest, OutputNameIsFromSave)
 {
-   const auto configuration = configuration::ConfigurationImporter{}.ImportConfiguration(
-       "test_files/configuration/output_name_from_save_configuration.txt");
+   const auto configuration =
+       ConfigurationImporter{}.ImportConfiguration("test_files/configuration/output_name_from_save_configuration.txt");
 
    EXPECT_EQ(configuration.output_name, "test_save_with_spaces");
 }
@@ -96,7 +109,7 @@ TEST(ConfigurationTest, OutputNameIsFromSave)
 TEST(ConfigurationTest, CustomOutputOverridesSaveOutputName)
 {
    const auto configuration =
-       configuration::ConfigurationImporter{}.ImportConfiguration("test_files/configuration/output_name_override.txt");
+       ConfigurationImporter{}.ImportConfiguration("test_files/configuration/output_name_override.txt");
 
    EXPECT_EQ(configuration.output_name, "path_has_not__been__removed__override_name_with_spaces");
 }
