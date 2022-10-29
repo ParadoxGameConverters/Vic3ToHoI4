@@ -28,6 +28,9 @@
     <Filter Include="external\fmt\include\fmt">
       <UniqueIdentifier>{439ed6ea-bd04-4d19-acfc-705c790522c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\configuration">
+      <UniqueIdentifier>{9a7bddb5-2f81-4c37-9def-9cc0a07e4194}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod.cpp">
@@ -78,6 +81,9 @@
     <ClCompile Include="external\fmt\src\os.cc">
       <Filter>external\fmt\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\configuration\configuration_importer.cpp">
+      <Filter>src\configuration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\out_hoi4\out_mod.h">
@@ -127,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="external\fmt\include\fmt\os.h">
       <Filter>external\fmt\include\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="src\configuration\configuration.h">
+      <Filter>src\configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\configuration\configuration_importer.h">
+      <Filter>src\configuration</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

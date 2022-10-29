@@ -70,6 +70,8 @@
     <ClCompile Include="external\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="external\googletest\googletest\src\gtest_main.cc" />
+    <ClCompile Include="src\configuration\configuration_importer.cpp" />
+    <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp" />
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp" />
@@ -89,11 +91,18 @@
     <ClInclude Include="external\fmt\include\fmt\format-inl.h" />
     <ClInclude Include="external\fmt\include\fmt\format.h" />
     <ClInclude Include="external\fmt\include\fmt\os.h" />
+    <ClInclude Include="src\configuration\configuration.h" />
+    <ClInclude Include="src\configuration\configuration_importer.h" />
     <ClInclude Include="src\out_hoi4\out_mod.h" />
     <ClInclude Include="src\vic3_to_hoi4_converter.h" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\blank_mod\**\*.*">
+    <Content Include="data\test_files\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+      <Link>test_files\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+    </Content>
+	<Content Include="data\test_files\**\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
       <Link>blank_mod\%(RecursiveDir)\%(Filename)%(Extension)</Link>

@@ -1,0 +1,7 @@
+Vic3directory = "vic3_install_directory"
+sourceGameModPath = "vic3_mod_directory"
+HoI4directory = "hoi4_install_directory"
+targetGameModPath = "hoi4_mod_directory"
+SaveGame = "test_save.v3"
+debug = "yes"
+output_name = "test_output_name"
