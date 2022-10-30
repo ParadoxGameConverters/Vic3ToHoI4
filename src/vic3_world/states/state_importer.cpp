@@ -1,5 +1,6 @@
 #include "src/vic3_world/states/state_importer.h"
 
+#include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/ParserHelpers.h"
 
 
@@ -9,6 +10,7 @@ vic3::StateImporter::StateImporter()
    state_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
       provinces_parser_.parseStream(input_stream);
    });
+   state_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
    provinces_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
       const auto provinces_input = commonItems::getInts(input_stream);
