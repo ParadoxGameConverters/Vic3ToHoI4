@@ -43,6 +43,9 @@
     <Filter Include="external\zip\src">
       <UniqueIdentifier>{2b09825b-24f7-4ffc-a2df-01d8d4bd7fab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\states">
+      <UniqueIdentifier>{eb5c7333-d885-4832-b5a4-e678963fcff8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod.cpp">
@@ -101,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="external\zip\src\zip.c">
       <Filter>external\zip\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\states\state_importer.cpp">
+      <Filter>src\vic3_world\states</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +172,12 @@
     </ClInclude>
     <ClInclude Include="external\zip\src\zip.h">
       <Filter>external\zip\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\states\state.h">
+      <Filter>src\vic3_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\states\state_importer.h">
+      <Filter>src\vic3_world\states</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
