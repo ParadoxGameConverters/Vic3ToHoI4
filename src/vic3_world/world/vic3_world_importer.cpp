@@ -64,7 +64,7 @@ std::string DecompressSave(std::istream& save)
 
    delete[] zipped_buffer;
 
-   Log(LogLevel::Info) << fmt::format(std::locale("en_US.UTF-8"), "Unzipped save to {:L} bytes", unzipped_size);
+   Log(LogLevel::Info) << fmt::format("Unzipped save to {:L} bytes", unzipped_size);
    std::string unzipped_file(static_cast<char*>(unzipped_buffer), unzipped_size);
 
    free(unzipped_buffer);
