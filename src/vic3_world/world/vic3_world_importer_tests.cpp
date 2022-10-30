@@ -39,4 +39,21 @@ TEST(Vic3WorldWorldVic3WorldImporter, UnzippedSizeIsLogged)
 }
 
 
+TEST(Vic3WorldWorldVic3WorldImporter, DefaultsAreCorrect)
+{
+   const auto world = ImportWorld("test_files/vic3_world/world/empty_save.vic3");
+
+   EXPECT_TRUE(world.GetStates().empty());
+}
+
+
+TEST(Vic3WorldWorldVic3WorldImporter, WorldCanBeImported)
+{
+   const auto world = ImportWorld("test_files/vic3_world/world/test_save.vic3");
+
+   EXPECT_THAT(world.GetStates(),
+       testing::UnorderedElementsAre(testing::Pair(0, State({1, 2, 3})), testing::Pair(1, State({10, 11, 12}))));
+}
+
+
 }  // namespace vic3

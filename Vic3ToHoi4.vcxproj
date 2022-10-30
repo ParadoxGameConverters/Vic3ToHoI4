@@ -106,6 +106,7 @@
     <ClInclude Include="src\vic3_world\states\state.h" />
     <ClInclude Include="src\vic3_world\states\states_importer.h" />
     <ClInclude Include="src\vic3_world\states\state_importer.h" />
+    <ClInclude Include="src\vic3_world\world\vic3_world.h" />
     <ClInclude Include="src\vic3_world\world\vic3_world_importer.h" />
   </ItemGroup>
   <ItemGroup>

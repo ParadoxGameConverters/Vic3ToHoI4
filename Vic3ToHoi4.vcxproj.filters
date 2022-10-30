@@ -185,6 +185,9 @@
     <ClInclude Include="src\vic3_world\states\states_importer.h">
       <Filter>src\vic3_world\states</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\world\vic3_world.h">
+      <Filter>src\vic3_world\world</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\version.txt">
