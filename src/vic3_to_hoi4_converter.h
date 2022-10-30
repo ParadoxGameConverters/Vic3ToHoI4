@@ -3,13 +3,12 @@
 
 
 
-#include <string_view>
-
 #include "external/commonItems/ConverterVersion.h"
+#include "src/configuration/configuration.h"
 
 
 
-void ConvertVic3ToHoi4(std::string_view output_name, const GameVersion& game_version);
+void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const GameVersion& game_version);
 
 
 

@@ -15,7 +15,7 @@ int main()
       const auto configuration = configuration::ConfigurationImporter{}.ImportConfiguration("configuration.txt");
 
       Log(LogLevel::Progress) << "0%";
-      ConvertVic3ToHoi4(configuration.output_name, converterVersion.getMaxTarget());
+      ConvertVic3ToHoi4(configuration, converterVersion.getMaxTarget());
 
       return 0;
    }

@@ -26,22 +26,12 @@ include_directories("./external/googletest/googlemock/include")
 
 #### Converter ####
 
-set(CONFIGURATION_SOURCES ${CONFIGURATION_SOURCES} "src/configuration/configuration_importer.cpp")
-add_library(
-	Configuration
-	${CONFIGURATION_SOURCES}
-)
-
-set(OUT_HOI4_SOURCES ${OUT_HOI4_SOURCES} "src/out_hoi4/out_mod.cpp")
-add_library(
-	OutHoi4
-	${OUT_HOI4_SOURCES}
-)
-
 set(MAIN_SOURCE "src/main.cpp")
 
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_to_hoi4_converter.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/configuration/configuration_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/out_mod.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/world/vic3_world_importer.cpp")
 
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/CommonFunctions.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ConvenientParser.cpp")
@@ -58,18 +48,20 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/LinuxUtils.cpp")
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/format.cc")
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/os.cc")
 
+set(ZIP_SOURCES ${ZIP_SOURCES} "external/zip/src/zip.c")
+
 add_executable(
 	Vic3ToHoi4
 	${MAIN_SOURCE}
 	${CONVERTER_SOURCES}
 	${COMMON_SOURCES}
 	${FORMAT_SOURCES}
+	${ZIP_SOURCES}
 )
 set_target_properties( Vic3ToHoi4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
-target_link_libraries(Vic3ToHoi4 Configuration OutHoi4)
 
 configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
 file(COPY "data/blank_mod" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
@@ -90,26 +82,22 @@ add_custom_command(TARGET Fronter
 
 #### Tests ####
 
-set(OUT_HOI4_TEST_SOURCES ${OUT_HOI4_TEST_SOURCES} "src/out_hoi4/out_mod_test.cpp")
-add_library(
-	OutHoi4Tests
-	${OUT_HOI4_TEST_SOURCES}
-)
+set(TEST_SOURCES ${TEST_SOURCES} "src/configuration/configuration_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/out_mod_test.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/world/vic3_world_importer_tests.cpp")
 
 set(GTEST_SOURCES ${GTEST_SOURCES} "external/googletest/googletest/src/gtest_main.cc")
 set(GTEST_SOURCES ${GTEST_SOURCES} "external/googletest/googletest/src/gtest-all.cc")
 set(GTEST_SOURCES ${GTEST_SOURCES} "external/googletest/googlemock/src/gmock-all.cc")
 
-set(TEST_SOURCES ${TEST_SOURCES} "src/configuration/configuration_importer_tests.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/out_mod_test.cpp")
-
 add_executable(
 	Vic3ToHoi4Tests
+	${TEST_SOURCES}
 	${GTEST_SOURCES}
 	${CONVERTER_SOURCES}
 	${COMMON_SOURCES}
 	${FORMAT_SOURCES}
-	${TEST_SOURCES}
+	${ZIP_SOURCES}
 )
 set_target_properties( Vic3ToHoi4Tests
     PROPERTIES
@@ -119,7 +107,7 @@ set_target_properties( Vic3ToHoi4Tests
 file(COPY "data/blank_mod" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 file(COPY "data/test_files" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 
-target_link_libraries(Vic3ToHoi4Tests Configuration OutHoi4 OutHoi4Tests pthread)
+target_link_libraries(Vic3ToHoi4Tests pthread)
 
 
 ####  Coverage ####
@@ -131,10 +119,9 @@ add_custom_target(gcov
 add_custom_command(TARGET gcov
 	COMMAND echo "=================== GCOV ===================="
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_to_hoi4_converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/configuration/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/configuration
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4
-	COMMAND echo "-- Source directories:"
-	COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
-	COMMAND echo "		${CMAKE_SOURCE_DIR}/src/out_hoi4/"
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_world/world/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/vic3_world/world
 	COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
 	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/gcoverage
 )
