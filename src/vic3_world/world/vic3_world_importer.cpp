@@ -85,7 +85,7 @@ std::istringstream ImportSave(std::string_view save_filename)
 
    save_file.seekg(save_identifier_size, std::ios_base::beg);
    char buffer[3];
-   save_file.get(buffer, 3);
+   save_file.read(buffer, 3);
    if (buffer[0] == 'P' && buffer[1] == 'K')
    {
       Log(LogLevel::Error) << fmt::format("Buffer was {:L}, {:L}, {:L}", buffer[0], buffer[1], buffer[2]);
