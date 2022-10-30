@@ -26,6 +26,12 @@ include_directories("./external/googletest/googlemock/include")
 
 #### Converter ####
 
+set(CONFIGURATION_SOURCES ${CONFIGURATION_SOURCES} "src/configuration/configuration_importer.cpp")
+add_library(
+	Configuration
+	${CONFIGURATION_SOURCES}
+)
+
 set(OUT_HOI4_SOURCES ${OUT_HOI4_SOURCES} "src/out_hoi4/out_mod.cpp")
 add_library(
 	OutHoi4
@@ -63,7 +69,7 @@ set_target_properties( Vic3ToHoi4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
-target_link_libraries(Vic3ToHoi4 OutHoi4)
+target_link_libraries(Vic3ToHoi4 Configuration OutHoi4)
 
 configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
 file(COPY "data/blank_mod" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
@@ -94,6 +100,7 @@ set(GTEST_SOURCES ${GTEST_SOURCES} "external/googletest/googletest/src/gtest_mai
 set(GTEST_SOURCES ${GTEST_SOURCES} "external/googletest/googletest/src/gtest-all.cc")
 set(GTEST_SOURCES ${GTEST_SOURCES} "external/googletest/googlemock/src/gmock-all.cc")
 
+set(TEST_SOURCES ${TEST_SOURCES} "src/configuration/configuration_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/out_mod_test.cpp")
 
 add_executable(
@@ -110,8 +117,9 @@ set_target_properties( Vic3ToHoi4Tests
 )
 
 file(COPY "data/blank_mod" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
+file(COPY "data/test_files" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 
-target_link_libraries(Vic3ToHoi4Tests OutHoi4Tests pthread)
+target_link_libraries(Vic3ToHoi4Tests Configuration OutHoi4 OutHoi4Tests pthread)
 
 
 ####  Coverage ####
@@ -148,6 +156,7 @@ add_custom_command(TARGET lcov
 	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/12/bits/*" -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info '*/external/commonItems/*' -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info '*/external/fmt/include/fmt/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/gmock/*' -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info '*/gtest/*' -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info '*/gtest/internal/*' -o lcoverage/coverage.info
 	COMMAND echo "-- Generating HTML output files"

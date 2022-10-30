@@ -1,0 +1,1 @@
+SaveGame = "path/that\will//be\\removed/\test_save with spaces.v3"

@@ -1,0 +1,1 @@
+HoI4directory = "test_files/test_folders/bad_hoi4_folder"

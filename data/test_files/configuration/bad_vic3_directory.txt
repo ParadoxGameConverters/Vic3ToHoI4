@@ -1,0 +1,1 @@
+Vic3directory = "test_files/test_folders/bad_vic3_folder"
