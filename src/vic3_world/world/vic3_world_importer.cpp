@@ -88,12 +88,10 @@ std::istringstream ImportSave(std::string_view save_filename)
    save_file.read(buffer, 3);
    if (buffer[0] == 'P' && buffer[1] == 'K')
    {
-      Log(LogLevel::Error) << fmt::format("Buffer was {:L}, {:L}, {:L}", buffer[0], buffer[1], buffer[2]);
       raw_save_data = DecompressSave(save_file);
    }
    else
    {
-      Log(LogLevel::Error) << fmt::format("Buffer was {:L}, {:L}, {:L}", buffer[0], buffer[1], buffer[2]);
       save_file.seekg(save_identifier_size, std::ios_base::beg);
       copy(std::istreambuf_iterator<char>(save_file),
           std::istreambuf_iterator<char>(),
