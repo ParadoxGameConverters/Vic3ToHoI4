@@ -34,5 +34,5 @@ vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
 {
    provinces_.clear();
    state_parser_.parseStream(input_stream);
-   return {provinces_};
+   return State(provinces_);
 }

@@ -13,7 +13,7 @@ namespace vic3
 class State
 {
   public:
-   State(std::set<int> provinces): provinces_(std::move(provinces)) {}
+   explicit State(std::set<int> provinces): provinces_(std::move(provinces)) {}
 
    [[nodiscard]] const std::set<int>& GetProvinces() const { return provinces_; }
 
