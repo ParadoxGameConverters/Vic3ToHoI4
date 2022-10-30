@@ -1,5 +1,5 @@
-#ifndef VIC3_TO_HOI4_CONVERTER_H_
-#define VIC3_TO_HOI4_CONVERTER_H_
+#ifndef VIC3_TO_HOI4_CONVERTER_H
+#define VIC3_TO_HOI4_CONVERTER_H
 
 
 
@@ -13,4 +13,4 @@ void ConvertVic3ToHoi4(std::string_view output_name, const GameVersion& game_ver
 
 
 
-#endif  // VIC3_TO_HOI4_CONVERTER_H_
+#endif  // VIC3_TO_HOI4_CONVERTER_H
