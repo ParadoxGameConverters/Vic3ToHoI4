@@ -17,6 +17,8 @@ class State
 
    [[nodiscard]] const std::set<int>& GetProvinces() const { return provinces_; }
 
+   bool operator==(const State&) const = default;
+
   private:
    std::set<int> provinces_;
 };
