@@ -19,7 +19,7 @@ class StateImporter
   public:
    StateImporter();
 
-   State ImportState(std::istream& input_stream);
+   [[nodiscard]] State ImportState(std::istream& input_stream);
 
   private:
    commonItems::parser state_parser_;
