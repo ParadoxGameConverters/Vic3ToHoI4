@@ -70,11 +70,14 @@
     <ClCompile Include="external\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="external\googletest\googletest\src\gtest_main.cc" />
+    <ClCompile Include="external\zip\src\zip.c" />
     <ClCompile Include="src\configuration\configuration_importer.cpp" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp" />
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp" />
+    <ClCompile Include="src\vic3_world\world\vic3_world_importer.cpp" />
+    <ClCompile Include="src\vic3_world\world\vic3_world_importer_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="external\commonItems\CommonFunctions.h" />
@@ -91,10 +94,13 @@
     <ClInclude Include="external\fmt\include\fmt\format-inl.h" />
     <ClInclude Include="external\fmt\include\fmt\format.h" />
     <ClInclude Include="external\fmt\include\fmt\os.h" />
+    <ClInclude Include="external\zip\src\miniz.h" />
+    <ClInclude Include="external\zip\src\zip.h" />
     <ClInclude Include="src\configuration\configuration.h" />
     <ClInclude Include="src\configuration\configuration_importer.h" />
     <ClInclude Include="src\out_hoi4\out_mod.h" />
     <ClInclude Include="src\vic3_to_hoi4_converter.h" />
+    <ClInclude Include="src\vic3_world\world\vic3_world_importer.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\test_files\**\*.*">
@@ -102,7 +108,7 @@
       <DeploymentContent>true</DeploymentContent>
       <Link>test_files\%(RecursiveDir)\%(Filename)%(Extension)</Link>
     </Content>
-	<Content Include="data\test_files\**\*.*">
+    <Content Include="data\test_files\**\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
       <Link>blank_mod\%(RecursiveDir)\%(Filename)%(Extension)</Link>

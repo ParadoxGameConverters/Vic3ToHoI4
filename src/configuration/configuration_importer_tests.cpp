@@ -69,7 +69,6 @@ TEST(ConfigurationTest, ItemsAreLoggedWhenImported)
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Debug is active)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Using output name test_output_name)"));
 
-
    std::cout.rdbuf(cout_buffer);
 }
 

@@ -1,0 +1,123 @@
+#include "src/vic3_world/world/vic3_world_importer.h"
+
+#include <filesystem>
+#include <fstream>
+#include <sstream>
+
+#include "external/commonItems/Log.h"
+#include "external/commonItems/Parser.h"
+#include "external/fmt/include/fmt/format.h"
+#include "external/zip/src/zip.h"
+
+
+namespace
+{
+
+constexpr int save_identifier_size = 24;
+
+
+int GetFileLength(std::istream& file)
+{
+   file.seekg(0, std::ios_base::end);
+   const int length = static_cast<int>(file.tellg());
+   file.seekg(save_identifier_size, std::ios_base::beg);
+
+   return length;
+}
+
+
+std::string DecompressSave(std::istream& save)
+{
+   const auto length = GetFileLength(save);
+
+   char* zipped_buffer = new char[static_cast<uint64_t>(length)];
+   save.read(zipped_buffer, length);
+
+   void* unzipped_buffer = nullptr;
+   size_t unzipped_size = 0;
+   zip_t* zip_file = zip_stream_open(zipped_buffer, static_cast<size_t>(length), 0, 'r');
+   if (zip_file == nullptr)
+   {
+      throw std::runtime_error(
+          "The save was not a correctly zipped save. It may have been corrupted, try loading it in Vic3 and saving to "
+          "a new file.");
+   }
+   if (zip_entry_opencasesensitive(zip_file, "gamestate") != 0)
+   {
+      throw std::runtime_error(
+          "The save was not a correctly zipped save. It may have been corrupted, try loading it in Vic3 and saving to "
+          "a new file.");
+   }
+   if (zip_entry_read(zip_file, &unzipped_buffer, &unzipped_size) < 0)
+   {
+      throw std::runtime_error(
+          "The save was not a correctly zipped save. It may have been corrupted, try loading it in Vic3 and saving to "
+          "a new file.");
+   }
+   if (zip_entry_close(zip_file) < 0)
+   {
+      throw std::runtime_error(
+          "The save was not a correctly zipped save. It may have been corrupted, try loading it in Vic3 and saving to "
+          "a new file.");
+   }
+   zip_stream_close(zip_file);
+
+   delete[] zipped_buffer;
+
+   Log(LogLevel::Info) << fmt::format(std::locale("en_US.UTF-8"), "Unzipped save to {:L} bytes", unzipped_size);
+   std::string unzipped_file(static_cast<char*>(unzipped_buffer), unzipped_size);
+
+   free(unzipped_buffer);
+
+   return unzipped_file;
+}
+
+
+std::istringstream ImportSave(std::string_view save_filename)
+{
+   std::ifstream save_file(std::filesystem::u8path(save_filename), std::ios::binary);
+   if (!save_file.is_open())
+   {
+      throw std::runtime_error("Could not open save! Exiting!");
+   }
+
+   std::string raw_save_data;
+
+   save_file.seekg(save_identifier_size, std::ios_base::beg);
+   char buffer[3];
+   save_file.get(buffer, 3);
+   if (buffer[0] == 'P' && buffer[1] == 'K')
+   {
+      raw_save_data = DecompressSave(save_file);
+   }
+   else
+   {
+      save_file.seekg(save_identifier_size, std::ios_base::beg);
+      copy(std::istreambuf_iterator<char>(save_file),
+          std::istreambuf_iterator<char>(),
+          std::back_inserter(raw_save_data));
+   }
+
+   save_file.close();
+
+   return std::istringstream{raw_save_data};
+}
+
+}  // namespace
+
+
+void vic3::ImportWorld(std::string_view save_filename)
+{
+   Log(LogLevel::Info) << "*** Hello Vic3, loading World. ***";
+
+   Log(LogLevel::Info) << "-> Reading Vic3 save.";
+   auto save = ImportSave(save_filename);
+   Log(LogLevel::Progress) << "7 %";
+
+   // MeltSave();
+   Log(LogLevel::Progress) << "9 %";
+
+   commonItems::parser save_parser;
+   save_parser.parseStream(save);
+   Log(LogLevel::Progress) << "15 %";
+}
