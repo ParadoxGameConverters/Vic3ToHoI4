@@ -1,1 +1,0 @@
-HoI4directory = "test_files/test_folders/missing_hoi4_folder"

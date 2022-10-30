@@ -1,1 +1,1 @@
-HoI4directory = "test_files/test_folders/missing_hoi4_folder"
+HoI4directory = "test_files/test_folders/bad_hoi4_folder"

@@ -4,6 +4,7 @@
 #include "external/commonItems/Log.h"
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/commonItems/ParserHelpers.h"
+#include "external/fmt/include/fmt/format.h"
 
 
 
@@ -30,13 +31,14 @@ configuration::ConfigurationImporter::ConfigurationImporter()
 {
    configuration_parser_.registerKeyword("Vic3directory", [this](std::istream& stream) {
       configuration_.vic3_directory = commonItems::getString(stream);
-      if (configuration_.vic3_directory.empty() || !commonItems::DoesFolderExist(configuration_.vic3_directory))
+      if (!commonItems::DoesFolderExist(configuration_.vic3_directory))
       {
-         throw std::runtime_error("No Victoria 3 path was set or the path doesn't exist.");
+         throw std::runtime_error(fmt::format("Victoria 3 path {} doesn't exist.", configuration_.vic3_directory));
       }
-      if (!commonItems::DoesFileExist(configuration_.vic3_directory + "/binaries/victoria3.exe"))
+      if (!commonItems::DoesFileExist(configuration_.vic3_directory + "/binaries/victoria3.exe") &&
+          !commonItems::DoesFileExist(configuration_.vic3_directory + "/binaries/victoria3"))
       {
-         throw std::runtime_error("The specified Victoria 3 path does not contain Victoria 3.");
+         throw std::runtime_error(fmt::format("{} does not contain Victoria 3.", configuration_.vic3_directory));
       }
       Log(LogLevel::Info) << "\tVictoria 3 install path is " << configuration_.vic3_directory;
    });
@@ -46,13 +48,15 @@ configuration::ConfigurationImporter::ConfigurationImporter()
    });
    configuration_parser_.registerKeyword("HoI4directory", [this](std::istream& stream) {
       configuration_.hoi4_directory = commonItems::getString(stream);
-      if (configuration_.hoi4_directory.empty() || !commonItems::DoesFolderExist(configuration_.hoi4_directory))
+      if (!commonItems::DoesFolderExist(configuration_.hoi4_directory))
       {
-         throw std::runtime_error("No Hearts of Iron 4 path was set or the path doesn't exist.");
+         throw std::runtime_error(
+             fmt::format("Hearts of Iron 4 path {} doesn't exist.", configuration_.hoi4_directory));
       }
-      if (!commonItems::DoesFileExist(configuration_.hoi4_directory + "/hoi4.exe"))
+      if (!commonItems::DoesFileExist(configuration_.hoi4_directory + "/hoi4.exe") &&
+          !commonItems::DoesFileExist(configuration_.hoi4_directory + "/hoi4"))
       {
-         throw std::runtime_error("The specified Hearts of Iron 4 path does not contain Hearts of Iron 4.");
+         throw std::runtime_error(fmt::format("{} does not contain Hearts of Iron 4.", configuration_.hoi4_directory));
       }
       Log(LogLevel::Info) << "\tHearts of Iron 4 install path is " << configuration_.hoi4_directory;
    });
