@@ -21,6 +21,14 @@ TEST(ConfigurationTest, DefaultsAreDefaulted)
 }
 
 
+TEST(ConfigurationTest, ExceptionForMissingVic3Directory)
+{
+   EXPECT_THROW(const auto _ =
+                    ConfigurationImporter{}.ImportConfiguration("test_files/configuration/missing_vic3_directory.txt"),
+       std::runtime_error);
+}
+
+
 TEST(ConfigurationTest, ExceptionForBadVic3Directory)
 {
    EXPECT_THROW(
@@ -29,10 +37,18 @@ TEST(ConfigurationTest, ExceptionForBadVic3Directory)
 }
 
 
+TEST(ConfigurationTest, ExceptionForMissingHoI4Directory)
+{
+   EXPECT_THROW(const auto _ =
+                    ConfigurationImporter{}.ImportConfiguration("test_files/configuration/missing_hoi4_directory.txt"),
+       std::runtime_error);
+}
+
+
 TEST(ConfigurationTest, ExceptionForBadHoI4Directory)
 {
    EXPECT_THROW(
-       const auto _ = ConfigurationImporter{}.ImportConfiguration("test_files/configuration/bad_vic3_directory.txt"),
+       const auto _ = ConfigurationImporter{}.ImportConfiguration("test_files/configuration/bad_hoi4_directory.txt"),
        std::runtime_error);
 }
 
