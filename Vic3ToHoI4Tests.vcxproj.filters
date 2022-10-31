@@ -55,6 +55,9 @@
     <Filter Include="src\vic3_world\states">
       <UniqueIdentifier>{869e88c1-1a7d-48f0-b591-12b1410be705}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\countries">
+      <UniqueIdentifier>{fdc024df-f739-43d4-97b3-0cc06cf05a42}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -141,6 +144,12 @@
     <ClCompile Include="src\vic3_world\states\states_importer_tests.cpp">
       <Filter>src\vic3_world\states</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\countries\country_importer.cpp">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\countries\country_importer_tests.cpp">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -214,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="src\vic3_world\states\states_importer.h">
       <Filter>src\vic3_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\countries\country.h">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\countries\country_importer.h">
+      <Filter>src\vic3_world\countries</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
