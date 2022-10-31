@@ -19,7 +19,7 @@ class CountryImporter
   public:
    CountryImporter();
 
-   Country ImportCountry(std::istream& input_stream);
+   [[nodiscard]] Country ImportCountry(std::istream& input_stream);
 
   private:
    commonItems::parser country_parser_;

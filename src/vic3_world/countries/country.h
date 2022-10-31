@@ -17,6 +17,8 @@ class Country
 
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
 
+   bool operator==(const Country&) const = default;
+
   private:
    std::string tag_;
 };
