@@ -52,6 +52,9 @@
     <Filter Include="external\zip\src">
       <UniqueIdentifier>{09f478ef-5b8d-4095-ae42-a503d1c763bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\states">
+      <UniqueIdentifier>{869e88c1-1a7d-48f0-b591-12b1410be705}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -126,6 +129,18 @@
     <ClCompile Include="src\vic3_world\world\vic3_world_importer_tests.cpp">
       <Filter>src\vic3_world\world</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\states\state_importer.cpp">
+      <Filter>src\vic3_world\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\states\state_importer_tests.cpp">
+      <Filter>src\vic3_world\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\states\states_importer.cpp">
+      <Filter>src\vic3_world\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\states\states_importer_tests.cpp">
+      <Filter>src\vic3_world\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -190,6 +205,15 @@
     </ClInclude>
     <ClInclude Include="external\zip\src\zip.h">
       <Filter>external\zip\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\states\state.h">
+      <Filter>src\vic3_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\states\state_importer.h">
+      <Filter>src\vic3_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\states\states_importer.h">
+      <Filter>src\vic3_world\states</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,10 +4,13 @@
 #include <fstream>
 #include <sstream>
 
+#include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/Log.h"
 #include "external/commonItems/Parser.h"
+#include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
 #include "external/zip/src/zip.h"
+#include "src/vic3_world/states/states_importer.h"
 
 
 namespace
@@ -64,7 +67,7 @@ std::string DecompressSave(std::istream& save)
 
    delete[] zipped_buffer;
 
-   Log(LogLevel::Info) << fmt::format("Unzipped save to {:L} bytes", unzipped_size);
+   Log(LogLevel::Info) << fmt::format("\tUnzipped save to {:L} bytes", unzipped_size);
    std::string unzipped_file(static_cast<char*>(unzipped_buffer), unzipped_size);
 
    free(unzipped_buffer);
@@ -106,7 +109,7 @@ std::istringstream ImportSave(std::string_view save_filename)
 }  // namespace
 
 
-void vic3::ImportWorld(std::string_view save_filename)
+vic3::World vic3::ImportWorld(std::string_view save_filename)
 {
    Log(LogLevel::Info) << "*** Hello Vic3, loading World. ***";
 
@@ -117,7 +120,19 @@ void vic3::ImportWorld(std::string_view save_filename)
    // MeltSave();
    Log(LogLevel::Progress) << "9 %";
 
+   Log(LogLevel::Info) << "-> Processing Vic3 save.";
+   std::map<int, State> states;
+   StatesImporter states_importer;
+
    commonItems::parser save_parser;
+   save_parser.registerKeyword("states", [&states, &states_importer](std::istream& input_stream) {
+      states = states_importer.ImportStates(input_stream);
+   });
+   save_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+
    save_parser.parseStream(save);
+   Log(LogLevel::Info) << fmt::format("\t{} states imported", states.size());
    Log(LogLevel::Progress) << "15 %";
+
+   return World(states);
 }

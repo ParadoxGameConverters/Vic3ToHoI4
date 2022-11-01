@@ -5,13 +5,15 @@
 
 #include <string_view>
 
+#include "src/vic3_world/world/vic3_world.h"
+
 
 
 namespace vic3
 {
 
 
-void ImportWorld(std::string_view save_filename);
+World ImportWorld(std::string_view save_filename);
 
 
 }  // namespace vic3

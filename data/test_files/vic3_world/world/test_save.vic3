@@ -1,0 +1,15 @@
+SAV0100b06f634d00000197
+states={
+	database = {
+0 = {
+	provinces={
+		provinces={ 1 2 }
+	}
+}
+1 = {
+	provinces={
+		provinces={ 10 2 }
+	}
+}
+	}
+}
