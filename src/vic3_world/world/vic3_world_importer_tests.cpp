@@ -1,5 +1,6 @@
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/vic3_world/countries/country.h"
 #include "src/vic3_world/world/vic3_world_importer.h"
 
 
@@ -43,6 +44,7 @@ TEST(Vic3WorldWorldVic3WorldImporter, DefaultsAreCorrect)
 {
    const auto world = ImportWorld("test_files/vic3_world/world/empty_save.vic3");
 
+   EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().empty());
 }
 
@@ -51,6 +53,8 @@ TEST(Vic3WorldWorldVic3WorldImporter, WorldCanBeImported)
 {
    const auto world = ImportWorld("test_files/vic3_world/world/test_save.vic3");
 
+   EXPECT_THAT(world.GetCountries(),
+       testing::UnorderedElementsAre(testing::Pair(1, Country("TAG")), testing::Pair(3, Country("TWO"))));
    EXPECT_THAT(world.GetStates(),
        testing::UnorderedElementsAre(testing::Pair(0, State({1, 2, 3})), testing::Pair(1, State({10, 11, 12}))));
 }

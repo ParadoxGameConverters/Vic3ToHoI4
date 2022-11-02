@@ -5,6 +5,7 @@
 
 #include <map>
 
+#include "src/vic3_world/countries/country.h"
 #include "src/vic3_world/states/state.h"
 
 
@@ -15,13 +16,18 @@ namespace vic3
 class World
 {
   public:
-   explicit World(std::map<int, State> states): states_(std::move(states)) {}
+   explicit World(std::map<int, Country> countries, std::map<int, State> states):
+       countries_(std::move(countries)),
+       states_(std::move(states))
+   {
+   }
 
-
+   [[nodiscard]] const auto& GetCountries() const { return countries_; }
    [[nodiscard]] const auto& GetStates() const { return states_; }
 
 
   private:
+   std::map<int, Country> countries_;
    std::map<int, State> states_;
 };
 

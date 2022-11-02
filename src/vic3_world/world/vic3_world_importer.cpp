@@ -10,6 +10,9 @@
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
 #include "external/zip/src/zip.h"
+#include "src/vic3_world/countries/countries_importer.h"
+#include "src/vic3_world/countries/country.h"
+#include "src/vic3_world/states/state.h"
 #include "src/vic3_world/states/states_importer.h"
 
 
@@ -123,16 +126,23 @@ vic3::World vic3::ImportWorld(std::string_view save_filename)
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
    std::map<int, State> states;
    StatesImporter states_importer;
+   std::map<int, Country> countries;
+   CountriesImporter countries_importer;
+
 
    commonItems::parser save_parser;
+   save_parser.registerKeyword("country_manager", [&countries, &countries_importer](std::istream& input_stream) {
+      countries = countries_importer.ImportCountries(input_stream);
+   });
    save_parser.registerKeyword("states", [&states, &states_importer](std::istream& input_stream) {
       states = states_importer.ImportStates(input_stream);
    });
    save_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
    save_parser.parseStream(save);
+   Log(LogLevel::Info) << fmt::format("\t{} countries imported", countries.size());
    Log(LogLevel::Info) << fmt::format("\t{} states imported", states.size());
    Log(LogLevel::Progress) << "15 %";
 
-   return World(states);
+   return World(countries, states);
 }
