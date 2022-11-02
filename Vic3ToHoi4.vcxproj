@@ -103,6 +103,7 @@
     <ClInclude Include="external\zip\src\zip.h" />
     <ClInclude Include="src\configuration\configuration.h" />
     <ClInclude Include="src\configuration\configuration_importer.h" />
+    <ClInclude Include="src\mappers\country\country_mapper.h" />
     <ClInclude Include="src\out_hoi4\out_mod.h" />
     <ClInclude Include="src\vic3_to_hoi4_converter.h" />
     <ClInclude Include="src\vic3_world\countries\countries_importer.h" />
