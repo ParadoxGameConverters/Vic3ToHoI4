@@ -16,7 +16,7 @@ class CountryMapper
    CountryMapper() = default;
 
    // a quick hack so that we're calling a component we'll use a lot later, but not spend much time developing it now
-   [[nodiscard]] static std::string GetHoiTag(std::string_view vic_tag) { return std::string(vic_tag); }
+   [[nodiscard]] std::string GetHoiTag(std::string_view vic_tag) const { return std::string(vic_tag); }
 };
 
 }  // namespace mappers

@@ -6,14 +6,14 @@
 
 
 
-namespace vic3
+namespace mappers
 {
 
 TEST(MappersCountryCountryMapper, SameTagIsReturned)
 {
-   mappers::CountryMapper country_mapper;
+   const CountryMapper country_mapper;
    EXPECT_EQ(country_mapper.GetHoiTag("TAG"), "TAG");
    EXPECT_EQ(country_mapper.GetHoiTag("TWO"), "TWO");
 }
 
-}  // namespace vic3
+}  // namespace mappers
