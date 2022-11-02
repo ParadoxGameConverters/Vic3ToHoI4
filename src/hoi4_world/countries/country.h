@@ -16,9 +16,12 @@ namespace hoi4
 class Country
 {
   public:
-   explicit Country(const vic3::Country& src_country, const mappers::CountryMapper& country_mapper);
+   explicit Country(std::string_view tag): tag_(tag) {}
+   Country(const vic3::Country& src_country, const mappers::CountryMapper& country_mapper);
 
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
+
+   bool operator==(const Country&) const = default;
 
   private:
    std::string tag_;
