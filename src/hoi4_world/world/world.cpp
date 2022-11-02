@@ -4,11 +4,11 @@
 
 
 
-hoi4::World::World(const vic3::World& src_world, const mappers::CountryMapper& country_mapper)
+hoi4::World::World(const vic3::World& source_world, const mappers::CountryMapper& country_mapper)
 {
-   for (const auto& src_country: src_world.GetCountries() | std::views::values)
+   for (const auto& source_country: source_world.GetCountries() | std::views::values)
    {
-      Country new_country(src_country, country_mapper);
+      Country new_country(source_country, country_mapper);
       countries_.emplace(new_country.GetTag(), new_country);
    }
 }

@@ -14,11 +14,11 @@ namespace hoi4
 TEST(Hoi4worldCountriesCountry, TagIsFromSourceCountry)
 {
    constexpr mappers::CountryMapper country_mapper;
-   const vic3::Country src_country("TAG");
-   const vic3::Country src_country_two("TWO");
+   const vic3::Country source_country("TAG");
+   const vic3::Country source_country_two("TWO");
 
-   const hoi4::Country country(src_country, country_mapper);
-   const hoi4::Country country_two(src_country_two, country_mapper);
+   const hoi4::Country country(source_country, country_mapper);
+   const hoi4::Country country_two(source_country_two, country_mapper);
 
    EXPECT_EQ(country.GetTag(), "TAG");
    EXPECT_EQ(country_two.GetTag(), "TWO");

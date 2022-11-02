@@ -16,9 +16,9 @@ namespace hoi4
 TEST(Hoi4worldWorldWorld, EmptyWorldIsEmpty)
 {
    constexpr mappers::CountryMapper country_mapper;
-   const vic3::World src_world({}, {});
+   const vic3::World source_world({}, {});
 
-   const World world(src_world, country_mapper);
+   const World world(source_world, country_mapper);
 
    EXPECT_TRUE(world.GetCountries().empty());
 }
@@ -27,12 +27,12 @@ TEST(Hoi4worldWorldWorld, EmptyWorldIsEmpty)
 TEST(Hoi4worldWorldWorld, CountriesAreConverted)
 {
    constexpr mappers::CountryMapper country_mapper;
-   const vic3::Country src_country("TAG");
-   const vic3::Country src_country_two("TWO");
+   const vic3::Country source_country("TAG");
+   const vic3::Country source_country_two("TWO");
 
-   const vic3::World src_world({{1, src_country}, {3, src_country_two}}, {});
+   const vic3::World source_world({{1, source_country}, {3, source_country_two}}, {});
 
-   const World world(src_world, country_mapper);
+   const World world(source_world, country_mapper);
 
    EXPECT_THAT(world.GetCountries(),
        testing::ElementsAre(testing::Pair("TAG", Country("TAG")), testing::Pair("TWO", Country("TWO"))));

@@ -2,7 +2,7 @@
 
 
 
-hoi4::Country::Country(const vic3::Country& src_country, const mappers::CountryMapper& country_mapper)
+hoi4::Country::Country(const vic3::Country& source_country, const mappers::CountryMapper& country_mapper)
 {
-   tag_ = country_mapper.GetHoiTag(src_country.GetTag());
+   tag_ = country_mapper.GetHoiTag(source_country.GetTag());
 }
