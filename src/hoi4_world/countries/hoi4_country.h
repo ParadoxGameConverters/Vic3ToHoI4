@@ -1,12 +1,12 @@
-#ifndef SRC_HOI4WORLD_COUNTRIES_COUNTRY_H
-#define SRC_HOI4WORLD_COUNTRIES_COUNTRY_H
+#ifndef SRC_HOI4WORLD_COUNTRIES_HOI4COUNTRY_H
+#define SRC_HOI4WORLD_COUNTRIES_HOI4COUNTRY_H
 
 
 
 #include <string>
 
 #include "src/mappers/country/country_mapper.h"
-#include "src/vic3_world/countries/country.h"
+#include "src/vic3_world/countries/vic3_country.h"
 
 
 
@@ -31,4 +31,4 @@ class Country
 
 
 
-#endif  // SRC_HOI4WORLD_COUNTRIES_COUNTRY_H
+#endif  // SRC_HOI4WORLD_COUNTRIES_HOI4COUNTRY_H

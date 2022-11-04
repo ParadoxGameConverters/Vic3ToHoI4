@@ -2,7 +2,7 @@
 
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
-#include "src/vic3_world/countries/country_importer.h"
+#include "src/vic3_world/countries/vic3_country_importer.h"
 
 
 

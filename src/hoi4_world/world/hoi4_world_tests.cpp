@@ -2,10 +2,10 @@
 
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
-#include "src/hoi4_world/countries/country.h"
-#include "src/hoi4_world/world/world.h"
+#include "src/hoi4_world/countries/hoi4_country.h"
+#include "src/hoi4_world/world/hoi4_world.h"
 #include "src/mappers/country/country_mapper.h"
-#include "src/vic3_world/countries/country.h"
+#include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/world/vic3_world.h"
 
 

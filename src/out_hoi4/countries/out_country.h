@@ -1,11 +1,11 @@
-#ifndef SRC_OUTHOI4_COUNTRIES_COUNTRY_H
-#define SRC_OUTHOI4_COUNTRIES_COUNTRY_H
+#ifndef SRC_OUTHOI4_COUNTRIES_OUTCOUNTRY_H
+#define SRC_OUTHOI4_COUNTRIES_OUTCOUNTRY_H
 
 
 
 #include <string_view>
 
-#include "src/hoi4_world/countries/country.h"
+#include "src/hoi4_world/countries/hoi4_country.h"
 
 
 
@@ -22,4 +22,4 @@ void OutputCountryHistory(std::string_view output_name, const hoi4::Country& cou
 
 
 
-#endif  // SRC_OUTHOI4_COUNTRIES_COUNTRY_H
+#endif  // SRC_OUTHOI4_COUNTRIES_OUTCOUNTRY_H

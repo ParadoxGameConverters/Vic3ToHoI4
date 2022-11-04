@@ -1,12 +1,12 @@
-#ifndef SRC_HOI4WORLD_WORLD_WORLD_H
-#define SRC_HOI4WORLD_WORLD_WORLD_H
+#ifndef SRC_HOI4WORLD_WORLD_HOI4WORLD_H
+#define SRC_HOI4WORLD_WORLD_HOI4WORLD_H
 
 
 
 #include <map>
 #include <string>
 
-#include "src/hoi4_world/countries/country.h"
+#include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/vic3_world/world/vic3_world.h"
 
@@ -29,4 +29,4 @@ class World
 
 
 
-#endif  // SRC_HOI4WORLD_WORLD_WORLD_H
+#endif  // SRC_HOI4WORLD_WORLD_HOI4WORLD_H

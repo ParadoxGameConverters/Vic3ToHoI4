@@ -1,5 +1,5 @@
-#ifndef SRC_VIC3WORLD_COUNTRIES_COUNTRYIMPORTER_H
-#define SRC_VIC3WORLD_COUNTRIES_COUNTRYIMPORTER_H
+#ifndef SRC_VIC3WORLD_COUNTRIES_VIC3COUNTRYIMPORTER_H
+#define SRC_VIC3WORLD_COUNTRIES_VIC3COUNTRYIMPORTER_H
 
 
 
@@ -7,7 +7,7 @@
 #include <string>
 
 #include "external/commonItems/Parser.h"
-#include "src/vic3_world/countries/country.h"
+#include "src/vic3_world/countries/vic3_country.h"
 
 
 
@@ -31,4 +31,4 @@ class CountryImporter
 
 
 
-#endif  // SRC_VIC3WORLD_COUNTRIES_COUNTRYIMPORTER_H
+#endif  // SRC_VIC3WORLD_COUNTRIES_VIC3COUNTRYIMPORTER_H

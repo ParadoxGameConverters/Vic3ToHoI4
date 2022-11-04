@@ -5,8 +5,8 @@
 
 #include <map>
 
-#include "src/vic3_world/countries/country.h"
-#include "src/vic3_world/states/state.h"
+#include "src/vic3_world/countries/vic3_country.h"
+#include "src/vic3_world/states/vic3_state.h"
 
 
 

@@ -1,7 +1,7 @@
 #include "vic3_to_hoi4_converter.h"
 
 #include "external/commonItems/Log.h"
-#include "src/hoi4_world/world/world.h"
+#include "src/hoi4_world/world/hoi4_world.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/out_hoi4/out_mod.h"
 #include "src/vic3_world/world/vic3_world.h"

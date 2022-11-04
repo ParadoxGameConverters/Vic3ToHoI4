@@ -10,10 +10,10 @@
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
 #include "external/zip/src/zip.h"
-#include "src/vic3_world/countries/countries_importer.h"
-#include "src/vic3_world/countries/country.h"
-#include "src/vic3_world/states/state.h"
-#include "src/vic3_world/states/states_importer.h"
+#include "src/vic3_world/countries/vic3_countries_importer.h"
+#include "src/vic3_world/countries/vic3_country.h"
+#include "src/vic3_world/states/vic3_state.h"
+#include "src/vic3_world/states/vic3_states_importer.h"
 
 
 namespace
