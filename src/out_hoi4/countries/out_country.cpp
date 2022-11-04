@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 
+#include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
 
 

@@ -23,25 +23,30 @@ void CreateOutputFolder(const std::string_view output_name)
    {
       throw std::runtime_error("Could not create output folder");
    }
-   if (!commonItems::CopyFolder("blank_mod", std::string("output/").append(output_name)))
+   if (!commonItems::CopyFolder("blank_mod", fmt::format("output/{}", output_name)))
    {
       throw std::runtime_error("Could not copy blank_mod");
    }
 
-   if (!commonItems::TryCreateFolder(std::string("output/").append(output_name).append("/common")))
+   if (!commonItems::TryCreateFolder(fmt::format("output/{}/common", output_name)))
    {
-      throw std::runtime_error(
-          fmt::format("Could not create {}", std::string("output/").append(output_name).append("/common")));
+      throw std::runtime_error(fmt::format("Could not create output/{}common", output_name));
    }
-   if (!commonItems::TryCreateFolder(std::string("output/").append(output_name).append("/common/countries")))
+   if (!commonItems::TryCreateFolder(fmt::format("output/{}/common/countries", output_name)))
    {
-      throw std::runtime_error(
-          fmt::format("Could not create {}", std::string("output/").append(output_name).append("/common/countries")));
+      throw std::runtime_error(fmt::format("Could not create output/{}/common/countries", output_name));
    }
-   if (!commonItems::TryCreateFolder(std::string("output/").append(output_name).append("/common/country_tags")))
+   if (!commonItems::TryCreateFolder(fmt::format("output/{}/common/country_tags", output_name)))
    {
-      throw std::runtime_error(fmt::format("Could not create {}",
-          std::string("output/").append(output_name).append("/common/country_tags")));
+      throw std::runtime_error(fmt::format("Could not create output/{}/common/country_tags", output_name));
+   }
+   if (!commonItems::TryCreateFolder(fmt::format("output/{}/history", output_name)))
+   {
+      throw std::runtime_error(fmt::format("Could not create output/{}/history", output_name));
+   }
+   if (!commonItems::TryCreateFolder(fmt::format("output/{}/history/countries", output_name)))
+   {
+      throw std::runtime_error(fmt::format("Could not create output/{}/history/countries", output_name));
    }
 }
 

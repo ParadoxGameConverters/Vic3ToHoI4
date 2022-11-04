@@ -1,3 +1,4 @@
+#include <filesystem>
 #include <fstream>
 #include <sstream>
 
@@ -7,6 +8,7 @@
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/out_hoi4/countries/out_country.h"
+#include "src/out_hoi4/out_mod.h"
 
 
 
@@ -15,14 +17,19 @@ namespace out
 
 TEST(Outhoi4CountriesCountry, CountriesFileIsCreated)
 {
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/CountriesFileIsCreated");
+   commonItems::TryCreateFolder("output/CountriesFileIsCreated/common");
+   commonItems::TryCreateFolder("output/CountriesFileIsCreated/common/countries");
+
    const hoi4::Country country("TAG");
    const hoi4::Country country_two("TWO");
 
-   OutputCommonCountriesFile("Outhoi4CountriesCountry/CountriesFileIsCreated", country);
-   OutputCommonCountriesFile("Outhoi4CountriesCountry/CountriesFileIsCreated", country_two);
+   OutputCommonCountriesFile("CountriesFileIsCreated", country);
+   OutputCommonCountriesFile("CountriesFileIsCreated", country_two);
 
-   ASSERT_TRUE(commonItems::DoesFileExist("Outhoi4CountriesCountry/CountriesFileIsCreated/TAG.txt"));
-   std::ifstream country_file("Outhoi4CountriesCountry/CountriesFileIsCreated/TAG.txt");
+   ASSERT_TRUE(commonItems::DoesFileExist("output/CountriesFileIsCreated/common/countries/TAG.txt"));
+   std::ifstream country_file("output/CountriesFileIsCreated/common/countries/TAG.txt");
    ASSERT_TRUE(country_file.is_open());
    std::stringstream country_file_stream;
    std::copy(std::istreambuf_iterator<char>(country_file),
@@ -31,8 +38,8 @@ TEST(Outhoi4CountriesCountry, CountriesFileIsCreated)
    country_file.close();
    EXPECT_EQ(country_file_stream.str(), "");
 
-   ASSERT_TRUE(commonItems::DoesFileExist("Outhoi4CountriesCountry/CountriesFileIsCreated/TWO.txt"));
-   std::ifstream country_file_two("Outhoi4CountriesCountry/CountriesFileIsCreated/TWO.txt");
+   ASSERT_TRUE(commonItems::DoesFileExist("output/CountriesFileIsCreated/common/countries/TWO.txt"));
+   std::ifstream country_file_two("output/CountriesFileIsCreated/common/countries/TWO.txt");
    ASSERT_TRUE(country_file_two.is_open());
    std::stringstream country_file_two_stream;
    std::copy(std::istreambuf_iterator<char>(country_file_two),
@@ -48,7 +55,7 @@ TEST(Outhoi4CountriesCountry, TagIsAddedToTagsFile)
    const hoi4::Country country("TAG");
    const hoi4::Country country_two("TWO");
 
-   std::ofstream tags_file("Outhoi4CountriesCountry/TagIsAddedToTagsFile/tags_file.txt");
+   std::ofstream tags_file("tags_file.txt");
    ASSERT_TRUE(tags_file.is_open());
 
    OutputCommonCountryTag(country, tags_file);
@@ -56,7 +63,7 @@ TEST(Outhoi4CountriesCountry, TagIsAddedToTagsFile)
 
    tags_file.close();
 
-   std::ifstream country_file("Outhoi4CountriesCountry/TagIsAddedToTagsFile/tags_file.txt");
+   std::ifstream country_file("tags_file.txt");
    ASSERT_TRUE(country_file.is_open());
    std::stringstream country_file_stream;
    std::copy(std::istreambuf_iterator<char>(country_file),
@@ -71,14 +78,19 @@ TEST(Outhoi4CountriesCountry, TagIsAddedToTagsFile)
 
 TEST(Outhoi4CountriesCountry, CountryHistoryFileIsCreated)
 {
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/CountryHistoryFileIsCreated");
+   commonItems::TryCreateFolder("output/CountryHistoryFileIsCreated/history");
+   commonItems::TryCreateFolder("output/CountryHistoryFileIsCreated/history/countries");
+
    const hoi4::Country country("TAG");
    const hoi4::Country country_two("TWO");
 
-   OutputCommonCountriesFile("Outhoi4CountriesCountry/CountryHistoryFileIsCreated", country);
-   OutputCommonCountriesFile("Outhoi4CountriesCountry/CountryHistoryFileIsCreated", country_two);
+   OutputCountryHistory("CountryHistoryFileIsCreated", country);
+   OutputCountryHistory("CountryHistoryFileIsCreated", country_two);
 
-   ASSERT_TRUE(commonItems::DoesFileExist("Outhoi4CountriesCountry/CountryHistoryFileIsCreated/TAG.txt"));
-   std::ifstream country_file("Outhoi4CountriesCountry/CountryHistoryFileIsCreated/TAG.txt");
+   ASSERT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFileIsCreated/history/countries/TAG.txt"));
+   std::ifstream country_file("output/CountryHistoryFileIsCreated/history/countries/TAG.txt");
    ASSERT_TRUE(country_file.is_open());
    std::stringstream country_file_stream;
    std::copy(std::istreambuf_iterator<char>(country_file),
@@ -87,8 +99,8 @@ TEST(Outhoi4CountriesCountry, CountryHistoryFileIsCreated)
    country_file.close();
    EXPECT_EQ(country_file_stream.str(), "");
 
-   ASSERT_TRUE(commonItems::DoesFileExist("Outhoi4CountriesCountry/CountryHistoryFileIsCreated/TWO.txt"));
-   std::ifstream country_file_two("Outhoi4CountriesCountry/CountryHistoryFileIsCreated/TWO.txt");
+   ASSERT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFileIsCreated/history/countries/TWO.txt"));
+   std::ifstream country_file_two("output/CountryHistoryFileIsCreated/history/countries/TWO.txt");
    ASSERT_TRUE(country_file_two.is_open());
    std::stringstream country_file_two_stream;
    std::copy(std::istreambuf_iterator<char>(country_file_two),
