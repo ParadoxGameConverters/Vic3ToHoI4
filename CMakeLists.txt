@@ -33,6 +33,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/configuration/configuration_impo
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/countries/country.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/world/world.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/out_mod.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/countries/country.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/countries/countries_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/countries/country_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/states/state_importer.cpp")
@@ -93,6 +94,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/countries/country_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/world/world_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/country/country_mapper_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/out_mod_test.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/country_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/countries/countries_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/countries/country_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/state_importer_tests.cpp")
@@ -137,6 +139,7 @@ add_custom_command(TARGET gcov
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/hoi4_world/world/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/hoi4_world/world
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/mappers/country/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/mappers/country
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/country/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4/country
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_world/countries/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/vic3_world/countries
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_world/states/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/vic3_world/states
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_world/world/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/vic3_world/world

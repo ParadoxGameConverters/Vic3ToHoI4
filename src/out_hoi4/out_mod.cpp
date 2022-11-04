@@ -27,6 +27,17 @@ void CreateOutputFolder(const std::string_view output_name)
    {
       throw std::runtime_error("Could not copy blank_mod");
    }
+
+   if (!commonItems::TryCreateFolder(std::string("output/").append(output_name).append("/common/countries")))
+   {
+      throw std::runtime_error(
+          fmt::format("Could not create {}", std::string("output/").append(output_name).append("/common/countries")));
+   }
+   if (!commonItems::TryCreateFolder(std::string("output/").append(output_name).append("/common/country_tags")))
+   {
+      throw std::runtime_error(fmt::format("Could not create {}",
+          std::string("output/").append(output_name).append("/common/country_tags")));
+   }
 }
 
 

@@ -78,6 +78,8 @@
     <ClCompile Include="src\hoi4_world\world\world.cpp" />
     <ClCompile Include="src\hoi4_world\world\world_tests.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\countries\country.cpp" />
+    <ClCompile Include="src\out_hoi4\countries\country_tests.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp" />
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp" />
@@ -114,6 +116,7 @@
     <ClInclude Include="src\hoi4_world\countries\country.h" />
     <ClInclude Include="src\hoi4_world\world\world.h" />
     <ClInclude Include="src\mappers\country\country_mapper.h" />
+    <ClInclude Include="src\out_hoi4\countries\country.h" />
     <ClInclude Include="src\out_hoi4\out_mod.h" />
     <ClInclude Include="src\vic3_to_hoi4_converter.h" />
     <ClInclude Include="src\vic3_world\countries\countries_importer.h" />

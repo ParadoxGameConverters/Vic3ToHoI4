@@ -73,6 +73,12 @@
     <Filter Include="src\hoi4_world\world">
       <UniqueIdentifier>{777da70a-d611-4d84-aff2-9a91e187348f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\out_hoi4\countries">
+      <UniqueIdentifier>{c0a961b6-7dd6-4ee9-b313-97bc1060ae4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\world">
+      <UniqueIdentifier>{d6851ddd-dd96-4032-840b-1ee8b4843fe9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -186,6 +192,12 @@
     <ClCompile Include="src\hoi4_world\world\world.cpp">
       <Filter>src\hoi4_world\world</Filter>
     </ClCompile>
+    <ClCompile Include="src\out_hoi4\countries\country.cpp">
+      <Filter>src\out_hoi4\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\countries\country_tests.cpp">
+      <Filter>src\out_hoi4\countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -277,6 +289,9 @@
     </ClInclude>
     <ClInclude Include="src\hoi4_world\world\world.h">
       <Filter>src\hoi4_world\world</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\countries\country.h">
+      <Filter>src\out_hoi4\countries</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
