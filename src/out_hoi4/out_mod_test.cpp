@@ -65,11 +65,14 @@ TEST(OutHoi4OutModTest, FolderIsNotLoggedWhenNotCleared)
 
 TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
 {
+   out::ClearOutputFolder("status_test_output");
+   std::filesystem::remove("output/status_test_output.mod");
+
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   out::Output("test_output", GameVersion());
+   out::Output("status_test_output", GameVersion());
 
    EXPECT_EQ(log.str(),
        fmt::format("[PROGRESS] 80%\n"
@@ -79,29 +82,28 @@ TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
                    "[PROGRESS] 85%\n"));
 
    std::cout.rdbuf(cout_buffer);
-   out::ClearOutputFolder("test_output");
-   std::filesystem::remove("output/test_output.mod");
 }
 
 
 TEST(OutHoi4OutModTest, ModFolderIsCreated)
 {
-   out::Output("test_output", GameVersion());
+   out::ClearOutputFolder("mod_folder_test_output");
+   std::filesystem::remove("output/mod_folder_test_output.mod");
+   out::Output("mod_folder_test_output", GameVersion());
 
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/test_output"));
-
-   out::ClearOutputFolder("test_output");
-   std::filesystem::remove("output/test_output.mod");
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/mod_folder_test_output"));
 }
 
 
 TEST(OutHoi4OutModTest, ModFileIsCreated)
 {
-   out::Output("test_output", GameVersion());
+   out::ClearOutputFolder("mod_file_test_output");
+   std::filesystem::remove("output/mod_file_test_output.mod");
+   out::Output("mod_file_test_output", GameVersion());
 
-   ASSERT_TRUE(commonItems::DoesFolderExist("output/test_output"));
+   ASSERT_TRUE(commonItems::DoesFolderExist("output/mod_file_test_output"));
 
-   std::ifstream mod_file("output/test_output.mod");
+   std::ifstream mod_file("output/mod_file_test_output.mod");
    ASSERT_TRUE(mod_file.is_open());
    std::stringstream mod_file_stream;
    std::copy(std::istreambuf_iterator<char>(mod_file),
@@ -110,26 +112,25 @@ TEST(OutHoi4OutModTest, ModFileIsCreated)
    mod_file.close();
 
    EXPECT_EQ(mod_file_stream.str(),
-       fmt::format("name = \"Converted - test_output\"\n"
-                   "path = \"mod/test_output/\"\n"
-                   "user_dir = \"test_output_user_dir\"\n"
+       fmt::format("name = \"Converted - mod_file_test_output\"\n"
+                   "path = \"mod/mod_file_test_output/\"\n"
+                   "user_dir = \"mod_file_test_output_user_dir\"\n"
                    "replace_path=\"common/ideologies\"\n"
                    "replace_path=\"history/countries\"\n"
                    "replace_path=\"history/states\"\n"
                    "supported_version=\"*\""));
-
-   out::ClearOutputFolder("test_output");
-   std::filesystem::remove("output/test_output.mod");
 }
 
 
 TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
 {
-   out::Output("test_output", GameVersion());
+   out::ClearOutputFolder("descriptor_file_test_output");
+   std::filesystem::remove("output/descriptor_file_test_output.mod");
+   out::Output("descriptor_file_test_output", GameVersion());
 
-   ASSERT_TRUE(commonItems::DoesFolderExist("output/test_output"));
+   ASSERT_TRUE(commonItems::DoesFolderExist("output/descriptor_file_test_output"));
 
-   std::ifstream descriptor_file("output/test_output.mod");
+   std::ifstream descriptor_file("output/descriptor_file_test_output.mod");
    ASSERT_TRUE(descriptor_file.is_open());
    std::stringstream descriptor_file_stream;
    std::copy(std::istreambuf_iterator<char>(descriptor_file),
@@ -138,26 +139,25 @@ TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
    descriptor_file.close();
 
    EXPECT_EQ(descriptor_file_stream.str(),
-       fmt::format("name = \"Converted - test_output\"\n"
-                   "path = \"mod/test_output/\"\n"
-                   "user_dir = \"test_output_user_dir\"\n"
+       fmt::format("name = \"Converted - descriptor_file_test_output\"\n"
+                   "path = \"mod/descriptor_file_test_output/\"\n"
+                   "user_dir = \"descriptor_file_test_output_user_dir\"\n"
                    "replace_path=\"common/ideologies\"\n"
                    "replace_path=\"history/countries\"\n"
                    "replace_path=\"history/states\"\n"
                    "supported_version=\"*\""));
-
-   out::ClearOutputFolder("test_output");
-   std::filesystem::remove("output/test_output.mod");
 }
 
 
 TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
 {
-   out::Output("test_output", GameVersion("42.13"));
+   out::ClearOutputFolder("version_test_output");
+   std::filesystem::remove("output/version_test_output.mod");
+   out::Output("version_test_output", GameVersion("42.13"));
 
-   ASSERT_TRUE(commonItems::DoesFolderExist("output/test_output"));
+   ASSERT_TRUE(commonItems::DoesFolderExist("output/version_test_output"));
 
-   std::ifstream mod_file("output/test_output.mod");
+   std::ifstream mod_file("output/version_test_output.mod");
    ASSERT_TRUE(mod_file.is_open());
    std::stringstream mod_file_stream;
    std::copy(std::istreambuf_iterator<char>(mod_file),
@@ -166,15 +166,15 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
    mod_file.close();
 
    EXPECT_EQ(mod_file_stream.str(),
-       fmt::format("name = \"Converted - test_output\"\n"
-                   "path = \"mod/test_output/\"\n"
-                   "user_dir = \"test_output_user_dir\"\n"
+       fmt::format("name = \"Converted - version_test_output\"\n"
+                   "path = \"mod/version_test_output/\"\n"
+                   "user_dir = \"version_test_output_user_dir\"\n"
                    "replace_path=\"common/ideologies\"\n"
                    "replace_path=\"history/countries\"\n"
                    "replace_path=\"history/states\"\n"
                    "supported_version=\"42.13.*\""));
 
-   std::ifstream descriptor_file("output/test_output.mod");
+   std::ifstream descriptor_file("output/version_test_output.mod");
    ASSERT_TRUE(descriptor_file.is_open());
    std::stringstream descriptor_file_stream;
    std::copy(std::istreambuf_iterator<char>(descriptor_file),
@@ -183,14 +183,11 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
    descriptor_file.close();
 
    EXPECT_EQ(descriptor_file_stream.str(),
-       fmt::format("name = \"Converted - test_output\"\n"
-                   "path = \"mod/test_output/\"\n"
-                   "user_dir = \"test_output_user_dir\"\n"
+       fmt::format("name = \"Converted - version_test_output\"\n"
+                   "path = \"mod/version_test_output/\"\n"
+                   "user_dir = \"version_test_output_user_dir\"\n"
                    "replace_path=\"common/ideologies\"\n"
                    "replace_path=\"history/countries\"\n"
                    "replace_path=\"history/states\"\n"
                    "supported_version=\"42.13.*\""));
-
-   out::ClearOutputFolder("test_output");
-   std::filesystem::remove("output/test_output.mod");
 }
