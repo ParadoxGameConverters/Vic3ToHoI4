@@ -15,7 +15,7 @@ void out::OutputCommonCountriesFile(std::string_view output_name, const hoi4::Co
    std::ofstream common_country(fmt::format("output/{}/common/countries/{}.txt", output_name, tag));
    if (!common_country.is_open())
    {
-      throw std::runtime_error(fmt::format("output/{}/common/countries/{}.txt", output_name, tag));
+      throw std::runtime_error(fmt::format("Could not create output/{}/common/countries/{}.txt", output_name, tag));
    }
    common_country.close();
 }
@@ -34,7 +34,7 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    std::ofstream country_history(fmt::format("output/{}/history/countries/{}.txt", output_name, tag));
    if (!country_history.is_open())
    {
-      throw std::runtime_error(fmt::format("output/{}/history/countries/{}.txt", output_name, tag));
+      throw std::runtime_error(fmt::format("Could not create output/{}/history/countries/{}.txt", output_name, tag));
    }
    country_history.close();
 }

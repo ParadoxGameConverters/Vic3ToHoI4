@@ -50,6 +50,14 @@ TEST(Outhoi4CountriesCountry, CountriesFileIsCreated)
 }
 
 
+TEST(Outhoi4CountriesCountry, ExceptionIfCountriesFileNotOpened)
+{
+   const hoi4::Country country("TAG");
+
+   EXPECT_THROW(OutputCommonCountriesFile("/dev/null/COM", country), std::runtime_error);
+}
+
+
 TEST(Outhoi4CountriesCountry, TagIsAddedToTagsFile)
 {
    const hoi4::Country country("TAG");
@@ -108,6 +116,14 @@ TEST(Outhoi4CountriesCountry, CountryHistoryFileIsCreated)
        std::ostreambuf_iterator<char>(country_file_two_stream));
    country_file_two.close();
    EXPECT_EQ(country_file_two_stream.str(), "");
+}
+
+
+TEST(Outhoi4CountriesCountry, ExceptionIfHistoryFileNotOpened)
+{
+   const hoi4::Country country("TAG");
+
+   EXPECT_THROW(OutputCountryHistory("/dev/null/COM", country), std::runtime_error);
 }
 
 }  // namespace out
