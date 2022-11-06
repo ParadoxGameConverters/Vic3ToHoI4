@@ -60,7 +60,8 @@ jobs:
 
     - name: Build solution
       run: |
-       cmake -H. -Bbuild && cmake --build ./build -- -j40
+       chmod u+x tools/build_vic3_to_hoi4.sh
+       tools/build_vic3_to_hoi4.sh
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
