@@ -17,8 +17,8 @@ TEST(Hoi4worldCountriesCountry, TagIsFromSourceCountry)
    const vic3::Country source_country("TAG");
    const vic3::Country source_country_two("TWO");
 
-   const hoi4::Country country(source_country, country_mapper);
-   const hoi4::Country country_two(source_country_two, country_mapper);
+   const Country country(source_country, country_mapper);
+   const Country country_two(source_country_two, country_mapper);
 
    EXPECT_EQ(country.GetTag(), "TAG");
    EXPECT_EQ(country_two.GetTag(), "TWO");

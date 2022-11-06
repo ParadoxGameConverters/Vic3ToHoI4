@@ -29,7 +29,7 @@ void out::OutputCommonCountryTag(const hoi4::Country& country, std::ofstream& ta
 
 void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country& country)
 {
-   const std::string tag = country.GetTag();
+   const std::string& tag = country.GetTag();
 
    std::ofstream country_history(fmt::format("output/{}/history/countries/{}.txt", output_name, tag));
    if (!country_history.is_open())

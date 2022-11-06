@@ -14,7 +14,7 @@ namespace out
 
 void OutputWorld(std::string_view output_name, const hoi4::World& world);
 
-}
+}  // namespace out
 
 
 
