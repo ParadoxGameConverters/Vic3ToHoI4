@@ -19,6 +19,8 @@ class World
 {
   public:
    explicit World(const vic3::World& source_world, const mappers::CountryMapper& country_mapper);
+   explicit World(std::map<std::string, Country> countries): countries_(std::move(countries)) {}
+
    [[nodiscard]] const std::map<std::string, Country>& GetCountries() const { return countries_; }
 
   private:
