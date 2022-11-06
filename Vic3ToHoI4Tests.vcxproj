@@ -51,6 +51,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)$(Platform)\$(Configuration)\ZipLib.lib;$(SolutionDir)$(Platform)\$(Configuration)\bzip2.lib;$(SolutionDir)$(Platform)\$(Configuration)\lzma.lib;$(SolutionDir)$(Platform)\$(Configuration)\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -60,6 +61,9 @@
     <ClCompile Include="external\commonItems\GameVersion.cpp" />
     <ClCompile Include="external\commonItems\iconvlite.cpp" />
     <ClCompile Include="external\commonItems\Log.cpp" />
+    <ClCompile Include="external\commonItems\ModLoader\ModFilesystem.cpp" />
+    <ClCompile Include="external\commonItems\ModLoader\ModLoader.cpp" />
+    <ClCompile Include="external\commonItems\ModLoader\ModParser.cpp" />
     <ClCompile Include="external\commonItems\OSCommonLayer.cpp" />
     <ClCompile Include="external\commonItems\Parser.cpp" />
     <ClCompile Include="external\commonItems\ParserHelpers.cpp" />
@@ -104,6 +108,10 @@
     <ClInclude Include="external\commonItems\GameVersion.h" />
     <ClInclude Include="external\commonItems\iconvlite.h" />
     <ClInclude Include="external\commonItems\Log.h" />
+    <ClInclude Include="external\commonItems\ModLoader\Mod.h" />
+    <ClInclude Include="external\commonItems\ModLoader\ModFilesystem.h" />
+    <ClInclude Include="external\commonItems\ModLoader\ModLoader.h" />
+    <ClInclude Include="external\commonItems\ModLoader\ModParser.h" />
     <ClInclude Include="external\commonItems\OSCompatibilityLayer.h" />
     <ClInclude Include="external\commonItems\Parser.h" />
     <ClInclude Include="external\commonItems\ParserHelpers.h" />
