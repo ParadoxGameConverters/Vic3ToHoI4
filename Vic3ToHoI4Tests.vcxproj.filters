@@ -204,6 +204,9 @@
     <ClCompile Include="src\out_hoi4\countries\out_countries_tests.cpp">
       <Filter>src\out_hoi4\countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\out_hoi4\world\out_world.cpp">
+      <Filter>src\out_hoi4\world</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -301,6 +304,9 @@
     </ClInclude>
     <ClInclude Include="src\out_hoi4\countries\out_countries.h">
       <Filter>src\out_hoi4\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\world\out_world.h">
+      <Filter>src\out_hoi4\world</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

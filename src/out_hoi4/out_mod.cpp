@@ -109,7 +109,7 @@ void ClearOutputFolder(std::string_view output_name)
 }
 
 
-void Output(const std::string_view output_name, const GameVersion& game_version)
+void OutputMod(const std::string_view output_name, const GameVersion& game_version)
 {
    Log(LogLevel::Progress) << "80%";
    Log(LogLevel::Info) << "Outputting mod";

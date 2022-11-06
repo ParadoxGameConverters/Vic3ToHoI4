@@ -72,7 +72,7 @@ TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   out::Output("status_test_output", GameVersion());
+   out::OutputMod("status_test_output", GameVersion());
 
    EXPECT_EQ(log.str(),
        fmt::format("[PROGRESS] 80%\n"
@@ -89,7 +89,7 @@ TEST(OutHoi4OutModTest, ModFolderIsCreated)
 {
    out::ClearOutputFolder("mod_folder_test_output");
    std::filesystem::remove("output/mod_folder_test_output.mod");
-   out::Output("mod_folder_test_output", GameVersion());
+   out::OutputMod("mod_folder_test_output", GameVersion());
 
    EXPECT_TRUE(commonItems::DoesFolderExist("output/mod_folder_test_output"));
 }
@@ -99,7 +99,7 @@ TEST(OutHoi4OutModTest, ModFileIsCreated)
 {
    out::ClearOutputFolder("mod_file_test_output");
    std::filesystem::remove("output/mod_file_test_output.mod");
-   out::Output("mod_file_test_output", GameVersion());
+   out::OutputMod("mod_file_test_output", GameVersion());
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/mod_file_test_output"));
 
@@ -126,7 +126,7 @@ TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
 {
    out::ClearOutputFolder("descriptor_file_test_output");
    std::filesystem::remove("output/descriptor_file_test_output.mod");
-   out::Output("descriptor_file_test_output", GameVersion());
+   out::OutputMod("descriptor_file_test_output", GameVersion());
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/descriptor_file_test_output"));
 
@@ -153,7 +153,7 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
 {
    out::ClearOutputFolder("version_test_output");
    std::filesystem::remove("output/version_test_output.mod");
-   out::Output("version_test_output", GameVersion("42.13"));
+   out::OutputMod("version_test_output", GameVersion("42.13"));
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/version_test_output"));
 
