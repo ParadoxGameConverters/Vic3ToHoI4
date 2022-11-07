@@ -37,12 +37,6 @@
     <Filter Include="src\vic3_world\world">
       <UniqueIdentifier>{ed3aad4a-ef6b-4766-bce7-2fa6733d9ac7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\zip">
-      <UniqueIdentifier>{f1c78b2f-89cb-4462-bf0f-bb1a3ffd1470}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\zip\src">
-      <UniqueIdentifier>{2b09825b-24f7-4ffc-a2df-01d8d4bd7fab}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\vic3_world\states">
       <UniqueIdentifier>{eb5c7333-d885-4832-b5a4-e678963fcff8}</UniqueIdentifier>
     </Filter>
@@ -137,9 +131,6 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\world\vic3_world_importer.cpp">
       <Filter>src\vic3_world\world</Filter>
-    </ClCompile>
-    <ClCompile Include="external\zip\src\zip.c">
-      <Filter>external\zip\src</Filter>
     </ClCompile>
     <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp">
       <Filter>src\hoi4_world\countries</Filter>
@@ -253,12 +244,6 @@
     </ClInclude>
     <ClInclude Include="src\vic3_world\world\vic3_world_importer.h">
       <Filter>src\vic3_world\world</Filter>
-    </ClInclude>
-    <ClInclude Include="external\zip\src\miniz.h">
-      <Filter>external\zip\src</Filter>
-    </ClInclude>
-    <ClInclude Include="external\zip\src\zip.h">
-      <Filter>external\zip\src</Filter>
     </ClInclude>
     <ClInclude Include="src\vic3_world\world\vic3_world.h">
       <Filter>src\vic3_world\world</Filter>
