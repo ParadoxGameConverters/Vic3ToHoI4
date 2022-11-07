@@ -17,7 +17,7 @@ namespace vic3
 class CountryImporter
 {
   public:
-   CountryImporter();
+   explicit CountryImporter(bool debug);
 
    [[nodiscard]] Country ImportCountry(std::istream& input_stream);
 

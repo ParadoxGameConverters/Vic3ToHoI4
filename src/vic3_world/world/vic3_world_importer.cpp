@@ -41,7 +41,7 @@ std::istringstream MeltSave(std::string_view save_filename)
 }  // namespace
 
 
-vic3::World vic3::ImportWorld(std::string_view save_filename, const commonItems::ModFilesystem& mod_filesystem)
+vic3::World vic3::ImportWorld(std::string_view save_filename, const commonItems::ModFilesystem& mod_filesystem, bool debug)
 {
    Log(LogLevel::Info) << "*** Hello Vic3, loading World. ***";
 
@@ -55,9 +55,9 @@ vic3::World vic3::ImportWorld(std::string_view save_filename, const commonItems:
 
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
    std::map<int, State> states;
-   StatesImporter states_importer;
+   StatesImporter states_importer(debug);
    std::map<int, Country> countries;
-   CountriesImporter countries_importer;
+   CountriesImporter countries_importer(debug);
 
 
    commonItems::parser save_parser;
@@ -69,7 +69,14 @@ vic3::World vic3::ImportWorld(std::string_view save_filename, const commonItems:
    });
    save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {
    });
-   save_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
+   if (debug)
+   {
+      save_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
+   }
+   else
+   {
+      save_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+   }
 
    save_parser.parseStream(save);
    Log(LogLevel::Info) << fmt::format("\t{} countries imported", countries.size());

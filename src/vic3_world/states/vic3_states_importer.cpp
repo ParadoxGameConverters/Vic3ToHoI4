@@ -5,12 +5,19 @@
 
 
 
-vic3::StatesImporter::StatesImporter()
+vic3::StatesImporter::StatesImporter(bool debug): state_importer_(debug)
 {
    states_parser_.registerKeyword("database", [this](std::istream& input_stream) {
       database_parser_.parseStream(input_stream);
    });
-   states_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+   if (debug)
+   {
+      states_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
+   }
+   else
+   {
+      states_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+   }
 
    database_parser_.registerRegex(commonItems::integerRegex,
        [this](const std::string& number_string, std::istream& input_stream) {

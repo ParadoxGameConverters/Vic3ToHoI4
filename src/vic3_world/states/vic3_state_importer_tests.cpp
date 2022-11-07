@@ -12,7 +12,7 @@ namespace vic3
 TEST(Vic3WorldStateVic3StateImporter, DefaultsAreDefaulted)
 {
    std::stringstream input;
-   const auto state = StateImporter{}.ImportState(input);
+   const auto state = StateImporter(false).ImportState(input);
 
    EXPECT_TRUE(state.GetProvinces().empty());
 }
@@ -27,7 +27,7 @@ TEST(Vic3WorldStateVic3StateImporter, ExceptionWhenProvinceHasOddNumber)
    input << "\t}";
    input << "}";
 
-   EXPECT_THROW(const auto _ = StateImporter{}.ImportState(input), std::runtime_error);
+   EXPECT_THROW(const auto _ = StateImporter(false).ImportState(input), std::runtime_error);
 }
 
 
@@ -39,7 +39,7 @@ TEST(Vic3WorldStateVic3StateImporter, ItemsCanBeInput)
    input << "\t\tprovinces = { 37330 1 37333 9 37348 1 }\n";
    input << "\t}";
    input << "}";
-   const auto state = StateImporter{}.ImportState(input);
+   const auto state = StateImporter(false).ImportState(input);
 
    EXPECT_THAT(state.GetProvinces(),
        testing::UnorderedElementsAre(37330,
@@ -61,16 +61,18 @@ TEST(Vic3WorldStateVic3StateImporter, ItemsCanBeInput)
 
 TEST(Vic3WorldStateVic3StateImporter, MultipleStatesCanBeInput)
 {
+   StateImporter state_importer(false);
+
    std::stringstream input_one;
    input_one << "={\n";
    input_one << "\tprovinces={\n";
    input_one << "\t\tprovinces = { 37330 1 37333 9 37348 1 }\n";
    input_one << "\t}";
    input_one << "}";
-   const auto state_one = StateImporter{}.ImportState(input_one);
+   const auto state_one = state_importer.ImportState(input_one);
 
    std::stringstream input_two;
-   const auto state_two = StateImporter{}.ImportState(input_two);
+   const auto state_two = state_importer.ImportState(input_two);
 
    EXPECT_THAT(state_one.GetProvinces(),
        testing::UnorderedElementsAre(37330,

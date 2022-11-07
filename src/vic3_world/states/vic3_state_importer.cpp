@@ -5,12 +5,19 @@
 
 
 
-vic3::StateImporter::StateImporter()
+vic3::StateImporter::StateImporter(bool debug)
 {
    state_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
       provinces_parser_.parseStream(input_stream);
    });
-   state_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+   if (debug)
+   {
+      state_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
+   }
+   else
+   {
+      state_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+   }
 
    provinces_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
       const auto provinces_input = commonItems::getInts(input_stream);

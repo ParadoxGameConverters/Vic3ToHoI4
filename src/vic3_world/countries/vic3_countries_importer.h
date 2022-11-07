@@ -18,7 +18,7 @@ namespace vic3
 class CountriesImporter
 {
   public:
-   CountriesImporter();
+   explicit CountriesImporter(bool debug);
 
    [[nodiscard]] std::map<int, Country> ImportCountries(std::istream& input_stream);
 

@@ -16,7 +16,7 @@
 void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const GameVersion& game_version)
 {
    commonItems::ModFilesystem vic3_mod_filesystem(configuration.vic3_directory, {});
-   const auto source_world = vic3::ImportWorld(configuration.save_game, vic3_mod_filesystem);
+   const auto source_world = vic3::ImportWorld(configuration.save_game, vic3_mod_filesystem, configuration.debug);
 
    commonItems::ModFilesystem hoi4_mod_filesystem(configuration.hoi4_directory, {});
 

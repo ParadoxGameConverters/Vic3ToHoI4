@@ -12,7 +12,7 @@ namespace vic3
 TEST(Vic3WorldStateVic3CountriesImporter, NoCountriesByDefault)
 {
    std::stringstream input;
-   const auto countries = CountriesImporter{}.ImportCountries(input);
+   const auto countries = CountriesImporter(false).ImportCountries(input);
 
    EXPECT_TRUE(countries.empty());
 }
@@ -30,7 +30,7 @@ TEST(Vic3WorldStateVic3CountriesImporter, CountriesCanBeImported)
    input << "\tdefinition=\"TWO\"\n";
    input << "\t}\n";
    input << "}\n";
-   const auto countries = CountriesImporter{}.ImportCountries(input);
+   const auto countries = CountriesImporter(false).ImportCountries(input);
 
    EXPECT_THAT(countries,
        testing::UnorderedElementsAre(testing::Pair(0, Country("TAG")), testing::Pair(1, Country("TWO"))));
@@ -47,7 +47,7 @@ TEST(Vic3WorldStateVic3CountriesImporter, CountryIndexesCanBeSkipped)
    input << "\tdefinition=\"TWO\"\n";
    input << "\t}\n";
    input << "}";
-   const auto countries = CountriesImporter{}.ImportCountries(input);
+   const auto countries = CountriesImporter(false).ImportCountries(input);
 
    EXPECT_THAT(countries, testing::UnorderedElementsAre(testing::Pair(1, Country("TWO"))));
 }
