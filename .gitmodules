@@ -10,6 +10,3 @@
 [submodule "external/Fronter.NET"]
 	path = external/Fronter.NET
 	url = https://github.com/ParadoxGameConverters/Fronter.NET.git
-[submodule "external/zip"]
-	path = external/zip
-	url = https://github.com/kuba--/zip.git
