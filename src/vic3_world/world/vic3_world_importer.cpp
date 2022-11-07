@@ -9,6 +9,7 @@
 #include "external/commonItems/Parser.h"
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
+#include "external/rakaly/rakaly.h"
 #include "external/zip/src/zip.h"
 #include "src/vic3_world/countries/vic3_countries_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -109,6 +110,21 @@ std::istringstream ImportSave(std::string_view save_filename)
    return std::istringstream{raw_save_data};
 }
 
+
+std::istringstream MeltSave(std::istringstream& save)
+{
+   std::ofstream solid("solid_save.txt");
+   solid << save.str();
+   solid.close();
+
+   const auto game_state = rakaly::meltVic3(save.str());
+   std::ofstream liquid("liquid_save.txt");
+   liquid << game_state;
+   liquid.close();
+
+   return std::istringstream{game_state};
+}
+
 }  // namespace
 
 
@@ -120,7 +136,7 @@ vic3::World vic3::ImportWorld(std::string_view save_filename)
    auto save = ImportSave(save_filename);
    Log(LogLevel::Progress) << "7 %";
 
-   // MeltSave();
+   save = MeltSave(save);
    Log(LogLevel::Progress) << "9 %";
 
    Log(LogLevel::Info) << "-> Processing Vic3 save.";

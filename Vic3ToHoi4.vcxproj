@@ -112,6 +112,7 @@
     <ClInclude Include="external\fmt\include\fmt\format-inl.h" />
     <ClInclude Include="external\fmt\include\fmt\format.h" />
     <ClInclude Include="external\fmt\include\fmt\os.h" />
+    <ClInclude Include="external\rakaly\rakaly.h" />
     <ClInclude Include="external\zip\src\miniz.h" />
     <ClInclude Include="external\zip\src\zip.h" />
     <ClInclude Include="src\configuration\configuration.h" />
@@ -158,6 +159,14 @@
     <CopyFileToFolders Include="data\version.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/..</DestinationFolders>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="external\rakaly\rakaly.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="external\rakaly\rakaly.dll.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
