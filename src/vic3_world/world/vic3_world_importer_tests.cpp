@@ -31,21 +31,6 @@ TEST(Vic3WorldWorldVic3WorldImporter, ExceptionForMissingGamestate)
 }
 
 
-TEST(Vic3WorldWorldVic3WorldImporter, UnzippedSizeIsLogged)
-{
-   std::stringstream log;
-   std::streambuf* cout_buffer = std::cout.rdbuf();
-   std::cout.rdbuf(log.rdbuf());
-
-   ImportWorld("test_files/vic3_world/world/zipped_save.vic3",
-       commonItems::ModFilesystem("test_files/vic3_world/world", {}), false);
-
-   EXPECT_THAT(log.str(), testing::HasSubstr("Unzipped save to 42 bytes"));
-
-   std::cout.rdbuf(cout_buffer);
-}
-
-
 TEST(Vic3WorldWorldVic3WorldImporter, DefaultsAreCorrect)
 {
    const auto world = ImportWorld("test_files/vic3_world/world/empty_save.vic3",
