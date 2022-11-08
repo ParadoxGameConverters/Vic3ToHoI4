@@ -24,6 +24,7 @@ include_directories("./external/googletest/googlemock")
 include_directories("./external/googletest/googlemock/include")
 
 add_subdirectory(external/commonItems/ZipLib [binary_dir])
+link_directories(external/rakaly)
 
 
 #### Converter ####
@@ -67,22 +68,19 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ModLoader/ModParser.c
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/format.cc")
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/os.cc")
 
-set(ZIP_SOURCES ${ZIP_SOURCES} "external/zip/src/zip.c")
-
 add_executable(
 	Vic3ToHoi4
 	${MAIN_SOURCE}
 	${CONVERTER_SOURCES}
 	${COMMON_SOURCES}
 	${FORMAT_SOURCES}
-	${ZIP_SOURCES}
 )
 set_target_properties( Vic3ToHoi4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
 
-target_link_libraries(Vic3ToHoi4 ZIPLIB)
+target_link_libraries(Vic3ToHoi4 ZIPLIB rakaly)
 
 configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
 file(COPY "data/blank_mod" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
@@ -134,7 +132,6 @@ add_executable(
 	${CONVERTER_SOURCES}
 	${COMMON_SOURCES}
 	${FORMAT_SOURCES}
-	${ZIP_SOURCES}
 )
 set_target_properties( Vic3ToHoi4Tests
     PROPERTIES
@@ -145,7 +142,7 @@ file(COPY "data/blank_mod" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 file(COPY "data/test_files" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 file(COPY "data/test_files/configurables" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 
-target_link_libraries(Vic3ToHoi4Tests ZIPLIB pthread)
+target_link_libraries(Vic3ToHoi4Tests ZIPLIB pthread rakaly)
 
 
 ####  Coverage ####
