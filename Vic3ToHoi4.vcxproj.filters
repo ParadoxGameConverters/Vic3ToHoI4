@@ -46,6 +46,36 @@
     <Filter Include="src\vic3_world\states">
       <UniqueIdentifier>{eb5c7333-d885-4832-b5a4-e678963fcff8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\countries">
+      <UniqueIdentifier>{6ec6fe29-cc42-40ec-bdac-d1b15ef4d1bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hoi4_world">
+      <UniqueIdentifier>{013fab9e-44f3-45b4-bae5-908ee446a567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hoi4_world\countries">
+      <UniqueIdentifier>{0348f650-cbb6-4f9f-a681-6c1e7e01566f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hoi4_world\world">
+      <UniqueIdentifier>{a3a61a29-daab-4fbb-a15f-d6036a969dcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\countries">
+      <UniqueIdentifier>{f00a710f-2faa-4a29-8878-6e7bc86af6ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\world">
+      <UniqueIdentifier>{39c8d68b-ff50-43a1-9417-2844222478c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mappers">
+      <UniqueIdentifier>{0389f1b1-3bcc-46e0-a2d9-3e1866ffa26c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mappers\country">
+      <UniqueIdentifier>{d03a1c3e-8499-432c-bbc1-11db5365aa45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\commonItems\ModLoader">
+      <UniqueIdentifier>{9fde46fd-ad86-4893-a284-d7891327118d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\commonItems\ZipLib">
+      <UniqueIdentifier>{6633743f-c72e-4aa3-a0b7-58ad094e78e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod.cpp">
@@ -105,11 +135,41 @@
     <ClCompile Include="external\zip\src\zip.c">
       <Filter>external\zip\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\vic3_world\states\state_importer.cpp">
+    <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp">
+      <Filter>src\hoi4_world\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\world\hoi4_world.cpp">
+      <Filter>src\hoi4_world\world</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\countries\out_country.cpp">
+      <Filter>src\out_hoi4\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\countries\vic3_countries_importer.cpp">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\countries\vic3_country_importer.cpp">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\states\vic3_state_importer.cpp">
       <Filter>src\vic3_world\states</Filter>
     </ClCompile>
-    <ClCompile Include="src\vic3_world\states\states_importer.cpp">
+    <ClCompile Include="src\vic3_world\states\vic3_states_importer.cpp">
       <Filter>src\vic3_world\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\countries\out_countries.cpp">
+      <Filter>src\out_hoi4\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\world\out_world.cpp">
+      <Filter>src\out_hoi4\world</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\ModLoader\ModFilesystem.cpp">
+      <Filter>external\commonItems\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\ModLoader\ModLoader.cpp">
+      <Filter>external\commonItems\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\ModLoader\ModParser.cpp">
+      <Filter>external\commonItems\ModLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,17 +236,56 @@
     <ClInclude Include="external\zip\src\zip.h">
       <Filter>external\zip\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\vic3_world\states\state.h">
-      <Filter>src\vic3_world\states</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\states\state_importer.h">
-      <Filter>src\vic3_world\states</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\states\states_importer.h">
-      <Filter>src\vic3_world\states</Filter>
-    </ClInclude>
     <ClInclude Include="src\vic3_world\world\vic3_world.h">
       <Filter>src\vic3_world\world</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\country\country_mapper.h">
+      <Filter>src\mappers\country</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\countries\hoi4_country.h">
+      <Filter>src\hoi4_world\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\world\hoi4_world.h">
+      <Filter>src\hoi4_world\world</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\countries\out_country.h">
+      <Filter>src\out_hoi4\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\countries\vic3_countries_importer.h">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\countries\vic3_country.h">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\countries\vic3_country_importer.h">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\states\vic3_state.h">
+      <Filter>src\vic3_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\states\vic3_state_importer.h">
+      <Filter>src\vic3_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\states\vic3_states_importer.h">
+      <Filter>src\vic3_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\countries\out_countries.h">
+      <Filter>src\out_hoi4\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\world\out_world.h">
+      <Filter>src\out_hoi4\world</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\ModLoader\Mod.h">
+      <Filter>external\commonItems\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\ModLoader\ModFilesystem.h">
+      <Filter>external\commonItems\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\ModLoader\ModLoader.h">
+      <Filter>external\commonItems\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\ModLoader\ModParser.h">
+      <Filter>external\commonItems\ModLoader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

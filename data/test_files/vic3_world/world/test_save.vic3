@@ -1,4 +1,16 @@
 SAV0100b06f634d00000197
+country_manager={
+	database={
+0=none
+1={
+	definition="TAG"
+}
+2=none
+3={
+	definition="TWO"
+}
+	}
+}
 states={
 	database = {
 0 = {

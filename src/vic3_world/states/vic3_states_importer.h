@@ -1,5 +1,5 @@
-#ifndef SRC_VIC3WORLD_STATES_STATESIMPORTER
-#define SRC_VIC3WORLD_STATES_STATESIMPORTER
+#ifndef SRC_VIC3WORLD_STATES_VIC3STATESIMPORTER_H
+#define SRC_VIC3WORLD_STATES_VIC3STATESIMPORTER_H
 
 
 
@@ -7,8 +7,8 @@
 #include <map>
 
 #include "external/commonItems/Parser.h"
-#include "src/vic3_world/states/state.h"
-#include "src/vic3_world/states/state_importer.h"
+#include "src/vic3_world/states/vic3_state.h"
+#include "src/vic3_world/states/vic3_state_importer.h"
 
 
 
@@ -34,4 +34,4 @@ class StatesImporter
 
 
 
-#endif  // SRC_VIC3WORLD_STATES_STATESIMPORTER
+#endif  // SRC_VIC3WORLD_STATES_VIC3STATESIMPORTER_H

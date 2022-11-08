@@ -23,6 +23,8 @@ include_directories("./external/googletest/googletest/include")
 include_directories("./external/googletest/googlemock")
 include_directories("./external/googletest/googlemock/include")
 
+add_subdirectory(external/commonItems/ZipLib [binary_dir])
+
 
 #### Converter ####
 
@@ -30,9 +32,16 @@ set(MAIN_SOURCE "src/main.cpp")
 
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_to_hoi4_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/configuration/configuration_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/countries/hoi4_country.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/world/hoi4_world.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/out_mod.cpp")
-set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/states/state_importer.cpp")
-set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/states/states_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/countries/out_countries.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/countries/out_country.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/world/out_world.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/countries/vic3_countries_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/countries/vic3_country_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/states/vic3_state_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/states/vic3_states_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/world/vic3_world_importer.cpp")
 
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/CommonFunctions.cpp")
@@ -46,6 +55,9 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Parser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ParserHelpers.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/StringUtils.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/LinuxUtils.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ModLoader/ModFilesystem.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ModLoader/ModLoader.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ModLoader/ModParser.cpp")
 
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/format.cc")
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/os.cc")
@@ -64,6 +76,8 @@ set_target_properties( Vic3ToHoi4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
+
+target_link_libraries(Vic3ToHoi4 ZIPLIB)
 
 configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
 file(COPY "data/blank_mod" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
@@ -85,9 +99,17 @@ add_custom_command(TARGET Fronter
 #### Tests ####
 
 set(TEST_SOURCES ${TEST_SOURCES} "src/configuration/configuration_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/countries/hoi4_country_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/world/hoi4_world_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/country/country_mapper_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/out_mod_test.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/state_importer_tests.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/states_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/out_countries_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/out_country_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/world/out_world_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/countries/vic3_countries_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/countries/vic3_country_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/vic3_state_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/vic3_states_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/world/vic3_world_importer_tests.cpp")
 
 set(GTEST_SOURCES ${GTEST_SOURCES} "external/googletest/googletest/src/gtest_main.cc")
@@ -111,7 +133,7 @@ set_target_properties( Vic3ToHoi4Tests
 file(COPY "data/blank_mod" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 file(COPY "data/test_files" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 
-target_link_libraries(Vic3ToHoi4Tests pthread)
+target_link_libraries(Vic3ToHoi4Tests ZIPLIB pthread)
 
 
 ####  Coverage ####
@@ -124,7 +146,12 @@ add_custom_command(TARGET gcov
 	COMMAND echo "=================== GCOV ===================="
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_to_hoi4_converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/configuration/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/configuration
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/hoi4_world/countries/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/hoi4_world/countries
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/hoi4_world/world/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/hoi4_world/world
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/mappers/country/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/mappers/country
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/countries/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4/countries
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_world/countries/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/vic3_world/countries
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_world/states/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/vic3_world/states
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_world/world/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/vic3_world/world
 	COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
@@ -186,5 +213,5 @@ add_library(run_clang_tidy
 	${CONVERTER_SOURCES}
 	${TEST_SOURCES}
 )
-target_link_libraries(run_clang_tidy pthread)
+target_link_libraries(run_clang_tidy ZIPLIB pthread)
 set_target_properties(run_clang_tidy PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
