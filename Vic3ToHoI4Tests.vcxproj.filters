@@ -82,6 +82,9 @@
     <Filter Include="src\vic3_world\provinces">
       <UniqueIdentifier>{f5be605b-7aae-40e8-81dd-b982c3bd409e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="external\rakaly">
+      <UniqueIdentifier>{e5c09023-6c6e-4b3a-9531-95bb9df31430}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -359,6 +362,19 @@
     <ClInclude Include="external\commonItems\ModLoader\ModParser.h">
       <Filter>external\commonItems\ModLoader</Filter>
     </ClInclude>
+    <ClInclude Include="external\rakaly\rakaly.h">
+      <Filter>external\rakaly</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="external\rakaly\rakaly.dll.lib">
+      <Filter>external\rakaly</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="external\rakaly\rakaly.dll">
+      <Filter>external\rakaly</Filter>
+    </CopyFileToFolders>
     <ClInclude Include="src\mappers\provinces\province_mapper.h">
       <Filter>src\mappers\provinces</Filter>
     </ClInclude>

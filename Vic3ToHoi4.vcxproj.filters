@@ -70,6 +70,9 @@
     <Filter Include="external\commonItems\ZipLib">
       <UniqueIdentifier>{6633743f-c72e-4aa3-a0b7-58ad094e78e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="external\rakaly">
+      <UniqueIdentifier>{8d02dff1-82fe-48fa-a5e5-1a90aded3f17}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\mappers\provinces">
       <UniqueIdentifier>{a1f20159-191e-4037-8ed1-c238521614aa}</UniqueIdentifier>
     </Filter>
@@ -296,6 +299,7 @@
     <ClInclude Include="external\commonItems\ModLoader\ModParser.h">
       <Filter>external\commonItems\ModLoader</Filter>
     </ClInclude>
+    <ClInclude Include="external\rakaly\rakaly.h" />
     <ClInclude Include="src\mappers\provinces\province_mapper.h">
       <Filter>src\mappers\provinces</Filter>
     </ClInclude>
@@ -319,5 +323,13 @@
     <CopyFileToFolders Include="data\version.txt">
       <Filter>data</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="external\rakaly\rakaly.dll">
+      <Filter>external\rakaly</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="external\rakaly\rakaly.dll.lib">
+      <Filter>external\rakaly</Filter>
+    </Library>
   </ItemGroup>
 </Project>
