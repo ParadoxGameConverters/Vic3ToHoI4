@@ -12,10 +12,11 @@ void out::OutputCommonCountriesFile(std::string_view output_name, const hoi4::Co
 {
    const std::string& tag = country.GetTag();
 
-   std::ofstream common_country(fmt::format("output/{}/common/countries/{}.txt", output_name, tag));
+   const auto common_country_file_name = fmt::format("output/{}/common/countries/{}.txt", output_name, tag);
+   std::ofstream common_country(common_country_file_name);
    if (!common_country.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/common/countries/{}.txt", output_name, tag));
+      throw std::runtime_error(fmt::format("Could not create {}", common_country_file_name));
    }
    common_country.close();
 }
@@ -31,10 +32,11 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
 {
    const std::string& tag = country.GetTag();
 
-   std::ofstream country_history(fmt::format("output/{}/history/countries/{}.txt", output_name, tag));
+   const auto country_history_file_name = fmt::format("output/{}/history/countries/{}.txt", output_name, tag);
+   std::ofstream country_history(country_history_file_name);
    if (!country_history.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/history/countries/{}.txt", output_name, tag));
+      throw std::runtime_error(fmt::format("Could not create {}", country_history_file_name));
    }
    country_history.close();
 }
