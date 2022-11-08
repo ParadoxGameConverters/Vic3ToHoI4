@@ -22,7 +22,7 @@
 namespace
 {
 
-std::istringstream MeltSave(std::string_view save_filename)
+std::istringstream MeltSave(std::string_view save_filename, bool debug)
 {
    std::ifstream save_file(std::filesystem::u8path(save_filename), std::ios::in | std::ios::binary);
    const auto save_size = static_cast<std::streamsize>(std::filesystem::file_size(save_filename));
@@ -31,9 +31,12 @@ std::istringstream MeltSave(std::string_view save_filename)
 
    const auto game_state = rakaly::meltVic3(save_string);
 
-   std::ofstream liquid("liquid_save.txt");
-   liquid << game_state;
-   liquid.close();
+   if (debug)
+   {
+      std::ofstream liquid("liquid_save.txt");
+      liquid << game_state;
+      liquid.close();
+   }
 
    return std::istringstream{game_state};
 }
@@ -50,7 +53,7 @@ vic3::World vic3::ImportWorld(std::string_view save_filename, const commonItems:
    Log(LogLevel::Progress) << "5 %";
 
    Log(LogLevel::Info) << "-> Reading Vic3 save.";
-   auto save = MeltSave(save_filename);
+   auto save = MeltSave(save_filename, debug);
    Log(LogLevel::Progress) << "7 %";
 
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
