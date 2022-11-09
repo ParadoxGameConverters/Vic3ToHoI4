@@ -82,6 +82,9 @@
     <Filter Include="external\commonItems\ModLoader">
       <UniqueIdentifier>{19d355dc-3e97-4347-9740-b82ed1861b12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\mappers\provinces">
+      <UniqueIdentifier>{f8d117cd-afa5-4fc6-abe0-ccb4b49c4c53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -222,6 +225,12 @@
     <ClCompile Include="src\out_hoi4\world\out_world_tests.cpp">
       <Filter>src\out_hoi4\world</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\provinces\province_mapper.cpp">
+      <Filter>src\mappers\provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\provinces\province_mapper_tests.cpp">
+      <Filter>src\mappers\provinces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -337,6 +346,12 @@
     </ClInclude>
     <ClInclude Include="external\commonItems\ModLoader\ModParser.h">
       <Filter>external\commonItems\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\provinces\province_mapper.h">
+      <Filter>src\mappers\provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\provinces\province_mapping_types.h">
+      <Filter>src\mappers\provinces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
