@@ -17,25 +17,25 @@ namespace mappers
 class ProvinceMapper
 {
   public:
-   explicit ProvinceMapper(Vic3ToHoI4ProvinceMapping vic3_to_hoI4_province_map,
-       HoI4ToVic3ProvinceMapping hoi4_to_vic3_province_map):
-       vic3_to_hoI4_province_map_(std::move(vic3_to_hoI4_province_map)),
+   explicit ProvinceMapper(Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map,
+       Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map):
+       vic3_to_hoi4_province_map_(std::move(vic3_to_hoi4_province_map)),
        hoi4_to_vic3_province_map_(std::move(hoi4_to_vic3_province_map))
    {
    }
 
-   [[nodiscard]] std::vector<int> GetVic3ToHoI4ProvinceMapping(int vic3_province) const;
-   [[nodiscard]] std::vector<int> GetHoI4ToVic3ProvinceMapping(int hoi4_province) const;
+   [[nodiscard]] std::vector<int> GetVic3ToHoi4ProvinceMapping(int vic3_province) const;
+   [[nodiscard]] std::vector<int> GetHoi4ToVic3ProvinceMapping(int hoi4_province) const;
    [[nodiscard]] std::set<int> GetEquivalentVic3Provinces(const std::set<int>& hoi4_provinces) const;
 
    [[nodiscard]] bool IsVic3ProvinceMapped(int vic3_province_num) const
    {
-      return vic3_to_hoI4_province_map_.contains(vic3_province_num);
+      return vic3_to_hoi4_province_map_.contains(vic3_province_num);
    }
 
   private:
-   Vic3ToHoI4ProvinceMapping vic3_to_hoI4_province_map_;
-   HoI4ToVic3ProvinceMapping hoi4_to_vic3_province_map_;
+   Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map_;
+   Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map_;
 };
 
 }  // namespace mappers

@@ -231,6 +231,18 @@
     <ClCompile Include="src\mappers\provinces\province_mapper_tests.cpp">
       <Filter>src\mappers\provinces</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\provinces\province_mapper_importer.cpp">
+      <Filter>src\mappers\provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\provinces\province_mapping_importer_tests.cpp">
+      <Filter>src\mappers\provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp">
+      <Filter>src\mappers\provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\provinces\province_mapper_importer_tests.cpp">
+      <Filter>src\mappers\provinces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -351,6 +363,15 @@
       <Filter>src\mappers\provinces</Filter>
     </ClInclude>
     <ClInclude Include="src\mappers\provinces\province_mapping_types.h">
+      <Filter>src\mappers\provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\provinces\province_mapper_importer.h">
+      <Filter>src\mappers\provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\provinces\province_mapping.h">
+      <Filter>src\mappers\provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\provinces\province_mapping_importer.h">
       <Filter>src\mappers\provinces</Filter>
     </ClInclude>
   </ItemGroup>

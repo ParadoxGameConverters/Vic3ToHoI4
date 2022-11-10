@@ -4,10 +4,10 @@
 
 
 
-std::vector<int> mappers::ProvinceMapper::GetVic3ToHoI4ProvinceMapping(const int vic3_province) const
+std::vector<int> mappers::ProvinceMapper::GetVic3ToHoi4ProvinceMapping(const int vic3_province) const
 {
-   const auto mapping = vic3_to_hoI4_province_map_.find(vic3_province);
-   if (mapping == vic3_to_hoI4_province_map_.end())
+   const auto mapping = vic3_to_hoi4_province_map_.find(vic3_province);
+   if (mapping == vic3_to_hoi4_province_map_.end())
    {
       Log(LogLevel::Warning) << "No mapping found for Vic3 province " << vic3_province;
       return {};
@@ -17,12 +17,12 @@ std::vector<int> mappers::ProvinceMapper::GetVic3ToHoI4ProvinceMapping(const int
 }
 
 
-std::vector<int> mappers::ProvinceMapper::GetHoI4ToVic3ProvinceMapping(const int hoi4_province) const
+std::vector<int> mappers::ProvinceMapper::GetHoi4ToVic3ProvinceMapping(const int hoi4_province) const
 {
    const auto mapping = hoi4_to_vic3_province_map_.find(hoi4_province);
    if (mapping == hoi4_to_vic3_province_map_.end())
    {
-      Log(LogLevel::Warning) << "No mapping found for HoI4 province " << hoi4_province;
+      Log(LogLevel::Warning) << "No mapping found for Hoi4 province " << hoi4_province;
       return {};
    }
 

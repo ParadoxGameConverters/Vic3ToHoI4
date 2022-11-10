@@ -83,7 +83,11 @@
     <ClCompile Include="src\hoi4_world\world\hoi4_world_tests.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper.cpp" />
+    <ClCompile Include="src\mappers\provinces\province_mapper_importer.cpp" />
+    <ClCompile Include="src\mappers\provinces\province_mapper_importer_tests.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper_tests.cpp" />
+    <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp" />
+    <ClCompile Include="src\mappers\provinces\province_mapping_importer_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp" />
@@ -131,6 +135,9 @@
     <ClInclude Include="src\hoi4_world\world\hoi4_world.h" />
     <ClInclude Include="src\mappers\country\country_mapper.h" />
     <ClInclude Include="src\mappers\provinces\province_mapper.h" />
+    <ClInclude Include="src\mappers\provinces\province_mapper_importer.h" />
+    <ClInclude Include="src\mappers\provinces\province_mapping.h" />
+    <ClInclude Include="src\mappers\provinces\province_mapping_importer.h" />
     <ClInclude Include="src\mappers\provinces\province_mapping_types.h" />
     <ClInclude Include="src\out_hoi4\countries\out_countries.h" />
     <ClInclude Include="src\out_hoi4\countries\out_country.h" />
@@ -152,7 +159,12 @@
       <DeploymentContent>true</DeploymentContent>
       <Link>test_files\%(RecursiveDir)\%(Filename)%(Extension)</Link>
     </Content>
-    <Content Include="data\test_files\**\*.*">
+	<Content Include="data\test_files\configurables\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+      <Link>configurables\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+    </Content>
+    <Content Include="data\blank_mod\**\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
       <Link>blank_mod\%(RecursiveDir)\%(Filename)%(Extension)</Link>
