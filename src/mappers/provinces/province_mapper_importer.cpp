@@ -67,7 +67,7 @@ void CheckAllHoi4ProvincesMapped(const mappers::Hoi4ToVic3ProvinceMapping& hoi4_
       {
          break;
       }
-      if (province_number == 0)
+      if (*province_number == 0)
       {
          continue;
       }

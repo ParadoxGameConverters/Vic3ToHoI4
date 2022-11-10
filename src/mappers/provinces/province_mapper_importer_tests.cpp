@@ -45,7 +45,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, BadLineInMapDefinitionLogsWarn
    std::cout.rdbuf(log.rdbuf());
 
    commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/bad_line_definition/", {});
-   const auto province_mappings = mappers::ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
+   auto _ = mappers::ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
    std::cout.rdbuf(stdOutBuf);
 
    EXPECT_THAT(log.str(),
