@@ -97,9 +97,9 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
          return;
       }
 
-      for (auto num: the_mapping.vic3_provinces)
+      for (auto color: the_mapping.vic3_provinces)
       {
-         vic3_to_hoi4_province_map_.emplace(num, the_mapping.hoi4_provinces);
+         vic3_to_hoi4_province_map_.emplace(color, the_mapping.hoi4_provinces);
       }
       for (auto num: the_mapping.hoi4_provinces)
       {

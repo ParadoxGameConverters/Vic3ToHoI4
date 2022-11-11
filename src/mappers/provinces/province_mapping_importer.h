@@ -22,7 +22,7 @@ class ProvinceMappingImporter
   private:
    commonItems::parser parser_;
 
-   std::vector<int> vic3_provinces_;
+   std::vector<std::string> vic3_provinces_;
    std::vector<int> hoi4_provinces_;
 };
 

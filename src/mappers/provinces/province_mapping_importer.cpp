@@ -8,7 +8,7 @@
 mappers::ProvinceMappingImporter::ProvinceMappingImporter()
 {
    parser_.registerKeyword("vic3", [this](std::istream& theStream) {
-      vic3_provinces_.push_back(commonItems::getInt(theStream));
+      vic3_provinces_.push_back(commonItems::getString(theStream));
    });
    parser_.registerKeyword("hoi4", [this](std::istream& theStream) {
       hoi4_provinces_.push_back(commonItems::getInt(theStream));

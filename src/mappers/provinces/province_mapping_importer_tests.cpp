@@ -20,11 +20,11 @@ TEST(MappersProvincesProvinceMappingImporterTests, Vic2ProvincesDefaultsToZero)
 TEST(MappersProvincesProvinceMappingImporterTests, Vic2ProvincesCanBeAdded)
 {
    std::stringstream input;
-   input << "= { vic3 = 42 vic3 = 144 }";
+   input << "= { vic3 = 0x000042 vic3 = 0x001440 }";
 
    const auto mapping = mappers::ProvinceMappingImporter{}.ImportProvinceMapping(input);
 
-   EXPECT_THAT(mapping.vic3_provinces, testing::ElementsAre(42, 144));
+   EXPECT_THAT(mapping.vic3_provinces, testing::ElementsAre("0x000042", "0x001440"));
 }
 
 

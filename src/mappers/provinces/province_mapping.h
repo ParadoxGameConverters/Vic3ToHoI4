@@ -12,7 +12,7 @@ namespace mappers
 
 struct ProvinceMapping
 {
-   std::vector<int> vic3_provinces;
+   std::vector<std::string> vic3_provinces;
    std::vector<int> hoi4_provinces;
 };
 

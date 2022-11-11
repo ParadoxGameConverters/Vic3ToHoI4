@@ -4,9 +4,9 @@
 
 
 
-std::vector<int> mappers::ProvinceMapper::GetVic3ToHoi4ProvinceMapping(const int vic3_province) const
+std::vector<int> mappers::ProvinceMapper::GetVic3ToHoi4ProvinceMapping(std::string_view vic3_province) const
 {
-   const auto mapping = vic3_to_hoi4_province_map_.find(vic3_province);
+   const auto mapping = vic3_to_hoi4_province_map_.find(std::string(vic3_province));
    if (mapping == vic3_to_hoi4_province_map_.end())
    {
       Log(LogLevel::Warning) << "No mapping found for Vic3 province " << vic3_province;
@@ -17,7 +17,7 @@ std::vector<int> mappers::ProvinceMapper::GetVic3ToHoi4ProvinceMapping(const int
 }
 
 
-std::vector<int> mappers::ProvinceMapper::GetHoi4ToVic3ProvinceMapping(const int hoi4_province) const
+std::vector<std::string> mappers::ProvinceMapper::GetHoi4ToVic3ProvinceMapping(const int hoi4_province) const
 {
    const auto mapping = hoi4_to_vic3_province_map_.find(hoi4_province);
    if (mapping == hoi4_to_vic3_province_map_.end())
@@ -30,9 +30,9 @@ std::vector<int> mappers::ProvinceMapper::GetHoi4ToVic3ProvinceMapping(const int
 }
 
 
-std::set<int> mappers::ProvinceMapper::GetEquivalentVic3Provinces(const std::set<int>& hoi4_provinces) const
+std::set<std::string> mappers::ProvinceMapper::GetEquivalentVic3Provinces(const std::set<int>& hoi4_provinces) const
 {
-   std::set<int> equivalent_provinces;
+   std::set<std::string> equivalent_provinces;
 
    for (const auto hoi4_province: hoi4_provinces)
    {

@@ -24,13 +24,13 @@ class ProvinceMapper
    {
    }
 
-   [[nodiscard]] std::vector<int> GetVic3ToHoi4ProvinceMapping(int vic3_province) const;
-   [[nodiscard]] std::vector<int> GetHoi4ToVic3ProvinceMapping(int hoi4_province) const;
-   [[nodiscard]] std::set<int> GetEquivalentVic3Provinces(const std::set<int>& hoi4_provinces) const;
+   [[nodiscard]] std::vector<int> GetVic3ToHoi4ProvinceMapping(std::string_view vic3_province) const;
+   [[nodiscard]] std::vector<std::string> GetHoi4ToVic3ProvinceMapping(int hoi4_province) const;
+   [[nodiscard]] std::set<std::string> GetEquivalentVic3Provinces(const std::set<int>& hoi4_provinces) const;
 
-   [[nodiscard]] bool IsVic3ProvinceMapped(int vic3_province_num) const
+   [[nodiscard]] bool IsVic3ProvinceMapped(std::string_view vic3_province_color) const
    {
-      return vic3_to_hoi4_province_map_.contains(vic3_province_num);
+      return vic3_to_hoi4_province_map_.contains(std::string(vic3_province_color));
    }
 
   private:

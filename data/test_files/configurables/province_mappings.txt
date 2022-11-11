@@ -1,7 +1,7 @@
 0.0.0 = {
-	link = { vic3 = 1 hoi4 = 1 hoi4 = 10 }
-	link = { vic3 = 2 vic3 = 20 hoi4 = 2 }
-	link = { vic3 = 3 }
+	link = { vic3 = 0x000001 hoi4 = 1 hoi4 = 10 }
+	link = { vic3 = 0x000200 vic3 = 0x002000 hoi4 = 2 }
+	link = { vic3 = 0x030000 }
 	link = { hoi4 = 3 }
 	link = {}
 }
