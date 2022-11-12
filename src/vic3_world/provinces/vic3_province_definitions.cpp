@@ -4,10 +4,10 @@
 
 std::optional<std::string> vic3::ProvinceDefinitions::GetProvinceDefinition(int province_number) const
 {
-   if (const auto definition = province_definitions_.find(province_number); definition != province_definitions_.end())
+   if (province_definitions_.size() < province_number)
    {
-      return definition->second;
+      return std::nullopt;
    }
 
-   return std::nullopt;
+   return province_definitions_.at(province_number - 1);
 }

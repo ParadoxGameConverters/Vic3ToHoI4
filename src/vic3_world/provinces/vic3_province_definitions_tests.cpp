@@ -11,7 +11,7 @@ namespace vic3
 
 TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionsCanBeReturned)
 {
-   std::map<int, std::string> province_definitions_map{{1, "x000001"}, {2, "x000200"}};
+   std::vector<std::string> province_definitions_map{"x000001", "x000200"};
 
    ProvinceDefinitions province_definitions(province_definitions_map);
 
@@ -21,7 +21,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionsCanBeReturned)
 
 TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionCanBeLookedUp)
 {
-   std::map<int, std::string> province_definitions_map{{1, "x000001"}, {2, "x000200"}};
+	std::vector<std::string> province_definitions_map{ "x000001", "x000200" };
 
    ProvinceDefinitions province_definitions(province_definitions_map);
 
@@ -36,7 +36,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionCanBeLookedUp)
 
 TEST(Vic3WorldProvincesVic3ProvinceDefinitions, MissingDefinitionIsNotLookedUp)
 {
-   std::map<int, std::string> province_definitions_map{{1, "x000001"}, {2, "x000200"}};
+	std::vector<std::string> province_definitions_map{ "x000001", "x000200" };
 
    ProvinceDefinitions province_definitions(province_definitions_map);
 
