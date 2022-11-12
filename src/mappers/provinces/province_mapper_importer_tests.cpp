@@ -12,21 +12,21 @@ TEST(MappersProvincesProvinceMapperImporterTests, ProvinceMappingsCanBeImported)
    commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/empty_definition/", {});
    const auto province_mappings = mappers::ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
 
-   EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("0x000001"), testing::ElementsAre(1, 10));
-   EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("0x000200"), testing::ElementsAre(2));
-   EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("0x002000"), testing::ElementsAre(2));
-   EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("0x030000"), testing::ElementsAre());
-   EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("0x400000"), testing::ElementsAre());
-   EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(1), testing::ElementsAre("0x000001"));
-   EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(10), testing::ElementsAre("0x000001"));
-   EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(2), testing::ElementsAre("0x000200", "0x002000"));
+   EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("x000001"), testing::ElementsAre(1, 10));
+   EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("x000200"), testing::ElementsAre(2));
+   EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("x002000"), testing::ElementsAre(2));
+   EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("x030000"), testing::ElementsAre());
+   EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("x400000"), testing::ElementsAre());
+   EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(1), testing::ElementsAre("x000001"));
+   EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(10), testing::ElementsAre("x000001"));
+   EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(2), testing::ElementsAre("x000200", "x002000"));
    EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(3), testing::ElementsAre());
    EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(4), testing::ElementsAre());
-   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("0x000001"));
-   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("0x000200"));
-   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("0x002000"));
-   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("0x030000"));
-   EXPECT_FALSE(province_mappings.IsVic3ProvinceMapped("0x400000"));
+   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("x000001"));
+   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("x000200"));
+   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("x002000"));
+   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("x030000"));
+   EXPECT_FALSE(province_mappings.IsVic3ProvinceMapped("x400000"));
 }
 
 

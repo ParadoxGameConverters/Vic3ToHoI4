@@ -24,7 +24,7 @@ TEST(MappersProvincesProvinceMappingImporterTests, Vic2ProvincesCanBeAdded)
 
    const auto mapping = mappers::ProvinceMappingImporter{}.ImportProvinceMapping(input);
 
-   EXPECT_THAT(mapping.vic3_provinces, testing::ElementsAre("0x000042", "0x001440"));
+   EXPECT_THAT(mapping.vic3_provinces, testing::ElementsAre("x000042", "x001440"));
 }
 
 
