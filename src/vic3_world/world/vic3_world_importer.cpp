@@ -30,15 +30,17 @@ std::istringstream MeltSave(std::string_view save_filename, bool debug)
    save_file.read(save_string.data(), save_size);
 
    const auto game_state = rakaly::meltVic3(save_string);
+   std::string liquid;
+   game_state.writeData(liquid);
 
    if (debug)
    {
-      std::ofstream liquid("liquid_save.txt");
-      liquid << game_state;
-      liquid.close();
+      std::ofstream liquid_file("liquid_save.txt");
+      liquid_file << liquid;
+      liquid_file.close();
    }
 
-   return std::istringstream{game_state};
+   return std::istringstream{liquid};
 }
 
 }  // namespace

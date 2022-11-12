@@ -16,21 +16,6 @@ TEST(Vic3WorldWorldVic3WorldImporter, ExceptionForMissingSave)
 }
 
 
-TEST(Vic3WorldWorldVic3WorldImporter, ExceptionForIncorrectlyZippedSave)
-{
-   EXPECT_THROW(ImportWorld("test_files/vic3_world/world/bad_zipped_save.vic3", commonItems::ModFilesystem("", {}), false),
-       std::runtime_error);
-}
-
-
-TEST(Vic3WorldWorldVic3WorldImporter, ExceptionForMissingGamestate)
-{
-   EXPECT_THROW(
-       ImportWorld("test_files/vic3_world/world/missing_gamestate_save.vic3", commonItems::ModFilesystem("", {}), false),
-       std::runtime_error);
-}
-
-
 TEST(Vic3WorldWorldVic3WorldImporter, DefaultsAreCorrect)
 {
    const auto world = ImportWorld("test_files/vic3_world/world/empty_save.vic3",
