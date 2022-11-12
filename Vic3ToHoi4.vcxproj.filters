@@ -192,6 +192,9 @@
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp">
       <Filter>src\vic3_world\provinces</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader.cpp">
+      <Filter>src\vic3_world\provinces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\out_hoi4\out_mod.h">
@@ -321,6 +324,9 @@
       <Filter>src\mappers\provinces</Filter>
     </ClInclude>
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h">
+      <Filter>src\vic3_world\provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions_loader.h">
       <Filter>src\vic3_world\provinces</Filter>
     </ClInclude>
   </ItemGroup>
