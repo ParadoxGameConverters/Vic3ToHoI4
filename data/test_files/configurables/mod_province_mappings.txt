@@ -1,0 +1,6 @@
+0.0.0 = {
+	link = { vic2 = 5 hoi4 = 5 hoi4 = 50 }
+	link = { vic2 = 6 vic2 = 60 hoi4 = 6 }
+	link = { vic2 = 7 }
+	link = { hoi4 = 7 }
+}

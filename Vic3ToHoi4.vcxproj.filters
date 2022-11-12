@@ -76,6 +76,9 @@
     <Filter Include="external\commonItems\ZipLib">
       <UniqueIdentifier>{6633743f-c72e-4aa3-a0b7-58ad094e78e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\mappers\provinces">
+      <UniqueIdentifier>{a1f20159-191e-4037-8ed1-c238521614aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod.cpp">
@@ -170,6 +173,18 @@
     </ClCompile>
     <ClCompile Include="external\commonItems\ModLoader\ModParser.cpp">
       <Filter>external\commonItems\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\provinces\province_mapper.cpp">
+      <Filter>src\mappers\provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\provinces\province_mapper_importer.h">
+      <Filter>src\mappers\provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\provinces\province_mapper_importer.cpp">
+      <Filter>src\mappers\provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp">
+      <Filter>src\mappers\provinces</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +301,18 @@
     </ClInclude>
     <ClInclude Include="external\commonItems\ModLoader\ModParser.h">
       <Filter>external\commonItems\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\provinces\province_mapper.h">
+      <Filter>src\mappers\provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\provinces\province_mapping_types.h">
+      <Filter>src\mappers\provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\provinces\province_mapping.h">
+      <Filter>src\mappers\provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\provinces\province_mapping_importer.h">
+      <Filter>src\mappers\provinces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
