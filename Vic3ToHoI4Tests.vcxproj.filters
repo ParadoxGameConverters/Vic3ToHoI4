@@ -85,6 +85,9 @@
     <Filter Include="src\mappers\provinces">
       <UniqueIdentifier>{f8d117cd-afa5-4fc6-abe0-ccb4b49c4c53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\provinces">
+      <UniqueIdentifier>{f5be605b-7aae-40e8-81dd-b982c3bd409e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -243,6 +246,12 @@
     <ClCompile Include="src\mappers\provinces\province_mapper_importer_tests.cpp">
       <Filter>src\mappers\provinces</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_tests.cpp">
+      <Filter>src\vic3_world\provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp">
+      <Filter>src\vic3_world\provinces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -373,6 +382,9 @@
     </ClInclude>
     <ClInclude Include="src\mappers\provinces\province_mapping_importer.h">
       <Filter>src\mappers\provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h">
+      <Filter>src\vic3_world\provinces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
