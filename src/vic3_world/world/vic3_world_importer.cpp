@@ -12,6 +12,8 @@
 #include "external/zip/src/zip.h"
 #include "src/vic3_world/countries/vic3_countries_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"
+#include "src/vic3_world/provinces/vic3_province_definitions.h"
+#include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
 #include "src/vic3_world/states/vic3_state.h"
 #include "src/vic3_world/states/vic3_states_importer.h"
 
@@ -112,9 +114,13 @@ std::istringstream ImportSave(std::string_view save_filename)
 }  // namespace
 
 
-vic3::World vic3::ImportWorld(std::string_view save_filename)
+vic3::World vic3::ImportWorld(std::string_view save_filename, const commonItems::ModFilesystem& mod_filesystem)
 {
    Log(LogLevel::Info) << "*** Hello Vic3, loading World. ***";
+
+   Log(LogLevel::Info) << "-> Reading Vic3 install.";
+   const auto province_definitions = ProvinceDefinitionsLoader().LoadProvinceDefinitions(mod_filesystem);
+   Log(LogLevel::Progress) << "5 %";
 
    Log(LogLevel::Info) << "-> Reading Vic3 save.";
    auto save = ImportSave(save_filename);
@@ -144,5 +150,5 @@ vic3::World vic3::ImportWorld(std::string_view save_filename)
    Log(LogLevel::Info) << fmt::format("\t{} states imported", states.size());
    Log(LogLevel::Progress) << "15 %";
 
-   return World(countries, states);
+   return World(countries, states, province_definitions);
 }

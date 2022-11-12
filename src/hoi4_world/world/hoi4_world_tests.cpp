@@ -6,6 +6,7 @@
 #include "src/hoi4_world/world/hoi4_world.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/vic3_world/countries/vic3_country.h"
+#include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/world/vic3_world.h"
 
 
@@ -16,7 +17,7 @@ namespace hoi4
 TEST(Hoi4worldWorldWorld, EmptyWorldIsEmpty)
 {
    constexpr mappers::CountryMapper country_mapper;
-   const vic3::World source_world({}, {});
+   const vic3::World source_world({}, {}, vic3::ProvinceDefinitions({}));
 
    const World world(source_world, country_mapper);
 
@@ -30,7 +31,7 @@ TEST(Hoi4worldWorldWorld, CountriesAreConverted)
    const vic3::Country source_country("TAG");
    const vic3::Country source_country_two("TWO");
 
-   const vic3::World source_world({{1, source_country}, {3, source_country_two}}, {});
+   const vic3::World source_world({{1, source_country}, {3, source_country_two}}, {}, vic3::ProvinceDefinitions({}));
 
    const World world(source_world, country_mapper);
 

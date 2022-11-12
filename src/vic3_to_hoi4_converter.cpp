@@ -1,6 +1,7 @@
 #include "vic3_to_hoi4_converter.h"
 
 #include "external/commonItems/Log.h"
+#include "external/commonItems/ModLoader/ModFilesystem.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/out_hoi4/out_mod.h"
@@ -12,7 +13,8 @@
 
 void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const GameVersion& game_version)
 {
-   const auto source_world = vic3::ImportWorld(configuration.save_game);
+   commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory, {});
+   const auto source_world = vic3::ImportWorld(configuration.save_game, mod_filesystem);
 
    constexpr mappers::CountryMapper country_mapper;
 
