@@ -19,7 +19,8 @@ TEST(Vic3WorldWorldVic3WorldImporter, ExceptionForMissingSave)
 TEST(Vic3WorldWorldVic3WorldImporter, DefaultsAreCorrect)
 {
    const auto world = ImportWorld("test_files/vic3_world/world/empty_save.vic3",
-       commonItems::ModFilesystem("test_files/vic3_world/empty_world", {}), false);
+       commonItems::ModFilesystem("test_files/vic3_world/empty_world", {}),
+       false);
 
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().empty());
@@ -30,7 +31,8 @@ TEST(Vic3WorldWorldVic3WorldImporter, DefaultsAreCorrect)
 TEST(Vic3WorldWorldVic3WorldImporter, WorldCanBeImported)
 {
    const auto world = ImportWorld("test_files/vic3_world/world/test_save.vic3",
-       commonItems::ModFilesystem("test_files/vic3_world/world", {}), false);
+       commonItems::ModFilesystem("test_files/vic3_world/world", {}),
+       false);
 
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(testing::Pair(1, Country("TAG")), testing::Pair(3, Country("TWO"))));

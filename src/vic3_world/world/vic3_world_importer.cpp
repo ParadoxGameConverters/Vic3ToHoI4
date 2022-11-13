@@ -46,7 +46,9 @@ std::istringstream MeltSave(std::string_view save_filename, bool debug)
 }  // namespace
 
 
-vic3::World vic3::ImportWorld(std::string_view save_filename, const commonItems::ModFilesystem& mod_filesystem, bool debug)
+vic3::World vic3::ImportWorld(std::string_view save_filename,
+    const commonItems::ModFilesystem& mod_filesystem,
+    bool debug)
 {
    Log(LogLevel::Info) << "*** Hello Vic3, loading World. ***";
 
