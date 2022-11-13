@@ -106,7 +106,7 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
          hoi4_to_vic3_province_map_.emplace(num, the_mapping.vic3_provinces);
       }
    });
-   mapping_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
+   mapping_parser_.IgnoreAndLogUnregisteredItems();
 }
 
 

@@ -10,7 +10,7 @@ vic3::StateImporter::StateImporter()
    state_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
       provinces_parser_.parseStream(input_stream);
    });
-   state_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+   state_parser_.IgnoreUnregisteredItems();
 
    provinces_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
       const auto provinces_input = commonItems::getInts(input_stream);

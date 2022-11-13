@@ -19,7 +19,7 @@ mappers::ProvinceMappingImporter::ProvinceMappingImporter()
       hoi4_provinces_.push_back(commonItems::getInt(theStream));
    });
    parser_.registerKeyword("comment", commonItems::ignoreItem);
-   parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
+   parser_.IgnoreAndLogUnregisteredItems();
 }
 
 
