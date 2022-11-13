@@ -16,7 +16,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionsCanBeLoaded)
    commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/provinces", {});
    const auto province_definitions = ProvinceDefinitionsLoader{}.LoadProvinceDefinitions(mod_filesystem);
 
-   EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x000001", "x000200"));
+   EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x000001", "x030000", "xABCDEF", "x000200"));
 }
 
 
@@ -29,8 +29,6 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitions, BadDefinitionsAreLogged)
    commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/provinces", {});
    const auto province_definitions = ProvinceDefinitionsLoader{}.LoadProvinceDefinitions(mod_filesystem);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"([DEBUG]     Ignoring keyword: X030000)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"([DEBUG]     Ignoring keyword: xabcdef)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"([DEBUG]     Ignoring keyword: 0x000004)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"([DEBUG]     Ignoring keyword: x12345)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"([DEBUG]     Ignoring keyword: x1234567)"));

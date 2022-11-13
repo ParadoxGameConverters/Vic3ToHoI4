@@ -1,7 +1,7 @@
 # a comment
 x000001="ignored"
-X030000="bad_x"
-xabcdef="bad_characters"
+X030000="uppercase_x"
+xabcdef="lowercase_characters"
 0x000004="bad_prefix"
 x12345="too_short"
 x1234567="too_long"
