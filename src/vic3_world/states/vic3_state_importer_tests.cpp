@@ -61,7 +61,7 @@ TEST(Vic3WorldStateVic3StateImporter, ItemsCanBeInput)
 
 TEST(Vic3WorldStateVic3StateImporter, MultipleStatesCanBeInput)
 {
-   StateImporter state_importer{};
+   StateImporter state_importer;
 
    std::stringstream input_one;
    input_one << "={\n";
