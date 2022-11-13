@@ -76,7 +76,7 @@ vic3::World vic3::ImportWorld(std::string_view save_filename,
    });
    save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {
    });
-   save_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+   save_parser.IgnoreUnregisteredItems();
 
    save_parser.parseStream(save);
    Log(LogLevel::Info) << fmt::format("\t{} countries imported", countries.size());

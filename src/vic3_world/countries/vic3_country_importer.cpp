@@ -11,7 +11,7 @@ vic3::CountryImporter::CountryImporter()
    country_parser_.registerKeyword("definition", [this](std::istream& input_stream) {
       tag_ = commonItems::remQuotes(commonItems::getString(input_stream));
    });
-   country_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+   country_parser_.IgnoreUnregisteredItems();
 }
 
 
