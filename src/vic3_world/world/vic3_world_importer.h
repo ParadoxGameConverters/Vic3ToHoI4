@@ -14,7 +14,7 @@ namespace vic3
 {
 
 
-World ImportWorld(std::string_view save_filename, const commonItems::ModFilesystem& mod_filesystem);
+World ImportWorld(std::string_view save_filename, const commonItems::ModFilesystem& mod_filesystem, bool debug);
 
 
 }  // namespace vic3

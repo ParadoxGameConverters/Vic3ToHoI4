@@ -74,7 +74,6 @@
     <ClCompile Include="external\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="external\googletest\googletest\src\gtest_main.cc" />
-    <ClCompile Include="external\zip\src\zip.c" />
     <ClCompile Include="src\configuration\configuration_importer.cpp" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp" />
@@ -131,8 +130,7 @@
     <ClInclude Include="external\fmt\include\fmt\format-inl.h" />
     <ClInclude Include="external\fmt\include\fmt\format.h" />
     <ClInclude Include="external\fmt\include\fmt\os.h" />
-    <ClInclude Include="external\zip\src\miniz.h" />
-    <ClInclude Include="external\zip\src\zip.h" />
+    <ClInclude Include="external\rakaly\rakaly.h" />
     <ClInclude Include="src\configuration\configuration.h" />
     <ClInclude Include="src\configuration\configuration_importer.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_country.h" />
@@ -175,6 +173,14 @@
       <DeploymentContent>true</DeploymentContent>
       <Link>blank_mod\%(RecursiveDir)\%(Filename)%(Extension)</Link>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="external\rakaly\rakaly.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="external\rakaly\rakaly.dll.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -37,12 +37,6 @@
     <Filter Include="src\vic3_world\world">
       <UniqueIdentifier>{ed3aad4a-ef6b-4766-bce7-2fa6733d9ac7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\zip">
-      <UniqueIdentifier>{f1c78b2f-89cb-4462-bf0f-bb1a3ffd1470}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\zip\src">
-      <UniqueIdentifier>{2b09825b-24f7-4ffc-a2df-01d8d4bd7fab}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\vic3_world\states">
       <UniqueIdentifier>{eb5c7333-d885-4832-b5a4-e678963fcff8}</UniqueIdentifier>
     </Filter>
@@ -75,6 +69,9 @@
     </Filter>
     <Filter Include="external\commonItems\ZipLib">
       <UniqueIdentifier>{6633743f-c72e-4aa3-a0b7-58ad094e78e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\rakaly">
+      <UniqueIdentifier>{8d02dff1-82fe-48fa-a5e5-1a90aded3f17}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\mappers\provinces">
       <UniqueIdentifier>{a1f20159-191e-4037-8ed1-c238521614aa}</UniqueIdentifier>
@@ -137,9 +134,6 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\world\vic3_world_importer.cpp">
       <Filter>src\vic3_world\world</Filter>
-    </ClCompile>
-    <ClCompile Include="external\zip\src\zip.c">
-      <Filter>external\zip\src</Filter>
     </ClCompile>
     <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp">
       <Filter>src\hoi4_world\countries</Filter>
@@ -254,12 +248,6 @@
     <ClInclude Include="src\vic3_world\world\vic3_world_importer.h">
       <Filter>src\vic3_world\world</Filter>
     </ClInclude>
-    <ClInclude Include="external\zip\src\miniz.h">
-      <Filter>external\zip\src</Filter>
-    </ClInclude>
-    <ClInclude Include="external\zip\src\zip.h">
-      <Filter>external\zip\src</Filter>
-    </ClInclude>
     <ClInclude Include="src\vic3_world\world\vic3_world.h">
       <Filter>src\vic3_world\world</Filter>
     </ClInclude>
@@ -311,6 +299,7 @@
     <ClInclude Include="external\commonItems\ModLoader\ModParser.h">
       <Filter>external\commonItems\ModLoader</Filter>
     </ClInclude>
+    <ClInclude Include="external\rakaly\rakaly.h" />
     <ClInclude Include="src\mappers\provinces\province_mapper.h">
       <Filter>src\mappers\provinces</Filter>
     </ClInclude>
@@ -334,5 +323,13 @@
     <CopyFileToFolders Include="data\version.txt">
       <Filter>data</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="external\rakaly\rakaly.dll">
+      <Filter>external\rakaly</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="external\rakaly\rakaly.dll.lib">
+      <Filter>external\rakaly</Filter>
+    </Library>
   </ItemGroup>
 </Project>

@@ -46,12 +46,6 @@
     <Filter Include="src\vic3_world\world">
       <UniqueIdentifier>{0e291d80-5f73-4327-87a6-de10c3ce7876}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\zip">
-      <UniqueIdentifier>{53a76412-3aeb-4e08-a684-b4c35c0f7e83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\zip\src">
-      <UniqueIdentifier>{09f478ef-5b8d-4095-ae42-a503d1c763bd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\vic3_world\states">
       <UniqueIdentifier>{869e88c1-1a7d-48f0-b591-12b1410be705}</UniqueIdentifier>
     </Filter>
@@ -87,6 +81,9 @@
     </Filter>
     <Filter Include="src\vic3_world\provinces">
       <UniqueIdentifier>{f5be605b-7aae-40e8-81dd-b982c3bd409e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\rakaly">
+      <UniqueIdentifier>{e5c09023-6c6e-4b3a-9531-95bb9df31430}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -155,9 +152,6 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\world\vic3_world_importer.cpp">
       <Filter>src\vic3_world\world</Filter>
-    </ClCompile>
-    <ClCompile Include="external\zip\src\zip.c">
-      <Filter>external\zip\src</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\world\vic3_world_importer_tests.cpp">
       <Filter>src\vic3_world\world</Filter>
@@ -317,12 +311,6 @@
     <ClInclude Include="src\vic3_world\world\vic3_world_importer.h">
       <Filter>src\vic3_world\world</Filter>
     </ClInclude>
-    <ClInclude Include="external\zip\src\miniz.h">
-      <Filter>external\zip\src</Filter>
-    </ClInclude>
-    <ClInclude Include="external\zip\src\zip.h">
-      <Filter>external\zip\src</Filter>
-    </ClInclude>
     <ClInclude Include="src\mappers\country\country_mapper.h">
       <Filter>src\mappers\country</Filter>
     </ClInclude>
@@ -374,6 +362,19 @@
     <ClInclude Include="external\commonItems\ModLoader\ModParser.h">
       <Filter>external\commonItems\ModLoader</Filter>
     </ClInclude>
+    <ClInclude Include="external\rakaly\rakaly.h">
+      <Filter>external\rakaly</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="external\rakaly\rakaly.dll.lib">
+      <Filter>external\rakaly</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="external\rakaly\rakaly.dll">
+      <Filter>external\rakaly</Filter>
+    </CopyFileToFolders>
     <ClInclude Include="src\mappers\provinces\province_mapper.h">
       <Filter>src\mappers\provinces</Filter>
     </ClInclude>

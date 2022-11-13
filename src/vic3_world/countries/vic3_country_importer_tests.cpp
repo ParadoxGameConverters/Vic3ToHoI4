@@ -32,14 +32,16 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
 
 TEST(Vic3WorldCountriesCountryImporter, MultipleCountriesCanBeImported)
 {
+   CountryImporter country_importer;
+
    std::stringstream input_one;
    input_one << "={\n";
    input_one << "\tdefinition=\"TAG\"";
    input_one << "}";
-   const auto country_one = CountryImporter{}.ImportCountry(input_one);
+   const auto country_one = country_importer.ImportCountry(input_one);
 
    std::stringstream input_two;
-   const auto country_two = CountryImporter{}.ImportCountry(input_two);
+   const auto country_two = country_importer.ImportCountry(input_two);
 
    EXPECT_EQ(country_one.GetTag(), "TAG");
    EXPECT_TRUE(country_two.GetTag().empty());
