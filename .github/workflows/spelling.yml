@@ -12,3 +12,6 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           locale: "US"
+      - name: Cleanup
+        uses: colpal/actions-clean@v1
+        if: ${{ true }} # To ensure this step runs even when earlier steps fail

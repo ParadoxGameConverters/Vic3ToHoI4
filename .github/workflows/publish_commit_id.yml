@@ -24,3 +24,8 @@ jobs:
         user_name: 'idhrendur'
         destination_branch: 'main'
         commit_message: "Publish Vic3ToHoI4's commit id"
+
+    - name: "Cleanup"
+      if: ${{ true }}
+      run: |
+        Get-ChildItem -Path $Env:GITHUB_WORKSPACE -Recurse -Force | Remove-Item -force -recurse
