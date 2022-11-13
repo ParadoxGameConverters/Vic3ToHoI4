@@ -25,7 +25,6 @@ jobs:
         destination_branch: 'main'
         commit_message: "Publish Vic3ToHoI4's commit id"
 
-    - name: "Cleanup"
-      if: ${{ true }}
-      run: |
-        Get-ChildItem -Path $Env:GITHUB_WORKSPACE -Recurse -Force | Remove-Item -force -recurse
+    - name: Cleanup
+      uses: colpal/actions-clean@v1
+      if: ${{ true }} # To ensure this step runs even when earlier steps fail
