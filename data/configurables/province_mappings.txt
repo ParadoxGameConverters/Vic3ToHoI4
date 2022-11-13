@@ -4,82 +4,1102 @@
 	link = { comment = "* **********" }
 	link = { comment = "* " }
 	link = { comment = "* * STATE_SVEALAND " }
+	link = { vic3 = 0x93C76C hoi4 = 35 } #  x93C76C 53.36%,  -> 00181E
+	link = { vic3 = 0xA6C31B hoi4 = 69 } #  xA6C31B 65.43%,  -> 003346
+	link = { vic3 = 0xE6C5FC hoi4 = 77 } #  xE6C5FC 48.76%,  -> 003C41
+	link = { vic3 = 0x656512 hoi4 = 147 } #  x656512 90.91%,  -> 009032
+	link = { vic3 = 0x6F40EC vic3 = 0xD155CE hoi4 = 156 } #  x6F40EC 32.52%,  xD155CE 46.67%,  -> 00992D
+	link = { vic3 = 0x604060 hoi4 = 161 } #  x604060 59.38%,  -> 009FB4
+	link = { vic3 = 0x90845E hoi4 = 3005 } #  x90845E 63.73%,  -> 2A09D5
+	link = { vic3 = 0x3E2C22 hoi4 = 3070 } #  x3E2C22 55.91%,  -> 2A3FC1
+	link = { vic3 = 0x317138 hoi4 = 3106 } #  x317138 63.23%,  -> 2A6908
+	link = { vic3 = 0xE7A6D6 hoi4 = 3128 } #  xE7A6D6 55.26%,  -> 2A8185
+	link = { vic3 = 0x4C9918 hoi4 = 3141 } #  x4C9918 68.71%,  -> 2A93B2
+	link = { vic3 = 0xD702F7 hoi4 = 3148 } #  xD702F7 100%,  -> 2A9CAD
+	link = { vic3 = 0xA86C50 hoi4 = 3182 } #  xA86C50 72.04%,  -> 2AC658
+	link = { vic3 = 0x4FA424 hoi4 = 6028 } #  x4FA424 40.99%,  -> 540F9C
+	link = { vic3 = 0x9686A5 hoi4 = 6050 } #  x9686A5 64.9%,  -> 541E1F
+	link = { vic3 = 0x6CF949 hoi4 = 6084 } #  x6CF949 92.41%,  -> 543947
+	link = { vic3 = 0xB90566 vic3 = 0xC8AEAF hoi4 = 6093 } #  xB90566 50.23%,  xC8AEAF 40.91%,  -> 544242
+	link = { vic3 = 0xCF16B1 hoi4 = 6123 } #  xCF16B1 43.28%,  -> 546942
+	link = { vic3 = 0x298E7B hoi4 = 6127 } #  x298E7B 83.26%,  -> 546C88
+	link = { vic3 = 0x216569 hoi4 = 6147 } #  x216569 69.63%,  -> 548406
+	link = { vic3 = 0xA9078A hoi4 = 6164 } #  xA9078A 52.31%,  -> 549633
+	link = { vic3 = 0xF8E400 hoi4 = 6188 } #  xF8E400 60.64%,  -> 54B15B
+	link = { vic3 = 0x36F523 vic3 = 0xF08323 hoi4 = 6195 } #  x36F523 70.87%,  xF08323 50.98%,  -> 54BA56
+	link = { vic3 = 0x41C729 hoi4 = 6209 } #  x41C729 41.9%,  -> 54C9D8
+	link = { vic3 = 0x9BBBE3 hoi4 = 6311 } #  x9BBBE3 94.59%,  -> 55540B
+	link = { vic3 = 0x6E95C2 hoi4 = 6397 } #  x6E95C2 80%,  -> 55BD9C
+	link = { vic3 = 0x4836F2 hoi4 = 9054 } #  x4836F2 59.38%,  -> 7E121D
+	link = { vic3 = 0x62D0D4 hoi4 = 9109 } #  x62D0D4 47.57%,  -> 7E3CC7
+	link = { vic3 = 0xB9391F hoi4 = 9138 } #  xB9391F 44.56%,  -> 7E6086
+	link = { vic3 = 0xE9B084 hoi4 = 9149 } #  xE9B084 36.33%,  -> 7E6F09
+	link = { vic3 = 0xEA6A0F hoi4 = 9173 } #  xEA6A0F 90.58%,  -> 7E8786
+	link = { vic3 = 0x4628A5 hoi4 = 9182 } #  x4628A5 64.63%,  -> 7E932C
+	link = { vic3 = 0x4B02EB hoi4 = 9185 } #  x4B02EB 63.41%,  -> 7E99B3
+	link = { vic3 = 0xEB5D5F hoi4 = 9193 } #  xEB5D5F 62.36%,  -> 7EA245
+	link = { vic3 = 0xF48646 hoi4 = 9209 } #  xF48646 68.6%,  -> 7EB4DB
+	link = { vic3 = 0x3844C0 vic3 = 0xFCCAFA hoi4 = 9218 } #  x3844C0 37.35%,  xFCCAFA 84.83%,  -> 7EBDD6
+	link = { vic3 = 0x432E07 hoi4 = 9308 } #  x432E07 58.19%,  -> 7F578B
+	link = { vic3 = 0x404643 vic3 = 0xA82FF7 hoi4 = 9393 } #  x404643 38.43%,  xA82FF7 36.55%,  -> 7FC01D
+	link = { vic3 = 0xA001A0 vic3 = 0xCBFD28 hoi4 = 11044 } #  xA001A0 41.19%,  xCBFD28 54.4%,  -> A8159D
+	link = { vic3 = 0xBC0288 hoi4 = 11053 } #  xBC0288 90.62%,  -> A81E98
+	link = { vic3 = 0xA08021 hoi4 = 11070 } #  xA08021 74.55%,  -> A830C5
+	link = { vic3 = 0x93C3BC vic3 = 0xB3F1FB hoi4 = 11082 } #  x93C3BC 87.43%,  xB3F1FB 59.02%,  -> A83F48
+	link = { vic3 = 0x823263 hoi4 = 11114 } #  x823263 68.51%,  -> A86307
+	link = { vic3 = 0xC480A5 hoi4 = 11163 } #  xC480A5 69.47%,  -> A89C34
+	link = { vic3 = 0x0974E5 hoi4 = 11188 } #  x0974E5 54.4%,  -> A8B75C
+	link = { vic3 = 0x24A2F1 hoi4 = 11568 hoi4 = 11197 } #  x24A2F1 73.98%,  -> A8C057
+	link = { vic3 = 0x45B6EF vic3 = 0x8AC21D hoi4 = 11278 } #  x45B6EF 61.68%,  x8AC21D 37.9%,  -> A94B89
+	link = { vic3 = 0xC0C0E0 vic3 = 0xD96FB9 hoi4 = 11289 } #  xC0C0E0 76.36%,  xD96FB9 58.11%,  -> A9572F
+	link = { vic3 = 0xEFA14D hoi4 = 11380 } #  xEFA14D 66.17%,  -> A9C39D
 	link = { comment = "* * STATE_GOTALAND " }
+	link = { vic3 = 0xFCBE2E hoi4 = 171 } #  xFCBE2E 55.56%,  -> 00AB5A
+	link = { vic3 = 0x4040DF hoi4 = 211 } #  x4040DF 77.43%,  -> 01034B
+	link = { vic3 = 0x31D8B4 vic3 = 0x46568F hoi4 = 295 } #  x31D8B4 70.45%,  x46568F 75.21%,  -> 014E0A
+	link = { vic3 = 0x06D48F vic3 = 0xA67CC8 hoi4 = 299 } #  x06D48F 44.44%,  xA67CC8 75.17%,  -> 0151B4
+	link = { vic3 = 0x4539F8 hoi4 = 329 } #  x4539F8 64.04%,  -> 0175D7
+	link = { vic3 = 0xCD8A76 hoi4 = 363 } #  xCD8A76 53.39%,  -> 019F1E
+	link = { vic3 = 0xB7733E hoi4 = 383 } #  xB7733E 48.6%,  -> 01B79B
+	link = { vic3 = 0x6C9F3E hoi4 = 1192 hoi4 = 3063 } #  x6C9F3E 46.34%,  -> 2A36C6
+	link = { vic3 = 0x2B5590 hoi4 = 526 hoi4 = 3229 } #  x2B5590 34.53%,  -> 2B1B08
+	link = { vic3 = 0x0212F4 vic3 = 0xB714A1 hoi4 = 3286 } #  x0212F4 52.59%,  xB714A1 51.32%,  -> 2B518A
+	link = { vic3 = 0xA00120 hoi4 = 767 hoi4 = 3386 } #  xA00120 83.56%,  -> 2BC6C1
+	link = { vic3 = 0x41C0E0 hoi4 = 6310 } #  x41C0E0 55.61%,  -> 55512E
+	link = { vic3 = 0x786C46 hoi4 = 6331 } #  x786C46 58.92%,  -> 556C56
+	link = { vic3 = 0x04C53E vic3 = 0xA0DB88 hoi4 = 6406 } #  x04C53E 32.97%,  xA0DB88 43.97%,  -> 55C942
+	link = { vic3 = 0xC62E6A hoi4 = 9329 } #  xC62E6A 44.04%,  -> 7F6FD6
+	link = { vic3 = 0x90B30A hoi4 = 9406 } #  x90B30A 77.78%,  -> 7FCCC2
+	link = { vic3 = 0xEA7E80 hoi4 = 9410 } #  xEA7E80 46.94%,  -> 7FD24A
+	link = { vic3 = 0xDFD8A5 vic3 = 0xE5A269 hoi4 = 11231 } #  xDFD8A5 41.38%,  xE5A269 48.04%,  -> A91507
+	link = { vic3 = 0x41C061 hoi4 = 3314 hoi4 = 11280 } #  x41C061 72.16%,  -> A94E34
+	link = { vic3 = 0x71C4AC vic3 = 0xE70DB3 hoi4 = 11311 } #  x71C4AC 39.43%,  xE70DB3 55.41%,  -> A97257
+	link = { vic3 = 0x1B711F hoi4 = 13234 hoi4 = 11390 } #  x1B711F 63.07%,  -> A9CF43
 	link = { comment = "* * STATE_SCANIA " }
+	link = { vic3 = 0x187CE5 vic3 = 0xBE3D27 hoi4 = 3307 } #  x187CE5 78.75%,  xBE3D27 44.68%,  -> 2B69D5
+	link = { vic3 = 0xC0C061 hoi4 = 6120 } #  xC0C061 86.27%,  -> 5463BA
+	link = { vic3 = 0xD19738 hoi4 = 6345 } #  xD19738 47.43%,  -> 558160
+	link = { vic3 = 0xD4DC3C hoi4 = 6412 } #  xD4DC3C 91.23%,  -> 55CFC9
+	link = { vic3 = 0xAB6EC7 hoi4 = 9300 } #  xAB6EC7 50%,  -> 7F4BB3
+	link = { vic3 = 0x2F5177 hoi4 = 9362 } #  x2F5177 69.12%,  -> 7F991D
+	link = { vic3 = 0xFBA406 hoi4 = 11160 } #  xFBA406 44.26%,  -> A896AC
+	link = { vic3 = 0x5D997D hoi4 = 11215 } #  x5D997D 61.61%,  -> A900CA
+	link = { vic3 = 0xC04161 hoi4 = 3328 hoi4 = 11376 } #  xC04161 41.09%,  -> A9C02A
 	link = { comment = "* * STATE_NORRLAND " }
+	link = { vic3 = 0x45F53A vic3 = 0x69CDA6 hoi4 = 11 } #  x45F53A 64.82%,  x69CDA6 64.11%,  -> 000687
+	link = { vic3 = 0xA33BA5 hoi4 = 46 } #  xA33BA5 50%,  -> 001ED2
+	link = { vic3 = 0x5ECC55 hoi4 = 49 } #  x5ECC55 47.72%,  -> 002119
+	link = { vic3 = 0x47F238 vic3 = 0xE04BF5 hoi4 = 58 } #  x47F238 71.43%,  xE04BF5 62.44%,  -> 0027CD
+	link = { vic3 = 0x3C380F vic3 = 0xB0CD27 hoi4 = 61 } #  x3C380F 53.88%,  xB0CD27 71.72%,  -> 002AAA
+	link = { vic3 = 0x2D39E7 vic3 = 0xD582BB vic3 = 0xE99CC9 hoi4 = 101 } #  x2D39E7 50.7%,  xD582BB 89.15%,  xE99CC9 64.63%,  -> 005732
+	link = { vic3 = 0x5C738D hoi4 = 109 } #  x5C738D 54.68%,  -> 006096
+	link = { vic3 = 0x542385 hoi4 = 113 } #  x542385 58.57%,  -> 00661E
+	link = { vic3 = 0x5A1735 hoi4 = 118 } #  x5A1735 76.95%,  -> 006C3C
+	link = { vic3 = 0xC2087C hoi4 = 130 } #  xC2087C 43.48%,  -> 0078E1
+	link = { vic3 = 0x0D190C vic3 = 0x918BA2 hoi4 = 145 } #  x0D190C 81.13%,  x918BA2 51.33%,  -> 008D1E
+	link = { vic3 = 0x1F7647 hoi4 = 148 } #  x1F7647 91.51%,  -> 00905F
+	link = { vic3 = 0xD56867 vic3 = 0xD5FBFC hoi4 = 151 } #  xD56867 58.48%,  xD5FBFC 80.17%,  -> 00933C
+	link = { vic3 = 0x4DDB2C vic3 = 0xC59B64 hoi4 = 168 } #  x4DDB2C 65.23%,  xC59B64 40.38%,  -> 00A846
+	link = { vic3 = 0x10D8D8 hoi4 = 182 } #  x10D8D8 83.29%,  -> 00B7C8
+	link = { vic3 = 0x988205 hoi4 = 184 } #  x988205 88.49%,  -> 00BAA5
+	link = { vic3 = 0x088E56 vic3 = 0x578A4F hoi4 = 190 } #  x088E56 64.39%,  x578A4F 49.55%,  -> 00C0C3
+	link = { vic3 = 0x0B3385 vic3 = 0x1B9E26 hoi4 = 201 } #  x0B3385 90.33%,  x1B9E26 66.55%,  -> 00CF46
+	link = { vic3 = 0xA61D8D hoi4 = 202 } #  xA61D8D 45.36%,  -> 00CFAF
+	link = { vic3 = 0x65B92F vic3 = 0xEAFB06 hoi4 = 205 } #  x65B92F 47.98%,  xEAFB06 40.57%,  -> 00D28C
+	link = { vic3 = 0x099666 vic3 = 0x67082A hoi4 = 3003 } #  x099666 56.97%,  x67082A 85.42%,  -> 2A0908
+	link = { vic3 = 0xC7CA0F hoi4 = 3039 } #  xC7CA0F 74.57%,  -> 2A2153
+	link = { vic3 = 0x1DEDA9 hoi4 = 3044 } #  x1DEDA9 97.37%,  -> 2A2430
+	link = { vic3 = 0xB372EF hoi4 = 3045 } #  xB372EF 45.43%,  -> 2A2499
+	link = { vic3 = 0x36E9BA vic3 = 0x49AFFE vic3 = 0xFF6F4B hoi4 = 3054 } #  x36E9BA 41.76%,  x49AFFE 94.34%,  xFF6F4B 47.06%,  -> 2A2A4E
+	link = { vic3 = 0x3536B3 vic3 = 0x43613F hoi4 = 3062 } #  x3536B3 44.16%,  x43613F 65.67%,  -> 2A368F
+	link = { vic3 = 0x1B4D60 vic3 = 0x2FB6A7 hoi4 = 3095 } #  x1B4D60 69.42%,  x2FB6A7 100%,  -> 2A5AB2
+	link = { vic3 = 0x7B5240 hoi4 = 3100 } #  x7B5240 74.05%,  -> 2A6317
+	link = { vic3 = 0xF1329A vic3 = 0xF4B64B hoi4 = 3104 } #  xF1329A 94.47%,  xF4B64B 34.76%,  -> 2A6658
+	link = { vic3 = 0x03B36A hoi4 = 3108 } #  x03B36A 31.33%,  -> 2A699E
+	link = { vic3 = 0xA7B5CE hoi4 = 3111 } #  xA7B5CE 87.74%,  -> 2A6CDF
+	link = { vic3 = 0x610180 vic3 = 0x9001B6 hoi4 = 3113 } #  x610180 55.02%,  x9001B6 40%,  -> 2A6FBC
+	link = { vic3 = 0x7EB12E vic3 = 0xCC3115 hoi4 = 3138 } #  x7EB12E 42.62%,  xCC3115 64.74%,  -> 2A909E
+	link = { vic3 = 0x8009C9 vic3 = 0x8EADE6 hoi4 = 3162 } #  x8009C9 65.7%,  x8EADE6 39.56%,  -> 2AABC6
+	link = { vic3 = 0xAEC76F hoi4 = 3173 } #  xAEC76F 45.37%,  -> 2ABD26
+	link = { vic3 = 0x611A6B vic3 = 0xB44696 vic3 = 0xE56FE5 hoi4 = 3179 } #  x611A6B 44.5%,  xB44696 36.73%,  xE56FE5 80.08%,  -> 2AC344
+	link = { vic3 = 0x09FFED vic3 = 0xF3C7F6 hoi4 = 3191 } #  x09FFED 57.92%,  xF3C7F6 45.02%,  -> 2AD230
+	link = { vic3 = 0x1A295F vic3 = 0xDAF45E hoi4 = 6010 } #  x1A295F 62.81%,  xDAF45E 80%,  -> 5400B0
+	link = { vic3 = 0x17F5A8 hoi4 = 6023 } #  x17F5A8 60.94%,  -> 540C56
+	link = { vic3 = 0x12A0A6 hoi4 = 6024 } #  x12A0A6 70.45%,  -> 540C88
+	link = { vic3 = 0x14CAC8 vic3 = 0xA23443 hoi4 = 6055 } #  x14CAC8 74.92%,  xA23443 53.66%,  -> 542129
+	link = { vic3 = 0x201348 hoi4 = 6063 } #  x201348 77.92%,  -> 5424D3
+	link = { vic3 = 0x0B4908 vic3 = 0xC901E8 hoi4 = 6067 } #  x0B4908 48.22%,  xC901E8 88.55%,  -> 5427B0
+	link = { vic3 = 0xA37B45 hoi4 = 6074 } #  xA37B45 100%,  -> 542DCE
+	link = { vic3 = 0xDF0080 hoi4 = 6083 } #  xDF0080 63.31%,  -> 543910
+	link = { vic3 = 0x4D99D0 vic3 = 0xD65AA2 hoi4 = 6125 } #  x4D99D0 69.08%,  xD65AA2 36.73%,  -> 5469D8
+	link = { vic3 = 0xA23906 vic3 = 0xD46B93 hoi4 = 6126 } #  xA23906 52.85%,  xD46B93 57.99%,  -> 546C1F
+	link = { vic3 = 0x034858 vic3 = 0x61741A hoi4 = 6129 } #  x034858 40.68%,  x61741A 72.19%,  -> 546F60
+	link = { vic3 = 0x7D4196 vic3 = 0xC29B05 hoi4 = 6132 } #  x7D4196 58.59%,  xC29B05 28.71%,  -> 54723D
+	link = { vic3 = 0x3DF5D6 vic3 = 0xC08CD2 hoi4 = 6152 } #  x3DF5D6 77.08%,  xC08CD2 50%,  -> 5487DD
+	link = { vic3 = 0x480DD3 vic3 = 0xA27DDB hoi4 = 6155 } #  x480DD3 78.78%,  xA27DDB 95.43%,  -> 548ABA
+	link = { vic3 = 0x3971BD hoi4 = 6161 } #  x3971BD 99.05%,  -> 54931F
+	link = { vic3 = 0x3DFA21 vic3 = 0xD2B7E0 hoi4 = 6165 } #  x3DFA21 25.47%,  xD2B7E0 86.19%,  -> 549660
+	link = { vic3 = 0x8806E2 vic3 = 0xD30875 hoi4 = 6168 } #  x8806E2 76.05%,  xD30875 86.6%,  -> 54993D
+	link = { vic3 = 0x3A414C vic3 = 0x5F6273 hoi4 = 6170 } #  x3A414C 82.26%,  x5F6273 63.99%,  -> 549C1A
+	link = { vic3 = 0xC416A1 hoi4 = 6185 } #  xC416A1 38.97%,  -> 54AE47
+	link = { vic3 = 0x008BB6 vic3 = 0x84DE76 hoi4 = 6200 } #  x008BB6 49.82%,  x84DE76 66.85%,  -> 54C0A6
+	link = { vic3 = 0xE0D494 vic3 = 0xE5591E hoi4 = 6206 } #  xE0D494 60.34%,  xE5591E 73.95%,  -> 54C6C4
+	link = { vic3 = 0x71B772 hoi4 = 6207 } #  x71B772 95.08%,  -> 54C90B
+	link = { vic3 = 0x761B27 vic3 = 0x7C4A83 vic3 = 0x83A641 hoi4 = 6208 } #  x761B27 85.35%,  x7C4A83 100%,  x83A641 91.87%,  -> 54C9A1
+	link = { vic3 = 0xB2E726 vic3 = 0xD884CA hoi4 = 9035 } #  xB2E726 93.24%,  xD884CA 62.45%,  -> 7E0331
+	link = { vic3 = 0x724142 vic3 = 0xBAA18C hoi4 = 9051 } #  x724142 49.82%,  xBAA18C 57.45%,  -> 7E0FD6
+	link = { vic3 = 0x36C15B hoi4 = 9066 } #  x36C15B 72.54%,  -> 7E18D1
+	link = { vic3 = 0x41C0C0 hoi4 = 9068 } #  x41C0C0 36.84%,  -> 7E1B18
+	link = { vic3 = 0x62F809 vic3 = 0xBA8A9D hoi4 = 9083 } #  x62F809 41.06%,  xBA8A9D 97.1%,  -> 7E24A9
+	link = { vic3 = 0x527230 vic3 = 0x9250AD hoi4 = 9088 } #  x527230 71.52%,  x9250AD 40.77%,  -> 7E2754
+	link = { vic3 = 0x2D0B55 vic3 = 0xB044F6 vic3 = 0xE1AF5C hoi4 = 9093 } #  x2D0B55 51.44%,  xB044F6 77.57%,  xE1AF5C 35.45%,  -> 7E2A31
+	link = { vic3 = 0x1038C8 vic3 = 0x3B3CE9 vic3 = 0x7D7947 hoi4 = 9095 } #  x1038C8 53.81%,  x3B3CE9 55.67%,  x7D7947 99.09%,  -> 7E2D0E
+	link = { vic3 = 0xD85905 hoi4 = 9108 } #  xD85905 62.5%,  -> 7E3C90
+	link = { vic3 = 0x6A76CF hoi4 = 9117 } #  x6A76CF 91.76%,  -> 7E45C2
+	link = { vic3 = 0x9DE993 vic3 = 0xFECE8F hoi4 = 9134 } #  x9DE993 51.26%,  xFECE8F 33.9%,  -> 7E5A95
+	link = { vic3 = 0xA56D10 hoi4 = 9141 } #  xA56D10 74.59%,  -> 7E663B
+	link = { vic3 = 0x6CBB46 vic3 = 0xED6A40 hoi4 = 9143 } #  x6CBB46 92.41%,  xED6A40 62.35%,  -> 7E6918
+	link = { vic3 = 0x17C5B9 vic3 = 0x96C8D6 vic3 = 0xB08854 hoi4 = 9147 } #  x17C5B9 55.45%,  x96C8D6 75.28%,  xB08854 64.79%,  -> 7E6C59
+	link = { vic3 = 0x4265D2 vic3 = 0x628C3C hoi4 = 9148 } #  x4265D2 42.46%,  x628C3C 64.97%,  -> 7E6CC2
+	link = { vic3 = 0xE08001 hoi4 = 9151 } #  xE08001 66.67%,  -> 7E6F9F
+	link = { vic3 = 0x3755D9 vic3 = 0xC24915 hoi4 = 9154 } #  x3755D9 75.3%,  xC24915 69.31%,  -> 7E72E0
+	link = { vic3 = 0x4C05DB vic3 = 0xC13E1E hoi4 = 9171 } #  x4C05DB 84.4%,  xC13E1E 78.38%,  -> 7E871D
+	link = { vic3 = 0xAAC957 hoi4 = 9175 } #  xAAC957 95.81%,  -> 7E8A5E
+	link = { vic3 = 0x86050C vic3 = 0xD94B80 hoi4 = 9178 } #  x86050C 87.32%,  xD94B80 77.13%,  -> 7E8D3B
+	link = { vic3 = 0x4B2FC0 hoi4 = 9186 } #  x4B2FC0 73.21%,  -> 7E99E0
+	link = { vic3 = 0x19490C hoi4 = 9211 } #  x19490C 40.38%,  -> 7EB781
+	link = { vic3 = 0xB2359B hoi4 = 9220 } #  xB2359B 82.01%,  -> 7EC327
+	link = { vic3 = 0x137BA3 vic3 = 0xA5646C hoi4 = 9226 } #  x137BA3 74.68%,  xA5646C 60%,  -> 7EC945
+	link = { vic3 = 0xEE68C2 hoi4 = 9229 } #  xEE68C2 80.34%,  -> 7ECC8B
+	link = { vic3 = 0x0C8979 vic3 = 0x151F54 hoi4 = 11026 } #  x0C8979 67.47%,  x151F54 79.12%,  -> A80307
+	link = { vic3 = 0x2D90A0 hoi4 = 9765 hoi4 = 11040 } #  x2D90A0 42.6%,  -> A81257
+	link = { vic3 = 0x1B880D vic3 = 0xA0D2B0 hoi4 = 11049 } #  x1B880D 79.29%,  xA0D2B0 54.3%,  -> A81B52
+	link = { vic3 = 0x0B904B hoi4 = 11052 } #  x0B904B 53.66%,  -> A81E2F
+	link = { vic3 = 0xC202DF vic3 = 0xF561EA hoi4 = 11058 } #  xC202DF 68.18%,  xF561EA 50.82%,  -> A8244D
+	link = { vic3 = 0x5D8E92 vic3 = 0x66BF36 hoi4 = 11060 } #  x5D8E92 67.61%,  x66BF36 90.09%,  -> A8272A
+	link = { vic3 = 0xD2391D hoi4 = 11067 } #  xD2391D 92.86%,  -> A82DB1
+	link = { vic3 = 0x280ADD vic3 = 0xFAE2CD hoi4 = 11069 } #  x280ADD 60.45%,  xFAE2CD 71.3%,  -> A8308E
+	link = { vic3 = 0x2400E6 vic3 = 0xD42DD0 hoi4 = 11073 } #  x2400E6 88.41%,  xD42DD0 76.06%,  -> A833CF
+	link = { vic3 = 0x61C061 hoi4 = 11091 } #  x61C061 70.11%,  -> A84843
+	link = { vic3 = 0x0AF217 vic3 = 0xDD78C9 hoi4 = 11102 } #  x0AF217 60.19%,  xDD78C9 74.63%,  -> A854B1
+	link = { vic3 = 0x0B5DDB vic3 = 0xCD1FD5 vic3 = 0xD56426 hoi4 = 11112 } #  x0B5DDB 38%,  xCD1FD5 59.91%,  xD56426 48.47%,  -> A86057
+	link = { vic3 = 0x8D2552 hoi4 = 11116 } #  x8D2552 49.17%,  -> A8639D
+	link = { vic3 = 0x5F4052 vic3 = 0x9DC69F hoi4 = 11120 } #  x5F4052 78.83%,  x9DC69F 84.95%,  -> A869BB
+	link = { vic3 = 0x60D50A hoi4 = 11123 } #  x60D50A 56.67%,  -> A86F43
+	link = { vic3 = 0x254371 hoi4 = 11129 } #  x254371 64.52%,  -> A87561
+	link = { vic3 = 0x420C00 hoi4 = 11147 } #  x420C00 57.04%,  -> A88A07
+	link = { vic3 = 0x08D197 vic3 = 0x57503D hoi4 = 11148 } #  x08D197 56.07%,  x57503D 46.41%,  -> A88A9D
+	link = { vic3 = 0x96F571 vic3 = 0xC4C901 hoi4 = 11152 } #  x96F571 59.35%,  xC4C901 60.79%,  -> A88DDE
+	link = { vic3 = 0x7238AF vic3 = 0x7A8123 vic3 = 0x8BB571 hoi4 = 11155 } #  x7238AF 72.91%,  x7A8123 72.25%,  x8BB571 60.09%,  -> A890BB
+	link = { vic3 = 0x09D644 vic3 = 0x114DC0 hoi4 = 11185 } #  x09D644 49.4%,  x114DC0 97.42%,  -> A8B448
+	link = { vic3 = 0xD11F7D hoi4 = 11187 } #  xD11F7D 100%,  -> A8B725
+	link = { vic3 = 0x9371B0 vic3 = 0xFE7B03 hoi4 = 11190 } #  x9371B0 60.76%,  xFE7B03 58.9%,  -> A8BA02
+	link = { vic3 = 0x23BDCB hoi4 = 11201 } #  x23BDCB 66.26%,  -> A8C6A7
+	link = { vic3 = 0x62CF2F vic3 = 0x8039FC vic3 = 0xD523E3 vic3 = 0xE612BF hoi4 = 11208 } #  x62CF2F 61.54%,  x8039FC 54.96%,  xD523E3 98.22%,  xE612BF 74.76%,  -> A8CCC5
 	link = { comment = "* * STATE_GOTLAND " }
+	link = { vic3 = 0x21C0E0 hoi4 = 408 } #  x21C0E0 58.04%,  -> 01D2C3
+	link = { vic3 = 0xF93B61 hoi4 = 6258 } #  xF93B61 90.11%,  -> 551E88
 	link = { comment = "* * STATE_JUTLAND " }
+	link = { vic3 = 0x2D2259 hoi4 = 316 } #  x2D2259 75%,  -> 016655
+	link = { vic3 = 0x0040DF hoi4 = 332 } #  x0040DF 29.97%,  -> 017B5F
+	link = { vic3 = 0x770871 hoi4 = 394 } #  x770871 86.03%,  -> 01C341
+	link = { vic3 = 0x94468F hoi4 = 399 } #  x94468F 93.9%,  -> 01C9C8
+	link = { vic3 = 0x00BFDF hoi4 = 3206 } #  x00BFDF 83.14%,  -> 2B0C85
+	link = { vic3 = 0xB0B469 hoi4 = 3277 } #  xB0B469 50.7%,  -> 2B45B2
+	link = { vic3 = 0x83E6B1 vic3 = 0xEBF079 hoi4 = 3341 } #  x83E6B1 55.24%,  xEBF079 34.42%,  -> 2B931C
+	link = { vic3 = 0x951AF2 hoi4 = 6235 } #  x951AF2 62.33%,  -> 550F06
+	link = { vic3 = 0x1F29B8 vic3 = 0x8041E0 vic3 = 0xBA6413 hoi4 = 6364 } #  x1F29B8 60%,  x8041E0 60.71%,  xBA6413 91.82%,  -> 55969C
 	link = { comment = "* * STATE_ZEALAND " }
+	link = { vic3 = 0xED2792 hoi4 = 3260 } #  xED2792 75.43%,  -> 2B3012
+	link = { vic3 = 0x0CAEA7 hoi4 = 782 hoi4 = 3305 } #  x0CAEA7 38.13%,  -> 2B693F
+	link = { vic3 = 0xC16C09 hoi4 = 480 hoi4 = 3374 } #  xC16C09 39.29%,  -> 2BB7A8
+	link = { vic3 = 0x7F0BF0 hoi4 = 6287 } #  x7F0BF0 83.03%,  -> 553392
+	link = { vic3 = 0x9000E0 hoi4 = 6361 } #  x9000E0 77.61%,  -> 559329
 	link = { comment = "* * STATE_WESTERN_NORWAY " }
+	link = { vic3 = 0x608020 hoi4 = 14 } #  x608020 48.94%,  -> 00099B
+	link = { vic3 = 0x0E3D86 hoi4 = 53 } #  x0E3D86 51.76%,  -> 0024C3
+	link = { vic3 = 0x95773A hoi4 = 65 } #  x95773A 82.51%,  -> 002DBE
+	link = { vic3 = 0xD5D1BC hoi4 = 100 } #  xD5D1BC 49.35%,  -> 005705
+	link = { vic3 = 0x14B28C vic3 = 0x68D9BA vic3 = 0x818B5C hoi4 = 122 } #  x14B28C 69.19%,  x68D9BA 61.57%,  x818B5C 56.99%,  -> 006F82
+	link = { vic3 = 0xBD2765 vic3 = 0xCD61E8 hoi4 = 137 } #  xBD2765 39.11%,  xCD61E8 54.29%,  -> 0081AF
+	link = { vic3 = 0x4F31B0 hoi4 = 144 } #  x4F31B0 89.86%,  -> 008AAA
+	link = { vic3 = 0xBDB05B hoi4 = 199 } #  xBDB05B 57.35%,  -> 00CCD2
+	link = { vic3 = 0xE5E38E hoi4 = 3049 } #  xE5E38E 83.93%,  -> 2A2744
+	link = { vic3 = 0x2803F8 vic3 = 0x7F0E9A hoi4 = 3059 } #  x2803F8 56.32%,  x7F0E9A 77.73%,  -> 2A303F
+	link = { vic3 = 0x79D41F vic3 = 0xD26499 hoi4 = 3090 } #  x79D41F 47.51%,  xD26499 51.03%,  -> 2A573F
+	link = { vic3 = 0x3B7813 hoi4 = 3094 } #  x3B7813 64.9%,  -> 2A5A85
+	link = { vic3 = 0x698566 vic3 = 0xF0F6EC hoi4 = 3114 } #  x698566 54.4%,  xF0F6EC 87.82%,  -> 2A7203
+	link = { vic3 = 0x281240 hoi4 = 3129 } #  x281240 88.37%,  -> 2A8430
+	link = { vic3 = 0x902BE5 hoi4 = 3180 } #  x902BE5 86.67%,  -> 2AC3AD
+	link = { vic3 = 0x639BE2 vic3 = 0x68D218 hoi4 = 3188 } #  x639BE2 70.32%,  x68D218 67.37%,  -> 2ACF53
+	link = { vic3 = 0xE08020 vic3 = 0xE75551 vic3 = 0xF68E1F hoi4 = 3192 } #  xE08020 68.93%,  xE75551 55.68%,  xF68E1F 31.43%,  -> 2AD299
+	link = { vic3 = 0x7F0C6C hoi4 = 6072 } #  x7F0C6C 80.38%,  -> 542AC4
+	link = { vic3 = 0x43D0DD hoi4 = 6080 } #  x43D0DD 65.36%,  -> 5433BF
+	link = { vic3 = 0x087559 hoi4 = 6145 } #  x087559 64.2%,  -> 548129
+	link = { vic3 = 0x6C9016 hoi4 = 6151 } #  x6C9016 51.04%,  -> 5487B0
+	link = { vic3 = 0x3FCBD3 hoi4 = 6176 } #  x3FCBD3 36.07%,  -> 54A2D8
+	link = { vic3 = 0x12FF9E hoi4 = 6184 } #  x12FF9E 96.92%,  -> 54ABD3
+	link = { vic3 = 0xA68FB9 hoi4 = 6216 } #  xA68FB9 82.38%,  -> 54D2D3
+	link = { vic3 = 0xDBDCD5 hoi4 = 9036 } #  xDBDCD5 50.46%,  -> 7E039A
+	link = { vic3 = 0x279380 hoi4 = 9047 } #  x279380 88.42%,  -> 7E0C95
+	link = { vic3 = 0x600120 hoi4 = 9096 } #  x600120 62.28%,  -> 7E2D45
+	link = { vic3 = 0x07973A vic3 = 0x6000A0 hoi4 = 9103 } #  x07973A 48.69%,  x6000A0 34.78%,  -> 7E3640
+	link = { vic3 = 0xD32538 hoi4 = 9170 } #  xD32538 92.21%,  -> 7E84A9
+	link = { vic3 = 0x1AE434 vic3 = 0x261C75 hoi4 = 9174 } #  x1AE434 55.41%,  x261C75 29.72%,  -> 7E8A31
+	link = { vic3 = 0x71D161 hoi4 = 9196 } #  x71D161 77.06%,  -> 7EA559
+	link = { vic3 = 0xC32D3B hoi4 = 9204 } #  xC32D3B 60.47%,  -> 7EAE54
+	link = { vic3 = 0x130906 vic3 = 0xFB677C hoi4 = 9296 } #  x130906 75.54%,  xFB677C 37.39%,  -> 7F4809
+	link = { vic3 = 0x054DDE hoi4 = 11029 } #  x054DDE 45.6%,  -> A8061B
+	link = { vic3 = 0x35369F vic3 = 0x4E1EF2 hoi4 = 11037 } #  x35369F 86.96%,  x4E1EF2 48.52%,  -> A80F16
+	link = { vic3 = 0xE37D01 hoi4 = 11101 } #  xE37D01 62.33%,  -> A85484
+	link = { vic3 = 0x713F62 hoi4 = 11176 } #  x713F62 48.33%,  -> A8A8D9
+	link = { vic3 = 0x25D82F vic3 = 0xCF56A8 hoi4 = 11198 } #  x25D82F 41.9%,  xCF56A8 57.29%,  -> A8C089
+	link = { vic3 = 0x4427D4 hoi4 = 11367 } #  x4427D4 61.5%,  -> A9B41B
 	link = { comment = "* * STATE_NORTHERN_NORWAY " }
+	link = { vic3 = 0x54FB07 hoi4 = 21 } #  x54FB07 74.53%,  -> 000F50
+	link = { vic3 = 0x019127 hoi4 = 22 } #  x019127 57.43%,  -> 000F82
+	link = { vic3 = 0x7AE985 vic3 = 0xC30E30 hoi4 = 38 } #  x7AE985 45.79%,  xC30E30 56.46%,  -> 001B28
+	link = { vic3 = 0x86F266 hoi4 = 44 } #  x86F266 39.19%,  -> 001E05
+	link = { vic3 = 0x830022 vic3 = 0x8B1F54 hoi4 = 64 } #  x830022 100%,  x8B1F54 37.3%,  -> 002D87
+	link = { vic3 = 0x61E786 hoi4 = 76 } #  x61E786 78.71%,  -> 003C0A
+	link = { vic3 = 0x09E374 vic3 = 0x6D989B vic3 = 0xB50EB0 hoi4 = 91 } #  x09E374 89.18%,  x6D989B 89.47%,  xB50EB0 94.02%,  -> 004B8C
+	link = { vic3 = 0x4121CE hoi4 = 102 } #  x4121CE 100%,  -> 00579B
+	link = { vic3 = 0x38427D hoi4 = 107 } #  x38427D 47.77%,  -> 005DB9
+	link = { vic3 = 0x0DE95F vic3 = 0x485E7C vic3 = 0x89ED8E hoi4 = 115 } #  x0DE95F 48.57%,  x485E7C 58.9%,  x89ED8E 89.09%,  -> 00695F
+	link = { vic3 = 0x09C02E vic3 = 0xF90CF0 hoi4 = 128 } #  x09C02E 42.47%,  xF90CF0 93.1%,  -> 007814
+	link = { vic3 = 0x0A9659 vic3 = 0x2A5968 vic3 = 0xFAC5E3 hoi4 = 173 } #  x0A9659 81.45%,  x2A5968 46.12%,  xFAC5E3 99.39%,  -> 00AE00
+	link = { vic3 = 0xCD2ECC hoi4 = 188 } #  xCD2ECC 82.17%,  -> 00C02D
+	link = { vic3 = 0x3A4A5B vic3 = 0x4899E9 hoi4 = 192 } #  x3A4A5B 84.38%,  x4899E9 68.02%,  -> 00C3A0
+	link = { vic3 = 0x46AD99 vic3 = 0xC9D240 hoi4 = 2995 } #  x46AD99 63.95%,  xC9D240 74.1%,  -> 2A0380
+	link = { vic3 = 0x1E1123 vic3 = 0x25FF71 vic3 = 0xFAFC5B hoi4 = 3016 } #  x1E1123 60%,  x25FF71 51.92%,  xFAFC5B 48.12%,  -> 2A1203
+	link = { vic3 = 0x0DAA5F hoi4 = 3873 hoi4 = 3018 } #  x0DAA5F 83.62%,  -> 2A12D0
+	link = { vic3 = 0xBEE0E7 vic3 = 0xD31959 hoi4 = 3022 } #  xBEE0E7 20.35%,  xD31959 20.12%,  -> 2A15AD
+	link = { vic3 = 0xC456A3 hoi4 = 3034 } #  xC456A3 83.74%,  -> 2A1EA8
+	link = { vic3 = 0xC1B67D vic3 = 0xE22563 hoi4 = 3040 } #  xC1B67D 71.1%,  xE22563 42.15%,  -> 2A2185
+	link = { vic3 = 0x73F0BB vic3 = 0xB359B3 hoi4 = 3048 } #  x73F0BB 45.53%,  xB359B3 80%,  -> 2A270D
+	link = { vic3 = 0x3411CB vic3 = 0x614319 vic3 = 0xEB97D0 hoi4 = 3058 } #  x3411CB 89.12%,  x614319 46.72%,  xEB97D0 44%,  -> 2A3008
+	link = { vic3 = 0x7F2EF1 vic3 = 0xFEA2FF hoi4 = 3082 } #  x7F2EF1 41.03%,  xFEA2FF 74.83%,  -> 2A4E0D
+	link = { vic3 = 0x3D2F34 vic3 = 0xEE26D3 hoi4 = 3088 } #  x3D2F34 65.31%,  xEE26D3 26.5%,  -> 2A5494
+	link = { vic3 = 0x4EA73C hoi4 = 3096 } #  x4EA73C 42.98%,  -> 2A5D5D
+	link = { vic3 = 0x1AF7FA vic3 = 0xE4D32D hoi4 = 3098 } #  x1AF7FA 69.96%,  xE4D32D 99.28%,  -> 2A603A
+	link = { vic3 = 0xA7D897 hoi4 = 3126 } #  xA7D897 30.12%,  -> 2A811C
+	link = { vic3 = 0x3B2323 vic3 = 0xC3E351 vic3 = 0xD7313C hoi4 = 3132 } #  x3B2323 51.93%,  xC3E351 45.39%,  xD7313C 63.68%,  -> 2A873A
+	link = { vic3 = 0x041759 vic3 = 0x1D6E8B vic3 = 0xDAD4E4 hoi4 = 3145 } #  x041759 96.4%,  x1D6E8B 32.08%,  xDAD4E4 66.13%,  -> 2A9999
+	link = { vic3 = 0x3A108F vic3 = 0x47561E hoi4 = 6015 } #  x3A108F 53.44%,  x47561E 90.83%,  -> 540601
+	link = { vic3 = 0x86E184 vic3 = 0x98003F hoi4 = 6038 } #  x86E184 86.35%,  x98003F 68.24%,  -> 541551
+	link = { vic3 = 0xC4495B vic3 = 0xCB1829 hoi4 = 6041 } #  xC4495B 57.35%,  xCB1829 68.82%,  -> 54182E
+	link = { vic3 = 0xB1B071 vic3 = 0xF317ED hoi4 = 6071 } #  xB1B071 61.35%,  xF317ED 57.14%,  -> 542A8D
+	link = { vic3 = 0x23D076 vic3 = 0x3C706D vic3 = 0x6F0070 hoi4 = 6079 } #  x23D076 47.41%,  x3C706D 73.53%,  x6F0070 71.79%,  -> 543388
+	link = { vic3 = 0x592B51 vic3 = 0x6480A4 hoi4 = 6092 } #  x592B51 62.2%,  x6480A4 85.82%,  -> 54420B
+	link = { vic3 = 0xE1F410 vic3 = 0xE6030F hoi4 = 6107 } #  xE1F410 64.12%,  xE6030F 92.72%,  -> 54518D
+	link = { vic3 = 0x6EEF13 hoi4 = 6111 } #  x6EEF13 95.53%,  -> 545715
+	link = { vic3 = 0x882403 vic3 = 0xA0F892 hoi4 = 6116 } #  x882403 86.71%,  xA0F892 66.28%,  -> 545D9C
+	link = { vic3 = 0xC040C0 hoi4 = 6118 } #  xC040C0 46.49%,  -> 5460DD
+	link = { vic3 = 0x45E6AA vic3 = 0x4A17E4 vic3 = 0x618080 vic3 = 0xBEEB35 hoi4 = 6130 } #  x45E6AA 99.11%,  x4A17E4 59.76%,  x618080 95.8%,  xBEEB35 38.79%,  -> 546F92
+	link = { vic3 = 0x9CCA2C hoi4 = 6173 } #  x9CCA2C 53.72%,  -> 549FC4
+	link = { vic3 = 0xC0C0C0 vic3 = 0xD642D6 hoi4 = 6187 } #  xC0C0C0 74.47%,  xD642D6 54.43%,  -> 54B124
+	link = { vic3 = 0x2714DA vic3 = 0x9648D4 hoi4 = 6214 } #  x2714DA 79.7%,  x9648D4 86.36%,  -> 54D206
+	link = { vic3 = 0x420A56 vic3 = 0x6278B4 vic3 = 0xC82160 hoi4 = 9042 } #  x420A56 71.77%,  x6278B4 85.6%,  xC82160 88.93%,  -> 7E0981
+	link = { vic3 = 0x5AE106 vic3 = 0x70DE38 hoi4 = 9064 } #  x5AE106 78.38%,  x70DE38 94.02%,  -> 7E1804
+	link = { vic3 = 0x34DA8D vic3 = 0xCEC4EF vic3 = 0xD09F0A hoi4 = 9069 } #  x34DA8D 42.76%,  xCEC4EF 57.8%,  xD09F0A 50.6%,  -> 7E1BAE
+	link = { vic3 = 0x46033F vic3 = 0x81E110 vic3 = 0xD1393B hoi4 = 9089 } #  x46033F 71.01%,  x81E110 32.37%,  xD1393B 62.33%,  -> 7E2786
+	link = { vic3 = 0x2495FE vic3 = 0x7005BB vic3 = 0xFEC50D hoi4 = 9116 } #  x2495FE 74.71%,  x7005BB 95.62%,  xFEC50D 49.3%,  -> 7E458B
+	link = { vic3 = 0x4FB8C3 vic3 = 0xE5B868 hoi4 = 9126 } #  x4FB8C3 59.32%,  xE5B868 59.16%,  -> 7E5131
+	link = { vic3 = 0x4040C0 hoi4 = 9127 } #  x4040C0 38.75%,  -> 7E519A
+	link = { vic3 = 0x4FB481 vic3 = 0xECB406 vic3 = 0xF2B264 hoi4 = 9128 } #  x4FB481 91.46%,  xECB406 90.65%,  xF2B264 58.19%,  -> 7E540E
+	link = { vic3 = 0x474F84 hoi4 = 9139 } #  x474F84 42.73%,  -> 7E635E
+	link = { vic3 = 0x207DC7 vic3 = 0xD27CE2 hoi4 = 9191 } #  x207DC7 82.83%,  xD27CE2 85.49%,  -> 7E9F9A
+	link = { vic3 = 0xC86A6C hoi4 = 9208 } #  xC86A6C 84.57%,  -> 7EB4A4
+	link = { vic3 = 0x042C26 vic3 = 0x1694B1 hoi4 = 9216 } #  x042C26 39.13%,  x1694B1 62.95%,  -> 7EBD09
+	link = { vic3 = 0x4A4712 vic3 = 0x4E2F0A hoi4 = 11034 } #  x4A4712 76.68%,  x4E2F0A 80.31%,  -> A80C02
+	link = { vic3 = 0x1F2ABE vic3 = 0xACD6A1 vic3 = 0xBDE8E5 hoi4 = 11050 } #  x1F2ABE 83.93%,  xACD6A1 93.85%,  xBDE8E5 92.31%,  -> A81B84
+	link = { vic3 = 0xAFCD48 vic3 = 0xD2422B hoi4 = 11063 } #  xAFCD48 95.56%,  xD2422B 88.75%,  -> A82A07
+	link = { vic3 = 0x5BE09E vic3 = 0xA49115 vic3 = 0xCAC65D hoi4 = 11077 } #  x5BE09E 50.94%,  xA49115 65.16%,  xCAC65D 61.45%,  -> A83989
+	link = { vic3 = 0x80A2FD vic3 = 0xEFBAB6 hoi4 = 11090 } #  x80A2FD 75.98%,  xEFBAB6 68.12%,  -> A8480C
+	link = { vic3 = 0x72E8FA vic3 = 0xC6AC2B hoi4 = 11100 } #  x72E8FA 78.08%,  xC6AC2B 72.22%,  -> A8541B
+	link = { vic3 = 0x33E4D8 vic3 = 0x9BB6A2 hoi4 = 11104 } #  x33E4D8 47.65%,  x9BB6A2 96.24%,  -> A8578E
+	link = { vic3 = 0x37729A hoi4 = 11118 } #  x37729A 65.87%,  -> A866DE
+	link = { vic3 = 0x5F553A vic3 = 0x74BF34 vic3 = 0xB5F85B hoi4 = 11157 } #  x5F553A 55.24%,  x74BF34 59.79%,  xB5F85B 59.84%,  -> A89398
+	link = { vic3 = 0x14814F vic3 = 0x1D68E4 vic3 = 0x9BF025 hoi4 = 11169 } #  x14814F 91.92%,  x1D68E4 61.21%,  x9BF025 47.79%,  -> A8A21B
+	link = { vic3 = 0xE1D87A hoi4 = 11173 } #  xE1D87A 68.2%,  -> A8A5C5
 	link = { comment = "* * STATE_EASTERN_NORWAY " }
+	link = { vic3 = 0xE8E297 hoi4 = 10 } #  xE8E297 71.74%,  -> 000655
+	link = { vic3 = 0x2AAFE1 hoi4 = 27 } #  x2AAFE1 88.3%,  -> 001296
+	link = { vic3 = 0x777860 vic3 = 0xDE9061 hoi4 = 133 } #  x777860 33.61%,  xDE9061 54.05%,  -> 007E05
+	link = { vic3 = 0x2080A0 hoi4 = 179 } #  x2080A0 76.65%,  -> 00B455
+	link = { vic3 = 0x5710E5 vic3 = 0x8FC6B4 hoi4 = 3007 } #  x5710E5 38.63%,  x8FC6B4 40.14%,  -> 2A0C1C
+	link = { vic3 = 0x4D0D24 vic3 = 0x907B35 hoi4 = 3021 } #  x4D0D24 62.55%,  x907B35 71.83%,  -> 2A1517
+	link = { vic3 = 0xFE44C9 hoi4 = 3093 } #  xFE44C9 44.05%,  -> 2A5A1C
+	link = { vic3 = 0x0844FB vic3 = 0xA32B85 hoi4 = 3105 } #  x0844FB 74.34%,  xA32B85 36.16%,  -> 2A66C1
+	link = { vic3 = 0x673DA2 hoi4 = 3136 } #  x673DA2 78.62%,  -> 2A8D2B
+	link = { vic3 = 0xC041E0 hoi4 = 3171 } #  xC041E0 63.96%,  -> 2AB7D5
+	link = { vic3 = 0x85F71F hoi4 = 3752 hoi4 = 3183 } #  x85F71F 68.63%,  -> 2AC68A
+	link = { vic3 = 0xAEEE54 hoi4 = 6042 } #  xAEEE54 42.73%,  -> 541897
+	link = { vic3 = 0x8F7F39 hoi4 = 6114 } #  x8F7F39 82.44%,  -> 545ABF
+	link = { vic3 = 0xB182B1 hoi4 = 6115 } #  xB182B1 47.66%,  -> 545D06
+	link = { vic3 = 0x60BE85 vic3 = 0xB88734 hoi4 = 6136 } #  x60BE85 55.71%,  xB88734 48.68%,  -> 547583
+	link = { vic3 = 0x1255CC hoi4 = 6160 } #  x1255CC 77.15%,  -> 5490AB
+	link = { vic3 = 0x12548F vic3 = 0x8277CF hoi4 = 6204 } #  x12548F 77.55%,  x8277CF 83.67%,  -> 54C62E
+	link = { vic3 = 0xBA99BA vic3 = 0xE3582F hoi4 = 9032 } #  xBA99BA 67.87%,  xE3582F 41.25%,  -> 7E0054
+	link = { vic3 = 0x2F2504 hoi4 = 9135 } #  x2F2504 94.39%,  -> 7E5D40
+	link = { vic3 = 0x49B529 hoi4 = 9157 } #  x49B529 41.26%,  -> 7E7804
+	link = { vic3 = 0x43B12C vic3 = 0x6AC2AF hoi4 = 9227 } #  x43B12C 58.48%,  x6AC2AF 52.72%,  -> 7EC9AE
+	link = { vic3 = 0xA57AFC hoi4 = 11028 } #  xA57AFC 65.61%,  -> A803D4
+	link = { vic3 = 0x01EB0A hoi4 = 11078 } #  x01EB0A 88.46%,  -> A839C0
+	link = { vic3 = 0x549C3A vic3 = 0x9DB9F4 hoi4 = 11113 } #  x549C3A 39.69%,  x9DB9F4 63.44%,  -> A860C0
+	link = { vic3 = 0xC9D63F hoi4 = 11135 } #  xC9D63F 89.67%,  -> A87B84
+	link = { vic3 = 0x95A154 hoi4 = 11151 } #  x95A154 86.05%,  -> A88DB1
+	link = { vic3 = 0x3AE094 hoi4 = 11184 } #  x3AE094 29.03%,  -> A8B1D4
+	link = { vic3 = 0xB9763B vic3 = 0xE12212 hoi4 = 11206 } #  xB9763B 85.82%,  xE12212 100%,  -> A8CC2F
 	link = { comment = "* * STATE_ICELAND " }
+	link = { vic3 = 0x004160 vic3 = 0x08D106 vic3 = 0x0D5D48 vic3 = 0x1E1FC1 vic3 = 0x27F04F vic3 = 0x285571 vic3 = 0x2A8549 vic3 = 0x45F99B vic3 = 0x555934 vic3 = 0x581B4C vic3 = 0x63D42C vic3 = 0x6B8B1C vic3 = 0x6DF0C4 vic3 = 0x933D7E vic3 = 0xA6BB87 vic3 = 0xCF05D9 vic3 = 0xEB01CE vic3 = 0xF65D73 hoi4 = 4861 } #  x004160 99.62%,  x08D106 58.16%,  x0D5D48 94.72%,  x1E1FC1 100%,  x27F04F 93.24%,  x285571 95.49%,  x2A8549 100%,  x45F99B 94.96%,  x555934 100%,  x581B4C 63.3%,  x63D42C 93.72%,  x6B8B1C 42.44%,  x6DF0C4 44.98%,  x933D7E 99.18%,  xA6BB87 100%,  xCF05D9 92.23%,  xEB01CE 100%,  xF65D73 55.12%,  -> 32BD2B
+	link = { vic3 = 0x0578F9 vic3 = 0x10DC5B vic3 = 0x1FAD4E vic3 = 0x22E916 vic3 = 0x2362E4 vic3 = 0x251E56 vic3 = 0x317A6A vic3 = 0x571934 vic3 = 0x5AED3F vic3 = 0x668EB2 vic3 = 0x85D626 vic3 = 0x894E8F vic3 = 0x943FCD vic3 = 0xB5D7AC vic3 = 0xC3D20F vic3 = 0xC59154 vic3 = 0xE2B048 vic3 = 0xF07C2C hoi4 = 12674 } #  x0578F9 71.65%,  x10DC5B 100%,  x1FAD4E 89.95%,  x22E916 89.82%,  x2362E4 100%,  x251E56 54.13%,  x317A6A 96.35%,  x571934 88.46%,  x5AED3F 79.43%,  x668EB2 92.27%,  x85D626 84.92%,  x894E8F 94.94%,  x943FCD 47.56%,  xB5D7AC 95%,  xC3D20F 89.22%,  xC59154 100%,  xE2B048 79.45%,  xF07C2C 86.76%,  -> B0B72A
+	link = { vic3 = 0x09AC69 vic3 = 0x160AFE vic3 = 0x22B84A vic3 = 0x2720D0 vic3 = 0x2971FB vic3 = 0x34920F vic3 = 0x4F18CA vic3 = 0x5CFCC7 vic3 = 0x5DEB93 vic3 = 0x678B7C vic3 = 0x6BE524 vic3 = 0x70DC28 vic3 = 0x74FA3E vic3 = 0x7A16C0 vic3 = 0x7AA0B3 vic3 = 0x7DAE65 vic3 = 0x7E9967 vic3 = 0x7F72E8 vic3 = 0x804040 vic3 = 0x808FE7 vic3 = 0x853A46 vic3 = 0x8BDAD5 vic3 = 0x90A249 vic3 = 0x9832AA vic3 = 0x9D7B96 vic3 = 0xBA991B vic3 = 0xBD1A69 vic3 = 0xC72379 vic3 = 0xCC60C4 vic3 = 0xD51DB5 vic3 = 0xEBDBE0 vic3 = 0xF8054C vic3 = 0xFEF5A7 hoi4 = 12689 } #  x09AC69 82.87%,  x160AFE 100%,  x22B84A 99.22%,  x2720D0 100%,  x2971FB 99.33%,  x34920F 100%,  x4F18CA 86.52%,  x5CFCC7 88.24%,  x5DEB93 97.73%,  x678B7C 100%,  x6BE524 100%,  x70DC28 100%,  x74FA3E 93.69%,  x7A16C0 100%,  x7AA0B3 76.7%,  x7DAE65 100%,  x7E9967 100%,  x7F72E8 100%,  x804040 99.15%,  x808FE7 82.46%,  x853A46 100%,  x8BDAD5 100%,  x90A249 100%,  x9832AA 95.59%,  x9D7B96 94.41%,  xBA991B 100%,  xBD1A69 100%,  xC72379 86.07%,  xCC60C4 84.65%,  xD51DB5 97.22%,  xEBDBE0 67.93%,  xF8054C 79.53%,  xFEF5A7 98.7%,  -> B0C6AC
+	link = { vic3 = 0x8B7790 hoi4 = 13003 } #  x8B7790 58.88%,  -> D25A1E
 	link = { comment = "* * STATE_GREENLAND " }
 	link = { comment = "* * STATE_SOUTHERN_FINLAND " }
+	link = { vic3 = 0xB462A9 vic3 = 0xC67B36 hoi4 = 32 } #  xB462A9 58.49%,  xC67B36 68.57%,  -> 0015D7
+	link = { vic3 = 0x5033CF hoi4 = 669 hoi4 = 67 } #  x5033CF 55.28%,  -> 00309B
+	link = { vic3 = 0x932418 hoi4 = 915 hoi4 = 136 } #  x932418 69.69%,  -> 008146
+	link = { vic3 = 0x8DCF76 vic3 = 0xA789AE hoi4 = 165 } #  x8DCF76 53.81%,  xA789AE 45.71%,  -> 00A2BE
+	link = { vic3 = 0x22CBD6 hoi4 = 169 } #  x22CBD6 71.14%,  -> 00A8AF
+	link = { vic3 = 0x85F5A0 hoi4 = 204 } #  x85F5A0 81.64%,  -> 00D25A
+	link = { vic3 = 0xE98BC6 hoi4 = 3009 } #  xE98BC6 73.58%,  -> 2A0CB2
+	link = { vic3 = 0x8C31CF hoi4 = 11570 hoi4 = 3013 } #  x8C31CF 82.71%,  -> 2A0F8F
+	link = { vic3 = 0xAFE141 hoi4 = 3025 } #  xAFE141 77.94%,  -> 2A1858
+	link = { vic3 = 0x33CFEC vic3 = 0xD2FDBF vic3 = 0xE041E0 hoi4 = 3083 } #  x33CFEC 38.46%,  xD2FDBF 59.83%,  xE041E0 6.02%,  -> 2A4E44
+	link = { vic3 = 0x86C729 hoi4 = 3117 } #  x86C729 77.33%,  -> 2A7544
+	link = { vic3 = 0xEF788A hoi4 = 3119 } #  xEF788A 61.21%,  -> 2A7821
+	link = { vic3 = 0x523560 hoi4 = 514 hoi4 = 3125 } #  x523560 52.87%,  -> 2A7E3F
+	link = { vic3 = 0xB45BFF hoi4 = 3137 } #  xB45BFF 36.49%,  -> 2A9008
+	link = { vic3 = 0x4A6463 hoi4 = 6257 hoi4 = 3161 } #  x4A6463 46.33%,  -> 2AAB30
+	link = { vic3 = 0x07C636 hoi4 = 6009 } #  x07C636 75.08%,  -> 540047
+	link = { vic3 = 0x7B45A5 vic3 = 0xD516FA hoi4 = 6033 } #  x7B45A5 57.02%,  xD516FA 41.67%,  -> 541210
+	link = { vic3 = 0xC168B6 hoi4 = 6066 } #  xC168B6 59.47%,  -> 54271A
+	link = { vic3 = 0xFF4B4C hoi4 = 6078 } #  xFF4B4C 56.62%,  -> 543356
+	link = { vic3 = 0x76CE44 hoi4 = 6108 } #  x76CE44 69.15%,  -> 5451C4
+	link = { vic3 = 0x3DBB6E vic3 = 0xE7FDE4 hoi4 = 6138 } #  x3DBB6E 63.04%,  xE7FDE4 50.19%,  -> 5478C4
+	link = { vic3 = 0x9C363D vic3 = 0xED84C3 hoi4 = 6141 } #  x9C363D 65.4%,  xED84C3 38.05%,  -> 547BA1
+	link = { vic3 = 0x61C0E0 hoi4 = 6144 } #  x61C0E0 55.73%,  -> 547EE2
+	link = { vic3 = 0x969608 vic3 = 0xD105A8 hoi4 = 6146 } #  x969608 38.1%,  xD105A8 44.83%,  -> 5481BF
+	link = { vic3 = 0x7753B6 hoi4 = 3398 hoi4 = 6156 } #  x7753B6 39.69%,  -> 548D01
+	link = { vic3 = 0x9106DB hoi4 = 9482 hoi4 = 6163 } #  x9106DB 60.41%,  -> 549388
+	link = { vic3 = 0x9DB817 vic3 = 0xD38306 hoi4 = 6198 } #  x9DB817 61.19%,  xD38306 50.38%,  -> 54BDC9
+	link = { vic3 = 0x214180 vic3 = 0x3C48A2 hoi4 = 9056 } #  x214180 46.48%,  x3C48A2 40.59%,  -> 7E12B3
+	link = { vic3 = 0x154428 vic3 = 0xCBE76E hoi4 = 9073 } #  x154428 20.79%,  xCBE76E 37.91%,  -> 7E1E59
+	link = { vic3 = 0x278F84 hoi4 = 9094 } #  x278F84 86.16%,  -> 7E2A9A
+	link = { vic3 = 0x51CC44 hoi4 = 9104 } #  x51CC44 75.46%,  -> 7E36D6
+	link = { vic3 = 0x09ACC3 vic3 = 0x0D3DF3 hoi4 = 9106 } #  x09ACC3 77.36%,  x0D3DF3 37.39%,  -> 7E39B3
+	link = { vic3 = 0x0BA694 vic3 = 0xF6F046 hoi4 = 9129 } #  x0BA694 73.6%,  xF6F046 45.45%,  -> 7E5445
+	link = { vic3 = 0x3D47C3 hoi4 = 9160 } #  x3D47C3 84.75%,  -> 7E7B45
+	link = { vic3 = 0xBC487D vic3 = 0xE761B2 hoi4 = 9163 } #  xBC487D 45.9%,  xE761B2 31.53%,  -> 7E7E22
+	link = { vic3 = 0x34A9F8 hoi4 = 9166 } #  x34A9F8 53.57%,  -> 7E8163
+	link = { vic3 = 0xBD3A16 vic3 = 0xD9DA78 hoi4 = 9194 } #  xBD3A16 45.71%,  xD9DA78 55.96%,  -> 7EA2AE
+	link = { vic3 = 0x238A38 vic3 = 0x37CE53 hoi4 = 9219 } #  x238A38 42.81%,  x37CE53 61.29%,  -> 7EC04A
+	link = { vic3 = 0xFEA699 hoi4 = 11033 } #  xFEA699 45.31%,  -> A8098E
+	link = { vic3 = 0xF09EDC hoi4 = 11066 } #  xF09EDC 62.16%,  -> A82D1B
+	link = { vic3 = 0x5D1467 vic3 = 0xCC8E28 hoi4 = 11076 } #  x5D1467 53.42%,  xCC8E28 34.68%,  -> A83957
+	link = { vic3 = 0xCC9AA7 hoi4 = 11105 } #  xCC9AA7 49.8%,  -> A857C5
+	link = { vic3 = 0x40C040 hoi4 = 11604 hoi4 = 11138 } #  x40C040 58.97%,  -> A87EC5
+	link = { vic3 = 0xED8DC6 hoi4 = 11141 } #  xED8DC6 46.67%,  -> A881A2
+	link = { vic3 = 0xF3D220 hoi4 = 11144 } #  xF3D220 71.26%,  -> A884E3
+	link = { vic3 = 0x79D379 hoi4 = 11172 } #  x79D379 57.56%,  -> A8A52F
+	link = { vic3 = 0x4753CB hoi4 = 11199 } #  x4753CB 71.07%,  -> A8C3CA
+	link = { vic3 = 0x2401AE hoi4 = 3718 hoi4 = 11210 } #  x2401AE 49.56%,  -> A8CFA2
+	link = { vic3 = 0xE0C0E0 hoi4 = 11211 } #  xE0C0E0 45.14%,  -> A8CFD9
 	link = { comment = "* * STATE_WEST_KARELIA " }
+	link = { vic3 = 0x934610 hoi4 = 52 } #  x934610 18.58%,  -> 00245A
+	link = { vic3 = 0xFC48AF hoi4 = 139 } #  xFC48AF 55.5%,  -> 008423
+	link = { vic3 = 0xA04180 hoi4 = 3030 } #  xA04180 63.5%,  -> 2A1B35
+	link = { vic3 = 0x664F54 hoi4 = 3050 } #  x664F54 70.62%,  -> 2A27DA
+	link = { vic3 = 0x208001 hoi4 = 3060 } #  x208001 49.01%,  -> 2A30D5
+	link = { vic3 = 0xB81268 hoi4 = 3131 } #  xB81268 34.34%,  -> 2A84C6
+	link = { vic3 = 0x0A00AC hoi4 = 3133 } #  x0A00AC 80.2%,  -> 2A87A3
+	link = { vic3 = 0xF571CB hoi4 = 3185 } #  xF571CB 60.55%,  -> 2AC9CB
+	link = { vic3 = 0x3CFB81 hoi4 = 3187 } #  x3CFB81 68.34%,  -> 2ACCA8
+	link = { vic3 = 0x74C1F3 hoi4 = 6052 } #  x74C1F3 73.94%,  -> 541EB5
+	link = { vic3 = 0xBB0055 hoi4 = 6150 } #  xBB0055 75.4%,  -> 548747
+	link = { vic3 = 0x65EF3B hoi4 = 6153 } #  x65EF3B 77.93%,  -> 548A24
+	link = { vic3 = 0x3EFDA0 hoi4 = 3407 hoi4 = 6186 } #  x3EFDA0 22.86%,  -> 54AEB0
+	link = { vic3 = 0x78FDD6 vic3 = 0xD26819 hoi4 = 6210 } #  x78FDD6 86.67%,  xD26819 45.85%,  -> 54CC4C
+	link = { vic3 = 0x825979 hoi4 = 9061 } #  x825979 51.2%,  -> 7E1590
+	link = { vic3 = 0xAB4A30 hoi4 = 9100 } #  xAB4A30 52.55%,  -> 7E332C
+	link = { vic3 = 0xD093D4 hoi4 = 9105 } #  xD093D4 53.68%,  -> 7E391D
+	link = { vic3 = 0xBC376C hoi4 = 9150 } #  xBC376C 54.55%,  -> 7E6F36
+	link = { vic3 = 0x467F2F hoi4 = 9169 } #  x467F2F 34.23%,  -> 7E8440
+	link = { vic3 = 0x43E91D vic3 = 0xAD3FF9 hoi4 = 9176 } #  x43E91D 59.87%,  xAD3FF9 94.95%,  -> 7E8AC7
+	link = { vic3 = 0xC5A424 vic3 = 0xFFBD54 hoi4 = 9181 } #  xC5A424 49.72%,  xFFBD54 65.19%,  -> 7E9081
+	link = { vic3 = 0x1E964A hoi4 = 268 hoi4 = 9206 } #  x1E964A 84.78%,  -> 7EB131
+	link = { vic3 = 0x85EBD4 hoi4 = 11046 } #  x85EBD4 87.84%,  -> A81811
+	link = { vic3 = 0x63EE78 hoi4 = 11156 } #  x63EE78 80.45%,  -> A89302
+	link = { vic3 = 0x315CDB hoi4 = 11162 } #  x315CDB 71.86%,  -> A89989
 	link = { comment = "* * STATE_ALAND " }
+	link = { vic3 = 0x459052 vic3 = 0xE04161 hoi4 = 9228 } #  x459052 19.81%,  xE04161 45.14%,  -> 7ECC59
 	link = { comment = "* * STATE_OSTROBOTHNIA " }
+	link = { vic3 = 0x917130 hoi4 = 7 } #  x917130 79.7%,  -> 0003AA
+	link = { vic3 = 0x09E7C8 vic3 = 0x31A599 hoi4 = 30 } #  x09E7C8 54.76%,  x31A599 72.33%,  -> 00150A
+	link = { vic3 = 0x9402DB vic3 = 0xF89B5A hoi4 = 63 } #  x9402DB 81.98%,  xF89B5A 96.95%,  -> 002D55
+	link = { vic3 = 0x1C3DCF hoi4 = 66 } #  x1C3DCF 58.12%,  -> 003032
+	link = { vic3 = 0x870682 hoi4 = 82 } #  x870682 83.89%,  -> 004291
+	link = { vic3 = 0x39FFFD vic3 = 0x84C20E vic3 = 0xEE71BD hoi4 = 103 } #  x39FFFD 70.44%,  x84C20E 71.21%,  xEE71BD 92.09%,  -> 005A0F
+	link = { vic3 = 0x2DCFFF hoi4 = 120 } #  x2DCFFF 53.59%,  -> 006F19
+	link = { vic3 = 0x003DC2 vic3 = 0x12D5CC vic3 = 0xE30145 hoi4 = 124 } #  x003DC2 57.94%,  x12D5CC 75%,  xE30145 66.24%,  -> 00725A
+	link = { vic3 = 0x31F14B vic3 = 0x657C52 vic3 = 0x938C81 hoi4 = 132 } #  x31F14B 96.19%,  x657C52 94.17%,  x938C81 50.35%,  -> 007BBE
+	link = { vic3 = 0xB84B48 hoi4 = 158 } #  xB84B48 48.52%,  -> 009CA0
+	link = { vic3 = 0x73B911 vic3 = 0x9AE86E hoi4 = 162 } #  x73B911 80.77%,  x9AE86E 55.04%,  -> 009FE1
+	link = { vic3 = 0x15D36E vic3 = 0x40B01E hoi4 = 167 } #  x15D36E 95.32%,  x40B01E 79.39%,  -> 00A59B
+	link = { vic3 = 0x2C00E3 vic3 = 0xCEEBD6 vic3 = 0xEC1FAF hoi4 = 195 } #  x2C00E3 65.71%,  xCEEBD6 90.48%,  xEC1FAF 59.71%,  -> 00C928
+	link = { vic3 = 0xCCDC03 hoi4 = 197 } #  xCCDC03 76.92%,  -> 00CC05
+	link = { vic3 = 0x05C9D5 vic3 = 0x51D315 vic3 = 0xAB98EE vic3 = 0xAD5504 vic3 = 0xCAEF23 hoi4 = 203 } #  x05C9D5 67.98%,  x51D315 94.82%,  xAB98EE 62.67%,  xAD5504 70.49%,  xCAEF23 44.93%,  -> 00D223
+	link = { vic3 = 0x84C17D vic3 = 0xE803B4 hoi4 = 2992 } #  x84C17D 70.75%,  xE803B4 94.42%,  -> 2A00A3
+	link = { vic3 = 0xA52381 vic3 = 0xF82995 hoi4 = 3026 } #  xA52381 76.97%,  xF82995 56.42%,  -> 2A188A
+	link = { vic3 = 0x1D75EA vic3 = 0x35660F vic3 = 0xEDB9FD hoi4 = 3055 } #  x1D75EA 44.92%,  x35660F 58.78%,  xEDB9FD 95.98%,  -> 2A2D2B
+	link = { vic3 = 0x326999 vic3 = 0x407CB4 vic3 = 0x743757 hoi4 = 3069 } #  x326999 72.99%,  x407CB4 95.52%,  x743757 93.7%,  -> 2A3F8A
+	link = { vic3 = 0x55FBB0 vic3 = 0x634F6A hoi4 = 3073 } #  x55FBB0 98.54%,  x634F6A 48.73%,  -> 2A4512
+	link = { vic3 = 0x199FCA vic3 = 0x8EC6E7 vic3 = 0x96B319 vic3 = 0xCB04BB hoi4 = 3097 } #  x199FCA 96.03%,  x8EC6E7 89.64%,  x96B319 93.14%,  xCB04BB 89.27%,  -> 2A5D8F
+	link = { vic3 = 0x04ACCE vic3 = 0x41B925 vic3 = 0x4FFAB9 hoi4 = 3107 } #  x04ACCE 55.83%,  x41B925 100%,  x4FFAB9 75.58%,  -> 2A6935
+	link = { vic3 = 0xB16417 vic3 = 0xC0F405 vic3 = 0xF5DEDB hoi4 = 3115 } #  xB16417 56.46%,  xC0F405 41.15%,  xF5DEDB 43.48%,  -> 2A7299
+	link = { vic3 = 0xED5B1B hoi4 = 3122 } #  xED5B1B 72.99%,  -> 2A7B62
+	link = { vic3 = 0x14E25A vic3 = 0xE0C6EC hoi4 = 3149 } #  x14E25A 70.04%,  xE0C6EC 40.48%,  -> 2A9F21
+	link = { vic3 = 0x100DE3 hoi4 = 3153 } #  x100DE3 94.49%,  -> 2AA262
+	link = { vic3 = 0x582BE1 vic3 = 0x5D6094 vic3 = 0xB29B34 vic3 = 0xFD8980 hoi4 = 3156 } #  x582BE1 62.29%,  x5D6094 44.04%,  xB29B34 76.56%,  xFD8980 64.25%,  -> 2AA53F
+	link = { vic3 = 0x45C196 vic3 = 0x8FABCB hoi4 = 3158 } #  x45C196 75%,  x8FABCB 77.37%,  -> 2AA81C
+	link = { vic3 = 0xF2C73E vic3 = 0xFBFA4C hoi4 = 3172 } #  xF2C73E 33.58%,  xFBFA4C 58.48%,  -> 2ABA49
+	link = { vic3 = 0x331F4E vic3 = 0xEA6156 hoi4 = 3193 } #  x331F4E 97.71%,  xEA6156 90.18%,  -> 2AD2C6
+	link = { vic3 = 0x47E04D vic3 = 0x7C55E0 hoi4 = 6013 } #  x47E04D 79.41%,  x7C55E0 78.74%,  -> 54038D
+	link = { vic3 = 0x0193AC vic3 = 0x40EC6F hoi4 = 6045 } #  x0193AC 77.41%,  x40EC6F 62.68%,  -> 541B0B
+	link = { vic3 = 0x2D6585 vic3 = 0x35F442 vic3 = 0x3CF11A vic3 = 0xC21442 hoi4 = 6061 } #  x2D6585 98.12%,  x35F442 61.43%,  x3CF11A 85.46%,  xC21442 82.24%,  -> 542406
+	link = { vic3 = 0x2A9B33 vic3 = 0x40C69F vic3 = 0xFDCD89 hoi4 = 6076 } #  x2A9B33 80.33%,  x40C69F 80.08%,  xFDCD89 86.08%,  -> 5430AB
+	link = { vic3 = 0x9BB647 hoi4 = 6081 } #  x9BB647 79.24%,  -> 543633
+	link = { vic3 = 0x25E6DB vic3 = 0x73B0EE hoi4 = 6087 } #  x25E6DB 84.82%,  x73B0EE 98.65%,  -> 543C51
+	link = { vic3 = 0xDB0F8C vic3 = 0xE4FD8C hoi4 = 6128 } #  xDB0F8C 70.97%,  xE4FD8C 83.07%,  -> 546CB5
+	link = { vic3 = 0x1DCF7F vic3 = 0xB36B8F hoi4 = 6134 } #  x1DCF7F 59.49%,  xB36B8F 89.02%,  -> 54751A
+	link = { vic3 = 0xB3923B vic3 = 0xBF4702 hoi4 = 6137 } #  xB3923B 19.43%,  xBF4702 52.43%,  -> 54785B
+	link = { vic3 = 0x511691 vic3 = 0xE798B3 vic3 = 0xFB8899 hoi4 = 6142 } #  x511691 54.18%,  xE798B3 53.16%,  xFB8899 63.06%,  -> 547E15
+	link = { vic3 = 0x827FC4 vic3 = 0xA29D5A vic3 = 0xE7E8FB hoi4 = 6179 } #  x827FC4 38.81%,  xA29D5A 81.91%,  xE7E8FB 67.17%,  -> 54A5E2
+	link = { vic3 = 0x45734E vic3 = 0xA9BAEB hoi4 = 6212 } #  x45734E 62.31%,  xA9BAEB 51.65%,  -> 54CF29
+	link = { vic3 = 0x24FC8C vic3 = 0x398433 vic3 = 0xC4EB7D hoi4 = 9038 } #  x24FC8C 65.56%,  x398433 63.35%,  xC4EB7D 80.2%,  -> 7E060E
+	link = { vic3 = 0x06CB86 vic3 = 0xF99D80 vic3 = 0xFEF24A hoi4 = 9112 } #  x06CB86 48.08%,  xF99D80 56.68%,  xFEF24A 30.37%,  -> 7E3FD1
+	link = { vic3 = 0x993955 hoi4 = 9156 } #  x993955 56.15%,  -> 7E75BD
+	link = { vic3 = 0x76BD66 vic3 = 0xC15DED vic3 = 0xFE27F7 hoi4 = 9158 } #  x76BD66 85.26%,  xC15DED 46.23%,  xFE27F7 100%,  -> 7E789A
+	link = { vic3 = 0x6B44F2 vic3 = 0xD70C51 hoi4 = 9189 } #  x6B44F2 95.56%,  xD70C51 89.58%,  -> 7E9CBD
+	link = { vic3 = 0x22A760 vic3 = 0xCEC631 hoi4 = 9223 } #  x22A760 32.52%,  xCEC631 98.15%,  -> 7EC604
+	link = { vic3 = 0x9AB681 hoi4 = 9233 } #  x9AB681 34.88%,  -> 7ED2A9
+	link = { vic3 = 0x3DE2C5 vic3 = 0xA0C000 hoi4 = 11024 } #  x3DE2C5 66.5%,  xA0C000 73.03%,  -> A8002A
+	link = { vic3 = 0x420121 vic3 = 0x4C423D hoi4 = 11030 } #  x420121 96.31%,  x4C423D 64.13%,  -> A80648
+	link = { vic3 = 0x58DADD vic3 = 0x90A5A7 vic3 = 0xC38A5B hoi4 = 11041 } #  x58DADD 37.93%,  x90A5A7 34.98%,  xC38A5B 51.9%,  -> A81289
+	link = { vic3 = 0xE01B70 hoi4 = 11065 } #  xE01B70 77.29%,  -> A82AD4
+	link = { vic3 = 0x6073DE vic3 = 0x9E4B4E vic3 = 0xAD965E hoi4 = 11079 } #  x6073DE 53.33%,  x9E4B4E 53.57%,  xAD965E 52.65%,  -> A83C34
+	link = { vic3 = 0x4C8DA2 hoi4 = 11081 } #  x4C8DA2 61.78%,  -> A83F11
+	link = { vic3 = 0xA40B1E vic3 = 0xBCEB2E vic3 = 0xDAADD6 hoi4 = 11085 } #  xA40B1E 68.48%,  xBCEB2E 100%,  xDAADD6 46.3%,  -> A84252
+	link = { vic3 = 0x1F98EC vic3 = 0xA8D2B9 vic3 = 0xD249FD hoi4 = 11115 } #  x1F98EC 99.56%,  xA8D2B9 82.38%,  xD249FD 78.35%,  -> A86334
+	link = { vic3 = 0x1ADDF7 hoi4 = 11121 } #  x1ADDF7 74.37%,  -> A86C98
+	link = { vic3 = 0x098AD4 vic3 = 0x58107D hoi4 = 11125 } #  x098AD4 73.6%,  x58107D 57.79%,  -> A86FD9
+	link = { vic3 = 0x08E342 vic3 = 0x69F3E6 hoi4 = 11126 } #  x08E342 56.59%,  x69F3E6 87.95%,  -> A87220
+	link = { vic3 = 0x193FE3 vic3 = 0x3DFFE2 vic3 = 0x5A2E3F vic3 = 0x6E6888 vic3 = 0x81EB90 vic3 = 0xA8B626 hoi4 = 11130 } #  x193FE3 79.2%,  x3DFFE2 63.54%,  x5A2E3F 88.77%,  x6E6888 85.09%,  x81EB90 100%,  xA8B626 82.52%,  -> A87593
+	link = { vic3 = 0x5BA0C6 hoi4 = 11132 } #  x5BA0C6 88.29%,  -> A8783E
+	link = { vic3 = 0x31BE08 vic3 = 0xE08080 hoi4 = 11164 } #  x31BE08 44.65%,  xE08080 82.01%,  -> A89C61
+	link = { vic3 = 0x56D667 vic3 = 0x7BFD0A vic3 = 0xE37E57 hoi4 = 11167 } #  x56D667 77.22%,  x7BFD0A 83.53%,  xE37E57 53.98%,  -> A89F3E
+	link = { vic3 = 0x41D99D vic3 = 0x75CD93 vic3 = 0xAD8817 hoi4 = 11204 } #  x41D99D 60.17%,  x75CD93 86.89%,  xAD8817 44.74%,  -> A8C984
 	link = { comment = "* * STATE_HOME_COUNTIES " }
+	link = { vic3 = 0x19CECD hoi4 = 9449 hoi4 = 507 } #  x19CECD 38.08%,  -> 02600A
+	link = { vic3 = 0x39F45B vic3 = 0x625993 hoi4 = 3501 } #  x39F45B 81.33%,  x625993 52.97%,  -> 2C638A
+	link = { vic3 = 0x58D3AE hoi4 = 9144 hoi4 = 6221 } #  x58D3AE 63.31%,  -> 550397
+	link = { vic3 = 0xE060C0 hoi4 = 6489 } #  xE060C0 43.92%,  -> 5636A6
+	link = { vic3 = 0x7543C8 vic3 = 0xE0E0C0 hoi4 = 11333 } #  x7543C8 41.86%,  xE0E0C0 53.57%,  -> A98D52
+	link = { vic3 = 0x800020 hoi4 = 9407 hoi4 = 11446 } #  x800020 48.85%,  -> AA3CA7
+	link = { vic3 = 0x225544 vic3 = 0x60E0C0 hoi4 = 11471 } #  x225544 62.62%,  x60E0C0 44.49%,  -> AA5D89
 	link = { comment = "* * STATE_LANCASHIRE " }
+	link = { vic3 = 0xE74158 hoi4 = 219 } #  xE74158 93.1%,  -> 010905
+	link = { vic3 = 0x65617C hoi4 = 3205 } #  x65617C 65.52%,  -> 2B0C53
+	link = { vic3 = 0x137263 hoi4 = 3311 } #  x137263 70%,  -> 2B6F5D
+	link = { vic3 = 0xE0E000 hoi4 = 9884 hoi4 = 6318 } #  xE0E000 47.77%,  -> 555D3D
+	link = { vic3 = 0x60E000 hoi4 = 6384 } #  x60E000 89.13%,  -> 55ABA6
+	link = { vic3 = 0x410CE6 hoi4 = 3884 hoi4 = 6399 } #  x410CE6 51.4%,  -> 55C047
+	link = { vic3 = 0xE06000 hoi4 = 9285 } #  xE06000 66.47%,  -> 7F3C31
+	link = { vic3 = 0xA242B2 hoi4 = 11332 } #  xA242B2 59.79%,  -> A98D1B
 	link = { comment = "* * STATE_WALES " }
+	link = { vic3 = 0x20A040 hoi4 = 253 } #  x20A040 85.59%,  -> 011EDC
+	link = { vic3 = 0x70D92B hoi4 = 311 } #  x70D92B 66.08%,  -> 0160A0
+	link = { vic3 = 0x2020C0 hoi4 = 11834 hoi4 = 377 } #  x2020C0 76.92%,  -> 01B1B4
+	link = { vic3 = 0xA2308A hoi4 = 407 } #  xA2308A 47.26%,  -> 01D296
+	link = { vic3 = 0xB7FC74 hoi4 = 3274 } #  xB7FC74 62.6%,  -> 2B423F
+	link = { vic3 = 0xA02040 hoi4 = 6363 } #  xA02040 65.03%,  -> 559606
+	link = { vic3 = 0x633EF5 hoi4 = 9364 } #  x633EF5 63.8%,  -> 7F9986
+	link = { vic3 = 0x775D55 vic3 = 0xA0A040 hoi4 = 11361 } #  x775D55 84.75%,  xA0A040 82.93%,  -> A9AE34
 	link = { comment = "* * STATE_YORKSHIRE " }
+	link = { vic3 = 0x606000 hoi4 = 351 } #  x606000 36.83%,  -> 01909B
+	link = { vic3 = 0x5544D0 hoi4 = 9315 } #  x5544D0 97.37%,  -> 7F60BD
+	link = { vic3 = 0xB5BF4E hoi4 = 9332 } #  xB5BF4E 56.38%,  -> 7F755E
+	link = { vic3 = 0x606080 hoi4 = 9379 } #  x606080 46.46%,  -> 7FAE27
+	link = { vic3 = 0xEDC0BA hoi4 = 9397 } #  xEDC0BA 72.6%,  -> 7FC3C7
+	link = { vic3 = 0x527116 hoi4 = 473 hoi4 = 11270 } #  x527116 56.52%,  -> A93FB1
+	link = { vic3 = 0xE06080 hoi4 = 11297 } #  xE06080 30.04%,  -> A9633E
+	link = { vic3 = 0x824DB7 hoi4 = 11299 } #  x824DB7 90.17%,  -> A963D4
+	link = { vic3 = 0x86B021 hoi4 = 11233 hoi4 = 11382 } #  x86B021 58.9%,  -> A9C648
 	link = { comment = "* * STATE_HIGHLANDS " }
+	link = { vic3 = 0x8E7728 hoi4 = 131 } #  x8E7728 76.03%,  -> 007B28
+	link = { vic3 = 0x5B0884 vic3 = 0xF00652 hoi4 = 284 } #  x5B0884 46.7%,  xF00652 64.15%,  -> 013F87
+	link = { vic3 = 0x3CFF08 hoi4 = 3159 } #  x3CFF08 50.88%,  -> 2AA853
+	link = { vic3 = 0x0E7C03 hoi4 = 3178 } #  x0E7C03 69.14%,  -> 2AC317
+	link = { vic3 = 0x47C5CD hoi4 = 3373 } #  x47C5CD 56.39%,  -> 2BB73F
+	link = { vic3 = 0x662BE7 hoi4 = 6046 } #  x662BE7 33.06%,  -> 541B42
+	link = { vic3 = 0x80DB90 hoi4 = 6062 } #  x80DB90 61.2%,  -> 54243D
+	link = { vic3 = 0xFACCE3 hoi4 = 6104 } #  xFACCE3 50.58%,  -> 544E83
+	link = { vic3 = 0x20E000 hoi4 = 6196 } #  x20E000 43.09%,  -> 54BA88
+	link = { vic3 = 0xF78F29 hoi4 = 6205 } #  xF78F29 62.23%,  -> 54C697
+	link = { vic3 = 0x637BE8 hoi4 = 661 hoi4 = 6385 } #  x637BE8 89.47%,  -> 55AE1A
+	link = { vic3 = 0x314E1F hoi4 = 114 hoi4 = 9075 } #  x314E1F 39.8%,  -> 7E1EC2
+	link = { vic3 = 0x84625B hoi4 = 9090 } #  x84625B 90.4%,  -> 7E27BD
+	link = { vic3 = 0xCCBBD1 hoi4 = 9161 } #  xCCBBD1 45.8%,  -> 7E7BAE
+	link = { vic3 = 0xFBDD5D hoi4 = 3782 hoi4 = 11055 } #  xFBDD5D 57.5%,  -> A82143
+	link = { vic3 = 0x0C1520 vic3 = 0x37518E hoi4 = 11064 } #  x0C1520 90.84%,  x37518E 71.67%,  -> A82A3E
+	link = { vic3 = 0xB7B8EA hoi4 = 11266 } #  xB7B8EA 53.11%,  -> A93C07
 	link = { comment = "* * STATE_MIDLANDS " }
+	link = { vic3 = 0x528DEE hoi4 = 6986 hoi4 = 364 } #  x528DEE 50%,  -> 019F87
+	link = { vic3 = 0xA021B0 hoi4 = 3241 } #  xA021B0 76.22%,  -> 2B215D
+	link = { vic3 = 0x11C2BB hoi4 = 3301 } #  x11C2BB 49.33%,  -> 2B6321
+	link = { vic3 = 0x60E080 hoi4 = 3353 } #  x60E080 48.8%,  -> 2BA208
+	link = { vic3 = 0xE0E080 hoi4 = 6237 } #  xE0E080 39.02%,  -> 550FD3
+	link = { vic3 = 0x99305F hoi4 = 6270 } #  x99305F 41.18%,  -> 5524DD
+	link = { vic3 = 0xA220D6 hoi4 = 6301 } #  xA220D6 63.16%,  -> 5545BF
+	link = { vic3 = 0x6020C0 hoi4 = 7239 } #  x6020C0 40.7%,  -> 5A0C51
+	link = { vic3 = 0x2482B4 hoi4 = 9250 } #  x2482B4 64.25%,  -> 7F1254
+	link = { vic3 = 0xA0A0C0 hoi4 = 11279 } #  xA0A0C0 37.95%,  -> A94BC0
+	link = { vic3 = 0x20A0C0 hoi4 = 3339 hoi4 = 11345 } #  x20A0C0 48.98%,  -> A99C07
 	link = { comment = "* * STATE_EAST_ANGLIA " }
+	link = { vic3 = 0xE02040 hoi4 = 221 } #  xE02040 40.74%,  -> 010C19
+	link = { vic3 = 0x8C667B hoi4 = 296 } #  x8C667B 35.96%,  -> 014E41
+	link = { vic3 = 0x5024FD vic3 = 0x516676 hoi4 = 322 } #  x5024FD 53.28%,  x516676 48.1%,  -> 016F23
+	link = { vic3 = 0x73EF57 hoi4 = 3287 } #  x73EF57 89.14%,  -> 2B51C1
+	link = { vic3 = 0x618949 hoi4 = 7857 hoi4 = 6103 } #  x618949 55.63%,  -> 544E1A
+	link = { vic3 = 0xE0A040 hoi4 = 9239 } #  xE0A040 74.23%,  -> 7F0618
+	link = { vic3 = 0x6D87D7 hoi4 = 958 hoi4 = 11253 } #  x6D87D7 57.69%,  -> A92ADE
+	link = { vic3 = 0x60A040 hoi4 = 11374 } #  x60A040 47.39%,  -> A9BDB6
 	link = { comment = "* * STATE_WEST_COUNTRY " }
+	link = { vic3 = 0xC900EF hoi4 = 540 } #  xC900EF 51.18%,  -> 029319
+	link = { vic3 = 0xE020C0 hoi4 = 3369 } #  xE020C0 44.84%,  -> 2BB435
+	link = { vic3 = 0x6060C0 hoi4 = 6215 hoi4 = 3422 } #  x6060C0 52.69%,  -> 2C1244
+	link = { vic3 = 0x65B395 hoi4 = 6351 } #  x65B395 77.83%,  -> 558751
+	link = { vic3 = 0x1E38F8 hoi4 = 6526 } #  x1E38F8 54.59%,  -> 5669B5
+	link = { vic3 = 0xE0E040 hoi4 = 9484 } #  xE0E040 61.48%,  -> 805A09
+	link = { vic3 = 0xA2DD9E vic3 = 0xEB9862 hoi4 = 9562 } #  xA2DD9E 52.34%,  xEB9862 54.96%,  -> 80BDE0
+	link = { vic3 = 0x63EF7E hoi4 = 11406 } #  x63EF7E 35.37%,  -> AA0C43
 	link = { comment = "* * STATE_LOWLANDS " }
+	link = { vic3 = 0x206080 hoi4 = 159 } #  x206080 40.51%,  -> 009CD7
+	link = { vic3 = 0xA0E000 hoi4 = 200 } #  xA0E000 52.19%,  -> 00CF19
+	link = { vic3 = 0x002C82 hoi4 = 3150 } #  x002C82 68.03%,  -> 2A9F58
+	link = { vic3 = 0x9B6ACC hoi4 = 6300 } #  x9B6ACC 43.96%,  -> 554588
+	link = { vic3 = 0x676072 hoi4 = 3700 hoi4 = 6320 } #  x676072 54.64%,  -> 555DD3
+	link = { vic3 = 0x20E080 hoi4 = 6350 } #  x20E080 69.76%,  -> 55871A
+	link = { vic3 = 0xA06080 hoi4 = 6395 } #  xA06080 44.81%,  -> 55BABF
+	link = { vic3 = 0xB2A15E hoi4 = 9237 } #  xB2A15E 73.61%,  -> 7F0304
+	link = { vic3 = 0x80F634 hoi4 = 9314 } #  x80F634 90.15%,  -> 7F6054
+	link = { vic3 = 0x363883 hoi4 = 9350 } #  x363883 65.54%,  -> 7F8A9A
+	link = { vic3 = 0x832656 hoi4 = 9383 } #  x832656 30.85%,  -> 7FB19A
+	link = { vic3 = 0xA0E080 hoi4 = 9392 } #  xA0E080 62.56%,  -> 7FBD40
+	link = { vic3 = 0x193EFC hoi4 = 11207 } #  x193EFC 71.57%,  -> A8CC98
+	link = { vic3 = 0xDCD566 hoi4 = 11218 } #  xDCD566 81.19%,  -> A90684
+	link = { vic3 = 0x0B53FA vic3 = 0xD01BE2 hoi4 = 11378 } #  x0B53FA 64.8%,  xD01BE2 42.92%,  -> A9C0C0
 	link = { comment = "* * STATE_ULSTER " }
+	link = { vic3 = 0x0A38AF vic3 = 0x2BE1C8 hoi4 = 276 } #  x0A38AF 87.25%,  x2BE1C8 48.96%,  -> 0133AF
+	link = { vic3 = 0xA0C0E0 hoi4 = 337 } #  xA0C0E0 85.46%,  -> 018119
+	link = { vic3 = 0xCFCD2B hoi4 = 385 } #  xCFCD2B 100%,  -> 01BA46
+	link = { vic3 = 0x20E040 vic3 = 0xAA6FA1 hoi4 = 3242 } #  x20E040 73.98%,  xAA6FA1 63.7%,  -> 2B218F
+	link = { vic3 = 0x688E79 hoi4 = 11598 hoi4 = 3379 } #  x688E79 44.75%,  -> 2BBDC6
+	link = { vic3 = 0xA06040 hoi4 = 11257 } #  xA06040 78.25%,  -> A9302F
 	link = { comment = "* * STATE_MUNSTER " }
+	link = { vic3 = 0x02061B vic3 = 0xA0E0C0 hoi4 = 6289 } #  x02061B 33.93%,  xA0E0C0 48.54%,  -> 55363D
+	link = { vic3 = 0xECB3A5 hoi4 = 6405 } #  xECB3A5 67.07%,  -> 55C915
+	link = { vic3 = 0xEF3F71 hoi4 = 7394 } #  xEF3F71 44.09%,  -> 5A99A1
+	link = { vic3 = 0xBDAB32 hoi4 = 160 hoi4 = 9284 } #  xBDAB32 45.98%,  -> 7F39BD
+	link = { vic3 = 0xD9BB34 hoi4 = 9310 } #  xD9BB34 34.44%,  -> 7F5A9F
+	link = { vic3 = 0xE06040 vic3 = 0xF53F9B hoi4 = 9405 } #  xE06040 54.11%,  xF53F9B 51.74%,  -> 7FCC95
+	link = { vic3 = 0x969279 hoi4 = 442 hoi4 = 11237 } #  x969279 55.68%,  -> A91B5C
+	link = { vic3 = 0x849939 hoi4 = 11334 } #  x849939 73.58%,  -> A98D84
 	link = { comment = "* * STATE_LEINSTER " }
+	link = { vic3 = 0x5086D4 hoi4 = 285 } #  x5086D4 52.99%,  -> 013FBE
+	link = { vic3 = 0xCC3E24 hoi4 = 303 } #  xCC3E24 59.66%,  -> 01573C
+	link = { vic3 = 0x1E9CB2 hoi4 = 369 } #  x1E9CB2 68.21%,  -> 01A5A5
+	link = { vic3 = 0x2060C0 hoi4 = 3342 } #  x2060C0 64.99%,  -> 2B9385
+	link = { vic3 = 0xA2A933 hoi4 = 3359 } #  xA2A933 80.47%,  -> 2BA826
+	link = { vic3 = 0x5B3F6F vic3 = 0x60E040 hoi4 = 7377 } #  x5B3F6F 78.11%,  x60E040 46.82%,  -> 5A8742
+	link = { vic3 = 0xA0E040 hoi4 = 11293 } #  xA0E040 56.46%,  -> A95D20
+	link = { vic3 = 0xAEAF93 hoi4 = 11303 } #  xAEAF93 68.69%,  -> A9695C
 	link = { comment = "* * STATE_CONNAUGHT " }
+	link = { vic3 = 0x20E0C0 hoi4 = 3396 } #  x20E0C0 89.96%,  -> 2BD2D0
+	link = { vic3 = 0xC7847D hoi4 = 9303 } #  xC7847D 60.34%,  -> 7F513B
+	link = { vic3 = 0x641238 vic3 = 0x656D90 hoi4 = 9321 } #  x641238 59.74%,  x656D90 65.24%,  -> 7F66DB
+	link = { vic3 = 0xE5C4FE hoi4 = 9369 } #  xE5C4FE 77.05%,  -> 7F9FA4
+	link = { vic3 = 0x85F13B hoi4 = 11238 } #  x85F13B 69.87%,  -> A91B8E
+	link = { vic3 = 0xA060C0 hoi4 = 11287 } #  xA060C0 50.26%,  -> A954BB
+	link = { vic3 = 0x5DEF58 hoi4 = 1009 hoi4 = 11371 } #  x5DEF58 55.02%,  -> A9B7C5
 	link = { comment = "* * STATE_ILE_DE_FRANCE " }
+	link = { vic3 = 0x10DF00 vic3 = 0x7080DF hoi4 = 6518 } #  x10DF00 35.8%,  x7080DF 38.41%,  -> 565D47
+	link = { vic3 = 0xF522D9 hoi4 = 6643 hoi4 = 6547 } #  xF522D9 62.14%,  -> 568447
+	link = { vic3 = 0x90A0C0 vic3 = 0xE13BC2 hoi4 = 9507 } #  x90A0C0 33.64%,  xE13BC2 43.35%,  -> 807504
+	link = { vic3 = 0x906000 hoi4 = 271 hoi4 = 9523 } #  x906000 50.74%,  -> 8087C7
+	link = { vic3 = 0x12462D hoi4 = 982 hoi4 = 11491 } #  x12462D 46.61%,  -> AA7884
+	link = { vic3 = 0x71DA2E hoi4 = 6148 hoi4 = 11506 } #  x71DA2E 49.71%,  -> AA8A48
 	link = { comment = "* * STATE_PROVENCE " }
+	link = { vic3 = 0x3040E0 hoi4 = 6139 hoi4 = 911 } #  x3040E0 30.55%,  -> 047B0F
+	link = { vic3 = 0xC03918 hoi4 = 3762 } #  xC03918 56.77%,  -> 2DBA30
+	link = { vic3 = 0xB0C060 hoi4 = 3861 hoi4 = 3959 } #  xB0C060 44.98%,  -> 2EB135
+	link = { vic3 = 0x6D5E3F vic3 = 0xB040E0 hoi4 = 3961 } #  x6D5E3F 48.03%,  xB040E0 42.28%,  -> 2EB412
+	link = { vic3 = 0xCB9C34 hoi4 = 6975 } #  xCB9C34 88.24%,  -> 58B792
+	link = { vic3 = 0x5080E0 hoi4 = 9909 } #  x5080E0 61.65%,  -> 82BA13
+	link = { vic3 = 0xBBB6AD hoi4 = 11711 } #  xBBB6AD 53.97%,  -> ABB42F
+	link = { vic3 = 0xB8E48D hoi4 = 3729 hoi4 = 11713 } #  xB8E48D 48.33%,  -> ABB70C
+	link = { vic3 = 0x31C0DF hoi4 = 9751 hoi4 = 11849 } #  x31C0DF 36.1%,  -> AC8A52
+	link = { vic3 = 0xB0C0E0 hoi4 = 11875 } #  xB0C0E0 44.18%,  -> ACAB34
+	link = { vic3 = 0x1727F7 hoi4 = 9741 hoi4 = 11877 } #  x1727F7 69.78%,  -> ACAE11
 	link = { comment = "* * STATE_NORMANDY " }
+	link = { vic3 = 0xB8903B hoi4 = 539 } #  xB8903B 77.27%,  -> 0290A5
+	link = { vic3 = 0x65728E hoi4 = 553 } #  x65728E 69.73%,  -> 02A205
+	link = { vic3 = 0xD642B5 hoi4 = 3549 } #  xD642B5 45.58%,  -> 2CA585
+	link = { vic3 = 0x0B7098 hoi4 = 6449 } #  x0B7098 76.39%,  -> 56180B
+	link = { vic3 = 0x79C0E6 hoi4 = 6599 } #  x79C0E6 63.31%,  -> 56CC29
+	link = { vic3 = 0xA786BB hoi4 = 9434 } #  xA786BB 80.71%,  -> 801B8B
+	link = { vic3 = 0x90A040 hoi4 = 9550 } #  x90A040 35.88%,  -> 80AEC7
+	link = { vic3 = 0xB06080 hoi4 = 9578 } #  xB06080 51.2%,  -> 80CFA9
+	link = { vic3 = 0x1020C0 hoi4 = 9382 hoi4 = 11521 } #  x1020C0 61.14%,  -> AA9F84
+	link = { vic3 = 0x065CAE hoi4 = 469 hoi4 = 11535 } #  x065CAE 60.42%,  -> AAB148
+	link = { vic3 = 0x9020C0 hoi4 = 9748 hoi4 = 11563 } #  x9020C0 48.51%,  -> AAD22A
 	link = { comment = "* * STATE_LANGUEDOC " }
+	link = { vic3 = 0x7BCDC4 hoi4 = 6792 hoi4 = 760 } #  x7BCDC4 39.55%,  -> 03B4D2
+	link = { vic3 = 0x106080 hoi4 = 317 hoi4 = 3751 } #  x106080 38.15%,  -> 2DABAD
+	link = { vic3 = 0xCF9FBF hoi4 = 6716 hoi4 = 3946 } #  xCF9FBF 30.66%,  -> 2EA2B2
+	link = { vic3 = 0x1060C0 hoi4 = 3312 hoi4 = 9853 } #  x1060C0 47.31%,  -> 82750E
+	link = { vic3 = 0x906080 hoi4 = 149 hoi4 = 9898 } #  x906080 39.43%,  -> 82AB90
 	link = { comment = "* * STATE_RHONE " }
+	link = { vic3 = 0x73F176 hoi4 = 762 } #  x73F176 60.45%,  -> 03B7AF
+	link = { vic3 = 0x71A804 hoi4 = 11558 hoi4 = 3594 } #  x71A804 33.33%,  -> 2D03CB
+	link = { vic3 = 0x1B4B66 hoi4 = 11291 hoi4 = 3764 } #  x1B4B66 58.43%,  -> 2DBD0D
+	link = { vic3 = 0x30C060 hoi4 = 336 hoi4 = 3768 } #  x30C060 39.59%,  -> 2DC04E
+	link = { vic3 = 0xEF4060 hoi4 = 3463 hoi4 = 3770 } #  xEF4060 35.81%,  -> 2DC32B
+	link = { vic3 = 0xB04060 hoi4 = 6613 } #  xB04060 74.04%,  -> 57064C
+	link = { vic3 = 0x8E88DA vic3 = 0xD000E0 hoi4 = 6784 } #  x8E88DA 42.7%,  xD000E0 39.7%,  -> 57C3CE
+	link = { vic3 = 0x7516B6 hoi4 = 473 hoi4 = 9590 } #  x7516B6 31.12%,  -> 8109CC
+	link = { vic3 = 0x3369C6 vic3 = 0x8329EC hoi4 = 11593 } #  x3369C6 72.5%,  x8329EC 29.18%,  -> AB2189
+	link = { vic3 = 0x704060 hoi4 = 11568 hoi4 = 11716 } #  x704060 22.36%,  -> ABBA4D
 	link = { comment = "* * STATE_LOIRE " }
+	link = { vic3 = 0x30E080 hoi4 = 503 } #  x30E080 92.92%,  -> 025A23
+	link = { vic3 = 0x50A040 hoi4 = 655 } #  x50A040 92.59%,  -> 033046
+	link = { vic3 = 0x192CA5 hoi4 = 3858 hoi4 = 3495 } #  x192CA5 42.69%,  -> 2C5DA3
+	link = { vic3 = 0x6B5474 hoi4 = 3659 } #  x6B5474 61.34%,  -> 2D33C6
+	link = { vic3 = 0x3F74AF hoi4 = 3744 hoi4 = 9631 } #  x3F74AF 41.13%,  -> 813CA4
+	link = { vic3 = 0x093DF5 hoi4 = 9867 } #  x093DF5 36.84%,  -> 8287D1
+	link = { vic3 = 0xDD4DD0 hoi4 = 11600 } #  xDD4DD0 77.24%,  -> AB2DC5
+	link = { vic3 = 0x7CAE05 hoi4 = 11613 } #  x7CAE05 33.82%,  -> AB3F25
 	link = { comment = "* * STATE_PICARDY " }
+	link = { vic3 = 0x10A0C0 vic3 = 0xCF1F6D hoi4 = 454 } #  x10A0C0 44.7%,  xCF1F6D 100%,  -> 02218C
+	link = { vic3 = 0xE0A624 hoi4 = 485 } #  xE0A624 65.46%,  -> 0242D2
+	link = { vic3 = 0x106000 hoi4 = 11294 hoi4 = 3476 } #  x106000 33.9%,  -> 2C4553
+	link = { vic3 = 0xD0854D hoi4 = 194 hoi4 = 3536 } #  xD0854D 78.26%,  -> 2C9699
+	link = { vic3 = 0xC4C61A hoi4 = 3407 hoi4 = 6585 } #  xC4C61A 30.88%,  -> 56BAC9
+	link = { vic3 = 0xA0A080 hoi4 = 9826 hoi4 = 11483 } #  xA0A080 63.72%,  -> AA6FB6
+	link = { vic3 = 0xE0A0C0 hoi4 = 3744 hoi4 = 11548 } #  xE0A0C0 28.77%,  -> AAC061
 	link = { comment = "* * STATE_ALSACE_LORRAINE " }
+	link = { vic3 = 0xB000E0 hoi4 = 678 } #  xB000E0 98.18%,  -> 034E4B
+	link = { vic3 = 0xF0C0A0 hoi4 = 3629 } #  xF0C0A0 53.57%,  -> 2D1E26
+	link = { vic3 = 0xCC3250 hoi4 = 9884 hoi4 = 6529 } #  xCC3250 70.33%,  -> 566CC9
+	link = { vic3 = 0x6E4891 hoi4 = 11214 hoi4 = 9503 } #  x6E4891 21.18%,  -> 806F4A
+	link = { vic3 = 0x4899A2 hoi4 = 473 hoi4 = 11502 } #  x4899A2 41.94%,  -> AA8707
 	link = { comment = "* * STATE_POITOU " }
+	link = { vic3 = 0x9401C7 hoi4 = 9751 hoi4 = 595 } #  x9401C7 29.98%,  -> 030328
+	link = { vic3 = 0xD020C0 hoi4 = 625 } #  xD020C0 38.5%,  -> 0318C8
+	link = { vic3 = 0x19234B hoi4 = 4534 hoi4 = 629 } #  x19234B 61.25%,  -> 031BA5
+	link = { vic3 = 0xD0A040 hoi4 = 9597 } #  xD0A040 30.71%,  -> 8112C7
+	link = { vic3 = 0x5020C0 hoi4 = 6148 hoi4 = 11565 } #  x5020C0 37.3%,  -> AB00A7
+	link = { vic3 = 0xE269A3 hoi4 = 11582 } #  xE269A3 47.72%,  -> AB1825
 	link = { comment = "* * STATE_ARMAGNAC " }
+	link = { vic3 = 0xECF077 hoi4 = 943 } #  xECF077 47.42%,  -> 049F32
+	link = { vic3 = 0xD957E6 hoi4 = 3749 } #  xD957E6 41.18%,  -> 2DA8D0
+	link = { vic3 = 0x7C1D57 hoi4 = 3915 } #  x7C1D57 44.89%,  -> 2E81D0
+	link = { vic3 = 0xB0E000 hoi4 = 3948 } #  xB0E000 41.02%,  -> 2EA58F
+	link = { vic3 = 0x306080 hoi4 = 354 hoi4 = 6917 } #  x306080 51.08%,  -> 58728D
+	link = { vic3 = 0x106040 hoi4 = 6931 } #  x106040 67.57%,  -> 588451
+	link = { vic3 = 0xA2BBE9 hoi4 = 9741 hoi4 = 11702 } #  xA2BBE9 21.78%,  -> ABA889
+	link = { vic3 = 0x5615DD hoi4 = 6533 hoi4 = 12169 } #  x5615DD 57.14%,  -> AE489D
 	link = { comment = "* * STATE_LIMOUSIN " }
+	link = { vic3 = 0x61609A hoi4 = 620 } #  x61609A 60.56%,  -> 031587
+	link = { vic3 = 0x6E4717 vic3 = 0xE3E249 hoi4 = 651 } #  x6E4717 64.91%,  xE3E249 52.63%,  -> 032D05
+	link = { vic3 = 0x306000 hoi4 = 3598 } #  x306000 47.37%,  -> 2D06A8
+	link = { vic3 = 0x50A0C0 hoi4 = 3794 hoi4 = 3621 } #  x50A0C0 32.21%,  -> 2D1808
+	link = { vic3 = 0x14F855 hoi4 = 658 hoi4 = 3626 } #  x14F855 30.54%,  -> 2D1B49
+	link = { vic3 = 0x368F00 hoi4 = 3771 } #  x368F00 35.76%,  -> 2DC608
+	link = { vic3 = 0x01FD5F hoi4 = 6618 } #  x01FD5F 59.31%,  -> 570929
+	link = { vic3 = 0xE7B296 hoi4 = 6651 } #  xE7B296 64.54%,  -> 5721A6
+	link = { vic3 = 0xB06000 hoi4 = 6775 } #  xB06000 58.43%,  -> 57B729
+	link = { vic3 = 0xDF5770 hoi4 = 9734 } #  xDF5770 31.81%,  -> 81BAA9
+	link = { vic3 = 0xC8CD2F hoi4 = 11720 } #  xC8CD2F 40.83%,  -> ABC007
 	link = { comment = "* * STATE_BRITTANY " }
+	link = { vic3 = 0xF91DD2 hoi4 = 527 } #  xF91DD2 53.26%,  -> 027E46
+	link = { vic3 = 0xD0E080 hoi4 = 542 } #  xD0E080 45.45%,  -> 029382
+	link = { vic3 = 0x32C2E2 hoi4 = 3552 } #  x32C2E2 73.86%,  -> 2CA8C6
+	link = { vic3 = 0xD584A0 hoi4 = 3758 } #  xD584A0 32.8%,  -> 2DB1CB
+	link = { vic3 = 0x2BD902 hoi4 = 6536 } #  x2BD902 63.54%,  -> 5675C4
+	link = { vic3 = 0x55607E hoi4 = 6548 } #  x55607E 55.62%,  -> 568724
+	link = { vic3 = 0x2368E7 hoi4 = 6572 } #  x2368E7 44.03%,  -> 56AB47
+	link = { vic3 = 0x10A040 hoi4 = 9495 } #  x10A040 68.52%,  -> 806681
+	link = { vic3 = 0xABF468 hoi4 = 9510 } #  xABF468 70.72%,  -> 807845
+	link = { vic3 = 0xC4D7A2 hoi4 = 9525 } #  xC4D7A2 43.72%,  -> 808AA4
+	link = { vic3 = 0x50F4A7 hoi4 = 11465 } #  x50F4A7 67.46%,  -> AA57A2
+	link = { vic3 = 0xA0B0D1 hoi4 = 11508 } #  xA0B0D1 85.59%,  -> AA8D25
+	link = { vic3 = 0x706000 vic3 = 0x85E5AC hoi4 = 11616 } #  x706000 27.21%,  x85E5AC 45.97%,  -> AB4202
 	link = { comment = "* * STATE_BURGUNDY " }
+	link = { vic3 = 0x09BB96 hoi4 = 6485 hoi4 = 667 } #  x09BB96 64.55%,  -> 033FC8
+	link = { vic3 = 0x380D42 hoi4 = 907 hoi4 = 680 } #  x380D42 42.19%,  -> 035128
+	link = { vic3 = 0x708060 hoi4 = 3810 hoi4 = 3650 } #  x708060 25.59%,  -> 2D2ACB
+	link = { vic3 = 0x79B85C hoi4 = 3873 hoi4 = 3652 } #  x79B85C 60.42%,  -> 2D2DA8
+	link = { vic3 = 0x7000E0 hoi4 = 3669 } #  x7000E0 57.69%,  -> 2D4249
+	link = { vic3 = 0xC69235 hoi4 = 3681 } #  xC69235 48.65%,  -> 2D5785
+	link = { vic3 = 0x3FE149 hoi4 = 3909 hoi4 = 6644 } #  x3FE149 57.22%,  -> 571B88
+	link = { vic3 = 0xA8AE71 hoi4 = 9609 } #  xA8AE71 38.83%,  -> 812427
+	link = { vic3 = 0xF08060 hoi4 = 9625 } #  xF08060 45.65%,  -> 813686
+	link = { vic3 = 0x07BCC1 vic3 = 0xF080E0 hoi4 = 11576 } #  x07BCC1 62.77%,  xF080E0 29.9%,  -> AB0F2A
+	link = { vic3 = 0x8C3297 hoi4 = 3727 hoi4 = 11628 } #  x8C3297 41.45%,  -> AB4EA7
+	link = { vic3 = 0x6D7896 hoi4 = 13252 hoi4 = 11794 } #  x6D7896 70.97%,  -> AC4861
 	link = { comment = "* * STATE_CHAMPAGNE " }
+	link = { vic3 = 0xE280FC hoi4 = 551 } #  xE280FC 40%,  -> 029F28
+	link = { vic3 = 0x075199 hoi4 = 11086 hoi4 = 3402 } #  x075199 35.81%,  -> 2C032B
+	link = { vic3 = 0x70C020 hoi4 = 3447 } #  x70C020 53.85%,  -> 2C240D
+	link = { vic3 = 0x999D4B hoi4 = 3506 } #  x999D4B 84.68%,  -> 2C6C26
+	link = { vic3 = 0x669027 vic3 = 0xEFBF20 hoi4 = 9472 } #  x669027 81.4%,  xEFBF20 55.68%,  -> 804B54
+	link = { vic3 = 0xEF00DF hoi4 = 9490 } #  xEF00DF 52.81%,  -> 8060C7
+	link = { vic3 = 0x7040A0 hoi4 = 11518 } #  x7040A0 33.76%,  -> AA9CA7
+	link = { vic3 = 0x5362AC hoi4 = 11606 } #  x5362AC 49.64%,  -> AB362A
+	link = { vic3 = 0x8AE8D1 vic3 = 0xEF40A0 hoi4 = 11732 } #  x8AE8D1 52.17%,  xEF40A0 63.36%,  -> ABCCAC
+	link = { vic3 = 0x5FEA2F vic3 = 0xD6A06D hoi4 = 13011 } #  x5FEA2F 48.69%,  xD6A06D 49.5%,  -> FF0303
 	link = { comment = "* * STATE_FRANCHE_COMTE " }
+	link = { vic3 = 0x3080E0 hoi4 = 522 hoi4 = 521 } #  x3080E0 44.09%,  -> 027828
+	link = { vic3 = 0x3D8EF9 hoi4 = 698 } #  x3D8EF9 85.16%,  -> 036387
+	link = { vic3 = 0x70BFA0 hoi4 = 3464 hoi4 = 3560 } #  x70BFA0 22.65%,  -> 2CB408
+	link = { vic3 = 0xF00060 hoi4 = 3646 } #  xF00060 51.76%,  -> 2D278A
+	link = { vic3 = 0xCF46D1 hoi4 = 3666 } #  xCF46D1 86.21%,  -> 2D3F08
+	link = { vic3 = 0xC5F13A hoi4 = 5291 } #  xC5F13A 80.6%,  -> 370CF0
+	link = { vic3 = 0x600883 hoi4 = 6531 } #  x600883 38.25%,  -> 566FA6
+	link = { vic3 = 0x4B7684 hoi4 = 6545 } #  x4B7684 60%,  -> 568106
+	link = { vic3 = 0xA9D961 hoi4 = 6698 } #  xA9D961 49.65%,  -> 575729
+	link = { vic3 = 0x282DCC hoi4 = 9505 } #  x282DCC 48.79%,  -> 807227
+	link = { vic3 = 0x700060 hoi4 = 544 hoi4 = 9658 } #  x700060 47.01%,  -> 815D86
+	link = { vic3 = 0x7FC1E6 hoi4 = 11488 } #  x7FC1E6 75.94%,  -> AA75A7
+	link = { vic3 = 0xB080E0 hoi4 = 11516 } #  xB080E0 46.05%,  -> AA99CA
 	link = { comment = "* * STATE_AUVERGNE " }
+	link = { vic3 = 0x30E000 hoi4 = 755 } #  x30E000 34.08%,  -> 03AE4B
+	link = { vic3 = 0xABE045 hoi4 = 769 } #  xABE045 37.04%,  -> 03C0AA
+	link = { vic3 = 0xBED0F4 vic3 = 0xF0C060 hoi4 = 6770 } #  xBED0F4 54.62%,  xF0C060 72.77%,  -> 57B10B
+	link = { vic3 = 0xAF89BC hoi4 = 6773 } #  xAF89BC 33.89%,  -> 57B44C
+	link = { vic3 = 0xA27EFD hoi4 = 3782 hoi4 = 6789 } #  xA27EFD 40%,  -> 57C988
+	link = { vic3 = 0x70C060 hoi4 = 9732 } #  x70C060 60.47%,  -> 81B7CC
+	link = { vic3 = 0x061121 hoi4 = 3703 hoi4 = 11709 } #  x061121 54.04%,  -> ABB152
+	link = { vic3 = 0xF3D359 hoi4 = 11718 } #  xF3D359 86.27%,  -> ABBD2A
 	link = { comment = "* * STATE_AQUITAINE " }
+	link = { vic3 = 0x073FC4 hoi4 = 743 } #  x073FC4 55.21%,  -> 039C87
+	link = { vic3 = 0x6E16BB hoi4 = 11306 hoi4 = 3737 } #  x6E16BB 38.81%,  -> 2D9C2B
+	link = { vic3 = 0xA220D0 hoi4 = 6621 } #  xA220D0 72.94%,  -> 570C06
+	link = { vic3 = 0x5F7F2D hoi4 = 6759 } #  x5F7F2D 42.53%,  -> 57A288
+	link = { vic3 = 0x76BA85 hoi4 = 544 hoi4 = 6777 } #  x76BA85 78.95%,  -> 57BA06
+	link = { vic3 = 0x70A080 vic3 = 0xF0A080 hoi4 = 9710 } #  x70A080 42.47%,  xF0A080 73.88%,  -> 819F4F
+	link = { vic3 = 0x086618 vic3 = 0x606DEC hoi4 = 9717 } #  x086618 64.94%,  x606DEC 38.99%,  -> 81A84A
+	link = { vic3 = 0xBBF036 hoi4 = 9737 } #  xBBF036 43.9%,  -> 81BD86
+	link = { vic3 = 0xF02080 hoi4 = 3761 hoi4 = 9882 } #  xF02080 22.77%,  -> 829931
+	link = { vic3 = 0xCD8E77 hoi4 = 6535 hoi4 = 11697 } #  xCD8E77 42.63%,  -> ABA2CF
+	link = { vic3 = 0x3784B2 hoi4 = 13233 hoi4 = 11699 } #  x3784B2 44.15%,  -> ABA5AC
 	link = { comment = "* * STATE_ORLEANS " }
+	link = { vic3 = 0xF0E39E hoi4 = 512 } #  xF0E39E 84.21%,  -> 0269A5
+	link = { vic3 = 0xD8BA95 hoi4 = 3493 } #  xD8BA95 43.28%,  -> 2C5AC6
+	link = { vic3 = 0x56E158 hoi4 = 3509 } #  x56E158 63.32%,  -> 2C6F03
+	link = { vic3 = 0xF6A48C hoi4 = 11642 hoi4 = 9492 } #  xF6A48C 36%,  -> 8063A4
+	link = { vic3 = 0x886277 hoi4 = 486 hoi4 = 9629 } #  x886277 67.01%,  -> 8139C7
+	link = { vic3 = 0xB0E080 hoi4 = 9741 hoi4 = 11463 } #  xB0E080 40.27%,  -> AA54C5
+	link = { vic3 = 0xD02040 hoi4 = 9374 hoi4 = 11596 } #  xD02040 27.44%,  -> AB2A84
+	link = { vic3 = 0x90E000 hoi4 = 11611 } #  x90E000 36.65%,  -> AB3C48
+	link = { vic3 = 0x47B641 vic3 = 0x50CE72 hoi4 = 11631 } #  x47B641 47%,  x50CE72 33.6%,  -> AB5184
 	link = { comment = "* * STATE_HOLLAND " }
+	link = { vic3 = 0x777732 hoi4 = 3314 hoi4 = 68 } #  x777732 30.26%,  -> 00330F
+	link = { vic3 = 0xC04021 hoi4 = 11503 hoi4 = 391 } #  xC04021 30.04%,  -> 01C037
+	link = { vic3 = 0x80C0A0 hoi4 = 10027 hoi4 = 3211 } #  x80C0A0 43.9%,  -> 2B0F99
+	link = { vic3 = 0x01C0A0 hoi4 = 938 hoi4 = 9431 } #  x01C0A0 35.28%,  -> 801845
 	link = { comment = "* * STATE_FRIESLAND " }
+	link = { vic3 = 0x41C021 hoi4 = 216 hoi4 = 6336 } #  x41C021 51.79%,  -> 557524
+	link = { vic3 = 0x4141A0 vic3 = 0x5A48A2 hoi4 = 9309 } #  x4141A0 80.71%,  x5A48A2 43.75%,  -> 7F57C2
+	link = { vic3 = 0xC041A0 hoi4 = 9403 } #  xC041A0 40.75%,  -> 7FC9B8
+	link = { vic3 = 0xC0C021 hoi4 = 3718 hoi4 = 11318 } #  xC0C021 52.27%,  -> A97B25
 	link = { comment = "* * STATE_GELRE " }
+	link = { vic3 = 0x4C4894 hoi4 = 3262 } #  x4C4894 62.98%,  -> 2B30DF
+	link = { vic3 = 0xAF3A54 hoi4 = 6241 } #  xAF3A54 44.78%,  -> 55121A
+	link = { vic3 = 0xC0C0A0 hoi4 = 6496 } #  xC0C0A0 39.41%,  -> 563F42
+	link = { vic3 = 0x41C0A0 hoi4 = 479 hoi4 = 9363 } #  x41C0A0 63.96%,  -> 7F9954
+	link = { vic3 = 0x0000DF hoi4 = 975 hoi4 = 11562 } #  x0000DF 49.28%,  -> AACFE3
 	link = { comment = "* * STATE_WALLONIA " }
+	link = { vic3 = 0xEF2040 hoi4 = 6712 hoi4 = 6537 } #  xEF2040 59.65%,  -> 567838
+	link = { vic3 = 0x5180A0 hoi4 = 6583 } #  x5180A0 89.13%,  -> 56B788
+	link = { vic3 = 0xD001A0 hoi4 = 9418 } #  xD001A0 69.2%,  -> 80092C
+	link = { vic3 = 0x916574 hoi4 = 9444 } #  x916574 90.54%,  -> 802A0E
+	link = { vic3 = 0x8080A0 hoi4 = 3364 hoi4 = 9536 } #  x8080A0 52.03%,  -> 809C9A
+	link = { vic3 = 0x3A5FB9 hoi4 = 11407 } #  x3A5FB9 84.78%,  -> AA0CAC
+	link = { vic3 = 0x2D32D7 vic3 = 0xB0A0C0 hoi4 = 13081 } #  x2D32D7 62.2%,  xB0A0C0 48.12%,  -> FF7F7F
 	link = { comment = "* * STATE_FLANDERS " }
+	link = { vic3 = 0x93FB2E hoi4 = 516 } #  x93FB2E 71.79%,  -> 027237
+	link = { vic3 = 0x018061 hoi4 = 3692 hoi4 = 3516 } #  x018061 58.33%,  -> 2C75B7
+	link = { vic3 = 0x0141A0 hoi4 = 6446 } #  x0141A0 52.08%,  -> 5615C4
+	link = { vic3 = 0x8041A0 hoi4 = 6560 } #  x8041A0 39.53%,  -> 56991A
+	link = { vic3 = 0x808061 hoi4 = 9574 } #  x808061 44.39%,  -> 80CC63
+	link = { vic3 = 0x800060 hoi4 = 6540 hoi4 = 11419 } #  x800060 43.3%,  -> AA1BC5
 	link = { comment = "* * STATE_AUSTRIA " }
+	link = { vic3 = 0x0CBB8F hoi4 = 10027 hoi4 = 704 } #  x0CBB8F 49.32%,  -> 036C50
+	link = { vic3 = 0x9001A0 hoi4 = 6533 hoi4 = 3684 } #  x9001A0 29.36%,  -> 2D5D0D
+	link = { vic3 = 0xA9793B hoi4 = 6552 } #  xA9793B 40.4%,  -> 568ACE
+	link = { vic3 = 0xFDA6CB hoi4 = 6708 } #  xFDA6CB 59.78%,  -> 5763CE
+	link = { vic3 = 0x62F70E hoi4 = 6723 } #  x62F70E 58.18%,  -> 57752E
+	link = { vic3 = 0x7F2E4E hoi4 = 13252 hoi4 = 6739 } #  x7F2E4E 51.94%,  -> 57878D
+	link = { vic3 = 0xA40093 hoi4 = 9527 } #  xA40093 45.86%,  -> 808D4F
+	link = { vic3 = 0x017E3C vic3 = 0x20CF50 hoi4 = 9650 } #  x017E3C 47.85%,  x20CF50 33.82%,  -> 8151AE
+	link = { vic3 = 0x1180A0 hoi4 = 9661 } #  x1180A0 56.17%,  -> 81630E
+	link = { vic3 = 0x84C7C3 hoi4 = 11651 } #  x84C7C3 46.34%,  -> AB69CF
+	link = { vic3 = 0x316141 hoi4 = 3698 hoi4 = 11666 } #  x316141 61.43%,  -> AB7B2F
 	link = { comment = "* * STATE_BOHEMIA " }
+	link = { vic3 = 0x716141 hoi4 = 3884 hoi4 = 424 } #  x716141 36.47%,  -> 020C50
+	link = { vic3 = 0x9C175D hoi4 = 445 } #  x9C175D 28.64%,  -> 021BD2
+	link = { vic3 = 0x61902F hoi4 = 11692 hoi4 = 494 } #  x61902F 38.04%,  -> 024E14
+	link = { vic3 = 0xF0E041 hoi4 = 732 } #  xF0E041 52.34%,  -> 038DD1
+	link = { vic3 = 0xEE1941 hoi4 = 3462 } #  xEE1941 74.47%,  -> 2C30B2
+	link = { vic3 = 0xFA371D hoi4 = 3553 } #  xFA371D 76.92%,  -> 2CAB0D
+	link = { vic3 = 0xD286DB hoi4 = 5283 } #  xD286DB 37.5%,  -> 369059
+	link = { vic3 = 0xCDE96E hoi4 = 6418 } #  xCDE96E 49.49%,  -> 56008D
+	link = { vic3 = 0x1D6B94 hoi4 = 3720 hoi4 = 6440 } #  x1D6B94 52.38%,  -> 561251
+	link = { vic3 = 0xA40163 hoi4 = 3398 hoi4 = 6470 } #  xA40163 38.85%,  -> 5624B0
+	link = { vic3 = 0xAFD2D1 hoi4 = 6592 } #  xAFD2D1 45.67%,  -> 56C32E
+	link = { vic3 = 0x400226 hoi4 = 9414 } #  x400226 59.24%,  -> 80030E
+	link = { vic3 = 0x0B9B4F hoi4 = 9421 } #  x0B9B4F 68.06%,  -> 800C09
+	link = { vic3 = 0x465A13 hoi4 = 9429 } #  x465A13 74.57%,  -> 8015D1
+	link = { vic3 = 0x74C71F hoi4 = 9541 } #  x74C71F 57.6%,  -> 80A28B
+	link = { vic3 = 0x67FE18 hoi4 = 7213 hoi4 = 9555 } #  x67FE18 39.44%,  -> 80B44F
+	link = { vic3 = 0x71E041 hoi4 = 9569 } #  x71E041 55.59%,  -> 80C6AE
+	link = { vic3 = 0xF06141 hoi4 = 11497 } #  xF06141 74.42%,  -> AA814D
+	link = { vic3 = 0x2ED2B3 hoi4 = 13256 hoi4 = 11525 } #  x2ED2B3 35.07%,  -> AAA50C
+	link = { vic3 = 0x81C142 hoi4 = 11542 } #  x81C142 64.68%,  -> AAB7CF
+	link = { vic3 = 0x9080A0 hoi4 = 11556 } #  x9080A0 84.87%,  -> AAC92F
 	link = { comment = "* * STATE_MORAVIA " }
+	link = { vic3 = 0x4B3444 hoi4 = 421 } #  x4B3444 60.69%,  -> 02090F
+	link = { vic3 = 0x12778D vic3 = 0x49C8F7 hoi4 = 569 } #  x12778D 29.05%,  x49C8F7 44.72%,  -> 02BA50
+	link = { vic3 = 0xF0E080 hoi4 = 11057 hoi4 = 3414 } #  xF0E080 40.23%,  -> 2C0C8F
+	link = { vic3 = 0xD9A784 hoi4 = 6598 hoi4 = 3569 } #  xD9A784 44.04%,  -> 2CBDD0
+	link = { vic3 = 0x1D088E hoi4 = 6562 } #  x1D088E 53.19%,  -> 569C2E
+	link = { vic3 = 0x08AA4B hoi4 = 11282 hoi4 = 6576 } #  x08AA4B 47.55%,  -> 56AE8D
+	link = { vic3 = 0x71E080 hoi4 = 6215 hoi4 = 6590 } #  x71E080 78.4%,  -> 56C051
+	link = { vic3 = 0x10DFDF hoi4 = 9551 } #  x10DFDF 36.96%,  -> 80B10E
+	link = { vic3 = 0xEF6080 hoi4 = 11511 } #  xEF6080 52.73%,  -> AA90CF
 	link = { comment = "* * STATE_STYRIA " }
+	link = { vic3 = 0xB06141 hoi4 = 653 } #  xB06141 51.75%,  -> 032DD2
+	link = { vic3 = 0x8F8020 hoi4 = 3748 hoi4 = 3673 } #  x8F8020 36.52%,  -> 2D458F
+	link = { vic3 = 0xB4D292 hoi4 = 3816 hoi4 = 6673 } #  xB4D292 33.4%,  -> 5736B0
+	link = { vic3 = 0x1101A0 hoi4 = 6687 } #  x1101A0 66.67%,  -> 574810
+	link = { vic3 = 0x59D927 hoi4 = 6691 } #  x59D927 85.48%,  -> 574E2E
+	link = { vic3 = 0x86FD73 hoi4 = 3859 hoi4 = 9648 } #  x86FD73 35.58%,  -> 814ED1
+	link = { vic3 = 0x155A44 hoi4 = 9679 } #  x155A44 52.63%,  -> 8178AE
 	link = { comment = "* * STATE_TYROL " }
+	link = { vic3 = 0xF0E0C0 hoi4 = 11057 hoi4 = 671 } #  xF0E0C0 84%,  -> 034550
+	link = { vic3 = 0x5D4166 hoi4 = 688 } #  x5D4166 63.59%,  -> 035A8C
+	link = { vic3 = 0xF061C0 hoi4 = 3674 } #  xF061C0 92.68%,  -> 2D48D0
+	link = { vic3 = 0xAB7EB0 hoi4 = 6569 hoi4 = 3675 } #  xAB7EB0 43.83%,  -> 2D4BAD
+	link = { vic3 = 0xD0C0E0 hoi4 = 504 hoi4 = 6680 } #  xD0C0E0 68.72%,  -> 573FAB
+	link = { vic3 = 0x51C0E0 hoi4 = 9633 } #  x51C0E0 49.15%,  -> 813F4F
+	link = { vic3 = 0xEC6873 hoi4 = 3794 hoi4 = 9636 } #  xEC6873 37.1%,  -> 81422C
+	link = { vic3 = 0xC74CD7 hoi4 = 11618 } #  xC74CD7 67.2%,  -> AB42CF
+	link = { vic3 = 0x4A9C68 hoi4 = 11570 hoi4 = 11634 } #  x4A9C68 77.5%,  -> AB570C
 	link = { comment = "* * STATE_SOUTH_TYROL " }
+	link = { vic3 = 0x1120FF hoi4 = 7213 hoi4 = 6631 } #  x1120FF 73.56%,  -> 57128D
+	link = { vic3 = 0x039D0F hoi4 = 6675 } #  x039D0F 81.28%,  -> 57398D
+	link = { vic3 = 0xD0BF60 hoi4 = 9598 } #  xD0BF60 38.61%,  -> 81150E
+	link = { vic3 = 0xD040E0 hoi4 = 6540 hoi4 = 9630 } #  xD040E0 36.36%,  -> 813C0E
 	link = { comment = "* * STATE_POMERANIA " }
+	link = { vic3 = 0x19AE19 vic3 = 0x6A53CF hoi4 = 537 } #  x19AE19 58.97%,  x6A53CF 40.78%,  -> 028D91
+	link = { vic3 = 0xE1A03A hoi4 = 11272 hoi4 = 3340 } #  xE1A03A 62.46%,  -> 2B90A8
+	link = { vic3 = 0xA04121 hoi4 = 3727 hoi4 = 6282 } #  xA04121 38.58%,  -> 55301F
+	link = { vic3 = 0x3C26DD hoi4 = 9415 hoi4 = 6309 } #  x3C26DD 49.07%,  -> 555101
+	link = { vic3 = 0xA9BD82 hoi4 = 11310 hoi4 = 6334 } #  xA9BD82 37.33%,  -> 557247
+	link = { vic3 = 0x86E6F2 vic3 = 0xA0C020 hoi4 = 9277 } #  x86E6F2 50%,  xA0C020 38.06%,  -> 7F339F
+	link = { vic3 = 0x8C6982 vic3 = 0xD4C37D hoi4 = 9334 } #  x8C6982 60.87%,  xD4C37D 54.24%,  -> 7F75C7
+	link = { vic3 = 0x8D1E12 hoi4 = 6222 hoi4 = 9361 } #  x8D1E12 39.93%,  -> 7F96A9
+	link = { vic3 = 0x567452 hoi4 = 9388 } #  x567452 68.04%,  -> 7FB78B
+	link = { vic3 = 0xCDEAE4 hoi4 = 11260 } #  xCDEAE4 49.69%,  -> A93620
+	link = { vic3 = 0x8001A0 hoi4 = 11316 } #  x8001A0 48.22%,  -> A97848
+	link = { vic3 = 0xEF5730 hoi4 = 11343 } #  xEF5730 58.84%,  -> A9992A
+	link = { vic3 = 0x89A2A9 hoi4 = 11372 } #  x89A2A9 99.11%,  -> A9BA0C
 	link = { comment = "* * STATE_ELBE " }
+	link = { vic3 = 0x68BE66 vic3 = 0xF54C13 hoi4 = 374 } #  x68BE66 30.57%,  xF54C13 33.02%,  -> 01AE0A
+	link = { vic3 = 0x418061 hoi4 = 884 hoi4 = 3271 } #  x418061 70.92%,  -> 2B3F62
+	link = { vic3 = 0xC08061 hoi4 = 3326 } #  xC08061 65.46%,  -> 2B8126
+	link = { vic3 = 0xC080E0 hoi4 = 486 hoi4 = 6218 } #  xC080E0 27.16%,  -> 5500BA
+	link = { vic3 = 0x392FDA hoi4 = 6609 hoi4 = 6298 } #  x392FDA 39.56%,  -> 5542E2
+	link = { vic3 = 0xA5E2E8 hoi4 = 6325 } #  xA5E2E8 46.39%,  -> 5563C4
+	link = { vic3 = 0x7C8FD3 hoi4 = 6606 hoi4 = 9264 } #  x7C8FD3 38.75%,  -> 7F241D
+	link = { vic3 = 0x587297 hoi4 = 9347 } #  x587297 40.49%,  -> 7F8727
 	link = { comment = "* * STATE_EAST_SWITZERLAND " }
+	link = { vic3 = 0x5FB41E hoi4 = 3752 hoi4 = 663 } #  x5FB41E 60.79%,  -> 0339AA
+	link = { vic3 = 0x90C0E0 hoi4 = 3798 hoi4 = 3662 } #  x90C0E0 24.58%,  -> 2D394E
+	link = { vic3 = 0x11C0E0 hoi4 = 3328 hoi4 = 9600 } #  x11C0E0 44.04%,  -> 81184F
+	link = { vic3 = 0xD00161 hoi4 = 6556 hoi4 = 11601 } #  xD00161 31.38%,  -> AB300C
+	link = { vic3 = 0x7E4B86 hoi4 = 3720 hoi4 = 11623 } #  x7E4B86 48.05%,  -> AB4889
 	link = { comment = "* * STATE_WEST_SWITZERLAND " }
+	link = { vic3 = 0x508060 hoi4 = 636 } #  x508060 72.73%,  -> 03212D
+	link = { vic3 = 0x9041E0 hoi4 = 10027 hoi4 = 3612 } #  x9041E0 78.33%,  -> 2D124E
+	link = { vic3 = 0xA042B5 hoi4 = 6666 } #  xA042B5 89.55%,  -> 572D4C
+	link = { vic3 = 0x9080E0 hoi4 = 10163 hoi4 = 6683 } #  x9080E0 69.57%,  -> 574288
+	link = { vic3 = 0x7ACC0B hoi4 = 6535 hoi4 = 9587 } #  x7ACC0B 58.08%,  -> 81068B
+	link = { vic3 = 0xEBF5B1 hoi4 = 9618 } #  xEBF5B1 70.68%,  -> 812D8B
+	link = { vic3 = 0xE51E78 vic3 = 0xED07F7 hoi4 = 9620 } #  xE51E78 67.35%,  xED07F7 65.71%,  -> 8130CC
+	link = { vic3 = 0x117FE0 hoi4 = 9622 } #  x117FE0 100%,  -> 8133A9
+	link = { vic3 = 0xD08060 hoi4 = 11590 } #  xD08060 49.83%,  -> AB1EAC
 	link = { comment = "* * STATE_WESTPHALIA " }
+	link = { vic3 = 0x1BA4F6 hoi4 = 405 } #  x1BA4F6 76.19%,  -> 01CFB9
+	link = { vic3 = 0xA08061 hoi4 = 495 } #  xA08061 79.49%,  -> 024EAA
+	link = { vic3 = 0x9F0060 hoi4 = 3355 } #  x9F0060 47.89%,  -> 2BA2D5
+	link = { vic3 = 0x0180E0 hoi4 = 3512 } #  x0180E0 41.38%,  -> 2C720D
+	link = { vic3 = 0x910095 hoi4 = 9509 } #  x910095 31.7%,  -> 80780E
+	link = { vic3 = 0x418021 hoi4 = 11233 hoi4 = 9547 } #  x418021 45.12%,  -> 80AB1D
+	link = { vic3 = 0x1DD141 hoi4 = 6533 hoi4 = 11346 } #  x1DD141 41.76%,  -> A99CD4
+	link = { vic3 = 0x218061 hoi4 = 17 hoi4 = 11431 } #  x218061 36.02%,  -> AA2A48
+	link = { vic3 = 0x4101A0 hoi4 = 426 hoi4 = 11533 } #  x4101A0 37.34%,  -> AAAE9D
 	link = { comment = "* * STATE_ANHALT " }
+	link = { vic3 = 0x618061 hoi4 = 6428 hoi4 = 538 } #  x618061 80.26%,  -> 02903C
+	link = { vic3 = 0xA51232 hoi4 = 9500 hoi4 = 3522 } #  xA51232 41.96%,  -> 2C818F
+	link = { vic3 = 0x34386E hoi4 = 11221 hoi4 = 6441 } #  x34386E 36.56%,  -> 561283
+	link = { vic3 = 0xA080E0 hoi4 = 6487 } #  xA080E0 46.08%,  -> 5633C9
+	link = { vic3 = 0x3C9B93 hoi4 = 6524 } #  x3C9B93 53.31%,  -> 5666D8
+	link = { vic3 = 0xED8F7B hoi4 = 6582 } #  xED8F7B 61.05%,  -> 56B71F
+	link = { vic3 = 0xCBA4A5 hoi4 = 9375 } #  xCBA4A5 44.14%,  -> 7FA8D6
+	link = { vic3 = 0xE0C0A0 hoi4 = 9456 } #  xE0C0A0 56.67%,  -> 80364A
+	link = { vic3 = 0x8A448C hoi4 = 9560 } #  x8A448C 44.57%,  -> 80BA9F
+	link = { vic3 = 0x12694A hoi4 = 6533 hoi4 = 11468 } #  x12694A 49.58%,  -> AA5AAC
+	link = { vic3 = 0xCF5D8E hoi4 = 3752 hoi4 = 11545 } #  xCF5D8E 23.75%,  -> AABD20
 	link = { comment = "* * STATE_RHINELAND " }
+	link = { vic3 = 0x11C021 hoi4 = 3377 hoi4 = 563 } #  x11C021 52.27%,  -> 02AEAA
+	link = { vic3 = 0x5D7A68 hoi4 = 3671 hoi4 = 3423 } #  x5D7A68 42.33%,  -> 2C12AD
+	link = { vic3 = 0x707505 hoi4 = 3310 hoi4 = 3558 } #  x707505 79.17%,  -> 2CB12B
+	link = { vic3 = 0xD080A0 hoi4 = 9575 } #  xD080A0 61.36%,  -> 80CCCC
+	link = { vic3 = 0x29CCD6 hoi4 = 11612 hoi4 = 11435 } #  x29CCD6 45.96%,  -> AA2D8E
+	link = { vic3 = 0xC1B963 hoi4 = 11494 } #  xC1B963 46.81%,  -> AA7E39
+	link = { vic3 = 0x904020 hoi4 = 11531 } #  x904020 63.3%,  -> AAAB2A
 	link = { comment = "* * STATE_NORTH_RHINE " }
+	link = { vic3 = 0x5101A0 hoi4 = 529 } #  x5101A0 51.9%,  -> 0281B9
+	link = { vic3 = 0x9F4072 hoi4 = 587 } #  x9F4072 87.74%,  -> 02D200
+	link = { vic3 = 0x8001E0 hoi4 = 3444 } #  x8001E0 55.78%,  -> 2C21C6
+	link = { vic3 = 0x486F6A hoi4 = 3488 } #  x486F6A 74.6%,  -> 2C54D5
+	link = { vic3 = 0x518021 hoi4 = 3547 } #  x518021 68.1%,  -> 2CA51C
+	link = { vic3 = 0x2101E0 hoi4 = 6469 } #  x2101E0 34.51%,  -> 562447
+	link = { vic3 = 0xD08021 hoi4 = 6570 } #  xD08021 35.9%,  -> 56A89C
+	link = { vic3 = 0x834B66 hoi4 = 9522 } #  x834B66 31.82%,  -> 808790
 	link = { comment = "* * STATE_BRANDENBURG " }
+	link = { vic3 = 0x61C0A0 hoi4 = 375 } #  x61C0A0 43.04%,  -> 01AED7
+	link = { vic3 = 0x28CEC2 hoi4 = 326 hoi4 = 444 } #  x28CEC2 44.3%,  -> 021B05
+	link = { vic3 = 0xDF4020 hoi4 = 478 } #  xDF4020 41.76%,  -> 023C4B
+	link = { vic3 = 0x069CFB hoi4 = 4159 hoi4 = 3207 } #  x069CFB 38.08%,  -> 2B0CBC
+	link = { vic3 = 0x9E7304 hoi4 = 3367 } #  x9E7304 47.3%,  -> 2BB158
+	link = { vic3 = 0xB90BFF hoi4 = 3473 } #  xB90BFF 36.46%,  -> 2C3FCB
+	link = { vic3 = 0xA65DA6 hoi4 = 3499 } #  xA65DA6 67.92%,  -> 2C60AD
+	link = { vic3 = 0x60BF20 hoi4 = 10122 hoi4 = 3572 } #  x60BF20 45.52%,  -> 2CC321
+	link = { vic3 = 0x83B1A8 hoi4 = 6521 } #  x83B1A8 32.95%,  -> 56632E
+	link = { vic3 = 0x514C51 hoi4 = 11236 hoi4 = 9387 } #  x514C51 58.82%,  -> 7FB759
+	link = { vic3 = 0x9B9076 hoi4 = 9428 } #  x9B9076 50.74%,  -> 801504
+	link = { vic3 = 0xA040A0 hoi4 = 9496 } #  xA040A0 64.13%,  -> 8066AE
+	link = { vic3 = 0x82F9A8 hoi4 = 11219 } #  x82F9A8 56.44%,  -> A906BB
+	link = { vic3 = 0x76EF4E hoi4 = 11415 } #  x76EF4E 33.01%,  -> AA1884
+	link = { vic3 = 0xF77289 hoi4 = 11478 } #  xF77289 46.35%,  -> AA692F
+	link = { vic3 = 0xF8D457 hoi4 = 11505 } #  xF8D457 81.69%,  -> AA8A11
 	link = { comment = "* * STATE_SCHLESWIG_HOLSTEIN " }
+	link = { vic3 = 0xBFCC21 hoi4 = 3231 } #  xBFCC21 56.55%,  -> 2B1BD5
+	link = { vic3 = 0x804160 hoi4 = 3368 } #  x804160 27.43%,  -> 2BB18A
+	link = { vic3 = 0x64824C hoi4 = 6603 hoi4 = 6389 } #  x64824C 36.32%,  -> 55B40B
+	link = { vic3 = 0xE000A0 hoi4 = 9320 } #  xE000A0 38.8%,  -> 7F6645
+	link = { vic3 = 0x78B203 vic3 = 0xE3C876 hoi4 = 11251 } #  x78B203 38.38%,  xE3C876 81.67%,  -> A92A11
+	link = { vic3 = 0x60809F hoi4 = 9785 hoi4 = 11331 } #  x60809F 45.73%,  -> A98AA7
+	link = { vic3 = 0x00C060 hoi4 = 7857 hoi4 = 11366 } #  x00C060 40.92%,  -> A9B1A7
 	link = { comment = "* * STATE_WURTTEMBERG " }
+	link = { vic3 = 0x908060 hoi4 = 6808 hoi4 = 519 } #  x908060 47.98%,  -> 02754B
+	link = { vic3 = 0xDBB84C hoi4 = 11768 hoi4 = 3690 } #  xDBB84C 38.83%,  -> 2D632B
+	link = { vic3 = 0x100060 hoi4 = 6215 hoi4 = 6555 } #  x100060 60.66%,  -> 569088
+	link = { vic3 = 0xC541D2 hoi4 = 9517 } #  xC541D2 50%,  -> 8081A9
+	link = { vic3 = 0x8F0060 hoi4 = 956 hoi4 = 11486 } #  x8F0060 38.64%,  -> AA72CA
+	link = { vic3 = 0x118060 hoi4 = 11499 } #  x118060 49.86%,  -> AA842A
 	link = { comment = "* * STATE_BADEN " }
+	link = { vic3 = 0xE0A2B9 hoi4 = 3530 } #  xE0A2B9 79.34%,  -> 2C8D08
+	link = { vic3 = 0xAEBA2A hoi4 = 3474 hoi4 = 3679 } #  xAEBA2A 36.03%,  -> 2D51CB
+	link = { vic3 = 0xB00160 hoi4 = 6542 } #  xB00160 65.52%,  -> 567E29
+	link = { vic3 = 0x318061 hoi4 = 6581 } #  x318061 51.85%,  -> 56B4AB
+	link = { vic3 = 0xB08061 hoi4 = 11640 } #  xB08061 30.13%,  -> AB5D2A
 	link = { comment = "* * STATE_HANNOVER " }
+	link = { vic3 = 0xECC3B4 hoi4 = 241 } #  xECC3B4 64.67%,  -> 011855
+	link = { vic3 = 0x4101E0 hoi4 = 319 hoi4 = 247 } #  x4101E0 52.47%,  -> 011B9B
+	link = { vic3 = 0xC00161 hoi4 = 309 } #  xC00161 46.28%,  -> 015DC3
+	link = { vic3 = 0xBF00DF hoi4 = 3234 } #  xBF00DF 52.23%,  -> 2B1E1C
+	link = { vic3 = 0x165E05 vic3 = 0xBBA504 hoi4 = 3395 } #  x165E05 23.56%,  xBBA504 78.7%,  -> 2BD23A
+	link = { vic3 = 0x8080E0 hoi4 = 9281 } #  x8080E0 34.91%,  -> 7F36E0
+	link = { vic3 = 0x784B8E vic3 = 0xF9DCA2 hoi4 = 11360 } #  x784B8E 41.03%,  xF9DCA2 39.18%,  -> A9AB89
+	link = { vic3 = 0x4D62A0 hoi4 = 6539 hoi4 = 11388 } #  x4D62A0 49.79%,  -> A9CC39
+	link = { vic3 = 0x694B91 hoi4 = 480 hoi4 = 11493 } #  x694B91 48.49%,  -> AA7B8E
 	link = { comment = "* * STATE_BRUNSWICK " }
+	link = { vic3 = 0x4C16EA hoi4 = 3500 } #  x4C16EA 54.51%,  -> 2C6358
+	link = { vic3 = 0x43D537 hoi4 = 3561 } #  x43D537 54.55%,  -> 2CB49E
+	link = { vic3 = 0x2180E0 vic3 = 0xA001E0 hoi4 = 6513 } #  x2180E0 56.03%,  xA001E0 31.2%,  -> 5654AB
+	link = { vic3 = 0xA61E6E hoi4 = 11402 } #  xA61E6E 49.61%,  -> AA0902
 	link = { comment = "* * STATE_BAVARIA " }
+	link = { vic3 = 0xB08021 hoi4 = 532 } #  xB08021 43.65%,  -> 0284CD
+	link = { vic3 = 0x010AD7 hoi4 = 6540 hoi4 = 561 } #  x010AD7 43%,  -> 02ABCD
+	link = { vic3 = 0x68CE1C hoi4 = 692 } #  x68CE1C 29.83%,  -> 035DCD
+	link = { vic3 = 0x6EA29B hoi4 = 707 } #  x6EA29B 64.62%,  -> 036F2D
+	link = { vic3 = 0x565185 hoi4 = 708 } #  x565185 84.89%,  -> 03720A
+	link = { vic3 = 0xA7094D hoi4 = 3299 } #  xA7094D 77.08%,  -> 2B6044
+	link = { vic3 = 0x3101A0 hoi4 = 3541 } #  x3101A0 62.23%,  -> 2C9C8A
+	link = { vic3 = 0x82F4B9 hoi4 = 160 hoi4 = 3571 } #  x82F4B9 45%,  -> 2CC0AD
+	link = { vic3 = 0xE75868 hoi4 = 3688 } #  xE75868 33.97%,  -> 2D604E
+	link = { vic3 = 0x318021 hoi4 = 3705 } #  x318021 44.57%,  -> 2D758A
+	link = { vic3 = 0x18A2E1 hoi4 = 6693 } #  x18A2E1 42.65%,  -> 57510B
+	link = { vic3 = 0xFE59E7 hoi4 = 9515 } #  xFE59E7 76.51%,  -> 807ECC
+	link = { vic3 = 0xC347B1 hoi4 = 9666 } #  xC347B1 42.48%,  -> 81692C
+	link = { vic3 = 0x8C26DD hoi4 = 111 hoi4 = 9681 } #  x8C26DD 38.04%,  -> 817B8B
+	link = { vic3 = 0xB00121 hoi4 = 970 hoi4 = 11620 } #  xB00121 44.19%,  -> AB45AC
+	link = { vic3 = 0x704A5F hoi4 = 11638 } #  x704A5F 65.09%,  -> AB5A4D
+	link = { vic3 = 0xE76994 hoi4 = 11653 } #  xE76994 43.7%,  -> AB6CAC
 	link = { comment = "* * STATE_FRANCONIA " }
+	link = { vic3 = 0xF91154 hoi4 = 3660 hoi4 = 586 } #  xF91154 48.42%,  -> 02CF8C
+	link = { vic3 = 0x9040A0 hoi4 = 6594 } #  x9040A0 68.68%,  -> 56C60B
+	link = { vic3 = 0x648AD1 hoi4 = 1090 hoi4 = 9416 } #  x648AD1 58.82%,  -> 80064F
+	link = { vic3 = 0x51C0A0 hoi4 = 3375 hoi4 = 9557 } #  x51C0A0 58.57%,  -> 80B72C
+	link = { vic3 = 0xA55FB1 hoi4 = 9572 } #  xA55FB1 29.24%,  -> 80C98B
+	link = { vic3 = 0xD0C0A0 hoi4 = 11529 } #  xD0C0A0 26.51%,  -> AAA84D
+	link = { vic3 = 0x0B0DBA vic3 = 0xD041A0 hoi4 = 11544 } #  x0B0DBA 51.33%,  xD041A0 47.37%,  -> AABAAC
 	link = { comment = "* * STATE_SAXONY " }
+	link = { vic3 = 0x66FE0A hoi4 = 482 } #  x66FE0A 70.92%,  -> 023F91
+	link = { vic3 = 0x169073 hoi4 = 573 } #  x169073 37.7%,  -> 02C0A0
+	link = { vic3 = 0x614121 hoi4 = 3660 hoi4 = 3514 } #  x614121 27.22%,  -> 2C72DA
+	link = { vic3 = 0x917939 hoi4 = 3535 } #  x917939 57.24%,  -> 2C93BC
+	link = { vic3 = 0x5141A0 hoi4 = 6421 } #  x5141A0 50.7%,  -> 5603CE
+	link = { vic3 = 0x43CE26 hoi4 = 6559 } #  x43CE26 60.34%,  -> 56963D
+	link = { vic3 = 0x31E0C0 hoi4 = 9441 } #  x31E0C0 26.8%,  -> 802731
+	link = { vic3 = 0xAFDFBF hoi4 = 9471 } #  xAFDFBF 41.28%,  -> 804813
+	link = { vic3 = 0x51C021 vic3 = 0xC00A37 hoi4 = 9497 } #  x51C021 35.9%,  xC00A37 44.74%,  -> 806959
+	link = { vic3 = 0x795368 hoi4 = 11432 } #  x795368 38.71%,  -> AA2AB1
+	link = { vic3 = 0xD0C021 hoi4 = 13116 } #  xD0C021 50.73%,  -> A524C7
 	link = { comment = "* * STATE_HESSE " }
+	link = { vic3 = 0x11C0A0 hoi4 = 9561 hoi4 = 589 } #  x11C0A0 53.19%,  -> 02D2CD
+	link = { vic3 = 0x8B7C67 hoi4 = 3397 } #  x8B7C67 41.14%,  -> 2C004E
+	link = { vic3 = 0x3E794B hoi4 = 3524 } #  x3E794B 89.47%,  -> 2C843A
+	link = { vic3 = 0x1141A0 hoi4 = 3574 } #  x1141A0 56.25%,  -> 2CC38A
+	link = { vic3 = 0x90C0A0 hoi4 = 6444 } #  x90C0A0 82.68%,  -> 56152E
+	link = { vic3 = 0xFF1DBB hoi4 = 6549 } #  xFF1DBB 40.28%,  -> 5687BA
+	link = { vic3 = 0x1357DB hoi4 = 9486 } #  x1357DB 46%,  -> 805AD6
+	link = { vic3 = 0x2248E2 hoi4 = 6569 hoi4 = 9524 } #  x2248E2 53.72%,  -> 808A3B
+	link = { vic3 = 0xC08020 vic3 = 0xD04121 hoi4 = 11445 } #  xC08020 66.3%,  xD04121 24.75%,  -> AA3C11
+	link = { vic3 = 0x90C020 hoi4 = 11560 } #  x90C020 77.42%,  -> AACF4D
 	link = { comment = "* * STATE_MECKLENBURG " }
+	link = { vic3 = 0x24CA48 hoi4 = 293 } #  x24CA48 63.33%,  -> 014B00
+	link = { vic3 = 0x4545BE vic3 = 0xD8F441 hoi4 = 321 } #  x4545BE 61.76%,  xD8F441 74.36%,  -> 016C46
+	link = { vic3 = 0xD9A469 vic3 = 0xE041A0 hoi4 = 3258 } #  xD9A469 57.89%,  xE041A0 43.5%,  -> 2B2D9E
+	link = { vic3 = 0xE080A0 hoi4 = 9294 } #  xE080A0 37.26%,  -> 7F4563
+	link = { vic3 = 0x12E54F hoi4 = 956 hoi4 = 11276 } #  x12E54F 36.29%,  -> A948E3
 	link = { comment = "* " }
 	link = { comment = "* **********" }
 	link = { comment = "south_europe" }
