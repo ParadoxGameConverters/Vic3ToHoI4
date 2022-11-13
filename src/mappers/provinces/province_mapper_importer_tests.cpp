@@ -22,11 +22,6 @@ TEST(MappersProvincesProvinceMapperImporterTests, ProvinceMappingsCanBeImported)
    EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(2), testing::ElementsAre("x000200", "x002000"));
    EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(3), testing::ElementsAre());
    EXPECT_THAT(province_mappings.GetHoi4ToVic3ProvinceMapping(4), testing::ElementsAre());
-   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("x000001"));
-   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("x000200"));
-   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("x002000"));
-   EXPECT_TRUE(province_mappings.IsVic3ProvinceMapped("x030000"));
-   EXPECT_FALSE(province_mappings.IsVic3ProvinceMapped("x400000"));
 }
 
 

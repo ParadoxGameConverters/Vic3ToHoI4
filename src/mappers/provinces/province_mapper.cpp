@@ -50,3 +50,15 @@ std::set<std::string> mappers::ProvinceMapper::GetEquivalentVic3Provinces(const 
 
    return equivalent_provinces;
 }
+
+
+void mappers::ProvinceMapper::CheckAllVic3ProvincesMapped(const std::vector<std::string>& vic3_provinces) const
+{
+   for (const auto& vic3_province: vic3_provinces)
+   {
+      if (!vic3_to_hoi4_province_map_.contains(vic3_province))
+      {
+         Log(LogLevel::Warning) << "No mapping for Vic3 province " << vic3_province;
+      }
+   }
+}

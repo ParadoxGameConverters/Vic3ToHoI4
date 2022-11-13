@@ -93,6 +93,8 @@
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer.cpp" />
+    <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader.cpp" />
+    <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_states_importer.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_state_importer.cpp" />
     <ClCompile Include="src\vic3_world\world\vic3_world_importer.cpp" />
@@ -135,6 +137,8 @@
     <ClInclude Include="src\vic3_world\countries\vic3_countries_importer.h" />
     <ClInclude Include="src\vic3_world\countries\vic3_country.h" />
     <ClInclude Include="src\vic3_world\countries\vic3_country_importer.h" />
+    <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h" />
+    <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions_loader.h" />
     <ClInclude Include="src\vic3_world\states\vic3_state.h" />
     <ClInclude Include="src\vic3_world\states\vic3_states_importer.h" />
     <ClInclude Include="src\vic3_world\states\vic3_state_importer.h" />
@@ -146,6 +150,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
       <Link>blank_mod\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\configurables\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+      <Link>configurables\%(RecursiveDir)\%(Filename)%(Extension)</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
