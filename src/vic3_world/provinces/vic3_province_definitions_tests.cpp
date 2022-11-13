@@ -21,7 +21,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionsCanBeReturned)
 
 TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionCanBeLookedUp)
 {
-	std::vector<std::string> province_definitions_map{ "x000001", "x000200" };
+   std::vector<std::string> province_definitions_map{"x000001", "x000200"};
 
    ProvinceDefinitions province_definitions(province_definitions_map);
 
@@ -36,7 +36,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionCanBeLookedUp)
 
 TEST(Vic3WorldProvincesVic3ProvinceDefinitions, MissingDefinitionIsNotLookedUp)
 {
-	std::vector<std::string> province_definitions_map{ "x000001", "x000200" };
+   std::vector<std::string> province_definitions_map{"x000001", "x000200"};
 
    ProvinceDefinitions province_definitions(province_definitions_map);
 

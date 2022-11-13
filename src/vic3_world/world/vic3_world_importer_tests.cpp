@@ -37,7 +37,8 @@ TEST(Vic3WorldWorldVic3WorldImporter, UnzippedSizeIsLogged)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   ImportWorld("test_files/vic3_world/world/zipped_save.vic3", commonItems::ModFilesystem("test_files/vic3_world/world", {}));
+   ImportWorld("test_files/vic3_world/world/zipped_save.vic3",
+       commonItems::ModFilesystem("test_files/vic3_world/world", {}));
 
    EXPECT_THAT(log.str(), testing::HasSubstr("Unzipped save to 42 bytes"));
 
@@ -47,7 +48,8 @@ TEST(Vic3WorldWorldVic3WorldImporter, UnzippedSizeIsLogged)
 
 TEST(Vic3WorldWorldVic3WorldImporter, DefaultsAreCorrect)
 {
-   const auto world = ImportWorld("test_files/vic3_world/world/empty_save.vic3", commonItems::ModFilesystem("test_files/vic3_world/empty_world", {}));
+   const auto world = ImportWorld("test_files/vic3_world/world/empty_save.vic3",
+       commonItems::ModFilesystem("test_files/vic3_world/empty_world", {}));
 
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().empty());
@@ -57,7 +59,8 @@ TEST(Vic3WorldWorldVic3WorldImporter, DefaultsAreCorrect)
 
 TEST(Vic3WorldWorldVic3WorldImporter, WorldCanBeImported)
 {
-   const auto world = ImportWorld("test_files/vic3_world/world/test_save.vic3", commonItems::ModFilesystem("test_files/vic3_world/world", {}));
+   const auto world = ImportWorld("test_files/vic3_world/world/test_save.vic3",
+       commonItems::ModFilesystem("test_files/vic3_world/world", {}));
 
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(testing::Pair(1, Country("TAG")), testing::Pair(3, Country("TWO"))));
