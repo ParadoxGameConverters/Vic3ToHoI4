@@ -14,10 +14,10 @@ requiredFile = {
 	name = SaveGame
 	displayName = VIC3SAVE
 	tooltip = VIC3SAVETIP
-	mandatory = false
+	mandatory = true
 	outputtable = true
 	searchPathType = windowsUsersFolder
-	searchPath = "Paradox Interactive\Victoria III\save games"
+	searchPath = "Paradox Interactive\Victoria 3\save games"
 	allowedExtension = "*.v3"
 }
 
@@ -25,9 +25,9 @@ requiredFolder = {
 	name = Vic3directory
 	displayName = VIC3FOLDER
 	tooltip = VIC3FOLDERTIP
-	mandatory = false
+	mandatory = true
 	searchPathType = steamFolder
-	searchPathID = 42960
+	searchPathID = 529340
 }
 
 requiredFolder = {
@@ -35,8 +35,8 @@ requiredFolder = {
 	displayName = VIC3MOD
 	tooltip = VIC3MODTIP
 	mandatory = false
-	searchPathType = steamFolder
-	searchPathID = "Paradox Interactive\Victoria III\mod"
+	searchPathType = windowsUsersFolder
+	searchPath = "Paradox Interactive\Victoria 3\mod"
 }
 
 requiredFolder = {
