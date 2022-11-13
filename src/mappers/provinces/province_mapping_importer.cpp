@@ -18,6 +18,7 @@ mappers::ProvinceMappingImporter::ProvinceMappingImporter()
    parser_.registerKeyword("hoi4", [this](std::istream& theStream) {
       hoi4_provinces_.push_back(commonItems::getInt(theStream));
    });
+   parser_.registerKeyword("comment", commonItems::ignoreItem);
    parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
 }
 
