@@ -12,7 +12,7 @@ namespace vic3
 TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
 {
    std::stringstream input;
-   const auto country = CountryImporter(false).ImportCountry(input);
+   const auto country = CountryImporter{}.ImportCountry(input);
 
    EXPECT_TRUE(country.GetTag().empty());
 }
@@ -24,7 +24,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    input << "={\n";
    input << "\tdefinition=\"TAG\"";
    input << "}";
-   const auto country = CountryImporter(false).ImportCountry(input);
+   const auto country = CountryImporter{}.ImportCountry(input);
 
    EXPECT_EQ(country.GetTag(), "TAG");
 }
@@ -32,7 +32,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
 
 TEST(Vic3WorldCountriesCountryImporter, MultipleCountriesCanBeImported)
 {
-   CountryImporter country_importer(false);
+   CountryImporter country_importer;
 
    std::stringstream input_one;
    input_one << "={\n";

@@ -6,19 +6,12 @@
 
 
 
-vic3::CountryImporter::CountryImporter(bool debug)
+vic3::CountryImporter::CountryImporter()
 {
    country_parser_.registerKeyword("definition", [this](std::istream& input_stream) {
       tag_ = commonItems::remQuotes(commonItems::getString(input_stream));
    });
-   if (debug)
-   {
-      country_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
-   }
-   else
-   {
-      country_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
-   }
+   country_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 

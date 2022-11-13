@@ -17,7 +17,7 @@ namespace vic3
 class StateImporter
 {
   public:
-   explicit StateImporter(bool debug);
+   StateImporter();
 
    [[nodiscard]] State ImportState(std::istream& input_stream);
 

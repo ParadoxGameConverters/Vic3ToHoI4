@@ -62,9 +62,9 @@ vic3::World vic3::ImportWorld(std::string_view save_filename,
 
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
    std::map<int, State> states;
-   StatesImporter states_importer(debug);
+   StatesImporter states_importer;
    std::map<int, Country> countries;
-   CountriesImporter countries_importer(debug);
+   CountriesImporter countries_importer;
 
 
    commonItems::parser save_parser;
@@ -76,14 +76,7 @@ vic3::World vic3::ImportWorld(std::string_view save_filename,
    });
    save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {
    });
-   if (debug)
-   {
-      save_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
-   }
-   else
-   {
-      save_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
-   }
+   save_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
    save_parser.parseStream(save);
    Log(LogLevel::Info) << fmt::format("\t{} countries imported", countries.size());

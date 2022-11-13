@@ -7,19 +7,12 @@
 
 
 
-vic3::CountriesImporter::CountriesImporter(bool debug): country_importer_(debug)
+vic3::CountriesImporter::CountriesImporter()
 {
    countries_parser_.registerKeyword("database", [this](std::istream& input_stream) {
       database_parser_.parseStream(input_stream);
    });
-   if (debug)
-   {
-      countries_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
-   }
-   else
-   {
-      countries_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
-   }
+   countries_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
    database_parser_.registerRegex(commonItems::integerRegex,
        [this](const std::string& number_string, std::istream& input_stream) {
