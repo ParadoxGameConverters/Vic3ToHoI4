@@ -264,6 +264,12 @@
     <ClCompile Include="src\out_hoi4\states\out_state_tests.cpp">
       <Filter>src\out_hoi4\states</Filter>
     </ClCompile>
+    <ClCompile Include="src\out_hoi4\states\out_states.cpp">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\states\out_states_tests.cpp">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -381,6 +387,9 @@
       <Filter>src\hoi4_world\states</Filter>
     </ClInclude>
     <ClInclude Include="src\out_hoi4\states\out_state.h">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\states\out_states.h">
       <Filter>src\out_hoi4\states</Filter>
     </ClInclude>
   </ItemGroup>

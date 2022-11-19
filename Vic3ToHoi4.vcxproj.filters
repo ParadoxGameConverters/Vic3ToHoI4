@@ -198,6 +198,12 @@
     <ClCompile Include="src\out_hoi4\states\out_state.cpp">
       <Filter>src\out_hoi4\states</Filter>
     </ClCompile>
+    <ClCompile Include="src\out_hoi4\states\out_states.h">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\states\out_states.cpp">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\out_hoi4\out_mod.h">
