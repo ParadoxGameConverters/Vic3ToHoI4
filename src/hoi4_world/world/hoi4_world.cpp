@@ -3,6 +3,7 @@
 #include <ranges>
 
 #include "external/commonItems/Log.h"
+#include "src/hoi4_world/countries/hoi4_countries_converter.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 
 
@@ -15,11 +16,8 @@ hoi4::World::World(const vic3::World& source_world,
    Log(LogLevel::Progress) << "50%";
 
    Log(LogLevel::Info) << "\tConverting countries";
-   for (const auto& source_country: source_world.GetCountries() | std::views::values)
-   {
-      Country new_country(source_country, country_mapper);
-      countries_.emplace(new_country.GetTag(), new_country);
-   }
+   CountriesConverter countries_converter;
+   countries_ = countries_converter.ConvertCountries(source_world.GetCountries(), country_mapper);
 
    Log(LogLevel::Info) << "\tConverting states";
    Log(LogLevel::Progress) << "55%";
