@@ -85,6 +85,12 @@
     <Filter Include="external\rakaly">
       <UniqueIdentifier>{e5c09023-6c6e-4b3a-9531-95bb9df31430}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\states">
+      <UniqueIdentifier>{660a64d0-b4db-401a-a48d-141833bd42f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\states">
+      <UniqueIdentifier>{9cd6cf53-9b31-4427-9538-31447d69c431}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -252,6 +258,24 @@
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader_tests.cpp">
       <Filter>src\vic3_world\provinces</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\states\hoi4_states_converter.cpp">
+      <Filter>src\hoi4_world\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\states\out_state.cpp">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\states\out_state_tests.cpp">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\states\out_states.cpp">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\states\out_states_tests.cpp">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\states\hoi4_states_converter_tests.cpp">
+      <Filter>src\hoi4_world\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -364,6 +388,18 @@
     </ClInclude>
     <ClInclude Include="external\rakaly\rakaly.h">
       <Filter>external\rakaly</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\states\hoi4_states_converter.h">
+      <Filter>src\hoi4_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\states\out_state.h">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\states\out_states.h">
+      <Filter>src\out_hoi4\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\states\hoi4_state.h">
+      <Filter>src\hoi4_world\states</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

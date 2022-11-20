@@ -30,7 +30,7 @@ void CreateOutputFolder(const std::string_view output_name)
 
    if (!commonItems::TryCreateFolder(fmt::format("output/{}/common", output_name)))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}common", output_name));
+      throw std::runtime_error(fmt::format("Could not create output/{}/common", output_name));
    }
    if (!commonItems::TryCreateFolder(fmt::format("output/{}/common/countries", output_name)))
    {
@@ -47,6 +47,10 @@ void CreateOutputFolder(const std::string_view output_name)
    if (!commonItems::TryCreateFolder(fmt::format("output/{}/history/countries", output_name)))
    {
       throw std::runtime_error(fmt::format("Could not create output/{}/history/countries", output_name));
+   }
+   if (!commonItems::TryCreateFolder(fmt::format("output/{}/history/states", output_name)))
+   {
+      throw std::runtime_error(fmt::format("Could not create output/{}/history/states", output_name));
    }
 }
 
