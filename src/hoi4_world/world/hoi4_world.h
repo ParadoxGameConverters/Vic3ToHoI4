@@ -23,7 +23,11 @@ class World
    explicit World(const vic3::World& source_world,
        const mappers::CountryMapper& country_mapper,
        const mappers::ProvinceMapper& province_mapper);
-   explicit World(std::map<std::string, Country> countries, std::vector<State> states): countries_(std::move(countries)), states_(std::move(states)) {}
+   explicit World(std::map<std::string, Country> countries, std::vector<State> states):
+       countries_(std::move(countries)),
+       states_(std::move(states))
+   {
+   }
 
    [[nodiscard]] const std::map<std::string, Country>& GetCountries() const { return countries_; }
    [[nodiscard]] const std::vector<State>& GetStates() const { return states_; }
