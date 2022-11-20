@@ -76,8 +76,8 @@
     <ClCompile Include="external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="src\configuration\configuration_importer.cpp" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp" />
-    <ClCompile Include="src\hoi4_world\countries\hoi4_country_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
+    <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\states\hoi4_states_converter.cpp" />
     <ClCompile Include="src\hoi4_world\states\hoi4_states_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\world\hoi4_world.cpp" />
@@ -140,6 +140,7 @@
     <ClInclude Include="src\configuration\configuration.h" />
     <ClInclude Include="src\configuration\configuration_importer.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_country.h" />
+    <ClInclude Include="src\hoi4_world\countries\hoi4_country_converter.h" />
     <ClInclude Include="src\hoi4_world\states\hoi4_state.h" />
     <ClInclude Include="src\hoi4_world\states\hoi4_states_converter.h" />
     <ClInclude Include="src\hoi4_world\world\hoi4_world.h" />
