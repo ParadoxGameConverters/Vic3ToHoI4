@@ -18,6 +18,8 @@ class State
    [[nodiscard]] int GetId() const { return id_; }
    [[nodiscard]] const std::set<int>& GetProvinces() const { return provinces_; }
 
+   std::strong_ordering operator<=>(const State&) const = default;
+
   private:
    int id_;
    std::set<int> provinces_;
