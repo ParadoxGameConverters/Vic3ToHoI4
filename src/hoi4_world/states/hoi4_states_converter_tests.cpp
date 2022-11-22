@@ -139,4 +139,23 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
    EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 60})));
 }
 
+#pragma optimize("", off)
+TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
+{
+   vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006", "0x000007", "0x000008", "0x000009"});
+   mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {50, {"0x000005"}},
+       {90, {"0x000009"}},
+   };
+
+   const auto hoi4_states =
+       StatesConverter{}.ConvertStates({{0, vic3::State({1})}, {5, vic3::State({5})}, {9, vic3::State({9})}},
+           province_definitions,
+           hoi4_to_vic3_province_mappings);
+
+   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10}), State(2, {50}), State(3, {90})));
+}
+#pragma optimize("", on)
 }  // namespace hoi4

@@ -95,7 +95,7 @@ std::vector<hoi4::State> CreateStates(const std::map<int, std::set<int>>& state_
    std::vector<hoi4::State> hoi4_states;
    for (const auto& [state_id, hoi4_provinces]: state_id_to_hoi4_provinces)
    {
-      hoi4_states.emplace_back(state_id, hoi4_provinces);
+      hoi4_states.emplace_back(hoi4_states.size() + 1, hoi4_provinces);
    }
 
    return hoi4_states;
