@@ -139,7 +139,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
    EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 60})));
 }
 
-#pragma optimize("", off)
+
 TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
 {
    vic3::ProvinceDefinitions province_definitions(
@@ -157,5 +157,5 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
 
    EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10}), State(2, {50}), State(3, {90})));
 }
-#pragma optimize("", on)
+
 }  // namespace hoi4
