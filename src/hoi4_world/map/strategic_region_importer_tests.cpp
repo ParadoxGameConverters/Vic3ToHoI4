@@ -12,8 +12,8 @@ namespace hoi4
 
 TEST(Hoi4WorldMapStrategicRegionImporter, FilenameIsFromFilename)
 {
-   const auto strategic_region =
-       StrategicRegionImporter{}.ImportStrategicRegion("empty_strategic_region.txt", "test_files/hoi4_world");
+   const auto strategic_region = StrategicRegionImporter{}.ImportStrategicRegion(
+       "test_files/hoi4_world/map/strategicregions/empty_strategic_region.txt");
 
    EXPECT_EQ(strategic_region.GetFilename(), "empty_strategic_region.txt");
 }
@@ -21,8 +21,8 @@ TEST(Hoi4WorldMapStrategicRegionImporter, FilenameIsFromFilename)
 
 TEST(Hoi4WorldMapStrategicRegionImporter, DefaultsAreSet)
 {
-   const auto strategic_region =
-       StrategicRegionImporter{}.ImportStrategicRegion("empty_strategic_region.txt", "test_files/hoi4_world");
+   const auto strategic_region = StrategicRegionImporter{}.ImportStrategicRegion(
+       "test_files/hoi4_world/map/strategicregions/empty_strategic_region.txt");
 
    EXPECT_EQ(strategic_region.GetID(), 0);
    EXPECT_TRUE(strategic_region.GetName().empty());
@@ -36,8 +36,8 @@ TEST(Hoi4WorldMapStrategicRegionImporter, DefaultsAreSet)
 
 TEST(Hoi4WorldMapStrategicRegionImporter, ItemsCanBeImported)
 {
-   const auto strategic_region =
-       StrategicRegionImporter{}.ImportStrategicRegion("test_strategic_region.txt", "test_files/hoi4_world");
+   const auto strategic_region = StrategicRegionImporter{}.ImportStrategicRegion(
+       "test_files/hoi4_world/map/strategicregions/test_strategic_region.txt");
 
    EXPECT_EQ(strategic_region.GetID(), 42);
    EXPECT_EQ(strategic_region.GetName(), "STRATEGICREGION_42");

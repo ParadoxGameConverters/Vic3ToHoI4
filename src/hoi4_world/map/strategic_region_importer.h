@@ -16,7 +16,7 @@ class StrategicRegionImporter
   public:
    StrategicRegionImporter();
 
-   [[nodiscard]] StrategicRegion ImportStrategicRegion(std::string_view filename, std::string_view hoi4_location);
+   [[nodiscard]] StrategicRegion ImportStrategicRegion(std::string_view filename);
 
   private:
    commonItems::parser state_region_parser_;

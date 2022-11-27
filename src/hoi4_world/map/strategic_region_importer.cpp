@@ -2,6 +2,7 @@
 
 #include <fstream>
 
+#include "external/commonItems/CommonFunctions.h"
 #include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
@@ -39,8 +40,7 @@ hoi4::StrategicRegionImporter::StrategicRegionImporter()
 }
 
 
-hoi4::StrategicRegion hoi4::StrategicRegionImporter::ImportStrategicRegion(std::string_view filename,
-    std::string_view hoi4_location)
+hoi4::StrategicRegion hoi4::StrategicRegionImporter::ImportStrategicRegion(std::string_view filename)
 {
    id_ = 0;
    name_.clear();
@@ -49,9 +49,9 @@ hoi4::StrategicRegion hoi4::StrategicRegionImporter::ImportStrategicRegion(std::
    naval_terrain_.reset();
    weather_.clear();
 
-   state_region_parser_.parseFile(fmt::format("{}/map/strategicregions/{}", hoi4_location, filename));
+   state_region_parser_.parseFile(filename);
 
-   return StrategicRegion(std::string(filename),
+   return StrategicRegion(trimPath(std::string(filename)),
        id_,
        name_,
        old_provinces_,
