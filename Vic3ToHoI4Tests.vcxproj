@@ -80,6 +80,8 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\map\strategic_region_importer.cpp" />
+    <ClCompile Include="src\hoi4_world\map\strategic_region_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\states\hoi4_states_converter.cpp" />
     <ClCompile Include="src\hoi4_world\states\hoi4_states_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\world\hoi4_world.cpp" />
@@ -95,6 +97,8 @@
     <ClCompile Include="src\out_hoi4\countries\out_countries_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\map\out_strategic_region.cpp" />
+    <ClCompile Include="src\out_hoi4\map\out_strategic_region_tests.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp" />
     <ClCompile Include="src\out_hoi4\states\out_state.cpp" />
@@ -144,6 +148,8 @@
     <ClInclude Include="src\hoi4_world\countries\hoi4_countries_converter.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_country.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_country_converter.h" />
+    <ClInclude Include="src\hoi4_world\map\strategic_region.h" />
+    <ClInclude Include="src\hoi4_world\map\strategic_region_importer.h" />
     <ClInclude Include="src\hoi4_world\states\hoi4_state.h" />
     <ClInclude Include="src\hoi4_world\states\hoi4_states_converter.h" />
     <ClInclude Include="src\hoi4_world\world\hoi4_world.h" />
@@ -155,6 +161,7 @@
     <ClInclude Include="src\mappers\provinces\province_mapping_types.h" />
     <ClInclude Include="src\out_hoi4\countries\out_countries.h" />
     <ClInclude Include="src\out_hoi4\countries\out_country.h" />
+    <ClInclude Include="src\out_hoi4\map\out_strategic_region.h" />
     <ClInclude Include="src\out_hoi4\out_mod.h" />
     <ClInclude Include="src\out_hoi4\states\out_state.h" />
     <ClInclude Include="src\out_hoi4\states\out_states.h" />

@@ -35,6 +35,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_to_hoi4_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/configuration/configuration_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/countries/hoi4_countries_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/countries/hoi4_country_converter.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/strategic_region_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/hoi4_states_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/world/hoi4_world.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/provinces/province_mapper.cpp")
@@ -43,6 +44,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/provinces/province_mappi
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/out_mod.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/countries/out_countries.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/countries/out_country.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/map/out_strategic_region.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/states/out_state.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/states/out_states.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/world/out_world.cpp")
@@ -109,6 +111,7 @@ add_custom_command(TARGET Fronter
 set(TEST_SOURCES ${TEST_SOURCES} "src/configuration/configuration_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/countries/hoi4_countries_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/countries/hoi4_country_converter_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/strategic_region_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/hoi4_states_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/world/hoi4_world_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/country/country_mapper_tests.cpp")
@@ -118,6 +121,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/provinces/province_mapping_importe
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/out_mod_test.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/out_countries_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/out_country_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/map/out_strategic_region_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/states/out_state_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/states/out_states_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/world/out_world_tests.cpp")
@@ -164,12 +168,16 @@ add_custom_command(TARGET gcov
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_to_hoi4_converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/configuration/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/configuration
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/hoi4_world/countries/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/hoi4_world/countries
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/hoi4_world/map/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/hoi4_world/map
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/hoi4_world/states/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/hoi4_world/states
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/hoi4_world/world/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/hoi4_world/world
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/mappers/country/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/mappers/country
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/mappers/provinces/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/mappers/provinces
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/countries/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4/countries
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/map/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4/map
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/states/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4/states
+	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/out_hoi4/world/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/out_hoi4/world
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_world/countries/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/vic3_world/countries
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_world/provinces/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/vic3_world/provinces
 	COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/vic3_world/states/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic3ToHoi4Tests.dir/src/vic3_world/states
