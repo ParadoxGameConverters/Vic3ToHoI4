@@ -31,7 +31,7 @@ TEST(Outhoi4MapStrategicregionTests, FileIsFromFilename)
    commonItems::TryCreateFolder("output/FileIsFromFilename/map/strategicregions");
 
    const hoi4::StrategicRegion strategic_region_one("strategic_region_one.txt", 1, "", {}, {}, std::nullopt, "");
-   const hoi4::StrategicRegion strategic_region_two("strategic_region_two.txt", 1, "", {}, {}, std::nullopt, "");
+   const hoi4::StrategicRegion strategic_region_two("strategic_region_two.txt", 2, "", {}, {}, std::nullopt, "");
 
    OutputStrategicRegion("FileIsFromFilename", strategic_region_one);
    OutputStrategicRegion("FileIsFromFilename", strategic_region_two);

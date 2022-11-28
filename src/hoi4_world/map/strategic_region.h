@@ -33,14 +33,14 @@ class StrategicRegion
    {
    }
 
-   [[nodiscard]] const auto& GetFilename() const { return filename_; }
-   [[nodiscard]] auto GetID() const { return id_; }
+   [[nodiscard]] const std::string_view GetFilename() const { return filename_; }
+   [[nodiscard]] int GetID() const { return id_; }
    [[nodiscard]] std::string_view GetName() const { return name_; }
-   [[nodiscard]] const auto& GetOldProvinces() const { return old_provinces_; }
-   [[nodiscard]] const auto& GetNewProvinces() const { return new_provinces_; }
+   [[nodiscard]] const std::vector<int>& GetOldProvinces() const { return old_provinces_; }
+   [[nodiscard]] const std::vector<int>& GetNewProvinces() const { return new_provinces_; }
    [[nodiscard]] bool hasStaticModifiers() const { return !static_modifiers_.empty(); }
-   [[nodiscard]] const auto& GetStaticModifiers() const { return static_modifiers_; }
-   [[nodiscard]] const auto& GetNavalTerrain() const { return naval_terrain_; }
+   [[nodiscard]] const std::map<std::string, std::string>& GetStaticModifiers() const { return static_modifiers_; }
+   [[nodiscard]] const std::optional<std::string>& GetNavalTerrain() const { return naval_terrain_; }
    [[nodiscard]] std::string_view GetWeather() const { return weather_; }
 
    void AddNewProvince(const int province) { new_provinces_.push_back(province); }
