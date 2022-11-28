@@ -103,6 +103,8 @@
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_strategic_region.cpp" />
+    <ClCompile Include="src\out_hoi4\map\out_strategic_regions.cpp" />
+    <ClCompile Include="src\out_hoi4\map\out_strategic_regions_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_strategic_region_tests.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp" />
@@ -169,6 +171,7 @@
     <ClInclude Include="src\out_hoi4\countries\out_countries.h" />
     <ClInclude Include="src\out_hoi4\countries\out_country.h" />
     <ClInclude Include="src\out_hoi4\map\out_strategic_region.h" />
+    <ClInclude Include="src\out_hoi4\map\out_strategic_regions.h" />
     <ClInclude Include="src\out_hoi4\out_mod.h" />
     <ClInclude Include="src\out_hoi4\states\out_state.h" />
     <ClInclude Include="src\out_hoi4\states\out_states.h" />
