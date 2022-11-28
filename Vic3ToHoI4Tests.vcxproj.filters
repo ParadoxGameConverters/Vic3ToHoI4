@@ -91,6 +91,12 @@
     <Filter Include="src\out_hoi4\states">
       <UniqueIdentifier>{9cd6cf53-9b31-4427-9538-31447d69c431}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\map">
+      <UniqueIdentifier>{6437bb49-c5f5-44c1-8c91-bfb2ba19e81a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\map">
+      <UniqueIdentifier>{b471f701-6ae2-423d-bb74-b9622917ac76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -282,6 +288,39 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter_tests.cpp">
       <Filter>src\hoi4_world\countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\strategic_region_importer.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\strategic_region_importer_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_strategic_region_tests.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_strategic_region.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\strategic_regions_importer.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\strategic_region_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\strategic_regions_importer_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\strategic_regions_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\strategic_regions.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_strategic_regions.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_strategic_regions_tests.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -412,6 +451,24 @@
     </ClInclude>
     <ClInclude Include="src\hoi4_world\countries\hoi4_countries_converter.h">
       <Filter>src\hoi4_world\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\strategic_region.h">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\strategic_region_importer.h">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\map\out_strategic_region.h">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\strategic_regions.h">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\strategic_regions_importer.h">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\map\out_strategic_regions.h">
+      <Filter>src\out_hoi4\map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

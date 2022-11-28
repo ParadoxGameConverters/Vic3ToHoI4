@@ -24,6 +24,8 @@ void CreateTestFolders(std::string_view test_name)
    commonItems::TryCreateFolder(fmt::format("output/{}/history", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history/countries", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history/states", test_name));
+   commonItems::TryCreateFolder(fmt::format("output/{}/map", test_name));
+   commonItems::TryCreateFolder(fmt::format("output/{}/map/strategicregions", test_name));
 }
 
 }  // namespace
@@ -38,7 +40,7 @@ TEST(Outhoi4WorldOutworld, CountriesFilesAreCreated)
    CreateTestFolders("WorldCountriesFilesAreCreated");
 
    OutputWorld("WorldCountriesFilesAreCreated",
-       hoi4::World({{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}}, {}));
+       hoi4::World({{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}}, {}, hoi4::StrategicRegions({}, {})));
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCountriesFilesAreCreated/common/countries/TAG.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCountriesFilesAreCreated/common/countries/TWO.txt"));
@@ -49,7 +51,8 @@ TEST(Outhoi4WorldOutworld, TagsFileIsCreated)
 {
    CreateTestFolders("TagsFileIsCreated");
 
-   OutputWorld("TagsFileIsCreated", hoi4::World({{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}}, {}));
+   OutputWorld("TagsFileIsCreated",
+       hoi4::World({{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}}, {}, hoi4::StrategicRegions({}, {})));
 
    std::ifstream country_file("output/TagsFileIsCreated/common/country_tags/00_countries.txt");
    ASSERT_TRUE(country_file.is_open());
@@ -69,21 +72,41 @@ TEST(Outhoi4WorldOutworld, CountryHistoryFilesAreCreated)
    CreateTestFolders("CountryHistoryFilesAreCreated");
 
    OutputWorld("CountryHistoryFilesAreCreated",
-       hoi4::World({{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}}, {}));
+       hoi4::World({{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}}, {}, hoi4::StrategicRegions({}, {})));
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TAG.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TWO.txt"));
 }
 
 
-TEST(Outhoi4WorldOutworld, StatesHistoryFilesAreCreatedAreOutput)
+TEST(Outhoi4WorldOutworld, StatesHistoryFilesAreCreatedAndOutput)
 {
    CreateTestFolders("StatesHistoryFilesAreCreatedAreOutput");
 
-   OutputWorld("StatesHistoryFilesAreCreatedAreOutput", hoi4::World({}, {hoi4::State(1, {}), hoi4::State(2, {})}));
+   OutputWorld("StatesHistoryFilesAreCreatedAreOutput",
+       hoi4::World({}, {hoi4::State(1, {}), hoi4::State(2, {})}, hoi4::StrategicRegions({}, {})));
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/StatesHistoryFilesAreCreatedAreOutput/history/states/1.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/StatesHistoryFilesAreCreatedAreOutput/history/states/2.txt"));
+}
+
+
+TEST(Outhoi4WorldOutworld, StrategicRegionsFilesAreCreatedAndOutput)
+{
+   CreateTestFolders("StrategicRegionsFilesAreCreatedAndOutput");
+
+   OutputWorld("StrategicRegionsFilesAreCreatedAndOutput",
+       hoi4::World({},
+           {},
+           hoi4::StrategicRegions(
+               {{1, hoi4::StrategicRegion("strategic_region_1.txt", 1, "", {}, {}, std::nullopt, "")},
+                   {2, hoi4::StrategicRegion("strategic_region_2.txt", 2, "", {}, {}, std::nullopt, "")}},
+               {})));
+
+   EXPECT_TRUE(commonItems::DoesFileExist(
+       "output/StrategicRegionsFilesAreCreatedAndOutput/map/strategicregions/strategic_region_1.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist(
+       "output/StrategicRegionsFilesAreCreatedAndOutput/map/strategicregions/strategic_region_2.txt"));
 }
 
 }  // namespace out
