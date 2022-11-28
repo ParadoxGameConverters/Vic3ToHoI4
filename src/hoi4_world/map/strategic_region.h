@@ -45,6 +45,8 @@ class StrategicRegion
 
    void AddNewProvince(const int province) { new_provinces_.push_back(province); }
 
+   std::strong_ordering operator<=>(const StrategicRegion&) const = default;
+
   private:
    std::string filename_;
    int id_ = 0;
