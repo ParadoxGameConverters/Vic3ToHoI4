@@ -4,11 +4,13 @@
 
 #include "external/commonItems/Log.h"
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
+#include "src/hoi4_world/map/strategic_regions_importer.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 
 
 
-hoi4::World::World(const vic3::World& source_world,
+hoi4::World::World(commonItems::ModFilesystem hoi4_mod_filesystem,
+    const vic3::World& source_world,
     const mappers::CountryMapper& country_mapper,
     const mappers::ProvinceMapper& province_mapper)
 {
@@ -19,10 +21,14 @@ hoi4::World::World(const vic3::World& source_world,
    CountriesConverter countries_converter;
    countries_ = countries_converter.ConvertCountries(source_world.GetCountries(), country_mapper);
 
+   strategic_regions_ = std::make_unique<StrategicRegions>(ImportStrategicRegions(hoi4_mod_filesystem));
+
    Log(LogLevel::Info) << "\tConverting states";
    Log(LogLevel::Progress) << "55%";
    StatesConverter states_converter;
    states_ = states_converter.ConvertStates(source_world.GetStates(),
        source_world.GetProvinceDefinitions(),
        province_mapper.GetHoi4ToVic3ProvinceMappings());
+
+   strategic_regions_->UpdateToMatchNewStates(states_);
 }
