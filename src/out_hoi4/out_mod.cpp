@@ -52,6 +52,14 @@ void CreateOutputFolder(const std::string_view output_name)
    {
       throw std::runtime_error(fmt::format("Could not create output/{}/history/states", output_name));
    }
+   if (!commonItems::TryCreateFolder(fmt::format("output/{}/map", output_name)))
+   {
+      throw std::runtime_error(fmt::format("Could not create output/{}/map", output_name));
+   }
+   if (!commonItems::TryCreateFolder(fmt::format("output/{}/map/strategicregions", output_name)))
+   {
+      throw std::runtime_error(fmt::format("Could not create output/{}/map/strategicregions", output_name));
+   }
 }
 
 
