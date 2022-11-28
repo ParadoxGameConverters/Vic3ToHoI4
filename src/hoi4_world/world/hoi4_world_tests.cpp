@@ -144,7 +144,7 @@ TEST(Hoi4worldWorldWorld, StrategicRegionsAreCreated)
    EXPECT_EQ(region_50.GetID(), 50);
    EXPECT_EQ(region_50.GetName(), "STRATEGICREGION_50");
    EXPECT_THAT(region_50.GetOldProvinces(), testing::UnorderedElementsAre(50, 60));
-   EXPECT_THAT(region_50.GetNewProvinces(), testing::UnorderedElementsAre(40,50, 60));
+   EXPECT_THAT(region_50.GetNewProvinces(), testing::UnorderedElementsAre(40, 50, 60));
    EXPECT_FALSE(region_50.hasStaticModifiers());
    EXPECT_TRUE(region_50.GetStaticModifiers().empty());
    ASSERT_FALSE(region_50.GetNavalTerrain().has_value());

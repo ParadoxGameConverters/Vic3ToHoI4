@@ -25,7 +25,7 @@ std::map<int, int> DetermineUsedRegions(const hoi4::State& state, std::map<int, 
       auto [iterator, success] = used_regions.emplace(mapping->second, 1);
       if (!success)
       {
-          ++iterator->second;
+         ++iterator->second;
       }
       province_to_strategic_region_map.erase(mapping);
    }
