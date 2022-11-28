@@ -30,6 +30,8 @@ class StrategicRegions
       return province_to_strategic_region_map_;
    }
 
+   void UpdateToMatchNewStates(const std::vector<State>& states);
+
   private:
    std::map<int, StrategicRegion> strategic_regions_;
    std::map<int, int> province_to_strategic_region_map_;
