@@ -83,7 +83,7 @@ jobs:
         path: Vic3ToHoI4-pull-request-win-x64.zip
 
     - name: "Cleanup"
-      if: ${{ true }}
+      if: always()
       run: |
         Get-ChildItem -Path $Env:GITHUB_WORKSPACE -Recurse -Force | Remove-Item -force -recurse
 
@@ -109,6 +109,6 @@ jobs:
        .\Vic3ToHoI4Tests.exe
 
     - name: "Cleanup"
-      if: ${{ true }}
+      if: always()
       run: |
         Get-ChildItem -Path $Env:GITHUB_WORKSPACE -Recurse -Force | Remove-Item -force -recurse
