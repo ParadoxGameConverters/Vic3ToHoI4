@@ -3,7 +3,10 @@
 #
 # You may wish to alter this file to override the set of languages analyzed,
 # or to provide custom queries or build logic.
-name: "CodeQL"
+name: "Linux-based analysis"
+
+env:
+  COVERAGE: YES
 
 on:
   push:
@@ -39,6 +42,14 @@ jobs:
         fetch-depth: 0
         submodules: recursive
 
+    - name: "Check versions of gcc, g++ and cmake"
+      run: |
+       gcc -v && g++ -v && cmake --version
+
+    - name: "Check version of gcov"
+      run: |
+       gcov --version
+
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
@@ -60,8 +71,30 @@ jobs:
 
     - name: Build solution
       run: |
-       chmod u+x tools/build_vic3_to_hoi4.sh
-       tools/build_vic3_to_hoi4.sh
+       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 Fronter Vic3ToHoi4Tests -- -j40
+
+    - name: Run tests
+      run: |
+       cd build/test/Release-Linux/
+       ./Vic3ToHoi4Tests
+
+    - name: Run gcov
+      run: |
+       cd build
+       pwd
+       make gcov
+
+    - name: Run lcov
+      run: |
+       cd build
+       pwd
+       make lcov
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: build/lcoverage/coverage.info
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
@@ -92,6 +125,14 @@ jobs:
         # a pull request then we can checkout the head.
         fetch-depth: 0
         submodules: recursive
+
+    - name: "Check versions of gcc, g++ and cmake"
+      run: |
+       gcc -v && g++ -v && cmake --version
+
+    - name: "Check version of gcov"
+      run: |
+       gcov --version
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
@@ -131,6 +172,10 @@ jobs:
        # Link gcc-11 and g++-11 to their standard commands
        sudo ln -s /usr/bin/gcc-11 /usr/local/bin/gcc
        sudo ln -s /usr/bin/g++-11 /usr/local/bin/g++
+       sudo ln -s /usr/bin/gcov-11 /usr/local/bin/gcov
+       sudo ln -s /usr/bin/lcov /usr/local/bin/lcov
+       sudo ln -s /usr/bin/geninfo /usr/local/bin/geninfo
+       gcov --version
        # Export CC and CXX to tell cmake which compiler to use
        export CC=/usr/bin/gcc-11
        export CXX=/usr/bin/g++-11
@@ -138,6 +183,21 @@ jobs:
        gcc -v && g++ -v && cmake --version
        # Run your build commands next
        cmake -H. -Bbuild && cmake --build ./build -- -j3
+
+    - name: Run tests
+      run: |
+       build/test/Release-Linux/Vic3ToHoi4Tests
+
+    - name: Run gcov
+      run: |
+       cd build
+       make gcov
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: build/lcoverage/main_coverage.info
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
