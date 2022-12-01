@@ -565,7 +565,7 @@
 	link = { vic3 = xF78F29 hoi4 = 6205 } # STATE_HIGHLANDS -> Gairloch
 	link = { vic3 = x5B0884 hoi4 = 11161 } # STATE_HIGHLANDS -> Fort William
 	link = { vic3 = x637BE8 hoi4 = 6385 } # STATE_HIGHLANDS -> Callander
-	link = { vic3 = x314E1F hoi4 = 9075 } # STATE_HIGHLANDS -> Kingussie
+	link = { vic3 = x314E1F hoi4 = 9075 hoi4 = 11306 } # STATE_HIGHLANDS -> Kingussie, Pitlochry
 	link = { vic3 = x84625B hoi4 = 9090 } # STATE_HIGHLANDS -> Ullapool
 	link = { vic3 = xCCBBD1 hoi4 = 9161 } # STATE_HIGHLANDS -> Inverness
 	link = { vic3 = xFBDD5D hoi4 = 11055 } # STATE_HIGHLANDS -> Aboyne
@@ -586,7 +586,8 @@
 	link = { comment = "* * STATE_EAST_ANGLIA " }
 	link = { vic3 = xE02040 hoi4 = 221 } # STATE_EAST_ANGLIA -> Ipswich
 	link = { vic3 = x8C667B hoi4 = 296 } # STATE_EAST_ANGLIA -> Peterborough
-	link = { vic3 = x5024FD vic3 = x516676 hoi4 = 322 } # STATE_EAST_ANGLIA, STATE_EAST_ANGLIA -> Norwich
+	link = { vic3 = x5024FD hoi4 = 271 } # STATE_EAST_ANGLIA -> Lowestoft
+	link = { vic3 = x516676 hoi4 = 322 } # STATE_EAST_ANGLIA -> Norwich
 	link = { vic3 = x73EF57 hoi4 = 3287 } # STATE_EAST_ANGLIA -> King's Lynn
 	link = { vic3 = x618949 hoi4 = 11221 } # STATE_EAST_ANGLIA -> Luton
 	link = { vic3 = xE0A040 hoi4 = 9239 } # STATE_EAST_ANGLIA -> Oxford
@@ -595,7 +596,7 @@
 	link = { comment = "* * STATE_WEST_COUNTRY " }
 	link = { vic3 = x225544 hoi4 = 3369 } # STATE_WEST_COUNTRY -> Bristol
 	link = { vic3 = xE020C0 hoi4 = 6378 } # STATE_WEST_COUNTRY -> Gloucester
-	link = { vic3 = x6060C0 hoi4 = 3422 } # STATE_WEST_COUNTRY -> Bournemouth
+	link = { vic3 = x6060C0 vic3 = xB78E54 hoi4 = 3422 hoi4 = 3463 } # MANY-TO-MANY: STATE_WEST_COUNTRY, STATE_WEST_COUNTRY -> Bournemouth, Exeter
 	link = { vic3 = x65B395 hoi4 = 6351 } # STATE_WEST_COUNTRY -> Salisbury
 	link = { vic3 = x1E38F8 hoi4 = 6526 } # STATE_WEST_COUNTRY -> Truro
 	link = { vic3 = xE0E040 hoi4 = 9484 } # STATE_WEST_COUNTRY -> Weston-super-Mare
@@ -656,22 +657,23 @@
 	link = { comment = "* * STATE_ILE_DE_FRANCE " }
 	link = { vic3 = x7080DF hoi4 = 6518 } # STATE_ILE_DE_FRANCE -> Montargis
 	link = { vic3 = xF522D9 hoi4 = 6643 hoi4 = 6547 } # STATE_ILE_DE_FRANCE -> Kikinda, Chartres
-	link = { vic3 = x90A0C0 vic3 = xE13BC2 hoi4 = 9507 } # STATE_ILE_DE_FRANCE, STATE_ILE_DE_FRANCE -> Artenay
-	link = { hoi4 = 271 hoi4 = 9523 } # NOTHING -> Lowestoft, Versailles
-	link = { vic3 = x12462D hoi4 = 982 hoi4 = 11491 } # STATE_ILE_DE_FRANCE -> Višegrad, Melun
+	link = { vic3 = x90A0C0 hoi4 = 6533 } # STATE_ILE_DE_FRANCE -> Vendôme
+	link = { vic3 = xE13BC2 hoi4 = 9507 hoi4 = 9725 } # STATE_ILE_DE_FRANCE -> Artenay, Évry
+	link = { vic3 = x906000 hoi4 = 9523 } # STATE_ILE_DE_FRANCE -> Versailles
+	link = { vic3 = x12462D hoi4 = 11491 hoi4 = 6949 } # STATE_ILE_DE_FRANCE -> Melun, Coulommiers
 	link = { vic3 = x71DA2E hoi4 = 11506 } # STATE_ILE_DE_FRANCE -> Paris
 	link = { comment = "* * STATE_PROVENCE " }
-	link = { vic3 = x3040E0 hoi4 = 6139 hoi4 = 911 } # STATE_PROVENCE -> Voloshovo, Toulon
+	link = { vic3 = x3040E0 hoi4 = 911 } # STATE_PROVENCE -> Toulon
 	link = { vic3 = xC03918 hoi4 = 3762 } # STATE_PROVENCE -> Digne-les-Bains
-	link = { vic3 = xB0C060 hoi4 = 3861 hoi4 = 3959 } # STATE_PROVENCE -> Leiria, Puget-Théniers
+	link = { vic3 = xB0C060 hoi4 = 3959 } # STATE_PROVENCE -> Puget-Théniers
 	link = { vic3 = x6D5E3F vic3 = xB040E0 hoi4 = 3961 } # STATE_PROVENCE, STATE_PROVENCE -> Digne-les-Bains
 	link = { vic3 = xCB9C34 hoi4 = 6975 } # STATE_PROVENCE -> Barcelonnette
 	link = { vic3 = x5080E0 hoi4 = 9909 } # STATE_PROVENCE -> Nice
 	link = { vic3 = xBBB6AD hoi4 = 11711 } # STATE_PROVENCE -> Alès
-	link = { vic3 = xB8E48D hoi4 = 3729 hoi4 = 11713 } # STATE_PROVENCE -> Oviedo, Montélimar
-	link = { vic3 = x31C0DF hoi4 = 9751 hoi4 = 11849 } # STATE_PROVENCE -> Brive-la-Gaillarde, Martigues
-	link = { vic3 = xB0C0E0 hoi4 = 11875 } # STATE_PROVENCE -> Cavaillon
-	link = { vic3 = x1727F7 hoi4 = 9741 hoi4 = 11877 } # STATE_PROVENCE -> Vercelli, Nîmes
+	link = { vic3 = xB8E48D hoi4 = 11713 } # STATE_PROVENCE -> Montélimar
+	link = { vic3 = x31C0DF hoi4 = 11849 hoi4 = 11834 } # STATE_PROVENCE -> Martigues, Marseille
+	link = { vic3 = xB0C0E0 hoi4 = 11875 hoi4 = 958 } # STATE_PROVENCE -> Cavaillon, Avignon
+	link = { vic3 = x1727F7 hoi4 = 11877 } # STATE_PROVENCE -> Nîmes
 	link = { comment = "* * STATE_NORMANDY " }
 	link = { vic3 = xB8903B hoi4 = 539 } # STATE_NORMANDY -> Vire
 	link = { vic3 = x65728E hoi4 = 553 } # STATE_NORMANDY -> Alençon
@@ -679,85 +681,86 @@
 	link = { vic3 = x0B7098 hoi4 = 6449 } # STATE_NORMANDY -> Cherbourg
 	link = { vic3 = x79C0E6 hoi4 = 6599 } # STATE_NORMANDY -> Lisieux
 	link = { vic3 = xA786BB hoi4 = 9434 } # STATE_NORMANDY -> Le Havre
-	link = { vic3 = x90A040 hoi4 = 9550 } # STATE_NORMANDY -> Granville
+	link = { vic3 = x90A040 hoi4 = 9550 hoi4 = 3579 } # STATE_NORMANDY -> Granville, Saint-Lô
 	link = { vic3 = xB06080 hoi4 = 9578 } # STATE_NORMANDY -> Louviers
-	link = { vic3 = x1020C0 hoi4 = 9382 hoi4 = 11521 } # STATE_NORMANDY -> Dorogobuzh, Flers
-	link = { vic3 = x065CAE hoi4 = 469 hoi4 = 11535 } # STATE_NORMANDY -> Decín, Caen
-	link = { vic3 = x9020C0 hoi4 = 9748 hoi4 = 11563 } # STATE_NORMANDY -> Thiers, Rouen
+	link = { vic3 = x1020C0 hoi4 = 11521 } # STATE_NORMANDY -> Flers
+	link = { vic3 = x065CAE hoi4 = 11535 } # STATE_NORMANDY -> Caen
+	link = { vic3 = x9020C0 hoi4 = 11563 } # STATE_NORMANDY -> Rouen
 	link = { comment = "* * STATE_LANGUEDOC " }
-	link = { vic3 = x7BCDC4 hoi4 = 6792 hoi4 = 760 } # STATE_LANGUEDOC -> Périgueux, Le Vigan
-	link = { vic3 = x106080 hoi4 = 317 hoi4 = 3751 } # STATE_LANGUEDOC -> Flensburg, Saint-Affrique
-	link = { vic3 = xCF9FBF hoi4 = 6716 hoi4 = 3946 } # STATE_LANGUEDOC -> Szolnok, Narbonne
-	link = { vic3 = x1060C0 hoi4 = 3312 hoi4 = 9853 } # STATE_LANGUEDOC -> Pasewalk, Perpignan
-	link = { vic3 = x906080 hoi4 = 149 hoi4 = 9898 } # STATE_LANGUEDOC -> land, Montpellier
+	link = { vic3 = x7BCDC4 hoi4 = 760 hoi4 = 6962 } # STATE_LANGUEDOC -> Le Vigan, Bédarieux
+	link = { vic3 = x106080 hoi4 = 3751 hoi4 = 9723 } # STATE_LANGUEDOC -> Saint-Affrique, Lacaune
+	link = { vic3 = xCF9FBF hoi4 = 3946 hoi4 = 6915 } # STATE_LANGUEDOC -> Narbonne, Limoux
+	link = { vic3 = x1060C0 hoi4 = 9853 } # STATE_LANGUEDOC -> Perpignan
+	link = { vic3 = x906080 hoi4 = 9898 hoi4 = 6960 } # STATE_LANGUEDOC -> Montpellier, Béziers
 	link = { comment = "* * STATE_RHONE " }
 	link = { vic3 = x73F176 hoi4 = 762 } # STATE_RHONE -> Valence
-	link = { hoi4 = 11558 hoi4 = 3594 } # NOTHING -> Ostrów Wielkopolski, Vichy
-	link = { vic3 = x1B4B66 hoi4 = 11291 hoi4 = 3764 } # STATE_RHONE -> Kilingi-Nõmme, Briançon
-	link = { vic3 = x30C060 hoi4 = 336 hoi4 = 3768 } # STATE_RHONE -> Leer, Grenoble
-	link = { vic3 = xEF4060 hoi4 = 3463 hoi4 = 3770 } # STATE_RHONE -> Exeter, Montbrisson
+	link = { vic3 = x71A804 hoi4 = 9748 hoi4 = 3594 } # STATE_RHONE -> Thiers, Vichy
+	link = { vic3 = x1B4B66 hoi4 = 3764 } # STATE_RHONE -> Briançon
+	link = { vic3 = x30C060 hoi4 = 3768 hoi4 = 9736 hoi4 = 764 } # STATE_RHONE -> Grenoble, Gap, Saint-Jean-de- Maurienne
+	link = { vic3 = xEF4060 hoi4 = 3770 } # STATE_RHONE -> Montbrisson
 	link = { vic3 = xB04060 hoi4 = 6613 } # STATE_RHONE -> Lyon
 	link = { vic3 = x8E88DA hoi4 = 6784 } # STATE_RHONE -> Chambéry
-	link = { vic3 = x7516B6 hoi4 = 473 hoi4 = 9590 } # STATE_RHONE -> Alekseyevka, Ambérieu-en-Bugey
-	link = { vic3 = x3369C6 vic3 = x8329EC hoi4 = 11593 } # STATE_RHONE, STATE_BURGUNDY -> Roanne
-	link = { vic3 = x704060 hoi4 = 11568 hoi4 = 11716 } # STATE_RHONE -> Brescia, Aubenas
+	link = { vic3 = x7516B6 hoi4 = 9590 hoi4 = 6639 } # STATE_RHONE -> Ambérieu-en-Bugey, Bellegarde-sur- Valserine
+	link = { vic3 = x3369C6 hoi4 = 11593 } # STATE_RHONE -> Roanne
+	link = { vic3 = x704060 hoi4 = 11716 hoi4 = 780 hoi4 = 3589 hoi4 = 6786 hoi4 = 9728 } # STATE_RHONE -> Aubenas, Romans-sur-Isère, Vienne, Saint-Étienne, Privas
+	link = { vic3 = x1114E9 hoi4 = 13124 } # x1114E9 -> (Lake)
 	link = { comment = "* * STATE_LOIRE " }
 	link = { vic3 = x30E080 hoi4 = 503 } # STATE_LOIRE -> Angers
 	link = { vic3 = x50A040 hoi4 = 655 } # STATE_LOIRE -> Niort
-	link = { vic3 = x192CA5 hoi4 = 3858 hoi4 = 3495 } # STATE_LOIRE -> Horche, La Flèche
+	link = { vic3 = x192CA5 hoi4 = 3495 } # STATE_LOIRE -> La Flèche
 	link = { vic3 = x6B5474 hoi4 = 3659 } # STATE_LOIRE -> Thouars
-	link = { vic3 = x3F74AF hoi4 = 3744 hoi4 = 9631 } # STATE_LOIRE -> Cangas del Narcea, Bressuire
+	link = { vic3 = x3F74AF hoi4 = 9631 } # STATE_LOIRE -> Bressuire
 	link = { vic3 = x093DF5 hoi4 = 9867 } # STATE_LOIRE -> Cholet
 	link = { vic3 = xDD4DD0 hoi4 = 11600 } # STATE_LOIRE -> La Roche-sur-Yon
-	link = { hoi4 = 11613 } # NOTHING -> Saumur
+	link = { vic3 = x7CAE05 hoi4 = 11613 hoi4 = 9478 } # STATE_LOIRE -> Saumur, Noyant
 	link = { comment = "* * STATE_PICARDY " }
-	link = { vic3 = x10A0C0 vic3 = xCF1F6D hoi4 = 454 } # STATE_PICARDY, STATE_PICARDY -> Albert
+	link = { vic3 = x10A0C0 hoi4 = 11420 } # STATE_PICARDY -> Amiens
+	link = { vic3 = xCF1F6D hoi4 = 454 } # STATE_PICARDY -> Albert
 	link = { vic3 = xE0A624 hoi4 = 485 } # STATE_PICARDY -> Dieppe
-	link = { hoi4 = 11294 hoi4 = 3476 } # NOTHING -> Korablino, Arras
-	link = { vic3 = xD0854D hoi4 = 194 hoi4 = 3536 } # STATE_PICARDY -> Khvoynaya, Béthune
-	link = { vic3 = xC4C61A hoi4 = 3407 hoi4 = 6585 } # STATE_PICARDY -> Edinet, Beauvais
-	link = { vic3 = xA0A080 hoi4 = 9826 hoi4 = 11483 } # STATE_PICARDY -> Caserta, Lille
-	link = { vic3 = xE0A0C0 hoi4 = 3744 hoi4 = 11548 } # STATE_PICARDY -> Cangas del Narcea, Calais
+	link = { vic3 = x106000 hoi4 = 3476 hoi4 = 6504 } # STATE_PICARDY -> Arras, Lens
+	link = { vic3 = xD0854D hoi4 = 3536 } # STATE_PICARDY -> Béthune
+	link = { vic3 = xC4C61A hoi4 = 6585 } # STATE_PICARDY -> Beauvais
+	link = { vic3 = xA0A080 hoi4 = 11483 hoi4 = 3576 } # STATE_PICARDY -> Lille, Kortrijk
+	link = { vic3 = xE0A0C0 hoi4 = 11548 hoi4 = 575 hoi4 = 9500 } # STATE_PICARDY -> Calais, Dunkerque, Boulogne-sur-Mer
 	link = { comment = "* * STATE_ALSACE_LORRAINE " }
-	link = { hoi4 = 678 } # NOTHING -> Mulhouse
+	link = { vic3 = xB000E0 hoi4 = 678 } # STATE_ALSACE_LORRAINE -> Mulhouse
 	link = { vic3 = xF0C0A0 hoi4 = 3629 } # STATE_ALSACE_LORRAINE -> Sarreguemines
-	link = { vic3 = xCC3250 hoi4 = 9884 hoi4 = 6529 } # STATE_ALSACE_LORRAINE -> Arette, Colmar
-	link = { vic3 = x6E4891 hoi4 = 11214 hoi4 = 9503 } # STATE_ALSACE_LORRAINE -> Verkhov'ye, Strasbourg
-	link = { vic3 = x4899A2 hoi4 = 473 hoi4 = 11502 } # STATE_ALSACE_LORRAINE -> Alekseyevka, Metz
+	link = { vic3 = xCC3250 hoi4 = 6529 } # STATE_ALSACE_LORRAINE -> Colmar
+	link = { vic3 = x6E4891 hoi4 = 9503 hoi4 = 1346 hoi4 = 549 } # STATE_ALSACE_LORRAINE -> Strasbourg, Sarrebourg, Haguenau
+	link = { vic3 = x4899A2 hoi4 = 11502 hoi4 = 9559 } # STATE_ALSACE_LORRAINE -> Metz, Thionville
 	link = { comment = "* * STATE_POITOU " }
-	link = { hoi4 = 9751 hoi4 = 595 } # NOTHING -> Brive-la-Gaillarde, Angoulême
+	link = { vic3 = x9401C7 hoi4 = 595 hoi4 = 6792 hoi4 = 3598 } # STATE_POITOU -> Angoulême, Périgueux, Nontron
 	link = { vic3 = xD020C0 hoi4 = 625 } # STATE_POITOU -> Saint-Junien
-	link = { vic3 = x19234B hoi4 = 4534 hoi4 = 629 } # STATE_POITOU -> Dusheti, Poitiers
-	link = { vic3 = xD0A040 hoi4 = 9597 } # STATE_POITOU -> Saintes
-	link = { vic3 = x5020C0 hoi4 = 11565 } # STATE_POITOU -> Libourne
+	link = { vic3 = x19234B hoi4 = 629 hoi4 = 11869 } # STATE_POITOU -> Poitiers, La Souterraine
+	link = { vic3 = xD0A040 hoi4 = 9597 hoi4 = 11565 } # STATE_POITOU -> Saintes, Libourne
+	link = { vic3 = x5020C0 hoi4 = 11720 } # STATE_POITOU -> Bergerac
 	link = { vic3 = xE269A3 hoi4 = 11582 } # STATE_POITOU -> Ruffec
 	link = { comment = "* * STATE_ARMAGNAC " }
 	link = { vic3 = xECF077 hoi4 = 943 } # STATE_ARMAGNAC -> Castres
-	link = { vic3 = xD957E6 hoi4 = 3749 } # STATE_ARMAGNAC -> L'Isle-Jourdain
 	link = { vic3 = x7C1D57 hoi4 = 3915 } # STATE_ARMAGNAC -> Saint-Gaudens
-	link = { hoi4 = 3948 } # NOTHING -> Albi
-	link = { vic3 = x306080 hoi4 = 354 hoi4 = 6917 } # STATE_ARMAGNAC -> Kunya, Carcassonne
+	link = { vic3 = xB0E000 hoi4 = 3948 } # STATE_ARMAGNAC -> Albi
+	link = { vic3 = x306080 hoi4 = 6917 } # STATE_ARMAGNAC -> Carcassonne
 	link = { vic3 = x106040 hoi4 = 6931 } # STATE_ARMAGNAC -> Foix
-	link = { vic3 = xA2BBE9 hoi4 = 9741 hoi4 = 11702 } # STATE_ARMAGNAC -> Vercelli, Montauban
-	link = { vic3 = x5615DD hoi4 = 6533 hoi4 = 12169 } # STATE_ARMAGNAC -> Vendôme, Tarbes
+	link = { vic3 = xA2BBE9 hoi4 = 6766 hoi4 = 3749 } # STATE_ARMAGNAC -> Toulouse, L'Isle-Jourdain
+	link = { vic3 = xB06000 vic3 = x30E000 hoi4 = 11702 hoi4 = 755 } # MANY-TO-MANY: STATE_LIMOUSIN, STATE_AUVERGNE -> Montauban, Villefranche-de- Rouergue
+	link = { vic3 = x5615DD vic3 = xD957E6 hoi4 = 12169 } # STATE_ARMAGNAC, STATE_ARMAGNAC -> Tarbes
 	link = { comment = "* * STATE_LIMOUSIN " }
 	link = { vic3 = x61609A hoi4 = 620 } # STATE_LIMOUSIN -> Limoges
 	link = { vic3 = x6E4717 vic3 = xE3E249 hoi4 = 651 } # STATE_LIMOUSIN, STATE_LIMOUSIN -> Châteauroux
-	link = { hoi4 = 3598 } # NOTHING -> Nontron
-	link = { vic3 = x50A0C0 hoi4 = 3794 hoi4 = 3621 } # STATE_LIMOUSIN -> Collado Villalba, Aubusson
-	link = { vic3 = x14F855 hoi4 = 658 hoi4 = 3626 } # STATE_LIMOUSIN -> Chur, Guéret
-	link = { hoi4 = 3771 } # NOTHING -> Tulle
+	link = { vic3 = x50A0C0 hoi4 = 3621 } # STATE_LIMOUSIN -> Aubusson
+	link = { vic3 = x14F855 hoi4 = 3626 } # STATE_LIMOUSIN -> Guéret
+	link = { vic3 = x368F00 hoi4 = 3771 } # STATE_LIMOUSIN -> Tulle
+	link = { vic3 = x306000 hoi4 = 9751 } # STATE_LIMOUSIN -> Brive-la-Gaillarde
 	link = { vic3 = x01FD5F hoi4 = 6618 } # STATE_LIMOUSIN -> Eymoutiers
 	link = { vic3 = xE7B296 hoi4 = 6651 } # STATE_LIMOUSIN -> Boussac
-	link = { hoi4 = 6775 } # NOTHING -> Cahors
 	link = { vic3 = xDF5770 hoi4 = 9734 } # STATE_LIMOUSIN -> Sarlat-la-Canéda
-	link = { vic3 = xC8CD2F hoi4 = 11720 } # STATE_LIMOUSIN -> Bergerac
+	link = { vic3 = xC8CD2F hoi4 = 6775 } # STATE_LIMOUSIN -> Cahors
 	link = { comment = "* * STATE_BRITTANY " }
 	link = { vic3 = xF91DD2 hoi4 = 527 } # STATE_BRITTANY -> Laval
 	link = { vic3 = xD0E080 hoi4 = 542 } # STATE_BRITTANY -> Quimper
 	link = { vic3 = x32C2E2 hoi4 = 3552 } # STATE_BRITTANY -> Brest
 	link = { vic3 = xD584A0 hoi4 = 3758 } # STATE_BRITTANY -> Carhaix-Plouguer
-	link = { hoi4 = 6536 } # NOTHING -> Lorient
+	link = { vic3 = x2BD902 hoi4 = 6536 } # STATE_BRITTANY -> Lorient
 	link = { vic3 = x55607E hoi4 = 6548 } # STATE_BRITTANY -> Pontivy
 	link = { vic3 = x2368E7 hoi4 = 6572 } # STATE_BRITTANY -> Lannion
 	link = { vic3 = x10A040 hoi4 = 9495 } # STATE_BRITTANY -> Rennes
@@ -765,76 +768,78 @@
 	link = { vic3 = xC4D7A2 hoi4 = 9525 } # STATE_BRITTANY -> Saint-Brieuc
 	link = { vic3 = x50F4A7 hoi4 = 11465 } # STATE_BRITTANY -> Nantes
 	link = { vic3 = xA0B0D1 hoi4 = 11508 } # STATE_BRITTANY -> Saint-Malo
-	link = { vic3 = x85E5AC hoi4 = 11616 } # STATE_BRITTANY -> Challans
+	link = { vic3 = x85E5AC vic3 = x706000 hoi4 = 11616 } # STATE_BRITTANY, STATE_BRITTANY -> Challans
 	link = { comment = "* * STATE_BURGUNDY " }
-	link = { vic3 = x09BB96 hoi4 = 6485 hoi4 = 667 } # STATE_BURGUNDY -> Krnov, Nevers
-	link = { hoi4 = 907 hoi4 = 680 } # NOTHING -> Kocani, Is-sur-Tille
-	link = { vic3 = x708060 hoi4 = 3810 hoi4 = 3650 } # STATE_BURGUNDY -> Pozoblanco, Lons-le-Saunier
-	link = { vic3 = x79B85C hoi4 = 3873 hoi4 = 3652 } # STATE_BURGUNDY -> Vinaroz, Dijon
-	link = { hoi4 = 3669 } # NOTHING -> Montbard
+	link = { vic3 = x09BB96 hoi4 = 667 } # STATE_BURGUNDY -> Nevers
+	link = { vic3 = x380D42 hoi4 = 680 } # STATE_BURGUNDY -> Is-sur-Tille
+	link = { vic3 = x708060 hoi4 = 3650 hoi4 = 641 } # STATE_BURGUNDY -> Lons-le-Saunier, Bourg-en-Bresse
+	link = { vic3 = x79B85C hoi4 = 3652 hoi4 = 817 } # STATE_BURGUNDY -> Dijon, Dole
+	link = { vic3 = x7000E0 hoi4 = 3669 } # STATE_BURGUNDY -> Montbard
 	link = { vic3 = xC69235 hoi4 = 3681 } # STATE_BURGUNDY -> Avallon
-	link = { vic3 = x3FE149 hoi4 = 3909 hoi4 = 6644 } # STATE_BURGUNDY -> Alcañiz, Montluçon
+	link = { vic3 = x3FE149 hoi4 = 6644 } # STATE_BURGUNDY -> Montluçon
 	link = { vic3 = xA8AE71 hoi4 = 9609 } # STATE_BURGUNDY -> Moullins
 	link = { vic3 = xF08060 hoi4 = 9625 } # STATE_BURGUNDY -> Le Creusot
-	link = { vic3 = x07BCC1 vic3 = xF080E0 hoi4 = 11576 } # STATE_BURGUNDY, STATE_BURGUNDY -> Riom
-	link = { vic3 = x8C3297 hoi4 = 3727 hoi4 = 11628 } # STATE_BURGUNDY -> Benavente, Pouilly-en-Auxois
-	link = { vic3 = x6D7896 hoi4 = 13252 hoi4 = 11794 } # STATE_BURGUNDY -> land, Mâcon
+	link = { vic3 = xF080E0 hoi4 = 9607 } # STATE_BURGUNDY -> Montmarault
+	link = { vic3 = x07BCC1 hoi4 = 11576 } # STATE_BURGUNDY -> Riom
+	link = { vic3 = x8C3297 hoi4 = 11628 } # STATE_BURGUNDY -> Pouilly-en-Auxois
+	link = { vic3 = x8329EC hoi4 = 648 } # STATE_BURGUNDY -> Chalon-sur-Saône
+	link = { vic3 = x6D7896 hoi4 = 11794 } # STATE_BURGUNDY -> Mâcon
 	link = { comment = "* * STATE_CHAMPAGNE " }
 	link = { vic3 = xE280FC hoi4 = 551 } # STATE_CHAMPAGNE -> Châlons-sur-Marne
-	link = { vic3 = x075199 hoi4 = 11086 hoi4 = 3402 } # STATE_CHAMPAGNE -> land, Saint-Quentin
-	link = { vic3 = x70C020 hoi4 = 3447 } # STATE_CHAMPAGNE -> Hirson
+	link = { vic3 = x075199 hoi4 = 3402 hoi4 = 3447 } # STATE_CHAMPAGNE -> Saint-Quentin, Hirson
+	link = { vic3 = x70C020 hoi4 = 13081 } # STATE_CHAMPAGNE -> Couvin
 	link = { vic3 = x999D4B hoi4 = 3506 } # STATE_CHAMPAGNE -> Auxerre
 	link = { vic3 = x669027 vic3 = xEFBF20 hoi4 = 9472 } # STATE_CHAMPAGNE, STATE_CHAMPAGNE -> Mézières
-	link = { hoi4 = 9490 } # NOTHING -> Troyes
-	link = { vic3 = x7040A0 hoi4 = 11518 } # STATE_CHAMPAGNE -> Meaux
+	link = { vic3 = x7040A0 hoi4 = 11518 hoi4 = 11549 } # STATE_CHAMPAGNE -> Meaux, land
 	link = { vic3 = x5362AC hoi4 = 11606 } # STATE_CHAMPAGNE -> Valenciennes
+	link = { vic3 = xEF00DF hoi4 = 9490 } # STATE_CHAMPAGNE -> Troyes
 	link = { vic3 = x8AE8D1 vic3 = xEF40A0 hoi4 = 11732 } # STATE_CHAMPAGNE, STATE_CHAMPAGNE -> Saint-Dizier
 	link = { vic3 = x5FEA2F vic3 = xD6A06D hoi4 = 13011 } # STATE_CHAMPAGNE, STATE_CHAMPAGNE -> Reims
 	link = { comment = "* * STATE_FRANCHE_COMTE " }
-	link = { vic3 = x3080E0 hoi4 = 522 hoi4 = 521 } # STATE_FRANCHE_COMTE -> Bilopilliya, Saint-Dié-des- Vosges
+	link = { vic3 = x3080E0 hoi4 = 521 hoi4 = 11642 } # STATE_FRANCHE_COMTE -> Saint-Dié-des- Vosges, Épinal
 	link = { vic3 = x3D8EF9 hoi4 = 698 } # STATE_FRANCHE_COMTE -> Belfort
-	link = { vic3 = x70BFA0 hoi4 = 3464 hoi4 = 3560 } # STATE_FRANCHE_COMTE -> Tsimlyansk, Sedan
-	link = { hoi4 = 3646 } # NOTHING -> Lons-le-Saunier
+	link = { vic3 = x70BFA0 hoi4 = 3560 hoi4 = 3546 } # STATE_FRANCHE_COMTE -> Sedan, Verdun
+	link = { vic3 = xF00060 hoi4 = 3646 } # STATE_FRANCHE_COMTE -> Lons-le-Saunier
 	link = { vic3 = xCF46D1 hoi4 = 3666 } # STATE_FRANCHE_COMTE -> Montbéliard
 	link = { vic3 = xC5F13A hoi4 = 5291 } # STATE_FRANCHE_COMTE -> Longwy
-	link = { hoi4 = 6531 } # NOTHING -> Langres
+	link = { vic3 = x600883 hoi4 = 3533 hoi4 = 6531 } # STATE_FRANCHE_COMTE -> Chaumont, Langres
 	link = { vic3 = x4B7684 hoi4 = 6545 } # STATE_FRANCHE_COMTE -> Bar-le-Duc
 	link = { vic3 = xA9D961 hoi4 = 6698 } # STATE_FRANCHE_COMTE -> Vesoul
 	link = { vic3 = x282DCC hoi4 = 9505 } # STATE_FRANCHE_COMTE -> Commercy
-	link = { hoi4 = 544 hoi4 = 9658 } # NOTHING -> Preobrazhenskaya, Gray
 	link = { vic3 = x7FC1E6 hoi4 = 11488 } # STATE_FRANCHE_COMTE -> Neufchâteau
 	link = { vic3 = xB080E0 hoi4 = 11516 } # STATE_FRANCHE_COMTE -> Nancy
+	link = { vic3 = x700060 hoi4 = 9642 hoi4 = 9658 } # STATE_FRANCHE_COMTE -> Besançon, Gray
 	link = { comment = "* * STATE_AUVERGNE " }
-	link = { hoi4 = 755 } # NOTHING -> Villefranche-de- Rouergue
 	link = { vic3 = xABE045 hoi4 = 769 } # STATE_AUVERGNE -> Issoire
 	link = { vic3 = xBED0F4 vic3 = xF0C060 hoi4 = 6770 } # STATE_AUVERGNE, STATE_AUVERGNE -> Mende
-	link = { vic3 = xAF89BC hoi4 = 6773 } # STATE_AUVERGNE -> Aurillac
-	link = { vic3 = xA27EFD hoi4 = 3782 hoi4 = 6789 } # STATE_AUVERGNE -> Ivrea, Riom-ès-Montagnes
+	link = { vic3 = xAF89BC hoi4 = 6773 hoi4 = 752 } # STATE_AUVERGNE -> Aurillac, Rodez
+	link = { vic3 = xA27EFD hoi4 = 6789 hoi4 = 9593 hoi4 = 590 } # STATE_AUVERGNE -> Riom-ès-Montagnes, Saint-Georges-de- Mons, Clermont-Ferrand
 	link = { vic3 = x70C060 hoi4 = 9732 } # STATE_AUVERGNE -> Le Puy
-	link = { vic3 = x061121 hoi4 = 3703 hoi4 = 11709 } # STATE_AUVERGNE -> Ried, Millau
+	link = { vic3 = x061121 hoi4 = 11709 } # STATE_AUVERGNE -> Millau
 	link = { vic3 = xF3D359 hoi4 = 11718 } # STATE_AUVERGNE -> Padirac
 	link = { comment = "* * STATE_AQUITAINE " }
-	link = { vic3 = x073FC4 hoi4 = 743 } # STATE_AQUITAINE -> Bayonne
-	link = { vic3 = x6E16BB hoi4 = 11306 hoi4 = 3737 } # STATE_AQUITAINE -> Pitlochry, land
+	link = { vic3 = x073FC4 vic3 = x6E16BB hoi4 = 743 } # STATE_AQUITAINE, STATE_AQUITAINE -> Bayonne
 	link = { vic3 = xA220D0 hoi4 = 6621 } # STATE_AQUITAINE -> Soulac-sur-Mer
 	link = { vic3 = x5F7F2D hoi4 = 6759 } # STATE_AQUITAINE -> Casteljaloux
-	link = { vic3 = x76BA85 hoi4 = 544 hoi4 = 6777 } # STATE_AQUITAINE -> Preobrazhenskaya, La Teste-de-Buch
+	link = { vic3 = x76BA85 hoi4 = 6777 } # STATE_AQUITAINE -> La Teste-de-Buch
 	link = { vic3 = x70A080 vic3 = xF0A080 hoi4 = 9710 } # STATE_AQUITAINE, STATE_AQUITAINE -> Dax
-	link = { vic3 = x086618 vic3 = x606DEC hoi4 = 9717 } # STATE_AQUITAINE, STATE_AQUITAINE -> Marmande
+	link = { vic3 = x606DEC hoi4 = 6762 } # STATE_AQUITAINE -> Morcenx
+	link = { vic3 = x086618 hoi4 = 9717 } # STATE_AQUITAINE -> Marmande
 	link = { vic3 = xBBF036 hoi4 = 9737 } # STATE_AQUITAINE -> Bordeaux
-	link = { vic3 = xF02080 hoi4 = 3761 hoi4 = 9882 } # STATE_AQUITAINE -> Vivero, Lourdes
-	link = { vic3 = xCD8E77 hoi4 = 6535 hoi4 = 11697 } # STATE_AQUITAINE -> Münster, Mauléon-Licharre
-	link = { vic3 = x3784B2 hoi4 = 13233 hoi4 = 11699 } # STATE_AQUITAINE -> Amurrio, Pau
+	link = { vic3 = xF02080 hoi4 = 9882 hoi4 = 9884 } # STATE_AQUITAINE -> Lourdes, Arette
+	link = { vic3 = xCD8E77 hoi4 = 11697 } # STATE_AQUITAINE -> Mauléon-Licharre
+	link = { vic3 = x3784B2 hoi4 = 11699 } # STATE_AQUITAINE -> Pau
 	link = { comment = "* * STATE_ORLEANS " }
 	link = { vic3 = xF0E39E hoi4 = 512 } # STATE_ORLEANS -> Orléans
-	link = { vic3 = xD8BA95 hoi4 = 3493 } # STATE_ORLEANS -> Mer
+	link = { vic3 = xD8BA95 hoi4 = 3493 hoi4 = 6688 } # STATE_ORLEANS -> Mer, Vierzon
 	link = { vic3 = x56E158 hoi4 = 3509 } # STATE_ORLEANS -> Le Mans
-	link = { vic3 = xF6A48C hoi4 = 11642 hoi4 = 9492 } # STATE_ORLEANS -> Épinal, Château-Renault
-	link = { vic3 = x886277 hoi4 = 486 hoi4 = 9629 } # STATE_ORLEANS -> Pershotravens'k, Issoudun
-	link = { vic3 = xB0E080 hoi4 = 9741 hoi4 = 11463 } # STATE_ORLEANS -> Vercelli, Château-du-Loir
-	link = { vic3 = xD02040 hoi4 = 9374 hoi4 = 11596 } # STATE_ORLEANS -> Birai, Châtellerault
-	link = { hoi4 = 11611 } # NOTHING -> Bourges
+	link = { vic3 = xF6A48C hoi4 = 9492 } # STATE_ORLEANS -> Château-Renault
+	link = { vic3 = x886277 hoi4 = 9629 } # STATE_ORLEANS -> Issoudun
+	link = { vic3 = xB0E080 hoi4 = 11463 hoi4 = 3534 } # STATE_ORLEANS -> Château-du-Loir, Mortagne-au-Perche
+	link = { vic3 = xD02040 hoi4 = 11596 } # STATE_ORLEANS -> Châtellerault
+	link = { vic3 = x90E000 hoi4 = 11611 hoi4 = 3655 } # STATE_ORLEANS -> Bourges, Saint-Amand-Montrond
 	link = { vic3 = x47B641 vic3 = x50CE72 hoi4 = 11631 } # STATE_ORLEANS, STATE_ORLEANS -> Blois
+	link = { vic3 = x10DF00 hoi4 = 9644 } # STATE_ORLEANS -> Sancerre
 	link = { comment = "* * STATE_HOLLAND " }
 	link = { vic3 = x777732 hoi4 = 3314 hoi4 = 68 } # STATE_HOLLAND -> Alkmaar, Haarlem
 	link = { vic3 = xC04021 hoi4 = 11503 hoi4 = 391 } # STATE_HOLLAND -> Fiadory, Amsterdam
@@ -854,11 +859,11 @@
 	link = { comment = "* * STATE_WALLONIA " }
 	link = { vic3 = xEF2040 hoi4 = 6712 hoi4 = 6537 } # STATE_WALLONIA -> Freiburg, Verviers
 	link = { vic3 = x5180A0 hoi4 = 6583 } # STATE_WALLONIA -> Lëtzebuerg
-	link = { hoi4 = 9418 } # NOTHING -> Arlon
+	link = { vic3 = xD001A0 hoi4 = 9418 } # STATE_WALLONIA -> Arlon
 	link = { vic3 = x916574 hoi4 = 9444 } # STATE_WALLONIA -> Rochefort
 	link = { vic3 = x8080A0 hoi4 = 3364 hoi4 = 9536 } # STATE_WALLONIA -> Pochep, Charleroi
 	link = { vic3 = x3A5FB9 hoi4 = 11407 } # STATE_WALLONIA -> Bastogne
-	link = { vic3 = x2D32D7 vic3 = xB0A0C0 hoi4 = 13081 } # STATE_WALLONIA, STATE_WALLONIA -> Couvin
+	link = { vic3 = x2D32D7 vic3 = xB0A0C0 } # STATE_WALLONIA, STATE_WALLONIA -> DROPPED
 	link = { comment = "* * STATE_FLANDERS " }
 	link = { vic3 = x93FB2E hoi4 = 516 } # STATE_FLANDERS -> Brussel
 	link = { vic3 = x018061 hoi4 = 3692 hoi4 = 3516 } # STATE_FLANDERS -> Villingen, Namur
@@ -868,7 +873,7 @@
 	link = { hoi4 = 6540 hoi4 = 11419 } # NOTHING -> Ingolstadt, Turnhout
 	link = { comment = "* * STATE_AUSTRIA " }
 	link = { vic3 = x0CBB8F hoi4 = 10027 hoi4 = 704 } # STATE_AUSTRIA -> Castrovillari, Sankt Pölten
-	link = { hoi4 = 6533 hoi4 = 3684 } # NOTHING -> Vendôme, Gmunden
+	link = { hoi4 = 3684 } # NOTHING -> Gmunden
 	link = { vic3 = xA9793B hoi4 = 6552 } # STATE_AUSTRIA -> Zwettl
 	link = { vic3 = xFDA6CB hoi4 = 6708 } # STATE_AUSTRIA -> Braunau
 	link = { hoi4 = 6723 } # NOTHING -> Freistadt
@@ -952,7 +957,7 @@
 	link = { vic3 = x418061 hoi4 = 884 hoi4 = 3271 } # STATE_ELBE -> land, Verden
 	link = { vic3 = xC08061 hoi4 = 3326 } # STATE_ELBE -> Bremen
 	link = { vic3 = xC080E0 hoi4 = 486 hoi4 = 6218 } # STATE_ELBE -> Pershotravens'k, Gifhorn
-	link = { vic3 = x392FDA hoi4 = 6609 hoi4 = 6298 } # STATE_ELBE -> Albertville, Lüneburg
+	link = { vic3 = x392FDA hoi4 = 6298 } # STATE_ELBE -> Lüneburg
 	link = { vic3 = xA5E2E8 hoi4 = 6325 } # STATE_ELBE -> Seevetal
 	link = { vic3 = x7C8FD3 hoi4 = 6606 hoi4 = 9264 } # STATE_ELBE -> Bologna, Uelzen
 	link = { vic3 = x587297 hoi4 = 9347 } # STATE_ELBE -> Hamburg
@@ -979,12 +984,12 @@
 	link = { vic3 = x0180E0 hoi4 = 3512 } # STATE_WESTPHALIA -> Wesel
 	link = { hoi4 = 9509 } # NOTHING -> Gütersloh
 	link = { vic3 = x418021 hoi4 = 11233 hoi4 = 9547 } # STATE_WESTPHALIA -> Rheine, Bidenkopf
-	link = { vic3 = x1DD141 hoi4 = 6533 hoi4 = 11346 } # STATE_WESTPHALIA -> Vendôme, Gronau
+	link = { vic3 = x1DD141 hoi4 = 11346 } # STATE_WESTPHALIA -> Gronau
 	link = { vic3 = x218061 hoi4 = 17 hoi4 = 11431 } # STATE_WESTPHALIA -> Wrzesnia, Lippstadt
 	link = { hoi4 = 426 hoi4 = 11533 } # NOTHING -> Zernograd, Korbach
 	link = { comment = "* * STATE_ANHALT " }
 	link = { vic3 = x618061 hoi4 = 6428 hoi4 = 538 } # STATE_ANHALT -> Ternovka, Saalfeld
-	link = { vic3 = xA51232 hoi4 = 9500 hoi4 = 3522 } # STATE_ANHALT -> Boulogne-sur-Mer, Magdeburg
+	link = { vic3 = xA51232 hoi4 = 3522 } # STATE_ANHALT -> Magdeburg
 	link = { vic3 = x34386E hoi4 = 6441 } # STATE_ANHALT -> Torgau
 	link = { vic3 = xA080E0 hoi4 = 6487 } # STATE_ANHALT -> Sangerhausen
 	link = { vic3 = x3C9B93 hoi4 = 6524 } # STATE_ANHALT -> Ilmenau
@@ -992,7 +997,7 @@
 	link = { vic3 = xCBA4A5 hoi4 = 9375 } # STATE_ANHALT -> Helmstedt
 	link = { vic3 = xE0C0A0 hoi4 = 9456 } # STATE_ANHALT -> Dessau
 	link = { vic3 = x8A448C hoi4 = 9560 } # STATE_ANHALT -> Halle
-	link = { vic3 = x12694A hoi4 = 6533 hoi4 = 11468 } # STATE_ANHALT -> Vendôme, Halberstadt
+	link = { vic3 = x12694A hoi4 = 11468 } # STATE_ANHALT -> Halberstadt
 	link = { vic3 = xCF5D8E hoi4 = 3752 hoi4 = 11545 } # STATE_ANHALT -> Bryukhovetskaya, Wittenberg
 	link = { comment = "* * STATE_RHINELAND " }
 	link = { vic3 = x11C021 hoi4 = 3377 hoi4 = 563 } # STATE_RHINELAND -> Kremyoniki, Zweibrücken
@@ -1034,7 +1039,7 @@
 	link = { vic3 = x64824C hoi4 = 6603 hoi4 = 6389 } # STATE_SCHLESWIG_HOLSTEIN -> Tim, Kiel
 	link = { vic3 = xE3C876 hoi4 = 11251 } # STATE_SCHLESWIG_HOLSTEIN -> Kolding
 	link = { vic3 = x60809F hoi4 = 9785 hoi4 = 11331 } # STATE_SCHLESWIG_HOLSTEIN -> Sigüenza, Lübeck
-	link = { vic3 = x00C060 hoi4 = 7857 hoi4 = 11366 } # STATE_SCHLESWIG_HOLSTEIN -> Kdyne, Sylt
+	link = { vic3 = x00C060 hoi4 = 11366 hoi4 = 317 } # STATE_SCHLESWIG_HOLSTEIN -> Sylt, Flensburg
 	link = { comment = "* * STATE_WURTTEMBERG " }
 	link = { vic3 = x908060 hoi4 = 6808 hoi4 = 519 } # STATE_WURTTEMBERG -> Alpu, Reutlingen
 	link = { vic3 = xDBB84C hoi4 = 11768 hoi4 = 3690 } # STATE_WURTTEMBERG -> Coruche, Biberach
@@ -1173,7 +1178,7 @@
 	link = { vic3 = xDF1CE3 hoi4 = 955 } # STATE_CAMPANIA -> Salerno
 	link = { hoi4 = 6724 hoi4 = 3958 } # NOTHING -> Buyuk Onlar, Sala Consilina
 	link = { comment = "* * STATE_CALABRIA " }
-	link = { vic3 = x785460 hoi4 = 1346 hoi4 = 3968 } # STATE_CALABRIA -> Sarrebourg, Lauria
+	link = { vic3 = x785460 hoi4 = 3968 } # STATE_CALABRIA -> Lauria
 	link = { vic3 = xE78C7B hoi4 = 9856 } # STATE_CALABRIA -> Matera
 	link = { vic3 = xC01020 hoi4 = 6606 hoi4 = 9990 } # STATE_CALABRIA -> Bologna, Reggio Calabria
 	link = { vic3 = xC050E0 hoi4 = 3273 hoi4 = 12098 } # STATE_CALABRIA -> Glasgow, Crotone
@@ -1190,9 +1195,10 @@
 	link = { vic3 = xA6F611 hoi4 = 6831 } # STATE_ABRUZZO -> Pescara
 	link = { vic3 = xF34DC0 hoi4 = 536 hoi4 = 6939 } # STATE_ABRUZZO -> Krystynopol, San Severo
 	link = { vic3 = x0AE57A hoi4 = 9838 } # STATE_ABRUZZO -> Teramo
-	link = { vic3 = x0D3025 hoi4 = 9751 hoi4 = 11882 } # STATE_ABRUZZO -> Brive-la-Gaillarde, Avezzano
+	link = { vic3 = x0D3025 hoi4 = 11882 } # STATE_ABRUZZO -> Avezzano
 	link = { comment = "* * STATE_SAVOY " }
 	link = { vic3 = x56B04B hoi4 = 9382 hoi4 = 9603 } # STATE_SAVOY -> Dorogobuzh, Thonon-les-Bains
+	link = { vic3 = xD000E0 hoi4 = 6609 } # STATE_SAVOY -> Albertville
 	link = { vic3 = x6B4BA4 hoi4 = 9745 } # STATE_SAVOY -> Bourg-Saint-Maurice
 	link = { vic3 = xDDDD3B hoi4 = 11573 } # STATE_SAVOY -> Annecy
 	link = { comment = "* * STATE_EMILIA " }
@@ -1205,11 +1211,11 @@
 	link = { vic3 = xB04020 hoi4 = 910 } # STATE_TUSCANY -> Siena
 	link = { vic3 = xF12431 hoi4 = 6875 } # STATE_TUSCANY -> Grosseto
 	link = { vic3 = x32BA1A hoi4 = 9750 } # STATE_TUSCANY -> Cortona
-	link = { vic3 = xFAFCD4 hoi4 = 958 hoi4 = 9907 } # STATE_TUSCANY -> Avignon, Firenze
+	link = { vic3 = xFAFCD4 hoi4 = 9907 } # STATE_TUSCANY -> Firenze
 	link = { vic3 = x6A7662 hoi4 = 11833 } # STATE_TUSCANY -> Livorno
 	link = { comment = "* * STATE_ROMAGNA " }
 	link = { vic3 = x708020 vic3 = xB080A0 hoi4 = 6793 } # STATE_ROMAGNA, STATE_VENETIA -> Ferrara
-	link = { hoi4 = 6609 hoi4 = 6985 } # NOTHING -> Albertville, Imola
+	link = { hoi4 = 6985 } # NOTHING -> Imola
 	link = { vic3 = xFE3729 hoi4 = 9924 } # STATE_ROMAGNA -> Rimini
 	link = { hoi4 = 11889 } # NOTHING -> Borgo San Lorenzo
 	link = { comment = "* * STATE_LAZIO " }
@@ -1263,7 +1269,7 @@
 	link = { vic3 = xD0E040 hoi4 = 3727 hoi4 = 11710 } # STATE_GALICIA -> Benavente, Riveira
 	link = { vic3 = x583E92 hoi4 = 11840 } # STATE_GALICIA -> El Barco de Valdeorras
 	link = { comment = "* * STATE_ASTURIAS " }
-	link = { hoi4 = 6786 hoi4 = 738 } # NOTHING -> Saint-Étienne, land
+	link = { hoi4 = 738 } # NOTHING -> land
 	link = { hoi4 = 11305 hoi4 = 6749 } # NOTHING -> Wismar, Llanes
 	link = { vic3 = xBF2564 hoi4 = 9703 } # STATE_ASTURIAS -> Torrelavega
 	link = { vic3 = x3E77F9 hoi4 = 9719 } # STATE_ASTURIAS -> Navia
@@ -1286,8 +1292,8 @@
 	link = { vic3 = x4D18FC hoi4 = 9438 hoi4 = 4024 } # STATE_CASTILE -> Paneveys, Medina de Rioseco
 	link = { hoi4 = 3810 hoi4 = 6746 } # NOTHING -> Pozoblanco, Guardo
 	link = { vic3 = x24A9D6 hoi4 = 11271 hoi4 = 6936 } # STATE_CASTILE -> Mostok, Peñafiel
-	link = { vic3 = xB3BC6E hoi4 = 9748 hoi4 = 9770 } # STATE_CASTILE -> Thiers, Ciudad Rodrigo
-	link = { vic3 = x22193A hoi4 = 9751 hoi4 = 9846 } # STATE_CASTILE -> Brive-la-Gaillarde, Tordesillas
+	link = { vic3 = xB3BC6E hoi4 = 9770 } # STATE_CASTILE -> Ciudad Rodrigo
+	link = { vic3 = x22193A hoi4 = 9846 } # STATE_CASTILE -> Tordesillas
 	link = { vic3 = x0543B8 hoi4 = 6535 hoi4 = 11684 } # STATE_CASTILE -> Münster, land
 	link = { hoi4 = 11766 } # NOTHING -> Arcos de Jalón
 	link = { vic3 = xCA2220 hoi4 = 442 hoi4 = 11806 } # STATE_CASTILE -> Tarnów, Fuentespina
@@ -1339,7 +1345,7 @@
 	link = { vic3 = x58E3EB hoi4 = 747 hoi4 = 3871 } # STATE_ANDALUSIA -> El Ejido, Montoro
 	link = { vic3 = x59202C hoi4 = 3523 hoi4 = 3940 } # STATE_ANDALUSIA -> Mayenne, Cortegana
 	link = { vic3 = x4A1438 hoi4 = 9438 hoi4 = 7183 } # STATE_ANDALUSIA -> Paneveys, Sevilla
-	link = { vic3 = x809020 hoi4 = 9884 hoi4 = 7198 } # STATE_ANDALUSIA -> Arette, Lucena
+	link = { vic3 = x809020 hoi4 = 7198 } # STATE_ANDALUSIA -> Lucena
 	link = { hoi4 = 9815 } # NOTHING -> Huelva
 	link = { vic3 = x911497 hoi4 = 9891 } # STATE_ANDALUSIA -> Palma del Río
 	link = { vic3 = x53634F hoi4 = 7624 hoi4 = 11749 } # STATE_ANDALUSIA -> Derbent, Aracena
@@ -1365,7 +1371,7 @@
 	link = { vic3 = xB4471A hoi4 = 6954 } # STATE_BADAJOZ -> Zafra
 	link = { hoi4 = 9839 } # NOTHING -> Coria
 	link = { vic3 = xE47DCF hoi4 = 9877 } # STATE_BADAJOZ -> San Vicente de Alcántara
-	link = { vic3 = x4A8E78 hoi4 = 6609 hoi4 = 9917 } # STATE_BADAJOZ -> Albertville, Navalmoral de la Mata
+	link = { vic3 = x4A8E78 hoi4 = 9917 } # STATE_BADAJOZ -> Navalmoral de la Mata
 	link = { hoi4 = 9925 } # NOTHING -> Mérida
 	link = { vic3 = x342BE6 hoi4 = 11780 } # STATE_BADAJOZ -> Trujillo
 	link = { vic3 = x009020 hoi4 = 9741 hoi4 = 11798 } # STATE_BADAJOZ -> Vercelli, Jerez de los Caballeros
@@ -1384,7 +1390,7 @@
 	link = { vic3 = xA03040 hoi4 = 9903 } # STATE_VALENCIA -> Cieza
 	link = { vic3 = xB03776 hoi4 = 10024 } # STATE_VALENCIA -> Cartagena
 	link = { vic3 = x71158B hoi4 = 1201 hoi4 = 10109 } # STATE_VALENCIA -> Tulkarm, Águilas
-	link = { vic3 = x134657 hoi4 = 9751 hoi4 = 11884 } # STATE_VALENCIA -> Brive-la-Gaillarde, Yecla
+	link = { vic3 = x134657 hoi4 = 11884 } # STATE_VALENCIA -> Yecla
 	link = { comment = "* * STATE_BEIRA " }
 	link = { vic3 = x641376 hoi4 = 724 } # STATE_BEIRA -> Vila Real
 	link = { vic3 = x9238AD hoi4 = 845 } # STATE_BEIRA -> Vila Nova de Foz Côa
@@ -1409,8 +1415,8 @@
 	link = { vic3 = xA07080 hoi4 = 3866 } # STATE_ALENTEJO -> Sines
 	link = { vic3 = xC3BFC4 hoi4 = 790 hoi4 = 3886 } # STATE_ALENTEJO -> land, Elvas
 	link = { vic3 = x84A822 hoi4 = 9188 hoi4 = 3926 } # STATE_ALENTEJO -> Volkovo, Portalegre
-	link = { vic3 = x207080 hoi4 = 9751 hoi4 = 6880 } # STATE_ALENTEJO -> Brive-la-Gaillarde, Faro
-	link = { vic3 = x8B17E3 hoi4 = 317 hoi4 = 6884 } # STATE_ALENTEJO -> Flensburg, Serpa
+	link = { vic3 = x207080 hoi4 = 6880 } # STATE_ALENTEJO -> Faro
+	link = { vic3 = x8B17E3 hoi4 = 6884 } # STATE_ALENTEJO -> Serpa
 	link = { vic3 = xEBA935 hoi4 = 9819 } # STATE_ALENTEJO -> Moura
 	link = { vic3 = xB0177A hoi4 = 3332 hoi4 = 9869 } # STATE_ALENTEJO -> Kirsanov, Évora
 	link = { comment = "* * STATE_CAPE_VERDE " }
@@ -1615,7 +1621,7 @@
 	link = { vic3 = x93FBC9 hoi4 = 3053 } # STATE_INGRIA -> Strugi Krasnye
 	link = { vic3 = x0FEA4B hoi4 = 3089 } # STATE_INGRIA -> Sol'tsy
 	link = { vic3 = x246095 hoi4 = 3120 } # STATE_INGRIA -> Os'mino
-	link = { vic3 = xB64167 hoi4 = 3151 } # STATE_INGRIA -> Leningrad
+	link = { vic3 = xB64167 hoi4 = 3151 hoi4 = 149 } # STATE_INGRIA -> Leningrad, land
 	link = { vic3 = x86F5A3 hoi4 = 9785 hoi4 = 3333 } # STATE_INGRIA -> Sigüenza, Krasnogorodsk
 	link = { vic3 = x01A0E0 hoi4 = 975 hoi4 = 6197 } # STATE_INGRIA -> Ordu, Lyuban'
 	link = { vic3 = xF06F29 hoi4 = 6242 } # STATE_INGRIA -> Opochka
@@ -1675,7 +1681,7 @@
 	link = { vic3 = xCD34E8 hoi4 = 473 hoi4 = 6358 } # STATE_MOSCOW -> Alekseyevka, Vichuga
 	link = { vic3 = xDF20A0 hoi4 = 6392 } # STATE_MOSCOW -> Fominki
 	link = { vic3 = x301EC1 vic3 = x8FB5BF hoi4 = 6396 } # STATE_MOSCOW, STATE_MOSCOW -> Yasnogorsk
-	link = { vic3 = x2121A0 hoi4 = 11306 hoi4 = 6398 } # STATE_MOSCOW -> Pitlochry, Lebedyan'
+	link = { vic3 = x2121A0 hoi4 = 6398 } # STATE_MOSCOW -> Lebedyan'
 	link = { vic3 = xE19E7E hoi4 = 6414 } # STATE_MOSCOW -> Lyubertsy
 	link = { hoi4 = 9235 } # NOTHING -> Shatura
 	link = { vic3 = xE78F94 hoi4 = 9257 } # STATE_MOSCOW -> Kineshma
@@ -1714,7 +1720,7 @@
 	link = { vic3 = xAB3AC5 hoi4 = 3392 } # STATE_BREST -> Brzesc Litewski
 	link = { hoi4 = 326 hoi4 = 6280 } # NOTHING -> Vol'sk, Hancewicze
 	link = { vic3 = x1917E9 hoi4 = 6306 } # STATE_BREST -> Iwacewicze
-	link = { vic3 = xBCB94C hoi4 = 3463 hoi4 = 6340 } # STATE_BREST -> Exeter, Oszmiana
+	link = { vic3 = xBCB94C hoi4 = 6340 } # STATE_BREST -> Oszmiana
 	link = { vic3 = xB338E8 hoi4 = 6359 } # STATE_BREST -> Slonim
 	link = { vic3 = x75F1B4 vic3 = x7E7F58 hoi4 = 6413 } # STATE_BREST, STATE_BREST -> Lida
 	link = { vic3 = xCCD197 hoi4 = 6415 } # STATE_BREST -> Janów Poleski
@@ -1769,7 +1775,7 @@
 	link = { vic3 = x7DF67D hoi4 = 550 } # STATE_KIEV -> land
 	link = { vic3 = x3ACCE8 hoi4 = 559 } # STATE_KIEV -> Myrhorod
 	link = { vic3 = xE08061 hoi4 = 582 } # STATE_KIEV -> Yahotyn
-	link = { vic3 = xA12B5A hoi4 = 6609 hoi4 = 3225 } # STATE_KIEV -> Albertville, Seredyna-Buda
+	link = { vic3 = xA12B5A hoi4 = 3225 } # STATE_KIEV -> Seredyna-Buda
 	link = { vic3 = x1CB8D8 vic3 = xE682D3 hoi4 = 3455 } # STATE_KIEV, STATE_KIEV -> Okhtyrka
 	link = { vic3 = xF49A18 hoi4 = 3480 } # STATE_KIEV -> Mena
 	link = { vic3 = x01E0E0 hoi4 = 11604 hoi4 = 3494 } # STATE_KIEV -> Lucerne, Karahlyk
@@ -1831,7 +1837,7 @@
 	link = { vic3 = x71473A hoi4 = 6222 hoi4 = 3263 } # STATE_BRYANSK -> Jurmala, Obninsk
 	link = { vic3 = x9692BD hoi4 = 3279 } # STATE_BRYANSK -> Sychyovka
 	link = { vic3 = x1D9534 hoi4 = 125 hoi4 = 3308 } # STATE_BRYANSK -> Ljusdal, Ferzikovo
-	link = { vic3 = x8D6462 hoi4 = 6766 hoi4 = 3327 } # STATE_BRYANSK -> Toulouse, Mozhaysk
+	link = { vic3 = x8D6462 hoi4 = 3327 } # STATE_BRYANSK -> Mozhaysk
 	link = { vic3 = x244D15 hoi4 = 3335 } # STATE_BRYANSK -> Bryansk
 	link = { hoi4 = 3345 } # NOTHING -> Mosal'sk
 	link = { vic3 = xEC68C6 hoi4 = 3358 } # STATE_BRYANSK -> Klin
@@ -1871,7 +1877,7 @@
 	link = { vic3 = x9CC46F vic3 = x9ECE91 hoi4 = 3344 } # STATE_SMOLENSK, STATE_SMOLENSK -> Bologovo
 	link = { hoi4 = 3362 } # NOTHING -> Yartsevo
 	link = { vic3 = xEA523C hoi4 = 6264 } # STATE_SMOLENSK -> Molodoy Tud
-	link = { vic3 = x6D38D7 hoi4 = 149 hoi4 = 6293 } # STATE_SMOLENSK -> land, Usvyaty
+	link = { vic3 = x6D38D7 hoi4 = 6293 } # STATE_SMOLENSK -> Usvyaty
 	link = { hoi4 = 6303 } # NOTHING -> Zubtsov
 	link = { vic3 = x534355 hoi4 = 6367 } # STATE_SMOLENSK -> Nelidovo
 	link = { vic3 = x74F08E hoi4 = 6387 } # STATE_SMOLENSK -> Safonovo
@@ -2420,7 +2426,7 @@
 	link = { hoi4 = 9430 } # NOTHING -> Pokrovskoye
 	link = { vic3 = x698B74 hoi4 = 9436 } # STATE_ROSTOV -> Malodel'skaya
 	link = { vic3 = x7C8235 hoi4 = 11233 hoi4 = 9459 } # STATE_ROSTOV -> Rheine, Kotel'nikovo
-	link = { vic3 = x5469A6 hoi4 = 317 hoi4 = 9464 } # STATE_ROSTOV -> Flensburg, Kruglovka
+	link = { vic3 = x5469A6 hoi4 = 9464 } # STATE_ROSTOV -> Kruglovka
 	link = { vic3 = xA34CA7 hoi4 = 9488 } # STATE_ROSTOV -> Tarasovskiy
 	link = { vic3 = x05C86D vic3 = xA71AE3 hoi4 = 9502 } # STATE_ROSTOV, STATE_ROSTOV -> Uryupinsk
 	link = { vic3 = xE3D4F3 hoi4 = 9516 } # STATE_ROSTOV -> Milyutinskaya
@@ -2723,7 +2729,7 @@
 	link = { vic3 = xD061E0 hoi4 = 3713 } # STATE_CENTRAL_HUNGARY -> Mezokövesd
 	link = { hoi4 = 3730 } # NOTHING -> Nyíregyháza
 	link = { vic3 = x764B36 hoi4 = 345 hoi4 = 3731 } # STATE_CENTRAL_HUNGARY -> Chamzinka, Eger
-	link = { vic3 = x846165 hoi4 = 271 hoi4 = 6670 } # STATE_CENTRAL_HUNGARY -> Lowestoft, Baja
+	link = { vic3 = x846165 hoi4 = 6670 } # STATE_CENTRAL_HUNGARY -> Baja
 	link = { vic3 = x063C9D hoi4 = 9827 hoi4 = 6735 } # STATE_CENTRAL_HUNGARY -> Laguna de Duero, Mátészalka
 	link = { vic3 = x5060DF hoi4 = 483 hoi4 = 9656 } # STATE_CENTRAL_HUNGARY -> Yelshanka, Békéscsaba
 	link = { vic3 = x5C685C vic3 = xAB6CAC hoi4 = 9660 } # STATE_CENTRAL_HUNGARY, STATE_CENTRAL_HUNGARY -> Budapest
@@ -5727,7 +5733,7 @@
 	link = { vic3 = x31CD7B vic3 = xB8FEBB hoi4 = 3851 } # STATE_HUDAVENDIGAR, STATE_HUDAVENDIGAR -> Yalova
 	link = { vic3 = x34C810 hoi4 = 9887 } # STATE_HUDAVENDIGAR -> Biga
 	link = { hoi4 = 11778 } # NOTHING -> Balikesir
-	link = { vic3 = xB0A060 hoi4 = 9751 hoi4 = 11811 } # STATE_HUDAVENDIGAR -> Brive-la-Gaillarde, Izmit
+	link = { vic3 = xB0A060 hoi4 = 11811 } # STATE_HUDAVENDIGAR -> Izmit
 	link = { vic3 = x30A060 hoi4 = 11829 } # STATE_HUDAVENDIGAR -> Gebze
 	link = { vic3 = x13886D hoi4 = 425 hoi4 = 11867 } # STATE_HUDAVENDIGAR -> Weimar, Karacabey
 	link = { comment = "* * STATE_AYDIN " }
@@ -5743,7 +5749,7 @@
 	link = { vic3 = x601020 vic3 = xABD1D0 hoi4 = 11917 } # STATE_KONYA, STATE_AYDIN -> Mugla
 	link = { comment = "* * STATE_KONYA " }
 	link = { vic3 = x65DE76 hoi4 = 784 } # STATE_KONYA -> Isparta
-	link = { hoi4 = 11642 hoi4 = 856 } # NOTHING -> Épinal, Tavsanli
+	link = { hoi4 = 856 } # NOTHING -> Tavsanli
 	link = { vic3 = x70373E vic3 = xBACCB8 hoi4 = 869 } # STATE_KONYA, STATE_KONYA -> Aksaray
 	link = { vic3 = x9E386C hoi4 = 909 } # STATE_KONYA -> Çifteler
 	link = { vic3 = x547B95 hoi4 = 940 } # STATE_KONYA -> Konya
@@ -5777,7 +5783,7 @@
 	link = { vic3 = xA4ED5C hoi4 = 11907 } # STATE_KONYA -> Sandikli
 	link = { vic3 = x401060 hoi4 = 12013 } # STATE_KONYA -> Gölhisar
 	link = { vic3 = x8F7C3D hoi4 = 12016 } # STATE_KONYA -> Burdur
-	link = { vic3 = xE090A0 hoi4 = 6533 hoi4 = 12096 } # STATE_KONYA -> Vendôme, Fethiye
+	link = { vic3 = xE090A0 hoi4 = 12096 } # STATE_KONYA -> Fethiye
 	link = { comment = "* * STATE_KASTAMONU " }
 	link = { vic3 = xF040E0 hoi4 = 890 } # STATE_KASTAMONU -> Akyazi
 	link = { vic3 = x449057 vic3 = xC1C893 hoi4 = 979 } # STATE_KASTAMONU, STATE_KASTAMONU -> Cide
@@ -5908,7 +5914,7 @@
 	link = { vic3 = x4C6398 hoi4 = 3816 hoi4 = 6748 } # STATE_DAGESTAN -> Zaragoza, Kochubey
 	link = { vic3 = xC09041 hoi4 = 7554 } # STATE_DAGESTAN -> Tsurib
 	link = { vic3 = x0BDBDA hoi4 = 442 hoi4 = 9628 } # STATE_DAGESTAN -> Tarnów, Ordzhonikidze
-	link = { vic3 = x84A24F hoi4 = 9748 hoi4 = 9645 } # STATE_DAGESTAN -> Thiers, Buynaksk
+	link = { vic3 = x84A24F hoi4 = 9645 } # STATE_DAGESTAN -> Buynaksk
 	link = { vic3 = x2C776A hoi4 = 9647 } # STATE_DAGESTAN -> Malgobek
 	link = { vic3 = x41D080 vic3 = xEE9B40 hoi4 = 11614 } # STATE_DAGESTAN, STATE_KUBAN -> Ardon
 	link = { vic3 = x5C32EA hoi4 = 11632 } # STATE_DAGESTAN -> Naurskaya
