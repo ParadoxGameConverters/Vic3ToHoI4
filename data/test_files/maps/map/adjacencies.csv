@@ -1,0 +1,10 @@
+From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
+# Hoi4-style adjacency
+101;102;sea;199;-1;-1;-1;-1;;Test strait
+# Hoi4-style blocking adjacency
+6;7;impassable;42;-1;-1;-1;-1;;Test mountain
+# Vic3-style adjacency
+xD00000;x8CC57E;sea;-1;1371;2317;1381;2323;;None
+# Invalid lines
+;;;;;
+42;;;;;

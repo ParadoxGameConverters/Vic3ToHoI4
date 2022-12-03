@@ -56,6 +56,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="external\commonItems\Color.cpp" />
     <ClCompile Include="external\commonItems\CommonFunctions.cpp" />
     <ClCompile Include="external\commonItems\ConvenientParser.cpp" />
     <ClCompile Include="external\commonItems\ConverterVersion.cpp" />
@@ -99,6 +100,14 @@
     <ClCompile Include="src\mappers\provinces\province_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapping_importer_tests.cpp" />
+    <ClCompile Include="src\maps\map_data.cpp" />
+    <ClCompile Include="src\maps\map_data_tests.cpp" />
+    <ClCompile Include="src\maps\province_definitions.cpp" />
+    <ClCompile Include="src\maps\province_definitions_tests.cpp" />
+    <ClCompile Include="src\maps\province_points.cpp" />
+    <ClCompile Include="src\maps\province_points_tests.cpp" />
+    <ClCompile Include="src\maps\utility.cpp" />
+    <ClCompile Include="src\maps\utility_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp" />
@@ -132,6 +141,7 @@
     <ClCompile Include="src\vic3_world\world\vic3_world_importer_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="external\commonItems\Color.h" />
     <ClInclude Include="external\commonItems\CommonFunctions.h" />
     <ClInclude Include="external\commonItems\ConvenientParser.h" />
     <ClInclude Include="external\commonItems\ConverterVersion.h" />
@@ -169,6 +179,11 @@
     <ClInclude Include="src\mappers\provinces\province_mapping.h" />
     <ClInclude Include="src\mappers\provinces\province_mapping_importer.h" />
     <ClInclude Include="src\mappers\provinces\province_mapping_types.h" />
+    <ClInclude Include="src\maps\map_data.h" />
+    <ClInclude Include="src\maps\point.h" />
+    <ClInclude Include="src\maps\province_definitions.h" />
+    <ClInclude Include="src\maps\province_points.h" />
+    <ClInclude Include="src\maps\utility.h" />
     <ClInclude Include="src\out_hoi4\countries\out_countries.h" />
     <ClInclude Include="src\out_hoi4\countries\out_country.h" />
     <ClInclude Include="src\out_hoi4\map\out_strategic_region.h" />
