@@ -1,10 +1,13 @@
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 
 #include <algorithm>
+#include <queue>
 #include <vector>
 
 #include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/hoi4_world/map/hoi4_province.h"
+#include "src/maps/map_data.h"
 
 
 
@@ -90,13 +93,112 @@ std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::stri
 }
 
 
-std::vector<hoi4::State> CreateStates(const std::map<int, std::set<int>>& state_id_to_hoi4_provinces)
+std::vector<std::set<int>> GetConnectedProvinceSets(std::set<int> province_numbers,
+    const maps::MapData& map_data,
+    const std::map<int, hoi4::Province>& provinces)
+{
+   std::vector<std::set<int>> connected_province_sets;
+   while (!province_numbers.empty())
+   {
+      std::set<int> connected_province_set;
+
+      std::queue<int> open_provinces;
+      open_provinces.push(*province_numbers.begin());
+      std::set<int> closed_provinces{*province_numbers.begin()};
+      while (!open_provinces.empty() && !province_numbers.empty())
+      {
+         auto current_province = open_provinces.front();
+         open_provinces.pop();
+         if (province_numbers.contains(current_province))
+         {
+            connected_province_set.insert(current_province);
+            province_numbers.erase(current_province);
+         }
+
+         for (const auto& neighbor_string: map_data.GetNeighbors(std::to_string(current_province)))
+         {
+            int neighbor = 0;
+            try
+            {
+               neighbor = std::stoi(neighbor_string);
+            }
+            catch (...)
+            {
+               continue;
+            }
+            if (!closed_provinces.contains(neighbor))
+            {
+               if (auto province = provinces.find(neighbor); province != provinces.end())
+               {
+                  if (province->second.is_land)
+                  {
+                     open_provinces.push(neighbor);
+                     closed_provinces.insert(neighbor);
+                  }
+               }
+            }
+         }
+      }
+
+      connected_province_sets.push_back(connected_province_set);
+   }
+
+   return connected_province_sets;
+}
+
+
+std::vector<std::set<int>> ConsolidateProvinceSets(std::vector<std::set<int>> connected_province_sets,
+    const std::map<int, int>& province_to_strategic_region_map)
+{
+   std::vector<std::set<int>> new_connected_province_sets;
+   while (!connected_province_sets.empty())
+   {
+      auto base_set = connected_province_sets.front();
+      connected_province_sets.erase(connected_province_sets.begin());
+
+      std::optional<int> strategic_region;
+      if (const auto& mapping = province_to_strategic_region_map.find(*base_set.begin());
+          mapping != province_to_strategic_region_map.end())
+      {
+         strategic_region = mapping->second;
+      }
+
+      for (auto current_set = connected_province_sets.begin(); current_set != connected_province_sets.end();)
+      {
+         if (const auto& mapping = province_to_strategic_region_map.find(*current_set->begin());
+             mapping != province_to_strategic_region_map.end() && strategic_region &&
+             *strategic_region == mapping->second)
+         {
+            base_set.insert(current_set->begin(), current_set->end());
+            current_set = connected_province_sets.erase(current_set);
+            continue;
+         }
+         ++current_set;
+      }
+
+      new_connected_province_sets.push_back(base_set);
+   }
+
+   return new_connected_province_sets;
+}
+
+
+std::vector<hoi4::State> CreateStates(const std::map<int, std::set<int>>& state_id_to_hoi4_provinces,
+    const maps::MapData& map_data,
+    const std::map<int, hoi4::Province>& provinces,
+    const hoi4::StrategicRegions& strategic_regions)
 {
    std::vector<hoi4::State> hoi4_states;
-   hoi4_states.reserve(state_id_to_hoi4_provinces.size());
    for (const auto& [state_id, hoi4_provinces]: state_id_to_hoi4_provinces)
    {
-      hoi4_states.emplace_back(hoi4_states.size() + 1U, hoi4_provinces);
+      const auto initial_connected_province_sets = GetConnectedProvinceSets(hoi4_provinces, map_data, provinces);
+      auto final_connected_province_sets =
+          ConsolidateProvinceSets(initial_connected_province_sets, strategic_regions.GetProvinceToStrategicRegionMap());
+
+      for (const auto& province_set: final_connected_province_sets)
+      {
+         hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U), province_set);
+      }
    }
 
    return hoi4_states;
@@ -108,11 +210,14 @@ std::vector<hoi4::State> CreateStates(const std::map<int, std::set<int>>& state_
 
 std::vector<hoi4::State> hoi4::StatesConverter::ConvertStates(const std::map<int, vic3::State>& states,
     const vic3::ProvinceDefinitions& vic3_province_definitions,
-    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings)
+    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
+    const maps::MapData& map_data,
+    const std::map<int, hoi4::Province>& provinces,
+    const hoi4::StrategicRegions& strategic_regions)
 {
    const std::map<std::string, int> vic3_province_to_state_id_map =
        MapVic3ProvincesToStates(states, vic3_province_definitions);
    const std::map<int, std::set<int>> state_id_to_hoi4_provinces =
        PlaceHoi4ProvincesInStates(vic3_province_to_state_id_map, hoi4_to_vic3_province_mappings);
-   return CreateStates(state_id_to_hoi4_provinces);
+   return CreateStates(state_id_to_hoi4_provinces, map_data, provinces, strategic_regions);
 }
