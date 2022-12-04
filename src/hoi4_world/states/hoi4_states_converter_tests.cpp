@@ -26,7 +26,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
        vic3_province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
-       {},
+       hoi4_province_definitions,
        strategic_regions);
 
    EXPECT_TRUE(hoi4_states.empty());
@@ -45,7 +45,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
        {50, {"0x000005"}},
        {60, {"0x000006"}},
    };
-   maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
 
@@ -53,12 +53,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
-       {{10, hoi4::Province{true, ""}},
-           {20, hoi4::Province{true, ""}},
-           {30, hoi4::Province{true, ""}},
-           {40, hoi4::Province{true, ""}},
-           {50, hoi4::Province{true, ""}},
-           {60, hoi4::Province{true, ""}}},
+       hoi4_province_definitions,
        strategic_regions);
 
    EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 50, 60})));
@@ -77,7 +72,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
        {50, {"0x000005"}},
        {60, {"0x000006"}},
    };
-   maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
 
@@ -85,12 +80,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
-       {{10, hoi4::Province{true, ""}},
-           {20, hoi4::Province{true, ""}},
-           {30, hoi4::Province{true, ""}},
-           {40, hoi4::Province{true, ""}},
-           {50, hoi4::Province{true, ""}},
-           {60, hoi4::Province{true, ""}}},
+       hoi4_province_definitions,
        strategic_regions);
 
    EXPECT_THAT(hoi4_states,
@@ -114,7 +104,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
-       {},
+       hoi4_province_definitions,
        strategic_regions);
 
    EXPECT_TRUE(hoi4_states.empty());
@@ -132,7 +122,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
        {50, {"0x000005"}},
        {60, {"0x000006"}},
    };
-   maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
 
@@ -144,12 +134,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
-       {{10, hoi4::Province{true, ""}},
-           {20, hoi4::Province{true, ""}},
-           {30, hoi4::Province{true, ""}},
-           {40, hoi4::Province{true, ""}},
-           {50, hoi4::Province{true, ""}},
-           {60, hoi4::Province{true, ""}}},
+       hoi4_province_definitions,
        strategic_regions);
 
    std::cout.rdbuf(cout_buffer);
@@ -171,7 +156,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
        {50, {"0x000005"}},
        {60, {}},
    };
-   maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
 
@@ -183,12 +168,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
-       {{10, hoi4::Province{true, ""}},
-           {20, hoi4::Province{true, ""}},
-           {30, hoi4::Province{true, ""}},
-           {40, hoi4::Province{true, ""}},
-           {50, hoi4::Province{true, ""}},
-           {60, hoi4::Province{true, ""}}},
+       hoi4_province_definitions,
        strategic_regions);
 
    std::cout.rdbuf(cout_buffer);
@@ -210,7 +190,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
        {50, {"0x000005"}},
        {60, {"0x000006"}},
    };
-   maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
 
@@ -222,12 +202,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
-       {{10, hoi4::Province{true, ""}},
-           {20, hoi4::Province{true, ""}},
-           {30, hoi4::Province{true, ""}},
-           {40, hoi4::Province{true, ""}},
-           {50, hoi4::Province{true, ""}},
-           {60, hoi4::Province{true, ""}}},
+       hoi4_province_definitions,
        strategic_regions);
 
    std::cout.rdbuf(cout_buffer);
@@ -255,7 +230,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
            province_definitions,
            hoi4_to_vic3_province_mappings,
            map_data,
-           {},
+           hoi4_province_definitions,
            strategic_regions);
 
    EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10}), State(2, {50}), State(3, {90})));
