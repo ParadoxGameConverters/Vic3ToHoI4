@@ -84,6 +84,8 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\hoi4_provinces.cpp" />
     <ClCompile Include="src\hoi4_world\map\hoi4_provinces_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer.cpp" />
+    <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions_importer.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions_importer_tests.cpp" />
@@ -171,6 +173,7 @@
     <ClInclude Include="src\hoi4_world\countries\hoi4_country_converter.h" />
     <ClInclude Include="src\hoi4_world\map\hoi4_province.h" />
     <ClInclude Include="src\hoi4_world\map\hoi4_provinces.h" />
+    <ClInclude Include="src\hoi4_world\map\hoi4_province_definition_importer.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_region.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_regions.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_regions_importer.h" />
