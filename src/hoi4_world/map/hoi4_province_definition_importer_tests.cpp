@@ -19,7 +19,8 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, DefinitionsCanBeImported)
 
    const maps::ProvinceDefinitions province_definitions = hoi4::ImportProvinceDefinitions(mod_filesystem);
 
-   EXPECT_THAT(province_definitions.GetLandProvinces(), testing::UnorderedElementsAre("2"));
+   EXPECT_THAT(province_definitions.GetLandProvinces(),
+       testing::UnorderedElementsAre("10", "20", "30", "40", "50", "60"));
 }
 
 
@@ -29,5 +30,5 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, SeaProvincesAreDetected)
 
    const maps::ProvinceDefinitions province_definitions = hoi4::ImportProvinceDefinitions(mod_filesystem);
 
-   EXPECT_TRUE(province_definitions.IsSeaProvince("10"));
+   EXPECT_TRUE(province_definitions.IsSeaProvince("2"));
 }

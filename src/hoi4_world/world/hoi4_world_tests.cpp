@@ -22,7 +22,7 @@ TEST(Hoi4worldWorldWorld, EmptyWorldIsEmpty)
 
    mappers::ProvinceMapper province_mapper{{}, {}};
 
-   const World world(commonItems::ModFilesystem("", {}), source_world, country_mapper, province_mapper);
+   const World world(commonItems::ModFilesystem("test_files/hoi4_world", {}), source_world, country_mapper, province_mapper);
 
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().empty());
@@ -39,7 +39,7 @@ TEST(Hoi4worldWorldWorld, CountriesAreConverted)
 
    mappers::ProvinceMapper province_mapper{{}, {}};
 
-   const World world(commonItems::ModFilesystem("", {}), source_world, country_mapper, province_mapper);
+   const World world(commonItems::ModFilesystem("test_files/hoi4_world", {}), source_world, country_mapper, province_mapper);
 
    EXPECT_THAT(world.GetCountries(),
        testing::ElementsAre(testing::Pair("TAG", Country("TAG")), testing::Pair("TWO", Country("TWO"))));
@@ -64,7 +64,7 @@ TEST(Hoi4worldWorldWorld, StatesAreConverted)
            {60, {"0x000006"}},
        }};
 
-   const World world(commonItems::ModFilesystem("", {}), source_world, country_mapper, province_mapper);
+   const World world(commonItems::ModFilesystem("test_files/hoi4_world", {}), source_world, country_mapper, province_mapper);
 
    EXPECT_THAT(world.GetStates(), testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 50, 60})));
 }
