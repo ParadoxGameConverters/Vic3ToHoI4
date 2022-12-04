@@ -45,6 +45,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/provinces/province_mappe
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/provinces/province_mapper_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/provinces/province_mapping_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/map_data.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/map_data_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/province_definitions.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/province_points.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/utility.cpp")

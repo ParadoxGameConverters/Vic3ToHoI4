@@ -357,6 +357,9 @@
     <ClCompile Include="src\hoi4_world\map\hoi4_provinces_tests.cpp">
       <Filter>src\hoi4_world\map</Filter>
     </ClCompile>
+    <ClCompile Include="src\maps\map_data_importer.cpp">
+      <Filter>src\maps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -529,6 +532,9 @@
     </ClInclude>
     <ClInclude Include="src\hoi4_world\map\hoi4_provinces.h">
       <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\map_data_importer.h">
+      <Filter>src\maps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
