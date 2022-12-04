@@ -46,7 +46,7 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
       {
          continue;
       }
-      line = line.substr(pos + 1, line.length());
+      line = line.substr(pos + 1U, line.length());
 
       // red
       pos = line.find_first_of(';');
@@ -64,7 +64,7 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
          continue;
       }
       const int green(std::stoi(line.substr(0, pos)));
-      line = line.substr(pos + 1, line.length());
+      line = line.substr(pos + 1U, line.length());
 
       // blue
       pos = line.find_first_of(';');
@@ -73,7 +73,7 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
          continue;
       }
       const int blue(std::stoi(line.substr(0, pos)));
-      line = line.substr(pos + 1, line.length());
+      line = line.substr(pos + 1U, line.length());
 
       // land or sea
       pos = line.find_first_of(';');
@@ -82,7 +82,7 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
          continue;
       }
       const std::string land_or_sea = line.substr(0, pos);
-      line = line.substr(pos + 1, line.length());
+      line = line.substr(pos + 1U, line.length());
 
       // false or true
       pos = line.find_first_of(';');
@@ -99,7 +99,7 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
          continue;
       }
       const std::string terrain = line.substr(0, pos);
-      line = line.substr(pos + 1, line.length());
+      line = line.substr(pos + 1U, line.length());
 
       auto color_int = maps::GetIntFromColor(commonItems::Color(std::array{red, green, blue}));
       color_to_province_map.emplace(color_int, province_name);
