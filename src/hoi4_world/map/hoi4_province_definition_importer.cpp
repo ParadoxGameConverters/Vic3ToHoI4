@@ -32,14 +32,14 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
       getline(definitions, line);
       if (line.empty())
       {
-          break;
+         break;
       }
 
       // number
       auto pos = line.find_first_of(';');
       if (pos == std::string::npos)
       {
-          continue;
+         continue;
       }
       auto province_name = line.substr(0, pos);
       if (province_name == "0")
@@ -61,7 +61,7 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
       pos = line.find_first_of(';');
       if (pos == std::string::npos)
       {
-          continue;
+         continue;
       }
       const int green(std::stoi(line.substr(0, pos)));
       line = line.substr(pos + 1, line.length());
@@ -70,7 +70,7 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
       pos = line.find_first_of(';');
       if (pos == std::string::npos)
       {
-          continue;
+         continue;
       }
       const int blue(std::stoi(line.substr(0, pos)));
       line = line.substr(pos + 1, line.length());
@@ -79,7 +79,7 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
       pos = line.find_first_of(';');
       if (pos == std::string::npos)
       {
-          continue;
+         continue;
       }
       const std::string land_or_sea = line.substr(0, pos);
       line = line.substr(pos + 1, line.length());
@@ -88,7 +88,7 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
       pos = line.find_first_of(';');
       if (pos == std::string::npos)
       {
-          continue;
+         continue;
       }
       line = line.substr(pos + 1, line.length());
 
@@ -96,20 +96,20 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
       pos = line.find_first_of(';');
       if (pos == std::string::npos)
       {
-          continue;
+         continue;
       }
       const std::string terrain = line.substr(0, pos);
       line = line.substr(pos + 1, line.length());
 
-      auto color_int = maps::GetIntFromColor(commonItems::Color(std::array{ red, green, blue }));
+      auto color_int = maps::GetIntFromColor(commonItems::Color(std::array{red, green, blue}));
       color_to_province_map.emplace(color_int, province_name);
       if (land_or_sea == "land")
       {
-          land_provinces.insert(province_name);
+         land_provinces.insert(province_name);
       }
       else if (land_or_sea == "sea")
       {
-          sea_provinces.insert(province_name);
+         sea_provinces.insert(province_name);
       }
       terrain_types.emplace(province_name, terrain);
    }
