@@ -1,0 +1,5 @@
+From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
+10;20;sea;199;-1;-1;-1;-1;;Test strait
+10;30;sea;199;-1;-1;-1;-1;;Test strait
+40;50;sea;199;-1;-1;-1;-1;;Test strait
+40;60;sea;199;-1;-1;-1;-1;;Test strait

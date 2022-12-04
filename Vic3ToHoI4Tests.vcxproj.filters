@@ -97,6 +97,9 @@
     <Filter Include="src\out_hoi4\map">
       <UniqueIdentifier>{b471f701-6ae2-423d-bb74-b9622917ac76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\maps">
+      <UniqueIdentifier>{5822c41f-e907-4fad-9a15-37e3a11f68b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -321,6 +324,42 @@
     <ClCompile Include="src\out_hoi4\map\out_strategic_regions_tests.cpp">
       <Filter>src\out_hoi4\map</Filter>
     </ClCompile>
+    <ClCompile Include="src\maps\map_data.cpp">
+      <Filter>src\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\map_data_tests.cpp">
+      <Filter>src\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\province_definitions.cpp">
+      <Filter>src\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\province_definitions_tests.cpp">
+      <Filter>src\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\province_points.cpp">
+      <Filter>src\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\province_points_tests.cpp">
+      <Filter>src\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\Color.cpp">
+      <Filter>external\commonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\utility.cpp">
+      <Filter>src\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\utility_tests.cpp">
+      <Filter>src\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\map_data_importer.cpp">
+      <Filter>src\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -469,6 +508,30 @@
     </ClInclude>
     <ClInclude Include="src\out_hoi4\map\out_strategic_regions.h">
       <Filter>src\out_hoi4\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\map_data.h">
+      <Filter>src\maps</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\province_definitions.h">
+      <Filter>src\maps</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\province_points.h">
+      <Filter>src\maps</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\point.h">
+      <Filter>src\maps</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\Color.h">
+      <Filter>external\commonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\utility.h">
+      <Filter>src\maps</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\map_data_importer.h">
+      <Filter>src\maps</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\hoi4_province_definition_importer.h">
+      <Filter>src\hoi4_world\map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
