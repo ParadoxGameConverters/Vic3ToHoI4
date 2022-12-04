@@ -60,6 +60,33 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
 }
 
 
+TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
+{
+   vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
+   maps::MapData map_data{{{"10", {"20", "abc30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
+   hoi4::StrategicRegions strategic_regions({}, {});
+
+   const auto hoi4_states = StatesConverter{}.ConvertStates({{1, vic3::State({1, 2, 3})}, {2, vic3::State({4, 5, 6})}},
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions);
+
+   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20}), State(2, {30}), State(3, {40, 50, 60})));
+}
+
+
 TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
 {
    vic3::ProvinceDefinitions province_definitions(
@@ -90,6 +117,33 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
            State(4, {40}),
            State(5, {50}),
            State(6, {60})));
+}
+
+
+TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
+{
+   vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
+   maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
+   hoi4::StrategicRegions strategic_regions({}, {{10, 1}, {20, 1}, {30, 1}, {40, 2}, {50, 2}, {60, 2}});
+
+   const auto hoi4_states = StatesConverter{}.ConvertStates({{1, vic3::State({1, 2, 3})}, {2, vic3::State({4, 5, 6})}},
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions);
+
+   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 50, 60})));
 }
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
