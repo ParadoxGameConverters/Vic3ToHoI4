@@ -1449,20 +1449,23 @@
 	link = { vic3 = xC42EC6 hoi4 = 9741 hoi4 = 13235 } # STATE_ALBANIA -> Vercelli, Korçë
 	link = { vic3 = xC771E0 hoi4 = 3698 hoi4 = 13255 } # STATE_ALBANIA -> Tuapse, land
 	link = { comment = "* * STATE_BOSNIA " }
-	link = { vic3 = xD0A0A0 hoi4 = 6765 hoi4 = 606 } # STATE_BOSNIA -> Krestovaya, Bijeljina
-	link = { vic3 = x1121E0 hoi4 = 6568 hoi4 = 953 } # STATE_BOSNIA -> Mannheim, Foca
-	link = { hoi4 = 3985 } # NOTHING -> Dvrar
-	link = { vic3 = x1E7362 hoi4 = 3754 hoi4 = 6614 } # STATE_BOSNIA -> Saint-Flour, Bosanska Krupa
-	link = { vic3 = x7C904A hoi4 = 6619 } # STATE_BOSNIA -> Prijedor
-	link = { vic3 = xD021A0 hoi4 = 3859 hoi4 = 6957 } # STATE_BOSNIA -> Almazán, Posušje
+	link = { vic3 = xD0A0A0 hoi4 = 606 } # STATE_BOSNIA -> Bijeljina
+	link = { vic3 = x1121E0 hoi4 = 953 } # STATE_BOSNIA -> Foca
+	link = { vic3 = x1E7362 hoi4 = 6614 } # STATE_BOSNIA -> Bosanska Krupa
+	link = { vic3 = xF06101 hoi4 = 9586 } # STATE_BOSNIA -> Bihac
+	link = { vic3 = xA40356 hoi4 = 6619 } # STATE_BOSNIA -> Prijedor
+	link = { vic3 = x7C904A hoi4 = 9588 } # STATE_BOSNIA -> Derventa
+	link = { vic3 = xD021A0 hoi4 = 6957 hoi4 = 3985 } # STATE_BOSNIA -> Posušje, Dvrar
+	link = { vic3 = xAC2DD3 hoi4 = 6942 } # STATE_BOSNIA -> Mostar
 	link = { vic3 = x3B7D2B hoi4 = 9591 } # STATE_BOSNIA -> Doboj
-	link = { vic3 = x5F13FD vic3 = xAC2DD3 hoi4 = 9894 } # STATE_BOSNIA, STATE_BOSNIA -> Capljina
-	link = { vic3 = x19AF6A vic3 = x50209F hoi4 = 11572 } # STATE_BOSNIA, STATE_BOSNIA -> Teslic
+	link = { vic3 = x5F13FD hoi4 = 9894 } # STATE_BOSNIA -> Capljina
+	link = { vic3 = x50209F hoi4 = 6983 } # STATE_BOSNIA -> Banja Luka
+	link = { vic3 = x19AF6A hoi4 = 11572 } # STATE_BOSNIA -> Teslic
 	link = { vic3 = xDA817B hoi4 = 11574 } # STATE_BOSNIA -> Brcko
 	link = { vic3 = x3F67BA hoi4 = 11741 } # STATE_BOSNIA -> Bratunac
 	link = { vic3 = x9021E0 hoi4 = 11845 } # STATE_BOSNIA -> Trebinje
-	link = { vic3 = x23D67C hoi4 = 11872 } # STATE_BOSNIA -> Zenica
-	link = { vic3 = x51A0A0 hoi4 = 931 hoi4 = 11899 } # STATE_BOSNIA -> Almendralejo, Sarajevo
+	link = { vic3 = x23D67C hoi4 = 11872 hoi4 = 9922 } # STATE_BOSNIA -> Zenica, Travnik
+	link = { vic3 = x51A0A0 hoi4 = 11899 } # STATE_BOSNIA -> Sarajevo
 	link = { comment = "* * STATE_NORTHERN_THRACE " }
 	link = { vic3 = xF021A0 hoi4 = 696 hoi4 = 878 } # STATE_NORTHERN_THRACE -> Beius, Ivaylovgrad
 	link = { vic3 = x95BCE8 hoi4 = 3937 } # STATE_NORTHERN_THRACE -> Pazardzhik
@@ -1528,7 +1531,7 @@
 	link = { comment = "* * STATE_NORTHERN_SERBIA " }
 	link = { vic3 = x40AF95 hoi4 = 630 } # STATE_NORTHERN_SERBIA -> Majdanpek
 	link = { vic3 = x4D115A hoi4 = 797 } # STATE_NORTHERN_SERBIA -> Loznica
-	link = { vic3 = xEDBA20 hoi4 = 3956 } # STATE_NORTHERN_SERBIA -> Užice
+	link = { vic3 = xEDBA20 hoi4 = 3956 hoi4 = 982 } # STATE_NORTHERN_SERBIA -> Užice, Višegrad
 	link = { vic3 = x4B1F45 hoi4 = 280 hoi4 = 3984 } # STATE_NORTHERN_SERBIA -> Kameshkovo, Cacak
 	link = { vic3 = x3B6092 hoi4 = 3711 hoi4 = 6634 } # STATE_NORTHERN_SERBIA -> Rutul, Požarevac
 	link = { vic3 = x90A061 hoi4 = 6970 } # STATE_NORTHERN_SERBIA -> Knic
