@@ -15,6 +15,7 @@ TEST(Vic3worldStateVic3stateimporter, DefaultsAreDefaulted)
    const auto state = StateImporter{}.ImportState(input);
 
    EXPECT_FALSE(state.GetOwnerNumber().has_value());
+   EXPECT_FALSE(state.GetOwnerTag().has_value());
    EXPECT_TRUE(state.GetProvinces().empty());
 }
 
@@ -44,6 +45,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
    const auto state = StateImporter{}.ImportState(input);
 
    EXPECT_EQ(state.GetOwnerNumber(), 42);
+   EXPECT_FALSE(state.GetOwnerTag().has_value());
    EXPECT_THAT(state.GetProvinces(),
        testing::UnorderedElementsAre(37330,
            37331,
@@ -79,6 +81,7 @@ TEST(Vic3worldStateVic3stateimporter, MultipleStatesCanBeInput)
    const auto state_two = state_importer.ImportState(input_two);
 
    EXPECT_EQ(state_one.GetOwnerNumber(), 42);
+   EXPECT_FALSE(state_one.GetOwnerTag().has_value());
    EXPECT_THAT(state_one.GetProvinces(),
        testing::UnorderedElementsAre(37330,
            37331,
@@ -95,6 +98,7 @@ TEST(Vic3worldStateVic3stateimporter, MultipleStatesCanBeInput)
            37348,
            37349));
    EXPECT_FALSE(state_two.GetOwnerNumber().has_value());
+   EXPECT_FALSE(state_two.GetOwnerTag().has_value());
    EXPECT_TRUE(state_two.GetProvinces().empty());
 }
 
