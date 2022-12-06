@@ -57,7 +57,7 @@ TEST(Hoi4worldWorldWorld, StatesAreConverted)
    constexpr mappers::CountryMapper country_mapper;
 
    const vic3::World source_world({},
-       {{1, vic3::State({1, 2, 3})}, {2, vic3::State({4, 5, 6})}},
+       {{1, vic3::State(std::nullopt, {1, 2, 3})}, {2, vic3::State(42, {4, 5, 6})}},
        vic3::ProvinceDefinitions({"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"}));
 
    mappers::ProvinceMapper province_mapper{{},
@@ -84,7 +84,7 @@ TEST(Hoi4worldWorldWorld, StrategicRegionsAreCreated)
    constexpr mappers::CountryMapper country_mapper;
 
    const vic3::World source_world({},
-       {{1, vic3::State({1, 2, 3})}, {2, vic3::State({4, 5, 6})}},
+       {{1, vic3::State(std::nullopt, {1, 2, 3})}, {2, vic3::State(std::nullopt, {4, 5, 6})}},
        vic3::ProvinceDefinitions({"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"}));
 
    mappers::ProvinceMapper province_mapper{{},

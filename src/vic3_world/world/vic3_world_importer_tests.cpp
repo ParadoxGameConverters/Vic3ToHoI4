@@ -9,14 +9,14 @@
 namespace vic3
 {
 
-TEST(Vic3WorldWorldVic3WorldImporter, ExceptionForMissingSave)
+TEST(Vic3worldWorldVic3worldimporter, ExceptionForMissingSave)
 {
    EXPECT_THROW(ImportWorld("test_files/vic3_world/world/missing_save.vic3", commonItems::ModFilesystem("", {}), false),
        std::runtime_error);
 }
 
 
-TEST(Vic3WorldWorldVic3WorldImporter, DefaultsAreCorrect)
+TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
 {
    const auto world = ImportWorld("test_files/vic3_world/world/empty_save.vic3",
        commonItems::ModFilesystem("test_files/vic3_world/empty_world", {}),
@@ -28,7 +28,7 @@ TEST(Vic3WorldWorldVic3WorldImporter, DefaultsAreCorrect)
 }
 
 
-TEST(Vic3WorldWorldVic3WorldImporter, WorldCanBeImported)
+TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
 {
    const auto world = ImportWorld("test_files/vic3_world/world/test_save.vic3",
        commonItems::ModFilesystem("test_files/vic3_world/world", {}),
@@ -37,7 +37,8 @@ TEST(Vic3WorldWorldVic3WorldImporter, WorldCanBeImported)
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(testing::Pair(1, Country("TAG")), testing::Pair(3, Country("TWO"))));
    EXPECT_THAT(world.GetStates(),
-       testing::UnorderedElementsAre(testing::Pair(0, State({1, 2, 3})), testing::Pair(1, State({10, 11, 12}))));
+       testing::UnorderedElementsAre(testing::Pair(0, State(std::nullopt, {1, 2, 3})),
+           testing::Pair(1, State(3, {10, 11, 12}))));
 }
 
 

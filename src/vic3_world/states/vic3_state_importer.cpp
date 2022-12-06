@@ -7,6 +7,9 @@
 
 vic3::StateImporter::StateImporter()
 {
+   state_parser_.registerKeyword("country", [this](std::istream& input_stream) {
+      owner_number_ = commonItems::getInt(input_stream);
+   });
    state_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
       provinces_parser_.parseStream(input_stream);
    });
@@ -34,7 +37,8 @@ vic3::StateImporter::StateImporter()
 
 vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
 {
+   owner_number_.reset();
    provinces_.clear();
    state_parser_.parseStream(input_stream);
-   return State(provinces_);
+   return State(owner_number_, provinces_);
 }

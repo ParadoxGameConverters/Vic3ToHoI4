@@ -25,6 +25,7 @@ class StateImporter
    commonItems::parser state_parser_;
    commonItems::parser provinces_parser_;
 
+   std::optional<int> owner_number_;
    std::set<int> provinces_;
 };
 
