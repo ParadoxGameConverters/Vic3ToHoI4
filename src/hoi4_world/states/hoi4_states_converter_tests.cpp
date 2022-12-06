@@ -50,7 +50,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
    hoi4::StrategicRegions strategic_regions({}, {});
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
-       {{1, vic3::State(std::nullopt, {1, 2, 3})}, {2, vic3::State(42, {4, 5, 6})}},
+       {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -78,7 +78,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
    hoi4::StrategicRegions strategic_regions({}, {});
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
-       {{1, vic3::State(std::nullopt, {1, 2, 3})}, {2, vic3::State(std::nullopt, {4, 5, 6})}},
+       {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -106,7 +106,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
    hoi4::StrategicRegions strategic_regions({}, {});
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
-       {{1, vic3::State(std::nullopt, {1, 2, 3})}, {2, vic3::State(std::nullopt, {4, 5, 6})}},
+       {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -140,7 +140,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
    hoi4::StrategicRegions strategic_regions({}, {{10, 1}, {20, 1}, {30, 1}, {40, 2}, {50, 2}, {60, 2}});
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
-       {{1, vic3::State(std::nullopt, {1, 2, 3})}, {2, vic3::State(std::nullopt, {4, 5, 6})}},
+       {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -158,7 +158,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
 
-   const auto hoi4_states = StatesConverter{}.ConvertStates({{1, vic3::State(std::nullopt, {})}},
+   const auto hoi4_states = StatesConverter{}.ConvertStates({{1, vic3::State({})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -189,7 +189,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
    std::cout.rdbuf(log.rdbuf());
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
-       {{1, vic3::State(std::nullopt, {1, 2, 3})}, {2, vic3::State(std::nullopt, {4, 5, 6})}},
+       {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -224,7 +224,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
    std::cout.rdbuf(log.rdbuf());
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
-       {{1, vic3::State(std::nullopt, {1, 2, 3})}, {2, vic3::State(std::nullopt, {4, 5, 6})}},
+       {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -259,7 +259,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
    std::cout.rdbuf(log.rdbuf());
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
-       {{1, vic3::State(std::nullopt, {1, 2, 3})}, {2, vic3::State(std::nullopt, {4, 6})}},
+       {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 6}})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -286,8 +286,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
 
-   const auto hoi4_states = StatesConverter{}.ConvertStates(
-       {{0, vic3::State(std::nullopt, {1})}, {5, vic3::State(std::nullopt, {5})}, {9, vic3::State(std::nullopt, {9})}},
+   const auto hoi4_states = StatesConverter{}.ConvertStates({{0, vic3::State({.provinces = {1}})},
+                                                                {5, vic3::State({.provinces = {5}})},
+                                                                {9, vic3::State({.provinces = {9}})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,

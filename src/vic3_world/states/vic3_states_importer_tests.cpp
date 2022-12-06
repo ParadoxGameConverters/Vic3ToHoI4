@@ -38,8 +38,8 @@ TEST(Vic3worldStateVic3statesimporter, StatesCanBeImported)
    const auto states = StatesImporter{}.ImportStates(input);
 
    EXPECT_THAT(states,
-       testing::UnorderedElementsAre(testing::Pair(0, State(42, {1, 2, 3})),
-           testing::Pair(1, State(144, {10, 11, 12}))));
+       testing::UnorderedElementsAre(testing::Pair(0, State({.owner_number = 42, .provinces = {1, 2, 3}})),
+           testing::Pair(1, State({.owner_number = 144, .provinces = {10, 11, 12}}))));
 }
 
 }  // namespace vic3

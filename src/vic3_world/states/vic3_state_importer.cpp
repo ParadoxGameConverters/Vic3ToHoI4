@@ -40,5 +40,5 @@ vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
    owner_number_.reset();
    provinces_.clear();
    state_parser_.parseStream(input_stream);
-   return State(owner_number_, provinces_);
+   return State({.owner_number = owner_number_, .provinces = provinces_});
 }
