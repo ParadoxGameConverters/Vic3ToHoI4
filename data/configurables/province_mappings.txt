@@ -4341,11 +4341,11 @@
 	link = { vic3 = x1CA7B0 vic3 = x6B3A42 vic3 = xB04040 hoi4 = 3732 } # STATE_MAINE, STATE_MAINE, STATE_MAINE -> Portland
 	link = { vic3 = x1E33E8 vic3 = x441473 vic3 = xF080C0 hoi4 = 4287 } # STATE_MAINE, STATE_MAINE, STATE_MAINE -> Presque Isle
 	link = { vic3 = x6AE419 vic3 = xC4CDFC hoi4 = 6719 } # STATE_MAINE, STATE_MAINE -> Rumford
-	link = { vic3 = x6E757B hoi4 = 7462 } # STATE_MAINE -> Augusta
+	link = { vic3 = x6E757B vic3 = xBD7C03 hoi4 = 7462 } # STATE_MAINE, STATE_MAINE -> Augusta
 	link = { vic3 = xFCFF52 hoi4 = 10247 } # STATE_MAINE -> land
-	link = { vic3 = x7182E8 vic3 = xFBEDD6 hoi4 = 10318 } # STATE_MAINE, STATE_MAINE -> Dover-Foxcroft
+	link = { vic3 = x7182E8 vic3 = xFBEDD6 vic3 = x990681 hoi4 = 10318 } # STATE_MAINE, STATE_MAINE, STATE_MAINE -> Dover-Foxcroft
 	link = { vic3 = xC2B02B vic3 = xF2502E hoi4 = 12202 } # STATE_MAINE, STATE_MAINE -> land
-	link = { vic3 = x262924 vic3 = xA5DE9D hoi4 = 12221 } # STATE_MAINE, STATE_MAINE -> land
+	link = { vic3 = x262924 vic3 = xA5DE9D vic3 = x5806F4 hoi4 = 12221 } # STATE_MAINE, STATE_MAINE, STATE_MAINE -> land
 	link = { vic3 = x8F9450 hoi4 = 12459 } # STATE_MAINE -> Bangor
 	link = { comment = "* * STATE_NORTH_CAROLINA " }
 	link = { vic3 = x00F040 vic3 = x758494 hoi4 = 1019 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> Wilmington
