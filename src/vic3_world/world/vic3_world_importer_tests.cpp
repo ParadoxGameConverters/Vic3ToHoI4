@@ -37,8 +37,25 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(testing::Pair(1, Country("TAG")), testing::Pair(3, Country("TWO"))));
    EXPECT_THAT(world.GetStates(),
-       testing::UnorderedElementsAre(testing::Pair(0, State(std::nullopt, {1, 2, 3})),
-           testing::Pair(1, State(3, {10, 11, 12}))));
+       testing::UnorderedElementsAre(testing::Pair(0, State({.provinces = {1, 2, 3}})),
+           testing::Pair(1, State({.owner_number = 3, .owner_tag = "TWO", .provinces = {10, 11, 12}})),
+           testing::Pair(2, State({.owner_number = 133, .provinces = {20}}))));
+}
+
+
+TEST(Vic3worldWorldVic3worldimporter, StateWithInvalidOwnerIsLogged)
+{
+    std::stringstream log;
+    std::streambuf* cout_buffer = std::cout.rdbuf();
+    std::cout.rdbuf(log.rdbuf());
+
+    const auto world = ImportWorld("test_files/vic3_world/world/test_save.vic3",
+        commonItems::ModFilesystem("test_files/vic3_world/world", {}),
+        false);
+
+    std::cout.rdbuf(cout_buffer);
+
+    EXPECT_THAT(log.str(), testing::HasSubstr(R"([WARNING] State 2 had an owner with no definition.)"));
 }
 
 

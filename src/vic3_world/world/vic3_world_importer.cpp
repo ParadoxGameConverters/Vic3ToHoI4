@@ -2,6 +2,7 @@
 
 #include <filesystem>
 #include <fstream>
+#include <ranges>
 #include <sstream>
 
 #include "external/commonItems/CommonRegexes.h"
@@ -43,6 +44,28 @@ std::istringstream MeltSave(std::string_view save_filename, bool debug)
    return std::istringstream{liquid};
 }
 
+
+void AssignOwnersToStates(const std::map<int, vic3::Country>& countries, std::map<int, vic3::State>& states)
+{
+   for (auto& [state_number, state]: states)
+   {
+      const auto& possible_owner_number = state.GetOwnerNumber();
+      if (!possible_owner_number.has_value())
+      {
+         continue;
+      }
+
+      if (const auto country_itr = countries.find(*possible_owner_number); country_itr != countries.end())
+      {
+         state.SetOwnerTag(country_itr->second.GetTag());
+      }
+      else
+      {
+          Log(LogLevel::Warning) << fmt::format("State {} had an owner with no definition.", state_number);
+      }
+   }
+}
+
 }  // namespace
 
 
@@ -82,6 +105,8 @@ vic3::World vic3::ImportWorld(std::string_view save_filename,
    Log(LogLevel::Info) << fmt::format("\t{} countries imported", countries.size());
    Log(LogLevel::Info) << fmt::format("\t{} states imported", states.size());
    Log(LogLevel::Progress) << "15 %";
+
+   AssignOwnersToStates(countries, states);
 
    return World(countries, states, province_definitions);
 }
