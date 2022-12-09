@@ -7,11 +7,11 @@
 
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/states/hoi4_state.h"
+#include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapping_types.h"
 #include "src/maps/map_data.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/states/vic3_state.h"
-#include "src/mappers/country/country_mapper.h"
 
 
 
