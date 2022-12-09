@@ -61,7 +61,7 @@ void AssignOwnersToStates(const std::map<int, vic3::Country>& countries, std::ma
       }
       else
       {
-          Log(LogLevel::Warning) << fmt::format("State {} had an owner with no definition.", state_number);
+         Log(LogLevel::Warning) << fmt::format("State {} had an owner with no definition.", state_number);
       }
    }
 }
