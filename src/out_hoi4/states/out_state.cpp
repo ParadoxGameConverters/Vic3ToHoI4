@@ -25,6 +25,13 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
    state_history << "\n";
    state_history << "\tstate_category = rural\n";
    state_history << "\n";
+   state_history << "\thistory = {\n";
+   if (const auto& owner = state.GetOwner(); owner.has_value())
+   {
+      state_history << fmt::format("\t\towner = {}\n", *owner);
+   }
+   state_history << "\t}\n";
+   state_history << "\n";
    state_history << "\tprovinces = {\n";
    state_history << "\t\t";
    for (const auto& province: state.GetProvinces())

@@ -68,6 +68,9 @@ TEST(Outhoi4StatesState, BasicsAreOutput)
        "\n"
        "\tstate_category = rural\n"
        "\n"
+       "\thistory = {\n"
+       "\t}\n"
+       "\n"
        "\tprovinces = {\n"
        "\t\t\n"
        "\t}\n"
@@ -167,6 +170,31 @@ TEST(Outhoi4StatesState, ProvincesAreOutput)
    EXPECT_THAT(state_file_stream.str(),
        testing::HasSubstr("\tprovinces = {\n"
                           "\t\t1 4 9 16 \n"
+                          "\t}\n"));
+}
+
+TEST(Outhoi4StatesState, OwnerIsOutput)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/ProvincesAreOutput");
+   commonItems::TryCreateFolder("output/ProvincesAreOutput/history");
+   commonItems::TryCreateFolder("output/ProvincesAreOutput/history/states");
+
+   const hoi4::State state_one(1, "TAG", {1, 4, 9, 16});
+
+   OutputState("ProvincesAreOutput", state_one);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/ProvincesAreOutput/history/states/1.txt"));
+   std::ifstream state_file("output/ProvincesAreOutput/history/states/1.txt");
+   ASSERT_TRUE(state_file.is_open());
+   std::stringstream state_file_stream;
+   std::copy(std::istreambuf_iterator<char>(state_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream));
+   state_file.close();
+   EXPECT_THAT(state_file_stream.str(),
+       testing::HasSubstr("\thistory = {\n"
+                          "\t\towner = TAG\n"
                           "\t}\n"));
 }
 
