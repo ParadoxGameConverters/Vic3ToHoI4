@@ -4,7 +4,9 @@
 
 
 #include <compare>
+#include <optional>
 #include <set>
+#include <string>
 
 
 
@@ -14,15 +16,22 @@ namespace hoi4
 class State
 {
   public:
-   explicit State(int id, std::set<int> provinces): id_(id), provinces_(std::move(provinces)) {}
+   explicit State(int id, std::optional<std::string> owner, std::set<int> provinces):
+       id_(id),
+       owner_(owner),
+       provinces_(std::move(provinces))
+   {
+   }
 
    [[nodiscard]] int GetId() const { return id_; }
+   [[nodiscard]] const std::optional<std::string>& GetOwner() const { return owner_; }
    [[nodiscard]] const std::set<int>& GetProvinces() const { return provinces_; }
 
    std::strong_ordering operator<=>(const State&) const = default;
 
   private:
    int id_;
+   std::optional<std::string> owner_;
    std::set<int> provinces_;
 };
 

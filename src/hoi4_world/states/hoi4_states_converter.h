@@ -11,6 +11,7 @@
 #include "src/maps/map_data.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/states/vic3_state.h"
+#include "src/mappers/country/country_mapper.h"
 
 
 
@@ -25,7 +26,8 @@ class StatesConverter
        const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
        const maps::MapData& map_data,
        const maps::ProvinceDefinitions& hoi4_province_definitions,
-       const hoi4::StrategicRegions& strategic_regions);
+       const hoi4::StrategicRegions& strategic_regions,
+       const mappers::CountryMapper& country_mapper);
 
   private:
 };

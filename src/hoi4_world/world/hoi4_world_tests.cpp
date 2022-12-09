@@ -75,7 +75,8 @@ TEST(Hoi4worldWorldWorld, StatesAreConverted)
        country_mapper,
        province_mapper);
 
-   EXPECT_THAT(world.GetStates(), testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 50, 60})));
+   EXPECT_THAT(world.GetStates(),
+       testing::ElementsAre(State(1, std::nullopt, {10, 20, 30}), State(2, std::nullopt, {40, 50, 60})));
 }
 
 

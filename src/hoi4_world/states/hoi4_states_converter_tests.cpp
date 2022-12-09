@@ -4,6 +4,7 @@
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
+#include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/mappers/provinces/province_mapping_types.h"
 #include "src/maps/map_data.h"
@@ -21,13 +22,15 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
    maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
 
    const auto hoi4_states = StatesConverter{}.ConvertStates({},
        vic3_province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
-       strategic_regions);
+       strategic_regions,
+       country_mapper);
 
    EXPECT_TRUE(hoi4_states.empty());
 }
@@ -48,6 +51,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
    maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
        {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}})}},
@@ -55,9 +59,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
-       strategic_regions);
+       strategic_regions,
+       country_mapper);
 
-   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 50, 60})));
+   EXPECT_THAT(hoi4_states,
+       testing::ElementsAre(State(1, std::nullopt, {10, 20, 30}), State(2, std::nullopt, {40, 50, 60})));
 }
 
 
@@ -76,6 +82,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
    maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{{"10", {"20", "abc30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
        {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
@@ -83,9 +90,13 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
-       strategic_regions);
+       strategic_regions,
+       country_mapper);
 
-   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20}), State(2, {30}), State(3, {40, 50, 60})));
+   EXPECT_THAT(hoi4_states,
+       testing::ElementsAre(State(1, std::nullopt, {10, 20}),
+           State(2, std::nullopt, {30}),
+           State(3, std::nullopt, {40, 50, 60})));
 }
 
 
@@ -104,6 +115,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
    maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
        {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
@@ -111,15 +123,16 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
-       strategic_regions);
+       strategic_regions,
+       country_mapper);
 
    EXPECT_THAT(hoi4_states,
-       testing::ElementsAre(State(1, {10}),
-           State(2, {20}),
-           State(3, {30}),
-           State(4, {40}),
-           State(5, {50}),
-           State(6, {60})));
+       testing::ElementsAre(State(1, std::nullopt, {10}),
+           State(2, std::nullopt, {20}),
+           State(3, std::nullopt, {30}),
+           State(4, std::nullopt, {40}),
+           State(5, std::nullopt, {50}),
+           State(6, std::nullopt, {60})));
 }
 
 
@@ -138,6 +151,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
    maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {{10, 1}, {20, 1}, {30, 1}, {40, 2}, {50, 2}, {60, 2}});
+   mappers::CountryMapper country_mapper;
 
    const auto hoi4_states = StatesConverter{}.ConvertStates(
        {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
@@ -145,9 +159,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
-       strategic_regions);
+       strategic_regions,
+       country_mapper);
 
-   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 50, 60})));
+   EXPECT_THAT(hoi4_states,
+       testing::ElementsAre(State(1, std::nullopt, {10, 20, 30}), State(2, std::nullopt, {40, 50, 60})));
 }
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
@@ -157,13 +173,15 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
    maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
 
    const auto hoi4_states = StatesConverter{}.ConvertStates({{1, vic3::State({})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
-       strategic_regions);
+       strategic_regions,
+       country_mapper);
 
    EXPECT_TRUE(hoi4_states.empty());
 }
@@ -183,6 +201,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
    maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -194,12 +213,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
-       strategic_regions);
+       strategic_regions,
+       country_mapper);
 
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No definition for province 6."));
-   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 50})));
+   EXPECT_THAT(hoi4_states,
+       testing::ElementsAre(State(1, std::nullopt, {10, 20, 30}), State(2, std::nullopt, {40, 50})));
 }
 
 
@@ -218,6 +239,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
    maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -229,12 +251,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
-       strategic_regions);
+       strategic_regions,
+       country_mapper);
 
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No mapping for hoi4 province 60."));
-   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 50})));
+   EXPECT_THAT(hoi4_states,
+       testing::ElementsAre(State(1, std::nullopt, {10, 20, 30}), State(2, std::nullopt, {40, 50})));
 }
 
 
@@ -253,6 +277,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
    maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
    maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -264,12 +289,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
-       strategic_regions);
+       strategic_regions,
+       country_mapper);
 
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_THAT(log.str(), testing::HasSubstr("Vic3 province 0x000005 was not in a state."));
-   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 60})));
+   EXPECT_THAT(hoi4_states,
+       testing::ElementsAre(State(1, std::nullopt, {10, 20, 30}), State(2, std::nullopt, {40, 60})));
 }
 
 
@@ -285,6 +312,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
    maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
 
    const auto hoi4_states = StatesConverter{}.ConvertStates({{0, vic3::State({.provinces = {1}})},
                                                                 {5, vic3::State({.provinces = {5}})},
@@ -293,9 +321,42 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
-       strategic_regions);
+       strategic_regions,
+       country_mapper);
 
-   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, {10}), State(2, {50}), State(3, {90})));
+   EXPECT_THAT(hoi4_states,
+       testing::ElementsAre(State(1, std::nullopt, {10}), State(2, std::nullopt, {50}), State(3, std::nullopt, {90})));
+}
+
+
+TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
+{
+   vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
+   maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
+   hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
+
+   const auto hoi4_states =
+       StatesConverter{}.ConvertStates({{1, vic3::State({.owner_tag = "TAG", .provinces = {1, 2, 3}})},
+                                           {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}})}},
+           province_definitions,
+           hoi4_to_vic3_province_mappings,
+           map_data,
+           hoi4_province_definitions,
+           strategic_regions,
+           country_mapper);
+
+   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, "TAG", {10, 20, 30}), State(2, "TWO", {40, 50, 60})));
 }
 
 }  // namespace hoi4

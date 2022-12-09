@@ -17,7 +17,7 @@ namespace out
 
 TEST(Outhoi4StatesState, ExceptionWhenFileNotOpened)
 {
-   const hoi4::State state_one(1, {});
+   const hoi4::State state_one(1, std::nullopt, {});
 
    EXPECT_THROW(OutputState("ExceptionWhenFileNotOpened", state_one), std::runtime_error);
 }
@@ -30,8 +30,8 @@ TEST(Outhoi4StatesState, StateFileIsNamedForId)
    commonItems::TryCreateFolder("output/StateFileIsNamedForId/history");
    commonItems::TryCreateFolder("output/StateFileIsNamedForId/history/states");
 
-   const hoi4::State state_one(1, {});
-   const hoi4::State state_two(2, {});
+   const hoi4::State state_one(1, std::nullopt, {});
+   const hoi4::State state_two(2, std::nullopt, {});
 
    OutputState("StateFileIsNamedForId", state_one);
    OutputState("StateFileIsNamedForId", state_two);
@@ -48,7 +48,7 @@ TEST(Outhoi4StatesState, BasicsAreOutput)
    commonItems::TryCreateFolder("output/BasicsAreOutput/history");
    commonItems::TryCreateFolder("output/BasicsAreOutput/history/states");
 
-   const hoi4::State state_one(1, {});
+   const hoi4::State state_one(1, std::nullopt, {});
 
    OutputState("BasicsAreOutput", state_one);
 
@@ -82,8 +82,8 @@ TEST(Outhoi4StatesState, IdIsSetById)
    commonItems::TryCreateFolder("output/IdIsSetById/history");
    commonItems::TryCreateFolder("output/IdIsSetById/history/states");
 
-   const hoi4::State state_one(1, {});
-   const hoi4::State state_two(2, {});
+   const hoi4::State state_one(1, std::nullopt, {});
+   const hoi4::State state_two(2, std::nullopt, {});
 
    OutputState("IdIsSetById", state_one);
    OutputState("IdIsSetById", state_two);
@@ -117,8 +117,8 @@ TEST(Outhoi4StatesState, NameIsSetById)
    commonItems::TryCreateFolder("output/NameIsSetById/history");
    commonItems::TryCreateFolder("output/NameIsSetById/history/states");
 
-   const hoi4::State state_one(1, {});
-   const hoi4::State state_two(2, {});
+   const hoi4::State state_one(1, std::nullopt, {});
+   const hoi4::State state_two(2, std::nullopt, {});
 
    OutputState("NameIsSetById", state_one);
    OutputState("NameIsSetById", state_two);
@@ -152,7 +152,7 @@ TEST(Outhoi4StatesState, ProvincesAreOutput)
    commonItems::TryCreateFolder("output/ProvincesAreOutput/history");
    commonItems::TryCreateFolder("output/ProvincesAreOutput/history/states");
 
-   const hoi4::State state_one(1, {1, 4, 9, 16});
+   const hoi4::State state_one(1, std::nullopt, {1, 4, 9, 16});
 
    OutputState("ProvincesAreOutput", state_one);
 
