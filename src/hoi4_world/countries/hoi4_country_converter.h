@@ -3,6 +3,8 @@
 
 
 
+#include <optional>
+
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -15,7 +17,8 @@ namespace hoi4
 class CountryConverter
 {
   public:
-   Country ConvertCountry(const vic3::Country& source_country, const mappers::CountryMapper& country_mapper);
+   std::optional<Country> ConvertCountry(const vic3::Country& source_country,
+       const mappers::CountryMapper& country_mapper);
 };
 
 }  // namespace hoi4

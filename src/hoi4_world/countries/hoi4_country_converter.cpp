@@ -2,8 +2,14 @@
 
 
 
-hoi4::Country hoi4::CountryConverter::ConvertCountry(const vic3::Country& source_country,
+std::optional<hoi4::Country> hoi4::CountryConverter::ConvertCountry(const vic3::Country& source_country,
     const mappers::CountryMapper& country_mapper)
 {
-   return Country(country_mapper.GetHoiTag(source_country.GetTag()));
+   const auto tag = country_mapper.GetHoiTag(source_country.GetTag());
+   if (tag.has_value())
+   {
+      return Country(*tag);
+   }
+
+   return std::nullopt;
 }

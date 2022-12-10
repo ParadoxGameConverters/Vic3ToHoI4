@@ -22,8 +22,10 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
    const auto country_one = country_converter.ConvertCountry(source_country_one, country_mapper);
    const auto country_two = country_converter.ConvertCountry(source_country_two, country_mapper);
 
-   EXPECT_EQ(country_one.GetTag(), "TAG");
-   EXPECT_EQ(country_two.GetTag(), "TWO");
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetTag(), "TAG");
+   ASSERT_TRUE(country_two.has_value());
+   EXPECT_EQ(country_two->GetTag(), "TWO");
 }
 
 }  // namespace hoi4
