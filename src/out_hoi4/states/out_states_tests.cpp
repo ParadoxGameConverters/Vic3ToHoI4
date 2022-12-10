@@ -21,8 +21,8 @@ TEST(Outhoi4StatesStates, StatesAreOutput)
    commonItems::TryCreateFolder("output/StatesAreOutput/history");
    commonItems::TryCreateFolder("output/StatesAreOutput/history/states");
 
-   const hoi4::State state_one(1, {});
-   const hoi4::State state_two(2, {});
+   const hoi4::State state_one(1, std::nullopt, {});
+   const hoi4::State state_two(2, std::nullopt, {});
 
    OutputStates("StatesAreOutput", {state_one, state_two});
 

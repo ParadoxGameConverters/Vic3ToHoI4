@@ -57,7 +57,8 @@ TEST(Hoi4worldWorldWorld, StatesAreConverted)
    constexpr mappers::CountryMapper country_mapper;
 
    const vic3::World source_world({},
-       {{1, vic3::State({1, 2, 3})}, {2, vic3::State({4, 5, 6})}},
+       {{1, vic3::State({.owner_tag = "TAG", .provinces = {1, 2, 3}})},
+           {2, vic3::State({.owner_number = 42, .owner_tag = "TWO", .provinces = {4, 5, 6}})}},
        vic3::ProvinceDefinitions({"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"}));
 
    mappers::ProvinceMapper province_mapper{{},
@@ -75,7 +76,7 @@ TEST(Hoi4worldWorldWorld, StatesAreConverted)
        country_mapper,
        province_mapper);
 
-   EXPECT_THAT(world.GetStates(), testing::ElementsAre(State(1, {10, 20, 30}), State(2, {40, 50, 60})));
+   EXPECT_THAT(world.GetStates(), testing::ElementsAre(State(1, "TAG", {10, 20, 30}), State(2, "TWO", {40, 50, 60})));
 }
 
 
@@ -84,7 +85,7 @@ TEST(Hoi4worldWorldWorld, StrategicRegionsAreCreated)
    constexpr mappers::CountryMapper country_mapper;
 
    const vic3::World source_world({},
-       {{1, vic3::State({1, 2, 3})}, {2, vic3::State({4, 5, 6})}},
+       {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
        vic3::ProvinceDefinitions({"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"}));
 
    mappers::ProvinceMapper province_mapper{{},

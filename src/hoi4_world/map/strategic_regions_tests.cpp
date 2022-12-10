@@ -17,7 +17,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, StrategicRegionsCanBeUpdated)
                                           {76, StrategicRegion("", 76, "", {76, 42}, {}, std::nullopt, "")}},
        {{144, 42}, {169, 42}, {76, 76}, {42, 76}});
 
-   strategic_regions.UpdateToMatchNewStates({State(1, {144}), State(2, {169, 42, 76})});
+   strategic_regions.UpdateToMatchNewStates({State(1, std::nullopt, {144}), State(2, std::nullopt, {169, 42, 76})});
 
    const auto the_strategic_regions = strategic_regions.GetStrategicRegions();
 
@@ -69,7 +69,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, ProvincesInNoRegionAreLogged)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   strategic_regions.UpdateToMatchNewStates({State(1, {212})});
+   strategic_regions.UpdateToMatchNewStates({State(1, std::nullopt, {212})});
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Province 212 had no original strategic region"));
 
@@ -85,7 +85,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, DesynchronizedInternalsCauseLogging)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   strategic_regions.UpdateToMatchNewStates({State(1, {144}), State(2, {169, 42, 76})});
+   strategic_regions.UpdateToMatchNewStates({State(1, std::nullopt, {144}), State(2, std::nullopt, {169, 42, 76})});
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Strategic region 42 was not in the list of regions."));
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Strategic region 76 was not in the list of regions."));

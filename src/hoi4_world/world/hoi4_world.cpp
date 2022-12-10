@@ -37,7 +37,8 @@ hoi4::World::World(commonItems::ModFilesystem hoi4_mod_filesystem,
        province_mapper.GetHoi4ToVic3ProvinceMappings(),
        map_data,
        province_definitions,
-       *strategic_regions_);
+       *strategic_regions_,
+       country_mapper);
 
    strategic_regions_->UpdateToMatchNewStates(states_);
 }

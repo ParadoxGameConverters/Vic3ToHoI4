@@ -12,8 +12,11 @@ std::map<std::string, hoi4::Country> hoi4::CountriesConverter::ConvertCountries(
 
    for (const auto& source_country: source_countries | std::views::values)
    {
-      Country new_country = country_converter_.ConvertCountry(source_country, country_mapper);
-      countries.emplace(new_country.GetTag(), new_country);
+      std::optional<Country> new_country = country_converter_.ConvertCountry(source_country, country_mapper);
+      if (new_country.has_value())
+      {
+         countries.emplace(new_country->GetTag(), *new_country);
+      }
    }
 
    return countries;

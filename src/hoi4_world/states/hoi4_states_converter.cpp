@@ -1,6 +1,7 @@
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 
 #include <algorithm>
+#include <optional>
 #include <queue>
 #include <vector>
 
@@ -179,14 +180,33 @@ std::vector<std::set<int>> ConsolidateProvinceSets(std::vector<std::set<int>> co
 }
 
 
-std::vector<hoi4::State> CreateStates(const std::map<int, std::set<int>>& state_id_to_hoi4_provinces,
+std::vector<hoi4::State> CreateStates(const std::map<int, vic3::State>& states,
+    const std::map<int, std::set<int>>& state_id_to_hoi4_provinces,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
-    const hoi4::StrategicRegions& strategic_regions)
+    const hoi4::StrategicRegions& strategic_regions,
+    const mappers::CountryMapper& country_mapper)
 {
    std::vector<hoi4::State> hoi4_states;
    for (const auto& [state_id, hoi4_provinces]: state_id_to_hoi4_provinces)
    {
+      const auto state_itr = states.find(state_id);
+      if (state_itr == states.end())
+      {
+         // I can't think how this would happen, so we'd better force people to the forums if it does.
+         throw std::runtime_error("Something has gone very wrong.");
+      }
+      std::optional<std::string> state_owner;
+      if (const std::optional<std::string>& source_owner = state_itr->second.GetOwnerTag(); source_owner.has_value())
+      {
+         state_owner = country_mapper.GetHoiTag(*source_owner);
+         if (!state_owner.has_value())
+         {
+            // can't happen with the stubbed-out country mapper, but might happen in the future
+            Log(LogLevel::Warning) << fmt::format("Could not get tag for owner of state {}.", state_id);
+         }
+      }
+
       const auto initial_connected_province_sets =
           GetConnectedProvinceSets(hoi4_provinces, map_data, hoi4_province_definitions);
       auto final_connected_province_sets =
@@ -194,7 +214,7 @@ std::vector<hoi4::State> CreateStates(const std::map<int, std::set<int>>& state_
 
       for (const auto& province_set: final_connected_province_sets)
       {
-         hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U), province_set);
+         hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U), state_owner, province_set);
       }
    }
 
@@ -210,11 +230,17 @@ std::vector<hoi4::State> hoi4::StatesConverter::ConvertStates(const std::map<int
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
-    const hoi4::StrategicRegions& strategic_regions)
+    const hoi4::StrategicRegions& strategic_regions,
+    const mappers::CountryMapper& country_mapper)
 {
    const std::map<std::string, int> vic3_province_to_state_id_map =
        MapVic3ProvincesToStates(states, vic3_province_definitions);
    const std::map<int, std::set<int>> state_id_to_hoi4_provinces =
        PlaceHoi4ProvincesInStates(vic3_province_to_state_id_map, hoi4_to_vic3_province_mappings);
-   return CreateStates(state_id_to_hoi4_provinces, map_data, hoi4_province_definitions, strategic_regions);
+   return CreateStates(states,
+       state_id_to_hoi4_provinces,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper);
 }
