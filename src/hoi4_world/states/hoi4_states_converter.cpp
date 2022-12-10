@@ -200,6 +200,11 @@ std::vector<hoi4::State> CreateStates(const std::map<int, vic3::State>& states,
       if (const std::optional<std::string>& source_owner = state_itr->second.GetOwnerTag(); source_owner.has_value())
       {
          state_owner = country_mapper.GetHoiTag(*source_owner);
+         if (!state_owner.has_value())
+         {
+            // can't happen with the stubbed-out country mapper, but might happen in the future
+            Log(LogLevel::Warning) << fmt::format("Could not get tag for owner of state {}.", state_id);
+         }
       }
 
       const auto initial_connected_province_sets =
