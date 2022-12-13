@@ -85,7 +85,32 @@ std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::stri
       }
       else
       {
-         // todo: handle other cases
+         std::map<int, int> state_counts;
+         for (const auto vic3_province: vic3_provinces)
+         {
+            const auto& state = vic3_province_to_state_id_map.find(vic3_province);
+            if (state == vic3_province_to_state_id_map.end())
+            {
+               Log(LogLevel::Warning) << fmt::format("Vic3 province {} was not in a state.", vic3_province);
+               continue;
+            }
+            auto [iterator, success] = state_counts.emplace(state->second, 1);
+            if (!success)
+            {
+               iterator->second++;
+            }
+         }
+
+         const std::map<int, int>::iterator max_state_count = std::max_element(state_counts.begin(),
+             state_counts.end(),
+             [](std::pair<int, int> a, std::pair<int, int> b) {
+                return a.second < b.second;
+             });
+         if (auto [itr, success] = state_id_to_hoi4_provinces.emplace(max_state_count->first, std::set{hoi4_province});
+             !success)
+         {
+            itr->second.insert(hoi4_province);
+         }
       }
    }
 
