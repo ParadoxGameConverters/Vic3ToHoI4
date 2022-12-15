@@ -52,6 +52,38 @@ bool AllVic3ProvincesAreInSameState(const std::vector<std::string>& vic3_provinc
 }
 
 
+std::optional<int> DetermineStateWithMostProvinces(const std::vector<std::string>& vic3_provinces,
+    const std::map<std::string, int>& vic3_province_to_state_id_map)
+{
+   std::map<int, int> state_counts;
+   for (const auto vic3_province: vic3_provinces)
+   {
+      const auto& state = vic3_province_to_state_id_map.find(vic3_province);
+      if (state == vic3_province_to_state_id_map.end())
+      {
+         Log(LogLevel::Warning) << fmt::format("Vic3 province {} was not in a state.", vic3_province);
+         continue;
+      }
+      auto [iterator, success] = state_counts.emplace(state->second, 1);
+      if (!success)
+      {
+         iterator->second++;
+      }
+   }
+
+   if (state_counts.empty())
+   {
+      return std::nullopt;
+   }
+
+   const std::map<int, int>::iterator max_state_count =
+       std::max_element(state_counts.begin(), state_counts.end(), [](std::pair<int, int> a, std::pair<int, int> b) {
+          return a.second < b.second;
+       });
+   return max_state_count->first;
+}
+
+
 std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::string, int>& vic3_province_to_state_id_map,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings)
 {
@@ -85,31 +117,16 @@ std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::stri
       }
       else
       {
-         std::map<int, int> state_counts;
-         for (const auto vic3_province: vic3_provinces)
+         const auto state_with_most_provinces =
+             DetermineStateWithMostProvinces(vic3_provinces, vic3_province_to_state_id_map);
+         if (state_with_most_provinces.has_value())
          {
-            const auto& state = vic3_province_to_state_id_map.find(vic3_province);
-            if (state == vic3_province_to_state_id_map.end())
+            if (auto [itr, success] =
+                    state_id_to_hoi4_provinces.emplace(*state_with_most_provinces, std::set{hoi4_province});
+                !success)
             {
-               Log(LogLevel::Warning) << fmt::format("Vic3 province {} was not in a state.", vic3_province);
-               continue;
+               itr->second.insert(hoi4_province);
             }
-            auto [iterator, success] = state_counts.emplace(state->second, 1);
-            if (!success)
-            {
-               iterator->second++;
-            }
-         }
-
-         const std::map<int, int>::iterator max_state_count = std::max_element(state_counts.begin(),
-             state_counts.end(),
-             [](std::pair<int, int> a, std::pair<int, int> b) {
-                return a.second < b.second;
-             });
-         if (auto [itr, success] = state_id_to_hoi4_provinces.emplace(max_state_count->first, std::set{hoi4_province});
-             !success)
-         {
-            itr->second.insert(hoi4_province);
          }
       }
    }
