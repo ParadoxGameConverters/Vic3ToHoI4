@@ -67,6 +67,35 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
 }
 
 
+TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
+{
+   vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001", "0x000002", "0x000003"}},
+       {20, {"0x000004", "0x000005", "0x000006"}},
+   };
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20"}, {}, {}, {}};
+   maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
+   hoi4::StrategicRegions strategic_regions({}, {});
+   mappers::CountryMapper country_mapper;
+
+   const auto hoi4_states =
+       StatesConverter{}.ConvertStates({{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2}})},
+                                           {2, vic3::State({.owner_tag = "TWO", .provinces = {3}})},
+                                           {3, vic3::State({.owner_tag = "THR", .provinces = {4}})},
+                                           {4, vic3::State({.owner_tag = "FOR", .provinces = {5, 6}})}},
+           province_definitions,
+           hoi4_to_vic3_province_mappings,
+           map_data,
+           hoi4_province_definitions,
+           strategic_regions,
+           country_mapper);
+
+   EXPECT_THAT(hoi4_states, testing::ElementsAre(State(1, "ONE", {10}), State(2, "FOR", {20})));
+}
+
+
 TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
 {
    vic3::ProvinceDefinitions province_definitions(

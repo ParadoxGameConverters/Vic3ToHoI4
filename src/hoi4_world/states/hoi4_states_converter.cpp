@@ -52,6 +52,58 @@ bool AllVic3ProvincesAreInSameState(const std::vector<std::string>& vic3_provinc
 }
 
 
+std::optional<int> GetStateIfSharedByAllProvinces(const std::vector<std::string>& vic3_provinces,
+    const std::map<std::string, int>& vic3_province_to_state_id_map)
+{
+   std::string first_vic3_province = vic3_provinces.front();
+   const auto& first_state = vic3_province_to_state_id_map.find(first_vic3_province);
+   if (first_state == vic3_province_to_state_id_map.end())
+   {
+      Log(LogLevel::Warning) << fmt::format("Vic3 province {} was not in a state.", first_vic3_province);
+      return std::nullopt;
+   }
+
+   if (AllVic3ProvincesAreInSameState(vic3_provinces, first_state->second, vic3_province_to_state_id_map))
+   {
+      return first_state->second;
+   }
+
+   return std::nullopt;
+}
+
+
+std::optional<int> DetermineStateWithMostProvinces(const std::vector<std::string>& vic3_provinces,
+    const std::map<std::string, int>& vic3_province_to_state_id_map)
+{
+   std::map<int, int> state_counts;
+   for (const auto vic3_province: vic3_provinces)
+   {
+      const auto& state = vic3_province_to_state_id_map.find(vic3_province);
+      if (state == vic3_province_to_state_id_map.end())
+      {
+         Log(LogLevel::Warning) << fmt::format("Vic3 province {} was not in a state.", vic3_province);
+         continue;
+      }
+      auto [iterator, success] = state_counts.emplace(state->second, 1);
+      if (!success)
+      {
+         iterator->second++;
+      }
+   }
+
+   if (state_counts.empty())
+   {
+      return std::nullopt;
+   }
+
+   const std::map<int, int>::iterator max_state_count =
+       std::max_element(state_counts.begin(), state_counts.end(), [](std::pair<int, int> a, std::pair<int, int> b) {
+          return a.second < b.second;
+       });
+   return max_state_count->first;
+}
+
+
 std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::string, int>& vic3_province_to_state_id_map,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings)
 {
@@ -68,24 +120,20 @@ std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::stri
          continue;
       }
 
-      std::string first_vic3_province = vic3_provinces.front();
-      const auto& first_state = vic3_province_to_state_id_map.find(first_vic3_province);
-      if (first_state == vic3_province_to_state_id_map.end())
+      std::optional<int> state_number;
+      state_number = GetStateIfSharedByAllProvinces(vic3_provinces, vic3_province_to_state_id_map);
+      // todo: prioritize states that control special vic3 provinces
+      if (!state_number.has_value())
       {
-         Log(LogLevel::Warning) << fmt::format("Vic3 province {} was not in a state.", first_vic3_province);
-         continue;
+         state_number = DetermineStateWithMostProvinces(vic3_provinces, vic3_province_to_state_id_map);
       }
-      if (AllVic3ProvincesAreInSameState(vic3_provinces, first_state->second, vic3_province_to_state_id_map))
+
+      if (state_number.has_value())
       {
-         if (auto [itr, success] = state_id_to_hoi4_provinces.emplace(first_state->second, std::set{hoi4_province});
-             !success)
+         if (auto [itr, success] = state_id_to_hoi4_provinces.emplace(*state_number, std::set{hoi4_province}); !success)
          {
             itr->second.insert(hoi4_province);
          }
-      }
-      else
-      {
-         // todo: handle other cases
       }
    }
 
