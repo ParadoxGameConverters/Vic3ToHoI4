@@ -52,7 +52,7 @@ bool AllVic3ProvincesAreInSameState(const std::vector<std::string>& vic3_provinc
 }
 
 
-std::optional<int> GetStateSharedByAllProvinces(const std::vector<std::string>& vic3_provinces,
+std::optional<int> GetStateIfSharedByAllProvinces(const std::vector<std::string>& vic3_provinces,
     const std::map<std::string, int>& vic3_province_to_state_id_map)
 {
    std::string first_vic3_province = vic3_provinces.front();
@@ -121,7 +121,7 @@ std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::stri
       }
 
       std::optional<int> state_number;
-      state_number = GetStateSharedByAllProvinces(vic3_provinces, vic3_province_to_state_id_map);
+      state_number = GetStateIfSharedByAllProvinces(vic3_provinces, vic3_province_to_state_id_map);
       // todo: prioritize states that control special vic3 provinces
       if (!state_number.has_value())
       {
