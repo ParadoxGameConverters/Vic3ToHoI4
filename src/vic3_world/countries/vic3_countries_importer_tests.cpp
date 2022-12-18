@@ -9,7 +9,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldStateVic3CountriesImporter, NoCountriesByDefault)
+TEST(Vic3WorldCountriesVic3CountriesImporter, NoCountriesByDefault)
 {
    std::stringstream input;
    const auto countries = CountriesImporter{}.ImportCountries(input);
@@ -18,7 +18,7 @@ TEST(Vic3WorldStateVic3CountriesImporter, NoCountriesByDefault)
 }
 
 
-TEST(Vic3WorldStateVic3CountriesImporter, CountriesCanBeImported)
+TEST(Vic3WorldCountriesVic3CountriesImporter, CountriesCanBeImported)
 {
    std::stringstream input;
    input << "={\n";
@@ -37,7 +37,7 @@ TEST(Vic3WorldStateVic3CountriesImporter, CountriesCanBeImported)
 }
 
 
-TEST(Vic3WorldStateVic3CountriesImporter, CountryIndexesCanBeSkipped)
+TEST(Vic3WorldCountriesVic3CountriesImporter, CountryIndexesCanBeSkipped)
 {
    std::stringstream input;
    input << "={\n";
