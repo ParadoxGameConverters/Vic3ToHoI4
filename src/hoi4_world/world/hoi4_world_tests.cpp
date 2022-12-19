@@ -48,7 +48,8 @@ TEST(Hoi4worldWorldWorld, CountriesAreConverted)
        province_mapper);
 
    EXPECT_THAT(world.GetCountries(),
-       testing::ElementsAre(testing::Pair("TAG", Country("TAG")), testing::Pair("TWO", Country("TWO"))));
+       testing::ElementsAre(testing::Pair("TAG", Country({.tag = "TAG"})),
+           testing::Pair("TWO", Country({.tag = "TWO"}))));
 }
 
 

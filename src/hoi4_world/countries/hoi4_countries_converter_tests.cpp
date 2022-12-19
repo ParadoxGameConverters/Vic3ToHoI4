@@ -23,7 +23,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        countries_converter.ConvertCountries({{1, source_country_one}, {2, source_country_two}}, country_mapper);
 
    EXPECT_THAT(countries,
-       testing::ElementsAre(testing::Pair("TAG", Country("TAG")), testing::Pair("TWO", Country("TWO"))));
+       testing::ElementsAre(testing::Pair("TAG", Country({.tag = "TAG"})),
+           testing::Pair("TWO", Country({.tag = "TWO"}))));
 }
 
 }  // namespace hoi4
