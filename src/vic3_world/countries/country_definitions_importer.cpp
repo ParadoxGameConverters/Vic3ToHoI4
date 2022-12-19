@@ -25,8 +25,14 @@ std::map<std::string, commonItems::Color> vic3::ImportCountryColorDefinitions(
 
    country_definition_parser.registerKeyword("color",
        [color_factory, &current_tag, &color_definitions](std::istream& input_stream) {
-          commonItems::Color color = color_factory.getColor(input_stream);
-          color_definitions.emplace(current_tag, color);
+          try
+          {
+             commonItems::Color color = color_factory.getColor(input_stream);
+             color_definitions.emplace(current_tag, color);
+          }
+          catch (...)
+          {
+          }
        });
    country_definition_parser.registerKeyword(commonItems::catchallRegex, commonItems::ignoreItem);
 
