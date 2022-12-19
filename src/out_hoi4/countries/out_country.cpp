@@ -18,6 +18,9 @@ void out::OutputCommonCountriesFile(std::string_view output_name, const hoi4::Co
    {
       throw std::runtime_error(fmt::format("Could not create {}", common_country_file_name));
    }
+
+   common_country << fmt::format("color {}", country.GetColor().outputRgb());
+
    common_country.close();
 }
 

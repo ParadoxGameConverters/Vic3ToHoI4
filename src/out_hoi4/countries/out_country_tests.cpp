@@ -21,8 +21,8 @@ TEST(Outhoi4CountriesCountry, CountriesFileIsCreated)
    commonItems::TryCreateFolder("output/CountriesFileIsCreated/common");
    commonItems::TryCreateFolder("output/CountriesFileIsCreated/common/countries");
 
-   const hoi4::Country country({.tag = "TAG"});
-   const hoi4::Country country_two({.tag = "TWO"});
+   const hoi4::Country country({.tag = "TAG", .color = commonItems::Color(std::array{1,2,3})});
+   const hoi4::Country country_two({.tag = "TWO", .color = commonItems::Color(std::array{2,4,6}) });
 
    OutputCommonCountriesFile("CountriesFileIsCreated", country);
    OutputCommonCountriesFile("CountriesFileIsCreated", country_two);
@@ -35,7 +35,7 @@ TEST(Outhoi4CountriesCountry, CountriesFileIsCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_stream));
    country_file.close();
-   EXPECT_EQ(country_file_stream.str(), "");
+   EXPECT_EQ(country_file_stream.str(), "color = rgb { 1 2 3 }");
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/CountriesFileIsCreated/common/countries/TWO.txt"));
    std::ifstream country_file_two("output/CountriesFileIsCreated/common/countries/TWO.txt");
@@ -45,7 +45,7 @@ TEST(Outhoi4CountriesCountry, CountriesFileIsCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_two_stream));
    country_file_two.close();
-   EXPECT_EQ(country_file_two_stream.str(), "");
+   EXPECT_EQ(country_file_two_stream.str(), "color = rgb { 2 4 6 }");
 }
 
 
