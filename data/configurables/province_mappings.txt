@@ -917,7 +917,7 @@
 	link = { vic3 = xEF6080 hoi4 = 11511 hoi4 = 6562 } # STATE_MORAVIA -> Hodonín, Prostejov
 	link = { comment = "* * STATE_STYRIA " }
 	link = { vic3 = xB06141 hoi4 = 653 } # STATE_STYRIA -> Wolfsberg
-	link = { vic3 = x8F8020 hoi4 = 3673 } # STATE_STYRIA -> Klagenfurt
+	link = { vic3 = x8F8020 hoi4 = 3673 hoi4 = 11612 } # STATE_STYRIA -> Klagenfurt, Villach
 	link = { vic3 = xB4D292 hoi4 = 6673 hoi4 = 668 } # STATE_STYRIA -> Kirchbach, Obervellach
 	link = { vic3 = x1101A0 hoi4 = 6687 } # STATE_STYRIA -> Sankt Veit
 	link = { vic3 = x59D927 hoi4 = 6691 } # STATE_STYRIA -> Liezen
@@ -1074,7 +1074,7 @@
 	link = { vic3 = xA61E6E hoi4 = 11402 hoi4 = 9375 } # STATE_BRUNSWICK -> Salzgitter, Helmstedt
 	link = { comment = "* * STATE_BAVARIA " }
 	link = { vic3 = xB08021 hoi4 = 532 } # STATE_BAVARIA -> Passau
-	link = { vic3 = x010AD7 hoi4 = 6540 hoi4 = 561 } # STATE_BAVARIA -> Ingolstadt, Schwabach
+	link = { vic3 = x010AD7 hoi4 = 561 } # STATE_BAVARIA -> Schwabach
 	link = { vic3 = x68CE1C hoi4 = 692 } # STATE_BAVARIA -> München
 	link = { vic3 = x6EA29B hoi4 = 707 } # STATE_BAVARIA -> Traunreut
 	link = { vic3 = x565185 hoi4 = 708 } # STATE_BAVARIA -> Augsburg
@@ -1096,7 +1096,8 @@
 	link = { vic3 = x648AD1 hoi4 = 9416 hoi4 = 11404 } # STATE_FRANCONIA -> Bamberg, Bayreuth
 	link = { vic3 = x51C0A0 hoi4 = 9557 } # STATE_FRANCONIA -> Würzburg
 	link = { vic3 = xA55FB1 hoi4 = 9572 hoi4 = 11417 } # STATE_FRANCONIA -> Kitzingen, Bad Kissingen
-	link = { vic3 = xD0C0A0 vic3 = x0B0DBA hoi4 = 11529 } # STATE_FRANCONIA, STATE_FRANCONIA -> Rothenburg ob der Tauber
+	link = { vic3 = x0B0DBA hoi4 = 11529 } # STATE_FRANCONIA -> Rothenburg ob der Tauber
+	link = { vic3 = xD0C0A0 hoi4 = 6540 } # STATE_FRANCONIA -> Ingolstadt
 	link = { vic3 = xD041A0 hoi4 = 11544 } # STATE_FRANCONIA -> Nürnberg
 	link = { comment = "* * STATE_SAXONY " }
 	link = { vic3 = x66FE0A hoi4 = 482 } # STATE_SAXONY -> Suhl
@@ -1453,11 +1454,11 @@
 	link = { vic3 = x7BE071 hoi4 = 914 } # STATE_ALBANIA -> Sarandë
 	link = { vic3 = xB77F92 hoi4 = 3896 } # STATE_ALBANIA -> Kukës
 	link = { vic3 = x68131C hoi4 = 9780 } # STATE_ALBANIA -> Shkodër
-	link = { vic3 = xD0A061 hoi4 = 3310 hoi4 = 9875 } # STATE_ALBANIA -> Pytalovo, Elbasan
+	link = { vic3 = xD0A061 hoi4 = 3310 hoi4 = 9875 hoi4 = 9914 } # STATE_ALBANIA -> Pytalovo, Elbasan, Tirana
 	link = { vic3 = x51A061 vic3 = x5A148F hoi4 = 11762 } # STATE_ALBANIA, STATE_ALBANIA -> Peshkopi
-	link = { vic3 = x71C0E0 hoi4 = 11767 } # STATE_ALBANIA -> Vlorë
-	link = { vic3 = xC42EC6 hoi4 = 13235 } # STATE_ALBANIA -> Korçë
-	link = { vic3 = xC771E0 hoi4 = 3698 hoi4 = 13255 } # STATE_ALBANIA -> Tuapse, land
+	link = { vic3 = x71C0E0 hoi4 = 11767 hoi4 = 3884 } # STATE_ALBANIA -> Vlorë, Fier
+	link = { vic3 = xC42EC6 hoi4 = 13235 hoi4 = 3448 hoi4 = 6900 } # STATE_ALBANIA -> Korçë, Berat, Pogradec
+	link = { vic3 = xC771E0 hoi4 = 13255 } # STATE_ALBANIA -> land
 	link = { comment = "* * STATE_BOSNIA " }
 	link = { vic3 = xD0A0A0 hoi4 = 606 } # STATE_BOSNIA -> Bijeljina
 	link = { vic3 = x1121E0 hoi4 = 953 } # STATE_BOSNIA -> Foca
@@ -1470,7 +1471,7 @@
 	link = { vic3 = x3B7D2B hoi4 = 9591 } # STATE_BOSNIA -> Doboj
 	link = { vic3 = x5F13FD hoi4 = 9894 } # STATE_BOSNIA -> Capljina
 	link = { vic3 = x50209F hoi4 = 6983 } # STATE_BOSNIA -> Banja Luka
-	link = { vic3 = x19AF6A hoi4 = 11572 } # STATE_BOSNIA -> Teslic
+	link = { vic3 = x19AF6A hoi4 = 11572 hoi4 = 6799 } # STATE_BOSNIA -> Teslic, Tuzla
 	link = { vic3 = xDA817B hoi4 = 11574 } # STATE_BOSNIA -> Brcko
 	link = { vic3 = x3F67BA hoi4 = 11741 } # STATE_BOSNIA -> Bratunac
 	link = { vic3 = x9021E0 hoi4 = 11845 } # STATE_BOSNIA -> Trebinje
@@ -1505,48 +1506,48 @@
 	link = { vic3 = xC866AF hoi4 = 9771 hoi4 = 11754 hoi4 = 965 } # STATE_BULGARIA -> Vidin, Lom, Montana
 	link = { vic3 = xF0A0A0 hoi4 = 9783 } # STATE_BULGARIA -> Varna
 	link = { comment = "* * STATE_SLOVENIA " }
-	link = { vic3 = x31E041 hoi4 = 9144 hoi4 = 596 hoi4 = 665 } # STATE_SLOVENIA -> Kashin, Velenje, Maribor
-	link = { vic3 = x44F127 hoi4 = 3631 } # STATE_SLOVENIA -> Kranj
+	link = { vic3 = x31E041 hoi4 = 596 hoi4 = 665 hoi4 = 3654 } # STATE_SLOVENIA -> Velenje, Maribor, Celje
+	link = { vic3 = x44F127 hoi4 = 3631 hoi4 = 9627 hoi4 = 9596 } # STATE_SLOVENIA -> Kranj, Ljubljana, Kamnik
 	link = { vic3 = x792B8A vic3 = xB0E040 hoi4 = 6650 } # STATE_SLOVENIA, STATE_SLOVENIA -> Novo mesto
 	link = { comment = "* * STATE_DALMATIA " }
-	link = { vic3 = xF9421B hoi4 = 3924 } # STATE_DALMATIA -> Split
-	link = { vic3 = xEFA0C0 hoi4 = 6648 hoi4 = 3974 } # STATE_DALMATIA -> Évaux-les-Bains, Knin
-	link = { vic3 = x11A0E0 hoi4 = 6889 } # STATE_DALMATIA -> Dubrovnik
-	link = { vic3 = x8C6292 vic3 = x90A0E0 hoi4 = 9821 } # STATE_MONTENEGRO, STATE_DALMATIA -> Cetinje
+	link = { vic3 = xF9421B hoi4 = 3924 hoi4 = 11816 } # STATE_DALMATIA -> Split, Metkovic
+	link = { vic3 = xEFA0C0 hoi4 = 6648 hoi4 = 3974 hoi4 = 3943 } # STATE_DALMATIA -> Évaux-les-Bains, Knin, Zara
+	link = { vic3 = x11A0E0 hoi4 = 6889 hoi4 = 3868 } # STATE_DALMATIA -> Dubrovnik, Hvar
+	link = { vic3 = x90A0E0 hoi4 = 9821 } # STATE_DALMATIA -> Cetinje
 	link = { comment = "* * STATE_CROATIA " }
 	link = { vic3 = xB39050 hoi4 = 591 } # STATE_CROATIA -> Senj
 	link = { vic3 = x6D8BC6 hoi4 = 624 } # STATE_CROATIA -> Sisak
-	link = { vic3 = x71A0C0 hoi4 = 984 } # STATE_CROATIA -> Korenica
-	link = { hoi4 = 3596 } # NOTHING -> Petrinja
-	link = { vic3 = xF021C0 hoi4 = 3601 } # STATE_CROATIA -> Ogulin
+	link = { vic3 = x70DF00 hoi4 = 3596 } # STATE_CROATIA -> Petrinja
+	link = { vic3 = xF021C0 hoi4 = 3601 hoi4 = 13252 } # STATE_CROATIA -> Ogulin, land
 	link = { vic3 = x458E4C hoi4 = 9611 } # STATE_CROATIA -> Varaždin
-	link = { vic3 = x71A041 hoi4 = 961 hoi4 = 11581 } # STATE_CROATIA -> Tomarza, Zagreb
+	link = { vic3 = x71A041 hoi4 = 961 hoi4 = 11581 hoi4 = 3592 } # STATE_CROATIA -> Tomarza, Zagreb, Karlovac
 	link = { vic3 = xB339EC hoi4 = 11901 } # STATE_CROATIA -> Gospic
+	link = { vic3 = x71A0C0 hoi4 = 984 } # STATE_CROATIA -> Korenica
 	link = { comment = "* * STATE_SLAVONIA " }
 	link = { vic3 = x13318D hoi4 = 3627 } # STATE_SLAVONIA -> Valpovo
 	link = { vic3 = x906121 hoi4 = 6647 } # STATE_SLAVONIA -> Osijek
 	link = { vic3 = x106020 hoi4 = 9595 } # STATE_SLAVONIA -> Slavonski Brod
-	link = { vic3 = x1A4DF9 hoi4 = 11577 } # STATE_SLAVONIA -> Vukovar
+	link = { vic3 = x1A4DF9 vic3 = x80CF00 hoi4 = 11577 } # STATE_SLAVONIA, STATE_SLAVONIA -> Vukovar
 	link = { vic3 = x902161 hoi4 = 11580 } # STATE_SLAVONIA -> Ruma
 	link = { vic3 = x51A021 hoi4 = 11594 } # STATE_SLAVONIA -> Bjelovar
 	link = { comment = "* * STATE_ISTRIA " }
-	link = { vic3 = x3060BF hoi4 = 3833 hoi4 = 599 } # STATE_ISTRIA -> Kavadarci, Longatico
+	link = { vic3 = x3060BF hoi4 = 599 hoi4 = 6626 } # STATE_ISTRIA -> Longatico, Trieste
 	link = { vic3 = xF0A040 hoi4 = 11564 } # STATE_ISTRIA -> Rijeka
-	link = { vic3 = x56C78A hoi4 = 11595 } # STATE_ISTRIA -> Gorizia
+	link = { vic3 = x56C78A vic3 = x108021 hoi4 = 11595 } # STATE_ISTRIA, STATE_ISTRIA -> Gorizia
 	link = { vic3 = x36B2E3 vic3 = xB061C0 hoi4 = 11735 } # STATE_ISTRIA, STATE_ISTRIA -> Pola
 	link = { comment = "* * STATE_MONTENEGRO " }
-	link = { vic3 = xA12F82 hoi4 = 937 } # STATE_MONTENEGRO -> Pljevlja
+	link = { vic3 = xA12F82 hoi4 = 937 hoi4 = 6913 } # STATE_MONTENEGRO -> Pljevlja, Bijelo Polje
 	link = { vic3 = x446E84 hoi4 = 9809 } # STATE_MONTENEGRO -> Podgorica
-	link = { vic3 = xF5F6C2 hoi4 = 11858 } # STATE_MONTENEGRO -> Nikšic
+	link = { vic3 = xF5F6C2 vic3 = x8C6292 hoi4 = 11858 } # STATE_MONTENEGRO, STATE_MONTENEGRO -> Nikšic
 	link = { comment = "* * STATE_NORTHERN_SERBIA " }
 	link = { vic3 = x40AF95 hoi4 = 630 } # STATE_NORTHERN_SERBIA -> Majdanpek
-	link = { vic3 = x4D115A hoi4 = 797 } # STATE_NORTHERN_SERBIA -> Loznica
+	link = { vic3 = x4D115A hoi4 = 797 hoi4 = 3609 } # STATE_NORTHERN_SERBIA -> Loznica, Šabac
 	link = { vic3 = xEDBA20 hoi4 = 3956 hoi4 = 982 } # STATE_NORTHERN_SERBIA -> Užice, Višegrad
-	link = { vic3 = x4B1F45 hoi4 = 280 hoi4 = 3984 } # STATE_NORTHERN_SERBIA -> Kameshkovo, Cacak
-	link = { vic3 = x3B6092 hoi4 = 3711 hoi4 = 6634 } # STATE_NORTHERN_SERBIA -> Rutul, Požarevac
-	link = { vic3 = x90A061 hoi4 = 6970 } # STATE_NORTHERN_SERBIA -> Knic
+	link = { vic3 = x4B1F45 hoi4 = 3939 } # STATE_NORTHERN_SERBIA -> Ivanjica
+	link = { vic3 = x3B6092 hoi4 = 6634 } # STATE_NORTHERN_SERBIA -> Požarevac
+	link = { vic3 = x90A061 hoi4 = 6970 hoi4 = 6998 hoi4 = 3984 } # STATE_NORTHERN_SERBIA -> Knic, Kragujevac, Cacak
 	link = { vic3 = x10A060 hoi4 = 9599 } # STATE_NORTHERN_SERBIA -> Valjevo
-	link = { vic3 = x9061A0 hoi4 = 11659 hoi4 = 9602 } # STATE_NORTHERN_SERBIA -> Debrecen, Paracin
+	link = { vic3 = x9061A0 hoi4 = 9602 } # STATE_NORTHERN_SERBIA -> Paracin
 	link = { vic3 = x74F1F4 hoi4 = 9756 } # STATE_NORTHERN_SERBIA -> Zajecar
 	link = { vic3 = xF9E78E hoi4 = 11586 } # STATE_NORTHERN_SERBIA -> Beograd
 	link = { comment = "* * STATE_SOUTHERN_SERBIA " }
@@ -1555,9 +1556,9 @@
 	link = { vic3 = x4773E6 hoi4 = 6953 } # STATE_SOUTHERN_SERBIA -> Kraljevo
 	link = { vic3 = xA5D3A9 hoi4 = 9849 } # STATE_SOUTHERN_SERBIA -> Prizren
 	link = { vic3 = xD02161 hoi4 = 9874 } # STATE_SOUTHERN_SERBIA -> Priština
-	link = { vic3 = x45E06A vic3 = xD021E0 hoi4 = 9890 } # STATE_SOUTHERN_SERBIA, STATE_SOUTHERN_SERBIA -> Prokuplje
-	link = { vic3 = x62A730 hoi4 = 504 hoi4 = 9906 } # STATE_SOUTHERN_SERBIA -> land, Kruševac
-	link = { hoi4 = 11857 } # NOTHING -> Leskovac
+	link = { vic3 = x45E06A hoi4 = 9890 } # STATE_SOUTHERN_SERBIA -> Prokuplje
+	link = { vic3 = xD021E0 vic3 = x62A730 hoi4 = 504 hoi4 = 9906 hoi4 = 11832 } # MANY-TO-MANY: STATE_SOUTHERN_SERBIA, STATE_SOUTHERN_SERBIA -> land, Kruševac, Vranje
+	link = { vic3 = xAC083C hoi4 = 11857 } # STATE_SOUTHERN_SERBIA -> Leskovac
 	link = { vic3 = x18B761 hoi4 = 11868 } # STATE_SOUTHERN_SERBIA -> Pirot
 	link = { vic3 = x334B53 hoi4 = 11887 } # STATE_SOUTHERN_SERBIA -> Niš
 	link = { comment = "* * STATE_CRETE " }
@@ -1586,12 +1587,12 @@
 	link = { vic3 = x01D0E0 hoi4 = 9916 } # STATE_THESSALIA -> Árta
 	link = { vic3 = xE6E868 hoi4 = 11786 } # STATE_THESSALIA -> Vourgaréli
 	link = { comment = "* * STATE_SKOPIA " }
-	link = { vic3 = x596DE2 hoi4 = 728 hoi4 = 867 } # STATE_SKOPIA -> land, Tetovo
+	link = { vic3 = x596DE2 hoi4 = 867 hoi4 = 833 } # STATE_SKOPIA -> Tetovo, Kicevo
 	link = { vic3 = xE0118B hoi4 = 974 } # STATE_SKOPIA -> Bitola
-	link = { vic3 = x494421 hoi4 = 11612 hoi4 = 3865 } # STATE_SKOPIA -> Villach, Prilep
-	link = { vic3 = x7CF777 hoi4 = 3882 } # STATE_SKOPIA -> Skopje
+	link = { vic3 = x494421 hoi4 = 3865 hoi4 = 3833 } # STATE_SKOPIA -> Prilep, Kavadarci
+	link = { vic3 = x7CF777 hoi4 = 3882 hoi4 = 907 } # STATE_SKOPIA -> Skopje, Kocani
 	link = { vic3 = x11E0A0 vic3 = x419E6F hoi4 = 6886 } # STATE_SKOPIA, STATE_SKOPIA -> Strumica
-	link = { hoi4 = 6540 hoi4 = 11856 } # NOTHING -> Ingolstadt, Ohrid
+	link = { vic3 = x800FE7 hoi4 = 11856 } # STATE_SKOPIA -> Ohrid
 	link = { comment = "* * STATE_MACEDONIA " }
 	link = { vic3 = x021374 hoi4 = 3936 } # STATE_MACEDONIA -> Nigríta
 	link = { vic3 = xD2619E hoi4 = 895 } # STATE_MACEDONIA -> Néa Moudaniá
@@ -1851,7 +1852,7 @@
 	link = { vic3 = x244D15 hoi4 = 3335 } # STATE_BRYANSK -> Bryansk
 	link = { hoi4 = 3345 } # NOTHING -> Mosal'sk
 	link = { vic3 = xEC68C6 hoi4 = 3358 } # STATE_BRYANSK -> Klin
-	link = { vic3 = x93157C hoi4 = 3868 hoi4 = 3390 } # STATE_BRYANSK -> Hvar, Seltso
+	link = { vic3 = x93157C hoi4 = 3390 } # STATE_BRYANSK -> Seltso
 	link = { vic3 = x0B9BAA hoi4 = 6243 } # STATE_BRYANSK -> Yel'nya
 	link = { vic3 = x1E5225 hoi4 = 117 hoi4 = 6252 } # STATE_BRYANSK -> Novgorod, Zhizdra
 	link = { vic3 = xFEFF16 hoi4 = 6305 } # STATE_BRYANSK -> Zhukovka
@@ -1883,7 +1884,7 @@
 	link = { vic3 = xC0A060 hoi4 = 3247 } # STATE_SMOLENSK -> Dukhovshchina
 	link = { vic3 = xD8537A hoi4 = 3278 } # STATE_SMOLENSK -> Shumyachi
 	link = { vic3 = x93DF31 hoi4 = 3297 } # STATE_SMOLENSK -> Kardymovo
-	link = { hoi4 = 3884 hoi4 = 3313 } # NOTHING -> Fier, Przheval'skoye
+	link = { hoi4 = 3313 } # NOTHING -> Przheval'skoye
 	link = { vic3 = x9CC46F vic3 = x9ECE91 hoi4 = 3344 } # STATE_SMOLENSK, STATE_SMOLENSK -> Bologovo
 	link = { hoi4 = 3362 } # NOTHING -> Yartsevo
 	link = { vic3 = xEA523C hoi4 = 6264 } # STATE_SMOLENSK -> Molodoy Tud
@@ -2096,7 +2097,7 @@
 	link = { vic3 = xAE2050 hoi4 = 6589 hoi4 = 3154 } # STATE_TVER -> Semenivka, Belozersk
 	link = { vic3 = xC4D5AC hoi4 = 3157 } # STATE_TVER -> land
 	link = { vic3 = x638C43 hoi4 = 11086 hoi4 = 3160 } # STATE_TVER -> land, Depo
-	link = { hoi4 = 11832 hoi4 = 3163 } # NOTHING -> Vranje, Timokhino
+	link = { hoi4 = 3163 } # NOTHING -> Timokhino
 	link = { vic3 = x64C8B4 hoi4 = 3175 } # STATE_TVER -> Vorob'yevo
 	link = { vic3 = x40FEDE hoi4 = 3220 } # STATE_TVER -> Bol'shiye Soli
 	link = { vic3 = x16DE9A hoi4 = 6017 } # STATE_TVER -> Tudozerskiy Pogost
@@ -2176,7 +2177,7 @@
 	link = { vic3 = x58331B hoi4 = 11271 hoi4 = 6596 } # STATE_LUHANSK -> Mostok, Vesele
 	link = { vic3 = xF06161 hoi4 = 6771 } # STATE_LUHANSK -> Henichens'k
 	link = { vic3 = x7020DF hoi4 = 6776 } # STATE_LUHANSK -> Yenakiyeve
-	link = { hoi4 = 11612 hoi4 = 9419 } # NOTHING -> Villach, Pokrov
+	link = { hoi4 = 9419 } # NOTHING -> Pokrov
 	link = { vic3 = x924D7E hoi4 = 9433 } # STATE_LUHANSK -> Kam'yans'ke
 	link = { vic3 = x9A1118 hoi4 = 9446 } # STATE_LUHANSK -> Krasnyi Luch
 	link = { vic3 = x7161E0 hoi4 = 9461 } # STATE_LUHANSK -> Voroshilovgrad
@@ -2188,7 +2189,7 @@
 	link = { vic3 = xB285AE hoi4 = 11405 } # STATE_LUHANSK -> Zaporizhzhia
 	link = { vic3 = x71E061 hoi4 = 11422 } # STATE_LUHANSK -> Nikopol'
 	link = { vic3 = x5BE6ED hoi4 = 11437 } # STATE_LUHANSK -> Dnipropetrovsk
-	link = { vic3 = x0EBC1D hoi4 = 13252 hoi4 = 11452 } # STATE_LUHANSK -> land, Ternivka
+	link = { hoi4 = 11452 } # NOTHING -> Ternivka
 	link = { vic3 = x76E2A3 hoi4 = 11461 } # STATE_LUHANSK -> Lozova
 	link = { vic3 = xBBC6BF hoi4 = 11487 } # STATE_LUHANSK -> Svatove
 	link = { vic3 = x3C304D hoi4 = 11513 } # STATE_LUHANSK -> Novopskov
@@ -2320,7 +2321,7 @@
 	link = { vic3 = x6579D2 hoi4 = 84 } # STATE_GALICH -> Nyuksenitsa
 	link = { hoi4 = 97 } # NOTHING -> Susanino
 	link = { vic3 = x5F949C vic3 = x625F98 vic3 = xA4FE2F vic3 = xB824A5 hoi4 = 99 } # STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH -> land
-	link = { vic3 = x826AF1 hoi4 = 3833 hoi4 = 106 } # STATE_GALICH -> Kavadarci, Shuyskoye
+	link = { vic3 = x826AF1 hoi4 = 106 } # STATE_GALICH -> Shuyskoye
 	link = { vic3 = x1AE02D vic3 = x4CDCC1 hoi4 = 108 } # STATE_GALICH, STATE_GALICH -> Urdoma
 	link = { vic3 = x012E20 hoi4 = 119 } # STATE_GALICH -> land
 	link = { vic3 = xE0C080 hoi4 = 143 } # STATE_GALICH -> Galich
@@ -2443,7 +2444,7 @@
 	link = { vic3 = xE3D4F3 hoi4 = 9516 } # STATE_ROSTOV -> Milyutinskaya
 	link = { vic3 = x1C7933 hoi4 = 9540 } # STATE_ROSTOV -> Bazki
 	link = { vic3 = x6BA92A hoi4 = 9565 } # STATE_ROSTOV -> Alekseyevo-Lozovskoye
-	link = { vic3 = x2C7795 hoi4 = 6540 hoi4 = 11400 } # STATE_ROSTOV -> Ingolstadt, Andreyevskaya
+	link = { vic3 = x2C7795 hoi4 = 11400 } # STATE_ROSTOV -> Andreyevskaya
 	link = { vic3 = x00D080 hoi4 = 13233 hoi4 = 11403 } # STATE_ROSTOV -> Amurrio, Semikarakorskaya
 	link = { vic3 = xAFC5AE hoi4 = 11418 } # STATE_ROSTOV -> Novocherkassk
 	link = { vic3 = xB3584E hoi4 = 11423 } # STATE_ROSTOV -> Kotovo
@@ -2608,7 +2609,7 @@
 	link = { comment = "* * STATE_MAZOVIA " }
 	link = { vic3 = xF8C8F6 hoi4 = 400 } # STATE_MAZOVIA -> Augustow
 	link = { vic3 = x9444C9 hoi4 = 402 } # STATE_MAZOVIA -> Siedlce
-	link = { vic3 = x009F60 hoi4 = 3833 hoi4 = 524 } # STATE_MAZOVIA -> Kavadarci, Legionowo
+	link = { vic3 = x009F60 hoi4 = 524 } # STATE_MAZOVIA -> Legionowo
 	link = { vic3 = xA3A3A9 hoi4 = 3544 } # STATE_MAZOVIA -> Warszawa
 	link = { vic3 = xDC58D0 hoi4 = 11282 hoi4 = 6567 } # STATE_MAZOVIA -> Odintsovo, Wyszków
 	link = { vic3 = x46B451 vic3 = xBF9F20 hoi4 = 9290 } # STATE_MAZOVIA, STATE_EAST_PRUSSIA -> Ciechanów
@@ -6145,7 +6146,7 @@
 	link = { vic3 = x175F74 hoi4 = 260 } # STATE_KAZAN -> Arsk
 	link = { vic3 = xD2E466 hoi4 = 270 } # STATE_KAZAN -> Semyonov
 	link = { vic3 = x67657B hoi4 = 272 } # STATE_KAZAN -> Kirovo-Chepetsk
-	link = { vic3 = x1D5A12 hoi4 = 11816 hoi4 = 282 } # STATE_KAZAN -> Metkovic, Sernur
+	link = { vic3 = x1D5A12 hoi4 = 282 } # STATE_KAZAN -> Sernur
 	link = { vic3 = x36D99A hoi4 = 292 } # STATE_KAZAN -> Nurlat
 	link = { hoi4 = 325 } # NOTHING -> Vizim'yary
 	link = { vic3 = xA06020 vic3 = xE2E1D8 hoi4 = 355 } # STATE_KAZAN, STATE_KAZAN -> Al'met'yevsk
@@ -6350,7 +6351,7 @@
 	link = { vic3 = x2D1E10 hoi4 = 268 hoi4 = 9426 } # STATE_ASTRAKHAN -> Neustrelitz, Tsagan-Nur
 	link = { vic3 = x0BABA7 hoi4 = 9440 } # STATE_ASTRAKHAN -> Nikol'skoye
 	link = { vic3 = xA79C89 hoi4 = 9442 } # STATE_ASTRAKHAN -> Poperechnyy
-	link = { vic3 = x444735 hoi4 = 9914 hoi4 = 9455 } # STATE_ASTRAKHAN -> Tirana, Bolkhuny
+	link = { vic3 = x444735 hoi4 = 9455 } # STATE_ASTRAKHAN -> Bolkhuny
 	link = { vic3 = xDC287A hoi4 = 9592 } # STATE_ASTRAKHAN -> Krasnyy Yar
 	link = { vic3 = x653DD0 hoi4 = 9720 } # STATE_ASTRAKHAN -> Utta
 	link = { vic3 = x0E39F5 vic3 = x702ECE hoi4 = 9735 } # STATE_ASTRAKHAN, STATE_ASTRAKHAN -> Nizhnevolzhskoye
