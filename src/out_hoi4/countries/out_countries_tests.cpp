@@ -24,7 +24,8 @@ TEST(Outhoi4CountriesCountry, CountriesFilesAreCreated)
    commonItems::TryCreateFolder("output/CountriesFilesAreCreated/history");
    commonItems::TryCreateFolder("output/CountriesFilesAreCreated/history/countries");
 
-   OutputCountries("CountriesFilesAreCreated", {{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}});
+   OutputCountries("CountriesFilesAreCreated",
+       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountriesFilesAreCreated/common/countries/TAG.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountriesFilesAreCreated/common/countries/TWO.txt"));
@@ -41,7 +42,8 @@ TEST(Outhoi4CountriesCountry, TagsFileIsCreated)
    commonItems::TryCreateFolder("output/TagsFileIsCreated/history");
    commonItems::TryCreateFolder("output/TagsFileIsCreated/history/countries");
 
-   OutputCountries("TagsFileIsCreated", {{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}});
+   OutputCountries("TagsFileIsCreated",
+       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
 
    std::ifstream country_file("output/TagsFileIsCreated/common/country_tags/00_countries.txt");
    ASSERT_TRUE(country_file.is_open());
@@ -58,7 +60,8 @@ TEST(Outhoi4CountriesCountry, TagsFileIsCreated)
 
 TEST(Outhoi4CountriesCountry, ExceptionIfTagsFileNotOpened)
 {
-   EXPECT_THROW(OutputCountries("/dev/null/COM", {{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}}),
+   EXPECT_THROW(OutputCountries("/dev/null/COM",
+                    {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}),
        std::runtime_error);
 }
 
@@ -73,7 +76,8 @@ TEST(Outhoi4CountriesCountry, CountryHistoryFilesAreCreated)
    commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated/history");
    commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated/history/countries");
 
-   OutputCountries("CountryHistoryFilesAreCreated", {{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}});
+   OutputCountries("CountryHistoryFilesAreCreated",
+       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TAG.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TWO.txt"));

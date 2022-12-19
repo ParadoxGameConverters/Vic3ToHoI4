@@ -128,6 +128,8 @@
     <ClCompile Include="src\out_hoi4\world\out_world.cpp" />
     <ClCompile Include="src\out_hoi4\world\out_world_tests.cpp" />
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp" />
+    <ClCompile Include="src\vic3_world\countries\country_definitions_importer.cpp" />
+    <ClCompile Include="src\vic3_world\countries\country_definitions_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer.cpp" />
@@ -198,6 +200,7 @@
     <ClInclude Include="src\out_hoi4\states\out_states.h" />
     <ClInclude Include="src\out_hoi4\world\out_world.h" />
     <ClInclude Include="src\vic3_to_hoi4_converter.h" />
+    <ClInclude Include="src\vic3_world\countries\country_definitions_importer.h" />
     <ClInclude Include="src\vic3_world\countries\vic3_countries_importer.h" />
     <ClInclude Include="src\vic3_world\countries\vic3_country.h" />
     <ClInclude Include="src\vic3_world\countries\vic3_country_importer.h" />

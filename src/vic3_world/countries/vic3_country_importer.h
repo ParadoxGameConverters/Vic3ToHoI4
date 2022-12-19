@@ -19,7 +19,8 @@ class CountryImporter
   public:
    CountryImporter();
 
-   [[nodiscard]] Country ImportCountry(std::istream& input_stream);
+   [[nodiscard]] Country ImportCountry(std::istream& input_stream,
+       const std::map<std::string, commonItems::Color>& color_definitions);
 
   private:
    commonItems::parser country_parser_;

@@ -9,16 +9,16 @@
 namespace vic3
 {
 
-TEST(Vic3WorldStateVic3CountriesImporter, NoCountriesByDefault)
+TEST(Vic3WorldCountriesVic3CountriesImporter, NoCountriesByDefault)
 {
    std::stringstream input;
-   const auto countries = CountriesImporter{}.ImportCountries(input);
+   const auto countries = CountriesImporter{{}}.ImportCountries(input);
 
    EXPECT_TRUE(countries.empty());
 }
 
 
-TEST(Vic3WorldStateVic3CountriesImporter, CountriesCanBeImported)
+TEST(Vic3WorldCountriesVic3CountriesImporter, CountriesCanBeImported)
 {
    std::stringstream input;
    input << "={\n";
@@ -30,14 +30,20 @@ TEST(Vic3WorldStateVic3CountriesImporter, CountriesCanBeImported)
    input << "\tdefinition=\"TWO\"\n";
    input << "\t}\n";
    input << "}\n";
-   const auto countries = CountriesImporter{}.ImportCountries(input);
+   const auto countries = CountriesImporter{
+       {
+           {"TAG", commonItems::Color(std::array{1, 2, 3})},
+           {"TWO", commonItems::Color(std::array{2, 4, 6})},
+       }}.ImportCountries(input);
 
    EXPECT_THAT(countries,
-       testing::UnorderedElementsAre(testing::Pair(0, Country("TAG")), testing::Pair(1, Country("TWO"))));
+       testing::UnorderedElementsAre(
+           testing::Pair(0, Country({.tag = "TAG", .color = commonItems::Color(std::array{1, 2, 3})})),
+           testing::Pair(1, Country({.tag = "TWO", .color = commonItems::Color(std::array{2, 4, 6})}))));
 }
 
 
-TEST(Vic3WorldStateVic3CountriesImporter, CountryIndexesCanBeSkipped)
+TEST(Vic3WorldCountriesVic3CountriesImporter, CountryIndexesCanBeSkipped)
 {
    std::stringstream input;
    input << "={\n";
@@ -47,9 +53,11 @@ TEST(Vic3WorldStateVic3CountriesImporter, CountryIndexesCanBeSkipped)
    input << "\tdefinition=\"TWO\"\n";
    input << "\t}\n";
    input << "}";
-   const auto countries = CountriesImporter{}.ImportCountries(input);
+   const auto countries = CountriesImporter{{{"TWO", commonItems::Color(std::array{2, 4, 6})}}}.ImportCountries(input);
 
-   EXPECT_THAT(countries, testing::UnorderedElementsAre(testing::Pair(1, Country("TWO"))));
+   EXPECT_THAT(countries,
+       testing::UnorderedElementsAre(
+           testing::Pair(1, Country({.tag = "TWO", .color = commonItems::Color(std::array{2, 4, 6})}))));
 }
 
 }  // namespace vic3

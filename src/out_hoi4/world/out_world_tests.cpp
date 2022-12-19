@@ -40,7 +40,9 @@ TEST(Outhoi4WorldOutworld, CountriesFilesAreCreated)
    CreateTestFolders("WorldCountriesFilesAreCreated");
 
    OutputWorld("WorldCountriesFilesAreCreated",
-       hoi4::World({{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}}, {}, hoi4::StrategicRegions({}, {})));
+       hoi4::World({{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
+           {},
+           hoi4::StrategicRegions({}, {})));
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCountriesFilesAreCreated/common/countries/TAG.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCountriesFilesAreCreated/common/countries/TWO.txt"));
@@ -52,7 +54,9 @@ TEST(Outhoi4WorldOutworld, TagsFileIsCreated)
    CreateTestFolders("TagsFileIsCreated");
 
    OutputWorld("TagsFileIsCreated",
-       hoi4::World({{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}}, {}, hoi4::StrategicRegions({}, {})));
+       hoi4::World({{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
+           {},
+           hoi4::StrategicRegions({}, {})));
 
    std::ifstream country_file("output/TagsFileIsCreated/common/country_tags/00_countries.txt");
    ASSERT_TRUE(country_file.is_open());
@@ -72,7 +76,9 @@ TEST(Outhoi4WorldOutworld, CountryHistoryFilesAreCreated)
    CreateTestFolders("CountryHistoryFilesAreCreated");
 
    OutputWorld("CountryHistoryFilesAreCreated",
-       hoi4::World({{"TAG", hoi4::Country("TAG")}, {"TWO", hoi4::Country("TWO")}}, {}, hoi4::StrategicRegions({}, {})));
+       hoi4::World({{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
+           {},
+           hoi4::StrategicRegions({}, {})));
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TAG.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TWO.txt"));

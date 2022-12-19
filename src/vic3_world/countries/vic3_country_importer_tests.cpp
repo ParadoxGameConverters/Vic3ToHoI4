@@ -12,7 +12,7 @@ namespace vic3
 TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
 {
    std::stringstream input;
-   const auto country = CountryImporter{}.ImportCountry(input);
+   const auto country = CountryImporter{}.ImportCountry(input, {});
 
    EXPECT_TRUE(country.GetTag().empty());
 }
@@ -24,9 +24,10 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    input << "={\n";
    input << "\tdefinition=\"TAG\"";
    input << "}";
-   const auto country = CountryImporter{}.ImportCountry(input);
+   const auto country = CountryImporter{}.ImportCountry(input, {{"TAG", commonItems::Color(std::array{1, 2, 3})}});
 
    EXPECT_EQ(country.GetTag(), "TAG");
+   EXPECT_EQ(country.GetColor(), commonItems::Color(std::array{1, 2, 3}));
 }
 
 
@@ -38,13 +39,17 @@ TEST(Vic3WorldCountriesCountryImporter, MultipleCountriesCanBeImported)
    input_one << "={\n";
    input_one << "\tdefinition=\"TAG\"";
    input_one << "}";
-   const auto country_one = country_importer.ImportCountry(input_one);
+   const auto country_one =
+       country_importer.ImportCountry(input_one, {{"TAG", commonItems::Color(std::array{1, 2, 3})}});
 
    std::stringstream input_two;
-   const auto country_two = country_importer.ImportCountry(input_two);
+   const auto country_two =
+       country_importer.ImportCountry(input_two, {{"TAG", commonItems::Color(std::array{1, 2, 3})}});
 
    EXPECT_EQ(country_one.GetTag(), "TAG");
+   EXPECT_EQ(country_one.GetColor(), commonItems::Color(std::array{1, 2, 3}));
    EXPECT_TRUE(country_two.GetTag().empty());
+   EXPECT_EQ(country_two.GetColor(), commonItems::Color(std::array{0, 0, 0}));
 }
 
 

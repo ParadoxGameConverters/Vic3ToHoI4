@@ -18,7 +18,7 @@ namespace vic3
 class CountriesImporter
 {
   public:
-   CountriesImporter();
+   CountriesImporter(const std::map<std::string, commonItems::Color>& color_definitions);
 
    [[nodiscard]] std::map<int, Country> ImportCountries(std::istream& input_stream);
 

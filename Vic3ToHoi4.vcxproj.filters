@@ -255,6 +255,9 @@
     <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer.cpp">
       <Filter>src\hoi4_world\map</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\countries\country_definitions_importer.cpp">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\out_hoi4\out_mod.h">
@@ -440,6 +443,9 @@
     </ClInclude>
     <ClInclude Include="src\hoi4_world\map\hoi4_province_definition_importer.h">
       <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\countries\country_definitions_importer.h">
+      <Filter>src\vic3_world\countries</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

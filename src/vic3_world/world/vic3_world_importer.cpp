@@ -5,12 +5,14 @@
 #include <ranges>
 #include <sstream>
 
+#include "external/commonItems/Color.h"
 #include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/Log.h"
 #include "external/commonItems/Parser.h"
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
 #include "external/rakaly/rakaly.h"
+#include "src/vic3_world/countries/country_definitions_importer.h"
 #include "src/vic3_world/countries/vic3_countries_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
@@ -87,7 +89,9 @@ vic3::World vic3::ImportWorld(std::string_view save_filename,
    std::map<int, State> states;
    StatesImporter states_importer;
    std::map<int, Country> countries;
-   CountriesImporter countries_importer;
+   const std::map<std::string, commonItems::Color> color_definitions = ImportCountryColorDefinitions(mod_filesystem);
+   ;
+   CountriesImporter countries_importer(color_definitions);
 
 
    commonItems::parser save_parser;
