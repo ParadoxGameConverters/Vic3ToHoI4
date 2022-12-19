@@ -15,9 +15,17 @@ vic3::CountryImporter::CountryImporter()
 }
 
 
-vic3::Country vic3::CountryImporter::ImportCountry(std::istream& input_stream)
+vic3::Country vic3::CountryImporter::ImportCountry(std::istream& input_stream,
+    const std::map<std::string, commonItems::Color>& color_definitions)
 {
    tag_.clear();
    country_parser_.parseStream(input_stream);
-   return Country({.tag = tag_});
+
+   commonItems::Color color;
+   if (const auto color_itr = color_definitions.find(tag_); color_itr != color_definitions.end())
+   {
+      color = color_itr->second;
+   }
+
+   return Country({.tag = tag_, .color = color});
 }
