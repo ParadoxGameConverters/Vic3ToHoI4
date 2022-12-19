@@ -21,8 +21,8 @@ TEST(Outhoi4CountriesCountry, CountriesFileIsCreated)
    commonItems::TryCreateFolder("output/CountriesFileIsCreated/common");
    commonItems::TryCreateFolder("output/CountriesFileIsCreated/common/countries");
 
-   const hoi4::Country country({.tag = "TAG", .color = commonItems::Color(std::array{1,2,3})});
-   const hoi4::Country country_two({.tag = "TWO", .color = commonItems::Color(std::array{2,4,6}) });
+   const hoi4::Country country({.tag = "TAG", .color = commonItems::Color(std::array{1, 2, 3})});
+   const hoi4::Country country_two({.tag = "TWO", .color = commonItems::Color(std::array{2, 4, 6})});
 
    OutputCommonCountriesFile("CountriesFileIsCreated", country);
    OutputCommonCountriesFile("CountriesFileIsCreated", country_two);
