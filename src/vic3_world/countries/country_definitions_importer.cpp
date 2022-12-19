@@ -36,13 +36,13 @@ std::map<std::string, commonItems::Color> vic3::ImportCountryColorDefinitions(
        });
    country_definition_parser.registerKeyword(commonItems::catchallRegex, commonItems::ignoreItem);
 
-   const auto defintion_filename =
+   const auto definition_filename =
        mod_filesystem.GetActualFileLocation("/game/common/country_definitions/00_countries.txt");
-   if (!defintion_filename.has_value())
+   if (!definition_filename.has_value())
    {
       throw std::runtime_error("/game/common/country_definitions/00_countries.txt could not be found!");
    }
-   country_definitions_parser.parseFile(*defintion_filename);
+   country_definitions_parser.parseFile(*definition_filename);
 
    return color_definitions;
 }
