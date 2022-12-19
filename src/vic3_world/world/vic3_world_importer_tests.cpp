@@ -35,7 +35,8 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
        false);
 
    EXPECT_THAT(world.GetCountries(),
-       testing::UnorderedElementsAre(testing::Pair(1, Country("TAG")), testing::Pair(3, Country("TWO"))));
+       testing::UnorderedElementsAre(testing::Pair(1, Country({.tag = "TAG"})),
+           testing::Pair(3, Country({.tag = "TWO"}))));
    EXPECT_THAT(world.GetStates(),
        testing::UnorderedElementsAre(testing::Pair(0, State({.provinces = {1, 2, 3}})),
            testing::Pair(1, State({.owner_number = 3, .owner_tag = "TWO", .provinces = {10, 11, 12}})),

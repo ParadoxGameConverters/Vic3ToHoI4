@@ -35,8 +35,8 @@ TEST(Hoi4worldWorldWorld, EmptyWorldIsEmpty)
 TEST(Hoi4worldWorldWorld, CountriesAreConverted)
 {
    constexpr mappers::CountryMapper country_mapper;
-   const vic3::Country source_country("TAG");
-   const vic3::Country source_country_two("TWO");
+   const vic3::Country source_country({.tag = "TAG"});
+   const vic3::Country source_country_two({.tag = "TWO"});
 
    const vic3::World source_world({{1, source_country}, {3, source_country_two}}, {}, vic3::ProvinceDefinitions({}));
 

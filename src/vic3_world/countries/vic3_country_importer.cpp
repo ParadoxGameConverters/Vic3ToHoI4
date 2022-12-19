@@ -19,5 +19,5 @@ vic3::Country vic3::CountryImporter::ImportCountry(std::istream& input_stream)
 {
    tag_.clear();
    country_parser_.parseStream(input_stream);
-   return Country(tag_);
+   return Country({.tag = tag_});
 }

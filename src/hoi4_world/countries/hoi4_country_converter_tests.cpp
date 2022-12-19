@@ -14,8 +14,8 @@ namespace hoi4
 TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
 {
    constexpr mappers::CountryMapper country_mapper;
-   const vic3::Country source_country_one("TAG");
-   const vic3::Country source_country_two("TWO");
+   const vic3::Country source_country_one({.tag = "TAG"});
+   const vic3::Country source_country_two({.tag = "TWO"});
 
    CountryConverter country_converter;
 

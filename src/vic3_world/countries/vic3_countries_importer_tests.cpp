@@ -33,7 +33,8 @@ TEST(Vic3WorldCountriesVic3CountriesImporter, CountriesCanBeImported)
    const auto countries = CountriesImporter{}.ImportCountries(input);
 
    EXPECT_THAT(countries,
-       testing::UnorderedElementsAre(testing::Pair(0, Country("TAG")), testing::Pair(1, Country("TWO"))));
+       testing::UnorderedElementsAre(testing::Pair(0, Country({.tag = "TAG"})),
+           testing::Pair(1, Country({.tag = "TWO"}))));
 }
 
 
@@ -49,7 +50,7 @@ TEST(Vic3WorldCountriesVic3CountriesImporter, CountryIndexesCanBeSkipped)
    input << "}";
    const auto countries = CountriesImporter{}.ImportCountries(input);
 
-   EXPECT_THAT(countries, testing::UnorderedElementsAre(testing::Pair(1, Country("TWO"))));
+   EXPECT_THAT(countries, testing::UnorderedElementsAre(testing::Pair(1, Country({.tag = "TWO"}))));
 }
 
 }  // namespace vic3
