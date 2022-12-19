@@ -1446,9 +1446,9 @@
 	link = { vic3 = xB06121 hoi4 = 657 } # STATE_DOBRUDJA -> Constanta
 	link = { vic3 = x50F5CB vic3 = xD9E021 hoi4 = 687 } # STATE_DOBRUDJA, STATE_DOBRUDJA -> Tulcea
 	link = { vic3 = x7763F3 hoi4 = 3076 } # STATE_DOBRUDJA -> Macin
-	link = { hoi4 = 9614 } # NOTHING -> Dârstor
 	link = { vic3 = x7F25CD hoi4 = 9635 } # STATE_DOBRUDJA -> Hârsova
 	link = { vic3 = x316021 vic3 = xA3D7CE hoi4 = 11597 } # STATE_DOBRUDJA, STATE_DOBRUDJA -> Dobrici
+	link = { vic3 = x940C8D hoi4 = 9614 } # STATE_DOBRUDJA -> Dârstor
 	link = { comment = "* * STATE_ALBANIA " }
 	link = { vic3 = x7BE071 hoi4 = 914 } # STATE_ALBANIA -> Sarandë
 	link = { vic3 = xB77F92 hoi4 = 3896 } # STATE_ALBANIA -> Kukës
@@ -1477,21 +1477,22 @@
 	link = { vic3 = x23D67C hoi4 = 11872 hoi4 = 9922 } # STATE_BOSNIA -> Zenica, Travnik
 	link = { vic3 = x51A0A0 hoi4 = 11899 } # STATE_BOSNIA -> Sarajevo
 	link = { comment = "* * STATE_NORTHERN_THRACE " }
-	link = { vic3 = xF021A0 hoi4 = 878 } # STATE_NORTHERN_THRACE -> Ivaylovgrad
+	link = { vic3 = xF021A0 hoi4 = 878 hoi4 = 893 hoi4 = 9862 hoi4 = 6923 } # STATE_NORTHERN_THRACE -> Ivaylovgrad, Kardzhali, Haskovo, Plovdiv
 	link = { vic3 = x95BCE8 hoi4 = 3937 } # STATE_NORTHERN_THRACE -> Pazardzhik
 	link = { vic3 = x6E7192 hoi4 = 6814 } # STATE_NORTHERN_THRACE -> Stara Zagora
-	link = { vic3 = xF0A0E0 hoi4 = 6857 } # STATE_NORTHERN_THRACE -> Gorna Dzhumaya
+	link = { vic3 = xF0A0E0 hoi4 = 6857 hoi4 = 9818 } # STATE_NORTHERN_THRACE -> Gorna Dzhumaya, Nevrokop
 	link = { vic3 = x455522 hoi4 = 6967 } # STATE_NORTHERN_THRACE -> Sliven
 	link = { vic3 = x15CDCD hoi4 = 319 hoi4 = 6982 } # STATE_NORTHERN_THRACE -> Balvi, Panagyurishte
 	link = { vic3 = x0DE556 hoi4 = 9888 } # STATE_NORTHERN_THRACE -> Yambol
 	link = { vic3 = x7121A0 hoi4 = 9902 } # STATE_NORTHERN_THRACE -> Burgas
 	link = { vic3 = xAF56D0 hoi4 = 9919 } # STATE_NORTHERN_THRACE -> Nesebar
 	link = { vic3 = xC7D441 hoi4 = 11813 } # STATE_NORTHERN_THRACE -> Smolyan
+	link = { vic3 = x9D0D6C hoi4 = 6952 } # STATE_NORTHERN_THRACE -> Karlovo
 	link = { comment = "* * STATE_BULGARIA " }
 	link = { vic3 = x64275F hoi4 = 649 } # STATE_BULGARIA -> Razgrad
 	link = { vic3 = xCDD237 hoi4 = 793 } # STATE_BULGARIA -> Vratsa
 	link = { vic3 = x52BF3E hoi4 = 6701 hoi4 = 935 } # STATE_BULGARIA -> Kizilyurt, Kyustendil
-	link = { vic3 = xC59A98 hoi4 = 961 hoi4 = 949 } # STATE_BULGARIA -> Tomarza, Sofiya
+	link = { vic3 = xC59A98 hoi4 = 949 } # STATE_BULGARIA -> Sofiya
 	link = { vic3 = x6768DB hoi4 = 3796 } # STATE_BULGARIA -> land
 	link = { vic3 = x71A0A0 hoi4 = 3819 } # STATE_BULGARIA -> Gabrovo
 	link = { vic3 = xD06121 hoi4 = 3908 } # STATE_BULGARIA -> Samokov
@@ -1501,7 +1502,7 @@
 	link = { vic3 = xB4F1D6 hoi4 = 9610 } # STATE_BULGARIA -> Svishtov
 	link = { vic3 = x2038F6 vic3 = xB55757 hoi4 = 9612 } # STATE_BULGARIA, STATE_BULGARIA -> Ruse
 	link = { vic3 = xEC96F3 hoi4 = 9769 } # STATE_BULGARIA -> Shumen
-	link = { vic3 = xC866AF hoi4 = 3332 hoi4 = 9771 } # STATE_BULGARIA -> Kirsanov, Vidin
+	link = { vic3 = xC866AF hoi4 = 9771 hoi4 = 11754 hoi4 = 965 } # STATE_BULGARIA -> Vidin, Lom, Montana
 	link = { vic3 = xF0A0A0 hoi4 = 9783 } # STATE_BULGARIA -> Varna
 	link = { comment = "* * STATE_SLOVENIA " }
 	link = { vic3 = x31E041 hoi4 = 9144 hoi4 = 596 hoi4 = 665 } # STATE_SLOVENIA -> Kashin, Velenje, Maribor
@@ -1934,7 +1935,7 @@
 	link = { hoi4 = 9371 } # NOTHING -> Slawharad
 	link = { vic3 = xBCCBB1 hoi4 = 11220 } # STATE_ORSHA -> Orsha
 	link = { vic3 = x8F8DDD hoi4 = 11583 hoi4 = 11230 } # STATE_ORSHA -> Smederevo, Krychaw
-	link = { vic3 = x361946 hoi4 = 9862 hoi4 = 11241 } # STATE_ORSHA -> Haskovo, Vitsebsk
+	link = { vic3 = x361946 hoi4 = 11241 } # STATE_ORSHA -> Vitsebsk
 	link = { vic3 = xEFAEC6 hoi4 = 11322 } # STATE_ORSHA -> Krupki
 	link = { vic3 = x0B93F6 hoi4 = 11355 } # STATE_ORSHA -> Chachersk
 	link = { vic3 = x01E061 hoi4 = 11383 } # STATE_ORSHA -> Khotsimsk
@@ -6285,7 +6286,7 @@
 	link = { vic3 = xE66DB2 hoi4 = 9258 } # STATE_TARTARIA -> Penza
 	link = { vic3 = x75FC6F hoi4 = 9276 } # STATE_TARTARIA -> Torbeyevo
 	link = { vic3 = xB3B6D0 hoi4 = 9286 } # STATE_TARTARIA -> Lunino
-	link = { vic3 = x54F76C hoi4 = 9862 hoi4 = 9324 } # STATE_TARTARIA -> Haskovo, Nizhniy Lomov
+	link = { vic3 = x54F76C hoi4 = 9324 } # STATE_TARTARIA -> Nizhniy Lomov
 	link = { vic3 = x904CD8 hoi4 = 9326 } # STATE_TARTARIA -> land
 	link = { vic3 = x006422 hoi4 = 9344 } # STATE_TARTARIA -> Krasnoslobodsk
 	link = { vic3 = x66929F hoi4 = 9352 } # STATE_TARTARIA -> Yekaterinovka
