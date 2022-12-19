@@ -8,7 +8,7 @@ std::optional<hoi4::Country> hoi4::CountryConverter::ConvertCountry(const vic3::
    const auto tag = country_mapper.GetHoiTag(source_country.GetTag());
    if (tag.has_value())
    {
-      return Country({.tag = *tag});
+      return Country({.tag = *tag, .color = source_country.GetColor()});
    }
 
    return std::nullopt;

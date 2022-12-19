@@ -35,10 +35,12 @@ TEST(Hoi4worldWorldWorld, EmptyWorldIsEmpty)
 TEST(Hoi4worldWorldWorld, CountriesAreConverted)
 {
    constexpr mappers::CountryMapper country_mapper;
-   const vic3::Country source_country({.tag = "TAG"});
-   const vic3::Country source_country_two({.tag = "TWO"});
+   const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
+   const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
 
-   const vic3::World source_world({{1, source_country}, {3, source_country_two}}, {}, vic3::ProvinceDefinitions({}));
+   const vic3::World source_world({{1, source_country_one}, {3, source_country_two}},
+       {},
+       vic3::ProvinceDefinitions({}));
 
    mappers::ProvinceMapper province_mapper{{}, {}};
 
@@ -48,8 +50,9 @@ TEST(Hoi4worldWorldWorld, CountriesAreConverted)
        province_mapper);
 
    EXPECT_THAT(world.GetCountries(),
-       testing::ElementsAre(testing::Pair("TAG", Country({.tag = "TAG"})),
-           testing::Pair("TWO", Country({.tag = "TWO"}))));
+       testing::ElementsAre(
+           testing::Pair("TAG", Country({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}})),
+           testing::Pair("TWO", Country({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}}))));
 }
 
 

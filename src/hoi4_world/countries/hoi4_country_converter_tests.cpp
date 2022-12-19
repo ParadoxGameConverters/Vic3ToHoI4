@@ -14,8 +14,8 @@ namespace hoi4
 TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
 {
    constexpr mappers::CountryMapper country_mapper;
-   const vic3::Country source_country_one({.tag = "TAG"});
-   const vic3::Country source_country_two({.tag = "TWO"});
+   const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
+   const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
 
    CountryConverter country_converter;
 
@@ -24,8 +24,10 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetTag(), "TAG");
+   EXPECT_EQ(country_one->GetColor(), commonItems::Color(std::array{1, 2, 3}));
    ASSERT_TRUE(country_two.has_value());
    EXPECT_EQ(country_two->GetTag(), "TWO");
+   EXPECT_EQ(country_two->GetColor(), commonItems::Color(std::array{2, 4, 6}));
 }
 
 }  // namespace hoi4

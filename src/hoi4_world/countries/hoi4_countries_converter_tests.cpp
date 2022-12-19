@@ -15,16 +15,17 @@ namespace hoi4
 TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 {
    constexpr mappers::CountryMapper country_mapper;
-   const vic3::Country source_country_one({.tag = "TAG"});
-   const vic3::Country source_country_two({.tag = "TWO"});
+   const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
+   const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
 
    CountriesConverter countries_converter;
    const auto countries =
        countries_converter.ConvertCountries({{1, source_country_one}, {2, source_country_two}}, country_mapper);
 
    EXPECT_THAT(countries,
-       testing::ElementsAre(testing::Pair("TAG", Country({.tag = "TAG"})),
-           testing::Pair("TWO", Country({.tag = "TWO"}))));
+       testing::ElementsAre(
+           testing::Pair("TAG", Country({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}})),
+           testing::Pair("TWO", Country({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}}))));
 }
 
 }  // namespace hoi4
