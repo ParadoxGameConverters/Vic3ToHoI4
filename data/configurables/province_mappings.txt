@@ -735,7 +735,7 @@
 	link = { vic3 = x9401C7 hoi4 = 595 hoi4 = 6792 hoi4 = 3598 } # STATE_POITOU -> Angoulême, Périgueux, Nontron
 	link = { vic3 = xD020C0 hoi4 = 625 } # STATE_POITOU -> Saint-Junien
 	link = { vic3 = x19234B hoi4 = 629 hoi4 = 11869 } # STATE_POITOU -> Poitiers, La Souterraine
-	link = { vic3 = xD0A040 hoi4 = 9597 hoi4 = 11565 } # STATE_POITOU -> Saintes, Libourne
+	link = { vic3 = xD0A040 hoi4 = 9597 hoi4 = 11565 hoi4 = 6657 } # STATE_POITOU -> Saintes, Libourne, La Rochelle
 	link = { vic3 = x5020C0 hoi4 = 11720 } # STATE_POITOU -> Bergerac
 	link = { vic3 = xE269A3 hoi4 = 11582 } # STATE_POITOU -> Ruffec
 	link = { comment = "* * STATE_ARMAGNAC " }
@@ -1438,7 +1438,7 @@
 	link = { vic3 = x2073F0 hoi4 = 849 } # STATE_EASTERN_THRACE -> Gelibolu
 	link = { vic3 = x608BB0 hoi4 = 922 } # STATE_EASTERN_THRACE -> Saray
 	link = { vic3 = x194E90 hoi4 = 3879 } # STATE_EASTERN_THRACE -> Tekirdag
-	link = { hoi4 = 3893 } # NOTHING -> Lüleburgaz
+	link = { vic3 = x115006 hoi4 = 3893 } # STATE_EASTERN_THRACE -> Lüleburgaz
 	link = { vic3 = xF02082 hoi4 = 6895 } # STATE_EASTERN_THRACE -> Çorlu
 	link = { vic3 = xF0A020 hoi4 = 9833 } # STATE_EASTERN_THRACE -> Istanbul
 	link = { vic3 = xFCF160 hoi4 = 11842 } # STATE_EASTERN_THRACE -> Edirne
@@ -1477,11 +1477,10 @@
 	link = { vic3 = x23D67C hoi4 = 11872 hoi4 = 9922 } # STATE_BOSNIA -> Zenica, Travnik
 	link = { vic3 = x51A0A0 hoi4 = 11899 } # STATE_BOSNIA -> Sarajevo
 	link = { comment = "* * STATE_NORTHERN_THRACE " }
-	link = { vic3 = xF021A0 hoi4 = 696 hoi4 = 878 } # STATE_NORTHERN_THRACE -> Beius, Ivaylovgrad
+	link = { vic3 = xF021A0 hoi4 = 878 } # STATE_NORTHERN_THRACE -> Ivaylovgrad
 	link = { vic3 = x95BCE8 hoi4 = 3937 } # STATE_NORTHERN_THRACE -> Pazardzhik
-	link = { vic3 = x6E7192 hoi4 = 473 hoi4 = 6814 } # STATE_NORTHERN_THRACE -> Alekseyevka, Stara Zagora
+	link = { vic3 = x6E7192 hoi4 = 6814 } # STATE_NORTHERN_THRACE -> Stara Zagora
 	link = { vic3 = xF0A0E0 hoi4 = 6857 } # STATE_NORTHERN_THRACE -> Gorna Dzhumaya
-	link = { hoi4 = 6952 } # NOTHING -> Karlovo
 	link = { vic3 = x455522 hoi4 = 6967 } # STATE_NORTHERN_THRACE -> Sliven
 	link = { vic3 = x15CDCD hoi4 = 319 hoi4 = 6982 } # STATE_NORTHERN_THRACE -> Balvi, Panagyurishte
 	link = { vic3 = x0DE556 hoi4 = 9888 } # STATE_NORTHERN_THRACE -> Yambol
@@ -1561,25 +1560,26 @@
 	link = { vic3 = x18B761 hoi4 = 11868 } # STATE_SOUTHERN_SERBIA -> Pirot
 	link = { vic3 = x334B53 hoi4 = 11887 } # STATE_SOUTHERN_SERBIA -> Niš
 	link = { comment = "* * STATE_CRETE " }
-	link = { vic3 = x6010A0 hoi4 = 4170 } # STATE_CRETE -> land
-	link = { vic3 = x0B9BBE hoi4 = 12058 } # STATE_CRETE -> Chaniá
+	link = { vic3 = x6010A0 hoi4 = 4170 hoi4 = 9940 } # STATE_CRETE -> land, Irákleio
+	link = { vic3 = x0B9BBE hoi4 = 12058 hoi4 = 1164 } # STATE_CRETE -> Chaniá, Réthimno
 	link = { comment = "* * STATE_WEST_AEGEAN_ISLANDS " }
 	link = { vic3 = x6090A0 hoi4 = 3401 } # STATE_WEST_AEGEAN_ISLANDS -> Ermoúpoli
 	link = { comment = "* * STATE_EAST_AEGEAN_ISLANDS " }
 	link = { vic3 = xC56452 hoi4 = 6550 } # STATE_EAST_AEGEAN_ISLANDS -> land
 	link = { vic3 = x2190A0 hoi4 = 8435 } # STATE_EAST_AEGEAN_ISLANDS -> Mytilíni
-	link = { vic3 = xE011A0 hoi4 = 10007 } # STATE_EAST_AEGEAN_ISLANDS -> Rodi
+	link = { vic3 = xE011A0 hoi4 = 10007 hoi4 = 7003 } # STATE_EAST_AEGEAN_ISLANDS -> Rodi, Coo
 	link = { comment = "* * STATE_ATTICA " }
 	link = { vic3 = xCA246A hoi4 = 976 } # STATE_ATTICA -> Lamía
-	link = { vic3 = x465F8D hoi4 = 6291 hoi4 = 1109 } # STATE_ATTICA -> Kamenka, Livadiá
-	link = { vic3 = x518791 hoi4 = 1205 } # STATE_ATTICA -> Agrínio
+	link = { vic3 = x465F8D hoi4 = 1109 } # STATE_ATTICA -> Livadiá
+	link = { vic3 = x518791 hoi4 = 1205 hoi4 = 12001 } # STATE_ATTICA -> Agrínio, Vónitsa
 	link = { vic3 = x0A645C hoi4 = 3864 } # STATE_ATTICA -> Vólos
-	link = { vic3 = x8D7F62 vic3 = xC72C61 hoi4 = 4109 } # STATE_ATTICA, STATE_ATTICA -> Athína
+	link = { vic3 = x8D7F62 hoi4 = 4109 } # STATE_ATTICA -> Athína
 	link = { vic3 = xA010A0 hoi4 = 7127 } # STATE_ATTICA -> Chalkída
 	link = { vic3 = xBF5160 hoi4 = 11895 } # STATE_ATTICA -> Karpenísi
+	link = { vic3 = xC72C61 hoi4 = 3988 } # STATE_ATTICA -> Kórinthos
 	link = { comment = "* * STATE_THESSALIA " }
-	link = { vic3 = x80D060 hoi4 = 11397 hoi4 = 863 } # STATE_THESSALIA -> Bohodukhiv, Kardítsa
-	link = { vic3 = x18C9AD hoi4 = 6657 hoi4 = 3914 } # STATE_THESSALIA -> La Rochelle, Ioánnina
+	link = { vic3 = x80D060 hoi4 = 863 hoi4 = 6930 } # STATE_THESSALIA -> Kardítsa, Tríkala
+	link = { vic3 = x18C9AD hoi4 = 3914 } # STATE_THESSALIA -> Ioánnina
 	link = { vic3 = xACFFA7 hoi4 = 3973 } # STATE_THESSALIA -> Lárisa
 	link = { vic3 = x8050E0 hoi4 = 9805 } # STATE_THESSALIA -> Igoumenítsa
 	link = { vic3 = x01D0E0 hoi4 = 9916 } # STATE_THESSALIA -> Árta
@@ -1592,26 +1592,26 @@
 	link = { vic3 = x11E0A0 vic3 = x419E6F hoi4 = 6886 } # STATE_SKOPIA, STATE_SKOPIA -> Strumica
 	link = { hoi4 = 6540 hoi4 = 11856 } # NOTHING -> Ingolstadt, Ohrid
 	link = { comment = "* * STATE_MACEDONIA " }
-	link = { vic3 = x021374 vic3 = xD2619E hoi4 = 895 } # STATE_MACEDONIA, STATE_MACEDONIA -> Néa Moudaniá
+	link = { vic3 = x021374 hoi4 = 3936 } # STATE_MACEDONIA -> Nigríta
+	link = { vic3 = xD2619E hoi4 = 895 } # STATE_MACEDONIA -> Néa Moudaniá
 	link = { vic3 = xBA7B5B hoi4 = 936 } # STATE_MACEDONIA -> Édessa
 	link = { vic3 = x75CAD1 hoi4 = 966 } # STATE_MACEDONIA -> Véroia
-	link = { vic3 = x70A0E0 hoi4 = 6224 hoi4 = 3526 } # STATE_MACEDONIA -> Urzhum, Kilkís
+	link = { vic3 = x70A0E0 hoi4 = 3526 hoi4 = 10163 } # STATE_MACEDONIA -> Kilkís, Alexándreia
 	link = { vic3 = x506020 hoi4 = 3844 } # STATE_MACEDONIA -> Kateríni
-	link = { vic3 = x01D060 hoi4 = 3980 } # STATE_MACEDONIA -> Kozáni
+	link = { vic3 = x01D060 hoi4 = 3980 hoi4 = 841 } # STATE_MACEDONIA -> Kozáni, Kastoriá
 	link = { vic3 = x90E0A0 hoi4 = 9837 } # STATE_MACEDONIA -> Flórina
 	link = { vic3 = xE48F39 hoi4 = 11818 } # STATE_MACEDONIA -> Thessaloníki
 	link = { comment = "* * STATE_WESTERN_THRACE " }
 	link = { vic3 = xB2249C hoi4 = 6990 } # STATE_WESTERN_THRACE -> Sérrai
-	link = { vic3 = x6181D2 hoi4 = 9791 } # STATE_WESTERN_THRACE -> Dráma
-	link = { vic3 = x702020 vic3 = xEDECFB hoi4 = 9930 } # STATE_WESTERN_THRACE, STATE_WESTERN_THRACE -> land
-	link = { vic3 = xBE51B7 hoi4 = 11774 } # STATE_WESTERN_THRACE -> Komotiní
+	link = { vic3 = x702020 vic3 = xEDECFB hoi4 = 9930 hoi4 = 9791 } # MANY-TO-MANY: STATE_WESTERN_THRACE, STATE_WESTERN_THRACE -> land, Dráma
+	link = { vic3 = xBE51B7 vic3 = x6181D2 hoi4 = 11774 } # STATE_WESTERN_THRACE, STATE_WESTERN_THRACE -> Komotiní
 	link = { vic3 = x0261AB vic3 = xF02020 hoi4 = 11905 } # STATE_WESTERN_THRACE, STATE_WESTERN_THRACE -> Alexandroúpolis
 	link = { comment = "* * STATE_IONIAN_ISLANDS " }
 	link = { vic3 = x405060 hoi4 = 1106 } # STATE_IONIAN_ISLANDS -> land
 	link = { vic3 = x4B79CA hoi4 = 10203 } # STATE_IONIAN_ISLANDS -> Kérkyra
 	link = { comment = "* * STATE_PELOPONNESE " }
-	link = { vic3 = xC0D060 hoi4 = 6365 hoi4 = 1173 } # STATE_PELOPONNESE -> Kozel'sk', Filiatrá
-	link = { vic3 = x0055D7 hoi4 = 10038 hoi4 = 4178 } # STATE_PELOPONNESE -> Didim, Leonídion
+	link = { vic3 = xC0D060 hoi4 = 1173 hoi4 = 11965 } # STATE_PELOPONNESE -> Filiatrá, Kalamáta
+	link = { vic3 = x0055D7 hoi4 = 4178 hoi4 = 4078 } # STATE_PELOPONNESE -> Leonídion, land
 	link = { vic3 = xBA3449 hoi4 = 4193 } # STATE_PELOPONNESE -> Pırgos
 	link = { vic3 = x43409D hoi4 = 7096 } # STATE_PELOPONNESE -> Árgos
 	link = { vic3 = x61E57E hoi4 = 7211 } # STATE_PELOPONNESE -> Pátra
@@ -1658,7 +1658,7 @@
 	link = { hoi4 = 269 } # NOTHING -> Shilovo
 	link = { vic3 = x0F54C0 hoi4 = 9407 hoi4 = 283 } # STATE_MOSCOW -> Sarov, Spas-Klepiki
 	link = { vic3 = xE0A021 hoi4 = 301 } # STATE_MOSCOW -> Balashikha
-	link = { vic3 = x11B251 hoi4 = 6657 hoi4 = 314 } # STATE_MOSCOW -> La Rochelle, Ukholovo
+	link = { vic3 = x11B251 hoi4 = 314 } # STATE_MOSCOW -> Ukholovo
 	link = { hoi4 = 346 } # NOTHING -> Komsomol'sk
 	link = { hoi4 = 350 } # NOTHING -> Lukhovitsy
 	link = { vic3 = xB0A39B hoi4 = 357 } # STATE_MOSCOW -> Kovrov
@@ -2723,7 +2723,7 @@
 	link = { vic3 = x53932F hoi4 = 6460 } # STATE_EAST_GALICIA -> Dolina
 	link = { vic3 = x8F9F20 hoi4 = 6483 } # STATE_EAST_GALICIA -> Drohobycz
 	link = { vic3 = x69BAC7 vic3 = xD0E061 hoi4 = 6571 } # STATE_EAST_SLOVAKIA, STATE_EAST_GALICIA -> Chust
-	link = { vic3 = x489C42 hoi4 = 9940 hoi4 = 9425 } # STATE_EAST_GALICIA -> Irákleio, Nadwórna
+	link = { vic3 = x489C42 hoi4 = 9425 } # STATE_EAST_GALICIA -> Nadwórna
 	link = { vic3 = xCDD223 hoi4 = 9454 } # STATE_EAST_GALICIA -> Zloczów
 	link = { vic3 = xA2805F vic3 = xCAE5B0 hoi4 = 9468 } # STATE_EAST_GALICIA, STATE_EAST_GALICIA -> Gródek
 	link = { vic3 = x9D8087 hoi4 = 9558 } # STATE_EAST_GALICIA -> Busk
