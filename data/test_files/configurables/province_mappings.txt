@@ -4,4 +4,6 @@
 	link = { vic3 = 0x030000 }
 	link = { hoi4 = 3 }
 	link = {}
+	link = { vic3 = 0x000001 } # repeated vic3 mapping
+	link = { hoi4 = 1 } # repeated hoi4 mapping
 }
