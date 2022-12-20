@@ -99,11 +99,19 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
 
       for (auto color: the_mapping.vic3_provinces)
       {
-         vic3_to_hoi4_province_map_.emplace(color, the_mapping.hoi4_provinces);
+         const auto [unused, success] = vic3_to_hoi4_province_map_.emplace(color, the_mapping.hoi4_provinces);
+         if (!success)
+         {
+            Log(LogLevel::Warning) << fmt::format("Vic3 province {} was in multiple mappings.", color);
+         }
       }
       for (auto num: the_mapping.hoi4_provinces)
       {
-         hoi4_to_vic3_province_map_.emplace(num, the_mapping.vic3_provinces);
+         const auto [unused, success] = hoi4_to_vic3_province_map_.emplace(num, the_mapping.vic3_provinces);
+         if (!success)
+         {
+            Log(LogLevel::Warning) << fmt::format("Hoi4 province {} was in multiple mappings.", num);
+         }
       }
    });
    mapping_parser_.IgnoreAndLogUnregisteredItems();
