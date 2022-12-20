@@ -34,7 +34,7 @@ std::map<std::string, commonItems::Color> vic3::ImportCountryColorDefinitions(
           {
           }
        });
-   country_definition_parser.registerKeyword(commonItems::catchallRegex, commonItems::ignoreItem);
+   country_definition_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
    const auto definition_filename =
        mod_filesystem.GetActualFileLocation("/game/common/country_definitions/00_countries.txt");
