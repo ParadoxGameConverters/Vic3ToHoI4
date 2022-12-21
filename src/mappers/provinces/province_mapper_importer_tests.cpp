@@ -84,16 +84,15 @@ TEST(MappersProvincesProvinceMapperImporterTests, MissingVic3ProvinceMappingLogs
 
 TEST(MappersProvincesProvinceMapperImporterTests, ExtraProvinceMappingsLogWarning)
 {
-   commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/good_definition/", {});
-   const auto province_mappings = mappers::ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
-
    std::stringstream log;
    auto stdOutBuf = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const auto _ = province_mappings.GetVic3ToHoi4ProvinceMapping("0x000012");
+   commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/good_definition/", {});
+   const auto province_mappings = mappers::ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
 
    std::cout.rdbuf(stdOutBuf);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No mapping found for Vic3 province 0x000012"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Vic3 province x000001 was in multiple mappings."));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Hoi4 province 1 was in multiple mappings."));
 }
