@@ -582,7 +582,7 @@
 	link = { vic3 = xA220D6 hoi4 = 6301 } # STATE_MIDLANDS -> Shrewsbury
 	link = { vic3 = x6020C0 hoi4 = 7239 } # STATE_MIDLANDS -> Wolverhampton
 	link = { vic3 = x2482B4 hoi4 = 9250 } # STATE_MIDLANDS -> Grimsby
-	link = { vic3 = xA0A0C0 hoi4 = 11279 } # STATE_MIDLANDS -> Leicester
+	link = { vic3 = xA0A0C0 hoi4 = 11279 hoi4 = 9268 } # STATE_MIDLANDS -> Leicester, Northampton
 	link = { vic3 = x20A0C0 hoi4 = 11345 hoi4 = 9297 } # STATE_MIDLANDS -> Burton-upon-Trent, Birmingham
 	link = { comment = "* * STATE_EAST_ANGLIA " }
 	link = { vic3 = xE02040 hoi4 = 221 } # STATE_EAST_ANGLIA -> Ipswich
@@ -1779,7 +1779,7 @@
 	link = { vic3 = x11F253 hoi4 = 476 } # STATE_KIEV -> Vinnytsia
 	link = { vic3 = x54B5C4 hoi4 = 488 } # STATE_KIEV -> Cherkasy
 	link = { hoi4 = 489 } # NOTHING -> Khotyanivka
-	link = { vic3 = xAD965B hoi4 = 9268 hoi4 = 501 } # STATE_KIEV -> Northampton, Krasnopillya
+	link = { vic3 = xAD965B hoi4 = 501 } # STATE_KIEV -> Krasnopillya
 	link = { vic3 = xCB4129 hoi4 = 511 } # STATE_KIEV -> Poltava
 	link = { vic3 = x8CE323 hoi4 = 525 } # STATE_KIEV -> Kyiv
 	link = { vic3 = x9723F8 hoi4 = 546 } # STATE_KIEV -> land
@@ -7937,7 +7937,7 @@
 	link = { vic3 = xFE1A9C hoi4 = 10014 } # STATE_ZHEJIANG -> Fuyang
 	link = { vic3 = xC7DEC3 hoi4 = 10058 } # STATE_ZHEJIANG -> Ninghai
 	link = { hoi4 = 10086 } # NOTHING -> Jiande
-	link = { vic3 = x5BE9C6 hoi4 = 4142 hoi4 = 10101 } # STATE_ZHEJIANG -> Yokkaichi, Deqing
+	link = { vic3 = x5BE9C6 hoi4 = 10101 } # STATE_ZHEJIANG -> Deqing
 	link = { vic3 = x8B7CC2 hoi4 = 11920 } # STATE_ZHEJIANG -> Yiwu
 	link = { vic3 = x6CDE24 hoi4 = 11947 } # STATE_ZHEJIANG -> Yongkang
 	link = { vic3 = x241F94 hoi4 = 11991 } # STATE_ZHEJIANG -> Shaoxing
@@ -8132,7 +8132,7 @@
 	link = { hoi4 = 4205 } # NOTHING -> Weihai
 	link = { vic3 = x2EF696 vic3 = x38A73B hoi4 = 7055 } # STATE_SHANDONG, STATE_SHANDONG -> Xintai
 	link = { vic3 = xA0CF65 hoi4 = 7089 } # STATE_SHANDONG -> Gaomi
-	link = { vic3 = x4724A9 hoi4 = 1020 hoi4 = 7105 } # STATE_SHANDONG -> Miyazaki, Laizhou
+	link = { vic3 = x4724A9 hoi4 = 7105 } # STATE_SHANDONG -> Laizhou
 	link = { hoi4 = 7129 } # NOTHING -> Lankao
 	link = { vic3 = x55944E hoi4 = 7160 } # STATE_SHANDONG -> Liaocheng
 	link = { hoi4 = 7189 } # NOTHING -> Dezhou
@@ -8368,7 +8368,7 @@
 	link = { vic3 = x3130A0 vic3 = xCD2D5D hoi4 = 10356 } # STATE_LAOS, STATE_LAOS -> Pak Lay
 	link = { vic3 = x57E793 vic3 = xB9A4C0 hoi4 = 10384 } # STATE_NAKHON_RATCHASIMA, STATE_LAOS -> Loei
 	link = { vic3 = x899047 hoi4 = 10453 } # STATE_LAOS -> Pathoomphone
-	link = { vic3 = x1E6D3C hoi4 = 11989 hoi4 = 10496 } # STATE_LAOS -> Muikamachi, Nan
+	link = { vic3 = x1E6D3C hoi4 = 10496 } # STATE_LAOS -> Nan
 	link = { vic3 = x7E2810 vic3 = x9EFC82 vic3 = xB0B020 hoi4 = 12332 } # STATE_LAOS, STATE_LAOS, STATE_LAOS -> Paksane
 	link = { vic3 = x578898 hoi4 = 12392 } # STATE_LAOS -> Phongsaly
 	link = { vic3 = x61478F hoi4 = 12433 } # STATE_LAOS -> Oudomxay
@@ -8540,7 +8540,7 @@
 	link = { vic3 = x3190C0 hoi4 = 1063 } # STATE_TOHOKU -> Akita
 	link = { vic3 = xD350FB vic3 = xF01040 hoi4 = 1113 } # STATE_KANTO, STATE_TOHOKU -> Utsunomiya
 	link = { vic3 = xA26E5F hoi4 = 1165 } # STATE_TOHOKU -> Kesennuma
-	link = { vic3 = x4C5533 hoi4 = 9956 hoi4 = 3848 } # STATE_TOHOKU -> Xuzhou, Odate
+	link = { vic3 = x4C5533 hoi4 = 3848 } # STATE_TOHOKU -> Odate
 	link = { vic3 = x637FEB hoi4 = 4067 } # STATE_TOHOKU -> Yamagata
 	link = { vic3 = x3CA2FC hoi4 = 4118 } # STATE_TOHOKU -> Iwaki
 	link = { vic3 = x322F47 vic3 = xAC762F hoi4 = 4122 } # STATE_TOHOKU, STATE_TOHOKU -> Aizuwakamatsu
@@ -8564,7 +8564,7 @@
 	link = { comment = "* * STATE_CHUBU " }
 	link = { vic3 = x5A57C3 hoi4 = 998 } # STATE_CHUBU -> Nanao
 	link = { vic3 = xE76E8F hoi4 = 1117 } # STATE_CHUBU -> Niigata
-	link = { vic3 = xB050C0 hoi4 = 1195 hoi4 = 4069 } # STATE_CHUBU -> Xianju, Iida
+	link = { vic3 = xB050C0 hoi4 = 4069 } # STATE_CHUBU -> Iida
 	link = { hoi4 = 1300 hoi4 = 4172 } # NOTHING -> Hoai Nhon, Gifu
 	link = { vic3 = x5E87A1 hoi4 = 7087 } # STATE_CHUBU -> Shizuoka
 	link = { vic3 = xB0D040 hoi4 = 7102 } # STATE_CHUBU -> Fukui
@@ -8578,7 +8578,7 @@
 	link = { vic3 = xB5F9BD hoi4 = 11930 } # STATE_CHUBU -> Murakami
 	link = { vic3 = x3050C0 vic3 = x31D0C0 hoi4 = 12097 } # STATE_CHUBU, STATE_CHUBU -> Hamamatsu
 	link = { comment = "* * STATE_KANSAI " }
-	link = { vic3 = x305040 hoi4 = 1146 hoi4 = 1051 } # STATE_KANSAI -> Chaohu, Owase
+	link = { vic3 = x305040 hoi4 = 1051 } # STATE_KANSAI -> Owase
 	link = { vic3 = x8EC4C9 hoi4 = 1067 } # STATE_KANSAI -> Nagahama
 	link = { vic3 = x879C25 hoi4 = 1136 } # STATE_KANSAI -> Maizuru
 	link = { vic3 = xCCB03E hoi4 = 4054 } # STATE_KANSAI -> Matsusaka
@@ -8595,7 +8595,7 @@
 	link = { vic3 = x906F1E hoi4 = 7178 } # STATE_KYUSHU -> Hyuga
 	link = { vic3 = xAE5874 hoi4 = 9950 } # STATE_KYUSHU -> Nagasaki
 	link = { hoi4 = 10011 } # NOTHING -> Tsushima
-	link = { vic3 = x73414A hoi4 = 11992 hoi4 = 10092 } # STATE_KYUSHU -> Nishiyama, Oita
+	link = { vic3 = x73414A hoi4 = 10092 } # STATE_KYUSHU -> Oita
 	link = { vic3 = x705080 hoi4 = 11925 } # STATE_KYUSHU -> Kumamoto
 	link = { vic3 = xEF5080 hoi4 = 11949 } # STATE_KYUSHU -> Kirishima
 	link = { vic3 = x5C7980 hoi4 = 12032 } # STATE_KYUSHU -> Miyakonojo
@@ -8605,16 +8605,16 @@
 	link = { comment = "* * STATE_CHUGOKU " }
 	link = { hoi4 = 1092 } # NOTHING -> Hiroshima
 	link = { vic3 = xA287B0 hoi4 = 1191 } # STATE_CHUGOKU -> Hamada
-	link = { vic3 = x1151C0 hoi4 = 10119 hoi4 = 4197 } # STATE_CHUGOKU -> Yanshan, Tsuyama
+	link = { vic3 = x1151C0 hoi4 = 4197 } # STATE_CHUGOKU -> Tsuyama
 	link = { vic3 = x77D64C hoi4 = 7145 } # STATE_CHUGOKU -> Matsue
 	link = { vic3 = xB49AFB hoi4 = 9968 } # STATE_CHUGOKU -> Miyoshi
 	link = { vic3 = xC8AE5C hoi4 = 10055 } # STATE_CHUGOKU -> Tottori
 	link = { vic3 = x89FD28 hoi4 = 11946 } # STATE_CHUGOKU -> Fukuyama
 	link = { hoi4 = 11985 } # NOTHING -> Shimonoseki
 	link = { comment = "* * STATE_SHIKOKU " }
-	link = { vic3 = x7C9BEB hoi4 = 7120 hoi4 = 4094 } # STATE_SHIKOKU -> Huzhou, Mitoyo
+	link = { vic3 = x7C9BEB hoi4 = 4094 } # STATE_SHIKOKU -> Mitoyo
 	link = { vic3 = x5D5512 hoi4 = 4179 } # STATE_SHIKOKU -> Imabari
-	link = { vic3 = x90D040 hoi4 = 7380 hoi4 = 7046 } # STATE_SHIKOKU -> Ayun Pa, Matsuyama
+	link = { vic3 = x90D040 hoi4 = 7046 } # STATE_SHIKOKU -> Matsuyama
 	link = { vic3 = xEFD040 hoi4 = 7197 } # STATE_SHIKOKU -> Kochi
 	link = { vic3 = xF05040 hoi4 = 12028 } # STATE_SHIKOKU -> Muroto
 	link = { comment = "* * STATE_SEOUL " }
@@ -8774,7 +8774,7 @@
 	link = { comment = "* * STATE_WEST_JAVA " }
 	link = { vic3 = xA12ED1 hoi4 = 1386 } # STATE_CENTRAL_JAVA -> Cirebon
 	link = { vic3 = x6345B2 hoi4 = 1398 } # STATE_WEST_JAVA -> Labuhan
-	link = { vic3 = x975BCA hoi4 = 4304 hoi4 = 1425 } # STATE_WEST_JAVA -> Kimbe, Cianjoer
+	link = { vic3 = x975BCA hoi4 = 1425 } # STATE_WEST_JAVA -> Cianjoer
 	link = { vic3 = xB944CF hoi4 = 4406 } # STATE_WEST_JAVA -> Bogor
 	link = { vic3 = x727A46 vic3 = xA0DFEF hoi4 = 4434 } # STATE_CENTRAL_JAVA, STATE_WEST_JAVA -> Cilacap
 	link = { hoi4 = 7421 } # NOTHING -> Bandoeng
@@ -8899,7 +8899,7 @@
 	link = { vic3 = x7BD240 hoi4 = 1505 } # STATE_CELEBES -> Bunta Satu
 	link = { vic3 = xA22F3F hoi4 = 1518 } # STATE_CELEBES -> Poso
 	link = { vic3 = xB3682E hoi4 = 10197 hoi4 = 1561 } # STATE_CELEBES -> Kotamobagu, Palamaki
-	link = { vic3 = x79D69A hoi4 = 4399 hoi4 = 4262 } # STATE_CELEBES -> Ipil, Baru
+	link = { vic3 = x79D69A hoi4 = 4262 } # STATE_CELEBES -> Baru
 	link = { vic3 = x9A5C23 vic3 = xBF46E7 hoi4 = 4308 } # STATE_CELEBES, STATE_CELEBES -> land
 	link = { vic3 = x7A4D9B vic3 = xB14D58 hoi4 = 4349 } # STATE_CELEBES, STATE_CELEBES -> Tanete
 	link = { vic3 = x7A4DF4 hoi4 = 4493 } # STATE_CELEBES -> Luwuk
@@ -8968,7 +8968,7 @@
 	link = { vic3 = x318B7B vic3 = x459277 hoi4 = 12931 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> land
 	link = { comment = "* * STATE_SUNDA_ISLANDS " }
 	link = { vic3 = x908090 hoi4 = 1298 } # STATE_SUNDA_ISLANDS -> Gorontalo
-	link = { vic3 = x3CCE91 hoi4 = 10306 hoi4 = 1326 } # STATE_SUNDA_ISLANDS -> Gumaca, Viqueque
+	link = { vic3 = x3CCE91 hoi4 = 1326 } # STATE_SUNDA_ISLANDS -> Viqueque
 	link = { vic3 = x5F978F hoi4 = 1339 } # STATE_SUNDA_ISLANDS -> Manumutin
 	link = { vic3 = x699245 vic3 = xCF8A98 hoi4 = 1355 } # STATE_SUNDA_ISLANDS, STATE_SUNDA_ISLANDS -> Koepang
 	link = { vic3 = x5ABA94 hoi4 = 4273 } # STATE_SUNDA_ISLANDS -> Denpasar
@@ -8990,7 +8990,7 @@
 	link = { hoi4 = 7360 } # NOTHING -> Ozamis
 	link = { vic3 = x678557 vic3 = xC3EC2D hoi4 = 7445 } # STATE_MINDANAO, STATE_MINDANAO -> Santo Tomas
 	link = { vic3 = x0180F0 vic3 = x99D030 hoi4 = 10184 } # STATE_MINDANAO, STATE_MINDANAO -> Jolo
-	link = { vic3 = x7B364D hoi4 = 7378 hoi4 = 10214 } # STATE_MINDANAO -> land, Tagoloan
+	link = { vic3 = x7B364D hoi4 = 10214 } # STATE_MINDANAO -> Tagoloan
 	link = { hoi4 = 10243 } # NOTHING -> Cayagan de Oro
 	link = { hoi4 = 10300 } # NOTHING -> Marawi
 	link = { vic3 = x4C67A7 hoi4 = 12116 } # STATE_MINDANAO -> Koronadal
@@ -9000,7 +9000,7 @@
 	link = { vic3 = xB0F0E0 hoi4 = 10265 hoi4 = 1221 } # STATE_LUZON -> Manila, Batangas
 	link = { vic3 = x2291B3 hoi4 = 1372 } # STATE_LUZON -> Daet
 	link = { vic3 = x707061 hoi4 = 4429 hoi4 = 1388 } # STATE_LUZON -> Puerto Princesa, Baler
-	link = { vic3 = x795BD8 hoi4 = 4804 hoi4 = 4101 } # STATE_LUZON -> Palmerston North, Santa Ana
+	link = { vic3 = x795BD8 hoi4 = 4101 } # STATE_LUZON -> Santa Ana
 	link = { vic3 = x97B9E0 hoi4 = 4288 } # STATE_LUZON -> Calapan
 	link = { vic3 = x1C8BCF hoi4 = 4350 } # STATE_LUZON -> Candon
 	link = { vic3 = x5ED347 vic3 = xECF5E9 hoi4 = 4368 } # STATE_LUZON, STATE_LUZON -> Vigan
@@ -9010,7 +9010,7 @@
 	link = { vic3 = x33B5F8 hoi4 = 7351 } # STATE_LUZON -> Angeles
 	link = { vic3 = x1B9953 vic3 = xB0F0B0 hoi4 = 7419 } # STATE_LUZON, STATE_LUZON -> Taytay
 	link = { vic3 = x95102A hoi4 = 7439 } # STATE_LUZON -> Casiguran
-	link = { vic3 = x946A22 hoi4 = 7381 hoi4 = 10145 } # STATE_LUZON -> Batavia, Quezon
+	link = { vic3 = x946A22 hoi4 = 10145 } # STATE_LUZON -> Quezon
 	link = { hoi4 = 10165 } # NOTHING -> San Jose
 	link = { vic3 = x0D8236 hoi4 = 10236 } # STATE_LUZON -> Santa Cruz
 	link = { vic3 = xD2AEEB hoi4 = 10241 } # STATE_LUZON -> Laoag
@@ -9049,7 +9049,7 @@
 	link = { vic3 = x874589 hoi4 = 1042 } # STATE_SOLOMON_ISLANDS -> Kirakira
 	link = { hoi4 = 1085 } # NOTHING -> Auki
 	link = { vic3 = x2B5E69 hoi4 = 4252 } # STATE_SOLOMON_ISLANDS -> Buala
-	link = { vic3 = x898945 hoi4 = 1415 hoi4 = 10291 } # STATE_SOLOMON_ISLANDS -> Dagupan, Nguvia
+	link = { vic3 = x898945 hoi4 = 10291 } # STATE_SOLOMON_ISLANDS -> Nguvia
 	link = { vic3 = x692B64 vic3 = xD04090 hoi4 = 10319 } # STATE_SOLOMON_ISLANDS, STATE_SOLOMON_ISLANDS -> Gizo
 	link = { vic3 = x3B8EEB hoi4 = 12265 } # STATE_SOLOMON_ISLANDS -> Taro
 	link = { comment = "* * STATE_NAURU " }
@@ -9060,11 +9060,11 @@
 	link = { vic3 = x53FA6E hoi4 = 12159 } # STATE_FIJI -> Labasa
 	link = { comment = "* * STATE_VANUATU " }
 	link = { vic3 = x504090 vic3 = x5178BC hoi4 = 1237 } # STATE_VANUATU, STATE_VANUATU -> Luganville
-	link = { vic3 = x75A377 hoi4 = 4387 hoi4 = 4247 } # STATE_VANUATU -> Abemama, Isangel
+	link = { vic3 = x75A377 hoi4 = 4247 } # STATE_VANUATU -> Isangel
 	link = { comment = "* * STATE_KANAK " }
 	link = { vic3 = x302090 hoi4 = 1263 } # STATE_KANAK -> Canala
 	link = { vic3 = x2BEBD1 hoi4 = 4231 } # STATE_KANAK -> Wé
-	link = { vic3 = x665AAF hoi4 = 1286 hoi4 = 10160 } # STATE_KANAK -> Bialla, Koné
+	link = { vic3 = x665AAF hoi4 = 10160 } # STATE_KANAK -> Koné
 	link = { comment = "* * STATE_BOUGAINVILLE " }
 	link = { vic3 = x97FBC3 hoi4 = 1358 } # STATE_BOUGAINVILLE -> Wakanai
 	link = { vic3 = x9BC5AD hoi4 = 4378 } # STATE_BOUGAINVILLE -> Arawa
