@@ -921,7 +921,7 @@
 	link = { vic3 = xB4D292 hoi4 = 6673 hoi4 = 668 } # STATE_STYRIA -> Kirchbach, Obervellach
 	link = { vic3 = x1101A0 hoi4 = 6687 } # STATE_STYRIA -> Sankt Veit
 	link = { vic3 = x59D927 hoi4 = 6691 } # STATE_STYRIA -> Liezen
-	link = { vic3 = x86FD73 hoi4 = 9648 hoi4 = 9646 } # STATE_STYRIA -> Graz, Leibnitz
+	link = { vic3 = x86FD73 hoi4 = 9648 hoi4 = 9646 hoi4 = 11630 } # STATE_STYRIA -> Graz, Leibnitz, Oberwart
 	link = { vic3 = x017E3C hoi4 = 9650 } # STATE_STYRIA -> Knittelfeld
 	link = { vic3 = x155A44 hoi4 = 9679 } # STATE_STYRIA -> Leoben
 	link = { comment = "* * STATE_TYROL " }
@@ -2724,23 +2724,22 @@
 	link = { vic3 = xE369C4 hoi4 = 6431 } # STATE_EAST_GALICIA -> Sambor
 	link = { vic3 = x53932F hoi4 = 6460 } # STATE_EAST_GALICIA -> Dolina
 	link = { vic3 = x8F9F20 hoi4 = 6483 } # STATE_EAST_GALICIA -> Drohobycz
-	link = { vic3 = x69BAC7 vic3 = xD0E061 hoi4 = 6571 } # STATE_EAST_SLOVAKIA, STATE_EAST_GALICIA -> Chust
-	link = { vic3 = x489C42 hoi4 = 9425 } # STATE_EAST_GALICIA -> Nadwórna
+	link = { vic3 = x489C42 vic3 = xD0E061 hoi4 = 9425 } # STATE_EAST_GALICIA, STATE_EAST_GALICIA -> Nadwórna
 	link = { vic3 = xCDD223 hoi4 = 9454 } # STATE_EAST_GALICIA -> Zloczów
 	link = { vic3 = xA2805F vic3 = xCAE5B0 hoi4 = 9468 } # STATE_EAST_GALICIA, STATE_EAST_GALICIA -> Gródek
 	link = { vic3 = x9D8087 hoi4 = 9558 } # STATE_EAST_GALICIA -> Busk
 	link = { vic3 = xC58E1C hoi4 = 11411 } # STATE_EAST_GALICIA -> Stanislawów
-	link = { hoi4 = 11427 } # NOTHING -> Buczacz
+	link = { vic3 = x4D0305 hoi4 = 11427 } # STATE_EAST_GALICIA -> Buczacz
 	link = { vic3 = x11A021 hoi4 = 11479 } # STATE_EAST_GALICIA -> Lwów
 	link = { comment = "* * STATE_CENTRAL_HUNGARY " }
 	link = { vic3 = x90A0A0 hoi4 = 3377 hoi4 = 679 } # STATE_CENTRAL_HUNGARY -> Kremyoniki, Szeged
-	link = { vic3 = x51E0E0 hoi4 = 684 } # STATE_CENTRAL_HUNGARY -> Cegléd
+	link = { vic3 = x51E0E0 hoi4 = 684 hoi4 = 6716 } # STATE_CENTRAL_HUNGARY -> Cegléd, Szolnok
 	link = { vic3 = x715A29 hoi4 = 699 } # STATE_CENTRAL_HUNGARY -> Mezotúr
 	link = { vic3 = xB1D348 hoi4 = 716 } # STATE_CENTRAL_HUNGARY -> Gyöngyös
 	link = { vic3 = x93A8CA hoi4 = 730 } # STATE_CENTRAL_HUNGARY -> Balmazújváros
 	link = { vic3 = xD061E0 hoi4 = 3713 } # STATE_CENTRAL_HUNGARY -> Mezokövesd
-	link = { hoi4 = 3730 } # NOTHING -> Nyíregyháza
-	link = { vic3 = x764B36 hoi4 = 345 hoi4 = 3731 } # STATE_CENTRAL_HUNGARY -> Chamzinka, Eger
+	link = { vic3 = x920D5A hoi4 = 3730 } # STATE_CENTRAL_HUNGARY -> Nyíregyháza
+	link = { vic3 = x764B36 hoi4 = 345 hoi4 = 3731 hoi4 = 6751 } # STATE_CENTRAL_HUNGARY -> Chamzinka, Eger, Miskolc
 	link = { vic3 = x846165 hoi4 = 6670 } # STATE_CENTRAL_HUNGARY -> Baja
 	link = { vic3 = x063C9D hoi4 = 6735 } # STATE_CENTRAL_HUNGARY -> Mátészalka
 	link = { vic3 = x5060DF hoi4 = 9656 } # STATE_CENTRAL_HUNGARY -> Békéscsaba
@@ -2753,39 +2752,39 @@
 	link = { vic3 = x629512 hoi4 = 11646 } # STATE_CENTRAL_HUNGARY -> Hódmezovásárhely
 	link = { comment = "* * STATE_BEKES " }
 	link = { vic3 = x134D95 hoi4 = 713 } # STATE_BEKES -> Carei
-	link = { hoi4 = 746 } # NOTHING -> Satu Mare
+	link = { vic3 = x5D1E04 hoi4 = 746 hoi4 = 9687 } # STATE_BEKES -> Satu Mare, Zalau
 	link = { vic3 = xEAAEFA hoi4 = 3696 } # STATE_BEKES -> Oradea
 	link = { vic3 = x9021A0 hoi4 = 3709 } # STATE_BEKES -> Simleu Silvaniei
 	link = { vic3 = xAF5C60 hoi4 = 6697 } # STATE_BEKES -> Salonta
 	link = { vic3 = x5161A0 hoi4 = 9640 } # STATE_BEKES -> Sebis
 	link = { comment = "* * STATE_TRANSDANUBIA " }
-	link = { vic3 = x6F8D2A hoi4 = 686 hoi4 = 3700 } # STATE_TRANSDANUBIA -> Sopron, Eisenstadt
 	link = { vic3 = xC139B7 hoi4 = 701 } # STATE_TRANSDANUBIA -> Veszprém
 	link = { vic3 = x716180 hoi4 = 3670 } # STATE_TRANSDANUBIA -> Nagykanizsa
-	link = { hoi4 = 3680 } # NOTHING -> Szekszárd
 	link = { vic3 = x124D73 vic3 = xA709B7 hoi4 = 6672 } # STATE_TRANSDANUBIA, STATE_TRANSDANUBIA -> Murksa Sobota
-	link = { vic3 = x2668FB hoi4 = 6685 } # STATE_TRANSDANUBIA -> Kaposvár
+	link = { vic3 = x2668FB hoi4 = 6685 hoi4 = 682 } # STATE_TRANSDANUBIA -> Kaposvár, Siófok
 	link = { vic3 = xCFDFDF hoi4 = 6703 } # STATE_TRANSDANUBIA -> Székesfehérvár
-	link = { vic3 = x715F5D hoi4 = 6720 } # STATE_TRANSDANUBIA -> Gyor
-	link = { vic3 = x3C6913 vic3 = xB02121 hoi4 = 9624 } # STATE_TRANSDANUBIA, STATE_TRANSDANUBIA -> Barcs
+	link = { vic3 = x715F5D vic3 = x6F8D2A hoi4 = 6720 } # STATE_TRANSDANUBIA, STATE_TRANSDANUBIA -> Gyor
+	link = { vic3 = xB02121 hoi4 = 9624 } # STATE_TRANSDANUBIA -> Barcs
 	link = { vic3 = xCACEBC hoi4 = 9676 } # STATE_TRANSDANUBIA -> Tatabánya
-	link = { vic3 = xCF2020 hoi4 = 11610 } # STATE_TRANSDANUBIA -> Pécs
-	link = { vic3 = x27F483 hoi4 = 11627 } # STATE_TRANSDANUBIA -> Szombathely
-	link = { vic3 = x30A020 hoi4 = 11630 } # STATE_TRANSDANUBIA -> Oberwart
+	link = { vic3 = x3C6913 hoi4 = 11610 } # STATE_TRANSDANUBIA -> Pécs
+	link = { vic3 = x1CAC04 hoi4 = 3680 } # STATE_TRANSDANUBIA -> Szekszárd
+	link = { vic3 = xCF2020 hoi4 = 9643 } # STATE_TRANSDANUBIA -> Mohács
+	link = { vic3 = xF0E001 vic3 = x27F483 hoi4 = 3683 } # STATE_TRANSDANUBIA, STATE_TRANSDANUBIA -> Keszthely
+	link = { vic3 = x30A020 hoi4 = 3700 hoi4 = 686 hoi4 = 11627 } # STATE_TRANSDANUBIA -> Eisenstadt, Sopron, Szombathely
 	link = { vic3 = x906A5F hoi4 = 11663 } # STATE_TRANSDANUBIA -> Esztergom
 	link = { comment = "* * STATE_DELVIDEK " }
 	link = { vic3 = xC347D8 hoi4 = 614 } # STATE_DELVIDEK -> Vršac
-	link = { vic3 = x901B70 hoi4 = 619 } # STATE_DELVIDEK -> Novi Sad
+	link = { vic3 = x901B70 hoi4 = 619 hoi4 = 9608 hoi4 = 3623 } # STATE_DELVIDEK -> Novi Sad, Sombor, Subotica
 	link = { vic3 = x626998 hoi4 = 3614 } # STATE_DELVIDEK -> Pancevo
 	link = { vic3 = x11E021 hoi4 = 3617 } # STATE_DELVIDEK -> Becej
-	link = { vic3 = x9E1AD1 hoi4 = 9621 } # STATE_DELVIDEK -> Senta
+	link = { vic3 = x9E1AD1 hoi4 = 9621 hoi4 = 6643 } # STATE_DELVIDEK -> Senta, Kikinda
 	link = { vic3 = x77143D hoi4 = 11787 } # STATE_DELVIDEK -> Zrenjanin
 	link = { comment = "* * STATE_BANAT " }
-	link = { vic3 = xC381B6 vic3 = xF56517 hoi4 = 646 } # STATE_BANAT, STATE_BANAT -> Sânnicolau Mare
-	link = { vic3 = x078D13 vic3 = x4D9139 hoi4 = 662 } # STATE_BANAT, STATE_BANAT -> Caransebes
-	link = { vic3 = x1161A0 hoi4 = 3649 } # STATE_BANAT -> Moldova Noua
+	link = { vic3 = xF56517 vic3 = xC381B6 hoi4 = 646 } # STATE_BANAT, STATE_BANAT -> Sânnicolau Mare
+	link = { vic3 = x078D13 hoi4 = 662 } # STATE_BANAT -> Caransebes
+	link = { vic3 = x1161A0 vic3 = xD1FEBD hoi4 = 3649 } # STATE_BANAT, STATE_BANAT -> Moldova Noua
 	link = { vic3 = x90E021 hoi4 = 9606 } # STATE_BANAT -> Timisoara
-	link = { vic3 = xD1FEBD hoi4 = 11592 } # STATE_BANAT -> Resita
+	link = { vic3 = x2C0A00 vic3 = x4D9139 hoi4 = 11592 } # STATE_BANAT, STATE_BANAT -> Resita
 	link = { vic3 = x15C7D1 hoi4 = 11608 } # STATE_BANAT -> Lugoj
 	link = { comment = "* * STATE_WEST_SLOVAKIA " }
 	link = { vic3 = x90E0E0 hoi4 = 541 } # STATE_WEST_SLOVAKIA -> Trnava
@@ -2795,12 +2794,13 @@
 	link = { vic3 = x6B444C hoi4 = 3550 } # STATE_WEST_SLOVAKIA -> Poprad
 	link = { vic3 = x516161 hoi4 = 3716 } # STATE_WEST_SLOVAKIA -> Dunajská Streda
 	link = { vic3 = xB386BA hoi4 = 6561 } # STATE_WEST_SLOVAKIA -> Lucenec
-	link = { vic3 = x695F42 vic3 = xCA932B hoi4 = 9692 } # STATE_WEST_SLOVAKIA, STATE_WEST_SLOVAKIA -> Bratislava
+	link = { vic3 = x695F42 hoi4 = 9539 } # STATE_WEST_SLOVAKIA -> Pieštany
+	link = { vic3 = xCA932B hoi4 = 9692 } # STATE_WEST_SLOVAKIA -> Bratislava
 	link = { vic3 = x082416 hoi4 = 11522 } # STATE_WEST_SLOVAKIA -> Nitra
-	link = { vic3 = xFC6F14 hoi4 = 11539 } # STATE_WEST_SLOVAKIA -> Žilina
+	link = { vic3 = xFC6F14 hoi4 = 11539 hoi4 = 11554 } # STATE_WEST_SLOVAKIA -> Žilina, Dolný Kubín
 	link = { vic3 = xD06161 hoi4 = 11679 } # STATE_WEST_SLOVAKIA -> Nové Zámky
 	link = { comment = "* * STATE_EAST_SLOVAKIA " }
-	link = { hoi4 = 555 } # NOTHING -> Brezno
+	link = { vic3 = x20C000 hoi4 = 555 } # STATE_EAST_SLOVAKIA -> Brezno
 	link = { vic3 = xC85CD0 hoi4 = 3548 } # STATE_EAST_SLOVAKIA -> Mukacevo
 	link = { vic3 = x51E061 hoi4 = 3565 } # STATE_EAST_SLOVAKIA -> Trebišov
 	link = { vic3 = xC54074 hoi4 = 3581 } # STATE_EAST_SLOVAKIA -> Prešov
@@ -2808,15 +2808,16 @@
 	link = { vic3 = xB23DA0 hoi4 = 6586 } # STATE_EAST_SLOVAKIA -> Michalovce
 	link = { vic3 = x02CE3A hoi4 = 9537 } # STATE_EAST_SLOVAKIA -> Rimavská Sobota
 	link = { vic3 = x359378 hoi4 = 9563 } # STATE_EAST_SLOVAKIA -> Sval'ava
-	link = { vic3 = xA0531B hoi4 = 11691 } # STATE_EAST_SLOVAKIA -> Užhorod
+	link = { vic3 = xA0531B hoi4 = 11691 hoi4 = 11536 } # STATE_EAST_SLOVAKIA -> Užhorod, Vel'ké Berezné
+	link = { vic3 = x69BAC7 hoi4 = 6571 } # STATE_EAST_SLOVAKIA -> Chust
 	link = { comment = "* * STATE_SOUTHERN_TRANSYLVANIA " }
 	link = { vic3 = xD061A0 hoi4 = 676 } # STATE_SOUTHERN_TRANSYLVANIA -> Sighisoara
 	link = { vic3 = x457B5F vic3 = x7686F7 hoi4 = 693 } # STATE_SOUTHERN_TRANSYLVANIA, STATE_SOUTHERN_TRANSYLVANIA -> Aiud
 	link = { vic3 = xD0E021 hoi4 = 3665 } # STATE_SOUTHERN_TRANSYLVANIA -> Petrosani
-	link = { vic3 = x306060 hoi4 = 557 hoi4 = 3676 } # STATE_SOUTHERN_TRANSYLVANIA -> Breclav, Zarnesti
+	link = { vic3 = x306060 hoi4 = 557 hoi4 = 3676 hoi4 = 6709 } # STATE_SOUTHERN_TRANSYLVANIA -> Breclav, Zarnesti, Fagaras
 	link = { vic3 = x10E29E hoi4 = 3694 } # STATE_SOUTHERN_TRANSYLVANIA -> Târgu Mures
 	link = { vic3 = x51E0A0 hoi4 = 6679 } # STATE_SOUTHERN_TRANSYLVANIA -> Sibiu
-	link = { vic3 = x90E5C8 hoi4 = 11622 } # STATE_SOUTHERN_TRANSYLVANIA -> Alba Iulia
+	link = { vic3 = x90E5C8 hoi4 = 11622 hoi4 = 9619 } # STATE_SOUTHERN_TRANSYLVANIA -> Alba Iulia, Hunedoara
 	link = { vic3 = xC17759 hoi4 = 11639 } # STATE_SOUTHERN_TRANSYLVANIA -> Rupea
 	link = { comment = "* * STATE_NORTHERN_TRANSYLVANIA " }
 	link = { vic3 = xAF609F hoi4 = 690 } # STATE_NORTHERN_TRANSYLVANIA -> Brasov
@@ -2825,8 +2826,9 @@
 	link = { vic3 = x4884E0 hoi4 = 3689 } # STATE_NORTHERN_TRANSYLVANIA -> Târgu Secuiesc
 	link = { vic3 = xD0E0A0 hoi4 = 6711 } # STATE_NORTHERN_TRANSYLVANIA -> Cluj
 	link = { vic3 = x897F3D hoi4 = 6714 } # STATE_NORTHERN_TRANSYLVANIA -> Dej
-	link = { vic3 = x3161A0 hoi4 = 9668 } # STATE_NORTHERN_TRANSYLVANIA -> Sfântu Gheorghe
-	link = { vic3 = x6E6896 hoi4 = 3334 hoi4 = 9670 } # STATE_NORTHERN_TRANSYLVANIA -> Karsun, Odorheiu Secuiesc
+	link = { vic3 = x73F00B hoi4 = 9668 } # STATE_NORTHERN_TRANSYLVANIA -> Sfântu Gheorghe
+	link = { vic3 = x6E6896 hoi4 = 6731 } # STATE_NORTHERN_TRANSYLVANIA -> Bistrita
+	link = { vic3 = x3161A0 hoi4 = 3334 hoi4 = 9670 } # STATE_NORTHERN_TRANSYLVANIA -> Karsun, Odorheiu Secuiesc
 	link = { vic3 = xA08763 hoi4 = 9672 } # STATE_NORTHERN_TRANSYLVANIA -> Reghin
 	link = { vic3 = xB06161 hoi4 = 9685 } # STATE_NORTHERN_TRANSYLVANIA -> Toplita
 	link = { vic3 = x896455 hoi4 = 9704 } # STATE_NORTHERN_TRANSYLVANIA -> Sighetu Marmatiei
@@ -2837,7 +2839,7 @@
 	link = { vic3 = xFF2F40 hoi4 = 3728 } # STATE_MOLDAVIA -> Piatra Neamt
 	link = { vic3 = xEF2060 hoi4 = 3741 } # STATE_MOLDAVIA -> Roman
 	link = { vic3 = x56839F hoi4 = 6584 } # STATE_MOLDAVIA -> Botosani
-	link = { hoi4 = 6706 } # NOTHING -> Galati
+	link = { vic3 = xF40045 hoi4 = 6706 } # STATE_MOLDAVIA -> Galati
 	link = { vic3 = x734EFF hoi4 = 6729 } # STATE_MOLDAVIA -> Bârlad
 	link = { vic3 = xB0A0E0 hoi4 = 6747 } # STATE_MOLDAVIA -> Bacau
 	link = { vic3 = x067DF0 hoi4 = 6761 } # STATE_MOLDAVIA -> Suceava
@@ -2845,13 +2847,14 @@
 	link = { vic3 = x3CE97E vic3 = x946A66 hoi4 = 9716 } # STATE_MOLDAVIA, STATE_MOLDAVIA -> Iasi
 	link = { vic3 = x35CE84 hoi4 = 11534 } # STATE_MOLDAVIA -> Saveni
 	link = { vic3 = x0983EE hoi4 = 11652 } # STATE_MOLDAVIA -> Buzau
-	link = { vic3 = x30E0A0 hoi4 = 11655 } # STATE_MOLDAVIA -> Berca
+	link = { vic3 = x30E0A0 hoi4 = 11655 hoi4 = 9701 } # STATE_MOLDAVIA -> Berca, Focsani
 	link = { vic3 = x0D8A56 hoi4 = 11672 } # STATE_MOLDAVIA -> Onesti
 	link = { vic3 = x00A7F4 vic3 = xFFCCDA hoi4 = 11689 } # STATE_MOLDAVIA, STATE_MOLDAVIA -> Câmpulung Moldovenesc
 	link = { comment = "* * STATE_WALLACHIA " }
 	link = { vic3 = x019D5F hoi4 = 660 } # STATE_WALLACHIA -> Târgoviste
+	link = { vic3 = x020F11 hoi4 = 9651 } # STATE_WALLACHIA -> Buzau
 	link = { vic3 = x2164E0 hoi4 = 674 } # STATE_WALLACHIA -> Urziceni
-	link = { hoi4 = 818 } # NOTHING -> Slatina
+	link = { vic3 = xF9AA0F hoi4 = 818 } # STATE_WALLACHIA -> Slatina
 	link = { vic3 = x51E021 vic3 = xF76B20 hoi4 = 3630 } # STATE_WALLACHIA, STATE_WALLACHIA -> Calafat
 	link = { vic3 = xC6AC43 hoi4 = 3636 } # STATE_WALLACHIA -> Gaesti
 	link = { vic3 = xAB774D vic3 = xE0A321 hoi4 = 3639 } # STATE_WALLACHIA, STATE_WALLACHIA -> Pitesti
@@ -2860,13 +2863,12 @@
 	link = { vic3 = xECC1DC hoi4 = 6652 } # STATE_WALLACHIA -> Craiova
 	link = { vic3 = xB0E020 hoi4 = 6658 } # STATE_WALLACHIA -> Giurgiu
 	link = { vic3 = xD28965 hoi4 = 6667 } # STATE_WALLACHIA -> Târgu Jiu
-	link = { hoi4 = 6677 } # NOTHING -> Calarasi
+	link = { vic3 = x690E91 hoi4 = 6677 } # STATE_WALLACHIA -> Calarasi
 	link = { vic3 = x582A74 hoi4 = 6695 } # STATE_WALLACHIA -> Câmpulung
 	link = { vic3 = xD11E19 hoi4 = 9617 } # STATE_WALLACHIA -> Bucuresti
-	link = { hoi4 = 9651 } # NOTHING -> Buzau
 	link = { vic3 = x743F1C hoi4 = 11588 } # STATE_WALLACHIA -> Caracal
 	link = { vic3 = x81C7F3 hoi4 = 11603 } # STATE_WALLACHIA -> Oltenita
-	link = { hoi4 = 11605 } # NOTHING -> Râmnicu Vâlcea
+	link = { vic3 = x016C07 hoi4 = 11605 } # STATE_WALLACHIA -> Râmnicu Vâlcea
 	link = { vic3 = xEF53AF hoi4 = 11619 } # STATE_WALLACHIA -> Câmpina
 	link = { vic3 = x31E021 hoi4 = 11636 } # STATE_WALLACHIA -> Braila
 	link = { vic3 = xF6E6E3 hoi4 = 11657 } # STATE_WALLACHIA -> Drobeta
