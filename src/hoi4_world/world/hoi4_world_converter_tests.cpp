@@ -4,6 +4,7 @@
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/world/hoi4_world.h"
+#include "src/hoi4_world/world/hoi4_world_converter.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -15,14 +16,14 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldWorldWorld, EmptyWorldIsEmpty)
+TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
 {
    constexpr mappers::CountryMapper country_mapper;
    const vic3::World source_world({}, {}, vic3::ProvinceDefinitions({}));
 
    mappers::ProvinceMapper province_mapper{{}, {}};
 
-   const World world(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
        province_mapper);
@@ -32,7 +33,7 @@ TEST(Hoi4worldWorldWorld, EmptyWorldIsEmpty)
 }
 
 
-TEST(Hoi4worldWorldWorld, CountriesAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
 {
    constexpr mappers::CountryMapper country_mapper;
    const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
@@ -44,7 +45,7 @@ TEST(Hoi4worldWorldWorld, CountriesAreConverted)
 
    mappers::ProvinceMapper province_mapper{{}, {}};
 
-   const World world(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
        province_mapper);
@@ -56,7 +57,7 @@ TEST(Hoi4worldWorldWorld, CountriesAreConverted)
 }
 
 
-TEST(Hoi4worldWorldWorld, StatesAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
 {
    constexpr mappers::CountryMapper country_mapper;
 
@@ -75,7 +76,7 @@ TEST(Hoi4worldWorldWorld, StatesAreConverted)
            {60, {"0x000006"}},
        }};
 
-   const World world(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
        province_mapper);
@@ -84,7 +85,7 @@ TEST(Hoi4worldWorldWorld, StatesAreConverted)
 }
 
 
-TEST(Hoi4worldWorldWorld, StrategicRegionsAreCreated)
+TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 {
    constexpr mappers::CountryMapper country_mapper;
 
@@ -102,7 +103,7 @@ TEST(Hoi4worldWorldWorld, StrategicRegionsAreCreated)
            {60, {"0x000006"}},
        }};
 
-   const World world(commonItems::ModFilesystem("test_files/hoi4_world/StrategicRegionsAreCreated", {}),
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/StrategicRegionsAreCreated", {}),
        source_world,
        country_mapper,
        province_mapper);
