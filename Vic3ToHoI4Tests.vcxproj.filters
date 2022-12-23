@@ -174,12 +174,6 @@
     <ClCompile Include="src\mappers\country\country_mapper_tests.cpp">
       <Filter>src\mappers\country</Filter>
     </ClCompile>
-    <ClCompile Include="src\hoi4_world\world\hoi4_world.cpp">
-      <Filter>src\hoi4_world\world</Filter>
-    </ClCompile>
-    <ClCompile Include="src\hoi4_world\world\hoi4_world_tests.cpp">
-      <Filter>src\hoi4_world\world</Filter>
-    </ClCompile>
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp">
       <Filter>src\out_hoi4\countries</Filter>
     </ClCompile>
@@ -366,6 +360,12 @@
     <ClCompile Include="src\vic3_world\countries\country_definitions_importer_tests.cpp">
       <Filter>src\vic3_world\countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\world\hoi4_world_converter.cpp">
+      <Filter>src\hoi4_world\world</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\world\hoi4_world_converter_tests.cpp">
+      <Filter>src\hoi4_world\world</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -541,6 +541,9 @@
     </ClInclude>
     <ClInclude Include="src\vic3_world\countries\country_definitions_importer.h">
       <Filter>src\vic3_world\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\world\hoi4_world_converter.h">
+      <Filter>src\hoi4_world\world</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
