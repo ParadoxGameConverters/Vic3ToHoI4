@@ -259,6 +259,12 @@ std::vector<hoi4::State> CreateStates(const std::map<int, vic3::State>& states,
           GetConnectedProvinceSets(hoi4_provinces, map_data, hoi4_province_definitions);
       auto final_connected_province_sets =
           ConsolidateProvinceSets(initial_connected_province_sets, strategic_regions.GetProvinceToStrategicRegionMap());
+      if (final_connected_province_sets.size() > 1U)
+      {
+         Log(LogLevel::Info) << fmt::format("\tState {} was split into {} due to disconnected provinces.",
+             hoi4_states.size() + 1U,
+             final_connected_province_sets.size());
+      }
 
       for (const auto& province_set: final_connected_province_sets)
       {

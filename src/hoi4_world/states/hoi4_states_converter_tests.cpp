@@ -146,6 +146,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
    hoi4::StrategicRegions strategic_regions({}, {});
    mappers::CountryMapper country_mapper;
 
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
    const auto hoi4_states = StatesConverter{}.ConvertStates(
        {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
        province_definitions,
@@ -155,6 +159,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
        strategic_regions,
        country_mapper);
 
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tState 1 was split into 3 due to disconnected provinces."));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tState 4 was split into 3 due to disconnected provinces."));
    EXPECT_THAT(hoi4_states,
        testing::ElementsAre(State(1, std::nullopt, {10}),
            State(2, std::nullopt, {20}),
