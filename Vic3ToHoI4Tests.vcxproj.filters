@@ -372,6 +372,9 @@
     <ClCompile Include="src\mappers\country\country_mapper_creator.cpp">
       <Filter>src\mappers\country</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\country\country_mapper_creator_tests.cpp">
+      <Filter>src\mappers\country</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
