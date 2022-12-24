@@ -18,7 +18,7 @@ namespace hoi4
 
 TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
 {
-   constexpr mappers::CountryMapper country_mapper;
+   const mappers::CountryMapper country_mapper({});
    const vic3::World source_world({}, {}, vic3::ProvinceDefinitions({}));
 
    mappers::ProvinceMapper province_mapper{{}, {}};
@@ -35,7 +35,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
 
 TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
 {
-   constexpr mappers::CountryMapper country_mapper;
+   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
    const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
    const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
 
@@ -59,7 +59,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
 
 TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
 {
-   constexpr mappers::CountryMapper country_mapper;
+   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
 
    const vic3::World source_world({},
        {{1, vic3::State({.owner_tag = "TAG", .provinces = {1, 2, 3}})},
@@ -87,7 +87,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
 
 TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 {
-   constexpr mappers::CountryMapper country_mapper;
+   const mappers::CountryMapper country_mapper({});
 
    const vic3::World source_world({},
        {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},

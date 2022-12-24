@@ -21,7 +21,7 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const 
 
    commonItems::ModFilesystem hoi4_mod_filesystem(configuration.hoi4_directory, {});
 
-   constexpr mappers::CountryMapper country_mapper;
+   mappers::CountryMapper country_mapper({});
    const auto province_mapper = mappers::ProvinceMapperImporter(hoi4_mod_filesystem).ImportProvinceMappings();
    province_mapper.CheckAllVic3ProvincesMapped(source_world.GetProvinceDefinitions().GetProvinceDefinitions());
 

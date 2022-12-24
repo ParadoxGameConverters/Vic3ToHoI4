@@ -9,11 +9,17 @@
 namespace mappers
 {
 
-TEST(MappersCountryCountryMapper, SameTagIsReturned)
+TEST(MappersCountryCountryMapper, NulloptIsReturnedForUnmappedTag)
 {
-   const CountryMapper country_mapper;
-   EXPECT_EQ(country_mapper.GetHoiTag("TAG"), "TAG");
-   EXPECT_EQ(country_mapper.GetHoiTag("TWO"), "TWO");
+   const CountryMapper country_mapper({});
+   EXPECT_EQ(country_mapper.GetHoiTag("TAG"), std::nullopt);
+}
+
+
+TEST(MappersCountryCountryMapper, MappedTagsAreReturned)
+{
+   const CountryMapper country_mapper(std::map<std::string, std::string>{{"VIC", "HOI"}});
+   EXPECT_EQ(country_mapper.GetHoiTag("VIC"), "HOI");
 }
 
 }  // namespace mappers

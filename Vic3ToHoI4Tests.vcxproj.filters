@@ -366,6 +366,9 @@
     <ClCompile Include="src\hoi4_world\world\hoi4_world_converter_tests.cpp">
       <Filter>src\hoi4_world\world</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\country\country_mapper.cpp">
+      <Filter>src\mappers\country</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
