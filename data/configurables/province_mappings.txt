@@ -4925,39 +4925,40 @@
 	link = { comment = "* " }
 	link = { comment = "* * STATE_SAN_SALVADOR " }
 	link = { vic3 = x3DB036 vic3 = xB0D0C7 hoi4 = 12823 } # STATE_SAN_SALVADOR, STATE_SAN_SALVADOR -> San Salvador
-	link = { vic3 = x107040 vic3 = x52914C vic3 = xCC1FCA hoi4 = 13093 } # STATE_SAN_SALVADOR, STATE_HONDURAS, STATE_SAN_SALVADOR -> San Miguel
+	link = { vic3 = x107040 vic3 = xCC1FCA hoi4 = 13093 } # STATE_SAN_SALVADOR, STATE_SAN_SALVADOR -> San Miguel
 	link = { comment = "* * STATE_GUATEMALA " }
-	link = { vic3 = x7D333F vic3 = xD0B040 hoi4 = 2077 } # STATE_GUATEMALA, STATE_GUATEMALA -> Belize City
-	link = { vic3 = x30E01C vic3 = x50B0C0 vic3 = x65C19A vic3 = x6D71DA vic3 = x702CD9 vic3 = xC67219 vic3 = xD176F3 vic3 = xFA4B41 hoi4 = 4991 } # STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA -> Flores
+	link = { vic3 = x7D333F vic3 = xD0B040 vic3 = x02073E hoi4 = 2077 } # STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA -> Belize City
+	link = { vic3 = x30E01C vic3 = x65C19A vic3 = x6D71DA vic3 = x702CD9 vic3 = xC67219 vic3 = xD176F3 vic3 = xFA4B41 vic3 = x50B0C0 vic3 = x011E0F hoi4 = 4991 } # STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA -> Flores
 	link = { vic3 = x78C465 vic3 = xB2E11E vic3 = xBD8628 vic3 = xD9BEFE hoi4 = 10842 } # STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA -> Quetzaltenango
-	link = { vic3 = x0F5049 vic3 = x42124E vic3 = xD030C0 vic3 = xDEC8D3 hoi4 = 10886 } # STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA -> Ciudad de Guatemala
+	link = { vic3 = x0F5049 vic3 = x42124E vic3 = xD030C0 vic3 = xDEC8D3 vic3 = xA9090A hoi4 = 10886 } # STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA -> Ciudad de Guatemala
 	link = { vic3 = x2D4EB6 vic3 = x464F6A vic3 = x50B040 vic3 = x5449D0 hoi4 = 13085 } # STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA, STATE_GUATEMALA -> Cobán
 	link = { comment = "* * STATE_HONDURAS " }
-	link = { vic3 = x0E5459 vic3 = x10EF40 vic3 = x3D20D1 vic3 = x528F3B vic3 = x55B06A vic3 = x907080 vic3 = xC27057 hoi4 = 2031 } # STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS -> La Ceiba
+	link = { vic3 = x10EF40 vic3 = x3D20D1 vic3 = x528F3B vic3 = x55B06A vic3 = x907080 vic3 = xC27057 vic3 = xE2A108 vic3 = x600AC6 hoi4 = 2031 } # STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS -> La Ceiba
 	link = { vic3 = x5C25CB vic3 = x98E7D7 vic3 = xC77E76 vic3 = xE521E1 vic3 = xEF5C1F vic3 = xFA595E hoi4 = 8017 } # STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS -> San Pedro Sula
-	link = { vic3 = x3C64D6 vic3 = x63D186 vic3 = x907040 vic3 = x90EF40 vic3 = x964591 vic3 = xD08FCB hoi4 = 12865 } # STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS -> Tegucigalpa
+	link = { vic3 = x3C64D6 vic3 = x63D186 vic3 = x907040 vic3 = x90EF40 vic3 = x964591 vic3 = xD08FCB vic3 = x9A0C09 vic3 = x0E5459 hoi4 = 12865 } # STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS, STATE_HONDURAS -> Tegucigalpa
 	link = { comment = "* * STATE_NICARAGUA " }
-	link = { vic3 = x107080 vic3 = x10EFC0 vic3 = x2245C0 hoi4 = 1988 } # STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA -> Bluefields
-	link = { vic3 = x02733F vic3 = x17F33B vic3 = x4A4413 vic3 = x59D231 vic3 = x6C22F2 vic3 = x865E67 vic3 = x9EB0DC vic3 = xAD9EE8 hoi4 = 2075 } # STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA -> Puerto Cabezas
-	link = { vic3 = x074DD8 vic3 = x832DFB vic3 = x95FC5A vic3 = x9CDB2B vic3 = xFD8FA1 hoi4 = 10728 } # STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA -> Estelí
+	link = { vic3 = x107080 vic3 = x2245C0 vic3 = xD50755 vic3 = x10EFC0 hoi4 = 1988 } # STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA -> Bluefields
+	link = { vic3 = x02733F vic3 = x17F33B vic3 = x4A4413 vic3 = x59D231 vic3 = x6C22F2 vic3 = x865E67 vic3 = x9EB0DC vic3 = xAD9EE8 vic3 = x745F00 hoi4 = 2075 } # STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA -> Puerto Cabezas
+	link = { vic3 = x074DD8 vic3 = x832DFB vic3 = x95FC5A vic3 = x9CDB2B vic3 = xFD8FA1 vic3 = xBA0A50 hoi4 = 10728 } # STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA -> Estelí
 	link = { vic3 = x1070C0 vic3 = x68E7F3 vic3 = x9070C0 vic3 = xC9A998 hoi4 = 12738 } # STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA -> Managua
+	link = { vic3 = x18FDFD hoi4 = 13139 hoi4 = 13178 } # STATE_LAKE_NICARAGUA -> (Lake), (Lake)
 	link = { comment = "* * STATE_COSTA_RICA " }
-	link = { vic3 = x10EF80 vic3 = x4D3411 hoi4 = 12878 } # STATE_COSTA_RICA, STATE_COSTA_RICA -> Limón
+	link = { vic3 = x10EF80 vic3 = x4D3411 vic3 = x1A076A hoi4 = 12878 } # STATE_COSTA_RICA, STATE_COSTA_RICA, STATE_COSTA_RICA -> Limón
 	link = { vic3 = x32AA32 vic3 = x395FB6 vic3 = xEF90DC hoi4 = 13087 } # STATE_COSTA_RICA, STATE_COSTA_RICA, STATE_COSTA_RICA -> San José
-	link = { vic3 = x535AE8 vic3 = x8342D1 vic3 = xB0243F vic3 = xD88369 hoi4 = 13092 } # STATE_COSTA_RICA, STATE_COSTA_RICA, STATE_COSTA_RICA, STATE_COSTA_RICA -> Liberia
+	link = { vic3 = x535AE8 vic3 = x8342D1 vic3 = xB0243F vic3 = xD88369 vic3 = x478109 hoi4 = 13092 } # STATE_COSTA_RICA, STATE_COSTA_RICA, STATE_COSTA_RICA, STATE_COSTA_RICA, STATE_COSTA_RICA -> Liberia
 	link = { comment = "* * STATE_PANAMA " }
 	link = { vic3 = x30B080 vic3 = x717275 hoi4 = 1633 } # STATE_PANAMA, STATE_PANAMA -> Santiago de Veraguas
 	link = { vic3 = x357099 vic3 = x47C5F8 vic3 = x8537FE hoi4 = 4611 } # STATE_PANAMA, STATE_PANAMA, STATE_PANAMA -> David
-	link = { vic3 = x50C29C hoi4 = 4624 } # STATE_PANAMA -> Penonomé
+	link = { vic3 = x50C29C vic3 = x910E14 hoi4 = 4624 } # STATE_PANAMA, STATE_PANAMA -> Penonomé
 	link = { vic3 = xD0EF40 hoi4 = 7617 } # STATE_PANAMA -> Colón
-	link = { vic3 = x8A8A20 vic3 = xC650E1 hoi4 = 7630 } # STATE_PANAMA, STATE_PANAMA -> Ciudad de Panamá
+	link = { vic3 = x8A8A20 vic3 = xC650E1 vic3 = xBB820B hoi4 = 7630 } # STATE_PANAMA, STATE_PANAMA, STATE_PANAMA -> Ciudad de Panamá
 	link = { vic3 = xB0A911 vic3 = xB0B080 vic3 = xEE835F hoi4 = 10482 } # STATE_PANAMA, STATE_PANAMA, STATE_PANAMA -> La Palma
 	link = { comment = "* * STATE_HAITI " }
-	link = { vic3 = x1A20A4 vic3 = xEA2C2D hoi4 = 1594 } # STATE_HAITI, STATE_HAITI -> Gonaïves
-	link = { vic3 = x0E35C0 vic3 = x2FC1FC hoi4 = 1635 } # STATE_HAITI, STATE_HAITI -> Les Cayes
+	link = { vic3 = x1A20A4 vic3 = xEA2C2D vic3 = xB0B001 hoi4 = 1594 } # STATE_HAITI, STATE_HAITI, STATE_HAITI -> Gonaïves
+	link = { vic3 = x0E35C0 vic3 = x2FC1FC vic3 = x4FE008 hoi4 = 1635 } # STATE_HAITI, STATE_HAITI, STATE_HAITI -> Les Cayes
 	link = { vic3 = xC6C663 hoi4 = 4641 } # STATE_HAITI -> Port-au-Prince
 	link = { comment = "* * STATE_SANTO_DOMINGO " }
-	link = { vic3 = x1785E8 hoi4 = 4598 } # STATE_SANTO_DOMINGO -> Santiago de los Caballeros
+	link = { vic3 = x1785E8 vic3 = x907A0C hoi4 = 4598 } # STATE_SANTO_DOMINGO, STATE_SANTO_DOMINGO -> Santiago de los Caballeros
 	link = { vic3 = x41A862 vic3 = x877F90 vic3 = x961483 hoi4 = 7632 } # STATE_SANTO_DOMINGO, STATE_SANTO_DOMINGO, STATE_SANTO_DOMINGO -> Barahona
 	link = { vic3 = x7252EC vic3 = xACBDD9 hoi4 = 7660 } # STATE_SANTO_DOMINGO, STATE_SANTO_DOMINGO -> Ciudad Trujillo
 	link = { vic3 = x317080 hoi4 = 10484 } # STATE_SANTO_DOMINGO -> San Francisco de Macorís
@@ -4973,9 +4974,9 @@
 	link = { vic3 = x707080 hoi4 = 3284 } # STATE_WEST_INDIES -> Port of Spain
 	link = { vic3 = x30F080 vic3 = x606060 hoi4 = 4155 } # STATE_WEST_INDIES, STATE_WEST_INDIES -> Charlotte Amalie
 	link = { vic3 = x335389 vic3 = x89334D vic3 = x89337A hoi4 = 4450 } # STATE_WEST_INDIES, STATE_WEST_INDIES, STATE_WEST_INDIES -> St. John's
-	link = { hoi4 = 7123 } # NOTHING -> Roseau
+	link = { vic3 = x70F001 hoi4 = 7123 } # STATE_WEST_INDIES -> Roseau
 	link = { vic3 = x33895B hoi4 = 9377 } # STATE_WEST_INDIES -> Pointe-à-Pitre
-	link = { hoi4 = 11106 } # NOTHING -> St. George's
+	link = { vic3 = xF0F001 hoi4 = 11106 } # STATE_WEST_INDIES -> St. George's
 	link = { vic3 = x445B6C hoi4 = 11350 } # STATE_WEST_INDIES -> Bridgetown
 	link = { vic3 = x5299CA hoi4 = 13009 } # STATE_WEST_INDIES -> Castries
 	link = { vic3 = xD496B1 hoi4 = 13012 } # STATE_WEST_INDIES -> Scarborough
@@ -4984,15 +4985,15 @@
 	link = { vic3 = x7070B8 hoi4 = 12304 } # STATE_JAMAICA -> Kingston
 	link = { vic3 = x1E761E vic3 = x535B49 hoi4 = 12477 } # STATE_JAMAICA, STATE_JAMAICA -> Montego Bay
 	link = { comment = "* * STATE_CUBA " }
-	link = { vic3 = xB48FF1 hoi4 = 1550 } # STATE_CUBA -> Santiago de Cuba
+	link = { vic3 = xB48FF1 vic3 = x30B001 hoi4 = 1550 } # STATE_CUBA, STATE_CUBA -> Santiago de Cuba
 	link = { vic3 = x152D1C vic3 = x9957D8 vic3 = xEBE1C7 hoi4 = 4476 } # STATE_CUBA, STATE_CUBA, STATE_CUBA -> Camagüey
 	link = { vic3 = x61FC10 vic3 = xB325C7 vic3 = xF3F2C9 hoi4 = 4600 } # STATE_CUBA, STATE_CUBA, STATE_CUBA -> Pinar del Río
 	link = { vic3 = x58C211 hoi4 = 7451 } # STATE_CUBA -> Santa Clara
 	link = { vic3 = x0DA38C vic3 = xD810EC hoi4 = 7546 } # STATE_CUBA, STATE_CUBA -> Las Tunas
-	link = { vic3 = x69C041 hoi4 = 7590 } # STATE_CUBA -> Guantánamo
+	link = { vic3 = x69C041 vic3 = xE70FA4 hoi4 = 7590 } # STATE_CUBA, STATE_CUBA -> Guantánamo
 	link = { vic3 = xDCAB5D vic3 = xFCDEED hoi4 = 7622 } # STATE_CUBA, STATE_CUBA -> Havana
 	link = { vic3 = x20EFEA vic3 = xC464AE hoi4 = 10374 } # STATE_CUBA, STATE_CUBA -> Ciego de Ávila
-	link = { vic3 = xC3EB7D vic3 = xFE4123 hoi4 = 10498 } # STATE_CUBA, STATE_CUBA -> Matanzas
+	link = { vic3 = xC3EB7D vic3 = xFE4123 vic3 = x4DD008 vic3 = xA70607 hoi4 = 10498 } # STATE_CUBA, STATE_CUBA, STATE_CUBA, STATE_CUBA -> Matanzas
 	link = { vic3 = x519343 hoi4 = 12347 } # STATE_CUBA -> Holguín
 	link = { comment = "* " }
 	link = { comment = "* **********" }
