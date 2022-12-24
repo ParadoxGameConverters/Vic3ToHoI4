@@ -5,6 +5,7 @@
 #include "src/hoi4_world/world/hoi4_world.h"
 #include "src/hoi4_world/world/hoi4_world_converter.h"
 #include "src/mappers/country/country_mapper.h"
+#include "src/mappers/country/country_mapper_creator.h"
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/mappers/provinces/province_mapper_importer.h"
 #include "src/out_hoi4/out_mod.h"
@@ -21,7 +22,7 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const 
 
    commonItems::ModFilesystem hoi4_mod_filesystem(configuration.hoi4_directory, {});
 
-   constexpr mappers::CountryMapper country_mapper;
+   mappers::CountryMapper country_mapper = mappers::CreateCountryMappings(source_world.GetCountries());
    const auto province_mapper = mappers::ProvinceMapperImporter(hoi4_mod_filesystem).ImportProvinceMappings();
    province_mapper.CheckAllVic3ProvincesMapped(source_world.GetProvinceDefinitions().GetProvinceDefinitions());
 

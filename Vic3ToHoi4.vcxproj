@@ -89,6 +89,8 @@
     <ClCompile Include="src\hoi4_world\states\hoi4_states_converter.cpp" />
     <ClCompile Include="src\hoi4_world\world\hoi4_world_converter.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\mappers\country\country_mapper.cpp" />
+    <ClCompile Include="src\mappers\country\country_mapper_creator.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper_importer.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper_importer.h" />
@@ -153,6 +155,7 @@
     <ClInclude Include="src\hoi4_world\world\hoi4_world.h" />
     <ClInclude Include="src\hoi4_world\world\hoi4_world_converter.h" />
     <ClInclude Include="src\mappers\country\country_mapper.h" />
+    <ClInclude Include="src\mappers\country\country_mapper_creator.h" />
     <ClInclude Include="src\mappers\provinces\province_mapper.h" />
     <ClInclude Include="src\mappers\provinces\province_mapping.h" />
     <ClInclude Include="src\mappers\provinces\province_mapping_importer.h" />

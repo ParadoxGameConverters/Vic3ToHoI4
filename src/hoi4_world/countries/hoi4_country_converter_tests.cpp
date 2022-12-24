@@ -13,7 +13,7 @@ namespace hoi4
 
 TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
 {
-   constexpr mappers::CountryMapper country_mapper;
+   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
    const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
    const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
 

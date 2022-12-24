@@ -1,4 +1,6 @@
+#include <map>
 #include <sstream>
+#include <string>
 
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
@@ -14,7 +16,7 @@ namespace hoi4
 
 TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 {
-   constexpr mappers::CountryMapper country_mapper;
+   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
    const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
    const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
 
