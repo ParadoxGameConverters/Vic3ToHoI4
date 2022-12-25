@@ -26,6 +26,7 @@ int rakaly_melt_error_code(const struct MeltedBuffer *res);
 
 /**
  * Calculate the number of bytes in the for the melted output's error message.
+ * The length excludes null termination
  *
  * # Safety
  *
@@ -45,6 +46,8 @@ int rakaly_melt_error_length(const struct MeltedBuffer *res);
  * If there are no recent errors then this returns `0` (because we wrote 0
  * bytes). `-1` is returned if there are any errors, for example when passed a
  * null pointer or a buffer of insufficient size.
+ *
+ * The buffer will not be null terminated.
  *
  * # Safety
  *
