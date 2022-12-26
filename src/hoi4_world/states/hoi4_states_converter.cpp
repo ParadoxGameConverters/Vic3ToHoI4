@@ -105,14 +105,17 @@ std::optional<int> DetermineStateWithMostProvinces(const std::vector<std::string
 
 
 std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::string, int>& vic3_province_to_state_id_map,
-    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings)
+    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
+    const maps::ProvinceDefinitions& hoi4_province_definitions)
 {
    std::map<int, std::set<int>> state_id_to_hoi4_provinces;
 
    for (const auto& [hoi4_province, vic3_provinces]: hoi4_to_vic3_province_mappings)
    {
-      // todo: if we can tell they're invalid hoi4 provinces, skip them here
-      // else, trim invalid vic3 provinces
+      if (!hoi4_province_definitions.IsLandProvince(std::to_string(hoi4_province)))
+      {
+         continue;
+      }
 
       if (vic3_provinces.empty())
       {
@@ -290,7 +293,9 @@ std::vector<hoi4::State> hoi4::StatesConverter::ConvertStates(const std::map<int
    const std::map<std::string, int> vic3_province_to_state_id_map =
        MapVic3ProvincesToStates(states, vic3_province_definitions);
    const std::map<int, std::set<int>> state_id_to_hoi4_provinces =
-       PlaceHoi4ProvincesInStates(vic3_province_to_state_id_map, hoi4_to_vic3_province_mappings);
+       PlaceHoi4ProvincesInStates(vic3_province_to_state_id_map,
+           hoi4_to_vic3_province_mappings,
+           hoi4_province_definitions);
    return CreateStates(states,
        state_id_to_hoi4_provinces,
        map_data,
