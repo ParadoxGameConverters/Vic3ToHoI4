@@ -346,7 +346,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
        {50, {"0x000005"}},
        {90, {"0x000009"}},
    };
-   maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "50", "90"}, {}, {}, {}};
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
    hoi4::StrategicRegions strategic_regions({}, {});
    const mappers::CountryMapper country_mapper({});

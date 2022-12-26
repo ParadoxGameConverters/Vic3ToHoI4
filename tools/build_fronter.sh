@@ -3,4 +3,4 @@
 cd external/Fronter.NET || exit
 dotnet restore
 dotnet build --configuration=release
-cp -r Release/* ../../build/Release-Linux
+cp -r ../Release/* ../../build/Release-Linux
