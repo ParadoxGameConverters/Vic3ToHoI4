@@ -45,7 +45,7 @@ bool AllVic3ProvincesAreInSameState(const std::vector<std::string>& vic3_provinc
 {
    return std::all_of(vic3_provinces.begin(),
        vic3_provinces.end(),
-       [vic3_province_to_state_id_map, state_to_match](const std::string& province_color) {
+       [&vic3_province_to_state_id_map, state_to_match](const std::string& province_color) {
           const auto& state = vic3_province_to_state_id_map.find(province_color);
           return (state != vic3_province_to_state_id_map.end()) && (state->second == state_to_match);
        });
