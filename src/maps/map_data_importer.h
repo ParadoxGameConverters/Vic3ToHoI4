@@ -3,6 +3,11 @@
 
 
 
+#include <map>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
 #include "src/maps/map_data.h"
 
 
@@ -30,7 +35,7 @@ class MapDataImporter
 
    std::map<std::string, std::set<std::string>> province_neighbors_;
    std::map<std::string, BordersWith> borders_;
-   std::map<std::string, ProvincePoints> the_province_points_;
+   std::unordered_map<std::string, ProvincePoints> the_province_points_;
 
    ProvinceDefinitions province_definitions_;
    std::map<Point, std::string> points_to_provinces_;

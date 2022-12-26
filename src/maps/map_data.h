@@ -7,6 +7,7 @@
 #include <optional>
 #include <set>
 #include <string_view>
+#include <unordered_map>
 
 #include "external/commonItems/Color.h"
 #include "external/commonItems/ModLoader/ModFilesystem.h"
@@ -28,7 +29,7 @@ class MapData
   public:
    MapData(std::map<std::string, std::set<std::string>> province_neighbors,
        std::map<std::string, BordersWith> borders,
-       std::map<std::string, ProvincePoints> the_province_points,
+       std::unordered_map<std::string, ProvincePoints> the_province_points,
        ProvinceDefinitions province_definitions,
        std::map<Point, std::string> points_to_provinces):
        province_neighbors_(std::move(province_neighbors)),
@@ -50,7 +51,7 @@ class MapData
   private:
    std::map<std::string, std::set<std::string>> province_neighbors_;
    std::map<std::string, BordersWith> borders_;
-   std::map<std::string, ProvincePoints> the_province_points_;
+   std::unordered_map<std::string, ProvincePoints> the_province_points_;
 
    ProvinceDefinitions province_definitions_;
    std::map<Point, std::string> points_to_provinces_;
