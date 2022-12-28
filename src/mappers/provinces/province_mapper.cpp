@@ -42,7 +42,7 @@ std::set<std::string> mappers::ProvinceMapper::GetEquivalentVic3Provinces(const 
          continue;
       }
 
-      for (const auto vic3_province: mapping->second)
+      for (const auto& vic3_province: mapping->second)
       {
          equivalent_provinces.insert(vic3_province);
       }

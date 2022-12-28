@@ -76,7 +76,7 @@ std::optional<int> DetermineStateWithMostProvinces(const std::vector<std::string
     const std::map<std::string, int>& vic3_province_to_state_id_map)
 {
    std::map<int, int> state_counts;
-   for (const auto vic3_province: vic3_provinces)
+   for (const auto& vic3_province: vic3_provinces)
    {
       const auto& state = vic3_province_to_state_id_map.find(vic3_province);
       if (state == vic3_province_to_state_id_map.end())
