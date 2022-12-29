@@ -2234,7 +2234,7 @@
 	link = { hoi4 = 11295 hoi4 = 9339 } # NOTHING -> Krasnaya Gorbatka, Dobrinka
 	link = { vic3 = xBEE23A hoi4 = 9355 } # STATE_KURSK -> Oryol
 	link = { hoi4 = 9384 } # NOTHING -> Khotynets
-	link = { hoi4 = 17 hoi4 = 9424 } # NOTHING -> Wrzesnia, Roven'ki
+	link = { hoi4 = 9424 } # NOTHING -> Roven'ki
 	link = { vic3 = x9E5DCB hoi4 = 9448 } # STATE_KURSK -> Panino
 	link = { vic3 = xF553F9 hoi4 = 9489 } # STATE_KURSK -> Krasnoye
 	link = { vic3 = x40DFDF hoi4 = 11659 hoi4 = 9518 } # STATE_KURSK -> Debrecen, Prokhorovka
@@ -2611,68 +2611,67 @@
 	link = { vic3 = x9444C9 hoi4 = 402 } # STATE_MAZOVIA -> Siedlce
 	link = { vic3 = x009F60 hoi4 = 524 } # STATE_MAZOVIA -> Legionowo
 	link = { vic3 = xA3A3A9 hoi4 = 3544 } # STATE_MAZOVIA -> Warszawa
+	link = { vic3 = x46B451 hoi4 = 9290 } # STATE_MAZOVIA -> Ciechanów
 	link = { vic3 = xDC58D0 hoi4 = 6567 } # STATE_MAZOVIA -> Wyszków
-	link = { vic3 = x46B451 vic3 = xBF9F20 hoi4 = 9290 } # STATE_MAZOVIA, STATE_EAST_PRUSSIA -> Ciechanów
-	link = { hoi4 = 9316 } # NOTHING -> Ostroleka
-	link = { vic3 = xC17590 hoi4 = 11329 } # STATE_MAZOVIA -> Kolno
+	link = { vic3 = x4F022C hoi4 = 9316 } # STATE_MAZOVIA -> Ostroleka
+	link = { vic3 = xC17590 hoi4 = 11329 hoi4 = 11274 } # STATE_MAZOVIA -> Kolno, Lomza
 	link = { vic3 = x809F60 hoi4 = 11357 } # STATE_MAZOVIA -> Grajewo
 	link = { vic3 = x1AA8FB hoi4 = 11385 } # STATE_MAZOVIA -> Ostrów Mazowiecka
 	link = { vic3 = x4161A0 hoi4 = 12562 } # STATE_MAZOVIA -> Minsk Mazowiecki
 	link = { comment = "* * STATE_SILESIA " }
-	link = { vic3 = x732DC0 hoi4 = 552 } # STATE_SILESIA -> Liegnitz
-	link = { hoi4 = 3485 } # NOTHING -> Glatz
-	link = { hoi4 = 3545 } # NOTHING -> Waldenburg
-	link = { vic3 = x7B2F62 vic3 = x5E9091 hoi4 = 6464 } # STATE_SILESIA, STATE_SILESIA -> Katowice
+	link = { vic3 = x732DC0 hoi4 = 9470 } # STATE_SILESIA -> Glogau
+	link = { vic3 = xC108EA hoi4 = 552 } # STATE_SILESIA -> Liegnitz
+	link = { vic3 = xC00121 hoi4 = 3545 hoi4 = 3485 } # STATE_SILESIA -> Waldenburg, Glatz
+	link = { vic3 = x5E9091 hoi4 = 6464 } # STATE_SILESIA -> Katowice
+	link = { vic3 = x7B2F62 hoi4 = 13205 } # STATE_SILESIA -> Tychy
 	link = { vic3 = x88194B hoi4 = 6512 } # STATE_SILESIA -> Neisse
 	link = { vic3 = x94D624 hoi4 = 6534 } # STATE_SILESIA -> Oels
 	link = { vic3 = x1B72C9 hoi4 = 6595 hoi4 = 3438 } # STATE_SILESIA -> Bunzlau, Sagan
 	link = { vic3 = xAF9F20 hoi4 = 9457 } # STATE_SILESIA -> Rybnick
 	link = { vic3 = x90B12B hoi4 = 426 hoi4 = 9511 } # STATE_SILESIA -> Zernograd, Oppeln
-	link = { hoi4 = 9921 } # NOTHING -> Akhisar
 	link = { vic3 = x6E617F hoi4 = 9570 } # STATE_SILESIA -> Breslau
 	link = { vic3 = x272E48 hoi4 = 11517 hoi4 = 11401 } # STATE_SILESIA -> Lauban, Liberec
 	link = { vic3 = xCE74AB hoi4 = 11414 } # STATE_SILESIA -> Trutnov
 	link = { vic3 = x821F52 hoi4 = 11467 } # STATE_SILESIA -> Gleiwitz
 	link = { comment = "* * STATE_GREATER_POLAND " }
 	link = { vic3 = x1F6F99 hoi4 = 467 } # STATE_GREATER_POLAND -> Grójec
-	link = { vic3 = xC02B8C hoi4 = 493 } # STATE_GREATER_POLAND -> Borysew
-	link = { vic3 = xC0E0A0 hoi4 = 506 } # STATE_GREATER_POLAND -> Tarnowskie Gory
+	link = { vic3 = xC02B8C hoi4 = 493 hoi4 = 548 } # STATE_GREATER_POLAND -> Borysew, Gostynin
+	link = { vic3 = xC0E0A0 hoi4 = 506 hoi4 = 479 } # STATE_GREATER_POLAND -> Tarnowskie Gory, Kreuzburg
 	link = { vic3 = x1CB894 hoi4 = 584 } # STATE_GREATER_POLAND -> land
 	link = { vic3 = xE165F5 hoi4 = 3230 } # STATE_GREATER_POLAND -> Plock
 	link = { vic3 = x577EE4 hoi4 = 3482 } # STATE_GREATER_POLAND -> Tomaszów Mazowiecki
-	link = { vic3 = x802161 hoi4 = 6259 } # STATE_GREATER_POLAND -> Plonsk
-	link = { hoi4 = 6401 } # NOTHING -> Wloclawek
+	link = { vic3 = x802161 hoi4 = 6259 hoi4 = 6321 } # STATE_GREATER_POLAND -> Plonsk, Mlawa
 	link = { vic3 = x0E40DA hoi4 = 9400 } # STATE_GREATER_POLAND -> Pruszków
-	link = { vic3 = x24BBED hoi4 = 9439 } # STATE_GREATER_POLAND -> Turek
-	link = { vic3 = x471A61 vic3 = xA03316 hoi4 = 9508 } # STATE_GREATER_POLAND, STATE_GREATER_POLAND -> Lódz
-	link = { vic3 = x738072 hoi4 = 9546 } # STATE_GREATER_POLAND -> Kalisz
-	link = { hoi4 = 11428 } # NOTHING -> Piotrków Trybunalski
+	link = { vic3 = x2F0D92 hoi4 = 6401 } # STATE_GREATER_POLAND -> Wloclawek
+	link = { vic3 = x24BBED hoi4 = 9439 hoi4 = 11515 } # STATE_GREATER_POLAND -> Turek, Konin
+	link = { vic3 = xA03316 hoi4 = 9508 hoi4 = 11492 } # STATE_GREATER_POLAND -> Lódz, Sochaczew
+	link = { vic3 = x738072 hoi4 = 9546 hoi4 = 11558 } # STATE_GREATER_POLAND -> Kalisz, Ostrów Wielkopolski
+	link = { vic3 = xDE06BA vic3 = x471A61 hoi4 = 11428 } # STATE_GREATER_POLAND, STATE_GREATER_POLAND -> Piotrków Trybunalski
 	link = { vic3 = x8FE2DB hoi4 = 11532 } # STATE_GREATER_POLAND -> Skarzysko-Kamienna
 	link = { comment = "* * STATE_LESSER_POLAND " }
-	link = { hoi4 = 562 } # NOTHING -> Ostrowiec
-	link = { vic3 = x5FF022 hoi4 = 3497 } # STATE_LESSER_POLAND -> Staszow
+	link = { vic3 = xA7B86B hoi4 = 3497 } # STATE_LESSER_POLAND -> Staszow
 	link = { vic3 = x40DF20 hoi4 = 3521 } # STATE_LESSER_POLAND -> Lukow
-	link = { hoi4 = 3559 } # NOTHING -> Pulawy
-	link = { vic3 = xC061A0 hoi4 = 3586 } # STATE_LESSER_POLAND -> Wloszczowa
+	link = { vic3 = xC061A0 vic3 = x29408F hoi4 = 3586 } # STATE_LESSER_POLAND, STATE_LESSER_POLAND -> Wloszczowa
 	link = { vic3 = x9FEDC5 vic3 = xAB3C62 hoi4 = 6416 } # STATE_LESSER_POLAND, STATE_LESSER_POLAND -> Starachowice
 	link = { vic3 = x496950 hoi4 = 6484 } # STATE_LESSER_POLAND -> Lubartow
-	link = { vic3 = xA7B86B vic3 = xFCC35F hoi4 = 6499 } # STATE_LESSER_POLAND, STATE_WEST_GALICIA -> Mielec
-	link = { hoi4 = 6511 } # NOTHING -> Piaseczno
-	link = { vic3 = x44ACBB vic3 = x51A0E0 hoi4 = 6580 } # STATE_LESSER_POLAND, STATE_LESSER_POLAND -> Zamosc
-	link = { vic3 = x57A53D hoi4 = 11274 hoi4 = 9427 } # STATE_LESSER_POLAND -> Lomza, Kraków
-	link = { hoi4 = 9452 } # NOTHING -> Chelm
+	link = { vic3 = x955F09 hoi4 = 6511 } # STATE_LESSER_POLAND -> Piaseczno
+	link = { vic3 = x6000DF hoi4 = 3458 hoi4 = 562 } # STATE_LESSER_POLAND -> Radom, Ostrowiec
+	link = { vic3 = xEB0783 hoi4 = 9452 } # STATE_LESSER_POLAND -> Chelm
+	link = { vic3 = x51A0E0 hoi4 = 6580 } # STATE_LESSER_POLAND -> Zamosc
+	link = { vic3 = x44ACBB hoi4 = 536 } # STATE_LESSER_POLAND -> Krystynopol
+	link = { vic3 = x57A53D vic3 = xD0A0E0 hoi4 = 9427 } # STATE_LESSER_POLAND, STATE_LESSER_POLAND -> Kraków
+	link = { vic3 = xE0BB00 hoi4 = 3559 } # STATE_LESSER_POLAND -> Pulawy
 	link = { vic3 = xF73169 hoi4 = 9521 } # STATE_LESSER_POLAND -> Krasnik
 	link = { vic3 = xAEB9A5 hoi4 = 11399 } # STATE_LESSER_POLAND -> Lublin
-	link = { vic3 = x29408F hoi4 = 11430 } # STATE_LESSER_POLAND -> Kielce
+	link = { vic3 = x5FF022 hoi4 = 11430 } # STATE_LESSER_POLAND -> Kielce
 	link = { comment = "* * STATE_WEST_PRUSSIA " }
 	link = { vic3 = x41A021 hoi4 = 243 } # STATE_WEST_PRUSSIA -> Inowroclaw
-	link = { vic3 = xFCC7B7 hoi4 = 279 } # STATE_POSEN -> land
-	link = { vic3 = x178C99 hoi4 = 334 } # STATE_WEST_PRUSSIA -> Chojnice
+	link = { vic3 = x178C99 vic3 = x945000 hoi4 = 334 } # STATE_WEST_PRUSSIA, STATE_WEST_PRUSSIA -> Chojnice
 	link = { vic3 = x80A0A0 hoi4 = 362 } # STATE_WEST_PRUSSIA -> Gdansk
 	link = { vic3 = x7CB839 hoi4 = 389 } # STATE_WEST_PRUSSIA -> Tczew
-	link = { hoi4 = 3295 } # NOTHING -> Torun
+	link = { vic3 = x55FD02 hoi4 = 3295 } # STATE_WEST_PRUSSIA -> Torun
 	link = { vic3 = xBAF66D hoi4 = 3324 } # STATE_WEST_PRUSSIA -> Swiecie
-	link = { vic3 = x7A6061 hoi4 = 3351 } # STATE_WEST_PRUSSIA -> Osterode
+	link = { vic3 = x7A6061 hoi4 = 3351 hoi4 = 3380 } # STATE_WEST_PRUSSIA -> Osterode, Marienburg
 	link = { vic3 = x374AC3 hoi4 = 6347 } # STATE_WEST_PRUSSIA -> Brodnica
 	link = { vic3 = x6E8875 hoi4 = 6402 } # STATE_WEST_PRUSSIA -> Elbing
 	link = { vic3 = x0180A0 hoi4 = 9252 } # STATE_WEST_PRUSSIA -> Deutsch Krone
@@ -2681,15 +2680,16 @@
 	link = { comment = "* * STATE_EAST_PRUSSIA " }
 	link = { vic3 = xC04521 hoi4 = 266 } # STATE_EAST_PRUSSIA -> Lötzen
 	link = { vic3 = x981EBE hoi4 = 281 } # STATE_EAST_PRUSSIA -> Ragnit
-	link = { vic3 = x2399A2 vic3 = x40A0A0 hoi4 = 348 } # STATE_EAST_PRUSSIA, STATE_EAST_PRUSSIA -> Tilsit
+	link = { vic3 = x2399A2 hoi4 = 348 } # STATE_EAST_PRUSSIA -> Tilsit
 	link = { vic3 = x4121A0 hoi4 = 395 } # STATE_EAST_PRUSSIA -> Insterburg
-	link = { vic3 = x72FDF3 hoi4 = 3288 } # STATE_EAST_PRUSSIA -> Klaipeda
+	link = { vic3 = x72FDF3 vic3 = x40A0A0 hoi4 = 3288 } # STATE_EAST_PRUSSIA, STATE_EAST_PRUSSIA -> Klaipeda
 	link = { vic3 = xC020A0 hoi4 = 3384 } # STATE_EAST_PRUSSIA -> Gumbinnen
-	link = { vic3 = x1E73B9 vic3 = x975566 hoi4 = 6332 } # STATE_EAST_PRUSSIA, STATE_EAST_PRUSSIA -> Königsberg
+	link = { vic3 = x975566 hoi4 = 11265 } # STATE_EAST_PRUSSIA -> Cranz
+	link = { vic3 = x1E73B9 hoi4 = 6332 } # STATE_EAST_PRUSSIA -> Königsberg
 	link = { vic3 = xEEF586 hoi4 = 6375 } # STATE_EAST_PRUSSIA -> Allenstein
 	link = { vic3 = xAEA6D6 hoi4 = 9327 } # STATE_EAST_PRUSSIA -> Goldap
-	link = { vic3 = x9FD037 hoi4 = 9346 } # STATE_EAST_PRUSSIA -> Soldau
-	link = { hoi4 = 9372 } # NOTHING -> Ortelsburg
+	link = { vic3 = x9FD037 vic3 = xBF9F20 hoi4 = 9346 } # STATE_EAST_PRUSSIA, STATE_EAST_PRUSSIA -> Soldau
+	link = { vic3 = x47C900 hoi4 = 9372 } # STATE_EAST_PRUSSIA -> Ortelsburg
 	link = { vic3 = xABC4AE hoi4 = 9398 } # STATE_EAST_PRUSSIA -> Rastenburg
 	link = { vic3 = x5428E6 hoi4 = 11245 } # STATE_EAST_PRUSSIA -> Bartenstein
 	link = { vic3 = x7D6DC3 hoi4 = 11386 } # STATE_EAST_PRUSSIA -> Lyck
@@ -2697,13 +2697,14 @@
 	link = { vic3 = x635336 hoi4 = 3283 } # STATE_POSEN -> Trebnitz
 	link = { vic3 = xC02121 hoi4 = 3381 } # STATE_POSEN -> Mogilno
 	link = { vic3 = x999CEE hoi4 = 3460 } # STATE_POSEN -> Leszno
+	link = { vic3 = xE513C0 hoi4 = 3532 } # STATE_POSEN -> Koscian
 	link = { vic3 = x2141A0 hoi4 = 3510 } # STATE_POSEN -> Dyhernfurth
-	link = { vic3 = xC32D8B hoi4 = 3532 } # STATE_POSEN -> Koscian
+	link = { vic3 = xC32D8B hoi4 = 388 } # STATE_POSEN -> land
 	link = { vic3 = x41E0A0 hoi4 = 6462 } # STATE_POSEN -> Zwickau
-	link = { hoi4 = 6558 } # NOTHING -> Poznan
-	link = { vic3 = xE513C0 hoi4 = 9470 } # STATE_POSEN -> Glogau
-	link = { vic3 = xF962B2 hoi4 = 9532 } # STATE_POSEN -> Srem
+	link = { vic3 = x2E6001 hoi4 = 6558 } # STATE_POSEN -> Poznan
+	link = { vic3 = xF962B2 hoi4 = 9532 hoi4 = 17 } # STATE_POSEN -> Srem, Wrzesnia
 	link = { vic3 = x085962 vic3 = x1FA1E1 hoi4 = 11232 } # STATE_POSEN, STATE_POSEN -> Wagrowiec
+	link = { vic3 = xFCC7B7 hoi4 = 279 } # STATE_POSEN -> land
 	link = { comment = "* * STATE_WEST_GALICIA " }
 	link = { vic3 = x1161E0 hoi4 = 9317 hoi4 = 417 } # STATE_WEST_GALICIA -> Limbaži, Nowy Sacz
 	link = { vic3 = xA63CE6 hoi4 = 466 } # STATE_WEST_GALICIA -> Krosno
@@ -2711,10 +2712,12 @@
 	link = { vic3 = xC7B7B8 hoi4 = 3434 } # STATE_WEST_GALICIA -> Przemysl
 	link = { vic3 = x5F3456 hoi4 = 6522 } # STATE_WEST_GALICIA -> Rzeszów
 	link = { vic3 = x90E060 hoi4 = 6604 } # STATE_WEST_GALICIA -> Humenné
-	link = { vic3 = x906060 vic3 = x9061E0 hoi4 = 9412 } # STATE_WEST_GALICIA, STATE_WEST_GALICIA -> Oswiecim
+	link = { vic3 = x9061E0 hoi4 = 9412 } # STATE_WEST_GALICIA -> Oswiecim
+	link = { vic3 = x906060 hoi4 = 11398 } # STATE_WEST_GALICIA -> Skawina
 	link = { vic3 = x56599F hoi4 = 9494 } # STATE_WEST_GALICIA -> Jaroslaw
-	link = { vic3 = x11E061 vic3 = xA550A9 vic3 = xD0A0E0 hoi4 = 11413 } # STATE_WEST_GALICIA, STATE_WEST_GALICIA, STATE_LESSER_POLAND -> Bochnia
-	link = { hoi4 = 11507 } # NOTHING -> Stalowa Wola
+	link = { vic3 = x11E061 vic3 = xA550A9 hoi4 = 11413 } # STATE_WEST_GALICIA, STATE_WEST_GALICIA -> Bochnia
+	link = { vic3 = xFCC35F hoi4 = 6499 } # STATE_WEST_GALICIA -> Mielec
+	link = { vic3 = xC8690C hoi4 = 11507 } # STATE_WEST_GALICIA -> Stalowa Wola
 	link = { comment = "* * STATE_EAST_GALICIA " }
 	link = { vic3 = xA3CF78 vic3 = xEFE270 hoi4 = 438 } # STATE_EAST_GALICIA, STATE_EAST_GALICIA -> Czortków
 	link = { vic3 = x053163 hoi4 = 491 } # STATE_EAST_GALICIA -> Brzezany
