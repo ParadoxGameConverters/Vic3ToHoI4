@@ -4,7 +4,7 @@
 
 std::optional<std::string> vic3::ProvinceDefinitions::GetProvinceDefinition(int province_number) const
 {
-   if (province_definitions_.size() < province_number)
+   if (province_definitions_.size() < static_cast<unsigned int>(province_number))
    {
       return std::nullopt;
    }
