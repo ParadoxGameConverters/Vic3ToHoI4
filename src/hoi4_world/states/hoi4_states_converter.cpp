@@ -179,7 +179,8 @@ std::vector<std::set<int>> GetConnectedProvinceSets(std::set<int> province_numbe
             }
             if (!closed_provinces.contains(neighbor))
             {
-               if (hoi4_province_definitions.IsLandProvince(std::to_string(neighbor)))
+               if (hoi4_province_definitions.IsLandProvince(std::to_string(neighbor)) &&
+                   province_numbers.contains(neighbor))
                {
                   open_provinces.push(neighbor);
                   closed_provinces.insert(neighbor);
