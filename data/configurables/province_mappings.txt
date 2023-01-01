@@ -8531,37 +8531,37 @@
 	link = { vic3 = x1CA52F vic3 = x4ED0E9 vic3 = x503660 vic3 = xC3C06E vic3 = xF1B27F hoi4 = 855 } # STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN -> Okha
 	link = { vic3 = x47B65C vic3 = xD0294D hoi4 = 1322 } # STATE_SAKHALIN, STATE_SAKHALIN -> Tomarioru
 	link = { vic3 = x041FF2 vic3 = x1B4E8D vic3 = x22C190 vic3 = xB8277E hoi4 = 1742 } # STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN -> Nogliki
-	link = { vic3 = x02BAB7 vic3 = x1CAAE0 vic3 = x768145 vic3 = x9628A0 vic3 = xDFA060 hoi4 = 1755 } # STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN -> Tymovskoye
-	link = { vic3 = xA5E421 vic3 = xBE16C2 vic3 = xE99CEA vic3 = xF15B61 hoi4 = 1820 } # STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN -> Shikuka
-	link = { vic3 = x2010C0 vic3 = x2492AA hoi4 = 12446 } # STATE_SAKHALIN, STATE_SAKHALIN -> Toyohara
+	link = { vic3 = x02BAB7 vic3 = x1CAAE0 vic3 = x768145 vic3 = x9628A0 vic3 = xDFA060 vic3 = xEAFA0A vic3 = x7608FE hoi4 = 1755 } # STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN -> Tymovskoye
+	link = { vic3 = xA5E421 vic3 = xBE16C2 vic3 = xE99CEA vic3 = xF15B61 vic3 = x3405B2 hoi4 = 1820 } # STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN -> Shikuka
+	link = { vic3 = x2010C0 vic3 = x2492AA vic3 = x9E3A0A hoi4 = 12446 } # STATE_SAKHALIN, STATE_SAKHALIN, STATE_SAKHALIN -> Toyohara
 	link = { comment = "* * STATE_HOKKAIDO " }
 	link = { vic3 = x5B9D2D vic3 = x9E56C2 hoi4 = 1512 } # STATE_HOKKAIDO, STATE_HOKKAIDO -> Kushiro
 	link = { vic3 = x601140 hoi4 = 1515 } # STATE_HOKKAIDO -> land
-	link = { vic3 = xEEB7F4 hoi4 = 1642 } # STATE_HOKKAIDO -> Nayoro
+	link = { vic3 = xEEB7F4 vic3 = xC85C0C vic3 = x420E86 hoi4 = 1642 } # STATE_HOKKAIDO, STATE_HOKKAIDO, STATE_HOKKAIDO -> Nayoro
 	link = { vic3 = x40BDB8 vic3 = xA090C0 hoi4 = 3962 } # STATE_HOKKAIDO, STATE_HOKKAIDO -> Hakodate
 	link = { vic3 = x103C2B vic3 = x1E9A93 hoi4 = 4576 } # STATE_HOKKAIDO, STATE_HOKKAIDO -> Wakkanai
 	link = { vic3 = x70C55B vic3 = x86757A hoi4 = 4646 } # STATE_HOKKAIDO, STATE_HOKKAIDO -> Kitami
-	link = { vic3 = x17C8CA hoi4 = 7532 } # STATE_HOKKAIDO -> Otaru
+	link = { vic3 = x17C8CA vic3 = x210B6E vic3 = xF17C01 hoi4 = 7532 } # STATE_HOKKAIDO, STATE_HOKKAIDO, STATE_HOKKAIDO -> Otaru
+	link = { vic3 = x03E00D hoi4 = 12421 } # STATE_HOKKAIDO -> Asahigawa
 	link = { vic3 = x493B76 hoi4 = 7595 } # STATE_HOKKAIDO -> Obihiro
 	link = { vic3 = xA011C0 hoi4 = 10444 } # STATE_HOKKAIDO -> Sapporo
 	link = { vic3 = x65D8B2 hoi4 = 10512 } # STATE_HOKKAIDO -> Iwamizawa
 	link = { vic3 = x3974DA vic3 = x5F2A24 vic3 = x6275D4 hoi4 = 12352 } # STATE_HOKKAIDO, STATE_HOKKAIDO, STATE_HOKKAIDO -> Takikawa
-	link = { hoi4 = 12421 } # NOTHING -> Asahigawa
 	link = { vic3 = x2090C0 vic3 = x3EA37A vic3 = x413F60 vic3 = x85C158 hoi4 = 12493 } # STATE_HOKKAIDO, STATE_HOKKAIDO, STATE_HOKKAIDO, STATE_HOKKAIDO -> Shinhidaka
 	link = { vic3 = x1E5261 vic3 = x7F67EF hoi4 = 13037 } # STATE_HOKKAIDO, STATE_HOKKAIDO -> Furukamappu
 	link = { comment = "* * STATE_TOHOKU " }
 	link = { vic3 = x19C715 hoi4 = 1024 } # STATE_TOHOKU -> Fukushima
 	link = { vic3 = x3190C0 hoi4 = 1063 } # STATE_TOHOKU -> Akita
-	link = { vic3 = xD350FB vic3 = xF01040 hoi4 = 1113 } # STATE_KANTO, STATE_TOHOKU -> Utsunomiya
+	link = { vic3 = xF01040 vic3 = xAC762F hoi4 = 1113 } # STATE_TOHOKU, STATE_TOHOKU -> Utsunomiya
 	link = { vic3 = xA26E5F hoi4 = 1165 } # STATE_TOHOKU -> Kesennuma
 	link = { vic3 = x4C5533 hoi4 = 3848 } # STATE_TOHOKU -> Odate
-	link = { vic3 = x637FEB hoi4 = 4067 } # STATE_TOHOKU -> Yamagata
+	link = { vic3 = x637FEB vic3 = xF29D08 hoi4 = 4067 } # STATE_TOHOKU, STATE_TOHOKU -> Yamagata
 	link = { vic3 = x3CA2FC hoi4 = 4118 } # STATE_TOHOKU -> Iwaki
-	link = { vic3 = x322F47 vic3 = xAC762F hoi4 = 4122 } # STATE_TOHOKU, STATE_TOHOKU -> Aizuwakamatsu
+	link = { vic3 = x322F47 hoi4 = 4122 } # STATE_TOHOKU -> Aizuwakamatsu
 	link = { vic3 = x701040 hoi4 = 4153 } # STATE_TOHOKU -> Yonezawa
 	link = { vic3 = xBED026 hoi4 = 6870 } # STATE_TOHOKU -> Miyako
-	link = { vic3 = xBC2AFE hoi4 = 6873 } # STATE_TOHOKU -> Hirosaki
-	link = { vic3 = xE0D080 hoi4 = 6994 } # STATE_TOHOKU -> Aomori
+	link = { vic3 = xBC2AFE vic3 = xE22202 hoi4 = 6873 } # STATE_TOHOKU, STATE_TOHOKU -> Hirosaki
+	link = { vic3 = xE0D080 hoi4 = 6994 hoi4 = 9859 hoi4 = 11847 } # STATE_TOHOKU -> Aomori, Misawa, Hachinohe
 	link = { vic3 = xB090C0 hoi4 = 7169 } # STATE_TOHOKU -> Sendai
 	link = { vic3 = x1BAF33 hoi4 = 9807 } # STATE_TOHOKU -> Morioka
 	link = { vic3 = x15EED4 hoi4 = 9865 } # STATE_TOHOKU -> Noshiro
@@ -8570,8 +8570,9 @@
 	link = { vic3 = xB94331 vic3 = xF011C0 hoi4 = 1097 } # STATE_KANTO, STATE_KANTO -> Kumagaya
 	link = { vic3 = xEF9040 hoi4 = 1182 } # STATE_KANTO -> Tokyo
 	link = { vic3 = x787CC4 hoi4 = 4000 } # STATE_KANTO -> Ota
+	link = { vic3 = xD350FB hoi4 = 993 } # STATE_KANTO -> Tochigi
 	link = { vic3 = x709040 hoi4 = 4100 } # STATE_KANTO -> Mito
-	link = { vic3 = x478599 hoi4 = 4184 } # STATE_KANTO -> Chiba
+	link = { vic3 = x478599 hoi4 = 4184 hoi4 = 4188 } # STATE_KANTO -> Chiba, Tsukuba
 	link = { vic3 = xEAE893 hoi4 = 7016 } # STATE_KANTO -> Hitachi
 	link = { vic3 = x7010C0 hoi4 = 9998 } # STATE_KANTO -> Hachioji
 	link = { vic3 = x7090C0 hoi4 = 11908 } # STATE_KANTO -> Maebashi
@@ -8583,10 +8584,12 @@
 	link = { vic3 = xB0D040 hoi4 = 7102 } # STATE_CHUBU -> Fukui
 	link = { vic3 = xADE732 hoi4 = 7157 } # STATE_CHUBU -> Fuji
 	link = { vic3 = x205FEB vic3 = xC02285 hoi4 = 7217 } # STATE_CHUBU, STATE_CHUBU -> Takayama
-	link = { vic3 = xEF90C0 hoi4 = 9952 } # STATE_CHUBU -> Sado
+	link = { vic3 = xEF90C0 hoi4 = 9952 hoi4 = 12007 hoi4 = 11989 } # STATE_CHUBU -> Sado, Takada, Muikamachi
 	link = { vic3 = xD12DC5 hoi4 = 10015 } # STATE_CHUBU -> Matsumodo
 	link = { vic3 = x88595F hoi4 = 10032 } # STATE_CHUBU -> Kanazawa
-	link = { vic3 = x4942D2 hoi4 = 10125 } # STATE_CHUBU -> Nagoya
+	link = { vic3 = x9B2E00 hoi4 = 4172 } # STATE_CHUBU -> Gifu
+	link = { vic3 = x4942D2 hoi4 = 7187 } # STATE_CHUBU -> Nakatsugawa
+	link = { vic3 = x910F25 hoi4 = 10125 } # STATE_CHUBU -> Nagoya
 	link = { vic3 = x779089 hoi4 = 10128 } # STATE_CHUBU -> Nagano
 	link = { vic3 = xB5F9BD hoi4 = 11930 } # STATE_CHUBU -> Murakami
 	link = { vic3 = x3050C0 vic3 = x31D0C0 hoi4 = 12097 } # STATE_CHUBU, STATE_CHUBU -> Hamamatsu
@@ -8594,41 +8597,42 @@
 	link = { vic3 = x305040 hoi4 = 1051 } # STATE_KANSAI -> Owase
 	link = { vic3 = x8EC4C9 hoi4 = 1067 } # STATE_KANSAI -> Nagahama
 	link = { vic3 = x879C25 hoi4 = 1136 } # STATE_KANSAI -> Maizuru
-	link = { vic3 = xCCB03E hoi4 = 4054 } # STATE_KANSAI -> Matsusaka
+	link = { vic3 = xCCB03E hoi4 = 4054 hoi4 = 4142 } # STATE_KANSAI -> Matsusaka, Yokkaichi
 	link = { vic3 = xB03EF0 vic3 = xB0D0C0 hoi4 = 7072 } # STATE_KANSAI, STATE_KANSAI -> Osaka
-	link = { vic3 = x614287 hoi4 = 7113 } # STATE_KANSAI -> Wakayama
+	link = { vic3 = x614287 hoi4 = 7113 hoi4 = 1133 } # STATE_KANSAI -> Wakayama, Tanabe
 	link = { vic3 = x9BD7C1 hoi4 = 9985 } # STATE_KANSAI -> Toyooka
 	link = { vic3 = x705040 hoi4 = 11960 } # STATE_KANSAI -> Kyoto
 	link = { vic3 = x70D040 vic3 = x9E58B2 hoi4 = 12031 } # STATE_KANSAI, STATE_KANSAI -> Himeji
 	link = { comment = "* * STATE_KYUSHU " }
-	link = { hoi4 = 1025 } # NOTHING -> Kokura
-	link = { vic3 = xCEA020 hoi4 = 4102 } # STATE_KYUSHU -> Kagoshima
+	link = { vic3 = x1F0D2C hoi4 = 4102 } # STATE_KYUSHU -> Kagoshima
+	link = { vic3 = xCEA020 hoi4 = 1183 } # STATE_KYUSHU -> Izumi
 	link = { vic3 = x70D080 hoi4 = 4198 } # STATE_KYUSHU -> Yakushima
 	link = { vic3 = xE16F98 hoi4 = 7110 } # STATE_KYUSHU -> Fukuoka
 	link = { vic3 = x906F1E hoi4 = 7178 } # STATE_KYUSHU -> Hyuga
-	link = { vic3 = xAE5874 hoi4 = 9950 } # STATE_KYUSHU -> Nagasaki
-	link = { hoi4 = 10011 } # NOTHING -> Tsushima
-	link = { vic3 = x73414A hoi4 = 10092 } # STATE_KYUSHU -> Oita
-	link = { vic3 = x705080 hoi4 = 11925 } # STATE_KYUSHU -> Kumamoto
+	link = { vic3 = xF0D000 hoi4 = 10011 } # STATE_KYUSHU -> Tsushima
+	link = { vic3 = xAE5874 hoi4 = 1158 hoi4 = 9950 } # STATE_KYUSHU -> Sasebo, Nagasaki
+	link = { vic3 = x70CF00 hoi4 = 1025 } # STATE_KYUSHU -> Kokura
+	link = { vic3 = x73414A hoi4 = 10092 hoi4 = 4027 hoi4 = 10020 } # STATE_KYUSHU -> Oita, Nakatsu, Hita
+	link = { vic3 = x705080 hoi4 = 11925 hoi4 = 4164 hoi4 = 12006 } # STATE_KYUSHU -> Kumamoto, Kurume, Yatsushiro
 	link = { vic3 = xEF5080 hoi4 = 11949 } # STATE_KYUSHU -> Kirishima
 	link = { vic3 = x5C7980 hoi4 = 12032 } # STATE_KYUSHU -> Miyakonojo
 	link = { comment = "* * STATE_RYUKYU_ISLANDS " }
-	link = { vic3 = xF0D080 hoi4 = 7115 } # STATE_RYUKYU_ISLANDS -> Amami
-	link = { vic3 = xF0F061 hoi4 = 10124 } # STATE_RYUKYU_ISLANDS -> Nago
+	link = { vic3 = xF0D080 hoi4 = 7115 hoi4 = 1123 } # STATE_RYUKYU_ISLANDS -> Amami, Tokunoshima
+	link = { vic3 = xF0F061 hoi4 = 10124 hoi4 = 11932 } # STATE_RYUKYU_ISLANDS -> Nago, Naha
 	link = { comment = "* * STATE_CHUGOKU " }
-	link = { hoi4 = 1092 } # NOTHING -> Hiroshima
-	link = { vic3 = xA287B0 hoi4 = 1191 } # STATE_CHUGOKU -> Hamada
-	link = { vic3 = x1151C0 hoi4 = 4197 } # STATE_CHUGOKU -> Tsuyama
-	link = { vic3 = x77D64C hoi4 = 7145 } # STATE_CHUGOKU -> Matsue
+	link = { vic3 = xF05001 hoi4 = 10052 hoi4 = 7050 hoi4 = 11985 } # STATE_CHUGOKU -> Shunan, Masuda, Shimonoseki
+	link = { vic3 = x715101 hoi4 = 1092 } # STATE_CHUGOKU -> Hiroshima
+	link = { vic3 = xA287B0 hoi4 = 1191 hoi4 = 7145 } # STATE_CHUGOKU -> Hamada, Matsue
+	link = { vic3 = x1151C0 hoi4 = 4197 hoi4 = 7212 } # STATE_CHUGOKU -> Tsuyama, Okayama
+	link = { vic3 = x77D64C hoi4 = 1167 } # STATE_CHUGOKU -> Kurayoshi
 	link = { vic3 = xB49AFB hoi4 = 9968 } # STATE_CHUGOKU -> Miyoshi
 	link = { vic3 = xC8AE5C hoi4 = 10055 } # STATE_CHUGOKU -> Tottori
 	link = { vic3 = x89FD28 hoi4 = 11946 } # STATE_CHUGOKU -> Fukuyama
-	link = { hoi4 = 11985 } # NOTHING -> Shimonoseki
 	link = { comment = "* * STATE_SHIKOKU " }
-	link = { vic3 = x7C9BEB hoi4 = 4094 } # STATE_SHIKOKU -> Mitoyo
-	link = { vic3 = x5D5512 hoi4 = 4179 } # STATE_SHIKOKU -> Imabari
+	link = { vic3 = x7C9BEB hoi4 = 9965 } # STATE_SHIKOKU -> Takamatsu
+	link = { vic3 = x5D5512 hoi4 = 4179 hoi4 = 4094 } # STATE_SHIKOKU -> Imabari, Mitoyo
 	link = { vic3 = x90D040 hoi4 = 7046 } # STATE_SHIKOKU -> Matsuyama
-	link = { vic3 = xEFD040 hoi4 = 7197 } # STATE_SHIKOKU -> Kochi
+	link = { vic3 = xEFD040 hoi4 = 7197 hoi4 = 11997 } # STATE_SHIKOKU -> Kochi, Shimanto
 	link = { vic3 = xF05040 hoi4 = 12028 } # STATE_SHIKOKU -> Muroto
 	link = { comment = "* * STATE_SEOUL " }
 	link = { vic3 = x7B6E17 hoi4 = 1100 } # STATE_SEOUL -> Chu-shu
