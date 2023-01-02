@@ -8635,66 +8635,66 @@
 	link = { vic3 = xEFD040 hoi4 = 7197 hoi4 = 11997 } # STATE_SHIKOKU -> Kochi, Shimanto
 	link = { vic3 = xF05040 hoi4 = 12028 } # STATE_SHIKOKU -> Muroto
 	link = { comment = "* * STATE_SEOUL " }
-	link = { vic3 = x7B6E17 hoi4 = 1100 } # STATE_SEOUL -> Chu-shu
-	link = { hoi4 = 1148 } # NOTHING -> Harukawa
 	link = { vic3 = xFD1E20 hoi4 = 4004 } # STATE_SEOUL -> Donson
 	link = { vic3 = xACB4D5 hoi4 = 7021 } # STATE_SEOUL -> Ko-ryo
+	link = { vic3 = x305000 vic3 = xB05000 hoi4 = 7221 } # STATE_SEOUL, STATE_SEOUL -> Nigawa
 	link = { vic3 = xA0E2EE hoi4 = 7125 } # STATE_SEOUL -> Keijo
-	link = { hoi4 = 7221 } # NOTHING -> Nigawa
 	link = { vic3 = xA84864 hoi4 = 9936 } # STATE_SEOUL -> Tsutsumikawa
 	link = { vic3 = xE0D3E4 hoi4 = 9981 } # STATE_SEOUL -> Tetsugen
-	link = { vic3 = x70EFC0 hoi4 = 10036 } # STATE_SEOUL -> Enshu
-	link = { vic3 = x03EAAF hoi4 = 11912 } # STATE_SEOUL -> Taihaku
+	link = { vic3 = x70EFC0 vic3 = x7B6E17 hoi4 = 10036 } # STATE_SEOUL, STATE_SEOUL -> Enshu
+	link = { vic3 = x03EAAF hoi4 = 12011 } # STATE_SEOUL -> Tokai
+	link = { vic3 = x71770E hoi4 = 1148 } # STATE_SEOUL -> Harukawa
 	link = { vic3 = x709080 hoi4 = 11958 } # STATE_SEOUL -> Tsukakusa
 	link = { comment = "* * STATE_BUSAN " }
+	link = { vic3 = xA00BB8 hoi4 = 10085 } # STATE_BUSAN -> Nanbara
 	link = { vic3 = x9BA8B5 hoi4 = 1054 } # STATE_BUSAN -> Shinshu
-	link = { hoi4 = 1081 } # NOTHING -> Taikyu
-	link = { hoi4 = 4056 } # NOTHING -> Pusan
-	link = { vic3 = x305080 hoi4 = 4086 } # STATE_BUSAN -> Keizan
-	link = { vic3 = x076864 hoi4 = 7121 } # STATE_BUSAN -> Hoko
-	link = { vic3 = xC3F34F hoi4 = 12060 } # STATE_BUSAN -> Shogen
+	link = { vic3 = x305080 vic3 = x806A04 hoi4 = 1081 } # STATE_BUSAN, STATE_BUSAN -> Taikyu
+	link = { vic3 = x31D000 hoi4 = 7121 hoi4 = 12089 } # STATE_BUSAN -> Hoko, Ando
+	link = { vic3 = x076864 hoi4 = 11912 } # STATE_BUSAN -> Taihaku
+	link = { vic3 = xC3F34F hoi4 = 12060 hoi4 = 4086 } # STATE_BUSAN -> Shogen, Keizan
 	link = { comment = "* * STATE_YANGHO " }
 	link = { vic3 = xB0D080 hoi4 = 1177 } # STATE_YANGHO -> Saishu
-	link = { hoi4 = 4103 } # NOTHING -> Eiju
-	link = { hoi4 = 4126 } # NOTHING -> Zenshu
-	link = { vic3 = xA48A8B hoi4 = 7175 } # STATE_YANGHO -> Kunsan
-	link = { vic3 = x34B782 hoi4 = 7204 } # STATE_YANGHO -> Ten'an
+	link = { vic3 = xB0D000 hoi4 = 11977 } # STATE_YANGHO -> Ota
+	link = { vic3 = xA48A8B hoi4 = 7175 hoi4 = 11992 } # STATE_YANGHO -> Kunsan, Nishiyama
+	link = { vic3 = x34B782 hoi4 = 7204 hoi4 = 1100 } # STATE_YANGHO -> Ten'an, Chu-shu
+	link = { vic3 = xAE0221 hoi4 = 4126 } # STATE_YANGHO -> Zenshu
 	link = { vic3 = xF91D98 hoi4 = 10110 } # STATE_YANGHO -> Koshu
+	link = { vic3 = xBC0C5A hoi4 = 4103 } # STATE_YANGHO -> Eiju
 	link = { vic3 = xF09080 hoi4 = 10115 } # STATE_YANGHO -> Obei
 	link = { vic3 = x8ACAAA vic3 = xD42CA8 hoi4 = 11948 } # STATE_YANGHO, STATE_YANGHO -> Kiura
-	link = { hoi4 = 11977 } # NOTHING -> Ota
 	link = { vic3 = xC81C12 hoi4 = 12085 } # STATE_YANGHO -> Junten
 	link = { comment = "* * STATE_SARIWON " }
-	link = { vic3 = x92D8ED hoi4 = 848 } # STATE_SARIWON -> Motoyama
-	link = { vic3 = xCF9212 hoi4 = 852 } # STATE_SARIWON -> Chanjin
+	link = { vic3 = x92D8ED hoi4 = 848 hoi4 = 10083 } # STATE_SARIWON -> Motoyama, Yotoku
+	link = { vic3 = xCF9212 hoi4 = 3904 } # STATE_SARIWON -> Fuzen
+	link = { vic3 = x8B0207 hoi4 = 9899 } # STATE_SARIWON -> Mizumi
 	link = { vic3 = xBD9C6F hoi4 = 861 } # STATE_SARIWON -> Changbai
-	link = { vic3 = x00227F vic3 = x4C743B hoi4 = 898 } # STATE_SARIWON, STATE_SARIWON -> Kiyotsu
+	link = { vic3 = x00227F hoi4 = 898 } # STATE_SARIWON -> Kiyotsu
+	link = { vic3 = x4C743B hoi4 = 6944 } # STATE_SARIWON -> Rasen
 	link = { vic3 = xEDB9A8 hoi4 = 959 } # STATE_SARIWON -> Oran
 	link = { vic3 = xA0D080 hoi4 = 3852 } # STATE_SARIWON -> Shinpo
 	link = { vic3 = x8FC58D hoi4 = 3860 } # STATE_SARIWON -> Rensha
-	link = { vic3 = x08C343 hoi4 = 3981 } # STATE_SARIWON -> Kanko
+	link = { vic3 = x701101 hoi4 = 11770 } # STATE_SARIWON -> land
+	link = { vic3 = x08C343 hoi4 = 3981 hoi4 = 6928 hoi4 = 852 } # STATE_SARIWON -> Kanko, Teiban, Chanjin
 	link = { vic3 = x21D080 hoi4 = 6822 } # STATE_SARIWON -> Shiraiwa
 	link = { vic3 = xA0987D hoi4 = 6922 } # STATE_SARIWON -> Kinsaku
-	link = { hoi4 = 9899 } # NOTHING -> Mizumi
-	link = { hoi4 = 11770 } # NOTHING -> land
-	link = { vic3 = x4FC1C9 hoi4 = 11878 } # STATE_SARIWON -> Hochon
+	link = { vic3 = x4FC1C9 hoi4 = 11878 hoi4 = 3803 } # STATE_SARIWON -> Hochon, Keizan
 	link = { comment = "* * STATE_PYONGYANG " }
+	link = { vic3 = x880F26 hoi4 = 6963 } # STATE_PYONGYANG -> Nakae
 	link = { vic3 = xA2DB51 hoi4 = 906 } # STATE_PYONGYANG -> Rangurimu
-	link = { hoi4 = 912 } # NOTHING -> Kosei
-	link = { hoi4 = 1003 } # NOTHING -> Kudasaru
-	link = { vic3 = xEAF581 hoi4 = 3912 } # STATE_PYONGYANG -> Tokugawa
-	link = { vic3 = xDD6252 hoi4 = 4052 } # STATE_PYONGYANG -> Pyon'yan
+	link = { vic3 = xEAF581 hoi4 = 3912 hoi4 = 978 } # STATE_PYONGYANG -> Tokugawa, land
+	link = { vic3 = x12BC01 hoi4 = 11896 } # STATE_PYONGYANG -> Zenten
+	link = { vic3 = xDD6252 hoi4 = 4052 hoi4 = 9790 } # STATE_PYONGYANG -> Pyon'yan, Ogawa
+	link = { vic3 = x11044D hoi4 = 1003 } # STATE_PYONGYANG -> Kudasaru
 	link = { vic3 = x701180 hoi4 = 4107 } # STATE_PYONGYANG -> Nagabuchi
-	link = { hoi4 = 6963 } # NOTHING -> Nakae
-	link = { hoi4 = 7070 } # NOTHING -> Shinpei
 	link = { vic3 = x096D79 vic3 = x913CAF hoi4 = 7155 } # STATE_PYONGYANG, STATE_PYONGYANG -> Furutsu
-	link = { hoi4 = 7171 } # NOTHING -> Koto
 	link = { vic3 = xB8F465 hoi4 = 9795 } # STATE_PYONGYANG -> Musuzu
+	link = { vic3 = x5204B8 hoi4 = 912 } # STATE_PYONGYANG -> Kosei
+	link = { vic3 = x605101 hoi4 = 11835 } # STATE_PYONGYANG -> Shingishu
 	link = { vic3 = x47D537 hoi4 = 9918 } # STATE_PYONGYANG -> Sakuju
 	link = { vic3 = x808E39 hoi4 = 11775 } # STATE_PYONGYANG -> Kokai
 	link = { vic3 = xC5EF9A hoi4 = 11828 } # STATE_PYONGYANG -> Manpo
-	link = { hoi4 = 11835 } # NOTHING -> Shingishu
-	link = { hoi4 = 11896 } # NOTHING -> Zenten
+	link = { vic3 = x640C37 hoi4 = 7070 } # STATE_PYONGYANG -> Shinpei
+	link = { vic3 = xF01000 hoi4 = 10065 hoi4 = 7171 } # STATE_PYONGYANG -> Matsubayashi, Koto
 	link = { vic3 = x7BEA9E hoi4 = 11915 } # STATE_PYONGYANG -> Sariin
 	link = { vic3 = xF01180 hoi4 = 12040 } # STATE_PYONGYANG -> Kosei
 	link = { comment = "* " }
