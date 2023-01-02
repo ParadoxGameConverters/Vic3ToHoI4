@@ -8616,6 +8616,8 @@
 	link = { vic3 = x705080 hoi4 = 11925 hoi4 = 4164 hoi4 = 12006 } # STATE_KYUSHU -> Kumamoto, Kurume, Yatsushiro
 	link = { vic3 = xEF5080 hoi4 = 11949 } # STATE_KYUSHU -> Kirishima
 	link = { vic3 = x5C7980 hoi4 = 12032 } # STATE_KYUSHU -> Miyakonojo
+	link = { vic3 = x800111 hoi4 = 13025 } # STATE_KYUSHU -> Iwo Jima
+	link = { vic3 = xEF50C0 hoi4 = 13026 } # STATE_KYUSHU -> Minamitorishima
 	link = { comment = "* * STATE_RYUKYU_ISLANDS " }
 	link = { vic3 = xF0D080 hoi4 = 7115 hoi4 = 1123 } # STATE_RYUKYU_ISLANDS -> Amami, Tokunoshima
 	link = { vic3 = xF0F061 hoi4 = 10124 hoi4 = 11932 } # STATE_RYUKYU_ISLANDS -> Nago, Naha
@@ -8703,27 +8705,26 @@
 	link = { comment = "* **********" }
 	link = { comment = "* " }
 	link = { comment = "* * STATE_MALAYA " }
-	link = { hoi4 = 1348 } # NOTHING -> Tembeling
 	link = { vic3 = xCF3E8D hoi4 = 1364 } # STATE_MALAYA -> Ipoh
-	link = { vic3 = x23578B vic3 = xAA2287 hoi4 = 1376 } # STATE_MALAYA, STATE_MALAYA -> Teluk Anson
-	link = { vic3 = xAF3737 hoi4 = 1392 } # STATE_MALAYA -> Temerloh
-	link = { vic3 = xE87C53 vic3 = xFCBAFC hoi4 = 4310 } # STATE_MALAYA, STATE_MALAYA -> Gerik
-	link = { vic3 = x80C0B0 hoi4 = 4355 } # STATE_MALAYA -> Kemaman
+	link = { vic3 = x23578B hoi4 = 10297 } # STATE_MALAYA -> Kuala Lumpur
+	link = { vic3 = xAA2287 hoi4 = 1376 } # STATE_MALAYA -> Teluk Anson
+	link = { vic3 = xFCBAFC hoi4 = 10227 } # STATE_MALAYA -> Gua Musang
+	link = { vic3 = xE87C53 hoi4 = 4310 } # STATE_MALAYA -> Gerik
+	link = { vic3 = x80C0B0 hoi4 = 4355 hoi4 = 1348 } # STATE_MALAYA -> Kemaman, Tembeling
+	link = { vic3 = x660411 hoi4 = 12255 hoi4 = 1392 } # STATE_MALAYA -> Bentong, Temerloh
 	link = { vic3 = xB6B53D hoi4 = 4384 } # STATE_MALAYA -> Bidor
-	link = { vic3 = xC84C4C hoi4 = 4412 } # STATE_MALAYA -> Seremban
-	link = { vic3 = x76546D hoi4 = 4424 } # STATE_MALAYA -> Johore Bahru
+	link = { vic3 = xC84C4C vic3 = x8E3305 hoi4 = 4412 } # STATE_MALAYA, STATE_MALAYA -> Seremban
+	link = { vic3 = x76546D hoi4 = 4424 hoi4 = 10313 } # STATE_MALAYA -> Johore Bahru, Kota Tinggi
 	link = { vic3 = xCAB9F2 hoi4 = 7329 } # STATE_MALAYA -> Kota Bharu
 	link = { vic3 = x08673B vic3 = xD8E596 hoi4 = 7342 } # STATE_MALAYA, STATE_MALAYA -> George Town
-	link = { vic3 = x374A68 vic3 = x6CFA94 hoi4 = 7399 } # STATE_MALAYA, STATE_MALAYA -> Kuantan
+	link = { vic3 = x6CFA94 hoi4 = 7399 } # STATE_MALAYA -> Kuantan
 	link = { vic3 = x8080B0 hoi4 = 7427 } # STATE_MALAYA -> Malacca
-	link = { hoi4 = 10297 } # NOTHING -> Kuala Lumpur
 	link = { vic3 = xF9F87A hoi4 = 12199 } # STATE_MALAYA -> Kuala Terengganu
 	link = { vic3 = x78EF92 hoi4 = 12215 } # STATE_MALAYA -> Taiping
-	link = { hoi4 = 12255 } # NOTHING -> Bentong
-	link = { vic3 = x0080B0 hoi4 = 12271 } # STATE_MALAYA -> Pekan
-	link = { hoi4 = 12299 } # NOTHING -> Singapore
+	link = { vic3 = xC00130 hoi4 = 12299 } # STATE_MALAYA -> Singapore
+	link = { vic3 = x374A68 vic3 = xAF3737 vic3 = x66170B hoi4 = 12271 } # STATE_MALAYA, STATE_MALAYA, STATE_MALAYA -> Pekan
+	link = { vic3 = x0080B0 hoi4 = 4367 } # STATE_MALAYA -> Mersing
 	link = { comment = "* * STATE_NORTH_BORNEO " }
-	link = { vic3 = x01C030 hoi4 = 1208 } # STATE_NORTH_SUMATRA -> Kuching
 	link = { vic3 = xCED863 hoi4 = 1306 } # STATE_NORTH_BORNEO -> land
 	link = { vic3 = x763646 hoi4 = 1335 } # STATE_NORTH_BORNEO -> Ba'kelalan
 	link = { vic3 = x905338 hoi4 = 2117 } # STATE_NORTH_BORNEO -> land
@@ -8732,86 +8733,89 @@
 	link = { vic3 = xE66512 vic3 = xFC8025 hoi4 = 4396 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Bintulu
 	link = { vic3 = x3CCBAA vic3 = x75D5D2 hoi4 = 7358 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> land
 	link = { vic3 = xFB18B8 hoi4 = 7371 } # STATE_NORTH_BORNEO -> land
-	link = { hoi4 = 7387 } # NOTHING -> Kuala Belait
-	link = { vic3 = x26DE63 vic3 = x8041B0 vic3 = xE9FB27 vic3 = xEF6FBE hoi4 = 7443 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO, STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Kapit
+	link = { vic3 = x26DE63 vic3 = x8041B0 vic3 = xE9FB27 vic3 = xEF6FBE vic3 = xF61121 hoi4 = 7443 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO, STATE_NORTH_BORNEO, STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Kapit
 	link = { vic3 = x1C6623 vic3 = x61FE7A vic3 = xDD9CFE hoi4 = 8091 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Long Palai
 	link = { vic3 = xD78953 hoi4 = 10143 } # STATE_NORTH_BORNEO -> Sungai Sungai
 	link = { vic3 = xC531AE hoi4 = 10212 } # STATE_NORTH_BORNEO -> Jesselton
-	link = { vic3 = xC0B7FD hoi4 = 10240 } # STATE_NORTH_BORNEO -> Lahad Datu
+	link = { vic3 = xC0B7FD vic3 = x461E0E hoi4 = 10240 hoi4 = 10199 } # MANY-TO-MANY: STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Lahad Datu, Sandakan
 	link = { vic3 = x002310 vic3 = x242519 hoi4 = 10269 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Long Seridan
-	link = { vic3 = xF2BC79 hoi4 = 10285 } # STATE_NORTH_BORNEO -> Miri
+	link = { vic3 = x800170 hoi4 = 7387 } # STATE_NORTH_BORNEO -> Kuala Belait
+	link = { vic3 = xF2BC79 vic3 = x9E0616 hoi4 = 10285 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Miri
 	link = { vic3 = x965EF0 vic3 = xB689E6 hoi4 = 12171 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Beaufort
-	link = { vic3 = x2EE734 hoi4 = 12186 } # STATE_NORTH_BORNEO -> Ranau
+	link = { vic3 = x2EE734 hoi4 = 12186 hoi4 = 4282 } # STATE_NORTH_BORNEO -> Ranau, Kudat
 	link = { vic3 = x808070 hoi4 = 12228 } # STATE_NORTH_BORNEO -> Tawau
-	link = { vic3 = x6FEE71 vic3 = x762FBA vic3 = xC65120 hoi4 = 12283 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Sibu
+	link = { vic3 = x6FEE71 vic3 = x762FBA vic3 = xC65120 vic3 = x0F01DC hoi4 = 12283 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO, STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Sibu
 	link = { vic3 = x278E1E hoi4 = 12905 } # STATE_NORTH_BORNEO -> Sri Aman
+	link = { vic3 = x91B40F vic3 = x0141B0 hoi4 = 1208 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Kuching
 	link = { comment = "* * STATE_WEST_BORNEO " }
-	link = { vic3 = x0141B0 vic3 = x7FFBF0 vic3 = x939612 vic3 = xE02CB6 hoi4 = 1230 } # STATE_NORTH_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Sanggau
+	link = { vic3 = x7FFBF0 vic3 = x939612 vic3 = xE02CB6 hoi4 = 1230 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Sanggau
 	link = { vic3 = x2A3D46 vic3 = x60FDC2 hoi4 = 1304 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Ngabang
 	link = { vic3 = x71D428 vic3 = xA91194 vic3 = xFFE074 hoi4 = 1316 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Sutra
-	link = { vic3 = x04BB3B vic3 = x8D8D4A vic3 = x9910E9 vic3 = xA5A916 vic3 = xBC374E vic3 = xFF8539 hoi4 = 2170 } # STATE_WEST_BORNEO, STATE_EAST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Sintang
-	link = { vic3 = x477680 vic3 = x56FE77 vic3 = xF61121 hoi4 = 2222 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_NORTH_BORNEO -> Putussibau
+	link = { vic3 = x04BB3B vic3 = x9910E9 vic3 = xA5A916 vic3 = xBC374E vic3 = xFF8539 vic3 = xF37396 hoi4 = 2170 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Sintang
+	link = { vic3 = x477680 vic3 = x56FE77 vic3 = xCF4105 hoi4 = 2222 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Putussibau
 	link = { vic3 = x1C7417 vic3 = x42973E hoi4 = 4279 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Pontianak
-	link = { vic3 = x445D59 vic3 = xA6D36E hoi4 = 4335 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Sekadau
-	link = { vic3 = xF8375D hoi4 = 4409 } # STATE_WEST_BORNEO -> Sukaraja
-	link = { vic3 = xA67A6E hoi4 = 7227 } # STATE_WEST_BORNEO -> Pangkalan Bun
-	link = { vic3 = x029E85 vic3 = x638173 vic3 = xF37396 hoi4 = 8221 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Hampalit
-	link = { vic3 = x4DD36E vic3 = xAD54BC vic3 = xB7B05B hoi4 = 10282 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Ketapang
-	link = { vic3 = xC29C28 vic3 = xE3C4F2 hoi4 = 10310 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Sampit
+	link = { vic3 = x445D59 vic3 = xA6D36E vic3 = xB7B05B vic3 = x706E00 hoi4 = 4335 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Sekadau
+	link = { vic3 = xF8375D vic3 = x4408AB hoi4 = 4409 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Sukaraja
+	link = { vic3 = xA67A6E vic3 = x76E306 hoi4 = 7227 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Pangkalan Bun
+	link = { vic3 = x029E85 vic3 = x638173 vic3 = xE3C4F2 hoi4 = 8221 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Hampalit
+	link = { vic3 = x4DD36E vic3 = xAD54BC hoi4 = 10282 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Ketapang
+	link = { vic3 = xC29C28 hoi4 = 10310 } # STATE_WEST_BORNEO -> Sampit
 	link = { vic3 = x6D4CDF hoi4 = 12129 } # STATE_WEST_BORNEO -> Sambas
 	link = { vic3 = xD735DB hoi4 = 12280 } # STATE_WEST_BORNEO -> Katingan
 	link = { vic3 = x8A69A7 vic3 = xF9BDCB vic3 = xFCFD83 hoi4 = 12955 } # STATE_WEST_BORNEO, STATE_WEST_BORNEO, STATE_WEST_BORNEO -> Nanga Bulik
 	link = { comment = "* * STATE_EAST_BORNEO " }
-	link = { vic3 = x0ED6AA hoi4 = 1225 } # STATE_EAST_BORNEO -> Barabai
-	link = { vic3 = x13DD1D vic3 = xDFE51D hoi4 = 1252 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Sangatta
+	link = { vic3 = x0ED6AA vic3 = x88A1EC hoi4 = 1225 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Barabai
+	link = { vic3 = x13DD1D vic3 = x8BD8AF hoi4 = 1252 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Sangatta
 	link = { vic3 = xFD2E40 hoi4 = 1404 } # STATE_EAST_BORNEO -> Tarakan
 	link = { vic3 = x6728CB vic3 = x69AF77 vic3 = xF8DD56 vic3 = xFBB6C2 hoi4 = 2047 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> land
-	link = { vic3 = x0596C2 vic3 = x0E858D vic3 = x8F8FDE hoi4 = 2184 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Melayu
+	link = { vic3 = x0596C2 vic3 = x0E858D vic3 = x8F8FDE vic3 = x8D8D4A hoi4 = 2184 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Melayu
 	link = { vic3 = x0FFCAE vic3 = xB8D3B7 hoi4 = 4236 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Kongbeng
 	link = { vic3 = x3631B8 vic3 = x527DD4 vic3 = xD6E8B0 hoi4 = 4323 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> land
 	link = { vic3 = x6A70EA vic3 = xC72ED3 hoi4 = 5176 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Melak
-	link = { vic3 = x1DF499 vic3 = x3EE142 vic3 = x9ED038 vic3 = xE49DDE hoi4 = 5226 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Pujungan
-	link = { vic3 = x4F7415 vic3 = x8BD8AF vic3 = x9F4941 hoi4 = 7231 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Tanjung Redeb
-	link = { vic3 = xE9E984 hoi4 = 7296 } # STATE_EAST_BORNEO -> Banjarmasin
-	link = { vic3 = x413B50 vic3 = x7BA8AD vic3 = x8B8321 hoi4 = 7299 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> land
+	link = { vic3 = x1DF499 vic3 = x3EE142 vic3 = x9ED038 vic3 = xE49DDE vic3 = x1F6009 hoi4 = 5226 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Pujungan
+	link = { vic3 = x4F7415 vic3 = x9F4941 hoi4 = 7231 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Tanjung Redeb
+	link = { vic3 = xE9E984 vic3 = xDF0BCF hoi4 = 7296 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Banjarmasin
+	link = { vic3 = x413B50 vic3 = x7BA8AD vic3 = x8B8321 vic3 = xC7410C hoi4 = 7299 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> land
 	link = { vic3 = x38416A vic3 = x718F24 hoi4 = 7355 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> land
-	link = { vic3 = x3BE572 vic3 = xC03A53 hoi4 = 7415 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Malinau
-	link = { vic3 = x10645D vic3 = x2D539F vic3 = x3E96AF vic3 = x8B9E4E hoi4 = 7424 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> land
+	link = { vic3 = x330B36 hoi4 = 12243 } # STATE_EAST_BORNEO -> Nunukan
+	link = { vic3 = x3BE572 vic3 = xC03A53 vic3 = xAC440F hoi4 = 7415 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Malinau
+	link = { vic3 = x2D539F vic3 = x3E96AF vic3 = x10645D vic3 = x8B9E4E vic3 = xFF0B89 hoi4 = 7424 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> land
 	link = { vic3 = x71A232 vic3 = xEA35E9 hoi4 = 10138 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Bahaur
 	link = { vic3 = x496AEF vic3 = x9B7A4D hoi4 = 10178 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Semayap
-	link = { vic3 = x018070 hoi4 = 10181 } # STATE_EAST_BORNEO -> Talisayan
-	link = { vic3 = x4D4D9B vic3 = x952BEE vic3 = xA57C37 hoi4 = 10237 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Balikpapan
+	link = { vic3 = x018070 vic3 = xDFE51D hoi4 = 10181 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Talisayan
+	link = { vic3 = x952BEE vic3 = xA57C37 hoi4 = 10237 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Balikpapan
 	link = { vic3 = x0A7250 vic3 = x0A8175 vic3 = x3660F5 hoi4 = 10266 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Moeara Komam
 	link = { vic3 = xF6BB4E hoi4 = 10325 } # STATE_EAST_BORNEO -> land
-	link = { vic3 = x88A1EC vic3 = xDB778E hoi4 = 12110 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Kuala Kapuas
+	link = { vic3 = xDB778E hoi4 = 12110 } # STATE_EAST_BORNEO -> Kuala Kapuas
 	link = { vic3 = xCC69E2 hoi4 = 12196 } # STATE_EAST_BORNEO -> Samarinda
-	link = { vic3 = x2695FB hoi4 = 12225 } # STATE_EAST_BORNEO -> Penajam
-	link = { hoi4 = 12243 } # NOTHING -> Nunukan
-	link = { vic3 = x9C48FE vic3 = xD5155A hoi4 = 12252 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Tanah Grogot
+	link = { vic3 = x4D4D9B vic3 = x672606 hoi4 = 12225 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Penajam
+	link = { vic3 = x9C48FE hoi4 = 1416 } # STATE_EAST_BORNEO -> land
+	link = { vic3 = xD5155A vic3 = x2695FB hoi4 = 12252 } # STATE_EAST_BORNEO, STATE_EAST_BORNEO -> Tanah Grogot
 	link = { comment = "* * STATE_WEST_JAVA " }
-	link = { vic3 = xA12ED1 hoi4 = 1386 } # STATE_CENTRAL_JAVA -> Cirebon
-	link = { vic3 = x6345B2 hoi4 = 1398 } # STATE_WEST_JAVA -> Labuhan
+	link = { vic3 = x6345B2 hoi4 = 1398 hoi4 = 10307 } # STATE_WEST_JAVA -> Labuhan, Soekaboemi
 	link = { vic3 = x975BCA hoi4 = 1425 } # STATE_WEST_JAVA -> Cianjoer
 	link = { vic3 = xB944CF hoi4 = 4406 } # STATE_WEST_JAVA -> Bogor
-	link = { vic3 = x727A46 vic3 = xA0DFEF hoi4 = 4434 } # STATE_CENTRAL_JAVA, STATE_WEST_JAVA -> Cilacap
-	link = { hoi4 = 7421 } # NOTHING -> Bandoeng
-	link = { vic3 = x5CC6B6 hoi4 = 10279 } # STATE_WEST_JAVA -> Serang
+	link = { vic3 = xD70117 hoi4 = 1386 } # STATE_WEST_JAVA -> Cirebon
+	link = { vic3 = xCE4107 hoi4 = 7421 } # STATE_WEST_JAVA -> Bandoeng
+	link = { vic3 = xA0DFEF hoi4 = 4621 } # STATE_WEST_JAVA -> Tasikmalaja
+	link = { vic3 = x5CC6B6 hoi4 = 10279 hoi4 = 7381 } # STATE_WEST_JAVA -> Serang, Batavia
 	link = { vic3 = x71D392 hoi4 = 12249 } # STATE_WEST_JAVA -> Karawang
 	link = { comment = "* * STATE_EAST_JAVA " }
 	link = { vic3 = xA0E070 vic3 = xAD1F3C hoi4 = 4306 } # STATE_EAST_JAVA, STATE_EAST_JAVA -> Pamekasan
 	link = { vic3 = x2060EF hoi4 = 4608 } # STATE_EAST_JAVA -> Soerabaja
-	link = { vic3 = xD91A27 hoi4 = 7654 } # STATE_EAST_JAVA -> Banjoewangi
+	link = { vic3 = xD91A27 vic3 = xA8B603 hoi4 = 7654 } # STATE_EAST_JAVA, STATE_EAST_JAVA -> Banjoewangi
 	link = { vic3 = x1D38B7 vic3 = xEF70EC hoi4 = 10479 } # STATE_EAST_JAVA, STATE_EAST_JAVA -> Malang
 	link = { vic3 = xC226AF hoi4 = 12472 } # STATE_EAST_JAVA -> Jember
 	link = { vic3 = x5C2250 hoi4 = 13002 } # STATE_EAST_JAVA -> West Island
 	link = { vic3 = x5C2239 hoi4 = 13005 } # STATE_EAST_JAVA -> Flying Fish Cove
 	link = { comment = "* * STATE_CENTRAL_JAVA " }
 	link = { vic3 = xA06070 hoi4 = 1413 } # STATE_CENTRAL_JAVA -> Kudus
-	link = { vic3 = x14F9F5 hoi4 = 4390 } # STATE_CENTRAL_JAVA -> Bojonegoro
-	link = { vic3 = x01B3D5 hoi4 = 7223 } # STATE_CENTRAL_JAVA -> Pekalongan
+	link = { vic3 = x14F9F5 vic3 = xEB0621 hoi4 = 4390 } # STATE_CENTRAL_JAVA, STATE_CENTRAL_JAVA -> Bojonegoro
+	link = { vic3 = x01B3D5 vic3 = xA12ED1 hoi4 = 7223 } # STATE_CENTRAL_JAVA, STATE_CENTRAL_JAVA -> Pekalongan
+	link = { vic3 = x727A46 hoi4 = 4434 } # STATE_CENTRAL_JAVA -> Cilacap
 	link = { vic3 = x9C517C hoi4 = 7642 } # STATE_CENTRAL_JAVA -> Purwokerto
 	link = { vic3 = xD19D2E hoi4 = 10135 } # STATE_CENTRAL_JAVA -> Jogjakarta
-	link = { vic3 = x20DF70 hoi4 = 10491 } # STATE_CENTRAL_JAVA -> Kediri
+	link = { vic3 = x20DF70 hoi4 = 10491 hoi4 = 1209 } # STATE_CENTRAL_JAVA -> Kediri, Blitar
 	link = { vic3 = x62742E hoi4 = 12277 } # STATE_CENTRAL_JAVA -> Samarang
 	link = { vic3 = x143969 hoi4 = 12293 } # STATE_CENTRAL_JAVA -> Purwodadi
 	link = { comment = "* * STATE_NORTH_SUMATRA " }
@@ -8819,16 +8823,15 @@
 	link = { vic3 = xDA82F4 hoi4 = 1332 } # STATE_NORTH_SUMATRA -> Tungkal
 	link = { vic3 = x5157D3 vic3 = x7AC280 hoi4 = 1345 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Jambi
 	link = { vic3 = x6ED39E vic3 = xAE71B4 hoi4 = 1373 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Muara Bulian
-	link = { vic3 = x60E050 vic3 = xD2D88C hoi4 = 1460 } # STATE_ACEH, STATE_NORTH_SUMATRA -> Lingkuang Aua
+	link = { vic3 = xD2D88C hoi4 = 1460 } # STATE_NORTH_SUMATRA -> Lingkuang Aua
 	link = { vic3 = xA2F773 vic3 = xDC4677 vic3 = xE4C2D6 hoi4 = 1533 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Baringin
-	link = { vic3 = xA0CEED hoi4 = 7327 } # STATE_NORTH_SUMATRA -> Duri
+	link = { vic3 = xA0CEED vic3 = x4E9BC1 hoi4 = 7327 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Duri
 	link = { vic3 = x257D2C vic3 = x79A66E hoi4 = 7368 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Sungai Penuh
 	link = { vic3 = x677AA6 vic3 = x87F7B6 hoi4 = 7463 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Dumai
 	link = { vic3 = x5BE3D2 vic3 = x983FEB hoi4 = 10209 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Pangkalan Kerinci
 	link = { vic3 = x339E85 vic3 = xD3A66E hoi4 = 10225 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Tembilaham
-	link = { vic3 = x4E9BC1 hoi4 = 10354 } # STATE_NORTH_SUMATRA -> Bukittinggi
+	link = { vic3 = x85B004 hoi4 = 10354 } # STATE_NORTH_SUMATRA -> Bukittinggi
 	link = { vic3 = x8A3E15 hoi4 = 10382 } # STATE_NORTH_SUMATRA -> Padang
-	link = { hoi4 = 12113 } # NOTHING -> Batam
 	link = { vic3 = x9377DF vic3 = xE0A0F0 hoi4 = 12126 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Gunungsitoli
 	link = { vic3 = x48428B vic3 = x6021D0 hoi4 = 12168 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Selatpanjang
 	link = { vic3 = x8B7A14 vic3 = xEAF2DC hoi4 = 12181 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Pekanbaru
@@ -8836,6 +8839,7 @@
 	link = { vic3 = xEC5DEA hoi4 = 12212 } # STATE_NORTH_SUMATRA -> Seberida
 	link = { vic3 = x01317D vic3 = x3F7EA0 hoi4 = 12302 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Kotapinang
 	link = { vic3 = x9D4BD1 hoi4 = 12343 } # STATE_NORTH_SUMATRA -> Payakumbuh
+	link = { vic3 = x91B001 hoi4 = 12113 } # STATE_NORTH_SUMATRA -> Batam
 	link = { comment = "* * STATE_SOUTH_SUMATRA " }
 	link = { vic3 = x067967 hoi4 = 1246 } # STATE_SOUTH_SUMATRA -> Tulung Selapan Ilir
 	link = { vic3 = x8FBCF4 vic3 = xE962F4 hoi4 = 1274 } # STATE_SOUTH_SUMATRA, STATE_SOUTH_SUMATRA -> Baturaja
@@ -8850,224 +8854,226 @@
 	link = { vic3 = xE49A2F hoi4 = 7308 } # STATE_SOUTH_SUMATRA -> Pagar Alam
 	link = { vic3 = x27FD1C hoi4 = 7384 } # STATE_SOUTH_SUMATRA -> Pangkal Pinang
 	link = { vic3 = x0F65F5 hoi4 = 7396 } # STATE_SOUTH_SUMATRA -> Teladan
-	link = { hoi4 = 7440 } # NOTHING -> Lubuklinggau
-	link = { hoi4 = 10150 } # NOTHING -> Talang Ubi
-	link = { vic3 = x00F15A hoi4 = 10194 } # STATE_SOUTH_SUMATRA -> Bandar Ratu
+	link = { vic3 = x00F15A hoi4 = 10194 hoi4 = 1428 } # STATE_SOUTH_SUMATRA -> Bandar Ratu, Tuapejat
 	link = { vic3 = x8527A9 hoi4 = 10294 } # STATE_SOUTH_SUMATRA -> Pamenang
 	link = { vic3 = x42D05B hoi4 = 10322 } # STATE_SOUTH_SUMATRA -> Prabumulih
-	link = { vic3 = x174432 vic3 = x7945C0 vic3 = x7FFD6B hoi4 = 12138 } # STATE_SOUTH_SUMATRA, STATE_SOUTH_SUMATRA, STATE_SOUTH_SUMATRA -> Bengkoelen
+	link = { vic3 = x0D0BEB vic3 = x7FFD6B hoi4 = 7440 } # STATE_SOUTH_SUMATRA, STATE_SOUTH_SUMATRA -> Lubuklinggau
+	link = { vic3 = xFB099E vic3 = xD10CCE hoi4 = 10150 } # STATE_SOUTH_SUMATRA, STATE_SOUTH_SUMATRA -> Talang Ubi
+	link = { vic3 = x174432 vic3 = x7945C0 hoi4 = 12138 } # STATE_SOUTH_SUMATRA, STATE_SOUTH_SUMATRA -> Bengkoelen
 	link = { vic3 = x31E5B1 hoi4 = 12165 } # STATE_SOUTH_SUMATRA -> Terbanggibesar
-	link = { vic3 = x74812B vic3 = x847F76 hoi4 = 12209 } # STATE_SOUTH_SUMATRA, STATE_SOUTH_SUMATRA -> Krui
+	link = { vic3 = x74812B vic3 = x847F76 hoi4 = 12209 hoi4 = 4320 } # MANY-TO-MANY: STATE_SOUTH_SUMATRA, STATE_SOUTH_SUMATRA -> Krui, Kota Agung
 	link = { vic3 = x3099D2 hoi4 = 12268 } # STATE_SOUTH_SUMATRA -> Palembang
 	link = { vic3 = xB0F538 hoi4 = 12296 } # STATE_SOUTH_SUMATRA -> Pampangan
 	link = { vic3 = x4CF770 hoi4 = 12415 } # STATE_SOUTH_SUMATRA -> Surulangun
 	link = { comment = "* * STATE_ACEH " }
 	link = { vic3 = x4544B1 vic3 = xA0DFD0 vic3 = xD5A22C hoi4 = 1648 } # STATE_ACEH, STATE_ACEH, STATE_ACEH -> Langsa
-	link = { vic3 = x388ABB vic3 = xE3CB2E hoi4 = 4446 } # STATE_ACEH, STATE_ACEH -> Panyambungan
+	link = { vic3 = x388ABB vic3 = xE3CB2E vic3 = x60E050 hoi4 = 4446 } # STATE_ACEH, STATE_ACEH, STATE_ACEH -> Panyambungan
 	link = { vic3 = x4F7793 vic3 = x7E3D68 hoi4 = 4652 } # STATE_ACEH, STATE_ACEH -> Medan
-	link = { vic3 = x1C8420 hoi4 = 7658 } # STATE_ACEH -> Banda Atjeh
+	link = { vic3 = x1C8420 vic3 = xC5091B hoi4 = 7658 } # STATE_ACEH, STATE_ACEH -> Banda Atjeh
 	link = { vic3 = x616150 vic3 = xD4118B hoi4 = 7673 } # STATE_ACEH, STATE_ACEH -> Tanjungbalai
-	link = { vic3 = xBE17D2 hoi4 = 8360 } # STATE_ACEH -> Subulussalam
+	link = { vic3 = xBE17D2 vic3 = xAB0290 hoi4 = 8360 } # STATE_ACEH, STATE_ACEH -> Subulussalam
 	link = { vic3 = x5BDF4D vic3 = xEB815E hoi4 = 10509 } # STATE_ACEH, STATE_ACEH -> Lhokseumawe
-	link = { vic3 = x30AED9 hoi4 = 10522 } # STATE_ACEH -> Limau Purut
+	link = { vic3 = x30AED9 vic3 = x9A7E0B hoi4 = 10522 } # STATE_ACEH, STATE_ACEH -> Limau Purut
 	link = { vic3 = x07B7F0 vic3 = x0DDF49 vic3 = xC266CF hoi4 = 12488 } # STATE_ACEH, STATE_ACEH, STATE_ACEH -> Lhok Bengkuang
 	link = { comment = "* * STATE_WESTERN_NEW_GUINEA " }
 	link = { vic3 = xA5F7BC vic3 = xCD7250 hoi4 = 1546 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Nabire
 	link = { vic3 = x5541DA vic3 = x95939C hoi4 = 1602 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Sokanggo
-	link = { vic3 = x4FDEFE vic3 = x8A6BB0 hoi4 = 1617 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Persatuan
-	link = { vic3 = x5C88B7 hoi4 = 1629 } # STATE_WESTERN_NEW_GUINEA -> Bade
+	link = { vic3 = x4FDEFE vic3 = x8A6BB0 vic3 = x17B500 hoi4 = 1617 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Persatuan
+	link = { vic3 = x5C88B7 vic3 = x8EFC0A hoi4 = 1629 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Bade
 	link = { vic3 = x0A9EBC vic3 = x39DD3B vic3 = x3ECEED vic3 = x42EB5E vic3 = xD3B54D hoi4 = 4468 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Sorong
 	link = { vic3 = x5A8ABF vic3 = x83923F vic3 = xC7965B hoi4 = 4509 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Waren Satu
-	link = { vic3 = xB4957C hoi4 = 4524 } # STATE_WESTERN_NEW_GUINEA -> Ransiki Kora
-	link = { vic3 = x4BE0B0 vic3 = x817083 hoi4 = 4552 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> land
-	link = { vic3 = x059DEC vic3 = x1650EE vic3 = xB4FAF7 vic3 = xDBA9DB vic3 = xE8222C hoi4 = 4593 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Koperapoka
+	link = { vic3 = xB4957C vic3 = xC8A7EB hoi4 = 4524 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Ransiki Kora
+	link = { vic3 = x4BE0B0 vic3 = x817083 vic3 = x300043 hoi4 = 4552 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> land
+	link = { vic3 = x1650EE vic3 = xB4FAF7 vic3 = xE8222C hoi4 = 4593 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Koperapoka
 	link = { vic3 = x185D9A vic3 = x51FF7F vic3 = xBA1AF0 hoi4 = 7269 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Timika
-	link = { vic3 = x524F67 vic3 = xC8A7EB hoi4 = 7487 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Bintuni
-	link = { vic3 = x12A1F1 vic3 = xC8615D hoi4 = 7512 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> land
+	link = { vic3 = x524F67 hoi4 = 7487 } # STATE_WESTERN_NEW_GUINEA -> Bintuni
+	link = { vic3 = xC8615D hoi4 = 7512 } # STATE_WESTERN_NEW_GUINEA -> land
 	link = { vic3 = x9769DB vic3 = xFC62DC hoi4 = 7529 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> land
-	link = { hoi4 = 7542 } # NOTHING -> Serui Kota
-	link = { vic3 = xBAE381 vic3 = xC0D7B0 hoi4 = 7570 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Wesaput
-	link = { vic3 = xD729BB hoi4 = 7585 } # STATE_WESTERN_NEW_GUINEA -> Kaimana Kota
-	link = { vic3 = x51BE37 vic3 = x706C6E vic3 = xC28486 vic3 = xDF8B88 hoi4 = 7627 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Bis Agats
-	link = { vic3 = x4013C3 vic3 = x43C265 vic3 = xA8E93D vic3 = xB324A4 hoi4 = 8235 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Dekai
+	link = { vic3 = xBAE381 vic3 = xC0D7B0 vic3 = x9D6313 hoi4 = 7570 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Wesaput
+	link = { vic3 = xD729BB vic3 = xA2083C hoi4 = 7585 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Kaimana Kota
+	link = { vic3 = x51BE37 vic3 = xC28486 vic3 = xDF8B88 vic3 = xDBA9DB hoi4 = 7627 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Bis Agats
+	link = { vic3 = x4013C3 vic3 = x43C265 vic3 = xA8E93D vic3 = xB324A4 vic3 = x059DEC hoi4 = 8235 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Dekai
 	link = { vic3 = x30EFC8 vic3 = x8611C3 vic3 = x9CD217 vic3 = xD34DF4 hoi4 = 8250 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Mindiptana
 	link = { vic3 = x822774 vic3 = xC153E3 hoi4 = 10369 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Sarmi
 	link = { vic3 = x3E2E8C vic3 = x97A569 hoi4 = 10396 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> land
-	link = { vic3 = x9D6313 vic3 = x9E801B vic3 = xCC9AB1 hoi4 = 10436 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Tembagapura
+	link = { vic3 = x9E801B vic3 = xCC9AB1 hoi4 = 10436 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Tembagapura
 	link = { vic3 = x459264 vic3 = xB4F5FA hoi4 = 10505 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Rimba Jaya
-	link = { vic3 = x35E1AE vic3 = x3F6260 vic3 = x4FF4F9 hoi4 = 10990 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> land
-	link = { vic3 = x1C9F62 hoi4 = 12315 } # STATE_WESTERN_NEW_GUINEA -> Manokwari
-	link = { vic3 = xC6416E vic3 = xE87A71 hoi4 = 12371 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Hollandia
+	link = { vic3 = x35E1AE vic3 = x3F6260 vic3 = x4FF4F9 vic3 = x9B4105 hoi4 = 10990 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> land
+	link = { vic3 = x1C9F62 vic3 = xB40E08 vic3 = x12A1F1 hoi4 = 12315 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Manokwari
+	link = { vic3 = xC6416E vic3 = xE87A71 vic3 = xB41206 hoi4 = 12371 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Hollandia
 	link = { vic3 = x0DC0D2 vic3 = x1EFBC7 vic3 = x54B094 vic3 = x918FAF hoi4 = 12386 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Fakfak
-	link = { vic3 = x66C85A hoi4 = 12457 } # STATE_WESTERN_NEW_GUINEA -> Kimaam
+	link = { vic3 = x66C85A vic3 = x706C6E hoi4 = 12457 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Kimaam
+	link = { vic3 = xAFF001 hoi4 = 7542 } # STATE_WESTERN_NEW_GUINEA -> Serui Kota
 	link = { comment = "* * STATE_MOLUCCAS " }
 	link = { vic3 = x22A870 vic3 = xD02FE9 hoi4 = 1419 } # STATE_MOLUCCAS, STATE_MOLUCCAS -> Gamsungi
-	link = { vic3 = xC1DDAE hoi4 = 1574 } # STATE_MOLUCCAS -> Ambon
+	link = { vic3 = xC1DDAE vic3 = xAF6607 hoi4 = 1574 } # STATE_MOLUCCAS, STATE_MOLUCCAS -> Ambon
 	link = { vic3 = x0D5E42 vic3 = x91B395 vic3 = xD986F1 hoi4 = 4579 } # STATE_MOLUCCAS, STATE_MOLUCCAS, STATE_MOLUCCAS -> Tual
 	link = { vic3 = xF0CE19 vic3 = xF94D86 hoi4 = 7369 } # STATE_MOLUCCAS, STATE_MOLUCCAS -> Mangon
 	link = { vic3 = xB346EB hoi4 = 7413 } # STATE_MOLUCCAS -> Ternate
 	link = { vic3 = xD3A69B vic3 = xF88172 hoi4 = 7557 } # STATE_MOLUCCAS, STATE_MOLUCCAS -> Namlea
 	link = { vic3 = x7A7A6E hoi4 = 10342 } # STATE_MOLUCCAS -> Fluk
-	link = { vic3 = x079110 vic3 = x3CEE2E hoi4 = 10409 } # STATE_MOLUCCAS, STATE_MOLUCCAS -> Geser
+	link = { vic3 = x079110 vic3 = x3CEE2E vic3 = x51EA06 hoi4 = 10409 } # STATE_MOLUCCAS, STATE_MOLUCCAS, STATE_MOLUCCAS -> Geser
 	link = { comment = "* * STATE_CELEBES " }
 	link = { vic3 = x10547F vic3 = xE82A26 hoi4 = 1098 } # STATE_CELEBES, STATE_CELEBES -> Palu
 	link = { vic3 = x4DA1DC hoi4 = 1289 } # STATE_CELEBES -> Marisa
-	link = { vic3 = x08BE67 vic3 = xD12748 hoi4 = 1484 } # STATE_CELEBES, STATE_CELEBES -> Dondo
-	link = { vic3 = x7BD240 hoi4 = 1505 } # STATE_CELEBES -> Bunta Satu
-	link = { vic3 = xA22F3F hoi4 = 1518 } # STATE_CELEBES -> Poso
-	link = { vic3 = xB3682E hoi4 = 10197 hoi4 = 1561 } # STATE_CELEBES -> Kotamobagu, Palamaki
-	link = { vic3 = x79D69A hoi4 = 4262 } # STATE_CELEBES -> Baru
+	link = { vic3 = x08BE67 vic3 = xD12748 hoi4 = 1484 hoi4 = 1505 } # MANY-TO-MANY: STATE_CELEBES, STATE_CELEBES -> Dondo, Bunta Satu
+	link = { vic3 = xA22F3F hoi4 = 1518 hoi4 = 4537 } # STATE_CELEBES -> Poso, Kolonodale
+	link = { vic3 = x8080F0 hoi4 = 10197 } # STATE_CELEBES -> Kotamobagu
+	link = { vic3 = xB3682E hoi4 = 12330 } # STATE_CELEBES -> Palopo
+	link = { vic3 = xC00170 hoi4 = 1561 } # STATE_CELEBES -> Palamaki
+	link = { vic3 = x79D69A hoi4 = 4262 hoi4 = 4307 } # STATE_CELEBES -> Baru, Tinombo
 	link = { vic3 = x9A5C23 vic3 = xBF46E7 hoi4 = 4308 } # STATE_CELEBES, STATE_CELEBES -> land
 	link = { vic3 = x7A4D9B vic3 = xB14D58 hoi4 = 4349 } # STATE_CELEBES, STATE_CELEBES -> Tanete
-	link = { vic3 = x7A4DF4 hoi4 = 4493 } # STATE_CELEBES -> Luwuk
-	link = { vic3 = xB67D4D hoi4 = 4537 } # STATE_CELEBES -> Kolonodale
+	link = { vic3 = x7A4DF4 vic3 = x7BD240 hoi4 = 4493 } # STATE_CELEBES, STATE_CELEBES -> Luwuk
 	link = { vic3 = x613129 vic3 = x7EF242 vic3 = xEDDB5F hoi4 = 4564 } # STATE_CELEBES, STATE_CELEBES, STATE_CELEBES -> Kendari
-	link = { vic3 = x8080F0 vic3 = xC04B6D hoi4 = 7311 } # STATE_CELEBES, STATE_CELEBES -> Gorontalo
-	link = { vic3 = xE2401F hoi4 = 7336 } # STATE_CELEBES -> Bonebone
+	link = { vic3 = xC04B6D hoi4 = 7311 } # STATE_CELEBES -> Gorontalo
+	link = { vic3 = xE2401F vic3 = xB67D4D hoi4 = 7336 } # STATE_CELEBES, STATE_CELEBES -> Bonebone
 	link = { vic3 = x5D959D hoi4 = 7598 } # STATE_CELEBES -> Totoli
 	link = { vic3 = x0C7820 hoi4 = 10153 } # STATE_CELEBES -> Manado
 	link = { vic3 = x886F1C hoi4 = 10169 } # STATE_CELEBES -> Hunggaluwa
 	link = { vic3 = x908010 vic3 = xF0B767 hoi4 = 10222 } # STATE_CELEBES, STATE_CELEBES -> Bau-Bau
 	link = { vic3 = x63E362 hoi4 = 10263 } # STATE_CELEBES -> Makassar
 	link = { vic3 = x507A4B vic3 = xFEA2EE hoi4 = 10450 } # STATE_CELEBES, STATE_CELEBES -> Lasusua
-	link = { vic3 = x5585BD vic3 = x7AA69B hoi4 = 10464 } # STATE_CELEBES, STATE_CELEBES -> Siwa
+	link = { vic3 = x7AA69B hoi4 = 10464 } # STATE_CELEBES -> Siwa
+	link = { vic3 = x5585BD hoi4 = 1589 } # STATE_CELEBES -> Parepare
 	link = { vic3 = x0CA6B2 hoi4 = 12358 } # STATE_CELEBES -> Pasangkayu
 	link = { vic3 = x58A658 hoi4 = 12444 } # STATE_CELEBES -> Dawi-Dawi
 	link = { comment = "* * STATE_EASTERN_NEW_GUINEA " }
 	link = { vic3 = x46CE7D vic3 = x56DA8C hoi4 = 1222 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Baimuru
 	link = { vic3 = xA28ED1 hoi4 = 1242 } # STATE_EASTERN_NEW_GUINEA -> Ihu
-	link = { vic3 = x565E21 vic3 = x8911A4 vic3 = x904090 vic3 = xD97577 hoi4 = 1283 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Daru
+	link = { vic3 = x565E21 vic3 = x8911A4 vic3 = x904090 hoi4 = 1283 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Daru
 	link = { vic3 = x80BAE9 vic3 = xB6A59D hoi4 = 1310 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> land
 	link = { vic3 = x61F645 hoi4 = 1329 } # STATE_EASTERN_NEW_GUINEA -> land
-	link = { vic3 = x7CF0A5 hoi4 = 1389 } # STATE_EASTERN_NEW_GUINEA -> land
-	link = { vic3 = x3BBE48 vic3 = xC0F58B hoi4 = 2129 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Tari
+	link = { vic3 = x3BBE48 vic3 = xC0F58B vic3 = x8C0F91 hoi4 = 2129 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Tari
 	link = { vic3 = x6CE5CC hoi4 = 4289 } # STATE_EASTERN_NEW_GUINEA -> Pinu
 	link = { vic3 = x84D755 hoi4 = 4317 } # STATE_EASTERN_NEW_GUINEA -> Kokoda
 	link = { vic3 = xA95FFF hoi4 = 4329 } # STATE_EASTERN_NEW_GUINEA -> Port Moresby
-	link = { vic3 = xDDB6D3 hoi4 = 4332 } # STATE_EASTERN_NEW_GUINEA -> Kandrian
+	link = { vic3 = xDDB6D3 hoi4 = 4332 hoi4 = 1301 } # STATE_EASTERN_NEW_GUINEA -> Kandrian, land
 	link = { vic3 = xB3C1C3 hoi4 = 4346 } # STATE_EASTERN_NEW_GUINEA -> Kupiano
-	link = { vic3 = x203BC2 hoi4 = 4393 } # STATE_EASTERN_NEW_GUINEA -> Bogia
+	link = { vic3 = x203BC2 hoi4 = 4393 hoi4 = 1389 } # STATE_EASTERN_NEW_GUINEA -> Bogia, land
 	link = { vic3 = xE341AE hoi4 = 4418 } # STATE_EASTERN_NEW_GUINEA -> Bulolo
-	link = { vic3 = x37A04B vic3 = x5F7475 vic3 = xDE6B8C vic3 = xE8CE3B hoi4 = 4635 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Kiunga
+	link = { vic3 = x37A04B vic3 = x5F7475 vic3 = xDE6B8C vic3 = xE8CE3B vic3 = xA6DD0C hoi4 = 4635 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Kiunga
 	link = { vic3 = x9ACD2A vic3 = xA61876 hoi4 = 5135 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Goroka
-	link = { vic3 = xF8FBAC hoi4 = 7251 } # STATE_EASTERN_NEW_GUINEA -> Rabaul
+	link = { vic3 = xF8FBAC hoi4 = 7251 hoi4 = 10166 } # STATE_EASTERN_NEW_GUINEA -> Rabaul, land
 	link = { vic3 = x64ED4C vic3 = x854391 hoi4 = 7305 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Popondetta
-	link = { vic3 = xCD3B1A hoi4 = 7324 } # STATE_EASTERN_NEW_GUINEA -> land
+	link = { vic3 = xCD3B1A hoi4 = 7324 hoi4 = 7352 } # STATE_EASTERN_NEW_GUINEA -> land, Hoskins
 	link = { vic3 = xCD473D hoi4 = 7333 } # STATE_EASTERN_NEW_GUINEA -> Tufi
-	link = { vic3 = xD2799B hoi4 = 7339 } # STATE_EASTERN_NEW_GUINEA -> Lorengau
+	link = { vic3 = xD2799B hoi4 = 7339 hoi4 = 4421 hoi4 = 1361 hoi4 = 7412 hoi4 = 4352 } # STATE_EASTERN_NEW_GUINEA -> Lorengau, Lamassa, Lakurumau Estate, Namatanai, Kavieng
 	link = { vic3 = x44454B hoi4 = 7349 } # STATE_EASTERN_NEW_GUINEA -> Kwikila
-	link = { vic3 = xC9167B hoi4 = 7362 } # STATE_EASTERN_NEW_GUINEA -> land
+	link = { vic3 = xC9167B hoi4 = 7362 hoi4 = 7378 } # STATE_EASTERN_NEW_GUINEA -> land, land
 	link = { vic3 = xAB408F hoi4 = 7365 } # STATE_EASTERN_NEW_GUINEA -> Wasu
 	link = { vic3 = x071EFB hoi4 = 7409 } # STATE_EASTERN_NEW_GUINEA -> Tapini
 	link = { vic3 = x686A28 vic3 = xF87B6B hoi4 = 7614 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Madang
-	link = { vic3 = x5FAB3F vic3 = x8641E9 vic3 = xC02D48 hoi4 = 10147 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Balimo
-	link = { vic3 = x19E120 hoi4 = 10206 } # STATE_EASTERN_NEW_GUINEA -> Pomio
-	link = { hoi4 = 10231 } # NOTHING -> Tufi
+	link = { vic3 = x5FAB3F vic3 = x8641E9 vic3 = xC02D48 vic3 = xD97577 hoi4 = 10147 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Balimo
+	link = { vic3 = x19E120 hoi4 = 10206 hoi4 = 1286 } # STATE_EASTERN_NEW_GUINEA -> Pomio, Bialla
 	link = { vic3 = x719040 hoi4 = 10248 } # STATE_EASTERN_NEW_GUINEA -> Esa'ala
 	link = { vic3 = x34E353 hoi4 = 10251 } # STATE_EASTERN_NEW_GUINEA -> Finschhafen
+	link = { vic3 = xEECD03 hoi4 = 12995 hoi4 = 10231 } # STATE_EASTERN_NEW_GUINEA -> Moreguina, Tufi
 	link = { vic3 = xB9E7DF hoi4 = 10260 } # STATE_EASTERN_NEW_GUINEA -> Alotau
 	link = { vic3 = x16403B vic3 = x45CE87 vic3 = x6B52DF hoi4 = 10423 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Vanimo
 	link = { vic3 = x09E796 vic3 = x1E1C1E vic3 = x3F9623 hoi4 = 10954 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Mendi
 	link = { vic3 = x104090 hoi4 = 10974 } # STATE_EASTERN_NEW_GUINEA -> land
-	link = { vic3 = x7D3A30 vic3 = x9D11EA vic3 = x9DCD67 hoi4 = 11004 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> land
+	link = { vic3 = x7D3A30 vic3 = x9D11EA vic3 = x9DCD67 vic3 = xF69700 hoi4 = 11004 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> land
 	link = { vic3 = x5475FF vic3 = xA054CD vic3 = xA9E11D vic3 = xDF122B vic3 = xE3D5C3 hoi4 = 11018 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Wabag
 	link = { vic3 = x37312C vic3 = x8FFC12 hoi4 = 12107 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> land
 	link = { vic3 = xC1716D hoi4 = 12123 } # STATE_EASTERN_NEW_GUINEA -> Kikori
 	link = { vic3 = xA3C163 hoi4 = 12135 } # STATE_EASTERN_NEW_GUINEA -> Kerema
 	link = { vic3 = x5779B1 hoi4 = 12154 } # STATE_EASTERN_NEW_GUINEA -> land
 	link = { vic3 = xAABA77 hoi4 = 12193 } # STATE_EASTERN_NEW_GUINEA -> land
-	link = { vic3 = x10C090 hoi4 = 12222 } # STATE_EASTERN_NEW_GUINEA -> Gasmata
+	link = { vic3 = x10C090 hoi4 = 12222 hoi4 = 4304 } # STATE_EASTERN_NEW_GUINEA -> Gasmata, Kimbe
 	link = { vic3 = x8AEFF9 hoi4 = 12237 } # STATE_EASTERN_NEW_GUINEA -> Lae
 	link = { vic3 = xF5408C hoi4 = 12240 } # STATE_EASTERN_NEW_GUINEA -> Wewak
 	link = { vic3 = x0BF948 vic3 = x47A347 vic3 = x51173D hoi4 = 12400 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Aitape
-	link = { vic3 = x26A798 vic3 = xB6A316 hoi4 = 12428 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Mount Hagen
-	link = { vic3 = x3779A1 vic3 = x5CB0C9 hoi4 = 12484 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> land
+	link = { vic3 = x26A798 vic3 = xB6A316 vic3 = xF8C709 vic3 = x75B70D vic3 = x7CF0A5 hoi4 = 12428 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> Mount Hagen
+	link = { vic3 = x3779A1 vic3 = x5CB0C9 vic3 = x36076B hoi4 = 12484 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> land
 	link = { vic3 = x318B7B vic3 = x459277 hoi4 = 12931 } # STATE_EASTERN_NEW_GUINEA, STATE_EASTERN_NEW_GUINEA -> land
 	link = { comment = "* * STATE_SUNDA_ISLANDS " }
-	link = { vic3 = x908090 hoi4 = 1298 } # STATE_SUNDA_ISLANDS -> Gorontalo
-	link = { vic3 = x3CCE91 hoi4 = 1326 } # STATE_SUNDA_ISLANDS -> Viqueque
-	link = { vic3 = x5F978F hoi4 = 1339 } # STATE_SUNDA_ISLANDS -> Manumutin
+	link = { vic3 = x908090 hoi4 = 1298 hoi4 = 10175 hoi4 = 4301 hoi4 = 7321 } # STATE_SUNDA_ISLANDS -> Gorontalo, Tenda, Matuapaga, Kota Uneng
+	link = { vic3 = x3CCE91 hoi4 = 1326 hoi4 = 12190 } # STATE_SUNDA_ISLANDS -> Viqueque, Dili
+	link = { vic3 = x5F978F hoi4 = 1339 hoi4 = 4358 hoi4 = 12206 } # STATE_SUNDA_ISLANDS -> Manumutin, Karang Sirih, Oecusse
 	link = { vic3 = x699245 vic3 = xCF8A98 hoi4 = 1355 } # STATE_SUNDA_ISLANDS, STATE_SUNDA_ISLANDS -> Koepang
 	link = { vic3 = x5ABA94 hoi4 = 4273 } # STATE_SUNDA_ISLANDS -> Denpasar
-	link = { hoi4 = 7293 } # NOTHING -> Mataram
-	link = { vic3 = x7D205E hoi4 = 10219 } # STATE_SUNDA_ISLANDS -> Kalabahi
+	link = { vic3 = x7D205E vic3 = xE90740 hoi4 = 10219 } # STATE_SUNDA_ISLANDS, STATE_SUNDA_ISLANDS -> Kalabahi
 	link = { vic3 = x929145 hoi4 = 12151 } # STATE_SUNDA_ISLANDS -> Sarotai
-	link = { hoi4 = 12162 } # NOTHING -> Bima
 	link = { vic3 = x4EE71E hoi4 = 12178 } # STATE_SUNDA_ISLANDS -> Baucau
 	link = { vic3 = x28EC3F vic3 = x4CFCE1 hoi4 = 12219 } # STATE_SUNDA_ISLANDS, STATE_SUNDA_ISLANDS -> land
 	link = { vic3 = x108090 hoi4 = 12234 } # STATE_SUNDA_ISLANDS -> Kambajawa
 	link = { vic3 = x7F4592 hoi4 = 13001 } # STATE_SUNDA_ISLANDS -> Liquiçá
+	link = { vic3 = x900090 hoi4 = 12162 hoi4 = 10191 } # STATE_SUNDA_ISLANDS -> Bima, Sumbawa Besar
+	link = { vic3 = x100090 hoi4 = 7293 } # STATE_SUNDA_ISLANDS -> Mataram
 	link = { comment = "* * STATE_MINDANAO " }
-	link = { vic3 = x988CCA hoi4 = 1407 } # STATE_MINDANAO -> Nabunturan
-	link = { hoi4 = 1421 } # NOTHING -> Zamboanga
-	link = { vic3 = x355FBE hoi4 = 4241 } # STATE_MINDANAO -> Davao
+	link = { vic3 = x988CCA hoi4 = 10328 hoi4 = 1379 } # STATE_MINDANAO -> Baganga, Bislig
+	link = { vic3 = x355FBE hoi4 = 4241 hoi4 = 1234 } # STATE_MINDANAO -> Davao, Digos
 	link = { vic3 = xAA1CA3 hoi4 = 4266 } # STATE_MINDANAO -> General Santos
-	link = { hoi4 = 4427 } # NOTHING -> Cotabato
-	link = { vic3 = x2D5E65 hoi4 = 10328 hoi4 = 7284 } # STATE_MINDANAO -> Baganga, Mati
-	link = { hoi4 = 7360 } # NOTHING -> Ozamis
-	link = { vic3 = x678557 vic3 = xC3EC2D hoi4 = 7445 } # STATE_MINDANAO, STATE_MINDANAO -> Santo Tomas
+	link = { vic3 = x2D5E65 hoi4 = 7284 } # STATE_MINDANAO -> Mati
+	link = { vic3 = xC3EC2D hoi4 = 12245 hoi4 = 1407 } # STATE_MINDANAO -> land, Nabunturan
+	link = { vic3 = x678557 hoi4 = 7445 } # STATE_MINDANAO -> Santo Tomas
 	link = { vic3 = x0180F0 vic3 = x99D030 hoi4 = 10184 } # STATE_MINDANAO, STATE_MINDANAO -> Jolo
 	link = { vic3 = x7B364D hoi4 = 10214 } # STATE_MINDANAO -> Tagoloan
-	link = { hoi4 = 10243 } # NOTHING -> Cayagan de Oro
-	link = { hoi4 = 10300 } # NOTHING -> Marawi
+	link = { vic3 = xF0014A hoi4 = 7389 hoi4 = 4399 hoi4 = 1421 } # STATE_MINDANAO -> Alicia, Ipil, Zamboanga
+	link = { vic3 = xE804B7 hoi4 = 7417 hoi4 = 7360 } # STATE_MINDANAO -> Pagadian, Ozamis
+	link = { vic3 = x585200 hoi4 = 10300 } # STATE_MINDANAO -> Marawi
+	link = { vic3 = xBC5002 hoi4 = 12217 hoi4 = 10243 } # STATE_MINDANAO -> Malaybalay, Cayagan de Oro
+	link = { vic3 = xE90347 hoi4 = 4427 hoi4 = 12273 } # STATE_MINDANAO -> Cotabato, Maramag
 	link = { vic3 = x4C67A7 hoi4 = 12116 } # STATE_MINDANAO -> Koronadal
 	link = { vic3 = x62D16D hoi4 = 12158 } # STATE_MINDANAO -> Glan
-	link = { vic3 = xCAFE73 hoi4 = 12188 } # STATE_MINDANAO -> Tandag
+	link = { vic3 = xCAFE73 hoi4 = 12188 hoi4 = 1293 hoi4 = 12160 } # STATE_MINDANAO -> Tandag, Surigao, Butuan
 	link = { comment = "* * STATE_LUZON " }
-	link = { vic3 = xB0F0E0 hoi4 = 10265 hoi4 = 1221 } # STATE_LUZON -> Manila, Batangas
-	link = { vic3 = x2291B3 hoi4 = 1372 } # STATE_LUZON -> Daet
-	link = { vic3 = x707061 hoi4 = 4429 hoi4 = 1388 } # STATE_LUZON -> Puerto Princesa, Baler
-	link = { vic3 = x795BD8 hoi4 = 4101 } # STATE_LUZON -> Santa Ana
+	link = { vic3 = xB0F0E0 hoi4 = 10265 hoi4 = 1221 hoi4 = 12236 } # STATE_LUZON -> Manila, Batangas, Lucena
+	link = { vic3 = x2291B3 hoi4 = 1372 hoi4 = 10306 } # STATE_LUZON -> Daet, Gumaca
+	link = { vic3 = x707061 hoi4 = 1388 hoi4 = 4233 } # STATE_LUZON -> Baler, Dipaculao
+	link = { vic3 = x795BD8 hoi4 = 4101 hoi4 = 4214 } # STATE_LUZON -> Santa Ana, Tuguegarao
 	link = { vic3 = x97B9E0 hoi4 = 4288 } # STATE_LUZON -> Calapan
 	link = { vic3 = x1C8BCF hoi4 = 4350 } # STATE_LUZON -> Candon
-	link = { vic3 = x5ED347 vic3 = xECF5E9 hoi4 = 4368 } # STATE_LUZON, STATE_LUZON -> Vigan
+	link = { vic3 = xECF5E9 hoi4 = 10298 } # STATE_LUZON -> Tabuk
+	link = { vic3 = x5ED347 hoi4 = 4368 } # STATE_LUZON -> Vigan
 	link = { vic3 = xE173C4 hoi4 = 4423 } # STATE_LUZON -> Bayombong
-	link = { vic3 = x51BC8C hoi4 = 7323 } # STATE_LUZON -> Norzagay
-	link = { vic3 = x63FA56 hoi4 = 7325 } # STATE_LUZON -> Santiago
-	link = { vic3 = x33B5F8 hoi4 = 7351 } # STATE_LUZON -> Angeles
+	link = { vic3 = x51BC8C hoi4 = 7323 hoi4 = 1288 } # STATE_LUZON -> Norzagay, Cabanatuan
+	link = { vic3 = xEB310E hoi4 = 10252 } # STATE_LUZON -> Ilagan
+	link = { vic3 = x63FA56 hoi4 = 7325 hoi4 = 10167 } # STATE_LUZON -> Santiago, Sagada
+	link = { vic3 = x33B5F8 hoi4 = 7351 hoi4 = 7275 } # STATE_LUZON -> Angeles, Tarlac
 	link = { vic3 = x1B9953 vic3 = xB0F0B0 hoi4 = 7419 } # STATE_LUZON, STATE_LUZON -> Taytay
 	link = { vic3 = x95102A hoi4 = 7439 } # STATE_LUZON -> Casiguran
-	link = { vic3 = x946A22 hoi4 = 10145 } # STATE_LUZON -> Quezon
-	link = { hoi4 = 10165 } # NOTHING -> San Jose
+	link = { vic3 = x946A22 hoi4 = 10145 hoi4 = 4429 } # STATE_LUZON -> Quezon, Puerto Princesa
 	link = { vic3 = x0D8236 hoi4 = 10236 } # STATE_LUZON -> Santa Cruz
 	link = { vic3 = xD2AEEB hoi4 = 10241 } # STATE_LUZON -> Laoag
-	link = { hoi4 = 10252 } # NOTHING -> Ilagan
 	link = { vic3 = x6D44B5 hoi4 = 10272 } # STATE_LUZON -> San Jose
+	link = { vic3 = x5C0D4C hoi4 = 1415 hoi4 = 10165 } # STATE_LUZON -> Dagupan, San Jose
 	link = { vic3 = xB08546 hoi4 = 10280 } # STATE_LUZON -> Alaminos
 	link = { vic3 = xCDE626 hoi4 = 12213 } # STATE_LUZON -> Aparri
 	link = { vic3 = xF4CD9C hoi4 = 12253 } # STATE_LUZON -> Baguio
-	link = { vic3 = x31F0E0 hoi4 = 12279 } # STATE_LUZON -> Naga
+	link = { vic3 = x31F0E0 hoi4 = 12279 hoi4 = 4377 hoi4 = 4228 } # STATE_LUZON -> Naga, Virac, Legazpi
 	link = { comment = "* * STATE_VISAYAS " }
-	link = { vic3 = xB971C4 hoi4 = 1224 } # STATE_VISAYAS -> Tacloban
-	link = { vic3 = x48B8C8 hoi4 = 12112 hoi4 = 1261 } # STATE_VISAYAS -> Himamaylan, Bacolod
+	link = { vic3 = x90F80A hoi4 = 4373 } # STATE_VISAYAS -> Borongan
+	link = { vic3 = xB971C4 hoi4 = 1224 hoi4 = 4269 } # STATE_VISAYAS -> Tacloban, Baybay
+	link = { vic3 = x48B8C8 hoi4 = 1261 } # STATE_VISAYAS -> Bacolod
 	link = { vic3 = x05FD19 hoi4 = 1311 } # STATE_VISAYAS -> Calbayog
 	link = { vic3 = xB4699E vic3 = xCFAFEE hoi4 = 1340 } # STATE_VISAYAS, STATE_VISAYAS -> Catbalogan
 	link = { vic3 = x8ABD23 hoi4 = 1368 } # STATE_VISAYAS -> Roxas
-	link = { hoi4 = 4269 } # NOTHING -> Baybay
-	link = { hoi4 = 7307 } # NOTHING -> Masbate
 	link = { vic3 = x02E634 hoi4 = 7385 } # STATE_VISAYAS -> Tagbilaran
-	link = { hoi4 = 7423 } # NOTHING -> Kalibo
-	link = { vic3 = x591034 hoi4 = 10186 } # STATE_VISAYAS -> Dumaguete
-	link = { vic3 = x223245 vic3 = x46EA60 hoi4 = 10302 } # STATE_VISAYAS, STATE_VISAYAS -> Iloilo
-	link = { vic3 = xD2CA4A hoi4 = 12118 } # STATE_VISAYAS -> Cebu
+	link = { vic3 = x591034 hoi4 = 10186 hoi4 = 12112 } # STATE_VISAYAS -> Dumaguete, Himamaylan
+	link = { vic3 = xF001E2 hoi4 = 7307 } # STATE_VISAYAS -> Masbate
+	link = { vic3 = x223245 vic3 = x46EA60 vic3 = x8001F0 hoi4 = 10302 } # STATE_VISAYAS, STATE_VISAYAS, STATE_VISAYAS -> Iloilo
+	link = { vic3 = xD2CA4A hoi4 = 12118 hoi4 = 12153 } # STATE_VISAYAS -> Cebu, Carcar
+	link = { vic3 = xE2086C hoi4 = 7423 } # STATE_VISAYAS -> Kalibo
 	link = { comment = "* * STATE_WEST_MICRONESIA " }
 	link = { vic3 = x71414D hoi4 = 2489 } # STATE_WEST_MICRONESIA -> Truk
-	link = { vic3 = x414170 hoi4 = 13024 } # STATE_WEST_MICRONESIA -> Rota
+	link = { vic3 = x414170 hoi4 = 13024 hoi4 = 13023 hoi4 = 12140 hoi4 = 3995 hoi4 = 13032 hoi4 = 13031 hoi4 = 13030 hoi4 = 13027 hoi4 = 13028 hoi4 = 13029 hoi4 = 4357 hoi4 = 12103 } # STATE_WEST_MICRONESIA -> Rota, Tenian, land, Saipan, Pulusuk, Satawal, Woleai, Ngulu, Yap, Ulithi, Uriman, Kororu
 	link = { vic3 = xA7F7E3 hoi4 = 13033 } # STATE_WEST_MICRONESIA -> Pulap
-	link = { hoi4 = 13034 } # NOTHING -> Satawan
+	link = { vic3 = x6E4206 hoi4 = 13034 } # STATE_WEST_MICRONESIA -> Satawan
 	link = { comment = "* * STATE_EAST_MICRONESIA " }
 	link = { vic3 = xCD1EA0 hoi4 = 1002 } # STATE_EAST_MICRONESIA -> Rongelap
-	link = { vic3 = x808011 hoi4 = 13039 } # STATE_EAST_MICRONESIA -> Jaluit
+	link = { vic3 = x808011 hoi4 = 13039 hoi4 = 13045 hoi4 = 13046 hoi4 = 13036 hoi4 = 13035 hoi4 = 13044 hoi4 = 13042 hoi4 = 13040 hoi4 = 7393 hoi4 = 13022 hoi4 = 13021 hoi4 = 4387 hoi4 = 13020 } # STATE_EAST_MICRONESIA -> Jaluit, Bikini, Enewetak, Kosrae, Pohnpei, Likiep, Majuro, Mili, Makin, Abaiang, Tarawa, Abemama, Tabiteua
 	link = { vic3 = xF5DBBF hoi4 = 13041 } # STATE_EAST_MICRONESIA -> Kwajalein
 	link = { vic3 = x80C011 hoi4 = 13043 } # STATE_EAST_MICRONESIA -> Wotje
 	link = { vic3 = x527F6C hoi4 = 13047 hoi4 = 13051 hoi4 = 13052 } # STATE_EAST_MICRONESIA -> Wake Island, Johnston Atoll, Midway Atoll
-	link = { vic3 = x808090 hoi4 = 13055 } # STATE_EAST_MICRONESIA -> Vaitupu
+	link = { vic3 = x808090 hoi4 = 13055 hoi4 = 13056 hoi4 = 13057 hoi4 = 13054 } # STATE_EAST_MICRONESIA -> Vaitupu, Funafuti, Nukulaelae, Nui
 	link = { comment = "* * STATE_SOLOMON_ISLANDS " }
 	link = { vic3 = x874589 hoi4 = 1042 } # STATE_SOLOMON_ISLANDS -> Kirakira
-	link = { hoi4 = 1085 } # NOTHING -> Auki
+	link = { vic3 = xF5F405 hoi4 = 1085 } # STATE_SOLOMON_ISLANDS -> Auki
 	link = { vic3 = x2B5E69 hoi4 = 4252 } # STATE_SOLOMON_ISLANDS -> Buala
-	link = { vic3 = x898945 hoi4 = 10291 } # STATE_SOLOMON_ISLANDS -> Nguvia
-	link = { vic3 = x692B64 vic3 = xD04090 hoi4 = 10319 } # STATE_SOLOMON_ISLANDS, STATE_SOLOMON_ISLANDS -> Gizo
+	link = { vic3 = x898945 hoi4 = 10291 hoi4 = 7437 hoi4 = 1370 hoi4 = 1269 hoi4 = 4292 } # STATE_SOLOMON_ISLANDS -> Nguvia, Sukiki, land, Honiara, Ruaniu
+	link = { vic3 = xD04090 vic3 = x692B64 hoi4 = 10319 } # STATE_SOLOMON_ISLANDS, STATE_SOLOMON_ISLANDS -> Gizo
 	link = { vic3 = x3B8EEB hoi4 = 12265 } # STATE_SOLOMON_ISLANDS -> Taro
 	link = { comment = "* * STATE_NAURU " }
 	link = { vic3 = x418382 vic3 = xC041F0 hoi4 = 13038 } # STATE_NAURU, STATE_NAURU -> Moqua
@@ -9077,17 +9083,24 @@
 	link = { vic3 = x53FA6E hoi4 = 12159 } # STATE_FIJI -> Labasa
 	link = { comment = "* * STATE_VANUATU " }
 	link = { vic3 = x504090 vic3 = x5178BC hoi4 = 1237 } # STATE_VANUATU, STATE_VANUATU -> Luganville
-	link = { vic3 = x75A377 hoi4 = 4247 } # STATE_VANUATU -> Isangel
+	link = { vic3 = x75A377 hoi4 = 4247 hoi4 = 12120 hoi4 = 7390 } # STATE_VANUATU -> Isangel, Port Vila, Lata
 	link = { comment = "* * STATE_KANAK " }
-	link = { vic3 = x302090 hoi4 = 1263 } # STATE_KANAK -> Canala
+	link = { vic3 = x302090 hoi4 = 1263 hoi4 = 4268 } # STATE_KANAK -> Canala, Nouméa
 	link = { vic3 = x2BEBD1 hoi4 = 4231 } # STATE_KANAK -> Wé
-	link = { vic3 = x665AAF hoi4 = 10160 } # STATE_KANAK -> Koné
+	link = { vic3 = x665AAF hoi4 = 10160 hoi4 = 12132 hoi4 = 7264 } # STATE_KANAK -> Koné, Bourail, Koumac
 	link = { comment = "* * STATE_BOUGAINVILLE " }
-	link = { vic3 = x97FBC3 hoi4 = 1358 } # STATE_BOUGAINVILLE -> Wakanai
-	link = { vic3 = x9BC5AD hoi4 = 4378 } # STATE_BOUGAINVILLE -> Arawa
+	link = { vic3 = x97FBC3 hoi4 = 1358 hoi4 = 4378 } # STATE_BOUGAINVILLE -> Wakanai, Arawa
+	link = { vic3 = x9BC5AD hoi4 = 4226 } # STATE_BOUGAINVILLE -> Buin
 	link = { vic3 = x308254 hoi4 = 10234 } # STATE_BOUGAINVILLE -> Buka
 	link = { comment = "* * STATE_TAHITI " }
+	link = { vic3 = x9A79DC hoi4 = 1280 } # STATE_TAHITI -> Adamstown
+	link = { vic3 = xA000B0 vic3 = x54BB3D vic3 = x2C2E13 vic3 = x7D7D62 vic3 = x42432A vic3 = x718885 vic3 = x728871 vic3 = x2A4340 vic3 = xDBAE9F vic3 = x887771 vic3 = xF1DBF3 hoi4 = 12148 } # STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI -> Pape'ete
+	link = { vic3 = x643424 vic3 = x5E2464 vic3 = x98C69C vic3 = xC6B798 vic3 = xBA6E55 vic3 = x98C3C6 vic3 = x59885E vic3 = x888659 vic3 = x998293 vic3 = xCBC996 vic3 = x0181B0 hoi4 = 10188 } # STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI -> Uturoa
 	link = { comment = "* * STATE_TONGA " }
+	link = { vic3 = x208030 hoi4 = 7290 hoi4 = 13080 hoi4 = 13050 } # STATE_TONGA -> Apia, Pago Pago, Kanton
+	link = { vic3 = xD98CDA hoi4 = 13048 } # STATE_TONGA -> Teraina
+	link = { vic3 = xC00010 hoi4 = 13049 } # STATE_TONGA -> Tabuaeran
+	link = { vic3 = xA7F8A1 hoi4 = 13053 } # STATE_TONGA -> Kiritimati
 	link = { comment = "* " }
 	link = { comment = "* **********" }
 	link = { comment = "australasia" }
