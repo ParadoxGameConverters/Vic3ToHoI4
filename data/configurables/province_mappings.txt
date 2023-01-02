@@ -2734,7 +2734,7 @@
 	link = { vic3 = x906060 hoi4 = 11398 } # STATE_WEST_GALICIA -> Skawina
 	link = { vic3 = x56599F hoi4 = 9494 } # STATE_WEST_GALICIA -> Jaroslaw
 	link = { vic3 = x11E061 vic3 = xA550A9 hoi4 = 11413 } # STATE_WEST_GALICIA, STATE_WEST_GALICIA -> Bochnia
-	link = { vic3 = xFCC35F hoi4 = 6499 } # STATE_WEST_GALICIA -> Mielec
+	link = { vic3 = xFCC35F hoi4 = 6499 hoi4 = 442 } # STATE_WEST_GALICIA -> Mielec, Tarnów
 	link = { vic3 = xC8690C hoi4 = 11507 } # STATE_WEST_GALICIA -> Stalowa Wola
 	link = { comment = "* * STATE_EAST_GALICIA " }
 	link = { vic3 = xA3CF78 vic3 = xEFE270 hoi4 = 438 } # STATE_EAST_GALICIA, STATE_EAST_GALICIA -> Czortków
@@ -3476,7 +3476,8 @@
 	link = { comment = "* * STATE_SOMALILAND " }
 	link = { vic3 = x20E090 vic3 = x85FD85 vic3 = xDDAC33 vic3 = xDEFB4F vic3 = xDF951C hoi4 = 1905 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND -> Las Anod
 	link = { vic3 = x049442 vic3 = x469B34 vic3 = x6E8CCA vic3 = x76595D vic3 = xA05C39 hoi4 = 1964 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_OROMIA, STATE_SOMALILAND, STATE_SOMALILAND -> Rocca Littorio
-	link = { vic3 = x0C544E vic3 = x42DA4F vic3 = xB19FD2 vic3 = xB9F779 vic3 = xD0FF66 hoi4 = 1966 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND -> Bosaso
+	link = { vic3 = x37058F hoi4 = 8000 } # STATE_YEMEN -> Tamrida
+	link = { vic3 = x0C544E vic3 = x42DA4F vic3 = xB19FD2 vic3 = xB9F779 vic3 = xD0FF66 vic3 = xEF3903 hoi4 = 1966 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND -> Bosaso
 	link = { vic3 = xE4636A vic3 = xE585C3 vic3 = xF5E822 hoi4 = 2020 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND -> Belet Uen
 	link = { vic3 = x10CF18 vic3 = x1CE5E9 vic3 = x354629 vic3 = x3587B8 vic3 = x72DC5E vic3 = x992BFC vic3 = xA1A21B vic3 = xAFF79D vic3 = xF26F4C hoi4 = 2063 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND -> Baidoa
 	link = { vic3 = x2CA298 vic3 = x4BED76 vic3 = xA0E090 hoi4 = 4909 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND -> Garoe
@@ -6916,7 +6917,8 @@
 	link = { vic3 = x0BB5E2 vic3 = x17E33F vic3 = x954C46 hoi4 = 1497 } # STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Tura
 	link = { vic3 = x1B997A vic3 = x6030DF vic3 = xCC2DA0 hoi4 = 1525 } # STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Jorhat
 	link = { vic3 = x8F90F5 vic3 = xB238B2 hoi4 = 1553 } # STATE_ASSAM, STATE_ASSAM -> Kohima
-	link = { vic3 = x8C53B3 hoi4 = 1581 } # STATE_ASSAM -> Imphal
+	link = { vic3 = x8C53B3 vic3 = xB03121 vic3 = xA17DC4 vic3 = xCB0893 hoi4 = 1581 } # STATE_ASSAM, STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Imphal
+	link = { vic3 = x47C5A9 hoi4 = 4454 } # STATE_KACHIN -> Tedim
 	link = { vic3 = x337820 vic3 = xC6301B vic3 = xF3B09A hoi4 = 10090 } # STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Aizawl
 	link = { vic3 = x12647B hoi4 = 10349 } # STATE_ASSAM -> Bongaigaon
 	link = { vic3 = x30B15A vic3 = x8C6C79 hoi4 = 10514 } # STATE_ASSAM, STATE_ASSAM -> Silchar
