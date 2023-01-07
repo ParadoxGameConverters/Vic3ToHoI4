@@ -76,9 +76,10 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
        "name = \"Converted - {}\"\n"
        "path = \"mod/{}/\"\n"
        "user_dir = \"{}_user_dir\"\n"
-       "replace_path=\"common/ideologies\"\n"
+       "replace_path=\"common/countries\"\n"
        "replace_path=\"history/countries\"\n"
        "replace_path=\"history/states\"\n"
+       "replace_path=\"map/strategicregions\"\n"
        "supported_version=\"{}\"",
        output_name,
        output_name,
@@ -93,9 +94,10 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
    }
    fmt::print(descriptor_file,
        "name = \"Converted - {}\"\n"
-       "replace_path=\"common/ideologies\"\n"
+       "replace_path=\"common/countries\"\n"
        "replace_path=\"history/countries\"\n"
        "replace_path=\"history/states\"\n"
+       "replace_path=\"map/strategicregions\"\n"
        "supported_version=\"{}\"",
        output_name,
        game_version.toWildCard());

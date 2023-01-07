@@ -115,9 +115,10 @@ TEST(OutHoi4OutModTest, ModFileIsCreated)
        fmt::format("name = \"Converted - mod_file_test_output\"\n"
                    "path = \"mod/mod_file_test_output/\"\n"
                    "user_dir = \"mod_file_test_output_user_dir\"\n"
-                   "replace_path=\"common/ideologies\"\n"
+                   "replace_path=\"common/countries\"\n"
                    "replace_path=\"history/countries\"\n"
                    "replace_path=\"history/states\"\n"
+                   "replace_path=\"map/strategicregions\"\n"
                    "supported_version=\"*\""));
 }
 
@@ -142,9 +143,10 @@ TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
        fmt::format("name = \"Converted - descriptor_file_test_output\"\n"
                    "path = \"mod/descriptor_file_test_output/\"\n"
                    "user_dir = \"descriptor_file_test_output_user_dir\"\n"
-                   "replace_path=\"common/ideologies\"\n"
+                   "replace_path=\"common/countries\"\n"
                    "replace_path=\"history/countries\"\n"
                    "replace_path=\"history/states\"\n"
+                   "replace_path=\"map/strategicregions\"\n"
                    "supported_version=\"*\""));
 }
 
@@ -169,9 +171,10 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
        fmt::format("name = \"Converted - version_test_output\"\n"
                    "path = \"mod/version_test_output/\"\n"
                    "user_dir = \"version_test_output_user_dir\"\n"
-                   "replace_path=\"common/ideologies\"\n"
+                   "replace_path=\"common/countries\"\n"
                    "replace_path=\"history/countries\"\n"
                    "replace_path=\"history/states\"\n"
+                   "replace_path=\"map/strategicregions\"\n"
                    "supported_version=\"42.13.*\""));
 
    std::ifstream descriptor_file("output/version_test_output.mod");
@@ -186,8 +189,9 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
        fmt::format("name = \"Converted - version_test_output\"\n"
                    "path = \"mod/version_test_output/\"\n"
                    "user_dir = \"version_test_output_user_dir\"\n"
-                   "replace_path=\"common/ideologies\"\n"
+                   "replace_path=\"common/countries\"\n"
                    "replace_path=\"history/countries\"\n"
                    "replace_path=\"history/states\"\n"
+                   "replace_path=\"map/strategicregions\"\n"
                    "supported_version=\"42.13.*\""));
 }
