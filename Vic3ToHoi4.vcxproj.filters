@@ -270,6 +270,12 @@
     <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp">
       <Filter>src\hoi4_world\map</Filter>
     </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_building.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_buildings.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\out_hoi4\out_mod.h">
@@ -488,6 +494,12 @@
     </ClInclude>
     <ClInclude Include="src\hoi4_world\states\hoi4_states.h">
       <Filter>src\hoi4_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\map\out_building.h">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\map\out_buildings.h">
+      <Filter>src\out_hoi4\map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

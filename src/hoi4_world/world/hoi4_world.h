@@ -34,6 +34,7 @@ class World
    [[nodiscard]] const std::map<std::string, Country>& GetCountries() const { return countries_; }
    [[nodiscard]] const States& GetStates() const { return states_; }
    [[nodiscard]] const StrategicRegions& GetStrategicRegions() const { return strategic_regions_; }
+   [[nodiscard]] const Buildings& GetBuildings() const { return buildings_; }
 
   private:
    std::map<std::string, Country> countries_;

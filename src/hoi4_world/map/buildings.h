@@ -21,8 +21,8 @@ class Buildings
    {
    }
 
-   [[nodiscard]] const std::multimap<int, Building>& getBuildings() const { return buildings_; }
-   [[nodiscard]] const std::map<int, int>& getAirportLocations() const { return airport_locations_; }
+   [[nodiscard]] const std::multimap<int, Building>& GetBuildings() const { return buildings_; }
+   [[nodiscard]] const std::map<int, int>& GetAirportLocations() const { return airport_locations_; }
 
   private:
    std::multimap<int, Building> buildings_;
