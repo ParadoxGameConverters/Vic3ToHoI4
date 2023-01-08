@@ -160,6 +160,7 @@
     <ClInclude Include="src\hoi4_world\map\strategic_regions_importer.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_region_importer.h" />
     <ClInclude Include="src\hoi4_world\states\hoi4_state.h" />
+    <ClInclude Include="src\hoi4_world\states\hoi4_states.h" />
     <ClInclude Include="src\hoi4_world\states\hoi4_states_converter.h" />
     <ClInclude Include="src\hoi4_world\world\hoi4_world.h" />
     <ClInclude Include="src\hoi4_world\world\hoi4_world_converter.h" />

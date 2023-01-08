@@ -879,7 +879,7 @@ void PlaceSyntheticRefineries(const std::vector<hoi4::State>& states,
 }
 
 
-hoi4::Buildings PlaceBuildings(const std::vector<hoi4::State>& states,
+hoi4::Buildings PlaceBuildings(const hoi4::States& states,
     const hoi4::CoastalProvinces& coastal_provinces,
     const maps::MapData& map_data,
     const AllDefaultPositions& all_default_positions)
@@ -887,39 +887,37 @@ hoi4::Buildings PlaceBuildings(const std::vector<hoi4::State>& states,
    std::multimap<int, hoi4::Building> buildings;
    std::map<int, int> airport_locations;
 
-   // const auto& provinceToStateIDMap = theStates.getProvinceToStateIDMap();
-   const std::map<int, int> province_to_state_id_map;
    const auto& actual_coastal_provinces = coastal_provinces.GetCoastalProvinces();
 
-   PlaceAirports(states, map_data, all_default_positions.default_air_bases, buildings, airport_locations);
-   PlaceAntiAir(states, map_data, all_default_positions.default_anti_airs, buildings);
-   PlaceArmsFactories(states, map_data, all_default_positions.default_arms_factories, buildings);
-   PlaceBunkers(province_to_state_id_map, map_data, all_default_positions.default_bunkers, buildings);
-   PlaceCoastalBunkers(province_to_state_id_map,
+   PlaceAirports(states.states, map_data, all_default_positions.default_air_bases, buildings, airport_locations);
+   PlaceAntiAir(states.states, map_data, all_default_positions.default_anti_airs, buildings);
+   PlaceArmsFactories(states.states, map_data, all_default_positions.default_arms_factories, buildings);
+   PlaceBunkers(states.province_to_state_id_map, map_data, all_default_positions.default_bunkers, buildings);
+   PlaceCoastalBunkers(states.province_to_state_id_map,
        actual_coastal_provinces,
        map_data,
        all_default_positions.default_coastal_bunkers,
        buildings);
-   PlaceDockyards(states,
+   PlaceDockyards(states.states,
        coastal_provinces,
        actual_coastal_provinces,
        map_data,
        all_default_positions.default_dockyards,
        buildings);
-   PlaceFloatingHarbors(province_to_state_id_map,
+   PlaceFloatingHarbors(states.province_to_state_id_map,
        actual_coastal_provinces,
        map_data,
        all_default_positions.default_floating_harbors,
        buildings);
-   PlaceIndustrialComplexes(states, map_data, all_default_positions.default_industrial_complexes, buildings);
-   PlaceNavalBases(province_to_state_id_map,
+   PlaceIndustrialComplexes(states.states, map_data, all_default_positions.default_industrial_complexes, buildings);
+   PlaceNavalBases(states.province_to_state_id_map,
        actual_coastal_provinces,
        map_data,
        all_default_positions.default_naval_bases,
        buildings);
-   PlaceNuclearReactors(states, map_data, all_default_positions.default_nuclear_reactors, buildings);
-   PlaceSupplyNodes(province_to_state_id_map, map_data, all_default_positions.default_supply_nodes, buildings);
-   PlaceSyntheticRefineries(states, map_data, all_default_positions.default_synthetic_refineries, buildings);
+   PlaceNuclearReactors(states.states, map_data, all_default_positions.default_nuclear_reactors, buildings);
+   PlaceSupplyNodes(states.province_to_state_id_map, map_data, all_default_positions.default_supply_nodes, buildings);
+   PlaceSyntheticRefineries(states.states, map_data, all_default_positions.default_synthetic_refineries, buildings);
 
    return {buildings, airport_locations};
 }
@@ -927,8 +925,8 @@ hoi4::Buildings PlaceBuildings(const std::vector<hoi4::State>& states,
 }  // namespace
 
 
-hoi4::Buildings hoi4::ImportBuildings(const std::vector<hoi4::State>& states,
-    const hoi4::CoastalProvinces& coastal_provinces,
+hoi4::Buildings hoi4::ImportBuildings(const States& states,
+    const CoastalProvinces& coastal_provinces,
     const maps::MapData& map_data,
     const commonItems::ModFilesystem& mod_filesystem)
 {

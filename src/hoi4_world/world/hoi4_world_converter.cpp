@@ -18,7 +18,6 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
     const mappers::ProvinceMapper& province_mapper)
 {
    std::map<std::string, Country> countries;
-   std::vector<State> states;
 
    Log(LogLevel::Info) << "Creating Hoi4 world";
    Log(LogLevel::Progress) << "50%";
@@ -35,7 +34,7 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
    const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem);
 
    StatesConverter states_converter;
-   states = states_converter.ConvertStates(source_world.GetStates(),
+   States states = states_converter.ConvertStates(source_world.GetStates(),
        source_world.GetProvinceDefinitions(),
        province_mapper.GetHoi4ToVic3ProvinceMappings(),
        map_data,
@@ -43,7 +42,7 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
        strategic_regions,
        country_mapper);
 
-   strategic_regions.UpdateToMatchNewStates(states);
+   strategic_regions.UpdateToMatchNewStates(states.states);
 
    return World(countries, states, strategic_regions);
 }

@@ -7,6 +7,7 @@
 
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/states/hoi4_state.h"
+#include "src/hoi4_world/states/hoi4_states.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapping_types.h"
 #include "src/maps/map_data.h"
@@ -21,7 +22,7 @@ namespace hoi4
 class StatesConverter
 {
   public:
-   std::vector<State> ConvertStates(const std::map<int, vic3::State>& states,
+   States ConvertStates(const std::map<int, vic3::State>& states,
        const vic3::ProvinceDefinitions& vic3_province_definitions,
        const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
        const maps::MapData& map_data,

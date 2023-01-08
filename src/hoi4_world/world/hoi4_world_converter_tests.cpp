@@ -29,7 +29,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
        province_mapper);
 
    EXPECT_TRUE(world.GetCountries().empty());
-   EXPECT_TRUE(world.GetStates().empty());
+   EXPECT_TRUE(world.GetStates().states.empty());
+   EXPECT_TRUE(world.GetStates().province_to_state_id_map.empty());
 }
 
 
@@ -81,7 +82,15 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
        country_mapper,
        province_mapper);
 
-   EXPECT_THAT(world.GetStates(), testing::ElementsAre(State(1, "TAG", {10, 20, 30}), State(2, "TWO", {40, 50, 60})));
+   EXPECT_THAT(world.GetStates().states,
+       testing::ElementsAre(State(1, "TAG", {10, 20, 30}), State(2, "TWO", {40, 50, 60})));
+   EXPECT_THAT(world.GetStates().province_to_state_id_map,
+       testing::UnorderedElementsAre(testing::Pair(10, 1),
+           testing::Pair(20, 1),
+           testing::Pair(30, 1),
+           testing::Pair(40, 2),
+           testing::Pair(50, 2),
+           testing::Pair(60, 2)));
 }
 
 

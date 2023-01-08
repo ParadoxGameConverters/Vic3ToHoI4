@@ -232,7 +232,7 @@ std::vector<std::set<int>> ConsolidateProvinceSets(std::vector<std::set<int>> co
 }
 
 
-std::vector<hoi4::State> CreateStates(const std::map<int, vic3::State>& states,
+hoi4::States CreateStates(const std::map<int, vic3::State>& states,
     const std::map<int, std::set<int>>& state_id_to_hoi4_provinces,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
@@ -240,6 +240,8 @@ std::vector<hoi4::State> CreateStates(const std::map<int, vic3::State>& states,
     const mappers::CountryMapper& country_mapper)
 {
    std::vector<hoi4::State> hoi4_states;
+   std::map<int, int> province_to_state_id_map;
+
    for (const auto& [state_id, hoi4_provinces]: state_id_to_hoi4_provinces)
    {
       const auto state_itr = states.find(state_id);
@@ -272,18 +274,22 @@ std::vector<hoi4::State> CreateStates(const std::map<int, vic3::State>& states,
 
       for (const auto& province_set: final_connected_province_sets)
       {
+         for (const int province: province_set)
+         {
+            province_to_state_id_map.emplace(province, static_cast<int>(hoi4_states.size() + 1U));
+         }
          hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U), state_owner, province_set);
       }
    }
 
-   return hoi4_states;
+   return {hoi4_states, province_to_state_id_map};
 }
 
 }  // namespace
 
 
 
-std::vector<hoi4::State> hoi4::StatesConverter::ConvertStates(const std::map<int, vic3::State>& states,
+hoi4::States hoi4::StatesConverter::ConvertStates(const std::map<int, vic3::State>& states,
     const vic3::ProvinceDefinitions& vic3_province_definitions,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
     const maps::MapData& map_data,

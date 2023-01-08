@@ -91,7 +91,7 @@ TEST(Outhoi4WorldOutworld, StatesHistoryFilesAreCreatedAndOutput)
 
    OutputWorld("StatesHistoryFilesAreCreatedAreOutput",
        hoi4::World({},
-           {hoi4::State(1, std::nullopt, {}), hoi4::State(2, std::nullopt, {})},
+           {{hoi4::State(1, std::nullopt, {}), hoi4::State(2, std::nullopt, {})}, {}},
            hoi4::StrategicRegions({}, {})));
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/StatesHistoryFilesAreCreatedAreOutput/history/states/1.txt"));

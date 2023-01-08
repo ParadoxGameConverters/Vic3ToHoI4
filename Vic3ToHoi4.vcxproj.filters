@@ -486,6 +486,9 @@
     <ClInclude Include="src\hoi4_world\map\buildings_creator.h">
       <Filter>src\hoi4_world\map</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\states\hoi4_states.h">
+      <Filter>src\hoi4_world\states</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\version.txt">

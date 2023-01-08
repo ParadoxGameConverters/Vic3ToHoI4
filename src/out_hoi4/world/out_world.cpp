@@ -9,6 +9,6 @@
 void out::OutputWorld(std::string_view output_name, const hoi4::World& world)
 {
    OutputCountries(output_name, world.GetCountries());
-   OutputStates(output_name, world.GetStates());
+   OutputStates(output_name, world.GetStates().states);
    OutputStrategicRegions(output_name, world.GetStrategicRegions());
 }
