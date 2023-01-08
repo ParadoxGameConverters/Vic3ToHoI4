@@ -234,36 +234,33 @@ void PlaceAntiAir(const std::vector<hoi4::State>& states,
          }
       }
 
-      while (numPlaced < 3)
+      for (auto province: state.GetProvinces())
       {
-         for (auto province: state.GetProvinces())
+         int state_id = state.GetId();
+         if (auto province_points = map_data.GetProvincePoints(std::to_string(province)); province_points)
          {
-            int state_id = state.GetId();
-            if (auto province_points = map_data.GetProvincePoints(std::to_string(province)); province_points)
-            {
-               const auto centermost_point = province_points->GetCentermostPoint();
-               hoi4::BuildingPosition position;
-               position.x_coordinate = centermost_point.x;
-               position.y_coordinate = 11.0;
-               position.z_coordinate = centermost_point.y;
-               position.rotation = 0;
+            const auto centermost_point = province_points->GetCentermostPoint();
+            hoi4::BuildingPosition position;
+            position.x_coordinate = centermost_point.x;
+            position.y_coordinate = 11.0;
+            position.z_coordinate = centermost_point.y;
+            position.rotation = 0;
 
-               buildings.emplace(state_id, hoi4::Building(state_id, "anti_air_building", position, 0));
-               numPlaced++;
-            }
-            else
-            {
-               Log(LogLevel::Warning) << fmt::format(
-                   "Province {} did not have any points. Anti-air not fully set in state {}.",
-                   province,
-                   state_id);
-               break;
-            }
+            buildings.emplace(state_id, hoi4::Building(state_id, "anti_air_building", position, 0));
+            numPlaced++;
+         }
+         else
+         {
+            Log(LogLevel::Warning) << fmt::format(
+                "Province {} did not have any points. Anti-air not fully set in state {}.",
+                province,
+                state_id);
+            break;
+         }
 
-            if (numPlaced >= 3)
-            {
-               break;
-            }
+         if (numPlaced >= 3)
+         {
+            break;
          }
       }
    }
@@ -296,36 +293,33 @@ void PlaceArmsFactories(const std::vector<hoi4::State>& states,
          }
       }
 
-      while (num_placed < 6)
+      for (auto province: state.GetProvinces())
       {
-         for (auto province: state.GetProvinces())
+         int state_id = state.GetId();
+         if (auto province_points = map_data.GetProvincePoints(std::to_string(province)); province_points)
          {
-            int state_id = state.GetId();
-            if (auto province_points = map_data.GetProvincePoints(std::to_string(province)); province_points)
-            {
-               const auto centermost_point = province_points->GetCentermostPoint();
-               hoi4::BuildingPosition position;
-               position.x_coordinate = centermost_point.x;
-               position.y_coordinate = 11.0;
-               position.z_coordinate = centermost_point.y;
-               position.rotation = 0;
+            const auto centermost_point = province_points->GetCentermostPoint();
+            hoi4::BuildingPosition position;
+            position.x_coordinate = centermost_point.x;
+            position.y_coordinate = 11.0;
+            position.z_coordinate = centermost_point.y;
+            position.rotation = 0;
 
-               buildings.emplace(state_id, hoi4::Building(state_id, "arms_factory", position, 0));
-               num_placed++;
-            }
-            else
-            {
-               Log(LogLevel::Warning) << fmt::format(
-                   "Province {} did not have any points. Arms factories not fully set in state {}.",
-                   province,
-                   state_id);
-               break;
-            }
+            buildings.emplace(state_id, hoi4::Building(state_id, "arms_factory", position, 0));
+            num_placed++;
+         }
+         else
+         {
+            Log(LogLevel::Warning) << fmt::format(
+                "Province {} did not have any points. Arms factories not fully set in state {}.",
+                province,
+                state_id);
+            break;
+         }
 
-            if (num_placed >= 6)
-            {
-               break;
-            }
+         if (num_placed >= 6)
+         {
+            break;
          }
       }
    }
@@ -595,7 +589,7 @@ void PlaceIndustrialComplexes(const std::vector<hoi4::State>& states,
    {
       int state_id = state.GetId();
 
-      auto numPlaced = 0;
+      auto num_placed = 0;
       for (auto theProvince: state.GetProvinces())
       {
          if (auto possible_industrial_complex = default_industrial_complexes.find(std::make_pair(theProvince, 0));
@@ -603,44 +597,41 @@ void PlaceIndustrialComplexes(const std::vector<hoi4::State>& states,
          {
             auto position = possible_industrial_complex->second;
             buildings.emplace(state_id, hoi4::Building(state_id, "industrial_complex", position, 0));
-            numPlaced++;
+            num_placed++;
+         }
 
-            if (numPlaced > 3)
-            {
-               break;
-            }
+         if (num_placed > 3)
+         {
+            break;
          }
       }
 
-      while (numPlaced < 6)
+      for (auto province: state.GetProvinces())
       {
-         for (auto province: state.GetProvinces())
+         auto province_points = map_data.GetProvincePoints(std::to_string(province));
+         if (province_points)
          {
-            auto province_points = map_data.GetProvincePoints(std::to_string(province));
-            if (province_points)
-            {
-               const auto centermost_point = province_points->GetCentermostPoint();
-               hoi4::BuildingPosition position;
-               position.x_coordinate = centermost_point.x;
-               position.y_coordinate = 11.0;
-               position.z_coordinate = centermost_point.y;
-               position.rotation = 0;
-               buildings.emplace(state_id, hoi4::Building(state_id, "industrial_complex", position, 0));
-               numPlaced++;
-            }
-            else
-            {
-               Log(LogLevel::Warning) << fmt::format(
-                   "Province {} did not have any points. Industrial complexes not fully set in state {}.",
-                   province,
-                   state_id);
-               break;
-            }
+            const auto centermost_point = province_points->GetCentermostPoint();
+            hoi4::BuildingPosition position;
+            position.x_coordinate = centermost_point.x;
+            position.y_coordinate = 11.0;
+            position.z_coordinate = centermost_point.y;
+            position.rotation = 0;
+            buildings.emplace(state_id, hoi4::Building(state_id, "industrial_complex", position, 0));
+            num_placed++;
+         }
+         else
+         {
+            Log(LogLevel::Warning) << fmt::format(
+                "Province {} did not have any points. Industrial complexes not fully set in state {}.",
+                province,
+                state_id);
+            break;
+         }
 
-            if (numPlaced >= 6)
-            {
-               break;
-            }
+         if (num_placed >= 6)
+         {
+            break;
          }
       }
    }
