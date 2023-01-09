@@ -38,6 +38,14 @@ TEST(MapsProvincedefinitions, ProvincesCanBeShownAreLandProvinces)
 }
 
 
+TEST(MapsProvincedefinitions, SeaProvincesAreReturned)
+{
+   const maps::ProvinceDefinitions province_definitions({}, {"1", "2", "3", "4", "0x000005"}, {}, {});
+
+   EXPECT_THAT(province_definitions.GetSeaProvinces(), testing::UnorderedElementsAre("1", "2", "3", "4", "0x000005"));
+}
+
+
 TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotSeaProvinces)
 {
    const maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
