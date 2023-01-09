@@ -33,14 +33,14 @@ TEST(Hoi4worldMapCoastalProvincesCreatorTests, CoastalProvincesAreDetected)
 
 TEST(Hoi4worldMapCoastalProvincesCreatorTests, MultipleConnectingSeaProvincesAreDetected)
 {
-    maps::ProvinceDefinitions province_definitions({ "1" }, { "2", "3" }, {}, {});
-    maps::MapData map_data({ {"1", {"2", "3"}} }, {}, {}, province_definitions, {});
-    const hoi4::CoastalProvinces coastal_provinces = hoi4::CreateCoastalProvinces(map_data,
-        province_definitions.GetLandProvinces(),
-        province_definitions.GetSeaProvinces());
+   maps::ProvinceDefinitions province_definitions({"1"}, {"2", "3"}, {}, {});
+   maps::MapData map_data({{"1", {"2", "3"}}}, {}, {}, province_definitions, {});
+   const hoi4::CoastalProvinces coastal_provinces = hoi4::CreateCoastalProvinces(map_data,
+       province_definitions.GetLandProvinces(),
+       province_definitions.GetSeaProvinces());
 
-    EXPECT_THAT(coastal_provinces.GetCoastalProvinces(),
-        testing::UnorderedElementsAre(testing::Pair(1, std::vector{ 2, 3 })));
+   EXPECT_THAT(coastal_provinces.GetCoastalProvinces(),
+       testing::UnorderedElementsAre(testing::Pair(1, std::vector{2, 3})));
 }
 
 
