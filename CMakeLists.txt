@@ -128,6 +128,7 @@ add_custom_command(TARGET Fronter
 set(TEST_SOURCES ${TEST_SOURCES} "src/configuration/configuration_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/countries/hoi4_countries_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/countries/hoi4_country_converter_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/coastal_provinces_creator_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/hoi4_province_definition_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/strategic_region_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/strategic_region_tests.cpp")
