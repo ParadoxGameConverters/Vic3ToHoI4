@@ -483,9 +483,6 @@
     <ClInclude Include="src\hoi4_world\map\coastal_provinces.h">
       <Filter>src\hoi4_world\map</Filter>
     </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\hoi4_province.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
     <ClInclude Include="src\hoi4_world\map\coastal_provinces_creator.h">
       <Filter>src\hoi4_world\map</Filter>
     </ClInclude>

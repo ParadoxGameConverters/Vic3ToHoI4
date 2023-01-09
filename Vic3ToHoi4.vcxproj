@@ -155,7 +155,6 @@
     <ClInclude Include="src\hoi4_world\map\coastal_provinces.h" />
     <ClInclude Include="src\hoi4_world\map\coastal_provinces_creator.h" />
     <ClInclude Include="src\hoi4_world\map\hoi4_building.h" />
-    <ClInclude Include="src\hoi4_world\map\hoi4_province.h" />
     <ClInclude Include="src\hoi4_world\map\hoi4_province_definition_importer.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_region.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_regions.h" />

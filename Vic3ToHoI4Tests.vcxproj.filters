@@ -590,9 +590,6 @@
     <ClInclude Include="src\hoi4_world\map\hoi4_building.h">
       <Filter>src\hoi4_world\map</Filter>
     </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\hoi4_province.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
     <ClInclude Include="src\out_hoi4\map\out_building.h">
       <Filter>src\out_hoi4\map</Filter>
     </ClInclude>
