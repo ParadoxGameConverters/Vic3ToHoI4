@@ -122,4 +122,10 @@ TEST(Outhoi4WorldOutworld, StrategicRegionsFilesAreCreatedAndOutput)
        "output/StrategicRegionsFilesAreCreatedAndOutput/map/strategicregions/strategic_region_2.txt"));
 }
 
+
+TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
+{
+   EXPECT_TRUE(false);
+}
+
 }  // namespace out
