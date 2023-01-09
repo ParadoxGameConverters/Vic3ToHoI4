@@ -1,9 +1,9 @@
 #include "out_world.h"
 
 #include "src/out_hoi4/countries/out_countries.h"
+#include "src/out_hoi4/map/out_buildings.h"
 #include "src/out_hoi4/map/out_strategic_regions.h"
 #include "src/out_hoi4/states/out_states.h"
-#include "src/out_hoi4/map/out_buildings.h"
 
 
 
