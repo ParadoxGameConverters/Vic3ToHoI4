@@ -6,5 +6,5 @@
 
 TEST(Hoi4worldMapBuildingsCreatorTests, TestStub)
 {
-   EXPECT_TRUE(true);
+   EXPECT_TRUE(false);
 }

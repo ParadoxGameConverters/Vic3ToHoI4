@@ -187,4 +187,10 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
        testing::UnorderedElementsAre(40, 50, 60));
 }
 
+
+TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreConverted)
+{
+   EXPECT_TRUE(false);
+}
+
 }  // namespace hoi4
