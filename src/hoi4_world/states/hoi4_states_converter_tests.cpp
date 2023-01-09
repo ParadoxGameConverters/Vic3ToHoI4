@@ -455,4 +455,51 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
            testing::Pair(60, 2)));
 }
 
+
+TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
+{
+   vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
+   maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
+   hoi4::StrategicRegions strategic_regions({}, {});
+   const mappers::CountryMapper country_mapper({});
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const auto hoi4_states =
+       StatesConverter{}.ConvertStates({{1, vic3::State({.owner_tag = "TAG", .provinces = {1, 2, 3}})},
+                                           {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}})}},
+           province_definitions,
+           hoi4_to_vic3_province_mappings,
+           map_data,
+           hoi4_province_definitions,
+           strategic_regions,
+           country_mapper);
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, std::nullopt, {10, 20, 30}), State(2, std::nullopt, {40, 50, 60})));
+   EXPECT_THAT(hoi4_states.province_to_state_id_map,
+       testing::UnorderedElementsAre(testing::Pair(10, 1),
+           testing::Pair(20, 1),
+           testing::Pair(30, 1),
+           testing::Pair(40, 2),
+           testing::Pair(50, 2),
+           testing::Pair(60, 2)));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not get tag for owner of state 1."));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not get tag for owner of state 2."));
+}
+
 }  // namespace hoi4
