@@ -16,7 +16,7 @@ void out::OutputBuildings(std::string_view output_name, const hoi4::Buildings& b
    {
       throw std::runtime_error(fmt::format("Could not open {}", buildings_path));
    }
-   for (const auto& building: buildings.GetBuildings() | std::views::values)
+   for (const auto& building: buildings.GetBuildings())
    {
       buildings_file << building;
    }

@@ -125,7 +125,29 @@ TEST(Outhoi4WorldOutworld, StrategicRegionsFilesAreCreatedAndOutput)
 
 TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
 {
-   EXPECT_TRUE(false);
+   CreateTestFolders("BuildingsFileIsCreatedAndOutput");
+
+   OutputWorld("BuildingsFileIsCreatedAndOutput",
+       hoi4::World({},
+           {},
+           hoi4::StrategicRegions({}, {}),
+           hoi4::Buildings(
+               {hoi4::Building{.state_id = 42,
+                    .type = "test_type",
+                    .position = {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25}},
+
+                   hoi4::Building{.state_id = 144,
+                       .type = "second_type",
+                       .position =
+                           {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
+                       .connecting_sea_province = 145},
+
+                   hoi4::Building{.state_id = 169,
+                       .type = "third_type",
+                       .position =
+                           {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
+                       .connecting_sea_province = 170}},
+               {{2, 4}, {3, 9}, {4, 16}})));
 }
 
 }  // namespace out

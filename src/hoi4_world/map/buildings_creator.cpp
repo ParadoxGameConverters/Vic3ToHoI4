@@ -150,7 +150,7 @@ AllDefaultPositions ImportDefaultBuildings(const maps::MapData& map_data,
 void PlaceAirports(const std::vector<hoi4::State>& states,
     const maps::MapData& map_data,
     const DefaultPositions& default_air_bases,
-    std::multimap<int, hoi4::Building>& buildings,
+    std::vector<hoi4::Building>& buildings,
     std::map<int, int>& airport_locations)
 {
    for (const auto& state: states)
@@ -169,7 +169,7 @@ void PlaceAirports(const std::vector<hoi4::State>& states,
          {
             auto position = possible_airbase->second;
             int state_id = state.GetId();
-            buildings.emplace(state_id, hoi4::Building(state_id, "air_base", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "air_base", position, 0));
             airport_locations.insert(std::make_pair(state_id, province));
             airport_placed = true;
             break;
@@ -190,7 +190,7 @@ void PlaceAirports(const std::vector<hoi4::State>& states,
             position.y_coordinate = 11.0;
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
-            buildings.emplace(state_id, hoi4::Building(state_id, "air_base", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "air_base", position, 0));
          }
          else
          {
@@ -206,7 +206,7 @@ void PlaceAirports(const std::vector<hoi4::State>& states,
 void PlaceAntiAir(const std::vector<hoi4::State>& states,
     const maps::MapData& map_data,
     const DefaultPositions& default_anti_airs,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& state: states)
    {
@@ -220,7 +220,7 @@ void PlaceAntiAir(const std::vector<hoi4::State>& states,
             int state_id = state.GetId();
 
             auto position = possible_anti_air->second;
-            buildings.emplace(state_id, hoi4::Building(state_id, "anti_air_building", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "anti_air_building", position, 0));
             numPlaced++;
 
             if (numPlaced > 3)
@@ -242,7 +242,7 @@ void PlaceAntiAir(const std::vector<hoi4::State>& states,
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
 
-            buildings.emplace(state_id, hoi4::Building(state_id, "anti_air_building", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "anti_air_building", position, 0));
             numPlaced++;
          }
          else
@@ -266,7 +266,7 @@ void PlaceAntiAir(const std::vector<hoi4::State>& states,
 void PlaceArmsFactories(const std::vector<hoi4::State>& states,
     const maps::MapData& map_data,
     const DefaultPositions& default_arms_factories,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& state: states)
    {
@@ -279,7 +279,7 @@ void PlaceArmsFactories(const std::vector<hoi4::State>& states,
          {
             auto position = possible_arms_factory->second;
             int state_id = state.GetId();
-            buildings.emplace(state_id, hoi4::Building(state_id, "arms_factory", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "arms_factory", position, 0));
             num_placed++;
 
             if (num_placed > 3)
@@ -301,7 +301,7 @@ void PlaceArmsFactories(const std::vector<hoi4::State>& states,
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
 
-            buildings.emplace(state_id, hoi4::Building(state_id, "arms_factory", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "arms_factory", position, 0));
             num_placed++;
          }
          else
@@ -326,7 +326,7 @@ void AddBunker(int state_id,
     int province,
     const maps::MapData& map_data,
     const DefaultPositions& default_bunkers,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    hoi4::BuildingPosition position;
    auto position_unset = true;
@@ -358,14 +358,14 @@ void AddBunker(int state_id,
           position.z_coordinate);
    }
 
-   buildings.insert(std::make_pair(state_id, hoi4::Building(state_id, "bunker", position, 0)));
+   buildings.emplace_back(hoi4::Building(state_id, "bunker", position, 0));
 }
 
 
 void PlaceBunkers(const std::map<int, int>& province_to_state_id_map,
     const maps::MapData& map_data,
     const DefaultPositions& default_bunkers,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& [province, state_id]: province_to_state_id_map)
    {
@@ -378,7 +378,7 @@ void AddCoastalBunker(int state_id,
     const std::pair<int, std::vector<int>>& province,
     const maps::MapData& map_data,
     const DefaultPositions& default_coastal_bunkers,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    hoi4::BuildingPosition position;
    auto position_unset = true;
@@ -413,7 +413,7 @@ void AddCoastalBunker(int state_id,
           position.z_coordinate);
    }
 
-   buildings.insert(std::make_pair(state_id, hoi4::Building(state_id, "coastal_bunker", position, 0)));
+   buildings.emplace_back(hoi4::Building(state_id, "coastal_bunker", position, 0));
 }
 
 
@@ -421,7 +421,7 @@ void PlaceCoastalBunkers(const std::map<int, int>& province_to_state_id_map,
     const std::map<int, std::vector<int>>& actual_coastal_provinces,
     const maps::MapData& map_data,
     const DefaultPositions& default_coastal_bunkers,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& province: actual_coastal_provinces)
    {
@@ -443,7 +443,7 @@ void PlaceDockyards(const std::vector<hoi4::State>& states,
     std::map<int, std::vector<int>> actual_coastal_provinces,
     const maps::MapData& map_data,
     const DefaultPositions& default_dockyards,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& state: states)
    {
@@ -456,7 +456,7 @@ void PlaceDockyards(const std::vector<hoi4::State>& states,
              possible_dockyard != default_dockyards.end())
          {
             auto position = possible_dockyard->second;
-            buildings.emplace(state_id, hoi4::Building(state_id, "dockyard", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "dockyard", position, 0));
             dockyard_placed = true;
             break;
          }
@@ -487,7 +487,7 @@ void PlaceDockyards(const std::vector<hoi4::State>& states,
                   position.y_coordinate = 11.0;
                   position.z_coordinate = centermost_point->y;
                   position.rotation = 0;
-                  buildings.emplace(state_id, hoi4::Building(state_id, "dockyard", position, 0));
+                  buildings.emplace_back(hoi4::Building(state_id, "dockyard", position, 0));
                }
                else
                {
@@ -507,7 +507,7 @@ void AddFloatingHarbors(int state_id,
     const std::pair<int, std::vector<int>>& province,
     const maps::MapData& map_data,
     const DefaultPositions& default_floating_harbors,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    hoi4::BuildingPosition position;
    bool position_unset = true;
@@ -551,7 +551,7 @@ void AddFloatingHarbors(int state_id,
           position.z_coordinate);
    }
 
-   buildings.emplace(state_id, hoi4::Building(state_id, "floating_harbor", position, connecting_sea_province));
+   buildings.emplace_back(hoi4::Building(state_id, "floating_harbor", position, connecting_sea_province));
 }
 
 
@@ -559,7 +559,7 @@ void PlaceFloatingHarbors(const std::map<int, int>& province_to_state_id_map,
     const std::map<int, std::vector<int>>& actual_coastal_provinces,
     const maps::MapData& map_data,
     const DefaultPositions& default_floating_harbors,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& province: actual_coastal_provinces)
    {
@@ -579,7 +579,7 @@ void PlaceFloatingHarbors(const std::map<int, int>& province_to_state_id_map,
 void PlaceIndustrialComplexes(const std::vector<hoi4::State>& states,
     const maps::MapData& map_data,
     const DefaultPositions& default_industrial_complexes,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& state: states)
    {
@@ -592,7 +592,7 @@ void PlaceIndustrialComplexes(const std::vector<hoi4::State>& states,
              possible_industrial_complex != default_industrial_complexes.end())
          {
             auto position = possible_industrial_complex->second;
-            buildings.emplace(state_id, hoi4::Building(state_id, "industrial_complex", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "industrial_complex", position, 0));
             num_placed++;
          }
 
@@ -613,7 +613,7 @@ void PlaceIndustrialComplexes(const std::vector<hoi4::State>& states,
             position.y_coordinate = 11.0;
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
-            buildings.emplace(state_id, hoi4::Building(state_id, "industrial_complex", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "industrial_complex", position, 0));
             num_placed++;
          }
          else
@@ -638,7 +638,7 @@ void AddNavalBase(int state_id,
     const std::pair<int, std::vector<int>>& province,
     const maps::MapData& map_data,
     const DefaultPositions& default_naval_bases,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    hoi4::BuildingPosition position;
    auto position_unset = true;
@@ -679,7 +679,7 @@ void AddNavalBase(int state_id,
           position.z_coordinate);
    }
 
-   buildings.emplace(state_id, hoi4::Building(state_id, "naval_base", position, connecting_sea_province));
+   buildings.emplace_back(hoi4::Building(state_id, "naval_base", position, connecting_sea_province));
 }
 
 
@@ -687,7 +687,7 @@ void PlaceNavalBases(const std::map<int, int>& province_to_state_id_map,
     const std::map<int, std::vector<int>>& actual_coastal_provinces,
     const maps::MapData& map_data,
     const DefaultPositions& default_naval_bases,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& province: actual_coastal_provinces)
    {
@@ -707,7 +707,7 @@ void PlaceNavalBases(const std::map<int, int>& province_to_state_id_map,
 void PlaceNuclearReactors(const std::vector<hoi4::State>& states,
     const maps::MapData& map_data,
     const DefaultPositions& default_nuclear_reactors,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& state: states)
    {
@@ -725,7 +725,7 @@ void PlaceNuclearReactors(const std::vector<hoi4::State>& states,
              possible_reactor != default_nuclear_reactors.end())
          {
             auto position = possible_reactor->second;
-            buildings.emplace(state_id, hoi4::Building(state_id, "nuclear_reactor", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "nuclear_reactor", position, 0));
             reactor_placed = true;
             break;
          }
@@ -742,7 +742,7 @@ void PlaceNuclearReactors(const std::vector<hoi4::State>& states,
             position.y_coordinate = 11.0;
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
-            buildings.emplace(state_id, hoi4::Building(state_id, "nuclear_reactor", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "nuclear_reactor", position, 0));
          }
          else
          {
@@ -760,7 +760,7 @@ void AddSupplyNodes(int state_id,
     int province,
     const maps::MapData& map_data,
     const DefaultPositions& default_supply_nodes,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    hoi4::BuildingPosition position;
    auto position_unset = true;
@@ -794,14 +794,14 @@ void AddSupplyNodes(int state_id,
           position.z_coordinate);
    }
 
-   buildings.emplace(state_id, hoi4::Building(state_id, "supply_node", position, 0));
+   buildings.emplace_back(hoi4::Building(state_id, "supply_node", position, 0));
 }
 
 
 void PlaceSupplyNodes(const std::map<int, int>& province_to_state_id_map,
     const maps::MapData& map_data,
     const DefaultPositions& default_supply_nodes,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& province_and_state_id: province_to_state_id_map)
    {
@@ -817,7 +817,7 @@ void PlaceSupplyNodes(const std::map<int, int>& province_to_state_id_map,
 void PlaceSyntheticRefineries(const std::vector<hoi4::State>& states,
     const maps::MapData& map_data,
     const DefaultPositions& default_synthetic_refineries_nodes,
-    std::multimap<int, hoi4::Building>& buildings)
+    std::vector<hoi4::Building>& buildings)
 {
    for (const auto& state: states)
    {
@@ -835,7 +835,7 @@ void PlaceSyntheticRefineries(const std::vector<hoi4::State>& states,
              possible_refinery != default_synthetic_refineries_nodes.end())
          {
             auto position = possible_refinery->second;
-            buildings.emplace(state_id, hoi4::Building(state_id, "synthetic_refinery", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "synthetic_refinery", position, 0));
             refinery_placed = true;
             break;
          }
@@ -852,7 +852,7 @@ void PlaceSyntheticRefineries(const std::vector<hoi4::State>& states,
             position.y_coordinate = 11.0;
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
-            buildings.emplace(state_id, hoi4::Building(state_id, "synthetic_refinery", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "synthetic_refinery", position, 0));
          }
          else
          {
@@ -871,7 +871,7 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
     const maps::MapData& map_data,
     const AllDefaultPositions& all_default_positions)
 {
-   std::multimap<int, hoi4::Building> buildings;
+   std::vector<hoi4::Building> buildings;
    std::map<int, int> airport_locations;
 
    const auto& actual_coastal_provinces = coastal_provinces.GetCoastalProvinces();
