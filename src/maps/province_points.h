@@ -16,6 +16,9 @@ namespace maps
 class ProvincePoints
 {
   public:
+   ProvincePoints() = default;
+   ProvincePoints(std::set<Point> points);
+
    void AddPoint(const Point& the_point);
 
    [[nodiscard]] Point GetCentermostPoint() const;
