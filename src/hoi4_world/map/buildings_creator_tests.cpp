@@ -255,13 +255,13 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirNotPlacedInProvinceWithNoPoints)
 
     EXPECT_TRUE(buildings.GetBuildings().empty());
     EXPECT_THAT(log.str(),
-        testing::HasSubstr("[WARNING] Province 1 did not have any points. Anti-air not fully set in state 1."));
+        testing::HasSubstr("[WARNING] Province 1 did not have any points. anti_air_building not fully set in state 1."));
     EXPECT_THAT(log.str(),
-        testing::HasSubstr("[WARNING] Province 2 did not have any points. Anti-air not fully set in state 1."));
+        testing::HasSubstr("[WARNING] Province 2 did not have any points. anti_air_building not fully set in state 1."));
     EXPECT_THAT(log.str(),
-        testing::HasSubstr("[WARNING] Province 3 did not have any points. Anti-air not fully set in state 1."));
+        testing::HasSubstr("[WARNING] Province 3 did not have any points. anti_air_building not fully set in state 1."));
     EXPECT_THAT(log.str(),
-        testing::HasSubstr("[WARNING] Province 4 did not have any points. Anti-air not fully set in state 1."));
+        testing::HasSubstr("[WARNING] Province 4 did not have any points. anti_air_building not fully set in state 1."));
 }
 
 

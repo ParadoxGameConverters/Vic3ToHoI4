@@ -203,14 +203,16 @@ void PlaceAirports(const std::vector<hoi4::State>& states,
 }
 
 
-void PlaceAntiAir(const std::vector<hoi4::State>& states,
+void PlaceBuildingType(const std::vector<hoi4::State>& states,
     const maps::MapData& map_data,
     const DefaultPositions& default_anti_airs,
+    std::string_view building_type,
+    int number_to_place,
     std::vector<hoi4::Building>& buildings)
 {
    for (const auto& state: states)
    {
-      auto numPlaced = 0;
+      auto num_placed = 0;
 
       for (auto theProvince: state.GetProvinces())
       {
@@ -220,10 +222,10 @@ void PlaceAntiAir(const std::vector<hoi4::State>& states,
             int state_id = state.GetId();
 
             auto position = possible_anti_air->second;
-            buildings.emplace_back(hoi4::Building(state_id, "anti_air_building", position));
-            numPlaced++;
+            buildings.emplace_back(hoi4::Building(state_id, std::string(building_type), position));
+            num_placed++;
 
-            if (numPlaced > 3)
+            if (num_placed >= number_to_place)
             {
                break;
             }
@@ -242,19 +244,19 @@ void PlaceAntiAir(const std::vector<hoi4::State>& states,
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
 
-            buildings.emplace_back(hoi4::Building(state_id, "anti_air_building", position));
-            numPlaced++;
+            buildings.emplace_back(hoi4::Building(state_id, std::string(building_type), position));
+            num_placed++;
          }
          else
          {
             Log(LogLevel::Warning) << fmt::format(
-                "Province {} did not have any points. Anti-air not fully set in state {}.",
-                province,
+                "Province {} did not have any points. {} not fully set in state {}.",
+                province, building_type,
                 state_id);
             continue;
          }
 
-         if (numPlaced >= 3)
+         if (num_placed >= number_to_place)
          {
             break;
          }
@@ -877,7 +879,7 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
    const auto& actual_coastal_provinces = coastal_provinces.GetCoastalProvinces();
 
    PlaceAirports(states.states, map_data, all_default_positions.default_air_bases, buildings, airport_locations);
-   PlaceAntiAir(states.states, map_data, all_default_positions.default_anti_airs, buildings);
+   PlaceBuildingType(states.states, map_data, all_default_positions.default_anti_airs, "anti_air_building", 3, buildings);
    PlaceArmsFactories(states.states, map_data, all_default_positions.default_arms_factories, buildings);
    PlaceBunkers(states.province_to_state_id_map, map_data, all_default_positions.default_bunkers, buildings);
    PlaceCoastalBunkers(states.province_to_state_id_map,
