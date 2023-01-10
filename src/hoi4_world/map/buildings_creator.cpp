@@ -234,65 +234,6 @@ void PlaceAirports(const std::vector<hoi4::State>& states,
 }
 
 
-void PlaceArmsFactories(const std::vector<hoi4::State>& states,
-    const maps::MapData& map_data,
-    const DefaultPositions& default_arms_factories,
-    std::vector<hoi4::Building>& buildings)
-{
-   for (const auto& state: states)
-   {
-      auto num_placed = 0;
-
-      for (auto province: state.GetProvinces())
-      {
-         if (auto possible_arms_factory = default_arms_factories.find(std::make_pair(province, 0));
-             possible_arms_factory != default_arms_factories.end())
-         {
-            auto position = possible_arms_factory->second;
-            int state_id = state.GetId();
-            buildings.emplace_back(hoi4::Building(state_id, "arms_factory", position, 0));
-            num_placed++;
-
-            if (num_placed > 3)
-            {
-               break;
-            }
-         }
-      }
-
-      for (auto province: state.GetProvinces())
-      {
-         int state_id = state.GetId();
-         if (auto province_points = map_data.GetProvincePoints(std::to_string(province)); province_points)
-         {
-            const auto centermost_point = province_points->GetCentermostPoint();
-            hoi4::BuildingPosition position;
-            position.x_coordinate = centermost_point.x;
-            position.y_coordinate = 11.0;
-            position.z_coordinate = centermost_point.y;
-            position.rotation = 0;
-
-            buildings.emplace_back(hoi4::Building(state_id, "arms_factory", position, 0));
-            num_placed++;
-         }
-         else
-         {
-            Log(LogLevel::Warning) << fmt::format(
-                "Province {} did not have any points. Arms factories not fully set in state {}.",
-                province,
-                state_id);
-            break;
-         }
-
-         if (num_placed >= 6)
-         {
-            break;
-         }
-      }
-   }
-}
-
-
 void AddBunker(int state_id,
     int province,
     const maps::MapData& map_data,
@@ -854,7 +795,12 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        "anti_air_building",
        3,
        buildings);
-   PlaceArmsFactories(states.states, map_data, all_default_positions.default_arms_factories, buildings);
+   PlaceBuildingType(states.states,
+       map_data,
+       all_default_positions.default_arms_factories,
+       "arms_factory",
+       6,
+       buildings);
    PlaceBunkers(states.province_to_state_id_map, map_data, all_default_positions.default_bunkers, buildings);
    PlaceCoastalBunkers(states.province_to_state_id_map,
        actual_coastal_provinces,
