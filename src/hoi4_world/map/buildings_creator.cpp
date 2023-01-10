@@ -169,7 +169,7 @@ void PlaceAirports(const std::vector<hoi4::State>& states,
          {
             auto position = possible_airbase->second;
             int state_id = state.GetId();
-            buildings.emplace_back(hoi4::Building(state_id, "air_base", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "air_base", position));
             airport_locations.insert(std::make_pair(state_id, province));
             airport_placed = true;
             break;
@@ -180,7 +180,6 @@ void PlaceAirports(const std::vector<hoi4::State>& states,
       {
          int state_id = state.GetId();
          int first_province = *state.GetProvinces().begin();
-         airport_locations.emplace(state_id, first_province);
 
          if (auto province_points = map_data.GetProvincePoints(std::to_string(first_province)); province_points)
          {
@@ -190,7 +189,8 @@ void PlaceAirports(const std::vector<hoi4::State>& states,
             position.y_coordinate = 11.0;
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
-            buildings.emplace_back(hoi4::Building(state_id, "air_base", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "air_base", position));
+            airport_locations.emplace(state_id, first_province);
          }
          else
          {
