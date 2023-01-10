@@ -67,17 +67,21 @@ void ProcessLine(const std::string& line, const maps::MapData& map_data, AllDefa
    std::smatch matches;
    if (regex_match(line, matches, pattern))
    {
-      if (matches[2] == "arms_factory")
+      if (matches[2] == "air_base")
+      {
+         ImportDefaultBuilding(matches, map_data, all_default_positions.default_air_bases);
+      }
+      else if (matches[2] == "anti_air_building")
+      {
+          ImportDefaultBuilding(matches, map_data, all_default_positions.default_anti_airs);
+      }
+      else if (matches[2] == "arms_factory")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_arms_factories);
       }
       else if (matches[2] == "industrial_complex")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_industrial_complexes);
-      }
-      else if (matches[2] == "air_base")
-      {
-         ImportDefaultBuilding(matches, map_data, all_default_positions.default_air_bases);
       }
       else if (matches[2] == "naval_base")
       {
@@ -94,10 +98,6 @@ void ProcessLine(const std::string& line, const maps::MapData& map_data, AllDefa
       else if (matches[2] == "dockyard")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_dockyards);
-      }
-      else if (matches[2] == "anti_air_building")
-      {
-         ImportDefaultBuilding(matches, map_data, all_default_positions.default_anti_airs);
       }
       else if (matches[2] == "synthetic_refinery")
       {
@@ -220,7 +220,7 @@ void PlaceAntiAir(const std::vector<hoi4::State>& states,
             int state_id = state.GetId();
 
             auto position = possible_anti_air->second;
-            buildings.emplace_back(hoi4::Building(state_id, "anti_air_building", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "anti_air_building", position));
             numPlaced++;
 
             if (numPlaced > 3)
@@ -242,7 +242,7 @@ void PlaceAntiAir(const std::vector<hoi4::State>& states,
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
 
-            buildings.emplace_back(hoi4::Building(state_id, "anti_air_building", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "anti_air_building", position));
             numPlaced++;
          }
          else
@@ -251,7 +251,7 @@ void PlaceAntiAir(const std::vector<hoi4::State>& states,
                 "Province {} did not have any points. Anti-air not fully set in state {}.",
                 province,
                 state_id);
-            break;
+            continue;
          }
 
          if (numPlaced >= 3)
