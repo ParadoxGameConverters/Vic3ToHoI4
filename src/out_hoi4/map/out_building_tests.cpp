@@ -14,10 +14,44 @@
 namespace out
 {
 
-
-TEST(Outhoi4MapBuildingTests, stub)
+TEST(Outhoi4MapBuildingTests, BuildingIsOutput)
 {
-   EXPECT_TRUE(false);
+   std::stringstream output;
+   hoi4::Building building{.state_id = 42,
+       .type = "test_type",
+       .position = {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
+       .connecting_sea_province = 144};
+
+   output << building;
+
+   EXPECT_EQ(output.str(), "42;test_type;4.25;9.25;16.25;25.25;144\n");
+}
+
+
+TEST(Outhoi4MapBuildingTests, PositionhasTwoDigitPrecision)
+{
+   std::stringstream output;
+   hoi4::Building building{.state_id = 42,
+       .type = "test_type",
+       .position = {.x_coordinate = 4.25, .y_coordinate = 9.3333, .z_coordinate = 16.125, .rotation = 25},
+       .connecting_sea_province = 144};
+
+   output << building;
+
+   EXPECT_EQ(output.str(), "42;test_type;4.25;9.33;16.12;25.00;144\n");
+}
+
+
+TEST(Outhoi4MapBuildingTests, MissingConnectingSeaProvinceOutputAsZero)
+{
+   std::stringstream output;
+   hoi4::Building building{.state_id = 42,
+       .type = "test_type",
+       .position = {.x_coordinate = 4, .y_coordinate = 9, .z_coordinate = 16, .rotation = 25}};
+
+   output << building;
+
+   EXPECT_EQ(output.str(), "42;test_type;4.00;9.00;16.00;25.00;0\n");
 }
 
 }  // namespace out
