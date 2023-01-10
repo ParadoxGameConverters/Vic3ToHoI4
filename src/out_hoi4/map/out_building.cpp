@@ -9,13 +9,13 @@
 std::ostream& out::operator<<(std::ostream& out, const hoi4::Building& building)
 {
    out << fmt::format("{};{};{:.2f};{:.2f};{:.2f};{:.2f};{}\n",
-       building.state_id,
-       building.type,
-       building.position.x_coordinate,
-       building.position.y_coordinate,
-       building.position.z_coordinate,
-       building.position.rotation,
-       building.connecting_sea_province.has_value() ? building.connecting_sea_province.value() : 0);
+       building.GetStateId(),
+       building.GetType(),
+       building.GetPosition().x_coordinate,
+       building.GetPosition().y_coordinate,
+       building.GetPosition().z_coordinate,
+       building.GetPosition().rotation,
+       building.GetConnectingSeaProvince().has_value() ? building.GetConnectingSeaProvince().value() : 0);
 
    return out;
 }

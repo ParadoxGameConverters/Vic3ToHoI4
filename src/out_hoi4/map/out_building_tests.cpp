@@ -17,10 +17,10 @@ namespace out
 TEST(Outhoi4MapBuildingTests, BuildingIsOutput)
 {
    std::stringstream output;
-   hoi4::Building building{.state_id = 42,
-       .type = "test_type",
-       .position = {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
-       .connecting_sea_province = 144};
+   hoi4::Building building(42,
+       "test_type",
+       {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
+       144);
 
    output << building;
 
@@ -31,10 +31,10 @@ TEST(Outhoi4MapBuildingTests, BuildingIsOutput)
 TEST(Outhoi4MapBuildingTests, PositionhasTwoDigitPrecision)
 {
    std::stringstream output;
-   hoi4::Building building{.state_id = 42,
-       .type = "test_type",
-       .position = {.x_coordinate = 4.25, .y_coordinate = 9.3333, .z_coordinate = 16.125, .rotation = 25},
-       .connecting_sea_province = 144};
+   hoi4::Building building(42,
+       "test_type",
+       {.x_coordinate = 4.25, .y_coordinate = 9.3333, .z_coordinate = 16.125, .rotation = 25},
+       144);
 
    output << building;
 
@@ -45,9 +45,7 @@ TEST(Outhoi4MapBuildingTests, PositionhasTwoDigitPrecision)
 TEST(Outhoi4MapBuildingTests, MissingConnectingSeaProvinceOutputAsZero)
 {
    std::stringstream output;
-   hoi4::Building building{.state_id = 42,
-       .type = "test_type",
-       .position = {.x_coordinate = 4, .y_coordinate = 9, .z_coordinate = 16, .rotation = 25}};
+   hoi4::Building building(42, "test_type", {.x_coordinate = 4, .y_coordinate = 9, .z_coordinate = 16, .rotation = 25});
 
    output << building;
 

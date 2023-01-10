@@ -12,6 +12,8 @@ struct BuildingPosition
    double y_coordinate = 0.0;
    double z_coordinate = 0.0;
    double rotation = 0.0;
+
+   bool operator==(const BuildingPosition&) const = default;
 };
 
 }  // namespace hoi4
