@@ -14,6 +14,13 @@
 namespace out
 {
 
+
+TEST(Outhoi4MapStrategicregionsTests, ExceptionForBadPath)
+{
+   EXPECT_THROW(OutputStrategicRegions("ExceptionForBadPath", hoi4::StrategicRegions({}, {})), std::runtime_error);
+}
+
+
 TEST(Outhoi4MapStrategicregionsTests, FolderIsCreated)
 {
    commonItems::TryCreateFolder("output");
