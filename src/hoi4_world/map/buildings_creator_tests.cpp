@@ -47,7 +47,26 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
                {"2", maps::ProvincePoints({{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
            },
            {{}, {}, {}, {}},
-           {}),
+           {
+               {maps::Point{1,1}, "1"},
+               {maps::Point{1,2}, "1"},
+               {maps::Point{1,3}, "1"},
+               {maps::Point{2,1}, "1"},
+               {maps::Point{2,2}, "1"},
+               {maps::Point{2,3}, "1"},
+               {maps::Point{3,1}, "1"},
+               {maps::Point{3,2}, "1"},
+               {maps::Point{3,3}, "1"},
+               {maps::Point{4,1}, "2"},
+               {maps::Point{4,2}, "2"},
+               {maps::Point{4,3}, "2"},
+               {maps::Point{5,1}, "2"},
+               {maps::Point{5,2}, "2"},
+               {maps::Point{5,3}, "2"},
+               {maps::Point{6,1}, "2"},
+               {maps::Point{6,2}, "2"},
+               {maps::Point{6,3}, "2"},
+           }),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
@@ -76,7 +95,26 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
                {"2", maps::ProvincePoints({{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
            },
            {{}, {}, {}, {}},
-           {}),
+           {
+               {maps::Point{1,1}, "1"},
+               {maps::Point{1,2}, "1"},
+               {maps::Point{1,3}, "1"},
+               {maps::Point{2,1}, "1"},
+               {maps::Point{2,2}, "1"},
+               {maps::Point{2,3}, "1"},
+               {maps::Point{3,1}, "1"},
+               {maps::Point{3,2}, "1"},
+               {maps::Point{3,3}, "1"},
+               {maps::Point{4,1}, "2"},
+               {maps::Point{4,2}, "2"},
+               {maps::Point{4,3}, "2"},
+               {maps::Point{5,1}, "2"},
+               {maps::Point{5,2}, "2"},
+               {maps::Point{5,3}, "2"},
+               {maps::Point{6,1}, "2"},
+               {maps::Point{6,2}, "2"},
+               {maps::Point{6,3}, "2"},
+           }),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
@@ -107,7 +145,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)
    EXPECT_TRUE(buildings.GetBuildings().empty());
    EXPECT_TRUE(buildings.GetAirportLocations().empty());
    EXPECT_THAT(log.str(),
-       testing::HasSubstr("[WARNING] Province 1 did not have any points. Airport not set in state 1."));
+       testing::HasSubstr("[WARNING] Province 1 did not have any points. air_base not fully set in state 1."));
 }
 
 
@@ -129,7 +167,24 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocati
                {"2", maps::ProvincePoints({{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
            },
            {{}, {}, {}, {}},
-           {{{4, 1}, "2"}}),
+           { {maps::Point{1,1}, "1"},
+               {maps::Point{1,2}, "1"},
+               {maps::Point{1,3}, "1"},
+               {maps::Point{2,1}, "1"},
+               {maps::Point{2,2}, "1"},
+               {maps::Point{2,3}, "1"},
+               {maps::Point{3,1}, "1"},
+               {maps::Point{3,2}, "1"},
+               {maps::Point{3,3}, "1"},
+               {maps::Point{4,1}, "2"},
+               {maps::Point{4,2}, "2"},
+               {maps::Point{4,3}, "2"},
+               {maps::Point{5,1}, "2"},
+               {maps::Point{5,2}, "2"},
+               {maps::Point{5,3}, "2"},
+               {maps::Point{6,1}, "2"},
+               {maps::Point{6,2}, "2"},
+               {maps::Point{6,3}, "2"}, }),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
@@ -158,7 +213,24 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
                {"2", maps::ProvincePoints({{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
            },
            {{}, {}, {}, {}},
-           {}),
+           { {maps::Point{1,1}, "1"},
+               {maps::Point{1,2}, "1"},
+               {maps::Point{1,3}, "1"},
+               {maps::Point{2,1}, "1"},
+               {maps::Point{2,2}, "1"},
+               {maps::Point{2,3}, "1"},
+               {maps::Point{3,1}, "1"},
+               {maps::Point{3,2}, "1"},
+               {maps::Point{3,3}, "1"},
+               {maps::Point{4,1}, "2"},
+               {maps::Point{4,2}, "2"},
+               {maps::Point{4,3}, "2"},
+               {maps::Point{5,1}, "2"},
+               {maps::Point{5,2}, "2"},
+               {maps::Point{5,3}, "2"},
+               {maps::Point{6,1}, "2"},
+               {maps::Point{6,2}, "2"},
+               {maps::Point{6,3}, "2"}, }),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
