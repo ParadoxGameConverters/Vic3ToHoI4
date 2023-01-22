@@ -380,7 +380,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacementOverridenByDefaultLocati
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
+TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvincesOfStateIfDefaultNotInState)
 {
    Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
                                              {
@@ -589,7 +589,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacementOverridenByDefault
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
+TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixProvincesOfStateIfDefaultNotInState)
 {
    Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5, 6, 7})},
                                              {
@@ -855,13 +855,69 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocatio
                                              }),
        CoastalProvinces({}),
        maps::MapData({},
-           {},
            {
-               {"1", maps::ProvincePoints({{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-               {"2", maps::ProvincePoints({{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-               {"3", maps::ProvincePoints({{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-               {"4", maps::ProvincePoints({{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+               {"1",
+                   maps::BordersWith{
+                       {"2",
+                           maps::BorderPoints{
+                               {3, 1},
+                               {3, 2},
+                               {3, 3},
+                           }},
+                       {"3",
+                           maps::BorderPoints{
+                               {1, 3},
+                               {2, 3},
+                               {3, 3},
+                           }},
+                   }},
+               {"2",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 1},
+                               {4, 2},
+                               {4, 3},
+                           }},
+                       {"4",
+                           maps::BorderPoints{
+                               {4, 3},
+                               {5, 3},
+                               {6, 3},
+                           }},
+                   }},
+               {"3",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 4},
+                               {2, 4},
+                               {3, 4},
+                           }},
+                       {"4",
+                           maps::BorderPoints{
+                               {3, 4},
+                               {3, 5},
+                               {3, 6},
+                           }},
+                   }},
+               {"4",
+                   maps::BordersWith{
+                       {"2",
+                           maps::BorderPoints{
+                               {4, 4},
+                               {5, 4},
+                               {6, 4},
+                           }},
+                       {"3",
+                           maps::BorderPoints{
+                               {4, 4},
+                               {4, 5},
+                               {4, 6},
+                           }},
+                   }},
            },
+           {},
            {{}, {}, {}, {}},
            {
                {{3, 2}, "1"},
@@ -878,6 +934,95 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocatio
            Building(1, "bunker", {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 2.0, .rotation = 180.0}),
            Building(1, "bunker", {.x_coordinate = 2.0, .y_coordinate = 6.0, .z_coordinate = 4.0, .rotation = 270.0}),
            Building(1, "bunker", {.x_coordinate = 5.0, .y_coordinate = 6.0, .z_coordinate = 4.0, .rotation = 359.0})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvincesOfStateIfDefaultsNotInState)
+{
+   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
+                                             {
+                                                 {1, 1},
+                                                 {2, 1},
+                                                 {3, 1},
+                                                 {4, 1},
+                                                 {5, 1},
+                                             }),
+       CoastalProvinces({}),
+       maps::MapData({},
+           {
+               {"1",
+                   maps::BordersWith{
+                       {"2",
+                           maps::BorderPoints{
+                               {3, 1},
+                               {3, 2},
+                               {3, 3},
+                           }},
+                       {"3",
+                           maps::BorderPoints{
+                               {1, 3},
+                               {2, 3},
+                               {3, 3},
+                           }},
+                   }},
+               {"2",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 1},
+                               {4, 2},
+                               {4, 3},
+                           }},
+                       {"4",
+                           maps::BorderPoints{
+                               {4, 3},
+                               {5, 3},
+                               {6, 3},
+                           }},
+                   }},
+               {"3",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 4},
+                               {2, 4},
+                               {3, 4},
+                           }},
+                       {"4",
+                           maps::BorderPoints{
+                               {3, 4},
+                               {3, 5},
+                               {3, 6},
+                           }},
+                   }},
+               {"4",
+                   maps::BordersWith{
+                       {"2",
+                           maps::BorderPoints{
+                               {4, 4},
+                               {5, 4},
+                               {6, 4},
+                           }},
+                       {"3",
+                           maps::BorderPoints{
+                               {4, 4},
+                               {4, 5},
+                               {4, 6},
+                           }},
+                   }},
+           },
+           {},
+           {{}, {}, {}, {}},
+           {}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building(1,
+                                  "bunker",
+                                  {.x_coordinate = 3.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}),
+           Building(1, "bunker", {.x_coordinate = 4.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}),
+           Building(1, "bunker", {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 4.0, .rotation = 0.0}),
+           Building(1, "bunker", {.x_coordinate = 5.0, .y_coordinate = 11.0, .z_coordinate = 4.0, .rotation = 0.0})}));
 }
 
 TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderForAllProvincesOfState)
@@ -1154,13 +1299,93 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacementOverridenByDefault
                                              }),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
-           {},
            {
-               {"1", maps::ProvincePoints({{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-               {"2", maps::ProvincePoints({{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-               {"3", maps::ProvincePoints({{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-               {"4", maps::ProvincePoints({{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+               {"1",
+                   maps::BordersWith{
+                       {"2",
+                           maps::BorderPoints{
+                               {3, 1},
+                               {3, 2},
+                               {3, 3},
+                           }},
+                       {"3",
+                           maps::BorderPoints{
+                               {1, 3},
+                               {2, 3},
+                               {3, 3},
+                           }},
+                       {"5",
+                           maps::BorderPoints{
+                               {1, 1},
+                               {2, 1},
+                               {3, 1},
+                           }},
+                   }},
+               {"2",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 1},
+                               {4, 2},
+                               {4, 3},
+                           }},
+                       {"4",
+                           maps::BorderPoints{
+                               {4, 3},
+                               {5, 3},
+                               {6, 3},
+                           }},
+                       {"6",
+                           maps::BorderPoints{
+                               {4, 1},
+                               {5, 1},
+                               {6, 1},
+                           }},
+                   }},
+               {"3",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 4},
+                               {2, 4},
+                               {3, 4},
+                           }},
+                       {"4",
+                           maps::BorderPoints{
+                               {3, 4},
+                               {3, 5},
+                               {3, 6},
+                           }},
+                       {"7",
+                           maps::BorderPoints{
+                               {1, 6},
+                               {2, 6},
+                               {3, 6},
+                           }},
+                   }},
+               {"4",
+                   maps::BordersWith{
+                       {"2",
+                           maps::BorderPoints{
+                               {4, 4},
+                               {5, 4},
+                               {6, 4},
+                           }},
+                       {"3",
+                           maps::BorderPoints{
+                               {4, 4},
+                               {4, 5},
+                               {4, 6},
+                           }},
+                       {"8",
+                           maps::BorderPoints{
+                               {4, 6},
+                               {5, 6},
+                               {6, 6},
+                           }},
+                   }},
            },
+           {},
            {{}, {}, {}, {}},
            {
                {{2, 1}, "1"},
@@ -1183,6 +1408,125 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacementOverridenByDefault
            Building(1,
                "coastal_bunker",
                {.x_coordinate = 5.0, .y_coordinate = 6.0, .z_coordinate = 6.0, .rotation = 359.0})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderForAllProvincesOfStateIfDefaultNotInState)
+{
+   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
+                                             {
+                                                 {1, 1},
+                                                 {2, 1},
+                                                 {3, 1},
+                                                 {4, 1},
+                                                 {5, 1},
+                                             }),
+       CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
+       maps::MapData({},
+           {
+               {"1",
+                   maps::BordersWith{
+                       {"2",
+                           maps::BorderPoints{
+                               {3, 1},
+                               {3, 2},
+                               {3, 3},
+                           }},
+                       {"3",
+                           maps::BorderPoints{
+                               {1, 3},
+                               {2, 3},
+                               {3, 3},
+                           }},
+                       {"5",
+                           maps::BorderPoints{
+                               {1, 1},
+                               {2, 1},
+                               {3, 1},
+                           }},
+                   }},
+               {"2",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 1},
+                               {4, 2},
+                               {4, 3},
+                           }},
+                       {"4",
+                           maps::BorderPoints{
+                               {4, 3},
+                               {5, 3},
+                               {6, 3},
+                           }},
+                       {"6",
+                           maps::BorderPoints{
+                               {4, 1},
+                               {5, 1},
+                               {6, 1},
+                           }},
+                   }},
+               {"3",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 4},
+                               {2, 4},
+                               {3, 4},
+                           }},
+                       {"4",
+                           maps::BorderPoints{
+                               {3, 4},
+                               {3, 5},
+                               {3, 6},
+                           }},
+                       {"7",
+                           maps::BorderPoints{
+                               {1, 6},
+                               {2, 6},
+                               {3, 6},
+                           }},
+                   }},
+               {"4",
+                   maps::BordersWith{
+                       {"2",
+                           maps::BorderPoints{
+                               {4, 4},
+                               {5, 4},
+                               {6, 4},
+                           }},
+                       {"3",
+                           maps::BorderPoints{
+                               {4, 4},
+                               {4, 5},
+                               {4, 6},
+                           }},
+                       {"8",
+                           maps::BorderPoints{
+                               {4, 6},
+                               {5, 6},
+                               {6, 6},
+                           }},
+                   }},
+           },
+           {},
+           {{}, {}, {}, {}},
+           {}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building(1,
+                                  "coastal_bunker",
+                                  {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 1.0, .rotation = 0.0}),
+           Building(1,
+               "coastal_bunker",
+               {.x_coordinate = 5.0, .y_coordinate = 11.0, .z_coordinate = 1.0, .rotation = 0.0}),
+           Building(1,
+               "coastal_bunker",
+               {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 6.0, .rotation = 0.0}),
+           Building(1,
+               "coastal_bunker",
+               {.x_coordinate = 5.0, .y_coordinate = 11.0, .z_coordinate = 6.0, .rotation = 0.0})}));
 }
 
 }  // namespace hoi4
