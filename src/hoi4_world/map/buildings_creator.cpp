@@ -276,7 +276,7 @@ void AddBunker(int state_id,
       Log(LogLevel::Warning) << fmt::format("The bunker in {} did not have a location in default HoI4.", province);
    }
 
-   buildings.emplace_back(hoi4::Building(state_id, "bunker", position, std::nullopt));
+   buildings.emplace_back(hoi4::Building(state_id, "bunker", position));
 }
 
 
@@ -317,8 +317,8 @@ void AddCoastalBunker(int state_id,
           map_data.GetSpecifiedBorderCenter(std::to_string(province.first), std::to_string(province.second[0]));
       if (!possible_position)
       {
-         Log(LogLevel::Warning) << fmt::format("Could not find position for province {}. Coastal bunker not set.",
-             province.first);
+         Log(LogLevel::Warning) << fmt::format("Province {} did not have any border points. Coastal bunkers not fully set in state {}.",
+             province.first, state_id);
          return;
       }
 
@@ -334,7 +334,7 @@ void AddCoastalBunker(int state_id,
           position.z_coordinate);
    }
 
-   buildings.emplace_back(hoi4::Building(state_id, "coastal_bunker", position, 0));
+   buildings.emplace_back(hoi4::Building(state_id, "coastal_bunker", position));
 }
 
 
