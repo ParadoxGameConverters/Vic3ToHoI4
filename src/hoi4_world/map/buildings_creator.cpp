@@ -79,14 +79,6 @@ void ProcessLine(const std::string& line, const maps::MapData& map_data, AllDefa
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_arms_factories);
       }
-      else if (matches[2] == "industrial_complex")
-      {
-         ImportDefaultBuilding(matches, map_data, all_default_positions.default_industrial_complexes);
-      }
-      else if (matches[2] == "naval_base")
-      {
-         ImportDefaultBuilding(matches, map_data, all_default_positions.default_naval_bases);
-      }
       else if (matches[2] == "bunker")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_bunkers);
@@ -99,9 +91,17 @@ void ProcessLine(const std::string& line, const maps::MapData& map_data, AllDefa
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_dockyards);
       }
-      else if (matches[2] == "synthetic_refinery")
+      else if (matches[2] == "floating_harbor")
       {
-         ImportDefaultBuilding(matches, map_data, all_default_positions.default_synthetic_refineries);
+         ImportDefaultBuilding(matches, map_data, all_default_positions.default_floating_harbors);
+      }
+      else if (matches[2] == "industrial_complex")
+      {
+         ImportDefaultBuilding(matches, map_data, all_default_positions.default_industrial_complexes);
+      }
+      else if (matches[2] == "naval_base")
+      {
+         ImportDefaultBuilding(matches, map_data, all_default_positions.default_naval_bases);
       }
       else if (matches[2] == "nuclear_reactor")
       {
@@ -111,9 +111,9 @@ void ProcessLine(const std::string& line, const maps::MapData& map_data, AllDefa
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_supply_nodes);
       }
-      else if (matches[2] == "floating_harbor")
+      else if (matches[2] == "synthetic_refinery")
       {
-         ImportDefaultBuilding(matches, map_data, all_default_positions.default_floating_harbors);
+         ImportDefaultBuilding(matches, map_data, all_default_positions.default_synthetic_refineries);
       }
    }
 }
@@ -178,6 +178,11 @@ void PlaceBuildingType(const std::vector<hoi4::State>& states,
 
       for (auto province: state.GetProvinces())
       {
+         if (num_placed >= number_to_place)
+         {
+            break;
+         }
+
          int state_id = state.GetId();
          if (auto province_points = map_data.GetProvincePoints(std::to_string(province)); province_points)
          {
@@ -198,11 +203,6 @@ void PlaceBuildingType(const std::vector<hoi4::State>& states,
                 building_type,
                 state_id);
             continue;
-         }
-
-         if (num_placed >= number_to_place)
-         {
-            break;
          }
       }
    }
@@ -228,7 +228,13 @@ void PlaceAirports(const std::vector<hoi4::State>& states,
           map_data.GetProvinceName({static_cast<int>(position.x_coordinate), static_cast<int>(position.z_coordinate)});
       if (name)
       {
-         airport_locations.emplace(building.GetStateId(), std::stoi(*name));
+         try
+         {
+            airport_locations.emplace(building.GetStateId(), std::stoi(*name));
+         }
+         catch (...)
+         {
+         }
       }
    }
 }
@@ -255,7 +261,10 @@ void AddBunker(int state_id,
       auto possible_position = map_data.GetAnyBorderCenter(std::to_string(province));
       if (!possible_position)
       {
-         Log(LogLevel::Warning) << fmt::format("Could not find position for province {}. Bunker not set.", province);
+         Log(LogLevel::Warning) << fmt::format(
+             "Province {} did not have any border points. Bunkers not fully set in state {}.",
+             province,
+             state_id);
          return;
       }
 
@@ -264,24 +273,24 @@ void AddBunker(int state_id,
       position.z_coordinate = possible_position->y;
       position.rotation = 0.0;
 
-      Log(LogLevel::Warning) << fmt::format("The bunker in {} at ({}, {}) did not have a location in default HoI4.",
-          province,
-          position.x_coordinate,
-          position.z_coordinate);
+      Log(LogLevel::Warning) << fmt::format("The bunker in {} did not have a location in default HoI4.", province);
    }
 
-   buildings.emplace_back(hoi4::Building(state_id, "bunker", position, 0));
+   buildings.emplace_back(hoi4::Building(state_id, "bunker", position, std::nullopt));
 }
 
 
-void PlaceBunkers(const std::map<int, int>& province_to_state_id_map,
+void PlaceBunkers(const std::vector<hoi4::State>& states,
     const maps::MapData& map_data,
     const DefaultPositions& default_bunkers,
     std::vector<hoi4::Building>& buildings)
 {
-   for (const auto& [province, state_id]: province_to_state_id_map)
+   for (const auto state: states)
    {
-      AddBunker(state_id, province, map_data, default_bunkers, buildings);
+      for (const auto& province: state.GetProvinces())
+      {
+         AddBunker(state.GetId(), province, map_data, default_bunkers, buildings);
+      }
    }
 }
 
@@ -801,7 +810,7 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        "arms_factory",
        6,
        buildings);
-   PlaceBunkers(states.province_to_state_id_map, map_data, all_default_positions.default_bunkers, buildings);
+   PlaceBunkers(states.states, map_data, all_default_positions.default_bunkers, buildings);
    PlaceCoastalBunkers(states.province_to_state_id_map,
        actual_coastal_provinces,
        map_data,
