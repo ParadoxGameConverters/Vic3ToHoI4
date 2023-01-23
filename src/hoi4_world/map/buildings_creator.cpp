@@ -317,8 +317,10 @@ void AddCoastalBunker(int state_id,
           map_data.GetSpecifiedBorderCenter(std::to_string(province.first), std::to_string(province.second[0]));
       if (!possible_position)
       {
-         Log(LogLevel::Warning) << fmt::format("Province {} did not have any border points. Coastal bunkers not fully set in state {}.",
-             province.first, state_id);
+         Log(LogLevel::Warning) << fmt::format(
+             "Province {} did not have any border points. Coastal bunkers not fully set in state {}.",
+             province.first,
+             state_id);
          return;
       }
 
@@ -377,47 +379,51 @@ void PlaceDockyards(const std::vector<hoi4::State>& states,
              possible_dockyard != default_dockyards.end())
          {
             auto position = possible_dockyard->second;
-            buildings.emplace_back(hoi4::Building(state_id, "dockyard", position, 0));
+            buildings.emplace_back(hoi4::Building(state_id, "dockyard", position));
             dockyard_placed = true;
             break;
          }
       }
 
-      if (!dockyard_placed)
+      if (dockyard_placed)
       {
-         std::optional<int> the_province;
-         for (auto possible_province: state.GetProvinces())
+         continue;
+      }
+
+      std::optional<int> the_province;
+      for (auto possible_province: state.GetProvinces())
+      {
+         if (!coastal_provinces.IsProvinceCoastal(possible_province))
          {
-            if (coastal_provinces.IsProvinceCoastal(possible_province))
-            {
-               the_province = possible_province;
-               break;
-            }
+            continue;
          }
-         if (the_province)
+
+         the_province = possible_province;
+
+         auto connecting_sea_provinces = actual_coastal_provinces.find(*the_province);
+         if (connecting_sea_provinces == actual_coastal_provinces.end())
          {
-            auto connecting_sea_provinces = actual_coastal_provinces.find(*the_province);
-            if (connecting_sea_provinces != actual_coastal_provinces.end())
-            {
-               auto centermost_point = map_data.GetSpecifiedBorderCenter(std::to_string(*the_province),
-                   std::to_string(connecting_sea_provinces->second[0]));
-               if (centermost_point)
-               {
-                  hoi4::BuildingPosition position;
-                  position.x_coordinate = centermost_point->x;
-                  position.y_coordinate = 11.0;
-                  position.z_coordinate = centermost_point->y;
-                  position.rotation = 0;
-                  buildings.emplace_back(hoi4::Building(state_id, "dockyard", position, 0));
-               }
-               else
-               {
-                  Log(LogLevel::Warning) << fmt::format(
-                      "Province {} did not have any points. Dockyard not set in state {}.",
-                      *the_province,
-                      state_id);
-               }
-            }
+            continue;
+         }
+
+         auto centermost_point = map_data.GetSpecifiedBorderCenter(std::to_string(*the_province),
+             std::to_string(connecting_sea_provinces->second[0]));
+         if (centermost_point)
+         {
+            hoi4::BuildingPosition position;
+            position.x_coordinate = centermost_point->x;
+            position.y_coordinate = 11.0;
+            position.z_coordinate = centermost_point->y;
+            position.rotation = 0;
+            buildings.emplace_back(hoi4::Building(state_id, "dockyard", position));
+            dockyard_placed = true;
+            break;
+         }
+         else
+         {
+            Log(LogLevel::Warning) << fmt::format("Province {} did not have any points. Dockyard may not be set in state {}.",
+                *the_province,
+                state_id);
          }
       }
    }
