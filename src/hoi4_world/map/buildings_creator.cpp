@@ -478,7 +478,7 @@ void AddFloatingHarbors(int state_id,
           position.z_coordinate);
    }
 
-   buildings.emplace_back(hoi4::Building(state_id, "floating_harbor", position, connecting_sea_province));
+   buildings.emplace_back(hoi4::Building(state_id, "floating_harbor", position, connecting_sea_province)); 
 }
 
 

@@ -1671,37 +1671,102 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoDockyardInStateWithNoCoastalProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoBorderPoints)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5, 6, 7})},
+   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
                                              {
                                                  {1, 1},
                                                  {2, 1},
                                                  {3, 1},
                                                  {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
                                              }),
-       CoastalProvinces({}),
-       maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
+       CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
+       maps::MapData({},
+           {
+               {"1",
+                   maps::BordersWith{
+                       {"2",
+                           maps::BorderPoints{
+                               {3, 1},
+                               {3, 2},
+                               {3, 3},
+                           }},
+                       {"3",
+                           maps::BorderPoints{
+                               {1, 3},
+                               {2, 3},
+                               {3, 3},
+                           }},
+                   }},
+               {"2",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 1},
+                               {4, 2},
+                               {4, 3},
+                           }},
+                       {"4",
+                           maps::BorderPoints{
+                               {4, 3},
+                               {5, 3},
+                               {6, 3},
+                           }},
+                   }},
+               {"3",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 4},
+                               {2, 4},
+                               {3, 4},
+                           }},
+                       {"4",
+                           maps::BorderPoints{
+                               {3, 4},
+                               {3, 5},
+                               {3, 6},
+                           }},
+                   }},
+               {"4",
+                   maps::BordersWith{
+                       {"2",
+                           maps::BorderPoints{
+                               {4, 4},
+                               {5, 4},
+                               {6, 4},
+                           }},
+                       {"3",
+                           maps::BorderPoints{
+                               {4, 4},
+                               {4, 5},
+                               {4, 6},
+                           }},
+                   }},
+           },
+           {},
+           maps::ProvinceDefinitions{{}, {}, {}, {}},
+           {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_TRUE(buildings.GetBuildings().empty());
+   for (const auto building: buildings.GetBuildings())
+   {
+      EXPECT_NE(building.GetType(), "dockyard");
+   }
    EXPECT_THAT(log.str(),
-       testing::HasSubstr("[WARNING] Province 1 did not have any points. arms_factory not fully set in state 1."));
+       testing::HasSubstr("[WARNING] Province 1 did not have any points. Dockyard may not be set in state 1."));
    EXPECT_THAT(log.str(),
-       testing::HasSubstr("[WARNING] Province 2 did not have any points. arms_factory not fully set in state 1."));
+       testing::HasSubstr("[WARNING] Province 2 did not have any points. Dockyard may not be set in state 1."));
    EXPECT_THAT(log.str(),
-       testing::HasSubstr("[WARNING] Province 3 did not have any points. arms_factory not fully set in state 1."));
+       testing::HasSubstr("[WARNING] Province 3 did not have any points. Dockyard may not be set in state 1."));
    EXPECT_THAT(log.str(),
-       testing::HasSubstr("[WARNING] Province 4 did not have any points. arms_factory not fully set in state 1."));
+       testing::HasSubstr("[WARNING] Province 4 did not have any points. Dockyard may not be set in state 1."));
 }
 
 
@@ -1922,6 +1987,282 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
        testing::IsSupersetOf({Building(1,
            "dockyard",
            {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 0.0, .rotation = 0.0})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacedInSeaBorderCenterOfFirstCoastalProvinceOfState)
+{
+   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
+                                             {
+                                                 {1, 1},
+                                                 {2, 1},
+                                                 {3, 1},
+                                                 {4, 1},
+                                             }),
+       CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
+       maps::MapData({},
+           {
+               {"5",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 0},
+                               {2, 0},
+                               {3, 0},
+                           }},
+                   }},
+               {"6",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 0},
+                               {5, 0},
+                               {6, 0},
+                           }},
+                   }},
+               {"7",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 7},
+                               {2, 7},
+                               {3, 7},
+                           }},
+                   }},
+               {"8",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 7},
+                               {5, 7},
+                               {6, 7},
+                           }},
+                   }},
+           },
+           {},
+           maps::ProvinceDefinitions{{}, {}, {}, {}},
+           {}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building(1,
+           "floating_harbor",
+           {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 0.0, .rotation = 0.0},
+           1)}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, NoFloatingHarborsInStateWithNoCoastalProvinces)
+{
+   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
+                                             {
+                                                 {1, 1},
+                                                 {2, 1},
+                                                 {3, 1},
+                                                 {4, 1},
+                                             }),
+       CoastalProvinces({}),
+       maps::MapData({},
+           {
+               {"5",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 0},
+                               {2, 0},
+                               {3, 0},
+                           }},
+                   }},
+               {"6",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 0},
+                               {5, 0},
+                               {6, 0},
+                           }},
+                   }},
+               {"7",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 7},
+                               {2, 7},
+                               {3, 7},
+                           }},
+                   }},
+               {"8",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 7},
+                               {5, 7},
+                               {6, 7},
+                           }},
+                   }},
+           },
+           {},
+           maps::ProvinceDefinitions{{}, {}, {}, {}},
+           {}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   EXPECT_TRUE(buildings.GetBuildings().empty());
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsNotPlacedInProvincesWithNoSeaBorders)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
+                                             {
+                                                 {1, 1},
+                                                 {2, 1},
+                                                 {3, 1},
+                                                 {4, 1},
+                                             }),
+       CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
+       maps::MapData({}, {}, {}, maps::ProvinceDefinitions{{}, {}, {}, {}}, {}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_TRUE(buildings.GetBuildings().empty());
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Could not find position for province 1. Floating Harbor not set."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Could not find position for province 2. Floating Harbor not set."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Could not find position for province 3. Floating Harbor not set."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Could not find position for province 4. Floating Harbor not set."));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacementOverridenByDefaultLocations)
+{
+   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
+                                             {
+                                                 {1, 1},
+                                                 {2, 1},
+                                                 {3, 1},
+                                                 {4, 1},
+                                             }),
+       CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
+       maps::MapData({},
+           {
+               {"5",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 0},
+                               {2, 0},
+                               {3, 0},
+                           }},
+                   }},
+               {"6",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 0},
+                               {5, 0},
+                               {6, 0},
+                           }},
+                   }},
+               {"7",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 7},
+                               {2, 7},
+                               {3, 7},
+                           }},
+                   }},
+               {"8",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 7},
+                               {5, 7},
+                               {6, 7},
+                           }},
+                   }},
+           },
+           {},
+           maps::ProvinceDefinitions{{}, {}, {}, {}},
+           {{{2, 0}, "5"}}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building(1,
+           "floating_harbor",
+           {.x_coordinate = 2.0, .y_coordinate = 6.0, .z_coordinate = 0.0, .rotation = 90.0},
+           1)}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests,
+    FloatingHarborsPlacedInSeaBorderCenterOfFirstCoastalProvinceOfStateIfDefaultNotInActualProvince)
+{
+   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
+                                             {
+                                                 {1, 1},
+                                                 {2, 1},
+                                                 {3, 1},
+                                                 {4, 1},
+                                             }),
+       CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
+       maps::MapData({},
+           {
+               {"5",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 0},
+                               {2, 0},
+                               {3, 0},
+                           }},
+                   }},
+               {"6",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 0},
+                               {5, 0},
+                               {6, 0},
+                           }},
+                   }},
+               {"7",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {1, 7},
+                               {2, 7},
+                               {3, 7},
+                           }},
+                   }},
+               {"8",
+                   maps::BordersWith{
+                       {"1",
+                           maps::BorderPoints{
+                               {4, 7},
+                               {5, 7},
+                               {6, 7},
+                           }},
+                   }},
+           },
+           {},
+           maps::ProvinceDefinitions{{}, {}, {}, {}},
+           {}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building(1,
+           "floating_harbor",
+           {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 0.0, .rotation = 0.0},
+           1)}));
 }
 
 }  // namespace hoi4
