@@ -18,3 +18,9 @@
 1;coastal_bunker;5.00;6.00;6.00;359.00;0
 1;dockyard;2.00;6.00;1.00;90.00;0
 1;floating_harbor;2.00;6.00;0.00;90.0;1
+1;industrial_complex;4.00;6.00;1.00;45.0;0
+1;industrial_complex;1.00;6.00;4.00;90.0;0
+1;industrial_complex;4.00;6.00;4.00;135.0;0
+1;industrial_complex;7.00;6.00;1.00;180.0;0
+1;industrial_complex;7.00;6.00;4.00;225.0;0
+1;industrial_complex;1.00;6.00;7.00;270.0;0

@@ -503,64 +503,6 @@ void PlaceFloatingHarbors(const std::map<int, int>& province_to_state_id_map,
 }
 
 
-void PlaceIndustrialComplexes(const std::vector<hoi4::State>& states,
-    const maps::MapData& map_data,
-    const DefaultPositions& default_industrial_complexes,
-    std::vector<hoi4::Building>& buildings)
-{
-   for (const auto& state: states)
-   {
-      int state_id = state.GetId();
-
-      auto num_placed = 0;
-      for (auto theProvince: state.GetProvinces())
-      {
-         if (auto possible_industrial_complex = default_industrial_complexes.find(std::make_pair(theProvince, 0));
-             possible_industrial_complex != default_industrial_complexes.end())
-         {
-            auto position = possible_industrial_complex->second;
-            buildings.emplace_back(hoi4::Building(state_id, "industrial_complex", position, 0));
-            num_placed++;
-         }
-
-         if (num_placed > 3)
-         {
-            break;
-         }
-      }
-
-      for (auto province: state.GetProvinces())
-      {
-         auto province_points = map_data.GetProvincePoints(std::to_string(province));
-         if (province_points)
-         {
-            const auto centermost_point = province_points->GetCentermostPoint();
-            hoi4::BuildingPosition position;
-            position.x_coordinate = centermost_point.x;
-            position.y_coordinate = 11.0;
-            position.z_coordinate = centermost_point.y;
-            position.rotation = 0;
-            buildings.emplace_back(hoi4::Building(state_id, "industrial_complex", position, 0));
-            num_placed++;
-         }
-         else
-         {
-            Log(LogLevel::Warning) << fmt::format(
-                "Province {} did not have any points. Industrial complexes not fully set in state {}.",
-                province,
-                state_id);
-            break;
-         }
-
-         if (num_placed >= 6)
-         {
-            break;
-         }
-      }
-   }
-}
-
-
 void AddNavalBase(int state_id,
     const std::pair<int, std::vector<int>>& province,
     const maps::MapData& map_data,
@@ -833,7 +775,12 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        map_data,
        all_default_positions.default_floating_harbors,
        buildings);
-   PlaceIndustrialComplexes(states.states, map_data, all_default_positions.default_industrial_complexes, buildings);
+   PlaceBuildingType(states.states,
+       map_data,
+       all_default_positions.default_industrial_complexes,
+       "industrial_complex",
+       6,
+       buildings);
    PlaceNavalBases(states.province_to_state_id_map,
        actual_coastal_provinces,
        map_data,
