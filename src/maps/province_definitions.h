@@ -30,6 +30,7 @@ class ProvinceDefinitions
 
    [[nodiscard]] const std::set<std::string>& GetLandProvinces() const { return land_provinces_; }
    [[nodiscard]] bool IsLandProvince(const std::string& province) const { return land_provinces_.contains(province); }
+   [[nodiscard]] const std::set<std::string>& GetSeaProvinces() const { return sea_provinces_; }
    [[nodiscard]] bool IsSeaProvince(const std::string& province) const { return sea_provinces_.contains(province); }
 
    [[nodiscard]] std::optional<std::string> GetProvinceFromColor(const commonItems::Color& color) const;

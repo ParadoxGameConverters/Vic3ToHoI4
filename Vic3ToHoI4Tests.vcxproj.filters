@@ -375,6 +375,30 @@
     <ClCompile Include="src\mappers\country\country_mapper_creator_tests.cpp">
       <Filter>src\mappers\country</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_building.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_buildings.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\buildings_creator_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_building_tests.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_buildings_tests.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -556,6 +580,30 @@
     </ClInclude>
     <ClInclude Include="src\mappers\country\country_mapper_creator.h">
       <Filter>src\mappers\country</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\building_position.h">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\buildings.h">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\buildings_creator.h">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\coastal_provinces.h">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\coastal_provinces_creator.h">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\map\hoi4_building.h">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\map\out_building.h">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\map\out_buildings.h">
+      <Filter>src\out_hoi4\map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

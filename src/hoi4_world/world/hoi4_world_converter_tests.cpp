@@ -29,7 +29,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
        province_mapper);
 
    EXPECT_TRUE(world.GetCountries().empty());
-   EXPECT_TRUE(world.GetStates().empty());
+   EXPECT_TRUE(world.GetStates().states.empty());
+   EXPECT_TRUE(world.GetStates().province_to_state_id_map.empty());
 }
 
 
@@ -81,7 +82,15 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
        country_mapper,
        province_mapper);
 
-   EXPECT_THAT(world.GetStates(), testing::ElementsAre(State(1, "TAG", {10, 20, 30}), State(2, "TWO", {40, 50, 60})));
+   EXPECT_THAT(world.GetStates().states,
+       testing::ElementsAre(State(1, "TAG", {10, 20, 30}), State(2, "TWO", {40, 50, 60})));
+   EXPECT_THAT(world.GetStates().province_to_state_id_map,
+       testing::UnorderedElementsAre(testing::Pair(10, 1),
+           testing::Pair(20, 1),
+           testing::Pair(30, 1),
+           testing::Pair(40, 2),
+           testing::Pair(50, 2),
+           testing::Pair(60, 2)));
 }
 
 
@@ -176,6 +185,39 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
        testing::UnorderedElementsAre(10, 20, 30));
    EXPECT_THAT(world.GetStrategicRegions().GetStrategicRegions().at(50).GetNewProvinces(),
        testing::UnorderedElementsAre(40, 50, 60));
+}
+
+
+TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
+{
+   const mappers::CountryMapper country_mapper({});
+
+   const vic3::World source_world({},
+       {{1, vic3::State({.provinces = {1, 2, 3, 4, 5}})},
+           {2, vic3::State({.provinces = {6, 7}})},
+           {3, vic3::State({.provinces = {8}})}},
+       vic3::ProvinceDefinitions(
+           {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006", "0x000007", "0x000008"}));
+
+   mappers::ProvinceMapper province_mapper{{},
+       {
+           {1, {"0x000001"}},
+           {2, {"0x000002"}},
+           {3, {"0x000003"}},
+           {4, {"0x000004"}},
+           {5, {"0x000005"}},
+           {6, {"0x000006"}},
+           {7, {"0x000007"}},
+           {8, {"0x000008"}},
+       }};
+
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/BuildingsAreCreated", {}),
+       source_world,
+       country_mapper,
+       province_mapper);
+
+   EXPECT_FALSE(world.GetBuildings().GetBuildings().empty());
+   EXPECT_FALSE(world.GetBuildings().GetAirportLocations().empty());
 }
 
 }  // namespace hoi4

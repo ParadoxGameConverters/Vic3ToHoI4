@@ -18,6 +18,32 @@ double CalculateDistanceSquared(const maps::Point point, const maps::Point cente
 
 
 
+maps::ProvincePoints::ProvincePoints(std::set<Point> points)
+{
+   points_ = points;
+   for (const auto& point: points)
+   {
+      if (point.x < leftmost_point_.x)
+      {
+         leftmost_point_ = point;
+      }
+      if (point.x > rightmost_point_.x)
+      {
+         rightmost_point_ = point;
+      }
+      if (point.y < lowest_point_.y)
+      {
+         lowest_point_ = point;
+      }
+      if (point.y > highest_point_.y)
+      {
+         highest_point_ = point;
+      }
+   }
+}
+
+
+
 void maps::ProvincePoints::AddPoint(const Point& the_point)
 {
    points_.emplace(the_point);
