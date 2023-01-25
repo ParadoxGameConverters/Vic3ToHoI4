@@ -188,9 +188,36 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 {
-   EXPECT_TRUE(false);
+   const mappers::CountryMapper country_mapper({});
+
+   const vic3::World source_world({},
+       {{1, vic3::State({.provinces = {1, 2, 3, 4, 5}})},
+           {2, vic3::State({.provinces = {6, 7}})},
+           {3, vic3::State({.provinces = {8}})}},
+       vic3::ProvinceDefinitions(
+           {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006", "0x000007", "0x000008"}));
+
+   mappers::ProvinceMapper province_mapper{{},
+       {
+           {1, {"0x000001"}},
+           {2, {"0x000002"}},
+           {3, {"0x000003"}},
+           {4, {"0x000004"}},
+           {5, {"0x000005"}},
+           {6, {"0x000006"}},
+           {7, {"0x000007"}},
+           {8, {"0x000008"}},
+       }};
+
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/BuildingsAreCreated", {}),
+       source_world,
+       country_mapper,
+       province_mapper);
+
+   EXPECT_FALSE(world.GetBuildings().GetBuildings().empty());
+   EXPECT_FALSE(world.GetBuildings().GetAirportLocations().empty());
 }
 
 }  // namespace hoi4
