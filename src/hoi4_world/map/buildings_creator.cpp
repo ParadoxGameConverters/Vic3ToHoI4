@@ -532,10 +532,10 @@ void AddNavalBase(int state_id,
           map_data.GetSpecifiedBorderCenter(std::to_string(province.first), std::to_string(province.second[0]));
       if (!possible_position)
       {
-          Log(LogLevel::Warning) << fmt::format(
-              "Province {} did not have any border points. Naval bases not fully set in state {}.",
-              province.first,
-              state_id);
+         Log(LogLevel::Warning) << fmt::format(
+             "Province {} did not have any border points. Naval bases not fully set in state {}.",
+             province.first,
+             state_id);
          return;
       }
 
@@ -598,10 +598,10 @@ void AddSupplyNodes(int state_id,
       auto possible_position = map_data.GetAnyBorderCenter(std::to_string(province));
       if (!possible_position)
       {
-          Log(LogLevel::Warning) << fmt::format(
-              "Province {} did not have any border points. Supply nodes not fully set in state {}.",
-              province,
-              state_id);
+         Log(LogLevel::Warning) << fmt::format(
+             "Province {} did not have any border points. Supply nodes not fully set in state {}.",
+             province,
+             state_id);
          return;
       }
 
@@ -633,58 +633,6 @@ void PlaceSupplyNodes(const std::map<int, int>& province_to_state_id_map,
           map_data,
           default_supply_nodes,
           buildings);
-   }
-}
-
-
-void PlaceSyntheticRefineries(const std::vector<hoi4::State>& states,
-    const maps::MapData& map_data,
-    const DefaultPositions& default_synthetic_refineries_nodes,
-    std::vector<hoi4::Building>& buildings)
-{
-   for (const auto& state: states)
-   {
-      if (state.GetProvinces().empty())
-      {
-         continue;
-      }
-
-      int state_id = state.GetId();
-      auto refinery_placed = false;
-
-      for (auto province: state.GetProvinces())
-      {
-         if (auto possible_refinery = default_synthetic_refineries_nodes.find(std::make_pair(province, 0));
-             possible_refinery != default_synthetic_refineries_nodes.end())
-         {
-            auto position = possible_refinery->second;
-            buildings.emplace_back(hoi4::Building(state_id, "synthetic_refinery", position, 0));
-            refinery_placed = true;
-            break;
-         }
-      }
-      if (!refinery_placed)
-      {
-         const auto first_province = *state.GetProvinces().begin();
-         auto province_points = map_data.GetProvincePoints(std::to_string(first_province));
-         if (province_points)
-         {
-            const auto centermost_point = province_points->GetCentermostPoint();
-            hoi4::BuildingPosition position;
-            position.x_coordinate = centermost_point.x;
-            position.y_coordinate = 11.0;
-            position.z_coordinate = centermost_point.y;
-            position.rotation = 0;
-            buildings.emplace_back(hoi4::Building(state_id, "synthetic_refinery", position, 0));
-         }
-         else
-         {
-            Log(LogLevel::Warning) << fmt::format(
-                "Province {} did not have any points. Synthetic refinery not set for state {}.",
-                first_province,
-                state_id);
-         }
-      }
    }
 }
 
@@ -747,7 +695,12 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        1,
        buildings);
    PlaceSupplyNodes(states.province_to_state_id_map, map_data, all_default_positions.default_supply_nodes, buildings);
-   PlaceSyntheticRefineries(states.states, map_data, all_default_positions.default_synthetic_refineries, buildings);
+   PlaceBuildingType(states.states,
+       map_data,
+       all_default_positions.default_nuclear_reactors,
+       "synthetic_refinery",
+       1,
+       buildings);
 
    return {buildings, airport_locations};
 }
