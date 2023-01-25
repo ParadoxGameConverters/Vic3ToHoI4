@@ -107,7 +107,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInMisnamedProvince)
 {
-    Buildings buildings = ImportBuildings(States({ State(1, std::nullopt, {1, 2, 3, 4, 5}) },
+   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
                                              {
                                                  {1, 1},
                                                  {2, 1},
@@ -115,24 +115,24 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInMisnamedProvince)
                                                  {4, 1},
                                                  {5, 1},
                                              }),
-                                             CoastalProvinces({}),
-                                             maps::MapData({},
-                                                 {},
+       CoastalProvinces({}),
+       maps::MapData({},
+           {},
            {
                {"1", maps::ProvincePoints({{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
                {"2", maps::ProvincePoints({{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
            },
-                                                 { {}, {}, {}, {} },
+           {{}, {}, {}, {}},
            {
                {maps::Point{2, 2}, "bad_name"},
            }),
-           commonItems::ModFilesystem{ "test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {} });
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
-    EXPECT_THAT(buildings.GetBuildings(),
-        testing::IsSupersetOf({ Building(1,
-            "air_base",
-            {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}) }));
-    EXPECT_TRUE(buildings.GetAirportLocations().empty());
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building(1,
+           "air_base",
+           {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0})}));
+   EXPECT_TRUE(buildings.GetAirportLocations().empty());
 }
 
 
@@ -1866,9 +1866,9 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoDockyardInStateWithNoCoastalProvinces)
            {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
-   for (const auto building : buildings.GetBuildings())
+   for (const auto building: buildings.GetBuildings())
    {
-       EXPECT_NE(building.GetType(), "dockyard");
+      EXPECT_NE(building.GetType(), "dockyard");
    }
 }
 
