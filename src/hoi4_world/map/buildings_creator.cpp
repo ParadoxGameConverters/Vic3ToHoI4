@@ -574,58 +574,6 @@ void PlaceNavalBases(const std::map<int, int>& province_to_state_id_map,
 }
 
 
-void PlaceNuclearReactors(const std::vector<hoi4::State>& states,
-    const maps::MapData& map_data,
-    const DefaultPositions& default_nuclear_reactors,
-    std::vector<hoi4::Building>& buildings)
-{
-   for (const auto& state: states)
-   {
-      if (state.GetProvinces().empty())
-      {
-         continue;
-      }
-
-      int state_id = state.GetId();
-      auto reactor_placed = false;
-
-      for (auto province: state.GetProvinces())
-      {
-         if (auto possible_reactor = default_nuclear_reactors.find(std::make_pair(province, 0));
-             possible_reactor != default_nuclear_reactors.end())
-         {
-            auto position = possible_reactor->second;
-            buildings.emplace_back(hoi4::Building(state_id, "nuclear_reactor", position, 0));
-            reactor_placed = true;
-            break;
-         }
-      }
-      if (!reactor_placed)
-      {
-         const auto first_province = *state.GetProvinces().begin();
-         auto province_points = map_data.GetProvincePoints(std::to_string(first_province));
-         if (province_points)
-         {
-            const auto centermost_point = province_points->GetCentermostPoint();
-            hoi4::BuildingPosition position;
-            position.x_coordinate = centermost_point.x;
-            position.y_coordinate = 11.0;
-            position.z_coordinate = centermost_point.y;
-            position.rotation = 0;
-            buildings.emplace_back(hoi4::Building(state_id, "nuclear_reactor", position, 0));
-         }
-         else
-         {
-            Log(LogLevel::Warning) << fmt::format(
-                "Province {} did not have any points. Nuclear reactor not set for state {}.",
-                first_province,
-                state_id);
-         }
-      }
-   }
-}
-
-
 void AddSupplyNodes(int state_id,
     int province,
     const maps::MapData& map_data,
@@ -787,7 +735,12 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        map_data,
        all_default_positions.default_naval_bases,
        buildings);
-   PlaceNuclearReactors(states.states, map_data, all_default_positions.default_nuclear_reactors, buildings);
+   PlaceBuildingType(states.states,
+       map_data,
+       all_default_positions.default_nuclear_reactors,
+       "nuclear_reactor",
+       1,
+       buildings);
    PlaceSupplyNodes(states.province_to_state_id_map, map_data, all_default_positions.default_supply_nodes, buildings);
    PlaceSyntheticRefineries(states.states, map_data, all_default_positions.default_synthetic_refineries, buildings);
 
