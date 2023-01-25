@@ -3330,10 +3330,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoSupplyNodesInStateWithNoProvinces)
            {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
-   for (const auto building: buildings.GetBuildings())
-   {
-      EXPECT_NE(building.GetType(), "supply_node");
-   }
+   EXPECT_TRUE(buildings.GetBuildings().empty());
 }
 
 
