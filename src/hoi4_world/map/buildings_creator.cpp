@@ -158,14 +158,14 @@ void PlaceBuildingType(const std::vector<hoi4::State>& states,
    {
       auto num_placed = 0;
 
-      for (auto theProvince: state.GetProvinces())
+      for (auto the_province: state.GetProvinces())
       {
-         if (auto possible_anti_air = default_buildings.find(std::make_pair(theProvince, 0));
-             possible_anti_air != default_buildings.end())
+         if (auto possible_building = default_buildings.find(std::make_pair(the_province, 0));
+             possible_building != default_buildings.end())
          {
             int state_id = state.GetId();
 
-            auto position = possible_anti_air->second;
+            auto position = possible_building->second;
             buildings.emplace_back(hoi4::Building(state_id, std::string(building_type), position));
             num_placed++;
 
@@ -273,7 +273,8 @@ void AddBunker(int state_id,
       position.z_coordinate = possible_position->y;
       position.rotation = 0.0;
 
-      Log(LogLevel::Warning) << fmt::format("The bunker in {} did not have a location in default HoI4.", province);
+      Log(LogLevel::Warning) << fmt::format("The bunker in province {} did not have a location in default HoI4.",
+          province);
    }
 
    buildings.emplace_back(hoi4::Building(state_id, "bunker", position));
@@ -330,10 +331,8 @@ void AddCoastalBunker(int state_id,
       position.rotation = 0.0;
 
       Log(LogLevel::Warning) << fmt::format(
-          "The coastal bunker in {} at ({}, {}) did not have a location in default HoI4.",
-          province.first,
-          position.x_coordinate,
-          position.z_coordinate);
+          "The coastal bunker in province {} did not have a location in default HoI4.",
+          province.first);
    }
 
    buildings.emplace_back(hoi4::Building(state_id, "coastal_bunker", position));
@@ -452,6 +451,7 @@ void AddFloatingHarbors(int state_id,
          position = default_floating_harbor->second;
          connecting_sea_province = province.first;
          position_unset = false;
+         break;
       }
    }
 
@@ -473,10 +473,8 @@ void AddFloatingHarbors(int state_id,
       position.rotation = 0.0;
 
       Log(LogLevel::Warning) << fmt::format(
-          "The Floating Harbor at province {} at ({}, {}) did not have a location in default HoI4.",
-          province.first,
-          position.x_coordinate,
-          position.z_coordinate);
+          "The Floating Harbor for province {} did not have a location in default HoI4.",
+          province.first);
    }
 
    buildings.emplace_back(hoi4::Building(state_id, "floating_harbor", position, connecting_sea_province));
@@ -522,6 +520,7 @@ void AddNavalBase(int state_id,
          position = default_naval_base->second;
          connecting_sea_province = sea_province;
          position_unset = false;
+         break;
       }
    }
 
@@ -545,11 +544,9 @@ void AddNavalBase(int state_id,
       position.rotation = 0.0;
 
       Log(LogLevel::Warning) << fmt::format(
-          "The naval base from {} to {} at ({}, {}) did not have a location in default HoI4.",
+          "The naval base from province {} to sea province {} did not have a location in default HoI4.",
           province.first,
-          connecting_sea_province,
-          position.x_coordinate,
-          position.z_coordinate);
+          connecting_sea_province);
    }
 
    buildings.emplace_back(hoi4::Building(state_id, "naval_base", position, connecting_sea_province));
@@ -610,11 +607,8 @@ void AddSupplyNodes(int state_id,
       position.z_coordinate = possible_position->y;
       position.rotation = 0.0;
 
-      Log(LogLevel::Warning) << fmt::format(
-          "The Supply Node in {} at ({}, {}) did not have a location in default HoI4.",
-          province,
-          position.x_coordinate,
-          position.z_coordinate);
+      Log(LogLevel::Warning) << fmt::format("The Supply Node in province {} did not have a location in default HoI4.",
+          province);
    }
 
    buildings.emplace_back(hoi4::Building(state_id, "supply_node", position));
