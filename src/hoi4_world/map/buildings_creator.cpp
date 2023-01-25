@@ -209,37 +209,6 @@ void PlaceBuildingType(const std::vector<hoi4::State>& states,
 }
 
 
-void PlaceAirports(const std::vector<hoi4::State>& states,
-    const maps::MapData& map_data,
-    const DefaultPositions& default_air_bases,
-    std::vector<hoi4::Building>& buildings,
-    std::map<int, int>& airport_locations)
-{
-   PlaceBuildingType(states, map_data, default_air_bases, "air_base", 1, buildings);
-   for (const auto& building: buildings)
-   {
-      if (building.GetType() != "air_base")
-      {
-         continue;
-      }
-
-      const hoi4::BuildingPosition position = building.GetPosition();
-      const auto name =
-          map_data.GetProvinceName({static_cast<int>(position.x_coordinate), static_cast<int>(position.z_coordinate)});
-      if (name)
-      {
-         try
-         {
-            airport_locations.emplace(building.GetStateId(), std::stoi(*name));
-         }
-         catch (...)
-         {
-         }
-      }
-   }
-}
-
-
 void AddBunker(int state_id,
     int province,
     const maps::MapData& map_data,
@@ -354,7 +323,6 @@ void PlaceCoastalBunkers(const std::map<int, int>& province_to_state_id_map,
 
 
 void PlaceDockyards(const std::vector<hoi4::State>& states,
-    const hoi4::CoastalProvinces& coastal_provinces,
     std::map<int, std::vector<int>> actual_coastal_provinces,
     const maps::MapData& map_data,
     const DefaultPositions& default_dockyards,
@@ -385,11 +353,6 @@ void PlaceDockyards(const std::vector<hoi4::State>& states,
       std::optional<int> the_province;
       for (auto possible_province: state.GetProvinces())
       {
-         if (!coastal_provinces.IsProvinceCoastal(possible_province))
-         {
-            continue;
-         }
-
          the_province = possible_province;
 
          auto connecting_sea_provinces = actual_coastal_provinces.find(*the_province);
@@ -612,17 +575,45 @@ void PlaceSupplyNodes(const std::map<int, int>& province_to_state_id_map,
 }
 
 
+std::map<int, int> RecordAirportLocations(const maps::MapData& map_data, std::vector<hoi4::Building>& buildings)
+{
+   std::map<int, int> airport_locations;
+   for (const auto& building: buildings)
+   {
+      if (building.GetType() != "air_base")
+      {
+         continue;
+      }
+
+      const hoi4::BuildingPosition position = building.GetPosition();
+      const auto name =
+          map_data.GetProvinceName({static_cast<int>(position.x_coordinate), static_cast<int>(position.z_coordinate)});
+      if (name)
+      {
+         try
+         {
+            airport_locations.emplace(building.GetStateId(), std::stoi(*name));
+         }
+         catch (...)
+         {
+         }
+      }
+   }
+
+   return airport_locations;
+}
+
+
 hoi4::Buildings PlaceBuildings(const hoi4::States& states,
     const hoi4::CoastalProvinces& coastal_provinces,
     const maps::MapData& map_data,
     const AllDefaultPositions& all_default_positions)
 {
    std::vector<hoi4::Building> buildings;
-   std::map<int, int> airport_locations;
 
    const auto& actual_coastal_provinces = coastal_provinces.GetCoastalProvinces();
 
-   PlaceAirports(states.states, map_data, all_default_positions.default_air_bases, buildings, airport_locations);
+   PlaceBuildingType(states.states, map_data, all_default_positions.default_air_bases, "air_base", 1, buildings);
    PlaceBuildingType(states.states,
        map_data,
        all_default_positions.default_anti_airs,
@@ -642,7 +633,6 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        all_default_positions.default_coastal_bunkers,
        buildings);
    PlaceDockyards(states.states,
-       coastal_provinces,
        actual_coastal_provinces,
        map_data,
        all_default_positions.default_dockyards,
@@ -676,6 +666,8 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        "synthetic_refinery",
        1,
        buildings);
+
+   std::map<int, int> airport_locations = RecordAirportLocations(map_data, buildings);
 
    return {buildings, airport_locations};
 }

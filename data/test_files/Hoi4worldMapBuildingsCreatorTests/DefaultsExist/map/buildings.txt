@@ -34,3 +34,4 @@
 1;supply_node;2.00;6.00;4.00;270.00;0
 1;supply_node;5.00;6.00;4.00;359.00;0
 1;synthetic_refinery;4.00;6.00;1.00;90.00;0
+1;air_base;bad;line;will;force;exception
