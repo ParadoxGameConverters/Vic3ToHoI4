@@ -149,7 +149,7 @@ AllDefaultPositions ImportDefaultBuildings(const maps::MapData& map_data,
 
 void PlaceBuildingType(const std::vector<hoi4::State>& states,
     const maps::MapData& map_data,
-    const DefaultPositions& default_anti_airs,
+    const DefaultPositions& default_buildings,
     std::string_view building_type,
     int number_to_place,
     std::vector<hoi4::Building>& buildings)
@@ -160,8 +160,8 @@ void PlaceBuildingType(const std::vector<hoi4::State>& states,
 
       for (auto theProvince: state.GetProvinces())
       {
-         if (auto possible_anti_air = default_anti_airs.find(std::make_pair(theProvince, 0));
-             possible_anti_air != default_anti_airs.end())
+         if (auto possible_anti_air = default_buildings.find(std::make_pair(theProvince, 0));
+             possible_anti_air != default_buildings.end())
          {
             int state_id = state.GetId();
 
