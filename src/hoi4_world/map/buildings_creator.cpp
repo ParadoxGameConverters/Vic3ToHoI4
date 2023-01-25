@@ -532,7 +532,10 @@ void AddNavalBase(int state_id,
           map_data.GetSpecifiedBorderCenter(std::to_string(province.first), std::to_string(province.second[0]));
       if (!possible_position)
       {
-         Log(LogLevel::Warning) << "Could not find position for province " << province.first << ". Naval base not set.";
+          Log(LogLevel::Warning) << fmt::format(
+              "Province {} did not have any border points. Naval bases not fully set in state {}.",
+              province.first,
+              state_id);
          return;
       }
 
@@ -595,8 +598,10 @@ void AddSupplyNodes(int state_id,
       auto possible_position = map_data.GetAnyBorderCenter(std::to_string(province));
       if (!possible_position)
       {
-         Log(LogLevel::Warning) << fmt::format("Could not find position for province {}. Supply Node not set.",
-             province);
+          Log(LogLevel::Warning) << fmt::format(
+              "Province {} did not have any border points. Supply nodes not fully set in state {}.",
+              province,
+              state_id);
          return;
       }
 
@@ -612,7 +617,7 @@ void AddSupplyNodes(int state_id,
           position.z_coordinate);
    }
 
-   buildings.emplace_back(hoi4::Building(state_id, "supply_node", position, 0));
+   buildings.emplace_back(hoi4::Building(state_id, "supply_node", position));
 }
 
 
