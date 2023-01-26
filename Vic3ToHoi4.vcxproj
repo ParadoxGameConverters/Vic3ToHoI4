@@ -214,7 +214,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="external\Fronter.NET\Release\**\*.*">
+    <Content Include="external\Release\**\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
       <Link>..\%(RecursiveDir)\%(Filename)%(Extension)</Link>
