@@ -23,13 +23,13 @@ TEST(Vic3worldStateVic3statesimporter, StatesCanBeImported)
    std::stringstream input;
    input << "={\n";
    input << "\tdatabase = {\n";
-   input << "0 = {\n";
+   input << "0={\n";
    input << "\tcountry=42\n";
    input << "\tprovinces={\n";
    input << "\t\tprovinces={ 1 2 }\n";
    input << "\t}\n";
    input << "}\n";
-   input << "1 = {\n";
+   input << "1={\n";
    input << "\tcountry=144\n";
    input << "\tprovinces={\n";
    input << "\t\tprovinces={ 10 2 }\n";
@@ -40,6 +40,32 @@ TEST(Vic3worldStateVic3statesimporter, StatesCanBeImported)
    EXPECT_THAT(states,
        testing::UnorderedElementsAre(testing::Pair(0, State({.owner_number = 42, .provinces = {1, 2, 3}})),
            testing::Pair(1, State({.owner_number = 144, .provinces = {10, 11, 12}}))));
+}
+
+
+TEST(Vic3worldStateVic3statesimporter, StatesIndexesCanBeSkipped)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "\tdatabase = {\n";
+   input << "0={\n";
+   input << "\tcountry=42\n";
+   input << "\tprovinces={\n";
+   input << "\t\tprovinces={ 1 2 }\n";
+   input << "\t}\n";
+   input << "}\n";
+   input << "1=none\n";
+   input << "2={\n";
+   input << "\tcountry=144\n";
+   input << "\tprovinces={\n";
+   input << "\t\tprovinces={ 10 2 }\n";
+   input << "\t}\n";
+   input << "}\n";
+   const auto states = StatesImporter{}.ImportStates(input);
+
+   EXPECT_THAT(states,
+       testing::UnorderedElementsAre(testing::Pair(0, State({.owner_number = 42, .provinces = {1, 2, 3}})),
+           testing::Pair(2, State({.owner_number = 144, .provinces = {10, 11, 12}}))));
 }
 
 }  // namespace vic3
