@@ -18,7 +18,7 @@ vic3::CountriesImporter::CountriesImporter(const std::map<std::string, commonIte
        [this, color_definitions](const std::string& number_string, std::istream& input_stream) {
           const int country_number = std::stoi(number_string);
           const auto country_string = commonItems::stringOfItem(input_stream).getString();
-          if (country_string.find("none") != std::string::npos)
+          if (country_string.find("{") == std::string::npos)
           {
              return;
           }

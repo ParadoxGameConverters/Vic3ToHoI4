@@ -18,7 +18,7 @@ vic3::StatesImporter::StatesImporter()
        [this](const std::string& number_string, std::istream& input_stream) {
           const int state_number = std::stoi(number_string);
           const auto state_string = commonItems::stringOfItem(input_stream).getString();
-          if (state_string.find("none") != std::string::npos)
+          if (state_string.find("{") == std::string::npos)
           {
              return;
           }
