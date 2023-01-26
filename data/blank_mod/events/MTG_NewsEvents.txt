@@ -1,0 +1,79 @@
+﻿add_namespace = mtg_news
+
+
+#London naval treaty is dead
+news_event = {
+	id = mtg_news.60
+	title = MTG_naval_treaty.8.t
+	desc = MTG_naval_treaty.8.desc
+	picture = GFX_news_event_generic_naval_treaty
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = MTG_naval_treaty.8.a
+		trigger = {
+			is_major = yes
+			NOT = { has_country_flag = MTG_naval_treaty_abandoned }
+		}
+	}
+	option = {
+		name = MTG_naval_treaty.8.b
+		trigger = {
+			is_major = yes
+			has_country_flag = MTG_naval_treaty_abandoned
+		}
+	}
+	option = {
+		name = MTG_naval_treaty.8.c
+		trigger = {
+			is_major = no
+		}
+	}
+}
+
+#Second London Naval Treaty Signed
+news_event = {
+	id = mtg_news.61
+	title = MTG_naval_treaty.9.t
+	desc = MTG_naval_treaty.9.desc
+	picture = GFX_news_event_generic_naval_treaty
+
+	major = yes
+
+	trigger = {
+		not = { has_global_flag = MTG_second_london_conference }
+		has_global_flag = {	flag = MTG_naval_treaty_signatories	value > 1 }	#can never be 1
+		not = { has_global_flag = mtg_61_fired }
+		date < "1938.1.1"
+	}
+	immediate = {
+		hidden_effect = {
+			set_global_flag = mtg_61_fired
+		}
+	}
+	mean_time_to_happen = { days = 2 }
+
+	option = {
+		name = MTG_naval_treaty.9.a
+		trigger = {
+			has_naval_treaty_trigger = yes
+		}
+	}
+	option = {
+		name = MTG_naval_treaty.9.b
+		trigger = {
+			is_major = yes
+			not = { has_naval_treaty_trigger = yes }
+		}
+	}
+	option = {
+		name = MTG_naval_treaty.9.c
+		trigger = {
+			is_major = no
+			not = { has_naval_treaty_trigger = yes }
+		}
+	}
+}

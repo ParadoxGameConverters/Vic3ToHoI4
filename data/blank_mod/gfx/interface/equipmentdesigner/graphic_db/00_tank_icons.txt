@@ -1,0 +1,225 @@
+default = {
+	light_tank_chassis_0 = {
+		pool = {
+			icons = { 
+				GFX_gwtank_chassis_medium
+			 }
+		}
+	}
+	light_tank_chassis_1 = {
+		pool = {
+			icons = { 
+				GFX_generic_light_AAB
+ 				GFX_generic_light_AAB_camo
+			 	# GFX_generic_light_AAC
+ 				# GFX_generic_light_AAC_camo
+ 				GFX_generic_light_ABA
+ 				GFX_generic_light_ABA_camo
+ 				GFX_generic_light_ABB
+ 				GFX_generic_light_ABB_camo
+ 				# GFX_generic_light_ABC
+ 				# GFX_generic_light_ABC_camo
+ 				# GFX_generic_light_ACA
+ 				# GFX_generic_light_ACA_camo
+ 				# GFX_generic_light_ACB
+ 				# GFX_generic_light_ACB_camo
+ 				# GFX_generic_light_ACC
+ 				# GFX_generic_light_ACC_camo
+			 }
+		}
+	}
+
+	light_tank_chassis_2 = {
+		pool = {
+			icons = { 
+				GFX_generic_light_BAB
+ 				GFX_generic_light_BAB_camo
+			 	# GFX_generic_light_BAC
+ 				# GFX_generic_light_BAC_camo
+ 				GFX_generic_light_BBA
+ 				GFX_generic_light_BBA_camo
+ 				GFX_generic_light_BAA
+ 				GFX_generic_light_BAA_camo
+ 				# GFX_generic_light_BBC
+ 				# GFX_generic_light_BBC_camo
+ 				# GFX_generic_light_BCA
+ 				# GFX_generic_light_BCA_camo
+ 				# GFX_generic_light_BCB
+ 				# GFX_generic_light_BCB_camo
+ 				# GFX_generic_light_BCC
+ 				# GFX_generic_light_BCC_camo
+			 }
+		}
+	}
+
+	light_tank_chassis_3 = {
+		pool = {
+			icons = { 
+				GFX_generic_light_BAB
+ 				GFX_generic_light_BAB_camo
+			 	# GFX_generic_light_BAC
+ 				# GFX_generic_light_BAC_camo
+ 				GFX_generic_light_BBA
+ 				GFX_generic_light_BBA_camo
+ 				GFX_generic_light_BAA
+ 				GFX_generic_light_BAA_camo
+ 				# GFX_generic_light_BBC
+ 				# GFX_generic_light_BBC_camo
+ 				# GFX_generic_light_BCA
+ 				# GFX_generic_light_BCA_camo
+ 				# GFX_generic_light_BCB
+ 				# GFX_generic_light_BCB_camo
+			 }
+		}
+	}
+	medium_tank_chassis_0 = {
+		pool = {
+			icons = { 
+				GFX_gwtank_chassis_medium
+			 }
+		}
+	}
+	medium_tank_chassis_1 = {
+		pool = {
+			icons = { 
+				GFX_generic_medium_AAB
+ 				GFX_generic_medium_AAB_camo
+ 				GFX_generic_medium_AAC
+ 				GFX_generic_medium_AAC_camo
+ 				GFX_generic_medium_ABA
+ 				GFX_generic_medium_ABA_camo
+ 				GFX_generic_medium_ABB
+ 				GFX_generic_medium_ABB_camo
+ 				GFX_generic_medium_ABC
+ 				GFX_generic_medium_ABC_camo
+ 				GFX_generic_medium_ACA
+ 				GFX_generic_medium_ACA_camo
+ 				GFX_generic_medium_ACB
+ 				GFX_generic_medium_ACB_camo
+ 				GFX_generic_medium_ACC
+ 				GFX_generic_medium_ACC_camo
+			 }
+		}
+	}
+
+	medium_tank_chassis_2 = {
+		pool = {
+			icons = { 
+				GFX_generic_medium_BAB
+ 				GFX_generic_medium_BAB_camo
+ 				GFX_generic_medium_BAC
+ 				GFX_generic_medium_BAC_camo
+ 				GFX_generic_medium_BBA
+ 				GFX_generic_medium_BBA_camo
+ 				GFX_generic_medium_BAA
+ 				GFX_generic_medium_BAA_camo
+ 				GFX_generic_medium_BBC
+ 				GFX_generic_medium_BBC_camo
+ 				GFX_generic_medium_BCA
+ 				GFX_generic_medium_BCA_camo
+ 				GFX_generic_medium_BCB
+ 				GFX_generic_medium_BCB_camo
+ 				GFX_generic_medium_BCC
+ 				GFX_generic_medium_BCC_camo
+			 }
+		}
+	}
+
+	medium_tank_chassis_3 = {
+		pool = {
+			icons = { 
+				GFX_generic_medium_CAB
+ 				GFX_generic_medium_CAB_camo
+ 				GFX_generic_medium_CAC
+ 				GFX_generic_medium_CAC_camo
+ 				GFX_generic_medium_CBA
+ 				GFX_generic_medium_CBA_camo
+ 				GFX_generic_medium_CBB
+ 				GFX_generic_medium_CBB_camo
+ 				GFX_generic_medium_CBC
+ 				GFX_generic_medium_CBC_camo
+ 				GFX_generic_medium_CCA
+ 				GFX_generic_medium_CCA_camo
+ 				GFX_generic_medium_CCB
+ 				GFX_generic_medium_CCB_camo
+ 				GFX_generic_medium_CAA
+ 				GFX_generic_medium_CAA_camo
+			 }
+		}
+	}
+	heavy_tank_chassis_0 = {
+		pool = {
+			icons = { 
+				GFX_gwtank_chassis_medium
+			 }
+		}
+	}
+	heavy_tank_chassis_1 = {
+		pool = {
+			icons = { 
+				GFX_generic_heavy_AAB
+ 				GFX_generic_heavy_AAB_camo
+ 				GFX_generic_heavy_AAC
+ 				GFX_generic_heavy_AAC_camo
+ 				GFX_generic_heavy_ABA
+ 				GFX_generic_heavy_ABA_camo
+ 				GFX_generic_heavy_ABB
+ 				GFX_generic_heavy_ABB_camo
+ 				GFX_generic_heavy_ABC
+ 				GFX_generic_heavy_ABC_camo
+ 				GFX_generic_heavy_ACA
+ 				GFX_generic_heavy_ACA_camo
+ 				GFX_generic_heavy_ACB
+ 				GFX_generic_heavy_ACB_camo
+ 				GFX_generic_heavy_ACC
+ 				GFX_generic_heavy_ACC_camo
+			 }
+		}
+	}
+
+	heavy_tank_chassis_2 = {
+		pool = {
+			icons = { 
+				GFX_generic_heavy_BAB
+ 				GFX_generic_heavy_BAB_camo
+ 				GFX_generic_heavy_BAC
+ 				GFX_generic_heavy_BAC_camo
+ 				GFX_generic_heavy_BBA
+ 				GFX_generic_heavy_BBA_camo
+ 				GFX_generic_heavy_BAA
+ 				GFX_generic_heavy_BAA_camo
+ 				GFX_generic_heavy_BBC
+ 				GFX_generic_heavy_BBC_camo
+ 				GFX_generic_heavy_BCA
+ 				GFX_generic_heavy_BCA_camo
+ 				GFX_generic_heavy_BCB
+ 				GFX_generic_heavy_BCB_camo
+ 				GFX_generic_heavy_BCC
+ 				GFX_generic_heavy_BCC_camo
+			 }
+		}
+	}
+
+	heavy_tank_chassis_3 = {
+		pool = {
+			icons = { 
+				GFX_generic_heavy_CAB
+ 				GFX_generic_heavy_CAB_camo
+ 				GFX_generic_heavy_CAC
+ 				GFX_generic_heavy_CAC_camo
+ 				GFX_generic_heavy_CBA
+ 				GFX_generic_heavy_CBA_camo
+ 				GFX_generic_heavy_CBB
+ 				GFX_generic_heavy_CBB_camo
+ 				GFX_generic_heavy_CBC
+ 				GFX_generic_heavy_CBC_camo
+ 				GFX_generic_heavy_CCA
+ 				GFX_generic_heavy_CCA_camo
+ 				GFX_generic_heavy_CCB
+ 				GFX_generic_heavy_CCB_camo
+ 				GFX_generic_heavy_CAA
+ 				GFX_generic_heavy_CAA_camo
+			 }
+		}
+	}
+}

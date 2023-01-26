@@ -1,0 +1,994 @@
+#######################################
+### IDEOLOGY SCRIPTED LOCALISATIONS ###
+######## & RELATIVE ADJECTIVES ########
+# Common file for all Vic3 languages ##
+#######################################
+
+########
+#COMMON#
+########
+
+defined_text = {
+	name = GetIdeologie
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISME
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISME
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATIE
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NEUTRALITE
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTISTE
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICALE
+	}
+}
+### Ex. "[Fascism/Communism/Democracy/Neutrality] ruling or not, they'll have to give up." => "[Fascisme/Communisme/Démocratie/Neutralité] ou non, ils vont devoir céder." (upper case / majuscule)
+defined_text = {
+	name = GetIdeologieCap
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISME_CAP
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISME_CAP
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATIE_CAP
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NEUTRALITE_CAP
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTISTE_CAP
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICALE_CAP
+	}
+}
+
+### Ex. "This leader is a [fascist/communist/democrat/neutral]." => "Ce dirigeant est [fasciste/communiste/démocrate/neutre]." (lower case / minuscule)
+defined_text = {
+	name = GetIdeoAdjMSAnim
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTE
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTE
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATE
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NEUTRE
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL
+	}
+}
+### Ex. "[Fascist/Communist/Democrat/Neutral] or not, this leader will have to surrender." => "[Fasciste/Communiste/Démocrate/Neutre] ou pas, ce dirigeant va devoir démissionner." (upper case / majuscule)
+defined_text = {
+	name = GetIdeoAdjMSAnimCap
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTE_CAP
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTE_CAP
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATE_CAP
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NEUTRE_CAP
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_CAP
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_CAP
+	}
+}
+### Ex. "This party is [fascist/communist/democrat/neutral]." => "Ce parti est [fasciste/communiste/démocratique/non-aligné)." (lower case / minuscule)
+defined_text = {
+	name = GetIdeoAdjMSInan
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTE
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTE
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATIQUE
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NONALIGNE
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL
+	}
+}
+### Ex. "[Fascist/Communist/Democrat/Neutral] or not, this party has to be suppressed." => "[Fasciste/Communiste/Démocrate/Non-aligné] ou non, ce parti va devoir être réprimé." (upper case / majuscule)
+defined_text = {
+	name = GetIdeoAdjMSInanCap
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTE_CAP
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTE_CAP
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATIQUE_CAP
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NONALIGNE_CAP
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_CAP
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_CAP
+	}
+}
+
+
+
+### Ex. "The military is essentially [fascist/communist/democrat/neutral]." => "L'armée est pour l'essentiel [fasciste/communiste/démocrate/neutre]." (lower case / minuscule)
+defined_text = {
+	name = GetIdeoAdjFSAnim
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTE
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTE
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATE
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NEUTRE
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_SHE
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_SHE
+	}
+}
+### Ex. "[Fascist/Communist/Democrat/Neutral] or not, the army will have to obey the orders." => "[Fasciste/Communiste/Démocrate/Neutre] ou pas, l'armée va devoir obéir aux ordres." (upper case / majuscule)
+defined_text = {
+	name = GetIdeoAdjFSAnimCap
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTE_CAP
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTE_CAP
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATE_CAP
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NEUTRE_CAP
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_SHE_CAP
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_SHE_CAP
+	}
+}
+### Ex. "Isn't it a filthy [fascist/communist/democrat/neutral] idea?" => "Ne serait-ce encore pas une saleté d'idée [fasciste/communiste/démocratique/non-alignée]?" (lower case / minuscule)
+defined_text = {
+	name = GetIdeoAdjFSInan
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTE
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTE
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATIQUE
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NONALIGNEE
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_SHE
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_SHE
+	}
+}
+### Ex. "[Fascist/Communist/Democrat/Neutral] or not, this idea must be ended." => "[Fasciste/Communiste/Démocratiqe/Non-alignée] ou non, il faut mettre fin à cette idée." (upper case / majuscule)
+defined_text = {
+	name = GetIdeoAdjFSInanCap
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTE_CAP
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTE_CAP
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATIQUE_CAP
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NONALIGNEE_CAP
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_SHE_CAP
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_SHE_CAP
+	}
+}
+
+
+
+### Ex. "Their leaders are [fascist/communist/democrat/neutral]." => "Ses dirigeants sont [fascistes/communistes/démocrates/neutres]." (lower case / minuscule)
+defined_text = {
+	name = GetIdeoAdjMPAnim
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTES
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTES
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATES
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NEUTRES
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_THEY
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_THEY
+	}
+}
+### Ex. "[Fascist/Communist/Democrat/Neutral] or not, those leaders will have to surrender." => "[Fascistes/Communistes/Démocrates/Neutres] ou pas, ces dirigeants vont devoir démissionner." (upper case / majuscule)
+defined_text = {
+	name = GetIdeoAdjMPAnimCap
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTES_CAP
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTES_CAP
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATES_CAP
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NEUTRES_CAP
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_THEY_CAP
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_THEY_CAP
+	}
+}
+### Ex. "His principles are clearly [fascist/communist/democrat/neutral]." => "Ses principes sont clairement [fascistes/communistes/démocratiques/non-alignés)." (lower case / minuscule)
+defined_text = {
+	name = GetIdeoAdjMPInan
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTES
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTES
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATIQUES
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NONALIGNES
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_THEY
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_THEY
+	}
+}
+### Ex. "[Fascist/Communist/Democrat/Neutral] or not, those principales have to be suppressed." => "[Fascistes/Communistes/Démocrates/Non-alignés] ou non, ces principes doivent être réprimés." (upper case / majuscule)
+defined_text = {
+	name = GetIdeoAdjMPInanCap
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTES_CAP
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTES_CAP
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATIQUES_CAP
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NONALIGNES_CAP
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_THEY_CAP
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_THEY_CAP
+	}
+}
+
+
+
+### Ex. "Troops are clearly [fascist/communist/democrat/neutral]." => "Les troupes sont clairement [fascistes/communistes/démocrates/neutres]." (lower case / minuscule)
+defined_text = {
+	name = GetIdeoAdjFPAnim
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTES
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTES
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATES
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NEUTRES
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_HY
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_HY
+	}
+}
+### Ex. "[Fascist/Communist/Democrat/Neutral] or not, the troops will have to obey the orders." => "[Fascistes/Communistes/Démocrates/Neutres] ou pas, les troupes vont devoir obéir aux ordres." (upper case / majuscule)
+defined_text = {
+	name = GetIdeoAdjFPAnimCap
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTES_CAP
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTES_CAP
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATES_CAP
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NEUTRES_CAP
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_HY_CAP
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_HY_CAP
+	}
+}
+### Ex. "Isn't it once more one of those filthy [fascist/communist/democrat/neutral] ideas?" => "Ne serait-ce pas encore une de ces saletés d'idées [fascistes/communistes/démocratiques/non-alignées] ?" (lower case / minuscule)
+defined_text = {
+	name = GetIdeoAdjFPInan
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTES
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTES
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATIQUES
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NONALIGNEES
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_HY
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_HY
+	}
+}
+### Ex. "[Fascist/Communist/Democrat/Neutral] or not, those ideas must be ended." => "[Fascistes/Communistes/Démocratiqes/Non-alignées] ou non, il faut mettre fin à ces idées." (upper case / majuscule)
+defined_text = {
+	name = GetIdeoAdjFPInanCap
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = FRLOC_FASCISTES_CAP
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = FRLOC_COMMUNISTES_CAP
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = FRLOC_DEMOCRATIQUES_CAP
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = FRLOC_NONALIGNEES_CAP
+	}
+	text = {
+		trigger = { has_government = absolutist }
+		localization_key = FRLOC_ABSOLUTIST_HY_CAP
+	}
+	text = {
+		trigger = { has_government = radical }
+		localization_key = FRLOC_RADICAL_HY_CAP
+	}
+}
+
+########
+#FRENCH#
+########
+
+### Ex. "The ruling ideology in (Country) is Fascism/Communism/Democracy/Neutrality" => "L'idéologie au pouvoir en NP est le [fascisme/communisme]/la [démocratie/neutralité]." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLIdeo
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+			}
+		}
+		localization_key = FRLOC_LE
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = FRLOC_LA
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = FRLOC_L
+	}
+}
+### Ex. "[Fascism/Communism/Democracy/Neutrality] is the ruling ideology in (Country)." => "[Le] fascisme/communisme / [La] démocratie/neutralité est l'idéologie au pouvoir en NP." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLIdeoCap
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+			}
+		}
+		localization_key = FRLOC_LE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = FRLOC_LA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = FRLOC_L_CAP
+	}
+}
+
+
+
+### Ex. "This is the most obvious evidence of the validy [of] Fascism/Communism/Democracy/Neutrality." => "C'est là la meilleure preuve qui soit de la validité [du] fascisme/communisme / [de la] démocratie/neutralité." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaIdeo
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+			}
+		}
+		localization_key = FRLOC_DU
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = FRLOC_DELA
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = FRLOC_DEL
+	}
+}
+### Ex. "[Of] Fascism/Communism/Democracy/Neutrality nothing will remain in the future." => "[Du] fascisme/communisme / [De la] démocratie/neutralité rien ne subistera à l'avenir ." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaIdeoCap
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+			}
+		}
+		localization_key = FRLOC_DU_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = FRLOC_DELA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = FRLOC_DEL_CAP
+	}
+}
+
+#########
+#SPANISH#
+#########
+
+### Ex. "The ruling ideology in (Country) is Fascism/Communism/Democracy/Neutrality" => "L'idéologie au pouvoir en NP est le [fascisme/communisme]/la [démocratie/neutralité]." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLIdeoES
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = ESLOC_EL
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = ESLOC_LA
+	}
+}
+### Ex. "[Fascism/Communism/Democracy/Neutrality] is the ruling ideology in (Country)." => "[Le] fascisme/communisme / [La] démocratie/neutralité est l'idéologie au pouvoir en NP." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLIdeoCapES
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = ESLOC_EL_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = ESLOC_LA_CAP
+	}
+}
+
+
+
+### Ex. "This is the most obvious evidence of the validy [of] Fascism/Communism/Democracy/Neutrality." => "C'est là la meilleure preuve qui soit de la validité [du] fascisme/communisme / [de la] démocratie/neutralité." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaIdeoES
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = ESLOC_DEL
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = ESLOC_DELA
+	}
+}
+### Ex. "[Of] Fascism/Communism/Democracy/Neutrality nothing will remain in the future." => "[Du] fascisme/communisme / [De la] démocratie/neutralité rien ne subistera à l'avenir ." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaIdeoCapES
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = ESLOC_DEL_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = ESLOC_DELA_CAP
+	}
+}
+
+#########
+#ITALIAN#
+#########
+### Ex. "The ruling ideology in (Country) is Fascism/Communism/Democracy/Neutrality" => "L'idéologie au pouvoir en NP est le [fascisme/communisme]/la [démocratie/neutralité]." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLIdeoIT
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+			}
+		}
+		localization_key = ITLOC_IL
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = ITLOC_LA
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = ITLOC_L
+	}
+}
+### Ex. "[Fascism/Communism/Democracy/Neutrality] is the ruling ideology in (Country)." => "[Le] fascisme/communisme / [La] démocratie/neutralité est l'idéologie au pouvoir en NP." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLIdeoCapIT
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+			}
+		}
+		localization_key = ITLOC_IL_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = ITLOC_LA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = ITLOC_L_CAP
+	}
+}
+
+
+
+### Ex. "This is the most obvious evidence of the validy [of] Fascism/Communism/Democracy/Neutrality." => "C'est là la meilleure preuve qui soit de la validité [du] fascisme/communisme / [de la] démocratie/neutralité." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaIdeoIT
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+			}
+		}
+		localization_key = ITLOC_DEL
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = ITLOC_DELLA
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = ITLOC_DELL
+	}
+}
+### Ex. "[Of] Fascism/Communism/Democracy/Neutrality nothing will remain in the future." => "[Du] fascisme/communisme / [De la] démocratie/neutralité rien ne subistera à l'avenir ." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaIdeoCapIT
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+			}
+		}
+		localization_key = ITLOC_DEL_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = ITLOC_DELLA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = ITLOC_DELL_CAP
+	}
+}
+
+############
+#PORTUGUESE#
+############
+
+### Ex. "The ruling ideology in (Country) is Fascism/Communism/Democracy/Neutrality" => "L'idéologie au pouvoir en NP est le [fascisme/communisme]/la [démocratie/neutralité]." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLIdeoPT
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = PTLOC_O
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = PTLOC_A
+	}
+}
+### Ex. "[Fascism/Communism/Democracy/Neutrality] is the ruling ideology in (Country)." => "[Le] fascisme/communisme / [La] démocratie/neutralité est l'idéologie au pouvoir en NP." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLIdeoCapPT
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = PTLOC_O_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = PTLOC_A_CAP
+	}
+}
+
+
+
+### Ex. "This is the most obvious evidence of the validy [of] Fascism/Communism/Democracy/Neutrality." => "C'est là la meilleure preuve qui soit de la validité [du] fascisme/communisme / [de la] démocratie/neutralité." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaIdeoPT
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = PTLOC_DO
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = PTLOC_DA
+	}
+}
+### Ex. "[Of] Fascism/Communism/Democracy/Neutrality nothing will remain in the future." => "[Du] fascisme/communisme / [De la] démocratie/neutralité rien ne subistera à l'avenir ." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaIdeoCapPT
+	text = {
+		trigger = {
+			OR = {
+				has_government = FASCISM_PLACEHOLDER
+				has_government = COMMUNISM_PLACEHOLDER
+				has_government = RADICAL_PLACEHOLDER
+				has_government = ABSOLUTIST_PLACEHOLDER
+			}
+		}
+		localization_key = PTLOC_DO_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_government = DEMOCRATIC_PLACEHOLDER
+				has_government = neutrality
+			}
+		}
+		localization_key = PTLOC_DA_CAP
+	}
+}

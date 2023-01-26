@@ -1,0 +1,150 @@
+add_namespace = reconquest_wars
+add_namespace = reconquest_news
+
+# Territory or war Ultimatum
+country_event = {
+	id = reconquest_wars.1
+	title = reconquest_wars.1.t
+	desc = reconquest_wars.1.d
+	picture = GFX_report_event_german_troops
+
+	is_triggered_only = yes
+
+	option = {
+		name = reconquest_wars.1.a
+		FROM = {
+			country_event = { id = reconquest_wars.2 }
+		}
+		effect_tooltip = {
+			every_owned_state = {
+				limit = { is_core_of = FROM }
+				FROM = { transfer_state = PREV.id }
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = reconquest_wars.1.b
+		add_opinion_modifier = {
+			target = FROM
+			modifier = unprovoked_aggression
+		}
+		FROM = {
+			country_event = { id = reconquest_wars.3 }
+		}
+		effect_tooltip = {
+			FROM = {
+				create_wargoal = {
+					target = ROOT
+					type = take_core_state
+					generator = core_states
+				}
+			}
+		}
+	}
+}
+
+# They accept
+country_event = {
+	id = reconquest_wars.2
+	title = reconquest_wars.2.t
+	desc = reconquest_wars.2.d
+	picture = GFX_report_event_german_troops
+
+	is_triggered_only = yes
+
+	option = {
+		name = reconquest_wars.2.a
+		FROM = {
+			every_owned_state = {
+				limit = { is_core_of = ROOT }
+				ROOT = { transfer_state = PREV.id }
+			}
+		}
+	}
+}
+
+# They refuse
+country_event = {
+	id = reconquest_wars.3
+	title = reconquest_wars.3.t
+	desc = reconquest_wars.3.d
+	picture = GFX_report_event_german_troops
+
+	is_triggered_only = yes
+
+	option = {
+		name = reconquest_wars.3.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_demands
+		}
+	}
+}
+
+country_event = {
+	id = reconquest_wars.4
+	title = reconquest_wars.4.t
+	desc = reconquest_wars.4.d
+
+	hidden = yes
+
+	trigger = {
+		any_other_country = {
+			any_owned_state = { is_core_of = ROOT }
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		random_country = {
+			limit = {
+				any_owned_state = { is_core_of = ROOT }
+				has_war = yes
+				any_owned_state = {
+					NOT = { is_controlled_by = owner }
+					OR = {
+						is_in_home_area = yes
+						owner = { has_capitulated = yes }
+					}
+				}
+			}
+			clear_array = ROOT.possible_allies@THIS
+			every_other_country = {
+				limit = {
+					any_controlled_state = {
+						is_owned_by = PREV.PREV
+						OR = {
+							is_in_home_area = yes
+							owner = { has_capitulated = yes }
+						}
+					}
+				}
+				add_to_array = { ROOT.possible_allies@PREV = THIS.id }
+			}
+		}
+	}
+
+	option = {
+		name = reconquest_wars.4.a
+	}
+}
+
+news_event = {
+	id = reconquest_news.1
+	title = reconquest_news.1.t
+	desc = reconquest_news.1.d
+	picture = GFX_news_event_038
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = reconquest_news.1.a
+	}
+}

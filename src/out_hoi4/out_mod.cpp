@@ -77,8 +77,14 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
        "path = \"mod/{}/\"\n"
        "user_dir = \"{}_user_dir\"\n"
        "replace_path=\"common/countries\"\n"
+       "replace_path=\"common/national_focus\"\n"
+       "replace_path=\"common/peace_conference/ai_peace\"\n"
+       "replace_path=\"common/peace_conference/cost_modifiers\"\n"
+       "replace_path=\"events\"\n"
        "replace_path=\"history/countries\"\n"
        "replace_path=\"history/states\"\n"
+       "replace_path=\"history/units\"\n"
+       "replace_path=\"map/supplyareas\"\n"
        "replace_path=\"map/strategicregions\"\n"
        "supported_version=\"{}\"",
        output_name,
@@ -91,12 +97,18 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
    if (!descriptor_file.is_open())
    {
       throw std::runtime_error("Could not create descriptor.mod");
-   }
+   } 
    fmt::print(descriptor_file,
        "name = \"Converted - {}\"\n"
        "replace_path=\"common/countries\"\n"
+       "replace_path=\"common/national_focus\"\n"
+       "replace_path=\"common/peace_conference/ai_peace\"\n"
+       "replace_path=\"common/peace_conference/cost_modifiers\"\n"
+       "replace_path=\"events\"\n"
        "replace_path=\"history/countries\"\n"
        "replace_path=\"history/states\"\n"
+       "replace_path=\"history/units\"\n"
+       "replace_path=\"map/supplyareas\"\n"
        "replace_path=\"map/strategicregions\"\n"
        "supported_version=\"{}\"",
        output_name,
@@ -112,7 +124,7 @@ void ClearOutputFolder(std::string_view output_name)
    const std::string output_folder = std::string("output/").append(output_name);
    if (commonItems::DoesFolderExist(output_folder))
    {
-      Log(LogLevel::Info) << "Removing pre-existing copy of " << output_name;
+      Log(LogLevel::Info) << "Removing pre-existing copy of " << output_name; 
    }
 
    if (!commonItems::DeleteFolder(output_folder))

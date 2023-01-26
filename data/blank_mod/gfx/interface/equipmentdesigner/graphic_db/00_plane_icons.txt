@@ -1,0 +1,53 @@
+default = {
+	small_plane_airframe = {
+		pool = {
+			icons = { 
+				GFX_light_plane_5_medium
+				GFX_light_plane_6_medium
+				GFX_jet_plane_1_medium
+				GFX_light_plane_1_medium
+				GFX_light_plane_2_medium
+				GFX_light_plane_3_medium
+				GFX_light_plane_4_medium
+			 }
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			icons = { 
+				GFX_light_plane_1_medium
+				GFX_light_plane_2_medium
+				GFX_light_plane_3_medium
+				GFX_light_plane_4_medium
+				GFX_jet_plane_1_medium
+				GFX_light_plane_5_medium
+				GFX_light_plane_6_medium
+			 }
+		}
+	}
+	medium_plane_airframe = {
+		pool = {
+			icons = { 
+				GFX_scout_plane1_medium
+				GFX_scout_plane2_medium
+				GFX_medium_plane_3_medium
+				GFX_advanced_medium_airframe_medium
+				GFX_modern_medium_airframe_medium
+				GFX_medium_plane_4_medium
+				GFX_medium_plane_2_medium
+				GFX_medium_plane_1_medium
+			 }
+		}
+	}
+	large_plane_airframe = {
+		pool = {
+			icons = { 
+				GFX_modern_large_airframe_medium
+				GFX_advanced_large_airframe_medium
+				GFX_improved_large_airframe_medium
+				GFX_basic_large_airframe_medium
+				GFX_iw_large_airframe_medium
+			 }
+		}
+	}
+}

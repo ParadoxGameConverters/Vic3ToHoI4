@@ -1,0 +1,123 @@
+on_actions = {
+
+	on_startup = {
+	}
+
+	on_monthly = {
+		# re-unification event for same tag
+		effect = {
+			IF = {
+				limit = {
+					NOT = { has_global_flag = global_unification_request_sent_flag } # one per month should be enough
+					is_subject = no
+					has_war = no
+					NOT = { has_country_flag = yes_to_unification_flag }
+					NOT = { has_country_flag = no_to_unification_flag }
+					NOT = { has_country_flag = unification_request_sent_flag }
+					any_country_with_original_tag = {
+						original_tag_to_check = ROOT
+						NOT = { tag = ROOT }
+						exists = yes
+						is_subject = no
+						has_government = ROOT
+						has_war = no
+						NOT = { has_country_flag = yes_to_unification_flag }
+						NOT = { has_country_flag = no_to_unification_flag }
+						NOT = { has_country_flag = unification_request_sent_flag }
+					}
+
+				}
+
+				# LOG = "dispatcher event for [ROOT.GetName] triggered" 
+				set_global_flag = global_unification_request_sent_flag
+				every_country = {
+
+					limit = {
+						original_tag = ROOT
+						is_subject = no
+						has_government = ROOT
+						has_war = no
+						NOT = { has_country_flag = yes_to_unification_flag }
+						NOT = { has_country_flag = no_to_unification_flag }
+						NOT = { has_country_flag = unification_request_sent_flag }
+					}
+					set_country_flag = unification_request_sent_flag
+					country_event = {
+						id = political.31
+						hours = 10
+						random_hours = 8
+					}
+				}
+			}
+		}
+	}
+
+	on_civil_war_end = { # ROOT is civil war winner, FROM gets annexed.
+	}
+
+	on_peace = {
+	}
+	#ROOT = country that joined a war
+	#on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first
+	on_war = { 
+	}
+	#ROOT = attacking side
+	#FROM = defending side
+	#fired when two countries end up at war with each other (on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first)
+	on_declare_war = {
+	}
+	# ROOT is capitulated country, FROM is winner
+	# ROOT is capitulated country, FROM is winner
+	on_capitulation = {
+	}
+	#ROOT is subject FROM is previous overlord
+	on_subject_free = {
+	}
+
+	#ROOT is winner #FROM is loser
+	on_peaceconference_ended = {
+	}
+	#FROM is war target
+  	#ROOT is country declaring war
+	on_declare_war = {
+	}
+
+	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
+	on_state_control_changed = {
+	}
+	#used when puppeting in a peace conference
+  	#ROOT = nation being puppeted, FROM = overlord
+	#used when puppeting through the occupied territories menu during peace time (or when releasing from non-core but owned territory, f.e. Britain releasing Egypt)
+	#ROOT = nation being released, FROM = overlord
+
+	on_release_as_puppet = {
+	}
+	on_puppet = { #ROOT = nation being puppeted, FROM = overlord
+	}
+
+	#used when puppeting through the occupied territories menu during peace time (or when releasing from non-core but owned territory, f.e. Britain releasing Egypt)
+	#ROOT = nation being released, FROM = overlord
+	on_release_as_puppet = {
+	}
+
+	on_ruling_party_change = { 
+	}
+
+	on_government_change = {
+	}
+	#on_unit_leader_promote_from_ranks_green
+	on_unit_leader_promote_from_ranks_green = { # This uses the UNIT LEADER sub scope of a character, FROM == country
+	}
+
+	#Root is exile
+	#From is old host 
+	on_exile_government_reinstated = {
+	}
+
+	#FROM is country getting invited. ROOT is the faction leader
+	on_offer_join_faction = {
+	}
+}
+
+
+

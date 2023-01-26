@@ -1,0 +1,3768 @@
+### FRENCH COUNTRY ARTICLES ###
+# See CountryGrammar.txt to understand categories #
+
+#########################################################################
+###  Nation articles & flexions / Articles et flexions pour les pays  ###
+#########################################################################
+
+### Ex. "They invaded Japan/Iran/Italy/France/USA/Cuba." => "Ils ont envahi [le] Japon/[l']Iran/[l']Italie/[la] France/[les] États-Unis/Cuba." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+			}
+		}
+		localization_key = FRLOC_LE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+			}
+		}
+		localization_key = FRLOC_LA
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_fsvad = yes
+				tag_fsvae = yes
+			}
+		}
+		localization_key = FRLOC_L
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+			}
+		}
+		localization_key = FRLOC_LES
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscne = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_XX
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_XX
+	}
+}
+### Ex. "Japan/Iran/Italy/France/USA/Cuba won the war." => "[Le] Japon/[L']Iran/[L']Italie/[La] France/[Les] États-Unis/Cuba a/ont remporté la guerre." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+			}
+		}
+		localization_key = FRLOC_LE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+			}
+		}
+		localization_key = FRLOC_LA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_fsvad = yes
+				tag_fsvae = yes
+			}
+		}
+		localization_key = FRLOC_L_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+			}
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscne = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_XX
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_XX
+	}
+}
+
+
+
+### Ex. "They will conquer [them]. (= Japan/Iran/France/Italy/France/USA/Cuba]" => "Ils vont [le]/[la]/[les] conquérir (= le Japon/l'Iran/l'Italie/la France/les États-Unis/Cuba." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaFNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_LE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LA
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_LES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_LES
+	}
+}
+### Ex. "Conquering [them] would complicated. (= Japan/Iran/France/Italy/France/USA/Cuba)" => "[Le]/[La]/[Les] conquérir (= le Japon/l'Iran/l'Italie/la France/les États-Unis/Cuba) serait compliqué." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaFNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_LE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+}
+
+
+
+### Ex. "Invading [them] won't be easy. (= Japan/Iran/France/Italy/France/USA/Cuba]" => "[L']envahir ne sera pas facile (= le Japon/l'Iran/l'Italie/la France/Cuba)./[Les] envahir ne sera pas facile. (= les États-Unis)." (lower case / minuscule)
+defined_text = {
+	name = GetLLesFNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_L
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_LES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_LES
+	}
+}
+### Ex. "Convincing [them] to surrender would be easier. (= Japan/Iran/France/Italy/France/USA/Cuba]" => "[L']inciter à se rendre serait plus aisé (= le Japon/l'Iran/l'Italie/la France/Cuba)./[Les] incuter à se rendre serait plus aisé. (= les États-Unis)." (upper case / majuscule)
+defined_text = {
+	name = GetLLesFNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_L_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+}
+
+
+
+### Ex. "Japan/Iran/Italy/France/USA/Cuba army is the greatest." => "L'armée [du] Japon/[de l']Iran/[de l']Italie/[de la] France/[des] États-Unis/[de] Cuba est la meilleure." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaDelNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+			}
+		}
+		localization_key = FRLOC_DU
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+			}
+		}
+		localization_key = FRLOC_DELA
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_fsvad = yes
+				tag_fsvae = yes
+			}
+		}
+		localization_key = FRLOC_DEL
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+			}
+		}
+		localization_key = FRLOC_DES
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_fscne = yes
+			}
+		}
+		localization_key = FRLOC_DE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_D
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_DE
+	}
+}
+### Ex. "From Japan/Iran/Italy/France/USA/Cuba will come the greatest danger." => "[Du] Japon/[De l']Iran/[De l']Italie/[De la] France/[Des] États-Unis/[De] Cuba viendra le plus grand danger." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaDelNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+			}
+		}
+		localization_key = FRLOC_DU_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+			}
+		}
+		localization_key = FRLOC_DELA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_fsvad = yes
+				tag_fsvae = yes
+			}
+		}
+		localization_key = FRLOC_DEL_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+			}
+		}
+		localization_key = FRLOC_DES_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_fscne = yes
+			}
+		}
+		localization_key = FRLOC_DE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_D_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_DE_CAP
+	}
+}
+
+
+
+### Ex. "He comes from Japan/Iran/Italy/France/USA/Cuba." => "Il vient [du] Japon/[d']Iran/[d']Italie/[de] France/[des] États-Unis/[de] Cuba." (lower case / minuscule)
+defined_text = {
+	name = GetDuDeDNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+			}
+		}
+		localization_key = FRLOC_DU
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+			}
+		}
+		localization_key = FRLOC_DE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_fsvad = yes
+				tag_fsvae = yes
+			}
+		}
+		localization_key = FRLOC_D
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+			}
+		}
+		localization_key = FRLOC_DES
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_fscne = yes
+			}
+		}
+		localization_key = FRLOC_DE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_D
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_DE
+	}
+}
+### Ex. "From Japan/Iran/Italy/France/USA/Cuba came..." => "[Du] Japon/[D']Iran/[D']Italie/[De] France/[Des] États-Unis/[De] Cuba sont arrivés..." (upper case / majuscule)
+defined_text = {
+	name = GetDuDeDNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+			}
+		}
+		localization_key = FRLOC_DU_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+			}
+		}
+		localization_key = FRLOC_DE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_fsvad = yes
+				tag_fsvae = yes
+			}
+		}
+		localization_key = FRLOC_D_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+			}
+		}
+		localization_key = FRLOC_DES_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_fscne = yes
+			}
+		}
+		localization_key = FRLOC_DE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_D_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_DE_CAP
+	}
+}
+
+
+
+### Ex. "Those territories were given to Japan/Iran/Italy/France/USA/Cuba." => "Ces territoires ont été cédés [au] Japon/[à l']Iran/[à l']Italie/[à la] France/[aux] États-Unis/[à] Cuba." (lower case / minuscule)
+defined_text = {
+	name = GetAuAlaAlNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+			}
+		}
+		localization_key = FRLOC_AU
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+			}
+		}
+		localization_key = FRLOC_ALA
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_fsvad = yes
+				tag_fsvae = yes
+			}
+		}
+		localization_key = FRLOC_AL
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+			}
+		}
+		localization_key = FRLOC_AUX
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_fscne = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_A
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_A
+	}
+}
+### Ex. "Let Japan/Iran/Italy/France/USA/Cuba act now!" => "[Au] Japon/[À l']Iran/[À l']Italie/[À la] France/[Aux] États-Unis/[À] Cuba d'agir en conséquence !" (upper case / majuscule)
+defined_text = {
+	name = GetAuAlaAlNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+			}
+		}
+		localization_key = FRLOC_AU_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+			}
+		}
+		localization_key = FRLOC_ALA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_fsvad = yes
+				tag_fsvae = yes
+			}
+		}
+		localization_key = FRLOC_AL_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+			}
+		}
+		localization_key = FRLOC_AUX_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_fscne = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_A_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_A_CAP
+	}
+}
+
+
+
+### Ex. "This happened [in] Japan/German Reich/Iran/Khmer Empire/Free India/Italy/France/French Republic/USA/Confederate States/Cuba/Israel." => "Cela s'est produit [au] Japon/[dans le] Reich allemand/[en]Iran/[dans l']Empire khmer/[dans l']Inde libre/[en]Italie/[en] France/[dans la] République française/[aux] États-Unis/[dans les] États confédérés/[à] Cuba/[en] Israël." (lower case / minuscule)
+defined_text = {
+	name = GetAuEnANP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscae = yes
+			}
+		}
+		localization_key = FRLOC_AU
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscnd = yes
+			}
+		}
+		localization_key = FRLOC_DANSLE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscnd = yes
+				tag_msvne = yes
+				tag_fscne = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_A
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvad = yes
+				tag_msvnd = yes
+				tag_fsvad = yes
+				tag_fsvnd = yes
+			}
+		}
+		localization_key = FRLOC_DANSL
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvae = yes
+				tag_fscae = yes
+				tag_fsvae = yes
+			}
+		}
+		localization_key = FRLOC_EN
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpvad = yes
+				tag_fpcad = yes
+				tag_fpvad = yes
+				tag_fpvnd = yes
+			}
+		}
+		localization_key = FRLOC_DANSLES
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcae = yes
+				tag_mpvae = yes
+				tag_fpcae = yes
+				tag_fpvae = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_AUX
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+			}
+		}
+		localization_key = FRLOC_DANSLA
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_ECHEC
+	}
+}
+### Ex. "[In] Japan/German Reich/Iran/Khmer Empire/Free India/Italy/France/French Republic/USA/Confederate States/Cuba/Israel the situation is still worst." => "[Au] Japon/[Dans le] Reich allemand/[En]Iran/[Dans l']Empire khmer/[Dans l']Inde libre/[En]Italie/[En] France/[Dans la] République française/[Aux] États-Unis/[Dans les] États confédérés/[À] Cuba/[En] Israël la situation et pire encore." (upper case / majuscule)
+defined_text = {
+	name = GetAuEnANPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscae = yes
+			}
+		}
+		localization_key = FRLOC_AU_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscnd = yes
+			}
+		}
+		localization_key = FRLOC_DANSLE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mscnd = yes
+				tag_msvne = yes
+				tag_fscne = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_A_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvad = yes
+				tag_msvnd = yes
+				tag_fsvad = yes
+				tag_fsvnd = yes
+			}
+		}
+		localization_key = FRLOC_DANSL_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_msvae = yes
+				tag_fscae = yes
+				tag_fsvae = yes
+			}
+		}
+		localization_key = FRLOC_EN_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpvad = yes
+				tag_fpcad = yes
+				tag_fpvad = yes
+				tag_fpvnd = yes
+			}
+		}
+		localization_key = FRLOC_DANSLES_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcae = yes
+				tag_mpvae = yes
+				tag_fpcae = yes
+				tag_fpvae = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_AUX_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+			}
+		}
+		localization_key = FRLOC_DANSLA_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_ECHEC
+	}
+}
+
+
+
+### Ex. "Would [they] want war? (= Japan/Iran/Italy/France/USA/Cuba)." => "Voudrait-[il]/[elle] la guerre ? (= le Japon/la France)./Voudraient-[ils]/[elles] la guerre ? (= les États-Unis/les Philippines)." (lower case / minuscule)
+defined_text = {
+	name = GetIlElleNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_IL
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ELLE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_ILS
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_ELLES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_ILS
+	}
+}
+### Ex. "[They] have surrendered (= Japan/Iran/Italy/France/USA/Cuba)." => "[Il]/[Elle] s'est rendu(e) (= le Japon/la France). / [Ils]/[Elles] se sont rendu(e)s (= les États-Unis/les Philippines)." (upper case / majuscule)
+defined_text = {
+	name = GetIlElleNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_IL_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ELLE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_ILS_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_ELLES_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_ILS_CAP
+	}
+}
+
+
+
+### Ex. "Let's send [them] a message. (= Japan/France/USA/Philippines)" => "Envoyons un message à [celui]-ci. (= le Japon) / Envoyons un message à [celle]-ci. (= la France) / Envoyons  un message à [ceux]-ci. (= les États-Unis) / Envoyons un message à [celles]-ci (= les Philippines)" (lower case / minuscule)
+defined_text = {
+	name = GetCeluiCelleNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_CELUI
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_CELLE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_CEUX
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_CELLES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_CEUX
+	}
+}
+### Ex. "[They] will have to surrender. (= Japan/France/USA/Philippines)" => "[Celui]-ci va devoir capituler. (= le Japon) / [Celle]-ci va devoir capituler. (= la France) / [Ceux]-ci vont devoir capituler. (= les États-Unis) / [Celles]-ci vont devoir capituler. (= les Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetCeluiCelleNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_CELUI_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_CELLE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_CEUX_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_CELLES_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_CEUX_CAP
+	}
+}
+
+
+
+### Ex. "Let's see if [they] want to négociate. (= Japan/France/USA/Philippines)." => "Nous verrons [s'il] veut négocier. (= le Japon) / Nous verrons [si elle] veut négocier. (= la France) / Nous verrons [s'ils] veulent négocier. (= les États-Unis) / Nous verrons [si elles] veulent négocier. (= les Philippines)" (lower case / minuscule)
+defined_text = {
+	name = GetSilSielleNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_SIL
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SIELLE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_SILS
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_SIELLES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_SILS
+	}
+}
+### Ex. "If [they] want war... (= Japan/France/USA/Philippines)." => "[S'il] veut la guerre... (= le Japon) / [Si elle] veut la guerre... (= la France) / [S'ils] veulent la guerre... (= les États-Unis) / [Si elles] veulent la guerre... (= les Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetSilSielleNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_SIL_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SIELLE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_SILS_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_SIELLES_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_SILS_CAP
+	}
+}
+
+
+
+### Ex. "As for [them], an army will be enough to beat [them]. (= Japan/France/USA/Philippines)." => "Quant à [lui]/[elle]/[eux]/[elles], une armée en viendra aisément à bout. (= le Japon/la France/les États-Unis/les Philippines)" (lower case / minuscule)
+defined_text = {
+	name = GetLuiElleEuxNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_LUI
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ELLE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_EUX
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_ELLES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_EUX
+	}
+}
+### Ex. "As for [them], they stubbornly refuse any negotiation. (= Japan/France/USA/Philippines)." => "[Lui]/[Elle] refuse obstinément toute négocation. (= le Japon/la France) / [Eux]/[Elles] refusent obstinément toute négociation (= les États-Unis/les Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiElleEuxNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_LUI_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ELLE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_EUX_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_ELLES_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_EUX_CAP
+	}
+}
+
+
+
+### Ex. "What is demanded [from them] is... (= Japan/France/USA/Philippines)." => "Ce qu'ils exigent [de lui] (= le Japon) / [d'elle] (= la France) / [d'eux] (= les États-Unis) / [d'elles] (= les Philippines) c'est une capitulation totale." (lower case / minuscule)
+defined_text = {
+	name = GetDeluiDelleDeuxNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_DELUI
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_DELLE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_DEUX
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_DELLES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_DEUX
+	}
+}
+### Ex. "[From them] is demanded the capitulation. (= Japan/France/USA/Philippines)" => "[De lui] (= le Japon) / [D'elle] (= la France) / [D'eux] (= les États-Unis) / [D'elles] (= les Philippines) est exigé la capitulation." (upper case / majuscule)
+defined_text = {
+	name = GetDeluiDelleDeuxNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_DELUI_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_DELLE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_DEUX_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_DELLES_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_DEUX_CAP
+	}
+}
+
+
+
+### Ex. "We have to be more aggressive [than them]. (= Japan/France/USA/Philippines)" => "Il faut nous montrer plus agressifs [que lui]. (= le Japon) / Il faut nous montrer plus agressifs [qu'elle]. (= la France) / Il faut nous montrer plus agressifs [qu'eux]. (= les États-Unis) / Il faut nous montrer plus agressif [qu'elles]. (= les Philippines)" (lower case / minuscule)
+defined_text = {
+	name = GetQueluiQuelleQueuxNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_QUELUI
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_QUELLE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_QUEUX
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_QUELLES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_QUEUX
+	}
+}
+### Ex. "[Should they] be more agressive and all hope's lost. (= Japan/France/USA/Philippines)" => "[Que lui] soit plus agressif et tout espoir est perdu. (= le Japon) / [Qu'elle] soit plus agressive et tout espoir est perdu. (= la France) / [Qu'eux] soit plus agressifs et tout espoir est perdu. (= les États-Unis) / [Qu'elles] soient plus agressives et tout espoir est perdu. (= les Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetQueluiQuelleQueuxNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_QUELUI_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_QUELLE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_QUEUX_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_QUELLES_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_QUEUX_CAP
+	}
+}
+
+
+
+### Ex. "This region will go back to Japan/France/USA/Philippines it belongs [to]." => "Cette région sera rendue au Japon, [auquel] elle appartient. / ... à la France, [à laquelle] elle appartient. / ... aux États-Unis, [auxquels] elle appartient. / ... aux Philippines, [auxquelles] elle appartient." (lower case / minuscule)
+defined_text = {
+	name = GetAuquelAlaquelleAuxquelsNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_AUQUEL
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ALAQUELLE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_AUXQUELS
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_AUXQUELLES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_AUXQUELS
+	}
+}
+
+
+
+### Ex. "Sending [them] troops would be the safer. (= Japan/France/USA/Philippines)" => "Le plus sûr serait de [lui] envoyer des troupes. (= au Japon/à la France) / Le plus sûr serait de [leur] envoyer des troupes. (= aux États-Unis/aux Philippines)" (lower case / minuscule)
+defined_text = {
+	name = GetLuiLeurNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LUI
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### Ex. "Sending [them] flower would be another solution. (= Japan/France/USA/Philippines)" => "[Lui] envoyer des fleurs serait une autre solution. (= au Japon/à la France) / [Leur] envoyer des fleurs serait une autre solution. (= aux États-Unis/aux Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiLeurNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LUI_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### Ex. "Let's send [their] ambassador home. (= Japan's/France's/USA's/Philippines')" => "Renvoyons donc [son] ambassadeur. (= celui du Japon/de la France) / Renvoyons donc [leur] ambassadeur. (= celui des États-Unis/des Philippines)." (lower case / minuscule)
+defined_text = {
+	name = GetSonLeurNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SON
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### Ex. "[Their] army are by far the most powerful. (= Japan/France/USA/Philippines)" => "[Son] armée est de loin la plus puissante. (= au Japon/à la France) / [Leur] armée est de loin la plus puissante. (= aux États-Unis/aux Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetSonLeurNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SON_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### Ex. "Let's send [their] fleet to the bottom of the ocean. (= Japan's/France's/USA's/Philippines')" => "Envoyons donc [sa] flotte au fond de l'océan. (= celle du Japon/de la France) / Envoyons donc [sa] flotte au fond de l'océan. (= celle des États-Unis/des Philippines)." (lower case / minuscule)
+defined_text = {
+	name = GetSaLeurNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SA
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### Ex. "[Their] reputation for invulnerability will be greatly damaged. (= Japan/France/USA/Philippines)" => "[Sa] réputation d'invincibilité en sera bien amoindrie. (= au Japon/à la France) / [Leur] réputation d'invicibilité en sera bien amoindrie. (= aux États-Unis/aux Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetSaLeurNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SA_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### Ex. "Let's send [their] fleet to the bottom of the ocean. (= Japan's/France's/USA's/Philippines')" => "La France/le Japon a posté [ses] armées sur la frontière. / Les États-Unis/les Philippines ont posté [leurs] armées sur la frontière." (lower case / minuscule)
+defined_text = {
+	name = GetSesLeursNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SES
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LEURS
+	}
+}
+### Ex. "[Their] armies will protect France/Japan/USA/Philippines." => "[Ses] armées protégeront le Japon/la France. / [Leurs] armées protégeront les États-Unis/les Philippines." (upper case / majuscule)
+defined_text = {
+	name = GetSesLeursNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SES_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LEURS_CAP
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines are no weak anymore." => "Le Japon/La France n'est plus aussi vulnérable[]. / Les États-Unis/Les Philippines ne sont plus aussi vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetXSNP
+	### Cosmetic Nation Names
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_X
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_S
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_X
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines emerged stronger of the trial." => "Le Japon est sorti[] plus fort[] de l'épreuve. / La France est sorti[e] plus fort[e] de l'épreuve. / Les États-Unis sont sorti[s] plus fort[s] de l'épreuve. / Les Philippines sont sorti[es] plus fort[es] de l'épreuve." (lower case / minuscule)
+defined_text = {
+	name = GetXENP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_X
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_E
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_S
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_ES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_X
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines will strike first." => "Le Japon frappera le premi[er]. / La France frappera la premi[ère]. / Les États-Unis frapperont les premi[ers]. / Les Philippines frapperont les premi[ères]." (lower case / minuscule)
+defined_text = {
+	name = GetErEreErsNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_ER
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ERE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+			}
+		}
+		localization_key = FRLOC_ERS
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_ERES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_ER
+	}
+}
+
+
+
+### Ex. "They're better as [] allies. (= Japan/France/USA/Philippines]" => "Mieux vaut en faire [un] allié. (= le Japon) / Mieux vaut en faire [une] alliée. (= la France) / Mieux vaut en faire [des] alliés. (= les USA/les Philippines)" (lower case / minuscule)
+defined_text = {
+	name = GetUnUneDesNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_UN
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_UNE
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_DES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_UN
+	}
+}
+### Ex. "As [] allies they're more worthy to us. (= Japan/France/USA/Philippines]" => "[Un] allié nous est plus profitable. (= le Japon) / [Une] alliée nous est plus profitable. (= la France) / [Des] alliés nous sont plus profitables. (= les USA/les Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetUnUneDesNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_UN_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_UNE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_DES_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_UN_CAP
+	}
+}
+
+
+
+### Ex. "Contrary to [the] first one... (= Japan/France/USA/Philippines]" => "Au contraire [du] premier... (= le Japon) / [de la] première (= la France) / [des] premiers/premières... (= les USA/les Philippines)" (lower case / minuscule)
+defined_text = {
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_DU
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_DELA
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_DES
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_DU
+	}
+}
+### Ex. "[From the] first one... (= Japan/France/USA/Philippines]" => "[Du] premier... (= le Japon) / [De la] première (= la France) / [Des] premiers/premières... (= les USA/les Philippines)" (upper case / minuscule)
+defined_text = {
+	name = GetDuDelaDesFNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+			}
+		}
+		localization_key = FRLOC_DU_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_DELA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				tag_mpcad = yes
+				tag_mpcae = yes
+				tag_mpvad = yes
+				tag_mpvae = yes
+				tag_fpcad = yes
+				tag_fpcae = yes
+				tag_fpvad = yes
+				tag_fpvae = yes
+				tag_fpvnd = yes
+				tag_fpvne = yes
+			}
+		}
+		localization_key = FRLOC_DES_CAP
+	}
+	text = {
+		trigger = {
+			# Fallback
+		}
+		localization_key = FRLOC_DU_CAP
+	}
+}
+
+
+### Ex. "Japan/France/USA/Philippines prevailed." => "Le Japon/La France l'[a] emporté. / Les États-Unis/Les Philippines l'[ont] emporté." (lower case / minuscule)
+defined_text = {
+	name = GetAOntNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_A2
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ONT
+	}
+}
+### Ex. "Did Japan/France/USA/Philippines really won?" => "[A]-t-il/elle réellement emporté la victoire ? (= le Japon/la France) / [Ont]-ils/elles réellement emporté la victoire ? (= les États-Unis/les Philippines)" (upper case / majuscule)
+### Nota: should not be used, please see GetAOntInterrNP & GetAOntInterrNPCap for interrogations / Ne devrait pas être utilisé, voir GetAOntInterrNP et GetAOntInterrNPCap pour les interrogations
+defined_text = {
+	name = GetAOntNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_A2_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ONT_CAP
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines prevailed." => "Le Japon/La France l'[a-t-]il/elle emporté ? / Les États-Unis/Les Philippines l'[ont-]ils/ells emporté ?" (lower case / minuscule)
+defined_text = {
+	name = GetAOntInterrNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_A2_INTERR
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ONT_INTERR
+	}
+}
+### Ex. "Did Japan/France/USA/Philippines really won?" => "[A-t-]il/elle réellement emporté la victoire ? (= le Japon/la France) / [Ont-]ils/elles réellement emporté la victoire ? (= les États-Unis/les Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetAOntInterrNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_A2_INTERR_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ONT_INTERR_CAP
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines [are] utterly vainquished." => "Le Japon/La France [est] définitivement vaincu(e). / Les États-Unis/Les Philippines [sont] définitivement vaincu(e)s." (lower case / minuscule)
+defined_text = {
+	name = GetEstSontNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_EST
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SONT
+	}
+}
+### Ex. "[Are] they utterly vainquished? (= Japan/France/USA/Philippines)" => "[Est]-il/elle réellement vaincu(e) ? (= le Japon/la France) / [Sont]-ils/elles réellement vaincu(e)s ? (= les États-Unis/les Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetEstSontNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_EST_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SONT_CAP
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines [collapsed] utterly." => "Le Japon/La France [s'est] entièrement effondré(e). / Les États-Unis/Les Philippines [se sont] entièrement effondré(e)s." (lower case / minuscule)
+defined_text = {
+	name = GetSestSesontNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SEST
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SESONT
+	}
+}
+### Ex. "Japan/France/USA/Philippines [collapsed] utterly." => "[S'est]-il/elle entièrement effondré(e) ? (= le Japon/la France) / [Se sont]-ils/elles entièrement effondré(e)s ? (= les États-Unis/les Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetSestSesontNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SEST_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SESONT_CAP
+	}
+}
+
+
+
+### Ex. "If Japan/France/USA/Philippines declared war..." => "Si [c'est] le Japon/la France qui a déclaré la guerre... / Si [ce sont] les États-Unis/les Philippines qui ont déclaré la guerre..." (lower case / minuscule)
+defined_text = {
+	name = GetCestCesontNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_CEST
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_CESONT
+	}
+}
+### Ex. "It's Japan/France/USA/Philippines who declared war." => "[C'est] le Japon/la France qui a déclaré la guerre. / [Ce sont] les États-Unis/les Philippines qui ont déclaré la guerre." (upper case / majuscule)
+defined_text = {
+	name = GetCestCesontNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_CEST_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_CESONT_CAP
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines [aren't] utterly vainquished." => "Le Japon/La France [n'est] pas définitivement vaincu(e). / Les États-Unis/Les Philippines [ne sont] pas définitivement vaincu(e)s." (lower case / minuscule)
+defined_text = {
+	name = GetNestNesontNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_NEST
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_NESONT
+	}
+}
+### Ex. "[Aren't] they utterly vainquished? (= Japan/France/USA/Philippines)" => "[N'est]-il/elle pas réellement vaincu(e) ? (= le Japon/la France) / [Ne sont]-ils/elles réellement vaincu(e)s ? (= les États-Unis/les Philippines)" (upper case / majuscule)
+defined_text = {
+	name = GetNestNesontNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_NEST_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_NESONT_CAP
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines [do] everything possible to prevail." => "Il/Elle [fait] tout pour emporter la victoire. (= le Japon/la France) / Ils/Elles [font] tout pour emporter la victoire. (= les États-Unis/les Philippines" (lower case / minuscule)
+defined_text = {
+	name = GetFaitFontNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_FAIT
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_FONT
+	}
+}
+### Ex. "[Do] they make everything possible to prevail? (= Japan/France/USA/Philippines)" => "[Fait]-il/elle tout pour emporter la victoire ? (= le Japon/la France) / [Font]-ils/elles tout pour emporter la victoire ? (= les États-Unis/les Philippines" (upper case / majuscule)
+defined_text = {
+	name = GetFaitFontNPCap
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_FAIT_CAP
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_FONT_CAP
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines surrender." => "Le Japon/La France se rend[]. / Les États-Unis/Les Philippines se rend[ent]." (lower case / minuscule)
+defined_text = {
+	name = GetXEntNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_X
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines capitulate." => "Le Japon/La France capitul[e]. / Les États-Unis/Les Philippines capitul[ent]." (lower case / minuscule)
+defined_text = {
+	name = GetEEntNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_E
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### Ex. "Japan/France/USA/Philippines start to see the end of their trial." => "Le Japon/La France voi[t] arriver la fin de ses épreuves. / Les États-Unis/Les Philippines voi[ent] arriver la fin de leurs épreuves." (lower case / minuscule)
+defined_text = {
+	name = GetTEntNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_T
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### Ex. "Japan/USA [must] approve of the agreement." => "Le Japon doi[t] approuver l'accord. / Les États-Unis doi[vent] approuver l'accord." (lower case / minuscule)
+defined_text = {
+	name = GetTVentNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_T
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_VENT
+	}
+}
+
+
+
+### Ex. "Japan/USA want an agreement." => "Le Japon veu[t] un accord. / Les États-Unis veu[lent] un accord." (lower case / minuscule)
+defined_text = {
+	name = GetTLentNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_T
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_LENT
+	}
+}
+
+
+
+### Ex. "Japan/USA belong to their inhabitants." => "Le Japon appartien[t] à ses habitants. / Les États-Unis appartien[nent] à leurs habiants." (lower case / minuscule)
+defined_text = {
+	name = GetTNentNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_T
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_NENT
+	}
+}
+
+
+
+### Ex. "Japan/USA takes back their own." => "Le Japon repren[d] ce qui lui appartient. / Les États-Unis repren[nent] ce qui leur appartient." (lower case / minuscule)
+defined_text = {
+	name = GetDNentNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_D2
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_NENT
+	}
+}
+
+
+
+### Ex. "Even Japan/USA recognize this truth." => "Même le Japon adme[t] cette vérité. / Même les États-Unis adme[ttent] cette vérité." (lower case / minuscule)
+defined_text = {
+	name = GetTTtentNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_T
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_TTENT
+	}
+}
+
+
+
+### Ex. "If Japan/USA takes action..." => "Si le Japon agi[t]... / Si les États-Unis agi[ssent]..." (lower case / minuscule)
+defined_text = {
+	name = GetTSsentNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_T
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SSENT
+	}
+}
+
+### Ex. "Japan/USA produce..." => "Le Japon produi[t]... / Les États-Unis produi[sent]..." (lower case / minuscule)
+defined_text = {
+	name = GetTSentNP
+	text = {
+		trigger = {
+			OR = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_T
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag_mscad = yes
+				tag_mscae = yes
+				tag_mscnd = yes
+				tag_mscne = yes
+				tag_msvad = yes
+				tag_msvae = yes
+				tag_msvnd = yes
+				tag_msvne = yes
+				tag_fscad = yes
+				tag_fscae = yes
+				tag_fscne = yes
+				tag_fsvae = yes
+				tag_fsvnd = yes
+				tag_fsvne = yes
+			}
+		}
+		localization_key = FRLOC_SENT
+	}
+}

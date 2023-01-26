@@ -1,0 +1,53 @@
+# Allows you to create your own dynamic keys
+# to be called in localization.
+# defined_text -> this is it, we're defining the text
+# text -> a discrete entry that can be picked to display in loc.
+# trigger -> determines if a text entry will be picked or not.
+# (The triggers need to be valid for the scope the key is called in
+# (eg Root or From.From).)
+# localization_key -> points to the localization key
+# that'll be used if trigger passes
+# random_list can take a scoped variable as a seed if you don't want a predictable result
+
+defined_text = { # Country
+	name = GetImportOrDomesticFilmIndustry
+	text = {
+		trigger = {
+			is_major = yes
+		}
+		localization_key = DOMESTIC_FILM_INDUSTRY
+	}
+	text = {
+		localization_key = IMPORTED_FILM_INDUSTRY
+	}
+}
+
+defined_text = { # Country
+	name = GetImportOrDomesticFilmIndustryDesc
+	text = {
+		trigger = {
+			is_major = yes
+		}
+		localization_key = DOMESTIC_FILM_INDUSTRY_DESC
+	}
+	text = {
+		localization_key = IMPORTED_FILM_INDUSTRY_DESC
+	}
+}
+
+defined_text = {
+	name = GetCountryAppropriateFilmProduction
+
+	text = {
+		random_list = {
+			seed = num_of_controlled_factories #Because otherwise seed is drawn directly from the country - it'll be the same each time.
+			10 = { localization_key = our_war }
+			10 = { localization_key = the_war_for_our_existence }
+			10 = { localization_key = war_in_the_skies }
+			10 = { localization_key = flags_raised }
+			10 = { localization_key = the_day_of_sacrifice }
+			10 = { localization_key = blood_and_toil }
+		}
+	}
+	
+}

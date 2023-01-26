@@ -1,0 +1,305 @@
+add_namespace = news
+# About Olympic games:
+# HoI4 syntax did not allow me to tell "check if major country is X and, if you find no major country
+# like X, then take a random minor"
+# Furthermore, the hidden_effect thing is needed to show the event
+# also to the player. It does not interfere with whoever is hosting
+# the Olympic games. If you're playing Switzerland and Australia hosts the games,
+# you'll read of Australian Olympics, not of Swiss ones.
+# Games of the XI Olympiad
+news_event = {
+	id = news.66 #Games of the XI Olympiad
+	title = news.66.t
+	desc = olympics.1936.d
+	picture = GFX_news_event_olympics_1940
+
+	major = yes
+
+	trigger = {
+		date > 1936.8.15
+		threat < 0.5
+		NOT = { has_global_flag = olympics_1936 }
+		OR = {
+			AND = {
+				is_faction_leader = yes
+				num_faction_members > 1
+				has_war = no
+			}
+			AND = {
+				has_rule = { can_create_factions }
+				num_faction_members > 1
+				has_war = no
+			}
+			AND = {
+				is_major = yes
+				has_war = no
+				every_country = {
+					is_in_faction = no
+					NOT = { has_rule = { can_create_factions } }
+				}
+			}
+			is_major = no
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+		modifier = {
+			factor = 10
+			is_major = no
+		}
+	}
+
+	immediate = {
+		set_global_flag = olympics_1936
+		FROM = { set_country_flag = olympics_1936 }
+	}
+
+	option = {
+		name = news.66.a #The Games are concluded.
+		hidden_effect = {
+			every_other_country = {
+				country_event = news.66
+			}
+		}
+	}
+}
+# Games of the XII Olympiad
+news_event = {
+	id = news.67
+	title = news.67.t #Games of the XII Olympiad
+	desc = olympics.1940.d
+	picture = GFX_news_event_olympics_1940
+
+	major = yes
+
+	trigger = {
+		date > 1940.10.5
+		threat < 0.5
+		NOT = { has_global_flag = olympics_1940 }
+		OR = {
+			AND = {
+				is_faction_leader = no
+				is_major = yes
+				has_war = no
+			}
+			is_major = no
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+		modifier = {
+			factor = 10
+			is_major = no
+		}
+	}
+
+	immediate = {
+		set_global_flag = olympics_1940
+	}
+
+	option = {
+		name = news.66.a #The Games are concluded.
+		hidden_effect = {
+			every_other_country = {
+				country_event = news.67
+			}
+		}
+	}
+}
+# Games of the XIII Olympiad
+news_event = {
+	id = news.68
+	title = olympics.1944.t
+	desc = olympics.1944.d
+	picture = GFX_news_event_olympics_1940
+
+	major = yes
+
+	trigger = {
+		date > 1944.6.19
+		threat < 0.5
+		NOT = { has_global_flag = olympics_1944 }
+		OR = {
+			AND = {
+				is_faction_leader = yes
+				NOT = { has_country_flag = olympics_1936 }
+				has_war = no
+			}
+			is_major = no
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+		modifier = {
+			factor = 10
+			is_major = no
+		}
+	}
+
+	immediate = {
+		set_global_flag = olympics_1944
+	}
+
+	option = {
+		name = news.66.a #The Games are concluded.
+		hidden_effect = {
+			every_other_country = {
+				country_event = news.68
+			}
+		}
+	}
+}
+# Games of the XIV Olympiad
+news_event = {
+	id = news.69
+	title = olympics.1948.t
+	desc = olympics.1948.d
+	picture = GFX_news_event_olympics_1940
+
+	major = yes
+
+	trigger = {
+		date > 1948.6.29
+		threat < 0.5
+		NOT = { has_global_flag = olympics_1948 }
+		OR = {
+			AND = {
+				is_faction_leader = yes
+				NOT = { has_country_flag = olympics_1936 }
+				has_war = no
+			}
+			is_major = no
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+		modifier = {
+			factor = 10
+			is_major = no
+		}
+	}
+
+	immediate = {
+		set_global_flag = olympics_1948
+	}
+
+	option = {
+		name = news.66.a #The Games are concluded.
+		hidden_effect = {
+			every_other_country = {
+				country_event = news.69
+			}
+		}
+	}
+}
+#Games cancelled
+news_event = {
+	id = news.70
+	title = olympics.failed.t
+	desc = olympics.failed.d
+	picture = GFX_news_event_olympics_1940
+
+	major = yes
+
+	trigger = {
+		is_ai = no
+		OR = {
+			AND = {
+				date > 1936.10.15
+				NOT = { has_global_flag = olympics_1936 }
+			}
+			AND = {
+				date > 1940.12.5
+				NOT = { has_global_flag = olympics_1940 }
+			}
+			AND = {
+				date > 1944.8.19
+				NOT = { has_global_flag = olympics_1944 }
+			}
+			AND = {
+				date > 1948.8.29
+				NOT = { has_global_flag = olympics_1948 }
+			}
+		}
+		threat > 0.5
+		any_country = {
+			is_faction_leader = yes
+			has_war = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	option = {
+		name = olympics.failed.a
+		set_global_flag = olympics_1936
+		trigger = {
+			date > 1936.10.15
+			NOT = { date > 1940.10.5 }
+		}
+	}
+	option = {
+		name = olympics.failed.a
+		set_global_flag = olympics_1940
+		trigger = {
+			date > 1940.12.5
+			NOT = { date > 1944.6.19 }
+		}
+	}
+	option = {
+		name = olympics.failed.a
+		set_global_flag = olympics_1944
+		trigger = {
+			date > 1944.8.19
+			NOT = { date > 1948.6.29 }
+		}
+	}
+	option = {
+		name = olympics.failed.a
+		set_global_flag = olympics_1948
+		trigger = {
+			date > 1948.8.29
+		}
+	}
+}
+# Faction Founded!
+news_event = {
+	id = news.159
+	title = news.159.t
+	desc = news.159.d_01
+
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		trigger = {
+			NOT = { tag = FROM }
+			NOT = { is_in_faction_with = FROM }
+		}
+		name = news.159.a
+		every_other_country = {
+			limit = { is_in_faction_with = FROM }
+			custom_effect_tooltip = news.159.tt
+		}
+	}
+	option = {
+		trigger = { tag = FROM }
+		name = news.159.b
+	}
+	option = {
+		trigger = {
+			NOT = { tag = FROM }
+			is_in_faction_with = FROM
+		}
+		name = news.159.c
+	}
+}

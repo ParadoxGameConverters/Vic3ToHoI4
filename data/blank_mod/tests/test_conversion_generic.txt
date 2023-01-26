@@ -1,0 +1,130 @@
+last_date = "1995.1.1"
+
+tests = {
+
+	conv_start_date = {
+
+		success = {
+			always = yes
+		}
+
+		fail = {
+			date > "1955.1.1"
+		}
+	}
+
+	conv_great_powers_at_war = {
+
+		success = {
+			date < "1955.1.1"
+			if = {
+				limit = {
+					any_country = {
+						is_major = yes
+						num_divisions > 50
+						any_other_country = {
+							NOT = { is_in_faction_with = PREV }
+							is_major = yes
+							num_divisions > 50
+						}
+					}
+				}
+				any_country = {
+					is_major = yes
+					num_divisions > 50
+					any_other_country = {
+						is_major = yes
+						num_divisions > 50
+						has_war_with = PREV
+					}
+				}
+			}
+			else = {
+				any_country = {
+					is_major = yes
+					any_other_country = {
+						is_major = yes
+						has_war_with = PREV
+					}
+				}
+			}
+		}
+
+		fail = {
+			date > "1955.1.1"
+		}
+	}
+
+	conv_major_front_established = {
+
+		success = {
+			date < "1955.1.1"
+			if = {
+				limit = {
+					any_country = {
+						is_major = yes
+						num_divisions > 50
+						any_other_country = {
+							NOT = { is_in_faction_with = PREV }
+							is_major = yes
+							num_divisions > 50
+						}
+					}
+				}
+				any_country = {
+					is_major = yes
+					num_divisions > 50
+					any_other_country = {
+						is_major = yes
+						num_divisions > 50
+						has_war_with = PREV
+						any_owned_state = {
+							OR = {
+								is_in_home_area = yes
+								is_capital = yes
+							}
+							is_controlled_by = PREV.PREV
+						}
+					}
+				}
+			}
+			else = {
+				any_country = {
+					is_major = yes
+					any_other_country = {
+						is_major = yes
+						has_war_with = PREV
+						any_owned_state = {
+							OR = {
+								is_in_home_area = yes
+								is_capital = yes
+							}
+							is_controlled_by = PREV.PREV
+						}
+					}
+				}
+			}
+		}
+	}
+
+	conv_no_great_power_capitulation = {
+
+		success = {
+			date > "1940.1.1"
+			NOT = {
+				any_country = {
+					is_major = yes
+					surrender_progress > 0.75
+				}
+			}
+		}
+
+		fail = {
+			any_country = {
+				is_major = yes
+				surrender_progress > 0.75
+			}
+		}
+	}
+
+}

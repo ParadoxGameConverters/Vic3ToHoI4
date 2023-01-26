@@ -1,0 +1,60 @@
+default = {
+	#navy = {
+		#male = {
+		#}
+		#female = {
+		#}
+	#}
+	
+	#army = {
+		#male = {
+		#}
+		#female = {
+		#}
+	#}
+
+	operative = {
+		male = {
+			"tools/art/portrait_operative_background.png"
+		}
+		female = {
+			"tools/art/portrait_operative_background.png"
+		}
+	}
+
+	male = {
+		"tools/art/portrait_leader_background.png"
+	}
+	female = {
+		"tools/art/portrait_leader_background.png"
+	}
+	
+	political = { # This should never actually appear, but better do define something here
+		communism = {
+			male = { "gfx/interface/operations/coup_government.dds" }
+			female = { "gfx/interface/operations/coup_government.dds" }
+		}
+		democratic = {
+			male = { "gfx/interface/operations/collaboration_government.dds" }
+			female = { "gfx/interface/operations/collaboration_government.dds" }
+		}
+		fascism = {
+			male = { "gfx/interface/operations/infiltrate_armed_forces.dds" }
+			female = { "gfx/interface/operations/infiltrate_armed_forces.dds" }
+		}
+		neutrality = {
+			male = { "gfx/interface/operations/images/phase_fake_intel_radio_deception.dds" }
+			female = { "gfx/interface/operations/images/phase_resistance_contacts_radio_circuits.dds" }
+		}
+		radical = {
+			male = { GFX_portrait_SPR_anarchist_commune }
+			female = { GFX_portrait_SPR_anarchist_commune }
+		}
+		absolutist = {
+			male = { "tools/art/portrait_leader_background.png" }
+			female = { "tools/art/portrait_leader_background.png" }
+		}
+	}
+	
+}
+#All groups should have plenty of generic pictures to draw from.

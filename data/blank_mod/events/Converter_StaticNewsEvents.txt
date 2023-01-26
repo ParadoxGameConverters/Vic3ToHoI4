@@ -1,0 +1,53 @@
+add_namespace = static_news
+
+news_event = {
+	id = static_news.1
+	title = static_news.1.t
+	desc = static_news.1.d
+	picture = GFX_news_event_fascist_gathering
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = static_news.1.a
+		effect_tooltip = { FROM = { add_threat = 2 } }
+	}
+}
+
+news_event = {
+	id = static_news.2
+	title = "Union between [From.From.GetName] and [From.GetName]"
+	desc = "[From.From.GetName] has collapsed under fascist pressure from [From.GetName]"
+	picture = GFX_news_event_fascist_gathering
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = static_news.1.a
+		effect_tooltip = { FROM = { add_threat = 2 } }
+	}
+}
+
+news_event = {
+	id = static_news.3
+	title = "[From.From.GetName] refused union with [From.GetName]"
+	desc = "[From.From.GetName] is standing up to fascist influence from [From.GetName]"
+	picture = GFX_news_event_fascist_gathering
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "War is near"
+		effect_tooltip = {
+			FROM = {
+				create_wargoal = {
+					type = annex_everything
+					target = FROM.FROM
+				}
+			}
+		}
+	}
+}

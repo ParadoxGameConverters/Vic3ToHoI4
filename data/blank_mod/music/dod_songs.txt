@@ -1,0 +1,53 @@
+
+music_station = "base_music"
+
+music = {
+	song = "Aggression"
+
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 3
+			has_war = yes
+		}
+		modifier = {
+			factor = 0.25
+			has_war = no
+		}
+	}
+}
+
+music = {
+	song = "Escalation"
+
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 3
+			OR = {
+				threat > 0.5
+				has_war = yes
+			}
+		}
+		modifier = {
+			factor = 0.25
+			has_war = no
+		}
+	}
+}
+
+music = {
+	song = "Retribution"
+
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 3
+			has_war = yes
+		}
+		modifier = {
+			factor = 0.25
+			has_war = no
+		}
+	}
+}

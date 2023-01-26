@@ -1,0 +1,130 @@
+add_namespace = wtt_news
+
+
+# Events that need to be dynamically generated
+# reflecting Vanilla HoI4 scripting
+# Suez Canal blown - wtt_news.40
+# Panama Canal blown - wtt_news.41
+# Suez Canal rebuilt - wtt_news.42
+# Panama Canal rebuilt - wtt_news.43
+
+
+# Formation of Scandinavia
+news_event = {
+	id = wtt_news.53
+	title = wtt_news.53.t
+	desc = wtt_news.53.desc
+	picture = GFX_news_event_generic_parliament
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = wtt_news.53.b
+		trigger = {
+			NOT = { has_war_with = FROM }
+		}
+	}
+	option = {
+		name = wtt_news.53.c
+		trigger = {
+			has_war_with = FROM
+		}
+	}
+}
+
+# Formation of Commonwealth
+news_event = {
+	id = wtt_news.57
+	title = wtt_news.57.t
+	desc = wtt_news.57.desc
+	picture = GFX_news_event_generic_parliament
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = wtt_news.57.b
+		trigger = {
+			NOT = { has_war_with = FROM }
+		}
+	}
+	option = {
+		name = wtt_news.53.c
+		trigger = {
+			has_war_with = FROM
+		}
+	}
+}
+
+# Formation of Baltic Federation
+news_event = {
+	id = wtt_news.60
+	title = wtt_news.60.t
+	desc = wtt_news.60.desc
+	picture = GFX_news_event_generic_parliament
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = wtt_news.60.b
+		trigger = {
+			NOT = { has_war_with = FROM }
+		}
+	}
+	option = {
+		name = wtt_news.53.c
+		trigger = {
+			has_war_with = FROM
+		}
+	}
+}
+
+# Formation of Ottoman Empire
+news_event = {
+	id = wtt_news.61
+	title = wtt_news.61.t
+	desc = wtt_news.61.desc
+	picture = GFX_news_event_generic_parliament
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = wtt_news.61.b
+		trigger = {
+			NOT = { has_war_with = FROM }
+		}
+	}
+	option = {
+		name = wtt_news.53.c
+		trigger = {
+			has_war_with = FROM
+		}
+	}
+}
+
+# Formation of Arabia
+news_event = {
+	id = wtt_news.67
+	title = wtt_news.67.t
+	desc = wtt_news.67.desc
+	picture = GFX_news_event_generic_parliament
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = wtt_news.67.b
+		trigger = {
+			NOT = { has_war_with = FROM }
+		}
+	}
+	option = {
+		name = wtt_news.53.c
+		trigger = {
+			has_war_with = FROM
+		}
+	}
+}
