@@ -399,6 +399,12 @@
     <ClCompile Include="src\out_hoi4\map\out_buildings_tests.cpp">
       <Filter>src\out_hoi4\map</Filter>
     </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_rocket_sites.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_rocket_sites_tests.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -603,6 +609,9 @@
       <Filter>src\out_hoi4\map</Filter>
     </ClInclude>
     <ClInclude Include="src\out_hoi4\map\out_buildings.h">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\map\out_rocket_sites.h">
       <Filter>src\out_hoi4\map</Filter>
     </ClInclude>
   </ItemGroup>
