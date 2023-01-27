@@ -126,6 +126,8 @@
     <ClCompile Include="src\out_hoi4\map\out_buildings.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_buildings_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_building_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\map\out_rocket_sites.cpp" />
+    <ClCompile Include="src\out_hoi4\map\out_rocket_sites_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_strategic_region.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_strategic_regions.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_strategic_regions_tests.cpp" />
@@ -214,6 +216,7 @@
     <ClInclude Include="src\out_hoi4\countries\out_country.h" />
     <ClInclude Include="src\out_hoi4\map\out_building.h" />
     <ClInclude Include="src\out_hoi4\map\out_buildings.h" />
+    <ClInclude Include="src\out_hoi4\map\out_rocket_sites.h" />
     <ClInclude Include="src\out_hoi4\map\out_strategic_region.h" />
     <ClInclude Include="src\out_hoi4\map\out_strategic_regions.h" />
     <ClInclude Include="src\out_hoi4\out_mod.h" />
