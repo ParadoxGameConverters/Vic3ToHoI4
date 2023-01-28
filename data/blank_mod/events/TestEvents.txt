@@ -75,12 +75,6 @@ country_event = {
 	
 	option = {
 		name = test.3.a
-		RAJ = {
-			add_autonomy_score = {
-				value = 5
-				localization = "TEST_EVENT_3_OPTION: $VAL|+=2$"
-			}
-		}
 	}
 }
 
@@ -187,25 +181,6 @@ country_event = {
 	
 	option = {
 		name = generic.1013.a
-		GER = {
-			if = {
-				limit = { has_dlc = "Death or Dishonor" }
-				create_production_license = {
-					target = ROOT
-					equipment = {
-						type = light_tank_chassis_2						
-					}
-					cost_factor = 0
-				}
-			}
-			ROOT = {
-				add_equipment_to_stockpile = {
-					type = light_tank_chassis_2
-					amount = 360
-					producer = PREV
-				} 
-			}
-		}
 	}	
 }
 
@@ -271,23 +246,6 @@ country_event = {
 				tech_recon2 = 1
 				tech_recon3 = 1
 			}
-		}
-		ITA = {
-			annex_country = { target = ETH }
-		}
-		GER = {
-			annex_country = { target = CZE }
-			annex_country = { target = AUS }
-		}
-		USA = {
-			remove_ideas = {
-				great_depression
-				undisturbed_isolation
-			}
-			add_ideas = {
-				civilian_economy
-			}
-
 		}
 		every_country = { #setup units
 			division_template = {
@@ -393,37 +351,6 @@ country_event = {
 				}
 				add_to_temp_variable = { cycle_index = 1 }
 			}
-		}
-
-
-		every_country = {
-			limit = {
-				has_government = democratic
-			}
-			ENG = { add_to_faction = PREV }
-		}
-		every_country = {
-			limit = {
-				OR = {
-					has_government = fascism
-					has_government = neutrality
-				}
-				NOT = {
-					TAG = RAJ
-				}
-			}
-			GER = { add_to_faction = PREV }
-		}
-		every_country = {
-			limit = { has_government = communism }
-			SOV = { add_to_faction = PREV }
-		}
-		GER = {
-			declare_war_on = { target = SOV type = annex_everything }
-			declare_war_on = { target = ENG type = annex_everything }
-		}
-		SOV = {
-			declare_war_on = { target = ENG type = annex_everything }
 		}
 	}	
 }
