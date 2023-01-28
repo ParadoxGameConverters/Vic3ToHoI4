@@ -133,7 +133,8 @@ jobs:
        pwd
        make lcov
 
-    - uses: actions/upload-artifact@v3
+    - name: Upload lcoverage artifact
+      uses: actions/upload-artifact@v3
       with:
         name: coverage-report
         path: build/lcoverage/
