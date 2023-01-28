@@ -77,6 +77,7 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
        "path = \"mod/{}/\"\n"
        "user_dir = \"{}_user_dir\"\n"
        "replace_path=\"common/countries\"\n"
+       "replace_path=\"common/national_focus\"\n"
        "replace_path=\"common/peace_conference/ai_peace\"\n"
        "replace_path=\"common/peace_conference/cost_modifiers\"\n"
        "replace_path=\"events\"\n"
@@ -100,6 +101,7 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
    fmt::print(descriptor_file,
        "name = \"Converted - {}\"\n"
        "replace_path=\"common/countries\"\n"
+       "replace_path=\"common/national_focus\"\n"
        "replace_path=\"common/peace_conference/ai_peace\"\n"
        "replace_path=\"common/peace_conference/cost_modifiers\"\n"
        "replace_path=\"events\"\n"
