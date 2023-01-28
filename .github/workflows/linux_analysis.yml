@@ -133,11 +133,10 @@ jobs:
        pwd
        make lcov
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
+    - uses: actions/upload-artifact@v3
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: build/lcoverage/main_coverage.info
+        name: coverage-report
+        path: build/lcoverage/
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
