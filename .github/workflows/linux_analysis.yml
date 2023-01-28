@@ -118,7 +118,8 @@ jobs:
 
     - name: Run tests
       run: |
-       build/test/Release-Linux/Vic3ToHoi4Tests
+       cd build/test/Release-Linux/
+       ./Vic3ToHoi4Tests
 
     - name: Run gcov
       run: |
