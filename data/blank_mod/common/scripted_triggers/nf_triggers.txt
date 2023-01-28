@@ -1,0 +1,91 @@
+in_weak_faction = {
+	custom_trigger_tooltip = {
+		tooltip = in_weak_faction_tooltip
+		hidden_trigger = {
+			set_temp_variable = { var = their_faction value = var:num_divisions }
+			if = {
+				limit = { is_in_faction = yes NOT = { is_in_faction_with = PREV } }
+				all_allied_country = {
+					add_to_temp_variable = { their_faction = var:num_divisions }
+				}
+			}
+			if = {
+				limit = {
+					all_country = {
+						if = {
+							limit = {
+								has_guaranteed = PREV
+								add_to_temp_variable = { their_faction = var:num_divisions }
+								all_allied_country = {
+									add_to_temp_variable = { their_faction = var:num_divisions }
+								}
+							}
+						}
+					}
+				}
+			}
+			set_temp_variable = { var = their_enemies value = var:ROOT.num_divisions }
+			all_of_scopes = {
+				array = ROOT.possible_allies@THIS
+				add_to_temp_variable = { their_enemies = var:num_divisions }
+			}
+			if = {
+				limit = { ROOT = { is_in_faction = yes NOT = { is_in_faction_with = PREV } } }
+				ROOT = {
+					all_allied_country = {
+						add_to_temp_variable = { PREV.their_enemies = var:num_divisions }
+					}
+				}
+			}
+			check_variable = { their_faction < their_enemies }
+		}
+	}
+}
+
+not_allies_or_subjects = {
+	custom_trigger_tooltip = {
+		tooltip = not_allied_or_subject_of_one_another_tooltip
+		NOT = { is_subject_of = ROOT }
+		NOT = { is_in_faction_with = ROOT }
+		ROOT = { NOT = { is_subject_of = PREV } }
+		NOT = {
+			AND = {
+				has_guaranteed = ROOT
+				ROOT = { has_guaranteed = PREV }
+			}
+		}
+	}
+}
+
+on_same_continent = {
+	OR = {
+		AND = {
+			capital_scope = { is_on_continent = europe }
+			ROOT = { capital_scope = { is_on_continent = europe } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = north_america }
+			ROOT = { capital_scope = { is_on_continent = north_america } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = south_america }
+			ROOT = { capital_scope = { is_on_continent = south_america } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = australia }
+			ROOT = { capital_scope = { is_on_continent = australia } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = africa }
+			ROOT = { capital_scope = { is_on_continent = africa } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = asia }
+			ROOT = { capital_scope = { is_on_continent = asia } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = middle_east }
+			ROOT = { capital_scope = { is_on_continent = middle_east } }
+		}
+	}
+}

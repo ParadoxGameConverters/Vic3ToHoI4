@@ -1,0 +1,14 @@
+profile_pictures = {
+	# default
+	1 = {
+		icon = GFX_profile_picture_goal_continuous_armor_production
+	}
+	# starting unlocked
+	2 = {
+		icon = GFX_profile_picture_goal_continuous_air_production
+	}
+	# unlocked at 500 CP
+	3 = {
+		icon = GFX_profile_picture_goal_generic_air_bomber
+	}
+}

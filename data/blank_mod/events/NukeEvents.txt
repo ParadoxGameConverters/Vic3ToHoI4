@@ -1,0 +1,30 @@
+﻿###########################
+# Nuclear Bomb Events
+###########################
+
+add_namespace = nuke_dropped
+
+# Hidden event to set flag on nuke dropped
+news_event = {
+	id = nuke_dropped.0
+	picture = GFX_news_event_nuke
+
+	major = yes
+
+	is_triggered_only = yes
+
+	hidden = yes
+
+	fire_only_once = yes
+
+	immediate = {
+		news_event = { id = nuke_dropped.1 days = 1 }
+	}
+
+	option = {
+		name = dummy_nuke_option
+	}
+}
+
+
+

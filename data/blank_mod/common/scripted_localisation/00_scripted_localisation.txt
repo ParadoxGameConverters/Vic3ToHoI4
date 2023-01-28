@@ -1,0 +1,100 @@
+# Allows you to create your own dynamic keys
+# to be called in localization.
+# defined_text -> this is it, we're defining the text
+# text -> a discrete entry that can be picked to display in loc.
+# trigger -> determines if a text entry will be picked or not.
+# (The triggers need to be valid for the scope the key is called in
+# (eg Root or From.From).)
+# localization_key -> points to the localization key
+# that'll be used if trigger passes
+defined_text = {
+	name = GetSenateElectionOutcome
+	text = {
+		trigger = {
+			check_variable = { senators_for_reelection < 0 }
+		}
+		localization_key = SenateElectionLost
+	}
+	text = {
+		trigger = {
+			check_variable = { var = senators_for_reelection value = 0 compare = greater_than_or_equals }
+		}
+		localization_key = SenateElectionGained
+	}
+}
+defined_text = {
+	name = GetHouseElectionOutcome
+	text = {
+		trigger = {
+			check_variable = { representatives_for_reelection < 0 }
+		}
+		localization_key = HouseElectionLost
+	}
+	text = {
+		trigger = {
+			check_variable = { var = representatives_for_reelection value = 0 compare = greater_than_or_equals }
+		}
+		localization_key = HouseElectionGained
+	}
+}
+
+defined_text = { # Country
+	name = GetCandidatesFascism
+	text = {
+		trigger = {
+			has_global_flag = MTG_flag_955
+		}
+		localization_key = USA_hilt_candidate
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = GetOperationName
+	text = {
+		random_list = {
+			25 = { localization_key = generic_operation_1 }
+			25 = { localization_key = generic_operation_2 }
+			25 = { localization_key = generic_operation_3 }
+			25 = { localization_key = generic_operation_4 }
+		}
+	}
+}
+defined_text = {
+	name = ROM_UnlockedArmor
+	text = {
+		trigger = {
+			OR ={
+					has_tech = basic_medium_tank
+					has_tech = basic_medium_tank_chassis
+				}
+		}
+		localization_key = EQUIPMENT_WEIGHT_MEDIUM
+	}
+	text = {
+		trigger = {
+			OR ={
+					NOT= {has_tech = basic_medium_tank}
+					NOT= {has_tech = basic_medium_tank_chassis}
+				}
+		}
+		localization_key = EQUIPMENT_WEIGHT_LIGHT
+	}
+}
+
+# Governments in Exile
+defined_text = {
+	name = GetGovernmentInExileCategoryDesc
+	text = {
+		trigger = {
+			is_exile_host = yes
+		}
+		localization_key = governments_in_exile_host_desc
+	}
+	text = {
+		localization_key = governments_in_exile_exiled_desc
+	}
+
+}

@@ -1,0 +1,43 @@
+
+music_station = "base_music"
+
+music = {
+	song = "claustrophobic_march"
+
+	chance = {
+		factor = 1
+		modifier = {
+			has_stability < 0.5
+			factor = 1.5
+		}
+	}
+
+}
+
+music = {
+	song = "communist_america"
+
+	chance = {
+		factor = 1
+	}
+}
+
+music = {
+	song = "confederate_flags"
+
+	chance = {
+		factor = 1
+	}
+}
+
+music = {
+	song = "democratic_movements"
+
+	chance = {
+		factor = 1
+		modifier = {
+			has_war = yes
+			factor = 2
+		}
+	}
+}
