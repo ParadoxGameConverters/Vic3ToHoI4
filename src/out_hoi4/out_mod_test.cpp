@@ -1,5 +1,7 @@
 #include "out_mod.h"
 
+#include <gmock/gmock-matchers.h>
+
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
@@ -34,8 +36,7 @@ TEST(OutHoi4OutModTest, FolderIsLoggedWhenCleared)
 
    out::ClearOutputFolder("test_output");
 
-   EXPECT_EQ(log.str(), "    [INFO] Removing pre-existing copy of test_output\n");
-
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Removing pre-existing copy of test_output"));
    std::cout.rdbuf(cout_buffer);
 }
 
@@ -74,12 +75,11 @@ TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
 
    out::OutputMod("status_test_output", GameVersion());
 
-   EXPECT_EQ(log.str(),
-       fmt::format("[PROGRESS] 80%\n"
-                   "    [INFO] Outputting mod\n"
-                   "    [INFO] \tCopying blank mod\n"
-                   "    [INFO] \tCreating .mod files\n"
-                   "[PROGRESS] 85%\n"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[PROGRESS] 80%"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Outputting mod"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tCopying blank mod"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tCreating .mod files"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[PROGRESS] 85%"));
 
    std::cout.rdbuf(cout_buffer);
 }

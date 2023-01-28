@@ -100,6 +100,9 @@
     <Filter Include="src\maps">
       <UniqueIdentifier>{5822c41f-e907-4fad-9a15-37e3a11f68b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="external\commonItems\zip">
+      <UniqueIdentifier>{cd150e9c-c9a0-4e9e-b01c-3b7e67f382c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -405,6 +408,9 @@
     <ClCompile Include="src\out_hoi4\map\out_rocket_sites_tests.cpp">
       <Filter>src\out_hoi4\map</Filter>
     </ClCompile>
+    <ClCompile Include="external\commonItems\external\zip\src\zip.c">
+      <Filter>external\commonItems\zip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -613,6 +619,12 @@
     </ClInclude>
     <ClInclude Include="src\out_hoi4\map\out_rocket_sites.h">
       <Filter>src\out_hoi4\map</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\external\zip\src\miniz.h">
+      <Filter>external\commonItems\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\external\zip\src\zip.h">
+      <Filter>external\commonItems\zip</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

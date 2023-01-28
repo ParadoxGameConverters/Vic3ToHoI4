@@ -67,9 +67,6 @@
     <Filter Include="external\commonItems\ModLoader">
       <UniqueIdentifier>{9fde46fd-ad86-4893-a284-d7891327118d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\commonItems\ZipLib">
-      <UniqueIdentifier>{6633743f-c72e-4aa3-a0b7-58ad094e78e1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="external\rakaly">
       <UniqueIdentifier>{8d02dff1-82fe-48fa-a5e5-1a90aded3f17}</UniqueIdentifier>
     </Filter>
@@ -93,6 +90,9 @@
     </Filter>
     <Filter Include="src\maps">
       <UniqueIdentifier>{0ab0488b-21c8-4fe3-9905-17e887ee4cb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\commonItems\zip">
+      <UniqueIdentifier>{53b915ec-ae9a-4f58-8ab3-079cc293695f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -278,6 +278,9 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\map\out_rocket_sites.cpp">
       <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\external\zip\src\zip.c">
+      <Filter>external\commonItems\zip</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -503,6 +506,12 @@
     </ClInclude>
     <ClInclude Include="src\out_hoi4\map\out_rocket_sites.h">
       <Filter>src\out_hoi4\map</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\external\zip\src\miniz.h">
+      <Filter>external\commonItems\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="external\commonItems\external\zip\src\zip.h">
+      <Filter>external\commonItems\zip</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -31,28 +31,19 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)build/test/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)build/test/$(Configuration)-intermediate/</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/fmt/include;$(SolutionDir)/external/googletest/googletest/;$(SolutionDir)/external/googletest/googletest/include/;$(SolutionDir)/external/googletest/googlemock/;$(SolutionDir)/external/googletest/googlemock/include/</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)$(Platform)\$(Configuration)\ZipLib.lib;$(SolutionDir)$(Platform)\$(Configuration)\bzip2.lib;$(SolutionDir)$(Platform)\$(Configuration)\lzma.lib;$(SolutionDir)$(Platform)\$(Configuration)\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -60,6 +51,7 @@
     <ClCompile Include="external\commonItems\CommonFunctions.cpp" />
     <ClCompile Include="external\commonItems\ConvenientParser.cpp" />
     <ClCompile Include="external\commonItems\ConverterVersion.cpp" />
+    <ClCompile Include="external\commonItems\external\zip\src\zip.c" />
     <ClCompile Include="external\commonItems\GameVersion.cpp" />
     <ClCompile Include="external\commonItems\iconvlite.cpp" />
     <ClCompile Include="external\commonItems\Log.cpp" />
@@ -163,6 +155,8 @@
     <ClInclude Include="external\commonItems\CommonFunctions.h" />
     <ClInclude Include="external\commonItems\ConvenientParser.h" />
     <ClInclude Include="external\commonItems\ConverterVersion.h" />
+    <ClInclude Include="external\commonItems\external\zip\src\miniz.h" />
+    <ClInclude Include="external\commonItems\external\zip\src\zip.h" />
     <ClInclude Include="external\commonItems\GameVersion.h" />
     <ClInclude Include="external\commonItems\iconvlite.h" />
     <ClInclude Include="external\commonItems\Log.h" />
