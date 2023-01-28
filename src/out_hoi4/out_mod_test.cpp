@@ -8,6 +8,7 @@
 
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
 
 
@@ -116,8 +117,14 @@ TEST(OutHoi4OutModTest, ModFileIsCreated)
                    "path = \"mod/mod_file_test_output/\"\n"
                    "user_dir = \"mod_file_test_output_user_dir\"\n"
                    "replace_path=\"common/countries\"\n"
+                   "replace_path=\"common/national_focus\"\n"
+                   "replace_path=\"common/peace_conference/ai_peace\"\n"
+                   "replace_path=\"common/peace_conference/cost_modifiers\"\n"
+                   "replace_path=\"events\"\n"
                    "replace_path=\"history/countries\"\n"
                    "replace_path=\"history/states\"\n"
+                   "replace_path=\"history/units\"\n"
+                   "replace_path=\"map/supplyareas\"\n"
                    "replace_path=\"map/strategicregions\"\n"
                    "supported_version=\"*\""));
 }
@@ -144,8 +151,14 @@ TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
                    "path = \"mod/descriptor_file_test_output/\"\n"
                    "user_dir = \"descriptor_file_test_output_user_dir\"\n"
                    "replace_path=\"common/countries\"\n"
+                   "replace_path=\"common/national_focus\"\n"
+                   "replace_path=\"common/peace_conference/ai_peace\"\n"
+                   "replace_path=\"common/peace_conference/cost_modifiers\"\n"
+                   "replace_path=\"events\"\n"
                    "replace_path=\"history/countries\"\n"
                    "replace_path=\"history/states\"\n"
+                   "replace_path=\"history/units\"\n"
+                   "replace_path=\"map/supplyareas\"\n"
                    "replace_path=\"map/strategicregions\"\n"
                    "supported_version=\"*\""));
 }
@@ -167,15 +180,7 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
        std::ostreambuf_iterator<char>(mod_file_stream));
    mod_file.close();
 
-   EXPECT_EQ(mod_file_stream.str(),
-       fmt::format("name = \"Converted - version_test_output\"\n"
-                   "path = \"mod/version_test_output/\"\n"
-                   "user_dir = \"version_test_output_user_dir\"\n"
-                   "replace_path=\"common/countries\"\n"
-                   "replace_path=\"history/countries\"\n"
-                   "replace_path=\"history/states\"\n"
-                   "replace_path=\"map/strategicregions\"\n"
-                   "supported_version=\"42.13.*\""));
+   EXPECT_THAT(mod_file_stream.str(), testing::HasSubstr("supported_version=\"42.13.*\""));
 
    std::ifstream descriptor_file("output/version_test_output.mod");
    ASSERT_TRUE(descriptor_file.is_open());
@@ -185,13 +190,5 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
        std::ostreambuf_iterator<char>(descriptor_file_stream));
    descriptor_file.close();
 
-   EXPECT_EQ(descriptor_file_stream.str(),
-       fmt::format("name = \"Converted - version_test_output\"\n"
-                   "path = \"mod/version_test_output/\"\n"
-                   "user_dir = \"version_test_output_user_dir\"\n"
-                   "replace_path=\"common/countries\"\n"
-                   "replace_path=\"history/countries\"\n"
-                   "replace_path=\"history/states\"\n"
-                   "replace_path=\"map/strategicregions\"\n"
-                   "supported_version=\"42.13.*\""));
+   EXPECT_THAT(descriptor_file_stream.str(), testing::HasSubstr("supported_version=\"42.13.*\""));
 }
