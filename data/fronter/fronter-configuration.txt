@@ -9,6 +9,7 @@ pagesCommitIdUrl = "https://paradoxgameconverters.com/commit_ids/Vic3ToHoI4.txt"
 displayName = VIC3DISPLAYNAME
 sourceGame = VIC3GAME
 targetGame = HOI4GAME
+overwritePlayset = true
 
 requiredFile = {
 	name = SaveGame
