@@ -1,11 +1,9 @@
 name: Build, test and publish
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build_test_and_publish:
@@ -22,24 +20,15 @@ jobs:
         fetch-depth: 0
         submodules: recursive
 
-    - name: "Build backend"
+    - name: "Build solution"
       run: |
-       dotnet restore Vic3ToHoi4.sln
        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
-       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln -target:Vic3ToHoi4
+       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
 
     - name: "Run tests"
       run: |
-       cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
-       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln -target:Vic3ToHoi4Tests
        cd $Env:GITHUB_WORKSPACE\build\test\Release
        .\Vic3ToHoI4Tests.exe
-
-    - name: "Build frontend"
-      uses: ./external/Fronter.NET/.github/actions/build_frontend
-      with:
-        fronter_dir: 'external/Fronter.NET'
-        release_dir: 'build/Release'
 
     - name: "Prepare release"
       if: ${{ github.event_name == 'push' }}

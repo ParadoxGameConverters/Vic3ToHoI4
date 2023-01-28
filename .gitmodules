@@ -7,9 +7,9 @@
 [submodule "external/fmt"]
 	path = external/fmt
 	url = https://github.com/fmtlib/fmt.git
-[submodule "external/Fronter.NET"]
-	path = external/Fronter.NET
-	url = https://github.com/ParadoxGameConverters/Fronter.NET.git
 [submodule "external/bitmap"]
 	path = external/bitmap
 	url = https://github.com/ParadoxGameConverters/bitmap.git
+[submodule "external/Fronter"]
+	path = external/Fronter
+	url = https://github.com/ParadoxGameConverters/Fronter
