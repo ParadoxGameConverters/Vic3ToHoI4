@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vic3ToHoi4", "Vic3ToHoi4.vcxproj", "{97F40555-5B42-49C8-8428-53492442CF03}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D4E43E3D-E131-466D-9AA7-704C2298EACC} = {D4E43E3D-E131-466D-9AA7-704C2298EACC}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vic3ToHoI4Tests", "Vic3ToHoI4Tests.vcxproj", "{BEE873BF-5024-40B9-994C-782FEADA4E58}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D4E43E3D-E131-466D-9AA7-704C2298EACC} = {D4E43E3D-E131-466D-9AA7-704C2298EACC}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fronter", "external\Fronter\Fronter.vcxproj", "{D4E43E3D-E131-466D-9AA7-704C2298EACC}"
 EndProject
