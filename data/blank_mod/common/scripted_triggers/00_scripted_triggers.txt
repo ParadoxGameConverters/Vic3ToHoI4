@@ -54,6 +54,18 @@ has_ROOT_at_least_1_div_in_current_state_scope = {
 	}
 }
 
+check_has_focus_tree_to_switch_to_fascism = {
+	always = no
+}
+
+check_has_focus_tree_to_switch_to_democratic = {
+	always = no
+}
+
+check_has_focus_tree_to_switch_to_communism = {
+	always = no
+}
+
 #State scope
 is_controlled_by_ROOT_or_subject = {
 	custom_trigger_tooltip = {

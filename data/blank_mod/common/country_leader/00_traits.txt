@@ -375,19 +375,6 @@ leader_traits = {
 #ai_focus_naval_air_factor
 #ai_focus_aviation_factor
 
-	dislikes_germany = {
-		random = no
-		ai_strategy = {
-			type = antagonize
-			id = "GER"
-			value = 200
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
 	tenacious_defender = {
 		random = no
 
