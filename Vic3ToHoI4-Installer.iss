@@ -35,8 +35,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [InstallDelete]
-Type: filesandordirs; Name: "{app}\Vic2ToHoI4\blank_mod"
-Type: filesandordirs; Name: "{app}\Vic2ToHoI4\configurables"
+Type: filesandordirs; Name: "{app}\Vic3ToHoI4\blank_mod"
+Type: filesandordirs; Name: "{app}\Vic3ToHoI4\configurables"
 
 [Files]
 Source: "build\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
