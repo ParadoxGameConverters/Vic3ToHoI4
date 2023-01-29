@@ -77,7 +77,7 @@ bool rakaly_melt_binary_unknown_tokens(const struct MeltedBuffer *res);
 size_t rakaly_melt_write_data(const struct MeltedBuffer *res, char *buffer, size_t length);
 
 /**
- * Consume a result and return the underyling error. If the result does not
+ * Consume a result and return the underlying error. If the result does not
  * encompass an error, the result is not consumed.
  *
  * # Safety
@@ -136,7 +136,7 @@ void rakaly_free_error(struct PdsError *res);
 void rakaly_free_file(struct PdsFile *res);
 
 /**
- * Consume a result and return the underyling value. If the result does not
+ * Consume a result and return the underlying value. If the result does not
  * encompass a value, the result is not consumed.
  *
  * # Safety
@@ -183,7 +183,7 @@ struct MeltedBufferResult *rakaly_file_melt(const struct PdsFile *ptr);
 bool rakaly_file_is_binary(const struct PdsFile *res);
 
 /**
- * Consume a result and return the underyling error. If the result does not
+ * Consume a result and return the underlying error. If the result does not
  * encompass an error, the result is not consumed.
  *
  * # Safety
@@ -193,7 +193,7 @@ bool rakaly_file_is_binary(const struct PdsFile *res);
 struct PdsError *rakaly_melt_error(struct MeltedBufferResult *ptr);
 
 /**
- * Consume a result and return the underyling value. If the result does not
+ * Consume a result and return the underlying value. If the result does not
  * encompass a value, the result is not consumed.
  *
  * # Safety
