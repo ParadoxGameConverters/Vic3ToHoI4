@@ -32,9 +32,22 @@ std::istringstream MeltSave(std::string_view save_filename, bool debug)
    std::string save_string(save_size, '\0');
    save_file.read(save_string.data(), save_size);
 
-   const auto game_state = rakaly::meltVic3(save_string);
    std::string liquid;
-   game_state.writeData(liquid);
+   const auto save = rakaly::parseVic3(save_string);
+   if (save.is_binary())
+   {
+      auto melt = save.melt();
+      if (melt.has_unknown_tokens())
+      {
+         throw std::runtime_error("Unable to melt ironman save");
+      }
+
+      melt.writeData(liquid);
+   }
+   else
+   {
+      liquid = save_string;
+   }
 
    if (debug)
    {
