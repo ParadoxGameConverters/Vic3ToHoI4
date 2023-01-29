@@ -1,5 +1,5 @@
 name: "Find braces mismatches"
-on: [push]
+on: [push, pull_request]
 jobs:
   find_braces_mismatches:
     runs-on: ubuntu-latest
