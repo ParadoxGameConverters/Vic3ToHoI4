@@ -31,11 +31,15 @@ jobs:
        .\Vic3ToHoI4Tests.exe
 
     - name: "Prepare release"
-      if: ${{ github.event_name == 'push' }}
       run: |
        cd "C:\Program Files\7-Zip\"
        .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-0.0Null-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
        .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-latest-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
+
+    - name: "Prepare installer"
+      run: |
+        c:\"Program Files (x86)\Inno Setup 6\iscc" Vic2ToHoI4-Installer.iss
+        cp $Env:GITHUB_WORKSPACE\Output\Vic3ToHoI4-latest-win-x64.exe $Env:GITHUB_WORKSPACE\Output\Vic3ToHoI4-0.0Null-win-x64.exe
 
     - name: "Upload binaries to named release"
       if: ${{ github.event_name == 'push' }}
@@ -45,7 +49,7 @@ jobs:
         allowUpdates: true
         omitBodyDuringUpdate: true
         omitNameDuringUpdate: true
-        artifacts: Vic3ToHoI4-0.0Null-win-x64.zip
+        artifacts: Vic3ToHoI4-0.0Null-win-x64.zip, Output\Vic3ToHoI4-0.0Null-win-x64.exe
         token: ${{ secrets.API_TOKEN_GITHUB }}
 
     - name: "Upload binaries to latest release"
@@ -56,7 +60,7 @@ jobs:
         allowUpdates: true
         omitBodyDuringUpdate: true
         omitNameDuringUpdate: true
-        artifacts: Vic3ToHoI4-latest-win-x64.zip
+        artifacts: Vic3ToHoI4-latest-win-x64.zip, Output\Vic3ToHoI4-latest-win-x64.exe
         token: ${{ secrets.API_TOKEN_GITHUB }}
 
     - name: "Prepare pull request artifact"
