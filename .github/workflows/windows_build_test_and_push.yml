@@ -38,7 +38,7 @@ jobs:
 
     - name: "Prepare installer"
       run: |
-        c:\"Program Files (x86)\Inno Setup 6\iscc" Vic2ToHoI4-Installer.iss
+        c:\"Program Files (x86)\Inno Setup 6\iscc" Vic3ToHoI4-Installer.iss
         cp $Env:GITHUB_WORKSPACE\Output\Vic3ToHoI4-latest-win-x64.exe $Env:GITHUB_WORKSPACE\Output\Vic3ToHoI4-0.0Null-win-x64.exe
 
     - name: "Upload binaries to named release"
