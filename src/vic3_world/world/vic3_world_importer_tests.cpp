@@ -1,6 +1,6 @@
 #include "external/commonItems/ModLoader/ModFilesystem.h"
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/world/vic3_world_importer.h"
 
