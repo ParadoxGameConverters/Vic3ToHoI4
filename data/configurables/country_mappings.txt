@@ -1,0 +1,140 @@
+#The links that come first in the list are executed before the links after it.
+
+#link = { vic = GBR hoi = ENG } # Great Britain => United Kingdom
+
+link = { vic = ABS hoi = ??? } # Absaroka
+link = { vic = ABU hoi = ??? } # Trucial States
+link = { vic = ACE hoi = ??? } # Aceh
+link = { vic = ACH hoi = ??? } # Acholi
+link = { vic = ADG hoi = ??? } # Adagh
+link = { vic = AFG hoi = AFG } # Afghanistan
+link = { vic = AFS hoi = ??? } # Free State
+link = { vic = AGJ hoi = ??? } # Angola Janga
+link = { vic = AHG hoi = ??? } # Ahaggar
+link = { vic = AHU hoi = ??? } # Anhui
+link = { vic = AIN hoi = ??? } # Ainu Mosir
+link = { vic = AIR hoi = ??? } # Air
+link = { vic = ALB hoi = ALB } # Albania
+link = { vic = ALD hoi = ALG } # Algeria
+link = { vic = ALT hoi = ??? } # Los Altos
+link = { vic = AMZ hoi = ??? } # Amazonia
+link = { vic = ANH hoi = ??? } # Anhalt
+link = { vic = ANK hoi = ??? } # Ankole
+link = { vic = ANL hoi = ??? } # Andalusia
+link = { vic = AOT hoi = ??? } # Aotearoa
+link = { vic = APC hoi = ??? } # Apache
+link = { vic = ARA hoi = ??? } # Arabia
+link = { vic = ARG hoi = ARG } # Argentina
+link = { vic = ARM hoi = ARM } # Armenia
+link = { vic = ARP hoi = ??? } # Arapaho
+link = { vic = ASA hoi = ??? } # New Africa
+link = { vic = ASH hoi = ??? } # Ashanti
+link = { vic = ASM hoi = ??? } # Assam
+link = { vic = ASS hoi = ??? } # Assyria
+link = { vic = AST hoi = AST } # Australia
+link = { vic = ATB hoi = ??? } # Athabaska
+link = { vic = AUS hoi = AUS } # Austria
+link = { vic = AWA hoi = ??? } # Awadh
+link = { vic = AWS hoi = ??? } # Aussa
+link = { vic = AYI hoi = ??? } # Anyi
+link = { vic = AYM hoi = ??? } # Aymara
+link = { vic = AZB hoi = AZR } # Azerbaijan
+link = { vic = BAD hoi = ??? } # Baden
+link = { vic = BAH hoi = ??? } # Bahamas
+link = { vic = BAL hoi = ??? } # Bali
+link = { vic = BAS hoi = ??? } # Bastar
+link = { vic = BAV hoi = BAY } # Bavaria
+link = { vic = BEL hoi = BEL } # Belgium
+link = { vic = BEN hoi = ??? } # Benin
+link = { vic = BER hoi = ??? } # Baroda
+link = { vic = BGI hoi = ??? } # Bagirmi
+link = { vic = BGL hoi = ??? } # Bengal
+link = { vic = BGM hoi = ??? } # Begemder
+link = { vic = BHN hoi = ??? } # Bahrain
+link = { vic = BHO hoi = ??? } # Bhopal
+link = { vic = BHT hoi = ??? } # India
+link = { vic = BHU hoi = BHU } # Bhutan
+link = { vic = BIC hoi = ??? } # East India Company
+link = { vic = BIK hoi = ??? } # Bikaner
+link = { vic = BJA hoi = ??? } # Beja
+link = { vic = BLA hoi = ??? } # Bilua
+link = { vic = BLE hoi = ??? } # Baule
+link = { vic = BLF hoi = ??? } # Niitsitapi
+link = { vic = BLG hoi = ??? } # Bulungan
+link = { vic = BLH hoi = ??? } # Baluchistan
+link = { vic = BMB hoi = ??? } # Bemba
+link = { vic = BND hoi = ??? } # Bundu
+link = { vic = BNG hoi = ??? } # Bangala
+link = { vic = BNJ hoi = ??? } # Banjar
+link = { vic = BNY hoi = ??? } # Bunyoro
+link = { vic = BOB hoi = ??? } # Bobangi
+link = { vic = BOH hoi = ??? } # Bohemia
+link = { vic = BOL hoi = BOL } # Bolivia
+link = { vic = BOR hoi = ??? } # Bornu
+link = { vic = BOS hoi = BOS } # Bosnia-Herzegovina
+link = { vic = BRA hoi = ??? } # Brunswick
+link = { vic = BRD hoi = BRD } # Burundi
+link = { vic = BRE hoi = ??? } # Bremen
+link = { vic = BRI hoi = BRI } # Brittany
+link = { vic = BRN hoi = ??? } # Borana
+link = { vic = BRU hoi = ??? } # Brunei
+link = { vic = BRZ hoi = BRA } # Brazil
+link = { vic = BSS hoi = ??? } # Bassa
+link = { vic = BST hoi = ??? } # Basuto
+link = { vic = BTG hoi = ??? } # Batonga
+link = { vic = BTN hoi = ??? } # Buton
+link = { vic = BUG hoi = ??? } # Buganda
+link = { vic = BUK hoi = ??? } # Bukhara
+link = { vic = BUL hoi = ??? } # Bulgaria
+link = { vic = BUN hoi = ??? } # Bundelkhand
+link = { vic = BUR hoi = BRM } # Burma
+link = { vic = BYE hoi = BLR } # Belarus
+link = { vic = BYZ hoi = ??? } # Byzantium
+link = { vic = CAL hoi = ??? } # California
+link = { vic = CAM hoi = CAM } # Cambodia
+link = { vic = CAN hoi = CAN } # Canada
+link = { vic = CAS hoi = ??? } # Castile
+link = { vic = CAT hoi = CAT } # Catalonia
+link = { vic = CAY hoi = ??? } # Cayor
+link = { vic = CCM hoi = ??? } # O'odham Country
+link = { vic = CEY hoi = SRL } # Ceylon
+link = { vic = CHC hoi = ??? } # Chechnya
+link = { vic = CHE hoi = ??? } # Cherokee
+link = { vic = CHI hoi = ??? } # China
+link = { vic = CHK hoi = ??? } # Chokwe
+link = { vic = CHL hoi = CHL } # Chile
+link = { vic = CHP hoi = ??? } # Champassak
+link = { vic = CHW hoi = ??? } # Chewa
+link = { vic = CIR hoi = ??? } # Circassia
+link = { vic = CLM hoi = COL } # Colombia
+link = { vic = CMI hoi = ??? } # Chiang Mai
+link = { vic = COB hoi = ??? } # Saxe-Coburg-Gotha
+link = { vic = COL hoi = ??? } # Columbia
+link = { vic = COM hoi = ??? } # Comanche
+link = { vic = COR hoi = COR } # Corsica
+link = { vic = COS hoi = COS } # Costa Rica
+link = { vic = CRE hoi = ??? } # Crete
+link = { vic = CRI hoi = CRI } # Crimea
+link = { vic = CRO hoi = CRO } # Croatia
+link = { vic = CSA hoi = CSA } # Confederate States of America
+link = { vic = CSC hoi = ??? } # Cascadia
+link = { vic = CTF hoi = ??? } # Council of Three Fires
+link = { vic = CUB hoi = CUB } # Cuba
+link = { vic = CYP hoi = CYP } # Cyprus
+link = { vic = CZH hoi = CZE } # Czechoslovakia
+link = { vic = DAG hoi = DAG } # Dagestan
+link = { vic = DAH hoi = DAH } # Dahomey
+link = { vic = DAI hoi = ??? } # Dai Nam
+link = { vic = DAK hoi = ??? } # Dar al Kuti
+link = { vic = DEI hoi = INS } # Dutch East Indies
+link = { vic = DEN hoi = DEN } # Denmark
+link = { vic = DES hoi = ??? } # Deseret
+link = { vic = DFR hoi = ??? } # Darfur
+link = { vic = DFT hoi = ??? } # Dar Fertit
+link = { vic = DKT hoi = ??? } # Dakota
+link = { vic = DLA hoi = ??? } # Duala
+link = { vic = DNK hoi = ??? } # Dinka
+link = { vic = DOM hoi = DOM } # Santo Domingo => Dominican Republic
+link = { vic = DON hoi = DON } # Don Cossack Host => Don Host
+link = { vic = DZG hoi = DNZ } # Danzig
+
