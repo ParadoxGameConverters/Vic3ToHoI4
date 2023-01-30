@@ -18,10 +18,10 @@ set (UNICODE_DEFAULT OFF)
 
 include_directories(.)
 include_directories("./external/fmt/include")
-include_directories("./external/googletest/googletest")
-include_directories("./external/googletest/googletest/include")
-include_directories("./external/googletest/googlemock")
-include_directories("./external/googletest/googlemock/include")
+include_directories("./external/commonItems/external/googletest/googletest")
+include_directories("./external/commonItems/external/googletest/googletest/include")
+include_directories("./external/commonItems/external/googletest/googlemock")
+include_directories("./external/commonItems/external/googletest/googlemock/include")
 
 link_directories(external/rakaly)
 
@@ -167,9 +167,9 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/vic3_state_importer_test
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/vic3_states_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/world/vic3_world_importer_tests.cpp")
 
-set(GTEST_SOURCES ${GTEST_SOURCES} "external/googletest/googletest/src/gtest_main.cc")
-set(GTEST_SOURCES ${GTEST_SOURCES} "external/googletest/googletest/src/gtest-all.cc")
-set(GTEST_SOURCES ${GTEST_SOURCES} "external/googletest/googlemock/src/gmock-all.cc")
+set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googletest/src/gtest_main.cc")
+set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googletest/src/gtest-all.cc")
+set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googlemock/src/gmock-all.cc")
 
 add_executable(
 	Vic3ToHoi4Tests

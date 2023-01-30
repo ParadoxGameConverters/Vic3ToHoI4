@@ -34,4 +34,6 @@
 build/
 .vs/
 Release/
+ReleaseIntermediate/
 Debug/
+DebugIntermediate/

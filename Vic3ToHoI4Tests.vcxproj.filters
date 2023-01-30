@@ -147,15 +147,6 @@
     <ClCompile Include="external\commonItems\WinUtils.cpp">
       <Filter>external\commonItems</Filter>
     </ClCompile>
-    <ClCompile Include="external\googletest\googlemock\src\gmock-all.cc">
-      <Filter>external\googletest\googlemock\src</Filter>
-    </ClCompile>
-    <ClCompile Include="external\googletest\googletest\src\gtest_main.cc">
-      <Filter>external\googletest\googletest</Filter>
-    </ClCompile>
-    <ClCompile Include="external\googletest\googletest\src\gtest-all.cc">
-      <Filter>external\googletest\googletest</Filter>
-    </ClCompile>
     <ClCompile Include="external\fmt\src\format.cc">
       <Filter>external\fmt\src</Filter>
     </ClCompile>
@@ -410,6 +401,15 @@
     </ClCompile>
     <ClCompile Include="external\commonItems\external\zip\src\zip.c">
       <Filter>external\commonItems\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\external\googletest\googlemock\src\gmock-all.cc">
+      <Filter>external\googletest\googlemock\src</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest_main.cc">
+      <Filter>external\googletest\googletest</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc">
+      <Filter>external\googletest\googletest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

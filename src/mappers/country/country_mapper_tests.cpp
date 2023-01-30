@@ -1,7 +1,7 @@
 #include <sstream>
 
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/mappers/country/country_mapper.h"
 
 

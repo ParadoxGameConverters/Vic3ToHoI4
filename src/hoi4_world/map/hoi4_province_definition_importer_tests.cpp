@@ -1,5 +1,5 @@
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/map/hoi4_province_definition_importer.h"
 
 

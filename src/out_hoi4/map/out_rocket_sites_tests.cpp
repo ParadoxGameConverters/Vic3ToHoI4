@@ -3,9 +3,9 @@
 #include <sstream>
 
 #include "external/commonItems/OSCompatibilityLayer.h"
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "external/fmt/include/fmt/format.h"
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/out_hoi4/map/out_rocket_sites.h"
 

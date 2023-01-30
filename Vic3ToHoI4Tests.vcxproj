@@ -38,7 +38,7 @@
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/fmt/include;$(SolutionDir)/external/googletest/googletest/;$(SolutionDir)/external/googletest/googletest/include/;$(SolutionDir)/external/googletest/googlemock/;$(SolutionDir)/external/googletest/googlemock/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/fmt/include;$(SolutionDir)/external/commonItems/external/googletest/googletest/;$(SolutionDir)/external/commonItems/external/googletest/googletest/include/;$(SolutionDir)/external/commonItems/external/googletest/googlemock/;$(SolutionDir)/external/commonItems/external/googletest/googlemock/include/</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -51,6 +51,9 @@
     <ClCompile Include="external\commonItems\CommonFunctions.cpp" />
     <ClCompile Include="external\commonItems\ConvenientParser.cpp" />
     <ClCompile Include="external\commonItems\ConverterVersion.cpp" />
+    <ClCompile Include="external\commonItems\external\googletest\googlemock\src\gmock-all.cc" />
+    <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc" />
+    <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="external\commonItems\external\zip\src\zip.c" />
     <ClCompile Include="external\commonItems\GameVersion.cpp" />
     <ClCompile Include="external\commonItems\iconvlite.cpp" />
@@ -65,9 +68,6 @@
     <ClCompile Include="external\commonItems\WinUtils.cpp" />
     <ClCompile Include="external\fmt\src\format.cc" />
     <ClCompile Include="external\fmt\src\os.cc" />
-    <ClCompile Include="external\googletest\googlemock\src\gmock-all.cc" />
-    <ClCompile Include="external\googletest\googletest\src\gtest-all.cc" />
-    <ClCompile Include="external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="src\configuration\configuration_importer.cpp" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter.cpp" />
