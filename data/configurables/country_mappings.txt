@@ -83,7 +83,7 @@ link = { vic = BRZ hoi = BRA } # Brazil
 #link = { vic = BTG hoi = ??? } # Batonga
 #link = { vic = BTN hoi = ??? } # Buton
 #link = { vic = BUG hoi = ??? } # Buganda
-#link = { vic = BUK hoi = ??? } # Bukhara
+link = { vic = BUK hoi = BUK } # Bukhara
 #link = { vic = BUL hoi = ??? } # Bulgaria
 #link = { vic = BUN hoi = ??? } # Bundelkhand
 link = { vic = BUR hoi = BRM } # Burma
@@ -136,4 +136,44 @@ link = { vic = DEN hoi = DEN } # Denmark
 link = { vic = DOM hoi = DOM } # Santo Domingo => Dominican Republic
 link = { vic = DON hoi = DON } # Don Cossack Host => Don Host
 link = { vic = DZG hoi = DNZ } # Danzig
+link = { vic = ECU hoi = ECU } # Ecuador
+link = { vic = EGY hoi = EGY } # Egypt
+link = { vic = ELS hoi = ELS } # El Salvador
+#link = { vic = ENG hoi = ??? } # England
+link = { vic = EOT hoi = JOR } # Emirate of Transjordan => Jordan
+#link = { vic = EQU hoi = ??? } # Equatoria
+link = { vic = EST hoi = EST } # Estonia
+link = { vic = ETH hoi = ETH } # Ethiopia
+#link = { vic = EWE hoi = ??? } # Ewe
+#link = { vic = EZO hoi = ??? } # Ezo
+#link = { vic = FER hoi = ??? } # Kamchatka
+link = { vic = FIN hoi = FIN } # Finland
+#link = { vic = FJI hoi = ??? } # Fiji
+#link = { vic = FLA hoi = ??? } # Flanders
+#link = { vic = FNG hoi = ??? } # Fang
+#link = { vic = FRA hoi = ??? } # France
+#link = { vic = FRM hoi = ??? } # Frankfurt
+#link = { vic = FRS hoi = ??? } # Formosa
+#link = { vic = FSA hoi = ??? } # Free States of America
+#link = { vic = FTJ hoi = ??? } # Futa Jallon
+#link = { vic = FTR hoi = ??? } # Futa Toro
+#link = { vic = GAL hoi = ??? } # Galicia-Lodomeria
+#link = { vic = GAO hoi = ??? } # Gao
+link = { vic = GBR hoi = ENG } # Great Britain => United Kingdom
+#link = { vic = GCO hoi = ??? } # Gran Colombia
+link = { vic = GEO hoi = GEO } # Georgia
+link = { vic = GER hoi = GER } # Germany
+#link = { vic = GGO hoi = ??? } # Gogo
+#link = { vic = GJM hoi = ??? } # Gojjam
+#link = { vic = GLD hoi = ??? } # Geledi
+#link = { vic = GLI hoi = ??? } # Galicia
+#link = { vic = GML hoi = ??? } # Gamilaraay
+#link = { vic = GNG hoi = ??? } # Da Cheng
+#link = { vic = GNI hoi = ??? } # Guarani
+link = { vic = GRE hoi = GRE } # Greece
+#link = { vic = GRI hoi = ??? } # Guarani
+#link = { vic = GRN hoi = ??? } # Greenland
+link = { vic = GUA hoi = GUA } # Guatemala
+#link = { vic = GUI hoi = ??? } # Guizhou
+#link = { vic = GWA hoi = ??? } # Gwalior
 
