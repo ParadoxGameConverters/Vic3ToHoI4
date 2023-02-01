@@ -11,16 +11,15 @@ namespace vic3
 
 TEST(Vic3worldWorldVic3worldimporter, ExceptionForMissingSave)
 {
-   EXPECT_THROW(ImportWorld("test_files/vic3_world/world/missing_save.vic3", commonItems::ModFilesystem("", {}), false),
+   EXPECT_THROW(ImportWorld(configuration::Configuration{.save_game = "test_files/vic3_world/world/missing_save.vic3"}),
        std::runtime_error);
 }
 
 
 TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
 {
-   const auto world = ImportWorld("test_files/vic3_world/world/empty_save.vic3",
-       commonItems::ModFilesystem("test_files/vic3_world/empty_world", {}),
-       false);
+   const auto world = ImportWorld(configuration::Configuration{.vic3_directory = "test_files/vic3_world/empty_world",
+       .save_game = "test_files/vic3_world/world/empty_save.vic3"});
 
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().empty());
@@ -30,9 +29,8 @@ TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
 
 TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
 {
-   const auto world = ImportWorld("test_files/vic3_world/world/test_save.vic3",
-       commonItems::ModFilesystem("test_files/vic3_world/world", {}),
-       false);
+   const auto world = ImportWorld(configuration::Configuration{.vic3_directory = "test_files/vic3_world/world",
+       .save_game = "test_files/vic3_world/world/test_save.vic3"});
 
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(
@@ -51,9 +49,8 @@ TEST(Vic3worldWorldVic3worldimporter, StateWithInvalidOwnerIsLogged)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const auto world = ImportWorld("test_files/vic3_world/world/test_save.vic3",
-       commonItems::ModFilesystem("test_files/vic3_world/world", {}),
-       false);
+   const auto world = ImportWorld(configuration::Configuration{.vic3_directory = "test_files/vic3_world/world",
+       .save_game = "test_files/vic3_world/world/test_save.vic3"});
 
    std::cout.rdbuf(cout_buffer);
 

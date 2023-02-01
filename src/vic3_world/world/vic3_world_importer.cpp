@@ -25,38 +25,68 @@
 namespace
 {
 
-std::istringstream MeltSave(std::string_view save_filename, bool debug)
+std::string ReadSave(std::string_view save_filename)
 {
    std::ifstream save_file(std::filesystem::u8path(save_filename), std::ios::in | std::ios::binary);
    const auto save_size = static_cast<std::streamsize>(std::filesystem::file_size(save_filename));
    std::string save_string(save_size, '\0');
    save_file.read(save_string.data(), save_size);
 
-   std::string liquid;
-   const auto save = rakaly::parseVic3(save_string);
+   return save_string;
+}
+
+
+std::vector<std::string> ReadModNames(const rakaly::GameFile& save, const std::string& save_string)
+{
+   std::string save_meta;
    if (save.is_binary())
    {
-      auto melt = save.melt();
+      const auto melt = save.meltMeta();
+      if (!melt || melt->has_unknown_tokens())
+      {
+         throw std::runtime_error("Unable to melt ironman save's metadata");
+      }
+
+      melt->writeData(save_meta);
+   }
+   else
+   {
+      save_meta = save_string;
+   }
+   std::istringstream meta_stream{save_meta};
+
+   std::vector<std::string> mod_names;
+
+   commonItems::parser meta_parser;
+   meta_parser.registerKeyword("mods", [&mod_names](std::istream& input_stream) {
+      mod_names = commonItems::stringList(input_stream).getStrings();
+   });
+   meta_parser.IgnoreUnregisteredItems();
+   meta_parser.parseStream(meta_stream);
+
+   return mod_names;
+}
+
+
+std::istringstream MeltSave(const rakaly::GameFile& save, const std::string& save_string)
+{
+   std::string melted_save_string;
+   if (save.is_binary())
+   {
+      const auto melt = save.melt();
       if (melt.has_unknown_tokens())
       {
          throw std::runtime_error("Unable to melt ironman save");
       }
 
-      melt.writeData(liquid);
+      melt.writeData(melted_save_string);
    }
    else
    {
-      liquid = save_string;
+      melted_save_string = save_string;
    }
 
-   if (debug)
-   {
-      std::ofstream liquid_file("liquid_save.txt");
-      liquid_file << liquid;
-      liquid_file.close();
-   }
-
-   return std::istringstream{liquid};
+   return std::istringstream{melted_save_string};
 }
 
 
@@ -84,19 +114,23 @@ void AssignOwnersToStates(const std::map<int, vic3::Country>& countries, std::ma
 }  // namespace
 
 
-vic3::World vic3::ImportWorld(std::string_view save_filename,
-    const commonItems::ModFilesystem& mod_filesystem,
-    bool debug)
+vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
 {
    Log(LogLevel::Info) << "*** Hello Vic3, loading World. ***";
+   std::string save_string = ReadSave(configuration.save_game);
+   const rakaly::GameFile save = rakaly::parseVic3(save_string);
+
+   std::vector<std::string> mod_names = ReadModNames(save, save_string);
+
 
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
+   commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory, {});
    const auto province_definitions = ProvinceDefinitionsLoader().LoadProvinceDefinitions(mod_filesystem);
    Log(LogLevel::Progress) << "5 %";
 
    Log(LogLevel::Info) << "-> Reading Vic3 save.";
-   auto save = MeltSave(save_filename, debug);
    Log(LogLevel::Progress) << "7 %";
+   std::istringstream save_stream = MeltSave(save, save_string);
 
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
    std::map<int, State> states;
@@ -118,7 +152,7 @@ vic3::World vic3::ImportWorld(std::string_view save_filename,
    });
    save_parser.IgnoreUnregisteredItems();
 
-   save_parser.parseStream(save);
+   save_parser.parseStream(save_stream);
    Log(LogLevel::Info) << fmt::format("\t{} countries imported", countries.size());
    Log(LogLevel::Info) << fmt::format("\t{} states imported", states.size());
    Log(LogLevel::Progress) << "15 %";
