@@ -5,15 +5,27 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vic3ToHoi4", "Vic3ToHoi4.vcxproj", "{97F40555-5B42-49C8-8428-53492442CF03}"
 	ProjectSection(ProjectDependencies) = postProject
+		{095FC941-B5E2-4439-88D9-587E2029CB68} = {095FC941-B5E2-4439-88D9-587E2029CB68}
 		{D4E43E3D-E131-466D-9AA7-704C2298EACC} = {D4E43E3D-E131-466D-9AA7-704C2298EACC}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vic3ToHoI4Tests", "Vic3ToHoI4Tests.vcxproj", "{BEE873BF-5024-40B9-994C-782FEADA4E58}"
 	ProjectSection(ProjectDependencies) = postProject
+		{095FC941-B5E2-4439-88D9-587E2029CB68} = {095FC941-B5E2-4439-88D9-587E2029CB68}
 		{D4E43E3D-E131-466D-9AA7-704C2298EACC} = {D4E43E3D-E131-466D-9AA7-704C2298EACC}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fronter", "external\Fronter\Fronter.vcxproj", "{D4E43E3D-E131-466D-9AA7-704C2298EACC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3B8EC8C8-4066-46F7-851D-EB762C39C140} = {3B8EC8C8-4066-46F7-851D-EB762C39C140}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommonItems", "external\commonItems\CommonItems\CommonItems.vcxproj", "{3B8EC8C8-4066-46F7-851D-EB762C39C140}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pch", "external\commonItems\pch\pch.vcxproj", "{095FC941-B5E2-4439-88D9-587E2029CB68}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3B8EC8C8-4066-46F7-851D-EB762C39C140} = {3B8EC8C8-4066-46F7-851D-EB762C39C140}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +38,10 @@ Global
 		{BEE873BF-5024-40B9-994C-782FEADA4E58}.Release|x64.Build.0 = Release|x64
 		{D4E43E3D-E131-466D-9AA7-704C2298EACC}.Release|x64.ActiveCfg = Release|x64
 		{D4E43E3D-E131-466D-9AA7-704C2298EACC}.Release|x64.Build.0 = Release|x64
+		{3B8EC8C8-4066-46F7-851D-EB762C39C140}.Release|x64.ActiveCfg = Release|x64
+		{3B8EC8C8-4066-46F7-851D-EB762C39C140}.Release|x64.Build.0 = Release|x64
+		{095FC941-B5E2-4439-88D9-587E2029CB68}.Release|x64.ActiveCfg = Release|x64
+		{095FC941-B5E2-4439-88D9-587E2029CB68}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

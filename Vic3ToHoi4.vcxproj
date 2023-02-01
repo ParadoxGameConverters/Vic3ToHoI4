@@ -37,13 +37,21 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/fmt/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/fmt/include;$(SolutionDir)external/commonItems/pch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(SolutionDir)lib\pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(SolutionDir)lib\common.pdb</ProgramDataBaseFileName>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pch.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>tools\save_commit_id.bat</Command>
@@ -51,22 +59,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="external\commonItems\Color.cpp" />
-    <ClCompile Include="external\commonItems\CommonFunctions.cpp" />
-    <ClCompile Include="external\commonItems\ConvenientParser.cpp" />
-    <ClCompile Include="external\commonItems\ConverterVersion.cpp" />
-    <ClCompile Include="external\commonItems\external\zip\src\zip.c" />
-    <ClCompile Include="external\commonItems\GameVersion.cpp" />
-    <ClCompile Include="external\commonItems\iconvlite.cpp" />
-    <ClCompile Include="external\commonItems\Log.cpp" />
-    <ClCompile Include="external\commonItems\ModLoader\ModFilesystem.cpp" />
-    <ClCompile Include="external\commonItems\ModLoader\ModLoader.cpp" />
-    <ClCompile Include="external\commonItems\ModLoader\ModParser.cpp" />
-    <ClCompile Include="external\commonItems\OSCommonLayer.cpp" />
-    <ClCompile Include="external\commonItems\Parser.cpp" />
-    <ClCompile Include="external\commonItems\ParserHelpers.cpp" />
-    <ClCompile Include="external\commonItems\StringUtils.cpp" />
-    <ClCompile Include="external\commonItems\WinUtils.cpp" />
     <ClCompile Include="external\fmt\src\format.cc" />
     <ClCompile Include="external\fmt\src\os.cc" />
     <ClCompile Include="src\configuration\configuration_importer.cpp" />
@@ -85,7 +77,7 @@
     <ClCompile Include="src\mappers\country\country_mapper_creator.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper_importer.cpp" />
-    <ClCompile Include="src\mappers\provinces\province_mapper_importer.h" />
+    <ClInclude Include="src\mappers\provinces\province_mapper_importer.h" />
     <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp" />
     <ClCompile Include="src\maps\map_data.cpp" />
     <ClCompile Include="src\maps\map_data_importer.cpp" />
@@ -102,7 +94,7 @@
     <ClCompile Include="src\out_hoi4\out_mod.cpp" />
     <ClCompile Include="src\out_hoi4\states\out_state.cpp" />
     <ClCompile Include="src\out_hoi4\states\out_states.cpp" />
-    <ClCompile Include="src\out_hoi4\states\out_states.h" />
+    <ClInclude Include="src\out_hoi4\states\out_states.h" />
     <ClCompile Include="src\out_hoi4\world\out_world.cpp" />
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp" />
     <ClCompile Include="src\vic3_world\countries\country_definitions_importer.cpp" />
@@ -115,23 +107,6 @@
     <ClCompile Include="src\vic3_world\world\vic3_world_importer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="external\commonItems\Color.h" />
-    <ClInclude Include="external\commonItems\CommonFunctions.h" />
-    <ClInclude Include="external\commonItems\ConvenientParser.h" />
-    <ClInclude Include="external\commonItems\ConverterVersion.h" />
-    <ClInclude Include="external\commonItems\external\zip\src\miniz.h" />
-    <ClInclude Include="external\commonItems\external\zip\src\zip.h" />
-    <ClInclude Include="external\commonItems\GameVersion.h" />
-    <ClInclude Include="external\commonItems\iconvlite.h" />
-    <ClInclude Include="external\commonItems\Log.h" />
-    <ClInclude Include="external\commonItems\ModLoader\Mod.h" />
-    <ClInclude Include="external\commonItems\ModLoader\ModFilesystem.h" />
-    <ClInclude Include="external\commonItems\ModLoader\ModLoader.h" />
-    <ClInclude Include="external\commonItems\ModLoader\ModParser.h" />
-    <ClInclude Include="external\commonItems\OSCompatibilityLayer.h" />
-    <ClInclude Include="external\commonItems\Parser.h" />
-    <ClInclude Include="external\commonItems\ParserHelpers.h" />
-    <ClInclude Include="external\commonItems\StringUtils.h" />
     <ClInclude Include="external\fmt\include\fmt\core.h" />
     <ClInclude Include="external\fmt\include\fmt\format-inl.h" />
     <ClInclude Include="external\fmt\include\fmt\format.h" />

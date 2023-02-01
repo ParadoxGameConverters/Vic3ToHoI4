@@ -10,9 +10,6 @@
     <Filter Include="src\out_hoi4">
       <UniqueIdentifier>{1bfc8f00-885c-4450-8476-4c26ab6d4d4c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\commonItems">
-      <UniqueIdentifier>{39e93c8a-8929-4bb6-b27d-2f1ee273f807}</UniqueIdentifier>
-    </Filter>
     <Filter Include="external\googletest">
       <UniqueIdentifier>{d948b0ac-652a-4229-b11b-fa3a10a85248}</UniqueIdentifier>
     </Filter>
@@ -73,9 +70,6 @@
     <Filter Include="src\out_hoi4\world">
       <UniqueIdentifier>{d6851ddd-dd96-4032-840b-1ee8b4843fe9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\commonItems\ModLoader">
-      <UniqueIdentifier>{19d355dc-3e97-4347-9740-b82ed1861b12}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\mappers\provinces">
       <UniqueIdentifier>{f8d117cd-afa5-4fc6-abe0-ccb4b49c4c53}</UniqueIdentifier>
     </Filter>
@@ -100,9 +94,6 @@
     <Filter Include="src\maps">
       <UniqueIdentifier>{5822c41f-e907-4fad-9a15-37e3a11f68b1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\commonItems\zip">
-      <UniqueIdentifier>{cd150e9c-c9a0-4e9e-b01c-3b7e67f382c8}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -113,39 +104,6 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
       <Filter>src\out_hoi4</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\CommonFunctions.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ConvenientParser.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ConverterVersion.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\GameVersion.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\iconvlite.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\Log.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\OSCommonLayer.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\Parser.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ParserHelpers.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\StringUtils.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\WinUtils.cpp">
-      <Filter>external\commonItems</Filter>
     </ClCompile>
     <ClCompile Include="external\fmt\src\format.cc">
       <Filter>external\fmt\src</Filter>
@@ -206,15 +164,6 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\world\out_world.cpp">
       <Filter>src\out_hoi4\world</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ModLoader\ModFilesystem.cpp">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ModLoader\ModLoader.cpp">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ModLoader\ModParser.cpp">
-      <Filter>external\commonItems\ModLoader</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\world\out_world_tests.cpp">
       <Filter>src\out_hoi4\world</Filter>
@@ -330,9 +279,6 @@
     <ClCompile Include="src\maps\province_points_tests.cpp">
       <Filter>src\maps</Filter>
     </ClCompile>
-    <ClCompile Include="external\commonItems\Color.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
     <ClCompile Include="src\maps\utility.cpp">
       <Filter>src\maps</Filter>
     </ClCompile>
@@ -399,9 +345,6 @@
     <ClCompile Include="src\out_hoi4\map\out_rocket_sites_tests.cpp">
       <Filter>src\out_hoi4\map</Filter>
     </ClCompile>
-    <ClCompile Include="external\commonItems\external\zip\src\zip.c">
-      <Filter>external\commonItems\zip</Filter>
-    </ClCompile>
     <ClCompile Include="external\commonItems\external\googletest\googlemock\src\gmock-all.cc">
       <Filter>external\googletest\googlemock\src</Filter>
     </ClCompile>
@@ -418,36 +361,6 @@
     </ClInclude>
     <ClInclude Include="src\out_hoi4\out_mod.h">
       <Filter>src\out_hoi4</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\CommonFunctions.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ConvenientParser.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ConverterVersion.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\GameVersion.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\iconvlite.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\Log.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\OSCompatibilityLayer.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\Parser.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ParserHelpers.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\StringUtils.h">
-      <Filter>external\commonItems</Filter>
     </ClInclude>
     <ClInclude Include="external\fmt\include\fmt\format.h">
       <Filter>external\fmt\include\fmt</Filter>
@@ -506,18 +419,6 @@
     <ClInclude Include="src\vic3_world\world\vic3_world.h">
       <Filter>src\vic3_world\world</Filter>
     </ClInclude>
-    <ClInclude Include="external\commonItems\ModLoader\Mod.h">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ModLoader\ModFilesystem.h">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ModLoader\ModLoader.h">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ModLoader\ModParser.h">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClInclude>
     <ClInclude Include="external\rakaly\rakaly.h">
       <Filter>external\rakaly</Filter>
     </ClInclude>
@@ -572,9 +473,6 @@
     <ClInclude Include="src\maps\point.h">
       <Filter>src\maps</Filter>
     </ClInclude>
-    <ClInclude Include="external\commonItems\Color.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
     <ClInclude Include="src\maps\utility.h">
       <Filter>src\maps</Filter>
     </ClInclude>
@@ -619,12 +517,6 @@
     </ClInclude>
     <ClInclude Include="src\out_hoi4\map\out_rocket_sites.h">
       <Filter>src\out_hoi4\map</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\external\zip\src\miniz.h">
-      <Filter>external\commonItems\zip</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\external\zip\src\zip.h">
-      <Filter>external\commonItems\zip</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
