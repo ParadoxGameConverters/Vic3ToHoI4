@@ -7,6 +7,7 @@
 
 #include "external/commonItems/ModLoader/ModFilesystem.h"
 #include "src/vic3_world/world/vic3_world.h"
+#include "src/configuration/configuration.h"
 
 
 
@@ -14,7 +15,7 @@ namespace vic3
 {
 
 
-World ImportWorld(std::string_view save_filename, const commonItems::ModFilesystem& mod_filesystem, bool debug);
+World ImportWorld(const configuration::Configuration& configuration);
 
 
 }  // namespace vic3
