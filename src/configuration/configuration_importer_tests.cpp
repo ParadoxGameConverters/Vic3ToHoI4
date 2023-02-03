@@ -77,7 +77,7 @@ TEST(ConfigurationTest, ItemsAreLoggedWhenImported)
    const auto _ = ConfigurationImporter{}.ImportConfiguration("test_files/configuration/test_configuration.txt");
 
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 install path is test_files/test_folders/vic3_folder)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 mod path is vic3_mod_directory)"));
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 documents directory is vic3_documents_directory)"));
    EXPECT_THAT(log.str(),
        testing::HasSubstr(R"(Hearts of Iron 4 install path is test_files/test_folders/hoi4_folder)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Hearts of Iron 4 mod path is hoi4_mod_directory)"));
