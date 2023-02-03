@@ -5,7 +5,7 @@ l_italian:
  VIC3FOLDER: "Cartella di installazione di Victoria III"
  VIC3FOLDERTIP: "Il percorso in cui è installato Victoria III"
  VIC3DOCFOLDER: "Cartella dei documenti di Victoria III"
- VIC3MODTIP: "Il percorso in cui Victoria III conserva file temporanei"
+ VIC3DOCFOLDERTIP: "Il percorso in cui Victoria III conserva file temporanei"
  HOI4FOLDER: "Cartella di installazione di Hearts of Iron IV"
  HOI4FOLDERTIP: "Il percorso in cui è installato Hearts of Iron IV"
  HOI4MOD: "Cartella delle mod per Hearts of Iron IV"

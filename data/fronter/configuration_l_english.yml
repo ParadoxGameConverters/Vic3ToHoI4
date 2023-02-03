@@ -5,7 +5,7 @@ l_english:
  VIC3FOLDER: "Victoria III Install Directory"
  VIC3FOLDERTIP: "The path on your computer where Victoria III is installed"
  VIC3DOCFOLDER: "Victoria III Documents Directory"
- VIC3MODFOLDERTIP: "The path on your computer where Victoria III keeps temporary files"
+ VIC3DOCFOLDERTIP: "The path on your computer where Victoria III keeps temporary files"
  HOI4FOLDER: "Hearts of Iron IV Install Directory"
  HOI4FOLDERTIP: "The path on your computer where Hearts of Iron IV is installed"
  HOI4MOD: "Hearts of Iron IV Mod Directory"

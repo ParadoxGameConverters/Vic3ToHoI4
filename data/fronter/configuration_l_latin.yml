@@ -5,7 +5,7 @@ l_latin:
  VIC3FOLDER: "Scapus locationis Victoriae III"
  VIC3FOLDERTIP: "Via in qua locatus est ludus Victoria III"
  VIC3DOCFOLDER: "Scapus documentorum Victoriae III"
- VIC3MODTIP: "Via in qua Victoriae III scribit fasciculos temporales"
+ VIC3DOCFOLDERTIP: "Via in qua Victoriae III scribit fasciculos temporales"
  HOI4FOLDER: "Scapus locationis Hearts of Iron IV"
  HOI4FOLDERTIP: "Via in qua locatus est ludus Hearts of Iron IV"
  HOI4MOD: "Scapus correctionum Hearts of Iron IV"
