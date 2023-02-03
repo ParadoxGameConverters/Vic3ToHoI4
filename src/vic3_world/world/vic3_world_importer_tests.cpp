@@ -19,6 +19,7 @@ TEST(Vic3worldWorldVic3worldimporter, ExceptionForMissingSave)
 TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
 {
    const auto world = ImportWorld(configuration::Configuration{.vic3_directory = "test_files/vic3_world/empty_world",
+       .vic3_mod_path = "test_files/vic3_world/documents",
        .save_game = "test_files/vic3_world/world/empty_save.vic3"});
 
    EXPECT_TRUE(world.GetCountries().empty());
@@ -30,6 +31,7 @@ TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
 TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
 {
    const auto world = ImportWorld(configuration::Configuration{.vic3_directory = "test_files/vic3_world/world",
+       .vic3_mod_path = "test_files/vic3_world/documents",
        .save_game = "test_files/vic3_world/world/test_save.vic3"});
 
    EXPECT_THAT(world.GetCountries(),
@@ -50,11 +52,29 @@ TEST(Vic3worldWorldVic3worldimporter, StateWithInvalidOwnerIsLogged)
    std::cout.rdbuf(log.rdbuf());
 
    const auto world = ImportWorld(configuration::Configuration{.vic3_directory = "test_files/vic3_world/world",
+       .vic3_mod_path = "test_files/vic3_world/documents",
        .save_game = "test_files/vic3_world/world/test_save.vic3"});
 
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_THAT(log.str(), testing::HasSubstr(R"([WARNING] State 2 had an owner with no definition.)"));
+}
+
+
+TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const auto world = ImportWorld(configuration::Configuration{.vic3_directory = "test_files/vic3_world/world",
+       .vic3_mod_path = "test_files/vic3_world/documents",
+       .save_game = "test_files/vic3_world/world/test_save.vic3"});
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr(R"([INFO] 		->> Found potentially useful [Test Mod]: mod/test_mod/)"));
 }
 
 
