@@ -8,6 +8,8 @@
 #include "external/commonItems/Color.h"
 #include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/Log.h"
+#include "external/commonItems/ModLoader/Mod.h"
+#include "external/commonItems/ModLoader/ModLoader.h"
 #include "external/commonItems/Parser.h"
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
@@ -68,6 +70,21 @@ std::vector<std::string> ReadModNames(const rakaly::GameFile& save, const std::s
 }
 
 
+std::vector<Mod> GetModsFromSave(const rakaly::GameFile& save, const std::string& save_string)
+{
+   std::vector<std::string> mod_names = ReadModNames(save, save_string);
+
+   std::vector<Mod> mods;
+   for (const auto& mod_name: mod_names)
+   {
+      Mod mod(mod_name, "");
+      mods.push_back(mod);
+   }
+
+   return mods;
+}
+
+
 std::istringstream MeltSave(const rakaly::GameFile& save, const std::string& save_string)
 {
    std::string melted_save_string;
@@ -120,11 +137,11 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    std::string save_string = ReadSave(configuration.save_game);
    const rakaly::GameFile save = rakaly::parseVic3(save_string);
 
-   std::vector<std::string> mod_names = ReadModNames(save, save_string);
-
+   commonItems::ModLoader mod_loader;
+   mod_loader.loadMods(configuration.vic3_mod_path, GetModsFromSave(save, save_string));
 
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
-   commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory, {});
+   commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory, mod_loader.getMods());
    const auto province_definitions = ProvinceDefinitionsLoader().LoadProvinceDefinitions(mod_filesystem);
    Log(LogLevel::Progress) << "5 %";
 
