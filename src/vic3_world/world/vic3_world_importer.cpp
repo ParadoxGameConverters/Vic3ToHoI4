@@ -138,7 +138,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    const rakaly::GameFile save = rakaly::parseVic3(save_string);
 
    commonItems::ModLoader mod_loader;
-   mod_loader.loadMods(configuration.vic3_mod_path, GetModsFromSave(save, save_string));
+   mod_loader.loadMods(configuration.vic3_documents_directory, GetModsFromSave(save, save_string));
 
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
    commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory, mod_loader.getMods());

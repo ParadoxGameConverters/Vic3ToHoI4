@@ -14,7 +14,7 @@ TEST(ConfigurationTest, DefaultsAreDefaulted)
        configuration::ConfigurationImporter{}.ImportConfiguration("test_files/configuration/blank_configuration.txt");
 
    EXPECT_TRUE(configuration.vic3_directory.empty());
-   EXPECT_TRUE(configuration.vic3_mod_path.empty());
+   EXPECT_TRUE(configuration.vic3_documents_directory.empty());
    EXPECT_TRUE(configuration.hoi4_directory.empty());
    EXPECT_TRUE(configuration.hoi4_mod_path.empty());
    EXPECT_FALSE(configuration.debug);
@@ -59,7 +59,7 @@ TEST(ConfigurationTest, ItemsCanBeImported)
        ConfigurationImporter{}.ImportConfiguration("test_files/configuration/test_configuration.txt");
 
    EXPECT_EQ(configuration.vic3_directory, R"(test_files/test_folders/vic3_folder)");
-   EXPECT_EQ(configuration.vic3_mod_path, "vic3_mod_directory");
+   EXPECT_EQ(configuration.vic3_documents_directory, "vic3_documents_directory");
    EXPECT_EQ(configuration.hoi4_directory, R"(test_files/test_folders/hoi4_folder)");
    EXPECT_EQ(configuration.hoi4_mod_path, "hoi4_mod_directory");
    EXPECT_EQ(configuration.save_game, "test_save.v3");

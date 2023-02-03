@@ -1,5 +1,5 @@
 Vic3directory = "test_files/test_folders/vic3_folder"
-sourceGameModPath = "vic3_mod_directory"
+Vic3DocumentsDirectory = "vic3_documents_directory"
 HoI4directory = "test_files/test_folders/hoi4_folder"
 targetGameModPath = "hoi4_mod_directory"
 SaveGame = "test_save.v3"
