@@ -32,12 +32,12 @@ requiredFolder = {
 }
 
 requiredFolder = {
-	name = sourceGameModPath
-	displayName = VIC3MOD
-	tooltip = VIC3MODTIP
+	name = Vic3DocumentsDirectory
+	displayName = VIC3DOCFOLDER
+	tooltip = VIC3DOCFOLDERTIP
 	mandatory = false
 	searchPathType = windowsUsersFolder
-	searchPath = "Paradox Interactive\Victoria 3\mod"
+	searchPath = "Paradox Interactive\Victoria 3"
 }
 
 requiredFolder = {

@@ -1,4 +1,8 @@
 SAV01020000000000000000
+meta_data={
+	mods={ "Test Mod" }
+}
+
 country_manager={
 	database={
 0=none
