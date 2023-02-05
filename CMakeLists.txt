@@ -191,7 +191,11 @@ set_target_properties(ConverterFrontend
 target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} CommonItems)
 
 add_custom_command(TARGET ConverterFrontend
-	COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" && cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/"
+	COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+	cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+	cp -r "external/Fronter/Fronter/Resources/*yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+	cp external/Fronter/Fronter/Resources/converter.ico ${FRONTER_OUTPUT_DIRECTORY} &&
+	cp external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt ${FRONTER_OUTPUT_DIRECTORY}
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
