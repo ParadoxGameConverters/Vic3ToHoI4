@@ -36,7 +36,6 @@ jobs:
       run: |
        git submodule update --init --recursive external/commonItems
        git -c submodule."external/commonItems".update=none \
-           -c submodule."googletest".update=none \
            submodule update --init --recursive external/Fronter
 
     - name: Initialize CodeQL
@@ -98,7 +97,6 @@ jobs:
       run: |
        git submodule update --init --recursive external/commonItems
        git -c submodule."external/commonItems".update=none \
-           -c submodule."googletest".update=none \
            submodule update --init --recursive external/Fronter
 
     - name: Initialize CodeQL
