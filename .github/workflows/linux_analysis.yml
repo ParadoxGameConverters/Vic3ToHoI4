@@ -35,9 +35,8 @@ jobs:
     - name: "Cloning selective submodules"
       run: |
        git submodule update --init --recursive external/commonItems
-       git -c submodule."googletest".update=none \
-           -c submodule."external/googletest".update=none \
-           -c submodule."external/zip".update=none \
+       git -c submodule."external/commonItems".update=none \
+           -c submodule."googletest".update=none \
            submodule update --init --recursive external/Fronter
 
     - name: Initialize CodeQL
@@ -47,7 +46,7 @@ jobs:
 
     - name: Build solution
       run: |
-       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 Fronter Vic3ToHoi4Tests -- -j40
+       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
@@ -98,9 +97,8 @@ jobs:
     - name: "Cloning selective submodules"
       run: |
        git submodule update --init --recursive external/commonItems
-       git -c submodule."googletest".update=none \
-           -c submodule."external/googletest".update=none \
-           -c submodule."external/zip".update=none \
+       git -c submodule."external/commonItems".update=none \
+           -c submodule."googletest".update=none \
            submodule update --init --recursive external/Fronter
 
     - name: Initialize CodeQL
@@ -130,7 +128,7 @@ jobs:
        export CC=/usr/bin/gcc-12
        export CXX=/usr/bin/g++-12
        # Run your build commands next
-       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 Fronter Vic3ToHoi4Tests -- -j3
+       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j5
 
     - name: Run tests
       run: |
