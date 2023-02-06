@@ -37,8 +37,9 @@ requiredFolder = {
 	displayName = STEAMMOD
 	tooltip = STEAMMODTIP
 	mandatory = true
-	searchPathType = direct
-	searchPathID = "C:\Program Files (x86)\Steam\steamapps\workshop\content\529340"
+	searchPathType = steamFolder
+	searchPathID = 529340
+	searchPath = "../../workshop/content/529340"
 }
 
 requiredFolder = {
