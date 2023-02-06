@@ -31,13 +31,23 @@ requiredFolder = {
 	searchPathID = 529340
 }
 
+
 requiredFolder = {
-	name = Vic3DocumentsDirectory
-	displayName = VIC3DOCFOLDER
-	tooltip = VIC3DOCFOLDERTIP
+	name = Vic3SteamModDirectory
+	displayName = STEAMMOD
+	tooltip = STEAMMODTIP
+	mandatory = true
+	searchPathType = direct
+	searchPathID = "C:\Program Files (x86)\Steam\steamapps\workshop\content\529340"
+}
+
+requiredFolder = {
+	name = sourceGameModPath
+	displayName = VIC3MOD
+	tooltip = VIC3MODTIP
 	mandatory = false
 	searchPathType = windowsUsersFolder
-	searchPath = "Paradox Interactive\Victoria 3"
+	searchPath = "Paradox Interactive\Victoria 3\mod"
 }
 
 requiredFolder = {
