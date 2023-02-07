@@ -126,19 +126,7 @@ TEST(MapsMapdata, AnyBordersCanBeLookedUp)
 }
 
 
-TEST(MapsMapdata, NoProvinceNumberForUndefinedPoint)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
-   EXPECT_EQ(map_data.GetProvinceName({0, 0}), std::nullopt);
-}
-
-
-TEST(MapsMapdata, ProvinceNumberForDefinedPoint)
+TEST(MapsMapdata, ProvinceNameForDefinedPoint)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
    const maps::ProvinceDefinitions province_definitions({},
@@ -151,9 +139,12 @@ TEST(MapsMapdata, ProvinceNumberForDefinedPoint)
 
    const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
 
-   const auto province_number = map_data.GetProvinceName({13, 595});
-   ASSERT_TRUE(province_number);
-   EXPECT_EQ(*province_number, "1");
+   EXPECT_EQ(map_data.GetProvinceName({0, 0}), std::nullopt);  // undefined points
+
+   // defined points
+   const auto province_name = map_data.GetProvinceName({13, 595});
+   ASSERT_TRUE(province_name);
+   EXPECT_EQ(*province_name, "1");
 }
 
 
