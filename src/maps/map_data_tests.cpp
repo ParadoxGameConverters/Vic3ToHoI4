@@ -57,7 +57,7 @@ TEST(MapsMapdata, NeighborsDefined)
 }
 
 
-TEST(MapsMapdata, SpeicifiedBordersCanBeLookedUp)
+TEST(MapsMapdata, SpecifiedBordersCanBeLookedUp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
    const maps::ProvinceDefinitions province_definitions({},
@@ -66,11 +66,11 @@ TEST(MapsMapdata, SpeicifiedBordersCanBeLookedUp)
        {
            {0x88'00'15, "1"},         // the dark red one on top
            {0xED'1C'24, "2"},         // the red red one on the left
-           {0x22'B1'4C, "3"},         // the green one in the middle
+           {0x22'B1'4C, "0x000003"},         // the green one in the middle
            {0xFF'7F'27, "4"},         // the orange one on the right
            {0xFF'F2'00, "0x000005"},  // the yellow red one below
            {0x3F'48'CC, "6"},         // the indigo one on the far right
-           {0xA3'49'A4, "7"},         // the purple one on the far right
+           {0xA3'49'A4, "0x000007"},         // the purple one on the far right
        });
    maps::MapDataImporter importer(province_definitions);
 
@@ -78,60 +78,19 @@ TEST(MapsMapdata, SpeicifiedBordersCanBeLookedUp)
 
    EXPECT_EQ(map_data.GetSpecifiedBorderCenter("42", "0x000001"), std::nullopt);  // non-existent province
    EXPECT_EQ(map_data.GetSpecifiedBorderCenter("1", "0x000005"), std::nullopt);   // non-bordering provinces
-}
 
-
-TEST(MapsMapdata, SpecifiedBorderForBorderingProvinces)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({},
-       {},
-       {},
-       {
-           {0x88'00'15, "1"},         // the dark red one on top
-           {0xED'1C'24, "2"},         // the red red one on the left
-           {0x22'B1'4C, "0x000003"},  // the green one in the middle
-           {0xFF'7F'27, "4"},         // the orange one on the right
-           {0xFF'F2'00, "5"},         // the yellow red one below
-           {0x3F'48'CC, "6"},         // the indigo one on the far right
-           {0xA3'49'A4, "7"},         // the purple one on the far right
-       });
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
+    // Bordering provinces
    const auto border_point = map_data.GetSpecifiedBorderCenter("1", "0x000003");
    ASSERT_TRUE(border_point);
-
-   constexpr maps::Point expected_point{13, 591};  // y-axis is from the bottom
+   constexpr maps::Point expected_point{ 13, 591 };  // y-axis is from the bottom
    EXPECT_EQ(*border_point, expected_point);
-}
 
+   // Impassable border for bordering provinces
+   const auto impassable_border_point = map_data.GetSpecifiedBorderCenter("6", "0x000007");
+   ASSERT_TRUE(impassable_border_point);
 
-TEST(MapsMapdata, SpecifiedBorderForImpassableBorderProvinces)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({},
-       {},
-       {},
-       {
-           {0x88'00'15, "1"},         // the dark red one on top
-           {0xED'1C'24, "2"},         // the red red one on the left
-           {0x22'B1'4C, "3"},         // the green one in the middle
-           {0xFF'7F'27, "4"},         // the orange one on the right
-           {0xFF'F2'00, "5"},         // the yellow red one below
-           {0x3F'48'CC, "6"},         // the indigo one on the far right
-           {0xA3'49'A4, "0x000007"},  // the purple one on the far right
-       });
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
-   const auto border_point = map_data.GetSpecifiedBorderCenter("6", "0x000007");
-   ASSERT_TRUE(border_point);
-
-   constexpr maps::Point expected_point{44, 586};  // y-axis is from the bottom
-   EXPECT_EQ(*border_point, expected_point);
+   constexpr maps::Point expected_impassable_point{ 44, 586 };  // y-axis is from the bottom
+   EXPECT_EQ(*impassable_border_point, expected_impassable_point);
 }
 
 
