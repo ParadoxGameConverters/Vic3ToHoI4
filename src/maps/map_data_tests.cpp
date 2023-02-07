@@ -26,20 +26,7 @@ TEST(MapsMapdata, ExceptionThrownForMissingAdjacenciesCsv)
 }
 
 
-TEST(MapsMapdata, NoNeighborsForNonexistentProvince)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
-   EXPECT_THAT(map_data.GetNeighbors("42"), testing::UnorderedElementsAre());
-   EXPECT_THAT(map_data.GetNeighbors("0x000042"), testing::UnorderedElementsAre());
-}
-
-
-TEST(MapsMapdata, NeighborDefinedFromBelow)
+TEST(MapsMapdata, NeighborsDefined)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
    const maps::ProvinceDefinitions province_definitions({},
@@ -47,114 +34,30 @@ TEST(MapsMapdata, NeighborDefinedFromBelow)
        {},
        {
            {0x88'00'15, "1"},         // the dark red one on top
-           {0x22'B1'4C, "0x000003"},  // the green one in the middle
-       });
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
-   EXPECT_THAT(map_data.GetNeighbors("1"), testing::UnorderedElementsAre("0x000003"));
-}
-
-
-TEST(MapsMapdata, NeighborDefinedFromRight)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({},
-       {},
-       {},
-       {
            {0xED'1C'24, "2"},         // the red red one on the left
            {0x22'B1'4C, "0x000003"},  // the green one in the middle
-       });
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
-   EXPECT_THAT(map_data.GetNeighbors("2"), testing::UnorderedElementsAre("0x000003"));
-}
-
-
-TEST(MapsMapdata, NeighborDefinedFromLeft)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({},
-       {},
-       {},
-       {
-           {0x22'B1'4C, "3"},         // the green one in the middle
            {0xFF'7F'27, "0x000004"},  // the orange one on the right
-       });
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
-   EXPECT_THAT(map_data.GetNeighbors("0x000004"), testing::UnorderedElementsAre("3"));
-}
-
-
-TEST(MapsMapdata, NeighborDefinedFromAbove)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({},
-       {},
-       {},
-       {
-           {0x22'B1'4C, "3"},         // the green one in the middle
            {0xFF'F2'00, "0x000005"},  // the yellow red one below
+           {0x3F'48'CC, "6"},         // the indigo one on the far right
+           {0xA3'49'A4, "7"},         // the purple one on the far right
        });
    maps::MapDataImporter importer(province_definitions);
 
    const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
 
-   EXPECT_THAT(map_data.GetNeighbors("0x000005"), testing::UnorderedElementsAre("3"));
+   EXPECT_THAT(map_data.GetNeighbors("42"), testing::UnorderedElementsAre());                // non-existent province
+   EXPECT_THAT(map_data.GetNeighbors("0x000042"), testing::UnorderedElementsAre());          // non-existent province
+   EXPECT_THAT(map_data.GetNeighbors("1"), testing::UnorderedElementsAre("0x000003"));       // defined from above
+   EXPECT_THAT(map_data.GetNeighbors("2"), testing::UnorderedElementsAre("0x000003"));       // defined from right
+   EXPECT_THAT(map_data.GetNeighbors("0x000004"), testing::UnorderedElementsAre("0x000003"));       // defined from left
+   EXPECT_THAT(map_data.GetNeighbors("0x000005"), testing::UnorderedElementsAre("0x000003"));       // defined from above
+   EXPECT_THAT(map_data.GetNeighbors("101"), testing::UnorderedElementsAre("102"));          // non-impassable adjacency
+   EXPECT_THAT(map_data.GetNeighbors("xD00000"), testing::UnorderedElementsAre("x8CC57E"));  // non-impassable adjacency
+   EXPECT_THAT(map_data.GetNeighbors("6"), testing::UnorderedElementsAre());  // impossible adjacency removes neighbor
 }
 
 
-TEST(MapsMapdata, NeighborDefinedFromNonImpassableAdjacency)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
-   EXPECT_THAT(map_data.GetNeighbors("101"), testing::UnorderedElementsAre("102"));
-   EXPECT_THAT(map_data.GetNeighbors("xD00000"), testing::UnorderedElementsAre("x8CC57E"));
-}
-
-
-TEST(MapsMapdata, NeighborRemovedFromImpassableAdjacency)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({},
-       {},
-       {},
-       {
-           {0x3F'48'CC, "6"},  // the indigo one on the far right
-           {0xA3'49'A4, "7"},  // the purple one on the far right
-       });
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
-   EXPECT_THAT(map_data.GetNeighbors("6"), testing::UnorderedElementsAre());
-}
-
-
-TEST(MapsMapdata, NoSpecifiedBorderForNonexistentProvince)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
-   EXPECT_EQ(map_data.GetSpecifiedBorderCenter("42", "0x000001"), std::nullopt);
-}
-
-
-TEST(MapsMapdata, NoBorderForNonBorderingProvinces)
+TEST(MapsMapdata, SpeicifiedBordersCanBeLookedUp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
    const maps::ProvinceDefinitions province_definitions({},
@@ -173,7 +76,8 @@ TEST(MapsMapdata, NoBorderForNonBorderingProvinces)
 
    const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
 
-   EXPECT_EQ(map_data.GetSpecifiedBorderCenter("1", "0x000005"), std::nullopt);
+   EXPECT_EQ(map_data.GetSpecifiedBorderCenter("42", "0x000001"), std::nullopt);  // non-existent province
+   EXPECT_EQ(map_data.GetSpecifiedBorderCenter("1", "0x000005"), std::nullopt);   // non-bordering provinces
 }
 
 
