@@ -126,7 +126,7 @@ TEST(MapsMapdata, AnyBordersCanBeLookedUp)
 }
 
 
-TEST(MapsMapdata, ProvinceNameForDefinedPoint)
+TEST(MapsMapdata, ProvinceNamesCanBeLookedUp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
    const maps::ProvinceDefinitions province_definitions({},
@@ -148,19 +148,7 @@ TEST(MapsMapdata, ProvinceNameForDefinedPoint)
 }
 
 
-TEST(MapsMapdata, NoProvincePointsForUndefinedProvince)
-{
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
-   const maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
-   maps::MapDataImporter importer(province_definitions);
-
-   const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
-
-   EXPECT_EQ(map_data.GetProvincePoints("42"), std::nullopt);
-}
-
-
-TEST(MapsMapdata, ProvincePointsForDefinedProvince)
+TEST(MapsMapdata, ProvincePointsCanBeLookedUp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
    const maps::ProvinceDefinitions province_definitions({},
@@ -173,6 +161,10 @@ TEST(MapsMapdata, ProvincePointsForDefinedProvince)
 
    const maps::MapData map_data = importer.ImportMapData(mod_filesystem);
 
+
+   EXPECT_EQ(map_data.GetProvincePoints("42"), std::nullopt);  // undefined province
+
+   // defined province
    const auto provincePoints = map_data.GetProvincePoints("1");
    ASSERT_TRUE(provincePoints);
 
