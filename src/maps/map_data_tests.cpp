@@ -6,6 +6,9 @@
 
 
 
+namespace
+{
+
 class MapsMapdata: public ::testing::Test
 {
   protected:
@@ -34,6 +37,8 @@ class MapsMapdata: public ::testing::Test
 
 
 maps::MapData MapsMapdata::map_data{{}, {}, {}, {{}, {}, {}, {}}, {}};
+
+}  // namespace
 
 
 TEST_F(MapsMapdata, ExceptionThrownForMissingProvincesBmp)
