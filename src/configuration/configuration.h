@@ -12,7 +12,8 @@ namespace configuration
 struct Configuration
 {
    std::string vic3_directory;
-   std::string vic3_documents_directory;
+   std::string vic3_steam_mod_path;
+   std::string vic3_mod_path;
    std::string hoi4_directory;
    std::string hoi4_mod_path;
    std::string save_game;
