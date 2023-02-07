@@ -11,6 +11,9 @@ vic3::CountryImporter::CountryImporter()
    country_parser_.registerKeyword("definition", [this](std::istream& input_stream) {
       tag_ = commonItems::remQuotes(commonItems::getString(input_stream));
    });
+   country_parser_.registerKeyword("capital", [this](std::istream& input_stream) {
+      capital_ = commonItems::getInt(input_stream);
+   });
    country_parser_.IgnoreUnregisteredItems();
 }
 

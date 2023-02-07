@@ -26,6 +26,7 @@ class CountryImporter
    commonItems::parser country_parser_;
 
    std::string tag_;
+   std::optional<int> capital_;
 };
 
 }  // namespace vic3
