@@ -22,7 +22,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 
    CountriesConverter countries_converter;
    const auto countries =
-       countries_converter.ConvertCountries({{1, source_country_one}, {2, source_country_two}}, country_mapper);
+       countries_converter.ConvertCountries({{1, source_country_one}, {2, source_country_two}}, country_mapper, {});
 
    EXPECT_THAT(countries,
        testing::ElementsAre(

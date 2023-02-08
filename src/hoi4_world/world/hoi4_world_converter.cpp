@@ -24,14 +24,9 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
    Log(LogLevel::Info) << "Creating Hoi4 world";
    Log(LogLevel::Progress) << "50%";
 
-   Log(LogLevel::Info) << "\tConverting countries";
-   CountriesConverter countries_converter;
-   countries = countries_converter.ConvertCountries(source_world.GetCountries(), country_mapper);
-
    StrategicRegions strategic_regions = ImportStrategicRegions(hoi4_mod_filesystem);
 
    Log(LogLevel::Info) << "\tConverting states";
-   Log(LogLevel::Progress) << "55%";
    const auto province_definitions = ImportProvinceDefinitions(hoi4_mod_filesystem);
    const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem);
 
@@ -50,6 +45,13 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
        province_definitions.GetLandProvinces(),
        province_definitions.GetSeaProvinces());
    Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem);
+
+   Log(LogLevel::Info) << "\tConverting countries";
+   Log(LogLevel::Progress) << "55%";
+   CountriesConverter countries_converter;
+   countries = countries_converter.ConvertCountries(source_world.GetCountries(),
+       country_mapper,
+       states.vic3_state_ids_to_hoi4_state_ids);
 
    return World(countries, states, strategic_regions, buildings);
 }
