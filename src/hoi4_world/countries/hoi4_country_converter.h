@@ -18,7 +18,8 @@ class CountryConverter
 {
   public:
    std::optional<Country> ConvertCountry(const vic3::Country& source_country,
-       const mappers::CountryMapper& country_mapper, const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids);
+       const mappers::CountryMapper& country_mapper,
+       const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids);
 };
 
 }  // namespace hoi4
