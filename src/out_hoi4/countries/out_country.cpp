@@ -41,5 +41,11 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    {
       throw std::runtime_error(fmt::format("Could not create {}", country_history_file_name));
    }
+
+   if (const auto capital = country.GetCapitalState(); capital)
+   {
+      country_history << fmt::format("capital = {}", *capital);
+   }
+
    country_history.close();
 }

@@ -11,7 +11,10 @@ vic3::CountryImporter::CountryImporter()
    country_parser_.registerKeyword("definition", [this](std::istream& input_stream) {
       tag_ = commonItems::remQuotes(commonItems::getString(input_stream));
    });
-   country_parser_.IgnoreUnregisteredItems();
+   country_parser_.registerKeyword("capital", [this](std::istream& input_stream) {
+      capital_ = commonItems::getInt(input_stream);
+   });
+   country_parser_.IgnoreAndLogUnregisteredItems();
 }
 
 
@@ -19,6 +22,8 @@ vic3::Country vic3::CountryImporter::ImportCountry(std::istream& input_stream,
     const std::map<std::string, commonItems::Color>& color_definitions)
 {
    tag_.clear();
+   capital_ = std::nullopt;
+
    country_parser_.parseStream(input_stream);
 
    commonItems::Color color;
@@ -27,5 +32,5 @@ vic3::Country vic3::CountryImporter::ImportCountry(std::istream& input_stream,
       color = color_itr->second;
    }
 
-   return Country({.tag = tag_, .color = color});
+   return Country({.tag = tag_, .color = color, .capital_state = capital_});
 }

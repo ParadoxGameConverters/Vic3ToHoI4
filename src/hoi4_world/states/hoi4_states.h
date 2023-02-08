@@ -17,6 +17,7 @@ struct States
 {
    std::vector<State> states;
    std::map<int, int> province_to_state_id_map;
+   std::map<int, int> vic3_state_ids_to_hoi4_state_ids;
 };
 
 }  // namespace hoi4
