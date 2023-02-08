@@ -31,7 +31,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
 
    EXPECT_EQ(country.GetTag(), "TAG");
    EXPECT_EQ(country.GetColor(), commonItems::Color(std::array{1, 2, 3}));
-   EXPECT_EQ(country.GetCapitalState(), 12345);
+   EXPECT_EQ(country.GetCapitalState(), std::optional<int>(12345));
 }
 
 
@@ -53,7 +53,7 @@ TEST(Vic3WorldCountriesCountryImporter, MultipleCountriesCanBeImported)
 
    EXPECT_EQ(country_one.GetTag(), "TAG");
    EXPECT_EQ(country_one.GetColor(), commonItems::Color(std::array{1, 2, 3}));
-   EXPECT_EQ(country_one.GetCapitalState(), 12345);
+   EXPECT_EQ(country_one.GetCapitalState(), std::optional<int>(12345));
 
    EXPECT_TRUE(country_two.GetTag().empty());
    EXPECT_EQ(country_two.GetColor(), commonItems::Color(std::array{0, 0, 0}));
