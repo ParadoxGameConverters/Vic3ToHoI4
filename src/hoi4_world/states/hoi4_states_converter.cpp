@@ -241,6 +241,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& states,
 {
    std::vector<hoi4::State> hoi4_states;
    std::map<int, int> province_to_state_id_map;
+   std::map<int, int> vic3_state_ids_to_hoi4_state_ids;
 
    for (const auto& [state_id, hoi4_provinces]: state_id_to_hoi4_provinces)
    {
@@ -277,11 +278,12 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& states,
          {
             province_to_state_id_map.emplace(province, static_cast<int>(hoi4_states.size() + 1U));
          }
+         vic3_state_ids_to_hoi4_state_ids.emplace(state_id, static_cast<int>(hoi4_states.size() + 1U));
          hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U), state_owner, province_set);
       }
    }
 
-   return {hoi4_states, province_to_state_id_map};
+   return {hoi4_states, province_to_state_id_map, vic3_state_ids_to_hoi4_state_ids};
 }
 
 }  // namespace
