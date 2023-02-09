@@ -14,7 +14,7 @@
 namespace out
 {
 
-TEST(Outhoi4CountriesCountry, CountriesFileIsCreated)
+TEST(Outhoi4CountriesOutcountry, CommonCountriesFileIsCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CountriesFileIsCreated");
@@ -35,7 +35,12 @@ TEST(Outhoi4CountriesCountry, CountriesFileIsCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_stream));
    country_file.close();
-   EXPECT_EQ(country_file_stream.str(), "color = rgb { 1 2 3 }");
+
+   std::stringstream expected_one;
+   expected_one << "graphical_culture = western_european_gfx\n";
+   expected_one << "graphical_culture_2d = western_european_2d\n";
+   expected_one << "color = rgb { 1 2 3 }";
+   EXPECT_EQ(country_file_stream.str(), expected_one.str());
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/CountriesFileIsCreated/common/countries/TWO.txt"));
    std::ifstream country_file_two("output/CountriesFileIsCreated/common/countries/TWO.txt");
@@ -45,11 +50,16 @@ TEST(Outhoi4CountriesCountry, CountriesFileIsCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_two_stream));
    country_file_two.close();
-   EXPECT_EQ(country_file_two_stream.str(), "color = rgb { 2 4 6 }");
+
+   std::stringstream expected_two;
+   expected_two << "graphical_culture = western_european_gfx\n";
+   expected_two << "graphical_culture_2d = western_european_2d\n";
+   expected_two << "color = rgb { 2 4 6 }";
+   EXPECT_EQ(country_file_two_stream.str(), expected_two.str());
 }
 
 
-TEST(Outhoi4CountriesCountry, ExceptionIfCountriesFileNotOpened)
+TEST(Outhoi4CountriesOutcountry, ExceptionIfCountriesFileNotOpened)
 {
    const hoi4::Country country({.tag = "TAG"});
 
@@ -57,7 +67,7 @@ TEST(Outhoi4CountriesCountry, ExceptionIfCountriesFileNotOpened)
 }
 
 
-TEST(Outhoi4CountriesCountry, TagIsAddedToTagsFile)
+TEST(Outhoi4CountriesOutcountry, TagIsAddedToTagsFile)
 {
    const hoi4::Country country({.tag = "TAG"});
    const hoi4::Country country_two({.tag = "TWO"});
@@ -83,15 +93,15 @@ TEST(Outhoi4CountriesCountry, TagIsAddedToTagsFile)
 }
 
 
-TEST(Outhoi4CountriesCountry, CountryHistoryFileIsCreated)
+TEST(Outhoi4CountriesOutcountry, CountryHistoryFileIsCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CountryHistoryFileIsCreated");
    commonItems::TryCreateFolder("output/CountryHistoryFileIsCreated/history");
    commonItems::TryCreateFolder("output/CountryHistoryFileIsCreated/history/countries");
 
-   const hoi4::Country country({.tag = "TAG"});
-   const hoi4::Country country_two({.tag = "TWO"});
+   const hoi4::Country country({.tag = "TAG"});  // no capital
+   const hoi4::Country country_two({.tag = "TWO", .capital_state = 2});
 
    OutputCountryHistory("CountryHistoryFileIsCreated", country);
    OutputCountryHistory("CountryHistoryFileIsCreated", country_two);
@@ -104,7 +114,30 @@ TEST(Outhoi4CountriesCountry, CountryHistoryFileIsCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_stream));
    country_file.close();
-   EXPECT_EQ(country_file_stream.str(), "");
+
+   std::stringstream expected_one;
+   expected_one << "set_research_slots = 3\n";
+   expected_one << "set_convoys = 0\n";
+   expected_one << "\n";
+   expected_one << "set_politics = {\n";
+   expected_one << "\truling_party = neutrality\n";
+   expected_one << "\tlast_election = \"1836.1.1\"\n";
+   expected_one << "election_frequency = 48\n";
+   expected_one << "elections_allowed = no\n";
+   expected_one << "}\n";
+   expected_one << "\n";
+   expected_one << "set_popularities = {\n";
+   expected_one << "\tneutrality = 100\n";
+   expected_one << "}\n";
+   expected_one << "\n";
+   expected_one << "add_ideas = {\n";
+   expected_one << "\tlimited_conscription\n";
+   expected_one << "\tcivilian_economy\n";
+   expected_one << "\texport_focus\n";
+   expected_one << "}\n";
+   expected_one << "set_stability = 0.60\n";
+   expected_one << "set_war_support = 0.60\n";
+   EXPECT_EQ(country_file_stream.str(), expected_one.str());
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFileIsCreated/history/countries/TWO.txt"));
    std::ifstream country_file_two("output/CountryHistoryFileIsCreated/history/countries/TWO.txt");
@@ -114,11 +147,35 @@ TEST(Outhoi4CountriesCountry, CountryHistoryFileIsCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_two_stream));
    country_file_two.close();
-   EXPECT_EQ(country_file_two_stream.str(), "");
+
+   std::stringstream expected_two;
+   expected_two << "capital = 2\n";
+   expected_two << "set_research_slots = 3\n";
+   expected_two << "set_convoys = 0\n";
+   expected_two << "\n";
+   expected_two << "set_politics = {\n";
+   expected_two << "\truling_party = neutrality\n";
+   expected_two << "\tlast_election = \"1836.1.1\"\n";
+   expected_two << "election_frequency = 48\n";
+   expected_two << "elections_allowed = no\n";
+   expected_two << "}\n";
+   expected_two << "\n";
+   expected_two << "set_popularities = {\n";
+   expected_two << "\tneutrality = 100\n";
+   expected_two << "}\n";
+   expected_two << "\n";
+   expected_two << "add_ideas = {\n";
+   expected_two << "\tlimited_conscription\n";
+   expected_two << "\tcivilian_economy\n";
+   expected_two << "\texport_focus\n";
+   expected_two << "}\n";
+   expected_two << "set_stability = 0.60\n";
+   expected_two << "set_war_support = 0.60\n";
+   EXPECT_EQ(country_file_two_stream.str(), expected_two.str());
 }
 
 
-TEST(Outhoi4CountriesCountry, ExceptionIfHistoryFileNotOpened)
+TEST(Outhoi4CountriesOutcountry, ExceptionIfHistoryFileNotOpened)
 {
    const hoi4::Country country({.tag = "TAG"});
 
