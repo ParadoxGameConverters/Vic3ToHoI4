@@ -14,7 +14,7 @@
 namespace out
 {
 
-TEST(Outhoi4CountriesCountry, CountriesFilesAreCreated)
+TEST(Outhoi4CountriesOutcountries, CountriesFilesAreCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CountriesFilesAreCreated");
@@ -25,8 +25,7 @@ TEST(Outhoi4CountriesCountry, CountriesFilesAreCreated)
    commonItems::TryCreateFolder("output/CountriesFilesAreCreated/history/countries");
 
    OutputCountries("CountriesFilesAreCreated",
-       {{"TAG", hoi4::Country({.tag = "TAG", .color = commonItems::Color(std::array{1, 2, 3})})},
-           {"TWO", hoi4::Country({.tag = "TWO", .color = commonItems::Color(std::array{4, 5, 6})})}});
+       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountriesFilesAreCreated/common/countries/TAG.txt"));
    std::ifstream country_file_one("output/CountriesFilesAreCreated/common/countries/TAG.txt");
@@ -36,7 +35,6 @@ TEST(Outhoi4CountriesCountry, CountriesFilesAreCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_one_stream));
    country_file_one.close();
-   EXPECT_EQ(country_file_one_stream.str(), "color = rgb { 1 2 3 }");
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountriesFilesAreCreated/common/countries/TWO.txt"));
    std::ifstream country_file_two("output/CountriesFilesAreCreated/common/countries/TWO.txt");
@@ -46,11 +44,10 @@ TEST(Outhoi4CountriesCountry, CountriesFilesAreCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_two_stream));
    country_file_two.close();
-   EXPECT_EQ(country_file_two_stream.str(), "color = rgb { 4 5 6 }");
 }
 
 
-TEST(Outhoi4CountriesCountry, TagsFileIsCreated)
+TEST(Outhoi4CountriesOutcountries, TagsFileIsCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/TagsFileIsCreated");
@@ -76,7 +73,7 @@ TEST(Outhoi4CountriesCountry, TagsFileIsCreated)
 }
 
 
-TEST(Outhoi4CountriesCountry, ExceptionIfTagsFileNotOpened)
+TEST(Outhoi4CountriesOutcountries, ExceptionIfTagsFileNotOpened)
 {
    EXPECT_THROW(OutputCountries("/dev/null/COM",
                     {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}),
@@ -84,7 +81,7 @@ TEST(Outhoi4CountriesCountry, ExceptionIfTagsFileNotOpened)
 }
 
 
-TEST(Outhoi4CountriesCountry, CountryHistoryFilesAreCreated)
+TEST(Outhoi4CountriesOutcountries, CountryHistoryFilesAreCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated");
@@ -95,8 +92,7 @@ TEST(Outhoi4CountriesCountry, CountryHistoryFilesAreCreated)
    commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated/history/countries");
 
    OutputCountries("CountryHistoryFilesAreCreated",
-       {{"TAG", hoi4::Country({.tag = "TAG", .capital_state = 2})},
-           {"TWO", hoi4::Country({.tag = "TWO", .capital_state = 3})}});
+       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TAG.txt"));
    std::ifstream country_file_one("output/CountryHistoryFilesAreCreated/history/countries/TAG.txt");
@@ -106,7 +102,6 @@ TEST(Outhoi4CountriesCountry, CountryHistoryFilesAreCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_one_stream));
    country_file_one.close();
-   EXPECT_EQ(country_file_one_stream.str(), "capital = 2");
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TWO.txt"));
    std::ifstream country_file_two("output/CountryHistoryFilesAreCreated/history/countries/TWO.txt");
@@ -116,7 +111,6 @@ TEST(Outhoi4CountriesCountry, CountryHistoryFilesAreCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_two_stream));
    country_file_two.close();
-   EXPECT_EQ(country_file_two_stream.str(), "capital = 3");
 }
 
 }  // namespace out

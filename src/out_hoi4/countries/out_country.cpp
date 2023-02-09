@@ -19,6 +19,8 @@ void out::OutputCommonCountriesFile(std::string_view output_name, const hoi4::Co
       throw std::runtime_error(fmt::format("Could not create {}", common_country_file_name));
    }
 
+   common_country << "graphical_culture = western_european_gfx\n";
+   common_country << "graphical_culture_2d = western_european_2d\n";
    common_country << fmt::format("color {}", country.GetColor().outputRgb());
 
    common_country.close();
@@ -44,8 +46,30 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
 
    if (const auto capital = country.GetCapitalState(); capital)
    {
-      country_history << fmt::format("capital = {}", *capital);
+      country_history << fmt::format("capital = {}\n", *capital);
    }
+
+   country_history << "set_research_slots = 3\n";
+   country_history << "set_convoys = 0\n";
+   country_history << "\n";
+   country_history << "set_politics = {\n";
+   country_history << "\truling_party = neutrality\n";
+   country_history << "\tlast_election = \"1836.1.1\"\n";
+   country_history << "election_frequency = 48\n";
+   country_history << "elections_allowed = no\n";
+   country_history << "}\n";
+   country_history << "\n";
+   country_history << "set_popularities = {\n";
+   country_history << "\tneutrality = 100\n";
+   country_history << "}\n";
+   country_history << "\n";
+   country_history << "add_ideas = {\n";
+   country_history << "\tlimited_conscription\n";
+   country_history << "\tcivilian_economy\n";
+   country_history << "\texport_focus\n";
+   country_history << "}\n";
+   country_history << "set_stability = 0.60\n";
+   country_history << "set_war_support = 0.60\n";
 
    country_history.close();
 }
