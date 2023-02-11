@@ -82,6 +82,9 @@
     <Filter Include="external\rakaly">
       <UniqueIdentifier>{98cdf3b1-26ff-406f-9edf-a93457f4af7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\technology">
+      <UniqueIdentifier>{63de67d0-9636-4322-be89-e2d9de90bd20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -270,6 +273,9 @@
     <ClInclude Include="external\rakaly\rakaly.h">
       <Filter>external\rakaly</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\technology\vic3_technology_importer.h">
+      <Filter>src\vic3_world\technology</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -400,6 +406,9 @@
     </ClCompile>
     <ClCompile Include="external\fmt\src\os.cc">
       <Filter>external\fmt\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\technology\vic3_technology_importer.cpp">
+      <Filter>src\vic3_world\technology</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

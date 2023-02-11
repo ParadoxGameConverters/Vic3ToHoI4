@@ -82,6 +82,9 @@
     <Filter Include="external\rakaly">
       <UniqueIdentifier>{eefda4e6-0d84-4350-b8b6-a14118d842f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\technology">
+      <UniqueIdentifier>{ee8813e8-b04c-4d2f-9f2e-4eb292b58407}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -212,6 +215,9 @@
     </ClCompile>
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc">
       <Filter>external\googletest\googletest</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\technology\vic3_technology_importer_tests.cpp">
+      <Filter>src\vic3_world\technology</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
