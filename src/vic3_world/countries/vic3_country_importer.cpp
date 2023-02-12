@@ -14,7 +14,7 @@ vic3::CountryImporter::CountryImporter()
    country_parser_.registerKeyword("capital", [this](std::istream& input_stream) {
       capital_ = commonItems::getInt(input_stream);
    });
-   country_parser_.IgnoreAndLogUnregisteredItems();
+   country_parser_.IgnoreUnregisteredItems();
 }
 
 
