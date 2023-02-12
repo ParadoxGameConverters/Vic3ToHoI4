@@ -85,6 +85,9 @@
     <Filter Include="src\vic3_world\technology">
       <UniqueIdentifier>{63de67d0-9636-4322-be89-e2d9de90bd20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\mappers\technology">
+      <UniqueIdentifier>{ceb3eece-6502-4cf9-8ef6-8d2d0ac2f7e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -276,6 +279,15 @@
     <ClInclude Include="src\vic3_world\technology\vic3_technology_importer.h">
       <Filter>src\vic3_world\technology</Filter>
     </ClInclude>
+    <ClInclude Include="src\mappers\technology\tech_mapping.h">
+      <Filter>src\mappers\technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\technology\tech_mapping_importer.h">
+      <Filter>src\mappers\technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\technology\tech_mappings_importer.h">
+      <Filter>src\mappers\technology</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -409,6 +421,12 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\technology\vic3_technology_importer.cpp">
       <Filter>src\vic3_world\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\technology\tech_mapping_importer.cpp">
+      <Filter>src\mappers\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\technology\tech_mappings_importer.cpp">
+      <Filter>src\mappers\technology</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
