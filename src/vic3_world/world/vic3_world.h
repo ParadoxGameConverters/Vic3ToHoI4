@@ -36,7 +36,11 @@ class World
 
    [[nodiscard]] const std::map<int, Country>& GetCountries() const { return countries_; }
    [[nodiscard]] const std::map<int, State>& GetStates() const { return states_; }
-   [[nodiscard]] const ProvinceDefinitions GetProvinceDefinitions() const { return province_definitions_; }
+   [[nodiscard]] const ProvinceDefinitions& GetProvinceDefinitions() const { return province_definitions_; }
+   [[nodiscard]] const std::map<int, std::vector<std::string>>& GetAcquiredTechnologies() const
+   {
+      return acquired_technologies_;
+   }
 
 
   private:
