@@ -20,16 +20,23 @@ std::map<int, std::vector<std::string>> vic3::ImportAcquiredTechnologies(std::is
    entry_parser.registerKeyword("acquired_technologies", [&acquired_technologies](std::istream& input_stream) {
       acquired_technologies = commonItems::getStrings(input_stream);
    });
-   entry_parser.IgnoreAndLogUnregisteredItems();
+   entry_parser.IgnoreUnregisteredItems();
 
    commonItems::parser database_parser;
    database_parser.registerRegex(commonItems::integerRegex,
        [&entry_parser, &country_number, &acquired_technologies, &all_acquired_technologies](const std::string& unused,
            std::istream& input_stream) {
+          const auto entry_string = commonItems::stringOfItem(input_stream).getString();
+          if (entry_string.find("{") == std::string::npos)
+          {
+             return;
+          }
+          std::istringstream entry_stream(entry_string);
+
           country_number.reset();
           acquired_technologies.clear();
 
-          entry_parser.parseStream(input_stream);
+          entry_parser.parseStream(entry_stream);
 
           if (country_number)
           {
@@ -41,7 +48,7 @@ std::map<int, std::vector<std::string>> vic3::ImportAcquiredTechnologies(std::is
    technology_parser.registerKeyword("database", [&database_parser](std::istream& input_stream) {
       database_parser.parseStream(input_stream);
    });
-   technology_parser.IgnoreAndLogUnregisteredItems();
+   technology_parser.IgnoreUnregisteredItems();
 
    technology_parser.parseStream(input_stream);
 

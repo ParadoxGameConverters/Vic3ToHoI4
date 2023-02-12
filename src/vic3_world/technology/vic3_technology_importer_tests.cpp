@@ -45,6 +45,29 @@ TEST(Vic3WorldTechnologyVic3technologyimporterTests, AcquiredTechnologiesCanBeIm
 }
 
 
+TEST(Vic3WorldTechnologyVic3technologyimporterTests, NoneIsHandledGracefully)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "\tdatabase={\n";
+   input << "123456={\n";
+   input << "\tcountry=123456\n";
+   input << "\tacquired_technologies={ technology technology_two }\n";
+   input << "}\n";
+   input << "1=none\n";
+   input << "2={\n";
+   input << "\tcountry=2\n";
+   input << "}\n";
+   input << "\t}\n";
+   input << "}";
+   const std::map<int, std::vector<std::string>> technologies = ImportAcquiredTechnologies(input);
+
+   EXPECT_THAT(technologies,
+       testing::UnorderedElementsAre(testing::Pair(2, std::vector<std::string>{}),
+           testing::Pair(123456, std::vector<std::string>{"technology", "technology_two"})));
+}
+
+
 TEST(Vic3WorldTechnologyVic3technologyimporterTests, MissingCountrySectionMeansNoEntry)
 {
    std::stringstream input;
