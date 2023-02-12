@@ -101,6 +101,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/provinces/vic3_provin
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/provinces/vic3_province_definitions_loader.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/states/vic3_state_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/states/vic3_states_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/technology/vic3_technology_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/world/vic3_world_importer.cpp")
 
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/BulkParser.cpp")
@@ -240,6 +241,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/provinces/vic3_province_definit
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/provinces/vic3_province_definitions_loader_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/vic3_state_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/vic3_states_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/technology/vic3_technology_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/world/vic3_world_importer_tests.cpp")
 
 set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googletest/src/gtest_main.cc")
@@ -283,7 +285,7 @@ add_custom_target(lcov
 add_custom_command(TARGET lcov
 	COMMAND echo "=================== LCOV ===================="
 	COMMAND echo "-- Passing lcov tool under code coverage"
-	COMMAND lcov --c --d CMakeFiles/Vic3ToHoi4Tests.dir/src/ --o lcoverage/coverage.info
+	COMMAND lcov --c --d CMakeFiles/Vic3ToHoi4lib.dir/src/ --o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/*" -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/bits/*" -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/ext/*" -o lcoverage/coverage.info
