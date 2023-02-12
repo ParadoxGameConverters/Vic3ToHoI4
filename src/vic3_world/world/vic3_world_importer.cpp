@@ -173,9 +173,13 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    save_parser.parseStream(save_stream);
    Log(LogLevel::Info) << fmt::format("\t{} countries imported", countries.size());
    Log(LogLevel::Info) << fmt::format("\t{} states imported", states.size());
+   Log(LogLevel::Info) << fmt::format("\t{} countries acquired technologies", acquired_technologies.size());
    Log(LogLevel::Progress) << "15 %";
 
    AssignOwnersToStates(countries, states);
 
-   return World(countries, states, province_definitions);
+   return World({.countries = countries,
+       .states = states,
+       .province_definitions = province_definitions,
+       .acquired_technologies = acquired_technologies});
 }

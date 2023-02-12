@@ -17,7 +17,7 @@ namespace hoi4
 
 TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
 {
-   vic3::ProvinceDefinitions vic3_province_definitions({});
+   vic3::ProvinceDefinitions vic3_province_definitions;
    mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings;
    maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};
@@ -246,7 +246,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
 {
-   vic3::ProvinceDefinitions province_definitions({});
+   vic3::ProvinceDefinitions province_definitions;
    mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings;
    maps::ProvinceDefinitions hoi4_province_definitions{{}, {}, {}, {}};
    maps::MapData map_data{{}, {}, {}, hoi4_province_definitions, {}};

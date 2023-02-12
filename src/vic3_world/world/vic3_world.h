@@ -14,15 +14,23 @@
 namespace vic3
 {
 
+struct WorldOptions
+{
+   std::map<int, Country> countries;
+   std::map<int, State> states;
+   ProvinceDefinitions province_definitions;
+   std::map<int, std::vector<std::string>> acquired_technologies;
+};
+
+
 class World
 {
   public:
-   explicit World(std::map<int, Country> countries,
-       std::map<int, State> states,
-       ProvinceDefinitions province_definitions):
-       countries_(std::move(countries)),
-       states_(std::move(states)),
-       province_definitions_(province_definitions)
+   explicit World(WorldOptions world_options):
+       countries_(std::move(world_options.countries)),
+       states_(std::move(world_options.states)),
+       province_definitions_(world_options.province_definitions),
+       acquired_technologies_(std::move(world_options.acquired_technologies))
    {
    }
 
@@ -35,6 +43,7 @@ class World
    std::map<int, Country> countries_;
    std::map<int, State> states_;
    ProvinceDefinitions province_definitions_;
+   std::map<int, std::vector<std::string>> acquired_technologies_;
 };
 
 }  // namespace vic3
