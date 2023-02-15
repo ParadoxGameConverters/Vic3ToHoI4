@@ -27,26 +27,5 @@ hoi4::Technologies hoi4::ConvertTechnologies(const std::set<std::string>& vic3_t
       }
    }
 
-   /*for (const auto& bonusMapping: researchBonusMapper.getResearchBonusMappings())
-   {
-           bool requirementViolated = false;
-           for (const auto& requirement: bonusMapping.getVic2Requirements())
-           {
-                   if (!oldTechnologiesAndInventions.contains(requirement))
-                   {
-                           requirementViolated = true;
-                           break;
-                   }
-           }
-           if (requirementViolated)
-           {
-                   continue;
-           }
-
-           for (const auto& bonus: bonusMapping.getResearchBonuses())
-           {
-                   setResearchBonus(bonus.first, bonus.second);
-           }
-   }*/
-   return {technologies_by_limits, {}};
+   return Technologies{technologies_by_limits};
 }

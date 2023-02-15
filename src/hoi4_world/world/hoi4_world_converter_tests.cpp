@@ -54,15 +54,20 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
        country_mapper,
        province_mapper);
 
+   const Technologies expected_techs_one{std::map<std::optional<std::string>, std::set<std::string>>{
+       {std::nullopt, std::set<std::string>{"dest_tech_one", "dest_tech_two"}}}};
+   const Technologies expected_techs_two{std::map<std::optional<std::string>, std::set<std::string>>{
+       {R"(not = { has_dlc = "Test DLC" })", std::set<std::string>{"dest_tech_three"}}}};
+
    EXPECT_THAT(world.GetCountries(),
        testing::ElementsAre(testing::Pair("TAG",
-                                Country({.tag = "TAG",
+                                Country(CountryOptions{.tag = "TAG",
                                     .color = commonItems::Color{std::array{1, 2, 3}},
-                                    .technologies = {{{std::nullopt, {"dest_tech_one", "dest_tech_two"}}}, {}}})),
+                                    .technologies = expected_techs_one})),
            testing::Pair("TWO",
-               Country({.tag = "TWO",
+               Country(CountryOptions{.tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
-                   .technologies = {{{R"(not = { has_dlc = "Test DLC" })", {"dest_tech_three"}}}, {}}}))));
+                   .technologies = expected_techs_two}))));
 }
 
 

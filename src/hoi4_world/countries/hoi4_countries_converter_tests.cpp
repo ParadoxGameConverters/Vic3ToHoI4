@@ -35,18 +35,22 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
            {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}},
        });
 
+   const Technologies expected_techs_one{std::map<std::optional<std::string>, std::set<std::string>>{
+       {std::nullopt, std::set<std::string>{"dest_technology_one", "dest_technology_two"}}}};
+   const Technologies expected_techs_two{std::map<std::optional<std::string>, std::set<std::string>>{
+       {std::nullopt, std::set<std::string>{"dest_technology_three", "dest_technology_four"}}}};
+
    EXPECT_THAT(countries,
-       testing::ElementsAre(
-           testing::Pair("TAG",
-               Country(CountryOptions{.tag = "TAG",
-                   .color = commonItems::Color{std::array{1, 2, 3}},
-                   .capital_state = 10,
-                   .technologies = {{{std::nullopt, {"dest_technology_one", "dest_technology_two"}}}, {}}})),
+       testing::ElementsAre(testing::Pair("TAG",
+                                Country(CountryOptions{.tag = "TAG",
+                                    .color = commonItems::Color{std::array{1, 2, 3}},
+                                    .capital_state = 10,
+                                    .technologies = expected_techs_one})),
            testing::Pair("TWO",
                Country(CountryOptions{.tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
                    .capital_state = 20,
-                   .technologies = {{{std::nullopt, {"dest_technology_three", "dest_technology_four"}}}, {}}}))));
+                   .technologies = expected_techs_two}))));
 }
 
 }  // namespace hoi4

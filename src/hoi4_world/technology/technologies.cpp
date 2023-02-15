@@ -5,16 +5,6 @@
 
 
 
-// void hoi4::technologies::setResearchBonus(const std::string& tech, float bonus)
-//{
-//	const auto& researchBonusEntry = researchBonuses.find(tech);
-//	if ((researchBonusEntry == researchBonuses.end()) || (researchBonusEntry->second < bonus))
-//	{
-//		researchBonuses[tech] = bonus;
-//	}
-// }
-
-
 bool hoi4::Technologies::HasTechnology(const std::string& technology) const
 {
    return std::ranges::any_of(technologies_by_limits_,
