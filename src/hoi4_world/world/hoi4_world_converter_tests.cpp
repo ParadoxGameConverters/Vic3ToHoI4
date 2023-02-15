@@ -40,7 +40,12 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
    const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
    const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
 
-   const vic3::World source_world({.countries = {{1, source_country_one}, {3, source_country_two}}, .states = {}});
+   const vic3::World source_world({.countries = {{1, source_country_one}, {3, source_country_two}},
+       .states = {},
+       .acquired_technologies = {
+           {1, {"source_tech"}},
+           {3, {"source_tech_two", "source_tech_three"}},
+       }});
 
    mappers::ProvinceMapper province_mapper{{}, {}};
 
@@ -50,9 +55,14 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
        province_mapper);
 
    EXPECT_THAT(world.GetCountries(),
-       testing::ElementsAre(
-           testing::Pair("TAG", Country({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}})),
-           testing::Pair("TWO", Country({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}}))));
+       testing::ElementsAre(testing::Pair("TAG",
+                                Country({.tag = "TAG",
+                                    .color = commonItems::Color{std::array{1, 2, 3}},
+                                    .technologies = {{{std::nullopt, {"dest_tech_one", "dest_tech_two"}}}, {}}})),
+           testing::Pair("TWO",
+               Country({.tag = "TWO",
+                   .color = commonItems::Color{std::array{2, 4, 6}},
+                   .technologies = {{{R"(not = { has_dlc = "Test DLC" })", {"dest_tech_three"}}}, {}}}))));
 }
 
 

@@ -6,19 +6,22 @@
 
 
 
-std::map<int, std::vector<std::string>> vic3::ImportAcquiredTechnologies(std::istream& input_stream)
+std::map<int, std::set<std::string>> vic3::ImportAcquiredTechnologies(std::istream& input_stream)
 {
-   std::map<int, std::vector<std::string>> all_acquired_technologies;
+   std::map<int, std::set<std::string>> all_acquired_technologies;
 
    std::optional<int> country_number;
-   std::vector<std::string> acquired_technologies;
+   std::set<std::string> acquired_technologies;
 
    commonItems::parser entry_parser;
    entry_parser.registerKeyword("country", [&country_number](std::istream& input_stream) {
       country_number = commonItems::getInt(input_stream);
    });
    entry_parser.registerKeyword("acquired_technologies", [&acquired_technologies](std::istream& input_stream) {
-      acquired_technologies = commonItems::getStrings(input_stream);
+      for (const auto& acquired_technology: commonItems::getStrings(input_stream))
+      {
+         acquired_technologies.insert(acquired_technology);
+      }
    });
    entry_parser.IgnoreUnregisteredItems();
 

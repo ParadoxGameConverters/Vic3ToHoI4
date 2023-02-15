@@ -159,7 +159,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    CountriesImporter countries_importer(color_definitions);
    std::map<int, Country> countries;
 
-   std::map<int, std::vector<std::string>> acquired_technologies;
+   std::map<int, std::set<std::string>> acquired_technologies;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("country_manager", [&countries, &countries_importer](std::istream& input_stream) {

@@ -13,7 +13,7 @@
 namespace vic3
 {
 
-std::map<int, std::vector<std::string>> ImportAcquiredTechnologies(std::istream& input_stream);
+std::map<int, std::set<std::string>> ImportAcquiredTechnologies(std::istream& input_stream);
 
 }  // namespace vic3
 

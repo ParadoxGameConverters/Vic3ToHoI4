@@ -4,6 +4,7 @@
 
 
 #include <map>
+#include <set>
 
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
@@ -19,7 +20,7 @@ struct WorldOptions
    std::map<int, Country> countries;
    std::map<int, State> states;
    ProvinceDefinitions province_definitions;
-   std::map<int, std::vector<std::string>> acquired_technologies;
+   std::map<int, std::set<std::string>> acquired_technologies;
 };
 
 
@@ -37,7 +38,7 @@ class World
    [[nodiscard]] const std::map<int, Country>& GetCountries() const { return countries_; }
    [[nodiscard]] const std::map<int, State>& GetStates() const { return states_; }
    [[nodiscard]] const ProvinceDefinitions& GetProvinceDefinitions() const { return province_definitions_; }
-   [[nodiscard]] const std::map<int, std::vector<std::string>>& GetAcquiredTechnologies() const
+   [[nodiscard]] const std::map<int, std::set<std::string>>& GetAcquiredTechnologies() const
    {
       return acquired_technologies_;
    }
@@ -47,7 +48,7 @@ class World
    std::map<int, Country> countries_;
    std::map<int, State> states_;
    ProvinceDefinitions province_definitions_;
-   std::map<int, std::vector<std::string>> acquired_technologies_;
+   std::map<int, std::set<std::string>> acquired_technologies_;
 };
 
 }  // namespace vic3

@@ -1,10 +1,14 @@
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 
+#include "src/hoi4_world/technology/technologies_converter.h"
+
 
 
 std::optional<hoi4::Country> hoi4::CountryConverter::ConvertCountry(const vic3::Country& source_country,
+    const std::set<std::string>& source_technologies,
     const mappers::CountryMapper& country_mapper,
-    const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids)
+    const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
+    const std::vector<mappers::TechMapping>& tech_mappings)
 {
    const auto tag = country_mapper.GetHoiTag(source_country.GetTag());
    if (!tag.has_value())
@@ -22,5 +26,8 @@ std::optional<hoi4::Country> hoi4::CountryConverter::ConvertCountry(const vic3::
       }
    }
 
-   return Country({.tag = *tag, .color = source_country.GetColor(), .capital_state = capital_state});
+   const Technologies technologies = ConvertTechnologies(source_technologies, tech_mappings);
+
+   return Country(
+       {.tag = *tag, .color = source_country.GetColor(), .capital_state = capital_state, .technologies = technologies});
 }

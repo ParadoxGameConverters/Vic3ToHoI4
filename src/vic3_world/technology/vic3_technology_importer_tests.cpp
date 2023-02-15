@@ -12,7 +12,7 @@ namespace vic3
 TEST(Vic3WorldTechnologyVic3technologyimporterTests, AcquiredTechnologiesDefaultToEmpty)
 {
    std::stringstream input;
-   const std::map<int, std::vector<std::string>> technologies = ImportAcquiredTechnologies(input);
+   const std::map<int, std::set<std::string>> technologies = ImportAcquiredTechnologies(input);
 
    EXPECT_TRUE(technologies.empty());
 }
@@ -36,12 +36,12 @@ TEST(Vic3WorldTechnologyVic3technologyimporterTests, AcquiredTechnologiesCanBeIm
    input << "}\n";
    input << "\t}\n";
    input << "}";
-   const std::map<int, std::vector<std::string>> technologies = ImportAcquiredTechnologies(input);
+   const std::map<int, std::set<std::string>> technologies = ImportAcquiredTechnologies(input);
 
    EXPECT_THAT(technologies,
-       testing::UnorderedElementsAre(testing::Pair(1, std::vector<std::string>{"technology_three"}),
-           testing::Pair(2, std::vector<std::string>{}),
-           testing::Pair(123456, std::vector<std::string>{"technology", "technology_two"})));
+       testing::UnorderedElementsAre(testing::Pair(1, std::set<std::string>{"technology_three"}),
+           testing::Pair(2, std::set<std::string>{}),
+           testing::Pair(123456, std::set<std::string>{"technology", "technology_two"})));
 }
 
 
@@ -60,11 +60,11 @@ TEST(Vic3WorldTechnologyVic3technologyimporterTests, NoneIsHandledGracefully)
    input << "}\n";
    input << "\t}\n";
    input << "}";
-   const std::map<int, std::vector<std::string>> technologies = ImportAcquiredTechnologies(input);
+   const std::map<int, std::set<std::string>> technologies = ImportAcquiredTechnologies(input);
 
    EXPECT_THAT(technologies,
-       testing::UnorderedElementsAre(testing::Pair(2, std::vector<std::string>{}),
-           testing::Pair(123456, std::vector<std::string>{"technology", "technology_two"})));
+       testing::UnorderedElementsAre(testing::Pair(2, std::set<std::string>{}),
+           testing::Pair(123456, std::set<std::string>{"technology", "technology_two"})));
 }
 
 
@@ -78,7 +78,7 @@ TEST(Vic3WorldTechnologyVic3technologyimporterTests, MissingCountrySectionMeansN
    input << "}\n";
    input << "\t}\n";
    input << "}";
-   const std::map<int, std::vector<std::string>> technologies = ImportAcquiredTechnologies(input);
+   const std::map<int, std::set<std::string>> technologies = ImportAcquiredTechnologies(input);
 
    EXPECT_TRUE(technologies.empty());
 }

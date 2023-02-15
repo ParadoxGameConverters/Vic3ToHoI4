@@ -18,6 +18,8 @@ namespace hoi4
 class Technologies
 {
   public:
+   Technologies() = default;
+
    Technologies(std::map<std::optional<std::string>, std::set<std::string>> technologies_by_limits,
        std::map<std::string, float> research_bonuses):
        technologies_by_limits_(std::move(technologies_by_limits)),
@@ -32,6 +34,8 @@ class Technologies
       return technologies_by_limits_;
    }
    [[nodiscard]] const std::map<std::string, float>& GetResearchBonuses() const { return research_bonuses_; }
+
+   std::partial_ordering operator<=>(const Technologies&) const = default;
 
   private:
    // technologies are sorted by limits that can be applied to them

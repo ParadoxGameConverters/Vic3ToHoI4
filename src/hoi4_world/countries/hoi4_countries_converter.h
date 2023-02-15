@@ -18,8 +18,10 @@ class CountriesConverter
 {
   public:
    std::map<std::string, Country> ConvertCountries(const std::map<int, vic3::Country>& source_countries,
+       const std::map<int, std::set<std::string>>& source_technologies,
        const mappers::CountryMapper& country_mapper,
-       const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids);
+       const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
+       const std::vector<mappers::TechMapping>& tech_mappings);
 
   private:
    CountryConverter country_converter_;

@@ -46,8 +46,8 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
            testing::Pair(1, State({.owner_number = 3, .owner_tag = "TWO", .provinces = {10, 11, 12}})),
            testing::Pair(2, State({.owner_number = 133, .provinces = {20}}))));
    EXPECT_THAT(world.GetAcquiredTechnologies(),
-       testing::UnorderedElementsAre(testing::Pair(1, std::vector<std::string>{"technology_one", "technology_two"}),
-           testing::Pair(3, std::vector<std::string>{"technology_three"})));
+       testing::UnorderedElementsAre(testing::Pair(1, std::set<std::string>{"technology_one", "technology_two"}),
+           testing::Pair(3, std::set<std::string>{"technology_three"})));
 }
 
 
