@@ -14,7 +14,7 @@
 namespace out
 {
 
-TEST(Outhoi4CountriesOutcountries, CountriesFilesAreCreated)
+TEST(Outhoi4CountriesOutcountriesTests, CountriesFilesAreCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CountriesFilesAreCreated");
@@ -47,7 +47,7 @@ TEST(Outhoi4CountriesOutcountries, CountriesFilesAreCreated)
 }
 
 
-TEST(Outhoi4CountriesOutcountries, TagsFileIsCreated)
+TEST(Outhoi4CountriesOutcountriesTests, TagsFileIsCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/TagsFileIsCreated");
@@ -73,7 +73,7 @@ TEST(Outhoi4CountriesOutcountries, TagsFileIsCreated)
 }
 
 
-TEST(Outhoi4CountriesOutcountries, ExceptionIfTagsFileNotOpened)
+TEST(Outhoi4CountriesOutcountriesTests, ExceptionIfTagsFileNotOpened)
 {
    EXPECT_THROW(OutputCountries("/dev/null/COM",
                     {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}),
@@ -81,7 +81,7 @@ TEST(Outhoi4CountriesOutcountries, ExceptionIfTagsFileNotOpened)
 }
 
 
-TEST(Outhoi4CountriesOutcountries, CountryHistoryFilesAreCreated)
+TEST(Outhoi4CountriesOutcountriesTests, CountryHistoryFilesAreCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated");

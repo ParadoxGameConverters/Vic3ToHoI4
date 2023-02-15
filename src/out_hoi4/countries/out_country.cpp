@@ -5,6 +5,7 @@
 
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/out_hoi4/technology/out_technologies.h"
 
 
 
@@ -70,6 +71,9 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    country_history << "}\n";
    country_history << "set_stability = 0.60\n";
    country_history << "set_war_support = 0.60\n";
+   country_history << "\n";
+
+   country_history << country.GetTechnologies();
 
    country_history.close();
 }

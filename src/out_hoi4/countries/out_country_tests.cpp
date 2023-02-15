@@ -14,7 +14,7 @@
 namespace out
 {
 
-TEST(Outhoi4CountriesOutcountry, CommonCountriesFileIsCreatedWithTagForName)
+TEST(Outhoi4CountriesOutcountryTests, CommonCountriesFileIsCreatedWithTagForName)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CommonCountriesFileIsCreatedWithTagForName");
@@ -61,7 +61,7 @@ TEST(Outhoi4CountriesOutcountry, CommonCountriesFileIsCreatedWithTagForName)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, ExceptionIfCountriesFileNotOpened)
+TEST(Outhoi4CountriesOutcountryTests, ExceptionIfCountriesFileNotOpened)
 {
    const hoi4::Country country({.tag = "TAG"});
 
@@ -69,7 +69,7 @@ TEST(Outhoi4CountriesOutcountry, ExceptionIfCountriesFileNotOpened)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, DefaultsAreOutputToCommonCountriesFile)
+TEST(Outhoi4CountriesOutcountryTests, DefaultsAreOutputToCommonCountriesFile)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/DefaultsAreOutputToCommonCountriesFile");
@@ -96,7 +96,7 @@ TEST(Outhoi4CountriesOutcountry, DefaultsAreOutputToCommonCountriesFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, ColorCanBeSetInCommonCountriesFile)
+TEST(Outhoi4CountriesOutcountryTests, ColorCanBeSetInCommonCountriesFile)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/ColorCanBeSetInCommonCountriesFile");
@@ -123,7 +123,7 @@ TEST(Outhoi4CountriesOutcountry, ColorCanBeSetInCommonCountriesFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, TagsAreAddedToTagsFile)
+TEST(Outhoi4CountriesOutcountryTests, TagsAreAddedToTagsFile)
 {
    const hoi4::Country country({.tag = "TAG"});
    const hoi4::Country country_two({.tag = "TWO"});
@@ -149,7 +149,7 @@ TEST(Outhoi4CountriesOutcountry, TagsAreAddedToTagsFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, CountryHistoryFileIsCreatedWithTagForName)
+TEST(Outhoi4CountriesOutcountryTests, CountryHistoryFileIsCreatedWithTagForName)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CountryHistoryFileIsCreatedWithTagForName");
@@ -171,6 +171,7 @@ TEST(Outhoi4CountriesOutcountry, CountryHistoryFileIsCreatedWithTagForName)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_stream));
    country_file.close();
+   EXPECT_EQ(country_file_stream.str(), "\n# Starting tech\n");
 
    ASSERT_TRUE(
        commonItems::DoesFileExist("output/CountryHistoryFileIsCreatedWithTagForName/history/countries/TWO.txt"));
@@ -181,10 +182,11 @@ TEST(Outhoi4CountriesOutcountry, CountryHistoryFileIsCreatedWithTagForName)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_two_stream));
    country_file_two.close();
+   EXPECT_EQ(country_file_two_stream.str(), "\n# Starting tech\n");
 }
 
 
-TEST(Outhoi4CountriesOutcountry, ExceptionIfHistoryFileNotOpened)
+TEST(Outhoi4CountriesOutcountryTests, ExceptionIfHistoryFileNotOpened)
 {
    const hoi4::Country country({.tag = "TAG"});
 
