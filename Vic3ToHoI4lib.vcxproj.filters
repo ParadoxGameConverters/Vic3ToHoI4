@@ -88,6 +88,9 @@
     <Filter Include="src\mappers\technology">
       <UniqueIdentifier>{ceb3eece-6502-4cf9-8ef6-8d2d0ac2f7e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\technology">
+      <UniqueIdentifier>{ee46e8c3-bf5b-4986-9be2-2f1917db0842}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -288,6 +291,12 @@
     <ClInclude Include="src\mappers\technology\tech_mappings_importer.h">
       <Filter>src\mappers\technology</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\technology\technologies.h">
+      <Filter>src\hoi4_world\technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\technology\technologies_converter.h">
+      <Filter>src\hoi4_world\technology</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -427,6 +436,12 @@
     </ClCompile>
     <ClCompile Include="src\mappers\technology\tech_mappings_importer.cpp">
       <Filter>src\mappers\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\technology\technologies.cpp">
+      <Filter>src\hoi4_world\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\technology\technologies_converter.cpp">
+      <Filter>src\hoi4_world\technology</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
