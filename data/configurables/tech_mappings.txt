@@ -1,0 +1,264 @@
+# Notes:
+# - Each Vic3 tech and invention is linked to zero or more HoI4 tech levels.
+# - More than one Vic3 tech or invention may grant a given HoI4 tech level.
+# - If a higher level is earned, it will be granted even if the lower level was not earned.
+# - Limits can use C++-style string literals (https://en.cppreference.com/w/cpp/language/string_literal) to include quotes
+
+
+# ========================
+# === HOI4 BASIC TECHS ===
+# ========================
+
+# Trivial mappings ensuring all nations receive these techs
+
+link = {
+	hoi4 = infantry_weapons
+	hoi4 = gw_artillery
+	hoi4 = tech_support
+}
+
+link = {
+	limit = R"(not = { has_dlc = "Man the Guns" })"
+	hoi4 = early_destroyer
+	hoi4 = early_light_cruiser
+	hoi4 = early_heavy_cruiser
+	hoi4 = early_battleship
+	hoi4 = early_submarine
+}
+
+link = {
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = early_ship_hull_light
+	hoi4 = early_ship_hull_cruiser
+	hoi4 = basic_torpedo
+	hoi4 = basic_battery
+	hoi4 = basic_naval_mines
+}
+
+link = {
+	limit = R"(not = { has_dlc = "By Blood Alone" })"
+	hoi4 = early_fighter
+	hoi4 = early_bomber
+}
+
+link = {
+	limit = R"(has_dlc = "By Blood Alone")"
+	hoi4 = iw_small_airframe
+	hoi4 = iw_medium_airframe
+	hoi4 = iw_large_airframe
+	hoi4 = early_bombs
+	hoi4 = aa_lmg
+	hoi4 = engines_1
+}
+
+# ============================
+# === HOI4 INFANTRY FOLDER ===
+# ============================
+
+# HoI4 Infantry Equipment I
+link = {
+	vic3 = nco_training
+	hoi4 = infantry_weapons1
+	hoi4 = tech_recon
+}
+
+# HoI4 Support Weapons I
+link = {
+	vic3 = stormtroopers
+	hoi4 = support_weapons
+	hoi4 = tech_engineers
+}
+
+# HoI4 Marines I
+link = {
+	vic3 = battlefleet_tactics
+	hoi4 = marines
+}
+
+link = {
+	vic3 = mobile_armor
+	hoi4 = motorised_infantry
+}
+
+link = {
+	vic3 = mobile_armor
+	limit = R"(has_dlc = "La Resistance")"
+	hoi4 = armored_car1
+}
+
+# ===========================
+# === HOI4 SUPPORT FOLDER ===
+# ===========================
+
+link = {
+	vic3 = electric_railway
+	hoi4 = basic_train
+}
+
+# =========================
+# === HOI4 ARMOR FOLDER ===
+# =========================
+
+# HoI4 Great War Tank
+link = {
+	vic3 = mobile_armor
+	limit = R"(NOT = { has_dlc = "No Step Back" })"
+	hoi4 = gwtank
+	hoi4 = basic_light_tank
+	hoi4 = improved_light_tank
+}
+
+link = {
+	vic3 = mobile_armor
+	limit = R"(has_dlc = "No Step Back")"
+	hoi4 = gwtank_chassis
+	hoi4 = basic_light_tank_chassis
+	hoi4 = improved_light_tank_chassis
+	hoi4 = basic_medium_tank_chassis
+	hoi4 = basic_heavy_tank_chassis
+}
+
+# =============================
+# === HOI4 ARTILLERY FOLDER ===
+# =============================
+
+# HoI4 Interwar Artillery
+link = {
+	vic3 = wargaming
+	hoi4 = interwar_artillery
+	hoi4 = interwar_antiair
+}
+
+# ============================
+# === HOI4 AIRCRAFT FOLDER ===
+# ============================
+
+# HoI4 Fighter I
+link = {
+	vic3 = military_aviation
+	limit = R"(not = { has_dlc = "By Blood Alone" })"
+	hoi4 = fighter1
+	hoi4 = tactical_bomber1
+}
+
+link = {
+	vic3 = military_aviation
+	limit = R"(has_dlc = "By Blood Alone")"
+	hoi4 = basic_small_airframe
+	hoi4 = engines_2
+	hoi4 = aircraft_construction
+	hoi4 = basic_medium_airframe
+	hoi4 = engines_2
+	hoi4 = aircraft_construction
+}
+
+# ===============================
+# === HOI4 ENGINEERING FOLDER ===
+# ===============================
+
+# HoI4 Electronic Mechanical Engineering
+link = {
+	vic3 = analytical_philosophy
+	hoi4 = electronic_mechanical_engineering
+}
+
+# ============================
+# === HOI4 INDUSTRY FOLDER ===
+# ============================
+
+# HoI4 Synthetic Oil Experiments <- vic3 Synthetic Polymers
+link = {
+	vic3 = compression_ignition
+	hoi4 = synth_oil_experiments
+}
+
+link = {
+	vic3 = pumpjacks
+	hoi4 = fuel_silos
+	hoi4 = fuel_refining
+}
+
+# ========================
+# === HOI4 NAVY FOLDER ===
+# ========================
+
+# HoI4 Destroyer II
+link = {
+	vic3 = battleship_tech
+	limit = R"(not = { has_dlc = "Man the Guns" })"
+	hoi4 = basic_destroyer
+	hoi4 = basic_light_cruiser
+	hoi4 = basic_heavy_cruiser
+	hoi4 = basic_battleship
+	hoi4 = basic_ship_hull_heavy
+}
+
+# HoI4 1936 Destroyer Hull/Basic Depth Charges
+link = {
+	vic3 = battleship_tech
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = basic_ship_hull_light
+	hoi4 = basic_depth_charges
+	hoi4 = basic_ship_hull_cruiser
+	hoi4 = basic_cruiser_armor_scheme
+	hoi4 = basic_heavy_armor_scheme
+}
+
+# HoI4 Sonar
+link = {
+	vic3 = battlefleet_tactics
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = sonar
+	hoi4 = basic_light_battery
+	hoi4 = basic_medium_battery
+	hoi4 = basic_heavy_battery
+	hoi4 = smoke_generator
+}
+
+# HoI4 Early Heavy Ship Hull <- vic3 Invention Navy/Ship Construction/Steam Turbine Ships/Dreadnoughts
+link = {
+	vic3 = dreadnought
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = early_ship_hull_heavy
+}
+
+# HoI4 transport
+link = {
+	vic3 = landing_craft
+	limit = R"(not = { has_dlc = "Man the Guns" })"
+	hoi4 = transport
+}
+
+link = {
+	vic3 = landing_craft
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = mtg_transport
+}
+
+# HoI4 Early Submarine Hull/Minelaying Submarine
+link = {
+	vic3 = submarine
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = early_ship_hull_submarine
+	hoi4 = submarine_mine_laying
+}
+
+# HoI4 Early Submarine Hull
+link = {
+	vic3 = submarine
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = basic_ship_hull_submarine
+}
+
+link = {
+	vic3 = military_aviation
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = improved_airplane_launcher
+}
+
+link = {
+	vic3 = carrier_tech
+	vic3 = naval_integration
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = early_ship_hull_carrier
+}
