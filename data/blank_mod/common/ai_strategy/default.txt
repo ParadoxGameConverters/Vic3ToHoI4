@@ -240,13 +240,13 @@ bba_air_prod_1 = {
 	ai_strategy = {
 		type = equipment_production_factor
 		id = fighter
-		value = 15
+		value = 10
 	}
 
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = fighter
-		value = 5
+		value = 1
 	}
 
 	ai_strategy = {
@@ -313,6 +313,18 @@ bba_air_prod_1 = {
 		type = unit_ratio
 		id = heavy_fighter
 		value = 1
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = cv_fighter
+		value = 10
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = cv_naval_bomber
+		value = 10
 	}
 
 }
