@@ -72,12 +72,16 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/strategic_region_
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/strategic_regions.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/strategic_regions_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/hoi4_states_converter.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/technology/technologies.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/technology/technologies_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/world/hoi4_world_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/country/country_mapper.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/country/country_mapper_creator.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/provinces/province_mapper.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/provinces/province_mapper_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/provinces/province_mapping_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/technology/tech_mapping_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/technology/tech_mappings_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/map_data.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/map_data_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/province_definitions.cpp")
@@ -93,6 +97,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/map/out_strategic_regio
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/map/out_strategic_regions.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/states/out_state.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/states/out_states.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/technology/out_technologies.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/world/out_world.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/countries/country_definitions_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/countries/vic3_countries_importer.cpp")
@@ -101,6 +106,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/provinces/vic3_provin
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/provinces/vic3_province_definitions_loader.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/states/vic3_state_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/states/vic3_states_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/technology/vic3_technology_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/world/vic3_world_importer.cpp")
 
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/BulkParser.cpp")
@@ -212,12 +218,16 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/strategic_region_tests.cpp"
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/strategic_regions_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/strategic_regions_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/hoi4_states_converter_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/technology/technologies_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/technology/technologies_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/world/hoi4_world_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/country/country_mapper_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/country/country_mapper_creator_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/provinces/province_mapper_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/provinces/province_mapper_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/provinces/province_mapping_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/technology/tech_mapping_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/technology/tech_mappings_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/maps/map_data_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/maps/province_definitions_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/maps/province_points_tests.cpp")
@@ -232,6 +242,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/map/out_strategic_region_tests.cp
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/map/out_strategic_regions_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/states/out_state_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/states/out_states_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/technology/out_technologies_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/world/out_world_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/countries/country_definitions_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/countries/vic3_countries_importer_tests.cpp")
@@ -240,6 +251,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/provinces/vic3_province_definit
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/provinces/vic3_province_definitions_loader_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/vic3_state_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/states/vic3_states_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/technology/vic3_technology_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/world/vic3_world_importer_tests.cpp")
 
 set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googletest/src/gtest_main.cc")
@@ -283,7 +295,7 @@ add_custom_target(lcov
 add_custom_command(TARGET lcov
 	COMMAND echo "=================== LCOV ===================="
 	COMMAND echo "-- Passing lcov tool under code coverage"
-	COMMAND lcov --c --d CMakeFiles/Vic3ToHoi4Tests.dir/src/ --o lcoverage/coverage.info
+	COMMAND lcov --c --d CMakeFiles/Vic3ToHoi4lib.dir/src/ --o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/*" -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/bits/*" -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/ext/*" -o lcoverage/coverage.info

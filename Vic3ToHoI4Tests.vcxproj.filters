@@ -82,6 +82,18 @@
     <Filter Include="external\rakaly">
       <UniqueIdentifier>{eefda4e6-0d84-4350-b8b6-a14118d842f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\technology">
+      <UniqueIdentifier>{ee8813e8-b04c-4d2f-9f2e-4eb292b58407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mappers\technology">
+      <UniqueIdentifier>{461ae1d7-1dd5-40be-936a-54067d3f2e87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hoi4_world\technology">
+      <UniqueIdentifier>{0e57bb77-998e-4090-8d24-875f43886109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\technology">
+      <UniqueIdentifier>{3ecea192-075e-4872-8b39-169f1835f9ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -212,6 +224,24 @@
     </ClCompile>
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc">
       <Filter>external\googletest\googletest</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\technology\vic3_technology_importer_tests.cpp">
+      <Filter>src\vic3_world\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\technology\tech_mapping_importer_tests.cpp">
+      <Filter>src\mappers\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\technology\tech_mappings_importer_tests.cpp">
+      <Filter>src\mappers\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\technology\technologies_converter_tests.cpp">
+      <Filter>src\hoi4_world\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\technology\technologies_tests.cpp">
+      <Filter>src\hoi4_world\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\technology\out_technologies_tests.cpp">
+      <Filter>src\out_hoi4\technology</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

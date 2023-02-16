@@ -14,7 +14,7 @@
 namespace out
 {
 
-TEST(Outhoi4CountriesOutcountry, CommonCountriesFileIsCreatedWithTagForName)
+TEST(Outhoi4CountriesOutcountryTests, CommonCountriesFileIsCreatedWithTagForName)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CommonCountriesFileIsCreatedWithTagForName");
@@ -61,7 +61,7 @@ TEST(Outhoi4CountriesOutcountry, CommonCountriesFileIsCreatedWithTagForName)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, ExceptionIfCountriesFileNotOpened)
+TEST(Outhoi4CountriesOutcountryTests, ExceptionIfCountriesFileNotOpened)
 {
    const hoi4::Country country({.tag = "TAG"});
 
@@ -69,7 +69,7 @@ TEST(Outhoi4CountriesOutcountry, ExceptionIfCountriesFileNotOpened)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, DefaultsAreOutputToCommonCountriesFile)
+TEST(Outhoi4CountriesOutcountryTests, DefaultsAreOutputToCommonCountriesFile)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/DefaultsAreOutputToCommonCountriesFile");
@@ -96,7 +96,7 @@ TEST(Outhoi4CountriesOutcountry, DefaultsAreOutputToCommonCountriesFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, ColorCanBeSetInCommonCountriesFile)
+TEST(Outhoi4CountriesOutcountryTests, ColorCanBeSetInCommonCountriesFile)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/ColorCanBeSetInCommonCountriesFile");
@@ -123,7 +123,7 @@ TEST(Outhoi4CountriesOutcountry, ColorCanBeSetInCommonCountriesFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, TagsAreAddedToTagsFile)
+TEST(Outhoi4CountriesOutcountryTests, TagsAreAddedToTagsFile)
 {
    const hoi4::Country country({.tag = "TAG"});
    const hoi4::Country country_two({.tag = "TWO"});
@@ -149,7 +149,7 @@ TEST(Outhoi4CountriesOutcountry, TagsAreAddedToTagsFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, CountryHistoryFileIsCreatedWithTagForName)
+TEST(Outhoi4CountriesOutcountryTests, CountryHistoryFileIsCreatedWithTagForName)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CountryHistoryFileIsCreatedWithTagForName");
@@ -164,27 +164,12 @@ TEST(Outhoi4CountriesOutcountry, CountryHistoryFileIsCreatedWithTagForName)
 
    ASSERT_TRUE(
        commonItems::DoesFileExist("output/CountryHistoryFileIsCreatedWithTagForName/history/countries/TAG.txt"));
-   std::ifstream country_file("output/CountryHistoryFileIsCreatedWithTagForName/history/countries/TAG.txt");
-   ASSERT_TRUE(country_file.is_open());
-   std::stringstream country_file_stream;
-   std::copy(std::istreambuf_iterator<char>(country_file),
-       std::istreambuf_iterator<char>(),
-       std::ostreambuf_iterator<char>(country_file_stream));
-   country_file.close();
-
    ASSERT_TRUE(
        commonItems::DoesFileExist("output/CountryHistoryFileIsCreatedWithTagForName/history/countries/TWO.txt"));
-   std::ifstream country_file_two("output/CountryHistoryFileIsCreatedWithTagForName/history/countries/TWO.txt");
-   ASSERT_TRUE(country_file_two.is_open());
-   std::stringstream country_file_two_stream;
-   std::copy(std::istreambuf_iterator<char>(country_file_two),
-       std::istreambuf_iterator<char>(),
-       std::ostreambuf_iterator<char>(country_file_two_stream));
-   country_file_two.close();
 }
 
 
-TEST(Outhoi4CountriesOutcountry, ExceptionIfHistoryFileNotOpened)
+TEST(Outhoi4CountriesOutcountryTests, ExceptionIfHistoryFileNotOpened)
 {
    const hoi4::Country country({.tag = "TAG"});
 
@@ -192,7 +177,7 @@ TEST(Outhoi4CountriesOutcountry, ExceptionIfHistoryFileNotOpened)
 }
 
 
-TEST(Outhoi4CountriesOutcountry, DefaultsAreSetInCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/DefaultsAreSetInCountryHistoryFile");
@@ -233,11 +218,13 @@ TEST(Outhoi4CountriesOutcountry, DefaultsAreSetInCountryHistoryFile)
    expected_one << "}\n";
    expected_one << "set_stability = 0.60\n";
    expected_one << "set_war_support = 0.60\n";
+   expected_one << "\n";
+   expected_one << "# Starting tech\n";
    EXPECT_EQ(country_file_stream.str(), expected_one.str());
 }
 
 
-TEST(Outhoi4CountriesOutcountry, CapitalCanBeSetInCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, CapitalCanBeSetInCountryHistoryFile)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CapitalCanBeSetInCountryHistoryFile");
@@ -256,30 +243,7 @@ TEST(Outhoi4CountriesOutcountry, CapitalCanBeSetInCountryHistoryFile)
        std::ostreambuf_iterator<char>(country_file_stream));
    country_file.close();
 
-   std::stringstream expected_one;
-   expected_one << "capital = 42\n";
-   expected_one << "set_research_slots = 3\n";
-   expected_one << "set_convoys = 0\n";
-   expected_one << "\n";
-   expected_one << "set_politics = {\n";
-   expected_one << "\truling_party = neutrality\n";
-   expected_one << "\tlast_election = \"1836.1.1\"\n";
-   expected_one << "election_frequency = 48\n";
-   expected_one << "elections_allowed = no\n";
-   expected_one << "}\n";
-   expected_one << "\n";
-   expected_one << "set_popularities = {\n";
-   expected_one << "\tneutrality = 100\n";
-   expected_one << "}\n";
-   expected_one << "\n";
-   expected_one << "add_ideas = {\n";
-   expected_one << "\tlimited_conscription\n";
-   expected_one << "\tcivilian_economy\n";
-   expected_one << "\texport_focus\n";
-   expected_one << "}\n";
-   expected_one << "set_stability = 0.60\n";
-   expected_one << "set_war_support = 0.60\n";
-   EXPECT_EQ(country_file_stream.str(), expected_one.str());
+   EXPECT_THAT(country_file_stream.str(), testing::HasSubstr("capital = 42\n"));
 }
 
 }  // namespace out

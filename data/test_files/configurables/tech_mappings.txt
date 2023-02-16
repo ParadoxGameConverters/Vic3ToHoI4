@@ -1,0 +1,12 @@
+link = {
+	vic3 = source_tech
+	hoi4 = dest_tech_one
+	hoi4 = dest_tech_two
+}
+
+link = {
+	vic3 = source_tech_two
+	vic3 = source_tech_three
+	limit = R"(not = { has_dlc = "Test DLC" })"
+	hoi4 = dest_tech_three
+}

@@ -36,3 +36,16 @@ states={
 }
 	}
 }
+technology={
+	database={
+1={
+	country=1
+	acquired_technologies={ technology_one technology_two }
+}
+2=none
+3={
+	country=3
+	acquired_technologies={ technology_three }
+}
+	}
+}

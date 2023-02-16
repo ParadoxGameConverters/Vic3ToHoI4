@@ -4,6 +4,7 @@
 
 
 #include <map>
+#include <set>
 
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
@@ -14,27 +15,40 @@
 namespace vic3
 {
 
+struct WorldOptions
+{
+   std::map<int, Country> countries;
+   std::map<int, State> states;
+   ProvinceDefinitions province_definitions;
+   std::map<int, std::set<std::string>> acquired_technologies;
+};
+
+
 class World
 {
   public:
-   explicit World(std::map<int, Country> countries,
-       std::map<int, State> states,
-       ProvinceDefinitions province_definitions):
-       countries_(std::move(countries)),
-       states_(std::move(states)),
-       province_definitions_(province_definitions)
+   explicit World(WorldOptions world_options):
+       countries_(std::move(world_options.countries)),
+       states_(std::move(world_options.states)),
+       province_definitions_(world_options.province_definitions),
+       acquired_technologies_(std::move(world_options.acquired_technologies))
    {
    }
 
    [[nodiscard]] const std::map<int, Country>& GetCountries() const { return countries_; }
    [[nodiscard]] const std::map<int, State>& GetStates() const { return states_; }
-   [[nodiscard]] const ProvinceDefinitions GetProvinceDefinitions() const { return province_definitions_; }
+   [[nodiscard]] const ProvinceDefinitions& GetProvinceDefinitions() const { return province_definitions_; }
+   [[nodiscard]] const std::map<int, std::set<std::string>>& GetAcquiredTechnologies() const
+   {
+      return acquired_technologies_;
+   }
 
 
   private:
    std::map<int, Country> countries_;
    std::map<int, State> states_;
    ProvinceDefinitions province_definitions_;
+   std::map<int, std::set<std::string>> acquired_technologies_;
 };
 
 }  // namespace vic3

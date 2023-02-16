@@ -26,6 +26,7 @@ TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().empty());
    EXPECT_TRUE(world.GetProvinceDefinitions().GetProvinceDefinitions().empty());
+   EXPECT_TRUE(world.GetAcquiredTechnologies().empty());
 }
 
 
@@ -44,6 +45,9 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
        testing::UnorderedElementsAre(testing::Pair(0, State({.provinces = {1, 2, 3}})),
            testing::Pair(1, State({.owner_number = 3, .owner_tag = "TWO", .provinces = {10, 11, 12}})),
            testing::Pair(2, State({.owner_number = 133, .provinces = {20}}))));
+   EXPECT_THAT(world.GetAcquiredTechnologies(),
+       testing::UnorderedElementsAre(testing::Pair(1, std::set<std::string>{"technology_one", "technology_two"}),
+           testing::Pair(3, std::set<std::string>{"technology_three"})));
 }
 
 

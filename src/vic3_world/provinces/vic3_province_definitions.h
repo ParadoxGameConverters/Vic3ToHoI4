@@ -15,6 +15,7 @@ namespace vic3
 class ProvinceDefinitions
 {
   public:
+   ProvinceDefinitions() = default;
    explicit ProvinceDefinitions(std::vector<std::string> province_definitions):
        province_definitions_(std::move(province_definitions))
    {
