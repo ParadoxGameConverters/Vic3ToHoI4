@@ -64,7 +64,7 @@ TEST(Outhoi4StatesState, BasicsAreOutput)
        "state = {\n"
        "\tid = 1\n"
        "\tname = \"STATE_1\"\n"
-       "\tmanpower = 1000\n"
+       "\tmanpower = 0\n"
        "\n"
        "\tstate_category = rural\n"
        "\n"
@@ -145,6 +145,41 @@ TEST(Outhoi4StatesState, NameIsSetById)
        std::ostreambuf_iterator<char>(state_file_stream_two));
    state_file_two.close();
    EXPECT_THAT(state_file_stream_two.str(), testing::HasSubstr("name = \"STATE_2\""));
+}
+
+
+TEST(Outhoi4StatesState, manpowerIsSetByManpower)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/manpowerIsSetByManpower");
+   commonItems::TryCreateFolder("output/manpowerIsSetByManpower/history");
+   commonItems::TryCreateFolder("output/manpowerIsSetByManpower/history/states");
+
+   const hoi4::State state_one(1, {.manpower = 12345});
+   const hoi4::State state_two(2, {.manpower = 67890});
+
+   OutputState("manpowerIsSetByManpower", state_one);
+   OutputState("manpowerIsSetByManpower", state_two);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/manpowerIsSetByManpower/history/states/1.txt"));
+   std::ifstream state_file_one("output/manpowerIsSetByManpower/history/states/1.txt");
+   ASSERT_TRUE(state_file_one.is_open());
+   std::stringstream state_file_stream_one;
+   std::copy(std::istreambuf_iterator<char>(state_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_one));
+   state_file_one.close();
+   EXPECT_THAT(state_file_stream_one.str(), testing::HasSubstr("manpower = 12345"));
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/manpowerIsSetByManpower/history/states/2.txt"));
+   std::ifstream state_file_two("output/manpowerIsSetByManpower/history/states/2.txt");
+   ASSERT_TRUE(state_file_two.is_open());
+   std::stringstream state_file_stream_two;
+   std::copy(std::istreambuf_iterator<char>(state_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_two));
+   state_file_two.close();
+   EXPECT_THAT(state_file_stream_two.str(), testing::HasSubstr("manpower = 67890"));
 }
 
 
