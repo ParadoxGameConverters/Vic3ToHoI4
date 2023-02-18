@@ -94,7 +94,7 @@ TEST(Outhoi4WorldOutworld, StatesHistoryFilesAreCreatedAndOutput)
 
    OutputWorld("StatesHistoryFilesAreCreatedAreOutput",
        hoi4::World({},
-           {{hoi4::State(1, std::nullopt, {}), hoi4::State(2, std::nullopt, {})}, {}},
+           {.states = {hoi4::State(1, {}), hoi4::State(2, {})}, .province_to_state_id_map = {}},
            hoi4::StrategicRegions({}, {}),
            hoi4::Buildings({}, {})));
 
