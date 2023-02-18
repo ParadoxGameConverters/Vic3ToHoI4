@@ -527,8 +527,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
            testing::Pair(60, 2)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not get tag for owner of state 1."));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not get tag for owner of state 2."));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not get tag for owner of Vic3 state 1."));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not get tag for owner of Vic3 state 2."));
 }
 
 
