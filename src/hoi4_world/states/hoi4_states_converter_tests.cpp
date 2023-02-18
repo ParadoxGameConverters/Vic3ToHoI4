@@ -564,4 +564,45 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsConverted)
            State(2, {.provinces = {40, 50, 60}, .manpower = 67890})));
 }
 
+
+TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInSplitStatesIsProportionalToTotalProvinces)
+{
+   const vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
+   const maps::MapData map_data{{{"10", {"20"}}, {"40", {"50"}}}, {}, {}, hoi4_province_definitions, {}};
+   const hoi4::StrategicRegions strategic_regions({}, {});
+   const mappers::CountryMapper country_mapper({});
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const auto hoi4_states =
+       StatesConverter{}.ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}, .population = 12345})},
+                                           {2, vic3::State({.provinces = {4, 5, 6}, .population = 67890})}},
+           province_definitions,
+           hoi4_to_vic3_province_mappings,
+           map_data,
+           hoi4_province_definitions,
+           strategic_regions,
+           country_mapper);
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.provinces = {10, 20}, .manpower = 8230}),
+           State(2, {.provinces = {30}, .manpower = 4115}),
+           State(3, {.provinces = {40, 50}, .manpower = 45'260}),
+           State(4, {.provinces = {60}, .manpower = 22'630})));
+}
+
 }  // namespace hoi4
