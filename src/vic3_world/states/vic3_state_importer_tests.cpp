@@ -17,6 +17,7 @@ TEST(Vic3worldStateVic3stateimporter, DefaultsAreDefaulted)
    EXPECT_FALSE(state.GetOwnerNumber().has_value());
    EXPECT_FALSE(state.GetOwnerTag().has_value());
    EXPECT_TRUE(state.GetProvinces().empty());
+   EXPECT_EQ(state.GetPopulation(), 0);
 }
 
 
@@ -37,10 +38,15 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
 {
    std::stringstream input;
    input << "={\n";
-   input << "country=42\n";
+   input << "\tcountry=42\n";
    input << "\tprovinces={\n";
    input << "\t\tprovinces = { 37330 1 37333 9 37348 1 }\n";
    input << "\t}";
+   input << "\tpop_statistics={\n";
+   input << "\t\tlower_strata_pops=2";
+   input << "\t\tmiddle_strata_pops=4";
+   input << "\t\tupper_strata_pops=6";
+   input << "\t}\n";
    input << "}";
    const auto state = StateImporter{}.ImportState(input);
 
@@ -61,6 +67,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
            37342,
            37348,
            37349));
+   EXPECT_EQ(state.GetPopulation(), 12);
 }
 
 
@@ -70,10 +77,15 @@ TEST(Vic3worldStateVic3stateimporter, MultipleStatesCanBeInput)
 
    std::stringstream input_one;
    input_one << "={\n";
-   input_one << "country=42\n";
+   input_one << "\tcountry=42\n";
    input_one << "\tprovinces={\n";
    input_one << "\t\tprovinces = { 37330 1 37333 9 37348 1 }\n";
    input_one << "\t}";
+   input_one << "\tpop_statistics={\n";
+   input_one << "\t\tlower_strata_pops=2";
+   input_one << "\t\tmiddle_strata_pops=4";
+   input_one << "\t\tupper_strata_pops=6";
+   input_one << "\t}\n";
    input_one << "}";
    const auto state_one = state_importer.ImportState(input_one);
 
@@ -97,9 +109,12 @@ TEST(Vic3worldStateVic3stateimporter, MultipleStatesCanBeInput)
            37342,
            37348,
            37349));
+   EXPECT_EQ(state_one.GetPopulation(), 12);
+
    EXPECT_FALSE(state_two.GetOwnerNumber().has_value());
    EXPECT_FALSE(state_two.GetOwnerTag().has_value());
    EXPECT_TRUE(state_two.GetProvinces().empty());
+   EXPECT_EQ(state_two.GetPopulation(), 0);
 }
 
 }  // namespace vic3

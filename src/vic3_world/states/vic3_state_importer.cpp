@@ -13,6 +13,9 @@ vic3::StateImporter::StateImporter()
    state_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
       provinces_parser_.parseStream(input_stream);
    });
+   state_parser_.registerKeyword("pop_statistics", [this](std::istream& input_stream) {
+      pop_statistics_parser_.parseStream(input_stream);
+   });
    state_parser_.IgnoreUnregisteredItems();
 
    provinces_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
@@ -32,6 +35,17 @@ vic3::StateImporter::StateImporter()
          }
       }
    });
+
+   pop_statistics_parser_.registerKeyword("lower_strata_pops", [this](std::istream& input_stream) {
+      population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("middle_strata_pops", [this](std::istream& input_stream) {
+      population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("upper_strata_pops", [this](std::istream& input_stream) {
+      population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.IgnoreUnregisteredItems();
 }
 
 
@@ -39,6 +53,9 @@ vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
 {
    owner_number_.reset();
    provinces_.clear();
+   population_ = 0;
+
    state_parser_.parseStream(input_stream);
-   return State({.owner_number = owner_number_, .provinces = provinces_});
+
+   return State({.owner_number = owner_number_, .provinces = provinces_, .population = population_});
 }
