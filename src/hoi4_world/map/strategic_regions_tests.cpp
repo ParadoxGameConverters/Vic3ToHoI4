@@ -17,16 +17,16 @@ TEST(Hoi4WorldMapStrategicRegionsTests, StrategicRegionsCanBeUpdated)
                                           {76, StrategicRegion("", 76, "", {76, 42}, {}, std::nullopt, "")}},
        {{144, 42}, {169, 42}, {76, 76}, {42, 76}});
 
-   strategic_regions.UpdateToMatchNewStates({State(1, std::nullopt, {144}), State(2, std::nullopt, {169, 42, 76})});
+   strategic_regions.UpdateToMatchNewStates({State(1, {.provinces = {144}}), State(2, {.provinces = {169, 42, 76}})});
 
    const auto the_strategic_regions = strategic_regions.GetStrategicRegions();
 
-   auto region_42 = the_strategic_regions.find(42);
+   const auto region_42 = the_strategic_regions.find(42);
    ASSERT_NE(region_42, the_strategic_regions.end());
    EXPECT_THAT(region_42->second.GetOldProvinces(), testing::UnorderedElementsAre(144, 169));
    EXPECT_THAT(region_42->second.GetNewProvinces(), testing::UnorderedElementsAre(144));
 
-   auto region_76 = the_strategic_regions.find(76);
+   const auto region_76 = the_strategic_regions.find(76);
    ASSERT_NE(region_76, the_strategic_regions.end());
    EXPECT_THAT(region_76->second.GetOldProvinces(), testing::UnorderedElementsAre(42, 76));
    EXPECT_THAT(region_76->second.GetNewProvinces(), testing::UnorderedElementsAre(169, 42, 76));
@@ -49,12 +49,12 @@ TEST(Hoi4WorldMapStrategicRegionsTests, LeftoverProvincesAreAddedBackToOriginalR
 
    const auto original_strategic_regions = strategic_regions.GetStrategicRegions();
 
-   auto region_42 = original_strategic_regions.find(42);
+   const auto region_42 = original_strategic_regions.find(42);
    ASSERT_NE(region_42, original_strategic_regions.end());
    EXPECT_THAT(region_42->second.GetOldProvinces(), testing::UnorderedElementsAre(144, 169));
    EXPECT_THAT(region_42->second.GetNewProvinces(), testing::UnorderedElementsAre(144, 169));
 
-   auto region_76 = original_strategic_regions.find(76);
+   const auto region_76 = original_strategic_regions.find(76);
    ASSERT_NE(region_76, original_strategic_regions.end());
    EXPECT_THAT(region_76->second.GetOldProvinces(), testing::UnorderedElementsAre(42, 76));
    EXPECT_THAT(region_76->second.GetNewProvinces(), testing::UnorderedElementsAre(42, 76));
@@ -69,7 +69,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, ProvincesInNoRegionAreLogged)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   strategic_regions.UpdateToMatchNewStates({State(1, std::nullopt, {212})});
+   strategic_regions.UpdateToMatchNewStates({State(1, {.provinces = {212}})});
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Province 212 had no original strategic region"));
 
@@ -85,7 +85,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, DesynchronizedInternalsCauseLogging)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   strategic_regions.UpdateToMatchNewStates({State(1, std::nullopt, {144}), State(2, std::nullopt, {169, 42, 76})});
+   strategic_regions.UpdateToMatchNewStates({State(1, {.provinces = {144}}), State(2, {.provinces = {169, 42, 76}})});
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Strategic region 42 was not in the list of regions."));
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Strategic region 76 was not in the list of regions."));

@@ -84,7 +84,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
 
            .province_definitions = province_definitions});
 
-   mappers::ProvinceMapper province_mapper{{},
+   const mappers::ProvinceMapper province_mapper{{},
        {
            {10, {"0x000001"}},
            {20, {"0x000002"}},
@@ -100,7 +100,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
        province_mapper);
 
    EXPECT_THAT(world.GetStates().states,
-       testing::ElementsAre(State(1, "TAG", {10, 20, 30}), State(2, "TWO", {40, 50, 60})));
+       testing::ElementsAre(State(1, {.owner = "TAG", .provinces = {10, 20, 30}}),
+           State(2, {.owner = "TWO", .provinces = {40, 50, 60}})));
    EXPECT_THAT(world.GetStates().province_to_state_id_map,
        testing::UnorderedElementsAre(testing::Pair(10, 1),
            testing::Pair(20, 1),
@@ -122,7 +123,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
        {.states = {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
            .province_definitions = province_definitions});
 
-   mappers::ProvinceMapper province_mapper{{},
+   const mappers::ProvinceMapper province_mapper{{},
        {
            {10, {"0x000001"}},
            {20, {"0x000002"}},
@@ -220,7 +221,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
                                        {3, vic3::State({.provinces = {8}})}},
        .province_definitions = province_definitions});
 
-   mappers::ProvinceMapper province_mapper{{},
+   const mappers::ProvinceMapper province_mapper{{},
        {
            {1, {"0x000001"}},
            {2, {"0x000002"}},
