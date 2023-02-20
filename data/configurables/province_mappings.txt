@@ -4987,7 +4987,6 @@
 	link = { vic3 = x02733F vic3 = x17F33B vic3 = x4A4413 vic3 = x59D231 vic3 = x6C22F2 vic3 = x865E67 vic3 = x9EB0DC vic3 = xAD9EE8 vic3 = x745F00 hoi4 = 2075 } # STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA -> Puerto Cabezas
 	link = { vic3 = x074DD8 vic3 = x832DFB vic3 = x95FC5A vic3 = x9CDB2B vic3 = xFD8FA1 vic3 = xBA0A50 hoi4 = 10728 } # STATE_NICARAGUA, STATE_NICARAGUA, STATE_NICARAGUA, Matagalpa, STATE_NICARAGUA, STATE_NICARAGUA -> Estelí
 	link = { vic3 = x1070C0 vic3 = x68E7F3 vic3 = x9070C0 vic3 = xC9A998 hoi4 = 12738 } # STATE_NICARAGUA, Chinandega, Managua, Esteli -> Managua
-	link = { vic3 = x18FDFD hoi4 = 13139 hoi4 = 13178 } # STATE_LAKE_NICARAGUA -> (Lake), (Lake)
 	link = { comment = "* * STATE_COSTA_RICA " }
 	link = { vic3 = x10EF80 vic3 = x4D3411 vic3 = x1A076A hoi4 = 12878 } # STATE_COSTA_RICA, STATE_COSTA_RICA, Cartago -> Limón
 	link = { vic3 = x32AA32 vic3 = x395FB6 vic3 = xEF90DC hoi4 = 13087 } # San Jose, STATE_COSTA_RICA, Puerto Limón -> San José
@@ -10231,6 +10230,7 @@
 	link = { vic3 = xB6CECE hoi4 = 8644 hoi4 = 4012 hoi4 = 4235 hoi4 = 2758 hoi4 = 2711 hoi4 = 8260 hoi4 = 4461 hoi4 = 8616 hoi4 = 3611 hoi4 = 3805 hoi4 = 2735 hoi4 = 2661 hoi4 = 2636 hoi4 = 5124 hoi4 = 8139 hoi4 = 2686 hoi4 = 1681 } # STATE_SOUTH_PHILIPPINES_SEA -> (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile)
 	link = { comment = "* * STATE_PATAGONIAN_LAKES " }
 	link = { comment = "* * STATE_LAKE_NICARAGUA " }
+	link = { vic3 = x18FDFD hoi4 = 13139 hoi4 = 13178 } # STATE_LAKE_NICARAGUA -> (Lake), (Lake)
 	link = { comment = "* * Other Lakes" }
 	link = { vic3 = x01E0C9 hoi4 = 13149 hoi4 = 13145 hoi4 = 13179 hoi4 = 13122 } # x01E0C9 -> (Lake), (Lake), (Lake), (Lake)
 	link = { hoi4 = 13136 } # NOTHING -> (Lake)
