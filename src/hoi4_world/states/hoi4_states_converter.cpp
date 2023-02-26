@@ -324,7 +324,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
                 std::max(0.0F, country_factories.military) + std::max(0.0F, country_factories.civilian) +
                 (IsStateCoastal(province_set, {}) ? std::max(0.0F, country_factories.docks) : 0.0F);
 
-            for (int i = 0; i <= static_cast<int>(std::clamp(factories, applied_factories, 12.0F)); i++)
+            for (int i = 0; static_cast<float>(i) < std::clamp(factories, applied_factories, 12.0F); i++)
             {
                if (IsStateCoastal(province_set, {}) && (country_factories.docks > 0.0F))
                {
