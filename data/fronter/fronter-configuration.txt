@@ -31,6 +31,17 @@ requiredFolder = {
 	searchPathID = 529340
 }
 
+
+requiredFolder = {
+	name = Vic3SteamModDirectory
+	displayName = STEAMMOD
+	tooltip = STEAMMODTIP
+	mandatory = true
+	searchPathType = steamFolder
+	searchPathID = 529340
+	searchPath = "../../workshop/content/529340"
+}
+
 requiredFolder = {
 	name = sourceGameModPath
 	displayName = VIC3MOD

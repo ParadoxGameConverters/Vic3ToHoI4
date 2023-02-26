@@ -232,8 +232,8 @@ std::vector<std::set<int>> ConsolidateProvinceSets(std::vector<std::set<int>> co
 }
 
 
-hoi4::States CreateStates(const std::map<int, vic3::State>& states,
-    const std::map<int, std::set<int>>& state_id_to_hoi4_provinces,
+hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
+    const std::map<int, std::set<int>>& vic3_state_id_to_hoi4_provinces,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const hoi4::StrategicRegions& strategic_regions,
@@ -241,22 +241,24 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& states,
 {
    std::vector<hoi4::State> hoi4_states;
    std::map<int, int> province_to_state_id_map;
+   std::map<int, int> vic3_state_ids_to_hoi4_state_ids;
 
-   for (const auto& [state_id, hoi4_provinces]: state_id_to_hoi4_provinces)
+   for (const auto& [vic3_state_id, hoi4_provinces]: vic3_state_id_to_hoi4_provinces)
    {
-      const auto state_itr = states.find(state_id);
-      if (state_itr == states.end())
+      const auto vic3_state_itr = vic3_states.find(vic3_state_id);
+      if (vic3_state_itr == vic3_states.end())
       {
          // I can't think how this would happen, so we'd better force people to the forums if it does.
          throw std::runtime_error("Something has gone very wrong.");
       }
       std::optional<std::string> state_owner;
-      if (const std::optional<std::string>& source_owner = state_itr->second.GetOwnerTag(); source_owner.has_value())
+      if (const std::optional<std::string>& vic3_state_owner = vic3_state_itr->second.GetOwnerTag();
+          vic3_state_owner.has_value())
       {
-         state_owner = country_mapper.GetHoiTag(*source_owner);
+         state_owner = country_mapper.GetHoiTag(*vic3_state_owner);
          if (!state_owner.has_value())
          {
-            Log(LogLevel::Warning) << fmt::format("Could not get tag for owner of state {}.", state_id);
+            Log(LogLevel::Warning) << fmt::format("Could not get tag for owner of Vic3 state {}.", vic3_state_id);
          }
       }
 
@@ -271,17 +273,22 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& states,
              final_connected_province_sets.size());
       }
 
+      const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
       for (const auto& province_set: final_connected_province_sets)
       {
+         const int manpower = static_cast<int>(total_manpower * province_set.size() / hoi4_provinces.size());
+
          for (const int province: province_set)
          {
             province_to_state_id_map.emplace(province, static_cast<int>(hoi4_states.size() + 1U));
          }
-         hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U), state_owner, province_set);
+         vic3_state_ids_to_hoi4_state_ids.emplace(vic3_state_id, static_cast<int>(hoi4_states.size() + 1U));
+         hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U),
+             hoi4::StateOptions{.owner = state_owner, .provinces = province_set, .manpower = manpower});
       }
    }
 
-   return {hoi4_states, province_to_state_id_map};
+   return {hoi4_states, province_to_state_id_map, vic3_state_ids_to_hoi4_state_ids};
 }
 
 }  // namespace
@@ -298,12 +305,12 @@ hoi4::States hoi4::StatesConverter::ConvertStates(const std::map<int, vic3::Stat
 {
    const std::map<std::string, int> vic3_province_to_state_id_map =
        MapVic3ProvincesToStates(states, vic3_province_definitions);
-   const std::map<int, std::set<int>> state_id_to_hoi4_provinces =
+   const std::map<int, std::set<int>> vic3_state_id_to_hoi4_provinces =
        PlaceHoi4ProvincesInStates(vic3_province_to_state_id_map,
            hoi4_to_vic3_province_mappings,
            hoi4_province_definitions);
    return CreateStates(states,
-       state_id_to_hoi4_provinces,
+       vic3_state_id_to_hoi4_provinces,
        map_data,
        hoi4_province_definitions,
        strategic_regions,

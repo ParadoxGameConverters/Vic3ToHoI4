@@ -18,7 +18,6 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -33,202 +32,78 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build/test/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)build/test/$(Configuration)-intermediate/</IntDir>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/fmt/include;$(SolutionDir)/external/googletest/googletest/;$(SolutionDir)/external/googletest/googletest/include/;$(SolutionDir)/external/googletest/googlemock/;$(SolutionDir)/external/googletest/googlemock/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/fmt/include;$(SolutionDir)/external/commonItems/external/googletest/googletest/;$(SolutionDir)/external/commonItems/external/googletest/googletest/include/;$(SolutionDir)/external/commonItems/external/googletest/googlemock/;$(SolutionDir)/external/commonItems/external/googletest/googlemock/include/;$(SolutionDir)external/commonItems/pch</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(SolutionDir)lib\common.pdb</ProgramDataBaseFileName>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(SolutionDir)lib\pch.pch</PrecompiledHeaderOutputFile>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>Vic3ToHoI4lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib</AdditionalLibraryDirectories>
+      <IncrementalLinkDatabaseFile>$(SolutionDir)lib\$(TargetName).ilk</IncrementalLinkDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="external\commonItems\Color.cpp" />
-    <ClCompile Include="external\commonItems\CommonFunctions.cpp" />
-    <ClCompile Include="external\commonItems\ConvenientParser.cpp" />
-    <ClCompile Include="external\commonItems\ConverterVersion.cpp" />
-    <ClCompile Include="external\commonItems\external\zip\src\zip.c" />
-    <ClCompile Include="external\commonItems\GameVersion.cpp" />
-    <ClCompile Include="external\commonItems\iconvlite.cpp" />
-    <ClCompile Include="external\commonItems\Log.cpp" />
-    <ClCompile Include="external\commonItems\ModLoader\ModFilesystem.cpp" />
-    <ClCompile Include="external\commonItems\ModLoader\ModLoader.cpp" />
-    <ClCompile Include="external\commonItems\ModLoader\ModParser.cpp" />
-    <ClCompile Include="external\commonItems\OSCommonLayer.cpp" />
-    <ClCompile Include="external\commonItems\Parser.cpp" />
-    <ClCompile Include="external\commonItems\ParserHelpers.cpp" />
-    <ClCompile Include="external\commonItems\StringUtils.cpp" />
-    <ClCompile Include="external\commonItems\WinUtils.cpp" />
-    <ClCompile Include="external\fmt\src\format.cc" />
-    <ClCompile Include="external\fmt\src\os.cc" />
-    <ClCompile Include="external\googletest\googlemock\src\gmock-all.cc" />
-    <ClCompile Include="external\googletest\googletest\src\gtest-all.cc" />
-    <ClCompile Include="external\googletest\googletest\src\gtest_main.cc" />
-    <ClCompile Include="src\configuration\configuration_importer.cpp" />
+    <ClCompile Include="external\commonItems\external\googletest\googlemock\src\gmock-all.cc" />
+    <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc" />
+    <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\buildings_creator_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer.cpp" />
     <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\map\strategic_regions.cpp" />
-    <ClCompile Include="src\hoi4_world\map\strategic_regions_importer.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\map\strategic_region_importer.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_region_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_region_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\states\hoi4_states_converter.cpp" />
     <ClCompile Include="src\hoi4_world\states\hoi4_states_converter_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\world\hoi4_world_converter.cpp" />
+    <ClCompile Include="src\hoi4_world\technology\technologies_converter_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\technology\technologies_tests.cpp" />
     <ClCompile Include="src\hoi4_world\world\hoi4_world_converter_tests.cpp" />
-    <ClCompile Include="src\mappers\country\country_mapper.cpp" />
-    <ClCompile Include="src\mappers\country\country_mapper_creator.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_creator_tests.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_tests.cpp" />
-    <ClCompile Include="src\mappers\provinces\province_mapper.cpp" />
-    <ClCompile Include="src\mappers\provinces\province_mapper_importer.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper_importer_tests.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper_tests.cpp" />
-    <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapping_importer_tests.cpp" />
-    <ClCompile Include="src\maps\map_data.cpp" />
-    <ClCompile Include="src\maps\map_data_importer.cpp" />
+    <ClCompile Include="src\mappers\technology\tech_mappings_importer_tests.cpp" />
+    <ClCompile Include="src\mappers\technology\tech_mapping_importer_tests.cpp" />
     <ClCompile Include="src\maps\map_data_tests.cpp" />
-    <ClCompile Include="src\maps\province_definitions.cpp" />
     <ClCompile Include="src\maps\province_definitions_tests.cpp" />
-    <ClCompile Include="src\maps\province_points.cpp" />
     <ClCompile Include="src\maps\province_points_tests.cpp" />
-    <ClCompile Include="src\maps\utility.cpp" />
     <ClCompile Include="src\maps\utility_tests.cpp" />
-    <ClCompile Include="src\out_hoi4\countries\out_countries.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries_tests.cpp" />
-    <ClCompile Include="src\out_hoi4\countries\out_country.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country_tests.cpp" />
-    <ClCompile Include="src\out_hoi4\map\out_building.cpp" />
-    <ClCompile Include="src\out_hoi4\map\out_buildings.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_buildings_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_building_tests.cpp" />
-    <ClCompile Include="src\out_hoi4\map\out_rocket_sites.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_rocket_sites_tests.cpp" />
-    <ClCompile Include="src\out_hoi4\map\out_strategic_region.cpp" />
-    <ClCompile Include="src\out_hoi4\map\out_strategic_regions.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_strategic_regions_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_strategic_region_tests.cpp" />
-    <ClCompile Include="src\out_hoi4\out_mod.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp" />
-    <ClCompile Include="src\out_hoi4\states\out_state.cpp" />
-    <ClCompile Include="src\out_hoi4\states\out_states.cpp" />
     <ClCompile Include="src\out_hoi4\states\out_states_tests.cpp" />
     <ClCompile Include="src\out_hoi4\states\out_state_tests.cpp" />
-    <ClCompile Include="src\out_hoi4\world\out_world.cpp" />
+    <ClCompile Include="src\out_hoi4\technology\out_technologies_tests.cpp" />
     <ClCompile Include="src\out_hoi4\world\out_world_tests.cpp" />
-    <ClCompile Include="src\vic3_to_hoi4_converter.cpp" />
-    <ClCompile Include="src\vic3_world\countries\country_definitions_importer.cpp" />
     <ClCompile Include="src\vic3_world\countries\country_definitions_importer_tests.cpp" />
-    <ClCompile Include="src\vic3_world\countries\vic3_countries_importer.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer_tests.cpp" />
-    <ClCompile Include="src\vic3_world\countries\vic3_country_importer.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer_tests.cpp" />
-    <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp" />
-    <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader_tests.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_tests.cpp" />
-    <ClCompile Include="src\vic3_world\states\vic3_states_importer.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_states_importer_tests.cpp" />
-    <ClCompile Include="src\vic3_world\states\vic3_state_importer.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_state_importer_tests.cpp" />
-    <ClCompile Include="src\vic3_world\world\vic3_world_importer.cpp" />
+    <ClCompile Include="src\vic3_world\technology\vic3_technology_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\world\vic3_world_importer_tests.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="external\commonItems\Color.h" />
-    <ClInclude Include="external\commonItems\CommonFunctions.h" />
-    <ClInclude Include="external\commonItems\ConvenientParser.h" />
-    <ClInclude Include="external\commonItems\ConverterVersion.h" />
-    <ClInclude Include="external\commonItems\external\zip\src\miniz.h" />
-    <ClInclude Include="external\commonItems\external\zip\src\zip.h" />
-    <ClInclude Include="external\commonItems\GameVersion.h" />
-    <ClInclude Include="external\commonItems\iconvlite.h" />
-    <ClInclude Include="external\commonItems\Log.h" />
-    <ClInclude Include="external\commonItems\ModLoader\Mod.h" />
-    <ClInclude Include="external\commonItems\ModLoader\ModFilesystem.h" />
-    <ClInclude Include="external\commonItems\ModLoader\ModLoader.h" />
-    <ClInclude Include="external\commonItems\ModLoader\ModParser.h" />
-    <ClInclude Include="external\commonItems\OSCompatibilityLayer.h" />
-    <ClInclude Include="external\commonItems\Parser.h" />
-    <ClInclude Include="external\commonItems\ParserHelpers.h" />
-    <ClInclude Include="external\commonItems\StringUtils.h" />
-    <ClInclude Include="external\fmt\include\fmt\core.h" />
-    <ClInclude Include="external\fmt\include\fmt\format-inl.h" />
-    <ClInclude Include="external\fmt\include\fmt\format.h" />
-    <ClInclude Include="external\fmt\include\fmt\os.h" />
-    <ClInclude Include="external\rakaly\rakaly.h" />
-    <ClInclude Include="src\configuration\configuration.h" />
-    <ClInclude Include="src\configuration\configuration_importer.h" />
-    <ClInclude Include="src\hoi4_world\countries\hoi4_countries_converter.h" />
-    <ClInclude Include="src\hoi4_world\countries\hoi4_country.h" />
-    <ClInclude Include="src\hoi4_world\countries\hoi4_country_converter.h" />
-    <ClInclude Include="src\hoi4_world\map\buildings.h" />
-    <ClInclude Include="src\hoi4_world\map\buildings_creator.h" />
-    <ClInclude Include="src\hoi4_world\map\building_position.h" />
-    <ClInclude Include="src\hoi4_world\map\coastal_provinces.h" />
-    <ClInclude Include="src\hoi4_world\map\coastal_provinces_creator.h" />
-    <ClInclude Include="src\hoi4_world\map\hoi4_building.h" />
-    <ClInclude Include="src\hoi4_world\map\hoi4_province_definition_importer.h" />
-    <ClInclude Include="src\hoi4_world\map\strategic_region.h" />
-    <ClInclude Include="src\hoi4_world\map\strategic_regions.h" />
-    <ClInclude Include="src\hoi4_world\map\strategic_regions_importer.h" />
-    <ClInclude Include="src\hoi4_world\map\strategic_region_importer.h" />
-    <ClInclude Include="src\hoi4_world\states\hoi4_state.h" />
-    <ClInclude Include="src\hoi4_world\states\hoi4_states_converter.h" />
-    <ClInclude Include="src\hoi4_world\world\hoi4_world.h" />
-    <ClInclude Include="src\hoi4_world\world\hoi4_world_converter.h" />
-    <ClInclude Include="src\mappers\country\country_mapper.h" />
-    <ClInclude Include="src\mappers\country\country_mapper_creator.h" />
-    <ClInclude Include="src\mappers\provinces\province_mapper.h" />
-    <ClInclude Include="src\mappers\provinces\province_mapper_importer.h" />
-    <ClInclude Include="src\mappers\provinces\province_mapping.h" />
-    <ClInclude Include="src\mappers\provinces\province_mapping_importer.h" />
-    <ClInclude Include="src\mappers\provinces\province_mapping_types.h" />
-    <ClInclude Include="src\maps\map_data.h" />
-    <ClInclude Include="src\maps\map_data_importer.h" />
-    <ClInclude Include="src\maps\point.h" />
-    <ClInclude Include="src\maps\province_definitions.h" />
-    <ClInclude Include="src\maps\province_points.h" />
-    <ClInclude Include="src\maps\utility.h" />
-    <ClInclude Include="src\out_hoi4\countries\out_countries.h" />
-    <ClInclude Include="src\out_hoi4\countries\out_country.h" />
-    <ClInclude Include="src\out_hoi4\map\out_building.h" />
-    <ClInclude Include="src\out_hoi4\map\out_buildings.h" />
-    <ClInclude Include="src\out_hoi4\map\out_rocket_sites.h" />
-    <ClInclude Include="src\out_hoi4\map\out_strategic_region.h" />
-    <ClInclude Include="src\out_hoi4\map\out_strategic_regions.h" />
-    <ClInclude Include="src\out_hoi4\out_mod.h" />
-    <ClInclude Include="src\out_hoi4\states\out_state.h" />
-    <ClInclude Include="src\out_hoi4\states\out_states.h" />
-    <ClInclude Include="src\out_hoi4\world\out_world.h" />
-    <ClInclude Include="src\vic3_to_hoi4_converter.h" />
-    <ClInclude Include="src\vic3_world\countries\country_definitions_importer.h" />
-    <ClInclude Include="src\vic3_world\countries\vic3_countries_importer.h" />
-    <ClInclude Include="src\vic3_world\countries\vic3_country.h" />
-    <ClInclude Include="src\vic3_world\countries\vic3_country_importer.h" />
-    <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h" />
-    <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions_loader.h" />
-    <ClInclude Include="src\vic3_world\states\vic3_state.h" />
-    <ClInclude Include="src\vic3_world\states\vic3_states_importer.h" />
-    <ClInclude Include="src\vic3_world\states\vic3_state_importer.h" />
-    <ClInclude Include="src\vic3_world\world\vic3_world.h" />
-    <ClInclude Include="src\vic3_world\world\vic3_world_importer.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\test_files\**\*.*">
@@ -251,9 +126,6 @@
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="external\rakaly\rakaly.dll.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

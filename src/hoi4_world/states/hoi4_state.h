@@ -13,19 +13,29 @@
 namespace hoi4
 {
 
+struct StateOptions
+{
+   std::optional<std::string> owner;
+   std::set<int> provinces;
+   int manpower = 0;
+};
+
+
 class State
 {
   public:
-   explicit State(int id, std::optional<std::string> owner, std::set<int> provinces):
+   State(int id, StateOptions state_options):
        id_(id),
-       owner_(owner),
-       provinces_(std::move(provinces))
+       owner_(std::move(state_options.owner)),
+       provinces_(std::move(state_options.provinces)),
+       manpower_(state_options.manpower)
    {
    }
 
    [[nodiscard]] int GetId() const { return id_; }
    [[nodiscard]] const std::optional<std::string>& GetOwner() const { return owner_; }
    [[nodiscard]] const std::set<int>& GetProvinces() const { return provinces_; }
+   [[nodiscard]] int GetManpower() const { return manpower_; }
 
    std::strong_ordering operator<=>(const State&) const = default;
 
@@ -33,6 +43,7 @@ class State
    int id_;
    std::optional<std::string> owner_;
    std::set<int> provinces_;
+   int manpower_ = 0;
 };
 
 }  // namespace hoi4

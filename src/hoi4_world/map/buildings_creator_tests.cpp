@@ -1,5 +1,5 @@
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/map/buildings_creator.h"
 
 
@@ -9,7 +9,7 @@ namespace hoi4
 
 TEST(Hoi4worldMapBuildingsCreatorTests, ExceptionForMissingBuildingsDotTxt)
 {
-   EXPECT_THROW(ImportBuildings(States(),
+   EXPECT_THROW(ImportBuildings(States({}),
                     CoastalProvinces({}),
                     maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
                     commonItems::ModFilesystem{"ExceptionForMissingBuildingsDotTxt", {}}),
@@ -19,7 +19,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ExceptionForMissingBuildingsDotTxt)
 
 TEST(Hoi4worldMapBuildingsCreatorTests, DefaultsToNoBuildings)
 {
-   Buildings buildings = ImportBuildings(States(),
+   const Buildings buildings = ImportBuildings(States(),
        CoastalProvinces({}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -31,14 +31,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DefaultsToNoBuildings)
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -79,14 +80,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -107,14 +109,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInMisnamedProvince)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -142,14 +145,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -165,14 +169,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocation)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -213,14 +218,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocati
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -261,14 +267,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvincesOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -297,14 +304,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvinc
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoAntiAirInStateWithNoProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -328,14 +336,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirNotPlacedInProvincesWithNoPoints)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -356,14 +365,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirNotPlacedInProvincesWithNoPoints)
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -396,14 +406,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacementOverridenByDefaultLocati
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvincesOfStateIfDefaultNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -432,16 +443,17 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvinc
 
 TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixProvincesOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5, 6, 7})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                           {6, 1},
+                                                           {7, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -482,16 +494,17 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoArmsFactoriesInStateWithNoProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                           {6, 1},
+                                                           {7, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -518,16 +531,17 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesNotPlacedInProvincesWithNoP
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5, 6, 7})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                           {6, 1},
+                                                           {7, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -548,16 +562,17 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesNotPlacedInProvincesWithNoP
 
 TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5, 6, 7})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                           {6, 1},
+                                                           {7, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -605,16 +620,17 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacementOverridenByDefault
 
 TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixProvincesOfStateIfDefaultNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5, 6, 7})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                           {6, 1},
+                                                           {7, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -655,13 +671,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
 
 TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvincesOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -743,13 +760,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoBunkersInStateWithNoProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -819,7 +837,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoBunkersInStateWithNoProvinces)
            {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
-   for (const auto building: buildings.GetBuildings())
+   for (const auto& building: buildings.GetBuildings())
    {
       EXPECT_NE(building.GetType(), "bunker");
    }
@@ -832,13 +850,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkersNotPlacedInProvincesWithNoBorders
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -859,14 +878,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkersNotPlacedInProvincesWithNoBorders
 
 TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -953,14 +973,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocatio
 
 TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvincesOfStateIfDefaultsNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -1042,13 +1063,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
 
 TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderForAllProvincesOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -1160,13 +1182,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenNoCoastalProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -1260,7 +1283,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenNoCoastalProvinces)
            {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
-   for (const auto building: buildings.GetBuildings())
+   for (const auto& building: buildings.GetBuildings())
    {
       EXPECT_NE(building.GetType(), "coastal_bunker");
    }
@@ -1273,7 +1296,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenCoastalProvincesNotI
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})}, {}),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})}, .province_to_state_id_map = {}}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -1383,13 +1406,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkersNotPlacedInProvincesWithNo
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -1414,14 +1438,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkersNotPlacedInProvincesWithNo
 
 TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -1538,14 +1563,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacementOverridenByDefault
 
 TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderForAllProvincesOfStateIfDefaultNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -1657,13 +1683,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
 
 TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCoastalProvinceOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -1766,13 +1793,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoDockyardInStateWithNoCoastalProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -1866,7 +1894,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoDockyardInStateWithNoCoastalProvinces)
            {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
-   for (const auto building: buildings.GetBuildings())
+   for (const auto& building: buildings.GetBuildings())
    {
       EXPECT_NE(building.GetType(), "dockyard");
    }
@@ -1879,13 +1907,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoBorder
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -1957,7 +1986,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoBorder
 
    std::cout.rdbuf(cout_buffer);
 
-   for (const auto building: buildings.GetBuildings())
+   for (const auto& building: buildings.GetBuildings())
    {
       EXPECT_NE(building.GetType(), "dockyard");
    }
@@ -1974,13 +2003,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoBorder
 
 TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -2085,13 +2115,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacementOverridenByDefaultLocat
 
 TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCoastalProvinceOfStateIfDefaultNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -2194,13 +2225,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
 
 TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacedInSeaBorderCenterOfFirstCoastalProvinceOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -2256,13 +2288,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacedInSeaBorderCenterOf
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoFloatingHarborsInStateWithNoCoastalProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -2318,13 +2351,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsNotPlacedInProvincesWithN
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({}, {}, {}, maps::ProvinceDefinitions{{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -2345,13 +2379,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsNotPlacedInProvincesWithN
 
 TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -2408,13 +2443,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacementOverridenByDefau
 TEST(Hoi4worldMapBuildingsCreatorTests,
     FloatingHarborsPlacedInSeaBorderCenterOfFirstCoastalProvinceOfStateIfDefaultNotInActualProvince)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -2470,16 +2506,17 @@ TEST(Hoi4worldMapBuildingsCreatorTests,
 
 TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirstSixProvincesOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5, 6, 7})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                           {6, 1},
+                                                           {7, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -2520,16 +2557,17 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoIndustrialComplexesInStateWithNoProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                           {6, 1},
+                                                           {7, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -2556,16 +2594,17 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesNotPlacedInProvincesW
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5, 6, 7})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                           {6, 1},
+                                                           {7, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -2590,16 +2629,17 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesNotPlacedInProvincesW
 
 TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5, 6, 7})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                           {6, 1},
+                                                           {7, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -2647,16 +2687,17 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacementOverridenByD
 
 TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirstSixProvincesOfStateIfDefaultNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5, 6, 7})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                                 {6, 1},
-                                                 {7, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                           {6, 1},
+                                                           {7, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -2697,13 +2738,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAllProvincesOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -2819,13 +2861,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAl
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoNavalBasesWhenNoCoastalProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -2919,7 +2962,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoNavalBasesWhenNoCoastalProvinces)
            {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
-   for (const auto building: buildings.GetBuildings())
+   for (const auto& building: buildings.GetBuildings())
    {
       EXPECT_NE(building.GetType(), "naval_base");
    }
@@ -2932,13 +2975,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesNotPlacedInProvincesWithNoBord
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -2963,14 +3007,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesNotPlacedInProvincesWithNoBord
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -3091,14 +3136,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacementOverridenByDefaultLoc
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAllProvincesOfStateIfDefaultNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData({},
            {
@@ -3214,14 +3260,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAl
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvinceOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -3244,14 +3291,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvi
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoNuclearReactorInStateWithNoProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -3275,14 +3323,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorNotPlacedInProvincesWithNo
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -3303,14 +3352,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorNotPlacedInProvincesWithNo
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -3337,14 +3387,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacementOverridenByDefaul
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -3367,13 +3418,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvi
 
 TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesPlacedInCenterOfABorderForAllProvincesOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -3461,7 +3513,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesPlacedInCenterOfABorderForAll
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoSupplyNodesInStateWithNoProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})}, {}),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})}, .province_to_state_id_map = {}}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -3541,13 +3593,14 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesNotPlacedInProvincesWithNoBor
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -3572,14 +3625,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesNotPlacedInProvincesWithNoBor
 
 TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -3672,14 +3726,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacementOverridenByDefaultLoc
 
 TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacedInCenterOfABorderForAllProvincesOfStateIfDefaultsNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {
@@ -3767,14 +3822,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacedInCenterOfABorderForAllP
 
 TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstProvinceOfState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -3797,14 +3853,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstPr
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoSyntheticRefineryInStateWithNoProvinces)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -3828,14 +3885,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryNotPlacedInProvincesWit
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({}, {}, {}, {{}, {}, {}, {}}, {}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -3860,14 +3918,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryNotPlacedInProvincesWit
 
 TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacementOverridenByDefaultLocations)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},
@@ -3894,14 +3953,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacementOverridenByDef
 
 TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
-   Buildings buildings = ImportBuildings(States({State(1, std::nullopt, {1, 2, 3, 4, 5})},
-                                             {
-                                                 {1, 1},
-                                                 {2, 1},
-                                                 {3, 1},
-                                                 {4, 1},
-                                                 {5, 1},
-                                             }),
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
        CoastalProvinces({}),
        maps::MapData({},
            {},

@@ -42,6 +42,10 @@ configuration::ConfigurationImporter::ConfigurationImporter()
       }
       Log(LogLevel::Info) << "\tVictoria 3 install path is " << configuration_.vic3_directory;
    });
+   configuration_parser_.registerKeyword("Vic3SteamModDirectory", [this](std::istream& stream) {
+      configuration_.vic3_steam_mod_path = commonItems::getString(stream);
+      Log(LogLevel::Info) << "\tVictoria 3 Steam mod path is " << configuration_.vic3_steam_mod_path;
+   });
    configuration_parser_.registerKeyword("sourceGameModPath", [this](std::istream& stream) {
       configuration_.vic3_mod_path = commonItems::getString(stream);
       Log(LogLevel::Info) << "\tVictoria 3 mod path is " << configuration_.vic3_mod_path;

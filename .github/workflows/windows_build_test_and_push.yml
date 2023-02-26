@@ -1,5 +1,9 @@
 name: Build, test and publish
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,10 +19,17 @@ jobs:
     - name: work around permission issue
       run: git config --global --add safe.directory /github/workspace
 
-    - uses: actions/checkout@v3
+    - name: "Cloning repo"
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
-        submodules: recursive
+        submodules: true
+
+    - name: "Cloning selective submodules"
+      run: |
+       git submodule update --init --recursive external\commonItems
+       git -c submodule."external/commonItems".update=none `
+           submodule update --init --recursive external\Fronter
 
     - name: "Build solution"
       run: |
@@ -86,10 +97,16 @@ jobs:
     runs-on: windows-2022
 
     steps:
-    - uses: actions/checkout@v3
+    - name: "Cloning repo"
+      uses: actions/checkout@v3
       with:
-        fetch-depth: 0
-        submodules: recursive
+        submodules: true
+
+    - name: "Cloning selective submodules"
+      run: |
+       git submodule update --init --recursive external\commonItems
+       git -c submodule."external/commonItems".update=none `
+           submodule update --init --recursive external\Fronter
 
     - name: "Build solution"
       run: |

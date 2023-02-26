@@ -3,9 +3,9 @@
 #include <sstream>
 
 #include "external/commonItems/OSCompatibilityLayer.h"
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "external/fmt/include/fmt/format.h"
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/out_hoi4/states/out_state.h"
 
@@ -17,7 +17,7 @@ namespace out
 
 TEST(Outhoi4StatesState, ExceptionWhenFileNotOpened)
 {
-   const hoi4::State state_one(1, std::nullopt, {});
+   const hoi4::State state_one(1, {});
 
    EXPECT_THROW(OutputState("ExceptionWhenFileNotOpened", state_one), std::runtime_error);
 }
@@ -30,8 +30,8 @@ TEST(Outhoi4StatesState, StateFileIsNamedForId)
    commonItems::TryCreateFolder("output/StateFileIsNamedForId/history");
    commonItems::TryCreateFolder("output/StateFileIsNamedForId/history/states");
 
-   const hoi4::State state_one(1, std::nullopt, {});
-   const hoi4::State state_two(2, std::nullopt, {});
+   const hoi4::State state_one(1, {});
+   const hoi4::State state_two(2, {});
 
    OutputState("StateFileIsNamedForId", state_one);
    OutputState("StateFileIsNamedForId", state_two);
@@ -48,7 +48,7 @@ TEST(Outhoi4StatesState, BasicsAreOutput)
    commonItems::TryCreateFolder("output/BasicsAreOutput/history");
    commonItems::TryCreateFolder("output/BasicsAreOutput/history/states");
 
-   const hoi4::State state_one(1, std::nullopt, {});
+   const hoi4::State state_one(1, {});
 
    OutputState("BasicsAreOutput", state_one);
 
@@ -64,7 +64,7 @@ TEST(Outhoi4StatesState, BasicsAreOutput)
        "state = {\n"
        "\tid = 1\n"
        "\tname = \"STATE_1\"\n"
-       "\tmanpower = 1000\n"
+       "\tmanpower = 0\n"
        "\n"
        "\tstate_category = rural\n"
        "\n"
@@ -85,8 +85,8 @@ TEST(Outhoi4StatesState, IdIsSetById)
    commonItems::TryCreateFolder("output/IdIsSetById/history");
    commonItems::TryCreateFolder("output/IdIsSetById/history/states");
 
-   const hoi4::State state_one(1, std::nullopt, {});
-   const hoi4::State state_two(2, std::nullopt, {});
+   const hoi4::State state_one(1, {});
+   const hoi4::State state_two(2, {});
 
    OutputState("IdIsSetById", state_one);
    OutputState("IdIsSetById", state_two);
@@ -120,8 +120,8 @@ TEST(Outhoi4StatesState, NameIsSetById)
    commonItems::TryCreateFolder("output/NameIsSetById/history");
    commonItems::TryCreateFolder("output/NameIsSetById/history/states");
 
-   const hoi4::State state_one(1, std::nullopt, {});
-   const hoi4::State state_two(2, std::nullopt, {});
+   const hoi4::State state_one(1, {});
+   const hoi4::State state_two(2, {});
 
    OutputState("NameIsSetById", state_one);
    OutputState("NameIsSetById", state_two);
@@ -148,6 +148,41 @@ TEST(Outhoi4StatesState, NameIsSetById)
 }
 
 
+TEST(Outhoi4StatesState, manpowerIsSetByManpower)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/manpowerIsSetByManpower");
+   commonItems::TryCreateFolder("output/manpowerIsSetByManpower/history");
+   commonItems::TryCreateFolder("output/manpowerIsSetByManpower/history/states");
+
+   const hoi4::State state_one(1, {.manpower = 12345});
+   const hoi4::State state_two(2, {.manpower = 67890});
+
+   OutputState("manpowerIsSetByManpower", state_one);
+   OutputState("manpowerIsSetByManpower", state_two);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/manpowerIsSetByManpower/history/states/1.txt"));
+   std::ifstream state_file_one("output/manpowerIsSetByManpower/history/states/1.txt");
+   ASSERT_TRUE(state_file_one.is_open());
+   std::stringstream state_file_stream_one;
+   std::copy(std::istreambuf_iterator<char>(state_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_one));
+   state_file_one.close();
+   EXPECT_THAT(state_file_stream_one.str(), testing::HasSubstr("manpower = 12345"));
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/manpowerIsSetByManpower/history/states/2.txt"));
+   std::ifstream state_file_two("output/manpowerIsSetByManpower/history/states/2.txt");
+   ASSERT_TRUE(state_file_two.is_open());
+   std::stringstream state_file_stream_two;
+   std::copy(std::istreambuf_iterator<char>(state_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_two));
+   state_file_two.close();
+   EXPECT_THAT(state_file_stream_two.str(), testing::HasSubstr("manpower = 67890"));
+}
+
+
 TEST(Outhoi4StatesState, ProvincesAreOutput)
 {
    commonItems::TryCreateFolder("output");
@@ -155,7 +190,7 @@ TEST(Outhoi4StatesState, ProvincesAreOutput)
    commonItems::TryCreateFolder("output/ProvincesAreOutput/history");
    commonItems::TryCreateFolder("output/ProvincesAreOutput/history/states");
 
-   const hoi4::State state_one(1, std::nullopt, {1, 4, 9, 16});
+   const hoi4::State state_one(1, {.provinces = {1, 4, 9, 16}});
 
    OutputState("ProvincesAreOutput", state_one);
 
@@ -180,7 +215,7 @@ TEST(Outhoi4StatesState, OwnerIsOutput)
    commonItems::TryCreateFolder("output/ProvincesAreOutput/history");
    commonItems::TryCreateFolder("output/ProvincesAreOutput/history/states");
 
-   const hoi4::State state_one(1, "TAG", {1, 4, 9, 16});
+   const hoi4::State state_one(1, {.owner = "TAG", .provinces = {1, 4, 9, 16}});
 
    OutputState("ProvincesAreOutput", state_one);
 

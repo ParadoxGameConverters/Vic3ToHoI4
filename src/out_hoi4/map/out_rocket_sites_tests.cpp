@@ -3,9 +3,9 @@
 #include <sstream>
 
 #include "external/commonItems/OSCompatibilityLayer.h"
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "external/fmt/include/fmt/format.h"
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/out_hoi4/map/out_rocket_sites.h"
 
@@ -40,7 +40,7 @@ TEST(Outhoi4MapOutrocketsitesTests, RocketSitesAreOutput)
    commonItems::TryCreateFolder("output/RocketSitesAreOutput/map");
 
    OutputRocketSites("RocketSitesAreOutput",
-       {hoi4::State(3, std::nullopt, {6, 9}), hoi4::State(4, std::nullopt, {8, 12})});
+       {hoi4::State(3, {.provinces = {6, 9}}), hoi4::State(4, {.provinces = {8, 12}})});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/RocketSitesAreOutput/map/rocketsites.txt"));
    std::ifstream rocket_sites_file("output/RocketSitesAreOutput/map/rocketsites.txt");

@@ -10,9 +10,6 @@
     <Filter Include="src\out_hoi4">
       <UniqueIdentifier>{1bfc8f00-885c-4450-8476-4c26ab6d4d4c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\commonItems">
-      <UniqueIdentifier>{39e93c8a-8929-4bb6-b27d-2f1ee273f807}</UniqueIdentifier>
-    </Filter>
     <Filter Include="external\googletest">
       <UniqueIdentifier>{d948b0ac-652a-4229-b11b-fa3a10a85248}</UniqueIdentifier>
     </Filter>
@@ -24,18 +21,6 @@
     </Filter>
     <Filter Include="external\googletest\googletest">
       <UniqueIdentifier>{67df624e-20b0-4110-b9c9-8bdbab5951a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\fmt">
-      <UniqueIdentifier>{d07b90c3-5d9e-4270-a633-40f507c289b1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\fmt\include">
-      <UniqueIdentifier>{d7712442-02b3-4089-8435-fbb5f9312f24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\fmt\src">
-      <UniqueIdentifier>{6750f694-1889-430f-b265-1e906d7981ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\fmt\include\fmt">
-      <UniqueIdentifier>{b64e8cd6-a2c9-4d56-9e54-b45368cfaa7c}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\configuration">
       <UniqueIdentifier>{65421f73-15f7-44d8-8fb3-ff817059e163}</UniqueIdentifier>
@@ -73,17 +58,11 @@
     <Filter Include="src\out_hoi4\world">
       <UniqueIdentifier>{d6851ddd-dd96-4032-840b-1ee8b4843fe9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\commonItems\ModLoader">
-      <UniqueIdentifier>{19d355dc-3e97-4347-9740-b82ed1861b12}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\mappers\provinces">
       <UniqueIdentifier>{f8d117cd-afa5-4fc6-abe0-ccb4b49c4c53}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\vic3_world\provinces">
       <UniqueIdentifier>{f5be605b-7aae-40e8-81dd-b982c3bd409e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\rakaly">
-      <UniqueIdentifier>{e5c09023-6c6e-4b3a-9531-95bb9df31430}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\hoi4_world\states">
       <UniqueIdentifier>{660a64d0-b4db-401a-a48d-141833bd42f2}</UniqueIdentifier>
@@ -100,76 +79,28 @@
     <Filter Include="src\maps">
       <UniqueIdentifier>{5822c41f-e907-4fad-9a15-37e3a11f68b1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\commonItems\zip">
-      <UniqueIdentifier>{cd150e9c-c9a0-4e9e-b01c-3b7e67f382c8}</UniqueIdentifier>
+    <Filter Include="external\rakaly">
+      <UniqueIdentifier>{eefda4e6-0d84-4350-b8b6-a14118d842f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\vic3_world\technology">
+      <UniqueIdentifier>{ee8813e8-b04c-4d2f-9f2e-4eb292b58407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mappers\technology">
+      <UniqueIdentifier>{461ae1d7-1dd5-40be-936a-54067d3f2e87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hoi4_world\technology">
+      <UniqueIdentifier>{0e57bb77-998e-4090-8d24-875f43886109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\technology">
+      <UniqueIdentifier>{3ecea192-075e-4872-8b39-169f1835f9ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\out_hoi4\out_mod.cpp">
-      <Filter>src\out_hoi4</Filter>
-    </ClCompile>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
       <Filter>src\out_hoi4</Filter>
     </ClCompile>
-    <ClCompile Include="external\commonItems\CommonFunctions.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ConvenientParser.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ConverterVersion.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\GameVersion.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\iconvlite.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\Log.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\OSCommonLayer.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\Parser.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ParserHelpers.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\StringUtils.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\WinUtils.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="external\googletest\googlemock\src\gmock-all.cc">
-      <Filter>external\googletest\googlemock\src</Filter>
-    </ClCompile>
-    <ClCompile Include="external\googletest\googletest\src\gtest_main.cc">
-      <Filter>external\googletest\googletest</Filter>
-    </ClCompile>
-    <ClCompile Include="external\googletest\googletest\src\gtest-all.cc">
-      <Filter>external\googletest\googletest</Filter>
-    </ClCompile>
-    <ClCompile Include="external\fmt\src\format.cc">
-      <Filter>external\fmt\src</Filter>
-    </ClCompile>
-    <ClCompile Include="external\fmt\src\os.cc">
-      <Filter>external\fmt\src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\configuration\configuration_importer.cpp">
-      <Filter>src\configuration</Filter>
-    </ClCompile>
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp">
       <Filter>src\configuration</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vic3_world\world\vic3_world_importer.cpp">
-      <Filter>src\vic3_world\world</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\world\vic3_world_importer_tests.cpp">
       <Filter>src\vic3_world\world</Filter>
@@ -177,70 +108,31 @@
     <ClCompile Include="src\mappers\country\country_mapper_tests.cpp">
       <Filter>src\mappers\country</Filter>
     </ClCompile>
-    <ClCompile Include="src\out_hoi4\countries\out_country.cpp">
-      <Filter>src\out_hoi4\countries</Filter>
-    </ClCompile>
     <ClCompile Include="src\out_hoi4\countries\out_country_tests.cpp">
       <Filter>src\out_hoi4\countries</Filter>
     </ClCompile>
-    <ClCompile Include="src\vic3_world\countries\vic3_countries_importer.cpp">
-      <Filter>src\vic3_world\countries</Filter>
-    </ClCompile>
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer_tests.cpp">
-      <Filter>src\vic3_world\countries</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vic3_world\countries\vic3_country_importer.cpp">
       <Filter>src\vic3_world\countries</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer_tests.cpp">
       <Filter>src\vic3_world\countries</Filter>
     </ClCompile>
-    <ClCompile Include="src\vic3_world\states\vic3_state_importer.cpp">
-      <Filter>src\vic3_world\states</Filter>
-    </ClCompile>
     <ClCompile Include="src\vic3_world\states\vic3_state_importer_tests.cpp">
-      <Filter>src\vic3_world\states</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vic3_world\states\vic3_states_importer.cpp">
       <Filter>src\vic3_world\states</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\states\vic3_states_importer_tests.cpp">
       <Filter>src\vic3_world\states</Filter>
     </ClCompile>
-    <ClCompile Include="src\out_hoi4\countries\out_countries.cpp">
-      <Filter>src\out_hoi4\countries</Filter>
-    </ClCompile>
     <ClCompile Include="src\out_hoi4\countries\out_countries_tests.cpp">
       <Filter>src\out_hoi4\countries</Filter>
-    </ClCompile>
-    <ClCompile Include="src\out_hoi4\world\out_world.cpp">
-      <Filter>src\out_hoi4\world</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ModLoader\ModFilesystem.cpp">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ModLoader\ModLoader.cpp">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\ModLoader\ModParser.cpp">
-      <Filter>external\commonItems\ModLoader</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\world\out_world_tests.cpp">
       <Filter>src\out_hoi4\world</Filter>
     </ClCompile>
-    <ClCompile Include="src\mappers\provinces\province_mapper.cpp">
-      <Filter>src\mappers\provinces</Filter>
-    </ClCompile>
     <ClCompile Include="src\mappers\provinces\province_mapper_tests.cpp">
       <Filter>src\mappers\provinces</Filter>
     </ClCompile>
-    <ClCompile Include="src\mappers\provinces\province_mapper_importer.cpp">
-      <Filter>src\mappers\provinces</Filter>
-    </ClCompile>
     <ClCompile Include="src\mappers\provinces\province_mapping_importer_tests.cpp">
-      <Filter>src\mappers\provinces</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp">
       <Filter>src\mappers\provinces</Filter>
     </ClCompile>
     <ClCompile Include="src\mappers\provinces\province_mapper_importer_tests.cpp">
@@ -249,25 +141,10 @@
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_tests.cpp">
       <Filter>src\vic3_world\provinces</Filter>
     </ClCompile>
-    <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp">
-      <Filter>src\vic3_world\provinces</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader.cpp">
-      <Filter>src\vic3_world\provinces</Filter>
-    </ClCompile>
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader_tests.cpp">
       <Filter>src\vic3_world\provinces</Filter>
     </ClCompile>
-    <ClCompile Include="src\hoi4_world\states\hoi4_states_converter.cpp">
-      <Filter>src\hoi4_world\states</Filter>
-    </ClCompile>
-    <ClCompile Include="src\out_hoi4\states\out_state.cpp">
-      <Filter>src\out_hoi4\states</Filter>
-    </ClCompile>
     <ClCompile Include="src\out_hoi4\states\out_state_tests.cpp">
-      <Filter>src\out_hoi4\states</Filter>
-    </ClCompile>
-    <ClCompile Include="src\out_hoi4\states\out_states.cpp">
       <Filter>src\out_hoi4\states</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\states\out_states_tests.cpp">
@@ -276,32 +153,17 @@
     <ClCompile Include="src\hoi4_world\states\hoi4_states_converter_tests.cpp">
       <Filter>src\hoi4_world\states</Filter>
     </ClCompile>
-    <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp">
-      <Filter>src\hoi4_world\countries</Filter>
-    </ClCompile>
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests.cpp">
-      <Filter>src\hoi4_world\countries</Filter>
-    </ClCompile>
-    <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter.cpp">
       <Filter>src\hoi4_world\countries</Filter>
     </ClCompile>
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter_tests.cpp">
       <Filter>src\hoi4_world\countries</Filter>
-    </ClCompile>
-    <ClCompile Include="src\hoi4_world\map\strategic_region_importer.cpp">
-      <Filter>src\hoi4_world\map</Filter>
     </ClCompile>
     <ClCompile Include="src\hoi4_world\map\strategic_region_importer_tests.cpp">
       <Filter>src\hoi4_world\map</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\map\out_strategic_region_tests.cpp">
       <Filter>src\out_hoi4\map</Filter>
-    </ClCompile>
-    <ClCompile Include="src\out_hoi4\map\out_strategic_region.cpp">
-      <Filter>src\out_hoi4\map</Filter>
-    </ClCompile>
-    <ClCompile Include="src\hoi4_world\map\strategic_regions_importer.cpp">
-      <Filter>src\hoi4_world\map</Filter>
     </ClCompile>
     <ClCompile Include="src\hoi4_world\map\strategic_region_tests.cpp">
       <Filter>src\hoi4_world\map</Filter>
@@ -312,83 +174,32 @@
     <ClCompile Include="src\hoi4_world\map\strategic_regions_tests.cpp">
       <Filter>src\hoi4_world\map</Filter>
     </ClCompile>
-    <ClCompile Include="src\hoi4_world\map\strategic_regions.cpp">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClCompile>
-    <ClCompile Include="src\out_hoi4\map\out_strategic_regions.cpp">
-      <Filter>src\out_hoi4\map</Filter>
-    </ClCompile>
     <ClCompile Include="src\out_hoi4\map\out_strategic_regions_tests.cpp">
       <Filter>src\out_hoi4\map</Filter>
     </ClCompile>
-    <ClCompile Include="src\maps\map_data.cpp">
-      <Filter>src\maps</Filter>
-    </ClCompile>
     <ClCompile Include="src\maps\map_data_tests.cpp">
-      <Filter>src\maps</Filter>
-    </ClCompile>
-    <ClCompile Include="src\maps\province_definitions.cpp">
       <Filter>src\maps</Filter>
     </ClCompile>
     <ClCompile Include="src\maps\province_definitions_tests.cpp">
       <Filter>src\maps</Filter>
     </ClCompile>
-    <ClCompile Include="src\maps\province_points.cpp">
-      <Filter>src\maps</Filter>
-    </ClCompile>
     <ClCompile Include="src\maps\province_points_tests.cpp">
-      <Filter>src\maps</Filter>
-    </ClCompile>
-    <ClCompile Include="external\commonItems\Color.cpp">
-      <Filter>external\commonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="src\maps\utility.cpp">
       <Filter>src\maps</Filter>
     </ClCompile>
     <ClCompile Include="src\maps\utility_tests.cpp">
       <Filter>src\maps</Filter>
     </ClCompile>
-    <ClCompile Include="src\maps\map_data_importer.cpp">
-      <Filter>src\maps</Filter>
-    </ClCompile>
-    <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer.cpp">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClCompile>
     <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer_tests.cpp">
       <Filter>src\hoi4_world\map</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vic3_world\countries\country_definitions_importer.cpp">
-      <Filter>src\vic3_world\countries</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\countries\country_definitions_importer_tests.cpp">
       <Filter>src\vic3_world\countries</Filter>
     </ClCompile>
-    <ClCompile Include="src\hoi4_world\world\hoi4_world_converter.cpp">
-      <Filter>src\hoi4_world\world</Filter>
-    </ClCompile>
     <ClCompile Include="src\hoi4_world\world\hoi4_world_converter_tests.cpp">
       <Filter>src\hoi4_world\world</Filter>
     </ClCompile>
-    <ClCompile Include="src\mappers\country\country_mapper.cpp">
-      <Filter>src\mappers\country</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mappers\country\country_mapper_creator.cpp">
-      <Filter>src\mappers\country</Filter>
-    </ClCompile>
     <ClCompile Include="src\mappers\country\country_mapper_creator_tests.cpp">
       <Filter>src\mappers\country</Filter>
-    </ClCompile>
-    <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClCompile>
-    <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator.cpp">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClCompile>
-    <ClCompile Include="src\out_hoi4\map\out_building.cpp">
-      <Filter>src\out_hoi4\map</Filter>
-    </ClCompile>
-    <ClCompile Include="src\out_hoi4\map\out_buildings.cpp">
-      <Filter>src\out_hoi4\map</Filter>
     </ClCompile>
     <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator_tests.cpp">
       <Filter>src\hoi4_world\map</Filter>
@@ -402,260 +213,40 @@
     <ClCompile Include="src\out_hoi4\map\out_buildings_tests.cpp">
       <Filter>src\out_hoi4\map</Filter>
     </ClCompile>
-    <ClCompile Include="src\out_hoi4\map\out_rocket_sites.cpp">
-      <Filter>src\out_hoi4\map</Filter>
-    </ClCompile>
     <ClCompile Include="src\out_hoi4\map\out_rocket_sites_tests.cpp">
       <Filter>src\out_hoi4\map</Filter>
     </ClCompile>
-    <ClCompile Include="external\commonItems\external\zip\src\zip.c">
-      <Filter>external\commonItems\zip</Filter>
+    <ClCompile Include="external\commonItems\external\googletest\googlemock\src\gmock-all.cc">
+      <Filter>external\googletest\googlemock\src</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\vic3_to_hoi4_converter.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\out_mod.h">
-      <Filter>src\out_hoi4</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\CommonFunctions.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ConvenientParser.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ConverterVersion.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\GameVersion.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\iconvlite.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\Log.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\OSCompatibilityLayer.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\Parser.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ParserHelpers.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\StringUtils.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="external\fmt\include\fmt\format.h">
-      <Filter>external\fmt\include\fmt</Filter>
-    </ClInclude>
-    <ClInclude Include="external\fmt\include\fmt\format-inl.h">
-      <Filter>external\fmt\include\fmt</Filter>
-    </ClInclude>
-    <ClInclude Include="external\fmt\include\fmt\core.h">
-      <Filter>external\fmt\include\fmt</Filter>
-    </ClInclude>
-    <ClInclude Include="external\fmt\include\fmt\os.h">
-      <Filter>external\fmt\include\fmt</Filter>
-    </ClInclude>
-    <ClInclude Include="src\configuration\configuration.h">
-      <Filter>src\configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="src\configuration\configuration_importer.h">
-      <Filter>src\configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\world\vic3_world_importer.h">
-      <Filter>src\vic3_world\world</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mappers\country\country_mapper.h">
-      <Filter>src\mappers\country</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\world\hoi4_world.h">
-      <Filter>src\hoi4_world\world</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\countries\out_country.h">
-      <Filter>src\out_hoi4\countries</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\countries\vic3_countries_importer.h">
-      <Filter>src\vic3_world\countries</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\countries\vic3_country.h">
-      <Filter>src\vic3_world\countries</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\countries\vic3_country_importer.h">
-      <Filter>src\vic3_world\countries</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\states\vic3_state.h">
-      <Filter>src\vic3_world\states</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\states\vic3_state_importer.h">
-      <Filter>src\vic3_world\states</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\states\vic3_states_importer.h">
-      <Filter>src\vic3_world\states</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\countries\out_countries.h">
-      <Filter>src\out_hoi4\countries</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\world\out_world.h">
-      <Filter>src\out_hoi4\world</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\world\vic3_world.h">
-      <Filter>src\vic3_world\world</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ModLoader\Mod.h">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ModLoader\ModFilesystem.h">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ModLoader\ModLoader.h">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\ModLoader\ModParser.h">
-      <Filter>external\commonItems\ModLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="external\rakaly\rakaly.h">
-      <Filter>external\rakaly</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\states\hoi4_states_converter.h">
-      <Filter>src\hoi4_world\states</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\states\out_state.h">
-      <Filter>src\out_hoi4\states</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\states\out_states.h">
-      <Filter>src\out_hoi4\states</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\states\hoi4_state.h">
-      <Filter>src\hoi4_world\states</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\countries\hoi4_country.h">
-      <Filter>src\hoi4_world\countries</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\countries\hoi4_country_converter.h">
-      <Filter>src\hoi4_world\countries</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\countries\hoi4_countries_converter.h">
-      <Filter>src\hoi4_world\countries</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\strategic_region.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\strategic_region_importer.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\map\out_strategic_region.h">
-      <Filter>src\out_hoi4\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\strategic_regions.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\strategic_regions_importer.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\map\out_strategic_regions.h">
-      <Filter>src\out_hoi4\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maps\map_data.h">
-      <Filter>src\maps</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maps\province_definitions.h">
-      <Filter>src\maps</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maps\province_points.h">
-      <Filter>src\maps</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maps\point.h">
-      <Filter>src\maps</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\Color.h">
-      <Filter>external\commonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maps\utility.h">
-      <Filter>src\maps</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maps\map_data_importer.h">
-      <Filter>src\maps</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\hoi4_province_definition_importer.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\countries\country_definitions_importer.h">
-      <Filter>src\vic3_world\countries</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\world\hoi4_world_converter.h">
-      <Filter>src\hoi4_world\world</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mappers\country\country_mapper_creator.h">
-      <Filter>src\mappers\country</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\building_position.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\buildings.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\buildings_creator.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\coastal_provinces.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\coastal_provinces_creator.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hoi4_world\map\hoi4_building.h">
-      <Filter>src\hoi4_world\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\map\out_building.h">
-      <Filter>src\out_hoi4\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\map\out_buildings.h">
-      <Filter>src\out_hoi4\map</Filter>
-    </ClInclude>
-    <ClInclude Include="src\out_hoi4\map\out_rocket_sites.h">
-      <Filter>src\out_hoi4\map</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\external\zip\src\miniz.h">
-      <Filter>external\commonItems\zip</Filter>
-    </ClInclude>
-    <ClInclude Include="external\commonItems\external\zip\src\zip.h">
-      <Filter>external\commonItems\zip</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="external\rakaly\rakaly.dll.lib">
-      <Filter>external\rakaly</Filter>
-    </Library>
+    <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest_main.cc">
+      <Filter>external\googletest\googletest</Filter>
+    </ClCompile>
+    <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc">
+      <Filter>external\googletest\googletest</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\technology\vic3_technology_importer_tests.cpp">
+      <Filter>src\vic3_world\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\technology\tech_mapping_importer_tests.cpp">
+      <Filter>src\mappers\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\technology\tech_mappings_importer_tests.cpp">
+      <Filter>src\mappers\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\technology\technologies_converter_tests.cpp">
+      <Filter>src\hoi4_world\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\technology\technologies_tests.cpp">
+      <Filter>src\hoi4_world\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\technology\out_technologies_tests.cpp">
+      <Filter>src\out_hoi4\technology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
       <Filter>external\rakaly</Filter>
     </CopyFileToFolders>
-    <ClInclude Include="src\mappers\provinces\province_mapper.h">
-      <Filter>src\mappers\provinces</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mappers\provinces\province_mapping_types.h">
-      <Filter>src\mappers\provinces</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mappers\provinces\province_mapper_importer.h">
-      <Filter>src\mappers\provinces</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mappers\provinces\province_mapping.h">
-      <Filter>src\mappers\provinces</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mappers\provinces\province_mapping_importer.h">
-      <Filter>src\mappers\provinces</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h">
-      <Filter>src\vic3_world\provinces</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions_loader.h">
-      <Filter>src\vic3_world\provinces</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

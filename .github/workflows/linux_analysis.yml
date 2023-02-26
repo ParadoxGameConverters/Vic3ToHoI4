@@ -5,7 +5,9 @@ env:
 
 on:
   push:
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
   schedule:
     - cron: '0 16 * * 6'
 
@@ -25,11 +27,16 @@ jobs:
         language: ['cpp']
 
     steps:
-    - name: Checkout repository
+    - name: "Cloning repo"
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0
-        submodules: recursive
+        submodules: true
+
+    - name: "Cloning selective submodules"
+      run: |
+       git submodule update --init --recursive external/commonItems
+       git -c submodule."external/commonItems".update=none \
+           submodule update --init --recursive external/Fronter
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
@@ -38,7 +45,7 @@ jobs:
 
     - name: Build solution
       run: |
-       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 Fronter Vic3ToHoi4Tests -- -j40
+       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
@@ -81,11 +88,16 @@ jobs:
         language: ['cpp']
 
     steps:
-    - name: Checkout repository
+    - name: "Cloning repo"
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0
-        submodules: recursive
+        submodules: true
+
+    - name: "Cloning selective submodules"
+      run: |
+       git submodule update --init --recursive external/commonItems
+       git -c submodule."external/commonItems".update=none \
+           submodule update --init --recursive external/Fronter
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
@@ -114,7 +126,7 @@ jobs:
        export CC=/usr/bin/gcc-12
        export CXX=/usr/bin/g++-12
        # Run your build commands next
-       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 Fronter Vic3ToHoi4Tests -- -j3
+       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j5
 
     - name: Run tests
       run: |

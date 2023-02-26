@@ -9,6 +9,7 @@
 #include "src/hoi4_world/map/hoi4_province_definition_importer.h"
 #include "src/hoi4_world/map/strategic_regions_importer.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
+#include "src/mappers/technology/tech_mappings_importer.h"
 #include "src/maps/map_data.h"
 #include "src/maps/map_data_importer.h"
 
@@ -24,14 +25,9 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
    Log(LogLevel::Info) << "Creating Hoi4 world";
    Log(LogLevel::Progress) << "50%";
 
-   Log(LogLevel::Info) << "\tConverting countries";
-   CountriesConverter countries_converter;
-   countries = countries_converter.ConvertCountries(source_world.GetCountries(), country_mapper);
-
    StrategicRegions strategic_regions = ImportStrategicRegions(hoi4_mod_filesystem);
 
    Log(LogLevel::Info) << "\tConverting states";
-   Log(LogLevel::Progress) << "55%";
    const auto province_definitions = ImportProvinceDefinitions(hoi4_mod_filesystem);
    const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem);
 
@@ -50,6 +46,18 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
        province_definitions.GetLandProvinces(),
        province_definitions.GetSeaProvinces());
    Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem);
+
+   Log(LogLevel::Info) << "\tConverting countries";
+   Log(LogLevel::Progress) << "55%";
+
+   const std::vector<mappers::TechMapping> tech_mappings = mappers::ImportTechMappings();
+
+   CountriesConverter countries_converter;
+   countries = countries_converter.ConvertCountries(source_world.GetCountries(),
+       source_world.GetAcquiredTechnologies(),
+       country_mapper,
+       states.vic3_state_ids_to_hoi4_state_ids,
+       tech_mappings);
 
    return World(countries, states, strategic_regions, buildings);
 }

@@ -1,5 +1,5 @@
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/map/coastal_provinces_creator.h"
 #include "src/maps/map_data.h"
 #include "src/maps/province_definitions.h"

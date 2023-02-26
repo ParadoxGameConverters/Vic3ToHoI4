@@ -3,9 +3,9 @@
 #include <sstream>
 
 #include "external/commonItems/OSCompatibilityLayer.h"
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "external/fmt/include/fmt/format.h"
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/out_hoi4/countries/out_countries.h"
 
@@ -14,7 +14,7 @@
 namespace out
 {
 
-TEST(Outhoi4CountriesCountry, CountriesFilesAreCreated)
+TEST(Outhoi4CountriesOutcountriesTests, CountriesFilesAreCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CountriesFilesAreCreated");
@@ -28,11 +28,26 @@ TEST(Outhoi4CountriesCountry, CountriesFilesAreCreated)
        {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountriesFilesAreCreated/common/countries/TAG.txt"));
+   std::ifstream country_file_one("output/CountriesFilesAreCreated/common/countries/TAG.txt");
+   ASSERT_TRUE(country_file_one.is_open());
+   std::stringstream country_file_one_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_one_stream));
+   country_file_one.close();
+
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountriesFilesAreCreated/common/countries/TWO.txt"));
+   std::ifstream country_file_two("output/CountriesFilesAreCreated/common/countries/TWO.txt");
+   ASSERT_TRUE(country_file_two.is_open());
+   std::stringstream country_file_two_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_two_stream));
+   country_file_two.close();
 }
 
 
-TEST(Outhoi4CountriesCountry, TagsFileIsCreated)
+TEST(Outhoi4CountriesOutcountriesTests, TagsFileIsCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/TagsFileIsCreated");
@@ -58,7 +73,7 @@ TEST(Outhoi4CountriesCountry, TagsFileIsCreated)
 }
 
 
-TEST(Outhoi4CountriesCountry, ExceptionIfTagsFileNotOpened)
+TEST(Outhoi4CountriesOutcountriesTests, ExceptionIfTagsFileNotOpened)
 {
    EXPECT_THROW(OutputCountries("/dev/null/COM",
                     {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}),
@@ -66,7 +81,7 @@ TEST(Outhoi4CountriesCountry, ExceptionIfTagsFileNotOpened)
 }
 
 
-TEST(Outhoi4CountriesCountry, CountryHistoryFilesAreCreated)
+TEST(Outhoi4CountriesOutcountriesTests, CountryHistoryFilesAreCreated)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated");
@@ -80,7 +95,22 @@ TEST(Outhoi4CountriesCountry, CountryHistoryFilesAreCreated)
        {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TAG.txt"));
+   std::ifstream country_file_one("output/CountryHistoryFilesAreCreated/history/countries/TAG.txt");
+   ASSERT_TRUE(country_file_one.is_open());
+   std::stringstream country_file_one_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_one_stream));
+   country_file_one.close();
+
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TWO.txt"));
+   std::ifstream country_file_two("output/CountryHistoryFilesAreCreated/history/countries/TWO.txt");
+   ASSERT_TRUE(country_file_two.is_open());
+   std::stringstream country_file_two_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_two_stream));
+   country_file_two.close();
 }
 
 }  // namespace out

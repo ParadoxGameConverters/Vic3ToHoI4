@@ -21,7 +21,7 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
    state_history << "state = {\n";
    state_history << fmt::format("\tid = {}\n", state_number);
    state_history << fmt::format("\tname = \"STATE_{}\"\n", state_number);
-   state_history << "\tmanpower = 1000\n";
+   state_history << fmt::format("\tmanpower = {}\n", state.GetManpower());
    state_history << "\n";
    state_history << "\tstate_category = rural\n";
    state_history << "\n";

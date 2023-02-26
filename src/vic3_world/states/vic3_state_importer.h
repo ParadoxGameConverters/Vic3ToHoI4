@@ -24,9 +24,11 @@ class StateImporter
   private:
    commonItems::parser state_parser_;
    commonItems::parser provinces_parser_;
+   commonItems::parser pop_statistics_parser_;
 
    std::optional<int> owner_number_;
    std::set<int> provinces_;
+   int population_ = 0;
 };
 
 }  // namespace vic3
