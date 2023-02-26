@@ -45,6 +45,15 @@ vic3::StateImporter::StateImporter()
    pop_statistics_parser_.registerKeyword("upper_strata_pops", [this](std::istream& input_stream) {
       population_ += commonItems::getInt(input_stream);
    });
+   pop_statistics_parser_.registerKeyword("salaried_working_adults", [this](std::istream& input_stream) {
+      employed_population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("unemployed_working_adults", [this](std::istream& input_stream) {
+      employed_population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("laborer_working_adults", [this](std::istream& input_stream) {
+      employed_population_ += commonItems::getInt(input_stream);
+   });
    pop_statistics_parser_.IgnoreUnregisteredItems();
 }
 
@@ -54,8 +63,12 @@ vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
    owner_number_.reset();
    provinces_.clear();
    population_ = 0;
+   employed_population_ = 0;
 
    state_parser_.parseStream(input_stream);
 
-   return State({.owner_number = owner_number_, .provinces = provinces_, .population = population_});
+   return State({.owner_number = owner_number_,
+       .provinces = provinces_,
+       .population = population_,
+       .employed_population = employed_population_});
 }
