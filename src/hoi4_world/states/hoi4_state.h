@@ -18,6 +18,10 @@ struct StateOptions
    std::optional<std::string> owner;
    std::set<int> provinces;
    int manpower = 0;
+
+   int civilian_factories = 0;
+   int military_factories = 0;
+   int dockyards = 0;
 };
 
 
@@ -28,7 +32,10 @@ class State
        id_(id),
        owner_(std::move(state_options.owner)),
        provinces_(std::move(state_options.provinces)),
-       manpower_(state_options.manpower)
+       manpower_(state_options.manpower),
+       civilian_factories_(state_options.civilian_factories),
+       military_factories_(state_options.military_factories),
+       dockyards_(state_options.dockyards)
    {
    }
 
@@ -36,6 +43,9 @@ class State
    [[nodiscard]] const std::optional<std::string>& GetOwner() const { return owner_; }
    [[nodiscard]] const std::set<int>& GetProvinces() const { return provinces_; }
    [[nodiscard]] int GetManpower() const { return manpower_; }
+   [[nodiscard]] int GetCivilianFactories() const { return civilian_factories_; }
+   [[nodiscard]] int GetMilitaryFactories() const { return military_factories_; }
+   [[nodiscard]] int GetDockyards() const { return dockyards_; }
 
    std::strong_ordering operator<=>(const State&) const = default;
 
@@ -44,6 +54,10 @@ class State
    std::optional<std::string> owner_;
    std::set<int> provinces_;
    int manpower_ = 0;
+
+   int civilian_factories_ = 0;
+   int military_factories_ = 0;
+   int dockyards_ = 0;
 };
 
 }  // namespace hoi4
