@@ -723,4 +723,46 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
            State(2, {.owner = "ONE", .provinces = {40, 50, 60}, .civilian_factories = 4, .military_factories = 0})));
 }
 
+
+TEST(Hoi4worldStatesHoi4statesconverter, IndustrySplitStatesIsProportionalToTotalProvinces)
+{
+   const vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
+   const maps::MapData map_data{{{"10", {"20"}}, {"40", {"50"}}}, {}, {}, hoi4_province_definitions, {}};
+   const hoi4::StrategicRegions strategic_regions({}, {});
+   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const auto hoi4_states = StatesConverter{}.ConvertStates(
+       {{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .employed_population = 300'000})},
+           {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}, .employed_population = 600'000})}},
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper);
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(
+           State(1, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 1, .military_factories = 1}),
+           State(2, {.owner = "ONE", .provinces = {30}, .civilian_factories = 2, .military_factories = 0}),
+           State(3, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 2, .military_factories = 2}),
+           State(4, {.owner = "TWO", .provinces = {60}, .civilian_factories = 3, .military_factories = 0})));
+}
+
 }  // namespace hoi4

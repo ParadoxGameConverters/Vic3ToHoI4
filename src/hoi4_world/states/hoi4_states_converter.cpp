@@ -288,9 +288,11 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
       }
 
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
-      const float factories = static_cast<float>(vic3_state_itr->second.GetEmployedPopulation()) / 100'000.0F;
+      const float total_factories = static_cast<float>(vic3_state_itr->second.GetEmployedPopulation()) / 100'000.0F;
       for (const auto& province_set: final_connected_province_sets)
       {
+         const float factories = total_factories * province_set.size() / hoi4_provinces.size();
+
          int civilian_factories = 0;
          int military_factories = 0;
          int dockyards = 0;
