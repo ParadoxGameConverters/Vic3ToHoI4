@@ -14,6 +14,9 @@
 namespace
 {
 
+constexpr float MAX_FACTORY_SLOTS = 12.0F;
+
+
 std::map<std::string, int> MapVic3ProvincesToStates(const std::map<int, vic3::State>& states,
     const vic3::ProvinceDefinitions& vic3_province_definitions)
 {
@@ -283,7 +286,7 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
                                    std::max(0.0F, country_factories.civilian) +
                                    (IsStateCoastal(province_set, {}) ? std::max(0.0F, country_factories.docks) : 0.0F);
 
-   for (int i = 0; static_cast<float>(i) < std::clamp(factories, applied_factories, 12.0F); i++)
+   for (int i = 0; static_cast<float>(i) < std::clamp(factories, applied_factories, MAX_FACTORY_SLOTS); i++)
    {
       if (IsStateCoastal(province_set, {}) && (country_factories.docks > 0.0F))
       {
