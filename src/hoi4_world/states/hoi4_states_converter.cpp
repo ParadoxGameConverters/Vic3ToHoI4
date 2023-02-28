@@ -14,6 +14,9 @@
 namespace
 {
 
+constexpr float MAX_FACTORY_SLOTS = 12.0F;
+
+
 std::map<std::string, int> MapVic3ProvincesToStates(const std::map<int, vic3::State>& states,
     const vic3::ProvinceDefinitions& vic3_province_definitions)
 {
@@ -232,6 +235,99 @@ std::vector<std::set<int>> ConsolidateProvinceSets(std::vector<std::set<int>> co
 }
 
 
+bool IsStateCoastal(const std::set<int>& state_provinces, const std::map<int, std::vector<int>>& coastal_provinces)
+{
+   return false;
+}
+
+
+struct FactoriesStruct
+{
+   float military;
+   float civilian;
+   float docks;
+};
+std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
+    const std::set<int>& province_set,
+    int num_hoi4_provinces,
+    const std::string& state_owner,
+    std::unordered_map<std::string, FactoriesStruct>& accumulator)
+{
+   const float factories = total_factories * province_set.size() / num_hoi4_provinces;
+
+   int civilian_factories = 0;
+   int military_factories = 0;
+   int dockyards = 0;
+
+   if (!accumulator.contains(state_owner))
+   {
+      accumulator[state_owner] = {0, 0, 0};
+   }
+   auto& country_factories = accumulator[state_owner];
+   if (IsStateCoastal(province_set, {}))
+   {
+      //		20% chance of dockyard
+      //		57% chance of civilian factory
+      //		23% chance of military factory
+      country_factories.military += 0.23F * factories;
+      country_factories.civilian += 0.57F * factories;
+      country_factories.docks += 0.20F * factories;
+   }
+   else
+   {
+      //		 0% chance of dockyard
+      //		71% chance of civilian factory
+      //		29% chance of military factory
+      country_factories.military += 0.29F * factories;
+      country_factories.civilian += 0.71F * factories;
+   }
+
+   const float applied_factories = std::max(0.0F, country_factories.military) +
+                                   std::max(0.0F, country_factories.civilian) +
+                                   (IsStateCoastal(province_set, {}) ? std::max(0.0F, country_factories.docks) : 0.0F);
+
+   for (int i = 0; static_cast<float>(i) < std::clamp(factories, applied_factories, MAX_FACTORY_SLOTS); i++)
+   {
+      if (IsStateCoastal(province_set, {}) && (country_factories.docks > 0.0F))
+      {
+         dockyards++;
+         country_factories.docks -= 1.0F;
+      }
+      else if (country_factories.military >= 0.0F)
+      {
+         military_factories++;
+         country_factories.military -= 1.0F;
+      }
+      else
+      {
+         civilian_factories++;
+         country_factories.civilian -= 1.0F;
+      }
+   }
+
+   return {civilian_factories, military_factories, dockyards};
+}
+
+
+void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states)
+{
+   int civilian_factories = 0;
+   int military_factories = 0;
+   int dockyards = 0;
+   for (const auto& hoi4_state: hoi4_states)
+   {
+      civilian_factories += hoi4_state.GetCivilianFactories();
+      military_factories += hoi4_state.GetMilitaryFactories();
+      dockyards += hoi4_state.GetDockyards();
+   }
+
+   Log(LogLevel::Info) << fmt::format("\t\tTotal factories: {}", civilian_factories + military_factories + dockyards);
+   Log(LogLevel::Info) << fmt::format("\t\t\tCivilian factories: {}", civilian_factories);
+   Log(LogLevel::Info) << fmt::format("\t\t\tMilitary factories: {}", military_factories);
+   Log(LogLevel::Info) << fmt::format("\t\t\tDockyards factories: {}", dockyards);
+}
+
+
 hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
     const std::map<int, std::set<int>>& vic3_state_id_to_hoi4_provinces,
     const maps::MapData& map_data,
@@ -242,6 +338,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
    std::vector<hoi4::State> hoi4_states;
    std::map<int, int> province_to_state_id_map;
    std::map<int, int> vic3_state_ids_to_hoi4_state_ids;
+   std::unordered_map<std::string, FactoriesStruct> accumulator;
 
    for (const auto& [vic3_state_id, hoi4_provinces]: vic3_state_id_to_hoi4_provinces)
    {
@@ -274,8 +371,21 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
       }
 
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
+      const float total_factories = static_cast<float>(vic3_state_itr->second.GetEmployedPopulation()) / 100'000.0F;
       for (const auto& province_set: final_connected_province_sets)
       {
+         int civilian_factories = 0;
+         int military_factories = 0;
+         int dockyards = 0;
+         if (state_owner)
+         {
+            const auto all_factories =
+                ConvertIndustry(total_factories, province_set, hoi4_provinces.size(), *state_owner, accumulator);
+            civilian_factories = std::get<0>(all_factories);
+            military_factories = std::get<1>(all_factories);
+            dockyards = std::get<2>(all_factories);
+         }
+
          const int manpower = static_cast<int>(total_manpower * province_set.size() / hoi4_provinces.size());
 
          for (const int province: province_set)
@@ -284,15 +394,21 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
          }
          vic3_state_ids_to_hoi4_state_ids.emplace(vic3_state_id, static_cast<int>(hoi4_states.size() + 1U));
          hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U),
-             hoi4::StateOptions{.owner = state_owner, .provinces = province_set, .manpower = manpower});
+             hoi4::StateOptions{.owner = state_owner,
+                 .provinces = province_set,
+                 .manpower = manpower,
+                 .civilian_factories = civilian_factories,
+                 .military_factories = military_factories,
+                 .dockyards = dockyards});
       }
    }
+
+   LogIndustryStats(hoi4_states);
 
    return {hoi4_states, province_to_state_id_map, vic3_state_ids_to_hoi4_state_ids};
 }
 
 }  // namespace
-
 
 
 hoi4::States hoi4::StatesConverter::ConvertStates(const std::map<int, vic3::State>& states,

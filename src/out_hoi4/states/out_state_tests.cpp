@@ -69,6 +69,10 @@ TEST(Outhoi4StatesState, BasicsAreOutput)
        "\tstate_category = rural\n"
        "\n"
        "\thistory = {\n"
+       "\t\tbuildings = {\n"
+       "\t\t\tindustrial_complex = 0\n"
+       "\t\t\tarms_factory = 0\n"
+       "\t\t}\n"
        "\t}\n"
        "\n"
        "\tprovinces = {\n"
@@ -148,7 +152,7 @@ TEST(Outhoi4StatesState, NameIsSetById)
 }
 
 
-TEST(Outhoi4StatesState, manpowerIsSetByManpower)
+TEST(Outhoi4StatesState, ManpowerIsSetByManpower)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/manpowerIsSetByManpower");
@@ -229,7 +233,67 @@ TEST(Outhoi4StatesState, OwnerIsOutput)
    state_file.close();
    EXPECT_THAT(state_file_stream.str(),
        testing::HasSubstr("\thistory = {\n"
-                          "\t\towner = TAG\n"
+                          "\t\towner = TAG\n"));
+}
+
+
+TEST(Outhoi4StatesState, BuildingsAreOutput)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/BuildingsAreOutput");
+   commonItems::TryCreateFolder("output/BuildingsAreOutput/history");
+   commonItems::TryCreateFolder("output/BuildingsAreOutput/history/states");
+
+   const hoi4::State state_one(1,
+       {.provinces = {1, 4, 9, 16}, .civilian_factories = 2, .military_factories = 4, .dockyards = 6});
+
+   OutputState("BuildingsAreOutput", state_one);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/BuildingsAreOutput/history/states/1.txt"));
+   std::ifstream state_file("output/BuildingsAreOutput/history/states/1.txt");
+   ASSERT_TRUE(state_file.is_open());
+   std::stringstream state_file_stream;
+   std::copy(std::istreambuf_iterator<char>(state_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream));
+   state_file.close();
+   EXPECT_THAT(state_file_stream.str(),
+       testing::HasSubstr("\thistory = {\n"
+                          "\t\tbuildings = {\n"
+                          "\t\t\tindustrial_complex = 2\n"
+                          "\t\t\tarms_factory = 4\n"
+                          "\t\t\tdockyard = 6\n"
+                          "\t\t}\n"
+                          "\t}\n"));
+}
+
+
+TEST(Outhoi4StatesState, DockyardsNotOutputWhenZero)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/DockyardsNotOutputWhenZero");
+   commonItems::TryCreateFolder("output/DockyardsNotOutputWhenZero/history");
+   commonItems::TryCreateFolder("output/DockyardsNotOutputWhenZero/history/states");
+
+   const hoi4::State state_one(1,
+       {.provinces = {1, 4, 9, 16}, .civilian_factories = 2, .military_factories = 4, .dockyards = 0});
+
+   OutputState("DockyardsNotOutputWhenZero", state_one);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/DockyardsNotOutputWhenZero/history/states/1.txt"));
+   std::ifstream state_file("output/DockyardsNotOutputWhenZero/history/states/1.txt");
+   ASSERT_TRUE(state_file.is_open());
+   std::stringstream state_file_stream;
+   std::copy(std::istreambuf_iterator<char>(state_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream));
+   state_file.close();
+   EXPECT_THAT(state_file_stream.str(),
+       testing::HasSubstr("\thistory = {\n"
+                          "\t\tbuildings = {\n"
+                          "\t\t\tindustrial_complex = 2\n"
+                          "\t\t\tarms_factory = 4\n"
+                          "\t\t}\n"
                           "\t}\n"));
 }
 

@@ -29,6 +29,7 @@ class StateImporter
    std::optional<int> owner_number_;
    std::set<int> provinces_;
    int population_ = 0;
+   int employed_population_ = 0;
 };
 
 }  // namespace vic3

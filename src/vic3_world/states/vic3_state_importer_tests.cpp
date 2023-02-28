@@ -18,6 +18,7 @@ TEST(Vic3worldStateVic3stateimporter, DefaultsAreDefaulted)
    EXPECT_FALSE(state.GetOwnerTag().has_value());
    EXPECT_TRUE(state.GetProvinces().empty());
    EXPECT_EQ(state.GetPopulation(), 0);
+   EXPECT_EQ(state.GetEmployedPopulation(), 0);
 }
 
 
@@ -46,6 +47,10 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
    input << "\t\tlower_strata_pops=2";
    input << "\t\tmiddle_strata_pops=4";
    input << "\t\tupper_strata_pops=6";
+   input << "\t\tsalaried_working_adults=8";
+   input << "\t\tunemployed_working_adults=10";
+   input << "\t\tlaborer_working_adults=12";
+   input << "\t\tsubsisting_working_adults=14";  // subsisting workers are not counted for employed workers
    input << "\t}\n";
    input << "}";
    const auto state = StateImporter{}.ImportState(input);
@@ -68,6 +73,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
            37348,
            37349));
    EXPECT_EQ(state.GetPopulation(), 12);
+   EXPECT_EQ(state.GetEmployedPopulation(), 30);
 }
 
 
@@ -85,6 +91,10 @@ TEST(Vic3worldStateVic3stateimporter, MultipleStatesCanBeInput)
    input_one << "\t\tlower_strata_pops=2";
    input_one << "\t\tmiddle_strata_pops=4";
    input_one << "\t\tupper_strata_pops=6";
+   input_one << "\t\tsalaried_working_adults=8";
+   input_one << "\t\tunemployed_working_adults=10";
+   input_one << "\t\tlaborer_working_adults=12";
+   input_one << "\t\tsubsisting_working_adults=14";  // subsisting workers are not counted for employed workers
    input_one << "\t}\n";
    input_one << "}";
    const auto state_one = state_importer.ImportState(input_one);
@@ -110,11 +120,13 @@ TEST(Vic3worldStateVic3stateimporter, MultipleStatesCanBeInput)
            37348,
            37349));
    EXPECT_EQ(state_one.GetPopulation(), 12);
+   EXPECT_EQ(state_one.GetEmployedPopulation(), 30);
 
    EXPECT_FALSE(state_two.GetOwnerNumber().has_value());
    EXPECT_FALSE(state_two.GetOwnerTag().has_value());
    EXPECT_TRUE(state_two.GetProvinces().empty());
    EXPECT_EQ(state_two.GetPopulation(), 0);
+   EXPECT_EQ(state_two.GetEmployedPopulation(), 0);
 }
 
 }  // namespace vic3
