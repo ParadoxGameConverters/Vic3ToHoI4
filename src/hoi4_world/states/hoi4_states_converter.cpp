@@ -387,8 +387,8 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
             dockyards = std::get<2>(all_factories);
          }
 
-         const std::string category =
-             state_categories.GetBestCategory(civilian_factories + military_factories + dockyards);
+         const std::string category = state_categories.GetBestCategory(
+             std::min(civilian_factories + military_factories + dockyards, static_cast<int>(MAX_FACTORY_SLOTS)));
 
          const int manpower = static_cast<int>(total_manpower * province_set.size() / hoi4_provinces.size());
 
