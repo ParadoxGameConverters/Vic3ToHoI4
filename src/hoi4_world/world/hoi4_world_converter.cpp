@@ -38,7 +38,8 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
        map_data,
        province_definitions,
        strategic_regions,
-       country_mapper);
+       country_mapper,
+       StateCategories({}));
 
    strategic_regions.UpdateToMatchNewStates(states.states);
 

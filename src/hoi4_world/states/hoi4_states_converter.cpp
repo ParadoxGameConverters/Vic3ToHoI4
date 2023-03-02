@@ -333,7 +333,8 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const hoi4::StrategicRegions& strategic_regions,
-    const mappers::CountryMapper& country_mapper)
+    const mappers::CountryMapper& country_mapper,
+    const hoi4::StateCategories& state_categories)
 {
    std::vector<hoi4::State> hoi4_states;
    std::map<int, int> province_to_state_id_map;
@@ -386,6 +387,9 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
             dockyards = std::get<2>(all_factories);
          }
 
+         const std::string category =
+             state_categories.GetBestCategory(civilian_factories + military_factories + dockyards);
+
          const int manpower = static_cast<int>(total_manpower * province_set.size() / hoi4_provinces.size());
 
          for (const int province: province_set)
@@ -397,6 +401,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
              hoi4::StateOptions{.owner = state_owner,
                  .provinces = province_set,
                  .manpower = manpower,
+                 .category = category,
                  .civilian_factories = civilian_factories,
                  .military_factories = military_factories,
                  .dockyards = dockyards});
@@ -417,7 +422,8 @@ hoi4::States hoi4::StatesConverter::ConvertStates(const std::map<int, vic3::Stat
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const hoi4::StrategicRegions& strategic_regions,
-    const mappers::CountryMapper& country_mapper)
+    const mappers::CountryMapper& country_mapper,
+    const hoi4::StateCategories& state_categories)
 {
    const std::map<std::string, int> vic3_province_to_state_id_map =
        MapVic3ProvincesToStates(states, vic3_province_definitions);
@@ -430,5 +436,6 @@ hoi4::States hoi4::StatesConverter::ConvertStates(const std::map<int, vic3::Stat
        map_data,
        hoi4_province_definitions,
        strategic_regions,
-       country_mapper);
+       country_mapper,
+       state_categories);
 }
