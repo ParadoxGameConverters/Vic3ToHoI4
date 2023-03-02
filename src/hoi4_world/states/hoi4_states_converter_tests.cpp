@@ -911,7 +911,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
            State(2,
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
-                   .category = "test_category_three",
+                   .category = "test_category_four",
                    .civilian_factories = 5,
                    .military_factories = 3})));
 }
