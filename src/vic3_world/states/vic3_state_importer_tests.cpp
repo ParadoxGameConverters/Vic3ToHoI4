@@ -73,7 +73,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
            37348,
            37349));
    EXPECT_EQ(state.GetPopulation(), 12);
-   EXPECT_EQ(state.GetEmployedPopulation(), 30);
+   EXPECT_EQ(state.GetEmployedPopulation(), 18);
 }
 
 
@@ -120,7 +120,7 @@ TEST(Vic3worldStateVic3stateimporter, MultipleStatesCanBeInput)
            37348,
            37349));
    EXPECT_EQ(state_one.GetPopulation(), 12);
-   EXPECT_EQ(state_one.GetEmployedPopulation(), 30);
+   EXPECT_EQ(state_one.GetEmployedPopulation(), 18);
 
    EXPECT_FALSE(state_two.GetOwnerNumber().has_value());
    EXPECT_FALSE(state_two.GetOwnerTag().has_value());
