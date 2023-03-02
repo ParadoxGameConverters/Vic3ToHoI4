@@ -51,9 +51,6 @@ vic3::StateImporter::StateImporter()
    pop_statistics_parser_.registerKeyword("unemployed_working_adults", [this](std::istream& input_stream) {
       employed_population_ += commonItems::getInt(input_stream);
    });
-   pop_statistics_parser_.registerKeyword("laborer_working_adults", [this](std::istream& input_stream) {
-      employed_population_ += commonItems::getInt(input_stream);
-   });
    pop_statistics_parser_.IgnoreUnregisteredItems();
 }
 
