@@ -23,7 +23,7 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
    state_history << fmt::format("\tname = \"STATE_{}\"\n", state_number);
    state_history << fmt::format("\tmanpower = {}\n", state.GetManpower());
    state_history << "\n";
-   state_history << "\tstate_category = rural\n";
+   state_history << fmt::format("\tstate_category = {}\n", state.GetCategory());
    state_history << "\n";
    state_history << "\thistory = {\n";
    if (const auto& owner = state.GetOwner(); owner.has_value())
