@@ -23,21 +23,21 @@ TEST(Hoi4worldStatesStatecategoriesTests, CategoryCanBeSelected)
 }
 
 
-TEST(Hoi4worldStatesStatecategoriesTests, CategoryLessThanOrEqualToNumSlotsIsChosen)
+TEST(Hoi4worldStatesStatecategoriesTests, CategoryGreaterThanOrEqualToNumSlotsIsChosen)
 {
    const StateCategories categories({{1, "test_category_one"}, {3, "test_category_two"}});
 
    EXPECT_EQ(categories.GetBestCategory(1), "test_category_one");
-   EXPECT_EQ(categories.GetBestCategory(2), "test_category_one");
+   EXPECT_EQ(categories.GetBestCategory(2), "test_category_two");
 }
 
 
-TEST(Hoi4worldStatesStatecategoriesTests, LargestCategoryLessThanOrEqualToNumSlotsIsChosen)
+TEST(Hoi4worldStatesStatecategoriesTests, SmallestCategoryGreaterThanOrEqualToNumSlotsIsChosen)
 {
    const StateCategories categories({{1, "test_category"}, {3, "test_category_two"}, {5, "test_category_three"}});
 
+   EXPECT_EQ(categories.GetBestCategory(2), "test_category_two");
    EXPECT_EQ(categories.GetBestCategory(3), "test_category_two");
-   EXPECT_EQ(categories.GetBestCategory(4), "test_category_two");
 }
 
 }  // namespace hoi4
