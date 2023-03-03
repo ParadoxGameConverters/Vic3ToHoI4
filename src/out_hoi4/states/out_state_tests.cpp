@@ -187,6 +187,41 @@ TEST(Outhoi4StatesState, ManpowerIsSetByManpower)
 }
 
 
+TEST(Outhoi4StatesState, CategoryIsSetByCategory)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/CategoryIsSetByCategory");
+   commonItems::TryCreateFolder("output/CategoryIsSetByCategory/history");
+   commonItems::TryCreateFolder("output/CategoryIsSetByCategory/history/states");
+
+   const hoi4::State state_one(1, {.category = "category_one"});
+   const hoi4::State state_two(2, {.category = "category_two"});
+
+   OutputState("CategoryIsSetByCategory", state_one);
+   OutputState("CategoryIsSetByCategory", state_two);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/CategoryIsSetByCategory/history/states/1.txt"));
+   std::ifstream state_file_one("output/CategoryIsSetByCategory/history/states/1.txt");
+   ASSERT_TRUE(state_file_one.is_open());
+   std::stringstream state_file_stream_one;
+   std::copy(std::istreambuf_iterator<char>(state_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_one));
+   state_file_one.close();
+   EXPECT_THAT(state_file_stream_one.str(), testing::HasSubstr("state_category = category_one"));
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/CategoryIsSetByCategory/history/states/2.txt"));
+   std::ifstream state_file_two("output/CategoryIsSetByCategory/history/states/2.txt");
+   ASSERT_TRUE(state_file_two.is_open());
+   std::stringstream state_file_stream_two;
+   std::copy(std::istreambuf_iterator<char>(state_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_two));
+   state_file_two.close();
+   EXPECT_THAT(state_file_stream_two.str(), testing::HasSubstr("state_category = category_two"));
+}
+
+
 TEST(Outhoi4StatesState, ProvincesAreOutput)
 {
    commonItems::TryCreateFolder("output");

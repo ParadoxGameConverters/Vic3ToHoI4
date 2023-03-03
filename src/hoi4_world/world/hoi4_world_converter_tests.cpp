@@ -100,8 +100,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
        province_mapper);
 
    EXPECT_THAT(world.GetStates().states,
-       testing::ElementsAre(State(1, {.owner = "TAG", .provinces = {10, 20, 30}}),
-           State(2, {.owner = "TWO", .provinces = {40, 50, 60}})));
+       testing::ElementsAre(State(1, {.owner = "TAG", .provinces = {10, 20, 30}, .category = "enclave"}),
+           State(2, {.owner = "TWO", .provinces = {40, 50, 60}, .category = "enclave"})));
    EXPECT_THAT(world.GetStates().province_to_state_id_map,
        testing::UnorderedElementsAre(testing::Pair(10, 1),
            testing::Pair(20, 1),

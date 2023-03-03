@@ -69,6 +69,7 @@
     <ClCompile Include="src\hoi4_world\map\strategic_region_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_region_tests.cpp" />
     <ClCompile Include="src\hoi4_world\states\hoi4_states_converter_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\states\state_categories_tests.cpp" />
     <ClCompile Include="src\hoi4_world\technology\technologies_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\technology\technologies_tests.cpp" />
     <ClCompile Include="src\hoi4_world\world\hoi4_world_converter_tests.cpp" />

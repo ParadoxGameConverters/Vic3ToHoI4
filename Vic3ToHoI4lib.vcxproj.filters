@@ -303,6 +303,9 @@
     <ClInclude Include="src\out_hoi4\technology\out_technologies.h">
       <Filter>src\out_hoi4\technology</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\states\state_categories.h">
+      <Filter>src\hoi4_world\states</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -451,6 +454,9 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\technology\out_technologies.cpp">
       <Filter>src\out_hoi4\technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\states\state_categories.cpp">
+      <Filter>src\hoi4_world\states</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
