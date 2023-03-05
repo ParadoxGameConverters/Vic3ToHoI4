@@ -342,9 +342,7 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    Log(LogLevel::Info) << fmt::format("\t\t\tMilitary factories: {} (vanilla hoi4 had {})",
        military_factories,
        default_military_factories);
-   Log(LogLevel::Info) << fmt::format("\t\t\tDockyards: {} (vanilla hoi4 had {})",
-       dockyards,
-       default_dockyards);
+   Log(LogLevel::Info) << fmt::format("\t\t\tDockyards: {} (vanilla hoi4 had {})", dockyards, default_dockyards);
 }
 
 
