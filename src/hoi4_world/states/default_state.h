@@ -40,8 +40,8 @@ class DefaultState
    [[nodiscard]] bool IsImpassable() const { return impassable_; }
    [[nodiscard]] const std::string& GetOwner() const { return owner_tag_; }
    [[nodiscard]] const std::set<int>& GetProvinces() const { return provinces_; }
-   [[nodiscard]] int GetCivFactories() const { return civilian_factories_; }
-   [[nodiscard]] int GetMilFactories() const { return military_factories_; }
+   [[nodiscard]] int GetCivilianFactories() const { return civilian_factories_; }
+   [[nodiscard]] int GetMilitaryFactories() const { return military_factories_; }
    [[nodiscard]] int GetDockyards() const { return dockyards_; }
    [[nodiscard]] const std::map<std::string, double>& GetResources() const { return resources_; }
 
