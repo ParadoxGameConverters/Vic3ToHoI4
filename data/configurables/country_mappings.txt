@@ -176,4 +176,43 @@ link = { vic = GRE hoi = GRE } # Greece
 link = { vic = GUA hoi = GUA } # Guatemala
 #link = { vic = GUI hoi = ??? } # Guizhou
 #link = { vic = GWA hoi = ??? } # Gwalior
+link = { vic = HAI hoi = HAI } # Haiti
+#link = { vic = HAM hoi = ??? } # Hamburg
+#link = { vic = HAN hoi = ??? } # Hanover
+link = { vic = HAR hoi = HAR } # Harar
+#link = { vic = HAU hoi = ??? } # Damagaram
+link = { vic = HAW hoi = HAW } # Hawaii
+#link = { vic = HBC hoi = ??? } # Hudson Bay Company
+#link = { vic = HDJ hoi = ??? } # Hedjaz
+#link = { vic = HEK hoi = ??? } # Hesse-Kassel
+#link = { vic = HES hoi = ??? } # Hesse
+#link = { vic = HHE hoi = ??? } # Hehe
+#link = { vic = HLA hoi = ??? } # Halia
+#link = { vic = HMB hoi = ??? } # Hemba
+#link = { vic = HNA hoi = ??? } # Hunan
+#link = { vic = HND hoi = ??? } # India
+#link = { vic = HOB hoi = ??? } # Hobyo
+#link = { vic = HOH hoi = ??? } # Hohenzollern
+#link = { vic = HOL hoi = ??? } # Holstein
+link = { vic = HON hoi = HON } # Honduras
+#link = { vic = HRO hoi = ??? } # Herero
+#link = { vic = HTH hoi = ??? } # Halia
+link = { vic = HUN hoi = HUN } # Hungary
+#link = { vic = HYD hoi = ??? } # Hyderabad
+#link = { vic = HZJ hoi = ??? } # Hazarajat
+#link = { vic = IBE hoi = ??? } # Iberia
+#link = { vic = IBL hoi = ??? } # IBL
+#link = { vic = IBO hoi = ??? } # Igbo
+link = { vic = ICL hoi = ICE } # Iceland
+#link = { vic = IDN hoi = ??? } # Indonesia
+#link = { vic = IND hoi = ??? } # Indore
+#link = { vic = ION hoi = ??? } # Ionian Islands
+#link = { vic = IRC hoi = ??? } # Iron Confederacy
+link = { vic = IRE hoi = IRE } # Ireland
+#link = { vic = IRO hoi = ??? } # Haudenosaunee
+link = { vic = IRQ hoi = IRQ } # Iraq
+#link = { vic = ISQ hoi = ??? } # Isaaq
+link = { vic = ISR hoi = ISR } # Israel
+link = { vic = ITA hoi = ITA } # Italy
+#link = { vic = IUS hoi = ??? } # Kazan
 
