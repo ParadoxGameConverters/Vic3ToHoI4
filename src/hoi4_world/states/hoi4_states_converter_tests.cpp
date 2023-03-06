@@ -258,6 +258,55 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
 }
 
+
+TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
+{
+   const vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
+   const maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
+   const hoi4::StrategicRegions strategic_regions({}, {});
+   const mappers::CountryMapper country_mapper({});
+
+   const auto hoi4_states = StatesConverter{}.ConvertStates(
+       {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}})}},
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories({}),
+       {
+           {1, DefaultState({.provinces = {10, 20}})},
+           {2, DefaultState({.impassable = true, .provinces = {30, 40, 50}})},
+           {3, DefaultState({.provinces = {60}})},
+       });
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.provinces = {10, 20}}),
+           State(2, {.provinces = {30}, .category = "wasteland"}),
+           State(3, {.provinces = {60}}),
+           State(4, {.provinces = {40, 50}, .category = "wasteland"})));
+   EXPECT_THAT(hoi4_states.province_to_state_id_map,
+       testing::UnorderedElementsAre(testing::Pair(10, 1),
+           testing::Pair(20, 1),
+           testing::Pair(30, 2),
+           testing::Pair(40, 4),
+           testing::Pair(50, 4),
+           testing::Pair(60, 3)));
+   EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
+       testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 3)));
+}
+
 TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
 {
    const vic3::ProvinceDefinitions province_definitions;
@@ -630,6 +679,47 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInSplitStatesIsProportionalToTo
 }
 
 
+TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInWastelandStatesIsProportionalToTotalProvinces)
+{
+   const vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
+   const maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
+   const hoi4::StrategicRegions strategic_regions({}, {});
+   const mappers::CountryMapper country_mapper({});
+
+   const auto hoi4_states = StatesConverter{}.ConvertStates(
+       {{1, vic3::State({.provinces = {1, 2, 3}, .population = 12345})},
+           {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}, .population = 67890})}},
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories({}),
+       {
+           {1, DefaultState({.provinces = {10, 20}})},
+           {2, DefaultState({.impassable = true, .provinces = {30, 40, 50}})},
+           {3, DefaultState({.provinces = {60}})},
+       });
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.provinces = {10, 20}, .manpower = 8230}),
+           State(2, {.provinces = {30}, .manpower = 4115, .category = "wasteland"}),
+           State(3, {.provinces = {60}, .manpower = 22'630}),
+           State(4, {.provinces = {40, 50}, .manpower = 45'260, .category = "wasteland"})));
+}
+
+
 TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
 {
    const vic3::ProvinceDefinitions province_definitions(
@@ -850,6 +940,48 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
            State(2, {.owner = "ONE", .provinces = {30}, .civilian_factories = 2, .military_factories = 0}),
            State(3, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 2, .military_factories = 2}),
            State(4, {.owner = "TWO", .provinces = {60}, .civilian_factories = 3, .military_factories = 0})));
+}
+
+
+TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
+{
+   const vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions{{"10", "20", "30", "40", "50", "60"}, {}, {}, {}};
+   const maps::MapData map_data{{{"10", {"20", "30"}}, {"40", {"50", "60"}}}, {}, {}, hoi4_province_definitions, {}};
+   const hoi4::StrategicRegions strategic_regions({}, {});
+   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+
+   const auto hoi4_states = StatesConverter{}.ConvertStates(
+       {{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .employed_population = 500'000})},
+           {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}, .employed_population = 500'000})}},
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories({}),
+       {
+           {1, DefaultState({.provinces = {10, 20}})},
+           {2, DefaultState({.impassable = true, .provinces = {30, 40, 50}})},
+           {3, DefaultState({.provinces = {60}})},
+       });
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(
+           State(1, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 3, .military_factories = 2}),
+           State(2, {.owner = "ONE", .provinces = {30}, .category = "wasteland"}),
+           State(3, {.owner = "TWO", .provinces = {60}, .civilian_factories = 3, .military_factories = 2}),
+           State(4, {.owner = "TWO", .provinces = {40, 50}, .category = "wasteland"})));
 }
 
 

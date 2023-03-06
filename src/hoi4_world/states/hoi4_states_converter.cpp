@@ -1,6 +1,7 @@
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 
 #include <algorithm>
+#include <numeric>
 #include <optional>
 #include <queue>
 #include <ranges>
@@ -148,6 +149,23 @@ std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::stri
 }
 
 
+std::set<int> GetWastelandProvinces(const std::map<int, hoi4::DefaultState>& default_states)
+{
+   std::set<int> wasteland_provinces;
+   for (const hoi4::DefaultState& default_state: default_states | std::views::values)
+   {
+      if (!default_state.IsImpassable())
+      {
+         continue;
+      }
+
+      wasteland_provinces.insert(default_state.GetProvinces().begin(), default_state.GetProvinces().end());
+   }
+
+   return wasteland_provinces;
+}
+
+
 std::vector<std::set<int>> GetConnectedProvinceSets(std::set<int> province_numbers,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions)
@@ -197,6 +215,42 @@ std::vector<std::set<int>> GetConnectedProvinceSets(std::set<int> province_numbe
    }
 
    return connected_province_sets;
+}
+
+
+std::pair<std::vector<std::set<int>>, std::vector<std::set<int>>> SortProvinceSetsByWastelandStatus(
+    const std::vector<std::set<int>>& connected_province_sets,
+    const std::set<int>& wasteland_provinces)
+{
+   std::vector<std::set<int>> non_wasteland_province_sets;
+   std::vector<std::set<int>> wasteland_province_sets;
+   for (const auto& province_set: connected_province_sets)
+   {
+      std::set<int> non_wasteland_province_set;
+      std::set<int> wasteland_province_set;
+      for (const auto province: province_set)
+      {
+         if (wasteland_provinces.contains(province))
+         {
+            wasteland_province_set.insert(province);
+         }
+         else
+         {
+            non_wasteland_province_set.insert(province);
+         }
+      }
+
+      if (!non_wasteland_province_set.empty())
+      {
+         non_wasteland_province_sets.push_back(non_wasteland_province_set);
+      }
+      if (!wasteland_province_set.empty())
+      {
+         wasteland_province_sets.push_back(wasteland_province_set);
+      }
+   }
+
+   return {non_wasteland_province_sets, wasteland_province_sets};
 }
 
 
@@ -359,6 +413,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
    std::map<int, int> province_to_state_id_map;
    std::map<int, int> vic3_state_ids_to_hoi4_state_ids;
    std::unordered_map<std::string, FactoriesStruct> accumulator;
+   const std::set<int> wasteland_provinces = GetWastelandProvinces(default_states);
 
    for (const auto& [vic3_state_id, hoi4_provinces]: vic3_state_id_to_hoi4_provinces)
    {
@@ -381,14 +436,26 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 
       const auto initial_connected_province_sets =
           GetConnectedProvinceSets(hoi4_provinces, map_data, hoi4_province_definitions);
-      auto final_connected_province_sets =
-          ConsolidateProvinceSets(initial_connected_province_sets, strategic_regions.GetProvinceToStrategicRegionMap());
+      const auto [non_wasteland_province_sets, wasteland_province_sets] =
+          SortProvinceSetsByWastelandStatus(initial_connected_province_sets, wasteland_provinces);
+      const auto final_connected_province_sets =
+          ConsolidateProvinceSets(non_wasteland_province_sets, strategic_regions.GetProvinceToStrategicRegionMap());
+      const auto final_wasteland_connected_province_sets =
+          ConsolidateProvinceSets(wasteland_province_sets, strategic_regions.GetProvinceToStrategicRegionMap());
       if (final_connected_province_sets.size() > 1U)
       {
          Log(LogLevel::Info) << fmt::format("\tState {} was split into {} due to disconnected provinces.",
              hoi4_states.size() + 1U,
              final_connected_province_sets.size());
       }
+
+      int total_wasteland_provinces = std::accumulate(final_wasteland_connected_province_sets.begin(),
+          final_wasteland_connected_province_sets.end(),
+          0,
+          [](const int total, const std::set<int>& province_set) {
+             return total + static_cast<int>(province_set.size());
+          });
+      int total_non_wasteland_provinces = static_cast<int>(hoi4_provinces.size()) - total_wasteland_provinces;
 
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
       const float total_factories = static_cast<float>(vic3_state_itr->second.GetEmployedPopulation()) / 100'000.0F;
@@ -399,8 +466,11 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
          int dockyards = 0;
          if (state_owner)
          {
-            const auto all_factories =
-                ConvertIndustry(total_factories, province_set, hoi4_provinces.size(), *state_owner, accumulator);
+            const auto all_factories = ConvertIndustry(total_factories,
+                province_set,
+                total_non_wasteland_provinces,
+                *state_owner,
+                accumulator);
             civilian_factories = std::get<0>(all_factories);
             military_factories = std::get<1>(all_factories);
             dockyards = std::get<2>(all_factories);
@@ -409,7 +479,8 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
          const std::string category = state_categories.GetBestCategory(
              std::min(civilian_factories + military_factories + dockyards, static_cast<int>(MAX_FACTORY_SLOTS)));
 
-         const int manpower = static_cast<int>(total_manpower * province_set.size() / hoi4_provinces.size());
+         const int manpower = static_cast<int>(
+             total_manpower * static_cast<int>(province_set.size()) / static_cast<int>(hoi4_provinces.size()));
 
          for (const int province: province_set)
          {
@@ -424,6 +495,22 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
                  .civilian_factories = civilian_factories,
                  .military_factories = military_factories,
                  .dockyards = dockyards});
+      }
+      for (const auto& province_set: final_wasteland_connected_province_sets)
+      {
+         const int manpower = static_cast<int>(
+             total_manpower * static_cast<int>(province_set.size()) / static_cast<int>(hoi4_provinces.size()));
+
+         for (const int province: province_set)
+         {
+            province_to_state_id_map.emplace(province, static_cast<int>(hoi4_states.size() + 1U));
+         }
+         vic3_state_ids_to_hoi4_state_ids.emplace(vic3_state_id, static_cast<int>(hoi4_states.size() + 1U));
+         hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U),
+             hoi4::StateOptions{.owner = state_owner,
+                 .provinces = province_set,
+                 .manpower = manpower,
+                 .category = "wasteland"});
       }
    }
 

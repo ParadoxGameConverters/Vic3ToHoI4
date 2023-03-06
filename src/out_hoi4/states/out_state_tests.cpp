@@ -222,6 +222,29 @@ TEST(Outhoi4StatesState, CategoryIsSetByCategory)
 }
 
 
+TEST(Outhoi4StatesState, WastelandsAreImpassable)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/WastelandsAreImpassable");
+   commonItems::TryCreateFolder("output/WastelandsAreImpassable/history");
+   commonItems::TryCreateFolder("output/WastelandsAreImpassable/history/states");
+
+   const hoi4::State state_one(1, {.category = "wasteland"});
+
+   OutputState("WastelandsAreImpassable", state_one);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/WastelandsAreImpassable/history/states/1.txt"));
+   std::ifstream state_file_one("output/WastelandsAreImpassable/history/states/1.txt");
+   ASSERT_TRUE(state_file_one.is_open());
+   std::stringstream state_file_stream_one;
+   std::copy(std::istreambuf_iterator<char>(state_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_one));
+   state_file_one.close();
+   EXPECT_THAT(state_file_stream_one.str(), testing::HasSubstr("impassable = yes"));
+}
+
+
 TEST(Outhoi4StatesState, ProvincesAreOutput)
 {
    commonItems::TryCreateFolder("output");
