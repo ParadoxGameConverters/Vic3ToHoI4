@@ -24,6 +24,10 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
    state_history << fmt::format("\tmanpower = {}\n", state.GetManpower());
    state_history << "\n";
    state_history << fmt::format("\tstate_category = {}\n", state.GetCategory());
+   if (state.GetCategory() == "wasteland")
+   {
+      state_history << "\timpassable = yes\n";
+   }
    state_history << "\n";
    state_history << "\thistory = {\n";
    if (const auto& owner = state.GetOwner(); owner.has_value())
