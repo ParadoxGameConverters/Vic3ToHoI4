@@ -6,6 +6,7 @@
 #include <map>
 
 #include "src/hoi4_world/map/strategic_regions.h"
+#include "src/hoi4_world/states/default_state.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/states/hoi4_states.h"
 #include "src/hoi4_world/states/state_categories.h"
@@ -30,7 +31,8 @@ class StatesConverter
        const maps::ProvinceDefinitions& hoi4_province_definitions,
        const hoi4::StrategicRegions& strategic_regions,
        const mappers::CountryMapper& country_mapper,
-       const hoi4::StateCategories& state_categories);
+       const hoi4::StateCategories& state_categories,
+       const std::map<int, DefaultState>& default_states);
 
   private:
 };

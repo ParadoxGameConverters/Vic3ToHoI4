@@ -8,6 +8,7 @@
 #include "src/hoi4_world/map/coastal_provinces_creator.h"
 #include "src/hoi4_world/map/hoi4_province_definition_importer.h"
 #include "src/hoi4_world/map/strategic_regions_importer.h"
+#include "src/hoi4_world/states/default_states_importer.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 #include "src/mappers/technology/tech_mappings_importer.h"
 #include "src/maps/map_data.h"
@@ -30,6 +31,7 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
    Log(LogLevel::Info) << "\tConverting states";
    const auto province_definitions = ImportProvinceDefinitions(hoi4_mod_filesystem);
    const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem);
+   const std::map<int, DefaultState> default_states = hoi4::ImportDefaultStates(hoi4_mod_filesystem);
 
    StatesConverter states_converter;
    States states = states_converter.ConvertStates(source_world.GetStates(),
@@ -47,7 +49,8 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
            {10, "metropolis"},
            {1, "pastoral"},
            {2, "rural"},
-           {4, "town"}}));
+           {4, "town"}}),
+       default_states);
 
    strategic_regions.UpdateToMatchNewStates(states.states);
 

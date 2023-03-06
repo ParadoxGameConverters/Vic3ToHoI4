@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <optional>
 #include <queue>
+#include <ranges>
 #include <vector>
 
 #include "external/commonItems/Log.h"
@@ -309,7 +310,8 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
 }
 
 
-void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states)
+void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
+    const std::map<int, hoi4::DefaultState>& default_states)
 {
    int civilian_factories = 0;
    int military_factories = 0;
@@ -321,10 +323,26 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states)
       dockyards += hoi4_state.GetDockyards();
    }
 
-   Log(LogLevel::Info) << fmt::format("\t\tTotal factories: {}", civilian_factories + military_factories + dockyards);
-   Log(LogLevel::Info) << fmt::format("\t\t\tCivilian factories: {}", civilian_factories);
-   Log(LogLevel::Info) << fmt::format("\t\t\tMilitary factories: {}", military_factories);
-   Log(LogLevel::Info) << fmt::format("\t\t\tDockyards factories: {}", dockyards);
+   int default_civilian_factories = 0;
+   int default_military_factories = 0;
+   int default_dockyards = 0;
+   for (const auto& hoi4_state: default_states | std::views::values)
+   {
+      default_civilian_factories += hoi4_state.GetCivilianFactories();
+      default_military_factories += hoi4_state.GetMilitaryFactories();
+      default_dockyards += hoi4_state.GetDockyards();
+   }
+
+   Log(LogLevel::Info) << fmt::format("\t\tTotal factories: {} (vanilla hoi4 had {})",
+       civilian_factories + military_factories + dockyards,
+       default_civilian_factories + default_military_factories + default_dockyards);
+   Log(LogLevel::Info) << fmt::format("\t\t\tCivilian factories: {} (vanilla hoi4 had {})",
+       civilian_factories,
+       default_civilian_factories);
+   Log(LogLevel::Info) << fmt::format("\t\t\tMilitary factories: {} (vanilla hoi4 had {})",
+       military_factories,
+       default_military_factories);
+   Log(LogLevel::Info) << fmt::format("\t\t\tDockyards: {} (vanilla hoi4 had {})", dockyards, default_dockyards);
 }
 
 
@@ -334,7 +352,8 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const hoi4::StrategicRegions& strategic_regions,
     const mappers::CountryMapper& country_mapper,
-    const hoi4::StateCategories& state_categories)
+    const hoi4::StateCategories& state_categories,
+    const std::map<int, hoi4::DefaultState>& default_states)
 {
    std::vector<hoi4::State> hoi4_states;
    std::map<int, int> province_to_state_id_map;
@@ -408,7 +427,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
       }
    }
 
-   LogIndustryStats(hoi4_states);
+   LogIndustryStats(hoi4_states, default_states);
 
    return {hoi4_states, province_to_state_id_map, vic3_state_ids_to_hoi4_state_ids};
 }
@@ -423,7 +442,8 @@ hoi4::States hoi4::StatesConverter::ConvertStates(const std::map<int, vic3::Stat
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const hoi4::StrategicRegions& strategic_regions,
     const mappers::CountryMapper& country_mapper,
-    const hoi4::StateCategories& state_categories)
+    const hoi4::StateCategories& state_categories,
+    const std::map<int, DefaultState>& default_states)
 {
    const std::map<std::string, int> vic3_province_to_state_id_map =
        MapVic3ProvincesToStates(states, vic3_province_definitions);
@@ -437,5 +457,6 @@ hoi4::States hoi4::StatesConverter::ConvertStates(const std::map<int, vic3::Stat
        hoi4_province_definitions,
        strategic_regions,
        country_mapper,
-       state_categories);
+       state_categories,
+       default_states);
 }
