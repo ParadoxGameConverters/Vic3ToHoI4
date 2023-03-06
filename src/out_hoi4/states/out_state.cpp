@@ -34,6 +34,12 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
    {
       state_history << fmt::format("\t\towner = {}\n", *owner);
    }
+   for (const auto& victory_point: state.GetVictoryPoints())
+   {
+      state_history << "\t\tvictory_points = {\n";
+      state_history << fmt::format("\t\t\t{} {}\n", victory_point.first, victory_point.second);
+      state_history << "\t\t}\n";
+   }
    state_history << "\t\tbuildings = {\n";
    state_history << fmt::format("\t\t\tindustrial_complex = {}\n", state.GetCivilianFactories());
    state_history << fmt::format("\t\t\tarms_factory = {}\n", state.GetMilitaryFactories());
