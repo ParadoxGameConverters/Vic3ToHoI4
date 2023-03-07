@@ -19,6 +19,7 @@
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
+#include "src/vic3_world/states/state_regions_importer.h"
 #include "src/vic3_world/states/vic3_state.h"
 #include "src/vic3_world/states/vic3_states_importer.h"
 #include "src/vic3_world/technology/vic3_technology_importer.h"
@@ -145,6 +146,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
    commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory, mod_loader.getMods());
    const auto province_definitions = ProvinceDefinitionsLoader().LoadProvinceDefinitions(mod_filesystem);
+   const auto state_regions = ImportStateRegions(mod_filesystem);
    Log(LogLevel::Progress) << "5 %";
 
    Log(LogLevel::Info) << "-> Reading Vic3 save.";
@@ -185,6 +187,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
 
    return World({.countries = countries,
        .states = states,
+       .state_regions = state_regions,
        .province_definitions = province_definitions,
        .acquired_technologies = acquired_technologies});
 }
