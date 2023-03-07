@@ -50,7 +50,8 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
            {1, "pastoral"},
            {2, "rural"},
            {4, "town"}}),
-       default_states);
+       default_states,
+       source_world.GetStateRegions());
 
    strategic_regions.UpdateToMatchNewStates(states.states);
 
