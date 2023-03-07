@@ -73,6 +73,8 @@
     <ClInclude Include="src\vic3_world\countries\vic3_country_importer.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions_loader.h" />
+    <ClInclude Include="src\vic3_world\states\state_region.h" />
+    <ClInclude Include="src\vic3_world\states\state_regions_importer.h" />
     <ClInclude Include="src\vic3_world\states\vic3_state.h" />
     <ClInclude Include="src\vic3_world\states\vic3_states_importer.h" />
     <ClInclude Include="src\vic3_world\states\vic3_state_importer.h" />
@@ -127,6 +129,7 @@
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader.cpp" />
+    <ClCompile Include="src\vic3_world\states\state_regions_importer.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_states_importer.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_state_importer.cpp" />
     <ClCompile Include="src\vic3_world\technology\vic3_technology_importer.cpp" />

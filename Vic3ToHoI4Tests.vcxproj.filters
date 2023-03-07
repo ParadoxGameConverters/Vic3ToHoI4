@@ -249,6 +249,9 @@
     <ClCompile Include="src\hoi4_world\states\default_states_importer_tests.cpp">
       <Filter>src\hoi4_world\states</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\states\state_regions_importer_tests.cpp">
+      <Filter>src\vic3_world\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">

@@ -1,0 +1,43 @@
+﻿STATE_LOMBARDY = {
+    id = 76
+    subsistence_building = "building_subsistence_farms"
+    provinces = { "x3F1E38" "x4713EE" "x50C060" "x70B8A9" "x867A90" "x9AC196" "xA40CE9" "xD04060" }
+    traits = { "state_trait_po_river" "state_trait_alps_mountains" }
+    city = "xD04060"
+    farm = "x867A90"
+    mine = "x3F1E38"
+    wood = "x4713EE"
+    arable_land = 160
+    arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_cotton_plantations" }
+    capped_resources = {
+        bg_iron_mining = 27
+        bg_lead_mining = 19
+        bg_logging = 7
+    }
+    resource = {
+        type = "bg_oil_extraction"
+        undiscovered_amount = 5
+    }
+}
+
+STATE_PIEDMONT = {
+    id = 77
+    subsistence_building = "building_subsistence_farms"
+    provinces = { "x1140E0" "x11C061" "x54728A" "x5F6BAA" "x904061" "x90C060" "xA9397D" "xAA6958" "xACB500" "xD080E0" "xDA86EA" "xF00544" }
+    traits = { "state_trait_po_river" "state_trait_alps_mountains" }
+    city = "xA9397D"
+    port = "x904061"
+    farm = "x11C061"
+    mine = "x1140E0"
+    wood = "xD080E0"
+    arable_land = 140
+    arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_cotton_plantations" }
+    capped_resources = {
+        bg_coal_mining = 28
+        bg_iron_mining = 45
+        bg_lead_mining = 45
+        bg_logging = 8
+        bg_fishing = 6
+    }
+    naval_exit_id = 3032
+}
