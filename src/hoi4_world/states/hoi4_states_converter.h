@@ -22,22 +22,16 @@
 namespace hoi4
 {
 
-class StatesConverter
-{
-  public:
-   States ConvertStates(const std::map<int, vic3::State>& states,
-       const vic3::ProvinceDefinitions& vic3_province_definitions,
-       const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
-       const maps::MapData& map_data,
-       const maps::ProvinceDefinitions& hoi4_province_definitions,
-       const hoi4::StrategicRegions& strategic_regions,
-       const mappers::CountryMapper& country_mapper,
-       const hoi4::StateCategories& state_categories,
-       const std::map<int, DefaultState>& default_states,
-       const std::map<std::string, vic3::StateRegion>& vic3_state_regions);
-
-  private:
-};
+States ConvertStates(const std::map<int, vic3::State>& states,
+    const vic3::ProvinceDefinitions& vic3_province_definitions,
+    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
+    const maps::MapData& map_data,
+    const maps::ProvinceDefinitions& hoi4_province_definitions,
+    const hoi4::StrategicRegions& strategic_regions,
+    const mappers::CountryMapper& country_mapper,
+    const hoi4::StateCategories& state_categories,
+    const std::map<int, DefaultState>& default_states,
+    const std::map<std::string, vic3::StateRegion>& vic3_state_regions);
 
 }  // namespace hoi4
 

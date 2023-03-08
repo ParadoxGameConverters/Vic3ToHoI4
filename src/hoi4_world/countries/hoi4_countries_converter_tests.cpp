@@ -22,8 +22,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
    const vic3::Country source_country_two(
        {.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}, .capital_state = 2});
 
-   CountriesConverter countries_converter;
-   const auto countries = countries_converter.ConvertCountries({{1, source_country_one}, {2, source_country_two}},
+   const auto countries = ConvertCountries({{1, source_country_one}, {2, source_country_two}},
        {
            {1, {"source_technology_one"}},
            {2, {"source_technology_two"}},

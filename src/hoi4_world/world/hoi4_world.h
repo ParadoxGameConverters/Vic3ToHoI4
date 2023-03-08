@@ -7,6 +7,7 @@
 #include <memory>
 #include <string>
 
+#include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/map/buildings.h"
 #include "src/hoi4_world/map/strategic_regions.h"
@@ -17,17 +18,23 @@
 namespace hoi4
 {
 
+struct WorldOptions
+{
+   std::map<std::string, Country> countries;
+   States states;
+   StrategicRegions strategic_regions;
+   Buildings buildings;
+};
+
+
 class World
 {
   public:
-   explicit World(std::map<std::string, Country> countries,
-       States states,
-       StrategicRegions strategic_regions,
-       Buildings buildings):
-       countries_(std::move(countries)),
-       states_(std::move(states)),
-       strategic_regions_(std::move(strategic_regions)),
-       buildings_(std::move(buildings))
+   explicit World(WorldOptions options):
+       countries_(std::move(options.countries)),
+       states_(std::move(options.states)),
+       strategic_regions_(std::move(options.strategic_regions)),
+       buildings_(std::move(options.buildings))
    {
    }
 

@@ -15,21 +15,8 @@
 namespace vic3
 {
 
-class CountriesImporter
-{
-  public:
-   CountriesImporter(const std::map<std::string, commonItems::Color>& color_definitions);
-
-   [[nodiscard]] std::map<int, Country> ImportCountries(std::istream& input_stream);
-
-  private:
-   commonItems::parser countries_parser_;
-   commonItems::parser database_parser_;
-   CountryImporter country_importer_;
-
-   std::map<int, Country> countries_;
-};
-
+[[nodiscard]] std::map<int, Country> ImportCountries(const std::map<std::string, commonItems::Color>& color_definitions,
+    std::istream& input_stream);
 
 }  // namespace vic3
 

@@ -8,8 +8,8 @@
 
 TEST(Hoi4worldMapCoastalProvincesCreatorTests, CoastalProvincesDefaultToEmpty)
 {
-   maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
-   maps::MapData map_data({}, {}, {}, province_definitions, {});
+   const maps::ProvinceDefinitions province_definitions;
+   const maps::MapData map_data({.province_definitions = province_definitions});
    const hoi4::CoastalProvinces coastal_provinces = hoi4::CreateCoastalProvinces(map_data,
        province_definitions.GetLandProvinces(),
        province_definitions.GetSeaProvinces());
@@ -20,8 +20,8 @@ TEST(Hoi4worldMapCoastalProvincesCreatorTests, CoastalProvincesDefaultToEmpty)
 
 TEST(Hoi4worldMapCoastalProvincesCreatorTests, CoastalProvincesAreDetected)
 {
-   maps::ProvinceDefinitions province_definitions({"1"}, {"2"}, {}, {});
-   maps::MapData map_data({{"1", {"2"}}}, {}, {}, province_definitions, {});
+   const maps::ProvinceDefinitions province_definitions({.land_provinces = {"1"}, .sea_provinces = {"2"}});
+   const maps::MapData map_data({.province_neighbors = {{"1", {"2"}}}, .province_definitions = province_definitions});
    const hoi4::CoastalProvinces coastal_provinces = hoi4::CreateCoastalProvinces(map_data,
        province_definitions.GetLandProvinces(),
        province_definitions.GetSeaProvinces());
@@ -33,8 +33,9 @@ TEST(Hoi4worldMapCoastalProvincesCreatorTests, CoastalProvincesAreDetected)
 
 TEST(Hoi4worldMapCoastalProvincesCreatorTests, MultipleConnectingSeaProvincesAreDetected)
 {
-   maps::ProvinceDefinitions province_definitions({"1"}, {"2", "3"}, {}, {});
-   maps::MapData map_data({{"1", {"2", "3"}}}, {}, {}, province_definitions, {});
+   const maps::ProvinceDefinitions province_definitions({.land_provinces = {"1"}, .sea_provinces = {"2", "3"}});
+   const maps::MapData map_data(
+       {.province_neighbors = {{"1", {"2", "3"}}}, .province_definitions = province_definitions});
    const hoi4::CoastalProvinces coastal_provinces = hoi4::CreateCoastalProvinces(map_data,
        province_definitions.GetLandProvinces(),
        province_definitions.GetSeaProvinces());
@@ -46,8 +47,8 @@ TEST(Hoi4worldMapCoastalProvincesCreatorTests, MultipleConnectingSeaProvincesAre
 
 TEST(Hoi4worldMapCoastalProvincesCreatorTests, NeighboringLandProvincesDoNotMakeForCoasts)
 {
-   maps::ProvinceDefinitions province_definitions({"1", "2"}, {}, {}, {});
-   maps::MapData map_data({{"1", {"2"}}}, {}, {}, province_definitions, {});
+   const maps::ProvinceDefinitions province_definitions({.land_provinces = {"1", "2"}});
+   const maps::MapData map_data({.province_neighbors = {{"1", {"2"}}}, .province_definitions = province_definitions});
    const hoi4::CoastalProvinces coastal_provinces = hoi4::CreateCoastalProvinces(map_data,
        province_definitions.GetLandProvinces(),
        province_definitions.GetSeaProvinces());
@@ -58,8 +59,9 @@ TEST(Hoi4worldMapCoastalProvincesCreatorTests, NeighboringLandProvincesDoNotMake
 
 TEST(Hoi4worldMapCoastalProvincesCreatorTests, BadProvinceNamesAreSkipped)
 {
-   maps::ProvinceDefinitions province_definitions({"1", "a"}, {"2", "b"}, {}, {});
-   maps::MapData map_data({{"1", {"2", "b"}}, {"a", {"2", "b"}}}, {}, {}, province_definitions, {});
+   const maps::ProvinceDefinitions province_definitions({.land_provinces = {"1", "a"}, .sea_provinces = {"2", "b"}});
+   const maps::MapData map_data(
+       {.province_neighbors = {{"1", {"2", "b"}}, {"a", {"2", "b"}}}, .province_definitions = province_definitions});
    const hoi4::CoastalProvinces coastal_provinces = hoi4::CreateCoastalProvinces(map_data,
        province_definitions.GetLandProvinces(),
        province_definitions.GetSeaProvinces());

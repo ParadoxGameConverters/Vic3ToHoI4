@@ -7,15 +7,15 @@
 
 
 
-vic3::StatesImporter::StatesImporter()
+std::map<int, vic3::State> vic3::ImportStates(std::istream& input_stream)
 {
-   states_parser_.registerKeyword("database", [this](std::istream& input_stream) {
-      database_parser_.parseStream(input_stream);
-   });
-   states_parser_.IgnoreUnregisteredItems();
+   std::map<int, State> states;
 
-   database_parser_.registerRegex(commonItems::integerRegex,
-       [this](const std::string& number_string, std::istream& input_stream) {
+   StateImporter state_importer;
+
+   commonItems::parser database_parser;
+   database_parser.registerRegex(commonItems::integerRegex,
+       [&state_importer, &states](const std::string& number_string, std::istream& input_stream) {
           const int state_number = std::stoi(number_string);
           const auto state_string = commonItems::stringOfItem(input_stream).getString();
           if (state_string.find("{") == std::string::npos)
@@ -23,14 +23,15 @@ vic3::StatesImporter::StatesImporter()
              return;
           }
           std::istringstream state_stream(state_string);
-          states_.emplace(state_number, state_importer_.ImportState(state_stream));
+          states.emplace(state_number, state_importer.ImportState(state_stream));
        });
-}
 
+   commonItems::parser states_parser;
+   states_parser.registerKeyword("database", [&database_parser](std::istream& input_stream) {
+      database_parser.parseStream(input_stream);
+   });
+   states_parser.IgnoreUnregisteredItems();
 
-std::map<int, vic3::State> vic3::StatesImporter::ImportStates(std::istream& input_stream)
-{
-   states_.clear();
-   states_parser_.parseStream(input_stream);
-   return states_;
+   states_parser.parseStream(input_stream);
+   return states;
 }

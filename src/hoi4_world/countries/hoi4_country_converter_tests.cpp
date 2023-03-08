@@ -17,10 +17,8 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
    const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
    const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
 
-   CountryConverter country_converter;
-
-   const auto country_one = country_converter.ConvertCountry(source_country_one, {}, country_mapper, {}, {});
-   const auto country_two = country_converter.ConvertCountry(source_country_two, {}, country_mapper, {}, {});
+   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {});
+   const auto country_two = ConvertCountry(source_country_two, {}, country_mapper, {}, {});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetTag(), "T00");
@@ -38,9 +36,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
    });
    const vic3::Country source_country_one({});
 
-   CountryConverter country_converter;
-
-   const auto country_one = country_converter.ConvertCountry(source_country_one, {}, country_mapper, {}, {});
+   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {});
 
    EXPECT_EQ(country_one, std::nullopt);
 }
@@ -52,9 +48,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
    const mappers::CountryMapper country_mapper({});
    const vic3::Country source_country_one({.tag = "TAG"});
 
-   CountryConverter country_converter;
-
-   const auto country_one = country_converter.ConvertCountry(source_country_one, {}, country_mapper, {}, {});
+   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {});
 
    EXPECT_EQ(country_one, std::nullopt);
 }
@@ -66,14 +60,12 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
    const vic3::Country source_country_one({.tag = "TAG", .capital_state = 2});
    const vic3::Country source_country_two({.tag = "TWO", .capital_state = 3});
 
-   CountryConverter country_converter;
-
-   std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}, {3, 9}};
+   const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}, {3, 9}};
 
    const auto country_one =
-       country_converter.ConvertCountry(source_country_one, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {});
+       ConvertCountry(source_country_one, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {});
    const auto country_two =
-       country_converter.ConvertCountry(source_country_two, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {});
+       ConvertCountry(source_country_two, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::optional(4));
@@ -89,12 +81,10 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
        .tag = "TAG",
    });
 
-   CountryConverter country_converter;
-
-   std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
+   const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
 
    const auto country_one =
-       country_converter.ConvertCountry(source_country_one, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {});
+       ConvertCountry(source_country_one, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
@@ -106,9 +96,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMapping)
    const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
    const vic3::Country source_country_one({.tag = "TAG", .capital_state = 2});
 
-   CountryConverter country_converter;
-
-   const auto country_one = country_converter.ConvertCountry(source_country_one, {}, country_mapper, {}, {});
+   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
@@ -120,9 +108,7 @@ TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
    const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
    const vic3::Country source_country_one({.tag = "TAG", .capital_state = 2});
 
-   CountryConverter country_converter;
-
-   const auto country_one = country_converter.ConvertCountry(source_country_one,
+   const auto country_one = ConvertCountry(source_country_one,
        {"source_tech"},
        country_mapper,
        {},

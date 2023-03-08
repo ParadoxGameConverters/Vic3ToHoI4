@@ -11,7 +11,7 @@ namespace hoi4
 
 TEST(Hoi4WorldMapStrategicRegionTests, NewProvincesDefaultsToEmpty)
 {
-   const StrategicRegion strategic_region("", 1, "", {}, {}, std::nullopt, "");
+   const StrategicRegion strategic_region({.id = 1});
 
    EXPECT_TRUE(strategic_region.GetNewProvinces().empty());
 }
@@ -19,7 +19,7 @@ TEST(Hoi4WorldMapStrategicRegionTests, NewProvincesDefaultsToEmpty)
 
 TEST(Hoi4WorldMapStrategicRegionTests, NewProvincesCanBeAdded)
 {
-   StrategicRegion strategic_region("", 1, "", {}, {}, std::nullopt, "");
+   StrategicRegion strategic_region({.id = 1});
    strategic_region.AddNewProvince(144);
    strategic_region.AddNewProvince(169);
 

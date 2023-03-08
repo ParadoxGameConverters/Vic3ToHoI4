@@ -24,19 +24,27 @@ using BorderPoints = std::vector<Point>;
 using BordersWith = std::map<std::string, BorderPoints>;
 
 
+struct MapDataOptions
+{
+   std::map<std::string, std::set<std::string>> province_neighbors;
+   std::map<std::string, BordersWith> borders;
+   std::unordered_map<std::string, ProvincePoints> the_province_points;
+
+   ProvinceDefinitions province_definitions;
+   std::map<Point, std::string> points_to_provinces;
+};
+
+
 class MapData
 {
   public:
-   MapData(std::map<std::string, std::set<std::string>> province_neighbors,
-       std::map<std::string, BordersWith> borders,
-       std::unordered_map<std::string, ProvincePoints> the_province_points,
-       ProvinceDefinitions province_definitions,
-       std::map<Point, std::string> points_to_provinces):
-       province_neighbors_(std::move(province_neighbors)),
-       borders_(std::move(borders)),
-       the_province_points_(std::move(the_province_points)),
-       province_definitions_(std::move(province_definitions)),
-       points_to_provinces_(std::move(points_to_provinces))
+   MapData() = default;
+   MapData(MapDataOptions options):
+       province_neighbors_(std::move(options.province_neighbors)),
+       borders_(std::move(options.borders)),
+       the_province_points_(std::move(options.the_province_points)),
+       province_definitions_(std::move(options.province_definitions)),
+       points_to_provinces_(std::move(options.points_to_provinces))
    {
    }
 

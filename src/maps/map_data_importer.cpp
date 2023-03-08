@@ -89,7 +89,11 @@ maps::MapData maps::MapDataImporter::ImportMapData(const commonItems::ModFilesys
    ImportProvinces(mod_filesystem);
    ImportAdjacencies(mod_filesystem);
 
-   return {province_neighbors_, borders_, the_province_points_, province_definitions_, points_to_provinces_};
+   return maps::MapData({.province_neighbors = province_neighbors_,
+       .borders = borders_,
+       .the_province_points = the_province_points_,
+       .province_definitions = province_definitions_,
+       .points_to_provinces = points_to_provinces_});
 }
 
 

@@ -17,7 +17,7 @@ namespace out
 
 TEST(Outhoi4MapStrategicregionsTests, ExceptionForBadPath)
 {
-   EXPECT_THROW(OutputStrategicRegions("ExceptionForBadPath", hoi4::StrategicRegions({}, {})), std::runtime_error);
+   EXPECT_THROW(OutputStrategicRegions("ExceptionForBadPath", hoi4::StrategicRegions()), std::runtime_error);
 }
 
 
@@ -27,7 +27,7 @@ TEST(Outhoi4MapStrategicregionsTests, FolderIsCreated)
    commonItems::TryCreateFolder("output/FolderIsCreated");
    commonItems::TryCreateFolder("output/FolderIsCreated/map");
 
-   const hoi4::StrategicRegions strategic_regions({}, {});
+   const hoi4::StrategicRegions strategic_regions;
 
    OutputStrategicRegions("FolderIsCreated", strategic_regions);
 
@@ -42,9 +42,8 @@ TEST(Outhoi4MapStrategicregionsTests, StrategicRegionsAreOutput)
    commonItems::TryCreateFolder("output/StrategicRegionsAreOutput/map");
 
    const hoi4::StrategicRegions strategic_regions(
-       {{1, hoi4::StrategicRegion("strategic_region_one.txt", 1, "", {}, {}, std::nullopt, "")},
-           {2, hoi4::StrategicRegion("strategic_region_two.txt", 2, "", {}, {}, std::nullopt, "")}},
-       {});
+       {.strategic_regions = {{1, hoi4::StrategicRegion({.filename = "strategic_region_one.txt", .id = 1})},
+            {2, hoi4::StrategicRegion({.filename = "strategic_region_two.txt", .id = 2})}}});
 
    OutputStrategicRegions("StrategicRegionsAreOutput", strategic_regions);
 

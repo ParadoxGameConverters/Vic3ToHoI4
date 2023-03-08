@@ -17,7 +17,7 @@ namespace out
 
 TEST(Outhoi4MapBuildingsTests, ExceptionForBadPath)
 {
-   EXPECT_THROW(OutputBuildings("ExceptionForBadPath", hoi4::Buildings({}, {})), std::runtime_error);
+   EXPECT_THROW(OutputBuildings("ExceptionForBadPath", hoi4::Buildings()), std::runtime_error);
 }
 
 
@@ -28,7 +28,7 @@ TEST(Outhoi4MapBuildingsTests, FilesAreCreated)
    commonItems::TryCreateFolder("output/FilesAreCreated");
    commonItems::TryCreateFolder("output/FilesAreCreated/map");
 
-   OutputBuildings("FilesAreCreated", hoi4::Buildings({}, {}));
+   OutputBuildings("FilesAreCreated", hoi4::Buildings());
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/FilesAreCreated/map/buildings.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/FilesAreCreated/map/airports.txt"));
@@ -43,20 +43,21 @@ TEST(Outhoi4MapBuildingsTests, BuildingsAreOutput)
    commonItems::TryCreateFolder("output/BuildingsAreOutput/map");
 
    OutputBuildings("BuildingsAreOutput",
-       hoi4::Buildings({hoi4::Building(42,
-                            "test_type",
-                            {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25}),
+       hoi4::Buildings(
+           {.buildings = {
+                hoi4::Building({.state_id = 42,
+                    .type = "test_type",
+                    .position =
+                        {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25}}),
+                hoi4::Building({.state_id = 144,
+                    .type = "second_type",
+                    .position = {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
+                    .connecting_sea_province = 145}),
 
-                           hoi4::Building(144,
-                               "second_type",
-                               {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
-                               145),
-
-                           hoi4::Building(169,
-                               "third_type",
-                               {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
-                               170)},
-           {}));
+                hoi4::Building({.state_id = 169,
+                    .type = "third_type",
+                    .position = {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
+                    .connecting_sea_province = 170})}}));
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/BuildingsAreOutput/map/buildings.txt"));
    std::ifstream buildings_file("output/BuildingsAreOutput/map/buildings.txt");
@@ -80,7 +81,7 @@ TEST(Outhoi4MapBuildingsTests, AirportsAreOutput)
    commonItems::TryCreateFolder("output/AirportsAreOutput");
    commonItems::TryCreateFolder("output/AirportsAreOutput/map");
 
-   OutputBuildings("AirportsAreOutput", hoi4::Buildings({}, {{2, 4}, {3, 9}, {4, 16}}));
+   OutputBuildings("AirportsAreOutput", hoi4::Buildings({.airport_locations = {{2, 4}, {3, 9}, {4, 16}}}));
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/AirportsAreOutput/map/airports.txt"));
    std::ifstream airports_file("output/AirportsAreOutput/map/airports.txt");

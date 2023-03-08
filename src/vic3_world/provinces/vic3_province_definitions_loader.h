@@ -15,18 +15,7 @@
 namespace vic3
 {
 
-class ProvinceDefinitionsLoader
-{
-  public:
-   ProvinceDefinitionsLoader();
-
-   [[nodiscard]] ProvinceDefinitions LoadProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem);
-
-  private:
-   commonItems::parser parser_;
-
-   std::vector<std::string> province_definitions_;
-};
+[[nodiscard]] ProvinceDefinitions LoadProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem);
 
 }  // namespace vic3
 

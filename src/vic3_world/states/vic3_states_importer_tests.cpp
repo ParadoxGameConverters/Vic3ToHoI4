@@ -12,7 +12,7 @@ namespace vic3
 TEST(Vic3worldStateVic3statesimporter, NoStatesByDefault)
 {
    std::stringstream input;
-   const auto states = StatesImporter{}.ImportStates(input);
+   const auto states = ImportStates(input);
 
    EXPECT_TRUE(states.empty());
 }
@@ -29,7 +29,7 @@ TEST(Vic3worldStateVic3statesimporter, StatesCanBeImported)
    input << "1={\n";
    input << "\tcountry=144\n";
    input << "}\n";
-   const auto states = StatesImporter{}.ImportStates(input);
+   const auto states = ImportStates(input);
 
    EXPECT_THAT(states,
        testing::UnorderedElementsAre(testing::Pair(0, State({.owner_number = 42})),
@@ -49,7 +49,7 @@ TEST(Vic3worldStateVic3statesimporter, StatesIndexesCanBeSkipped)
    input << "2={\n";
    input << "\tcountry=144\n";
    input << "}\n";
-   const auto states = StatesImporter{}.ImportStates(input);
+   const auto states = ImportStates(input);
 
    EXPECT_THAT(states,
        testing::UnorderedElementsAre(testing::Pair(0, State({.owner_number = 42})),

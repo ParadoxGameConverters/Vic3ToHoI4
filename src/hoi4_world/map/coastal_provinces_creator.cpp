@@ -43,5 +43,5 @@ hoi4::CoastalProvinces hoi4::CreateCoastalProvinces(const maps::MapData& map_dat
       }
    }
 
-   return {coastal_provinces};
+   return CoastalProvinces(coastal_provinces);
 }

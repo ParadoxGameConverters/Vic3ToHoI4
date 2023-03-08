@@ -15,20 +15,7 @@
 namespace vic3
 {
 
-class StatesImporter
-{
-  public:
-   StatesImporter();
-
-   [[nodiscard]] std::map<int, State> ImportStates(std::istream& input_stream);
-
-  private:
-   commonItems::parser states_parser_;
-   commonItems::parser database_parser_;
-   StateImporter state_importer_;
-
-   std::map<int, State> states_;
-};
+[[nodiscard]] std::map<int, State> ImportStates(std::istream& input_stream);
 
 }  // namespace vic3
 
