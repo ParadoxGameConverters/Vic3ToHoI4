@@ -71,6 +71,10 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
        tech_mappings);
 
    commonItems::LocalizationDatabase localizations("english", {});
+   commonItems::LocalizationBlock test_block("test_key", "english");
+   test_block.ModifyLocalization("english", "test_localization");
+   test_block.ModifyLocalization("spanish", "test_esp_localization");
+   localizations.AddOrModifyLocalizationBlock(test_block.GetKey(), test_block);
 
    return World(WorldOptions{.countries = countries,
        .states = states,
