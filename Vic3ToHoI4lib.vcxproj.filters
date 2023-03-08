@@ -312,6 +312,12 @@
     <ClInclude Include="src\hoi4_world\states\default_states_importer.h">
       <Filter>src\hoi4_world\states</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\states\state_region.h">
+      <Filter>src\vic3_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\states\state_regions_importer.h">
+      <Filter>src\vic3_world\states</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -466,6 +472,9 @@
     </ClCompile>
     <ClCompile Include="src\hoi4_world\states\default_states_importer.cpp">
       <Filter>src\hoi4_world\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\states\state_regions_importer.cpp">
+      <Filter>src\vic3_world\states</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

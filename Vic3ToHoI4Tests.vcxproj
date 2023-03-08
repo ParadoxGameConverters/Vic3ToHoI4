@@ -102,6 +102,7 @@
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader_tests.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_tests.cpp" />
+    <ClCompile Include="src\vic3_world\states\state_regions_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_states_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_state_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\technology\vic3_technology_importer_tests.cpp" />

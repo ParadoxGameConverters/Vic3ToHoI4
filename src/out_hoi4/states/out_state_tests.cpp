@@ -295,6 +295,40 @@ TEST(Outhoi4StatesState, OwnerIsOutput)
 }
 
 
+TEST(Outhoi4StatesState, VictoryPointsAreOutput)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/VictoryPointsAreOutput");
+   commonItems::TryCreateFolder("output/VictoryPointsAreOutput/history");
+   commonItems::TryCreateFolder("output/VictoryPointsAreOutput/history/states");
+
+   const hoi4::State state_one(1, {.owner = "TAG", .victory_points = {{1, 1}, {2, 4}, {3, 9}}});
+
+   OutputState("VictoryPointsAreOutput", state_one);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/VictoryPointsAreOutput/history/states/1.txt"));
+   std::ifstream state_file("output/VictoryPointsAreOutput/history/states/1.txt");
+   ASSERT_TRUE(state_file.is_open());
+   std::stringstream state_file_stream;
+   std::copy(std::istreambuf_iterator<char>(state_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream));
+   state_file.close();
+   EXPECT_THAT(state_file_stream.str(),
+       testing::HasSubstr("\t\tvictory_points = {\n"
+                          "\t\t\t1 1\n"
+                          "\t\t}\n"));
+   EXPECT_THAT(state_file_stream.str(),
+       testing::HasSubstr("\t\tvictory_points = {\n"
+                          "\t\t\t2 4\n"
+                          "\t\t}\n"));
+   EXPECT_THAT(state_file_stream.str(),
+       testing::HasSubstr("\t\tvictory_points = {\n"
+                          "\t\t\t3 9\n"
+                          "\t\t}\n"));
+}
+
+
 TEST(Outhoi4StatesState, BuildingsAreOutput)
 {
    commonItems::TryCreateFolder("output");
