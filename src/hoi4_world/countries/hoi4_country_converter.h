@@ -16,10 +16,10 @@ namespace hoi4
 {
 
 std::optional<Country> ConvertCountry(const vic3::Country& source_country,
-       const std::set<std::string>& source_technologies,
-       const mappers::CountryMapper& country_mapper,
-       const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
-       const std::vector<mappers::TechMapping>& tech_mappings);
+    const std::set<std::string>& source_technologies,
+    const mappers::CountryMapper& country_mapper,
+    const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
+    const std::vector<mappers::TechMapping>& tech_mappings);
 
 }  // namespace hoi4
 

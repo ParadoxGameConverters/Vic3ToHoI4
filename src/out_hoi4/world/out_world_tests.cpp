@@ -127,12 +127,10 @@ TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
                .position = {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
                .connecting_sea_province = 170})});
 
-   const hoi4::BuildingsOptions options{ .buildings = buildings_list, .airport_locations = {{2, 4}, {3, 9}, {4, 16}} };
+   const hoi4::BuildingsOptions options{.buildings = buildings_list, .airport_locations = {{2, 4}, {3, 9}, {4, 16}}};
    const hoi4::Buildings buildings(options);
 
-   OutputWorld("BuildingsFileIsCreatedAndOutput",
-       hoi4::World(
-           {.buildings = buildings}));
+   OutputWorld("BuildingsFileIsCreatedAndOutput", hoi4::World({.buildings = buildings}));
 }
 
 }  // namespace out
