@@ -19,7 +19,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
 {
    const vic3::ProvinceDefinitions vic3_province_definitions;
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings;
-   const maps::ProvinceDefinitions hoi4_province_definitions{{}};
+   const maps::ProvinceDefinitions hoi4_province_definitions;
    const maps::MapData map_data({.province_definitions = hoi4_province_definitions});
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
