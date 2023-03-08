@@ -13,9 +13,10 @@ namespace hoi4
 
 TEST(Hoi4WorldMapStrategicRegionsTests, StrategicRegionsCanBeUpdated)
 {
-   StrategicRegions strategic_regions({{42, StrategicRegion("", 42, "", {144, 169}, {}, std::nullopt, "")},
-                                          {76, StrategicRegion("", 76, "", {76, 42}, {}, std::nullopt, "")}},
-       {{144, 42}, {169, 42}, {76, 76}, {42, 76}});
+   StrategicRegions strategic_regions(
+       {.strategic_regions = {{42, StrategicRegion({.id = 42, .old_provinces = {144, 169}})},
+            {76, StrategicRegion({.id = 76, .old_provinces = {76, 42}})}},
+           .province_to_strategic_region_map = {{144, 42}, {169, 42}, {76, 76}, {42, 76}}});
 
    strategic_regions.UpdateToMatchNewStates({State(1, {.provinces = {144}}), State(2, {.provinces = {169, 42, 76}})});
 
@@ -41,9 +42,10 @@ TEST(Hoi4WorldMapStrategicRegionsTests, StrategicRegionsCanBeUpdated)
 
 TEST(Hoi4WorldMapStrategicRegionsTests, LeftoverProvincesAreAddedBackToOriginalRegions)
 {
-   StrategicRegions strategic_regions({{42, StrategicRegion("", 42, "", {144, 169}, {}, std::nullopt, "")},
-                                          {76, StrategicRegion("", 76, "", {76, 42}, {}, std::nullopt, "")}},
-       {{144, 42}, {169, 42}, {76, 76}, {42, 76}});
+   StrategicRegions strategic_regions(
+       {.strategic_regions = {{42, StrategicRegion({.id = 42, .old_provinces = {144, 169}})},
+            {76, StrategicRegion({.id = 76, .old_provinces = {76, 42}})}},
+           .province_to_strategic_region_map = {{144, 42}, {169, 42}, {76, 76}, {42, 76}}});
 
    strategic_regions.UpdateToMatchNewStates({});
 
@@ -63,7 +65,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, LeftoverProvincesAreAddedBackToOriginalR
 
 TEST(Hoi4WorldMapStrategicRegionsTests, ProvincesInNoRegionAreLogged)
 {
-   StrategicRegions strategic_regions({}, {});
+   StrategicRegions strategic_regions;
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -79,7 +81,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, ProvincesInNoRegionAreLogged)
 
 TEST(Hoi4WorldMapStrategicRegionsTests, DesynchronizedInternalsCauseLogging)
 {
-   StrategicRegions strategic_regions({}, {{144, 42}, {169, 42}, {76, 76}, {42, 76}});
+   StrategicRegions strategic_regions({.province_to_strategic_region_map = {{144, 42}, {169, 42}, {76, 76}, {42, 76}}});
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();

@@ -145,7 +145,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
 
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
    commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory, mod_loader.getMods());
-   const auto province_definitions = ProvinceDefinitionsLoader().LoadProvinceDefinitions(mod_filesystem);
+   const auto province_definitions = LoadProvinceDefinitions(mod_filesystem);
    const auto state_regions = ImportStateRegions(mod_filesystem);
    Log(LogLevel::Progress) << "5 %";
 
@@ -154,21 +154,19 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    std::istringstream save_stream = MeltSave(save, save_string);
 
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
-   StatesImporter states_importer;
    std::map<int, State> states;
 
    const std::map<std::string, commonItems::Color> color_definitions = ImportCountryColorDefinitions(mod_filesystem);
-   CountriesImporter countries_importer(color_definitions);
    std::map<int, Country> countries;
 
    std::map<int, std::set<std::string>> acquired_technologies;
 
    commonItems::parser save_parser;
-   save_parser.registerKeyword("country_manager", [&countries, &countries_importer](std::istream& input_stream) {
-      countries = countries_importer.ImportCountries(input_stream);
+   save_parser.registerKeyword("country_manager", [&countries, color_definitions](std::istream& input_stream) {
+      countries = ImportCountries(color_definitions, input_stream);
    });
-   save_parser.registerKeyword("states", [&states, &states_importer](std::istream& input_stream) {
-      states = states_importer.ImportStates(input_stream);
+   save_parser.registerKeyword("states", [&states](std::istream& input_stream) {
+      states = ImportStates(input_stream);
    });
    save_parser.registerKeyword("technology", [&acquired_technologies](std::istream& input_stream) {
       acquired_technologies = ImportAcquiredTechnologies(input_stream);

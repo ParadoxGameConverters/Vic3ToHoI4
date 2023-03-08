@@ -14,7 +14,9 @@ namespace hoi4
 class CoastalProvinces
 {
   public:
-   CoastalProvinces(std::map<int, std::vector<int>> coastal_provinces): coastal_provinces_(std::move(coastal_provinces))
+   CoastalProvinces() = default;
+   explicit CoastalProvinces(std::map<int, std::vector<int>> coastal_provinces):
+       coastal_provinces_(std::move(coastal_provinces))
    {
    }
 

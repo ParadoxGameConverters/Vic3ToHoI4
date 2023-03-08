@@ -14,17 +14,26 @@
 namespace maps
 {
 
+struct ProvinceDefinitionsOptions
+{
+   std::set<std::string> land_provinces;
+   std::set<std::string> sea_provinces;
+   std::map<std::string, std::string> terrain_types;
+   // colors are a packed integer to work around some issues. If you can get colors to work directly, please replace
+   // this hack.
+   std::map<int, std::string> color_to_province_map;
+};
+
+
 class ProvinceDefinitions
 {
   public:
-   ProvinceDefinitions(std::set<std::string> land_provinces,
-       std::set<std::string> sea_provinces,
-       std::map<std::string, std::string> terrain_types,
-       std::map<int, std::string> color_to_province_map):
-       land_provinces_(std::move(land_provinces)),
-       sea_provinces_(std::move(sea_provinces)),
-       terrain_types_(terrain_types),
-       color_to_province_map_(std::move(color_to_province_map))
+   ProvinceDefinitions() = default;
+   ProvinceDefinitions(ProvinceDefinitionsOptions options):
+       land_provinces_(std::move(options.land_provinces)),
+       sea_provinces_(std::move(options.sea_provinces)),
+       terrain_types_(options.terrain_types),
+       color_to_province_map_(std::move(options.color_to_province_map))
    {
    }
 

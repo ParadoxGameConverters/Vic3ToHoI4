@@ -33,8 +33,7 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
    const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem);
    const std::map<int, DefaultState> default_states = hoi4::ImportDefaultStates(hoi4_mod_filesystem);
 
-   StatesConverter states_converter;
-   States states = states_converter.ConvertStates(source_world.GetStates(),
+   States states = ConvertStates(source_world.GetStates(),
        source_world.GetProvinceDefinitions(),
        province_mapper.GetHoi4ToVic3ProvinceMappings(),
        map_data,
@@ -65,12 +64,14 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
 
    const std::vector<mappers::TechMapping> tech_mappings = mappers::ImportTechMappings();
 
-   CountriesConverter countries_converter;
-   countries = countries_converter.ConvertCountries(source_world.GetCountries(),
+   countries = ConvertCountries(source_world.GetCountries(),
        source_world.GetAcquiredTechnologies(),
        country_mapper,
        states.vic3_state_ids_to_hoi4_state_ids,
        tech_mappings);
 
-   return World(countries, states, strategic_regions, buildings);
+   return World(WorldOptions{.countries = countries,
+       .states = states,
+       .strategic_regions = strategic_regions,
+       .buildings = buildings});
 }

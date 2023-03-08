@@ -28,40 +28,40 @@ TEST(Hoi4WorldMapStrategicRegionsImporter, StrategicRegionsCanBeImported)
 
    EXPECT_THAT(strategic_regions.GetStrategicRegions(),
        testing::UnorderedElementsAre(testing::Pair(42,
-           StrategicRegion("test_strategic_region.txt",
-               42,
-               "STRATEGICREGION_42",
-               {144, 169},
-               {{"test_modifier", "always"}, {"test_modifier_two", "always"}},
-               "test_naval_terrain",
-               "= {\n"
-               "\t\tperiod={\n"
-               "\t\t\tbetween={ 0.0 30.0 }\n"
-               "\t\t\ttemperature={ -6.0 12.0 }\n"
-               "\t\t\tno_phenomenon=0.500\n"
-               "\t\t\train_light=1.000\n"
-               "\t\t\train_heavy=0.150\n"
-               "\t\t\tsnow=0.200\n"
-               "\t\t\tblizzard=0.000\n"
-               "\t\t\tarctic_water=0.000\n"
-               "\t\t\tmud=0.300\n"
-               "\t\t\tsandstorm=0.000\n"
-               "\t\t\tmin_snow_level=0.000\n"
-               "\t\t}\n"
-               "\t\tperiod={\n"
-               "\t\t\tbetween={ 0.1 27.1 }\n"
-               "\t\t\ttemperature={ -7.0 12.0 }\n"
-               "\t\t\tno_phenomenon=0.500\n"
-               "\t\t\train_light=1.000\n"
-               "\t\t\train_heavy=0.150\n"
-               "\t\t\tsnow=0.200\n"
-               "\t\t\tblizzard=0.050\n"
-               "\t\t\tarctic_water=0.000\n"
-               "\t\t\tmud=0.300\n"
-               "\t\t\tsandstorm=0.000\n"
-               "\t\t\tmin_snow_level=0.000\n"
-               "\t\t}\n"
-               "\t}"))));
+           StrategicRegion({.filename = "test_strategic_region.txt",
+               .id = 42,
+               .name = "STRATEGICREGION_42",
+               .old_provinces = {144, 169},
+               .static_modifiers = {{"test_modifier", "always"}, {"test_modifier_two", "always"}},
+               .naval_terrain = "test_naval_terrain",
+               .weather = "= {\n"
+                          "\t\tperiod={\n"
+                          "\t\t\tbetween={ 0.0 30.0 }\n"
+                          "\t\t\ttemperature={ -6.0 12.0 }\n"
+                          "\t\t\tno_phenomenon=0.500\n"
+                          "\t\t\train_light=1.000\n"
+                          "\t\t\train_heavy=0.150\n"
+                          "\t\t\tsnow=0.200\n"
+                          "\t\t\tblizzard=0.000\n"
+                          "\t\t\tarctic_water=0.000\n"
+                          "\t\t\tmud=0.300\n"
+                          "\t\t\tsandstorm=0.000\n"
+                          "\t\t\tmin_snow_level=0.000\n"
+                          "\t\t}\n"
+                          "\t\tperiod={\n"
+                          "\t\t\tbetween={ 0.1 27.1 }\n"
+                          "\t\t\ttemperature={ -7.0 12.0 }\n"
+                          "\t\t\tno_phenomenon=0.500\n"
+                          "\t\t\train_light=1.000\n"
+                          "\t\t\train_heavy=0.150\n"
+                          "\t\t\tsnow=0.200\n"
+                          "\t\t\tblizzard=0.050\n"
+                          "\t\t\tarctic_water=0.000\n"
+                          "\t\t\tmud=0.300\n"
+                          "\t\t\tsandstorm=0.000\n"
+                          "\t\t\tmin_snow_level=0.000\n"
+                          "\t\t}\n"
+                          "\t}"}))));
    EXPECT_THAT(strategic_regions.GetProvinceToStrategicRegionMap(),
        testing::UnorderedElementsAre(testing::Pair(144, 42), testing::Pair(169, 42)));
 }

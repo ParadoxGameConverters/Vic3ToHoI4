@@ -38,19 +38,19 @@ void ImportDefaultBuilding(const std::smatch& matches, const maps::MapData& map_
    try
    {
       hoi4::BuildingPosition position;
-      position.x_coordinate = stof(matches[3].str());
-      position.y_coordinate = stof(matches[4].str());
-      position.z_coordinate = stof(matches[5].str());
-      position.rotation = stof(matches[6].str());
+      position.x_coordinate = stod(matches[3].str());
+      position.y_coordinate = stod(matches[4].str());
+      position.z_coordinate = stod(matches[5].str());
+      position.rotation = stod(matches[6].str());
 
-      auto connectingSeaProvince = stoi(matches[7].str());
+      auto connecting_sea_province = stoi(matches[7].str());
 
-      if (auto province_name = map_data.GetProvinceName(
+      if (const auto province_name = map_data.GetProvinceName(
               {static_cast<int>(position.x_coordinate), static_cast<int>(position.z_coordinate)});
           province_name)
       {
          int province_number = stoi(*province_name);
-         const auto key = std::make_pair(province_number, connectingSeaProvince);
+         const auto key = std::make_pair(province_number, connecting_sea_province);
          positions[key] = position;
       }
    }
@@ -163,10 +163,11 @@ void PlaceBuildingType(const std::vector<hoi4::State>& states,
          if (auto possible_building = default_buildings.find(std::make_pair(the_province, 0));
              possible_building != default_buildings.end())
          {
-            int state_id = state.GetId();
+            const int state_id = state.GetId();
 
-            auto position = possible_building->second;
-            buildings.emplace_back(hoi4::Building(state_id, std::string(building_type), position));
+            const auto position = possible_building->second;
+            buildings.emplace_back(
+                hoi4::Building({.state_id = state_id, .type = std::string(building_type), .position = position}));
             num_placed++;
 
             if (num_placed >= number_to_place)
@@ -184,7 +185,7 @@ void PlaceBuildingType(const std::vector<hoi4::State>& states,
          }
 
          int state_id = state.GetId();
-         if (auto province_points = map_data.GetProvincePoints(std::to_string(province)); province_points)
+         if (const auto province_points = map_data.GetProvincePoints(std::to_string(province)); province_points)
          {
             const auto centermost_point = province_points->GetCentermostPoint();
             hoi4::BuildingPosition position;
@@ -193,7 +194,8 @@ void PlaceBuildingType(const std::vector<hoi4::State>& states,
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
 
-            buildings.emplace_back(hoi4::Building(state_id, std::string(building_type), position));
+            buildings.emplace_back(
+                hoi4::Building({.state_id = state_id, .type = std::string(building_type), .position = position}));
             num_placed++;
          }
          else
@@ -227,7 +229,7 @@ void AddBunker(int state_id,
 
    if (position_unset)
    {
-      auto possible_position = map_data.GetAnyBorderCenter(std::to_string(province));
+      const auto possible_position = map_data.GetAnyBorderCenter(std::to_string(province));
       if (!possible_position)
       {
          Log(LogLevel::Warning) << fmt::format(
@@ -243,7 +245,7 @@ void AddBunker(int state_id,
       position.rotation = 0.0;
    }
 
-   buildings.emplace_back(hoi4::Building(state_id, "bunker", position));
+   buildings.emplace_back(hoi4::Building({.state_id = state_id, .type = "bunker", .position = position}));
 }
 
 
@@ -252,7 +254,7 @@ void PlaceBunkers(const std::vector<hoi4::State>& states,
     const DefaultPositions& default_bunkers,
     std::vector<hoi4::Building>& buildings)
 {
-   for (const auto state: states)
+   for (const auto& state: states)
    {
       for (const auto& province: state.GetProvinces())
       {
@@ -297,7 +299,7 @@ void AddCoastalBunker(int state_id,
       position.rotation = 0.0;
    }
 
-   buildings.emplace_back(hoi4::Building(state_id, "coastal_bunker", position));
+   buildings.emplace_back(hoi4::Building({.state_id = state_id, .type = "coastal_bunker", .position = position}));
 }
 
 
@@ -338,8 +340,8 @@ void PlaceDockyards(const std::vector<hoi4::State>& states,
          if (auto possible_dockyard = default_dockyards.find(std::make_pair(province, 0));
              possible_dockyard != default_dockyards.end())
          {
-            auto position = possible_dockyard->second;
-            buildings.emplace_back(hoi4::Building(state_id, "dockyard", position));
+            const auto position = possible_dockyard->second;
+            buildings.emplace_back(hoi4::Building({.state_id = state_id, .type = "dockyard", .position = position}));
             dockyard_placed = true;
             break;
          }
@@ -361,26 +363,24 @@ void PlaceDockyards(const std::vector<hoi4::State>& states,
             continue;
          }
 
-         auto centermost_point = map_data.GetSpecifiedBorderCenter(std::to_string(*the_province),
-             std::to_string(connecting_sea_provinces->second[0]));
-         if (centermost_point)
+         if (const auto centermost_point = map_data.GetSpecifiedBorderCenter(std::to_string(*the_province),
+                 std::to_string(connecting_sea_provinces->second[0]));
+             centermost_point)
          {
             hoi4::BuildingPosition position;
             position.x_coordinate = centermost_point->x;
             position.y_coordinate = 11.0;
             position.z_coordinate = centermost_point->y;
             position.rotation = 0;
-            buildings.emplace_back(hoi4::Building(state_id, "dockyard", position));
+            buildings.emplace_back(hoi4::Building({.state_id = state_id, .type = "dockyard", .position = position}));
             dockyard_placed = true;
             break;
          }
-         else
-         {
-            Log(LogLevel::Warning) << fmt::format(
-                "Province {} did not have any points. Dockyard may not be set in state {}.",
-                *the_province,
-                state_id);
-         }
+
+         Log(LogLevel::Warning) << fmt::format(
+             "Province {} did not have any points. Dockyard may not be set in state {}.",
+             *the_province,
+             state_id);
       }
    }
 }
@@ -414,7 +414,7 @@ void AddFloatingHarbors(int state_id,
    if (position_unset)
    {
       connecting_sea_province = province.first;
-      auto possible_position =
+      const auto possible_position =
           map_data.GetSpecifiedBorderCenter(std::to_string(province.second[0]), std::to_string(province.first));
       if (!possible_position)
       {
@@ -429,7 +429,10 @@ void AddFloatingHarbors(int state_id,
       position.rotation = 0.0;
    }
 
-   buildings.emplace_back(hoi4::Building(state_id, "floating_harbor", position, connecting_sea_province));
+   buildings.emplace_back(hoi4::Building({.state_id = state_id,
+       .type = "floating_harbor",
+       .position = position,
+       .connecting_sea_province = connecting_sea_province}));
 }
 
 
@@ -479,7 +482,7 @@ void AddNavalBase(int state_id,
    if (position_unset)
    {
       connecting_sea_province = province.second[0];
-      auto possible_position =
+      const auto possible_position =
           map_data.GetSpecifiedBorderCenter(std::to_string(province.first), std::to_string(province.second[0]));
       if (!possible_position)
       {
@@ -496,7 +499,10 @@ void AddNavalBase(int state_id,
       position.rotation = 0.0;
    }
 
-   buildings.emplace_back(hoi4::Building(state_id, "naval_base", position, connecting_sea_province));
+   buildings.emplace_back(hoi4::Building({.state_id = state_id,
+       .type = "naval_base",
+       .position = position,
+       .connecting_sea_province = connecting_sea_province}));
 }
 
 
@@ -539,7 +545,7 @@ void AddSupplyNodes(int state_id,
 
    if (position_unset)
    {
-      auto possible_position = map_data.GetAnyBorderCenter(std::to_string(province));
+      const auto possible_position = map_data.GetAnyBorderCenter(std::to_string(province));
       if (!possible_position)
       {
          Log(LogLevel::Warning) << fmt::format(
@@ -555,7 +561,7 @@ void AddSupplyNodes(int state_id,
       position.rotation = 0.0;
    }
 
-   buildings.emplace_back(hoi4::Building(state_id, "supply_node", position));
+   buildings.emplace_back(hoi4::Building({.state_id = state_id, .type = "supply_node", .position = position}));
 }
 
 
@@ -586,9 +592,9 @@ std::map<int, int> RecordAirportLocations(const maps::MapData& map_data, std::ve
       }
 
       const hoi4::BuildingPosition position = building.GetPosition();
-      const auto name =
-          map_data.GetProvinceName({static_cast<int>(position.x_coordinate), static_cast<int>(position.z_coordinate)});
-      if (name)
+      if (const auto name = map_data.GetProvinceName(
+              {static_cast<int>(position.x_coordinate), static_cast<int>(position.z_coordinate)});
+          name)
       {
          try
          {
@@ -667,9 +673,9 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        1,
        buildings);
 
-   std::map<int, int> airport_locations = RecordAirportLocations(map_data, buildings);
+   const std::map<int, int> airport_locations = RecordAirportLocations(map_data, buildings);
 
-   return {buildings, airport_locations};
+   return hoi4::Buildings({.buildings = buildings, .airport_locations = airport_locations});
 }
 
 }  // namespace

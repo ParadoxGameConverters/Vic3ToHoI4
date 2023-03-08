@@ -51,11 +51,11 @@ hoi4::StrategicRegion hoi4::StrategicRegionImporter::ImportStrategicRegion(std::
 
    state_region_parser_.parseFile(filename);
 
-   return StrategicRegion(trimPath(std::string(filename)),
-       id_,
-       name_,
-       old_provinces_,
-       static_modifiers_,
-       naval_terrain_,
-       weather_);
+   return StrategicRegion(StrategicRegionOptions{.filename = trimPath(std::string(filename)),
+       .id = id_,
+       .name = name_,
+       .old_provinces = old_provinces_,
+       .static_modifiers = static_modifiers_,
+       .naval_terrain = naval_terrain_,
+       .weather = weather_});
 }

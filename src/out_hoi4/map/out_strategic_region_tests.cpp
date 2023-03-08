@@ -17,7 +17,7 @@ namespace out
 
 TEST(Outhoi4MapStrategicregionTests, ExceptionWhenFileNotOpened)
 {
-   const hoi4::StrategicRegion strategic_region_one("", 1, "", {}, {}, std::nullopt, "");
+   const hoi4::StrategicRegion strategic_region_one({.id = 1});
 
    EXPECT_THROW(OutputStrategicRegion("ExceptionWhenFileNotOpened", strategic_region_one), std::runtime_error);
 }
@@ -30,8 +30,8 @@ TEST(Outhoi4MapStrategicregionTests, FileIsFromFilename)
    commonItems::TryCreateFolder("output/FileIsFromFilename/map");
    commonItems::TryCreateFolder("output/FileIsFromFilename/map/strategicregions");
 
-   const hoi4::StrategicRegion strategic_region_one("strategic_region_one.txt", 1, "", {}, {}, std::nullopt, "");
-   const hoi4::StrategicRegion strategic_region_two("strategic_region_two.txt", 2, "", {}, {}, std::nullopt, "");
+   const hoi4::StrategicRegion strategic_region_one({.filename = "strategic_region_one.txt", .id = 1});
+   const hoi4::StrategicRegion strategic_region_two({.filename = "strategic_region_two.txt", .id = 2});
 
    OutputStrategicRegion("FileIsFromFilename", strategic_region_one);
    OutputStrategicRegion("FileIsFromFilename", strategic_region_two);
@@ -48,7 +48,7 @@ TEST(Outhoi4MapStrategicregionTests, BasicsAreOutput)
    commonItems::TryCreateFolder("output/BasicsAreOutput/map");
    commonItems::TryCreateFolder("output/BasicsAreOutput/map/strategicregions");
 
-   const hoi4::StrategicRegion strategic_region_one("strategic_region_one.txt", 1, "", {}, {}, std::nullopt, "");
+   const hoi4::StrategicRegion strategic_region_one({.filename = "strategic_region_one.txt", .id = 1});
 
    OutputStrategicRegion("BasicsAreOutput", strategic_region_one);
 
@@ -80,7 +80,7 @@ TEST(Outhoi4MapStrategicregionTests, IdIsOutput)
    commonItems::TryCreateFolder("output/IdIsOutput/map");
    commonItems::TryCreateFolder("output/IdIsOutput/map/strategicregions");
 
-   const hoi4::StrategicRegion strategic_region_one("strategic_region_one.txt", 42, "", {}, {}, std::nullopt, "");
+   const hoi4::StrategicRegion strategic_region_one({.filename = "strategic_region_one.txt", .id = 42});
 
    OutputStrategicRegion("IdIsOutput", strategic_region_one);
 
@@ -112,8 +112,8 @@ TEST(Outhoi4MapStrategicregionTests, NameIsOutput)
    commonItems::TryCreateFolder("output/NameIsOutput/map");
    commonItems::TryCreateFolder("output/NameIsOutput/map/strategicregions");
 
-   const hoi4::StrategicRegion
-       strategic_region_one("strategic_region_one.txt", 1, "strategic_region_name", {}, {}, std::nullopt, "");
+   const hoi4::StrategicRegion strategic_region_one(
+       {.filename = "strategic_region_one.txt", .id = 1, .name = "strategic_region_name"});
 
    OutputStrategicRegion("NameIsOutput", strategic_region_one);
 
@@ -145,7 +145,8 @@ TEST(Outhoi4MapStrategicregionTests, OldProvincesAreNotOutput)
    commonItems::TryCreateFolder("output/OldProvincesAreNotOutput/map");
    commonItems::TryCreateFolder("output/OldProvincesAreNotOutput/map/strategicregions");
 
-   const hoi4::StrategicRegion strategic_region_one("strategic_region_one.txt", 1, "", {42, 144}, {}, std::nullopt, "");
+   const hoi4::StrategicRegion strategic_region_one(
+       {.filename = "strategic_region_one.txt", .id = 1, .old_provinces = {42, 144}});
 
    OutputStrategicRegion("OldProvincesAreNotOutput", strategic_region_one);
 
@@ -178,7 +179,7 @@ TEST(Outhoi4MapStrategicregionTests, NewProvincesAreOutput)
    commonItems::TryCreateFolder("output/NewProvincesAreOutput/map");
    commonItems::TryCreateFolder("output/NewProvincesAreOutput/map/strategicregions");
 
-   hoi4::StrategicRegion strategic_region_one("strategic_region_one.txt", 1, "", {}, {}, std::nullopt, "");
+   hoi4::StrategicRegion strategic_region_one({.filename = "strategic_region_one.txt", .id = 1});
    strategic_region_one.AddNewProvince(144);
    strategic_region_one.AddNewProvince(169);
 
@@ -213,13 +214,9 @@ TEST(Outhoi4MapStrategicregionTests, StaticModifiersAreOutput)
    commonItems::TryCreateFolder("output/StaticModifiersAreOutput/map");
    commonItems::TryCreateFolder("output/StaticModifiersAreOutput/map/strategicregions");
 
-   const hoi4::StrategicRegion strategic_region_one("strategic_region_one.txt",
-       1,
-       "",
-       {},
-       {{"static_modifer_one", "always"}, {"static_modifier_two", "never"}},
-       std::nullopt,
-       "");
+   const hoi4::StrategicRegion strategic_region_one({.filename = "strategic_region_one.txt",
+       .id = 1,
+       .static_modifiers{{"static_modifer_one", "always"}, {"static_modifier_two", "never"}}});
 
    OutputStrategicRegion("StaticModifiersAreOutput", strategic_region_one);
 
@@ -257,8 +254,8 @@ TEST(Outhoi4MapStrategicregionTests, NavalTerrainIsOutput)
    commonItems::TryCreateFolder("output/NavalTerrainIsOutput/map");
    commonItems::TryCreateFolder("output/NavalTerrainIsOutput/map/strategicregions");
 
-   const hoi4::StrategicRegion
-       strategic_region_one("strategic_region_one.txt", 1, "", {}, {}, "test_naval_terrain", "");
+   const hoi4::StrategicRegion strategic_region_one(
+       {.filename = "strategic_region_one.txt", .id = 1, .naval_terrain = "test_naval_terrain"});
 
    OutputStrategicRegion("NavalTerrainIsOutput", strategic_region_one);
 
@@ -291,17 +288,13 @@ TEST(Outhoi4MapStrategicregionTests, WeatherIsOutput)
    commonItems::TryCreateFolder("output/WeatherIsOutput/map");
    commonItems::TryCreateFolder("output/WeatherIsOutput/map/strategicregions");
 
-   const hoi4::StrategicRegion strategic_region_one("strategic_region_one.txt",
-       1,
-       "",
-       {},
-       {},
-       std::nullopt,
-       "={\n"
-       "\t\tfoo={\n"
-       "\t\t\tbar=baz\n"
-       "\t\t}\n"
-       "\t}");
+   const hoi4::StrategicRegion strategic_region_one({.filename = "strategic_region_one.txt",
+       .id = 1,
+       .weather = "={\n"
+                  "\t\tfoo={\n"
+                  "\t\t\tbar=baz\n"
+                  "\t\t}\n"
+                  "\t}"});
 
    OutputStrategicRegion("WeatherIsOutput", strategic_region_one);
 

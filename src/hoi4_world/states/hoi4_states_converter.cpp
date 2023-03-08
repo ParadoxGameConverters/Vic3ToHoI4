@@ -601,7 +601,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 }  // namespace
 
 
-hoi4::States hoi4::StatesConverter::ConvertStates(const std::map<int, vic3::State>& states,
+hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
     const vic3::ProvinceDefinitions& vic3_province_definitions,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
     const maps::MapData& map_data,

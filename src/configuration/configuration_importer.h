@@ -13,17 +13,7 @@
 namespace configuration
 {
 
-class ConfigurationImporter
-{
-  public:
-   ConfigurationImporter();
-
-   [[nodiscard]] Configuration ImportConfiguration(std::string_view configuration_file);
-
-  private:
-   commonItems::parser configuration_parser_;
-   Configuration configuration_;
-};
+[[nodiscard]] Configuration ImportConfiguration(std::string_view configuration_file);
 
 }  // namespace configuration
 

@@ -18,7 +18,7 @@ namespace hoi4
 
 TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
 {
-   const mappers::CountryMapper country_mapper({});
+   const mappers::CountryMapper country_mapper;
    const vic3::World source_world(vic3::WorldOptions{});
 
    mappers::ProvinceMapper province_mapper{{}, {}};
@@ -114,7 +114,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
 
 TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 {
-   const mappers::CountryMapper country_mapper({});
+   const mappers::CountryMapper country_mapper;
 
    const auto province_definitions =
        vic3::ProvinceDefinitions({"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
@@ -211,7 +211,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 
 TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 {
-   const mappers::CountryMapper country_mapper({});
+   const mappers::CountryMapper country_mapper;
 
    const auto province_definitions = vic3::ProvinceDefinitions(
        {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006", "0x000007", "0x000008"});

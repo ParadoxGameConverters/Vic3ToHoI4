@@ -13,12 +13,20 @@
 namespace hoi4
 {
 
+struct BuildingsOptions
+{
+   std::vector<Building> buildings;
+   std::map<int, int> airport_locations;
+};
+
+
 class Buildings
 {
   public:
-   Buildings(std::vector<Building> buildings, std::map<int, int> airport_locations):
-       buildings_(std::move(buildings)),
-       airport_locations_(std::move(airport_locations))
+   Buildings() = default;
+   Buildings(BuildingsOptions options):
+       buildings_(std::move(options.buildings)),
+       airport_locations_(std::move(options.airport_locations))
    {
    }
 

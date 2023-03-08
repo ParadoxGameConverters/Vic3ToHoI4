@@ -4,8 +4,7 @@
 
 
 
-std::map<std::string, hoi4::Country> hoi4::CountriesConverter::ConvertCountries(
-    const std::map<int, vic3::Country>& source_countries,
+std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, vic3::Country>& source_countries,
     const std::map<int, std::set<std::string>>& source_technologies,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
@@ -22,7 +21,7 @@ std::map<std::string, hoi4::Country> hoi4::CountriesConverter::ConvertCountries(
          source_country_technologies = source_technologies_itr->second;
       }
 
-      std::optional<Country> new_country = country_converter_.ConvertCountry(source_country,
+      std::optional<Country> new_country = ConvertCountry(source_country,
           source_country_technologies,
           country_mapper,
           vic3_state_ids_to_hoi4_state_ids,

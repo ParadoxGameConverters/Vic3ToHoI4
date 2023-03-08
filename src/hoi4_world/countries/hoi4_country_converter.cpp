@@ -4,7 +4,7 @@
 
 
 
-std::optional<hoi4::Country> hoi4::CountryConverter::ConvertCountry(const vic3::Country& source_country,
+std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_country,
     const std::set<std::string>& source_technologies,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,

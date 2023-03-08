@@ -14,13 +14,19 @@
 namespace hoi4
 {
 
+struct StrategicRegionsOptions
+{
+   std::map<int, StrategicRegion> strategic_regions;
+   std::map<int, int> province_to_strategic_region_map;
+};
+
 class StrategicRegions
 {
   public:
-   StrategicRegions(std::map<int, StrategicRegion> strategic_regions,
-       std::map<int, int> province_to_strategic_region_map):
-       strategic_regions_(std::move(strategic_regions)),
-       province_to_strategic_region_map_(std::move(province_to_strategic_region_map))
+   StrategicRegions() = default;
+   explicit StrategicRegions(StrategicRegionsOptions options):
+       strategic_regions_(std::move(options.strategic_regions)),
+       province_to_strategic_region_map_(std::move(options.province_to_strategic_region_map))
    {
    }
 

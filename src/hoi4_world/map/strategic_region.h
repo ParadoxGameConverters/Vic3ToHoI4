@@ -14,23 +14,29 @@
 namespace hoi4
 {
 
+struct StrategicRegionOptions
+{
+   std::string filename;
+   int id = 0;
+   std::string name;
+   std::vector<int> old_provinces;
+   std::map<std::string, std::string> static_modifiers;
+   std::optional<std::string> naval_terrain;
+   std::string weather;
+};
+
+
 class StrategicRegion
 {
   public:
-   explicit StrategicRegion(std::string filename,
-       int id,
-       std::string name,
-       std::vector<int> old_provinces,
-       std::map<std::string, std::string> static_modifiers,
-       std::optional<std::string> naval_terrain,
-       std::string weather):
-       filename_(std::move(filename)),
-       id_(id),
-       name_(std::move(name)),
-       old_provinces_(std::move(old_provinces)),
-       static_modifiers_(std::move(static_modifiers)),
-       naval_terrain_(std::move(naval_terrain)),
-       weather_(std::move(weather))
+   explicit StrategicRegion(StrategicRegionOptions options):
+       filename_(std::move(options.filename)),
+       id_(options.id),
+       name_(std::move(options.name)),
+       old_provinces_(std::move(options.old_provinces)),
+       static_modifiers_(std::move(options.static_modifiers)),
+       naval_terrain_(std::move(options.naval_terrain)),
+       weather_(std::move(options.weather))
    {
    }
 

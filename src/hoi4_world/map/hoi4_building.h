@@ -13,17 +13,23 @@
 namespace hoi4
 {
 
+struct BuildingOptions
+{
+   int state_id = 0;
+   std::string type;
+   BuildingPosition position;
+   std::optional<int> connecting_sea_province;
+};
+
+
 class Building
 {
   public:
-   Building(int state_id,
-       std::string type,
-       BuildingPosition position,
-       std::optional<int> connecting_sea_province = std::nullopt):
-       state_id_(state_id),
-       type_(std::move(type)),
-       position_(std::move(position)),
-       connecting_sea_province_(std::move(connecting_sea_province))
+   Building(BuildingOptions options):
+       state_id_(options.state_id),
+       type_(std::move(options.type)),
+       position_(std::move(options.position)),
+       connecting_sea_province_(std::move(options.connecting_sea_province))
    {
    }
 
