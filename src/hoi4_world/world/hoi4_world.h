@@ -24,6 +24,7 @@ struct WorldOptions
    States states;
    StrategicRegions strategic_regions;
    Buildings buildings;
+   commonItems::LocalizationDatabase localizations = commonItems::LocalizationDatabase("english", {});
 };
 
 
@@ -34,7 +35,8 @@ class World
        countries_(std::move(options.countries)),
        states_(std::move(options.states)),
        strategic_regions_(std::move(options.strategic_regions)),
-       buildings_(std::move(options.buildings))
+       buildings_(std::move(options.buildings)),
+       localizations_(std::move(options.localizations))
    {
    }
 
@@ -42,12 +44,14 @@ class World
    [[nodiscard]] const States& GetStates() const { return states_; }
    [[nodiscard]] const StrategicRegions& GetStrategicRegions() const { return strategic_regions_; }
    [[nodiscard]] const Buildings& GetBuildings() const { return buildings_; }
+   [[nodiscard]] const commonItems::LocalizationDatabase& GetLocalizations() const { return localizations_; }
 
   private:
    std::map<std::string, Country> countries_;
    States states_;
    StrategicRegions strategic_regions_;
    Buildings buildings_;
+   commonItems::LocalizationDatabase localizations_;
 };
 
 }  // namespace hoi4

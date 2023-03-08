@@ -70,8 +70,11 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
        states.vic3_state_ids_to_hoi4_state_ids,
        tech_mappings);
 
+   commonItems::LocalizationDatabase localizations("english", {});
+
    return World(WorldOptions{.countries = countries,
        .states = states,
        .strategic_regions = strategic_regions,
-       .buildings = buildings});
+       .buildings = buildings,
+       .localizations = localizations});
 }
