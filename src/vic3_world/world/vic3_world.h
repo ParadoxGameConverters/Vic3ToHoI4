@@ -6,6 +6,7 @@
 #include <map>
 #include <set>
 
+#include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/states/state_region.h"
@@ -23,6 +24,7 @@ struct WorldOptions
    std::map<std::string, vic3::StateRegion> state_regions;
    ProvinceDefinitions province_definitions;
    std::map<int, std::set<std::string>> acquired_technologies;
+   commonItems::LocalizationDatabase localizations = commonItems::LocalizationDatabase("english", {});
 };
 
 
@@ -34,7 +36,8 @@ class World
        states_(std::move(world_options.states)),
        state_regions_(std::move(world_options.state_regions)),
        province_definitions_(world_options.province_definitions),
-       acquired_technologies_(std::move(world_options.acquired_technologies))
+       acquired_technologies_(std::move(world_options.acquired_technologies)),
+       localizations_(std::move(world_options.localizations))
    {
    }
 
@@ -46,7 +49,7 @@ class World
    {
       return acquired_technologies_;
    }
-
+   [[nodiscard]] const commonItems::LocalizationDatabase& GetLocalizations() const { return localizations_; }
 
   private:
    std::map<int, Country> countries_;
@@ -54,6 +57,7 @@ class World
    std::map<std::string, vic3::StateRegion> state_regions_;
    ProvinceDefinitions province_definitions_;
    std::map<int, std::set<std::string>> acquired_technologies_;
+   commonItems::LocalizationDatabase localizations_;
 };
 
 }  // namespace vic3

@@ -147,6 +147,18 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory, mod_loader.getMods());
    const auto province_definitions = LoadProvinceDefinitions(mod_filesystem);
    const auto state_regions = ImportStateRegions(mod_filesystem);
+   commonItems::LocalizationDatabase localizations("english",
+       {"braz_por",
+           "french",
+           "german",
+           "japanese",
+           "korean",
+           "polish",
+           "russian",
+           "simp_chinese",
+           "spanish",
+           "turkish"});
+   localizations.ScrapeLocalizations(mod_filesystem, "game/localization");
    Log(LogLevel::Progress) << "5 %";
 
    Log(LogLevel::Info) << "-> Reading Vic3 save.";
@@ -187,5 +199,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        .states = states,
        .state_regions = state_regions,
        .province_definitions = province_definitions,
-       .acquired_technologies = acquired_technologies});
+       .acquired_technologies = acquired_technologies,
+       .localizations = localizations});
 }
