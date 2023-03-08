@@ -96,7 +96,7 @@ TEST(Outhoi4WorldOutworld, StrategicRegionsFilesAreCreatedAndOutput)
 {
    CreateTestFolders("StrategicRegionsFilesAreCreatedAndOutput");
 
-   std::map<int, hoi4::StrategicRegion> strategic_regions = {
+   const std::map<int, hoi4::StrategicRegion> strategic_regions = {
        {1, hoi4::StrategicRegion({.filename = "strategic_region_1.txt", .id = 1})},
        {2, hoi4::StrategicRegion({.filename = "strategic_region_2.txt", .id = 2})}};
 
@@ -114,7 +114,7 @@ TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
 {
    CreateTestFolders("BuildingsFileIsCreatedAndOutput");
 
-   const std::vector<hoi4::Building> buildings(
+   const std::vector<hoi4::Building> buildings_list(
        {hoi4::Building({.state_id = 42,
             .type = "test_type",
             .position = {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25}}),
@@ -127,9 +127,12 @@ TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
                .position = {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
                .connecting_sea_province = 170})});
 
+   const hoi4::BuildingsOptions options{ .buildings = buildings_list, .airport_locations = {{2, 4}, {3, 9}, {4, 16}} };
+   const hoi4::Buildings buildings(options);
+
    OutputWorld("BuildingsFileIsCreatedAndOutput",
        hoi4::World(
-           {.buildings = hoi4::Buildings({.buildings = buildings, .airport_locations = {{2, 4}, {3, 9}, {4, 16}}})}));
+           {.buildings = buildings}));
 }
 
 }  // namespace out

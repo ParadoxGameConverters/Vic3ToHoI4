@@ -10,7 +10,7 @@ namespace hoi4
 TEST(Hoi4worldMapBuildingsCreatorTests, ExceptionForMissingBuildingsDotTxt)
 {
    EXPECT_THROW(ImportBuildings(States({}),
-                    CoastalProvinces({}),
+                    CoastalProvinces(),
                     maps::MapData(),
                     commonItems::ModFilesystem{"ExceptionForMissingBuildingsDotTxt", {}}),
        std::runtime_error);
@@ -20,7 +20,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ExceptionForMissingBuildingsDotTxt)
 TEST(Hoi4worldMapBuildingsCreatorTests, DefaultsToNoBuildings)
 {
    const Buildings buildings = ImportBuildings(States(),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -42,7 +42,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
                                        {4, 1},
                                        {5, 1},
                                    }}),
-               CoastalProvinces({}),
+               CoastalProvinces(),
                maps::MapData(
                    {.the_province_points =
                            {
@@ -97,7 +97,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
                                        {4, 1},
                                        {5, 1},
                                    }}),
-               CoastalProvinces({}),
+               CoastalProvinces(),
                maps::MapData(
                    {.the_province_points =
                            {
@@ -132,7 +132,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInMisnamedProvince)
                                        {4, 1},
                                        {5, 1},
                                    }}),
-               CoastalProvinces({}),
+               CoastalProvinces(),
                maps::MapData(
                    {.the_province_points =
                            {
@@ -172,7 +172,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -198,7 +198,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocati
                                        {4, 1},
                                        {5, 1},
                                    }}),
-               CoastalProvinces({}),
+               CoastalProvinces(),
                maps::MapData(
                    {.the_province_points =
                            {
@@ -253,7 +253,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
                                        {4, 1},
                                        {5, 1},
                                    }}),
-               CoastalProvinces({}),
+               CoastalProvinces(),
                maps::MapData(
                    {.the_province_points =
                            {
@@ -306,7 +306,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvinc
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -350,7 +350,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAntiAirInStateWithNoProvinces)
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -388,7 +388,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirNotPlacedInProvincesWithNoPoints)
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -419,7 +419,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacementOverridenByDefaultLocati
                                        {4, 1},
                                        {5, 1},
                                    }}),
-               CoastalProvinces({}),
+               CoastalProvinces(),
                maps::MapData(
                    {.the_province_points =
                            {
@@ -469,7 +469,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvinc
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -515,7 +515,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
                                                            {6, 1},
                                                            {7, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -579,7 +579,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoArmsFactoriesInStateWithNoProvinces)
                                                            {6, 1},
                                                            {7, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -628,7 +628,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesNotPlacedInProvincesWithNoP
                                                            {6, 1},
                                                            {7, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -661,7 +661,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacementOverridenByDefault
                                        {6, 1},
                                        {7, 1},
                                    }}),
-               CoastalProvinces({}),
+               CoastalProvinces(),
                maps::MapData(
                    {.the_province_points =
                            {
@@ -734,7 +734,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
                                                            {6, 1},
                                                            {7, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -787,7 +787,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
 
 TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvincesOfState)
 {
-   States states = {.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+   const States states = {.states = {State(1, {.provinces = {1, 2, 3, 4}})},
        .province_to_state_id_map = {
            {1, 1},
            {2, 1},
@@ -795,7 +795,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
            {4, 1},
        }};
 
-   std::map<std::string, maps::BordersWith> borders = {
+   const std::map<std::string, maps::BordersWith> borders = {
        {"1",
            maps::BordersWith{
                {"2",
@@ -859,7 +859,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
    };
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData({.borders = borders}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -890,7 +890,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoBunkersInStateWithNoProvinces)
            {4, 1},
        }});
 
-   std::map<std::string, maps::BordersWith> borders = {
+   const std::map<std::string, maps::BordersWith> borders = {
        {"1",
            maps::BordersWith{
                {"2",
@@ -956,7 +956,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoBunkersInStateWithNoProvinces)
    const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        map_data,
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -981,7 +981,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkersNotPlacedInProvincesWithNoBorders
                                                            {3, 1},
                                                            {4, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -1010,7 +1010,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocatio
            {5, 1},
        }});
 
-   std::map<std::string, maps::BordersWith> borders = {
+   const std::map<std::string, maps::BordersWith> borders = {
        {"1",
            maps::BordersWith{
                {"2",
@@ -1073,7 +1073,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocatio
            }},
    };
 
-   maps::MapData map_data({.borders = borders,
+   const maps::MapData map_data({.borders = borders,
        .points_to_provinces = {
            {{3, 2}, "1"},
            {{4, 2}, "2"},
@@ -1082,7 +1082,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocatio
        }});
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        map_data,
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -1180,7 +1180,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
    const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        map_data,
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -1203,7 +1203,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
 
 TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderForAllProvincesOfState)
 {
-   States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+   const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
        .province_to_state_id_map = {
            {1, 1},
            {2, 1},
@@ -1211,9 +1211,9 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
            {4, 1},
        }});
 
-   CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
+   const CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
 
-   std::map<std::string, maps::BordersWith> borders = {
+   const std::map<std::string, maps::BordersWith> borders = {
        {"1",
            maps::BordersWith{
                {"2",
@@ -1300,7 +1300,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
            }},
    };
 
-   maps::MapData map_data({.borders = borders});
+   const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
@@ -1424,7 +1424,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenNoCoastalProvinces)
    const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        map_data,
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -1598,7 +1598,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacementOverridenByDefault
 
    const CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
 
-   std::map<std::string, maps::BordersWith> borders = {
+   const std::map<std::string, maps::BordersWith> borders = {
        {"1",
            maps::BordersWith{
                {"2",
@@ -1726,9 +1726,9 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
            {5, 1},
        }});
 
-   CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
+   const CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
 
-   std::map<std::string, maps::BordersWith> borders = {
+   const std::map<std::string, maps::BordersWith> borders = {
        {"1",
            maps::BordersWith{
                {"2",
@@ -1815,7 +1815,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
            }},
    };
 
-   maps::MapData map_data({.borders = borders});
+   const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
@@ -1851,7 +1851,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
 
    const CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
 
-   std::map<std::string, maps::BordersWith> borders{
+   const std::map<std::string, maps::BordersWith> borders{
        {"1",
            maps::BordersWith{
                {"2",
@@ -2052,7 +2052,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoDockyardInStateWithNoCoastalProvinces)
    const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        map_data,
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -2081,7 +2081,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoBorder
    };
    const States states({.states = {state}, .province_to_state_id_map = province_to_state_id_map});
 
-   std::map<std::string, maps::BordersWith> borders = {
+   const std::map<std::string, maps::BordersWith> borders = {
        {"1",
            maps::BordersWith{
                {"2",
@@ -2178,95 +2178,96 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacementOverridenByDefaultLocat
            {4, 1},
        }});
 
-   CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
+   const CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
 
-   maps::MapData map_data({.borders =
-                               {
-                                   {"1",
-                                       maps::BordersWith{
-                                           {"2",
-                                               maps::BorderPoints{
-                                                   {3, 1},
-                                                   {3, 2},
-                                                   {3, 3},
-                                               }},
-                                           {"3",
-                                               maps::BorderPoints{
-                                                   {1, 3},
-                                                   {2, 3},
-                                                   {3, 3},
-                                               }},
-                                           {"5",
-                                               maps::BorderPoints{
-                                                   {1, 0},
-                                                   {2, 0},
-                                                   {3, 0},
-                                               }},
-                                       }},
-                                   {"2",
-                                       maps::BordersWith{
-                                           {"1",
-                                               maps::BorderPoints{
-                                                   {4, 1},
-                                                   {4, 2},
-                                                   {4, 3},
-                                               }},
-                                           {"4",
-                                               maps::BorderPoints{
-                                                   {4, 3},
-                                                   {5, 3},
-                                                   {6, 3},
-                                               }},
-                                           {"6",
-                                               maps::BorderPoints{
-                                                   {4, 0},
-                                                   {5, 0},
-                                                   {6, 0},
-                                               }},
-                                       }},
-                                   {"3",
-                                       maps::BordersWith{
-                                           {"1",
-                                               maps::BorderPoints{
-                                                   {1, 4},
-                                                   {2, 4},
-                                                   {3, 4},
-                                               }},
-                                           {"4",
-                                               maps::BorderPoints{
-                                                   {3, 4},
-                                                   {3, 5},
-                                                   {3, 6},
-                                               }},
-                                           {"7",
-                                               maps::BorderPoints{
-                                                   {1, 7},
-                                                   {2, 7},
-                                                   {3, 7},
-                                               }},
-                                       }},
-                                   {"4",
-                                       maps::BordersWith{
-                                           {"2",
-                                               maps::BorderPoints{
-                                                   {4, 4},
-                                                   {5, 4},
-                                                   {6, 4},
-                                               }},
-                                           {"3",
-                                               maps::BorderPoints{
-                                                   {4, 4},
-                                                   {4, 5},
-                                                   {4, 6},
-                                               }},
-                                           {"8",
-                                               maps::BorderPoints{
-                                                   {4, 7},
-                                                   {5, 7},
-                                                   {6, 7},
-                                               }},
-                                       }},
-                               },
+   const std::map<std::string, maps::BordersWith> borders = {
+       {"1",
+           maps::BordersWith{
+               {"2",
+                   maps::BorderPoints{
+                       {3, 1},
+                       {3, 2},
+                       {3, 3},
+                   }},
+               {"3",
+                   maps::BorderPoints{
+                       {1, 3},
+                       {2, 3},
+                       {3, 3},
+                   }},
+               {"5",
+                   maps::BorderPoints{
+                       {1, 0},
+                       {2, 0},
+                       {3, 0},
+                   }},
+           }},
+       {"2",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {4, 1},
+                       {4, 2},
+                       {4, 3},
+                   }},
+               {"4",
+                   maps::BorderPoints{
+                       {4, 3},
+                       {5, 3},
+                       {6, 3},
+                   }},
+               {"6",
+                   maps::BorderPoints{
+                       {4, 0},
+                       {5, 0},
+                       {6, 0},
+                   }},
+           }},
+       {"3",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {1, 4},
+                       {2, 4},
+                       {3, 4},
+                   }},
+               {"4",
+                   maps::BorderPoints{
+                       {3, 4},
+                       {3, 5},
+                       {3, 6},
+                   }},
+               {"7",
+                   maps::BorderPoints{
+                       {1, 7},
+                       {2, 7},
+                       {3, 7},
+                   }},
+           }},
+       {"4",
+           maps::BordersWith{
+               {"2",
+                   maps::BorderPoints{
+                       {4, 4},
+                       {5, 4},
+                       {6, 4},
+                   }},
+               {"3",
+                   maps::BorderPoints{
+                       {4, 4},
+                       {4, 5},
+                       {4, 6},
+                   }},
+               {"8",
+                   maps::BorderPoints{
+                       {4, 7},
+                       {5, 7},
+                       {6, 7},
+                   }},
+           }},
+   };
+
+   const maps::MapData map_data({.borders = borders,
        .points_to_provinces = {
            {{2, 1}, "1"},
        }});
@@ -2382,7 +2383,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
            }},
    };
 
-   maps::MapData map_data({.borders = borders});
+   const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
@@ -2398,7 +2399,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
 
 TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacedInSeaBorderCenterOfFirstCoastalProvinceOfState)
 {
-   States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+   const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
        .province_to_state_id_map = {
            {1, 1},
            {2, 1},
@@ -2406,46 +2407,48 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacedInSeaBorderCenterOf
            {4, 1},
        }});
 
-   CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
+   const CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
 
-   maps::MapData map_data({.borders = {
-                               {"5",
-                                   maps::BordersWith{
-                                       {"1",
-                                           maps::BorderPoints{
-                                               {1, 0},
-                                               {2, 0},
-                                               {3, 0},
-                                           }},
-                                   }},
-                               {"6",
-                                   maps::BordersWith{
-                                       {"1",
-                                           maps::BorderPoints{
-                                               {4, 0},
-                                               {5, 0},
-                                               {6, 0},
-                                           }},
-                                   }},
-                               {"7",
-                                   maps::BordersWith{
-                                       {"1",
-                                           maps::BorderPoints{
-                                               {1, 7},
-                                               {2, 7},
-                                               {3, 7},
-                                           }},
-                                   }},
-                               {"8",
-                                   maps::BordersWith{
-                                       {"1",
-                                           maps::BorderPoints{
-                                               {4, 7},
-                                               {5, 7},
-                                               {6, 7},
-                                           }},
-                                   }},
-                           }});
+   const std::map<std::string, maps::BordersWith> borders = {
+       {"5",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {1, 0},
+                       {2, 0},
+                       {3, 0},
+                   }},
+           }},
+       {"6",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {4, 0},
+                       {5, 0},
+                       {6, 0},
+                   }},
+           }},
+       {"7",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {1, 7},
+                       {2, 7},
+                       {3, 7},
+                   }},
+           }},
+       {"8",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {4, 7},
+                       {5, 7},
+                       {6, 7},
+                   }},
+           }},
+   };
+
+   const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
@@ -2512,7 +2515,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoFloatingHarborsInStateWithNoCoastalPro
    const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        map_data,
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -2621,55 +2624,58 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacementOverridenByDefau
 TEST(Hoi4worldMapBuildingsCreatorTests,
     FloatingHarborsPlacedInSeaBorderCenterOfFirstCoastalProvinceOfStateIfDefaultNotInActualProvince)
 {
-   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
-                                                   .province_to_state_id_map =
-                                                       {
-                                                           {1, 1},
-                                                           {2, 1},
-                                                           {3, 1},
-                                                           {4, 1},
-                                                       }}),
-       CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
-       maps::MapData(
-           {.borders =
-                   {
-                       {"5",
-                           maps::BordersWith{
-                               {"1",
-                                   maps::BorderPoints{
-                                       {1, 0},
-                                       {2, 0},
-                                       {3, 0},
-                                   }},
-                           }},
-                       {"6",
-                           maps::BordersWith{
-                               {"1",
-                                   maps::BorderPoints{
-                                       {4, 0},
-                                       {5, 0},
-                                       {6, 0},
-                                   }},
-                           }},
-                       {"7",
-                           maps::BordersWith{
-                               {"1",
-                                   maps::BorderPoints{
-                                       {1, 7},
-                                       {2, 7},
-                                       {3, 7},
-                                   }},
-                           }},
-                       {"8",
-                           maps::BordersWith{
-                               {"1",
-                                   maps::BorderPoints{
-                                       {4, 7},
-                                       {5, 7},
-                                       {6, 7},
-                                   }},
-                           }},
-                   }}),
+   const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+       .province_to_state_id_map = {
+           {1, 1},
+           {2, 1},
+           {3, 1},
+           {4, 1},
+       }});
+
+   const CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
+
+   const std::map<std::string, maps::BordersWith> borders = {
+       {"5",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {1, 0},
+                       {2, 0},
+                       {3, 0},
+                   }},
+           }},
+       {"6",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {4, 0},
+                       {5, 0},
+                       {6, 0},
+                   }},
+           }},
+       {"7",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {1, 7},
+                       {2, 7},
+                       {3, 7},
+                   }},
+           }},
+       {"8",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {4, 7},
+                       {5, 7},
+                       {6, 7},
+                   }},
+           }},
+   };
+
+   const Buildings buildings = ImportBuildings(states,
+       coastal_provinces,
+       maps::MapData({.borders = borders}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
@@ -2682,7 +2688,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests,
 
 TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirstSixProvincesOfState)
 {
-   States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+   const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
        .province_to_state_id_map = {
            {1, 1},
            {2, 1},
@@ -2693,7 +2699,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
            {7, 1},
        }});
 
-   std::unordered_map<std::string, maps::ProvincePoints> the_province_points = {
+   const std::unordered_map<std::string, maps::ProvincePoints> the_province_points = {
        {"1", maps::ProvincePoints({{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
        {"2", maps::ProvincePoints({{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
        {"3", maps::ProvincePoints({{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
@@ -2704,7 +2710,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
    };
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData({.the_province_points = the_province_points}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -2744,7 +2750,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoIndustrialComplexesInStateWithNoProvin
                                                            {6, 1},
                                                            {7, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -2793,7 +2799,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesNotPlacedInProvincesW
                                                            {6, 1},
                                                            {7, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -2830,7 +2836,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacementOverridenByD
                                        {6, 1},
                                        {7, 1},
                                    }}),
-               CoastalProvinces({}),
+               CoastalProvinces(),
                maps::MapData(
                    {.the_province_points =
                            {
@@ -2903,7 +2909,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
                                                            {6, 1},
                                                            {7, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -2956,103 +2962,106 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAllProvincesOfState)
 {
-   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
-                                                   .province_to_state_id_map =
-                                                       {
-                                                           {1, 1},
-                                                           {2, 1},
-                                                           {3, 1},
-                                                           {4, 1},
-                                                       }}),
-       CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
-       maps::MapData(
-           {.borders =
-                   {
-                       {"1",
-                           maps::BordersWith{
-                               {"2",
-                                   maps::BorderPoints{
-                                       {3, 1},
-                                       {3, 2},
-                                       {3, 3},
-                                   }},
-                               {"3",
-                                   maps::BorderPoints{
-                                       {1, 3},
-                                       {2, 3},
-                                       {3, 3},
-                                   }},
-                               {"5",
-                                   maps::BorderPoints{
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                   }},
-                           }},
-                       {"2",
-                           maps::BordersWith{
-                               {"1",
-                                   maps::BorderPoints{
-                                       {4, 1},
-                                       {4, 2},
-                                       {4, 3},
-                                   }},
-                               {"4",
-                                   maps::BorderPoints{
-                                       {4, 3},
-                                       {5, 3},
-                                       {6, 3},
-                                   }},
-                               {"6",
-                                   maps::BorderPoints{
-                                       {4, 1},
-                                       {5, 1},
-                                       {6, 1},
-                                   }},
-                           }},
-                       {"3",
-                           maps::BordersWith{
-                               {"1",
-                                   maps::BorderPoints{
-                                       {1, 4},
-                                       {2, 4},
-                                       {3, 4},
-                                   }},
-                               {"4",
-                                   maps::BorderPoints{
-                                       {3, 4},
-                                       {3, 5},
-                                       {3, 6},
-                                   }},
-                               {"7",
-                                   maps::BorderPoints{
-                                       {1, 6},
-                                       {2, 6},
-                                       {3, 6},
-                                   }},
-                           }},
-                       {"4",
-                           maps::BordersWith{
-                               {"2",
-                                   maps::BorderPoints{
-                                       {4, 4},
-                                       {5, 4},
-                                       {6, 4},
-                                   }},
-                               {"3",
-                                   maps::BorderPoints{
-                                       {4, 4},
-                                       {4, 5},
-                                       {4, 6},
-                                   }},
-                               {"8",
-                                   maps::BorderPoints{
-                                       {4, 6},
-                                       {5, 6},
-                                       {6, 6},
-                                   }},
-                           }},
-                   }}),
+   const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
+       .province_to_state_id_map = {
+           {1, 1},
+           {2, 1},
+           {3, 1},
+           {4, 1},
+       }});
+
+   const CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
+
+   const std::map<std::string, maps::BordersWith> borders = {
+       {"1",
+           maps::BordersWith{
+               {"2",
+                   maps::BorderPoints{
+                       {3, 1},
+                       {3, 2},
+                       {3, 3},
+                   }},
+               {"3",
+                   maps::BorderPoints{
+                       {1, 3},
+                       {2, 3},
+                       {3, 3},
+                   }},
+               {"5",
+                   maps::BorderPoints{
+                       {1, 1},
+                       {2, 1},
+                       {3, 1},
+                   }},
+           }},
+       {"2",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {4, 1},
+                       {4, 2},
+                       {4, 3},
+                   }},
+               {"4",
+                   maps::BorderPoints{
+                       {4, 3},
+                       {5, 3},
+                       {6, 3},
+                   }},
+               {"6",
+                   maps::BorderPoints{
+                       {4, 1},
+                       {5, 1},
+                       {6, 1},
+                   }},
+           }},
+       {"3",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {1, 4},
+                       {2, 4},
+                       {3, 4},
+                   }},
+               {"4",
+                   maps::BorderPoints{
+                       {3, 4},
+                       {3, 5},
+                       {3, 6},
+                   }},
+               {"7",
+                   maps::BorderPoints{
+                       {1, 6},
+                       {2, 6},
+                       {3, 6},
+                   }},
+           }},
+       {"4",
+           maps::BordersWith{
+               {"2",
+                   maps::BorderPoints{
+                       {4, 4},
+                       {5, 4},
+                       {6, 4},
+                   }},
+               {"3",
+                   maps::BorderPoints{
+                       {4, 4},
+                       {4, 5},
+                       {4, 6},
+                   }},
+               {"8",
+                   maps::BorderPoints{
+                       {4, 6},
+                       {5, 6},
+                       {6, 6},
+                   }},
+           }},
+   };
+
+   const Buildings buildings = ImportBuildings(states,
+       coastal_provinces,
+       maps::MapData({.borders = borders}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
@@ -3176,7 +3185,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoNavalBasesWhenNoCoastalProvinces)
    const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        map_data,
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -3369,93 +3378,94 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAl
 
    const CoastalProvinces coastal_provinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}});
 
+   const std::map<std::string, maps::BordersWith> borders = {{"1",
+                                                                 maps::BordersWith{
+                                                                     {"2",
+                                                                         maps::BorderPoints{
+                                                                             {3, 1},
+                                                                             {3, 2},
+                                                                             {3, 3},
+                                                                         }},
+                                                                     {"3",
+                                                                         maps::BorderPoints{
+                                                                             {1, 3},
+                                                                             {2, 3},
+                                                                             {3, 3},
+                                                                         }},
+                                                                     {"5",
+                                                                         maps::BorderPoints{
+                                                                             {1, 1},
+                                                                             {2, 1},
+                                                                             {3, 1},
+                                                                         }},
+                                                                 }},
+       {"2",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {4, 1},
+                       {4, 2},
+                       {4, 3},
+                   }},
+               {"4",
+                   maps::BorderPoints{
+                       {4, 3},
+                       {5, 3},
+                       {6, 3},
+                   }},
+               {"6",
+                   maps::BorderPoints{
+                       {4, 1},
+                       {5, 1},
+                       {6, 1},
+                   }},
+           }},
+       {"3",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {1, 4},
+                       {2, 4},
+                       {3, 4},
+                   }},
+               {"4",
+                   maps::BorderPoints{
+                       {3, 4},
+                       {3, 5},
+                       {3, 6},
+                   }},
+               {"7",
+                   maps::BorderPoints{
+                       {1, 6},
+                       {2, 6},
+                       {3, 6},
+                   }},
+           }},
+       {"4",
+           maps::BordersWith{
+               {"2",
+                   maps::BorderPoints{
+                       {4, 4},
+                       {5, 4},
+                       {6, 4},
+                   }},
+               {"3",
+                   maps::BorderPoints{
+                       {4, 4},
+                       {4, 5},
+                       {4, 6},
+                   }},
+               {"8",
+                   maps::BorderPoints{
+                       {4, 6},
+                       {5, 6},
+                       {6, 6},
+                   }},
+           }}};
 
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
-       maps::MapData({.borders = {{"1",
-                                      maps::BordersWith{
-                                          {"2",
-                                              maps::BorderPoints{
-                                                  {3, 1},
-                                                  {3, 2},
-                                                  {3, 3},
-                                              }},
-                                          {"3",
-                                              maps::BorderPoints{
-                                                  {1, 3},
-                                                  {2, 3},
-                                                  {3, 3},
-                                              }},
-                                          {"5",
-                                              maps::BorderPoints{
-                                                  {1, 1},
-                                                  {2, 1},
-                                                  {3, 1},
-                                              }},
-                                      }},
-                          {"2",
-                              maps::BordersWith{
-                                  {"1",
-                                      maps::BorderPoints{
-                                          {4, 1},
-                                          {4, 2},
-                                          {4, 3},
-                                      }},
-                                  {"4",
-                                      maps::BorderPoints{
-                                          {4, 3},
-                                          {5, 3},
-                                          {6, 3},
-                                      }},
-                                  {"6",
-                                      maps::BorderPoints{
-                                          {4, 1},
-                                          {5, 1},
-                                          {6, 1},
-                                      }},
-                              }},
-                          {"3",
-                              maps::BordersWith{
-                                  {"1",
-                                      maps::BorderPoints{
-                                          {1, 4},
-                                          {2, 4},
-                                          {3, 4},
-                                      }},
-                                  {"4",
-                                      maps::BorderPoints{
-                                          {3, 4},
-                                          {3, 5},
-                                          {3, 6},
-                                      }},
-                                  {"7",
-                                      maps::BorderPoints{
-                                          {1, 6},
-                                          {2, 6},
-                                          {3, 6},
-                                      }},
-                              }},
-                          {"4",
-                              maps::BordersWith{
-                                  {"2",
-                                      maps::BorderPoints{
-                                          {4, 4},
-                                          {5, 4},
-                                          {6, 4},
-                                      }},
-                                  {"3",
-                                      maps::BorderPoints{
-                                          {4, 4},
-                                          {4, 5},
-                                          {4, 6},
-                                      }},
-                                  {"8",
-                                      maps::BorderPoints{
-                                          {4, 6},
-                                          {5, 6},
-                                          {6, 6},
-                                      }},
-                              }}}}),
+       maps::MapData({.borders = borders}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
@@ -3481,7 +3491,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAl
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvinceOfState)
 {
-   States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+   const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
        .province_to_state_id_map = {
            {1, 1},
            {2, 1},
@@ -3491,7 +3501,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvi
        }});
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -3528,7 +3538,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoNuclearReactorInStateWithNoProvinces)
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -3566,7 +3576,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorNotPlacedInProvincesWithNo
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -3595,7 +3605,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacementOverridenByDefaul
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -3637,7 +3647,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvi
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -3673,68 +3683,70 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesPlacedInCenterOfABorderForAll
            {4, 1},
        }});
 
+   const std::map<std::string, maps::BordersWith> borders = {{"1",
+                                                                 maps::BordersWith{
+                                                                     {"2",
+                                                                         maps::BorderPoints{
+                                                                             {3, 1},
+                                                                             {3, 2},
+                                                                             {3, 3},
+                                                                         }},
+                                                                     {"3",
+                                                                         maps::BorderPoints{
+                                                                             {1, 3},
+                                                                             {2, 3},
+                                                                             {3, 3},
+                                                                         }},
+                                                                 }},
+       {"2",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {4, 1},
+                       {4, 2},
+                       {4, 3},
+                   }},
+               {"4",
+                   maps::BorderPoints{
+                       {4, 3},
+                       {5, 3},
+                       {6, 3},
+                   }},
+           }},
+       {"3",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {1, 4},
+                       {2, 4},
+                       {3, 4},
+                   }},
+               {"4",
+                   maps::BorderPoints{
+                       {3, 4},
+                       {3, 5},
+                       {3, 6},
+                   }},
+           }},
+       {"4",
+           maps::BordersWith{
+               {"2",
+                   maps::BorderPoints{
+                       {4, 4},
+                       {5, 4},
+                       {6, 4},
+                   }},
+               {"3",
+                   maps::BorderPoints{
+                       {4, 4},
+                       {4, 5},
+                       {4, 6},
+                   }},
+           }}};
+
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
-       maps::MapData({.borders = {{"1",
-                                      maps::BordersWith{
-                                          {"2",
-                                              maps::BorderPoints{
-                                                  {3, 1},
-                                                  {3, 2},
-                                                  {3, 3},
-                                              }},
-                                          {"3",
-                                              maps::BorderPoints{
-                                                  {1, 3},
-                                                  {2, 3},
-                                                  {3, 3},
-                                              }},
-                                      }},
-                          {"2",
-                              maps::BordersWith{
-                                  {"1",
-                                      maps::BorderPoints{
-                                          {4, 1},
-                                          {4, 2},
-                                          {4, 3},
-                                      }},
-                                  {"4",
-                                      maps::BorderPoints{
-                                          {4, 3},
-                                          {5, 3},
-                                          {6, 3},
-                                      }},
-                              }},
-                          {"3",
-                              maps::BordersWith{
-                                  {"1",
-                                      maps::BorderPoints{
-                                          {1, 4},
-                                          {2, 4},
-                                          {3, 4},
-                                      }},
-                                  {"4",
-                                      maps::BorderPoints{
-                                          {3, 4},
-                                          {3, 5},
-                                          {3, 6},
-                                      }},
-                              }},
-                          {"4",
-                              maps::BordersWith{
-                                  {"2",
-                                      maps::BorderPoints{
-                                          {4, 4},
-                                          {5, 4},
-                                          {6, 4},
-                                      }},
-                                  {"3",
-                                      maps::BorderPoints{
-                                          {4, 4},
-                                          {4, 5},
-                                          {4, 6},
-                                      }},
-                              }}}}),
+       CoastalProvinces(),
+       maps::MapData({.borders = borders}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
@@ -3822,7 +3834,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoSupplyNodesInStateWithNoProvinces)
    const maps::MapData map_data({.borders = borders});
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        map_data,
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -3844,7 +3856,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesNotPlacedInProvincesWithNoBor
                                                            {3, 1},
                                                            {4, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -3868,90 +3880,90 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesNotPlacedInProvincesWithNoBor
 
 TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacementOverridenByDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces({}),
-               maps::MapData(
-                   {.borders =
-                           {
-                               {"1",
-                                   maps::BordersWith{
-                                       {"2",
-                                           maps::BorderPoints{
-                                               {3, 1},
-                                               {3, 2},
-                                               {3, 3},
-                                           }},
-                                       {"3",
-                                           maps::BorderPoints{
-                                               {1, 3},
-                                               {2, 3},
-                                               {3, 3},
-                                           }},
-                                   }},
-                               {"2",
-                                   maps::BordersWith{
-                                       {"1",
-                                           maps::BorderPoints{
-                                               {4, 1},
-                                               {4, 2},
-                                               {4, 3},
-                                           }},
-                                       {"4",
-                                           maps::BorderPoints{
-                                               {4, 3},
-                                               {5, 3},
-                                               {6, 3},
-                                           }},
-                                   }},
-                               {"3",
-                                   maps::BordersWith{
-                                       {"1",
-                                           maps::BorderPoints{
-                                               {1, 4},
-                                               {2, 4},
-                                               {3, 4},
-                                           }},
-                                       {"4",
-                                           maps::BorderPoints{
-                                               {3, 4},
-                                               {3, 5},
-                                               {3, 6},
-                                           }},
-                                   }},
-                               {"4",
-                                   maps::BordersWith{
-                                       {"2",
-                                           maps::BorderPoints{
-                                               {4, 4},
-                                               {5, 4},
-                                               {6, 4},
-                                           }},
-                                       {"3",
-                                           maps::BorderPoints{
-                                               {4, 4},
-                                               {4, 5},
-                                               {4, 6},
-                                           }},
-                                   }},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{3, 2}, "1"},
-                               {{4, 2}, "2"},
-                               {{2, 4}, "3"},
-                               {{5, 4}, "4"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+       .province_to_state_id_map = {
+           {1, 1},
+           {2, 1},
+           {3, 1},
+           {4, 1},
+           {5, 1},
+       }});
+
+   const std::map<std::string, maps::BordersWith> borders = {
+       {"1",
+           maps::BordersWith{
+               {"2",
+                   maps::BorderPoints{
+                       {3, 1},
+                       {3, 2},
+                       {3, 3},
+                   }},
+               {"3",
+                   maps::BorderPoints{
+                       {1, 3},
+                       {2, 3},
+                       {3, 3},
+                   }},
+           }},
+       {"2",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {4, 1},
+                       {4, 2},
+                       {4, 3},
+                   }},
+               {"4",
+                   maps::BorderPoints{
+                       {4, 3},
+                       {5, 3},
+                       {6, 3},
+                   }},
+           }},
+       {"3",
+           maps::BordersWith{
+               {"1",
+                   maps::BorderPoints{
+                       {1, 4},
+                       {2, 4},
+                       {3, 4},
+                   }},
+               {"4",
+                   maps::BorderPoints{
+                       {3, 4},
+                       {3, 5},
+                       {3, 6},
+                   }},
+           }},
+       {"4",
+           maps::BordersWith{
+               {"2",
+                   maps::BorderPoints{
+                       {4, 4},
+                       {5, 4},
+                       {6, 4},
+                   }},
+               {"3",
+                   maps::BorderPoints{
+                       {4, 4},
+                       {4, 5},
+                       {4, 6},
+                   }},
+           }},
+   };
+
+   const maps::MapData map_data({.borders = borders,
+       .points_to_provinces = {
+           {{3, 2}, "1"},
+           {{4, 2}, "2"},
+           {{2, 4}, "3"},
+           {{5, 4}, "4"},
+       }});
+
+   const Buildings buildings = ImportBuildings(states,
+       CoastalProvinces(),
+       map_data,
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -3981,21 +3993,21 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacedInCenterOfABorderForAllP
            {5, 1},
        }});
 
-   std::map<std::string, maps::BordersWith> borders = {{"1",
-                                                           maps::BordersWith{
-                                                               {"2",
-                                                                   maps::BorderPoints{
-                                                                       {3, 1},
-                                                                       {3, 2},
-                                                                       {3, 3},
-                                                                   }},
-                                                               {"3",
-                                                                   maps::BorderPoints{
-                                                                       {1, 3},
-                                                                       {2, 3},
-                                                                       {3, 3},
-                                                                   }},
-                                                           }},
+   const std::map<std::string, maps::BordersWith> borders = {{"1",
+                                                                 maps::BordersWith{
+                                                                     {"2",
+                                                                         maps::BorderPoints{
+                                                                             {3, 1},
+                                                                             {3, 2},
+                                                                             {3, 3},
+                                                                         }},
+                                                                     {"3",
+                                                                         maps::BorderPoints{
+                                                                             {1, 3},
+                                                                             {2, 3},
+                                                                             {3, 3},
+                                                                         }},
+                                                                 }},
        {"2",
            maps::BordersWith{
                {"1",
@@ -4043,7 +4055,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacedInCenterOfABorderForAllP
            }}};
 
    const Buildings buildings = ImportBuildings(states,
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData({.borders = borders}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -4075,7 +4087,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstPr
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -4112,7 +4124,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoSyntheticRefineryInStateWithNoProvince
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {
@@ -4150,7 +4162,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryNotPlacedInProvincesWit
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -4185,7 +4197,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacementOverridenByDef
                                        {4, 1},
                                        {5, 1},
                                    }}),
-               CoastalProvinces({}),
+               CoastalProvinces(),
                maps::MapData(
                    {.the_province_points =
                            {
@@ -4228,7 +4240,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstPr
                                                            {4, 1},
                                                            {5, 1},
                                                        }}),
-       CoastalProvinces({}),
+       CoastalProvinces(),
        maps::MapData(
            {.the_province_points =
                    {

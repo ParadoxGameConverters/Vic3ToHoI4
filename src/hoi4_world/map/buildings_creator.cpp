@@ -675,7 +675,7 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
 
    const std::map<int, int> airport_locations = RecordAirportLocations(map_data, buildings);
 
-   return hoi4::Buildings({buildings, airport_locations});
+   return hoi4::Buildings({.buildings = buildings, .airport_locations = airport_locations});
 }
 
 }  // namespace

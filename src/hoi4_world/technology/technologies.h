@@ -18,7 +18,7 @@ namespace hoi4
 class Technologies
 {
   public:
-   Technologies() = default;
+   Technologies() {}
 
    explicit Technologies(std::map<std::optional<std::string>, std::set<std::string>> technologies_by_limits):
        technologies_by_limits_(std::move(technologies_by_limits))
