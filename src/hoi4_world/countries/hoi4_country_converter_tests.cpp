@@ -34,7 +34,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
    const mappers::CountryMapper country_mapper(std::map<std::string, std::string>{
        {"TAG", "T00"},
    });
-   const vic3::Country source_country_one({});
+   const vic3::Country source_country_one;
 
    const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {});
 
@@ -45,7 +45,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
 
 TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
 {
-   const mappers::CountryMapper country_mapper({});
+   const mappers::CountryMapper country_mapper;
    const vic3::Country source_country_one({.tag = "TAG"});
 
    const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {});

@@ -9,7 +9,7 @@ namespace hoi4
 
 TEST(Hoi4worldMapBuildingsCreatorTests, ExceptionForMissingBuildingsDotTxt)
 {
-   EXPECT_THROW(ImportBuildings(States({}),
+   EXPECT_THROW(ImportBuildings(States(),
                     CoastalProvinces(),
                     maps::MapData(),
                     commonItems::ModFilesystem{"ExceptionForMissingBuildingsDotTxt", {}}),

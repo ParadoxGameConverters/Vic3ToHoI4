@@ -15,6 +15,7 @@ namespace mappers
 class CountryMapper
 {
   public:
+   CountryMapper() = default;
    explicit CountryMapper(std::map<std::string, std::string> country_mappings):
        country_mappings_(std::move(country_mappings))
    {

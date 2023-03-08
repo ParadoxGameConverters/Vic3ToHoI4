@@ -9,7 +9,7 @@ namespace hoi4
 
 TEST(Hoi4worldStatesStatecategoriesTests, DefaultCategoryIsRural)
 {
-   const StateCategories categories({});
+   const StateCategories categories;
 
    EXPECT_EQ(categories.GetBestCategory(0), "rural");
 }

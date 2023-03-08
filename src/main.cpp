@@ -12,7 +12,7 @@ int main()
       converterVersion.loadVersion("../version.txt");
       Log(LogLevel::Info) << converterVersion;
 
-      const auto configuration = configuration::ConfigurationImporter{}.ImportConfiguration("configuration.txt");
+      const auto configuration = configuration::ImportConfiguration("configuration.txt");
 
       Log(LogLevel::Progress) << "0%";
       ConvertVic3ToHoi4(configuration, converterVersion.getMaxTarget());

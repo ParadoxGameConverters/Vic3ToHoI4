@@ -23,6 +23,7 @@ struct StateOptions
 class State
 {
   public:
+   State() = default;
    explicit State(StateOptions state_options):
        owner_number_(state_options.owner_number),
        owner_tag_(std::move(state_options.owner_tag)),

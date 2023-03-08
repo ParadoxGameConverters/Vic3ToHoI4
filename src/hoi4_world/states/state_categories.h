@@ -14,6 +14,7 @@ namespace hoi4
 class StateCategories
 {
   public:
+   StateCategories() = default;
    explicit StateCategories(std::map<int, std::string> categories): categories_(std::move(categories)) {}
 
    [[nodiscard]] std::string GetBestCategory(int num_building_slots) const;

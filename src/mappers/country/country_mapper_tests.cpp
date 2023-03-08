@@ -11,7 +11,7 @@ namespace mappers
 
 TEST(MappersCountryCountryMapper, NulloptIsReturnedForUnmappedTag)
 {
-   const CountryMapper country_mapper({});
+   const CountryMapper country_mapper;
    EXPECT_EQ(country_mapper.GetHoiTag("TAG"), std::nullopt);
 }
 

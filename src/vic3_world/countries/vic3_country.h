@@ -23,6 +23,7 @@ struct CountryOptions
 class Country
 {
   public:
+   Country() = default;
    explicit Country(CountryOptions options):
        tag_(std::move(options.tag)),
        color_(std::move(options.color)),
