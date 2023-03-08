@@ -15,7 +15,9 @@ std::map<std::string, vic3::StateRegion> vic3::ImportStateRegions(const commonIt
    commonItems::parser region_parser;
    region_parser.registerRegex("city|port|farm|mine|wood",
        [&significant_provinces](const std::string& significant_province_type, std::istream& input_stream) {
-          const std::string province = commonItems::getString(input_stream);
+          std::string province = commonItems::getString(input_stream);
+          std::transform(++province.begin(), province.end(), ++province.begin(), ::toupper);
+          province[0] = 'x';
           significant_provinces.emplace(province, significant_province_type);
        });
    region_parser.IgnoreUnregisteredItems();
