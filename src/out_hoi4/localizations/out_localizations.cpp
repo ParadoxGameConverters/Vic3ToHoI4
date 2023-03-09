@@ -1,7 +1,6 @@
 #include "src/out_hoi4/localizations/out_localizations.h"
 
 #include <fstream>
-#include <ranges>
 
 #include "external/fmt/include/fmt/format.h"
 
@@ -43,11 +42,10 @@ void OutputLocalisations(std::string_view output_name,
    }
    english_file << "l_english:\n";
 
-   for (const auto& localization_block: localization_database | std::views::values)
+   for (const auto& [key, localization_block]: localization_database)
    {
-      const auto& key = localization_block.GetKey();
-      english_file << fmt::format(" {}:0 \"{}\"", key, localization_block.GetLocalization("english"));
-      braz_por_file << fmt::format(" {}:0 \"{}\"", key, localization_block.GetLocalization("braz_por"));
+      english_file << fmt::format(" {}:0 \"{}\"\n", key, localization_block.GetLocalization("english"));
+      braz_por_file << fmt::format(" {}:0 \"{}\"\n", key, localization_block.GetLocalization("braz_por"));
    }
 
    english_file.close();
@@ -60,5 +58,5 @@ void OutputLocalisations(std::string_view output_name,
 
 void out::OutputLocalizations(std::string_view output_name, const hoi4::Localizations& localizations)
 {
-   OutputLocalisations(output_name, "test_localisations.yml", localizations.GetTestLocalizations());
+   OutputLocalisations(output_name, "countries_l_english.yml", localizations.GetCountryLocalizations());
 }

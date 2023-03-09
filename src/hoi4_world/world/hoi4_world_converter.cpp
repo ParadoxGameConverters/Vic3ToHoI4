@@ -17,7 +17,7 @@
 
 
 
-hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
+hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::CountryMapper& country_mapper,
     const mappers::ProvinceMapper& province_mapper)
@@ -71,7 +71,7 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
        states.vic3_state_ids_to_hoi4_state_ids,
        tech_mappings);
 
-   Localizations localizations = ConvertLocalizations();
+   Localizations localizations = ConvertLocalizations(source_world.GetLocalizations(), country_mapper);
 
    return World(WorldOptions{.countries = countries,
        .states = states,

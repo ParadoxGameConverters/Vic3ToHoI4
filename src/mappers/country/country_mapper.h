@@ -23,6 +23,8 @@ class CountryMapper
 
    [[nodiscard]] std::optional<std::string> GetHoiTag(const std::string& vic_tag) const;
 
+   [[nodiscard]] const std::map<std::string, std::string>& GetCountryMappings() const { return country_mappings_; }
+
   private:
    std::map<std::string, std::string> country_mappings_;
 };
