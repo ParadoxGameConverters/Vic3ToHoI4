@@ -94,6 +94,12 @@
     <Filter Include="src\out_hoi4\technology">
       <UniqueIdentifier>{8a18292d-75b0-4ce7-97c5-aece529b82c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\localizations">
+      <UniqueIdentifier>{84a2c738-0257-4c38-914d-60714c1c8b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\localizations">
+      <UniqueIdentifier>{a5f3de3e-c5b6-411b-a351-8f255612576a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -318,6 +324,15 @@
     <ClInclude Include="src\vic3_world\states\state_regions_importer.h">
       <Filter>src\vic3_world\states</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\localizations\localizations.h">
+      <Filter>src\hoi4_world\localizations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\localizations\localizations_converter.h">
+      <Filter>src\hoi4_world\localizations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\localizations\out_localizations.h">
+      <Filter>src\out_hoi4\localizations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -475,6 +490,12 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\states\state_regions_importer.cpp">
       <Filter>src\vic3_world\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\localizations\localizations_converter.cpp">
+      <Filter>src\hoi4_world\localizations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\localizations\out_localizations.cpp">
+      <Filter>src\out_hoi4\localizations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

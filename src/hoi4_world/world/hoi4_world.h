@@ -12,6 +12,7 @@
 #include "src/hoi4_world/map/buildings.h"
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/states/hoi4_states.h"
+#include "src/hoi4_world/localizations/localizations.h"
 
 
 
@@ -24,7 +25,7 @@ struct WorldOptions
    States states;
    StrategicRegions strategic_regions;
    Buildings buildings;
-   commonItems::LocalizationDatabase localizations = commonItems::LocalizationDatabase("english", {});
+   Localizations localizations;
 };
 
 
@@ -44,14 +45,15 @@ class World
    [[nodiscard]] const States& GetStates() const { return states_; }
    [[nodiscard]] const StrategicRegions& GetStrategicRegions() const { return strategic_regions_; }
    [[nodiscard]] const Buildings& GetBuildings() const { return buildings_; }
-   [[nodiscard]] const commonItems::LocalizationDatabase& GetLocalizations() const { return localizations_; }
+   [[nodiscard]] const Localizations& GetLocalizations() const { return localizations_; }
 
   private:
    std::map<std::string, Country> countries_;
    States states_;
    StrategicRegions strategic_regions_;
    Buildings buildings_;
-   commonItems::LocalizationDatabase localizations_;
+   Localizations localizations_;
+   
 };
 
 }  // namespace hoi4

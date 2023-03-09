@@ -4,6 +4,7 @@
 
 #include "external/commonItems/Log.h"
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
+#include "src/hoi4_world/localizations/localizations_converter.h"
 #include "src/hoi4_world/map/buildings_creator.h"
 #include "src/hoi4_world/map/coastal_provinces_creator.h"
 #include "src/hoi4_world/map/hoi4_province_definition_importer.h"
@@ -70,11 +71,7 @@ hoi4::World hoi4::ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
        states.vic3_state_ids_to_hoi4_state_ids,
        tech_mappings);
 
-   commonItems::LocalizationDatabase localizations("english", {});
-   commonItems::LocalizationBlock test_block("test_key", "english");
-   test_block.ModifyLocalization("english", "test_localization");
-   test_block.ModifyLocalization("spanish", "test_esp_localization");
-   localizations.AddOrModifyLocalizationBlock(test_block.GetKey(), test_block);
+   Localizations localizations = ConvertLocalizations();
 
    return World(WorldOptions{.countries = countries,
        .states = states,
