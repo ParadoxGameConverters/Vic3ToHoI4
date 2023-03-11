@@ -7,12 +7,12 @@
 
 
 hoi4::Localizations hoi4::ConvertLocalizations(const commonItems::LocalizationDatabase& vic3_localizations,
-    const mappers::CountryMapper& country_mapper)
+    const std::map<std::string, std::string>& country_mappings)
 {
    commonItems::LocalizationDatabase country_localizations("english",
        {"braz_por", "french", "german", "japanese", "polish", "russian", "spanish"});
 
-   for (const auto& [vic3_country, hoi4_country]: country_mapper.GetCountryMappings())
+   for (const auto& [vic3_country, hoi4_country]: country_mappings)
    {
       const auto& country_localization_block = vic3_localizations.GetLocalizationBlock(vic3_country);
       if (!country_localization_block)

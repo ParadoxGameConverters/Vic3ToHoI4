@@ -27,6 +27,7 @@ TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
    EXPECT_TRUE(world.GetStates().empty());
    EXPECT_TRUE(world.GetProvinceDefinitions().GetProvinceDefinitions().empty());
    EXPECT_TRUE(world.GetAcquiredTechnologies().empty());
+   EXPECT_EQ(world.GetLocalizations().size(), 0);
 }
 
 
@@ -66,6 +67,10 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
    EXPECT_THAT(world.GetAcquiredTechnologies(),
        testing::UnorderedElementsAre(testing::Pair(1, std::set<std::string>{"technology_one", "technology_two"}),
            testing::Pair(3, std::set<std::string>{"technology_three"})));
+   EXPECT_EQ(world.GetLocalizations().size(), 1);
+   ASSERT_TRUE(world.GetLocalizations().HasLocalization("test_localisation"));
+   EXPECT_EQ(world.GetLocalizations().GetLocalizationBlock("test_localisation")->GetLocalization("english"),
+       "testing testing 1 2 3");
 }
 
 
@@ -100,9 +105,11 @@ TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_THAT(log.str(),
-       testing::HasSubstr(R"([INFO] 		->> Found potentially useful [Test Mod]: mod/test_mod/)"));
+       testing::HasSubstr(
+           "[INFO] \t\t->> Found potentially useful [Test Mod]: test_files/vic3_world/documents/mod/test_mod/"));
    EXPECT_THAT(log.str(),
-       testing::HasSubstr(R"([INFO] 		->> Found potentially useful [Test Mod Two]: 529340/test_mod_two/)"));
+       testing::HasSubstr("[INFO] \t\t->> Found potentially useful [Test Mod Two]: "
+                          "test_files/vic3_world/workshop/529340/test_mod_two/"));
 }
 
 

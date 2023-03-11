@@ -13,7 +13,7 @@ namespace hoi4
 {
 
 Localizations ConvertLocalizations(const commonItems::LocalizationDatabase& vic3_localizations,
-    const mappers::CountryMapper& country_mapper);
+    const std::map<std::string, std::string>& country_mappings);
 
 }  // namespace hoi4
 

@@ -10,9 +10,7 @@
 namespace
 {
 
-void OutputLocalisations(std::string_view output_name,
-    std::string_view localization_file,
-    const commonItems::LocalizationDatabase& localization_database)
+void CreateFolders(std::string_view output_name)
 {
    if (!commonItems::TryCreateFolder(fmt::format("output/{}/localisation", output_name)))
    {
@@ -50,7 +48,13 @@ void OutputLocalisations(std::string_view output_name,
    {
       throw std::runtime_error(fmt::format("Could not create output/{}/localisation/spanish", output_name));
    }
+}
 
+
+void OutputLocalisations(std::string_view output_name,
+    std::string_view localization_file,
+    const commonItems::LocalizationDatabase& localization_database)
+{
    std::ofstream braz_por_file(fmt::format("output/{}/localisation/braz_por/{}",
        output_name,
        fmt::format("{}braz_por.yml", localization_file)));
@@ -154,5 +158,6 @@ void OutputLocalisations(std::string_view output_name,
 
 void out::OutputLocalizations(std::string_view output_name, const hoi4::Localizations& localizations)
 {
+   CreateFolders(output_name);
    OutputLocalisations(output_name, "countries_l_", localizations.GetCountryLocalizations());
 }
