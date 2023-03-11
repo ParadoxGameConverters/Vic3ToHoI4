@@ -23,8 +23,15 @@ hoi4::Localizations hoi4::ConvertLocalizations(const commonItems::LocalizationDa
       country_localizations.AddOrModifyLocalizationBlock(hoi4_country, *country_localization_block);
       country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_DEF", hoi4_country),
           *country_localization_block);
+
+      const auto& adjective_localization_block =
+          vic3_localizations.GetLocalizationBlock(fmt::format("{}_ADJ", vic3_country));
+      if (!adjective_localization_block)
+      {
+         continue;
+      }
       country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_ADJ", hoi4_country),
-          *country_localization_block);
+          *adjective_localization_block);
    }
 
    return {country_localizations};
