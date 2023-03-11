@@ -9,10 +9,10 @@
 
 #include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
+#include "src/hoi4_world/localizations/localizations.h"
 #include "src/hoi4_world/map/buildings.h"
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/states/hoi4_states.h"
-#include "src/hoi4_world/localizations/localizations.h"
 
 
 
@@ -53,7 +53,6 @@ class World
    StrategicRegions strategic_regions_;
    Buildings buildings_;
    Localizations localizations_;
-   
 };
 
 }  // namespace hoi4
