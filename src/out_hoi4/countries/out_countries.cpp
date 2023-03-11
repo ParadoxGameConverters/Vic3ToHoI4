@@ -13,7 +13,8 @@ void out::OutputCountries(std::string_view output_name, const std::map<std::stri
    std::ofstream tags_file(fmt::format("output/{}/common/country_tags/00_countries.txt", output_name));
    if (!tags_file.is_open())
    {
-      throw std::runtime_error(fmt::format("output/{}/common/country_tags/00_countries.txt", output_name));
+      throw std::runtime_error(
+          fmt::format("Could not open output/{}/common/country_tags/00_countries.txt", output_name));
    }
 
    for (const auto& country: countries | std::views::values)

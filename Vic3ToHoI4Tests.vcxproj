@@ -61,6 +61,7 @@
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\localizations\localizations_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\buildings_creator_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer_tests.cpp" />
@@ -87,6 +88,7 @@
     <ClCompile Include="src\maps\utility_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\localizations\out_localizations_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_buildings_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_building_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_rocket_sites_tests.cpp" />

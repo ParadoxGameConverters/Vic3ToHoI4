@@ -24,6 +24,7 @@ void CreateTestFolders(std::string_view test_name)
    commonItems::TryCreateFolder(fmt::format("output/{}/history", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history/countries", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history/states", test_name));
+   commonItems::TryCreateFolder(fmt::format("output/{}/localisation", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/map", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/map/strategicregions", test_name));
 }
@@ -131,6 +132,41 @@ TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
    const hoi4::Buildings buildings(options);
 
    OutputWorld("BuildingsFileIsCreatedAndOutput", hoi4::World({.buildings = buildings}));
+}
+
+
+TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
+{
+   CreateTestFolders("LocalizationsAreOutput");
+   commonItems::TryCreateFolder("LocalizationsAreOutput");
+
+   commonItems::LocalizationDatabase country_localizations("english", {"spanish"});
+   commonItems::LocalizationBlock block_one("test_country", "english");
+   block_one.ModifyLocalization("english", "test");
+   block_one.ModifyLocalization("spanish", "prueba");
+   country_localizations.AddOrModifyLocalizationBlock("test_country", block_one);
+   commonItems::LocalizationBlock block_two("test_country_two", "english");
+   block_two.ModifyLocalization("english", "test two");
+   block_two.ModifyLocalization("spanish", "prueba dos");
+   country_localizations.AddOrModifyLocalizationBlock("test_country_two", block_two);
+
+   const hoi4::Localizations localizations(country_localizations);
+
+   OutputWorld("LocalizationsAreOutput", hoi4::World({.localizations = localizations}));
+
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/braz_por/countries_l_braz_por.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/english/countries_l_english.yml"));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/french/countries_l_french.yml"));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/german/countries_l_german.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/japanese/countries_l_japanese.yml"));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/polish/countries_l_polish.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/russian/countries_l_russian.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/spanish/countries_l_spanish.yml"));
 }
 
 }  // namespace out

@@ -17,6 +17,8 @@
     <ClInclude Include="src\hoi4_world\countries\hoi4_countries_converter.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_country.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_country_converter.h" />
+    <ClInclude Include="src\hoi4_world\localizations\localizations.h" />
+    <ClInclude Include="src\hoi4_world\localizations\localizations_converter.h" />
     <ClInclude Include="src\hoi4_world\map\buildings.h" />
     <ClInclude Include="src\hoi4_world\map\buildings_creator.h" />
     <ClInclude Include="src\hoi4_world\map\building_position.h" />
@@ -56,6 +58,7 @@
     <ClInclude Include="src\maps\utility.h" />
     <ClInclude Include="src\out_hoi4\countries\out_countries.h" />
     <ClInclude Include="src\out_hoi4\countries\out_country.h" />
+    <ClInclude Include="src\out_hoi4\localizations\out_localizations.h" />
     <ClInclude Include="src\out_hoi4\map\out_building.h" />
     <ClInclude Include="src\out_hoi4\map\out_buildings.h" />
     <ClInclude Include="src\out_hoi4\map\out_rocket_sites.h" />
@@ -87,6 +90,7 @@
     <ClCompile Include="src\configuration\configuration_importer.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
+    <ClCompile Include="src\hoi4_world\localizations\localizations_converter.cpp" />
     <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer.cpp" />
@@ -113,6 +117,7 @@
     <ClCompile Include="src\maps\utility.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp" />
+    <ClCompile Include="src\out_hoi4\localizations\out_localizations.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_building.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_buildings.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_rocket_sites.cpp" />

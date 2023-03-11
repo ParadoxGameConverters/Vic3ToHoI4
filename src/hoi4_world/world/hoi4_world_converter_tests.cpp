@@ -242,4 +242,44 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
    EXPECT_FALSE(world.GetBuildings().GetAirportLocations().empty());
 }
 
+
+TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
+{
+   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
+   const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
+   const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
+
+   mappers::ProvinceMapper province_mapper{{}, {}};
+
+   commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
+   commonItems::LocalizationBlock block_one("TAG", "english");
+   block_one.ModifyLocalization("english", "test");
+   block_one.ModifyLocalization("spanish", "prueba");
+   vic3_localizations.AddOrModifyLocalizationBlock("TAG", block_one);
+   commonItems::LocalizationBlock block_two("TWO", "english");
+   block_two.ModifyLocalization("english", "test two");
+   block_two.ModifyLocalization("spanish", "prueba dos");
+   vic3_localizations.AddOrModifyLocalizationBlock("TWO", block_two);
+
+   const vic3::World source_world(
+       {.countries = {{1, source_country_one}, {3, source_country_two}}, .localizations = vic3_localizations});
+
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+       source_world,
+       country_mapper,
+       province_mapper);
+
+   const std::optional<commonItems::LocalizationBlock> hoi_localization_block =
+       world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("TAG");
+   ASSERT_TRUE(hoi_localization_block.has_value());
+   EXPECT_THAT(hoi_localization_block->GetLocalizations(),
+       testing::UnorderedElementsAre(testing::Pair("english", "test"), testing::Pair("spanish", "prueba")));
+
+   const std::optional<commonItems::LocalizationBlock> two_localization_block =
+       world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("TWO");
+   ASSERT_TRUE(two_localization_block.has_value());
+   EXPECT_THAT(two_localization_block->GetLocalizations(),
+       testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
+}
+
 }  // namespace hoi4

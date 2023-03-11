@@ -94,6 +94,12 @@
     <Filter Include="src\out_hoi4\technology">
       <UniqueIdentifier>{3ecea192-075e-4872-8b39-169f1835f9ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\localizations">
+      <UniqueIdentifier>{4d706e61-6678-495f-beb6-41da44ab71a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\localizations">
+      <UniqueIdentifier>{9d45ced7-f29c-4d50-9182-fa467922e53a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -251,6 +257,12 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\states\state_regions_importer_tests.cpp">
       <Filter>src\vic3_world\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\localizations\out_localizations_tests.cpp">
+      <Filter>src\out_hoi4\localizations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\localizations\localizations_converter_tests.cpp">
+      <Filter>src\hoi4_world\localizations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

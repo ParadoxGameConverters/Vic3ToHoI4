@@ -7,6 +7,7 @@
 #include <memory>
 #include <string>
 
+#include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "external/commonItems/ModLoader/ModFilesystem.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/map/strategic_regions.h"
@@ -21,7 +22,7 @@
 namespace hoi4
 {
 
-World ConvertWorld(commonItems::ModFilesystem hoi4_mod_filesystem,
+World ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::CountryMapper& country_mapper,
     const mappers::ProvinceMapper& province_mapper);
