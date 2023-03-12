@@ -181,6 +181,22 @@ std::map<std::string, std::string> GetAllSignificantProvinces(
 }
 
 
+std::map<std::string, std::string> MapVic3ProvincesToStateNames(
+    const std::map<std::string, vic3::StateRegion>& vic3_state_regions)
+{
+   std::map<std::string, std::string> vic3_provinces_to_state_names;
+   for (const auto& [region_name, region]: vic3_state_regions)
+   {
+      for (const auto& province: region.GetProvinces())
+      {
+         vic3_provinces_to_state_names.emplace(province, region_name);
+      }
+   }
+
+   return vic3_provinces_to_state_names;
+}
+
+
 std::vector<std::set<int>> GetConnectedProvinceSets(std::set<int> province_numbers,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions)
@@ -302,6 +318,30 @@ std::vector<std::set<int>> ConsolidateProvinceSets(std::vector<std::set<int>> co
    }
 
    return new_connected_province_sets;
+}
+
+
+void RecordStateNamesMapping(const std::set<int>& province_set,
+    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
+    const std::map<std::string, std::string>& vic3_provinces_to_state_names,
+    int hoi4_state_number,
+    std::map<std::string, std::string>& hoi4_state_names_to_vic3_state_names)
+{
+   bool pause = false;
+   const auto& first_province = *province_set.begin();
+   if (const auto& mapping = hoi4_to_vic3_province_mappings.find(first_province);
+       mapping != hoi4_to_vic3_province_mappings.end())
+   {
+      if (!mapping->second.empty())
+      {
+         if (const auto& state_name_mapping = vic3_provinces_to_state_names.find(mapping->second[0]);
+             state_name_mapping != vic3_provinces_to_state_names.end())
+         {
+            hoi4_state_names_to_vic3_state_names.emplace(fmt::format("STATE_{}", hoi4_state_number),
+                state_name_mapping->second);
+         }
+      }
+   }
 }
 
 
@@ -489,6 +529,8 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
    std::unordered_map<std::string, FactoriesStruct> accumulator;
    const std::set<int> wasteland_provinces = GetWastelandProvinces(default_states);
    std::map<std::string, std::string> significant_provinces = GetAllSignificantProvinces(vic3_state_regions);
+   std::map<std::string, std::string> vic3_provinces_to_state_names = MapVic3ProvincesToStateNames(vic3_state_regions);
+   std::map<std::string, std::string> hoi4_state_names_to_vic3_state_names;
 
    for (const auto& [vic3_state_id, hoi4_provinces]: vic3_state_id_to_hoi4_provinces)
    {
@@ -536,6 +578,12 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
       const float total_factories = static_cast<float>(vic3_state_itr->second.GetEmployedPopulation()) / 100'000.0F;
       for (const auto& province_set: final_connected_province_sets)
       {
+         RecordStateNamesMapping(province_set,
+             hoi4_to_vic3_province_mappings,
+             vic3_provinces_to_state_names,
+             static_cast<int>(hoi4_states.size() + 1U),
+             hoi4_state_names_to_vic3_state_names);
+
          int civilian_factories = 0;
          int military_factories = 0;
          int dockyards = 0;
@@ -577,6 +625,12 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
       }
       for (const auto& province_set: final_wasteland_connected_province_sets)
       {
+         RecordStateNamesMapping(province_set,
+             hoi4_to_vic3_province_mappings,
+             vic3_provinces_to_state_names,
+             static_cast<int>(hoi4_states.size() + 1U),
+             hoi4_state_names_to_vic3_state_names);
+
          const int manpower = static_cast<int>(
              total_manpower * static_cast<int>(province_set.size()) / static_cast<int>(hoi4_provinces.size()));
 
@@ -595,7 +649,10 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 
    LogIndustryStats(hoi4_states, default_states);
 
-   return {hoi4_states, province_to_state_id_map, vic3_state_ids_to_hoi4_state_ids};
+   return {hoi4_states,
+       province_to_state_id_map,
+       vic3_state_ids_to_hoi4_state_ids,
+       hoi4_state_names_to_vic3_state_names};
 }
 
 }  // namespace
