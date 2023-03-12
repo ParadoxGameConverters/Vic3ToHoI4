@@ -327,21 +327,25 @@ void RecordStateNamesMapping(const std::set<int>& province_set,
     int hoi4_state_number,
     std::map<std::string, std::string>& hoi4_state_names_to_vic3_state_names)
 {
-   bool pause = false;
    const auto& first_province = *province_set.begin();
-   if (const auto& mapping = hoi4_to_vic3_province_mappings.find(first_province);
-       mapping != hoi4_to_vic3_province_mappings.end())
+   const auto& mapping = hoi4_to_vic3_province_mappings.find(first_province);
+   if (mapping == hoi4_to_vic3_province_mappings.end())
    {
-      if (!mapping->second.empty())
-      {
-         if (const auto& state_name_mapping = vic3_provinces_to_state_names.find(mapping->second[0]);
-             state_name_mapping != vic3_provinces_to_state_names.end())
-         {
-            hoi4_state_names_to_vic3_state_names.emplace(fmt::format("STATE_{}", hoi4_state_number),
-                state_name_mapping->second);
-         }
-      }
+      return;
    }
+
+   if (mapping->second.empty())
+   {
+      return;
+   }
+
+   const auto& state_name_mapping = vic3_provinces_to_state_names.find(mapping->second[0]);
+   if (state_name_mapping == vic3_provinces_to_state_names.end())
+   {
+      return;
+   }
+
+   hoi4_state_names_to_vic3_state_names.emplace(fmt::format("STATE_{}", hoi4_state_number), state_name_mapping->second);
 }
 
 
