@@ -66,4 +66,5 @@ void out::OutputLocalizations(std::string_view output_name, const hoi4::Localiza
 {
    CreateFolders(output_name);
    OutputLocalisations(output_name, "countries_l_", localizations.GetCountryLocalizations());
+   OutputLocalisations(output_name, "state_names_l_", localizations.GetStateLocalizations());
 }

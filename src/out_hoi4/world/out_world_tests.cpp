@@ -141,16 +141,26 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
    commonItems::TryCreateFolder("LocalizationsAreOutput");
 
    commonItems::LocalizationDatabase country_localizations("english", {"spanish"});
-   commonItems::LocalizationBlock block_one("test_country", "english");
-   block_one.ModifyLocalization("english", "test");
-   block_one.ModifyLocalization("spanish", "prueba");
-   country_localizations.AddOrModifyLocalizationBlock("test_country", block_one);
-   commonItems::LocalizationBlock block_two("test_country_two", "english");
-   block_two.ModifyLocalization("english", "test two");
-   block_two.ModifyLocalization("spanish", "prueba dos");
-   country_localizations.AddOrModifyLocalizationBlock("test_country_two", block_two);
+   commonItems::LocalizationBlock country_block_one("test_country", "english");
+   country_block_one.ModifyLocalization("english", "test");
+   country_block_one.ModifyLocalization("spanish", "prueba");
+   country_localizations.AddOrModifyLocalizationBlock("test_country", country_block_one);
+   commonItems::LocalizationBlock country_block_two("test_country_two", "english");
+   country_block_two.ModifyLocalization("english", "test two");
+   country_block_two.ModifyLocalization("spanish", "prueba dos");
+   country_localizations.AddOrModifyLocalizationBlock("test_country_two", country_block_two);
 
-   const hoi4::Localizations localizations(country_localizations);
+   commonItems::LocalizationDatabase state_localizations("english", {"spanish"});
+   commonItems::LocalizationBlock state_block_one("test_state", "english");
+   state_block_one.ModifyLocalization("english", "test");
+   state_block_one.ModifyLocalization("spanish", "prueba");
+   state_localizations.AddOrModifyLocalizationBlock("test_state", state_block_one);
+   commonItems::LocalizationBlock state_block_two("test_state_two", "english");
+   state_block_two.ModifyLocalization("english", "test two");
+   state_block_two.ModifyLocalization("spanish", "prueba dos");
+   state_localizations.AddOrModifyLocalizationBlock("test_state_two", state_block_two);
+
+   const hoi4::Localizations localizations(country_localizations, state_localizations);
 
    OutputWorld("LocalizationsAreOutput", hoi4::World({.localizations = localizations}));
 
@@ -167,6 +177,23 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
        commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/russian/countries_l_russian.yml"));
    ASSERT_TRUE(
        commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/spanish/countries_l_spanish.yml"));
+
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/braz_por/state_names_l_braz_por.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/english/state_names_l_english.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/french/state_names_l_french.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/german/state_names_l_german.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/japanese/state_names_l_japanese.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/polish/state_names_l_polish.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/russian/state_names_l_russian.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/spanish/state_names_l_spanish.yml"));
 }
 
 }  // namespace out
