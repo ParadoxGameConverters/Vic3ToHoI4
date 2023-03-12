@@ -4,7 +4,7 @@
     provinces = { "x0974E5" "x216569" }
     traits = { "state_trait_bergslagen" "state_trait_scandinavian_forests" "state_trait_natural_harbors" }
     city = "x9686A5"
-    port = "x93C3BC"
+    port = "X93c3bc"
     farm = "xF48646"
     mine = "x6F40EC"
     wood = "x4C9918"

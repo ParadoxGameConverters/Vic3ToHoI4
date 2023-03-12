@@ -15,8 +15,9 @@ namespace vic3
 class StateRegion
 {
   public:
-   explicit StateRegion(std::map<std::string, std::string> significant_provinces):
-       significant_provinces_(std::move(significant_provinces))
+   explicit StateRegion(std::map<std::string, std::string> significant_provinces, std::set<std::string> provinces):
+       significant_provinces_(std::move(significant_provinces)),
+       provinces_(std::move(provinces))
    {
    }
 
@@ -24,11 +25,13 @@ class StateRegion
    {
       return significant_provinces_;
    }
+   [[nodiscard]] const std::set<std::string>& GetProvinces() const { return provinces_; }
 
    std::strong_ordering operator<=>(const StateRegion&) const = default;
 
   private:
    std::map<std::string, std::string> significant_provinces_;
+   std::set<std::string> provinces_;
 };
 
 }  // namespace vic3

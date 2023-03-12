@@ -37,6 +37,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
 
    EXPECT_TRUE(hoi4_states.states.empty());
    EXPECT_TRUE(hoi4_states.province_to_state_id_map.empty());
+   EXPECT_TRUE(hoi4_states.vic3_state_ids_to_hoi4_state_ids.empty());
+   EXPECT_TRUE(hoi4_states.hoi4_state_names_to_vic3_state_names.empty());
 }
 
 
@@ -68,7 +70,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
        country_mapper,
        StateCategories(),
        {},
-       {});
+       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}}), State(2, {.provinces = {40, 50, 60}})));
@@ -81,6 +84,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
            testing::Pair(60, 2)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"), testing::Pair("STATE_2", "REGION_TWO")));
 }
 
 
@@ -109,7 +114,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
        country_mapper,
        StateCategories(),
        {},
-       {});
+       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.owner = "ONE", .provinces = {10}}),
@@ -118,6 +124,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
        testing::UnorderedElementsAre(testing::Pair(10, 1), testing::Pair(20, 2)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(4, 2)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"), testing::Pair("STATE_2", "REGION_TWO")));
 }
 
 
@@ -149,7 +157,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
            country_mapper,
            StateCategories(),
            {},
-           {});
+           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20}}),
@@ -164,6 +173,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
            testing::Pair(60, 3)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 3)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"),
+           testing::Pair("STATE_2", "REGION_ONE"),
+           testing::Pair("STATE_3", "REGION_TWO")));
 }
 
 
@@ -198,7 +211,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
            country_mapper,
            StateCategories(),
            {},
-           {});
+           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -220,6 +234,13 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
            testing::Pair(60, 6)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 4)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"),
+           testing::Pair("STATE_2", "REGION_ONE"),
+           testing::Pair("STATE_3", "REGION_ONE"),
+           testing::Pair("STATE_4", "REGION_TWO"),
+           testing::Pair("STATE_5", "REGION_TWO"),
+           testing::Pair("STATE_6", "REGION_TWO")));
 }
 
 
@@ -251,7 +272,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
            country_mapper,
            StateCategories(),
            {},
-           {});
+           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}}), State(2, {.provinces = {40, 50, 60}})));
@@ -264,6 +286,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
            testing::Pair(60, 2)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"), testing::Pair("STATE_2", "REGION_TWO")));
 }
 
 
@@ -299,7 +323,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
            {2, DefaultState({.impassable = true, .provinces = {30, 40, 50}})},
            {3, DefaultState({.provinces = {60}})},
        },
-       {});
+       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20}}),
@@ -315,6 +340,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
            testing::Pair(60, 3)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 3)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"),
+           testing::Pair("STATE_2", "REGION_ONE"),
+           testing::Pair("STATE_3", "REGION_TWO"),
+           testing::Pair("STATE_4", "REGION_TWO")));
 }
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
@@ -340,6 +370,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
    EXPECT_TRUE(hoi4_states.states.empty());
    EXPECT_TRUE(hoi4_states.province_to_state_id_map.empty());
    EXPECT_TRUE(hoi4_states.vic3_state_ids_to_hoi4_state_ids.empty());
+   EXPECT_TRUE(hoi4_states.hoi4_state_names_to_vic3_state_names.empty());
 }
 
 
@@ -374,7 +405,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
            country_mapper,
            StateCategories(),
            {},
-           {});
+           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -389,6 +421,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
            testing::Pair(50, 2)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"), testing::Pair("STATE_2", "REGION_TWO")));
 }
 
 
@@ -424,7 +458,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
            country_mapper,
            StateCategories(),
            {},
-           {});
+           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -439,6 +474,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
            testing::Pair(50, 2)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"), testing::Pair("STATE_2", "REGION_TWO")));
 }
 
 
@@ -474,7 +511,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
            country_mapper,
            StateCategories(),
            {},
-           {});
+           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -489,6 +527,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
            testing::Pair(60, 2)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"), testing::Pair("STATE_2", "REGION_TWO")));
 }
 
 
@@ -517,7 +557,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
        country_mapper,
        StateCategories(),
        {},
-       {});
+       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+           {"REGION_THREE", vic3::StateRegion({}, {"0x000007", "0x000008", "0x000009"})}});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10}}),
@@ -527,6 +569,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
        testing::UnorderedElementsAre(testing::Pair(10, 1), testing::Pair(50, 2), testing::Pair(90, 3)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(0, 1), testing::Pair(5, 2), testing::Pair(9, 3)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"),
+           testing::Pair("STATE_2", "REGION_TWO"),
+           testing::Pair("STATE_3", "REGION_THREE")));
 }
 
 
@@ -558,7 +604,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
        country_mapper,
        StateCategories(),
        {},
-       {});
+       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.owner = "TAG", .provinces = {10, 20, 30}}),
@@ -572,6 +619,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
            testing::Pair(60, 2)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"), testing::Pair("STATE_2", "REGION_TWO")));
 }
 
 
@@ -607,7 +656,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
        country_mapper,
        StateCategories(),
        {},
-       {});
+       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -622,6 +672,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
            testing::Pair(60, 2)));
    EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"), testing::Pair("STATE_2", "REGION_TWO")));
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not get tag for owner of Vic3 state 1."));
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not get tag for owner of Vic3 state 2."));
 }
@@ -1173,13 +1225,15 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreConverted)
            StateCategories(),
            {},
            {{"STATE_ONE",
-               vic3::StateRegion({
-                   {"0x000005", "city"},
-                   {"0x000004", "port"},
-                   {"0x000003", "farm"},
-                   {"0x000002", "mine"},
-                   {"0x000001", "wood"},
-               })}});
+               vic3::StateRegion(
+                   {
+                       {"0x000005", "city"},
+                       {"0x000004", "port"},
+                       {"0x000003", "farm"},
+                       {"0x000002", "mine"},
+                       {"0x000001", "wood"},
+                   },
+                   {})}});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .victory_points = {{10, 1}, {20, 2}, {30, 3}}}),
