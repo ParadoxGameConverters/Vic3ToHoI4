@@ -160,7 +160,17 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
    state_block_two.ModifyLocalization("spanish", "prueba dos");
    state_localizations.AddOrModifyLocalizationBlock("test_state_two", state_block_two);
 
-   const hoi4::Localizations localizations(country_localizations, state_localizations);
+   commonItems::LocalizationDatabase victory_point_localizations("english", {"spanish"});
+   commonItems::LocalizationBlock victory_points_block_one("test_state", "english");
+   victory_points_block_one.ModifyLocalization("english", "test");
+   victory_points_block_one.ModifyLocalization("spanish", "prueba");
+   state_localizations.AddOrModifyLocalizationBlock("test_state", victory_points_block_one);
+   commonItems::LocalizationBlock victory_points_block_two("test_state_two", "english");
+   victory_points_block_two.ModifyLocalization("english", "test two");
+   victory_points_block_two.ModifyLocalization("spanish", "prueba dos");
+   state_localizations.AddOrModifyLocalizationBlock("test_state_two", victory_points_block_two);
+
+   const hoi4::Localizations localizations(country_localizations, state_localizations, victory_point_localizations);
 
    OutputWorld("LocalizationsAreOutput", hoi4::World({.localizations = localizations}));
 
@@ -194,6 +204,23 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
        commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/russian/state_names_l_russian.yml"));
    ASSERT_TRUE(
        commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/spanish/state_names_l_spanish.yml"));
+
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/braz_por/victory_points_l_braz_por.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/english/victory_points_l_english.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/french/victory_points_l_french.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/german/victory_points_l_german.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/japanese/victory_points_l_japanese.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/polish/victory_points_l_polish.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/russian/victory_points_l_russian.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/spanish/victory_points_l_spanish.yml"));
 }
 
 }  // namespace out

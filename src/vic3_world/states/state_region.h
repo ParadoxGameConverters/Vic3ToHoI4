@@ -30,7 +30,7 @@ class StateRegion
    std::strong_ordering operator<=>(const StateRegion&) const = default;
 
   private:
-   std::map<std::string, std::string> significant_provinces_;
+   std::map<std::string, std::string> significant_provinces_;  // province, type
    std::set<std::string> provinces_;
 };
 
