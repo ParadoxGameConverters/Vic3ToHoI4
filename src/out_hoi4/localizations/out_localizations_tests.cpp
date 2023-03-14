@@ -52,8 +52,9 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
    country_localizations.AddOrModifyLocalizationBlock("test_country_two", block_two);
 
    const commonItems::LocalizationDatabase state_localizations("english", {"spanish"});
+   const commonItems::LocalizationDatabase victory_point_localizations("english", {"spanish"});
 
-   const hoi4::Localizations localizations(country_localizations, state_localizations);
+   const hoi4::Localizations localizations(country_localizations, state_localizations, victory_point_localizations);
 
    OutputLocalizations("Outhoi4Localizations/CountryLocalizationsAreOutput", localizations);
 
@@ -197,7 +198,9 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
    block_two.ModifyLocalization("spanish", "prueba dos");
    state_localizations.AddOrModifyLocalizationBlock("test_state_two", block_two);
 
-   const hoi4::Localizations localizations(country_localizations, state_localizations);
+   const commonItems::LocalizationDatabase victory_point_localizations("english", {"spanish"});
+
+   const hoi4::Localizations localizations(country_localizations, state_localizations, victory_point_localizations);
 
    OutputLocalizations("Outhoi4Localizations/StateLocalizationsAreOutput", localizations);
 

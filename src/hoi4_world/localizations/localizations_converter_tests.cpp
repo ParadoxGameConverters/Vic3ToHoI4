@@ -22,7 +22,8 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoCountryMappingsNoCountryLoc
    vic3_localizations.AddOrModifyLocalizationBlock("TWO", block_two);
 
 
-   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations, {}, {});
+   const Localizations hoi4_localizations =
+       ConvertLocalizations(vic3_localizations, {}, {}, {}, mappers::ProvinceMapper({}, {}));
 
    EXPECT_EQ(hoi4_localizations.GetCountryLocalizations().size(), 0);
 }
@@ -32,8 +33,11 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoVic3LocalizationsNoHoi4Coun
 {
    const commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
 
-   const Localizations hoi4_localizations =
-       ConvertLocalizations(vic3_localizations, {{"VIC", "HOI"}, {"TWO", "TWO"}}, {});
+   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
+       {{"VIC", "HOI"}, {"TWO", "TWO"}},
+       {},
+       {},
+       mappers::ProvinceMapper({}, {}));
 
    EXPECT_EQ(hoi4_localizations.GetCountryLocalizations().size(), 0);
 }
@@ -60,8 +64,11 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, CountryLocalizationsCanBeConv
    vic3_localizations.AddOrModifyLocalizationBlock("TWO_ADJ", block_two_adj);
 
 
-   const Localizations hoi4_localizations =
-       ConvertLocalizations(vic3_localizations, {{"VIC", "HOI"}, {"TWO", "TWO"}}, {});
+   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
+       {{"VIC", "HOI"}, {"TWO", "TWO"}},
+       {},
+       {},
+       mappers::ProvinceMapper({}, {}));
 
    const std::optional<commonItems::LocalizationBlock> hoi_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("HOI");
@@ -115,7 +122,8 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoStateNameMappingsNoStateLoc
    vic3_localizations.AddOrModifyLocalizationBlock("TWO", block_two);
 
 
-   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations, {}, {});
+   const Localizations hoi4_localizations =
+       ConvertLocalizations(vic3_localizations, {}, {}, {}, mappers::ProvinceMapper({}, {}));
 
    EXPECT_EQ(hoi4_localizations.GetStateLocalizations().size(), 0);
 }
@@ -125,8 +133,11 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoVic3LocalizationsNoHoi4Stat
 {
    const commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
 
-   const Localizations hoi4_localizations =
-       ConvertLocalizations(vic3_localizations, {}, {{"STATE_ONE", "REGION_ONE"}, {"STATE_TWO", "REGION_TWO"}});
+   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
+       {},
+       {{"STATE_ONE", "REGION_ONE"}, {"STATE_TWO", "REGION_TWO"}},
+       {},
+       mappers::ProvinceMapper({}, {}));
 
    EXPECT_EQ(hoi4_localizations.GetStateLocalizations().size(), 0);
 }
@@ -144,8 +155,11 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, StateLocalizationsCanBeConver
    block_two.ModifyLocalization("spanish", "prueba dos");
    vic3_localizations.AddOrModifyLocalizationBlock("REGION_TWO", block_two);
 
-   const Localizations hoi4_localizations =
-       ConvertLocalizations(vic3_localizations, {}, {{"STATE_ONE", "REGION_ONE"}, {"STATE_TWO", "REGION_TWO"}});
+   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
+       {},
+       {{"STATE_ONE", "REGION_ONE"}, {"STATE_TWO", "REGION_TWO"}},
+       {},
+       mappers::ProvinceMapper({}, {}));
 
    const std::optional<commonItems::LocalizationBlock> one_localization_block =
        hoi4_localizations.GetStateLocalizations().GetLocalizationBlock("STATE_ONE");
@@ -158,6 +172,108 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, StateLocalizationsCanBeConver
    ASSERT_TRUE(two_localization_block.has_value());
    EXPECT_THAT(two_localization_block->GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
+}
+
+
+TEST(Hoi4worldLocalizationsLocalizationsconverter, NoRegionsNoVictoryPointLocalizations)
+{
+   commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
+   commonItems::LocalizationBlock block_one("HUB_NAME_REGION_ONE_city", "english");
+   block_one.ModifyLocalization("english", "test");
+   block_one.ModifyLocalization("spanish", "prueba");
+   vic3_localizations.AddOrModifyLocalizationBlock("HUB_NAME_REGION_ONE_city", block_one);
+   commonItems::LocalizationBlock block_two("HUB_NAME_REGION_ONE_mine", "english");
+   block_two.ModifyLocalization("english", "test two");
+   block_two.ModifyLocalization("spanish", "prueba dos");
+   vic3_localizations.AddOrModifyLocalizationBlock("HUB_NAME_REGION_ONE_mine", block_two);
+
+   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
+       {},
+       {},
+       {},
+       mappers::ProvinceMapper({{"x123456", {1}}, {"x2468AC", {2}}}, {}));
+
+   EXPECT_EQ(hoi4_localizations.GetVictoryPointLocalizations().size(), 0);
+}
+
+
+TEST(Hoi4worldLocalizationsLocalizationsconverter, NoSignificantProvincesNoVictoryPointLocalizations)
+{
+   commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
+   commonItems::LocalizationBlock block_one("HUB_NAME_REGION_ONE_city", "english");
+   block_one.ModifyLocalization("english", "test");
+   block_one.ModifyLocalization("spanish", "prueba");
+   vic3_localizations.AddOrModifyLocalizationBlock("HUB_NAME_REGION_ONE_city", block_one);
+   commonItems::LocalizationBlock block_two("HUB_NAME_REGION_ONE_mine", "english");
+   block_two.ModifyLocalization("english", "test two");
+   block_two.ModifyLocalization("spanish", "prueba dos");
+   vic3_localizations.AddOrModifyLocalizationBlock("HUB_NAME_REGION_ONE_mine", block_two);
+
+   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
+       {},
+       {},
+       {{"REGION_ONE", vic3::StateRegion({}, {})}},
+       mappers::ProvinceMapper({{"x123456", {1}}, {"x2468AC", {2}}}, {}));
+
+   EXPECT_EQ(hoi4_localizations.GetVictoryPointLocalizations().size(), 0);
+}
+
+
+TEST(Hoi4worldLocalizationsLocalizationsconverter, VictoryPointLocalizationsCanBeConverted)
+{
+   commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
+   commonItems::LocalizationBlock block_one("HUB_NAME_REGION_ONE_city", "english");
+   block_one.ModifyLocalization("english", "test");
+   block_one.ModifyLocalization("spanish", "prueba");
+   vic3_localizations.AddOrModifyLocalizationBlock("HUB_NAME_REGION_ONE_city", block_one);
+   commonItems::LocalizationBlock block_two("HUB_NAME_REGION_ONE_mine", "english");
+   block_two.ModifyLocalization("english", "test two");
+   block_two.ModifyLocalization("spanish", "prueba dos");
+   vic3_localizations.AddOrModifyLocalizationBlock("HUB_NAME_REGION_ONE_mine", block_two);
+
+   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
+       {},
+       {},
+       {{"REGION_ONE", vic3::StateRegion({{"x123456", "city"}, {"x2468AC", "mine"}}, {})}},
+       mappers::ProvinceMapper({{"x123456", {1}}, {"x2468AC", {2}}}, {}));
+
+   const std::optional<commonItems::LocalizationBlock> one_localization_block =
+       hoi4_localizations.GetVictoryPointLocalizations().GetLocalizationBlock("VICTORY_POINTS_1");
+   ASSERT_TRUE(one_localization_block.has_value());
+   EXPECT_THAT(one_localization_block->GetLocalizations(),
+       testing::UnorderedElementsAre(testing::Pair("english", "test"), testing::Pair("spanish", "prueba")));
+
+   const std::optional<commonItems::LocalizationBlock> two_localization_block =
+       hoi4_localizations.GetVictoryPointLocalizations().GetLocalizationBlock("VICTORY_POINTS_2");
+   ASSERT_TRUE(two_localization_block.has_value());
+   EXPECT_THAT(two_localization_block->GetLocalizations(),
+       testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
+}
+
+
+TEST(Hoi4worldLocalizationsLocalizationsconverter, SkippedVictoryPointLocalizationsAreLogged)
+{
+   commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
+   commonItems::LocalizationBlock block_one("HUB_NAME_REGION_ONE_city", "english");
+   block_one.ModifyLocalization("english", "test");
+   block_one.ModifyLocalization("spanish", "prueba");
+   vic3_localizations.AddOrModifyLocalizationBlock("HUB_NAME_REGION_ONE_city", block_one);
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
+       {},
+       {},
+       {{"REGION_ONE", vic3::StateRegion({{"x123456", "city"}, {"x2468AC", "mine"}}, {})}},
+       mappers::ProvinceMapper({{"x2468AC", {2}}}, {}));
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] 2 VP localizations were skipped."));
+
+   EXPECT_EQ(hoi4_localizations.GetVictoryPointLocalizations().size(), 0);
 }
 
 }  // namespace hoi4

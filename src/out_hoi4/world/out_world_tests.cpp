@@ -160,7 +160,9 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
    state_block_two.ModifyLocalization("spanish", "prueba dos");
    state_localizations.AddOrModifyLocalizationBlock("test_state_two", state_block_two);
 
-   const hoi4::Localizations localizations(country_localizations, state_localizations);
+   commonItems::LocalizationDatabase victory_point_localizations("english", {"spanish"});
+
+   const hoi4::Localizations localizations(country_localizations, state_localizations, victory_point_localizations);
 
    OutputWorld("LocalizationsAreOutput", hoi4::World({.localizations = localizations}));
 
