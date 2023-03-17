@@ -33,6 +33,9 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    const auto province_definitions = ImportProvinceDefinitions(hoi4_mod_filesystem);
    const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem);
    const std::map<int, DefaultState> default_states = hoi4::ImportDefaultStates(hoi4_mod_filesystem);
+   CoastalProvinces coastal_provinces = CreateCoastalProvinces(map_data,
+       province_definitions.GetLandProvinces(),
+       province_definitions.GetSeaProvinces());
 
    States states = ConvertStates(source_world.GetStates(),
        source_world.GetProvinceDefinitions(),
@@ -51,13 +54,11 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
            {2, "rural"},
            {4, "town"}}),
        default_states,
-       source_world.GetStateRegions());
+       source_world.GetStateRegions(),
+       coastal_provinces);
 
    strategic_regions.UpdateToMatchNewStates(states.states);
 
-   CoastalProvinces coastal_provinces = CreateCoastalProvinces(map_data,
-       province_definitions.GetLandProvinces(),
-       province_definitions.GetSeaProvinces());
    Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem);
 
    Log(LogLevel::Info) << "\tConverting countries";
