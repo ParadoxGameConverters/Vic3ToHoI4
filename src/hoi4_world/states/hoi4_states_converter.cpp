@@ -426,6 +426,45 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
 }
 
 
+std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const std::set<int>& hoi4_provinces,
+    const std::map<std::string, std::string>& significant_vic3_provinces,
+    const hoi4::CoastalProvinces& coastal_provinces,
+    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings)
+{
+   for (const auto& hoi4_province: hoi4_provinces)
+   {
+      if (!coastal_provinces.IsProvinceCoastal(hoi4_province))
+      {
+         continue;
+      }
+
+      const auto province_mapping = hoi4_to_vic3_province_mappings.find(hoi4_province);
+      if (province_mapping == hoi4_to_vic3_province_mappings.end())
+      {
+         continue;
+      }
+
+      if (std::ranges::none_of(province_mapping->second,
+              [significant_vic3_provinces](const std::string& vic3_province) {
+                 if (const auto& significant_province = significant_vic3_provinces.find(vic3_province);
+                     significant_province != significant_vic3_provinces.end())
+                 {
+                    return significant_province->second == "port";
+                 }
+
+                 return false;
+              }))
+      {
+         continue;
+      }
+
+      return {hoi4_province, 1};
+   }
+
+   return {std::nullopt, std::nullopt};
+}
+
+
 std::map<int, int> CreateVictoryPoints(const std::set<int>& hoi4_provinces,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
     const std::map<std::string, std::string>& significant_provinces)
@@ -608,6 +647,9 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
             dockyards = std::get<2>(all_factories);
          }
 
+         const auto [naval_base_location, naval_base_level] =
+             DetermineNavalBase(province_set, significant_provinces, coastal_provinces, hoi4_to_vic3_province_mappings);
+
          const std::string category = state_categories.GetBestCategory(
              std::min(civilian_factories + military_factories + dockyards, static_cast<int>(MAX_FACTORY_SLOTS)));
 
@@ -630,7 +672,9 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
                  .victory_points = victory_points,
                  .civilian_factories = civilian_factories,
                  .military_factories = military_factories,
-                 .dockyards = dockyards});
+                 .dockyards = dockyards,
+                 .naval_base_location = naval_base_location,
+                 .naval_base_level = naval_base_level});
       }
       for (const auto& province_set: final_wasteland_connected_province_sets)
       {
