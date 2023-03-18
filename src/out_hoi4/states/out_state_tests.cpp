@@ -389,4 +389,94 @@ TEST(Outhoi4StatesState, DockyardsNotOutputWhenZero)
                           "\t}\n"));
 }
 
+
+TEST(Outhoi4StatesState, NavalBasesCanBeOutput)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/NavalBasesCanBeOutput");
+   commonItems::TryCreateFolder("output/NavalBasesCanBeOutput/history");
+   commonItems::TryCreateFolder("output/NavalBasesCanBeOutput/history/states");
+
+   const hoi4::State state_one(1, {.provinces = {1, 4, 9, 16}, .naval_base_location = 9, .naval_base_level = 3});
+
+   OutputState("NavalBasesCanBeOutput", state_one);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NavalBasesCanBeOutput/history/states/1.txt"));
+   std::ifstream state_file("output/NavalBasesCanBeOutput/history/states/1.txt");
+   ASSERT_TRUE(state_file.is_open());
+   std::stringstream state_file_stream;
+   std::copy(std::istreambuf_iterator<char>(state_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream));
+   state_file.close();
+   EXPECT_THAT(state_file_stream.str(),
+       testing::HasSubstr("\thistory = {\n"
+                          "\t\tbuildings = {\n"
+                          "\t\t\tindustrial_complex = 0\n"
+                          "\t\t\tarms_factory = 0\n"
+                          "\t\t\t9 = {\n"
+                          "\t\t\t\tnaval_base = 3\n"
+                          "\t\t\t}\n"
+                          "\t\t}\n"
+                          "\t}\n"));
+}
+
+
+TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLevelIsMissing)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/NavalBasesAreNotOutputWhenLevelIsMissing");
+   commonItems::TryCreateFolder("output/NavalBasesAreNotOutputWhenLevelIsMissing/history");
+   commonItems::TryCreateFolder("output/NavalBasesAreNotOutputWhenLevelIsMissing/history/states");
+
+   const hoi4::State state_one(1, {.provinces = {1, 4, 9, 16}, .naval_base_location = 9});
+
+   OutputState("NavalBasesAreNotOutputWhenLevelIsMissing", state_one);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NavalBasesAreNotOutputWhenLevelIsMissing/history/states/1.txt"));
+   std::ifstream state_file("output/NavalBasesAreNotOutputWhenLevelIsMissing/history/states/1.txt");
+   ASSERT_TRUE(state_file.is_open());
+   std::stringstream state_file_stream;
+   std::copy(std::istreambuf_iterator<char>(state_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream));
+   state_file.close();
+   EXPECT_THAT(state_file_stream.str(),
+       testing::HasSubstr("\thistory = {\n"
+                          "\t\tbuildings = {\n"
+                          "\t\t\tindustrial_complex = 0\n"
+                          "\t\t\tarms_factory = 0\n"
+                          "\t\t}\n"
+                          "\t}\n"));
+}
+
+
+TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLocationIsMissing)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/NavalBasesAreNotOutputWhenLocationIsMissing");
+   commonItems::TryCreateFolder("output/NavalBasesAreNotOutputWhenLocationIsMissing/history");
+   commonItems::TryCreateFolder("output/NavalBasesAreNotOutputWhenLocationIsMissing/history/states");
+
+   const hoi4::State state_one(1, {.provinces = {1, 4, 9, 16}, .naval_base_level = 3});
+
+   OutputState("NavalBasesAreNotOutputWhenLocationIsMissing", state_one);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NavalBasesAreNotOutputWhenLocationIsMissing/history/states/1.txt"));
+   std::ifstream state_file("output/NavalBasesAreNotOutputWhenLocationIsMissing/history/states/1.txt");
+   ASSERT_TRUE(state_file.is_open());
+   std::stringstream state_file_stream;
+   std::copy(std::istreambuf_iterator<char>(state_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream));
+   state_file.close();
+   EXPECT_THAT(state_file_stream.str(),
+       testing::HasSubstr("\thistory = {\n"
+                          "\t\tbuildings = {\n"
+                          "\t\t\tindustrial_complex = 0\n"
+                          "\t\t\tarms_factory = 0\n"
+                          "\t\t}\n"
+                          "\t}\n"));
+}
+
 }  // namespace out
