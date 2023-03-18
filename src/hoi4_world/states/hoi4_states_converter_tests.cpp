@@ -1144,6 +1144,54 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
 }
 
 
+TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
+{
+   const vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
+   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
+       .province_definitions = hoi4_province_definitions});
+   const hoi4::StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+
+   const auto hoi4_states = ConvertStates({{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}})},
+                                              {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}})}},
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {{"REGION_ONE", vic3::StateRegion({{"0x000002", "port"}}, {})},
+           {"REGION_TWO", vic3::StateRegion({{"0x000005", "port"}}, {})}},
+       CoastalProvinces(std::map<int, std::vector<int>>{{20, {21}}, {50, {51}}}));
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1,
+                                {.owner = "ONE",
+                                    .provinces = {10, 20, 30},
+                                    .victory_points = {{20, 4}},
+                                    .naval_base_location = 20,
+                                    .naval_base_level = 1}),
+           State(2,
+               {.owner = "TWO",
+                   .provinces = {40, 50, 60},
+                   .victory_points = {{50, 4}},
+                   .naval_base_location = 50,
+                   .naval_base_level = 1})));
+}
+
+
 TEST(Hoi4worldStatesHoi4statesconverter, CategoryDefaultsToRural)
 {
    const vic3::ProvinceDefinitions province_definitions(

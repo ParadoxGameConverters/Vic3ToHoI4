@@ -47,6 +47,12 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
    {
       state_history << fmt::format("\t\t\tdockyard = {}\n", state.GetDockyards());
    }
+   if (state.GetNavalBaseLocation() && state.GetNavalBaseLevel())
+   {
+      state_history << fmt::format("\t\t\t{} = {{\n", *state.GetNavalBaseLocation());
+      state_history << fmt::format("\t\t\t\tnaval_base = {}\n", *state.GetNavalBaseLevel());
+      state_history << "\t\t\t}\n";
+   }
    state_history << "\t\t}\n";
    state_history << "\t}\n";
    state_history << "\n";

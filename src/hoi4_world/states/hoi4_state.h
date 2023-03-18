@@ -25,6 +25,8 @@ struct StateOptions
    int civilian_factories = 0;
    int military_factories = 0;
    int dockyards = 0;
+   std::optional<int> naval_base_location;
+   std::optional<int> naval_base_level;
 };
 
 
@@ -40,7 +42,9 @@ class State
        victory_points_(std::move(state_options.victory_points)),
        civilian_factories_(state_options.civilian_factories),
        military_factories_(state_options.military_factories),
-       dockyards_(state_options.dockyards)
+       dockyards_(state_options.dockyards),
+       naval_base_location_(std::move(state_options.naval_base_location)),
+       naval_base_level_(std::optional(state_options.naval_base_level))
    {
    }
 
@@ -53,6 +57,8 @@ class State
    [[nodiscard]] int GetCivilianFactories() const { return civilian_factories_; }
    [[nodiscard]] int GetMilitaryFactories() const { return military_factories_; }
    [[nodiscard]] int GetDockyards() const { return dockyards_; }
+   [[nodiscard]] std::optional<int> GetNavalBaseLocation() const { return naval_base_location_; }
+   [[nodiscard]] std::optional<int> GetNavalBaseLevel() const { return naval_base_level_; }
 
    std::strong_ordering operator<=>(const State&) const = default;
 
@@ -68,6 +74,8 @@ class State
    int civilian_factories_ = 0;
    int military_factories_ = 0;
    int dockyards_ = 0;
+   std::optional<int> naval_base_location_;
+   std::optional<int> naval_base_level_;
 };
 
 }  // namespace hoi4
