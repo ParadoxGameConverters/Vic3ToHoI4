@@ -13,7 +13,7 @@ namespace vic3
 
 TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionsCanBeLoaded)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/provinces", {});
+   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/provinces/game", {});
    const auto province_definitions = LoadProvinceDefinitions(mod_filesystem);
 
    EXPECT_THAT(province_definitions.GetProvinceDefinitions(),
@@ -27,7 +27,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitions, BadDefinitionsAreLogged)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/provinces", {});
+   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/provinces/game", {});
    const auto province_definitions = LoadProvinceDefinitions(mod_filesystem);
 
    EXPECT_THAT(log.str(), testing::HasSubstr(R"([DEBUG]     Ignoring keyword: 0x000004)"));
@@ -40,7 +40,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitions, BadDefinitionsAreLogged)
 
 TEST(Vic3WorldProvincesVic3ProvinceDefinitions, MissingFileThrowsException)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/missing_provinces", {});
+   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/missing_provinces/game", {});
 
    EXPECT_THROW(const auto _ = LoadProvinceDefinitions(mod_filesystem), std::runtime_error);
 }

@@ -20,10 +20,10 @@ vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions(const commonItems::ModFi
        });
    parser.IgnoreAndLogUnregisteredItems();
 
-   const auto& terrains_file = mod_filesystem.GetActualFileLocation("/game/map_data/province_terrains.txt");
+   const auto& terrains_file = mod_filesystem.GetActualFileLocation("/map_data/province_terrains.txt");
    if (!terrains_file.has_value())
    {
-      throw std::runtime_error("Vic3 install did not contain /game/map_data/province_terrains.txt");
+      throw std::runtime_error("Could not find /map_data/province_terrains.txt");
    }
    parser.parseFile(*terrains_file);
 

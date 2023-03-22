@@ -20,7 +20,7 @@ TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
 
 TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/states/ItemsAreImported", {});
+   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/states/ItemsAreImported/game", {});
    const std::map<std::string, StateRegion> state_regions = ImportStateRegions(mod_filesystem);
 
    EXPECT_THAT(state_regions,

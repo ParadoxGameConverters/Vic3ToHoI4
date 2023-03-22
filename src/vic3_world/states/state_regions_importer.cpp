@@ -45,7 +45,7 @@ std::map<std::string, vic3::StateRegion> vic3::ImportStateRegions(const commonIt
           state_regions.emplace(region_name, StateRegion(significant_provinces, provinces));
        });
 
-   for (const auto& state_regions_file: filesystem.GetAllFilesInFolder("game/map_data/state_regions"))
+   for (const auto& state_regions_file: filesystem.GetAllFilesInFolder("map_data/state_regions"))
    {
       file_parser.parseFile(state_regions_file);
    }
