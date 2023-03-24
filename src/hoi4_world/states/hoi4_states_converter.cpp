@@ -465,6 +465,32 @@ std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const std:
 }
 
 
+hoi4::Resources AssignResources(const std::set<int>& provinces, const hoi4::ResourcesMap& resources_map)
+{
+   hoi4::Resources resources;
+
+   for (const int province: provinces)
+   {
+      const auto resources_itr = resources_map.find(province);
+      if (resources_itr == resources_map.end())
+      {
+         continue;
+      }
+
+      for (const auto& resource: resources_itr->second)
+      {
+         auto [iterator, success] = resources.insert(resource);
+         if (!success)
+         {
+            iterator->second += resource.second;
+         }
+      }
+   }
+
+   return resources;
+}
+
+
 std::map<int, int> CreateVictoryPoints(const std::set<int>& hoi4_provinces,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
     const std::map<std::string, std::string>& significant_provinces)
@@ -568,7 +594,8 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
     const hoi4::StateCategories& state_categories,
     const std::map<int, hoi4::DefaultState>& default_states,
     const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
-    const hoi4::CoastalProvinces& coastal_provinces)
+    const hoi4::CoastalProvinces& coastal_provinces,
+    const hoi4::ResourcesMap& resources_map)
 {
    std::vector<hoi4::State> hoi4_states;
    std::map<int, int> province_to_state_id_map;
@@ -650,8 +677,11 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
          const auto [naval_base_location, naval_base_level] =
              DetermineNavalBase(province_set, significant_provinces, coastal_provinces, hoi4_to_vic3_province_mappings);
 
+         const hoi4::Resources resources = AssignResources(province_set, resources_map);
+
          const std::string category = state_categories.GetBestCategory(
              std::min(civilian_factories + military_factories + dockyards, static_cast<int>(MAX_FACTORY_SLOTS)));
+
 
          const int manpower = static_cast<int>(
              total_manpower * static_cast<int>(province_set.size()) / static_cast<int>(hoi4_provinces.size()));
@@ -668,6 +698,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
              hoi4::StateOptions{.owner = state_owner,
                  .provinces = province_set,
                  .manpower = manpower,
+                 .resources = resources,
                  .category = category,
                  .victory_points = victory_points,
                  .civilian_factories = civilian_factories,
@@ -721,7 +752,8 @@ hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
     const hoi4::StateCategories& state_categories,
     const std::map<int, DefaultState>& default_states,
     const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
-    const CoastalProvinces& coastal_provinces)
+    const CoastalProvinces& coastal_provinces,
+    const ResourcesMap& resources_map)
 {
    const std::map<std::string, int> vic3_province_to_state_id_map =
        MapVic3ProvincesToStates(states, vic3_province_definitions);
@@ -739,5 +771,6 @@ hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
        state_categories,
        default_states,
        vic3_state_regions,
-       coastal_provinces);
+       coastal_provinces,
+       resources_map);
 }
