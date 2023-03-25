@@ -34,7 +34,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
        StateCategories(),
        {},
        {},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_TRUE(hoi4_states.states.empty());
    EXPECT_TRUE(hoi4_states.province_to_state_id_map.empty());
@@ -73,7 +74,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
        {},
        {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
            {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}}), State(2, {.provinces = {40, 50, 60}})));
@@ -118,7 +120,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
        {},
        {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
            {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.owner = "ONE", .provinces = {10}}),
@@ -162,7 +165,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
            {},
            {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
                {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20}}),
@@ -217,7 +221,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
            {},
            {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
                {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -279,7 +284,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
            {},
            {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
                {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}}), State(2, {.provinces = {40, 50, 60}})));
@@ -331,7 +337,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
        },
        {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
            {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20}}),
@@ -373,7 +380,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
        StateCategories(),
        {},
        {},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_TRUE(hoi4_states.states.empty());
    EXPECT_TRUE(hoi4_states.province_to_state_id_map.empty());
@@ -415,7 +423,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
            {},
            {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
                {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -469,7 +478,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
            {},
            {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
                {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -523,7 +533,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
            {},
            {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
                {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -571,7 +582,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
        {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
            {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
            {"REGION_THREE", vic3::StateRegion({}, {"0x000007", "0x000008", "0x000009"})}},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10}}),
@@ -618,7 +630,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
        {},
        {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
            {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.owner = "TAG", .provinces = {10, 20, 30}}),
@@ -671,7 +684,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
        {},
        {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
            {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -723,7 +737,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsConverted)
            StateCategories(),
            {},
            {},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .manpower = 12345}),
@@ -760,7 +775,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInSplitStatesIsProportionalToTo
        StateCategories(),
        {},
        {},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20}, .manpower = 8230}),
@@ -804,7 +820,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInWastelandStatesIsProportional
                {3, DefaultState({.provinces = {60}})},
            },
            {},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20}, .manpower = 8230}),
@@ -844,7 +861,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
        StateCategories(),
        {},
        {},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
@@ -883,7 +901,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
        StateCategories(),
        {},
        {},
-       CoastalProvinces(std::map<int, std::vector<int>>{{40, {41}}}));
+       CoastalProvinces(std::map<int, std::vector<int>>{{40, {41}}}),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
@@ -933,7 +952,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
            {2, DefaultState({.military_factories = 2})},
            {3, DefaultState({.dockyards = 3})}},
        {},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -974,7 +994,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
            StateCategories(),
            {},
            {},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .civilian_factories = 0, .military_factories = 0}),
@@ -1011,7 +1032,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
            StateCategories(),
            {},
            {},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
@@ -1049,7 +1071,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
            StateCategories(),
            {},
            {},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
@@ -1088,7 +1111,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
        StateCategories(),
        {},
        {},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
@@ -1133,7 +1157,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
            {3, DefaultState({.provinces = {60}})},
        },
        {},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
@@ -1174,7 +1199,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
        {},
        {{"REGION_ONE", vic3::StateRegion({{"0x000002", "port"}}, {})},
            {"REGION_TWO", vic3::StateRegion({{"0x000005", "port"}}, {})}},
-       CoastalProvinces(std::map<int, std::vector<int>>{{20, {21}}, {50, {51}}}));
+       CoastalProvinces(std::map<int, std::vector<int>>{{20, {21}}, {50, {51}}}),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1,
@@ -1189,6 +1215,88 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
                    .victory_points = {{50, 4}},
                    .naval_base_location = 50,
                    .naval_base_level = 1})));
+}
+
+
+TEST(Hoi4worldStatesHoi4statesconverter, ResourcesDefaultToEmpty)
+{
+   const vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
+   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
+       .province_definitions = hoi4_province_definitions});
+   const hoi4::StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper;
+
+   const auto hoi4_states =
+       ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
+           province_definitions,
+           hoi4_to_vic3_province_mappings,
+           map_data,
+           hoi4_province_definitions,
+           strategic_regions,
+           country_mapper,
+           StateCategories(),
+           {},
+           {},
+           CoastalProvinces(),
+           {});
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .resources = {}}),
+           State(2, {.provinces = {40, 50, 60}, .resources = {}})));
+}
+
+
+
+TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreAssigned)
+{
+   const vic3::ProvinceDefinitions province_definitions(
+       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
+   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
+       .province_definitions = hoi4_province_definitions});
+   const hoi4::StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper;
+
+   const auto hoi4_states =
+       ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
+           province_definitions,
+           hoi4_to_vic3_province_mappings,
+           map_data,
+           hoi4_province_definitions,
+           strategic_regions,
+           country_mapper,
+           StateCategories(),
+           {},
+           {},
+           CoastalProvinces(),
+           {
+               /* 10 not included to force the continue */
+               {20, {{"test_resource", 2.0}}},
+               {30, {{"test_resource", 3.0}}},
+               {40, {{"test_resource", 7.0}, {"test_resource_two", 11.0}}},
+           });
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .resources = {{"test_resource", 5.0}}}),
+           State(2, {.provinces = {40, 50, 60}, .resources = {{"test_resource", 7.0}, {"test_resource_two", 11.0}}})));
 }
 
 
@@ -1221,7 +1329,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoryDefaultsToRural)
            StateCategories(),
            {},
            {},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .category = "rural"}),
@@ -1260,7 +1369,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
            {{3, "test_category_one"}, {5, "test_category_two"}, {7, "test_category_three"}, {9, "test_category_four"}}),
        {},
        {},
-       CoastalProvinces());
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1,
@@ -1307,7 +1417,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsDefaultToEmpty)
            StateCategories(),
            {},
            {},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .victory_points = {}}),
@@ -1353,7 +1464,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreConverted)
                        {"0x000001", "wood"},
                    },
                    {})}},
-           CoastalProvinces());
+           CoastalProvinces(),
+           {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .victory_points = {{10, 1}, {20, 2}, {30, 3}}}),

@@ -264,6 +264,9 @@
     <ClCompile Include="src\hoi4_world\localizations\localizations_converter_tests.cpp">
       <Filter>src\hoi4_world\localizations</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\resources_map_importer_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">

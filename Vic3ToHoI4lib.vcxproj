@@ -26,6 +26,8 @@
     <ClInclude Include="src\hoi4_world\map\coastal_provinces_creator.h" />
     <ClInclude Include="src\hoi4_world\map\hoi4_building.h" />
     <ClInclude Include="src\hoi4_world\map\hoi4_province_definition_importer.h" />
+    <ClInclude Include="src\hoi4_world\map\resources_map.h" />
+    <ClInclude Include="src\hoi4_world\map\resources_map_importer.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_region.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_regions.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_regions_importer.h" />
@@ -94,6 +96,7 @@
     <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer.cpp" />
+    <ClCompile Include="src\hoi4_world\map\resources_map_importer.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions_importer.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_region_importer.cpp" />

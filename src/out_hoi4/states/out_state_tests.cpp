@@ -187,6 +187,90 @@ TEST(Outhoi4StatesState, ManpowerIsSetByManpower)
 }
 
 
+TEST(Outhoi4StatesState, NoResourcesMeansNoResourcesSection)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/NoResourcesMeansNoResourcesSection");
+   commonItems::TryCreateFolder("output/NoResourcesMeansNoResourcesSection/history");
+   commonItems::TryCreateFolder("output/NoResourcesMeansNoResourcesSection/history/states");
+
+   const hoi4::State state_one(1, {});
+   const hoi4::State state_two(2, {});
+
+   OutputState("NoResourcesMeansNoResourcesSection", state_one);
+   OutputState("NoResourcesMeansNoResourcesSection", state_two);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NoResourcesMeansNoResourcesSection/history/states/1.txt"));
+   std::ifstream state_file_one("output/NoResourcesMeansNoResourcesSection/history/states/1.txt");
+   ASSERT_TRUE(state_file_one.is_open());
+   std::stringstream state_file_stream_one;
+   std::copy(std::istreambuf_iterator<char>(state_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_one));
+   state_file_one.close();
+   EXPECT_THAT(state_file_stream_one.str(),
+       testing::HasSubstr("manpower = 0\n"
+                          "\n"
+                          "\tstate_category = rural"));
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NoResourcesMeansNoResourcesSection/history/states/2.txt"));
+   std::ifstream state_file_two("output/NoResourcesMeansNoResourcesSection/history/states/2.txt");
+   ASSERT_TRUE(state_file_two.is_open());
+   std::stringstream state_file_stream_two;
+   std::copy(std::istreambuf_iterator<char>(state_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_two));
+   state_file_two.close();
+   EXPECT_THAT(state_file_stream_two.str(),
+       testing::HasSubstr("manpower = 0\n"
+                          "\n"
+                          "\tstate_category = rural"));
+}
+
+
+
+TEST(Outhoi4StatesState, ResourcesAreOutput)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/NoResourcesMeansNoResourcesSection");
+   commonItems::TryCreateFolder("output/NoResourcesMeansNoResourcesSection/history");
+   commonItems::TryCreateFolder("output/NoResourcesMeansNoResourcesSection/history/states");
+
+   const hoi4::State state_one(1, {.resources = {{"resource_one", 2.0}}});
+   const hoi4::State state_two(2, {.resources = {{"resource_one", 3.0}, {"resource_two", 5.0}}});
+
+   OutputState("NoResourcesMeansNoResourcesSection", state_one);
+   OutputState("NoResourcesMeansNoResourcesSection", state_two);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NoResourcesMeansNoResourcesSection/history/states/1.txt"));
+   std::ifstream state_file_one("output/NoResourcesMeansNoResourcesSection/history/states/1.txt");
+   ASSERT_TRUE(state_file_one.is_open());
+   std::stringstream state_file_stream_one;
+   std::copy(std::istreambuf_iterator<char>(state_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_one));
+   state_file_one.close();
+   EXPECT_THAT(state_file_stream_one.str(),
+       testing::HasSubstr("resources = {\n"
+                          "\t\tresource_one = 2\n"
+                          "\t}"));
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NoResourcesMeansNoResourcesSection/history/states/2.txt"));
+   std::ifstream state_file_two("output/NoResourcesMeansNoResourcesSection/history/states/2.txt");
+   ASSERT_TRUE(state_file_two.is_open());
+   std::stringstream state_file_stream_two;
+   std::copy(std::istreambuf_iterator<char>(state_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream_two));
+   state_file_two.close();
+   EXPECT_THAT(state_file_stream_two.str(),
+       testing::HasSubstr("resources = {\n"
+                          "\t\tresource_one = 3\n"
+                          "\t\tresource_two = 5\n"
+                          "\t}"));
+}
+
+
 TEST(Outhoi4StatesState, CategoryIsSetByCategory)
 {
    commonItems::TryCreateFolder("output");

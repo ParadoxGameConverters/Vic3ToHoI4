@@ -22,6 +22,15 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
    state_history << fmt::format("\tid = {}\n", state_number);
    state_history << fmt::format("\tname = \"STATE_{}\"\n", state_number);
    state_history << fmt::format("\tmanpower = {}\n", state.GetManpower());
+   if (const hoi4::Resources& resources = state.GetResources(); !resources.empty())
+   {
+      state_history << "\tresources = {\n";
+      for (const auto& [resource_type, resource_amount]: resources)
+      {
+         state_history << fmt::format("\t\t{} = {}\n", resource_type, resource_amount);
+      }
+      state_history << "\t}\n";
+   }
    state_history << "\n";
    state_history << fmt::format("\tstate_category = {}\n", state.GetCategory());
    if (state.GetCategory() == "wasteland")
@@ -47,10 +56,12 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
    {
       state_history << fmt::format("\t\t\tdockyard = {}\n", state.GetDockyards());
    }
-   if (state.GetNavalBaseLocation() && state.GetNavalBaseLevel())
+   if (const std::optional<int> naval_base_location = state.GetNavalBaseLocation(),
+       naval_base_level = state.GetNavalBaseLevel();
+       naval_base_location && naval_base_level)
    {
-      state_history << fmt::format("\t\t\t{} = {{\n", *state.GetNavalBaseLocation());
-      state_history << fmt::format("\t\t\t\tnaval_base = {}\n", *state.GetNavalBaseLevel());
+      state_history << fmt::format("\t\t\t{} = {{\n", *naval_base_location);
+      state_history << fmt::format("\t\t\t\tnaval_base = {}\n", *naval_base_level);
       state_history << "\t\t\t}\n";
    }
    state_history << "\t\t}\n";

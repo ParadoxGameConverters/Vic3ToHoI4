@@ -6,6 +6,7 @@
 #include <map>
 
 #include "src/hoi4_world/map/coastal_provinces.h"
+#include "src/hoi4_world/map/resources_map.h"
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/states/default_state.h"
 #include "src/hoi4_world/states/hoi4_state.h"
@@ -33,7 +34,8 @@ States ConvertStates(const std::map<int, vic3::State>& states,
     const hoi4::StateCategories& state_categories,
     const std::map<int, DefaultState>& default_states,
     const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
-    const CoastalProvinces& coastal_provinces);
+    const CoastalProvinces& coastal_provinces,
+    const ResourcesMap& resources_map);
 
 }  // namespace hoi4
 

@@ -1,0 +1,3 @@
+link = { province = 10 resources = { aluminium = 2 oil = 2 steel = 1 } }
+link = { resources = { aluminium = 2 oil = 2 steel = 1 } } # missing province means no item
+link = { province = 20 } # no resources means an entry with empty resources
