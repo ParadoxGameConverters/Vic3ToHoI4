@@ -1,5 +1,6 @@
 #include "src/hoi4_world/map/resources_map_importer.h"
 
+#include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/Parser.h"
 
 
@@ -11,9 +12,10 @@ hoi4::ResourcesMap hoi4::ImportResources(std::string_view resources_file)
    Resources resources;
 
    commonItems::parser resource_parser;
-   resource_parser.registerRegex("[a-z_]+", [&resources](const std::string& resource_name, std::istream& input_stream) {
-      resources.emplace(resource_name, commonItems::getDouble(input_stream));
-   });
+   resource_parser.registerRegex(commonItems::stringRegex,
+       [&resources](const std::string& resource_name, std::istream& input_stream) {
+          resources.emplace(resource_name, commonItems::getDouble(input_stream));
+       });
    resource_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
    commonItems::parser resources_parser;
