@@ -100,6 +100,12 @@
     <Filter Include="src\out_hoi4\localizations">
       <UniqueIdentifier>{a5f3de3e-c5b6-411b-a351-8f255612576a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\military">
+      <UniqueIdentifier>{69b169c7-b5b0-43a6-b7a9-7afaa23cffa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\military">
+      <UniqueIdentifier>{449252de-fa78-4cc2-8f73-f48dcab4eee6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -339,6 +345,15 @@
     <ClInclude Include="src\hoi4_world\map\resources_map_importer.h">
       <Filter>src\hoi4_world\map</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\military\equipment_variant.h">
+      <Filter>src\hoi4_world\military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\military\equipment_variants_importer.h">
+      <Filter>src\hoi4_world\military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\military\out_military_variant.h">
+      <Filter>src\out_hoi4\military</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -505,6 +520,12 @@
     </ClCompile>
     <ClCompile Include="src\hoi4_world\map\resources_map_importer.cpp">
       <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\military\equipment_variants_importer.cpp">
+      <Filter>src\hoi4_world\military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\military\out_equipment_variant.cpp">
+      <Filter>src\out_hoi4\military</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

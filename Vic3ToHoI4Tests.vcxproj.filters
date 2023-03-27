@@ -100,6 +100,9 @@
     <Filter Include="src\out_hoi4\localizations">
       <UniqueIdentifier>{9d45ced7-f29c-4d50-9182-fa467922e53a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\military">
+      <UniqueIdentifier>{b1ebf2c7-7f4a-4d0a-a32d-0b63acdc01f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -266,6 +269,9 @@
     </ClCompile>
     <ClCompile Include="src\hoi4_world\map\resources_map_importer_tests.cpp">
       <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\military\equipment_variants_importer_tests.cpp">
+      <Filter>src\hoi4_world\military</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

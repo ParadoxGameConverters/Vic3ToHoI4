@@ -1,0 +1,20 @@
+test_variant = {
+	name = "Test Variant One"
+}
+
+
+name_can_be_anything = {
+	required_techs = {
+		required_tech_one
+		required_tech_two
+	}
+	blocking_techs = {
+		blocking_tech_one
+		blocking_tech_two
+	}
+	name = "Test Variant Two"
+	item_block = {
+		item_one = true
+		item_two = true
+	}
+}
