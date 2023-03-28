@@ -722,7 +722,7 @@
 	link = { vic3 = x106000 hoi4 = 3476 hoi4 = 6504 } # Arras -> Arras, Lens
 	link = { vic3 = xD0854D hoi4 = 3536 } # STATE_PICARDY -> Béthune
 	link = { vic3 = xC4C61A hoi4 = 6585 hoi4 = 9534 hoi4 = 6569 hoi4 = 9561 } # Beauvais -> Beauvais, Cergy, Vernon, Compiègne
-	link = { vic3 = xA0A080 hoi4 = 11483 hoi4 = 3576 } # Lille -> Lille, Kortrijk
+	link = { vic3 = xA0A080 hoi4 = 11483 } # Lille -> Lille
 	link = { vic3 = xE0A0C0 hoi4 = 11548 hoi4 = 575 hoi4 = 9500 } # Dunkirk -> Calais, Dunkerque, Boulogne-sur-Mer
 	link = { comment = "* * STATE_ALSACE_LORRAINE " }
 	link = { vic3 = xB000E0 hoi4 = 678 } # Mulhouse -> Mulhouse
@@ -866,13 +866,14 @@
 	link = { vic3 = x916574 hoi4 = 9444 } # Namur -> Rochefort
 	link = { vic3 = x8080A0 hoi4 = 9536 } # STATE_WALLONIA -> Charleroi
 	link = { vic3 = x3A5FB9 hoi4 = 11407 } # STATE_WALLONIA -> Bastogne
-	link = { vic3 = xB0A0C0 vic3 = x2D32D7 hoi4 = 13081 } # STATE_WALLONIA, Charleroi -> Couvin
+	link = { vic3 = x2D32D7 hoi4 = 3516 } # Charleroi -> Namur
+	link = { vic3 = xB0A0C0 hoi4 = 13081 } # STATE_WALLONIA -> Couvin
 	link = { comment = "* * STATE_FLANDERS " }
 	link = { vic3 = x800060 hoi4 = 11419 hoi4 = 6598 } # Antwerp -> Turnhout, Antwerpen
 	link = { vic3 = x93FB2E hoi4 = 516 } # STATE_FLANDERS -> Brussel
-	link = { vic3 = x018061 hoi4 = 3516 hoi4 = 13068 } # Brussels -> Namur, Leuven
+	link = { vic3 = x018061 hoi4 = 13068 } # Brussels -> Leuven
 	link = { vic3 = x0141A0 hoi4 = 6446 } # Bruges -> Oostende
-	link = { vic3 = x8041A0 hoi4 = 6560 } # Kortrijk -> Gent
+	link = { vic3 = x8041A0 hoi4 = 6560 hoi4 = 3576 } # Kortrijk -> Gent, Kortrijk
 	link = { vic3 = x808061 hoi4 = 9574 } # Hasselt -> Hasselt
 	link = { comment = "* * STATE_AUSTRIA " }
 	link = { vic3 = x0CBB8F hoi4 = 704 } # St. Pölten -> Sankt Pölten
@@ -1418,7 +1419,7 @@
 	link = { vic3 = xD0A080 hoi4 = 11805 } # STATE_ESTREMADURA -> Lisboa
 	link = { comment = "* * STATE_ALENTEJO " }
 	link = { vic3 = x88DCE1 hoi4 = 3790 } # Lagos -> Portimão
-	link = { vic3 = xEFC9BC hoi4 = 3846 } # Evora -> Redondo
+	link = { vic3 = xEFC9BC hoi4 = 3846 } # Évora -> Redondo
 	link = { vic3 = xA07080 hoi4 = 3866 } # Beja -> Sines
 	link = { vic3 = xC3BFC4 hoi4 = 3886 hoi4 = 6986 } # Elvas -> Elvas, Estremoz
 	link = { vic3 = x84A822 hoi4 = 3926 hoi4 = 844 } # STATE_ALENTEJO -> Portalegre, land
@@ -3082,7 +3083,7 @@
 	link = { vic3 = x07D47A vic3 = x4F8487 vic3 = x4C6494 vic3 = xA21408 vic3 = xE1B48A hoi4 = 7203 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, Agadir, STATE_INNER_MOROCCO -> Agadir
 	link = { vic3 = x2D7AF0 vic3 = x66D4E9 vic3 = x977DCA vic3 = xB096BF vic3 = x830671 hoi4 = 7908 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Zagora
 	link = { vic3 = x2853A6 vic3 = x75EBCA vic3 = xE521ED hoi4 = 7958 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Bouafra
-	link = { vic3 = x0488C2 vic3 = x0B4734 vic3 = xE1981C vic3 = xE92045 vic3 = x45FD26 hoi4 = 8046 } # Quarzazate, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, Errachidia, STATE_INNER_MOROCCO -> Tinghir
+	link = { vic3 = x0488C2 vic3 = x0B4734 vic3 = xE1981C vic3 = xE92045 vic3 = x45FD26 hoi4 = 8046 } # Quarzazate, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, Ksar-es-Souk, STATE_INNER_MOROCCO -> Tinghir
 	link = { vic3 = x603080 hoi4 = 12857 } # STATE_INNER_MOROCCO -> Sidi Ifní
 	link = { comment = "* * STATE_ALGIERS " }
 	link = { vic3 = xA75E78 hoi4 = 1013 hoi4 = 9964 } # STATE_ALGIERS -> Chlef, Affreville
@@ -4953,7 +4954,7 @@
 	link = { vic3 = x1043A1 vic3 = x236BF3 vic3 = xE6A7AE vic3 = xFC9EFC vic3 = xBFB49D hoi4 = 12804 } # STATE_ZACATECAS, Fresnillo, Valparaíso, STATE_ZACATECAS, STATE_ZACATECAS -> Zacatecas
 	link = { comment = "* * STATE_CHIAPAS " }
 	link = { vic3 = x1521F4 vic3 = x31E49A vic3 = xA46BA0 vic3 = xD03040 vic3 = xE0AADA vic3 = xE8CFA0 vic3 = xA6550F vic3 = x10B0C0 hoi4 = 1900 } # Tuxtla, STATE_CHIAPAS, STATE_CHIAPAS, STATE_CHIAPAS, STATE_CHIAPAS, STATE_CHIAPAS, STATE_CHIAPAS, STATE_CHIAPAS -> Tuxtla Gutiérrez
-	link = { vic3 = x1030C0 vic3 = x4DBDE9 vic3 = x8E26C5 vic3 = xA087F6 vic3 = xF19260 vic3 = xB70B3B hoi4 = 12753 } # Tapachula, Mapastepec, STATE_CHIAPAS, STATE_CHIAPAS, STATE_CHIAPAS, STATE_CHIAPAS -> Tapachula
+	link = { vic3 = x1030C0 vic3 = x4DBDE9 vic3 = x8E26C5 vic3 = xA087F6 vic3 = xF19260 vic3 = xB70B3B hoi4 = 12753 } # Tapachula, Mapastepec, STATE_CHIAPAS, STATE_CHIAPAS, La Puerta, STATE_CHIAPAS -> Tapachula
 	link = { comment = "* * STATE_BAJA_CALIFORNIA " }
 	link = { vic3 = x567116 vic3 = x57EBCB hoi4 = 1892 } # STATE_BAJA_CALIFORNIA, San Quentin -> Ensenada
 	link = { vic3 = x21AA9D vic3 = x5B4ABD vic3 = x90DF58 vic3 = xB0A278 hoi4 = 1904 } # STATE_BAJA_CALIFORNIA, STATE_BAJA_CALIFORNIA, STATE_BAJA_CALIFORNIA, STATE_BAJA_CALIFORNIA -> land
@@ -5740,7 +5741,7 @@
 	link = { vic3 = x09EC79 vic3 = x62D297 vic3 = xBEA6BB vic3 = xEADB0F vic3 = xEBB44F hoi4 = 12852 } # STATE_KHORASAN, STATE_KHORASAN, STATE_KHORASAN, STATE_KHORASAN, STATE_KHORASAN -> Meyghan
 	link = { comment = "* * STATE_KHUZESTAN " }
 	link = { vic3 = x241E05 vic3 = x5D400F vic3 = x80B0E0 vic3 = xF5BD8F vic3 = x80E4E1 hoi4 = 1922 } # STATE_KHUZESTAN, STATE_KHUZESTAN, STATE_KHUZESTAN, Masjed Soleyman, Dezful -> Defzul
-	link = { vic3 = x09F8D1 vic3 = x4CA291 vic3 = xFBA38B vic3 = x80B060 hoi4 = 5005 } # STATE_KHUZESTAN, Khorramshahr, Bandar mahshahr, STATE_KHUZESTAN -> Abadan
+	link = { vic3 = x09F8D1 vic3 = x4CA291 vic3 = xFBA38B vic3 = x80B060 hoi4 = 5005 } # STATE_KHUZESTAN, Khorramshahr, Bandar Mahshahr, STATE_KHUZESTAN -> Abadan
 	link = { vic3 = x55D475 vic3 = x872ACE vic3 = xA18555 vic3 = xA99276 vic3 = x00B0DF vic3 = x4FDA9B hoi4 = 7953 } # Ahvaz, STATE_KHUZESTAN, STATE_KHUZESTAN, STATE_KHUZESTAN, STATE_KHUZESTAN, STATE_KHUZESTAN -> Ahvaz
 	link = { comment = "* * STATE_ISFAHAN " }
 	link = { vic3 = x639DDD vic3 = x7AE349 vic3 = x7CCE94 vic3 = x8D9CEC vic3 = x8DDEC3 vic3 = xF17A7A vic3 = xED39D0 hoi4 = 1963 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, Isfahan -> Meybod
@@ -7127,10 +7128,10 @@
 	link = { comment = "* * STATE_CEYLON " }
 	link = { vic3 = x47B038 hoi4 = 1213 } # STATE_CEYLON -> Kandy
 	link = { vic3 = x1DA090 hoi4 = 4219 } # STATE_CEYLON -> Hambantota
-	link = { vic3 = x95AAA3 hoi4 = 4967 } # Jaffna -> Malé
+	link = { vic3 = x95AAA3 hoi4 = 4967 } # STATE_CEYLON -> Malé
 	link = { vic3 = x23CE5A vic3 = xA0A0D0 hoi4 = 7260 } # Colombo, STATE_CEYLON -> Colombo
 	link = { vic3 = xA0EFCC hoi4 = 7344 } # STATE_CEYLON -> Puttalam
-	link = { vic3 = x8D6FA8 vic3 = xDF2050 hoi4 = 10201 } # STATE_CEYLON, Vavuniya -> Jaffna
+	link = { vic3 = x8D6FA8 vic3 = xDF2050 hoi4 = 10201 } # Jaffna, Vavuniya -> Jaffna
 	link = { vic3 = xC18817 vic3 = xC23350 hoi4 = 10229 } # STATE_CEYLON, Trincomalee -> Trincomalee
 	link = { vic3 = x8A707A vic3 = x967CCE vic3 = xDAB923 hoi4 = 10287 } # STATE_CEYLON, STATE_CEYLON, Dambulla -> Anuradhapura
 	link = { vic3 = x602050 hoi4 = 12258 } # STATE_CEYLON -> Batticaloa
