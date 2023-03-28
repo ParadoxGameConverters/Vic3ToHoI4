@@ -5,6 +5,7 @@
 
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/out_hoi4/military/out_equipment_variant.h"
 #include "src/out_hoi4/technology/out_technologies.h"
 
 
@@ -74,6 +75,35 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    country_history << "\n";
 
    country_history << country.GetTechnologies();
+
+   country_history << "if = {\n";
+   country_history << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+   for (const auto& variant: country.GetLegacyShipVariants())
+   {
+      country_history << variant;
+   }
+   country_history << "}\n";
+   country_history << "if = {\n";
+   country_history << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+   for (const auto& variant : country.GetShipVariants())
+   {
+       country_history << variant;
+   }
+   country_history << "}\n";
+   country_history << "if = {\n";
+   country_history << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
+   for (const auto& variant : country.GetPlaneVariants())
+   {
+       country_history << variant;
+   }
+   country_history << "}\n";
+   country_history << "if = {\n";
+   country_history << "\tlimit = { has_dlc = \"No Step Back\" }\n";
+   for (const auto& variant : country.GetTankVariants())
+   {
+       country_history << variant;
+   }
+   country_history << "}\n";
 
    country_history.close();
 }
