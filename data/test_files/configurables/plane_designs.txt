@@ -1,0 +1,27 @@
+plane_design = {
+	required_techs = {
+		dest_technology_one
+	}
+	name = "Test Plane Design One"
+}
+
+plane_design = {
+	required_techs = {
+		dest_technology_three
+	}
+	name = "Test Plane Design Two"
+}
+
+plane_design = {
+	blocking_techs = {
+		dest_technology_two
+	}
+	name = "Test Plane Design Three"
+}
+
+plane_design = {
+	blocking_techs = {
+		dest_technology_four
+	}
+	name = "Test Plane Design Four"
+}

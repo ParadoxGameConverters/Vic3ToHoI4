@@ -1,0 +1,410 @@
+plane_design = {
+	required_techs = {
+		iw_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	blocking_techs = {
+		basic_small_airframe
+	}
+	name = "Interwar Fighter"
+	type = small_plane_airframe_0
+	modules = {
+		fixed_main_weapon_slot = light_mg_2x
+		fixed_auxiliary_weapon_slot_1 = bomb_locks
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = empty
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		iw_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	blocking_techs = {
+		basic_small_airframe
+	}
+	name = "Interwar Carrier Fighter"
+	type = cv_small_plane_airframe_0
+	modules = {
+		fixed_main_weapon_slot = light_mg_2x
+		fixed_auxiliary_weapon_slot_1 = bomb_locks
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = empty
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		iw_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	blocking_techs = {
+		basic_small_airframe
+	}
+	name = "Interwar CAS"
+	type = small_plane_cas_airframe_0
+	modules = {
+		fixed_main_weapon_slot = bomb_locks
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		iw_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	blocking_techs = {
+		basic_small_airframe
+	}
+	name = "Interwar Carrier CAS"
+	type = cv_small_plane_cas_airframe_0
+	modules = {
+		fixed_main_weapon_slot = bomb_locks
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		iw_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+		basic_torpedo
+	}
+	blocking_techs = {
+		basic_small_airframe
+	}
+	name = "Interwar Naval Bomber"
+	type = small_plane_naval_bomber_airframe_0
+	modules = {
+		fixed_main_weapon_slot = torpedo_mounting
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		iw_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+		basic_torpedo
+	}
+	blocking_techs = {
+		basic_small_airframe
+	}
+	name = "Interwar Carrier Naval Bomber"
+	type = cv_small_plane_naval_bomber_airframe_0
+	modules = {
+		fixed_main_weapon_slot = torpedo_mounting
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		iw_medium_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	blocking_techs = {
+		basic_medium_airframe
+	}
+	name = "Interwar Tactical Bomber"
+	type = medium_plane_airframe_0
+	modules = {
+		fixed_main_weapon_slot = medium_bomb_bay
+		engine_type_slot = engine_1_2x
+		special_type_slot_1 = lmg_defense_turret
+		special_type_slot_2 = lmg_defense_turret
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		iw_large_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	name = "Interwar Strategic Bomber"
+	type = large_plane_airframe_0
+	modules = {
+		fixed_main_weapon_slot = large_bomb_bay
+		engine_type_slot = engine_1_4x
+		special_type_slot_1 = lmg_defense_turret
+		special_type_slot_2 = lmg_defense_turret
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	name = "Interwar Fighter"
+	type = small_plane_airframe_0
+	modules = {
+		fixed_main_weapon_slot = light_mg_2x
+		fixed_auxiliary_weapon_slot_1 = bomb_locks
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = empty
+	}
+	obsolete = yes
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	name = "Interwar Carrier Fighter"
+	type = cv_small_plane_airframe_0
+	modules = {
+		fixed_main_weapon_slot = light_mg_2x
+		fixed_auxiliary_weapon_slot_1 = bomb_locks
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = empty
+	}
+	obsolete = yes
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	name = "Interwar CAS"
+	type = small_plane_cas_airframe_0
+	modules = {
+		fixed_main_weapon_slot = bomb_locks
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = yes
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	name = "Interwar Carrier CAS"
+	type = cv_small_plane_cas_airframe_0
+	modules = {
+		fixed_main_weapon_slot = bomb_locks
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = yes
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+		basic_torpedo
+	}
+	name = "Interwar Naval Bomber"
+	type = small_plane_naval_bomber_airframe_0
+	modules = {
+		fixed_main_weapon_slot = torpedo_mounting
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = yes
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+		basic_torpedo
+	}
+	name = "Interwar Carrier Naval Bomber"
+	type = cv_small_plane_naval_bomber_airframe_0
+	modules = {
+		fixed_main_weapon_slot = torpedo_mounting
+		engine_type_slot = engine_1_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = yes
+}
+
+plane_design = {
+	required_techs = {
+		basic_medium_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	name = "Interwar Tactical Bomber"
+	type = medium_plane_airframe_0
+	modules = {
+		fixed_main_weapon_slot = medium_bomb_bay
+		engine_type_slot = engine_1_2x
+		special_type_slot_1 = lmg_defense_turret
+		special_type_slot_2 = lmg_defense_turret
+	}
+	obsolete = yes
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_2
+	}
+	name = "Basic Fighter"
+	type = small_plane_airframe_1
+	modules = {
+		fixed_main_weapon_slot = light_mg_2x
+		fixed_auxiliary_weapon_slot_1 = bomb_locks
+		engine_type_slot = engine_2_1x
+		special_type_slot_1 = empty
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_2
+	}
+	name = "Basic Carrier Fighter"
+	type = cv_small_plane_airframe_1
+	modules = {
+		fixed_main_weapon_slot = light_mg_2x
+		fixed_auxiliary_weapon_slot_1 = bomb_locks
+		engine_type_slot = engine_2_1x
+		special_type_slot_1 = empty
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_2
+	}
+	name = "Basic CAS"
+	type = small_plane_cas_airframe_1
+	modules = {
+		fixed_main_weapon_slot = bomb_locks
+		engine_type_slot = engine_2_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_2
+	}
+	name = "Basic Carrier CAS"
+	type = cv_small_plane_cas_airframe_1
+	modules = {
+		fixed_main_weapon_slot = bomb_locks
+		engine_type_slot = engine_2_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_2
+		basic_torpedo
+	}
+	name = "Basic Naval Bomber"
+	type = small_plane_naval_bomber_airframe_1
+	modules = {
+		fixed_main_weapon_slot = torpedo_mounting
+		engine_type_slot = engine_2_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		basic_small_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+		basic_torpedo
+	}
+	name = "Basic Carrier Naval Bomber"
+	type = cv_small_plane_naval_bomber_airframe_1
+	modules = {
+		fixed_main_weapon_slot = torpedo_mounting
+		engine_type_slot = engine_2_1x
+		special_type_slot_1 = lmg_defense_turret
+	}
+	obsolete = no
+}
+
+plane_design = {
+	required_techs = {
+		basic_medium_airframe
+		early_bombs
+		aa_lmg
+		engines_1
+	}
+	name = "Basic Tactical Bomber"
+	type = medium_plane_airframe_1
+	modules = {
+		fixed_main_weapon_slot = medium_bomb_bay
+		engine_type_slot = engine_2_2x
+		special_type_slot_1 = lmg_defense_turret
+		special_type_slot_2 = lmg_defense_turret
+	}
+	obsolete = no
+}

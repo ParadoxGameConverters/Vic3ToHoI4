@@ -52,7 +52,7 @@ class Country
    [[nodiscard]] const std::vector<EquipmentVariant>& GetPlaneVariants() const { return plane_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetTankVariants() const { return tank_variants_; }
 
-   std::strong_ordering operator<=>(const Country&) const = default;
+   std::partial_ordering operator<=>(const Country&) const = default;
 
   private:
    std::string tag_;

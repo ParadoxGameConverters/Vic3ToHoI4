@@ -1,0 +1,27 @@
+mtg_ship_type = {
+	required_techs = {
+		dest_technology_one
+	}
+	name = "Test Ship Variant One"
+}
+
+mtg_ship_type = {
+	required_techs = {
+		dest_technology_three
+	}
+	name = "Test Ship Variant Two"
+}
+
+mtg_ship_type = {
+	blocking_techs = {
+		dest_technology_two
+	}
+	name = "Test Ship Variant Three"
+}
+
+mtg_ship_type = {
+	blocking_techs = {
+		dest_technology_four
+	}
+	name = "Test Ship Variant Four"
+}

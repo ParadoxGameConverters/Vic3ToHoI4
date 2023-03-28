@@ -1,0 +1,27 @@
+tank_design = {
+	required_techs = {
+		dest_technology_one
+	}
+	name = "Test Tank Design One"
+}
+
+tank_design = {
+	required_techs = {
+		dest_technology_three
+	}
+	name = "Test Tank Design Two"
+}
+
+tank_design = {
+	blocking_techs = {
+		dest_technology_two
+	}
+	name = "Test Tank Design Three"
+}
+
+tank_design = {
+	blocking_techs = {
+		dest_technology_four
+	}
+	name = "Test Tank Design Four"
+}

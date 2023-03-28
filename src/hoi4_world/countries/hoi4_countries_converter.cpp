@@ -2,6 +2,9 @@
 
 #include <ranges>
 
+#include "src/hoi4_world/military/equipment_variant.h"
+#include "src/hoi4_world/military/equipment_variants_importer.h"
+
 
 
 std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, vic3::Country>& source_countries,
@@ -11,6 +14,12 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
     const std::vector<mappers::TechMapping>& tech_mappings)
 {
    std::map<std::string, Country> countries;
+
+   const std::vector<EquipmentVariant> all_legacy_ship_variants =
+       ImportEquipmentVariants("configurables/legacy_ship_types.txt");
+   const std::vector<EquipmentVariant> all_ship_variants = ImportEquipmentVariants("configurables/ship_types.txt");
+   const std::vector<EquipmentVariant> all_plane_variants = ImportEquipmentVariants("configurables/plane_designs.txt");
+   const std::vector<EquipmentVariant> all_tank_variants = ImportEquipmentVariants("configurables/tank_designs.txt");
 
    for (const auto& [country_number, source_country]: source_countries)
    {
@@ -25,7 +34,11 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
           source_country_technologies,
           country_mapper,
           vic3_state_ids_to_hoi4_state_ids,
-          tech_mappings);
+          tech_mappings,
+          all_legacy_ship_variants,
+          all_ship_variants,
+          all_plane_variants,
+          all_tank_variants);
       if (new_country.has_value())
       {
          countries.emplace(new_country->GetTag(), *new_country);
