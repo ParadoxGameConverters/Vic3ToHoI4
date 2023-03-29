@@ -1,0 +1,27 @@
+legacy_ship_type = {
+	required_techs = {
+		dest_technology_one
+	}
+	name = "Test Legacy Ship Variant One"
+}
+
+legacy_ship_type = {
+	required_techs = {
+		dest_technology_three
+	}
+	name = "Test Legacy Ship Variant Two"
+}
+
+legacy_ship_type = {
+	blocking_techs = {
+		dest_technology_two
+	}
+	name = "Test Legacy Ship Variant Three"
+}
+
+legacy_ship_type = {
+	blocking_techs = {
+		dest_technology_four
+	}
+	name = "Test Legacy Ship Variant Four"
+}
