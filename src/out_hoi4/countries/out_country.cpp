@@ -50,7 +50,9 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    {
       country_history << fmt::format("capital = {}\n", *capital);
    }
-
+   country_history << "\n";
+   country_history << fmt::format("oob = \"{}_1936\"", country.GetTag());
+   country_history << "\n";
    country_history << "set_research_slots = 3\n";
    country_history << "set_convoys = 0\n";
    country_history << "\n";
