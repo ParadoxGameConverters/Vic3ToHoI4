@@ -197,6 +197,8 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    country_file.close();
 
    std::stringstream expected_one;
+   expected_one << "\n";
+   expected_one << "oob = \"TAG_1936\"\n";
    expected_one << "set_research_slots = 3\n";
    expected_one << "set_convoys = 0\n";
    expected_one << "\n";

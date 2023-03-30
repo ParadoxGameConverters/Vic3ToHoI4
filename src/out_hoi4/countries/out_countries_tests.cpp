@@ -23,6 +23,7 @@ TEST(Outhoi4CountriesOutcountriesTests, CountriesFilesAreCreated)
    commonItems::TryCreateFolder("output/CountriesFilesAreCreated/common/country_tags");
    commonItems::TryCreateFolder("output/CountriesFilesAreCreated/history");
    commonItems::TryCreateFolder("output/CountriesFilesAreCreated/history/countries");
+   commonItems::TryCreateFolder("output/CountriesFilesAreCreated/history/units");
 
    OutputCountries("CountriesFilesAreCreated",
        {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
@@ -56,6 +57,7 @@ TEST(Outhoi4CountriesOutcountriesTests, TagsFileIsCreated)
    commonItems::TryCreateFolder("output/TagsFileIsCreated/common/country_tags");
    commonItems::TryCreateFolder("output/TagsFileIsCreated/history");
    commonItems::TryCreateFolder("output/TagsFileIsCreated/history/countries");
+   commonItems::TryCreateFolder("output/TagsFileIsCreated/history/units");
 
    OutputCountries("TagsFileIsCreated",
        {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
@@ -90,6 +92,7 @@ TEST(Outhoi4CountriesOutcountriesTests, CountryHistoryFilesAreCreated)
    commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated/common/country_tags");
    commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated/history");
    commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated/history/countries");
+   commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated/history/units");
 
    OutputCountries("CountryHistoryFilesAreCreated",
        {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
@@ -111,6 +114,25 @@ TEST(Outhoi4CountriesOutcountriesTests, CountryHistoryFilesAreCreated)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_two_stream));
    country_file_two.close();
+}
+
+
+TEST(Outhoi4CountriesOutcountriesTests, DivisionTemplatesAreCopied)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/DivisionTemplatesAreCopied");
+   commonItems::TryCreateFolder("output/DivisionTemplatesAreCopied/common");
+   commonItems::TryCreateFolder("output/DivisionTemplatesAreCopied/common/countries");
+   commonItems::TryCreateFolder("output/DivisionTemplatesAreCopied/common/country_tags");
+   commonItems::TryCreateFolder("output/DivisionTemplatesAreCopied/history");
+   commonItems::TryCreateFolder("output/DivisionTemplatesAreCopied/history/countries");
+   commonItems::TryCreateFolder("output/DivisionTemplatesAreCopied/history/units");
+
+   OutputCountries("DivisionTemplatesAreCopied",
+       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/DivisionTemplatesAreCopied/history/units/TAG_1936.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/DivisionTemplatesAreCopied/history/units/TWO_1936.txt"));
 }
 
 }  // namespace out
