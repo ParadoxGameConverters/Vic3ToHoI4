@@ -54,7 +54,7 @@ void CreateOutputFolder(const std::string_view output_name)
    }
    if (!commonItems::TryCreateFolder(fmt::format("output/{}/history/units", output_name)))
    {
-       throw std::runtime_error(fmt::format("Could not create output/{}/history/units", output_name));
+      throw std::runtime_error(fmt::format("Could not create output/{}/history/units", output_name));
    }
    if (!commonItems::TryCreateFolder(fmt::format("output/{}/map", output_name)))
    {
