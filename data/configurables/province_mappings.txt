@@ -976,7 +976,7 @@
 	link = { vic3 = x9041E0 hoi4 = 3612 } # STATE_WEST_SWITZERLAND -> Martigny
 	link = { vic3 = xA042B5 hoi4 = 6666 } # Geneva -> Genevé
 	link = { vic3 = x9080E0 hoi4 = 6683 hoi4 = 9638 } # Basel -> Biel, Basel
-	link = { vic3 = x7ACC0B hoi4 = 9587 hoi4 = 11570 } # STATE_WEST_SWITZERLAND -> Sion, Châtillon
+	link = { vic3 = x7ACC0B hoi4 = 9587 } # STATE_WEST_SWITZERLAND -> Sion
 	link = { vic3 = xEBF5B1 hoi4 = 9618 } # STATE_WEST_SWITZERLAND -> Thun
 	link = { vic3 = xE51E78 vic3 = xED07F7 hoi4 = 9620 } # STATE_WEST_SWITZERLAND, Bern -> Berne
 	link = { vic3 = x117FE0 hoi4 = 9622 } # STATE_WEST_SWITZERLAND -> Neuchâtel
@@ -1143,7 +1143,7 @@
 	link = { vic3 = x9AC196 hoi4 = 11587 } # STATE_LOMBARDY -> Tirano
 	link = { vic3 = xA40CE9 hoi4 = 6661 hoi4 = 969 } # STATE_LOMBARDY -> Sondrio, Bergamo
 	link = { comment = "* * STATE_PIEDMONT " }
-	link = { vic3 = x90C060 hoi4 = 611 hoi4 = 3782 } # STATE_PIEDMONT -> Aosta, Ivrea
+	link = { vic3 = x90C060 hoi4 = 611 hoi4 = 3782 hoi4 = 11570 } # STATE_PIEDMONT -> Aosta, Ivrea, Châtillon
 	link = { vic3 = xACB500 hoi4 = 771 hoi4 = 11726 } # STATE_PIEDMONT -> Alessandria, Tortona
 	link = { vic3 = xF00544 hoi4 = 6635 } # STATE_PIEDMONT -> Verbania
 	link = { vic3 = x1140E0 hoi4 = 776 hoi4 = 11730 hoi4 = 9741 } # Novara -> Novara, Chivasso, Vercelli
@@ -1208,11 +1208,11 @@
 	link = { vic3 = x6B4BA4 hoi4 = 9745 } # STATE_SAVOY -> Bourg-Saint-Maurice
 	link = { vic3 = xDDDD3B hoi4 = 11573 } # STATE_SAVOY -> Annecy
 	link = { comment = "* * STATE_EMILIA " }
-	link = { vic3 = x0B3B43 hoi4 = 3773 hoi4 = 6790 } # Parma -> Salsomaggiore, Piacenza
-	link = { vic3 = x700120 hoi4 = 3976 } # Berceto -> Sassuolo
+	link = { vic3 = x0B3B43 hoi4 = 6790 } # Parma -> Piacenza
+	link = { vic3 = x700120 hoi4 = 3773 } # Berceto -> Salsomaggiore
 	link = { vic3 = xF080A0 hoi4 = 6946 hoi4 = 1616 } # Lucca -> Pisa, Prato
 	link = { vic3 = xF08021 hoi4 = 6973 } # STATE_EMILIA -> La Spezia
-	link = { vic3 = xEF0021 hoi4 = 9752 hoi4 = 11734 } # Modena -> Parma, Mantova
+	link = { vic3 = xEF0021 hoi4 = 9752 hoi4 = 11734 hoi4 = 3976 } # Modena -> Parma, Mantova, Sassuolo
 	link = { comment = "* * STATE_TUSCANY " }
 	link = { vic3 = xB04020 vic3 = x7080A0 hoi4 = 910 } # Arezzo, STATE_TUSCANY -> Siena
 	link = { vic3 = xF12431 hoi4 = 6875 } # Grosseto -> Grosseto
@@ -3089,7 +3089,7 @@
 	link = { vic3 = xA75E78 hoi4 = 1013 hoi4 = 9964 } # STATE_ALGIERS -> Chlef, Affreville
 	link = { vic3 = x713C2F hoi4 = 1145 } # Algiers -> Algiers
 	link = { vic3 = x7C6240 hoi4 = 1160 } # STATE_ALGIERS -> Annaba
-	link = { vic3 = xB5486B vic3 = x9AF6A4 hoi4 = 4046 } # STATE_ALGIERS, STATE_TLEMCEN -> Béjaïa
+	link = { vic3 = xB5486B hoi4 = 4046 } # STATE_ALGIERS -> Béjaïa
 	link = { vic3 = x0050A0 hoi4 = 7081 } # El Tarf -> Guelma
 	link = { vic3 = xDFB0C0 hoi4 = 11923 } # Oran -> Mostaganem
 	link = { vic3 = xB735DB hoi4 = 7132 } # STATE_ALGIERS -> Oran
@@ -3117,7 +3117,7 @@
 	link = { vic3 = xA12B39 hoi4 = 11953 } # STATE_CONSTANTINE -> Aïn Beïda
 	link = { vic3 = xD9F21C vic3 = xF151FD hoi4 = 12020 } # STATE_CONSTANTINE, STATE_CONSTANTINE -> Sougueur
 	link = { vic3 = x137E91 vic3 = x3AD789 vic3 = xC65997 hoi4 = 12034 } # STATE_CONSTANTINE, STATE_CONSTANTINE, STATE_CONSTANTINE -> Zeribet El Oued
-	link = { vic3 = x2DF9DB hoi4 = 13077 } # STATE_CONSTANTINE -> M'Sila
+	link = { vic3 = x2DF9DB vic3 = x9AF6A4 hoi4 = 13077 } # STATE_CONSTANTINE, STATE_TLEMCEN -> M'Sila
 	link = { comment = "* * STATE_TLEMCEN " }
 	link = { vic3 = x0D2515 vic3 = x60D278 vic3 = x95CBD4 hoi4 = 3991 } # STATE_TLEMCEN, STATE_TLEMCEN, STATE_TLEMCEN -> Makman Ben Amer
 	link = { vic3 = x3E6888 hoi4 = 4116 } # Ghazaouet -> Tlemcen
