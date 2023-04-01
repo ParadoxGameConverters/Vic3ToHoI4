@@ -554,21 +554,37 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    int civilian_factories = 0;
    int military_factories = 0;
    int dockyards = 0;
+   std::map<std::string, double> resources;
+   std::map<std::string, double> hoi4_state_resource;
+   std::map<std::string, double> hoi4_state_resource_array;
    for (const auto& hoi4_state: hoi4_states)
    {
       civilian_factories += hoi4_state.GetCivilianFactories();
       military_factories += hoi4_state.GetMilitaryFactories();
       dockyards += hoi4_state.GetDockyards();
+      const auto& hoi4_state_resource_array = hoi4_state.GetResources();
+      for (const auto& hoi4_state_resource: hoi4_state_resource_array)
+      {
+         resources[hoi4_state_resource.first] += hoi4_state_resource.second;
+      }
    }
 
    int default_civilian_factories = 0;
    int default_military_factories = 0;
    int default_dockyards = 0;
+   std::map<std::string, double> default_resources;
+   std::map<std::string, double> default_hoi4_state_resource;
+   std::map<std::string, double> default_hoi4_state_resource_array;
    for (const auto& hoi4_state: default_states | std::views::values)
    {
       default_civilian_factories += hoi4_state.GetCivilianFactories();
       default_military_factories += hoi4_state.GetMilitaryFactories();
       default_dockyards += hoi4_state.GetDockyards();
+      const auto& default_hoi4_state_resource_array = hoi4_state.GetResources();
+      for (const auto& default_hoi4_state_resource: default_hoi4_state_resource_array)
+      {
+         default_resources[default_hoi4_state_resource.first] += default_hoi4_state_resource.second;
+      }
    }
 
    Log(LogLevel::Info) << fmt::format("\t\tTotal factories: {} (vanilla hoi4 had {})",
@@ -581,6 +597,14 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
        military_factories,
        default_military_factories);
    Log(LogLevel::Info) << fmt::format("\t\t\tDockyards: {} (vanilla hoi4 had {})", dockyards, default_dockyards);
+   for (const auto& r: resources)
+   {
+      Log(LogLevel::Info) << fmt::format("\t\t\tConverter Resource {}:{}", r.first, r.second);
+   }
+   for (const auto& dr: default_resources)
+   {
+      Log(LogLevel::Info) << fmt::format("\t\t\tDefault Resource {}:{}", dr.first, dr.second);
+   }
 }
 
 
