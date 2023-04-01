@@ -1,5 +1,7 @@
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 
+#include <numeric>
+
 #include "src/hoi4_world/technology/technologies_converter.h"
 
 
@@ -41,6 +43,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
     const std::set<std::string>& source_technologies,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
+    const std::vector<State>& states,
     const std::vector<mappers::TechMapping>& tech_mappings,
     const std::vector<EquipmentVariant>& all_legacy_ship_variants,
     const std::vector<EquipmentVariant>& all_ship_variants,
@@ -60,6 +63,75 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
           state_id_mapping != vic3_state_ids_to_hoi4_state_ids.end())
       {
          capital_state = state_id_mapping->second;
+      }
+   }
+   if (!capital_state)
+   {
+      std::vector<std::reference_wrapper<const State>> owned_states;
+      for (const State& state: states)
+      {
+         if (state.GetOwner() != *tag)
+         {
+            continue;
+         }
+
+         owned_states.emplace_back(state);
+      }
+
+      std::ranges::sort(owned_states, [](const State& a, const State& b) {
+         // more victory points has priority
+         const auto& a_victory_points = a.GetVictoryPoints();
+         const auto& b_victory_points = b.GetVictoryPoints();
+         const int a_victory_points_total = std::accumulate(a_victory_points.begin(),
+             a_victory_points.end(),
+             0,
+             [](int total, const std::pair<int, int>& victory_point) {
+                return victory_point.second + total;
+             });
+         const int b_victory_points_total = std::accumulate(b_victory_points.begin(),
+             b_victory_points.end(),
+             0,
+             [](int total, const std::pair<int, int>& victory_point) {
+                return victory_point.second + total;
+             });
+         if (a_victory_points_total < b_victory_points_total)
+         {
+            return true;
+         }
+         if (a_victory_points_total > b_victory_points_total)
+         {
+            return false;
+         }
+
+         // Next, higher industry matters
+         const int a_factories = a.GetCivilianFactories() + a.GetMilitaryFactories() + a.GetDockyards();
+         const int b_factories = b.GetCivilianFactories() + b.GetMilitaryFactories() + b.GetDockyards();
+         if (a_factories < b_factories)
+         {
+            return true;
+         }
+         if (a_factories > b_factories)
+         {
+            return false;
+         }
+
+         // Still here? Try population
+         if (a.GetManpower() < b.GetManpower())
+         {
+            return true;
+         }
+         if (a.GetManpower() > b.GetManpower())
+         {
+            return false;
+         }
+
+         // There's nothing else left. Lowest id wins
+         return a.GetId() < b.GetId();
+      });
+
+      if (!owned_states.empty())
+      {
+         capital_state = owned_states.begin()->get().GetId();
       }
    }
 
