@@ -560,8 +560,7 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
       civilian_factories += hoi4_state.GetCivilianFactories();
       military_factories += hoi4_state.GetMilitaryFactories();
       dockyards += hoi4_state.GetDockyards();
-      const auto& hoi4_state_resource_array = hoi4_state.GetResources();
-      for (const auto& hoi4_state_resource: hoi4_state_resource_array)
+      for (const auto& hoi4_state_resource: hoi4_state.GetResources())
       {
          resources[hoi4_state_resource.first] += hoi4_state_resource.second;
       }
