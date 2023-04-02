@@ -65,7 +65,7 @@ jobs:
         
     - name: "Echo version number"
       run: |
-       echo ${{join(version_number.outputs.major, version_number.outputs.minor, version_number.outputs.patch)}}
+       echo ${{join(steps.version_number.outputs.major, steps.version_number.outputs.minor, steps.version_number.outputs.patch)}}
 
     - name: "Build solution"
       run: |
