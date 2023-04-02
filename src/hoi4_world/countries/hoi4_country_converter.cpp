@@ -27,11 +27,11 @@ bool StateAsCapitalCompareFunction(const hoi4::State& a, const hoi4::State& b)
        [](int total, const std::pair<int, int>& victory_point) {
           return victory_point.second + total;
        });
-   if (a_victory_points_total < b_victory_points_total)
+   if (a_victory_points_total > b_victory_points_total)
    {
       return true;
    }
-   if (a_victory_points_total > b_victory_points_total)
+   if (a_victory_points_total < b_victory_points_total)
    {
       return false;
    }
@@ -39,21 +39,21 @@ bool StateAsCapitalCompareFunction(const hoi4::State& a, const hoi4::State& b)
    // Next, higher industry matters.
    const int a_factories = a.GetCivilianFactories() + a.GetMilitaryFactories() + a.GetDockyards();
    const int b_factories = b.GetCivilianFactories() + b.GetMilitaryFactories() + b.GetDockyards();
-   if (a_factories < b_factories)
+   if (a_factories > b_factories)
    {
       return true;
    }
-   if (a_factories > b_factories)
+   if (a_factories < b_factories)
    {
       return false;
    }
 
    // Still here? Try population.
-   if (a.GetManpower() < b.GetManpower())
+   if (a.GetManpower() > b.GetManpower())
    {
       return true;
    }
-   if (a.GetManpower() > b.GetManpower())
+   if (a.GetManpower() < b.GetManpower())
    {
       return false;
    }
