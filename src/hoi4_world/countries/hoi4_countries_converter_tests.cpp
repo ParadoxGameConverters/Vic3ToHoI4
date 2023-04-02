@@ -29,6 +29,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        },
        country_mapper,
        {{1, 10}, {2, 20}},
+       {},
        {
            {{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},
            {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}},

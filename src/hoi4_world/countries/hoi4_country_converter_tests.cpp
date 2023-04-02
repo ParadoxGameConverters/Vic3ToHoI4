@@ -17,8 +17,8 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
    const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
    const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
 
-   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {}, {}, {}, {}, {});
-   const auto country_two = ConvertCountry(source_country_two, {}, country_mapper, {}, {}, {}, {}, {}, {});
+   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {}, {}, {}, {}, {}, {});
+   const auto country_two = ConvertCountry(source_country_two, {}, country_mapper, {}, {}, {}, {}, {}, {}, {});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetTag(), "T00");
@@ -36,7 +36,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
    });
    const vic3::Country source_country_one;
 
-   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {}, {}, {}, {}, {});
+   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {}, {}, {}, {}, {}, {});
 
    EXPECT_EQ(country_one, std::nullopt);
 }
@@ -48,7 +48,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
    const mappers::CountryMapper country_mapper;
    const vic3::Country source_country_one({.tag = "TAG"});
 
-   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {}, {}, {}, {}, {});
+   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {}, {}, {}, {}, {}, {});
 
    EXPECT_EQ(country_one, std::nullopt);
 }
@@ -63,9 +63,9 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}, {3, 9}};
 
    const auto country_one =
-       ConvertCountry(source_country_one, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {}, {}, {}, {}, {});
+       ConvertCountry(source_country_one, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {}, {}, {}, {}, {}, {});
    const auto country_two =
-       ConvertCountry(source_country_two, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {}, {}, {}, {}, {});
+       ConvertCountry(source_country_two, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {}, {}, {}, {}, {}, {});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::optional(4));
@@ -84,19 +84,136 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
 
    const auto country_one =
-       ConvertCountry(source_country_one, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {}, {}, {}, {}, {});
+       ConvertCountry(source_country_one, {}, country_mapper, vic3_state_ids_to_hoi4_state_ids, {}, {}, {}, {}, {}, {});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMapping)
+TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStates)
 {
    const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
    const vic3::Country source_country_one({.tag = "TAG", .capital_state = 2});
 
-   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {}, {}, {}, {}, {});
+   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {}, {}, {}, {}, {}, {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNotConverted)
+{
+   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
+   const vic3::Country source_country_one({.tag = "TAG"});
+
+   const auto country_one = ConvertCountry(source_country_one,
+       {},
+       country_mapper,
+       {},
+       {
+           State(1, {.owner = "TAG", .victory_points = {{1, 1}, {2, 2}, {3, 3}}}),
+           State(2, {.owner = "TAG", .victory_points = {{2, 2}, {4, 4}, {6, 6}}}),
+           State(3, {.owner = "TAG", .victory_points = {{1, 1}, {2, 1}, {3, 1}}}),
+       },
+       {},
+       {},
+       {},
+       {},
+       {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetCapitalState(), std::optional(2));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVpsAreSame)
+{
+   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
+   const vic3::Country source_country_one({.tag = "TAG"});
+
+   const auto country_one = ConvertCountry(source_country_one,
+       {},
+       country_mapper,
+       {},
+       {
+           State(1, {.owner = "TAG", .civilian_factories = 1, .military_factories = 2, .dockyards = 3}),
+           State(2, {.owner = "TAG", .civilian_factories = 2, .military_factories = 4, .dockyards = 6}),
+           State(3, {.owner = "TAG", .civilian_factories = 1, .military_factories = 1, .dockyards = 1}),
+       },
+       {},
+       {},
+       {},
+       {},
+       {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetCapitalState(), std::optional(2));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfIndustriesAreSame)
+{
+   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
+   const vic3::Country source_country_one({.tag = "TAG"});
+
+   const auto country_one = ConvertCountry(source_country_one,
+       {},
+       country_mapper,
+       {},
+       {
+           State(1, {.owner = "TAG", .manpower = 1234}),
+           State(2, {.owner = "TAG", .manpower = 2468}),
+           State(3, {.owner = "TAG", .manpower = 1111}),
+       },
+       {},
+       {},
+       {},
+       {},
+       {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetCapitalState(), std::optional(2));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersAreSame)
+{
+   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
+   const vic3::Country source_country_one({.tag = "TAG"});
+
+   const auto country_one = ConvertCountry(source_country_one,
+       {},
+       country_mapper,
+       {},
+       {State(3, {.owner = "TAG"}), State(1, {.owner = "TAG"}), State(2, {.owner = "TAG"})},
+       {},
+       {},
+       {},
+       {},
+       {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetCapitalState(), std::optional(1));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapital)
+{
+   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
+   const vic3::Country source_country_one({.tag = "TAG"});
+
+   const auto country_one = ConvertCountry(source_country_one,
+       {},
+       country_mapper,
+       {},
+       {State(1, {}), State(2, {.owner = "TWO"})},
+       {},
+       {},
+       {},
+       {},
+       {});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
@@ -111,6 +228,7 @@ TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
    const auto country_one = ConvertCountry(source_country_one,
        {"source_tech"},
        country_mapper,
+       {},
        {},
        {{{"source_tech"}, std::nullopt, {"dest_tech_one", "dest_tech_two"}}},
        {},
@@ -133,6 +251,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
    const auto country_one = ConvertCountry(source_country_one,
        {"source_tech"},
        country_mapper,
+       {},
        {},
        {{{"source_tech"}, std::nullopt, {"required_tech_one", "required_tech_two"}}},
        {
@@ -217,6 +336,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
    const auto country_one = ConvertCountry(source_country_one,
        {"source_tech"},
        country_mapper,
+       {},
        {},
        {{{"source_tech"}, std::nullopt, {"blocking_tech_one", "blocking_tech_two"}}},
        {

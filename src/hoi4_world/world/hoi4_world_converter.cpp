@@ -73,6 +73,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        source_world.GetAcquiredTechnologies(),
        country_mapper,
        states.vic3_state_ids_to_hoi4_state_ids,
+       states.states,
        tech_mappings);
 
    Localizations localizations = ConvertLocalizations(source_world.GetLocalizations(),

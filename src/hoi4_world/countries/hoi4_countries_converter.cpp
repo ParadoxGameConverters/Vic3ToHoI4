@@ -11,6 +11,7 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
     const std::map<int, std::set<std::string>>& source_technologies,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
+    const std::vector<State>& states,
     const std::vector<mappers::TechMapping>& tech_mappings)
 {
    std::map<std::string, Country> countries;
@@ -34,6 +35,7 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
           source_country_technologies,
           country_mapper,
           vic3_state_ids_to_hoi4_state_ids,
+          states,
           tech_mappings,
           all_legacy_ship_variants,
           all_ship_variants,
