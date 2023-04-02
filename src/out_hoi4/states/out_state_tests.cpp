@@ -70,6 +70,7 @@ TEST(Outhoi4StatesState, BasicsAreOutput)
        "\n"
        "\thistory = {\n"
        "\t\tbuildings = {\n"
+       "\t\t\tinfrastructure = 2\n"
        "\t\t\tindustrial_complex = 0\n"
        "\t\t\tarms_factory = 0\n"
        "\t\t}\n"
