@@ -106,14 +106,17 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStat
 TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNotConverted)
 {
    const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
-   const vic3::Country source_country_one({.tag = "TAG", .capital_state = 2});
+   const vic3::Country source_country_one({.tag = "TAG"});
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
        country_mapper,
        {},
-       {State(1, {.owner = "TAG", .victory_points = {{1, 1}, {2, 2}, {3, 3}}}),
-           State(2, {.owner = "TAG", .victory_points = {{2, 2}, {4, 4}, {6, 6}}})},
+       {
+           State(1, {.owner = "TAG", .victory_points = {{1, 1}, {2, 2}, {3, 3}}}),
+           State(2, {.owner = "TAG", .victory_points = {{2, 2}, {4, 4}, {6, 6}}}),
+           State(3, {.owner = "TAG", .victory_points = {{1, 1}, {2, 1}, {3, 1}}}),
+       },
        {},
        {},
        {},
@@ -128,14 +131,17 @@ TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNo
 TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVpsAreSame)
 {
    const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
-   const vic3::Country source_country_one({.tag = "TAG", .capital_state = 2});
+   const vic3::Country source_country_one({.tag = "TAG"});
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
        country_mapper,
        {},
-       {State(1, {.owner = "TAG", .civilian_factories = 1, .military_factories = 2, .dockyards = 3}),
-           State(2, {.owner = "TAG", .civilian_factories = 2, .military_factories = 4, .dockyards = 6})},
+       {
+           State(1, {.owner = "TAG", .civilian_factories = 1, .military_factories = 2, .dockyards = 3}),
+           State(2, {.owner = "TAG", .civilian_factories = 2, .military_factories = 4, .dockyards = 6}),
+           State(3, {.owner = "TAG", .civilian_factories = 1, .military_factories = 1, .dockyards = 1}),
+       },
        {},
        {},
        {},
@@ -150,13 +156,17 @@ TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVps
 TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfIndustriesAreSame)
 {
    const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
-   const vic3::Country source_country_one({.tag = "TAG", .capital_state = 2});
+   const vic3::Country source_country_one({.tag = "TAG"});
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
        country_mapper,
        {},
-       {State(1, {.owner = "TAG", .manpower = 1234}), State(2, {.owner = "TAG", .manpower = 2468})},
+       {
+           State(1, {.owner = "TAG", .manpower = 1234}),
+           State(2, {.owner = "TAG", .manpower = 2468}),
+           State(3, {.owner = "TAG", .manpower = 1111}),
+       },
        {},
        {},
        {},
@@ -171,13 +181,13 @@ TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfInd
 TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersAreSame)
 {
    const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
-   const vic3::Country source_country_one({.tag = "TAG", .capital_state = 2});
+   const vic3::Country source_country_one({.tag = "TAG"});
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
        country_mapper,
        {},
-       {State(1, {.owner = "TAG"}), State(2, {.owner = "TAG"})},
+       {State(3, {.owner = "TAG"}), State(1, {.owner = "TAG"}), State(2, {.owner = "TAG"})},
        {},
        {},
        {},
@@ -192,7 +202,7 @@ TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersA
 TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapital)
 {
    const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
-   const vic3::Country source_country_one({.tag = "TAG", .capital_state = 2});
+   const vic3::Country source_country_one({.tag = "TAG"});
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
