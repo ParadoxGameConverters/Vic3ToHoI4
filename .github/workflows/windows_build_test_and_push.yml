@@ -30,6 +30,10 @@ jobs:
        git submodule update --init --recursive external\commonItems
        git -c submodule."external/commonItems".update=none `
            submodule update --init --recursive external\Fronter
+           
+    - name: "List tags"
+      run: |
+       git tag
        
     - name: "Generate semantic version number"
       uses: paulhatch/semantic-version@v5.0.2
@@ -59,7 +63,6 @@ jobs:
         search_commit_body: false
         # The output method used to generate list of users, 'csv' or 'json'.
         user_format_type: "csv"
-        # Prevents pre-v1.0.0 version from automatically incrementing the major version.
         
     - name: "Echo version number"
       run: |
