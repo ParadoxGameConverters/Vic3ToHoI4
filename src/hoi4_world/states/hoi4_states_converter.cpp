@@ -555,8 +555,6 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    int military_factories = 0;
    int dockyards = 0;
    std::map<std::string, double> resources;
-   std::map<std::string, double> hoi4_state_resource;
-   std::map<std::string, double> hoi4_state_resource_array;
    for (const auto& hoi4_state: hoi4_states)
    {
       civilian_factories += hoi4_state.GetCivilianFactories();
