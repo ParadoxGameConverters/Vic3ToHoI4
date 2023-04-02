@@ -570,8 +570,6 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    int default_military_factories = 0;
    int default_dockyards = 0;
    std::map<std::string, double> default_resources;
-   std::map<std::string, double> default_hoi4_state_resource;
-   std::map<std::string, double> default_hoi4_state_resource_array;
    for (const auto& hoi4_state: default_states | std::views::values)
    {
       default_civilian_factories += hoi4_state.GetCivilianFactories();
