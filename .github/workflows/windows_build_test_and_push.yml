@@ -57,12 +57,12 @@ jobs:
 
     - name: "Echo version number"
       run: |
-       echo ${{ steps.version_number.outputs.major }}
-       echo ${{ steps.version_number.outputs.minor }}
-       echo ${{ steps.version_number.outputs.patch }}
+       echo ${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}.${{ steps.version_number.outputs.patch }}
 
     - name: "Create version file"
       run: |
+       chcp
+       chcp 1252
        echo '# Version info' > data/version.txt
        echo '' >> data/version.txt
        echo 'version = "${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}.${{ steps.version_number.outputs.patch }}"' >> data/version.txt
