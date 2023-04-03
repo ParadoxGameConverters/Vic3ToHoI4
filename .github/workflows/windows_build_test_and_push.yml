@@ -61,18 +61,16 @@ jobs:
 
     - name: "Create version file"
       run: |
-       chcp
-       chcp 1252
-       echo '# Version info' > data/version.txt
-       echo '' >> data/version.txt
-       echo 'version = "${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}.${{ steps.version_number.outputs.patch }}"' >> data/version.txt
-       echo 'name = "Null"' >> data/version.txt
-       echo 'source = "Vic3"' >> data/version.txt
-       echo 'minSource = "1.0"' >> data/version.txt
-       echo 'maxSource = "1.2"' >> data/version.txt
-       echo 'target = "HoI4"' >> data/version.txt
-       echo 'minTarget = "1.12"' >> data/version.txt
-       echo 'maxTarget = "1.12"' >> data/version.txt
+       echo '# Version info' | out-file data/version.txt -encoding ASCII
+       echo '' | out-file data/version.txt -encoding ASCII -append
+       echo 'version = "${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}.${{ steps.version_number.outputs.patch }}"' | out-file data/version.txt -encoding ASCII -append
+       echo 'name = "Null"' | out-file data/version.txt -encoding ASCII -append
+       echo 'source = "Vic3"' | out-file data/version.txt -encoding ASCII -append
+       echo 'minSource = "1.0"' | out-file data/version.txt -encoding ASCII -append
+       echo 'maxSource = "1.2"' | out-file data/version.txt -encoding ASCII -append
+       echo 'target = "HoI4"' | out-file data/version.txt -encoding ASCII -append
+       echo 'minTarget = "1.12"' | out-file data/version.txt -encoding ASCII -append
+       echo 'maxTarget = "1.12"' | out-file data/version.txt -encoding ASCII -append
        cat data/version.txt
 
     - name: "Build solution"
