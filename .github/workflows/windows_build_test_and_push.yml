@@ -58,6 +58,8 @@ jobs:
     - name: "Echo version number"
       run: |
        echo ${{ steps.version_number.outputs.major }}
+       echo ${{ steps.version_number.outputs.minor }}
+       echo ${{ steps.version_number.outputs.patch }}
 
     # - name: "Build solution"
       # run: |
