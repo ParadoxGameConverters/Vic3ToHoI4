@@ -1,10 +1,10 @@
 # Version info
 
-version = "0.0"
+version = "0.0.0"
 name = "Null"
 source = "Vic3"
 minSource = "1.0"
-maxSource = "1.0"
+maxSource = "1.2"
 target = "HoI4"
-minTarget = "1.11.4"
+minTarget = "1.12"
 maxTarget = "1.12"
