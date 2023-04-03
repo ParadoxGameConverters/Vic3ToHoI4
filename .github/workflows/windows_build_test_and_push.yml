@@ -49,7 +49,7 @@ jobs:
         # A string to determine the format of the version output
         version_format: "v${major}.${minor}.${patch}"
         # If this is set to true, *every* commit will be treated as a new version.
-        bump_each_commit: false
+        bump_each_commit: true
         # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
         search_commit_body: false
         # The output method used to generate list of users, 'csv' or 'json'.
@@ -57,7 +57,7 @@ jobs:
         
     - name: "Echo version number"
       run: |
-       echo ${steps.version_number.outputs.major}
+       echo ${{ steps.version_number.outputs.major }}
 
     # - name: "Build solution"
       # run: |
