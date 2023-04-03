@@ -52,8 +52,6 @@ jobs:
         minor_regexp_flags: ""
         # A string to determine the format of the version output
         version_format: "v${major}.${minor}.${patch}"
-        # Named version, will be used as suffix for name version tag
-        namespace: my-service
         # If this is set to true, *every* commit will be treated as a new version.
         bump_each_commit: false
         # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
