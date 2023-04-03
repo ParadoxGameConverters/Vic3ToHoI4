@@ -31,10 +31,6 @@ jobs:
        git -c submodule."external/commonItems".update=none `
            submodule update --init --recursive external\Fronter
            
-    - name: "List tags"
-      run: |
-       git tag
-       
     - name: "Generate semantic version number"
       uses: paulhatch/semantic-version@v5.0.2
       id: version_number
@@ -61,7 +57,7 @@ jobs:
         
     - name: "Echo version number"
       run: |
-       echo ${{join(steps.version_number.outputs.major, steps.version_number.outputs.minor)}}
+       echo ${steps.version_number.outputs.major}
 
     # - name: "Build solution"
       # run: |
