@@ -32,7 +32,7 @@ jobs:
            submodule update --init --recursive external\Fronter
 
     - name: "Generate semantic version number"
-      uses: paulhatch/semantic-version@v5.0.2
+      uses: paulhatch/semantic-version@v5.0.3
       id: version_number
       with:
         # The prefix to use to identify tags
