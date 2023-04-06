@@ -1,6 +1,8 @@
 # Vic3ToHoI4
 
-DO NOT DOWNLOAD RELEASES! NOT YET WORKING!
+Converts Victoria 3 games to Hearts of Iron 4 mods.  
+
+The latest build is available [here](https://github.com/ParadoxGameConverters/Vic3ToHoI4/releases/download/latest/Vic3ToHoI4-latest-win-x64.exe).
 
 ## Build checks
 
