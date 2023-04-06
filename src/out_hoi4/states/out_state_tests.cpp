@@ -437,6 +437,7 @@ TEST(Outhoi4StatesState, BuildingsAreOutput)
    EXPECT_THAT(state_file_stream.str(),
        testing::HasSubstr("\thistory = {\n"
                           "\t\tbuildings = {\n"
+                          "\t\t\tinfrastructure = 2\n"
                           "\t\t\tindustrial_complex = 2\n"
                           "\t\t\tarms_factory = 4\n"
                           "\t\t\tdockyard = 6\n"
@@ -468,6 +469,7 @@ TEST(Outhoi4StatesState, DockyardsNotOutputWhenZero)
    EXPECT_THAT(state_file_stream.str(),
        testing::HasSubstr("\thistory = {\n"
                           "\t\tbuildings = {\n"
+                          "\t\t\tinfrastructure = 2\n"
                           "\t\t\tindustrial_complex = 2\n"
                           "\t\t\tarms_factory = 4\n"
                           "\t\t}\n"
@@ -497,6 +499,7 @@ TEST(Outhoi4StatesState, NavalBasesCanBeOutput)
    EXPECT_THAT(state_file_stream.str(),
        testing::HasSubstr("\thistory = {\n"
                           "\t\tbuildings = {\n"
+                          "\t\t\tinfrastructure = 2\n"
                           "\t\t\tindustrial_complex = 0\n"
                           "\t\t\tarms_factory = 0\n"
                           "\t\t\t9 = {\n"
@@ -529,6 +532,7 @@ TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLevelIsMissing)
    EXPECT_THAT(state_file_stream.str(),
        testing::HasSubstr("\thistory = {\n"
                           "\t\tbuildings = {\n"
+                          "\t\t\tinfrastructure = 2\n"
                           "\t\t\tindustrial_complex = 0\n"
                           "\t\t\tarms_factory = 0\n"
                           "\t\t}\n"
@@ -558,6 +562,7 @@ TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLocationIsMissing)
    EXPECT_THAT(state_file_stream.str(),
        testing::HasSubstr("\thistory = {\n"
                           "\t\tbuildings = {\n"
+                          "\t\t\tinfrastructure = 2\n"
                           "\t\t\tindustrial_complex = 0\n"
                           "\t\t\tarms_factory = 0\n"
                           "\t\t}\n"
