@@ -26,5 +26,8 @@
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
       <Filter>external\rakaly</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="data\readme.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
