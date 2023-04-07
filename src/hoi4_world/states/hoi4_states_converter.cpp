@@ -1,6 +1,7 @@
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 
 #include <algorithm>
+#include <cstdint>
 #include <numeric>
 #include <optional>
 #include <queue>
@@ -568,7 +569,7 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    int military_factories = 0;
    int dockyards = 0;
    std::map<std::string, double> resources;
-   for (const auto& hoi4_state: hoi4_states)
+   for (const hoi4::State& hoi4_state: hoi4_states)
    {
       civilian_factories += hoi4_state.GetCivilianFactories();
       military_factories += hoi4_state.GetMilitaryFactories();
@@ -583,7 +584,7 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    int default_military_factories = 0;
    int default_dockyards = 0;
    std::map<std::string, double> default_resources;
-   for (const auto& hoi4_state: default_states | std::views::values)
+   for (const hoi4::DefaultState& hoi4_state: default_states | std::views::values)
    {
       default_civilian_factories += hoi4_state.GetCivilianFactories();
       default_military_factories += hoi4_state.GetMilitaryFactories();
@@ -612,6 +613,25 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    {
       Log(LogLevel::Info) << fmt::format("\t\t\tDefault Resource {}:{}", dr.first, dr.second);
    }
+}
+
+
+void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
+    const std::map<int, hoi4::DefaultState>& default_states)
+{
+   int64_t manpower = 0;
+   for (const hoi4::State& state: hoi4_states)
+   {
+       manpower += state.GetManpower();
+   }
+
+   int64_t default_manpower = 0;
+   for (const hoi4::DefaultState& hoi4_state: default_states | std::views::values)
+   {
+       default_manpower += hoi4_state.GetManpower();
+   }
+
+   Log(LogLevel::Info) << fmt::format("\t\tTotal manpower: {} (vanilla hoi4 had {})", manpower, default_manpower);
 }
 
 
@@ -765,6 +785,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
    }
 
    LogIndustryStats(hoi4_states, default_states);
+   LogManpowerStats(hoi4_states, default_states);
 
    return {hoi4_states,
        province_to_state_id_map,
