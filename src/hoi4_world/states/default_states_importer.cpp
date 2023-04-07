@@ -35,11 +35,13 @@ std::map<int, hoi4::DefaultState> hoi4::ImportDefaultStates(const commonItems::M
    state_history_parser.IgnoreUnregisteredItems();
 
    commonItems::parser default_state_parser;
-   default_state_parser.registerKeyword("impassable",
-       [&options](const std::string& unused, std::istream& input_stream) {
-          options.impassable = true;
-          commonItems::ignoreItem(unused, input_stream);
-       });
+   default_state_parser.registerKeyword("impassable", [&options](std::istream& input_stream) {
+      options.impassable = true;
+      commonItems::ignoreItem("", input_stream);
+   });
+   default_state_parser.registerKeyword("manpower", [&options](std::istream& input_stream) {
+      options.manpower = commonItems::getInt(input_stream);
+   });
    default_state_parser.registerKeyword("provinces", [&options](std::istream& input_stream) {
       for (int province: commonItems::getInts(input_stream))
       {
@@ -71,6 +73,7 @@ std::map<int, hoi4::DefaultState> hoi4::ImportDefaultStates(const commonItems::M
       options.impassable = false;
       options.owner_tag.clear();
       options.provinces.clear();
+      options.manpower = 0;
       options.civilian_factories = 0;
       options.military_factories = 0;
       options.dockyards = 0;
