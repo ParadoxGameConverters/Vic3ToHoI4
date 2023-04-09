@@ -23,7 +23,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoCountryMappingsNoCountryLoc
 
 
    const Localizations hoi4_localizations =
-       ConvertLocalizations(vic3_localizations, {}, {}, {}, mappers::ProvinceMapper({}, {}));
+       ConvertLocalizations(vic3_localizations, {}, {}, {}, mappers::ProvinceMapper({}, {}), {});
 
    EXPECT_EQ(hoi4_localizations.GetCountryLocalizations().size(), 0);
 }
@@ -34,10 +34,14 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoVic3LocalizationsNoHoi4Coun
    const commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
 
    const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
-       {{"VIC", "HOI"}, {"TWO", "TWO"}},
+       {
+           {1, "HOI"},
+           {2, "TWO"},
+       },
        {},
        {},
-       mappers::ProvinceMapper({}, {}));
+       mappers::ProvinceMapper({}, {}),
+       {});
 
    EXPECT_EQ(hoi4_localizations.GetCountryLocalizations().size(), 0);
 }
@@ -65,10 +69,17 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, CountryLocalizationsCanBeConv
 
 
    const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
-       {{"VIC", "HOI"}, {"TWO", "TWO"}},
+       {
+           {1, "HOI"},
+           {2, "TWO"},
+       },
        {},
        {},
-       mappers::ProvinceMapper({}, {}));
+       mappers::ProvinceMapper({}, {}),
+       {
+           {1, vic3::Country({.tag = "VIC"})},
+           {2, vic3::Country({.tag = "TWO"})},
+       });
 
    const std::optional<commonItems::LocalizationBlock> hoi_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("HOI");
@@ -123,7 +134,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoStateNameMappingsNoStateLoc
 
 
    const Localizations hoi4_localizations =
-       ConvertLocalizations(vic3_localizations, {}, {}, {}, mappers::ProvinceMapper({}, {}));
+       ConvertLocalizations(vic3_localizations, {}, {}, {}, mappers::ProvinceMapper({}, {}), {});
 
    EXPECT_EQ(hoi4_localizations.GetStateLocalizations().size(), 0);
 }
@@ -135,9 +146,13 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoVic3LocalizationsNoHoi4Stat
 
    const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
        {},
-       {{"STATE_ONE", "REGION_ONE"}, {"STATE_TWO", "REGION_TWO"}},
+       {
+           {"STATE_ONE", "REGION_ONE"},
+           {"STATE_TWO", "REGION_TWO"},
+       },
        {},
-       mappers::ProvinceMapper({}, {}));
+       mappers::ProvinceMapper({}, {}),
+       {});
 
    EXPECT_EQ(hoi4_localizations.GetStateLocalizations().size(), 0);
 }
@@ -157,9 +172,13 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, StateLocalizationsCanBeConver
 
    const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
        {},
-       {{"STATE_ONE", "REGION_ONE"}, {"STATE_TWO", "REGION_TWO"}},
+       {
+           {"STATE_ONE", "REGION_ONE"},
+           {"STATE_TWO", "REGION_TWO"},
+       },
        {},
-       mappers::ProvinceMapper({}, {}));
+       mappers::ProvinceMapper({}, {}),
+       {});
 
    const std::optional<commonItems::LocalizationBlock> one_localization_block =
        hoi4_localizations.GetStateLocalizations().GetLocalizationBlock("STATE_ONE");
@@ -191,7 +210,13 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoRegionsNoVictoryPointLocali
        {},
        {},
        {},
-       mappers::ProvinceMapper({{"x123456", {1}}, {"x2468AC", {2}}}, {}));
+       mappers::ProvinceMapper(
+           {
+               {"x123456", {1}},
+               {"x2468AC", {2}},
+           },
+           {}),
+       {});
 
    EXPECT_EQ(hoi4_localizations.GetVictoryPointLocalizations().size(), 0);
 }
@@ -212,8 +237,16 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoSignificantProvincesNoVicto
    const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
        {},
        {},
-       {{"REGION_ONE", vic3::StateRegion({}, {})}},
-       mappers::ProvinceMapper({{"x123456", {1}}, {"x2468AC", {2}}}, {}));
+       {
+           {"REGION_ONE", vic3::StateRegion({}, {})},
+       },
+       mappers::ProvinceMapper(
+           {
+               {"x123456", {1}},
+               {"x2468AC", {2}},
+           },
+           {}),
+       {});
 
    EXPECT_EQ(hoi4_localizations.GetVictoryPointLocalizations().size(), 0);
 }
@@ -234,8 +267,19 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, VictoryPointLocalizationsCanB
    const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
        {},
        {},
-       {{"REGION_ONE", vic3::StateRegion({{"x123456", "city"}, {"x2468AC", "mine"}}, {})}},
-       mappers::ProvinceMapper({{"x123456", {1}}, {"x2468AC", {2}}}, {}));
+       {
+           {
+               "REGION_ONE",
+               vic3::StateRegion({{"x123456", "city"}, {"x2468AC", "mine"}}, {}),
+           },
+       },
+       mappers::ProvinceMapper(
+           {
+               {"x123456", {1}},
+               {"x2468AC", {2}},
+           },
+           {}),
+       {});
 
    const std::optional<commonItems::LocalizationBlock> one_localization_block =
        hoi4_localizations.GetVictoryPointLocalizations().GetLocalizationBlock("VICTORY_POINTS_1");
@@ -266,8 +310,11 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, SkippedVictoryPointLocalizati
    const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
        {},
        {},
-       {{"REGION_ONE", vic3::StateRegion({{"x123456", "city"}, {"x2468AC", "mine"}}, {})}},
-       mappers::ProvinceMapper({{"x2468AC", {2}}}, {}));
+       {
+           {"REGION_ONE", vic3::StateRegion({{"x123456", "city"}, {"x2468AC", "mine"}}, {})},
+       },
+       mappers::ProvinceMapper({{"x2468AC", {2}}}, {}),
+       {});
 
    std::cout.rdbuf(cout_buffer);
 

@@ -3,6 +3,7 @@
 #include "external/commonItems/Localization/LocalizationBlock.h"
 #include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/vic3_world/countries/vic3_country.h"
 
 
 
@@ -11,14 +12,25 @@ namespace
 
 commonItems::LocalizationDatabase ConvertCountryLocalizations(
     const commonItems::LocalizationDatabase& vic3_localizations,
-    const std::map<std::string, std::string>& country_mappings)
+    const std::map<int, std::string>& country_mappings,
+    const std::map<int, vic3::Country>& vic3_countries)
 {
    commonItems::LocalizationDatabase country_localizations("english",
        {"braz_por", "french", "german", "japanese", "polish", "russian", "spanish"});
 
-   for (const auto& [vic3_country, hoi4_country]: country_mappings)
+   for (const auto& [vic3_country_number, hoi4_country]: country_mappings)
    {
-      const auto& country_localization_block = vic3_localizations.GetLocalizationBlock(vic3_country);
+      std::string vic3_country_tag;
+      if (const auto vic3_country = vic3_countries.find(vic3_country_number); vic3_country != vic3_countries.end())
+      {
+         vic3_country_tag = vic3_country->second.GetTag();
+      }
+      else
+      {
+         continue;
+      }
+
+      const auto& country_localization_block = vic3_localizations.GetLocalizationBlock(vic3_country_tag);
       if (!country_localization_block)
       {
          continue;
@@ -29,7 +41,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
           *country_localization_block);
 
       const auto& adjective_localization_block =
-          vic3_localizations.GetLocalizationBlock(fmt::format("{}_ADJ", vic3_country));
+          vic3_localizations.GetLocalizationBlock(fmt::format("{}_ADJ", vic3_country_tag));
       if (!adjective_localization_block)
       {
          continue;
@@ -108,14 +120,15 @@ commonItems::LocalizationDatabase ConvertVictoryPointLocalizations(
 
 
 hoi4::Localizations hoi4::ConvertLocalizations(const commonItems::LocalizationDatabase& vic3_localizations,
-    const std::map<std::string, std::string>& country_mappings,
+    const std::map<int, std::string>& country_mappings,
     const std::map<std::string, std::string>& hoi4_state_names_to_vic3_state_names,
     const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
-    const mappers::ProvinceMapper& province_mapper)
+    const mappers::ProvinceMapper& province_mapper,
+    const std::map<int, vic3::Country>& vic3_countries)
 {
    Log(LogLevel::Info) << "\tConverting localizations";
    commonItems::LocalizationDatabase country_localizations =
-       ConvertCountryLocalizations(vic3_localizations, country_mappings);
+       ConvertCountryLocalizations(vic3_localizations, country_mappings, vic3_countries);
    commonItems::LocalizationDatabase state_localizations =
        ConvertStateLocalizations(vic3_localizations, hoi4_state_names_to_vic3_state_names);
    commonItems::LocalizationDatabase victory_point_localizations =
