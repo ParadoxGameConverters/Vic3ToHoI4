@@ -52,6 +52,7 @@ TEST(MappersCountryCountryMapperCreator, MappingsCanComeFromRulesFile)
    const std::map<int, vic3::Country> source_countries{
        {1, vic3::Country({.number = 1, .tag = "TAG"})},
        {2, vic3::Country({.number = 2, .tag = "TWO"})},
+       {3, vic3::Country({.number = 3, .tag = "TWO"})},
    };
 
    const CountryMapper country_mapper = CreateCountryMappings(
@@ -59,6 +60,7 @@ TEST(MappersCountryCountryMapperCreator, MappingsCanComeFromRulesFile)
        source_countries);
    EXPECT_EQ(country_mapper.GetHoiTag(1), "HOI");
    EXPECT_EQ(country_mapper.GetHoiTag(2), "2ND");
+   EXPECT_EQ(country_mapper.GetHoiTag(3), "Z00");
 }
 
 }  // namespace mappers
