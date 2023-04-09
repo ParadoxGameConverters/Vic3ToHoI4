@@ -177,7 +177,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
    const maps::MapData map_data({
-       .province_neighbors = {{"10", {"20", "abc30"}}, {"40", {"50", "60"}},},
+       .province_neighbors =
+           {
+               {"10", {"20", "abc30"}},
+               {"40", {"50", "60"}},
+           },
        .province_definitions = hoi4_province_definitions,
    });
    const hoi4::StrategicRegions strategic_regions;
