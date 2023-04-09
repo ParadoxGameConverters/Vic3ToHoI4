@@ -52,12 +52,15 @@ mappers::CountryMapper mappers::CreateCountryMappings(std::string_view country_m
    char tag_prefix = 'Z';
    int tag_suffix = 0;
 
+   std::set<std::string> used_tags;
    for (const vic3::Country& country: countries | std::views::values)
    {
       const auto& tag = country.GetTag();
-      if (const auto& rule = country_mapping_rules.find(tag); rule != country_mapping_rules.end())
+      if (const auto& rule = country_mapping_rules.find(tag);
+          rule != country_mapping_rules.end() && !used_tags.contains(tag))
       {
          country_mappings.emplace(country.GetNumber(), rule->second);
+         used_tags.emplace(tag);
       }
       else
       {
