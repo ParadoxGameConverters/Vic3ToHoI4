@@ -39,8 +39,8 @@ TEST(Vic3WorldCountriesVic3CountriesImporter, CountriesCanBeImported)
 
    EXPECT_THAT(countries,
        testing::UnorderedElementsAre(
-           testing::Pair(0, Country({.tag = "TAG", .color = commonItems::Color(std::array{1, 2, 3})})),
-           testing::Pair(1, Country({.tag = "TWO", .color = commonItems::Color(std::array{2, 4, 6})}))));
+           testing::Pair(0, Country({.number = 0, .tag = "TAG", .color = commonItems::Color(std::array{1, 2, 3})})),
+           testing::Pair(1, Country({.number = 1, .tag = "TWO", .color = commonItems::Color(std::array{2, 4, 6})}))));
 }
 
 
@@ -58,7 +58,7 @@ TEST(Vic3WorldCountriesVic3CountriesImporter, CountryIndexesCanBeSkipped)
 
    EXPECT_THAT(countries,
        testing::UnorderedElementsAre(
-           testing::Pair(1, Country({.tag = "TWO", .color = commonItems::Color(std::array{2, 4, 6})}))));
+           testing::Pair(1, Country({.number = 1, .tag = "TWO", .color = commonItems::Color(std::array{2, 4, 6})}))));
 }
 
 }  // namespace vic3
