@@ -1,0 +1,3 @@
+link = { vic = TAG hoi = HOI }
+link = { vic = TWO hoi = 2ND }
+link = { vic = THR hoi = Z00 }
