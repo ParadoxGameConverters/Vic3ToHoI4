@@ -52,26 +52,31 @@ mappers::CountryMapper mappers::CreateCountryMappings(std::string_view country_m
    char tag_prefix = 'Z';
    int tag_suffix = 0;
 
-   std::set<std::string> used_tags;
+   std::set<std::string> used_hoi4_tags;
    for (const vic3::Country& country: countries | std::views::values)
    {
-      const auto& tag = country.GetTag();
-      if (const auto& rule = country_mapping_rules.find(tag);
-          rule != country_mapping_rules.end() && !used_tags.contains(tag))
+      const auto& vic3_tag = country.GetTag();
+      if (const auto& rule = country_mapping_rules.find(vic3_tag);
+          rule != country_mapping_rules.end() && !used_hoi4_tags.contains(rule->second))
       {
          country_mappings.emplace(country.GetNumber(), rule->second);
-         used_tags.emplace(tag);
+         used_hoi4_tags.emplace(rule->second);
       }
       else
       {
-         country_mappings.emplace(country.GetNumber(), fmt::format("{}{:0>2}", tag_prefix, tag_suffix));
-
-         ++tag_suffix;
-         if (tag_suffix > 99)
+         std::string possible_hoi4_tag = fmt::format("{}{:0>2}", tag_prefix, tag_suffix);
+         while (used_hoi4_tags.contains(possible_hoi4_tag))
          {
-            tag_suffix = 0;
-            --tag_prefix;
+            ++tag_suffix;
+            if (tag_suffix > 99)
+            {
+               tag_suffix = 0;
+               --tag_prefix;
+            }
+            possible_hoi4_tag = fmt::format("{}{:0>2}", tag_prefix, tag_suffix);
          }
+         country_mappings.emplace(country.GetNumber(), possible_hoi4_tag);
+         used_hoi4_tags.emplace(possible_hoi4_tag);
       }
    }
 
