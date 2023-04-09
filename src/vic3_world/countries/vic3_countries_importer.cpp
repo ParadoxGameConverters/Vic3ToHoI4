@@ -25,7 +25,8 @@ std::map<int, vic3::Country> vic3::ImportCountries(const std::map<std::string, c
              return;
           }
           std::istringstream country_stream(country_string);
-          countries_.emplace(country_number, country_importer_.ImportCountry(country_stream, color_definitions));
+          countries_.emplace(country_number,
+              country_importer_.ImportCountry(country_number, country_stream, color_definitions));
        });
 
    commonItems::parser countries_parser_;

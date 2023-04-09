@@ -615,7 +615,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
          throw std::runtime_error("Something has gone very wrong.");
       }
       std::optional<std::string> state_owner;
-      if (const std::optional<std::string>& vic3_state_owner = vic3_state_itr->second.GetOwnerTag();
+      if (const std::optional<int>& vic3_state_owner = vic3_state_itr->second.GetOwnerNumber();
           vic3_state_owner.has_value())
       {
          state_owner = country_mapper.GetHoiTag(*vic3_state_owner);

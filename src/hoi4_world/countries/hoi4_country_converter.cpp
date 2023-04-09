@@ -145,7 +145,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
     const std::vector<EquipmentVariant>& all_plane_variants,
     const std::vector<EquipmentVariant>& all_tank_variants)
 {
-   const std::optional<std::string> tag = country_mapper.GetHoiTag(source_country.GetTag());
+   const std::optional<std::string> tag = country_mapper.GetHoiTag(source_country.GetNumber());
    if (!tag.has_value())
    {
       return std::nullopt;

@@ -46,8 +46,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -57,8 +63,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
@@ -72,8 +84,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
        country_mapper,
        StateCategories(),
        {},
-       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+       {
+           {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+       },
        CoastalProvinces(),
        {});
 
@@ -95,8 +109,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
 
 TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001", "0x000002", "0x000003"}},
        {20, {"0x000004", "0x000005", "0x000006"}},
@@ -104,12 +124,12 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20"}});
    const maps::MapData map_data({.province_definitions = hoi4_province_definitions});
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"FOR", "FOR"}});
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {4, "FOR"}});
 
-   const auto hoi4_states = ConvertStates({{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2}})},
-                                              {2, vic3::State({.owner_tag = "TWO", .provinces = {3}})},
-                                              {3, vic3::State({.owner_tag = "THR", .provinces = {4}})},
-                                              {4, vic3::State({.owner_tag = "FOR", .provinces = {5, 6}})}},
+   const auto hoi4_states = ConvertStates({{1, vic3::State({.owner_number = 1, .provinces = {1, 2}})},
+                                              {2, vic3::State({.owner_number = 2, .provinces = {3}})},
+                                              {3, vic3::State({.owner_number = 3, .provinces = {4}})},
+                                              {4, vic3::State({.owner_number = 4, .provinces = {5, 6}})}},
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -118,8 +138,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
        country_mapper,
        StateCategories(),
        {},
-       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+       {
+           {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+       },
        CoastalProvinces(),
        {});
 
@@ -137,8 +159,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
 
 TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -148,8 +176,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "abc30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "abc30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
@@ -163,8 +197,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
            country_mapper,
            StateCategories(),
            {},
-           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+           {
+               {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+           },
            CoastalProvinces(),
            {});
 
@@ -190,8 +226,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
 
 TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -219,8 +261,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
            country_mapper,
            StateCategories(),
            {},
-           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+           {
+               {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+           },
            CoastalProvinces(),
            {});
 
@@ -256,8 +300,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -268,8 +318,17 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
    const maps::MapData map_data({.province_definitions = hoi4_province_definitions});
-   const hoi4::StrategicRegions strategic_regions(
-       {.province_to_strategic_region_map = {{10, 1}, {20, 1}, {30, 1}, {40, 2}, {50, 2}, {60, 2}}});
+   const hoi4::StrategicRegions strategic_regions({
+       .province_to_strategic_region_map =
+           {
+               {10, 1},
+               {20, 1},
+               {30, 1},
+               {40, 2},
+               {50, 2},
+               {60, 2},
+           },
+   });
    const mappers::CountryMapper country_mapper;
 
    const auto hoi4_states =
@@ -282,8 +341,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
            country_mapper,
            StateCategories(),
            {},
-           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+           {
+               {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+           },
            CoastalProvinces(),
            {});
 
@@ -305,8 +366,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
 
 TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -316,8 +383,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
@@ -335,8 +408,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
            {2, DefaultState({.impassable = true, .provinces = {30, 40, 50}})},
            {3, DefaultState({.provinces = {60}})},
        },
-       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+       {
+           {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+       },
        CoastalProvinces(),
        {});
 
@@ -360,6 +435,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
            testing::Pair("STATE_3", "REGION_TWO"),
            testing::Pair("STATE_4", "REGION_TWO")));
 }
+
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
 {
@@ -402,8 +478,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
@@ -421,8 +503,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
            country_mapper,
            StateCategories(),
            {},
-           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+           {
+               {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+           },
            CoastalProvinces(),
            {});
 
@@ -446,8 +530,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
 
 TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -457,8 +547,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
        {60, {}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
@@ -476,8 +572,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
            country_mapper,
            StateCategories(),
            {},
-           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+           {
+               {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+           },
            CoastalProvinces(),
            {});
 
@@ -501,8 +599,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
 
 TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -512,8 +616,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
@@ -531,8 +641,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
            country_mapper,
            StateCategories(),
            {},
-           {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+           {
+               {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+               {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+           },
            CoastalProvinces(),
            {});
 
@@ -556,8 +668,17 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
 
 TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006", "0x000007", "0x000008", "0x000009"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+       "0x000007",
+       "0x000008",
+       "0x000009",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {50, {"0x000005"}},
@@ -568,9 +689,12 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
-   const auto hoi4_states = ConvertStates({{0, vic3::State({.provinces = {1}})},
-                                              {5, vic3::State({.provinces = {5}})},
-                                              {9, vic3::State({.provinces = {9}})}},
+   const auto hoi4_states = ConvertStates(
+       {
+           {0, vic3::State({.provinces = {1}})},
+           {5, vic3::State({.provinces = {5}})},
+           {9, vic3::State({.provinces = {9}})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -579,9 +703,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
        country_mapper,
        StateCategories(),
        {},
-       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+       {
+           {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
            {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
-           {"REGION_THREE", vic3::StateRegion({}, {"0x000007", "0x000008", "0x000009"})}},
+           {"REGION_THREE", vic3::StateRegion({}, {"0x000007", "0x000008", "0x000009"})},
+       },
        CoastalProvinces(),
        {});
 
@@ -602,8 +728,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
 
 TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -613,13 +745,22 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
 
-   const auto hoi4_states = ConvertStates({{1, vic3::State({.owner_tag = "TAG", .provinces = {1, 2, 3}})},
-                                              {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}})}},
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -628,8 +769,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
        country_mapper,
        StateCategories(),
        {},
-       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+       {
+           {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+       },
        CoastalProvinces(),
        {});
 
@@ -652,8 +795,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
 
 TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -663,8 +812,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
@@ -672,8 +827,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const auto hoi4_states = ConvertStates({{1, vic3::State({.owner_tag = "TAG", .provinces = {1, 2, 3}})},
-                                              {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}})}},
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -682,8 +840,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
        country_mapper,
        StateCategories(),
        {},
-       {{"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
-           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})}},
+       {
+           {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
+       },
        CoastalProvinces(),
        {});
 
@@ -720,25 +880,33 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsConverted)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
-   const auto hoi4_states =
-       ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}, .population = 12345})},
-                         {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}, .population = 67890})}},
-           province_definitions,
-           hoi4_to_vic3_province_mappings,
-           map_data,
-           hoi4_province_definitions,
-           strategic_regions,
-           country_mapper,
-           StateCategories(),
-           {},
-           {},
-           CoastalProvinces(),
-           {});
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.provinces = {1, 2, 3}, .population = 12345})},
+           {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}, .population = 67890})},
+       },
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {},
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .manpower = 12345}),
@@ -748,8 +916,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsConverted)
 
 TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInSplitStatesIsProportionalToTotalProvinces)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -759,13 +933,22 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInSplitStatesIsProportionalToTo
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data(
-       {.province_neighbors = {{"10", {"20"}}, {"40", {"50"}}}, .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20"}},
+               {"40", {"50"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
-   const auto hoi4_states = ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}, .population = 12345})},
-                                              {2, vic3::State({.provinces = {4, 5, 6}, .population = 67890})}},
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.provinces = {1, 2, 3}, .population = 12345})},
+           {2, vic3::State({.provinces = {4, 5, 6}, .population = 67890})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -788,8 +971,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInSplitStatesIsProportionalToTo
 
 TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInWastelandStatesIsProportionalToTotalProvinces)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -799,8 +988,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInWastelandStatesIsProportional
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
@@ -833,8 +1028,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInWastelandStatesIsProportional
 
 TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -844,14 +1045,22 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
 
    const auto hoi4_states = ConvertStates(
-       {{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .employed_population = 500'000})},
-           {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}, .employed_population = 500'000})}},
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}, .employed_population = 500'000})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}, .employed_population = 500'000})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -873,8 +1082,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
 
 TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -884,14 +1099,22 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
 
    const auto hoi4_states = ConvertStates(
-       {{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .employed_population = 500'000})},
-           {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}, .employed_population = 500'000})}},
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}, .employed_population = 500'000})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}, .employed_population = 500'000})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -918,8 +1141,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
 
 TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -929,18 +1158,26 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
    const auto hoi4_states = ConvertStates(
-       {{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .employed_population = 500'000})},
-           {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}, .employed_population = 500'000})}},
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}, .employed_population = 500'000})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}, .employed_population = 500'000})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -948,9 +1185,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
        strategic_regions,
        country_mapper,
        StateCategories(),
-       {{1, DefaultState({.civilian_factories = 1})},
+       {
+           {1, DefaultState({.civilian_factories = 1})},
            {2, DefaultState({.military_factories = 2})},
-           {3, DefaultState({.dockyards = 3})}},
+           {3, DefaultState({.dockyards = 3})},
+       },
        {},
        CoastalProvinces(),
        {});
@@ -966,8 +1205,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
 
 TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -977,25 +1222,33 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
 
-   const auto hoi4_states =
-       ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}, .employed_population = 500'000})},
-                         {2, vic3::State({.provinces = {4, 5, 6}, .employed_population = 500'000})}},
-           province_definitions,
-           hoi4_to_vic3_province_mappings,
-           map_data,
-           hoi4_province_definitions,
-           strategic_regions,
-           country_mapper,
-           StateCategories(),
-           {},
-           {},
-           CoastalProvinces(),
-           {});
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.provinces = {1, 2, 3}, .employed_population = 500'000})},
+           {2, vic3::State({.provinces = {4, 5, 6}, .employed_population = 500'000})},
+       },
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {},
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .civilian_factories = 0, .military_factories = 0}),
@@ -1005,8 +1258,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
 
 TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -1016,92 +1275,21 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper(std::map<std::string, std::string>{{"ONE", "ONE"}});
-
-   const auto hoi4_states =
-       ConvertStates({{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .employed_population = 1'500'000})}},
-           province_definitions,
-           hoi4_to_vic3_province_mappings,
-           map_data,
-           hoi4_province_definitions,
-           strategic_regions,
-           country_mapper,
-           StateCategories(),
-           {},
-           {},
-           CoastalProvinces(),
-           {});
-
-   EXPECT_THAT(hoi4_states.states,
-       testing::ElementsAre(
-           State(1, {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 7, .military_factories = 5})));
-}
-
-
-TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextStateOfSameOwner)
-{
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
-   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
-       {10, {"0x000001"}},
-       {20, {"0x000002"}},
-       {30, {"0x000003"}},
-       {40, {"0x000004"}},
-       {50, {"0x000005"}},
-       {60, {"0x000006"}},
-   };
-   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
-   const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper(std::map<std::string, std::string>{{"ONE", "ONE"}});
-
-   const auto hoi4_states =
-       ConvertStates({{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .employed_population = 1'500'000})},
-                         {2, vic3::State({.owner_tag = "ONE", .provinces = {4, 5, 6}, .employed_population = 0})}},
-           province_definitions,
-           hoi4_to_vic3_province_mappings,
-           map_data,
-           hoi4_province_definitions,
-           strategic_regions,
-           country_mapper,
-           StateCategories(),
-           {},
-           {},
-           CoastalProvinces(),
-           {});
-
-   EXPECT_THAT(hoi4_states.states,
-       testing::ElementsAre(
-           State(1, {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 7, .military_factories = 5}),
-           State(2, {.owner = "ONE", .provinces = {40, 50, 60}, .civilian_factories = 4, .military_factories = 0})));
-}
-
-
-TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTotalProvinces)
-{
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
-   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
-       {10, {"0x000001"}},
-       {20, {"0x000002"}},
-       {30, {"0x000003"}},
-       {40, {"0x000004"}},
-       {50, {"0x000005"}},
-       {60, {"0x000006"}},
-   };
-   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data(
-       {.province_neighbors = {{"10", {"20"}}, {"40", {"50"}}}, .province_definitions = hoi4_province_definitions});
-   const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper(std::map<int, std::string>{{1, "ONE"}});
 
    const auto hoi4_states = ConvertStates(
-       {{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .employed_population = 300'000})},
-           {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}, .employed_population = 600'000})}},
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}, .employed_population = 1'500'000})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1116,17 +1304,20 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           State(1, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 1, .military_factories = 1}),
-           State(2, {.owner = "ONE", .provinces = {30}, .civilian_factories = 2, .military_factories = 0}),
-           State(3, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 2, .military_factories = 2}),
-           State(4, {.owner = "TWO", .provinces = {60}, .civilian_factories = 3, .military_factories = 0})));
+           State(1, {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 7, .military_factories = 5})));
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
+TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextStateOfSameOwner)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -1136,14 +1327,130 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper(std::map<int, std::string>{{1, "ONE"}});
 
    const auto hoi4_states = ConvertStates(
-       {{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .employed_population = 500'000})},
-           {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}, .employed_population = 500'000})}},
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}, .employed_population = 1'500'000})},
+           {2, vic3::State({.owner_number = 1, .provinces = {4, 5, 6}, .employed_population = 0})},
+       },
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {},
+       CoastalProvinces(),
+       {});
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(
+           State(1, {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 7, .military_factories = 5}),
+           State(2, {.owner = "ONE", .provinces = {40, 50, 60}, .civilian_factories = 4, .military_factories = 0})));
+}
+
+
+TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTotalProvinces)
+{
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20"}},
+               {"40", {"50"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
+   const hoi4::StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
+
+   const auto hoi4_states =
+       ConvertStates({{1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}, .employed_population = 300'000})},
+                         {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}, .employed_population = 600'000})}},
+           province_definitions,
+           hoi4_to_vic3_province_mappings,
+           map_data,
+           hoi4_province_definitions,
+           strategic_regions,
+           country_mapper,
+           StateCategories(),
+           {},
+           {},
+           CoastalProvinces(),
+           {});
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(
+           State(1, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 1, .military_factories = 1}),
+           State(2, {.owner = "ONE", .provinces = {30}, .civilian_factories = 2, .military_factories = 0}),
+           State(3, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 2, .military_factories = 2}),
+           State(4, {.owner = "TWO", .provinces = {60}, .civilian_factories = 3, .military_factories = 0})));
+}
+
+
+TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
+{
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
+   const hoi4::StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
+
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}, .employed_population = 500'000})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}, .employed_population = 500'000})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1171,8 +1478,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
 
 TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -1182,13 +1495,22 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
 
-   const auto hoi4_states = ConvertStates({{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}})},
-                                              {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}})}},
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1197,8 +1519,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
        country_mapper,
        StateCategories(),
        {},
-       {{"REGION_ONE", vic3::StateRegion({{"0x000002", "port"}}, {})},
-           {"REGION_TWO", vic3::StateRegion({{"0x000005", "port"}}, {})}},
+       {
+           {"REGION_ONE", vic3::StateRegion({{"0x000002", "port"}}, {})},
+           {"REGION_TWO", vic3::StateRegion({{"0x000005", "port"}}, {})},
+       },
        CoastalProvinces(std::map<int, std::vector<int>>{{20, {21}}, {50, {51}}}),
        {});
 
@@ -1220,8 +1544,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
 
 TEST(Hoi4worldStatesHoi4statesconverter, ResourcesDefaultToEmpty)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -1231,8 +1561,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesDefaultToEmpty)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
@@ -1259,8 +1595,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesDefaultToEmpty)
 
 TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreAssigned)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -1270,29 +1612,48 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreAssigned)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
-   const auto hoi4_states =
-       ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
-           province_definitions,
-           hoi4_to_vic3_province_mappings,
-           map_data,
-           hoi4_province_definitions,
-           strategic_regions,
-           country_mapper,
-           StateCategories(),
-           {},
-           {},
-           CoastalProvinces(),
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.provinces = {1, 2, 3}})},
+           {2, vic3::State({.provinces = {4, 5, 6}})},
+       },
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {},
+       CoastalProvinces(),
+       {
+           /* 10 not included to force the continue */
            {
-               /* 10 not included to force the continue */
-               {20, {{"test_resource", 2.0}}},
-               {30, {{"test_resource", 3.0}}},
-               {40, {{"test_resource", 7.0}, {"test_resource_two", 11.0}}},
-           });
+               20,
+               {{"test_resource", 2.0}},
+           },
+           {
+               30,
+               {{"test_resource", 3.0}},
+           },
+           {40,
+               {
+                   {"test_resource", 7.0},
+                   {"test_resource_two", 11.0},
+               }},
+       });
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .resources = {{"test_resource", 5.0}}}),
@@ -1302,8 +1663,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreAssigned)
 
 TEST(Hoi4worldStatesHoi4statesconverter, CategoryDefaultsToRural)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -1313,24 +1680,33 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoryDefaultsToRural)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
-   const auto hoi4_states =
-       ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
-           province_definitions,
-           hoi4_to_vic3_province_mappings,
-           map_data,
-           hoi4_province_definitions,
-           strategic_regions,
-           country_mapper,
-           StateCategories(),
-           {},
-           {},
-           CoastalProvinces(),
-           {});
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.provinces = {1, 2, 3}})},
+           {2, vic3::State({.provinces = {4, 5, 6}})},
+       },
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {},
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .category = "rural"}),
@@ -1340,8 +1716,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoryDefaultsToRural)
 
 TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -1351,22 +1733,34 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
 
    const auto hoi4_states = ConvertStates(
-       {{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .employed_population = 500'000})},
-           {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}, .employed_population = 800'000})}},
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}, .employed_population = 500'000})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}, .employed_population = 800'000})},
+       },
        province_definitions,
        hoi4_to_vic3_province_mappings,
        map_data,
        hoi4_province_definitions,
        strategic_regions,
        country_mapper,
-       StateCategories(
-           {{3, "test_category_one"}, {5, "test_category_two"}, {7, "test_category_three"}, {9, "test_category_four"}}),
+       StateCategories({
+           {3, "test_category_one"},
+           {5, "test_category_two"},
+           {7, "test_category_three"},
+           {9, "test_category_four"},
+       }),
        {},
        {},
        CoastalProvinces(),
@@ -1390,8 +1784,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
 
 TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsDefaultToEmpty)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -1401,24 +1801,33 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsDefaultToEmpty)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
-   const auto hoi4_states =
-       ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
-           province_definitions,
-           hoi4_to_vic3_province_mappings,
-           map_data,
-           hoi4_province_definitions,
-           strategic_regions,
-           country_mapper,
-           StateCategories(),
-           {},
-           {},
-           CoastalProvinces(),
-           {});
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.provinces = {1, 2, 3}})},
+           {2, vic3::State({.provinces = {4, 5, 6}})},
+       },
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {},
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .victory_points = {}}),
@@ -1428,8 +1837,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsDefaultToEmpty)
 
 TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreConverted)
 {
-   const vic3::ProvinceDefinitions province_definitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
    const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
        {10, {"0x000001"}},
        {20, {"0x000002"}},
@@ -1439,22 +1854,32 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreConverted)
        {60, {"0x000006"}},
    };
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
-   const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
-       .province_definitions = hoi4_province_definitions});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
    const hoi4::StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
-   const auto hoi4_states =
-       ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
-           province_definitions,
-           hoi4_to_vic3_province_mappings,
-           map_data,
-           hoi4_province_definitions,
-           strategic_regions,
-           country_mapper,
-           StateCategories(),
-           {},
-           {{"STATE_ONE",
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.provinces = {1, 2, 3}})},
+           {2, vic3::State({.provinces = {4, 5, 6}})},
+       },
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {
+           {"STATE_ONE",
                vic3::StateRegion(
                    {
                        {"0x000005", "city"},
@@ -1463,9 +1888,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreConverted)
                        {"0x000002", "mine"},
                        {"0x000001", "wood"},
                    },
-                   {})}},
-           CoastalProvinces(),
-           {});
+                   {})},
+       },
+       CoastalProvinces(),
+       {});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .victory_points = {{10, 1}, {20, 2}, {30, 3}}}),

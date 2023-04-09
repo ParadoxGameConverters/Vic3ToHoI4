@@ -18,7 +18,8 @@ vic3::CountryImporter::CountryImporter()
 }
 
 
-vic3::Country vic3::CountryImporter::ImportCountry(std::istream& input_stream,
+vic3::Country vic3::CountryImporter::ImportCountry(int number,
+    std::istream& input_stream,
     const std::map<std::string, commonItems::Color>& color_definitions)
 {
    tag_.clear();
@@ -32,5 +33,5 @@ vic3::Country vic3::CountryImporter::ImportCountry(std::istream& input_stream,
       color = color_itr->second;
    }
 
-   return Country({.tag = tag_, .color = color, .capital_state = capital_});
+   return Country({.number = number, .tag = tag_, .color = color, .capital_state = capital_});
 }

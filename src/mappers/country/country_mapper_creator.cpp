@@ -8,7 +8,7 @@
 
 mappers::CountryMapper mappers::CreateCountryMappings(const std::map<int, vic3::Country>& countries)
 {
-   std::map<std::string, std::string> country_mappings;
+   std::map<int, std::string> country_mappings;
 
    char tag_prefix = 'Z';
    int tag_suffix = 0;
@@ -16,7 +16,7 @@ mappers::CountryMapper mappers::CreateCountryMappings(const std::map<int, vic3::
    for (const vic3::Country& country: countries | std::views::values)
    {
       const auto& tag = country.GetTag();
-      country_mappings.emplace(tag, fmt::format("{}{:0>2}", tag_prefix, tag_suffix));
+      country_mappings.emplace(country.GetNumber(), fmt::format("{}{:0>2}", tag_prefix, tag_suffix));
 
       ++tag_suffix;
       if (tag_suffix > 99)

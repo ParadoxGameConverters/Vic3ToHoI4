@@ -12,14 +12,14 @@ namespace mappers
 TEST(MappersCountryCountryMapper, NulloptIsReturnedForUnmappedTag)
 {
    const CountryMapper country_mapper;
-   EXPECT_EQ(country_mapper.GetHoiTag("TAG"), std::nullopt);
+   EXPECT_EQ(country_mapper.GetHoiTag(1), std::nullopt);
 }
 
 
 TEST(MappersCountryCountryMapper, MappedTagsAreReturned)
 {
-   const CountryMapper country_mapper(std::map<std::string, std::string>{{"VIC", "HOI"}});
-   EXPECT_EQ(country_mapper.GetHoiTag("VIC"), "HOI");
+   const CountryMapper country_mapper(std::map<int, std::string>{{1, "HOI"}});
+   EXPECT_EQ(country_mapper.GetHoiTag(1), "HOI");
 }
 
 }  // namespace mappers
