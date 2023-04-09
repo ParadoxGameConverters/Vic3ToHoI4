@@ -22,7 +22,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
    const mappers::CountryMapper country_mapper;
    const vic3::World source_world(vic3::WorldOptions{});
 
-   mappers::ProvinceMapper province_mapper{{}, {}};
+   const mappers::ProvinceMapper province_mapper{{}, {}};
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
@@ -37,16 +37,27 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
 
 TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
 {
-   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
-   const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
-   const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {3, "TWO"}});
+   const vic3::Country source_country_one({
+       .number = 1,
+       .tag = "TAG",
+       .color = commonItems::Color{std::array{1, 2, 3}},
+   });
+   const vic3::Country source_country_two({
+       .number = 3,
+       .tag = "TWO",
+       .color = commonItems::Color{std::array{2, 4, 6}},
+   });
 
-   const vic3::World source_world({.countries = {{1, source_country_one}, {3, source_country_two}},
+   const vic3::World source_world({
+       .countries = {{1, source_country_one}, {3, source_country_two}},
        .states = {},
-       .acquired_technologies = {
-           {1, {"source_tech"}},
-           {3, {"source_tech_two", "source_tech_three"}},
-       }});
+       .acquired_technologies =
+           {
+               {1, {"source_tech"}},
+               {3, {"source_tech_two", "source_tech_three"}},
+           },
+   });
 
    mappers::ProvinceMapper province_mapper{{}, {}};
 
@@ -114,18 +125,28 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
 
 TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
 {
-   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
 
-   const auto province_definitions =
-       vic3::ProvinceDefinitions({"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const auto province_definitions = vic3::ProvinceDefinitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
 
-   const vic3::World source_world(
-       vic3::WorldOptions{.states = {{1, vic3::State({.owner_tag = "TAG", .provinces = {1, 2, 3}})},
-                              {2, vic3::State({.owner_number = 42, .owner_tag = "TWO", .provinces = {4, 5, 6}})}},
+   const vic3::World source_world(vic3::WorldOptions{
+       .states =
+           {
+               {1, vic3::State({.owner_number = 1, .owner_tag = "TAG", .provinces = {1, 2, 3}})},
+               {2, vic3::State({.owner_number = 2, .owner_tag = "TWO", .provinces = {4, 5, 6}})},
+           },
+       .province_definitions = province_definitions,
+   });
 
-           .province_definitions = province_definitions});
-
-   const mappers::ProvinceMapper province_mapper{{},
+   const mappers::ProvinceMapper province_mapper{
+       {},
        {
            {10, {"0x000001"}},
            {20, {"0x000002"}},
@@ -133,7 +154,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
            {40, {"0x000004"}},
            {50, {"0x000005"}},
            {60, {"0x000006"}},
-       }};
+       },
+   };
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
@@ -157,14 +179,26 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 {
    const mappers::CountryMapper country_mapper;
 
-   const auto province_definitions =
-       vic3::ProvinceDefinitions({"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006"});
+   const auto province_definitions = vic3::ProvinceDefinitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
 
-   const vic3::World source_world(
-       {.states = {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
-           .province_definitions = province_definitions});
+   const vic3::World source_world({
+       .states =
+           {
+               {1, vic3::State({.provinces = {1, 2, 3}})},
+               {2, vic3::State({.provinces = {4, 5, 6}})},
+           },
+       .province_definitions = province_definitions,
+   });
 
-   const mappers::ProvinceMapper province_mapper{{},
+   const mappers::ProvinceMapper province_mapper{
+       {},
        {
            {10, {"0x000001"}},
            {20, {"0x000002"}},
@@ -172,7 +206,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
            {40, {"0x000004"}},
            {50, {"0x000005"}},
            {60, {"0x000006"}},
-       }};
+       },
+   };
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/StrategicRegionsAreCreated", {}),
        source_world,
@@ -254,13 +289,26 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 {
    const mappers::CountryMapper country_mapper;
 
-   const auto province_definitions = vic3::ProvinceDefinitions(
-       {"0x000001", "0x000002", "0x000003", "0x000004", "0x000005", "0x000006", "0x000007", "0x000008"});
+   const auto province_definitions = vic3::ProvinceDefinitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+       "0x000007",
+       "0x000008",
+   });
 
-   const vic3::World source_world({.states = {{1, vic3::State({.provinces = {1, 2, 3, 4, 5}})},
-                                       {2, vic3::State({.provinces = {6, 7}})},
-                                       {3, vic3::State({.provinces = {8}})}},
-       .province_definitions = province_definitions});
+   const vic3::World source_world({
+       .states =
+           {
+               {1, vic3::State({.provinces = {1, 2, 3, 4, 5}})},
+               {2, vic3::State({.provinces = {6, 7}})},
+               {3, vic3::State({.provinces = {8}})},
+           },
+       .province_definitions = province_definitions,
+   });
 
    const mappers::ProvinceMapper province_mapper{{},
        {
@@ -286,26 +334,37 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 
 TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
 {
-   const vic3::Country source_country_one({.tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}});
-   const vic3::Country source_country_two({.tag = "TWO", .color = commonItems::Color{std::array{2, 4, 6}}});
+   const vic3::Country source_country_one({
+       .number = 1,
+       .tag = "TAG",
+       .color = commonItems::Color{std::array{1, 2, 3}},
+   });
+   const vic3::Country source_country_two({
+       .number = 3,
+       .tag = "THR",
+       .color = commonItems::Color{std::array{2, 4, 6}},
+   });
    const std::map<int, vic3::Country> source_countries = {{1, source_country_one}, {3, source_country_two}};
 
-   const std::map<int, vic3::State> source_states = {{1, vic3::State({.owner_tag = "TAG", .provinces = {1, 2, 3}})},
-       {2, vic3::State({.owner_tag = "TAG", .provinces = {4, 5, 6}})}};
+   const std::map<int, vic3::State> source_states = {
+       {1, vic3::State({.owner_number = 1, .owner_tag = "TAG", .provinces = {1, 2, 3}})},
+       {2, vic3::State({.owner_number = 2, .owner_tag = "TAG", .provinces = {4, 5, 6}})},
+   };
 
    const std::map<std::string, vic3::StateRegion> source_state_regions = {
        {"REGION_ONE", vic3::StateRegion({{"x000001", "city"}}, {"x000001", "x000002", "x000003"})},
-       {"REGION_TWO", vic3::StateRegion({{"x000004", "mine"}}, {"x000004", "x000005", "x000006"})}};
+       {"REGION_TWO", vic3::StateRegion({{"x000004", "mine"}}, {"x000004", "x000005", "x000006"})},
+   };
 
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
    commonItems::LocalizationBlock country_block_one("TAG", "english");
    country_block_one.ModifyLocalization("english", "test");
    country_block_one.ModifyLocalization("spanish", "prueba");
    vic3_localizations.AddOrModifyLocalizationBlock("TAG", country_block_one);
-   commonItems::LocalizationBlock country_block_two("TWO", "english");
-   country_block_two.ModifyLocalization("english", "test two");
-   country_block_two.ModifyLocalization("spanish", "prueba dos");
-   vic3_localizations.AddOrModifyLocalizationBlock("TWO", country_block_two);
+   commonItems::LocalizationBlock country_block_two("THR", "english");
+   country_block_two.ModifyLocalization("english", "test three");
+   country_block_two.ModifyLocalization("spanish", "prueba tres");
+   vic3_localizations.AddOrModifyLocalizationBlock("THR", country_block_two);
    commonItems::LocalizationBlock state_block_one("REGION_ONE", "english");
    state_block_one.ModifyLocalization("english", "test");
    state_block_one.ModifyLocalization("spanish", "prueba");
@@ -325,26 +384,32 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
 
    vic3::ProvinceDefinitions province_definitions({"x000001", "x000002", "x000003", "x000004", "x000005", "x000006"});
 
-   const vic3::World source_world({.countries = source_countries,
+   const vic3::World source_world({
+       .countries = source_countries,
        .states = source_states,
        .state_regions = source_state_regions,
        .province_definitions = province_definitions,
-       .localizations = vic3_localizations});
+       .localizations = vic3_localizations,
+   });
 
-   const mappers::CountryMapper country_mapper({{"TAG", "TAG"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {3, "THR"}});
 
-   const mappers::Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map = {{"x000001", {10}},
+   const mappers::Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map = {
+       {"x000001", {10}},
        {"x000002", {20}},
        {"x000003", {30}},
        {"x000004", {40}},
        {"x000005", {50}},
-       {"x000006", {60}}};
-   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map = {{10, {"x000001"}},
+       {"x000006", {60}},
+   };
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map = {
+       {10, {"x000001"}},
        {20, {"x000002"}},
        {30, {"x000003"}},
        {40, {"x000004"}},
        {50, {"x000005"}},
-       {60, {"x000006"}}};
+       {60, {"x000006"}},
+   };
    const mappers::ProvinceMapper province_mapper{vic3_to_hoi4_province_map, hoi4_to_vic3_province_map};
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
@@ -359,10 +424,10 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
        testing::UnorderedElementsAre(testing::Pair("english", "test"), testing::Pair("spanish", "prueba")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_country_localization_block_two =
-       world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("TWO");
+       world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("THR");
    ASSERT_TRUE(hoi_country_localization_block_two.has_value());
    EXPECT_THAT(hoi_country_localization_block_two->GetLocalizations(),
-       testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
+       testing::UnorderedElementsAre(testing::Pair("english", "test three"), testing::Pair("spanish", "prueba tres")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_state_localization_block =
        world.GetLocalizations().GetStateLocalizations().GetLocalizationBlock("STATE_1");

@@ -80,7 +80,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        country_mapper.GetCountryMappings(),
        states.hoi4_state_names_to_vic3_state_names,
        source_world.GetStateRegions(),
-       province_mapper);
+       province_mapper,
+       source_world.GetCountries());
 
    return World(WorldOptions{.countries = countries,
        .states = states,
