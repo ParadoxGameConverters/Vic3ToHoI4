@@ -8,6 +8,7 @@
 #include "src/hoi4_world/map/buildings_creator.h"
 #include "src/hoi4_world/map/coastal_provinces_creator.h"
 #include "src/hoi4_world/map/hoi4_province_definition_importer.h"
+#include "src/hoi4_world/map/railways_converter.h"
 #include "src/hoi4_world/map/resources_map_importer.h"
 #include "src/hoi4_world/map/strategic_regions_importer.h"
 #include "src/hoi4_world/states/default_states_importer.h"
@@ -64,6 +65,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem);
 
+   Railways railways = ConvertRailways(source_world.GetStateRegions(), province_mapper, map_data, province_definitions);
+
    Log(LogLevel::Info) << "\tConverting countries";
    Log(LogLevel::Progress) << "55%";
 
@@ -87,5 +90,6 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        .states = states,
        .strategic_regions = strategic_regions,
        .buildings = buildings,
+       .railways = railways,
        .localizations = localizations});
 }
