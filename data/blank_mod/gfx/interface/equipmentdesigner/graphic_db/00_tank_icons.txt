@@ -1,13 +1,16 @@
 default = {
 	light_tank_chassis_0 = {
 		pool = {
+			weight = 2
 			icons = { 
-				GFX_gwtank_chassis_medium
-			 }
+				#GFX_gwtank_chassis_medium #French Renault - Former generic Inter-War Light Tank
+				GFX_generic_gw_light_tank_medium
+			}
 		}
 	}
 	light_tank_chassis_1 = {
 		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
 			icons = { 
 				GFX_generic_light_AAB
  				GFX_generic_light_AAB_camo
@@ -25,12 +28,13 @@ default = {
  				# GFX_generic_light_ACB_camo
  				# GFX_generic_light_ACC
  				# GFX_generic_light_ACC_camo
-			 }
+			}
 		}
 	}
 
 	light_tank_chassis_2 = {
 		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
 			icons = { 
 				GFX_generic_light_BAB
  				GFX_generic_light_BAB_camo
@@ -48,12 +52,13 @@ default = {
  				# GFX_generic_light_BCB_camo
  				# GFX_generic_light_BCC
  				# GFX_generic_light_BCC_camo
-			 }
+			}
 		}
 	}
 
 	light_tank_chassis_3 = {
 		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
 			icons = { 
 				GFX_generic_light_BAB
  				GFX_generic_light_BAB_camo
@@ -69,18 +74,20 @@ default = {
  				# GFX_generic_light_BCA_camo
  				# GFX_generic_light_BCB
  				# GFX_generic_light_BCB_camo
-			 }
+			}
 		}
 	}
 	medium_tank_chassis_0 = {
 		pool = {
+			weight = 2
 			icons = { 
-				GFX_gwtank_chassis_medium
-			 }
+				GFX_generic_gw_medium_tank_medium
+			}
 		}
 	}
 	medium_tank_chassis_1 = {
 		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
 			icons = { 
 				GFX_generic_medium_AAB
  				GFX_generic_medium_AAB_camo
@@ -98,12 +105,13 @@ default = {
  				GFX_generic_medium_ACB_camo
  				GFX_generic_medium_ACC
  				GFX_generic_medium_ACC_camo
-			 }
+			}
 		}
 	}
 
 	medium_tank_chassis_2 = {
 		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
 			icons = { 
 				GFX_generic_medium_BAB
  				GFX_generic_medium_BAB_camo
@@ -121,12 +129,13 @@ default = {
  				GFX_generic_medium_BCB_camo
  				GFX_generic_medium_BCC
  				GFX_generic_medium_BCC_camo
-			 }
+			}
 		}
 	}
 
 	medium_tank_chassis_3 = {
 		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
 			icons = { 
 				GFX_generic_medium_CAB
  				GFX_generic_medium_CAB_camo
@@ -144,18 +153,20 @@ default = {
  				GFX_generic_medium_CCB_camo
  				GFX_generic_medium_CAA
  				GFX_generic_medium_CAA_camo
-			 }
+			}
 		}
 	}
 	heavy_tank_chassis_0 = {
 		pool = {
+			weight = 2
 			icons = { 
-				GFX_gwtank_chassis_medium
-			 }
+				GFX_generic_gw_heavy_tank_medium
+			}
 		}
 	}
 	heavy_tank_chassis_1 = {
 		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
 			icons = { 
 				GFX_generic_heavy_AAB
  				GFX_generic_heavy_AAB_camo
@@ -173,12 +184,13 @@ default = {
  				GFX_generic_heavy_ACB_camo
  				GFX_generic_heavy_ACC
  				GFX_generic_heavy_ACC_camo
-			 }
+			}
 		}
 	}
 
 	heavy_tank_chassis_2 = {
 		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
 			icons = { 
 				GFX_generic_heavy_BAB
  				GFX_generic_heavy_BAB_camo
@@ -196,12 +208,13 @@ default = {
  				GFX_generic_heavy_BCB_camo
  				GFX_generic_heavy_BCC
  				GFX_generic_heavy_BCC_camo
-			 }
+			}
 		}
 	}
 
 	heavy_tank_chassis_3 = {
 		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
 			icons = { 
 				GFX_generic_heavy_CAB
  				GFX_generic_heavy_CAB_camo
@@ -219,7 +232,23 @@ default = {
  				GFX_generic_heavy_CCB_camo
  				GFX_generic_heavy_CAA
  				GFX_generic_heavy_CAA_camo
-			 }
+			}
+		}
+	}
+
+	super_heavy_tank_chassis_1 = {
+		pool = {
+			icons = { 
+				GFX_generic_super_heavy_tank_medium
+			}
+		}
+	}
+
+	modern_tank_chassis_1 = {
+		pool = {
+			icons = { 
+				GFX_generic_modern_tank_medium
+			}
 		}
 	}
 }
