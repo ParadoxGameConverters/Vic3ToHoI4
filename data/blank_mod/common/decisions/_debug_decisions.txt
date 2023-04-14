@@ -1,5 +1,209 @@
 debug_decisions = {
 
+	research_all_tank_techs_nsb = {
+		icon = generic_tank
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+
+		complete_effect = {
+			set_technology = {
+				gwtank_chassis = 1
+				popup = no
+			}
+			set_technology = {
+				basic_light_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				improved_light_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				amphibious_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				amphibious_drive = 1
+				popup = no
+			}			
+			set_technology = {
+				advanced_light_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				basic_medium_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				improved_medium_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				advanced_medium_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				main_battle_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				basic_heavy_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				improved_heavy_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				advanced_heavy_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				super_heavy_tank_chassis = 1
+				popup = no
+			}			
+			set_technology = {
+				armor_tech_1 = 1
+				popup = no
+			}			
+			set_technology = {
+				armor_tech_2 = 1
+				popup = no
+			}			
+			set_technology = {
+				armor_tech_3 = 1
+				popup = no
+			}			
+			set_technology = {
+				armor_tech_4 = 1
+				popup = no
+			}			
+			set_technology = {
+				engine_tech_1 = 1
+				popup = no
+			}			
+			set_technology = {
+				engine_tech_2 = 1
+				popup = no
+			}			
+			set_technology = {
+				engine_tech_3 = 1
+				popup = no
+			}			
+			set_technology = {
+				engine_tech_4 = 1
+				popup = no
+			}
+			set_technology = {
+				gw_artillery = 1
+				popup = no
+			}
+			set_technology = {
+				interwar_artillery = 1
+				popup = no
+			}
+			set_technology = {
+				artillery1 = 1
+				popup = no
+			}
+			set_technology = {
+				artillery2 = 1
+				popup = no
+			}
+			set_technology = {
+				artillery3 = 1
+				popup = no
+			}
+			set_technology = {
+				artillery4 = 1
+				popup = no
+			}
+			set_technology = {
+				artillery5 = 1
+				popup = no
+			}
+			set_technology = {
+				mountain_gun = 1
+				popup = no
+			}
+			set_technology = {
+				rocket_artillery = 1
+				popup = no
+			}
+			set_technology = {
+				rocket_artillery2 = 1
+				popup = no
+			}
+			set_technology = {
+				rocket_artillery3 = 1
+				popup = no
+			}
+			set_technology = {
+				rocket_artillery4 = 1
+				popup = no
+			}
+			set_technology = {
+				interwar_antiair = 1
+				popup = no
+			}
+			set_technology = {
+				antiair1 = 1
+				popup = no
+			}
+			set_technology = {
+				antiair2 = 1
+				popup = no
+			}
+			set_technology = {
+				antiair3 = 1
+				popup = no
+			}
+			set_technology = {
+				antiair4 = 1
+				popup = no
+			}
+			set_technology = {
+				antiair5 = 1
+				popup = no
+			}
+			set_technology = {
+				interwar_antitank = 1
+				popup = no
+			}
+			set_technology = {
+				antitank1 = 1
+				popup = no
+			}
+			set_technology = {
+				antitank2 = 1
+				popup = no
+			}
+			set_technology = {
+				antitank3 = 1
+				popup = no
+			}
+			set_technology = {
+				antitank4 = 1
+				popup = no
+			}
+			set_technology = {
+				antitank5 = 1
+				popup = no
+			}
+			set_technology = {
+				tech_engineers = 1
+				popup = no
+			}
+			set_technology = {
+				tech_engineers2 = 1
+				popup = no
+			}
+		}
+	}
+
 	add_efficiency_growth_debug = {
 		icon = generic_research
 
