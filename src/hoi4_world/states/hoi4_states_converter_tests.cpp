@@ -1307,6 +1307,61 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
            State(1, {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 7, .military_factories = 5})));
 }
 
+TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
+{
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
+   const hoi4::StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper(std::map<int, std::string>{{1, "ONE"}, {2, "TWO"}});
+
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}, .employed_population = 200'000})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5}, .employed_population = 1'500'000})},
+           {3, vic3::State({.owner_number = 2, .provinces = {6}, .employed_population = 600'000})},
+       },
+       province_definitions,
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {},
+       CoastalProvinces(),
+       {});
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(
+           State(1, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 7, .military_factories = 5}),
+           State(2, {.owner = "TWO", .provinces = {60}, .civilian_factories = 7, .military_factories = 2}),
+           State(3, {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 1, .military_factories = 1})));
+}
+
 
 TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextStateOfSameOwner)
 {
@@ -1409,10 +1464,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           State(1, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 1, .military_factories = 1}),
-           State(2, {.owner = "ONE", .provinces = {30}, .civilian_factories = 2, .military_factories = 0}),
-           State(3, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 2, .military_factories = 2}),
-           State(4, {.owner = "TWO", .provinces = {60}, .civilian_factories = 3, .military_factories = 0})));
+           State(1, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 2, .military_factories = 2}),
+           State(2, {.owner = "TWO", .provinces = {60}, .civilian_factories = 3, .military_factories = 0}),
+           State(3, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 1, .military_factories = 1}),
+           State(4, {.owner = "ONE", .provinces = {30}, .civilian_factories = 2, .military_factories = 0})));
 }
 
 
@@ -1768,17 +1823,17 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1,
-                                {.owner = "ONE",
-                                    .provinces = {10, 20, 30},
-                                    .category = "test_category_two",
-                                    .civilian_factories = 3,
-                                    .military_factories = 2}),
+                                {.owner = "TWO",
+                                    .provinces = {40, 50, 60},
+                                    .category = "test_category_four",
+                                    .civilian_factories = 5,
+                                    .military_factories = 3}),
            State(2,
-               {.owner = "TWO",
-                   .provinces = {40, 50, 60},
-                   .category = "test_category_four",
-                   .civilian_factories = 5,
-                   .military_factories = 3})));
+               {.owner = "ONE",
+                   .provinces = {10, 20, 30},
+                   .category = "test_category_two",
+                   .civilian_factories = 3,
+                   .military_factories = 2})));
 }
 
 
