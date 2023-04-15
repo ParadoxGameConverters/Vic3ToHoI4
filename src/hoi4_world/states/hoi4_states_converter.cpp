@@ -755,12 +755,16 @@ hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
     const CoastalProvinces& coastal_provinces,
     const ResourcesMap& resources_map)
 {
-   const std::map<std::string, int> vic3_province_to_state_id_map =
+   std::map<std::string, int> vic3_province_to_state_id_map =
        MapVic3ProvincesToStates(states, vic3_province_definitions);
    const std::map<int, std::set<int>> vic3_state_id_to_hoi4_provinces =
        PlaceHoi4ProvincesInStates(vic3_province_to_state_id_map,
            hoi4_to_vic3_province_mappings,
            hoi4_province_definitions);
+   const auto byVic3Industry = [states](const int lhs, const int rhs) {
+      return states.at(lhs).GetEmployedPopulation() < states.at(rhs).GetEmployedPopulation();
+   };
+   std::sort(vic3_province_to_state_id_map.begin(), vic3_province_to_state_id_map.end(), byVic3Industry);
    return CreateStates(states,
        vic3_state_id_to_hoi4_provinces,
        hoi4_to_vic3_province_mappings,
