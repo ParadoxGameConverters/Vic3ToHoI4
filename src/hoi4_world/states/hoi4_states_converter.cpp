@@ -153,10 +153,7 @@ std::vector<int> SortVic3StatesByIndustryDescending(const std::map<int, vic3::St
     const std::map<int, std::set<int>>& vic3_state_id_to_hoi4_provinces)
 {
    std::vector<int> vic3_state_ids;
-   for (const auto& id: vic3_state_id_to_hoi4_provinces | std::views::keys)
-   {
-      vic3_state_ids.push_back(id);
-   }
+   std::ranges::copy(vic3_state_id_to_hoi4_provinces | std::views::keys, std::back_inserter(vic3_state_ids));
    const auto byVic3Industry = [states](const int& lhs, const int& rhs) {
       return states.at(lhs).GetEmployedPopulation() > states.at(rhs).GetEmployedPopulation();
    };
