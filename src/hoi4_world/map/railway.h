@@ -14,7 +14,6 @@ namespace hoi4
 class Railway
 {
   public:
-#pragma optimize("",off)
    Railway(int level, const std::vector<int>& provinces): level_(level), provinces_(provinces)
    {
       if (provinces.size() < 2)
@@ -22,7 +21,6 @@ class Railway
          throw std::runtime_error("Railways must have at least two provinces.");
       }
    }
-#pragma optimize("",on)
 
    [[nodiscard]] int GetLevel() const { return level_; }
    [[nodiscard]] const auto& GetProvinces() const { return provinces_; }
