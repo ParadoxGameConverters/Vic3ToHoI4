@@ -462,11 +462,29 @@ std::vector<hoi4::Railway> ConnectStatesWithRailways(const hoi4::States& hoi4_st
       }
    }
 
-   // Remove duplicate paths (check for inverses, looking only at endpoints, and keeping the lowest cost one if they
-   // differ)
+   std::vector<hoi4::PossiblePath> deduped_interstate_paths;
+   std::set<std::pair<int, int>> used_endpoints;
+   for (const auto& path: interstate_paths)
+   {
+      std::optional<int> first_province = path.GetFirstProvince();
+      std::optional<int> last_province = path.GetLastProvince();
+      if (!first_province || !last_province)
+      {
+         continue;
+      }
+      if (used_endpoints.contains({*first_province, *last_province}))
+      {
+         continue;
+      }
+      if (used_endpoints.contains({*last_province, *first_province}))
+      {
+         continue;
+      }
+      used_endpoints.emplace(*first_province, *last_province);
+      deduped_interstate_paths.push_back(path);
+   }
 
-
-   return GetRailwaysFromPaths(interstate_paths, hoi4_map_data, hoi4_province_definitions);
+   return GetRailwaysFromPaths(deduped_interstate_paths, hoi4_map_data, hoi4_province_definitions);
 }
 
 }  // namespace
