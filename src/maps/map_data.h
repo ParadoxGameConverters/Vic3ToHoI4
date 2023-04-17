@@ -52,6 +52,7 @@ class MapData
    [[nodiscard]] std::optional<Point> GetSpecifiedBorderCenter(const std::string& main_province,
        const std::string& neighbor) const;
    [[nodiscard]] std::optional<Point> GetAnyBorderCenter(const std::string& province) const;
+   [[nodiscard]] std::optional<Point> GetCentermostPoint(const std::string& province) const;
    [[nodiscard]] std::optional<std::string> GetProvinceName(const Point& point) const;
 
    [[nodiscard]] std::optional<ProvincePoints> GetProvincePoints(const std::string& province) const;
