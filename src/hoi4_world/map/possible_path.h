@@ -51,8 +51,8 @@ class PossiblePath
 
   private:
    std::vector<int> provinces_;
-   double cost_ = 0;
    int level_ = 0;
+   double cost_ = 0;
 };
 
 }  // namespace hoi4

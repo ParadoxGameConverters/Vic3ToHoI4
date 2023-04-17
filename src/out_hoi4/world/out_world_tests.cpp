@@ -145,6 +145,24 @@ TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
    const hoi4::Buildings buildings(options);
 
    OutputWorld("BuildingsFileIsCreatedAndOutput", hoi4::World({.buildings = buildings}));
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/BuildingsFileIsCreatedAndOutput/map/buildings.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/BuildingsFileIsCreatedAndOutput/map/airports.txt"));
+}
+
+
+TEST(Outhoi4WorldOutworld, RailwaysFileIsCreatedAndOutput)
+{
+   CreateTestFolders("RailwaysFileIsCreatedAndOutput");
+
+   const hoi4::Railways railways_list{.railways = {
+                                          hoi4::Railway(1, {1, 2}),
+                                          hoi4::Railway(2, {2, 4, 8}),
+                                      }};
+
+   OutputWorld("RailwaysFileIsCreatedAndOutput", hoi4::World({.railways = railways_list}));
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/BuildingsFileIsCreatedAndOutput/map/railways.txt"));
 }
 
 

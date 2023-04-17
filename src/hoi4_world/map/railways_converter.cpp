@@ -18,7 +18,7 @@ std::vector<std::pair<std::string, std::string>> DetermineVic3Endpoints(
 
    for (const vic3::StateRegion& vic3_state_region: vic3_state_regions | std::views::values)
    {
-      const std::map<std::string, std::string> significant_provinces = vic3_state_region.GetSignificantProvinces();
+      const std::map<std::string, std::string>& significant_provinces = vic3_state_region.GetSignificantProvinces();
       std::string city_province;
       std::vector<std::string> other_significant_provinces;
       for (const auto& [province, type]: significant_provinces)
@@ -496,5 +496,5 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
        ConnectStatesWithRailways(hoi4_states, hoi4_map_data, intrastate_hoi4_endpoints, hoi4_province_definitions);
    railways.insert(railways.end(), interstate_railways.begin(), interstate_railways.end());
 
-   return {railways, {}};
+   return {railways};
 }

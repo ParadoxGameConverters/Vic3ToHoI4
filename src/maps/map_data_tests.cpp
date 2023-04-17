@@ -1,3 +1,5 @@
+#include <optional>
+
 #include "external/commonItems/ModLoader/ModFilesystem.h"
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
@@ -104,6 +106,22 @@ TEST_F(MapsMapdata, AnyBordersCanBeLookedUp)
 
    constexpr maps::Point expected_point{13, 590};  // y-axis is from the bottom
    EXPECT_EQ(*border_point, expected_point);
+}
+
+
+TEST_F(MapsMapdata, CentralPointCanBeLookedUp)
+{
+   const auto central_point = map_data.GetCentermostPoint("3");
+
+   EXPECT_EQ(central_point, std::make_optional(maps::Point{13, 586}));
+}
+
+
+TEST_F(MapsMapdata, NulloptForNoCentralPoint)
+{
+   const auto central_point = map_data.GetCentermostPoint("42");
+
+   EXPECT_EQ(central_point, std::nullopt);
 }
 
 

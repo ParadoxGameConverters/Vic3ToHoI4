@@ -16,7 +16,6 @@ namespace hoi4
 struct Railways
 {
    std::vector<Railway> railways;
-   std::set<int> railway_endpoints;
 };
 
 }  // namespace hoi4
