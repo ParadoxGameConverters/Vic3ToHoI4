@@ -133,23 +133,17 @@ int GetCostForTerrainType(std::string_view terrain_type)
 }
 
 
-std::optional<maps::Point> GetCentermostPoint(const std::string& province, const maps::MapData& hoi4_map_data)
-{
-    return hoi4_map_data.GetCentermostPoint(province);
-}
-
-
 double GetDistanceBetweenProvinces(const std::string& province_one,
     const std::string& province_two,
     const maps::MapData& hoi4_map_data)
 {
-   const auto province_one_centermost_point = GetCentermostPoint(province_one, hoi4_map_data);
+   const auto province_one_centermost_point = hoi4_map_data.GetCentermostPoint(province_one);
    if (!province_one_centermost_point)
    {
       return std::numeric_limits<double>::max();
    }
 
-   const auto province_two_centermost_point = GetCentermostPoint(province_two, hoi4_map_data);
+   const auto province_two_centermost_point = hoi4_map_data.GetCentermostPoint(province_two);
    if (!province_two_centermost_point)
    {
       return std::numeric_limits<double>::max();
