@@ -29,7 +29,7 @@ std::vector<std::pair<std::string, std::string>> DetermineVic3Endpoints(
          }
          else
          {
-             other_significant_provinces.push_back(province);
+            other_significant_provinces.push_back(province);
          }
       }
       if (city_province.empty())
