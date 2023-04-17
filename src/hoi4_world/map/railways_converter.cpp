@@ -20,7 +20,7 @@ std::vector<std::pair<std::string, std::string>> DetermineVic3Endpoints(
    {
       const std::map<std::string, std::string> significant_provinces = vic3_state_region.GetSignificantProvinces();
       std::string city_province;
-      std::vector<std::string> other_signficant_provinces;
+      std::vector<std::string> other_significant_provinces;
       for (const auto& [province, type]: significant_provinces)
       {
          if (type == "city")
@@ -29,7 +29,7 @@ std::vector<std::pair<std::string, std::string>> DetermineVic3Endpoints(
          }
          else
          {
-            other_signficant_provinces.push_back(province);
+             other_significant_provinces.push_back(province);
          }
       }
       if (city_province.empty())
