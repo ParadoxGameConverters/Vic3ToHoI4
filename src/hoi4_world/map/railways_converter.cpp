@@ -64,7 +64,7 @@ std::vector<std::pair<int, int>> ConvertVic3EndpointsToHoi4Endpoints(
       std::vector<int> hoi4_province_end_points = province_mapper.GetVic3ToHoi4ProvinceMapping(vic3_end_point);
       if (hoi4_province_start_points.empty() || hoi4_province_end_points.empty())
       {
-         Log(LogLevel::Info) << fmt::format("No hoi4 provinces for significant vi3 province {} or {}.",
+         Log(LogLevel::Info) << fmt::format("No hoi4 provinces for significant vic3 province {} or {}.",
              vic3_start_point,
              vic3_end_point);
          continue;

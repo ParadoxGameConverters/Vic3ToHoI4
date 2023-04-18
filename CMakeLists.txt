@@ -229,6 +229,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/coastal_provinces_creator_t
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/hoi4_province_definition_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/possible_path_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/railway_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/railways_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/resources_map_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/strategic_region_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/strategic_region_tests.cpp")

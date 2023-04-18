@@ -66,6 +66,7 @@
     <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\possible_path_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\map\railways_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\railway_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\resources_map_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions_importer_tests.cpp" />

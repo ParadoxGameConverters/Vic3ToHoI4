@@ -14,9 +14,9 @@ namespace hoi4
 class Railway
 {
   public:
-   Railway(int level, const std::vector<int>& provinces): level_(level), provinces_(provinces)
+   Railway(int level, std::vector<int> provinces): level_(level), provinces_(std::move(provinces))
    {
-      if (provinces.size() < 2)
+      if (provinces_.size() < 2)
       {
          throw std::runtime_error("Railways must have at least two provinces.");
       }
@@ -25,6 +25,8 @@ class Railway
    [[nodiscard]] int GetLevel() const { return level_; }
    [[nodiscard]] const auto& GetProvinces() const { return provinces_; }
    [[nodiscard]] int GetLength() const { return static_cast<int>(provinces_.size()); }
+
+   std::strong_ordering operator<=>(const Railway&) const = default;
 
   private:
    int level_ = 0;
