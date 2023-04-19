@@ -185,7 +185,15 @@ void FindNextPaths(const hoi4::PossiblePath& possible_railway_path,
 
    for (const auto& neighbor_number_string: hoi4_map_data.GetNeighbors(std::to_string(*last_province)))
    {
-      int neighbor_number = std::stoi(neighbor_number_string);
+      int neighbor_number = 0;
+      try
+      {
+         neighbor_number = std::stoi(neighbor_number_string);
+      }
+      catch (...)
+      {
+         continue;
+      }
       if (reached_provinces.contains(neighbor_number))
       {
          continue;
@@ -399,7 +407,7 @@ std::set<int> GetSignificantProvincesInState(int state_id,
 }
 
 
-std::vector<std::pair<int, int>> ListAllInterstateConnections(const std::set<int>& first_state_significant_points,
+std::vector<std::pair<int, int>> EnumerateAllInterstateConnections(const std::set<int>& first_state_significant_points,
     const std::set<int>& second_state_significant_points)
 {
    std::set<std::pair<int, int>> interstate_connections_set;
@@ -454,7 +462,7 @@ std::vector<hoi4::Railway> ConnectStatesWithRailways(const std::map<std::string,
          const std::set<int>& neighbor_significant_provinces =
              GetSignificantProvincesInState(neighbor_id, significant_provinces_in_states);
          const std::vector<std::pair<int, int>> interstate_connections =
-             ListAllInterstateConnections(state_significant_provinces, neighbor_significant_provinces);
+             EnumerateAllInterstateConnections(state_significant_provinces, neighbor_significant_provinces);
          std::vector<hoi4::PossiblePath> all_interstate_paths =
              FindAllHoi4Paths(interstate_connections, hoi4_map_data, hoi4_province_definitions);
          if (all_interstate_paths.empty())
