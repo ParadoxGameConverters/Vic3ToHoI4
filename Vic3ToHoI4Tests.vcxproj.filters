@@ -279,6 +279,21 @@
     <ClCompile Include="src\out_hoi4\military\out_equipment_variant_tests.cpp">
       <Filter>src\out_hoi4\military</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\railway_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\possible_path_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_railway_tests.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_railways_tests.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\map\railways_converter_tests.cpp">
+      <Filter>src\hoi4_world\map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">

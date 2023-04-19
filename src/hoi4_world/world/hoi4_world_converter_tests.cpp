@@ -332,6 +332,38 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 }
 
 
+TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
+{
+   const vic3::StateRegion vic3_state_region({{"0x000001", "city"}, {"0x000002", "port"}, {"0x000003", "mine"}}, {});
+   const vic3::World source_world({
+       .state_regions =
+           {
+               {"state", vic3_state_region},
+           },
+   });
+
+   const mappers::CountryMapper country_mapper;
+
+   const mappers::ProvinceMapper province_mapper{{
+                                                     {"0x000001", {1}},
+                                                     {"0x000002", {2}},
+                                                     {"0x000003", {3}},
+                                                 },
+       {
+           {1, {"0x000001"}},
+           {2, {"0x000002"}},
+           {3, {"0x000003"}},
+       }};
+
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
+       source_world,
+       country_mapper,
+       province_mapper);
+
+   EXPECT_FALSE(world.GetRailways().railways.empty());
+}
+
+
 TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
 {
    const vic3::Country source_country_one({

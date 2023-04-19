@@ -57,6 +57,17 @@ std::optional<maps::Point> maps::MapData::GetAnyBorderCenter(const std::string& 
 }
 
 
+std::optional<maps::Point> maps::MapData::GetCentermostPoint(const std::string& province) const
+{
+   const auto possible_points = the_province_points_.find(province);
+   if (possible_points == the_province_points_.end())
+   {
+      return std::nullopt;
+   }
+   return possible_points->second.GetCentermostPoint();
+}
+
+
 std::optional<std::string> maps::MapData::GetProvinceName(const Point& point) const
 {
    const auto i = points_to_provinces_.find(point);

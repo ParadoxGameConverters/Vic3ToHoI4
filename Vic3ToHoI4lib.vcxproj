@@ -26,6 +26,10 @@
     <ClInclude Include="src\hoi4_world\map\coastal_provinces_creator.h" />
     <ClInclude Include="src\hoi4_world\map\hoi4_building.h" />
     <ClInclude Include="src\hoi4_world\map\hoi4_province_definition_importer.h" />
+    <ClInclude Include="src\hoi4_world\map\possible_path.h" />
+    <ClInclude Include="src\hoi4_world\map\railway.h" />
+    <ClInclude Include="src\hoi4_world\map\railways.h" />
+    <ClInclude Include="src\hoi4_world\map\railways_converter.h" />
     <ClInclude Include="src\hoi4_world\map\resources_map.h" />
     <ClInclude Include="src\hoi4_world\map\resources_map_importer.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_region.h" />
@@ -65,6 +69,8 @@
     <ClInclude Include="src\out_hoi4\localizations\out_localizations.h" />
     <ClInclude Include="src\out_hoi4\map\out_building.h" />
     <ClInclude Include="src\out_hoi4\map\out_buildings.h" />
+    <ClInclude Include="src\out_hoi4\map\out_railway.h" />
+    <ClInclude Include="src\out_hoi4\map\out_railways.h" />
     <ClInclude Include="src\out_hoi4\map\out_rocket_sites.h" />
     <ClInclude Include="src\out_hoi4\map\out_strategic_region.h" />
     <ClInclude Include="src\out_hoi4\map\out_strategic_regions.h" />
@@ -99,6 +105,7 @@
     <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\hoi4_province_definition_importer.cpp" />
+    <ClCompile Include="src\hoi4_world\map\railways_converter.cpp" />
     <ClCompile Include="src\hoi4_world\map\resources_map_importer.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions_importer.cpp" />
@@ -127,6 +134,8 @@
     <ClCompile Include="src\out_hoi4\localizations\out_localizations.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_building.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_buildings.cpp" />
+    <ClCompile Include="src\out_hoi4\map\out_railway.cpp" />
+    <ClCompile Include="src\out_hoi4\map\out_railways.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_rocket_sites.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_strategic_region.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_strategic_regions.cpp" />
