@@ -87,10 +87,10 @@ std::vector<std::pair<int, int>> ConvertVic3EndpointsToHoi4Endpoints(
 constexpr int urban_cost = 1;
 constexpr int plains_cost = 2;
 constexpr int forest_cost = 3;
-constexpr int hills_cost = 3;
+constexpr int hills_cost = 4;
 constexpr int desert_cost = 5;
-constexpr int marsh_cost = 5;
-constexpr int jungle_cost = 8;
+constexpr int marsh_cost = 6;
+constexpr int jungle_cost = 7;
 constexpr int mountain_cost = 8;
 constexpr int unhandled_cost = 100;
 int GetCostForTerrainType(std::string_view terrain_type)
