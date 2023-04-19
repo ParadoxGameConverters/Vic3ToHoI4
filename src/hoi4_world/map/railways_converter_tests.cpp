@@ -306,7 +306,12 @@ TEST(Hoi4worldMapRailwaysConverterTests, InterstateRailwaysAreCreated)
    }};
 
    const hoi4::States hoi4_states{
-       .states = {hoi4::State(1, {}), hoi4::State(2, {})},
+       .states =
+           {
+               hoi4::State(1, {}),
+               hoi4::State(2, {}),
+               hoi4::State(3, {}),
+           },
        .province_to_state_id_map =
            {
                {1, 1},
@@ -422,6 +427,116 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailroadsForStatesWithoutSi
        ConvertRailways(vic3_state_regions, province_mapper, hoi4_map_data, hoi4_province_definitions, hoi4_states);
 
    EXPECT_THAT(railways.railways, testing::ElementsAre());
+}
+
+
+TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailwaysForRepeatedSignificantProvince)
+{
+   const std::map<std::string, vic3::StateRegion> vic3_state_regions{
+       {"STATE_ONE",
+           vic3::StateRegion{{
+                                 {"0x000001", "city"},
+                             },
+               {}}},
+       {"STATE_TWO",
+           vic3::StateRegion{{
+                                 {"0x000010", "city"},
+                             },
+               {}}},
+       {"STATE_THREE",
+           vic3::StateRegion{{
+                                 {"0x000100", "city"},
+                             },
+               {}}},
+   };
+
+   const mappers::ProvinceMapper province_mapper{{
+                                                     {"0x000001", {1}},
+                                                     {"0x000010", {1}},
+                                                     {"0x000100", {1}},
+                                                 },
+       {}};
+
+   const maps::MapData hoi4_map_data{{
+       .province_neighbors = {},
+   }};
+
+   const maps::ProvinceDefinitions hoi4_province_definitions{{
+       .land_provinces = {"1"},
+   }};
+
+   const hoi4::States hoi4_states{
+       .states = {hoi4::State(1, {}), hoi4::State(2, {})},
+       .province_to_state_id_map =
+           {
+               {1, 1},
+           },
+   };
+
+   const Railways railways =
+       ConvertRailways(vic3_state_regions, province_mapper, hoi4_map_data, hoi4_province_definitions, hoi4_states);
+
+   EXPECT_THAT(railways.railways, testing::ElementsAre());
+}
+
+
+TEST(Hoi4worldMapRailwaysConverterTests, InterstateRailroadsAreDeduplicated)
+{
+   const std::map<std::string, vic3::StateRegion> vic3_state_regions{
+       {"STATE_ONE",
+           vic3::StateRegion{{
+                                 {"0x000001", "city"},
+                             },
+               {}}},
+       {"STATE_TWO",
+           vic3::StateRegion{{
+                                 {"0x000010", "city"},
+                             },
+               {}}},
+       {"STATE_THREE",
+           vic3::StateRegion{{
+                                 {"0x000100", "city"},
+                             },
+               {}}},
+   };
+
+   const mappers::ProvinceMapper province_mapper{{
+                                                     {"0x000001", {1}},
+                                                     {"0x000010", {10}},
+                                                     {"0x000100", {10}},
+                                                 },
+       {}};
+
+   const maps::MapData hoi4_map_data{{
+       .province_neighbors =
+           {
+               {"1", {"10"}},
+               {"10", {"1"}},
+           },
+   }};
+
+   const maps::ProvinceDefinitions hoi4_province_definitions{{
+       .land_provinces = {"1", "10"},
+   }};
+
+   const hoi4::States hoi4_states{
+       .states =
+           {
+               hoi4::State(1, {}),
+               hoi4::State(2, {}),
+               hoi4::State(3, {}),
+           },
+       .province_to_state_id_map =
+           {
+               {1, 1},
+               {10, 2},
+           },
+   };
+
+   const Railways railways =
+       ConvertRailways(vic3_state_regions, province_mapper, hoi4_map_data, hoi4_province_definitions, hoi4_states);
+
+   EXPECT_THAT(railways.railways, testing::ElementsAre(Railway(3, {1, 10})));
 }
 
 
