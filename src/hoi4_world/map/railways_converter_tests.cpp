@@ -466,7 +466,6 @@ TEST(Hoi4worldMapRailwaysConverterTests, LowestCostConnectionFormsInterstateRail
                {"3", {"300"}},
                {"300", {"30", "3"}},
                {"30", {"300"}},
-
            },
    }};
 
