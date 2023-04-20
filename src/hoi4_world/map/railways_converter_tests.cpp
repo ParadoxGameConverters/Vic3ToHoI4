@@ -886,4 +886,42 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferEasierTerrains)
            Railway(3, {100000, 80, 800})));
 }
 
+
+TEST(Hoi4worldMapRailwaysConverterTests, RailwayEndpointsAreRecoded)
+{
+   const std::map<std::string, vic3::StateRegion> vic3_state_regions{
+       {"STATE_ONE",
+           vic3::StateRegion{{
+                                 {"0x000001", "city"},
+                                 {"0x000002", "dock"},
+                                 {"0x000003", "mine"},
+                             },
+               {}}},
+   };
+
+   const mappers::ProvinceMapper province_mapper{{
+                                                     {"0x000001", {1}},
+                                                     {"0x000002", {2}},
+                                                     {"0x000003", {3}},
+                                                 },
+       {}};
+
+   const maps::MapData hoi4_map_data{{
+       .province_neighbors =
+           {
+               {"1", {"2", "3"}},
+           },
+   }};
+
+   const maps::ProvinceDefinitions hoi4_province_definitions{{
+       .land_provinces = {"1", "2", "3"},
+   }};
+
+   const Railways railways =
+       ConvertRailways(vic3_state_regions, province_mapper, hoi4_map_data, hoi4_province_definitions, {});
+
+   EXPECT_THAT(railways.railways, testing::ElementsAre(Railway(3, {1, 2}), Railway(3, {1, 3})));
+   EXPECT_THAT(railways.railway_endpoints, testing::ElementsAre(1, 2, 3));
+}
+
 }  // namespace hoi4
