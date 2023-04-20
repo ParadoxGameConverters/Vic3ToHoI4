@@ -622,13 +622,13 @@ void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
    int64_t manpower = 0;
    for (const hoi4::State& state: hoi4_states)
    {
-       manpower += state.GetManpower();
+      manpower += state.GetManpower();
    }
 
    int64_t default_manpower = 0;
    for (const hoi4::DefaultState& hoi4_state: default_states | std::views::values)
    {
-       default_manpower += hoi4_state.GetManpower();
+      default_manpower += hoi4_state.GetManpower();
    }
 
    Log(LogLevel::Info) << fmt::format("\t\tTotal manpower: {} (vanilla hoi4 had {})", manpower, default_manpower);
