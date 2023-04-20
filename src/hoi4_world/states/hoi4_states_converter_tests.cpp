@@ -1042,7 +1042,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsLogged)
    const maps::MapData map_data({.province_neighbors = {{"10", {"20", "30"}}, {"40", {"50", "60"}}},
        .province_definitions = hoi4_province_definitions});
    const hoi4::StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{"ONE", "ONE"}, {"TWO", "TWO"}});
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
