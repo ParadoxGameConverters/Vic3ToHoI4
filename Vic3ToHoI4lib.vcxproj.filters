@@ -372,6 +372,9 @@
     <ClInclude Include="src\out_hoi4\map\out_railways.h">
       <Filter>src\out_hoi4\map</Filter>
     </ClInclude>
+    <ClInclude Include="src\out_hoi4\map\out_supply_nodes.h">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -552,6 +555,9 @@
       <Filter>src\out_hoi4\map</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\map\out_railways.cpp">
+      <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\map\out_supply_nodes.cpp">
       <Filter>src\out_hoi4\map</Filter>
     </ClCompile>
   </ItemGroup>

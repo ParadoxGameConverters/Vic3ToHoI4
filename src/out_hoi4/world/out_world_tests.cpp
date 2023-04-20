@@ -166,6 +166,25 @@ TEST(Outhoi4WorldOutworld, RailwaysFileIsCreatedAndOutput)
 }
 
 
+TEST(Outhoi4WorldOutworld, SupplyNodesFileIsCreatedAndOutput)
+{
+   CreateTestFolders("SupplyNodesFileIsCreatedAndOutput");
+
+   const hoi4::Railways railways_list{
+       .railways =
+           {
+               hoi4::Railway(1, {1, 2}),
+               hoi4::Railway(2, {2, 4, 8}),
+           },
+       .railway_endpoints = {1, 2, 4, 8},
+   };
+
+   OutputWorld("SupplyNodesFileIsCreatedAndOutput", hoi4::World({.railways = railways_list}));
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/BuildingsFileIsCreatedAndOutput/map/supply_nodes.txt"));
+}
+
+
 TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
 {
    CreateTestFolders("LocalizationsAreOutput");
