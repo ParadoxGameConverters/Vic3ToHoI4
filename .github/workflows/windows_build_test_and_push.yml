@@ -31,12 +31,17 @@ jobs:
        git -c submodule."external/commonItems".update=none `
            submodule update --init --recursive external\Fronter
 
+    - name: "Fetching tags"
+      run: |
+       git fetch --tags
+       git tag
+
     - name: "Generate semantic version number"
       uses: paulhatch/semantic-version@v5.0.3
       id: version_number
       with:
         # The prefix to use to identify tags
-        tag_prefix: "v"
+        tag_prefix: ""
         # A string which, if present in a git commit, indicates that a change represents a
         # major (breaking) change, supports regular expressions wrapped with '/'
         major_pattern: "(MAJOR)"
