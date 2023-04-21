@@ -1,7 +1,7 @@
 # Version info
 
-version = "0.0.0"
-name = "Null"
+version = "0.1.0"
+name = "Anders"
 source = "Vic3"
 minSource = "1.0"
 maxSource = "1.2"
