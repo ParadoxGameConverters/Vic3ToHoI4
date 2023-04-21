@@ -30,10 +30,11 @@ jobs:
        git submodule update --init --recursive external\commonItems
        git -c submodule."external/commonItems".update=none `
            submodule update --init --recursive external\Fronter
-           
+
     - name: "Fetching tags"
       run: |
        git fetch --tags
+       git tag
 
     - name: "Generate semantic version number"
       uses: paulhatch/semantic-version@v5.0.3
