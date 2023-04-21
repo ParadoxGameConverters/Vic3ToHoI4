@@ -98,7 +98,7 @@ jobs:
       if: ${{ github.event_name == 'push' }}
       uses: ncipollo/release-action@v1
       with:
-        tag: ${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}
+        tag: ${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}.0
         allowUpdates: true
         omitBodyDuringUpdate: true
         omitNameDuringUpdate: true
