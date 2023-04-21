@@ -64,7 +64,7 @@ jobs:
        echo '# Version info' | out-file data/version.txt -encoding ASCII
        echo '' | out-file data/version.txt -encoding ASCII -append
        echo 'version = "${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}.${{ steps.version_number.outputs.patch }}"' | out-file data/version.txt -encoding ASCII -append
-       echo 'name = "Null"' | out-file data/version.txt -encoding ASCII -append
+       echo 'name = "Anders"' | out-file data/version.txt -encoding ASCII -append
        echo 'source = "Vic3"' | out-file data/version.txt -encoding ASCII -append
        echo 'minSource = "1.0"' | out-file data/version.txt -encoding ASCII -append
        echo 'maxSource = "1.2"' | out-file data/version.txt -encoding ASCII -append
