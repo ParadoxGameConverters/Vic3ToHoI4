@@ -1,6 +1,7 @@
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 
 #include <algorithm>
+#include <cstdint>
 #include <numeric>
 #include <optional>
 #include <queue>
@@ -23,8 +24,7 @@ std::map<std::string, int> MapVic3ProvincesToStates(const std::map<int, vic3::St
     const vic3::ProvinceDefinitions& vic3_province_definitions)
 {
    std::map<std::string, int> vic3_province_to_state_id_map;
-   std::for_each(states.begin(),
-       states.end(),
+   std::ranges::for_each(states,
        [&vic3_province_to_state_id_map, vic3_province_definitions](const std::pair<int, vic3::State>& state) {
           for (const auto& province: state.second.GetProvinces())
           {
@@ -48,8 +48,7 @@ bool AllVic3ProvincesAreInSameState(const std::vector<std::string>& vic3_provinc
     int state_to_match,
     const std::map<std::string, int>& vic3_province_to_state_id_map)
 {
-   return std::all_of(vic3_provinces.begin(),
-       vic3_provinces.end(),
+   return std::ranges::all_of(vic3_provinces,
        [&vic3_province_to_state_id_map, state_to_match](const std::string& province_color) {
           const auto& state = vic3_province_to_state_id_map.find(province_color);
           return (state != vic3_province_to_state_id_map.end()) && (state->second == state_to_match);
@@ -101,8 +100,8 @@ std::optional<int> DetermineStateWithMostProvinces(const std::vector<std::string
       return std::nullopt;
    }
 
-   const std::map<int, int>::iterator max_state_count =
-       std::max_element(state_counts.begin(), state_counts.end(), [](std::pair<int, int> a, std::pair<int, int> b) {
+   const auto max_state_count =
+       std::ranges::max_element(state_counts, [](std::pair<int, int> a, std::pair<int, int> b) {
           return a.second < b.second;
        });
    return max_state_count->first;
@@ -568,7 +567,7 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    int military_factories = 0;
    int dockyards = 0;
    std::map<std::string, double> resources;
-   for (const auto& hoi4_state: hoi4_states)
+   for (const hoi4::State& hoi4_state: hoi4_states)
    {
       civilian_factories += hoi4_state.GetCivilianFactories();
       military_factories += hoi4_state.GetMilitaryFactories();
@@ -583,7 +582,7 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    int default_military_factories = 0;
    int default_dockyards = 0;
    std::map<std::string, double> default_resources;
-   for (const auto& hoi4_state: default_states | std::views::values)
+   for (const hoi4::DefaultState& hoi4_state: default_states | std::views::values)
    {
       default_civilian_factories += hoi4_state.GetCivilianFactories();
       default_military_factories += hoi4_state.GetMilitaryFactories();
@@ -612,6 +611,25 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    {
       Log(LogLevel::Info) << fmt::format("\t\t\tDefault Resource {}:{}", dr.first, dr.second);
    }
+}
+
+
+void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
+    const std::map<int, hoi4::DefaultState>& default_states)
+{
+   int64_t manpower =
+       std::accumulate(hoi4_states.begin(), hoi4_states.end(), 0, [](int64_t total, const hoi4::State& state) {
+          return total + state.GetManpower();
+       });
+
+   int64_t default_manpower = std::accumulate(default_states.begin(),
+       default_states.end(),
+       0,
+       [](int64_t total, const std::pair<int, hoi4::DefaultState>& state) {
+          return total + state.second.GetManpower();
+       });
+
+   Log(LogLevel::Info) << fmt::format("\t\tTotal manpower: {} (vanilla hoi4 had {})", manpower, default_manpower);
 }
 
 
@@ -765,6 +783,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
    }
 
    LogIndustryStats(hoi4_states, default_states);
+   LogManpowerStats(hoi4_states, default_states);
 
    return {hoi4_states,
        province_to_state_id_map,
