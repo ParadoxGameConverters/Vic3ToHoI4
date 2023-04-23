@@ -7,6 +7,7 @@
 
 #include "external/commonItems/Color.h"
 #include "external/commonItems/CommonRegexes.h"
+#include "external/commonItems/Date.h"
 #include "external/commonItems/Log.h"
 #include "external/commonItems/ModLoader/Mod.h"
 #include "external/commonItems/ModLoader/ModLoader.h"
@@ -14,6 +15,7 @@
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
 #include "external/rakaly/rakaly.h"
+#include "src/support/date_fmt.h"
 #include "src/vic3_world/countries/country_definitions_importer.h"
 #include "src/vic3_world/countries/vic3_countries_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -40,9 +42,10 @@ std::string ReadSave(std::string_view save_filename)
 }
 
 
-std::vector<std::string> ReadModNames(const rakaly::GameFile& save, const std::string& save_string)
+std::istringstream GetSaveMeta(const rakaly::GameFile& save, const std::string& save_string)
 {
    std::string save_meta;
+
    if (save.is_binary())
    {
       const auto melt = save.meltMeta();
@@ -57,25 +60,13 @@ std::vector<std::string> ReadModNames(const rakaly::GameFile& save, const std::s
    {
       save_meta = save_string;
    }
-   std::istringstream meta_stream{save_meta};
 
-   std::vector<std::string> mod_names;
-
-   commonItems::parser meta_parser;
-   meta_parser.registerKeyword("mods", [&mod_names](std::istream& input_stream) {
-      mod_names = commonItems::stringList(input_stream).getStrings();
-   });
-   meta_parser.IgnoreUnregisteredItems();
-   meta_parser.parseStream(meta_stream);
-
-   return mod_names;
+   return std::istringstream{save_meta};
 }
 
 
-std::vector<Mod> GetModsFromSave(const rakaly::GameFile& save, const std::string& save_string)
+std::vector<Mod> GetModsFromSave(const std::vector<std::string>& mod_names)
 {
-   std::vector<std::string> mod_names = ReadModNames(save, save_string);
-
    std::vector<Mod> mods;
    for (const auto& mod_name: mod_names)
    {
@@ -139,9 +130,26 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    std::string save_string = ReadSave(configuration.save_game);
    const rakaly::GameFile save = rakaly::parseVic3(save_string);
 
+   std::istringstream meta_stream = GetSaveMeta(save, save_string);
+
+   Log(LogLevel::Info) << "-> Reading Vic3 save metadata.";
+   std::vector<std::string> mod_names;
+
+   commonItems::parser meta_parser;
+   meta_parser.registerKeyword("game_date", [&mod_names](std::istream& input_stream) {
+      date game_date(commonItems::getString(input_stream));
+      Log(LogLevel::Info) << fmt::format("Converting at {}.", game_date);
+   });
+   meta_parser.registerKeyword("mods", [&mod_names](std::istream& input_stream) {
+      mod_names = commonItems::stringList(input_stream).getStrings();
+   });
+   meta_parser.IgnoreUnregisteredItems();
+   meta_parser.parseStream(meta_stream);
+
+   Log(LogLevel::Info) << "-> Loading Vic3 mods.";
    commonItems::ModLoader mod_loader;
    mod_loader.loadMods(std::vector<std::string>{configuration.vic3_mod_path, configuration.vic3_steam_mod_path},
-       GetModsFromSave(save, save_string));
+       GetModsFromSave(mod_names));
 
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
    commonItems::ModFilesystem mod_filesystem(fmt::format("{}/game", configuration.vic3_directory),

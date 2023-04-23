@@ -106,6 +106,9 @@
     <Filter Include="src\out_hoi4\military">
       <UniqueIdentifier>{449252de-fa78-4cc2-8f73-f48dcab4eee6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\support">
+      <UniqueIdentifier>{27e328b8-2ba6-4bc0-8ea2-3da5ff9ea6c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -374,6 +377,9 @@
     </ClInclude>
     <ClInclude Include="src\out_hoi4\map\out_supply_nodes.h">
       <Filter>src\out_hoi4\map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\support\date_fmt.h">
+      <Filter>src\support</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -77,6 +77,23 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
 }
 
 
+TEST(Vic3worldWorldVic3worldimporter, ConversionDateIsLogged)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const auto world = ImportWorld(configuration::Configuration{.vic3_directory = "test_files/vic3_world/world",
+       .vic3_steam_mod_path = "test_files/vic3_world/documents/mod",
+       .vic3_mod_path = "test_files/vic3_world/documents/mod",
+       .save_game = "test_files/vic3_world/world/test_save.vic3"});
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"([INFO] Converting at 1923.6.12.)"));
+}
+
+
 TEST(Vic3worldWorldVic3worldimporter, StateWithInvalidOwnerIsLogged)
 {
    std::stringstream log;

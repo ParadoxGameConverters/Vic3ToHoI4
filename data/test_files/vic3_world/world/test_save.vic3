@@ -1,5 +1,6 @@
 SAV01020000000000000000
 meta_data={
+	game_date=1923.6.10.12
 	mods={ "Test Mod" "Test Mod Two" }
 }
 
