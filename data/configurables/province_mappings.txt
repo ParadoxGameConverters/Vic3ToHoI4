@@ -891,19 +891,19 @@
 	link = { vic3 = x9C175D hoi4 = 445 } # Svitavy -> Rychnov nad Knežnou
 	link = { vic3 = x61902F hoi4 = 494 hoi4 = 583 } # STATE_BOHEMIA -> Hradec Králové, Pardubice
 	link = { vic3 = xF0E041 hoi4 = 543 } # STATE_BOHEMIA -> Ceský Krumlov
-	link = { vic3 = xEE1941 hoi4 = 3462 } # STATE_BOHEMIA -> Jicín
+	link = { vic3 = xEE1941 hoi4 = 3462 hoi4 = 11414 } # STATE_BOHEMIA -> Jicín, Trutnov
 	link = { vic3 = xFA371D hoi4 = 3553 } # STATE_BOHEMIA -> Blansko
 	link = { vic3 = xD286DB hoi4 = 5283 } # STATE_BOHEMIA -> Prachatice
 	link = { vic3 = xCDE96E hoi4 = 6418 } # STATE_BOHEMIA -> Plzen
 	link = { vic3 = x1D6B94 hoi4 = 6440 hoi4 = 469 hoi4 = 11432 } # STATE_BOHEMIA -> Kladno, Decín, Ústí nad Labem
-	link = { vic3 = xAFD2D1 hoi4 = 6592 hoi4 = 7857 } # Pilsen -> Klatovy, Kdyne
-	link = { vic3 = x400226 hoi4 = 9414 } # STATE_BOHEMIA -> Mladá Boleslav
+	link = { vic3 = xAFD2D1 hoi4 = 6592 } # Pilsen -> Klatovy
+	link = { vic3 = x400226 hoi4 = 9414 hoi4 = 11401 } # STATE_BOHEMIA -> Mladá Boleslav, Liberec
 	link = { vic3 = x0B9B4F hoi4 = 9421 } # STATE_BOHEMIA -> Pribram
 	link = { vic3 = x465A13 hoi4 = 9429 } # STATE_BOHEMIA -> Kolín
 	link = { vic3 = x74C71F hoi4 = 9541 } # Ceske -> Ceské Budejovice
 	link = { vic3 = x67FE18 hoi4 = 9555 hoi4 = 424 } # STATE_BOHEMIA -> Domažlice, Tachov
 	link = { vic3 = x71E041 hoi4 = 9569 } # STATE_BOHEMIA -> Tábor
-	link = { vic3 = xF06141 hoi4 = 11497 } # STATE_BOHEMIA -> Cham
+	link = { vic3 = xF06141 hoi4 = 7857 } # STATE_BOHEMIA -> Kdyne
 	link = { vic3 = x2ED2B3 hoi4 = 11525 } # STATE_BOHEMIA -> Jindrichuv Hradec
 	link = { vic3 = x81C142 hoi4 = 11542 } # Prague -> Praha
 	link = { vic3 = x9080A0 hoi4 = 11556 } # STATE_BOHEMIA -> Jihlava
@@ -1079,7 +1079,7 @@
 	link = { vic3 = x6EA29B hoi4 = 707 } # STATE_BAVARIA -> Traunreut
 	link = { vic3 = x565185 hoi4 = 708 } # STATE_BAVARIA -> Augsburg
 	link = { vic3 = xA7094D hoi4 = 3299 } # STATE_BAVARIA -> Neumarkt
-	link = { vic3 = x3101A0 hoi4 = 3541 } # STATE_BAVARIA -> Deggendorf
+	link = { vic3 = x3101A0 hoi4 = 3541 hoi4 = 11497 } # STATE_BAVARIA -> Deggendorf, Cham
 	link = { vic3 = x82F4B9 hoi4 = 3571 hoi4 = 571 } # STATE_BAVARIA -> Schwandorf, Amberg
 	link = { vic3 = xE75868 hoi4 = 3688 hoi4 = 6725 } # Rosenheim -> Waldkraiburg, Dingolfing
 	link = { vic3 = x318021 hoi4 = 3705 } # STATE_BAVARIA -> Dachau
@@ -2082,7 +2082,7 @@
 	link = { vic3 = x8DA9F9 vic3 = xD8621E hoi4 = 11137 } # STATE_ARKHANGELSK, STATE_TVER -> land
 	link = { vic3 = x17C3A9 vic3 = x8ED444 hoi4 = 11171 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Brin-Navolok
 	link = { comment = "* * STATE_TVER " }
-	link = { vic3 = x824587 vic3 = xC37BBA hoi4 = 2 } # STATE_TVER, STATE_TVER -> Danilov
+	link = { vic3 = xC37BBA hoi4 = 2 } # STATE_TVER -> Danilov
 	link = { vic3 = xDA1620 hoi4 = 62 } # STATE_TVER -> Lyubim
 	link = { vic3 = x03B78B vic3 = x0BB972 vic3 = x0BBA97 hoi4 = 72 } # STATE_TVER, STATE_TVER, Velsk -> Konosha
 	link = { vic3 = xD34803 hoi4 = 11165 hoi4 = 11083 } # STATE_TVER -> land, Borisovo-Sudskoye
@@ -2113,7 +2113,8 @@
 	link = { vic3 = x638C43 hoi4 = 3160 } # STATE_TVER -> Depo
 	link = { vic3 = x57940A hoi4 = 3163 } # STATE_TVER -> Timokhino
 	link = { vic3 = x64C8B4 hoi4 = 3175 } # STATE_TVER -> Vorob'yevo
-	link = { vic3 = x40FEDE hoi4 = 3220 hoi4 = 121 } # Yaroslavl -> Bol'shiye Soli, Yaroslavl'
+	link = { vic3 = x130A3E hoi4 = 3220 } # STATE_TVER -> Bol'shiye Soli
+	link = { vic3 = x40FEDE hoi4 = 121 } # Yaroslavl -> Yaroslavl'
 	link = { vic3 = x39F701 hoi4 = 6109 } # STATE_TVER -> Pudozh
 	link = { vic3 = xA08000 hoi4 = 11036 hoi4 = 11103 } # STATE_TVER -> land, Prokshino
 	link = { vic3 = x690072 hoi4 = 89 } # STATE_TVER -> land
@@ -2133,7 +2134,7 @@
 	link = { vic3 = x9AA8A6 hoi4 = 6245 } # Tver -> Kalinin
 	link = { vic3 = x93BCE7 hoi4 = 9046 hoi4 = 9144 } # STATE_TVER -> Kimry, Kashin
 	link = { vic3 = xF42F56 hoi4 = 9102 } # STATE_TVER -> Lipin Bor
-	link = { vic3 = x130A3E hoi4 = 11099 } # STATE_TVER -> Guzitsino
+	link = { vic3 = x824587 hoi4 = 11099 } # STATE_TVER -> Guzitsino
 	link = { vic3 = x74EDD1 hoi4 = 9122 } # STATE_TVER -> Ust'ye
 	link = { vic3 = x475460 vic3 = xEDE24C vic3 = x6F6902 hoi4 = 9130 } # STATE_TVER, STATE_TVER, STATE_TVER -> land
 	link = { vic3 = x604180 vic3 = xCF3ACB hoi4 = 9168 } # STATE_TVER, STATE_GALICH -> Vokhtoga
@@ -2150,7 +2151,7 @@
 	link = { vic3 = x4020DF hoi4 = 11131 } # STATE_TVER -> Ustyuzhna
 	link = { vic3 = x0D15CC hoi4 = 11143 } # STATE_TVER -> land
 	link = { vic3 = xA7B6EF hoi4 = 11154 } # STATE_TVER -> Udomlya
-	link = { vic3 = xD19951 hoi4 = 11166 } # STATE_TVER -> Tutayev
+	link = { vic3 = xD19951 hoi4 = 11166 hoi4 = 9188 } # STATE_TVER -> Tutayev, Volkovo
 	link = { vic3 = xE2021A hoi4 = 9131 } # STATE_TVER -> Sokol
 	link = { vic3 = x04598A hoi4 = 11189 } # STATE_TVER -> Sheksna
 	link = { vic3 = x53CD52 hoi4 = 11205 } # STATE_TVER -> Borisoglebskiy
@@ -2217,7 +2218,7 @@
 	link = { vic3 = xA0A57F hoi4 = 11541 } # STATE_LUHANSK -> Kup'yans'k
 	link = { vic3 = xE6C06A hoi4 = 11700 } # STATE_LUHANSK -> Melitopol'
 	link = { comment = "* * STATE_KURSK " }
-	link = { vic3 = xC020E0 hoi4 = 11214 hoi4 = 11242 } # STATE_BRYANSK -> Verkhov'ye, Chern'
+	link = { vic3 = xC020E0 hoi4 = 11242 } # STATE_BRYANSK -> Chern'
 	link = { vic3 = x4A6AE0 hoi4 = 261 } # STATE_KURSK -> Plavsk
 	link = { vic3 = xF50161 hoi4 = 3346 } # STATE_KURSK -> Yelets
 	link = { vic3 = xE458EF hoi4 = 356 } # STATE_KURSK -> Izmalkovo
@@ -2233,7 +2234,7 @@
 	link = { vic3 = x21A0A0 hoi4 = 3291 hoi4 = 3318 } # STATE_KURSK -> Terbuny, Zadonsk
 	link = { vic3 = x53EF9C hoi4 = 3306 hoi4 = 288 } # STATE_KURSK -> Navlya, Suzemka
 	link = { vic3 = xC7194D hoi4 = 3376 } # STATE_KURSK -> Yefremov
-	link = { vic3 = x6BEE31 hoi4 = 9188 hoi4 = 3469 hoi4 = 11412 } # STATE_KURSK -> Volkovo, Rossosh, Podgorenskiy
+	link = { vic3 = x6BEE31 hoi4 = 3469 hoi4 = 11412 } # STATE_KURSK -> Rossosh, Podgorenskiy
 	link = { vic3 = xF57AA5 hoi4 = 3492 hoi4 = 6481 hoi4 = 9449 } # STATE_KURSK -> Ivnya, Rakitnoye, Belgorod
 	link = { vic3 = x1C692E hoi4 = 3504 } # STATE_KURSK -> Buturlinovka
 	link = { vic3 = x1A7021 hoi4 = 3527 } # STATE_KURSK -> Davydovka
@@ -2261,7 +2262,7 @@
 	link = { vic3 = x669560 hoi4 = 11283 } # STATE_KURSK -> Kolpny
 	link = { vic3 = x45FA32 hoi4 = 11310 } # STATE_KURSK -> Zmiyovka
 	link = { vic3 = x8BEB3F hoi4 = 11337 } # STATE_KURSK -> Pokrovskoye
-	link = { vic3 = x331CB3 hoi4 = 11368 } # Orel -> Mtsensk
+	link = { vic3 = x331CB3 hoi4 = 11368 hoi4 = 11214 } # Orel -> Mtsensk, Verkhov'ye
 	link = { vic3 = x743EA5 hoi4 = 11396 hoi4 = 9552 } # STATE_KURSK -> Nizhnedevitsk, Ostrogozhsk
 	link = { vic3 = x91942B hoi4 = 11475 } # STATE_KURSK -> Novaya Pokrovka
 	link = { vic3 = x607311 hoi4 = 11540 } # STATE_KURSK -> Ertil'
@@ -2644,7 +2645,8 @@
 	link = { comment = "* * STATE_SILESIA " }
 	link = { vic3 = x732DC0 hoi4 = 9470 } # STATE_SILESIA -> Glogau
 	link = { vic3 = xC108EA hoi4 = 552 } # STATE_SILESIA -> Liegnitz
-	link = { vic3 = xC00121 hoi4 = 3545 hoi4 = 3485 } # STATE_SILESIA -> Waldenburg, Glatz
+	link = { vic3 = xCE74AB hoi4 = 3545 } # STATE_SILESIA -> Waldenburg
+	link = { vic3 = xC00121 hoi4 = 3485 } # STATE_SILESIA -> Glatz
 	link = { vic3 = x5E9091 hoi4 = 6464 } # STATE_SILESIA -> Katowice
 	link = { vic3 = x7B2F62 hoi4 = 13205 } # STATE_SILESIA -> Tychy
 	link = { vic3 = x88194B hoi4 = 6512 } # STATE_SILESIA -> Neisse
@@ -2653,8 +2655,7 @@
 	link = { vic3 = xAF9F20 hoi4 = 9457 } # Königshütte -> Rybnick
 	link = { vic3 = x90B12B hoi4 = 9511 } # Kreuzburg -> Oppeln
 	link = { vic3 = x6E617F hoi4 = 9570 } # Breslau -> Breslau
-	link = { vic3 = x272E48 hoi4 = 11517 hoi4 = 11401 } # Görbitz -> Lauban, Liberec
-	link = { vic3 = xCE74AB hoi4 = 11414 } # STATE_SILESIA -> Trutnov
+	link = { vic3 = x272E48 hoi4 = 11517 } # Görbitz -> Lauban
 	link = { vic3 = x821F52 hoi4 = 11467 } # STATE_SILESIA -> Gleiwitz
 	link = { comment = "* * STATE_GREATER_POLAND " }
 	link = { vic3 = x1F6F99 hoi4 = 467 } # STATE_GREATER_POLAND -> Grójec
