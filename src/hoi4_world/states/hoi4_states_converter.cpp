@@ -617,14 +617,16 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
 void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
     const std::map<int, hoi4::DefaultState>& default_states)
 {
-   int64_t manpower =
-       std::accumulate(hoi4_states.begin(), hoi4_states.end(), 0, [](int64_t total, const hoi4::State& state) {
-          return total + state.GetManpower();
+   int64_t manpower = std::accumulate(hoi4_states.begin(),
+       hoi4_states.end(),
+       static_cast<int64_t>(0),
+       [](int64_t total, const hoi4::State& state) {
+          return static_cast<uint64_t>(total + state.GetManpower());
        });
 
    int64_t default_manpower = std::accumulate(default_states.begin(),
        default_states.end(),
-       0,
+       static_cast<int64_t>(0),
        [](int64_t total, const std::pair<int, hoi4::DefaultState>& state) {
           return total + state.second.GetManpower();
        });
