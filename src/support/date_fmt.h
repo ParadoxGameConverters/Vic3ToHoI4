@@ -22,14 +22,14 @@ struct fmt::formatter<date>
 template <typename ParseContext>
 constexpr auto fmt::formatter<date>::parse(ParseContext& ctx) -> decltype(ctx.begin())
 {
-	return ctx.begin();
+   return ctx.begin();
 }
 
 
 template <typename FormatContext>
 auto fmt::formatter<date>::format(const date& the_date, FormatContext& ctx) const -> decltype(ctx.out())
 {
-	return fmt::format_to(ctx.out(), "{0}.{1}.{2}", the_date.getYear(), the_date.getMonth(), the_date.getDay());
+   return fmt::format_to(ctx.out(), "{0}.{1}.{2}", the_date.getYear(), the_date.getMonth(), the_date.getDay());
 }
 
 
