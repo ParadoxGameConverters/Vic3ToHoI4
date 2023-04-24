@@ -25,6 +25,7 @@ struct CountryOptions
    std::vector<EquipmentVariant> ship_variants;
    std::vector<EquipmentVariant> plane_variants;
    std::vector<EquipmentVariant> tank_variants;
+   std::set<std::string> ideas;
 };
 
 
@@ -39,7 +40,8 @@ class Country
        legacy_ship_variants_(std::move(country_options.legacy_ship_variants)),
        ship_variants_(std::move(country_options.ship_variants)),
        plane_variants_(std::move(country_options.plane_variants)),
-       tank_variants_(std::move(country_options.tank_variants))
+       tank_variants_(std::move(country_options.tank_variants)),
+       ideas_(std::move(country_options.ideas))
    {
    }
 
@@ -51,6 +53,7 @@ class Country
    [[nodiscard]] const std::vector<EquipmentVariant>& GetShipVariants() const { return ship_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetPlaneVariants() const { return plane_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetTankVariants() const { return tank_variants_; }
+   [[nodiscard]] const std::set<std::string>& GetIdeas() const { return ideas_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
@@ -63,6 +66,7 @@ class Country
    std::vector<EquipmentVariant> ship_variants_;
    std::vector<EquipmentVariant> plane_variants_;
    std::vector<EquipmentVariant> tank_variants_;
+   std::set<std::string> ideas_;
 };
 
 }  // namespace hoi4

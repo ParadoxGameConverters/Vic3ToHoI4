@@ -27,6 +27,7 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
    EXPECT_TRUE(country.GetTag().empty());
    EXPECT_EQ(country.GetColor(), commonItems::Color(std::array{0, 0, 0}));
    EXPECT_EQ(country.GetCapitalState(), std::nullopt);
+   EXPECT_FALSE(country.IsDecentralized());
 }
 
 
@@ -36,6 +37,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    input << "={\n";
    input << "\tdefinition=\"TAG\"";
    input << "\tcapital=12345\n";
+   input << "\tcountry_type=\"decentralized\"\n";
    input << "}";
    const auto country = CountryImporter{}.ImportCountry(42, input, {{"TAG", commonItems::Color(std::array{1, 2, 3})}});
 
@@ -43,6 +45,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    EXPECT_EQ(country.GetTag(), "TAG");
    EXPECT_EQ(country.GetColor(), commonItems::Color(std::array{1, 2, 3}));
    EXPECT_EQ(country.GetCapitalState(), std::optional<int>(12345));
+   EXPECT_TRUE(country.IsDecentralized());
 }
 
 

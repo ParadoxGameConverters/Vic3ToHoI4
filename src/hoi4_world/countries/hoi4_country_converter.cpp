@@ -161,6 +161,12 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        DetermineActiveVariants(all_plane_variants, technologies);
    const std::vector<EquipmentVariant>& active_tank_variants = DetermineActiveVariants(all_tank_variants, technologies);
 
+   std::set<std::string> ideas;
+   if (source_country.IsDecentralized())
+   {
+      ideas.insert("decentralized");
+   }
+
    return Country({.tag = *tag,
        .color = source_country.GetColor(),
        .capital_state = capital_state,
@@ -168,5 +174,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        .legacy_ship_variants = active_legacy_ship_variants,
        .ship_variants = active_ship_variants,
        .plane_variants = active_plane_variants,
-       .tank_variants = active_tank_variants});
+       .tank_variants = active_tank_variants,
+       .ideas = ideas});
 }

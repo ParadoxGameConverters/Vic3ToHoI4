@@ -392,4 +392,28 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
            EquipmentVariant({}, {"blocking_tech_missing"}, {{"name", "tank: missing_blocking_tech_succeeds"}})));
 }
 
+
+TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultsToEmpty)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .capital_state = 2});
+
+   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {}, {}, {}, {}, {}, {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_TRUE(country_one->GetIdeas().empty());
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, DecentrailzedCountriesGetDecentralizedIdea)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .capital_state = 2, .country_type = "decentralized"});
+
+   const auto country_one = ConvertCountry(source_country_one, {}, country_mapper, {}, {}, {}, {}, {}, {}, {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetIdeas(), testing::ElementsAre("decentralized"));
+}
+
 }  // namespace hoi4
