@@ -71,6 +71,10 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    country_history << "\tlimited_conscription\n";
    country_history << "\tcivilian_economy\n";
    country_history << "\texport_focus\n";
+   for (const std::string& idea: country.GetIdeas())
+   {
+      country_history << fmt::format("\t{}\n", idea);
+   }
    country_history << "}\n";
    country_history << "set_stability = 0.60\n";
    country_history << "set_war_support = 0.60\n";
