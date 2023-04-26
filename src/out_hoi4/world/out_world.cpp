@@ -11,6 +11,7 @@
 #include "src/out_hoi4/map/out_strategic_regions.h"
 #include "src/out_hoi4/map/out_supply_nodes.h"
 #include "src/out_hoi4/states/out_states.h"
+#include "src/support/date_fmt.h"
 
 
 
@@ -36,14 +37,10 @@ void OutputBookmark(std::string_view output_name,
 
    bookmark_file << "bookmarks = {\n";
    bookmark_file << "\tbookmark = {\n";
-   bookmark_file << "\t\tname = " + uppercase_bookmark_name + "_NAME\n";
-   bookmark_file << "\t\tdesc = " + uppercase_bookmark_name + "_DESC\n";
-   bookmark_file << "\t\tdate = " + start_date.toString() + ".12\n";
-
-   bookmark_file << ((start_date.toString() == "1936.1.1") ? "\t\tpicture = GFX_select_date_1936\n"
-                                                           : "\t\tpicture = GFX_select_date_1939\n");
-
-
+   bookmark_file << fmt::format("\t\tname = {}_NAME\n", uppercase_bookmark_name);
+   bookmark_file << fmt::format("\t\tdesc = {}_DESC\n", uppercase_bookmark_name);
+   bookmark_file << fmt::format("\t\tdate = {}.12\n", start_date);
+   bookmark_file << fmt::format("\t\tpicture = GFX_select_date_193{}\n", start_date == date(1936, 1, 1) ? '6' : '9');
    bookmark_file << "\t\tdefault_country = \"---\"\n";
    if (default_bookmark)
    {
@@ -52,16 +49,16 @@ void OutputBookmark(std::string_view output_name,
 
    for (const std::string& great_power: great_powers)
    {
-      bookmark_file << "\t\t" + great_power + "= {}\n";
+      bookmark_file << fmt::format("\t\t{}= {{}}\n", great_power);
    }
 
    bookmark_file << "\t\t\"---\"= {\n";
-   bookmark_file << "\t\t\thistory = \"OTHER_" + uppercase_bookmark_name + "_DESC\"\n";
+   bookmark_file << fmt::format("\t\t\thistory = \"OTHER_{}_DESC\"\n", uppercase_bookmark_name);
    bookmark_file << "\t\t}\n";
 
    for (const auto& major_power: major_powers)
    {
-      bookmark_file << "\t\t" + major_power + " = {\n";
+      bookmark_file << fmt::format("\t\t{} = {{\n", major_power);
       bookmark_file << "\t\t\tminor = yes\n";
       bookmark_file << "\t\t}\n";
    }
