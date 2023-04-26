@@ -106,6 +106,9 @@
     <Filter Include="src\out_hoi4\military">
       <UniqueIdentifier>{4bd77b5b-c7f6-412b-a0bf-69998f518ba2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\country_rankings">
+      <UniqueIdentifier>{c91bb3ea-ac9e-45a2-aecf-2d661ff68774}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -296,6 +299,9 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\map\out_supply_nodes_tests.cpp">
       <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\country_rankings\country_rankings_importer_tests.cpp">
+      <Filter>src\vic3_world\country_rankings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

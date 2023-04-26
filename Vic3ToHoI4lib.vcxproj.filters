@@ -109,6 +109,9 @@
     <Filter Include="src\support">
       <UniqueIdentifier>{27e328b8-2ba6-4bc0-8ea2-3da5ff9ea6c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\country_rankings">
+      <UniqueIdentifier>{1f2a29f1-c206-45d8-918a-2bbf0587a874}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -381,6 +384,12 @@
     <ClInclude Include="src\support\date_fmt.h">
       <Filter>src\support</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\country_rankings\country_rankings.h">
+      <Filter>src\vic3_world\country_rankings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\country_rankings\country_rankings_importer.h">
+      <Filter>src\vic3_world\country_rankings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -565,6 +574,9 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\map\out_supply_nodes.cpp">
       <Filter>src\out_hoi4\map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\country_rankings\country_rankings_importer.cpp">
+      <Filter>src\vic3_world\country_rankings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
