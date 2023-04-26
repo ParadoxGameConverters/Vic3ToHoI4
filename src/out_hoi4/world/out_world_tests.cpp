@@ -279,6 +279,7 @@ TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/BookmarkIsOutput");
    commonItems::TryCreateFolder("output/BookmarkIsOutput/common");
+   commonItems::TryCreateFolder("output/BookmarkIsOutput/common/bookmarks");
    commonItems::TryCreateFolder("output/BookmarkIsOutput/common/country_tags");
    commonItems::TryCreateFolder("output/BookmarkIsOutput/map");
    commonItems::TryCreateFolder("output/BookmarkIsOutput/map/strategicregions");
