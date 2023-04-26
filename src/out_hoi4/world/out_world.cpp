@@ -1,5 +1,8 @@
 #include "out_world.h"
 
+#include <fstream>
+
+#include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/countries/out_countries.h"
 #include "src/out_hoi4/localizations/out_localizations.h"
 #include "src/out_hoi4/map/out_buildings.h"
@@ -8,6 +11,71 @@
 #include "src/out_hoi4/map/out_strategic_regions.h"
 #include "src/out_hoi4/map/out_supply_nodes.h"
 #include "src/out_hoi4/states/out_states.h"
+
+
+
+namespace
+{
+
+void OutputBookmark(std::string_view output_name,
+    std::string_view bookmark_name,
+    date start_date,
+    bool default_bookmark,
+    const std::set<std::string>& great_powers,
+    const std::set<std::string>& major_powers)
+{
+   std::string uppercase_bookmark_name{bookmark_name};
+   std::ranges::transform(uppercase_bookmark_name, uppercase_bookmark_name.begin(), ::toupper);
+
+   std::string bookmark_file_name = fmt::format("output/{}/common/bookmarks/the_{}.txt", output_name, bookmark_name);
+   std::ofstream bookmark_file(bookmark_file_name);
+   if (!bookmark_file.is_open())
+   {
+      throw std::runtime_error(fmt::format("Could not create {}", bookmark_file_name));
+   }
+
+   bookmark_file << "bookmarks = {\n";
+   bookmark_file << "\tbookmark = {\n";
+   bookmark_file << "\t\tname = " + uppercase_bookmark_name + "_NAME\n";
+   bookmark_file << "\t\tdesc = " + uppercase_bookmark_name + "_DESC\n";
+   bookmark_file << "\t\tdate = " + start_date.toString() + ".12\n";
+
+   bookmark_file << ((start_date.toString() == "1936.1.1") ? "\t\tpicture = GFX_select_date_1936\n"
+                                                           : "\t\tpicture = GFX_select_date_1939\n");
+
+
+   bookmark_file << "\t\tdefault_country = \"---\"\n";
+   if (default_bookmark)
+   {
+      bookmark_file << "\t\tdefault = yes\n";
+   }
+
+   for (const std::string& great_power: great_powers)
+   {
+      bookmark_file << "\t\t" + great_power + "= {}\n";
+   }
+
+   bookmark_file << "\t\t\"---\"= {\n";
+   bookmark_file << "\t\t\thistory = \"OTHER_" + uppercase_bookmark_name + "_DESC\"\n";
+   bookmark_file << "\t\t}\n";
+
+   for (const auto& major_power: major_powers)
+   {
+      bookmark_file << "\t\t" + major_power + " = {\n";
+      bookmark_file << "\t\t\tminor = yes\n";
+      bookmark_file << "\t\t}\n";
+   }
+
+   bookmark_file << "\t\teffect = {\n";
+   bookmark_file << "\t\t\trandomize_weather = 22345 # <-Obligatory in every bookmark !\n";
+   bookmark_file << "\t\t\t#123 = { rain_light = yes }\n";
+   bookmark_file << "\t\t}\n";
+   bookmark_file << "\t}\n";
+   bookmark_file << "}\n";
+   bookmark_file.close();
+}
+
+}  // namespace
 
 
 
@@ -21,4 +89,10 @@ void out::OutputWorld(std::string_view output_name, const hoi4::World& world)
    OutputRailways(output_name, world.GetRailways().railways);
    OutputSupplyNodes(output_name, world.GetRailways().railway_endpoints);
    OutputLocalizations(output_name, world.GetLocalizations());
+   OutputBookmark(output_name,
+       "grand_campaign",
+       date("1936.1.1"),
+       true,
+       world.GetGreatPowers(),
+       world.GetMajorPowers());
 }
