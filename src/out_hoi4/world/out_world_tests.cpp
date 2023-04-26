@@ -326,4 +326,17 @@ TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
        "}\n");
 }
 
+
+TEST(Outhoi4WorldOutworld, ExceptionIfBookmarkFileNotCreated)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated");
+   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/common");
+   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/common/country_tags");
+   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/map");
+   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/map/strategicregions");
+
+   EXPECT_THROW(OutputWorld("ExceptionIfBookmarkFileNotCreated", hoi4::World({})), std::runtime_error);
+}
+
 }  // namespace out
