@@ -50,3 +50,19 @@ technology={
 }
 	}
 }
+country_rankings={
+	average_prestige=170
+	highest_prestige=5544
+	country_rankings={ {
+			rank=great_power			target=great_power			prestige=2034
+			score=3
+			country=1
+		}
+ {
+			rank=major_power			target=major_power			prestige=697
+			score=8
+			country=9
+			date=1921.2.18
+		}
+ }
+}
