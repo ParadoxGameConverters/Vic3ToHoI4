@@ -19,6 +19,7 @@ void CreateTestFolders(std::string_view test_name)
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder(fmt::format("output/{}", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common", test_name));
+   commonItems::TryCreateFolder(fmt::format("output/{}/common/bookmarks", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/countries", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/country_tags", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history", test_name));
@@ -270,6 +271,72 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
        commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/russian/victory_points_l_russian.yml"));
    ASSERT_TRUE(
        commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/spanish/victory_points_l_spanish.yml"));
+}
+
+
+TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/BookmarkIsOutput");
+   commonItems::TryCreateFolder("output/BookmarkIsOutput/common");
+   commonItems::TryCreateFolder("output/BookmarkIsOutput/common/bookmarks");
+   commonItems::TryCreateFolder("output/BookmarkIsOutput/common/country_tags");
+   commonItems::TryCreateFolder("output/BookmarkIsOutput/map");
+   commonItems::TryCreateFolder("output/BookmarkIsOutput/map/strategicregions");
+
+   OutputWorld("BookmarkIsOutput",
+       hoi4::World({
+           .great_powers = {"ONE", "TWO"},
+           .major_powers = {"THR", "FOR"},
+       }));
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/BookmarkIsOutput/common/bookmarks/the_grand_campaign.txt"));
+   std::ifstream bookmark_file("output/BookmarkIsOutput/common/bookmarks/the_grand_campaign.txt");
+   ASSERT_TRUE(bookmark_file.is_open());
+   std::stringstream bookmark_file_stream;
+   std::copy(std::istreambuf_iterator<char>(bookmark_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(bookmark_file_stream));
+   bookmark_file.close();
+   EXPECT_EQ(bookmark_file_stream.str(),
+       "bookmarks = {\n"
+       "\tbookmark = {\n"
+       "\t\tname = GRAND_CAMPAIGN_NAME\n"
+       "\t\tdesc = GRAND_CAMPAIGN_DESC\n"
+       "\t\tdate = 1936.1.1.12\n"
+       "\t\tpicture = GFX_select_date_1936\n"
+       "\t\tdefault_country = \"---\"\n"
+       "\t\tdefault = yes\n"
+       "\t\tONE= {}\n"
+       "\t\tTWO= {}\n"
+       "\t\t\"---\"= {\n"
+       "\t\t\thistory = \"OTHER_GRAND_CAMPAIGN_DESC\"\n"
+       "\t\t}\n"
+       "\t\tFOR = {\n"
+       "\t\t\tminor = yes\n"
+       "\t\t}\n"
+       "\t\tTHR = {\n"
+       "\t\t\tminor = yes\n"
+       "\t\t}\n"
+       "\t\teffect = {\n"
+       "\t\t\trandomize_weather = 22345 # <-Obligatory in every bookmark !\n"
+       "\t\t\t#123 = { rain_light = yes }\n"
+       "\t\t}\n"
+       "\t}\n"
+       "}\n");
+}
+
+
+TEST(Outhoi4WorldOutworld, ExceptionIfBookmarkFileNotCreated)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated");
+   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/common");
+   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/common/country_tags");
+   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/map");
+   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/map/strategicregions");
+
+   EXPECT_THROW(OutputWorld("ExceptionIfBookmarkFileNotCreated", hoi4::World({})), std::runtime_error);
 }
 
 }  // namespace out

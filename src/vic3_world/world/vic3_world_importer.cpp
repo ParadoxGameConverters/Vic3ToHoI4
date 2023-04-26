@@ -19,6 +19,8 @@
 #include "src/vic3_world/countries/country_definitions_importer.h"
 #include "src/vic3_world/countries/vic3_countries_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"
+#include "src/vic3_world/country_rankings/country_rankings.h"
+#include "src/vic3_world/country_rankings/country_rankings_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
 #include "src/vic3_world/states/state_regions_importer.h"
@@ -175,12 +177,11 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    std::istringstream save_stream = MeltSave(save, save_string);
 
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
-   std::map<int, State> states;
-
    const std::map<std::string, commonItems::Color> color_definitions = ImportCountryColorDefinitions(mod_filesystem);
    std::map<int, Country> countries;
-
+   std::map<int, State> states;
    std::map<int, std::set<std::string>> acquired_technologies;
+   CountryRankings country_rankings;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("country_manager", [&countries, color_definitions](std::istream& input_stream) {
@@ -191,6 +192,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    });
    save_parser.registerKeyword("technology", [&acquired_technologies](std::istream& input_stream) {
       acquired_technologies = ImportAcquiredTechnologies(input_stream);
+   });
+   save_parser.registerKeyword("country_rankings", [&country_rankings](std::istream& input_stream) {
+      country_rankings = ImportCountryRankings(input_stream);
    });
    save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {
    });
@@ -209,5 +213,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        .state_regions = state_regions,
        .province_definitions = province_definitions,
        .acquired_technologies = acquired_technologies,
+       .country_rankings = country_rankings,
        .localizations = localizations});
 }

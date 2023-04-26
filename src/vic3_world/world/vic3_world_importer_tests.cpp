@@ -70,6 +70,8 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
    EXPECT_THAT(world.GetAcquiredTechnologies(),
        testing::UnorderedElementsAre(testing::Pair(1, std::set<std::string>{"technology_one", "technology_two"}),
            testing::Pair(3, std::set<std::string>{"technology_three"})));
+   EXPECT_THAT(world.GetCountryRankings().GetGreatPowers(), testing::UnorderedElementsAre(1));
+   EXPECT_THAT(world.GetCountryRankings().GetMajorPowers(), testing::UnorderedElementsAre(9));
    EXPECT_EQ(world.GetLocalizations().size(), 1);
    ASSERT_TRUE(world.GetLocalizations().HasLocalization("test_localisation"));
    EXPECT_EQ(world.GetLocalizations().GetLocalizationBlock("test_localisation")->GetLocalization("english"),

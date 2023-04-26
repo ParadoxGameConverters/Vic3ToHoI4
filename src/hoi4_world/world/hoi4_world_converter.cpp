@@ -19,6 +19,28 @@
 
 
 
+namespace
+{
+
+std::set<std::string> MapPowers(const std::set<int>& source_powers, const mappers::CountryMapper& country_mapper)
+{
+   std::set<std::string> powers;
+
+   for (const int great_power_number: source_powers)
+   {
+      if (std::optional<std::string> hoi4_tag = country_mapper.GetHoiTag(great_power_number); hoi4_tag)
+      {
+         powers.insert(*hoi4_tag);
+      }
+   }
+
+   return powers;
+}
+
+}  // namespace
+
+
+
 hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::CountryMapper& country_mapper,
@@ -73,12 +95,16 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    const std::vector<mappers::TechMapping> tech_mappings = mappers::ImportTechMappings();
 
-   countries = ConvertCountries(source_world.GetCountries(),
+   const std::map<int, vic3::Country>& source_countries = source_world.GetCountries();
+   countries = ConvertCountries(source_countries,
        source_world.GetAcquiredTechnologies(),
        country_mapper,
        states.vic3_state_ids_to_hoi4_state_ids,
        states.states,
        tech_mappings);
+
+   std::set<std::string> great_powers = MapPowers(source_world.GetCountryRankings().GetGreatPowers(), country_mapper);
+   std::set<std::string> major_powers = MapPowers(source_world.GetCountryRankings().GetMajorPowers(), country_mapper);
 
    Localizations localizations = ConvertLocalizations(source_world.GetLocalizations(),
        country_mapper.GetCountryMappings(),
@@ -88,6 +114,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        source_world.GetCountries());
 
    return World(WorldOptions{.countries = countries,
+       .great_powers = great_powers,
+       .major_powers = major_powers,
        .states = states,
        .strategic_regions = strategic_regions,
        .buildings = buildings,

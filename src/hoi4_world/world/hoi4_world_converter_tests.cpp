@@ -364,6 +364,64 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
 }
 
 
+TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
+{
+   const vic3::World source_world({
+       .countries =
+           {
+               {1, vic3::Country()},
+               {3, vic3::Country()},
+               {5, vic3::Country()},
+           },
+       .country_rankings = {{1, 3, 5}, {}},
+   });
+
+   const mappers::CountryMapper country_mapper({
+       {1, "ONE"},
+       {3, "THR"},
+       {5, "FIV"},
+   });
+
+   const mappers::ProvinceMapper province_mapper{{}, {}};
+
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
+       source_world,
+       country_mapper,
+       province_mapper);
+
+   EXPECT_THAT(world.GetGreatPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
+}
+
+
+TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
+{
+   const vic3::World source_world({
+       .countries =
+           {
+               {1, vic3::Country()},
+               {3, vic3::Country()},
+               {5, vic3::Country()},
+           },
+       .country_rankings = {{}, {1, 3, 5}},
+   });
+
+   const mappers::CountryMapper country_mapper({
+       {1, "ONE"},
+       {3, "THR"},
+       {5, "FIV"},
+   });
+
+   const mappers::ProvinceMapper province_mapper{{}, {}};
+
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
+       source_world,
+       country_mapper,
+       province_mapper);
+
+   EXPECT_THAT(world.GetMajorPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
+}
+
+
 TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
 {
    const vic3::Country source_country_one({
