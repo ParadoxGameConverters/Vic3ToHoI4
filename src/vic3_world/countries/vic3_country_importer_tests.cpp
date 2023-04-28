@@ -28,6 +28,7 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
    EXPECT_EQ(country.GetColor(), commonItems::Color(std::array{0, 0, 0}));
    EXPECT_EQ(country.GetCapitalState(), std::nullopt);
    EXPECT_FALSE(country.IsDecentralized());
+   EXPECT_TRUE(country.GetActiveLaws().empty());
 }
 
 
@@ -74,6 +75,16 @@ TEST(Vic3WorldCountriesCountryImporter, MultipleCountriesCanBeImported)
    EXPECT_TRUE(country_two.GetTag().empty());
    EXPECT_EQ(country_two.GetColor(), commonItems::Color(std::array{0, 0, 0}));
    EXPECT_EQ(country_two.GetCapitalState(), std::nullopt);
+}
+
+
+TEST(Vic3WorldCountriesCountryImporter, ActiveLawsCanBeSet)
+{
+   std::stringstream input;
+   Country country = CountryImporter{}.ImportCountry(0, input, {});
+   country.SetActiveLaws({"test_law_one", "test_law_two"});
+
+   EXPECT_THAT(country.GetActiveLaws(), testing::UnorderedElementsAre("test_law_one", "test_law_two"));
 }
 
 

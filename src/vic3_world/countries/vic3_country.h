@@ -25,7 +25,6 @@ struct CountryOptions
 class Country
 {
   public:
-   Country() = default;
    explicit Country(CountryOptions options):
        number_(options.number),
        tag_(std::move(options.tag)),
@@ -40,6 +39,9 @@ class Country
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
+   [[nodiscard]] const std::set<std::string>& GetActiveLaws() const { return active_laws_; }
+
+   void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
 
    bool operator==(const Country&) const = default;
 
@@ -49,6 +51,7 @@ class Country
    commonItems::Color color_;
    std::optional<int> capital_state_;
    std::string country_type_;
+   std::set<std::string> active_laws_;
 };
 
 }  // namespace vic3
