@@ -110,7 +110,7 @@ TEST(Vic3worldWorldVic3worldimporter, ConversionDateIsLogged)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const auto world = ImportWorld(configuration::Configuration{
+   const auto _ = ImportWorld(configuration::Configuration{
        .vic3_directory = "test_files/vic3_world/world",
        .vic3_steam_mod_path = "test_files/vic3_world/documents/mod",
        .vic3_mod_path = "test_files/vic3_world/documents/mod",
@@ -129,7 +129,7 @@ TEST(Vic3worldWorldVic3worldimporter, StateWithInvalidOwnerIsLogged)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const auto world = ImportWorld(configuration::Configuration{
+   const auto _ = ImportWorld(configuration::Configuration{
        .vic3_directory = "test_files/vic3_world/world",
        .vic3_steam_mod_path = "test_files/vic3_world/documents/mod",
        .vic3_mod_path = "test_files/vic3_world/documents/mod",
@@ -148,7 +148,7 @@ TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const auto world = ImportWorld(configuration::Configuration{
+   const auto _ = ImportWorld(configuration::Configuration{
        .vic3_directory = "test_files/vic3_world/world",
        .vic3_steam_mod_path = "test_files/vic3_world/workshop/529340",
        .vic3_mod_path = "test_files/vic3_world/documents/mod",
