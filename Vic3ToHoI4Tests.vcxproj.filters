@@ -109,6 +109,9 @@
     <Filter Include="src\vic3_world\country_rankings">
       <UniqueIdentifier>{c91bb3ea-ac9e-45a2-aecf-2d661ff68774}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\laws">
+      <UniqueIdentifier>{07a29a90-5c78-40af-926a-985a77c682ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -302,6 +305,9 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\country_rankings\country_rankings_importer_tests.cpp">
       <Filter>src\vic3_world\country_rankings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\laws\laws_importer_tests.cpp">
+      <Filter>src\vic3_world\laws</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

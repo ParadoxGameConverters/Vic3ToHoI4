@@ -89,6 +89,7 @@
     <ClInclude Include="src\vic3_world\countries\vic3_country_importer.h" />
     <ClInclude Include="src\vic3_world\country_rankings\country_rankings.h" />
     <ClInclude Include="src\vic3_world\country_rankings\country_rankings_importer.h" />
+    <ClInclude Include="src\vic3_world\laws\laws_importer.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions_loader.h" />
     <ClInclude Include="src\vic3_world\states\state_region.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer.cpp" />
     <ClCompile Include="src\vic3_world\country_rankings\country_rankings_importer.cpp" />
+    <ClCompile Include="src\vic3_world\laws\laws_importer.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader.cpp" />
     <ClCompile Include="src\vic3_world\states\state_regions_importer.cpp" />
