@@ -27,7 +27,8 @@ std::map<int, std::set<std::string>> vic3::ImportLaws(std::istream& input_stream
       }
       else
       {
-         LOG(LogLevel::Warning) << fmt::format("Law had odd active block. Please report to the converters team and upload your save.");
+         LOG(LogLevel::Warning) << fmt::format(
+             "Law had odd active block. Please report to the converters team and upload your save.");
       }
    });
    law_parser.registerKeyword("law", [&law_name](std::istream& input_stream) {
