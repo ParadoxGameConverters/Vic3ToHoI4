@@ -9,9 +9,9 @@
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/mappers/country/country_mapper.h"
+#include "src/mappers/ideology/ideology_mapper.h"
 #include "src/mappers/technology/tech_mapping.h"
 #include "src/vic3_world/countries/vic3_country.h"
-#include "src/mappers/ideology/ideology_mapper.h"
 
 
 
