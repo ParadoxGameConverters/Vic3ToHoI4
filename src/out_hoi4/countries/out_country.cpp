@@ -64,7 +64,7 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    country_history << "}\n";
    country_history << "\n";
    country_history << "set_popularities = {\n";
-   country_history << "\tneutrality = 100\n";
+   country_history << fmt::format("\t{} = 100\n", country.GetIdeology());
    country_history << "}\n";
    country_history << "\n";
    country_history << "add_ideas = {\n";
