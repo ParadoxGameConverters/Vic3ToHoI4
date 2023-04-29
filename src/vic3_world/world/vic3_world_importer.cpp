@@ -21,6 +21,7 @@
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/country_rankings/country_rankings.h"
 #include "src/vic3_world/country_rankings/country_rankings_importer.h"
+#include "src/vic3_world/laws/laws_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
 #include "src/vic3_world/states/state_regions_importer.h"
@@ -195,6 +196,17 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    });
    save_parser.registerKeyword("country_rankings", [&country_rankings](std::istream& input_stream) {
       country_rankings = ImportCountryRankings(input_stream);
+   });
+   save_parser.registerKeyword("laws", [&countries](std::istream& input_stream) {
+      for (const auto& [country_number, active_laws]: ImportLaws(input_stream))
+      {
+         auto country_itr = countries.find(country_number);
+         if (country_itr == countries.end())
+         {
+            continue;
+         }
+         country_itr->second.SetActiveLaws(active_laws);
+      }
    });
    save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {
    });

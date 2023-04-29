@@ -19,6 +19,7 @@ struct CountryOptions
    commonItems::Color color;
    std::optional<int> capital_state;
    std::string country_type;
+   std::set<std::string> active_laws;
 };
 
 
@@ -30,7 +31,8 @@ class Country
        tag_(std::move(options.tag)),
        color_(options.color),
        capital_state_(options.capital_state),
-       country_type_(std::move(options.country_type))
+       country_type_(std::move(options.country_type)),
+       active_laws_(std::move(options.active_laws))
    {
    }
 
