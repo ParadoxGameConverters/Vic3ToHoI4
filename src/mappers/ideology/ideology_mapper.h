@@ -15,7 +15,7 @@ class IdeologyMapper
   public:
    IdeologyMapper() = default;
 
-   std::string GetRulingIdeology(const std::set<std::string>& current_laws) const;
+   [[nodiscard]] std::string GetRulingIdeology(const std::set<std::string>& current_laws) const;
 };
 
 }  // namespace mappers
