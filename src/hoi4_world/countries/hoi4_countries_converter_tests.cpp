@@ -26,6 +26,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        .number = 2,
        .color = commonItems::Color{std::array{2, 4, 6}},
        .capital_state = 2,
+       .active_laws = {"law_landed_voting"},
    });
 
    const auto countries = ConvertCountries(
@@ -94,6 +95,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                 Country(CountryOptions{.tag = "TAG",
                                     .color = commonItems::Color{std::array{1, 2, 3}},
                                     .capital_state = 10,
+                                    .ideology = "neutrality",
                                     .technologies = expected_techs_one,
                                     .legacy_ship_variants = expected_legacy_ship_variants_one,
                                     .ship_variants = expected_ship_variants_one,
@@ -103,6 +105,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                Country(CountryOptions{.tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
                    .capital_state = 20,
+                   .ideology = "democratic",
                    .technologies = expected_techs_two,
                    .legacy_ship_variants = expected_legacy_ship_variants_two,
                    .ship_variants = expected_ship_variants_two,

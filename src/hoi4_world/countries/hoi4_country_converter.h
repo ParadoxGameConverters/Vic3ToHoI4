@@ -11,6 +11,7 @@
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/technology/tech_mapping.h"
 #include "src/vic3_world/countries/vic3_country.h"
+#include "src/mappers/ideology/ideology_mapper.h"
 
 
 
@@ -22,6 +23,7 @@ std::optional<Country> ConvertCountry(const vic3::Country& source_country,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
     const std::vector<State>& states,
+    const mappers::IdeologyMapper& ideology_mapper,
     const std::vector<mappers::TechMapping>& tech_mappings,
     const std::vector<EquipmentVariant>& all_legacy_ship_variants,
     const std::vector<EquipmentVariant>& all_ship_variants,

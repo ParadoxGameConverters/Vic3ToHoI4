@@ -139,6 +139,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
     const std::vector<State>& states,
+    const mappers::IdeologyMapper& ideology_mapper,
     const std::vector<mappers::TechMapping>& tech_mappings,
     const std::vector<EquipmentVariant>& all_legacy_ship_variants,
     const std::vector<EquipmentVariant>& all_ship_variants,
@@ -153,6 +154,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
 
    const std::optional<int> capital_state =
        ConvertCapital(source_country, *tag, vic3_state_ids_to_hoi4_state_ids, states);
+   const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
    const Technologies technologies = ConvertTechnologies(source_technologies, tech_mappings);
    const std::vector<EquipmentVariant>& active_legacy_ship_variants =
        DetermineActiveVariants(all_legacy_ship_variants, technologies);
@@ -170,6 +172,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
    return Country({.tag = *tag,
        .color = source_country.GetColor(),
        .capital_state = capital_state,
+       .ideology = ideology,
        .technologies = technologies,
        .legacy_ship_variants = active_legacy_ship_variants,
        .ship_variants = active_ship_variants,
