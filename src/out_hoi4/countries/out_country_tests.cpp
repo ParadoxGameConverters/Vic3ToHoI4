@@ -238,6 +238,29 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
 }
 
 
+TEST(Outhoi4CountriesOutcountryTests, IdeologyIsSetCountryHistoryFile)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/IdeologyIsSetCountryHistoryFile");
+   commonItems::TryCreateFolder("output/IdeologyIsSetCountryHistoryFile/history");
+   commonItems::TryCreateFolder("output/IdeologyIsSetCountryHistoryFile/history/countries");
+
+   const hoi4::Country country({.tag = "TAG", .ideology = "test_ideology"});
+   OutputCountryHistory("IdeologyIsSetCountryHistoryFile", country);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/IdeologyIsSetCountryHistoryFile/history/countries/TAG.txt"));
+   std::ifstream country_file("output/IdeologyIsSetCountryHistoryFile/history/countries/TAG.txt");
+   ASSERT_TRUE(country_file.is_open());
+   std::stringstream country_file_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_stream));
+   country_file.close();
+
+   EXPECT_THAT(country_file_stream.str(), testing::HasSubstr("ruling_party = test_ideology"));
+}
+
+
 TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
 {
    commonItems::TryCreateFolder("output");

@@ -4,6 +4,7 @@
 
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/equipment_variants_importer.h"
+#include "src/mappers/ideology/ideology_mapper.h"
 
 
 
@@ -15,6 +16,8 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
     const std::vector<mappers::TechMapping>& tech_mappings)
 {
    std::map<std::string, Country> countries;
+
+   const mappers::IdeologyMapper ideology_mapper;
 
    const std::vector<EquipmentVariant> all_legacy_ship_variants =
        ImportEquipmentVariants("configurables/legacy_ship_types.txt");
@@ -36,6 +39,7 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
           country_mapper,
           vic3_state_ids_to_hoi4_state_ids,
           states,
+          ideology_mapper,
           tech_mappings,
           all_legacy_ship_variants,
           all_ship_variants,

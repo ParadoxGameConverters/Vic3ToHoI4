@@ -66,3 +66,15 @@ country_rankings={
 		}
  }
 }
+laws={
+	database={
+0={
+	law=law_chiefdom	country=1
+}
+1={
+	law=law_monarchy	country=1
+	active=yes
+	activation_date=1836.1.1
+}
+	}
+}

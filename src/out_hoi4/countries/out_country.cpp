@@ -57,14 +57,14 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    country_history << "set_convoys = 0\n";
    country_history << "\n";
    country_history << "set_politics = {\n";
-   country_history << "\truling_party = neutrality\n";
+   country_history << fmt::format("\truling_party = {}\n", country.GetIdeology());
    country_history << "\tlast_election = \"1836.1.1\"\n";
    country_history << "\telection_frequency = 48\n";
    country_history << "\telections_allowed = no\n";
    country_history << "}\n";
    country_history << "\n";
    country_history << "set_popularities = {\n";
-   country_history << "\tneutrality = 100\n";
+   country_history << fmt::format("\t{} = 100\n", country.GetIdeology());
    country_history << "}\n";
    country_history << "\n";
    country_history << "add_ideas = {\n";

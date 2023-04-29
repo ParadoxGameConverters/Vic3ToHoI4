@@ -369,9 +369,9 @@ TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
    const vic3::World source_world({
        .countries =
            {
-               {1, vic3::Country()},
-               {3, vic3::Country()},
-               {5, vic3::Country()},
+               {1, vic3::Country({})},
+               {3, vic3::Country({})},
+               {5, vic3::Country({})},
            },
        .country_rankings = {{1, 3, 5}, {}},
    });
@@ -398,9 +398,9 @@ TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
    const vic3::World source_world({
        .countries =
            {
-               {1, vic3::Country()},
-               {3, vic3::Country()},
-               {5, vic3::Country()},
+               {1, vic3::Country({})},
+               {3, vic3::Country({})},
+               {5, vic3::Country({})},
            },
        .country_rankings = {{}, {1, 3, 5}},
    });

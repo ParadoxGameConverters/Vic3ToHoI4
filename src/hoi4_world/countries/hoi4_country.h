@@ -20,6 +20,8 @@ struct CountryOptions
    std::string tag;
    commonItems::Color color;
    std::optional<int> capital_state;
+   std::string ideology = "neutrality";
+   std::string sub_ideology = "despotism";
    Technologies technologies;
    std::vector<EquipmentVariant> legacy_ship_variants;
    std::vector<EquipmentVariant> ship_variants;
@@ -36,6 +38,8 @@ class Country
        tag_(std::move(country_options.tag)),
        color_(country_options.color),
        capital_state_(country_options.capital_state),
+       ideology_(std::move(country_options.ideology)),
+       sub_ideology_(std::move(country_options.sub_ideology)),
        technologies_(std::move(country_options.technologies)),
        legacy_ship_variants_(std::move(country_options.legacy_ship_variants)),
        ship_variants_(std::move(country_options.ship_variants)),
@@ -48,6 +52,8 @@ class Country
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
+   [[nodiscard]] const std::string& GetIdeology() const { return ideology_; }
+   [[nodiscard]] const std::string& GetSubIdeology() const { return sub_ideology_; }
    [[nodiscard]] const Technologies& GetTechnologies() const { return technologies_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetLegacyShipVariants() const { return legacy_ship_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetShipVariants() const { return ship_variants_; }
@@ -61,6 +67,8 @@ class Country
    std::string tag_;
    commonItems::Color color_;
    std::optional<int> capital_state_;
+   std::string ideology_ = "neutrality";
+   std::string sub_ideology_ = "despotism";
    Technologies technologies_;
    std::vector<EquipmentVariant> legacy_ship_variants_;
    std::vector<EquipmentVariant> ship_variants_;
