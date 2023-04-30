@@ -9,8 +9,6 @@
 namespace mappers
 {
 
-// These tests
-
 TEST(MappersIdeologyIdeologyMapperCreator, NoRulesMeansNeutralityIdeology)
 {
    const IdeologyMapper ideology_mapper({});
