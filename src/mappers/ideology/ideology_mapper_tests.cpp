@@ -11,17 +11,56 @@ namespace mappers
 
 // These tests
 
-TEST(MappersIdeologyIdeologyMapperCreator, DefaultRulingIdeologyIsNeutrality)
+TEST(MappersIdeologyIdeologyMapperCreator, NoRulesMeansNeutralityIdeology)
 {
-   constexpr IdeologyMapper ideology_mapper;
+   const IdeologyMapper ideology_mapper({});
    EXPECT_EQ(ideology_mapper.GetRulingIdeology({}), "neutrality");
 }
 
 
-TEST(MappersIdeologyIdeologyMapperCreator, DemocracyForAppropriateLaws)
+TEST(MappersIdeologyIdeologyMapperCreator, HighestRatedIdeologyWins)
 {
-   constexpr IdeologyMapper ideology_mapper;
-   EXPECT_EQ(ideology_mapper.GetRulingIdeology({"law_landed_voting"}), "democratic");
+   const IdeologyMapper ideology_mapper({
+       {"law_parliamentary_republic",
+           {
+               {"democratic", 50},
+               {"communism", 50},
+               {"fascism", 25},
+               {"neutrality", 25},
+           }},
+       {"law_landed_voting",
+           {
+               {"democratic", 25},
+               {"communism", -50},
+               {"fascism", 0},
+               {"neutrality", 0},
+           }},
+   });
+
+   EXPECT_EQ(ideology_mapper.GetRulingIdeology({"law_parliamentary_republic", "law_landed_voting"}), "democratic");
+}
+
+
+TEST(MappersIdeologyIdeologyMapperCreator, NoMatchedLawsMeansNeutralityIdeology)
+{
+   const IdeologyMapper ideology_mapper({
+       {"law_parliamentary_republic",
+           {
+               {"democratic", 50},
+               {"communism", 50},
+               {"fascism", 25},
+               {"neutrality", 25},
+           }},
+       {"law_landed_voting",
+           {
+               {"democratic", 25},
+               {"communism", -50},
+               {"fascism", 0},
+               {"neutrality", 0},
+           }},
+   });
+
+   EXPECT_EQ(ideology_mapper.GetRulingIdeology({"unmatched_law"}), "neutrality");
 }
 
 }  // namespace mappers
