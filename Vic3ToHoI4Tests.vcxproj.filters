@@ -315,6 +315,9 @@
     <ClCompile Include="src\mappers\ideology\ideology_mapper_tests.cpp">
       <Filter>src\mappers\ideology</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\ideology\ideology_mapper_importer_tests.cpp">
+      <Filter>src\mappers\ideology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
