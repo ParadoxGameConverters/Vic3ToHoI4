@@ -1,5 +1,1 @@
-// normal rule
-link = { law = law_council_republic democratic = 0 communism = 100 fascism = 0 neutrality = 0 }
-
-// missing law means it's not used
-link = { democratic = 200 communism = 0 fascism = 0 neutrality = 0 }
+law_council_republic = { democratic = 0 communism = 100 fascism = 0 neutrality = 0 }
