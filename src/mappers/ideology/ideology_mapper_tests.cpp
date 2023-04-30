@@ -9,16 +9,14 @@
 namespace mappers
 {
 
-// These tests
-
-TEST(MappersIdeologyIdeologyMapperCreator, NoRulesMeansNeutralityIdeology)
+TEST(MappersIdeologyIdeologyMapperTests, NoRulesMeansNeutralityIdeology)
 {
    const IdeologyMapper ideology_mapper({});
    EXPECT_EQ(ideology_mapper.GetRulingIdeology({}), "neutrality");
 }
 
 
-TEST(MappersIdeologyIdeologyMapperCreator, HighestRatedIdeologyWins)
+TEST(MappersIdeologyIdeologyMapperTests, HighestRatedIdeologyWins)
 {
    const IdeologyMapper ideology_mapper({
        {"law_parliamentary_republic",
@@ -41,7 +39,7 @@ TEST(MappersIdeologyIdeologyMapperCreator, HighestRatedIdeologyWins)
 }
 
 
-TEST(MappersIdeologyIdeologyMapperCreator, NoMatchedLawsMeansNeutralityIdeology)
+TEST(MappersIdeologyIdeologyMapperTests, NoMatchedLawsMeansNeutralityIdeology)
 {
    const IdeologyMapper ideology_mapper({
        {"law_parliamentary_republic",

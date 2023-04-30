@@ -1,0 +1,1 @@
+law_council_republic = { democratic = 0 communism = 100 fascism = 0 neutrality = 0 }

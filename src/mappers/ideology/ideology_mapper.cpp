@@ -8,10 +8,10 @@
 namespace
 {
 
-mappers::ideology_points_map CalculateIdeologyPoints(const std::map<std::string, mappers::ideology_points_map>& rules,
+mappers::IdeologyPointsMap CalculateIdeologyPoints(const std::map<std::string, mappers::IdeologyPointsMap>& rules,
     const std::set<std::string>& current_laws)
 {
-   mappers::ideology_points_map point_totals;
+   mappers::IdeologyPointsMap point_totals;
 
    for (const std::string& current_law: current_laws)
    {
@@ -40,7 +40,7 @@ mappers::ideology_points_map CalculateIdeologyPoints(const std::map<std::string,
 
 std::string mappers::IdeologyMapper::GetRulingIdeology(const std::set<std::string>& current_laws) const
 {
-   ideology_points_map point_totals = CalculateIdeologyPoints(rules_, current_laws);
+   IdeologyPointsMap point_totals = CalculateIdeologyPoints(rules_, current_laws);
    if (point_totals.empty())
    {
       return "neutrality";
