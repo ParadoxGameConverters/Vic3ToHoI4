@@ -3,6 +3,7 @@
 
 
 
+#include <map>
 #include <string>
 
 
@@ -10,12 +11,18 @@
 namespace mappers
 {
 
+using ideology_points_map = std::map<std::string, int>;
+
+
 class IdeologyMapper
 {
   public:
-   IdeologyMapper() = default;
+   explicit IdeologyMapper(std::map<std::string, ideology_points_map> rules): rules_(std::move(rules)) {}
 
    [[nodiscard]] std::string GetRulingIdeology(const std::set<std::string>& current_laws) const;
+
+  private:
+   std::map<std::string, ideology_points_map> rules_;
 };
 
 }  // namespace mappers
