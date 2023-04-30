@@ -153,4 +153,39 @@ TEST(Vic3WorldLawsLawsImporter, LawsWithoutNamesAreImported)
 }
 
 
+TEST(Vic3WorldLawsLawsImporter, LawsImportsAreLogged)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "\tdatabase={\n";
+   input << "0 = {\n";
+   input << "\tlaw = test_law_one	country = 1\n";
+   input << "\tactive = yes\n";
+   input << "}\n";
+   input << "1 ={ \n";
+   input << "\tlaw = test_law_two	country = 1\n";
+   input << "}\n";
+   input << "2 = {\n";
+   input << "\tlaw = test_law_one	country = 2\n";
+   input << "}\n";
+   input << "3 = none\n";
+   input << "4 = none\n";
+   input << "5 = none\n";
+   input << "\t}\n";
+   input << "}\n";
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const std::map<int, std::set<std::string>> _ = ImportLaws(input);
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tImported 1 active laws."));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tImported 2 inactive laws."));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tImported 3 empty laws."));
+}
+
+
 }  // namespace vic3
