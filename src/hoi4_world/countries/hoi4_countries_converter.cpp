@@ -17,7 +17,188 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
 {
    std::map<std::string, Country> countries;
 
-   const mappers::IdeologyMapper ideology_mapper;
+   const mappers::IdeologyMapper ideology_mapper({
+       // governance principles
+       {"law_chiefdom",
+           {
+               {"democratic", -25},
+               {"communism", -50},
+               {"fascism", -25},
+               {"neutrality", 25},
+           }},
+       {"law_monarchy",
+           {
+               {"democratic", 25},
+               {"communism", -100},
+               {"fascism", 0},
+               {"neutrality", 50},
+           }},
+       {"law_presidential_republic",
+           {
+               {"democratic", 50},
+               {"communism", 0},
+               {"fascism", 50},
+               {"neutrality", 25},
+           }},
+       {"law_parliamentary_republic",
+           {
+               {"democratic", 50},
+               {"communism", 50},
+               {"fascism", 25},
+               {"neutrality", 25},
+           }},
+       {"law_theocracy",
+           {
+               {"democratic", 25},
+               {"communism", -50},
+               {"fascism", 25},
+               {"neutrality", 50},
+           }},
+       {"law_council_republic",
+           {
+               {"democratic", 25},
+               {"communism", 100},
+               {"fascism", -50},
+               {"neutrality", -25},
+           }},
+       // distribution of power
+       {"law_autocracy",
+           {
+               {"democratic", -100},
+               {"communism", 100},
+               {"fascism", 100},
+               {"neutrality", 100},
+           }},
+       {"law_oligarchy",
+           {
+               {"democratic", 25},
+               {"communism", 50},
+               {"fascism", 50},
+               {"neutrality", 100},
+           }},
+       {"law_elder_council",
+           {
+               {"democratic", -50},
+               {"communism", -50},
+               {"fascism", 0},
+               {"neutrality", 50},
+           }},
+       {"law_landed_voting",
+           {
+               {"democratic", 25},
+               {"communism", -50},
+               {"fascism", 0},
+               {"neutrality", 50},
+           }},
+       {"law_wealth_voting",
+           {
+               {"democratic", 25},
+               {"communism", -50},
+               {"fascism", 0},
+               {"neutrality", 50},
+           }},
+       {"law_census_voting",
+           {
+               {"democratic", 50},
+               {"communism", -50},
+               {"fascism", 25},
+               {"neutrality", 50},
+           }},
+       {"law_universal_suffrage",
+           {
+               {"democratic", 100},
+               {"communism", 100},
+               {"fascism", -25},
+               {"neutrality", 25},
+           }},
+       {"law_anarchy",
+           {
+               {"democratic", -10'000},
+               {"communism", 10'000},
+               {"fascism", -10'000},
+               {"neutrality", -10'000},
+           }},
+       // citizenship
+       {"law_ethnostate",
+           {
+               {"democratic", -50},
+               {"communism", -100},
+               {"fascism", 100},
+               {"neutrality", 25},
+           }},
+       {"law_national_supremacy",
+           {
+               {"democratic", -25},
+               {"communism", 0},
+               {"fascism", 75},
+               {"neutrality", 50},
+           }},
+       {"law_racial_segregation",
+           {
+               {"democratic", 25},
+               {"communism", -25},
+               {"fascism", 50},
+               {"neutrality", 50},
+           }},
+       {"law_cultural_exclusion",
+           {
+               {"democratic", 50},
+               {"communism", 0},
+               {"fascism", 25},
+               {"neutrality", 50},
+           }},
+       {"law_multicultural",
+           {
+               {"democratic", 75},
+               {"communism", 75},
+               {"fascism", -50},
+               {"neutrality", 0},
+           }},
+       // church and state
+       {"law_state_religion",
+           {
+               {"democratic", 0},
+               {"communism", -75},
+               {"fascism", 50},
+               {"neutrality", 75},
+           }},
+       {"law_freedom_of_conscience",
+           {
+               {"democratic", 25},
+               {"communism", -50},
+               {"fascism", 0},
+               {"neutrality", 50},
+           }},
+       {"law_total_separation",
+           {
+               {"democratic", 50},
+               {"communism", 50},
+               {"fascism", 0},
+               {"neutrality", 0},
+           }},
+       // bureaucracy
+       {"law_hereditary_bureaucrats",
+           {
+               {"democratic", -25},
+               {"communism", -75},
+               {"fascism", -25},
+               {"neutrality", 50},
+           }},
+       {"law_appointed_bureaucrats",
+           {
+               {"democratic", 25},
+               {"communism", 50},
+               {"fascism", 50},
+               {"neutrality", 25},
+           }},
+       {"law_elected_bureaucrats",
+           {
+               {"democratic", 50},
+               {"communism", 25},
+               {"fascism", 0},
+               {"neutrality", 0},
+           }},
+   });
 
    const std::vector<EquipmentVariant> all_legacy_ship_variants =
        ImportEquipmentVariants("configurables/legacy_ship_types.txt");

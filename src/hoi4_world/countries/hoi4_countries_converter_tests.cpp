@@ -26,7 +26,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        .number = 2,
        .color = commonItems::Color{std::array{2, 4, 6}},
        .capital_state = 2,
-       .active_laws = {"law_landed_voting"},
+       .active_laws = {"law_universal_suffrage", "law_presidential_republic"},
    });
 
    const auto countries = ConvertCountries(
