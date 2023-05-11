@@ -49,11 +49,15 @@ class Country
    {
    }
 
+   [[nodiscard]] bool AreElectionsAllowed() const;
+
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] const std::string& GetIdeology() const { return ideology_; }
    [[nodiscard]] const std::string& GetSubIdeology() const { return sub_ideology_; }
+   [[nodiscard]] const std::map<std::string, int>& GetIdeologySupport() const { return ideology_support_; }
+   [[nodiscard]] const date& GetLastElection() const { return last_election_; }
    [[nodiscard]] const Technologies& GetTechnologies() const { return technologies_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetLegacyShipVariants() const { return legacy_ship_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetShipVariants() const { return ship_variants_; }
@@ -69,6 +73,8 @@ class Country
    std::optional<int> capital_state_;
    std::string ideology_ = "neutrality";
    std::string sub_ideology_ = "despotism";
+   std::map<std::string, int> ideology_support_{std::make_pair("neutrality", 100)};
+   date last_election_{1933, 1, 1};
    Technologies technologies_;
    std::vector<EquipmentVariant> legacy_ship_variants_;
    std::vector<EquipmentVariant> ship_variants_;

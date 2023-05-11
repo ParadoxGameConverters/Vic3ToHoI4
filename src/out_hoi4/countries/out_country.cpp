@@ -8,7 +8,43 @@
 #include "src/out_hoi4/military/out_equipment_variant.h"
 #include "src/out_hoi4/technology/out_technologies.h"
 
+namespace
+{
+void outputPolitics(std::ostream& country_history,
+    const std::string& government_ideology,
+    const date& last_election,
+    const bool& elections_allowed,
+    const std::map<std::string, int>& ideologySupport);
+void outputPolitics(std::ostream& country_history,
+    const std::string& government_ideology,
+    const date& last_election,
+    const bool& elections_allowed,
+    const std::map<std::string, int>& ideologySupport)
+{
+   country_history << "set_politics = {\n";
+   country_history << "    ruling_party = " << government_ideology << "\n";
+   country_history << "    last_election = \"" << last_election << "\"\n";
+   country_history << "    election_frequency = 48\n";
+   if (elections_allowed)
+   {
+      country_history << "    elections_allowed = yes\n";
+   }
+   else
+   {
+      country_history << "    elections_allowed = no\n";
+   }
+   country_history << "}\n";
+   country_history << "\n";
 
+   country_history << "set_popularities = {\n";
+   for (const auto& ideology: ideologySupport)
+   {
+      country_history << "\t" << ideology.first << " = " << ideology.second << "\n";
+   }
+   country_history << "}\n";
+   country_history << "\n";
+}
+}  // namespace
 
 void out::OutputCommonCountriesFile(std::string_view output_name, const hoi4::Country& country)
 {
@@ -56,17 +92,13 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    country_history << "set_research_slots = 3\n";
    country_history << "set_convoys = 0\n";
    country_history << "\n";
-   country_history << "set_politics = {\n";
-   country_history << fmt::format("\truling_party = {}\n", country.GetIdeology());
-   country_history << "\tlast_election = \"1836.1.1\"\n";
-   country_history << "\telection_frequency = 48\n";
-   country_history << "\telections_allowed = no\n";
-   country_history << "}\n";
-   country_history << "\n";
-   country_history << "set_popularities = {\n";
-   country_history << fmt::format("\t{} = 100\n", country.GetIdeology());
-   country_history << "}\n";
-   country_history << "\n";
+
+   outputPolitics(country_history,
+       country.GetIdeology(),
+       country.GetLastElection(),
+       country.AreElectionsAllowed(),
+       country.GetIdeologySupport());
+
    country_history << "add_ideas = {\n";
    country_history << "\tlimited_conscription\n";
    country_history << "\tcivilian_economy\n";
