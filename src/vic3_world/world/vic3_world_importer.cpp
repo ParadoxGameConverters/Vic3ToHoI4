@@ -208,6 +208,17 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
          country_itr->second.SetActiveLaws(active_laws);
       }
    });
+   save_parser.registerKeyword("election_manager", [&countries](std::istream& input_stream) {
+      for (const auto& [country_number, active_laws]: ImportLaws(input_stream))
+      {
+         auto country_itr = countries.find(country_number);
+         if (country_itr == countries.end())
+         {
+            continue;
+         }
+         country_itr->second.SetActiveLaws(active_laws);
+      }
+   });
    save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {
    });
    save_parser.IgnoreUnregisteredItems();

@@ -115,6 +115,9 @@
     <Filter Include="src\mappers\ideology">
       <UniqueIdentifier>{7c13beb4-697e-4147-8bd5-75228d16f02e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\elections">
+      <UniqueIdentifier>{03014797-0ad9-4a5c-85ab-c224657c292d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -317,6 +320,9 @@
     </ClCompile>
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer_tests.cpp">
       <Filter>src\mappers\ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\elections\elections_importer_tests.cpp">
+      <Filter>src\vic3_world\elections</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

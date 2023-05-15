@@ -73,7 +73,7 @@ class Country
    std::optional<int> capital_state_;
    std::string ideology_ = "neutrality";
    std::string sub_ideology_ = "despotism";
-   std::map<std::string, int> ideology_support_{std::make_pair("neutrality", 100)};
+   std::map<std::string, int> ideology_support_{{"neutrality", 100}};
    date last_election_{1933, 1, 1};
    Technologies technologies_;
    std::vector<EquipmentVariant> legacy_ship_variants_;

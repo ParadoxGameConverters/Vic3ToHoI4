@@ -10,16 +10,11 @@
 
 namespace
 {
-void outputPolitics(std::ostream& country_history,
+void OutputPolitics(std::ostream& country_history,
     const std::string& government_ideology,
     const date& last_election,
     const bool& elections_allowed,
-    const std::map<std::string, int>& ideologySupport);
-void outputPolitics(std::ostream& country_history,
-    const std::string& government_ideology,
-    const date& last_election,
-    const bool& elections_allowed,
-    const std::map<std::string, int>& ideologySupport)
+    const std::map<std::string, int>& ideology_support)
 {
    country_history << "set_politics = {\n";
    country_history << "    ruling_party = " << government_ideology << "\n";
@@ -37,9 +32,9 @@ void outputPolitics(std::ostream& country_history,
    country_history << "\n";
 
    country_history << "set_popularities = {\n";
-   for (const auto& ideology: ideologySupport)
+   for (const auto& [ideology, support]: ideology_support)
    {
-      country_history << "\t" << ideology.first << " = " << ideology.second << "\n";
+      country_history << "\t" << ideology << " = " << support << "\n";
    }
    country_history << "}\n";
    country_history << "\n";
@@ -93,7 +88,7 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    country_history << "set_convoys = 0\n";
    country_history << "\n";
 
-   outputPolitics(country_history,
+   OutputPolitics(country_history,
        country.GetIdeology(),
        country.GetLastElection(),
        country.AreElectionsAllowed(),
