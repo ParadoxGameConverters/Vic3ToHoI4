@@ -44,6 +44,7 @@ class Country
    [[nodiscard]] const std::set<std::string>& GetActiveLaws() const { return active_laws_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
+   void SetLastElection(date last_election) { last_election_ = last_election; }
 
    bool operator==(const Country&) const = default;
 
@@ -54,6 +55,7 @@ class Country
    std::optional<int> capital_state_;
    std::string country_type_;
    std::set<std::string> active_laws_;
+   std::optional<date> last_election_;
 };
 
 }  // namespace vic3
