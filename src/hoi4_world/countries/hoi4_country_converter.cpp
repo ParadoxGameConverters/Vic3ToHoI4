@@ -104,6 +104,13 @@ std::optional<int> ConvertCapital(const vic3::Country& source_country,
 }
 
 
+date ConvertElection(const std::optional<date>& vic_election)
+{
+   // TODO: Fast-forward election to proper time before startdate.
+   return vic_election.value_or("1936.1.1");
+}
+
+
 std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<hoi4::EquipmentVariant>& all_variants,
     const hoi4::Technologies& technologies)
 {
@@ -155,6 +162,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
    const std::optional<int> capital_state =
        ConvertCapital(source_country, *tag, vic3_state_ids_to_hoi4_state_ids, states);
    const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
+   const date last_election = ConvertElection(source_country.GetLastElection());
    const Technologies technologies = ConvertTechnologies(source_technologies, tech_mappings);
    const std::vector<EquipmentVariant>& active_legacy_ship_variants =
        DetermineActiveVariants(all_legacy_ship_variants, technologies);
@@ -173,6 +181,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        .color = source_country.GetColor(),
        .capital_state = capital_state,
        .ideology = ideology,
+       .last_election = last_election,
        .technologies = technologies,
        .legacy_ship_variants = active_legacy_ship_variants,
        .ship_variants = active_ship_variants,

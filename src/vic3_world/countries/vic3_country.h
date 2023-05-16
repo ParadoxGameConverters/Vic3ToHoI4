@@ -41,6 +41,7 @@ class Country
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
+   [[nodiscard]] const std::optional<date>& GetLastElection() const { return last_election_; }
    [[nodiscard]] const std::set<std::string>& GetActiveLaws() const { return active_laws_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
