@@ -489,7 +489,7 @@ equipments = {
 		sub_detection = 0
 		surface_visibility = 1
 		sub_visibility = 10
-		naval_speed = 21
+		naval_speed = 18
 		reliability = 0.80
 
 		naval_range = 6000
