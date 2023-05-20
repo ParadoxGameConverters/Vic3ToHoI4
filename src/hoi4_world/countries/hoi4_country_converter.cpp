@@ -2,6 +2,7 @@
 
 #include <numeric>
 
+#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 
 
@@ -106,8 +107,33 @@ std::optional<int> ConvertCapital(const vic3::Country& source_country,
 
 date ConvertElection(const std::optional<date>& vic_election)
 {
-   // TODO: Fast-forward election to proper time before startdate.
-   return vic_election.value_or("1936.1.1");
+   const auto start_date = date("1936.1.1");
+   constexpr int election_period = 4;  // All Vic elections have 4-year cycles
+   const auto pivot_date = date(start_date.getYear() - election_period, start_date.getMonth(), start_date.getDay());
+
+   if (!vic_election)  // Country has no elections in Vic
+   {
+      return date(pivot_date.getYear() + 1, start_date.getMonth(), start_date.getDay());
+   }
+
+   date last_election = vic_election.value();
+   int election_year = pivot_date.getYear();
+   if (const auto year_offset = pivot_date.getYear() - last_election.getYear() % election_period; year_offset == 0)
+   {
+      // Only matters when last_election is on January 1st.
+      // Or if we ever allow non January 1st start dates.
+      if (pivot_date >= date(pivot_date.getYear(), last_election.getMonth(), last_election.getDay()))
+      {
+         election_year = pivot_date.getYear() + election_period;
+      }
+   }
+   else
+   {
+      election_year = last_election.getYear() + election_period - year_offset;
+   }
+
+   last_election = date(election_year, last_election.getMonth(), last_election.getDay());
+   return last_election;
 }
 
 

@@ -6,6 +6,7 @@
 #include <string>
 
 #include "external/commonItems/Color.h"
+#include "external/commonItems/Date.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/technology/technologies.h"
 #include "src/mappers/country/country_mapper.h"

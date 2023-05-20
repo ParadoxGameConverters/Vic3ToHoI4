@@ -6,7 +6,7 @@
 #include <string>
 
 #include "external/commonItems/Color.h"
-
+#include "external/commonItems/Date.h"
 
 
 namespace vic3
@@ -20,6 +20,7 @@ struct CountryOptions
    std::optional<int> capital_state;
    std::string country_type;
    std::set<std::string> active_laws;
+   std::optional<date> last_election;
 };
 
 
@@ -32,7 +33,8 @@ class Country
        color_(options.color),
        capital_state_(options.capital_state),
        country_type_(std::move(options.country_type)),
-       active_laws_(std::move(options.active_laws))
+       active_laws_(std::move(options.active_laws)),
+       last_election_(options.last_election)
    {
    }
 
