@@ -23,7 +23,7 @@ struct CountryOptions
    std::optional<int> capital_state;
    std::string ideology = "neutrality";
    std::string sub_ideology = "despotism";
-   date last_election;
+   date last_election{1933, 1, 1};
    Technologies technologies;
    std::vector<EquipmentVariant> legacy_ship_variants;
    std::vector<EquipmentVariant> ship_variants;
