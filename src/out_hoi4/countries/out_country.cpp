@@ -17,16 +17,16 @@ void OutputPolitics(std::ostream& country_history,
     const std::map<std::string, int>& ideology_support)
 {
    country_history << "set_politics = {\n";
-   country_history << "    ruling_party = " << government_ideology << "\n";
-   country_history << "    last_election = \"" << last_election << "\"\n";
-   country_history << "    election_frequency = 48\n";
+   country_history << fmt::format("\truling_party = {}\n", government_ideology);
+   country_history << fmt::format("\tlast_election = \"{}\"\n", last_election.toString());
+   country_history << "\telection_frequency = 48\n";
    if (elections_allowed)
    {
-      country_history << "    elections_allowed = yes\n";
+      country_history << "\telections_allowed = yes\n";
    }
    else
    {
-      country_history << "    elections_allowed = no\n";
+      country_history << "\telections_allowed = no\n";
    }
    country_history << "}\n";
    country_history << "\n";

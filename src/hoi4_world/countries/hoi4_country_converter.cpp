@@ -10,6 +10,12 @@
 namespace
 {
 
+// TODO: commonItems this or something
+int FloorMod(const int lhs, const int rhs)
+{
+   return (lhs % rhs + rhs) % rhs;
+}
+
 
 bool StateAsCapitalCompareFunction(const hoi4::State& a, const hoi4::State& b)
 {
@@ -104,7 +110,6 @@ std::optional<int> ConvertCapital(const vic3::Country& source_country,
    return DetermineBackupCapital(tag, states);
 }
 
-
 date ConvertElection(const std::optional<date>& vic_election)
 {
    const auto start_date = date("1936.1.1");
@@ -118,7 +123,8 @@ date ConvertElection(const std::optional<date>& vic_election)
 
    date last_election = vic_election.value();
    int election_year = pivot_date.getYear();
-   if (const auto year_offset = pivot_date.getYear() - last_election.getYear() % election_period; year_offset == 0)
+   if (const auto year_offset = FloorMod(pivot_date.getYear() - last_election.getYear(), election_period);
+       year_offset == 0)
    {
       // Only matters when last_election is on January 1st.
       // Or if we ever allow non January 1st start dates.
@@ -129,13 +135,12 @@ date ConvertElection(const std::optional<date>& vic_election)
    }
    else
    {
-      election_year = last_election.getYear() + election_period - year_offset;
+      election_year = pivot_date.getYear() + election_period - year_offset;
    }
 
    last_election = date(election_year, last_election.getMonth(), last_election.getDay());
    return last_election;
 }
-
 
 std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<hoi4::EquipmentVariant>& all_variants,
     const hoi4::Technologies& technologies)

@@ -2,7 +2,6 @@
 
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/commonItems/Date.h"
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -272,6 +271,72 @@ TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one.value().GetLastElection(), date("1933.1.1"));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .last_election = date("1894.4.23")});
+
+   const auto country_one =
+       ConvertCountry(source_country_one, {}, country_mapper, {}, {}, mappers::IdeologyMapper({}), {}, {}, {}, {}, {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one.value().GetLastElection(), date("1934.4.23"));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .last_election = date("1937.2.15")});
+
+   const auto country_one =
+       ConvertCountry(source_country_one, {}, country_mapper, {}, {}, mappers::IdeologyMapper({}), {}, {}, {}, {}, {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one.value().GetLastElection(), date("1933.2.15"));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .last_election = date("1935.11.4")});
+
+   const auto country_one =
+       ConvertCountry(source_country_one, {}, country_mapper, {}, {}, mappers::IdeologyMapper({}), {}, {}, {}, {}, {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one.value().GetLastElection(), date("1935.11.4"));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .last_election = date("1928.10.14")});
+
+   const auto country_one =
+       ConvertCountry(source_country_one, {}, country_mapper, {}, {}, mappers::IdeologyMapper({}), {}, {}, {}, {}, {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one.value().GetLastElection(), date("1932.10.14"));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, InYearPastElectionsAreNextCycle)
+{
+   // When election is in the same year as the start date, kick it to next cycle when occurring on or before start date
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .last_election = date("1928.1.1")});
+
+   const auto country_one =
+       ConvertCountry(source_country_one, {}, country_mapper, {}, {}, mappers::IdeologyMapper({}), {}, {}, {}, {}, {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one.value().GetLastElection(), date("1936.1.1"));
 }
 
 
