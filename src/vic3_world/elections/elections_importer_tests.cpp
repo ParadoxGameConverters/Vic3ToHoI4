@@ -36,8 +36,7 @@ TEST(Vic3WorldElectionsElectionsImporter, ElectionsCanBeImported)
    const std::map<int, date> elections = ImportElections(input);
 
    EXPECT_THAT(elections,
-       testing::UnorderedElementsAre(testing::Pair(1, date{"1839.9.29"}),
-           testing::Pair(2, date{"1935.11.4"})));
+       testing::UnorderedElementsAre(testing::Pair(1, date{"1839.9.29"}), testing::Pair(2, date{"1935.11.4"})));
 }
 
 
