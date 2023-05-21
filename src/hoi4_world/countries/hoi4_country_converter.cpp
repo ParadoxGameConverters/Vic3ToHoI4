@@ -10,7 +10,6 @@
 namespace
 {
 
-// TODO: commonItems this or something
 int FloorMod(const int lhs, const int rhs)
 {
    return (lhs % rhs + rhs) % rhs;
