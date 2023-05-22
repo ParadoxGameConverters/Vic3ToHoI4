@@ -8,7 +8,38 @@
 #include "src/out_hoi4/military/out_equipment_variant.h"
 #include "src/out_hoi4/technology/out_technologies.h"
 
+namespace
+{
+void OutputPolitics(std::ostream& country_history,
+    const std::string& government_ideology,
+    const date& last_election,
+    const bool& elections_allowed,
+    const std::map<std::string, int>& ideology_support)
+{
+   country_history << "set_politics = {\n";
+   country_history << fmt::format("\truling_party = {}\n", government_ideology);
+   country_history << fmt::format("\tlast_election = \"{}\"\n", last_election.toString());
+   country_history << "\telection_frequency = 48\n";
+   if (elections_allowed)
+   {
+      country_history << "\telections_allowed = yes\n";
+   }
+   else
+   {
+      country_history << "\telections_allowed = no\n";
+   }
+   country_history << "}\n";
+   country_history << "\n";
 
+   country_history << "set_popularities = {\n";
+   for (const auto& [ideology, support]: ideology_support)
+   {
+      country_history << "\t" << ideology << " = " << support << "\n";
+   }
+   country_history << "}\n";
+   country_history << "\n";
+}
+}  // namespace
 
 void out::OutputCommonCountriesFile(std::string_view output_name, const hoi4::Country& country)
 {
@@ -56,17 +87,13 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    country_history << "set_research_slots = 3\n";
    country_history << "set_convoys = 0\n";
    country_history << "\n";
-   country_history << "set_politics = {\n";
-   country_history << fmt::format("\truling_party = {}\n", country.GetIdeology());
-   country_history << "\tlast_election = \"1836.1.1\"\n";
-   country_history << "\telection_frequency = 48\n";
-   country_history << "\telections_allowed = no\n";
-   country_history << "}\n";
-   country_history << "\n";
-   country_history << "set_popularities = {\n";
-   country_history << fmt::format("\t{} = 100\n", country.GetIdeology());
-   country_history << "}\n";
-   country_history << "\n";
+
+   OutputPolitics(country_history,
+       country.GetIdeology(),
+       country.GetLastElection(),
+       country.AreElectionsAllowed(),
+       country.GetIdeologySupport());
+
    country_history << "add_ideas = {\n";
    country_history << "\tlimited_conscription\n";
    country_history << "\tcivilian_economy\n";

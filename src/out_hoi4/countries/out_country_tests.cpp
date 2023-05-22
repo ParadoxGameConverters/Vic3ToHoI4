@@ -204,7 +204,7 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    expected_one << "\n";
    expected_one << "set_politics = {\n";
    expected_one << "\truling_party = neutrality\n";
-   expected_one << "\tlast_election = \"1836.1.1\"\n";
+   expected_one << "\tlast_election = \"1933.1.1\"\n";
    expected_one << "\telection_frequency = 48\n";
    expected_one << "\telections_allowed = no\n";
    expected_one << "}\n";
@@ -288,7 +288,7 @@ TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
    expected_one << "\n";
    expected_one << "set_politics = {\n";
    expected_one << "\truling_party = neutrality\n";
-   expected_one << "\tlast_election = \"1836.1.1\"\n";
+   expected_one << "\tlast_election = \"1933.1.1\"\n";
    expected_one << "\telection_frequency = 48\n";
    expected_one << "\telections_allowed = no\n";
    expected_one << "}\n";

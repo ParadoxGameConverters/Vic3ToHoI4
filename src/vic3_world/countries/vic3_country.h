@@ -6,7 +6,7 @@
 #include <string>
 
 #include "external/commonItems/Color.h"
-
+#include "external/commonItems/Date.h"
 
 
 namespace vic3
@@ -20,6 +20,7 @@ struct CountryOptions
    std::optional<int> capital_state;
    std::string country_type;
    std::set<std::string> active_laws;
+   std::optional<date> last_election;
 };
 
 
@@ -32,7 +33,8 @@ class Country
        color_(options.color),
        capital_state_(options.capital_state),
        country_type_(std::move(options.country_type)),
-       active_laws_(std::move(options.active_laws))
+       active_laws_(std::move(options.active_laws)),
+       last_election_(options.last_election)
    {
    }
 
@@ -41,9 +43,11 @@ class Country
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
+   [[nodiscard]] const std::optional<date>& GetLastElection() const { return last_election_; }
    [[nodiscard]] const std::set<std::string>& GetActiveLaws() const { return active_laws_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
+   void SetLastElection(date last_election) { last_election_ = last_election; }
 
    bool operator==(const Country&) const = default;
 
@@ -54,6 +58,7 @@ class Country
    std::optional<int> capital_state_;
    std::string country_type_;
    std::set<std::string> active_laws_;
+   std::optional<date> last_election_;
 };
 
 }  // namespace vic3

@@ -2,12 +2,18 @@
 
 #include <numeric>
 
+#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 
 
 
 namespace
 {
+
+int FloorMod(const int lhs, const int rhs)
+{
+   return (lhs % rhs + rhs) % rhs;
+}
 
 
 bool StateAsCapitalCompareFunction(const hoi4::State& a, const hoi4::State& b)
@@ -103,6 +109,37 @@ std::optional<int> ConvertCapital(const vic3::Country& source_country,
    return DetermineBackupCapital(tag, states);
 }
 
+date ConvertElection(const std::optional<date>& vic_election)
+{
+   const auto start_date = date("1936.1.1");
+   constexpr int election_period = 4;  // All Vic elections have 4-year cycles
+   const auto pivot_date = date(start_date.getYear() - election_period, start_date.getMonth(), start_date.getDay());
+
+   if (!vic_election)  // Country has no elections in Vic
+   {
+      return date(pivot_date.getYear() + 1, start_date.getMonth(), start_date.getDay());
+   }
+
+   date last_election = vic_election.value();
+   int election_year = pivot_date.getYear();
+   if (const auto year_offset = FloorMod(pivot_date.getYear() - last_election.getYear(), election_period);
+       year_offset == 0)
+   {
+      // Only matters when last_election is on January 1st.
+      // Or if we ever allow non January 1st start dates.
+      if (pivot_date >= date(pivot_date.getYear(), last_election.getMonth(), last_election.getDay()))
+      {
+         election_year = pivot_date.getYear() + election_period;
+      }
+   }
+   else
+   {
+      election_year = pivot_date.getYear() + election_period - year_offset;
+   }
+
+   last_election = date(election_year, last_election.getMonth(), last_election.getDay());
+   return last_election;
+}
 
 std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<hoi4::EquipmentVariant>& all_variants,
     const hoi4::Technologies& technologies)
@@ -155,6 +192,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
    const std::optional<int> capital_state =
        ConvertCapital(source_country, *tag, vic3_state_ids_to_hoi4_state_ids, states);
    const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
+   const date last_election = ConvertElection(source_country.GetLastElection());
    const Technologies technologies = ConvertTechnologies(source_technologies, tech_mappings);
    const std::vector<EquipmentVariant>& active_legacy_ship_variants =
        DetermineActiveVariants(all_legacy_ship_variants, technologies);
@@ -173,6 +211,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        .color = source_country.GetColor(),
        .capital_state = capital_state,
        .ideology = ideology,
+       .last_election = last_election,
        .technologies = technologies,
        .legacy_ship_variants = active_legacy_ship_variants,
        .ship_variants = active_ship_variants,

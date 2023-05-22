@@ -91,6 +91,7 @@
     <ClInclude Include="src\vic3_world\countries\vic3_country_importer.h" />
     <ClInclude Include="src\vic3_world\country_rankings\country_rankings.h" />
     <ClInclude Include="src\vic3_world\country_rankings\country_rankings_importer.h" />
+    <ClInclude Include="src\vic3_world\elections\elections_importer.h" />
     <ClInclude Include="src\vic3_world\laws\laws_importer.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions_loader.h" />
@@ -107,6 +108,7 @@
     <ClCompile Include="external\fmt\src\os.cc" />
     <ClCompile Include="src\configuration\configuration_importer.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter.cpp" />
+    <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
     <ClCompile Include="src\hoi4_world\localizations\localizations_converter.cpp" />
     <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp" />
@@ -160,6 +162,7 @@
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer.cpp" />
     <ClCompile Include="src\vic3_world\country_rankings\country_rankings_importer.cpp" />
+    <ClCompile Include="src\vic3_world\elections\elections_importer.cpp" />
     <ClCompile Include="src\vic3_world\laws\laws_importer.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader.cpp" />
