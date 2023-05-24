@@ -12,17 +12,24 @@ namespace mappers
 {
 
 using IdeologyPointsMap = std::map<std::string, int>;
+using ItemToPointsMap = std::map<std::string, IdeologyPointsMap>;
 
 
 class IdeologyMapper
 {
   public:
-   explicit IdeologyMapper(std::map<std::string, IdeologyPointsMap> rules): rules_(std::move(rules)) {}
+   explicit IdeologyMapper(ItemToPointsMap rules, std::map<std::string, ItemToPointsMap> sub_ideology_rules):
+       rules_(std::move(rules)),
+       sub_ideology_rules_(std::move(sub_ideology_rules))
+   {
+   }
 
    [[nodiscard]] std::string GetRulingIdeology(const std::set<std::string>& current_laws) const;
+   [[nodiscard]] std::string GetSubIdeology(const std::string& ideology, const std::set<std::string>& current_laws) const;
 
   private:
-   std::map<std::string, IdeologyPointsMap> rules_;
+   ItemToPointsMap rules_;
+   std::map<std::string, ItemToPointsMap> sub_ideology_rules_;
 };
 
 }  // namespace mappers

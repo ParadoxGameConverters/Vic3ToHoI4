@@ -8,7 +8,7 @@
 
 mappers::IdeologyMapper mappers::ImportIdeologyMapper(std::string_view mapping_file)
 {
-   std::map<std::string, IdeologyPointsMap> rules;
+   ItemToPointsMap rules;
 
    IdeologyPointsMap ideology_points_map;
 
@@ -26,7 +26,7 @@ mappers::IdeologyMapper mappers::ImportIdeologyMapper(std::string_view mapping_f
           rules.emplace(law, ideology_points_map);
        });
 
-   file_parser.parseFile(mapping_file);
+   file_parser.parseFile(mapping_file); 
 
-   return IdeologyMapper(rules);
+   return IdeologyMapper(rules, {});
 }
