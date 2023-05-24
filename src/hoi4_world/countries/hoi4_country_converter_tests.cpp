@@ -463,6 +463,40 @@ TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)
 }
 
 
+TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .active_laws = {}});
+   const vic3::Country source_country_two({.number = 1, .active_laws = {"law_landed_voting"}});
+
+   const mappers::IdeologyMapper ideology_mapper(
+       {
+           {"law_landed_voting", {{"democratic", 100}}},
+       },
+       {
+           {
+               "democratic",
+               {
+                   {"law_landed_voting",
+                       {
+                           {"liberalism", 100},
+                       }},
+               },
+           },
+       });
+
+   const std::optional<Country> country_one =
+       ConvertCountry(source_country_one, {}, country_mapper, {}, {}, ideology_mapper, {}, {}, {}, {}, {});
+   const std::optional<Country> country_two =
+       ConvertCountry(source_country_two, {}, country_mapper, {}, {}, ideology_mapper, {}, {}, {}, {}, {});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetSubIdeology(), "despotism");
+   ASSERT_TRUE(country_two.has_value());
+   EXPECT_EQ(country_two->GetSubIdeology(), "liberalism");
+}
+
+
 TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
