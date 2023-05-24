@@ -8,13 +8,15 @@ law_council_republic = { democratic = 25 communism = 100 fascism = -50 neutralit
 
 # distribution of power
 law_autocracy = { democratic = -100 communism = 100 fascism = 100 neutrality = 100 }
+law_technocracy = {} # rules go here
 law_oligarchy = { democratic = 25 communism = 50 fascism = 50 neutrality = 100 }
 law_elder_council = { democratic = -50 communism = -50 fascism = 0 neutrality = 50 }
 law_landed_voting = { democratic = 25 communism = -50 fascism = 0 neutrality = 50 }
 law_wealth_voting = { democratic = 25 communism = -50 fascism = 0 neutrality = 50 }
 law_census_voting = { democratic = 50 communism = -50 fascism = 25 neutrality = 50 }
 law_universal_suffrage = { democratic = 100 communism = 100 fascism = -25 neutrality = 25 }
-law_anarchy = { democratic = -10'000 communism = 10'000 fascism = -10'000 neutrality = -10'000 }
+law_anarchy = { democratic = -10000 communism = 10000 fascism = -10000 neutrality = -10000 }
+law_single_party_state = {} # rules go here
 
 # citizenship
 law_ethnostate = { democratic = -50 communism = -100 fascism = 100 neutrality = 25 }
@@ -27,6 +29,7 @@ law_multicultural = { democratic = 75 communism = 75 fascism = -50 neutrality = 
 law_state_religion = { democratic = 0 communism = -75 fascism = 50 neutrality = 75 }
 law_freedom_of_conscience = { democratic = 25 communism = -50 fascism = 0 neutrality = 50 }
 law_total_separation = { democratic = 50 communism = 50 fascism = 0 neutrality = 0 }
+law_state_atheism = {} # rules go here
 
 # bureaucracy
 law_hereditary_bureaucrats = { democratic = -25 communism = -75 fascism = -25 neutrality = 50 }
