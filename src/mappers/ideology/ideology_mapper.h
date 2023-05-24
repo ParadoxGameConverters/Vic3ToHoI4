@@ -25,7 +25,8 @@ class IdeologyMapper
    }
 
    [[nodiscard]] std::string GetRulingIdeology(const std::set<std::string>& current_laws) const;
-   [[nodiscard]] std::string GetSubIdeology(const std::string& ideology, const std::set<std::string>& current_laws) const;
+   [[nodiscard]] std::string GetSubIdeology(const std::string& ideology,
+       const std::set<std::string>& current_laws) const;
 
   private:
    ItemToPointsMap rules_;
