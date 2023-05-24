@@ -14,7 +14,7 @@ law_landed_voting = { democratic = 25 communism = -50 fascism = 0 neutrality = 5
 law_wealth_voting = { democratic = 25 communism = -50 fascism = 0 neutrality = 50 }
 law_census_voting = { democratic = 50 communism = -50 fascism = 25 neutrality = 50 }
 law_universal_suffrage = { democratic = 100 communism = 100 fascism = -25 neutrality = 25 }
-law_anarchy = { democratic = -10'000 communism = 10'000 fascism = -10'000 neutrality = -10'000 }
+law_anarchy = { democratic = -10000 communism = 10000 fascism = -10000 neutrality = -10000 }
 
 # citizenship
 law_ethnostate = { democratic = -50 communism = -100 fascism = 100 neutrality = 25 }
