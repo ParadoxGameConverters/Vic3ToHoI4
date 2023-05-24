@@ -1,1 +1,10 @@
 law_council_republic = { democratic = 0 communism = 100 fascism = 0 neutrality = 0 }
+
+sub_ideologies=
+{
+
+communism={
+law_council_republic = { marxism = 0 leninism = 0 stalinism = 100 anti_revisionism = 0 anarchist_communism = 0 }
+}
+
+}

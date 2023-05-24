@@ -52,3 +52,26 @@ std::string mappers::IdeologyMapper::GetRulingIdeology(const std::set<std::strin
 
    return winning_ideology->first;
 }
+
+
+std::string mappers::IdeologyMapper::GetSubIdeology(const std::string& ideology,
+    const std::set<std::string>& current_laws) const
+{
+   const auto rules = sub_ideology_rules_.find(ideology);
+   if (rules == sub_ideology_rules_.end())
+   {
+      return "despotism";
+   }
+
+   IdeologyPointsMap point_totals = CalculateIdeologyPoints(rules->second, current_laws);
+   if (point_totals.empty())
+   {
+      return "despotism";
+   }
+
+   const auto& winning_sub_ideology = std::ranges::max_element(point_totals, [](const auto& a, const auto& b) {
+      return a.second < b.second;
+   });
+
+   return winning_sub_ideology->first;
+}

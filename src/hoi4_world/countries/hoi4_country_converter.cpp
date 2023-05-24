@@ -192,6 +192,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
    const std::optional<int> capital_state =
        ConvertCapital(source_country, *tag, vic3_state_ids_to_hoi4_state_ids, states);
    const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
+   const std::string sub_ideology = ideology_mapper.GetSubIdeology(ideology, source_country.GetActiveLaws());
    const date last_election = ConvertElection(source_country.GetLastElection());
    const Technologies technologies = ConvertTechnologies(source_technologies, tech_mappings);
    const std::vector<EquipmentVariant>& active_legacy_ship_variants =
@@ -211,6 +212,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        .color = source_country.GetColor(),
        .capital_state = capital_state,
        .ideology = ideology,
+       .sub_ideology = sub_ideology,
        .last_election = last_election,
        .technologies = technologies,
        .legacy_ship_variants = active_legacy_ship_variants,

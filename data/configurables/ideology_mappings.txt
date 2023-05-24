@@ -8,6 +8,7 @@ law_council_republic = { democratic = 25 communism = 100 fascism = -50 neutralit
 
 # distribution of power
 law_autocracy = { democratic = -100 communism = 100 fascism = 100 neutrality = 100 }
+law_technocracy = {} # rules go here
 law_oligarchy = { democratic = 25 communism = 50 fascism = 50 neutrality = 100 }
 law_elder_council = { democratic = -50 communism = -50 fascism = 0 neutrality = 50 }
 law_landed_voting = { democratic = 25 communism = -50 fascism = 0 neutrality = 50 }
@@ -15,6 +16,7 @@ law_wealth_voting = { democratic = 25 communism = -50 fascism = 0 neutrality = 5
 law_census_voting = { democratic = 50 communism = -50 fascism = 25 neutrality = 50 }
 law_universal_suffrage = { democratic = 100 communism = 100 fascism = -25 neutrality = 25 }
 law_anarchy = { democratic = -10000 communism = 10000 fascism = -10000 neutrality = -10000 }
+law_single_party_state = {} # rules go here
 
 # citizenship
 law_ethnostate = { democratic = -50 communism = -100 fascism = 100 neutrality = 25 }
@@ -27,8 +29,88 @@ law_multicultural = { democratic = 75 communism = 75 fascism = -50 neutrality = 
 law_state_religion = { democratic = 0 communism = -75 fascism = 50 neutrality = 75 }
 law_freedom_of_conscience = { democratic = 25 communism = -50 fascism = 0 neutrality = 50 }
 law_total_separation = { democratic = 50 communism = 50 fascism = 0 neutrality = 0 }
+law_state_atheism = {} # rules go here
 
 # bureaucracy
 law_hereditary_bureaucrats = { democratic = -25 communism = -75 fascism = -25 neutrality = 50 }
 law_appointed_bureaucrats = { democratic = 25 communism = 50 fascism = 50 neutrality = 25 }
 law_elected_bureaucrats = { democratic = 50 communism = 25 fascism = 0 neutrality = 0 }
+
+
+sub_ideologies=
+{
+
+democratic={
+law_chiefdom = { conservatism = 50 liberalism = 25 socialism = 0 }
+law_monarchy = { conservatism = 50 liberalism = 25 socialism = 0 }
+law_presidential_republic = { conservatism = 25 liberalism = 25 socialism = 0 }
+law_parliamentary_republic = { conservatism = 25 liberalism = 50 socialism = 50 }
+law_theocracy = { conservatism = 50 liberalism = 0 socialism = 0 }
+law_council_republic = { conservatism = -100 liberalism = -100 socialism = -25 }
+
+# distribution of power
+law_autocracy = { conservatism = -100 liberalism = -1000 socialism = -10000 }
+law_oligarchy = { conservatism = 25 liberalism = 0 socialism = -50 }
+law_elder_council = { conservatism = 25 liberalism = 0 socialism = -50 }
+law_landed_voting = { conservatism = 25 liberalism = 25 socialism = -25 }
+law_wealth_voting = { conservatism = 25 liberalism = 25 socialism = -25 }
+law_census_voting = { conservatism = 50 liberalism = 25 socialism = 0 }
+law_universal_suffrage = { conservatism = 25 liberalism = 50 socialism = 50 }
+law_anarchy = { conservatism = -10000 liberalism = -10000 socialism = -10000 }
+
+# citizenship
+law_ethnostate = { conservatism = -25 liberalism = -75 socialism = -100 }
+law_national_supremacy = { conservatism = 0 liberalism = -25 socialism = -75 }
+law_racial_segregation = { conservatism = 25 liberalism = 0 socialism = -50 }
+law_cultural_exclusion = { conservatism = 50 liberalism = 25 socialism = -25 }
+law_multicultural = { conservatism = 25 liberalism = 50 socialism = 75 }
+
+# church and state
+law_state_religion = { conservatism = 75 liberalism = 0 socialism = -50 }
+law_freedom_of_conscience = { conservatism = 50 liberalism = 25 socialism = 0 }
+law_total_separation = { conservatism = 0 liberalism = 50 socialism = 75 }
+
+# bureaucracy
+law_hereditary_bureaucrats = { conservatism = -25 liberalism = -50 socialism = -75 }
+law_appointed_bureaucrats = { conservatism = 50 liberalism = 50 socialism = 25 }
+law_elected_bureaucrats = { conservatism = 50 liberalism = 50 socialism = 75 }
+
+# army_model
+law_peasant_levies = { conservatism = 25 liberalism = 0 socialism = -25 }
+law_professional_army = { conservatism = 25 liberalism = 25 socialism = 25 }
+law_national_militia = { conservatism = 25 liberalism = 25 socialism = 50 }
+law_mass_conscription = { conservatism = 25 liberalism = 25 socialism = 25 }
+
+# internal_security
+law_no_home_affairs = { conservatism = 25 liberalism = 0 socialism = 0 }
+law_national_guard = { conservatism = 50 liberalism = 50 socialism = 25 }
+law_secret_police = { conservatism = -25 liberalism = -25 socialism = -50 }
+law_guaranteed_liberties = { conservatism = 25 liberalism = 50 socialism = 75 }
+
+# economic_system
+law_traditionalism = { conservatism = 25 liberalism = 0 socialism = 0 }
+law_interventionism = { conservatism = 50 liberalism = 50 socialism = 25 }
+law_agrarianism = { conservatism = -25 liberalism = -25 socialism = -50 }
+law_industry_banned = { conservatism = 25 liberalism = 50 socialism = 75 }
+law_laissez_faire = { conservatism = 25 liberalism = 50 socialism = 75 }
+law_cooperative_ownership = { conservatism = 25 liberalism = 50 socialism = 75 }
+law_command_economy = { conservatism = 25 liberalism = 50 socialism = 75 }
+
+# trade_policy
+law_mercantilism = { conservatism = 50 liberalism = 25 socialism = 0 }
+law_protectionism = { conservatism = 50 liberalism = 50 socialism = 50 }
+law_free_trade = { conservatism = 75 liberalism = 75 socialism = -50 }
+law_isolationism = { conservatism = -50 liberalism = -75 socialism = -25 }
+
+# more mappings go here
+}
+
+communism={
+# mappings go here
+}
+
+fascism={
+# mappings go here
+}
+
+}
