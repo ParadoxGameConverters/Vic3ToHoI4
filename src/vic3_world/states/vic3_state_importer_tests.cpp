@@ -44,13 +44,15 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
    input << "\t\tprovinces = { 37330 1 37333 9 37348 1 }\n";
    input << "\t}";
    input << "\tpop_statistics={\n";
-   input << "\t\tlower_strata_pops=2";
-   input << "\t\tmiddle_strata_pops=4";
-   input << "\t\tupper_strata_pops=6";
-   input << "\t\tsalaried_working_adults=8";
-   input << "\t\tunemployed_working_adults=10";
-   input << "\t\tlaborer_working_adults=12";
-   input << "\t\tsubsisting_working_adults=14";  // subsisting workers are not counted for employed workers
+   input << "\t\tpopulation_lower_strata=2\n";
+   input << "\t\tpopulation_middle_strata=4\n";
+   input << "\t\tpopulation_upper_strata=6\n";
+   input << "\t\tpopulation_salaried_workforce=8\n";
+   input << "\t\tpopulation_subsisting_workforce=10\n";  // subsisting workers are not counted for employed workers
+   input << "\t\tpopulation_government_workforce=12\n";
+   input << "\t\tpopulation_military_workforce=14\n";
+   input << "\t\tpopulation_laborer_workforce=16\n";
+   input << "\t\tpopulation_unemployed_workforce=18\n";
    input << "\t}\n";
    input << "}";
    const auto state = StateImporter{}.ImportState(input);
@@ -72,6 +74,27 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
            37342,
            37348,
            37349));
+   EXPECT_EQ(state.GetPopulation(), 12);
+   EXPECT_EQ(state.GetEmployedPopulation(), 68);
+}
+
+
+TEST(Vic3worldStateVic3stateimporter, Pre1_3PopStatisticsCanBeIported)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "\tpop_statistics={\n";
+   input << "\t\tlower_strata_pops=2\n";
+   input << "\t\tmiddle_strata_pops=4\n";
+   input << "\t\tupper_strata_pops=6\n";
+   input << "\t\tsalaried_working_adults=8\n";
+   input << "\t\tunemployed_working_adults=10\n";
+   input << "\t\tlaborer_working_adults=12\n";
+   input << "\t\tsubsisting_working_adults=14\n";  // subsisting workers are not counted for employed workers
+   input << "\t}\n";
+   input << "}";
+   const auto state = StateImporter{}.ImportState(input);
+
    EXPECT_EQ(state.GetPopulation(), 12);
    EXPECT_EQ(state.GetEmployedPopulation(), 18);
 }
