@@ -79,7 +79,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
 }
 
 
-TEST(Vic3worldStateVic3stateimporter, Pre1_3PopStatisticsCanBeIported)
+TEST(Vic3worldStateVic3stateimporter, Pre1_3PopStatisticsCanBeImported)
 {
    std::stringstream input;
    input << "={\n";
