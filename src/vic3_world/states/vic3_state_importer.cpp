@@ -36,6 +36,7 @@ vic3::StateImporter::StateImporter()
       }
    });
 
+   // pre-1.3 rules
    pop_statistics_parser_.registerKeyword("lower_strata_pops", [this](std::istream& input_stream) {
       population_ += commonItems::getInt(input_stream);
    });
@@ -49,6 +50,32 @@ vic3::StateImporter::StateImporter()
       employed_population_ += commonItems::getInt(input_stream);
    });
    pop_statistics_parser_.registerKeyword("unemployed_working_adults", [this](std::istream& input_stream) {
+      employed_population_ += commonItems::getInt(input_stream);
+   });
+
+   // post 1.3 rules
+   pop_statistics_parser_.registerKeyword("population_lower_strata", [this](std::istream& input_stream) {
+      population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("population_middle_strata", [this](std::istream& input_stream) {
+      population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("population_upper_strata", [this](std::istream& input_stream) {
+      population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("population_salaried_workforce", [this](std::istream& input_stream) {
+      employed_population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("population_government_workforce", [this](std::istream& input_stream) {
+      employed_population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("population_military_workforce", [this](std::istream& input_stream) {
+      employed_population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("population_laborer_workforce", [this](std::istream& input_stream) {
+      employed_population_ += commonItems::getInt(input_stream);
+   });
+   pop_statistics_parser_.registerKeyword("population_unemployed_workforce", [this](std::istream& input_stream) {
       employed_population_ += commonItems::getInt(input_stream);
    });
    pop_statistics_parser_.IgnoreUnregisteredItems();
