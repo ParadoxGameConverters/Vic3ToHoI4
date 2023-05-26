@@ -24,10 +24,11 @@ TEST(Vic3WorldProvincesVic3BuildingsBuildingImporterTests, DefaultsAreDefaulted)
 TEST(Vic3WorldProvincesVic3BuildingsBuildingImporterTests, ItemsCanBeImported)
 {
    std::stringstream input;
-   input << "= {\n";
+   input << "={\n";
    input << "building = building_iron_mine\n";
    input << "state = 119\n";
    input << "goods_sales = 44263.82079\n";
+   input << "}";
    const Building building = BuildingImporter{}.ImportBuilding(input);
 
    EXPECT_EQ(building.GetType(), "building_iron_mine");

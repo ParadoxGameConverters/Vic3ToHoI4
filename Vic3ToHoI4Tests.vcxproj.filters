@@ -333,6 +333,9 @@
     <ClCompile Include="src\vic3_world\buildings\buildings_tests.cpp">
       <Filter>src\vic3_world\buildings</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\buildings\buildings_importer_tests.cpp">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">

@@ -87,6 +87,7 @@
     <ClInclude Include="src\vic3_to_hoi4_converter.h" />
     <ClInclude Include="src\vic3_world\buildings\building.h" />
     <ClInclude Include="src\vic3_world\buildings\buildings.h" />
+    <ClInclude Include="src\vic3_world\buildings\buildings_importer.h" />
     <ClInclude Include="src\vic3_world\buildings\building_importer.h" />
     <ClInclude Include="src\vic3_world\countries\country_definitions_importer.h" />
     <ClInclude Include="src\vic3_world\countries\vic3_countries_importer.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="src\out_hoi4\world\out_world.cpp" />
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp" />
     <ClCompile Include="src\vic3_world\buildings\buildings.cpp" />
+    <ClCompile Include="src\vic3_world\buildings\buildings_importer.cpp" />
     <ClCompile Include="src\vic3_world\buildings\building_importer.cpp" />
     <ClCompile Include="src\vic3_world\countries\country_definitions_importer.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer.cpp" />
