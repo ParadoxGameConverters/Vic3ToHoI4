@@ -110,6 +110,7 @@
     <ClCompile Include="src\out_hoi4\states\out_state_tests.cpp" />
     <ClCompile Include="src\out_hoi4\technology\out_technologies_tests.cpp" />
     <ClCompile Include="src\out_hoi4\world\out_world_tests.cpp" />
+    <ClCompile Include="src\vic3_world\buildings\building_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\country_definitions_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer_tests.cpp" />

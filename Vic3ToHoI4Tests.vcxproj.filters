@@ -118,6 +118,9 @@
     <Filter Include="src\vic3_world\elections">
       <UniqueIdentifier>{03014797-0ad9-4a5c-85ab-c224657c292d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\buildings">
+      <UniqueIdentifier>{6653e1bc-d8f7-4e55-8697-b73d80799878}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -323,6 +326,9 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\elections\elections_importer_tests.cpp">
       <Filter>src\vic3_world\elections</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\buildings\building_importer_tests.cpp">
+      <Filter>src\vic3_world\buildings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
