@@ -420,6 +420,9 @@
     <ClInclude Include="src\vic3_world\buildings\building_importer.h">
       <Filter>src\vic3_world\buildings</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\buildings\buildings.h">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -624,6 +627,9 @@
       <Filter>src\vic3_world\elections</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\buildings\building_importer.cpp">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\buildings\buildings.cpp">
       <Filter>src\vic3_world\buildings</Filter>
     </ClCompile>
   </ItemGroup>
