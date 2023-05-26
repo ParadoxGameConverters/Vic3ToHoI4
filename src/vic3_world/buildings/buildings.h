@@ -16,6 +16,8 @@ namespace vic3
 class Buildings
 {
   public:
+   Buildings() = default;
+
    explicit Buildings(std::map<int, std::vector<Building>> buildings): buildings_(std::move(buildings)) {}
 
    [[nodiscard]] float GetTotalGoodSalesValueInState(int state_number) const;

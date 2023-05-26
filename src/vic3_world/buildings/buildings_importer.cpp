@@ -19,7 +19,14 @@ vic3::Buildings vic3::ImportBuildings(std::istream& input_stream)
    commonItems::parser database_parser;
    database_parser.registerRegex(commonItems::integerRegex,
        [&buildings, &building_importer](const std::string& unused, std::istream& input_stream) {
-          const Building new_building = building_importer.ImportBuilding(input_stream);
+          const auto building_string = commonItems::stringOfItem(input_stream).getString();
+          if (building_string.find("{") == std::string::npos)
+          {
+             return;
+          }
+          std::istringstream building_stream(building_string);
+
+          const Building new_building = building_importer.ImportBuilding(building_stream);
           if (!new_building.GetStateNumber())
           {
              return;
@@ -37,6 +44,7 @@ vic3::Buildings vic3::ImportBuildings(std::istream& input_stream)
       buildings.clear();
       database_parser.parseStream(input_stream);
    });
+   buildings_parser.IgnoreUnregisteredItems();
 
    buildings_parser.parseStream(input_stream);
 

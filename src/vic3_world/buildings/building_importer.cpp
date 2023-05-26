@@ -15,6 +15,7 @@ vic3::BuildingImporter::BuildingImporter()
    building_parser_.registerKeyword("goods_sales", [this](std::istream& input_stream) {
       goods_sales_value_ = static_cast<float>(commonItems::getDouble(input_stream));
    });
+   building_parser_.IgnoreUnregisteredItems();
 }
 
 

@@ -11,7 +11,7 @@ namespace vic3
 
 TEST(Vic3WorldProvincesVic3BuildingsBuildingsTests, NoBuildingsNoGoodsValue)
 {
-   const Buildings buildings({});
+   const Buildings buildings;
 
    EXPECT_EQ(buildings.GetTotalGoodSalesValueInWorld(), 0.0F);
 }

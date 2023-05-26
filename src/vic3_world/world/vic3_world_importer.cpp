@@ -16,6 +16,7 @@
 #include "external/fmt/include/fmt/format.h"
 #include "external/rakaly/rakaly.h"
 #include "src/support/date_fmt.h"
+#include "src/vic3_world/buildings/buildings_importer.h"
 #include "src/vic3_world/countries/country_definitions_importer.h"
 #include "src/vic3_world/countries/vic3_countries_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -183,6 +184,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    std::map<int, Country> countries;
    std::map<int, State> states;
    std::map<int, std::set<std::string>> acquired_technologies;
+   Buildings buildings;
    CountryRankings country_rankings;
 
    commonItems::parser save_parser;
@@ -209,6 +211,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
          country_itr->second.SetActiveLaws(active_laws);
       }
    });
+   save_parser.registerKeyword("building_manager", [&buildings](std::istream& input_stream) {
+      buildings = ImportBuildings(input_stream);
+   });
    save_parser.registerKeyword("election_manager", [&countries](std::istream& input_stream) {
       for (const auto& [country_number, last_election]: ImportElections(input_stream))
       {
@@ -228,6 +233,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Log(LogLevel::Info) << fmt::format("\t{} countries imported", countries.size());
    Log(LogLevel::Info) << fmt::format("\t{} states imported", states.size());
    Log(LogLevel::Info) << fmt::format("\t{} countries acquired technologies", acquired_technologies.size());
+   Log(LogLevel::Info) << fmt::format("\t{} in goods being sold", buildings.GetTotalGoodSalesValueInWorld());
    Log(LogLevel::Progress) << "15 %";
 
    AssignOwnersToStates(countries, states);
@@ -237,6 +243,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        .state_regions = state_regions,
        .province_definitions = province_definitions,
        .acquired_technologies = acquired_technologies,
+       .buildings = buildings,
        .country_rankings = country_rankings,
        .localizations = localizations});
 }
