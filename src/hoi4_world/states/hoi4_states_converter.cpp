@@ -148,13 +148,13 @@ std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::stri
 }
 
 
-std::vector<int> SortVic3StatesByIndustryDescending(const std::map<int, vic3::State>& states,
+std::vector<int> SortVic3StatesByIndustryDescending(const vic3::Buildings& vic3_buildings,
     const std::map<int, std::set<int>>& vic3_state_id_to_hoi4_provinces)
 {
    std::vector<int> vic3_state_ids;
    std::ranges::copy(vic3_state_id_to_hoi4_provinces | std::views::keys, std::back_inserter(vic3_state_ids));
-   const auto byVic3Industry = [states](const int& lhs, const int& rhs) {
-      return states.at(lhs).GetEmployedPopulation() > states.at(rhs).GetEmployedPopulation();
+   const auto byVic3Industry = [vic3_buildings](const int& lhs, const int& rhs) {
+      return vic3_buildings.GetTotalGoodSalesValueInState(lhs) > vic3_buildings.GetTotalGoodSalesValueInState(rhs);
    };
    std::ranges::sort(vic3_state_ids, byVic3Industry);
    return vic3_state_ids;
@@ -636,6 +636,7 @@ void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
 
 
 hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
+    const vic3::Buildings& vic3_buildings,
     const std::map<int, std::set<int>>& vic3_state_id_to_hoi4_provinces,
     const std::vector<int>& vic3_state_ids_by_vic3_industry,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
@@ -702,7 +703,8 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
       int total_non_wasteland_provinces = static_cast<int>(hoi4_provinces.size()) - total_wasteland_provinces;
 
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
-      const float total_factories = static_cast<float>(vic3_state_itr->second.GetEmployedPopulation()) / 100'000.0F;
+      const float total_factories =
+          static_cast<float>(vic3_buildings.GetTotalGoodSalesValueInState(vic3_state_id)) / 250'000.0F;
       for (const auto& province_set: final_connected_province_sets)
       {
          RecordStateNamesMapping(province_set,
@@ -798,6 +800,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 
 hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
     const vic3::ProvinceDefinitions& vic3_province_definitions,
+    const vic3::Buildings& vic3_buildings,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
@@ -816,8 +819,9 @@ hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
            hoi4_to_vic3_province_mappings,
            hoi4_province_definitions);
    const std::vector<int> vic3_state_ids_by_vic3_industry =
-       SortVic3StatesByIndustryDescending(states, vic3_state_id_to_hoi4_provinces);
+       SortVic3StatesByIndustryDescending(vic3_buildings, vic3_state_id_to_hoi4_provinces);
    return CreateStates(states,
+       vic3_buildings,
        vic3_state_id_to_hoi4_provinces,
        vic3_state_ids_by_vic3_industry,
        hoi4_to_vic3_province_mappings,
