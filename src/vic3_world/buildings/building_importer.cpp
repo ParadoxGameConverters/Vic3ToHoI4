@@ -10,7 +10,11 @@ vic3::BuildingImporter::BuildingImporter()
       type_ = commonItems::getString(input_stream);
    });
    building_parser_.registerKeyword("state", [this](std::istream& input_stream) {
-      state_number_ = commonItems::getInt(input_stream);
+      int64_t temp_state_number = commonItems::getLlong(input_stream);
+      if (temp_state_number != 4294967295)  // 4294967295 is -1, which indicates a dead building
+      {
+         state_number_ = static_cast<int>(temp_state_number);
+      }
    });
    building_parser_.registerKeyword("goods_sales", [this](std::istream& input_stream) {
       goods_sales_value_ = static_cast<float>(commonItems::getDouble(input_stream));
