@@ -9,7 +9,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldProvincesVic3BuildingsBuildingImporterTests, DefaultsAreDefaulted)
+TEST(Vic3WorldBuildingsBuildingImporterTests, DefaultsAreDefaulted)
 {
    std::stringstream input;
 
@@ -21,7 +21,7 @@ TEST(Vic3WorldProvincesVic3BuildingsBuildingImporterTests, DefaultsAreDefaulted)
 }
 
 
-TEST(Vic3WorldProvincesVic3BuildingsBuildingImporterTests, ItemsCanBeImported)
+TEST(Vic3WorldBuildingsBuildingImporterTests, ItemsCanBeImported)
 {
    std::stringstream input;
    input << "={\n";

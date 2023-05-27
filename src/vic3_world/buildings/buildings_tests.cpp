@@ -9,7 +9,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldProvincesVic3BuildingsBuildingsTests, NoBuildingsNoGoodsValue)
+TEST(Vic3WorldBuildingsBuildingsImporterTests, NoBuildingsNoGoodsValue)
 {
    const Buildings buildings;
 
@@ -17,7 +17,7 @@ TEST(Vic3WorldProvincesVic3BuildingsBuildingsTests, NoBuildingsNoGoodsValue)
 }
 
 
-TEST(Vic3WorldProvincesVic3BuildingsBuildingsTests, TotalGoodsValueInWorldAreReported)
+TEST(Vic3WorldBuildingsBuildingsImporterTests, TotalGoodsValueInWorldAreReported)
 {
    const Buildings buildings({
        {1,
@@ -35,7 +35,7 @@ TEST(Vic3WorldProvincesVic3BuildingsBuildingsTests, TotalGoodsValueInWorldAreRep
 }
 
 
-TEST(Vic3WorldProvincesVic3BuildingsBuildingsTests, NonGoodsValueInMissingState)
+TEST(Vic3WorldBuildingsBuildingsImporterTests, NonGoodsValueInMissingState)
 {
    const Buildings buildings({
        {1,
@@ -53,7 +53,7 @@ TEST(Vic3WorldProvincesVic3BuildingsBuildingsTests, NonGoodsValueInMissingState)
 }
 
 
-TEST(Vic3WorldProvincesVic3BuildingsBuildingsTests, NonGoodsValueInStateWithNoBuildings)
+TEST(Vic3WorldBuildingsBuildingsImporterTests, NonGoodsValueInStateWithNoBuildings)
 {
    const Buildings buildings({{1,
                                   {
@@ -70,7 +70,7 @@ TEST(Vic3WorldProvincesVic3BuildingsBuildingsTests, NonGoodsValueInStateWithNoBu
 }
 
 
-TEST(Vic3WorldProvincesVic3BuildingsBuildingsTests, TotalGoodsValueInStateAreReported)
+TEST(Vic3WorldBuildingsBuildingsTests, TotalGoodsValueInStateAreReported)
 {
    const Buildings buildings({
        {1,

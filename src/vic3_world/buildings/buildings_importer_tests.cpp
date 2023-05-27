@@ -9,7 +9,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldProvincesVic3BuildingsBuildingsImporterTests, BuildingsCanBeImported)
+TEST(Vic3WorldBuildingsBuildingsImporterTests, BuildingsCanBeImported)
 {
    std::stringstream input;
    input << "={\n";
@@ -40,7 +40,7 @@ TEST(Vic3WorldProvincesVic3BuildingsBuildingsImporterTests, BuildingsCanBeImport
 }
 
 
-TEST(Vic3WorldProvincesVic3BuildingsBuildingsImporterTests, BuildingsWithNoStateAreNotImported)
+TEST(Vic3WorldBuildingsBuildingsImporterTests, BuildingsWithNoStateAreNotImported)
 {
    std::stringstream input;
    input << "={\n";
@@ -55,6 +55,31 @@ TEST(Vic3WorldProvincesVic3BuildingsBuildingsImporterTests, BuildingsWithNoState
    const Buildings buildings = ImportBuildings(input);
 
    EXPECT_EQ(buildings.GetTotalGoodSalesValueInWorld(), 0.0F);
+}
+
+
+TEST(Vic3WorldBuildingsBuildingsImporterTests, BuildingsCanBeSkipped)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "\tdatabase={\n";
+   input << "0={\n";
+   input << "building = building_iron_mine\n";
+   input << "state = 1\n";
+   input << "goods_sales = 1.0\n";
+   input << "}\n";
+   input << "1={\n";
+   input << "building = building_iron_mine\n";
+   input << "state = 1\n";
+   input << "goods_sales = 0.5\n";
+   input << "}\n";
+   input << "2=none\n";
+   input << "\t}\n";
+   input << "}\n";
+
+   const Buildings buildings = ImportBuildings(input);
+
+   EXPECT_EQ(buildings.GetTotalGoodSalesValueInWorld(), 1.5F);
 }
 
 }  // namespace vic3
