@@ -1597,8 +1597,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
 
    const auto hoi4_states = ConvertStates(
        {
-           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}, .employed_population = 500'000})},
-           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}, .employed_population = 500'000})},
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
        },
        province_definitions,
        vic3::Buildings({
