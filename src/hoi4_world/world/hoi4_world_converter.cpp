@@ -64,6 +64,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    States states = ConvertStates(source_world.GetStates(),
        source_world.GetProvinceDefinitions(),
+       source_world.GetBuildings(),
        province_mapper.GetHoi4ToVic3ProvinceMappings(),
        map_data,
        province_definitions,
