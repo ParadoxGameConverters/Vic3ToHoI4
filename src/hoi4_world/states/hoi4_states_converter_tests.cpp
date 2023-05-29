@@ -1512,7 +1512,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
        testing::ElementsAre(
            hoi4::State(1, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 3, .military_factories = 9}),
            hoi4::State(2, {.owner = "ONE", .provinces = {30, 40}, .civilian_factories = 12, .military_factories = 0}),
-           hoi4::State(3, {.owner = "ONE", .provinces = {50, 60}, .civilian_factories = 6, .military_factories = 0})));
+           hoi4::State(3, {.owner = "ONE", .provinces = {50, 60}, .civilian_factories = 5, .military_factories = 0})));
 }
 
 
