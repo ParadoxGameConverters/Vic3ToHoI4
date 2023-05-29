@@ -187,4 +187,22 @@ TEST(Vic3WorldBuildingsBuildingsTests, TotalIndustryGoodsValueInStateAreReported
 }
 
 
+TEST(Vic3WorldBuildingsBuildingsTests, NoIndustryGoodsValueForNonIndustrialBuildingInState)
+{
+   const Buildings buildings({
+       {1,
+           {
+               Building("building_tooling_workshops", std::nullopt, 1.0F),
+           }},
+       {2,
+           {
+               Building("a_farm", std::nullopt, 0.5F),
+               Building("building_tooling_workshops", std::nullopt, 0.25F),
+           }},
+   });
+
+   EXPECT_EQ(buildings.GetTotalIndustryGoodSalesValueInState(2), 0.25F);
+}
+
+
 }  // namespace vic3
