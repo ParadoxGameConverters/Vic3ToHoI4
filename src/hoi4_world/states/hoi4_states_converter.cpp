@@ -414,7 +414,7 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
    const float applied_factories = std::max(0.0F, country_factories.military) +
                                    std::max(0.0F, country_factories.civilian) +
                                    (IsStateCoastal(province_set, {}) ? std::max(0.0F, country_factories.docks) : 0.0F);
-   const int factories_floor = static_cast<int>(std::max(factories, applied_factories));
+   const int factories_floor = static_cast<int>(std::round(std::max(factories, applied_factories)));
 
    for (int i = 0; i < std::min(factories_floor, MAX_FACTORY_SLOTS); i++)
    {
