@@ -22,6 +22,8 @@ class Buildings
 
    [[nodiscard]] float GetTotalGoodSalesValueInState(int state_number) const;
    [[nodiscard]] float GetTotalGoodSalesValueInWorld() const;
+   [[nodiscard]] float GetTotalIndustryGoodSalesValueInState(int state_number) const;
+   [[nodiscard]] float GetTotalIndustryGoodSalesValueInWorld() const;
 
   private:
    std::map<int, std::vector<Building>> buildings_;
