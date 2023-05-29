@@ -234,6 +234,8 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Log(LogLevel::Info) << fmt::format("\t{} states imported", states.size());
    Log(LogLevel::Info) << fmt::format("\t{} countries acquired technologies", acquired_technologies.size());
    Log(LogLevel::Info) << fmt::format("\t{} in goods being sold", buildings.GetTotalGoodSalesValueInWorld());
+   Log(LogLevel::Info) << fmt::format("\t{} in industrial goods being sold",
+       buildings.GetTotalIndustryGoodSalesValueInWorld());
    Log(LogLevel::Progress) << "15 %";
 
    AssignOwnersToStates(countries, states);
