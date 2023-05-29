@@ -1125,8 +1125,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("building_food_industry", 1, 625'000)}},
-           {2, std::vector{vic3::Building("building_food_industry", 2, 625'000)}},
+           {1, std::vector{vic3::Building("building_food_industry", 1, 225'000)}},
+           {2, std::vector{vic3::Building("building_food_industry", 2, 225'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1142,9 +1142,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
            hoi4::State(1,
-               {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 3, .military_factories = 2}),
+               {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 2, .military_factories = 1}),
            hoi4::State(2,
-               {.owner = "TWO", .provinces = {40, 50, 60}, .civilian_factories = 3, .military_factories = 2})));
+               {.owner = "TWO", .provinces = {40, 50, 60}, .civilian_factories = 2, .military_factories = 1})));
 }
 
 
@@ -1185,8 +1185,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("building_food_industry", 1, 625'000)}},
-           {2, std::vector{vic3::Building("building_food_industry", 2, 625'000)}},
+           {1, std::vector{vic3::Building("building_food_industry", 1, 225'000)}},
+           {2, std::vector{vic3::Building("building_food_industry", 2, 225'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1202,12 +1202,12 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
            hoi4::State(1,
-               {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 3, .military_factories = 2}),
+               {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 2, .military_factories = 1}),
            hoi4::State(2,
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
-                   .civilian_factories = 2,
-                   .military_factories = 2,
+                   .civilian_factories = 1,
+                   .military_factories = 1,
                    .dockyards = 1})));
 }
 
@@ -1253,8 +1253,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("building_food_industry", 1, 625'000)}},
-           {2, std::vector{vic3::Building("building_food_industry", 2, 625'000)}},
+           {1, std::vector{vic3::Building("building_food_industry", 1, 225'000)}},
+           {2, std::vector{vic3::Building("building_food_industry", 2, 225'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1273,9 +1273,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
 
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\tTotal factories: 10 (vanilla hoi4 had 6)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\t\tCivilian factories: 6 (vanilla hoi4 had 1)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\t\tMilitary factories: 4 (vanilla hoi4 had 2)"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\tTotal factories: 6 (vanilla hoi4 had 6)"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\t\tCivilian factories: 4 (vanilla hoi4 had 1)"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\t\tMilitary factories: 2 (vanilla hoi4 had 2)"));
    EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\t\tDockyards: 0 (vanilla hoi4 had 3)"));
 }
 
@@ -1317,8 +1317,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("building_food_industry", 1, 625'000)}},
-           {2, std::vector{vic3::Building("building_food_industry", 2, 625'000)}},
+           {1, std::vector{vic3::Building("building_food_industry", 1, 225'000)}},
+           {2, std::vector{vic3::Building("building_food_industry", 2, 225'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1374,7 +1374,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("building_food_industry", 1, 1'875'000)}},
+           {1, std::vector{vic3::Building("building_food_industry", 1, 1'000'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1389,7 +1389,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(hoi4::State(1,
-           {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 7, .military_factories = 5})));
+           {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 8, .military_factories = 4})));
 }
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
@@ -1430,9 +1430,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("building_food_industry", 1, 250'000)}},
-           {2, std::vector{vic3::Building("building_food_industry", 2, 1'875'000)}},
-           {3, std::vector{vic3::Building("building_food_industry", 3, 750'000)}},
+           {1, std::vector{vic3::Building("building_food_industry", 1, 150'000)}},
+           {2, std::vector{vic3::Building("building_food_industry", 2, 900'000)}},
+           {3, std::vector{vic3::Building("building_food_industry", 3, 600'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1447,8 +1447,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           hoi4::State(1, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 7, .military_factories = 5}),
-           hoi4::State(2, {.owner = "TWO", .provinces = {60}, .civilian_factories = 7, .military_factories = 2}),
+           hoi4::State(1, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 8, .military_factories = 4}),
+           hoi4::State(2, {.owner = "TWO", .provinces = {60}, .civilian_factories = 6, .military_factories = 2}),
            hoi4::State(3,
                {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 1, .military_factories = 1})));
 }
@@ -1493,7 +1493,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("building_food_industry", 1, 3'625'000)}},
+           {1, std::vector{vic3::Building("building_food_industry", 1, 2'250'000)}},
            {2, std::vector{vic3::Building("building_food_industry", 2, 0)}},
            {3, std::vector{vic3::Building("building_food_industry", 3, 0)}},
        }),
@@ -1512,7 +1512,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
        testing::ElementsAre(
            hoi4::State(1, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 3, .military_factories = 9}),
            hoi4::State(2, {.owner = "ONE", .provinces = {30, 40}, .civilian_factories = 12, .military_factories = 0}),
-           hoi4::State(3, {.owner = "ONE", .provinces = {50, 60}, .civilian_factories = 5, .military_factories = 0})));
+           hoi4::State(3, {.owner = "ONE", .provinces = {50, 60}, .civilian_factories = 6, .military_factories = 0})));
 }
 
 
@@ -1566,10 +1566,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           hoi4::State(1, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 2, .military_factories = 2}),
-           hoi4::State(2, {.owner = "TWO", .provinces = {60}, .civilian_factories = 3, .military_factories = 0}),
-           hoi4::State(3, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 1, .military_factories = 1}),
-           hoi4::State(4, {.owner = "ONE", .provinces = {30}, .civilian_factories = 2, .military_factories = 0})));
+           hoi4::State(1, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 5, .military_factories = 2}),
+           hoi4::State(2, {.owner = "TWO", .provinces = {60}, .civilian_factories = 2, .military_factories = 1}),
+           hoi4::State(3, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 2, .military_factories = 1}),
+           hoi4::State(4, {.owner = "ONE", .provinces = {30}, .civilian_factories = 1, .military_factories = 1})));
 }
 
 
@@ -1630,9 +1630,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           hoi4::State(1, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 3, .military_factories = 2}),
+           hoi4::State(1, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 5, .military_factories = 3}),
            hoi4::State(2, {.owner = "ONE", .provinces = {30}, .category = "wasteland"}),
-           hoi4::State(3, {.owner = "TWO", .provinces = {60}, .civilian_factories = 3, .military_factories = 2}),
+           hoi4::State(3, {.owner = "TWO", .provinces = {60}, .civilian_factories = 5, .military_factories = 3}),
            hoi4::State(4, {.owner = "TWO", .provinces = {40, 50}, .category = "wasteland"})));
 }
 
@@ -1917,8 +1917,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("building_food_industry", 1, 625'000)}},
-           {2, std::vector{vic3::Building("building_food_industry", 2, 1'000'000)}},
+           {1, std::vector{vic3::Building("building_food_industry", 1, 375'000)}},
+           {2, std::vector{vic3::Building("building_food_industry", 2, 600'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
