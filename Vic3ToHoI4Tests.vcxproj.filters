@@ -121,6 +121,9 @@
     <Filter Include="src\vic3_world\cultures">
       <UniqueIdentifier>{0210ae71-a246-4eeb-976f-0d7733472721}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\buildings">
+      <UniqueIdentifier>{6653e1bc-d8f7-4e55-8697-b73d80799878}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -329,6 +332,15 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\cultures\cultures_importer_tests.cpp">
       <Filter>src\vic3_world\cultures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\buildings\building_importer_tests.cpp">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\buildings\buildings_tests.cpp">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\buildings\buildings_importer_tests.cpp">
+      <Filter>src\vic3_world\buildings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

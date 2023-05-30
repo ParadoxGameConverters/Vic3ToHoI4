@@ -124,6 +124,9 @@
     <Filter Include="src\vic3_world\cultures">
       <UniqueIdentifier>{b92b9a40-fbb0-4cee-b04f-5c39324de182}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\buildings">
+      <UniqueIdentifier>{9f2f619c-7dbc-4d16-8905-3f0991d4afca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -417,6 +420,18 @@
     <ClInclude Include="src\vic3_world\cultures\cultures_importer.h">
       <Filter>src\vic3_world\cultures</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\buildings\building.h">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\buildings\building_importer.h">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\buildings\buildings.h">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\buildings\buildings_importer.h">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -622,6 +637,15 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\cultures\cultures_importer.cpp">
       <Filter>src\vic3_world\cultures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\buildings\building_importer.cpp">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\buildings\buildings.cpp">
+      <Filter>src\vic3_world\buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\buildings\buildings_importer.cpp">
+      <Filter>src\vic3_world\buildings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

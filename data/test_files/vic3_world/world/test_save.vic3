@@ -50,6 +50,15 @@ technology={
 }
 	}
 }
+building_manager={
+	database={
+0={
+	building=building_government_administration
+	state=1
+	goods_sales=1.0000
+}
+	}
+}
 country_rankings={
 	average_prestige=170
 	highest_prestige=5544
