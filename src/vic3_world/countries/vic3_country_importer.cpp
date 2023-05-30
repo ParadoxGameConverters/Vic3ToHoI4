@@ -17,6 +17,12 @@ vic3::CountryImporter::CountryImporter()
    country_parser_.registerKeyword("country_type", [this](std::istream& input_stream) {
       country_type_ = commonItems::getString(input_stream);
    });
+   country_parser_.registerKeyword("cultures", [this](std::istream& input_stream) {
+      for (const auto& culture_id: commonItems::getInts(input_stream))
+      {
+         primary_culture_ids_.emplace(culture_id);
+      }
+   });
    country_parser_.IgnoreUnregisteredItems();
 }
 
@@ -28,6 +34,7 @@ vic3::Country vic3::CountryImporter::ImportCountry(int number,
    tag_.clear();
    capital_ = std::nullopt;
    country_type_.clear();
+   primary_culture_ids_.clear();
 
    country_parser_.parseStream(input_stream);
 
@@ -37,6 +44,10 @@ vic3::Country vic3::CountryImporter::ImportCountry(int number,
       color = color_itr->second;
    }
 
-   return Country(
-       {.number = number, .tag = tag_, .color = color, .capital_state = capital_, .country_type = country_type_});
+   return Country({.number = number,
+       .tag = tag_,
+       .color = color,
+       .capital_state = capital_,
+       .country_type = country_type_,
+       .primary_culture_ids = primary_culture_ids_});
 }

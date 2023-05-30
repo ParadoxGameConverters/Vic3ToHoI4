@@ -21,6 +21,7 @@
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/country_rankings/country_rankings.h"
 #include "src/vic3_world/country_rankings/country_rankings_importer.h"
+#include "src/vic3_world/cultures/cultures_importer.h"
 #include "src/vic3_world/elections/elections_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
@@ -184,6 +185,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    std::map<int, State> states;
    std::map<int, std::set<std::string>> acquired_technologies;
    CountryRankings country_rankings;
+   std::map<int, std::string> cultures;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("country_manager", [&countries, color_definitions](std::istream& input_stream) {
@@ -208,6 +210,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
          }
          country_itr->second.SetActiveLaws(active_laws);
       }
+   });
+   save_parser.registerKeyword("cultures", [&cultures](std::istream& input_stream) {
+      cultures = ImportCultures(input_stream);
    });
    save_parser.registerKeyword("election_manager", [&countries](std::istream& input_stream) {
       for (const auto& [country_number, last_election]: ImportElections(input_stream))
