@@ -585,7 +585,6 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
       {
          factories_itr->second++;
       }
-
    }
 
    int default_civilian_factories = 0;
