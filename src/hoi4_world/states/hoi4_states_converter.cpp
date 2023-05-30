@@ -587,6 +587,8 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
       }
    }
 
+   }
+
    int default_civilian_factories = 0;
    int default_military_factories = 0;
    int default_dockyards = 0;
