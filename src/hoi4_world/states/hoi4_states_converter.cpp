@@ -718,7 +718,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
       const float total_factories =
-          static_cast<float>(vic3_buildings.GetTotalGoodSalesValueInState(vic3_state_id)) / 250'000.0F;
+          static_cast<float>(vic3_buildings.GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
       for (const auto& province_set: final_connected_province_sets)
       {
          RecordStateNamesMapping(province_set,
