@@ -53,6 +53,8 @@ TEST(Vic3WorldCulturesCulturesImporter, CulturesSetAsNoneAreMarkedBroken)
 
    const std::map<int, std::string> cultures = ImportCultures(input);
 
+   std::cout.rdbuf(cout_buffer);
+
    EXPECT_THAT(log.str(),
        testing::HasSubstr(R"([ERROR] Broken culture definition in save file. This should not happen.)"));
 }
