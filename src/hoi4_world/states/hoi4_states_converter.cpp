@@ -17,7 +17,7 @@
 namespace
 {
 
-constexpr float MAX_FACTORY_SLOTS = 12.0F;
+constexpr int MAX_FACTORY_SLOTS = 12;
 
 
 std::map<std::string, int> MapVic3ProvincesToStates(const std::map<int, vic3::State>& states,
@@ -414,8 +414,9 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
    const float applied_factories = std::max(0.0F, country_factories.military) +
                                    std::max(0.0F, country_factories.civilian) +
                                    (IsStateCoastal(province_set, {}) ? std::max(0.0F, country_factories.docks) : 0.0F);
+   const int factories_floor = static_cast<int>(std::round(std::max(factories, applied_factories)));
 
-   for (int i = 0; static_cast<float>(i) < std::clamp(factories, applied_factories, MAX_FACTORY_SLOTS); i++)
+   for (int i = 0; i < std::min(factories_floor, MAX_FACTORY_SLOTS); i++)
    {
       if (IsStateCoastal(province_set, coastal_provinces) && (country_factories.docks > 0.0F))
       {
@@ -567,6 +568,7 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    int military_factories = 0;
    int dockyards = 0;
    std::map<std::string, double> resources;
+   std::map<int, int> state_factory_numbers;
    for (const hoi4::State& hoi4_state: hoi4_states)
    {
       civilian_factories += hoi4_state.GetCivilianFactories();
@@ -575,6 +577,13 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
       for (const auto& hoi4_state_resource: hoi4_state.GetResources())
       {
          resources[hoi4_state_resource.first] += hoi4_state_resource.second;
+      }
+      const int total_factories =
+          hoi4_state.GetCivilianFactories() + hoi4_state.GetMilitaryFactories() + hoi4_state.GetDockyards();
+      auto [factories_itr, factories_success] = state_factory_numbers.emplace(total_factories, 1);
+      if (!factories_success)
+      {
+         factories_itr->second++;
       }
    }
 
@@ -603,6 +612,10 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
        military_factories,
        default_military_factories);
    Log(LogLevel::Info) << fmt::format("\t\t\tDockyards: {} (vanilla hoi4 had {})", dockyards, default_dockyards);
+   for (const auto& [factories, num_states]: state_factory_numbers)
+   {
+      Log(LogLevel::Info) << fmt::format("\t\t\t{} states had {} factories", num_states, factories);
+   }
    for (const auto& r: resources)
    {
       Log(LogLevel::Info) << fmt::format("\t\t\tConverter Resource {}:{}", r.first, r.second);
@@ -704,7 +717,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
       const float total_factories =
-          static_cast<float>(vic3_buildings.GetTotalGoodSalesValueInState(vic3_state_id)) / 250'000.0F;
+          static_cast<float>(vic3_buildings.GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
       for (const auto& province_set: final_connected_province_sets)
       {
          RecordStateNamesMapping(province_set,

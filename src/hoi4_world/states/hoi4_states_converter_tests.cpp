@@ -1126,8 +1126,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("", 1, 1'250'000)}},
-           {2, std::vector{vic3::Building("", 2, 1'250'000)}},
+           {1, std::vector{vic3::Building("", 1, 875'000)}},
+           {2, std::vector{vic3::Building("", 2, 875'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1184,8 +1184,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("", 1, 1'250'000)}},
-           {2, std::vector{vic3::Building("", 2, 1'250'000)}},
+           {1, std::vector{vic3::Building("", 1, 875'000)}},
+           {2, std::vector{vic3::Building("", 2, 875'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1251,8 +1251,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("", 1, 1'250'000)}},
-           {2, std::vector{vic3::Building("", 2, 1'250'000)}},
+           {1, std::vector{vic3::Building("", 1, 875'000)}},
+           {2, std::vector{vic3::Building("", 2, 875'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1371,7 +1371,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("", 1, 3'750'000)}},
+           {1, std::vector{vic3::Building("", 1, 2'100'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1386,7 +1386,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           State(1, {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 7, .military_factories = 5})));
+           State(1, {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 8, .military_factories = 4})));
 }
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
@@ -1427,9 +1427,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("", 1, 500'000)}},
-           {2, std::vector{vic3::Building("", 2, 3'750'000)}},
-           {3, std::vector{vic3::Building("", 3, 1'500'000)}},
+           {1, std::vector{vic3::Building("", 1, 350'000)}},
+           {2, std::vector{vic3::Building("", 2, 2'100'000)}},
+           {3, std::vector{vic3::Building("", 3, 1'575'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1444,8 +1444,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           State(1, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 7, .military_factories = 5}),
-           State(2, {.owner = "TWO", .provinces = {60}, .civilian_factories = 7, .military_factories = 2}),
+           State(1, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 8, .military_factories = 4}),
+           State(2, {.owner = "TWO", .provinces = {60}, .civilian_factories = 6, .military_factories = 3}),
            State(3, {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 1, .military_factories = 1})));
 }
 
@@ -1472,8 +1472,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
    const maps::MapData map_data({
        .province_neighbors =
            {
-               {"10", {"20", "30"}},
-               {"40", {"50", "60"}},
+               {"10", {"20"}},
+               {"30", {"40"}},
+               {"50", {"60"}},
            },
        .province_definitions = hoi4_province_definitions,
    });
@@ -1482,13 +1483,15 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
 
    const auto hoi4_states = ConvertStates(
        {
-           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
-           {2, vic3::State({.owner_number = 1, .provinces = {4, 5, 6}})},
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2}})},
+           {2, vic3::State({.owner_number = 1, .provinces = {3, 4}})},
+           {3, vic3::State({.owner_number = 1, .provinces = {5, 6}})},
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("", 1, 3'750'000)}},
+           {1, std::vector{vic3::Building("", 1, 5'250'000)}},
            {2, std::vector{vic3::Building("", 2, 0)}},
+           {3, std::vector{vic3::Building("", 3, 0)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1503,8 +1506,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           State(1, {.owner = "ONE", .provinces = {10, 20, 30}, .civilian_factories = 7, .military_factories = 5}),
-           State(2, {.owner = "ONE", .provinces = {40, 50, 60}, .civilian_factories = 4, .military_factories = 0})));
+           hoi4::State(1, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 3, .military_factories = 9}),
+           hoi4::State(2, {.owner = "ONE", .provinces = {30, 40}, .civilian_factories = 12, .military_factories = 0}),
+           hoi4::State(3, {.owner = "ONE", .provinces = {50, 60}, .civilian_factories = 6, .military_factories = 0})));
 }
 
 
@@ -1542,8 +1546,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
                                               {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})}},
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("", 1, 750'000)}},
-           {2, std::vector{vic3::Building("", 2, 1'500'000)}},
+           {1, std::vector{vic3::Building("", 1, 700'000)}},
+           {2, std::vector{vic3::Building("", 2, 1'575'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1558,10 +1562,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           State(1, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 2, .military_factories = 2}),
-           State(2, {.owner = "TWO", .provinces = {60}, .civilian_factories = 3, .military_factories = 0}),
-           State(3, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 1, .military_factories = 1}),
-           State(4, {.owner = "ONE", .provinces = {30}, .civilian_factories = 2, .military_factories = 0})));
+           State(1, {.owner = "TWO", .provinces = {40, 50}, .civilian_factories = 4, .military_factories = 2}),
+           State(2, {.owner = "TWO", .provinces = {60}, .civilian_factories = 2, .military_factories = 1}),
+           State(3, {.owner = "ONE", .provinces = {10, 20}, .civilian_factories = 2, .military_factories = 1}),
+           State(4, {.owner = "ONE", .provinces = {30}, .civilian_factories = 0, .military_factories = 1})));
 }
 
 
@@ -1602,8 +1606,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("", 1, 1'250'000)}},
-           {2, std::vector{vic3::Building("", 2, 1'250'000)}},
+           {1, std::vector{vic3::Building("", 1, 875'000)}},
+           {2, std::vector{vic3::Building("", 2, 875'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1908,8 +1912,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
        },
        province_definitions,
        vic3::Buildings({
-           {1, std::vector{vic3::Building("", 1, 1'250'000)}},
-           {2, std::vector{vic3::Building("", 2, 2'000'000)}},
+           {1, std::vector{vic3::Building("", 1, 700'000)}},
+           {2, std::vector{vic3::Building("", 2, 1'400'000)}},
        }),
        hoi4_to_vic3_province_mappings,
        map_data,
@@ -1938,7 +1942,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
                {.owner = "ONE",
                    .provinces = {10, 20, 30},
                    .category = "test_category_two",
-                   .civilian_factories = 3,
+                   .civilian_factories = 2,
                    .military_factories = 2})));
 }
 
