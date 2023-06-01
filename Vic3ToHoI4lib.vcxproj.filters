@@ -121,6 +121,9 @@
     <Filter Include="src\vic3_world\elections">
       <UniqueIdentifier>{19009fed-5cae-42e6-9143-a8090227d061}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\cultures">
+      <UniqueIdentifier>{b92b9a40-fbb0-4cee-b04f-5c39324de182}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\vic3_world\buildings">
       <UniqueIdentifier>{9f2f619c-7dbc-4d16-8905-3f0991d4afca}</UniqueIdentifier>
     </Filter>
@@ -414,6 +417,9 @@
     <ClInclude Include="src\vic3_world\elections\elections_importer.h">
       <Filter>src\vic3_world\elections</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\cultures\cultures_importer.h">
+      <Filter>src\vic3_world\cultures</Filter>
+    </ClInclude>
     <ClInclude Include="src\vic3_world\buildings\building.h">
       <Filter>src\vic3_world\buildings</Filter>
     </ClInclude>
@@ -628,6 +634,9 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\elections\elections_importer.cpp">
       <Filter>src\vic3_world\elections</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\cultures\cultures_importer.cpp">
+      <Filter>src\vic3_world\cultures</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\buildings\building_importer.cpp">
       <Filter>src\vic3_world\buildings</Filter>

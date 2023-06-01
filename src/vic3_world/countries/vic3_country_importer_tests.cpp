@@ -29,6 +29,8 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
    EXPECT_EQ(country.GetCapitalState(), std::nullopt);
    EXPECT_FALSE(country.IsDecentralized());
    EXPECT_TRUE(country.GetActiveLaws().empty());
+   EXPECT_TRUE(country.GetPrimaryCultureIds().empty());
+   EXPECT_EQ(country.GetLastElection(), std::nullopt);
 }
 
 
@@ -39,6 +41,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    input << "\tdefinition=\"TAG\"";
    input << "\tcapital=12345\n";
    input << "\tcountry_type=\"decentralized\"\n";
+   input << "\tcultures={ 35 7 }\n";
    input << "}";
    const auto country = CountryImporter{}.ImportCountry(42, input, {{"TAG", commonItems::Color(std::array{1, 2, 3})}});
 
@@ -47,6 +50,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    EXPECT_EQ(country.GetColor(), commonItems::Color(std::array{1, 2, 3}));
    EXPECT_EQ(country.GetCapitalState(), std::optional<int>(12345));
    EXPECT_TRUE(country.IsDecentralized());
+   EXPECT_THAT(country.GetPrimaryCultureIds(), testing::UnorderedElementsAre(35, 7));
 }
 
 
@@ -85,6 +89,17 @@ TEST(Vic3WorldCountriesCountryImporter, ActiveLawsCanBeSet)
    country.SetActiveLaws({"test_law_one", "test_law_two"});
 
    EXPECT_THAT(country.GetActiveLaws(), testing::UnorderedElementsAre("test_law_one", "test_law_two"));
+}
+
+
+TEST(Vic3WorldCountriesCountryImporter, LastElectionCanBeSet)
+{
+   std::stringstream input;
+   Country country = CountryImporter{}.ImportCountry(0, input, {});
+   country.SetLastElection(date{"1929.9.9"});
+
+   ASSERT_TRUE(country.GetLastElection());
+   EXPECT_EQ(*country.GetLastElection(), date{"1929.9.9"});
 }
 
 

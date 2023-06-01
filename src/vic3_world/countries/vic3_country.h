@@ -20,6 +20,7 @@ struct CountryOptions
    std::optional<int> capital_state;
    std::string country_type;
    std::set<std::string> active_laws;
+   std::set<int> primary_culture_ids;
    std::optional<date> last_election;
 };
 
@@ -34,6 +35,7 @@ class Country
        capital_state_(options.capital_state),
        country_type_(std::move(options.country_type)),
        active_laws_(std::move(options.active_laws)),
+       primary_culture_ids_(std::move(options.primary_culture_ids)),
        last_election_(options.last_election)
    {
    }
@@ -43,8 +45,9 @@ class Country
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
-   [[nodiscard]] const std::optional<date>& GetLastElection() const { return last_election_; }
    [[nodiscard]] const std::set<std::string>& GetActiveLaws() const { return active_laws_; }
+   [[nodiscard]] const std::set<int>& GetPrimaryCultureIds() const { return primary_culture_ids_; }
+   [[nodiscard]] const std::optional<date>& GetLastElection() const { return last_election_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
@@ -58,6 +61,7 @@ class Country
    std::optional<int> capital_state_;
    std::string country_type_;
    std::set<std::string> active_laws_;
+   std::set<int> primary_culture_ids_;
    std::optional<date> last_election_;
 };
 

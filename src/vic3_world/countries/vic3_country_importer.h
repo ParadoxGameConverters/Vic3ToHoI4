@@ -29,6 +29,7 @@ class CountryImporter
    std::string tag_;
    std::optional<int> capital_;
    std::string country_type_;
+   std::set<int> primary_culture_ids_;
 };
 
 }  // namespace vic3

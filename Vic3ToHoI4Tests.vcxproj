@@ -117,6 +117,7 @@
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\country_rankings\country_rankings_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\cultures\cultures_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\elections\elections_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\laws\laws_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader_tests.cpp" />
