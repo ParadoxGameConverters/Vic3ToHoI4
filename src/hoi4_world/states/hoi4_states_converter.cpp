@@ -581,14 +581,16 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
       {
          resources[hoi4_state_resource.first] += hoi4_state_resource.second;
       }
-      if (auto [category_itr, category_success] = state_category_counts.emplace(hoi4_state.GetCategory(), 1); !category_success)
+      if (auto [category_itr, category_success] = state_category_counts.emplace(hoi4_state.GetCategory(), 1);
+          !category_success)
       {
          category_itr->second++;
       }
 
       const int total_factories =
           hoi4_state.GetCivilianFactories() + hoi4_state.GetMilitaryFactories() + hoi4_state.GetDockyards();
-      if (auto [factories_itr, factories_success] = state_factory_numbers.emplace(total_factories, 1); !factories_success)
+      if (auto [factories_itr, factories_success] = state_factory_numbers.emplace(total_factories, 1);
+          !factories_success)
       {
          factories_itr->second++;
       }
@@ -770,7 +772,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
          const hoi4::Resources resources = AssignResources(province_set, resources_map);
 
          const std::string category = state_categories.GetBestCategory(
-             std::min(civilian_factories + military_factories + dockyards, static_cast<int>(MAX_FACTORY_SLOTS)));
+             std::min(civilian_factories + military_factories + dockyards + 2, static_cast<int>(MAX_FACTORY_SLOTS)));
 
 
          const int manpower = static_cast<int>(
