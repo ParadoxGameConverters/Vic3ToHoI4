@@ -11,8 +11,7 @@ std::string hoi4::StateCategories::GetBestCategory(int num_building_slots) const
    {
       if (num_building_slots <= category_slots)
       {
-         category = category_name;
-         break;
+         return category_name;
       }
    }
 
