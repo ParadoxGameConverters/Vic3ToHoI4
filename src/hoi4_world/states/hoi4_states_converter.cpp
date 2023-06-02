@@ -562,12 +562,15 @@ std::map<int, int> CreateVictoryPoints(const std::set<int>& hoi4_provinces,
 
 
 void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
-    const std::map<int, hoi4::DefaultState>& default_states)
+    const std::map<int, hoi4::DefaultState>& default_states,
+    const hoi4::StateCategories& state_categories)
 {
    int civilian_factories = 0;
    int military_factories = 0;
    int dockyards = 0;
    std::map<std::string, double> resources;
+   std::map<std::string, int> state_category_counts;
+   std::map<int, int> state_slot_differences;
    std::map<int, int> state_factory_numbers;
    for (const hoi4::State& hoi4_state: hoi4_states)
    {
@@ -578,12 +581,24 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
       {
          resources[hoi4_state_resource.first] += hoi4_state_resource.second;
       }
+      if (auto [category_itr, category_success] = state_category_counts.emplace(hoi4_state.GetCategory(), 1);
+          !category_success)
+      {
+         category_itr->second++;
+      }
+
       const int total_factories =
           hoi4_state.GetCivilianFactories() + hoi4_state.GetMilitaryFactories() + hoi4_state.GetDockyards();
-      auto [factories_itr, factories_success] = state_factory_numbers.emplace(total_factories, 1);
-      if (!factories_success)
+      if (auto [factories_itr, factories_success] = state_factory_numbers.emplace(total_factories, 1);
+          !factories_success)
       {
          factories_itr->second++;
+      }
+
+      const int excess_slots = state_categories.GetNumSlots(hoi4_state.GetCategory()) - total_factories;
+      if (auto [diff_itr, diff_success] = state_slot_differences.emplace(excess_slots, 1); !diff_success)
+      {
+         diff_itr->second++;
       }
    }
 
@@ -615,6 +630,15 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    for (const auto& [factories, num_states]: state_factory_numbers)
    {
       Log(LogLevel::Info) << fmt::format("\t\t\t{} states had {} factories", num_states, factories);
+   }
+   Log(LogLevel::Info) << "\t\tState categories:";
+   for (const auto& [category_name, num_states]: state_category_counts)
+   {
+      Log(LogLevel::Info) << fmt::format("\t\t\t{} states are {}", num_states, category_name);
+   }
+   for (const auto& [difference, num_states]: state_slot_differences)
+   {
+      Log(LogLevel::Info) << fmt::format("\t\t\t{} states had {} excess slots", num_states, difference);
    }
    for (const auto& r: resources)
    {
@@ -748,7 +772,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
          const hoi4::Resources resources = AssignResources(province_set, resources_map);
 
          const std::string category = state_categories.GetBestCategory(
-             std::min(civilian_factories + military_factories + dockyards, static_cast<int>(MAX_FACTORY_SLOTS)));
+             std::min(civilian_factories + military_factories + dockyards + 2, static_cast<int>(MAX_FACTORY_SLOTS)));
 
 
          const int manpower = static_cast<int>(
@@ -799,7 +823,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
       }
    }
 
-   LogIndustryStats(hoi4_states, default_states);
+   LogIndustryStats(hoi4_states, default_states, state_categories);
    LogManpowerStats(hoi4_states, default_states);
 
    return {hoi4_states,
