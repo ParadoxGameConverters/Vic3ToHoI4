@@ -11,7 +11,7 @@ vic3::StateImporter::StateImporter()
       owner_number_ = commonItems::getInt(input_stream);
    });
    state_parser_.registerKeyword("incorporation", [this](std::istream& input_stream) {
-      if (commonItems::getInt(input_stream) == 1)
+      if (commonItems::getDouble(input_stream) >= 1.0F)
       {
          incorporated_ = true;
       }

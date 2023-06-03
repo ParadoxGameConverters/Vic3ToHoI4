@@ -82,6 +82,18 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
 }
 
 
+TEST(Vic3worldStateVic3stateimporter, PartialIncorporationIsNotIncorporated)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "\tincorporation = 0.123\n";
+   input << "}";
+   const auto state = StateImporter{}.ImportState(input);
+
+   EXPECT_FALSE(state.IsIncorporated());
+}
+
+
 TEST(Vic3worldStateVic3stateimporter, Pre1_3PopStatisticsCanBeImported)
 {
    std::stringstream input;
