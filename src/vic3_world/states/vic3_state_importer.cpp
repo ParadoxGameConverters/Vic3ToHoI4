@@ -10,6 +10,12 @@ vic3::StateImporter::StateImporter()
    state_parser_.registerKeyword("country", [this](std::istream& input_stream) {
       owner_number_ = commonItems::getInt(input_stream);
    });
+   state_parser_.registerKeyword("incorporation", [this](std::istream& input_stream) {
+      if (commonItems::getInt(input_stream) == 1)
+      {
+         incorporated_ = true;
+      }
+   });
    state_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
       provinces_parser_.parseStream(input_stream);
    });
@@ -85,6 +91,7 @@ vic3::StateImporter::StateImporter()
 vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
 {
    owner_number_.reset();
+   incorporated_ = false;
    provinces_.clear();
    population_ = 0;
    employed_population_ = 0;

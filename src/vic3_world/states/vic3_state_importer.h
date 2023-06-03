@@ -27,6 +27,7 @@ class StateImporter
    commonItems::parser pop_statistics_parser_;
 
    std::optional<int> owner_number_;
+   bool incorporated_ = false;
    std::set<int> provinces_;
    int population_ = 0;
    int employed_population_ = 0;
