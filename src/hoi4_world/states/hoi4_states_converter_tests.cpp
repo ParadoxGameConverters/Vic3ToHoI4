@@ -2065,4 +2065,58 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreConverted)
            State(2, {.provinces = {40, 50, 60}, .victory_points = {{40, 4}, {50, 5}}})));
 }
 
+
+TEST(Hoi4worldStatesHoi4statesconverter, OwnerGetsCoreOnIncorporatedStates)
+{
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
+   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings{
+       {10, {"0x000001"}},
+       {20, {"0x000002"}},
+       {30, {"0x000003"}},
+       {40, {"0x000004"}},
+       {50, {"0x000005"}},
+       {60, {"0x000006"}},
+   };
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
+   const hoi4::StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
+
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.owner_number = 1, .incorporated = true, .provinces = {1, 2, 3}})},
+           {2, vic3::State({.owner_number = 2, .incorporated = true, .provinces = {4, 5, 6}})},
+       },
+       province_definitions,
+       {},
+       hoi4_to_vic3_province_mappings,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {},
+       CoastalProvinces(),
+       {});
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.owner = "ONE", .provinces = {10, 20, 30}, .cores = {"ONE"}}),
+           State(2, {.owner = "TWO", .provinces = {40, 50, 60}, .cores = {"TWO"}})));
+}
+
 }  // namespace hoi4
