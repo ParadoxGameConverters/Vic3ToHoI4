@@ -432,6 +432,12 @@
     <ClInclude Include="src\vic3_world\buildings\buildings_importer.h">
       <Filter>src\vic3_world\buildings</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\cultures\culture_definition.h">
+      <Filter>src\vic3_world\cultures</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\cultures\culture_definitions_importer.h">
+      <Filter>src\vic3_world\cultures</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -646,6 +652,9 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\buildings\buildings_importer.cpp">
       <Filter>src\vic3_world\buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\cultures\culture_definitions_importer.cpp">
+      <Filter>src\vic3_world\cultures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

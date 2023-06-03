@@ -96,6 +96,8 @@
     <ClInclude Include="src\vic3_world\country_rankings\country_rankings.h" />
     <ClInclude Include="src\vic3_world\country_rankings\country_rankings_importer.h" />
     <ClInclude Include="src\vic3_world\cultures\cultures_importer.h" />
+    <ClInclude Include="src\vic3_world\cultures\culture_definition.h" />
+    <ClInclude Include="src\vic3_world\cultures\culture_definitions_importer.h" />
     <ClInclude Include="src\vic3_world\elections\elections_importer.h" />
     <ClInclude Include="src\vic3_world\laws\laws_importer.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h" />
@@ -171,6 +173,7 @@
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer.cpp" />
     <ClCompile Include="src\vic3_world\country_rankings\country_rankings_importer.cpp" />
     <ClCompile Include="src\vic3_world\cultures\cultures_importer.cpp" />
+    <ClCompile Include="src\vic3_world\cultures\culture_definitions_importer.cpp" />
     <ClCompile Include="src\vic3_world\elections\elections_importer.cpp" />
     <ClCompile Include="src\vic3_world\laws\laws_importer.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp" />
