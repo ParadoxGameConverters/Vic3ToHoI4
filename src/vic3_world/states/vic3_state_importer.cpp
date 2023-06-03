@@ -99,6 +99,7 @@ vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
    state_parser_.parseStream(input_stream);
 
    return State({.owner_number = owner_number_,
+       .incorporated = incorporated_,
        .provinces = provinces_,
        .population = population_,
        .employed_population = employed_population_});
