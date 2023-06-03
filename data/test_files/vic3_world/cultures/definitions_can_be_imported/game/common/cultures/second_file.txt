@@ -1,0 +1,24 @@
+welsh={
+	color= rgb{ 117 127 174 }
+	religion = protestant
+	traits = { anglophone celtic_people european_heritage }
+	
+	male_common_first_names={
+		Shadrach
+	}
+	female_common_first_names = {
+		Gwenllian
+	}
+	common_last_names={
+		Insole
+	}
+	noble_last_names = {
+		Talbot
+	}
+	
+	ethnicities = {
+		1 = caucasian
+		1 = welshy
+	}
+	graphics = european
+}

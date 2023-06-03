@@ -22,9 +22,19 @@ struct NameList
 class CultureDefinition
 {
   public:
-   explicit CultureDefinition();
+   explicit CultureDefinition(NameList name_list, std::set<std::string> traits, std::set<std::string> ethnicities):
+       name_list_(std::move(name_list)),
+       traits_(std::move(traits)),
+       ethnicities_(std::move(ethnicities))
+   {
+   }
 
+   [[nodiscard]] const std::string& GetName() const { return name_; }
    [[nodiscard]] const NameList& GetNameList() const { return name_list_; }
+   [[nodiscard]] const std::set<std::string>& GetTraits() const { return traits_; }
+   [[nodiscard]] const std::set<std::string>& GetEthnicities() const { return ethnicities_; }
+
+   void SetName(std::string name) { name_ = std::move(name); }
 
   private:
    std::string name_;
