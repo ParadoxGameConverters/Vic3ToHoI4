@@ -35,6 +35,7 @@ Zemurin				- Programming, Code reviews, Tools
 IhateTrains			- Programming, Code reviews, Tools
 Drasilabyss			- Programming
 cetvrtak			- Data Files
+DaJay42				- Data Files
 gawquon				- Data Files
 klorpa				- Data Files
 Anate				- Translations
