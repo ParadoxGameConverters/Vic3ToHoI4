@@ -16,6 +16,7 @@ TEST(Vic3worldStateVic3stateimporter, DefaultsAreDefaulted)
 
    EXPECT_FALSE(state.GetOwnerNumber().has_value());
    EXPECT_FALSE(state.GetOwnerTag().has_value());
+   EXPECT_FALSE(state.IsIncorporated());
    EXPECT_TRUE(state.GetProvinces().empty());
    EXPECT_EQ(state.GetPopulation(), 0);
    EXPECT_EQ(state.GetEmployedPopulation(), 0);
@@ -40,6 +41,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
    std::stringstream input;
    input << "={\n";
    input << "\tcountry=42\n";
+   input << "\tincorporation = 1\n";
    input << "\tprovinces={\n";
    input << "\t\tprovinces = { 37330 1 37333 9 37348 1 }\n";
    input << "\t}";
@@ -59,6 +61,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
 
    EXPECT_EQ(state.GetOwnerNumber(), 42);
    EXPECT_FALSE(state.GetOwnerTag().has_value());
+   EXPECT_TRUE(state.IsIncorporated());
    EXPECT_THAT(state.GetProvinces(),
        testing::UnorderedElementsAre(37330,
            37331,
@@ -76,6 +79,18 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
            37349));
    EXPECT_EQ(state.GetPopulation(), 12);
    EXPECT_EQ(state.GetEmployedPopulation(), 68);
+}
+
+
+TEST(Vic3worldStateVic3stateimporter, PartialIncorporationIsNotIncorporated)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "\tincorporation = 0.123\n";
+   input << "}";
+   const auto state = StateImporter{}.ImportState(input);
+
+   EXPECT_FALSE(state.IsIncorporated());
 }
 
 

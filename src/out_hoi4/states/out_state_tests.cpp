@@ -569,4 +569,36 @@ TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLocationIsMissing)
                           "\t}\n"));
 }
 
+
+TEST(Outhoi4StatesState, CoresCanBeOutput)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/CoresCanBeOutput");
+   commonItems::TryCreateFolder("output/CoresCanBeOutput/history");
+   commonItems::TryCreateFolder("output/CoresCanBeOutput/history/states");
+
+   const hoi4::State state_one(1, {.provinces = {1, 4, 9, 16}, .cores = {"ONE", "TWO"}});
+
+   OutputState("CoresCanBeOutput", state_one);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/CoresCanBeOutput/history/states/1.txt"));
+   std::ifstream state_file("output/CoresCanBeOutput/history/states/1.txt");
+   ASSERT_TRUE(state_file.is_open());
+   std::stringstream state_file_stream;
+   std::copy(std::istreambuf_iterator<char>(state_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(state_file_stream));
+   state_file.close();
+   EXPECT_THAT(state_file_stream.str(),
+       testing::HasSubstr("\thistory = {\n"
+                          "\t\tbuildings = {\n"
+                          "\t\t\tinfrastructure = 2\n"
+                          "\t\t\tindustrial_complex = 0\n"
+                          "\t\t\tarms_factory = 0\n"
+                          "\t\t}\n"
+                          "\t\tadd_core_of = ONE\n"
+                          "\t\tadd_core_of = TWO\n"
+                          "\t}\n"));
+}
+
 }  // namespace out

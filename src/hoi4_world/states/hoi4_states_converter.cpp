@@ -781,6 +781,12 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
          const std::map<int, int> victory_points =
              CreateVictoryPoints(province_set, hoi4_to_vic3_province_mappings, significant_provinces);
 
+         std::set<std::string> cores;
+         if (vic3_state_itr->second.IsIncorporated())
+         {
+            cores.insert(*state_owner);
+         }
+
          for (const int province: province_set)
          {
             province_to_state_id_map.emplace(province, static_cast<int>(hoi4_states.size() + 1U));
@@ -797,7 +803,8 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
                  .military_factories = military_factories,
                  .dockyards = dockyards,
                  .naval_base_location = naval_base_location,
-                 .naval_base_level = naval_base_level});
+                 .naval_base_level = naval_base_level,
+                 .cores = cores});
       }
       for (const auto& province_set: final_wasteland_connected_province_sets)
       {
