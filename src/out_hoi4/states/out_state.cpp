@@ -66,6 +66,10 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
       state_history << "\t\t\t}\n";
    }
    state_history << "\t\t}\n";
+   for (const std::string& core: state.GetCores())
+   {
+      state_history << fmt::format("\t\tadd_core_of = {}\n", core);
+   }
    state_history << "\t}\n";
    state_history << "\n";
    state_history << "\tprovinces = {\n";
