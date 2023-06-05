@@ -15,14 +15,20 @@ struct NameList
    std::set<std::string> female_common_first;
    std::set<std::string> noble_last;
    std::set<std::string> common_last;
-   std::optional<std::set<std::string>> male_regal_first;
-   std::optional<std::set<std::string>> female_regal_first;
+   std::set<std::string> male_regal_first;
+   std::set<std::string> female_regal_first;
+
+   std::partial_ordering operator<=>(const NameList&) const = default;
 };
 
 class CultureDefinition
 {
   public:
-   explicit CultureDefinition(NameList name_list, std::set<std::string> traits, std::set<std::string> ethnicities):
+   explicit CultureDefinition(std::string name,
+       NameList name_list,
+       std::set<std::string> traits,
+       std::set<std::string> ethnicities):
+       name_(std::move(name)),
        name_list_(std::move(name_list)),
        traits_(std::move(traits)),
        ethnicities_(std::move(ethnicities))
@@ -34,7 +40,7 @@ class CultureDefinition
    [[nodiscard]] const std::set<std::string>& GetTraits() const { return traits_; }
    [[nodiscard]] const std::set<std::string>& GetEthnicities() const { return ethnicities_; }
 
-   void SetName(std::string name) { name_ = std::move(name); }
+   std::partial_ordering operator<=>(const CultureDefinition&) const = default;
 
   private:
    std::string name_;
