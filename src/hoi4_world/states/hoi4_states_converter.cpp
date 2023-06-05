@@ -13,7 +13,7 @@
 #include "src/maps/map_data.h"
 
 
-
+#pragma optimize("", off)
 namespace
 {
 
@@ -951,3 +951,4 @@ hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
        resources_map,
        debug);
 }
+#pragma optimize("", on)
