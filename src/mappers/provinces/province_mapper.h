@@ -29,6 +29,7 @@ class ProvinceMapper
    [[nodiscard]] std::set<std::string> GetEquivalentVic3Provinces(const std::set<int>& hoi4_provinces) const;
 
    [[nodiscard]] Hoi4ToVic3ProvinceMapping GetHoi4ToVic3ProvinceMappings() const { return hoi4_to_vic3_province_map_; }
+   [[nodiscard]] Vic3ToHoi4ProvinceMapping GetVic3ToHoi4ProvinceMappings() const { return vic3_to_hoi4_province_map_; }
 
    void CheckAllVic3ProvincesMapped(const std::vector<std::string>& vic3_provinces) const;
 
