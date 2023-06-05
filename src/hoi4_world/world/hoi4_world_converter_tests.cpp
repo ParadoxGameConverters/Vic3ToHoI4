@@ -27,7 +27,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().states.empty());
@@ -64,7 +65,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    const Technologies expected_techs_one{std::map<std::optional<std::string>, std::set<std::string>>{
        {std::nullopt, std::set<std::string>{"dest_tech_one", "dest_tech_two"}}}};
@@ -160,7 +162,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_THAT(world.GetStates().states,
        testing::ElementsAre(State(1, {.owner = "TAG", .provinces = {10, 20, 30}, .category = "rural"}),
@@ -212,7 +215,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/StrategicRegionsAreCreated", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    const auto strategic_regions = world.GetStrategicRegions().GetStrategicRegions();
    ASSERT_TRUE(strategic_regions.contains(10));
@@ -325,7 +329,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/BuildingsAreCreated", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_FALSE(world.GetBuildings().GetBuildings().empty());
    EXPECT_FALSE(world.GetBuildings().GetAirportLocations().empty());
@@ -358,7 +363,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_FALSE(world.GetRailways().railways.empty());
 }
@@ -373,7 +379,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
                {3, vic3::Country({})},
                {5, vic3::Country({})},
            },
-       .country_rankings = {{1, 3, 5}, {}},
+       .country_rankings = {{1, 3, 5}, {}, {}},
    });
 
    const mappers::CountryMapper country_mapper({
@@ -387,7 +393,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_THAT(world.GetGreatPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
 }
@@ -402,7 +409,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
                {3, vic3::Country({})},
                {5, vic3::Country({})},
            },
-       .country_rankings = {{}, {1, 3, 5}},
+       .country_rankings = {{}, {1, 3, 5}, {}},
    });
 
    const mappers::CountryMapper country_mapper({
@@ -416,7 +423,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_THAT(world.GetMajorPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
 }
@@ -505,7 +513,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    const std::optional<commonItems::LocalizationBlock> hoi_country_localization_block =
        world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("TAG");

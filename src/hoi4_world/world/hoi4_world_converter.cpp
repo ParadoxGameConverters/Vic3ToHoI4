@@ -44,7 +44,8 @@ std::set<std::string> MapPowers(const std::set<int>& source_powers, const mapper
 hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::CountryMapper& country_mapper,
-    const mappers::ProvinceMapper& province_mapper)
+    const mappers::ProvinceMapper& province_mapper,
+    bool debug)
 {
    std::map<std::string, Country> countries;
 
@@ -65,7 +66,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    States states = ConvertStates(source_world.GetStates(),
        source_world.GetProvinceDefinitions(),
        source_world.GetBuildings(),
-       province_mapper.GetHoi4ToVic3ProvinceMappings(),
+       province_mapper,
        map_data,
        province_definitions,
        strategic_regions,
@@ -83,7 +84,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        default_states,
        source_world.GetStateRegions(),
        coastal_provinces,
-       resources_map);
+       resources_map,
+       debug);
 
    strategic_regions.UpdateToMatchNewStates(states.states);
 
