@@ -342,6 +342,9 @@
     <ClCompile Include="src\vic3_world\buildings\buildings_importer_tests.cpp">
       <Filter>src\vic3_world\buildings</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\states\hoi4_state_tests.cpp">
+      <Filter>src\hoi4_world\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
