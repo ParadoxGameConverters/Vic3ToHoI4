@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldCulturesCultureDefinitionsImporter, NoDefinitionsByInput)
+TEST(Vic3WorldCulturesCultureDefinitionsImporter, NoDefinitionsByDefault)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/cultures/no_definitions_by_default/game", {});
    const auto culture_definitions = ImportCultureDefinitions(mod_filesystem);
@@ -25,12 +25,12 @@ TEST(Vic3WorldCulturesCultureDefinitionsImporter, DefinitionsCanBeImported)
    const auto culture_definitions = ImportCultureDefinitions(mod_filesystem);
 
    CultureDefinition one("north_german",
-       NameList{{"Wolfgang"}, {"Friederike"}, {"von_Jons"}, {"Olbers"}, {"Oskar"}, {"Sophie"}},
+       NameList{{"Wolfgang"}, {"Friederike"}, {"Olbers"}, {"von_Jons"}, {"Oskar"}, {"Sophie"}},
        {"german_speaking", "european_heritage"},
        {"caucasian"});
 
    CultureDefinition two("south_german",
-       NameList{{"Otto"}, {"Helmtrude"}, {"von_Xylander"}, {"Auerbach"}, {"Lugwig"}, {"Charlotte"}},
+       NameList{{"Otto"}, {"Helmtrude"}, {"Auerbach"}, {"von_Xylander"}, {"Lugwig"}, {"Charlotte"}},
        {"german_speaking", "european_heritage"},
        {"caucasian"});
 

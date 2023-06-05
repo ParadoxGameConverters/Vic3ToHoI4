@@ -13,8 +13,8 @@ struct NameList
 {
    std::set<std::string> male_common_first;
    std::set<std::string> female_common_first;
-   std::set<std::string> noble_last;
    std::set<std::string> common_last;
+   std::set<std::string> noble_last;
    std::set<std::string> male_regal_first;
    std::set<std::string> female_regal_first;
 
