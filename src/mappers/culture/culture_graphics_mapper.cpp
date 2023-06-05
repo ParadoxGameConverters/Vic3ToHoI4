@@ -1,0 +1,1 @@
+#include "src/mappers/culture/culture_graphics_mapper.h"
