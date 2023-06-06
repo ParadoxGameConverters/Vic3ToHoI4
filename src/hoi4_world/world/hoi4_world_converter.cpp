@@ -3,6 +3,7 @@
 #include <ranges>
 
 #include "external/commonItems/Log.h"
+#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 #include "src/hoi4_world/localizations/localizations_converter.h"
 #include "src/hoi4_world/map/buildings_creator.h"
@@ -127,6 +128,29 @@ void IncreaseVictoryPointsInCapitals(std::vector<hoi4::State>& states,
    }
 }
 
+
+void LogVictoryPointData(const std::vector<hoi4::State>& states)
+{
+   std::map<int, int> victory_point_values;
+   for (const hoi4::State& state: states)
+   {
+      for (int victory_point_value: state.GetVictoryPoints() | std::views::values)
+      {
+         const auto& [itr, success] = victory_point_values.emplace(victory_point_value, 1);
+         if (!success)
+         {
+            itr->second++;
+         }
+      }
+   }
+
+   Log(LogLevel::Info) << "Victory point data:";
+   for (const auto& [value, num_instances]: victory_point_values)
+   {
+      Log(LogLevel::Info) << fmt::format("\t{} victory points of value {}", num_instances, value);
+   }
+}
+
 }  // namespace
 
 
@@ -200,6 +224,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    std::set<std::string> great_powers = MapPowers(source_world.GetCountryRankings().GetGreatPowers(), country_mapper);
    std::set<std::string> major_powers = MapPowers(source_world.GetCountryRankings().GetMajorPowers(), country_mapper);
    IncreaseVictoryPointsInCapitals(states.states, source_world.GetCountryRankings(), country_mapper, countries);
+   LogVictoryPointData(states.states);
 
    Localizations localizations = ConvertLocalizations(source_world.GetLocalizations(),
        country_mapper.GetCountryMappings(),
