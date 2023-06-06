@@ -212,7 +212,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
            testing::Pair(50, 2),
            testing::Pair(60, 2)));
 }
-}  // namespace hoi4
+
 
 TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
 {
@@ -300,7 +300,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
    {
       EXPECT_EQ(world.GetStates().states.at(i - 1),
           hoi4::State(i,
-              {.owner = fmt::format("0x0000{:0>2}", i),
+              {.owner = fmt::format("X{:0>2}", i),
                   .provinces = {i},
                   .category = "rural",
                   .victory_points = {{i, 20}}}));
@@ -311,7 +311,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
    {
       EXPECT_EQ(world.GetStates().states.at(i - 1),
           hoi4::State(i,
-              {.owner = fmt::format("0x0000{:0>2}", i),
+              {.owner = fmt::format("X{:0>2}", i),
                   .provinces = {i},
                   .category = "rural",
                   .victory_points = {{i, 15}}}));
@@ -322,14 +322,13 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
    {
       EXPECT_EQ(world.GetStates().states.at(i - 1),
           hoi4::State(i,
-              {.owner = fmt::format("0x0000{:0>2}", i),
+              {.owner = fmt::format("X{:0>2}", i),
                   .provinces = {i},
                   .category = "rural",
                   .victory_points = {{i, 10}}}));
    }
 }
-namespace hoi4
-{
+
 
 TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 {
