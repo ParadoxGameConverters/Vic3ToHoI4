@@ -38,6 +38,32 @@ std::set<std::string> MapPowers(const std::set<int>& source_powers, const mapper
 }
 
 
+std::optional<int> GetCapitalStateNumber(int vic3_country_number,
+    const mappers::CountryMapper& country_mapper,
+    const std::map<std::string, hoi4::Country>& hoi4_countries,
+    int num_states)
+{
+   const std::optional<std::string> possible_tag = country_mapper.GetHoiTag(vic3_country_number);
+   if (!possible_tag)
+   {
+      return std::nullopt;
+   }
+   const auto& country_itr = hoi4_countries.find(*possible_tag);
+   if (country_itr == hoi4_countries.end())
+   {
+      return std::nullopt;
+   }
+
+   const std::optional<int> possible_capital_state_num = country_itr->second.GetCapitalState();
+   if (!possible_capital_state_num || num_states <= *possible_capital_state_num)
+   {
+      return std::nullopt;
+   }
+
+   return possible_capital_state_num;
+}
+
+
 void IncreaseVictoryPointsInCapitals(std::vector<hoi4::State>& states,
     const vic3::CountryRankings& country_rankings,
     const mappers::CountryMapper& country_mapper,
@@ -50,23 +76,13 @@ void IncreaseVictoryPointsInCapitals(std::vector<hoi4::State>& states,
    int num_handled_others = 0;
    for (int vic3_country_number: country_rankings.GetScoredCountries() | std::views::values)
    {
-      const std::optional<std::string> possible_tag = country_mapper.GetHoiTag(vic3_country_number);
-      if (!possible_tag)
+      std::optional<int> possible_capital_state_number =
+          GetCapitalStateNumber(vic3_country_number, country_mapper, countries, states.size());
+      if (!possible_capital_state_number)
       {
          continue;
       }
-      const auto& country_itr = countries.find(*possible_tag);
-      if (country_itr == countries.end())
-      {
-         continue;
-      }
-
-      std::optional<int> possible_capital_state = country_itr->second.GetCapitalState();
-      if (!possible_capital_state || states.size() < *possible_capital_state - 1)
-      {
-         continue;
-      }
-      hoi4::State& capital_state = states[*possible_capital_state - 1];
+      hoi4::State& capital_state = states[*possible_capital_state_number - 1];
 
       if (country_rankings.GetGreatPowers().contains(vic3_country_number))
       {

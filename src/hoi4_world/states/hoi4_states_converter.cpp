@@ -13,7 +13,7 @@
 #include "src/maps/map_data.h"
 
 
-#pragma optimize("", off)
+
 namespace
 {
 
@@ -504,6 +504,47 @@ hoi4::Resources AssignResources(const std::set<int>& provinces, const hoi4::Reso
 }
 
 
+std::optional<int> GetBestHoi4Province(const mappers::Hoi4ToVic3ProvinceMapping::const_iterator province_mapping,
+    const mappers::Vic3ToHoi4ProvinceMapping& vic3_to_hoi4_province_mappings,
+    const std::set<int>& hoi4_provinces)
+{
+   const auto reverse_province_mapping = vic3_to_hoi4_province_mappings.find(province_mapping->second.front());
+   if (reverse_province_mapping == vic3_to_hoi4_province_mappings.end())
+   {
+      // again, shouldn't be possible but just in case
+      return std::nullopt;
+   }
+
+   for (const auto& province: reverse_province_mapping->second)
+   {
+      if (hoi4_provinces.contains(province))
+      {
+         return province;
+      }
+   }
+
+   return std::nullopt;
+}
+
+
+std::optional<int> GetVictoryPointValue(const std::string& special_province_type)
+{
+   static std::map<std::string, int> vp_values{
+       {"city", 5},
+       {"port", 4},
+       {"farm", 3},
+       {"mine", 2},
+       {"wood", 1},
+   };
+   if (const auto& mapping = vp_values.find(special_province_type); mapping != vp_values.end())
+   {
+      return mapping->second;
+   }
+
+   return std::nullopt;
+}
+
+
 std::map<int, int> SetPossibleVictoryPoints(const std::set<int>& hoi4_provinces,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
     const mappers::Vic3ToHoi4ProvinceMapping& vic3_to_hoi4_province_mappings,
@@ -521,21 +562,8 @@ std::map<int, int> SetPossibleVictoryPoints(const std::set<int>& hoi4_provinces,
          continue;
       }
 
-      const auto reverse_province_mapping = vic3_to_hoi4_province_mappings.find(province_mapping->second.front());
-      if (reverse_province_mapping == vic3_to_hoi4_province_mappings.end())
-      {
-         // again, shouldn't be possible but just in case
-         continue;
-      }
-      std::optional<int> best_hoi4_province;
-      for (const auto& province: reverse_province_mapping->second)
-      {
-         if (hoi4_provinces.contains(province))
-         {
-            best_hoi4_province = province;
-            break;
-         }
-      }
+      std::optional<int> best_hoi4_province =
+          GetBestHoi4Province(province_mapping, vic3_to_hoi4_province_mappings, hoi4_provinces);
       if (!best_hoi4_province)
       {
          // yet another case that shouldn't be possible
@@ -549,37 +577,20 @@ std::map<int, int> SetPossibleVictoryPoints(const std::set<int>& hoi4_provinces,
          {
             continue;
          }
+         const std::string& special_province_type = significant_province->second;
 
-         if (significant_province->second == "city" && !applied_types.contains("city"))
+         if (applied_types.contains(special_province_type))
          {
-            possible_victory_points.emplace(*best_hoi4_province, 5);
-            applied_types.insert("city");
             continue;
          }
-         if (significant_province->second == "port" && !applied_types.contains("port"))
+
+         const std::optional<int> possible_vp_value = GetVictoryPointValue(special_province_type);
+         if (!possible_vp_value)
          {
-            possible_victory_points.emplace(*best_hoi4_province, 4);
-            applied_types.insert("port");
             continue;
          }
-         if (significant_province->second == "farm" && !applied_types.contains("farm"))
-         {
-            possible_victory_points.emplace(*best_hoi4_province, 3);
-            applied_types.insert("farm");
-            continue;
-         }
-         if (significant_province->second == "mine" && !applied_types.contains("mine"))
-         {
-            possible_victory_points.emplace(*best_hoi4_province, 2);
-            applied_types.insert("mine");
-            continue;
-         }
-         if (significant_province->second == "wood" && !applied_types.contains("wood"))
-         {
-            possible_victory_points.emplace(*best_hoi4_province, 1);
-            applied_types.insert("wood");
-            continue;
-         }
+         possible_victory_points.emplace(*best_hoi4_province, *possible_vp_value);
+         applied_types.insert(special_province_type);
       }
    }
 
@@ -605,10 +616,8 @@ std::map<int, int> CreateVictoryPoints(const std::set<int>& hoi4_provinces,
 
    std::vector<std::pair<int, int>> sorted_possible_victory_points;
    sorted_possible_victory_points.reserve(possible_victory_points.size());
-   for (const auto& possible_victory_point: possible_victory_points)
-   {
-      sorted_possible_victory_points.push_back(possible_victory_point);
-   }
+   std::ranges::copy(possible_victory_points,
+       std::inserter(sorted_possible_victory_points, sorted_possible_victory_points.end()));
    std::ranges::sort(sorted_possible_victory_points, [](const std::pair<int, int>& a, const std::pair<int, int>& b) {
       return a.second > b.second;
    });
@@ -951,4 +960,3 @@ hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
        resources_map,
        debug);
 }
-#pragma optimize("", on)
