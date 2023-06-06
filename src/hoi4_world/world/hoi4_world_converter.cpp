@@ -56,7 +56,7 @@ std::optional<int> GetCapitalStateNumber(int vic3_country_number,
    }
 
    const std::optional<int> possible_capital_state_num = country_itr->second.GetCapitalState();
-   if (!possible_capital_state_num || num_states <= *possible_capital_state_num)
+   if (!possible_capital_state_num || num_states < *possible_capital_state_num)
    {
       return std::nullopt;
    }
