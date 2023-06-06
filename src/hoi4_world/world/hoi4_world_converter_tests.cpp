@@ -220,6 +220,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
    std::map<int, vic3::Country> countries;
    std::map<std::string, vic3::StateRegion> state_regions;
    std::vector<std::string> province_definitions_initializer;
+   std::map<int, std::vector<vic3::Building>> buildings_initializer;
    std::map<int, int> scored_countries;
    std::map<int, vic3::State> vic3_states;
    mappers::Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map;
@@ -240,6 +241,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
               },
               {}));
       province_definitions_initializer.emplace_back(fmt::format("0x0000{:0>2}", i));
+      buildings_initializer.emplace(i, std::vector{vic3::Building("", i, 1000.0f - i)});
       scored_countries.emplace(i, i);
       vic3_states.emplace(i,
           vic3::State({.owner_number = i, .owner_tag = fmt::format("0x0000{:0>2}", i), .provinces = {i}}));
@@ -247,7 +249,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
       hoi4_to_vic3_province_map.emplace(i, std::vector{fmt::format("0x0000{:0>2}", i)});
    }
    const mappers::CountryMapper country_mapper(country_mappings);
-   const auto province_definitions = vic3::ProvinceDefinitions(province_definitions_initializer);
+   const vic3::ProvinceDefinitions province_definitions(province_definitions_initializer);
+   const vic3::Buildings buildings;
    const vic3::CountryRankings country_rankings({1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, scored_countries);
 
    const vic3::World source_world(vic3::WorldOptions{
@@ -255,77 +258,62 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
        .states = vic3_states,
        .state_regions = state_regions,
        .province_definitions = province_definitions,
+       .buildings = buildings,
        .country_rankings = country_rankings,
    });
 
    const mappers::ProvinceMapper province_mapper{vic3_to_hoi4_province_map, hoi4_to_vic3_province_map};
 
-   const hoi4::World world =
-       hoi4::ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}),
+   const World world =
+       ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}),
            source_world,
            country_mapper,
            province_mapper,
            false);
 
+   // HoI4 states are in an arbitrary order compared to Vic3 states, so store by province number for the actual checks
+   std::map<int, State> states;
+   for (const auto& state: world.GetStates().states)
+   {
+      ASSERT_FALSE(state.GetProvinces().empty());
+      const int province = *state.GetProvinces().begin();
+      states.emplace(province, state);
+   }
+
    // five great powers, first two have a VP of 50
-   EXPECT_EQ(world.GetStates().states.at(0),
-       hoi4::State(1, {.owner = "X01", .provinces = {1}, .category = "rural", .victory_points = {{1, 50}}}));
-   EXPECT_EQ(world.GetStates().states.at(1),
-       hoi4::State(2, {.owner = "X02", .provinces = {2}, .category = "rural", .victory_points = {{2, 50}}}));
+   EXPECT_THAT(states.at(1).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(1, 50)));
+   EXPECT_THAT(states.at(2).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(2, 50)));
 
    // remaining GPs have VPs worth 40
-   EXPECT_EQ(world.GetStates().states.at(2),
-       hoi4::State(3, {.owner = "X03", .provinces = {3}, .category = "rural", .victory_points = {{3, 40}}}));
-   EXPECT_EQ(world.GetStates().states.at(3),
-       hoi4::State(4, {.owner = "X04", .provinces = {4}, .category = "rural", .victory_points = {{4, 40}}}));
-   EXPECT_EQ(world.GetStates().states.at(4),
-       hoi4::State(5, {.owner = "X05", .provinces = {5}, .category = "rural", .victory_points = {{5, 40}}}));
+   EXPECT_THAT(states.at(3).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(3, 40)));
+   EXPECT_THAT(states.at(4).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(4, 40)));
+   EXPECT_THAT(states.at(5).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(5, 40)));
 
    // five major powers, first two have a VP of 30
-   EXPECT_EQ(world.GetStates().states.at(5),
-       hoi4::State(6, {.owner = "X06", .provinces = {6}, .category = "rural", .victory_points = {{6, 30}}}));
-   EXPECT_EQ(world.GetStates().states.at(6),
-       hoi4::State(7, {.owner = "X07", .provinces = {7}, .category = "rural", .victory_points = {{7, 30}}}));
+   EXPECT_THAT(states.at(6).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(6, 30)));
+   EXPECT_THAT(states.at(7).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(7, 30)));
 
    // remaining majors have VPs worth 25
-   EXPECT_EQ(world.GetStates().states.at(7),
-       hoi4::State(8, {.owner = "X08", .provinces = {8}, .category = "rural", .victory_points = {{8, 25}}}));
-   EXPECT_EQ(world.GetStates().states.at(8),
-       hoi4::State(9, {.owner = "X09", .provinces = {9}, .category = "rural", .victory_points = {{9, 25}}}));
-   EXPECT_EQ(world.GetStates().states.at(9),
-       hoi4::State(10, {.owner = "X10", .provinces = {10}, .category = "rural", .victory_points = {{10, 25}}}));
+   EXPECT_THAT(states.at(8).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(8, 25)));
+   EXPECT_THAT(states.at(9).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(9, 25)));
+   EXPECT_THAT(states.at(10).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(10, 25)));
 
    // the first 30 of the remaining countries have VPs worth 20
    for (int i = 11; i < 41; ++i)
    {
-      EXPECT_EQ(world.GetStates().states.at(i - 1),
-          hoi4::State(i,
-              {.owner = fmt::format("X{:0>2}", i),
-                  .provinces = {i},
-                  .category = "rural",
-                  .victory_points = {{i, 20}}}));
+      EXPECT_THAT(states.at(i).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(i, 20)));
    }
 
    // the next 30 of the remaining countries have VPs worth 15
    for (int i = 41; i < 71; ++i)
    {
-      EXPECT_EQ(world.GetStates().states.at(i - 1),
-          hoi4::State(i,
-              {.owner = fmt::format("X{:0>2}", i),
-                  .provinces = {i},
-                  .category = "rural",
-                  .victory_points = {{i, 15}}}));
+      EXPECT_THAT(states.at(i).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(i, 15)));
    }
 
    // the remaining countries have VPs worth 10
    for (int i = 81; i < 81; ++i)
    {
-      EXPECT_EQ(world.GetStates().states.at(i - 1),
-          hoi4::State(i,
-              {.owner = fmt::format("X{:0>2}", i),
-                  .provinces = {i},
-                  .category = "rural",
-                  .victory_points = {{i, 10}}}));
+      EXPECT_THAT(states.at(i).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(i, 10)));
    }
 }
 
