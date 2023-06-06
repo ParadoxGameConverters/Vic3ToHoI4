@@ -311,7 +311,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
    }
 
    // the remaining countries have VPs worth 10
-   for (int i = 81; i < 81; ++i)
+   for (int i = 71; i < 81; ++i)
    {
       EXPECT_THAT(states.at(i).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(i, 10)));
    }
