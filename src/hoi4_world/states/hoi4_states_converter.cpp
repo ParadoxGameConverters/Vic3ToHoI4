@@ -529,7 +529,7 @@ std::optional<int> GetBestHoi4Province(const mappers::Hoi4ToVic3ProvinceMapping:
 
 std::optional<int> GetVictoryPointValue(const std::string& special_province_type)
 {
-   static std::map<std::string, int> vp_values{
+   static const std::map<std::string, int> vp_values{
        {"city", 5},
        {"port", 4},
        {"farm", 3},
