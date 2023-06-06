@@ -3,6 +3,7 @@
 #include <ranges>
 
 #include "external/commonItems/Log.h"
+#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 #include "src/hoi4_world/localizations/localizations_converter.h"
 #include "src/hoi4_world/map/buildings_creator.h"
@@ -37,6 +38,119 @@ std::set<std::string> MapPowers(const std::set<int>& source_powers, const mapper
    return powers;
 }
 
+
+std::optional<int> GetCapitalStateNumber(int vic3_country_number,
+    const mappers::CountryMapper& country_mapper,
+    const std::map<std::string, hoi4::Country>& hoi4_countries,
+    int num_states)
+{
+   const std::optional<std::string> possible_tag = country_mapper.GetHoiTag(vic3_country_number);
+   if (!possible_tag)
+   {
+      return std::nullopt;
+   }
+   const auto& country_itr = hoi4_countries.find(*possible_tag);
+   if (country_itr == hoi4_countries.end())
+   {
+      return std::nullopt;
+   }
+
+   const std::optional<int> possible_capital_state_num = country_itr->second.GetCapitalState();
+   if (!possible_capital_state_num || num_states < *possible_capital_state_num)
+   {
+      return std::nullopt;
+   }
+
+   return possible_capital_state_num;
+}
+
+
+void IncreaseVictoryPointsInCapitals(std::vector<hoi4::State>& states,
+    const vic3::CountryRankings& country_rankings,
+    const mappers::CountryMapper& country_mapper,
+    const std::map<std::string, hoi4::Country>& countries)
+{
+   const int num_great_powers = static_cast<int>(country_rankings.GetGreatPowers().size());
+   int num_handled_great_powers = 0;
+   const int num_major_powers = static_cast<int>(country_rankings.GetMajorPowers().size());
+   int num_handled_major_powers = 0;
+   int num_handled_others = 0;
+   for (int vic3_country_number: country_rankings.GetScoredCountries() | std::views::values)
+   {
+      std::optional<int> possible_capital_state_number =
+          GetCapitalStateNumber(vic3_country_number, country_mapper, countries, states.size());
+      if (!possible_capital_state_number)
+      {
+         continue;
+      }
+      hoi4::State& capital_state = states[*possible_capital_state_number - 1];
+
+      if (country_rankings.GetGreatPowers().contains(vic3_country_number))
+      {
+         if (num_handled_great_powers < num_great_powers / 2)
+         {
+            capital_state.SetHighestVictoryPointValue(50);
+         }
+         else
+         {
+            capital_state.SetHighestVictoryPointValue(40);
+         }
+         ++num_handled_great_powers;
+      }
+      else if (country_rankings.GetMajorPowers().contains(vic3_country_number))
+      {
+         if (num_handled_major_powers < num_major_powers / 2)
+         {
+            capital_state.SetHighestVictoryPointValue(30);
+         }
+         else
+         {
+            capital_state.SetHighestVictoryPointValue(25);
+         }
+         ++num_handled_major_powers;
+      }
+      else
+      {
+         if (num_handled_others < 30)
+         {
+            capital_state.SetHighestVictoryPointValue(20);
+         }
+         else if (num_handled_others < 60)
+         {
+            capital_state.SetHighestVictoryPointValue(15);
+         }
+         else
+         {
+            capital_state.SetHighestVictoryPointValue(10);
+         }
+         ++num_handled_others;
+      }
+   }
+}
+
+
+void LogVictoryPointData(const std::vector<hoi4::State>& states)
+{
+   std::map<int, int> victory_point_values;
+   for (const hoi4::State& state: states)
+   {
+      for (int victory_point_value: state.GetVictoryPoints() | std::views::values)
+      {
+         const auto& [itr, success] = victory_point_values.emplace(victory_point_value, 1);
+         if (!success)
+         {
+            itr->second++;
+         }
+      }
+   }
+
+   Log(LogLevel::Info) << "Victory point data:";
+   for (const auto& [value, num_instances]: victory_point_values)
+   {
+      Log(LogLevel::Info) << fmt::format("\t{} victory points of value {}", num_instances, value);
+   }
+}
+
 }  // namespace
 
 
@@ -44,7 +158,8 @@ std::set<std::string> MapPowers(const std::set<int>& source_powers, const mapper
 hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::CountryMapper& country_mapper,
-    const mappers::ProvinceMapper& province_mapper)
+    const mappers::ProvinceMapper& province_mapper,
+    bool debug)
 {
    std::map<std::string, Country> countries;
 
@@ -65,7 +180,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    States states = ConvertStates(source_world.GetStates(),
        source_world.GetProvinceDefinitions(),
        source_world.GetBuildings(),
-       province_mapper.GetHoi4ToVic3ProvinceMappings(),
+       province_mapper,
        map_data,
        province_definitions,
        strategic_regions,
@@ -83,7 +198,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        default_states,
        source_world.GetStateRegions(),
        coastal_provinces,
-       resources_map);
+       resources_map,
+       debug);
 
    strategic_regions.UpdateToMatchNewStates(states.states);
 
@@ -107,6 +223,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    std::set<std::string> great_powers = MapPowers(source_world.GetCountryRankings().GetGreatPowers(), country_mapper);
    std::set<std::string> major_powers = MapPowers(source_world.GetCountryRankings().GetMajorPowers(), country_mapper);
+   IncreaseVictoryPointsInCapitals(states.states, source_world.GetCountryRankings(), country_mapper, countries);
+   LogVictoryPointData(states.states);
 
    Localizations localizations = ConvertLocalizations(source_world.GetLocalizations(),
        country_mapper.GetCountryMappings(),

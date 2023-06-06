@@ -68,6 +68,8 @@ class State
    [[nodiscard]] std::optional<int> GetNavalBaseLevel() const { return naval_base_level_; }
    [[nodiscard]] std::set<std::string> GetCores() const { return cores_; }
 
+   void SetHighestVictoryPointValue(int value);
+
    std::partial_ordering operator<=>(const State&) const = default;
 
   private:
