@@ -2075,23 +2075,23 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsDefaultToEmpty)
 
 TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsArePlacedInHighestValueSignificantProvinces)
 {
-    const vic3::ProvinceDefinitions province_definitions({
-        "0x000001",
-        "0x000002",
-        "0x000003",
-        "0x000004",
-        "0x000005",
-        "0x000006",
-        });
-    const mappers::ProvinceMapper province_mapper(
-        {
-            {"0x000001", {10}},
-            {"0x000002", {20}},
-            {"0x000003", {30}},
-            {"0x000004", {40}},
-            {"0x000005", {50}},
-            {"0x000006", {60}},
-        },
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
+   const mappers::ProvinceMapper province_mapper(
+       {
+           {"0x000001", {10}},
+           {"0x000002", {20}},
+           {"0x000003", {30}},
+           {"0x000004", {40}},
+           {"0x000005", {50}},
+           {"0x000006", {60}},
+       },
        {
            {10, {"0x000001"}},
            {20, {"0x000002"}},
@@ -2100,32 +2100,32 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsArePlacedInHighestValueSig
            {50, {"0x000005"}},
            {60, {"0x000006"}},
        });
-    const maps::ProvinceDefinitions hoi4_province_definitions({ .land_provinces = {"10", "20", "30", "40", "50", "60"} });
-    const maps::MapData map_data({
-        .province_neighbors =
-            {
-                {"10", {"20", "30"}},
-                {"40", {"50", "60"}},
-            },
-        .province_definitions = hoi4_province_definitions,
-        });
-    const StrategicRegions strategic_regions;
-    const mappers::CountryMapper country_mapper;
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
+   const StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper;
 
-    const auto hoi4_states = ConvertStates(
-        {
-            {1, vic3::State({.provinces = {1, 2, 3}})},
-            {2, vic3::State({.provinces = {4, 5, 6}})},
-        },
-        province_definitions,
-        {},
-        province_mapper,
-        map_data,
-        hoi4_province_definitions,
-        strategic_regions,
-        country_mapper,
-        StateCategories(),
-        {},
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.provinces = {1, 2, 3}})},
+           {2, vic3::State({.provinces = {4, 5, 6}})},
+       },
+       province_definitions,
+       {},
+       province_mapper,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
        {
            {"STATE_ONE",
                vic3::StateRegion(
@@ -2139,34 +2139,34 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsArePlacedInHighestValueSig
                    {})},
        },
        CoastalProvinces(),
-        {},
-        false);
+       {},
+       false);
 
-    EXPECT_THAT(hoi4_states.states,
-        testing::ElementsAre(State(1, { .provinces = {10, 20, 30}, .victory_points = { {30, 1}} }),
-            State(2, { .provinces = {40, 50, 60}, .victory_points = { {50, 1}} })));
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .victory_points = {{30, 1}}}),
+           State(2, {.provinces = {40, 50, 60}, .victory_points = {{50, 1}}})));
 }
 
 
 TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreValuedAtHalfTotalFactoriesRoundedUp)
 {
-    const vic3::ProvinceDefinitions province_definitions({
-        "0x000001",
-        "0x000002",
-        "0x000003",
-        "0x000004",
-        "0x000005",
-        "0x000006",
-        });
-    const mappers::ProvinceMapper province_mapper(
-        {
-            {"0x000001", {10}},
-            {"0x000002", {20}},
-            {"0x000003", {30}},
-            {"0x000004", {40}},
-            {"0x000005", {50}},
-            {"0x000006", {60}},
-        },
+   const vic3::ProvinceDefinitions province_definitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
+   const mappers::ProvinceMapper province_mapper(
+       {
+           {"0x000001", {10}},
+           {"0x000002", {20}},
+           {"0x000003", {30}},
+           {"0x000004", {40}},
+           {"0x000005", {50}},
+           {"0x000006", {60}},
+       },
        {
            {10, {"0x000001"}},
            {20, {"0x000002"}},
@@ -2175,35 +2175,35 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreValuedAtHalfTotalFactor
            {50, {"0x000005"}},
            {60, {"0x000006"}},
        });
-    const maps::ProvinceDefinitions hoi4_province_definitions({ .land_provinces = {"10", "20", "30", "40", "50", "60"} });
-    const maps::MapData map_data({
-        .province_neighbors =
-            {
-                {"10", {"20", "30"}},
-                {"40", {"50", "60"}},
-            },
-        .province_definitions = hoi4_province_definitions,
-        });
-    const StrategicRegions strategic_regions;
-    const mappers::CountryMapper country_mapper({ {1, "ONE"}, {2, "TWO"} });
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
+   const StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}});
 
-    const auto hoi4_states = ConvertStates(
-        {
-            {1, vic3::State({.owner_number = 1,.provinces = {1, 2, 3}})},
-            {2, vic3::State({.owner_number = 2,.provinces = {4, 5, 6}})},
-        },
-        province_definitions,
-        vic3::Buildings({
+   const auto hoi4_states = ConvertStates(
+       {
+           {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
+           {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
+       },
+       province_definitions,
+       vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 875'000)}},
            {2, std::vector{vic3::Building("", 2, 700'000)}},
-            }),
-        province_mapper,
-        map_data,
-        hoi4_province_definitions,
-        strategic_regions,
-        country_mapper,
-        StateCategories(),
-        {},
+       }),
+       province_mapper,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
        {
            {"STATE_ONE",
                vic3::StateRegion(
@@ -2217,12 +2217,22 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreValuedAtHalfTotalFactor
                    {})},
        },
        CoastalProvinces(),
-        {},
-        false);
+       {},
+       false);
 
-    EXPECT_THAT(hoi4_states.states,
-        testing::ElementsAre(State(1, { .owner = "ONE",.provinces = {10, 20, 30}, .victory_points = {{30, 3}}, .civilian_factories = 3, .military_factories = 2}),
-            State(2, {.owner = "TWO",.provinces = {40, 50, 60}, .victory_points = {{50, 2}}, .civilian_factories = 2, .military_factories = 2})));
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1,
+                                {.owner = "ONE",
+                                    .provinces = {10, 20, 30},
+                                    .victory_points = {{30, 3}},
+                                    .civilian_factories = 3,
+                                    .military_factories = 2}),
+           State(2,
+               {.owner = "TWO",
+                   .provinces = {40, 50, 60},
+                   .victory_points = {{50, 2}},
+                   .civilian_factories = 2,
+                   .military_factories = 2})));
 }
 
 
