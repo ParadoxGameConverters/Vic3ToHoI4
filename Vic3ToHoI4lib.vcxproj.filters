@@ -447,6 +447,9 @@
     <ClInclude Include="src\mappers\culture\culture_graphics_mapper_importer.h">
       <Filter>src\mappers\culture</Filter>
     </ClInclude>
+    <ClInclude Include="src\mappers\culture\culture_graphics_mapping.h">
+      <Filter>src\mappers\culture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">

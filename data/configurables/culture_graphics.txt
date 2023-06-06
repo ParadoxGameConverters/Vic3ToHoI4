@@ -9,9 +9,9 @@
 # Sephardim will use both European and Middle-Eastern graphics.
 ###
 # sample_group = {
-#	cultures = { swedish } # In reality, these are probably 3 separate groups
-#   traits = { european_heritage }
-#   ethnicity = { caucasian }
+#   	cultures = { swedish } # In reality, these are probably 3 separate groups
+#   	traits = { european_heritage }
+#	ethnicity = { caucasian }
 #
 #	army_portraits = {
 #		"gfx/leaders/GER/sample_portrait_land.dds"

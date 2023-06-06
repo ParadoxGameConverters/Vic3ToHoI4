@@ -52,6 +52,7 @@
     <ClInclude Include="src\mappers\country\country_mapper_creator.h" />
     <ClInclude Include="src\mappers\culture\culture_graphics_mapper.h" />
     <ClInclude Include="src\mappers\culture\culture_graphics_mapper_importer.h" />
+    <ClInclude Include="src\mappers\culture\culture_graphics_mapping.h" />
     <ClInclude Include="src\mappers\ideology\ideology_mapper.h" />
     <ClInclude Include="src\mappers\ideology\ideology_mapper_importer.h" />
     <ClInclude Include="src\mappers\provinces\province_mapper.h" />

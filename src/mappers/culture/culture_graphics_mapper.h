@@ -3,9 +3,8 @@
 
 
 
-#include <map>
-#include <string>
-
+#include "src/mappers/culture/culture_graphics_mapping.h"
+#include "src/vic3_world/cultures/culture_definition.h"
 
 
 namespace mappers
@@ -14,10 +13,12 @@ namespace mappers
 class CultureGraphicsMapper
 {
   public:
-   explicit CultureGraphicsMapper() {}
+   explicit CultureGraphicsMapper(std::vector<CultureGraphicsMapping> mappings): mappings_(std::move(mappings)) {}
 
+   GraphicsBlock MatchCultureToGraphics(const vic3::CultureDefinition& culture_def) const;
 
   private:
+   std::vector<CultureGraphicsMapping> mappings_;
 };
 
 }  // namespace mappers
