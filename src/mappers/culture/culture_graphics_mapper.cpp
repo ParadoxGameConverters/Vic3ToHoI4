@@ -1,37 +1,102 @@
 #include "src/mappers/culture/culture_graphics_mapper.h"
 
+#include "external/fmt/include/fmt/format.h"
+
 namespace
 {
+std::vector<std::string> operator+(const std::vector<std::string>& lhs, const std::vector<std::string>& rhs)
+{
+   std::vector<std::string> joined_vector = lhs;
+   joined_vector.insert(joined_vector.end(), rhs.begin(), rhs.end());
+   return joined_vector;
+}
+
+mappers::IdeologyPortraitPaths operator+(const mappers::IdeologyPortraitPaths& lhs,
+    const mappers::IdeologyPortraitPaths& rhs)
+{
+   return {lhs.communism + rhs.communism,
+       lhs.democratic + rhs.democratic,
+       lhs.fascism + rhs.fascism,
+       lhs.neutrality + rhs.neutrality};
+}
+
+mappers::PortraitPaths operator+(const mappers::PortraitPaths& lhs, const mappers::PortraitPaths& rhs)
+{
+   return {lhs.army + rhs.army,
+       lhs.navy + rhs.navy,
+       lhs.leader + rhs.leader,
+       lhs.female_leader + rhs.female_leader,
+       lhs.ideology_minister + rhs.ideology_minister,
+       lhs.male_operative + rhs.male_operative,
+       lhs.female_operative + rhs.female_operative,
+       lhs.male_monarch + rhs.male_monarch,
+       lhs.female_monarch + rhs.female_monarch};
+}
+
 mappers::GraphicsBlock operator+(const mappers::GraphicsBlock& lhs, const mappers::GraphicsBlock& rhs)
 {
-   // Union two GraphicsBlocks
-   // Combine all portrait sets, this is for multi-ethnic cultures
-   return {{}, lhs.graphical_culture, lhs.graphical_culture_2d};
+   // Union two GraphicsBlocks, this is for multi-ethnic cultures
+   if (lhs.graphical_culture.empty())
+   {
+      return {{lhs.portrait_paths + rhs.portrait_paths}, rhs.graphical_culture, rhs.graphical_culture_2d};
+   }
+   return {{lhs.portrait_paths + rhs.portrait_paths}, lhs.graphical_culture, lhs.graphical_culture_2d};
 }
 }  // namespace
 
 mappers::GraphicsBlock mappers::CultureGraphicsMapper::MatchCultureToGraphics(
     const vic3::CultureDefinition& culture_def) const
 {
-   // Match culture, there should only be one
+   GraphicsBlock graphics_block;
+
+   // Match culture, there may be more than one match
+   bool matched = false;
    for (const auto& mapping: mappings_)
    {
       if (mapping.cultures.contains(culture_def.GetName()))
       {
-         return mapping.graphics_block;
+         matched = true;
+         graphics_block = graphics_block + mapping.graphics_block;
       }
    }
-   // Match traits, there may be more than one match
+   if (matched)
+   {
+      return graphics_block;
+   }
+
+   // Fallback to match traits, there may be more than one match
    for (const auto& mapping: mappings_)
    {
       for (const auto& trait: culture_def.GetTraits())
       {
-         // If there is match add to graphics
+         if (mapping.traits.contains(trait))
+         {
+            matched = true;
+            graphics_block = graphics_block + mapping.graphics_block;
+         }
       }
    }
-   // If matched graphics block is not empty, return
+   if (matched)
+   {
+      return graphics_block;
+   }
 
-   // Match ethnicities, there may be more than one match
+   // Last fallback to match ethnicities, there may be more than one match
+   for (const auto& mapping: mappings_)
+   {
+      for (const auto& ethnicity: culture_def.GetEthnicities())
+      {
+         if (mapping.ethnicities.contains(ethnicity))
+         {
+            matched = true;
+            graphics_block = graphics_block + mapping.graphics_block;
+         }
+      }
+   }
+   if (!matched)
+   {
+      Log(LogLevel::Warning) << fmt::format("Culture {} has no matching portrait set.", culture_def.GetName());
+   }
    // If matched graphics block is not empty, return, otherwise error msg
-   return GraphicsBlock();
+   return graphics_block;
 }

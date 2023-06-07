@@ -10,25 +10,25 @@ namespace mappers
 {
 struct IdeologyPortraitPaths
 {
-   std::set<std::string> communism;
-   std::set<std::string> democratic;
-   std::set<std::string> fascism;
-   std::set<std::string> neutrality;
+   std::vector<std::string> communism;
+   std::vector<std::string> democratic;
+   std::vector<std::string> fascism;
+   std::vector<std::string> neutrality;
 
    std::partial_ordering operator<=>(const IdeologyPortraitPaths&) const = default;
 };
 
 struct PortraitPaths
 {
-   std::set<std::string> army;
-   std::set<std::string> navy;
+   std::vector<std::string> army;
+   std::vector<std::string> navy;
    IdeologyPortraitPaths leader;
-   std::set<std::string> female_leader;
+   std::vector<std::string> female_leader;
    IdeologyPortraitPaths ideology_minister;
-   std::set<std::string> male_operative;
-   std::set<std::string> female_operative;
-   std::set<std::string> male_monarch;
-   std::set<std::string> female_monarch;
+   std::vector<std::string> male_operative;
+   std::vector<std::string> female_operative;
+   std::vector<std::string> male_monarch;
+   std::vector<std::string> female_monarch;
 
    std::partial_ordering operator<=>(const PortraitPaths&) const = default;
 };
