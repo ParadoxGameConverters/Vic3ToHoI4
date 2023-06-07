@@ -61,19 +61,19 @@ GraphicsBlock blocks1_2{{{"army1", "army2"},
     {"west_2d"}};
 
 std::vector<CultureGraphicsMapping> mappings{{{"cul0", "cul1"}, {}, {}, block0},
-    {{}, {"trait0"}, {}, block1},
+    {{}, {"trait0", "trait3"}, {}, block1},
     {{}, {"trait1"}, {"eth0"}, block2}};
 }  // namespace
 
 
-TEST(MappersCultureCultureMapperTests, NoMatchMeanNoPortraits)
+TEST(MappersCultureCultureGraphicsMapperTests, NoMatchMeanNoPortraits)
 {
    const CultureGraphicsMapper culture_graphics_mapper({});
 
    EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(vic3::CultureDefinition({}, {}, {}, {})), GraphicsBlock{});
 }
 
-TEST(MappersCultureCultureMapperTests, GraphicsSelectedOnCulture)
+TEST(MappersCultureCultureGraphicsMapperTests, GraphicsSelectedOnCulture)
 {
    const CultureGraphicsMapper culture_graphics_mapper(mappings);
 
@@ -82,7 +82,7 @@ TEST(MappersCultureCultureMapperTests, GraphicsSelectedOnCulture)
        block0);
 }
 
-TEST(MappersCultureCultureMapperTests, GraphicsFallbackToTraits)
+TEST(MappersCultureCultureGraphicsMapperTests, GraphicsFallbackToTraits)
 {
    const CultureGraphicsMapper culture_graphics_mapper({mappings});
 
@@ -91,7 +91,7 @@ TEST(MappersCultureCultureMapperTests, GraphicsFallbackToTraits)
        block1);
 }
 
-TEST(MappersCultureCultureMapperTests, GraphicsFallbackBackToEthnicities)
+TEST(MappersCultureCultureGraphicsMapperTests, GraphicsFallbackBackToEthnicities)
 {
    const CultureGraphicsMapper culture_graphics_mapper({mappings});
 
@@ -100,7 +100,7 @@ TEST(MappersCultureCultureMapperTests, GraphicsFallbackBackToEthnicities)
        block2);
 }
 
-TEST(MappersCultureCultureMapperTests, NoMatchGivesWarning)
+TEST(MappersCultureCultureGraphicsMapperTests, NoMatchGivesWarning)
 {
    const CultureGraphicsMapper culture_graphics_mapper({mappings});
 
@@ -115,12 +115,21 @@ TEST(MappersCultureCultureMapperTests, NoMatchGivesWarning)
    EXPECT_THAT(log.str(), testing::HasSubstr(R"([WARNING] Culture cul2 has no matching portrait set.)"));
 }
 
-TEST(MappersCultureCultureMapperTests, BlocksCombineOnMultiMatch)
+TEST(MappersCultureCultureGraphicsMapperTests, BlocksCombineOnMultiMatch)
 {
    const CultureGraphicsMapper culture_graphics_mapper({mappings});
 
    EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(
                  vic3::CultureDefinition({"cul2"}, {}, {"trait0", "trait1"}, {"eth0"})),
        blocks1_2);
+}
+
+TEST(MappersCultureCultureGraphicsMapperTests, MultiMatchDoesntDuplicate)
+{
+   const CultureGraphicsMapper culture_graphics_mapper({mappings});
+
+   EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(
+                 vic3::CultureDefinition({"cul2"}, {}, {"trait0", "trait3"}, {"eth0"})),
+       block1);
 }
 }  // namespace mappers
