@@ -37,7 +37,7 @@ std::vector<std::pair<std::string, std::string>> DetermineVic3Endpoints(
          continue;
       }
 
-      for (const auto& significant_province: significant_provinces | std::views::keys)
+      for (const auto& significant_province: other_significant_provinces)
       {
          if (significant_province == city_province)
          {
