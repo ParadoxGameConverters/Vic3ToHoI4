@@ -442,6 +442,12 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
       }
       for (const int neighbor_id: neighbors_itr->second)
       {
+         // skip connections already done from the other direction
+         if (neighbor_id < id)
+         {
+            continue;
+         }
+
          const std::set<int>& neighbor_significant_provinces =
              GetSignificantProvincesInState(neighbor_id, significant_provinces_in_states);
          const std::vector<std::pair<int, int>> interstate_connections =
@@ -461,29 +467,7 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
       }
    }
 
-   std::vector<hoi4::PossiblePath> deduplicated_interstate_paths;
-   std::set<std::pair<int, int>> used_endpoints;
-   for (const auto& path: interstate_paths)
-   {
-      std::optional<int> first_province = path.GetFirstProvince();
-      std::optional<int> last_province = path.GetLastProvince();
-      if (!first_province || !last_province)
-      {
-         continue;
-      }
-      if (used_endpoints.contains({*first_province, *last_province}))
-      {
-         continue;
-      }
-      if (used_endpoints.contains({*last_province, *first_province}))
-      {
-         continue;
-      }
-      used_endpoints.emplace(*first_province, *last_province);
-      deduplicated_interstate_paths.push_back(path);
-   }
-
-   return deduplicated_interstate_paths;
+   return interstate_paths;
 }
 
 
