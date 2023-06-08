@@ -20,7 +20,7 @@ std::vector<std::pair<std::string, std::string>> DetermineVic3Endpoints(
    {
       const std::map<std::string, std::string>& significant_provinces = vic3_state_region.GetSignificantProvinces();
       std::string city_province;
-      std::vector<std::string> other_significant_provinces;
+      std::set<std::string> other_significant_provinces;
       for (const auto& [province, type]: significant_provinces)
       {
          if (type == "city")
@@ -29,7 +29,7 @@ std::vector<std::pair<std::string, std::string>> DetermineVic3Endpoints(
          }
          else
          {
-            other_significant_provinces.push_back(province);
+            other_significant_provinces.insert(province);
          }
       }
       if (city_province.empty())
@@ -58,6 +58,8 @@ std::vector<std::pair<int, int>> ConvertVic3EndpointsToHoi4Endpoints(
 {
    std::vector<std::pair<int, int>> hoi4_endpoints;
 
+   // an extra copy for deduping, even though we want to preserve the order in the final output
+   std::set<std::pair<int, int>> handled_hoi4_endpoints;
    for (const auto& [vic3_start_point, vic3_end_point]: vic3_endpoints)
    {
       std::vector<int> hoi4_province_start_points = province_mapper.GetVic3ToHoi4ProvinceMapping(vic3_start_point);
@@ -77,7 +79,14 @@ std::vector<std::pair<int, int>> ConvertVic3EndpointsToHoi4Endpoints(
          continue;
       }
 
-      hoi4_endpoints.emplace_back(hoi4_province_start_point, hoi4_province_end_point);
+      std::pair<int, int> pair{hoi4_province_start_point, hoi4_province_end_point};
+      if (handled_hoi4_endpoints.contains(pair))
+      {
+         continue;
+      }
+
+      hoi4_endpoints.emplace_back(pair);
+      handled_hoi4_endpoints.emplace(pair);
    }
 
    return hoi4_endpoints;
