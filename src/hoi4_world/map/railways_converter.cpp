@@ -546,11 +546,6 @@ std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>
             handled_paths.insert(endpoints);
          }
          split_path.ReplaceProvinces({province});
-
-         Log(LogLevel::Info) << fmt::format("A path from {} to {} passed over {} and was trimmed.",
-             *path.GetFirstProvince(),
-             *path.GetLastProvince(),
-             province);
       }
 
       std::pair<int, int> endpoints = {*split_path.GetFirstProvince(), *split_path.GetLastProvince()};
@@ -608,6 +603,7 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const States& hoi4_states)
 {
+   Log(LogLevel::Info) << "Creating railways";
    const std::vector<std::pair<std::string, std::string>> vic3_endpoints = DetermineVic3Endpoints(vic3_state_regions);
    const std::vector<std::pair<int, int>> intrastate_hoi4_endpoints =
        ConvertVic3EndpointsToHoi4Endpoints(vic3_endpoints, province_mapper);
