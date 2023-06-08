@@ -480,6 +480,91 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
 }
 
 
+std::map<int, std::set<int>> MapEndpointsToPaths(std::vector<hoi4::PossiblePath>& all_paths)
+{
+   std::map<int, std::set<int>> endpoints_to_paths;
+   for (int i = 0; i < all_paths.size(); ++i)
+   {
+      const std::optional<int> possible_first_province = all_paths[i].GetFirstProvince();
+      if (!possible_first_province)
+      {
+         continue;
+      }
+
+      if (auto [itr, success] = endpoints_to_paths.emplace(*possible_first_province, std::set{i}); !success)
+      {
+         itr->second.emplace(i);
+      }
+      if (auto [itr, success] = endpoints_to_paths.emplace(*possible_first_province, std::set{i}); !success)
+      {
+         itr->second.emplace(i);
+      }
+   }
+
+   return endpoints_to_paths;
+}
+
+
+std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>& all_paths,
+    const std::map<int, std::set<int>>& endpoints_to_paths)
+{
+   std::vector<hoi4::PossiblePath> split_paths;
+   std::set<std::pair<int, int>> handled_paths;
+
+   for (const hoi4::PossiblePath& path: all_paths)
+   {
+      if (!path.GetFirstProvince() || !path.GetLastProvince())
+      {
+         continue;
+      }
+
+      hoi4::PossiblePath split_path(*path.GetFirstProvince());
+      split_path.SetLevel(path.GetLevel());
+      for (int province: path.GetProvinces())
+      {
+         if (province == path.GetFirstProvince())
+         {
+            continue;
+         }
+
+         split_path.AddProvince(province, 0.0F);
+
+         if (province == path.GetLastProvince())
+         {
+            continue;
+         }
+
+         if (!endpoints_to_paths.contains(province))
+         {
+            continue;
+         }
+
+         std::pair<int, int> endpoints = {*split_path.GetFirstProvince(), *split_path.GetLastProvince()};
+         if (!handled_paths.contains(endpoints))
+         {
+            split_paths.push_back(split_path);
+            handled_paths.insert(endpoints);
+         }
+         split_path.ReplaceProvinces({province});
+
+         Log(LogLevel::Info) << fmt::format("A path from {} to {} passed over {} and was trimmed.",
+             *path.GetFirstProvince(),
+             *path.GetLastProvince(),
+             province);
+      }
+
+      std::pair<int, int> endpoints = {*split_path.GetFirstProvince(), *split_path.GetLastProvince()};
+      if (!handled_paths.contains(endpoints))
+      {
+         split_paths.push_back(split_path);
+         handled_paths.insert(endpoints);
+      }
+   }
+
+   return split_paths;
+}
+
+
 std::vector<hoi4::Railway> GetRailwaysFromPaths(const std::vector<hoi4::PossiblePath>& paths)
 {
    std::vector<hoi4::Railway> railways;
@@ -536,9 +621,11 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
        hoi4_province_definitions);
    std::vector<hoi4::PossiblePath> all_paths = intrastate_paths;
    all_paths.insert(all_paths.end(), interstate_paths.begin(), interstate_paths.end());
+   const std::map<int, std::set<int>> endpoints_to_paths = MapEndpointsToPaths(all_paths);
+   const std::vector<hoi4::PossiblePath> split_paths = SplitPaths(all_paths, endpoints_to_paths);
 
-   const std::vector<Railway> railways = GetRailwaysFromPaths(all_paths);
-   const std::set<int> endpoints = GetEndpointsFromPaths(all_paths);
+   const std::vector<Railway> railways = GetRailwaysFromPaths(split_paths);
+   const std::set<int> endpoints = GetEndpointsFromPaths(split_paths);
 
    return {railways, endpoints};
 }
