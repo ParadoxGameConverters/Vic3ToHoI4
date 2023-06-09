@@ -6,9 +6,13 @@ namespace
 {
 std::vector<std::string> operator+(const std::vector<std::string>& lhs, const std::vector<std::string>& rhs)
 {
-   std::vector<std::string> joined_vector = lhs;
-   joined_vector.insert(joined_vector.end(), rhs.begin(), rhs.end());
-   return joined_vector;
+   std::set<std::string> unique_paths;
+   unique_paths.insert(lhs.cbegin(), lhs.cend());
+   unique_paths.insert(rhs.cbegin(), rhs.cend());
+
+   std::vector<std::string> joined;
+   joined.insert(joined.end(), unique_paths.begin(), unique_paths.end());
+   return joined;
 }
 
 mappers::IdeologyPortraitPaths operator+(const mappers::IdeologyPortraitPaths& lhs,
