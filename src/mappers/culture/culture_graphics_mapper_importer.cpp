@@ -35,7 +35,7 @@ mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_
       std::vector<std::string> traits = commonItems::getStrings(input_stream);
       std::ranges::copy(traits, std::inserter(mapping.traits, mapping.traits.end()));
    });
-   mapping_parser.registerKeyword("cultures", [&mapping](std::istream& input_stream) {
+   mapping_parser.registerKeyword("ethnicity", [&mapping](std::istream& input_stream) {
       std::vector<std::string> ethnicities = commonItems::getStrings(input_stream);
       std::ranges::copy(ethnicities, std::inserter(mapping.ethnicities, mapping.ethnicities.end()));
    });
@@ -54,10 +54,10 @@ mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_
    mapping_parser.registerKeyword("female_operative_portraits", [&mapping](std::istream& input_stream) {
       mapping.graphics_block.portrait_paths.female_operative = commonItems::getStrings(input_stream);
    });
-   mapping_parser.registerKeyword("male_monarch", [&mapping](std::istream& input_stream) {
+   mapping_parser.registerKeyword("male_monarch_portraits", [&mapping](std::istream& input_stream) {
       mapping.graphics_block.portrait_paths.male_monarch = commonItems::getStrings(input_stream);
    });
-   mapping_parser.registerKeyword("female_monarch", [&mapping](std::istream& input_stream) {
+   mapping_parser.registerKeyword("female_monarch_portraits", [&mapping](std::istream& input_stream) {
       mapping.graphics_block.portrait_paths.female_monarch = commonItems::getStrings(input_stream);
    });
    mapping_parser.registerKeyword("leader_portraits",
