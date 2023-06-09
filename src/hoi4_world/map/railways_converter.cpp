@@ -538,6 +538,103 @@ std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>
 }
 
 
+std::set<int> GatherVictoryPointLocations(const hoi4::States& hoi4_states)
+{
+   std::set<int> victory_point_positions;
+
+   for (const hoi4::State& state: hoi4_states.states)
+   {
+      for (int victory_point_position: state.GetVictoryPoints() | std::views::keys)
+      {
+         victory_point_positions.insert(victory_point_position);
+      }
+   }
+
+   return victory_point_positions;
+}
+
+
+std::set<int> GatherNavalBaseLocations(const hoi4::States& hoi4_states)
+{
+   std::set<int> naval_base_positions;
+
+   for (const hoi4::State& state: hoi4_states.states)
+   {
+      if (const std::optional<int> possible_naval_base = state.GetNavalBaseLocation(); possible_naval_base)
+      {
+         naval_base_positions.insert(*possible_naval_base);
+      }
+   }
+
+   return naval_base_positions;
+}
+
+
+std::map<int, int> CountInstancesOfEndpoints(const std::vector<hoi4::PossiblePath>& all_paths)
+{
+   std::map<int, int> num_uses_of_endpoints;
+   for (const hoi4::PossiblePath& path: all_paths)
+   {
+      if (auto [itr, success] = num_uses_of_endpoints.emplace(path.GetFirstProvince(), 1); !success)
+      {
+         itr->second++;
+      }
+
+      if (path.GetProvinces().size() == 1)
+      {
+         continue;
+      }
+
+      if (auto [itr, success] = num_uses_of_endpoints.emplace(path.GetLastProvince(), 1); !success)
+      {
+         itr->second++;
+      }
+   }
+
+   return num_uses_of_endpoints;
+}
+
+
+std::vector<hoi4::PossiblePath> TrimPaths(const std::vector<hoi4::PossiblePath>& all_paths,
+    const hoi4::States& hoi4_states)
+{
+   std::vector<hoi4::PossiblePath> trimmed_paths;
+
+   const std::set<int> victory_point_locations = GatherVictoryPointLocations(hoi4_states);
+   const std::set<int> naval_base_locations = GatherNavalBaseLocations(hoi4_states);
+   const std::map<int, int> num_endpoint_counts = CountInstancesOfEndpoints(all_paths);
+
+   for (const hoi4::PossiblePath& path: all_paths)
+   {
+      const auto first_itr = num_endpoint_counts.find(path.GetFirstProvince());
+      if (first_itr == num_endpoint_counts.end())
+      {
+         continue;
+      }
+      const auto last_itr = num_endpoint_counts.find(path.GetLastProvince());
+      if (last_itr == num_endpoint_counts.end())
+      {
+         continue;
+      }
+
+      if (first_itr->second == 1 && !victory_point_locations.contains(path.GetFirstProvince()) &&
+          !naval_base_locations.contains(path.GetFirstProvince()))
+      {
+         continue;
+      }
+      if (last_itr->second == 1 && !victory_point_locations.contains(path.GetLastProvince()) &&
+          !naval_base_locations.contains(path.GetLastProvince()))
+      {
+         continue;
+      }
+
+      trimmed_paths.push_back(path);
+   }
+
+   return trimmed_paths;
+}
+
+
 std::vector<hoi4::Railway> GetRailwaysFromPaths(const std::vector<hoi4::PossiblePath>& paths)
 {
    std::vector<hoi4::Railway> railways;
@@ -590,9 +687,10 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
    std::vector<hoi4::PossiblePath> all_paths = intrastate_paths;
    all_paths.insert(all_paths.end(), interstate_paths.begin(), interstate_paths.end());
    const std::vector<hoi4::PossiblePath> split_paths = SplitPaths(all_paths);
+   const std::vector<hoi4::PossiblePath> trimmed_paths = TrimPaths(split_paths, hoi4_states);
 
-   const std::vector<Railway> railways = GetRailwaysFromPaths(split_paths);
-   const std::set<int> endpoints = GetEndpointsFromPaths(split_paths);
+   const std::vector<Railway> railways = GetRailwaysFromPaths(trimmed_paths);
+   const std::set<int> endpoints = GetEndpointsFromPaths(trimmed_paths);
 
    return {railways, endpoints};
 }
