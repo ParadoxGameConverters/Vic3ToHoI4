@@ -10,35 +10,27 @@ namespace hoi4
 
 TEST(Hoi4worldMapPossiblePathTests, DefaultsAreSet)
 {
-   const PossiblePath possible_path;
+   const PossiblePath possible_path(1);
 
-   EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre());
+   EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(1));
    EXPECT_EQ(possible_path.GetLevel(), 0);
    EXPECT_EQ(possible_path.GetCost(), 0);
 }
 
 
-TEST(Hoi4worldMapPossiblePathTests, InitialProvinceIsSetOnConstruction)
-{
-   const PossiblePath possible_path(1);
-
-   EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(1));
-}
-
-
 TEST(Hoi4worldMapPossiblePathTests, ProvincesCanBeAdded)
 {
-   PossiblePath possible_path;
+   PossiblePath possible_path(0);
    possible_path.AddProvince(1, 0);
    possible_path.AddProvince(2, 0);
 
-   EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(1, 2));
+   EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(0, 1, 2));
 }
 
 
 TEST(Hoi4worldMapPossiblePathTests, AddedProvincesIncreaseCost)
 {
-   PossiblePath possible_path;
+   PossiblePath possible_path(0);
    possible_path.AddProvince(1, 2);
    possible_path.AddProvince(2, 3);
 
@@ -49,7 +41,6 @@ TEST(Hoi4worldMapPossiblePathTests, AddedProvincesIncreaseCost)
 TEST(Hoi4worldMapPossiblePathTests, ProvinceCanBeReplaced)
 {
    PossiblePath possible_path(1);
-   possible_path.AddProvince(2, 0);
    possible_path.ReplaceProvinces({3, 4});
 
    EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(3, 4));
@@ -58,55 +49,37 @@ TEST(Hoi4worldMapPossiblePathTests, ProvinceCanBeReplaced)
 
 TEST(Hoi4worldMapPossiblePathTests, LevelCanBeSet)
 {
-   PossiblePath possible_path;
+   PossiblePath possible_path(0);
    possible_path.SetLevel(42);
 
    EXPECT_EQ(possible_path.GetLevel(), 42);
 }
 
 
-TEST(Hoi4worldMapPossiblePathTests, FirstProvinceIsNulloptForEmptyPath)
-{
-   const PossiblePath possible_path;
-
-   EXPECT_EQ(possible_path.GetFirstProvince(), std::nullopt);
-}
-
-
 TEST(Hoi4worldMapPossiblePathTests, FirstProvinceCanBeRetrieved)
 {
    PossiblePath possible_path(1);
-   possible_path.AddProvince(2, 0);
    possible_path.ReplaceProvinces({3, 4});
 
-   EXPECT_EQ(possible_path.GetFirstProvince(), std::make_optional(3));
-}
-
-
-TEST(Hoi4worldMapPossiblePathTests, LastProvinceIsNulloptForEmptyPath)
-{
-   const PossiblePath possible_path;
-
-   EXPECT_EQ(possible_path.GetLastProvince(), std::nullopt);
+   EXPECT_EQ(possible_path.GetFirstProvince(), 3);
 }
 
 
 TEST(Hoi4worldMapPossiblePathTests, LastProvinceCanBeRetrieved)
 {
    PossiblePath possible_path(1);
-   possible_path.AddProvince(2, 0);
    possible_path.ReplaceProvinces({3, 4});
 
-   EXPECT_EQ(possible_path.GetLastProvince(), std::make_optional(4));
+   EXPECT_EQ(possible_path.GetLastProvince(), 4);
 }
 
 
 TEST(Hoi4worldMapPossiblePathTests, LessThanIsBasedOnCostAndReversed)
 {
-   PossiblePath possible_path_one;
+   PossiblePath possible_path_one(0);
    possible_path_one.AddProvince(1, 2);
 
-   PossiblePath possible_path_two;
+   PossiblePath possible_path_two(0);
    possible_path_two.AddProvince(1, 3);
 
    EXPECT_LT(possible_path_two, possible_path_one);

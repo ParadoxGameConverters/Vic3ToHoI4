@@ -186,13 +186,8 @@ void FindNextPaths(const hoi4::PossiblePath& possible_railway_path,
     std::set<int>& reached_provinces,
     std::priority_queue<hoi4::PossiblePath>& possible_railway_paths)
 {
-   const std::optional<int> last_province = possible_railway_path.GetLastProvince();
-   if (!last_province)
-   {
-      return;
-   }
-
-   for (const auto& neighbor_number_string: hoi4_map_data.GetNeighbors(std::to_string(*last_province)))
+   const int last_province = possible_railway_path.GetLastProvince();
+   for (const auto& neighbor_number_string: hoi4_map_data.GetNeighbors(std::to_string(last_province)))
    {
       int neighbor_number = 0;
       try
@@ -218,7 +213,7 @@ void FindNextPaths(const hoi4::PossiblePath& possible_railway_path,
       new_possible_railway_path.AddProvince(neighbor_number,
           DeterminePathCost(hoi4_province_definitions,
               neighbor_number_string,
-              std::to_string(*last_province),
+              std::to_string(last_province),
               hoi4_map_data));
       possible_railway_paths.push(new_possible_railway_path);
    }
@@ -240,8 +235,7 @@ std::optional<hoi4::PossiblePath> FindPath(int start_province,
    {
       hoi4::PossiblePath possible_railway_path = possible_railway_paths.top();
 
-      const auto last_province = possible_railway_path.GetLastProvince();
-      if (!last_province || *last_province == end_province)
+      if (possible_railway_path.GetLastProvince() == end_province)
       {
          break;
       }
@@ -485,14 +479,8 @@ std::set<int> ListEndpoints(const std::vector<hoi4::PossiblePath>& all_paths)
    std::set<int> endpoints;
    for (const auto& path: all_paths)
    {
-      const std::optional<int> possible_first_province = path.GetFirstProvince();
-      if (!possible_first_province)
-      {
-         continue;
-      }
-
-      endpoints.insert(*path.GetFirstProvince());
-      endpoints.insert(*path.GetLastProvince());
+      endpoints.insert(path.GetFirstProvince());
+      endpoints.insert(path.GetLastProvince());
    }
 
    return endpoints;
@@ -508,12 +496,7 @@ std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>
 
    for (const hoi4::PossiblePath& path: all_paths)
    {
-      if (!path.GetFirstProvince())
-      {
-         continue;
-      }
-
-      hoi4::PossiblePath split_path(*path.GetFirstProvince());
+      hoi4::PossiblePath split_path(path.GetFirstProvince());
       split_path.SetLevel(path.GetLevel());
       for (int province: path.GetProvinces())
       {
@@ -534,7 +517,7 @@ std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>
             continue;
          }
 
-         std::pair<int, int> current_endpoints = {*split_path.GetFirstProvince(), *split_path.GetLastProvince()};
+         std::pair<int, int> current_endpoints = {split_path.GetFirstProvince(), split_path.GetLastProvince()};
          if (!handled_paths.contains(current_endpoints))
          {
             split_paths.push_back(split_path);
@@ -543,7 +526,7 @@ std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>
          split_path.ReplaceProvinces({province});
       }
 
-      std::pair<int, int> current_endpoints = {*split_path.GetFirstProvince(), *split_path.GetLastProvince()};
+      std::pair<int, int> current_endpoints = {split_path.GetFirstProvince(), split_path.GetLastProvince()};
       if (!handled_paths.contains(current_endpoints))
       {
          split_paths.push_back(split_path);
@@ -575,14 +558,8 @@ std::set<int> GetEndpointsFromPaths(const std::vector<hoi4::PossiblePath>& paths
 
    for (const hoi4::PossiblePath& possible_path: paths)
    {
-      if (std::optional<int> possible_endpoint = possible_path.GetFirstProvince(); possible_endpoint)
-      {
-         endpoints.insert(*possible_endpoint);
-      }
-      if (std::optional<int> possible_endpoint = possible_path.GetLastProvince(); possible_endpoint)
-      {
-         endpoints.insert(*possible_endpoint);
-      }
+      endpoints.insert(possible_path.GetFirstProvince());
+      endpoints.insert(possible_path.GetLastProvince());
    }
 
    return endpoints;
