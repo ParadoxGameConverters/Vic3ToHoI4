@@ -2,6 +2,7 @@
 
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 #include "src/hoi4_world/world/hoi4_world_converter.h"
@@ -27,7 +28,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().states.empty());
@@ -64,7 +66,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    const Technologies expected_techs_one{std::map<std::optional<std::string>, std::set<std::string>>{
        {std::nullopt, std::set<std::string>{"dest_tech_one", "dest_tech_two"}}}};
@@ -127,6 +130,16 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
 
+   const std::map<std::string, vic3::StateRegion> state_regions({{"STATE_ONE",
+       vic3::StateRegion(
+           {
+               {"0x000005", "city"},
+               {"0x000004", "port"},
+               {"0x000003", "farm"},
+               {"0x000002", "mine"},
+               {"0x000001", "wood"},
+           },
+           {})}});
    const auto province_definitions = vic3::ProvinceDefinitions({
        "0x000001",
        "0x000002",
@@ -135,6 +148,10 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
        "0x000005",
        "0x000006",
    });
+   const vic3::Buildings vic3_buildings({
+       {1, std::vector{vic3::Building("", 1, 875'000)}},
+       {2, std::vector{vic3::Building("", 2, 700'000)}},
+   });
 
    const vic3::World source_world(vic3::WorldOptions{
        .states =
@@ -142,11 +159,20 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
                {1, vic3::State({.owner_number = 1, .owner_tag = "TAG", .provinces = {1, 2, 3}})},
                {2, vic3::State({.owner_number = 2, .owner_tag = "TWO", .provinces = {4, 5, 6}})},
            },
+       .state_regions = state_regions,
        .province_definitions = province_definitions,
+       .buildings = vic3_buildings,
    });
 
    const mappers::ProvinceMapper province_mapper{
-       {},
+       {
+           {"0x000001", {10}},
+           {"0x000002", {20}},
+           {"0x000003", {30}},
+           {"0x000004", {40}},
+           {"0x000005", {50}},
+           {"0x000006", {60}},
+       },
        {
            {10, {"0x000001"}},
            {20, {"0x000002"}},
@@ -160,11 +186,24 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_THAT(world.GetStates().states,
-       testing::ElementsAre(State(1, {.owner = "TAG", .provinces = {10, 20, 30}, .category = "pastoral"}),
-           State(2, {.owner = "TWO", .provinces = {40, 50, 60}, .category = "pastoral"})));
+       testing::ElementsAre(State(1,
+                                {.owner = "TAG",
+                                    .provinces = {10, 20, 30},
+                                    .category = "large_city",
+                                    .victory_points = {{30, 3}},
+                                    .civilian_factories = 3,
+                                    .military_factories = 2}),
+           State(2,
+               {.owner = "TWO",
+                   .provinces = {40, 50, 60},
+                   .category = "city",
+                   .victory_points = {{50, 2}},
+                   .civilian_factories = 2,
+                   .military_factories = 2})));
    EXPECT_THAT(world.GetStates().province_to_state_id_map,
        testing::UnorderedElementsAre(testing::Pair(10, 1),
            testing::Pair(20, 1),
@@ -172,6 +211,110 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
            testing::Pair(40, 2),
            testing::Pair(50, 2),
            testing::Pair(60, 2)));
+}
+
+
+TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
+{
+   std::map<int, std::string> country_mappings;
+   std::map<int, vic3::Country> countries;
+   std::map<std::string, vic3::StateRegion> state_regions;
+   std::vector<std::string> province_definitions_initializer;
+   std::map<int, std::vector<vic3::Building>> buildings_initializer;
+   std::map<int, int> scored_countries;
+   std::map<int, vic3::State> vic3_states;
+   mappers::Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map;
+   mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map;
+   for (int i = 1; i <= 80; ++i)
+   {
+      country_mappings.emplace(i, fmt::format("X{:0>2}", i));
+      countries.emplace(i,
+          vic3::Country({
+              .number = i,
+              .tag = fmt::format("X{:0>2}", i),
+              .capital_state = i,
+          }));
+      state_regions.emplace(fmt::format("STATE_{:0>2}", i),
+          vic3::StateRegion(
+              {
+                  {fmt::format("0x0000{:0>2}", i), "city"},
+              },
+              {}));
+      province_definitions_initializer.emplace_back(fmt::format("0x0000{:0>2}", i));
+      buildings_initializer.emplace(i, std::vector{vic3::Building("", i, 1000.0f - i)});
+      scored_countries.emplace(i, i);
+      vic3_states.emplace(i,
+          vic3::State({.owner_number = i, .owner_tag = fmt::format("0x0000{:0>2}", i), .provinces = {i}}));
+      vic3_to_hoi4_province_map.emplace(fmt::format("0x0000{:0>2}", i), std::vector{i});
+      hoi4_to_vic3_province_map.emplace(i, std::vector{fmt::format("0x0000{:0>2}", i)});
+   }
+   const mappers::CountryMapper country_mapper(country_mappings);
+   const vic3::ProvinceDefinitions province_definitions(province_definitions_initializer);
+   const vic3::Buildings buildings;
+   const vic3::CountryRankings country_rankings({1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, scored_countries);
+
+   const vic3::World source_world(vic3::WorldOptions{
+       .countries = countries,
+       .states = vic3_states,
+       .state_regions = state_regions,
+       .province_definitions = province_definitions,
+       .buildings = buildings,
+       .country_rankings = country_rankings,
+   });
+
+   const mappers::ProvinceMapper province_mapper{vic3_to_hoi4_province_map, hoi4_to_vic3_province_map};
+
+   const World world =
+       ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}),
+           source_world,
+           country_mapper,
+           province_mapper,
+           false);
+
+   // HoI4 states are in an arbitrary order compared to Vic3 states, so store by province number for the actual checks
+   std::map<int, State> states;
+   for (const auto& state: world.GetStates().states)
+   {
+      ASSERT_FALSE(state.GetProvinces().empty());
+      const int province = *state.GetProvinces().begin();
+      states.emplace(province, state);
+   }
+
+   // five great powers, first two have a VP of 50
+   EXPECT_THAT(states.at(1).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(1, 50)));
+   EXPECT_THAT(states.at(2).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(2, 50)));
+
+   // remaining GPs have VPs worth 40
+   EXPECT_THAT(states.at(3).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(3, 40)));
+   EXPECT_THAT(states.at(4).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(4, 40)));
+   EXPECT_THAT(states.at(5).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(5, 40)));
+
+   // five major powers, first two have a VP of 30
+   EXPECT_THAT(states.at(6).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(6, 30)));
+   EXPECT_THAT(states.at(7).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(7, 30)));
+
+   // remaining majors have VPs worth 25
+   EXPECT_THAT(states.at(8).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(8, 25)));
+   EXPECT_THAT(states.at(9).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(9, 25)));
+   EXPECT_THAT(states.at(10).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(10, 25)));
+
+   // the first 30 of the remaining countries have VPs worth 20
+   for (int i = 11; i < 41; ++i)
+   {
+      EXPECT_THAT(states.at(i).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(i, 20)));
+   }
+
+   // the next 30 of the remaining countries have VPs worth 15
+   for (int i = 41; i < 71; ++i)
+   {
+      EXPECT_THAT(states.at(i).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(i, 15)));
+   }
+
+   // the remaining countries have VPs worth 10
+   for (int i = 71; i < 81; ++i)
+   {
+      EXPECT_THAT(states.at(i).GetVictoryPoints(), testing::UnorderedElementsAre(testing::Pair(i, 10)));
+   }
 }
 
 
@@ -212,7 +355,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/StrategicRegionsAreCreated", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    const auto strategic_regions = world.GetStrategicRegions().GetStrategicRegions();
    ASSERT_TRUE(strategic_regions.contains(10));
@@ -325,7 +469,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/BuildingsAreCreated", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_FALSE(world.GetBuildings().GetBuildings().empty());
    EXPECT_FALSE(world.GetBuildings().GetAirportLocations().empty());
@@ -358,7 +503,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_FALSE(world.GetRailways().railways.empty());
 }
@@ -373,7 +519,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
                {3, vic3::Country({})},
                {5, vic3::Country({})},
            },
-       .country_rankings = {{1, 3, 5}, {}},
+       .country_rankings = {{1, 3, 5}, {}, {}},
    });
 
    const mappers::CountryMapper country_mapper({
@@ -387,7 +533,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_THAT(world.GetGreatPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
 }
@@ -402,7 +549,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
                {3, vic3::Country({})},
                {5, vic3::Country({})},
            },
-       .country_rankings = {{}, {1, 3, 5}},
+       .country_rankings = {{}, {1, 3, 5}, {}},
    });
 
    const mappers::CountryMapper country_mapper({
@@ -416,7 +563,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    EXPECT_THAT(world.GetMajorPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
 }
@@ -505,7 +653,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        country_mapper,
-       province_mapper);
+       province_mapper,
+       false);
 
    const std::optional<commonItems::LocalizationBlock> hoi_country_localization_block =
        world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("TAG");

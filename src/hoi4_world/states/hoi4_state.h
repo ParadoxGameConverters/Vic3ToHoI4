@@ -30,6 +30,7 @@ struct StateOptions
    int dockyards = 0;
    std::optional<int> naval_base_location;
    std::optional<int> naval_base_level;
+   std::set<std::string> cores;
 };
 
 
@@ -48,7 +49,8 @@ class State
        military_factories_(state_options.military_factories),
        dockyards_(state_options.dockyards),
        naval_base_location_(state_options.naval_base_location),
-       naval_base_level_(state_options.naval_base_level)
+       naval_base_level_(state_options.naval_base_level),
+       cores_(state_options.cores)
    {
    }
 
@@ -64,6 +66,9 @@ class State
    [[nodiscard]] int GetDockyards() const { return dockyards_; }
    [[nodiscard]] std::optional<int> GetNavalBaseLocation() const { return naval_base_location_; }
    [[nodiscard]] std::optional<int> GetNavalBaseLevel() const { return naval_base_level_; }
+   [[nodiscard]] std::set<std::string> GetCores() const { return cores_; }
+
+   void SetHighestVictoryPointValue(int value);
 
    std::partial_ordering operator<=>(const State&) const = default;
 
@@ -82,6 +87,7 @@ class State
    int dockyards_ = 0;
    std::optional<int> naval_base_location_;
    std::optional<int> naval_base_level_;
+   std::set<std::string> cores_;
 };
 
 }  // namespace hoi4

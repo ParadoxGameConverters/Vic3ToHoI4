@@ -77,6 +77,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/strategic_regions
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/strategic_regions_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/equipment_variants_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/default_states_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/hoi4_state.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/hoi4_states_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/state_categories.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/technology/technologies.cpp")
@@ -253,6 +254,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/strategic_regions_importer_
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/strategic_regions_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/equipment_variants_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/default_states_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/hoi4_state_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/hoi4_states_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/state_categories_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/technology/technologies_tests.cpp")
@@ -359,6 +361,10 @@ add_custom_command(TARGET lcov
 	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/bits/*" -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/ext/*" -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/12/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/ext/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/13/bits/*" -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info '*/external/bitmap/*' -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info '*/external/commonItems/*' -o lcoverage/coverage.info
 	COMMAND lcov --remove lcoverage/coverage.info '*/external/fmt/include/fmt/*' -o lcoverage/coverage.info
