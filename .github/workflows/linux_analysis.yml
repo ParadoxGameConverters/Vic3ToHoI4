@@ -2,6 +2,7 @@ name: "Linux-based analysis"
 
 env:
   COVERAGE: YES
+  BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory
 
 on:
   push:
