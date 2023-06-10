@@ -76,7 +76,7 @@ jobs:
       
     - name: Run build-wrapper
       run: |
-        build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake -H. -Bbuild && cmake --build ./build --target clean Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests
+        build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake -H. -Bbuild && cmake --build ./build --target clean && cmake --build ./build --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests
 
     - name: Run sonar-scanner
       env:
