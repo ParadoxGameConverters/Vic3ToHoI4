@@ -1,0 +1,58 @@
+###
+# A Vic3 culture will find the most specific match it can.
+# First, it wil match on culture.
+# Second, if its culture name is not present in any entry, it will match based on cultural traits.
+# Third, if the traits find no matches, it'll match based on ethnicity.
+#
+# If the Vic3 culture finds multiple matches of the same precendance, it will use the union of both portrait sets.
+# For example: Sephardim has both European and Middle-Eastern Heritage. If no portrait group explicitly has Sephardim,
+# Sephardim will use both European and Middle-Eastern graphics.
+###
+# sample_group = {
+#   cultures = { swedish } # In reality, these are probably 3 separate groups
+#   traits = { european_heritage }
+#	ethnicity = { caucasian }
+#
+#	army_portraits = {
+#		"gfx/leaders/GER/sample_portrait_land.dds"
+#		"gfx/leaders/GER/sample_portrait_land2.dds"
+#	}
+#	navy_portraits = {
+#		"gfx/leaders/GER/sample_portrait_navy.dds"
+#		"gfx/leaders/GER/sample_portrait_navy2.dds"
+#	}
+#	leader_portraits = {
+#		communism = { "gfx/leaders/GER/sample_portrait_communism.dds" }
+#		democratic = { "gfx/leaders/GER/sample_portrait_democratic.dds" }
+#		fascism = { "gfx/leaders/GER/sample_portrait_fascism.dds" "gfx/leaders/GER/sample_portrait_fascism2.dds" }
+#		neutrality = { "sample_portrait_neutrality" }
+#	}
+#	female_portraits = {
+#		"gfx/leaders/GER/sample_portrait_Hitler_Female.dds"
+#	}
+#	ideology_minister_portraits =
+#	{
+#		communism = { "gfx/interface/ideas/sample_portrait_communism.dds" }
+#		democratic = { "gfx/interface/ideas/sample_portrait_democratic.dds" }
+#		fascism = { "gfx/interface/ideas/sample_portrait_fascism.dds" "gfx/interface/ideas/sample_portrait_fascism2.dds" }
+#		neutrality = { "gfx/interface/ideas/sample_portrait_neutrality.dds" }
+#	}
+#	male_operative_portraits =
+#	{
+#		"sample_male_operative.dds"
+#		"sample_male_operative2.dds"
+#	}
+#	female_operative_portraits =
+#	{
+#		"sample_female_operative.dds"
+#		"sample_female_operative2.dds"
+#	}
+#	male_monarch_portraits = {
+#		"gfx/interface/ideas/crowns/sample.dds"
+#	}
+#	female_monarch_portraits = {
+#		"gfx/interface/ideas/crowns/sample.dds"
+#	}
+#	graphical_culture = western_european_gfx
+#	graphical_culture_2d = western_european_2d
+#}

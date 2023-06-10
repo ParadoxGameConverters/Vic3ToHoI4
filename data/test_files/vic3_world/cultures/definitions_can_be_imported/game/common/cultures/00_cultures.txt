@@ -1,0 +1,61 @@
+north_german={
+	color= rgb{ 62 77 100 }
+	religion = protestant
+	traits = { german_speaking european_heritage }
+	male_common_first_names={
+		Wolfgang
+	}
+	female_common_first_names = {
+		Friederike 
+	}
+	noble_last_names = {
+		von_Jons
+	}	
+	common_last_names={
+		Olbers
+	}
+
+	male_regal_first_names = {
+		Oskar
+	}
+	female_regal_first_names = {
+		Sophie
+	}
+
+	graphics = european
+	ethnicities = {
+		1 = caucasian
+	}
+}
+
+south_german={
+	color= hsv{ 0.50 0.43 0.45 }
+	religion = catholic
+	traits = { german_speaking european_heritage }
+	male_common_first_names={
+		Otto
+	}
+	female_common_first_names = {
+		Helmtrude
+	}	
+	noble_last_names = {
+		von_Xylander
+	}
+	common_last_names={
+		Auerbach
+	}
+	male_regal_first_names={
+		Lugwig
+	}
+	female_regal_first_names={
+		Charlotte
+	}
+	regal_last_names={ # Ignored, for now
+		von_Habsburg
+	}
+
+	graphics = european
+	ethnicities = {
+		1 = caucasian
+	}
+}

@@ -50,6 +50,9 @@
     <ClInclude Include="src\hoi4_world\world\hoi4_world_converter.h" />
     <ClInclude Include="src\mappers\country\country_mapper.h" />
     <ClInclude Include="src\mappers\country\country_mapper_creator.h" />
+    <ClInclude Include="src\mappers\culture\culture_graphics_mapper.h" />
+    <ClInclude Include="src\mappers\culture\culture_graphics_mapper_importer.h" />
+    <ClInclude Include="src\mappers\culture\culture_graphics_mapping.h" />
     <ClInclude Include="src\mappers\ideology\ideology_mapper.h" />
     <ClInclude Include="src\mappers\ideology\ideology_mapper_importer.h" />
     <ClInclude Include="src\mappers\provinces\province_mapper.h" />
@@ -96,6 +99,8 @@
     <ClInclude Include="src\vic3_world\country_rankings\country_rankings.h" />
     <ClInclude Include="src\vic3_world\country_rankings\country_rankings_importer.h" />
     <ClInclude Include="src\vic3_world\cultures\cultures_importer.h" />
+    <ClInclude Include="src\vic3_world\cultures\culture_definition.h" />
+    <ClInclude Include="src\vic3_world\cultures\culture_definitions_importer.h" />
     <ClInclude Include="src\vic3_world\elections\elections_importer.h" />
     <ClInclude Include="src\vic3_world\laws\laws_importer.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h" />
@@ -134,6 +139,8 @@
     <ClCompile Include="src\hoi4_world\world\hoi4_world_converter.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_creator.cpp" />
+    <ClCompile Include="src\mappers\culture\culture_graphics_mapper.cpp" />
+    <ClCompile Include="src\mappers\culture\culture_graphics_mapper_importer.cpp" />
     <ClCompile Include="src\mappers\ideology\ideology_mapper.cpp" />
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper.cpp" />
@@ -172,6 +179,7 @@
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer.cpp" />
     <ClCompile Include="src\vic3_world\country_rankings\country_rankings_importer.cpp" />
     <ClCompile Include="src\vic3_world\cultures\cultures_importer.cpp" />
+    <ClCompile Include="src\vic3_world\cultures\culture_definitions_importer.cpp" />
     <ClCompile Include="src\vic3_world\elections\elections_importer.cpp" />
     <ClCompile Include="src\vic3_world\laws\laws_importer.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp" />
