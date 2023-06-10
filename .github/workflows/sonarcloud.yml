@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build and analyze
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
     steps:
@@ -19,7 +19,7 @@ jobs:
         uses: SonarSource/sonarcloud-github-c-cpp@v1
       - name: Run build-wrapper
         run: |
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake -H. -Bbuild && cmake --build ./build --target clean && cmake --build ./build --target Vic3ToHoi4 Vic3ToHoi4Tests
+          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\" && .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
