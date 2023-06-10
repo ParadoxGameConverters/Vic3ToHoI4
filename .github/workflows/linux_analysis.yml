@@ -2,7 +2,6 @@ name: "Linux-based analysis"
 
 env:
   COVERAGE: YES
-  BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory
 
 on:
   push:
@@ -70,20 +69,6 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: build/lcoverage/coverage.info
-        
-    - name: Install sonar-scanner and build-wrapper
-      uses: SonarSource/sonarcloud-github-c-cpp@v1
-      
-    - name: Run build-wrapper
-      run: |
-        build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake -H. -Bbuild && cmake --build ./build --target clean && cmake --build ./build --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests
-
-    - name: Run sonar-scanner
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: |
-        sonar-scanner --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
