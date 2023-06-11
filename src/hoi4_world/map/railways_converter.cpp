@@ -93,16 +93,16 @@ std::vector<std::pair<int, int>> ConvertVic3EndpointsToHoi4Endpoints(
 }
 
 
-constexpr int urban_cost = 1;
-constexpr int plains_cost = 2;
-constexpr int forest_cost = 3;
-constexpr int hills_cost = 4;
-constexpr int desert_cost = 5;
-constexpr int marsh_cost = 6;
-constexpr int jungle_cost = 7;
-constexpr int mountain_cost = 8;
-constexpr int unhandled_cost = 100;
-int GetCostForTerrainType(std::string_view terrain_type)
+constexpr float urban_cost = 1.F;
+constexpr float plains_cost = 2.F;
+constexpr float forest_cost = 3.F;
+constexpr float hills_cost = 4.F;
+constexpr float desert_cost = 5.F;
+constexpr float marsh_cost = 6.F;
+constexpr float jungle_cost = 7.F;
+constexpr float mountain_cost = 8.F;
+constexpr float unhandled_cost = 100.F;
+float GetCostForTerrainType(std::string_view terrain_type)
 {
    if (terrain_type == "urban")
    {
@@ -169,13 +169,22 @@ double DeterminePathCost(const maps::ProvinceDefinitions& hoi4_province_definiti
     const std::string& last_province,
     const maps::MapData& hoi4_map_data)
 {
-   const std::optional<std::string> possible_terrain_type = hoi4_province_definitions.GetTerrainType(neighbor_number);
-   if (!possible_terrain_type)
+   const std::optional<std::string> possible_current_terrain_type =
+       hoi4_province_definitions.GetTerrainType(last_province);
+   if (!possible_current_terrain_type)
    {
       return std::numeric_limits<double>::max();
    }
 
-   return GetCostForTerrainType(*possible_terrain_type) *
+   const std::optional<std::string> possible_neighbor_terrain_type =
+       hoi4_province_definitions.GetTerrainType(neighbor_number);
+   if (!possible_neighbor_terrain_type)
+   {
+      return std::numeric_limits<double>::max();
+   }
+
+   return (GetCostForTerrainType(*possible_current_terrain_type) +
+              GetCostForTerrainType(*possible_neighbor_terrain_type) / 2.0F) *
           GetDistanceBetweenProvinces(neighbor_number, last_province, hoi4_map_data);
 }
 
