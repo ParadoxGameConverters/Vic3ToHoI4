@@ -21,6 +21,7 @@ struct CountryOptions
    std::string country_type;
    std::set<std::string> active_laws;
    std::set<int> primary_culture_ids;
+   std::set<std::string> primary_cultures;
    std::optional<date> last_election;
 };
 
@@ -36,6 +37,7 @@ class Country
        country_type_(std::move(options.country_type)),
        active_laws_(std::move(options.active_laws)),
        primary_culture_ids_(std::move(options.primary_culture_ids)),
+       primary_cultures_(std::move(options.primary_cultures)),
        last_election_(options.last_election)
    {
    }
@@ -46,6 +48,7 @@ class Country
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
    [[nodiscard]] const std::set<std::string>& GetActiveLaws() const { return active_laws_; }
+   [[nodiscard]] const std::set<std::string>& GetPrimaryCultures() const { return primary_cultures_; }
    [[nodiscard]] const std::set<int>& GetPrimaryCultureIds() const { return primary_culture_ids_; }
    [[nodiscard]] const std::optional<date>& GetLastElection() const { return last_election_; }
 
@@ -61,7 +64,8 @@ class Country
    std::optional<int> capital_state_;
    std::string country_type_;
    std::set<std::string> active_laws_;
-   std::set<int> primary_culture_ids_;
+   std::set<std::string> primary_cultures_;
+   std::set<int> primary_culture_ids_;  // Resolve to culture name before HoI
    std::optional<date> last_election_;
 };
 

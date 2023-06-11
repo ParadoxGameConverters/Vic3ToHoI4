@@ -108,7 +108,9 @@
     <ClCompile Include="src\out_hoi4\map\out_strategic_region_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_supply_nodes_tests.cpp" />
     <ClCompile Include="src\out_hoi4\military\out_equipment_variant_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\names\out_names_tests.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp" />
+    <ClCompile Include="src\out_hoi4\portraits\out_portraits_tests.cpp" />
     <ClCompile Include="src\out_hoi4\states\out_states_tests.cpp" />
     <ClCompile Include="src\out_hoi4\states\out_state_tests.cpp" />
     <ClCompile Include="src\out_hoi4\technology\out_technologies_tests.cpp" />

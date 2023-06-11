@@ -167,12 +167,63 @@ std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<ho
    return active_variants;
 }
 
+std::string ConvertName(const std::string& vic_name, const commonItems::LocalizationDatabase& vic_localizations)
+{
+   if (const auto& loc_block = vic_localizations.GetLocalizationBlock(vic_name); loc_block)
+   {
+      return loc_block->GetLocalization("english");
+   }
+   Log(LogLevel::Warning) << fmt::format("Missing loc for vic_name: {}", vic_name);
+   return "John";
+}
+
+std::set<std::string> ConvertNameSet(const std::set<std::string>& vic_names,
+    const commonItems::LocalizationDatabase& vic_localizations)
+{
+   std::set<std::string> hoi_names;
+   for (const auto& vic_name: vic_names)
+   {
+      hoi_names.emplace(ConvertName(vic_name, vic_localizations));
+   }
+}
+
+hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
+    const std::map<std::string, vic3::CultureDefinition>& source_cultures,
+    const commonItems::LocalizationDatabase& vic_localizations,
+    const std::string& sub_ideology)
+{
+   hoi4::NameList name_list;
+   for (const auto& culture: primary_cultures)
+   {
+      if (const auto culture_itr = source_cultures.find(culture); culture_itr != source_cultures.end())
+      {
+         const auto& vic_list = culture_itr->second.GetNameList();
+
+         // If conservative monarchy use royal names
+         if (sub_ideology == "despotic" || sub_ideology == "oligarchism")
+         {
+            name_list.male_names = ConvertNameSet(vic_list.male_regal_first, vic_localizations);
+            name_list.female_names = ConvertNameSet(vic_list.female_regal_first, vic_localizations);
+            name_list.surnames = ConvertNameSet(vic_list.noble_last, vic_localizations);
+         }
+         else
+         {
+            name_list.male_names = ConvertNameSet(vic_list.male_common_first, vic_localizations);
+            name_list.female_names = ConvertNameSet(vic_list.female_common_first, vic_localizations);
+            name_list.surnames = ConvertNameSet(vic_list.common_last, vic_localizations);
+         }
+      }
+   }
+   return name_list;
+}
 }  // namespace
 
 
 
 std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_country,
     const std::set<std::string>& source_technologies,
+    const std::map<std::string, vic3::CultureDefinition>& source_cultures,
+    const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
     const std::vector<State>& states,
@@ -181,7 +232,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
     const std::vector<EquipmentVariant>& all_legacy_ship_variants,
     const std::vector<EquipmentVariant>& all_ship_variants,
     const std::vector<EquipmentVariant>& all_plane_variants,
-    const std::vector<EquipmentVariant>& all_tank_variants)
+    const std::vector<EquipmentVariant>& all_tank_variants,
+    const mappers::CultureGraphicsMapper& culture_graphics_mapper)
 {
    const std::optional<std::string> tag = country_mapper.GetHoiTag(source_country.GetNumber());
    if (!tag.has_value())
@@ -208,6 +260,11 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
       ideas.insert("decentralized");
    }
 
+   mappers::GraphicsBlock graphics_block =
+       culture_graphics_mapper.MatchPrimaryCulturesToGraphics(source_country.GetPrimaryCultures(), source_cultures);
+   NameList name_list =
+       ConvertNameList(source_country.GetPrimaryCultures(), source_cultures, source_localizations, sub_ideology);
+
    return Country({.tag = *tag,
        .color = source_country.GetColor(),
        .capital_state = capital_state,
@@ -219,5 +276,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        .ship_variants = active_ship_variants,
        .plane_variants = active_plane_variants,
        .tank_variants = active_tank_variants,
-       .ideas = ideas});
+       .ideas = ideas,
+       .graphics_block = graphics_block,
+       .name_list = name_list});
 }

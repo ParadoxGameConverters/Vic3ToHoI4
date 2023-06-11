@@ -10,11 +10,21 @@
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/technology/technologies.h"
 #include "src/mappers/country/country_mapper.h"
-
+#include "src/mappers/culture/culture_graphics_mapping.h"
 
 
 namespace hoi4
 {
+struct NameList
+{
+   std::set<std::string> male_names;
+   std::set<std::string> female_names;
+   std::set<std::string> surnames;
+   std::set<std::string> male_surnames;
+   std::set<std::string> female_surnames;
+
+   std::partial_ordering operator<=>(const NameList&) const = default;
+};
 
 struct CountryOptions
 {
@@ -30,6 +40,8 @@ struct CountryOptions
    std::vector<EquipmentVariant> plane_variants;
    std::vector<EquipmentVariant> tank_variants;
    std::set<std::string> ideas;
+   mappers::GraphicsBlock graphics_block;
+   NameList name_list;
 };
 
 
@@ -48,7 +60,9 @@ class Country
        ship_variants_(std::move(country_options.ship_variants)),
        plane_variants_(std::move(country_options.plane_variants)),
        tank_variants_(std::move(country_options.tank_variants)),
-       ideas_(std::move(country_options.ideas))
+       ideas_(std::move(country_options.ideas)),
+       graphics_block_(std::move(country_options.graphics_block)),
+       name_list_(std::move(country_options.name_list))
    {
    }
 
@@ -67,6 +81,8 @@ class Country
    [[nodiscard]] const std::vector<EquipmentVariant>& GetPlaneVariants() const { return plane_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetTankVariants() const { return tank_variants_; }
    [[nodiscard]] const std::set<std::string>& GetIdeas() const { return ideas_; }
+   [[nodiscard]] const mappers::GraphicsBlock& GetGraphicsBlock() const { return graphics_block_; }
+   [[nodiscard]] const NameList& GetNameList() const { return name_list_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
@@ -84,6 +100,8 @@ class Country
    std::vector<EquipmentVariant> plane_variants_;
    std::vector<EquipmentVariant> tank_variants_;
    std::set<std::string> ideas_;
+   mappers::GraphicsBlock graphics_block_;
+   NameList name_list_;
 };
 
 }  // namespace hoi4

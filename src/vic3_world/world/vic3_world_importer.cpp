@@ -22,6 +22,7 @@
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/country_rankings/country_rankings.h"
 #include "src/vic3_world/country_rankings/country_rankings_importer.h"
+#include "src/vic3_world/cultures/culture_definitions_importer.h"
 #include "src/vic3_world/cultures/cultures_importer.h"
 #include "src/vic3_world/elections/elections_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
@@ -106,6 +107,22 @@ std::istringstream MeltSave(const rakaly::GameFile& save, const std::string& sav
 }
 
 
+void AssignCulturesToCountries(const std::map<int, vic3::Country>& countries,
+    const std::map<int, std::string>& cultures)
+{
+   for (const auto& country: countries | std::ranges::views::values)
+   {
+      std::set<std::string> primary_cultures;
+      for (const auto& id: country.GetPrimaryCultureIds())
+      {
+         if (const auto culture_itr = cultures.find(id); culture_itr != cultures.end())
+         {
+            primary_cultures.emplace(culture_itr->second);
+         }
+      }
+   }
+}
+
 void AssignOwnersToStates(const std::map<int, vic3::Country>& countries, std::map<int, vic3::State>& states)
 {
    for (auto& [state_number, state]: states)
@@ -174,6 +191,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
            "spanish",
            "turkish"});
    localizations.ScrapeLocalizations(mod_filesystem, "localization");
+   const auto culture_definitions = ImportCultureDefinitions(mod_filesystem);
    Log(LogLevel::Progress) << "5 %";
 
    Log(LogLevel::Info) << "-> Reading Vic3 save.";
@@ -241,6 +259,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Log(LogLevel::Info) << fmt::format("\t{} in goods being sold", buildings.GetTotalGoodSalesValueInWorld());
    Log(LogLevel::Progress) << "15 %";
 
+   AssignCulturesToCountries(countries, cultures);
    AssignOwnersToStates(countries, states);
 
    return World({.countries = countries,
@@ -250,5 +269,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        .acquired_technologies = acquired_technologies,
        .buildings = buildings,
        .country_rankings = country_rankings,
-       .localizations = localizations});
+       .localizations = localizations,
+       .culture_definitions = culture_definitions});
 }

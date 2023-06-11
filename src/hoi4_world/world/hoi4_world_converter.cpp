@@ -216,6 +216,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    const std::map<int, vic3::Country>& source_countries = source_world.GetCountries();
    countries = ConvertCountries(source_countries,
        source_world.GetAcquiredTechnologies(),
+       source_world.GetCultureDefinitions(),
+       source_world.GetLocalizations(),
        country_mapper,
        states.vic3_state_ids_to_hoi4_state_ids,
        states.states,

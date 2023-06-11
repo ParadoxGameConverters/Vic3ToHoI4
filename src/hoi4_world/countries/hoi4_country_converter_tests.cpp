@@ -19,6 +19,8 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -27,9 +29,12 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
    const auto country_two = ConvertCountry(source_country_two,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -38,7 +43,8 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetTag(), "T00");
@@ -58,6 +64,8 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -66,7 +74,8 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    EXPECT_EQ(country_one, std::nullopt);
 }
@@ -80,6 +89,8 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -88,7 +99,8 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    EXPECT_EQ(country_one, std::nullopt);
 }
@@ -104,6 +116,8 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        vic3_state_ids_to_hoi4_state_ids,
        {},
@@ -112,9 +126,12 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
    const auto country_two = ConvertCountry(source_country_two,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        vic3_state_ids_to_hoi4_state_ids,
        {},
@@ -123,7 +140,8 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::optional(4));
@@ -143,6 +161,8 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        vic3_state_ids_to_hoi4_state_ids,
        {},
@@ -151,7 +171,8 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
@@ -165,6 +186,8 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStat
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -173,7 +196,8 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStat
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
@@ -187,6 +211,8 @@ TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNo
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {
@@ -199,7 +225,8 @@ TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNo
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::optional(2));
@@ -213,6 +240,8 @@ TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVps
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {
@@ -225,7 +254,8 @@ TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVps
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::optional(2));
@@ -239,6 +269,8 @@ TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfInd
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {
@@ -251,7 +283,8 @@ TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfInd
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::optional(2));
@@ -265,6 +298,8 @@ TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersA
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {
@@ -277,7 +312,8 @@ TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersA
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::optional(1));
@@ -291,6 +327,8 @@ TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapi
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {State(1, {}), State(2, {.owner = "TWO"})},
@@ -299,7 +337,8 @@ TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapi
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
@@ -313,6 +352,8 @@ TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -321,7 +362,8 @@ TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one.value().GetLastElection(), date("1933.1.1"));
@@ -335,6 +377,8 @@ TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -343,7 +387,8 @@ TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one.value().GetLastElection(), date("1934.4.23"));
@@ -357,6 +402,8 @@ TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -365,7 +412,8 @@ TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one.value().GetLastElection(), date("1933.2.15"));
@@ -379,6 +427,8 @@ TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -387,7 +437,8 @@ TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one.value().GetLastElection(), date("1935.11.4"));
@@ -401,6 +452,8 @@ TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -409,7 +462,8 @@ TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one.value().GetLastElection(), date("1932.10.14"));
@@ -424,6 +478,8 @@ TEST(Hoi4worldCountriesCountryConverter, InYearPastElectionsAreNextCycle)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -432,7 +488,8 @@ TEST(Hoi4worldCountriesCountryConverter, InYearPastElectionsAreNextCycle)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one.value().GetLastElection(), date("1936.1.1"));
@@ -451,10 +508,35 @@ TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)
        },
        {});
 
-   const std::optional<Country> country_one =
-       ConvertCountry(source_country_one, {}, country_mapper, {}, {}, ideology_mapper, {}, {}, {}, {}, {});
-   const std::optional<Country> country_two =
-       ConvertCountry(source_country_two, {}, country_mapper, {}, {}, ideology_mapper, {}, {}, {}, {}, {});
+   const std::optional<Country> country_one = ConvertCountry(source_country_one,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       ideology_mapper,
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}});
+
+   const std::optional<Country> country_two = ConvertCountry(source_country_two,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       ideology_mapper,
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetIdeology(), "neutrality");
@@ -485,10 +567,35 @@ TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)
            },
        });
 
-   const std::optional<Country> country_one =
-       ConvertCountry(source_country_one, {}, country_mapper, {}, {}, ideology_mapper, {}, {}, {}, {}, {});
-   const std::optional<Country> country_two =
-       ConvertCountry(source_country_two, {}, country_mapper, {}, {}, ideology_mapper, {}, {}, {}, {}, {});
+   const std::optional<Country> country_one = ConvertCountry(source_country_one,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       ideology_mapper,
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}});
+
+   const std::optional<Country> country_two = ConvertCountry(source_country_two,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       ideology_mapper,
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetSubIdeology(), "despotism");
@@ -504,6 +611,8 @@ TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
 
    const auto country_one = ConvertCountry(source_country_one,
        {"source_tech"},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -512,7 +621,8 @@ TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetTechnologies().GetTechnologies(),
@@ -528,6 +638,8 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
 
    const auto country_one = ConvertCountry(source_country_one,
        {"source_tech"},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -576,7 +688,8 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
            EquipmentVariant({"required_tech_one", "required_tech_two"},
                {},
                {{"name", "tank: all_present_required_techs_succeeds"}}),
-       });
+       },
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetLegacyShipVariants(),
@@ -614,6 +727,8 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
 
    const auto country_one = ConvertCountry(source_country_one,
        {"source_tech"},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -650,7 +765,8 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
            EquipmentVariant({},
                {"blocking_tech_one", "blocking_tech_missing"},
                {{"name", "tank: missing_and_present_blocking_techs_fails"}}),
-       });
+       },
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetLegacyShipVariants(),
@@ -676,6 +792,8 @@ TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultsToEmpty)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -684,7 +802,8 @@ TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultsToEmpty)
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_TRUE(country_one->GetIdeas().empty());
@@ -698,6 +817,8 @@ TEST(Hoi4worldCountriesCountryConverter, DecentrailzedCountriesGetDecentralizedI
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
        {},
@@ -706,10 +827,75 @@ TEST(Hoi4worldCountriesCountryConverter, DecentrailzedCountriesGetDecentralizedI
        {},
        {},
        {},
-       {});
+       {},
+       mappers::CultureGraphicsMapper{{}});
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetIdeas(), testing::ElementsAre("decentralized"));
+}
+
+TEST(Hoi4worldCountriesCountryConverter, MonarchiesHaveNobleLeaders)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
+   const vic3::Country source_country_two(
+       {.number = 1, .active_laws = {"law_voting"}, .primary_cultures = {"culture"}});
+
+   const vic3::CultureDefinition culture_def{{},
+       {
+           .male_common_first = {"president"},
+           .female_common_first = {"presidentin"},
+           .common_last = {"doe"},
+           .noble_last = {"von Doe"},
+           .male_regal_first = {"king"},
+           .female_regal_first = {"queen"},
+       },
+       {},
+       {}};
+   const std::map<std::string, vic3::CultureDefinition> culture_definition{{"culture", culture_def}};
+
+   const mappers::IdeologyMapper ideology_mapper({}, {{"neutrality", {{"law_voting", {{"republic", 100}}}}}});
+
+   const std::optional<Country> country_one = ConvertCountry(source_country_one,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       ideology_mapper,
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}});
+
+   const std::optional<Country> country_two = ConvertCountry(source_country_two,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       ideology_mapper,
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetSubIdeology(), "despotism");
+   EXPECT_THAT(country_one->GetNameList().male_names, testing::ElementsAre("king"));
+   EXPECT_THAT(country_one->GetNameList().female_names, testing::ElementsAre("queen"));
+   EXPECT_THAT(country_one->GetNameList().surnames, testing::ElementsAre("von Doe"));
+   ASSERT_TRUE(country_two.has_value());
+   EXPECT_EQ(country_two->GetSubIdeology(), "republic");
+   EXPECT_THAT(country_two->GetNameList().male_names, testing::ElementsAre("president"));
+   EXPECT_THAT(country_two->GetNameList().female_names, testing::ElementsAre("presidentin"));
+   EXPECT_THAT(country_two->GetNameList().surnames, testing::ElementsAre("doe"));
 }
 
 }  // namespace hoi4

@@ -56,3 +56,167 @@
 #	graphical_culture = western_european_gfx
 #	graphical_culture_2d = western_european_2d
 #}
+
+### Vicky ethnicity fallbacks
+# Vanilla vic also has central_african and eastern_african defined, yet unused.
+african = {
+    ethnicity = { african central_african eastern_african }
+
+    army_portraits = {
+        gfx\leaders\Africa\Portrait_Africa_Generic_army_1.dds
+        gfx\leaders\Africa\Portrait_Africa_Generic_army_2.dds
+        gfx\leaders\Africa\Portrait_Africa_Generic_army_3.dds
+        gfx\leaders\Africa\Portrait_Africa_Generic_army_4.dds
+    }
+    navy_portraits = {
+        gfx\leaders\Africa\Portrait_Africa_Generic_navy_1.dds
+        gfx\leaders\Africa\Portrait_Africa_Generic_navy_2.dds
+        gfx\leaders\Africa\Portrait_Africa_Generic_navy_3.dds
+        gfx\leaders\Africa\Portrait_Africa_Generic_navy_4.dds
+    }
+    leader_portraits = {
+        communism = { gfx\leaders\Africa\Portrait_Africa_Generic_1.dds }
+        democratic = { gfx\leaders\Africa\Portrait_Africa_Generic_2.dds }
+        fascism = { gfx\leaders\Africa\Portrait_Africa_Generic_3.dds }
+        neutrality = { gfx\leaders\Africa\Portrait_Africa_Generic_4.dds }
+    }
+    female_portraits = {
+        gfx\leaders\ETH\portrait_ETH_generic_female_1.dds
+    }
+    ideology_minister_portraits = {
+        communism = { gfx\leaders\ETH\portrait_ETH_generic_male_1.dds }
+        democratic = { gfx\leaders\ETH\portrait_ETH_generic_male_2.dds }
+        fascism = { gfx\leaders\ETH\portrait_ETH_generic_male_3.dds }
+        neutrality = { gfx\leaders\ETH\portrait_ETH_generic_male_4.dds }
+    }
+    male_operative_portraits = {
+        gfx\leaders\Africa\portrait_africa_generic_operative_male_1.dds
+    }
+    female_operative_portraits = {
+        gfx\leaders\Africa\portrait_africa_generic_operative_female_1.dds
+    }
+    male_monarch_portraits = {
+        gfx\leaders\ETH\Portrait_Ethiopia_Haile_Selassie.dds
+    }
+    female_monarch_portraits = {
+        gfx\leaders\ETH\portrait_ETH_generic_female_3.dds
+    }
+    graphical_culture = african_gfx
+    graphical_culture_2d = african_2d
+}
+
+arab = {
+    ethnicity = { arab }
+
+    graphical_culture = middle_eastern_gfx
+    graphical_culture_2d = middle_eastern_2d
+}
+
+asian = {
+    ethnicity = { asian }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+caucasian = {
+    ethnicity = { caucasian }
+
+    army_portraits = {
+        gfx\leaders\Europe\Portrait_Europe_Generic_land_1.dds
+        gfx\leaders\Europe\Portrait_Europe_Generic_land_2.dds
+        gfx\leaders\Europe\Portrait_Europe_Generic_land_3.dds
+        gfx\leaders\Europe\Portrait_Europe_Generic_land_4.dds
+        gfx\leaders\Europe\Portrait_Europe_Generic_land_5.dds
+        gfx\leaders\Europe\portrait_europe_generic_land_13.dds
+        gfx\leaders\Europe\portrait_europe_generic_land_19.dds
+    }
+
+    navy_portraits = {
+        gfx\leaders\Europe\Portrait_Europe_Generic_navy_1.dds
+        gfx\leaders\Europe\Portrait_Europe_Generic_navy_2.dds
+        gfx\leaders\Europe\Portrait_Europe_Generic_navy_3.dds
+    }
+
+    graphical culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+central_asian = {
+    ethnicity = { central_asian }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+circumpolar = {
+    ethnicity = { circumpolar }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+indian = {
+    ethnicity = { indian }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+native_american = {
+    ethnicity = { native_american }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+polynesian = {
+    ethnicity = { polynesian }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+slavic = {
+    ethnicity = { slavic }
+
+    graphical_culture = eastern_european_gfx
+    graphical_culture_2d = eastern_european_2d
+}
+
+south_american = { # Brazilian and such, european heritage
+    ethnicity = { south_american }
+
+    graphical_culture = southamerican_gfx
+    graphical_culture_2d = southamerican_2d
+}
+
+south_east_asian = {
+    ethnicity = { south_east_asian }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+### Group based
+nordic = {
+    traits = { scandinavian finnic }
+
+    graphical culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+### Specific
+german = {
+    culture = { north_german south_german }
+
+    graphical culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+japanese = {
+    culture = { japanese }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}

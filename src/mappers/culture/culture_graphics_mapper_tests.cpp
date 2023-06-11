@@ -63,6 +63,10 @@ GraphicsBlock blocks1_2{{{"army1", "army2"},
 std::vector<CultureGraphicsMapping> mappings{{{"cul0", "cul1"}, {}, {}, block0},
     {{}, {"trait0", "trait3"}, {}, block1},
     {{}, {"trait1"}, {"eth0"}, block2}};
+
+std::map<std::string, vic3::CultureDefinition> culture_defs{
+    {"cul2", vic3::CultureDefinition({"cul2"}, {}, {"trait0"}, {"eth2"})},
+    {"cul20", vic3::CultureDefinition({"cul20"}, {}, {"trait2"}, {"eth0"})}};
 }  // namespace
 
 
@@ -131,5 +135,12 @@ TEST(MappersCultureCultureGraphicsMapperTests, MultiMatchDoesntDuplicate)
    EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(
                  vic3::CultureDefinition({"cul2"}, {}, {"trait0", "trait3"}, {"eth0"})),
        block1);
+}
+
+TEST(MappersCultureCultureGraphicsMapperTests, MatchPrimaryCulturesMatchesMultiple)
+{
+   const CultureGraphicsMapper culture_graphics_mapper({mappings});
+
+   EXPECT_EQ(culture_graphics_mapper.MatchPrimaryCulturesToGraphics({"cul2", "cul20"}, culture_defs), blocks1_2);
 }
 }  // namespace mappers

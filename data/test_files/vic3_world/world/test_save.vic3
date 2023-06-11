@@ -9,10 +9,12 @@ country_manager={
 0=none
 1={
 	definition="TAG"
+	cultures={ 0 }
 }
 2=none
 3={
 	definition="TWO"
+	cultures={ 1 }
 }
 	}
 }
@@ -84,6 +86,16 @@ laws={
 	law=law_monarchy	country=1
 	active=yes
 	activation_date=1836.1.1
+}
+	}
+}
+cultures = {
+	database={
+0 = {
+	type=welsh
+}
+1 = {
+	type=scottish
 }
 	}
 }

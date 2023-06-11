@@ -38,6 +38,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
            {1, {"source_technology_one"}},
            {2, {"source_technology_two"}},
        },
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {
            {1, 10},
