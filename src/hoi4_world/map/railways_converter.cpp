@@ -93,6 +93,59 @@ std::vector<std::pair<int, int>> ConvertVic3EndpointsToHoi4Endpoints(
 }
 
 
+std::optional<float> GetInfrastructureLevel(int province, const hoi4::States& states)
+{
+   const auto state_itr = states.province_to_state_id_map.find(province);
+   if (state_itr == states.province_to_state_id_map.end())
+   {
+      return std::nullopt;
+   }
+
+   if (states.states.size() < state_itr->second)
+   {
+      return std::nullopt;
+   }
+
+   return states.states.at(state_itr->second - 1).GetVic3Infrastructure();
+}
+
+
+int DetermineRailwayLevel(int start_province, int end_province, const hoi4::States& states)
+{
+   const std::optional<float> start_infrastructure = GetInfrastructureLevel(start_province, states);
+   if (!start_infrastructure)
+   {
+      return 0;
+   }
+
+   const std::optional<float> end_infrastructure = GetInfrastructureLevel(end_province, states);
+   if (!end_infrastructure)
+   {
+      return 0;
+   }
+
+   const float total_infrastructure = *start_infrastructure + *end_infrastructure;
+   if (total_infrastructure > 3500.0F)
+   {
+      return 4;
+   }
+   if (total_infrastructure > 2800.0F)
+   {
+      return 3;
+   }
+   if (total_infrastructure > 560.0F)
+   {
+      return 2;
+   }
+   if (total_infrastructure > 330.0F)
+   {
+      return 1;
+   }
+
+   return 1;
+}
+
+
 constexpr float urban_cost = 1.F;
 constexpr float plains_cost = 2.F;
 constexpr float forest_cost = 3.F;
@@ -285,13 +338,19 @@ void BuildPath(int start_province,
 
 
 std::vector<hoi4::PossiblePath> FindAllHoi4Paths(const std::vector<std::pair<int, int>>& hoi4_endpoints,
+    const hoi4::States& states,
     const maps::MapData& hoi4_map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions)
 {
    std::vector<hoi4::PossiblePath> possible_paths;
    for (const auto& [start_point, end_point]: hoi4_endpoints)
    {
-      BuildPath(start_point, end_point, 3, hoi4_map_data, hoi4_province_definitions, possible_paths);
+      BuildPath(start_point,
+          end_point,
+          DetermineRailwayLevel(start_point, end_point, states),
+          hoi4_map_data,
+          hoi4_province_definitions,
+          possible_paths);
    }
 
    return possible_paths;
@@ -465,7 +524,7 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
          const std::vector<std::pair<int, int>> interstate_connections =
              EnumerateAllInterstateConnections(state_significant_provinces, neighbor_significant_provinces);
          std::vector<hoi4::PossiblePath> all_interstate_paths =
-             FindAllHoi4Paths(interstate_connections, hoi4_map_data, hoi4_province_definitions);
+             FindAllHoi4Paths(interstate_connections, hoi4_states, hoi4_map_data, hoi4_province_definitions);
          if (all_interstate_paths.empty())
          {
             continue;
@@ -687,7 +746,7 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
        ConvertVic3EndpointsToHoi4Endpoints(vic3_endpoints, province_mapper);
 
    const std::vector<hoi4::PossiblePath> intrastate_paths =
-       FindAllHoi4Paths(intrastate_hoi4_endpoints, hoi4_map_data, hoi4_province_definitions);
+       FindAllHoi4Paths(intrastate_hoi4_endpoints, hoi4_states, hoi4_map_data, hoi4_province_definitions);
    const std::vector<hoi4::PossiblePath> interstate_paths = ConnectStatesWithRailways(vic3_state_regions,
        province_mapper,
        hoi4_states,
