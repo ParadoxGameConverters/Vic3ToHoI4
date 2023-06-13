@@ -14,44 +14,46 @@
 #	ethnicity = { caucasian }
 #
 #	army_portraits = {
-#		"gfx/leaders/GER/sample_portrait_land.dds"
-#		"gfx/leaders/GER/sample_portrait_land2.dds"
+#		GFX_Portrait_Africa_Generic_land_1
+#       GFX_Portrait_Africa_Generic_land_2
+#       GFX_Portrait_Africa_Generic_land_3
+#       GFX_Portrait_Africa_Generic_land_4
 #	}
 #	navy_portraits = {
-#		"gfx/leaders/GER/sample_portrait_navy.dds"
-#		"gfx/leaders/GER/sample_portrait_navy2.dds"
+#		GFX_Portrait_GER_sample_portrait_navy
+#		GFX_Portrait_GER_sample_portrait_navy2
 #	}
 #	leader_portraits = {
-#		communism = { "gfx/leaders/GER/sample_portrait_communism.dds" }
-#		democratic = { "gfx/leaders/GER/sample_portrait_democratic.dds" }
-#		fascism = { "gfx/leaders/GER/sample_portrait_fascism.dds" "gfx/leaders/GER/sample_portrait_fascism2.dds" }
-#		neutrality = { "sample_portrait_neutrality" }
+#		communism = { GFX_Portrait_GER_sample_portrait_communism }
+#		democratic = { GFX_Portrait_GER_sample_portrait_democratic }
+#		fascism = { GFX_Portrait_GER_sample_portrait_fascism }
+#		neutrality = { GFX_Portrait_sample_portrait_neutrality }
 #	}
 #	female_portraits = {
-#		"gfx/leaders/GER/sample_portrait_Hitler_Female.dds"
+#		GFX_Portrait_GER_sample_portrait_Hitler_Female
 #	}
 #	ideology_minister_portraits =
 #	{
-#		communism = { "gfx/interface/ideas/sample_portrait_communism.dds" }
-#		democratic = { "gfx/interface/ideas/sample_portrait_democratic.dds" }
-#		fascism = { "gfx/interface/ideas/sample_portrait_fascism.dds" "gfx/interface/ideas/sample_portrait_fascism2.dds" }
-#		neutrality = { "gfx/interface/ideas/sample_portrait_neutrality.dds" }
+#		communism = { GFX_Portrait_sample_portrait_communism }
+#		democratic = { GFX_Portrait_sample_portrait_democratic }
+#		fascism = { GFX_Portrait_sample_portrait_fascism }
+#		neutrality = { GFX_Portrait_sample_portrait_neutrality }
 #	}
 #	male_operative_portraits =
 #	{
-#		"sample_male_operative.dds"
-#		"sample_male_operative2.dds"
+#		 GFX_Portrait_sample_male_operative
+#		 GFX_Portrait_sample_male_operative2
 #	}
 #	female_operative_portraits =
 #	{
-#		"sample_female_operative.dds"
-#		"sample_female_operative2.dds"
+#		 GFX_Portrait_sample_female_operative
+#		 GFX_Portrait_sample_female_operative2
 #	}
 #	male_monarch_portraits = {
-#		"gfx/interface/ideas/crowns/sample.dds"
+#		 GFX_Portrait_crowns_sample
 #	}
 #	female_monarch_portraits = {
-#		"gfx/interface/ideas/crowns/sample.dds"
+#		GFX_Portrait_crowns_sample
 #	}
 #	graphical_culture = western_european_gfx
 #	graphical_culture_2d = western_european_2d
@@ -63,43 +65,34 @@ african = {
     ethnicity = { african central_african eastern_african }
 
     army_portraits = {
-        gfx\leaders\Africa\Portrait_Africa_Generic_army_1.dds
-        gfx\leaders\Africa\Portrait_Africa_Generic_army_2.dds
-        gfx\leaders\Africa\Portrait_Africa_Generic_army_3.dds
-        gfx\leaders\Africa\Portrait_Africa_Generic_army_4.dds
+        GFX_Portrait_Africa_Generic_land_1
+        GFX_Portrait_Africa_Generic_land_2
+        GFX_Portrait_Africa_Generic_land_3
+        GFX_Portrait_Africa_Generic_land_4
     }
     navy_portraits = {
-        gfx\leaders\Africa\Portrait_Africa_Generic_navy_1.dds
-        gfx\leaders\Africa\Portrait_Africa_Generic_navy_2.dds
-        gfx\leaders\Africa\Portrait_Africa_Generic_navy_3.dds
-        gfx\leaders\Africa\Portrait_Africa_Generic_navy_4.dds
     }
     leader_portraits = {
-        communism = { gfx\leaders\Africa\Portrait_Africa_Generic_1.dds }
-        democratic = { gfx\leaders\Africa\Portrait_Africa_Generic_2.dds }
-        fascism = { gfx\leaders\Africa\Portrait_Africa_Generic_3.dds }
-        neutrality = { gfx\leaders\Africa\Portrait_Africa_Generic_4.dds }
+        communism = {  }
+        democratic = {  }
+        fascism = {  }
+        neutrality = {  }
     }
     female_portraits = {
-        gfx\leaders\ETH\portrait_ETH_generic_female_1.dds
     }
     ideology_minister_portraits = {
-        communism = { gfx\leaders\ETH\portrait_ETH_generic_male_1.dds }
-        democratic = { gfx\leaders\ETH\portrait_ETH_generic_male_2.dds }
-        fascism = { gfx\leaders\ETH\portrait_ETH_generic_male_3.dds }
-        neutrality = { gfx\leaders\ETH\portrait_ETH_generic_male_4.dds }
+        communism = {  }
+        democratic = {  }
+        fascism = {  }
+        neutrality = {  }
     }
     male_operative_portraits = {
-        gfx\leaders\Africa\portrait_africa_generic_operative_male_1.dds
     }
     female_operative_portraits = {
-        gfx\leaders\Africa\portrait_africa_generic_operative_female_1.dds
     }
     male_monarch_portraits = {
-        gfx\leaders\ETH\Portrait_Ethiopia_Haile_Selassie.dds
     }
     female_monarch_portraits = {
-        gfx\leaders\ETH\portrait_ETH_generic_female_3.dds
     }
     graphical_culture = african_gfx
     graphical_culture_2d = african_2d
@@ -123,19 +116,9 @@ caucasian = {
     ethnicity = { caucasian }
 
     army_portraits = {
-        gfx\leaders\Europe\Portrait_Europe_Generic_land_1.dds
-        gfx\leaders\Europe\Portrait_Europe_Generic_land_2.dds
-        gfx\leaders\Europe\Portrait_Europe_Generic_land_3.dds
-        gfx\leaders\Europe\Portrait_Europe_Generic_land_4.dds
-        gfx\leaders\Europe\Portrait_Europe_Generic_land_5.dds
-        gfx\leaders\Europe\portrait_europe_generic_land_13.dds
-        gfx\leaders\Europe\portrait_europe_generic_land_19.dds
     }
 
     navy_portraits = {
-        gfx\leaders\Europe\Portrait_Europe_Generic_navy_1.dds
-        gfx\leaders\Europe\Portrait_Europe_Generic_navy_2.dds
-        gfx\leaders\Europe\Portrait_Europe_Generic_navy_3.dds
     }
 
     graphical culture = western_european_gfx
@@ -170,6 +153,13 @@ native_american = {
     graphical_culture_2d = asian_2d
 }
 
+north_caucasian = {
+    ethnicity = { north_caucasian }
+
+    graphical_culture = eastern_european_gfx
+    graphical_culture_2d = eastern_european_2d
+}
+
 polynesian = {
     ethnicity = { polynesian }
 
@@ -202,7 +192,7 @@ south_east_asian = {
 nordic = {
     traits = { scandinavian finnic }
 
-    graphical culture = western_european_gfx
+    graphical_culture = western_european_gfx
     graphical_culture_2d = western_european_2d
 }
 
@@ -210,7 +200,7 @@ nordic = {
 german = {
     cultures = { north_german south_german }
 
-    graphical culture = western_european_gfx
+    graphical_culture = western_european_gfx
     graphical_culture_2d = western_european_2d
 }
 
