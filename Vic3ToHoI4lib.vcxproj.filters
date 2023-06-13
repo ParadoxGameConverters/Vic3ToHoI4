@@ -665,9 +665,6 @@
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer.cpp">
       <Filter>src\mappers\ideology</Filter>
     </ClCompile>
-    <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp">
-      <Filter>src\hoi4_world\countries</Filter>
-    </ClCompile>
     <ClCompile Include="src\vic3_world\elections\elections_importer.cpp">
       <Filter>src\vic3_world\elections</Filter>
     </ClCompile>

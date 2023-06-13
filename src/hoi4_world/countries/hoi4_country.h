@@ -34,6 +34,7 @@ struct CountryOptions
    std::string ideology = "neutrality";
    std::string sub_ideology = "despotism";
    date last_election{1933, 1, 1};
+   bool has_elections;
    Technologies technologies;
    std::vector<EquipmentVariant> legacy_ship_variants;
    std::vector<EquipmentVariant> ship_variants;
@@ -55,6 +56,7 @@ class Country
        ideology_(std::move(country_options.ideology)),
        sub_ideology_(std::move(country_options.sub_ideology)),
        last_election_(country_options.last_election),
+       has_elections_(country_options.has_elections),
        technologies_(std::move(country_options.technologies)),
        legacy_ship_variants_(std::move(country_options.legacy_ship_variants)),
        ship_variants_(std::move(country_options.ship_variants)),
@@ -66,7 +68,7 @@ class Country
    {
    }
 
-   [[nodiscard]] bool AreElectionsAllowed() const;
+   [[nodiscard]] bool AreElectionsAllowed() const { return has_elections_; }
 
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
@@ -94,6 +96,7 @@ class Country
    std::string sub_ideology_ = "despotism";
    std::map<std::string, int> ideology_support_{{"neutrality", 100}};
    date last_election_{1933, 1, 1};
+   bool has_elections_ = false;
    Technologies technologies_;
    std::vector<EquipmentVariant> legacy_ship_variants_;
    std::vector<EquipmentVariant> ship_variants_;

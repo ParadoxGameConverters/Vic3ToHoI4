@@ -281,6 +281,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        .ideology = ideology,
        .sub_ideology = sub_ideology,
        .last_election = last_election,
+       .has_elections = source_country.GetLastElection().has_value(),
        .technologies = technologies,
        .legacy_ship_variants = active_legacy_ship_variants,
        .ship_variants = active_ship_variants,
