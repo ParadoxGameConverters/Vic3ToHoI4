@@ -120,6 +120,7 @@
     <ClCompile Include="src\vic3_world\buildings\buildings_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\buildings\buildings_tests.cpp" />
     <ClCompile Include="src\vic3_world\buildings\building_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\characters\characters_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\country_definitions_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer_tests.cpp" />

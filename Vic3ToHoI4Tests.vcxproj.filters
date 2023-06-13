@@ -133,6 +133,9 @@
     <Filter Include="src\out_hoi4\portraits">
       <UniqueIdentifier>{bac77715-c87e-4fe0-940b-37d8437d0fc9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\characters">
+      <UniqueIdentifier>{f81f8e46-a3c8-4ed3-b66b-4240d2f9c132}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -374,6 +377,9 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\portraits\out_portraits_tests.cpp">
       <Filter>src\out_hoi4\portraits</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\characters\characters_importer_tests.cpp">
+      <Filter>src\vic3_world\characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
