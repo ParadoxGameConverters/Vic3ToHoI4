@@ -46,7 +46,7 @@ class World
        buildings_(std::move(world_options.buildings)),
        country_rankings_(std::move(world_options.country_rankings)),
        localizations_(std::move(world_options.localizations)),
-       culture_definitions_(std::move(culture_definitions_))
+       culture_definitions_(std::move(world_options.culture_definitions))
    {
    }
 

@@ -1,5 +1,5 @@
-#ifndef OUTHOI4_MAP_OUTNAMES_H
-#define OUTHOI4_MAP_OUTNAMES_H
+#ifndef OUTHOI4_NAMES_OUTNAMES_H
+#define OUTHOI4_NAMES_OUTNAMES_H
 
 
 
@@ -12,10 +12,10 @@
 namespace out
 {
 
-void OutputNames(std::string_view output_name, const std::vector<hoi4::Country>& countries);
+void OutputNames(std::string_view output_name, const std::map<std::string, hoi4::Country>& countries);
 
 }  // namespace out
 
 
 
-#endif  // OUTHOI4_MAP_OUTNAMES_H
+#endif  // OUTHOI4_NAMES_OUTNAMES_H

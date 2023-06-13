@@ -36,8 +36,8 @@ class Country
        capital_state_(options.capital_state),
        country_type_(std::move(options.country_type)),
        active_laws_(std::move(options.active_laws)),
-       primary_culture_ids_(std::move(options.primary_culture_ids)),
        primary_cultures_(std::move(options.primary_cultures)),
+       primary_culture_ids_(std::move(options.primary_culture_ids)),
        last_election_(options.last_election)
    {
    }
@@ -54,6 +54,7 @@ class Country
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
+   void AddPrimaryCulture(std::string culture) { primary_cultures_.emplace(culture); }
 
    bool operator==(const Country&) const = default;
 

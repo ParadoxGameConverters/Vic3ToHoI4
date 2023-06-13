@@ -185,6 +185,7 @@ std::set<std::string> ConvertNameSet(const std::set<std::string>& vic_names,
    {
       hoi_names.emplace(ConvertName(vic_name, vic_localizations));
    }
+   return hoi_names;
 }
 
 hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
@@ -199,8 +200,9 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
       {
          const auto& vic_list = culture_itr->second.GetNameList();
 
-         // If conservative monarchy use royal names
-         if (sub_ideology == "despotic" || sub_ideology == "oligarchism")
+         // If conservative monarchy try to use royal names
+         if (sub_ideology == "despotism" ||
+             sub_ideology == "oligarchism")  // Make this specific to non-voting monarchies later
          {
             name_list.male_names = ConvertNameSet(vic_list.male_regal_first, vic_localizations);
             name_list.female_names = ConvertNameSet(vic_list.female_regal_first, vic_localizations);
@@ -208,9 +210,17 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
          }
          else
          {
-            name_list.male_names = ConvertNameSet(vic_list.male_common_first, vic_localizations);
-            name_list.female_names = ConvertNameSet(vic_list.female_common_first, vic_localizations);
             name_list.surnames = ConvertNameSet(vic_list.common_last, vic_localizations);
+         }
+
+         // The royal first names can often be empty
+         if (name_list.male_names.empty())
+         {
+            name_list.male_names = ConvertNameSet(vic_list.male_common_first, vic_localizations);
+         }
+         if (name_list.female_names.empty())
+         {
+            name_list.female_names = ConvertNameSet(vic_list.female_common_first, vic_localizations);
          }
       }
    }

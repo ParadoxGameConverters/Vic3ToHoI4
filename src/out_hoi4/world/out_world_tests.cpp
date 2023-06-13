@@ -22,6 +22,7 @@ void CreateTestFolders(std::string_view test_name)
    commonItems::TryCreateFolder(fmt::format("output/{}/common/bookmarks", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/countries", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/country_tags", test_name));
+   commonItems::TryCreateFolder(fmt::format("output/{}/common/names", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history/countries", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history/states", test_name));
@@ -29,6 +30,7 @@ void CreateTestFolders(std::string_view test_name)
    commonItems::TryCreateFolder(fmt::format("output/{}/localisation", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/map", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/map/strategicregions", test_name));
+   commonItems::TryCreateFolder(fmt::format("output/{}/portraits", test_name));
 }
 
 }  // namespace
@@ -68,6 +70,17 @@ TEST(Outhoi4WorldOutworld, TagsFileIsCreated)
    EXPECT_EQ(country_file_stream.str(),
        "TAG = \"countries/TAG.txt\"\n"
        "TWO = \"countries/TWO.txt\"\n");
+}
+
+
+TEST(Outhoi4WorldOutworld, NamesFileIsCreated)
+{
+   CreateTestFolders("WorldNamesFileIsCreated");
+
+   OutputWorld("WorldNamesFileIsCreated",
+       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/WorldNamesFileIsCreated/common/names/converter_names.txt"));
 }
 
 
@@ -186,6 +199,17 @@ TEST(Outhoi4WorldOutworld, SupplyNodesFileIsCreatedAndOutput)
 }
 
 
+TEST(Outhoi4WorldOutworld, PortraitsFileIsCreated)
+{
+   CreateTestFolders("WorldPortraitsFileIsCreated");
+
+   OutputWorld("WorldPortraitsFileIsCreated",
+       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/WorldPortraitsFileIsCreated/portraits/converter_portraits.txt"));
+}
+
+
 TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
 {
    CreateTestFolders("LocalizationsAreOutput");
@@ -281,8 +305,10 @@ TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
    commonItems::TryCreateFolder("output/BookmarkIsOutput/common");
    commonItems::TryCreateFolder("output/BookmarkIsOutput/common/bookmarks");
    commonItems::TryCreateFolder("output/BookmarkIsOutput/common/country_tags");
+   commonItems::TryCreateFolder("output/BookmarkIsOutput/common/names");
    commonItems::TryCreateFolder("output/BookmarkIsOutput/map");
    commonItems::TryCreateFolder("output/BookmarkIsOutput/map/strategicregions");
+   commonItems::TryCreateFolder("output/BookmarkIsOutput/portraits");
 
    OutputWorld("BookmarkIsOutput",
        hoi4::World({

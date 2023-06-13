@@ -208,14 +208,14 @@ nordic = {
 
 ### Specific
 german = {
-    culture = { north_german south_german }
+    cultures = { north_german south_german }
 
     graphical culture = western_european_gfx
     graphical_culture_2d = western_european_2d
 }
 
 japanese = {
-    culture = { japanese }
+    cultures = { japanese }
 
     graphical_culture = asian_gfx
     graphical_culture_2d = asian_2d

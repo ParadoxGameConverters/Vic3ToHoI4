@@ -107,17 +107,15 @@ std::istringstream MeltSave(const rakaly::GameFile& save, const std::string& sav
 }
 
 
-void AssignCulturesToCountries(const std::map<int, vic3::Country>& countries,
-    const std::map<int, std::string>& cultures)
+void AssignCulturesToCountries(std::map<int, vic3::Country>& countries, const std::map<int, std::string>& cultures)
 {
-   for (const auto& country: countries | std::ranges::views::values)
+   for (auto& country: countries | std::ranges::views::values)
    {
-      std::set<std::string> primary_cultures;
       for (const auto& id: country.GetPrimaryCultureIds())
       {
          if (const auto culture_itr = cultures.find(id); culture_itr != cultures.end())
          {
-            primary_cultures.emplace(culture_itr->second);
+            country.AddPrimaryCulture(culture_itr->second);
          }
       }
    }

@@ -462,6 +462,12 @@
     <ClInclude Include="src\out_hoi4\portraits\out_portraits.h">
       <Filter>src\out_hoi4\portraits</Filter>
     </ClInclude>
+    <ClInclude Include="src\out_hoi4\names\out_name_list.h">
+      <Filter>src\out_hoi4\names</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\portraits\out_portrait_paths.h">
+      <Filter>src\out_hoi4\portraits</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -693,6 +699,12 @@
       <Filter>src\out_hoi4\names</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\portraits\out_portraits.cpp">
+      <Filter>src\out_hoi4\portraits</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\names\out_name_list.cpp">
+      <Filter>src\out_hoi4\names</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\portraits\out_portrait_paths.cpp">
       <Filter>src\out_hoi4\portraits</Filter>
     </ClCompile>
   </ItemGroup>

@@ -841,7 +841,7 @@ TEST(Hoi4worldCountriesCountryConverter, MonarchiesHaveNobleLeaders)
    const vic3::Country source_country_two(
        {.number = 1, .active_laws = {"law_voting"}, .primary_cultures = {"culture"}});
 
-   const vic3::CultureDefinition culture_def{{},
+   const vic3::CultureDefinition culture_def{"culture",
        {
            .male_common_first = {"president"},
            .female_common_first = {"presidentin"},
@@ -852,14 +852,23 @@ TEST(Hoi4worldCountriesCountryConverter, MonarchiesHaveNobleLeaders)
        },
        {},
        {}};
-   const std::map<std::string, vic3::CultureDefinition> culture_definition{{"culture", culture_def}};
+   const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
+
+   commonItems::LocalizationDatabase locs("english", {});
+   std::vector keys{"president", "presidentin", "doe", "von Doe", "king", "queen"};
+   for (const auto& key: keys)
+   {
+      commonItems::LocalizationBlock block(key, "english");
+      block.ModifyLocalization("english", key);
+      locs.AddOrModifyLocalizationBlock(key, block);
+   }
 
    const mappers::IdeologyMapper ideology_mapper({}, {{"neutrality", {{"law_voting", {{"republic", 100}}}}}});
 
    const std::optional<Country> country_one = ConvertCountry(source_country_one,
        {},
-       {},
-       commonItems::LocalizationDatabase{{}, {}},
+       culture_definitions,
+       locs,
        country_mapper,
        {},
        {},
@@ -873,8 +882,8 @@ TEST(Hoi4worldCountriesCountryConverter, MonarchiesHaveNobleLeaders)
 
    const std::optional<Country> country_two = ConvertCountry(source_country_two,
        {},
-       {},
-       commonItems::LocalizationDatabase{{}, {}},
+       culture_definitions,
+       locs,
        country_mapper,
        {},
        {},
@@ -898,4 +907,50 @@ TEST(Hoi4worldCountriesCountryConverter, MonarchiesHaveNobleLeaders)
    EXPECT_THAT(country_two->GetNameList().surnames, testing::ElementsAre("doe"));
 }
 
+
+TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
+
+   const vic3::CultureDefinition culture_def{"culture",
+       {
+           .male_common_first = {"president"},
+           .female_common_first = {"presidentin"},
+           .noble_last = {"von Doe"},
+       },
+       {},
+       {}};
+   const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
+
+   commonItems::LocalizationDatabase locs("english", {});
+   std::vector keys{"president", "presidentin", "doe", "von Doe", "king", "queen"};
+   for (const auto& key: keys)
+   {
+      commonItems::LocalizationBlock block(key, "english");
+      block.ModifyLocalization("english", key);
+      locs.AddOrModifyLocalizationBlock(key, block);
+   }
+
+   const std::optional<Country> country_one = ConvertCountry(source_country_one,
+       {},
+       culture_definitions,
+       locs,
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetSubIdeology(), "despotism");
+   EXPECT_THAT(country_one->GetNameList().male_names, testing::ElementsAre("president"));
+   EXPECT_THAT(country_one->GetNameList().female_names, testing::ElementsAre("presidentin"));
+   EXPECT_THAT(country_one->GetNameList().surnames, testing::ElementsAre("von Doe"));
+}
 }  // namespace hoi4

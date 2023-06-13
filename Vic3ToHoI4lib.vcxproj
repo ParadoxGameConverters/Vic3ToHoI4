@@ -82,7 +82,9 @@
     <ClInclude Include="src\out_hoi4\map\out_supply_nodes.h" />
     <ClInclude Include="src\out_hoi4\military\out_equipment_variant.h" />
     <ClInclude Include="src\out_hoi4\names\out_names.h" />
+    <ClInclude Include="src\out_hoi4\names\out_name_list.h" />
     <ClInclude Include="src\out_hoi4\out_mod.h" />
+    <ClInclude Include="src\out_hoi4\portraits\out_portrait_paths.h" />
     <ClInclude Include="src\out_hoi4\portraits\out_portraits.h" />
     <ClInclude Include="src\out_hoi4\states\out_state.h" />
     <ClInclude Include="src\out_hoi4\states\out_states.h" />
@@ -168,7 +170,9 @@
     <ClCompile Include="src\out_hoi4\map\out_supply_nodes.cpp" />
     <ClCompile Include="src\out_hoi4\military\out_equipment_variant.cpp" />
     <ClCompile Include="src\out_hoi4\names\out_names.cpp" />
+    <ClCompile Include="src\out_hoi4\names\out_name_list.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod.cpp" />
+    <ClCompile Include="src\out_hoi4\portraits\out_portrait_paths.cpp" />
     <ClCompile Include="src\out_hoi4\portraits\out_portraits.cpp" />
     <ClCompile Include="src\out_hoi4\states\out_state.cpp" />
     <ClCompile Include="src\out_hoi4\states\out_states.cpp" />
