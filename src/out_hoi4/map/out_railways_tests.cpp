@@ -45,6 +45,7 @@ TEST(Outhoi4MapOutrailwaysTests, RailwaysAreOutput)
        {
            hoi4::Railway{1, {1, 2}},
            hoi4::Railway{2, {2, 4, 8}},
+           hoi4::Railway{0, {3, 9, 27}},
        });
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/Outhoi4MapBuildingsTestsRailwaysAreOutput/map/railways.txt"));
