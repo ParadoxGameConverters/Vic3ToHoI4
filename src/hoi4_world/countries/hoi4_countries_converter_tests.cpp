@@ -36,7 +36,10 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
            {1, {"source_technology_one"}},
            {2, {"source_technology_two"}},
        },
-       {},
+       {
+           {"culture_0", vic3::CultureDefinition({"culture_0"}, {}, {}, {})},
+           {"culture_1", vic3::CultureDefinition({"culture_1"}, {}, {}, {})},
+       },
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {
