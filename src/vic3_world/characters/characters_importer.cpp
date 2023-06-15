@@ -36,9 +36,16 @@ std::map<int, vic3::Character> vic3::ImportCharacters(std::istream& input_stream
       roles.emplace(commonItems::getString(input_stream));
    });
    character_parser.registerKeyword("rank", [&rank](std::istream& input_stream) {
+      const std::string rank_string = commonItems::getString(input_stream);
+      if (rank_string == "commander_rank_ruler")
+      {
+         rank = 1;  // What to do with commander rulers?
+         return;
+      }
+
       try
       {
-         rank = std::stoi(std::string(1, commonItems::getString(input_stream).back()));
+         rank = std::stoi(std::string(1, rank_string.back()));
       }
       catch (const std::exception& e)
       {
@@ -70,7 +77,6 @@ std::map<int, vic3::Character> vic3::ImportCharacters(std::istream& input_stream
           const std::string character_string = commonItems::stringOfItem(input_stream).getString();
           if (character_string.find('{') == std::string::npos)
           {
-             Log(LogLevel::Error) << "Broken culture definition in save file. This should not happen.";
              return;
           }
 
@@ -88,14 +94,8 @@ std::map<int, vic3::Character> vic3::ImportCharacters(std::istream& input_stream
           characters.emplace(id, Character(id, first_name, last_name, culture_id, roles, rank, ideology, traits));
        });
    database_parser.IgnoreUnregisteredItems();
+   database_parser.parseStream(input_stream);
 
-
-   commonItems::parser characters_parser;
-   characters_parser.registerKeyword("database", [&database_parser](std::istream& input_stream) {
-      database_parser.parseStream(input_stream);
-   });
-   characters_parser.IgnoreUnregisteredItems();
-   characters_parser.parseStream(input_stream);
 
    Log(LogLevel::Info) << fmt::format("\tImported {} living characters.", living_characters);
 

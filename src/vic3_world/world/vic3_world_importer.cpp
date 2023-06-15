@@ -17,6 +17,8 @@
 #include "external/rakaly/rakaly.h"
 #include "src/support/date_fmt.h"
 #include "src/vic3_world/buildings/buildings_importer.h"
+#include "src/vic3_world/characters/characters_importer.h"
+#include "src/vic3_world/characters/country_character_map_importer.h"
 #include "src/vic3_world/countries/country_definitions_importer.h"
 #include "src/vic3_world/countries/vic3_countries_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -204,6 +206,17 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Buildings buildings;
    CountryRankings country_rankings;
    std::map<int, std::string> cultures;
+   std::map<int, Character> characters;
+   std::map<int, std::vector<int>> country_character_map;
+
+   commonItems::parser characters_parser;
+   characters_parser.registerKeyword("database", [&characters](std::istream& input_stream) {
+      characters = ImportCharacters(input_stream);
+   });
+   characters_parser.registerKeyword("country_character_map", [&country_character_map](std::istream& input_stream) {
+      country_character_map = ImportCountryCharacterMap(input_stream);
+   });
+   characters_parser.IgnoreUnregisteredItems();
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("country_manager", [&countries, color_definitions](std::istream& input_stream) {
@@ -231,6 +244,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    });
    save_parser.registerKeyword("cultures", [&cultures](std::istream& input_stream) {
       cultures = ImportCultures(input_stream);
+   });
+   save_parser.registerKeyword("character_manager", [&characters_parser](std::istream& input_stream) {
+      characters_parser.parseStream(input_stream);
    });
    save_parser.registerKeyword("building_manager", [&buildings](std::istream& input_stream) {
       buildings = ImportBuildings(input_stream);
