@@ -17,17 +17,15 @@ namespace hoi4
 TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
-   const vic3::Country source_country_one({
-       .number = 1,
+   const vic3::Country source_country_one({.number = 1,
        .color = commonItems::Color{std::array{1, 2, 3}},
        .capital_state = 1,
-   });
-   const vic3::Country source_country_two({
-       .number = 2,
+       .primary_cultures = {"culture_0"}});
+   const vic3::Country source_country_two({.number = 2,
        .color = commonItems::Color{std::array{2, 4, 6}},
        .capital_state = 2,
        .active_laws = {"law_universal_suffrage", "law_presidential_republic"},
-   });
+       .primary_cultures = {"culture_1"}});
 
    const auto countries = ConvertCountries(
        {
@@ -92,6 +90,9 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Tank Design Three\""}}),
    };
 
+   const mappers::GraphicsBlock expected_graphics_block_one{{.army = {"GFX_general_0"}}, {}, {}};
+   const mappers::GraphicsBlock expected_graphics_block_two{{.army = {"GFX_general_1"}}, {}, {}};
+
    EXPECT_THAT(countries,
        testing::ElementsAre(testing::Pair("TAG",
                                 Country(CountryOptions{.tag = "TAG",
@@ -102,7 +103,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .legacy_ship_variants = expected_legacy_ship_variants_one,
                                     .ship_variants = expected_ship_variants_one,
                                     .plane_variants = expected_plane_variants_one,
-                                    .tank_variants = expected_tank_variants_one})),
+                                    .tank_variants = expected_tank_variants_one,
+                                    .graphics_block = expected_graphics_block_one})),
            testing::Pair("TWO",
                Country(CountryOptions{.tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
@@ -112,7 +114,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .legacy_ship_variants = expected_legacy_ship_variants_two,
                    .ship_variants = expected_ship_variants_two,
                    .plane_variants = expected_plane_variants_two,
-                   .tank_variants = expected_tank_variants_two}))));
+                   .tank_variants = expected_tank_variants_two,
+                   .graphics_block = expected_graphics_block_two}))));
 }
 
 }  // namespace hoi4

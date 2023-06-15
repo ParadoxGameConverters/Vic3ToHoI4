@@ -19,9 +19,9 @@ void out::OutputNames(std::string_view output_name, const std::map<std::string, 
 
    for (const auto& country: countries | std::views::values)
    {
-      out << country.GetTag() << " = {\n ";
+      out << country.GetTag() << " = {\n";
       out << country.GetNameList();
-      out << "}";
+      out << "}\n";
    }
 
    out.close();

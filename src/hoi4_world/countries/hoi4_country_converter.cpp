@@ -173,7 +173,7 @@ std::string ConvertName(const std::string& vic_name, const commonItems::Localiza
    {
       return loc_block->GetLocalization("english");
    }
-   Log(LogLevel::Warning) << fmt::format("Missing loc for vic_name: {}", vic_name);
+   Log(LogLevel::Warning) << fmt::format("Missing loc for vic_name: {}.", vic_name);
    return "John";
 }
 

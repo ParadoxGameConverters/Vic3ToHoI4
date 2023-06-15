@@ -953,4 +953,102 @@ TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)
    EXPECT_THAT(country_one->GetNameList().female_names, testing::ElementsAre("presidentin"));
    EXPECT_THAT(country_one->GetNameList().surnames, testing::ElementsAre("von Doe"));
 }
+
+
+TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsUseSentinielValue)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
+
+   const vic3::CultureDefinition culture_def{"culture", {.male_common_first = {"president"}}, {}, {}};
+   const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
+
+   commonItems::LocalizationDatabase locs("english", {});
+
+   const std::optional<Country> country_one = ConvertCountry(source_country_one,
+       {},
+       culture_definitions,
+       locs,
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetNameList().male_names, testing::ElementsAre("John"));
+}
+
+
+
+TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsLogWarning)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
+
+   const vic3::CultureDefinition culture_def{"culture", {.male_common_first = {"president"}}, {}, {}};
+   const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
+
+   commonItems::LocalizationDatabase locs("english", {});
+
+   const std::optional<Country> country_one = ConvertCountry(source_country_one,
+       {},
+       culture_definitions,
+       locs,
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}});
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"([WARNING] Missing loc for vic_name: president.)"));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
+
+   const vic3::CultureDefinition culture_def{"culture", {}, {}, {}};
+   const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
+   const mappers::CultureGraphicsMapper culture_graphics_mapper{
+       {{{"culture"}, {}, {}, {{.army = {"GFX_general"}}, {}, {}}}}};
+
+   const std::optional<Country> country_one = ConvertCountry(source_country_one,
+       {},
+       culture_definitions,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       culture_graphics_mapper);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetGraphicsBlock().portrait_paths.army, testing::ElementsAre("GFX_general"));
+}
+
+
 }  // namespace hoi4

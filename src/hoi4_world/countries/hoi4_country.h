@@ -68,7 +68,6 @@ class Country
    {
    }
 
-   [[nodiscard]] bool AreElectionsAllowed() const { return has_elections_; }
 
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
@@ -77,6 +76,7 @@ class Country
    [[nodiscard]] const std::string& GetSubIdeology() const { return sub_ideology_; }
    [[nodiscard]] const std::map<std::string, int>& GetIdeologySupport() const { return ideology_support_; }
    [[nodiscard]] const date& GetLastElection() const { return last_election_; }
+   [[nodiscard]] bool AreElectionsAllowed() const { return has_elections_; }
    [[nodiscard]] const Technologies& GetTechnologies() const { return technologies_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetLegacyShipVariants() const { return legacy_ship_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetShipVariants() const { return ship_variants_; }

@@ -363,6 +363,12 @@
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper_tests.cpp">
       <Filter>src\mappers\culture</Filter>
     </ClCompile>
+    <ClCompile Include="src\out_hoi4\names\out_name_list_tests.cpp">
+      <Filter>src\out_hoi4\names</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\portraits\out_portrait_paths_tests.cpp">
+      <Filter>src\out_hoi4\portraits</Filter>
+    </ClCompile>
     <ClCompile Include="src\out_hoi4\names\out_names_tests.cpp">
       <Filter>src\out_hoi4\names</Filter>
     </ClCompile>
