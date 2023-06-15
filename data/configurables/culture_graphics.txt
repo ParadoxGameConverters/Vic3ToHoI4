@@ -1,4 +1,4 @@
-###
+### INSTRUCTIONS
 # A Vic3 culture will find the most specific match it can.
 # First, it wil match on culture.
 # Second, if its culture name is not present in any entry, it will match based on cultural traits.
@@ -8,6 +8,19 @@
 # For example: Sephardim has both European and Middle-Eastern Heritage. If no portrait group explicitly has Sephardim,
 # Sephardim will use both European and Middle-Eastern graphics.
 ###
+
+### ADDING PORTRAITS
+# You can use vanilla portraits mentioned in hoi4/interface/_leader_portraits.gfx and hoi4/interface/_random_portraits.gfx. Some of these will be DLC locked.
+# Use the GFX_portrait_name as the alias in this file.
+#
+# Converter supplied portraits will be defined in the converter's Vic3ToHoi4/blank_mod/interface/_converter_portraits.gfx.
+#
+# To add custom portraits -
+# 1. Add the .dds picture file to the converter's blank_mod in Vic3ToHoi4/blank_mod/gfx/leaders/pick_a_folder_name.
+# 2. Define a spriteType for your custom portrait in the converter's Vic3ToHoi4/blank_mod/interface/_converter_portraits.gfx.
+# 3. Use the alias defined in step 2 in this file's mappings.
+###
+
 # sample_group = {
 #   cultures = { swedish } # In reality, these are probably 3 separate groups
 #   traits = { european_heritage }
