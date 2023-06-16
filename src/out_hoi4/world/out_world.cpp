@@ -1,6 +1,7 @@
 #include "out_world.h"
 
 #include <fstream>
+#include <ranges>
 
 #include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/countries/out_countries.h"
@@ -10,6 +11,8 @@
 #include "src/out_hoi4/map/out_rocket_sites.h"
 #include "src/out_hoi4/map/out_strategic_regions.h"
 #include "src/out_hoi4/map/out_supply_nodes.h"
+#include "src/out_hoi4/names/out_names.h"
+#include "src/out_hoi4/portraits/out_portraits.h"
 #include "src/out_hoi4/states/out_states.h"
 #include "src/support/date_fmt.h"
 
@@ -86,6 +89,8 @@ void out::OutputWorld(std::string_view output_name, const hoi4::World& world)
    OutputRailways(output_name, world.GetRailways().railways);
    OutputSupplyNodes(output_name, world.GetRailways().railway_endpoints);
    OutputLocalizations(output_name, world.GetLocalizations());
+   OutputNames(output_name, world.GetCountries());
+   OutputPortraits(output_name, world.GetCountries());
    OutputBookmark(output_name,
        "grand_campaign",
        date("1936.1.1"),

@@ -10,11 +10,21 @@
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/technology/technologies.h"
 #include "src/mappers/country/country_mapper.h"
-
+#include "src/mappers/culture/culture_graphics_mapping.h"
 
 
 namespace hoi4
 {
+struct NameList
+{
+   std::set<std::string> male_names;
+   std::set<std::string> female_names;
+   std::set<std::string> surnames;
+   std::set<std::string> male_surnames;
+   std::set<std::string> female_surnames;
+
+   std::partial_ordering operator<=>(const NameList&) const = default;
+};
 
 struct CountryOptions
 {
@@ -24,12 +34,15 @@ struct CountryOptions
    std::string ideology = "neutrality";
    std::string sub_ideology = "despotism";
    date last_election{1933, 1, 1};
+   bool has_elections;
    Technologies technologies;
    std::vector<EquipmentVariant> legacy_ship_variants;
    std::vector<EquipmentVariant> ship_variants;
    std::vector<EquipmentVariant> plane_variants;
    std::vector<EquipmentVariant> tank_variants;
    std::set<std::string> ideas;
+   mappers::GraphicsBlock graphics_block;
+   NameList name_list;
 };
 
 
@@ -43,16 +56,18 @@ class Country
        ideology_(std::move(country_options.ideology)),
        sub_ideology_(std::move(country_options.sub_ideology)),
        last_election_(country_options.last_election),
+       has_elections_(country_options.has_elections),
        technologies_(std::move(country_options.technologies)),
        legacy_ship_variants_(std::move(country_options.legacy_ship_variants)),
        ship_variants_(std::move(country_options.ship_variants)),
        plane_variants_(std::move(country_options.plane_variants)),
        tank_variants_(std::move(country_options.tank_variants)),
-       ideas_(std::move(country_options.ideas))
+       ideas_(std::move(country_options.ideas)),
+       graphics_block_(std::move(country_options.graphics_block)),
+       name_list_(std::move(country_options.name_list))
    {
    }
 
-   [[nodiscard]] bool AreElectionsAllowed() const;
 
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
@@ -61,12 +76,15 @@ class Country
    [[nodiscard]] const std::string& GetSubIdeology() const { return sub_ideology_; }
    [[nodiscard]] const std::map<std::string, int>& GetIdeologySupport() const { return ideology_support_; }
    [[nodiscard]] const date& GetLastElection() const { return last_election_; }
+   [[nodiscard]] bool AreElectionsAllowed() const { return has_elections_; }
    [[nodiscard]] const Technologies& GetTechnologies() const { return technologies_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetLegacyShipVariants() const { return legacy_ship_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetShipVariants() const { return ship_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetPlaneVariants() const { return plane_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetTankVariants() const { return tank_variants_; }
    [[nodiscard]] const std::set<std::string>& GetIdeas() const { return ideas_; }
+   [[nodiscard]] const mappers::GraphicsBlock& GetGraphicsBlock() const { return graphics_block_; }
+   [[nodiscard]] const NameList& GetNameList() const { return name_list_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
@@ -78,12 +96,15 @@ class Country
    std::string sub_ideology_ = "despotism";
    std::map<std::string, int> ideology_support_{{"neutrality", 100}};
    date last_election_{1933, 1, 1};
+   bool has_elections_ = false;
    Technologies technologies_;
    std::vector<EquipmentVariant> legacy_ship_variants_;
    std::vector<EquipmentVariant> ship_variants_;
    std::vector<EquipmentVariant> plane_variants_;
    std::vector<EquipmentVariant> tank_variants_;
    std::set<std::string> ideas_;
+   mappers::GraphicsBlock graphics_block_;
+   NameList name_list_;
 };
 
 }  // namespace hoi4

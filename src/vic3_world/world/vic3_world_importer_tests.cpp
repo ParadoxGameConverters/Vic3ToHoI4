@@ -51,12 +51,16 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                                              .tag = "TAG",
                                              .color = commonItems::Color(std::array{1, 2, 3}),
                                              .active_laws = {"law_monarchy"},
+                                             .primary_culture_ids = {0},
+                                             .primary_cultures = {"welsh"},
                                          })),
            testing::Pair(3,
                Country({
                    .number = 3,
                    .tag = "TWO",
                    .color = commonItems::Color(std::array{2, 4, 6}),
+                   .primary_culture_ids = {1},
+                   .primary_cultures = {"scottish"},
                }))));
    EXPECT_THAT(world.GetStates(),
        testing::UnorderedElementsAre(testing::Pair(0, State({.provinces = {1, 2, 3}})),

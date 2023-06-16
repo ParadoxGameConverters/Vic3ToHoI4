@@ -1,4 +1,4 @@
-###
+### INSTRUCTIONS
 # A Vic3 culture will find the most specific match it can.
 # First, it wil match on culture.
 # Second, if its culture name is not present in any entry, it will match based on cultural traits.
@@ -8,51 +8,624 @@
 # For example: Sephardim has both European and Middle-Eastern Heritage. If no portrait group explicitly has Sephardim,
 # Sephardim will use both European and Middle-Eastern graphics.
 ###
+
+### ADDING PORTRAITS
+# You can use vanilla portraits mentioned in hoi4/interface/_leader_portraits.gfx and hoi4/interface/_random_portraits.gfx. Some of these will be DLC locked.
+# Use the GFX_portrait_name as the alias in this file.
+#
+# Converter supplied portraits will be defined in the converter's Vic3ToHoi4/blank_mod/interface/_converter_portraits.gfx.
+#
+# To add custom portraits -
+# 1. Add the .dds picture file to the converter's blank_mod in Vic3ToHoi4/blank_mod/gfx/leaders/pick_a_folder_name.
+# 2. Define a spriteType for your custom portrait in the converter's Vic3ToHoi4/blank_mod/interface/_converter_portraits.gfx.
+# 3. Use the alias defined in step 2 in this file's mappings.
+###
+
 # sample_group = {
 #   cultures = { swedish } # In reality, these are probably 3 separate groups
 #   traits = { european_heritage }
 #	ethnicity = { caucasian }
 #
 #	army_portraits = {
-#		"gfx/leaders/GER/sample_portrait_land.dds"
-#		"gfx/leaders/GER/sample_portrait_land2.dds"
+#		GFX_Portrait_Africa_Generic_land_1
+#       GFX_Portrait_Africa_Generic_land_2
+#       GFX_Portrait_Africa_Generic_land_3
+#       GFX_Portrait_Africa_Generic_land_4
 #	}
 #	navy_portraits = {
-#		"gfx/leaders/GER/sample_portrait_navy.dds"
-#		"gfx/leaders/GER/sample_portrait_navy2.dds"
+#		GFX_Portrait_GER_sample_portrait_navy
+#		GFX_Portrait_GER_sample_portrait_navy2
 #	}
 #	leader_portraits = {
-#		communism = { "gfx/leaders/GER/sample_portrait_communism.dds" }
-#		democratic = { "gfx/leaders/GER/sample_portrait_democratic.dds" }
-#		fascism = { "gfx/leaders/GER/sample_portrait_fascism.dds" "gfx/leaders/GER/sample_portrait_fascism2.dds" }
-#		neutrality = { "sample_portrait_neutrality" }
+#		communism = { GFX_Portrait_GER_sample_portrait_communism }
+#		democratic = { GFX_Portrait_GER_sample_portrait_democratic }
+#		fascism = { GFX_Portrait_GER_sample_portrait_fascism }
+#		neutrality = { GFX_Portrait_sample_portrait_neutrality }
 #	}
 #	female_portraits = {
-#		"gfx/leaders/GER/sample_portrait_Hitler_Female.dds"
+#		GFX_Portrait_GER_sample_portrait_Hitler_Female
 #	}
 #	ideology_minister_portraits =
 #	{
-#		communism = { "gfx/interface/ideas/sample_portrait_communism.dds" }
-#		democratic = { "gfx/interface/ideas/sample_portrait_democratic.dds" }
-#		fascism = { "gfx/interface/ideas/sample_portrait_fascism.dds" "gfx/interface/ideas/sample_portrait_fascism2.dds" }
-#		neutrality = { "gfx/interface/ideas/sample_portrait_neutrality.dds" }
+#		communism = { GFX_Portrait_sample_portrait_communism }
+#		democratic = { GFX_Portrait_sample_portrait_democratic }
+#		fascism = { GFX_Portrait_sample_portrait_fascism }
+#		neutrality = { GFX_Portrait_sample_portrait_neutrality }
 #	}
 #	male_operative_portraits =
 #	{
-#		"sample_male_operative.dds"
-#		"sample_male_operative2.dds"
+#		 GFX_Portrait_sample_male_operative
+#		 GFX_Portrait_sample_male_operative2
 #	}
 #	female_operative_portraits =
 #	{
-#		"sample_female_operative.dds"
-#		"sample_female_operative2.dds"
+#		 GFX_Portrait_sample_female_operative
+#		 GFX_Portrait_sample_female_operative2
 #	}
 #	male_monarch_portraits = {
-#		"gfx/interface/ideas/crowns/sample.dds"
+#		 GFX_Portrait_crowns_sample
 #	}
 #	female_monarch_portraits = {
-#		"gfx/interface/ideas/crowns/sample.dds"
+#		GFX_Portrait_crowns_sample
 #	}
 #	graphical_culture = western_european_gfx
 #	graphical_culture_2d = western_european_2d
 #}
+
+### Vicky ethnicity fallbacks
+# Vanilla vic also has central_african and eastern_african defined, yet unused.
+african = {
+    ethnicity = { african central_african eastern_african }
+
+    army_portraits = {
+        GFX_Portrait_Africa_Generic_land_1
+        GFX_Portrait_Africa_Generic_land_2
+        GFX_Portrait_Africa_Generic_land_3
+        GFX_Portrait_Africa_Generic_land_4
+        GFX_Portrait_South_Africa_Army_Generic
+        GFX_Portrait_South_Africa_Army_Generic_2
+    }
+    navy_portraits = {
+        GFX_Portrait_Africa_Generic_navy_1
+        GFX_Portrait_Africa_Generic_navy_2
+        GFX_Portrait_Africa_Generic_navy_3
+        GFX_Portrait_Africa_Generic_navy_4
+    }
+    leader_portraits = {
+        communism = {  
+            GFX_Portrait_Africa_Generic_1
+            GFX_Portrait_South_Africa_Political_Leader_Generic
+            GFX_Portrait_South_Africa_Political_Leader_Generic_2
+            GFX_Portrait_Africa_Generic_4
+        }
+        democratic = { 
+            GFX_Portrait_Africa_Generic_2
+            GFX_Portrait_South_Africa_Political_Leader_Generic
+            GFX_Portrait_South_Africa_Political_Leader_Generic_2
+            GFX_Portrait_Africa_Generic_4
+        }
+        fascism = { 
+            GFX_Portrait_Africa_Generic_3
+            GFX_Portrait_South_Africa_Political_Leader_Generic
+            GFX_Portrait_South_Africa_Political_Leader_Generic_2
+            GFX_Portrait_Africa_Generic_4
+        }
+        neutrality = { 
+            GFX_Portrait_Africa_Generic_3
+            GFX_Portrait_South_Africa_Political_Leader_Generic
+            GFX_Portrait_South_Africa_Political_Leader_Generic_2
+            GFX_Portrait_Africa_Generic_4
+        }
+    }
+    female_portraits = {
+    }
+    ideology_minister_portraits = {
+        communism = {  }
+        democratic = {  }
+        fascism = {  }
+        neutrality = {  }
+    }
+    male_operative_portraits = {
+    }
+    female_operative_portraits = {
+    }
+    male_monarch_portraits = {
+    }
+    female_monarch_portraits = {
+    }
+    graphical_culture = african_gfx
+    graphical_culture_2d = african_2d
+}
+
+arab = {
+    ethnicity = { arab }
+
+    army_portraits = {
+        GFX_Portrait_Arabia_Generic_land_1
+        GFX_Portrait_Arabia_Generic_land_2
+        GFX_Portrait_Arabia_Generic_land_3
+    }
+
+    navy_portraits = {
+        GFX_Portrait_Arabia_Generic_navy_1
+        GFX_Portrait_Arabia_Generic_navy_2
+        GFX_Portrait_Arabia_Generic_navy_3
+    }
+
+    leader_portraits = {
+        communism = {  
+            GFX_Portrait_Arabia_Generic_1
+        }
+        democratic = {  
+            GFX_Portrait_Arabia_Generic_2
+        }
+        fascism = { 
+            GFX_Portrait_Arabia_Generic_3
+        }
+        neutrality = { 
+            GFX_Portrait_Arabia_Generic_3
+        }
+    }
+
+    graphical_culture = middle_eastern_gfx
+    graphical_culture_2d = middle_eastern_2d
+}
+
+asian = {
+    ethnicity = { asian }
+
+    army_portraits = {
+        GFX_Portrait_Asia_Generic_land_1
+        GFX_Portrait_Asia_Generic_land_2
+        GFX_Portrait_Asia_Generic_land_3
+        GFX_Portrait_Asia_Generic_land_4
+        GFX_Portrait_asia_generic_land_5
+    }
+
+    navy_portraits = {
+        GFX_Portrait_Asia_Generic_navy_1
+        GFX_Portrait_Asia_Generic_navy_2
+        GFX_Portrait_Asia_Generic_navy_3
+        GFX_Portrait_asia_generic_navy_3
+    }
+
+    leader_portraits = {
+        communism = {  
+            GFX_Portrait_Asia_Generic_1
+            GFX_Portrait_asia_generic_4
+        }
+        democratic = {  
+            GFX_Portrait_Asia_Generic_2
+            GFX_Portrait_asia_generic_4
+        }
+        fascism = { 
+            GFX_Portrait_Asia_Generic_3
+            GFX_Portrait_asia_generic_4
+        }
+        neutrality = { 
+            GFX_Portrait_Asia_Generic_3
+            GFX_Portrait_asia_generic_4
+        }
+    }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+caucasian = {
+    ethnicity = { caucasian }
+
+    army_portraits = {
+        GFX_Portrait_Europe_Generic_land_1
+        GFX_Portrait_Europe_Generic_land_2
+        GFX_Portrait_Europe_Generic_land_3
+        GFX_Portrait_Europe_Generic_land_4
+        GFX_Portrait_Europe_Generic_land_5
+        GFX_portrait_europe_generic_land_13
+        GFX_Portrait_europe_generic_land_6
+        GFX_portrait_europe_generic_land_7
+        GFX_portrait_europe_generic_land_8
+    }
+
+    navy_portraits = {
+        GFX_Portrait_Europe_Generic_navy_1
+        GFX_Portrait_Europe_Generic_navy_2
+        GFX_Portrait_Europe_Generic_navy_3
+        GFX_Portrait_europe_generic_navy_4
+        GFX_Portrait_europe_generic_navy_5
+    }
+
+    leader_portraits = {
+        communism = {  
+            GFX_Portrait_Europe_Generic_1
+            GFX_Portrait_europe_generic_4
+            GFX_Portrait_europe_generic_5
+            GFX_Portrait_europe_generic_6
+            GFX_Portrait_europe_generic_7
+            GFX_Portrait_europe_generic_8
+        }
+        democratic = {  
+            GFX_Portrait_Europe_Generic_2
+            GFX_Portrait_europe_generic_4
+            GFX_Portrait_europe_generic_5
+            GFX_Portrait_europe_generic_6
+            GFX_Portrait_europe_generic_7
+            GFX_Portrait_europe_generic_8
+        }
+        fascism = { 
+            GFX_Portrait_Europe_Generic_3
+            GFX_Portrait_europe_generic_4
+            GFX_Portrait_europe_generic_5
+            GFX_Portrait_europe_generic_6
+            GFX_Portrait_europe_generic_7
+            GFX_Portrait_europe_generic_8
+        }
+        neutrality = { 
+            GFX_Portrait_Europe_Generic_3
+            GFX_Portrait_europe_generic_4
+            GFX_Portrait_europe_generic_5
+            GFX_Portrait_europe_generic_6
+            GFX_Portrait_europe_generic_7
+            GFX_Portrait_europe_generic_8
+        }
+    }
+
+    graphical culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+central_asian = {
+    ethnicity = { central_asian }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+circumpolar = {
+    ethnicity = { circumpolar }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+indian = {
+    ethnicity = { indian }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+native_american = {
+    ethnicity = { native_american }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+north_caucasian = {
+    ethnicity = { north_caucasian }
+
+    graphical_culture = eastern_european_gfx
+    graphical_culture_2d = eastern_european_2d
+}
+
+polynesian = {
+    ethnicity = { polynesian }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+slavic = {
+    ethnicity = { slavic }
+
+    graphical_culture = eastern_european_gfx
+    graphical_culture_2d = eastern_european_2d
+}
+
+south_american = { # Brazilian and such, european heritage
+    ethnicity = { south_american }
+
+    army_portraits = {
+        GFX_Portrait_South_America_Generic_land_1
+        GFX_Portrait_South_America_Generic_land_2
+        GFX_Portrait_South_America_Generic_land_3
+        GFX_Portrait_South_America_Generic_land_4
+        GFX_Portrait_South_America_Generic_land_5
+    }
+
+    navy_portraits = {
+        GFX_Portrait_South_America_Generic_navy_1
+        GFX_Portrait_South_America_Generic_navy_2
+        GFX_Portrait_South_America_Generic_navy_3
+    }
+
+    leader_portraits = {
+        communism = {  
+            GFX_Portrait_South_America_Generic_1
+            GFX_portrait_south_america_generic_7
+            GFX_portrait_south_america_generic_8
+            GFX_portrait_south_america_generic_9
+        }
+        democratic = {  
+            GFX_Portrait_South_America_Generic_2
+            GFX_portrait_south_america_generic_7
+            GFX_portrait_south_america_generic_8
+            GFX_portrait_south_america_generic_9
+        }
+        fascism = { 
+            GFX_Portrait_South_America_Generic_3
+            GFX_portrait_south_america_generic_7
+            GFX_portrait_south_america_generic_8
+            GFX_portrait_south_america_generic_9
+        }
+        neutrality = { 
+            GFX_Portrait_South_America_Generic_3
+            GFX_portrait_south_america_generic_7
+            GFX_portrait_south_america_generic_8
+            GFX_portrait_south_america_generic_9
+        }
+    }
+
+    graphical_culture = southamerican_gfx
+    graphical_culture_2d = southamerican_2d
+}
+
+south_east_asian = {
+    ethnicity = { south_east_asian }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+### Group based
+nordic = {
+    traits = { scandinavian_culture_group finnic }
+
+    army_portraits = {
+        GFX_portrait_FIN_carl_mannerheim
+        GFX_Portrait_Europe_Generic_land_5
+        GFX_portrait_europe_generic_land_13
+        GFX_Portrait_europe_generic_land_6
+    }
+
+    navy_portraits = {
+        GFX_Portrait_Europe_Generic_navy_1
+        GFX_Portrait_Europe_Generic_navy_2
+        GFX_Portrait_Europe_Generic_navy_3
+    }
+
+    leader_portraits = {
+        communism = {
+            GFX_portrait_SWE_per_albin_hansson
+        }
+        democratic = {
+            GFX_portrait_NOR_johan_nygaardsvold
+            GFX_portrait_DEN_thorvald_stauning
+        }
+        fascism = {
+            GFX_portrait_DEN_erik_scavenius
+            GFX_portrait_NOR_vidkun_quisling
+        }
+        neutrality = {
+            GFX_portrait_FIN_kyosti_kallio
+            GFX_portrait_FIN_risto_heikki_ryti
+        }
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+### Specific
+german = {
+    cultures = { north_german south_german }
+
+    army_portraits = {
+        GFX_Portrait_Germany_Generic_land_1
+        GFX_Portrait_Germany_Generic_land_2
+        GFX_Portrait_Germany_Generic_land_3
+        GFX_Portrait_Germany_Generic_land_4
+        GFX_Portrait_Germany_Generic_land_5
+        GFX_Portrait_Germany_Generic_land_6
+        GFX_Portrait_Germany_Generic_land_7
+        GFX_Portrait_Germany_Generic_land_8
+        GFX_Portrait_Germany_Generic_land_9
+    }
+
+    navy_portraits = {
+        GFX_Portrait_Germany_Generic_navy_1
+        GFX_Portrait_Germany_Generic_navy_2
+        GFX_Portrait_Germany_Generic_navy_3
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+english = {
+    cultures = { english }
+
+    army_portraits = {
+        GFX_Portrait_Britain_Generic_land_1
+        GFX_Portrait_Britain_Generic_land_2
+        GFX_Portrait_Britain_Generic_land_3
+        GFX_Portrait_Britain_Generic_land_4
+        GFX_Portrait_Britain_Generic_land_5
+        GFX_Portrait_Britain_Generic_land_6
+        GFX_Portrait_Britain_Generic_land_7
+        GFX_Portrait_Britain_Generic_land_8
+        GFX_Portrait_Britain_Generic_land_9
+        GFX_Portrait_Britain_Generic_land_10
+    }
+
+    navy_portraits = {
+        GFX_Portrait_Britain_Generic_navy_1
+        GFX_Portrait_Britain_Generic_navy_2
+        GFX_Portrait_Britain_Generic_navy_3
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+french = {
+    cultures = { french }
+
+    army_portraits = {
+        GFX_Portrait_France_Generic_land_1
+        GFX_Portrait_France_Generic_land_2
+        GFX_Portrait_France_Generic_land_3
+        GFX_Portrait_France_Generic_land_4
+        GFX_Portrait_France_Generic_land_5
+        GFX_Portrait_France_Generic_land_6
+        GFX_Portrait_France_Generic_land_7
+        GFX_Portrait_France_Generic_land_8
+        GFX_Portrait_France_Generic_land_9
+    }
+
+    navy_portraits = {
+        GFX_Portrait_France_Generic_navy_1
+        GFX_Portrait_France_Generic_navy_2
+        GFX_Portrait_France_Generic_navy_3
+    }
+    
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+italian = {
+    cultures = { north_italian south_italian maltese }
+
+    army_portraits = {
+        GFX_Portrait_Italy_Generic_land_1
+        GFX_Portrait_Italy_Generic_land_2
+        GFX_Portrait_Italy_Generic_land_3
+        GFX_Portrait_Italy_Generic_land_4
+        GFX_Portrait_Italy_Generic_land_5
+        GFX_Portrait_Italy_Generic_land_6
+        GFX_Portrait_Italy_Generic_land_7
+        GFX_Portrait_Italy_Generic_land_8
+    }
+
+    navy_portraits = {
+        GFX_Portrait_Italy_Generic_navy_1
+        GFX_Portrait_Italy_Generic_navy_2
+        GFX_Portrait_Italy_Generic_navy_3
+    }
+    
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+japanese = {
+    cultures = { japanese }
+    traits = { yamato }
+
+    army_portraits = {
+        GFX_Portrait_Japan_Generic_land_1
+        GFX_Portrait_Japan_Generic_land_2
+        GFX_Portrait_Japan_Generic_land_3
+        GFX_Portrait_Japan_Generic_land_4
+        GFX_Portrait_Japan_Generic_land_5
+        GFX_Portrait_Japan_Generic_land_6
+        GFX_Portrait_Japan_Generic_land_7
+        GFX_Portrait_Japan_Generic_land_8
+        GFX_Portrait_Japan_Generic_land_9
+    }
+
+    navy_portraits = {
+        GFX_Portrait_Japan_Generic_navy_1
+        GFX_Portrait_Japan_Generic_navy_2
+        GFX_Portrait_Japan_Generic_navy_3
+    }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+russian = {
+    cultures = { russian }
+
+    army_portraits = {
+        GFX_Portrait_Soviet_Generic_land_1
+        GFX_Portrait_Soviet_Generic_land_2
+        GFX_Portrait_Soviet_Generic_land_3
+        GFX_Portrait_Soviet_Generic_land_4
+        GFX_Portrait_Soviet_Generic_land_5
+        GFX_Portrait_Soviet_Generic_land_6
+        GFX_Portrait_Soviet_Generic_land_7
+        GFX_Portrait_Soviet_Generic_land_8
+        GFX_Portrait_Soviet_Generic_land_9
+        GFX_Portrait_Soviet_Magic_Winner
+    }
+
+    navy_portraits = {
+        GFX_Portrait_Soviet_Generic_navy_1
+        GFX_Portrait_Soviet_Generic_navy_2
+        GFX_Portrait_Soviet_Generic_navy_3
+    }
+
+    graphical_culture = eastern_european_gfx
+    graphical_culture_2d = eastern_european_2d
+}
+
+american = {
+    cultures = { yankee dixie }
+
+    army_portraits = {
+        GFX_Portrait_USA_Generic_land_1
+        GFX_Portrait_USA_Generic_land_2
+        GFX_Portrait_USA_Generic_land_3
+        GFX_Portrait_USA_Generic_land_4
+        GFX_Portrait_USA_Generic_land_5
+        GFX_Portrait_USA_Generic_land_6
+        GFX_Portrait_USA_Generic_land_7
+        GFX_Portrait_USA_Generic_land_8
+        GFX_Portrait_USA_Generic_land_9
+    }
+
+    navy_portraits = {
+        GFX_Portrait_USA_Generic_navy_1
+        GFX_Portrait_USA_Generic_navy_2
+        GFX_Portrait_USA_Generic_navy_3
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+ethiopian = {
+    traits = { ethiopian } # Highly DLC dependant
+
+    army_portraits = {
+        GFX_portrait_ETH_generic_male_1
+        GFX_portrait_ETH_generic_male_2
+        GFX_portrait_ETH_generic_male_3
+        GFX_portrait_ETH_generic_male_4
+    }
+
+    navy_portraits = {
+        GFX_Portrait_Africa_Generic_navy_1
+        GFX_Portrait_Africa_Generic_navy_2
+        GFX_Portrait_Africa_Generic_navy_3
+    }
+
+    leader_portraits = {
+        communism = {  
+            GFX_portrait_ETH_generic_male_1
+        }
+        democratic = { 
+            GFX_portrait_ETH_generic_male_2
+        }
+        fascism = { 
+            GFX_portrait_ETH_generic_male_3
+        }
+        neutrality = { 
+            GFX_portrait_ETH_generic_male_4
+        }
+    }
+
+    graphical_culture = african_gfx
+    graphical_culture_2d = african_2d
+}

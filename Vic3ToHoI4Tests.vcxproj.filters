@@ -127,6 +127,12 @@
     <Filter Include="src\mappers\culture">
       <UniqueIdentifier>{68bf9d92-81c7-4d4b-b67c-f1e680313a9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\out_hoi4\names">
+      <UniqueIdentifier>{de48f3fd-1a80-494a-b93b-b26c7303a06f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\portraits">
+      <UniqueIdentifier>{bac77715-c87e-4fe0-940b-37d8437d0fc9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -356,6 +362,18 @@
     </ClCompile>
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper_tests.cpp">
       <Filter>src\mappers\culture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\names\out_name_list_tests.cpp">
+      <Filter>src\out_hoi4\names</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\portraits\out_portrait_paths_tests.cpp">
+      <Filter>src\out_hoi4\portraits</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\names\out_names_tests.cpp">
+      <Filter>src\out_hoi4\names</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\portraits\out_portraits_tests.cpp">
+      <Filter>src\out_hoi4\portraits</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

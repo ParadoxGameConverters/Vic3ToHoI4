@@ -48,6 +48,25 @@ mappers::GraphicsBlock operator+(const mappers::GraphicsBlock& lhs, const mapper
 }
 }  // namespace
 
+mappers::GraphicsBlock mappers::CultureGraphicsMapper::MatchPrimaryCulturesToGraphics(
+    const std::set<std::string>& primary_cultures,
+    const std::map<std::string, vic3::CultureDefinition>& cultures) const
+{
+   GraphicsBlock graphics_block;
+   for (const auto& culture: primary_cultures)
+   {
+      if (const auto culture_itr = cultures.find(culture); culture_itr != cultures.end())
+      {
+         graphics_block = graphics_block + MatchCultureToGraphics(culture_itr->second);
+      }
+      else
+      {
+         Log(LogLevel::Warning) << fmt::format("Culture: {} has no definition.", culture);
+      }
+   }
+   return graphics_block;
+}
+
 mappers::GraphicsBlock mappers::CultureGraphicsMapper::MatchCultureToGraphics(
     const vic3::CultureDefinition& culture_def) const
 {

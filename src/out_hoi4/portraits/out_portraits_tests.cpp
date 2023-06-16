@@ -1,0 +1,102 @@
+#include <filesystem>
+#include <fstream>
+#include <sstream>
+
+#include "external/commonItems/OSCompatibilityLayer.h"
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include "src/out_hoi4/portraits/out_portraits.h"
+
+namespace out
+{
+TEST(Outhoi4PortraitsTests, PortraitFileIsCreated)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/PortraitFileIsCreated");
+   commonItems::TryCreateFolder("output/PortraitFileIsCreated/portraits");
+
+   OutputPortraits("PortraitFileIsCreated",
+       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});
+
+   std::ifstream portraits_file("output/PortraitFileIsCreated/portraits/converter_portraits.txt");
+   ASSERT_TRUE(portraits_file.is_open());
+   std::stringstream portraits_file_stream;
+   std::copy(std::istreambuf_iterator<char>(portraits_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(portraits_file_stream));
+   portraits_file.close();
+   EXPECT_EQ(portraits_file_stream.str(),
+       "TAG = {\n"
+       "\tarmy = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t}\n"
+       "\tnavy = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t}\n"
+       "\tpolitical = {\n"
+       "\t\tcommunism = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t\t}\n"
+       "\t\tdemocratic = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t\t}\n"
+       "\t\tfascism = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t\t}\n"
+       "\t\tneutrality = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t\t}\n"
+       "\t}\n"
+       "\toperative = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t\tfemale = {\n"
+       "\t\t}\n"
+       "\t}\n"
+       "\t\tfemale = {\n"
+       "\t\t}\n"
+       "}\n"
+       "TWO = {\n"
+       "\tarmy = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t}\n"
+       "\tnavy = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t}\n"
+       "\tpolitical = {\n"
+       "\t\tcommunism = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t\t}\n"
+       "\t\tdemocratic = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t\t}\n"
+       "\t\tfascism = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t\t}\n"
+       "\t\tneutrality = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t\t}\n"
+       "\t}\n"
+       "\toperative = {\n"
+       "\t\tmale = {\n"
+       "\t\t}\n"
+       "\t\tfemale = {\n"
+       "\t\t}\n"
+       "\t}\n"
+       "\t\tfemale = {\n"
+       "\t\t}\n"
+       "}\n");
+}
+}  // namespace out

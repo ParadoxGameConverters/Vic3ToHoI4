@@ -130,6 +130,12 @@
     <Filter Include="src\mappers\culture">
       <UniqueIdentifier>{482c6aa8-602b-4cb6-82a5-5181e2fd3449}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\out_hoi4\names">
+      <UniqueIdentifier>{cdb38945-a6b8-4ec0-975d-18fdb40f4ab9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\portraits">
+      <UniqueIdentifier>{341adba8-9019-4f0d-b75a-1203e5374735}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -450,6 +456,18 @@
     <ClInclude Include="src\mappers\culture\culture_graphics_mapping.h">
       <Filter>src\mappers\culture</Filter>
     </ClInclude>
+    <ClInclude Include="src\out_hoi4\names\out_names.h">
+      <Filter>src\out_hoi4\names</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\portraits\out_portraits.h">
+      <Filter>src\out_hoi4\portraits</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\names\out_name_list.h">
+      <Filter>src\out_hoi4\names</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\portraits\out_portrait_paths.h">
+      <Filter>src\out_hoi4\portraits</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -647,9 +665,6 @@
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer.cpp">
       <Filter>src\mappers\ideology</Filter>
     </ClCompile>
-    <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp">
-      <Filter>src\hoi4_world\countries</Filter>
-    </ClCompile>
     <ClCompile Include="src\vic3_world\elections\elections_importer.cpp">
       <Filter>src\vic3_world\elections</Filter>
     </ClCompile>
@@ -676,6 +691,18 @@
     </ClCompile>
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper_importer.cpp">
       <Filter>src\mappers\culture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\names\out_names.cpp">
+      <Filter>src\out_hoi4\names</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\portraits\out_portraits.cpp">
+      <Filter>src\out_hoi4\portraits</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\names\out_name_list.cpp">
+      <Filter>src\out_hoi4\names</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\portraits\out_portrait_paths.cpp">
+      <Filter>src\out_hoi4\portraits</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
