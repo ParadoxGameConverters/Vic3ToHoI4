@@ -126,8 +126,26 @@ african = {
         neutrality = {  }
     }
     male_operative_portraits = {
+        GFX_portrait_africa_generic_operative_male_1
+		GFX_portrait_africa_generic_operative_male_2
+		GFX_portrait_africa_generic_operative_male_3
+		GFX_portrait_africa_generic_operative_male_4
+		GFX_portrait_africa_generic_operative_male_5
+		GFX_portrait_africa_generic_operative_male_6
+		GFX_portrait_africa_generic_operative_male_7
+		GFX_portrait_africa_generic_operative_male_8
+		GFX_portrait_africa_generic_operative_male_9
     }
     female_operative_portraits = {
+		GFX_portrait_africa_generic_operative_female_1
+	    GFX_portrait_africa_generic_operative_female_2
+		GFX_portrait_africa_generic_operative_female_3
+		GFX_portrait_africa_generic_operative_female_4
+		GFX_portrait_africa_generic_operative_female_5
+		GFX_portrait_africa_generic_operative_female_6
+		GFX_portrait_africa_generic_operative_female_7
+		GFX_portrait_africa_generic_operative_female_8
+		GFX_portrait_africa_generic_operative_female_9
     }
     male_monarch_portraits = {
     }
@@ -166,13 +184,38 @@ arab = {
             GFX_Portrait_Arabia_Generic_3
         }
     }
-
+    ideology_minister_portraits = {
+        communism = {  }
+        democratic = {  }
+        fascism = {  }
+        neutrality = {  }
+    }
+    male_operative_portraits = {
+		GFX_portrait_arabia_generic_operative_male_1
+		GFX_portrait_arabia_generic_operative_male_2
+		GFX_portrait_arabia_generic_operative_male_3
+		GFX_portrait_arabia_generic_operative_male_4
+		GFX_portrait_arabia_generic_operative_male_5
+		GFX_portrait_arabia_generic_operative_male_6
+    }
+    female_operative_portraits = {
+		GFX_portrait_arabia_generic_operative_female_1
+		GFX_portrait_arabia_generic_operative_female_2
+		GFX_portrait_arabia_generic_operative_female_3
+		GFX_portrait_arabia_generic_operative_female_4
+		GFX_portrait_arabia_generic_operative_female_5
+		GFX_portrait_arabia_generic_operative_female_6
+    }
+    male_monarch_portraits = {
+    }
+    female_monarch_portraits = {
+    }
     graphical_culture = middle_eastern_gfx
     graphical_culture_2d = middle_eastern_2d
 }
 
 asian = {
-    ethnicity = { asian }
+    ethnicity = { asian circumpolar polynesian central_asian south_east_asian }
 
     army_portraits = {
         GFX_Portrait_Asia_Generic_land_1
@@ -207,13 +250,44 @@ asian = {
             GFX_Portrait_asia_generic_4
         }
     }
-
+    ideology_minister_portraits = {
+        communism = {  }
+        democratic = {  }
+        fascism = {  }
+        neutrality = {  }
+    }
+    male_operative_portraits = {
+        GFX_portrait_asia_generic_operative_male_1
+		GFX_portrait_asia_generic_operative_male_2
+		GFX_portrait_asia_generic_operative_male_3
+		GFX_portrait_asia_generic_operative_male_4
+		GFX_portrait_asia_generic_operative_male_5
+		GFX_portrait_asia_generic_operative_male_6
+		GFX_portrait_asia_generic_operative_male_7
+		GFX_portrait_asia_generic_operative_male_8
+		GFX_portrait_asia_generic_operative_male_9
+    }
+    female_operative_portraits = {
+		GFX_portrait_asia_generic_operative_female_1
+	    GFX_portrait_asia_generic_operative_female_2
+		GFX_portrait_asia_generic_operative_female_3
+		GFX_portrait_asia_generic_operative_female_4
+		GFX_portrait_asia_generic_operative_female_5
+		GFX_portrait_asia_generic_operative_female_6
+		GFX_portrait_asia_generic_operative_female_7
+		GFX_portrait_asia_generic_operative_female_8
+		GFX_portrait_asia_generic_operative_female_9
+    }
+    male_monarch_portraits = {
+    }
+    female_monarch_portraits = {
+    }
     graphical_culture = asian_gfx
     graphical_culture_2d = asian_2d
 }
 
 caucasian = {
-    ethnicity = { caucasian }
+    ethnicity = { caucasian slavic north_caucasian }
 
     army_portraits = {
         GFX_Portrait_Europe_Generic_land_1
@@ -269,24 +343,86 @@ caucasian = {
             GFX_Portrait_europe_generic_8
         }
     }
-
+    ideology_minister_portraits = {
+        communism = {  }
+        democratic = {  }
+        fascism = {  }
+        neutrality = {  }
+    }
+    male_operative_portraits = {
+        GFX_portrait_europe_generic_operative_male_1
+		GFX_portrait_europe_generic_operative_male_2
+		GFX_portrait_europe_generic_operative_male_3
+		GFX_portrait_europe_generic_operative_male_4
+		GFX_portrait_europe_generic_operative_male_5
+		GFX_portrait_europe_generic_operative_male_6
+		GFX_portrait_europe_generic_operative_male_7
+		GFX_portrait_europe_generic_operative_male_8
+		GFX_portrait_europe_generic_operative_male_9
+		GFX_portrait_europe_generic_operative_male_10
+		GFX_portrait_europe_generic_operative_male_11
+		GFX_portrait_europe_generic_operative_male_13
+		GFX_portrait_europe_generic_operative_male_14
+		GFX_portrait_europe_generic_operative_male_15
+		GFX_portrait_europe_generic_operative_male_16
+		GFX_portrait_europe_generic_operative_male_17
+		GFX_portrait_europe_generic_operative_male_18
+		GFX_portrait_europe_generic_operative_male_19
+		GFX_portrait_europe_generic_operative_male_20
+		GFX_portrait_europe_generic_operative_male_21
+		GFX_portrait_europe_generic_operative_male_22
+		GFX_portrait_europe_generic_operative_male_23
+		GFX_portrait_europe_generic_operative_male_24
+		GFX_portrait_europe_generic_operative_male_25
+    }
+    female_operative_portraits = {
+	    GFX_portrait_europe_generic_operative_female_1
+		GFX_portrait_europe_generic_operative_female_2
+		GFX_portrait_europe_generic_operative_female_3
+		GFX_portrait_europe_generic_operative_female_4
+		GFX_portrait_europe_generic_operative_female_5
+		GFX_portrait_europe_generic_operative_female_6
+		GFX_portrait_europe_generic_operative_female_7
+		GFX_portrait_europe_generic_operative_female_8
+		GFX_portrait_europe_generic_operative_female_9
+		GFX_portrait_europe_generic_operative_female_10
+		GFX_portrait_europe_generic_operative_female_11
+		GFX_portrait_europe_generic_operative_female_13
+		GFX_portrait_europe_generic_operative_female_14
+		GFX_portrait_europe_generic_operative_female_15
+		GFX_portrait_europe_generic_operative_female_16
+		GFX_portrait_europe_generic_operative_female_17
+		GFX_portrait_europe_generic_operative_female_18
+		GFX_portrait_europe_generic_operative_female_19
+		GFX_portrait_europe_generic_operative_female_20
+		GFX_portrait_europe_generic_operative_female_21
+		GFX_portrait_europe_generic_operative_female_22
+		GFX_portrait_europe_generic_operative_female_23
+		GFX_portrait_europe_generic_operative_female_24
+		GFX_portrait_europe_generic_operative_female_25
+		GFX_portrait_europe_generic_operative_female_26
+    }
+    male_monarch_portraits = {
+    }
+    female_monarch_portraits = {
+    }
     graphical culture = western_european_gfx
     graphical_culture_2d = western_european_2d
 }
 
-central_asian = {
-    ethnicity = { central_asian }
+#central_asian = { In Asian currently
+#    ethnicity = { central_asian }
+#
+#    graphical_culture = asian_gfx
+#    graphical_culture_2d = asian_2d
+#}
 
-    graphical_culture = asian_gfx
-    graphical_culture_2d = asian_2d
-}
-
-circumpolar = {
-    ethnicity = { circumpolar }
-
-    graphical_culture = asian_gfx
-    graphical_culture_2d = asian_2d
-}
+#circumpolar = { In Asian currently
+#    ethnicity = { circumpolar }
+#
+#    graphical_culture = asian_gfx
+#    graphical_culture_2d = asian_2d
+#}
 
 indian = {
     ethnicity = { indian }
@@ -295,36 +431,36 @@ indian = {
     graphical_culture_2d = asian_2d
 }
 
-native_american = {
-    ethnicity = { native_american }
+#native_american = { In South American currently
+#    ethnicity = { native_american }
+#
+#    graphical_culture = asian_gfx
+#    graphical_culture_2d = asian_2d
+#}
 
-    graphical_culture = asian_gfx
-    graphical_culture_2d = asian_2d
-}
+#north_caucasian = { In Caucasian currently
+#    ethnicity = { north_caucasian }
+#
+#    graphical_culture = eastern_european_gfx
+#    graphical_culture_2d = eastern_european_2d
+#}
 
-north_caucasian = {
-    ethnicity = { north_caucasian }
+#polynesian = { In Asian currently
+#    ethnicity = { polynesian }
+#
+#    graphical_culture = asian_gfx
+#    graphical_culture_2d = asian_2d
+#}
 
-    graphical_culture = eastern_european_gfx
-    graphical_culture_2d = eastern_european_2d
-}
-
-polynesian = {
-    ethnicity = { polynesian }
-
-    graphical_culture = asian_gfx
-    graphical_culture_2d = asian_2d
-}
-
-slavic = {
-    ethnicity = { slavic }
-
-    graphical_culture = eastern_european_gfx
-    graphical_culture_2d = eastern_european_2d
-}
+#slavic = { In Caucasian currently
+#    ethnicity = { slavic }
+#
+#    graphical_culture = eastern_european_gfx
+#    graphical_culture_2d = eastern_european_2d
+#}
 
 south_american = { # Brazilian and such, european heritage
-    ethnicity = { south_american }
+    ethnicity = { south_american native_american }
 
     army_portraits = {
         GFX_Portrait_South_America_Generic_land_1
@@ -366,17 +502,38 @@ south_american = { # Brazilian and such, european heritage
             GFX_portrait_south_america_generic_9
         }
     }
-
+    ideology_minister_portraits = {
+        communism = {  }
+        democratic = {  }
+        fascism = {  }
+        neutrality = {  }
+    }
+    male_operative_portraits = {
+		GFX_portrait_south_america_generic_operative_male_1
+		GFX_portrait_south_america_generic_operative_male_2
+		GFX_portrait_south_america_generic_operative_male_3
+		GFX_portrait_south_america_generic_operative_male_4
+		GFX_portrait_south_america_generic_operative_male_5
+		GFX_portrait_south_america_generic_operative_male_6
+    }
+    female_operative_portraits = {
+		GFX_portrait_south_america_generic_operative_female_1
+		GFX_portrait_south_america_generic_operative_female_2
+		GFX_portrait_south_america_generic_operative_female_3
+		GFX_portrait_south_america_generic_operative_female_4
+		GFX_portrait_south_america_generic_operative_female_5
+		GFX_portrait_south_america_generic_operative_female_6
+    }
     graphical_culture = southamerican_gfx
     graphical_culture_2d = southamerican_2d
 }
 
-south_east_asian = {
-    ethnicity = { south_east_asian }
-
-    graphical_culture = asian_gfx
-    graphical_culture_2d = asian_2d
-}
+#south_east_asian = { In Asian currently
+#    ethnicity = { south_east_asian }
+#
+#    graphical_culture = asian_gfx
+#    graphical_culture_2d = asian_2d
+#}
 
 ### Group based
 nordic = {
@@ -596,7 +753,7 @@ american = {
 }
 
 ethiopian = {
-    traits = { ethiopian } # Highly DLC dependant
+    traits = { ethiopian } # DLC BBA 
 
     army_portraits = {
         GFX_portrait_ETH_generic_male_1
@@ -628,4 +785,44 @@ ethiopian = {
 
     graphical_culture = african_gfx
     graphical_culture_2d = african_2d
+}
+
+manchu = {
+    cultures = { manchu } # DLC WTT
+
+    army_portraits = {
+        GFX_portrait_man_zhang_haipeng
+        GFX_portrait_man_aisin_gioro_xiqia
+    }
+
+    leader_portraits = {
+        communism = {  
+            GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
+        }
+        democratic = { 
+            GFX_portrait_chi_zhang_xueliang
+        }
+        fascism = { 
+            GFX_portrait_man_zhang_jinghui
+        }
+        neutrality = { 
+            GFX_portrait_man_henry_pu_yi_emperor
+        }
+    }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+tai = {
+    cultures = { tai }
+
+    leader_portraits = {
+        neutrality = { 
+            
+        }
+    }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
 }
