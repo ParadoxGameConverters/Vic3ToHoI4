@@ -7,7 +7,7 @@
 #include "src/hoi4_world/map/possible_path.h"
 
 
-#pragma optimize("", off)
+
 namespace
 {
 
@@ -752,4 +752,3 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
 
    return {railways, endpoints};
 }
-#pragma optimize("", on)
