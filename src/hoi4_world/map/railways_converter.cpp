@@ -7,7 +7,7 @@
 #include "src/hoi4_world/map/possible_path.h"
 
 
-
+#pragma optimize("", off)
 namespace
 {
 
@@ -80,11 +80,6 @@ std::vector<std::pair<int, int>> ConvertVic3EndpointsToHoi4Endpoints(
       }
 
       std::pair<int, int> pair{hoi4_province_start_point, hoi4_province_end_point};
-      if (handled_hoi4_endpoints.contains(pair))
-      {
-         continue;
-      }
-
       hoi4_endpoints.emplace_back(pair);
       handled_hoi4_endpoints.emplace(pair);
    }
@@ -762,3 +757,4 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
 
    return {railways, endpoints};
 }
+#pragma optimize("", on)
