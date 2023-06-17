@@ -643,11 +643,6 @@ std::map<int, int> CountInstancesOfEndpoints(const std::vector<hoi4::PossiblePat
          itr->second++;
       }
 
-      if (path.GetProvinces().size() == 1)
-      {
-         continue;
-      }
-
       if (auto [itr, success] = num_uses_of_endpoints.emplace(path.GetLastProvince(), 1); !success)
       {
          itr->second++;
