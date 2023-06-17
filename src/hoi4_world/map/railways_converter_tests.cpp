@@ -1264,8 +1264,19 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwayLevelsAreSetBasedOnStateInfrastr
                            .naval_base_location = 14,
                            .vic3_infrastructure = 0.F}),
                },
-           .province_to_state_id_map =
-               {{1, 1}, {2, 1}, {3, 2}, {4, 2}, {5, 3}, {6, 3}, {7, 4}, {8, 4}, {9, 5}, {10, 5}, {12, 6}, {13, 7}},
+           .province_to_state_id_map = {{1, 1},
+               {2, 1},
+               {3, 2},
+               {4, 2},
+               {5, 3},
+               {6, 3},
+               {7, 4},
+               {8, 4},
+               {9, 5},
+               {10, 5},
+               {12, 6},
+               {13, 7},
+               {14, 8}},
        });
 
    EXPECT_THAT(railways.railways,
