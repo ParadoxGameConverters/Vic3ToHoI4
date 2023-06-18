@@ -18,7 +18,10 @@ void out::OutputRailways(std::string_view output_name, const std::vector<hoi4::R
 
    for (const auto& railway: railways)
    {
-      out << railway;
+      if (railway.GetLevel() > 0)
+      {
+         out << railway;
+      }
    }
 
    out.close();

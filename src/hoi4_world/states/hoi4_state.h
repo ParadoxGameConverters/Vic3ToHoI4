@@ -31,6 +31,8 @@ struct StateOptions
    std::optional<int> naval_base_location;
    std::optional<int> naval_base_level;
    std::set<std::string> cores;
+
+   float vic3_infrastructure = 0.0F;
 };
 
 
@@ -50,7 +52,8 @@ class State
        dockyards_(state_options.dockyards),
        naval_base_location_(state_options.naval_base_location),
        naval_base_level_(state_options.naval_base_level),
-       cores_(state_options.cores)
+       cores_(state_options.cores),
+       vic3_infrastructure_(state_options.vic3_infrastructure)
    {
    }
 
@@ -67,6 +70,7 @@ class State
    [[nodiscard]] std::optional<int> GetNavalBaseLocation() const { return naval_base_location_; }
    [[nodiscard]] std::optional<int> GetNavalBaseLevel() const { return naval_base_level_; }
    [[nodiscard]] std::set<std::string> GetCores() const { return cores_; }
+   [[nodiscard]] float GetVic3Infrastructure() const { return vic3_infrastructure_; }
 
    void SetHighestVictoryPointValue(int value);
 
@@ -88,6 +92,8 @@ class State
    std::optional<int> naval_base_location_;
    std::optional<int> naval_base_level_;
    std::set<std::string> cores_;
+
+   float vic3_infrastructure_ = 0.0F;
 };
 
 }  // namespace hoi4

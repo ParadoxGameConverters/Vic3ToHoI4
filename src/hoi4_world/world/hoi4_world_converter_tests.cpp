@@ -480,11 +480,31 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
 {
    const vic3::StateRegion vic3_state_region({{"0x000001", "city"}, {"0x000002", "port"}, {"0x000003", "mine"}}, {});
+
+   const auto province_definitions = vic3::ProvinceDefinitions({
+       "0x000001",
+       "0x000002",
+       "0x000003",
+       "0x000004",
+       "0x000005",
+       "0x000006",
+   });
+
    const vic3::World source_world({
+       .states =
+           {
+               {1,
+                   vic3::State({
+                       .owner_number = 1,
+                       .owner_tag = "TAG",
+                       .provinces = {1, 2, 3},
+                   })},
+           },
        .state_regions =
            {
                {"state", vic3_state_region},
            },
+       .province_definitions = province_definitions,
    });
 
    const mappers::CountryMapper country_mapper;

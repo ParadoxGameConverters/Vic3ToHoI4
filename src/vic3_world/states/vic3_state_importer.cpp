@@ -16,6 +16,9 @@ vic3::StateImporter::StateImporter()
          incorporated_ = true;
       }
    });
+   state_parser_.registerKeyword("infrastructure", [this](std::istream& input_stream) {
+      infrastructure_ = static_cast<float>(commonItems::getDouble(input_stream));
+   });
    state_parser_.registerKeyword("provinces", [this](std::istream& input_stream) {
       provinces_parser_.parseStream(input_stream);
    });
@@ -92,6 +95,7 @@ vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
 {
    owner_number_.reset();
    incorporated_ = false;
+   infrastructure_ = 0.0F;
    provinces_.clear();
    population_ = 0;
    employed_population_ = 0;
@@ -100,6 +104,7 @@ vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
 
    return State({.owner_number = owner_number_,
        .incorporated = incorporated_,
+       .infrastructure = infrastructure_,
        .provinces = provinces_,
        .population = population_,
        .employed_population = employed_population_});

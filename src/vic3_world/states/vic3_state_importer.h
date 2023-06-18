@@ -28,6 +28,7 @@ class StateImporter
 
    std::optional<int> owner_number_;
    bool incorporated_ = false;
+   float infrastructure_ = 0.0F;
    std::set<int> provinces_;
    int population_ = 0;
    int employed_population_ = 0;

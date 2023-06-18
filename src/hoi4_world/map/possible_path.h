@@ -14,7 +14,6 @@ namespace hoi4
 class PossiblePath
 {
   public:
-   PossiblePath() = default;
    explicit PossiblePath(int initial_province) { provinces_.push_back(initial_province); }
 
    void AddProvince(int province, double additional_cost)
@@ -25,22 +24,8 @@ class PossiblePath
    void ReplaceProvinces(std::vector<int> new_provinces) { provinces_ = std::move(new_provinces); }
    void SetLevel(int level) { level_ = level; }
 
-   [[nodiscard]] std::optional<int> GetFirstProvince() const
-   {
-      if (provinces_.empty())
-      {
-         return std::nullopt;
-      }
-      return provinces_.front();
-   }
-   [[nodiscard]] std::optional<int> GetLastProvince() const
-   {
-      if (provinces_.empty())
-      {
-         return std::nullopt;
-      }
-      return provinces_.back();
-   }
+   [[nodiscard]] int GetFirstProvince() const { return provinces_.front(); }
+   [[nodiscard]] int GetLastProvince() const { return provinces_.back(); }
    [[nodiscard]] const std::vector<int>& GetProvinces() const { return provinces_; }
    [[nodiscard]] int GetLevel() const { return level_; }
    [[nodiscard]] double GetCost() const { return cost_; }

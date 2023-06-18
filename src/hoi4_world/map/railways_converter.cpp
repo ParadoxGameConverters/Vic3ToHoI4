@@ -20,7 +20,7 @@ std::vector<std::pair<std::string, std::string>> DetermineVic3Endpoints(
    {
       const std::map<std::string, std::string>& significant_provinces = vic3_state_region.GetSignificantProvinces();
       std::string city_province;
-      std::vector<std::string> other_significant_provinces;
+      std::set<std::string> other_significant_provinces;
       for (const auto& [province, type]: significant_provinces)
       {
          if (type == "city")
@@ -29,7 +29,7 @@ std::vector<std::pair<std::string, std::string>> DetermineVic3Endpoints(
          }
          else
          {
-            other_significant_provinces.push_back(province);
+            other_significant_provinces.insert(province);
          }
       }
       if (city_province.empty())
@@ -37,7 +37,7 @@ std::vector<std::pair<std::string, std::string>> DetermineVic3Endpoints(
          continue;
       }
 
-      for (const auto& significant_province: significant_provinces | std::views::keys)
+      for (const auto& significant_province: other_significant_provinces)
       {
          if (significant_province == city_province)
          {
@@ -58,6 +58,8 @@ std::vector<std::pair<int, int>> ConvertVic3EndpointsToHoi4Endpoints(
 {
    std::vector<std::pair<int, int>> hoi4_endpoints;
 
+   // an extra copy for deduping, even though we want to preserve the order in the final output
+   std::set<std::pair<int, int>> handled_hoi4_endpoints;
    for (const auto& [vic3_start_point, vic3_end_point]: vic3_endpoints)
    {
       std::vector<int> hoi4_province_start_points = province_mapper.GetVic3ToHoi4ProvinceMapping(vic3_start_point);
@@ -77,23 +79,78 @@ std::vector<std::pair<int, int>> ConvertVic3EndpointsToHoi4Endpoints(
          continue;
       }
 
-      hoi4_endpoints.emplace_back(hoi4_province_start_point, hoi4_province_end_point);
+      std::pair<int, int> pair{hoi4_province_start_point, hoi4_province_end_point};
+      hoi4_endpoints.emplace_back(pair);
+      handled_hoi4_endpoints.emplace(pair);
    }
 
    return hoi4_endpoints;
 }
 
 
-constexpr int urban_cost = 1;
-constexpr int plains_cost = 2;
-constexpr int forest_cost = 3;
-constexpr int hills_cost = 4;
-constexpr int desert_cost = 5;
-constexpr int marsh_cost = 6;
-constexpr int jungle_cost = 7;
-constexpr int mountain_cost = 8;
-constexpr int unhandled_cost = 100;
-int GetCostForTerrainType(std::string_view terrain_type)
+std::optional<float> GetInfrastructureLevel(int province, const hoi4::States& states)
+{
+   const auto state_itr = states.province_to_state_id_map.find(province);
+   if (state_itr == states.province_to_state_id_map.end())
+   {
+      return std::nullopt;
+   }
+
+   if (states.states.size() < state_itr->second)
+   {
+      return std::nullopt;
+   }
+
+   return states.states.at(state_itr->second - 1).GetVic3Infrastructure();
+}
+
+
+int DetermineRailwayLevel(int start_province, int end_province, const hoi4::States& states)
+{
+   const std::optional<float> start_infrastructure = GetInfrastructureLevel(start_province, states);
+   if (!start_infrastructure)
+   {
+      return 0;
+   }
+
+   const std::optional<float> end_infrastructure = GetInfrastructureLevel(end_province, states);
+   if (!end_infrastructure)
+   {
+      return 0;
+   }
+
+   const float total_infrastructure = *start_infrastructure + *end_infrastructure;
+   if (total_infrastructure > 3500.0F)
+   {
+      return 4;
+   }
+   if (total_infrastructure > 2800.0F)
+   {
+      return 3;
+   }
+   if (total_infrastructure > 560.0F)
+   {
+      return 2;
+   }
+   if (total_infrastructure > 330.0F)
+   {
+      return 1;
+   }
+
+   return 1;
+}
+
+
+constexpr float urban_cost = 1.F;
+constexpr float plains_cost = 2.F;
+constexpr float forest_cost = 3.F;
+constexpr float hills_cost = 4.F;
+constexpr float desert_cost = 5.F;
+constexpr float marsh_cost = 6.F;
+constexpr float jungle_cost = 7.F;
+constexpr float mountain_cost = 8.F;
+constexpr float unhandled_cost = 100.F;
+float GetCostForTerrainType(std::string_view terrain_type)
 {
    if (terrain_type == "urban")
    {
@@ -160,13 +217,22 @@ double DeterminePathCost(const maps::ProvinceDefinitions& hoi4_province_definiti
     const std::string& last_province,
     const maps::MapData& hoi4_map_data)
 {
-   const std::optional<std::string> possible_terrain_type = hoi4_province_definitions.GetTerrainType(neighbor_number);
-   if (!possible_terrain_type)
+   const std::optional<std::string> possible_current_terrain_type =
+       hoi4_province_definitions.GetTerrainType(last_province);
+   if (!possible_current_terrain_type)
    {
       return std::numeric_limits<double>::max();
    }
 
-   return GetCostForTerrainType(*possible_terrain_type) *
+   const std::optional<std::string> possible_neighbor_terrain_type =
+       hoi4_province_definitions.GetTerrainType(neighbor_number);
+   if (!possible_neighbor_terrain_type)
+   {
+      return std::numeric_limits<double>::max();
+   }
+
+   return (GetCostForTerrainType(*possible_current_terrain_type) +
+              GetCostForTerrainType(*possible_neighbor_terrain_type) / 2.0F) *
           GetDistanceBetweenProvinces(neighbor_number, last_province, hoi4_map_data);
 }
 
@@ -177,13 +243,8 @@ void FindNextPaths(const hoi4::PossiblePath& possible_railway_path,
     std::set<int>& reached_provinces,
     std::priority_queue<hoi4::PossiblePath>& possible_railway_paths)
 {
-   const std::optional<int> last_province = possible_railway_path.GetLastProvince();
-   if (!last_province)
-   {
-      return;
-   }
-
-   for (const auto& neighbor_number_string: hoi4_map_data.GetNeighbors(std::to_string(*last_province)))
+   const int last_province = possible_railway_path.GetLastProvince();
+   for (const auto& neighbor_number_string: hoi4_map_data.GetNeighbors(std::to_string(last_province)))
    {
       int neighbor_number = 0;
       try
@@ -209,7 +270,7 @@ void FindNextPaths(const hoi4::PossiblePath& possible_railway_path,
       new_possible_railway_path.AddProvince(neighbor_number,
           DeterminePathCost(hoi4_province_definitions,
               neighbor_number_string,
-              std::to_string(*last_province),
+              std::to_string(last_province),
               hoi4_map_data));
       possible_railway_paths.push(new_possible_railway_path);
    }
@@ -231,8 +292,7 @@ std::optional<hoi4::PossiblePath> FindPath(int start_province,
    {
       hoi4::PossiblePath possible_railway_path = possible_railway_paths.top();
 
-      const auto last_province = possible_railway_path.GetLastProvince();
-      if (!last_province || *last_province == end_province)
+      if (possible_railway_path.GetLastProvince() == end_province)
       {
          break;
       }
@@ -273,13 +333,19 @@ void BuildPath(int start_province,
 
 
 std::vector<hoi4::PossiblePath> FindAllHoi4Paths(const std::vector<std::pair<int, int>>& hoi4_endpoints,
+    const hoi4::States& states,
     const maps::MapData& hoi4_map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions)
 {
    std::vector<hoi4::PossiblePath> possible_paths;
    for (const auto& [start_point, end_point]: hoi4_endpoints)
    {
-      BuildPath(start_point, end_point, 3, hoi4_map_data, hoi4_province_definitions, possible_paths);
+      BuildPath(start_point,
+          end_point,
+          DetermineRailwayLevel(start_point, end_point, states),
+          hoi4_map_data,
+          hoi4_province_definitions,
+          possible_paths);
    }
 
    return possible_paths;
@@ -442,12 +508,18 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
       }
       for (const int neighbor_id: neighbors_itr->second)
       {
+         // skip connections already done from the other direction
+         if (neighbor_id < id)
+         {
+            continue;
+         }
+
          const std::set<int>& neighbor_significant_provinces =
              GetSignificantProvincesInState(neighbor_id, significant_provinces_in_states);
          const std::vector<std::pair<int, int>> interstate_connections =
              EnumerateAllInterstateConnections(state_significant_provinces, neighbor_significant_provinces);
          std::vector<hoi4::PossiblePath> all_interstate_paths =
-             FindAllHoi4Paths(interstate_connections, hoi4_map_data, hoi4_province_definitions);
+             FindAllHoi4Paths(interstate_connections, hoi4_states, hoi4_map_data, hoi4_province_definitions);
          if (all_interstate_paths.empty())
          {
             continue;
@@ -461,29 +533,163 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
       }
    }
 
-   std::vector<hoi4::PossiblePath> deduplicated_interstate_paths;
-   std::set<std::pair<int, int>> used_endpoints;
-   for (const auto& path: interstate_paths)
+   return interstate_paths;
+}
+
+
+std::set<int> ListEndpoints(const std::vector<hoi4::PossiblePath>& all_paths)
+{
+   std::set<int> endpoints;
+   for (const auto& path: all_paths)
    {
-      std::optional<int> first_province = path.GetFirstProvince();
-      std::optional<int> last_province = path.GetLastProvince();
-      if (!first_province || !last_province)
-      {
-         continue;
-      }
-      if (used_endpoints.contains({*first_province, *last_province}))
-      {
-         continue;
-      }
-      if (used_endpoints.contains({*last_province, *first_province}))
-      {
-         continue;
-      }
-      used_endpoints.emplace(*first_province, *last_province);
-      deduplicated_interstate_paths.push_back(path);
+      endpoints.insert(path.GetFirstProvince());
+      endpoints.insert(path.GetLastProvince());
    }
 
-   return deduplicated_interstate_paths;
+   return endpoints;
+}
+
+
+std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>& all_paths)
+{
+   std::vector<hoi4::PossiblePath> split_paths;
+   std::set<std::pair<int, int>> handled_paths;
+
+   const std::set<int> endpoints = ListEndpoints(all_paths);
+
+   for (const hoi4::PossiblePath& path: all_paths)
+   {
+      hoi4::PossiblePath split_path(path.GetFirstProvince());
+      split_path.SetLevel(path.GetLevel());
+      for (int province: path.GetProvinces())
+      {
+         if (province == path.GetFirstProvince())
+         {
+            continue;
+         }
+
+         split_path.AddProvince(province, 0.0F);
+
+         if (province == path.GetLastProvince())
+         {
+            continue;
+         }
+
+         if (!endpoints.contains(province))
+         {
+            continue;
+         }
+
+         std::pair<int, int> current_endpoints = {split_path.GetFirstProvince(), split_path.GetLastProvince()};
+         if (!handled_paths.contains(current_endpoints))
+         {
+            split_paths.push_back(split_path);
+            handled_paths.insert(current_endpoints);
+         }
+         split_path.ReplaceProvinces({province});
+      }
+
+      std::pair<int, int> current_endpoints = {split_path.GetFirstProvince(), split_path.GetLastProvince()};
+      if (!handled_paths.contains(current_endpoints))
+      {
+         split_paths.push_back(split_path);
+         handled_paths.insert(current_endpoints);
+      }
+   }
+
+   return split_paths;
+}
+
+
+std::set<int> GatherVictoryPointLocations(const hoi4::States& hoi4_states)
+{
+   std::set<int> victory_point_positions;
+
+   for (const hoi4::State& state: hoi4_states.states)
+   {
+      for (int victory_point_position: state.GetVictoryPoints() | std::views::keys)
+      {
+         victory_point_positions.insert(victory_point_position);
+      }
+   }
+
+   return victory_point_positions;
+}
+
+
+std::set<int> GatherNavalBaseLocations(const hoi4::States& hoi4_states)
+{
+   std::set<int> naval_base_positions;
+
+   for (const hoi4::State& state: hoi4_states.states)
+   {
+      if (const std::optional<int> possible_naval_base = state.GetNavalBaseLocation(); possible_naval_base)
+      {
+         naval_base_positions.insert(*possible_naval_base);
+      }
+   }
+
+   return naval_base_positions;
+}
+
+
+std::map<int, int> CountInstancesOfEndpoints(const std::vector<hoi4::PossiblePath>& all_paths)
+{
+   std::map<int, int> num_uses_of_endpoints;
+   for (const hoi4::PossiblePath& path: all_paths)
+   {
+      if (auto [itr, success] = num_uses_of_endpoints.emplace(path.GetFirstProvince(), 1); !success)
+      {
+         itr->second++;
+      }
+
+      if (auto [itr, success] = num_uses_of_endpoints.emplace(path.GetLastProvince(), 1); !success)
+      {
+         itr->second++;
+      }
+   }
+
+   return num_uses_of_endpoints;
+}
+
+
+std::vector<hoi4::PossiblePath> TrimPaths(const std::vector<hoi4::PossiblePath>& all_paths,
+    const hoi4::States& hoi4_states)
+{
+   std::vector<hoi4::PossiblePath> trimmed_paths;
+
+   const std::set<int> victory_point_locations = GatherVictoryPointLocations(hoi4_states);
+   const std::set<int> naval_base_locations = GatherNavalBaseLocations(hoi4_states);
+   const std::map<int, int> num_endpoint_counts = CountInstancesOfEndpoints(all_paths);
+
+   for (const hoi4::PossiblePath& path: all_paths)
+   {
+      const auto first_itr = num_endpoint_counts.find(path.GetFirstProvince());
+      if (first_itr == num_endpoint_counts.end())
+      {
+         continue;
+      }
+      const auto last_itr = num_endpoint_counts.find(path.GetLastProvince());
+      if (last_itr == num_endpoint_counts.end())
+      {
+         continue;
+      }
+
+      if (first_itr->second == 1 && !victory_point_locations.contains(path.GetFirstProvince()) &&
+          !naval_base_locations.contains(path.GetFirstProvince()))
+      {
+         continue;
+      }
+      if (last_itr->second == 1 && !victory_point_locations.contains(path.GetLastProvince()) &&
+          !naval_base_locations.contains(path.GetLastProvince()))
+      {
+         continue;
+      }
+
+      trimmed_paths.push_back(path);
+   }
+
+   return trimmed_paths;
 }
 
 
@@ -507,14 +713,8 @@ std::set<int> GetEndpointsFromPaths(const std::vector<hoi4::PossiblePath>& paths
 
    for (const hoi4::PossiblePath& possible_path: paths)
    {
-      if (std::optional<int> possible_endpoint = possible_path.GetFirstProvince(); possible_endpoint)
-      {
-         endpoints.insert(*possible_endpoint);
-      }
-      if (std::optional<int> possible_endpoint = possible_path.GetLastProvince(); possible_endpoint)
-      {
-         endpoints.insert(*possible_endpoint);
-      }
+      endpoints.insert(possible_path.GetFirstProvince());
+      endpoints.insert(possible_path.GetLastProvince());
    }
 
    return endpoints;
@@ -530,12 +730,13 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const States& hoi4_states)
 {
+   Log(LogLevel::Info) << "\tCreating railways";
    const std::vector<std::pair<std::string, std::string>> vic3_endpoints = DetermineVic3Endpoints(vic3_state_regions);
    const std::vector<std::pair<int, int>> intrastate_hoi4_endpoints =
        ConvertVic3EndpointsToHoi4Endpoints(vic3_endpoints, province_mapper);
 
    const std::vector<hoi4::PossiblePath> intrastate_paths =
-       FindAllHoi4Paths(intrastate_hoi4_endpoints, hoi4_map_data, hoi4_province_definitions);
+       FindAllHoi4Paths(intrastate_hoi4_endpoints, hoi4_states, hoi4_map_data, hoi4_province_definitions);
    const std::vector<hoi4::PossiblePath> interstate_paths = ConnectStatesWithRailways(vic3_state_regions,
        province_mapper,
        hoi4_states,
@@ -543,9 +744,11 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
        hoi4_province_definitions);
    std::vector<hoi4::PossiblePath> all_paths = intrastate_paths;
    all_paths.insert(all_paths.end(), interstate_paths.begin(), interstate_paths.end());
+   const std::vector<hoi4::PossiblePath> split_paths = SplitPaths(all_paths);
+   const std::vector<hoi4::PossiblePath> trimmed_paths = TrimPaths(split_paths, hoi4_states);
 
-   const std::vector<Railway> railways = GetRailwaysFromPaths(all_paths);
-   const std::set<int> endpoints = GetEndpointsFromPaths(all_paths);
+   const std::vector<Railway> railways = GetRailwaysFromPaths(trimmed_paths);
+   const std::set<int> endpoints = GetEndpointsFromPaths(trimmed_paths);
 
    return {railways, endpoints};
 }

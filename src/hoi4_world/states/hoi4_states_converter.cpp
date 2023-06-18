@@ -883,7 +883,8 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
                  .dockyards = dockyards,
                  .naval_base_location = naval_base_location,
                  .naval_base_level = naval_base_level,
-                 .cores = cores});
+                 .cores = cores,
+                 .vic3_infrastructure = vic3_state_itr->second.GetInfrastructure()});
       }
       for (const auto& province_set: final_wasteland_connected_province_sets)
       {
