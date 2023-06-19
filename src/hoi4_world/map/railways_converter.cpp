@@ -485,14 +485,19 @@ std::map<int, std::set<int>> GetSignificantProvincesInStates(
 
 
 std::set<int> GetSignificantProvincesInState(int state_id,
-    const std::map<int, std::set<int>>& significant_provinces_in_states)
+    const std::map<hoi4::StateId, std::map<int, ProvinceType>>& significant_provinces_in_states)
 {
+   std::set<int> significant_provinces;
+
    const auto significant_provinces_in_states_itr = significant_provinces_in_states.find(state_id);
    if (significant_provinces_in_states_itr != significant_provinces_in_states.end())
    {
-      return significant_provinces_in_states_itr->second;
+      for (int province: significant_provinces_in_states_itr->second | std::views::keys)
+      {
+         significant_provinces.insert(province);
+      }
    }
-   return {};
+   return significant_provinces;
 }
 
 
@@ -524,7 +529,7 @@ std::vector<std::pair<int, int>> EnumerateAllInterstateConnections(const std::se
 
 
 std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
-    const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
+    const std::map<hoi4::StateId, std::map<int, ProvinceType>>& significant_hoi4_provinces,
     const mappers::ProvinceMapper& province_mapper,
     const hoi4::States& hoi4_states,
     const maps::MapData& hoi4_map_data,
@@ -532,15 +537,12 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
 {
    const std::map<int, std::set<int>> neighboring_states =
        DetermineNeighboringStates(hoi4_states.province_to_state_id_map, hoi4_map_data);
-   const std::map<int, std::set<int>> significant_provinces_in_states =
-       GetSignificantProvincesInStates(vic3_state_regions, province_mapper, hoi4_states.province_to_state_id_map);
 
    std::vector<hoi4::PossiblePath> interstate_paths;
    for (const hoi4::State& state: hoi4_states.states)
    {
       int id = state.GetId();
-      const std::set<int>& state_significant_provinces =
-          GetSignificantProvincesInState(id, significant_provinces_in_states);
+      const std::set<int>& state_significant_provinces = GetSignificantProvincesInState(id, significant_hoi4_provinces);
 
       const auto neighbors_itr = neighboring_states.find(id);
       if (neighbors_itr == neighboring_states.end())
@@ -556,7 +558,7 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
          }
 
          const std::set<int>& neighbor_significant_provinces =
-             GetSignificantProvincesInState(neighbor_id, significant_provinces_in_states);
+             GetSignificantProvincesInState(neighbor_id, significant_hoi4_provinces);
          const std::vector<std::pair<int, int>> interstate_connections =
              EnumerateAllInterstateConnections(state_significant_provinces, neighbor_significant_provinces);
          std::vector<hoi4::PossiblePath> all_interstate_paths =
@@ -784,7 +786,7 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
    const std::vector<hoi4::PossiblePath> intrastate_paths =
        FindAllHoi4Paths(intrastate_endpoints, hoi4_states, hoi4_map_data, hoi4_province_definitions);
 
-   const std::vector<hoi4::PossiblePath> interstate_paths = ConnectStatesWithRailways(vic3_state_regions,
+   const std::vector<hoi4::PossiblePath> interstate_paths = ConnectStatesWithRailways(significant_hoi4_provinces,
        province_mapper,
        hoi4_states,
        hoi4_map_data,
