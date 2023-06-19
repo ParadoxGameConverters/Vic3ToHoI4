@@ -384,6 +384,12 @@
     <ClCompile Include="src\vic3_world\characters\country_character_map_importer_tests.cpp">
       <Filter>src\vic3_world\characters</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\characters\character_importer_tests.cpp">
+      <Filter>src\vic3_world\characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\characters\character_manager_tests.cpp">
+      <Filter>src\vic3_world\characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">

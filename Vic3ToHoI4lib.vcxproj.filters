@@ -483,6 +483,12 @@
     <ClInclude Include="src\vic3_world\characters\country_character_map_importer.h">
       <Filter>src\vic3_world\characters</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\characters\character_importer.h">
+      <Filter>src\vic3_world\characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\characters\character_manager.h">
+      <Filter>src\vic3_world\characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -723,6 +729,12 @@
       <Filter>src\vic3_world\characters</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\characters\country_character_map_importer.cpp">
+      <Filter>src\vic3_world\characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\characters\character_importer.cpp">
+      <Filter>src\vic3_world\characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\characters\character_manager.cpp">
       <Filter>src\vic3_world\characters</Filter>
     </ClCompile>
   </ItemGroup>

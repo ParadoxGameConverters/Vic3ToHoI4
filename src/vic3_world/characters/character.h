@@ -13,26 +13,33 @@
 
 namespace vic3
 {
+struct CharacterOptions
+{
+   int id;
+   std::string first_name;
+   std::string last_name;
+   int culture_id;
+   std::string culture;
+   std::set<std::string> roles;
+   int rank;
+   std::string ideology;
+   std::set<std::string> traits;
+   std::string origin_tag;
+};
 
 class Character
 {
   public:
-   explicit Character(int id,
-       std::string first_name,
-       std::string last_name,
-       int culture_id,
-       std::set<std::string> roles,
-       int rank,
-       std::string ideology,
-       std::set<std::string> traits):
-       id_(id),
-       first_name_(std::move(first_name)),
-       last_name_(std::move(last_name)),
-       culture_id_(culture_id),
-       roles_(std::move(roles)),
-       rank_(rank),
-       ideology_(std::move(ideology)),
-       traits_(std::move(traits))
+   explicit Character(CharacterOptions options):
+       id_(options.id),
+       first_name_(std::move(options.first_name)),
+       last_name_(std::move(options.last_name)),
+       culture_id_(options.culture_id),
+       roles_(std::move(options.roles)),
+       rank_(options.rank),
+       ideology_(std::move(options.ideology)),
+       traits_(std::move(options.traits)),
+       origin_tag_(std::move(options.origin_tag))
    {
    }
 
@@ -46,6 +53,9 @@ class Character
    [[nodiscard]] const int GetRank() const { return rank_; }
    [[nodiscard]] const std::string& GetIdeology() const { return ideology_; }
    [[nodiscard]] const std::set<std::string>& GetTraits() const { return traits_; }
+   [[nodiscard]] const std::string& GetOriginTag() const { return origin_tag_; }
+
+   void SetHomeTag(std::string tag) { origin_tag_ = std::move(tag); }
 
    std::partial_ordering operator<=>(const Character&) const = default;
 
@@ -60,6 +70,7 @@ class Character
    int rank_;
    std::string ideology_;
    std::set<std::string> traits_;
+   std::string origin_tag_;  // Where an agitator was exiled from
 };
 }  // namespace vic3
 

@@ -11,22 +11,22 @@ std::map<int, std::vector<int>> vic3::ImportCountryCharacterMap(std::istream& in
 {
    std::map<int, std::vector<int>> country_character_map;
 
-   int countries = 0;
    int characters = 0;
 
    commonItems::parser map_parser;
    map_parser.registerRegex(commonItems::integerRegex,
-       [&country_character_map, &countries, &characters](const std::string& number_string, std::istream& input_stream) {
+       [&country_character_map, &characters](const std::string& number_string, std::istream& input_stream) {
           const int country_id = std::stoi(number_string);
           country_character_map.emplace(country_id, commonItems::getInts(input_stream));
-          characters += country_character_map.at(country_id).size();
-          ++countries;
+          characters += static_cast<int>(country_character_map.at(country_id).size());
        });
    map_parser.IgnoreUnregisteredItems();
    map_parser.parseStream(input_stream);
 
 
-   Log(LogLevel::Info) << fmt::format("\tMatched {} countries to {} characters.", countries, characters);
+   Log(LogLevel::Info) << fmt::format("\tMatched {} countries to {} characters.",
+       country_character_map.size(),
+       characters);
 
    return country_character_map;
 }
