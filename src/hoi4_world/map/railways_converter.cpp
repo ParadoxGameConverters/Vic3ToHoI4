@@ -39,13 +39,30 @@ std::map<std::string, ProvinceType> GatherVic3SignificantProvinces(
 }
 
 
+std::vector<int> DetermineAllowedEndpointAmounts(const std::vector<hoi4::State>& states)
+{
+   std::vector<int> allowed_endpoint_amounts;
+   allowed_endpoint_amounts.resize(states.size() + 1);
+   for (const hoi4::State& state: states)
+   {
+      int allowed_endpoints = std::max(1, static_cast<int>(state.GetProvinces().size() / 6));
+      allowed_endpoint_amounts[state.GetId()] = allowed_endpoints;
+   }
+
+   return allowed_endpoint_amounts;
+}
+
+
 std::map<hoi4::StateId, std::map<int, ProvinceType>> ConvertVic3SignificantProvincesToHoi4SignificantProvinces(
     const std::map<std::string, ProvinceType>& vic3_significant_provinces,
     const mappers::ProvinceMapper& province_mapper,
-    const std::map<int, hoi4::StateId>& province_to_state_id_map)
+    const hoi4::States& states)
 {
    std::map<hoi4::StateId, std::map<int, ProvinceType>> hoi4_significant_provinces;
 
+   const std::map<int, hoi4::StateId>& province_to_state_id_map = states.province_to_state_id_map;
+
+   std::vector<int> allowed_endpoint_amounts = DetermineAllowedEndpointAmounts(states.states);
    for (const auto& [vic3_significant_province, province_type]: vic3_significant_provinces)
    {
       const std::vector<int> hoi4_provinces = province_mapper.GetVic3ToHoi4ProvinceMapping(vic3_significant_province);
@@ -64,8 +81,19 @@ std::map<hoi4::StateId, std::map<int, ProvinceType>> ConvertVic3SignificantProvi
          continue;
       }
 
-      if (auto [itr, success] = hoi4_significant_provinces.emplace(state_itr->second,
-              std::map<int, ProvinceType>{{hoi4_province, province_type}});
+      const hoi4::StateId& state_id = state_itr->second;
+      if (state_id + 1 > allowed_endpoint_amounts.size())
+      {
+         continue;
+      }
+      if (allowed_endpoint_amounts[state_id] == 0)
+      {
+         continue;
+      }
+      --allowed_endpoint_amounts[state_id];
+
+      if (auto [itr, success] =
+              hoi4_significant_provinces.emplace(state_id, std::map<int, ProvinceType>{{hoi4_province, province_type}});
           !success)
       {
          itr->second.emplace(hoi4_province, province_type);
@@ -779,7 +807,7 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
    const std::map<StateId, std::map<int, ProvinceType>> significant_hoi4_provinces =
        ConvertVic3SignificantProvincesToHoi4SignificantProvinces(significant_vic3_provinces,
            province_mapper,
-           hoi4_states.province_to_state_id_map);
+           hoi4_states);
 
    const std::vector<std::pair<int, int>> intrastate_endpoints =
        DetermineIntrastateEndpoints(significant_hoi4_provinces);
