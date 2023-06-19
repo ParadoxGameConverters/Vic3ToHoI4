@@ -15,6 +15,12 @@ class PossiblePath
 {
   public:
    explicit PossiblePath(int initial_province) { provinces_.push_back(initial_province); }
+   PossiblePath(std::vector<int> provinces, int level, double cost):
+       provinces_(std::move(provinces)),
+       level_(level),
+       cost_(cost)
+   {
+   }
 
    void AddProvince(int province, double additional_cost)
    {
