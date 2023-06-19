@@ -584,23 +584,23 @@ std::vector<hoi4::PossiblePath> DeduplicatePaths(const std::vector<hoi4::Possibl
 {
    std::vector<hoi4::PossiblePath> deduplicated_paths;
 
-   std::set<hoi4::PossiblePath> handled_paths;
+   std::set<std::vector<int>> handled_paths;
    for (const hoi4::PossiblePath& path: paths)
    {
-      if (handled_paths.contains(path))
+      std::vector<int> provinces = path.GetProvinces();
+      if (handled_paths.contains(provinces))
       {
          continue;
       }
-      std::vector<int> provinces = path.GetProvinces();
+
       std::ranges::reverse(provinces);
-      hoi4::PossiblePath reversedPath(provinces, path.GetLevel(), path.GetCost());
-      if (handled_paths.contains(reversedPath))
+      if (handled_paths.contains(provinces))
       {
          continue;
       }
 
       deduplicated_paths.push_back(path);
-      handled_paths.insert(path);
+      handled_paths.insert(path.GetProvinces());
    }
 
    return deduplicated_paths;
