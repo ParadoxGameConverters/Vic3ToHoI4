@@ -580,33 +580,6 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
 }
 
 
-std::vector<hoi4::PossiblePath> DeduplicatePaths(const std::vector<hoi4::PossiblePath>& paths)
-{
-   std::vector<hoi4::PossiblePath> deduplicated_paths;
-
-   std::set<std::vector<int>> handled_paths;
-   for (const hoi4::PossiblePath& path: paths)
-   {
-      std::vector<int> provinces = path.GetProvinces();
-      if (handled_paths.contains(provinces))
-      {
-         continue;
-      }
-
-      std::ranges::reverse(provinces);
-      if (handled_paths.contains(provinces))
-      {
-         continue;
-      }
-
-      deduplicated_paths.push_back(path);
-      handled_paths.insert(path.GetProvinces());
-   }
-
-   return deduplicated_paths;
-}
-
-
 std::set<int> ListEndpoints(const std::vector<hoi4::PossiblePath>& all_paths)
 {
    std::set<int> endpoints;
@@ -820,8 +793,7 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
        hoi4_province_definitions);
    std::vector<hoi4::PossiblePath> all_paths = intrastate_paths;
    all_paths.insert(all_paths.end(), interstate_paths.begin(), interstate_paths.end());
-   const std::vector<hoi4::PossiblePath> deduplicated_paths = DeduplicatePaths(all_paths);
-   const std::vector<hoi4::PossiblePath> split_paths = SplitPaths(deduplicated_paths);
+   const std::vector<hoi4::PossiblePath> split_paths = SplitPaths(all_paths);
    const std::vector<hoi4::PossiblePath> trimmed_paths = TrimPaths(split_paths, hoi4_states);
 
    const std::vector<Railway> railways = GetRailwaysFromPaths(trimmed_paths);
