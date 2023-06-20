@@ -549,50 +549,6 @@ std::map<int, std::set<int>> DetermineNeighboringStates(const std::map<int, int>
 }
 
 
-std::map<int, std::set<int>> GetSignificantProvincesInStates(
-    const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
-    const mappers::ProvinceMapper& province_mapper,
-    const std::map<int, int>& province_to_state_id_map)
-{
-   std::map<int, std::set<int>> state_to_significant_provinces_map;
-
-   std::vector<std::string> vic3_significant_provinces;
-   for (const vic3::StateRegion& vic3_state_region: vic3_state_regions | std::views::values)
-   {
-      std::ranges::copy(vic3_state_region.GetSignificantProvinces() | std::views::keys,
-          std::back_inserter(vic3_significant_provinces));
-   }
-
-   std::set<int> intrastate_hoi4_endpoints;
-   for (const std::string& vic3_significant_province: vic3_significant_provinces)
-   {
-      const std::vector<int>& hoi4_provinces = province_mapper.GetVic3ToHoi4ProvinceMapping(vic3_significant_province);
-      if (hoi4_provinces.empty())
-      {
-         continue;
-      }
-
-      intrastate_hoi4_endpoints.emplace(hoi4_provinces.front());
-   }
-
-   for (int endpoint: intrastate_hoi4_endpoints)
-   {
-      if (const auto province_to_state_id_mapping = province_to_state_id_map.find(endpoint);
-          province_to_state_id_mapping != province_to_state_id_map.end())
-      {
-         auto [iterator, success] =
-             state_to_significant_provinces_map.emplace(province_to_state_id_mapping->second, std::set{endpoint});
-         if (!success)
-         {
-            iterator->second.emplace(endpoint);
-         }
-      }
-   }
-
-   return state_to_significant_provinces_map;
-}
-
-
 std::set<int> GetSignificantProvincesInState(int state_id,
     const std::map<hoi4::StateId, std::map<int, ProvinceType>>& significant_provinces_in_states)
 {
