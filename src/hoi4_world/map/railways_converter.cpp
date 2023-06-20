@@ -53,16 +53,55 @@ std::vector<int> DetermineAllowedEndpointAmounts(const std::vector<hoi4::State>&
 }
 
 
+std::map<int, std::string> LimitProvinces(int limit, const std::map<int, std::string>& provinces)
+{
+   // quick return if all provinces are allowed
+   if (limit >= provinces.size())
+   {
+      return provinces;
+   }
+
+   // always include cities and ports
+   std::map<int, std::string> limited_provinces;
+   for (const auto& [province, type]: provinces)
+   {
+      if (type == "city")
+      {
+         limited_provinces.emplace(province, type);
+      }
+   }
+   for (const auto& [province, type]: provinces)
+   {
+      if (type == "port")
+      {
+         limited_provinces.emplace(province, type);
+      }
+   }
+
+   // add remaining provinces up to limit. Because we use a map, we don't need to worry about double-inserts
+   for (const auto& [province, type]: provinces)
+   {
+      if (limit <= limited_provinces.size())
+      {
+         return limited_provinces;
+      }
+
+      limited_provinces.emplace(province, type);
+   }
+
+   return limited_provinces;
+}
+
+
 std::map<hoi4::StateId, std::map<int, ProvinceType>> ConvertVic3SignificantProvincesToHoi4SignificantProvinces(
     const std::map<std::string, ProvinceType>& vic3_significant_provinces,
     const mappers::ProvinceMapper& province_mapper,
     const hoi4::States& states)
 {
-   std::map<hoi4::StateId, std::map<int, ProvinceType>> hoi4_significant_provinces;
+   std::map<hoi4::StateId, std::map<int, ProvinceType>> all_hoi4_significant_provinces;
 
    const std::map<int, hoi4::StateId>& province_to_state_id_map = states.province_to_state_id_map;
 
-   std::vector<int> allowed_endpoint_amounts = DetermineAllowedEndpointAmounts(states.states);
    for (const auto& [vic3_significant_province, province_type]: vic3_significant_provinces)
    {
       const std::vector<int> hoi4_provinces = province_mapper.GetVic3ToHoi4ProvinceMapping(vic3_significant_province);
@@ -82,25 +121,30 @@ std::map<hoi4::StateId, std::map<int, ProvinceType>> ConvertVic3SignificantProvi
       }
 
       const hoi4::StateId& state_id = state_itr->second;
-      if (state_id + 1 > allowed_endpoint_amounts.size())
-      {
-         continue;
-      }
-      if (allowed_endpoint_amounts[state_id] == 0)
-      {
-         continue;
-      }
-      --allowed_endpoint_amounts[state_id];
-
-      if (auto [itr, success] =
-              hoi4_significant_provinces.emplace(state_id, std::map<int, ProvinceType>{{hoi4_province, province_type}});
+      if (auto [itr, success] = all_hoi4_significant_provinces.emplace(state_id,
+              std::map<int, ProvinceType>{{hoi4_province, province_type}});
           !success)
       {
          itr->second.emplace(hoi4_province, province_type);
       }
    }
 
-   return hoi4_significant_provinces;
+   std::map<hoi4::StateId, std::map<int, ProvinceType>> restricted_hoi4_significant_provinces;
+
+   const std::vector<int> allowed_endpoint_amounts = DetermineAllowedEndpointAmounts(states.states);
+   for (const auto& [state_id, significant_provinces]: all_hoi4_significant_provinces)
+   {
+      if (state_id + 1 > allowed_endpoint_amounts.size())
+      {
+         continue;
+      }
+
+      const std::map<int, std::string> limited_provinces =
+          LimitProvinces(allowed_endpoint_amounts[state_id], significant_provinces);
+      restricted_hoi4_significant_provinces.emplace(state_id, limited_provinces);
+   }
+
+   return restricted_hoi4_significant_provinces;
 }
 
 
