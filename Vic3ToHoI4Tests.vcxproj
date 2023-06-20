@@ -131,6 +131,8 @@
     <ClCompile Include="src\vic3_world\cultures\cultures_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\cultures\culture_definitions_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\elections\elections_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\interest_groups\interest_groups_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\interest_groups\interest_group_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\laws\laws_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader_tests.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_tests.cpp" />

@@ -1,7 +1,3 @@
-// ideology
-
-// traits
-
 #ifndef SRC_VIC3WORLD_CHARACTERS_CHARACTER_H
 #define SRC_VIC3WORLD_CHARACTERS_CHARACTER_H
 
@@ -60,14 +56,14 @@ class Character
    std::partial_ordering operator<=>(const Character&) const = default;
 
   private:
-   int id_;
+   int id_ = 0;
    std::string first_name_;
    std::string last_name_;
 
-   int culture_id_;
+   int culture_id_ = 0;
    std::string culture_;
    std::set<std::string> roles_;
-   int rank_;
+   int rank_ = 0;
    std::string ideology_;
    std::set<std::string> traits_;
    std::string origin_tag_;  // Where an agitator was exiled from

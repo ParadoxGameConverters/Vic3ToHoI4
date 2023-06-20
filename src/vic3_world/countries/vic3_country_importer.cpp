@@ -23,6 +23,9 @@ vic3::CountryImporter::CountryImporter()
          primary_culture_ids_.emplace(culture_id);
       }
    });
+   country_parser_.registerKeyword("leader", [this](std::istream& input_stream) {
+      head_of_state_id_ = commonItems::getInt(input_stream);
+   });
    country_parser_.IgnoreUnregisteredItems();
 }
 
@@ -35,6 +38,7 @@ vic3::Country vic3::CountryImporter::ImportCountry(int number,
    capital_ = std::nullopt;
    country_type_.clear();
    primary_culture_ids_.clear();
+   head_of_state_id_ = 0;
 
    country_parser_.parseStream(input_stream);
 
@@ -49,5 +53,6 @@ vic3::Country vic3::CountryImporter::ImportCountry(int number,
        .color = color,
        .capital_state = capital_,
        .country_type = country_type_,
-       .primary_culture_ids = primary_culture_ids_});
+       .primary_culture_ids = primary_culture_ids_,
+       .head_of_state_id = head_of_state_id_});
 }

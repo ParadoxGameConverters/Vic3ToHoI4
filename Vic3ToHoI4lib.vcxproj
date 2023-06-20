@@ -111,6 +111,9 @@
     <ClInclude Include="src\vic3_world\cultures\culture_definition.h" />
     <ClInclude Include="src\vic3_world\cultures\culture_definitions_importer.h" />
     <ClInclude Include="src\vic3_world\elections\elections_importer.h" />
+    <ClInclude Include="src\vic3_world\interest_groups\interest_group.h" />
+    <ClInclude Include="src\vic3_world\interest_groups\interest_groups_importer.h" />
+    <ClInclude Include="src\vic3_world\interest_groups\interest_group_importer.h" />
     <ClInclude Include="src\vic3_world\laws\laws_importer.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions_loader.h" />
@@ -197,6 +200,8 @@
     <ClCompile Include="src\vic3_world\cultures\cultures_importer.cpp" />
     <ClCompile Include="src\vic3_world\cultures\culture_definitions_importer.cpp" />
     <ClCompile Include="src\vic3_world\elections\elections_importer.cpp" />
+    <ClCompile Include="src\vic3_world\interest_groups\interest_groups_importer.cpp" />
+    <ClCompile Include="src\vic3_world\interest_groups\interest_group_importer.cpp" />
     <ClCompile Include="src\vic3_world\laws\laws_importer.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader.cpp" />
