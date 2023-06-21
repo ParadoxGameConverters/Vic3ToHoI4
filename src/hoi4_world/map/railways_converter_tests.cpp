@@ -10,52 +10,52 @@ namespace hoi4
 
 TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysAreCreated)
 {
-   const std::map<std::string, vic3::StateRegion> vic3_state_regions{
-       {"STATE_ONE",
-           vic3::StateRegion{{
-                                 {"0x000001", "city"},
-                                 {"0x000002", "dock"},
-                                 {"0x000003", "mine"},
-                             },
-               {}}},
-   };
+    const std::map<std::string, vic3::StateRegion> vic3_state_regions{
+        {"STATE_ONE",
+            vic3::StateRegion{{
+                {"0x000001", "city"},
+                { "0x000002", "dock" },
+                { "0x000003", "mine" },
+                },
+            {}}},
+    };
 
-   const mappers::ProvinceMapper province_mapper{{
-                                                     {"0x000001", {1}},
-                                                     {"0x000002", {2}},
-                                                     {"0x000003", {3}},
-                                                 },
-       {}};
+    const mappers::ProvinceMapper province_mapper{{
+        {"0x000001", { 1 }},
+        { "0x000002", {2} },
+        { "0x000003", {3} },
+        },
+        {}};
 
-   const maps::MapData hoi4_map_data{{
-       .province_neighbors =
-           {
-               {"1", {"2", "3"}},
-           },
-   }};
+    const maps::MapData hoi4_map_data{{
+            .province_neighbors =
+            {
+                {"1", {"2", "3"}},
+            },
+        }};
 
-   const maps::ProvinceDefinitions hoi4_province_definitions{{
-       .land_provinces = {"1", "2", "3"},
-   }};
+    const maps::ProvinceDefinitions hoi4_province_definitions{{
+            .land_provinces = { "1", "2", "3" },
+        }};
 
-   const Railways railways = ConvertRailways(vic3_state_regions,
-       province_mapper,
-       hoi4_map_data,
-       hoi4_province_definitions,
-       {
-           .states =
-               {
-                   State(1,
-                       {
-                           .provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18},
-                           .victory_points = {{1, 1}, {3, 1}},
-                           .naval_base_location = 2,
-                       }),
-               },
-           .province_to_state_id_map = {{1, 1}, {2, 1}, {3, 1}},
-       });
+    const Railways railways = ConvertRailways(vic3_state_regions,
+        province_mapper,
+        hoi4_map_data,
+        hoi4_province_definitions,
+        {
+            .states =
+                {
+                    State(1,
+                        {
+                            .provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18},
+                            .victory_points = {{1, 1}, {3, 1}},
+                            .naval_base_location = 2,
+                        }),
+                },
+            .province_to_state_id_map = {{1, 1}, {2, 1}, {3, 1}},
+        });
 
-   EXPECT_THAT(railways.railways, testing::ElementsAre(Railway(1, {1, 2}), Railway(1, {1, 3})));
+    EXPECT_THAT(railways.railways, testing::ElementsAre(Railway(1, { 1, 2 }), Railway(1, { 1, 3 })));
 }
 
 
@@ -110,7 +110,60 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysAreLimitedByNumProvin
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysFromDockIfNoCity)
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromCity)
+{
+    const std::map<std::string, vic3::StateRegion> vic3_state_regions{
+        {"STATE_ONE",
+            vic3::StateRegion{{
+                {"0x000001", "dock"},
+                { "0x000002", "mine" },
+                { "0x000003", "city" },
+                },
+            {}}},
+    };
+
+    const mappers::ProvinceMapper province_mapper{{
+        {"0x000001", { 1 }},
+        { "0x000002", {2} },
+        { "0x000003", {3} },
+        },
+        {}};
+
+    const maps::MapData hoi4_map_data{{
+            .province_neighbors =
+            {
+                {"1", {"2", "3"}},
+                {"2", {"1", "3"}},
+                {"3", {"1", "2"}},
+            },
+        }};
+
+    const maps::ProvinceDefinitions hoi4_province_definitions{{
+            .land_provinces = { "1", "2", "3" },
+        }};
+
+    const Railways railways = ConvertRailways(vic3_state_regions,
+        province_mapper,
+        hoi4_map_data,
+        hoi4_province_definitions,
+        {
+            .states =
+                {
+                    State(1,
+                        {
+                            .provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18},
+                            .victory_points = {{1, 1}, {3, 1}},
+                            .naval_base_location = 2,
+                        }),
+                },
+            .province_to_state_id_map = {{1, 1}, {2, 1}, {3, 1}},
+        });
+
+    EXPECT_THAT(railways.railways, testing::ElementsAre(Railway(1, { 3, 1 }), Railway(1, { 3, 2 })));
+}
+
+
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromDockIfNoCity)
 {
    const std::map<std::string, vic3::StateRegion> vic3_state_regions{
        {"STATE_ONE",
