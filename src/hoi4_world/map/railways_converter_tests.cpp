@@ -14,7 +14,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysAreCreated)
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                                  {"0x000003", "mine"},
                              },
                {}}},
@@ -65,7 +65,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysAreLimitedByNumProvin
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                                  {"0x000003", "mine"},
                              },
                {}}},
@@ -115,7 +115,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromCity)
    const std::map<std::string, vic3::StateRegion> vic3_state_regions{
        {"STATE_ONE",
            vic3::StateRegion{{
-                                 {"0x000001", "dock"},
+                                 {"0x000001", "port"},
                                  {"0x000002", "mine"},
                                  {"0x000003", "city"},
                              },
@@ -163,12 +163,12 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromCity)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromDockIfNoCity)
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromPortIfNoCity)
 {
    const std::map<std::string, vic3::StateRegion> vic3_state_regions{
        {"STATE_ONE",
            vic3::StateRegion{{
-                                 {"0x000001", "dock"},
+                                 {"0x000001", "port"},
                                  {"0x000002", "mine"},
                                  {"0x000003", "farm"},
                              },
@@ -214,7 +214,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromDockIfNoCity
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysFromAnyIfNoCityAndNoDock)
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysFromAnyIfNoCityAndNoPort)
 {
    const std::map<std::string, vic3::StateRegion> vic3_state_regions{
        {"STATE_ONE",
@@ -271,7 +271,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoRailwaysThroughNonLandProvinces)
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000003", "dock"},
+                                 {"0x000003", "port"},
                              },
                {}}},
    };
@@ -321,7 +321,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysToSameVic3Province)
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000001", "dock"},
+                                 {"0x000001", "port"},
                                  {"0x000001", "mine"},
                              },
                {}}},
@@ -370,7 +370,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysToSameHoi4Province)
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                                  {"0x000003", "mine"},
                              },
                {}}},
@@ -419,7 +419,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, OneInstanceOfEachIntrastateRailway)
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                                  {"0x000003", "mine"},
                              },
                {}}},
@@ -468,7 +468,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoRailwayForUnmappedProvinces)
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                                  {"0x000003", "mine"},
                              },
                {}}},
@@ -509,7 +509,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoRailwayForProvincesMappedToNothing)
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                                  {"0x000003", "mine"},
                              },
                {}}},
@@ -546,7 +546,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysForDisconnectedProv
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                                  {"0x000003", "mine"},
                              },
                {}}},
@@ -584,13 +584,13 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysForDisconnectedProv
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysToNonCityNonDockyardAreTrimmed)
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysToNonCityNonPortyardAreTrimmed)
 {
    const std::map<std::string, vic3::StateRegion> vic3_state_regions{
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                                  {"0x000003", "mine"},
                              },
                {}}},
@@ -1061,7 +1061,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferShorterPaths)
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000010", "dock"},
+                                 {"0x000010", "port"},
                              },
                {}}},
    };
@@ -1127,7 +1127,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferFewerProvincesIfDistanceI
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000010", "dock"},
+                                 {"0x000010", "port"},
                              },
                {}}},
    };
@@ -1394,14 +1394,14 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwaysSharingRouteAreMerged)
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                                  {"0x000003", "mine"},
                              },
                {}}},
        {"STATE_TWO",
            vic3::StateRegion{{
                                  {"0x000011", "city"},
-                                 {"0x000012", "dock"},
+                                 {"0x000012", "port"},
                                  {"0x000013", "mine"},
                              },
                {}}},
@@ -1467,43 +1467,43 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwayLevelsAreSetBasedOnStateInfrastr
        {"STATE_1",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                              },
                {}}},
        {"STATE_2",
            vic3::StateRegion{{
                                  {"0x000003", "city"},
-                                 {"0x000004", "dock"},
+                                 {"0x000004", "port"},
                              },
                {}}},
        {"STATE_3",
            vic3::StateRegion{{
                                  {"0x000005", "city"},
-                                 {"0x000006", "dock"},
+                                 {"0x000006", "port"},
                              },
                {}}},
        {"STATE_4",
            vic3::StateRegion{{
                                  {"0x000007", "city"},
-                                 {"0x000008", "dock"},
+                                 {"0x000008", "port"},
                              },
                {}}},
        {"STATE_5",
            vic3::StateRegion{{
                                  {"0x000009", "city"},
-                                 {"0x000010", "dock"},
+                                 {"0x000010", "port"},
                              },
                {}}},
        {"STATE_6_BAD_START_POINT",
            vic3::StateRegion{{
                                  {"0x000011", "city"},
-                                 {"0x000012", "dock"},
+                                 {"0x000012", "port"},
                              },
                {}}},
        {"STATE_7_BAD_END_POINT",
            vic3::StateRegion{{
                                  {"0x000013", "city"},
-                                 {"0x000014", "dock"},
+                                 {"0x000014", "port"},
                              },
                {}}},
    };
@@ -1632,7 +1632,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwayEndpointsAreRecorded)
        {"STATE_ONE",
            vic3::StateRegion{{
                                  {"0x000001", "city"},
-                                 {"0x000002", "dock"},
+                                 {"0x000002", "port"},
                                  {"0x000003", "mine"},
                              },
                {}}},
