@@ -83,7 +83,6 @@ TEST(Vic3WorldCharactersCharacterImporter, InvalidRankIsLogged)
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_EQ(character, Character({.id = 1, .rank = 0}));
-   EXPECT_THAT(log.str(),
-       testing::HasSubstr("[WARNING] Failed to read rank: commander_rank_modded."));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Failed to read rank: commander_rank_modded."));
 }
 }  // namespace vic3
