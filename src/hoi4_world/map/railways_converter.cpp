@@ -138,6 +138,10 @@ std::map<hoi4::StateId, std::map<int, ProvinceType>> ConvertVic3SignificantProvi
       {
          continue;
       }
+      if (states.states.at(state_id - 1).GetCategory() == "wasteland")
+      {
+         continue;
+      }
 
       const std::map<int, std::string> limited_provinces =
           LimitProvinces(allowed_endpoint_amounts[state_id], significant_provinces);
