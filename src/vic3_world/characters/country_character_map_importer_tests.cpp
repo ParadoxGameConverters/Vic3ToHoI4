@@ -31,4 +31,25 @@ TEST(Vic3WorldCharactersCountryCharacterMapImporter, CountryCharacterMapCanBeImp
    EXPECT_THAT(country_character_map,
        testing::UnorderedElementsAre(testing::Pair(1, std::vector{1, 2, 3}), testing::Pair(2, std::vector{4, 5, 6})));
 }
+
+
+TEST(Vic3WorldCharactersCountryCharacterMapImporter, NumberOfMatchesAreLogged)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "max=535\n";
+   input << "1 = { 1 2 3 }\n";
+   input << "2 = { 4 5 }\n";
+   input << "}\n";
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   ImportCountryCharacterMap(input);
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tMatched 2 countries to 5 characters.\n"));
+}
 }  // namespace vic3

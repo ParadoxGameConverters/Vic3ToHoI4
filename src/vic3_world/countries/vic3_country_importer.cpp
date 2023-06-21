@@ -23,7 +23,7 @@ vic3::CountryImporter::CountryImporter()
          primary_culture_ids_.emplace(culture_id);
       }
    });
-   country_parser_.registerKeyword("leader", [this](std::istream& input_stream) {
+   country_parser_.registerKeyword("ruler", [this](std::istream& input_stream) {
       head_of_state_id_ = commonItems::getInt(input_stream);
    });
    country_parser_.IgnoreUnregisteredItems();

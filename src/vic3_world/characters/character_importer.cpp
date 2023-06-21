@@ -21,7 +21,7 @@ vic3::CharacterImporter::CharacterImporter()
       const std::string rank_string = commonItems::getString(input_stream);
       if (rank_string == "commander_rank_ruler")
       {
-         rank_ = 1;  // What to do with commander rulers?
+         rank_ = 1;
          return;
       }
 

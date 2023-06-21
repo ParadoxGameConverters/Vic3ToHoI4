@@ -15,7 +15,7 @@ TEST(Vic3WorldInterestGroupsInterestGroupImporter, DefaultsDefaultToDefault)
    std::stringstream input;
    const auto interest_group = interest_group_importer.ImportInterestGroup(0, input);
 
-   EXPECT_EQ(interest_group, InterestGroup({}, {}, {}, {}, {}));
+   EXPECT_EQ(interest_group, InterestGroup("", 0, 0, 0.0F, false));
 }
 
 

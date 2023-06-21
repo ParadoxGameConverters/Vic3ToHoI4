@@ -37,7 +37,7 @@ std::map<int, int> ImportCharacterIgMap(std::istream& input_stream)
    map_parser.IgnoreUnregisteredItems();
    map_parser.parseStream(input_stream);
 
-   // Everyone but homeless exilees.
+   // Everyone but homeless exiles.
    Log(LogLevel::Info) << fmt::format("\tFound IGs for {} characters.", character_ig_map.size());
    return character_ig_map;
 }
@@ -53,7 +53,7 @@ std::set<int> ImportExilePool(std::istream& input_stream)
    map_parser.IgnoreUnregisteredItems();
    map_parser.parseStream(input_stream);
 
-   // Homeless exilees.
+   // Homeless exiles.
    Log(LogLevel::Info) << fmt::format("\tFound {} wandering agitators.", exile_pool.size());
    return exile_pool;
 }

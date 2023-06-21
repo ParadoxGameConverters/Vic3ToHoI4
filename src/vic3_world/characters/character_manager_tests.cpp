@@ -266,14 +266,12 @@ TEST(Vic3WorldCharacterManagerImporter, MissingOriginTagMatchesAreLogged)
    input << "={\n";
    input << "database={\n";
    input << "1 = {\n";
+   input << "first_name = \"Missing\"\n";
+   input << "last_name = \"Home\"\n";
    input << "role = agitator\n";
    input << "}\n";
    input << "3 ={ \n";
    input << "}\n";
-   input << "}\n";
-   input << "exile_country_map={\n";
-   input << "max=6552\n";
-   input << "1 = TAG\n";
    input << "}\n";
    input << "}\n";
 
@@ -285,7 +283,7 @@ TEST(Vic3WorldCharacterManagerImporter, MissingOriginTagMatchesAreLogged)
 
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tFound home countries of 1 exiles.\n"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Agitator Missing Home with ID: 1 has no home country.\n"));
 }
 
 
