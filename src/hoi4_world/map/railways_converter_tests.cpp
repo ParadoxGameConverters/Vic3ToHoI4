@@ -573,8 +573,8 @@ TEST(Hoi4worldMapRailwaysConverterTests, InterstateRailwaysAreCreated)
        .states =
            {
                State(1, {.provinces = {1, 2, 3, 4, 5, 6}, .victory_points = {{1, 1}}}),
-               State(2, {.provinces = {7, 8, 9, 10, 11, 12}, .victory_points = {{10, 1}}}),
-               State(3, {.provinces = {13, 14, 15, 16, 17, 18}, .victory_points = {{100, 1}}}),
+               State(2, {.provinces = {10, 11, 12, 13, 14, 15}, .victory_points = {{10, 1}}}),
+               State(3, {.provinces = {100, 101, 102, 103, 104, 105}, .victory_points = {{100, 1}}}),
            },
        .province_to_state_id_map =
            {
@@ -1163,6 +1163,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferEasierTerrains)
    {
       provinces.insert(i);
    }
+   provinces.insert({10, 20, 30, 40, 50, 60, 70, 80, 100, 200, 300, 400, 500, 600, 700, 800, 100000});
 
    const States hoi4_states{
        .states =
