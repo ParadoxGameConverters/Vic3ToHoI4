@@ -24,14 +24,7 @@ std::map<std::string, ProvinceType> GatherVic3SignificantProvinces(
       const std::map<std::string, std::string>& significant_provinces = vic3_state_region.GetSignificantProvinces();
       for (const auto& [province, type]: significant_provinces)
       {
-         auto [itr, success] = vic3_significant_provinces.emplace(province, type);
-         if (!success)
-         {
-            if ((type == "city") || (type == "port" && itr->second != "city"))
-            {
-               itr->second = type;
-            }
-         }
+         vic3_significant_provinces.emplace(province, type);
       }
    }
 
