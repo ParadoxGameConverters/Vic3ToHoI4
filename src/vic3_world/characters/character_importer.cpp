@@ -31,7 +31,7 @@ vic3::CharacterImporter::CharacterImporter()
       }
       catch (const std::exception& e)
       {
-         Log(LogLevel::Warning) << fmt::format("Failed to read rank: {}", e.what());
+         Log(LogLevel::Warning) << fmt::format("Failed to read rank: {}. {}", rank_string, e.what());
       }
    });
    character_parser_.registerKeyword("ideology", [this](std::istream& input_stream) {

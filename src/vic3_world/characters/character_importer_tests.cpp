@@ -36,10 +36,10 @@ TEST(Vic3WorldCharactersCharacterImporter, CharacterCanBeImported)
    input << "\ttraits = { \"trait_0\" \"trait_1\" }\n";
    input << "}\n";
 
-   const auto character = character_importer.ImportCharacter(0, input);
+   const auto character = character_importer.ImportCharacter(1, input);
 
    EXPECT_EQ(character,
-       Character({.id = 0,
+       Character({.id = 1,
            .first_name = "Cabdi",
            .last_name = "Wala",
            .culture_id = 1,
@@ -47,5 +47,43 @@ TEST(Vic3WorldCharactersCharacterImporter, CharacterCanBeImported)
            .rank = 5,
            .ideology = "ideology_0",
            .traits = {"trait_0", "trait_1"}}));
+}
+
+
+TEST(Vic3WorldCharactersCharacterImporter, RulerCommanderIsFirstRank)
+{
+   CharacterImporter character_importer;
+
+   std::stringstream input;
+   input << "={\n";
+   input << "\trank = commander_rank_ruler\n";
+   input << "}\n";
+
+   const auto character = character_importer.ImportCharacter(1, input);
+
+   EXPECT_EQ(character, Character({.id = 1, .rank = 1}));
+}
+
+
+TEST(Vic3WorldCharactersCharacterImporter, InvalidRankIsLogged)
+{
+   CharacterImporter character_importer;
+
+   std::stringstream input;
+   input << "={\n";
+   input << "\trank = commander_rank_modded\n";
+   input << "}\n";
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const auto character = character_importer.ImportCharacter(1, input);
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_EQ(character, Character({.id = 1, .rank = 0}));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Failed to read rank: commander_rank_modded. invalid stoi argument\n"));
 }
 }  // namespace vic3
