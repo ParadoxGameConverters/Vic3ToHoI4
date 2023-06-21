@@ -12,8 +12,9 @@ namespace vic3
 class InterestGroup
 {
   public:
-   InterestGroup(std::string type, const int leader, const float clout, const bool in_government):
+   InterestGroup(std::string type, const int country_id, const int leader, const float clout, const bool in_government):
        type_(std::move(type)),
+       country_id_(country_id),
        leader_(leader),
        clout_(clout),
        in_government_(in_government)

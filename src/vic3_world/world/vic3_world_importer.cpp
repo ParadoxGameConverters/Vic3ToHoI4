@@ -158,6 +158,7 @@ std::map<int, std::vector<int>> CreateCountryIGMap(const std::map<int, vic3::Int
          country_ig_map.emplace(country_id_itr->first, ig_id);
       }
    }
+   return country_ig_map;
 }
 
 }  // namespace
@@ -288,6 +289,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
 
    AssignCulturesToCountries(countries, cultures);
    AssignOwnersToStates(countries, states);
+   Log(LogLevel::Progress) << "16 %";
    const auto country_ig_map = CreateCountryIGMap(igs);
 
    return World({.countries = countries,

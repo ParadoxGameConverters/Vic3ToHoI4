@@ -5,10 +5,10 @@
 
 vic3::CharacterImporter::CharacterImporter()
 {
-   character_parser_.registerKeyword("first_name_", [this](std::istream& input_stream) {
+   character_parser_.registerKeyword("first_name", [this](std::istream& input_stream) {
       first_name_ = commonItems::getString(input_stream);
    });
-   character_parser_.registerKeyword("last_name_", [this](std::istream& input_stream) {
+   character_parser_.registerKeyword("last_name", [this](std::istream& input_stream) {
       last_name_ = commonItems::getString(input_stream);
    });
    character_parser_.registerKeyword("culture", [this](std::istream& input_stream) {

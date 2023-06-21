@@ -20,6 +20,7 @@ std::map<int, vic3::InterestGroup> vic3::ImportInterestGroups(std::istream& inpu
           const std::string ig_string = commonItems::stringOfItem(input_stream).getString();
           if (ig_string.find('{') == std::string::npos)
           {
+             Log(LogLevel::Error) << "Broken IG in save file. This should not happen.";
              return;
           }
           std::istringstream ig_stream(ig_string);
@@ -27,7 +28,6 @@ std::map<int, vic3::InterestGroup> vic3::ImportInterestGroups(std::istream& inpu
           igs.emplace(id, ig_importer.ImportInterestGroup(id, ig_stream));
        });
    database_parser.IgnoreUnregisteredItems();
-   database_parser.parseStream(input_stream);
 
    commonItems::parser igs_parser;
    igs_parser.registerKeyword("database", [&igs, &database_parser](std::istream& input_stream) {

@@ -24,6 +24,7 @@ class CharacterManager
 
   private:
    void AssignHomeTagToExiles();
+   void AssignIgToCharacters();
 
    commonItems::parser character_manager_parser_;
 
@@ -31,6 +32,7 @@ class CharacterManager
    std::map<int, std::vector<int>> country_character_map_;
    std::map<int, std::string> exile_origin_map_;
    std::map<int, int> character_ig_map_;
+   std::set<int> exile_pool_;
 };
 
 }  // namespace vic3
