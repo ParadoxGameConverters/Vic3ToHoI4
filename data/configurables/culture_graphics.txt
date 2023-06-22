@@ -24,52 +24,81 @@
 # sample_group = {
 #   cultures = { swedish } # In reality, these are probably 3 separate groups
 #   traits = { european_heritage }
-#	ethnicity = { caucasian }
+#   ethnicity = { caucasian }
 #
-#	army_portraits = {
-#		GFX_Portrait_Africa_Generic_land_1
-#       GFX_Portrait_Africa_Generic_land_2
-#       GFX_Portrait_Africa_Generic_land_3
-#       GFX_Portrait_Africa_Generic_land_4
-#	}
-#	navy_portraits = {
-#		GFX_Portrait_GER_sample_portrait_navy
-#		GFX_Portrait_GER_sample_portrait_navy2
-#	}
-#	leader_portraits = {
-#		communism = { GFX_Portrait_GER_sample_portrait_communism }
-#		democratic = { GFX_Portrait_GER_sample_portrait_democratic }
-#		fascism = { GFX_Portrait_GER_sample_portrait_fascism }
-#		neutrality = { GFX_Portrait_sample_portrait_neutrality }
-#	}
-#	female_portraits = {
-#		GFX_Portrait_GER_sample_portrait_Hitler_Female
-#	}
-#	ideology_minister_portraits =
-#	{
-#		communism = { GFX_Portrait_sample_portrait_communism }
-#		democratic = { GFX_Portrait_sample_portrait_democratic }
-#		fascism = { GFX_Portrait_sample_portrait_fascism }
-#		neutrality = { GFX_Portrait_sample_portrait_neutrality }
-#	}
-#	male_operative_portraits =
-#	{
-#		 GFX_Portrait_sample_male_operative
-#		 GFX_Portrait_sample_male_operative2
-#	}
-#	female_operative_portraits =
-#	{
-#		 GFX_Portrait_sample_female_operative
-#		 GFX_Portrait_sample_female_operative2
-#	}
-#	male_monarch_portraits = {
-#		 GFX_Portrait_crowns_sample
-#	}
-#	female_monarch_portraits = {
-#		GFX_Portrait_crowns_sample
-#	}
-#	graphical_culture = western_european_gfx
-#	graphical_culture_2d = western_european_2d
+#   army_portraits = {
+#       GFX_Portrait_Example_Generic_land_1
+#       GFX_Portrait_Example_Generic_land_2
+#       GFX_Portrait_Example_Generic_land_3
+#       GFX_Portrait_Example_Generic_land_4
+#   }
+#   navy_portraits = {
+#       GFX_Portrait_sample_portrait_navy
+#       GFX_Portrait_sample_portrait_navy2
+#   }
+#   political_portraits = {
+#       communism = {
+#           leader = {
+#               GFX_Portrait_sample_portrait_communism
+#           }
+#           minister = {
+#               GFX_Portrait_sample_portrait_communism_small
+#           }
+#       }
+#       democratic = { 
+#           leader = {
+#               GFX_Portrait_sample_portrait_democratic
+#           }
+#           minister = {
+#               GFX_Portrait_sample_portrait_democratic_small
+#           }
+#       }
+#       fascism = { 
+#           leader = {
+#               GFX_Portrait_sample_portrait_fascism
+#           }
+#           minister = {
+#               GFX_Portrait_sample_portrait_fascism_small
+#           }
+#       }
+#       neutrality = { 
+#           leader = { # Country leaders, normal portraits
+#               GFX_Portrait_sample_portrait_neutrality
+#           }
+#           minister = { # Political advisors, small portraits
+#               GFX_Portrait_sample_portrait_neutrality_small
+#           }
+#       }
+#       anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+#           GFX_Portrait_sample_portrait_council
+#       }
+#       monarchist = { # Replaces any ideology leader with a monarch in sufficently authoritarian monarchies
+#           male = {
+#               GFX_Portrait_sample_portrait_king
+#           }
+#           female = {
+#               GFX_Portrait_sample_portrait_queen
+#           }
+#       }
+#   }
+#   female_portraits = { # For any non-queen, non-spy use
+#       GFX_Portrait_GER_sample_portrait_Hitler_Female
+#   }
+#   operative_portraits = {
+#       male = { 
+#          GFX_Portrait_sample_male_operative
+#          GFX_Portrait_sample_male_operative2
+#       }
+#       female = {
+#           GFX_Portrait_sample_female_operative
+#           GFX_Portrait_sample_female_operative2
+#       }
+#   }
+#   monarch_ideas = {
+#       GFX_Portrait_crowns_sample
+#   }
+#   graphical_culture = western_european_gfx
+#   graphical_culture_2d = western_european_2d
 #}
 
 ### Vicky ethnicity fallbacks

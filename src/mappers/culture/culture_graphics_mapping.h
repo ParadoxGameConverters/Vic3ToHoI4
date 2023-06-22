@@ -24,11 +24,12 @@ struct PortraitPaths
    std::vector<std::string> navy;
    IdeologyPortraitPaths leader;
    std::vector<std::string> female_leader;
-   IdeologyPortraitPaths ideology_minister;
+   IdeologyPortraitPaths advisor;
    std::vector<std::string> male_operative;
    std::vector<std::string> female_operative;
    std::vector<std::string> male_monarch;
    std::vector<std::string> female_monarch;
+   std::vector<std::string> council;
 
    std::partial_ordering operator<=>(const PortraitPaths&) const = default;
 };
