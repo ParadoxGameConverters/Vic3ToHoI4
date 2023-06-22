@@ -12,6 +12,6 @@ culture_1 = {
         GFX_general_1
     }
 
-	graphical_culture = asian
+	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
 }

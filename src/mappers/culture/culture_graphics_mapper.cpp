@@ -158,13 +158,13 @@ mappers::GraphicsBlock mappers::CultureGraphicsMapper::MatchCultureToGraphics(
    if (!matched)
    {
       Log(LogLevel::Warning) << fmt::format("Culture {} has no matching portrait set.", culture_def.GetName());
-      return GraphicsBlock({{}, "western_european", "western_european_2d"});
+      return GraphicsBlock({{}, "western_european_gfx", "western_european_2d"});
    }
    if (!(unit_graphics.contains("graphical_culture") && unit_graphics.contains("graphical_culture_2d")))
    {
       Log(LogLevel::Warning) << fmt::format("Culture {} lacks unit graphics. Defaulting to western.",
           culture_def.GetName());
-      unit_graphics.emplace("graphical_culture", "western_european");
+      unit_graphics.emplace("graphical_culture", "western_european_gfx");
       unit_graphics.emplace("graphical_culture_2d", "western_european_2d");
    }
 

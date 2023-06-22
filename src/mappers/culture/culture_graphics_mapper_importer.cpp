@@ -2,6 +2,8 @@
 
 #include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/ParserHelpers.h"
+#include "external/fmt/include/fmt/format.h"
+
 
 mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_view mapping_file)
 {
@@ -141,5 +143,6 @@ mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_
        });
    file_parser.parseFile(mapping_file);
 
+   Log(LogLevel::Info) << fmt::format("\tImported {} culture graphics mappings.", mappings.size());
    return CultureGraphicsMapper(mappings);
 }

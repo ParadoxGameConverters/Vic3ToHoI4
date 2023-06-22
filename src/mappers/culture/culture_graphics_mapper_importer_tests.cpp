@@ -24,6 +24,8 @@ GraphicsBlock block{{{"general0.dds", "general1.dds"},
     "west",
     "west_2d"};
 }
+
+
 TEST(MappersCultureCultureGraphicsMapperImporterTests, MappingsCanBeImported)
 {
    const CultureGraphicsMapper ideology_mapper =
@@ -32,6 +34,21 @@ TEST(MappersCultureCultureGraphicsMapperImporterTests, MappingsCanBeImported)
    EXPECT_EQ(ideology_mapper.MatchCultureToGraphics(vic3::CultureDefinition{"swedish", {}, {}, {}}), block);
    EXPECT_EQ(ideology_mapper.MatchCultureToGraphics(vic3::CultureDefinition{{}, {}, {"european_heritage"}, {}}), block);
    EXPECT_EQ(ideology_mapper.MatchCultureToGraphics(vic3::CultureDefinition{{}, {}, {}, {"caucasian"}}), block);
+}
+
+
+TEST(MappersCultureCultureGraphicsMapperImporterTests, NumberOfMappingsIsLogged)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const CultureGraphicsMapper ideology_mapper =
+       ImportCultureGraphicsMapper("test_files/mappers/culture/culture_graphics.txt");
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tImported 1 culture graphics mappings."));
 }
 
 }  // namespace mappers

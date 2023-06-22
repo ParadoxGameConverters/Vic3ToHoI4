@@ -83,7 +83,7 @@ TEST(MappersCultureCultureGraphicsMapperTests, NoMatchMeanNoPortraits)
    const CultureGraphicsMapper culture_graphics_mapper({});
 
    EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(vic3::CultureDefinition("", {}, {}, {})),
-       GraphicsBlock({{}, "western_european", "western_european_2d"}));
+       GraphicsBlock({{}, "western_european_gfx", "western_european_2d"}));
 }
 
 TEST(MappersCultureCultureGraphicsMapperTests, GraphicsSelectedOnCulture)
@@ -176,7 +176,7 @@ TEST(MappersCultureCultureGraphicsMapperTests, MissingUnitGraphicsGivesWarning)
 
    EXPECT_EQ(
        culture_graphics_mapper.MatchCultureToGraphics(vic3::CultureDefinition({"cul4"}, {}, {"trait2"}, {"eth2"})),
-       GraphicsBlock(block3.portrait_paths, "western_european", "western_european_2d"));
+       GraphicsBlock(block3.portrait_paths, "western_european_gfx", "western_european_2d"));
 
    std::cout.rdbuf(cout_buffer);
 
