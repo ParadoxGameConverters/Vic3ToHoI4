@@ -17,7 +17,6 @@
 #include "external/rakaly/rakaly.h"
 #include "src/support/date_fmt.h"
 #include "src/vic3_world/buildings/buildings_importer.h"
-#include "src/vic3_world/characters/character_manager.h"
 #include "src/vic3_world/countries/country_definitions_importer.h"
 #include "src/vic3_world/countries/vic3_countries_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -26,7 +25,6 @@
 #include "src/vic3_world/cultures/culture_definitions_importer.h"
 #include "src/vic3_world/cultures/cultures_importer.h"
 #include "src/vic3_world/elections/elections_importer.h"
-#include "src/vic3_world/interest_groups/interest_groups_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
@@ -144,23 +142,6 @@ void AssignOwnersToStates(const std::map<int, vic3::Country>& countries, std::ma
    }
 }
 
-std::map<int, std::vector<int>> CreateCountryIGMap(const std::map<int, vic3::InterestGroup>& igs)
-{
-   std::map<int, std::vector<int>> country_ig_map;
-   for (const auto& [ig_id, ig]: igs)
-   {
-      if (const auto country_id_itr = country_ig_map.find(ig.GetCountryId()); country_id_itr != country_ig_map.end())
-      {
-         country_id_itr->second.push_back(ig_id);
-      }
-      else
-      {
-         country_ig_map.emplace(country_id_itr->first, ig_id);
-      }
-   }
-   return country_ig_map;
-}
-
 }  // namespace
 
 
@@ -223,9 +204,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Buildings buildings;
    CountryRankings country_rankings;
    std::map<int, std::string> cultures;
-   std::map<int, Character> characters;
-   std::map<int, std::vector<int>> country_character_map;
-   std::map<int, InterestGroup> igs;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("country_manager", [&countries, color_definitions](std::istream& input_stream) {
@@ -254,14 +232,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    save_parser.registerKeyword("cultures", [&cultures](std::istream& input_stream) {
       cultures = ImportCultures(input_stream);
    });
-   save_parser.registerKeyword("character_manager", [&characters, &country_character_map](std::istream& input_stream) {
-      const CharacterManager character_manager(input_stream);
-      characters = character_manager.GetCharacters();
-      country_character_map = character_manager.GetCountryCharacterMap();
-   });
-   save_parser.registerKeyword("interest_groups", [&igs](std::istream& input_stream) {
-      igs = ImportInterestGroups(input_stream);
-   });
    save_parser.registerKeyword("building_manager", [&buildings](std::istream& input_stream) {
       buildings = ImportBuildings(input_stream);
    });
@@ -289,8 +259,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
 
    AssignCulturesToCountries(countries, cultures);
    AssignOwnersToStates(countries, states);
-   Log(LogLevel::Progress) << "16 %";
-   const auto country_ig_map = CreateCountryIGMap(igs);
 
    return World({.countries = countries,
        .states = states,
