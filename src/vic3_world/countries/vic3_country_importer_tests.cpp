@@ -31,6 +31,7 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
    EXPECT_TRUE(country.GetActiveLaws().empty());
    EXPECT_TRUE(country.GetPrimaryCultureIds().empty());
    EXPECT_EQ(country.GetLastElection(), std::nullopt);
+   EXPECT_EQ(country.GetHeadOfStateId(), 0);
 }
 
 
@@ -42,6 +43,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    input << "\tcapital=12345\n";
    input << "\tcountry_type=\"decentralized\"\n";
    input << "\tcultures={ 35 7 }\n";
+   input << "\truler=10\n";
    input << "}";
    const auto country = CountryImporter{}.ImportCountry(42, input, {{"TAG", commonItems::Color(std::array{1, 2, 3})}});
 
@@ -51,6 +53,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    EXPECT_EQ(country.GetCapitalState(), std::optional<int>(12345));
    EXPECT_TRUE(country.IsDecentralized());
    EXPECT_THAT(country.GetPrimaryCultureIds(), testing::UnorderedElementsAre(35, 7));
+   EXPECT_EQ(country.GetHeadOfStateId(), 10);
 }
 
 
