@@ -62,9 +62,6 @@ std::map<int, std::string> LimitProvinces(int limit, const std::map<int, std::st
       {
          limited_provinces.emplace(province, type);
       }
-   }
-   for (const auto& [province, type]: provinces)
-   {
       if (type == "port")
       {
          limited_provinces.emplace(province, type);
