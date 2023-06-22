@@ -1,4 +1,4 @@
-1;136;0;21;ocean;false;desert;7		# dark red
+1;136;0;21;land;false;desert;7		# dark red
 2;237;28;36;land;false;coast;42		# red
 4;34;177;76;land;false;coast;42		# green
 3;255;127;39;land;false;coast;42	# orange
@@ -6,3 +6,8 @@
 6;63;72;204;land;false;coast;42		# blue
 7;163;73;164;land;false;coast;42	# purple
 8;0;162;232;land;false;coast;42		# light blue
+9;0;0;0;land;false;coast;42			# black
+10;128;255;255;land;false;coast;42	# teal
+11;64;128;128;land;false;coast;42	# blue-green
+12;255;0;255;land;false;coast;42	# pink
+13;0;64;128;sea;false;sea;42		# dark blue

@@ -488,6 +488,12 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
        "0x000004",
        "0x000005",
        "0x000006",
+       "0x000007",
+       "0x000008",
+       "0x000009",
+       "0x000010",
+       "0x000011",
+       "0x000012",
    });
 
    const vic3::World source_world({
@@ -497,7 +503,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
                    vic3::State({
                        .owner_number = 1,
                        .owner_tag = "TAG",
-                       .provinces = {1, 2, 3},
+                       .provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12},
                    })},
            },
        .state_regions =
@@ -513,11 +519,29 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
                                                      {"0x000001", {1}},
                                                      {"0x000002", {2}},
                                                      {"0x000003", {3}},
+                                                     {"0x000004", {4}},
+                                                     {"0x000005", {5}},
+                                                     {"0x000006", {6}},
+                                                     {"0x000007", {7}},
+                                                     {"0x000008", {8}},
+                                                     {"0x000009", {9}},
+                                                     {"0x000010", {10}},
+                                                     {"0x000011", {11}},
+                                                     {"0x000012", {12}},
                                                  },
        {
            {1, {"0x000001"}},
            {2, {"0x000002"}},
            {3, {"0x000003"}},
+           {4, {"0x000004"}},
+           {5, {"0x000005"}},
+           {6, {"0x000006"}},
+           {7, {"0x000007"}},
+           {8, {"0x000008"}},
+           {9, {"0x000009"}},
+           {10, {"0x000010"}},
+           {11, {"0x000011"}},
+           {12, {"0x000012"}},
        }};
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),

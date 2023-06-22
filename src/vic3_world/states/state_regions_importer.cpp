@@ -31,7 +31,14 @@ std::map<std::string, vic3::StateRegion> vic3::ImportStateRegions(const commonIt
           std::string province = commonItems::getString(input_stream);
           std::transform(++province.begin(), province.end(), ++province.begin(), ::toupper);
           province[0] = 'x';
-          significant_provinces.emplace(province, significant_province_type);
+          if (auto [itr, success] = significant_provinces.emplace(province, significant_province_type); !success)
+          {
+             if ((significant_province_type == "city") ||
+                 (significant_province_type == "port" && itr->second != "city"))
+             {
+                itr->second = significant_province_type;
+             }
+          }
        });
    region_parser.IgnoreUnregisteredItems();
 

@@ -15,6 +15,9 @@
 namespace hoi4
 {
 
+using StateId = int;
+
+
 struct StateOptions
 {
    std::optional<std::string> owner;
@@ -39,7 +42,7 @@ struct StateOptions
 class State
 {
   public:
-   State(int id, StateOptions state_options):
+   State(StateId id, StateOptions state_options):
        id_(id),
        owner_(std::move(state_options.owner)),
        provinces_(std::move(state_options.provinces)),
@@ -57,7 +60,7 @@ class State
    {
    }
 
-   [[nodiscard]] int GetId() const { return id_; }
+   [[nodiscard]] StateId GetId() const { return id_; }
    [[nodiscard]] const std::optional<std::string>& GetOwner() const { return owner_; }
    [[nodiscard]] const std::set<int>& GetProvinces() const { return provinces_; }
    [[nodiscard]] int GetManpower() const { return manpower_; }
@@ -77,7 +80,7 @@ class State
    std::partial_ordering operator<=>(const State&) const = default;
 
   private:
-   int id_;
+   StateId id_;
    std::optional<std::string> owner_;
    std::set<int> provinces_;
    int manpower_ = 0;
