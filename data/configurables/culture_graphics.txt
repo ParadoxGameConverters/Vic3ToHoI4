@@ -285,7 +285,7 @@ asian = {
 		GFX_Portrait_Asia_Generic_navy_1
 		GFX_Portrait_Asia_Generic_navy_2
 		GFX_Portrait_Asia_Generic_navy_3
-		GFX_Portrait_asia_generic_navy_3
+		GFX_Portrait_asia_generic_navy_4
 	}
 
 	political_portraits = {
