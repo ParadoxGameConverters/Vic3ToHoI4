@@ -72,7 +72,7 @@
 # 		anarchist = { # Replaces any ideology leader with a council in all anarchist governments
 # 			GFX_Portrait_sample_portrait_council
 # 		}
-# 		monarchist = { # Replaces any ideology leader with a monarch in sufficently authoritarian monarchies
+# 		monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
 # 			male = {
 # 				GFX_Portrait_sample_portrait_king
 # 			}
