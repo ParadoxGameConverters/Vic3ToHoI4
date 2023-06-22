@@ -30,11 +30,12 @@ mappers::PortraitPaths operator+(const mappers::PortraitPaths& lhs, const mapper
        lhs.navy + rhs.navy,
        lhs.leader + rhs.leader,
        lhs.female_leader + rhs.female_leader,
-       lhs.ideology_minister + rhs.ideology_minister,
+       lhs.advisor + rhs.advisor,
        lhs.male_operative + rhs.male_operative,
        lhs.female_operative + rhs.female_operative,
        lhs.male_monarch + rhs.male_monarch,
-       lhs.female_monarch + rhs.female_monarch};
+       lhs.female_monarch + rhs.female_monarch,
+       lhs.council + rhs.council};
 }
 
 mappers::GraphicsBlock operator+(const mappers::GraphicsBlock& lhs, const mappers::GraphicsBlock& rhs)

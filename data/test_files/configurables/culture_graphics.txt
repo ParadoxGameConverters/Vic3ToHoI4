@@ -1,5 +1,3 @@
-### Vicky ethnicity fallbacks
-# Vanilla vic also has central_african and eastern_african defined, yet unused.
 culture_0 = {
     cultures = { culture_0 }
 

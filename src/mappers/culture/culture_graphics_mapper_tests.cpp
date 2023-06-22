@@ -17,9 +17,10 @@ GraphicsBlock block0{{{"army0"},
                          {"m_op0"},
                          {"f_op0"},
                          {"king0"},
-                         {"queen0"}},
-    {"west"},
-    {"west_2d"}};
+                         {"queen0"},
+                         {"council0"}},
+    "west",
+    "west_2d"};
 GraphicsBlock block1{{{"army1"},
                          {"navy1"},
                          {{"c_leader1"}, {"d_leader1"}, {"f_leader1"}, {"n_leader1"}},
@@ -28,9 +29,10 @@ GraphicsBlock block1{{{"army1"},
                          {"m_op1"},
                          {"f_op1"},
                          {"king1"},
-                         {"queen1"}},
-    {"west"},
-    {"west_2d"}};
+                         {"queen1"},
+                         {"council1"}},
+    "west",
+    "west_2d"};
 GraphicsBlock block2{{{"army2"},
                          {"navy2"},
                          {{"c_leader2"}, {"d_leader2"}, {"f_leader2"}, {"n_leader2"}},
@@ -39,9 +41,10 @@ GraphicsBlock block2{{{"army2"},
                          {"m_op2"},
                          {"f_op2"},
                          {"king2"},
-                         {"queen2"}},
-    {"east"},
-    {"east_2d"}};
+                         {"queen2"},
+                         {"council2"}},
+    "east",
+    "east_2d"};
 GraphicsBlock blocks1_2{{{"army1", "army2"},
                             {"navy1", "navy2"},
                             {{"c_leader1", "c_leader2"},
@@ -56,13 +59,16 @@ GraphicsBlock blocks1_2{{{"army1", "army2"},
                             {"m_op1", "m_op2"},
                             {"f_op1", "f_op2"},
                             {"king1", "king2"},
-                            {"queen1", "queen2"}},
-    {"west"},
-    {"west_2d"}};
+                            {"queen1", "queen2"},
+                            {"council1", "council2"}},
+    "west",
+    "west_2d"};
+GraphicsBlock block_incomplete{{}, "asian", "asian_2d"};
 
 std::vector<CultureGraphicsMapping> mappings{{{"cul0", "cul1"}, {}, {}, block0},
     {{}, {"trait0", "trait3"}, {}, block1},
-    {{}, {"trait1"}, {"eth0"}, block2}};
+    {{}, {"trait1"}, {"eth0"}, block2},
+    {{"cul3"}, {}, {}, block_incomplete}};
 
 std::map<std::string, vic3::CultureDefinition> culture_defs{
     {"cul2", vic3::CultureDefinition({"cul2"}, {}, {"trait0"}, {"eth2"})},
@@ -142,5 +148,17 @@ TEST(MappersCultureCultureGraphicsMapperTests, MatchPrimaryCulturesMatchesMultip
    const CultureGraphicsMapper culture_graphics_mapper({mappings});
 
    EXPECT_EQ(culture_graphics_mapper.MatchPrimaryCulturesToGraphics({"cul2", "cul20"}, culture_defs), blocks1_2);
+}
+
+TEST(MappersCultureCultureGraphicsMapperTests, IncompleteSectionsFillFromMoreGeneralMatches)
+{
+   const CultureGraphicsMapper culture_graphics_mapper({mappings});
+
+   EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(
+                 vic3::CultureDefinition({"cul3"}, {}, {"trait0", "trait3"}, {"eth0"})),
+       GraphicsBlock(block1.portrait_paths, "asian", "asian_2d"));
+   EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(
+                 vic3::CultureDefinition({"cul3"}, {}, {"trait2"}, {"eth0"})),
+       GraphicsBlock(block2.portrait_paths, "asian", "asian_2d"));
 }
 }  // namespace mappers

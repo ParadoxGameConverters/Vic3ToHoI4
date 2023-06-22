@@ -19,9 +19,10 @@ GraphicsBlock block{{{"general0.dds", "general1.dds"},
                         {"spy_m0.dds", "spy_m1.dds"},
                         {"spy_f0.dds", "spy_f1.dds"},
                         {"king.dds"},
-                        {"queen.dds"}},
-    {"west"},
-    {"west_2d"}};
+                        {"queen.dds"},
+                        {"council.dds"}},
+    "west",
+    "west_2d"};
 }
 TEST(MappersCultureCultureGraphicsMapperImporterTests, MappingsCanBeImported)
 {
