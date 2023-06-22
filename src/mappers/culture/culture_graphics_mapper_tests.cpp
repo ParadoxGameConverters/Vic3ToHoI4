@@ -64,11 +64,13 @@ GraphicsBlock blocks1_2{{{"army1", "army2"},
     "west",
     "west_2d"};
 GraphicsBlock block_incomplete{{}, "asian", "asian_2d"};
+GraphicsBlock block3{{.army = {"army3"}}, "", ""};
 
 std::vector<CultureGraphicsMapping> mappings{{{"cul0", "cul1"}, {}, {}, block0},
     {{}, {"trait0", "trait3"}, {}, block1},
     {{}, {"trait1"}, {"eth0"}, block2},
-    {{"cul3"}, {}, {}, block_incomplete}};
+    {{"cul3"}, {}, {}, block_incomplete},
+    {{"cul4"}, {}, {}, block3}};
 
 std::map<std::string, vic3::CultureDefinition> culture_defs{
     {"cul2", vic3::CultureDefinition({"cul2"}, {}, {"trait0"}, {"eth2"})},
@@ -80,7 +82,8 @@ TEST(MappersCultureCultureGraphicsMapperTests, NoMatchMeanNoPortraits)
 {
    const CultureGraphicsMapper culture_graphics_mapper({});
 
-   EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(vic3::CultureDefinition({}, {}, {}, {})), GraphicsBlock{});
+   EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(vic3::CultureDefinition("", {}, {}, {})),
+       GraphicsBlock({{}, "western_european", "western_european_2d"}));
 }
 
 TEST(MappersCultureCultureGraphicsMapperTests, GraphicsSelectedOnCulture)
@@ -125,6 +128,7 @@ TEST(MappersCultureCultureGraphicsMapperTests, NoMatchGivesWarning)
    EXPECT_THAT(log.str(), testing::HasSubstr(R"([WARNING] Culture cul2 has no matching portrait set.)"));
 }
 
+
 TEST(MappersCultureCultureGraphicsMapperTests, BlocksCombineOnMultiMatch)
 {
    const CultureGraphicsMapper culture_graphics_mapper({mappings});
@@ -157,8 +161,25 @@ TEST(MappersCultureCultureGraphicsMapperTests, IncompleteSectionsFillFromMoreGen
    EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(
                  vic3::CultureDefinition({"cul3"}, {}, {"trait0", "trait3"}, {"eth0"})),
        GraphicsBlock(block1.portrait_paths, "asian", "asian_2d"));
-   EXPECT_EQ(culture_graphics_mapper.MatchCultureToGraphics(
-                 vic3::CultureDefinition({"cul3"}, {}, {"trait2"}, {"eth0"})),
+   EXPECT_EQ(
+       culture_graphics_mapper.MatchCultureToGraphics(vic3::CultureDefinition({"cul3"}, {}, {"trait2"}, {"eth0"})),
        GraphicsBlock(block2.portrait_paths, "asian", "asian_2d"));
+}
+
+TEST(MappersCultureCultureGraphicsMapperTests, MissingUnitGraphicsGivesWarning)
+{
+   const CultureGraphicsMapper culture_graphics_mapper({mappings});
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   EXPECT_EQ(
+       culture_graphics_mapper.MatchCultureToGraphics(vic3::CultureDefinition({"cul4"}, {}, {"trait2"}, {"eth2"})),
+       GraphicsBlock(block3.portrait_paths, "western_european", "western_european_2d"));
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"([WARNING] Culture cul4 lacks unit graphics. Defaulting to western.)"));
 }
 }  // namespace mappers

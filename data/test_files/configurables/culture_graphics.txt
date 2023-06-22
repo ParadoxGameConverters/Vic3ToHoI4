@@ -11,4 +11,7 @@ culture_1 = {
     army_portraits = {
         GFX_general_1
     }
+
+	graphical_culture = asian
+	graphical_culture_2d = asian_2d
 }
