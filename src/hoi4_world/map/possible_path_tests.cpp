@@ -8,7 +8,17 @@
 namespace hoi4
 {
 
+
 TEST(Hoi4worldMapPossiblePathTests, DefaultsAreSet)
+{
+   const PossiblePath possible_path;
+
+   EXPECT_TRUE(possible_path.GetProvinces().empty());
+   EXPECT_EQ(possible_path.GetLevel(), 0);
+   EXPECT_EQ(possible_path.GetCost(), 0);
+}
+
+TEST(Hoi4worldMapPossiblePathTests, InitialProvinceCanBeSet)
 {
    const PossiblePath possible_path(1);
 
