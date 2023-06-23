@@ -148,37 +148,30 @@ african = {
     }
     female_portraits = {
     }
-    ideology_minister_portraits = {
-        communism = {  }
-        democratic = {  }
-        fascism = {  }
-        neutrality = {  }
-    }
     male_operative_portraits = {
         GFX_portrait_africa_generic_operative_male_1
-		GFX_portrait_africa_generic_operative_male_2
-		GFX_portrait_africa_generic_operative_male_3
-		GFX_portrait_africa_generic_operative_male_4
-		GFX_portrait_africa_generic_operative_male_5
-		GFX_portrait_africa_generic_operative_male_6
-		GFX_portrait_africa_generic_operative_male_7
-		GFX_portrait_africa_generic_operative_male_8
-		GFX_portrait_africa_generic_operative_male_9
+	GFX_portrait_africa_generic_operative_male_2
+	GFX_portrait_africa_generic_operative_male_3
+	GFX_portrait_africa_generic_operative_male_4
+	GFX_portrait_africa_generic_operative_male_5
+	GFX_portrait_africa_generic_operative_male_6
+	GFX_portrait_africa_generic_operative_male_7
+	GFX_portrait_africa_generic_operative_male_8
+	GFX_portrait_africa_generic_operative_male_9
     }
     female_operative_portraits = {
-		GFX_portrait_africa_generic_operative_female_1
-	    GFX_portrait_africa_generic_operative_female_2
-		GFX_portrait_africa_generic_operative_female_3
-		GFX_portrait_africa_generic_operative_female_4
-		GFX_portrait_africa_generic_operative_female_5
-		GFX_portrait_africa_generic_operative_female_6
-		GFX_portrait_africa_generic_operative_female_7
-		GFX_portrait_africa_generic_operative_female_8
-		GFX_portrait_africa_generic_operative_female_9
+	GFX_portrait_africa_generic_operative_female_1
+	GFX_portrait_africa_generic_operative_female_2
+	GFX_portrait_africa_generic_operative_female_3
+	GFX_portrait_africa_generic_operative_female_4
+	GFX_portrait_africa_generic_operative_female_5
+	GFX_portrait_africa_generic_operative_female_6
+	GFX_portrait_africa_generic_operative_female_7
+	GFX_portrait_africa_generic_operative_female_8
+	GFX_portrait_africa_generic_operative_female_9
     }
-    male_monarch_portraits = {
-    }
-    female_monarch_portraits = {
+    monarch_ideas = {
+	"gfx\interface\goals\focus_generic_monarchy_2.dds"
     }
     graphical_culture = african_gfx
     graphical_culture_2d = african_2d
@@ -235,9 +228,8 @@ arab = {
 		GFX_portrait_arabia_generic_operative_female_5
 		GFX_portrait_arabia_generic_operative_female_6
     }
-    male_monarch_portraits = {
-    }
-    female_monarch_portraits = {
+    monarch_ideas = {
+	"gfx\interface\goals\focus_generic_monarchy_2.dds"
     }
     graphical_culture = middle_eastern_gfx
     graphical_culture_2d = middle_eastern_2d
@@ -307,9 +299,8 @@ asian = {
 		GFX_portrait_asia_generic_operative_female_8
 		GFX_portrait_asia_generic_operative_female_9
     }
-    male_monarch_portraits = {
-    }
-    female_monarch_portraits = {
+    monarch_ideas = {
+	"gfx\interface\goals\focus_generic_monarchy_2.dds"
     }
     graphical_culture = asian_gfx
     graphical_culture_2d = asian_2d
@@ -431,9 +422,8 @@ caucasian = {
 		GFX_portrait_europe_generic_operative_female_25
 		GFX_portrait_europe_generic_operative_female_26
     }
-    male_monarch_portraits = {
-    }
-    female_monarch_portraits = {
+    monarch_ideas = {
+	"gfx\interface\goals\focus_generic_monarchy_2.dds"
     }
     graphical culture = western_european_gfx
     graphical_culture_2d = western_european_2d
@@ -456,6 +446,9 @@ caucasian = {
 indian = {
     ethnicity = { indian }
 
+    monarch_ideas = {
+	"gfx\interface\goals\focus_generic_monarchy_2.dds"
+    }
     graphical_culture = asian_gfx
     graphical_culture_2d = asian_2d
 }
@@ -552,6 +545,9 @@ south_american = { # Brazilian and such, european heritage
 		GFX_portrait_south_america_generic_operative_female_4
 		GFX_portrait_south_america_generic_operative_female_5
 		GFX_portrait_south_america_generic_operative_female_6
+    }
+    monarch_ideas = {
+	"gfx\interface\goals\focus_generic_monarchy_2.dds"
     }
     graphical_culture = southamerican_gfx
     graphical_culture_2d = southamerican_2d
@@ -879,10 +875,7 @@ manchu = {
             GFX_portrait_man_henry_pu_yi_emperor
         }
     }
-    male_monarch_portraits = {
-	"gfx/interface/ideas/idea_man_low_legitimacy5.dds"
-    }
-    female_monarch_portraits = {
+    monarch_ideas = {
 	"gfx/interface/ideas/idea_man_low_legitimacy5.dds"
     }
     graphical_culture = asian_gfx
