@@ -13,6 +13,8 @@ namespace
 
 using ProvinceType = std::string;
 
+constexpr int max_merge_paths_length = 10;
+
 
 std::map<std::string, ProvinceType> GatherVic3SignificantProvinces(
     const std::map<std::string, vic3::StateRegion>& vic3_state_regions)
@@ -629,8 +631,8 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
 
          std::ranges::sort(all_interstate_paths,
              [](const hoi4::PossiblePath& first_path, const hoi4::PossiblePath& second_path) {
-                return first_path.GetCost() < second_path.GetCost();
-             });
+             return first_path.GetCost() < second_path.GetCost();
+         });
          interstate_paths.push_back(all_interstate_paths.front());
       }
    }
@@ -795,6 +797,144 @@ std::vector<hoi4::PossiblePath> TrimPaths(const std::vector<hoi4::PossiblePath>&
 }
 
 
+void AddPathToMapping(const hoi4::PossiblePath& path, std::map<int, std::vector<hoi4::PossiblePath>>::iterator iterator)
+{
+   bool path_already_stored = false;
+   for (const auto& stored_path: iterator->second)
+   {
+      if (stored_path == path)
+      {
+         path_already_stored = true;
+         break;
+      }
+   }
+   if (!path_already_stored)
+   {
+      iterator->second.push_back(path);
+   }
+}
+
+
+std::map<int, std::vector<hoi4::PossiblePath>> MapEndpointsAndPaths(const std::vector<hoi4::PossiblePath>& paths)
+{
+   std::map<int, std::vector<hoi4::PossiblePath>> endpoints_to_paths;
+   for (const auto& path: paths)
+   {
+      const auto first_province = path.GetFirstProvince();
+      const auto last_province = path.GetLastProvince();
+
+      if (auto [iterator, success] = endpoints_to_paths.emplace(first_province, std::vector{path}); !success)
+      {
+         AddPathToMapping(path, iterator);
+      }
+      if (auto [iterator, success] = endpoints_to_paths.emplace(last_province, std::vector{path}); !success)
+      {
+         AddPathToMapping(path, iterator);
+      }
+   }
+
+   return endpoints_to_paths;
+}
+
+
+bool EndpointIsRemovable(const int endpoint, const std::set<int>& naval_locations, const std::set<int>& vp_locations)
+{
+   return !naval_locations.contains(endpoint) && !vp_locations.contains(endpoint);
+}
+
+
+hoi4::PossiblePath MergeTwoPaths(const int join_point,
+    const hoi4::PossiblePath& path_one,
+    const hoi4::PossiblePath& path_two)
+{
+   hoi4::PossiblePath merged_path;
+
+   std::vector<int> merged_provinces;
+   if (const int path_one_first_province = path_one.GetFirstProvince(); path_one_first_province == join_point)
+   {
+      auto provinces = path_one.GetProvinces();
+      std::reverse(provinces.begin(), provinces.end());
+      for (auto province: provinces)
+      {
+         merged_provinces.push_back(province);
+      }
+   }
+   else
+   {
+      for (auto province: path_one.GetProvinces())
+      {
+         merged_provinces.push_back(province);
+      }
+   }
+
+   merged_provinces.pop_back();
+   if (const int path_two_first_province = path_two.GetFirstProvince(); path_two_first_province == join_point)
+   {
+      for (auto province: path_two.GetProvinces())
+      {
+         merged_provinces.push_back(province);
+      }
+   }
+   else
+   {
+      auto provinces = path_two.GetProvinces();
+      std::reverse(provinces.begin(), provinces.end());
+      for (auto province: provinces)
+      {
+         merged_provinces.push_back(province);
+      }
+   }
+
+   merged_path.ReplaceProvinces(merged_provinces);
+   merged_path.SetLevel(std::min(path_one.GetLevel(), path_two.GetLevel()));
+
+   return merged_path;
+}
+
+
+std::vector<hoi4::PossiblePath> MergePaths(const std::vector<hoi4::PossiblePath>& paths,
+    const std::set<int>& naval_locations,
+    const std::set<int>& vp_locations)
+{
+   std::map<int, std::vector<hoi4::PossiblePath>> endpoints_to_paths = MapEndpointsAndPaths(paths);
+
+   std::vector<hoi4::PossiblePath> merged_paths;
+   std::set<int> removed_endpoints;
+   for (const auto& [endpoint, endpoint_paths]: endpoints_to_paths)
+   {
+      if (endpoint_paths.size() == 2 && EndpointIsRemovable(endpoint, naval_locations, vp_locations) &&
+          endpoint_paths[0].GetProvinces().size() + endpoint_paths[1].GetProvinces().size() <= max_merge_paths_length)
+      {
+         removed_endpoints.insert(endpoint);
+         const auto merged_path = MergeTwoPaths(endpoint, endpoint_paths[0], endpoint_paths[1]);
+         merged_paths.push_back(merged_path);
+         continue;
+      }
+   }
+
+   for (const auto& [endpoint, paths]: endpoints_to_paths)
+   {
+      if (removed_endpoints.contains(endpoint))
+      {
+         continue;
+      }
+      for (const auto& path: paths)
+      {
+         const auto first_province = path.GetFirstProvince();
+         const auto last_province = path.GetLastProvince();
+
+         if (endpoint == first_province && !removed_endpoints.contains(first_province) &&
+             !removed_endpoints.contains(last_province))
+         {
+            merged_paths.push_back(path);
+         }
+      }
+   }
+
+   return merged_paths;
+}
+
+
 std::vector<hoi4::Railway> GetRailwaysFromPaths(const std::vector<hoi4::PossiblePath>& paths)
 {
    std::vector<hoi4::Railway> railways;
@@ -854,9 +994,11 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
    all_paths.insert(all_paths.end(), interstate_paths.begin(), interstate_paths.end());
    const std::vector<hoi4::PossiblePath> split_paths = SplitPaths(all_paths);
    const std::vector<hoi4::PossiblePath> trimmed_paths = TrimPaths(split_paths, hoi4_states);
+   const std::vector<hoi4::PossiblePath> merged_paths =
+       MergePaths(trimmed_paths, GatherNavalBaseLocations(hoi4_states), GatherVictoryPointLocations(hoi4_states));
 
-   const std::vector<Railway> railways = GetRailwaysFromPaths(trimmed_paths);
-   const std::set<int> endpoints = GetEndpointsFromPaths(trimmed_paths);
+   const std::vector<Railway> railways = GetRailwaysFromPaths(merged_paths);
+   const std::set<int> endpoints = GetEndpointsFromPaths(merged_paths);
 
    return {railways, endpoints};
 }

@@ -14,6 +14,7 @@ namespace hoi4
 class PossiblePath
 {
   public:
+   PossiblePath() = default;
    explicit PossiblePath(int initial_province) { provinces_.push_back(initial_province); }
 
    void AddProvince(int province, double additional_cost)
