@@ -40,7 +40,7 @@ std::vector<int> DetermineAllowedEndpointAmounts(const std::vector<hoi4::State>&
    allowed_endpoint_amounts.resize(states.size() + 1);
    for (const hoi4::State& state: states)
    {
-      int allowed_endpoints = std::max(1, static_cast<int>(state.GetProvinces().size() / 6));
+      const int allowed_endpoints = std::max(1, static_cast<int>(state.GetProvinces().size() / 6));
       allowed_endpoint_amounts[state.GetId()] = allowed_endpoints;
    }
 
@@ -189,7 +189,7 @@ std::vector<std::pair<int, int>> DetermineIntrastateEndpoints(
             continue;
          }
 
-         intrastate_endpoints.emplace_back(std::pair{*most_significant_province, province});
+         intrastate_endpoints.emplace_back(*most_significant_province, province);
       }
    }
 
@@ -340,8 +340,8 @@ double DeterminePathCost(const maps::ProvinceDefinitions& hoi4_province_definiti
       return std::numeric_limits<double>::max();
    }
 
-   return (GetCostForTerrainType(*possible_current_terrain_type) +
-              GetCostForTerrainType(*possible_neighbor_terrain_type) / 2.0F) *
+   return static_cast<double>(GetCostForTerrainType(*possible_current_terrain_type) +
+                              GetCostForTerrainType(*possible_neighbor_terrain_type) / 2.0F) *
           GetDistanceBetweenProvinces(neighbor_number, last_province, hoi4_map_data);
 }
 
@@ -591,7 +591,6 @@ std::vector<std::pair<int, int>> EnumerateAllInterstateConnections(const std::se
 
 std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
     const std::map<hoi4::StateId, std::map<int, ProvinceType>>& significant_hoi4_provinces,
-    const mappers::ProvinceMapper& province_mapper,
     const hoi4::States& hoi4_states,
     const maps::MapData& hoi4_map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions)
@@ -672,7 +671,7 @@ std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>
             continue;
          }
 
-         split_path.AddProvince(province, 0.0F);
+         split_path.AddProvince(province, 0.0);
 
          if (province == path.GetLastProvince())
          {
@@ -903,13 +902,13 @@ std::vector<hoi4::PossiblePath> MergePaths(const std::vector<hoi4::PossiblePath>
       }
    }
 
-   for (const auto& [endpoint, paths]: endpoints_to_paths)
+   for (const auto& [endpoint, mapped_paths]: endpoints_to_paths)
    {
       if (removed_endpoints.contains(endpoint))
       {
          continue;
       }
-      for (const hoi4::PossiblePath& path: paths)
+      for (const hoi4::PossiblePath& path: mapped_paths)
       {
          const int first_province = path.GetFirstProvince();
          const int last_province = path.GetLastProvince();
@@ -976,16 +975,13 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
    const std::vector<hoi4::PossiblePath> intrastate_paths =
        FindAllHoi4Paths(intrastate_endpoints, hoi4_states, hoi4_map_data, hoi4_province_definitions);
 
-   const std::vector<hoi4::PossiblePath> interstate_paths = ConnectStatesWithRailways(significant_hoi4_provinces,
-       province_mapper,
-       hoi4_states,
-       hoi4_map_data,
-       hoi4_province_definitions);
+   const std::vector<hoi4::PossiblePath> interstate_paths =
+       ConnectStatesWithRailways(significant_hoi4_provinces, hoi4_states, hoi4_map_data, hoi4_province_definitions);
    std::vector<hoi4::PossiblePath> all_paths = intrastate_paths;
    all_paths.insert(all_paths.end(), interstate_paths.begin(), interstate_paths.end());
 
-   std::set<int> vp_locations = GatherVictoryPointLocations(hoi4_states);
-   std::set<int> naval_base_locations = GatherNavalBaseLocations(hoi4_states);
+   const std::set<int> vp_locations = GatherVictoryPointLocations(hoi4_states);
+   const std::set<int> naval_base_locations = GatherNavalBaseLocations(hoi4_states);
    const std::vector<hoi4::PossiblePath> split_paths = SplitPaths(all_paths);
    const std::vector<hoi4::PossiblePath> trimmed_paths = TrimPaths(split_paths, vp_locations, naval_base_locations);
    const std::vector<hoi4::PossiblePath> merged_paths = MergePaths(trimmed_paths, naval_base_locations, vp_locations);
