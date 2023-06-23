@@ -13,8 +13,6 @@ namespace
 
 using ProvinceType = std::string;
 
-constexpr int max_merge_paths_length = 10;
-
 
 std::map<std::string, ProvinceType> GatherVic3SignificantProvinces(
     const std::map<std::string, vic3::StateRegion>& vic3_state_regions)
@@ -892,8 +890,7 @@ std::vector<hoi4::PossiblePath> MergePaths(const std::vector<hoi4::PossiblePath>
    std::set<int> removed_endpoints;
    for (const auto& [endpoint, endpoint_paths]: endpoints_to_paths)
    {
-      if (endpoint_paths.size() == 2 && EndpointIsRemovable(endpoint, naval_locations, vp_locations) &&
-          endpoint_paths[0].GetProvinces().size() + endpoint_paths[1].GetProvinces().size() <= max_merge_paths_length)
+      if (endpoint_paths.size() == 2 && EndpointIsRemovable(endpoint, naval_locations, vp_locations))
       {
          removed_endpoints.insert(endpoint);
          const hoi4::PossiblePath merged_path = MergeTwoPaths(endpoint, endpoint_paths[0], endpoint_paths[1]);
