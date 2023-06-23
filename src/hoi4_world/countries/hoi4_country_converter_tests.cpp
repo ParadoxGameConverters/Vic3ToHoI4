@@ -847,15 +847,28 @@ TEST(Hoi4worldCountriesCountryConverter, MonarchiesHaveNobleLeaders)
            .female_common_first = {"presidentin"},
            .common_last = {"doe"},
            .noble_last = {"von Doe"},
-           .male_regal_first = {"king"},
-           .female_regal_first = {"queen"},
+           .male_regal_first = {"king0", "king1", "king2", "king3", "king4"},
+           .female_regal_first = {"queen0", "queen1", "queen2", "queen3", "queen4"},
        },
        {},
        {}};
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
 
    commonItems::LocalizationDatabase locs("english", {});
-   std::vector keys{"president", "presidentin", "doe", "von Doe", "king", "queen"};
+   std::vector keys{"president",
+       "presidentin",
+       "doe",
+       "von Doe",
+       "king0",
+       "king1",
+       "king2",
+       "king3",
+       "king4",
+       "queen0",
+       "queen1",
+       "queen2",
+       "queen3",
+       "queen4"};
    for (const auto& key: keys)
    {
       commonItems::LocalizationBlock block(key, "english");
@@ -897,8 +910,10 @@ TEST(Hoi4worldCountriesCountryConverter, MonarchiesHaveNobleLeaders)
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetSubIdeology(), "despotism");
-   EXPECT_THAT(country_one->GetNameList().male_names, testing::ElementsAre("king"));
-   EXPECT_THAT(country_one->GetNameList().female_names, testing::ElementsAre("queen"));
+   EXPECT_THAT(country_one->GetNameList().male_names,
+       testing::ElementsAre("king0", "king1", "king2", "king3", "king4"));
+   EXPECT_THAT(country_one->GetNameList().female_names,
+       testing::ElementsAre("queen0", "queen1", "queen2", "queen3", "queen4"));
    EXPECT_THAT(country_one->GetNameList().surnames, testing::ElementsAre("von Doe"));
    ASSERT_TRUE(country_two.has_value());
    EXPECT_EQ(country_two->GetSubIdeology(), "republic");
@@ -951,6 +966,55 @@ TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)
    EXPECT_EQ(country_one->GetSubIdeology(), "despotism");
    EXPECT_THAT(country_one->GetNameList().male_names, testing::ElementsAre("president"));
    EXPECT_THAT(country_one->GetNameList().female_names, testing::ElementsAre("presidentin"));
+   EXPECT_THAT(country_one->GetNameList().surnames, testing::ElementsAre("von Doe"));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, TooFewNobleFirstsAddsCommonFirsts)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
+
+   const vic3::CultureDefinition culture_def{"culture",
+       {
+           .male_common_first = {"president"},
+           .female_common_first = {"presidentin"},
+           .noble_last = {"von Doe"},
+           .male_regal_first = {"king"},
+           .female_regal_first = {"queen"},
+       },
+       {},
+       {}};
+   const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
+
+   commonItems::LocalizationDatabase locs("english", {});
+   std::vector keys{"president", "presidentin", "doe", "von Doe", "king", "queen"};
+   for (const auto& key: keys)
+   {
+      commonItems::LocalizationBlock block(key, "english");
+      block.ModifyLocalization("english", key);
+      locs.AddOrModifyLocalizationBlock(key, block);
+   }
+
+   const std::optional<Country> country_one = ConvertCountry(source_country_one,
+       {},
+       culture_definitions,
+       locs,
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetSubIdeology(), "despotism");
+   EXPECT_THAT(country_one->GetNameList().male_names, testing::UnorderedElementsAre("president", "king"));
+   EXPECT_THAT(country_one->GetNameList().female_names, testing::UnorderedElementsAre("presidentin", "queen"));
    EXPECT_THAT(country_one->GetNameList().surnames, testing::ElementsAre("von Doe"));
 }
 
