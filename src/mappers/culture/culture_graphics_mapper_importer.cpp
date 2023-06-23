@@ -2,28 +2,92 @@
 
 #include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/ParserHelpers.h"
+#include "external/fmt/include/fmt/format.h"
+
 
 mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_view mapping_file)
 {
    std::vector<CultureGraphicsMapping> mappings;
 
-   IdeologyPortraitPaths ideology_group;
+   IdeologyPortraitPaths leader_group;
+   IdeologyPortraitPaths advisor_group;
+   std::vector<std::string> ideology_leader_group;
+   std::vector<std::string> ideology_advisor_group;
+   std::vector<std::string> male_group;
+   std::vector<std::string> female_group;
    CultureGraphicsMapping mapping;
 
-   commonItems::parser ideology_path_parser;
-   ideology_path_parser.registerKeyword("communism", [&ideology_group](std::istream& input_stream) {
-      ideology_group.communism = commonItems::getStrings(input_stream);
+
+   commonItems::parser gender_parser;
+   gender_parser.registerKeyword("male", [&male_group](std::istream& input_stream) {
+      male_group = commonItems::getStrings(input_stream);
    });
-   ideology_path_parser.registerKeyword("democratic", [&ideology_group](std::istream& input_stream) {
-      ideology_group.democratic = commonItems::getStrings(input_stream);
+   gender_parser.registerKeyword("female", [&female_group](std::istream& input_stream) {
+      female_group = commonItems::getStrings(input_stream);
    });
-   ideology_path_parser.registerKeyword("fascism", [&ideology_group](std::istream& input_stream) {
-      ideology_group.fascism = commonItems::getStrings(input_stream);
+   gender_parser.IgnoreUnregisteredItems();
+
+
+   commonItems::parser ideology_parser;
+   ideology_parser.registerKeyword("leader", [&ideology_leader_group](std::istream& input_stream) {
+      ideology_leader_group = commonItems::getStrings(input_stream);
    });
-   ideology_path_parser.registerKeyword("neutrality", [&ideology_group](std::istream& input_stream) {
-      ideology_group.neutrality = commonItems::getStrings(input_stream);
+   ideology_parser.registerKeyword("minister", [&ideology_advisor_group](std::istream& input_stream) {
+      ideology_advisor_group = commonItems::getStrings(input_stream);
    });
-   ideology_path_parser.IgnoreUnregisteredItems();
+   ideology_parser.IgnoreUnregisteredItems();
+
+
+   commonItems::parser political_parser;
+   political_parser.registerKeyword("communism",
+       [&ideology_leader_group, &leader_group, &ideology_advisor_group, &advisor_group, &ideology_parser](
+           std::istream& input_stream) {
+          ideology_leader_group.clear();
+          ideology_advisor_group.clear();
+          ideology_parser.parseStream(input_stream);
+          leader_group.communism = std::move(ideology_leader_group);
+          advisor_group.communism = std::move(ideology_advisor_group);
+       });
+   political_parser.registerKeyword("democratic",
+       [&ideology_leader_group, &leader_group, &ideology_advisor_group, &advisor_group, &ideology_parser](
+           std::istream& input_stream) {
+          ideology_leader_group.clear();
+          ideology_advisor_group.clear();
+          ideology_parser.parseStream(input_stream);
+          leader_group.democratic = std::move(ideology_leader_group);
+          advisor_group.democratic = std::move(ideology_advisor_group);
+       });
+   political_parser.registerKeyword("fascism",
+       [&ideology_leader_group, &leader_group, &ideology_advisor_group, &advisor_group, &ideology_parser](
+           std::istream& input_stream) {
+          ideology_leader_group.clear();
+          ideology_advisor_group.clear();
+          ideology_parser.parseStream(input_stream);
+          leader_group.fascism = std::move(ideology_leader_group);
+          advisor_group.fascism = std::move(ideology_advisor_group);
+       });
+   political_parser.registerKeyword("neutrality",
+       [&ideology_leader_group, &leader_group, &ideology_advisor_group, &advisor_group, &ideology_parser](
+           std::istream& input_stream) {
+          ideology_leader_group.clear();
+          ideology_advisor_group.clear();
+          ideology_parser.parseStream(input_stream);
+          leader_group.neutrality = std::move(ideology_leader_group);
+          advisor_group.neutrality = std::move(ideology_advisor_group);
+       });
+   political_parser.registerKeyword("anarchist", [&mapping](std::istream& input_stream) {
+      mapping.graphics_block.portrait_paths.council = commonItems::getStrings(input_stream);
+   });
+   political_parser.registerKeyword("monarchist",
+       [&mapping, &male_group, &female_group, &gender_parser](std::istream& input_stream) {
+          male_group.clear();
+          female_group.clear();
+          gender_parser.parseStream(input_stream);
+          mapping.graphics_block.portrait_paths.male_monarch = std::move(male_group);
+          mapping.graphics_block.portrait_paths.female_monarch = std::move(female_group);
+       });
+   political_parser.IgnoreUnregisteredItems();
+
 
 
    commonItems::parser mapping_parser;
@@ -35,7 +99,7 @@ mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_
       std::vector<std::string> traits = commonItems::getStrings(input_stream);
       std::ranges::copy(traits, std::inserter(mapping.traits, mapping.traits.end()));
    });
-   mapping_parser.registerKeyword("ethnicity", [&mapping](std::istream& input_stream) {
+   mapping_parser.registerKeyword("ethnicities", [&mapping](std::istream& input_stream) {
       std::vector<std::string> ethnicities = commonItems::getStrings(input_stream);
       std::ranges::copy(ethnicities, std::inserter(mapping.ethnicities, mapping.ethnicities.end()));
    });
@@ -48,29 +112,19 @@ mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_
    mapping_parser.registerKeyword("female_portraits", [&mapping](std::istream& input_stream) {
       mapping.graphics_block.portrait_paths.female_leader = commonItems::getStrings(input_stream);
    });
-   mapping_parser.registerKeyword("male_operative_portraits", [&mapping](std::istream& input_stream) {
-      mapping.graphics_block.portrait_paths.male_operative = commonItems::getStrings(input_stream);
-   });
-   mapping_parser.registerKeyword("female_operative_portraits", [&mapping](std::istream& input_stream) {
-      mapping.graphics_block.portrait_paths.female_operative = commonItems::getStrings(input_stream);
-   });
-   mapping_parser.registerKeyword("male_monarch_portraits", [&mapping](std::istream& input_stream) {
-      mapping.graphics_block.portrait_paths.male_monarch = commonItems::getStrings(input_stream);
-   });
-   mapping_parser.registerKeyword("female_monarch_portraits", [&mapping](std::istream& input_stream) {
-      mapping.graphics_block.portrait_paths.female_monarch = commonItems::getStrings(input_stream);
-   });
-   mapping_parser.registerKeyword("leader_portraits",
-       [&mapping, &ideology_group, &ideology_path_parser](std::istream& input_stream) {
-          ideology_group = IdeologyPortraitPaths();
-          ideology_path_parser.parseStream(input_stream);
-          mapping.graphics_block.portrait_paths.leader = ideology_group;
+   mapping_parser.registerKeyword("operative_portraits",
+       [&mapping, &male_group, &female_group, &gender_parser](std::istream& input_stream) {
+          male_group.clear();
+          female_group.clear();
+          gender_parser.parseStream(input_stream);
+          mapping.graphics_block.portrait_paths.male_operative = std::move(male_group);
+          mapping.graphics_block.portrait_paths.female_operative = std::move(female_group);
        });
-   mapping_parser.registerKeyword("ideology_minister_portraits",
-       [&mapping, &ideology_group, &ideology_path_parser](std::istream& input_stream) {
-          ideology_group = IdeologyPortraitPaths();
-          ideology_path_parser.parseStream(input_stream);
-          mapping.graphics_block.portrait_paths.ideology_minister = ideology_group;
+   mapping_parser.registerKeyword("political_portraits",
+       [&mapping, &leader_group, &advisor_group, &political_parser](std::istream& input_stream) {
+          political_parser.parseStream(input_stream);
+          mapping.graphics_block.portrait_paths.leader = std::move(leader_group);
+          mapping.graphics_block.portrait_paths.advisor = std::move(advisor_group);
        });
    mapping_parser.registerKeyword("graphical_culture", [&mapping](std::istream& input_stream) {
       mapping.graphics_block.graphical_culture = commonItems::getString(input_stream);
@@ -89,5 +143,6 @@ mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_
        });
    file_parser.parseFile(mapping_file);
 
+   Log(LogLevel::Info) << fmt::format("\tImported {} culture graphics mappings.", mappings.size());
    return CultureGraphicsMapper(mappings);
 }

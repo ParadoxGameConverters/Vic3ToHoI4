@@ -1,7 +1,7 @@
 sample_group = {
     cultures = { swedish } # In reality, these are probably 3 separate groups
     traits = { european_heritage }
-    ethnicity = { caucasian }
+    ethnicities = { caucasian }
 
     army_portraits = {
         "general0.dds"
@@ -11,38 +11,28 @@ sample_group = {
         "admiral0.dds"
         admiral1.dds
     }
-    leader_portraits = {
-        communism = { "communism0.dds" }
-        democratic = { "democratic0.dds" }
-        fascism = { fascism0.dds }
-        neutrality = { neutrality0.dds }
+    political_portraits = {
+        communism = { leader = { "communism0.dds"} minister = { "communism1.dds" } }
+        democratic = { leader = { "democratic0.dds"} minister = { "democratic1.dds" } }
+        fascism = { leader = { "fascism0.dds"} minister = { "fascism1.dds" } }
+        neutrality = { leader = { "neutrality0.dds"} minister = { "neutrality1.dds" } }
+		anarchist = { "council.dds" }
+		monarchist = {
+			male = { "king.dds" }
+			female = { "queen.dds" }
+		}
     }
     female_portraits = {
         "female_leader.dds"
     }
-    ideology_minister_portraits =
-    {
-        communism = { "communism1.dds" }
-        democratic = { "democratic1.dds" }
-        fascism = { fascism1.dds }
-        neutrality = { neutrality1.dds }
+    operative_portraits = {
+		male = { "spy_m0.dds" spy_m1.dds }
+		female = { "spy_f0.dds" spy_f1.dds }      
     }
-    male_operative_portraits =
-    {
-        "spy_m0.dds"
-        spy_m1.dds
-    }
-    female_operative_portraits =
-    {
-        "spy_f0.dds"
-        spy_f1.dds
-    }
-    male_monarch_portraits = {
-        "king.dds"
-    }
-    female_monarch_portraits = {
-        "queen.dds"
-    }
+	monarch_ideas = {
+		"crown.dds"
+	}
+
     graphical_culture = west
     graphical_culture_2d = west_2d
 }
