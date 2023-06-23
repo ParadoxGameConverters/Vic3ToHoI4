@@ -662,8 +662,11 @@ west_horn_of_african = {
 				GFX_portrait_ETH_generic_male_4
 			}
 		}
-		neutrality = {
-			leader = {
+		anarchist = {
+			GFX_portrait_ETH_anarchist_council
+		} 
+		monarchist = {
+			male = {
 				GFX_portrait_ETH_seyoum_mengesha
 				GFX_portrait_ETH_haile_selassie_field_marshal_victorious
 				GFX_portrait_ETH_haile_selassie_victorious
@@ -839,25 +842,28 @@ manchu = {
 
     leader_portraits = {
         communism = {
-			leader = {
-				GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
-			}
+		leader = {
+			GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
+		}
         }
         democratic = {
-			leader = {
-				GFX_portrait_chi_zhang_xueliang
-				GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
-			}
+		leader = {
+			GFX_portrait_chi_zhang_xueliang
+			GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
+		}
         }
         fascism = {
-			leader = {
-            	GFX_portrait_man_zhang_jinghui
-			}
+		leader = {
+            		GFX_portrait_man_zhang_jinghui
+		}
         }
-        neutrality = {
-			leader = {
+        monarchist = {
+		male = {
          		GFX_portrait_man_henry_pu_yi_emperor
-			}
+		}
+		female = {
+			GFX_portrait_man_yoshiko_kawashima
+		}
         }
     }
     monarch_ideas = {
