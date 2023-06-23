@@ -1,16 +1,16 @@
 culture_0 = {
-    cultures = { culture_0 }
+	cultures = { culture_0 }
 
-    army_portraits = {
-        GFX_general_0
-    }
+	army_portraits = {
+		GFX_general_0
+	}
 }
 culture_1 = {
-    cultures = { culture_1 }
+	cultures = { culture_1 }
 
-    army_portraits = {
-        GFX_general_1
-    }
+	army_portraits = {
+		GFX_general_1
+	}
 
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
