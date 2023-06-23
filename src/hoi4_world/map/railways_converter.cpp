@@ -793,20 +793,6 @@ std::vector<hoi4::PossiblePath> TrimPaths(const std::vector<hoi4::PossiblePath>&
 }
 
 
-void AddPathToMapping(const hoi4::PossiblePath& path, std::map<int, std::vector<hoi4::PossiblePath>>::iterator iterator)
-{
-   for (const hoi4::PossiblePath& stored_path: iterator->second)
-   {
-      if (stored_path == path)
-      {
-         return;
-      }
-   }
-
-   iterator->second.push_back(path);
-}
-
-
 std::map<int, std::vector<hoi4::PossiblePath>> MapEndpointsAndPaths(const std::vector<hoi4::PossiblePath>& paths)
 {
    std::map<int, std::vector<hoi4::PossiblePath>> endpoints_to_paths;
@@ -817,11 +803,21 @@ std::map<int, std::vector<hoi4::PossiblePath>> MapEndpointsAndPaths(const std::v
 
       if (auto [iterator, success] = endpoints_to_paths.emplace(first_province, std::vector{path}); !success)
       {
-         AddPathToMapping(path, iterator);
+         if (std::ranges::none_of(iterator->second, [path](const hoi4::PossiblePath& stored_path) {
+                return stored_path == path;
+             }))
+         {
+            iterator->second.push_back(path);
+         }
       }
       if (auto [iterator, success] = endpoints_to_paths.emplace(last_province, std::vector{path}); !success)
       {
-         AddPathToMapping(path, iterator);
+         if (std::ranges::none_of(iterator->second, [path](const hoi4::PossiblePath& stored_path) {
+                return stored_path == path;
+             }))
+         {
+            iterator->second.push_back(path);
+         }
       }
    }
 
@@ -851,10 +847,7 @@ hoi4::PossiblePath MergeTwoPaths(const int join_point,
    }
    else
    {
-      for (int province: path_one.GetProvinces())
-      {
-         merged_provinces.push_back(province);
-      }
+      std::ranges::copy(path_one.GetProvinces(), merged_provinces.end());
    }
 
    merged_provinces.pop_back();
