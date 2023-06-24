@@ -840,10 +840,7 @@ hoi4::PossiblePath MergeTwoPaths(const int join_point,
    std::vector<int> merged_provinces;
    if (const int path_one_first_province = path_one.GetFirstProvince(); path_one_first_province == join_point)
    {
-      for (int province: path_one.GetProvinces() | std::views::reverse)
-      {
-         merged_provinces.push_back(province);
-      }
+      std::copy(path_one.GetProvinces().rbegin(), path_one.GetProvinces().rend(), merged_provinces.end());
    }
    else
    {
