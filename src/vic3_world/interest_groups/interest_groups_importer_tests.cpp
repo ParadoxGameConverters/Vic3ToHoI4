@@ -46,7 +46,7 @@ TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsCanBeImported)
 }
 
 
-TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsSetAsNoneAreMarkedBroken)
+TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsSetAsNoneAreSkipped)
 {
    std::stringstream input;
    input << "={\n";
@@ -55,15 +55,8 @@ TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsSetAsNoneAreMa
    input << "\t}\n";
    input << "}\n";
 
-   std::stringstream log;
-   std::streambuf* cout_buffer = std::cout.rdbuf();
-   std::cout.rdbuf(log.rdbuf());
-
-   const std::map<int, InterestGroup> _ = ImportInterestGroups(input);
-
-   std::cout.rdbuf(cout_buffer);
-
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"([ERROR] Broken IG in save file. This should not happen.)"));
+   const std::map<int, InterestGroup> interest_groups = ImportInterestGroups(input);
+   EXPECT_TRUE(interest_groups.empty());
 }
 
 

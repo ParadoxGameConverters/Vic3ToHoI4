@@ -157,7 +157,7 @@ TEST(Vic3WorldCharacterManagerImporter, WanderingAgitatorsAreLogged)
 
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tFound 2 wandering agitators.\n"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tFound 2 homeless agitators.\n"));
 }
 
 
@@ -266,12 +266,19 @@ TEST(Vic3WorldCharacterManagerImporter, MissingOriginTagMatchesAreLogged)
    input << "={\n";
    input << "database={\n";
    input << "1 = {\n";
-   input << "first_name = \"Missing\"\n";
+   input << "first_name = \"At\"\n";
    input << "last_name = \"Home\"\n";
    input << "role = agitator\n";
    input << "}\n";
    input << "3 ={ \n";
+   input << "first_name = \"Gone\"\n";
+   input << "last_name = \"Abroad\"\n";
+   input << "role = agitator\n";
    input << "}\n";
+   input << "}\n";
+   input << "exile_country_map={\n";
+   input << "max=6552\n";
+   input << "3 = TAG\n";
    input << "}\n";
    input << "}\n";
 
@@ -283,7 +290,7 @@ TEST(Vic3WorldCharacterManagerImporter, MissingOriginTagMatchesAreLogged)
 
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Agitator Missing Home with ID: 1 has no home country.\n"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tFound 1 agitators working abroad.\n"));
 }
 
 
