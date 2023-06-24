@@ -114,12 +114,19 @@ african = {
 		GFX_Portrait_Africa_Generic_land_4
 		GFX_Portrait_South_Africa_Army_Generic
 		GFX_Portrait_South_Africa_Army_Generic_2
+
+		GFX_portrait_africa_generic_land_5 # DLC WTT
+		GFX_portrait_africa_generic_land_6
+		GFX_portrait_africa_generic_land_7
 	}
 	navy_portraits = {
 		GFX_Portrait_Africa_Generic_navy_1
 		GFX_Portrait_Africa_Generic_navy_2
 		GFX_Portrait_Africa_Generic_navy_3
 		GFX_Portrait_Africa_Generic_navy_4
+
+		GFX_Portrait_Africa_Generic_navy_5 # DLC MTG
+		GFX_Portrait_Africa_Generic_navy_6
 	}
 	political_portraits = {
 		communism = {
@@ -211,11 +218,18 @@ arab = {
 		GFX_Portrait_Arabia_Generic_land_1
 		GFX_Portrait_Arabia_Generic_land_2
 		GFX_Portrait_Arabia_Generic_land_3
+
+		GFX_portrait_arabia_generic_land_5 # DLC WTT
+		GFX_portrait_arabia_generic_land_6
+		GFX_portrait_arabia_generic_land_7
 	}
 	navy_portraits = {
 		GFX_Portrait_Arabia_Generic_navy_1
 		GFX_Portrait_Arabia_Generic_navy_2
 		GFX_Portrait_Arabia_Generic_navy_3
+
+		GFX_Portrait_Arabia_Generic_navy_4 # DLC MTG
+		GFX_Portrait_Arabia_Generic_navy_5
 	}
 	political_portraits = {
 		communism = {
@@ -279,6 +293,15 @@ asian = {
 		GFX_Portrait_Asia_Generic_land_3
 		GFX_Portrait_Asia_Generic_land_4
 		GFX_Portrait_asia_generic_land_5
+
+		GFX_portrait_asia_generic_land_7 # DLC WTT
+		GFX_portrait_asia_generic_land_8
+		GFX_portrait_asia_generic_land_9
+		GFX_portrait_asia_generic_land_10
+		GFX_portrait_asia_generic_land_11
+		GFX_portrait_asia_generic_land_12
+		GFX_portrait_asia_generic_land_13
+		GFX_portrait_asia_generic_land_14
 	}
 
 	navy_portraits = {
@@ -286,6 +309,12 @@ asian = {
 		GFX_Portrait_Asia_Generic_navy_2
 		GFX_Portrait_Asia_Generic_navy_3
 		GFX_Portrait_asia_generic_navy_4
+
+		GFX_Portrait_Asia_Generic_navy_6 # DLC MTG
+		GFX_Portrait_Asia_Generic_navy_7
+		GFX_Portrait_Asia_Generic_navy_8
+		GFX_Portrait_asia_generic_navy_9
+		GFX_Portrait_asia_generic_navy_10
 	}
 
 	political_portraits = {
@@ -340,6 +369,15 @@ caucasian = {
 		GFX_Portrait_europe_generic_land_6
 		GFX_portrait_europe_generic_land_7
 		GFX_portrait_europe_generic_land_8
+
+		GFX_portrait_europe_generic_land_10	# DLC WTT
+		GFX_portrait_europe_generic_land_11
+		GFX_portrait_europe_generic_land_12
+		GFX_portrait_europe_generic_land_14	
+		GFX_portrait_europe_generic_land_15
+		GFX_portrait_europe_generic_land_16
+		GFX_portrait_europe_generic_land_17
+		GFX_portrait_europe_generic_land_18
 	}
 	navy_portraits = {
 		GFX_Portrait_Europe_Generic_navy_1
@@ -347,6 +385,9 @@ caucasian = {
 		GFX_Portrait_Europe_Generic_navy_3
 		GFX_portrait_europe_generic_navy_4
 		GFX_portrait_europe_generic_navy_5
+
+		GFX_portrait_europe_generic_navy_6 # DLC MTG
+		GFX_portrait_europe_generic_navy_7
 	}
 	political_portraits = {
 		communism = {
@@ -475,6 +516,19 @@ caucasian = {
 indian = {
 	ethnicities = { indian }
 
+	army_portraits = {
+		GFX_Portrait_The_Raj_Army_Generic
+		GFX_Portrait_The_Raj_Army_Generic_2
+
+		GFX_portrait_india_generic_land_3 # DLC WTT
+		GFX_portrait_india_generic_land_4
+	}
+	navy_portraits = {
+		GFX_Portrait_The_Raj_Generic_navy_1
+		GFX_Portrait_The_Raj_Generic_navy_2
+	}
+# GFX_Portrait_The_Raj_Political_Leader_Generic
+# GFX_Portrait_The_Raj_Political_Leader_Generic_2
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
 }
@@ -516,11 +570,21 @@ south_american = { # Brazilian and such, european heritage
 		GFX_Portrait_South_America_Generic_land_3
 		GFX_Portrait_South_America_Generic_land_4
 		GFX_Portrait_South_America_Generic_land_5
+
+		GFX_portrait_south_america_generic_land_6 # DLC WTT
+		GFX_portrait_south_america_generic_land_7
+		GFX_portrait_south_america_generic_land_8
+		GFX_portrait_south_america_generic_land_9
+		GFX_portrait_south_america_generic_land_10
 	}
 	navy_portraits = {
 		GFX_Portrait_South_America_Generic_navy_1
 		GFX_Portrait_South_America_Generic_navy_2
 		GFX_Portrait_South_America_Generic_navy_3
+
+		GFX_Portrait_South_America_Generic_land_20 # Yes, Paradox made a typo
+		GFX_Portrait_South_America_Generic_navy_21
+		GFX_Portrait_South_America_Generic_navy_22
 	}
 	political_portraits = {
 		communism = {
@@ -843,13 +907,13 @@ manchu = {
     leader_portraits = {
         communism = {
 		leader = {
-			GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
+			GFX_Portrait_Asia_Generic_land_10 # Kamio Mitsuyomi
 		}
         }
         democratic = {
 		leader = {
 			GFX_portrait_chi_zhang_xueliang
-			GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
+			GFX_Portrait_Asia_Generic_land_8 # Zhang Zuolin DLC MTG
 		}
         }
         fascism = {
