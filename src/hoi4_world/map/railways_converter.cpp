@@ -840,27 +840,21 @@ hoi4::PossiblePath MergeTwoPaths(const int join_point,
    std::vector<int> merged_provinces;
    if (const int path_one_first_province = path_one.GetFirstProvince(); path_one_first_province == join_point)
    {
-      std::copy(path_one.GetProvinces().rbegin(), path_one.GetProvinces().rend(), merged_provinces.end());
+      std::copy(path_one.GetProvinces().rbegin(), path_one.GetProvinces().rend(), std::back_inserter(merged_provinces));
    }
    else
    {
-      std::ranges::copy(path_one.GetProvinces(), merged_provinces.end());
+      std::ranges::copy(path_one.GetProvinces(), std::back_inserter(merged_provinces));
    }
 
    merged_provinces.pop_back();
    if (const int path_two_first_province = path_two.GetFirstProvince(); path_two_first_province == join_point)
    {
-      for (int province: path_two.GetProvinces())
-      {
-         merged_provinces.push_back(province);
-      }
+      std::ranges::copy(path_two.GetProvinces(), std::back_inserter(merged_provinces));
    }
    else
    {
-      for (auto province: path_two.GetProvinces() | std::views::reverse)
-      {
-         merged_provinces.push_back(province);
-      }
+      std::copy(path_two.GetProvinces().rbegin(), path_two.GetProvinces().rend(), std::back_inserter(merged_provinces));
    }
 
    merged_path.ReplaceProvinces(merged_provinces);
