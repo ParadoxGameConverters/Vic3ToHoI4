@@ -1720,7 +1720,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwaysAreMerged)
    const States hoi4_states{
        .states =
            {
-               State(1, {.provinces = {1, 2, 3, 4, 5, 6, 10}, .victory_points = {{1, 1}}}),
+               State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}, .victory_points = {{1, 1}}}),
                State(2, {.provinces = {100, 101, 102, 103, 104, 105}, .victory_points = {{100, 1}}}),
            },
        .province_to_state_id_map =
