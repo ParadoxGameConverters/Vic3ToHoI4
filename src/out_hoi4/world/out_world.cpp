@@ -87,7 +87,7 @@ void out::OutputWorld(std::string_view output_name, const hoi4::World& world)
    OutputBuildings(output_name, world.GetBuildings());
    OutputRocketSites(output_name, world.GetStates().states);
    OutputRailways(output_name, world.GetRailways().railways);
-   OutputSupplyNodes(output_name, world.GetRailways().railway_endpoints);
+   OutputSupplyNodes(output_name, world.GetRailways().supply_nodes);
    OutputLocalizations(output_name, world.GetLocalizations());
    OutputNames(output_name, world.GetCountries());
    OutputPortraits(output_name, world.GetCountries());
