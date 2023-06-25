@@ -348,7 +348,7 @@ void FindNextPaths(const hoi4::PossiblePath& possible_railway_path,
     const maps::MapData& hoi4_map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const std::set<int>& allowed_provinces,
-    std::set<int>& reached_provinces,
+    const std::set<int>& reached_provinces,
     std::priority_queue<hoi4::PossiblePath>& possible_railway_paths)
 {
    const int last_province = possible_railway_path.GetLastProvince();
@@ -371,7 +371,6 @@ void FindNextPaths(const hoi4::PossiblePath& possible_railway_path,
       {
          continue;
       }
-      reached_provinces.insert(neighbor_number);
 
       if (!hoi4_province_definitions.IsLandProvince(neighbor_number_string))
       {
@@ -431,10 +430,12 @@ std::optional<hoi4::PossiblePath> FindPath(int start_province,
    {
       hoi4::PossiblePath possible_railway_path = possible_railway_paths.top();
 
+      const int last_province = possible_railway_path.GetLastProvince();
       if (possible_railway_path.GetLastProvince() == end_province)
       {
-         break;
+         return possible_railway_paths.top();
       }
+      reached_provinces.insert(last_province);
 
       possible_railway_paths.pop();
 
@@ -446,11 +447,7 @@ std::optional<hoi4::PossiblePath> FindPath(int start_province,
           possible_railway_paths);
    }
 
-   if (possible_railway_paths.empty())
-   {
-      return std::nullopt;
-   }
-   return possible_railway_paths.top();
+   return std::nullopt;
 }
 
 
