@@ -1680,4 +1680,61 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwayEndpointsAreRecorded)
    EXPECT_THAT(railways.railway_endpoints, testing::ElementsAre(1, 2, 3));
 }
 
+
+TEST(Hoi4worldMapRailwaysConverterTests, RailwaysAreMerged)
+{
+   const std::map<std::string, vic3::StateRegion> vic3_state_regions{
+       {"STATE_ONE",
+           vic3::StateRegion{{
+                                 {"0x000001", "city"},
+                                 {"0x000010", "mine"},
+                             },
+               {}}},
+       {"STATE_TWO",
+           vic3::StateRegion{{
+                                 {"0x000100", "city"},
+                             },
+               {}}},
+   };
+
+   const mappers::ProvinceMapper province_mapper{{
+                                                     {"0x000001", {1}},
+                                                     {"0x000010", {10}},
+                                                     {"0x000100", {100}},
+                                                 },
+       {}};
+
+   const maps::MapData hoi4_map_data{{
+       .province_neighbors =
+           {
+               {"1", {"10"}},
+               {"10", {"1", "100"}},
+               {"100", {"10"}},
+           },
+   }};
+
+   const maps::ProvinceDefinitions hoi4_province_definitions{{
+       .land_provinces = {"1", "10", "100"},
+   }};
+
+   const States hoi4_states{
+       .states =
+           {
+               State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}, .victory_points = {{1, 1}}}),
+               State(2, {.provinces = {100, 101, 102, 103, 104, 105}, .victory_points = {{100, 1}}}),
+           },
+       .province_to_state_id_map =
+           {
+               {1, 1},
+               {10, 1},
+               {100, 2},
+           },
+   };
+
+   const Railways railways =
+       ConvertRailways(vic3_state_regions, province_mapper, hoi4_map_data, hoi4_province_definitions, hoi4_states);
+
+   EXPECT_THAT(railways.railways, testing::ElementsAre(Railway(1, {1, 10, 100})));
+}
+
 }  // namespace hoi4
