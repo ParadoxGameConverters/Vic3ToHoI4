@@ -920,14 +920,21 @@ std::vector<hoi4::Railway> GetRailwaysFromPaths(const std::vector<hoi4::Possible
 }
 
 
-std::set<int> GetEndpointsFromPaths(const std::vector<hoi4::PossiblePath>& paths)
+std::set<int> GetSupplyNodesFromPaths(const std::vector<hoi4::PossiblePath>& paths,
+    const std::set<int>& naval_base_locations)
 {
    std::set<int> endpoints;
 
    for (const hoi4::PossiblePath& possible_path: paths)
    {
-      endpoints.insert(possible_path.GetFirstProvince());
-      endpoints.insert(possible_path.GetLastProvince());
+      if (int province = possible_path.GetFirstProvince(); !naval_base_locations.contains(province))
+      {
+         endpoints.insert(province);
+      }
+      if (int province = possible_path.GetLastProvince(); !naval_base_locations.contains(province))
+      {
+         endpoints.insert(province);
+      }
    }
 
    return endpoints;
@@ -968,7 +975,7 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
    const std::vector<hoi4::PossiblePath> merged_paths = MergePaths(trimmed_paths, naval_base_locations, vp_locations);
 
    const std::vector<Railway> railways = GetRailwaysFromPaths(merged_paths);
-   const std::set<int> endpoints = GetEndpointsFromPaths(merged_paths);
+   const std::set<int> endpoints = GetSupplyNodesFromPaths(merged_paths, naval_base_locations);
 
    return {railways, endpoints};
 }

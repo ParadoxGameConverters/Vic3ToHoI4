@@ -190,7 +190,7 @@ TEST(Outhoi4WorldOutworld, SupplyNodesFileIsCreatedAndOutput)
                hoi4::Railway(1, {1, 2}),
                hoi4::Railway(2, {2, 4, 8}),
            },
-       .railway_endpoints = {1, 2, 4, 8},
+       .supply_nodes = {1, 2, 4, 8},
    };
 
    OutputWorld("SupplyNodesFileIsCreatedAndOutput", hoi4::World({.railways = railways_list}));
