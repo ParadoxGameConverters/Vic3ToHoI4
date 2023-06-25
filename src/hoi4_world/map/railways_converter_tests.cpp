@@ -1681,7 +1681,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, SupplyNodesAreRecorded)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoSupplyNodesInnavalBases)
+TEST(Hoi4worldMapRailwaysConverterTests, NoSupplyNodesInNavalBases)
 {
    const std::map<std::string, vic3::StateRegion> vic3_state_regions{
        {"STATE_ONE",
