@@ -14,6 +14,8 @@
     <ClInclude Include="external\rakaly\rakaly.h" />
     <ClInclude Include="src\configuration\configuration.h" />
     <ClInclude Include="src\configuration\configuration_importer.h" />
+    <ClInclude Include="src\hoi4_world\characters\hoi4_character.h" />
+    <ClInclude Include="src\hoi4_world\characters\hoi4_character_converter.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_countries_converter.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_country.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_country_converter.h" />
@@ -129,6 +131,8 @@
     <ClCompile Include="external\fmt\src\format.cc" />
     <ClCompile Include="external\fmt\src\os.cc" />
     <ClCompile Include="src\configuration\configuration_importer.cpp" />
+    <ClCompile Include="src\hoi4_world\characters\hoi4_character_converter.cpp" />
+    <ClCompile Include="src\hoi4_world\characters\hoi4_character_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
     <ClCompile Include="src\hoi4_world\localizations\localizations_converter.cpp" />
