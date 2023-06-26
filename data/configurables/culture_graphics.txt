@@ -39,10 +39,10 @@
 # 	political_portraits = {
 # 		communism = {
 # 			leader = {
-# 					GFX_Portrait_sample_portrait_communism
+# 				GFX_Portrait_sample_portrait_communism
 # 			}
 # 			minister = {
-# 					GFX_Portrait_sample_portrait_communism_small
+# 				GFX_Portrait_sample_portrait_communism_small
 # 			}
 # 		}
 # 		democratic = { 
@@ -703,11 +703,15 @@ west_horn_of_african = {
 		GFX_portrait_ETH_generic_male_2
 		GFX_portrait_ETH_generic_male_3
 		GFX_portrait_ETH_generic_male_4
+		GFX_portrait_ETH_haile_selassie_gugsa
 	}
 	navy_portraits = {
 		GFX_Portrait_Africa_Generic_navy_1
 		GFX_Portrait_Africa_Generic_navy_2
 		GFX_Portrait_Africa_Generic_navy_3
+
+		GFX_Portrait_Africa_Generic_navy_5 # DLC MTG
+		GFX_Portrait_Africa_Generic_navy_6
 	}
 	political_portraits = {
 		communism = {
@@ -717,27 +721,71 @@ west_horn_of_african = {
 		}
 		democratic = {
 			leader = {
-				GFX_portrait_ETH_generic_male_1
+				GFX_portrait_ETH_ras_imru_haile_selassie
+				GFX_portrait_ETH_abebe_aregai
+				GFX_portrait_ETH_kassa_haile_darge
+				GFX_portrait_ETH_alemework_beyene
+				GFX_portrait_ETH_amha_selassie
 			}
 		}
 		fascism = {
 			leader = {
+				GFX_portrait_ETH_generic_male_1
 				GFX_portrait_ETH_generic_male_2
 				GFX_portrait_ETH_generic_male_4
+				GFX_portrait_ETH_haile_selassie_gugsa
 			}
 		}
 		anarchist = {
 			GFX_portrait_ETH_anarchist_council
+			GFX_portrait_ETH_military_communists
 		} 
 		monarchist = {
 			male = {
 				GFX_portrait_ETH_seyoum_mengesha
 				GFX_portrait_ETH_haile_selassie_field_marshal_victorious
 				GFX_portrait_ETH_haile_selassie_victorious
+				GFX_portrait_ETH_abba_jofir
+			}
+			female = { # Revise
+				GFX_portrait_ETH_generic_female_1
+				GFX_portrait_ETH_generic_female_3
 			}
 		}
 	}
-
+	female_portraits = {
+		GFX_portrait_ETH_generic_female_1
+		GFX_portrait_ETH_generic_female_3
+	}
+	operative_portraits = {
+		male = {
+			GFX_portrait_africa_generic_operative_male_1
+			GFX_portrait_africa_generic_operative_male_2
+			GFX_portrait_africa_generic_operative_male_3
+			GFX_portrait_africa_generic_operative_male_4
+			GFX_portrait_africa_generic_operative_male_5
+			GFX_portrait_africa_generic_operative_male_6
+			GFX_portrait_africa_generic_operative_male_7
+			GFX_portrait_africa_generic_operative_male_8
+			GFX_portrait_africa_generic_operative_male_9
+		}
+		female = {
+			GFX_portrait_africa_generic_operative_female_1
+			GFX_portrait_africa_generic_operative_female_2
+			GFX_portrait_africa_generic_operative_female_3
+			GFX_portrait_africa_generic_operative_female_4
+			GFX_portrait_africa_generic_operative_female_5
+			GFX_portrait_africa_generic_operative_female_6
+			GFX_portrait_africa_generic_operative_female_7
+			GFX_portrait_africa_generic_operative_female_8
+			GFX_portrait_africa_generic_operative_female_9
+			GFX_portrait_ETH_generic_female_2
+			GFX_portrait_ETH_shawaragad_gadle
+		}
+	}
+	monarch_ideas = {
+		
+	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
 }
