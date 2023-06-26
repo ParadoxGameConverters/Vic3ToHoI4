@@ -3,13 +3,13 @@
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "external/fmt/include/fmt/format.h"
-#include "src/vic3_world/characters/character_importer.h"
+#include "src/vic3_world/characters/vic3_character_importer.h"
 
 namespace vic3
 {
 
 
-TEST(Vic3WorldCharactersCharacterImporter, DefaultsDefaultToDefault)
+TEST(Vic3WorldCharactersVic3CharacterImporter, DefaultsDefaultToDefault)
 {
    CharacterImporter character_importer;
 
@@ -20,7 +20,7 @@ TEST(Vic3WorldCharactersCharacterImporter, DefaultsDefaultToDefault)
 }
 
 
-TEST(Vic3WorldCharactersCharacterImporter, CharacterCanBeImported)
+TEST(Vic3WorldCharactersVic3CharacterImporter, CharacterCanBeImported)
 {
    CharacterImporter character_importer;
 
@@ -50,7 +50,7 @@ TEST(Vic3WorldCharactersCharacterImporter, CharacterCanBeImported)
 }
 
 
-TEST(Vic3WorldCharactersCharacterImporter, RulerCommanderIsFirstRank)
+TEST(Vic3WorldCharactersVic3CharacterImporter, RulerCommanderIsFirstRank)
 {
    CharacterImporter character_importer;
 
@@ -65,7 +65,7 @@ TEST(Vic3WorldCharactersCharacterImporter, RulerCommanderIsFirstRank)
 }
 
 
-TEST(Vic3WorldCharactersCharacterImporter, InvalidRankIsLogged)
+TEST(Vic3WorldCharactersVic3CharacterImporter, InvalidRankIsLogged)
 {
    CharacterImporter character_importer;
 

@@ -17,7 +17,7 @@
 #include "external/rakaly/rakaly.h"
 #include "src/support/date_fmt.h"
 #include "src/vic3_world/buildings/buildings_importer.h"
-#include "src/vic3_world/characters/character_manager.h"
+#include "src/vic3_world/characters/vic3_character_manager.h"
 #include "src/vic3_world/countries/country_definitions_importer.h"
 #include "src/vic3_world/countries/vic3_countries_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"

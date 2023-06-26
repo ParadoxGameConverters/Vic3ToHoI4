@@ -1,11 +1,11 @@
-#ifndef SRC_VIC3WORLD_CHARACTERS_CHARACTERIMPORTER_H
-#define SRC_VIC3WORLD_CHARACTERS_CHARACTERIMPORTER_H
+#ifndef SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTERIMPORTER_H
+#define SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTERIMPORTER_H
 
 
 
 #include <istream>
 
-#include "src/vic3_world/characters/character.h"
+#include "src/vic3_world/characters/vic3_character.h"
 
 
 namespace vic3
@@ -35,4 +35,4 @@ class CharacterImporter
 
 
 
-#endif  // SRC_VIC3WORLD_CHARACTERS_CHARACTERIMPORTER_H
+#endif  // SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTERIMPORTER_H

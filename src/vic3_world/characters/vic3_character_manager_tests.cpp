@@ -2,13 +2,13 @@
 
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "src/vic3_world/characters/character_manager.h"
+#include "src/vic3_world/characters/vic3_character_manager.h"
 
 namespace vic3
 {
 
 
-TEST(Vic3WorldCharacterManagerImporter, DefaultsDefaultToDefault)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, DefaultsDefaultToDefault)
 {
    std::stringstream input;
 
@@ -19,7 +19,7 @@ TEST(Vic3WorldCharacterManagerImporter, DefaultsDefaultToDefault)
 }
 
 
-TEST(Vic3WorldCharacterManagerImporter, CharactersCanBeImported)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CharactersCanBeImported)
 {
    std::stringstream input;
    input << "={\n";
@@ -71,7 +71,7 @@ TEST(Vic3WorldCharacterManagerImporter, CharactersCanBeImported)
 }
 
 
-TEST(Vic3WorldCharacterManagerImporter, CountryCharacterMapCanBeImported)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CountryCharacterMapCanBeImported)
 {
    std::stringstream input;
    input << "={\n";
@@ -89,7 +89,7 @@ TEST(Vic3WorldCharacterManagerImporter, CountryCharacterMapCanBeImported)
 }
 
 
-TEST(Vic3WorldCharacterManagerImporter, IgsAreAssigned)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, IgsAreAssigned)
 {
    std::stringstream input;
    input << "={\n";
@@ -113,7 +113,7 @@ TEST(Vic3WorldCharacterManagerImporter, IgsAreAssigned)
 }
 
 
-TEST(Vic3WorldCharacterManagerImporter, OriginTagsAreAssignedForExiles)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsAreAssignedForExiles)
 {
    std::stringstream input;
    input << "={\n";
@@ -138,7 +138,7 @@ TEST(Vic3WorldCharacterManagerImporter, OriginTagsAreAssignedForExiles)
 }
 
 
-TEST(Vic3WorldCharacterManagerImporter, WanderingAgitatorsAreLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, WanderingAgitatorsAreLogged)
 {
    std::stringstream input;
    input << "={\n";
@@ -161,7 +161,7 @@ TEST(Vic3WorldCharacterManagerImporter, WanderingAgitatorsAreLogged)
 }
 
 
-TEST(Vic3WorldCharacterManagerImporter, IgsMatchesAreLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, IgsMatchesAreLogged)
 {
    std::stringstream input;
    input << "={\n";
@@ -189,7 +189,7 @@ TEST(Vic3WorldCharacterManagerImporter, IgsMatchesAreLogged)
 }
 
 
-TEST(Vic3WorldCharacterManagerImporter, MissingIgMatchesAreLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, MissingIgMatchesAreLogged)
 {
    std::stringstream input;
    input << "={\n";
@@ -220,7 +220,7 @@ TEST(Vic3WorldCharacterManagerImporter, MissingIgMatchesAreLogged)
 }
 
 
-TEST(Vic3WorldCharacterManagerImporter, WanderingAgitatorsAreNotLoggedAsMissingIgs)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, WanderingAgitatorsAreNotLoggedAsMissingIgs)
 {
    std::stringstream input;
    input << "={\n";
@@ -260,7 +260,7 @@ TEST(Vic3WorldCharacterManagerImporter, WanderingAgitatorsAreNotLoggedAsMissingI
 }
 
 
-TEST(Vic3WorldCharacterManagerImporter, MissingOriginTagMatchesAreLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, MissingOriginTagMatchesAreLogged)
 {
    std::stringstream input;
    input << "={\n";
@@ -294,7 +294,7 @@ TEST(Vic3WorldCharacterManagerImporter, MissingOriginTagMatchesAreLogged)
 }
 
 
-TEST(Vic3WorldCharacterManagerImporter, OriginTagsMatchesAreLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsMatchesAreLogged)
 {
    std::stringstream input;
    input << "={\n";

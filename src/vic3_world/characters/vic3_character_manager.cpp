@@ -1,11 +1,11 @@
-#include "src/vic3_world/characters/character_manager.h"
+#include "src/vic3_world/characters/vic3_character_manager.h"
 
 #include <ranges>
 
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
-#include "src/vic3_world/characters/characters_importer.h"
-#include "src/vic3_world/characters/country_character_map_importer.h"
+#include "src/vic3_world/characters/vic3_characters_importer.h"
+#include "src/vic3_world/characters/vic3_country_character_map_importer.h"
 
 namespace
 {

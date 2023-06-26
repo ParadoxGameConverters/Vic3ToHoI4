@@ -1,4 +1,4 @@
-#include "src/vic3_world/characters/country_character_map_importer.h"
+#include "src/vic3_world/characters/vic3_country_character_map_importer.h"
 
 #include "external/commonItems/Log.h"
 #include "external/commonItems/Parser.h"

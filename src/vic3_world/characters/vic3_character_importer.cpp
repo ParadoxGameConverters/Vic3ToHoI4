@@ -1,4 +1,4 @@
-#include "src/vic3_world/characters/character_importer.h"
+#include "src/vic3_world/characters/vic3_character_importer.h"
 
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
