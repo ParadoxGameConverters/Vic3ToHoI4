@@ -3748,7 +3748,8 @@
 	link = { comment = "* **********" }
 	link = { comment = "* " }
 	link = { comment = "* * STATE_DISTRICT_OF_COLUMBIA " }
-	link = { vic3 = x700080 vic3 = x44578C hoi4 = 11892 } # Washington [city][port], Leonardtown [farm] -> Waldorf
+	link = { vic3 = x700080 hoi4 = 3957 } # Washington [city][port] -> Washington
+	link = { vic3 = x44578C hoi4 = 11892 } # Leonardtown [farm] -> Waldorf
 	link = { comment = "* * STATE_LOUISIANA " }
 	link = { vic3 = x86BC13 vic3 = xC1273E hoi4 = 1453 } # STATE_LOUISIANA, Baton Rouge [city] -> Baton Rouge
 	link = { vic3 = x216122 vic3 = xBF79F5 hoi4 = 1528 } # STATE_LOUISIANA, STATE_LOUISIANA -> Alexandria
@@ -3758,33 +3759,32 @@
 	link = { vic3 = x71BEC1 hoi4 = 4522 } # STATE_LOUISIANA -> Ruston
 	link = { vic3 = x39D7A2 hoi4 = 4535 } # STATE_LOUISIANA -> Houma
 	link = { vic3 = x4FA3C4 hoi4 = 7524 } # STATE_LOUISIANA -> Slidell
-	link = { vic3 = x13B0C7 vic3 = xC51912 hoi4 = 7552 } # STATE_LOUISIANA, STATE_LOUISIANA -> New Orleans
+	link = { vic3 = x13B0C7 vic3 = xC51912 vic3 = x9A7554 hoi4 = 7552 hoi4 = 12398 } # MANY-TO-MANY: STATE_LOUISIANA, STATE_LOUISIANA, New Orleans [port] -> New Orleans, Galliano
 	link = { vic3 = xD658E7 vic3 = xEFB99C hoi4 = 7555 } # STATE_LOUISIANA, STATE_LOUISIANA -> Natchitoches
 	link = { vic3 = x2BEBAE vic3 = x403095 vic3 = x7EF4B8 vic3 = xC07080 hoi4 = 7599 } # Columbia [wood], STATE_LOUISIANA, STATE_LOUISIANA, STATE_LOUISIANA -> Vidalia
 	link = { vic3 = x9E96B6 vic3 = xAC4818 hoi4 = 12313 } # STATE_LOUISIANA, STATE_LOUISIANA -> Lake Charles
-	link = { vic3 = x9A7554 hoi4 = 12398 } # New Orleans [port] -> Galliano
 	link = { vic3 = x0CF7A4 vic3 = x1BF244 vic3 = xEE0FAA hoi4 = 12401 } # STATE_LOUISIANA, STATE_LOUISIANA, Shreveport [mine] -> Shreveport
 	link = { comment = "* * STATE_NEW_YORK " }
 	link = { vic3 = x3CB274 hoi4 = 598 } # STATE_NEW_YORK -> Ogdensburg
 	link = { vic3 = x377E55 hoi4 = 859 } # Montauk [port] -> Riverhead
-	link = { vic3 = xB00080 hoi4 = 1436 } # STATE_NEW_YORK -> Oneonta
+	link = { vic3 = x99CB10 hoi4 = 1436 } # STATE_NEW_YORK -> Oneonta
 	link = { vic3 = x05187E vic3 = x235E9F hoi4 = 3602 } # STATE_NEW_YORK, STATE_NEW_YORK -> Malone
 	link = { vic3 = x2CA754 hoi4 = 734 } # STATE_NEW_YORK -> Batavia
 	link = { vic3 = xB343E6 hoi4 = 3733 } # STATE_NEW_YORK -> Rochester
-	link = { vic3 = xFC18F1 vic3 = xD534B1 hoi4 = 3806 } # STATE_NEW_YORK, Albany [wood] -> Hudson
+	link = { vic3 = xD534B1 hoi4 = 9693 } # Albany [wood] -> Albany
+	link = { vic3 = xFC18F1 hoi4 = 3806 } # STATE_NEW_YORK -> Hudson
 	link = { vic3 = x1BAD55 hoi4 = 3878 } # STATE_NEW_YORK -> New York
 	link = { vic3 = x195B49 vic3 = x8C059D hoi4 = 6707 } # STATE_NEW_YORK, STATE_NEW_YORK -> Jamestown
 	link = { vic3 = xBA53D0 hoi4 = 6717 } # STATE_NEW_YORK -> Binghamton
 	link = { vic3 = xEDC7DA hoi4 = 6778 } # STATE_NEW_YORK -> Watertown
-	link = { vic3 = x308000 hoi4 = 3747 hoi4 = 3702 } # STATE_NEW_YORK -> Syracuse, Auburn
-	link = { vic3 = x01D042 hoi4 = 6795 } # Syracuse [farm] -> Oswego
+	link = { vic3 = x308000 vic3 = xE7BE2D hoi4 = 3702 } # STATE_NEW_YORK, STATE_NEW_YORK -> Auburn
+	link = { vic3 = x01D042 hoi4 = 3747 hoi4 = 6795 } # Syracuse [farm] -> Syracuse, Oswego
 	link = { vic3 = x300080 hoi4 = 3894 hoi4 = 9774 hoi4 = 706 } # STATE_NEW_YORK -> New City, Newburgh, Middletown
 	link = { vic3 = xB08000 hoi4 = 6911 } # STATE_NEW_YORK -> Poughkeepsie
 	link = { vic3 = xA6BED5 hoi4 = 6916 } # STATE_NEW_YORK -> Lowville
 	link = { vic3 = x70C080 hoi4 = 9664 } # STATE_NEW_YORK -> Olean
 	link = { vic3 = x75F2A6 hoi4 = 9673 } # STATE_NEW_YORK -> Catskill
-	link = { vic3 = x99CB10 hoi4 = 9693 } # STATE_NEW_YORK -> Albany
-	link = { vic3 = xE7BE2D hoi4 = 9708 } # STATE_NEW_YORK -> Utica
+	link = { vic3 = xB00080 hoi4 = 9708 } # STATE_NEW_YORK -> Utica
 	link = { vic3 = x42D496 hoi4 = 9721 } # STATE_NEW_YORK -> Gloversville
 	link = { vic3 = xA7B5FE vic3 = xFCF1BE hoi4 = 9754 } # STATE_NEW_YORK, STATE_NEW_YORK -> Tupper Lake
 	link = { vic3 = xEC2EAA hoi4 = 10381 } # STATE_NEW_YORK -> Saranac Lake
@@ -4124,7 +4124,7 @@
 	link = { vic3 = x005339 vic3 = xF04080 hoi4 = 10448 } # STATE_INDIANA, STATE_INDIANA -> Bloomington
 	link = { vic3 = x27EF03 hoi4 = 11621 } # STATE_INDIANA -> Jasper
 	link = { vic3 = x708040 vic3 = xC9A306 hoi4 = 11635 } # Evansville [mine], STATE_INDIANA -> Evansville
-	link = { vic3 = x30D889 hoi4 = 11637 hoi4 = 870 } # Fort Wayne [farm] -> Auburn, Fort Wayne
+	link = { vic3 = x30D889 hoi4 = 870 hoi4 = 11637 } # Fort Wayne [farm] -> Fort Wayne, Auburn
 	link = { vic3 = x73BE17 vic3 = xE36812 hoi4 = 12437 } # STATE_INDIANA, STATE_INDIANA -> Vincennes
 	link = { comment = "* * STATE_MICHIGAN " }
 	link = { vic3 = x28FA31 vic3 = x70C000 hoi4 = 691 } # STATE_MICHIGAN, STATE_MICHIGAN -> Jackson
@@ -4196,36 +4196,35 @@
 	link = { vic3 = x2C3DD6 vic3 = x5EBF40 hoi4 = 12637 } # Pikeville [mine], STATE_KENTUCKY -> Pikeville
 	link = { vic3 = x8CF367 vic3 = x5F08F6 hoi4 = 12709 } # STATE_KENTUCKY, STATE_KENTUCKY -> Elizabethtown
 	link = { comment = "* * STATE_TENNESSEE " }
-	link = { vic3 = x758310 vic3 = x953CF1 vic3 = xEE80A0 hoi4 = 1758 } # STATE_TENNESSEE, STATE_TENNESSEE, Chattanooga [wood] -> McMinnville
+	link = { vic3 = x758310 vic3 = x953CF1 hoi4 = 1758 } # STATE_TENNESSEE, STATE_TENNESSEE -> McMinnville
 	link = { vic3 = x29E11F vic3 = x7BEEC0 hoi4 = 1987 } # STATE_TENNESSEE, STATE_TENNESSEE -> Paris
 	link = { vic3 = x3F62E9 vic3 = x4E7A21 hoi4 = 7615 } # STATE_TENNESSEE, STATE_TENNESSEE -> Martin
-	link = { vic3 = x00F0C0 hoi4 = 7791 } # STATE_TENNESSEE -> Maryville
 	link = { vic3 = xC671E3 vic3 = xC85BEB vic3 = xEDB65F hoi4 = 7797 } # STATE_TENNESSEE, Memphis [farm], STATE_TENNESSEE -> Memphis
 	link = { vic3 = x0DA56A vic3 = x0C4D39 hoi4 = 8014 } # STATE_TENNESSEE, STATE_TENNESSEE -> Johnson City
-	link = { vic3 = x454965 hoi4 = 12670 } # Nashville [city] -> Clarksville
+	link = { vic3 = x273DD7 hoi4 = 12670 } # STATE_TENNESSEE -> Clarksville
 	link = { vic3 = x1BE999 vic3 = xB51AC8 hoi4 = 8083 } # STATE_TENNESSEE, STATE_TENNESSEE -> Cookeville
 	link = { vic3 = x5E6B4D vic3 = x8A22C2 vic3 = x8C50E2 hoi4 = 10281 } # STATE_TENNESSEE, STATE_TENNESSEE, STATE_TENNESSEE -> Murfreesboro
 	link = { vic3 = x807080 vic3 = xBAAD96 hoi4 = 10615 } # STATE_TENNESSEE, STATE_TENNESSEE -> Jackson
-	link = { vic3 = x8CA6A9 hoi4 = 913 } # Knoxville [mine] -> Morristown
+	link = { vic3 = x8CA6A9 hoi4 = 7791 hoi4 = 913 } # Knoxville [mine] -> Maryville, Morristown
 	link = { vic3 = xDD61CB hoi4 = 10657 } # STATE_TENNESSEE -> Knoxville
 	link = { vic3 = x4EF632 vic3 = xE36367 vic3 = x8B0210 hoi4 = 10824 } # STATE_TENNESSEE, STATE_TENNESSEE, STATE_TENNESSEE -> Shelbyville
-	link = { vic3 = x5BF189 vic3 = xA3CEBC vic3 = xED1358 hoi4 = 10909 } # STATE_TENNESSEE, STATE_TENNESSEE, STATE_TENNESSEE -> Chattanooga
-	link = { vic3 = x273DD7 hoi4 = 12501 } # STATE_TENNESSEE -> Nashville
+	link = { vic3 = xA3CEBC vic3 = xEE80A0 vic3 = x5BF189 vic3 = xED1358 vic3 = x00F0C0 hoi4 = 10909 } # STATE_TENNESSEE, Chattanooga [wood], STATE_TENNESSEE, STATE_TENNESSEE, STATE_TENNESSEE -> Chattanooga
+	link = { vic3 = x454965 hoi4 = 12501 } # Nashville [city] -> Nashville
 	link = { comment = "* * STATE_MISSISSIPPI " }
-	link = { vic3 = x2016F5 vic3 = xE1C52F hoi4 = 1615 } # STATE_MISSISSIPPI, Meridian [wood] -> Hattiesburg
-	link = { vic3 = x407000 vic3 = xBFD47F hoi4 = 4464 } # STATE_MISSISSIPPI, STATE_MISSISSIPPI -> Gulfport
+	link = { vic3 = xFB99F3 vic3 = xBFD47F hoi4 = 1615 } # STATE_MISSISSIPPI, STATE_MISSISSIPPI -> Hattiesburg
+	link = { vic3 = x407000 hoi4 = 4464 } # STATE_MISSISSIPPI -> Gulfport
 	link = { vic3 = x2958AE vic3 = xAD9E8B hoi4 = 4510 } # STATE_MISSISSIPPI, STATE_MISSISSIPPI -> Oxford
 	link = { vic3 = x4BD19A vic3 = xF0A4C8 vic3 = x520559 hoi4 = 4565 } # Jackson [city], STATE_MISSISSIPPI, STATE_MISSISSIPPI -> Jackson City
 	link = { vic3 = x00F080 hoi4 = 4650 } # STATE_MISSISSIPPI -> McComb
 	link = { vic3 = x14BCC5 vic3 = xF641D2 hoi4 = 7464 } # STATE_MISSISSIPPI, STATE_MISSISSIPPI -> Hernando
-	link = { vic3 = xE41653 vic3 = xFB99F3 hoi4 = 7668 } # Biloxi [port], STATE_MISSISSIPPI -> Biloxi
+	link = { vic3 = xE41653 hoi4 = 7668 } # Biloxi [port] -> Biloxi
 	link = { vic3 = x0B6E85 vic3 = x6E06B3 hoi4 = 8110 } # STATE_MISSISSIPPI, STATE_MISSISSIPPI -> Starkville
 	link = { vic3 = x80F080 vic3 = xECBE35 vic3 = x123257 hoi4 = 10410 } # Vicksburg [farm], STATE_MISSISSIPPI, STATE_MISSISSIPPI -> Greenville
 	link = { vic3 = x861CB7 hoi4 = 10449 } # STATE_MISSISSIPPI -> Natchez
 	link = { vic3 = x6D0DAC hoi4 = 10753 } # Tupelo [mine] -> Corinth
 	link = { vic3 = x68986B vic3 = xCAD065 vic3 = x3B0B58 hoi4 = 11717 } # STATE_MISSISSIPPI, STATE_MISSISSIPPI, STATE_MISSISSIPPI -> Tupelo
 	link = { vic3 = x9E0C8B hoi4 = 12328 } # STATE_MISSISSIPPI -> Greenwood
-	link = { vic3 = xDD0524 hoi4 = 12429 } # STATE_MISSISSIPPI -> Meridian
+	link = { vic3 = xDD0524 vic3 = xE1C52F vic3 = x2016F5 hoi4 = 12429 } # STATE_MISSISSIPPI, Meridian [wood], STATE_MISSISSIPPI -> Meridian
 	link = { comment = "* * STATE_ALABAMA " }
 	link = { vic3 = x53C044 vic3 = x98A56F hoi4 = 492 } # STATE_ALABAMA, STATE_ALABAMA -> Greenville
 	link = { vic3 = x6510ED vic3 = xCDE01B vic3 = xEE9129 hoi4 = 860 } # STATE_ALABAMA, STATE_ALABAMA, Montgomery [farm] -> Troy
@@ -4233,32 +4232,32 @@
 	link = { vic3 = x8E9218 vic3 = xBD9F23 hoi4 = 4594 } # STATE_ALABAMA, STATE_ALABAMA -> Anniston
 	link = { vic3 = x168AE9 vic3 = x3E5AFE vic3 = x00F000 hoi4 = 4622 } # STATE_ALABAMA, STATE_ALABAMA, STATE_ALABAMA -> Demopolis
 	link = { vic3 = x656E7D vic3 = x43AAC6 vic3 = xE8D1CA hoi4 = 4756 } # STATE_ALABAMA, STATE_ALABAMA, Evergreen [wood] -> Jackson
-	link = { vic3 = x5462C6 hoi4 = 5059 } # STATE_ALABAMA -> Huntsville
-	link = { vic3 = x489DF2 vic3 = x6D9811 vic3 = xA50BE3 hoi4 = 7422 } # Birmingham [city], STATE_ALABAMA, STATE_ALABAMA -> Montgomery
+	link = { vic3 = x5462C6 vic3 = x966D03 hoi4 = 5059 } # STATE_ALABAMA, Huntsville [mine] -> Huntsville
+	link = { vic3 = xA50BE3 hoi4 = 7422 } # STATE_ALABAMA -> Montgomery
 	link = { vic3 = x807000 hoi4 = 7480 hoi4 = 10520 } # Mobile [port] -> Mobile, Daphne
 	link = { vic3 = x20B000 hoi4 = 7640 } # STATE_ALABAMA -> Dothan
-	link = { vic3 = x12DEAF vic3 = x31044F vic3 = x966D03 hoi4 = 10192 } # STATE_ALABAMA, STATE_ALABAMA, Huntsville [mine] -> Decatur
+	link = { vic3 = x12DEAF vic3 = x31044F hoi4 = 10192 } # STATE_ALABAMA, STATE_ALABAMA -> Decatur
 	link = { vic3 = x40A911 vic3 = x492B79 hoi4 = 11509 } # STATE_ALABAMA, STATE_ALABAMA -> Auburn
 	link = { vic3 = x3837AA vic3 = x9DD556 hoi4 = 11942 } # STATE_ALABAMA, STATE_ALABAMA -> Enterprise
-	link = { vic3 = x913125 hoi4 = 12735 } # STATE_ALABAMA -> Birmingham
+	link = { vic3 = x489DF2 vic3 = x6D9811 vic3 = x913125 hoi4 = 12735 } # Birmingham [city], STATE_ALABAMA, STATE_ALABAMA -> Birmingham
 	link = { vic3 = xC8BB61 hoi4 = 12803 } # STATE_ALABAMA -> Gadsden
 	link = { comment = "* * STATE_FLORIDA " }
-	link = { vic3 = xE740E5 vic3 = xC60D66 vic3 = xAAF2AF hoi4 = 866 } # STATE_FLORIDA, STATE_FLORIDA, Fort Pierce [mine] -> Melbourne
+	link = { vic3 = xE740E5 vic3 = xC60D66 hoi4 = 866 } # STATE_FLORIDA, STATE_FLORIDA -> Melbourne
 	link = { vic3 = x31C481 vic3 = xDAE3CC hoi4 = 1556 } # STATE_FLORIDA, STATE_FLORIDA -> Gainesville
 	link = { vic3 = x0C1D7F vic3 = x88BDEA hoi4 = 1572 } # STATE_FLORIDA, STATE_FLORIDA -> Daytona Beach
 	link = { vic3 = x552AD8 vic3 = x5B1199 hoi4 = 1584 } # STATE_FLORIDA, STATE_FLORIDA -> Ocala
 	link = { vic3 = x4070C0 vic3 = x65ECBE vic3 = xF0B481 hoi4 = 1843 } # STATE_FLORIDA, STATE_FLORIDA, STATE_FLORIDA -> Miami
-	link = { vic3 = x9088D5 vic3 = xED77FB vic3 = xFE627B hoi4 = 1913 } # STATE_FLORIDA, Punta Rassa [wood], STATE_FLORIDA -> Immokalee
+	link = { vic3 = x9088D5 hoi4 = 1913 } # STATE_FLORIDA -> Immokalee
 	link = { vic3 = x3556E5 vic3 = x7FA347 vic3 = xE58A3D vic3 = x3CDD1A hoi4 = 7388 } # STATE_FLORIDA, STATE_FLORIDA, Tampa [port], STATE_FLORIDA -> Tampa
 	link = { vic3 = x7BCB55 hoi4 = 9834 } # STATE_FLORIDA -> West Palm Beach
 	link = { vic3 = x23B4D0 vic3 = x6E31DE vic3 = x976584 hoi4 = 10352 } # STATE_FLORIDA, STATE_FLORIDA, STATE_FLORIDA -> Pensacola
 	link = { vic3 = x8C16F9 vic3 = xA03000 hoi4 = 10380 } # STATE_FLORIDA, STATE_FLORIDA -> Panama City
 	link = { vic3 = xD0761D vic3 = xE3533E hoi4 = 10407 } # STATE_FLORIDA, Tallahassee [city] -> Tallahassee
-	link = { vic3 = x4407A0 hoi4 = 10489 } # STATE_FLORIDA -> Fort Pierce
+	link = { vic3 = x4407A0 vic3 = xAAF2AF hoi4 = 10489 } # STATE_FLORIDA, Fort Pierce [mine] -> Fort Pierce
 	link = { vic3 = x2E5E47 vic3 = xB06E20 vic3 = xC000F0 hoi4 = 12353 } # STATE_FLORIDA, STATE_FLORIDA, STATE_FLORIDA -> Lake City
 	link = { vic3 = x1714EE hoi4 = 12381 } # Jacksonville [farm] -> Jacksonville
 	link = { vic3 = x3126CA hoi4 = 12439 } # STATE_FLORIDA -> Orlando
-	link = { vic3 = x5CD014 vic3 = xF41CC0 hoi4 = 12752 } # STATE_FLORIDA, STATE_FLORIDA -> Fort Myers
+	link = { vic3 = x5CD014 vic3 = xF41CC0 vic3 = xED77FB vic3 = xFE627B hoi4 = 12752 } # STATE_FLORIDA, STATE_FLORIDA, Punta Rassa [wood], STATE_FLORIDA -> Fort Myers
 	link = { comment = "* * STATE_GEORGIA " }
 	link = { vic3 = x7B295A vic3 = xD66E1C hoi4 = 638 } # STATE_GEORGIA, STATE_GEORGIA -> Athens
 	link = { vic3 = xB3D9D8 hoi4 = 968 } # STATE_GEORGIA -> Dalton
@@ -4280,33 +4279,31 @@
 	link = { vic3 = x391CFA vic3 = xA496A6 vic3 = xE2E34A hoi4 = 12470 } # STATE_GEORGIA, STATE_GEORGIA, STATE_GEORGIA -> Tifton
 	link = { vic3 = xE933F3 vic3 = xFD85D7 vic3 = x3D2D7D vic3 = x476DE4 hoi4 = 12498 } # STATE_GEORGIA, STATE_GEORGIA, STATE_GEORGIA, STATE_GEORGIA -> Albany
 	link = { comment = "* * STATE_WEST_VIRGINIA " }
-	link = { vic3 = x364F38 hoi4 = 801 } # STATE_WEST_VIRGINIA -> Fairmont
 	link = { vic3 = x06D57E vic3 = xB04000 hoi4 = 3941 } # STATE_WEST_VIRGINIA, STATE_WEST_VIRGINIA -> Elkins
-	link = { vic3 = x43DB99 hoi4 = 3975 } # STATE_WEST_VIRGINIA -> Harrisville
+	link = { vic3 = x43DB99 vic3 = x364F38 hoi4 = 3975 } # STATE_WEST_VIRGINIA, STATE_WEST_VIRGINIA -> Harrisville
 	link = { vic3 = x30C000 hoi4 = 4627 } # STATE_WEST_VIRGINIA -> Williamson
-	link = { vic3 = xAD371C hoi4 = 6850 } # Morgantown [wood] -> Wheeling
+	link = { vic3 = xAD371C hoi4 = 6850 hoi4 = 801 } # Morgantown [wood] -> Wheeling, Fairmont
 	link = { vic3 = x2EA16C hoi4 = 6958 } # STATE_WEST_VIRGINIA -> Keyser
 	link = { vic3 = x579843 vic3 = x82CE19 hoi4 = 6971 } # STATE_WEST_VIRGINIA, Holderby's Landing [mine] -> Huntington
 	link = { vic3 = x38925B vic3 = xB865A2 hoi4 = 7466 } # STATE_WEST_VIRGINIA, STATE_WEST_VIRGINIA -> Beckley
-	link = { vic3 = x7416CB hoi4 = 7588 } # STATE_WEST_VIRGINIA -> Charleston
+	link = { vic3 = x7416CB vic3 = x999738 hoi4 = 7588 } # STATE_WEST_VIRGINIA, Charleston [city] -> Charleston
 	link = { vic3 = x366DF2 vic3 = xCB120B hoi4 = 7646 } # STATE_WEST_VIRGINIA, STATE_WEST_VIRGINIA -> Craigsville
 	link = { vic3 = x08D472 hoi4 = 9923 } # STATE_WEST_VIRGINIA -> Morgantown
-	link = { vic3 = x0F5821 vic3 = x845FC0 vic3 = x999738 hoi4 = 10441 } # STATE_WEST_VIRGINIA, STATE_WEST_VIRGINIA, Charleston [city] -> Point Pleasant
+	link = { vic3 = x0F5821 vic3 = x845FC0 hoi4 = 10441 } # STATE_WEST_VIRGINIA, STATE_WEST_VIRGINIA -> Point Pleasant
 	link = { vic3 = x7755AD hoi4 = 11888 } # Harper's Ferry [farm] -> Martinsburg
 	link = { comment = "* * STATE_MARYLAND " }
 	link = { vic3 = xF08000 hoi4 = 3917 } # STATE_MARYLAND -> Exmore
-	link = { vic3 = x3CC08F vic3 = x576240 hoi4 = 3957 } # Annapolis [port], STATE_MARYLAND -> Washington
 	link = { vic3 = x888194 vic3 = x5E6C0F hoi4 = 6823 } # STATE_MARYLAND, Cumberland [mine] -> Cumberland
 	link = { vic3 = x16482D hoi4 = 6892 } # Easton [farm] -> Easton
-	link = { vic3 = x708080 hoi4 = 6929 } # Fredrick [wood] -> Frederick
-	link = { vic3 = x0E3435 hoi4 = 6984 } # Baltimore [city] -> Baltimore
+	link = { vic3 = x708080 vic3 = x576240 hoi4 = 6929 } # Fredrick [wood], STATE_MARYLAND -> Frederick
+	link = { vic3 = x0E3435 vic3 = x3CC08F hoi4 = 6984 } # Baltimore [city], Annapolis [port] -> Baltimore
 	link = { vic3 = xAEB9F5 hoi4 = 9758 } # STATE_MARYLAND -> Wilmington
 	link = { comment = "* * STATE_DELAWARE " }
 	link = { vic3 = x708000 vic3 = xEBA646 hoi4 = 9786 } # STATE_DELAWARE, Wilmington [city][port][farm] -> Dover
 	link = { comment = "* * STATE_PENNSYLVANIA " }
 	link = { vic3 = x0804CE hoi4 = 12405 } # STATE_PENNSYLVANIA -> DuBois
 	link = { vic3 = x976E86 hoi4 = 3880 hoi4 = 702 } # STATE_PENNSYLVANIA -> St. Marys, Emporium
-	link = { vic3 = xC0C080 hoi4 = 822 } # Harrisburg [farm] -> York
+	link = { vic3 = xC0C080 hoi4 = 11785 hoi4 = 822 } # Harrisburg [farm] -> Harrisburg, York
 	link = { vic3 = x265ADC hoi4 = 862 } # STATE_PENNSYLVANIA -> Bloomsburg
 	link = { vic3 = x67DB6F hoi4 = 880 } # STATE_PENNSYLVANIA -> Butler
 	link = { vic3 = xACC198 vic3 = xAF1AEE hoi4 = 894 } # STATE_PENNSYLVANIA, STATE_PENNSYLVANIA -> Sayre
@@ -4324,21 +4321,20 @@
 	link = { vic3 = x533151 vic3 = x8C787A hoi4 = 9662 } # STATE_PENNSYLVANIA, STATE_PENNSYLVANIA -> Corry
 	link = { vic3 = x6C494D hoi4 = 9789 hoi4 = 11789 } # STATE_PENNSYLVANIA -> Uniontown, Pittsburgh
 	link = { vic3 = x56401E hoi4 = 6885 } # STATE_PENNSYLVANIA -> Lewisburg
-	link = { vic3 = x308080 hoi4 = 9820 hoi4 = 891 } # STATE_PENNSYLVANIA -> Hazleton, Stroudsburg
+	link = { vic3 = x308080 vic3 = x7CF534 hoi4 = 9820 hoi4 = 891 } # MANY-TO-MANY: STATE_PENNSYLVANIA, STATE_PENNSYLVANIA -> Hazleton, Stroudsburg
 	link = { vic3 = x345319 hoi4 = 9836 } # STATE_PENNSYLVANIA -> Bradford
 	link = { vic3 = xC786AB hoi4 = 11648 } # STATE_PENNSYLVANIA -> Warren
 	link = { vic3 = xF1C228 hoi4 = 11758 } # STATE_PENNSYLVANIA -> Bedford
 	link = { vic3 = x242311 hoi4 = 11769 } # STATE_PENNSYLVANIA -> Somerset
-	link = { vic3 = x7CF534 hoi4 = 11785 } # STATE_PENNSYLVANIA -> Harrisburg
 	link = { vic3 = xAC9DC0 vic3 = xE2ACEE hoi4 = 11800 } # STATE_PENNSYLVANIA, Pittsburgh [mine] -> New Castle
 	link = { vic3 = xBC1A94 vic3 = xCDBD85 hoi4 = 11817 } # STATE_PENNSYLVANIA, STATE_PENNSYLVANIA -> Williamsport
 	link = { vic3 = x038B77 hoi4 = 3850 hoi4 = 847 } # STATE_PENNSYLVANIA -> Johnstown, Altoona
 	link = { comment = "* * STATE_NEW_JERSEY " }
 	link = { vic3 = x552873 hoi4 = 3693 } # STATE_NEW_JERSEY -> Dover
 	link = { vic3 = xA14B4E hoi4 = 3863 } # STATE_NEW_JERSEY -> Phillipsburg
-	link = { vic3 = x503169 hoi4 = 11782 hoi4 = 6882 } # Newark [port][mine] -> Trenton, Newark
-	link = { vic3 = x716F90 hoi4 = 9801 hoi4 = 9864 hoi4 = 11900 } # Trenton [city][wood] -> Lakewood, Atlantic City, Camden
-	link = { vic3 = xF00000 hoi4 = 11740 } # Bridgeton [farm] -> Vineland
+	link = { vic3 = x503169 hoi4 = 6882 } # Newark [port][mine] -> Newark
+	link = { vic3 = x716F90 hoi4 = 11782 hoi4 = 9864 hoi4 = 9801 } # Trenton [city][wood] -> Trenton, Atlantic City, Lakewood
+	link = { vic3 = xF00000 hoi4 = 11740 hoi4 = 11900 } # Bridgeton [farm] -> Vineland, Camden
 	link = { comment = "* * STATE_ILLINOIS " }
 	link = { vic3 = x585A65 hoi4 = 720 } # STATE_ILLINOIS -> Decatur
 	link = { vic3 = x22BBD7 hoi4 = 954 } # STATE_ILLINOIS -> Harrisburg
@@ -4368,52 +4364,52 @@
 	link = { vic3 = x1A77EA vic3 = xC5CE93 hoi4 = 9832 } # STATE_RHODE_ISLAND, STATE_RHODE_ISLAND -> New London
 	link = { vic3 = x939ACE hoi4 = 11830 } # Providence [city][port][farm] -> Providence
 	link = { comment = "* * STATE_CONNECTICUT " }
-	link = { vic3 = x7DE678 vic3 = x9D3A73 hoi4 = 6909 } # Hartford [city][port], Cos Cob [wood] -> New Haven
-	link = { vic3 = x3040C0 hoi4 = 9847 hoi4 = 9850 } # Stamford [farm] -> Bridgeport, Hartford
+	link = { vic3 = x9D3A73 hoi4 = 6909 } # Cos Cob [wood] -> New Haven
+	link = { vic3 = x3040C0 hoi4 = 9850 } # Stamford [farm] -> Hartford
+	link = { vic3 = x7DE678 hoi4 = 9847 } # Hartford [city][port] -> Bridgeport
 	link = { comment = "* * STATE_MASSACHUSETTS " }
-	link = { vic3 = xB040C0 hoi4 = 715 hoi4 = 3710 } # Greenfield [wood][farm] -> Leominster, Worcester
+	link = { vic3 = xB040C0 hoi4 = 3710 hoi4 = 715 } # Greenfield [wood][farm] -> Worcester, Leominster
 	link = { vic3 = x13444D hoi4 = 905 } # Plymouth [port] -> New Bedford
-	link = { vic3 = x8D8744 hoi4 = 718 hoi4 = 908 } # Springfield [mine] -> Pittsfield, Springfield
-	link = { vic3 = x211ECF vic3 = x382709 hoi4 = 3906 } # Boston [city], STATE_MASSACHUSETTS -> Brockton
-	link = { vic3 = xA58ED2 hoi4 = 6732 } # STATE_MASSACHUSETTS -> Boston
+	link = { vic3 = x8D8744 hoi4 = 908 hoi4 = 718 } # Springfield [mine] -> Springfield, Pittsfield
+	link = { vic3 = x382709 hoi4 = 3906 } # STATE_MASSACHUSETTS -> Brockton
+	link = { vic3 = x211ECF vic3 = xA58ED2 hoi4 = 6732 } # Boston [city], STATE_MASSACHUSETTS -> Boston
 	link = { comment = "* * STATE_NEW_HAMPSHIRE " }
 	link = { vic3 = xB16D83 vic3 = xDB930D hoi4 = 733 } # Fairfield [mine], Bartlett [wood] -> Laconia
 	link = { vic3 = x2B5499 vic3 = x30C040 hoi4 = 3712 } # Concord [city], Portsmouth [port][farm] -> Manchester
 	link = { vic3 = xD871BE vic3 = xBB7965 vic3 = x92CF0F hoi4 = 3715 } # STATE_NEW_HAMPSHIRE, STATE_NEW_HAMPSHIRE, STATE_NEW_HAMPSHIRE -> Keene
 	link = { vic3 = x1DC591 vic3 = x3E6BAD hoi4 = 10481 } # STATE_NEW_HAMPSHIRE, STATE_NEW_HAMPSHIRE -> Berlin
 	link = { comment = "* * STATE_VERMONT " }
-	link = { vic3 = x30F1AF vic3 = x38CCDA hoi4 = 4445 } # Ludlow [mine], STATE_VERMONT -> Montpelier
-	link = { vic3 = x142566 vic3 = x34FFC4 hoi4 = 7629 } # STATE_VERMONT, Montpelier [city][wood] -> Burlington
+	link = { vic3 = x30F1AF vic3 = x34FFC4 vic3 = x38CCDA hoi4 = 4445 } # Ludlow [mine], Montpelier [city][wood], STATE_VERMONT -> Montpelier
+	link = { vic3 = x142566 hoi4 = 7629 } # STATE_VERMONT -> Burlington
 	link = { vic3 = xB0C040 vic3 = x3FA10D hoi4 = 9675 } # STATE_VERMONT, Bennington [farm] -> Rutland
 	link = { vic3 = x1FFECC hoi4 = 13158 } # x1FFECC -> (Lake)
 	link = { comment = "* * STATE_MAINE " }
-	link = { vic3 = x54816B vic3 = xD68A28 vic3 = xEFC355 hoi4 = 1282 } # Kilmarnock [wood], STATE_MAINE, STATE_MAINE -> Houlton
-	link = { vic3 = x59DEDF vic3 = xD64964 hoi4 = 1338 } # STATE_MAINE, Bangor [farm] -> Ellsworth
-	link = { vic3 = x8243C0 vic3 = xFB9715 hoi4 = 1619 } # STATE_MAINE, STATE_MAINE -> Calais
-	link = { vic3 = x1CA7B0 vic3 = x6B3A42 vic3 = xB04040 hoi4 = 3732 } # Portland [port], STATE_MAINE, STATE_MAINE -> Portland
+	link = { vic3 = x54816B vic3 = xD68A28 vic3 = xEFC355 vic3 = xFB9715 hoi4 = 1282 } # Kilmarnock [wood], STATE_MAINE, STATE_MAINE, STATE_MAINE -> Houlton
+	link = { vic3 = xD64964 hoi4 = 1338 } # Bangor [farm] -> Ellsworth
+	link = { vic3 = x8243C0 vic3 = x59DEDF hoi4 = 1619 } # STATE_MAINE, STATE_MAINE -> Calais
+	link = { vic3 = x1CA7B0 vic3 = xB04040 hoi4 = 3732 } # Portland [port], STATE_MAINE -> Portland
 	link = { vic3 = x1E33E8 vic3 = x441473 vic3 = xF080C0 hoi4 = 4287 } # STATE_MAINE, STATE_MAINE, STATE_MAINE -> Presque Isle
 	link = { vic3 = x6AE419 vic3 = xC4CDFC hoi4 = 6719 } # STATE_MAINE, STATE_MAINE -> Rumford
-	link = { vic3 = x6E757B vic3 = xBD7C03 hoi4 = 7462 } # Augusta [city], STATE_MAINE -> Augusta
+	link = { vic3 = x6E757B vic3 = xBD7C03 vic3 = x6B3A42 hoi4 = 7462 } # Augusta [city], STATE_MAINE, STATE_MAINE -> Augusta
 	link = { vic3 = xFCFF52 hoi4 = 10247 } # STATE_MAINE -> land
 	link = { vic3 = x7182E8 vic3 = xFBEDD6 vic3 = x990681 hoi4 = 10318 } # STATE_MAINE, STATE_MAINE, STATE_MAINE -> Dover-Foxcroft
 	link = { vic3 = xC2B02B vic3 = xF2502E hoi4 = 12202 } # STATE_MAINE, STATE_MAINE -> land
 	link = { vic3 = x262924 vic3 = xA5DE9D vic3 = x5806F4 hoi4 = 12221 } # STATE_MAINE, STATE_MAINE, STATE_MAINE -> land
 	link = { vic3 = x8F9450 hoi4 = 12459 } # The Forks [mine] -> Bangor
 	link = { comment = "* * STATE_NORTH_CAROLINA " }
-	link = { vic3 = x00F040 hoi4 = 1019 } # Wilmington [port] -> Wilmington
+	link = { vic3 = x00F040 hoi4 = 1019 hoi4 = 1132 } # Wilmington [port] -> Wilmington, Jacksonville
 	link = { vic3 = x007040 vic3 = xC58DAF hoi4 = 1077 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> Plymouth
-	link = { vic3 = x338BD7 hoi4 = 1132 } # STATE_NORTH_CAROLINA -> Jacksonville
-	link = { vic3 = x228851 vic3 = x3C4F8A hoi4 = 1163 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> New Bern
+	link = { vic3 = x228851 vic3 = x3C4F8A vic3 = x338BD7 hoi4 = 1163 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> New Bern
 	link = { vic3 = x6FBF63 vic3 = x7342E7 vic3 = xE5DA13 hoi4 = 4168 } # STATE_NORTH_CAROLINA, Goldsboro [farm], STATE_NORTH_CAROLINA -> Greenville
 	link = { vic3 = x1B47BD hoi4 = 6943 hoi4 = 9876 } # STATE_NORTH_CAROLINA -> Williamston, Elizabeth City
 	link = { vic3 = x3EA432 vic3 = xA59977 hoi4 = 7045 } # STATE_NORTH_CAROLINA, Raleigh [city] -> Raleigh
+	link = { vic3 = x7DE315 hoi4 = 10081 } # STATE_NORTH_CAROLINA -> Durham
 	link = { vic3 = x5B809B vic3 = x81AAED hoi4 = 7083 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> Fayetteville
-	link = { vic3 = x7F5918 hoi4 = 7138 } # STATE_NORTH_CAROLINA -> Charlotte
+	link = { vic3 = x7F5918 vic3 = x0F9A00 hoi4 = 7138 } # STATE_NORTH_CAROLINA, Charlotte [wood] -> Charlotte
 	link = { vic3 = x7BF507 hoi4 = 7643 } # Asheville [mine] -> Asheville
 	link = { vic3 = x644A75 vic3 = x807040 vic3 = x785402 hoi4 = 9967 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> Waynesville
 	link = { vic3 = x8070C0 vic3 = x758494 hoi4 = 10051 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> Lumberton
-	link = { vic3 = x58A1C9 vic3 = x7DE315 hoi4 = 10081 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> Durham
-	link = { vic3 = x0F9A00 hoi4 = 10096 } # Charlotte [wood] -> Greensboro
+	link = { vic3 = x58A1C9 hoi4 = 10096 } # STATE_NORTH_CAROLINA -> Greensboro
 	link = { vic3 = x5961F9 vic3 = xD8D851 hoi4 = 10468 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> Boone
 	link = { vic3 = xDBBF9F vic3 = xF3C9D3 hoi4 = 10495 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> Shelby
 	link = { vic3 = x4DC66C vic3 = x711CB6 hoi4 = 11783 } # STATE_NORTH_CAROLINA, STATE_NORTH_CAROLINA -> Rocky Mount
@@ -4441,12 +4437,12 @@
 	link = { vic3 = x3B0FAE hoi4 = 4491 } # STATE_SOUTH_CAROLINA -> Rock Hill
 	link = { vic3 = x1FA379 vic3 = xF5B3A1 hoi4 = 4653 } # STATE_SOUTH_CAROLINA, STATE_SOUTH_CAROLINA -> Greenville
 	link = { vic3 = x8998F6 vic3 = xF93340 hoi4 = 7012 } # STATE_SOUTH_CAROLINA, STATE_SOUTH_CAROLINA -> Sumter
-	link = { vic3 = xD641CB hoi4 = 7134 } # STATE_SOUTH_CAROLINA -> Florence
+	link = { vic3 = xD641CB vic3 = x31E5D4 hoi4 = 7134 } # STATE_SOUTH_CAROLINA, Darlington [wood] -> Florence
 	link = { vic3 = x2C6AA0 vic3 = xAF8C38 hoi4 = 7202 } # STATE_SOUTH_CAROLINA, Charleston [port] -> Charleston
 	link = { vic3 = x9B1B8B hoi4 = 7527 } # STATE_SOUTH_CAROLINA -> Newberry
 	link = { vic3 = x6F7B23 vic3 = x8E69FE hoi4 = 10029 } # Columbia [city], STATE_SOUTH_CAROLINA -> Columbia
 	link = { vic3 = x007602 hoi4 = 10047 } # Kingstree [farm] -> Georgetown
-	link = { vic3 = x31E5D4 vic3 = x47BF09 hoi4 = 11927 } # Darlington [wood], STATE_SOUTH_CAROLINA -> Socastee
+	link = { vic3 = x47BF09 hoi4 = 11927 } # STATE_SOUTH_CAROLINA -> Socastee
 	link = { comment = "* * STATE_HAWAIIAN_ISLANDS " }
 	link = { vic3 = x492B26 hoi4 = 12021 } # Hilo [port] -> Hilo
 	link = { vic3 = x6090C0 hoi4 = 10048 hoi4 = 7195 hoi4 = 7112 } # Princeville [farm] -> Kailua, Kahului, Kapaa
