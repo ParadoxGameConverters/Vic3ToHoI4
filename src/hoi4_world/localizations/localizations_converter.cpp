@@ -102,7 +102,7 @@ commonItems::LocalizationDatabase ConvertVictoryPointLocalizations(
       }
    }
 
-   // some might share a province, so put the more significant ones later to override the less signficant ones
+   // some might share a province, so put the more significant ones later to override the less significant ones
    std::ranges::sort(significant_provinces,
        [](const std::tuple<int, std::string, std::string>& a, const std::tuple<int, std::string, std::string>& b) {
           const std::string& a_type = std::get<1>(a);
