@@ -4022,8 +4022,8 @@
 	link = { comment = "* * STATE_ARKANSAS " }
 	link = { vic3 = x407080 vic3 = x637A11 vic3 = xF205E8 hoi4 = 1503 } # STATE_ARKANSAS, STATE_ARKANSAS, STATE_ARKANSAS -> El Dorado
 	link = { vic3 = xB058B0 vic3 = xBA821E vic3 = xF51011 hoi4 = 1646 } # STATE_ARKANSAS, STATE_ARKANSAS, STATE_ARKANSAS -> Forrest City
-	link = { vic3 = x316588 vic3 = xA09531 hoi4 = 4444 } # Little Rock [city][farm], STATE_ARKANSAS -> Stuttgart
-	link = { vic3 = x4887AC vic3 = x63AA76 vic3 = x69827A hoi4 = 4567 } # Fort Smith [mine], STATE_ARKANSAS, STATE_ARKANSAS -> Fayetteville
+	link = { vic3 = xA09531 hoi4 = 4444 } # STATE_ARKANSAS -> Stuttgart
+	link = { vic3 = x63AA76 vic3 = x69827A hoi4 = 4567 } # STATE_ARKANSAS, STATE_ARKANSAS -> Fayetteville
 	link = { vic3 = x2126AD vic3 = x3D2FD4 vic3 = x5B4E4D hoi4 = 4597 } # STATE_ARKANSAS, STATE_ARKANSAS, STATE_ARKANSAS -> Russellville
 	link = { vic3 = xC8F21F vic3 = xC8FD36 vic3 = x070C9D vic3 = x40F000 hoi4 = 4625 } # STATE_ARKANSAS, STATE_ARKANSAS, STATE_ARKANSAS, STATE_ARKANSAS -> Jonesboro
 	link = { vic3 = xDA6506 vic3 = x1402BF hoi4 = 7485 } # STATE_ARKANSAS, STATE_ARKANSAS -> Hope
@@ -4032,10 +4032,10 @@
 	link = { vic3 = x4B4ADB vic3 = xBCAF1A vic3 = xC0F000 hoi4 = 10355 } # STATE_ARKANSAS, STATE_ARKANSAS, STATE_ARKANSAS -> Mintocello
 	link = { vic3 = x1CF8D9 vic3 = x9CA0ED hoi4 = 10477 } # STATE_ARKANSAS, STATE_ARKANSAS -> Conway
 	link = { vic3 = x5F4C23 vic3 = x9AE3BD hoi4 = 12458 } # Hot Springs [wood], STATE_ARKANSAS -> Hot Springs
-	link = { vic3 = x6B20E7 vic3 = xB7FD4E hoi4 = 12489 } # STATE_ARKANSAS, STATE_ARKANSAS -> Little Rock
-	link = { vic3 = x181555 vic3 = x58998B vic3 = xB20F72 hoi4 = 12778 } # STATE_ARKANSAS, STATE_ARKANSAS, STATE_ARKANSAS -> Fort Smith
+	link = { vic3 = x316588 vic3 = xB7FD4E vic3 = x6B20E7 hoi4 = 12489 } # Little Rock [city][farm], STATE_ARKANSAS, STATE_ARKANSAS -> Little Rock
+	link = { vic3 = x4887AC vic3 = x181555 vic3 = x58998B vic3 = xB20F72 hoi4 = 12778 } # Fort Smith [mine], STATE_ARKANSAS, STATE_ARKANSAS, STATE_ARKANSAS -> Fort Smith
 	link = { comment = "* * STATE_MISSOURI " }
-	link = { vic3 = x1BE410 vic3 = xF279B1 hoi4 = 1441 } # STATE_MISSOURI, Jefferson City [farm] -> Lebanon
+	link = { vic3 = x1BE410 hoi4 = 1441 } # STATE_MISSOURI -> Lebanon
 	link = { vic3 = x591E45 vic3 = xEA9822 hoi4 = 1523 } # STATE_MISSOURI, STATE_MISSOURI -> St. Charles
 	link = { vic3 = x5171F6 vic3 = x547EEE hoi4 = 1534 } # STATE_MISSOURI, STATE_MISSOURI -> Joplin
 	link = { vic3 = x9EA16E vic3 = xA5AFE3 vic3 = xCDC95A vic3 = xFF9F56 hoi4 = 1564 } # STATE_MISSOURI, STATE_MISSOURI, STATE_MISSOURI, STATE_MISSOURI -> Harrisonville
@@ -4050,17 +4050,17 @@
 	link = { vic3 = x701948 vic3 = x8ADB9A vic3 = xF5005E hoi4 = 10391 } # STATE_MISSOURI, STATE_MISSOURI, STATE_MISSOURI -> St. Joseph
 	link = { vic3 = x4D6DEF vic3 = xBF3FF3 hoi4 = 10516 } # STATE_MISSOURI, STATE_MISSOURI -> Chillicothe
 	link = { vic3 = x6ED39C vic3 = x852923 vic3 = xD04080 vic3 = xE73161 hoi4 = 12346 } # STATE_MISSOURI, STATE_MISSOURI, STATE_MISSOURI, STATE_MISSOURI -> Poplar Bluff
-	link = { vic3 = x1BB57F vic3 = xD3F59D hoi4 = 12361 } # STATE_MISSOURI, STATE_MISSOURI -> Jefferson City
+	link = { vic3 = xF279B1 vic3 = x1BB57F vic3 = xD3F59D hoi4 = 12361 } # Jefferson City [farm], STATE_MISSOURI, STATE_MISSOURI -> Jefferson City
 	link = { vic3 = x0E60EA vic3 = x508040 vic3 = x5CB3AF hoi4 = 12463 } # STATE_MISSOURI, STATE_MISSOURI, STATE_MISSOURI -> West Plains
 	link = { comment = "* * STATE_IOWA " }
-	link = { vic3 = x356047 vic3 = x9080C0 vic3 = xE8429C hoi4 = 1586 } # STATE_IOWA, STATE_IOWA, Des Moines [city] -> Centerville
-	link = { vic3 = x91CECE vic3 = x9A3850 vic3 = x9DE484 vic3 = xC6264B hoi4 = 1678 } # STATE_IOWA, STATE_IOWA, STATE_IOWA, STATE_IOWA -> Indianola
+	link = { vic3 = x356047 vic3 = x9080C0 hoi4 = 1586 } # STATE_IOWA, STATE_IOWA -> Centerville
+	link = { vic3 = xE8429C vic3 = xC6264B vic3 = x9DE484 vic3 = x9A3850 vic3 = x91CECE hoi4 = 1678 } # Des Moines [city], STATE_IOWA, STATE_IOWA, STATE_IOWA, STATE_IOWA -> Indianola
 	link = { vic3 = x2BB21D vic3 = x71153F vic3 = xAB3179 hoi4 = 1770 } # STATE_IOWA, STATE_IOWA, STATE_IOWA -> Des Moines
 	link = { vic3 = x03E9D3 vic3 = x25962B vic3 = xCD67AD vic3 = xCF483D vic3 = x996F37 hoi4 = 1831 } # STATE_IOWA, STATE_IOWA, STATE_IOWA, STATE_IOWA, STATE_IOWA -> Decorah
 	link = { vic3 = x1E7531 vic3 = x8DB752 vic3 = xD4B435 hoi4 = 4691 } # STATE_IOWA, STATE_IOWA, STATE_IOWA -> Clear Lake
-	link = { vic3 = x63CD4F vic3 = x9F7290 vic3 = xDD39CE hoi4 = 7306 } # STATE_IOWA, STATE_IOWA, STATE_IOWA -> Cedar Rapids
+	link = { vic3 = x63CD4F vic3 = x9F7290 hoi4 = 7306 } # STATE_IOWA, STATE_IOWA -> Cedar Rapids
 	link = { vic3 = x6EE453 vic3 = xE31CFC hoi4 = 7458 } # Ottumwa [mine], STATE_IOWA -> Ottumwa
-	link = { vic3 = x1080C0 vic3 = x4F3BC6 vic3 = xD348EA hoi4 = 7539 } # STATE_IOWA, STATE_IOWA, Iowa City [farm] -> Burlington
+	link = { vic3 = xDD39CE vic3 = xD348EA vic3 = x4F3BC6 vic3 = x1080C0 hoi4 = 7539 } # STATE_IOWA, Iowa City [farm], STATE_IOWA, STATE_IOWA -> Burlington
 	link = { vic3 = x002D4B vic3 = x5832CE vic3 = x606DBE hoi4 = 9892 } # STATE_IOWA, STATE_IOWA, STATE_IOWA -> Council Bluffs
 	link = { vic3 = xAF2D84 vic3 = xD0ED5A hoi4 = 9910 } # STATE_IOWA, STATE_IOWA -> Dubuque
 	link = { vic3 = xCA1F38 vic3 = x9000C0 hoi4 = 10478 } # STATE_IOWA, STATE_IOWA -> Davenport
@@ -4342,7 +4342,7 @@
 	link = { comment = "* * STATE_ILLINOIS " }
 	link = { vic3 = x585A65 hoi4 = 720 } # STATE_ILLINOIS -> Decatur
 	link = { vic3 = x22BBD7 hoi4 = 954 } # STATE_ILLINOIS -> Harrisburg
-	link = { vic3 = x9EA280 vic3 = x4E0162 hoi4 = 1527 } # STATE_ILLINOIS, Peoria [mine] -> Canton
+	link = { vic3 = x9EA280 hoi4 = 1527 } # STATE_ILLINOIS -> Canton
 	link = { vic3 = x4A94CA vic3 = x6D1F7A hoi4 = 1604 } # STATE_ILLINOIS, STATE_ILLINOIS -> Olney
 	link = { vic3 = xA36021 hoi4 = 1655 } # STATE_ILLINOIS -> Champaign
 	link = { vic3 = xA53D3B vic3 = x806000 hoi4 = 4508 } # STATE_ILLINOIS, STATE_ILLINOIS -> Charleston
@@ -4353,7 +4353,7 @@
 	link = { vic3 = x00A080 vic3 = x908040 hoi4 = 7831 } # STATE_ILLINOIS, STATE_ILLINOIS -> Carbondale
 	link = { vic3 = xEB7340 vic3 = xF68D89 hoi4 = 9450 } # STATE_ILLINOIS, Chicago [city] -> Chicago
 	link = { vic3 = x108040 hoi4 = 9682 } # STATE_ILLINOIS -> Kankakee
-	link = { vic3 = x33B258 hoi4 = 10339 } # STATE_ILLINOIS -> Peoria
+	link = { vic3 = x4E0162 vic3 = x33B258 hoi4 = 10339 } # Peoria [mine], STATE_ILLINOIS -> Peoria
 	link = { vic3 = x6B3BE8 vic3 = xCD3BFC hoi4 = 10393 } # STATE_ILLINOIS, STATE_ILLINOIS -> Moline
 	link = { vic3 = xB90E0D hoi4 = 12365 } # STATE_ILLINOIS -> Pittsfield
 	link = { vic3 = x746E6F hoi4 = 10457 } # STATE_ILLINOIS -> Alton
@@ -4362,8 +4362,8 @@
 	link = { vic3 = x2938A5 vic3 = x6D8AAA vic3 = xBD8B8B hoi4 = 12305 } # STATE_ILLINOIS, STATE_ILLINOIS, STATE_ILLINOIS -> Belleville
 	link = { vic3 = x543986 vic3 = xAD5337 hoi4 = 12312 } # STATE_ILLINOIS, Rockford [wood] -> Rockford
 	link = { vic3 = x2FBF72 vic3 = x7514E0 hoi4 = 12368 } # STATE_ILLINOIS, STATE_ILLINOIS -> Aurora
-	link = { vic3 = x67EB18 vic3 = xF82338 hoi4 = 12497 } # STATE_ILLINOIS, STATE_ILLINOIS -> Springfield
-	link = { vic3 = x26D283 vic3 = x1B1B01 hoi4 = 12697 } # STATE_ILLINOIS, Springfield [farm] -> Taylorville
+	link = { vic3 = x1B1B01 vic3 = xF82338 vic3 = x67EB18 hoi4 = 12497 } # Springfield [farm], STATE_ILLINOIS, STATE_ILLINOIS -> Springfield
+	link = { vic3 = x26D283 hoi4 = 12697 } # STATE_ILLINOIS -> Taylorville
 	link = { comment = "* * STATE_RHODE_ISLAND " }
 	link = { vic3 = x1A77EA vic3 = xC5CE93 hoi4 = 9832 } # STATE_RHODE_ISLAND, STATE_RHODE_ISLAND -> New London
 	link = { vic3 = x939ACE hoi4 = 11830 } # Providence [city][port][farm] -> Providence
