@@ -23,12 +23,12 @@ class PossiblePath
       cost_ += additional_cost;
    }
    void ReplaceProvinces(std::vector<int> new_provinces) { provinces_ = std::move(new_provinces); }
-   void SetLevel(int level) { level_ = level; }
+   void SetDevelopment(float development) { development_ = development; }
 
    [[nodiscard]] int GetFirstProvince() const { return provinces_.front(); }
    [[nodiscard]] int GetLastProvince() const { return provinces_.back(); }
    [[nodiscard]] const std::vector<int>& GetProvinces() const { return provinces_; }
-   [[nodiscard]] int GetLevel() const { return level_; }
+   [[nodiscard]] float GetDevelopment() const { return development_; }
    [[nodiscard]] double GetCost() const { return cost_; }
 
    // higher is prioritized where we want lower to be in priority queues, so reverse the meaning of <
@@ -37,7 +37,7 @@ class PossiblePath
 
   private:
    std::vector<int> provinces_;
-   int level_ = 0;
+   float development_ = 0.F;
    double cost_ = 0;
 };
 
