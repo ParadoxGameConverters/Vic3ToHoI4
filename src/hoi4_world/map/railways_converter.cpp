@@ -1,5 +1,6 @@
 #include "src/hoi4_world/map/railways_converter.h"
 
+#include <numeric>
 #include <queue>
 #include <ranges>
 
@@ -212,39 +213,19 @@ std::optional<float> GetInfrastructureLevel(int province, const hoi4::States& st
 }
 
 
-int DetermineRailwayLevel(int start_province, int end_province, const hoi4::States& states)
+float DeterminePathDevelopment(const std::vector<int>& provinces, const hoi4::States& states)
 {
-   const std::optional<float> start_infrastructure = GetInfrastructureLevel(start_province, states);
-   if (!start_infrastructure)
+   float total_development = 0.F;
+
+   for (const int province: provinces)
    {
-      return 0;
+      if (std::optional<float> new_development = GetInfrastructureLevel(province, states); new_development)
+      {
+         total_development += *new_development;
+      }
    }
 
-   const std::optional<float> end_infrastructure = GetInfrastructureLevel(end_province, states);
-   if (!end_infrastructure)
-   {
-      return 0;
-   }
-
-   const float total_infrastructure = *start_infrastructure + *end_infrastructure;
-   if (total_infrastructure > 3500.0F)
-   {
-      return 4;
-   }
-   if (total_infrastructure > 2800.0F)
-   {
-      return 3;
-   }
-   if (total_infrastructure > 560.0F)
-   {
-      return 2;
-   }
-   if (total_infrastructure > 330.0F)
-   {
-      return 1;
-   }
-
-   return 1;
+   return total_development / static_cast<float>(provinces.size());
 }
 
 
@@ -453,7 +434,6 @@ std::optional<hoi4::PossiblePath> FindPath(int start_province,
 
 void BuildPath(int start_province,
     int end_province,
-    const int railway_level,
     const hoi4::States& states,
     const maps::MapData& hoi4_map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
@@ -467,7 +447,7 @@ void BuildPath(int start_province,
       return;
    }
 
-   possible_path->SetLevel(railway_level);
+   possible_path->SetDevelopment(DeterminePathDevelopment(possible_path->GetProvinces(), states));
    possible_paths.emplace_back(*possible_path);
 }
 
@@ -480,13 +460,7 @@ std::vector<hoi4::PossiblePath> FindAllHoi4Paths(const std::vector<std::pair<int
    std::vector<hoi4::PossiblePath> possible_paths;
    for (const auto& [start_point, end_point]: hoi4_endpoints)
    {
-      BuildPath(start_point,
-          end_point,
-          DetermineRailwayLevel(start_point, end_point, states),
-          states,
-          hoi4_map_data,
-          hoi4_province_definitions,
-          possible_paths);
+      BuildPath(start_point, end_point, states, hoi4_map_data, hoi4_province_definitions, possible_paths);
    }
 
    return possible_paths;
@@ -648,7 +622,7 @@ std::set<int> ListEndpoints(const std::vector<hoi4::PossiblePath>& all_paths)
 }
 
 
-std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>& all_paths)
+std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>& all_paths, const hoi4::States& states)
 {
    std::vector<hoi4::PossiblePath> split_paths;
    std::set<std::pair<int, int>> handled_paths;
@@ -658,7 +632,6 @@ std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>
    for (const hoi4::PossiblePath& path: all_paths)
    {
       hoi4::PossiblePath split_path(path.GetFirstProvince());
-      split_path.SetLevel(path.GetLevel());
       for (int province: path.GetProvinces())
       {
          if (province == path.GetFirstProvince())
@@ -686,6 +659,7 @@ std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>
          }
          split_path.ReplaceProvinces({province});
       }
+      split_path.SetDevelopment(DeterminePathDevelopment(split_path.GetProvinces(), states));
 
       std::pair<int, int> current_endpoints = {split_path.GetFirstProvince(), split_path.GetLastProvince()};
       if (!handled_paths.contains(current_endpoints))
@@ -830,7 +804,8 @@ bool EndpointIsRemovable(const int endpoint, const std::set<int>& naval_location
 
 hoi4::PossiblePath MergeTwoPaths(const int join_point,
     const hoi4::PossiblePath& path_one,
-    const hoi4::PossiblePath& path_two)
+    const hoi4::PossiblePath& path_two,
+    const hoi4::States& states)
 {
    hoi4::PossiblePath merged_path;
 
@@ -855,7 +830,7 @@ hoi4::PossiblePath MergeTwoPaths(const int join_point,
    }
 
    merged_path.ReplaceProvinces(merged_provinces);
-   merged_path.SetLevel(std::min(path_one.GetLevel(), path_two.GetLevel()));
+   merged_path.SetDevelopment(DeterminePathDevelopment(merged_path.GetProvinces(), states));
 
    return merged_path;
 }
@@ -863,7 +838,8 @@ hoi4::PossiblePath MergeTwoPaths(const int join_point,
 
 std::vector<hoi4::PossiblePath> MergePaths(const std::vector<hoi4::PossiblePath>& paths,
     const std::set<int>& naval_locations,
-    const std::set<int>& vp_locations)
+    const std::set<int>& vp_locations,
+    const hoi4::States& states)
 {
    std::map<int, std::vector<hoi4::PossiblePath>> endpoints_to_paths = MapEndpointsAndPaths(paths);
 
@@ -874,7 +850,7 @@ std::vector<hoi4::PossiblePath> MergePaths(const std::vector<hoi4::PossiblePath>
       if (endpoint_paths.size() == 2 && EndpointIsRemovable(endpoint, naval_locations, vp_locations))
       {
          removed_endpoints.insert(endpoint);
-         const hoi4::PossiblePath merged_path = MergeTwoPaths(endpoint, endpoint_paths[0], endpoint_paths[1]);
+         const hoi4::PossiblePath merged_path = MergeTwoPaths(endpoint, endpoint_paths[0], endpoint_paths[1], states);
          merged_paths.push_back(merged_path);
          continue;
       }
@@ -903,13 +879,74 @@ std::vector<hoi4::PossiblePath> MergePaths(const std::vector<hoi4::PossiblePath>
 }
 
 
+std::tuple<float, float, float, float> DetermineRailwayLevelRequirements(const std::vector<hoi4::PossiblePath>& paths)
+{
+   if (paths.empty())
+   {
+      return {0.F, 0.F, 0.F, 0.F};
+   }
+
+   std::vector<float> development_levels;
+   development_levels.resize(paths.size());
+   for (const hoi4::PossiblePath& path: paths)
+   {
+      development_levels.push_back(path.GetDevelopment());
+   }
+   std::ranges::sort(development_levels);
+
+   const float level_four = development_levels.at(development_levels.size() * 99 / 100);
+   const float level_three = development_levels.at(development_levels.size() * 96 / 100);
+   const float level_two = development_levels.at(development_levels.size() * 50 / 100);
+   const float level_one =
+       std::accumulate(development_levels.begin(), development_levels.end(), 0.F) / development_levels.size() / 10.F;
+
+   return {level_one, level_two, level_three, level_four};
+}
+
+
+int DetermineRailwayLevel(const hoi4::PossiblePath& path,
+    const float level_one,
+    const float level_two,
+    const float level_three,
+    const float level_four)
+{
+   const float total_development = path.GetDevelopment();
+   if (total_development >= level_four)
+   {
+      return 4;
+   }
+   if (total_development >= level_three)
+   {
+      return 3;
+   }
+   if (total_development >= level_two)
+   {
+      return 2;
+   }
+   if (total_development >= level_one)
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
 std::vector<hoi4::Railway> GetRailwaysFromPaths(const std::vector<hoi4::PossiblePath>& paths)
 {
    std::vector<hoi4::Railway> railways;
 
+   const auto [level_one_requirement, level_two_requirement, level_three_requirement, level_four_requirement] =
+       DetermineRailwayLevelRequirements(paths);
+
    for (const hoi4::PossiblePath& possible_path: paths)
    {
-      hoi4::Railway railway(possible_path.GetLevel(), possible_path.GetProvinces());
+      hoi4::Railway railway(DetermineRailwayLevel(possible_path,
+                                level_one_requirement,
+                                level_two_requirement,
+                                level_three_requirement,
+                                level_four_requirement),
+          possible_path.GetProvinces());
       railways.push_back(railway);
    }
 
@@ -967,9 +1004,10 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::StateRegi
 
    const std::set<int> vp_locations = GatherVictoryPointLocations(hoi4_states);
    const std::set<int> naval_base_locations = GatherNavalBaseLocations(hoi4_states);
-   const std::vector<hoi4::PossiblePath> split_paths = SplitPaths(all_paths);
+   const std::vector<hoi4::PossiblePath> split_paths = SplitPaths(all_paths, hoi4_states);
    const std::vector<hoi4::PossiblePath> trimmed_paths = TrimPaths(split_paths, vp_locations, naval_base_locations);
-   const std::vector<hoi4::PossiblePath> merged_paths = MergePaths(trimmed_paths, naval_base_locations, vp_locations);
+   const std::vector<hoi4::PossiblePath> merged_paths =
+       MergePaths(trimmed_paths, naval_base_locations, vp_locations, hoi4_states);
 
    const std::vector<Railway> railways = GetRailwaysFromPaths(merged_paths);
    const std::set<int> endpoints = GetSupplyNodesFromPaths(merged_paths, naval_base_locations);
