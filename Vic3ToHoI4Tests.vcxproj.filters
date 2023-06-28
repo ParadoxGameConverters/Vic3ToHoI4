@@ -139,6 +139,12 @@
     <Filter Include="src\vic3_world\interest_groups">
       <UniqueIdentifier>{516af0bf-9efb-4e61-86be-b8b8fdcb0a5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\characters">
+      <UniqueIdentifier>{5ecd0404-b08a-4539-afd1-8708d6914747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\out_hoi4\characters">
+      <UniqueIdentifier>{eda55e84-c86f-4b68-8b2c-51a7b0415073}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -398,6 +404,12 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\interest_groups\interest_groups_importer_tests.cpp">
       <Filter>src\vic3_world\interest_groups</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\characters\hoi4_character_converter_tests.cpp">
+      <Filter>src\hoi4_world\characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\characters\out_character_tests.cpp">
+      <Filter>src\out_hoi4\characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -148,6 +148,9 @@
     <Filter Include="src\mappers\character">
       <UniqueIdentifier>{b4e800f1-5f25-4a01-8355-06cec2cc04b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\out_hoi4\characters">
+      <UniqueIdentifier>{f15347d7-218d-439a-8e56-214fd49db214}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -510,6 +513,9 @@
     <ClInclude Include="src\hoi4_world\characters\hoi4_character_converter.h">
       <Filter>src\hoi4_world\characters</Filter>
     </ClInclude>
+    <ClInclude Include="src\out_hoi4\characters\out_character.h">
+      <Filter>src\out_hoi4\characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -767,8 +773,8 @@
     <ClCompile Include="src\hoi4_world\characters\hoi4_character_converter.cpp">
       <Filter>src\hoi4_world\characters</Filter>
     </ClCompile>
-    <ClCompile Include="src\hoi4_world\characters\hoi4_character_converter_tests.cpp">
-      <Filter>src\hoi4_world\characters</Filter>
+    <ClCompile Include="src\out_hoi4\characters\out_character.cpp">
+      <Filter>src\out_hoi4\characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -71,6 +71,7 @@
     <ClInclude Include="src\maps\province_definitions.h" />
     <ClInclude Include="src\maps\province_points.h" />
     <ClInclude Include="src\maps\utility.h" />
+    <ClInclude Include="src\out_hoi4\characters\out_character.h" />
     <ClInclude Include="src\out_hoi4\countries\out_countries.h" />
     <ClInclude Include="src\out_hoi4\countries\out_country.h" />
     <ClInclude Include="src\out_hoi4\localizations\out_localizations.h" />
@@ -132,7 +133,6 @@
     <ClCompile Include="external\fmt\src\os.cc" />
     <ClCompile Include="src\configuration\configuration_importer.cpp" />
     <ClCompile Include="src\hoi4_world\characters\hoi4_character_converter.cpp" />
-    <ClCompile Include="src\hoi4_world\characters\hoi4_character_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
     <ClCompile Include="src\hoi4_world\localizations\localizations_converter.cpp" />
@@ -168,6 +168,7 @@
     <ClCompile Include="src\maps\province_definitions.cpp" />
     <ClCompile Include="src\maps\province_points.cpp" />
     <ClCompile Include="src\maps\utility.cpp" />
+    <ClCompile Include="src\out_hoi4\characters\out_character.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp" />
     <ClCompile Include="src\out_hoi4\localizations\out_localizations.cpp" />
