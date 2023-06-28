@@ -887,7 +887,7 @@ std::tuple<float, float, float, float> DetermineRailwayLevelRequirements(const s
    }
 
    std::vector<float> development_levels;
-   development_levels.resize(paths.size());
+   development_levels.reserve(paths.size());
    for (const hoi4::PossiblePath& path: paths)
    {
       development_levels.push_back(path.GetDevelopment());
