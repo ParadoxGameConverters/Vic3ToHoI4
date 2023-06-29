@@ -44,6 +44,7 @@ struct Advisor
    std::set<std::string> traits;
    std::string slot;
    std::string ledger;
+   int cost = 150;
 
    std::partial_ordering operator<=>(const Advisor&) const = default;
 };
@@ -75,7 +76,7 @@ class Character
        id_(options.id),
        first_name_(std::move(options.first_name)),
        last_name_(std::move(options.last_name)),
-       portrait_alias_(std::move(options.last_name)),
+       portrait_alias_(std::move(options.portrait_alias)),
        is_female_(options.is_female),
        admiral_data_(std::move(options.admiral_data)),
        general_data_(std::move(options.general_data)),
