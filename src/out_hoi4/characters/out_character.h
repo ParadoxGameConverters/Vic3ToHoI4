@@ -12,8 +12,8 @@
 namespace out
 {
 
-// TODO(Gawquon): one for spy and one for not?
-void OutputCharacter(std::ostream& out, const std::string& tag,const hoi4::Character& character);
+void OutputCharacter(std::ostream& out, const std::string& tag, const hoi4::Character& character);
+void OutputSpy(std::ostream& out, const hoi4::Character& character);
 
 }  // namespace out
 

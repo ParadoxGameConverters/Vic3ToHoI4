@@ -23,6 +23,7 @@ struct Admiral
 struct General
 {
    std::set<std::string> traits;
+   bool is_field_marshal = false;
    int skill = 1;
    int attack = 1;
    int defense = 1;
@@ -42,6 +43,7 @@ struct Advisor
 {
    std::set<std::string> traits;
    std::string slot;
+   std::string ledger;
 
    std::partial_ordering operator<=>(const Advisor&) const = default;
 };
@@ -49,7 +51,6 @@ struct Spy
 {
    std::set<std::string> traits;
    std::set<std::string> nationalities;
-   int skill = 1;
 
    std::partial_ordering operator<=>(const Spy&) const = default;
 };
@@ -60,11 +61,12 @@ struct CharacterOptions
    std::string first_name;
    std::string last_name;
    std::string portrait_alias;
-   Admiral admiral_data;
-   General general_data;
-   Leader leader_data;
-   Advisor advisor_data;
-   Spy spy_data;
+   bool is_female = false;
+   std::optional<Admiral> admiral_data;
+   std::optional<General> general_data;
+   std::optional<Leader> leader_data;
+   std::optional<Advisor> advisor_data;
+   std::optional<Spy> spy_data;
 };
 class Character
 {
@@ -74,6 +76,7 @@ class Character
        first_name_(std::move(options.first_name)),
        last_name_(std::move(options.last_name)),
        portrait_alias_(std::move(options.last_name)),
+       is_female_(options.is_female),
        admiral_data_(std::move(options.admiral_data)),
        general_data_(std::move(options.general_data)),
        leader_data_(std::move(options.leader_data)),
@@ -87,11 +90,12 @@ class Character
    [[nodiscard]] const std::string& GetLastName() const { return last_name_; }
 
    [[nodiscard]] const std::string& GetPortraitAlias() const { return portrait_alias_; }
-   [[nodiscard]] const Admiral& GetAdmiralData() const { return admiral_data_; }
-   [[nodiscard]] const General& GetGeneralData() const { return general_data_; }
-   [[nodiscard]] const Leader& GetLeaderData() const { return leader_data_; }
-   [[nodiscard]] const Advisor& GetAdvisorData() const { return advisor_data_; }
-   [[nodiscard]] const Spy& GetSpyData() const { return spy_data_; }
+   [[nodiscard]] bool IsFemale() const { return is_female_; }
+   [[nodiscard]] const std::optional<Admiral>& GetAdmiralData() const { return admiral_data_; }
+   [[nodiscard]] const std::optional<General>& GetGeneralData() const { return general_data_; }
+   [[nodiscard]] const std::optional<Leader>& GetLeaderData() const { return leader_data_; }
+   [[nodiscard]] const std::optional<Advisor>& GetAdvisorData() const { return advisor_data_; }
+   [[nodiscard]] const std::optional<Spy>& GetSpyData() const { return spy_data_; }
 
    std::partial_ordering operator<=>(const Character&) const = default;
 
@@ -101,11 +105,12 @@ class Character
    std::string last_name_;
 
    std::string portrait_alias_;
-   Admiral admiral_data_;
-   General general_data_;
-   Leader leader_data_;
-   Advisor advisor_data_;
-   Spy spy_data_;
+   bool is_female_ = false;
+   std::optional<Admiral> admiral_data_;
+   std::optional<General> general_data_;
+   std::optional<Leader> leader_data_;
+   std::optional<Advisor> advisor_data_;
+   std::optional<Spy> spy_data_;
 };
 }  // namespace hoi4
 
