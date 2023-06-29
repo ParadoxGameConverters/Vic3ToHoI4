@@ -342,4 +342,26 @@ TEST(Outhoi4Characters, FemaleSpiesAreOutput)
        "\t}\n");
 }
 
+
+TEST(Outhoi4Characters, MissingSpiesAreLogged)
+{
+   const hoi4::Character character({
+       .id = 1,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .portrait_alias = "GFX_test",
+   });
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   std::stringstream out;
+   OutputSpy(out, character);
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"([ERROR] Attempted to output spy with no spy data.)"));
+}
+
 }  // namespace out

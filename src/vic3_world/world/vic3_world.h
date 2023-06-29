@@ -8,9 +8,11 @@
 
 #include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "src/vic3_world/buildings/buildings.h"
+#include "src/vic3_world/characters/vic3_character.h"
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/country_rankings/country_rankings.h"
 #include "src/vic3_world/cultures/culture_definition.h"
+#include "src/vic3_world/interest_groups/interest_group.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/states/state_region.h"
 #include "src/vic3_world/states/vic3_state.h"
@@ -31,6 +33,8 @@ struct WorldOptions
    CountryRankings country_rankings;
    commonItems::LocalizationDatabase localizations = commonItems::LocalizationDatabase("english", {});
    std::map<std::string, CultureDefinition> culture_definitions;
+   std::map<int, Character> characters;
+   std::map<int, InterestGroup> igs;
 };
 
 
@@ -46,7 +50,9 @@ class World
        buildings_(std::move(world_options.buildings)),
        country_rankings_(std::move(world_options.country_rankings)),
        localizations_(std::move(world_options.localizations)),
-       culture_definitions_(std::move(world_options.culture_definitions))
+       culture_definitions_(std::move(world_options.culture_definitions)),
+       characters_(std::move(world_options.characters)),
+       igs_(std::move(world_options.igs))
    {
    }
 
@@ -65,6 +71,8 @@ class World
    {
       return culture_definitions_;
    }
+   [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
+   [[nodiscard]] const std::map<int, InterestGroup>& GetInterestGroups() const { return igs_; }
 
   private:
    std::map<int, Country> countries_;
@@ -76,6 +84,8 @@ class World
    CountryRankings country_rankings_;
    commonItems::LocalizationDatabase localizations_;
    std::map<std::string, CultureDefinition> culture_definitions_;
+   std::map<int, Character> characters_;
+   std::map<int, InterestGroup> igs_;
 };
 
 }  // namespace vic3

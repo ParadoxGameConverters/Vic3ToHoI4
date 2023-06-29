@@ -111,7 +111,7 @@ std::istringstream MeltSave(const rakaly::GameFile& save, const std::string& sav
 
 void AssignCulturesToCountries(std::map<int, vic3::Country>& countries, const std::map<int, std::string>& cultures)
 {
-   for (auto& country: countries | std::ranges::views::values)
+   for (auto& [country_id, country]: countries)
    {
       for (const auto& id: country.GetPrimaryCultureIds())
       {
@@ -119,9 +119,34 @@ void AssignCulturesToCountries(std::map<int, vic3::Country>& countries, const st
          {
             country.AddPrimaryCulture(culture_itr->second);
          }
+         else
+         {
+            Log(LogLevel::Warning) << fmt::format("Country: {} could not find a match for Culture: {}.",
+                country_id,
+                id);
+         }
       }
    }
 }
+
+void AssignCulturesToCharacters(std::map<int, vic3::Character>& characters, const std::map<int, std::string>& cultures)
+{
+   for (auto& character: characters | std::ranges::views::values)
+   {
+      if (const auto culture_itr = cultures.find(character.GetCultureId()); culture_itr != cultures.end())
+      {
+         character.SetCulture(culture_itr->second);
+      }
+      else
+      {
+         Log(LogLevel::Warning) << fmt::format("Character {} {} could not find a match for Culture: {}.",
+             character.GetFirstName(),
+             character.GetLastName(),
+             character.GetCultureId());
+      }
+   }
+}
+
 
 void AssignOwnersToStates(const std::map<int, vic3::Country>& countries, std::map<int, vic3::State>& states)
 {
@@ -144,23 +169,40 @@ void AssignOwnersToStates(const std::map<int, vic3::Country>& countries, std::ma
    }
 }
 
-std::map<int, std::vector<int>> CreateCountryIGMap(const std::map<int, vic3::InterestGroup>& igs)
+void AssignIgsToCountries(std::map<int, vic3::Country>& countries, const std::map<int, vic3::InterestGroup>& igs)
 {
-   std::map<int, std::vector<int>> country_ig_map;
    for (const auto& [ig_id, ig]: igs)
    {
-      if (const auto country_id_itr = country_ig_map.find(ig.GetCountryId()); country_id_itr != country_ig_map.end())
+      if (const auto country_itr = countries.find(ig.GetCountryId()); country_itr != countries.end())
       {
-         country_id_itr->second.push_back(ig_id);
+         country_itr->second.AddInterestGroupId(ig_id);
       }
       else
       {
-         country_ig_map.emplace(country_id_itr->first, ig_id);
+         Log(LogLevel::Warning) << fmt::format("Country: {} not found. Ignoring {} with ID: {}.",
+             ig.GetCountryId(),
+             ig.GetType(),
+             ig_id);
       }
    }
-   return country_ig_map;
 }
 
+
+void AssignCharactersToCountries(std::map<int, vic3::Country>& countries,
+    const std::map<int, std::vector<int>>& country_character_map)
+{
+   for (const auto& [country_id, character_ids]: country_character_map)
+   {
+      if (const auto country_itr = countries.find(country_id); country_itr != countries.end())
+      {
+         country_itr->second.SetCharacterIds(character_ids);
+      }
+      else
+      {
+         Log(LogLevel::Warning) << fmt::format("Country: {} not found. can't place character ids", country_id);
+      }
+   }
+}
 }  // namespace
 
 
@@ -288,9 +330,11 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Log(LogLevel::Progress) << "15 %";
 
    AssignCulturesToCountries(countries, cultures);
+   AssignCulturesToCharacters(characters, cultures);
    AssignOwnersToStates(countries, states);
    Log(LogLevel::Progress) << "16 %";
-   const auto country_ig_map = CreateCountryIGMap(igs);
+   AssignCharactersToCountries(countries, country_character_map);
+   AssignIgsToCountries(countries, igs);
 
    return World({.countries = countries,
        .states = states,
@@ -300,5 +344,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        .buildings = buildings,
        .country_rankings = country_rankings,
        .localizations = localizations,
-       .culture_definitions = culture_definitions});
+       .culture_definitions = culture_definitions,
+       .characters = characters,
+       .igs = igs});
 }

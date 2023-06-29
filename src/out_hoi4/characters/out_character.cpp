@@ -139,18 +139,25 @@ void out::OutputCharacter(std::ostream& out, const std::string& tag, const hoi4:
 
 void out::OutputSpy(std::ostream& out, const hoi4::Character& character)
 {
-   const auto& spy_data = character.GetSpyData().value();
-
-   out << "\tcreate_operative_leader = {\n";
-   out << fmt::format("\t\tname = {}_{}\n", character.GetFirstName(), character.GetLastName());
-   out << fmt::format("\t\tGFX = {}\n", character.GetPortraitAlias());
-   out << fmt::format("\t\ttraits = {}\n", OutputTraits(spy_data.traits));
-   out << "\t\tbypass_recruitment = no\n";
-   out << "\t\tavailable_to_spy_master = yes\n";
-   if (character.IsFemale())
+   if (const auto& possible_spy = character.GetSpyData(); !possible_spy)
    {
-      out << "\t\tfemale = yes\n";
+      Log(LogLevel::Error) << "Attempted to output spy with no spy data.";
    }
-   out << fmt::format("\t\tnationalities = {}\n", OutputTraits(spy_data.nationalities));
-   out << "\t}\n";
+   else
+   {
+      const auto& spy_data = possible_spy.value();
+
+      out << "\tcreate_operative_leader = {\n";
+      out << fmt::format("\t\tname = {}_{}\n", character.GetFirstName(), character.GetLastName());
+      out << fmt::format("\t\tGFX = {}\n", character.GetPortraitAlias());
+      out << fmt::format("\t\ttraits = {}\n", OutputTraits(spy_data.traits));
+      out << "\t\tbypass_recruitment = no\n";
+      out << "\t\tavailable_to_spy_master = yes\n";
+      if (character.IsFemale())
+      {
+         out << "\t\tfemale = yes\n";
+      }
+      out << fmt::format("\t\tnationalities = {}\n", OutputTraits(spy_data.nationalities));
+      out << "\t}\n";
+   }
 }

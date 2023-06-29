@@ -24,6 +24,8 @@ struct CountryOptions
    std::set<std::string> primary_cultures;
    std::optional<date> last_election;
    int head_of_state_id = 0;
+   std::vector<int> character_ids;
+   std::vector<int> ig_ids;
 };
 
 
@@ -40,7 +42,9 @@ class Country
        primary_cultures_(std::move(options.primary_cultures)),
        primary_culture_ids_(std::move(options.primary_culture_ids)),
        last_election_(options.last_election),
-       head_of_state_id_(options.head_of_state_id)
+       head_of_state_id_(options.head_of_state_id),
+       character_ids_(std::move(options.character_ids)),
+       ig_ids_(std::move(options.ig_ids))
    {
    }
 
@@ -54,10 +58,14 @@ class Country
    [[nodiscard]] const std::set<int>& GetPrimaryCultureIds() const { return primary_culture_ids_; }
    [[nodiscard]] const std::optional<date>& GetLastElection() const { return last_election_; }
    [[nodiscard]] int GetHeadOfStateId() const { return head_of_state_id_; }
+   [[nodiscard]] const std::vector<int>& GetCharacterIds() const { return character_ids_; }
+   [[nodiscard]] const std::vector<int>& GetInterestGroupIds() const { return ig_ids_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
-   void AddPrimaryCulture(std::string culture) { primary_cultures_.emplace(culture); }
+   void AddPrimaryCulture(const std::string& culture) { primary_cultures_.emplace(culture); }
+   void SetCharacterIds(const std::vector<int>& character_ids) { character_ids_ = character_ids; }
+   void AddInterestGroupId(const int ig_id) { ig_ids_.push_back(ig_id); }
 
    bool operator==(const Country&) const = default;
 
@@ -72,6 +80,8 @@ class Country
    std::set<int> primary_culture_ids_;  // Resolve to culture name before HoI
    std::optional<date> last_election_;
    int head_of_state_id_ = 0;
+   std::vector<int> character_ids_;
+   std::vector<int> ig_ids_;
 };
 
 }  // namespace vic3

@@ -55,8 +55,9 @@ class Character
    [[nodiscard]] const std::set<std::string>& GetTraits() const { return traits_; }
    [[nodiscard]] const std::string& GetOriginTag() const { return origin_tag_; }
 
+   void SetCulture(std::string culture) { culture_ = std::move(culture); }
    void SetHomeTag(std::string tag) { origin_tag_ = std::move(tag); }
-   void SetIgId(int id) { ig_id_ = id; }
+   void SetIgId(const int id) { ig_id_ = id; }
 
    std::partial_ordering operator<=>(const Character&) const = default;
 

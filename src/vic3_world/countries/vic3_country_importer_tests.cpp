@@ -106,4 +106,26 @@ TEST(Vic3WorldCountriesCountryImporter, LastElectionCanBeSet)
 }
 
 
+TEST(Vic3WorldCountriesCountryImporter, CharacterIdsCanBeSet)
+{
+   std::stringstream input;
+   Country country = CountryImporter{}.ImportCountry(0, input, {});
+   country.SetCharacterIds({1, 2, 3});
+
+   EXPECT_EQ(country.GetCharacterIds(), std::vector({1, 2, 3}));
+}
+
+
+TEST(Vic3WorldCountriesCountryImporter, IgIdsCanBeAdded)
+{
+   std::stringstream input;
+   Country country = CountryImporter{}.ImportCountry(0, input, {});
+   country.AddInterestGroupId(1);
+   country.AddInterestGroupId(2);
+   country.AddInterestGroupId(3);
+
+   EXPECT_EQ(country.GetInterestGroupIds(), std::vector({1, 2, 3}));
+}
+
+
 }  // namespace vic3

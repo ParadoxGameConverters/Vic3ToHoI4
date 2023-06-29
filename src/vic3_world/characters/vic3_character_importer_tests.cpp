@@ -85,4 +85,45 @@ TEST(Vic3WorldCharactersVic3CharacterImporter, InvalidRankIsLogged)
    EXPECT_EQ(character, Character({.id = 1, .rank = 0}));
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Failed to read rank: commander_rank_modded."));
 }
+
+
+TEST(Vic3WorldCharactersVic3CharacterImporter, CultureCanBeSet)
+{
+   CharacterImporter character_importer;
+
+   std::stringstream input;
+   auto character = character_importer.ImportCharacter(1, input);
+
+   character.SetCulture("scottish");
+
+   EXPECT_EQ(character, Character({.id = 1, .culture = "scottish"}));
+}
+
+
+TEST(Vic3WorldCharactersVic3CharacterImporter, HomeTagCanBeSet)
+{
+   CharacterImporter character_importer;
+
+   std::stringstream input;
+   auto character = character_importer.ImportCharacter(1, input);
+
+   character.SetHomeTag("TAG");
+
+   EXPECT_EQ(character, Character({.id = 1, .origin_tag = "TAG"}));
+}
+
+
+TEST(Vic3WorldCharactersVic3CharacterImporter, IgIdCanBeSet)
+{
+   CharacterImporter character_importer;
+
+   std::stringstream input;
+   auto character = character_importer.ImportCharacter(1, input);
+
+   character.SetIgId(1);
+
+   EXPECT_EQ(character, Character({.id = 1, .ig_id = 1}));
+}
+
+
 }  // namespace vic3
