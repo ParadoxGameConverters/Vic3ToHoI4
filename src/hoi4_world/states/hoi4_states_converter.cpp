@@ -76,6 +76,73 @@ std::optional<int> GetStateIfSharedByAllProvinces(const std::vector<std::string>
 }
 
 
+std::optional<int> FindStateWithMostOfSignificantProvinceType(const std::string& significant_province_type,
+    const std::vector<std::string>& vic3_provinces,
+    const std::map<std::string, ProvinceType>& significant_vic3_provinces,
+    const std::map<std::string, int>& vic3_province_to_state_id_map)
+{
+   std::map<int, int> states_to_counts;
+   for (const auto& vic3_province: vic3_provinces)
+   {
+      const auto& significant_province_itr = significant_vic3_provinces.find(vic3_province);
+      if (significant_province_itr == significant_vic3_provinces.end())
+      {
+         continue;
+      }
+      if (significant_province_itr->second != significant_province_type)
+      {
+         continue;
+      }
+
+      const auto& state = vic3_province_to_state_id_map.find(vic3_province);
+      if (state == vic3_province_to_state_id_map.end())
+      {
+         Log(LogLevel::Warning) << fmt::format("Vic3 province {} was not in a state.", vic3_province);
+         continue;
+      }
+
+      if (auto [itr, success] = states_to_counts.emplace(state->second, 1); !success)
+      {
+         itr->second++;
+      }
+   }
+
+   if (!states_to_counts.empty())
+   {
+      return std::ranges::max_element(states_to_counts, [](const auto& a, const auto& b) {
+         return a.second < b.second;
+      })->first;
+   }
+
+   return std::nullopt;
+}
+
+
+std::optional<int> DetermineStateWithMostImportantProvinces(const std::vector<std::string>& vic3_provinces,
+    const std::map<std::string, int>& vic3_province_to_state_id_map,
+    const std::map<std::string, ProvinceType>& significant_vic3_provinces)
+{
+   if (const std::optional<int> possible_state = FindStateWithMostOfSignificantProvinceType("city",
+           vic3_provinces,
+           significant_vic3_provinces,
+           vic3_province_to_state_id_map);
+       possible_state)
+   {
+      return *possible_state;
+   }
+   if (const std::optional<int> possible_state = FindStateWithMostOfSignificantProvinceType("port",
+           vic3_provinces,
+           significant_vic3_provinces,
+           vic3_province_to_state_id_map);
+       possible_state)
+   {
+      return *possible_state;
+   }
+
+   return std::nullopt;
+}
+
+
 std::optional<int> DetermineStateWithMostProvinces(const std::vector<std::string>& vic3_provinces,
     const std::map<std::string, int>& vic3_province_to_state_id_map)
 {
@@ -110,9 +177,13 @@ std::optional<int> DetermineStateWithMostProvinces(const std::vector<std::string
 
 std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::string, int>& vic3_province_to_state_id_map,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
-    const maps::ProvinceDefinitions& hoi4_province_definitions)
+    const maps::ProvinceDefinitions& hoi4_province_definitions,
+    const std::map<std::string, vic3::StateRegion>& vic3_state_regions)
 {
    std::map<int, std::set<int>> state_id_to_hoi4_provinces;
+
+   const std::map<std::string, ProvinceType> significant_vic3_provinces =
+       GatherVic3SignificantProvinces(vic3_state_regions);
 
    for (const auto& [hoi4_province, vic3_provinces]: hoi4_to_vic3_province_mappings)
    {
@@ -129,7 +200,12 @@ std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::stri
 
       std::optional<int> state_number;
       state_number = GetStateIfSharedByAllProvinces(vic3_provinces, vic3_province_to_state_id_map);
-      // todo: prioritize states that control special vic3 provinces
+      if (!state_number)
+      {
+         state_number = DetermineStateWithMostImportantProvinces(vic3_provinces,
+             vic3_province_to_state_id_map,
+             significant_vic3_provinces);
+      }
       if (!state_number.has_value())
       {
          state_number = DetermineStateWithMostProvinces(vic3_provinces, vic3_province_to_state_id_map);
@@ -942,7 +1018,8 @@ hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
    const std::map<int, std::set<int>> vic3_state_id_to_hoi4_provinces =
        PlaceHoi4ProvincesInStates(vic3_province_to_state_id_map,
            province_mapper.GetHoi4ToVic3ProvinceMappings(),
-           hoi4_province_definitions);
+           hoi4_province_definitions,
+           vic3_state_regions);
    const std::vector<int> vic3_state_ids_by_vic3_industry =
        SortVic3StatesByIndustryDescending(vic3_buildings, vic3_state_id_to_hoi4_provinces);
    return CreateStates(states,
