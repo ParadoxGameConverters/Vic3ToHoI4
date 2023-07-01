@@ -78,7 +78,7 @@ std::optional<int> GetStateIfSharedByAllProvinces(const std::vector<std::string>
 
 std::optional<int> FindStateWithMostOfSignificantProvinceType(const std::string& significant_province_type,
     const std::vector<std::string>& vic3_provinces,
-    const std::map<std::string, ProvinceType>& significant_vic3_provinces,
+    const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const std::map<std::string, int>& vic3_province_to_state_id_map)
 {
    std::map<int, int> states_to_counts;
@@ -120,7 +120,7 @@ std::optional<int> FindStateWithMostOfSignificantProvinceType(const std::string&
 
 std::optional<int> DetermineStateWithMostImportantProvinces(const std::vector<std::string>& vic3_provinces,
     const std::map<std::string, int>& vic3_province_to_state_id_map,
-    const std::map<std::string, ProvinceType>& significant_vic3_provinces)
+    const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces)
 {
    if (const std::optional<int> possible_state = FindStateWithMostOfSignificantProvinceType("city",
            vic3_provinces,
@@ -176,7 +176,7 @@ std::optional<int> DetermineStateWithMostProvinces(const std::vector<std::string
 
 
 std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(
-    const std::map<std::string, ProvinceType>& significant_vic3_provinces,
+    const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const std::map<std::string, int>& vic3_province_to_state_id_map,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
@@ -999,7 +999,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 
 hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
     const vic3::ProvinceDefinitions& vic3_province_definitions,
-    const std::map<std::string, ProvinceType>& significant_vic3_provinces,
+    const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const vic3::Buildings& vic3_buildings,
     const mappers::ProvinceMapper& province_mapper,
     const maps::MapData& map_data,
