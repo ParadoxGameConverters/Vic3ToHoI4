@@ -30,7 +30,8 @@ std::map<std::string, vic3::ProvinceType> GatherVic3SignificantProvinces(
 
    for (const vic3::StateRegion& vic3_state_region: vic3_state_regions | std::views::values)
    {
-      const std::map<std::string, std::string>& significant_provinces = vic3_state_region.GetSignificantProvinces();
+      const std::map<vic3::ProvinceId, vic3::ProvinceType>& significant_provinces =
+          vic3_state_region.GetSignificantProvinces();
       for (const auto& [province, type]: significant_provinces)
       {
          vic3_significant_provinces.emplace(province, type);

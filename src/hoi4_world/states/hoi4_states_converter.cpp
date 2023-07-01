@@ -260,7 +260,8 @@ std::map<std::string, std::string> GetAllSignificantProvinces(
 
    for (const vic3::StateRegion& state_region: vic3_state_regions | std::views::values)
    {
-      const auto& local_significant_provinces = state_region.GetSignificantProvinces();
+      const std::map<vic3::ProvinceId, vic3::ProvinceType>& local_significant_provinces =
+          state_region.GetSignificantProvinces();
       significant_provinces.insert(local_significant_provinces.begin(), local_significant_provinces.end());
    }
 
@@ -274,7 +275,7 @@ std::map<std::string, std::string> MapVic3ProvincesToStateNames(
    std::map<std::string, std::string> vic3_provinces_to_state_names;
    for (const auto& [region_name, region]: vic3_state_regions)
    {
-      for (const auto& province: region.GetProvinces())
+      for (const vic3::ProvinceId& province: region.GetProvinces())
       {
          vic3_provinces_to_state_names.emplace(province, region_name);
       }
