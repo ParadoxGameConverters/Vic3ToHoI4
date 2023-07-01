@@ -175,15 +175,14 @@ std::optional<int> DetermineStateWithMostProvinces(const std::vector<std::string
 }
 
 
-std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(const std::map<std::string, int>& vic3_province_to_state_id_map,
+std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(
+    const std::map<std::string, ProvinceType>& significant_vic3_provinces,
+    const std::map<std::string, int>& vic3_province_to_state_id_map,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const std::map<std::string, vic3::StateRegion>& vic3_state_regions)
 {
    std::map<int, std::set<int>> state_id_to_hoi4_provinces;
-
-   const std::map<std::string, ProvinceType> significant_vic3_provinces =
-       GatherVic3SignificantProvinces(vic3_state_regions);
 
    for (const auto& [hoi4_province, vic3_provinces]: hoi4_to_vic3_province_mappings)
    {
@@ -1000,6 +999,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 
 hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
     const vic3::ProvinceDefinitions& vic3_province_definitions,
+    const std::map<std::string, ProvinceType>& significant_vic3_provinces,
     const vic3::Buildings& vic3_buildings,
     const mappers::ProvinceMapper& province_mapper,
     const maps::MapData& map_data,
@@ -1016,7 +1016,8 @@ hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
    const std::map<std::string, int> vic3_province_to_state_id_map =
        MapVic3ProvincesToStates(states, vic3_province_definitions);
    const std::map<int, std::set<int>> vic3_state_id_to_hoi4_provinces =
-       PlaceHoi4ProvincesInStates(vic3_province_to_state_id_map,
+       PlaceHoi4ProvincesInStates(significant_vic3_provinces,
+           vic3_province_to_state_id_map,
            province_mapper.GetHoi4ToVic3ProvinceMappings(),
            hoi4_province_definitions,
            vic3_state_regions);

@@ -17,7 +17,7 @@
 namespace hoi4
 {
 
-Railways ConvertRailways(const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
+Railways ConvertRailways(const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const mappers::ProvinceMapper& province_mapper,
     const maps::MapData& hoi4_map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
