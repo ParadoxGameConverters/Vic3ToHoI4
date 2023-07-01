@@ -114,6 +114,60 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
 }
 
 
+TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersStates)
+{
+   const vic3::ProvinceDefinitions province_definitions({
+       "x000001",
+       "x000002",
+       "x000003",
+       "x000004",
+       "x000005",
+       "x000006",
+   });
+   const mappers::ProvinceMapper province_mapper({},
+       {
+           {10, {"x000001", "x000002", "x000003"}},
+           {20, {"x000004", "x000005", "x000006"}},
+       });
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20"}});
+   const maps::MapData map_data({.province_definitions = hoi4_province_definitions});
+   const StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}, {3, "THR"}, {4, "FOR"}});
+
+   const auto hoi4_states = ConvertStates({{1, vic3::State({.owner_number = 1, .provinces = {1}})},
+                                              {2, vic3::State({.owner_number = 2, .provinces = {2, 3}})},
+                                              {3, vic3::State({.owner_number = 3, .provinces = {4}})},
+                                              {4, vic3::State({.owner_number = 4, .provinces = {5, 6}})}},
+       province_definitions,
+       {{"x000001", "city"}, {"x000004", "port"}},
+       {},
+       province_mapper,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {
+           {"REGION_ONE", vic3::StateRegion({}, {"x000001", "x000002", "x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"x000004", "x000005", "x000006"})},
+       },
+       CoastalProvinces(),
+       {},
+       false);
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.owner = "ONE", .provinces = {10}}),
+           State(2, {.owner = "THR", .provinces = {20}})));
+   EXPECT_THAT(hoi4_states.province_to_state_id_map,
+       testing::UnorderedElementsAre(testing::Pair(10, 1), testing::Pair(20, 2)));
+   EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
+       testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(3, 2)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"), testing::Pair("STATE_2", "REGION_TWO")));
+}
+
+
 TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
 {
    const vic3::ProvinceDefinitions province_definitions({
