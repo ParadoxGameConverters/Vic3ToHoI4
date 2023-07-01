@@ -151,6 +151,9 @@
     <Filter Include="src\out_hoi4\characters">
       <UniqueIdentifier>{f15347d7-218d-439a-8e56-214fd49db214}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\support\pseduo_random">
+      <UniqueIdentifier>{a7a320f1-6f60-42eb-96f3-22408b6b4bb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -516,6 +519,18 @@
     <ClInclude Include="src\out_hoi4\characters\out_character.h">
       <Filter>src\out_hoi4\characters</Filter>
     </ClInclude>
+    <ClInclude Include="src\mappers\character\character_mapper.h">
+      <Filter>src\mappers\character</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\character\culture_queue.h">
+      <Filter>src\mappers\character</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\character\leader_type_mappings_importer.h">
+      <Filter>src\mappers\character</Filter>
+    </ClInclude>
+    <ClInclude Include="src\support\pseduo_random_order.h">
+      <Filter>src\support\pseduo_random</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -775,6 +790,15 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\characters\out_character.cpp">
       <Filter>src\out_hoi4\characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\character\character_mapper.cpp">
+      <Filter>src\mappers\character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\character\leader_type_mappings_importer.cpp">
+      <Filter>src\mappers\character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\support\pseduo_random_order.cpp">
+      <Filter>src\support\pseduo_random</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

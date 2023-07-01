@@ -9,11 +9,7 @@ namespace
 {
 std::string OutputTraits(const std::set<std::string>& traits)
 {
-   std::string traits_string;
-   for (const auto& trait: traits)
-      traits_string += trait + " ";
-
-   return fmt::format("{{ {}}}", traits_string);
+   return fmt::format("{{ {} }}", fmt::join(traits, " "));
 }
 
 void OutputPortraits(std::ostream& out,

@@ -7,6 +7,7 @@
 
 #include "external/commonItems/Color.h"
 #include "external/commonItems/Date.h"
+#include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/technology/technologies.h"
 #include "src/mappers/country/country_mapper.h"
@@ -43,6 +44,7 @@ struct CountryOptions
    std::set<std::string> ideas;
    mappers::GraphicsBlock graphics_block;
    NameList name_list;
+   std::map<int, Character> characters;
 };
 
 
@@ -64,7 +66,8 @@ class Country
        tank_variants_(std::move(country_options.tank_variants)),
        ideas_(std::move(country_options.ideas)),
        graphics_block_(std::move(country_options.graphics_block)),
-       name_list_(std::move(country_options.name_list))
+       name_list_(std::move(country_options.name_list)),
+       characters_(std::move(country_options.characters))
    {
    }
 
@@ -85,6 +88,7 @@ class Country
    [[nodiscard]] const std::set<std::string>& GetIdeas() const { return ideas_; }
    [[nodiscard]] const mappers::GraphicsBlock& GetGraphicsBlock() const { return graphics_block_; }
    [[nodiscard]] const NameList& GetNameList() const { return name_list_; }
+   [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
@@ -105,6 +109,7 @@ class Country
    std::set<std::string> ideas_;
    mappers::GraphicsBlock graphics_block_;
    NameList name_list_;
+   std::map<int, Character> characters_;
 };
 
 }  // namespace hoi4

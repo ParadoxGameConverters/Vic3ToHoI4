@@ -145,6 +145,15 @@
     <Filter Include="src\out_hoi4\characters">
       <UniqueIdentifier>{eda55e84-c86f-4b68-8b2c-51a7b0415073}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\mappers\character">
+      <UniqueIdentifier>{fa0f93c6-ddc3-420e-9508-2e5f1b971859}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\support">
+      <UniqueIdentifier>{e9a210ee-9dd5-4de5-8f3d-90336d6d7d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\support\pseduo_random">
+      <UniqueIdentifier>{f7bfe985-3b58-4f3c-bdb8-084080f87b67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -410,6 +419,15 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\characters\out_character_tests.cpp">
       <Filter>src\out_hoi4\characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\character\character_mapper_tests.cpp">
+      <Filter>src\mappers\character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\character\leader_type_mappings_importer_tests.cpp">
+      <Filter>src\mappers\character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\support\pseduo_random_order_tests.cpp">
+      <Filter>src\support\pseduo_random</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

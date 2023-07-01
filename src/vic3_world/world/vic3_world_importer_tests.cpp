@@ -49,7 +49,8 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
 
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(testing::Pair(1,
-                                         Country({.number = 1,
+                                         Country({
+                                             .number = 1,
                                              .tag = "TAG",
                                              .color = commonItems::Color(std::array{1, 2, 3}),
                                              .active_laws = {"law_monarchy"},
@@ -57,16 +58,19 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                                              .primary_cultures = {"welsh"},
                                              .head_of_state_id = 1,
                                              .character_ids = {1, 2, 4},
-                                             .ig_ids = {1, 2}})),
+                                             .ig_ids = {1, 2},
+                                         })),
            testing::Pair(3,
-               Country({.number = 3,
+               Country({
+                   .number = 3,
                    .tag = "TWO",
                    .color = commonItems::Color(std::array{2, 4, 6}),
                    .primary_culture_ids = {1},
                    .primary_cultures = {"scottish"},
                    .head_of_state_id = 5,
                    .character_ids = {5},
-                   .ig_ids = {3}}))));
+                   .ig_ids = {3},
+               }))));
    EXPECT_THAT(world.GetStates(),
        testing::UnorderedElementsAre(testing::Pair(0, State({.provinces = {1, 2, 3}})),
            testing::Pair(1, State({.owner_number = 3, .owner_tag = "TWO", .provinces = {10, 11, 12}})),

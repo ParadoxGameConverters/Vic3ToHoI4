@@ -50,6 +50,9 @@
     <ClInclude Include="src\hoi4_world\technology\technologies_converter.h" />
     <ClInclude Include="src\hoi4_world\world\hoi4_world.h" />
     <ClInclude Include="src\hoi4_world\world\hoi4_world_converter.h" />
+    <ClInclude Include="src\mappers\character\character_mapper.h" />
+    <ClInclude Include="src\mappers\character\culture_queue.h" />
+    <ClInclude Include="src\mappers\character\leader_type_mappings_importer.h" />
     <ClInclude Include="src\mappers\country\country_mapper.h" />
     <ClInclude Include="src\mappers\country\country_mapper_creator.h" />
     <ClInclude Include="src\mappers\culture\culture_graphics_mapper.h" />
@@ -94,6 +97,7 @@
     <ClInclude Include="src\out_hoi4\technology\out_technologies.h" />
     <ClInclude Include="src\out_hoi4\world\out_world.h" />
     <ClInclude Include="src\support\date_fmt.h" />
+    <ClInclude Include="src\support\pseduo_random_order.h" />
     <ClInclude Include="src\vic3_to_hoi4_converter.h" />
     <ClInclude Include="src\vic3_world\buildings\building.h" />
     <ClInclude Include="src\vic3_world\buildings\buildings.h" />
@@ -152,6 +156,8 @@
     <ClCompile Include="src\hoi4_world\technology\technologies.cpp" />
     <ClCompile Include="src\hoi4_world\technology\technologies_converter.cpp" />
     <ClCompile Include="src\hoi4_world\world\hoi4_world_converter.cpp" />
+    <ClCompile Include="src\mappers\character\character_mapper.cpp" />
+    <ClCompile Include="src\mappers\character\leader_type_mappings_importer.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_creator.cpp" />
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper.cpp" />
@@ -190,6 +196,7 @@
     <ClCompile Include="src\out_hoi4\states\out_states.cpp" />
     <ClCompile Include="src\out_hoi4\technology\out_technologies.cpp" />
     <ClCompile Include="src\out_hoi4\world\out_world.cpp" />
+    <ClCompile Include="src\support\pseduo_random_order.cpp" />
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp" />
     <ClCompile Include="src\vic3_world\buildings\buildings.cpp" />
     <ClCompile Include="src\vic3_world\buildings\buildings_importer.cpp" />
