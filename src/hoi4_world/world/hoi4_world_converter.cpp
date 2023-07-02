@@ -23,6 +23,25 @@
 namespace
 {
 
+std::map<std::string, vic3::ProvinceType> GatherVic3SignificantProvinces(
+    const std::map<std::string, vic3::StateRegion>& vic3_state_regions)
+{
+   std::map<std::string, vic3::ProvinceType> vic3_significant_provinces;
+
+   for (const vic3::StateRegion& vic3_state_region: vic3_state_regions | std::views::values)
+   {
+      const std::map<vic3::ProvinceId, vic3::ProvinceType>& significant_provinces =
+          vic3_state_region.GetSignificantProvinces();
+      for (const auto& [province, type]: significant_provinces)
+      {
+         vic3_significant_provinces.emplace(province, type);
+      }
+   }
+
+   return vic3_significant_provinces;
+}
+
+
 std::set<std::string> MapPowers(const std::set<int>& source_powers, const mappers::CountryMapper& country_mapper)
 {
    std::set<std::string> powers;
@@ -177,8 +196,12 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        province_definitions.GetSeaProvinces());
    ResourcesMap resources_map = ImportResources("configurables/resources.txt");
 
+   std::map<std::string, vic3::ProvinceType> vic3_significant_provinces =
+       GatherVic3SignificantProvinces(source_world.GetStateRegions());
+
    States states = ConvertStates(source_world.GetStates(),
        source_world.GetProvinceDefinitions(),
+       vic3_significant_provinces,
        source_world.GetBuildings(),
        province_mapper,
        map_data,
@@ -206,7 +229,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem);
 
    Railways railways =
-       ConvertRailways(source_world.GetStateRegions(), province_mapper, map_data, province_definitions, states);
+       ConvertRailways(vic3_significant_provinces, province_mapper, map_data, province_definitions, states);
 
    Log(LogLevel::Info) << "\tConverting countries";
    Log(LogLevel::Progress) << "55%";

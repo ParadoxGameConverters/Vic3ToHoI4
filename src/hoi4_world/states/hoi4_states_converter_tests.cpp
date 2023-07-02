@@ -27,6 +27,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
    const auto hoi4_states = ConvertStates({},
        vic3_province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -81,6 +82,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
        {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}})}},
        province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -112,6 +114,60 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
 }
 
 
+TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersStates)
+{
+   const vic3::ProvinceDefinitions province_definitions({
+       "x000001",
+       "x000002",
+       "x000003",
+       "x000004",
+       "x000005",
+       "x000006",
+   });
+   const mappers::ProvinceMapper province_mapper({},
+       {
+           {10, {"x000001", "x000002", "x000003"}},
+           {20, {"x000004", "x000005", "x000006"}},
+       });
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20"}});
+   const maps::MapData map_data({.province_definitions = hoi4_province_definitions});
+   const StrategicRegions strategic_regions;
+   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}, {3, "THR"}, {4, "FOR"}});
+
+   const auto hoi4_states = ConvertStates({{1, vic3::State({.owner_number = 1, .provinces = {1}})},
+                                              {2, vic3::State({.owner_number = 2, .provinces = {2, 3}})},
+                                              {3, vic3::State({.owner_number = 3, .provinces = {4}})},
+                                              {4, vic3::State({.owner_number = 4, .provinces = {5, 6}})}},
+       province_definitions,
+       {{"x000001", "city"}, {"x000004", "port"}},
+       {},
+       province_mapper,
+       map_data,
+       hoi4_province_definitions,
+       strategic_regions,
+       country_mapper,
+       StateCategories(),
+       {},
+       {
+           {"REGION_ONE", vic3::StateRegion({}, {"x000001", "x000002", "x000003"})},
+           {"REGION_TWO", vic3::StateRegion({}, {"x000004", "x000005", "x000006"})},
+       },
+       CoastalProvinces(),
+       {},
+       false);
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.owner = "ONE", .provinces = {10}}),
+           State(2, {.owner = "THR", .provinces = {20}})));
+   EXPECT_THAT(hoi4_states.province_to_state_id_map,
+       testing::UnorderedElementsAre(testing::Pair(10, 1), testing::Pair(20, 2)));
+   EXPECT_THAT(hoi4_states.vic3_state_ids_to_hoi4_state_ids,
+       testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(3, 2)));
+   EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
+       testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_ONE"), testing::Pair("STATE_2", "REGION_TWO")));
+}
+
+
 TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
 {
    const vic3::ProvinceDefinitions province_definitions({
@@ -137,6 +193,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
                                               {3, vic3::State({.owner_number = 3, .provinces = {4}})},
                                               {4, vic3::State({.owner_number = 4, .provinces = {5, 6}})}},
        province_definitions,
+       {},
        {},
        province_mapper,
        map_data,
@@ -199,6 +256,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
    const auto hoi4_states =
        ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
            province_definitions,
+           {},
            {},
            province_mapper,
            map_data,
@@ -266,6 +324,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
    const auto hoi4_states =
        ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
            province_definitions,
+           {},
            {},
            province_mapper,
            map_data,
@@ -350,6 +409,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
        ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
            province_definitions,
            {},
+           {},
            province_mapper,
            map_data,
            hoi4_province_definitions,
@@ -416,6 +476,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
        {{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}})}},
        province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -469,6 +530,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
    const auto hoi4_states = ConvertStates({{1, vic3::State()}},
        province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -519,6 +581,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
    const auto hoi4_states =
        ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
            province_definitions,
+           {},
            {},
            province_mapper,
            map_data,
@@ -592,6 +655,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
        ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
            province_definitions,
            {},
+           {},
            province_mapper,
            map_data,
            hoi4_province_definitions,
@@ -664,6 +728,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
        ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 6}})}},
            province_definitions,
            {},
+           {},
            province_mapper,
            map_data,
            hoi4_province_definitions,
@@ -728,6 +793,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
            {9, vic3::State({.provinces = {9}})},
        },
        province_definitions,
+       {},
        {},
        province_mapper,
        map_data,
@@ -797,6 +863,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
            {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        {},
        province_mapper,
        map_data,
@@ -872,6 +939,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
        },
        province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -939,6 +1007,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsConverted)
        },
        province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -994,6 +1063,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInSplitStatesIsProportionalToTo
            {2, vic3::State({.provinces = {4, 5, 6}, .population = 67890})},
        },
        province_definitions,
+       {},
        {},
        province_mapper,
        map_data,
@@ -1051,6 +1121,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInWastelandStatesIsProportional
                          {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}, .population = 67890})}},
            province_definitions,
            {},
+           {},
            province_mapper,
            map_data,
            hoi4_province_definitions,
@@ -1102,6 +1173,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsLogged)
        ConvertStates({{1, vic3::State({.owner_tag = "ONE", .provinces = {1, 2, 3}, .population = 300'000})},
                          {2, vic3::State({.owner_tag = "TWO", .provinces = {4, 5, 6}, .population = 20'000})}},
            province_definitions,
+           {},
            {},
            province_mapper,
            map_data,
@@ -1160,6 +1232,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
            {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 875'000)}},
            {2, std::vector{vic3::Building("", 2, 875'000)}},
@@ -1220,6 +1293,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
            {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 875'000)}},
            {2, std::vector{vic3::Building("", 2, 875'000)}},
@@ -1289,6 +1363,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
            {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 875'000)}},
            {2, std::vector{vic3::Building("", 2, 875'000)}},
@@ -1355,6 +1430,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
            {2, vic3::State({.provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 1'250'000)}},
            {2, std::vector{vic3::Building("", 2, 1'250'000)}},
@@ -1413,6 +1489,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
            {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
        },
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 2'100'000)}},
        }),
@@ -1471,6 +1548,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
            {3, vic3::State({.owner_number = 2, .provinces = {6}})},
        },
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 350'000)}},
            {2, std::vector{vic3::Building("", 2, 2'100'000)}},
@@ -1535,6 +1613,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
            {3, vic3::State({.owner_number = 1, .provinces = {5, 6}})},
        },
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 5'250'000)}},
            {2, std::vector{vic3::Building("", 2, 0)}},
@@ -1594,6 +1673,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
    const auto hoi4_states = ConvertStates({{1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
                                               {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})}},
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 700'000)}},
            {2, std::vector{vic3::Building("", 2, 1'575'000)}},
@@ -1656,6 +1736,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
            {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 875'000)}},
            {2, std::vector{vic3::Building("", 2, 875'000)}},
@@ -1731,6 +1812,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
        },
        province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -1797,6 +1879,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesDefaultToEmpty)
        ConvertStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}},
            province_definitions,
            {},
+           {},
            province_mapper,
            map_data,
            hoi4_province_definitions,
@@ -1853,6 +1936,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreAssigned)
            {2, vic3::State({.provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        {},
        province_mapper,
        map_data,
@@ -1925,6 +2009,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoryDefaultsToRural)
        },
        province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -1980,6 +2065,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
            {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 700'000)}},
            {2, std::vector{vic3::Building("", 2, 1'400'000)}},
@@ -2055,6 +2141,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsDefaultToEmpty)
        },
        province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -2118,6 +2205,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsArePlacedInHighestValueSig
            {2, vic3::State({.provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        {},
        province_mapper,
        map_data,
@@ -2193,6 +2281,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreValuedAtHalfTotalFactor
            {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        vic3::Buildings({
            {1, std::vector{vic3::Building("", 1, 875'000)}},
            {2, std::vector{vic3::Building("", 2, 700'000)}},
@@ -2282,6 +2371,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DebugVictoryPointsAreConverted)
        },
        province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -2349,6 +2439,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnerGetsCoreOnIncorporatedStates)
        },
        province_definitions,
        {},
+       {},
        province_mapper,
        map_data,
        hoi4_province_definitions,
@@ -2404,6 +2495,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, InfrastructureIsTransferredFromVic3Stat
            {2, vic3::State({.owner_number = 2, .infrastructure = 567.8F, .provinces = {4, 5, 6}})},
        },
        province_definitions,
+       {},
        {},
        province_mapper,
        map_data,
