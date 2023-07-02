@@ -126,20 +126,15 @@ std::optional<int> DetermineStateWithMostImportantProvinces(const std::vector<st
            vic3_provinces,
            significant_vic3_provinces,
            vic3_province_to_state_id_map);
-       possible_state)
-   {
-      return *possible_state;
-   }
-   if (const std::optional<int> possible_state = FindStateWithMostOfSignificantProvinceType("port",
-           vic3_provinces,
-           significant_vic3_provinces,
-           vic3_province_to_state_id_map);
-       possible_state)
+       possible_state.has_value())
    {
       return *possible_state;
    }
 
-   return std::nullopt;
+   return FindStateWithMostOfSignificantProvinceType("port",
+       vic3_provinces,
+       significant_vic3_provinces,
+       vic3_province_to_state_id_map);
 }
 
 
