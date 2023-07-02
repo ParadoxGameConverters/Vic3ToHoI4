@@ -174,8 +174,7 @@ std::map<int, std::set<int>> PlaceHoi4ProvincesInStates(
     const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const std::map<std::string, int>& vic3_province_to_state_id_map,
     const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
-    const maps::ProvinceDefinitions& hoi4_province_definitions,
-    const std::map<std::string, vic3::StateRegion>& vic3_state_regions)
+    const maps::ProvinceDefinitions& hoi4_province_definitions)
 {
    std::map<int, std::set<int>> state_id_to_hoi4_provinces;
 
@@ -1015,8 +1014,7 @@ hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
        PlaceHoi4ProvincesInStates(significant_vic3_provinces,
            vic3_province_to_state_id_map,
            province_mapper.GetHoi4ToVic3ProvinceMappings(),
-           hoi4_province_definitions,
-           vic3_state_regions);
+           hoi4_province_definitions);
    const std::vector<int> vic3_state_ids_by_vic3_industry =
        SortVic3StatesByIndustryDescending(vic3_buildings, vic3_state_id_to_hoi4_provinces);
    return CreateStates(states,
