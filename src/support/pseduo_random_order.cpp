@@ -6,8 +6,11 @@ namespace
 {
 std::vector<int> GetCoPrimesLessThan(const int n)
 {
-   std::vector<int> co_primes;
-   for (int i = 1; i < n; ++i)
+   const int start = n < 5 ? 1 : 2;    // All permutation when n < 5
+   const int end = n < 5 ? n : n - 1;  // Only mixed permutations when n >= 5
+
+   std::vector<int> co_primes;  // Works for every number in the universe except 4 & 6
+   for (int i = start; i < end; ++i)
    {
       if (std::gcd(i, n) == 1)
       {
@@ -15,20 +18,6 @@ std::vector<int> GetCoPrimesLessThan(const int n)
       }
    }
    return co_primes;
-   /*
-    Alternate version that prunes all in-order permutations (1,2,3,4,5) or (5,4,3,2,1) or (3,4,5,1,2).
-    Works for every positive integer in the universe except 6.
-    
-    std::vector<int> co_primes;
-	for (int i = 2; i < n - 1; ++i)
-	{
-		if (std::gcd(i, n) == 1)
-	    {
-			co_primes.push_back(i);
-	    }
-	}
-	return co_primes;
-    */
 }
 
 std::pair<int, int> ProcessSeed(const int seed)
@@ -38,15 +27,37 @@ std::pair<int, int> ProcessSeed(const int seed)
 
    return {seed & kODD_BITS, (seed & kEVEN_BITS) / 2};
 }
+
+std::vector<int> HandleSpecial(const int seed, const int n)
+{
+   const auto [_, even_bits_seed] = ProcessSeed(seed);
+   const int shift = even_bits_seed % n;
+
+   const std::vector<int> pre_shift_order{1, 3, 0, 2, 5, 4};  // Support 4 & 6
+   std::vector<int> order;
+   for (int i = shift; i < n + shift; ++i)
+   {
+      order.push_back(pre_shift_order[(i) % n]);
+   }
+   return order;
+}
 }  // namespace
 
-#pragma optimize("", off)
+
 std::vector<int> PseduoRandomizeOrder(const int seed, const std::vector<int>& container)
 {
    const int clade = static_cast<int>(container.size());
    if (clade == 0)
    {
       return {};
+   }
+   if (clade == 4)
+   {
+      return HandleSpecial(seed, 4);
+   }
+   if (clade == 6)
+   {
+      return HandleSpecial(seed, 6);
    }
 
    const std::vector<int> co_primes = GetCoPrimesLessThan(clade);
@@ -62,4 +73,3 @@ std::vector<int> PseduoRandomizeOrder(const int seed, const std::vector<int>& co
    }
    return order;
 }
-#pragma optimize("", on)
