@@ -26,6 +26,7 @@
 #include "src/vic3_world/cultures/cultures_importer.h"
 #include "src/vic3_world/elections/elections_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
+#include "src/vic3_world/pacts/pacts_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
 #include "src/vic3_world/states/state_regions_importer.h"
@@ -204,6 +205,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Buildings buildings;
    CountryRankings country_rankings;
    std::map<int, std::string> cultures;
+   std::map<int, Pact> pacts;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("country_manager", [&countries, color_definitions](std::istream& input_stream) {
@@ -245,6 +247,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
          }
          country_itr->second.SetLastElection(last_election);
       }
+   });
+   save_parser.registerKeyword("pacts", [&pacts](std::istream& input_stream) {
+      pacts = ImportPacts(input_stream);
    });
    save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {
    });

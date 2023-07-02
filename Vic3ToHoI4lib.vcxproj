@@ -115,6 +115,9 @@
     <ClInclude Include="src\vic3_world\interest_groups\interest_groups_importer.h" />
     <ClInclude Include="src\vic3_world\interest_groups\interest_group_importer.h" />
     <ClInclude Include="src\vic3_world\laws\laws_importer.h" />
+    <ClInclude Include="src\vic3_world\pacts\pact.h" />
+    <ClInclude Include="src\vic3_world\pacts\pacts_importer.h" />
+    <ClInclude Include="src\vic3_world\pacts\pact_importer.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions_loader.h" />
     <ClInclude Include="src\vic3_world\states\state_region.h" />
@@ -203,6 +206,9 @@
     <ClCompile Include="src\vic3_world\interest_groups\interest_groups_importer.cpp" />
     <ClCompile Include="src\vic3_world\interest_groups\interest_group_importer.cpp" />
     <ClCompile Include="src\vic3_world\laws\laws_importer.cpp" />
+    <ClCompile Include="src\vic3_world\pacts\pacts_importer.cpp" />
+    <ClCompile Include="src\vic3_world\pacts\pact_importer.cpp" />
+    <ClCompile Include="src\vic3_world\pacts\pact.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader.cpp" />
     <ClCompile Include="src\vic3_world\states\state_regions_importer.cpp" />
