@@ -248,8 +248,20 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
          country_itr->second.SetLastElection(last_election);
       }
    });
-   save_parser.registerKeyword("pacts", [&pacts](std::istream& input_stream) {
+   save_parser.registerKeyword("pacts", [&pacts, &countries](std::istream& input_stream) {
       pacts = ImportPacts(input_stream);
+      for (const auto& [_, pact]: pacts)
+      {
+         if (pact.isSubjectRelationship())
+         {
+            auto overlord = countries.find(pact.GetFirstId());
+            auto subject = countries.find(pact.GetSecondId());
+            if (overlord != countries.end() && subject != countries.end())
+            {
+               overlord->second.AddPuppet(pact.GetSecondId());
+            }
+         }
+      }
    });
    save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {
    });

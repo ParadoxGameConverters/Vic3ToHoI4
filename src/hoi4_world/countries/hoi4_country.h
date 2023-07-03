@@ -43,6 +43,7 @@ struct CountryOptions
    std::set<std::string> ideas;
    mappers::GraphicsBlock graphics_block;
    NameList name_list;
+   std::set<std::string> puppets;
 };
 
 
@@ -64,7 +65,8 @@ class Country
        tank_variants_(std::move(country_options.tank_variants)),
        ideas_(std::move(country_options.ideas)),
        graphics_block_(std::move(country_options.graphics_block)),
-       name_list_(std::move(country_options.name_list))
+       name_list_(std::move(country_options.name_list)),
+       puppets_(std::move(country_options.puppets))
    {
    }
 
@@ -85,6 +87,7 @@ class Country
    [[nodiscard]] const std::set<std::string>& GetIdeas() const { return ideas_; }
    [[nodiscard]] const mappers::GraphicsBlock& GetGraphicsBlock() const { return graphics_block_; }
    [[nodiscard]] const NameList& GetNameList() const { return name_list_; }
+   [[nodiscard]] const std::set<std::string>& GetPuppets() const { return puppets_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
@@ -105,6 +108,7 @@ class Country
    std::set<std::string> ideas_;
    mappers::GraphicsBlock graphics_block_;
    NameList name_list_;
+   std::set<std::string> puppets_;
 };
 
 }  // namespace hoi4

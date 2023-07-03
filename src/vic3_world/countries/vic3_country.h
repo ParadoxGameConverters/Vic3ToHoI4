@@ -24,6 +24,7 @@ struct CountryOptions
    std::set<std::string> primary_cultures;
    std::optional<date> last_election;
    int head_of_state_id = 0;
+   std::set<int> puppets;
 };
 
 
@@ -40,7 +41,8 @@ class Country
        primary_cultures_(std::move(options.primary_cultures)),
        primary_culture_ids_(std::move(options.primary_culture_ids)),
        last_election_(options.last_election),
-       head_of_state_id_(options.head_of_state_id)
+       head_of_state_id_(options.head_of_state_id),
+       puppets_(std::move(options.puppets))
    {
    }
 
@@ -54,10 +56,12 @@ class Country
    [[nodiscard]] const std::set<int>& GetPrimaryCultureIds() const { return primary_culture_ids_; }
    [[nodiscard]] const std::optional<date>& GetLastElection() const { return last_election_; }
    [[nodiscard]] int GetHeadOfStateId() const { return head_of_state_id_; }
+   [[nodiscard]] const std::set<int>& GetPuppets() const { return puppets_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
    void AddPrimaryCulture(std::string culture) { primary_cultures_.emplace(culture); }
+   void AddPuppet(int puppet) { puppets_.insert(puppet); }
 
    bool operator==(const Country&) const = default;
 
@@ -72,6 +76,7 @@ class Country
    std::set<int> primary_culture_ids_;  // Resolve to culture name before HoI
    std::optional<date> last_election_;
    int head_of_state_id_ = 0;
+   std::set<int> puppets_;
 };
 
 }  // namespace vic3
