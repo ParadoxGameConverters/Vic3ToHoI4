@@ -85,8 +85,10 @@ commonItems::LocalizationDatabase ConvertVictoryPointLocalizations(
 
    int skipped = 0;
 
+   std::vector<std::tuple<int, std::string, std::string>> significant_provinces;
    for (const auto& [region_name, state_region]: vic3_state_regions)
    {
+      // gather the significant provinces and translate them to hoi4 provinces
       for (const auto& [vic3_province, type]: state_region.GetSignificantProvinces())
       {
          const auto& hoi4_provinces = province_mapper.GetVic3ToHoi4ProvinceMapping(vic3_province);
@@ -96,18 +98,51 @@ commonItems::LocalizationDatabase ConvertVictoryPointLocalizations(
             continue;
          }
 
-         const auto& vic3_localization =
-             vic3_localizations.GetLocalizationBlock(fmt::format("HUB_NAME_{}_{}", region_name, type));
-         if (!vic3_localization.has_value())
-         {
-            ++skipped;
-            continue;
-         }
-
-         victory_point_localizations.AddOrModifyLocalizationBlock(
-             fmt::format("VICTORY_POINTS_{}", *hoi4_provinces.begin()),
-             *vic3_localization);
+         significant_provinces.emplace_back(*hoi4_provinces.begin(), type, region_name);
       }
+   }
+
+   // some might share a province, so put the more significant ones later to override the less significant ones
+   std::ranges::sort(significant_provinces,
+       [](const std::tuple<int, std::string, std::string>& a, const std::tuple<int, std::string, std::string>& b) {
+          const std::string& a_type = std::get<1>(a);
+          const std::string& b_type = std::get<1>(b);
+          if (a_type == b_type)
+          {
+             return std::get<0>(a) > std::get<0>(b);
+          }
+          if (a_type == "city")
+          {
+             return false;
+          }
+          if (b_type == "city")
+          {
+             return true;
+          }
+          if (a_type == "port")
+          {
+             return false;
+          }
+          if (b_type == "port")
+          {
+             return true;
+          }
+          return a_type > b_type;
+       });
+
+   // apply the localizations
+   for (const auto& [province, type, region_name]: significant_provinces)
+   {
+      const auto& vic3_localization =
+          vic3_localizations.GetLocalizationBlock(fmt::format("HUB_NAME_{}_{}", region_name, type));
+      if (!vic3_localization.has_value())
+      {
+         ++skipped;
+         continue;
+      }
+
+      victory_point_localizations.AddOrModifyLocalizationBlock(fmt::format("VICTORY_POINTS_{}", province),
+          *vic3_localization);
    }
 
    Log(LogLevel::Info) << skipped << " VP localizations were skipped.";

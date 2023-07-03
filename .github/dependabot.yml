@@ -9,12 +9,17 @@ updates:
       interval: "daily"
 
   - package-ecosystem: "gitsubmodule"
-    directory: "external/googletest"
+    directory: "external/common_items"
     schedule:
-      interval: "monthly"
+      interval: "daily"
 
   - package-ecosystem: "gitsubmodule"
-    directory: "external/common_items"
+    directory: "external/fmt"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gitsubmodule"
+    directory: "external/bitmap"
     schedule:
       interval: "daily"
 

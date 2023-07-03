@@ -4,6 +4,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_portrait_nunavut_okalik"
-		texturefile = "gfx\leaders\converter\Portrait_Nunavut_Paul_Okalik.dds"
+		texturefile = "gfx/leaders/converter/Portrait_Nunavut_Paul_Okalik.dds"
+	}
+
+	### From vanilla idea -> portrait
+	spriteType = {
+		name = "GFX_portrait_erik_scavenius"
+		texturefile = "gfx/leaders/DEN/Portrait_Denmark_Erik_Scavenius.dds"
 	}
 }

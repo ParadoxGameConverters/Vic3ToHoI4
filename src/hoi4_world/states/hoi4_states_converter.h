@@ -27,6 +27,7 @@ namespace hoi4
 
 States ConvertStates(const std::map<int, vic3::State>& states,
     const vic3::ProvinceDefinitions& vic3_province_definitions,
+    const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const vic3::Buildings& vic3_buildings,
     const mappers::ProvinceMapper& province_mapper,
     const maps::MapData& map_data,

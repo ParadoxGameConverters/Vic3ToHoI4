@@ -213,13 +213,15 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
          }
 
          // The royal first names can often be empty
-         if (name_list.male_names.empty())
+         if (name_list.male_names.size() < 5)
          {
-            name_list.male_names = ConvertNameSet(vic_list.male_common_first, vic_localizations);
+            std::ranges::copy(ConvertNameSet(vic_list.male_common_first, vic_localizations),
+                std::inserter(name_list.male_names, name_list.male_names.end()));
          }
-         if (name_list.female_names.empty())
+         if (name_list.female_names.size() < 5)
          {
-            name_list.female_names = ConvertNameSet(vic_list.female_common_first, vic_localizations);
+            std::ranges::copy(ConvertNameSet(vic_list.female_common_first, vic_localizations),
+                std::inserter(name_list.female_names, name_list.female_names.end()));
          }
       }
    }

@@ -292,7 +292,7 @@ asian = {
 		communism = {
 			leader = {
 				GFX_Portrait_Asia_Generic_1
-				GFX_Portrait_asia_generic_4
+				GFX_portrait_asia_generic_4
 			}
 			minister = {
 			}
@@ -300,7 +300,7 @@ asian = {
 		democratic = {
 			leader = {
 				GFX_Portrait_Asia_Generic_2
-				GFX_Portrait_asia_generic_4
+				GFX_portrait_asia_generic_4
 			}
 			minister = {
 			}
@@ -308,7 +308,7 @@ asian = {
 		fascism = { 
 			leader = {
 				GFX_Portrait_Asia_Generic_3
-				GFX_Portrait_asia_generic_4
+				GFX_portrait_asia_generic_4
 			}
 			minister = {
 			}
@@ -316,7 +316,7 @@ asian = {
 		neutrality = { 
 			leader = {
 				GFX_Portrait_Asia_Generic_3
-				GFX_Portrait_asia_generic_4
+				GFX_portrait_asia_generic_4
 			}
 			minister = {
 			}
@@ -345,18 +345,18 @@ caucasian = {
 		GFX_Portrait_Europe_Generic_navy_1
 		GFX_Portrait_Europe_Generic_navy_2
 		GFX_Portrait_Europe_Generic_navy_3
-		GFX_Portrait_europe_generic_navy_4
-		GFX_Portrait_europe_generic_navy_5
+		GFX_portrait_europe_generic_navy_4
+		GFX_portrait_europe_generic_navy_5
 	}
 	political_portraits = {
 		communism = {
 			leader = {
 				GFX_Portrait_Europe_Generic_1
-				GFX_Portrait_europe_generic_4
-				GFX_Portrait_europe_generic_5
-				GFX_Portrait_europe_generic_6
+				GFX_portrait_europe_generic_4
+				GFX_portrait_europe_generic_5
+				GFX_portrait_europe_generic_6
 				GFX_Portrait_europe_generic_7
-				GFX_Portrait_europe_generic_8
+				GFX_portrait_europe_generic_8
 			}
 			minister = {
 			}
@@ -364,11 +364,11 @@ caucasian = {
 		democratic = {
 			leader = {
 				GFX_Portrait_Europe_Generic_2
-				GFX_Portrait_europe_generic_4
-				GFX_Portrait_europe_generic_5
-				GFX_Portrait_europe_generic_6
+				GFX_portrait_europe_generic_4
+				GFX_portrait_europe_generic_5
+				GFX_portrait_europe_generic_6
 				GFX_Portrait_europe_generic_7
-				GFX_Portrait_europe_generic_8
+				GFX_portrait_europe_generic_8
 			}
 			minister = {
 			}
@@ -376,11 +376,11 @@ caucasian = {
 		fascism = {
 			leader = {
 				GFX_Portrait_Europe_Generic_3
-				GFX_Portrait_europe_generic_4
-				GFX_Portrait_europe_generic_5
-				GFX_Portrait_europe_generic_6
+				GFX_portrait_europe_generic_4
+				GFX_portrait_europe_generic_5
+				GFX_portrait_europe_generic_6
 				GFX_Portrait_europe_generic_7
-				GFX_Portrait_europe_generic_8
+				GFX_portrait_europe_generic_8
 			}
 			minister = {
 			}
@@ -388,11 +388,11 @@ caucasian = {
 		neutrality = {
 			leader = {
 				GFX_Portrait_Europe_Generic_3
-				GFX_Portrait_europe_generic_4
-				GFX_Portrait_europe_generic_5
-				GFX_Portrait_europe_generic_6
+				GFX_portrait_europe_generic_4
+				GFX_portrait_europe_generic_5
+				GFX_portrait_europe_generic_6
 				GFX_Portrait_europe_generic_7
-				GFX_Portrait_europe_generic_8
+				GFX_portrait_europe_generic_8
 			}
 			minister = {
 			}
@@ -609,14 +609,14 @@ nordic = {
 		}
 		democratic = {
 			leader = {
-				GFX_portrait_NOR_johan_nygaardsvold
-				GFX_portrait_DEN_thorvald_stauning
+				GFX_portrait_Johan_Nygaardsvold
+				GFX_portrait_Thorvald_Stauning
 			}
 		}
 		fascism = {
 			leader = {
-				GFX_portrait_DEN_erik_scavenius
-				GFX_portrait_NOR_vidkun_quisling
+				GFX_portrait_erik_scavenius
+				GFX_portrait_Vidkun_Quisling
 			}
 		}
 		neutrality = {

@@ -8,12 +8,22 @@
 namespace hoi4
 {
 
+
 TEST(Hoi4worldMapPossiblePathTests, DefaultsAreSet)
+{
+   const PossiblePath possible_path;
+
+   EXPECT_TRUE(possible_path.GetProvinces().empty());
+   EXPECT_EQ(possible_path.GetDevelopment(), 0.F);
+   EXPECT_EQ(possible_path.GetCost(), 0);
+}
+
+TEST(Hoi4worldMapPossiblePathTests, InitialProvinceCanBeSet)
 {
    const PossiblePath possible_path(1);
 
    EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(1));
-   EXPECT_EQ(possible_path.GetLevel(), 0);
+   EXPECT_EQ(possible_path.GetDevelopment(), 0.F);
    EXPECT_EQ(possible_path.GetCost(), 0);
 }
 
@@ -50,9 +60,9 @@ TEST(Hoi4worldMapPossiblePathTests, ProvinceCanBeReplaced)
 TEST(Hoi4worldMapPossiblePathTests, LevelCanBeSet)
 {
    PossiblePath possible_path(0);
-   possible_path.SetLevel(42);
+   possible_path.SetDevelopment(4.2F);
 
-   EXPECT_EQ(possible_path.GetLevel(), 42);
+   EXPECT_NEAR(possible_path.GetDevelopment(), 4.2F, 0.0001);
 }
 
 
