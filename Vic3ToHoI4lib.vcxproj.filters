@@ -522,7 +522,10 @@
     <ClInclude Include="src\mappers\character\culture_queue.h">
       <Filter>src\mappers\character</Filter>
     </ClInclude>
-    <ClInclude Include="src\mappers\character\leader_type_mappings_importer.h">
+    <ClInclude Include="src\mappers\character\leader_type_mapper_importer.h">
+      <Filter>src\mappers\character</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\character\leader_type_mapper.h">
       <Filter>src\mappers\character</Filter>
     </ClInclude>
   </ItemGroup>
@@ -788,7 +791,10 @@
     <ClCompile Include="src\mappers\character\character_mapper.cpp">
       <Filter>src\mappers\character</Filter>
     </ClCompile>
-    <ClCompile Include="src\mappers\character\leader_type_mappings_importer.cpp">
+    <ClCompile Include="src\mappers\character\leader_type_mapper_importer.cpp">
+      <Filter>src\mappers\character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\character\leader_type_mapper.cpp">
       <Filter>src\mappers\character</Filter>
     </ClCompile>
   </ItemGroup>
