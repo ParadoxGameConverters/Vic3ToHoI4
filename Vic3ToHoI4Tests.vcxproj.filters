@@ -414,14 +414,14 @@
     <ClCompile Include="src\out_hoi4\characters\out_character_tests.cpp">
       <Filter>src\out_hoi4\characters</Filter>
     </ClCompile>
-    <ClCompile Include="src\mappers\character\character_mapper_tests.cpp">
-      <Filter>src\mappers\character</Filter>
-    </ClCompile>
     <ClCompile Include="src\mappers\character\leader_type_mapper_importer_tests.cpp">
       <Filter>src\mappers\character</Filter>
     </ClCompile>
     <ClCompile Include="src\mappers\character\leader_type_mapper_tests.cpp">
       <Filter>src\mappers\character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\characters\hoi4_characters_converter_tests.cpp">
+      <Filter>src\hoi4_world\characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

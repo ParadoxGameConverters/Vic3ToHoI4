@@ -4,6 +4,8 @@
 
 #include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/hoi4_world/characters/hoi4_character.h"
+#include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 #include "src/hoi4_world/localizations/localizations_converter.h"
 #include "src/hoi4_world/map/buildings_creator.h"
@@ -221,13 +223,20 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        country_mapper,
        states.vic3_state_ids_to_hoi4_state_ids,
        states.states,
-       tech_mappings);
+       tech_mappings,
+       source_world.GetCharacters());
+
+   Log(LogLevel::Info) << "\tConverting characters";
+   Log(LogLevel::Progress) << "56%";
+   std::map<int, Character> characters;
+   characters = ConvertCharacters(source_world.GetCharacters(), source_world.GetInterestGroups());
 
    std::set<std::string> great_powers = MapPowers(source_world.GetCountryRankings().GetGreatPowers(), country_mapper);
    std::set<std::string> major_powers = MapPowers(source_world.GetCountryRankings().GetMajorPowers(), country_mapper);
    IncreaseVictoryPointsInCapitals(states.states, source_world.GetCountryRankings(), country_mapper, countries);
    LogVictoryPointData(states.states);
 
+   Log(LogLevel::Info) << "\tConverting localizations";
    Localizations localizations = ConvertLocalizations(source_world.GetLocalizations(),
        country_mapper.GetCountryMappings(),
        states.hoi4_state_names_to_vic3_state_names,
@@ -242,5 +251,6 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        .strategic_regions = strategic_regions,
        .buildings = buildings,
        .railways = railways,
-       .localizations = localizations});
+       .localizations = localizations,
+       .characters = characters});
 }

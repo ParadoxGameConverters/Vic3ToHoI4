@@ -8,6 +8,7 @@
 #include <string>
 
 #include "external/commonItems/Localization/LocalizationDatabase.h"
+#include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/localizations/localizations.h"
 #include "src/hoi4_world/map/buildings.h"
@@ -30,6 +31,7 @@ struct WorldOptions
    Buildings buildings;
    Railways railways;
    Localizations localizations;
+   std::map<int, Character> characters;
 };
 
 
@@ -44,7 +46,8 @@ class World
        strategic_regions_(std::move(options.strategic_regions)),
        buildings_(std::move(options.buildings)),
        railways_(std::move(options.railways)),
-       localizations_(std::move(options.localizations))
+       localizations_(std::move(options.localizations)),
+       characters_(std::move(options.characters))
    {
    }
 
@@ -56,6 +59,7 @@ class World
    [[nodiscard]] const Buildings& GetBuildings() const { return buildings_; }
    [[nodiscard]] const Railways& GetRailways() const { return railways_; }
    [[nodiscard]] const Localizations& GetLocalizations() const { return localizations_; }
+   [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
 
   private:
    std::map<std::string, Country> countries_;
@@ -66,6 +70,7 @@ class World
    Buildings buildings_;
    Railways railways_;
    Localizations localizations_;
+   std::map<int, Character> characters_;
 };
 
 }  // namespace hoi4

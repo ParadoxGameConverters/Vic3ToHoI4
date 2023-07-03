@@ -59,6 +59,7 @@
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\characters\hoi4_characters_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\characters\hoi4_character_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests.cpp" />
@@ -82,7 +83,6 @@
     <ClCompile Include="src\hoi4_world\technology\technologies_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\technology\technologies_tests.cpp" />
     <ClCompile Include="src\hoi4_world\world\hoi4_world_converter_tests.cpp" />
-    <ClCompile Include="src\mappers\character\character_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\character\leader_type_mapper_importer_tests.cpp" />
     <ClCompile Include="src\mappers\character\leader_type_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_creator_tests.cpp" />

@@ -4,7 +4,7 @@
 
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
-
+#include "src/mappers/character/leader_type_mapper.h"
 
 
 namespace
@@ -191,7 +191,8 @@ std::set<std::string> ConvertNameSet(const std::set<std::string>& vic_names,
 hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
     const std::map<std::string, vic3::CultureDefinition>& source_cultures,
     const commonItems::LocalizationDatabase& vic_localizations,
-    const std::string& sub_ideology)
+    const std::set<std::string>& laws,
+    const mappers::LeaderTypeMapper& leader_type_mapper)
 {
    hoi4::NameList name_list;
    for (const auto& culture: primary_cultures)
@@ -200,9 +201,7 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
       {
          const auto& vic_list = culture_itr->second.GetNameList();
 
-         // If conservative monarchy try to use royal names
-         if (sub_ideology == "despotism" ||
-             sub_ideology == "oligarchism")  // Make this specific to non-voting monarchies later
+         if (laws.contains("law_monarchy") && leader_type_mapper.GetCountryLeaderType(laws) == "head_of_state")
          {
             name_list.male_names = ConvertNameSet(vic_list.male_regal_first, vic_localizations);
             name_list.female_names = ConvertNameSet(vic_list.female_regal_first, vic_localizations);
@@ -226,6 +225,33 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
    }
    return name_list;
 }
+std::pair<std::vector<int>, std::set<int>> PickCharacters(const std::vector<int>& source_character_ids,
+    const ::std::map<int, vic3::Character>& vic3_characters)
+{
+   std::vector<int> leader_ids;
+   std::set<int> spy_ids;
+
+   for (const auto& character_id: source_character_ids)
+   {
+      if (const auto character_itr = vic3_characters.find(character_id); character_itr != vic3_characters.end())
+      {
+         const vic3::Character& character = character_itr->second;
+         if (character.GetRoles().contains("agitator") && character.GetRoles().size() == 1)
+         {
+            spy_ids.emplace(character_id);
+         }
+         else
+         {
+            leader_ids.push_back(character_id);
+         }
+      }
+      else
+      {
+         Log(LogLevel::Warning) << fmt::format("Failed to find vic3 character associated with ID: {}", character_id);
+      }
+   }
+   return {leader_ids, spy_ids};
+}
 }  // namespace
 
 
@@ -243,7 +269,9 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
     const std::vector<EquipmentVariant>& all_ship_variants,
     const std::vector<EquipmentVariant>& all_plane_variants,
     const std::vector<EquipmentVariant>& all_tank_variants,
-    const mappers::CultureGraphicsMapper& culture_graphics_mapper)
+    const mappers::CultureGraphicsMapper& culture_graphics_mapper,
+    const ::std::map<int, vic3::Character>& vic3_characters,
+    const mappers::LeaderTypeMapper& leader_type_mapper)
 {
    const std::optional<std::string> tag = country_mapper.GetHoiTag(source_country.GetNumber());
    if (!tag.has_value())
@@ -270,10 +298,14 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
       ideas.insert("decentralized");
    }
 
+   const auto [leader_ids, spy_ids] = PickCharacters(source_country.GetCharacterIds(), vic3_characters);
    mappers::GraphicsBlock graphics_block =
        culture_graphics_mapper.MatchPrimaryCulturesToGraphics(source_country.GetPrimaryCultures(), source_cultures);
-   NameList name_list =
-       ConvertNameList(source_country.GetPrimaryCultures(), source_cultures, source_localizations, sub_ideology);
+   NameList name_list = ConvertNameList(source_country.GetPrimaryCultures(),
+       source_cultures,
+       source_localizations,
+       source_country.GetActiveLaws(),
+       leader_type_mapper);
 
    return Country({.tag = *tag,
        .color = source_country.GetColor(),
@@ -289,5 +321,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        .tank_variants = active_tank_variants,
        .ideas = ideas,
        .graphics_block = graphics_block,
-       .name_list = name_list});
+       .name_list = name_list,
+       .leader_ids = leader_ids,
+       .spy_ids = spy_ids});
 }

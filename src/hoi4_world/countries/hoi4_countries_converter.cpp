@@ -1,9 +1,8 @@
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 
-#include <ranges>
-
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/equipment_variants_importer.h"
+#include "src/mappers/character/leader_type_mapper_importer.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/ideology/ideology_mapper.h"
 #include "src/mappers/ideology/ideology_mapper_importer.h"
@@ -17,7 +16,8 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
     const std::vector<State>& states,
-    const std::vector<mappers::TechMapping>& tech_mappings)
+    const std::vector<mappers::TechMapping>& tech_mappings,
+    const std::map<int, vic3::Character>& source_characters)
 {
    std::map<std::string, Country> countries;
 
@@ -29,6 +29,8 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
    const std::vector<EquipmentVariant> all_plane_variants = ImportEquipmentVariants("configurables/plane_designs.txt");
    const std::vector<EquipmentVariant> all_tank_variants = ImportEquipmentVariants("configurables/tank_designs.txt");
 
+   const mappers::LeaderTypeMapper leader_type_mapper =
+       mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
    const mappers::CultureGraphicsMapper culture_graphics_mapper =
        mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
 
@@ -54,7 +56,9 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
           all_ship_variants,
           all_plane_variants,
           all_tank_variants,
-          culture_graphics_mapper);
+          culture_graphics_mapper,
+          source_characters,
+          leader_type_mapper);
       if (new_country.has_value())
       {
          countries.emplace(new_country->GetTag(), *new_country);
