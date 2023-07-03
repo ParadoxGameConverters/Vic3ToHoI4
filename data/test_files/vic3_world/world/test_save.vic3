@@ -4,6 +4,7 @@ meta_data={
 	mods={ "Test Mod" "Test Mod Two" }
 }
 
+playthrough_id = "ff872f63-9112-4032-a128-cf020e7bb8a1"
 country_manager={
 	database={
 0=none

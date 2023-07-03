@@ -258,6 +258,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    std::istringstream save_stream = MeltSave(save, save_string);
 
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
+   std::string playthrough_id;
    const std::map<std::string, commonItems::Color> color_definitions = ImportCountryColorDefinitions(mod_filesystem);
    std::map<int, Country> countries;
    std::map<int, State> states;
@@ -270,6 +271,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    std::map<int, InterestGroup> igs;
 
    commonItems::parser save_parser;
+   save_parser.registerKeyword("playthrough_id", [&playthrough_id](std::istream& input_stream) {
+      playthrough_id = commonItems::getString(input_stream);
+   });
    save_parser.registerKeyword("country_manager", [&countries, color_definitions](std::istream& input_stream) {
       countries = ImportCountries(color_definitions, input_stream);
    });
@@ -346,5 +350,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        .localizations = localizations,
        .culture_definitions = culture_definitions,
        .characters = characters,
-       .igs = igs});
+       .igs = igs,
+       .playthrough_id = playthrough_id});
 }
