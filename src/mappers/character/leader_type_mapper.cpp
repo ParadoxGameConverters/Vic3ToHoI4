@@ -16,8 +16,8 @@ mappers::LeaderType mappers::LeaderTypeMapper::GetCountryLeaderType(const std::s
                return leader_type;
             }
          }
-         return kHeadOfState;
+         return "head_of_state";
       }
    }
-   return kHeadOfState;
+   return "head_of_state";
 }

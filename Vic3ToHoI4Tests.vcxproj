@@ -83,7 +83,8 @@
     <ClCompile Include="src\hoi4_world\technology\technologies_tests.cpp" />
     <ClCompile Include="src\hoi4_world\world\hoi4_world_converter_tests.cpp" />
     <ClCompile Include="src\mappers\character\character_mapper_tests.cpp" />
-    <ClCompile Include="src\mappers\character\leader_type_mappings_importer_tests.cpp" />
+    <ClCompile Include="src\mappers\character\leader_type_mapper_importer_tests.cpp" />
+    <ClCompile Include="src\mappers\character\leader_type_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_creator_tests.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper_importer_tests.cpp" />

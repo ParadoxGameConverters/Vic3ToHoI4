@@ -10,13 +10,7 @@
 
 namespace mappers
 {
-enum LeaderType
-{
-   kHeadOfState,
-   kPrimeMinister,
-   kCouncil
-};
-
+using LeaderType = std::string;
 using PowerLaw = std::string;
 using GovernanceLaw = std::string;
 using PowerLeaderMap = std::map<PowerLaw, LeaderType>;

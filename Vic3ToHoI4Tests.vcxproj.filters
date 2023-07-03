@@ -417,7 +417,10 @@
     <ClCompile Include="src\mappers\character\character_mapper_tests.cpp">
       <Filter>src\mappers\character</Filter>
     </ClCompile>
-    <ClCompile Include="src\mappers\character\leader_type_mappings_importer_tests.cpp">
+    <ClCompile Include="src\mappers\character\leader_type_mapper_importer_tests.cpp">
+      <Filter>src\mappers\character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\character\leader_type_mapper_tests.cpp">
       <Filter>src\mappers\character</Filter>
     </ClCompile>
   </ItemGroup>

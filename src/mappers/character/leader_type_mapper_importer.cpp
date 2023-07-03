@@ -17,14 +17,16 @@ mappers::LeaderTypeMapper mappers::ImportLeaderTypeMapper(std::string_view mappi
        });
 
    commonItems::parser leader_type_parser;
-   leader_type_parser.registerKeyword("council", [&leader_type, &power_parser](std::istream& input_stream) {
-      leader_type = kCouncil;
-      power_parser.parseStream(input_stream);
-   });
-   leader_type_parser.registerKeyword("prime_minister", [&leader_type, &power_parser](std::istream& input_stream) {
-      leader_type = kPrimeMinister;
-      power_parser.parseStream(input_stream);
-   });
+   leader_type_parser.registerKeyword("council",
+       [&leader_type, &power_parser](const std::string& type, std::istream& input_stream) {
+          leader_type = type;
+          power_parser.parseStream(input_stream);
+       });
+   leader_type_parser.registerKeyword("prime_minister",
+       [&leader_type, &power_parser](const std::string& type, std::istream& input_stream) {
+          leader_type = type;
+          power_parser.parseStream(input_stream);
+       });
    leader_type_parser.IgnoreAndLogUnregisteredItems();
 
    commonItems::parser governance_parser;
