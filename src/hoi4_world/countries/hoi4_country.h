@@ -7,7 +7,6 @@
 
 #include "external/commonItems/Color.h"
 #include "external/commonItems/Date.h"
-#include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/technology/technologies.h"
 #include "src/mappers/country/country_mapper.h"
@@ -44,7 +43,8 @@ struct CountryOptions
    std::set<std::string> ideas;
    mappers::GraphicsBlock graphics_block;
    NameList name_list;
-   std::map<int, Character> characters;
+   std::vector<int> leader_ids;
+   std::set<int> spy_ids;
 };
 
 
@@ -67,7 +67,8 @@ class Country
        ideas_(std::move(country_options.ideas)),
        graphics_block_(std::move(country_options.graphics_block)),
        name_list_(std::move(country_options.name_list)),
-       characters_(std::move(country_options.characters))
+       leader_ids_(std::move(country_options.leader_ids)),
+       spy_ids_(std::move(country_options.spy_ids))
    {
    }
 
@@ -88,7 +89,8 @@ class Country
    [[nodiscard]] const std::set<std::string>& GetIdeas() const { return ideas_; }
    [[nodiscard]] const mappers::GraphicsBlock& GetGraphicsBlock() const { return graphics_block_; }
    [[nodiscard]] const NameList& GetNameList() const { return name_list_; }
-   [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
+   [[nodiscard]] const std::vector<int>& GetLeaderIds() const { return leader_ids_; }
+   [[nodiscard]] const std::set<int>& GetSpyIds() const { return spy_ids_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
@@ -109,7 +111,8 @@ class Country
    std::set<std::string> ideas_;
    mappers::GraphicsBlock graphics_block_;
    NameList name_list_;
-   std::map<int, Character> characters_;
+   std::vector<int> leader_ids_;
+   std::set<int> spy_ids_;
 };
 
 }  // namespace hoi4

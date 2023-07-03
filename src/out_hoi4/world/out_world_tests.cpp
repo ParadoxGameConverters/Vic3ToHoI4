@@ -20,6 +20,7 @@ void CreateTestFolders(std::string_view test_name)
    commonItems::TryCreateFolder(fmt::format("output/{}", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/bookmarks", test_name));
+   commonItems::TryCreateFolder(fmt::format("output/{}/common/characters", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/countries", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/country_tags", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/names", test_name));

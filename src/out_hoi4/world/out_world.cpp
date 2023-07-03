@@ -81,7 +81,7 @@ void OutputBookmark(std::string_view output_name,
 
 void out::OutputWorld(std::string_view output_name, const hoi4::World& world)
 {
-   OutputCountries(output_name, world.GetCountries());
+   OutputCountries(output_name, world.GetCountries(), {});
    OutputStates(output_name, world.GetStates().states);
    OutputStrategicRegions(output_name, world.GetStrategicRegions());
    OutputBuildings(output_name, world.GetBuildings());

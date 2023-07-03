@@ -9,7 +9,9 @@
 
 
 
-void out::OutputCountries(std::string_view output_name, const std::map<std::string, hoi4::Country>& countries)
+void out::OutputCountries(std::string_view output_name,
+    const std::map<std::string, hoi4::Country>& countries,
+    const std::map<int, hoi4::Character>& characters)
 {
    std::ofstream tags_file(fmt::format("output/{}/common/country_tags/00_countries.txt", output_name));
    if (!tags_file.is_open())
@@ -22,7 +24,8 @@ void out::OutputCountries(std::string_view output_name, const std::map<std::stri
    {
       OutputCommonCountryTag(country, tags_file);
       OutputCommonCountriesFile(output_name, country);
-      OutputCountryHistory(output_name, country);
+      OutputCommonCharactersFile(output_name, country, characters);
+      OutputCountryHistory(output_name, country, characters);
       commonItems::TryCopyFile("configurables/division_templates.txt",
           fmt::format("output/{}/history/units/{}_1936.txt", output_name, country.GetTag()));
    }
