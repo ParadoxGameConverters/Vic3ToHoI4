@@ -53,6 +53,7 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                                              .active_laws = {"law_monarchy"},
                                              .primary_culture_ids = {0},
                                              .primary_cultures = {"welsh"},
+                                             .puppets = {3}
                                          })),
            testing::Pair(3,
                Country({
@@ -168,6 +169,20 @@ TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)
    EXPECT_THAT(log.str(),
        testing::HasSubstr("[INFO] \t\t->> Found potentially useful [Test Mod Two]: "
                           "test_files/vic3_world/workshop/529340/test_mod_two/"));
+}
+
+TEST(Vic3worldWorldVic3worldimporter, PactsBecomeSubjects)
+{
+   const auto world = ImportWorld(configuration::Configuration{
+       .vic3_directory = "test_files/vic3_world/world",
+       .vic3_steam_mod_path = "test_files/vic3_world/documents/mod",
+       .vic3_mod_path = "test_files/vic3_world/documents/mod",
+       .save_game = "test_files/vic3_world/world/test_save.vic3",
+   });
+   Country v1 = world.GetCountries().at(1);
+   Country v3 = world.GetCountries().at(3);
+   EXPECT_EQ(v1.GetPuppets(), std::set<int>({3}));
+   EXPECT_EQ(v3.GetPuppets().size(), 0);
 }
 
 

@@ -428,4 +428,45 @@ TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected_output));
 }
 
+TEST(Outhoi4CountriesOutcountryTests, PuppetsAreOutputToCountryHistoryFile)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/PuppetsAreOutputToCountryHistoryFile");
+   commonItems::TryCreateFolder("output/PuppetsAreOutputToCountryHistoryFile/history");
+   commonItems::TryCreateFolder("output/PuppetsAreOutputToCountryHistoryFile/history/countries");
+
+   const hoi4::Country country({.tag = "AAA", .puppets = {"BBB"}});
+   OutputCountryHistory("PuppetsAreOutputToCountryHistoryFile", country);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/PuppetsAreOutputToCountryHistoryFile/history/countries/AAA.txt"));
+   std::ifstream country_file("output/PuppetsAreOutputToCountryHistoryFile/history/countries/AAA.txt");
+   ASSERT_TRUE(country_file.is_open());
+   std::stringstream country_file_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_stream));
+   country_file.close();
+
+   auto expected = R""(# DIPLOMACY
+if = {
+	limit = {
+		OR = {
+			has_dlc = "Together for Victory"
+			has_dlc = "Man the Guns"
+		}
+	}
+    set_autonomy = {
+        target = BBB
+        autonomous_state = autonomy_puppet
+        freedom_level = 0.4
+    }
+    else = {
+        puppet = BBB
+    }
+}
+)"";
+
+   EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected));
+}
+
 }  // namespace out

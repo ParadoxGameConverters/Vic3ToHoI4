@@ -58,6 +58,7 @@
     <ClCompile Include="external\commonItems\external\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest_main.cc" />
+    <ClCompile Include="src\vic3_world\pacts\pact_importer_test.cpp" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests.cpp" />
