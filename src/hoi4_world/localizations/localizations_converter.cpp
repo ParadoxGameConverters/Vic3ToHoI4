@@ -1,8 +1,11 @@
 #include "src/hoi4_world/localizations/localizations_converter.h"
 
+#include <ranges>
+
 #include "external/commonItems/Localization/LocalizationBlock.h"
 #include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/vic3_world/characters/vic3_character.h"
 #include "src/vic3_world/countries/vic3_country.h"
 
 
@@ -73,6 +76,7 @@ commonItems::LocalizationDatabase ConvertStateLocalizations(const commonItems::L
 
    return state_localizations;
 }
+
 
 
 commonItems::LocalizationDatabase ConvertVictoryPointLocalizations(
@@ -150,6 +154,43 @@ commonItems::LocalizationDatabase ConvertVictoryPointLocalizations(
    return victory_point_localizations;
 }
 
+
+commonItems::LocalizationDatabase ConvertCharacterLocalizations(
+    const commonItems::LocalizationDatabase& vic3_localizations,
+    const std::map<int, vic3::Character>& vic3_characters)
+{
+   commonItems::LocalizationDatabase character_localizations("english",
+       {"braz_por", "french", "german", "japanese", "polish", "russian", "spanish"});
+
+   for (const auto& character: vic3_characters | std::views::values)
+   {
+      const auto& first_name_localization_block = vic3_localizations.GetLocalizationBlock(character.GetFirstName());
+      if (!first_name_localization_block)
+      {
+         continue;
+      }
+      character_localizations.AddOrModifyLocalizationBlock(character.GetFirstName(), *first_name_localization_block);
+
+      const auto& last_name_localization_block = vic3_localizations.GetLocalizationBlock(character.GetLastName());
+      if (!last_name_localization_block)
+      {
+         continue;
+      }
+      character_localizations.AddOrModifyLocalizationBlock(character.GetLastName(), *last_name_localization_block);
+
+      const auto& first_key = first_name_localization_block->GetKey();
+      const auto& last_key = last_name_localization_block->GetKey();
+      commonItems::LocalizationBlock name_localization_block(fmt::format("{}_{}", first_key, last_key),
+          *first_name_localization_block);
+
+      name_localization_block.ModifyForEveryLanguage(
+          [&first_key, &last_key](const std::string& unused, const std::string& language) {
+             return fmt::format("${}$ ${}$", first_key, last_key);
+          });
+      character_localizations.AddOrModifyLocalizationBlock(name_localization_block.GetKey(), name_localization_block);
+   }
+   return character_localizations;
+}
 }  // namespace
 
 
@@ -159,7 +200,8 @@ hoi4::Localizations hoi4::ConvertLocalizations(const commonItems::LocalizationDa
     const std::map<std::string, std::string>& hoi4_state_names_to_vic3_state_names,
     const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
     const mappers::ProvinceMapper& province_mapper,
-    const std::map<int, vic3::Country>& vic3_countries)
+    const std::map<int, vic3::Country>& vic3_countries,
+    const std::map<int, vic3::Character>& vic3_characters)
 {
    Log(LogLevel::Info) << "\tConverting localizations";
    commonItems::LocalizationDatabase country_localizations =
@@ -168,6 +210,8 @@ hoi4::Localizations hoi4::ConvertLocalizations(const commonItems::LocalizationDa
        ConvertStateLocalizations(vic3_localizations, hoi4_state_names_to_vic3_state_names);
    commonItems::LocalizationDatabase victory_point_localizations =
        ConvertVictoryPointLocalizations(vic3_localizations, vic3_state_regions, province_mapper);
+   commonItems::LocalizationDatabase character_localizations =
+       ConvertCharacterLocalizations(vic3_localizations, vic3_characters);
 
-   return {country_localizations, state_localizations, victory_point_localizations};
+   return {country_localizations, state_localizations, victory_point_localizations, character_localizations};
 }

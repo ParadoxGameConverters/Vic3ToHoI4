@@ -265,7 +265,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        states.hoi4_state_names_to_vic3_state_names,
        source_world.GetStateRegions(),
        province_mapper,
-       source_world.GetCountries());
+       source_world.GetCountries(),
+       source_world.GetCharacters());
 
    return World(WorldOptions{.countries = countries,
        .great_powers = great_powers,
