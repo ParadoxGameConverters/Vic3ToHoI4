@@ -25,6 +25,7 @@ class CharacterImporter
    std::string last_name_;
 
    int culture_id_ = 0;
+   bool is_female_ = false;
    std::set<std::string> roles_;
    int rank_ = 0;
    std::string ideology_;

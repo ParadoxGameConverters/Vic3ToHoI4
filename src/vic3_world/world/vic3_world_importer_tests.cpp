@@ -149,6 +149,7 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                    .ig_id = 1,
                    .roles = {"agitator"},
                    .origin_tag = "TWO",
+                   .origin_country_id = 3,
                })),
            testing::Pair(5,
                Character({
@@ -170,6 +171,7 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                    .culture = "welsh",
                    .roles = {"agitator"},
                    .origin_tag = "TAG",
+                   .origin_country_id = 1,
                }))));
    EXPECT_THAT(world.GetInterestGroups(),
        testing::UnorderedElementsAre(testing::Pair(1, InterestGroup("ig_devout", 1, 1, 0.34881F, true)),

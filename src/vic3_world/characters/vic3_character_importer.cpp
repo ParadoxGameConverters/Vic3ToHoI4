@@ -14,6 +14,9 @@ vic3::CharacterImporter::CharacterImporter()
    character_parser_.registerKeyword("culture", [this](std::istream& input_stream) {
       culture_id_ = commonItems::getInt(input_stream);
    });
+   character_parser_.registerKeyword("is_female", [this](std::istream& input_stream) {
+      is_female_ = commonItems::getString(input_stream) == "yes";
+   });
    character_parser_.registerKeyword("role", [this](std::istream& input_stream) {
       roles_.emplace(commonItems::getString(input_stream));
    });
@@ -61,6 +64,7 @@ vic3::Character vic3::CharacterImporter::ImportCharacter(const int id, std::istr
        .first_name = first_name_,
        .last_name = last_name_,
        .culture_id = culture_id_,
+       .is_female = is_female_,
        .roles = roles_,
        .rank = rank_,
        .ideology = ideology_,

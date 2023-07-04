@@ -87,7 +87,10 @@ void OutputAdvisor(std::ostream& out, const hoi4::Advisor& advisor_data, const i
    out << "\t\tadvisor = {\n";
    out << fmt::format("\t\t\ttraits = {}\n", OutputTraits(advisor_data.traits));
    out << fmt::format("\t\t\tslot = {}\n", advisor_data.slot);
-   out << fmt::format("\t\t\tledger = {}\n", advisor_data.ledger);
+   if (!advisor_data.ledger.empty())
+   {
+      out << fmt::format("\t\t\tledger = {}\n", advisor_data.ledger);
+   }
    out << fmt::format("\t\t\tidea_token = i_{}\n", id);
    out << fmt::format("\t\t\tcost = {}\n", advisor_data.cost);
    out << "\t\t}\n";

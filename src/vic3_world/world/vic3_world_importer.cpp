@@ -203,6 +203,34 @@ void AssignCharactersToCountries(std::map<int, vic3::Country>& countries,
       }
    }
 }
+
+
+std::map<std::string, int> MapCountryTagsToId(std::map<int, vic3::Country>& countries)
+{
+   std::map<std::string, int> tag_to_id_map;
+   for (const auto& [id, country]: countries)
+   {
+      tag_to_id_map.emplace(country.GetTag(), id);
+   }
+   return tag_to_id_map;
+}
+
+void AssignHomeCountriesToExiledAgitators(const std::map<std::string, int>& tag_to_id_map,
+    std::map<int, vic3::Character>& characters)
+{
+   for (auto& character: characters | std::views::values)
+   {
+      if (character.GetOriginTag().empty())
+      {
+         continue;
+      }
+
+      if (const auto& id_itr = tag_to_id_map.find(character.GetOriginTag()); id_itr != tag_to_id_map.end())
+      {
+         character.SetOriginCountryId(id_itr->second);
+      }
+   }
+}
 }  // namespace
 
 
@@ -339,6 +367,8 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Log(LogLevel::Progress) << "16 %";
    AssignCharactersToCountries(countries, country_character_map);
    AssignIgsToCountries(countries, igs);
+   const auto& country_tag_to_id_map = MapCountryTagsToId(countries);
+   AssignHomeCountriesToExiledAgitators(country_tag_to_id_map, characters);
 
    return World({.countries = countries,
        .states = states,

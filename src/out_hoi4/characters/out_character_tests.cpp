@@ -177,6 +177,38 @@ TEST(Outhoi4Characters, AdvisorsAreOutput)
 }
 
 
+TEST(Outhoi4Characters, LedgerlessAdvisorsAreOutputWithoutLedgers)
+{
+   const hoi4::Character character({
+       .id = 1,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .portrait_alias = "GFX_test",
+       .advisor_data = std::make_optional<hoi4::Advisor>(
+           hoi4::Advisor{.traits = {"trait0", "trait1"}, .slot = "political_advisor"}),
+   });
+
+   std::stringstream out;
+   OutputCharacter(out, "TAG", character);
+
+   EXPECT_EQ(out.str(),
+       "\tTAG_1 = {\n"
+       "\t\tname = Test_Mann\n"
+       "\t\tportraits = {\n"
+       "\t\t\tcivilian = {\n"
+       "\t\t\t\tsmall = GFX_test\n"
+       "\t\t\t}\n"
+       "\t\t}\n"
+       "\t\tadvisor = {\n"
+       "\t\t\ttraits = { trait0 trait1 }\n"
+       "\t\t\tslot = political_advisor\n"
+       "\t\t\tidea_token = i_1\n"
+       "\t\t\tcost = 150\n"
+       "\t\t}\n"
+       "\t}\n");
+}
+
+
 TEST(Outhoi4Characters, GeneralAdvisorsHaveArmyPortraits)
 {
    const hoi4::Character character({
