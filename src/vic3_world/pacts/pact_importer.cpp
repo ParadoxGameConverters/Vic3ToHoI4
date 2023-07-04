@@ -26,11 +26,11 @@ vic3::PactImporter::PactImporter()
 
 vic3::Pact vic3::PactImporter::ImportPact(const int id, std::istream& input_stream)
 {
-    first_id_ = 0;
-    second_id_ = 0;
-    action_ = "";
-    start_date_ = date();
-    forced_duration_ = std::nullopt;
+   first_id_ = 0;
+   second_id_ = 0;
+   action_ = "";
+   start_date_ = date();
+   forced_duration_ = std::nullopt;
 
    pact_parser_.parseStream(input_stream);
 
