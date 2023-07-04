@@ -469,4 +469,49 @@ if = {
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected));
 }
 
+TEST(Outhoi4CountriesOutcountryTests, FascistPuppetsAreOutputToCountryHistoryFile)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/FascistPuppetsAreOutputToCountryHistoryFile");
+   commonItems::TryCreateFolder("output/FascistPuppetsAreOutputToCountryHistoryFile/history");
+   commonItems::TryCreateFolder("output/FascistPuppetsAreOutputToCountryHistoryFile/history/countries");
+
+   const hoi4::Country country({.tag = "FAC", .ideology = "fascism", .puppets = {"CCC"}});
+   OutputCountryHistory("FascistPuppetsAreOutputToCountryHistoryFile", country);
+
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/FascistPuppetsAreOutputToCountryHistoryFile/history/countries/FAC.txt"));
+   std::ifstream country_file("output/FascistPuppetsAreOutputToCountryHistoryFile/history/countries/FAC.txt");
+   ASSERT_TRUE(country_file.is_open());
+   std::stringstream country_file_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_stream));
+   country_file.close();
+
+   auto expected = R""(# DIPLOMACY
+if = {
+	limit = {
+		OR = {
+			has_dlc = "Together for Victory"
+			has_dlc = "Man the Guns"
+		}
+	}
+    set_autonomy = {
+        target = CCC
+        autonomous_state = autonomy_integrated_puppet
+    }
+    else = {
+        set_autonomy = {
+            target = CCC
+            autonomous_state = autonomy_puppet
+        }
+    }
+}
+)"";
+
+   EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected));
+}
+
+
 }  // namespace out

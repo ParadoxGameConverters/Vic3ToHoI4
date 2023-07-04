@@ -402,7 +402,13 @@
     <ClCompile Include="src\vic3_world\interest_groups\interest_groups_importer_tests.cpp">
       <Filter>src\vic3_world\interest_groups</Filter>
     </ClCompile>
-    <ClCompile Include="src\vic3_world\pacts\pact_importer_test.cpp">
+    <ClCompile Include="src\vic3_world\pacts\pact_test.cpp">
+      <Filter>src\vic3_world\pacts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\pacts\pacts_importer_tests.cpp">
+      <Filter>src\vic3_world\pacts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\pacts\pact_importer_tests.cpp">
       <Filter>src\vic3_world\pacts</Filter>
     </ClCompile>
   </ItemGroup>

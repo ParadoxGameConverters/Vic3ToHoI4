@@ -28,9 +28,9 @@ vic3::Pact vic3::PactImporter::ImportPact(const int id, std::istream& input_stre
 {
    first_id_ = 0;
    second_id_ = 0;
-   action_ = "";
+   action_.clear();
    start_date_ = date();
-   forced_duration_ = std::nullopt;
+   forced_duration_.reset();
 
    pact_parser_.parseStream(input_stream);
 

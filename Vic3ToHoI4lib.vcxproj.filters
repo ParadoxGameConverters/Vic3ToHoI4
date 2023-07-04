@@ -773,7 +773,6 @@
     <ClCompile Include="src\vic3_world\pacts\pacts_importer.cpp">
       <Filter>src\vic3_world\pacts</Filter>
     </ClCompile>
-    <ClCompile Include="src\vic3_world\pacts\pact.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="external\rakaly\rakaly.dll.lib">

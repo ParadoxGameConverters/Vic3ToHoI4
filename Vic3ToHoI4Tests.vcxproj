@@ -58,7 +58,7 @@
     <ClCompile Include="external\commonItems\external\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest_main.cc" />
-    <ClCompile Include="src\vic3_world\pacts\pact_importer_test.cpp" />
+    <ClCompile Include="src\vic3_world\pacts\pacts_importer_tests.cpp" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests.cpp" />
@@ -135,6 +135,8 @@
     <ClCompile Include="src\vic3_world\interest_groups\interest_groups_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\interest_groups\interest_group_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\laws\laws_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\pacts\pact_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\pacts\pact_test.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader_tests.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_tests.cpp" />
     <ClCompile Include="src\vic3_world\states\state_regions_importer_tests.cpp" />

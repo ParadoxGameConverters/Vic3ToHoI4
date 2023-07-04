@@ -8,7 +8,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldPactImporter, PactImporter)
+TEST(Vic3WorldPactImporter, PactsCanBeImported)
 {
    PactImporter importer;
    std::stringstream input;
@@ -22,7 +22,6 @@ TEST(Vic3WorldPactImporter, PactImporter)
 )"";
    Pact pact = importer.ImportPact(0, input);
    EXPECT_EQ(pact, Pact(1053, 268, "alliance", date("1930.2.27"), 120));
-   EXPECT_FALSE(pact.isSubjectRelationship());
    std::stringstream input2;
    input2 << R""(
 {
@@ -33,6 +32,5 @@ TEST(Vic3WorldPactImporter, PactImporter)
 )"";
    pact = importer.ImportPact(1, input2);
    EXPECT_EQ(pact, Pact(36, 176, "puppet", date("1836.1.1"), std::nullopt));
-   EXPECT_TRUE(pact.isSubjectRelationship());
 }
 }  // namespace vic3
