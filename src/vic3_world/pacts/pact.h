@@ -12,7 +12,11 @@ namespace vic3
 class Pact
 {
   public:
-   Pact(const int first_id, const int second_id, const std::string action, const date start_date, const std::optional<int> forced_duration):
+   Pact(const int first_id,
+       const int second_id,
+       const std::string action,
+       const date start_date,
+       const std::optional<int> forced_duration):
        first_id_(first_id),
        second_id_(second_id),
        action_(action),
@@ -26,7 +30,8 @@ class Pact
    [[nodiscard]] std::string GetAction() const { return action_; }
    [[nodiscard]] date GetStartDate() const { return start_date_; }
    [[nodiscard]] std::optional<int> GetForcedDuration() const { return forced_duration_; }
-   bool isSubjectRelationship() const {
+   bool isSubjectRelationship() const
+   {
       // This could be expanded into a mapper between Vic3 pact types and HoI4 autonomous_states
       const std::set<std::string> subjectPactTypes =
           {"protectorate", "puppet", "dominion", "personal_union", "vassal", "tributary"};

@@ -280,7 +280,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
    std::set<std::string> puppets;
    for (const auto p: source_country.GetPuppets())
    {
-      std::optional<std::string >subjectTag = country_mapper.GetHoiTag(p);
+      std::optional<std::string> subjectTag = country_mapper.GetHoiTag(p);
       if (!subjectTag.has_value())
       {
          Log(LogLevel::Error) << "Invalid subject relationship between " << source_country.GetNumber()

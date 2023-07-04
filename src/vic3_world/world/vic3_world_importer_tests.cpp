@@ -46,15 +46,13 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
 
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(testing::Pair(1,
-                                         Country({
-                                             .number = 1,
+                                         Country({.number = 1,
                                              .tag = "TAG",
                                              .color = commonItems::Color(std::array{1, 2, 3}),
                                              .active_laws = {"law_monarchy"},
                                              .primary_culture_ids = {0},
                                              .primary_cultures = {"welsh"},
-                                             .puppets = {3}
-                                         })),
+                                             .puppets = {3}})),
            testing::Pair(3,
                Country({
                    .number = 3,

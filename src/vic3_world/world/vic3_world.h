@@ -2,7 +2,6 @@
 #define SRC_VIC3WORLD_WORLD_VIC3WORLD_H
 
 
-
 #include <map>
 #include <set>
 
@@ -11,10 +10,10 @@
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/country_rankings/country_rankings.h"
 #include "src/vic3_world/cultures/culture_definition.h"
+#include "src/vic3_world/pacts/pact.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/states/state_region.h"
 #include "src/vic3_world/states/vic3_state.h"
-#include "src/vic3_world/pacts/pact.h"
 
 
 
