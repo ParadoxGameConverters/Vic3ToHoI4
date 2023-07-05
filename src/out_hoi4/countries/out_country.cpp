@@ -39,6 +39,60 @@ void OutputPolitics(std::ostream& country_history,
    country_history << "}\n";
    country_history << "\n";
 }
+void OutputPuppets(std::ostream& output,
+    const std::string& tag,
+    const std::string& government_ideology,
+    const std::set<std::string>& puppets)
+{
+   if (puppets.empty())
+   {
+      return;
+   }
+
+   output << "# DIPLOMACY\n";
+   output << "if = {\n";
+   output << "	limit = {\n";
+   output << "		OR = {\n";
+   output << "			has_dlc = \"Together for Victory\"\n";
+   output << "			has_dlc = \"Man the Guns\"\n";
+   output << "		}\n";
+   output << "	}\n";
+   for (const auto& puppet: puppets)
+   {
+      if (government_ideology == "fascism")
+      {
+         output << "    set_autonomy = {\n";
+         output << "        target = " << puppet << "\n";
+         output << "        autonomous_state = autonomy_integrated_puppet\n";
+      }
+      else
+      {
+         output << "    set_autonomy = {\n";
+         output << "        target = " << puppet << "\n";
+         output << "        autonomous_state = autonomy_puppet\n";
+         output << "        freedom_level = 0.4\n";
+      }
+      output << "    }\n";
+   }
+   output << "    else = {\n";
+   for (const auto& puppet: puppets)
+   {
+      if (government_ideology == "fascism")
+      {
+         output << "        set_autonomy = {\n";
+         output << "            target = " << puppet << "\n";
+         output << "            autonomous_state = autonomy_puppet\n";
+         output << "        }\n";
+      }
+      else
+      {
+         output << "        puppet = " << puppet << "\n";
+      }
+   }
+   output << "    }\n";
+   output << "}\n";
+   output << "\n";
+}
 }  // namespace
 
 void out::OutputCommonCountriesFile(std::string_view output_name, const hoi4::Country& country)
@@ -93,6 +147,8 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
        country.GetLastElection(),
        country.AreElectionsAllowed(),
        country.GetIdeologySupport());
+
+   OutputPuppets(country_history, country.GetTag(), country.GetIdeology(), country.GetPuppets());
 
    country_history << "add_ideas = {\n";
    country_history << "\tlimited_conscription\n";

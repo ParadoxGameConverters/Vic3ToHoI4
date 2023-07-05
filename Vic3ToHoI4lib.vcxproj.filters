@@ -145,6 +145,9 @@
     <Filter Include="src\vic3_world\interest_groups">
       <UniqueIdentifier>{77813921-49a2-4479-929f-6dbb5f487b9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\pacts">
+      <UniqueIdentifier>{03fc8ed6-7645-46e7-9f73-7e02a3c9da32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -492,14 +495,23 @@
     <ClInclude Include="src\vic3_world\characters\character_manager.h">
       <Filter>src\vic3_world\characters</Filter>
     </ClInclude>
-    <ClInclude Include="src\vic3_world\interest_groups\interest_group.h">
-      <Filter>src\vic3_world\interest_groups</Filter>
-    </ClInclude>
     <ClInclude Include="src\vic3_world\interest_groups\interest_group_importer.h">
       <Filter>src\vic3_world\interest_groups</Filter>
     </ClInclude>
     <ClInclude Include="src\vic3_world\interest_groups\interest_groups_importer.h">
       <Filter>src\vic3_world\interest_groups</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\interest_groups\interest_group.h">
+      <Filter>src\vic3_world\interest_groups</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\pacts\pact.h">
+      <Filter>src\vic3_world\pacts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\pacts\pact_importer.h">
+      <Filter>src\vic3_world\pacts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\pacts\pacts_importer.h">
+      <Filter>src\vic3_world\pacts</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -754,6 +766,12 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\interest_groups\interest_groups_importer.cpp">
       <Filter>src\vic3_world\interest_groups</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\pacts\pact_importer.cpp">
+      <Filter>src\vic3_world\pacts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\pacts\pacts_importer.cpp">
+      <Filter>src\vic3_world\pacts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -139,6 +139,9 @@
     <Filter Include="src\vic3_world\interest_groups">
       <UniqueIdentifier>{516af0bf-9efb-4e61-86be-b8b8fdcb0a5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\pacts">
+      <UniqueIdentifier>{914aa5c8-6a75-42e9-9802-fc6ad0f23ef1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -398,6 +401,15 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\interest_groups\interest_groups_importer_tests.cpp">
       <Filter>src\vic3_world\interest_groups</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\pacts\pact_test.cpp">
+      <Filter>src\vic3_world\pacts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\pacts\pacts_importer_tests.cpp">
+      <Filter>src\vic3_world\pacts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\pacts\pact_importer_tests.cpp">
+      <Filter>src\vic3_world\pacts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
