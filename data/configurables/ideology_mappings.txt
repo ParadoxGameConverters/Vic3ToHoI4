@@ -61,6 +61,7 @@ law_compulsory_primary_school = { conservatism = 0 liberalism = 25 socialism = 5
 law_state_religion = { conservatism = 75 liberalism = 0 socialism = -50 }
 law_freedom_of_conscience = { conservatism = 50 liberalism = 25 socialism = 0 }
 law_total_separation = { conservatism = 0 liberalism = 50 socialism = 75 }
+law_state_atheism = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
 
 # citizenship
 law_ethnostate = { conservatism = -25 liberalism = -75 socialism = -100 }
@@ -76,6 +77,7 @@ law_colonial_exploitation = { conservatism = 0 liberalism = 0 socialism = 0 } # 
 
 # distribution of power
 law_autocracy = { conservatism = -100 liberalism = -1000 socialism = -10000 }
+law_technocracy = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
 law_oligarchy = { conservatism = 25 liberalism = 0 socialism = -50 }
 law_elder_council = { conservatism = 25 liberalism = 0 socialism = -50 }
 law_landed_voting = { conservatism = 25 liberalism = 25 socialism = -25 }
@@ -83,18 +85,19 @@ law_wealth_voting = { conservatism = 25 liberalism = 25 socialism = -25 }
 law_census_voting = { conservatism = 50 liberalism = 25 socialism = 0 }
 law_universal_suffrage = { conservatism = 25 liberalism = 50 socialism = 50 }
 law_anarchy = { conservatism = -10000 liberalism = -10000 socialism = -10000 }
+law_single_party_state = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
 
 # economic_system
 law_traditionalism = { conservatism = 25 liberalism = 0 socialism = 0 }
 law_interventionism = { conservatism = 50 liberalism = 50 socialism = 25 }
 law_agrarianism = { conservatism = -25 liberalism = -25 socialism = -50 }
-law_industry_banned = { conservatism = 25 liberalism = 50 socialism = 75 }
+law_industry_banned = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
 law_laissez_faire = { conservatism = 25 liberalism = 50 socialism = 75 }
 law_cooperative_ownership = { conservatism = 25 liberalism = 50 socialism = 75 }
 law_command_economy = { conservatism = 25 liberalism = 50 socialism = 75 }
 
 # education_system
-law_no_schools = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
+law_no_schools = { conservatism = 0 liberalism = 0 socialism = 0 }
 law_religious_schools = { conservatism = 50 liberalism = 25 socialism = 0 }
 law_private_schools = { conservatism = 50 liberalism = 50 socialism = 0 }
 law_public_schools = { conservatism = 25 liberalism = 50 socialism = 50 }
@@ -114,7 +117,7 @@ law_theocracy = { conservatism = 50 liberalism = 0 socialism = 0 }
 law_council_republic = { conservatism = -100 liberalism = -100 socialism = -25 }
 
 # health_system
-law_no_health_system = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
+law_no_health_system = { conservatism = 0 liberalism = 0 socialism = 0 }
 law_charitable_health_system = { conservatism = 50 liberalism = 25 socialism = 0 }
 law_private_health_insurance = { conservatism = 75 liberalism = 25 socialism = 0 }
 law_public_health_insurance = { conservatism = 25 liberalism = 50 socialism = 50 }
@@ -161,7 +164,7 @@ law_slave_trade = { conservatism = 25 liberalism = -50 socialism = -50 }
 law_legacy_slavery = { conservatism = 25 liberalism = -50 socialism = -50 }
 
 # taxation
-law_consumption_based_taxation = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
+law_consumption_based_taxation = { conservatism = 0 liberalism = 0 socialism = 0 }
 law_land_based_taxation = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
 law_per_capita_based_taxation = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
 law_proportional_taxation = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
