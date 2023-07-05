@@ -238,6 +238,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    const std::vector<mappers::TechMapping> tech_mappings = mappers::ImportTechMappings();
 
+   std::map<int, Character> characters;
+   std::map<std::string, mappers::CultureQueue> culture_queues;
    const std::map<int, vic3::Country>& source_countries = source_world.GetCountries();
    countries = ConvertCountries(source_countries,
        source_world.GetAcquiredTechnologies(),
@@ -247,12 +249,14 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        states.vic3_state_ids_to_hoi4_state_ids,
        states.states,
        tech_mappings,
-       source_world.GetCharacters());
+       source_world.GetCharacters(),
+       source_world.GetInterestGroups(),
+       characters,
+       culture_queues);
 
-   Log(LogLevel::Info) << "\tConverting characters";
+   Log(LogLevel::Info) << "\tAssigning portraits to characters";
    Log(LogLevel::Progress) << "56%";
-   std::map<int, Character> characters;
-   characters = ConvertCharacters(source_world.GetCharacters(), source_world.GetInterestGroups());
+   AssignPortraits(characters, culture_queues);
 
    std::set<std::string> great_powers = MapPowers(source_world.GetCountryRankings().GetGreatPowers(), country_mapper);
    std::set<std::string> major_powers = MapPowers(source_world.GetCountryRankings().GetMajorPowers(), country_mapper);

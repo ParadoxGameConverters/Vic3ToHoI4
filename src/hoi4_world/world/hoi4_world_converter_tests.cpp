@@ -46,17 +46,20 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
        .number = 1,
        .tag = "TAG",
        .color = commonItems::Color{std::array{1, 2, 3}},
+       .head_of_state_id = 1,
        .character_ids = {1},
    });
    const vic3::Country source_country_two({
        .number = 3,
        .tag = "TWO",
        .color = commonItems::Color{std::array{2, 4, 6}},
-       .character_ids = {2},
+       .head_of_state_id = 3,
+       .character_ids = {2, 3},
    });
 
    vic3::Character character_one({.id = 1});  // Compiler was being weird about it directly in map
    vic3::Character character_two({.id = 2, .roles = {"agitator"}});
+   vic3::Character character_three({.id = 3});
    const vic3::World source_world({
        .countries = {{1, source_country_one}, {3, source_country_two}},
        .states = {},
@@ -69,6 +72,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
            {
                {1, character_one},
                {2, character_two},
+               {3, character_three},
            },
    });
 
@@ -119,23 +123,28 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
 
    EXPECT_THAT(world.GetCountries(),
        testing::ElementsAre(testing::Pair("TAG",
-                                Country(CountryOptions{.tag = "TAG",
+                                Country(CountryOptions{
+                                    .tag = "TAG",
                                     .color = commonItems::Color{std::array{1, 2, 3}},
                                     .technologies = expected_techs_one,
                                     .legacy_ship_variants = expected_legacy_ship_variants_one,
                                     .ship_variants = expected_ship_variants_one,
                                     .plane_variants = expected_plane_variants_one,
                                     .tank_variants = expected_tank_variants_one,
-                                    .leader_ids = {1}})),
+                                    .leader_ids = {1},
+                                })),
            testing::Pair("TWO",
-               Country(CountryOptions{.tag = "TWO",
+               Country(CountryOptions{
+                   .tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
                    .technologies = expected_techs_two,
                    .legacy_ship_variants = expected_legacy_ship_variants_two,
                    .ship_variants = expected_ship_variants_two,
                    .plane_variants = expected_plane_variants_two,
                    .tank_variants = expected_tank_variants_two,
-                   .spy_ids = {2}}))));
+                   .leader_ids = {3},
+                   .spy_ids = {2},
+               }))));
 }
 
 
@@ -750,7 +759,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
        testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
 }
 
-TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, DISABLED_CharactersAreConverted)
 {
 }
 }  // namespace hoi4

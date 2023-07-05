@@ -98,6 +98,9 @@ class Character
    [[nodiscard]] const std::optional<Advisor>& GetAdvisorData() const { return advisor_data_; }
    [[nodiscard]] const std::optional<Spy>& GetSpyData() const { return spy_data_; }
 
+   [[nodiscard]] static int GetGenId() { return gen_id_; }
+   static void IncrementGenId() { ++gen_id_; }
+
    std::partial_ordering operator<=>(const Character&) const = default;
 
   private:
@@ -112,6 +115,8 @@ class Character
    std::optional<Leader> leader_data_;
    std::optional<Advisor> advisor_data_;
    std::optional<Spy> spy_data_;
+
+   inline static int gen_id_ = 1000;  // For generating new characters, like councils
 };
 }  // namespace hoi4
 

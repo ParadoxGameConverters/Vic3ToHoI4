@@ -3,6 +3,8 @@
 #include <numeric>
 
 #include "external/fmt/include/fmt/format.h"
+#include "src/hoi4_world/characters/hoi4_character_converter.h"
+#include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
 
@@ -201,7 +203,7 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
       {
          const auto& vic_list = culture_itr->second.GetNameList();
 
-         if (laws.contains("law_monarchy") && leader_type_mapper.GetCountryLeaderType(laws) == "head_of_state")
+         if (hoi4::IsMonarch(leader_type_mapper.GetCountryLeaderType(laws), laws))
          {
             name_list.male_names = ConvertNameSet(vic_list.male_regal_first, vic_localizations);
             name_list.female_names = ConvertNameSet(vic_list.female_regal_first, vic_localizations);
@@ -227,33 +229,7 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
    }
    return name_list;
 }
-std::pair<std::vector<int>, std::set<int>> PickCharacters(const std::vector<int>& source_character_ids,
-    const ::std::map<int, vic3::Character>& vic3_characters)
-{
-   std::vector<int> leader_ids;
-   std::set<int> spy_ids;
 
-   for (const auto& character_id: source_character_ids)
-   {
-      if (const auto character_itr = vic3_characters.find(character_id); character_itr != vic3_characters.end())
-      {
-         const vic3::Character& character = character_itr->second;
-         if (character.GetRoles().contains("agitator") && character.GetRoles().size() == 1)
-         {
-            spy_ids.emplace(character_id);
-         }
-         else
-         {
-            leader_ids.push_back(character_id);
-         }
-      }
-      else
-      {
-         Log(LogLevel::Warning) << fmt::format("Failed to find vic3 character associated with ID: {}", character_id);
-      }
-   }
-   return {leader_ids, spy_ids};
-}
 }  // namespace
 
 
@@ -272,8 +248,11 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
     const std::vector<EquipmentVariant>& all_plane_variants,
     const std::vector<EquipmentVariant>& all_tank_variants,
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
-    const ::std::map<int, vic3::Character>& vic3_characters,
-    const mappers::LeaderTypeMapper& leader_type_mapper)
+    const std::map<int, vic3::Character>& vic3_characters,
+    const mappers::LeaderTypeMapper& leader_type_mapper,
+    const std::map<int, vic3::InterestGroup>& igs,
+    std::map<int, hoi4::Character>& characters,
+    std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
    const std::optional<std::string> tag = country_mapper.GetHoiTag(source_country.GetNumber());
    if (!tag.has_value())
@@ -300,7 +279,15 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
       ideas.insert("decentralized");
    }
 
-   const auto [leader_ids, spy_ids] = PickCharacters(source_country.GetCharacterIds(), vic3_characters);
+   const auto [leader_ids, spy_ids] = ConvertCharacters(characters,
+       vic3_characters,
+       *tag,
+       ideology,
+       source_country,
+       igs,
+       leader_type_mapper,
+       culture_queues,
+       country_mapper);
    mappers::GraphicsBlock graphics_block =
        culture_graphics_mapper.MatchPrimaryCulturesToGraphics(source_country.GetPrimaryCultures(), source_cultures);
    NameList name_list = ConvertNameList(source_country.GetPrimaryCultures(),
