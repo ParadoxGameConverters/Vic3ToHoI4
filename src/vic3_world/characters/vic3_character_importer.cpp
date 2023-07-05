@@ -53,6 +53,7 @@ vic3::Character vic3::CharacterImporter::ImportCharacter(const int id, std::istr
    first_name_.clear();
    last_name_.clear();
    culture_id_ = 0;
+   is_female_ = false;
    roles_.clear();
    rank_ = 0;
    ideology_.clear();

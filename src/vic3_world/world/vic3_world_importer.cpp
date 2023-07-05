@@ -2,6 +2,7 @@
 
 #include <filesystem>
 #include <fstream>
+#include <numeric>
 #include <ranges>
 #include <sstream>
 
@@ -231,6 +232,13 @@ void AssignHomeCountriesToExiledAgitators(const std::map<std::string, int>& tag_
       }
    }
 }
+
+int MungePlaythroughIdIntoInteger(const std::string& playthrough_id_string)
+{
+   return std::accumulate(playthrough_id_string.begin(), playthrough_id_string.end(), 0, [](int id, const char& digit) {
+      return id + static_cast<int>(digit);
+   });
+}
 }  // namespace
 
 
@@ -381,5 +389,5 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        .culture_definitions = culture_definitions,
        .characters = characters,
        .igs = igs,
-       .playthrough_id = playthrough_id});
+       .playthrough_id = MungePlaythroughIdIntoInteger(playthrough_id)});
 }

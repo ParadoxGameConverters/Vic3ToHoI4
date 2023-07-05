@@ -7,6 +7,11 @@
 
 namespace
 {
+const std::string& ValueOr(const std::string& str, const std::string& val)
+{
+   return str.empty() ? val : str;
+}
+
 std::string OutputTraits(const std::set<std::string>& traits)
 {
    return fmt::format("{{ {} }}", fmt::join(traits, " "));
@@ -111,7 +116,7 @@ void out::OutputCharacter(std::ostream& out, const std::string& tag, const hoi4:
       out << "\t\tgender = female\n";
    }
    OutputPortraits(out,
-       character.GetPortraitAlias(),
+       ValueOr(character.GetPortraitAlias(), "GFX_portrait_unknown"),
        general_data.has_value(),
        admiral_data.has_value(),
        leader_data.has_value(),
@@ -148,7 +153,7 @@ void out::OutputSpy(std::ostream& out, const hoi4::Character& character)
 
       out << "\tcreate_operative_leader = {\n";
       out << fmt::format("\t\tname = {}_{}\n", character.GetFirstName(), character.GetLastName());
-      out << fmt::format("\t\tGFX = {}\n", character.GetPortraitAlias());
+      out << fmt::format("\t\tGFX = {}\n", ValueOr(character.GetPortraitAlias(), "GFX_portrait_operative_unknown"));
       out << fmt::format("\t\ttraits = {}\n", OutputTraits(spy_data.traits));
       out << "\t\tbypass_recruitment = no\n";
       out << "\t\tavailable_to_spy_master = yes\n";

@@ -16,7 +16,7 @@ struct CharacterOptions
    std::string last_name;
    int culture_id = 0;
    std::string culture;
-   bool is_female;
+   bool is_female = false;
    int ig_id = 0;
    std::set<std::string> roles;
    int rank = 0;

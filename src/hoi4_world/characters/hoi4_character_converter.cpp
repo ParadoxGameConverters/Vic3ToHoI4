@@ -98,6 +98,7 @@ void EnqueueCharacterForPortrait(mappers::CultureQueue& culture_queue,
       }
       // If you're not a spy or a queen, generic catchall for all other leaders.
       culture_queue.female_leader.push_back(source_character.GetId());
+      return;
    }
 
    // Martial portraits take priority over political ones.
@@ -114,6 +115,7 @@ void EnqueueCharacterForPortrait(mappers::CultureQueue& culture_queue,
    if (is_leader && leader_type == "council")
    {
       culture_queue.council.push_back(source_character.GetId());
+      return;
    }
    if (is_leader && hoi4::IsMonarch(leader_type, laws))
    {
@@ -205,7 +207,7 @@ hoi4::Character hoi4::ConvertCharacter(const vic3::Character& source_character,
        country_ideology,
        source_country.GetActiveLaws(),
        leader_type,
-       advisor_data.has_value(),
+       admiral_data.has_value(),
        general_data.has_value(),
        leader_data.has_value(),
        advisor_data.has_value(),

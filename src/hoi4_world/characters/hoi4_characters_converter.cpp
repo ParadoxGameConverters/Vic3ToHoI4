@@ -1,21 +1,25 @@
 ﻿#include "src/hoi4_world/characters/hoi4_characters_converter.h"
 
+#include <algorithm>
+#include <random>
+#include <ranges>
+
 #include "external/fmt/include/fmt/format.h"
 #include "hoi4_character_converter.h"
 
 
-
 namespace
 {
-int PickUnusedId(const std::map<int, vic3::Character>& source_characters)
+int PickUnusedId(const std::map<int, vic3::Character>& source_characters,
+    const std::map<int, hoi4::Character>& characters)
 {
-   while (source_characters.find(hoi4::Character::GetGenId()) != source_characters.end())
+   while (source_characters.find(hoi4::Character::GetGenId()) != source_characters.end() ||
+          characters.find(hoi4::Character::GetGenId()) != characters.end())
    {
       hoi4::Character::IncrementGenId();
    }
    return hoi4::Character::GetGenId();
 }
-
 int FindPrimeMinister(const std::map<int, vic3::InterestGroup>& igs, const vic3::Country& source_country)
 {
    int prime_minister_id = source_country.GetHeadOfStateId();
@@ -47,6 +51,7 @@ int FindPrimeMinister(const std::map<int, vic3::InterestGroup>& igs, const vic3:
 
 std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::InterestGroup>& igs,
     const std::map<int, vic3::Character>& source_characters,
+    const std::map<int, hoi4::Character>& characters,
     const std::string& leader_type,
     const std::string& tag,
     const std::string& country_ideology,
@@ -56,7 +61,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
    if (leader_type == "council")
    {
       const auto new_council = vic3::Character({
-          .id = PickUnusedId(source_characters),
+          .id = PickUnusedId(source_characters, characters),
           .first_name = "The",
           .last_name = "Council",
           .culture = *source_country.GetPrimaryCultures().begin(),
@@ -135,11 +140,222 @@ std::pair<std::vector<int>, std::set<int>> PickAllOtherCharacters(const int lead
    }
    return {leader_ids, spy_ids};
 }
+
 ////////////////////////////////////
-////////////////////////////////////
-////////////////////////////////////
-void AssignPortraitsForCulture()
+
+void PopulatePortraitCounts(const mappers::PortraitPaths& portrait_paths, std::map<std::string, int>& portrait_counts)
 {
+   for (const auto& portrait_name: portrait_paths.army)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.navy)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.leader.communism)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.leader.democratic)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.leader.fascism)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.leader.neutrality)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.female_leader)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.advisor.communism)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.advisor.democratic)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.advisor.fascism)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.advisor.neutrality)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.male_operative)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.female_operative)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.male_monarch)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.female_monarch)
+      portrait_counts.emplace(portrait_name, 0);
+   for (const auto& portrait_name: portrait_paths.council)
+      portrait_counts.emplace(portrait_name, 0);
+}
+void ScramblePortraitPaths(mappers::PortraitPaths& portrait_paths, const int playthrough_id)
+{
+   // Each vector of the same length will be shuffled the same way.
+   // We only want different permutations between playthroughs, within the same playthrough it's the same.
+   // Edit the save file? Everything permutes the same.
+   // Reconvert? Everything permutes the same.
+   // Run a test save in 1930, then the real thing in 1936? everything permutes the same.
+   // Start a new run? Everything permutes differently.
+   std::ranges::shuffle(portrait_paths.army, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.navy, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.leader.communism, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.leader.democratic, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.leader.fascism, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.leader.neutrality, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.female_leader, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.advisor.communism, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.advisor.democratic, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.advisor.fascism, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.advisor.neutrality, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.male_operative, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.female_operative, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.male_monarch, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.female_monarch, std::default_random_engine(playthrough_id));
+   std::ranges::shuffle(portrait_paths.council, std::default_random_engine(playthrough_id));
+}
+void ProcessCultureQueue(std::map<int, hoi4::Character>& characters,
+    const mappers::CultureQueue& culture_queue,
+    mappers::PortraitPaths& portrait_paths,
+    std::map<std::string, int>& portrait_counts)
+{
+   // You ever get the strong realization, only as you're putting the last piece of the puzzle in,
+   // that maaaybe you should have used a map?
+
+   const auto ByPortraitCount = [portrait_counts](const std::string& lhs, const std::string& rhs) {
+      return portrait_counts.at(lhs) < portrait_counts.at(rhs);
+   };
+
+   std::ranges::sort(portrait_paths.army, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.army.size() && !portrait_paths.army.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.army.at(i % portrait_paths.army.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.army.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.navy, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.navy.size() && !portrait_paths.navy.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.navy.at(i % portrait_paths.navy.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.navy.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.leader.communism, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.leader.communism.size() && !portrait_paths.leader.communism.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.leader.communism.at(i % portrait_paths.leader.communism.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.leader.communism.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.leader.democratic, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.leader.democratic.size() && !portrait_paths.leader.democratic.empty();
+        ++i)
+   {
+      const std::string& portrait = portrait_paths.leader.democratic.at(i % portrait_paths.leader.democratic.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.leader.democratic.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.leader.fascism, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.leader.fascism.size() && !portrait_paths.leader.fascism.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.leader.fascism.at(i % portrait_paths.leader.fascism.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.leader.fascism.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.leader.neutrality, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.leader.neutrality.size() && !portrait_paths.leader.neutrality.empty();
+        ++i)
+   {
+      const std::string& portrait = portrait_paths.leader.neutrality.at(i % portrait_paths.leader.neutrality.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.leader.neutrality.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.female_leader, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.female_leader.size() && !portrait_paths.female_leader.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.female_leader.at(i % portrait_paths.female_leader.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.female_leader.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.advisor.communism, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.advisor.communism.size() && !portrait_paths.advisor.communism.empty();
+        ++i)
+   {
+      const std::string& portrait = portrait_paths.advisor.communism.at(i % portrait_paths.advisor.communism.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.advisor.communism.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.advisor.democratic, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.advisor.democratic.size() && !portrait_paths.advisor.democratic.empty();
+        ++i)
+   {
+      const std::string& portrait = portrait_paths.advisor.democratic.at(i % portrait_paths.advisor.democratic.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.advisor.democratic.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.advisor.fascism, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.advisor.fascism.size() && !portrait_paths.advisor.fascism.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.advisor.fascism.at(i % portrait_paths.advisor.fascism.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.advisor.fascism.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.advisor.neutrality, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.advisor.neutrality.size() && !portrait_paths.advisor.neutrality.empty();
+        ++i)
+   {
+      const std::string& portrait = portrait_paths.advisor.neutrality.at(i % portrait_paths.advisor.neutrality.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.advisor.neutrality.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.male_operative, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.male_operative.size() && !portrait_paths.male_operative.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.male_operative.at(i % portrait_paths.male_operative.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.male_operative.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.female_operative, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.female_operative.size() && !portrait_paths.female_operative.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.female_operative.at(i % portrait_paths.female_operative.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.female_operative.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.male_monarch, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.male_monarch.size() && !portrait_paths.male_monarch.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.male_monarch.at(i % portrait_paths.male_monarch.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.male_monarch.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.female_monarch, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.female_monarch.size() && !portrait_paths.female_monarch.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.female_monarch.at(i % portrait_paths.female_monarch.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.female_monarch.at(i))->second.SetPortraitAlias(portrait);
+   }
+   std::ranges::sort(portrait_paths.council, ByPortraitCount);
+   for (unsigned int i = 0; i < culture_queue.council.size() && !portrait_paths.council.empty(); ++i)
+   {
+      const std::string& portrait = portrait_paths.council.at(i % portrait_paths.council.size());
+      portrait_counts.find(portrait)->second++;
+
+      characters.find(culture_queue.council.at(i))->second.SetPortraitAlias(portrait);
+   }
+}
+mappers::PortraitPaths GetPortraitPaths(const vic3::CultureDefinition& culture,
+    const mappers::CultureGraphicsMapper& culture_graphics_mapper,
+    const int playthrough_id)
+{
+   auto portrait_paths = culture_graphics_mapper.MatchCultureToGraphics(culture).portrait_paths;
+   ScramblePortraitPaths(portrait_paths, playthrough_id);
+   return portrait_paths;
 }
 }  // namespace
 
@@ -156,8 +372,14 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(std::map<int,
 {
    // Starting Country Leader must be first.
    const std::string leader_type = leader_type_mapper.GetCountryLeaderType(source_country.GetActiveLaws());
-   const auto& [leader_id, leader] =
-       ConvertCountryLeader(igs, source_characters, leader_type, tag, country_ideology, source_country, culture_queues);
+   const auto& [leader_id, leader] = ConvertCountryLeader(igs,
+       source_characters,
+       characters,
+       leader_type,
+       tag,
+       country_ideology,
+       source_country,
+       culture_queues);
    characters.emplace(leader_id, leader);
 
    const auto& [leader_ids, spy_ids] = PickAllOtherCharacters(leader_id, source_characters, source_country);
@@ -168,6 +390,10 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(std::map<int,
 
    for (const auto& character_id: all_ids)
    {
+      if (character_id == leader_id)
+      {
+         continue;
+      }
       const auto& source_character_itr = source_characters.find(character_id);
       if (source_character_itr == source_characters.end())
       {
@@ -188,7 +414,23 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(std::map<int,
 }
 
 void hoi4::AssignPortraits(std::map<int, Character>& characters,
-    const std::map<std::string, mappers::CultureQueue>& culture_queues)
+    const std::map<std::string, mappers::CultureQueue>& culture_queues,
+    const mappers::CultureGraphicsMapper& culture_graphics_mapper,
+    const std::map<std::string, vic3::CultureDefinition>& source_cultures,
+    const int playthrough_id)
 {
    std::map<std::string, int> portrait_counts;
+
+   for (const auto& [culture, culture_queue]: culture_queues)
+   {
+      const auto& culture_itr = source_cultures.find(culture);
+      if (culture_itr == source_cultures.end())
+      {
+         continue;
+      }
+
+      auto portrait_paths = GetPortraitPaths(culture_itr->second, culture_graphics_mapper, playthrough_id);
+      PopulatePortraitCounts(portrait_paths, portrait_counts);
+      ProcessCultureQueue(characters, culture_queue, portrait_paths, portrait_counts);
+   }
 }

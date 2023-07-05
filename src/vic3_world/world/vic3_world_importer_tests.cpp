@@ -177,7 +177,7 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
        testing::UnorderedElementsAre(testing::Pair(1, InterestGroup("ig_devout", 1, 1, 0.34881F, true)),
            testing::Pair(2, InterestGroup("ig_landowners", 1, 2, 0.15406F, false)),
            testing::Pair(3, InterestGroup("ig_devout", 3, 5, 0.34652F, true))));
-   EXPECT_EQ(world.GetPlaythroughId(), "ff872f63-9112-4032-a128-cf020e7bb8a1");
+   EXPECT_EQ(world.GetPlaythroughId(), 2311);
 }
 
 

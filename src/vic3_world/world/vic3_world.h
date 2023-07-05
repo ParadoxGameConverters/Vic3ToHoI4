@@ -35,7 +35,7 @@ struct WorldOptions
    std::map<std::string, CultureDefinition> culture_definitions;
    std::map<int, Character> characters;
    std::map<int, InterestGroup> igs;
-   std::string playthrough_id;
+   int playthrough_id;
 };
 
 
@@ -54,7 +54,7 @@ class World
        culture_definitions_(std::move(world_options.culture_definitions)),
        characters_(std::move(world_options.characters)),
        igs_(std::move(world_options.igs)),
-       playthrough_id_(std::move(world_options.playthrough_id))
+       playthrough_id_(world_options.playthrough_id)
    {
    }
 
@@ -75,7 +75,7 @@ class World
    }
    [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
    [[nodiscard]] const std::map<int, InterestGroup>& GetInterestGroups() const { return igs_; }
-   [[nodiscard]] const std::string& GetPlaythroughId() const { return playthrough_id_; }
+   [[nodiscard]] int GetPlaythroughId() const { return playthrough_id_; }
 
   private:
    std::map<int, Country> countries_;
@@ -90,7 +90,7 @@ class World
    std::map<int, Character> characters_;
    std::map<int, InterestGroup> igs_;
 
-   std::string playthrough_id_;  // Seed, for deterministic results across conversions for the same series of saves
+   int playthrough_id_;  // Seed, for deterministic results across conversions for the same series of saves
 };
 
 }  // namespace vic3

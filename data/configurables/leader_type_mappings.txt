@@ -40,8 +40,6 @@ law_monarchy = {
 }
 
 law_theocracy = {
-	type = prime_minister
-
 	prime_minister = {
 		law_census_voting
 		law_universal_suffrage

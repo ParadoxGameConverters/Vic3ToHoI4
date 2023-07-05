@@ -16,6 +16,7 @@
 #include "src/hoi4_world/map/strategic_regions_importer.h"
 #include "src/hoi4_world/states/default_states_importer.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
+#include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/technology/tech_mappings_importer.h"
 #include "src/maps/map_data.h"
 #include "src/maps/map_data_importer.h"
@@ -237,6 +238,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    Log(LogLevel::Progress) << "55%";
 
    const std::vector<mappers::TechMapping> tech_mappings = mappers::ImportTechMappings();
+   const mappers::CultureGraphicsMapper culture_graphics_mapper =
+       mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
 
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
@@ -252,11 +255,16 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        source_world.GetCharacters(),
        source_world.GetInterestGroups(),
        characters,
-       culture_queues);
+       culture_queues,
+       culture_graphics_mapper);
 
    Log(LogLevel::Info) << "\tAssigning portraits to characters";
    Log(LogLevel::Progress) << "56%";
-   AssignPortraits(characters, culture_queues);
+   AssignPortraits(characters,
+       culture_queues,
+       culture_graphics_mapper,
+       source_world.GetCultureDefinitions(),
+       source_world.GetPlaythroughId());
 
    std::set<std::string> great_powers = MapPowers(source_world.GetCountryRankings().GetGreatPowers(), country_mapper);
    std::set<std::string> major_powers = MapPowers(source_world.GetCountryRankings().GetMajorPowers(), country_mapper);

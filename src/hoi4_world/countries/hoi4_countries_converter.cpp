@@ -20,7 +20,8 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
     const std::map<int, vic3::Character>& source_characters,
     const std::map<int, vic3::InterestGroup>& igs,
     std::map<int, Character>& characters,
-    std::map<std::string, mappers::CultureQueue>& culture_queues)
+    std::map<std::string, mappers::CultureQueue>& culture_queues,
+    const mappers::CultureGraphicsMapper& culture_graphics_mapper)
 {
    std::map<std::string, Country> countries;
 
@@ -34,8 +35,6 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
 
    const mappers::LeaderTypeMapper leader_type_mapper =
        mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
-   const mappers::CultureGraphicsMapper culture_graphics_mapper =
-       mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
 
    for (const auto& [country_number, source_country]: source_countries)
    {

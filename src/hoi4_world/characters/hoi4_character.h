@@ -98,6 +98,8 @@ class Character
    [[nodiscard]] const std::optional<Advisor>& GetAdvisorData() const { return advisor_data_; }
    [[nodiscard]] const std::optional<Spy>& GetSpyData() const { return spy_data_; }
 
+   void SetPortraitAlias(const std::string& alias) { portrait_alias_ = alias; }
+
    [[nodiscard]] static int GetGenId() { return gen_id_; }
    static void IncrementGenId() { ++gen_id_; }
 

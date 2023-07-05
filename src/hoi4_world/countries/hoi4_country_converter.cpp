@@ -259,6 +259,10 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
    {
       return std::nullopt;
    }
+   if (source_country.GetHeadOfStateId() == 0)
+   {
+      return std::nullopt;  // Could check database countries for [dead = yes] for a better prune.
+   }
 
    const std::optional<int> capital_state =
        ConvertCapital(source_country, *tag, vic3_state_ids_to_hoi4_state_ids, states);

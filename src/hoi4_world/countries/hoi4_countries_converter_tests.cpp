@@ -7,6 +7,7 @@
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/mappers/country/country_mapper.h"
+#include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"
 
 
@@ -36,6 +37,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        .head_of_state_id = 2,
        .character_ids = {2},
    });
+   const auto& culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
+
 
    const auto countries = ConvertCountries(
        {
@@ -69,7 +72,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        },
        {},
        characters,
-       culture_queues);
+       culture_queues,
+       culture_graphics_mapper);
 
    const Technologies expected_techs_one{
        std::map<std::optional<std::string>, std::set<std::string>>{
