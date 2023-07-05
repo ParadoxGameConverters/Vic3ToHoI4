@@ -134,14 +134,14 @@ void out::OutputCountryHistory(std::string_view output_name,
    country_history << "set_convoys = 0\n";
    country_history << "\n";
 
+   OutputCharacterRecruitment(country_history, tag, country.GetLeaderIds());
+   OutputSpies(country_history, country.GetSpyIds(), characters);
+
    OutputPolitics(country_history,
        country.GetIdeology(),
        country.GetLastElection(),
        country.AreElectionsAllowed(),
        country.GetIdeologySupport());
-
-   OutputCharacterRecruitment(country_history, tag, country.GetLeaderIds());
-   OutputSpies(country_history, country.GetSpyIds(), characters);
 
    country_history << "add_ideas = {\n";
    country_history << "\tlimited_conscription\n";

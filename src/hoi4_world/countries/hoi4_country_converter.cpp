@@ -286,7 +286,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
    const auto [leader_ids, spy_ids] = ConvertCharacters(characters,
        vic3_characters,
        *tag,
-       ideology,
+       sub_ideology,
        source_country,
        igs,
        leader_type_mapper,
