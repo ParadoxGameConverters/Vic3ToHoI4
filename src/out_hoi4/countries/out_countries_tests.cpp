@@ -91,16 +91,16 @@ TEST(Outhoi4CountriesOutcountriesTests, ExceptionIfTagsFileNotOpened)
 TEST(Outhoi4CountriesOutcountriesTests, CharactersFilesAreCreated)
 {
    commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/TagsFileIsCreated");
-   commonItems::TryCreateFolder("output/TagsFileIsCreated/common");
-   commonItems::TryCreateFolder("output/TagsFileIsCreated/common/characters");
-   commonItems::TryCreateFolder("output/TagsFileIsCreated/common/countries");
-   commonItems::TryCreateFolder("output/TagsFileIsCreated/common/country_tags");
-   commonItems::TryCreateFolder("output/TagsFileIsCreated/history");
-   commonItems::TryCreateFolder("output/TagsFileIsCreated/history/countries");
-   commonItems::TryCreateFolder("output/TagsFileIsCreated/history/units");
+   commonItems::TryCreateFolder("output/CharactersFilesAreCreated");
+   commonItems::TryCreateFolder("output/CharactersFilesAreCreated/common");
+   commonItems::TryCreateFolder("output/CharactersFilesAreCreated/common/characters");
+   commonItems::TryCreateFolder("output/CharactersFilesAreCreated/common/countries");
+   commonItems::TryCreateFolder("output/CharactersFilesAreCreated/common/country_tags");
+   commonItems::TryCreateFolder("output/CharactersFilesAreCreated/history");
+   commonItems::TryCreateFolder("output/CharactersFilesAreCreated/history/countries");
+   commonItems::TryCreateFolder("output/CharactersFilesAreCreated/history/units");
 
-   OutputCountries("CharactersFileIsCreated",
+   OutputCountries("CharactersFilesAreCreated",
        {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
        {});
 

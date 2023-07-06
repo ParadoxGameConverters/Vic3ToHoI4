@@ -356,7 +356,7 @@ mappers::PortraitPaths GetPortraitPaths(const vic3::CultureDefinition& culture,
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     const int playthrough_id)
 {
-   auto portrait_paths = culture_graphics_mapper.MatchCultureToGraphics(culture).portrait_paths;
+   mappers::PortraitPaths portrait_paths = culture_graphics_mapper.MatchCultureToGraphics(culture).portrait_paths;
    ScramblePortraitPaths(portrait_paths, playthrough_id);
    return portrait_paths;
 }

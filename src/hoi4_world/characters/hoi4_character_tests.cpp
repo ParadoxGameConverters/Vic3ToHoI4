@@ -19,7 +19,7 @@ TEST(Hoi4worldCharactersCharacter, StaticIdTrackerCanIncrement)
 {
    EXPECT_EQ(Character::GetGenId(), 1000);
    Character::IncrementGenId();
-   EXPECT_EQ(Character::GetGenId()(), 1001);
+   EXPECT_EQ(Character::GetGenId(), 1001);
 }
 
 }  // namespace hoi4

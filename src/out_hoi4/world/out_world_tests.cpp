@@ -76,7 +76,7 @@ TEST(Outhoi4WorldOutworld, TagsFileIsCreated)
 
 TEST(Outhoi4WorldOutworld, CharactersFilesAreCreated)
 {
-   CreateTestFolders("WorldCountriesFilesAreCreated");
+   CreateTestFolders("WorldCharactersFilesAreCreated");
 
    OutputWorld("WorldCharactersFilesAreCreated",
        hoi4::World(hoi4::WorldOptions{
