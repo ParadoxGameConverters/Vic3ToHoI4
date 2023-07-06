@@ -252,6 +252,7 @@ add_custom_command(TARGET ConverterFrontend
 #### Tests ####
 
 set(TEST_SOURCES ${TEST_SOURCES} "src/configuration/configuration_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/characters/hoi4_character_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/characters/hoi4_character_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/characters/hoi4_characters_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/countries/hoi4_countries_converter_tests.cpp")

@@ -273,6 +273,10 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    expected_one << "set_research_slots = 3\n";
    expected_one << "set_convoys = 0\n";
    expected_one << "\n";
+   expected_one << "if = {\n";
+   expected_one << "\tlimit = { has_dlc = \"La Resistance\" }\n";
+   expected_one << "}\n";
+   expected_one << "\n";
    expected_one << "set_politics = {\n";
    expected_one << "\truling_party = neutrality\n";
    expected_one << "\tlast_election = \"1933.1.1\"\n";
@@ -282,10 +286,6 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    expected_one << "\n";
    expected_one << "set_popularities = {\n";
    expected_one << "\tneutrality = 100\n";
-   expected_one << "}\n";
-   expected_one << "\n";
-   expected_one << "if = {\n";
-   expected_one << "\tlimit = { has_dlc = \"La Resistance\" }\n";
    expected_one << "}\n";
    expected_one << "\n";
    expected_one << "add_ideas = {\n";
@@ -484,7 +484,7 @@ TEST(Outhoi4CountriesOutcountryTests, SpiesAreDefinedInCountryHistoryFile)
                           "\tlimit = { has_dlc = \"La Resistance\" }\n"
                           "\tcreate_operative_leader = {\n"
                           "\t\tname = _\n"
-                          "\t\tGFX = \n"
+                          "\t\tGFX = GFX_portrait_operative_unknown\n"
                           "\t\ttraits = {  }\n"
                           "\t\tbypass_recruitment = no\n"
                           "\t\tavailable_to_spy_master = yes\n"
@@ -492,7 +492,7 @@ TEST(Outhoi4CountriesOutcountryTests, SpiesAreDefinedInCountryHistoryFile)
                           "\t}\n"
                           "\tcreate_operative_leader = {\n"
                           "\t\tname = _\n"
-                          "\t\tGFX = \n"
+                          "\t\tGFX = GFX_portrait_operative_unknown\n"
                           "\t\ttraits = {  }\n"
                           "\t\tbypass_recruitment = no\n"
                           "\t\tavailable_to_spy_master = yes\n"

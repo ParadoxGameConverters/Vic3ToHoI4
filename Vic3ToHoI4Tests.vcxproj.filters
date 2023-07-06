@@ -423,6 +423,9 @@
     <ClCompile Include="src\hoi4_world\characters\hoi4_characters_converter_tests.cpp">
       <Filter>src\hoi4_world\characters</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\characters\hoi4_character_tests.cpp">
+      <Filter>src\hoi4_world\characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">

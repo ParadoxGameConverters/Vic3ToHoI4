@@ -114,7 +114,7 @@ TEST(Outhoi4Characters, AdmiralsAreOutput)
 }
 
 
-TEST(Outhoi4Characters, LeadersAreOutput)
+TEST(Outhoi4Characters, CountryLeadersAreOutput)
 {
    const hoi4::Character character({
        .id = 1,
@@ -394,6 +394,64 @@ TEST(Outhoi4Characters, MissingSpiesAreLogged)
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_THAT(log.str(), testing::HasSubstr(R"([ERROR] Attempted to output spy with no spy data.)"));
+}
+
+
+TEST(Outhoi4Characters, CharactersWithoutPortraitGetUnknownPortrait)
+{
+   const hoi4::Character character({
+       .id = 1,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .general_data = std::make_optional<hoi4::General>(hoi4::General{.traits = {"trait0", "trait1"}}),
+   });
+
+   std::stringstream out;
+   OutputCharacter(out, "TAG", character);
+
+   EXPECT_EQ(out.str(),
+       "\tTAG_1 = {\n"
+       "\t\tname = Test_Mann\n"
+       "\t\tportraits = {\n"
+       "\t\t\tarmy = {\n"
+       "\t\t\t\tlarge = GFX_portrait_unknown\n"
+       "\t\t\t\tsmall = GFX_portrait_unknown_small\n"
+       "\t\t\t}\n"
+       "\t\t}\n"
+       "\t\tcorps_commander = {\n"
+       "\t\t\ttraits = { trait0 trait1 }\n"
+       "\t\t\tskill = 1\n"
+       "\t\t\tattack_skill = 1\n"
+       "\t\t\tdefense_skill = 1\n"
+       "\t\t\tplanning_skill = 1\n"
+       "\t\t\tlogistics_skill = 1\n"
+       "\t\t}\n"
+       "\t}\n");
+}
+
+
+TEST(Outhoi4Characters, SpiesWithoutPortraitGetUnknownPortrait)
+{
+   const hoi4::Character character({
+       .id = 1,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .spy_data =
+           std::make_optional<hoi4::Spy>(hoi4::Spy{.traits = {"trait2", "trait3"}, .nationalities = {"TAG", "TWO"}}),
+   });
+
+   std::stringstream out;
+   OutputSpy(out, character);
+
+   EXPECT_EQ(out.str(),
+       "\tcreate_operative_leader = {\n"
+       "\t\tname = Test_Mann\n"
+       "\t\tGFX = GFX_portrait_operative_unknown\n"
+       "\t\ttraits = { trait2 trait3 }\n"
+       "\t\tbypass_recruitment = no\n"
+       "\t\tavailable_to_spy_master = yes\n"
+       "\t\tnationalities = { TAG TWO }\n"
+       "\t}\n");
 }
 
 }  // namespace out

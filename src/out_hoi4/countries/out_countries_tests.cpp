@@ -88,6 +88,42 @@ TEST(Outhoi4CountriesOutcountriesTests, ExceptionIfTagsFileNotOpened)
 }
 
 
+TEST(Outhoi4CountriesOutcountriesTests, CharactersFilesAreCreated)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/TagsFileIsCreated");
+   commonItems::TryCreateFolder("output/TagsFileIsCreated/common");
+   commonItems::TryCreateFolder("output/TagsFileIsCreated/common/characters");
+   commonItems::TryCreateFolder("output/TagsFileIsCreated/common/countries");
+   commonItems::TryCreateFolder("output/TagsFileIsCreated/common/country_tags");
+   commonItems::TryCreateFolder("output/TagsFileIsCreated/history");
+   commonItems::TryCreateFolder("output/TagsFileIsCreated/history/countries");
+   commonItems::TryCreateFolder("output/TagsFileIsCreated/history/units");
+
+   OutputCountries("CharactersFileIsCreated",
+       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
+       {});
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/CharactersFilesAreCreated/common/characters/TAG.txt"));
+   std::ifstream character_file_one("output/CharactersFilesAreCreated/common/characters/TAG.txt");
+   ASSERT_TRUE(character_file_one.is_open());
+   std::stringstream character_file_one_stream;
+   std::copy(std::istreambuf_iterator<char>(character_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(character_file_one_stream));
+   character_file_one.close();
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/CharactersFilesAreCreated/common/countries/TWO.txt"));
+   std::ifstream character_file_two("output/CharactersFilesAreCreated/common/countries/TWO.txt");
+   ASSERT_TRUE(character_file_two.is_open());
+   std::stringstream character_file_two_stream;
+   std::copy(std::istreambuf_iterator<char>(character_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(character_file_two_stream));
+   character_file_two.close();
+}
+
+
 TEST(Outhoi4CountriesOutcountriesTests, CountryHistoryFilesAreCreated)
 {
    commonItems::TryCreateFolder("output");

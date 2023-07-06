@@ -14,9 +14,7 @@
 
 law_council_republic = {
 	council = {
-		law_autocracy
 		law_technocracy
-		law_oligarchy
 		law_landed_voting
 		law_wealth_voting
 		law_census_voting

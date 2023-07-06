@@ -86,7 +86,7 @@ void EnqueueCharacterForPortrait(mappers::CultureQueue& culture_queue,
 
    if (source_character.IsFemale())
    {
-      if (is_leader && hoi4::IsMonarch(leader_type, laws))
+      if (is_leader && hoi4::HasMonarchs(leader_type, laws))
       {
          culture_queue.female_monarch.push_back(source_character.GetId());
          return;
@@ -117,7 +117,7 @@ void EnqueueCharacterForPortrait(mappers::CultureQueue& culture_queue,
       culture_queue.council.push_back(source_character.GetId());
       return;
    }
-   if (is_leader && hoi4::IsMonarch(leader_type, laws))
+   if (is_leader && hoi4::HasMonarchs(leader_type, laws))
    {
       culture_queue.male_monarch.push_back(source_character.GetId());
       return;
@@ -181,7 +181,7 @@ mappers::CultureQueue& PrepareCultureQueue(const std::string& culture,
 }
 }  // namespace
 
-bool hoi4::IsMonarch(const std::string& leader_type, const std::set<std::string>& laws)
+bool hoi4::HasMonarchs(const std::string& leader_type, const std::set<std::string>& laws)
 {
    return leader_type == "head_of_state" && laws.contains("law_monarchy");
 }

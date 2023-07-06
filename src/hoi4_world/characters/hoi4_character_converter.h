@@ -15,7 +15,7 @@
 namespace hoi4
 {
 
-bool IsMonarch(const std::string& leader_type, const std::set<std::string>& laws);
+bool HasMonarchs(const std::string& leader_type, const std::set<std::string>& laws);
 
 Character ConvertCharacter(const vic3::Character& source_character,
     int leader_id,

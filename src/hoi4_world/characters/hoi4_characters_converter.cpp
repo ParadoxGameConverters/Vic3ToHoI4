@@ -18,7 +18,10 @@ int PickUnusedId(const std::map<int, vic3::Character>& source_characters,
    {
       hoi4::Character::IncrementGenId();
    }
-   return hoi4::Character::GetGenId();
+   const int unused_id = hoi4::Character::GetGenId();
+   hoi4::Character::IncrementGenId();
+
+   return unused_id;
 }
 int FindPrimeMinister(const std::map<int, vic3::InterestGroup>& igs, const vic3::Country& source_country)
 {

@@ -203,7 +203,7 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
       {
          const auto& vic_list = culture_itr->second.GetNameList();
 
-         if (hoi4::IsMonarch(leader_type_mapper.GetCountryLeaderType(laws), laws))
+         if (hoi4::HasMonarchs(leader_type_mapper.GetCountryLeaderType(laws), laws))
          {
             name_list.male_names = ConvertNameSet(vic_list.male_regal_first, vic_localizations);
             name_list.female_names = ConvertNameSet(vic_list.female_regal_first, vic_localizations);

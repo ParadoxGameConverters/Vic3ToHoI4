@@ -74,6 +74,19 @@ TEST(Outhoi4WorldOutworld, TagsFileIsCreated)
 }
 
 
+TEST(Outhoi4WorldOutworld, CharactersFilesAreCreated)
+{
+   CreateTestFolders("WorldCountriesFilesAreCreated");
+
+   OutputWorld("WorldCharactersFilesAreCreated",
+       hoi4::World(hoi4::WorldOptions{
+           .countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCharactersFilesAreCreated/common/characters/TAG.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCharactersFilesAreCreated/common/characters/TWO.txt"));
+}
+
+
 TEST(Outhoi4WorldOutworld, NamesFileIsCreated)
 {
    CreateTestFolders("WorldNamesFileIsCreated");

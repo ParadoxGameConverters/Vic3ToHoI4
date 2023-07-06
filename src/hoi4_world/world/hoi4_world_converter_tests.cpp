@@ -759,7 +759,14 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
        testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
 }
 
+
 TEST(Hoi4worldWorldHoi4worldconverter, DISABLED_CharactersAreConverted)
 {
 }
+
+
+TEST(Hoi4worldWorldHoi4worldconverter, DISABLED_PortraitsAreAssigned)
+{
+}
+
 }  // namespace hoi4

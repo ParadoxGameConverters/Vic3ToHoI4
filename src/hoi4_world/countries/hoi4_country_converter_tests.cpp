@@ -1333,4 +1333,89 @@ TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)
 }
 
 
+
+TEST(Hoi4worldCountriesCountryConverter, DeadCountriesAreSkipped)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::Country source_country_one({.number = 1, .head_of_state_id = 0, .character_ids = {}});
+
+   const std::map<int, vic3::Character> vic3_characters{
+       {1, vic3::Character({.id = 1})},
+       {2, vic3::Character({.id = 2, .roles = {"agitator"}})},
+       {3, vic3::Character({.id = 3, .roles = {"agitator", "general"}})},
+   };
+
+   const std::optional<Country> country_one = ConvertCountry(source_country_one,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper({}),
+       vic3_characters,
+       mappers::LeaderTypeMapper({}),
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+
+   EXPECT_TRUE(!country_one.has_value());
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .head_of_state_id = 1, .character_ids = {1, 2, 3}});
+   std::map<int, Character> characters;
+
+   const std::map<int, vic3::Character> vic3_characters{
+       {1, vic3::Character({.id = 1, .first_name = "Test", .last_name = "Mann"})},
+       {2, vic3::Character({.id = 2, .is_female = true, .roles = {"agitator"}, .origin_country_id = 2})},
+       {3, vic3::Character({.id = 3, .roles = {"agitator", "general"}})},
+   };
+
+   const std::optional<Country> country_one = ConvertCountry(source_country_one,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper({}),
+       vic3_characters,
+       mappers::LeaderTypeMapper({}),
+       {},
+       characters,
+       dummy_culture_queues);
+
+   EXPECT_THAT(characters,
+       testing::UnorderedElementsAre(Character({
+                                         .id = 1,
+                                         .first_name = "Test",
+                                         .last_name = "Mann",
+                                         .leader_data = std::optional<Leader>{.sub_ideology = "despotism"},
+                                     }),
+           Character({
+               .id = 2,
+               .is_female = false,
+               .spy_data = std::optional<Spy>{.nationalities = {"TAG", "TWO"}},
+           }),
+           Character({
+               .id = 3,
+               .general_data = std::optional<General>{.traits = {}},
+           })));
+}
 }  // namespace hoi4
