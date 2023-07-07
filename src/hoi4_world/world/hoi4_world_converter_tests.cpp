@@ -760,13 +760,107 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, DISABLED_CharactersAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
 {
-}
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {3, "TWO"}});
+   const vic3::Country source_country_one({
+       .number = 1,
+       .tag = "TAG",
+       .color = commonItems::Color{std::array{1, 2, 3}},
+       .head_of_state_id = 1,
+       .character_ids = {1, 4, 5, 6},
+   });
+   const vic3::Country source_country_two({
+       .number = 3,
+       .tag = "TWO",
+       .color = commonItems::Color{std::array{2, 4, 6}},
+       .head_of_state_id = 3,
+       .character_ids = {2, 3},
+   });
+
+   // Compiler was being weird about it directly in map
+   vic3::Character character_one({.id = 1, .culture = "culture_2"});
+   vic3::Character character_two({.id = 2, .culture = "culture_2", .roles = {"agitator"}, .origin_country_id = 1});
+   vic3::Character character_three({.id = 3, .culture = "culture_2"});
+   vic3::Character character_four({.id = 4, .culture = "culture_1", .roles = {"general"}});
+   vic3::Character character_five({.id = 5, .culture = "culture_2", .roles = {"admiral"}});
+   vic3::Character character_six({.id = 6, .culture = "culture_2", .roles = {"politician"}});
+   const vic3::World source_world({
+       .countries = {{1, source_country_one}, {3, source_country_two}},
+       .states = {},
+       .acquired_technologies =
+           {
+               {1, {"source_tech"}},
+               {3, {"source_tech_two", "source_tech_three"}},
+           },
+       .culture_definitions =
+           {
+               {"culture_1", vic3::CultureDefinition{"culture_1", {}, {}, {}}},
+               {"culture_2", vic3::CultureDefinition{"culture_2", {}, {}, {}}},
+           },
+       .characters =
+           {
+               {1, character_one},
+               {2, character_two},
+               {3, character_three},
+               {4, character_four},
+               {5, character_five},
+               {6, character_six},
+           },
+   });
+
+   mappers::ProvinceMapper province_mapper{{}, {}};
+
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+       source_world,
+       country_mapper,
+       province_mapper,
+       false);
+
+   const auto expected_data_leader = std::optional<Leader>({.sub_ideology = "despotism"});
+   const auto expected_data_spy = std::optional<Spy>({.nationalities = {"TAG", "TWO"}});
+   const auto expected_data_general = std::optional<General>({.traits = {}});
+   const auto expected_data_admiral = std::optional<Admiral>({.traits = {}});
+   const auto expected_data_advisor = std::optional<Advisor>({.slot = "political_advisor"});
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, DISABLED_PortraitsAreAssigned)
-{
+   EXPECT_THAT(world.GetCharacters(),
+       testing::UnorderedElementsAre(std::pair{1,
+                                         Character({
+                                             .id = 1,
+                                             .portrait_alias = "GFX_leader_2",
+                                             .leader_data = expected_data_leader,
+                                         })},
+           std::pair{2,
+               Character({
+                   .id = 2,
+                   .portrait_alias = "GFX_m_op_1",
+                   .spy_data = expected_data_spy,
+               })},
+           std::pair{3,
+               Character({
+                   .id = 3,
+                   .portrait_alias = "GFX_leader_1",
+                   .leader_data = expected_data_leader,
+               })},
+           std::pair{4,
+               Character({
+                   .id = 4,
+                   .portrait_alias = "GFX_general_1",
+                   .general_data = expected_data_general,
+               })},
+           std::pair{5,
+               Character({
+                   .id = 5,
+                   .portrait_alias = "GFX_admiral_1",
+                   .admiral_data = expected_data_admiral,
+               })},
+           std::pair{6,
+               Character({
+                   .id = 6,
+                   .portrait_alias = "GFX_minister_1",
+                   .advisor_data = expected_data_advisor,
+               })}));
 }
 
 }  // namespace hoi4

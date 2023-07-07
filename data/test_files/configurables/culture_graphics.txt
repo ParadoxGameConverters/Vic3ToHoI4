@@ -15,3 +15,29 @@ culture_1 = {
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
 }
+culture_2 = {
+	cultures = { culture_2 }
+
+	navy_portraits = {
+		GFX_admiral_1
+	}
+	political_portraits = {
+		neutrality = {
+			leader = {
+				GFX_leader_1
+				GFX_leader_2
+			}
+			minister = {
+				GFX_minister_1
+			}
+		}
+	}
+	operative_portraits = {
+		male = {
+			GFX_m_op_1
+		}
+	}
+
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}

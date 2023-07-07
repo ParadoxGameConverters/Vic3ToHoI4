@@ -18,3 +18,9 @@ law_theocracy = {
 		law_universal_suffrage
 	}
 }
+
+law_council_republic = {
+	council = {
+		law_anarchy
+	}
+}

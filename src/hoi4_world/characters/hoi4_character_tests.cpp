@@ -17,9 +17,13 @@ TEST(Hoi4worldCharactersCharacter, PortraitAliasCanBeSet)
 
 TEST(Hoi4worldCharactersCharacter, StaticIdTrackerCanIncrement)
 {
-   EXPECT_EQ(Character::GetGenId(), 1000);
+   // Other Hoi4world tests impact this static value
+   // EXPECT_EQ(Character::GetGenId(), 1000);
+   // Character::IncrementGenId();
+   // EXPECT_EQ(Character::GetGenId(), 1001);
+   const int current_id = Character::GetGenId();
    Character::IncrementGenId();
-   EXPECT_EQ(Character::GetGenId(), 1001);
+   EXPECT_EQ(Character::GetGenId(), current_id + 1);
 }
 
 }  // namespace hoi4

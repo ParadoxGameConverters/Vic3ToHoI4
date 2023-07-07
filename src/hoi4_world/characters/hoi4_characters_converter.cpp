@@ -77,7 +77,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
               leader_type,
               tag,
               country_ideology,
-              source_country,
+              source_country.GetActiveLaws(),
               culture_queues,
               {})};  // country_mapper only needed for spies
    }
@@ -104,7 +104,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
            leader_type,
            tag,
            country_ideology,
-           source_country,
+           source_country.GetActiveLaws(),
            culture_queues,
            {})};  // country_mapper only needed for spies
 }
@@ -409,7 +409,7 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(std::map<int,
               leader_type,
               tag,
               country_ideology,
-              source_country,
+              source_country.GetActiveLaws(),
               culture_queues,
               country_mapper));
    }
