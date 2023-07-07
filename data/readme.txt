@@ -39,6 +39,7 @@ DaJay42				- Data Files
 gawquon				- Data Files
 klorpa				- Data Files
 Anate				- Translations
+Bratmon       - Programming
 
 Special thanks to LukyLucaz, who allowed us to incorporate Increased Resources into the converter.
 
