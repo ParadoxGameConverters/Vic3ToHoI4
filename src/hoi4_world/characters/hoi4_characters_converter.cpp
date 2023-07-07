@@ -58,6 +58,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
     const std::string& leader_type,
     const std::string& tag,
     const std::string& country_ideology,
+    const std::string& sub_ideology,
     const vic3::Country& source_country,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
@@ -77,6 +78,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
               leader_type,
               tag,
               country_ideology,
+              sub_ideology,
               source_country.GetActiveLaws(),
               culture_queues,
               {})};  // country_mapper only needed for spies
@@ -104,6 +106,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
            leader_type,
            tag,
            country_ideology,
+           sub_ideology,
            source_country.GetActiveLaws(),
            culture_queues,
            {})};  // country_mapper only needed for spies
@@ -367,6 +370,7 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(std::map<int,
     const std::map<int, vic3::Character>& source_characters,
     const std::string& tag,
     const std::string& country_ideology,
+    const std::string& sub_ideology,
     const vic3::Country& source_country,
     const std::map<int, vic3::InterestGroup>& igs,
     const mappers::LeaderTypeMapper& leader_type_mapper,
@@ -381,6 +385,7 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(std::map<int,
        leader_type,
        tag,
        country_ideology,
+       sub_ideology,
        source_country,
        culture_queues);
    characters.emplace(leader_id, leader);
@@ -409,6 +414,7 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(std::map<int,
               leader_type,
               tag,
               country_ideology,
+              sub_ideology,
               source_country.GetActiveLaws(),
               culture_queues,
               country_mapper));

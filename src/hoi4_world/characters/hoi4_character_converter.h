@@ -22,6 +22,7 @@ Character ConvertCharacter(const vic3::Character& source_character,
     const std::string& leader_type,
     const std::string& tag,
     const std::string& country_ideology,
+    const std::string& sub_ideology,
     const std::set<std::string>& laws,
     std::map<std::string, mappers::CultureQueue>& culture_queues,
     const mappers::CountryMapper& country_mapper);

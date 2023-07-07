@@ -21,6 +21,7 @@ std::pair<std::vector<int>, std::set<int>> ConvertCharacters(std::map<int, Chara
     const std::map<int, vic3::Character>& source_characters,
     const std::string& tag,
     const std::string& country_ideology,
+    const std::string& sub_ideology,
     const vic3::Country& source_country,
     const std::map<int, vic3::InterestGroup>& igs,
     const mappers::LeaderTypeMapper& leader_type_mapper,

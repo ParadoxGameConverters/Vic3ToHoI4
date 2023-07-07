@@ -101,6 +101,13 @@ void EnqueueCharacterForPortrait(mappers::CultureQueue& culture_queue,
       return;
    }
 
+   // Being a monarch takes priority over all
+   if (is_leader && hoi4::HasMonarchs(leader_type, laws))
+   {
+      culture_queue.male_monarch.push_back(source_character.GetId());
+      return;
+   }
+
    // Martial portraits take priority over political ones.
    if (is_admiral)
    {
@@ -115,11 +122,6 @@ void EnqueueCharacterForPortrait(mappers::CultureQueue& culture_queue,
    if (is_leader && leader_type == "council")
    {
       culture_queue.council.push_back(source_character.GetId());
-      return;
-   }
-   if (is_leader && hoi4::HasMonarchs(leader_type, laws))
-   {
-      culture_queue.male_monarch.push_back(source_character.GetId());
       return;
    }
    if (is_leader)
@@ -191,13 +193,14 @@ hoi4::Character hoi4::ConvertCharacter(const vic3::Character& source_character,
     const std::string& leader_type,
     const std::string& tag,
     const std::string& country_ideology,
+    const std::string& sub_ideology,
     const std::set<std::string>& laws,
     std::map<std::string, mappers::CultureQueue>& culture_queues,
     const mappers::CountryMapper& country_mapper)
 {
    std::optional<Admiral> admiral_data = GeneratePossibleAdmiral(source_character);
    std::optional<General> general_data = GeneratePossibleGeneral(source_character);
-   std::optional<Leader> leader_data = GeneratePossibleLeader(source_character, country_ideology, leader_id);
+   std::optional<Leader> leader_data = GeneratePossibleLeader(source_character, sub_ideology, leader_id);
    std::optional<Advisor> advisor_data = GeneratePossibleAdvisor(source_character, leader_data);
    std::optional<Spy> spy_data = GeneratePossibleSpy(source_character, tag, country_mapper);
 
