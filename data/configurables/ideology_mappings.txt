@@ -214,7 +214,7 @@ law_ethnostate = { marxism = -100 leninism = -100 stalinism = -75 anti_revisioni
 law_national_supremacy = { marxism = -100 leninism = -100 stalinism = -50 anti_revisionism = -25 anarchist_communism = -100 }
 law_racial_segregation = { marxism = -100 leninism = -75 stalinism = -50 anti_revisionism = -25 anarchist_communism = -100 }
 law_cultural_exclusion = { marxism = -50 leninism = -50 stalinism = 25 anti_revisionism = 50 anarchist_communism = -75 }
-law_multicultural = { marxism = 0 leninism = 0 stalinism = 75 anti_revisionism = 50 anarchist_communism = 0 }
+law_multicultural = { marxism = 100 leninism = 100 stalinism = 75 anti_revisionism = 50 anarchist_communism = 100 }
 
 # colonial_affairs
 law_no_colonial_affairs = { marxism = 0 leninism = 0 stalinism = 0 anti_revisionism = 0 anarchist_communism = 0 } # TBD
@@ -224,7 +224,7 @@ law_colonial_exploitation = { marxism = 0 leninism = 0 stalinism = 0 anti_revisi
 # distribution of power
 law_autocracy = { marxism = 0 leninism = 50 stalinism = 100 anti_revisionism = 100 anarchist_communism = -100 }
 law_technocracy = { marxism = 0 leninism = 0 stalinism = 0 anti_revisionism = 0 anarchist_communism = 0 } # TBD
-law_oligarchy = { marxism = 0 leninism = 100 stalinism = 50 anti_revisionism = 75 anarchist_communism = -100 }
+law_oligarchy = { marxism = 25 leninism = 100 stalinism = 50 anti_revisionism = 75 anarchist_communism = -100 }
 law_landed_voting = { marxism = -25 leninism = -50 stalinism = 0 anti_revisionism = 25 anarchist_communism = -100 }
 law_wealth_voting = { marxism = -25 leninism = 0 stalinism = 0 anti_revisionism = 0 anarchist_communism = -100 }
 law_census_voting = { marxism = 50 leninism = 25 stalinism = 0 anti_revisionism = 0 anarchist_communism = -50 }
@@ -246,12 +246,12 @@ law_command_economy = { marxism = 50 leninism = 100 stalinism = 100 anti_revisio
 law_no_schools = { marxism = -100 leninism = -100 stalinism = -100 anti_revisionism = -50 anarchist_communism = -100 }
 law_religious_schools = { marxism = -100 leninism = -100 stalinism = -100 anti_revisionism = -75 anarchist_communism = -100 }
 law_private_schools = { marxism = -75 leninism = -75 stalinism = -75 anti_revisionism = -50 anarchist_communism = -100 }
-law_public_schools = { marxism = 100 leninism = 100 stalinism = 75 anti_revisionism = 50 anarchist_communism = 0 }
+law_public_schools = { marxism = 100 leninism = 100 stalinism = 75 anti_revisionism = 50 anarchist_communism = 100 }
 
 # free_speech
 law_outlawed_dissent = { marxism = 0 leninism = 75 stalinism = 100 anti_revisionism = 100 anarchist_communism = -100 }
-law_censorship = { marxism = 0 leninism = 100 stalinism = 100 anti_revisionism = 100 anarchist_communism = 0 }
-law_right_of_assembly = { marxism = 100 leninism = -25 stalinism = 0 anti_revisionism = -75 anarchist_communism = 100 }
+law_censorship = { marxism = 0 leninism = 100 stalinism = 100 anti_revisionism = 100 anarchist_communism = 0 } # partial TBD
+law_right_of_assembly = { marxism = 100 leninism = -25 stalinism = -75 anti_revisionism = -75 anarchist_communism = 100 }
 law_protected_speech = { marxism = 100 leninism = 0 stalinism = -100 anti_revisionism = -100 anarchist_communism = 100 }
 
 # governance_principles
@@ -275,7 +275,7 @@ law_secret_police = { marxism = 0 leninism = 75 stalinism = 100 anti_revisionism
 law_guaranteed_liberties = { marxism = 100 leninism = 25 stalinism = -25 anti_revisionism = -50 anarchist_communism = 75 }
 
 # labor_rights
-law_no_workers_rights = { marxism = 0 leninism = 0 stalinism = 0 anti_revisionism = 0 anarchist_communism = 0 }
+law_no_workers_rights = { marxism = 0 leninism = 0 stalinism = 0 anti_revisionism = 0 anarchist_communism = 0 } # TBD
 law_regulatory_bodies = { marxism = 75 leninism = 75 stalinism = 75 anti_revisionism = 50 anarchist_communism = 75 }
 law_worker_protections = { marxism = 100 leninism = 100 stalinism = 75 anti_revisionism = 50 anarchist_communism = 100 }
 
@@ -319,7 +319,7 @@ law_graduated_taxation = { marxism = 0 leninism = 0 stalinism = 0 anti_revisioni
 # trade_policy
 law_mercantilism = { marxism = -100 leninism = -100 stalinism = -100 anti_revisionism = -100 anarchist_communism = -75 }
 law_protectionism = { marxism = -25 leninism = 25 stalinism = 25 anti_revisionism = 25 anarchist_communism = -100 }
-law_free_trade = { marxism = 25 leninism = 25 stalinism = 0 anti_revisionism = 0 anarchist_communism = 0 }
+law_free_trade = { marxism = 25 leninism = 25 stalinism = 0 anti_revisionism = 0 anarchist_communism = 100 }
 law_isolationism = { marxism = 0 leninism = -25 stalinism = 0 anti_revisionism = 50 anarchist_communism = 0 }
 
 # welfare
