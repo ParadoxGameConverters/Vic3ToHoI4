@@ -330,7 +330,145 @@ law_old_age_pension		= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism
 }
 
 fascism={
-# mappings go here
-}
+# army_model
+law_peasant_levies		= { gen_nazism = -25	fascism_ideology = -25	falangism = 25	rexism = 25 }
+law_professional_army	= { gen_nazism = 100	fascism_ideology = 100	falangism = 75	rexism = 75 }
+law_national_militia	= { gen_nazism = 25		fascism_ideology = 25	falangism = 50	rexism = 25 }
+law_mass_conscription	= { gen_nazism = 50		fascism_ideology = 75	falangism = 75	rexism = 75 }
 
+# bureaucracy
+law_hereditary_bureaucrats	= { gen_nazism = -25	fascism_ideology = -25	falangism = 50	rexism = 75 }
+law_appointed_bureaucrats	= { gen_nazism = 100	fascism_ideology = 75	falangism = 75	rexism = 75 }
+law_elected_bureaucrats		= { gen_nazism = -25	fascism_ideology = 0	falangism = -25	rexism = -25 }
+
+# childrens_rights
+law_child_labor_allowed			= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 }
+law_restricted_child_labor		= { gen_nazism = 50	fascism_ideology = 75	falangism = 50	rexism = 50 }
+law_compulsory_primary_school	= { gen_nazism = 50	fascism_ideology = 50	falangism = 25	rexism = 50 }
+
+# church and state
+law_state_religion			= { gen_nazism = -25	fascism_ideology = 0	falangism = 75	rexism = 50 }
+law_freedom_of_conscience	= { gen_nazism = 0		fascism_ideology = 25	falangism = 50	rexism = 75 }
+law_total_separation		= { gen_nazism = 50		fascism_ideology = 50	falangism = -50	rexism = -25 }
+law_state_atheism			= { gen_nazism = 0		fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+
+# citizenship
+law_ethnostate			= { gen_nazism = 100	fascism_ideology = 50	falangism = 50	rexism = 0 }
+law_national_supremacy	= { gen_nazism = 75		fascism_ideology = 100	falangism = 100	rexism = 75 }
+law_racial_segregation	= { gen_nazism = 50		fascism_ideology = 50	falangism = 25	rexism = 0 }
+law_cultural_exclusion	= { gen_nazism = 25		fascism_ideology = 50	falangism = 50	rexism = 25 }
+law_multicultural		= { gen_nazism = -100	fascism_ideology = 0	falangism = -25	rexism = 0 }
+
+# colonial_affairs
+law_no_colonial_affairs		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_colonial_resettlement	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_colonial_exploitation	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+
+# distribution of power
+law_autocracy			= { gen_nazism = 100	fascism_ideology = 010	falangism = 100		rexism = 100 }
+law_technocracy			= { gen_nazism = 0		fascism_ideology = 0	falangism = 0		rexism = 0 } # TBD
+law_oligarchy			= { gen_nazism = 100	fascism_ideology = 100	falangism = 100		rexism = 100 }
+law_landed_voting		= { gen_nazism = 100	fascism_ideology = 100	falangism = 100		rexism = 100 }
+law_wealth_voting		= { gen_nazism = 75		fascism_ideology = 25	falangism = 25		rexism = 50 }
+law_census_voting		= { gen_nazism = 50		fascism_ideology = 75	falangism = 50		rexism = 50 }
+law_universal_suffrage	= { gen_nazism = -50	fascism_ideology = -25	falangism = -25		rexism = 0 }
+law_anarchy				= { gen_nazism = -100	fascism_ideology = -100	falangism = -100	rexism = -100 }
+law_single_party_state	= { gen_nazism = 0		fascism_ideology = 0	falangism = 0		rexism = 0 } # TBD
+law_elder_council		= { gen_nazism = -25	fascism_ideology = 25	falangism = 0		rexism = 25 }
+
+# economic_system
+law_traditionalism			= { gen_nazism = -100	fascism_ideology = -100	falangism = 0	rexism = 0 }
+law_interventionism			= { gen_nazism = 100	fascism_ideology = 50	falangism = 75	rexism = 75 }
+law_agrarianism				= { gen_nazism = -25	fascism_ideology = -25	falangism = 0	rexism = 25 }
+law_industry_banned			= { gen_nazism = 0		fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_laissez_faire			= { gen_nazism = 50		fascism_ideology = 50	falangism = 25	rexism = 0 }
+law_cooperative_ownership	= { gen_nazism = -25	fascism_ideology = 25	falangism = 25	rexism = -25 }
+law_command_economy			= { gen_nazism = 75		fascism_ideology = 75	falangism = 75	rexism = 75 }
+
+# education_system
+law_no_schools			= { gen_nazism = -25	fascism_ideology = -25	falangism = -50	rexism = -50 }
+law_religious_schools	= { gen_nazism = -25	fascism_ideology = 0	falangism = 50	rexism = 25 }
+law_private_schools		= { gen_nazism = 50		fascism_ideology = 75	falangism = 50	rexism = 50 }
+law_public_schools		= { gen_nazism = 100	fascism_ideology = 100	falangism = 100	rexism = 100 }
+
+# free_speech
+law_outlawed_dissent	= { gen_nazism = 100	fascism_ideology = 75	falangism = 100		rexism = 50 }
+law_censorship			= { gen_nazism = 100	fascism_ideology = 75	falangism = 100		rexism = 75 }
+law_right_of_assembly	= { gen_nazism = -50	fascism_ideology = 0	falangism = -50		rexism = -25 }
+law_protected_speech	= { gen_nazism = -100	fascism_ideology = -25	falangism = -100	rexism = -50 }
+
+# governance_principles
+law_chiefdom				= { gen_nazism = -50	fascism_ideology = 25	falangism = 50	rexism = 75 }
+law_monarchy				= { gen_nazism = -50	fascism_ideology = 25	falangism = 50	rexism = 75 }
+law_presidential_republic	= { gen_nazism = 75		fascism_ideology = 50	falangism = 0	rexism = -25 }
+law_parliamentary_republic	= { gen_nazism = 75		fascism_ideology = 50	falangism = 0	rexism = -25 }
+law_theocracy				= { gen_nazism = -25	fascism_ideology = 0	falangism = 75	rexism = 50 }
+law_council_republic		= { gen_nazism = -50	fascism_ideology = 25	falangism = -75	rexism = -100 }
+
+# health_system
+law_no_health_system			= { gen_nazism = -25	fascism_ideology = -25	falangism = -25	rexism = -25 }
+law_charitable_health_system	= { gen_nazism = 0		fascism_ideology = 0	falangism = 50	rexism = 25 }
+law_private_health_insurance	= { gen_nazism = 75		fascism_ideology = 50	falangism = 50	rexism = 50 }
+law_public_health_insurance		= { gen_nazism = 50		fascism_ideology = 75	falangism = 75	rexism = 75 }
+
+# internal_security
+law_no_home_affairs			= { gen_nazism = -50	fascism_ideology = -50	falangism = -50	rexism = -50 }
+law_national_guard			= { gen_nazism = 50		fascism_ideology = 75	falangism = 75	rexism = 50 }
+law_secret_police			= { gen_nazism = 100	fascism_ideology = 75	falangism = 75	rexism = 50 }
+law_guaranteed_liberties	= { gen_nazism = -25	fascism_ideology = 25	falangism = 0	rexism = 25 }
+
+# labor_rights
+law_no_workers_rights	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 }
+law_regulatory_bodies	= { gen_nazism = 25	fascism_ideology = 25	falangism = 0	rexism = 25 }
+law_worker_protections	= { gen_nazism = 25	fascism_ideology = 50	falangism = 25	rexism = 25 }
+
+# land_reform
+law_serfdom						= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 25 }
+law_tenant_farmers				= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
+law_commercialized_agriculture	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
+law_homesteading				= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
+law_collectivized_agriculture	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
+
+# migration
+law_no_migration_controls	= { gen_nazism = -100	fascism_ideology = -75	falangism = -75	rexism = -75 }
+law_migration_controls		= { gen_nazism = 0		fascism_ideology = 25	falangism = 0	rexism = 25 }
+law_closed_borders			= { gen_nazism = 50		fascism_ideology = 0	falangism = 25	rexism = 0 }
+
+# policing
+law_no_police			= { gen_nazism = -50	fascism_ideology = -50	falangism = -75	rexism = -50 }
+law_local_police		= { gen_nazism = 0		fascism_ideology = 0	falangism = 0	rexism = 25 }
+law_dedicated_police	= { gen_nazism = 25		fascism_ideology = 25	falangism = 25	rexism = 25 }
+law_militarized_police	= { gen_nazism = 75		fascism_ideology = 75	falangism = 75	rexism = 50 }
+
+# rights_of_women
+law_no_womens_rights		= { gen_nazism = 100	fascism_ideology = 75	falangism = 100	rexism = 100 }
+law_women_own_property		= { gen_nazism = 100	fascism_ideology = 100	falangism = 75	rexism = 100 }
+law_women_in_the_workplace	= { gen_nazism = 0		fascism_ideology = 25	falangism = -50	rexism = -25 }
+law_womens_suffrage			= { gen_nazism = -50	fascism_ideology = 0	falangism = -75	rexism = -50 }
+
+# slavery
+law_slavery_banned	= { gen_nazism = 0	fascism_ideology = 0	falangism = 25	rexism = 0 }
+law_debt_slavery	= { gen_nazism = 25	fascism_ideology = 25	falangism = 0	rexism = 0 }
+law_slave_trade		= { gen_nazism = 0	fascism_ideology = 0	falangism = -25	rexism = 0 }
+law_legacy_slavery	= { gen_nazism = 0	fascism_ideology = 0	falangism = -25	rexism = 0 }
+
+# taxation
+law_consumption_based_taxation	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_land_based_taxation			= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_per_capita_based_taxation	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_proportional_taxation		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_graduated_taxation			= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+
+# trade_policy
+law_mercantilism	= { gen_nazism = 25	fascism_ideology = 50	falangism = 50	rexism = 50 }
+law_protectionism	= { gen_nazism = 75	fascism_ideology = 75	falangism = 75	rexism = 75 }
+law_free_trade		= { gen_nazism = 0	fascism_ideology = 25	falangism = -25	rexism = -25 }
+law_isolationism	= { gen_nazism = 25	fascism_ideology = 0	falangism = 0	rexism = 0 }
+
+# welfare
+law_no_social_security	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_poor_laws			= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_wage_subsidies		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_old_age_pension		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+}
 }
