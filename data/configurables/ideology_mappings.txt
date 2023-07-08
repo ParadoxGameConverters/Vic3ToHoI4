@@ -477,4 +477,149 @@ law_poor_laws			= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0
 law_wage_subsidies		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_old_age_pension		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 }
+
+neutrality={
+# army_model
+law_peasant_levies		= { despotism = 0	oligarchism = 25	anarchism = -100	moderatism = 0	centrism = 0 }
+law_professional_army	= { despotism = 25	oligarchism = 25 	anarchism = -100	moderatism = 25	centrism = 25 }
+law_national_militia	= { despotism = 0	oligarchism = 50	anarchism = 0		moderatism = 50	centrism = 0 }
+law_mass_conscription	= { despotism = 25	oligarchism = 0		anarchism = 0		moderatism = 0	centrism = 0 }
+
+# bureaucracy
+law_hereditary_bureaucrats	= { despotism = 100	oligarchism = 100	anarchism = -100	moderatism = -25	centrism = -25 }
+law_appointed_bureaucrats	= { despotism = 75	oligarchism = 50	anarchism = -100	moderatism = 50		centrism = 25 }
+law_elected_bureaucrats		= { despotism = -50	oligarchism = -25	anarchism = 25		moderatism = 25		centrism = 75 }
+
+# childrens_rights
+law_child_labor_allowed			= { despotism = 0	oligarchism = 25	anarchism = -100	moderatism = -25	centrism = 0 }
+law_restricted_child_labor		= { despotism = 25	oligarchism = 0		anarchism = -100	moderatism = 25		centrism = 50 }
+law_compulsory_primary_school	= { despotism = 0	oligarchism = -25	anarchism = 0		moderatism = 50		centrism = 0 }
+
+# church and state
+law_state_religion			= { despotism = 50	oligarchism = 25	anarchism = -100	moderatism = 0	centrism = 0 }
+law_freedom_of_conscience	= { despotism = 25	oligarchism = 25	anarchism = -100	moderatism = 75	centrism = 100 }
+law_total_separation		= { despotism = 0	oligarchism = 0		anarchism = 100		moderatism = 75	centrism = 50 }
+law_state_atheism			= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0	centrism = 0 } # TBD
+
+# citizenship
+law_ethnostate			= { despotism = 0		oligarchism = 0		anarchism = -100	moderatism = -25	centrism = -25 }
+law_national_supremacy	= { despotism = 0		oligarchism = 0		anarchism = -100	moderatism = -25	centrism = 0 }
+law_racial_segregation	= { despotism = 0		oligarchism = 0		anarchism = -100	moderatism = -25	centrism = 0 }
+law_cultural_exclusion	= { despotism = 0		oligarchism = 0		anarchism = -100	moderatism = 0		centrism = 25 }
+law_multicultural		= { despotism = -100	oligarchism = -75	anarchism = 100		moderatism = 100	centrism = 100 }
+
+# colonial_affairs
+law_no_colonial_affairs		= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_colonial_resettlement	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_colonial_exploitation	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+
+# distribution of power
+law_autocracy			= { despotism = 10000	oligarchism = 100	anarchism = -10000	moderatism = -50	centrism = -50 }
+law_technocracy			= { despotism = 0		oligarchism = 0		anarchism = -10000	moderatism = 0		centrism = 0 } # TBD
+law_oligarchy			= { despotism = 100		oligarchism = 10000	anarchism = -10000	moderatism = 0		centrism = -25 }
+law_landed_voting		= { despotism = 25		oligarchism = 75	anarchism = -10000	moderatism = 50		centrism = 25 }
+law_wealth_voting		= { despotism = 25		oligarchism = 75	anarchism = -10000	moderatism = 75		centrism = 50 } # Partial TBD
+law_census_voting		= { despotism = 0		oligarchism = 0		anarchism = -10000	moderatism = 100	centrism = 100 }
+law_universal_suffrage	= { despotism = -100	oligarchism = -75	anarchism = -10000	moderatism = 100	centrism = 100 }
+law_anarchy				= { despotism = -100	oligarchism = -100	anarchism = 10000	moderatism = -100	centrism = -100 }
+law_single_party_state	= { despotism = 0		oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
+law_elder_council		= { despotism = 50		oligarchism = 100	anarchism = -10000	moderatism = 75		centrism = 50 }
+
+# economic_system
+law_traditionalism			= { despotism = 50	oligarchism = 50	anarchism = -100	moderatism = 0		centrism = 0 }
+law_interventionism			= { despotism = 50	oligarchism = 25	anarchism = -100	moderatism = 50		centrism = 75 }
+law_agrarianism				= { despotism = 25	oligarchism = 50	anarchism = -100	moderatism = 0		centrism = 0 }
+law_industry_banned			= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
+law_laissez_faire			= { despotism = -50	oligarchism = -25	anarchism = 0		moderatism = 25		centrism = 0 }
+law_cooperative_ownership	= { despotism = -75	oligarchism = -100	anarchism = 25		moderatism = 25		centrism = 0 }
+law_command_economy			= { despotism = 75	oligarchism = 25	anarchism = -100	moderatism = -25	centrism = 0 }
+
+# education_system
+law_no_schools			= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 25	centrism = 0 }
+law_religious_schools	= { despotism = 25	oligarchism = 50	anarchism = -100	moderatism = 25	centrism = 25 }
+law_private_schools		= { despotism = 0	oligarchism = 25	anarchism = -100	moderatism = 25	centrism = 25 }
+law_public_schools		= { despotism = 0	oligarchism = -50	anarchism = 25		moderatism = 50	centrism = 25 }
+
+# free_speech
+law_outlawed_dissent	= { despotism = 75	oligarchism = 75	anarchism = -100	moderatism = -50	centrism = -25 }
+law_censorship			= { despotism = 50	oligarchism = 50	anarchism = -100	moderatism = -25	centrism = 0 }
+law_right_of_assembly	= { despotism = -25	oligarchism = -50	anarchism = 50		moderatism = 75		centrism = 100 }
+law_protected_speech	= { despotism = -50	oligarchism = -75	anarchism = 100		moderatism = 75		centrism = 100 }
+
+# governance_principles
+law_chiefdom				= { despotism = 100	oligarchism = 100	anarchism = -100	moderatism = 0	centrism = 0 }
+law_monarchy				= { despotism = 100	oligarchism = 100	anarchism = -100	moderatism = 0	centrism = 0 }
+law_presidential_republic	= { despotism = 100	oligarchism = 75	anarchism = -100	moderatism = 0	centrism = 0 }
+law_parliamentary_republic	= { despotism = 75	oligarchism = 100	anarchism = 50		moderatism = 0	centrism = 0 }
+law_theocracy				= { despotism = 100	oligarchism = 100	anarchism = -100	moderatism = 0	centrism = 0 }
+law_council_republic		= { despotism = -50	oligarchism = -50	anarchism = 100		moderatism = 0	centrism = 0 }
+
+# health_system
+law_no_health_system			= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0	centrism = 0 }
+law_charitable_health_system	= { despotism = 25	oligarchism = 50	anarchism = 0		moderatism = 25	centrism = 25 }
+law_private_health_insurance	= { despotism = 0	oligarchism = 50	anarchism = -100	moderatism = 25	centrism = 25 }
+law_public_health_insurance		= { despotism = 0	oligarchism = -25	anarchism = 0		moderatism = 25	centrism = 0 }
+
+# internal_security
+law_no_home_affairs			= { despotism = 0	oligarchism = 0		anarchism = 100		moderatism = 0		centrism = 0 }
+law_national_guard			= { despotism = 25	oligarchism = 50	anarchism = -100	moderatism = 50		centrism = 50 }
+law_secret_police			= { despotism = 50	oligarchism = 50	anarchism = -100	moderatism = -50	centrism = -50 }
+law_guaranteed_liberties	= { despotism = -50	oligarchism = -25	anarchism = 0		moderatism = 50		centrism = 25 }
+
+# labor_rights
+law_serfdom_banned		= { despotism = 0	oligarchism = -25	anarchism = 100		moderatism = 75		centrism = 50 } # Pre 1.3
+#law_serfdom			= { despotism = 50	oligarchism = 100	anarchism = -100	moderatism = -50	centrism = 0 } # Pre 1.3
+law_no_workers_rights	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
+law_regulatory_bodies	= { despotism = 25	oligarchism = -25	anarchism = -100	moderatism = 25		centrism = 25 }
+law_worker_protections	= { despotism = 0	oligarchism = -50	anarchism = 0		moderatism = 25		centrism = 0 }
+
+# land_reform
+law_serfdom						= { despotism = 50	oligarchism = 100	anarchism = -100	moderatism = -50	centrism = 0 }
+law_tenant_farmers				= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
+law_commercialized_agriculture	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
+law_homesteading				= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
+law_collectivized_agriculture	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
+
+# migration
+law_no_migration_controls	= { despotism = 0	oligarchism = 0		anarchism = 100		moderatism = 0		centrism = 0 }
+law_migration_controls		= { despotism = 0	oligarchism = 0		anarchism = -100	moderatism = 25		centrism = 50 }
+law_closed_borders			= { despotism = 25	oligarchism = 25	anarchism = -100	moderatism = -25	centrism = 0 }
+
+# policing
+law_no_police			= { despotism = -25	oligarchism = -50	anarchism = 100		moderatism = 0	centrism = -25 }
+law_local_police		= { despotism = 25	oligarchism = 75	anarchism = -100	moderatism = 25	centrism = 50 }
+law_dedicated_police	= { despotism = 50	oligarchism = 25	anarchism = -100	moderatism = 50	centrism = 50 }
+law_militarized_police	= { despotism = 50	oligarchism = 50	anarchism = -100	moderatism = 0	centrism = 25 }
+
+# rights_of_women
+law_no_womens_rights		= { despotism = 0	oligarchism = 0	anarchism = -100	moderatism = -25	centrism = -25 }
+law_women_own_property		= { despotism = 0	oligarchism = 0	anarchism = -100	moderatism = 25		centrism = 25 }
+law_women_in_the_workplace	= { despotism = 0	oligarchism = 0	anarchism = -100	moderatism = 25		centrism = 25 }
+law_womens_suffrage			= { despotism = 0	oligarchism = 0	anarchism = 100		moderatism = 25		centrism = 0 }
+
+# slavery
+law_slavery_banned	= { despotism = 0	oligarchism = -25	anarchism = 100		moderatism = 50		centrism = 25 }
+law_debt_slavery	= { despotism = 25	oligarchism = 25	anarchism = -100	moderatism = 0		centrism = 50 }
+law_slave_trade		= { despotism = 0	oligarchism = 50	anarchism = -10000	moderatism = -50	centrism = 0 }
+law_legacy_slavery	= { despotism = 0	oligarchism = 25	anarchism = -100	moderatism = -25	centrism = 75 }
+
+# taxation
+law_consumption_based_taxation	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_land_based_taxation			= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_per_capita_based_taxation	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_proportional_taxation		= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_graduated_taxation			= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+
+# trade_policy
+law_mercantilism	= { despotism = 50	oligarchism = 50	anarchism = -100	moderatism = 25		centrism = 25 }
+law_protectionism	= { despotism = 50	oligarchism = 50	anarchism = -100	moderatism = 75		centrism = 50 }
+law_free_trade		= { despotism = -25	oligarchism = 0		anarchism = 0		moderatism = 25		centrism = 50 }
+law_isolationism	= { despotism = 25	oligarchism = 25	anarchism = -50		moderatism = -25	centrism = 0 }
+
+# welfare
+law_no_social_security	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_poor_laws			= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_wage_subsidies		= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_old_age_pension		= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+}
 }
