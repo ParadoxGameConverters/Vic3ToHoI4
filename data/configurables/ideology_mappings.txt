@@ -28,7 +28,7 @@ law_wealth_voting = { democratic = 25 communism = -50 fascism = 0 neutrality = 5
 law_census_voting = { democratic = 50 communism = -50 fascism = 25 neutrality = 50 }
 law_universal_suffrage = { democratic = 100 communism = 100 fascism = -25 neutrality = 25 }
 law_anarchy = { democratic = -10000 communism = 10000 fascism = -10000 neutrality = -10000 }
-law_single_party_state = { democratic = 0 communism = 0 fascism = 0 neutrality = 0 } # rules go here
+law_single_party_state = { democratic = 0 communism = 0 fascism = 0 neutrality = 0 } # TDB
 
 # governance principles
 law_chiefdom = { democratic = -25 communism = -50 fascism = -25 neutrality = 25 }
@@ -37,8 +37,6 @@ law_presidential_republic = { democratic = 50 communism = 0 fascism = 50 neutral
 law_parliamentary_republic = { democratic = 50 communism = 50 fascism = 25 neutrality = 25 }
 law_theocracy = { democratic = 25 communism = -50 fascism = 25 neutrality = 50 }
 law_council_republic = { democratic = 25 communism = 100 fascism = -50 neutrality = -25 }
-
-
 
 
 ## sub-ideology selection
