@@ -43,6 +43,10 @@ TEST(MappersIdeologyIdeologyMapperTests, HighestRatedIdeologyWins)
 
 TEST(MappersIdeologyIdeologyMapperTests, NoMatchedLawsMeansNeutralityIdeology)
 {
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
    const IdeologyMapper ideology_mapper(
        {
            {"law_parliamentary_republic",
@@ -63,13 +67,26 @@ TEST(MappersIdeologyIdeologyMapperTests, NoMatchedLawsMeansNeutralityIdeology)
        {});
 
    EXPECT_EQ(ideology_mapper.GetRulingIdeology({"unmatched_law"}), "neutrality");
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("Missing ideology mapping rule or sub-ideology mapping rule for unmatched_law"));
 }
 
 
 TEST(MappersIdeologyIdeologyMapperTests, UnmatchedIdeologyMeansDespotismSubIdeology)
 {
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
    const IdeologyMapper ideology_mapper({}, {});
    EXPECT_EQ(ideology_mapper.GetSubIdeology("unmatched_ideology", {}), "despotism");
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr("No sub-ideology mapping rules for unmatched_ideology"));
 }
 
 
@@ -118,6 +135,10 @@ TEST(MappersIdeologyIdeologyMapperTests, HighestRatedSubIdeologyWins)
 
 TEST(MappersIdeologyIdeologyMapperTests, NoMatchedLawsMeansDespotismSubIdeology)
 {
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
    const IdeologyMapper ideology_mapper({},
        {
            {
@@ -155,6 +176,11 @@ TEST(MappersIdeologyIdeologyMapperTests, NoMatchedLawsMeansDespotismSubIdeology)
        });
 
    EXPECT_EQ(ideology_mapper.GetSubIdeology("matched_ideology", {"unmatched_law"}), "despotism");
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("Missing ideology mapping rule or sub-ideology mapping rule for unmatched_law"));
 }
 
 }  // namespace mappers
