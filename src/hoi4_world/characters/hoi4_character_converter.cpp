@@ -88,85 +88,85 @@ void EnqueueCharacterForPortrait(mappers::CultureQueue& culture_queue,
    {
       if (is_leader && hoi4::HasMonarchs(leader_type, laws))
       {
-         culture_queue.female_monarch.push_back(source_character.GetId());
+         culture_queue["monarch_female"].push_back(source_character.GetId());
          return;
       }
       if (is_spy)
       {
-         culture_queue.female_operative.push_back(source_character.GetId());
+         culture_queue["operative_female"].push_back(source_character.GetId());
          return;
       }
       // If you're not a spy or a queen, generic catchall for all other leaders.
-      culture_queue.female_leader.push_back(source_character.GetId());
+      culture_queue["female_leader"].push_back(source_character.GetId());
       return;
    }
 
    // Being a monarch takes priority over all
    if (is_leader && hoi4::HasMonarchs(leader_type, laws))
    {
-      culture_queue.male_monarch.push_back(source_character.GetId());
+      culture_queue["monarch_male"].push_back(source_character.GetId());
       return;
    }
 
    // Martial portraits take priority over political ones.
    if (is_admiral)
    {
-      culture_queue.navy.push_back(source_character.GetId());
+      culture_queue["navy"].push_back(source_character.GetId());
       return;
    }
    if (is_general)
    {
-      culture_queue.army.push_back(source_character.GetId());
+      culture_queue["army"].push_back(source_character.GetId());
       return;
    }
    if (is_leader && leader_type == "council")
    {
-      culture_queue.council.push_back(source_character.GetId());
+      culture_queue["council"].push_back(source_character.GetId());
       return;
    }
    if (is_leader)
    {
       if (ideology == "communism")
       {
-         culture_queue.leader.communism.push_back(source_character.GetId());
+         culture_queue["leader_communism"].push_back(source_character.GetId());
          return;
       }
       if (ideology == "democratic")
       {
-         culture_queue.leader.democratic.push_back(source_character.GetId());
+         culture_queue["leader_democratic"].push_back(source_character.GetId());
          return;
       }
       if (ideology == "fascism")
       {
-         culture_queue.leader.fascism.push_back(source_character.GetId());
+         culture_queue["leader_fascism"].push_back(source_character.GetId());
          return;
       }
-      culture_queue.leader.neutrality.push_back(source_character.GetId());
+      culture_queue["leader_neutrality"].push_back(source_character.GetId());
       return;
    }
    if (is_advisor)
    {
       if (ideology == "communism")
       {
-         culture_queue.advisor.communism.push_back(source_character.GetId());
+         culture_queue["advisor_communism"].push_back(source_character.GetId());
          return;
       }
       if (ideology == "democratic")
       {
-         culture_queue.advisor.democratic.push_back(source_character.GetId());
+         culture_queue["advisor_democratic"].push_back(source_character.GetId());
          return;
       }
       if (ideology == "fascism")
       {
-         culture_queue.advisor.fascism.push_back(source_character.GetId());
+         culture_queue["advisor_fascism"].push_back(source_character.GetId());
          return;
       }
-      culture_queue.advisor.neutrality.push_back(source_character.GetId());
+      culture_queue["advisor_neutrality"].push_back(source_character.GetId());
       return;
    }
    if (is_spy)
    {
-      culture_queue.male_operative.push_back(source_character.GetId());
+      culture_queue["operative_male"].push_back(source_character.GetId());
       return;
    }
    Log(LogLevel::Warning) << fmt::format("Unable to find a portrait category for character with ID: {}. {} {}.",

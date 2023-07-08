@@ -174,118 +174,120 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
 }
 
 
-// TEST(Hoi4worldCharactersHoi4charactersconverter, DISABLED_PortraitsAreAssigned)
-//{
-//    std::map<int, Character> characters;
-//    std::map<std::string, mappers::CultureQueue> culture_queues;
-//
-//
-//    // Commander leader
-//    const auto character_two = vic3::Character({
-//        .id = 2,
-//        .first_name = "Test",
-//        .last_name = "Mann",
-//        .culture = "culture_1",
-//        .roles = {"politician", "general"},
-//        .rank = 1,
-//    });
-//    // General
-//    const auto character_four = vic3::Character({
-//        .id = 4,
-//        .first_name = "Test",
-//        .last_name = "Mann",
-//        .culture = "culture_1",
-//        .roles = {"general"},
-//        .rank = 2,
-//    });
-//    // Female General
-//    const auto character_five = vic3::Character({
-//        .id = 5,
-//        .first_name = "Test",
-//        .last_name = "WoMann",
-//        .culture = "culture_1",
-//        .is_female = true,
-//        .roles = {"general", "agitator"},
-//        .rank = 2,
-//    });
-//    // Admiral
-//    const auto character_six = vic3::Character({
-//        .id = 6,
-//        .first_name = "Test",
-//        .last_name = "Mann",
-//        .culture = "culture_1",
-//        .roles = {"admiral"},
-//        .rank = 2,
-//    });
-//    // Spy
-//    const auto character_seven = vic3::Character({
-//        .id = 7,
-//        .first_name = "Test",
-//        .last_name = "Mann",
-//        .culture = "culture_2",
-//        .roles = {"agitator"},
-//        .origin_country_id = 3,
-//    });
-//    // Advisor
-//    const auto character_eight = vic3::Character({
-//        .id = 8,
-//        .first_name = "Test",
-//        .last_name = "Mann",
-//        .culture = "culture_1",
-//        .roles = {"politician"},
-//    });
-//    // General Advisor
-//    const auto character_nine = vic3::Character({
-//        .id = 9,
-//        .first_name = "Test",
-//        .last_name = "Mann",
-//        .culture = "culture_1",
-//        .roles = {"general", "politician"},
-//        .rank = 2,
-//    });
-//    // Admiral Advisor
-//    const auto character_ten = vic3::Character({
-//        .id = 10,
-//        .first_name = "Test",
-//        .last_name = "Mann",
-//        .culture = "culture_1",
-//        .roles = {"admiral", "politician"},
-//        .rank = 2,
-//    });
-//
-//
-//    const std::map<int, vic3::Character> source_characters = {
-//        {2, character_two},
-//        {4, character_four},
-//        {5, character_five},
-//        {6, character_six},
-//        {7, character_seven},
-//        {8, character_eight},
-//        {9, character_nine},
-//        {10, character_ten},
-//    };
-//    ConvertCharacters(characters,
-//        source_characters,
-//        "",
-//        "",
-//        vic3::Country({.head_of_state_id = 2, .character_ids = {2, 4, 5, 6, 7, 8, 9, 10}}),
-//        {},
-//        leader_type_mapper,
-//        culture_queues,
-//        {});
-//
-//
-//    std::map<std::string, std::vector<int>> culture_2_queue = {
-//        {"male_spy", {7}},
-//    };
-//    EXPECT_THAT(culture_queues.at("culture_1"),
-//        testing::UnorderedElementsAre(std::pair<std::string, std::vector<int>>{"army", {2, 4, 9}},
-//            std::pair<std::string, std::vector<int>>{"navy", {6, 10}},
-//            std::pair<std::string, std::vector<int>>{"female_leader", {5}},
-//            std::pair<std::string, std::vector<int>>{"advisor_neutrality", {8}}));
-//    EXPECT_THAT(culture_queues.at("culture_2"),
-//        testing::UnorderedElementsAre(std::pair<std::string, std::vector<int>>{"male_spy", {7}}));
-// }
+TEST(Hoi4worldCharactersHoi4charactersconverter, DISABLED_PortraitsAreAssigned)
+{
+   std::map<int, Character> characters;
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto leader_type_mapper = mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
+
+
+   // Commander leader
+   const auto character_two = vic3::Character({
+       .id = 2,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .culture = "culture_1",
+       .roles = {"politician", "general"},
+       .rank = 1,
+   });
+   // General
+   const auto character_four = vic3::Character({
+       .id = 4,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .culture = "culture_1",
+       .roles = {"general"},
+       .rank = 2,
+   });
+   // Female General
+   const auto character_five = vic3::Character({
+       .id = 5,
+       .first_name = "Test",
+       .last_name = "WoMann",
+       .culture = "culture_1",
+       .is_female = true,
+       .roles = {"general", "agitator"},
+       .rank = 2,
+   });
+   // Admiral
+   const auto character_six = vic3::Character({
+       .id = 6,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .culture = "culture_1",
+       .roles = {"admiral"},
+       .rank = 2,
+   });
+   // Spy
+   const auto character_seven = vic3::Character({
+       .id = 7,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .culture = "culture_2",
+       .roles = {"agitator"},
+       .origin_country_id = 3,
+   });
+   // Advisor
+   const auto character_eight = vic3::Character({
+       .id = 8,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .culture = "culture_1",
+       .roles = {"politician"},
+   });
+   // General Advisor
+   const auto character_nine = vic3::Character({
+       .id = 9,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .culture = "culture_1",
+       .roles = {"general", "politician"},
+       .rank = 2,
+   });
+   // Admiral Advisor
+   const auto character_ten = vic3::Character({
+       .id = 10,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .culture = "culture_1",
+       .roles = {"admiral", "politician"},
+       .rank = 2,
+   });
+
+
+   const std::map<int, vic3::Character> source_characters = {
+       {2, character_two},
+       {4, character_four},
+       {5, character_five},
+       {6, character_six},
+       {7, character_seven},
+       {8, character_eight},
+       {9, character_nine},
+       {10, character_ten},
+   };
+   ConvertCharacters(characters,
+       source_characters,
+       "",
+       "",
+       "",
+       vic3::Country({.head_of_state_id = 2, .character_ids = {2, 4, 5, 6, 7, 8, 9, 10}}),
+       {},
+       leader_type_mapper,
+       culture_queues,
+       {});
+
+
+   std::map<std::string, std::vector<int>> culture_2_queue = {
+       {"male_spy", {7}},
+   };
+   EXPECT_THAT(culture_queues.at("culture_1"),
+       testing::UnorderedElementsAre(std::pair<std::string, std::vector<int>>{"army", {2, 4, 9}},
+           std::pair<std::string, std::vector<int>>{"navy", {6, 10}},
+           std::pair<std::string, std::vector<int>>{"female_leader", {5}},
+           std::pair<std::string, std::vector<int>>{"advisor_neutrality", {8}}));
+   EXPECT_THAT(culture_queues.at("culture_2"),
+       testing::UnorderedElementsAre(std::pair<std::string, std::vector<int>>{"male_spy", {7}}));
+}
 
 
 TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
@@ -491,116 +493,120 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderP
 }
 
 
-// TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrough)
-//{
-//    const auto culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
-//    std::map<int, Character> characters{
-//        {1, Character({.id = 1})},
-//        {2, Character({.id = 2})},
-//        {3, Character({.id = 3})},
-//        {3, Character({.id = 4})},
-//        {3, Character({.id = 5})},
-//        {3, Character({.id = 6})},
-//        {3, Character({.id = 7})},
-//    };
-//    std::map<std::string, mappers::CultureQueue> culture_queues{
-//        {"culture_2", {{"operative_female", {1, 2, 3, 4, 5, 6, 7}}}},
-//    };
-//    std::map<std::string, vic3::CultureDefinition> source_cultures{
-//        {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
-//    };
-//
-//    AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
-//    EXPECT_THAT(characters,
-//        testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_1"})},
-//            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
-//            std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_3"})},
-//            std::pair{4, Character({.id = 2, .portrait_alias = "GFX_f_op_4"})},
-//            std::pair{5, Character({.id = 2, .portrait_alias = "GFX_f_op_5"})},
-//            std::pair{6, Character({.id = 2, .portrait_alias = "GFX_f_op_6"})},
-//            std::pair{7, Character({.id = 2, .portrait_alias = "GFX_f_op_7"})}));
-//
-//    // Again with same seed
-//    AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
-//    // Copy Test here once order is established
-// }
-// TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlaythrough)
-//{
-//    const auto culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
-//    std::map<int, Character> characters{
-//        {1, Character({.id = 1})},
-//        {2, Character({.id = 2})},
-//        {3, Character({.id = 3})},
-//        {4, Character({.id = 4})},
-//        {5, Character({.id = 5})},
-//        {6, Character({.id = 6})},
-//        {7, Character({.id = 7})},
-//    };
-//    std::map<std::string, mappers::CultureQueue> culture_queues{
-//        {"culture_2", {{"operative_female", {1, 2, 3, 4, 5, 6, 7}}}},
-//    };
-//    std::map<std::string, vic3::CultureDefinition> source_cultures{
-//        {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
-//    };
-//
-//    AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
-//    EXPECT_THAT(characters,
-//        testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_1"})},
-//            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
-//            std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_3"})},
-//            std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_4"})},
-//            std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_5"})},
-//            std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_6"})},
-//            std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_7"})}));
-//
-//    // Again with different seed
-//    AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 11);
-//    // Alter here once order is established
-//    EXPECT_THAT(characters,
-//        testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_1"})},
-//            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
-//            std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_3"})},
-//            std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_4"})},
-//            std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_5"})},
-//            std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_6"})},
-//            std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_7"})}));
-// }
-// TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCultures)
-//{
-//    // Have ~5 cultures using the same ~5 portraits in the same input order for 1 character each.
-//    // Portrait usage will be [2 2 1] instead of [5 0 0]
-//    const auto culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
-//    std::map<int, Character> characters{
-//        {1, Character({.id = 1})},
-//        {2, Character({.id = 2})},
-//        {3, Character({.id = 3})},
-//        {4, Character({.id = 4})},
-//        {5, Character({.id = 5})},
-//    };
-//    std::map<std::string, mappers::CultureQueue> culture_queues{
-//        {"culture_3", {{"army", {1}}}},
-//        {"culture_4", {{"army", {2}}}},
-//        {"culture_5", {{"army", {3}}}},
-//        {"culture_6", {{"army", {4}}}},
-//        {"culture_7", {{"army", {5}}}},
-//    };
-//    // Each culture has an army portrait list of the same length, so they will all be shuffled the same way
-//    std::map<std::string, vic3::CultureDefinition> source_cultures{
-//        {"culture_3", vic3::CultureDefinition({"culture_3"}, {}, {}, {})},
-//        {"culture_4", vic3::CultureDefinition({"culture_4"}, {}, {}, {})},
-//        {"culture_5", vic3::CultureDefinition({"culture_5"}, {}, {}, {})},
-//        {"culture_6", vic3::CultureDefinition({"culture_6"}, {}, {}, {})},
-//        {"culture_7", vic3::CultureDefinition({"culture_7"}, {}, {}, {})},
-//    };
-//
-//    AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
-//    // Alter order once established
-//    EXPECT_THAT(characters,
-//        testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_general_1"})},
-//            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_general_1"})},
-//            std::pair{3, Character({.id = 3, .portrait_alias = "GFX_general_2"})},
-//            std::pair{4, Character({.id = 2, .portrait_alias = "GFX_general_2"})},
-//            std::pair{7, Character({.id = 2, .portrait_alias = "GFX_general_3"})}));
-// }
+TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrough)
+{
+   const auto culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
+   std::map<int, Character> characters{
+       {1, Character({.id = 1})},
+       {2, Character({.id = 2})},
+       {3, Character({.id = 3})},
+       {3, Character({.id = 4})},
+       {3, Character({.id = 5})},
+       {3, Character({.id = 6})},
+       {3, Character({.id = 7})},
+   };
+   std::map<std::string, mappers::CultureQueue> culture_queues{
+       {"culture_2", {{"operative_female", {1, 2, 3, 4, 5, 6, 7}}}},
+   };
+   std::map<std::string, vic3::CultureDefinition> source_cultures{
+       {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
+   };
+
+   AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
+   EXPECT_THAT(characters,
+       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_1"})},
+           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
+           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_3"})},
+           std::pair{4, Character({.id = 2, .portrait_alias = "GFX_f_op_4"})},
+           std::pair{5, Character({.id = 2, .portrait_alias = "GFX_f_op_5"})},
+           std::pair{6, Character({.id = 2, .portrait_alias = "GFX_f_op_6"})},
+           std::pair{7, Character({.id = 2, .portrait_alias = "GFX_f_op_7"})}));
+
+   // Again with same seed
+   AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
+   // Copy Test here once order is established
+}
+
+
+TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlaythrough)
+{
+   const auto culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
+   std::map<int, Character> characters{
+       {1, Character({.id = 1})},
+       {2, Character({.id = 2})},
+       {3, Character({.id = 3})},
+       {4, Character({.id = 4})},
+       {5, Character({.id = 5})},
+       {6, Character({.id = 6})},
+       {7, Character({.id = 7})},
+   };
+   std::map<std::string, mappers::CultureQueue> culture_queues{
+       {"culture_2", {{"operative_female", {1, 2, 3, 4, 5, 6, 7}}}},
+   };
+   std::map<std::string, vic3::CultureDefinition> source_cultures{
+       {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
+   };
+
+   AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
+   EXPECT_THAT(characters,
+       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_1"})},
+           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
+           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_3"})},
+           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_4"})},
+           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_5"})},
+           std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_6"})},
+           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_7"})}));
+
+   // Again with different seed
+   AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 11);
+   // Alter here once order is established
+   EXPECT_THAT(characters,
+       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_1"})},
+           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
+           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_3"})},
+           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_4"})},
+           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_5"})},
+           std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_6"})},
+           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_7"})}));
+}
+
+
+TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCultures)
+{
+   // Have ~5 cultures using the same ~5 portraits in the same input order for 1 character each.
+   // Portrait usage will be [2 2 1] instead of [5 0 0]
+   const auto culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
+   std::map<int, Character> characters{
+       {1, Character({.id = 1})},
+       {2, Character({.id = 2})},
+       {3, Character({.id = 3})},
+       {4, Character({.id = 4})},
+       {5, Character({.id = 5})},
+   };
+   std::map<std::string, mappers::CultureQueue> culture_queues{
+       {"culture_3", {{"army", {1}}}},
+       {"culture_4", {{"army", {2}}}},
+       {"culture_5", {{"army", {3}}}},
+       {"culture_6", {{"army", {4}}}},
+       {"culture_7", {{"army", {5}}}},
+   };
+   // Each culture has an army portrait list of the same length, so they will all be shuffled the same way
+   std::map<std::string, vic3::CultureDefinition> source_cultures{
+       {"culture_3", vic3::CultureDefinition({"culture_3"}, {}, {}, {})},
+       {"culture_4", vic3::CultureDefinition({"culture_4"}, {}, {}, {})},
+       {"culture_5", vic3::CultureDefinition({"culture_5"}, {}, {}, {})},
+       {"culture_6", vic3::CultureDefinition({"culture_6"}, {}, {}, {})},
+       {"culture_7", vic3::CultureDefinition({"culture_7"}, {}, {}, {})},
+   };
+
+   AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
+   // Alter order once established
+   EXPECT_THAT(characters,
+       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_general_1"})},
+           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_general_1"})},
+           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_general_2"})},
+           std::pair{4, Character({.id = 2, .portrait_alias = "GFX_general_2"})},
+           std::pair{7, Character({.id = 2, .portrait_alias = "GFX_general_3"})}));
+}
 
 }  // namespace hoi4
