@@ -132,9 +132,11 @@ law_secret_police			= { conservatism = -25	liberalism = -25	socialism = -50 }
 law_guaranteed_liberties	= { conservatism = 25	liberalism = 50		socialism = 75 }
 
 # labor_rights
-law_no_workers_rights	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
-law_regulatory_bodies	= { conservatism = 25	liberalism = 25	socialism = 50 }
-law_worker_protections	= { conservatism = -25	liberalism = 25	socialism = 75 }
+law_serfdom_banned		= { conservatism = 100	liberalism = 100	socialism = 100 } # Pre 1.3
+#law_serfdom			= { conservatism = -25	liberalism = -50	socialism = -75 } # Pre 1.3
+law_no_workers_rights	= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
+law_regulatory_bodies	= { conservatism = 25	liberalism = 25		socialism = 50 }
+law_worker_protections	= { conservatism = -25	liberalism = 25		socialism = 75 }
 
 # land_reform
 law_serfdom						= { conservatism = -25	liberalism = -50	socialism = -75 }
@@ -275,9 +277,11 @@ law_secret_police			= { marxism = 0		leninism = 75	stalinism = 100	anti_revision
 law_guaranteed_liberties	= { marxism = 100	leninism = 25	stalinism = -25	anti_revisionism = -50	anarchist_communism = 75 }
 
 # labor_rights
-law_no_workers_rights	= { marxism = 0		leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
-law_regulatory_bodies	= { marxism = 75	leninism = 75	stalinism = 75	anti_revisionism = 50	anarchist_communism = 75 }
-law_worker_protections	= { marxism = 100	leninism = 100	stalinism = 75	anti_revisionism = 50	anarchist_communism = 100 }
+law_serfdom_banned		= { marxism = 100	leninism = 100	stalinism = 100		anti_revisionism = 75	anarchist_communism = 100 } # Pre 1.3
+#law_serfdom			= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -50	anarchist_communism = -100 } # Pre 1.3
+law_no_workers_rights	= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_regulatory_bodies	= { marxism = 75	leninism = 75	stalinism = 75		anti_revisionism = 50	anarchist_communism = 75 }
+law_worker_protections	= { marxism = 100	leninism = 100	stalinism = 75		anti_revisionism = 50	anarchist_communism = 100 }
 
 # land_reform
 law_serfdom						= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -50	anarchist_communism = -100 }
@@ -418,7 +422,9 @@ law_secret_police			= { gen_nazism = 100	fascism_ideology = 75	falangism = 75	re
 law_guaranteed_liberties	= { gen_nazism = -25	fascism_ideology = 25	falangism = 0	rexism = 25 }
 
 # labor_rights
-law_no_workers_rights	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 }
+law_serfdom_banned		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # Pre 1.3
+#law_serfdom			= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 25 } # Pre 1.3
+law_no_workers_rights	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_regulatory_bodies	= { gen_nazism = 25	fascism_ideology = 25	falangism = 0	rexism = 25 }
 law_worker_protections	= { gen_nazism = 25	fascism_ideology = 50	falangism = 25	rexism = 25 }
 
