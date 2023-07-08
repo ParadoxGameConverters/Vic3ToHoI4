@@ -79,7 +79,7 @@ law_colonial_resettlement = { conservatism = 0 liberalism = 0 socialism = 0 } # 
 law_colonial_exploitation = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
 
 # distribution of power
-law_autocracy = { conservatism = -100 liberalism = -1000 socialism = -10000 }
+law_autocracy = { conservatism = -100 liberalism = -10000 socialism = -10000 }
 law_technocracy = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
 law_oligarchy = { conservatism = 25 liberalism = 0 socialism = -50 }
 law_elder_council = { conservatism = 25 liberalism = 0 socialism = -50 }
@@ -91,13 +91,13 @@ law_anarchy = { conservatism = -10000 liberalism = -10000 socialism = -10000 }
 law_single_party_state = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
 
 # economic_system
-law_traditionalism = { conservatism = 25 liberalism = 0 socialism = 0 }
-law_interventionism = { conservatism = 50 liberalism = 50 socialism = 25 }
-law_agrarianism = { conservatism = -25 liberalism = -25 socialism = -50 }
+law_traditionalism = { conservatism = 25 liberalism = -25 socialism = -25 }
+law_interventionism = { conservatism = -25 liberalism = 50 socialism = 25 }
+law_agrarianism = { conservatism = 25 liberalism = 0 socialism = 0 }
 law_industry_banned = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
-law_laissez_faire = { conservatism = 25 liberalism = 50 socialism = 75 }
-law_cooperative_ownership = { conservatism = 25 liberalism = 50 socialism = 75 }
-law_command_economy = { conservatism = 25 liberalism = 50 socialism = 75 }
+law_laissez_faire = { conservatism = 75 liberalism = 75 socialism = -25 }
+law_cooperative_ownership = { conservatism = -100 liberalism = -75 socialism = 100 }
+law_command_economy = { conservatism = -25 liberalism = -50 socialism = 75 }
 
 # education_system
 law_no_schools = { conservatism = 0 liberalism = 0 socialism = 0 }
@@ -132,7 +132,7 @@ law_secret_police = { conservatism = -25 liberalism = -25 socialism = -50 }
 law_guaranteed_liberties = { conservatism = 25 liberalism = 50 socialism = 75 }
 
 # labor_rights
-law_no_workers_rights = { conservatism = -25 liberalism = -50 socialism = -75 }
+law_no_workers_rights = { conservatism = 0 liberalism = 0 socialism = 0 } # TBD
 law_regulatory_bodies = { conservatism = 25 liberalism = 25 socialism = 50 }
 law_worker_protections = { conservatism = -25 liberalism = 25 socialism = 75 }
 
