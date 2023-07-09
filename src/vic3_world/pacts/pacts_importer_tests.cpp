@@ -43,7 +43,7 @@ TEST(Vic3WorldPactsPactsImporter, PactsCanBeImported)
 }
 
 
-TEST(Vic3WorldPactsPactsImporter, PactsSetAsNoneAreMarkedBroken)
+TEST(Vic3WorldPactsPactsImporter, PactsSetAsNoneAreSkipped)
 {
    std::stringstream input;
    input << "={\n";
@@ -52,15 +52,9 @@ TEST(Vic3WorldPactsPactsImporter, PactsSetAsNoneAreMarkedBroken)
    input << "\t}\n";
    input << "}\n";
 
-   std::stringstream log;
-   std::streambuf* cout_buffer = std::cout.rdbuf();
-   std::cout.rdbuf(log.rdbuf());
+   const std::map<int, Pact> pacts = ImportPacts(input);
 
-   const std::map<int, Pact> _ = ImportPacts(input);
-
-   std::cout.rdbuf(cout_buffer);
-
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"([ERROR] Broken pact in save file. This should not happen.)"));
+   EXPECT_TRUE(pacts.empty());
 }
 
 

@@ -7,7 +7,6 @@
 #include "src/vic3_world/pacts/pact_importer.h"
 
 
-
 std::map<int, vic3::Pact> vic3::ImportPacts(std::istream& input_stream)
 {
    std::map<int, Pact> pacts;
@@ -20,7 +19,6 @@ std::map<int, vic3::Pact> vic3::ImportPacts(std::istream& input_stream)
           const std::string pact_string = commonItems::stringOfItem(input_stream).getString();
           if (pact_string.find('{') == std::string::npos)
           {
-             Log(LogLevel::Error) << "Broken pact in save file. This should not happen.";
              return;
           }
           std::istringstream pact_stream(pact_string);
