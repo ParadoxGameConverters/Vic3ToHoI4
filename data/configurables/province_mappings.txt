@@ -4861,22 +4861,22 @@
 	link = { vic3 = x7BCC6D vic3 = x995E0F vic3 = xC5390E hoi4 = 10387 } # STATE_CALIFORNIA, STATE_CALIFORNIA, STATE_CALIFORNIA -> Barstow
 	link = { vic3 = x5625EF vic3 = xD507FA hoi4 = 11795 } # STATE_CALIFORNIA, STATE_CALIFORNIA -> Cathedral City
 	link = { comment = "* * STATE_SONORA " }
-	link = { vic3 = x03709A vic3 = x14EE17 vic3 = x60D0C0 vic3 = xAF76BB hoi4 = 2069 } # STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA -> Caborca
-	link = { vic3 = x1A4988 vic3 = xC699E3 vic3 = xE51C65 vic3 = x7D0279 vic3 = x81A80B hoi4 = 4908 } # STATE_SONORA, Guaymas [port], STATE_SONORA, STATE_SONORA, Hermosillo [city] -> Guaymas
+	link = { vic3 = x03709A vic3 = x14EE17 vic3 = x60D0C0 vic3 = xAF76BB vic3 = x01D099 hoi4 = 2069 } # STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA -> Caborca
+	link = { vic3 = x1A4988 vic3 = xC699E3 vic3 = xE51C65 hoi4 = 4908 } # STATE_SONORA, Guaymas [port], STATE_SONORA -> Guaymas
 	link = { vic3 = x421F6A vic3 = x6DA277 vic3 = xF03A69 hoi4 = 4977 } # Cajeme [wood][farm], STATE_SONORA, STATE_SONORA -> Ciudad Obregón
-	link = { vic3 = x01D099 vic3 = x9A8A72 vic3 = x9FBBA9 vic3 = xBB07D6 hoi4 = 8012 } # STATE_SONORA, STATE_SONORA, Nogales [mine], STATE_SONORA -> Nogales
-	link = { vic3 = x0E6844 vic3 = x27B5D7 vic3 = x5238CD vic3 = x8BD05C vic3 = xE9BBD3 vic3 = x0F641B hoi4 = 10765 } # STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA -> Hermosillo
+	link = { vic3 = x9A8A72 vic3 = x9FBBA9 vic3 = xBB07D6 hoi4 = 8012 } # STATE_SONORA, Nogales [mine], STATE_SONORA -> Nogales
+	link = { vic3 = x0E6844 vic3 = x27B5D7 vic3 = x5238CD vic3 = x8BD05C vic3 = xE9BBD3 vic3 = x0F641B vic3 = x81A80B vic3 = x7D0279 hoi4 = 10765 } # STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA, Hermosillo [city], STATE_SONORA -> Hermosillo
 	link = { vic3 = x4271A2 vic3 = x54B1CE vic3 = x575437 vic3 = x7036C3 vic3 = xDF50C0 vic3 = x2DAABF vic3 = xE8078D hoi4 = 10848 } # STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA -> Bahía de Kino
 	link = { vic3 = x0A3CB6 vic3 = x8646F0 vic3 = xA2A7AB vic3 = xCC0672 hoi4 = 12833 } # STATE_SONORA, STATE_SONORA, STATE_SONORA, STATE_SONORA -> San Luis Río Colorado
 	link = { vic3 = x12D3FB hoi4 = 8033 } # STATE_SONORA -> Sahuaripa
 	link = { comment = "* * STATE_CHIHUAHUA " }
-	link = { vic3 = x14A53B vic3 = x2B7E93 vic3 = x30BBDA vic3 = x803080 vic3 = xC9BA1B vic3 = xD7DEC8 vic3 = xC3C402 hoi4 = 2037 } # STATE_CHIHUAHUA, Chihuahua [city], STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA -> Miguel Ahumada
+	link = { vic3 = x30BBDA vic3 = x803080 vic3 = xC9BA1B vic3 = xD7DEC8 vic3 = xC3C402 hoi4 = 2037 } # STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA -> Miguel Ahumada
 	link = { vic3 = x0011AA vic3 = x986D98 vic3 = xE06B52 vic3 = x556403 hoi4 = 4898 } # STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA -> Guachochi
 	link = { vic3 = x10C6B4 vic3 = x3188F7 vic3 = x5CED99 vic3 = x6D572C vic3 = xFE578D vic3 = x262FDB vic3 = x0D5DDD vic3 = x5AF2D5 vic3 = xCD9190 hoi4 = 7935 } # Cuauhtemoc [wood], STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA -> Cuauhtémoc
 	link = { vic3 = x04C43F vic3 = x37B11F vic3 = x8E9D4F hoi4 = 8097 } # El Paso del Norte [farm], STATE_CHIHUAHUA, STATE_CHIHUAHUA -> Juárez
 	link = { vic3 = x8FB2D5 hoi4 = 5071 } # STATE_CHIHUAHUA -> Agua Prieta
 	link = { vic3 = x3A74AB vic3 = x51153D vic3 = x7CFB5F vic3 = xC6D1E5 vic3 = xB009D9 hoi4 = 10809 } # STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA -> Ascensión
-	link = { vic3 = x003080 vic3 = x0BFD7B vic3 = x432FE4 vic3 = x9BDC42 vic3 = xDA4A32 hoi4 = 10830 } # STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA -> Chihuahua
+	link = { vic3 = x003080 vic3 = x0BFD7B vic3 = x432FE4 vic3 = x9BDC42 vic3 = xDA4A32 vic3 = x2B7E93 vic3 = x14A53B hoi4 = 10830 } # STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, Chihuahua [city], STATE_CHIHUAHUA -> Chihuahua
 	link = { vic3 = x1C9D7D vic3 = x58817E vic3 = x9A551F vic3 = xECD11D vic3 = xF82CDC hoi4 = 10916 } # STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, Jimenez [mine] -> Hidalgo del Parral
 	link = { vic3 = x535D1C vic3 = x55FB35 vic3 = x80773D vic3 = xADD8B8 vic3 = xF97F04 vic3 = x120FFD hoi4 = 12745 } # STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA -> Ejido Benito Juárez
 	link = { vic3 = x248F66 vic3 = xBF6399 vic3 = xE941BF hoi4 = 13214 } # STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA -> Nacozari de García
@@ -4885,10 +4885,10 @@
 	link = { vic3 = x77C161 vic3 = xB9D7C8 vic3 = xBE33DB vic3 = xC7E9EA vic3 = x80B001 vic3 = x03FA03 hoi4 = 12897 } # STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA, STATE_CHIHUAHUA -> Manuel Ojinaga
 	link = { comment = "* * STATE_RIO_GRANDE " }
 	link = { vic3 = x00879A vic3 = x1C58D1 vic3 = x304ACD vic3 = xE4E032 vic3 = x20360A vic3 = x00B001 vic3 = xBA8759 hoi4 = 2060 } # STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE -> Nuevo Laredo
-	link = { vic3 = xC68684 vic3 = xDEEEB0 vic3 = xF32D13 hoi4 = 2083 } # STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE -> Ciudad Victoria
+	link = { vic3 = xC68684 vic3 = xDEEEB0 vic3 = xF32D13 vic3 = xF01B64 hoi4 = 2083 } # STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE -> Ciudad Victoria
 	link = { vic3 = x08C98F vic3 = x0F59F0 vic3 = x1BD480 vic3 = xD51E89 vic3 = x41A909 vic3 = x4EE20D hoi4 = 2104 } # STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE -> Hércules
 	link = { vic3 = x4FF638 vic3 = x8030C0 vic3 = xC1EF57 vic3 = xCAEB7A vic3 = xC202B5 vic3 = xDDE205 hoi4 = 5015 } # Matamoros [farm], STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE -> Matamoros
-	link = { vic3 = x3A264E vic3 = x883E5B vic3 = xF01B64 vic3 = xF33EC5 vic3 = xE96480 vic3 = x749EC2 hoi4 = 5021 } # STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, Ciudad Valles [mine], Tampico [port], STATE_BAJIO -> Tampico
+	link = { vic3 = x3A264E vic3 = x883E5B vic3 = xE96480 vic3 = x749EC2 vic3 = xF33EC5 hoi4 = 5021 } # STATE_RIO_GRANDE, STATE_RIO_GRANDE, Tampico [port], STATE_BAJIO, Ciudad Valles [mine] -> Tampico
 	link = { vic3 = x1B9AEE vic3 = x1CC654 vic3 = x54B95F vic3 = xFC72E1 vic3 = xFEC6A5 vic3 = x7F00A8 hoi4 = 7973 } # STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE -> Saltillo
 	link = { vic3 = x60385F vic3 = xEA81D3 vic3 = xDCEE0B vic3 = x9F69AD hoi4 = 10746 } # STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE -> Monclova
 	link = { vic3 = x4C9B4D vic3 = x6EDB2C vic3 = xB13782 vic3 = xDDC3A9 vic3 = xF468A1 vic3 = xA98620 hoi4 = 10769 } # STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE, STATE_RIO_GRANDE -> Reynosa
@@ -4898,10 +4898,10 @@
 	link = { vic3 = xD69138 vic3 = xE1E8AB vic3 = x766F08 vic3 = x9C099B vic3 = xF53F63 hoi4 = 12835 } # STATE_RIO_GRANDE, STATE_RIO_GRANDE, Monterrey [city], STATE_RIO_GRANDE, STATE_RIO_GRANDE -> Monterrey
 	link = { vic3 = x50EF80 vic3 = xA164AB vic3 = xA995BC vic3 = x654D48 hoi4 = 13088 } # STATE_RIO_GRANDE, Ciudad Victoria [wood], STATE_RIO_GRANDE, STATE_RIO_GRANDE -> San Fernando
 	link = { comment = "* * STATE_DURANGO " }
-	link = { vic3 = x2F69FF vic3 = xB57A54 vic3 = xE40A9D hoi4 = 4946 } # STATE_DURANGO, STATE_DURANGO, STATE_DURANGO -> Santiago Papasquiaro
-	link = { vic3 = x403080 vic3 = x5B96E6 vic3 = x6F6565 vic3 = xE755F0 vic3 = xD87641 hoi4 = 7921 } # STATE_DURANGO, El Salto [wood], STATE_DURANGO, Durango [city], STATE_DURANGO -> Durango
+	link = { vic3 = x2F69FF vic3 = xB57A54 vic3 = xE40A9D vic3 = x00B080 vic3 = x5B96E6 hoi4 = 4946 } # STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, Santiago Papasquiaro [farm], El Salto [wood] -> Santiago Papasquiaro
+	link = { vic3 = x403080 vic3 = x6F6565 vic3 = xE755F0 vic3 = xD87641 hoi4 = 7921 } # STATE_DURANGO, STATE_DURANGO, Durango [city], STATE_DURANGO -> Durango
 	link = { vic3 = x6AAD8E vic3 = xF88218 vic3 = x1DD207 vic3 = xEC0A4D vic3 = x476D93 hoi4 = 8003 } # STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, Lerdo [mine], STATE_DURANGO -> Lerdo
-	link = { vic3 = x00B080 vic3 = x4F60EB vic3 = x74AF76 vic3 = x929ECC vic3 = xD374E4 vic3 = x1C03D7 vic3 = x10BBF0 hoi4 = 10853 } # Santiago Papasquiaro [farm], STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, STATE_DURANGO -> Río Grande
+	link = { vic3 = x4F60EB vic3 = x74AF76 vic3 = x929ECC vic3 = xD374E4 vic3 = x1C03D7 vic3 = x10BBF0 hoi4 = 10853 } # STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, STATE_DURANGO -> Río Grande
 	link = { vic3 = x27C1A1 vic3 = x83F6C7 vic3 = x95CA42 vic3 = xB7EC5C vic3 = xC46F80 vic3 = xEA20F2 hoi4 = 10871 } # STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, STATE_DURANGO, STATE_DURANGO -> Santa María del Oro
 	link = { comment = "* * STATE_SINALOA " }
 	link = { vic3 = x963998 vic3 = xA4C4A6 vic3 = xC6D687 vic3 = xDFD0C0 hoi4 = 1945 } # El Fuerte [wood], Los Mochis [farm], STATE_SINALOA, Mazatlan [port] -> Los Mochis
@@ -4910,16 +4910,16 @@
 	link = { comment = "* * STATE_BAJIO " }
 	link = { vic3 = x732A81 vic3 = x9BAC78 vic3 = xEC946F vic3 = xC0B001 vic3 = xD6EED0 hoi4 = 1952 } # STATE_BAJIO, STATE_BAJIO, STATE_BAJIO, STATE_BAJIO, STATE_BAJIO -> Matehuala
 	link = { vic3 = x6FBC1A vic3 = x71F349 vic3 = xD0B080 vic3 = x4606C7 vic3 = x725961 vic3 = x5F1A07 hoi4 = 2008 } # STATE_BAJIO, Guanajuato [mine], STATE_BAJIO, STATE_BAJIO, San Luis Potosí [city], STATE_BAJIO -> León
-	link = { vic3 = x2214C5 vic3 = x6B4C3A vic3 = x75E1C3 vic3 = xD03080 hoi4 = 2011 } # Ciudad Valles [wood], STATE_BAJIO, STATE_BAJIO, STATE_BAJIO -> Querétaro
-	link = { vic3 = x34ABA3 vic3 = x44B0D0 vic3 = x503080 vic3 = xE3628B vic3 = x4BFB55 vic3 = x70C1FF hoi4 = 4956 } # STATE_BAJIO, STATE_BAJIO, Querétaro [farm], STATE_BAJIO, STATE_BAJIO, STATE_BAJIO -> San Luis Potosí
+	link = { vic3 = x6B4C3A vic3 = x75E1C3 vic3 = xD03080 hoi4 = 2011 } # STATE_BAJIO, STATE_BAJIO, STATE_BAJIO -> Querétaro
+	link = { vic3 = x34ABA3 vic3 = x44B0D0 vic3 = x503080 vic3 = xE3628B vic3 = x4BFB55 vic3 = x70C1FF vic3 = x2214C5 hoi4 = 4956 } # STATE_BAJIO, STATE_BAJIO, Querétaro [farm], STATE_BAJIO, STATE_BAJIO, STATE_BAJIO, Ciudad Valles [wood] -> San Luis Potosí
 	link = { comment = "* * STATE_YUCATAN " }
 	link = { vic3 = x23EF68 vic3 = x35FEEB vic3 = x47D122 vic3 = xD1EC91 vic3 = xDD8B61 vic3 = xE3AD92 vic3 = xFEE4D4 vic3 = x40B001 vic3 = xDB85B0 vic3 = xA59F7B hoi4 = 4904 } # Campeche [wood], STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, Ciudad del Carmen [port] -> Campeche
 	link = { vic3 = x5030C0 vic3 = x90AC14 vic3 = x91484C vic3 = xB598B9 vic3 = xCE98DE vic3 = xCE9FD1 vic3 = xE280B2 vic3 = xE31B45 vic3 = x54250B vic3 = x4F7405 hoi4 = 4965 } # STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, Payo Obispo [mine], STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, Cancun [farm], STATE_YUCATAN -> Chetumal
 	link = { vic3 = x1DB7A7 vic3 = x2C4E34 vic3 = x51E4B6 vic3 = x68F271 vic3 = x69E5AF vic3 = x8BE638 vic3 = xA8DEBE vic3 = xE68FD8 hoi4 = 12715 } # STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, STATE_YUCATAN, Mérida [city], STATE_YUCATAN -> Mérida
 	link = { comment = "* * STATE_MEXICO " }
 	link = { vic3 = x0EBDEC vic3 = x3A857C vic3 = x5A4C5B vic3 = x6BEB21 vic3 = x5B5167 vic3 = x903040 hoi4 = 1965 } # Mexico City [city], STATE_MEXICO, STATE_MEXICO, Toluca [mine], STATE_MEXICO, STATE_MEXICO -> Ciudad de México
-	link = { vic3 = x0A1D52 vic3 = x6EFE9A vic3 = x44E6F0 vic3 = x51EB34 hoi4 = 7913 } # STATE_MEXICO, STATE_MEXICO, STATE_MEXICO, STATE_MEXICO -> Pachuca
-	link = { vic3 = x10B040 vic3 = x10B080 vic3 = x204077 vic3 = x5A9469 vic3 = xD5F2F8 vic3 = xCC93D9 hoi4 = 8089 } # STATE_MEXICO, Chilpacingo [wood], STATE_MEXICO, Puebla [farm], STATE_MEXICO, STATE_MEXICO -> Puebla
+	link = { vic3 = x0A1D52 vic3 = x6EFE9A vic3 = x44E6F0 vic3 = x51EB34 vic3 = x10B080 hoi4 = 7913 } # STATE_MEXICO, STATE_MEXICO, STATE_MEXICO, STATE_MEXICO, Chilpacingo [wood] -> Pachuca
+	link = { vic3 = x10B040 vic3 = x204077 vic3 = x5A9469 vic3 = xD5F2F8 vic3 = xCC93D9 hoi4 = 8089 } # STATE_MEXICO, STATE_MEXICO, Puebla [farm], STATE_MEXICO, STATE_MEXICO -> Puebla
 	link = { comment = "* * STATE_VERACRUZ " }
 	link = { vic3 = x067F2A vic3 = x253627 vic3 = x8A6294 hoi4 = 2021 } # STATE_VERACRUZ, STATE_VERACRUZ, STATE_VERACRUZ -> Cárdenas
 	link = { vic3 = x1CB3F9 vic3 = xD0EF80 vic3 = xECF9FC hoi4 = 8079 } # STATE_VERACRUZ, STATE_VERACRUZ, STATE_VERACRUZ -> Túxpam
@@ -4929,8 +4929,8 @@
 	link = { vic3 = x1B2176 vic3 = x5CE75E vic3 = xD08EE2 hoi4 = 12867 } # STATE_VERACRUZ, STATE_VERACRUZ, STATE_VERACRUZ -> Villahermosa
 	link = { comment = "* * STATE_GUERRERO " }
 	link = { vic3 = x01EFB4 vic3 = x8CC01A vic3 = xF28CF4 vic3 = xA80151 hoi4 = 5066 } # Zihuatanejo [farm], STATE_GUERRERO, STATE_GUERRERO, STATE_GUERRERO -> Zihuatanejo
-	link = { vic3 = x0B94E3 vic3 = x469921 vic3 = x4712FC vic3 = xB846DD vic3 = xDF5040 hoi4 = 10730 } # STATE_GUERRERO, STATE_GUERRERO, Chilpancingo [city][port], STATE_GUERRERO, STATE_GUERRERO -> Acapulco
-	link = { vic3 = x5AC30A vic3 = x600DE6 vic3 = xAA660B vic3 = x10EF01 hoi4 = 10832 } # Toluca [mine], Iguala [wood], STATE_GUERRERO, STATE_GUERRERO -> Chilpancingo
+	link = { vic3 = x0B94E3 vic3 = x469921 vic3 = x4712FC vic3 = xB846DD vic3 = xDF5040 vic3 = x5AC30A hoi4 = 10730 } # STATE_GUERRERO, STATE_GUERRERO, Chilpancingo [city][port], STATE_GUERRERO, STATE_GUERRERO, Toluca [mine] -> Acapulco
+	link = { vic3 = x600DE6 vic3 = xAA660B vic3 = x10EF01 hoi4 = 10832 } # Iguala [wood], STATE_GUERRERO, STATE_GUERRERO -> Chilpancingo
 	link = { comment = "* * STATE_OAXACA " }
 	link = { vic3 = x3A8CF5 vic3 = x502C96 vic3 = x8293A6 vic3 = x98D949 vic3 = xC83AE5 vic3 = x651EB1 hoi4 = 8236 } # STATE_OAXACA, STATE_OAXACA, STATE_OAXACA, STATE_OAXACA, Salina Cruz [port][wood], STATE_OAXACA -> Salina Cruz
 	link = { vic3 = x08E7F6 vic3 = x1616D8 vic3 = x2113D8 vic3 = xA547C9 vic3 = x460749 vic3 = x44D03C vic3 = xD30430 vic3 = xAF030C vic3 = xA095E4 hoi4 = 10773 } # Huajuapan de León [mine], STATE_OAXACA, STATE_OAXACA, STATE_OAXACA, STATE_OAXACA, Oaxaca [city], STATE_OAXACA, STATE_OAXACA, STATE_OAXACA -> Oaxaca
@@ -4938,7 +4938,7 @@
 	link = { comment = "* * STATE_JALISCO " }
 	link = { vic3 = x3B18A7 vic3 = x4CF985 vic3 = x6CE1F2 vic3 = x829A25 vic3 = x90B080 vic3 = x907001 hoi4 = 2051 } # STATE_JALISCO, Colima [wood], STATE_JALISCO, STATE_JALISCO, STATE_JALISCO, STATE_JALISCO -> Manzanillo
 	link = { vic3 = x41E3BB vic3 = x80B8A5 vic3 = xC1F60B vic3 = x107001 hoi4 = 4887 } # STATE_JALISCO, STATE_JALISCO, STATE_JALISCO, STATE_JALISCO -> Morelia
-	link = { vic3 = x1559EB vic3 = x50B080 vic3 = x8EA0AB vic3 = xE34EE3 vic3 = x8ABF59 vic3 = xBFDB49 hoi4 = 5052 } # Aguascalientes [mine], STATE_JALISCO, STATE_JALISCO, Guadalaraja [city], STATE_JALISCO, STATE_JALISCO -> Lagos de Moreno
+	link = { vic3 = x1559EB vic3 = x50B080 vic3 = x8EA0AB vic3 = xBFDB49 vic3 = xE34EE3 vic3 = x8ABF59 hoi4 = 5052 } # Aguascalientes [mine], STATE_JALISCO, STATE_JALISCO, STATE_JALISCO, Guadalaraja [city], STATE_JALISCO -> Lagos de Moreno
 	link = { vic3 = x2E172F vic3 = x8FD9A9 vic3 = x97CE08 hoi4 = 8032 } # STATE_JALISCO, STATE_JALISCO, STATE_JALISCO -> Apatzingán
 	link = { vic3 = x4E396E vic3 = xA18CF4 vic3 = xC3A1B7 vic3 = xE9BCBE vic3 = x3F0A44 vic3 = x50B000 hoi4 = 12746 } # STATE_JALISCO, STATE_JALISCO, STATE_JALISCO, STATE_JALISCO, Puerto Vallarta [port], STATE_JALISCO -> Puerto Vallarta
 	link = { vic3 = x52E09C vic3 = xCE2837 vic3 = xE26CDE hoi4 = 12755 } # STATE_JALISCO, STATE_JALISCO, STATE_JALISCO -> Toluca
