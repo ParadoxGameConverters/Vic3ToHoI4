@@ -179,6 +179,11 @@ max=6746
 4=1
 5=3
 	}
+	character_home_hq_map={
+max=643
+23561={ 5 }
+12516={ 2 }
+	}
 	exile_pool={
 max=6743
 6={"ig_devout"}

@@ -190,14 +190,28 @@ void AssignIgsToCountries(std::map<int, vic3::Country>& countries, const std::ma
 }
 
 
-void AssignCharactersToCountries(std::map<int, vic3::Country>& countries,
-    const std::map<int, std::vector<int>>& country_character_map)
+void AssignCharactersToCountries(const std::map<int, vic3::Character>& characters,
+    const std::map<int, std::vector<int>>& country_character_map,
+    std::map<int, vic3::Country>& countries)
 {
    for (const auto& [country_id, character_ids]: country_character_map)
    {
       if (const auto country_itr = countries.find(country_id); country_itr != countries.end())
       {
-         country_itr->second.SetCharacterIds(character_ids);
+         std::vector<int> important_character_ids;
+         std::ranges::copy_if(character_ids, std::back_inserter(important_character_ids), [characters](const int id) {
+            if (const auto& character_itr = characters.find(id); character_itr != characters.end())
+            {
+               const auto& roles = character_itr->second.GetRoles();
+               if (roles.size() > 1 || (!roles.contains("general") && !roles.contains("admiral")))
+               {
+                  return true;
+               }
+               return character_itr->second.IsCommander();  // Only employed officers please
+            }
+            return false;
+         });
+         country_itr->second.SetCharacterIds(important_character_ids);
       }
       else
       {
@@ -390,10 +404,10 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    AssignCulturesToCharacters(characters, cultures);
    AssignOwnersToStates(countries, states);
    Log(LogLevel::Progress) << "16 %";
-   AssignCharactersToCountries(countries, country_character_map);
-   AssignIgsToCountries(countries, igs);
    const auto& country_tag_to_id_map = MapCountryTagsToId(countries);
    AssignHomeCountriesToExiledAgitators(country_tag_to_id_map, characters);
+   AssignIgsToCountries(countries, igs);
+   AssignCharactersToCountries(characters, country_character_map, countries);
 
    return World({.countries = countries,
        .states = states,

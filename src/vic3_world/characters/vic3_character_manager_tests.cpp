@@ -113,6 +113,39 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, IgsAreAssigned)
 }
 
 
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, EmployedCommandersAreMarked)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "database={\n";
+   input << "1 = {\n";
+   input << "role = general\n";
+   input << "}\n";
+   input << "3 ={ \n";
+   input << "role = general\n";
+   input << "}\n";
+   input << "4 = {\n";
+   input << "role = admiral\n";
+   input << "}\n";
+   input << "6 ={ \n";
+   input << "role = admiral\n";
+   input << "}\n";
+   input << "}\n";
+   input << "character_home_hq_map={\n";
+   input << "max=6552\n";
+   input << "14151 = { 1 4 }\n";
+   input << "}\n";
+
+   CharacterManager character_manager(input);
+
+   EXPECT_THAT(character_manager.GetCharacters(),
+       testing::UnorderedElementsAre(testing::Pair(1, Character({.id = 1, .roles = {"general"}, .is_commander = true})),
+           testing::Pair(3, Character({.id = 3, .roles = {"general"}, .is_commander = false})),
+           testing::Pair(4, Character({.id = 4, .roles = {"admiral"}, .is_commander = true})),
+           testing::Pair(6, Character({.id = 6, .roles = {"admiral"}, .is_commander = false}))));
+}
+
+
 TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsAreAssignedForExiles)
 {
    std::stringstream input;
@@ -321,4 +354,28 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsMatchesAreLogged
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tFound home countries of 1 exiles.\n"));
 }
+
+
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CommanderCountIsLogged)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "character_home_hq_map={\n";
+   input << "max=6552\n";
+   input << "14151 = { 1 2 3 4 5 6 7 }\n";
+   input << "25617 = { 8 9 10 }\n";
+   input << "}\n";
+   input << "}\n";
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   CharacterManager _(input);
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tFound 10 employed commanders.\n"));
+}
+
 }  // namespace vic3
