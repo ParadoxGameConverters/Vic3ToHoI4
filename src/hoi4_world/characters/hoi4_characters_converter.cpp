@@ -80,8 +80,8 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
               country_ideology,
               sub_ideology,
               source_country.GetActiveLaws(),
-              culture_queues,
-              {})};  // country_mapper only needed for spies
+              {},  // country_mapper only needed for spies
+              culture_queues)};
    }
 
    int leader_id;
@@ -108,16 +108,16 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
            country_ideology,
            sub_ideology,
            source_country.GetActiveLaws(),
-           culture_queues,
-           {})};  // country_mapper only needed for spies
+           {},  // country_mapper only needed for spies
+           culture_queues)};
 }
 
-std::pair<std::vector<int>, std::set<int>> PickAllOtherCharacters(const int leader_id,
+std::pair<hoi4::LeaderIds, hoi4::SpyIds> PickAllOtherCharacters(const int leader_id,
     const std::map<int, vic3::Character>& source_characters,
     const vic3::Country& source_country)
 {
-   std::vector<int> leader_ids;
-   std::set<int> spy_ids;
+   hoi4::LeaderIds leader_ids;
+   hoi4::SpyIds spy_ids;
    leader_ids.push_back(leader_id);  // Starting Country Leader must be first.
 
    // In the future we may separate this out into PickGenerals, PickAdmirals and such if we wish to add limits.
@@ -159,7 +159,7 @@ void PopulatePortraitCounts(const mappers::PortraitPaths& portrait_paths, std::m
       }
    }
 }
-void ScramblePortraitPaths(mappers::PortraitPaths& portrait_paths, const int playthrough_id)
+void ScramblePortraitPaths(const int playthrough_id, mappers::PortraitPaths& portrait_paths)
 {
    // Each vector of the same length will be shuffled the same way.
    // We only want different permutations between playthroughs, within the same playthrough it's the same.
@@ -172,10 +172,10 @@ void ScramblePortraitPaths(mappers::PortraitPaths& portrait_paths, const int pla
       std::ranges::shuffle(portraits, std::default_random_engine(playthrough_id));
    }
 }
-void ProcessCultureQueue(std::map<int, hoi4::Character>& characters,
-    const mappers::CultureQueue& culture_queue,
+void ProcessCultureQueue(const mappers::CultureQueue& culture_queue,
     mappers::PortraitPaths& portrait_paths,
-    std::map<std::string, int>& portrait_counts)
+    std::map<std::string, int>& portrait_counts,
+    std::map<int, hoi4::Character>& characters)
 {
    const auto ByPortraitCount = [portrait_counts](const std::string& lhs, const std::string& rhs) {
       return portrait_counts.at(lhs) < portrait_counts.at(rhs);
@@ -205,13 +205,13 @@ mappers::PortraitPaths GetPortraitPaths(const vic3::CultureDefinition& culture,
     const int playthrough_id)
 {
    mappers::PortraitPaths portrait_paths = culture_graphics_mapper.MatchCultureToGraphics(culture).portrait_paths;
-   ScramblePortraitPaths(portrait_paths, playthrough_id);
+   ScramblePortraitPaths(playthrough_id, portrait_paths);
    return portrait_paths;
 }
 }  // namespace
 
 
-std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(std::map<int, Character>& characters,
+std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(
     const std::map<int, vic3::Character>& source_characters,
     const std::string& tag,
     const std::string& country_ideology,
@@ -219,8 +219,9 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(std::map<int,
     const vic3::Country& source_country,
     const std::map<int, vic3::InterestGroup>& igs,
     const mappers::LeaderTypeMapper& leader_type_mapper,
-    std::map<std::string, mappers::CultureQueue>& culture_queues,
-    const mappers::CountryMapper& country_mapper)
+    const mappers::CountryMapper& country_mapper,
+    std::map<int, Character>& characters,
+    std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
    // Starting Country Leader must be first.
    const std::string leader_type = leader_type_mapper.GetCountryLeaderType(source_country.GetActiveLaws());
@@ -261,17 +262,17 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(std::map<int,
               country_ideology,
               sub_ideology,
               source_country.GetActiveLaws(),
-              culture_queues,
-              country_mapper));
+              country_mapper,
+              culture_queues));
    }
    return {leader_ids, spy_ids};
 }
 
-void hoi4::AssignPortraits(std::map<int, Character>& characters,
-    const std::map<std::string, mappers::CultureQueue>& culture_queues,
+void hoi4::AssignPortraits(const std::map<std::string, mappers::CultureQueue>& culture_queues,
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     const std::map<std::string, vic3::CultureDefinition>& source_cultures,
-    const int playthrough_id)
+    const int playthrough_id,
+    std::map<int, Character>& characters)
 {
    std::map<std::string, int> portrait_counts;
 
@@ -285,6 +286,6 @@ void hoi4::AssignPortraits(std::map<int, Character>& characters,
 
       auto portrait_paths = GetPortraitPaths(culture_itr->second, culture_graphics_mapper, playthrough_id);
       PopulatePortraitCounts(portrait_paths, portrait_counts);
-      ProcessCultureQueue(characters, culture_queue, portrait_paths, portrait_counts);
+      ProcessCultureQueue(culture_queue, portrait_paths, portrait_counts, characters);
    }
 }

@@ -279,16 +279,16 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
       ideas.insert("decentralized");
    }
 
-   const auto [leader_ids, spy_ids] = ConvertCharacters(characters,
-       vic3_characters,
-       *tag,
-       ideology,
-       sub_ideology,
-       source_country,
-       igs,
-       leader_type_mapper,
-       culture_queues,
-       country_mapper);
+   const auto [leader_ids, spy_ids] = ConvertCharacters(vic3_characters,
+                                                        *tag,
+                                                        ideology,
+                                                        sub_ideology,
+                                                        source_country,
+                                                        igs,
+                                                        leader_type_mapper,
+                                                        country_mapper,
+                                                        characters,
+                                                        culture_queues);
    mappers::GraphicsBlock graphics_block =
        culture_graphics_mapper.MatchPrimaryCulturesToGraphics(source_country.GetPrimaryCultures(), source_cultures);
    NameList name_list = ConvertNameList(source_country.GetPrimaryCultures(),

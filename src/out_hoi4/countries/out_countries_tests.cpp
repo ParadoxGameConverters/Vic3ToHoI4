@@ -27,7 +27,10 @@ TEST(Outhoi4CountriesOutcountriesTests, CountriesFilesAreCreated)
    commonItems::TryCreateFolder("output/CountriesFilesAreCreated/history/units");
 
    OutputCountries("CountriesFilesAreCreated",
-       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
+       {
+           {"TAG", hoi4::Country({.tag = "TAG"})},
+           {"TWO", hoi4::Country({.tag = "TWO"})},
+       },
        {});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountriesFilesAreCreated/common/countries/TAG.txt"));
@@ -63,7 +66,10 @@ TEST(Outhoi4CountriesOutcountriesTests, TagsFileIsCreated)
    commonItems::TryCreateFolder("output/TagsFileIsCreated/history/units");
 
    OutputCountries("TagsFileIsCreated",
-       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
+       {
+           {"TAG", hoi4::Country({.tag = "TAG"})},
+           {"TWO", hoi4::Country({.tag = "TWO"})},
+       },
        {});
 
    std::ifstream country_file("output/TagsFileIsCreated/common/country_tags/00_countries.txt");
@@ -82,7 +88,10 @@ TEST(Outhoi4CountriesOutcountriesTests, TagsFileIsCreated)
 TEST(Outhoi4CountriesOutcountriesTests, ExceptionIfTagsFileNotOpened)
 {
    EXPECT_THROW(OutputCountries("/dev/null/COM",
-                    {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
+                    {
+                        {"TAG", hoi4::Country({.tag = "TAG"})},
+                        {"TWO", hoi4::Country({.tag = "TWO"})},
+                    },
                     {}),
        std::runtime_error);
 }
@@ -101,7 +110,10 @@ TEST(Outhoi4CountriesOutcountriesTests, CharactersFilesAreCreated)
    commonItems::TryCreateFolder("output/CharactersFilesAreCreated/history/units");
 
    OutputCountries("CharactersFilesAreCreated",
-       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
+       {
+           {"TAG", hoi4::Country({.tag = "TAG"})},
+           {"TWO", hoi4::Country({.tag = "TWO"})},
+       },
        {});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CharactersFilesAreCreated/common/characters/TAG.txt"));
@@ -137,7 +149,10 @@ TEST(Outhoi4CountriesOutcountriesTests, CountryHistoryFilesAreCreated)
    commonItems::TryCreateFolder("output/CountryHistoryFilesAreCreated/history/units");
 
    OutputCountries("CountryHistoryFilesAreCreated",
-       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
+       {
+           {"TAG", hoi4::Country({.tag = "TAG"})},
+           {"TWO", hoi4::Country({.tag = "TWO"})},
+       },
        {});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/CountryHistoryFilesAreCreated/history/countries/TAG.txt"));
@@ -173,7 +188,10 @@ TEST(Outhoi4CountriesOutcountriesTests, DivisionTemplatesAreCopied)
    commonItems::TryCreateFolder("output/DivisionTemplatesAreCopied/history/units");
 
    OutputCountries("DivisionTemplatesAreCopied",
-       {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}},
+       {
+           {"TAG", hoi4::Country({.tag = "TAG"})},
+           {"TWO", hoi4::Country({.tag = "TWO"})},
+       },
        {});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/DivisionTemplatesAreCopied/history/units/TAG_1936.txt"));

@@ -93,16 +93,16 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        {9, character_nine},
        {10, character_ten},
    };
-   ConvertCharacters(characters,
-       source_characters,
+   ConvertCharacters(source_characters,
        "TAG",
        "",
        "sub_ideology",
        vic3::Country({.head_of_state_id = 2, .character_ids = {2, 4, 5, 6, 7, 8, 9, 10}}),
        {},
        leader_type_mapper,
-       culture_queues,
-       country_mapper);
+       country_mapper,
+       characters,
+       culture_queues);
 
    const auto leader_data = std::optional<Leader>({.sub_ideology = "sub_ideology"});
    const auto general_data = std::optional<General>({.traits = {}});
@@ -265,16 +265,16 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PortraitsAreAssigned)
        {9, character_nine},
        {10, character_ten},
    };
-   ConvertCharacters(characters,
-       source_characters,
+   ConvertCharacters(source_characters,
        "",
        "",
        "",
        vic3::Country({.head_of_state_id = 2, .character_ids = {2, 4, 5, 6, 7, 8, 9, 10}}),
        {},
        leader_type_mapper,
-       culture_queues,
-       {});
+       {},
+       characters,
+       culture_queues);
 
 
    std::map<std::string, std::vector<int>> culture_2_queue = {
@@ -305,16 +305,16 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
        .leader_data = leader_data,
    });
 
-   ConvertCharacters(characters,
-       source_characters,
+   ConvertCharacters(source_characters,
        "",
        "",
        "sub_ideology",
        vic3::Country({.active_laws = {"law_council_republic", "law_anarchy"}, .primary_cultures = {"culture_1"}}),
        {},
        leader_type_mapper,
-       culture_queues,
-       {});
+       {},
+       characters,
+       culture_queues);
 
    EXPECT_THAT(characters, testing::UnorderedElementsAre(std::pair{Character::GetGenId() - 1, expected_council}));
 }
@@ -324,8 +324,10 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCol
 {
    // Have a source character with base genID:1000.
    // Input council laws, see that newly generated character resolves collision
-   // SrcCharacter intact, new council with ID 1001, Next genID listed as 1002
-   std::map<int, Character> characters;
+   // SrcCharacter intact, old council with ID 1001, new council with 1002
+   std::map<int, Character> characters{
+       {Character::GetGenId() + 1, hoi4::Character({.id = Character::GetGenId() + 1})},
+   };
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const std::map<int, vic3::Character> source_characters{
        {Character::GetGenId(), vic3::Character({.id = Character::GetGenId()})},
@@ -334,24 +336,26 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCol
 
    const auto leader_data = std::optional<Leader>({.sub_ideology = "sub_ideology"});
    const auto expected_council = Character({
-       .id = Character::GetGenId() + 1,
+       .id = Character::GetGenId() + 2,
        .first_name = "The",
        .last_name = "Council",
        .leader_data = leader_data,
    });
 
-   ConvertCharacters(characters,
-       source_characters,
+   ConvertCharacters(source_characters,
        "",
        "",
        "sub_ideology",
        vic3::Country({.active_laws = {"law_council_republic", "law_anarchy"}, .primary_cultures = {"culture_1"}}),
        {},
        leader_type_mapper,
-       culture_queues,
-       {});
+       {},
+       characters,
+       culture_queues);
 
-   EXPECT_THAT(characters, testing::UnorderedElementsAre(std::pair{Character::GetGenId() - 1, expected_council}));
+   EXPECT_THAT(characters,
+       testing::UnorderedElementsAre(std::pair{Character::GetGenId() - 2, Character({.id = Character::GetGenId() - 2})},
+           std::pair{Character::GetGenId() - 1, expected_council}));
 }
 
 
@@ -400,16 +404,16 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInCoaliti
        {3, opposition_leader},
        {4, head_of_state_party_leader},
    };
-   ConvertCharacters(characters,
-       source_characters,
+   ConvertCharacters(source_characters,
        "",
        "",
        "sub_ideology",
        vic3::Country({.active_laws = {"law_monarchy", "law_census_voting"}, .ig_ids = {1, 2, 3}}),
        igs,
        leader_type_mapper,
-       culture_queues,
-       {});
+       {},
+       characters,
+       culture_queues);
 
    // The prime minister is the government IG leader with the most clout.
    const auto leader_data = std::optional<Leader>({.sub_ideology = "sub_ideology"});
@@ -469,16 +473,16 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderP
        {3, opposition_leader},
        {4, head_of_state_party_leader},
    };
-   ConvertCharacters(characters,
-       source_characters,
+   ConvertCharacters(source_characters,
        "",
        "",
        "sub_ideology",
        vic3::Country({.active_laws = {"law_monarchy", "law_census_voting"}, .ig_ids = {1, 2, 3}}),
        igs,
        leader_type_mapper,
-       culture_queues,
-       {});
+       {},
+       characters,
+       culture_queues);
 
    // The prime minister is the government IG leader with the most clout.
    const auto leader_data = std::optional<Leader>({.sub_ideology = "sub_ideology"});
@@ -512,7 +516,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrou
        {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
    };
 
-   AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
+   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters);
    EXPECT_THAT(characters,
        testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_6"})},
            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
@@ -523,7 +527,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrou
            std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_1"})}));
 
    // Again with same seed
-   AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
+   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters);
    EXPECT_THAT(characters,
        testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_6"})},
            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
@@ -554,7 +558,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlayth
        {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
    };
 
-   AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
+   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters);
    EXPECT_THAT(characters,
        testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_6"})},
            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
@@ -565,7 +569,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlayth
            std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_1"})}));
 
    // Again with different seed
-   AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 11);
+   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 11, characters);
    EXPECT_THAT(characters,
        testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_4"})},
            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
@@ -605,7 +609,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCul
        {"culture_7", vic3::CultureDefinition({"culture_7"}, {}, {}, {})},
    };
 
-   AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
+   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters);
    EXPECT_THAT(characters,
        testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_general_3"})},
            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_general_2"})},

@@ -355,7 +355,6 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, CharacterLocalizationsCanBeCo
            {1, vic3::Character({.first_name = "Doug", .last_name = "Romney1"})},
        });
 
-   EXPECT_EQ(hoi4_localizations.GetVictoryPointLocalizations().size(), 0);
 
    const std::optional<commonItems::LocalizationBlock> one_localization_block =
        hoi4_localizations.GetCharacterLocalizations().GetLocalizationBlock("Doug");

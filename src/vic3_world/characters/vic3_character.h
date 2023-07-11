@@ -43,8 +43,6 @@ class Character
        traits_(std::move(options.traits)),
        origin_tag_(std::move(options.origin_tag)),
        origin_country_id_(options.origin_country_id)
-
-
    {
    }
 

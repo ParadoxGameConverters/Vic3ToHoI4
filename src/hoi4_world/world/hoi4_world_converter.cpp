@@ -260,11 +260,11 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    Log(LogLevel::Info) << "\tAssigning portraits to characters";
    Log(LogLevel::Progress) << "56%";
-   AssignPortraits(characters,
-       culture_queues,
-       culture_graphics_mapper,
-       source_world.GetCultureDefinitions(),
-       source_world.GetPlaythroughId());
+   AssignPortraits(culture_queues,
+                   culture_graphics_mapper,
+                   source_world.GetCultureDefinitions(),
+                   source_world.GetPlaythroughId(),
+                   characters);
 
    std::set<std::string> great_powers = MapPowers(source_world.GetCountryRankings().GetGreatPowers(), country_mapper);
    std::set<std::string> major_powers = MapPowers(source_world.GetCountryRankings().GetMajorPowers(), country_mapper);

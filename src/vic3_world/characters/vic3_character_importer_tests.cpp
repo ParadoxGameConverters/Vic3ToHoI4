@@ -9,18 +9,30 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldCharactersVic3CharacterImporter, DefaultsDefaultToDefault)
+TEST(Vic3worldCharactersVic3characterimporter, DefaultsDefaultToDefault)
 {
    CharacterImporter character_importer;
 
    std::stringstream input;
    const auto character = character_importer.ImportCharacter(0, input);
-
-   EXPECT_EQ(character, Character({}));
+   EXPECT_EQ(character,
+       Character({.id = 0,
+           .first_name = "",
+           .last_name = "",
+           .culture_id = 0,
+           .culture = "",
+           .is_female = false,
+           .ig_id = 0,
+           .roles = std::set<std::string>{},
+           .rank = 0,
+           .ideology = "",
+           .traits = std::set<std::string>{},
+           .origin_tag = "",
+           .origin_country_id = std::nullopt}));
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterImporter, CharacterCanBeImported)
+TEST(Vic3worldCharactersVic3characterimporter, CharacterCanBeImported)
 {
    CharacterImporter character_importer;
 
@@ -52,7 +64,7 @@ TEST(Vic3WorldCharactersVic3CharacterImporter, CharacterCanBeImported)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterImporter, RulerCommanderIsFirstRank)
+TEST(Vic3worldCharactersVic3characterimporter, RulerCommanderIsFirstRank)
 {
    CharacterImporter character_importer;
 
@@ -67,7 +79,7 @@ TEST(Vic3WorldCharactersVic3CharacterImporter, RulerCommanderIsFirstRank)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterImporter, InvalidRankIsLogged)
+TEST(Vic3worldCharactersVic3characterimporter, InvalidRankIsLogged)
 {
    CharacterImporter character_importer;
 
@@ -89,7 +101,7 @@ TEST(Vic3WorldCharactersVic3CharacterImporter, InvalidRankIsLogged)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterImporter, CultureCanBeSet)
+TEST(Vic3worldCharactersVic3characterimporter, CultureCanBeSet)
 {
    CharacterImporter character_importer;
 
@@ -102,7 +114,7 @@ TEST(Vic3WorldCharactersVic3CharacterImporter, CultureCanBeSet)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterImporter, HomeTagCanBeSet)
+TEST(Vic3worldCharactersVic3characterimporter, HomeTagCanBeSet)
 {
    CharacterImporter character_importer;
 
@@ -115,7 +127,7 @@ TEST(Vic3WorldCharactersVic3CharacterImporter, HomeTagCanBeSet)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterImporter, IgIdCanBeSet)
+TEST(Vic3worldCharactersVic3characterimporter, IgIdCanBeSet)
 {
    CharacterImporter character_importer;
 
