@@ -174,7 +174,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
 }
 
 
-TEST(Hoi4worldCharactersHoi4charactersconverter, DISABLED_PortraitsAreAssigned)
+TEST(Hoi4worldCharactersHoi4charactersconverter, PortraitsAreAssigned)
 {
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
@@ -278,7 +278,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, DISABLED_PortraitsAreAssigned)
 
 
    std::map<std::string, std::vector<int>> culture_2_queue = {
-       {"male_spy", {7}},
+       {"operative_male", {7}},
    };
    EXPECT_THAT(culture_queues.at("culture_1"),
        testing::UnorderedElementsAre(std::pair<std::string, std::vector<int>>{"army", {2, 4, 9}},
@@ -286,7 +286,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, DISABLED_PortraitsAreAssigned)
            std::pair<std::string, std::vector<int>>{"female_leader", {5}},
            std::pair<std::string, std::vector<int>>{"advisor_neutrality", {8}}));
    EXPECT_THAT(culture_queues.at("culture_2"),
-       testing::UnorderedElementsAre(std::pair<std::string, std::vector<int>>{"male_spy", {7}}));
+       testing::UnorderedElementsAre(std::pair<std::string, std::vector<int>>{"operative_male", {7}}));
 }
 
 
@@ -500,10 +500,10 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrou
        {1, Character({.id = 1})},
        {2, Character({.id = 2})},
        {3, Character({.id = 3})},
-       {3, Character({.id = 4})},
-       {3, Character({.id = 5})},
-       {3, Character({.id = 6})},
-       {3, Character({.id = 7})},
+       {4, Character({.id = 4})},
+       {5, Character({.id = 5})},
+       {6, Character({.id = 6})},
+       {7, Character({.id = 7})},
    };
    std::map<std::string, mappers::CultureQueue> culture_queues{
        {"culture_2", {{"operative_female", {1, 2, 3, 4, 5, 6, 7}}}},
@@ -514,17 +514,24 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrou
 
    AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
    EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_1"})},
+       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_6"})},
            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
-           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_3"})},
-           std::pair{4, Character({.id = 2, .portrait_alias = "GFX_f_op_4"})},
-           std::pair{5, Character({.id = 2, .portrait_alias = "GFX_f_op_5"})},
-           std::pair{6, Character({.id = 2, .portrait_alias = "GFX_f_op_6"})},
-           std::pair{7, Character({.id = 2, .portrait_alias = "GFX_f_op_7"})}));
+           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_5"})},
+           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_3"})},
+           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_7"})},
+           std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_4"})},
+           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_1"})}));
 
    // Again with same seed
    AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
-   // Copy Test here once order is established
+   EXPECT_THAT(characters,
+       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_6"})},
+           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
+           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_5"})},
+           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_3"})},
+           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_7"})},
+           std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_4"})},
+           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_1"})}));
 }
 
 
@@ -549,25 +556,24 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlayth
 
    AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
    EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_1"})},
+       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_6"})},
            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
-           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_3"})},
-           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_4"})},
-           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_5"})},
-           std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_6"})},
-           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_7"})}));
+           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_5"})},
+           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_3"})},
+           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_7"})},
+           std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_4"})},
+           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_1"})}));
 
    // Again with different seed
    AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 11);
-   // Alter here once order is established
    EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_1"})},
+       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_4"})},
            std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
-           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_3"})},
-           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_4"})},
-           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_5"})},
+           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_5"})},
+           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_7"})},
+           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_1"})},
            std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_6"})},
-           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_7"})}));
+           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_3"})}));
 }
 
 
@@ -600,13 +606,12 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCul
    };
 
    AssignPortraits(characters, culture_queues, culture_graphics_mapper, source_cultures, 10);
-   // Alter order once established
    EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_general_1"})},
-           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_general_1"})},
-           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_general_2"})},
-           std::pair{4, Character({.id = 2, .portrait_alias = "GFX_general_2"})},
-           std::pair{7, Character({.id = 2, .portrait_alias = "GFX_general_3"})}));
+       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_general_3"})},
+           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_general_2"})},
+           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_general_1"})},
+           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_general_3"})},
+           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_general_2"})}));
 }
 
 }  // namespace hoi4

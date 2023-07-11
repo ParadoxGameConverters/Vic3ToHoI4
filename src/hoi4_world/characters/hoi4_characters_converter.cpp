@@ -177,9 +177,6 @@ void ProcessCultureQueue(std::map<int, hoi4::Character>& characters,
     mappers::PortraitPaths& portrait_paths,
     std::map<std::string, int>& portrait_counts)
 {
-   // You ever get the strong realization, only as you're putting the last piece of the puzzle in,
-   // that maaaybe you should have used a map?
-
    const auto ByPortraitCount = [portrait_counts](const std::string& lhs, const std::string& rhs) {
       return portrait_counts.at(lhs) < portrait_counts.at(rhs);
    };
@@ -187,12 +184,19 @@ void ProcessCultureQueue(std::map<int, hoi4::Character>& characters,
    for (auto& [key, portraits]: portrait_paths)
    {
       std::ranges::sort(portraits, ByPortraitCount);
-      for (unsigned int i = 0; i < culture_queue.at(key).size() && !portraits.empty(); ++i)
+      const auto& queued_characters_itr = culture_queue.find(key);
+      if (queued_characters_itr == culture_queue.end())
+      {
+         continue;
+      }
+      const auto& queued_characters = queued_characters_itr->second;
+
+      for (unsigned int i = 0; i < queued_characters.size() && !portraits.empty(); ++i)
       {
          const std::string& portrait = portraits.at(i % portraits.size());
          portrait_counts.find(portrait)->second++;
 
-         characters.find(culture_queue.at(key).at(i))->second.SetPortraitAlias(portrait);
+         characters.find(queued_characters.at(i))->second.SetPortraitAlias(portrait);
       }
    }
 }

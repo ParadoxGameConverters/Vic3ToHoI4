@@ -26,7 +26,14 @@ mappers::PortraitPaths operator+(const mappers::PortraitPaths& lhs, const mapper
       {
          if (auto [itr, success] = sum.emplace(key, portraits); !success)
          {
-            std::ranges::copy(portraits, std::back_inserter(itr->second));
+            std::set<std::string> current_portraits;
+            std::ranges::copy(itr->second, std::inserter(current_portraits, current_portraits.begin()));
+
+            std::ranges::copy_if(portraits,
+                std::back_inserter(itr->second),
+                [current_portraits](const std::string& portrait) {
+                   return !current_portraits.contains(portrait);
+                });
          }
       }
    }
@@ -43,7 +50,7 @@ mappers::GraphicsBlock operator+(const mappers::GraphicsBlock& lhs, const mapper
    return {{lhs.portrait_paths + rhs.portrait_paths}, lhs.graphical_culture, lhs.graphical_culture_2d};
 }
 
-mappers::PortraitPaths& ValueOr(mappers::PortraitPaths& lhs, mappers::PortraitPaths& mhs, mappers::PortraitPaths& rhs)
+mappers::PortraitPaths ValueOr(mappers::PortraitPaths& lhs, mappers::PortraitPaths& mhs, mappers::PortraitPaths& rhs)
 {
    mappers::PortraitPaths paths;
    for (const auto& side: {lhs, mhs, rhs})
@@ -53,6 +60,7 @@ mappers::PortraitPaths& ValueOr(mappers::PortraitPaths& lhs, mappers::PortraitPa
          paths.emplace(key, portraits);
       }
    }
+   return paths;
 }
 
 void EmplaceUnitGraphics(std::map<std::string, std::string>& unit_graphics, const mappers::GraphicsBlock& block)
@@ -152,5 +160,4 @@ mappers::GraphicsBlock mappers::CultureGraphicsMapper::MatchCultureToGraphics(
    return {ValueOr(culture_paths, trait_paths, ethnicity_paths),
        unit_graphics.at("graphical_culture"),
        unit_graphics.at("graphical_culture_2d")};
-   ;
 }

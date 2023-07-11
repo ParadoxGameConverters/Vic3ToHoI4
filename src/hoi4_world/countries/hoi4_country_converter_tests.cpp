@@ -1269,7 +1269,7 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
    const vic3::CultureDefinition culture_def{"culture", {}, {}, {}};
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
    const mappers::CultureGraphicsMapper culture_graphics_mapper{
-       {{{"culture"}, {}, {}, {{.army = {"GFX_general"}}, {}, {}}}}};
+       {{{"culture"}, {}, {}, {{{"army", {"GFX_general"}}}, {}, {}}}}};
 
    const std::optional<Country> country_one = ConvertCountry(source_country_one,
        {},
@@ -1292,7 +1292,7 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetGraphicsBlock().portrait_paths.army, testing::ElementsAre("GFX_general"));
+   EXPECT_THAT(country_one->GetGraphicsBlock().portrait_paths.at("army"), testing::ElementsAre("GFX_general"));
 }
 
 

@@ -102,18 +102,18 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralPortraitIsEnqueued)
 }
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, GeneralPortraitIsEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, GeneralPortraitIsEnqueued)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .roles = {"general"},
-        .rank = 2,
-    });
-    ConvertCharacter(source_character, 0, "", "", "", "", {}, culture_queues, {});
-    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"army", {1}}}));
- }
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .roles = {"general"},
+       .rank = 2,
+   });
+   ConvertCharacter(source_character, 0, "", "", "", "", {}, culture_queues, {});
+   EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"army", {1}}}));
+}
 
 
 TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorIdeologyPortraitsAreEnqueued)
@@ -149,192 +149,192 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorIdeologyPortraitsAreEnque
        mappers::CultureQueue({
            {"advisor_communism", {1}},
            {"advisor_democratic", {2}},
-           {"advisor_fascism", {2}},
-           {"advisor_neutrality", {2}},
+           {"advisor_fascism", {3}},
+           {"advisor_neutrality", {4}},
        }));
 }
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeaderIdeologyPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeaderIdeologyPortraitsAreEnqueued)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character_c = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .roles = {"politician"},
-    });
-    const auto source_character_d = vic3::Character({
-        .id = 2,
-        .culture = "culture_2",
-        .roles = {"politician"},
-    });
-    const auto source_character_f = vic3::Character({
-        .id = 3,
-        .culture = "culture_2",
-        .roles = {"politician"},
-    });
-    const auto source_character_n = vic3::Character({
-        .id = 4,
-        .culture = "culture_2",
-        .roles = {"politician"},
-    });
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character_c = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .roles = {"politician"},
+   });
+   const auto source_character_d = vic3::Character({
+       .id = 2,
+       .culture = "culture_2",
+       .roles = {"politician"},
+   });
+   const auto source_character_f = vic3::Character({
+       .id = 3,
+       .culture = "culture_2",
+       .roles = {"politician"},
+   });
+   const auto source_character_n = vic3::Character({
+       .id = 4,
+       .culture = "culture_2",
+       .roles = {"politician"},
+   });
 
-    ConvertCharacter(source_character_c, 1, "", "", "communism", "", {}, culture_queues, {});
-    ConvertCharacter(source_character_d, 2, "", "", "democratic", "", {}, culture_queues, {});
-    ConvertCharacter(source_character_f, 3, "", "", "fascism", "", {}, culture_queues, {});
-    ConvertCharacter(source_character_n, 4, "", "", "anything_else", "", {}, culture_queues, {});
+   ConvertCharacter(source_character_c, 1, "", "", "communism", "", {}, culture_queues, {});
+   ConvertCharacter(source_character_d, 2, "", "", "democratic", "", {}, culture_queues, {});
+   ConvertCharacter(source_character_f, 3, "", "", "fascism", "", {}, culture_queues, {});
+   ConvertCharacter(source_character_n, 4, "", "", "anything_else", "", {}, culture_queues, {});
 
- EXPECT_EQ(culture_queues.at("culture_2"),
-    mappers::CultureQueue({
-        {"leader_communism", {1}},
-        {"leader_democratic", {2}},
-        {"leader_fascism", {2}},
-        {"leader_neutrality", {2}},
-    }));
- }
+   EXPECT_EQ(culture_queues.at("culture_2"),
+       mappers::CultureQueue({
+           {"leader_communism", {1}},
+           {"leader_democratic", {2}},
+           {"leader_fascism", {3}},
+           {"leader_neutrality", {4}},
+       }));
+}
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, SpyPortraitIsEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, SpyPortraitIsEnqueued)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .roles = {"agitator"},
-    });
-    ConvertCharacter(source_character, 0, "", "", "", "", {}, culture_queues, {});
-    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"operative_male", {1}}}));
- }
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .roles = {"agitator"},
+   });
+   ConvertCharacter(source_character, 0, "", "", "", "", {}, culture_queues, {});
+   EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"operative_male", {1}}}));
+}
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, FemaleSpyPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, FemaleSpyPortraitsAreEnqueued)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .is_female = true,
-        .roles = {"agitator"},
-    });
-    ConvertCharacter(source_character, 0, "", "", "", "", {}, culture_queues, {});
-    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"operative_female", {1}}}));
- }
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .is_female = true,
+       .roles = {"agitator"},
+   });
+   ConvertCharacter(source_character, 0, "", "", "", "", {}, culture_queues, {});
+   EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"operative_female", {1}}}));
+}
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, LeaderMilitaryEnqueuesMilitaryPortraits)
+TEST(Hoi4worldCharactersHoi4characterconverter, LeaderMilitaryEnqueuesMilitaryPortraits)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character_g = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .roles = {"politician", "general"},
-    });
-    const auto source_character_a = vic3::Character({
-        .id = 2,
-        .culture = "culture_2",
-        .roles = {"politician", "admiral"},
-    });
-    ConvertCharacter(source_character_g, 1, "", "", "", "", {}, culture_queues, {});
-    ConvertCharacter(source_character_a, 2, "", "", "", "", {}, culture_queues, {});
-    EXPECT_EQ(culture_queues.at("culture_2"),
-        mappers::CultureQueue({
-            {"army", {1}},
-            {"navy", {2}},
-        }));
- }
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character_g = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .roles = {"politician", "general"},
+   });
+   const auto source_character_a = vic3::Character({
+       .id = 2,
+       .culture = "culture_2",
+       .roles = {"politician", "admiral"},
+   });
+   ConvertCharacter(source_character_g, 1, "", "", "", "", {}, culture_queues, {});
+   ConvertCharacter(source_character_a, 2, "", "", "", "", {}, culture_queues, {});
+   EXPECT_EQ(culture_queues.at("culture_2"),
+       mappers::CultureQueue({
+           {"army", {1}},
+           {"navy", {2}},
+       }));
+}
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorMilitaryEnqueuesMilitaryPortraits)
+TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorMilitaryEnqueuesMilitaryPortraits)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character_g = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .roles = {"politician", "general"},
-    });
-    const auto source_character_a = vic3::Character({
-        .id = 2,
-        .culture = "culture_2",
-        .roles = {"politician", "admiral"},
-    });
-    ConvertCharacter(source_character_g, 0, "", "", "", "", {}, culture_queues, {});
-    ConvertCharacter(source_character_a, 0, "", "", "", "", {}, culture_queues, {});
-    EXPECT_EQ(culture_queues.at("culture_2"),
-        mappers::CultureQueue({
-            {"army", {1}},
-            {"navy", {2}},
-        }));
- }
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character_g = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .roles = {"politician", "general"},
+   });
+   const auto source_character_a = vic3::Character({
+       .id = 2,
+       .culture = "culture_2",
+       .roles = {"politician", "admiral"},
+   });
+   ConvertCharacter(source_character_g, 0, "", "", "", "", {}, culture_queues, {});
+   ConvertCharacter(source_character_a, 0, "", "", "", "", {}, culture_queues, {});
+   EXPECT_EQ(culture_queues.at("culture_2"),
+       mappers::CultureQueue({
+           {"army", {1}},
+           {"navy", {2}},
+       }));
+}
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, MonarchMilitaryEnqueuesMonarchPortraits)
+TEST(Hoi4worldCharactersHoi4characterconverter, MonarchMilitaryEnqueuesMonarchPortraits)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .roles = {"politician", "general"},
-    });
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .roles = {"politician", "general"},
+   });
 
-    ConvertCharacter(source_character, 1, "head_of_state", "", "", "", {"law_monarchy"}, culture_queues, {});
-    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"monarch_male", {1}}}));
- }
+   ConvertCharacter(source_character, 1, "head_of_state", "", "", "", {"law_monarchy"}, culture_queues, {});
+   EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"monarch_male", {1}}}));
+}
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, CouncilPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, CouncilPortraitsAreEnqueued)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character_g = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .roles = {"politician"},
-    });
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character_g = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .roles = {"politician"},
+   });
 
-    ConvertCharacter(source_character_g, 1, "council", "", "", "", {""}, culture_queues, {});
-    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"council", {1}}}));
- }
+   ConvertCharacter(source_character_g, 1, "council", "", "", "", {""}, culture_queues, {});
+   EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"council", {1}}}));
+}
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, MonarchPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, MonarchPortraitsAreEnqueued)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .roles = {"politician"},
-    });
-    ConvertCharacter(source_character, 1, "head_of_state", "", "", "", {"law_monarchy"}, culture_queues, {});
-    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"monarch_male", {1}}}));
- }
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .roles = {"politician"},
+   });
+   ConvertCharacter(source_character, 1, "head_of_state", "", "", "", {"law_monarchy"}, culture_queues, {});
+   EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"monarch_male", {1}}}));
+}
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, FemaleMonarchPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, FemaleMonarchPortraitsAreEnqueued)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .is_female = true,
-        .roles = {"politician"},
-    });
-    ConvertCharacter(source_character, 1, "head_of_state", "", "", "", {"law_monarchy"}, culture_queues, {});
-    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"monarch_female", {1}}}));
- }
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .is_female = true,
+       .roles = {"politician"},
+   });
+   ConvertCharacter(source_character, 1, "head_of_state", "", "", "", {"law_monarchy"}, culture_queues, {});
+   EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"monarch_female", {1}}}));
+}
 
 
- TEST(Hoi4worldCharactersHoi4characterconverter, AllMiscFemalePortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, AllMiscFemalePortraitsAreEnqueued)
 {
-    std::map<std::string, mappers::CultureQueue> culture_queues;
-    const auto source_character = vic3::Character({
-        .id = 1,
-        .culture = "culture_2",
-        .is_female = true,
-        .roles = {"general"},
-        .rank = 2,
-    });
-    ConvertCharacter(source_character, 0, "", "", "", "", {}, culture_queues, {});
-    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"female_leader", {1}}}));
- }
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+   const auto source_character = vic3::Character({
+       .id = 1,
+       .culture = "culture_2",
+       .is_female = true,
+       .roles = {"general"},
+       .rank = 2,
+   });
+   ConvertCharacter(source_character, 0, "", "", "", "", {}, culture_queues, {});
+   EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"female_leader", {1}}}));
+}
 
 
 TEST(Hoi4worldCharactersHoi4characterconverter, PoorlyDefinedCharactersAreLogged)

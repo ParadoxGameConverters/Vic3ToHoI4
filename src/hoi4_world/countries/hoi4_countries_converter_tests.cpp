@@ -116,10 +116,10 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Tank Design Three\""}}),
    };
 
-   const mappers::GraphicsBlock expected_graphics_block_one{{.army = {"GFX_general_0"}},
+   const mappers::GraphicsBlock expected_graphics_block_one{{{"army", {"GFX_general_0"}}},
        "western_european_gfx",
        "western_european_2d"};
-   const mappers::GraphicsBlock expected_graphics_block_two{{.army = {"GFX_general_1"}}, "asian_gfx", "asian_2d"};
+   const mappers::GraphicsBlock expected_graphics_block_two{{{"army", {"GFX_general_1"}}}, "asian_gfx", "asian_2d"};
 
    EXPECT_THAT(countries,
        testing::ElementsAre(testing::Pair("TAG",

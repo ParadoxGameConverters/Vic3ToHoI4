@@ -4,54 +4,97 @@
 
 namespace
 {
-void OutPathVector(std::ostream& out, const std::vector<std::string>& path_vector)
+std::string GetIndentation(const int indentation)
+{
+   return fmt::format("{:\t>{}}", "", indentation);
+}
+void CloseBrackets(std::ostream& out, const int indentation)
+{
+   out << fmt::format("{}}}\n", GetIndentation(indentation));
+}
+
+void OutPathVector(std::ostream& out, const std::vector<std::string>& path_vector, const int indentation)
 {
    for (const auto& path: path_vector)
    {
-      out << fmt::format("\t\t\t{}\n", path);
+      out << fmt::format("{}{}\n", GetIndentation(indentation), path);
    }
 }
 
-void OutGenderPathVector(std::ostream& out, const std::string& gender, const std::vector<std::string>& path_vector)
+void OutGenderPathVector(std::ostream& out,
+    const std::string& gender,
+    const std::vector<std::string>& path_vector,
+    const int indentation)
 {
-   out << fmt::format("\t\t{} = {{\n", gender);
-   OutPathVector(out, path_vector);
-   out << "\t\t}\n";
+   out << fmt::format("{}{} = {{\n", GetIndentation(indentation), gender);
+   OutPathVector(out, path_vector, indentation + 1);
+   CloseBrackets(out, indentation);
+}
+
+void OutIdeologyPathVector(std::ostream& out,
+    const std::string& ideology,
+    const std::vector<std::string>& path_vector,
+    const int indentation)
+{
+   out << fmt::format("{}{} = {{\n", GetIndentation(indentation), ideology);
+   OutGenderPathVector(out, "male", path_vector, indentation + 1);
+   CloseBrackets(out, indentation);
+}
+
+void OutPortraitCategory(std::ostream& out,
+    const mappers::PortraitPaths& portrait_paths,
+    const std::string& out_name,
+    const int indentation)
+{
+   out << fmt::format("{}{} = {{\n", GetIndentation(indentation), out_name);
+   if (const auto& itr = portrait_paths.find(out_name); itr != portrait_paths.end())
+   {
+      OutGenderPathVector(out, "male", itr->second, indentation + 1);
+   }
+   CloseBrackets(out, indentation);
+}
+
+void OutPortraitCategory(std::ostream& out,
+    const mappers::PortraitPaths& portrait_paths,
+    const std::string& out_name,
+    const int indentation,
+    const std::vector<std::string>& genders)
+{
+   out << fmt::format("{}{} = {{\n", GetIndentation(indentation), out_name);
+   for (const auto& gender: genders)
+   {
+      const std::string key = fmt::format("{}_{}", out_name, gender);
+      if (const auto& itr = portrait_paths.find(key); itr != portrait_paths.end())
+      {
+         OutGenderPathVector(out, gender, itr->second, indentation + 1);
+      }
+   }
+   CloseBrackets(out, indentation);
+}
+
+void OutPoliticalCategories(std::ostream& out, const mappers::PortraitPaths& portrait_paths)
+{
+   out << "\tpolitical = {\n";
+   for (const auto& ideology: {"communism", "democratic", "fascism", "neutrality"})
+   {
+      const std::string key = fmt::format("leader_{}", ideology);
+      if (const auto& itr = portrait_paths.find(key); itr != portrait_paths.end())
+      {
+         OutIdeologyPathVector(out, ideology, itr->second, 2);
+      }
+   }
+   CloseBrackets(out, 1);
 }
 }  // namespace
 
-std::ostream& mappers::operator<<(std::ostream& out, const PortraitPaths& portrait_paths)
+void mappers::OutPortraitPaths(std::ostream& out, const mappers::PortraitPaths& portrait_paths)
 {
-   out << "\tarmy = {\n";
-   OutGenderPathVector(out, "male", portrait_paths.army);
-   out << "\t}\n";
-   out << "\tnavy = {\n";
-   OutGenderPathVector(out, "male", portrait_paths.navy);
-   out << "\t}\n";
-   out << "\tpolitical = {\n";
-   out << portrait_paths.leader;
-   out << "\t}\n";
-   out << "\toperative = {\n";
-   OutGenderPathVector(out, "male", portrait_paths.male_operative);
-   OutGenderPathVector(out, "female", portrait_paths.female_operative);
-   out << "\t}\n";
-   OutGenderPathVector(out, "female", portrait_paths.female_leader);
-   return out;
-}
-
-std::ostream& mappers::operator<<(std::ostream& out, const IdeologyPortraitPaths& ideology_portrait_paths)
-{
-   out << "\t\tcommunism = {\n";
-   OutGenderPathVector(out, "male", ideology_portrait_paths.communism);
-   out << "\t\t}\n";
-   out << "\t\tdemocratic = {\n";
-   OutGenderPathVector(out, "male", ideology_portrait_paths.democratic);
-   out << "\t\t}\n";
-   out << "\t\tfascism = {\n";
-   OutGenderPathVector(out, "male", ideology_portrait_paths.fascism);
-   out << "\t\t}\n";
-   out << "\t\tneutrality = {\n";
-   OutGenderPathVector(out, "male", ideology_portrait_paths.neutrality);
-   out << "\t\t}\n";
-   return out;
+   OutPortraitCategory(out, portrait_paths, "army", 1);
+   OutPortraitCategory(out, portrait_paths, "navy", 1);
+   OutPoliticalCategories(out, portrait_paths);
+   OutPortraitCategory(out, portrait_paths, "operative", 1, {"male", "female"});
+   if (const auto& itr = portrait_paths.find("female_leader"); itr != portrait_paths.end())
+   {
+      OutGenderPathVector(out, "female", itr->second, 1);
+   }
 }
