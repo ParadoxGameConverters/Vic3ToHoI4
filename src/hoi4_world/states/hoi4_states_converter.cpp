@@ -659,7 +659,13 @@ std::map<int, int> SetPossibleVictoryPoints(const std::set<int>& hoi4_provinces,
          {
             continue;
          }
-         possible_victory_points.emplace(*best_hoi4_province, *possible_vp_value);
+         if (auto [itr, success] = possible_victory_points.emplace(*best_hoi4_province, *possible_vp_value); !success)
+         {
+            if (itr->second < *possible_vp_value)
+            {
+               itr->second = *possible_vp_value;
+            }
+         }
          applied_types.insert(special_province_type);
       }
    }
