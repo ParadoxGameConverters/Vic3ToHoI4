@@ -23,7 +23,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoCountryMappingsNoCountryLoc
 
 
    const Localizations hoi4_localizations =
-       ConvertLocalizations(vic3_localizations, {}, {}, {}, mappers::ProvinceMapper({}, {}), {});
+       ConvertLocalizations(vic3_localizations, {}, {}, {}, mappers::ProvinceMapper({}, {}), {}, {});
 
    EXPECT_EQ(hoi4_localizations.GetCountryLocalizations().size(), 0);
 }
@@ -41,6 +41,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoVic3LocalizationsNoHoi4Coun
        {},
        {},
        mappers::ProvinceMapper({}, {}),
+       {},
        {});
 
    EXPECT_EQ(hoi4_localizations.GetCountryLocalizations().size(), 0);
@@ -79,7 +80,8 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, CountryLocalizationsCanBeConv
        {
            {1, vic3::Country({.tag = "VIC"})},
            {2, vic3::Country({.tag = "TWO"})},
-       });
+       },
+       {});
 
    const std::optional<commonItems::LocalizationBlock> hoi_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("HOI");
@@ -134,7 +136,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoStateNameMappingsNoStateLoc
 
 
    const Localizations hoi4_localizations =
-       ConvertLocalizations(vic3_localizations, {}, {}, {}, mappers::ProvinceMapper({}, {}), {});
+       ConvertLocalizations(vic3_localizations, {}, {}, {}, mappers::ProvinceMapper({}, {}), {}, {});
 
    EXPECT_EQ(hoi4_localizations.GetStateLocalizations().size(), 0);
 }
@@ -152,6 +154,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoVic3LocalizationsNoHoi4Stat
        },
        {},
        mappers::ProvinceMapper({}, {}),
+       {},
        {});
 
    EXPECT_EQ(hoi4_localizations.GetStateLocalizations().size(), 0);
@@ -178,6 +181,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, StateLocalizationsCanBeConver
        },
        {},
        mappers::ProvinceMapper({}, {}),
+       {},
        {});
 
    const std::optional<commonItems::LocalizationBlock> one_localization_block =
@@ -216,6 +220,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoRegionsNoVictoryPointLocali
                {"x2468AC", {2}},
            },
            {}),
+       {},
        {});
 
    EXPECT_EQ(hoi4_localizations.GetVictoryPointLocalizations().size(), 0);
@@ -246,6 +251,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoSignificantProvincesNoVicto
                {"x2468AC", {2}},
            },
            {}),
+       {},
        {});
 
    EXPECT_EQ(hoi4_localizations.GetVictoryPointLocalizations().size(), 0);
@@ -279,6 +285,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, VictoryPointLocalizationsCanB
                {"x2468AC", {2}},
            },
            {}),
+       {},
        {});
 
    const std::optional<commonItems::LocalizationBlock> one_localization_block =
@@ -314,6 +321,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, SkippedVictoryPointLocalizati
            {"REGION_ONE", vic3::StateRegion({{"x123456", "city"}, {"x2468AC", "mine"}}, {})},
        },
        mappers::ProvinceMapper({{"x2468AC", {2}}}, {}),
+       {},
        {});
 
    std::cout.rdbuf(cout_buffer);
@@ -321,6 +329,51 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, SkippedVictoryPointLocalizati
    EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] 2 VP localizations were skipped."));
 
    EXPECT_EQ(hoi4_localizations.GetVictoryPointLocalizations().size(), 0);
+}
+
+
+TEST(Hoi4worldLocalizationsLocalizationsconverter, CharacterLocalizationsCanBeConverted)
+{
+   commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
+   commonItems::LocalizationBlock block_one("Doug", "english");
+   block_one.ModifyLocalization("english", "Douggie");
+   block_one.ModifyLocalization("spanish", "Dougesa");
+   vic3_localizations.AddOrModifyLocalizationBlock("Doug", block_one);
+   commonItems::LocalizationBlock block_two("Romney1", "english");
+   block_two.ModifyLocalization("english", "Romney");
+   block_two.ModifyLocalization("spanish", "Romney");
+   vic3_localizations.AddOrModifyLocalizationBlock("Romney1", block_two);
+
+
+   const Localizations hoi4_localizations = ConvertLocalizations(vic3_localizations,
+       {},
+       {},
+       {},
+       mappers::ProvinceMapper({}, {}),
+       {},
+       {
+           {1, vic3::Character({.first_name = "Doug", .last_name = "Romney1"})},
+       });
+
+
+   const std::optional<commonItems::LocalizationBlock> one_localization_block =
+       hoi4_localizations.GetCharacterLocalizations().GetLocalizationBlock("Doug");
+   ASSERT_TRUE(one_localization_block.has_value());
+   EXPECT_THAT(one_localization_block->GetLocalizations(),
+       testing::UnorderedElementsAre(testing::Pair("english", "Douggie"), testing::Pair("spanish", "Dougesa")));
+
+   const std::optional<commonItems::LocalizationBlock> two_localization_block =
+       hoi4_localizations.GetCharacterLocalizations().GetLocalizationBlock("Romney1");
+   ASSERT_TRUE(two_localization_block.has_value());
+   EXPECT_THAT(two_localization_block->GetLocalizations(),
+       testing::UnorderedElementsAre(testing::Pair("english", "Romney"), testing::Pair("spanish", "Romney")));
+
+   const std::optional<commonItems::LocalizationBlock> three_localization_block =
+       hoi4_localizations.GetCharacterLocalizations().GetLocalizationBlock("Doug_Romney1");
+   ASSERT_TRUE(three_localization_block.has_value());
+   EXPECT_THAT(three_localization_block->GetLocalizations(),
+       testing::UnorderedElementsAre(testing::Pair("english", "$Doug$ $Romney1$"),
+           testing::Pair("spanish", "$Doug$ $Romney1$")));
 }
 
 }  // namespace hoi4

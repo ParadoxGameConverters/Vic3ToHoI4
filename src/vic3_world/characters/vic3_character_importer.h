@@ -1,11 +1,11 @@
-#ifndef SRC_VIC3WORLD_CHARACTERS_CHARACTERIMPORTER_H
-#define SRC_VIC3WORLD_CHARACTERS_CHARACTERIMPORTER_H
+#ifndef SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTERIMPORTER_H
+#define SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTERIMPORTER_H
 
 
 
 #include <istream>
 
-#include "src/vic3_world/characters/character.h"
+#include "src/vic3_world/characters/vic3_character.h"
 
 
 namespace vic3
@@ -25,6 +25,7 @@ class CharacterImporter
    std::string last_name_;
 
    int culture_id_ = 0;
+   bool is_female_ = false;
    std::set<std::string> roles_;
    int rank_ = 0;
    std::string ideology_;
@@ -35,4 +36,4 @@ class CharacterImporter
 
 
 
-#endif  // SRC_VIC3WORLD_CHARACTERS_CHARACTERIMPORTER_H
+#endif  // SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTERIMPORTER_H

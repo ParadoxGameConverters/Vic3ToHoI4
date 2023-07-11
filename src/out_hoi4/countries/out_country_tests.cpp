@@ -149,6 +149,77 @@ TEST(Outhoi4CountriesOutcountryTests, TagsAreAddedToTagsFile)
 }
 
 
+TEST(Outhoi4CountriesOutcountryTests, CommonCharactersFileIsCreatedWithTagForName)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/CommonCharactersFileIsCreatedWithTagForName");
+   commonItems::TryCreateFolder("output/CommonCharactersFileIsCreatedWithTagForName/common");
+   commonItems::TryCreateFolder("output/CommonCharactersFileIsCreatedWithTagForName/common/characters");
+
+   const hoi4::Country country({.tag = "TAG", .leader_ids = {1, 2}});
+   const hoi4::Country country_two({.tag = "TWO", .leader_ids = {3, 4}});
+   const std::map<int, hoi4::Character> characters{
+       {1, hoi4::Character({.id = 1})},
+       {2, hoi4::Character({.id = 2})},
+       {3, hoi4::Character({.id = 3})},
+       {4, hoi4::Character({.id = 4})},
+   };
+
+   OutputCommonCharactersFile("CommonCharactersFileIsCreatedWithTagForName", country, characters);
+   OutputCommonCharactersFile("CommonCharactersFileIsCreatedWithTagForName", country_two, characters);
+
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/CommonCharactersFileIsCreatedWithTagForName/common/characters/TAG.txt"));
+   std::ifstream characters_file("output/CommonCharactersFileIsCreatedWithTagForName/common/characters/TAG.txt");
+   ASSERT_TRUE(characters_file.is_open());
+   std::stringstream characters_file_stream;
+   std::copy(std::istreambuf_iterator<char>(characters_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(characters_file_stream));
+   characters_file.close();
+
+   std::stringstream expected_one;
+   expected_one << "characters = {\n";
+   expected_one << "\tTAG_1 = {\n";
+   expected_one << "\t\tname = _\n";
+   expected_one << "\t\tportraits = {\n";
+   expected_one << "\t\t}\n";
+   expected_one << "\t}\n";
+   expected_one << "\tTAG_2 = {\n";
+   expected_one << "\t\tname = _\n";
+   expected_one << "\t\tportraits = {\n";
+   expected_one << "\t\t}\n";
+   expected_one << "\t}\n";
+   expected_one << "}\n";
+   EXPECT_EQ(characters_file_stream.str(), expected_one.str());
+
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/CommonCharactersFileIsCreatedWithTagForName/common/characters/TWO.txt"));
+   std::ifstream characters_file_two("output/CommonCharactersFileIsCreatedWithTagForName/common/characters/TWO.txt");
+   ASSERT_TRUE(characters_file_two.is_open());
+   std::stringstream characters_file_two_stream;
+   std::copy(std::istreambuf_iterator<char>(characters_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(characters_file_two_stream));
+   characters_file_two.close();
+
+   std::stringstream expected_two;
+   expected_two << "characters = {\n";
+   expected_two << "\tTWO_3 = {\n";
+   expected_two << "\t\tname = _\n";
+   expected_two << "\t\tportraits = {\n";
+   expected_two << "\t\t}\n";
+   expected_two << "\t}\n";
+   expected_two << "\tTWO_4 = {\n";
+   expected_two << "\t\tname = _\n";
+   expected_two << "\t\tportraits = {\n";
+   expected_two << "\t\t}\n";
+   expected_two << "\t}\n";
+   expected_two << "}\n";
+   EXPECT_EQ(characters_file_two_stream.str(), expected_two.str());
+}
+
+
 TEST(Outhoi4CountriesOutcountryTests, CountryHistoryFileIsCreatedWithTagForName)
 {
    commonItems::TryCreateFolder("output");
@@ -159,8 +230,8 @@ TEST(Outhoi4CountriesOutcountryTests, CountryHistoryFileIsCreatedWithTagForName)
    const hoi4::Country country({.tag = "TAG"});
    const hoi4::Country country_two({.tag = "TWO"});
 
-   OutputCountryHistory("CountryHistoryFileIsCreatedWithTagForName", country);
-   OutputCountryHistory("CountryHistoryFileIsCreatedWithTagForName", country_two);
+   OutputCountryHistory("CountryHistoryFileIsCreatedWithTagForName", country, {});
+   OutputCountryHistory("CountryHistoryFileIsCreatedWithTagForName", country_two, {});
 
    ASSERT_TRUE(
        commonItems::DoesFileExist("output/CountryHistoryFileIsCreatedWithTagForName/history/countries/TAG.txt"));
@@ -173,7 +244,7 @@ TEST(Outhoi4CountriesOutcountryTests, ExceptionIfHistoryFileNotOpened)
 {
    const hoi4::Country country({.tag = "TAG"});
 
-   EXPECT_THROW(OutputCountryHistory("/dev/null/COM", country), std::runtime_error);
+   EXPECT_THROW(OutputCountryHistory("/dev/null/COM", country, {}), std::runtime_error);
 }
 
 
@@ -185,7 +256,7 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    commonItems::TryCreateFolder("output/DefaultsAreSetInCountryHistoryFile/history/countries");
 
    const hoi4::Country country({.tag = "TAG"});
-   OutputCountryHistory("DefaultsAreSetInCountryHistoryFile", country);
+   OutputCountryHistory("DefaultsAreSetInCountryHistoryFile", country, {});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/DefaultsAreSetInCountryHistoryFile/history/countries/TAG.txt"));
    std::ifstream country_file("output/DefaultsAreSetInCountryHistoryFile/history/countries/TAG.txt");
@@ -201,6 +272,10 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    expected_one << "oob = \"TAG_1936\"\n";
    expected_one << "set_research_slots = 3\n";
    expected_one << "set_convoys = 0\n";
+   expected_one << "\n";
+   expected_one << "if = {\n";
+   expected_one << "\tlimit = { has_dlc = \"La Resistance\" }\n";
+   expected_one << "}\n";
    expected_one << "\n";
    expected_one << "set_politics = {\n";
    expected_one << "\truling_party = neutrality\n";
@@ -246,7 +321,7 @@ TEST(Outhoi4CountriesOutcountryTests, IdeologyIsSetCountryHistoryFile)
    commonItems::TryCreateFolder("output/IdeologyIsSetCountryHistoryFile/history/countries");
 
    const hoi4::Country country({.tag = "TAG", .ideology = "test_ideology"});
-   OutputCountryHistory("IdeologyIsSetCountryHistoryFile", country);
+   OutputCountryHistory("IdeologyIsSetCountryHistoryFile", country, {});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/IdeologyIsSetCountryHistoryFile/history/countries/TAG.txt"));
    std::ifstream country_file("output/IdeologyIsSetCountryHistoryFile/history/countries/TAG.txt");
@@ -269,7 +344,7 @@ TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
    commonItems::TryCreateFolder("output/IdeasAreOutputToCountryHistoryFile/history/countries");
 
    const hoi4::Country country({.tag = "TAG", .ideas = {"idea_one", "idea_two"}});
-   OutputCountryHistory("IdeasAreOutputToCountryHistoryFile", country);
+   OutputCountryHistory("IdeasAreOutputToCountryHistoryFile", country, {});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/IdeasAreOutputToCountryHistoryFile/history/countries/TAG.txt"));
    std::ifstream country_file("output/IdeasAreOutputToCountryHistoryFile/history/countries/TAG.txt");
@@ -285,6 +360,10 @@ TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
    expected_one << "oob = \"TAG_1936\"\n";
    expected_one << "set_research_slots = 3\n";
    expected_one << "set_convoys = 0\n";
+   expected_one << "\n";
+   expected_one << "if = {\n";
+   expected_one << "\tlimit = { has_dlc = \"La Resistance\" }\n";
+   expected_one << "}\n";
    expected_one << "\n";
    expected_one << "set_politics = {\n";
    expected_one << "\truling_party = neutrality\n";
@@ -332,7 +411,7 @@ TEST(Outhoi4CountriesOutcountryTests, CapitalCanBeSetInCountryHistoryFile)
    commonItems::TryCreateFolder("output/CapitalCanBeSetInCountryHistoryFile/history/countries");
 
    const hoi4::Country country({.tag = "TAG", .capital_state = 42});
-   OutputCountryHistory("CapitalCanBeSetInCountryHistoryFile", country);
+   OutputCountryHistory("CapitalCanBeSetInCountryHistoryFile", country, {});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/CapitalCanBeSetInCountryHistoryFile/history/countries/TAG.txt"));
    std::ifstream country_file("output/CapitalCanBeSetInCountryHistoryFile/history/countries/TAG.txt");
@@ -344,6 +423,82 @@ TEST(Outhoi4CountriesOutcountryTests, CapitalCanBeSetInCountryHistoryFile)
    country_file.close();
 
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr("capital = 42\n"));
+}
+
+
+TEST(Outhoi4CountriesOutcountryTests, CharactersAreRecruitedInCountryHistoryFile)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/CharactersAreRecruitedInCountryHistoryFile");
+   commonItems::TryCreateFolder("output/CharactersAreRecruitedInCountryHistoryFile/history");
+   commonItems::TryCreateFolder("output/CharactersAreRecruitedInCountryHistoryFile/history/countries");
+
+   const hoi4::Country country({.tag = "TAG", .leader_ids = {1, 2}});
+   const std::map<int, hoi4::Character> characters{
+       {1, hoi4::Character({.id = 1})},
+       {2, hoi4::Character({.id = 2})},
+   };
+   OutputCountryHistory("CharactersAreRecruitedInCountryHistoryFile", country, characters);
+
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/CharactersAreRecruitedInCountryHistoryFile/history/countries/TAG.txt"));
+   std::ifstream country_file("output/CharactersAreRecruitedInCountryHistoryFile/history/countries/TAG.txt");
+   ASSERT_TRUE(country_file.is_open());
+   std::stringstream country_file_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_stream));
+   country_file.close();
+
+   EXPECT_THAT(country_file_stream.str(),
+       testing::HasSubstr("recruit_character = TAG_1\n"
+                          "recruit_character = TAG_2\n"));
+}
+
+
+TEST(Outhoi4CountriesOutcountryTests, SpiesAreDefinedInCountryHistoryFile)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/SpiesAreDefinedInCountryHistoryFile");
+   commonItems::TryCreateFolder("output/SpiesAreDefinedInCountryHistoryFile/history");
+   commonItems::TryCreateFolder("output/SpiesAreDefinedInCountryHistoryFile/history/countries");
+
+   const hoi4::Country country({.tag = "TAG", .spy_ids = {1, 2}});
+   const std::map<int, hoi4::Character> characters{
+       {1, hoi4::Character({.spy_data = hoi4::Spy{}})},
+       {2, hoi4::Character({.spy_data = hoi4::Spy{}})},
+   };
+   OutputCountryHistory("SpiesAreDefinedInCountryHistoryFile", country, characters);
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/SpiesAreDefinedInCountryHistoryFile/history/countries/TAG.txt"));
+   std::ifstream country_file("output/SpiesAreDefinedInCountryHistoryFile/history/countries/TAG.txt");
+   ASSERT_TRUE(country_file.is_open());
+   std::stringstream country_file_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_stream));
+   country_file.close();
+
+   EXPECT_THAT(country_file_stream.str(),
+       testing::HasSubstr("if = {\n"
+                          "\tlimit = { has_dlc = \"La Resistance\" }\n"
+                          "\tcreate_operative_leader = {\n"
+                          "\t\tname = _\n"
+                          "\t\tGFX = GFX_portrait_operative_unknown\n"
+                          "\t\ttraits = {  }\n"
+                          "\t\tbypass_recruitment = no\n"
+                          "\t\tavailable_to_spy_master = yes\n"
+                          "\t\tnationalities = {  }\n"
+                          "\t}\n"
+                          "\tcreate_operative_leader = {\n"
+                          "\t\tname = _\n"
+                          "\t\tGFX = GFX_portrait_operative_unknown\n"
+                          "\t\ttraits = {  }\n"
+                          "\t\tbypass_recruitment = no\n"
+                          "\t\tavailable_to_spy_master = yes\n"
+                          "\t\tnationalities = {  }\n"
+                          "\t}\n"
+                          "}\n"));
 }
 
 
@@ -376,7 +531,7 @@ TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)
        .ship_variants = ship_variants,
        .plane_variants = plane_variants,
        .tank_variants = tank_variants});
-   OutputCountryHistory("EquipmentVariantsAreOutput", country);
+   OutputCountryHistory("EquipmentVariantsAreOutput", country, {});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/EquipmentVariantsAreOutput/history/countries/TAG.txt"));
    std::ifstream country_file("output/EquipmentVariantsAreOutput/history/countries/TAG.txt");
@@ -436,7 +591,7 @@ TEST(Outhoi4CountriesOutcountryTests, PuppetsAreOutputToCountryHistoryFile)
    commonItems::TryCreateFolder("output/PuppetsAreOutputToCountryHistoryFile/history/countries");
 
    const hoi4::Country country({.tag = "AAA", .puppets = {"BBB"}});
-   OutputCountryHistory("PuppetsAreOutputToCountryHistoryFile", country);
+   OutputCountryHistory("PuppetsAreOutputToCountryHistoryFile", country, {});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/PuppetsAreOutputToCountryHistoryFile/history/countries/AAA.txt"));
    std::ifstream country_file("output/PuppetsAreOutputToCountryHistoryFile/history/countries/AAA.txt");
@@ -477,7 +632,7 @@ TEST(Outhoi4CountriesOutcountryTests, FascistPuppetsAreOutputToCountryHistoryFil
    commonItems::TryCreateFolder("output/FascistPuppetsAreOutputToCountryHistoryFile/history/countries");
 
    const hoi4::Country country({.tag = "FAC", .ideology = "fascism", .puppets = {"CCC"}});
-   OutputCountryHistory("FascistPuppetsAreOutputToCountryHistoryFile", country);
+   OutputCountryHistory("FascistPuppetsAreOutputToCountryHistoryFile", country, {});
 
    ASSERT_TRUE(
        commonItems::DoesFileExist("output/FascistPuppetsAreOutputToCountryHistoryFile/history/countries/FAC.txt"));

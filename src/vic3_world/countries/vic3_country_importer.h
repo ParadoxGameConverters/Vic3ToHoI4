@@ -19,7 +19,7 @@ class CountryImporter
   public:
    CountryImporter();
 
-   [[nodiscard]] Country ImportCountry(int number,
+   [[nodiscard]] std::optional<Country> ImportCountry(int number,
        std::istream& input_stream,
        const std::map<std::string, commonItems::Color>& color_definitions);
 
@@ -31,6 +31,8 @@ class CountryImporter
    std::string country_type_;
    std::set<int> primary_culture_ids_;
    int head_of_state_id_;
+
+   bool is_dead_ = false;  // Country marked as invalid data by game, but not yet cleaned up
 };
 
 }  // namespace vic3

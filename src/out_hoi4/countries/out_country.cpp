@@ -5,6 +5,7 @@
 
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/out_hoi4/characters/out_character.h"
 #include "src/out_hoi4/military/out_equipment_variant.h"
 #include "src/out_hoi4/technology/out_technologies.h"
 
@@ -35,6 +36,28 @@ void OutputPolitics(std::ostream& country_history,
    for (const auto& [ideology, support]: ideology_support)
    {
       country_history << "\t" << ideology << " = " << support << "\n";
+   }
+   country_history << "}\n";
+   country_history << "\n";
+}
+void OutputCharacterRecruitment(std::ostream& country_history,
+    const std::string& tag,
+    const std::vector<int>& leader_ids)
+{
+   for (const auto leader_id: leader_ids)
+   {
+      country_history << fmt::format("recruit_character = {}_{}\n", tag, leader_id);
+   }
+}
+void OutputSpies(std::ostream& country_history,
+    const std::set<int>& spy_ids,
+    const std::map<int, hoi4::Character>& characters)
+{
+   country_history << "if = {\n";
+   country_history << "\tlimit = { has_dlc = \"La Resistance\" }\n";
+   for (const auto spy_id: spy_ids)
+   {
+      out::OutputSpy(country_history, characters.at(spy_id));
    }
    country_history << "}\n";
    country_history << "\n";
@@ -119,8 +142,31 @@ void out::OutputCommonCountryTag(const hoi4::Country& country, std::ofstream& ta
    tags_file << fmt::format("{0} = \"countries/{0}.txt\"\n", country.GetTag());
 }
 
+void out::OutputCommonCharactersFile(std::string_view output_name,
+    const hoi4::Country& country,
+    const std::map<int, hoi4::Character>& characters)
+{
+   const std::string& tag = country.GetTag();
 
-void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country& country)
+   const auto common_characters_file_name = fmt::format("output/{}/common/characters/{}.txt", output_name, tag);
+   std::ofstream common_characters(common_characters_file_name);
+   if (!common_characters.is_open())
+   {
+      throw std::runtime_error(fmt::format("Could not create {}", common_characters_file_name));
+   }
+
+   common_characters << "characters = {\n";
+   for (const auto leader_id: country.GetLeaderIds())
+   {
+      OutputCharacter(common_characters, country.GetTag(), characters.at(leader_id));
+   }
+   common_characters << "}\n";
+}
+
+
+void out::OutputCountryHistory(std::string_view output_name,
+    const hoi4::Country& country,
+    const std::map<int, hoi4::Character>& characters)
 {
    const std::string& tag = country.GetTag();
 
@@ -141,6 +187,9 @@ void out::OutputCountryHistory(std::string_view output_name, const hoi4::Country
    country_history << "set_research_slots = 3\n";
    country_history << "set_convoys = 0\n";
    country_history << "\n";
+
+   OutputCharacterRecruitment(country_history, tag, country.GetLeaderIds());
+   OutputSpies(country_history, country.GetSpyIds(), characters);
 
    OutputPolitics(country_history,
        country.GetIdeology(),

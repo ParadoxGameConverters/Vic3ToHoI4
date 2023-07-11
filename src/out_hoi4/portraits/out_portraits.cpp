@@ -19,7 +19,7 @@ void out::OutputPortraits(std::string_view output_name, const std::map<std::stri
    for (const auto& country: countries | std::views::values)
    {
       out << country.GetTag() << " = {\n";
-      out << country.GetGraphicsBlock().portrait_paths;
+      mappers::OutPortraitPaths(out, country.GetGraphicsBlock().portrait_paths);
       out << "}\n";
    }
 

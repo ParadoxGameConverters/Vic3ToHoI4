@@ -7,6 +7,7 @@
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/mappers/country/country_mapper.h"
+#include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/vic3_world/countries/vic3_country.h"
 
 
@@ -16,16 +17,28 @@ namespace hoi4
 
 TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 {
+   std::map<int, Character> characters;
+   std::map<std::string, mappers::CultureQueue> culture_queues;
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
-   const vic3::Country source_country_one({.number = 1,
+   const vic3::Country source_country_one({
+       .number = 1,
        .color = commonItems::Color{std::array{1, 2, 3}},
        .capital_state = 1,
-       .primary_cultures = {"culture_0"}});
-   const vic3::Country source_country_two({.number = 2,
+       .primary_cultures = {"culture_0"},
+       .head_of_state_id = 1,
+       .character_ids = {1, 3, 4},
+   });
+   const vic3::Country source_country_two({
+       .number = 2,
        .color = commonItems::Color{std::array{2, 4, 6}},
        .capital_state = 2,
        .active_laws = {"law_universal_suffrage", "law_presidential_republic"},
-       .primary_cultures = {"culture_1"}});
+       .primary_cultures = {"culture_1"},
+       .head_of_state_id = 2,
+       .character_ids = {2},
+   });
+   const auto& culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
+
 
    const auto countries = ConvertCountries(
        {
@@ -50,7 +63,17 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        {
            {{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},
            {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}},
-       });
+       },
+       {
+           {1, vic3::Character({.id = 1, .roles = {"politician"}})},
+           {2, vic3::Character({.id = 2, .roles = {"general"}})},
+           {3, vic3::Character({.id = 3, .roles = {"general"}})},
+           {4, vic3::Character({.id = 4, .roles = {"agitator"}})},
+       },
+       {},
+       characters,
+       culture_queues,
+       culture_graphics_mapper);
 
    const Technologies expected_techs_one{
        std::map<std::optional<std::string>, std::set<std::string>>{
@@ -93,14 +116,15 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Tank Design Three\""}}),
    };
 
-   const mappers::GraphicsBlock expected_graphics_block_one{{.army = {"GFX_general_0"}},
+   const mappers::GraphicsBlock expected_graphics_block_one{{{"army", {"GFX_general_0"}}},
        "western_european_gfx",
        "western_european_2d"};
-   const mappers::GraphicsBlock expected_graphics_block_two{{.army = {"GFX_general_1"}}, "asian_gfx", "asian_2d"};
+   const mappers::GraphicsBlock expected_graphics_block_two{{{"army", {"GFX_general_1"}}}, "asian_gfx", "asian_2d"};
 
    EXPECT_THAT(countries,
        testing::ElementsAre(testing::Pair("TAG",
-                                Country(CountryOptions{.tag = "TAG",
+                                Country(CountryOptions{
+                                    .tag = "TAG",
                                     .color = commonItems::Color{std::array{1, 2, 3}},
                                     .capital_state = 10,
                                     .ideology = "neutrality",
@@ -109,9 +133,13 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .ship_variants = expected_ship_variants_one,
                                     .plane_variants = expected_plane_variants_one,
                                     .tank_variants = expected_tank_variants_one,
-                                    .graphics_block = expected_graphics_block_one})),
+                                    .graphics_block = expected_graphics_block_one,
+                                    .leader_ids = {1, 3},
+                                    .spy_ids = {4},
+                                })),
            testing::Pair("TWO",
-               Country(CountryOptions{.tag = "TWO",
+               Country(CountryOptions{
+                   .tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
                    .capital_state = 20,
                    .ideology = "democratic",
@@ -120,7 +148,9 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .ship_variants = expected_ship_variants_two,
                    .plane_variants = expected_plane_variants_two,
                    .tank_variants = expected_tank_variants_two,
-                   .graphics_block = expected_graphics_block_two}))));
+                   .graphics_block = expected_graphics_block_two,
+                   .leader_ids = {2},
+               }))));
 }
 
 }  // namespace hoi4

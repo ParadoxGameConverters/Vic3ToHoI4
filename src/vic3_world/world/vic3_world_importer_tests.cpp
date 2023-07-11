@@ -32,6 +32,9 @@ TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
    EXPECT_TRUE(world.GetProvinceDefinitions().GetProvinceDefinitions().empty());
    EXPECT_TRUE(world.GetAcquiredTechnologies().empty());
    EXPECT_EQ(world.GetLocalizations().size(), 0);
+   EXPECT_TRUE(world.GetCultureDefinitions().empty());
+   EXPECT_TRUE(world.GetCharacters().empty());
+   EXPECT_TRUE(world.GetInterestGroups().empty());
 }
 
 
@@ -46,13 +49,18 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
 
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(testing::Pair(1,
-                                         Country({.number = 1,
+                                         Country({
+                                             .number = 1,
                                              .tag = "TAG",
                                              .color = commonItems::Color(std::array{1, 2, 3}),
                                              .active_laws = {"law_monarchy"},
                                              .primary_culture_ids = {0},
                                              .primary_cultures = {"welsh"},
-                                             .puppets = {3}})),
+                                             .head_of_state_id = 1,
+                                             .character_ids = {1, 2, 4},
+                                             .ig_ids = {1, 2},
+                                             .puppets = {3},
+                                         })),
            testing::Pair(3,
                Country({
                    .number = 3,
@@ -60,6 +68,9 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                    .color = commonItems::Color(std::array{2, 4, 6}),
                    .primary_culture_ids = {1},
                    .primary_cultures = {"scottish"},
+                   .head_of_state_id = 5,
+                   .character_ids = {5},
+                   .ig_ids = {3},
                }))));
    EXPECT_THAT(world.GetStates(),
        testing::UnorderedElementsAre(testing::Pair(0, State({.provinces = {1, 2, 3}})),
@@ -105,6 +116,69 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
    ASSERT_TRUE(world.GetLocalizations().HasLocalization("test_localisation"));
    EXPECT_EQ(world.GetLocalizations().GetLocalizationBlock("test_localisation")->GetLocalization("english"),
        "testing testing 1 2 3");
+   EXPECT_THAT(world.GetCharacters(),
+       testing::UnorderedElementsAre(testing::Pair(1,
+                                         Character({
+                                             .id = 1,
+                                             .first_name = "Valery",
+                                             .last_name = "Konev",
+                                             .culture_id = 0,
+                                             .culture = "welsh",
+                                             .ig_id = 1,
+                                             .roles = {"politician"},
+                                             .ideology = "ideology_abolitionist",
+                                             .traits = {"basic_political_operator", "imperious"},
+                                         })),
+           testing::Pair(2,
+               Character({
+                   .id = 2,
+                   .first_name = "Malobe",
+                   .last_name = "Mande",
+                   .culture_id = 0,
+                   .culture = "welsh",
+                   .ig_id = 2,
+                   .roles = {"general"},
+                   .rank = 2,
+               })),
+           testing::Pair(4,
+               Character({
+                   .id = 4,
+                   .first_name = "Allois",
+                   .last_name = "Ullrich",
+                   .culture_id = 1,
+                   .culture = "scottish",
+                   .ig_id = 1,
+                   .roles = {"agitator"},
+                   .origin_tag = "TWO",
+                   .origin_country_id = 3,
+               })),
+           testing::Pair(5,
+               Character({
+                   .id = 5,
+                   .first_name = "Petru",
+                   .last_name = "Mergulet",
+                   .culture_id = 1,
+                   .culture = "scottish",
+                   .ig_id = 3,
+                   .roles = {"general", "politician"},
+                   .rank = 1,
+               })),
+           testing::Pair(6,
+               Character({
+                   .id = 6,
+                   .first_name = "Martin",
+                   .last_name = "Cassel",
+                   .culture_id = 0,
+                   .culture = "welsh",
+                   .roles = {"agitator"},
+                   .origin_tag = "TAG",
+                   .origin_country_id = 1,
+               }))));
+   EXPECT_THAT(world.GetInterestGroups(),
+       testing::UnorderedElementsAre(testing::Pair(1, InterestGroup("ig_devout", 1, 1, 0.34881F, true)),
+           testing::Pair(2, InterestGroup("ig_landowners", 1, 2, 0.15406F, false)),
+           testing::Pair(3, InterestGroup("ig_devout", 3, 5, 0.34652F, true))));
+   EXPECT_EQ(world.GetPlaythroughId(), 2311);
 }
 
 

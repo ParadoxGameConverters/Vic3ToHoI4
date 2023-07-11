@@ -3,24 +3,36 @@
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "external/fmt/include/fmt/format.h"
-#include "src/vic3_world/characters/character_importer.h"
+#include "src/vic3_world/characters/vic3_character_importer.h"
 
 namespace vic3
 {
 
 
-TEST(Vic3WorldCharactersCharacterImporter, DefaultsDefaultToDefault)
+TEST(Vic3worldCharactersVic3characterimporter, DefaultsDefaultToDefault)
 {
    CharacterImporter character_importer;
 
    std::stringstream input;
    const auto character = character_importer.ImportCharacter(0, input);
-
-   EXPECT_EQ(character, Character({}));
+   EXPECT_EQ(character,
+       Character({.id = 0,
+           .first_name = "",
+           .last_name = "",
+           .culture_id = 0,
+           .culture = "",
+           .is_female = false,
+           .ig_id = 0,
+           .roles = std::set<std::string>{},
+           .rank = 0,
+           .ideology = "",
+           .traits = std::set<std::string>{},
+           .origin_tag = "",
+           .origin_country_id = std::nullopt}));
 }
 
 
-TEST(Vic3WorldCharactersCharacterImporter, CharacterCanBeImported)
+TEST(Vic3worldCharactersVic3characterimporter, CharacterCanBeImported)
 {
    CharacterImporter character_importer;
 
@@ -29,6 +41,7 @@ TEST(Vic3WorldCharactersCharacterImporter, CharacterCanBeImported)
    input << "\tfirst_name = \"Cabdi\"\n";
    input << "\tlast_name = \"Wala\"\n";
    input << "\tculture = 1\n";
+   input << "\tis_female = yes\n";
    input << "\trole = politician\n";
    input << "\trole = agitator\n";
    input << "\tideology = \"ideology_0\"\n";
@@ -43,6 +56,7 @@ TEST(Vic3WorldCharactersCharacterImporter, CharacterCanBeImported)
            .first_name = "Cabdi",
            .last_name = "Wala",
            .culture_id = 1,
+           .is_female = true,
            .roles = {"politician", "agitator"},
            .rank = 5,
            .ideology = "ideology_0",
@@ -50,7 +64,7 @@ TEST(Vic3WorldCharactersCharacterImporter, CharacterCanBeImported)
 }
 
 
-TEST(Vic3WorldCharactersCharacterImporter, RulerCommanderIsFirstRank)
+TEST(Vic3worldCharactersVic3characterimporter, RulerCommanderIsFirstRank)
 {
    CharacterImporter character_importer;
 
@@ -65,7 +79,7 @@ TEST(Vic3WorldCharactersCharacterImporter, RulerCommanderIsFirstRank)
 }
 
 
-TEST(Vic3WorldCharactersCharacterImporter, InvalidRankIsLogged)
+TEST(Vic3worldCharactersVic3characterimporter, InvalidRankIsLogged)
 {
    CharacterImporter character_importer;
 
@@ -85,4 +99,45 @@ TEST(Vic3WorldCharactersCharacterImporter, InvalidRankIsLogged)
    EXPECT_EQ(character, Character({.id = 1, .rank = 0}));
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Failed to read rank: commander_rank_modded."));
 }
+
+
+TEST(Vic3worldCharactersVic3characterimporter, CultureCanBeSet)
+{
+   CharacterImporter character_importer;
+
+   std::stringstream input;
+   auto character = character_importer.ImportCharacter(1, input);
+
+   character.SetCulture("scottish");
+
+   EXPECT_EQ(character, Character({.id = 1, .culture = "scottish"}));
+}
+
+
+TEST(Vic3worldCharactersVic3characterimporter, HomeTagCanBeSet)
+{
+   CharacterImporter character_importer;
+
+   std::stringstream input;
+   auto character = character_importer.ImportCharacter(1, input);
+
+   character.SetHomeTag("TAG");
+
+   EXPECT_EQ(character, Character({.id = 1, .origin_tag = "TAG"}));
+}
+
+
+TEST(Vic3worldCharactersVic3characterimporter, IgIdCanBeSet)
+{
+   CharacterImporter character_importer;
+
+   std::stringstream input;
+   auto character = character_importer.ImportCharacter(1, input);
+
+   character.SetIgId(1);
+
+   EXPECT_EQ(character, Character({.id = 1, .ig_id = 1}));
+}
+
+
 }  // namespace vic3

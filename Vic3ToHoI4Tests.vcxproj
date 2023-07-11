@@ -60,6 +60,9 @@
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="src\vic3_world\pacts\pacts_importer_tests.cpp" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\characters\hoi4_characters_converter_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\characters\hoi4_character_converter_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\characters\hoi4_character_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\localizations\localizations_converter_tests.cpp" />
@@ -82,6 +85,8 @@
     <ClCompile Include="src\hoi4_world\technology\technologies_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\technology\technologies_tests.cpp" />
     <ClCompile Include="src\hoi4_world\world\hoi4_world_converter_tests.cpp" />
+    <ClCompile Include="src\mappers\character\leader_type_mapper_importer_tests.cpp" />
+    <ClCompile Include="src\mappers\character\leader_type_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_creator_tests.cpp" />
     <ClCompile Include="src\mappers\country\country_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper_importer_tests.cpp" />
@@ -97,6 +102,7 @@
     <ClCompile Include="src\maps\province_definitions_tests.cpp" />
     <ClCompile Include="src\maps\province_points_tests.cpp" />
     <ClCompile Include="src\maps\utility_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\characters\out_character_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country_tests.cpp" />
     <ClCompile Include="src\out_hoi4\localizations\out_localizations_tests.cpp" />
@@ -121,10 +127,10 @@
     <ClCompile Include="src\vic3_world\buildings\buildings_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\buildings\buildings_tests.cpp" />
     <ClCompile Include="src\vic3_world\buildings\building_importer_tests.cpp" />
-    <ClCompile Include="src\vic3_world\characters\characters_importer_tests.cpp" />
-    <ClCompile Include="src\vic3_world\characters\character_importer_tests.cpp" />
-    <ClCompile Include="src\vic3_world\characters\character_manager_tests.cpp" />
-    <ClCompile Include="src\vic3_world\characters\country_character_map_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\characters\vic3_characters_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\characters\vic3_character_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\characters\vic3_character_manager_tests.cpp" />
+    <ClCompile Include="src\vic3_world\characters\vic3_country_character_map_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\country_definitions_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer_tests.cpp" />

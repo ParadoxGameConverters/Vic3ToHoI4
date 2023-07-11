@@ -4,17 +4,20 @@ meta_data={
 	mods={ "Test Mod" "Test Mod Two" }
 }
 
+playthrough_id = "ff872f63-9112-4032-a128-cf020e7bb8a1"
 country_manager={
 	database={
 0=none
 1={
 	definition="TAG"
 	cultures={ 0 }
+	ruler=1
 }
 2=none
 3={
 	definition="TWO"
 	cultures={ 1 }
+	ruler=5
 }
 	}
 }
@@ -61,6 +64,31 @@ building_manager={
 }
 	}
 }
+interest_groups={
+	database={
+0=none
+1={
+	country=1
+	definition=ig_devout
+	leader=1
+	clout=0.34881
+	in_government=yes
+}
+2={
+	country=1
+	definition=ig_landowners
+	leader=2
+	clout=0.15406
+}
+3={
+	country=3
+	definition=ig_devout
+	leader=5
+	clout=0.34652
+	in_government=yes
+}
+	}
+}
 country_rankings={
 	average_prestige=170
 	highest_prestige=5544
@@ -89,7 +117,7 @@ laws={
 }
 	}
 }
-cultures = {
+cultures={
 	database={
 0 = {
 	type=welsh
@@ -97,6 +125,68 @@ cultures = {
 1 = {
 	type=scottish
 }
+	}
+}
+character_manager={
+	database={
+0=none
+1={
+first_name=Valery
+last_name=Konev
+culture=0
+role=politician
+ideology=ideology_abolitionist
+traits = { imperious basic_political_operator }
+}
+2={
+first_name=Malobe
+last_name=Mande
+culture=0
+role=general
+rank="commander_rank_2"
+}
+3=none
+4={
+first_name=Allois
+last_name=Ullrich
+culture=1
+role=agitator
+}
+5={
+first_name=Petru
+last_name=Mergulet
+culture=1
+role=politician
+role=general
+rank="commander_rank_ruler"
+}
+6={
+first_name=Martin
+last_name=Cassel
+culture=0
+role=agitator
+}
+	}
+	country_character_map={
+max=537
+1 = { 1 2 4 }
+3 = { 5 }
+	}
+	character_ig_map={
+max=6746
+1=1
+2=2
+4=1
+5=3
+	}
+	exile_pool={
+max=6743
+6={"ig_devout"}
+	}
+	exile_country_map={
+max=6743
+4="TWO"
+6="TAG"
 	}
 }
 pacts={

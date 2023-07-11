@@ -1,0 +1,61 @@
+# This determines who your country leader is.
+# In a monarchy, the king may truly rule or parliament might be in charge.
+# Prime ministers will have appropiately non-kingly portraits.
+#
+# You only need to specify cases where the Vic3 head of state should NOT be the HOI4 country leader.
+# Supported leader types are { prime_minister, council }.
+#
+# ex:
+# law_governance_principal = {
+#	leader_type = {
+#		law_distribution_of_power
+#	}
+# }
+
+law_council_republic = {
+	council = {
+		law_technocracy
+		law_landed_voting
+		law_wealth_voting
+		law_census_voting
+		law_universal_suffrage
+		law_single_party_state
+		law_anarchy
+		law_elder_council
+	}
+}
+
+law_monarchy = {
+	prime_minister = {
+		law_wealth_voting
+		law_census_voting
+		law_universal_suffrage
+	}
+
+	council = {
+		law_anarchy
+	}
+}
+
+law_theocracy = {
+	prime_minister = {
+		law_census_voting
+		law_universal_suffrage
+	}
+
+	council = {
+		law_anarchy
+	}
+}
+
+law_parliamentary_republic = {
+	council = {
+		law_anarchy
+	}
+}
+
+law_presidential_republic = {
+	council = {
+		law_anarchy
+	}
+}

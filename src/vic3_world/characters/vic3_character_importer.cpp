@@ -1,4 +1,4 @@
-#include "src/vic3_world/characters/character_importer.h"
+#include "src/vic3_world/characters/vic3_character_importer.h"
 
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
@@ -13,6 +13,9 @@ vic3::CharacterImporter::CharacterImporter()
    });
    character_parser_.registerKeyword("culture", [this](std::istream& input_stream) {
       culture_id_ = commonItems::getInt(input_stream);
+   });
+   character_parser_.registerKeyword("is_female", [this](std::istream& input_stream) {
+      is_female_ = commonItems::getString(input_stream) == "yes";
    });
    character_parser_.registerKeyword("role", [this](std::istream& input_stream) {
       roles_.emplace(commonItems::getString(input_stream));
@@ -50,6 +53,7 @@ vic3::Character vic3::CharacterImporter::ImportCharacter(const int id, std::istr
    first_name_.clear();
    last_name_.clear();
    culture_id_ = 0;
+   is_female_ = false;
    roles_.clear();
    rank_ = 0;
    ideology_.clear();
@@ -61,6 +65,7 @@ vic3::Character vic3::CharacterImporter::ImportCharacter(const int id, std::istr
        .first_name = first_name_,
        .last_name = last_name_,
        .culture_id = culture_id_,
+       .is_female = is_female_,
        .roles = roles_,
        .rank = rank_,
        .ideology = ideology_,

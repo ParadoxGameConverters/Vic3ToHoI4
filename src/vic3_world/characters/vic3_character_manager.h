@@ -1,11 +1,11 @@
-#ifndef SRC_VIC3WORLD_CHARACTERS_CHARACTERMANAGER_H
-#define SRC_VIC3WORLD_CHARACTERS_CHARACTERMANAGER_H
+#ifndef SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTERMANAGER_H
+#define SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTERMANAGER_H
 
 
 
 #include <istream>
 
-#include "src/vic3_world/characters/character.h"
+#include "src/vic3_world/characters/vic3_character.h"
 
 
 namespace vic3
@@ -39,4 +39,4 @@ class CharacterManager
 
 
 
-#endif  // SRC_VIC3WORLD_CHARACTERS_CHARACTERMANAGER_H
+#endif  // SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTERMANAGER_H

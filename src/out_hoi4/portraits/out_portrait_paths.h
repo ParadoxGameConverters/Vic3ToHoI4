@@ -12,8 +12,7 @@
 namespace mappers
 {
 
-std::ostream& operator<<(std::ostream& out, const PortraitPaths& portrait_paths);
-std::ostream& operator<<(std::ostream& out, const IdeologyPortraitPaths& ideology_portrait_paths);
+void OutPortraitPaths(std::ostream& out, const PortraitPaths& portrait_paths);
 
 }  // namespace mappers
 

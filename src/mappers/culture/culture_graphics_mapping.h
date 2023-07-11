@@ -8,31 +8,10 @@
 
 namespace mappers
 {
-struct IdeologyPortraitPaths
-{
-   std::vector<std::string> communism;
-   std::vector<std::string> democratic;
-   std::vector<std::string> fascism;
-   std::vector<std::string> neutrality;
+using PortraitName = std::string;
+using PortraitType = std::string;
+using PortraitPaths = std::map<PortraitType, std::vector<PortraitName>>;
 
-   std::partial_ordering operator<=>(const IdeologyPortraitPaths&) const = default;
-};
-
-struct PortraitPaths
-{
-   std::vector<std::string> army;
-   std::vector<std::string> navy;
-   IdeologyPortraitPaths leader;
-   std::vector<std::string> female_leader;
-   IdeologyPortraitPaths advisor;
-   std::vector<std::string> male_operative;
-   std::vector<std::string> female_operative;
-   std::vector<std::string> male_monarch;
-   std::vector<std::string> female_monarch;
-   std::vector<std::string> council;
-
-   std::partial_ordering operator<=>(const PortraitPaths&) const = default;
-};
 
 struct GraphicsBlock
 {

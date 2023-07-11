@@ -1,5 +1,7 @@
 #include "src/mappers/culture/culture_graphics_mapper.h"
 
+#include <ranges>
+
 #include "external/fmt/include/fmt/format.h"
 
 namespace
@@ -15,27 +17,27 @@ std::vector<std::string> operator+(const std::vector<std::string>& lhs, const st
    return joined;
 }
 
-mappers::IdeologyPortraitPaths operator+(const mappers::IdeologyPortraitPaths& lhs,
-    const mappers::IdeologyPortraitPaths& rhs)
-{
-   return {lhs.communism + rhs.communism,
-       lhs.democratic + rhs.democratic,
-       lhs.fascism + rhs.fascism,
-       lhs.neutrality + rhs.neutrality};
-}
-
 mappers::PortraitPaths operator+(const mappers::PortraitPaths& lhs, const mappers::PortraitPaths& rhs)
 {
-   return {lhs.army + rhs.army,
-       lhs.navy + rhs.navy,
-       lhs.leader + rhs.leader,
-       lhs.female_leader + rhs.female_leader,
-       lhs.advisor + rhs.advisor,
-       lhs.male_operative + rhs.male_operative,
-       lhs.female_operative + rhs.female_operative,
-       lhs.male_monarch + rhs.male_monarch,
-       lhs.female_monarch + rhs.female_monarch,
-       lhs.council + rhs.council};
+   mappers::PortraitPaths sum;
+   for (const auto& side: {lhs, rhs})
+   {
+      for (const auto& [key, portraits]: side)
+      {
+         if (auto [itr, success] = sum.emplace(key, portraits); !success)
+         {
+            std::set<std::string> current_portraits;
+            std::ranges::copy(itr->second, std::inserter(current_portraits, current_portraits.begin()));
+
+            std::ranges::copy_if(portraits,
+                std::back_inserter(itr->second),
+                [current_portraits](const std::string& portrait) {
+                   return !current_portraits.contains(portrait);
+                });
+         }
+      }
+   }
+   return sum;
 }
 
 mappers::GraphicsBlock operator+(const mappers::GraphicsBlock& lhs, const mappers::GraphicsBlock& rhs)
@@ -48,31 +50,17 @@ mappers::GraphicsBlock operator+(const mappers::GraphicsBlock& lhs, const mapper
    return {{lhs.portrait_paths + rhs.portrait_paths}, lhs.graphical_culture, lhs.graphical_culture_2d};
 }
 
-std::vector<std::string>& ValueOr(std::vector<std::string>& lhs,
-    std::vector<std::string>& mhs,
-    std::vector<std::string>& rhs)
+mappers::PortraitPaths ValueOr(mappers::PortraitPaths& lhs, mappers::PortraitPaths& mhs, mappers::PortraitPaths& rhs)
 {
-   if (!lhs.empty())
+   mappers::PortraitPaths paths;
+   for (const auto& side: {lhs, mhs, rhs})
    {
-      return lhs;
+      for (const auto& [key, portraits]: side)
+      {
+         paths.emplace(key, portraits);
+      }
    }
-   if (!mhs.empty())
-   {
-      return mhs;
-   }
-   return rhs;
-}
-
-mappers::IdeologyPortraitPaths IdeologyValueOr(mappers::IdeologyPortraitPaths& lhs,
-    mappers::IdeologyPortraitPaths& mhs,
-    mappers::IdeologyPortraitPaths& rhs)
-{
-   return {
-       ValueOr(lhs.communism, mhs.communism, rhs.communism),
-       ValueOr(lhs.democratic, mhs.democratic, rhs.democratic),
-       ValueOr(lhs.fascism, mhs.fascism, rhs.fascism),
-       ValueOr(lhs.neutrality, mhs.neutrality, rhs.neutrality),
-   };
+   return paths;
 }
 
 void EmplaceUnitGraphics(std::map<std::string, std::string>& unit_graphics, const mappers::GraphicsBlock& block)
@@ -169,19 +157,7 @@ mappers::GraphicsBlock mappers::CultureGraphicsMapper::MatchCultureToGraphics(
    }
 
    // Fill in lower blocks from higher blocks.
-   return GraphicsBlock(
-       {
-           ValueOr(culture_paths.army, trait_paths.army, ethnicity_paths.army),
-           ValueOr(culture_paths.navy, trait_paths.navy, ethnicity_paths.navy),
-           IdeologyValueOr(culture_paths.leader, trait_paths.leader, ethnicity_paths.leader),
-           ValueOr(culture_paths.female_leader, trait_paths.female_leader, ethnicity_paths.female_leader),
-           IdeologyValueOr(culture_paths.advisor, trait_paths.advisor, ethnicity_paths.advisor),
-           ValueOr(culture_paths.male_operative, trait_paths.male_operative, ethnicity_paths.male_operative),
-           ValueOr(culture_paths.female_operative, trait_paths.female_operative, ethnicity_paths.female_operative),
-           ValueOr(culture_paths.male_monarch, trait_paths.male_monarch, ethnicity_paths.male_monarch),
-           ValueOr(culture_paths.female_monarch, trait_paths.female_monarch, ethnicity_paths.female_monarch),
-           ValueOr(culture_paths.council, trait_paths.council, ethnicity_paths.council),
-       },
+   return {ValueOr(culture_paths, trait_paths, ethnicity_paths),
        unit_graphics.at("graphical_culture"),
-       unit_graphics.at("graphical_culture_2d"));
+       unit_graphics.at("graphical_culture_2d")};
 }

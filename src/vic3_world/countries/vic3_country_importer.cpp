@@ -26,11 +26,14 @@ vic3::CountryImporter::CountryImporter()
    country_parser_.registerKeyword("ruler", [this](std::istream& input_stream) {
       head_of_state_id_ = commonItems::getInt(input_stream);
    });
+   country_parser_.registerKeyword("dead", [this](std::istream& input_stream) {
+      is_dead_ = commonItems::getString(input_stream) == "yes";
+   });
    country_parser_.IgnoreUnregisteredItems();
 }
 
 
-vic3::Country vic3::CountryImporter::ImportCountry(int number,
+std::optional<vic3::Country> vic3::CountryImporter::ImportCountry(const int number,
     std::istream& input_stream,
     const std::map<std::string, commonItems::Color>& color_definitions)
 {
@@ -39,8 +42,13 @@ vic3::Country vic3::CountryImporter::ImportCountry(int number,
    country_type_.clear();
    primary_culture_ids_.clear();
    head_of_state_id_ = 0;
+   is_dead_ = false;
 
    country_parser_.parseStream(input_stream);
+   if (is_dead_)
+   {
+      return std::nullopt;
+   }
 
    commonItems::Color color;
    if (const auto color_itr = color_definitions.find(tag_); color_itr != color_definitions.end())

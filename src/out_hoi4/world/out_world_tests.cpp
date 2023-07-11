@@ -20,6 +20,7 @@ void CreateTestFolders(std::string_view test_name)
    commonItems::TryCreateFolder(fmt::format("output/{}", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/bookmarks", test_name));
+   commonItems::TryCreateFolder(fmt::format("output/{}/common/characters", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/countries", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/country_tags", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/names", test_name));
@@ -70,6 +71,19 @@ TEST(Outhoi4WorldOutworld, TagsFileIsCreated)
    EXPECT_EQ(country_file_stream.str(),
        "TAG = \"countries/TAG.txt\"\n"
        "TWO = \"countries/TWO.txt\"\n");
+}
+
+
+TEST(Outhoi4WorldOutworld, CharactersFilesAreCreated)
+{
+   CreateTestFolders("WorldCharactersFilesAreCreated");
+
+   OutputWorld("WorldCharactersFilesAreCreated",
+       hoi4::World(hoi4::WorldOptions{
+           .countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCharactersFilesAreCreated/common/characters/TAG.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCharactersFilesAreCreated/common/characters/TWO.txt"));
 }
 
 
@@ -239,13 +253,26 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
    commonItems::LocalizationBlock victory_points_block_one("test_state", "english");
    victory_points_block_one.ModifyLocalization("english", "test");
    victory_points_block_one.ModifyLocalization("spanish", "prueba");
-   state_localizations.AddOrModifyLocalizationBlock("test_state", victory_points_block_one);
+   victory_point_localizations.AddOrModifyLocalizationBlock("test_state", victory_points_block_one);
    commonItems::LocalizationBlock victory_points_block_two("test_state_two", "english");
    victory_points_block_two.ModifyLocalization("english", "test two");
    victory_points_block_two.ModifyLocalization("spanish", "prueba dos");
-   state_localizations.AddOrModifyLocalizationBlock("test_state_two", victory_points_block_two);
+   victory_point_localizations.AddOrModifyLocalizationBlock("test_state_two", victory_points_block_two);
 
-   const hoi4::Localizations localizations(country_localizations, state_localizations, victory_point_localizations);
+   commonItems::LocalizationDatabase character_localizations("english", {"spanish"});
+   commonItems::LocalizationBlock character_block_one("test_state", "english");
+   character_block_one.ModifyLocalization("english", "test");
+   character_block_one.ModifyLocalization("spanish", "prueba");
+   character_localizations.AddOrModifyLocalizationBlock("test_state", character_block_one);
+   commonItems::LocalizationBlock character_block_two("test_state_two", "english");
+   character_block_two.ModifyLocalization("english", "test two");
+   character_block_two.ModifyLocalization("spanish", "prueba dos");
+   character_localizations.AddOrModifyLocalizationBlock("test_state_two", character_block_two);
+
+   const hoi4::Localizations localizations(country_localizations,
+       state_localizations,
+       victory_point_localizations,
+       character_localizations);
 
    OutputWorld("LocalizationsAreOutput", hoi4::World({.localizations = localizations}));
    ASSERT_TRUE(
@@ -295,6 +322,23 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
        commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/russian/victory_points_l_russian.yml"));
    ASSERT_TRUE(
        commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/spanish/victory_points_l_spanish.yml"));
+
+   ASSERT_TRUE(commonItems::DoesFileExist(
+       "output/LocalizationsAreOutput/localisation/braz_por/character_names_l_braz_por.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/english/character_names_l_english.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/french/character_names_l_french.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/german/character_names_l_german.yml"));
+   ASSERT_TRUE(commonItems::DoesFileExist(
+       "output/LocalizationsAreOutput/localisation/japanese/character_names_l_japanese.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/polish/character_names_l_polish.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/russian/character_names_l_russian.yml"));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/spanish/character_names_l_spanish.yml"));
 }
 
 

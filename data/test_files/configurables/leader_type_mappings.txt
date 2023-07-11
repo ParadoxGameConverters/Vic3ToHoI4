@@ -1,0 +1,26 @@
+law_monarchy = {
+	prime_minister = {
+		law_wealth_voting
+		law_census_voting
+	}
+
+	council = {
+		law_anarchy
+	}
+
+	typo_councl = {
+		law_single_party_state
+	}
+}
+
+law_theocracy = {
+	prime_minister = {
+		law_universal_suffrage
+	}
+}
+
+law_council_republic = {
+	council = {
+		law_anarchy
+	}
+}

@@ -1,5 +1,5 @@
-#ifndef SRC_VIC3WORLD_CHARACTERS_CHARACTER_H
-#define SRC_VIC3WORLD_CHARACTERS_CHARACTER_H
+#ifndef SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTER_H
+#define SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTER_H
 
 
 
@@ -16,12 +16,14 @@ struct CharacterOptions
    std::string last_name;
    int culture_id = 0;
    std::string culture;
+   bool is_female = false;
    int ig_id = 0;
    std::set<std::string> roles;
    int rank = 0;
    std::string ideology;
    std::set<std::string> traits;
    std::string origin_tag;
+   std::optional<int> origin_country_id;
 };
 
 class Character
@@ -33,12 +35,14 @@ class Character
        last_name_(std::move(options.last_name)),
        culture_id_(options.culture_id),
        culture_(options.culture),
+       is_female_(options.is_female),
        ig_id_(options.ig_id),
        roles_(std::move(options.roles)),
        rank_(options.rank),
        ideology_(std::move(options.ideology)),
        traits_(std::move(options.traits)),
-       origin_tag_(std::move(options.origin_tag))
+       origin_tag_(std::move(options.origin_tag)),
+       origin_country_id_(options.origin_country_id)
    {
    }
 
@@ -48,15 +52,20 @@ class Character
 
    [[nodiscard]] int GetCultureId() const { return culture_id_; }
    [[nodiscard]] const std::string& GetCulture() const { return culture_; }
+   [[nodiscard]] bool IsFemale() const { return is_female_; }
    [[nodiscard]] int GetIgId() const { return rank_; }
    [[nodiscard]] const std::set<std::string>& GetRoles() const { return roles_; }
    [[nodiscard]] int GetRank() const { return rank_; }
    [[nodiscard]] const std::string& GetIdeology() const { return ideology_; }
    [[nodiscard]] const std::set<std::string>& GetTraits() const { return traits_; }
    [[nodiscard]] const std::string& GetOriginTag() const { return origin_tag_; }
+   [[nodiscard]] const std::optional<int>& GetOriginCountryId() const { return origin_country_id_; }
 
+
+   void SetCulture(std::string culture) { culture_ = std::move(culture); }
    void SetHomeTag(std::string tag) { origin_tag_ = std::move(tag); }
-   void SetIgId(int id) { ig_id_ = id; }
+   void SetOriginCountryId(int id) { origin_country_id_ = id; }
+   void SetIgId(const int id) { ig_id_ = id; }
 
    std::partial_ordering operator<=>(const Character&) const = default;
 
@@ -67,15 +76,17 @@ class Character
 
    int culture_id_ = 0;
    std::string culture_;
+   bool is_female_ = false;
    int ig_id_ = 0;
    std::set<std::string> roles_;
    int rank_ = 0;
    std::string ideology_;
    std::set<std::string> traits_;
-   std::string origin_tag_;  // Where an agitator was exiled from
+   std::string origin_tag_;  // Where an agitator was exiled from, resolve to ID before HoI
+   std::optional<int> origin_country_id_;
 };
 }  // namespace vic3
 
 
 
-#endif  // SRC_VIC3WORLD_CHARACTERS_CHARACTER_H
+#endif  // SRC_VIC3WORLD_CHARACTERS_VIC3CHARACTER_H

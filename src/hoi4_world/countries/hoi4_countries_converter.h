@@ -23,7 +23,12 @@ std::map<std::string, Country> ConvertCountries(const std::map<int, vic3::Countr
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
     const std::vector<State>& states,
-    const std::vector<mappers::TechMapping>& tech_mappings);
+    const std::vector<mappers::TechMapping>& tech_mappings,
+    const std::map<int, vic3::Character>& source_characters,
+    const std::map<int, vic3::InterestGroup>& igs,
+    std::map<int, Character>& characters,
+    std::map<std::string, mappers::CultureQueue>& culture_queues,
+    const mappers::CultureGraphicsMapper& culture_graphics_mapper);
 
 }  // namespace hoi4
 

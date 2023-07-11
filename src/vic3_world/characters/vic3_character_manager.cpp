@@ -1,11 +1,11 @@
-#include "src/vic3_world/characters/character_manager.h"
+#include "src/vic3_world/characters/vic3_character_manager.h"
 
 #include <ranges>
 
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
-#include "src/vic3_world/characters/characters_importer.h"
-#include "src/vic3_world/characters/country_character_map_importer.h"
+#include "src/vic3_world/characters/vic3_characters_importer.h"
+#include "src/vic3_world/characters/vic3_country_character_map_importer.h"
 
 namespace
 {
@@ -54,7 +54,7 @@ std::set<int> ImportExilePool(std::istream& input_stream)
    map_parser.parseStream(input_stream);
 
    // Homeless exiles.
-   Log(LogLevel::Info) << fmt::format("\tFound {} wandering agitators.", exile_pool.size());
+   Log(LogLevel::Info) << fmt::format("\tFound {} homeless agitators.", exile_pool.size());
    return exile_pool;
 }
 }  // namespace
@@ -85,25 +85,17 @@ vic3::CharacterManager::CharacterManager(std::istream& input_stream)
 
 void vic3::CharacterManager::AssignHomeTagToExiles()
 {
+   int count = 0;
    for (auto& character: characters_ | std::views::values)
    {
-      if (!character.GetRoles().contains("agitator"))
-      {
-         continue;
-      }
-
       if (const auto itr = exile_origin_map_.find(character.GetId()); itr != exile_origin_map_.end())
       {
          character.SetHomeTag(itr->second);
-      }
-      else
-      {
-         Log(LogLevel::Warning) << fmt::format("Agitator {} {} with ID: {} has no home country.",
-             character.GetFirstName(),
-             character.GetLastName(),
-             character.GetId());
+         ++count;
       }
    }
+
+   Log(LogLevel::Info) << fmt::format("\tFound {} agitators working abroad.", count);
 }
 
 void vic3::CharacterManager::AssignIgToCharacters()

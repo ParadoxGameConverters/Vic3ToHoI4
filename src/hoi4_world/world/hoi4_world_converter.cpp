@@ -4,6 +4,8 @@
 
 #include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/hoi4_world/characters/hoi4_character.h"
+#include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 #include "src/hoi4_world/localizations/localizations_converter.h"
 #include "src/hoi4_world/map/buildings_creator.h"
@@ -14,6 +16,7 @@
 #include "src/hoi4_world/map/strategic_regions_importer.h"
 #include "src/hoi4_world/states/default_states_importer.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
+#include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/technology/tech_mappings_importer.h"
 #include "src/maps/map_data.h"
 #include "src/maps/map_data_importer.h"
@@ -235,7 +238,11 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    Log(LogLevel::Progress) << "55%";
 
    const std::vector<mappers::TechMapping> tech_mappings = mappers::ImportTechMappings();
+   const mappers::CultureGraphicsMapper culture_graphics_mapper =
+       mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
 
+   std::map<int, Character> characters;
+   std::map<std::string, mappers::CultureQueue> culture_queues;
    const std::map<int, vic3::Country>& source_countries = source_world.GetCountries();
    countries = ConvertCountries(source_countries,
        source_world.GetAcquiredTechnologies(),
@@ -244,19 +251,34 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        country_mapper,
        states.vic3_state_ids_to_hoi4_state_ids,
        states.states,
-       tech_mappings);
+       tech_mappings,
+       source_world.GetCharacters(),
+       source_world.GetInterestGroups(),
+       characters,
+       culture_queues,
+       culture_graphics_mapper);
+
+   Log(LogLevel::Info) << "\tAssigning portraits to characters";
+   Log(LogLevel::Progress) << "56%";
+   AssignPortraits(culture_queues,
+       culture_graphics_mapper,
+       source_world.GetCultureDefinitions(),
+       source_world.GetPlaythroughId(),
+       characters);
 
    std::set<std::string> great_powers = MapPowers(source_world.GetCountryRankings().GetGreatPowers(), country_mapper);
    std::set<std::string> major_powers = MapPowers(source_world.GetCountryRankings().GetMajorPowers(), country_mapper);
    IncreaseVictoryPointsInCapitals(states.states, source_world.GetCountryRankings(), country_mapper, countries);
    LogVictoryPointData(states.states);
 
+   Log(LogLevel::Info) << "\tConverting localizations";
    Localizations localizations = ConvertLocalizations(source_world.GetLocalizations(),
        country_mapper.GetCountryMappings(),
        states.hoi4_state_names_to_vic3_state_names,
        source_world.GetStateRegions(),
        province_mapper,
-       source_world.GetCountries());
+       source_world.GetCountries(),
+       source_world.GetCharacters());
 
    return World(WorldOptions{.countries = countries,
        .great_powers = great_powers,
@@ -265,5 +287,6 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        .strategic_regions = strategic_regions,
        .buildings = buildings,
        .railways = railways,
-       .localizations = localizations});
+       .localizations = localizations,
+       .characters = characters});
 }

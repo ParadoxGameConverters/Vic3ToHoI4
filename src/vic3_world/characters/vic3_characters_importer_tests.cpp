@@ -2,13 +2,13 @@
 
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "src/vic3_world/characters/characters_importer.h"
+#include "src/vic3_world/characters/vic3_characters_importer.h"
 
 namespace vic3
 {
 
 
-TEST(Vic3WorldCharactersCharactersImporter, NoCharactersOnEmptyInput)
+TEST(Vic3WorldCharactersVic3CharactersImporter, NoCharactersOnEmptyInput)
 {
    std::stringstream input;
    const std::map<int, vic3::Character> characters = ImportCharacters(input);
@@ -17,7 +17,7 @@ TEST(Vic3WorldCharactersCharactersImporter, NoCharactersOnEmptyInput)
 }
 
 
-TEST(Vic3WorldCharactersCharactersImporter, CharactersCanBeImported)
+TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersCanBeImported)
 {
    std::stringstream input;
    input << "={\n";
@@ -67,7 +67,7 @@ TEST(Vic3WorldCharactersCharactersImporter, CharactersCanBeImported)
 }
 
 
-TEST(Vic3WorldCharactersCharactersImporter, CharactersSetAsNoneAreSkipped)
+TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersSetAsNoneAreSkipped)
 {
    std::stringstream input;
    input << "={\n";
@@ -83,7 +83,7 @@ TEST(Vic3WorldCharactersCharactersImporter, CharactersSetAsNoneAreSkipped)
 }
 
 
-TEST(Vic3WorldCharactersCharactersImporter, CharactersImportsAreLogged)
+TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersImportsAreLogged)
 {
    std::stringstream input;
    input << "={\n";

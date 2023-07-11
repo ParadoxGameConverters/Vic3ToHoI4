@@ -15,3 +15,98 @@ culture_1 = {
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
 }
+culture_2 = {
+	cultures = { culture_2 }
+
+	navy_portraits = {
+		GFX_admiral_1
+	}
+	political_portraits = {
+		neutrality = {
+			leader = {
+				GFX_leader_1
+				GFX_leader_2
+			}
+			minister = {
+				GFX_minister_1
+			}
+		}
+	}
+	operative_portraits = {
+		male = {
+			GFX_m_op_1
+		}
+		female = {
+			GFX_f_op_1
+			GFX_f_op_2
+			GFX_f_op_3
+			GFX_f_op_4
+			GFX_f_op_5
+			GFX_f_op_6
+			GFX_f_op_7
+		}
+	}
+
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}
+culture_3 = {
+	cultures = { culture_3 }
+
+	army_portraits = {
+		GFX_general_1
+		GFX_general_2
+		GFX_general_3
+	}
+
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}
+culture_4 = {
+	cultures = { culture_4 }
+
+	army_portraits = {
+		GFX_general_1
+		GFX_general_2
+		GFX_general_3
+	}
+
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}
+culture_5 = {
+	cultures = { culture_5 }
+
+	army_portraits = {
+		GFX_general_1
+		GFX_general_2
+		GFX_general_3
+	}
+
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}
+culture_6 = {
+	cultures = { culture_6 }
+
+	army_portraits = {
+		GFX_general_1
+		GFX_general_2
+		GFX_general_3
+	}
+
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}
+culture_7 = {
+	cultures = { culture_7 }
+
+	army_portraits = {
+		GFX_general_1
+		GFX_general_2
+		GFX_general_3
+	}
+
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}

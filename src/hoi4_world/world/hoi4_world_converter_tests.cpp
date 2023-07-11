@@ -9,6 +9,7 @@
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/maps/province_definitions.h"
+#include "src/vic3_world/characters/vic3_character.h"
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/world/vic3_world.h"
@@ -34,6 +35,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().states.empty());
    EXPECT_TRUE(world.GetStates().province_to_state_id_map.empty());
+   EXPECT_TRUE(world.GetCharacters().empty());
 }
 
 
@@ -44,13 +46,20 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
        .number = 1,
        .tag = "TAG",
        .color = commonItems::Color{std::array{1, 2, 3}},
+       .head_of_state_id = 1,
+       .character_ids = {1},
    });
    const vic3::Country source_country_two({
        .number = 3,
        .tag = "TWO",
        .color = commonItems::Color{std::array{2, 4, 6}},
+       .head_of_state_id = 3,
+       .character_ids = {2, 3},
    });
 
+   vic3::Character character_one({.id = 1});  // Compiler was being weird about it directly in map
+   vic3::Character character_two({.id = 2, .roles = {"agitator"}});
+   vic3::Character character_three({.id = 3});
    const vic3::World source_world({
        .countries = {{1, source_country_one}, {3, source_country_two}},
        .states = {},
@@ -58,6 +67,12 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
            {
                {1, {"source_tech"}},
                {3, {"source_tech_two", "source_tech_three"}},
+           },
+       .characters =
+           {
+               {1, character_one},
+               {2, character_two},
+               {3, character_three},
            },
    });
 
@@ -108,21 +123,28 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
 
    EXPECT_THAT(world.GetCountries(),
        testing::ElementsAre(testing::Pair("TAG",
-                                Country(CountryOptions{.tag = "TAG",
+                                Country(CountryOptions{
+                                    .tag = "TAG",
                                     .color = commonItems::Color{std::array{1, 2, 3}},
                                     .technologies = expected_techs_one,
                                     .legacy_ship_variants = expected_legacy_ship_variants_one,
                                     .ship_variants = expected_ship_variants_one,
                                     .plane_variants = expected_plane_variants_one,
-                                    .tank_variants = expected_tank_variants_one})),
+                                    .tank_variants = expected_tank_variants_one,
+                                    .leader_ids = {1},
+                                })),
            testing::Pair("TWO",
-               Country(CountryOptions{.tag = "TWO",
+               Country(CountryOptions{
+                   .tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
                    .technologies = expected_techs_two,
                    .legacy_ship_variants = expected_legacy_ship_variants_two,
                    .ship_variants = expected_ship_variants_two,
                    .plane_variants = expected_plane_variants_two,
-                   .tank_variants = expected_tank_variants_two}))));
+                   .tank_variants = expected_tank_variants_two,
+                   .leader_ids = {3},
+                   .spy_ids = {2},
+               }))));
 }
 
 
@@ -735,6 +757,110 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
    ASSERT_TRUE(hoi_victory_point_localization_block_two.has_value());
    EXPECT_THAT(hoi_victory_point_localization_block_two->GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
+}
+
+
+TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {3, "TWO"}});
+   const vic3::Country source_country_one({
+       .number = 1,
+       .tag = "TAG",
+       .color = commonItems::Color{std::array{1, 2, 3}},
+       .head_of_state_id = 1,
+       .character_ids = {1, 4, 5, 6},
+   });
+   const vic3::Country source_country_two({
+       .number = 3,
+       .tag = "TWO",
+       .color = commonItems::Color{std::array{2, 4, 6}},
+       .head_of_state_id = 3,
+       .character_ids = {2, 3},
+   });
+
+   // Compiler was being weird about it directly in map
+   vic3::Character character_one({.id = 1, .culture = "culture_2"});
+   vic3::Character character_two({.id = 2, .culture = "culture_2", .roles = {"agitator"}, .origin_country_id = 1});
+   vic3::Character character_three({.id = 3, .culture = "culture_2"});
+   vic3::Character character_four({.id = 4, .culture = "culture_1", .roles = {"general"}});
+   vic3::Character character_five({.id = 5, .culture = "culture_2", .roles = {"admiral"}});
+   vic3::Character character_six({.id = 6, .culture = "culture_2", .roles = {"politician"}});
+   const vic3::World source_world({
+       .countries = {{1, source_country_one}, {3, source_country_two}},
+       .states = {},
+       .acquired_technologies =
+           {
+               {1, {"source_tech"}},
+               {3, {"source_tech_two", "source_tech_three"}},
+           },
+       .culture_definitions =
+           {
+               {"culture_1", vic3::CultureDefinition{"culture_1", {}, {}, {}}},
+               {"culture_2", vic3::CultureDefinition{"culture_2", {}, {}, {}}},
+           },
+       .characters =
+           {
+               {1, character_one},
+               {2, character_two},
+               {3, character_three},
+               {4, character_four},
+               {5, character_five},
+               {6, character_six},
+           },
+   });
+
+   mappers::ProvinceMapper province_mapper{{}, {}};
+
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+       source_world,
+       country_mapper,
+       province_mapper,
+       false);
+
+   const auto expected_data_leader = std::optional<Leader>({.sub_ideology = "despotism"});
+   const auto expected_data_spy = std::optional<Spy>({.nationalities = {"TAG", "TWO"}});
+   const auto expected_data_general = std::optional<General>({.traits = {}});
+   const auto expected_data_admiral = std::optional<Admiral>({.traits = {}});
+   const auto expected_data_advisor = std::optional<Advisor>({.slot = "political_advisor"});
+
+
+   EXPECT_THAT(world.GetCharacters(),
+       testing::UnorderedElementsAre(std::pair{1,
+                                         Character({
+                                             .id = 1,
+                                             .portrait_alias = "GFX_leader_2",
+                                             .leader_data = expected_data_leader,
+                                         })},
+           std::pair{2,
+               Character({
+                   .id = 2,
+                   .portrait_alias = "GFX_m_op_1",
+                   .spy_data = expected_data_spy,
+               })},
+           std::pair{3,
+               Character({
+                   .id = 3,
+                   .portrait_alias = "GFX_leader_1",
+                   .leader_data = expected_data_leader,
+               })},
+           std::pair{4,
+               Character({
+                   .id = 4,
+                   .portrait_alias = "GFX_general_1",
+                   .general_data = expected_data_general,
+               })},
+           std::pair{5,
+               Character({
+                   .id = 5,
+                   .portrait_alias = "GFX_admiral_1",
+                   .admiral_data = expected_data_admiral,
+               })},
+           std::pair{6,
+               Character({
+                   .id = 6,
+                   .portrait_alias = "GFX_minister_1",
+                   .advisor_data = expected_data_advisor,
+               })}));
 }
 
 }  // namespace hoi4

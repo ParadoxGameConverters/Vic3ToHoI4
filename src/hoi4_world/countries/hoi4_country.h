@@ -43,6 +43,8 @@ struct CountryOptions
    std::set<std::string> ideas;
    mappers::GraphicsBlock graphics_block;
    NameList name_list;
+   std::vector<int> leader_ids;
+   std::set<int> spy_ids;
    std::set<std::string> puppets;
 };
 
@@ -66,6 +68,8 @@ class Country
        ideas_(std::move(country_options.ideas)),
        graphics_block_(std::move(country_options.graphics_block)),
        name_list_(std::move(country_options.name_list)),
+       leader_ids_(std::move(country_options.leader_ids)),
+       spy_ids_(std::move(country_options.spy_ids)),
        puppets_(std::move(country_options.puppets))
    {
    }
@@ -87,6 +91,8 @@ class Country
    [[nodiscard]] const std::set<std::string>& GetIdeas() const { return ideas_; }
    [[nodiscard]] const mappers::GraphicsBlock& GetGraphicsBlock() const { return graphics_block_; }
    [[nodiscard]] const NameList& GetNameList() const { return name_list_; }
+   [[nodiscard]] const std::vector<int>& GetLeaderIds() const { return leader_ids_; }
+   [[nodiscard]] const std::set<int>& GetSpyIds() const { return spy_ids_; }
    [[nodiscard]] const std::set<std::string>& GetPuppets() const { return puppets_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
@@ -108,6 +114,8 @@ class Country
    std::set<std::string> ideas_;
    mappers::GraphicsBlock graphics_block_;
    NameList name_list_;
+   std::vector<int> leader_ids_;
+   std::set<int> spy_ids_;
    std::set<std::string> puppets_;
 };
 
