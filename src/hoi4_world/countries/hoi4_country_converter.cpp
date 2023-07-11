@@ -297,6 +297,19 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        source_country.GetActiveLaws(),
        leader_type_mapper);
 
+   std::set<std::string> puppets;
+   for (const auto p: source_country.GetPuppets())
+   {
+      std::optional<std::string> subjectTag = country_mapper.GetHoiTag(p);
+      if (!subjectTag.has_value())
+      {
+         Log(LogLevel::Error) << "Invalid subject relationship between " << source_country.GetNumber()
+                              << " and nonexistent country " << p;
+         continue;
+      }
+      puppets.insert(*subjectTag);
+   }
+
    return Country({.tag = *tag,
        .color = source_country.GetColor(),
        .capital_state = capital_state,
@@ -313,5 +326,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        .graphics_block = graphics_block,
        .name_list = name_list,
        .leader_ids = leader_ids,
-       .spy_ids = spy_ids});
+       .spy_ids = spy_ids,
+       .puppets = puppets});
 }

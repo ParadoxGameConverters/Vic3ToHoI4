@@ -26,6 +26,7 @@ struct CountryOptions
    int head_of_state_id = 0;
    std::vector<int> character_ids;
    std::vector<int> ig_ids;
+   std::set<int> puppets;
 };
 
 
@@ -44,7 +45,8 @@ class Country
        last_election_(options.last_election),
        head_of_state_id_(options.head_of_state_id),
        character_ids_(std::move(options.character_ids)),
-       ig_ids_(std::move(options.ig_ids))
+       ig_ids_(std::move(options.ig_ids)),
+       puppets_(std::move(options.puppets))
    {
    }
 
@@ -60,12 +62,14 @@ class Country
    [[nodiscard]] int GetHeadOfStateId() const { return head_of_state_id_; }
    [[nodiscard]] const std::vector<int>& GetCharacterIds() const { return character_ids_; }
    [[nodiscard]] const std::vector<int>& GetInterestGroupIds() const { return ig_ids_; }
+   [[nodiscard]] const std::set<int>& GetPuppets() const { return puppets_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
    void AddPrimaryCulture(const std::string& culture) { primary_cultures_.emplace(culture); }
    void SetCharacterIds(const std::vector<int>& character_ids) { character_ids_ = character_ids; }
-   void AddInterestGroupId(const int ig_id) { ig_ids_.push_back(ig_id); }
+   void AddInterestGroupId(int ig_id) { ig_ids_.push_back(ig_id); }
+   void AddPuppet(int puppet) { puppets_.insert(puppet); }
 
    bool operator==(const Country&) const = default;
 
@@ -82,6 +86,7 @@ class Country
    int head_of_state_id_ = 0;
    std::vector<int> character_ids_;
    std::vector<int> ig_ids_;
+   std::set<int> puppets_;
 };
 
 }  // namespace vic3

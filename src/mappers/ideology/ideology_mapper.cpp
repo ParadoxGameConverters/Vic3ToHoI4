@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <ranges>
 
+#include "external/fmt/include/fmt/format.h"
+
 
 
 namespace
@@ -18,6 +20,8 @@ mappers::IdeologyPointsMap CalculateIdeologyPoints(const std::map<std::string, m
       const auto& rule_itr = rules.find(current_law);
       if (rule_itr == rules.end())
       {
+         Log(LogLevel::Warning) << fmt::format("Missing ideology mapping rule or sub-ideology mapping rule for {}",
+             current_law);
          continue;
       }
 
@@ -60,6 +64,7 @@ std::string mappers::IdeologyMapper::GetSubIdeology(const std::string& ideology,
    const auto rules = sub_ideology_rules_.find(ideology);
    if (rules == sub_ideology_rules_.end())
    {
+      Log(LogLevel::Warning) << fmt::format("No sub-ideology mapping rules for {}", ideology);
       return "despotism";
    }
 

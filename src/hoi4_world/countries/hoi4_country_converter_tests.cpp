@@ -1350,6 +1350,70 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
    EXPECT_THAT(country_one->GetGraphicsBlock().portrait_paths.at("army"), testing::ElementsAre("GFX_general"));
 }
 
+TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const mappers::CountryMapper country_mapper({{1, "T00"}, {2, "T01"}});
+   const vic3::Country source_country_one({
+       .number = 1,
+       .color = commonItems::Color{std::array{1, 2, 3}},
+       .puppets = {2, 50},
+   });
+   const vic3::Country source_country_two({.number = 2, .color = commonItems::Color{std::array{2, 4, 6}}});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+
+   const auto country_one = ConvertCountry(source_country_one,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       {},
+       mappers::LeaderTypeMapper({}),
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+   const auto country_two = ConvertCountry(source_country_two,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       {},
+       mappers::LeaderTypeMapper({}),
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetPuppets(), std::set<std::string>({"T01"}));
+   ASSERT_TRUE(country_two.has_value());
+   EXPECT_EQ(country_two->GetPuppets(), std::set<std::string>());
+   std::cout.rdbuf(cout_buffer);
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr(R"([ERROR] Invalid subject relationship between 1 and nonexistent country 50)"));
+}
+
 
 TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)
 {

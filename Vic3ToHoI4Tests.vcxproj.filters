@@ -148,6 +148,9 @@
     <Filter Include="src\mappers\character">
       <UniqueIdentifier>{fa0f93c6-ddc3-420e-9508-2e5f1b971859}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\pacts">
+      <UniqueIdentifier>{914aa5c8-6a75-42e9-9802-fc6ad0f23ef1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -425,6 +428,15 @@
     </ClCompile>
     <ClCompile Include="src\hoi4_world\characters\hoi4_character_tests.cpp">
       <Filter>src\hoi4_world\characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\pacts\pact_test.cpp">
+      <Filter>src\vic3_world\pacts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\pacts\pacts_importer_tests.cpp">
+      <Filter>src\vic3_world\pacts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\pacts\pact_importer_tests.cpp">
+      <Filter>src\vic3_world\pacts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

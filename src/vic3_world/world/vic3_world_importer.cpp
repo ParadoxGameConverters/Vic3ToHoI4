@@ -29,6 +29,7 @@
 #include "src/vic3_world/elections/elections_importer.h"
 #include "src/vic3_world/interest_groups/interest_groups_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
+#include "src/vic3_world/pacts/pacts_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
 #include "src/vic3_world/states/state_regions_importer.h"
@@ -305,6 +306,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    std::map<int, Character> characters;
    std::map<int, std::vector<int>> country_character_map;
    std::map<int, InterestGroup> igs;
+   std::map<int, Pact> pacts;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("playthrough_id", [&playthrough_id](std::istream& input_stream) {
@@ -356,6 +358,21 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
             continue;
          }
          country_itr->second.SetLastElection(last_election);
+      }
+   });
+   save_parser.registerKeyword("pacts", [&pacts, &countries](std::istream& input_stream) {
+      pacts = ImportPacts(input_stream);
+      for (const auto& [_, pact]: pacts)
+      {
+         if (pact.isSubjectRelationship())
+         {
+            auto overlord = countries.find(pact.GetFirstId());
+            auto subject = countries.find(pact.GetSecondId());
+            if (overlord != countries.end() && subject != countries.end())
+            {
+               overlord->second.AddPuppet(pact.GetSecondId());
+            }
+         }
       }
    });
    save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {

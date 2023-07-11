@@ -2,7 +2,6 @@
 #define SRC_VIC3WORLD_WORLD_VIC3WORLD_H
 
 
-
 #include <map>
 #include <set>
 
@@ -13,6 +12,7 @@
 #include "src/vic3_world/country_rankings/country_rankings.h"
 #include "src/vic3_world/cultures/culture_definition.h"
 #include "src/vic3_world/interest_groups/interest_group.h"
+#include "src/vic3_world/pacts/pact.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/states/state_region.h"
 #include "src/vic3_world/states/vic3_state.h"
@@ -36,6 +36,7 @@ struct WorldOptions
    std::map<int, Character> characters;
    std::map<int, InterestGroup> igs;
    int playthrough_id;
+   std::map<int, Pact> pacts;
 };
 
 
@@ -54,7 +55,8 @@ class World
        culture_definitions_(std::move(world_options.culture_definitions)),
        characters_(std::move(world_options.characters)),
        igs_(std::move(world_options.igs)),
-       playthrough_id_(world_options.playthrough_id)
+       playthrough_id_(world_options.playthrough_id),
+       pacts_(std::move(world_options.pacts))
    {
    }
 
@@ -76,6 +78,7 @@ class World
    [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
    [[nodiscard]] const std::map<int, InterestGroup>& GetInterestGroups() const { return igs_; }
    [[nodiscard]] int GetPlaythroughId() const { return playthrough_id_; }
+   [[nodiscard]] const std::map<int, Pact>& GetPacts() const { return pacts_; }
 
   private:
    std::map<int, Country> countries_;
@@ -89,6 +92,7 @@ class World
    std::map<std::string, CultureDefinition> culture_definitions_;
    std::map<int, Character> characters_;
    std::map<int, InterestGroup> igs_;
+   std::map<int, Pact> pacts_;
 
    int playthrough_id_;  // Seed, for deterministic results across conversions for the same series of saves
 };

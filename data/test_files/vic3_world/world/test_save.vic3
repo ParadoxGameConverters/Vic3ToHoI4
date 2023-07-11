@@ -189,3 +189,17 @@ max=6743
 6="TAG"
 	}
 }
+pacts={
+	database={
+0={
+		first=1
+		second=3
+		action=puppet start_date=1836.1.1
+}
+1={
+		first=3
+		second=1
+		action=alliance start_date=1836.1.1
+}
+	}
+}
