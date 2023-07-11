@@ -49,7 +49,8 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
 
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(testing::Pair(1,
-                                         Country({.number = 1,
+                                         Country({
+                                             .number = 1,
                                              .tag = "TAG",
                                              .color = commonItems::Color(std::array{1, 2, 3}),
                                              .active_laws = {"law_monarchy"},

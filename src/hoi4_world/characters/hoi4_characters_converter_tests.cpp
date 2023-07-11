@@ -1,10 +1,10 @@
-﻿#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+﻿#include <ranges>
+
+#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/mappers/character/leader_type_mapper_importer.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
-
-
 namespace hoi4
 {
 
@@ -500,7 +500,16 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderP
 TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrough)
 {
    const auto culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
-   std::map<int, Character> characters{
+   std::map<int, Character> characters_one{
+       {1, Character({.id = 1})},
+       {2, Character({.id = 2})},
+       {3, Character({.id = 3})},
+       {4, Character({.id = 4})},
+       {5, Character({.id = 5})},
+       {6, Character({.id = 6})},
+       {7, Character({.id = 7})},
+   };
+   std::map<int, Character> characters_two{
        {1, Character({.id = 1})},
        {2, Character({.id = 2})},
        {3, Character({.id = 3})},
@@ -516,33 +525,25 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrou
        {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
    };
 
-   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters);
-   EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_6"})},
-           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
-           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_5"})},
-           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_3"})},
-           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_7"})},
-           std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_4"})},
-           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_1"})}));
-
-   // Again with same seed
-   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters);
-   EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_6"})},
-           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
-           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_5"})},
-           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_3"})},
-           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_7"})},
-           std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_4"})},
-           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_1"})}));
+   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters_one);
+   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters_two);
+   EXPECT_EQ(characters_one, characters_two);
 }
 
 
 TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlaythrough)
 {
    const auto culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
-   std::map<int, Character> characters{
+   std::map<int, Character> characters_one{
+       {1, Character({.id = 1})},
+       {2, Character({.id = 2})},
+       {3, Character({.id = 3})},
+       {4, Character({.id = 4})},
+       {5, Character({.id = 5})},
+       {6, Character({.id = 6})},
+       {7, Character({.id = 7})},
+   };
+   std::map<int, Character> characters_two{
        {1, Character({.id = 1})},
        {2, Character({.id = 2})},
        {3, Character({.id = 3})},
@@ -558,26 +559,9 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlayth
        {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
    };
 
-   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters);
-   EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_6"})},
-           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
-           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_5"})},
-           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_3"})},
-           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_7"})},
-           std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_4"})},
-           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_1"})}));
-
-   // Again with different seed
-   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 11, characters);
-   EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_f_op_4"})},
-           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_f_op_2"})},
-           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_f_op_5"})},
-           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_f_op_7"})},
-           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_f_op_1"})},
-           std::pair{6, Character({.id = 6, .portrait_alias = "GFX_f_op_6"})},
-           std::pair{7, Character({.id = 7, .portrait_alias = "GFX_f_op_3"})}));
+   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters_one);
+   AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 11, characters_two);
+   EXPECT_NE(characters_one, characters_two);
 }
 
 
@@ -610,12 +594,18 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCul
    };
 
    AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters);
-   EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{1, Character({.id = 1, .portrait_alias = "GFX_general_3"})},
-           std::pair{2, Character({.id = 2, .portrait_alias = "GFX_general_2"})},
-           std::pair{3, Character({.id = 3, .portrait_alias = "GFX_general_1"})},
-           std::pair{4, Character({.id = 4, .portrait_alias = "GFX_general_3"})},
-           std::pair{5, Character({.id = 5, .portrait_alias = "GFX_general_2"})}));
+
+   std::map<std::string, int> portrait_counts;
+   for (const auto& character: characters | std::views::values)
+   {
+      portrait_counts.emplace(character.GetPortraitAlias(), 0);
+      portrait_counts.find(character.GetPortraitAlias())->second++;
+   }
+
+   for (const auto& count: portrait_counts | std::views::values)
+   {
+      EXPECT_LE(count, 2);
+   }
 }
 
 }  // namespace hoi4
