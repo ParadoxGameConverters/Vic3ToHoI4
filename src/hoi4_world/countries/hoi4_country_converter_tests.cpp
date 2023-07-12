@@ -1492,23 +1492,23 @@ TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
    const auto expected_data_two = std::optional<Spy>({.nationalities = {"TAG", "TWO"}});
    const auto expected_data_three = std::optional<General>({.traits = {}});
    EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{1,
+       testing::UnorderedElementsAre(testing::Pair(1,
                                          Character({
                                              .id = 1,
                                              .first_name = "Test",
                                              .last_name = "Mann",
                                              .leader_data = expected_data_one,
-                                         })},
-           std::pair{2,
+                                         })),
+           testing::Pair(2,
                Character({
                    .id = 2,
                    .is_female = true,
                    .spy_data = expected_data_two,
-               })},
-           std::pair{3,
+               })),
+           testing::Pair(3,
                Character({
                    .id = 3,
                    .general_data = expected_data_three,
-               })}));
+               }))));
 }
 }  // namespace hoi4

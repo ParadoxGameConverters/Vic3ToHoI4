@@ -825,42 +825,42 @@ TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
 
 
    EXPECT_THAT(world.GetCharacters(),
-       testing::UnorderedElementsAre(std::pair{1,
+       testing::UnorderedElementsAre(testing::Pair(1,
                                          Character({
                                              .id = 1,
                                              .portrait_alias = "GFX_leader_2",
                                              .leader_data = expected_data_leader,
-                                         })},
-           std::pair{2,
+                                         })),
+           testing::Pair(2,
                Character({
                    .id = 2,
                    .portrait_alias = "GFX_m_op_1",
                    .spy_data = expected_data_spy,
-               })},
-           std::pair{3,
+               })),
+           testing::Pair(3,
                Character({
                    .id = 3,
                    .portrait_alias = "GFX_leader_1",
                    .leader_data = expected_data_leader,
-               })},
-           std::pair{4,
+               })),
+           testing::Pair(4,
                Character({
                    .id = 4,
                    .portrait_alias = "GFX_general_1",
                    .general_data = expected_data_general,
-               })},
-           std::pair{5,
+               })),
+           testing::Pair(5,
                Character({
                    .id = 5,
                    .portrait_alias = "GFX_admiral_1",
                    .admiral_data = expected_data_admiral,
-               })},
-           std::pair{6,
+               })),
+           testing::Pair(6,
                Character({
                    .id = 6,
                    .portrait_alias = "GFX_minister_1",
                    .advisor_data = expected_data_advisor,
-               })}));
+               }))));
 }
 
 }  // namespace hoi4

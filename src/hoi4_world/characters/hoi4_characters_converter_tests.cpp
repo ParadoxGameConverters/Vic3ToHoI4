@@ -163,14 +163,14 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
    });
 
    EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{2, expected_character_two},
-           std::pair{4, expected_character_four},
-           std::pair{5, expected_character_five},
-           std::pair{6, expected_character_six},
-           std::pair{7, expected_character_seven},
-           std::pair{8, expected_character_eight},
-           std::pair{9, expected_character_nine},
-           std::pair{10, expected_character_ten}));
+       testing::UnorderedElementsAre(testing::Pair(2, expected_character_two),
+           testing::Pair(4, expected_character_four),
+           testing::Pair(5, expected_character_five),
+           testing::Pair(6, expected_character_six),
+           testing::Pair(7, expected_character_seven),
+           testing::Pair(8, expected_character_eight),
+           testing::Pair(9, expected_character_nine),
+           testing::Pair(10, expected_character_ten)));
 }
 
 
@@ -281,12 +281,12 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PortraitsAreAssigned)
        {"operative_male", {7}},
    };
    EXPECT_THAT(culture_queues.at("culture_1"),
-       testing::UnorderedElementsAre(std::pair<std::string, std::vector<int>>{"army", {2, 4, 9}},
-           std::pair<std::string, std::vector<int>>{"navy", {6, 10}},
-           std::pair<std::string, std::vector<int>>{"female_leader", {5}},
-           std::pair<std::string, std::vector<int>>{"advisor_neutrality", {8}}));
+       testing::UnorderedElementsAre(testing::Pair("army", std::vector{2, 4, 9}),
+           testing::Pair("navy", std::vector{6, 10}),
+           testing::Pair("female_leader", std::vector{5}),
+           testing::Pair("advisor_neutrality", std::vector{8})));
    EXPECT_THAT(culture_queues.at("culture_2"),
-       testing::UnorderedElementsAre(std::pair<std::string, std::vector<int>>{"operative_male", {7}}));
+       testing::UnorderedElementsAre(testing::Pair("operative_male", std::vector{7})));
 }
 
 
@@ -316,7 +316,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
        characters,
        culture_queues);
 
-   EXPECT_THAT(characters, testing::UnorderedElementsAre(std::pair{Character::GetGenId() - 1, expected_council}));
+   EXPECT_THAT(characters, testing::UnorderedElementsAre(testing::Pair(Character::GetGenId() - 1, expected_council)));
 }
 
 
@@ -354,8 +354,9 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCol
        culture_queues);
 
    EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(std::pair{Character::GetGenId() - 2, Character({.id = Character::GetGenId() - 2})},
-           std::pair{Character::GetGenId() - 1, expected_council}));
+       testing::UnorderedElementsAre(
+           testing::Pair(Character::GetGenId() - 2, Character({.id = Character::GetGenId() - 2})),
+           testing::Pair(Character::GetGenId() - 1, expected_council)));
 }
 
 

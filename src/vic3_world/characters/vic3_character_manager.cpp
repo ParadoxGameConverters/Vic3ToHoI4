@@ -2,6 +2,7 @@
 
 #include <ranges>
 
+#include "external/commonItems/Parser.h"
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
 #include "src/vic3_world/characters/vic3_characters_importer.h"
@@ -57,6 +58,21 @@ std::set<int> ImportExilePool(std::istream& input_stream)
    Log(LogLevel::Info) << fmt::format("\tFound {} homeless agitators.", exile_pool.size());
    return exile_pool;
 }
+std::set<int> ImportEmployedCommanders(std::istream& input_stream)
+{
+   std::set<int> hired_commanders;
+   commonItems::parser map_parser;
+   map_parser.registerRegex(commonItems::integerRegex,
+       [&hired_commanders](const std::string& hq_number_string, std::istream& input_stream) {
+          std::ranges::copy(commonItems::getInts(input_stream),
+              std::inserter(hired_commanders, hired_commanders.begin()));
+       });
+   map_parser.IgnoreUnregisteredItems();
+   map_parser.parseStream(input_stream);
+
+   Log(LogLevel::Info) << fmt::format("\tFound {} employed commanders.", hired_commanders.size());
+   return hired_commanders;
+}
 }  // namespace
 
 vic3::CharacterManager::CharacterManager(std::istream& input_stream)
@@ -73,6 +89,9 @@ vic3::CharacterManager::CharacterManager(std::istream& input_stream)
    character_manager_parser_.registerKeyword("character_ig_map", [this](std::istream& input_stream) {
       character_ig_map_ = ImportCharacterIgMap(input_stream);
    });
+   character_manager_parser_.registerKeyword("character_home_hq_map", [this](std::istream& input_stream) {
+      hired_commanders_ = ImportEmployedCommanders(input_stream);
+   });
    character_manager_parser_.registerKeyword("exile_pool", [this](std::istream& input_stream) {
       exile_pool_ = ImportExilePool(input_stream);
    });
@@ -81,6 +100,7 @@ vic3::CharacterManager::CharacterManager(std::istream& input_stream)
 
    AssignHomeTagToExiles();
    AssignIgToCharacters();
+   HireCommanders();
 }
 
 void vic3::CharacterManager::AssignHomeTagToExiles()
@@ -117,6 +137,17 @@ void vic3::CharacterManager::AssignIgToCharacters()
              character.GetFirstName(),
              character.GetLastName(),
              character.GetId());
+      }
+   }
+}
+
+void vic3::CharacterManager::HireCommanders()
+{
+   for (auto& character: characters_ | std::views::values)
+   {
+      if (hired_commanders_.contains(character.GetId()))
+      {
+         character.SetCommander();
       }
    }
 }
