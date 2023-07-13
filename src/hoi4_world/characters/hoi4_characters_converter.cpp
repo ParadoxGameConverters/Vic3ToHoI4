@@ -198,7 +198,6 @@ std::pair<hoi4::CharacterIds, hoi4::RoleIds> PickCharacters(const int leader_id,
     const std::map<int, vic3::Character>& source_characters,
     const vic3::Country& source_country)
 {
-   hoi4::RoleIds role_ids;
    std::set<int> character_set_ids;
 
    const auto& [field_marshal_ids, general_ids] =
