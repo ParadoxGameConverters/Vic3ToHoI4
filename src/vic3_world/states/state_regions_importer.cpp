@@ -1,8 +1,10 @@
 #include "src/vic3_world/states/state_regions_importer.h"
 
 #include "external/commonItems/CommonRegexes.h"
+#include "external/commonItems/Log.h"
 #include "external/commonItems/Parser.h"
 #include "external/commonItems/ParserHelpers.h"
+#include "external/fmt/include/fmt/format.h"
 
 
 
@@ -50,6 +52,17 @@ std::map<std::string, vic3::StateRegion> vic3::ImportStateRegions(const commonIt
           provinces.clear();
           region_parser.parseStream(input_stream);
           state_regions.emplace(region_name, StateRegion(significant_provinces, provinces));
+          for (const auto& [id, type]: significant_provinces)
+          {
+             if (!provinces.contains(id))
+             {
+                Log(LogLevel::Warning) << fmt::format(
+                    "Significant province {} ({}) does not correspond to a province in state region {}.",
+                    id,
+                    type,
+                    region_name);
+             }
+          }
        });
 
    for (const auto& state_regions_file: filesystem.GetAllFilesInFolder("map_data/state_regions"))
