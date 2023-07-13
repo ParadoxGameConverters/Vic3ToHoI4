@@ -104,7 +104,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
    return {leader_id,
        hoi4::ConvertCharacter(source_character_itr->second,
            leader_id,
-           {.field_marshall_ids = {leader_id}},  // Ruler generals are always field marshalls?
+           {.field_marshall_ids = {leader_id}},  // Ruler generals are always field marshalls
            leader_type,
            tag,
            country_ideology,
@@ -125,7 +125,6 @@ std::pair<FieldMarshalIds, GeneralIds> PickGenerals(const std::map<int, vic3::Ch
    std::ranges::copy_if(source_character_ids, std::back_inserter(ids), [source_characters](const int id) {
       if (const auto& itr = source_characters.find(id); itr != source_characters.end())
       {
-         // TODO(Gawquon): Limit the amount here. By country manpower? By army divisions? Arbitrary limit?
          return itr->second.GetRoles().contains("general");
       }
       return false;
@@ -133,6 +132,7 @@ std::pair<FieldMarshalIds, GeneralIds> PickGenerals(const std::map<int, vic3::Ch
 
    // 20% of the generals will be field marshalls, using highest rank first.
    // Remember rank is political and has nothing to do with skill.
+   // If limiting the number of generals, prefer higher ranked ones as well.
    std::ranges::sort(ids, [source_characters](const int lhs, const int rhs) {
       return source_characters.at(lhs).GetRank() > source_characters.at(rhs).GetRank();
    });
