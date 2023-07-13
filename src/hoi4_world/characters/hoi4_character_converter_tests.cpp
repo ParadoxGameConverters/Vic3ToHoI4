@@ -37,7 +37,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConverted)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, FieldMarshallsCanBeConverted)
+TEST(Hoi4worldCharactersHoi4characterconverter, FieldMarshalsCanBeConverted)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
    const auto source_character = vic3::Character({

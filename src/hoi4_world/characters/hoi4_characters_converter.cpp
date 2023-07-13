@@ -75,7 +75,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
       return {new_council.GetId(),
           hoi4::ConvertCharacter(new_council,
               new_council.GetId(),
-              {},  // The council are not field marshalls
+              {},  // The council are not Field Marshals
               leader_type,
               tag,
               country_ideology,
@@ -104,7 +104,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
    return {leader_id,
        hoi4::ConvertCharacter(source_character_itr->second,
            leader_id,
-           {.field_marshal_ids = {leader_id}},  // Ruler generals are always field marshalls
+           {.field_marshal_ids = {leader_id}},  // Ruler generals are always Field Marshals
            leader_type,
            tag,
            country_ideology,
@@ -116,7 +116,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
 
 using FieldMarshalIds = std::set<int>;
 using GeneralIds = std::set<int>;
-// Sorts generals between field marshalls and commanders.
+// Sorts generals between Field Marshals and commanders.
 std::pair<FieldMarshalIds, GeneralIds> PickGenerals(const std::map<int, vic3::Character>& source_characters,
     const std::vector<int>& source_character_ids,
     std::set<int>& character_ids)
@@ -130,13 +130,13 @@ std::pair<FieldMarshalIds, GeneralIds> PickGenerals(const std::map<int, vic3::Ch
       return false;
    });
 
-   // 20% of the generals will be field marshalls, using highest rank first.
+   // 20% of the generals will be Field Marshals, using highest rank first.
    // Remember rank is political and has nothing to do with skill.
    // If limiting the number of generals, prefer higher ranked ones as well.
    std::ranges::sort(ids, [source_characters](const int lhs, const int rhs) {
       return source_characters.at(lhs).GetRank() > source_characters.at(rhs).GetRank();
    });
-   const unsigned int num_field_marshalls = static_cast<int>(0.2 * static_cast<int>(ids.size()));
+   const unsigned int num_field_marshals = static_cast<int>(0.2 * static_cast<int>(ids.size()));
 
    FieldMarshalIds field_marshal_ids;
    GeneralIds general_ids;
@@ -144,7 +144,7 @@ std::pair<FieldMarshalIds, GeneralIds> PickGenerals(const std::map<int, vic3::Ch
    {
       character_ids.emplace(ids.at(i));
 
-      if (i < num_field_marshalls)
+      if (i < num_field_marshals)
       {
          field_marshal_ids.emplace(ids.at(i));
          continue;

@@ -33,7 +33,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .roles = {"politician", "general"},
        .rank = 1,
    });
-   // Field Marshall
+   // Field Marshal
    const auto character_three = vic3::Character({
        .id = 3,
        .first_name = "Test",
@@ -123,7 +123,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        culture_queues);
 
    const auto leader_data = std::optional<Leader>({.sub_ideology = "sub_ideology"});
-   const auto field_marshall_data = std::optional<General>({.is_field_marshal = true});
+   const auto field_marshal_data = std::optional<General>({.is_field_marshal = true});
    const auto general_data = std::optional<General>({.traits = {}});
    const auto admiral_data = std::optional<Admiral>({.traits = {}});
    const auto advisor_data = std::optional<Advisor>({.slot = "political_advisor"});
@@ -138,14 +138,14 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .id = 2,
        .first_name = "Test",
        .last_name = "Mann",
-       .general_data = field_marshall_data,
+       .general_data = field_marshal_data,
        .leader_data = leader_data,
    });
    const auto expected_character_three = Character({
        .id = 3,
        .first_name = "Test",
        .last_name = "Mann",
-       .general_data = field_marshall_data,
+       .general_data = field_marshal_data,
    });
    const auto expected_character_four = Character({
        .id = 4,

@@ -22,20 +22,20 @@ std::optional<hoi4::Admiral> GeneratePossibleAdmiral(const vic3::Character& sour
    return hoi4::Admiral();
 }
 std::optional<hoi4::General> GeneratePossibleGeneral(const vic3::Character& source_character,
-    const std::set<int>& field_marshall_ids,
+    const std::set<int>& field_marshal_ids,
     const std::set<int>& general_ids)
 {
    if (!source_character.GetRoles().contains("general"))
    {
       return std::nullopt;
    }
-   if (!field_marshall_ids.contains(source_character.GetId()) && !general_ids.contains(source_character.GetId()))
+   if (!field_marshal_ids.contains(source_character.GetId()) && !general_ids.contains(source_character.GetId()))
    {
       return std::nullopt;
    }
 
    // Trait/skill mapper later
-   return hoi4::General({.is_field_marshal = field_marshall_ids.contains(source_character.GetId())});
+   return hoi4::General({.is_field_marshal = field_marshal_ids.contains(source_character.GetId())});
 }
 std::optional<hoi4::Advisor> GeneratePossibleAdvisor(const vic3::Character& source_character,
     const std::optional<hoi4::Leader>& is_leader,
