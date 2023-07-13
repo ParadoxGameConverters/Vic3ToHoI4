@@ -222,7 +222,7 @@ hoi4::Character hoi4::ConvertCharacter(const vic3::Character& source_character,
 {
    std::optional<Admiral> admiral_data = GeneratePossibleAdmiral(source_character, role_ids.admiral_ids);
    std::optional<General> general_data =
-       GeneratePossibleGeneral(source_character, role_ids.field_marshall_ids, role_ids.general_ids);
+       GeneratePossibleGeneral(source_character, role_ids.field_marshal_ids, role_ids.general_ids);
    std::optional<Leader> leader_data = GeneratePossibleLeader(source_character, sub_ideology, leader_id);
    std::optional<Advisor> advisor_data = GeneratePossibleAdvisor(source_character, leader_data, role_ids.advisor_ids);
    std::optional<Spy> spy_data = GeneratePossibleSpy(source_character, tag, country_mapper, role_ids.spy_ids);

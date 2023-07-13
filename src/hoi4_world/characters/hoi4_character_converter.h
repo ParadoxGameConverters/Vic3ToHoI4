@@ -17,7 +17,7 @@ struct RoleIds
 {
    int leader_id = 0;
    std::set<int> admiral_ids;
-   std::set<int> field_marshall_ids;
+   std::set<int> field_marshal_ids;
    std::set<int> general_ids;
    std::set<int> advisor_ids;
    std::set<int> spy_ids;

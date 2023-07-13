@@ -104,7 +104,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
    return {leader_id,
        hoi4::ConvertCharacter(source_character_itr->second,
            leader_id,
-           {.field_marshall_ids = {leader_id}},  // Ruler generals are always field marshalls
+           {.field_marshal_ids = {leader_id}},  // Ruler generals are always field marshalls
            leader_type,
            tag,
            country_ideology,
@@ -201,7 +201,7 @@ std::pair<hoi4::CharacterIds, hoi4::RoleIds> PickCharacters(const int leader_id,
    hoi4::RoleIds role_ids;
    std::set<int> character_set_ids;
 
-   const auto& [field_marshall_ids, general_ids] =
+   const auto& [field_marshal_ids, general_ids] =
        PickGenerals(source_characters, source_country.GetCharacterIds(), character_set_ids);
    const auto& [admiral_ids, advisor_ids, spy_ids] =
        PickMiscCharacters(source_characters, source_country.GetCharacterIds(), leader_id, character_set_ids);
@@ -214,7 +214,7 @@ std::pair<hoi4::CharacterIds, hoi4::RoleIds> PickCharacters(const int leader_id,
        hoi4::RoleIds{
            .leader_id = leader_id,
            .admiral_ids = admiral_ids,
-           .field_marshall_ids = field_marshall_ids,
+           .field_marshal_ids = field_marshal_ids,
            .general_ids = general_ids,
            .advisor_ids = advisor_ids,
            .spy_ids = spy_ids,

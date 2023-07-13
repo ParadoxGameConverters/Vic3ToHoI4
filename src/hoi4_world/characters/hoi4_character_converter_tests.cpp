@@ -47,7 +47,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, FieldMarshallsCanBeConverted)
    });
    const auto expected_data = std::optional<General>({.is_field_marshal = true});
    const auto character =
-       ConvertCharacter(source_character, 0, {.field_marshall_ids = {1}}, "", "", "", "", {}, {}, dummy_queue);
+       ConvertCharacter(source_character, 0, {.field_marshal_ids = {1}}, "", "", "", "", {}, {}, dummy_queue);
    EXPECT_EQ(character, Character({.id = 1, .general_data = expected_data}));
 }
 
@@ -262,7 +262,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, LeaderMilitaryEnqueuesMilitaryPo
        .culture = "culture_2",
        .roles = {"politician", "admiral"},
    });
-   ConvertCharacter(source_character_g, 1, {.field_marshall_ids = {1}}, "", "", "", "", {}, {}, culture_queues);
+   ConvertCharacter(source_character_g, 1, {.field_marshal_ids = {1}}, "", "", "", "", {}, {}, culture_queues);
    ConvertCharacter(source_character_a, 2, {.admiral_ids = {2}}, "", "", "", "", {}, {}, culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"),
        mappers::CultureQueue({
@@ -324,7 +324,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, MonarchMilitaryEnqueuesMonarchPo
 
    ConvertCharacter(source_character,
        1,
-       {.field_marshall_ids = {1}},
+       {.field_marshal_ids = {1}},
        "head_of_state",
        "",
        "",
