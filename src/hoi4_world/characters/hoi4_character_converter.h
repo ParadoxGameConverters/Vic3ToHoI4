@@ -8,17 +8,27 @@
 #include "src/mappers/character/culture_queue.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/vic3_world/characters/vic3_character.h"
-#include "src/vic3_world/countries/vic3_country.h"
 
 
 
 namespace hoi4
 {
+struct RoleIds
+{
+   int leader_id = 0;
+   std::set<int> admiral_ids;
+   std::set<int> field_marshall_ids;
+   std::set<int> general_ids;
+   std::set<int> advisor_ids;
+   std::set<int> spy_ids;
+};
+
 
 bool HasMonarchs(const std::string& leader_type, const std::set<std::string>& laws);
 
 Character ConvertCharacter(const vic3::Character& source_character,
     int leader_id,
+    const RoleIds& role_ids,
     const std::string& leader_type,
     const std::string& tag,
     const std::string& country_ideology,

@@ -134,7 +134,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .plane_variants = expected_plane_variants_one,
                                     .tank_variants = expected_tank_variants_one,
                                     .graphics_block = expected_graphics_block_one,
-                                    .leader_ids = {1, 3},
+                                    .character_ids = {1, 3},
                                     .spy_ids = {4},
                                 })),
            testing::Pair("TWO",
@@ -149,7 +149,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .plane_variants = expected_plane_variants_two,
                    .tank_variants = expected_tank_variants_two,
                    .graphics_block = expected_graphics_block_two,
-                   .leader_ids = {2},
+                   .character_ids = {2},
                }))));
 }
 

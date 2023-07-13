@@ -16,9 +16,9 @@
 
 namespace hoi4
 {
-using LeaderIds = std::vector<int>;
+using CharacterIds = std::vector<int>;
 using SpyIds = std::set<int>;
-std::pair<LeaderIds, SpyIds> ConvertCharacters(const std::map<int, vic3::Character>& source_characters,
+std::pair<CharacterIds, SpyIds> ConvertCharacters(const std::map<int, vic3::Character>& source_characters,
     const std::string& tag,
     const std::string& country_ideology,
     const std::string& sub_ideology,
