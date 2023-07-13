@@ -1,0 +1,205 @@
+﻿land = {
+	senile = {
+		traits = { old_guard }
+		attack = -1
+		planning = -1
+	}
+	direct = {
+		traits = { armor_officer }
+		defense = 1
+	}
+	persistent = {
+		traits = { inflexible_strategist }
+		field_marshal_traits = { unyielding_defender }
+		defense = 1
+	}
+	cautious = {
+		traits = { trait_cautious }
+		defense = 1
+		logistics = 1
+	}
+	arrogant = {
+		traits = { cavalry_officer }
+		attack = 1
+	}
+	reckless = {
+		traits = { trait_reckless }
+		attack = 1
+		planning = 1
+	}
+	tactful = {
+		traits = { infantry_officer }
+		planning = 1
+	}
+	ambitious = {
+		traits = { career_officer }
+		attack = 1
+		defense = 1
+		planning = 1
+	}
+	imperious = {
+		traits = { cavalry_officer }
+		planning = 1
+	}
+	wrathful = {
+		traits = { harsh_leader }
+		planning = 1
+	}
+	cruel = {
+		traits = { harsh_leader }
+		attack = 1
+	}
+	reserved = {
+		traits = { trait_cautious }
+		defense = 1
+		planning = 1
+	}
+	meticulous = {
+		traits = { organizer }
+		field_marshal_traits = { thorough_planner }
+		defense = 1
+		planning = 2
+	}
+	charismatic = {
+		field_marshal_traits = { charismatic }
+		logistics = 1
+	}
+	brave = {
+		traits = { infantry_officer }
+		attack = 1
+	}
+	romantic = {
+		traits = { inflexible_strategist }
+		attack = -1
+	}
+	innovative = {
+		traits = { brilliant_strategist }
+	}
+	explorer = {
+		traits = { naval_invader }
+		planning = 1
+		logistics = 1
+	}
+	bandit = {
+		attack = 1
+	}
+	traditionalist_commander = {
+		traits = { old_guard }
+		defense = 1
+	}
+	popular_commander = {
+		traits = { politically_connected }
+		planning = 1
+		logistics = 1
+	}
+	celebrity_commander = {
+		traits = { war_hero }
+		attack = 1
+		planning = 1
+	}
+	resupply_commander = {
+		traits = { organizer }
+		field_marshal_traits = { logistics_wizard }
+		logistics = 2
+	}
+	pillager = {
+		trait = { commando }
+		attack = 1
+		logistics = 1
+	}
+	surveyor = {
+		traits = { organizer }
+		planning = 1
+	}
+	forest_commander = {
+		traits = { ranger }
+		defense = 1
+		planning = 1
+	}
+	plains_commander = {
+		traits = { desert_fox }
+		attack = 1
+		planning = 1
+	}
+	mountain_commander = {
+		traits = { trait_mountaineer }
+		defense = 1
+		logistics = 1
+	}
+	basic_artillery_commander = {
+		traits = { engineer_officer }
+		attack = 1
+		logistics = 1
+	}
+	expert_artillery_commander = {
+		traits = { engineer_officer }
+		attack = 2
+		planning = 1
+		logistics = 1
+	}
+	experienced_artillery_commander = {
+		traits = { engineer_officer fortress_buster }
+		attack = 3
+		planning = 1
+		logistics = 2
+	}
+	stalwart_defender {
+		traits = { infantry_officer }
+		defense = 1
+		planning = 1
+	}
+	trench_rat = {
+		traits = { infantry_officer trickster }
+		defense = 2
+		planning = 1
+		logistics = 1
+	}
+	defense_in_depth_specialist = {
+		traits = { engineer_officer trickster guerilla_fighter }
+		defense = 3
+		planning = 2
+		logistics = 1
+	}
+	basic_offensive_planner = {
+		traits = { armor_officer }
+		attack = 1
+		planning = 1
+	}
+	expert_offensive_planner = {
+		traits = { armor_officer }
+		attack = 2
+		planning = 1
+		logistics = 1
+	}
+	experienced_offensive_planner = {
+		traits = { armor_officer }
+		field_marshal_traits = { offensive_doctrine }
+		attack = 3
+		planning = 2
+		logistics = 1
+	}
+	basic_defensive_strategist = {
+		traits = { infantry_officer }
+		defense = 1
+		logistics = 1
+	}
+	expert_defensive_strategist = {
+		traits = { infantry_officer }
+		attack = 1
+		defense = 2
+		logistics = 1
+	}
+	experienced_defensive_strategist = {
+		traits = { infantry_officer }
+		field_marshal_traits = { defensive_doctrine }
+		attack = 1
+		defense = 3
+		logistics = 2
+	}
+}
+navy = {
+	traditionalist_commander = {
+		traits = { old_guard_navy }
+		defense = 1
+	}
+}
