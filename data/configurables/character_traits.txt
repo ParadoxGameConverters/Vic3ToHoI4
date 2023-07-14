@@ -1,4 +1,33 @@
-﻿land = {
+﻿# Maps character traits in Vic3 to character traits and skill in HoI4.
+# Each section maps a little differently.
+# ex_land = {
+# 	vic3_trait = {
+# 		traits = { hoi4_trait_0 hoi4_trait_1} # General traits.
+# 		field_marshal_traits = { hoi4_trait_2 hoi4_trait_3} # Only applies if commander becomes a field marshal.
+# 		attack = #
+# 		defense = #
+# 		planning = #
+# 		logistics = #
+# 	}
+# }
+# ex_navy = {
+# 	vic3_trait = {
+# 		traits = { hoi4_trait_0 hoi4_trait_1} # Admiral traits.
+# 		attack = #
+# 		defense = #
+# 		maneuvering = #
+# 		coordination = #
+# 	}
+# }
+# ex_spy = { # Operative traits.
+# 	hoi4_trait = {
+# 		vic3_trait_0
+# 		vic3_trait_1
+# 	}
+# }
+
+
+land = { # Generals & Field Marshals
 	senile = {
 		traits = { old_guard }
 		attack = -1
@@ -198,8 +227,181 @@
 	}
 }
 navy = {
+	senile = {
+		traits = { old_guard_navy }
+		attack = -1
+		maneuvering = -1
+	}
+	direct = {
+		attack = 1
+	}
+	persistent = {
+		traits = { superior_tactician }
+		defense = 1
+		coordination = 1
+	}
+	cautious = {
+		traits = { craven }
+		defense = 1
+	}
+	arrogant = {
+		traits = { naval_lineage }
+		maneuvering = 1
+	}
+	reckless = {
+		traits = { cuts_corners }
+		attack = 1
+		maneuvering = 1
+	}
+	tactful = {
+		traits = { gentlemanly }
+		coordination = 1
+	}
+	ambitious = {
+		traits = { navy_career_officer }
+		attack = 1
+		maneuvering = 1
+		coordination = 1
+	}
+	imperious = {
+		traits = { naval_lineage }
+		coordination = 1
+	}
+	wrathful = {
+		traits = { battleship_adherent }
+		attack = 1
+	}
+	cruel = {
+		traits = { caustic_personality }
+		attack = 1
+	}
+	bigoted = {
+		traits = { caustic_personality }
+	}
+	reserved = {
+		traits = { craven }
+		coordination = 1
+	}
+	meticulous = {
+		traits = { spotter }
+		maneuvering = 1
+		coordination = 1
+	}
+	charismatic = {
+		coordination = 1
+	}
+	brave = {
+		traits = { bold }
+		attack = 1
+	}
+	romantic = {
+		traits = { gentlemanly }
+		attack = -1
+	}
+	innovative = {
+		traits = { aviation_enthusiast }
+		maneuvering = 1
+	}
 	traditionalist_commander = {
 		traits = { old_guard_navy }
 		defense = 1
+	}
+	popular_commander = {
+		traits = { media_personality }
+	}
+	celebrity_commander = {
+		traits = { media_personality }
+		coordination = 1
+	}
+	basic_naval_commander = {
+		defense = 1
+		coordination = 1
+	}
+	expert_naval_commander = {
+		attack = 1
+		defense = 1
+		coordination = 2
+	}
+	experienced_naval_commander = {
+		traits = { gunnery_expert }
+		attack = 1
+		defense = 2
+		coordination = 3
+	}
+	convoy_raider_commander = {
+		attack = 1
+		maneuvering = 1
+	}
+	expert_convoy_raider = {
+		traits = { seawolf }
+		attack = 2
+		maneuvering = 1
+		coordination = 1
+	}
+	experienced_convoy_raider = {
+		traits = { seawolf }
+		attack = 3
+		maneuvering = 2
+		coordination = 1
+	}
+	dockyard_master = {
+		traits = { chief_engineer }
+		defense = 1
+		maneuvering = 1
+	}
+	explorer = {
+		traits = { arctic_water_expert }
+	}
+	bandit = { 
+		maneuvering = 1
+	}
+}
+spy = {
+	operative_safe_cracker = {
+		direct
+		reckless
+	}
+	operative_seducer = {
+		charismatic
+		hedonist
+	}
+	operative_tough = [
+		persistent
+		bandit
+	]
+	operative_commando = {
+		brave
+	}
+	operative_demolition_expert = {
+		ambitious
+	}
+	operative_escape_artist = {
+		innovative
+	}
+	operative_infiltrator = {
+		cautious
+		reserved
+	}
+	operative_linguist = {
+		meticulous
+		pious
+	}
+	operative_master_interrogator = {
+		imperious
+		wrathful
+		cruel
+	}
+	operative_natural_orator = {
+		inspirational_orator
+		demagogue
+		firebrand
+		basic_diplomat
+		experienced_diplomat
+		masterful_diplomat
+	}
+	operative_well_groomed = {
+		tactful
+		romantic
+		expensive_tastes
 	}
 }
