@@ -513,7 +513,7 @@ caucasian = {
 # 	graphical_culture_2d = asian_2d
 # }
 
-indian = {
+indian = { # Ideally should be generics only
 	ethnicities = { indian }
 
 	army_portraits = {
@@ -696,7 +696,7 @@ nordic = {
 }
 
 west_horn_of_african = {
-	traits = { ethiopian } # DLC BBA 
+	traits = { ethiopian somali } # DLC BBA 
 
 	army_portraits = {
 		GFX_portrait_ETH_generic_male_1
