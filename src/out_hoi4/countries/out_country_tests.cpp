@@ -156,8 +156,8 @@ TEST(Outhoi4CountriesOutcountryTests, CommonCharactersFileIsCreatedWithTagForNam
    commonItems::TryCreateFolder("output/CommonCharactersFileIsCreatedWithTagForName/common");
    commonItems::TryCreateFolder("output/CommonCharactersFileIsCreatedWithTagForName/common/characters");
 
-   const hoi4::Country country({.tag = "TAG", .leader_ids = {1, 2}});
-   const hoi4::Country country_two({.tag = "TWO", .leader_ids = {3, 4}});
+   const hoi4::Country country({.tag = "TAG", .character_ids = {1, 2}});
+   const hoi4::Country country_two({.tag = "TWO", .character_ids = {3, 4}});
    const std::map<int, hoi4::Character> characters{
        {1, hoi4::Character({.id = 1})},
        {2, hoi4::Character({.id = 2})},
@@ -433,7 +433,7 @@ TEST(Outhoi4CountriesOutcountryTests, CharactersAreRecruitedInCountryHistoryFile
    commonItems::TryCreateFolder("output/CharactersAreRecruitedInCountryHistoryFile/history");
    commonItems::TryCreateFolder("output/CharactersAreRecruitedInCountryHistoryFile/history/countries");
 
-   const hoi4::Country country({.tag = "TAG", .leader_ids = {1, 2}});
+   const hoi4::Country country({.tag = "TAG", .character_ids = {1, 2}});
    const std::map<int, hoi4::Character> characters{
        {1, hoi4::Character({.id = 1})},
        {2, hoi4::Character({.id = 2})},

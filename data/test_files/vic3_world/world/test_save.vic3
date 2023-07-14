@@ -179,7 +179,7 @@ max=6746
 4=1
 5=3
 	}
-	character_home_hq_map={
+	home_hq_character_map={
 max=643
 23561={ 5 }
 12516={ 2 }

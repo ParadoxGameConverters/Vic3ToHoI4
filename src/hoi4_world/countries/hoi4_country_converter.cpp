@@ -279,7 +279,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
       ideas.insert("decentralized");
    }
 
-   const auto [leader_ids, spy_ids] = ConvertCharacters(vic3_characters,
+   const auto [character_ids, spy_ids] = ConvertCharacters(vic3_characters,
        *tag,
        ideology,
        sub_ideology,
@@ -325,7 +325,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        .ideas = ideas,
        .graphics_block = graphics_block,
        .name_list = name_list,
-       .leader_ids = leader_ids,
+       .character_ids = character_ids,
        .spy_ids = spy_ids,
        .puppets = puppets});
 }

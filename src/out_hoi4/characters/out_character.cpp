@@ -115,8 +115,14 @@ void out::OutputCharacter(std::ostream& out, const std::string& tag, const hoi4:
    {
       out << "\t\tgender = female\n";
    }
+
+   std::string backup_portrait = "GFX_portrait_unknown";
+   if (advisor_data && (!general_data || !admiral_data))
+   {
+      backup_portrait = "GFX_idea_unknown";
+   }
    OutputPortraits(out,
-       ValueOr(character.GetPortraitAlias(), "GFX_portrait_unknown"),
+       ValueOr(character.GetPortraitAlias(), backup_portrait),
        general_data.has_value(),
        admiral_data.has_value(),
        leader_data.has_value(),

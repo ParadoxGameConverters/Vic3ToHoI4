@@ -75,6 +75,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
       return {new_council.GetId(),
           hoi4::ConvertCharacter(new_council,
               new_council.GetId(),
+              {},  // The council are not Field Marshals
               leader_type,
               tag,
               country_ideology,
@@ -103,6 +104,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
    return {leader_id,
        hoi4::ConvertCharacter(source_character_itr->second,
            leader_id,
+           {.field_marshal_ids = {leader_id}},  // Ruler generals are always Field Marshals
            leader_type,
            tag,
            country_ideology,
@@ -112,39 +114,110 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
            culture_queues)};
 }
 
-std::pair<hoi4::LeaderIds, hoi4::SpyIds> PickAllOtherCharacters(const int leader_id,
+using FieldMarshalIds = std::set<int>;
+using GeneralIds = std::set<int>;
+// Sorts generals between Field Marshals and commanders.
+std::pair<FieldMarshalIds, GeneralIds> PickGenerals(const std::map<int, vic3::Character>& source_characters,
+    const std::vector<int>& source_character_ids,
+    std::set<int>& character_ids)
+{
+   std::vector<int> ids;
+   std::ranges::copy_if(source_character_ids, std::back_inserter(ids), [source_characters](const int id) {
+      if (const auto& itr = source_characters.find(id); itr != source_characters.end())
+      {
+         return itr->second.GetRoles().contains("general");
+      }
+      return false;
+   });
+
+   // 20% of the generals will be Field Marshals, using highest rank first.
+   // Remember rank is political and has nothing to do with skill.
+   // If limiting the number of generals, prefer higher ranked ones as well.
+   std::ranges::sort(ids, [source_characters](const int lhs, const int rhs) {
+      return source_characters.at(lhs).GetRank() > source_characters.at(rhs).GetRank();
+   });
+   const unsigned int num_field_marshals = static_cast<int>(0.2 * static_cast<int>(ids.size()));
+
+   FieldMarshalIds field_marshal_ids;
+   GeneralIds general_ids;
+   for (unsigned int i = 0; i < ids.size(); ++i)
+   {
+      character_ids.emplace(ids.at(i));
+
+      if (i < num_field_marshals)
+      {
+         field_marshal_ids.emplace(ids.at(i));
+         continue;
+      }
+      general_ids.emplace(ids.at(i));
+   }
+   return {field_marshal_ids, general_ids};
+}
+
+using AdmiralIds = std::set<int>;
+using AdvisorIds = std::set<int>;
+using SpyIds = std::set<int>;
+// Naively grabs all remaining characters with valid data
+std::tuple<AdmiralIds, AdvisorIds, SpyIds> PickMiscCharacters(const std::map<int, vic3::Character>& source_characters,
+    const std::vector<int>& source_character_ids,
+    const int leader_id,
+    std::set<int>& character_ids)
+{
+   AdmiralIds admiral_ids;
+   AdvisorIds advisor_ids;
+   SpyIds spy_ids;
+
+   for (const auto& id: source_character_ids)
+   {
+      const auto& itr = source_characters.find(id);
+      if (itr == source_characters.end())
+      {
+         continue;
+      }
+
+      const auto& roles = itr->second.GetRoles();
+      if (roles.contains("admiral"))
+      {
+         admiral_ids.emplace(id);
+         character_ids.emplace(id);
+      }
+      if (roles.contains("politician") && id != leader_id)
+      {
+         advisor_ids.emplace(id);
+         character_ids.emplace(id);
+      }
+      if (roles.contains("agitator") && roles.size() == 1)
+      {
+         spy_ids.emplace(id);
+      }
+   }
+   return {admiral_ids, advisor_ids, spy_ids};
+}
+
+std::pair<hoi4::CharacterIds, hoi4::RoleIds> PickCharacters(const int leader_id,
     const std::map<int, vic3::Character>& source_characters,
     const vic3::Country& source_country)
 {
-   hoi4::LeaderIds leader_ids;
-   hoi4::SpyIds spy_ids;
-   leader_ids.push_back(leader_id);  // Starting Country Leader must be first.
+   std::set<int> character_set_ids;
 
-   // In the future we may separate this out into PickGenerals, PickAdmirals and such if we wish to add limits.
-   // Currently, we just grab any character with valid data.
-   for (const auto& character_id: source_country.GetCharacterIds())
-   {
-      if (leader_id == character_id)
-      {
-         continue;
-      }
-      const auto& source_character_itr = source_characters.find(character_id);
-      if (source_character_itr == source_characters.end())
-      {
-         Log(LogLevel::Warning) << fmt::format("Failed to find vic3 character associated with ID: {}", character_id);
-         continue;
-      }
-      const vic3::Character& source_character = source_character_itr->second;
-      if (source_character.GetRoles().contains("agitator") && source_character.GetRoles().size() == 1)
-      {
-         spy_ids.emplace(character_id);
-      }
-      else
-      {
-         leader_ids.push_back(character_id);
-      }
-   }
-   return {leader_ids, spy_ids};
+   const auto& [field_marshal_ids, general_ids] =
+       PickGenerals(source_characters, source_country.GetCharacterIds(), character_set_ids);
+   const auto& [admiral_ids, advisor_ids, spy_ids] =
+       PickMiscCharacters(source_characters, source_country.GetCharacterIds(), leader_id, character_set_ids);
+
+   hoi4::CharacterIds character_ids;
+   character_ids.push_back(leader_id);  // Country leader must be first
+   character_set_ids.erase(leader_id);
+   std::ranges::copy(character_set_ids, std::back_inserter(character_ids));
+   return {character_ids,
+       hoi4::RoleIds{
+           .leader_id = leader_id,
+           .admiral_ids = admiral_ids,
+           .field_marshal_ids = field_marshal_ids,
+           .general_ids = general_ids,
+           .advisor_ids = advisor_ids,
+           .spy_ids = spy_ids,
+       }};
 }
 
 ////////////////////////////////////
@@ -211,7 +284,7 @@ mappers::PortraitPaths GetPortraitPaths(const vic3::CultureDefinition& culture,
 }  // namespace
 
 
-std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(
+std::pair<hoi4::CharacterIds, hoi4::SpyIds> hoi4::ConvertCharacters(
     const std::map<int, vic3::Character>& source_characters,
     const std::string& tag,
     const std::string& country_ideology,
@@ -236,27 +309,24 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(
        culture_queues);
    characters.emplace(leader_id, leader);
 
-   const auto& [leader_ids, spy_ids] = PickAllOtherCharacters(leader_id, source_characters, source_country);
+   const auto& [character_ids, role_ids] = PickCharacters(leader_id, source_characters, source_country);
 
    std::vector<int> all_ids;
-   std::ranges::copy(leader_ids, std::back_inserter(all_ids));
-   std::ranges::copy(spy_ids, std::back_inserter(all_ids));
-
+   std::copy(character_ids.begin() + 1, character_ids.end(), std::back_inserter(all_ids));
+   std::ranges::copy(role_ids.spy_ids, std::back_inserter(all_ids));
    for (const auto& character_id: all_ids)
    {
-      if (character_id == leader_id)
-      {
-         continue;
-      }
       const auto& source_character_itr = source_characters.find(character_id);
       if (source_character_itr == source_characters.end())
       {
          // Should not be possible
          continue;
       }
+
       characters.emplace(character_id,
           ConvertCharacter(source_character_itr->second,
               leader_id,
+              role_ids,
               leader_type,
               tag,
               country_ideology,
@@ -265,7 +335,7 @@ std::pair<std::vector<int>, std::set<int>> hoi4::ConvertCharacters(
               country_mapper,
               culture_queues));
    }
-   return {leader_ids, spy_ids};
+   return {character_ids, role_ids.spy_ids};
 }
 
 void hoi4::AssignPortraits(const std::map<std::string, mappers::CultureQueue>& culture_queues,

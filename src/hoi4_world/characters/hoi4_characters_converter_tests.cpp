@@ -17,6 +17,14 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
    const auto leader_type_mapper = mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
 
 
+   // General
+   const auto character_one = vic3::Character({
+       .id = 1,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .roles = {"general"},
+       .rank = 1,
+   });
    // Commander leader
    const auto character_two = vic3::Character({
        .id = 2,
@@ -25,7 +33,15 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .roles = {"politician", "general"},
        .rank = 1,
    });
-   // General
+   // Field Marshal
+   const auto character_three = vic3::Character({
+       .id = 3,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .roles = {"general"},
+       .rank = 2,
+   });
+   // Filler General
    const auto character_four = vic3::Character({
        .id = 4,
        .first_name = "Test",
@@ -84,7 +100,9 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
 
 
    const std::map<int, vic3::Character> source_characters = {
+       {1, character_one},
        {2, character_two},
+       {3, character_three},
        {4, character_four},
        {5, character_five},
        {6, character_six},
@@ -97,7 +115,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        "TAG",
        "",
        "sub_ideology",
-       vic3::Country({.head_of_state_id = 2, .character_ids = {2, 4, 5, 6, 7, 8, 9, 10}}),
+       vic3::Country({.head_of_state_id = 2, .character_ids = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}}),
        {},
        leader_type_mapper,
        country_mapper,
@@ -105,16 +123,29 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        culture_queues);
 
    const auto leader_data = std::optional<Leader>({.sub_ideology = "sub_ideology"});
+   const auto field_marshal_data = std::optional<General>({.is_field_marshal = true});
    const auto general_data = std::optional<General>({.traits = {}});
    const auto admiral_data = std::optional<Admiral>({.traits = {}});
    const auto advisor_data = std::optional<Advisor>({.slot = "political_advisor"});
    const auto spy_data = std::optional<Spy>({.nationalities = {"TAG", "TWO"}});
+   const auto expected_character_one = Character({
+       .id = 1,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .general_data = general_data,
+   });
    const auto expected_character_two = Character({
        .id = 2,
        .first_name = "Test",
        .last_name = "Mann",
-       .general_data = general_data,
+       .general_data = field_marshal_data,
        .leader_data = leader_data,
+   });
+   const auto expected_character_three = Character({
+       .id = 3,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .general_data = field_marshal_data,
    });
    const auto expected_character_four = Character({
        .id = 4,
@@ -163,7 +194,9 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
    });
 
    EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(testing::Pair(2, expected_character_two),
+       testing::UnorderedElementsAre(testing::Pair(1, expected_character_one),
+           testing::Pair(2, expected_character_two),
+           testing::Pair(3, expected_character_three),
            testing::Pair(4, expected_character_four),
            testing::Pair(5, expected_character_five),
            testing::Pair(6, expected_character_six),

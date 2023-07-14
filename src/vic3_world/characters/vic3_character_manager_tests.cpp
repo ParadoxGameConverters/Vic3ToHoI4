@@ -131,7 +131,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, EmployedCommandersAreMarke
    input << "role = admiral\n";
    input << "}\n";
    input << "}\n";
-   input << "character_home_hq_map={\n";
+   input << "home_hq_character_map={\n";
    input << "max=6552\n";
    input << "14151 = { 1 4 }\n";
    input << "}\n";
@@ -360,7 +360,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CommanderCountIsLogged)
 {
    std::stringstream input;
    input << "={\n";
-   input << "character_home_hq_map={\n";
+   input << "home_hq_character_map={\n";
    input << "max=6552\n";
    input << "14151 = { 1 2 3 4 5 6 7 }\n";
    input << "25617 = { 8 9 10 }\n";

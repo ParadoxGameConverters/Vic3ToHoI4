@@ -89,7 +89,7 @@ vic3::CharacterManager::CharacterManager(std::istream& input_stream)
    character_manager_parser_.registerKeyword("character_ig_map", [this](std::istream& input_stream) {
       character_ig_map_ = ImportCharacterIgMap(input_stream);
    });
-   character_manager_parser_.registerKeyword("character_home_hq_map", [this](std::istream& input_stream) {
+   character_manager_parser_.registerKeyword("home_hq_character_map", [this](std::istream& input_stream) {
       hired_commanders_ = ImportEmployedCommanders(input_stream);
    });
    character_manager_parser_.registerKeyword("exile_pool", [this](std::istream& input_stream) {
