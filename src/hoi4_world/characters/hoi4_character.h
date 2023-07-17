@@ -12,7 +12,6 @@ namespace hoi4
 struct Admiral
 {
    std::set<std::string> traits;
-   int skill = 1;
    int attack = 1;
    int defense = 1;
    int maneuvering = 1;
@@ -24,7 +23,6 @@ struct General
 {
    std::set<std::string> traits;
    bool is_field_marshal = false;
-   int skill = 1;
    int attack = 1;
    int defense = 1;
    int planning = 1;

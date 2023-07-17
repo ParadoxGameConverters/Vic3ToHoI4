@@ -7,13 +7,13 @@
 mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(std::string_view mapping_file)
 {
    // Outputs
-   GeneralTraitMap general_trait_map;
    AdmiralTraitMap admiral_trait_map;
+   GeneralTraitMap general_trait_map;
    SpyTraitMap spy_trait_map;
 
    // Capture building blocks
-   GeneralTraitMapping general_trait_mapping;
    AdmiralTraitMapping admiral_trait_mapping;
+   GeneralTraitMapping general_trait_mapping;
 
 
    commonItems::parser admiral_mapping_parser;
@@ -85,11 +85,11 @@ mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(std::string_vi
 
 
    commonItems::parser type_parser;
-   type_parser.registerKeyword("army", [&general_parser](std::istream& input_stream) {
-      general_parser.parseStream(input_stream);
-   });
    type_parser.registerKeyword("navy", [&admiral_parser](std::istream& input_stream) {
       admiral_parser.parseStream(input_stream);
+   });
+   type_parser.registerKeyword("army", [&general_parser](std::istream& input_stream) {
+      general_parser.parseStream(input_stream);
    });
    type_parser.registerKeyword("spy", [&spy_parser](std::istream& input_stream) {
       spy_parser.parseStream(input_stream);
@@ -97,5 +97,5 @@ mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(std::string_vi
 
    type_parser.parseFile(mapping_file);
 
-   return CharacterTraitMapper(general_trait_map, admiral_trait_map, spy_trait_map);
+   return CharacterTraitMapper(admiral_trait_map, general_trait_map, spy_trait_map);
 }
