@@ -250,6 +250,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     const std::map<int, vic3::Character>& vic3_characters,
     const mappers::LeaderTypeMapper& leader_type_mapper,
+    const mappers::CharacterTraitMapper& character_trait_mapper,
     const std::map<int, vic3::InterestGroup>& igs,
     std::map<int, hoi4::Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
@@ -286,6 +287,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        source_country,
        igs,
        leader_type_mapper,
+       character_trait_mapper,
        country_mapper,
        characters,
        culture_queues);

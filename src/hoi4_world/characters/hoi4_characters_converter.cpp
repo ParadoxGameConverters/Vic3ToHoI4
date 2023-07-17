@@ -60,6 +60,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
     const std::string& country_ideology,
     const std::string& sub_ideology,
     const vic3::Country& source_country,
+    const mappers::CharacterTraitMapper& character_trait_mapper,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
    if (leader_type == "council")
@@ -82,6 +83,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
               sub_ideology,
               source_country.GetActiveLaws(),
               {},  // country_mapper only needed for spies
+              mappers::CharacterTraitMapper({}, {}, {}),
               culture_queues)};
    }
 
@@ -111,6 +113,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
            sub_ideology,
            source_country.GetActiveLaws(),
            {},  // country_mapper only needed for spies
+           character_trait_mapper,
            culture_queues)};
 }
 
@@ -292,6 +295,7 @@ std::pair<hoi4::CharacterIds, hoi4::SpyIds> hoi4::ConvertCharacters(
     const vic3::Country& source_country,
     const std::map<int, vic3::InterestGroup>& igs,
     const mappers::LeaderTypeMapper& leader_type_mapper,
+    const mappers::CharacterTraitMapper& character_trait_mapper,
     const mappers::CountryMapper& country_mapper,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
@@ -306,6 +310,7 @@ std::pair<hoi4::CharacterIds, hoi4::SpyIds> hoi4::ConvertCharacters(
        country_ideology,
        sub_ideology,
        source_country,
+       character_trait_mapper,
        culture_queues);
    characters.emplace(leader_id, leader);
 
@@ -333,6 +338,7 @@ std::pair<hoi4::CharacterIds, hoi4::SpyIds> hoi4::ConvertCharacters(
               sub_ideology,
               source_country.GetActiveLaws(),
               country_mapper,
+              character_trait_mapper,
               culture_queues));
    }
    return {character_ids, role_ids.spy_ids};

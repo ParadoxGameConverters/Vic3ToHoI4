@@ -118,6 +118,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        vic3::Country({.head_of_state_id = 2, .character_ids = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}}),
        {},
        leader_type_mapper,
+       mappers::CharacterTraitMapper({}, {}, {}),
        country_mapper,
        characters,
        culture_queues);
@@ -305,6 +306,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PortraitsAreAssigned)
        vic3::Country({.head_of_state_id = 2, .character_ids = {2, 4, 5, 6, 7, 8, 9, 10}}),
        {},
        leader_type_mapper,
+       mappers::CharacterTraitMapper({}, {}, {}),
        {},
        characters,
        culture_queues);
@@ -345,6 +347,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
        vic3::Country({.active_laws = {"law_council_republic", "law_anarchy"}, .primary_cultures = {"culture_1"}}),
        {},
        leader_type_mapper,
+       mappers::CharacterTraitMapper({}, {}, {}),
        {},
        characters,
        culture_queues);
@@ -382,6 +385,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCol
        vic3::Country({.active_laws = {"law_council_republic", "law_anarchy"}, .primary_cultures = {"culture_1"}}),
        {},
        leader_type_mapper,
+       mappers::CharacterTraitMapper({}, {}, {}),
        {},
        characters,
        culture_queues);
@@ -445,6 +449,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInCoaliti
        vic3::Country({.active_laws = {"law_monarchy", "law_census_voting"}, .ig_ids = {1, 2, 3}}),
        igs,
        leader_type_mapper,
+       mappers::CharacterTraitMapper({}, {}, {}),
        {},
        characters,
        culture_queues);
@@ -514,6 +519,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderP
        vic3::Country({.active_laws = {"law_monarchy", "law_census_voting"}, .ig_ids = {1, 2, 3}}),
        igs,
        leader_type_mapper,
+       mappers::CharacterTraitMapper({}, {}, {}),
        {},
        characters,
        culture_queues);

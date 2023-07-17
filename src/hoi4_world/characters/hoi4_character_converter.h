@@ -5,6 +5,7 @@
 
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
+#include "src/mappers/character/character_trait_mapper.h"
 #include "src/mappers/character/culture_queue.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/vic3_world/characters/vic3_character.h"
@@ -35,6 +36,7 @@ Character ConvertCharacter(const vic3::Character& source_character,
     const std::string& sub_ideology,
     const std::set<std::string>& laws,
     const mappers::CountryMapper& country_mapper,
+    const mappers::CharacterTraitMapper& character_trait_mapper,
     std::map<std::string, mappers::CultureQueue>& culture_queues);
 
 }  // namespace hoi4

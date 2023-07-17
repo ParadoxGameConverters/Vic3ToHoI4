@@ -5,6 +5,7 @@
 
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
+#include "src/mappers/character/character_trait_mapper.h"
 #include "src/mappers/character/culture_queue.h"
 #include "src/mappers/character/leader_type_mapper.h"
 #include "src/mappers/country/country_mapper.h"
@@ -25,6 +26,7 @@ std::pair<CharacterIds, SpyIds> ConvertCharacters(const std::map<int, vic3::Char
     const vic3::Country& source_country,
     const std::map<int, vic3::InterestGroup>& igs,
     const mappers::LeaderTypeMapper& leader_type_mapper,
+    const mappers::CharacterTraitMapper& character_trait_mapper,
     const mappers::CountryMapper& country_mapper,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues);

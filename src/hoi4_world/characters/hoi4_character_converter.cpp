@@ -218,6 +218,7 @@ hoi4::Character hoi4::ConvertCharacter(const vic3::Character& source_character,
     const std::string& sub_ideology,
     const std::set<std::string>& laws,
     const mappers::CountryMapper& country_mapper,
+    const mappers::CharacterTraitMapper& character_trait_mapper,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
    std::optional<Admiral> admiral_data = GeneratePossibleAdmiral(source_character, role_ids.admiral_ids);
