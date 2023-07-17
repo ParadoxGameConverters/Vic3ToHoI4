@@ -32,6 +32,7 @@ struct AdmiralTraitMapping
 struct GeneralTraitMapping
 {
    std::set<hoi4::Trait> traits;
+   std::set<hoi4::Trait> field_marshal_traits;
    int attack = 0;
    int defense = 0;
    int planning = 0;
@@ -56,7 +57,8 @@ class CharacterTraitMapper
    }
 
    [[nodiscard]] AdmiralTraitMapping GetAdmiralMappedData(const std::set<vic3::Trait>& source_traits) const;
-   [[nodiscard]] GeneralTraitMapping GetGeneralMappedData(const std::set<vic3::Trait>& source_traits) const;
+   [[nodiscard]] GeneralTraitMapping GetGeneralMappedData(const std::set<vic3::Trait>& source_traits,
+       bool is_field_marshal) const;
    [[nodiscard]] std::set<hoi4::Trait> GetSpyMappedTraits(const std::set<vic3::Trait>& source_traits) const;
 
   private:

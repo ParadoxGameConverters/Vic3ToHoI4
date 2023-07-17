@@ -365,10 +365,10 @@ spy = {
 		charismatic
 		hedonist
 	}
-	operative_tough = [
+	operative_tough = {
 		persistent
 		bandit
-	]
+	}
 	operative_commando = {
 		brave
 	}
