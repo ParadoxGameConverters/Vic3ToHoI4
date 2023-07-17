@@ -16,11 +16,12 @@ TEST(MappersCharacterCharactertraitmapperimporter, DISABLED_TBD)
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
 
    EXPECT_EQ(character_trait_mapper.GetAdmiralMappedData({"bandit"}),
-       hoi4::Admiral({"naval_trait_0", "naval_trait_1"}, 1, 1, 1, 1));
+       AdmiralTraitMapping({"naval_trait_0", "naval_trait_1"}, 2, 2, 2, 2));
    EXPECT_EQ(character_trait_mapper.GetGeneralMappedData({"charismatic"}, true),
-       hoi4::General({"land_trait_0", "land_trait_1"}, {"charismatic"}, 1, 1, 1, 1));
-   EXPECT_EQ(character_trait_mapper.GetSpyMappedTraits({"bandit"}), std::set{"operative_tough"});
-   EXPECT_EQ(character_trait_mapper.GetSpyMappedTraits({"persistent"}), std::set{"operative_tough"});
+       GeneralTraitMapping({"land_trait_0", "land_trait_1"}, {"charismatic"}, 2, 2, 2, 2));
+   EXPECT_EQ(character_trait_mapper.GetSpyMappedTraits({"bandit"}), testing::UnorderedElementsAre("operative_tough"));
+   EXPECT_EQ(character_trait_mapper.GetSpyMappedTraits({"persistent"}),
+       testing::UnorderedElementsAre("operative_tough"));
 }
 
 

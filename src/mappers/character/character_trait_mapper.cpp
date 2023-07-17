@@ -1,20 +1,73 @@
 ﻿#include "character_trait_mapper.h"
 
+#include "external/fmt/include/fmt/format.h"
+
 mappers::AdmiralTraitMapping mappers::CharacterTraitMapper::GetAdmiralMappedData(
     const std::set<vic3::Trait>& source_traits) const
 {
-   return AdmiralTraitMapping();
+   AdmiralTraitMapping admiral_mapping{
+       .attack = 1,
+       .defense = 1,
+       .maneuvering = 1,
+       .coordination = 1,
+   };
+   for (const vic3::Trait& vic3_trait: source_traits)
+   {
+      if (const auto& mapping_itr = admiral_trait_rules_.find(vic3_trait); mapping_itr != admiral_trait_rules_.end())
+      {
+         const std::set<hoi4::Trait>& hoi4_traits = mapping_itr->second.traits;
+         admiral_mapping.traits.insert(hoi4_traits.begin(), hoi4_traits.end());
+         admiral_mapping.attack += mapping_itr->second.attack;
+         admiral_mapping.defense += mapping_itr->second.defense;
+         admiral_mapping.maneuvering += mapping_itr->second.maneuvering;
+         admiral_mapping.coordination += mapping_itr->second.coordination;
+      }
+   }
+
+   return admiral_mapping;
 }
 
 mappers::GeneralTraitMapping mappers::CharacterTraitMapper::GetGeneralMappedData(
     const std::set<vic3::Trait>& source_traits,
-    bool is_field_marshal) const
+    const bool is_field_marshal) const
 {
-   return GeneralTraitMapping();
+   GeneralTraitMapping general_mapping{
+       .attack = 1,
+       .defense = 1,
+       .planning = 1,
+       .logistics = 1,
+   };
+   for (const vic3::Trait& vic3_trait: source_traits)
+   {
+      if (const auto& mapping_itr = general_trait_rules_.find(vic3_trait); mapping_itr != general_trait_rules_.end())
+      {
+         const std::set<hoi4::Trait>& general_traits = mapping_itr->second.traits;
+         general_mapping.traits.insert(general_traits.begin(), general_traits.end());
+         if (is_field_marshal)
+         {
+            const std::set<hoi4::Trait>& marshal_traits = mapping_itr->second.field_marshal_traits;
+            general_mapping.field_marshal_traits.insert(marshal_traits.begin(), marshal_traits.end());
+         }
+         general_mapping.attack += mapping_itr->second.attack;
+         general_mapping.defense += mapping_itr->second.defense;
+         general_mapping.planning += mapping_itr->second.planning;
+         general_mapping.logistics += mapping_itr->second.logistics;
+      }
+   }
+
+   return general_mapping;
 }
 
 std::set<hoi4::Trait> mappers::CharacterTraitMapper::GetSpyMappedTraits(
     const std::set<vic3::Trait>& source_traits) const
 {
-   return std::set<hoi4::Trait>();
+   std::set<hoi4::Trait> hoi4_traits;
+   for (const vic3::Trait& vic3_trait: source_traits)
+   {
+      if (const auto& trait_itr = spy_trait_rules_.find(vic3_trait); trait_itr != spy_trait_rules_.end())
+      {
+         hoi4_traits.emplace(trait_itr->second);
+      }
+   }
+   return hoi4_traits;
 }

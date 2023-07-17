@@ -22,4 +22,7 @@ spy = {
 		persistent
 		bandit
 	}
+	operative_commando = {
+		brave
+	}
 }
