@@ -7,6 +7,12 @@
 		planning = 1
 		logistics = 1
 	}
+	senile = {
+		attack = -1
+		defense = -1
+		planning = -1
+		logistics = -1
+	}
 }
 navy = {
 	bandit = {
@@ -15,6 +21,12 @@ navy = {
 		defense = 1
 		maneuvering = 1
 		coordination = 1
+	}
+	senile = {
+		attack = -1
+		defense = -1
+		maneuvering = -1
+		coordination = -1
 	}
 }
 spy = {

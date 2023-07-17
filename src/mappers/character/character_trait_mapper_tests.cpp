@@ -121,4 +121,35 @@ TEST(MappersCharacterCharactertraitmapper, SpyDataIsMapped)
        testing::UnorderedElementsAre("operative_tough", "operative_commando"));
 }
 
+
+TEST(MappersCharacterCharactertraitmapper, AdmiralSkillsAreClampedToOne)
+{
+   const CharacterTraitMapper character_trait_mapper =
+       ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
+   EXPECT_EQ(character_trait_mapper.GetAdmiralMappedData({"senile"}),
+       hoi4::Admiral({
+           .traits = {},
+           .attack = 1,
+           .defense = 1,
+           .maneuvering = 1,
+           .coordination = 1,
+       }));
+}
+
+
+TEST(MappersCharacterCharactertraitmapper, GeneralSkillsAreClampedToOne)
+{
+   const CharacterTraitMapper character_trait_mapper =
+       ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
+   EXPECT_EQ(character_trait_mapper.GetGeneralMappedData({"senile"}, true),
+       hoi4::General({
+           .traits = {},
+           .is_field_marshal = true,
+           .attack = 1,
+           .defense = 1,
+           .planning = 1,
+           .logistics = 1,
+       }));
+}
+
 }  // namespace mappers

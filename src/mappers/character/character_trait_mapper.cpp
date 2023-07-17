@@ -23,6 +23,12 @@ hoi4::Admiral mappers::CharacterTraitMapper::GetAdmiralMappedData(const std::set
       }
    }
 
+   // HoI4 clamps skill to 1
+   admiral_mapping.attack = std::max(1, admiral_mapping.attack);
+   admiral_mapping.defense = std::max(1, admiral_mapping.defense);
+   admiral_mapping.maneuvering = std::max(1, admiral_mapping.maneuvering);
+   admiral_mapping.coordination = std::max(1, admiral_mapping.coordination);
+
    return admiral_mapping;
 }
 
@@ -53,6 +59,12 @@ hoi4::General mappers::CharacterTraitMapper::GetGeneralMappedData(const std::set
          general_mapping.logistics += mapping_itr->second.logistics;
       }
    }
+
+   // HoI4 clamps skill to 1
+   general_mapping.attack = std::max(1, general_mapping.attack);
+   general_mapping.defense = std::max(1, general_mapping.defense);
+   general_mapping.planning = std::max(1, general_mapping.planning);
+   general_mapping.logistics = std::max(1, general_mapping.logistics);
 
    return general_mapping;
 }
