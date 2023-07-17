@@ -3,6 +3,7 @@
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
+#include "src/mappers/character/character_trait_mapper_importer.h"
 #include "src/mappers/character/leader_type_mapper_importer.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 namespace hoi4
@@ -15,6 +16,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto leader_type_mapper = mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
+   const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
 
 
    // General
@@ -24,6 +26,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .last_name = "Mann",
        .roles = {"general"},
        .rank = 1,
+       .traits = {"charismatic"},
    });
    // Commander leader
    const auto character_two = vic3::Character({
@@ -32,6 +35,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .last_name = "Mann",
        .roles = {"politician", "general"},
        .rank = 1,
+       .traits = {"charismatic"},
    });
    // Field Marshal
    const auto character_three = vic3::Character({
@@ -40,6 +44,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .last_name = "Mann",
        .roles = {"general"},
        .rank = 2,
+       .traits = {"charismatic"},
    });
    // Filler General
    const auto character_four = vic3::Character({
@@ -48,6 +53,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .last_name = "Mann",
        .roles = {"general"},
        .rank = 2,
+       .traits = {"charismatic"},
    });
    // Female General
    const auto character_five = vic3::Character({
@@ -57,6 +63,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .is_female = true,
        .roles = {"general", "agitator"},
        .rank = 2,
+       .traits = {"charismatic"},
    });
    // Admiral
    const auto character_six = vic3::Character({
@@ -65,6 +72,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .last_name = "Mann",
        .roles = {"admiral"},
        .rank = 2,
+       .traits = {"bandit"},
    });
    // Spy
    const auto character_seven = vic3::Character({
@@ -72,6 +80,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .first_name = "Test",
        .last_name = "Mann",
        .roles = {"agitator"},
+       .traits = {"bandit"},
        .origin_country_id = 3,
    });
    // Advisor
@@ -88,6 +97,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .last_name = "Mann",
        .roles = {"general", "politician"},
        .rank = 2,
+       .traits = {"charismatic"},
    });
    // Admiral Advisor
    const auto character_ten = vic3::Character({
@@ -96,6 +106,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .last_name = "Mann",
        .roles = {"admiral", "politician"},
        .rank = 2,
+       .traits = {"bandit"},
    });
 
 
@@ -118,17 +129,43 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        vic3::Country({.head_of_state_id = 2, .character_ids = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}}),
        {},
        leader_type_mapper,
-       mappers::CharacterTraitMapper({}, {}, {}),
+       character_trait_mapper,
        country_mapper,
        characters,
        culture_queues);
 
-   const auto leader_data = std::optional<Leader>({.sub_ideology = "sub_ideology"});
-   const auto field_marshal_data = std::optional<General>({.is_field_marshal = true});
-   const auto general_data = std::optional<General>({.traits = {}});
-   const auto admiral_data = std::optional<Admiral>({.traits = {}});
-   const auto advisor_data = std::optional<Advisor>({.slot = "political_advisor"});
-   const auto spy_data = std::optional<Spy>({.nationalities = {"TAG", "TWO"}});
+   const auto leader_data = std::optional<Leader>({
+       .sub_ideology = "sub_ideology",
+   });
+   const auto field_marshal_data = std::optional<General>({
+       .traits = {"land_trait_0", "land_trait_1", "charismatic"},
+       .is_field_marshal = true,
+       .attack = 2,
+       .defense = 2,
+       .planning = 2,
+       .logistics = 2,
+   });
+   const auto general_data = std::optional<General>({
+       .traits = {"land_trait_0", "land_trait_1"},
+       .attack = 2,
+       .defense = 2,
+       .planning = 2,
+       .logistics = 2,
+   });
+   const auto admiral_data = std::optional<Admiral>({
+       .traits = {"naval_trait_0", "naval_trait_1"},
+       .attack = 2,
+       .defense = 2,
+       .maneuvering = 2,
+       .coordination = 2,
+   });
+   const auto advisor_data = std::optional<Advisor>({
+       .slot = "political_advisor",
+   });
+   const auto spy_data = std::optional<Spy>({
+       .traits = {"operative_tough"},
+       .nationalities = {"TAG", "TWO"},
+   });
    const auto expected_character_one = Character({
        .id = 1,
        .first_name = "Test",

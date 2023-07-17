@@ -85,7 +85,6 @@ TEST(MappersCharacterCharactertraitmapper, GeneralDataIsMapped)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
-   const auto& a = character_trait_mapper.GetGeneralMappedData({"charismatic"}, false);
    EXPECT_EQ(character_trait_mapper.GetGeneralMappedData({"charismatic"}, false),
        hoi4::General({
            .traits = {"land_trait_0", "land_trait_1"},

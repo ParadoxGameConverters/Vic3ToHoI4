@@ -1,7 +1,7 @@
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "hoi4_character_converter.h"
-
+#include "src/mappers/character/character_trait_mapper_importer.h"
 
 
 namespace hoi4
@@ -10,12 +10,21 @@ namespace hoi4
 TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConverted)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
+   const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
+
    const auto source_character = vic3::Character({
        .id = 1,
        .roles = {"admiral"},
        .rank = 2,
+       .traits = {"bandit"},
    });
-   const auto expected_data = std::optional<Admiral>({.traits = {}});
+   const auto expected_data = std::optional<Admiral>({
+       .traits = {"naval_trait_0", "naval_trait_1"},
+       .attack = 2,
+       .defense = 2,
+       .maneuvering = 2,
+       .coordination = 2,
+   });
    const auto character = ConvertCharacter(source_character,
        0,
        {.admiral_ids = {1}},
@@ -25,7 +34,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConverted)
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       character_trait_mapper,
        dummy_queue);
    EXPECT_EQ(character, Character({.id = 1, .admiral_data = expected_data}));
 }
@@ -34,12 +43,21 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConverted)
 TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConverted)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
+   const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
+
    const auto source_character = vic3::Character({
        .id = 1,
        .roles = {"general"},
        .rank = 2,
+       .traits = {"charismatic"},
    });
-   const auto expected_data = std::optional<General>({.traits = {}});
+   const auto expected_data = std::optional<General>({
+       .traits = {"land_trait_0", "land_trait_1"},
+       .attack = 2,
+       .defense = 2,
+       .planning = 2,
+       .logistics = 2,
+   });
    const auto character = ConvertCharacter(source_character,
        0,
        {.general_ids = {1}},
@@ -49,7 +67,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConverted)
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       character_trait_mapper,
        dummy_queue);
    EXPECT_EQ(character, Character({.id = 1, .general_data = expected_data}));
 }
@@ -58,12 +76,22 @@ TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConverted)
 TEST(Hoi4worldCharactersHoi4characterconverter, FieldMarshalsCanBeConverted)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
+   const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
+
    const auto source_character = vic3::Character({
        .id = 1,
        .roles = {"general"},
        .rank = 2,
+       .traits = {"charismatic"},
    });
-   const auto expected_data = std::optional<General>({.is_field_marshal = true});
+   const auto expected_data = std::optional<General>({
+       .traits = {"land_trait_0", "land_trait_1", "charismatic"},
+       .is_field_marshal = true,
+       .attack = 2,
+       .defense = 2,
+       .planning = 2,
+       .logistics = 2,
+   });
    const auto character = ConvertCharacter(source_character,
        0,
        {.field_marshal_ids = {1}},
@@ -73,7 +101,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, FieldMarshalsCanBeConverted)
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       character_trait_mapper,
        dummy_queue);
    EXPECT_EQ(character, Character({.id = 1, .general_data = expected_data}));
 }
@@ -128,12 +156,18 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeadersCanBeConverted)
 TEST(Hoi4worldCharactersHoi4characterconverter, SpiesCanBeConverted)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
+   const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
+
    const auto source_character = vic3::Character({
        .id = 1,
        .roles = {"agitator"},
+       .traits = {"bandit"},
        .origin_country_id = 2,
    });
-   const auto expected_data = std::optional<Spy>({.nationalities = {"TAG", "TWO"}});
+   const auto expected_data = std::optional<Spy>({
+       .traits = {"operative_tough"},
+       .nationalities = {"TAG", "TWO"},
+   });
    const auto character = ConvertCharacter(source_character,
        0,
        {.spy_ids = {1}},
@@ -143,7 +177,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, SpiesCanBeConverted)
        "",
        {},
        mappers::CountryMapper({{2, "TWO"}}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       character_trait_mapper,
        dummy_queue);
    EXPECT_EQ(character, Character({.id = 1, .spy_data = expected_data}));
 }
