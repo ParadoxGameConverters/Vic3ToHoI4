@@ -1,6 +1,6 @@
 ﻿# Maps character traits in Vic3 to character traits and skill in HoI4.
 # Each section maps a little differently.
-# ex_land = {
+# ex_army = {
 # 	vic3_trait = {
 # 		traits = { hoi4_trait_0 hoi4_trait_1} # General traits.
 # 		field_marshal_traits = { hoi4_trait_2 hoi4_trait_3} # Only applies if commander becomes a field marshal.
@@ -27,7 +27,7 @@
 # }
 
 
-land = { # Generals & Field Marshals
+army = { # Generals & Field Marshals
 	senile = {
 		traits = { old_guard }
 		attack = -1

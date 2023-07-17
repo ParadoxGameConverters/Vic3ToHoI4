@@ -22,18 +22,22 @@ namespace mappers
 struct GeneralTraitMapping
 {
    std::set<hoi4::Trait> traits;
-   attack = 0;
-   defense = 0;
-   planning = 0;
-   logistics = 0;
+   int attack = 0;
+   int defense = 0;
+   int planning = 0;
+   int logistics = 0;
+
+   std::partial_ordering operator<=>(const GeneralTraitMapping&) const = default;
 };
 struct AdmiralTraitMapping
 {
    std::set<hoi4::Trait> traits;
-   attack = 0;
-   defense = 0;
-   maneuvering = 0;
-   coordination = 0;
+   int attack = 0;
+   int defense = 0;
+   int maneuvering = 0;
+   int coordination = 0;
+
+   std::partial_ordering operator<=>(const AdmiralTraitMapping&) const = default;
 };
 using GeneralTraitMap = std::map<vic3::Trait, GeneralTraitMapping>;
 using AdmiralTraitMap = std::map<vic3::Trait, AdmiralTraitMapping>;
