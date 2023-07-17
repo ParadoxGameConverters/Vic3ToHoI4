@@ -438,6 +438,12 @@
     <ClCompile Include="src\vic3_world\pacts\pact_importer_tests.cpp">
       <Filter>src\vic3_world\pacts</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\character\character_trait_mapper_importer_tests.cpp">
+      <Filter>src\mappers\character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\character\character_trait_mapper_tests.cpp">
+      <Filter>src\mappers\character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
