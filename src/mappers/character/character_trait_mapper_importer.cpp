@@ -52,7 +52,8 @@ mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(std::string_vi
    });
    general_mapping_parser.registerKeyword("field_marshal_traits", [&general_trait_mapping](std::istream& input_stream) {
       std::ranges::copy(commonItems::getStrings(input_stream),
-          std::inserter(general_trait_mapping.traits, general_trait_mapping.traits.begin()));
+          std::inserter(general_trait_mapping.field_marshal_traits,
+              general_trait_mapping.field_marshal_traits.begin()));
    });
    general_mapping_parser.registerKeyword("attack", [&general_trait_mapping](std::istream& input_stream) {
       general_trait_mapping.attack = commonItems::getInt(input_stream);

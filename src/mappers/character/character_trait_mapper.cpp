@@ -2,10 +2,9 @@
 
 #include "external/fmt/include/fmt/format.h"
 
-mappers::AdmiralTraitMapping mappers::CharacterTraitMapper::GetAdmiralMappedData(
-    const std::set<vic3::Trait>& source_traits) const
+hoi4::Admiral mappers::CharacterTraitMapper::GetAdmiralMappedData(const std::set<vic3::Trait>& source_traits) const
 {
-   AdmiralTraitMapping admiral_mapping{
+   hoi4::Admiral admiral_mapping{
        .attack = 1,
        .defense = 1,
        .maneuvering = 1,
@@ -27,11 +26,11 @@ mappers::AdmiralTraitMapping mappers::CharacterTraitMapper::GetAdmiralMappedData
    return admiral_mapping;
 }
 
-mappers::GeneralTraitMapping mappers::CharacterTraitMapper::GetGeneralMappedData(
-    const std::set<vic3::Trait>& source_traits,
+hoi4::General mappers::CharacterTraitMapper::GetGeneralMappedData(const std::set<vic3::Trait>& source_traits,
     const bool is_field_marshal) const
 {
-   GeneralTraitMapping general_mapping{
+   hoi4::General general_mapping{
+       .is_field_marshal = is_field_marshal,
        .attack = 1,
        .defense = 1,
        .planning = 1,
@@ -46,7 +45,7 @@ mappers::GeneralTraitMapping mappers::CharacterTraitMapper::GetGeneralMappedData
          if (is_field_marshal)
          {
             const std::set<hoi4::Trait>& marshal_traits = mapping_itr->second.field_marshal_traits;
-            general_mapping.field_marshal_traits.insert(marshal_traits.begin(), marshal_traits.end());
+            general_mapping.traits.insert(marshal_traits.begin(), marshal_traits.end());
          }
          general_mapping.attack += mapping_itr->second.attack;
          general_mapping.defense += mapping_itr->second.defense;

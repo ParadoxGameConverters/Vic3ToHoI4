@@ -10,15 +10,15 @@
 namespace mappers
 {
 
-TEST(MappersCharacterCharactertraitmapperimporter, DISABLED_TBD)
+TEST(MappersCharacterCharactertraitmapperimporter, MappingsCanBeImported)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
 
    EXPECT_EQ(character_trait_mapper.GetAdmiralMappedData({"bandit"}),
-       AdmiralTraitMapping({"naval_trait_0", "naval_trait_1"}, 2, 2, 2, 2));
+       hoi4::Admiral({"naval_trait_0", "naval_trait_1"}, 2, 2, 2, 2));
    EXPECT_EQ(character_trait_mapper.GetGeneralMappedData({"charismatic"}, true),
-       GeneralTraitMapping({"land_trait_0", "land_trait_1"}, {"charismatic"}, 2, 2, 2, 2));
+       hoi4::General({"land_trait_0", "land_trait_1", "charismatic"}, true, 2, 2, 2, 2));
    EXPECT_THAT(character_trait_mapper.GetSpyMappedTraits({"bandit"}), testing::UnorderedElementsAre("operative_tough"));
    EXPECT_THAT(character_trait_mapper.GetSpyMappedTraits({"persistent"}),
        testing::UnorderedElementsAre("operative_tough"));
