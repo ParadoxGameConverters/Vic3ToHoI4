@@ -1,0 +1,21 @@
+﻿### List the advisors all countries should have at minimum.
+head_of_intelligence
+captain_of_industry
+fortification_engineer
+war_industrialist
+army_chief_offensive_1
+army_chief_defensive_1
+navy_chief_decisive_battle_2
+navy_anti_submarine_2
+air_close_air_support_2
+air_chief_all_weather_2
+army_artillery_1
+army_logistics_2
+navy_fleet_logistics_1
+air_air_combat_training_2
+military_theorist
+naval_theorist
+air_warfare_theorist
+communist_revolutionary
+democratic_reformer
+fascist_demagogue
