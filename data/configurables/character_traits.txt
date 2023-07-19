@@ -405,3 +405,34 @@ spy = {
 		expensive_tastes
 	}
 }
+political_advisors = {
+	ig_intelligensia = {
+		democratic_reformer
+	}
+}
+military_advisors = {
+	army = {
+		default = {
+			link = { slot = theorist ledger = army trait = millitary_theorist }
+			link = { slot = army_chief trait = ex }
+			link = { slot = ait_chief trait = ex }
+			link = { slot = high_command ledger = army trait = ex }
+		}
+		infantry_officer = {
+
+		}
+		armor_officer = {
+
+		}
+		engineer_officer = {
+
+		}
+	}
+	navy = {
+		default = {
+			link = { slot = theorist ledger = navy trait = ex }
+			link = { slot = navy_chief trait = ex }
+			link = { slot = high_command ledger = navy trait = ex }
+		}
+	}
+}
