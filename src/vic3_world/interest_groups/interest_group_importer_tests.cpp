@@ -15,7 +15,7 @@ TEST(Vic3WorldInterestGroupsInterestGroupImporter, DefaultsDefaultToDefault)
    std::stringstream input;
    const auto interest_group = interest_group_importer.ImportInterestGroup(0, input);
 
-   EXPECT_EQ(interest_group, InterestGroup("", 0, 0, 0.0F, false));
+   EXPECT_EQ(interest_group, InterestGroup("", 0, 0, 0.0F, false, {}));
 }
 
 
@@ -30,10 +30,17 @@ TEST(Vic3WorldInterestGroupsInterestGroupImporter, InterestGroupCanBeImported)
    input << "\tleader = 1\n";
    input << "\tclout = 0.25447\n";
    input << "\tin_government = yes\n";
+   input << "\tideologies = { ideology_liberal ideology_anti_clerical ideology_republican ideology_anti_slavery }\n";
    input << "}\n";
 
    const auto interest_group = interest_group_importer.ImportInterestGroup(0, input);
 
-   EXPECT_EQ(interest_group, InterestGroup("ig_example", 2, 1, 0.25447F, true));
+   EXPECT_EQ(interest_group,
+       InterestGroup("ig_example",
+           2,
+           1,
+           0.25447F,
+           true,
+           {"ideology_liberal", "ideology_anti_clerical", "ideology_republican", "ideology_anti_slavery"}));
 }
 }  // namespace vic3

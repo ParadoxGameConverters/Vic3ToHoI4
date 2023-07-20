@@ -41,8 +41,8 @@ TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsCanBeImported)
    const std::map<int, InterestGroup> igs = ImportInterestGroups(input);
 
    EXPECT_THAT(igs,
-       testing::UnorderedElementsAre(testing::Pair(0, InterestGroup("ig_example0", 2, 1, 0.25447F, true)),
-           testing::Pair(1, InterestGroup("ig_example1", 4, 3, 0.36117F, false))));
+       testing::UnorderedElementsAre(testing::Pair(0, InterestGroup("ig_example0", 2, 1, 0.25447F, true, {})),
+           testing::Pair(1, InterestGroup("ig_example1", 4, 3, 0.36117F, false, {}))));
 }
 
 

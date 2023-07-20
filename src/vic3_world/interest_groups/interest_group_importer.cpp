@@ -2,6 +2,7 @@
 
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
+#include <ranges>
 
 vic3::InterestGroupImporter::InterestGroupImporter()
 {
@@ -20,6 +21,9 @@ vic3::InterestGroupImporter::InterestGroupImporter()
    ig_parser_.registerKeyword("in_government", [this](std::istream& input_stream) {
       in_government_ = commonItems::getString(input_stream) == "yes";
    });
+   ig_parser_.registerKeyword("ideologies", [this](std::istream& input_stream) {
+      std::ranges::move(commonItems::getStrings(input_stream), std::inserter(ideologies_, ideologies_.end()));
+   });
    ig_parser_.IgnoreUnregisteredItems();
 }
 
@@ -31,8 +35,9 @@ vic3::InterestGroup vic3::InterestGroupImporter::ImportInterestGroup(const int i
    leader_ = 0;
    clout_ = 0.0F;
    in_government_ = false;
+   ideologies_.clear();
 
    ig_parser_.parseStream(input_stream);
 
-   return {type_, country_id_, leader_, clout_, in_government_};
+   return {type_, country_id_, leader_, clout_, in_government_, ideologies_};
 }
