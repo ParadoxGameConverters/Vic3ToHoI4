@@ -42,9 +42,17 @@ mappers::IdeologyPointsMap CalculateIdeologyPoints(const std::map<std::string, m
 
 
 
+mappers::IdeologyPointsMap mappers::IdeologyMapper::CalculateIdeologyPoints(
+    const std::set<std::string>& current_laws) const
+{
+   return ::CalculateIdeologyPoints(rules_, current_laws);
+}
+
+
+
 std::string mappers::IdeologyMapper::GetRulingIdeology(const std::set<std::string>& current_laws) const
 {
-   IdeologyPointsMap point_totals = CalculateIdeologyPoints(rules_, current_laws);
+   IdeologyPointsMap point_totals = ::CalculateIdeologyPoints(rules_, current_laws);
    if (point_totals.empty())
    {
       return "neutrality";
@@ -68,7 +76,7 @@ std::string mappers::IdeologyMapper::GetSubIdeology(const std::string& ideology,
       return "despotism";
    }
 
-   IdeologyPointsMap point_totals = CalculateIdeologyPoints(rules->second, current_laws);
+   IdeologyPointsMap point_totals = ::CalculateIdeologyPoints(rules->second, current_laws);
    if (point_totals.empty())
    {
       return "despotism";

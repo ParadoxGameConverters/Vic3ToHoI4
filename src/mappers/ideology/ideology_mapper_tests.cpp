@@ -9,6 +9,41 @@
 namespace mappers
 {
 
+TEST(MappersIdeologyIdeologyMapperTests, NoRulesMeansNoPoints)
+{
+    const IdeologyMapper ideology_mapper({}, {});
+    EXPECT_TRUE(ideology_mapper.CalculateIdeologyPoints({}).empty());
+}
+
+
+TEST(MappersIdeologyIdeologyMapperTests, IdeologyPointsAreCalculated)
+{
+    const IdeologyMapper ideology_mapper(
+        {
+            {"law_parliamentary_republic",
+                {
+                    {"democratic", 50},
+                    {"communism", 50},
+                    {"fascism", 25},
+                    {"neutrality", 25},
+                }},
+            {"law_landed_voting",
+                {
+                    {"democratic", 25},
+                    {"communism", -50},
+                    {"fascism", 0},
+                    {"neutrality", 0},
+                }},
+        },
+        {});
+
+    EXPECT_THAT(ideology_mapper.CalculateIdeologyPoints({"law_parliamentary_republic", "law_landed_voting"}),
+        testing::UnorderedElementsAre(testing::Pair("democratic", 75),
+            testing::Pair("communism", 0),
+            testing::Pair("fascism", 25),
+            testing::Pair("neutrality", 25)));
+}
+
 TEST(MappersIdeologyIdeologyMapperTests, NoRulesMeansNeutralityIdeology)
 {
    const IdeologyMapper ideology_mapper({}, {});
