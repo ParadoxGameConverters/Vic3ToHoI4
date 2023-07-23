@@ -58,6 +58,8 @@
     <ClCompile Include="external\commonItems\external\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest_main.cc" />
+    <ClCompile Include="src\vic3_world\ideologies\ideologies.cpp" />
+    <ClCompile Include="src\vic3_world\ideologies\ideologies_tests.cpp" />
     <ClCompile Include="src\vic3_world\pacts\pacts_importer_tests.cpp" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\characters\hoi4_characters_converter_tests.cpp" />
@@ -172,6 +174,10 @@
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\vic3_world\ideologies\ideologies.h" />
+    <ClInclude Include="src\vic3_world\ideologies\ideology.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
