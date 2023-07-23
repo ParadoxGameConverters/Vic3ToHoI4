@@ -409,6 +409,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    AssignIgsToCountries(countries, igs);
    AssignCharactersToCountries(characters, country_character_map, countries);
 
+   const vic3::Ideology lawgroup_governance_principles({{"law_monarchy", 2}});
+   const vic3::Ideologies vic3_ideologies({{"ideology_paternalistic", lawgroup_governance_principles}});
+
    return World({.countries = countries,
        .states = states,
        .state_regions = state_regions,
@@ -420,5 +423,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        .culture_definitions = culture_definitions,
        .characters = characters,
        .igs = igs,
+       .ideologies = vic3_ideologies,
        .playthrough_id = MungePlaythroughIdIntoInteger(playthrough_id)});
 }
