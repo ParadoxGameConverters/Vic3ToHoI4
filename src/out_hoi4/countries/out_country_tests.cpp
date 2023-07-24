@@ -285,7 +285,6 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    expected_one << "}\n";
    expected_one << "\n";
    expected_one << "set_popularities = {\n";
-   expected_one << "\tneutrality = 100\n";
    expected_one << "}\n";
    expected_one << "\n";
    expected_one << "add_ideas = {\n";
@@ -373,7 +372,6 @@ TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
    expected_one << "}\n";
    expected_one << "\n";
    expected_one << "set_popularities = {\n";
-   expected_one << "\tneutrality = 100\n";
    expected_one << "}\n";
    expected_one << "\n";
    expected_one << "add_ideas = {\n";

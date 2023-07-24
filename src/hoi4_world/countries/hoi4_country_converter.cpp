@@ -1,12 +1,15 @@
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 
 #include <numeric>
+#include <ranges>
 
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_character_converter.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
+#include "src/vic3_world/ideologies/ideologies.h"
+
 
 
 namespace
@@ -251,6 +254,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
     const std::map<int, vic3::Character>& vic3_characters,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const std::map<int, vic3::InterestGroup>& igs,
+    const std::map<int, vic3::InterestGroup>& interest_groups,
+    const vic3::Ideologies& vic3_ideologies,
     std::map<int, hoi4::Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
