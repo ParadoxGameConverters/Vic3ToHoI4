@@ -255,7 +255,6 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        source_world.GetCharacters(),
        source_world.GetInterestGroups(),
        culture_graphics_mapper,
-       source_world.GetInterestGroups(),
        source_world.GetIdeologies(),
        characters,
        culture_queues);

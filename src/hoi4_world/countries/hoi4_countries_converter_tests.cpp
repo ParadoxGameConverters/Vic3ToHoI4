@@ -73,7 +73,6 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        {},
        culture_graphics_mapper,
        {},
-       {},
        characters,
        culture_queues);
 
