@@ -548,6 +548,7 @@
     </ClInclude>
     <ClInclude Include="src\vic3_world\ideologies\ideology.h">
       <Filter>src\vic3_world\ideologies</Filter>
+	</ClCompile>
     <ClInclude Include="src\mappers\character\character_trait_mapper.h">
       <Filter>src\mappers\character</Filter>
     </ClInclude>
