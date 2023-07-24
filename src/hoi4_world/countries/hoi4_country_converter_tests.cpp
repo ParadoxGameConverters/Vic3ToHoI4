@@ -1673,6 +1673,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
        mappers::CultureGraphicsMapper{{}},
        {},
        mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
        {},
        {
            {1, vic3::InterestGroup("test_group_one", 1, 0, 50.F, false, {"test_ideology_one", "test_ideology_two"})},
@@ -1719,6 +1720,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
        mappers::CultureGraphicsMapper{{}},
        {},
        mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
        {},
        {},
        vic3::Ideologies(),
