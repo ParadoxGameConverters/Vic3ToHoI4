@@ -5,6 +5,7 @@
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/equipment_variants_importer.h"
+#include "src/mappers/character/character_trait_mapper_importer.h"
 #include "src/mappers/character/leader_type_mapper_importer.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/ideology/ideology_mapper.h"
@@ -75,6 +76,8 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
 
    const mappers::LeaderTypeMapper leader_type_mapper =
        mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
+   const mappers::CharacterTraitMapper character_trait_mapper =
+       mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
 
    for (const auto& [country_number, source_country]: source_countries)
    {
@@ -101,6 +104,7 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
           culture_graphics_mapper,
           source_characters,
           leader_type_mapper,
+          character_trait_mapper,
           igs,
           interest_groups,
           vic3_ideologies,

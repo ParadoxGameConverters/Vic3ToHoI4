@@ -7,6 +7,14 @@
 
 namespace
 {
+int GetGeneralSkill(const hoi4::General& general)
+{
+   return 1 + (general.attack + general.defense + general.logistics + general.planning - 4) / 3;
+}
+int GetAdmiralSkill(const hoi4::Admiral& admiral)
+{
+   return 1 + (admiral.attack + admiral.defense + admiral.maneuvering + admiral.coordination - 4) / 3;
+}
 const std::string& ValueOr(const std::string& str, const std::string& val)
 {
    return str.empty() ? val : str;
@@ -69,7 +77,7 @@ void OutputGeneral(std::ostream& out, const hoi4::General& general_data)
       out << "\t\tcorps_commander = {\n";
    }
    out << fmt::format("\t\t\ttraits = {}\n", OutputTraits(general_data.traits));
-   out << fmt::format("\t\t\tskill = {}\n", general_data.skill);
+   out << fmt::format("\t\t\tskill = {}\n", GetGeneralSkill(general_data));
    out << fmt::format("\t\t\tattack_skill = {}\n", general_data.attack);
    out << fmt::format("\t\t\tdefense_skill = {}\n", general_data.defense);
    out << fmt::format("\t\t\tplanning_skill = {}\n", general_data.planning);
@@ -80,7 +88,7 @@ void OutputAdmiral(std::ostream& out, const hoi4::Admiral& admiral_data)
 {
    out << "\t\tnavy_leader = {\n";
    out << fmt::format("\t\t\ttraits = {}\n", OutputTraits(admiral_data.traits));
-   out << fmt::format("\t\t\tskill = {}\n", admiral_data.skill);
+   out << fmt::format("\t\t\tskill = {}\n", GetAdmiralSkill(admiral_data));
    out << fmt::format("\t\t\tattack_skill = {}\n", admiral_data.attack);
    out << fmt::format("\t\t\tdefense_skill = {}\n", admiral_data.defense);
    out << fmt::format("\t\t\tmaneuvering_skill = {}\n", admiral_data.maneuvering);

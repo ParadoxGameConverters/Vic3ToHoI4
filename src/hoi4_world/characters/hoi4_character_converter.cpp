@@ -7,7 +7,8 @@
 namespace
 {
 std::optional<hoi4::Admiral> GeneratePossibleAdmiral(const vic3::Character& source_character,
-    const std::set<int>& admiral_ids)
+    const std::set<int>& admiral_ids,
+    const mappers::CharacterTraitMapper& character_trait_mapper)
 {
    if (!source_character.GetRoles().contains("admiral"))
    {
@@ -18,12 +19,13 @@ std::optional<hoi4::Admiral> GeneratePossibleAdmiral(const vic3::Character& sour
       return std::nullopt;
    }
 
-   // Trait/skill mapper later
-   return hoi4::Admiral();
+   // Trait/skill mapping
+   return character_trait_mapper.GetAdmiralMappedData(source_character.GetTraits());
 }
 std::optional<hoi4::General> GeneratePossibleGeneral(const vic3::Character& source_character,
     const std::set<int>& field_marshal_ids,
-    const std::set<int>& general_ids)
+    const std::set<int>& general_ids,
+    const mappers::CharacterTraitMapper& character_trait_mapper)
 {
    if (!source_character.GetRoles().contains("general"))
    {
@@ -34,8 +36,9 @@ std::optional<hoi4::General> GeneratePossibleGeneral(const vic3::Character& sour
       return std::nullopt;
    }
 
-   // Trait/skill mapper later
-   return hoi4::General({.is_field_marshal = field_marshal_ids.contains(source_character.GetId())});
+   // Trait/skill mapping
+   return character_trait_mapper.GetGeneralMappedData(source_character.GetTraits(),
+       field_marshal_ids.contains(source_character.GetId()));
 }
 std::optional<hoi4::Advisor> GeneratePossibleAdvisor(const vic3::Character& source_character,
     const std::optional<hoi4::Leader>& is_leader,
@@ -67,7 +70,8 @@ std::optional<hoi4::Leader> GeneratePossibleLeader(const vic3::Character& source
 std::optional<hoi4::Spy> GeneratePossibleSpy(const vic3::Character& source_character,
     const std::string& tag,
     const mappers::CountryMapper& country_mapper,
-    const std::set<int>& spy_ids)
+    const std::set<int>& spy_ids,
+    const mappers::CharacterTraitMapper& character_trait_mapper)
 {
    if (!source_character.GetRoles().contains("agitator"))
    {
@@ -78,18 +82,22 @@ std::optional<hoi4::Spy> GeneratePossibleSpy(const vic3::Character& source_chara
       return std::nullopt;
    }
 
-   std::set<std::string> nationalities;
-   nationalities.emplace(tag);
+   hoi4::Spy spy_data;
+
+   // Add exile nationalities
+   spy_data.nationalities.emplace(tag);
    if (const auto& possible_id = source_character.GetOriginCountryId())
    {
       if (const auto& possible_tag = country_mapper.GetHoiTag(*possible_id))
       {
-         nationalities.emplace(*possible_tag);
+         spy_data.nationalities.emplace(*possible_tag);
       }
    }
 
-   // Trait mapper later
-   return hoi4::Spy({.nationalities = nationalities});
+   // Trait mapping
+   spy_data.traits = character_trait_mapper.GetSpyMappedTraits(source_character.GetTraits());
+
+   return spy_data;
 }
 
 void EnqueueCharacterForPortrait(mappers::CultureQueue& culture_queue,
@@ -218,14 +226,19 @@ hoi4::Character hoi4::ConvertCharacter(const vic3::Character& source_character,
     const std::string& sub_ideology,
     const std::set<std::string>& laws,
     const mappers::CountryMapper& country_mapper,
+    const mappers::CharacterTraitMapper& character_trait_mapper,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
-   std::optional<Admiral> admiral_data = GeneratePossibleAdmiral(source_character, role_ids.admiral_ids);
-   std::optional<General> general_data =
-       GeneratePossibleGeneral(source_character, role_ids.field_marshal_ids, role_ids.general_ids);
+   std::optional<Admiral> admiral_data =
+       GeneratePossibleAdmiral(source_character, role_ids.admiral_ids, character_trait_mapper);
+   std::optional<General> general_data = GeneratePossibleGeneral(source_character,
+       role_ids.field_marshal_ids,
+       role_ids.general_ids,
+       character_trait_mapper);
    std::optional<Leader> leader_data = GeneratePossibleLeader(source_character, sub_ideology, leader_id);
    std::optional<Advisor> advisor_data = GeneratePossibleAdvisor(source_character, leader_data, role_ids.advisor_ids);
-   std::optional<Spy> spy_data = GeneratePossibleSpy(source_character, tag, country_mapper, role_ids.spy_ids);
+   std::optional<Spy> spy_data =
+       GeneratePossibleSpy(source_character, tag, country_mapper, role_ids.spy_ids, character_trait_mapper);
 
    mappers::CultureQueue& culture_queue = PrepareCultureQueue(source_character.GetCulture(), culture_queues);
    EnqueueCharacterForPortrait(culture_queue,

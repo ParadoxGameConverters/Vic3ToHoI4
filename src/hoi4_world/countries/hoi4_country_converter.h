@@ -9,6 +9,7 @@
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/states/hoi4_state.h"
+#include "src/mappers/character/character_trait_mapper.h"
 #include "src/mappers/character/culture_queue.h"
 #include "src/mappers/character/leader_type_mapper.h"
 #include "src/mappers/country/country_mapper.h"
@@ -41,6 +42,7 @@ std::optional<Country> ConvertCountry(const vic3::Country& source_country,
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     const std::map<int, vic3::Character>& vic3_characters,
     const mappers::LeaderTypeMapper& leader_type_mapper,
+    const mappers::CharacterTraitMapper& character_trait_mapper,
     const std::map<int, vic3::InterestGroup>& igs,
     const std::map<int, vic3::InterestGroup>& interest_groups,
     const vic3::Ideologies& vic3_ideologies,
