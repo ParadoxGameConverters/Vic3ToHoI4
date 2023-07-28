@@ -16,7 +16,7 @@ namespace hoi4{
 namespace mappers
 {
 
-using AdvisorMap = std::map<hoi4::Slot, hoi4::Trait>;
+using AdvisorMap = std::map<hoi4::Trait, hoi4::Slot>;
 
 class GenericAdvisorMapper
 {
@@ -27,7 +27,7 @@ class GenericAdvisorMapper
    {
    }
 
-   [[nodiscard]] hoi4::Advisor GetGenericAdvisors() const;
+   [[nodiscard]] AdvisorMap SelectGenericAdvisors(const std::vector<int>& character_ids,  const std::map<int, hoi4::Character>& characters) const;
 
   private:
    AdvisorMap advisor_map_;

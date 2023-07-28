@@ -1,0 +1,7 @@
+political_advisor = {
+	communist_revolutionary
+	democratic_reformer
+}
+army_chief = {
+	army_chief_defensive_1
+}
