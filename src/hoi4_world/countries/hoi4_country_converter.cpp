@@ -12,7 +12,7 @@
 namespace
 {
 
-int FloorMod(const int lhs, const int rhs)
+constexpr int FloorMod(const int lhs, const int rhs)
 {
    return (lhs % rhs + rhs) % rhs;
 }

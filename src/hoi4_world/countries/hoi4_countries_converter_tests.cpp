@@ -40,19 +40,34 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
    const auto& culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
 
 
-   const auto countries = ConvertCountries(
-       {
-           {1, source_country_one},
-           {2, source_country_two},
-       },
-       {
-           {1, {"source_technology_one"}},
-           {2, {"source_technology_two"}},
-       },
-       {
-           {"culture_0", vic3::CultureDefinition({"culture_0"}, {}, {}, {})},
-           {"culture_1", vic3::CultureDefinition({"culture_1"}, {}, {}, {})},
-       },
+   vic3::WorldOptions options = {
+       .countries =
+            {
+                {1, source_country_one},
+                {2, source_country_two},
+            },
+       .acquired_technologies =
+           {
+               {1, {"source_technology_one"}},
+               {2, {"source_technology_two"}},
+           },
+       .culture_definitions =
+           {
+               {"culture_0", vic3::CultureDefinition({"culture_0"}, {}, {}, {})},
+               {"culture_1", vic3::CultureDefinition({"culture_1"}, {}, {}, {})},
+           },
+       .characters = 
+           {
+               {1, vic3::Character({.id = 1, .roles = {"politician"}})},
+               {2, vic3::Character({.id = 2, .roles = {"general"}})},
+               {3, vic3::Character({.id = 3, .roles = {"general"}})},
+               {4, vic3::Character({.id = 4, .roles = {"agitator"}})},
+           }
+   };
+
+   const vic3::World v3World = vic3::World(options);
+
+   const auto countries = ConvertCountries(v3World,
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {
@@ -64,13 +79,6 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
            {{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},
            {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}},
        },
-       {
-           {1, vic3::Character({.id = 1, .roles = {"politician"}})},
-           {2, vic3::Character({.id = 2, .roles = {"general"}})},
-           {3, vic3::Character({.id = 3, .roles = {"general"}})},
-           {4, vic3::Character({.id = 4, .roles = {"agitator"}})},
-       },
-       {},
        characters,
        culture_queues,
        culture_graphics_mapper);
