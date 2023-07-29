@@ -555,6 +555,9 @@
     <ClInclude Include="src\mappers\character\character_trait_mapper_importer.h">
       <Filter>src\mappers\character</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\ideologies\ideology_importer.h">
+      <Filter>src\vic3_world\ideologies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -838,6 +841,9 @@
     </ClCompile>
     <ClCompile Include="src\mappers\character\character_trait_mapper_importer.cpp">
       <Filter>src\mappers\character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\ideologies\ideology_importer.cpp">
+      <Filter>src\vic3_world\ideologies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
