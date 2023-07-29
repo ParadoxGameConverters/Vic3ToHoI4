@@ -305,13 +305,13 @@ std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, 
       const float normalization_factor = 100.F / total_support;
       for (const auto& [ideology, raw_value]: adjusted_ideology_support)
       {
-         int value = static_cast<int>(raw_value * normalization_factor);
+         int value = static_cast<int>(std::round(raw_value * normalization_factor));
          ideology_support.emplace(ideology, value);
       }
    }
    else
    {
-      const int normalization_factor = static_cast<int>(100.F / static_cast<float>(adjusted_ideology_support.size()));
+      const int normalization_factor = static_cast<int>(std::round(100.F / static_cast<float>(adjusted_ideology_support.size())));
       for (const auto& ideology: adjusted_ideology_support | std::views::keys)
       {
          ideology_support.emplace(ideology, normalization_factor);
