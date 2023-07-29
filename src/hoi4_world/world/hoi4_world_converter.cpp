@@ -254,9 +254,10 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        tech_mappings,
        source_world.GetCharacters(),
        source_world.GetInterestGroups(),
+       culture_graphics_mapper,
+       source_world.GetIdeologies(),
        characters,
-       culture_queues,
-       culture_graphics_mapper);
+       culture_queues);
 
    Log(LogLevel::Info) << "\tAssigning portraits to characters";
    Log(LogLevel::Progress) << "56%";

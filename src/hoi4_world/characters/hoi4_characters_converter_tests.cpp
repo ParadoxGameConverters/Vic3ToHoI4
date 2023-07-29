@@ -440,9 +440,9 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInCoaliti
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto leader_type_mapper = mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
    const std::map<int, vic3::InterestGroup> igs = {
-       {1, vic3::InterestGroup{"", 1, 4, 25.0F, true}},
-       {2, vic3::InterestGroup{"", 1, 2, 35.0F, true}},
-       {3, vic3::InterestGroup{"", 1, 3, 40.0F, false}},
+       {1, vic3::InterestGroup{"", 1, 4, 25.0F, true, {}}},
+       {2, vic3::InterestGroup{"", 1, 2, 35.0F, true, {}}},
+       {3, vic3::InterestGroup{"", 1, 3, 40.0F, false, {}}},
    };
    const auto head_of_state = vic3::Character({
        .id = 1,
@@ -510,9 +510,9 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderP
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto leader_type_mapper = mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
    const std::map<int, vic3::InterestGroup> igs = {
-       {1, vic3::InterestGroup{"", 1, 4, 35.0F, true}},
-       {2, vic3::InterestGroup{"", 1, 2, 25.0F, true}},
-       {3, vic3::InterestGroup{"", 1, 3, 40.0F, false}},
+       {1, vic3::InterestGroup{"", 1, 4, 35.0F, true, {}}},
+       {2, vic3::InterestGroup{"", 1, 2, 25.0F, true, {}}},
+       {3, vic3::InterestGroup{"", 1, 3, 40.0F, false, {}}},
    };
    const auto head_of_state = vic3::Character({
        .id = 1,

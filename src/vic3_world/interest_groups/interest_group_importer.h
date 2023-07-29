@@ -27,6 +27,7 @@ class InterestGroupImporter
    int leader_ = 0;
    float clout_ = 0;
    bool in_government_ = false;
+   std::set<std::string> ideologies_;
 };
 
 }  // namespace vic3

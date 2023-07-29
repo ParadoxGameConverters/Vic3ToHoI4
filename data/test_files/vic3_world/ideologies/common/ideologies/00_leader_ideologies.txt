@@ -1,0 +1,9 @@
+ideology_traditionalist = {
+	lawgroup_rights_of_women = {
+		law_no_womens_rights = approve
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = approve
+	}
+}

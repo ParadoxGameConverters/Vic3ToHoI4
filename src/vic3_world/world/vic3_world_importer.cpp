@@ -27,6 +27,7 @@
 #include "src/vic3_world/cultures/culture_definitions_importer.h"
 #include "src/vic3_world/cultures/cultures_importer.h"
 #include "src/vic3_world/elections/elections_importer.h"
+#include "src/vic3_world/ideologies/ideologies_importer.h"
 #include "src/vic3_world/interest_groups/interest_groups_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
 #include "src/vic3_world/pacts/pacts_importer.h"
@@ -409,6 +410,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    AssignIgsToCountries(countries, igs);
    AssignCharactersToCountries(characters, country_character_map, countries);
 
+   vic3::IdeologiesImporter ideologies_importer;
+   const Ideologies ideologies = ideologies_importer.ImportIdeologies(mod_filesystem);
+
    return World({.countries = countries,
        .states = states,
        .state_regions = state_regions,
@@ -420,5 +424,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        .culture_definitions = culture_definitions,
        .characters = characters,
        .igs = igs,
+       .ideologies = ideologies,
        .playthrough_id = MungePlaythroughIdIntoInteger(playthrough_id)});
 }

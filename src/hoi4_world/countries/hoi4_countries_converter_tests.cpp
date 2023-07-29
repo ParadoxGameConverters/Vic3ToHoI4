@@ -71,9 +71,10 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
            {4, vic3::Character({.id = 4, .roles = {"agitator"}})},
        },
        {},
+       culture_graphics_mapper,
+       {},
        characters,
-       culture_queues,
-       culture_graphics_mapper);
+       culture_queues);
 
    const Technologies expected_techs_one{
        std::map<std::optional<std::string>, std::set<std::string>>{
@@ -128,6 +129,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .color = commonItems::Color{std::array{1, 2, 3}},
                                     .capital_state = 10,
                                     .ideology = "neutrality",
+                                    .ideology_support = {{"neutrality", 100}},
                                     .technologies = expected_techs_one,
                                     .legacy_ship_variants = expected_legacy_ship_variants_one,
                                     .ship_variants = expected_ship_variants_one,
@@ -143,6 +145,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .color = commonItems::Color{std::array{2, 4, 6}},
                    .capital_state = 20,
                    .ideology = "democratic",
+                   .ideology_support = {{"neutrality", 100}},
                    .technologies = expected_techs_two,
                    .legacy_ship_variants = expected_legacy_ship_variants_two,
                    .ship_variants = expected_ship_variants_two,
