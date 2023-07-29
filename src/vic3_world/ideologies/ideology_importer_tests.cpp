@@ -9,7 +9,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldIdeologiesIdeologiesimporterTests, DefaultsAreSet)
+TEST(Vic3worldIdeologiesIdeologyimporterTests, DefaultsAreSet)
 {
    std::stringstream input;
 
@@ -19,7 +19,7 @@ TEST(Vic3worldIdeologiesIdeologiesimporterTests, DefaultsAreSet)
 }
 
 
-TEST(Vic3worldIdeologiesIdeologiesimporterTests, ApprovalsAreImported)
+TEST(Vic3worldIdeologiesIdeologyimporterTests, ApprovalsAreImported)
 {
    std::stringstream input;
    input << "= {\n";
