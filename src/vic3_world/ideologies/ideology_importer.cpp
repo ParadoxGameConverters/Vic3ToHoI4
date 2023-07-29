@@ -37,6 +37,7 @@ vic3::IdeologyImporter::IdeologyImporter()
 
    ideology_parser_.registerKeyword("icon", commonItems::ignoreItem);
    ideology_parser_.registerKeyword("show_in_list", commonItems::ignoreItem);
+   ideology_parser_.registerKeyword("priority", commonItems::ignoreItem);
    ideology_parser_.registerKeyword("character_ideology", commonItems::ignoreItem);
    ideology_parser_.registerKeyword("possible", commonItems::ignoreItem);
    ideology_parser_.registerKeyword("leader_weight", commonItems::ignoreItem);
