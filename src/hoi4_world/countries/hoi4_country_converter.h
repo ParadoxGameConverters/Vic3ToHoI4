@@ -27,7 +27,6 @@ namespace hoi4
 {
 
 std::optional<Country> ConvertCountry(const vic3::Country& source_country,
-    const std::set<std::string>& source_technologies,
     const std::map<std::string, vic3::CultureDefinition>& source_cultures,
     const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,

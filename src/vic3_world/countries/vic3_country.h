@@ -71,6 +71,32 @@ class Country
    void AddInterestGroupId(int ig_id) { ig_ids_.push_back(ig_id); }
    void AddPuppet(int puppet) { puppets_.insert(puppet); }
 
+   /// <summary>
+   /// Set the world that this country is a part of. Used for stats stored in global lists (eg, country rank). Set when inserting this country into a world.
+   /// </summary>
+   /// <param name="world">world</param>
+   void SetWorld(const World& world) { world_.emplace(world); }
+   std::set<std::string> GetAcquiredTechnologies()
+   {
+      if (!world_.has_value())
+      {
+         throw std::exception(
+             "GetAcquiredTechnologies called before country was inserted into a world. This is a code logic error and "
+             "should be fixed.");
+      }
+      
+      const auto allTechs = world_->GetAcquiredTechnologies();
+      const auto maybeVal = allTechs.find(this->GetNumber());
+      if (maybeVal != allTechs.end())
+      {
+         return *maybeVal;
+      }
+      else
+      {
+         return {};
+      }
+   }
+
    bool operator==(const Country&) const = default;
 
   private:
@@ -87,6 +113,12 @@ class Country
    std::vector<int> character_ids_;
    std::vector<int> ig_ids_;
    std::set<int> puppets_;
+
+   /// <summary>
+   /// world pointer for country stats that are kept in global lists (eg, ranking).
+   /// Set when country is added to a world.
+   /// </summary>
+   std::optional<World&> world_;
 };
 
 }  // namespace vic3
