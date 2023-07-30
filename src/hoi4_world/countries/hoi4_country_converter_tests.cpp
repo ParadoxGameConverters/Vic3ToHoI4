@@ -5,6 +5,7 @@
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/vic3_world/countries/vic3_country.h"
+#include <src/vic3_world/world/vic3_world.h>
 
 
 
@@ -14,13 +15,15 @@ namespace hoi4
 TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
 {
    const mappers::CountryMapper country_mapper({{1, "T00"}, {2, "T01"}});
-   const vic3::Country source_country_one({.number = 1, .color = commonItems::Color{std::array{1, 2, 3}}});
-   const vic3::Country source_country_two({.number = 2, .color = commonItems::Color{std::array{2, 4, 6}}});
+   const vic3::World world(vic3::WorldOptions{});
+   vic3::Country source_country_one({.number = 1, .color = commonItems::Color{std::array{1, 2, 3}}});
+   vic3::Country source_country_two({.number = 2, .color = commonItems::Color{std::array{2, 4, 6}}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
 
+   source_country_one.SetWorld(world);
+   source_country_two.SetWorld(world);
    const auto country_one = ConvertCountry(source_country_one,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -40,7 +43,6 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
        dummy_characters,
        dummy_culture_queues);
    const auto country_two = ConvertCountry(source_country_two,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -74,12 +76,12 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
    const mappers::CountryMapper country_mapper(std::map<int, std::string>{
        {1, "T00"},
    });
-   const vic3::Country source_country_one({});
+   vic3::World world(vic3::WorldOptions{});
+   vic3::Country source_country_one({});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
-
+   source_country_one.SetWorld(world);
    const auto country_one = ConvertCountry(source_country_one,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -107,12 +109,13 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
 TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
 {
    const mappers::CountryMapper country_mapper;
-   const vic3::Country source_country_one({.number = 1});
+   vic3::Country source_country_one({.number = 1});
+   const vic3::World world(vic3::WorldOptions{});
+   source_country_one.SetWorld(world);
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
 
    const auto country_one = ConvertCountry(source_country_one,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -139,15 +142,17 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
 TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
-   const vic3::Country source_country_one({.number = 1, .capital_state = 2});
-   const vic3::Country source_country_two({.number = 2, .capital_state = 3});
+   vic3::World world(vic3::WorldOptions{});
+   vic3::Country source_country_one({.number = 1, .capital_state = 2});
+   vic3::Country source_country_two({.number = 2, .capital_state = 3});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   source_country_one.SetWorld(world);
+   source_country_two.SetWorld(world);
 
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}, {3, 9}};
 
    const auto country_one = ConvertCountry(source_country_one,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -167,7 +172,6 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
        dummy_characters,
        dummy_culture_queues);
    const auto country_two = ConvertCountry(source_country_two,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -207,7 +211,6 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
-       {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        vic3_state_ids_to_hoi4_state_ids,
@@ -240,7 +243,6 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStat
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
-       {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
@@ -272,7 +274,6 @@ TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNo
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
 
    const auto country_one = ConvertCountry(source_country_one,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -310,7 +311,6 @@ TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVps
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
-       {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
@@ -346,7 +346,6 @@ TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfInd
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
 
    const auto country_one = ConvertCountry(source_country_one,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -384,7 +383,6 @@ TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersA
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
-       {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
@@ -421,7 +419,6 @@ TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapi
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
-       {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
@@ -453,7 +450,6 @@ TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
 
    const auto country_one = ConvertCountry(source_country_one,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -487,7 +483,6 @@ TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
-       {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
@@ -519,7 +514,6 @@ TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
 
    const auto country_one = ConvertCountry(source_country_one,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -553,7 +547,6 @@ TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)
 
    const auto country_one = ConvertCountry(source_country_one,
        {},
-       {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        {},
@@ -585,7 +578,6 @@ TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
 
    const auto country_one = ConvertCountry(source_country_one,
-       {},
        {},
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,

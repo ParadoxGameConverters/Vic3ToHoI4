@@ -235,7 +235,6 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
 
 
 std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_country,
-    const std::set<std::string>& source_technologies,
     const std::map<std::string, vic3::CultureDefinition>& source_cultures,
     const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,
@@ -266,7 +265,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
    const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
    const std::string sub_ideology = ideology_mapper.GetSubIdeology(ideology, source_country.GetActiveLaws());
    const date last_election = ConvertElection(source_country.GetLastElection());
-   const Technologies technologies = ConvertTechnologies(source_technologies, tech_mappings);
+   const Technologies technologies = ConvertTechnologies(source_country.GetAcquiredTechnologies(), tech_mappings);
    const std::vector<EquipmentVariant>& active_legacy_ship_variants =
        DetermineActiveVariants(all_legacy_ship_variants, technologies);
    const std::vector<EquipmentVariant>& active_ship_variants = DetermineActiveVariants(all_ship_variants, technologies);
