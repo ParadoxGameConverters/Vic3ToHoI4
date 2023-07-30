@@ -42,10 +42,10 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 
    vic3::WorldOptions options = {
        .countries =
-            {
-                {1, source_country_one},
-                {2, source_country_two},
-            },
+           {
+               {1, source_country_one},
+               {2, source_country_two},
+           },
        .acquired_technologies =
            {
                {1, {"source_technology_one"}},
@@ -56,13 +56,13 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                {"culture_0", vic3::CultureDefinition({"culture_0"}, {}, {}, {})},
                {"culture_1", vic3::CultureDefinition({"culture_1"}, {}, {}, {})},
            },
-       .characters = 
+       .characters =
            {
                {1, vic3::Character({.id = 1, .roles = {"politician"}})},
                {2, vic3::Character({.id = 2, .roles = {"general"}})},
                {3, vic3::Character({.id = 3, .roles = {"general"}})},
                {4, vic3::Character({.id = 4, .roles = {"agitator"}})},
-           }
+           },
    };
 
    const vic3::World v3World = vic3::World(options);
