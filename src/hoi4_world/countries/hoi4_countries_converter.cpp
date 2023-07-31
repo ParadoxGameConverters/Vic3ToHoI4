@@ -48,18 +48,13 @@ void LogIdeologies(const std::map<std::string, hoi4::Country>& countries)
 
 
 
-std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, vic3::Country>& source_countries,
-    const std::map<int, std::set<std::string>>& source_technologies,
-    const std::map<std::string, vic3::CultureDefinition>& source_cultures,
+std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const vic3::World source_world,
     const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
     const std::vector<State>& states,
     const std::vector<mappers::TechMapping>& tech_mappings,
-    const std::map<int, vic3::Character>& source_characters,
-    const std::map<int, vic3::InterestGroup>& interest_groups,
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
-    const vic3::Ideologies& vic3_ideologies,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
@@ -78,9 +73,10 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
    const mappers::CharacterTraitMapper character_trait_mapper =
        mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
 
-   for (const auto& [country_number, source_country]: source_countries)
+   for (const auto& [country_number, source_country]: source_world.GetCountries())
    {
       std::set<std::string> source_country_technologies;
+      const auto source_technologies = source_world.GetAcquiredTechnologies();
       if (const auto& source_technologies_itr = source_technologies.find(country_number);
           source_technologies_itr != source_technologies.end())
       {
@@ -89,7 +85,7 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
 
       std::optional<Country> new_country = ConvertCountry(source_country,
           source_country_technologies,
-          source_cultures,
+          source_world.GetCultureDefinitions(),
           source_localizations,
           country_mapper,
           vic3_state_ids_to_hoi4_state_ids,
@@ -101,11 +97,11 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const std::map<int, 
           all_plane_variants,
           all_tank_variants,
           culture_graphics_mapper,
-          source_characters,
+          source_world.GetCharacters(),
           leader_type_mapper,
           character_trait_mapper,
-          interest_groups,
-          vic3_ideologies,
+          source_world.GetInterestGroups(),
+          source_world.GetIdeologies(),
           characters,
           culture_queues);
       if (new_country.has_value())

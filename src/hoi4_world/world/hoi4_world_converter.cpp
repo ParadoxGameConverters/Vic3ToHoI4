@@ -244,18 +244,13 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const std::map<int, vic3::Country>& source_countries = source_world.GetCountries();
-   countries = ConvertCountries(source_countries,
-       source_world.GetAcquiredTechnologies(),
-       source_world.GetCultureDefinitions(),
+   countries = ConvertCountries(source_world,
        source_world.GetLocalizations(),
        country_mapper,
        states.vic3_state_ids_to_hoi4_state_ids,
        states.states,
        tech_mappings,
-       source_world.GetCharacters(),
-       source_world.GetInterestGroups(),
        culture_graphics_mapper,
-       source_world.GetIdeologies(),
        characters,
        culture_queues);
 
