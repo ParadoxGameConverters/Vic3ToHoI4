@@ -55,6 +55,7 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
     const std::vector<State>& states,
     const std::vector<mappers::TechMapping>& tech_mappings,
+    const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
@@ -101,6 +102,7 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(
           leader_type_mapper,
           character_trait_mapper,
           source_world.GetInterestGroups(),
+          source_world.GetIdeologies(),
           characters,
           culture_queues);
       if (new_country.has_value())

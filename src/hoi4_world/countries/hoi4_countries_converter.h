@@ -24,6 +24,7 @@ std::map<std::string, Country> ConvertCountries(
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
     const std::vector<State>& states,
     const std::vector<mappers::TechMapping>& tech_mappings,
+    const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues);
 

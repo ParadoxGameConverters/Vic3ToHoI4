@@ -79,6 +79,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
            {{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},
            {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}},
        },
+       culture_graphics_mapper,
        characters,
        culture_queues);
 
