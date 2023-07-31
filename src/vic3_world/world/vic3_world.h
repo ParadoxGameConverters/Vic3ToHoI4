@@ -61,10 +61,6 @@ class World
        ideologies_(std::move(world_options.ideologies)),
        playthrough_id_(world_options.playthrough_id)
    {
-      for (auto& countryEntry : countries_)
-      {
-         countryEntry.second.SetWorld(*this);
-      }
    }
 
    [[nodiscard]] const std::map<int, Country>& GetCountries() const { return countries_; }

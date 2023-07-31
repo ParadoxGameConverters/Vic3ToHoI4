@@ -1245,7 +1245,6 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsLogWarning)
    std::cout.rdbuf(log.rdbuf());
 
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
-   const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
@@ -1282,7 +1281,6 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsLogWarning)
 TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
-   const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;

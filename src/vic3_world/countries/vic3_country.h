@@ -8,9 +8,10 @@
 #include "external/commonItems/Color.h"
 #include "external/commonItems/Date.h"
 
-
 namespace vic3
 {
+    //need to extra-forward-declare this because World uses Country, and Country uses World
+class World;
 
 struct CountryOptions
 {
@@ -71,19 +72,7 @@ class Country
    void AddInterestGroupId(int ig_id) { ig_ids_.push_back(ig_id); }
    void AddPuppet(int puppet) { puppets_.insert(puppet); }
 
-   std::set<std::string> GetAcquiredTechnologies(const World& world) const
-   {
-      const auto allTechs = world.GetAcquiredTechnologies();
-      const auto maybeVal = allTechs.find(this->GetNumber());
-      if (maybeVal != allTechs.end())
-      {
-         return maybeVal->second;
-      }
-      else
-      {
-         return {};
-      }
-   }
+   std::set<std::string> GetAcquiredTechnologies(const vic3::World& world) const;
 
    bool operator==(const Country&) const = default;
 

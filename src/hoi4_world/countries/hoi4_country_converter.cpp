@@ -9,8 +9,7 @@
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
 #include "src/vic3_world/ideologies/ideologies.h"
-#include <src/vic3_world/world/vic3_world.h>
-#include <src/hoi4_world/technology/technologies_converter.cpp>
+#include "src/vic3_world/world/vic3_world.h"
 
 
 
@@ -369,7 +368,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
    const std::string sub_ideology = ideology_mapper.GetSubIdeology(ideology, source_country.GetActiveLaws());
    const date last_election = ConvertElection(source_country.GetLastElection());
-   const hoi4::Technologies technologies = ConvertTechnologies(source_country.GetAcquiredTechnologies(source_world), tech_mappings);
+   const hoi4::Technologies technologies =
+       ConvertTechnologies(source_country.GetAcquiredTechnologies(source_world), tech_mappings);
    const std::vector<EquipmentVariant>& active_legacy_ship_variants =
        DetermineActiveVariants(all_legacy_ship_variants, technologies);
    const std::vector<EquipmentVariant>& active_ship_variants = DetermineActiveVariants(all_ship_variants, technologies);
@@ -395,7 +395,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        characters,
        culture_queues);
    mappers::GraphicsBlock graphics_block =
-       culture_graphics_mapper.MatchPrimaryCulturesToGraphics(source_country.GetPrimaryCultures(), source_world.GetCultureDefinitions());
+       culture_graphics_mapper.MatchPrimaryCulturesToGraphics(source_country.GetPrimaryCultures(),
+           source_world.GetCultureDefinitions());
    NameList name_list = ConvertNameList(source_country.GetPrimaryCultures(),
        source_world.GetCultureDefinitions(),
        source_localizations,
