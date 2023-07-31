@@ -3,6 +3,8 @@
 
 
 
+#include <src/vic3_world/world/vic3_world.h>
+
 #include <map>
 #include <vector>
 
@@ -10,15 +12,13 @@
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/vic3_world/countries/vic3_country.h"
-#include <src/vic3_world/world/vic3_world.h>
 
 
 
 namespace hoi4
 {
 
-std::map<std::string, Country> ConvertCountries(
-    const vic3::World source_world,
+std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
     const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
