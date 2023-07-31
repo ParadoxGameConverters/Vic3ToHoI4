@@ -1,5 +1,3 @@
-#include <src/vic3_world/world/vic3_world.h>
-
 #include <sstream>
 
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
@@ -7,6 +5,7 @@
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/vic3_world/countries/vic3_country.h"
+#include "src/vic3_world/world/vic3_world.h"
 
 
 
@@ -1383,12 +1382,13 @@ TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
 
-   const vic3::World source_world(
-       vic3::WorldOptions({.characters = {
-                               {1, vic3::Character({.id = 1})},
-                               {2, vic3::Character({.id = 2, .roles = {"agitator"}})},
-                               {3, vic3::Character({.id = 3, .roles = {"agitator", "general"}})},
-                           }}));
+   const std::map<int, vic3::Character> characters = {
+       {1, vic3::Character({.id = 1})},
+       {2, vic3::Character({.id = 2, .roles = {"agitator"}})},
+       {3, vic3::Character({.id = 3, .roles = {"agitator", "general"}})},
+   };
+
+   const vic3::World source_world(vic3::WorldOptions({.characters = characters}));
 
    const std::optional<Country> country_one = ConvertCountry(source_world,
        source_country_one,
@@ -1422,13 +1422,13 @@ TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
 
-   const vic3::World source_world(vic3::WorldOptions(
-       {.characters = {
-            {1, vic3::Character({.id = 1, .first_name = "Test", .last_name = "Mann"})},
-            {2, vic3::Character({.id = 2, .is_female = true, .roles = {"agitator"}, .origin_country_id = 2})},
-            {3, vic3::Character({.id = 3, .roles = {"agitator", "general"}})},
-        }}));
+   const std::map<int, vic3::Character> v3characters = {
+       {1, vic3::Character({.id = 1, .first_name = "Test", .last_name = "Mann"})},
+       {2, vic3::Character({.id = 2, .is_female = true, .roles = {"agitator"}, .origin_country_id = 2})},
+       {3, vic3::Character({.id = 3, .roles = {"agitator", "general"}})},
+   };
 
+   const vic3::World source_world(vic3::WorldOptions({.characters = v3characters}));
 
    const std::optional<Country> country_one = ConvertCountry(source_world,
        source_country_one,

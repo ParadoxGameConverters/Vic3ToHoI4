@@ -851,7 +851,7 @@
     <ClCompile Include="src\vic3_world\ideologies\ideologies_importer.cpp">
       <Filter>src\vic3_world\ideologies</Filter>
     </ClCompile>
-    <ClCompile Include="vic3_country.cpp">
+    <ClCompile Include="src\vic3_world\countries\vic3_country.cpp">
       <Filter>src\vic3_world\countries</Filter>
     </ClCompile>
   </ItemGroup>
