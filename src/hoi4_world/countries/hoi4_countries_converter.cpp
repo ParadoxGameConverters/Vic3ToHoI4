@@ -75,7 +75,6 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const vic3::World so
 
    for (const auto& [country_number, source_country]: source_world.GetCountries())
    {
-
       std::optional<Country> new_country = ConvertCountry(source_world,
           source_country,
           source_localizations,
