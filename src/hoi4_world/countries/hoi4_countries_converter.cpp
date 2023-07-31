@@ -75,17 +75,9 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const vic3::World so
 
    for (const auto& [country_number, source_country]: source_world.GetCountries())
    {
-      std::set<std::string> source_country_technologies;
-      const auto source_technologies = source_world.GetAcquiredTechnologies();
-      if (const auto& source_technologies_itr = source_technologies.find(country_number);
-          source_technologies_itr != source_technologies.end())
-      {
-         source_country_technologies = source_technologies_itr->second;
-      }
 
-      std::optional<Country> new_country = ConvertCountry(source_country,
-          source_country_technologies,
-          source_world.GetCultureDefinitions(),
+      std::optional<Country> new_country = ConvertCountry(source_world,
+          source_country,
           source_localizations,
           country_mapper,
           vic3_state_ids_to_hoi4_state_ids,
@@ -97,11 +89,8 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const vic3::World so
           all_plane_variants,
           all_tank_variants,
           culture_graphics_mapper,
-          source_world.GetCharacters(),
           leader_type_mapper,
           character_trait_mapper,
-          source_world.GetInterestGroups(),
-          source_world.GetIdeologies(),
           characters,
           culture_queues);
       if (new_country.has_value())

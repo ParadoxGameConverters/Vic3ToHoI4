@@ -9,6 +9,8 @@
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
 #include "src/vic3_world/ideologies/ideologies.h"
+#include <src/vic3_world/world/vic3_world.h>
+#include <src/hoi4_world/technology/technologies_converter.cpp>
 
 
 
@@ -338,8 +340,8 @@ std::map<std::string, int> DetermineIdeologySupport(const std::vector<int>& inte
 
 
 
-std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_country,
-    const std::map<std::string, vic3::CultureDefinition>& source_cultures,
+std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_world,
+    const vic3::Country& source_country,
     const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
@@ -351,11 +353,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
     const std::vector<EquipmentVariant>& all_plane_variants,
     const std::vector<EquipmentVariant>& all_tank_variants,
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
-    const std::map<int, vic3::Character>& vic3_characters,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
-    const std::map<int, vic3::InterestGroup>& interest_groups,
-    const vic3::Ideologies& vic3_ideologies,
     std::map<int, hoi4::Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
@@ -370,7 +369,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
    const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
    const std::string sub_ideology = ideology_mapper.GetSubIdeology(ideology, source_country.GetActiveLaws());
    const date last_election = ConvertElection(source_country.GetLastElection());
-   const Technologies technologies = ConvertTechnologies(source_country.GetAcquiredTechnologies(), tech_mappings);
+   const hoi4::Technologies technologies = ConvertTechnologies(source_country.GetAcquiredTechnologies(source_world), tech_mappings);
    const std::vector<EquipmentVariant>& active_legacy_ship_variants =
        DetermineActiveVariants(all_legacy_ship_variants, technologies);
    const std::vector<EquipmentVariant>& active_ship_variants = DetermineActiveVariants(all_ship_variants, technologies);
@@ -384,21 +383,21 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
       ideas.insert("decentralized");
    }
 
-   const auto [character_ids, spy_ids] = ConvertCharacters(vic3_characters,
+   const auto [character_ids, spy_ids] = ConvertCharacters(source_world.GetCharacters(),
        *tag,
        ideology,
        sub_ideology,
        source_country,
-       interest_groups,
+       source_world.GetInterestGroups(),
        leader_type_mapper,
        character_trait_mapper,
        country_mapper,
        characters,
        culture_queues);
    mappers::GraphicsBlock graphics_block =
-       culture_graphics_mapper.MatchPrimaryCulturesToGraphics(source_country.GetPrimaryCultures(), source_cultures);
+       culture_graphics_mapper.MatchPrimaryCulturesToGraphics(source_country.GetPrimaryCultures(), source_world.GetCultureDefinitions());
    NameList name_list = ConvertNameList(source_country.GetPrimaryCultures(),
-       source_cultures,
+       source_world.GetCultureDefinitions(),
        source_localizations,
        source_country.GetActiveLaws(),
        leader_type_mapper);
@@ -417,8 +416,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
    }
 
    const auto ideology_support = DetermineIdeologySupport(source_country.GetInterestGroupIds(),
-       interest_groups,
-       vic3_ideologies,
+       source_world.GetInterestGroups(),
+       source_world.GetIdeologies(),
        ideology_mapper);
 
    return Country({.tag = *tag,

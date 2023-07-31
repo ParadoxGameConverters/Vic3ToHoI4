@@ -3,8 +3,6 @@
 
 
 
-#include <src/vic3_world/world/vic3_world.h>
-
 #include <map>
 #include <vector>
 
@@ -12,6 +10,7 @@
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/vic3_world/countries/vic3_country.h"
+#include "src/vic3_world/world/vic3_world.h"
 
 
 
