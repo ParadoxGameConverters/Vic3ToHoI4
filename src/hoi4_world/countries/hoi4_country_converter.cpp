@@ -1,12 +1,15 @@
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 
 #include <numeric>
+#include <ranges>
 
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_character_converter.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
+#include "src/vic3_world/ideologies/ideologies.h"
+
 
 
 namespace
@@ -230,6 +233,107 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
    return name_list;
 }
 
+
+std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>& interest_group_ids,
+    const std::map<int, vic3::InterestGroup>& interest_groups,
+    const vic3::Ideologies& vic3_ideologies,
+    const mappers::IdeologyMapper& ideology_mapper)
+{
+   std::map<std::string, float> ideology_support;
+   for (const int interest_group_id: interest_group_ids)
+   {
+      const auto ig_itr = interest_groups.find(interest_group_id);
+      if (ig_itr == interest_groups.end())
+      {
+         continue;
+      }
+      const vic3::InterestGroup& interest_group = ig_itr->second;
+
+      for (const auto& [vic3_law, approval_amount]:
+          vic3_ideologies.CalculateLawApprovals(interest_group.GetIdeologies()))
+      {
+         mappers::IdeologyPointsMap ideology_points_map = ideology_mapper.CalculateIdeologyPoints({vic3_law});
+         for (auto& [ideology, support]: ideology_points_map)
+         {
+            if (auto [itr, success] =
+                    ideology_support.emplace(ideology, static_cast<float>(support) * interest_group.GetClout());
+                !success)
+            {
+               itr->second += static_cast<float>(support) * interest_group.GetClout();
+            }
+         }
+      }
+   }
+
+   if (ideology_support.empty())
+   {
+      ideology_support.emplace("neutrality", 100.F);
+   }
+
+   return ideology_support;
+}
+
+
+std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, float>& raw_ideology_support)
+{
+   // should be impossible to hit, but put in a check in case other functions get modified incorrectly
+   if (raw_ideology_support.empty())
+   {
+      return {};
+   }
+
+   const float lowest_support = std::ranges::min_element(raw_ideology_support, [](const auto& a, const auto& b) {
+      return a.second < b.second;
+   })->second;
+
+   std::map<std::string, float> adjusted_ideology_support;
+   for (const auto& [ideology, raw_value]: raw_ideology_support)
+   {
+      adjusted_ideology_support.emplace(ideology, raw_value - lowest_support);
+   }
+
+   const float total_support = std::accumulate(adjusted_ideology_support.begin(),
+       adjusted_ideology_support.end(),
+       0.F,
+       [](float a, const auto& b) {
+          return a + b.second;
+       });
+
+   std::map<std::string, int> ideology_support;
+   if (total_support != 0.F)
+   {
+      const float normalization_factor = 100.F / total_support;
+      for (const auto& [ideology, raw_value]: adjusted_ideology_support)
+      {
+         int value = static_cast<int>(std::round(raw_value * normalization_factor));
+         ideology_support.emplace(ideology, value);
+      }
+   }
+   else
+   {
+      const int normalization_factor =
+          static_cast<int>(std::round(100.F / static_cast<float>(adjusted_ideology_support.size())));
+      for (const auto& ideology: adjusted_ideology_support | std::views::keys)
+      {
+         ideology_support.emplace(ideology, normalization_factor);
+      }
+   }
+
+   return ideology_support;
+}
+
+
+std::map<std::string, int> DetermineIdeologySupport(const std::vector<int>& interest_group_ids,
+    const std::map<int, vic3::InterestGroup>& interest_groups,
+    const vic3::Ideologies& vic3_ideologies,
+    const mappers::IdeologyMapper& ideology_mapper)
+{
+   const std::map<std::string, float> raw_ideology_support =
+       CalculateRawIdeologySupport(interest_group_ids, interest_groups, vic3_ideologies, ideology_mapper);
+
+   return NormalizeIdeologySupport(raw_ideology_support);
+}
+
 }  // namespace
 
 
@@ -251,7 +355,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
     const std::map<int, vic3::Character>& vic3_characters,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
-    const std::map<int, vic3::InterestGroup>& igs,
+    const std::map<int, vic3::InterestGroup>& interest_groups,
+    const vic3::Ideologies& vic3_ideologies,
     std::map<int, hoi4::Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
@@ -285,7 +390,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
        ideology,
        sub_ideology,
        source_country,
-       igs,
+       interest_groups,
        leader_type_mapper,
        character_trait_mapper,
        country_mapper,
@@ -312,11 +417,17 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::Country& source_co
       puppets.insert(*subjectTag);
    }
 
+   const auto ideology_support = DetermineIdeologySupport(source_country.GetInterestGroupIds(),
+       interest_groups,
+       vic3_ideologies,
+       ideology_mapper);
+
    return Country({.tag = *tag,
        .color = source_country.GetColor(),
        .capital_state = capital_state,
        .ideology = ideology,
        .sub_ideology = sub_ideology,
+       .ideology_support = ideology_support,
        .last_election = last_election,
        .has_elections = source_country.GetLastElection().has_value(),
        .technologies = technologies,

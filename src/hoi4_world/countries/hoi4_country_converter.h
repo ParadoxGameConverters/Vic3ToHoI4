@@ -18,7 +18,9 @@
 #include "src/mappers/technology/tech_mapping.h"
 #include "src/vic3_world/characters/vic3_character.h"
 #include "src/vic3_world/countries/vic3_country.h"
+#include "src/vic3_world/ideologies/ideologies.h"
 #include "src/vic3_world/interest_groups/interest_group.h"
+
 
 
 namespace hoi4
@@ -41,7 +43,8 @@ std::optional<Country> ConvertCountry(const vic3::Country& source_country,
     const std::map<int, vic3::Character>& vic3_characters,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
-    const std::map<int, vic3::InterestGroup>& igs,
+    const std::map<int, vic3::InterestGroup>& interest_groups,
+    const vic3::Ideologies& vic3_ideologies,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues);
 

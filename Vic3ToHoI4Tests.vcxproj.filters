@@ -151,6 +151,9 @@
     <Filter Include="src\vic3_world\pacts">
       <UniqueIdentifier>{914aa5c8-6a75-42e9-9802-fc6ad0f23ef1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\ideologies">
+      <UniqueIdentifier>{cb068080-31d2-4e70-b82a-6b8524305d81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -438,16 +441,36 @@
     <ClCompile Include="src\vic3_world\pacts\pact_importer_tests.cpp">
       <Filter>src\vic3_world\pacts</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\ideologies\ideologies.cpp">
+      <Filter>src\vic3_world\ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\ideologies\ideologies_tests.cpp">
+      <Filter>src\vic3_world\ideologies</Filter>
+    </ClCompile>
     <ClCompile Include="src\mappers\character\character_trait_mapper_importer_tests.cpp">
       <Filter>src\mappers\character</Filter>
     </ClCompile>
     <ClCompile Include="src\mappers\character\character_trait_mapper_tests.cpp">
       <Filter>src\mappers\character</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\ideologies\ideology_importer_tests.cpp">
+      <Filter>src\vic3_world\ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\ideologies\ideologies_importer_tests.cpp">
+      <Filter>src\vic3_world\ideologies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
       <Filter>external\rakaly</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\vic3_world\ideologies\ideologies.h">
+      <Filter>src\vic3_world\ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\ideologies\ideology.h">
+      <Filter>src\vic3_world\ideologies</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

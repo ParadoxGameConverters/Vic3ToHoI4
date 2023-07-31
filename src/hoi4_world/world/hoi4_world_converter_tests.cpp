@@ -126,6 +126,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
                                 Country(CountryOptions{
                                     .tag = "TAG",
                                     .color = commonItems::Color{std::array{1, 2, 3}},
+                                    .ideology_support = {{"neutrality", 100}},
                                     .technologies = expected_techs_one,
                                     .legacy_ship_variants = expected_legacy_ship_variants_one,
                                     .ship_variants = expected_ship_variants_one,
@@ -137,6 +138,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
                Country(CountryOptions{
                    .tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
+                   .ideology_support = {{"neutrality", 100}},
                    .technologies = expected_techs_two,
                    .legacy_ship_variants = expected_legacy_ship_variants_two,
                    .ship_variants = expected_ship_variants_two,

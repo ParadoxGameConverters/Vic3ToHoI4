@@ -56,8 +56,7 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(
     const std::vector<State>& states,
     const std::vector<mappers::TechMapping>& tech_mappings,
     std::map<int, Character>& characters,
-    std::map<std::string, mappers::CultureQueue>& culture_queues,
-    const mappers::CultureGraphicsMapper& culture_graphics_mapper)
+    std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
    std::map<std::string, Country> countries;
 

@@ -33,6 +33,7 @@ struct CountryOptions
    std::optional<int> capital_state;
    std::string ideology = "neutrality";
    std::string sub_ideology = "despotism";
+   std::map<std::string, int> ideology_support;
    date last_election{1933, 1, 1};
    bool has_elections;
    Technologies technologies;
@@ -58,6 +59,7 @@ class Country
        capital_state_(country_options.capital_state),
        ideology_(std::move(country_options.ideology)),
        sub_ideology_(std::move(country_options.sub_ideology)),
+       ideology_support_(std::move(country_options.ideology_support)),
        last_election_(country_options.last_election),
        has_elections_(country_options.has_elections),
        technologies_(std::move(country_options.technologies)),

@@ -1,0 +1,15 @@
+ideology_paternalistic = {
+	lawgroup_governance_principles = {
+		law_monarchy = strongly_approve
+	}
+	
+	lawgroup_distribution_of_power = {
+		law_single_party_state = neutral
+	}	
+}
+
+ideology_laissez_faire = {
+	lawgroup_economic_system = {	
+		law_laissez_faire = strongly_approve
+	}
+}

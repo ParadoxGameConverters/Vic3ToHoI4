@@ -11,6 +11,7 @@
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/country_rankings/country_rankings.h"
 #include "src/vic3_world/cultures/culture_definition.h"
+#include "src/vic3_world/ideologies/ideologies.h"
 #include "src/vic3_world/interest_groups/interest_group.h"
 #include "src/vic3_world/pacts/pact.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
@@ -35,8 +36,9 @@ struct WorldOptions
    std::map<std::string, CultureDefinition> culture_definitions;
    std::map<int, Character> characters;
    std::map<int, InterestGroup> igs;
-   int playthrough_id;
    std::map<int, Pact> pacts;
+   Ideologies ideologies;
+   int playthrough_id;
 };
 
 
@@ -55,8 +57,9 @@ class World
        culture_definitions_(std::move(world_options.culture_definitions)),
        characters_(std::move(world_options.characters)),
        igs_(std::move(world_options.igs)),
-       playthrough_id_(world_options.playthrough_id),
-       pacts_(std::move(world_options.pacts))
+       pacts_(std::move(world_options.pacts)),
+       ideologies_(std::move(world_options.ideologies)),
+       playthrough_id_(world_options.playthrough_id)
    {
    }
 
@@ -77,8 +80,9 @@ class World
    }
    [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
    [[nodiscard]] const std::map<int, InterestGroup>& GetInterestGroups() const { return igs_; }
-   [[nodiscard]] int GetPlaythroughId() const { return playthrough_id_; }
    [[nodiscard]] const std::map<int, Pact>& GetPacts() const { return pacts_; }
+   [[nodiscard]] const Ideologies& GetIdeologies() const { return ideologies_; }
+   [[nodiscard]] int GetPlaythroughId() const { return playthrough_id_; }
 
   private:
    std::map<int, Country> countries_;
@@ -93,6 +97,7 @@ class World
    std::map<int, Character> characters_;
    std::map<int, InterestGroup> igs_;
    std::map<int, Pact> pacts_;
+   Ideologies ideologies_;
 
    int playthrough_id_;  // Seed, for deterministic results across conversions for the same series of saves
 };
