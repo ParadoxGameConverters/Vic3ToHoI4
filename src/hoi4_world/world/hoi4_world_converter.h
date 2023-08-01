@@ -25,7 +25,7 @@ namespace hoi4
 
 World ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
-    const mappers::world_mapper& world_mapper,
+    const mappers::WorldMapper& world_mapper,
     bool debug);
 
 }  // namespace hoi4

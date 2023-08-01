@@ -176,7 +176,7 @@ void LogVictoryPointData(const std::vector<hoi4::State>& states)
 
 hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
-    const mappers::world_mapper& world_mapper,
+    const mappers::WorldMapper& world_mapper,
     bool debug)
 {
    std::map<std::string, hoi4::Country> countries;
