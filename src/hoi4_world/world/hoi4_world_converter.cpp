@@ -18,12 +18,13 @@
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/technology/tech_mappings_importer.h"
+#include "src/mappers/world/world_mapper.h"
 #include "src/maps/map_data.h"
 #include "src/maps/map_data_importer.h"
 
 
 
-namespace
+namespace hoi4
 {
 
 std::map<std::string, vic3::ProvinceType> GatherVic3SignificantProvinces(
@@ -173,17 +174,12 @@ void LogVictoryPointData(const std::vector<hoi4::State>& states)
    }
 }
 
-}  // namespace
-
-
-
 hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
-    const mappers::CountryMapper& country_mapper,
-    const mappers::ProvinceMapper& province_mapper,
+    const mappers::world_mapper& world_mapper,
     bool debug)
 {
-   std::map<std::string, Country> countries;
+   std::map<std::string, hoi4::Country> countries;
 
    Log(LogLevel::Info) << "Creating Hoi4 world";
    Log(LogLevel::Progress) << "50%";
@@ -206,11 +202,11 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        source_world.GetProvinceDefinitions(),
        vic3_significant_provinces,
        source_world.GetBuildings(),
-       province_mapper,
+       world_mapper.province_mapper,
        map_data,
        province_definitions,
        strategic_regions,
-       country_mapper,
+       world_mapper.country_mapper,
        StateCategories({
            {1, "pastoral"},
            {2, "rural"},
@@ -231,36 +227,35 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem);
 
-   Railways railways =
-       ConvertRailways(vic3_significant_provinces, province_mapper, map_data, province_definitions, states);
+   Railways railways = ConvertRailways(vic3_significant_provinces,
+       world_mapper.province_mapper,
+       map_data,
+       province_definitions,
+       states);
 
    Log(LogLevel::Info) << "\tConverting countries";
    Log(LogLevel::Progress) << "55%";
-
-   const std::vector<mappers::TechMapping> tech_mappings = mappers::ImportTechMappings();
-   const mappers::CultureGraphicsMapper culture_graphics_mapper =
-       mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
 
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const std::map<int, vic3::Country>& source_countries = source_world.GetCountries();
    countries = ConvertCountries(source_world,
        source_world.GetLocalizations(),
-       country_mapper,
+       world_mapper,
        states.vic3_state_ids_to_hoi4_state_ids,
        states.states,
-       tech_mappings,
-       culture_graphics_mapper,
        characters,
        culture_queues);
 
    Log(LogLevel::Info) << "\tAssigning portraits to characters";
    Log(LogLevel::Progress) << "56%";
    AssignPortraits(culture_queues,
-       culture_graphics_mapper,
+       world_mapper.culture_graphics_mapper,
        source_world.GetCultureDefinitions(),
        source_world.GetPlaythroughId(),
        characters);
+
+   const mappers::CountryMapper& country_mapper = world_mapper.country_mapper;
 
    std::set<std::string> great_powers = MapPowers(source_world.GetCountryRankings().GetGreatPowers(), country_mapper);
    std::set<std::string> major_powers = MapPowers(source_world.GetCountryRankings().GetMajorPowers(), country_mapper);
@@ -268,10 +263,10 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    LogVictoryPointData(states.states);
 
    Localizations localizations = ConvertLocalizations(source_world.GetLocalizations(),
-       country_mapper.GetCountryMappings(),
+       world_mapper.country_mapper.GetCountryMappings(),
        states.hoi4_state_names_to_vic3_state_names,
        source_world.GetStateRegions(),
-       province_mapper,
+       world_mapper.province_mapper,
        source_world.GetCountries(),
        source_world.GetCharacters());
 
@@ -285,3 +280,4 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        .localizations = localizations,
        .characters = characters});
 }
+}  // namespace hoi4

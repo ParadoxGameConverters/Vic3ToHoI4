@@ -71,6 +71,7 @@
     <ClInclude Include="src\mappers\technology\tech_mappings_importer.h" />
     <ClInclude Include="src\mappers\technology\tech_mapping.h" />
     <ClInclude Include="src\mappers\technology\tech_mapping_importer.h" />
+    <ClInclude Include="src\mappers\world\world_mapper.h" />
     <ClInclude Include="src\maps\map_data.h" />
     <ClInclude Include="src\maps\map_data_importer.h" />
     <ClInclude Include="src\maps\point.h" />
@@ -181,6 +182,7 @@
     <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mappings_importer.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mapping_importer.cpp" />
+    <ClCompile Include="src\mappers\world\world_mapper.cpp" />
     <ClCompile Include="src\maps\map_data.cpp" />
     <ClCompile Include="src\maps\map_data_importer.cpp" />
     <ClCompile Include="src\maps\province_definitions.cpp" />

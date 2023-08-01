@@ -39,6 +39,15 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
    });
    const auto& culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
 
+   const std::vector<mappers::TechMapping> tech_map = {
+       {{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},
+       {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}},
+   };
+
+   const mappers::ProvinceMapper province_mapper = mappers::ProvinceMapper::ProvinceMapper({}, {});
+
+   const mappers::world_mapper worldmapper =
+       mappers::world_mapper(std::move(country_mapper), std::move(province_mapper), std::move(tech_map), std::move(culture_graphics_mapper));
 
    vic3::WorldOptions options = {
        .countries =
@@ -69,17 +78,12 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 
    const auto countries = ConvertCountries(v3World,
        commonItems::LocalizationDatabase{{}, {}},
-       country_mapper,
+       worldmapper,
        {
            {1, 10},
            {2, 20},
        },
        {},
-       {
-           {{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},
-           {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}},
-       },
-       culture_graphics_mapper,
        characters,
        culture_queues);
 
