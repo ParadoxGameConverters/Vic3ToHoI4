@@ -1422,13 +1422,13 @@ TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
 
-   const std::map<int, vic3::Character> v3characters = {
+   const std::map<int, vic3::Character> vic3_characters = {
        {1, vic3::Character({.id = 1, .first_name = "Test", .last_name = "Mann"})},
        {2, vic3::Character({.id = 2, .is_female = true, .roles = {"agitator"}, .origin_country_id = 2})},
        {3, vic3::Character({.id = 3, .roles = {"agitator", "general"}})},
    };
 
-   const vic3::World source_world(vic3::WorldOptions({.characters = v3characters}));
+   const vic3::World source_world(vic3::WorldOptions({.characters = vic3_characters}));
 
    const std::optional<Country> country_one = ConvertCountry(source_world,
        source_country_one,
@@ -1471,5 +1471,104 @@ TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
                    .id = 3,
                    .general_data = expected_data_three,
                }))));
+}
+
+TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::Country source_country_one({.number = 1, .capital_state = 2, .ig_ids = {1, 2}});
+   std::map<int, hoi4::Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+
+   const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
+
+   const auto country_one = ConvertCountry(source_country_one,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       vic3_state_ids_to_hoi4_state_ids,
+       {},
+       mappers::IdeologyMapper(
+           {
+               {"test_law_one",
+                   {
+                       {"democratic", 2},
+                       {"fascist", 3},
+                   }},
+               {"test_law_two",
+                   {
+                       {"communist", 5},
+                       {"fascist", 3},
+                   }},
+               {"test_law_three",
+                   {
+                       {"democratic", 5},
+                       {"communist", 7},
+                   }},
+           },
+           {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       {},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       {
+           {1, vic3::InterestGroup("test_group_one", 1, 0, 50.F, false, {"test_ideology_one", "test_ideology_two"})},
+           {2, vic3::InterestGroup("test_group_two", 1, 0, 150.F, false, {"test_ideology_one", "test_ideology_three"})},
+       },
+       vic3::Ideologies({
+           {"test_ideology_one", vic3::Ideology({{"test_law_one", 1}})},
+           {"test_ideology_two", vic3::Ideology({{"test_law_two", 2}})},
+           {"test_ideology_three", vic3::Ideology({{"test_law_three", -2}})},
+       }),
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetIdeologySupport(),
+       testing::UnorderedElementsAre(testing::Pair("communist", 58),
+           testing::Pair("democratic", 42),
+           testing::Pair("fascist", 0)));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::Country source_country_one({.number = 1, .capital_state = 2});
+   std::map<int, hoi4::Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+
+   const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
+
+   const auto country_one = ConvertCountry(source_country_one,
+       {},
+       {},
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       vic3_state_ids_to_hoi4_state_ids,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       {},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       {},
+       vic3::Ideologies(),
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetIdeologySupport(), testing::UnorderedElementsAre(testing::Pair("neutrality", 100)));
 }
 }  // namespace hoi4
