@@ -1482,40 +1482,42 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
 
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
 
-   std::map<int, vic3::InterestGroup> igs = {
-       {1, vic3::InterestGroup("test_group_one", 1, 0, 50.F, false, {"test_ideology_one", "test_ideology_two"})},
-       {2, vic3::InterestGroup("test_group_two", 1, 0, 150.F, false, {"test_ideology_one", "test_ideology_three"})},
-   };
+
+   std::map<int, vic3::InterestGroup> igs;
+   igs.insert(
+       {1, vic3::InterestGroup("test_group_one", 1, 0, 50.F, false, {"test_ideology_one", "test_ideology_two"})});
+   igs.insert(
+       {2, vic3::InterestGroup("test_group_two", 1, 0, 150.F, false, {"test_ideology_one", "test_ideology_three"})});
+
+   vic3::Ideologies ideologies = vic3::Ideologies({
+       {"test_ideology_one", vic3::Ideology({{"test_law_one", 1}})},
+       {"test_ideology_two", vic3::Ideology({{"test_law_two", 2}})},
+       {"test_ideology_three", vic3::Ideology({{"test_law_three", -2}})},
+   });
    vic3::WorldOptions worldOptions = vic3::WorldOptions{
        .igs = igs,
-       .ideologies = vic3::Ideologies({
-           {"test_ideology_one", vic3::Ideology({{"test_law_one", 1}})},
-           {"test_ideology_two", vic3::Ideology({{"test_law_two", 2}})},
-           {"test_ideology_three", vic3::Ideology({{"test_law_three", -2}})},
-       }),
+       .ideologies = ideologies,
    };
 
    vic3::World source_world = vic3::World(worldOptions);
 
-   const mappers::IdeologyMapper ideologyMapper = mappers::IdeologyMapper(
+   mappers::ItemToPointsMap pointsMap;
+   pointsMap.insert({"test_law_one",
        {
-           {"test_law_one",
-               {
-                   {"democratic", 2},
-                   {"fascist", 3},
-               }},
-           {"test_law_two",
-               {
-                   {"communist", 5},
-                   {"fascist", 3},
-               }},
-           {"test_law_three",
-               {
-                   {"democratic", 5},
-                   {"communist", 7},
-               }},
-       },
-       {});
+           {"democratic", 2},
+           {"fascist", 3},
+       }});
+   pointsMap.insert({"test_law_two",
+       {
+           {"communist", 5},
+           {"fascist", 3},
+       }});
+   pointsMap.insert({"test_law_three",
+       {
+           {"democratic", 5},
+           {"communist", 7},
+       }});
+   const mappers::IdeologyMapper ideologyMapper = mappers::IdeologyMapper(pointsMap, {});
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
