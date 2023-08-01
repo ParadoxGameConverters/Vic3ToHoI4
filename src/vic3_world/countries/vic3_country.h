@@ -10,7 +10,7 @@
 
 namespace vic3
 {
-    //need to extra-forward-declare this because World uses Country, and Country uses World
+// need to extra-forward-declare this because World uses Country, and Country uses World
 class World;
 
 struct CountryOptions
