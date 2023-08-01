@@ -1,7 +1,5 @@
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 
-#include <src/mappers/world/world_mapper.h>
-
 #include <ranges>
 
 #include "external/fmt/include/fmt/format.h"
@@ -12,7 +10,6 @@
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/ideology/ideology_mapper.h"
 #include "src/mappers/ideology/ideology_mapper_importer.h"
-using namespace hoi4;
 
 
 
@@ -50,17 +47,18 @@ void LogIdeologies(const std::map<std::string, hoi4::Country>& countries)
 }  // namespace
 
 
-namespace hoi4
-{
-std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
+
+std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const vic3::World source_world,
     const commonItems::LocalizationDatabase& source_localizations,
-    const mappers::WorldMapper& world_mapper,
+    const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
     const std::vector<State>& states,
+    const std::vector<mappers::TechMapping>& tech_mappings,
+    const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
-   std::map<std::string, hoi4::Country> countries;
+   std::map<std::string, Country> countries;
 
    const mappers::IdeologyMapper ideology_mapper = mappers::ImportIdeologyMapper("configurables/ideology_mappings.txt");
 
@@ -89,16 +87,16 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
           source_country_technologies,
           source_world.GetCultureDefinitions(),
           source_localizations,
-          world_mapper.country_mapper,
+          country_mapper,
           vic3_state_ids_to_hoi4_state_ids,
           states,
           ideology_mapper,
-          world_mapper.tech_mapper,
+          tech_mappings,
           all_legacy_ship_variants,
           all_ship_variants,
           all_plane_variants,
           all_tank_variants,
-          world_mapper.culture_graphics_mapper,
+          culture_graphics_mapper,
           source_world.GetCharacters(),
           leader_type_mapper,
           character_trait_mapper,
@@ -116,4 +114,3 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
 
    return countries;
 }
-}  // namespace hoi4

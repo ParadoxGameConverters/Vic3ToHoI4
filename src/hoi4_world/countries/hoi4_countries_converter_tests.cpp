@@ -8,7 +8,6 @@
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
-#include "src/mappers/world/world_mapper.h"
 #include "src/vic3_world/countries/vic3_country.h"
 
 
@@ -20,6 +19,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 {
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::Country source_country_one({
        .number = 1,
        .color = commonItems::Color{std::array{1, 2, 3}},
@@ -39,18 +39,6 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
    });
    const auto& culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
 
-   const mappers::WorldMapper worldmapper =
-       mappers::WorldMapperBuilder::NullMapper()
-           .AddCountries({
-               {1, "TAG"},
-               {2, "TWO"},
-           })
-           .AddTechs({
-               {{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},
-               {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}},
-           })
-           .SetCultureGraphicsMapper(culture_graphics_mapper)
-           .Build();
 
    vic3::WorldOptions options = {
        .countries =
@@ -81,12 +69,17 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 
    const auto countries = ConvertCountries(v3World,
        commonItems::LocalizationDatabase{{}, {}},
-       worldmapper,
+       country_mapper,
        {
            {1, 10},
            {2, 20},
        },
        {},
+       {
+           {{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},
+           {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}},
+       },
+       culture_graphics_mapper,
        characters,
        culture_queues);
 

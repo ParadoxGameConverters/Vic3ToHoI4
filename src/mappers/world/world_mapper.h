@@ -20,7 +20,7 @@ class WorldMapper
 {
   public:
    static WorldMapper LoadFromFiles(commonItems::ModFilesystem hoi4_mod_filesystem, const vic3::World& source_world);
-   // world_mapper();
+
    WorldMapper(const CountryMapper&& country_mapper,
        const ProvinceMapper&& provice_mapper,
        const std::vector<mappers::TechMapping>&& tech_mapper,
