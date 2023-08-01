@@ -859,6 +859,7 @@
     </ClCompile>
     <ClCompile Include="src\mappers\world\world_mapper.cpp">
       <Filter>src\mappers\world</Filter>
+	</ClCompile>
     <ClCompile Include="src\vic3_world\countries\vic3_country.cpp">
       <Filter>src\vic3_world\countries</Filter>
     </ClCompile>
