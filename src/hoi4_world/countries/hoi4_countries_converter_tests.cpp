@@ -8,6 +8,7 @@
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
+#include "src/mappers/world/world_mapper.h"
 #include "src/vic3_world/countries/vic3_country.h"
 
 
@@ -19,7 +20,15 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 {
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
-   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const mappers::WorldMapper world_mapper =
+       mappers::WorldMapperBuilder::NullMapper()
+           .AddCountries({{1, "TAG"}, {2, "TWO"}})
+           .SetCultureGraphicsMapper(mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt"))
+           .AddTechs({{{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},
+               {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}}})
+           .Build();
+
+
    const vic3::Country source_country_one({
        .number = 1,
        .color = commonItems::Color{std::array{1, 2, 3}},
@@ -37,8 +46,6 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        .head_of_state_id = 2,
        .character_ids = {2},
    });
-   const auto& culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
-
 
    vic3::WorldOptions options = {
        .countries =
@@ -68,18 +75,13 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
    const vic3::World v3World = vic3::World(options);
 
    const auto countries = ConvertCountries(v3World,
+       world_mapper,
        commonItems::LocalizationDatabase{{}, {}},
-       country_mapper,
        {
            {1, 10},
            {2, 20},
        },
        {},
-       {
-           {{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},
-           {{"source_technology_two"}, std::nullopt, {"dest_technology_three", "dest_technology_four"}},
-       },
-       culture_graphics_mapper,
        characters,
        culture_queues);
 

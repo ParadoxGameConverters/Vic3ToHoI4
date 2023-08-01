@@ -36,4 +36,13 @@ TEST(MappersWorldWorldMapperBuilderTests, AddProvincesWorks)
    EXPECT_THAT(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMapping(10), testing::ElementsAre("0x00000001"));
 }
 
+TEST(MappersWorldWorldMapperBuilderTests, AddTechsWorks)
+{
+   const auto worldMapper =
+       WorldMapperBuilder::NullMapper().AddTechs({{{"vicTech1"}, std::nullopt, {"hoiTech1", "hoiTech2"}}}).Build();
+
+   EXPECT_THAT(worldMapper.tech_mapper.at(0).GetTechs(), testing::UnorderedElementsAre("hoiTech1", "hoiTech2"));
+   EXPECT_THAT(worldMapper.tech_mapper.at(0).GetVic3Requirements(), testing::UnorderedElementsAre("vicTech1"));
+}
+
 }  // namespace mappers

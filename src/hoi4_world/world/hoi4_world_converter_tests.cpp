@@ -71,7 +71,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
    });
 
    const mappers::WorldMapper world_mapper =
-       mappers::WorldMapperBuilder::NullMapper().AddCountries({{1, "TAG"}, {3, "TWO"}}).Build();
+       mappers::WorldMapperBuilder::NullMapper().AddCountries({{1, "TAG"}, {3, "TWO"}}).DefaultTechMapper().Build();
    const World world =
        ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}), source_world, world_mapper, false);
 
@@ -655,6 +655,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
                                                      {"x000005", {50}},
                                                      {"x000006", {60}},
                                                  })
+                                                 .DefaultCultureGraphicsMapper()
                                                  .Build();
 
    const World world =
@@ -745,8 +746,10 @@ TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
                {6, character_six},
            },
    });
-   const mappers::WorldMapper world_mapper =
-       mappers::WorldMapperBuilder::NullMapper().AddCountries({{1, "TAG"}, {3, "TWO"}}).Build();
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::NullMapper()
+                                                 .AddCountries({{1, "TAG"}, {3, "TWO"}})
+                                                 .DefaultCultureGraphicsMapper()
+                                                 .Build();
 
    const World world =
        ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}), source_world, world_mapper, false);
