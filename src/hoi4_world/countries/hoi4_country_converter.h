@@ -26,9 +26,8 @@
 namespace hoi4
 {
 
-std::optional<Country> ConvertCountry(const vic3::Country& source_country,
-    const std::set<std::string>& source_technologies,
-    const std::map<std::string, vic3::CultureDefinition>& source_cultures,
+std::optional<Country> ConvertCountry(const vic3::World& source_world,
+    const vic3::Country& source_country,
     const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
@@ -40,11 +39,8 @@ std::optional<Country> ConvertCountry(const vic3::Country& source_country,
     const std::vector<EquipmentVariant>& all_plane_variants,
     const std::vector<EquipmentVariant>& all_tank_variants,
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
-    const std::map<int, vic3::Character>& vic3_characters,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
-    const std::map<int, vic3::InterestGroup>& interest_groups,
-    const vic3::Ideologies& vic3_ideologies,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues);
 

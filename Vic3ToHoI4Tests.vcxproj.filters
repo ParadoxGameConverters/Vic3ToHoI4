@@ -459,6 +459,9 @@
     <ClCompile Include="src\vic3_world\ideologies\ideologies_importer_tests.cpp">
       <Filter>src\vic3_world\ideologies</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\countries\vic3_country_tests.cpp">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
