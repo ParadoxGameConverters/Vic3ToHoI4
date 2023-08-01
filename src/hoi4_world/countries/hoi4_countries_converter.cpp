@@ -47,8 +47,9 @@ void LogIdeologies(const std::map<std::string, hoi4::Country>& countries)
 }  // namespace
 
 
-
-std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const vic3::World source_world,
+namespace hoi4
+{
+std::map<std::string, Country> hoi4::ConvertCountries(const vic3::World source_world,
     const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
@@ -102,3 +103,4 @@ std::map<std::string, hoi4::Country> hoi4::ConvertCountries(const vic3::World so
 
    return countries;
 }
+}  // namespace hoi4
