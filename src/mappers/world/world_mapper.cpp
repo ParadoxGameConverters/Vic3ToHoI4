@@ -75,20 +75,23 @@ WorldMapper WorldMapperBuilder::Build()
 
 WorldMapperBuilder WorldMapperBuilder::AddCountries(std::map<int, std::string> countries)
 {
-   for (auto& el : countries)
+   for (auto& el: countries)
    {
       this->country_mappings.insert(el);
    }
+
    return *this;
 }
 
 WorldMapperBuilder WorldMapperBuilder::AddProvinces(std::map<std::string, int> provinces)
 {
-   for (auto& el : provinces)
+   for (auto& el: provinces)
    {
-      std::pair<int, std::vector<std::string>> other = {el.second, {el.first}};
-      this->hoi_vic_province_mappings.insert(other);
-      this->vic_hoi_province_mappings.insert(el);
+      // need to wrap second in an extra set of {} to make el.second a list element and not a size
+      std::pair<std::string, std::vector<int>> vic_hoi_elem = {el.first, {el.second}};
+      std::pair<int, std::vector<std::string>> hoi_vic_elem = {el.second, {el.first}};
+      this->hoi_vic_province_mappings.insert(hoi_vic_elem);
+      this->vic_hoi_province_mappings.insert(vic_hoi_elem);
    }
 
    return *this;

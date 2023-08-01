@@ -177,18 +177,19 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
        .buildings = vic3_buildings,
    });
 
-   const mappers::WorldMapper world_mapper =
-       mappers::WorldMapperBuilder::NullMapper().AddCountries({{1, "TAG"}, {2, "TWO"}}).AddProvinces({
-           {"0x000001", {10}},
-           {"0x000002", {20}},
-           {"0x000003", {30}},
-           {"0x000004", {40}},
-           {"0x000005", {50}},
-           {"0x000006", {60}},
-       }).Build();
-   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
-       source_world, world_mapper,
-       false);
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::NullMapper()
+                                                 .AddCountries({{1, "TAG"}, {2, "TWO"}})
+                                                 .AddProvinces({
+                                                     {"0x000001", {10}},
+                                                     {"0x000002", {20}},
+                                                     {"0x000003", {30}},
+                                                     {"0x000004", {40}},
+                                                     {"0x000005", {50}},
+                                                     {"0x000006", {60}},
+                                                 })
+                                                 .Build();
+   const World world =
+       ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}), source_world, world_mapper, false);
 
    EXPECT_THAT(world.GetStates().states,
        testing::ElementsAre(State(1,
@@ -245,10 +246,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
       scored_countries.emplace(i, i);
       vic3_states.emplace(i,
           vic3::State({.owner_number = i, .owner_tag = fmt::format("0x0000{:0>2}", i), .provinces = {i}}));
-      mapperBuilder.AddProvinces({
-         {
-            fmt::format("0x0000{:0>2}", i), i
-         }});
+      mapperBuilder.AddProvinces({{fmt::format("0x0000{:0>2}", i), i}});
    }
    const vic3::ProvinceDefinitions province_definitions(province_definitions_initializer);
    const vic3::Buildings buildings;
@@ -318,8 +316,6 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
 
 TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 {
-   const mappers::CountryMapper country_mapper;
-
    const auto province_definitions = vic3::ProvinceDefinitions({
        "0x000001",
        "0x000002",
@@ -337,23 +333,20 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
            },
        .province_definitions = province_definitions,
    });
-
-   const mappers::ProvinceMapper province_mapper{
-       {},
-       {
-           {10, {"0x000001"}},
-           {20, {"0x000002"}},
-           {30, {"0x000003"}},
-           {40, {"0x000004"}},
-           {50, {"0x000005"}},
-           {60, {"0x000006"}},
-       },
-   };
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::NullMapper()
+                                                 .AddProvinces({
+                                                     {"0x000001", {10}},
+                                                     {"0x000002", {20}},
+                                                     {"0x000003", {30}},
+                                                     {"0x000004", {40}},
+                                                     {"0x000005", {50}},
+                                                     {"0x000006", {60}},
+                                                 })
+                                                 .Build();
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/StrategicRegionsAreCreated", {}),
        source_world,
-       country_mapper,
-       province_mapper,
+       world_mapper,
        false);
 
    const auto strategic_regions = world.GetStrategicRegions().GetStrategicRegions();
@@ -429,8 +422,6 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 
 TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 {
-   const mappers::CountryMapper country_mapper;
-
    const auto province_definitions = vic3::ProvinceDefinitions({
        "0x000001",
        "0x000002",
@@ -452,22 +443,22 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
        .province_definitions = province_definitions,
    });
 
-   const mappers::ProvinceMapper province_mapper{{},
-       {
-           {1, {"0x000001"}},
-           {2, {"0x000002"}},
-           {3, {"0x000003"}},
-           {4, {"0x000004"}},
-           {5, {"0x000005"}},
-           {6, {"0x000006"}},
-           {7, {"0x000007"}},
-           {8, {"0x000008"}},
-       }};
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::NullMapper()
+                                                 .AddProvinces({
+                                                     {{"0x000001"}, 1},
+                                                     {{"0x000002"}, 2},
+                                                     {{"0x000003"}, 3},
+                                                     {{"0x000004"}, 4},
+                                                     {{"0x000005"}, 5},
+                                                     {{"0x000006"}, 6},
+                                                     {{"0x000007"}, 7},
+                                                     {{"0x000008"}, 8},
+                                                 })
+                                                 .Build();
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/BuildingsAreCreated", {}),
        source_world,
-       country_mapper,
-       province_mapper,
+       world_mapper,
        false);
 
    EXPECT_FALSE(world.GetBuildings().GetBuildings().empty());
@@ -511,9 +502,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
        .province_definitions = province_definitions,
    });
 
-   const mappers::CountryMapper country_mapper;
-
-   const mappers::ProvinceMapper province_mapper{{
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::NullMapper()
+                                                 .AddProvinces({
                                                      {"0x000001", {1}},
                                                      {"0x000002", {2}},
                                                      {"0x000003", {3}},
@@ -526,26 +516,12 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
                                                      {"0x000010", {10}},
                                                      {"0x000011", {11}},
                                                      {"0x000012", {12}},
-                                                 },
-       {
-           {1, {"0x000001"}},
-           {2, {"0x000002"}},
-           {3, {"0x000003"}},
-           {4, {"0x000004"}},
-           {5, {"0x000005"}},
-           {6, {"0x000006"}},
-           {7, {"0x000007"}},
-           {8, {"0x000008"}},
-           {9, {"0x000009"}},
-           {10, {"0x000010"}},
-           {11, {"0x000011"}},
-           {12, {"0x000012"}},
-       }};
+                                                 })
+                                                 .Build();
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
-       country_mapper,
-       province_mapper,
+       world_mapper,
        false);
 
    EXPECT_FALSE(world.GetRailways().railways.empty());
@@ -563,19 +539,16 @@ TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
            },
        .country_rankings = {{1, 3, 5}, {}, {}},
    });
-
-   const mappers::CountryMapper country_mapper({
+   const mappers::WorldMapper world_mapper =
+       mappers::WorldMapperBuilder::NullMapper().AddCountries({
        {1, "ONE"},
        {3, "THR"},
        {5, "FIV"},
-   });
-
-   const mappers::ProvinceMapper province_mapper{{}, {}};
+   }).Build();
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
-       country_mapper,
-       province_mapper,
+       world_mapper,
        false);
 
    EXPECT_THAT(world.GetGreatPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
@@ -594,18 +567,15 @@ TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
        .country_rankings = {{}, {1, 3, 5}, {}},
    });
 
-   const mappers::CountryMapper country_mapper({
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::NullMapper().AddCountries({
        {1, "ONE"},
        {3, "THR"},
        {5, "FIV"},
-   });
-
-   const mappers::ProvinceMapper province_mapper{{}, {}};
+   }).Build();
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
-       country_mapper,
-       province_mapper,
+       world_mapper,
        false);
 
    EXPECT_THAT(world.GetMajorPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
@@ -672,30 +642,21 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
        .localizations = vic3_localizations,
    });
 
-   const mappers::CountryMapper country_mapper({{1, "TAG"}, {3, "THR"}});
-
-   const mappers::Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map = {
-       {"x000001", {10}},
-       {"x000002", {20}},
-       {"x000003", {30}},
-       {"x000004", {40}},
-       {"x000005", {50}},
-       {"x000006", {60}},
-   };
-   const mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map = {
-       {10, {"x000001"}},
-       {20, {"x000002"}},
-       {30, {"x000003"}},
-       {40, {"x000004"}},
-       {50, {"x000005"}},
-       {60, {"x000006"}},
-   };
-   const mappers::ProvinceMapper province_mapper{vic3_to_hoi4_province_map, hoi4_to_vic3_province_map};
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::NullMapper()
+                                                 .AddCountries({{1, "TAG"}, {3, "THR"}})
+                                                 .AddProvinces({
+                                                     {"x000001", {10}},
+                                                     {"x000002", {20}},
+                                                     {"x000003", {30}},
+                                                     {"x000004", {40}},
+                                                     {"x000005", {50}},
+                                                     {"x000006", {60}},
+                                                 })
+                                                 .Build();
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
-       country_mapper,
-       province_mapper,
+       world_mapper,
        false);
 
    const std::optional<commonItems::LocalizationBlock> hoi_country_localization_block =
@@ -738,7 +699,6 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
 
 TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
 {
-   const mappers::CountryMapper country_mapper({{1, "TAG"}, {3, "TWO"}});
    const vic3::Country source_country_one({
        .number = 1,
        .tag = "TAG",
@@ -784,13 +744,12 @@ TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
                {6, character_six},
            },
    });
-
-   mappers::ProvinceMapper province_mapper{{}, {}};
+   const mappers::WorldMapper world_mapper =
+       mappers::WorldMapperBuilder::NullMapper().AddCountries({{1, "TAG"}, {3, "TWO"}}).Build();
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
-       country_mapper,
-       province_mapper,
+       world_mapper,
        false);
 
    const auto expected_data_leader = std::optional<Leader>({.sub_ideology = "despotism"});

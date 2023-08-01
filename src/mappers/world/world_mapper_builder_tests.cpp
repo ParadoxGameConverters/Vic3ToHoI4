@@ -23,11 +23,8 @@ TEST(MappersWorldWorldMapperBuilderTests, AddCountryWorks)
    const auto worldMapper =
        WorldMapperBuilder::NullMapper().AddCountries({{1, "ONE"}}).AddCountries({{2, "TWO"}}).Build();
 
-   auto str1 = worldMapper.country_mapper.GetHoiTag(1).value();
-   auto str2 = worldMapper.country_mapper.GetHoiTag(2).value();
-   //EXPECT_EQ("ONE", "ONE");
-   //EXPECT_EQ(str2, "TWO");
-   EXPECT_TRUE(true);
+   EXPECT_EQ(worldMapper.country_mapper.GetHoiTag(1).value(), "ONE");
+   EXPECT_EQ(worldMapper.country_mapper.GetHoiTag(2).value(), "TWO");
 }
 
 TEST(MappersWorldWorldMapperBuilderTests, AddProvincesWorks)
@@ -35,7 +32,8 @@ TEST(MappersWorldWorldMapperBuilderTests, AddProvincesWorks)
    const auto worldMapper =
        WorldMapperBuilder::NullMapper().AddProvinces({{"0x00000001", 10}, {"0x00000002", 20}}).Build();
 
-   EXPECT_TRUE(true);
+   EXPECT_THAT(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMapping("0x00000002"), testing::ElementsAre(20));
+   EXPECT_THAT(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMapping(10), testing::ElementsAre("0x00000001"));
 }
 
 }  // namespace mappers
