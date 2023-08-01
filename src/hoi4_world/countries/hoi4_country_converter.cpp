@@ -8,6 +8,7 @@
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
+#include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/ideologies/ideologies.h"
 #include "src/vic3_world/world/vic3_world.h"
 
