@@ -768,7 +768,7 @@ TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
 TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
-   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const vic3::World source_world = vic3::World(vic3::WorldOptions({.acquired_technologies = {{1, {"source_tech"}}}}));
    const vic3::Country source_country_one({.number = 1, .capital_state = 2});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
