@@ -1,7 +1,7 @@
 #pragma once
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapper.h"

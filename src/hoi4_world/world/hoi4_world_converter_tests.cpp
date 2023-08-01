@@ -539,12 +539,13 @@ TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
            },
        .country_rankings = {{1, 3, 5}, {}, {}},
    });
-   const mappers::WorldMapper world_mapper =
-       mappers::WorldMapperBuilder::NullMapper().AddCountries({
-       {1, "ONE"},
-       {3, "THR"},
-       {5, "FIV"},
-   }).Build();
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::NullMapper()
+                                                 .AddCountries({
+                                                     {1, "ONE"},
+                                                     {3, "THR"},
+                                                     {5, "FIV"},
+                                                 })
+                                                 .Build();
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
@@ -567,11 +568,13 @@ TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
        .country_rankings = {{}, {1, 3, 5}, {}},
    });
 
-   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::NullMapper().AddCountries({
-       {1, "ONE"},
-       {3, "THR"},
-       {5, "FIV"},
-   }).Build();
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::NullMapper()
+                                                 .AddCountries({
+                                                     {1, "ONE"},
+                                                     {3, "THR"},
+                                                     {5, "FIV"},
+                                                 })
+                                                 .Build();
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
@@ -654,10 +657,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
                                                  })
                                                  .Build();
 
-   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
-       source_world,
-       world_mapper,
-       false);
+   const World world =
+       ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}), source_world, world_mapper, false);
 
    const std::optional<commonItems::LocalizationBlock> hoi_country_localization_block =
        world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("TAG");
@@ -747,10 +748,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
    const mappers::WorldMapper world_mapper =
        mappers::WorldMapperBuilder::NullMapper().AddCountries({{1, "TAG"}, {3, "TWO"}}).Build();
 
-   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
-       source_world,
-       world_mapper,
-       false);
+   const World world =
+       ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}), source_world, world_mapper, false);
 
    const auto expected_data_leader = std::optional<Leader>({.sub_ideology = "despotism"});
    const auto expected_data_spy = std::optional<Spy>({.nationalities = {"TAG", "TWO"}});

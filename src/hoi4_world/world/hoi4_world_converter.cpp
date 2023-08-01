@@ -228,8 +228,11 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem);
 
-   Railways railways =
-       ConvertRailways(vic3_significant_provinces, world_mapper.province_mapper, map_data, province_definitions, states);
+   Railways railways = ConvertRailways(vic3_significant_provinces,
+       world_mapper.province_mapper,
+       map_data,
+       province_definitions,
+       states);
 
    Log(LogLevel::Info) << "\tConverting countries";
    Log(LogLevel::Progress) << "55%";
