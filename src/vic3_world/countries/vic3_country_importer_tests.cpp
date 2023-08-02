@@ -55,6 +55,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    EXPECT_EQ(country->GetColor(), commonItems::Color(std::array{1, 2, 3}));
    EXPECT_EQ(country->GetCapitalState(), std::optional<int>(12345));
    EXPECT_TRUE(country->IsDecentralized());
+   EXPECT_FALSE(country->IsRecognized());
    EXPECT_THAT(country->GetPrimaryCultureIds(), testing::UnorderedElementsAre(35, 7));
    EXPECT_EQ(country->GetHeadOfStateId(), 10);
 }

@@ -336,6 +336,22 @@ std::map<std::string, int> DetermineIdeologySupport(const std::vector<int>& inte
    return NormalizeIdeologySupport(raw_ideology_support);
 }
 
+int DetermineStartingResearchSlots(const vic3::World& source_world, const vic3::Country& source_country)
+{
+   if (source_country.GetCountryRankCategory(source_world) == vic3::RankCategory::RANK_GREAT_POWER)
+   {
+      return 4;
+   }
+   else if (source_country.IsRecognized())
+   {
+      return 3;
+   }
+   else
+   {
+      return 2;
+   }
+}
+
 }  // namespace
 
 
@@ -440,5 +456,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .name_list = name_list,
        .character_ids = character_ids,
        .spy_ids = spy_ids,
-       .puppets = puppets});
+       .puppets = puppets,
+       .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country)});
 }
