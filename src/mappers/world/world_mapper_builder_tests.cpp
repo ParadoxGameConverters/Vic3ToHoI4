@@ -45,4 +45,13 @@ TEST(MappersWorldWorldMapperBuilderTests, AddTechsWorks)
    EXPECT_THAT(worldMapper.tech_mapper.at(0).GetVic3Requirements(), testing::UnorderedElementsAre("vicTech1"));
 }
 
+TEST(MappersWorldWorldMapperBuilderTests, DefaultTechsWorks)
+{
+   const auto worldMapper =
+       WorldMapperBuilder::NullMapper().DefaultTechMapper().Build();
+
+   EXPECT_THAT(worldMapper.tech_mapper.at(0).GetTechs(), testing::UnorderedElementsAre("dest_tech_one", "dest_tech_two"));
+   EXPECT_THAT(worldMapper.tech_mapper.at(0).GetVic3Requirements(), testing::UnorderedElementsAre("source_tech"));
+}
+
 }  // namespace mappers
