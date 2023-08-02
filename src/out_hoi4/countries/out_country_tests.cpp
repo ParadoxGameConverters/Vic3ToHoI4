@@ -288,9 +288,6 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    expected_one << "}\n";
    expected_one << "\n";
    expected_one << "add_ideas = {\n";
-   expected_one << "\tlimited_conscription\n";
-   expected_one << "\tcivilian_economy\n";
-   expected_one << "\texport_focus\n";
    expected_one << "}\n";
    expected_one << "set_stability = 0.60\n";
    expected_one << "set_war_support = 0.60\n";
@@ -375,9 +372,6 @@ TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
    expected_one << "}\n";
    expected_one << "\n";
    expected_one << "add_ideas = {\n";
-   expected_one << "\tlimited_conscription\n";
-   expected_one << "\tcivilian_economy\n";
-   expected_one << "\texport_focus\n";
    expected_one << "\tidea_one\n";
    expected_one << "\tidea_two\n";
    expected_one << "}\n";

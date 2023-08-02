@@ -200,9 +200,6 @@ void out::OutputCountryHistory(std::string_view output_name,
    OutputPuppets(country_history, country.GetTag(), country.GetIdeology(), country.GetPuppets());
 
    country_history << "add_ideas = {\n";
-   country_history << "\tlimited_conscription\n";
-   country_history << "\tcivilian_economy\n";
-   country_history << "\texport_focus\n";
    for (const std::string& idea: country.GetIdeas())
    {
       country_history << fmt::format("\t{}\n", idea);
