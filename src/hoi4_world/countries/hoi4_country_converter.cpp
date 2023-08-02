@@ -174,6 +174,40 @@ std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<ho
    return active_variants;
 }
 
+
+std::set<std::string> ConvertLaws(const std::set<std::string>& vic3_laws, std::string_view ideology)
+{
+   std::set<std::string> hoi4_laws;
+
+   // civilian economy with export focus is the default
+   hoi4_laws.emplace("civilian_economy");
+   hoi4_laws.emplace("export_focus");
+
+   // but fascist countries change it up
+   if (ideology == "fascism")
+   {
+      hoi4_laws.clear();
+      hoi4_laws.emplace("partial_economic_mobilisation");
+      hoi4_laws.emplace("limited_exports");
+   }
+
+   if (vic3_laws.contains("law_peasant_levies"))
+   {
+      hoi4_laws.emplace("disarmed_nation");
+   }
+   else if (vic3_laws.contains("law_mass_conscription"))
+   {
+      hoi4_laws.emplace("limited_conscription");
+   }
+   else
+   {
+      hoi4_laws.emplace("volunteer_only");
+   }
+
+   return hoi4_laws;
+}
+
+
 std::string ConvertName(const std::string& vic_name, const commonItems::LocalizationDatabase& vic_localizations)
 {
    if (const auto& loc_block = vic_localizations.GetLocalizationBlock(vic_name); loc_block)
@@ -378,7 +412,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        DetermineActiveVariants(all_plane_variants, technologies);
    const std::vector<EquipmentVariant>& active_tank_variants = DetermineActiveVariants(all_tank_variants, technologies);
 
-   std::set<std::string> ideas;
+   std::set<std::string> ideas = ConvertLaws(source_country.GetActiveLaws(), ideology);
    if (source_country.IsDecentralized())
    {
       ideas.insert("decentralized");

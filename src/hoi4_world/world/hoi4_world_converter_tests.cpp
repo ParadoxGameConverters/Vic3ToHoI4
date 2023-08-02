@@ -132,6 +132,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
                                     .ship_variants = expected_ship_variants_one,
                                     .plane_variants = expected_plane_variants_one,
                                     .tank_variants = expected_tank_variants_one,
+                                    .ideas = {"civilian_economy", "export_focus", "volunteer_only"},
                                     .character_ids = {1},
                                 })),
            testing::Pair("TWO",
@@ -144,6 +145,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
                    .ship_variants = expected_ship_variants_two,
                    .plane_variants = expected_plane_variants_two,
                    .tank_variants = expected_tank_variants_two,
+                   .ideas = {"civilian_economy", "export_focus", "volunteer_only"},
                    .character_ids = {3},
                    .spy_ids = {2},
                }))));
