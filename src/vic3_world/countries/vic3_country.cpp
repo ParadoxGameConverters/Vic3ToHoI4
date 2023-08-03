@@ -31,7 +31,7 @@ RankCategory Country::GetCountryRankCategory(const vic3::World& world) const
    }
    else if (rankings.GetScoredCountries().contains(this->GetNumber()))
    {
-       // todo: distinguish between minor and insignificant power
+      // todo: distinguish between minor and insignificant power
       return RANK_MINOR_POWER;
    }
    else

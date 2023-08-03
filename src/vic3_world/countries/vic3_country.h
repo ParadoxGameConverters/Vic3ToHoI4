@@ -32,11 +32,11 @@ struct CountryOptions
 
 enum RankCategory
 {
-RANK_GREAT_POWER,
-RANK_MAJOR_POWER,
-RANK_MINOR_POWER,//called "unrecognized regional power" if unrecognized
-RANK_INSIGNIFICANT_POWER,//called "unrecognized power" if unrecognized
-RANK_DECENTRALIZED_POWER
+   RANK_GREAT_POWER,
+   RANK_MAJOR_POWER,
+   RANK_MINOR_POWER,          // called "unrecognized regional power" if unrecognized
+   RANK_INSIGNIFICANT_POWER,  // called "unrecognized power" if unrecognized
+   RANK_DECENTRALIZED_POWER
 };
 
 
@@ -65,7 +65,7 @@ class Country
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
-   ///Is the country a recognized or colonial nation
+   /// Is the country a recognized or colonial nation
    [[nodiscard]] bool IsRecognized() const { return !IsDecentralized() && country_type_ != "unrecognized"; }
    [[nodiscard]] const std::set<std::string>& GetActiveLaws() const { return active_laws_; }
    [[nodiscard]] const std::set<std::string>& GetPrimaryCultures() const { return primary_cultures_; }
