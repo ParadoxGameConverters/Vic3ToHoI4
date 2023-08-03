@@ -21,7 +21,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const mappers::WorldMapper world_mapper =
-       mappers::WorldMapperBuilder::NullMapper()
+       mappers::WorldMapperBuilder::CreateNullMapper()
            .AddCountries({{1, "TAG"}, {2, "TWO"}})
            .SetCultureGraphicsMapper(mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt"))
            .AddTechs({{{"source_technology_one"}, std::nullopt, {"dest_technology_one", "dest_technology_two"}},

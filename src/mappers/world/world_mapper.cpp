@@ -9,16 +9,13 @@
 namespace mappers
 {
 
-WorldMapperBuilder WorldMapperBuilder::DefaultMapper(commonItems::ModFilesystem hoi4_mod_filesystem,
+WorldMapperBuilder WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem hoi4_mod_filesystem,
     const vic3::World& source_world)
 {
-   const mappers::CountryMapper country_mapper =
-       mappers::CreateCountryMappings("configurables/country_mappings.txt", source_world.GetCountries());
-
    const auto province_mapper = mappers::ProvinceMapperImporter(hoi4_mod_filesystem).ImportProvinceMappings();
 
    WorldMapperBuilder builder = WorldMapperBuilder();
-   builder.country_mappings = country_mapper.GetCountryMappings();
+   builder.DefaultCountryMapper(source_world);
    builder.hoi_vic_province_mappings = province_mapper.GetHoi4ToVic3ProvinceMappings();
    builder.vic_hoi_province_mappings = province_mapper.GetVic3ToHoi4ProvinceMappings();
    builder.DefaultTechMapper();
@@ -26,7 +23,7 @@ WorldMapperBuilder WorldMapperBuilder::DefaultMapper(commonItems::ModFilesystem 
    return builder;
 }
 
-WorldMapperBuilder WorldMapperBuilder::NullMapper()
+WorldMapperBuilder WorldMapperBuilder::CreateNullMapper()
 {
    WorldMapperBuilder builder = WorldMapperBuilder();
    builder.country_mappings = std::map<int, std::string>();
@@ -43,6 +40,14 @@ WorldMapper WorldMapperBuilder::Build()
        std::move(ProvinceMapper(this->vic_hoi_province_mappings, this->hoi_vic_province_mappings)),
        std::move(tech_mappings),
        std::move(this->culture_graphics_mapper));
+}
+
+WorldMapperBuilder& WorldMapperBuilder::DefaultCountryMapper(const vic3::World& source_world)
+{
+   const mappers::CountryMapper country_mapper =
+       mappers::CreateCountryMappings("configurables/country_mappings.txt", source_world.GetCountries());
+   this->country_mappings = country_mapper.GetCountryMappings();
+   return *this;
 }
 
 WorldMapperBuilder& WorldMapperBuilder::AddCountries(const std::map<int, std::string>& countries)
@@ -85,13 +90,13 @@ WorldMapperBuilder& WorldMapperBuilder::SetCultureGraphicsMapper(CultureGraphics
    return *this;
 }
 
-WorldMapperBuilder WorldMapperBuilder::DefaultCultureGraphicsMapper()
+WorldMapperBuilder& WorldMapperBuilder::DefaultCultureGraphicsMapper()
 {
    this->culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
    return *this;
 }
 
-WorldMapperBuilder WorldMapperBuilder::DefaultTechMapper()
+WorldMapperBuilder& WorldMapperBuilder::DefaultTechMapper()
 {
    this->tech_mappings = mappers::ImportTechMappings();
    return *this;

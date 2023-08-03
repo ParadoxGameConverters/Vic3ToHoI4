@@ -50,13 +50,17 @@ class WorldMapperBuilder
    /// <summary>
    /// Create a mapper with null maps that return nothing.
    /// </summary>
-   static WorldMapperBuilder NullMapper();
+   static WorldMapperBuilder CreateNullMapper();
    /// <summary>
    /// Create a mapper with the default maps that looks up data in the included files.
    /// </summary>
    /// <returns></returns>
-   static WorldMapperBuilder DefaultMapper(commonItems::ModFilesystem hoi4_mod_filesystem,
+   static WorldMapperBuilder CreateDefaultMapper(commonItems::ModFilesystem hoi4_mod_filesystem,
        const vic3::World& source_world);
+   /// <summary>
+   /// Use the default country mapper with the countries in the target source world.
+   /// </summary>
+   WorldMapperBuilder& DefaultCountryMapper(const vic3::World& source_world);
    /// <summary>
    /// Add one or more countries to the mapper. Element format is {vic3Num, hoiTag}
    /// </summary>
@@ -68,7 +72,7 @@ class WorldMapperBuilder
    /// <summary>
    /// Sets tech manager to the default tech manager, since we don't usually change this.
    /// </summary>
-   WorldMapperBuilder DefaultTechMapper();
+   WorldMapperBuilder& DefaultTechMapper();
    /// <summary>
    /// Add one or more techs to the mapper. Element format is {{vic3reqs...}, (optional)limit, hoi4techs}
    /// </summary>
@@ -76,7 +80,7 @@ class WorldMapperBuilder
    /// <summary>
    /// Sets culture graphics manager to the default culture graphics manager, since we don't usually change this.
    /// </summary>
-   WorldMapperBuilder DefaultCultureGraphicsMapper();
+   WorldMapperBuilder& DefaultCultureGraphicsMapper();
    /// <summary>
    /// Set culture graphics mapper. Must be constructed separately.
    /// </summary>
