@@ -70,7 +70,7 @@ class WorldMapperBuilder
    /// </summary>
    WorldMapperBuilder DefaultTechMapper();
    /// <summary>
-   /// Add one or more techs to the mapper. Element format is {{vic3reqs...}, (optional)limit, hoi4techs} 
+   /// Add one or more techs to the mapper. Element format is {{vic3reqs...}, (optional)limit, hoi4techs}
    /// </summary>
    WorldMapperBuilder& AddTechs(const std::vector<mappers::TechMapping>& techs);
    /// <summary>

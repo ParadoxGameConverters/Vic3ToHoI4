@@ -9,8 +9,8 @@
 namespace mappers
 {
 
-WorldMapperBuilder WorldMapperBuilder::DefaultMapper(
-    commonItems::ModFilesystem hoi4_mod_filesystem, const vic3::World& source_world)
+WorldMapperBuilder WorldMapperBuilder::DefaultMapper(commonItems::ModFilesystem hoi4_mod_filesystem,
+    const vic3::World& source_world)
 {
    const mappers::CountryMapper country_mapper =
        mappers::CreateCountryMappings("configurables/country_mappings.txt", source_world.GetCountries());
