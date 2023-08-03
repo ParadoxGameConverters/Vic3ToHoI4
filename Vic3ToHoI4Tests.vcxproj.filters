@@ -154,6 +154,9 @@
     <Filter Include="src\vic3_world\ideologies">
       <UniqueIdentifier>{cb068080-31d2-4e70-b82a-6b8524305d81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\mappers\world">
+      <UniqueIdentifier>{e9c5ed27-a779-48d0-b5b8-e75a87e15d9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -459,6 +462,9 @@
     <ClCompile Include="src\vic3_world\ideologies\ideologies_importer_tests.cpp">
       <Filter>src\vic3_world\ideologies</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\world\world_mapper_builder_tests.cpp">
+      <Filter>src\mappers\world</Filter>
+	</ClCompile>
     <ClCompile Include="src\vic3_world\countries\vic3_country_tests.cpp">
       <Filter>src\vic3_world\countries</Filter>
     </ClCompile>
