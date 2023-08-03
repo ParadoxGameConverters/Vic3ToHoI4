@@ -22,9 +22,15 @@ class WorldMapper
    static WorldMapper LoadFromFiles(commonItems::ModFilesystem hoi4_mod_filesystem, const vic3::World& source_world);
 
    WorldMapper(const CountryMapper&& country_mapper,
-       const ProvinceMapper&& provice_mapper,
+       const ProvinceMapper&& province_mapper,
        const std::vector<mappers::TechMapping>&& tech_mapper,
-       const CultureGraphicsMapper culture_graphics_mapper);
+       const CultureGraphicsMapper culture_graphics_mapper):
+       country_mapper(std::move(country_mapper)),
+       province_mapper(std::move(province_mapper)),
+       tech_mapper(std::move(tech_mapper)),
+       culture_graphics_mapper(std::move(culture_graphics_mapper))
+   {
+   }
 
    const CountryMapper country_mapper;
    const ProvinceMapper province_mapper;
@@ -39,7 +45,8 @@ class WorldMapperBuilder
    Hoi4ToVic3ProvinceMapping hoi_vic_province_mappings;
    std::vector<mappers::TechMapping> tech_mappings;
    CultureGraphicsMapper culture_graphics_mapper;
-   WorldMapperBuilder();
+   WorldMapperBuilder(): culture_graphics_mapper({}) {}
+
 
   public:
    /// <summary>
@@ -49,19 +56,19 @@ class WorldMapperBuilder
    /// <summary>
    /// Add one or more countries to the mapper. Element format is {vic3Num, hoiTag}
    /// </summary>
-   WorldMapperBuilder AddCountries(std::map<int, std::string> countries);
+   WorldMapperBuilder& AddCountries(const std::map<int, std::string>& countries);
    /// <summary>
    /// Add one or more provinces to the mapper. Element format is {vic3string, hoiNum}. Only supports 1:1 mappings.
    /// </summary>
-   WorldMapperBuilder AddProvinces(std::map<std::string, int> provinces);
+   WorldMapperBuilder& AddProvinces(const std::map<std::string, int>& provinces);
    /// <summary>
    /// Add one or more techs to the mapper.
    /// </summary>
-   WorldMapperBuilder AddTechs(std::vector<mappers::TechMapping> techs);
+   WorldMapperBuilder& AddTechs(const std::vector<mappers::TechMapping>& techs);
    /// <summary>
    /// Set culture graphics mapper. Must be constructed separately.
    /// </summary>
-   WorldMapperBuilder SetCultureGraphicsMapper(CultureGraphicsMapper mapper);
+   WorldMapperBuilder& SetCultureGraphicsMapper(CultureGraphicsMapper mapper);
    WorldMapper Build();
 };
 

@@ -30,28 +30,6 @@ WorldMapper WorldMapper::LoadFromFiles(commonItems::ModFilesystem hoi4_mod_files
        std::move(culture_graphics_mapper));
 }
 
-///// <summary>
-///// Create a default-valued world_mapper that basically does nothing
-///// </summary>
-// world_mapper::world_mapper(): country_mapper(), province_mapper()
-//{
-// }
-
-WorldMapper::WorldMapper(const CountryMapper&& country_mapper,
-    const ProvinceMapper&& province_mapper,
-    const std::vector<mappers::TechMapping>&& tech_mapper,
-    const CultureGraphicsMapper culture_graphics_mapper):
-    country_mapper(std::move(country_mapper)),
-    province_mapper(std::move(province_mapper)),
-    tech_mapper(std::move(tech_mapper)),
-    culture_graphics_mapper(std::move(culture_graphics_mapper))
-{
-}
-
-WorldMapperBuilder::WorldMapperBuilder(): culture_graphics_mapper({})
-{
-}
-
 WorldMapperBuilder WorldMapperBuilder::NullMapper()
 {
    WorldMapperBuilder builder = WorldMapperBuilder();
@@ -71,7 +49,7 @@ WorldMapper WorldMapperBuilder::Build()
        std::move(this->culture_graphics_mapper));
 }
 
-WorldMapperBuilder WorldMapperBuilder::AddCountries(std::map<int, std::string> countries)
+WorldMapperBuilder& WorldMapperBuilder::AddCountries(const std::map<int, std::string>& countries)
 {
    for (auto& el: countries)
    {
@@ -81,7 +59,7 @@ WorldMapperBuilder WorldMapperBuilder::AddCountries(std::map<int, std::string> c
    return *this;
 }
 
-WorldMapperBuilder WorldMapperBuilder::AddProvinces(std::map<std::string, int> provinces)
+WorldMapperBuilder& WorldMapperBuilder::AddProvinces(const std::map<std::string, int>& provinces)
 {
    for (auto& el: provinces)
    {
@@ -95,7 +73,7 @@ WorldMapperBuilder WorldMapperBuilder::AddProvinces(std::map<std::string, int> p
    return *this;
 }
 
-WorldMapperBuilder WorldMapperBuilder::AddTechs(std::vector<mappers::TechMapping> techs)
+WorldMapperBuilder& WorldMapperBuilder::AddTechs(const std::vector<mappers::TechMapping>& techs)
 {
    for (auto& el: techs)
    {
@@ -105,7 +83,7 @@ WorldMapperBuilder WorldMapperBuilder::AddTechs(std::vector<mappers::TechMapping
    return *this;
 }
 
-WorldMapperBuilder WorldMapperBuilder::SetCultureGraphicsMapper(CultureGraphicsMapper mapper)
+WorldMapperBuilder& WorldMapperBuilder::SetCultureGraphicsMapper(CultureGraphicsMapper mapper)
 {
    this->culture_graphics_mapper = mapper;
    return *this;
