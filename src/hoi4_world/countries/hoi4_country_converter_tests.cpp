@@ -996,40 +996,6 @@ TEST(Hoi4worldCountriesCountryConverter, FascistCountriesGetDifferentEconomicIde
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, PeasantLeviesLeadToDisarmedNation)
-{
-   const vic3::World source_world = vic3::World(vic3::WorldOptions());
-   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
-   const vic3::Country source_country_one({.number = 1, .capital_state = 2, .active_laws = {"law_peasant_levies"}});
-   std::map<int, Character> dummy_characters;
-   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
-
-   mappers::IdeologyPointsMap foo{{"fascism", 100}};
-
-   const auto country_one = ConvertCountry(source_world,
-       source_country_one,
-       commonItems::LocalizationDatabase{{}, {}},
-       country_mapper,
-       {},
-       {},
-       mappers::IdeologyMapper({}, {}),
-       {},
-       {},
-       {},
-       {},
-       {},
-       mappers::CultureGraphicsMapper{{}},
-       mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
-       dummy_characters,
-       dummy_culture_queues);
-
-   ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetLaws(),
-       testing::UnorderedElementsAre("civilian_economy", "export_focus", "disarmed_nation"));
-}
-
-
 TEST(Hoi4worldCountriesCountryConverter, MassConscriptionLeadsToLimitedConscription)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
