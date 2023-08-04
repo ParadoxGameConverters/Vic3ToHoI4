@@ -190,11 +190,7 @@ std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std
       trade_law = "limited_exports";
    }
 
-   if (vic3_laws.contains("law_peasant_levies"))
-   {
-      military_law = "disarmed_nation";
-   }
-   else if (vic3_laws.contains("law_mass_conscription"))
+   if (vic3_laws.contains("law_mass_conscription"))
    {
       military_law = "limited_conscription";
    }
