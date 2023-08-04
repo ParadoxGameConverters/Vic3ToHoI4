@@ -133,8 +133,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 
    EXPECT_THAT(countries,
        testing::ElementsAre(testing::Pair("TAG",
-                                Country(CountryOptions{
-                                    .tag = "TAG",
+                                Country(CountryOptions{.tag = "TAG",
                                     .color = commonItems::Color{std::array{1, 2, 3}},
                                     .capital_state = 10,
                                     .ideology = "neutrality",
@@ -147,10 +146,9 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .graphics_block = expected_graphics_block_one,
                                     .character_ids = {1, 3},
                                     .spy_ids = {4},
-                                })),
+                                    .starting_research_slots = 3})),
            testing::Pair("TWO",
-               Country(CountryOptions{
-                   .tag = "TWO",
+               Country(CountryOptions{.tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
                    .capital_state = 20,
                    .ideology = "democratic",
@@ -162,7 +160,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .tank_variants = expected_tank_variants_two,
                    .graphics_block = expected_graphics_block_two,
                    .character_ids = {2},
-               }))));
+                   .starting_research_slots = 3}))));
 }
 
 }  // namespace hoi4

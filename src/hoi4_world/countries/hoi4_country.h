@@ -47,7 +47,7 @@ struct CountryOptions
    std::vector<int> character_ids;
    std::set<int> spy_ids;
    std::set<std::string> puppets;
-   int starting_research_slots;
+   int starting_research_slots = 3;
 };
 
 

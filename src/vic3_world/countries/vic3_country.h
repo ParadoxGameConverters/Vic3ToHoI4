@@ -30,13 +30,13 @@ struct CountryOptions
    std::set<int> puppets;
 };
 
-enum RankCategory
+enum class RankCategory
 {
-   RANK_GREAT_POWER,
-   RANK_MAJOR_POWER,
-   RANK_MINOR_POWER,          // called "unrecognized regional power" if unrecognized
-   RANK_INSIGNIFICANT_POWER,  // called "unrecognized power" if unrecognized
-   RANK_DECENTRALIZED_POWER
+   GreatPower,
+   MajorPower,
+   MinorPower,          // called "unrecognized regional power" if unrecognized
+   InsignificantPower,  // called "unrecognized power" if unrecognized
+   DecentralizedPower
 };
 
 
