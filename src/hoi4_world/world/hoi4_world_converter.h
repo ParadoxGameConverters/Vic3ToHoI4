@@ -15,6 +15,7 @@
 #include "src/hoi4_world/world/hoi4_world.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapper.h"
+#include "src/mappers/world/world_mapper.h"
 #include "src/vic3_world/world/vic3_world.h"
 
 
@@ -24,8 +25,7 @@ namespace hoi4
 
 World ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
-    const mappers::CountryMapper& country_mapper,
-    const mappers::ProvinceMapper& province_mapper,
+    const mappers::WorldMapper& world_mapper,
     bool debug);
 
 }  // namespace hoi4

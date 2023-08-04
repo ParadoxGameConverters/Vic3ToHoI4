@@ -3,7 +3,6 @@
 #include "external/commonItems/Log.h"
 
 
-
 std::vector<int> mappers::ProvinceMapper::GetVic3ToHoi4ProvinceMapping(std::string_view vic3_province) const
 {
    const auto mapping = vic3_to_hoi4_province_map_.find(std::string(vic3_province));

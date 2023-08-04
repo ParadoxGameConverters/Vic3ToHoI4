@@ -5027,12 +5027,12 @@
 	link = { vic3 = x7070B8 hoi4 = 12304 } # Kingston [city][port] -> Kingston
 	link = { vic3 = x1E761E vic3 = x535B49 hoi4 = 12477 } # STATE_JAMAICA, Montego Bay [farm] -> Montego Bay
 	link = { comment = "* * STATE_CUBA " }
-	link = { vic3 = xB48FF1 vic3 = x30B001 hoi4 = 1550 } # STATE_CUBA, STATE_CUBA -> Santiago de Cuba
+	link = { vic3 = xB48FF1 vic3 = x30B001 vic3 = xE70FA4 hoi4 = 1550 } # STATE_CUBA, STATE_CUBA, Santiago de Cuba [port] -> Santiago de Cuba
 	link = { vic3 = x152D1C vic3 = x9957D8 vic3 = xEBE1C7 hoi4 = 4476 } # Puerto Príncipe [farm], STATE_CUBA, STATE_CUBA -> Camagüey
 	link = { vic3 = x61FC10 vic3 = xB325C7 vic3 = xF3F2C9 hoi4 = 4600 } # STATE_CUBA, STATE_CUBA, STATE_CUBA -> Pinar del Río
 	link = { vic3 = x58C211 hoi4 = 7451 } # Santa Clara [wood] -> Santa Clara
 	link = { vic3 = x0DA38C vic3 = xD810EC hoi4 = 7546 } # STATE_CUBA, STATE_CUBA -> Las Tunas
-	link = { vic3 = x69C041 vic3 = xE70FA4 hoi4 = 7590 } # Guantanamo [mine], Santiago de Cuba [port] -> Guantánamo
+	link = { vic3 = x69C041 hoi4 = 7590 } # Guantanamo [mine] -> Guantánamo
 	link = { vic3 = xDCAB5D vic3 = xFCDEED hoi4 = 7622 } # STATE_CUBA, Havana [city] -> Havana
 	link = { vic3 = x20EFEA vic3 = xC464AE hoi4 = 10374 } # STATE_CUBA, STATE_CUBA -> Ciego de Ávila
 	link = { vic3 = xC3EB7D vic3 = xFE4123 vic3 = x4DD008 vic3 = xA70607 hoi4 = 10498 } # STATE_CUBA, STATE_CUBA, STATE_CUBA, STATE_CUBA -> Matanzas
