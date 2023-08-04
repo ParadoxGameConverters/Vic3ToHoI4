@@ -8,29 +8,22 @@
 
 namespace mappers
 {
-/// <summary>
-/// Create a world_mapper from file info.
-/// </summary>
-/// <returns></returns>
-WorldMapper WorldMapper::LoadFromFiles(commonItems::ModFilesystem hoi4_mod_filesystem, const vic3::World& source_world)
+
+WorldMapperBuilder WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem hoi4_mod_filesystem,
+    const vic3::World& source_world)
 {
-   const mappers::CountryMapper country_mapper =
-       mappers::CreateCountryMappings("configurables/country_mappings.txt", source_world.GetCountries());
    const auto province_mapper = mappers::ProvinceMapperImporter(hoi4_mod_filesystem).ImportProvinceMappings();
 
-   province_mapper.CheckAllVic3ProvincesMapped(source_world.GetProvinceDefinitions().GetProvinceDefinitions());
-
-   const std::vector<mappers::TechMapping> tech_mappings = mappers::ImportTechMappings();
-   const mappers::CultureGraphicsMapper culture_graphics_mapper =
-       mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
-
-   return WorldMapper(std::move(country_mapper),
-       std::move(province_mapper),
-       std::move(tech_mappings),
-       std::move(culture_graphics_mapper));
+   WorldMapperBuilder builder = WorldMapperBuilder();
+   builder.DefaultCountryMapper(source_world);
+   builder.hoi_vic_province_mappings = province_mapper.GetHoi4ToVic3ProvinceMappings();
+   builder.vic_hoi_province_mappings = province_mapper.GetVic3ToHoi4ProvinceMappings();
+   builder.DefaultTechMapper();
+   builder.DefaultCultureGraphicsMapper();
+   return builder;
 }
 
-WorldMapperBuilder WorldMapperBuilder::NullMapper()
+WorldMapperBuilder WorldMapperBuilder::CreateNullMapper()
 {
    WorldMapperBuilder builder = WorldMapperBuilder();
    builder.country_mappings = std::map<int, std::string>();
@@ -47,6 +40,14 @@ WorldMapper WorldMapperBuilder::Build()
        std::move(ProvinceMapper(this->vic_hoi_province_mappings, this->hoi_vic_province_mappings)),
        std::move(tech_mappings),
        std::move(this->culture_graphics_mapper));
+}
+
+WorldMapperBuilder& WorldMapperBuilder::DefaultCountryMapper(const vic3::World& source_world)
+{
+   const mappers::CountryMapper country_mapper =
+       mappers::CreateCountryMappings("configurables/country_mappings.txt", source_world.GetCountries());
+   this->country_mappings = country_mapper.GetCountryMappings();
+   return *this;
 }
 
 WorldMapperBuilder& WorldMapperBuilder::AddCountries(const std::map<int, std::string>& countries)
@@ -86,6 +87,18 @@ WorldMapperBuilder& WorldMapperBuilder::AddTechs(const std::vector<mappers::Tech
 WorldMapperBuilder& WorldMapperBuilder::SetCultureGraphicsMapper(CultureGraphicsMapper mapper)
 {
    this->culture_graphics_mapper = mapper;
+   return *this;
+}
+
+WorldMapperBuilder& WorldMapperBuilder::DefaultCultureGraphicsMapper()
+{
+   this->culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
+   return *this;
+}
+
+WorldMapperBuilder& WorldMapperBuilder::DefaultTechMapper()
+{
+   this->tech_mappings = mappers::ImportTechMappings();
    return *this;
 }
 }  // namespace mappers
