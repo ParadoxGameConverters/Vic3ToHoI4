@@ -70,8 +70,10 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
            },
    });
 
-   const mappers::WorldMapper world_mapper =
-       mappers::WorldMapperBuilder::CreateNullMapper().AddCountries({{1, "TAG"}, {3, "TWO"}}).DefaultTechMapper().Build();
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
+                                                 .AddCountries({{1, "TAG"}, {3, "TWO"}})
+                                                 .DefaultTechMapper()
+                                                 .Build();
    const World world =
        ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}), source_world, world_mapper, false);
 
