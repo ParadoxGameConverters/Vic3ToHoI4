@@ -18,22 +18,20 @@ TEST(MappersWorldWorldMapperBuilderTests, NullBuilderOutputsNull)
    EXPECT_TRUE(nullMapper.tech_mapper.empty());
 }
 
-//TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)
-//{
-//   const vic3::World world(vic3::WorldOptions({.countries = {
-//                                                   {1, vic3::Country({.number = 1, .tag = "Z00"})},
-//                                               }}));
-//   const auto worldMapper = WorldMapperBuilder::CreateDefaultMapper(
-//       commonItems::ModFilesystem("ModFilesystem/GetActualFileLocation/game_root", {}),
-//       world)
-//                                .Build();
-//
-//   EXPECT_EQ(worldMapper.country_mapper.GetHoiTag(1).value(), "Z00");
-//   EXPECT_TRUE(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMappings().empty());
-//   EXPECT_TRUE(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMappings().empty());
-//   EXPECT_THAT(worldMapper.tech_mapper.at(0).GetTechs(),
-//       testing::UnorderedElementsAre("dest_tech_one", "dest_tech_two"));
-//}
+TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)
+{
+   const vic3::World world(vic3::WorldOptions({.countries = {
+                                                   {1, vic3::Country({.number = 1, .tag = "Z00"})},
+                                               }}));
+   const auto worldMapper =
+       WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem("test_files/hoi4_world", {}), world).Build();
+
+   EXPECT_EQ(worldMapper.country_mapper.GetHoiTag(1).value(), "Z00");
+   EXPECT_TRUE(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMappings().empty());
+   EXPECT_TRUE(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMappings().empty());
+   EXPECT_THAT(worldMapper.tech_mapper.at(0).GetTechs(),
+       testing::UnorderedElementsAre("dest_tech_one", "dest_tech_two"));
+}
 
 TEST(MappersWorldWorldMapperBuilderTests, DefaultCountryWorks)
 {
