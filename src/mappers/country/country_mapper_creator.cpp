@@ -54,6 +54,8 @@ mappers::CountryMapper mappers::CreateCountryMappings(std::string_view country_m
    int tag_suffix = 0;
 
    std::vector<const vic3::Country*> deferred_map_countries = {};
+   // civil war countries are very last.
+   std::vector<const vic3::Country*> civilwar_map_countries = {};
 
    std::set<std::string> used_hoi4_tags;
    for (const vic3::Country& country: countries | std::views::values)
@@ -65,13 +67,50 @@ mappers::CountryMapper mappers::CreateCountryMappings(std::string_view country_m
       {
          country_mappings.emplace(country.GetNumber(), mappingRule->second);
       }
+      else if (!country.IsCivilWarCountry())
+      {
+         deferred_map_countries.emplace_back(&country);
+      }
       else
       {
-         deferred_map_countries.push_back(&country);
+         civilwar_map_countries.emplace_back(&country);
       }
    }
 
    for (const auto& country: deferred_map_countries)
+   {
+      const auto& vic3_tag = country->GetTag();
+      // first, attempt to map the default rule again. This will trigger for civil war countries
+      //  that have a different tag from their parent country.
+      const auto& mappingRule = country_mapping_rules.find(vic3_tag);
+      if (mappingRule != country_mapping_rules.end() && used_hoi4_tags.emplace(mappingRule->second).second)
+      {
+         country_mappings.emplace(country->GetNumber(), vic3_tag);
+      }
+      // if that doesn't work, try to use vic3 country tag next
+      else if (vic3_tag.length() == 3 && used_hoi4_tags.emplace(vic3_tag).second)
+      {
+         country_mappings.emplace(country->GetNumber(), vic3_tag);
+      }
+      else
+      {
+         std::string possible_hoi4_tag = fmt::format("{}{:0>2}", tag_prefix, tag_suffix);
+         while (used_hoi4_tags.contains(possible_hoi4_tag))
+         {
+            ++tag_suffix;
+            if (tag_suffix > 99)
+            {
+               tag_suffix = 0;
+               --tag_prefix;
+            }
+            possible_hoi4_tag = fmt::format("{}{:0>2}", tag_prefix, tag_suffix);
+         }
+         country_mappings.emplace(country->GetNumber(), possible_hoi4_tag);
+         used_hoi4_tags.emplace(possible_hoi4_tag);
+      }
+   }
+
+   for (const auto& country: civilwar_map_countries)
    {
       const auto& vic3_tag = country->GetTag();
       // first, attempt to map the default rule again. This will trigger for civil war countries
