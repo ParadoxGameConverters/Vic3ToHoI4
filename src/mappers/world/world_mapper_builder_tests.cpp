@@ -27,8 +27,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)
        WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem("test_files/hoi4_world", {}), world).Build();
 
    EXPECT_EQ(worldMapper.country_mapper.GetHoiTag(1).value(), "Z00");
-   EXPECT_TRUE(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMappings().empty());
-   EXPECT_TRUE(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMappings().empty());
+   EXPECT_EQ(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMapping("x002000").at(0), 2);
    EXPECT_THAT(worldMapper.tech_mapper.at(0).GetTechs(),
        testing::UnorderedElementsAre("dest_tech_one", "dest_tech_two"));
 }
