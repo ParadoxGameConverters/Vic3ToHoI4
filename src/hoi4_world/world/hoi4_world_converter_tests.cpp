@@ -21,21 +21,21 @@ namespace hoi4
 
 TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
 {
-   const mappers::CountryMapper country_mapper;
-   const vic3::World source_world(vic3::WorldOptions{});
+    const mappers::CountryMapper country_mapper;
+    const vic3::World source_world(vic3::WorldOptions{});
 
-   const mappers::ProvinceMapper province_mapper{{}, {}};
+    const mappers::ProvinceMapper province_mapper{{}, {}};
 
-   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
-       source_world,
-       country_mapper,
-       province_mapper,
-       false);
+    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+        source_world,
+        country_mapper,
+        province_mapper,
+        false);
 
-   EXPECT_TRUE(world.GetCountries().empty());
-   EXPECT_TRUE(world.GetStates().states.empty());
-   EXPECT_TRUE(world.GetStates().province_to_state_id_map.empty());
-   EXPECT_TRUE(world.GetCharacters().empty());
+    EXPECT_TRUE(world.GetCountries().empty());
+    EXPECT_TRUE(world.GetStates().states.empty());
+    EXPECT_TRUE(world.GetStates().province_to_state_id_map.empty());
+    EXPECT_TRUE(world.GetCharacters().empty());
 }
 
 
@@ -76,48 +76,48 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
            },
    });
 
-   mappers::ProvinceMapper province_mapper{{}, {}};
+   const mappers::ProvinceMapper province_mapper{{}, {}};
 
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
-       source_world,
-       country_mapper,
-       province_mapper,
-       false);
+                                          source_world,
+                                          country_mapper,
+                                          province_mapper,
+                                          false);
 
    const Technologies expected_techs_one{std::map<std::optional<std::string>, std::set<std::string>>{
        {std::nullopt, std::set<std::string>{"dest_tech_one", "dest_tech_two"}}}};
    const Technologies expected_techs_two{std::map<std::optional<std::string>, std::set<std::string>>{
        {R"(not = { has_dlc = "Test DLC" })", std::set<std::string>{"dest_tech_three"}}}};
    const std::vector<EquipmentVariant> expected_legacy_ship_variants_one = {
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Legacy Ship Variant Three\""}}),
+	   EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Legacy Ship Variant Three\""}}),
        EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Legacy Ship Variant Four\""}}),
    };
    const std::vector<EquipmentVariant> expected_legacy_ship_variants_two = {
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Legacy Ship Variant Three\""}}),
+	   EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Legacy Ship Variant Three\""}}),
        EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Legacy Ship Variant Four\""}}),
    };
    const std::vector<EquipmentVariant> expected_ship_variants_one = {
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Ship Variant Three\""}}),
-       EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Ship Variant Four\""}}),
+	   EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Ship Variant Three\""}}),
+	   EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Ship Variant Four\""}}),
    };
    const std::vector<EquipmentVariant> expected_ship_variants_two = {
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Ship Variant Three\""}}),
+	   EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Ship Variant Three\""}}),
        EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Ship Variant Four\""}}),
    };
    const std::vector<EquipmentVariant> expected_plane_variants_one = {
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Plane Design Three\""}}),
+	   EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Plane Design Three\""}}),
        EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Plane Design Four\""}}),
    };
    const std::vector<EquipmentVariant> expected_plane_variants_two = {
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Plane Design Three\""}}),
+	   EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Plane Design Three\""}}),
        EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Plane Design Four\""}}),
    };
    const std::vector<EquipmentVariant> expected_tank_variants_one = {
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Tank Design Three\""}}),
+	   EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Tank Design Three\""}}),
        EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Tank Design Four\""}}),
    };
    const std::vector<EquipmentVariant> expected_tank_variants_two = {
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Tank Design Three\""}}),
+	   EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Tank Design Three\""}}),
        EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Tank Design Four\""}}),
    };
 
@@ -132,7 +132,6 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
                                     .ship_variants = expected_ship_variants_one,
                                     .plane_variants = expected_plane_variants_one,
                                     .tank_variants = expected_tank_variants_one,
-                                    .ideas = {"civilian_economy", "export_focus", "volunteer_only"},
                                     .character_ids = {1},
                                 })),
            testing::Pair("TWO",
@@ -145,7 +144,6 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
                    .ship_variants = expected_ship_variants_two,
                    .plane_variants = expected_plane_variants_two,
                    .tank_variants = expected_tank_variants_two,
-                   .ideas = {"civilian_economy", "export_focus", "volunteer_only"},
                    .character_ids = {3},
                    .spy_ids = {2},
                }))));

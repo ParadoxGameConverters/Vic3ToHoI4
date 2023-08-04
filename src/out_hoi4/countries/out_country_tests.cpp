@@ -288,6 +288,9 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    expected_one << "}\n";
    expected_one << "\n";
    expected_one << "add_ideas = {\n";
+   expected_one << "\tcivilian_economy\n";
+   expected_one << "\texport_focus\n";
+   expected_one << "\tvolunteer_only\n";
    expected_one << "}\n";
    expected_one << "set_stability = 0.60\n";
    expected_one << "set_war_support = 0.60\n";
@@ -374,6 +377,9 @@ TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
    expected_one << "add_ideas = {\n";
    expected_one << "\tidea_one\n";
    expected_one << "\tidea_two\n";
+   expected_one << "\tcivilian_economy\n";
+   expected_one << "\texport_focus\n";
+   expected_one << "\tvolunteer_only\n";
    expected_one << "}\n";
    expected_one << "set_stability = 0.60\n";
    expected_one << "set_war_support = 0.60\n";
@@ -392,6 +398,38 @@ TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
    expected_one << "\tlimit = { has_dlc = \"No Step Back\" }\n";
    expected_one << "}\n";
    EXPECT_EQ(country_file_stream.str(), expected_one.str());
+}
+
+
+TEST(Outhoi4CountriesOutcountryTests, LawsAreOutputToCountryHistoryFile)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/IdeasAreOutputToCountryHistoryFile");
+   commonItems::TryCreateFolder("output/IdeasAreOutputToCountryHistoryFile/history");
+   commonItems::TryCreateFolder("output/IdeasAreOutputToCountryHistoryFile/history/countries");
+
+   const hoi4::Country country({.tag = "TAG",
+       .economy_law = "test_economy_law",
+       .trade_law = "test_trade_law",
+       .military_law = "test_military_law"});
+   OutputCountryHistory("IdeasAreOutputToCountryHistoryFile", country, {});
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/IdeasAreOutputToCountryHistoryFile/history/countries/TAG.txt"));
+   std::ifstream country_file("output/IdeasAreOutputToCountryHistoryFile/history/countries/TAG.txt");
+   ASSERT_TRUE(country_file.is_open());
+   std::stringstream country_file_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_stream));
+   country_file.close();
+
+   std::stringstream expected_one;
+   expected_one << "add_ideas = {\n";
+   expected_one << "\ttest_economy_law\n";
+   expected_one << "\ttest_trade_law\n";
+   expected_one << "\ttest_military_law\n";
+   expected_one << "}\n";
+   EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected_one.str()));
 }
 
 

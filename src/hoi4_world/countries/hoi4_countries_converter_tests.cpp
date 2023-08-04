@@ -142,7 +142,6 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .ship_variants = expected_ship_variants_one,
                                     .plane_variants = expected_plane_variants_one,
                                     .tank_variants = expected_tank_variants_one,
-                                    .ideas = {"civilian_economy", "export_focus", "volunteer_only"},
                                     .graphics_block = expected_graphics_block_one,
                                     .character_ids = {1, 3},
                                     .spy_ids = {4},
@@ -159,7 +158,6 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .ship_variants = expected_ship_variants_two,
                    .plane_variants = expected_plane_variants_two,
                    .tank_variants = expected_tank_variants_two,
-                   .ideas = {"civilian_economy", "export_focus", "volunteer_only"},
                    .graphics_block = expected_graphics_block_two,
                    .character_ids = {2},
                }))));

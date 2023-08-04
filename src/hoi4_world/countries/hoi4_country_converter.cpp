@@ -175,36 +175,31 @@ std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<ho
 }
 
 
-std::set<std::string> ConvertLaws(const std::set<std::string>& vic3_laws, std::string_view ideology)
+std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std::string>& vic3_laws,
+    std::string_view ideology)
 {
-   std::set<std::string> hoi4_laws;
-
-   // civilian economy with export focus is the default
-   hoi4_laws.emplace("civilian_economy");
-   hoi4_laws.emplace("export_focus");
+   // civilian economy with export focus and volunteer military is the default
+   std::string economy_law = "civilian_economy";
+   std::string trade_law = "export_focus";
+   std::string military_law = "volunteer_only";
 
    // but fascist countries change it up
    if (ideology == "fascism")
    {
-      hoi4_laws.clear();
-      hoi4_laws.emplace("partial_economic_mobilisation");
-      hoi4_laws.emplace("limited_exports");
+      economy_law = "partial_economic_mobilisation";
+      trade_law = "limited_exports";
    }
 
    if (vic3_laws.contains("law_peasant_levies"))
    {
-      hoi4_laws.emplace("disarmed_nation");
+      military_law = "disarmed_nation";
    }
    else if (vic3_laws.contains("law_mass_conscription"))
    {
-      hoi4_laws.emplace("limited_conscription");
-   }
-   else
-   {
-      hoi4_laws.emplace("volunteer_only");
+      military_law = "limited_conscription";
    }
 
-   return hoi4_laws;
+   return {economy_law, trade_law, military_law};
 }
 
 
@@ -412,7 +407,9 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        DetermineActiveVariants(all_plane_variants, technologies);
    const std::vector<EquipmentVariant>& active_tank_variants = DetermineActiveVariants(all_tank_variants, technologies);
 
-   std::set<std::string> ideas = ConvertLaws(source_country.GetActiveLaws(), ideology);
+   const auto& [economy_law, trade_law, military_law] = ConvertLaws(source_country.GetActiveLaws(), ideology);
+
+   std::set<std::string> ideas;
    if (source_country.IsDecentralized())
    {
       ideas.insert("decentralized");
@@ -470,6 +467,9 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .plane_variants = active_plane_variants,
        .tank_variants = active_tank_variants,
        .ideas = ideas,
+       .economy_law = economy_law,
+       .trade_law = trade_law,
+       .military_law = military_law,
        .graphics_block = graphics_block,
        .name_list = name_list,
        .character_ids = character_ids,

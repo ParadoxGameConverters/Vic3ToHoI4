@@ -204,6 +204,10 @@ void out::OutputCountryHistory(std::string_view output_name,
    {
       country_history << fmt::format("\t{}\n", idea);
    }
+   for (const std::string& law: country.GetLaws())
+   {
+      country_history << fmt::format("\t{}\n", law);
+   }
    country_history << "}\n";
    country_history << "set_stability = 0.60\n";
    country_history << "set_war_support = 0.60\n";
