@@ -1575,4 +1575,97 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetIdeologySupport(), testing::UnorderedElementsAre(testing::Pair("neutrality", 100)));
 }
+
+TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots)
+{
+   vic3::World source_world(
+       {.country_rankings = vic3::CountryRankings(std::set{4}, std::set{3, 2}, {{2, 10}, {3, 10}, {4, 10}})});
+   vic3::Country c1({.number = 1, .country_type = "decentralized"});
+   vic3::Country c2({.number = 2, .country_type = "colonial"});
+   vic3::Country c3({.number = 3, .country_type = "unrecognized"});
+   vic3::Country c4({.number = 4, .country_type = "recognized"});
+
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "Z02"}, {3, "Z03"}, {4, "Z04"}});
+   std::map<int, hoi4::Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
+
+   const auto country_one = ConvertCountry(source_world,
+       c1,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       vic3_state_ids_to_hoi4_state_ids,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       dummy_characters,
+       dummy_culture_queues);
+
+   const auto country_two = ConvertCountry(source_world,
+       c2,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       vic3_state_ids_to_hoi4_state_ids,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       dummy_characters,
+       dummy_culture_queues);
+
+   const auto country_three = ConvertCountry(source_world,
+       c3,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       vic3_state_ids_to_hoi4_state_ids,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       dummy_characters,
+       dummy_culture_queues);
+
+   const auto country_four = ConvertCountry(source_world,
+       c4,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       vic3_state_ids_to_hoi4_state_ids,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       dummy_characters,
+       dummy_culture_queues);
+
+
+   EXPECT_EQ(country_one.value().GetStartingResearchSlots(), 2);
+   EXPECT_EQ(country_two.value().GetStartingResearchSlots(), 3);
+   EXPECT_EQ(country_three.value().GetStartingResearchSlots(), 2);
+   EXPECT_EQ(country_four.value().GetStartingResearchSlots(), 4);
+}
 }  // namespace hoi4

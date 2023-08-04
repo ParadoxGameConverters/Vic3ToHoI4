@@ -69,3 +69,29 @@ TEST(Vic3worldCountriesVic3country, PowerRankWorks)
    EXPECT_EQ(c2.GetCountryRankCategory(world), vic3::RankCategory::MajorPower);
    EXPECT_EQ(c3.GetCountryRankCategory(world), vic3::RankCategory::MinorPower);
 }
+
+TEST(Vic3worldCountriesVic3country, IsDecentralized)
+{
+   vic3::Country c1({.country_type = "decentralized"});
+   vic3::Country c2({.country_type = "colonial"});
+   vic3::Country c3({.country_type = "unrecognized"});
+   vic3::Country c4({.country_type = "recognized"});
+
+   EXPECT_TRUE(c1.IsDecentralized());
+   EXPECT_FALSE(c2.IsDecentralized());
+   EXPECT_FALSE(c3.IsDecentralized());
+   EXPECT_FALSE(c4.IsDecentralized());
+}
+
+TEST(Vic3worldCountriesVic3country, IsRecognized)
+{
+   vic3::Country c1({.country_type = "decentralized"});
+   vic3::Country c2({.country_type = "colonial"});
+   vic3::Country c3({.country_type = "unrecognized"});
+   vic3::Country c4({.country_type = "recognized"});
+
+   EXPECT_FALSE(c1.IsRecognized());
+   EXPECT_TRUE(c2.IsRecognized());
+   EXPECT_FALSE(c3.IsRecognized());
+   EXPECT_TRUE(c4.IsRecognized());
+}
