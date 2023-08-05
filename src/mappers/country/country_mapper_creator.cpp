@@ -126,7 +126,7 @@ class CountryMappingCreator
    {
       for (decltype(strategies)::const_iterator strategy = strategies.begin(); strategy != strategies.end(); ++strategy)
       {
-         if ((**strategy)(this,country))
+         if ((**strategy)(this, country))
          {
             return;
          }
