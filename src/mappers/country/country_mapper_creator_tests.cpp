@@ -70,7 +70,6 @@ TEST(MappersCountryCountryMapperCreator, CivilWarCountryIsSecondary)
    const CountryMapper country_mapper = CreateCountryMappings("", source_countries);
    EXPECT_EQ(country_mapper.GetHoiTag(1), "Z00");
    EXPECT_EQ(country_mapper.GetHoiTag(2), "TAG");
-   
 }
 
 TEST(MappersCountryCountryMapperCreator, MappingsCanComeFromRulesFile)
