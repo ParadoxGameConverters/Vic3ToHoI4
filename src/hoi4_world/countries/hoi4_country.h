@@ -50,6 +50,7 @@ struct CountryOptions
    std::vector<int> character_ids;
    std::set<int> spy_ids;
    std::set<std::string> puppets;
+   int starting_research_slots = 3;
 };
 
 
@@ -78,7 +79,8 @@ class Country
        name_list_(std::move(country_options.name_list)),
        character_ids_(std::move(country_options.character_ids)),
        spy_ids_(std::move(country_options.spy_ids)),
-       puppets_(std::move(country_options.puppets))
+       puppets_(std::move(country_options.puppets)),
+       starting_research_slots_(country_options.starting_research_slots)
    {
    }
 
@@ -103,6 +105,7 @@ class Country
    [[nodiscard]] const std::vector<int>& GetLeaderIds() const { return character_ids_; }
    [[nodiscard]] const std::set<int>& GetSpyIds() const { return spy_ids_; }
    [[nodiscard]] const std::set<std::string>& GetPuppets() const { return puppets_; }
+   [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
@@ -129,6 +132,7 @@ class Country
    std::vector<int> character_ids_;
    std::set<int> spy_ids_;
    std::set<std::string> puppets_;
+   int starting_research_slots_;
 };
 
 }  // namespace hoi4

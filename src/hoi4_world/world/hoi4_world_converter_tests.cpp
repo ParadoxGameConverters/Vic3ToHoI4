@@ -126,6 +126,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
                                     .plane_variants = expected_plane_variants_one,
                                     .tank_variants = expected_tank_variants_one,
                                     .character_ids = {1},
+                                    .starting_research_slots = 3,
                                 })),
            testing::Pair("TWO",
                Country(CountryOptions{
@@ -139,6 +140,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
                    .tank_variants = expected_tank_variants_two,
                    .character_ids = {3},
                    .spy_ids = {2},
+                   .starting_research_slots = 3,
                }))));
 }
 

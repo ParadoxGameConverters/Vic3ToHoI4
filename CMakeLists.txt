@@ -266,6 +266,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/characters/hoi4_character_conve
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/characters/hoi4_characters_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/countries/hoi4_countries_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/countries/hoi4_country_converter_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/countries/hoi4_country_converter_tests_tech.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/localizations/localizations_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/buildings_creator_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/map/coastal_provinces_creator_tests.cpp")

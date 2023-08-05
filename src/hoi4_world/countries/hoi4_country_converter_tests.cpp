@@ -1671,4 +1671,5 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetIdeologySupport(), testing::UnorderedElementsAre(testing::Pair("neutrality", 100)));
 }
+
 }  // namespace hoi4

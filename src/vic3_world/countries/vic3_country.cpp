@@ -18,4 +18,26 @@ std::set<std::string> Country::GetAcquiredTechnologies(const vic3::World& world)
    }
 }
 
+RankCategory Country::GetCountryRankCategory(const vic3::World& world) const
+{
+   const auto& rankings = world.GetCountryRankings();
+   if (rankings.GetGreatPowers().contains(this->GetNumber()))
+   {
+      return RankCategory::GreatPower;
+   }
+   else if (rankings.GetMajorPowers().contains(this->GetNumber()))
+   {
+      return RankCategory::MajorPower;
+   }
+   else if (rankings.GetScoredCountries().contains(this->GetNumber()))
+   {
+      // todo: distinguish between minor and insignificant power
+      return RankCategory::MinorPower;
+   }
+   else
+   {
+      return RankCategory::DecentralizedPower;
+   }
+}
+
 }  // namespace vic3

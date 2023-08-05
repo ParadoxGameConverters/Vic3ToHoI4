@@ -97,6 +97,7 @@
     <ClCompile Include="external\commonItems\external\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="external\commonItems\external\googletest\googletest\src\gtest_main.cc" />
+    <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests_tech.cpp" />
     <ClCompile Include="src\mappers\world\world_mapper_builder_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_tests.cpp" />
     <ClCompile Include="src\vic3_world\ideologies\ideologies.cpp" />
