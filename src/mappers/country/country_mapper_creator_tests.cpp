@@ -90,6 +90,4 @@ TEST(MappersCountryCountryMapperCreator, MappingsCanComeFromRulesFile)
    EXPECT_EQ(country_mapper.GetHoiTag(4), "Z01");  // Generated. Previous rule generated Z00, so advanced to Z01.
 }
 
-
-
 }  // namespace mappers

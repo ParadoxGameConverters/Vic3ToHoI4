@@ -13,7 +13,7 @@
 namespace
 {
 
-std::map<std::string, std::string> ImportMappingRules(std::string_view country_mappings_file)
+std::map<std::string, std::string>&& ImportMappingRules(std::string_view country_mappings_file)
 {
    std::map<std::string, std::string> country_mapping_rules;  // vic3 tag -> hoi4 tag
 
@@ -38,20 +38,20 @@ std::map<std::string, std::string> ImportMappingRules(std::string_view country_m
 
    country_mappings_parser.parseFile(country_mappings_file);
 
-   return country_mapping_rules;
+   return std::move(country_mapping_rules);
 }
 
 /// Class so that different mapping strategies can share global variables like country_mappings and
 /// country_mapping_rules
 class CountryMappingCreator
 {
-   std::map<int, std::string> country_mappings = {};
-   std::map<std::string, std::string> country_mapping_rules;
-   std::vector<const vic3::Country*> deferred_map_countries = {};
+   std::map<int, std::string> country_mappings_ = {};
+   std::map<std::string, std::string> country_mapping_rules_;
+   std::vector<const vic3::Country*> deferred_map_countries_ = {};
 
-   std::set<std::string> used_hoi4_tags = {};
-   char tag_prefix = 'Z';
-   int tag_suffix = 0;
+   std::set<std::string> used_hoi4_tags_ = {};
+   char tag_prefix_ = 'Z';
+   int tag_suffix_ = 0;
 
    // note: these are static because of bound function weirdness
 
@@ -60,7 +60,7 @@ class CountryMappingCreator
    {
       if (country.IsCivilWarCountry())
       {
-         this_->deferred_map_countries.push_back(&country);
+         this_->deferred_map_countries_.push_back(&country);
          return true;
       }
       return false;
@@ -73,11 +73,11 @@ class CountryMappingCreator
    static bool AddCountryWithRule(CountryMappingCreator* this_, const vic3::Country& country)
    {
       const auto& vic3_tag = country.GetTag();
-      const auto& mappingRule = this_->country_mapping_rules.find(vic3_tag);
-      if (mappingRule != this_->country_mapping_rules.end() &&
-          this_->used_hoi4_tags.emplace(mappingRule->second).second)
+      const auto& mappingRule = this_->country_mapping_rules_.find(vic3_tag);
+      if (mappingRule != this_->country_mapping_rules_.end() &&
+          this_->used_hoi4_tags_.emplace(mappingRule->second).second)
       {
-         this_->country_mappings.emplace(country.GetNumber(), mappingRule->second);
+         this_->country_mappings_.emplace(country.GetNumber(), mappingRule->second);
          return true;
       }
       return false;
@@ -86,7 +86,7 @@ class CountryMappingCreator
    // Countries should always be deferred.
    static bool DeferCountryAlways(CountryMappingCreator* this_, const vic3::Country& country)
    {
-      this_->deferred_map_countries.push_back(&country);
+      this_->deferred_map_countries_.push_back(&country);
       return true;
    }
 
@@ -94,9 +94,9 @@ class CountryMappingCreator
    static bool AddCountryWithVicId(CountryMappingCreator* this_, const vic3::Country& country)
    {
       const auto vic3_tag = country.GetTag();
-      if (vic3_tag.length() == 3 && this_->used_hoi4_tags.emplace(vic3_tag).second)
+      if (vic3_tag.length() == 3 && this_->used_hoi4_tags_.emplace(vic3_tag).second)
       {
-         this_->country_mappings.emplace(country.GetNumber(), vic3_tag);
+         this_->country_mappings_.emplace(country.GetNumber(), vic3_tag);
          return true;
       }
       return false;
@@ -108,23 +108,23 @@ class CountryMappingCreator
       std::string possible_hoi4_tag;
       do
       {
-         possible_hoi4_tag = fmt::format("{}{:0>2}", this_->tag_prefix, this_->tag_suffix);
-         ++this_->tag_suffix;
-         if (this_->tag_suffix > 99)
+         possible_hoi4_tag = fmt::format("{}{:0>2}", this_->tag_prefix_, this_->tag_suffix_);
+         ++this_->tag_suffix_;
+         if (this_->tag_suffix_ > 99)
          {
-            this_->tag_suffix = 0;
-            --this_->tag_prefix;
+            this_->tag_suffix_ = 0;
+            --this_->tag_prefix_;
          }
-      } while (this_->used_hoi4_tags.contains(possible_hoi4_tag));
-      this_->country_mappings.emplace(country.GetNumber(), possible_hoi4_tag);
-      this_->used_hoi4_tags.emplace(possible_hoi4_tag);
+      } while (this_->used_hoi4_tags_.contains(possible_hoi4_tag));
+      this_->country_mappings_.emplace(country.GetNumber(), possible_hoi4_tag);
+      this_->used_hoi4_tags_.emplace(possible_hoi4_tag);
       return true;
    }
 
    // Attempt to name (or defer naming of) a country. Only the first successful strategy will be used.
-   void ExecuteStrategiesForCountry(const vic3::Country& country, const std::vector<CountryStrategyFn*> strategies)
+   void ExecuteStrategiesForCountry(const vic3::Country& country, const std::vector<CountryStrategyFn*>&& strategies)
    {
-      for (decltype(strategies)::const_iterator strategy = strategies.begin(); strategy != strategies.end(); ++strategy)
+      for (auto strategy = strategies.begin(); strategy != strategies.end(); ++strategy)
       {
          if ((**strategy)(this, country))
          {
@@ -134,35 +134,38 @@ class CountryMappingCreator
    }
 
   public:
-   CountryMappingCreator(std::string_view country_mappings_file):
-       country_mapping_rules(ImportMappingRules(country_mappings_file))
+   explicit CountryMappingCreator(std::string_view country_mappings_file):
+       country_mapping_rules_(ImportMappingRules(country_mappings_file))
    {
    }
 
    // Where the logic happens
    std::map<int, std::string>&& AssignTags(auto countries)
    {
+      country_mappings_.clear();
+      tag_prefix_ = 'Z';
+      tag_suffix_ = 0;
       for (const auto& country: countries)
       {
          ExecuteStrategiesForCountry(country, {DeferCountryWithCivilWar, AddCountryWithRule, DeferCountryAlways});
       }
 
       // after we got the initial rule countries, try again via vicId and then Znn
-      std::vector<const vic3::Country*> currentDeferredCountries = std::move(deferred_map_countries);
-      deferred_map_countries = {};
+      std::vector<const vic3::Country*> currentDeferredCountries(std::move(deferred_map_countries_));
+      deferred_map_countries_.clear();
       for (const auto& country: currentDeferredCountries)
       {
          ExecuteStrategiesForCountry(*country, {DeferCountryWithCivilWar, AddCountryWithVicId, AddCountryWithZ});
       }
       // finally try the civil war countries
-      currentDeferredCountries = std::move(deferred_map_countries);
-      deferred_map_countries = {};
+      currentDeferredCountries = std::move(deferred_map_countries_);
+      deferred_map_countries_.clear();
       for (const auto& country: currentDeferredCountries)
       {
          ExecuteStrategiesForCountry(*country, {AddCountryWithRule, AddCountryWithVicId, AddCountryWithZ});
       }
 
-      return std::move(country_mappings);
+      return std::move(country_mappings_);
    }
 };
 
