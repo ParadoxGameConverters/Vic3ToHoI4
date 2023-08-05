@@ -1,11 +1,11 @@
 // Contains tech and research tests for hoi4::Country
-#include "hoi4_country_converter.h"
-#include "src/mappers/character/culture_queue.h"
-#include "src/hoi4_world/characters/hoi4_character.h"
-#include "src/mappers/country/country_mapper.h"
-#include "src/vic3_world/world/vic3_world.h"
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include "hoi4_country_converter.h"
+#include "src/hoi4_world/characters/hoi4_character.h"
+#include "src/mappers/character/culture_queue.h"
+#include "src/mappers/country/country_mapper.h"
+#include "src/vic3_world/world/vic3_world.h"
 
 TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_Decentralized)
 {

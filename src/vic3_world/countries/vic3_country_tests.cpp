@@ -70,28 +70,44 @@ TEST(Vic3worldCountriesVic3country, PowerRankWorks)
    EXPECT_EQ(c3.GetCountryRankCategory(world), vic3::RankCategory::MinorPower);
 }
 
-TEST(Vic3worldCountriesVic3country, IsDecentralized)
+TEST(Vic3worldCountriesVic3country, IsDecentralized_DecentralizedNation)
 {
    vic3::Country c1({.country_type = "decentralized"});
-   vic3::Country c2({.country_type = "colonial"});
-   vic3::Country c3({.country_type = "unrecognized"});
-   vic3::Country c4({.country_type = "recognized"});
-
    EXPECT_TRUE(c1.IsDecentralized());
+}
+TEST(Vic3worldCountriesVic3country, IsDecentralized_ColonialNation)
+{
+   vic3::Country c2({.country_type = "colonial"});
    EXPECT_FALSE(c2.IsDecentralized());
+}
+TEST(Vic3worldCountriesVic3country, IsDecentralized_UnrecognizedNation)
+{
+   vic3::Country c3({.country_type = "unrecognized"});
    EXPECT_FALSE(c3.IsDecentralized());
+}
+TEST(Vic3worldCountriesVic3country, IsDecentralized_RecognizedNation)
+{
+   vic3::Country c4({.country_type = "recognized"});
    EXPECT_FALSE(c4.IsDecentralized());
 }
 
-TEST(Vic3worldCountriesVic3country, IsRecognized)
+TEST(Vic3worldCountriesVic3country, IsRecognized_DecentralizedNation)
 {
    vic3::Country c1({.country_type = "decentralized"});
-   vic3::Country c2({.country_type = "colonial"});
-   vic3::Country c3({.country_type = "unrecognized"});
-   vic3::Country c4({.country_type = "recognized"});
-
    EXPECT_FALSE(c1.IsRecognized());
+}
+TEST(Vic3worldCountriesVic3country, IsRecognized_ColonialNation)
+{
+   vic3::Country c2({.country_type = "colonial"});
    EXPECT_TRUE(c2.IsRecognized());
+}
+TEST(Vic3worldCountriesVic3country, IsRecognized_UnrecognizedNation)
+{
+   vic3::Country c3({.country_type = "unrecognized"});
    EXPECT_FALSE(c3.IsRecognized());
+}
+TEST(Vic3worldCountriesVic3country, IsRecognized_RecognizedNation)
+{
+   vic3::Country c4({.country_type = "recognized"});
    EXPECT_TRUE(c4.IsRecognized());
 }
