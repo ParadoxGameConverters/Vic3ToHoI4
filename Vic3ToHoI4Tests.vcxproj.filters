@@ -464,9 +464,12 @@
     </ClCompile>
     <ClCompile Include="src\mappers\world\world_mapper_builder_tests.cpp">
       <Filter>src\mappers\world</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="src\vic3_world\countries\vic3_country_tests.cpp">
       <Filter>src\vic3_world\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests_tech.cpp">
+      <Filter>src\hoi4_world\countries</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
