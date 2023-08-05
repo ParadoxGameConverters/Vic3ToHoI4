@@ -10,6 +10,7 @@
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/ideology/ideology_mapper.h"
 #include "src/mappers/ideology/ideology_mapper_importer.h"
+#include "src/mappers/world/world_mapper.h"
 
 
 
@@ -50,12 +51,10 @@ void LogIdeologies(const std::map<std::string, hoi4::Country>& countries)
 namespace hoi4
 {
 std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
+    const mappers::WorldMapper& world_mapper,
     const commonItems::LocalizationDatabase& source_localizations,
-    const mappers::CountryMapper& country_mapper,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
     const std::vector<State>& states,
-    const std::vector<mappers::TechMapping>& tech_mappings,
-    const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
@@ -79,16 +78,16 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
       std::optional<Country> new_country = ConvertCountry(source_world,
           source_country,
           source_localizations,
-          country_mapper,
+          world_mapper.country_mapper,
           vic3_state_ids_to_hoi4_state_ids,
           states,
           ideology_mapper,
-          tech_mappings,
+          world_mapper.tech_mapper,
           all_legacy_ship_variants,
           all_ship_variants,
           all_plane_variants,
           all_tank_variants,
-          culture_graphics_mapper,
+          world_mapper.culture_graphics_mapper,
           leader_type_mapper,
           character_trait_mapper,
           characters,

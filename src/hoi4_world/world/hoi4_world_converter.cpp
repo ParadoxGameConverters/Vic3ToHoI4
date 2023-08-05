@@ -237,27 +237,21 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    Log(LogLevel::Info) << "\tConverting countries";
    Log(LogLevel::Progress) << "55%";
 
-   const std::vector<mappers::TechMapping> tech_mappings = mappers::ImportTechMappings();
-   const mappers::CultureGraphicsMapper culture_graphics_mapper =
-       mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
-
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const std::map<int, vic3::Country>& source_countries = source_world.GetCountries();
    countries = ConvertCountries(source_world,
+       world_mapper,
        source_world.GetLocalizations(),
-       world_mapper.country_mapper,
        states.vic3_state_ids_to_hoi4_state_ids,
        states.states,
-       tech_mappings,
-       culture_graphics_mapper,
        characters,
        culture_queues);
 
    Log(LogLevel::Info) << "\tAssigning portraits to characters";
    Log(LogLevel::Progress) << "56%";
    AssignPortraits(culture_queues,
-       culture_graphics_mapper,
+       world_mapper.culture_graphics_mapper,
        source_world.GetCultureDefinitions(),
        source_world.GetPlaythroughId(),
        characters);

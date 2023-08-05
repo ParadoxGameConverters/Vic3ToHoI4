@@ -31,6 +31,15 @@ struct CountryOptions
    std::set<int> puppets;
 };
 
+enum class RankCategory
+{
+   GreatPower,
+   MajorPower,
+   MinorPower,          // called "unrecognized regional power" if unrecognized
+   InsignificantPower,  // called "unrecognized power" if unrecognized
+   DecentralizedPower
+};
+
 
 class Country
 {
@@ -58,6 +67,8 @@ class Country
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
+   /// Is the country a recognized or colonial nation
+   [[nodiscard]] bool IsRecognized() const { return !IsDecentralized() && country_type_ != "unrecognized"; }
    // are these rebels
    [[nodiscard]] bool IsCivilWarCountry() const { return is_civil_war_; }
    [[nodiscard]] const std::set<std::string>& GetActiveLaws() const { return active_laws_; }
@@ -77,6 +88,7 @@ class Country
    void AddPuppet(int puppet) { puppets_.insert(puppet); }
 
    std::set<std::string> GetAcquiredTechnologies(const vic3::World& world) const;
+   RankCategory GetCountryRankCategory(const vic3::World& world) const;
 
    bool operator==(const Country&) const = default;
 

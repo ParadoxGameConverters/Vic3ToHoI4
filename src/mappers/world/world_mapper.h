@@ -19,8 +19,6 @@ namespace mappers
 class WorldMapper
 {
   public:
-   static WorldMapper LoadFromFiles(commonItems::ModFilesystem hoi4_mod_filesystem, const vic3::World& source_world);
-
    WorldMapper(const CountryMapper&& country_mapper,
        const ProvinceMapper&& province_mapper,
        const std::vector<mappers::TechMapping>&& tech_mapper,
@@ -52,7 +50,17 @@ class WorldMapperBuilder
    /// <summary>
    /// Create a mapper with null maps that return nothing.
    /// </summary>
-   static WorldMapperBuilder NullMapper();
+   static WorldMapperBuilder CreateNullMapper();
+   /// <summary>
+   /// Create a mapper with the default maps that looks up data in the included files.
+   /// </summary>
+   /// <returns></returns>
+   static WorldMapperBuilder CreateDefaultMapper(commonItems::ModFilesystem hoi4_mod_filesystem,
+       const vic3::World& source_world);
+   /// <summary>
+   /// Use the default country mapper with the countries in the target source world.
+   /// </summary>
+   WorldMapperBuilder& DefaultCountryMapper(const vic3::World& source_world);
    /// <summary>
    /// Add one or more countries to the mapper. Element format is {vic3Num, hoiTag}
    /// </summary>
@@ -62,9 +70,17 @@ class WorldMapperBuilder
    /// </summary>
    WorldMapperBuilder& AddProvinces(const std::map<std::string, int>& provinces);
    /// <summary>
-   /// Add one or more techs to the mapper.
+   /// Sets tech manager to the default tech manager, since we don't usually change this.
+   /// </summary>
+   WorldMapperBuilder& DefaultTechMapper();
+   /// <summary>
+   /// Add one or more techs to the mapper. Element format is {{vic3reqs...}, (optional)limit, hoi4techs}
    /// </summary>
    WorldMapperBuilder& AddTechs(const std::vector<mappers::TechMapping>& techs);
+   /// <summary>
+   /// Sets culture graphics manager to the default culture graphics manager, since we don't usually change this.
+   /// </summary>
+   WorldMapperBuilder& DefaultCultureGraphicsMapper();
    /// <summary>
    /// Set culture graphics mapper. Must be constructed separately.
    /// </summary>

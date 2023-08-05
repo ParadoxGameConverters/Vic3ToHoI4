@@ -174,6 +174,31 @@ std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<ho
    return active_variants;
 }
 
+
+std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std::string>& vic3_laws,
+    std::string_view ideology)
+{
+   // civilian economy with export focus and volunteer military is the default
+   std::string economy_law = "civilian_economy";
+   std::string trade_law = "export_focus";
+   std::string military_law = "volunteer_only";
+
+   // but fascist countries change it up
+   if (ideology == "fascism")
+   {
+      economy_law = "partial_economic_mobilisation";
+      trade_law = "limited_exports";
+   }
+
+   if (vic3_laws.contains("law_mass_conscription"))
+   {
+      military_law = "limited_conscription";
+   }
+
+   return {economy_law, trade_law, military_law};
+}
+
+
 std::string ConvertName(const std::string& vic_name, const commonItems::LocalizationDatabase& vic_localizations)
 {
    if (const auto& loc_block = vic_localizations.GetLocalizationBlock(vic_name); loc_block)
@@ -336,6 +361,22 @@ std::map<std::string, int> DetermineIdeologySupport(const std::vector<int>& inte
    return NormalizeIdeologySupport(raw_ideology_support);
 }
 
+int DetermineStartingResearchSlots(const vic3::World& source_world, const vic3::Country& source_country)
+{
+   if (source_country.GetCountryRankCategory(source_world) == vic3::RankCategory::GreatPower)
+   {
+      return 4;
+   }
+   else if (source_country.IsRecognized())
+   {
+      return 3;
+   }
+   else
+   {
+      return 2;
+   }
+}
+
 }  // namespace
 
 
@@ -377,6 +418,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    const std::vector<EquipmentVariant>& active_plane_variants =
        DetermineActiveVariants(all_plane_variants, technologies);
    const std::vector<EquipmentVariant>& active_tank_variants = DetermineActiveVariants(all_tank_variants, technologies);
+
+   const auto& [economy_law, trade_law, military_law] = ConvertLaws(source_country.GetActiveLaws(), ideology);
 
    std::set<std::string> ideas;
    if (source_country.IsDecentralized())
@@ -436,9 +479,13 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .plane_variants = active_plane_variants,
        .tank_variants = active_tank_variants,
        .ideas = ideas,
+       .economy_law = economy_law,
+       .trade_law = trade_law,
+       .military_law = military_law,
        .graphics_block = graphics_block,
        .name_list = name_list,
        .character_ids = character_ids,
        .spy_ids = spy_ids,
-       .puppets = puppets});
+       .puppets = puppets,
+       .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country)});
 }

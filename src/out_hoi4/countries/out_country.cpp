@@ -184,7 +184,7 @@ void out::OutputCountryHistory(std::string_view output_name,
    country_history << "\n";
    country_history << fmt::format("oob = \"{}_1936\"", country.GetTag());
    country_history << "\n";
-   country_history << "set_research_slots = 3\n";
+   country_history << fmt::format("set_research_slots = {}\n", country.GetStartingResearchSlots());
    country_history << "set_convoys = 0\n";
    country_history << "\n";
 
@@ -200,12 +200,13 @@ void out::OutputCountryHistory(std::string_view output_name,
    OutputPuppets(country_history, country.GetTag(), country.GetIdeology(), country.GetPuppets());
 
    country_history << "add_ideas = {\n";
-   country_history << "\tlimited_conscription\n";
-   country_history << "\tcivilian_economy\n";
-   country_history << "\texport_focus\n";
    for (const std::string& idea: country.GetIdeas())
    {
       country_history << fmt::format("\t{}\n", idea);
+   }
+   for (const std::string& law: country.GetLaws())
+   {
+      country_history << fmt::format("\t{}\n", law);
    }
    country_history << "}\n";
    country_history << "set_stability = 0.60\n";
