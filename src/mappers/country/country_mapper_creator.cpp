@@ -13,7 +13,7 @@
 namespace
 {
 
-std::map<std::string, std::string>&& ImportMappingRules(std::string_view country_mappings_file)
+std::map<std::string, std::string> ImportMappingRules(std::string_view country_mappings_file)
 {
    std::map<std::string, std::string> country_mapping_rules;  // vic3 tag -> hoi4 tag
 
@@ -38,7 +38,7 @@ std::map<std::string, std::string>&& ImportMappingRules(std::string_view country
 
    country_mappings_parser.parseFile(country_mappings_file);
 
-   return std::move(country_mapping_rules);
+   return country_mapping_rules;
 }
 
 /// Class so that different mapping strategies can share global variables like country_mappings and
@@ -46,7 +46,7 @@ std::map<std::string, std::string>&& ImportMappingRules(std::string_view country
 class CountryMappingCreator
 {
    std::map<int, std::string> country_mappings_ = {};
-   std::map<std::string, std::string> country_mapping_rules_;
+   std::map<std::string, std::string> country_mapping_rules_ = {};
    std::vector<const vic3::Country*> deferred_map_countries_ = {};
 
    std::set<std::string> used_hoi4_tags_ = {};
