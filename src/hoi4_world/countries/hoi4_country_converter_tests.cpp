@@ -932,7 +932,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultsToEmpty)
+TEST(Hoi4worldCountriesCountryConverter, LawsDefaultsToDefaultLaws)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -958,6 +958,103 @@ TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultsToEmpty)
        dummy_characters,
        dummy_culture_queues);
 
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetLaws(),
+       testing::UnorderedElementsAre("civilian_economy", "export_focus", "volunteer_only"));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, FascistCountriesGetDifferentEconomicIdeas)
+{
+   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .capital_state = 2, .active_laws = {"test_fascism_law"}});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({{"test_fascism_law", {{"fascism", 100}}}}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetLaws(),
+       testing::UnorderedElementsAre("partial_economic_mobilisation", "limited_exports", "volunteer_only"));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, MassConscriptionLeadsToLimitedConscription)
+{
+   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .capital_state = 2, .active_laws = {"law_mass_conscription"}});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+
+   mappers::IdeologyPointsMap foo{{"fascism", 100}};
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetLaws(),
+       testing::UnorderedElementsAre("civilian_economy", "export_focus", "limited_conscription"));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultToEmpty)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const vic3::Country source_country_one({.number = 1, .capital_state = 2});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       dummy_characters,
+       dummy_culture_queues);
    ASSERT_TRUE(country_one.has_value());
    EXPECT_TRUE(country_one->GetIdeas().empty());
 }
@@ -988,9 +1085,8 @@ TEST(Hoi4worldCountriesCountryConverter, DecentrailzedCountriesGetDecentralizedI
        mappers::CharacterTraitMapper({}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
-
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetIdeas(), testing::ElementsAre("decentralized"));
+   EXPECT_THAT(country_one->GetIdeas(), testing::UnorderedElementsAre("decentralized"));
 }
 
 

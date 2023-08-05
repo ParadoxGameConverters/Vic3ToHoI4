@@ -42,6 +42,9 @@ struct CountryOptions
    std::vector<EquipmentVariant> plane_variants;
    std::vector<EquipmentVariant> tank_variants;
    std::set<std::string> ideas;
+   std::string economy_law = "civilian_economy";
+   std::string trade_law = "export_focus";
+   std::string military_law = "volunteer_only";
    mappers::GraphicsBlock graphics_block;
    NameList name_list;
    std::vector<int> character_ids;
@@ -68,6 +71,9 @@ class Country
        plane_variants_(std::move(country_options.plane_variants)),
        tank_variants_(std::move(country_options.tank_variants)),
        ideas_(std::move(country_options.ideas)),
+       economy_law_(std::move(country_options.economy_law)),
+       trade_law_(std::move(country_options.trade_law)),
+       military_law_(std::move(country_options.military_law)),
        graphics_block_(std::move(country_options.graphics_block)),
        name_list_(std::move(country_options.name_list)),
        character_ids_(std::move(country_options.character_ids)),
@@ -91,6 +97,7 @@ class Country
    [[nodiscard]] const std::vector<EquipmentVariant>& GetPlaneVariants() const { return plane_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetTankVariants() const { return tank_variants_; }
    [[nodiscard]] const std::set<std::string>& GetIdeas() const { return ideas_; }
+   [[nodiscard]] const std::vector<std::string> GetLaws() const { return {economy_law_, trade_law_, military_law_}; }
    [[nodiscard]] const mappers::GraphicsBlock& GetGraphicsBlock() const { return graphics_block_; }
    [[nodiscard]] const NameList& GetNameList() const { return name_list_; }
    [[nodiscard]] const std::vector<int>& GetLeaderIds() const { return character_ids_; }
@@ -114,6 +121,9 @@ class Country
    std::vector<EquipmentVariant> plane_variants_;
    std::vector<EquipmentVariant> tank_variants_;
    std::set<std::string> ideas_;
+   std::string economy_law_ = "civilian_economy";
+   std::string trade_law_ = "export_focus";
+   std::string military_law_ = "volunteer_only";
    mappers::GraphicsBlock graphics_block_;
    NameList name_list_;
    std::vector<int> character_ids_;
