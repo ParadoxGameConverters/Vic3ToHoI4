@@ -114,12 +114,14 @@ class WorldBuilder
    /// Adds state regions with the specified provinces in the state region. Starts at REGION_001, and includes provinces with the names "0x0000nn" for the n's specified in the list. Contains Zero significatn provinces.
    /// </summary>
    WorldBuilder& AddTestStateRegions(const std::vector<std::set<int>> provinceSets);
+   WorldBuilder& AddBuildings(const std::map<int, std::vector<vic3::Building>> buildings);
 
   private:
    WorldBuilder(){};
    WorldOptions world_options_ = {};
    std::vector<std::string> province_definitions_ = {};
    int stateRegionNumber = 1;
+   std::map<int, std::vector<vic3::Building>> buildings_ = {};
 };
 
 }  // namespace vic3

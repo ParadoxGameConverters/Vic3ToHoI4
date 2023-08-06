@@ -13,6 +13,7 @@ WorldBuilder WorldBuilder::CreateNullWorld()
 World WorldBuilder::Build()
 {
    this->world_options_.province_definitions = ProvinceDefinitions(province_definitions_);
+   this->world_options_.buildings = vic3::Buildings(buildings_);
    return World(world_options_);
 }
 
@@ -55,6 +56,15 @@ WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>>
 
       this->world_options_.state_regions.emplace(std::format("REGION_{:0>3}", this->stateRegionNumber++),
           StateRegion({}, provinceNames));
+   }
+   return *this;
+}
+
+WorldBuilder& WorldBuilder::AddBuildings(const std::map<int, std::vector<vic3::Building>> buildings)
+{
+   for (auto& building: buildings)
+   {
+      this->buildings_.emplace(building);
    }
    return *this;
 }
