@@ -1,5 +1,7 @@
 #include "src/vic3_world/world/vic3_world.h"
 
+#include <format>
+
 namespace vic3
 {
 
@@ -40,4 +42,11 @@ WorldBuilder& WorldBuilder::AddStateRegions(const std::map<std::string, StateReg
    }
    return *this;
 }
+
+WorldBuilder& WorldBuilder::AddTestStateRegion(const std::set<ProvinceId> provinces)
+{
+   this->world_options_.state_regions.emplace(std::format("REGION_{:0>3}", this->stateRegionNumber++),
+       StateRegion({}, provinces));
+   return *this;
 }
+}  // namespace vic3

@@ -41,11 +41,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
    EXPECT_TRUE(hoi4_states.hoi4_state_names_to_vic3_state_names.empty());
 }
 
-
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
 {
-   mappers::WorldMapperBuilder world_mapper =
-       mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6)
+   mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6);
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
                                   .AddStates({{1, vic3::State({.provinces = {1, 2, 3}})},
                                       {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}})}})
