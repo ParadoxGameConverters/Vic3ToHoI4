@@ -471,6 +471,9 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests_tech.cpp">
       <Filter>src\hoi4_world\countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\states\hoi4_states_converter_tests_2.cpp">
+      <Filter>src\hoi4_world\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
