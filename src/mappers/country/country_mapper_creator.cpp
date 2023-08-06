@@ -54,79 +54,73 @@ class CountryMappingCreator
    int tag_suffix_ = 0;
 
    // note: these are static because of bound function weirdness
+   using CountryStrategyFn = std::function<bool(const vic3::Country&)>;
 
    // Rebel countries should be deferred to give priority to non-rebel countries.
-   static bool DeferCountryWithCivilWar(CountryMappingCreator* this_, const vic3::Country& country)
-   {
+   const CountryStrategyFn DeferCountryWithCivilWar = [this](const vic3::Country& country) -> bool {
       if (country.IsCivilWarCountry())
       {
-         this_->deferred_map_countries_.push_back(&country);
+         this->deferred_map_countries_.push_back(&country);
          return true;
       }
       return false;
-   }
-
-   // decltype this because function types are a pain to write out
-   using CountryStrategyFn = decltype(DeferCountryWithCivilWar);
+   };
 
    // Countries with an existing rule should be converted.
-   static bool AddCountryWithRule(CountryMappingCreator* this_, const vic3::Country& country)
-   {
+   const CountryStrategyFn AddCountryWithRule = [this](const vic3::Country& country) -> bool {
       const auto& vic3_tag = country.GetTag();
-      const auto& mappingRule = this_->country_mapping_rules_.find(vic3_tag);
-      if (mappingRule != this_->country_mapping_rules_.end() &&
-          this_->used_hoi4_tags_.emplace(mappingRule->second).second)
+      const auto& mappingRule = this->country_mapping_rules_.find(vic3_tag);
+      if (mappingRule != this->country_mapping_rules_.end() &&
+          this->used_hoi4_tags_.emplace(mappingRule->second).second)
       {
-         this_->country_mappings_.emplace(country.GetNumber(), mappingRule->second);
+         this->country_mappings_.emplace(country.GetNumber(), mappingRule->second);
          return true;
       }
       return false;
-   }
+   };
 
    // Countries should always be deferred.
-   static bool DeferCountryAlways(CountryMappingCreator* this_, const vic3::Country& country)
-   {
-      this_->deferred_map_countries_.push_back(&country);
+   const CountryStrategyFn DeferCountryAlways = [this](const vic3::Country& country) -> bool {
+      this->deferred_map_countries_.push_back(&country);
       return true;
-   }
+   };
 
    // Countries should be added via their vic3 tag.
-   static bool AddCountryWithVicId(CountryMappingCreator* this_, const vic3::Country& country)
-   {
-      const auto vic3_tag = country.GetTag();
-      if (vic3_tag.length() == 3 && this_->used_hoi4_tags_.emplace(vic3_tag).second)
+   const CountryStrategyFn AddCountryWithVicId = [this](const vic3::Country& country) -> bool {
+      const auto& vic3_tag = country.GetTag();
+      if (vic3_tag.length() == 3 && this->used_hoi4_tags_.emplace(vic3_tag).second)
       {
-         this_->country_mappings_.emplace(country.GetNumber(), vic3_tag);
+         this->country_mappings_.emplace(country.GetNumber(), vic3_tag);
          return true;
       }
       return false;
-   }
+   };
 
    // Countries should be added with Znn naming scheme. This always succeeds.
-   static bool AddCountryWithZ(CountryMappingCreator* this_, const vic3::Country& country)
-   {
+   const CountryStrategyFn AddCountryWithZ = [this](const vic3::Country& country) -> bool {
       std::string possible_hoi4_tag;
       do
       {
-         possible_hoi4_tag = fmt::format("{}{:0>2}", this_->tag_prefix_, this_->tag_suffix_);
-         ++this_->tag_suffix_;
-         if (this_->tag_suffix_ > 99)
+         possible_hoi4_tag = fmt::format("{}{:0>2}", this->tag_prefix_, this->tag_suffix_);
+         ++this->tag_suffix_;
+         if (this->tag_suffix_ > 99)
          {
-            this_->tag_suffix_ = 0;
-            --this_->tag_prefix_;
+            this->tag_suffix_ = 0;
+            --this->tag_prefix_;
          }
-      } while (this_->used_hoi4_tags_.contains(possible_hoi4_tag));
-      this_->country_mappings_.emplace(country.GetNumber(), possible_hoi4_tag);
-      this_->used_hoi4_tags_.emplace(possible_hoi4_tag);
+      } while (this->used_hoi4_tags_.contains(possible_hoi4_tag));
+      this->country_mappings_.emplace(country.GetNumber(), possible_hoi4_tag);
+      this->used_hoi4_tags_.emplace(possible_hoi4_tag);
       return true;
-   }
+   };
 
    // Attempt to name (or defer naming of) a country. Only the first successful strategy will be used.
-   void ExecuteStrategiesForCountry(const vic3::Country& country, const std::vector<CountryStrategyFn*>&& strategies)
+   static void ExecuteStrategiesForCountry(const vic3::Country& country,
+       const std::vector<CountryStrategyFn>&& strategies)
    {
-      for (auto strategy = strategies.begin(); strategy != strategies.end(); ++strategy)
+      for (const auto& strategy: strategies)
       {
-         if ((**strategy)(this, country))
+         if ((strategy)(country))
          {
             return;
          }
