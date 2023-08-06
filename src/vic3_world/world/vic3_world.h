@@ -102,6 +102,21 @@ class World
    int playthrough_id_;  // Seed, for deterministic results across conversions for the same series of saves
 };
 
+class WorldBuilder
+{
+  public:
+   static WorldBuilder CreateNullWorld();
+   World Build();
+   WorldBuilder& AddProvinces(const std::vector<std::string>& provinces);
+   WorldBuilder& AddStates(const std::map<int,State>& states);
+   WorldBuilder& AddStateRegions(const std::map<std::string, StateRegion>& state_regions);
+
+  private:
+   WorldBuilder(){};
+   WorldOptions world_options_ = {};
+   std::vector<std::string> province_definitions_ = {};
+};
+
 }  // namespace vic3
 
 

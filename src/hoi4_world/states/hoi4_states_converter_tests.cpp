@@ -9,6 +9,9 @@
 #include "src/mappers/provinces/province_mapping_types.h"
 #include "src/maps/map_data.h"
 #include "src/vic3_world/states/vic3_state.h"
+#include "src/vic3_world/world/vic3_world.h"
+#include "src/mappers/world/world_mapper.h"
+#include "src/hoi4_world/world/hoi4_world.h"
 
 
 
@@ -17,27 +20,20 @@ namespace hoi4
 
 TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
 {
-   const vic3::ProvinceDefinitions vic3_province_definitions;
-   const mappers::ProvinceMapper province_mapper({}, {});
    const maps::ProvinceDefinitions hoi4_province_definitions;
    const maps::MapData map_data({.province_definitions = hoi4_province_definitions});
-   const StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper;
 
-   const auto hoi4_states = ConvertStates({},
-       vic3_province_definitions,
+   vic3::World world({});
+   mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().Build();
+   hoi4::WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().Build();
+
+   const auto hoi4_states = ConvertStates2(world,
+      world_mapper,
+       world_framework,
        {},
-       {},
-       province_mapper,
        map_data,
        hoi4_province_definitions,
-       strategic_regions,
-       country_mapper,
-       StateCategories(),
-       {},
-       {},
        CoastalProvinces(),
-       {},
        false);
 
    EXPECT_TRUE(hoi4_states.states.empty());

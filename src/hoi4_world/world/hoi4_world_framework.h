@@ -42,8 +42,8 @@ class WorldFrameworkBuilder
    WorldFrameworkBuilder& DefaultStateCategories();
 
   private:
-   WorldFrameworkBuilder();
-   commonItems::ModFilesystem& hoi4_mod_filesystem;
+   WorldFrameworkBuilder(): hoi4_mod_filesystem("", {}){};
+   commonItems::ModFilesystem hoi4_mod_filesystem;
    StrategicRegions strategic_regions;
    std::map<int, DefaultState> default_states;
    ResourcesMap resources_map;
