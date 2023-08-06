@@ -134,65 +134,6 @@ class CountryMappingCreator
       tag_prefix_ = 'Z';
       tag_suffix_ = 0;
 
-      // Rebel countries should be deferred to give priority to non-rebel countries.
-      StrategyFn DeferCountryWithCivilWar = [this](const vic3::Country& country) {
-         if (country.IsCivilWarCountry())
-         {
-            this->deferred_map_countries_.push_back(&country);
-            return true;
-         }
-         return false;
-      };
-
-      // Countries with an existing rule should be converted.
-      StrategyFn AddCountryWithRule = [this](const vic3::Country& country) {
-         const auto& vic3_tag = country.GetTag();
-         const auto& mappingRule = this->country_mapping_rules_.find(vic3_tag);
-         if (mappingRule != this->country_mapping_rules_.end() &&
-             this->used_hoi4_tags_.emplace(mappingRule->second).second)
-         {
-            this->country_mappings_.emplace(country.GetNumber(), mappingRule->second);
-            return true;
-         }
-         return false;
-      };
-
-      // Countries should always be deferred.
-      StrategyFn DeferCountryAlways = [this](const vic3::Country& country) {
-         this->deferred_map_countries_.push_back(&country);
-         return true;
-      };
-
-      // Countries should be added via their vic3 tag.
-      StrategyFn AddCountryWithVicId = [this](const vic3::Country& country) {
-         const auto vic3_tag = country.GetTag();
-         if (vic3_tag.length() == 3 && this->used_hoi4_tags_.emplace(vic3_tag).second)
-         {
-            this->country_mappings_.emplace(country.GetNumber(), vic3_tag);
-            return true;
-         }
-         return false;
-      };
-
-      // Countries should be added with Znn naming scheme. This always succeeds.
-      StrategyFn AddCountryWithZ = [this](const vic3::Country& country) {
-         std::string possible_hoi4_tag;
-         do
-         {
-            possible_hoi4_tag = fmt::format("{}{:0>2}", this->tag_prefix_, this->tag_suffix_);
-            ++this->tag_suffix_;
-            if (this->tag_suffix_ > 99)
-            {
-               this->tag_suffix_ = 0;
-               --this->tag_prefix_;
-            }
-         } while (this->used_hoi4_tags_.contains(possible_hoi4_tag));
-         this->country_mappings_.emplace(country.GetNumber(), possible_hoi4_tag);
-         this->used_hoi4_tags_.emplace(possible_hoi4_tag);
-         return true;
-      };
-
-
       for (const auto& country: countries)
       {
          ExecuteStrategiesForCountry(country, {DeferCountryWithCivilWar, AddCountryWithRule, DeferCountryAlways});
