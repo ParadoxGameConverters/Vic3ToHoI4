@@ -84,6 +84,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/state_categori
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/technology/technologies.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/technology/technologies_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/world/hoi4_world_converter.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/world/hoi4_world_framework.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/character/character_trait_mapper.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/character/character_trait_mapper_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/character/leader_type_mapper.cpp")
