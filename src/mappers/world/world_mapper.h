@@ -70,6 +70,10 @@ class WorldMapperBuilder
    /// </summary>
    WorldMapperBuilder& AddProvinces(const std::map<std::string, int>& provinces);
    /// <summary>
+   /// Adds a series of provinces. 1:1 map between vic and hoi of style {"0x0000nn",n*10}.
+   /// </summary>
+   WorldMapperBuilder& AddTestProvinces(int count);
+   /// <summary>
    /// Sets tech manager to the default tech manager, since we don't usually change this.
    /// </summary>
    WorldMapperBuilder& DefaultTechMapper();

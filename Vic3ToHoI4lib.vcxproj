@@ -329,6 +329,9 @@
       <ProgramDataBaseFileName>$(SolutionDir)lib\Vic3ToHoI4lib.pdb</ProgramDataBaseFileName>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <Optimization>Disabled</Optimization>
+      <AdditionalModuleDependencies>
+      </AdditionalModuleDependencies>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>

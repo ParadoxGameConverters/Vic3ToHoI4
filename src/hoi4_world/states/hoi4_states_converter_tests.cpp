@@ -44,14 +44,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
 {
-   mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddProvinces({
-       {{"0x000001"}, 10},
-       {{"0x000002"}, 20},
-       {{"0x000003"}, 30},
-       {{"0x000004"}, 40},
-       {{"0x000005"}, 50},
-       {{"0x000006"}, 60},
-   });
+   mappers::WorldMapperBuilder world_mapper =
+       mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6)
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
                                   .AddStates({{1, vic3::State({.provinces = {1, 2, 3}})},
                                       {2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}})}})
@@ -227,14 +221,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
                {"REGION_ONE", vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"})},
                {"REGION_TWO", vic3::StateRegion({}, {"0x000004", "0x000005", "0x000006"})},
            });
-   mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddProvinces({
-       {{"0x000001"}, 10},
-       {{"0x000002"}, 20},
-       {{"0x000003"}, 30},
-       {{"0x000004"}, 40},
-       {{"0x000005"}, 50},
-       {{"0x000006"}, 60},
-   });
+   mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6);
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
