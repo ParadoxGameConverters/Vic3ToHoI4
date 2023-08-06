@@ -19,6 +19,8 @@
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/states/state_region.h"
 #include "src/vic3_world/states/vic3_state.h"
+#include <src/mappers/world/world_mapper.h>
+#include <src/hoi4_world/world/hoi4_world_framework.h>
 
 
 
@@ -40,6 +42,14 @@ States ConvertStates(const std::map<int, vic3::State>& states,
     const ResourcesMap& resources_map,
     bool debug);
 
+States ConvertStates2(const vic3::World source_world,
+    const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
+    const mappers::WorldMapper& world_mapper,
+    const maps::MapData& map_data,
+    const maps::ProvinceDefinitions& hoi4_province_definitions,
+    const hoi4::WorldFramework& world_framework,
+    const CoastalProvinces& coastal_provinces,
+    bool debug);
 }  // namespace hoi4
 
 
