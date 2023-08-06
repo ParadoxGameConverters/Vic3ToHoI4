@@ -101,4 +101,12 @@ WorldMapperBuilder& WorldMapperBuilder::DefaultTechMapper()
    this->tech_mappings = mappers::ImportTechMappings();
    return *this;
 }
+
+void WorldMapperBuilder::CopyToVicWorld(vic3::WorldBuilder& world)
+{
+   for (auto& pair: this->vic_hoi_province_mappings)
+   {
+      world.AddProvinces({pair.first});
+   }
+}
 }  // namespace mappers

@@ -1064,3 +1064,26 @@ hoi4::States hoi4::ConvertStates2(const vic3::World& source_world,
        world_framework.resources_map,
        debug);
 }
+
+// version with rvalue refs for the major builder-built things
+hoi4::States hoi4::ConvertStates2(const vic3::World&& source_world,
+    const mappers::WorldMapper&& world_mapper,
+    const hoi4::WorldFramework&& world_framework,
+    const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
+    const maps::MapData& map_data,
+    const maps::ProvinceDefinitions& hoi4_province_definitions,
+    const CoastalProvinces& coastal_provinces,
+    bool debug)
+{
+   vic3::World world = source_world;
+   mappers::WorldMapper worldMapper = world_mapper;
+   hoi4::WorldFramework worldFramework = world_framework;
+   return ConvertStates2(world,
+       worldMapper,
+       worldFramework,
+       significant_vic3_provinces,
+       map_data,
+       hoi4_province_definitions,
+       coastal_provinces,
+       debug);
+}

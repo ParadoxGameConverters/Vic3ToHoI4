@@ -50,8 +50,16 @@ States ConvertStates2(const vic3::World& source_world,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const CoastalProvinces& coastal_provinces,
     bool debug = false);
+
+States ConvertStates2(const vic3::World&& source_world,
+    const mappers::WorldMapper&& world_mapper,
+    const hoi4::WorldFramework&& world_framework,
+    const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
+    const maps::MapData& map_data,
+    const maps::ProvinceDefinitions& hoi4_province_definitions,
+    const CoastalProvinces& coastal_provinces,
+    bool debug = false);
+
 }  // namespace hoi4
-
-
 
 #endif  // SRC_HOI4WORLD_STATES_HOI4STATESCONVERTER_H

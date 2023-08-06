@@ -85,6 +85,12 @@ class WorldMapperBuilder
    /// Set culture graphics mapper. Must be constructed separately.
    /// </summary>
    WorldMapperBuilder& SetCultureGraphicsMapper(CultureGraphicsMapper mapper);
+
+   /// <summary>
+   /// Copies province data to a worldbuilder.
+   /// </summary>
+   /// <param name="world"></param>
+   void CopyToVicWorld(vic3::WorldBuilder& world);
    WorldMapper Build();
 };
 
