@@ -1,7 +1,7 @@
 #pragma once
-#include <src/hoi4_world/states/state_categories.h>
-#include <src/hoi4_world/states/default_state.h>
 #include <src/hoi4_world/map/strategic_regions.h>
+#include <src/hoi4_world/states/default_state.h>
+#include <src/hoi4_world/states/state_categories.h>
 
 // This represents the input hoi4 elements (eg, state maps, resource maps, etc)
 // that are used in conjunction with the vic3 data  and the WorldMapper to create the final hoi4 mod.
@@ -37,9 +37,12 @@ class WorldFrameworkBuilder
    WorldFramework Build();
 
    WorldFrameworkBuilder& DefaultStrategicRegions();
+   WorldFrameworkBuilder& SetStrategicRegions(const StrategicRegions strategic_regions);
    WorldFrameworkBuilder& DefaultDefaultStates();
+   WorldFrameworkBuilder& AddDefaultStates(const std::map<int, DefaultState> defaultStates);
    WorldFrameworkBuilder& DefaultResourcesMap();
    WorldFrameworkBuilder& DefaultStateCategories();
+
 
   private:
    WorldFrameworkBuilder(): hoi4_mod_filesystem("", {}){};

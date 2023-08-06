@@ -43,10 +43,19 @@ WorldBuilder& WorldBuilder::AddStateRegions(const std::map<std::string, StateReg
    return *this;
 }
 
-WorldBuilder& WorldBuilder::AddTestStateRegion(const std::set<ProvinceId> provinces)
+WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>> provinceSets)
 {
-   this->world_options_.state_regions.emplace(std::format("REGION_{:0>3}", this->stateRegionNumber++),
-       StateRegion({}, provinces));
+   for (auto& provinceSet: provinceSets)
+   {
+      std::set<std::string> provinceNames = {};
+      for (auto& provinceNum: provinceSet)
+      {
+         provinceNames.emplace(std::format("0x0000{:0>2}", provinceNum));
+      }
+
+      this->world_options_.state_regions.emplace(std::format("REGION_{:0>3}", this->stateRegionNumber++),
+          StateRegion({}, provinceNames));
+   }
    return *this;
 }
 }  // namespace vic3

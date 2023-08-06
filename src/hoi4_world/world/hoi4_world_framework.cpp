@@ -1,8 +1,9 @@
-#include <src/hoi4_world/states/state_categories.h>
-#include <src/hoi4_world/map/resources_map_importer.h>
-#include <src/hoi4_world/states/default_states_importer.h>
-#include <src/hoi4_world/map/strategic_regions_importer.h>
 #include "src/hoi4_world/world/hoi4_world_framework.h"
+
+#include <src/hoi4_world/map/resources_map_importer.h>
+#include <src/hoi4_world/map/strategic_regions_importer.h>
+#include <src/hoi4_world/states/default_states_importer.h>
+#include <src/hoi4_world/states/state_categories.h>
 
 namespace hoi4
 {
@@ -33,8 +34,7 @@ WorldFramework WorldFrameworkBuilder::Build()
    return WorldFramework(std::move(this->strategic_regions),
        std::move(this->default_states),
        std::move(this->resources_map),
-       std::move(this->state_categories)
-       );
+       std::move(this->state_categories));
 }
 
 WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultStrategicRegions()
@@ -43,11 +43,27 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultStrategicRegions()
    return *this;
 }
 
+WorldFrameworkBuilder& WorldFrameworkBuilder::SetStrategicRegions(const StrategicRegions strategic_regions)
+{
+   this->strategic_regions = strategic_regions;
+   return *this;
+}
+
 WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultDefaultStates()
 {
    this->default_states = hoi4::ImportDefaultStates(this->hoi4_mod_filesystem);
    return *this;
 }
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddDefaultStates(const std::map<int, DefaultState> defaultStates)
+{
+   for (auto& state: defaultStates)
+   {
+      this->default_states.emplace(state);
+   }
+   return *this;
+}
+
 WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultResourcesMap()
 {
    this->resources_map = ImportResources("configurables/resources.txt");
@@ -67,6 +83,6 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultStateCategories()
    });
    return *this;
 }
-//WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultXXX()
+// WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultXXX()
 
-}
+}  // namespace hoi4

@@ -111,17 +111,15 @@ class WorldBuilder
    WorldBuilder& AddStates(const std::map<int, State>& states);
    WorldBuilder& AddStateRegions(const std::map<std::string, StateRegion>& state_regions);
    /// <summary>
-   /// Add a state region in the format {REGION_###, {provinces}}. No significant provinces.
+   /// Adds state regions with the specified provinces in the state region. Starts at REGION_001, and includes provinces with the names "0x0000nn" for the n's specified in the list. Contains Zero significatn provinces.
    /// </summary>
-   /// <param name="provinces"></param>
-   /// <returns></returns>
-   WorldBuilder& AddTestStateRegion(const std::set<ProvinceId> provinces);
+   WorldBuilder& AddTestStateRegions(const std::vector<std::set<int>> provinceSets);
 
   private:
    WorldBuilder(){};
    WorldOptions world_options_ = {};
    std::vector<std::string> province_definitions_ = {};
-   int stateRegionNumber = 0;
+   int stateRegionNumber = 1;
 };
 
 }  // namespace vic3
