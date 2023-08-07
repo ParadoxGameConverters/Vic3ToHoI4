@@ -1635,9 +1635,10 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetIdeologySupport(),
-       testing::UnorderedElementsAre(testing::Pair("communist", 58),
+       testing::UnorderedElementsAre(testing::Pair("communist", 57),
            testing::Pair("democratic", 42),
-           testing::Pair("fascist", 0)));
+           testing::Pair("fascist", 0),
+           testing::Pair("neutrality", 1)));
 }
 
 

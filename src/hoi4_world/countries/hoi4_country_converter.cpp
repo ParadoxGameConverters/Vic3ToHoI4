@@ -319,7 +319,7 @@ std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, 
       adjusted_ideology_support.emplace(ideology, raw_value - lowest_support);
    }
 
-   const float total_support = std::accumulate(adjusted_ideology_support.begin(),
+   const float total_raw_support = std::accumulate(adjusted_ideology_support.begin(),
        adjusted_ideology_support.end(),
        0.F,
        [](float a, const auto& b) {
@@ -327,23 +327,33 @@ std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, 
        });
 
    std::map<std::string, int> ideology_support;
-   if (total_support != 0.F)
+   if (total_raw_support != 0.F)
    {
-      const float normalization_factor = 100.F / total_support;
+      const float normalization_factor = 100.F / total_raw_support;
       for (const auto& [ideology, raw_value]: adjusted_ideology_support)
       {
-         int value = static_cast<int>(std::round(raw_value * normalization_factor));
+         int value = static_cast<int>(raw_value * normalization_factor);
          ideology_support.emplace(ideology, value);
       }
    }
    else
    {
-      const int normalization_factor =
-          static_cast<int>(std::round(100.F / static_cast<float>(adjusted_ideology_support.size())));
+      const int normalization_factor = static_cast<int>(100.F / static_cast<float>(adjusted_ideology_support.size()));
       for (const auto& ideology: adjusted_ideology_support | std::views::keys)
       {
          ideology_support.emplace(ideology, normalization_factor);
       }
+   }
+
+   ideology_support["neutrality"] = 0;
+   const int total_support =
+       std::accumulate(ideology_support.begin(), ideology_support.end(), 0, [](int a, const auto& b) {
+          return a + b.second;
+       });
+   ideology_support["neutrality"] = 100 - total_support;
+   if (ideology_support.at("neutrality") < 0)
+   {
+      Log(LogLevel::Warning) << fmt::format("Ideology support did not add up to 100%");
    }
 
    return ideology_support;
