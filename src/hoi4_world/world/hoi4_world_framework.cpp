@@ -70,7 +70,8 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultResourcesMap()
    return *this;
 }
 
-WorldFrameworkBuilder& WorldFrameworkBuilder::AddResources(ResourcesMap resources){
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddResources(ResourcesMap resources)
+{
    for (auto& resource: resources)
    {
       this->resources_map.emplace(resource);

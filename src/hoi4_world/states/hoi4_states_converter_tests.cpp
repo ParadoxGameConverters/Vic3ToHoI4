@@ -27,13 +27,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
    mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().Build();
    hoi4::WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().Build();
 
-   const auto hoi4_states = ConvertStates2(world,
-       world_mapper,
-       world_framework,
-       {},
-       map_data,
-       hoi4_province_definitions,
-       CoastalProvinces());
+   const auto hoi4_states =
+       ConvertStates(world, world_mapper, world_framework, {}, map_data, hoi4_province_definitions, CoastalProvinces());
 
    EXPECT_TRUE(hoi4_states.states.empty());
    EXPECT_TRUE(hoi4_states.province_to_state_id_map.empty());
@@ -61,7 +56,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
    const StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -118,7 +113,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
        mappers::CultureGraphicsMapper({}));
    hoi4::WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().Build();
 
-   const auto hoi4_states = ConvertStates2(world,
+   const auto hoi4_states = ConvertStates(world,
        world_mapper,
        world_framework,
        {{"0x000001", "city"}, {"0x000004", "port"}},
@@ -170,13 +165,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
        mappers::CultureGraphicsMapper({}));
    hoi4::WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().Build();
 
-   const auto hoi4_states = ConvertStates2(world,
-       world_mapper,
-       world_framework,
-       {},
-       map_data,
-       hoi4_province_definitions,
-       CoastalProvinces());
+   const auto hoi4_states =
+       ConvertStates(world, world_mapper, world_framework, {}, map_data, hoi4_province_definitions, CoastalProvinces());
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.owner = "ONE", .provinces = {10}}),
@@ -202,15 +192,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
        .province_definitions = hoi4_province_definitions,
    });
 
-   vic3::WorldBuilder world =
-       vic3::WorldBuilder::CreateNullWorld()
-           .AddTestStates({{1,2,3},{4,5,6}})
-           .AddTestStateRegions({{1, 2, 3},{4, 5, 6}});
+   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
+                                  .AddTestStates({{1, 2, 3}, {4, 5, 6}})
+                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}});
    mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6);
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -247,15 +236,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   vic3::WorldBuilder world =
-       vic3::WorldBuilder::CreateNullWorld()
-           .AddTestStates({{1,2,3},{4,5,6}})
-           .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}});
+   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
+                                  .AddTestStates({{1, 2, 3}, {4, 5, 6}})
+                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}});
    mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6);
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -309,16 +297,15 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
            },
    });
 
-   vic3::WorldBuilder world =
-       vic3::WorldBuilder::CreateNullWorld()
-           .AddTestStates({{1,2,3},{4,5,6}})
-           .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}});
+   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
+                                  .AddTestStates({{1, 2, 3}, {4, 5, 6}})
+                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}});
    mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6);
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework =
        WorldFrameworkBuilder::CreateNullWorldFramework().SetStrategicRegions(strategic_regions);
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -355,8 +342,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
    });
 
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
-                                  .AddTestStates({{1,2,3}})
-       .AddStates({{2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}})}})
+                                  .AddTestStates({{1, 2, 3}})
+                                  .AddStates({{2, vic3::State({.owner_number = 42, .provinces = {4, 5, 6}})}})
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}});
    mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6);
    world_mapper.CopyToVicWorld(world);
@@ -366,7 +353,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
        {3, DefaultState({.provinces = {60}})},
    });
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -405,7 +392,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
    mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper();
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -443,7 +430,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
    mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -498,32 +485,26 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
    std::cout.rdbuf(log.rdbuf());
 
 
-   vic3::World world =
-       vic3::WorldBuilder::CreateNullWorld()
-           .AddTestStates({{1,2,3},{4,5,6}})
-           .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-           .AddProvinces({
-               "0x000001",
-               "0x000002",
-               "0x000003",
-               "0x000004",
-               "0x000005",
-               "0x000006",
-           })
-           .Build();
+   vic3::World world = vic3::WorldBuilder::CreateNullWorld()
+                           .AddTestStates({{1, 2, 3}, {4, 5, 6}})
+                           .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
+                           .AddProvinces({
+                               "0x000001",
+                               "0x000002",
+                               "0x000003",
+                               "0x000004",
+                               "0x000005",
+                               "0x000006",
+                           })
+                           .Build();
    mappers::WorldMapper world_mapper(mappers::CountryMapper(),
        std::move(province_mapper),
        {},
        mappers::CultureGraphicsMapper({}));
    hoi4::WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().Build();
 
-   const auto hoi4_states = ConvertStates2(world,
-       world_mapper,
-       world_framework,
-       {},
-       map_data,
-       hoi4_province_definitions,
-       CoastalProvinces());
+   const auto hoi4_states =
+       ConvertStates(world, world_mapper, world_framework, {}, map_data, hoi4_province_definitions, CoastalProvinces());
 
    std::cout.rdbuf(cout_buffer);
 
@@ -567,7 +548,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -623,7 +604,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
    });
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -667,7 +648,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -718,7 +699,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},

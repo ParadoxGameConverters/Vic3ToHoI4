@@ -35,7 +35,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsConverted)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -69,7 +69,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInSplitStatesIsProportionalToTo
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -109,7 +109,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerInWastelandStatesIsProportional
        {3, DefaultState({.provinces = {60}})},
    });
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -148,7 +148,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsLogged)
            {2, DefaultState({.manpower = 20'000})},
            {3, DefaultState({.manpower = 3'000})}});
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -187,7 +187,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -228,7 +228,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -279,7 +279,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
        {3, DefaultState({.dockyards = 3})},
    });
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -319,7 +319,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -356,7 +356,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -395,7 +395,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -441,7 +441,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -481,7 +481,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -526,7 +526,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
        {3, DefaultState({.provinces = {60}})},
    });
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -567,7 +567,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -611,7 +611,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesDefaultToEmpty)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -660,7 +660,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreAssigned)
            }},
    });
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -694,7 +694,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoryDefaultsToRural)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -738,7 +738,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
            {11, "test_category_four"},
        }));
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -781,7 +781,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsDefaultToEmpty)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -826,7 +826,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsArePlacedInHighestValueSig
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -875,7 +875,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreValuedAtHalfTotalFactor
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -933,7 +933,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DebugVictoryPointsAreConverted)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -973,7 +973,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnerGetsCoreOnIncorporatedStates)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
@@ -1012,7 +1012,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, InfrastructureIsTransferredFromVic3Stat
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates2(world.Build(),
+   const auto hoi4_states = ConvertStates(world.Build(),
        world_mapper.Build(),
        world_framework.Build(),
        {},
