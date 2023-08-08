@@ -173,12 +173,14 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultStateCategoriesHasValues)
 }
 TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStateCategoriesWorks)
 {
-   WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().SetStateCategories(hoi4::StateCategories({
-           {5, "test_category_one"},
-           {7, "test_category_two"},
-           {9, "test_category_three"},
-           {11, "test_category_four"},
-       })).Build();
+   WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework()
+                                        .SetStateCategories(hoi4::StateCategories({
+                                            {5, "test_category_one"},
+                                            {7, "test_category_two"},
+                                            {9, "test_category_three"},
+                                            {11, "test_category_four"},
+                                        }))
+                                        .Build();
 
    EXPECT_EQ(world_framework.state_categories.GetBestCategory(12), "test_category_four");
 }
