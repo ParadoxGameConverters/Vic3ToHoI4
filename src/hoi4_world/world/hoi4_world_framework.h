@@ -43,6 +43,7 @@ class WorldFrameworkBuilder
    WorldFrameworkBuilder& AddResources(ResourcesMap resources);
    WorldFrameworkBuilder& DefaultResourcesMap();
    WorldFrameworkBuilder& DefaultStateCategories();
+   WorldFrameworkBuilder& SetStateCategories(StateCategories new_categories);
 
 
   private:

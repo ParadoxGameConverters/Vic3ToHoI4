@@ -93,6 +93,12 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultStateCategories()
    return *this;
 }
 
+WorldFrameworkBuilder& WorldFrameworkBuilder::SetStateCategories(StateCategories new_categories)
+{
+   this->state_categories = new_categories;
+   return *this;
+}
+
 // WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultXXX()
 
 }  // namespace hoi4
