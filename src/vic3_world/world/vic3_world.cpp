@@ -35,6 +35,16 @@ WorldBuilder& WorldBuilder::AddStates(const std::map<int, State>& states)
    return *this;
 }
 
+WorldBuilder& WorldBuilder::AddTestStates(const std::vector<std::set<int>>& provinceListLists)
+{
+   for (const auto& provinceList: provinceListLists)
+   {
+      const int stateNum = state_number_++;
+      this->world_options_.states.emplace(stateNum, vic3::State(vic3::StateOptions{.owner_number = stateNum, .provinces = provinceList}));
+   }
+   return *this;
+}
+
 WorldBuilder& WorldBuilder::AddStateRegions(const std::map<std::string, StateRegion>& state_regions)
 {
    for (const auto& state_region: state_regions)
@@ -54,7 +64,7 @@ WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>>
          provinceNames.emplace(std::format("0x0000{:0>2}", provinceNum));
       }
 
-      this->world_options_.state_regions.emplace(std::format("REGION_{:0>3}", this->stateRegionNumber++),
+      this->world_options_.state_regions.emplace(std::format("REGION_{:0>3}", this->state_region_number_++),
           StateRegion({}, provinceNames));
    }
    return *this;

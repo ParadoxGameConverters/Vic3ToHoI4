@@ -26,7 +26,7 @@ WorldFrameworkBuilder WorldFrameworkBuilder::CreateNullWorldFramework()
    wfb.DefaultStrategicRegions();
    wfb.DefaultDefaultStates();
    wfb.DefaultResourcesMap();
-   wfb.DefaultStateCategories();
+   wfb.state_categories = {};
    return wfb;
 }
 WorldFramework WorldFrameworkBuilder::Build()
@@ -69,6 +69,15 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultResourcesMap()
    this->resources_map = ImportResources("configurables/resources.txt");
    return *this;
 }
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddResources(ResourcesMap resources){
+   for (auto& resource: resources)
+   {
+      this->resources_map.emplace(resource);
+   }
+   return *this;
+}
+
 WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultStateCategories()
 {
    this->state_categories = StateCategories({
@@ -83,6 +92,7 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultStateCategories()
    });
    return *this;
 }
+
 // WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultXXX()
 
 }  // namespace hoi4

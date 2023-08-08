@@ -40,6 +40,7 @@ class WorldFrameworkBuilder
    WorldFrameworkBuilder& SetStrategicRegions(const StrategicRegions strategic_regions);
    WorldFrameworkBuilder& DefaultDefaultStates();
    WorldFrameworkBuilder& AddDefaultStates(const std::map<int, DefaultState> defaultStates);
+   WorldFrameworkBuilder& AddResources(ResourcesMap resources);
    WorldFrameworkBuilder& DefaultResourcesMap();
    WorldFrameworkBuilder& DefaultStateCategories();
 

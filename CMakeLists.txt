@@ -284,6 +284,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/equipment_variants_imp
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/default_states_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/hoi4_state_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/hoi4_states_converter_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/hoi4_states_converter_tests_state_contents.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/state_categories_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/technology/technologies_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/technology/technologies_converter_tests.cpp")
