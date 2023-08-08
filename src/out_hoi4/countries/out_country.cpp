@@ -9,8 +9,11 @@
 #include "src/out_hoi4/military/out_equipment_variant.h"
 #include "src/out_hoi4/technology/out_technologies.h"
 
+
+
 namespace
 {
+
 void OutputPolitics(std::ostream& country_history,
     const std::string& government_ideology,
     const date& last_election,
@@ -40,6 +43,8 @@ void OutputPolitics(std::ostream& country_history,
    country_history << "}\n";
    country_history << "\n";
 }
+
+
 void OutputCharacterRecruitment(std::ostream& country_history,
     const std::string& tag,
     const std::vector<int>& leader_ids)
@@ -49,6 +54,8 @@ void OutputCharacterRecruitment(std::ostream& country_history,
       country_history << fmt::format("recruit_character = {}_{}\n", tag, leader_id);
    }
 }
+
+
 void OutputSpies(std::ostream& country_history,
     const std::set<int>& spy_ids,
     const std::map<int, hoi4::Character>& characters)
@@ -62,61 +69,49 @@ void OutputSpies(std::ostream& country_history,
    country_history << "}\n";
    country_history << "\n";
 }
-void OutputPuppets(std::ostream& output,
-    const std::string& tag,
-    const std::string& government_ideology,
-    const std::set<std::string>& puppets)
-{
-   if (puppets.empty())
-   {
-      return;
-   }
 
-   output << "# DIPLOMACY\n";
-   output << "if = {\n";
-   output << "	limit = {\n";
-   output << "		OR = {\n";
-   output << "			has_dlc = \"Together for Victory\"\n";
-   output << "			has_dlc = \"Man the Guns\"\n";
-   output << "		}\n";
-   output << "	}\n";
-   for (const auto& puppet: puppets)
+
+void OutputOverlord(std::ostream& output,
+    std::string_view self_tag,
+    std::string_view overlord_tag,
+    const std::string& government_ideology)
+{
+   output << fmt::format("{} = {{\n", overlord_tag);
+   output << "\tif = {\n";
+   output << "\t\tlimit = {\n";
+   output << "\t\t\thas_dlc = \"Together for Victory\"\n";
+   output << "\t\t}\n";
+   output << "\t\tset_autonomy = {\n";
+   output << fmt::format("\t\t\ttarget = {}\n", self_tag);
+   if (government_ideology == "fascism")
    {
-      if (government_ideology == "fascism")
-      {
-         output << "    set_autonomy = {\n";
-         output << "        target = " << puppet << "\n";
-         output << "        autonomous_state = autonomy_integrated_puppet\n";
-      }
-      else
-      {
-         output << "    set_autonomy = {\n";
-         output << "        target = " << puppet << "\n";
-         output << "        autonomous_state = autonomy_puppet\n";
-         output << "        freedom_level = 0.4\n";
-      }
-      output << "    }\n";
+      output << "\t\t\tautonomous_state = autonomy_integrated_puppet\n";
    }
-   output << "    else = {\n";
-   for (const auto& puppet: puppets)
+   else
    {
-      if (government_ideology == "fascism")
-      {
-         output << "        set_autonomy = {\n";
-         output << "            target = " << puppet << "\n";
-         output << "            autonomous_state = autonomy_puppet\n";
-         output << "        }\n";
-      }
-      else
-      {
-         output << "        puppet = " << puppet << "\n";
-      }
+      output << "\t\t\tautonomous_state = autonomy_puppet\n";
+      output << "\t\t\tfreedom_level = 0.4\n";
    }
-   output << "    }\n";
+   output << "\t\t}\n";
+   output << "\t}\n";
+   output << "\telse = {\n";
+   if (government_ideology == "fascism")
+   {
+      output << "\t\tset_autonomy = {\n";
+      output << fmt::format("\t\t\ttarget = {}\n", self_tag);
+      output << "\t\t\tautonomous_state = autonomy_puppet\n";
+      output << "\t\t}\n";
+   }
+   else
+   {
+      output << fmt::format("\t\tpuppet = {}\n", self_tag);
+   }
+   output << "\t}\n";
    output << "}\n";
-   output << "\n";
 }
+
 }  // namespace
+
 
 void out::OutputCommonCountriesFile(std::string_view output_name, const hoi4::Country& country)
 {
@@ -141,6 +136,7 @@ void out::OutputCommonCountryTag(const hoi4::Country& country, std::ofstream& ta
 {
    tags_file << fmt::format("{0} = \"countries/{0}.txt\"\n", country.GetTag());
 }
+
 
 void out::OutputCommonCharactersFile(std::string_view output_name,
     const hoi4::Country& country,
@@ -191,13 +187,16 @@ void out::OutputCountryHistory(std::string_view output_name,
    OutputCharacterRecruitment(country_history, tag, country.GetLeaderIds());
    OutputSpies(country_history, country.GetSpyIds(), characters);
 
+   if (const auto& overlord = country.GetOverlord(); overlord != std::nullopt)
+   {
+      OutputOverlord(country_history, tag, *overlord, country.GetIdeology());
+   }
+
    OutputPolitics(country_history,
        country.GetIdeology(),
        country.GetLastElection(),
        country.AreElectionsAllowed(),
        country.GetIdeologySupport());
-
-   OutputPuppets(country_history, country.GetTag(), country.GetIdeology(), country.GetPuppets());
 
    country_history << "add_ideas = {\n";
    for (const std::string& idea: country.GetIdeas())
