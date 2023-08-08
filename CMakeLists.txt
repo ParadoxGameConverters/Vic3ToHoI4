@@ -289,6 +289,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/state_categories_tests.c
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/technology/technologies_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/technology/technologies_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/world/hoi4_world_converter_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/world/hoi4_world_framework_builder_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/character/character_trait_mapper_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/character/character_trait_mapper_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/mappers/character/leader_type_mapper_tests.cpp")

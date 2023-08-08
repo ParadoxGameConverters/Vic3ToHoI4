@@ -23,9 +23,9 @@ WorldFrameworkBuilder WorldFrameworkBuilder::CreateNullWorldFramework()
 {
    WorldFrameworkBuilder wfb{};
    wfb.hoi4_mod_filesystem = commonItems::ModFilesystem("test_files/hoi4_world", {});
-   wfb.DefaultStrategicRegions();
-   wfb.DefaultDefaultStates();
-   wfb.DefaultResourcesMap();
+   wfb.strategic_regions = {};
+   wfb.default_states = {};
+   wfb.resources_map = {};
    wfb.state_categories = {};
    return wfb;
 }
