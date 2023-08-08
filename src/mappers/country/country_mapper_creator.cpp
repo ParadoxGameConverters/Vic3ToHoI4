@@ -52,7 +52,7 @@ class CountryMappingCreator
    std::set<std::string> used_hoi4_tags_ = {};
    char tag_prefix_ = 'Z';
    int tag_suffix_ = 0;
-  
+
    using CountryStrategyFn = std::function<bool(const vic3::Country&)>;
 
    // Rebel countries should be deferred to give priority to non-rebel countries.
@@ -116,7 +116,7 @@ class CountryMappingCreator
    // Attempt to name (or defer naming of) a country. Only the first successful strategy will be used.
    void ExecuteStrategiesForCountry(const vic3::Country& country, const std::vector<CountryStrategyFn>&& strategies)
    {
-      static_cast<void>(std::any_of(strategies.begin(), strategies.end(), [country](CountryStrategyFn fn) {
+      static_cast<void>(std::any_of(strategies.begin(), strategies.end(), [&country](CountryStrategyFn fn) {
          return fn(country);
       }));
    }
@@ -131,6 +131,7 @@ class CountryMappingCreator
    std::map<int, std::string>&& AssignTags(auto countries)
    {
       country_mappings_.clear();
+      deferred_map_countries_.clear();
       tag_prefix_ = 'Z';
       tag_suffix_ = 0;
 
