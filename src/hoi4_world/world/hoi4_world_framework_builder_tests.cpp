@@ -182,7 +182,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStateCategoriesWorks)
                                         }))
                                         .Build();
 
-   EXPECT_EQ(world_framework.state_categories.GetBestCategory(12), "test_category_four");
+   EXPECT_EQ(world_framework.state_categories.GetBestCategory(10), "test_category_four");
 }
 
 }  // namespace hoi4
