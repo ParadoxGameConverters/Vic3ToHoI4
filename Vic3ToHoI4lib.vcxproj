@@ -323,7 +323,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeaderOutputFile>$(SolutionDir)lib\pch.pch</PrecompiledHeaderOutputFile>
-      <ProgramDataBaseFileName>$(SolutionDir)lib\common.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)lib\Vic3ToHoI4lib.pdb</ProgramDataBaseFileName>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <Optimization>Disabled</Optimization>
     </ClCompile>

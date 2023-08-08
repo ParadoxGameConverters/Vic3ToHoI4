@@ -20,6 +20,7 @@ struct CountryOptions
    commonItems::Color color;
    std::optional<int> capital_state;
    std::string country_type;
+   bool is_civil_war;
    std::set<std::string> active_laws;
    std::set<int> primary_culture_ids;
    std::set<std::string> primary_cultures;
@@ -49,6 +50,7 @@ class Country
        color_(options.color),
        capital_state_(options.capital_state),
        country_type_(std::move(options.country_type)),
+       is_civil_war_(options.is_civil_war),
        active_laws_(std::move(options.active_laws)),
        primary_cultures_(std::move(options.primary_cultures)),
        primary_culture_ids_(std::move(options.primary_culture_ids)),
@@ -67,6 +69,8 @@ class Country
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
    /// Is the country a recognized or colonial nation
    [[nodiscard]] bool IsRecognized() const { return !IsDecentralized() && country_type_ != "unrecognized"; }
+   // are these rebels
+   [[nodiscard]] bool IsCivilWarCountry() const { return is_civil_war_; }
    [[nodiscard]] const std::set<std::string>& GetActiveLaws() const { return active_laws_; }
    [[nodiscard]] const std::set<std::string>& GetPrimaryCultures() const { return primary_cultures_; }
    [[nodiscard]] const std::set<int>& GetPrimaryCultureIds() const { return primary_culture_ids_; }
@@ -94,6 +98,7 @@ class Country
    commonItems::Color color_;
    std::optional<int> capital_state_;
    std::string country_type_;
+   bool is_civil_war_;
    std::set<std::string> active_laws_;
    std::set<std::string> primary_cultures_;
    std::set<int> primary_culture_ids_;  // Resolve to culture name before HoI

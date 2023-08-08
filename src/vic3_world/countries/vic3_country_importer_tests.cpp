@@ -34,6 +34,7 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
    EXPECT_TRUE(country->GetPrimaryCultureIds().empty());
    EXPECT_EQ(country->GetLastElection(), std::nullopt);
    EXPECT_EQ(country->GetHeadOfStateId(), 0);
+   EXPECT_FALSE(country->IsCivilWarCountry());
 }
 
 
@@ -90,6 +91,22 @@ TEST(Vic3WorldCountriesCountryImporter, MultipleCountriesCanBeImported)
    EXPECT_EQ(country_two->GetCapitalState(), std::nullopt);
 }
 
+TEST(Vic3WorldCountriesCountryImporter, CivilWarDetected)
+{
+   CountryImporter country_importer;
+
+   std::stringstream input_one;
+   input_one << "={\n";
+   input_one << "\tdefinition=\"TAG\"";
+   input_one << "\tcivil_war=\"yes\"";
+   input_one << "\tcapital=12345\n";
+   input_one << "}";
+   const auto country_one =
+       country_importer.ImportCountry(144, input_one, {{"TAG", commonItems::Color(std::array{1, 2, 3})}});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_TRUE(country_one->IsCivilWarCountry());
+}
 
 TEST(Vic3WorldCountriesCountryImporter, ActiveLawsCanBeSet)
 {
