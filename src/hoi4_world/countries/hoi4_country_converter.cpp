@@ -351,10 +351,6 @@ std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, 
           return a + b.second;
        });
    ideology_support["neutrality"] = 100 - total_support;
-   if (ideology_support.at("neutrality") < 0)
-   {
-      Log(LogLevel::Warning) << fmt::format("Ideology support did not add up to 100%");
-   }
 
    return ideology_support;
 }
