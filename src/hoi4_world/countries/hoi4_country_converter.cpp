@@ -466,6 +466,12 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
       puppets.insert(*subjectTag);
    }
 
+   std::optional<std::string> overlord;
+   if (const std::optional<int>& source_overlord = source_country.GetOverlord(); source_overlord != std::nullopt)
+   {
+      overlord = country_mapper.GetHoiTag(*source_overlord);
+   }
+
    const auto ideology_support = DetermineIdeologySupport(source_country.GetInterestGroupIds(),
        source_world.GetInterestGroups(),
        source_world.GetIdeologies(),
@@ -493,5 +499,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .character_ids = character_ids,
        .spy_ids = spy_ids,
        .puppets = puppets,
+       .overlord = overlord,
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country)});
 }

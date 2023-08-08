@@ -1470,6 +1470,61 @@ TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
 }
 
 
+TEST(Hoi4worldCountriesCountryConverter, OverlordIsConverted)
+{
+   const mappers::CountryMapper country_mapper({{1, "T00"}, {2, "T01"}});
+   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const vic3::Country source_country_one({
+       .number = 1,
+       .color = commonItems::Color{std::array{1, 2, 3}},
+       .overlord = 2,
+   });
+   const vic3::Country source_country_two({.number = 2, .color = commonItems::Color{std::array{2, 4, 6}}});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       dummy_characters,
+       dummy_culture_queues);
+   const auto country_two = ConvertCountry(source_world,
+       source_country_two,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       {},
+       mappers::IdeologyMapper({}, {}),
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetOverlord(), std::make_optional("T01"));
+   ASSERT_TRUE(country_two.has_value());
+   EXPECT_EQ(country_two->GetOverlord(), std::nullopt);
+}
+
+
 TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
