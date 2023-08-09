@@ -60,6 +60,14 @@ TEST(MappersWorldWorldMapperBuilderTests, AddProvincesWorks)
    EXPECT_THAT(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMapping(10), testing::ElementsAre("0x00000001"));
 }
 
+TEST(MappersWorldWorldMapperBuilderTests, AddTestProvincesWorks)
+{
+   const auto worldMapper = WorldMapperBuilder::CreateNullMapper().AddTestProvinces(2).Build();
+
+   EXPECT_THAT(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMapping("0x00000001"), testing::ElementsAre(10));
+   EXPECT_THAT(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMapping(20), testing::ElementsAre("0x00000002"));
+}
+
 TEST(MappersWorldWorldMapperBuilderTests, AddTechsWorks)
 {
    const auto worldMapper = WorldMapperBuilder::CreateNullMapper()
@@ -101,6 +109,17 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultCultureGraphicsMapperWorks)
    const auto worldMapper = WorldMapperBuilder::CreateNullMapper().DefaultCultureGraphicsMapper().Build();
 
    EXPECT_EQ(worldMapper.culture_graphics_mapper.MatchCultureToGraphics(culture).graphical_culture, "asian_gfx");
+}
+
+TEST(MappersWorldWorldMapperBuilderTests, CopyToVicWorldCopiesProvinces)
+{
+   auto worldMapper = WorldMapperBuilder::CreateNullMapper().AddTestProvinces(3);
+   auto worldBuilder = vic3::WorldBuilder::CreateNullWorld();
+   worldMapper.CopyToVicWorld(worldBuilder);
+   auto world = worldBuilder.Build();
+   EXPECT_EQ(world.GetProvinceDefinitions()
+                 .GetProvinceDefinitions()
+                 .size(), 3);
 }
 
 }  // namespace mappers
