@@ -64,8 +64,8 @@ TEST(MappersWorldWorldMapperBuilderTests, AddTestProvincesWorks)
 {
    const auto worldMapper = WorldMapperBuilder::CreateNullMapper().AddTestProvinces(2).Build();
 
-   EXPECT_THAT(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMapping("0x00000001"), testing::ElementsAre(10));
-   EXPECT_THAT(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMapping(20), testing::ElementsAre("0x00000002"));
+   EXPECT_THAT(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMapping("0x000001"), testing::ElementsAre(10));
+   EXPECT_THAT(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMapping(20), testing::ElementsAre("0x000002"));
 }
 
 TEST(MappersWorldWorldMapperBuilderTests, AddTechsWorks)
