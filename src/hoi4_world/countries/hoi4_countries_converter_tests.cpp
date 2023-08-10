@@ -9,6 +9,7 @@
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/world/world_mapper.h"
+#include "src/mappers/world/world_mapper_builder.h"
 #include "src/vic3_world/countries/vic3_country.h"
 
 

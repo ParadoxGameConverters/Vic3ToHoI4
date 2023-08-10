@@ -101,6 +101,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/provinces/province_mappi
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/technology/tech_mapping_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/technology/tech_mappings_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/world/world_mapper.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/world/world_mapper_builder.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/map_data.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/map_data_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/province_definitions.cpp")

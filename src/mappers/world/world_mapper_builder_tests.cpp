@@ -3,7 +3,8 @@
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "external/fmt/include/fmt/format.h"
-#include "src/mappers/world/world_mapper.h"
+#include "src/mappers/world/world_mapper_builder.h"
+
 
 namespace mappers
 {
@@ -117,9 +118,7 @@ TEST(MappersWorldWorldMapperBuilderTests, CopyToVicWorldCopiesProvinces)
    auto worldBuilder = vic3::WorldBuilder::CreateNullWorld();
    worldMapper.CopyToVicWorld(worldBuilder);
    auto world = worldBuilder.Build();
-   EXPECT_EQ(world.GetProvinceDefinitions()
-                 .GetProvinceDefinitions()
-                 .size(), 3);
+   EXPECT_EQ(world.GetProvinceDefinitions().GetProvinceDefinitions().size(), 3);
 }
 
 }  // namespace mappers

@@ -7,6 +7,7 @@
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/mappers/provinces/province_mapping_types.h"
+#include "src/mappers/world/world_mapper_builder.h"
 #include "src/maps/map_data.h"
 #include "src/vic3_world/states/vic3_state.h"
 
