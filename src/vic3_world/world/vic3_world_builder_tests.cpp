@@ -1,6 +1,7 @@
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/vic3_world/world/vic3_world.h"
+#include "src/vic3_world/world/vic3_world_builder.h"
 namespace vic3
 {
 

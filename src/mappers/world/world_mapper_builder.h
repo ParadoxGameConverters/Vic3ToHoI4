@@ -1,13 +1,14 @@
 #pragma once
 
-#include "src/mappers/world/world_mapper.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapper.h"
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/mappers/provinces/province_mapper_importer.h"
 #include "src/mappers/provinces/province_mapping_types.h"
 #include "src/mappers/technology/tech_mapping.h"
+#include "src/mappers/world/world_mapper.h"
 #include "src/vic3_world/world/vic3_world.h"
+#include "src/vic3_world/world/vic3_world_builder.h"
 
 namespace mappers
 {
