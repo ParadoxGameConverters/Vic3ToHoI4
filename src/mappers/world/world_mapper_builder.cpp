@@ -7,6 +7,7 @@
 #include "src/mappers/technology/tech_mapping.h"
 #include "src/mappers/technology/tech_mappings_importer.h"
 #include "src/vic3_world/world/vic3_world_builder.h"
+#include "src/vic3_world/world/vic3_world.h"
 
 namespace mappers
 {
@@ -80,7 +81,7 @@ WorldMapperBuilder& WorldMapperBuilder::AddTestProvinces(int count)
 {
    for (int i = 1; i <= count; ++i)
    {
-      const std::string vicValue = fmt::format("0x0000{:0>2}", i);
+      const std::string vicValue = fmt::format("x0000{:0>2}", i);
       // need to wrap second in an extra set of {} to make el.second a list element and not a size
       std::pair<std::string, std::vector<int>> vic_hoi_elem = {vicValue, {i * 10}};
       std::pair<int, std::vector<std::string>> hoi_vic_elem = {i * 10, {vicValue}};

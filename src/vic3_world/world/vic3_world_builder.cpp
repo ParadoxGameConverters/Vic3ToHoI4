@@ -61,7 +61,7 @@ WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>>
       std::set<std::string> provinceNames = {};
       for (auto& provinceNum: provinceSet)
       {
-         provinceNames.emplace(fmt::format("0x0000{:0>2}", provinceNum));
+         provinceNames.emplace(fmt::format("x0000{:0>2}", provinceNum));
       }
 
       this->world_options_.state_regions.emplace(fmt::format("REGION_{:0>3}", this->state_region_number_++),

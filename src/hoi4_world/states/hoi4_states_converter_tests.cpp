@@ -85,8 +85,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
 {
    const mappers::ProvinceMapper province_mapper({},
        {
-           {10, {"0x000001", "0x000002", "0x000003"}},
-           {20, {"0x000004", "0x000005", "0x000006"}},
+           {10, {"x000001", "x000002", "x000003"}},
+           {20, {"x000004", "x000005", "x000006"}},
        });
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20"}});
    const maps::MapData map_data({.province_definitions = hoi4_province_definitions});
@@ -99,12 +99,12 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
                                {3, vic3::State({.owner_number = 3, .provinces = {4}})},
                                {4, vic3::State({.owner_number = 4, .provinces = {5, 6}})}})
                            .AddProvinces({
-                               "0x000001",
-                               "0x000002",
-                               "0x000003",
-                               "0x000004",
-                               "0x000005",
-                               "0x000006",
+                               "x000001",
+                               "x000002",
+                               "x000003",
+                               "x000004",
+                               "x000005",
+                               "x000006",
                            })
                            .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
                            .Build();
@@ -117,7 +117,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
    const auto hoi4_states = ConvertStates(world,
        world_mapper,
        world_framework,
-       {{"0x000001", "city"}, {"0x000004", "port"}},
+       {{"x000001", "city"}, {"x000004", "port"}},
        map_data,
        hoi4_province_definitions,
        CoastalProvinces());
@@ -138,8 +138,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
 {
    const mappers::ProvinceMapper province_mapper({},
        {
-           {10, {"0x000001", "0x000002", "0x000003"}},
-           {20, {"0x000004", "0x000005", "0x000006"}},
+           {10, {"x000001", "x000002", "x000003"}},
+           {20, {"x000004", "x000005", "x000006"}},
        });
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20"}});
    const maps::MapData map_data({.province_definitions = hoi4_province_definitions});
@@ -151,12 +151,12 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
                                {3, vic3::State({.owner_number = 3, .provinces = {4}})},
                                {4, vic3::State({.owner_number = 4, .provinces = {5, 6}})}})
                            .AddProvinces({
-                               "0x000001",
-                               "0x000002",
-                               "0x000003",
-                               "0x000004",
-                               "0x000005",
-                               "0x000006",
+                               "x000001",
+                               "x000002",
+                               "x000003",
+                               "x000004",
+                               "x000005",
+                               "x000006",
                            })
                            .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
                            .Build();
@@ -427,7 +427,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
                                   .AddTestStates({{1, 2, 3}, {4, 5, 6}})
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-                                  .AddProvinces({"0x000001", "0x000002", "0x000003", "0x000004", "0x000005"});
+                                  .AddProvinces({"x000001", "x000002", "x000003", "x000004", "x000005"});
    mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6);
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
@@ -462,11 +462,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
 {
    const mappers::ProvinceMapper province_mapper({},
        {
-           {10, {"0x000001"}},
-           {20, {"0x000002"}},
-           {30, {"0x000003"}},
-           {40, {"0x000004"}},
-           {50, {"0x000005"}},
+           {10, {"x000001"}},
+           {20, {"x000002"}},
+           {30, {"x000003"}},
+           {40, {"x000004"}},
+           {50, {"x000005"}},
            {60, {}},
        });
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
@@ -490,12 +490,12 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
                            .AddTestStates({{1, 2, 3}, {4, 5, 6}})
                            .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
                            .AddProvinces({
-                               "0x000001",
-                               "0x000002",
-                               "0x000003",
-                               "0x000004",
-                               "0x000005",
-                               "0x000006",
+                               "x000001",
+                               "x000002",
+                               "x000003",
+                               "x000004",
+                               "x000005",
+                               "x000006",
                            })
                            .Build();
    mappers::WorldMapper world_mapper(mappers::CountryMapper(),
@@ -559,7 +559,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
 
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr("Vic3 province 0x000005 was not in a state."));
+   EXPECT_THAT(log.str(), testing::HasSubstr("Vic3 province x000005 was not in a state."));
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}}), State(2, {.provinces = {40, 60}})));
    EXPECT_THAT(hoi4_states.province_to_state_id_map,
@@ -588,20 +588,20 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
                                   })
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}, {7, 8, 9}})
                                   .AddProvinces({
-                                      "0x000001",
-                                      "0x000002",
-                                      "0x000003",
-                                      "0x000004",
-                                      "0x000005",
-                                      "0x000006",
-                                      "0x000007",
-                                      "0x000008",
-                                      "0x000009",
+                                      "x000001",
+                                      "x000002",
+                                      "x000003",
+                                      "x000004",
+                                      "x000005",
+                                      "x000006",
+                                      "x000007",
+                                      "x000008",
+                                      "x000009",
                                   });
    mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().AddProvinces({
-       {{"0x000001"}, 10},
-       {{"0x000005"}, 50},
-       {{"0x000009"}, 90},
+       {{"x000001"}, 10},
+       {{"x000005"}, 50},
+       {{"x000009"}, 90},
    });
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 

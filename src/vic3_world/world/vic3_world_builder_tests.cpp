@@ -41,21 +41,21 @@ TEST(Vic3WorldWorldVic3WorldBuilder, AddStateRegionsWorks)
 {
    const auto nullWorld = WorldBuilder::CreateNullWorld()
                               .AddStateRegions({
-                                  {"REGION_ONE", vic3::StateRegion({{"0x000002", "port"}}, {})},
-                                  {"REGION_TWO", vic3::StateRegion({{"0x000005", "port"}}, {})},
+                                  {"REGION_ONE", vic3::StateRegion({{"x000002", "port"}}, {})},
+                                  {"REGION_TWO", vic3::StateRegion({{"x000005", "port"}}, {})},
                               })
                               .Build();
 
-   EXPECT_EQ(nullWorld.GetStateRegions().at("REGION_ONE"), vic3::StateRegion({{"0x000002", "port"}}, {}));
-   EXPECT_EQ(nullWorld.GetStateRegions().at("REGION_TWO"), vic3::StateRegion({{"0x000005", "port"}}, {}));
+   EXPECT_EQ(nullWorld.GetStateRegions().at("REGION_ONE"), vic3::StateRegion({{"x000002", "port"}}, {}));
+   EXPECT_EQ(nullWorld.GetStateRegions().at("REGION_TWO"), vic3::StateRegion({{"x000005", "port"}}, {}));
 }
 
 TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStateRegionsWorks)
 {
    const auto nullWorld = WorldBuilder::CreateNullWorld().AddTestStateRegions({{1, 2, 3}, {4, 5}}).Build();
 
-   EXPECT_EQ(nullWorld.GetStateRegions().at("REGION_001"), vic3::StateRegion({}, {"0x000001", "0x000002", "0x000003"}));
-   EXPECT_EQ(nullWorld.GetStateRegions().at("REGION_002"), vic3::StateRegion({}, {"0x000004", "0x000005"}));
+   EXPECT_EQ(nullWorld.GetStateRegions().at("REGION_001"), vic3::StateRegion({}, {"x000001", "x000002", "x000003"}));
+   EXPECT_EQ(nullWorld.GetStateRegions().at("REGION_002"), vic3::StateRegion({}, {"x000004", "x000005"}));
 }
 
 TEST(Vic3WorldWorldVic3WorldBuilder, AddBuildingsWorks)

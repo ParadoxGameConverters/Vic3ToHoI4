@@ -63,7 +63,7 @@ TEST_F(MapsMapdata, ExceptionThrownForMissingAdjacenciesCsv)
 TEST_F(MapsMapdata, NeighborsDefined)
 {
    EXPECT_THAT(map_data.GetNeighbors("42"), testing::UnorderedElementsAre());        // non-existent province
-   EXPECT_THAT(map_data.GetNeighbors("0x000042"), testing::UnorderedElementsAre());  // non-existent province
+   EXPECT_THAT(map_data.GetNeighbors("x000042"), testing::UnorderedElementsAre());  // non-existent province
    EXPECT_THAT(map_data.GetNeighbors("1"), testing::UnorderedElementsAre("3"));      // defined from above
    EXPECT_THAT(map_data.GetNeighbors("2"), testing::UnorderedElementsAre("3"));      // defined from right
    EXPECT_THAT(map_data.GetNeighbors("4"), testing::UnorderedElementsAre("3"));      // defined from left
@@ -77,8 +77,8 @@ TEST_F(MapsMapdata, NeighborsDefined)
 
 TEST_F(MapsMapdata, SpecifiedBordersCanBeLookedUp)
 {
-   EXPECT_EQ(map_data.GetSpecifiedBorderCenter("42", "0x000001"), std::nullopt);  // non-existent province
-   EXPECT_EQ(map_data.GetSpecifiedBorderCenter("1", "0x000005"), std::nullopt);   // non-bordering provinces
+   EXPECT_EQ(map_data.GetSpecifiedBorderCenter("42", "x000001"), std::nullopt);  // non-existent province
+   EXPECT_EQ(map_data.GetSpecifiedBorderCenter("1", "x000005"), std::nullopt);   // non-bordering provinces
 
    // Bordering provinces
    const auto border_point = map_data.GetSpecifiedBorderCenter("1", "3");

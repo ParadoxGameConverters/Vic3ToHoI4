@@ -560,8 +560,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
                                   .AddTestStates({{1, 2, 3}, {4, 5, 6}})
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
                                   .AddStateRegions({
-                                      {"REGION_ONE", vic3::StateRegion({{"0x000002", "port"}}, {})},
-                                      {"REGION_TWO", vic3::StateRegion({{"0x000005", "port"}}, {})},
+                                      {"REGION_ONE", vic3::StateRegion({{"x000002", "port"}}, {})},
+                                      {"REGION_TWO", vic3::StateRegion({{"x000005", "port"}}, {})},
                                   });
    mappers::WorldMapperBuilder world_mapper =
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}});
@@ -815,11 +815,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsArePlacedInHighestValueSig
                                       {"STATE_ONE",
                                           vic3::StateRegion(
                                               {
-                                                  {"0x000005", "city"},
-                                                  {"0x000004", "port"},
-                                                  {"0x000003", "farm"},
-                                                  {"0x000002", "mine"},
-                                                  {"0x000001", "wood"},
+                                                  {"x000005", "city"},
+                                                  {"x000004", "port"},
+                                                  {"x000003", "farm"},
+                                                  {"x000002", "mine"},
+                                                  {"x000001", "wood"},
                                               },
                                               {})},
                                   });
@@ -859,11 +859,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreValuedAtHalfTotalFactor
                                       {"STATE_ONE",
                                           vic3::StateRegion(
                                               {
-                                                  {"0x000005", "city"},
-                                                  {"0x000004", "port"},
-                                                  {"0x000003", "farm"},
-                                                  {"0x000002", "mine"},
-                                                  {"0x000001", "wood"},
+                                                  {"x000005", "city"},
+                                                  {"x000004", "port"},
+                                                  {"x000003", "farm"},
+                                                  {"x000002", "mine"},
+                                                  {"x000001", "wood"},
                                               },
                                               {})},
                                   })
@@ -922,11 +922,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, DebugVictoryPointsAreConverted)
                                       {"STATE_ONE",
                                           vic3::StateRegion(
                                               {
-                                                  {"0x000005", "city"},
-                                                  {"0x000004", "port"},
-                                                  {"0x000003", "farm"},
-                                                  {"0x000002", "mine"},
-                                                  {"0x000001", "wood"},
+                                                  {"x000005", "city"},
+                                                  {"x000004", "port"},
+                                                  {"x000003", "farm"},
+                                                  {"x000002", "mine"},
+                                                  {"x000001", "wood"},
                                               },
                                               {})},
                                   });
