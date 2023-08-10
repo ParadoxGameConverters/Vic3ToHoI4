@@ -386,6 +386,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
             if (overlord != countries.end() && subject != countries.end())
             {
                overlord->second.AddPuppet(pact.GetSecondId());
+               subject->second.AddOverlord(pact.GetFirstId());
             }
          }
       }
