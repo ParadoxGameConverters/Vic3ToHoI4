@@ -54,7 +54,7 @@ WorldBuilder& WorldBuilder::AddStateRegions(const std::map<std::string, StateReg
    return *this;
 }
 
-WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>> provinceSets)
+WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>>& provinceSets)
 {
    for (auto& provinceSet: provinceSets)
    {
@@ -70,7 +70,7 @@ WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>>
    return *this;
 }
 
-WorldBuilder& WorldBuilder::AddBuildings(const std::map<int, std::vector<vic3::Building>> buildings)
+WorldBuilder& WorldBuilder::AddBuildings(const std::map<int, std::vector<vic3::Building>>& buildings)
 {
    for (auto& building: buildings)
    {
