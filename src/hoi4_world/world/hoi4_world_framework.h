@@ -28,30 +28,4 @@ class WorldFramework
    const StateCategories state_categories;
 };
 
-
-class WorldFrameworkBuilder
-{
-  public:
-   static WorldFrameworkBuilder CreateDefaultWorldFramework(const commonItems::ModFilesystem& hoi4_mod_filesystem);
-   static WorldFrameworkBuilder CreateNullWorldFramework();
-   WorldFramework Build();
-
-   WorldFrameworkBuilder& DefaultStrategicRegions();
-   WorldFrameworkBuilder& SetStrategicRegions(const StrategicRegions strategic_regions);
-   WorldFrameworkBuilder& DefaultDefaultStates();
-   WorldFrameworkBuilder& AddDefaultStates(const std::map<int, DefaultState> defaultStates);
-   WorldFrameworkBuilder& AddResources(ResourcesMap resources);
-   WorldFrameworkBuilder& DefaultResourcesMap();
-   WorldFrameworkBuilder& DefaultStateCategories();
-   WorldFrameworkBuilder& SetStateCategories(StateCategories new_categories);
-
-
-  private:
-   WorldFrameworkBuilder(): hoi4_mod_filesystem("", {}){};
-   commonItems::ModFilesystem hoi4_mod_filesystem;
-   StrategicRegions strategic_regions;
-   std::map<int, DefaultState> default_states;
-   ResourcesMap resources_map;
-   StateCategories state_categories;
-};
 }  // namespace hoi4

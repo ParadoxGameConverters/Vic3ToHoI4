@@ -19,7 +19,7 @@ class WorldBuilder
    WorldBuilder& AddStateRegions(const std::map<std::string, StateRegion>& state_regions);
    /// <summary>
    /// Adds state regions with the specified provinces in the state region. Starts at REGION_001, and includes provinces
-   /// with the names "0x0000nn" for the n's specified in the list. Contains Zero significatn provinces.
+   /// with the names "x0000nn" for the n's specified in the list. Contains Zero significant provinces.
    /// </summary>
    WorldBuilder& AddTestStateRegions(const std::vector<std::set<int>> province_sets);
    WorldBuilder& AddBuildings(const std::map<int, std::vector<vic3::Building>> buildings);

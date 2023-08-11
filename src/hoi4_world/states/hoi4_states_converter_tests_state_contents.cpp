@@ -4,6 +4,7 @@
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
+#include "src/hoi4_world/world/hoi4_world_framework_builder.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/mappers/provinces/province_mapping_types.h"

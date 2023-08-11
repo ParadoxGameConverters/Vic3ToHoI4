@@ -63,7 +63,7 @@ TEST_F(MapsMapdata, ExceptionThrownForMissingAdjacenciesCsv)
 TEST_F(MapsMapdata, NeighborsDefined)
 {
    EXPECT_THAT(map_data.GetNeighbors("42"), testing::UnorderedElementsAre());        // non-existent province
-   EXPECT_THAT(map_data.GetNeighbors("x000042"), testing::UnorderedElementsAre());  // non-existent province
+   EXPECT_THAT(map_data.GetNeighbors("x000042"), testing::UnorderedElementsAre());   // non-existent province
    EXPECT_THAT(map_data.GetNeighbors("1"), testing::UnorderedElementsAre("3"));      // defined from above
    EXPECT_THAT(map_data.GetNeighbors("2"), testing::UnorderedElementsAre("3"));      // defined from right
    EXPECT_THAT(map_data.GetNeighbors("4"), testing::UnorderedElementsAre("3"));      // defined from left

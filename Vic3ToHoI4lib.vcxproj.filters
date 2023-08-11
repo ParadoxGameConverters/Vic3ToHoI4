@@ -576,6 +576,9 @@
     <ClInclude Include="src\vic3_world\world\vic3_world_builder.h">
       <Filter>src\vic3_world\world</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\world\hoi4_world_framework_builder.h">
+      <Filter>src\hoi4_world\world</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -866,17 +869,11 @@
     <ClCompile Include="src\vic3_world\ideologies\ideologies_importer.cpp">
       <Filter>src\vic3_world\ideologies</Filter>
     </ClCompile>
-    <ClCompile Include="src\mappers\world\world_mapper.cpp">
-      <Filter>src\mappers\world</Filter>
-    </ClCompile>
     <ClCompile Include="src\vic3_world\countries\vic3_country.cpp">
       <Filter>src\vic3_world\countries</Filter>
     </ClCompile>
-    <ClCompile Include="src\hoi4_world\world\hoi4_world_framework.cpp">
+    <ClCompile Include="src\hoi4_world\world\hoi4_world_framework_builder.cpp">
       <Filter>src\hoi4_world\world</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vic3_world\world\vic3_world.cpp">
-      <Filter>src\vic3_world\world</Filter>
     </ClCompile>
     <ClCompile Include="src\mappers\world\world_mapper_builder.cpp">
       <Filter>src\mappers\world</Filter>

@@ -6,8 +6,8 @@
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/technology/tech_mapping.h"
 #include "src/mappers/technology/tech_mappings_importer.h"
-#include "src/vic3_world/world/vic3_world_builder.h"
 #include "src/vic3_world/world/vic3_world.h"
+#include "src/vic3_world/world/vic3_world_builder.h"
 
 namespace mappers
 {
