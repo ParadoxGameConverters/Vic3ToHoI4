@@ -17,6 +17,9 @@ vic3::CountryImporter::CountryImporter()
    country_parser_.registerKeyword("country_type", [this](std::istream& input_stream) {
       country_type_ = commonItems::getString(input_stream);
    });
+   country_parser_.registerKeyword("civil_war", [this](std::istream& input_stream) {
+      is_civil_war_ = commonItems::getString(input_stream) == "yes";
+   });
    country_parser_.registerKeyword("cultures", [this](std::istream& input_stream) {
       for (const auto& culture_id: commonItems::getInts(input_stream))
       {
@@ -61,6 +64,7 @@ std::optional<vic3::Country> vic3::CountryImporter::ImportCountry(const int numb
        .color = color,
        .capital_state = capital_,
        .country_type = country_type_,
+       .is_civil_war = is_civil_war_,
        .primary_culture_ids = primary_culture_ids_,
        .head_of_state_id = head_of_state_id_});
 }

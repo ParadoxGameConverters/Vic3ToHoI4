@@ -71,6 +71,7 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                    .head_of_state_id = 5,
                    .character_ids = {5},
                    .ig_ids = {3},
+                   .overlord = 1,
                }))));
    EXPECT_THAT(world.GetStates(),
        testing::UnorderedElementsAre(testing::Pair(0, State({.provinces = {1, 2, 3}})),
@@ -245,7 +246,7 @@ TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)
                           "test_files/vic3_world/workshop/529340/test_mod_two/"));
 }
 
-TEST(Vic3worldWorldVic3worldimporter, PactsBecomeSubjects)
+TEST(Vic3worldWorldVic3worldimporter, PactsBecomeSubjectsAndOverlords)
 {
    const auto world = ImportWorld(configuration::Configuration{
        .vic3_directory = "test_files/vic3_world/world",
@@ -256,7 +257,9 @@ TEST(Vic3worldWorldVic3worldimporter, PactsBecomeSubjects)
    Country v1 = world.GetCountries().at(1);
    Country v3 = world.GetCountries().at(3);
    EXPECT_EQ(v1.GetPuppets(), std::set<int>({3}));
+   EXPECT_EQ(v1.GetOverlord(), std::nullopt);
    EXPECT_EQ(v3.GetPuppets().size(), 0);
+   EXPECT_EQ(v3.GetOverlord(), std::make_optional(1));
 }
 
 

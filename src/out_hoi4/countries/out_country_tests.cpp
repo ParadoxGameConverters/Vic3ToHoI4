@@ -613,18 +613,18 @@ TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected_output));
 }
 
-TEST(Outhoi4CountriesOutcountryTests, PuppetsAreOutputToCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, OverlordsAreOutputToCountryHistoryFile)
 {
    commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/PuppetsAreOutputToCountryHistoryFile");
-   commonItems::TryCreateFolder("output/PuppetsAreOutputToCountryHistoryFile/history");
-   commonItems::TryCreateFolder("output/PuppetsAreOutputToCountryHistoryFile/history/countries");
+   commonItems::TryCreateFolder("output/OverlordsAreOutputToCountryHistoryFile");
+   commonItems::TryCreateFolder("output/OverlordsAreOutputToCountryHistoryFile/history");
+   commonItems::TryCreateFolder("output/OverlordsAreOutputToCountryHistoryFile/history/countries");
 
-   const hoi4::Country country({.tag = "AAA", .puppets = {"BBB"}});
-   OutputCountryHistory("PuppetsAreOutputToCountryHistoryFile", country, {});
+   const hoi4::Country country({.tag = "BBB", .overlord = {"AAA"}});
+   OutputCountryHistory("OverlordsAreOutputToCountryHistoryFile", country, {});
 
-   ASSERT_TRUE(commonItems::DoesFileExist("output/PuppetsAreOutputToCountryHistoryFile/history/countries/AAA.txt"));
-   std::ifstream country_file("output/PuppetsAreOutputToCountryHistoryFile/history/countries/AAA.txt");
+   ASSERT_TRUE(commonItems::DoesFileExist("output/OverlordsAreOutputToCountryHistoryFile/history/countries/BBB.txt"));
+   std::ifstream country_file("output/OverlordsAreOutputToCountryHistoryFile/history/countries/BBB.txt");
    ASSERT_TRUE(country_file.is_open());
    std::stringstream country_file_stream;
    std::copy(std::istreambuf_iterator<char>(country_file),
@@ -632,41 +632,39 @@ TEST(Outhoi4CountriesOutcountryTests, PuppetsAreOutputToCountryHistoryFile)
        std::ostreambuf_iterator<char>(country_file_stream));
    country_file.close();
 
-   auto expected = R""(# DIPLOMACY
-if = {
-	limit = {
-		OR = {
-			has_dlc = "Together for Victory"
-			has_dlc = "Man the Guns"
-		}
-	}
-    set_autonomy = {
-        target = BBB
-        autonomous_state = autonomy_puppet
-        freedom_level = 0.4
-    }
-    else = {
-        puppet = BBB
-    }
-}
-)"";
+   const char* expected =
+       "AAA = {\n"
+       "\tif = {\n"
+       "\t\tlimit = {\n"
+       "\t\t\thas_dlc = \"Together for Victory\"\n"
+       "\t\t}\n"
+       "\t\tset_autonomy = {\n"
+       "\t\t\ttarget = BBB\n"
+       "\t\t\tautonomous_state = autonomy_puppet\n"
+       "\t\t\tfreedom_level = 0.4\n"
+       "\t\t}\n"
+       "\t}\n"
+       "\telse = {\n"
+       "\t\tpuppet = BBB\n"
+       "\t}\n"
+       "}\n";
 
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected));
 }
 
-TEST(Outhoi4CountriesOutcountryTests, FascistPuppetsAreOutputToCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, FascistOverlordsAreOutputToCountryHistoryFile)
 {
    commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/FascistPuppetsAreOutputToCountryHistoryFile");
-   commonItems::TryCreateFolder("output/FascistPuppetsAreOutputToCountryHistoryFile/history");
-   commonItems::TryCreateFolder("output/FascistPuppetsAreOutputToCountryHistoryFile/history/countries");
+   commonItems::TryCreateFolder("output/FascistOverlordsAreOutputToCountryHistoryFile");
+   commonItems::TryCreateFolder("output/FascistOverlordsAreOutputToCountryHistoryFile/history");
+   commonItems::TryCreateFolder("output/FascistOverlordsAreOutputToCountryHistoryFile/history/countries");
 
-   const hoi4::Country country({.tag = "FAC", .ideology = "fascism", .puppets = {"CCC"}});
-   OutputCountryHistory("FascistPuppetsAreOutputToCountryHistoryFile", country, {});
+   const hoi4::Country country({.tag = "CCC", .ideology = "fascism", .overlord = {"FAC"}});
+   OutputCountryHistory("FascistOverlordsAreOutputToCountryHistoryFile", country, {});
 
    ASSERT_TRUE(
-       commonItems::DoesFileExist("output/FascistPuppetsAreOutputToCountryHistoryFile/history/countries/FAC.txt"));
-   std::ifstream country_file("output/FascistPuppetsAreOutputToCountryHistoryFile/history/countries/FAC.txt");
+       commonItems::DoesFileExist("output/FascistOverlordsAreOutputToCountryHistoryFile/history/countries/CCC.txt"));
+   std::ifstream country_file("output/FascistOverlordsAreOutputToCountryHistoryFile/history/countries/CCC.txt");
    ASSERT_TRUE(country_file.is_open());
    std::stringstream country_file_stream;
    std::copy(std::istreambuf_iterator<char>(country_file),
@@ -674,26 +672,24 @@ TEST(Outhoi4CountriesOutcountryTests, FascistPuppetsAreOutputToCountryHistoryFil
        std::ostreambuf_iterator<char>(country_file_stream));
    country_file.close();
 
-   auto expected = R""(# DIPLOMACY
-if = {
-	limit = {
-		OR = {
-			has_dlc = "Together for Victory"
-			has_dlc = "Man the Guns"
-		}
-	}
-    set_autonomy = {
-        target = CCC
-        autonomous_state = autonomy_integrated_puppet
-    }
-    else = {
-        set_autonomy = {
-            target = CCC
-            autonomous_state = autonomy_puppet
-        }
-    }
-}
-)"";
+   const char* expected =
+       "FAC = {\n"
+       "\tif = {\n"
+       "\t\tlimit = {\n"
+       "\t\t\thas_dlc = \"Together for Victory\"\n"
+       "\t\t}\n"
+       "\t\tset_autonomy = {\n"
+       "\t\t\ttarget = CCC\n"
+       "\t\t\tautonomous_state = autonomy_integrated_puppet\n"
+       "\t\t}\n"
+       "\t}\n"
+       "\telse = {\n"
+       "\t\tset_autonomy = {\n"
+       "\t\t\ttarget = CCC\n"
+       "\t\t\tautonomous_state = autonomy_puppet\n"
+       "\t\t}\n"
+       "\t}\n"
+       "}\n";
 
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected));
 }

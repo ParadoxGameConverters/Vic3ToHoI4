@@ -20,6 +20,7 @@ struct CountryOptions
    commonItems::Color color;
    std::optional<int> capital_state;
    std::string country_type;
+   bool is_civil_war;
    std::set<std::string> active_laws;
    std::set<int> primary_culture_ids;
    std::set<std::string> primary_cultures;
@@ -28,6 +29,7 @@ struct CountryOptions
    std::vector<int> character_ids;
    std::vector<int> ig_ids;
    std::set<int> puppets;
+   std::optional<int> overlord;
 };
 
 enum class RankCategory
@@ -49,6 +51,7 @@ class Country
        color_(options.color),
        capital_state_(options.capital_state),
        country_type_(std::move(options.country_type)),
+       is_civil_war_(options.is_civil_war),
        active_laws_(std::move(options.active_laws)),
        primary_cultures_(std::move(options.primary_cultures)),
        primary_culture_ids_(std::move(options.primary_culture_ids)),
@@ -56,7 +59,8 @@ class Country
        head_of_state_id_(options.head_of_state_id),
        character_ids_(std::move(options.character_ids)),
        ig_ids_(std::move(options.ig_ids)),
-       puppets_(std::move(options.puppets))
+       puppets_(std::move(options.puppets)),
+       overlord_(options.overlord)
    {
    }
 
@@ -67,6 +71,8 @@ class Country
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
    /// Is the country a recognized or colonial nation
    [[nodiscard]] bool IsRecognized() const { return !IsDecentralized() && country_type_ != "unrecognized"; }
+   // are these rebels
+   [[nodiscard]] bool IsCivilWarCountry() const { return is_civil_war_; }
    [[nodiscard]] const std::set<std::string>& GetActiveLaws() const { return active_laws_; }
    [[nodiscard]] const std::set<std::string>& GetPrimaryCultures() const { return primary_cultures_; }
    [[nodiscard]] const std::set<int>& GetPrimaryCultureIds() const { return primary_culture_ids_; }
@@ -75,6 +81,7 @@ class Country
    [[nodiscard]] const std::vector<int>& GetCharacterIds() const { return character_ids_; }
    [[nodiscard]] const std::vector<int>& GetInterestGroupIds() const { return ig_ids_; }
    [[nodiscard]] const std::set<int>& GetPuppets() const { return puppets_; }
+   [[nodiscard]] const std::optional<int>& GetOverlord() const { return overlord_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
@@ -82,9 +89,10 @@ class Country
    void SetCharacterIds(const std::vector<int>& character_ids) { character_ids_ = character_ids; }
    void AddInterestGroupId(int ig_id) { ig_ids_.push_back(ig_id); }
    void AddPuppet(int puppet) { puppets_.insert(puppet); }
+   void AddOverlord(int overlord) { overlord_ = overlord; }
 
-   std::set<std::string> GetAcquiredTechnologies(const vic3::World& world) const;
-   RankCategory GetCountryRankCategory(const vic3::World& world) const;
+   [[nodiscard]] std::set<std::string> GetAcquiredTechnologies(const vic3::World& world) const;
+   [[nodiscard]] RankCategory GetCountryRankCategory(const vic3::World& world) const;
 
    bool operator==(const Country&) const = default;
 
@@ -94,6 +102,7 @@ class Country
    commonItems::Color color_;
    std::optional<int> capital_state_;
    std::string country_type_;
+   bool is_civil_war_;
    std::set<std::string> active_laws_;
    std::set<std::string> primary_cultures_;
    std::set<int> primary_culture_ids_;  // Resolve to culture name before HoI
@@ -102,6 +111,7 @@ class Country
    std::vector<int> character_ids_;
    std::vector<int> ig_ids_;
    std::set<int> puppets_;
+   std::optional<int> overlord_;
 };
 
 }  // namespace vic3

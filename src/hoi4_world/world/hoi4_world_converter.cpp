@@ -189,13 +189,14 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    Log(LogLevel::Info) << "\tConverting states";
    const auto province_definitions = ImportProvinceDefinitions(hoi4_mod_filesystem);
    const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem);
+   const std::map<int, DefaultState> default_states = hoi4::ImportDefaultStates(hoi4_mod_filesystem);
    CoastalProvinces coastal_provinces = CreateCoastalProvinces(map_data,
        province_definitions.GetLandProvinces(),
        province_definitions.GetSeaProvinces());
 
    std::map<std::string, vic3::ProvinceType> vic3_significant_provinces =
-       GatherVic3SignificantProvinces(source_world.GetStateRegions());
    WorldFramework world_framework = WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
+       GatherVic3SignificantProvinces(source_world.GetStateRegions());
 
    States states = ConvertStates(source_world,
        world_mapper,
@@ -207,8 +208,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        debug);
 
    world_framework.strategic_regions.UpdateToMatchNewStates(states.states);
-
    Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem);
+   Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem_);
 
    Railways railways = ConvertRailways(vic3_significant_provinces,
        world_mapper.province_mapper,
