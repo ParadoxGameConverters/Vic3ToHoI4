@@ -23,7 +23,7 @@ class InfrastructureMapper
 
    storage_type getStorage() { return vic3_infrastructure_per_hoi_infrastructure_; };
 
-   int getTargetInfrastructure() { return target_hoi_infra_per_state_; }
+   float getTargetInfrastructure() { return target_hoi_infra_per_state_; }
    float getConvertedInfrastructure() { return static_cast<float>(converted_hoi_infra_) / converted_hoi_states_; }
    float GetFudgeFactor() { return fudge_factor_; }
 

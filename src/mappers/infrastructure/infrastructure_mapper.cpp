@@ -70,8 +70,8 @@ float InfrastructureMapper::findFudgeFactor(const std::map<int, vic3::State>& st
                             0.0F,
                             4.0F));
           });
-      Log(LogLevel::Debug) << fmt::format("fudge factor of {} gives {} converted", fudge_factor,
-          new_infra);
+      Log(LogLevel::Debug) << fmt::format("fudge factor of {} gives {} ratio", fudge_factor,
+          (new_infra / states.size()));
       return ((new_infra / states.size()) - target_hoi_infra_per_state_) / target_hoi_infra_per_state_;
    };
 
@@ -81,7 +81,7 @@ float InfrastructureMapper::findFudgeFactor(const std::map<int, vic3::State>& st
        [](float f) { // good initial of fudge factor = -(difference%)
           return -f;
        },
-       3);
+       5);
 
 }
 
