@@ -56,12 +56,6 @@ int InfrastructureMapper::map(float vic3Infrastructure)
 
 float InfrastructureMapper::findFudgeFactor(const std::map<int, vic3::State>& states)
 {
-   float diff_ratio = 0;
-   float fudge_factor_0 = 0.0F;
-   float fudge_factor_1;
-   float y_0;
-   float y_1;
-
    const auto function = [=](float fudge_factor) {
       const float new_infra =
           std::accumulate(states.begin(), states.end(), 0.0f, [=](float f, std::map<int, vic3::State>::value_type s) {
@@ -70,7 +64,9 @@ float InfrastructureMapper::findFudgeFactor(const std::map<int, vic3::State>& st
                             0.0F,
                             4.0F));
           });
-      Log(LogLevel::Debug) << fmt::format("fudge factor of {} gives {} ratio", fudge_factor,
+      Log(LogLevel::Debug) << fmt::format("fudge factor of {} gives {} infrastructure ({} per state)",
+          fudge_factor,
+          new_infra,
           (new_infra / states.size()));
       return ((new_infra / states.size()) - target_hoi_infra_per_state_) / target_hoi_infra_per_state_;
    };
