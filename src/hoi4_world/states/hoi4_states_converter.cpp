@@ -997,45 +997,37 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 
 }  // namespace
 
-
-hoi4::States hoi4::ConvertStates(const std::map<int, vic3::State>& states,
-    const vic3::ProvinceDefinitions& vic3_province_definitions,
+hoi4::States hoi4::ConvertStates(const vic3::World source_world,
+    const mappers::WorldMapper world_mapper,
+    const hoi4::WorldFramework world_framework,
     const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
-    const vic3::Buildings& vic3_buildings,
-    const mappers::ProvinceMapper& province_mapper,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
-    const hoi4::StrategicRegions& strategic_regions,
-    const mappers::CountryMapper& country_mapper,
-    const hoi4::StateCategories& state_categories,
-    const std::map<int, DefaultState>& default_states,
-    const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
     const CoastalProvinces& coastal_provinces,
-    const ResourcesMap& resources_map,
     bool debug)
 {
    const std::map<std::string, int> vic3_province_to_state_id_map =
-       MapVic3ProvincesToStates(states, vic3_province_definitions);
+       MapVic3ProvincesToStates(source_world.GetStates(), source_world.GetProvinceDefinitions());
    const std::map<int, std::set<int>> vic3_state_id_to_hoi4_provinces =
        PlaceHoi4ProvincesInStates(significant_vic3_provinces,
            vic3_province_to_state_id_map,
-           province_mapper.GetHoi4ToVic3ProvinceMappings(),
+           world_mapper.province_mapper.GetHoi4ToVic3ProvinceMappings(),
            hoi4_province_definitions);
    const std::vector<int> vic3_state_ids_by_vic3_industry =
-       SortVic3StatesByIndustryDescending(vic3_buildings, vic3_state_id_to_hoi4_provinces);
-   return CreateStates(states,
-       vic3_buildings,
+       SortVic3StatesByIndustryDescending(source_world.GetBuildings(), vic3_state_id_to_hoi4_provinces);
+   return CreateStates(source_world.GetStates(),
+       source_world.GetBuildings(),
        vic3_state_id_to_hoi4_provinces,
        vic3_state_ids_by_vic3_industry,
-       province_mapper,
+       world_mapper.province_mapper,
        map_data,
        hoi4_province_definitions,
-       strategic_regions,
-       country_mapper,
-       state_categories,
-       default_states,
-       vic3_state_regions,
+       world_framework.strategic_regions,
+       world_mapper.country_mapper,
+       world_framework.state_categories,
+       world_framework.default_states,
+       source_world.GetStateRegions(),
        coastal_provinces,
-       resources_map,
+       world_framework.resources_map,
        debug);
 }

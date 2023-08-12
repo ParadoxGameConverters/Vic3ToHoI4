@@ -471,6 +471,15 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests_tech.cpp">
       <Filter>src\hoi4_world\countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\states\hoi4_states_converter_tests_state_contents.cpp">
+      <Filter>src\hoi4_world\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\world\hoi4_world_framework_builder_tests.cpp">
+      <Filter>src\hoi4_world\world</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\world\vic3_world_builder_tests.cpp">
+      <Filter>src\vic3_world\world</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
