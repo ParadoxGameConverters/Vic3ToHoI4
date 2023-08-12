@@ -179,4 +179,35 @@ TEST(Outhoi4CountriesOutcountriesTests, DivisionTemplatesAreCopied)
    EXPECT_TRUE(commonItems::DoesFileExist("output/DivisionTemplatesAreCopied/history/units/TWO_1936.txt"));
 }
 
+
+TEST(Outhoi4CountriesOutcountriesTests, NationalFocusFilesAreCreated)
+{
+   CreateFolders("NationalFocusFilesAreCreated");
+
+   OutputCountries("NationalFocusFilesAreCreated",
+       {
+           {"TAG", hoi4::Country({.tag = "TAG"})},
+           {"TWO", hoi4::Country({.tag = "TWO"})},
+       },
+       {});
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/NationalFocusFilesAreCreated/common/national_focus/TAG_NF.txt"));
+   std::ifstream country_file_one("output/NationalFocusFilesAreCreated/common/national_focus/TAG_NF.txt");
+   ASSERT_TRUE(country_file_one.is_open());
+   std::stringstream country_file_one_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_one_stream));
+   country_file_one.close();
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/NationalFocusFilesAreCreated/common/national_focus/TWO_NF.txt"));
+   std::ifstream country_file_two("output/NationalFocusFilesAreCreated/common/national_focus/TWO_NF.txt");
+   ASSERT_TRUE(country_file_two.is_open());
+   std::stringstream country_file_two_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_two_stream));
+   country_file_two.close();
+}
+
 }  // namespace out
