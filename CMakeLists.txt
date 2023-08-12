@@ -120,6 +120,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/map/out_supply_nodes.cp
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/military/out_equipment_variant.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/names/out_name_list.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/names/out_names.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/national_focus/out_focus_tree.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/out_mod.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/portraits/out_portrait_paths.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/portraits/out_portraits.cpp")

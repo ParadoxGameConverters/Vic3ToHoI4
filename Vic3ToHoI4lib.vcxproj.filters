@@ -160,6 +160,9 @@
     <Filter Include="src\mappers\world">
       <UniqueIdentifier>{53b25985-1af2-4fcb-95ae-238296b1c38e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\out_hoi4\national_focus">
+      <UniqueIdentifier>{6a73785e-ecc8-45e2-b5b4-a89ffff0628c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -567,6 +570,9 @@
     <ClInclude Include="src\mappers\world\world_mapper.h">
       <Filter>src\mappers\world</Filter>
     </ClInclude>
+    <ClInclude Include="src\out_hoi4\national_focus\out_focus_tree.h">
+      <Filter>src\out_hoi4\national_focus</Filter>
+    </ClInclude>
     <ClInclude Include="src\hoi4_world\world\hoi4_world_framework.h">
       <Filter>src\hoi4_world\world</Filter>
     </ClInclude>
@@ -878,8 +884,14 @@
     <ClCompile Include="src\mappers\world\world_mapper_builder.cpp">
       <Filter>src\mappers\world</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\countries\vic3_country.cpp">
+      <Filter>src\vic3_world\countries</Filter>
+    </ClCompile>
     <ClCompile Include="src\vic3_world\world\vic3_world_builder.cpp">
       <Filter>src\vic3_world\world</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\national_focus\out_focus_tree.cpp">
+      <Filter>src\out_hoi4\national_focus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
