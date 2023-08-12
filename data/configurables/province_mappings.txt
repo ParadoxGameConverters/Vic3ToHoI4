@@ -2920,12 +2920,11 @@
 	link = { comment = "* **********" }
 	link = { comment = "* " }
 	link = { comment = "* * STATE_LOWER_EGYPT " }
-	link = { vic3 = xD050E0 hoi4 = 992 } # Gebel Iweibid [mine] -> land
+	link = { vic3 = xD050E0 vic3 = x48E2A5 hoi4 = 992 } # Gebel Iweibid [mine], STATE_LOWER_EGYPT -> land
 	link = { vic3 = xF47AAA hoi4 = 1071 } # STATE_LOWER_EGYPT -> El-Alamein
-	link = { vic3 = xC37990 hoi4 = 3996 } # STATE_LOWER_EGYPT -> Giza
-	link = { vic3 = x48E2A5 vic3 = x5011E0 hoi4 = 4055 } # STATE_LOWER_EGYPT, Giza [wood] -> Sinnuris
+	link = { vic3 = x5011E0 hoi4 = 3996 hoi4 = 4055 } # Giza [wood] -> Giza, Sinnuris
 	link = { vic3 = xA0D020 hoi4 = 4076 hoi4 = 4145 } # Alexandria [port] -> Alexandria, El Hamam
-	link = { vic3 = x409060 vic3 = xC09060 hoi4 = 7011 } # Banha [farm], Cairo [city] -> Cairo
+	link = { vic3 = x409060 vic3 = xC09060 vic3 = xC37990 hoi4 = 7011 hoi4 = 12004 } # MANY-TO-MANY: Banha [farm], Cairo [city], STATE_LOWER_EGYPT -> Cairo, Atfih
 	link = { vic3 = x7ABE4B hoi4 = 7091 } # STATE_LOWER_EGYPT -> Desouk
 	link = { vic3 = x6F13AD hoi4 = 7164 } # STATE_LOWER_EGYPT -> Tanta
 	link = { vic3 = x50D0E0 hoi4 = 10073 } # STATE_LOWER_EGYPT -> Mansoura
@@ -2939,22 +2938,21 @@
 	link = { vic3 = x13DF6A vic3 = x4FB62D vic3 = x6A6080 vic3 = xB002FE hoi4 = 5069 } # STATE_UPPER_EGYPT, STATE_UPPER_EGYPT, STATE_UPPER_EGYPT, Shalateen [farm] -> Shalateen
 	link = { vic3 = x7B75E6 vic3 = xD26E7A vic3 = xF32C0A hoi4 = 7073 } # STATE_UPPER_EGYPT, STATE_UPPER_EGYPT, STATE_UPPER_EGYPT -> Esna
 	link = { vic3 = x04D622 vic3 = xACD490 vic3 = xEDE183 hoi4 = 7156 } # STATE_UPPER_EGYPT, STATE_UPPER_EGYPT, Barramiya [wood] -> land
-	link = { vic3 = x675F3B vic3 = x69472D vic3 = xB22B9E hoi4 = 9957 } # STATE_UPPER_EGYPT, STATE_MIDDLE_EGYPT, STATE_UPPER_EGYPT -> Ras Shokeir
 	link = { vic3 = x3CD16F vic3 = xA75EBA vic3 = xC83592 hoi4 = 11999 } # STATE_UPPER_EGYPT, STATE_UPPER_EGYPT, STATE_UPPER_EGYPT -> Aswan
-	link = { vic3 = x25D78E vic3 = x3EE61D hoi4 = 12002 } # STATE_UPPER_EGYPT, STATE_UPPER_EGYPT -> Hurghada
+	link = { vic3 = x25D78E vic3 = x3EE61D vic3 = x675F3B vic3 = xB22B9E hoi4 = 12002 } # STATE_UPPER_EGYPT, STATE_UPPER_EGYPT, STATE_UPPER_EGYPT, STATE_UPPER_EGYPT -> Hurghada
 	link = { vic3 = x01735F vic3 = x44702D hoi4 = 12071 } # STATE_UPPER_EGYPT, Luxor [city] -> Luxor
 	link = { vic3 = x0E8E92 vic3 = xE0A0AC hoi4 = 12889 } # Safaga [port], STATE_UPPER_EGYPT -> Safaga
 	link = { comment = "* * STATE_MIDDLE_EGYPT " }
-	link = { vic3 = x08B43B vic3 = xC7858D hoi4 = 1068 hoi4 = 10031 } # MANY-TO-MANY: Beni Suef [city], STATE_MIDDLE_EGYPT -> Beni Suef, Minya
+	link = { vic3 = x08B43B hoi4 = 1068 hoi4 = 10031 } # Beni Suef [city] -> Beni Suef, Minya
+	link = { vic3 = x69472D hoi4 = 9957 } # STATE_MIDDLE_EGYPT -> Ras Shokeir
 	link = { vic3 = x908F20 hoi4 = 1080 } # STATE_MIDDLE_EGYPT -> land
 	link = { vic3 = xC35ABD hoi4 = 4143 } # STATE_MIDDLE_EGYPT -> land
 	link = { vic3 = x919B7D vic3 = x11D0E0 hoi4 = 7030 } # STATE_MIDDLE_EGYPT, STATE_MIDDLE_EGYPT -> Abnub
 	link = { vic3 = x5050E0 vic3 = xD39096 hoi4 = 7188 } # STATE_MIDDLE_EGYPT, STATE_MIDDLE_EGYPT -> land
 	link = { vic3 = x78104A vic3 = xF01121 hoi4 = 10028 } # STATE_MIDDLE_EGYPT, STATE_MIDDLE_EGYPT -> Akhmim
 	link = { vic3 = xA050A0 hoi4 = 7144 } # STATE_MIDDLE_EGYPT -> Mallawi
-	link = { vic3 = xA41CF4 hoi4 = 10126 } # El Suweis [port][mine] -> Ras Gharib
+	link = { vic3 = xA41CF4 vic3 = x0EBC9F hoi4 = 10126 } # El Suweis [port][mine], STATE_MIDDLE_EGYPT -> Ras Gharib
 	link = { vic3 = x50D060 hoi4 = 11974 hoi4 = 12044 } # Sohag [wood][farm] -> Asyut, Sohag
-	link = { vic3 = x0EBC9F hoi4 = 12004 } # STATE_MIDDLE_EGYPT -> Atfih
 	link = { comment = "* * STATE_EGYPTIAN_DESERT " }
 	link = { vic3 = x91BF54 vic3 = xBA5529 vic3 = xC48A06 vic3 = x9A6DB5 vic3 = x941E53 hoi4 = 1206 } # STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT -> Bimban
 	link = { vic3 = x2B6F28 vic3 = x3FFE56 vic3 = x4B8A20 vic3 = x5D6A34 vic3 = x811823 vic3 = x88E19F vic3 = x8F31B0 vic3 = x9130F8 vic3 = xA14C64 vic3 = xACEBEA vic3 = xB01121 vic3 = xE21A78 vic3 = xE95AD6 vic3 = xF87E36 vic3 = xFF4484 vic3 = xCC0432 hoi4 = 2064 } # STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, El Kharga [mine], STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT -> Baris
@@ -2970,27 +2968,25 @@
 	link = { vic3 = x05FF42 vic3 = x252184 vic3 = x3DCE56 vic3 = x80A9AC hoi4 = 1143 } # STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH -> land
 	link = { vic3 = xB5969E hoi4 = 5078 } # STATE_MATRUH -> land
 	link = { vic3 = x87D6C4 vic3 = x93D215 hoi4 = 7079 } # El Salloum [city], STATE_MATRUH -> Sidi Barrani
-	link = { vic3 = x3955E4 vic3 = x48B0D1 hoi4 = 7117 } # STATE_MATRUH, STATE_MATRUH -> land
+	link = { vic3 = xC7858D hoi4 = 7117 } # STATE_MIDDLE_EGYPT -> land
 	link = { vic3 = x246457 vic3 = xC1822C vic3 = xF942C3 hoi4 = 7148 } # STATE_MATRUH, STATE_MATRUH, STATE_MATRUH -> land
 	link = { vic3 = x53834E vic3 = x5E1EA3 vic3 = x6EB0BA vic3 = x7F64AC vic3 = x908947 vic3 = xDF5EBB vic3 = xEC728B vic3 = xE68265 vic3 = x45DB44 vic3 = xA0ECF8 vic3 = xBB2E89 vic3 = xF901CB vic3 = x20D0A0 vic3 = x0EE79F hoi4 = 7216 } # STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH -> Bawiti
 	link = { vic3 = x0C6712 hoi4 = 9989 } # Sidi Barrani [wood] -> Mersa Matruh
 	link = { vic3 = x25523D vic3 = xBFC9C0 hoi4 = 10061 } # Marsa Matruh [port][farm], STATE_MATRUH -> El Dabaa
-	link = { vic3 = x05BD60 vic3 = x8A68C1 vic3 = xBE3AC5 vic3 = xC2176F vic3 = xEBB23F vic3 = x98DFE2 hoi4 = 10127 } # STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH -> land
+	link = { vic3 = x05BD60 vic3 = x8A68C1 vic3 = xBE3AC5 vic3 = xC2176F vic3 = xEBB23F vic3 = x98DFE2 vic3 = x48B0D1 vic3 = x3955E4 hoi4 = 10127 } # STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH -> land
 	link = { vic3 = x20CF20 hoi4 = 11910 } # STATE_MATRUH -> Sidi Abdel Rahman
 	link = { vic3 = xA05020 vic3 = xD83883 hoi4 = 11967 } # STATE_MATRUH, STATE_MATRUH -> Fouka
 	link = { vic3 = xB5420C hoi4 = 12033 } # STATE_MATRUH -> land
 	link = { vic3 = x0D56B2 vic3 = x272AAD hoi4 = 12091 } # STATE_MATRUH, STATE_MATRUH -> land
 	link = { vic3 = x06DF39 vic3 = x5713ED vic3 = x69BCDD vic3 = x8E30B0 vic3 = xE0D021 vic3 = x8AC4E0 hoi4 = 12764 } # STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, Siwa [mine], STATE_MATRUH -> Siwa
 	link = { comment = "* * STATE_SINAI " }
-	link = { vic3 = x44F1F5 hoi4 = 1112 } # STATE_SINAI -> Abu Zenima
-	link = { vic3 = x76E63D hoi4 = 1155 } # STATE_SINAI -> Bir el-Abd
-	link = { vic3 = xC01060 hoi4 = 4073 } # Suez [port] -> Suez
-	link = { vic3 = x464B8A vic3 = xEC3DC5 hoi4 = 9947 } # STATE_SINAI, STATE_SINAI -> Ras Sedr
+	link = { vic3 = x44F1F5 vic3 = x464B8A vic3 = xEC3DC5 hoi4 = 1112 } # STATE_SINAI, STATE_SINAI, STATE_SINAI -> Abu Zenima
+	link = { vic3 = xC01060 hoi4 = 4073 hoi4 = 9947 hoi4 = 1155 hoi4 = 12049 } # Suez [port] -> Suez, Ras Sedr, Bir el-Abd, Port Said
 	link = { vic3 = xAB924B hoi4 = 10002 } # STATE_SINAI -> land
 	link = { vic3 = x8E5FD6 hoi4 = 10099 } # El Tor [mine] -> Sharm el-Sheikh
 	link = { vic3 = x7DA2DA vic3 = xD431F9 hoi4 = 11922 } # STATE_SINAI, Nekhel [farm] -> Nekhel
-	link = { vic3 = xC3AB33 hoi4 = 11979 hoi4 = 4161 } # Arish [wood] -> land, El-Arish
-	link = { vic3 = x8ED45E hoi4 = 12049 } # Port Said [city] -> Port Said
+	link = { vic3 = xC3AB33 hoi4 = 4161 } # Arish [wood] -> El-Arish
+	link = { vic3 = x76E63D vic3 = x8ED45E hoi4 = 11979 } # STATE_SINAI, Port Said [city] -> land
 	link = { vic3 = xAF35C9 vic3 = x390CFC hoi4 = 12073 } # STATE_SINAI, STATE_SINAI -> Taba
 	link = { comment = "* * STATE_ERITREA " }
 	link = { vic3 = x3EE4D1 vic3 = x9E8FDD hoi4 = 4985 } # STATE_ERITREA, STATE_ERITREA -> Tadjourah
