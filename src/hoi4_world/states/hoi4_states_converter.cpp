@@ -20,30 +20,6 @@ namespace
 constexpr int MAX_FACTORY_SLOTS = 12;
 
 
-std::map<std::string, int> MapVic3ProvincesToStates(const std::map<int, vic3::State>& states,
-    const vic3::ProvinceDefinitions& vic3_province_definitions)
-{
-   std::map<std::string, int> vic3_province_to_state_id_map;
-   std::ranges::for_each(states,
-       [&vic3_province_to_state_id_map, vic3_province_definitions](const std::pair<int, vic3::State>& state) {
-          for (const auto& province: state.second.GetProvinces())
-          {
-             const auto possible_province_color = vic3_province_definitions.GetProvinceDefinition(province);
-             if (possible_province_color.has_value())
-             {
-                vic3_province_to_state_id_map.emplace(possible_province_color.value(), state.first);
-             }
-             else
-             {
-                Log(LogLevel::Warning) << fmt::format("No definition for province {}.", province);
-             }
-          }
-       });
-
-   return vic3_province_to_state_id_map;
-}
-
-
 bool AllVic3ProvincesAreInSameState(const std::vector<std::string>& vic3_provinces,
     int state_to_match,
     const std::map<std::string, int>& vic3_province_to_state_id_map)
@@ -817,21 +793,24 @@ void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
    Log(LogLevel::Info) << fmt::format("\t\tTotal manpower: {} (vanilla hoi4 had {})", manpower, default_manpower);
 }
 
+void LogInfrastructure(mappers::InfrastructureMapper infrastructure_mapper)
+{
+   Log(LogLevel::Info) << fmt::format("Infrastructure conversion: total={},target={}, match={}%",
+       infrastructure_mapper.getConvertedInfrastructure(),
+       infrastructure_mapper.getTargetInfrastructure(),
+       static_cast<float>(infrastructure_mapper.getConvertedInfrastructure()) /
+           static_cast<float>(infrastructure_mapper.getTargetInfrastructure()) * 100.0F);
+}
 
-hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
-    const vic3::Buildings& vic3_buildings,
+
+hoi4::States CreateStates(const vic3::World& source_world,
+    const mappers::WorldMapper& world_mapper,
+    const hoi4::WorldFramework& world_framework,
     const std::map<int, std::set<int>>& vic3_state_id_to_hoi4_provinces,
     const std::vector<int>& vic3_state_ids_by_vic3_industry,
-    const mappers::ProvinceMapper& province_mapper,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
-    const hoi4::StrategicRegions& strategic_regions,
-    const mappers::CountryMapper& country_mapper,
-    const hoi4::StateCategories& state_categories,
-    const std::map<int, hoi4::DefaultState>& default_states,
-    const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
     const hoi4::CoastalProvinces& coastal_provinces,
-    const hoi4::ResourcesMap& resources_map,
     bool debug)
 {
    std::vector<hoi4::State> hoi4_states;
@@ -839,18 +818,21 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
    std::map<int, int> vic3_state_ids_to_hoi4_state_ids;
    std::unordered_map<std::string, FactoriesStruct> accumulator;
 
-   mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings = province_mapper.GetHoi4ToVic3ProvinceMappings();
-   mappers::Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_mappings = province_mapper.GetVic3ToHoi4ProvinceMappings();
-   const std::set<int> wasteland_provinces = GetWastelandProvinces(default_states);
-   std::map<std::string, std::string> significant_provinces = GetAllSignificantProvinces(vic3_state_regions);
-   std::map<std::string, std::string> vic3_provinces_to_state_names = MapVic3ProvincesToStateNames(vic3_state_regions);
+   mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings = world_mapper.province_mapper.GetHoi4ToVic3ProvinceMappings();
+   mappers::Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_mappings =
+       world_mapper.province_mapper.GetVic3ToHoi4ProvinceMappings();
+   const std::set<int> wasteland_provinces = GetWastelandProvinces(world_framework.default_states);
+   std::map<std::string, std::string> significant_provinces = GetAllSignificantProvinces(source_world.GetStateRegions());
+   std::map<std::string, std::string> vic3_provinces_to_state_names =
+       MapVic3ProvincesToStateNames(source_world.GetStateRegions());
    std::map<std::string, std::string> hoi4_state_names_to_vic3_state_names;
+   mappers::InfrastructureMapper infrastructure_mapper(source_world.GetStates());
 
    for (const auto& vic3_state_id: vic3_state_ids_by_vic3_industry)
    {
       const auto& hoi4_provinces = vic3_state_id_to_hoi4_provinces.at(vic3_state_id);
-      const auto vic3_state_itr = vic3_states.find(vic3_state_id);
-      if (vic3_state_itr == vic3_states.end())
+      const auto vic3_state_itr = source_world.GetStates().find(vic3_state_id);
+      if (vic3_state_itr == source_world.GetStates().end())
       {
          // I can't think how this would happen, so we'd better force people to the forums if it does.
          throw std::runtime_error("Something has gone very wrong.");
@@ -859,7 +841,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
       if (const std::optional<int>& vic3_state_owner = vic3_state_itr->second.GetOwnerNumber();
           vic3_state_owner.has_value())
       {
-         state_owner = country_mapper.GetHoiTag(*vic3_state_owner);
+         state_owner = world_mapper.country_mapper.GetHoiTag(*vic3_state_owner);
          if (!state_owner.has_value())
          {
             Log(LogLevel::Warning) << fmt::format("Could not get tag for owner of Vic3 state {}.", vic3_state_id);
@@ -871,9 +853,9 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
       const auto [non_wasteland_province_sets, wasteland_province_sets] =
           SortProvinceSetsByWastelandStatus(initial_connected_province_sets, wasteland_provinces);
       const auto final_connected_province_sets =
-          ConsolidateProvinceSets(non_wasteland_province_sets, strategic_regions.GetProvinceToStrategicRegionMap());
-      const auto final_wasteland_connected_province_sets =
-          ConsolidateProvinceSets(wasteland_province_sets, strategic_regions.GetProvinceToStrategicRegionMap());
+          ConsolidateProvinceSets(non_wasteland_province_sets, world_framework.strategic_regions.GetProvinceToStrategicRegionMap());
+      const auto final_wasteland_connected_province_sets = ConsolidateProvinceSets(wasteland_province_sets,
+          world_framework.strategic_regions.GetProvinceToStrategicRegionMap());
       if (final_connected_province_sets.size() > 1U)
       {
          Log(LogLevel::Info) << fmt::format("\tState {} was split into {} due to disconnected provinces.",
@@ -891,7 +873,7 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
       const float total_factories =
-          static_cast<float>(vic3_buildings.GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
+          static_cast<float>(source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
       for (const auto& province_set: final_connected_province_sets)
       {
          RecordStateNamesMapping(province_set,
@@ -919,9 +901,9 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
          const auto [naval_base_location, naval_base_level] =
              DetermineNavalBase(province_set, significant_provinces, coastal_provinces, hoi4_to_vic3_province_mappings);
 
-         const hoi4::Resources resources = AssignResources(province_set, resources_map);
+         const hoi4::Resources resources = AssignResources(province_set, world_framework.resources_map);
 
-         const std::string category = state_categories.GetBestCategory(
+         const std::string category = world_framework.state_categories.GetBestCategory(
              std::min(civilian_factories + military_factories + dockyards + 2, static_cast<int>(MAX_FACTORY_SLOTS)));
 
 
@@ -960,7 +942,8 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
                  .naval_base_location = naval_base_location,
                  .naval_base_level = naval_base_level,
                  .cores = cores,
-                 .vic3_infrastructure = vic3_state_itr->second.GetInfrastructure()});
+                 .vic3_infrastructure = vic3_state_itr->second.GetInfrastructure(),
+                 .infrastructure = infrastructure_mapper.map(vic3_state_itr->second.GetInfrastructure())});
       }
       for (const auto& province_set: final_wasteland_connected_province_sets)
       {
@@ -986,8 +969,9 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
       }
    }
 
-   LogIndustryStats(hoi4_states, default_states, state_categories);
-   LogManpowerStats(hoi4_states, default_states);
+   LogIndustryStats(hoi4_states, world_framework.default_states, world_framework.state_categories);
+   LogManpowerStats(hoi4_states, world_framework.default_states);
+   LogInfrastructure(infrastructure_mapper);
 
    return {hoi4_states,
        province_to_state_id_map,
@@ -997,37 +981,56 @@ hoi4::States CreateStates(const std::map<int, vic3::State>& vic3_states,
 
 }  // namespace
 
-hoi4::States hoi4::ConvertStates(const vic3::World source_world,
-    const mappers::WorldMapper world_mapper,
-    const hoi4::WorldFramework world_framework,
+namespace hoi4
+{
+
+    std::map<std::string, int> MapVic3ProvincesToStates(const std::map<int, vic3::State>& states,
+    const vic3::ProvinceDefinitions& vic3_province_definitions)
+{
+   std::map<std::string, int> vic3_province_to_state_id_map;
+   std::ranges::for_each(states,
+       [&vic3_province_to_state_id_map, vic3_province_definitions](const std::pair<int, vic3::State>& state) {
+          for (const auto& province: state.second.GetProvinces())
+          {
+             const auto possible_province_color = vic3_province_definitions.GetProvinceDefinition(province);
+             if (possible_province_color.has_value())
+             {
+                vic3_province_to_state_id_map.emplace(possible_province_color.value(), state.first);
+             }
+             else
+             {
+                Log(LogLevel::Warning) << fmt::format("No definition for province {}.", province);
+             }
+          }
+       });
+
+   return vic3_province_to_state_id_map;
+}
+
+hoi4::States ConvertStates(const vic3::World& source_world,
+    const mappers::WorldMapper& world_mapper,
+    const hoi4::WorldFramework& world_framework,
     const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,
     const CoastalProvinces& coastal_provinces,
     bool debug)
 {
-   const std::map<std::string, int> vic3_province_to_state_id_map =
-       MapVic3ProvincesToStates(source_world.GetStates(), source_world.GetProvinceDefinitions());
    const std::map<int, std::set<int>> vic3_state_id_to_hoi4_provinces =
        PlaceHoi4ProvincesInStates(significant_vic3_provinces,
-           vic3_province_to_state_id_map,
+           world_mapper.vic3_province_to_state_mapper,
            world_mapper.province_mapper.GetHoi4ToVic3ProvinceMappings(),
            hoi4_province_definitions);
    const std::vector<int> vic3_state_ids_by_vic3_industry =
        SortVic3StatesByIndustryDescending(source_world.GetBuildings(), vic3_state_id_to_hoi4_provinces);
-   return CreateStates(source_world.GetStates(),
-       source_world.GetBuildings(),
+   return CreateStates(source_world,
+       world_mapper,
+       world_framework,
        vic3_state_id_to_hoi4_provinces,
        vic3_state_ids_by_vic3_industry,
-       world_mapper.province_mapper,
        map_data,
        hoi4_province_definitions,
-       world_framework.strategic_regions,
-       world_mapper.country_mapper,
-       world_framework.state_categories,
-       world_framework.default_states,
-       source_world.GetStateRegions(),
        coastal_provinces,
-       world_framework.resources_map,
        debug);
 }
+}  // namespace hoi4

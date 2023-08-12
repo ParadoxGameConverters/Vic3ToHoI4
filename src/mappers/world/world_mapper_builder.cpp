@@ -8,6 +8,7 @@
 #include "src/mappers/technology/tech_mappings_importer.h"
 #include "src/vic3_world/world/vic3_world.h"
 #include "src/vic3_world/world/vic3_world_builder.h"
+#include <src/hoi4_world/states/hoi4_states_converter.h>
 
 namespace mappers
 {
@@ -23,6 +24,8 @@ WorldMapperBuilder WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFiles
    builder.vic_hoi_province_mappings = province_mapper.GetVic3ToHoi4ProvinceMappings();
    builder.DefaultTechMapper();
    builder.DefaultCultureGraphicsMapper();
+   builder.DefaultInfrastructureMapper(source_world);
+   builder.DefaultVic3ProvinceToStateMapper(source_world);
    return builder;
 }
 
@@ -34,6 +37,9 @@ WorldMapperBuilder WorldMapperBuilder::CreateNullMapper()
    builder.vic_hoi_province_mappings = {};
    builder.tech_mappings = {};
    builder.culture_graphics_mapper = CultureGraphicsMapper({});
+   builder.infrastructure_mapper_ = std::async([]() {
+      return InfrastructureMapper(0);
+   });
    return builder;
 }
 
@@ -42,7 +48,9 @@ WorldMapper WorldMapperBuilder::Build()
    return WorldMapper(std::move(CountryMapper(this->country_mappings)),
        std::move(ProvinceMapper(this->vic_hoi_province_mappings, this->hoi_vic_province_mappings)),
        std::move(tech_mappings),
-       std::move(this->culture_graphics_mapper));
+       std::move(this->culture_graphics_mapper),
+       std::move(infrastructure_mapper_.get()),
+       std::move(vic3_province_to_state_mapper_.get()));
 }
 
 WorldMapperBuilder& WorldMapperBuilder::DefaultCountryMapper(const vic3::World& source_world)
@@ -120,6 +128,23 @@ WorldMapperBuilder& WorldMapperBuilder::DefaultTechMapper()
    return *this;
 }
 
+WorldMapperBuilder& WorldMapperBuilder::DefaultInfrastructureMapper(const vic3::World& source_world)
+{
+   this->infrastructure_mapper_ = std::async(std::launch::async, [source_world] {
+      return mappers::InfrastructureMapper(source_world.GetStates());
+   });
+   return *this;
+}
+
+WorldMapperBuilder& WorldMapperBuilder::DefaultVic3ProvinceToStateMapper(const vic3::World& source_world)
+{
+   this->vic3_province_to_state_mapper_ = std::async(std::launch::async, [source_world] {
+      return hoi4::MapVic3ProvincesToStates(source_world.GetStates(), source_world.GetProvinceDefinitions());
+   });
+   return *this;
+}
+
+//
 void WorldMapperBuilder::CopyToVicWorld(vic3::WorldBuilder& world)
 {
    for (auto& pair: this->vic_hoi_province_mappings)
