@@ -30,6 +30,7 @@ struct CountryOptions
    std::vector<int> ig_ids;
    std::set<int> puppets;
    std::optional<int> overlord;
+   int legitimacy = 0;
 };
 
 enum class RankCategory
@@ -60,7 +61,8 @@ class Country
        character_ids_(std::move(options.character_ids)),
        ig_ids_(std::move(options.ig_ids)),
        puppets_(std::move(options.puppets)),
-       overlord_(options.overlord)
+       overlord_(options.overlord),
+       legitimacy_(options.legitimacy)
    {
    }
 
@@ -82,6 +84,7 @@ class Country
    [[nodiscard]] const std::vector<int>& GetInterestGroupIds() const { return ig_ids_; }
    [[nodiscard]] const std::set<int>& GetPuppets() const { return puppets_; }
    [[nodiscard]] const std::optional<int>& GetOverlord() const { return overlord_; }
+   [[nodiscard]] const int GetLegitimacy() const { return legitimacy_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
@@ -112,6 +115,7 @@ class Country
    std::vector<int> ig_ids_;
    std::set<int> puppets_;
    std::optional<int> overlord_;
+   int legitimacy_;
 };
 
 }  // namespace vic3
