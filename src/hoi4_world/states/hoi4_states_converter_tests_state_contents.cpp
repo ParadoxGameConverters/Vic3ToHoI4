@@ -160,7 +160,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsLogged)
 
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\tTotal manpower: 320000 (vanilla hoi4 had 123000)"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\tManpower conversion: total=320000, target=123000, match=260.1626016260162%"));
 }
 
 
@@ -1024,7 +1024,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, InfrastructureIsTransferredFromVic3Stat
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.owner = "TAG", .provinces = {10, 20, 30}, .vic3_infrastructure = 123.4F}),
-           State(2, {.owner = "TWO", .provinces = {40, 50, 60}, .vic3_infrastructure = 567.8F})));
+           State(2, {.owner = "TWO", .provinces = {40, 50, 60}, .vic3_infrastructure = 567.8F, .infrastructure = 3})));
    EXPECT_THAT(hoi4_states.province_to_state_id_map,
        testing::UnorderedElementsAre(testing::Pair(10, 1),
            testing::Pair(20, 1),

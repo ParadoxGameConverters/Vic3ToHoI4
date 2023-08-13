@@ -790,7 +790,7 @@ void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
           return total + state.second.GetManpower();
        });
 
-   Log(LogLevel::Info) << fmt::format("\tManpower conversion: total={},target={}, match={}%",
+   Log(LogLevel::Info) << fmt::format("\t\tManpower conversion: total={}, target={}, match={}%",
        manpower,
        default_manpower,
        static_cast<double>(manpower) / static_cast<double>(default_manpower) * 100.0F);
@@ -798,12 +798,13 @@ void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
 
 void LogInfrastructure(mappers::InfrastructureMapper infrastructure_mapper)
 {
-   Log(LogLevel::Info) << fmt::format("fudge factor is {}", infrastructure_mapper.GetFudgeFactor());
-   Log(LogLevel::Info) << fmt::format("Infrastructure conversion: total={},target={}, match={}%",
+   
+   Log(LogLevel::Info) << fmt::format("Infrastructure conversion: total={}, target={}, match={}%",
        infrastructure_mapper.getConvertedInfrastructure(),
        infrastructure_mapper.getTargetInfrastructure(),
        static_cast<float>(infrastructure_mapper.getConvertedInfrastructure()) /
            static_cast<float>(infrastructure_mapper.getTargetInfrastructure()) * 100.0F);
+   Log(LogLevel::Info) << fmt::format("\tfudge factor is {}", infrastructure_mapper.GetFudgeFactor());
 }
 
 
@@ -1022,9 +1023,11 @@ hoi4::States ConvertStates(const vic3::World& source_world,
     const CoastalProvinces& coastal_provinces,
     bool debug)
 {
+   const std::map<std::string, int> vic3_province_to_state_id_map =
+       MapVic3ProvincesToStates(source_world.GetStates(), source_world.GetProvinceDefinitions());
    const std::map<int, std::set<int>> vic3_state_id_to_hoi4_provinces =
        PlaceHoi4ProvincesInStates(significant_vic3_provinces,
-           world_mapper.vic3_province_to_state_mapper,
+           vic3_province_to_state_id_map,
            world_mapper.province_mapper.GetHoi4ToVic3ProvinceMappings(),
            hoi4_province_definitions);
    const std::vector<int> vic3_state_ids_by_vic3_industry =
