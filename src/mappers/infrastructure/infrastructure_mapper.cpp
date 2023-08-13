@@ -3,8 +3,8 @@
 #include <cmath>
 #include <numeric>
 
-#include "src/vic3_world/states/vic3_state.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/vic3_world/states/vic3_state.h"
 
 // Find root of a function fn using secant approximation.
 template <typename T, typename U>
@@ -30,7 +30,7 @@ namespace mappers
 {
 InfrastructureMapper::InfrastructureMapper(const std::map<int, vic3::State>& states)
 {
-   target_hoi_infra_per_state_ = 1098.0F/899;  // TODO: put this in a file somewhere
+   target_hoi_infra_per_state_ = 1098.0F / 899;  // TODO: put this in a file somewhere
    int total_vic_infra =
        std::accumulate(states.begin(), states.end(), 0.0f, [](float f, std::map<int, vic3::State>::value_type s) {
           return f + s.second.GetInfrastructure();
@@ -55,9 +55,8 @@ InfrastructureMapper::InfrastructureMapper(const std::map<int, vic3::State>& sta
 
 int InfrastructureMapper::map(float vic3Infrastructure)
 {
-    // all states have minimum 1 infra
-   int result = std::round(
-       std::clamp(fudge_factor_ + vic3Infrastructure * hoi_infra_per_vic_infra_, 0.0F, 4.0F));
+   // all states have minimum 1 infra
+   int result = std::round(std::clamp(fudge_factor_ + vic3Infrastructure * hoi_infra_per_vic_infra_, 0.0F, 4.0F));
    converted_hoi_infra_ += result;
    converted_hoi_states_ += 1;
    return 1 + result;
@@ -68,8 +67,7 @@ float InfrastructureMapper::findFudgeFactor(const std::map<int, vic3::State>& st
    const auto function = [=](float fudge_factor) {
       const float new_infra =
           std::accumulate(states.begin(), states.end(), 0.0f, [=](float f, std::map<int, vic3::State>::value_type s) {
-             return f + std::round(std::clamp(
-                            fudge_factor + (s.second.GetInfrastructure() * hoi_infra_per_vic_infra_),
+             return f + std::round(std::clamp(fudge_factor + (s.second.GetInfrastructure() * hoi_infra_per_vic_infra_),
                             0.0F,
                             4.0F));
           });
@@ -80,14 +78,13 @@ float InfrastructureMapper::findFudgeFactor(const std::map<int, vic3::State>& st
       return ((new_infra / states.size()) - target_hoi_infra_per_state_) * target_hoi_infra_per_state_;
    };
 
-   return find_root<float,float>(
+   return find_root<float, float>(
        function,
        0.0,
-       [](float f) { // good initial of fudge factor = -(difference%)
+       [](float f) {  // good initial of fudge factor = -(difference%)
           return -f;
        },
        5);
-
 }
 
 }  // namespace mappers

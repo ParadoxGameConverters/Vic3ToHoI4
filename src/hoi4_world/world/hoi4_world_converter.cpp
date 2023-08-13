@@ -196,7 +196,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    std::map<std::string, vic3::ProvinceType> vic3_significant_provinces =
        GatherVic3SignificantProvinces(source_world.GetStateRegions());
-   hoi4::WorldFramework world_framework = hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
+   hoi4::WorldFramework world_framework =
+       hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
 
    States states = ConvertStates(source_world,
        world_mapper,
