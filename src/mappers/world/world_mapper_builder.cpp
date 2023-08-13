@@ -1,10 +1,13 @@
-#include "world_mapper.h"
+#include "world_mapper_builder.h"
 
+#include "external/fmt/include/fmt/format.h"
 #include "src/mappers/country/country_mapper_creator.h"
 #include "src/mappers/culture/culture_graphics_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/technology/tech_mapping.h"
 #include "src/mappers/technology/tech_mappings_importer.h"
+#include "src/vic3_world/world/vic3_world.h"
+#include "src/vic3_world/world/vic3_world_builder.h"
 
 namespace mappers
 {
@@ -74,6 +77,21 @@ WorldMapperBuilder& WorldMapperBuilder::AddProvinces(const std::map<std::string,
    return *this;
 }
 
+WorldMapperBuilder& WorldMapperBuilder::AddTestProvinces(int count)
+{
+   for (int i = 1; i <= count; ++i)
+   {
+      const std::string vicValue = fmt::format("x0000{:0>2}", i);
+      // need to wrap second in an extra set of {} to make el.second a list element and not a size
+      std::pair<std::string, std::vector<int>> vic_hoi_elem = {vicValue, {i * 10}};
+      std::pair<int, std::vector<std::string>> hoi_vic_elem = {i * 10, {vicValue}};
+      this->hoi_vic_province_mappings.insert(hoi_vic_elem);
+      this->vic_hoi_province_mappings.insert(vic_hoi_elem);
+   }
+
+   return *this;
+}
+
 WorldMapperBuilder& WorldMapperBuilder::AddTechs(const std::vector<mappers::TechMapping>& techs)
 {
    for (auto& el: techs)
@@ -100,5 +118,13 @@ WorldMapperBuilder& WorldMapperBuilder::DefaultTechMapper()
 {
    this->tech_mappings = mappers::ImportTechMappings();
    return *this;
+}
+
+void WorldMapperBuilder::CopyToVicWorld(vic3::WorldBuilder& world)
+{
+   for (auto& pair: this->vic_hoi_province_mappings)
+   {
+      world.AddProvinces({pair.first});
+   }
 }
 }  // namespace mappers

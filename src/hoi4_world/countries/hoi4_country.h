@@ -50,6 +50,7 @@ struct CountryOptions
    std::vector<int> character_ids;
    std::set<int> spy_ids;
    std::set<std::string> puppets;
+   std::optional<std::string> overlord;
    int starting_research_slots = 3;
 };
 
@@ -80,6 +81,7 @@ class Country
        character_ids_(std::move(country_options.character_ids)),
        spy_ids_(std::move(country_options.spy_ids)),
        puppets_(std::move(country_options.puppets)),
+       overlord_(std::move(country_options.overlord)),
        starting_research_slots_(country_options.starting_research_slots)
    {
    }
@@ -105,6 +107,7 @@ class Country
    [[nodiscard]] const std::vector<int>& GetLeaderIds() const { return character_ids_; }
    [[nodiscard]] const std::set<int>& GetSpyIds() const { return spy_ids_; }
    [[nodiscard]] const std::set<std::string>& GetPuppets() const { return puppets_; }
+   [[nodiscard]] const std::optional<std::string>& GetOverlord() const { return overlord_; }
    [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
@@ -132,6 +135,7 @@ class Country
    std::vector<int> character_ids_;
    std::set<int> spy_ids_;
    std::set<std::string> puppets_;
+   std::optional<std::string> overlord_;
    int starting_research_slots_;
 };
 

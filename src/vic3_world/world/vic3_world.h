@@ -102,6 +102,7 @@ class World
    int playthrough_id_;  // Seed, for deterministic results across conversions for the same series of saves
 };
 
+
 }  // namespace vic3
 
 

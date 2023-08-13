@@ -4,6 +4,7 @@
 #include "external/commonItems/ModLoader/ModFilesystem.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 #include "src/hoi4_world/world/hoi4_world_converter.h"
+#include "src/mappers/world/world_mapper_builder.h"
 #include "src/out_hoi4/out_mod.h"
 #include "src/out_hoi4/world/out_world.h"
 #include "src/vic3_world/world/vic3_world.h"

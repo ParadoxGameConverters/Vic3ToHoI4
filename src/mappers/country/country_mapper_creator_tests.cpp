@@ -46,6 +46,31 @@ TEST(MappersCountryCountryMapperCreator, GeneratedMappingsDecrementTheAlphaWhenT
    EXPECT_EQ(country_mapper.GetHoiTag(101), "Y01");
 }
 
+TEST(MappersCountryCountryMapperCreator, SourceTagAsPrimaryFallback)
+{
+   const std::map<int, vic3::Country> source_countries{
+       {1, vic3::Country({.number = 1, .tag = "TAG"})},
+       {2, vic3::Country({.number = 2, .tag = "TWO"})},
+       {3, vic3::Country({.number = 3, .tag = "TWO"})},
+   };
+
+   const CountryMapper country_mapper = CreateCountryMappings("", source_countries);
+   EXPECT_EQ(country_mapper.GetHoiTag(1), "TAG");
+   EXPECT_EQ(country_mapper.GetHoiTag(2), "TWO");
+   EXPECT_EQ(country_mapper.GetHoiTag(3), "Z00");  // "TWO" was already taken, so fall back to the Znn system
+}
+
+TEST(MappersCountryCountryMapperCreator, CivilWarCountryIsSecondary)
+{
+   const std::map<int, vic3::Country> source_countries{
+       {1, vic3::Country({.number = 1, .tag = "TAG", .is_civil_war = true})},
+       {2, vic3::Country({.number = 2, .tag = "TAG"})},
+   };
+
+   const CountryMapper country_mapper = CreateCountryMappings("", source_countries);
+   EXPECT_EQ(country_mapper.GetHoiTag(1), "Z00");
+   EXPECT_EQ(country_mapper.GetHoiTag(2), "TAG");
+}
 
 TEST(MappersCountryCountryMapperCreator, MappingsCanComeFromRulesFile)
 {
@@ -53,7 +78,7 @@ TEST(MappersCountryCountryMapperCreator, MappingsCanComeFromRulesFile)
        {1, vic3::Country({.number = 1, .tag = "TAG"})},
        {2, vic3::Country({.number = 2, .tag = "TWO"})},
        {3, vic3::Country({.number = 3, .tag = "THR"})},
-       {4, vic3::Country({.number = 4, .tag = "TWO"})},
+       {4, vic3::Country({.number = 4, .tag = "Z00"})},
    };
 
    const CountryMapper country_mapper = CreateCountryMappings(

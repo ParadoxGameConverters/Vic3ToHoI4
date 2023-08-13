@@ -8,12 +8,12 @@
 #include "src/hoi4_world/world/hoi4_world_converter.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapper.h"
+#include "src/mappers/world/world_mapper_builder.h"
 #include "src/maps/province_definitions.h"
 #include "src/vic3_world/characters/vic3_character.h"
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/world/vic3_world.h"
-
 
 
 namespace hoi4
@@ -150,20 +150,20 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
    const std::map<std::string, vic3::StateRegion> state_regions({{"STATE_ONE",
        vic3::StateRegion(
            {
-               {"0x000005", "city"},
-               {"0x000004", "port"},
-               {"0x000003", "farm"},
-               {"0x000002", "mine"},
-               {"0x000001", "wood"},
+               {"x000005", "city"},
+               {"x000004", "port"},
+               {"x000003", "farm"},
+               {"x000002", "mine"},
+               {"x000001", "wood"},
            },
            {})}});
    const auto province_definitions = vic3::ProvinceDefinitions({
-       "0x000001",
-       "0x000002",
-       "0x000003",
-       "0x000004",
-       "0x000005",
-       "0x000006",
+       "x000001",
+       "x000002",
+       "x000003",
+       "x000004",
+       "x000005",
+       "x000006",
    });
    const vic3::Buildings vic3_buildings({
        {1, std::vector{vic3::Building("", 1, 875'000)}},
@@ -184,12 +184,12 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
    const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
                                                  .AddCountries({{1, "TAG"}, {2, "TWO"}})
                                                  .AddProvinces({
-                                                     {"0x000001", {10}},
-                                                     {"0x000002", {20}},
-                                                     {"0x000003", {30}},
-                                                     {"0x000004", {40}},
-                                                     {"0x000005", {50}},
-                                                     {"0x000006", {60}},
+                                                     {"x000001", {10}},
+                                                     {"x000002", {20}},
+                                                     {"x000003", {30}},
+                                                     {"x000004", {40}},
+                                                     {"x000005", {50}},
+                                                     {"x000006", {60}},
                                                  })
                                                  .Build();
    const World world =
@@ -242,15 +242,15 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
       state_regions.emplace(fmt::format("STATE_{:0>2}", i),
           vic3::StateRegion(
               {
-                  {fmt::format("0x0000{:0>2}", i), "city"},
+                  {fmt::format("x0000{:0>2}", i), "city"},
               },
               {}));
-      province_definitions_initializer.emplace_back(fmt::format("0x0000{:0>2}", i));
+      province_definitions_initializer.emplace_back(fmt::format("x0000{:0>2}", i));
       buildings_initializer.emplace(i, std::vector{vic3::Building("", i, 1000.0f - i)});
       scored_countries.emplace(i, i);
       vic3_states.emplace(i,
-          vic3::State({.owner_number = i, .owner_tag = fmt::format("0x0000{:0>2}", i), .provinces = {i}}));
-      mapperBuilder.AddProvinces({{fmt::format("0x0000{:0>2}", i), i}});
+          vic3::State({.owner_number = i, .owner_tag = fmt::format("x0000{:0>2}", i), .provinces = {i}}));
+      mapperBuilder.AddProvinces({{fmt::format("x0000{:0>2}", i), i}});
    }
    const vic3::ProvinceDefinitions province_definitions(province_definitions_initializer);
    const vic3::Buildings buildings;
@@ -321,12 +321,12 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
 TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 {
    const auto province_definitions = vic3::ProvinceDefinitions({
-       "0x000001",
-       "0x000002",
-       "0x000003",
-       "0x000004",
-       "0x000005",
-       "0x000006",
+       "x000001",
+       "x000002",
+       "x000003",
+       "x000004",
+       "x000005",
+       "x000006",
    });
 
    const vic3::World source_world({
@@ -339,12 +339,12 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
    });
    const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
                                                  .AddProvinces({
-                                                     {"0x000001", {10}},
-                                                     {"0x000002", {20}},
-                                                     {"0x000003", {30}},
-                                                     {"0x000004", {40}},
-                                                     {"0x000005", {50}},
-                                                     {"0x000006", {60}},
+                                                     {"x000001", {10}},
+                                                     {"x000002", {20}},
+                                                     {"x000003", {30}},
+                                                     {"x000004", {40}},
+                                                     {"x000005", {50}},
+                                                     {"x000006", {60}},
                                                  })
                                                  .Build();
 
@@ -427,14 +427,14 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 {
    const auto province_definitions = vic3::ProvinceDefinitions({
-       "0x000001",
-       "0x000002",
-       "0x000003",
-       "0x000004",
-       "0x000005",
-       "0x000006",
-       "0x000007",
-       "0x000008",
+       "x000001",
+       "x000002",
+       "x000003",
+       "x000004",
+       "x000005",
+       "x000006",
+       "x000007",
+       "x000008",
    });
 
    const vic3::World source_world({
@@ -449,14 +449,14 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 
    const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
                                                  .AddProvinces({
-                                                     {{"0x000001"}, 1},
-                                                     {{"0x000002"}, 2},
-                                                     {{"0x000003"}, 3},
-                                                     {{"0x000004"}, 4},
-                                                     {{"0x000005"}, 5},
-                                                     {{"0x000006"}, 6},
-                                                     {{"0x000007"}, 7},
-                                                     {{"0x000008"}, 8},
+                                                     {{"x000001"}, 1},
+                                                     {{"x000002"}, 2},
+                                                     {{"x000003"}, 3},
+                                                     {{"x000004"}, 4},
+                                                     {{"x000005"}, 5},
+                                                     {{"x000006"}, 6},
+                                                     {{"x000007"}, 7},
+                                                     {{"x000008"}, 8},
                                                  })
                                                  .Build();
 
@@ -472,21 +472,21 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 
 TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
 {
-   const vic3::StateRegion vic3_state_region({{"0x000001", "city"}, {"0x000002", "port"}, {"0x000003", "mine"}}, {});
+   const vic3::StateRegion vic3_state_region({{"x000001", "city"}, {"x000002", "port"}, {"x000003", "mine"}}, {});
 
    const auto province_definitions = vic3::ProvinceDefinitions({
-       "0x000001",
-       "0x000002",
-       "0x000003",
-       "0x000004",
-       "0x000005",
-       "0x000006",
-       "0x000007",
-       "0x000008",
-       "0x000009",
-       "0x000010",
-       "0x000011",
-       "0x000012",
+       "x000001",
+       "x000002",
+       "x000003",
+       "x000004",
+       "x000005",
+       "x000006",
+       "x000007",
+       "x000008",
+       "x000009",
+       "x000010",
+       "x000011",
+       "x000012",
    });
 
    const vic3::World source_world({
@@ -508,18 +508,18 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
 
    const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
                                                  .AddProvinces({
-                                                     {"0x000001", {1}},
-                                                     {"0x000002", {2}},
-                                                     {"0x000003", {3}},
-                                                     {"0x000004", {4}},
-                                                     {"0x000005", {5}},
-                                                     {"0x000006", {6}},
-                                                     {"0x000007", {7}},
-                                                     {"0x000008", {8}},
-                                                     {"0x000009", {9}},
-                                                     {"0x000010", {10}},
-                                                     {"0x000011", {11}},
-                                                     {"0x000012", {12}},
+                                                     {"x000001", {1}},
+                                                     {"x000002", {2}},
+                                                     {"x000003", {3}},
+                                                     {"x000004", {4}},
+                                                     {"x000005", {5}},
+                                                     {"x000006", {6}},
+                                                     {"x000007", {7}},
+                                                     {"x000008", {8}},
+                                                     {"x000009", {9}},
+                                                     {"x000010", {10}},
+                                                     {"x000011", {11}},
+                                                     {"x000012", {12}},
                                                  })
                                                  .Build();
 

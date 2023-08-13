@@ -319,7 +319,7 @@ std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, 
       adjusted_ideology_support.emplace(ideology, raw_value - lowest_support);
    }
 
-   const float total_support = std::accumulate(adjusted_ideology_support.begin(),
+   const float total_raw_support = std::accumulate(adjusted_ideology_support.begin(),
        adjusted_ideology_support.end(),
        0.F,
        [](float a, const auto& b) {
@@ -327,24 +327,30 @@ std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, 
        });
 
    std::map<std::string, int> ideology_support;
-   if (total_support != 0.F)
+   if (total_raw_support != 0.F)
    {
-      const float normalization_factor = 100.F / total_support;
+      const float normalization_factor = 100.F / total_raw_support;
       for (const auto& [ideology, raw_value]: adjusted_ideology_support)
       {
-         int value = static_cast<int>(std::round(raw_value * normalization_factor));
+         int value = static_cast<int>(raw_value * normalization_factor);
          ideology_support.emplace(ideology, value);
       }
    }
    else
    {
-      const int normalization_factor =
-          static_cast<int>(std::round(100.F / static_cast<float>(adjusted_ideology_support.size())));
+      const int normalization_factor = static_cast<int>(100.F / static_cast<float>(adjusted_ideology_support.size()));
       for (const auto& ideology: adjusted_ideology_support | std::views::keys)
       {
          ideology_support.emplace(ideology, normalization_factor);
       }
    }
+
+   ideology_support["neutrality"] = 0;
+   const int total_support =
+       std::accumulate(ideology_support.begin(), ideology_support.end(), 0, [](int a, const auto& b) {
+          return a + b.second;
+       });
+   ideology_support["neutrality"] = 100 - total_support;
 
    return ideology_support;
 }
@@ -460,6 +466,12 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
       puppets.insert(*subjectTag);
    }
 
+   std::optional<std::string> overlord;
+   if (const std::optional<int>& source_overlord = source_country.GetOverlord(); source_overlord != std::nullopt)
+   {
+      overlord = country_mapper.GetHoiTag(*source_overlord);
+   }
+
    const auto ideology_support = DetermineIdeologySupport(source_country.GetInterestGroupIds(),
        source_world.GetInterestGroups(),
        source_world.GetIdeologies(),
@@ -487,5 +499,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .character_ids = character_ids,
        .spy_ids = spy_ids,
        .puppets = puppets,
+       .overlord = overlord,
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country)});
 }

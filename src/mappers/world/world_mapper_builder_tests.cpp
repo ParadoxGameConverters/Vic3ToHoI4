@@ -3,7 +3,8 @@
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "external/fmt/include/fmt/format.h"
-#include "src/mappers/world/world_mapper.h"
+#include "src/mappers/world/world_mapper_builder.h"
+
 
 namespace mappers
 {
@@ -54,10 +55,18 @@ TEST(MappersWorldWorldMapperBuilderTests, AddCountryWorks)
 TEST(MappersWorldWorldMapperBuilderTests, AddProvincesWorks)
 {
    const auto worldMapper =
-       WorldMapperBuilder::CreateNullMapper().AddProvinces({{"0x00000001", 10}, {"0x00000002", 20}}).Build();
+       WorldMapperBuilder::CreateNullMapper().AddProvinces({{"x00000001", 10}, {"x00000002", 20}}).Build();
 
-   EXPECT_THAT(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMapping("0x00000002"), testing::ElementsAre(20));
-   EXPECT_THAT(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMapping(10), testing::ElementsAre("0x00000001"));
+   EXPECT_THAT(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMapping("x00000002"), testing::ElementsAre(20));
+   EXPECT_THAT(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMapping(10), testing::ElementsAre("x00000001"));
+}
+
+TEST(MappersWorldWorldMapperBuilderTests, AddTestProvincesWorks)
+{
+   const auto worldMapper = WorldMapperBuilder::CreateNullMapper().AddTestProvinces(2).Build();
+
+   EXPECT_THAT(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMapping("x000001"), testing::ElementsAre(10));
+   EXPECT_THAT(worldMapper.province_mapper.GetHoi4ToVic3ProvinceMapping(20), testing::ElementsAre("x000002"));
 }
 
 TEST(MappersWorldWorldMapperBuilderTests, AddTechsWorks)
@@ -101,6 +110,15 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultCultureGraphicsMapperWorks)
    const auto worldMapper = WorldMapperBuilder::CreateNullMapper().DefaultCultureGraphicsMapper().Build();
 
    EXPECT_EQ(worldMapper.culture_graphics_mapper.MatchCultureToGraphics(culture).graphical_culture, "asian_gfx");
+}
+
+TEST(MappersWorldWorldMapperBuilderTests, CopyToVicWorldCopiesProvinces)
+{
+   auto worldMapper = WorldMapperBuilder::CreateNullMapper().AddTestProvinces(3);
+   auto worldBuilder = vic3::WorldBuilder::CreateNullWorld();
+   worldMapper.CopyToVicWorld(worldBuilder);
+   auto world = worldBuilder.Build();
+   EXPECT_EQ(world.GetProvinceDefinitions().GetProvinceDefinitions().size(), 3);
 }
 
 }  // namespace mappers

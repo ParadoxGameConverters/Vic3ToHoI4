@@ -16,6 +16,7 @@
 #include "src/hoi4_world/map/strategic_regions_importer.h"
 #include "src/hoi4_world/states/default_states_importer.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
+#include "src/hoi4_world/world/hoi4_world_framework_builder.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/technology/tech_mappings_importer.h"
 #include "src/maps/map_data.h"
@@ -175,7 +176,7 @@ void LogVictoryPointData(const std::vector<hoi4::State>& states)
 
 }  // namespace
 
-hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
+hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem_,
     const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
     bool debug)
@@ -185,48 +186,29 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    Log(LogLevel::Info) << "Creating Hoi4 world";
    Log(LogLevel::Progress) << "50%";
 
-   StrategicRegions strategic_regions = ImportStrategicRegions(hoi4_mod_filesystem);
-
    Log(LogLevel::Info) << "\tConverting states";
-   const auto province_definitions = ImportProvinceDefinitions(hoi4_mod_filesystem);
-   const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem);
-   const std::map<int, DefaultState> default_states = hoi4::ImportDefaultStates(hoi4_mod_filesystem);
+   const auto province_definitions = ImportProvinceDefinitions(hoi4_mod_filesystem_);
+   const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem_);
    CoastalProvinces coastal_provinces = CreateCoastalProvinces(map_data,
        province_definitions.GetLandProvinces(),
        province_definitions.GetSeaProvinces());
-   ResourcesMap resources_map = ImportResources("configurables/resources.txt");
 
    std::map<std::string, vic3::ProvinceType> vic3_significant_provinces =
        GatherVic3SignificantProvinces(source_world.GetStateRegions());
+   WorldFramework world_framework = WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem_).Build();
 
-   States states = ConvertStates(source_world.GetStates(),
-       source_world.GetProvinceDefinitions(),
+   States states = ConvertStates(source_world,
+       world_mapper,
+       world_framework,
        vic3_significant_provinces,
-       source_world.GetBuildings(),
-       world_mapper.province_mapper,
        map_data,
        province_definitions,
-       strategic_regions,
-       world_mapper.country_mapper,
-       StateCategories({
-           {1, "pastoral"},
-           {2, "rural"},
-           {4, "town"},
-           {5, "large_town"},
-           {6, "city"},
-           {8, "large_city"},
-           {10, "metropolis"},
-           {12, "megalopolis"},
-       }),
-       default_states,
-       source_world.GetStateRegions(),
        coastal_provinces,
-       resources_map,
        debug);
 
-   strategic_regions.UpdateToMatchNewStates(states.states);
+   world_framework.strategic_regions.UpdateToMatchNewStates(states.states);
 
-   Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem);
+   Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem_);
 
    Railways railways = ConvertRailways(vic3_significant_provinces,
        world_mapper.province_mapper,
@@ -278,7 +260,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        .great_powers = great_powers,
        .major_powers = major_powers,
        .states = states,
-       .strategic_regions = strategic_regions,
+       .strategic_regions = world_framework.strategic_regions,
        .buildings = buildings,
        .railways = railways,
        .localizations = localizations,
