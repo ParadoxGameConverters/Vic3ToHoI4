@@ -798,12 +798,11 @@ void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
 
 void LogInfrastructure(mappers::InfrastructureMapper infrastructure_mapper)
 {
-   
    Log(LogLevel::Info) << fmt::format("Infrastructure conversion: total={}, target={}, match={}%",
-       infrastructure_mapper.getConvertedInfrastructure(),
-       infrastructure_mapper.getTargetInfrastructure(),
-       static_cast<float>(infrastructure_mapper.getConvertedInfrastructure()) /
-           static_cast<float>(infrastructure_mapper.getTargetInfrastructure()) * 100.0F);
+       infrastructure_mapper.GetConvertedInfrastructure(),
+       infrastructure_mapper.GetTargetInfrastructure(),
+       static_cast<float>(infrastructure_mapper.GetConvertedInfrastructure()) /
+           static_cast<float>(infrastructure_mapper.GetTargetInfrastructure()) * 100.0F);
    Log(LogLevel::Info) << fmt::format("\tfudge factor is {}", infrastructure_mapper.GetFudgeFactor());
 }
 
@@ -950,7 +949,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
                  .naval_base_level = naval_base_level,
                  .cores = cores,
                  .vic3_infrastructure = vic3_state_itr->second.GetInfrastructure(),
-                 .infrastructure = infrastructure_mapper.map(vic3_state_itr->second.GetInfrastructure())});
+                 .infrastructure = infrastructure_mapper.Map(vic3_state_itr->second.GetInfrastructure())});
       }
       for (const auto& province_set: final_wasteland_connected_province_sets)
       {

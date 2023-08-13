@@ -1,5 +1,7 @@
 #include "world_mapper_builder.h"
 
+#include <src/hoi4_world/states/hoi4_states_converter.h>
+
 #include "external/fmt/include/fmt/format.h"
 #include "src/mappers/country/country_mapper_creator.h"
 #include "src/mappers/culture/culture_graphics_mapper.h"
@@ -8,7 +10,6 @@
 #include "src/mappers/technology/tech_mappings_importer.h"
 #include "src/vic3_world/world/vic3_world.h"
 #include "src/vic3_world/world/vic3_world_builder.h"
-#include <src/hoi4_world/states/hoi4_states_converter.h>
 
 namespace mappers
 {
@@ -41,7 +42,7 @@ WorldMapperBuilder WorldMapperBuilder::CreateNullMapper()
       return InfrastructureMapper(0);
    });
    builder.vic3_province_to_state_mapper_ = std::async([]() {
-      return std::map<std::string,int>();
+      return std::map<std::string, int>();
    });
    return builder;
 }

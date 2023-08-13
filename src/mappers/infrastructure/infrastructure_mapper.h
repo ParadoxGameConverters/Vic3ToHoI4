@@ -7,35 +7,39 @@
 namespace mappers
 {
 
+/// <summary>
+/// Maps state infrastructure.
+/// </summary>
+/// <remarks>
+/// Most internal data is represented in terms of "additional hoi infra above 1" because that makes a prettier result.
+/// </remarks>
 class InfrastructureMapper
 {
   public:
-   using storage_type = float;
-
    InfrastructureMapper(const std::map<int, vic3::State>& states);
 
-   explicit InfrastructureMapper(storage_type conversion_ratio):
-       hoi_infra_per_vic_infra_(conversion_ratio),
-       fudge_factor_(0.0F)
-   {
-   }
-
-   InfrastructureMapper(storage_type conversion_ratio, float fudge_factor):
+   InfrastructureMapper(float conversion_ratio, float fudge_factor):
        hoi_infra_per_vic_infra_(conversion_ratio),
        fudge_factor_(fudge_factor)
    {
    }
 
-   int map(float vic3Infrastructure);
+   int Map(float vic3Infrastructure);
 
-   storage_type getStorage() { return hoi_infra_per_vic_infra_; };
-
-   float getTargetInfrastructure() { return target_hoi_infra_per_state_; }
-   float getConvertedInfrastructure() { return static_cast<float>(converted_hoi_infra_) / converted_hoi_states_; }
+   float GetTargetInfrastructure() { return target_hoi_infra_per_state_; }
+   float GetConvertedInfrastructure() { return static_cast<float>(converted_hoi_infra_) / converted_hoi_states_; }
+   float GetConversionRatio() { return hoi_infra_per_vic_infra_; };
    float GetFudgeFactor() { return fudge_factor_; }
 
   private:
-   storage_type hoi_infra_per_vic_infra_ = 0.0f;
+   /// hoi infra per vic infra. should be <1.
+   /// We use this value instead of the more obvious vic_infra_per_hoi_infra
+   /// so that when we set this to 0 during tests, we get a result of 0 hoi
+   /// infra instead of infinite hoi infra during the conversion.
+   float hoi_infra_per_vic_infra_ = 0.0f;
+   /// <summary>
+   /// target additional average hoi infra (amount above 1) per state.
+   /// </summary>
    float target_hoi_infra_per_state_ = 0.0F;
    int converted_hoi_infra_ = 0;
    int converted_hoi_states_ = 0;
@@ -45,6 +49,6 @@ class InfrastructureMapper
    /// </summary>
    float fudge_factor_ = 0.0F;
 
-   float findFudgeFactor(const std::map<int, vic3::State>& states);
+   float FindFudgeFactor(const std::map<int, vic3::State>& states);
 };
 }  // namespace mappers
