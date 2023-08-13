@@ -6,6 +6,7 @@
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/countries/out_country.h"
+#include "src/out_hoi4/national_focus/out_focus_tree.h"
 
 
 
@@ -20,14 +21,15 @@ void out::OutputCountries(std::string_view output_name,
           fmt::format("Could not open output/{}/common/country_tags/00_countries.txt", output_name));
    }
 
-   for (const auto& country: countries | std::views::values)
+   for (const auto& [tag, country]: countries)
    {
       OutputCommonCountryTag(country, tags_file);
       OutputCommonCountriesFile(output_name, country);
       OutputCommonCharactersFile(output_name, country, characters);
       OutputCountryHistory(output_name, country, characters);
       commonItems::TryCopyFile("configurables/division_templates.txt",
-          fmt::format("output/{}/history/units/{}_1936.txt", output_name, country.GetTag()));
+          fmt::format("output/{}/history/units/{}_1936.txt", output_name, tag));
+      OutputFocusTree(output_name, tag);
    }
 
    tags_file.close();

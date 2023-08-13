@@ -102,6 +102,7 @@
     <ClCompile Include="src\hoi4_world\world\hoi4_world_framework_builder_tests.cpp" />
     <ClCompile Include="src\mappers\infrastructure\infrastructure_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\world\world_mapper_builder_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\national_focus\out_focus_tree_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_tests.cpp" />
     <ClCompile Include="src\vic3_world\ideologies\ideologies.cpp" />
     <ClCompile Include="src\vic3_world\ideologies\ideologies_importer_tests.cpp" />

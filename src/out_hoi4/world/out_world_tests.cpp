@@ -24,6 +24,7 @@ void CreateTestFolders(std::string_view test_name)
    commonItems::TryCreateFolder(fmt::format("output/{}/common/countries", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/country_tags", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/names", test_name));
+   commonItems::TryCreateFolder(fmt::format("output/{}/common/national_focus", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history/countries", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history/states", test_name));
