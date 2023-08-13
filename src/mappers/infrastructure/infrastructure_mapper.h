@@ -7,6 +7,27 @@
 namespace mappers
 {
 
+// Find root of a function fn using secant approximation.
+template <typename T, typename U>
+U find_root(const std::function<U(T)>& fn, T x_0, const std::function<T(U)>& x_1_func, int iterations)
+{
+   U y_0 = fn(x_0);
+   T x_1 = x_1_func(y_0);
+   U y_1 = fn(x_1);
+
+   for (; iterations > 0 && std::abs(y_1) > 0.005; --iterations)
+   {
+      float new_x = x_1 - (y_1 * (x_1 - x_0) / (y_1 - y_0));
+
+      x_0 = x_1;
+      y_0 = y_1;
+      x_1 = new_x;
+      y_1 = fn(new_x);
+   }
+   return x_1;
+}
+
+
 /// <summary>
 /// Maps state infrastructure.
 /// </summary>

@@ -39,7 +39,7 @@ WorldMapperBuilder WorldMapperBuilder::CreateNullMapper()
    builder.tech_mappings = {};
    builder.culture_graphics_mapper = CultureGraphicsMapper({});
    builder.infrastructure_mapper_ = std::async([]() {
-      return InfrastructureMapper(0);
+      return InfrastructureMapper(0, 0);
    });
    builder.vic3_province_to_state_mapper_ = std::async([]() {
       return std::map<std::string, int>();

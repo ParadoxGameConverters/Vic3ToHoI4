@@ -114,7 +114,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
        std::move(province_mapper),
        {},
        mappers::CultureGraphicsMapper({}),
-       mappers::InfrastructureMapper(0),
+       mappers::InfrastructureMapper(0, 0),
        {});
    hoi4::WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().Build();
 
@@ -168,7 +168,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
        std::move(province_mapper),
        {},
        mappers::CultureGraphicsMapper({}),
-       mappers::InfrastructureMapper(0),
+       mappers::InfrastructureMapper(0, 0),
        {});
    hoi4::WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().Build();
 
@@ -513,7 +513,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
        std::move(province_mapper),
        {},
        mappers::CultureGraphicsMapper({}),
-       mappers::InfrastructureMapper(0),
+       mappers::InfrastructureMapper(0, 0),
        {});
    hoi4::WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().Build();
 

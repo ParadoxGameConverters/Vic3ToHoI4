@@ -6,6 +6,23 @@
 
 namespace mappers
 {
+TEST(MappersInfrastructureInfrastructureMapperTests, FindRootWorks)
+{
+   // linear function. zero should be -20/3
+   const auto func = [](float input) {
+      return 0.6F * input + 4;
+   };
+
+   EXPECT_FLOAT_EQ((find_root<float, float>(
+                       func,
+                       0.0F,
+                       [](float f) {
+                          return -1.0F;
+                       },
+                       5)),
+       -20.0F / 3.0F);
+}
+
 TEST(MappersInfrastructureInfrastructureMapperTests, Default1Infrastructure)
 {
    InfrastructureMapper infrastructure_mapper(0, 0);
