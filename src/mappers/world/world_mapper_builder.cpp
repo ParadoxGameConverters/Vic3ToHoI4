@@ -40,6 +40,9 @@ WorldMapperBuilder WorldMapperBuilder::CreateNullMapper()
    builder.infrastructure_mapper_ = std::async([]() {
       return InfrastructureMapper(0);
    });
+   builder.vic3_province_to_state_mapper_ = std::async([]() {
+      return std::map<std::string,int>();
+   });
    return builder;
 }
 

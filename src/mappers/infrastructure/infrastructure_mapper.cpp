@@ -30,16 +30,25 @@ namespace mappers
 {
 InfrastructureMapper::InfrastructureMapper(const std::map<int, vic3::State>& states)
 {
-   target_hoi_infra_per_state_ = 1997.0/899;  // TODO: put this in a file somewhere
+   target_hoi_infra_per_state_ = 1098.0F/899;  // TODO: put this in a file somewhere
    int total_vic_infra =
        std::accumulate(states.begin(), states.end(), 0.0f, [](float f, std::map<int, vic3::State>::value_type s) {
           return f + s.second.GetInfrastructure();
        });
 
-   vic3_infrastructure_per_hoi_infrastructure_ =
-       (total_vic_infra / static_cast<float>(states.size())) / target_hoi_infra_per_state_;
+   hoi_infra_per_vic_infra_ = target_hoi_infra_per_state_ / (total_vic_infra / static_cast<float>(states.size()));
 
    fudge_factor_ = findFudgeFactor(states);
+
+   // tests can have zero sizes for states, so protect against NaNs
+   if (!std::isfinite(fudge_factor_))
+   {
+      fudge_factor_ = 0.0F;
+   }
+   if (!std::isfinite(hoi_infra_per_vic_infra_))
+   {
+      hoi_infra_per_vic_infra_ = 0.0F;
+   }
 
    converted_hoi_infra_ = 0;
 }
@@ -47,11 +56,11 @@ InfrastructureMapper::InfrastructureMapper(const std::map<int, vic3::State>& sta
 int InfrastructureMapper::map(float vic3Infrastructure)
 {
     // all states have minimum 1 infra
-   int result = 1 + std::round(
-       std::clamp(fudge_factor_ + vic3Infrastructure / vic3_infrastructure_per_hoi_infrastructure_, 0.0F, 4.0F));
+   int result = std::round(
+       std::clamp(fudge_factor_ + vic3Infrastructure * hoi_infra_per_vic_infra_, 0.0F, 4.0F));
    converted_hoi_infra_ += result;
    converted_hoi_states_ += 1;
-   return result;
+   return 1 + result;
 }
 
 float InfrastructureMapper::findFudgeFactor(const std::map<int, vic3::State>& states)
@@ -59,8 +68,8 @@ float InfrastructureMapper::findFudgeFactor(const std::map<int, vic3::State>& st
    const auto function = [=](float fudge_factor) {
       const float new_infra =
           std::accumulate(states.begin(), states.end(), 0.0f, [=](float f, std::map<int, vic3::State>::value_type s) {
-             return f + 1 + std::round(std::clamp(
-                            fudge_factor + (s.second.GetInfrastructure() / vic3_infrastructure_per_hoi_infrastructure_),
+             return f + std::round(std::clamp(
+                            fudge_factor + (s.second.GetInfrastructure() * hoi_infra_per_vic_infra_),
                             0.0F,
                             4.0F));
           });
@@ -68,7 +77,7 @@ float InfrastructureMapper::findFudgeFactor(const std::map<int, vic3::State>& st
           fudge_factor,
           new_infra,
           (new_infra / states.size()));
-      return ((new_infra / states.size()) - target_hoi_infra_per_state_) / target_hoi_infra_per_state_;
+      return ((new_infra / states.size()) - target_hoi_infra_per_state_) * target_hoi_infra_per_state_;
    };
 
    return find_root<float,float>(
