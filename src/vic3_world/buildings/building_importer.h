@@ -4,6 +4,7 @@
 
 
 #include <string>
+#include <vector>
 
 #include "external/commonItems/Parser.h"
 #include "src/vic3_world/buildings/building.h"
@@ -26,6 +27,8 @@ class BuildingImporter
    std::string type_;
    std::optional<int> state_number_;
    float goods_sales_value_;
+   float staffing_level_;
+   std::vector<std::string> production_methods_;
 };
 
 }  // namespace vic3

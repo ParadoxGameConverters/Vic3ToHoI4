@@ -19,6 +19,12 @@ vic3::BuildingImporter::BuildingImporter()
    building_parser_.registerKeyword("goods_sales", [this](std::istream& input_stream) {
       goods_sales_value_ = static_cast<float>(commonItems::getDouble(input_stream));
    });
+   building_parser_.registerKeyword("staffing", [this](std::istream& input_stream) {
+      staffing_level_ = static_cast<float>(commonItems::getDouble(input_stream));
+   });
+   building_parser_.registerKeyword("production_methods", [this](std::istream& input_stream) {
+      production_methods_ = commonItems::getStrings(input_stream);
+   });
    building_parser_.IgnoreUnregisteredItems();
 }
 
@@ -28,8 +34,10 @@ vic3::Building vic3::BuildingImporter::ImportBuilding(std::istream& input_stream
    type_.erase();
    state_number_.reset();
    goods_sales_value_ = 0.0F;
+   staffing_level_ = 0.0F;
+   production_methods_.clear();
 
    building_parser_.parseStream(input_stream);
 
-   return {type_, state_number_, goods_sales_value_};
+   return {type_, state_number_, goods_sales_value_, staffing_level_, production_methods_};
 }
