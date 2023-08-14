@@ -3046,17 +3046,17 @@
 	link = { vic3 = x567F0E vic3 = xDF7040 vic3 = xB4CFFC hoi4 = 4108 } # STATE_MARRAKECH, STATE_MARRAKECH, STATE_MARRAKECH -> Marrakech
 	link = { vic3 = x4DF62B vic3 = x5A68FC vic3 = xDB16D9 hoi4 = 4139 } # Settat [farm], Marrakech [city], STATE_MARRAKECH -> El Kelaâ des Sraghna
 	link = { vic3 = x43DA94 hoi4 = 7069 } # Casablanca [port] -> Casablanca
-	link = { vic3 = xE070C0 hoi4 = 4084 } # STATE_MARRAKECH -> Khénifra
-	link = { vic3 = x6CAFA4 vic3 = xFDFF7B hoi4 = 10023 } # STATE_MARRAKECH, STATE_MARRAKECH -> Khouribga
+	link = { vic3 = xFDFF7B hoi4 = 4084 } # STATE_MARRAKECH -> Khénifra
+	link = { vic3 = x6CAFA4 hoi4 = 10023 } # STATE_MARRAKECH -> Khouribga
 	link = { vic3 = x05EA68 vic3 = x5875FD vic3 = x6CA1BE hoi4 = 10107 } # STATE_MARRAKECH, Beni Mellal [mine], STATE_MARRAKECH -> Azilal
 	link = { vic3 = x082C5F vic3 = x58949B vic3 = x7318F4 vic3 = x76734F hoi4 = 11943 } # Safi [wood], STATE_MARRAKECH, STATE_MARRAKECH, STATE_MARRAKECH -> Safi
 	link = { comment = "* * STATE_FEZ " }
 	link = { vic3 = xDF3040 hoi4 = 1079 } # STATE_FEZ -> Khémisset
 	link = { vic3 = x638C69 vic3 = x99F490 hoi4 = 1194 } # STATE_FEZ, Kénitra [wood] -> Souk El Arbaa
-	link = { vic3 = x1A55F0 vic3 = x5284C8 hoi4 = 7100 } # Meknes [farm], STATE_FEZ -> Meknès
-	link = { vic3 = xFAE2BB vic3 = xE445EF vic3 = xF54743 hoi4 = 10013 } # Fez [city][mine], STATE_FEZ, STATE_FEZ -> Taounate
+	link = { vic3 = x1A55F0 vic3 = x5284C8 vic3 = xF54743 hoi4 = 7100 } # Meknes [farm], STATE_FEZ, STATE_FEZ -> Meknès
+	link = { vic3 = xFAE2BB hoi4 = 10013 } # Fez [city][mine] -> Taounate
 	link = { vic3 = x955513 vic3 = xD6AD03 hoi4 = 10070 } # STATE_FEZ, Rabat [port] -> Rabat
-	link = { vic3 = x60B040 hoi4 = 11987 } # STATE_FEZ -> Fès
+	link = { vic3 = x60B040 vic3 = xE445EF hoi4 = 11987 } # STATE_FEZ, STATE_FEZ -> Fès
 	link = { vic3 = xB98CBC vic3 = xA0F040 vic3 = xB73221 hoi4 = 12042 } # STATE_FEZ, STATE_FEZ, STATE_FEZ -> Azrou
 	link = { comment = "* * STATE_AL_RIF " }
 	link = { vic3 = xDF30C0 vic3 = xFAE302 hoi4 = 7116 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Aïn Beni Mathar
@@ -3065,13 +3065,13 @@
 	link = { vic3 = x9BC3AC vic3 = xE95985 hoi4 = 4097 } # Taza [mine], STATE_AL_RIF -> Taza
 	link = { vic3 = xE6D43C hoi4 = 4199 } # STATE_AL_RIF -> Targuist
 	link = { vic3 = xFA1C92 hoi4 = 7215 } # STATE_AL_RIF -> Alhucemas
-	link = { vic3 = x20B0C0 hoi4 = 10113 hoi4 = 9945 } # Tangiers [city][wood] -> Alcazarquivir, land
+	link = { vic3 = x20B0C0 hoi4 = 9945 hoi4 = 10113 } # Tangiers [city][wood] -> land, Alcazarquivir
 	link = { vic3 = xA0B0C0 hoi4 = 12087 } # STATE_AL_RIF -> Tetuán
 	link = { vic3 = xCA9F75 vic3 = xDFB040 hoi4 = 12100 } # Melilla [port], STATE_AL_RIF -> Melilla
 	link = { comment = "* * STATE_INNER_MOROCCO " }
 	link = { vic3 = x96EF9B vic3 = xB14383 hoi4 = 1152 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Midelt
-	link = { vic3 = x7D32B3 vic3 = xAC4646 vic3 = xD89587 hoi4 = 1207 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Béni Mellal
-	link = { vic3 = x9015D0 vic3 = xBA134C vic3 = xBD6AB5 hoi4 = 1989 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Ouarzazate
+	link = { vic3 = x7D32B3 vic3 = xAC4646 vic3 = xD89587 vic3 = xE070C0 hoi4 = 1207 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_MARRAKECH -> Béni Mellal
+	link = { vic3 = x9015D0 vic3 = xBA134C vic3 = xBD6AB5 vic3 = x0488C2 hoi4 = 1989 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, Quarzazate [farm] -> Ouarzazate
 	link = { vic3 = x1AA449 vic3 = x4B50E0 vic3 = x593CFE vic3 = x6070C0 vic3 = x8971F5 vic3 = xCA258A hoi4 = 4022 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Tata
 	link = { vic3 = xE2981F hoi4 = 4154 } # STATE_INNER_MOROCCO -> Talsint
 	link = { vic3 = x0277E9 vic3 = xA0EFC0 vic3 = x360984 vic3 = x95A1C3 vic3 = x031705 hoi4 = 4933 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Errachidia
@@ -3080,7 +3080,7 @@
 	link = { vic3 = x07D47A vic3 = x4F8487 vic3 = x4C6494 vic3 = xA21408 vic3 = xE1B48A hoi4 = 7203 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, Agadir [port][wood], STATE_INNER_MOROCCO -> Agadir
 	link = { vic3 = x2D7AF0 vic3 = x66D4E9 vic3 = x977DCA vic3 = xB096BF vic3 = x830671 hoi4 = 7908 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Zagora
 	link = { vic3 = x2853A6 vic3 = x75EBCA vic3 = xE521ED hoi4 = 7958 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Bouafra
-	link = { vic3 = x0488C2 vic3 = x0B4734 vic3 = xE1981C vic3 = xE92045 vic3 = x45FD26 hoi4 = 8046 } # Quarzazate [farm], STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, Ksar-es-Souk [mine], STATE_INNER_MOROCCO -> Tinghir
+	link = { vic3 = x0B4734 vic3 = xE1981C vic3 = xE92045 vic3 = x45FD26 hoi4 = 8046 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, Ksar-es-Souk [mine], STATE_INNER_MOROCCO -> Tinghir
 	link = { vic3 = x603080 hoi4 = 12857 } # STATE_INNER_MOROCCO -> Sidi Ifní
 	link = { comment = "* * STATE_ALGIERS " }
 	link = { vic3 = xCB898B hoi4 = 7166 } # STATE_ALGIERS -> Akbou
