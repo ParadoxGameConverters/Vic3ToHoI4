@@ -69,6 +69,7 @@
     <ClInclude Include="src\mappers\culture\culture_graphics_mapping.h" />
     <ClInclude Include="src\mappers\ideology\ideology_mapper.h" />
     <ClInclude Include="src\mappers\ideology\ideology_mapper_importer.h" />
+    <ClInclude Include="src\mappers\infrastructure\infrastructure_mapper.h" />
     <ClInclude Include="src\mappers\provinces\province_mapper.h" />
     <ClInclude Include="src\mappers\provinces\province_mapper_importer.h" />
     <ClInclude Include="src\mappers\provinces\province_mapping.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper_importer.cpp" />
     <ClCompile Include="src\mappers\ideology\ideology_mapper.cpp" />
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer.cpp" />
+    <ClCompile Include="src\mappers\infrastructure\infrastructure_mapper.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper_importer.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp" />

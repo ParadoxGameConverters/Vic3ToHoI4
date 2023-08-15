@@ -20,6 +20,8 @@ class WorldMapperBuilder
    Hoi4ToVic3ProvinceMapping hoi_vic_province_mappings;
    std::vector<mappers::TechMapping> tech_mappings;
    CultureGraphicsMapper culture_graphics_mapper;
+
+   std::future<std::map<std::string, int>> vic3_province_to_state_mapper_;
    WorldMapperBuilder(): culture_graphics_mapper({}) {}
 
 
@@ -66,6 +68,8 @@ class WorldMapperBuilder
    /// Set culture graphics mapper. Must be constructed separately.
    /// </summary>
    WorldMapperBuilder& SetCultureGraphicsMapper(CultureGraphicsMapper mapper);
+
+   WorldMapperBuilder& DefaultVic3ProvinceToStateMapper(const vic3::World& source_world);
 
    /// <summary>
    /// Copies province data to a worldbuilder.

@@ -114,7 +114,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultCultureGraphicsMapperWorks)
 
 TEST(MappersWorldWorldMapperBuilderTests, CopyToVicWorldCopiesProvinces)
 {
-   auto worldMapper = WorldMapperBuilder::CreateNullMapper().AddTestProvinces(3);
+   auto worldMapper = std::move(WorldMapperBuilder::CreateNullMapper().AddTestProvinces(3));
    auto worldBuilder = vic3::WorldBuilder::CreateNullWorld();
    worldMapper.CopyToVicWorld(worldBuilder);
    auto world = worldBuilder.Build();
