@@ -23,6 +23,32 @@ TEST(MappersInfrastructureInfrastructureMapperTests, FindRootWorks)
        -20.0F / 3.0F);
 }
 
+TEST(MappersInfrastructureInfrastructureMapperTests, TargetInfrastructureIsReadable)
+{
+   InfrastructureMapper infrastructure_mapper(1, 0.2F);
+   EXPECT_EQ(infrastructure_mapper.GetTargetInfrastructure(), 0);
+}
+
+TEST(MappersInfrastructureInfrastructureMapperTests, ConversionRatioIsReadable)
+{
+   InfrastructureMapper infrastructure_mapper(1.2F, 0.2F);
+   EXPECT_EQ(infrastructure_mapper.GetConversionRatio(), 1.2F);
+}
+
+TEST(MappersInfrastructureInfrastructureMapperTests, FudgeFactorIsReadable)
+{
+   InfrastructureMapper infrastructure_mapper(1, 0.2F);
+   EXPECT_EQ(infrastructure_mapper.GetFudgeFactor(), 0.2F);
+}
+
+TEST(MappersInfrastructureInfrastructureMapperTests, ConvertedInfrastructureIsReadable)
+{
+   InfrastructureMapper infrastructure_mapper(0.5F, 0.5F);
+   static_cast<void>(infrastructure_mapper.Map(2));  // maps to (0.5*2)+0.5 = 2 additional infra
+   static_cast<void>(infrastructure_mapper.Map(8));  // maps to 4 (max) additional infra
+   EXPECT_EQ(infrastructure_mapper.GetConvertedInfrastructure(), 6.0F / 2.0F);
+}
+
 TEST(MappersInfrastructureInfrastructureMapperTests, Default1Infrastructure)
 {
    InfrastructureMapper infrastructure_mapper(0, 0);

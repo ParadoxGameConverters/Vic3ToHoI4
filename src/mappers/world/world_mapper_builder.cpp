@@ -122,7 +122,6 @@ WorldMapperBuilder& WorldMapperBuilder::DefaultTechMapper()
    return *this;
 }
 
-//
 void WorldMapperBuilder::CopyToVicWorld(vic3::WorldBuilder& world)
 {
    for (auto& pair: this->vic_hoi_province_mappings)
