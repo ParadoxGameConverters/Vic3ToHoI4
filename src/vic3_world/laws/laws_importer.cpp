@@ -39,7 +39,6 @@ std::map<int, std::set<std::string>> vic3::ImportLaws(std::istream& input_stream
    });
    law_parser.IgnoreUnregisteredItems();
 
-
    commonItems::parser database_parser;
    database_parser.registerRegex(commonItems::integerRegex,
        [&laws, &empty_laws, &law_is_active, &inactive_laws, &active_laws, &law_name, &country_number, &law_parser](
