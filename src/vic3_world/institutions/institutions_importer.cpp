@@ -6,7 +6,8 @@ namespace vic3
 {
 
 InstitutionsImporter::InstitutionsImporter(std::map<int, std::vector<Institution>>& out_institutions_map):
-    institutions_map_(out_institutions_map)
+    institutions_map_(out_institutions_map),
+    institution_parser_()
 {
    // create single institution parser
    institution_parser_.registerKeyword("institution", [this](std::istream& input_stream) {
@@ -18,9 +19,10 @@ InstitutionsImporter::InstitutionsImporter(std::map<int, std::vector<Institution
    institution_parser_.registerKeyword("country", [this](std::istream& input_stream) {
       this->current_institution_.country = commonItems::getInt(input_stream);
    });
-   institution_parser_.IgnoreUnregisteredItems();
+   institution_parser_.IgnoreAndLogUnregisteredItems();
 
    const auto institutionParserFunc = [this](std::istream& input_stream) {
+      this->institution_parser_.parseStream(input_stream);
       if (this->current_institution_.type != "")
       {
          auto [itr, success] = this->institutions_map_.emplace(this->current_institution_.country,
@@ -31,7 +33,6 @@ InstitutionsImporter::InstitutionsImporter(std::map<int, std::vector<Institution
          }
       }
       this->current_institution_ = {};
-      this->institution_parser_.parseStream(input_stream);
    };
 
    parser_ = DatabaseParser(institutionParserFunc);
@@ -40,16 +41,6 @@ InstitutionsImporter::InstitutionsImporter(std::map<int, std::vector<Institution
 void InstitutionsImporter::operator()(std::istream& input_stream)
 {
    parser_.parseStream(input_stream);
-   if (this->current_institution_.type != "")
-   {
-      auto [itr, success] =
-          this->institutions_map_.emplace(this->current_institution_.country, std::vector{this->current_institution_});
-      if (!success)
-      {
-         itr->second.emplace_back(current_institution_);
-      }
-   }
-   this->current_institution_ = {};
 }
 
 }  // namespace vic3

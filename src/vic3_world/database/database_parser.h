@@ -15,6 +15,7 @@ class DatabaseParser: public commonItems::parser
   public:
       // single_element_func is the function to run on each entry in the db
    DatabaseParser(commonItems::parsingFunctionStreamOnly single_element_func);
+   DatabaseParser();
    void operator()(std::istream& stream);
 
   private:
