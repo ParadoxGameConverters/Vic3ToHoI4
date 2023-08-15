@@ -911,7 +911,7 @@
     <ClCompile Include="src\vic3_world\institutions\institutions_importer.cpp">
       <Filter>src\vic3_world\institutions</Filter>
     </ClCompile>
-    <ClCompile Include="src\vic3_world\database\database_parse.cpp">
+    <ClCompile Include="src\vic3_world\database\database_parser.cpp">
       <Filter>src\vic3_world\database</Filter>
     </ClCompile>
   </ItemGroup>
