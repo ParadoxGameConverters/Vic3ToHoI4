@@ -150,6 +150,8 @@
     <ClCompile Include="src\mappers\provinces\province_mapping_importer_tests.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mappings_importer_tests.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mapping_importer_tests.cpp" />
+    <ClCompile Include="src\mappers\unit\unit_mapper_importer_tests.cpp" />
+    <ClCompile Include="src\mappers\unit\unit_mapper_tests.cpp" />
     <ClCompile Include="src\maps\map_data_tests.cpp" />
     <ClCompile Include="src\maps\province_definitions_tests.cpp" />
     <ClCompile Include="src\maps\province_points_tests.cpp" />

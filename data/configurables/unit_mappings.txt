@@ -1,0 +1,22 @@
+## Army units.
+
+pm_skirmish_infantry = {
+   infantry = 0.1  
+}
+
+pm_trench_infantry = {
+   infantry = 0.25  
+}
+
+pm_mobile_artillery = {
+  artillery = 0.1
+}
+
+pm_cavalry_scouts = {
+  cavalry = 0.2
+}
+
+pm_wound_dressing = {
+
+}
+
