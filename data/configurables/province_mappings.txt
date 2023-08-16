@@ -3137,9 +3137,9 @@
 	link = { vic3 = x704227 vic3 = x7CF7C9 vic3 = x7EA4E1 vic3 = xBFD021 vic3 = xC4C64B hoi4 = 4992 } # STATE_TUNISIA, STATE_TUNISIA, STATE_TUNISIA, STATE_TUNISIA, STATE_TUNISIA -> Remada
 	link = { vic3 = x67FF86 vic3 = xC9AE6E hoi4 = 7005 } # Gabés [farm], STATE_TUNISIA -> Gabès
 	link = { vic3 = x491AE9 hoi4 = 7077 } # STATE_TUNISIA -> Kairouan
-	link = { vic3 = x80D0A0 hoi4 = 7180 } # Tunis [city] -> Tebourba
+	link = { vic3 = x80D0A0 hoi4 = 11969 hoi4 = 7180 } # Tunis [city] -> Tunis, Tebourba
 	link = { vic3 = x5BE6C7 vic3 = x6C10D8 hoi4 = 9983 } # STATE_TUNISIA, STATE_TUNISIA -> land
-	link = { vic3 = x063C9A vic3 = x063CAB hoi4 = 9994 } # STATE_TUNISIA, STATE_TUNISIA -> Bizerte
+	link = { vic3 = x063C9A vic3 = x063CAB vic3 = x15695C hoi4 = 9994 } # STATE_TUNISIA, STATE_TUNISIA, STATE_TUNISIA -> Bizerte
 	link = { vic3 = x1799E8 vic3 = x7B9842 hoi4 = 10026 } # STATE_TUNISIA, STATE_TUNISIA -> Mezzouna
 	link = { vic3 = xBA7F1A hoi4 = 10082 } # STATE_TUNISIA -> Douz
 	link = { vic3 = x4DF111 hoi4 = 10091 } # STATE_TUNISIA -> Nabeul
@@ -3147,7 +3147,6 @@
 	link = { vic3 = xC05020 hoi4 = 11921 hoi4 = 4129 } # Sfax [port] -> Sfax, Regueb
 	link = { vic3 = x751D37 vic3 = xA77517 vic3 = x3DAE05 hoi4 = 11935 } # STATE_TUNISIA, STATE_TUNISIA, STATE_TUNISIA -> Gafsa
 	link = { vic3 = x6016DA vic3 = x60F074 vic3 = xCF7B71 hoi4 = 11957 } # STATE_TUNISIA, STATE_TUNISIA, STATE_TUNISIA -> Houmt Souk
-	link = { vic3 = x15695C hoi4 = 11969 } # STATE_TUNISIA -> Tunis
 	link = { vic3 = xA0F7A4 vic3 = xA24948 hoi4 = 12000 } # STATE_TUNISIA, STATE_TUNISIA -> Beni Khedache
 	link = { comment = "* * STATE_TRIPOLI " }
 	link = { vic3 = x84D04D hoi4 = 1149 } # STATE_TRIPOLI -> Tripoli

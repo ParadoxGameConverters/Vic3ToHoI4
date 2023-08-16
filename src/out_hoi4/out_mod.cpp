@@ -100,7 +100,7 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
    std::ofstream descriptor_file(std::string("output/").append(output_name).append("/descriptor.mod"));
    if (!descriptor_file.is_open())
    {
-      throw std::runtime_error("Could not create descriptor.mod");
+      throw std::runtime_error("Could not create descriptor.mod"); 
    }
    fmt::print(descriptor_file,
        "name = \"Converted - {}\"\n"
