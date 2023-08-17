@@ -10,6 +10,8 @@
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/ideology/ideology_mapper.h"
 #include "src/mappers/ideology/ideology_mapper_importer.h"
+#include "src/mappers/unit/unit_mapper.h"
+#include "src/mappers/unit/unit_mapper_importer.h"
 #include "src/mappers/world/world_mapper.h"
 
 
@@ -61,6 +63,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
    std::map<std::string, Country> countries;
 
    const mappers::IdeologyMapper ideology_mapper = mappers::ImportIdeologyMapper("configurables/ideology_mappings.txt");
+   const mappers::UnitMapper unit_mapper = mappers::ImportUnitMapper("configurables/unit_mappings.txt");
 
    const std::vector<EquipmentVariant> all_legacy_ship_variants =
        ImportEquipmentVariants("configurables/legacy_ship_types.txt");
@@ -82,6 +85,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
           vic3_state_ids_to_hoi4_state_ids,
           states,
           ideology_mapper,
+          unit_mapper,
           world_mapper.tech_mapper,
           all_legacy_ship_variants,
           all_ship_variants,
