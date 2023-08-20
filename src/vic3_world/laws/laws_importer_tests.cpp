@@ -184,7 +184,7 @@ TEST(Vic3WorldLawsLawsImporter, LawsImportsAreLogged)
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tImported 1 active laws."));
    EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tImported 2 inactive laws."));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tImported 3 empty laws."));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tImported 0 empty laws."));
 }
 
 

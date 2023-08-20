@@ -352,6 +352,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/countries/vic3_country_tests.cp
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/country_rankings/country_rankings_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/cultures/cultures_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/cultures/culture_definitions_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/database/database_parser_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/elections/elections_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/ideologies/ideologies_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/ideologies/ideologies_tests.cpp")

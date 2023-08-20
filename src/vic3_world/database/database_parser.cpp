@@ -13,6 +13,14 @@ DatabaseParser::DatabaseParser(): CallableParser(), db_entry_parser_()
    this->IgnoreAndLogUnregisteredItems();
 }
 
+void skipSpaces(std::istream& stream)
+{
+   while (stream.peek() == ' ')
+   {
+      stream.get();
+   }
+}
+
 DatabaseParser::DatabaseParser(commonItems::parsingFunctionStreamOnly single_element_func):
     CallableParser(),
     db_entry_parser_()
@@ -20,8 +28,9 @@ DatabaseParser::DatabaseParser(commonItems::parsingFunctionStreamOnly single_ele
    this->db_entry_parser_.registerRegex(commonItems::integerRegex,
        [single_element_func](std::string key, std::istream& stream) {
           // i have a mouth and i must scream
-          char m = stream.peek();
-          char n = (stream.get(), stream.peek());
+          skipSpaces(stream);
+          char m = stream.get();
+          skipSpaces(stream);
           if (stream.peek() == '{')
           {
              stream.putback(m);

@@ -160,6 +160,9 @@
     <Filter Include="src\out_hoi4\national_focus">
       <UniqueIdentifier>{51068702-9c15-4e02-8b2e-f7993d075b29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\database">
+      <UniqueIdentifier>{6d91a079-4253-4803-8d94-ca26bcaa0bcd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -485,6 +488,9 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\world\vic3_world_builder_tests.cpp">
       <Filter>src\vic3_world\world</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\database\database_parser_tests.cpp">
+      <Filter>src\vic3_world\database</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
