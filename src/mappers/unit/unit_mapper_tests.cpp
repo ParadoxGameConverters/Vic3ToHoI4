@@ -9,33 +9,24 @@
 namespace mappers
 {
 
-TEST(MappersUnitUnitMapperTests, NoRulesMeansNoPoints)
+TEST(MappersUnitUnitMapperTests, NoRulesMeansNoUnits)
 {
-   const UnitMapper unit_mapper({});
-   EXPECT_TRUE(unit_mapper.CalculateUnitPoints({{"test", 0.25F}}).empty());
+   TemplateMap templates;
+   const UnitMapper unit_mapper(templates);
+   EXPECT_TRUE(unit_mapper.MakeBattalions({"pm_trench_infantry", "pm_cavalry_scouts"}, 10).empty());
 }
 
 
-TEST(MappersUnitUnitMapperTests, UnitPointsAreCalculated)
+TEST(MappersUnitUnitMapperTests, BattalionsAreMade)
 {
-   const UnitMapper unit_mapper(
-       {
-           {"trench_infantry",
-               {
-                   {"infantry", 0.25F},
-                   {"artillery", 0.1F},
-               }},
-           {"skirmish_infantry",
-               {
-                   {"infantry", 0.1F},
-                   {"cavalry", 0.1F},
-               }},
-       });
-
-   EXPECT_THAT(unit_mapper.CalculateUnitPoints({{"trench_infantry", 3.0F}, {"skirmish_infantry", 6.0F}}),
-       testing::UnorderedElementsAre(testing::Pair("infantry", 1.35F),
-           testing::Pair("artillery", 0.3F),
-           testing::Pair("cavalry", 0.6F)));
+   TemplateMap templates{
+       {"trench_infantry", BattalionTemplate(50, {{"infantry", 0.25}})},
+       {"cavalry_scouts", BattalionTemplate(0, {{"cavalry", 0.20}})},
+       {"field_hospitals", BattalionTemplate(10, {})},
+   };
+   const UnitMapper unit_mapper(templates);
+   EXPECT_THAT(unit_mapper.MakeBattalions({"trench_infantry", "cavalry_scouts", "field_hospitals"}, 2),
+       testing::UnorderedElementsAre(hoi4::Battalion("infantry", 60, 0.50), hoi4::Battalion("cavalry", 60, 0.40)));
 }
 
 

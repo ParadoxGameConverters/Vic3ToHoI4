@@ -1,29 +1,32 @@
 #ifndef SRC_MAPPERS_UNIT_UNITMAPPER_H
 #define SRC_MAPPERS_UNIT_UNITMAPPER_H
 
-
-
 #include <map>
 #include <string>
 
-
+#include "src/hoi4_world/military/battalion.h"
 
 namespace mappers
 {
 
-using UnitPointsMap = std::map<std::string, float>;
-using PmToPointsMap = std::map<std::string, UnitPointsMap>;
+using BattalionMap = std::map<std::string, float>;
 
+struct BattalionTemplate{
+   int equipment;
+   BattalionMap units;
+};
+
+using TemplateMap = std::map<std::string, BattalionTemplate>;
 
 class UnitMapper
 {
   public:
-   explicit UnitMapper(PmToPointsMap methods): methods_(std::move(methods)) {}
+   explicit UnitMapper(TemplateMap& templates): templates_(std::move(templates)) {}
 
-   [[nodiscard]] mappers::UnitPointsMap CalculateUnitPoints(const mappers::UnitPointsMap& pm_counts) const;
+   std::vector<hoi4::Battalion> MakeBattalions(const std::vector<std::string> methods, int scale) const;
 
   private:
-   PmToPointsMap methods_;
+   TemplateMap templates_;
 };
 
 }  // namespace mappers

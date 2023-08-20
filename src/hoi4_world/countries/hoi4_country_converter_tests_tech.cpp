@@ -17,6 +17,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_Decentralized)
    std::map<int, hoi4::Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{};
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        c1,
@@ -25,7 +26,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_Decentralized)
        vic3_state_ids_to_hoi4_state_ids,
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -49,6 +50,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_default)
    std::map<int, hoi4::Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{};
+   mappers::TemplateMap templates;
 
    const auto country_two = ConvertCountry(source_world,
        c2,
@@ -57,7 +59,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_default)
        vic3_state_ids_to_hoi4_state_ids,
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -81,6 +83,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_Unrecognized)
    std::map<int, hoi4::Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{};
+   mappers::TemplateMap templates;
 
    const auto country_three = ConvertCountry(source_world,
        c3,
@@ -89,7 +92,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_Unrecognized)
        vic3_state_ids_to_hoi4_state_ids,
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -113,6 +116,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_GreatPower)
    std::map<int, hoi4::Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{};
+   mappers::TemplateMap templates;
 
    const auto country_four = ConvertCountry(source_world,
        c4,
@@ -121,7 +125,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_GreatPower)
        vic3_state_ids_to_hoi4_state_ids,
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},

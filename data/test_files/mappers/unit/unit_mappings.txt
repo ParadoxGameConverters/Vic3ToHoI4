@@ -1,11 +1,19 @@
 ## Army units.
+# Weights 'infantry', 'cavalry', and such indicate the portion of a
+# brigade of that type created by one level of a barracks with that
+# production methods.
+# Equipment scale is an integer from 1 to 100, which will be converted
+# into a float from 0-1 and added as the 'start_equipment_factor' of
+# the units created from the brigades. If not set it defaults to 100.
 
 pm_skirmish_infantry = {
-   infantry = 0.1  
+   infantry = 0.1
+   equipment_scale = 10
 }
 
 pm_trench_infantry = {
-   infantry = 0.25  
+   infantry = 0.25
+   equipment_scale = 50
 }
 
 pm_mobile_artillery = {

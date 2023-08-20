@@ -20,6 +20,7 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
    const vic3::Country source_country_two({.number = 2, .color = commonItems::Color{std::array{2, 4, 6}}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -28,7 +29,7 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -46,7 +47,7 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -76,6 +77,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
    const vic3::Country source_country_one({});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -84,7 +86,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -108,6 +110,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
    const vic3::Country source_country_one({.number = 1});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -116,7 +119,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -140,6 +143,7 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
    const vic3::Country source_country_two({.number = 2, .capital_state = 3});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}, {3, 9}};
 
@@ -150,7 +154,7 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
        vic3_state_ids_to_hoi4_state_ids,
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -168,7 +172,7 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
        vic3_state_ids_to_hoi4_state_ids,
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -196,6 +200,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
    });
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
 
@@ -206,7 +211,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
        vic3_state_ids_to_hoi4_state_ids,
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -230,6 +235,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStat
    const vic3::Country source_country_one({.number = 1, .capital_state = 2});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -238,7 +244,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStat
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -262,6 +268,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNo
    const vic3::Country source_country_one({.number = 1});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -274,7 +281,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNo
            State(3, {.owner = "TAG", .victory_points = {{1, 1}, {2, 1}, {3, 1}}}),
        },
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -298,6 +305,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVps
    const vic3::Country source_country_one({.number = 1});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -310,7 +318,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVps
            State(3, {.owner = "TAG", .civilian_factories = 1, .military_factories = 1, .dockyards = 1}),
        },
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -334,6 +342,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfInd
    const vic3::Country source_country_one({.number = 1});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -346,7 +355,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfInd
            State(3, {.owner = "TAG", .manpower = 1111}),
        },
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -370,6 +379,7 @@ TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersA
    const vic3::Country source_country_one({.number = 1});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -382,7 +392,7 @@ TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersA
            State(2, {.owner = "TAG"}),
        },
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -406,6 +416,7 @@ TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapi
    const vic3::Country source_country_one({.number = 1});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -414,7 +425,7 @@ TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapi
        {},
        {State(1, {}), State(2, {.owner = "TWO"})},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -438,6 +449,7 @@ TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
    const vic3::Country source_country_one({.number = 1});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -446,7 +458,7 @@ TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -470,6 +482,7 @@ TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)
    const vic3::Country source_country_one({.number = 1, .last_election = date("1894.4.23")});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -478,7 +491,7 @@ TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -502,6 +515,7 @@ TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)
    const vic3::Country source_country_one({.number = 1, .last_election = date("1937.2.15")});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -510,7 +524,7 @@ TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -534,6 +548,7 @@ TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)
    const vic3::Country source_country_one({.number = 1, .last_election = date("1935.11.4")});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -542,7 +557,7 @@ TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -566,6 +581,7 @@ TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)
    const vic3::Country source_country_one({.number = 1, .last_election = date("1928.10.14")});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -574,7 +590,7 @@ TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -599,6 +615,7 @@ TEST(Hoi4worldCountriesCountryConverter, InYearPastElectionsAreNextCycle)
    const vic3::Country source_country_one({.number = 1, .last_election = date("1928.1.1")});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -607,7 +624,7 @@ TEST(Hoi4worldCountriesCountryConverter, InYearPastElectionsAreNextCycle)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -632,6 +649,7 @@ TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)
    const vic3::Country source_country_two({.number = 1, .active_laws = {"law_landed_voting"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const mappers::IdeologyMapper ideology_mapper(
        {
@@ -646,7 +664,7 @@ TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)
        {},
        {},
        ideology_mapper,
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -665,7 +683,7 @@ TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)
        {},
        {},
        ideology_mapper,
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -692,6 +710,7 @@ TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)
    const vic3::Country source_country_two({.number = 1, .active_laws = {"law_landed_voting"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const mappers::IdeologyMapper ideology_mapper(
        {
@@ -716,7 +735,7 @@ TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)
        {},
        {},
        ideology_mapper,
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -735,7 +754,7 @@ TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)
        {},
        {},
        ideology_mapper,
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -762,6 +781,7 @@ TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
    const vic3::Country source_country_one({.number = 1, .capital_state = 2});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -770,7 +790,7 @@ TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {{{"source_tech"}, std::nullopt, {"dest_tech_one", "dest_tech_two"}}},
        {},
        {},
@@ -796,6 +816,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
    const vic3::Country source_country_one({.number = 1, .capital_state = 2});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -804,7 +825,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {{{"source_tech"}, std::nullopt, {"required_tech_one", "required_tech_two"}}},
        {
            EquipmentVariant({}, {}, {{"name", "legacy_ship: no_required_techs_automatically_succeeds"}}),
@@ -893,6 +914,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
    const vic3::Country source_country_one({.number = 1, .capital_state = 2});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -901,7 +923,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {{{"source_tech"}, std::nullopt, {"blocking_tech_one", "blocking_tech_two"}}},
        {
            EquipmentVariant({}, {}, {{"name", "legacy_ship: no_blocking_techs_automatically_succeeds"}}),
@@ -965,6 +987,7 @@ TEST(Hoi4worldCountriesCountryConverter, LawsDefaultsToDefaultLaws)
    const vic3::Country source_country_one({.number = 1, .capital_state = 2});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -973,7 +996,7 @@ TEST(Hoi4worldCountriesCountryConverter, LawsDefaultsToDefaultLaws)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -998,6 +1021,7 @@ TEST(Hoi4worldCountriesCountryConverter, FascistCountriesGetDifferentEconomicIde
    const vic3::Country source_country_one({.number = 1, .capital_state = 2, .active_laws = {"test_fascism_law"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -1006,7 +1030,7 @@ TEST(Hoi4worldCountriesCountryConverter, FascistCountriesGetDifferentEconomicIde
        {},
        {},
        mappers::IdeologyMapper({{"test_fascism_law", {{"fascism", 100}}}}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1031,6 +1055,7 @@ TEST(Hoi4worldCountriesCountryConverter, MassConscriptionLeadsToLimitedConscript
    const vic3::Country source_country_one({.number = 1, .capital_state = 2, .active_laws = {"law_mass_conscription"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    mappers::IdeologyPointsMap foo{{"fascism", 100}};
 
@@ -1041,7 +1066,7 @@ TEST(Hoi4worldCountriesCountryConverter, MassConscriptionLeadsToLimitedConscript
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1066,6 +1091,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultToEmpty)
    const vic3::Country source_country_one({.number = 1, .capital_state = 2});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -1074,7 +1100,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultToEmpty)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1097,6 +1123,7 @@ TEST(Hoi4worldCountriesCountryConverter, DecentrailzedCountriesGetDecentralizedI
    const vic3::Country source_country_one({.number = 1, .capital_state = 2, .country_type = "decentralized"});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -1105,7 +1132,7 @@ TEST(Hoi4worldCountriesCountryConverter, DecentrailzedCountriesGetDecentralizedI
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1133,6 +1160,7 @@ TEST(Hoi4worldCountriesCountryConverter, OnlyConservativeMonarchiesHaveNobleLead
        {.number = 1, .active_laws = {"law_monarchy", "law_voting"}, .primary_cultures = {"culture"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const vic3::CultureDefinition culture_def{"culture",
        {
@@ -1179,7 +1207,7 @@ TEST(Hoi4worldCountriesCountryConverter, OnlyConservativeMonarchiesHaveNobleLead
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1198,7 +1226,7 @@ TEST(Hoi4worldCountriesCountryConverter, OnlyConservativeMonarchiesHaveNobleLead
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1231,6 +1259,7 @@ TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)
        {.number = 1, .active_laws = {"law_monarchy"}, .primary_cultures = {"culture"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const vic3::CultureDefinition culture_def{"culture",
        {
@@ -1258,7 +1287,7 @@ TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1284,6 +1313,7 @@ TEST(Hoi4worldCountriesCountryConverter, TooFewNobleFirstsAddsCommonFirsts)
        {.number = 1, .active_laws = {"law_monarchy"}, .primary_cultures = {"culture"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const vic3::CultureDefinition culture_def{"culture",
        {
@@ -1313,7 +1343,7 @@ TEST(Hoi4worldCountriesCountryConverter, TooFewNobleFirstsAddsCommonFirsts)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1338,6 +1368,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsUseSentinielValue)
    const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const vic3::CultureDefinition culture_def{"culture", {.male_common_first = {"president"}}, {}, {}};
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
@@ -1351,7 +1382,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsUseSentinielValue)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1379,6 +1410,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsLogWarning)
    const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const vic3::CultureDefinition culture_def{"culture", {.male_common_first = {"president"}}, {}, {}};
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
@@ -1392,7 +1424,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsLogWarning)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1416,6 +1448,7 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
    const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const vic3::CultureDefinition culture_def{"culture", {}, {}, {}};
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
@@ -1430,7 +1463,7 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1462,6 +1495,7 @@ TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
    const vic3::Country source_country_two({.number = 2, .color = commonItems::Color{std::array{2, 4, 6}}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -1470,7 +1504,7 @@ TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1488,7 +1522,7 @@ TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1522,6 +1556,7 @@ TEST(Hoi4worldCountriesCountryConverter, OverlordIsConverted)
    const vic3::Country source_country_two({.number = 2, .color = commonItems::Color{std::array{2, 4, 6}}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -1530,7 +1565,7 @@ TEST(Hoi4worldCountriesCountryConverter, OverlordIsConverted)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1548,7 +1583,7 @@ TEST(Hoi4worldCountriesCountryConverter, OverlordIsConverted)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1574,6 +1609,7 @@ TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)
    const vic3::Country source_country_one({.number = 1, .head_of_state_id = 1, .character_ids = {1, 2, 3}});
    std::map<int, Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const std::map<int, vic3::Character> characters = {
        {1, vic3::Character({.id = 1})},
@@ -1590,7 +1626,7 @@ TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1615,6 +1651,7 @@ TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
    const vic3::Country source_country_one({.number = 1, .head_of_state_id = 1, .character_ids = {1, 2, 3}});
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const std::map<int, vic3::Character> vic3_characters = {
        {1, vic3::Character({.id = 1, .first_name = "Test", .last_name = "Mann"})},
@@ -1631,7 +1668,7 @@ TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
        {},
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1674,6 +1711,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
    const vic3::Country source_country_one({.number = 1, .capital_state = 2, .ig_ids = {1, 2}});
    std::map<int, hoi4::Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
 
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
 
@@ -1721,7 +1759,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
        vic3_state_ids_to_hoi4_state_ids,
        {},
        ideologyMapper,
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1748,6 +1786,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
    const vic3::Country source_country_one({.number = 1, .capital_state = 2});
    std::map<int, hoi4::Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
    vic3::World source_world = vic3::World({});
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
 
@@ -1758,7 +1797,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
        vic3_state_ids_to_hoi4_state_ids,
        {},
        mappers::IdeologyMapper({}, {}),
-       mappers::UnitMapper({}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
