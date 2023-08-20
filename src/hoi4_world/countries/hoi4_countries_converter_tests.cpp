@@ -147,7 +147,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .graphics_block = expected_graphics_block_one,
                                     .character_ids = {1, 3},
                                     .spy_ids = {4},
-                                    .starting_research_slots = 3})),
+                                    .starting_research_slots = 3,
+                                    .units = {}})),
            testing::Pair("TWO",
                Country(CountryOptions{.tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
@@ -161,7 +162,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .tank_variants = expected_tank_variants_two,
                    .graphics_block = expected_graphics_block_two,
                    .character_ids = {2},
-                   .starting_research_slots = 3}))));
+                   .starting_research_slots = 3,
+                   .units = {}}))));
 }
 
 }  // namespace hoi4

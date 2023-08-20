@@ -478,6 +478,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        source_world.GetIdeologies(),
        ideology_mapper);
 
+   std::vector<Unit> units;
+
    return Country({.tag = *tag,
        .color = source_country.GetColor(),
        .capital_state = capital_state,
@@ -501,5 +503,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .spy_ids = spy_ids,
        .puppets = puppets,
        .overlord = overlord,
-       .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country)});
+       .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
+       .units = units});
 }
