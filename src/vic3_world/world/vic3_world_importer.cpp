@@ -344,8 +344,8 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
          country_itr->second.SetActiveLaws(active_laws);
       }
    });
-   InstitutionsImporter institutions_importer(world_options.institutions);
-   save_parser.registerKeyword("institutions", institutions_importer);
+
+   save_parser.registerKeyword("institutions", InstitutionsImporter(world_options.institutions));
    save_parser.registerKeyword("cultures", [&cultures](std::istream& input_stream) {
       cultures = ImportCultures(input_stream);
    });

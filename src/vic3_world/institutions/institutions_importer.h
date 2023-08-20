@@ -17,8 +17,6 @@ class InstitutionsImporter
    void operator()(std::istream& input_stream);
 
   private:
-   commonItems::parser institution_parser_;
-   DatabaseParser parser_;
    Institution current_institution_;
    std::map<int, std::vector<Institution>>& institutions_map_;
 };
