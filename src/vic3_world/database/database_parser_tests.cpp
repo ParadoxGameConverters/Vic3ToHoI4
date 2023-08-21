@@ -38,7 +38,10 @@ TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserForwardsElements)
    DatabaseParser(dbElementParser).parseStream(input);
 
    EXPECT_THAT(dbElements,
-       testing::ElementsAre(testing::Pair("key1", "value1"),testing::Pair("key1", "value4"),testing::Pair("key2", "value3"),testing::Pair("key2", "value2")));
+       testing::ElementsAre(testing::Pair("key1", "value1"),
+           testing::Pair("key1", "value4"),
+           testing::Pair("key2", "value3"),
+           testing::Pair("key2", "value2")));
 }
 
 TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserHandlesNoneElements)

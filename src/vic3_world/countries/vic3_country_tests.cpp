@@ -111,3 +111,9 @@ TEST(Vic3worldCountriesVic3country, IsRecognized_RecognizedNation)
    vic3::Country c4({.country_type = "recognized"});
    EXPECT_TRUE(c4.IsRecognized());
 }
+
+TEST(Vic3worldCountriesVic3country, DefaultLegitimacyZero)
+{
+   vic3::Country c4({});
+   EXPECT_EQ(c4.GetLegitimacy(), 0);
+}

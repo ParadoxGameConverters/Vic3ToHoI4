@@ -3,8 +3,8 @@
 #include <istream>
 #include <vector>
 
-#include "src/vic3_world/institutions/institution.h"
 #include "src/vic3_world/database/database_parser.h"
+#include "src/vic3_world/institutions/institution.h"
 
 
 namespace vic3

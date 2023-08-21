@@ -163,6 +163,9 @@
     <Filter Include="src\vic3_world\database">
       <UniqueIdentifier>{6d91a079-4253-4803-8d94-ca26bcaa0bcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\institutions">
+      <UniqueIdentifier>{a31b8c90-8381-4ee6-b76f-3ccce22f66e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -491,6 +494,9 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\database\database_parser_tests.cpp">
       <Filter>src\vic3_world\database</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\institutions\institutions_importer_tests.cpp">
+      <Filter>src\vic3_world\institutions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

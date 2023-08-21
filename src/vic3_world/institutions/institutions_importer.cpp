@@ -9,7 +9,6 @@ InstitutionsImporter::InstitutionsImporter(std::map<int, std::vector<Institution
     institutions_map_(out_institutions_map),
     current_institution_()
 {
-   
 }
 
 void InstitutionsImporter::operator()(std::istream& input_stream)
@@ -20,7 +19,7 @@ void InstitutionsImporter::operator()(std::istream& input_stream)
    institution_parser_.registerKeyword("none", [](std::istream& input_stream) {
 
    });
-   
+
    institution_parser_.registerKeyword("institution", [this](std::istream& input_stream) {
       this->current_institution_.type = commonItems::getString(input_stream);
    });
@@ -32,7 +31,7 @@ void InstitutionsImporter::operator()(std::istream& input_stream)
    });
    institution_parser_.IgnoreUnregisteredItems();
 
-   const auto elementParser = [this,&institution_parser_](std::istream& input_stream) {
+   const auto elementParser = [this, &institution_parser_](std::istream& input_stream) {
       institution_parser_.parseStream(input_stream);
       if (this->current_institution_.type != "")
       {
@@ -48,7 +47,6 @@ void InstitutionsImporter::operator()(std::istream& input_stream)
 
    DatabaseParser(elementParser).parseStream(input_stream);
 }
-
 
 
 

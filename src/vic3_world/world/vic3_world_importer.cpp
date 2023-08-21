@@ -28,6 +28,7 @@
 #include "src/vic3_world/cultures/cultures_importer.h"
 #include "src/vic3_world/elections/elections_importer.h"
 #include "src/vic3_world/ideologies/ideologies_importer.h"
+#include "src/vic3_world/institutions/institutions_importer.h"
 #include "src/vic3_world/interest_groups/interest_groups_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
 #include "src/vic3_world/pacts/pacts_importer.h"
@@ -37,7 +38,6 @@
 #include "src/vic3_world/states/vic3_state.h"
 #include "src/vic3_world/states/vic3_states_importer.h"
 #include "src/vic3_world/technology/vic3_technology_importer.h"
-#include "src/vic3_world/institutions/institutions_importer.h"
 
 
 
@@ -351,10 +351,10 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    });
    save_parser.registerKeyword("character_manager",
        [&world_options, &country_character_map](std::istream& input_stream) {
-      const CharacterManager character_manager(input_stream);
+          const CharacterManager character_manager(input_stream);
           world_options.characters = character_manager.GetCharacters();
           country_character_map = character_manager.GetCountryCharacterMap();
-   });
+       });
    save_parser.registerKeyword("interest_groups", [&world_options](std::istream& input_stream) {
       world_options.igs = ImportInterestGroups(input_stream);
    });
