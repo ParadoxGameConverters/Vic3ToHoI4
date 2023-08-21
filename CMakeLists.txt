@@ -359,7 +359,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/elections/elections_importer_te
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/ideologies/ideologies_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/ideologies/ideologies_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/ideologies/ideology_importer_tests.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/institutions/instutions_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/institutions/institutions_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/interest_groups/interest_groups_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/interest_groups/interest_group_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/laws/laws_importer_tests.cpp")
