@@ -5,7 +5,7 @@ namespace vic3
 
 DatabaseParser::DatabaseParser(): CallableParser(), db_entry_parser_()
 {
-   this->db_entry_parser_.registerRegex(commonItems::integerRegex, [](std::string key, std::istream& stream) {
+   this->db_entry_parser_.registerRegex(commonItems::integerRegex, [](std::string& key, std::istream& stream) {
       return;
    });
    this->db_entry_parser_.IgnoreUnregisteredItems();

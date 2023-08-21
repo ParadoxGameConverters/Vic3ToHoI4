@@ -48,6 +48,4 @@ void InstitutionsImporter::operator()(std::istream& input_stream)
    DatabaseParser(elementParser).parseStream(input_stream);
 }
 
-
-
 }  // namespace vic3
