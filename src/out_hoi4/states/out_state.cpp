@@ -43,29 +43,33 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
    {
       state_history << fmt::format("\t\towner = {}\n", *owner);
    }
-   for (const auto& victory_point: state.GetVictoryPoints())
+   if (state.GetCategory() != "wasteland")
    {
-      state_history << "\t\tvictory_points = {\n";
-      state_history << fmt::format("\t\t\t{} {}\n", victory_point.first, victory_point.second);
+      for (const auto& victory_point: state.GetVictoryPoints())
+      {
+         state_history << "\t\tvictory_points = {\n";
+         state_history << fmt::format("\t\t\t{} {}\n", victory_point.first, victory_point.second);
+         state_history << "\t\t}\n";
+      }
+      state_history << "\t\tbuildings = {\n";
+      state_history << fmt::format("\t\t\tinfrastructure = {}\n", state.GetInfrastructure());
+      state_history << fmt::format("\t\t\tindustrial_complex = {}\n", state.GetCivilianFactories());
+      state_history << fmt::format("\t\t\tarms_factory = {}\n", state.GetMilitaryFactories());
+      if (state.GetDockyards() > 0)
+      {
+         state_history << fmt::format("\t\t\tdockyard = {}\n", state.GetDockyards());
+      }
+      if (const std::optional<int> naval_base_location = state.GetNavalBaseLocation(),
+          naval_base_level = state.GetNavalBaseLevel();
+          naval_base_location && naval_base_level)
+      {
+         state_history << fmt::format("\t\t\t{} = {{\n", *naval_base_location);
+         state_history << fmt::format("\t\t\t\tnaval_base = {}\n", *naval_base_level);
+         state_history << "\t\t\t}\n";
+      }
+      state_history << "\t\t\tair_base = 1\n";
       state_history << "\t\t}\n";
    }
-   state_history << "\t\tbuildings = {\n";
-   state_history << fmt::format("\t\t\tinfrastructure = {}\n", state.GetInfrastructure());
-   state_history << fmt::format("\t\t\tindustrial_complex = {}\n", state.GetCivilianFactories());
-   state_history << fmt::format("\t\t\tarms_factory = {}\n", state.GetMilitaryFactories());
-   if (state.GetDockyards() > 0)
-   {
-      state_history << fmt::format("\t\t\tdockyard = {}\n", state.GetDockyards());
-   }
-   if (const std::optional<int> naval_base_location = state.GetNavalBaseLocation(),
-       naval_base_level = state.GetNavalBaseLevel();
-       naval_base_location && naval_base_level)
-   {
-      state_history << fmt::format("\t\t\t{} = {{\n", *naval_base_location);
-      state_history << fmt::format("\t\t\t\tnaval_base = {}\n", *naval_base_level);
-      state_history << "\t\t\t}\n";
-   }
-   state_history << "\t\t}\n";
    for (const std::string& core: state.GetCores())
    {
       state_history << fmt::format("\t\tadd_core_of = {}\n", core);
