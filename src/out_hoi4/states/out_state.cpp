@@ -50,7 +50,7 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
       state_history << "\t\t}\n";
    }
    state_history << "\t\tbuildings = {\n";
-   state_history << "\t\t\tinfrastructure = 2\n";
+   state_history << fmt::format("\t\t\tinfrastructure = {}\n", state.GetInfrastructure());
    state_history << fmt::format("\t\t\tindustrial_complex = {}\n", state.GetCivilianFactories());
    state_history << fmt::format("\t\t\tarms_factory = {}\n", state.GetMilitaryFactories());
    if (state.GetDockyards() > 0)

@@ -157,6 +157,9 @@
     <Filter Include="src\mappers\world">
       <UniqueIdentifier>{e9c5ed27-a779-48d0-b5b8-e75a87e15d9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\mappers\infrastructure">
+      <UniqueIdentifier>{7c444af2-8b43-42a1-8594-5ed2a47917c0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\out_hoi4\national_focus">
       <UniqueIdentifier>{51068702-9c15-4e02-8b2e-f7993d075b29}</UniqueIdentifier>
     </Filter>
@@ -497,6 +500,9 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\institutions\institutions_importer_tests.cpp">
       <Filter>src\vic3_world\institutions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\infrastructure\infrastructure_mapper_tests.cpp">
+      <Filter>src\mappers\infrastructure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

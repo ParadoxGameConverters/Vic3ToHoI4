@@ -15,9 +15,13 @@
 namespace hoi4
 {
 
-States ConvertStates(const vic3::World source_world,
-    const mappers::WorldMapper world_mapper,
-    const hoi4::WorldFramework world_framework,
+std::map<std::string, int> MapVic3ProvincesToStates(const std::map<int, vic3::State>& states,
+    const vic3::ProvinceDefinitions& vic3_province_definitions);
+
+
+States ConvertStates(const vic3::World& source_world,
+    const mappers::WorldMapper& world_mapper,
+    const hoi4::WorldFramework& world_framework,
     const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const maps::MapData& map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions,

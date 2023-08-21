@@ -18,8 +18,8 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const 
 
    const commonItems::ModFilesystem hoi4_mod_filesystem(configuration.hoi4_directory, {});
 
-   const auto world_mapper =
-       mappers::WorldMapperBuilder::CreateDefaultMapper(hoi4_mod_filesystem, source_world).Build();
+
+   auto world_mapper = mappers::WorldMapperBuilder::CreateDefaultMapper(hoi4_mod_filesystem, source_world).Build();
    world_mapper.province_mapper.CheckAllVic3ProvincesMapped(
        source_world.GetProvinceDefinitions().GetProvinceDefinitions());
    const hoi4::World destination_world =

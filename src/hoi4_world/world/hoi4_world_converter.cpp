@@ -176,7 +176,7 @@ void LogVictoryPointData(const std::vector<hoi4::State>& states)
 
 }  // namespace
 
-hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem_,
+hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
     bool debug)
@@ -187,15 +187,16 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    Log(LogLevel::Progress) << "50%";
 
    Log(LogLevel::Info) << "\tConverting states";
-   const auto province_definitions = ImportProvinceDefinitions(hoi4_mod_filesystem_);
-   const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem_);
+   const auto province_definitions = ImportProvinceDefinitions(hoi4_mod_filesystem);
+   const maps::MapData map_data = maps::MapDataImporter(province_definitions).ImportMapData(hoi4_mod_filesystem);
    CoastalProvinces coastal_provinces = CreateCoastalProvinces(map_data,
        province_definitions.GetLandProvinces(),
        province_definitions.GetSeaProvinces());
 
    std::map<std::string, vic3::ProvinceType> vic3_significant_provinces =
        GatherVic3SignificantProvinces(source_world.GetStateRegions());
-   WorldFramework world_framework = WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem_).Build();
+   hoi4::WorldFramework world_framework =
+       hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
 
    States states = ConvertStates(source_world,
        world_mapper,
@@ -207,8 +208,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        debug);
 
    world_framework.strategic_regions.UpdateToMatchNewStates(states.states);
-
-   Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem_);
+   Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, hoi4_mod_filesystem);
 
    Railways railways = ConvertRailways(vic3_significant_provinces,
        world_mapper.province_mapper,
