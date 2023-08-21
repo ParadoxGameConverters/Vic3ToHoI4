@@ -1,0 +1,11 @@
+division_template = {
+	name = "Test Division"
+	regiments = {
+		test = { x = 0 y = 0 }
+		test = { x = 0 y = 1 }
+	}
+	support = {
+		other = { x = 0 y = 0 }
+	}
+	priority = 2
+}

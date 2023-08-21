@@ -44,6 +44,8 @@
     <ClInclude Include="src\hoi4_world\map\strategic_regions_importer.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_region_importer.h" />
     <ClInclude Include="src\hoi4_world\military\battalion.h" />
+    <ClInclude Include="src\hoi4_world\military\division_templates_importer.h" />
+    <ClInclude Include="src\hoi4_world\military\division_template.h" />
     <ClInclude Include="src\hoi4_world\military\equipment_variants_importer.h" />
     <ClInclude Include="src\hoi4_world\military\equipment_variant.h" />
     <ClInclude Include="src\hoi4_world\states\default_state.h" />
@@ -172,6 +174,7 @@
     <ClCompile Include="src\hoi4_world\map\strategic_regions.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions_importer.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_region_importer.cpp" />
+    <ClCompile Include="src\hoi4_world\military\division_templates_importer.cpp" />
     <ClCompile Include="src\hoi4_world\military\equipment_variants_importer.cpp" />
     <ClCompile Include="src\hoi4_world\states\default_states_importer.cpp" />
     <ClCompile Include="src\hoi4_world\states\hoi4_state.cpp" />
