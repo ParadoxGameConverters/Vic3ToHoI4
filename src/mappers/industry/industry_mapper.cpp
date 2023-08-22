@@ -34,8 +34,8 @@ IndustryMapper::IndustryMapper(const vic3::World& source_world)
    });
    BalanceFactories();
 
-   // TODO: config value
-   target_global_factories_ = 1200.0F;
+   // TODO: make a config value
+   target_global_factories_ = 1226.0F;
 
    float base_hoi4_factories = std::accumulate(this->countryBalances.begin(),
        this->countryBalances.end(),
