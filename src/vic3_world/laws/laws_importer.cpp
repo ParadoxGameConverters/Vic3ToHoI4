@@ -40,31 +40,34 @@ std::map<int, std::set<std::string>> vic3::ImportLaws(std::istream& input_stream
    });
    law_parser.IgnoreUnregisteredItems();
 
-   const auto law_parser_function =
-       [&laws, &law_is_active, &inactive_laws, &active_laws, &law_name, &country_number, &law_parser](
-           std::istream& input_stream) {
-          law_is_active = false;
-          law_name.clear();
-          country_number.reset();
-          law_parser.parseStream(input_stream);
-          if (!law_is_active)
-          {
-             ++inactive_laws;
-             return;
-          }
-          if (!country_number)
-          {
-             LOG(LogLevel::Warning)
-                 << "Law without a country. Please report to the converters team and upload your save.";
-          }
+   const auto law_parser_function = [&laws,
+                                        &law_is_active,
+                                        &inactive_laws,
+                                        &active_laws,
+                                        &law_name,
+                                        &country_number,
+                                        &law_parser](std::istream& input_stream) {
+      law_is_active = false;
+      law_name.clear();
+      country_number.reset();
+      law_parser.parseStream(input_stream);
+      if (!law_is_active)
+      {
+         ++inactive_laws;
+         return;
+      }
+      if (!country_number)
+      {
+         LOG(LogLevel::Warning) << "Law without a country. Please report to the converters team and upload your save.";
+      }
 
-          ++active_laws;
-          auto [itr, success] = laws.emplace(*country_number, std::set{law_name});
-          if (!success)
-          {
-             itr->second.emplace(law_name);
-          }
-       };
+      ++active_laws;
+      auto [itr, success] = laws.emplace(*country_number, std::set{law_name});
+      if (!success)
+      {
+         itr->second.emplace(law_name);
+      }
+   };
 
    DatabaseParser(law_parser_function).parseStream(input_stream);
 
