@@ -67,7 +67,7 @@ void out::OutputState(std::string_view output_name, const hoi4::State& state)
          state_history << fmt::format("\t\t\t\tnaval_base = {}\n", *naval_base_level);
          state_history << "\t\t\t}\n";
       }
-      state_history << "\t\t\tair_base = 1\n";
+      state_history << fmt::format("\t\t\tair_base = {}\n", state.GetAirBaseLevel());
       state_history << "\t\t}\n";
    }
    for (const std::string& core: state.GetCores())
