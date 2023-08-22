@@ -597,6 +597,41 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
 }
 
 
+TEST(Hoi4worldStatesHoi4statesconverter, AirBaseLevelDefaultsToOne)
+{
+   const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = hoi4_province_definitions,
+   });
+
+   vic3::WorldBuilder world =
+       vic3::WorldBuilder::CreateNullWorld()
+           .AddStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}})
+           .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}});
+   mappers::WorldMapperBuilder world_mapper =
+       std::move(mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6));
+   world_mapper.CopyToVicWorld(world);
+   hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
+
+   const auto hoi4_states = ConvertStates(world.Build(),
+       world_mapper.Build(),
+       world_framework.Build(),
+       {},
+       map_data,
+       hoi4_province_definitions,
+       CoastalProvinces());
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .air_base_level = 1}),
+           State(2, {.provinces = {40, 50, 60}, .air_base_level = 1})));
+}
+
+
 TEST(Hoi4worldStatesHoi4statesconverter, ResourcesDefaultToEmpty)
 {
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
