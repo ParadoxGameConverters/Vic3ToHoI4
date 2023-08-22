@@ -13,7 +13,6 @@ std::map<int, std::set<std::string>> vic3::ImportLaws(std::istream& input_stream
 {
    std::map<int, std::set<std::string>> laws;
 
-   int empty_laws = 0;
    int inactive_laws = 0;
    int active_laws = 0;
 
@@ -42,7 +41,7 @@ std::map<int, std::set<std::string>> vic3::ImportLaws(std::istream& input_stream
    law_parser.IgnoreUnregisteredItems();
 
    const auto law_parser_function =
-       [&laws, &empty_laws, &law_is_active, &inactive_laws, &active_laws, &law_name, &country_number, &law_parser](
+       [&laws, &law_is_active, &inactive_laws, &active_laws, &law_name, &country_number, &law_parser](
            std::istream& input_stream) {
           law_is_active = false;
           law_name.clear();
@@ -71,7 +70,6 @@ std::map<int, std::set<std::string>> vic3::ImportLaws(std::istream& input_stream
 
    LOG(LogLevel::Info) << fmt::format("\tImported {} active laws.", active_laws);
    LOG(LogLevel::Info) << fmt::format("\tImported {} inactive laws.", inactive_laws);
-   LOG(LogLevel::Info) << fmt::format("\tImported {} empty laws.", empty_laws);
 
    return laws;
 }

@@ -44,7 +44,7 @@ TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserForwardsElements)
            testing::Pair("key2", "value2")));
 }
 
-TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserHandlesNoneElements)
+TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserSkipsNoneElements)
 {
    std::stringstream input;
    input << "={\n";
