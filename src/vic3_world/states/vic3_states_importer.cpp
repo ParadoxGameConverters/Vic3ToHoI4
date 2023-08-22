@@ -23,7 +23,7 @@ std::map<int, vic3::State> vic3::ImportStates(std::istream& input_stream)
              return;
           }
           std::istringstream state_stream(state_string);
-          states.emplace(state_number, state_importer.ImportState(state_stream));
+          states.emplace(state_number, state_importer.ImportState(state_number, state_stream));
        });
 
    commonItems::parser states_parser;

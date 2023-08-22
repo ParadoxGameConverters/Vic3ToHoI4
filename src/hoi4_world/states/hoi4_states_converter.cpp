@@ -11,7 +11,7 @@
 #include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
 #include "src/maps/map_data.h"
-
+#include "src/mappers/industry/industry_mapper.h"
 
 
 namespace
@@ -833,7 +833,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
        MapVic3ProvincesToStateNames(source_world.GetStateRegions());
    std::map<std::string, std::string> hoi4_state_names_to_vic3_state_names;
    mappers::InfrastructureMapper infrastructure_mapper(source_world.GetStates());
-
+   mappers::IndustryMapper industry_mapper(source_world);
    for (const auto& vic3_state_id: vic3_state_ids_by_vic3_industry)
    {
       const auto& hoi4_provinces = vic3_state_id_to_hoi4_provinces.at(vic3_state_id);
@@ -876,10 +876,10 @@ hoi4::States CreateStates(const vic3::World& source_world,
              return total + static_cast<int>(province_set.size());
           });
       int total_non_wasteland_provinces = static_cast<int>(hoi4_provinces.size()) - total_wasteland_provinces;
-
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
       const float total_factories =
           static_cast<float>(source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
+      //total_factories = factory_mapper.Map(source_world, vic3_state_id);
       for (const auto& province_set: final_connected_province_sets)
       {
          RecordStateNamesMapping(province_set,

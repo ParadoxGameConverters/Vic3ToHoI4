@@ -40,7 +40,7 @@ WorldBuilder& WorldBuilder::AddTestStates(const std::vector<std::set<int>>& prov
    {
       const int stateNum = state_number_++;
       this->world_options_.states.emplace(stateNum,
-          vic3::State(vic3::StateOptions{.owner_number = stateNum, .provinces = provinceList}));
+          vic3::State(vic3::StateOptions{.id = stateNum, .owner_number = stateNum, .provinces = provinceList}));
    }
    return *this;
 }

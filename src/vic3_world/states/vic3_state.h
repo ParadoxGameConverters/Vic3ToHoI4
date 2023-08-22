@@ -12,6 +12,7 @@ namespace vic3
 
 struct StateOptions
 {
+   int id = 0;
    std::optional<int> owner_number;
    std::optional<std::string> owner_tag;
    bool incorporated = false;
@@ -27,6 +28,7 @@ class State
   public:
    State() = default;
    explicit State(StateOptions state_options):
+       id_(state_options.id),
        owner_number_(state_options.owner_number),
        owner_tag_(std::move(state_options.owner_tag)),
        incorporated_(state_options.incorporated),
@@ -37,6 +39,7 @@ class State
    {
    }
 
+   [[nodiscard]] const int GetId() const { return id_; }
    [[nodiscard]] const std::optional<int>& GetOwnerNumber() const { return owner_number_; }
    [[nodiscard]] const std::optional<std::string>& GetOwnerTag() const { return owner_tag_; }
    [[nodiscard]] bool IsIncorporated() const { return incorporated_; }
@@ -50,6 +53,7 @@ class State
    bool operator==(const State&) const = default;
 
   private:
+   int id_;
    std::optional<int> owner_number_;
    std::optional<std::string> owner_tag_;
    bool incorporated_ = false;

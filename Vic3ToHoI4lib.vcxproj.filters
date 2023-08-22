@@ -166,6 +166,9 @@
     <Filter Include="src\out_hoi4\national_focus">
       <UniqueIdentifier>{6a73785e-ecc8-45e2-b5b4-a89ffff0628c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\mappers\industry">
+      <UniqueIdentifier>{d5fd8e32-66d1-4432-9d35-e933e67b6029}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -591,6 +594,9 @@
     <ClInclude Include="src\mappers\infrastructure\infrastructure_mapper.h">
       <Filter>src\mappers\infrastructure</Filter>
     </ClInclude>
+    <ClInclude Include="src\mappers\industry\industry_mapper.h">
+      <Filter>src\mappers\industry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -901,6 +907,9 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\national_focus\out_focus_tree.cpp">
       <Filter>src\out_hoi4\national_focus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\industry\industry_mapper.cpp">
+      <Filter>src\mappers\industry</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
