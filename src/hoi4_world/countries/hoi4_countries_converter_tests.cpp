@@ -73,16 +73,16 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
            },
    };
 
+   const States states{
+       .states{},
+       .vic3_state_ids_to_hoi4_state_ids{{1, 10}, {2, 20}},
+   };
    const vic3::World v3World = vic3::World(options);
 
    const auto countries = ConvertCountries(v3World,
        world_mapper,
        commonItems::LocalizationDatabase{{}, {}},
-       {
-           {1, 10},
-           {2, 20},
-       },
-       {},
+       states,
        characters,
        culture_queues);
 
