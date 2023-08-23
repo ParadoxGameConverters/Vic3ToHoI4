@@ -4,6 +4,7 @@
 namespace mappers
 {
 
+constexpr float FACTORY_LOWER_BALANCING_LIMIT = 100.0F;
 IndustryMapper::IndustryMapper(const vic3::World& source_world)
 {
    // there's probably a faster way to do this
@@ -78,6 +79,10 @@ void IndustryMapper::BalanceFactories()
 {
    {
        auto iter = this->countryBalances.rbegin();
+      while (iter->raw_vic3_factories == 0)
+      {
+         ++iter;
+      }
       float prev_raw_vic3_factories = iter->raw_vic3_factories;
        for (; iter != this->countryBalances.rend(); ++iter)
       {
@@ -90,11 +95,22 @@ void IndustryMapper::BalanceFactories()
    //and now, we adjust factory count
    {
       auto iter = this->countryBalances.rbegin();
+      while (iter->raw_vic3_factories == 0)
+      {
+         ++iter;
+      }
       float prev_converted_vic3_factories = iter->raw_vic3_factories;
       for (; iter != this->countryBalances.rend(); ++iter)
       {
-         iter->converted_vic3_factories =
-             std::min(iter->max_ratio_by_competition, iter->max_ratio_by_overkill) * prev_converted_vic3_factories;
+         if (iter->raw_vic3_factories < FACTORY_LOWER_BALANCING_LIMIT)
+         {
+            iter->converted_vic3_factories = iter->raw_vic3_factories;
+         }
+         else
+         {
+            iter->converted_vic3_factories =
+                std::min(iter->max_ratio_by_competition, iter->max_ratio_by_overkill) * prev_converted_vic3_factories;
+         }
          prev_converted_vic3_factories = iter->converted_vic3_factories;
          iter->converted_factory_ratio = iter->converted_vic3_factories / iter->raw_vic3_factories;
       }

@@ -8,6 +8,7 @@
 #include <string>
 
 #include "external/commonItems/Localization/LocalizationDatabase.h"
+#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/localizations/localizations.h"
