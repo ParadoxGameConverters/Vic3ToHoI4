@@ -104,12 +104,14 @@
     <ClCompile Include="src\mappers\world\world_mapper_builder_tests.cpp" />
     <ClCompile Include="src\out_hoi4\national_focus\out_focus_tree_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_tests.cpp" />
+    <ClCompile Include="src\vic3_world\database\database_parser_tests.cpp" />
     <ClCompile Include="src\vic3_world\ideologies\ideologies.cpp" />
     <ClCompile Include="src\vic3_world\ideologies\ideologies_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\ideologies\ideologies_tests.cpp" />
     <ClCompile Include="src\mappers\character\character_trait_mapper_importer_tests.cpp" />
     <ClCompile Include="src\mappers\character\character_trait_mapper_tests.cpp" />
     <ClCompile Include="src\vic3_world\ideologies\ideology_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\institutions\institutions_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\pacts\pacts_importer_tests.cpp" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\characters\hoi4_characters_converter_tests.cpp" />
