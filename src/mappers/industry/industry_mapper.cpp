@@ -4,9 +4,12 @@
 namespace mappers
 {
 
-constexpr float FACTORY_LOWER_BALANCING_LIMIT = 100.0F;
 IndustryMapper::IndustryMapper(const vic3::World& source_world)
 {
+   // TODO: make a config value
+   target_global_factories_ = 1226.0F;
+   factory_lower_balancing_limit_ = 100.0F;
+
    // there's probably a faster way to do this
 
    for (const auto& state : source_world.GetStates())
@@ -35,8 +38,7 @@ IndustryMapper::IndustryMapper(const vic3::World& source_world)
    });
    BalanceFactories();
 
-   // TODO: make a config value
-   target_global_factories_ = 1226.0F;
+
 
    float base_hoi4_factories = std::accumulate(this->countryBalances.begin(),
        this->countryBalances.end(),
@@ -71,7 +73,7 @@ float max_power_ratio_by_overkill(float country_power, float prev_country_power)
    else
    {
       // played with in desmos, this power curve looks good
-      return 4 / 3 * log2(raw_power_ratio - 0.5) + 1;
+      return 4 / 3 * log10(2*raw_power_ratio - 1) + 1;
    }
 }
 
@@ -102,7 +104,7 @@ void IndustryMapper::BalanceFactories()
       float prev_converted_vic3_factories = iter->raw_vic3_factories;
       for (; iter != this->countryBalances.rend(); ++iter)
       {
-         if (iter->raw_vic3_factories < FACTORY_LOWER_BALANCING_LIMIT)
+         if (iter->raw_vic3_factories < factory_lower_balancing_limit_)
          {
             iter->converted_vic3_factories = iter->raw_vic3_factories;
          }

@@ -30,6 +30,10 @@ class IndustryMapper
    std::vector<CountryBalanceInformation> countryBalances = {};
    float target_global_factories_ = 0.0F;
    float target_global_factory_ratio_ = 0.0F;
+   // below this limit, no balancing will take place.
+   // this allows small vic3 nations, which may have dramatic gdp differences, to retain
+   // that, while smoothing out the power of larger nations
+   float factory_lower_balancing_limit_ = 0.0F;
 
    void BalanceFactories();
 };
