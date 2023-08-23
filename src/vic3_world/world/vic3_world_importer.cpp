@@ -28,6 +28,7 @@
 #include "src/vic3_world/cultures/cultures_importer.h"
 #include "src/vic3_world/elections/elections_importer.h"
 #include "src/vic3_world/ideologies/ideologies_importer.h"
+#include "src/vic3_world/institutions/institutions_importer.h"
 #include "src/vic3_world/interest_groups/interest_groups_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
 #include "src/vic3_world/pacts/pacts_importer.h"
@@ -260,6 +261,7 @@ int MungePlaythroughIdIntoInteger(const std::string& playthrough_id_string)
 
 vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
 {
+   WorldOptions world_options;
    Log(LogLevel::Info) << "*** Hello Vic3, loading World. ***";
    std::string save_string = ReadSave(configuration.save_game);
    const rakaly::GameFile save = rakaly::parseVic3(save_string);
@@ -288,8 +290,8 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
    commonItems::ModFilesystem mod_filesystem(fmt::format("{}/game", configuration.vic3_directory),
        mod_loader.getMods());
-   const auto province_definitions = LoadProvinceDefinitions(mod_filesystem);
-   const auto state_regions = ImportStateRegions(mod_filesystem);
+   world_options.province_definitions = LoadProvinceDefinitions(mod_filesystem);
+   world_options.state_regions = ImportStateRegions(mod_filesystem);
    commonItems::LocalizationDatabase localizations("english",
        {"braz_por",
            "french",
@@ -302,7 +304,8 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
            "spanish",
            "turkish"});
    localizations.ScrapeLocalizations(mod_filesystem, "localization");
-   const auto culture_definitions = ImportCultureDefinitions(mod_filesystem);
+   world_options.localizations = localizations;
+   world_options.culture_definitions = ImportCultureDefinitions(mod_filesystem);
    Log(LogLevel::Progress) << "5 %";
 
    Log(LogLevel::Info) << "-> Reading Vic3 save.";
@@ -310,80 +313,74 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    std::istringstream save_stream = MeltSave(save, save_string);
 
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
-   std::string playthrough_id;
    const std::map<std::string, commonItems::Color> color_definitions = ImportCountryColorDefinitions(mod_filesystem);
-   std::map<int, Country> countries;
-   std::map<int, State> states;
-   std::map<int, std::set<std::string>> acquired_technologies;
-   Buildings buildings;
-   CountryRankings country_rankings;
    std::map<int, std::string> cultures;
-   std::map<int, Character> characters;
    std::map<int, std::vector<int>> country_character_map;
-   std::map<int, InterestGroup> igs;
-   std::map<int, Pact> pacts;
 
    commonItems::parser save_parser;
-   save_parser.registerKeyword("playthrough_id", [&playthrough_id](std::istream& input_stream) {
-      playthrough_id = commonItems::getString(input_stream);
+   save_parser.registerKeyword("playthrough_id", [&world_options](std::istream& input_stream) {
+      world_options.playthrough_id = MungePlaythroughIdIntoInteger(commonItems::getString(input_stream));
    });
-   save_parser.registerKeyword("country_manager", [&countries, color_definitions](std::istream& input_stream) {
-      countries = ImportCountries(color_definitions, input_stream);
+   save_parser.registerKeyword("country_manager", [&world_options, color_definitions](std::istream& input_stream) {
+      world_options.countries = ImportCountries(color_definitions, input_stream);
    });
-   save_parser.registerKeyword("states", [&states](std::istream& input_stream) {
-      states = ImportStates(input_stream);
+   save_parser.registerKeyword("states", [&world_options](std::istream& input_stream) {
+      world_options.states = ImportStates(input_stream);
    });
-   save_parser.registerKeyword("technology", [&acquired_technologies](std::istream& input_stream) {
-      acquired_technologies = ImportAcquiredTechnologies(input_stream);
+   save_parser.registerKeyword("technology", [&world_options](std::istream& input_stream) {
+      world_options.acquired_technologies = ImportAcquiredTechnologies(input_stream);
    });
-   save_parser.registerKeyword("country_rankings", [&country_rankings](std::istream& input_stream) {
-      country_rankings = ImportCountryRankings(input_stream);
+   save_parser.registerKeyword("country_rankings", [&world_options](std::istream& input_stream) {
+      world_options.country_rankings = ImportCountryRankings(input_stream);
    });
-   save_parser.registerKeyword("laws", [&countries](std::istream& input_stream) {
+   save_parser.registerKeyword("laws", [&world_options](std::istream& input_stream) {
       for (const auto& [country_number, active_laws]: ImportLaws(input_stream))
       {
-         auto country_itr = countries.find(country_number);
-         if (country_itr == countries.end())
+         auto country_itr = world_options.countries.find(country_number);
+         if (country_itr == world_options.countries.end())
          {
             continue;
          }
          country_itr->second.SetActiveLaws(active_laws);
       }
    });
+
+   save_parser.registerKeyword("institutions", InstitutionsImporter(world_options.institutions));
    save_parser.registerKeyword("cultures", [&cultures](std::istream& input_stream) {
       cultures = ImportCultures(input_stream);
    });
-   save_parser.registerKeyword("character_manager", [&characters, &country_character_map](std::istream& input_stream) {
-      const CharacterManager character_manager(input_stream);
-      characters = character_manager.GetCharacters();
-      country_character_map = character_manager.GetCountryCharacterMap();
+   save_parser.registerKeyword("character_manager",
+       [&world_options, &country_character_map](std::istream& input_stream) {
+          const CharacterManager character_manager(input_stream);
+          world_options.characters = character_manager.GetCharacters();
+          country_character_map = character_manager.GetCountryCharacterMap();
+       });
+   save_parser.registerKeyword("interest_groups", [&world_options](std::istream& input_stream) {
+      world_options.igs = ImportInterestGroups(input_stream);
    });
-   save_parser.registerKeyword("interest_groups", [&igs](std::istream& input_stream) {
-      igs = ImportInterestGroups(input_stream);
+   save_parser.registerKeyword("building_manager", [&world_options](std::istream& input_stream) {
+      world_options.buildings = ImportBuildings(input_stream);
    });
-   save_parser.registerKeyword("building_manager", [&buildings](std::istream& input_stream) {
-      buildings = ImportBuildings(input_stream);
-   });
-   save_parser.registerKeyword("election_manager", [&countries](std::istream& input_stream) {
+   save_parser.registerKeyword("election_manager", [&world_options](std::istream& input_stream) {
       for (const auto& [country_number, last_election]: ImportElections(input_stream))
       {
-         auto country_itr = countries.find(country_number);
-         if (country_itr == countries.end())
+         auto country_itr = world_options.countries.find(country_number);
+         if (country_itr == world_options.countries.end())
          {
             continue;
          }
          country_itr->second.SetLastElection(last_election);
       }
    });
-   save_parser.registerKeyword("pacts", [&pacts, &countries](std::istream& input_stream) {
-      pacts = ImportPacts(input_stream);
-      for (const auto& [_, pact]: pacts)
+   save_parser.registerKeyword("pacts", [&world_options](std::istream& input_stream) {
+      world_options.pacts = ImportPacts(input_stream);
+      for (const auto& [_, pact]: world_options.pacts)
       {
          if (pact.isSubjectRelationship())
          {
-            auto overlord = countries.find(pact.GetFirstId());
-            auto subject = countries.find(pact.GetSecondId());
-            if (overlord != countries.end() && subject != countries.end())
+            auto overlord = world_options.countries.find(pact.GetFirstId());
+            auto subject = world_options.countries.find(pact.GetSecondId());
+            if (overlord != world_options.countries.end() && subject != world_options.countries.end())
             {
                overlord->second.AddPuppet(pact.GetSecondId());
                subject->second.AddOverlord(pact.GetFirstId());
@@ -396,35 +393,25 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    save_parser.IgnoreUnregisteredItems();
 
    save_parser.parseStream(save_stream);
-   Log(LogLevel::Info) << fmt::format("\t{} countries imported", countries.size());
-   Log(LogLevel::Info) << fmt::format("\t{} states imported", states.size());
-   Log(LogLevel::Info) << fmt::format("\t{} countries acquired technologies", acquired_technologies.size());
-   Log(LogLevel::Info) << fmt::format("\t{} in goods being sold", buildings.GetTotalGoodSalesValueInWorld());
+   Log(LogLevel::Info) << fmt::format("\t{} countries imported", world_options.countries.size());
+   Log(LogLevel::Info) << fmt::format("\t{} states imported", world_options.states.size());
+   Log(LogLevel::Info) << fmt::format("\t{} countries acquired technologies",
+       world_options.acquired_technologies.size());
+   Log(LogLevel::Info) << fmt::format("\t{} in goods being sold",
+       world_options.buildings.GetTotalGoodSalesValueInWorld());
    Log(LogLevel::Progress) << "15 %";
 
-   AssignCulturesToCountries(countries, cultures);
-   AssignCulturesToCharacters(characters, cultures);
-   AssignOwnersToStates(countries, states);
+   AssignCulturesToCountries(world_options.countries, cultures);
+   AssignCulturesToCharacters(world_options.characters, cultures);
+   AssignOwnersToStates(world_options.countries, world_options.states);
    Log(LogLevel::Progress) << "16 %";
-   const auto& country_tag_to_id_map = MapCountryTagsToId(countries);
-   AssignHomeCountriesToExiledAgitators(country_tag_to_id_map, characters);
-   AssignIgsToCountries(countries, igs);
-   AssignCharactersToCountries(characters, country_character_map, countries);
+   const auto& country_tag_to_id_map = MapCountryTagsToId(world_options.countries);
+   AssignHomeCountriesToExiledAgitators(country_tag_to_id_map, world_options.characters);
+   AssignIgsToCountries(world_options.countries, world_options.igs);
+   AssignCharactersToCountries(world_options.characters, country_character_map, world_options.countries);
 
    vic3::IdeologiesImporter ideologies_importer;
-   const Ideologies ideologies = ideologies_importer.ImportIdeologies(mod_filesystem);
+   world_options.ideologies = ideologies_importer.ImportIdeologies(mod_filesystem);
 
-   return World({.countries = countries,
-       .states = states,
-       .state_regions = state_regions,
-       .province_definitions = province_definitions,
-       .acquired_technologies = acquired_technologies,
-       .buildings = buildings,
-       .country_rankings = country_rankings,
-       .localizations = localizations,
-       .culture_definitions = culture_definitions,
-       .characters = characters,
-       .igs = igs,
-       .ideologies = ideologies,
-       .playthrough_id = MungePlaythroughIdIntoInteger(playthrough_id)});
+   return World(world_options);
 }

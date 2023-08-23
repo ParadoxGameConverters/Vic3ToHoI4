@@ -73,6 +73,7 @@ TEST(Outhoi4StatesState, BasicsAreOutput)
        "\t\t\tinfrastructure = 1\n"
        "\t\t\tindustrial_complex = 0\n"
        "\t\t\tarms_factory = 0\n"
+       "\t\t\tair_base = 1\n"
        "\t\t}\n"
        "\t}\n"
        "\n"
@@ -441,6 +442,7 @@ TEST(Outhoi4StatesState, BuildingsAreOutput)
                           "\t\t\tindustrial_complex = 2\n"
                           "\t\t\tarms_factory = 4\n"
                           "\t\t\tdockyard = 6\n"
+                          "\t\t\tair_base = 1\n"
                           "\t\t}\n"
                           "\t}\n"));
 }
@@ -472,6 +474,7 @@ TEST(Outhoi4StatesState, DockyardsNotOutputWhenZero)
                           "\t\t\tinfrastructure = 1\n"
                           "\t\t\tindustrial_complex = 2\n"
                           "\t\t\tarms_factory = 4\n"
+                          "\t\t\tair_base = 1\n"
                           "\t\t}\n"
                           "\t}\n"));
 }
@@ -505,6 +508,7 @@ TEST(Outhoi4StatesState, NavalBasesCanBeOutput)
                           "\t\t\t9 = {\n"
                           "\t\t\t\tnaval_base = 3\n"
                           "\t\t\t}\n"
+                          "\t\t\tair_base = 1\n"
                           "\t\t}\n"
                           "\t}\n"));
 }
@@ -535,6 +539,7 @@ TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLevelIsMissing)
                           "\t\t\tinfrastructure = 1\n"
                           "\t\t\tindustrial_complex = 0\n"
                           "\t\t\tarms_factory = 0\n"
+                          "\t\t\tair_base = 1\n"
                           "\t\t}\n"
                           "\t}\n"));
 }
@@ -565,6 +570,7 @@ TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLocationIsMissing)
                           "\t\t\tinfrastructure = 1\n"
                           "\t\t\tindustrial_complex = 0\n"
                           "\t\t\tarms_factory = 0\n"
+                          "\t\t\tair_base = 1\n"
                           "\t\t}\n"
                           "\t}\n"));
 }
@@ -595,6 +601,7 @@ TEST(Outhoi4StatesState, CoresCanBeOutput)
                           "\t\t\tinfrastructure = 1\n"
                           "\t\t\tindustrial_complex = 0\n"
                           "\t\t\tarms_factory = 0\n"
+                          "\t\t\tair_base = 1\n"
                           "\t\t}\n"
                           "\t\tadd_core_of = ONE\n"
                           "\t\tadd_core_of = TWO\n"

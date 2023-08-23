@@ -168,6 +168,12 @@
     <Filter Include="src\out_hoi4\national_focus">
       <UniqueIdentifier>{6a73785e-ecc8-45e2-b5b4-a89ffff0628c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\institutions">
+      <UniqueIdentifier>{ad5258ba-3028-43b7-875d-df5fa5eb841c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\vic3_world\database">
+      <UniqueIdentifier>{8d3018a3-1e26-4f92-b83b-713b954b7ca0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -596,6 +602,15 @@
     <ClInclude Include="src\hoi4_world\world\hoi4_world_framework_builder.h">
       <Filter>src\hoi4_world\world</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\institutions\institutions_importer.h">
+      <Filter>src\vic3_world\institutions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\institutions\institution.h">
+      <Filter>src\vic3_world\institutions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\database\database_parser.h">
+      <Filter>src\vic3_world\database</Filter>
+    </ClInclude>
     <ClInclude Include="src\mappers\infrastructure\infrastructure_mapper.h">
       <Filter>src\mappers\infrastructure</Filter>
     </ClInclude>
@@ -915,6 +930,12 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\national_focus\out_focus_tree.cpp">
       <Filter>src\out_hoi4\national_focus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\institutions\institutions_importer.cpp">
+      <Filter>src\vic3_world\institutions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\database\database_parser.cpp">
+      <Filter>src\vic3_world\database</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
