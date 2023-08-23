@@ -35,6 +35,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
    EXPECT_TRUE(hoi4_states.province_to_state_id_map.empty());
    EXPECT_TRUE(hoi4_states.vic3_state_ids_to_hoi4_state_ids.empty());
    EXPECT_TRUE(hoi4_states.hoi4_state_names_to_vic3_state_names.empty());
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
