@@ -6,6 +6,7 @@
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_character_converter.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
+#include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -391,8 +392,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
     const vic3::Country& source_country,
     const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,
-    const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
-    const std::vector<State>& states,
+    const States& states,
     const mappers::IdeologyMapper& ideology_mapper,
     const mappers::UnitMapper& unit_mapper,
     const std::vector<mappers::TechMapping>& tech_mappings,
@@ -413,7 +413,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    }
 
    const std::optional<int> capital_state =
-       ConvertCapital(source_country, *tag, vic3_state_ids_to_hoi4_state_ids, states);
+       ConvertCapital(source_country, *tag, states.vic3_state_ids_to_hoi4_state_ids, states.states);
    const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
    const std::string sub_ideology = ideology_mapper.GetSubIdeology(ideology, source_country.GetActiveLaws());
    const date last_election = ConvertElection(source_country.GetLastElection());

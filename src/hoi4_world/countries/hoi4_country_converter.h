@@ -8,7 +8,7 @@
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/military/equipment_variant.h"
-#include "src/hoi4_world/states/hoi4_state.h"
+#include "src/hoi4_world/states/hoi4_states.h"
 #include "src/mappers/character/character_trait_mapper.h"
 #include "src/mappers/character/culture_queue.h"
 #include "src/mappers/character/leader_type_mapper.h"
@@ -31,8 +31,7 @@ std::optional<Country> ConvertCountry(const vic3::World& source_world,
     const vic3::Country& source_country,
     const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,
-    const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
-    const std::vector<State>& states,
+    const States& states,
     const mappers::IdeologyMapper& ideology_mapper,
     const mappers::UnitMapper& unit_mapper,
     const std::vector<mappers::TechMapping>& tech_mappings,
