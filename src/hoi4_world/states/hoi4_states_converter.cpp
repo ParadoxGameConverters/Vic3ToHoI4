@@ -870,7 +870,8 @@ hoi4::States CreateStates(const vic3::World& source_world,
           });
       int total_non_wasteland_provinces = static_cast<int>(hoi4_provinces.size()) - total_wasteland_provinces;
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
-      const float total_factories = static_cast<float>(source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
+      const float total_factories =
+          static_cast<float>(source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
       for (const auto& province_set: final_connected_province_sets)
       {
          RecordStateNamesMapping(province_set,

@@ -12,7 +12,7 @@
 namespace out
 {
 
-	void OutputStats(const std::string& stat_name, double converted_value, double base_value);
+void OutputStats(const std::string& stat_name, double converted_value, double base_value);
 void OutputWorld(std::string_view output_name, const hoi4::World& world);
 
 }  // namespace out

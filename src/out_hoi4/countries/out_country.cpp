@@ -209,7 +209,7 @@ void out::OutputCountryHistory(std::string_view output_name,
    }
    country_history << "}\n";
    country_history << fmt::format("set_stability = {}\n", country.GetStability());
-   country_history << fmt::format("set_war_support = {}\n", country.GetWarSupport());
+   country_history << fmt::format("set_war_support = {:.2f}\n", country.GetWarSupport());
    country_history << "\n";
 
    country_history << country.GetTechnologies();
