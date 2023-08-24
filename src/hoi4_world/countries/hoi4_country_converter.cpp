@@ -213,7 +213,7 @@ float ConvertStability(const vic3::World& source_world, const vic3::Country& cou
       float max_stability_increase = 0.0F;
       const auto institutions = country.GetInstitutions(source_world);
       const auto internalsecurity = std::ranges::find_if(institutions, [](vic3::Institution i) {
-         return i.type == "internal_security";
+         return i.type == "institution_home_affairs";
       });
       if (internalsecurity != institutions.end())
       {
