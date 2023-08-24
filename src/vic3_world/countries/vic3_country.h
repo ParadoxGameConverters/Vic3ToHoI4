@@ -7,6 +7,7 @@
 
 #include "external/commonItems/Color.h"
 #include "external/commonItems/Date.h"
+#include "src/vic3_world/institutions/institution.h"
 
 namespace vic3
 {
@@ -96,6 +97,7 @@ class Country
 
    [[nodiscard]] std::set<std::string> GetAcquiredTechnologies(const vic3::World& world) const;
    [[nodiscard]] RankCategory GetCountryRankCategory(const vic3::World& world) const;
+   [[nodiscard]] std::vector<Institution> GetInstitutions(const vic3::World& world) const;
 
    bool operator==(const Country&) const = default;
 

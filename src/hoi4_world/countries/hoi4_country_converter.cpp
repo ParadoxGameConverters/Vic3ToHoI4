@@ -198,6 +198,38 @@ std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std
    return {economy_law, trade_law, military_law};
 }
 
+float ConvertStability(const vic3::World& source_world, const vic3::Country& country)
+{
+   // baseline is stability mapped to range [0,.80]
+   float stability = country.GetLegitimacy() * 0.8F / 100.0F;
+
+   constexpr float max_security_benefit_security = 0.30F;
+   constexpr float min_security_benefit_security = 0.70F;
+   constexpr float security_benefit_per_level = 0.03F;
+
+   // internal security institution contributes to stability if below 70
+   if (stability < 0.70F)
+   {
+      float max_stability_increase = 0.0F;
+      const auto institutions = country.GetInstitutions(source_world);
+      const auto internalsecurity = std::ranges::find_if(institutions, [](vic3::Institution i) {
+         return i.type == "internal_security";
+      });
+      if (internalsecurity != institutions.end())
+      {
+         max_stability_increase = internalsecurity->investment * security_benefit_per_level;
+      }
+
+      float stability_factor =
+          1 - ((std::clamp(stability, max_security_benefit_security, min_security_benefit_security) -
+                   max_security_benefit_security) /
+                  (min_security_benefit_security - max_security_benefit_security));
+
+      stability += max_stability_increase * stability_factor;
+   }
+   return stability;
+}
+
 
 std::string ConvertName(const std::string& vic_name, const commonItems::LocalizationDatabase& vic_localizations)
 {
@@ -500,5 +532,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .spy_ids = spy_ids,
        .puppets = puppets,
        .overlord = overlord,
-       .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country)});
+       .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
+       .stability = ConvertStability(source_world, source_country)});
 }
