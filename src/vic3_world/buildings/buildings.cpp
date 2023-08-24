@@ -13,7 +13,7 @@ float vic3::Buildings::GetTotalGoodSalesValueInState(int state_number) const
           buildings_in_state->second.end(),
           0.0F,
           [](float total_value, const vic3::Building& building) {
-             return total_value + building.GetGoodsSalesVales();
+             return total_value + building.GetGoodsSalesValues();
           });
    }
 
@@ -32,7 +32,7 @@ float vic3::Buildings::GetTotalGoodSalesValueInWorld() const
           buildings_in_state.end(),
           0.0F,
           [](float total_value, const vic3::Building& building) {
-             return total_value + building.GetGoodsSalesVales();
+             return total_value + building.GetGoodsSalesValues();
           });
    }
 

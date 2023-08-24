@@ -138,7 +138,7 @@ TEST(Vic3WorldBuildingsBuildingsTests, StateBuildingIsReturned)
 
    EXPECT_FALSE(buildings.GetBuildingInState("barracks", 1).has_value());
    EXPECT_TRUE(buildings.GetBuildingInState("barracks", 2).has_value());
-   EXPECT_NEAR(buildings.GetBuildingInState("barracks", 2)->GetGoodsSalesVales(), 0.25F, 0.001F);
+   EXPECT_NEAR(buildings.GetBuildingInState("barracks", 2)->GetGoodsSalesValues(), 0.25F, 0.001F);
 }
 
 
