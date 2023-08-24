@@ -295,10 +295,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
 
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\tTotal factories conversion: total=10.000, target=6.000, diff=66.667%"));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\tCivilian factories conversion: total=6.000, target=1.000, diff=500.000%"));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\tMilitary factories conversion: total=4.000, target=2.000, diff=100.000%"));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\tDockyards conversion: total=0.000, target=3.000, diff=-100.000%"));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[INFO] \t\tTotal factories conversion: total=10.000, target=6.000, diff=66.667%"));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[INFO] \t\tCivilian factories conversion: total=6.000, target=1.000, diff=500.000%"));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[INFO] \t\tMilitary factories conversion: total=4.000, target=2.000, diff=100.000%"));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[INFO] \t\tDockyards conversion: total=0.000, target=3.000, diff=-100.000%"));
 }
 TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
 {
