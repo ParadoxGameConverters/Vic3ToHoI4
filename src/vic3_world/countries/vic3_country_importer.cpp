@@ -36,7 +36,7 @@ vic3::BudgetLevel parseBudgetLevel(const std::string& level_string)
 }
 
 
-vic3::CountryImporter::CountryImporter(): options_()
+vic3::CountryImporter::CountryImporter()
 {
    country_parser_.registerKeyword("definition", [this](std::istream& input_stream) {
       options_.tag = commonItems::remQuotes(commonItems::getString(input_stream));
@@ -93,11 +93,7 @@ std::optional<vic3::Country> vic3::CountryImporter::ImportCountry(const int numb
     std::istream& input_stream,
     const std::map<std::string, commonItems::Color>& color_definitions)
 {
-   options_.tag.clear();
-   options_.capital_state = std::nullopt;
-   options_.country_type.clear();
-   options_.primary_culture_ids.clear();
-   options_.head_of_state_id = 0;
+   options_ = {};
    is_dead_ = false;
 
    country_parser_.parseStream(input_stream);
@@ -106,7 +102,6 @@ std::optional<vic3::Country> vic3::CountryImporter::ImportCountry(const int numb
       return std::nullopt;
    }
 
-   commonItems::Color color;
    if (const auto color_itr = color_definitions.find(options_.tag); color_itr != color_definitions.end())
    {
       options_.color = color_itr->second;
