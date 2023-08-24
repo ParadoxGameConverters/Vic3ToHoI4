@@ -14,6 +14,7 @@
 #include "external/fmt/include/fmt/format.h"
 #include "src/maps/map_data.h"
 #include "src/out_hoi4/world/out_world.h"
+#include "src/support/converter_utils.h"
 
 
 namespace
@@ -741,12 +742,12 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
       }
    }
 
-   out::OutputStats("Total factories",
+   OutputStats("Total factories",
        civilian_factories + military_factories + dockyards,
        default_civilian_factories + default_military_factories + default_dockyards);
-   out::OutputStats("Civilian factories", civilian_factories, default_civilian_factories);
-   out::OutputStats("Military factories", military_factories, default_military_factories);
-   out::OutputStats("Dockyards", dockyards, default_dockyards);
+   OutputStats("Civilian factories", civilian_factories, default_civilian_factories);
+   OutputStats("Military factories", military_factories, default_military_factories);
+   OutputStats("Dockyards", dockyards, default_dockyards);
 
    for (const auto& [factories, num_states]: state_factory_numbers)
    {
@@ -789,12 +790,12 @@ void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
           return total + state.second.GetManpower();
        });
 
-   out::OutputStats("Manpower", manpower, default_manpower);
+   OutputStats("Manpower", manpower, default_manpower);
 }
 
 void LogInfrastructure(mappers::InfrastructureMapper infrastructure_mapper)
 {
-   out::OutputStats("Infrastructure",
+   OutputStats("Infrastructure",
        infrastructure_mapper.GetConvertedInfrastructure(),
        infrastructure_mapper.GetTargetInfrastructure());
    Log(LogLevel::Info) << fmt::format("\tfudge factor is {}", infrastructure_mapper.GetFudgeFactor());

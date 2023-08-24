@@ -8,6 +8,7 @@
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
+#include "src/support/converter_utils.h"
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/ideologies/ideologies.h"
 #include "src/vic3_world/world/vic3_world.h"
@@ -16,12 +17,6 @@
 
 namespace
 {
-
-constexpr int FloorMod(const int lhs, const int rhs)
-{
-   return (lhs % rhs + rhs) % rhs;
-}
-
 
 bool StateAsCapitalCompareFunction(const hoi4::State& a, const hoi4::State& b)
 {
@@ -200,34 +195,9 @@ std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std
 
 float ConvertStability(const vic3::World& source_world, const vic3::Country& country)
 {
-   // baseline is stability mapped to range [0,.80]
+   // TODO once we can calculate legitimacy
    float stability = std::clamp(country.GetLegitimacy(), 0, 100) * 0.8F / 100.0F;
-
-   constexpr float max_security_benefit_security = 0.30F;
-   constexpr float min_security_benefit_security = 0.70F;
-   constexpr float security_benefit_per_level = 0.03F;
-
-   // internal security institution contributes to stability if below 70
-   if (stability < 0.70F)
-   {
-      float max_stability_increase = 0.0F;
-      const auto institutions = country.GetInstitutions(source_world);
-      const auto internalsecurity = std::ranges::find_if(institutions, [](vic3::Institution i) {
-         return i.type == "institution_home_affairs";
-      });
-      if (internalsecurity != institutions.end())
-      {
-         max_stability_increase = internalsecurity->investment * security_benefit_per_level;
-      }
-
-      float stability_factor =
-          1 - ((std::clamp(stability, max_security_benefit_security, min_security_benefit_security) -
-                   max_security_benefit_security) /
-                  (min_security_benefit_security - max_security_benefit_security));
-
-      stability += max_stability_increase * stability_factor;
-   }
-   return stability;
+   return stability == 0.0 ? 0.0F : 0.60F;
 }
 
 

@@ -1763,7 +1763,7 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::Country source_country_one({.number = 1, .capital_state = 2, .legitimacy = 100});
-   const vic3::Country source_country_two({.number = 1, .capital_state = 2, .legitimacy = 30});
+   const vic3::Country source_country_two({.number = 1, .capital_state = 2, .legitimacy = 0});
    std::map<int, hoi4::Character> dummy_characters;
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    vic3::World source_world = vic3::World({});
@@ -1806,71 +1806,8 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetStability(), 0.80F);
-   EXPECT_NEAR(country_two->GetStability(), (.30F * 0.8F), std::numeric_limits<float>::epsilon());
-}
-
-TEST(Hoi4worldCountriesCountryConverter, HomeAffairsAffectsStability)
-{
-   const mappers::CountryMapper country_mapper({{1, "TAG"}});
-   const vic3::Country source_country_one({.number = 1, .capital_state = 2, .legitimacy = 50});
-   std::map<int, hoi4::Character> dummy_characters;
-   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
-   vic3::World source_world = vic3::World({.institutions = {{1, {{"institution_home_affairs", 1, 5}}}}});
-   const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
-
-   const auto country_one = ConvertCountry(source_world,
-       source_country_one,
-       commonItems::LocalizationDatabase{{}, {}},
-       country_mapper,
-       vic3_state_ids_to_hoi4_state_ids,
-       {},
-       mappers::IdeologyMapper({}, {}),
-       {},
-       {},
-       {},
-       {},
-       {},
-       mappers::CultureGraphicsMapper{{}},
-       mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
-       dummy_characters,
-       dummy_culture_queues);
-
-   ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetStability(), (0.50F * 0.8F) + (0.15F * 0.75F));
-}
-
-TEST(Hoi4worldCountriesCountryConverter, HomeAffairsNoEffectAbove70)
-{
-   const mappers::CountryMapper country_mapper({{1, "TAG"}});
-   const vic3::Country source_country_one(
-       {.number = 1, .capital_state = 2, .legitimacy = static_cast<int>(72.0F / 80.0F * 100.0F)});
-   std::map<int, hoi4::Character> dummy_characters;
-   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
-   vic3::World source_world = vic3::World({.institutions = {{1, {{"institution_home_affairs", 1, 5}}}}});
-   const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
-
-   const auto country_one = ConvertCountry(source_world,
-       source_country_one,
-       commonItems::LocalizationDatabase{{}, {}},
-       country_mapper,
-       vic3_state_ids_to_hoi4_state_ids,
-       {},
-       mappers::IdeologyMapper({}, {}),
-       {},
-       {},
-       {},
-       {},
-       {},
-       mappers::CultureGraphicsMapper{{}},
-       mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
-       dummy_characters,
-       dummy_culture_queues);
-
-   ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetStability(), (0.72F));
+   EXPECT_EQ(country_one->GetStability(), 0.60F);
+   EXPECT_FLOAT_EQ(country_two->GetStability(), 0.00F);
 }
 
 }  // namespace hoi4
