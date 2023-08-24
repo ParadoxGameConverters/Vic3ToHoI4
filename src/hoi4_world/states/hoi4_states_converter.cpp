@@ -12,7 +12,6 @@
 
 #include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
-#include "src/mappers/industry/industry_mapper.h"
 #include "src/maps/map_data.h"
 #include "src/out_hoi4/world/out_world.h"
 
