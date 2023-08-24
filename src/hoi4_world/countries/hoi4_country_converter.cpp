@@ -201,7 +201,7 @@ std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std
 float ConvertStability(const vic3::World& source_world, const vic3::Country& country)
 {
    // baseline is stability mapped to range [0,.80]
-   float stability = country.GetLegitimacy() * 0.8F / 100.0F;
+   float stability = std::clamp(country.GetLegitimacy(), 0, 100) * 0.8F / 100.0F;
 
    constexpr float max_security_benefit_security = 0.30F;
    constexpr float min_security_benefit_security = 0.70F;
