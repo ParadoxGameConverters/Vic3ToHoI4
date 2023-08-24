@@ -937,8 +937,9 @@ hoi4::States CreateStates(const vic3::World& source_world,
          }
          int state_id = static_cast<int>(hoi4_states.size() + 1U);
          vic3_state_ids_to_hoi4_state_ids.emplace(vic3_state_id, state_id);
-         if (state_owner.has_value()) {
-           hoi4_state_ids_to_owner[state_id] = state_owner.value();
+         if (state_owner.has_value())
+         {
+            hoi4_state_ids_to_owner[state_id] = state_owner.value();
          }
          hoi4_states.emplace_back(state_id,
              hoi4::StateOptions{.owner = state_owner,
