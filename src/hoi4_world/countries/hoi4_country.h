@@ -112,6 +112,7 @@ class Country
    [[nodiscard]] const std::optional<std::string>& GetOverlord() const { return overlord_; }
    [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
    [[nodiscard]] float GetStability() const { return stability_; }
+   [[nodiscard]] float GetWarSupport() const { return 0.60F; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
