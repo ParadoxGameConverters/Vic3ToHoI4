@@ -81,6 +81,8 @@ class State
    [[nodiscard]] float GetVic3Infrastructure() const { return vic3_infrastructure_; }
    [[nodiscard]] float GetInfrastructure() const { return infrastructure_; }
 
+   void IncreaseAirBaseLevel(int amount) { air_base_level_ = std::min(air_base_level_ + amount, 10); }
+
    void SetHighestVictoryPointValue(int value);
 
    std::partial_ordering operator<=>(const State&) const = default;
