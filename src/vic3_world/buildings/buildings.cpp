@@ -38,3 +38,22 @@ float vic3::Buildings::GetTotalGoodSalesValueInWorld() const
 
    return total_value;
 }
+
+
+const std::optional<vic3::Building> vic3::Buildings::GetBuildingInState(const std::string building_type,
+    int state_number) const
+{
+   const auto itr = buildings_.find(state_number);
+   if (itr == buildings_.end())
+   {
+      return {};
+   }
+   for (const auto& b: itr->second)
+   {
+      if (b.GetType() == building_type)
+      {
+         return b;
+      }
+   }
+   return {};
+}

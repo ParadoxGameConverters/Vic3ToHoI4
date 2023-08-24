@@ -4,6 +4,7 @@
 
 
 #include <map>
+#include <optional>
 #include <vector>
 
 #include "src/vic3_world/buildings/building.h"
