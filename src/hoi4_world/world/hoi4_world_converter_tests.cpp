@@ -202,14 +202,16 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
                                     .category = "large_city",
                                     .victory_points = {{30, 3}},
                                     .civilian_factories = 3,
-                                    .military_factories = 2}),
+                                    .military_factories = 2,
+                                    .air_base_level = 2}),
            State(2,
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
                    .category = "city",
                    .victory_points = {{50, 2}},
                    .civilian_factories = 2,
-                   .military_factories = 2})));
+                   .military_factories = 2,
+                   .air_base_level = 2})));
    EXPECT_THAT(world.GetStates().province_to_state_id_map,
        testing::UnorderedElementsAre(testing::Pair(10, 1),
            testing::Pair(20, 1),
