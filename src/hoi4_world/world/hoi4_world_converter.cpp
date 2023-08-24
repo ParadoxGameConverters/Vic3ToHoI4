@@ -217,7 +217,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        states);
 
    Log(LogLevel::Info) << "\tConverting countries";
-   Log(LogLevel::Progress) << "55%";
+   Log(LogLevel::Progress) << "65%";
 
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
@@ -231,7 +231,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        culture_queues);
 
    Log(LogLevel::Info) << "\tAssigning portraits to characters";
-   Log(LogLevel::Progress) << "56%";
+   Log(LogLevel::Progress) << "66%";
    AssignPortraits(culture_queues,
        world_mapper.culture_graphics_mapper,
        source_world.GetCultureDefinitions(),
