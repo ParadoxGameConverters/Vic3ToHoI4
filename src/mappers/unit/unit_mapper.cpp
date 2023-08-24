@@ -5,8 +5,8 @@
 
 #include "external/fmt/include/fmt/format.h"
 
-std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(
-    const std::vector<std::string> methods, int scale) const
+std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const std::vector<std::string> methods,
+    int scale) const
 {
    static std::set<std::string> warned;
 
@@ -26,7 +26,8 @@ std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(
       }
 
       equip += itr->second.equipment;
-      for (const auto& [ut, str]: itr->second.units) {
+      for (const auto& [ut, str]: itr->second.units)
+      {
          current[ut] += str * scale;
       }
    }
@@ -38,4 +39,3 @@ std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(
    }
    return units;
 }
-

@@ -28,8 +28,8 @@ struct NameList
 
 struct Unit
 {
-  std::string unit_template;
-  float equipment;
+   std::string unit_template;
+   float equipment;
 
    std::partial_ordering operator<=>(const Unit&) const = default;
 };

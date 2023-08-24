@@ -11,7 +11,8 @@ namespace mappers
 
 using BattalionMap = std::map<std::string, float>;
 
-struct BattalionTemplate{
+struct BattalionTemplate
+{
    int equipment;
    BattalionMap units;
 };
