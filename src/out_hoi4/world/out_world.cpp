@@ -77,8 +77,6 @@ void OutputBookmark(std::string_view output_name,
 
 }  // namespace
 
-
-
 void out::OutputWorld(std::string_view output_name, const hoi4::World& world)
 {
    OutputCountries(output_name, world.GetCountries(), world.GetCharacters());
@@ -97,4 +95,19 @@ void out::OutputWorld(std::string_view output_name, const hoi4::World& world)
        true,
        world.GetGreatPowers(),
        world.GetMajorPowers());
+}
+
+void out::OutputStats(const std::string& stat_name, double converted_value, double base_value)
+{
+   double percent = static_cast<double>(converted_value - base_value) / static_cast<double>(base_value) * 100.0;
+   if (!std::isfinite(percent))
+   {
+      percent = 0.0;
+   }
+
+   Log(LogLevel::Info) << fmt::format("\t\t{} conversion: total={:.3f}, target={:.3f}, diff={:.3f}%",
+       stat_name,
+       converted_value,
+       base_value,
+       percent);
 }
