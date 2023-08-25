@@ -21,6 +21,7 @@
 namespace hoi4
 {
 
+// functions to allow test comparators to provide readable results
 void PrintTo(const State& state, std::ostream* os)
 {
    *os << "{\n";
@@ -35,13 +36,19 @@ void PrintTo(const State& state, std::ostream* os)
       *os << fmt::format("\t\t{}\n", province);
    }
    *os << "\t}\n";
-   *os << fmt::format("\tmanpower = {}\n", state.GetManpower());
-   *os << "\tresources {\n";
-   for (const auto& [resource, amount]: state.GetResources())
+   if (const int manpower = state.GetManpower(); manpower != 0)
    {
-      *os << fmt::format("\t\t{}: {}\n", resource, amount);
+      *os << fmt::format("\tmanpower = {}\n", manpower);
    }
-   *os << "\t}\n";
+   if (const auto& resources = state.GetResources(); !resources.empty())
+   {
+      *os << "\tresources {\n";
+      for (const auto& [resource, amount]: resources)
+      {
+         *os << fmt::format("\t\t{}: {}\n", resource, amount);
+      }
+      *os << "\t}\n";
+   }
    *os << fmt::format("\tcategory = {}\n", state.GetCategory());
    *os << "\tvictory points {\n";
    for (const auto& [province, amount]: state.GetVictoryPoints())
@@ -49,9 +56,18 @@ void PrintTo(const State& state, std::ostream* os)
       *os << fmt::format("\t\t{} {}\n", province, amount);
    }
    *os << "\t}\n";
-   *os << fmt::format("\tcivilian factories = {}\n", state.GetCivilianFactories());
-   *os << fmt::format("\tmilitary factories = {}\n", state.GetMilitaryFactories());
-   *os << fmt::format("\tdockyards = {}\n", state.GetDockyards());
+   if (const int civilian_factories = state.GetCivilianFactories(); civilian_factories != 0)
+   {
+      *os << fmt::format("\tcivilian factories = {}\n", civilian_factories);
+   }
+   if (const int military_factories = state.GetMilitaryFactories(); military_factories != 0)
+   {
+      *os << fmt::format("\tmilitary factories = {}\n", military_factories);
+   }
+   if (const int dockyards = state.GetDockyards(); dockyards != 0)
+   {
+      *os << fmt::format("\tdockyards = {}\n", dockyards);
+   }
    if (const auto& naval_base_location = state.GetNavalBaseLocation(); naval_base_location)
    {
       *os << fmt::format("\tnaval base location = {}\n", *naval_base_location);
@@ -61,12 +77,15 @@ void PrintTo(const State& state, std::ostream* os)
       *os << fmt::format("\tnaval base level = {}\n", *naval_base_level);
    }
    *os << fmt::format("\tair base level = {}\n", state.GetAirBaseLevel());
-   *os << "\tcores {\n";
-   for (const auto& core: state.GetCores())
+   if (const auto& cores = state.GetCores(); !cores.empty())
    {
-      *os << fmt::format("\t\t{}\n", core);
+      *os << "\tcores {\n";
+      for (const auto& core: cores)
+      {
+         *os << fmt::format("\t\t{}\n", core);
+      }
+      *os << "\t}\n";
    }
-   *os << "\t}\n";
    *os << fmt::format("\tvic3 infrastructure = {}\n", state.GetVic3Infrastructure());
    *os << fmt::format("\tinfrastructure = {}\n", state.GetInfrastructure());
    *os << "}";
