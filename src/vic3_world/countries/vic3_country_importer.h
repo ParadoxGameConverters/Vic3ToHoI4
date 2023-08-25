@@ -27,13 +27,7 @@ class CountryImporter
    commonItems::parser country_parser_;
    commonItems::parser counters_parser_;
 
-   std::string tag_;
-   std::optional<int> capital_;
-   std::string country_type_;
-   bool is_civil_war_ = false;
-   std::set<int> primary_culture_ids_;
-   int head_of_state_id_;
-   int legitimacy_ = 0;
+   CountryOptions options_;
 
    bool is_dead_ = false;  // Country marked as invalid data by game, but not yet cleaned up
 };

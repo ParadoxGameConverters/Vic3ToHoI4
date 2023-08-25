@@ -85,6 +85,14 @@ class World
    [[nodiscard]] const std::map<int, Pact>& GetPacts() const { return pacts_; }
    [[nodiscard]] const Ideologies& GetIdeologies() const { return ideologies_; }
    [[nodiscard]] int GetPlaythroughId() const { return playthrough_id_; }
+   [[nodiscard]] std::vector<Institution> GetInstitutions(int country_id) const
+   {
+      if (institutions_.contains(country_id))
+      {
+         return institutions_.at(country_id);
+      }
+      return {};
+   }
 
   private:
    std::map<int, Country> countries_;

@@ -52,6 +52,7 @@ struct CountryOptions
    std::set<std::string> puppets;
    std::optional<std::string> overlord;
    int starting_research_slots = 3;
+   float stability = 0.0F;
 };
 
 
@@ -82,7 +83,8 @@ class Country
        spy_ids_(std::move(country_options.spy_ids)),
        puppets_(std::move(country_options.puppets)),
        overlord_(std::move(country_options.overlord)),
-       starting_research_slots_(country_options.starting_research_slots)
+       starting_research_slots_(country_options.starting_research_slots),
+       stability_(country_options.stability)
    {
    }
 
@@ -109,6 +111,8 @@ class Country
    [[nodiscard]] const std::set<std::string>& GetPuppets() const { return puppets_; }
    [[nodiscard]] const std::optional<std::string>& GetOverlord() const { return overlord_; }
    [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
+   [[nodiscard]] float GetStability() const { return stability_; }
+   [[nodiscard]] float GetWarSupport() const { return 0.60F; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
@@ -137,6 +141,7 @@ class Country
    std::set<std::string> puppets_;
    std::optional<std::string> overlord_;
    int starting_research_slots_;
+   float stability_ = 0.0F;
 };
 
 }  // namespace hoi4

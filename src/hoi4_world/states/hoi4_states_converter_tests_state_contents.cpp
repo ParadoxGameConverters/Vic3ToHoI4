@@ -164,7 +164,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsLogged)
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_THAT(log.str(),
-       testing::HasSubstr("[INFO] \t\tManpower conversion: total=320000, target=123000, match=260.1626016260162%"));
+       testing::HasSubstr("[INFO] \t\tManpower conversion: total=320000.000, target=123000.000, diff=160.163%"));
 }
 
 
@@ -295,10 +295,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
 
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\tTotal factories: 10 (vanilla hoi4 had 6)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\t\tCivilian factories: 6 (vanilla hoi4 had 1)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\t\tMilitary factories: 4 (vanilla hoi4 had 2)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\t\tDockyards: 0 (vanilla hoi4 had 3)"));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[INFO] \t\tTotal factories conversion: total=10.000, target=6.000, diff=66.667%"));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[INFO] \t\tCivilian factories conversion: total=6.000, target=1.000, diff=500.000%"));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[INFO] \t\tMilitary factories conversion: total=4.000, target=2.000, diff=100.000%"));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[INFO] \t\tDockyards conversion: total=0.000, target=3.000, diff=-100.000%"));
 }
 TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
 {

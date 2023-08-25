@@ -292,7 +292,7 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    expected_one << "\texport_focus\n";
    expected_one << "\tvolunteer_only\n";
    expected_one << "}\n";
-   expected_one << "set_stability = 0.60\n";
+   expected_one << "set_stability = 0\n";
    expected_one << "set_war_support = 0.60\n";
    expected_one << "\n";
    expected_one << "# Starting tech\n";
@@ -381,7 +381,7 @@ TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
    expected_one << "\texport_focus\n";
    expected_one << "\tvolunteer_only\n";
    expected_one << "}\n";
-   expected_one << "set_stability = 0.60\n";
+   expected_one << "set_stability = 0\n";
    expected_one << "set_war_support = 0.60\n";
    expected_one << "\n";
    expected_one << "# Starting tech\n";

@@ -159,6 +159,7 @@ void maps::MapDataImporter::ImportProvinces(const commonItems::ModFilesystem& mo
             }
          }
       }
+      Log(LogLevel::Progress) << 50 + (10 * y / height);
    }
 }
 

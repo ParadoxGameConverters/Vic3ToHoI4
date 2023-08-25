@@ -40,4 +40,9 @@ RankCategory Country::GetCountryRankCategory(const vic3::World& world) const
    }
 }
 
+std::vector<Institution> Country::GetInstitutions(const vic3::World& world) const
+{
+   return world.GetInstitutions(this->GetNumber());
+}
+
 }  // namespace vic3
