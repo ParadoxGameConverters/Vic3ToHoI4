@@ -821,6 +821,16 @@ void LogInfrastructure(mappers::InfrastructureMapper infrastructure_mapper)
    Log(LogLevel::Info) << fmt::format("\tfudge factor is {}", infrastructure_mapper.GetFudgeFactor());
 }
 
+void LogNavalBases(const std::vector<hoi4::State>& hoi4_states)
+{
+   int64_t naval_bases = std::accumulate(hoi4_states.begin(),
+       hoi4_states.end(),
+       static_cast<int64_t>(0),
+       [](int64_t total, const hoi4::State& state) {
+          return static_cast<uint64_t>(total + state.GetNavalBaseLevel().value_or(0));
+       });
+   OutputStats("Naval base", naval_bases, 1347);
+}
 
 hoi4::States CreateStates(const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
@@ -999,6 +1009,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
    LogIndustryStats(hoi4_states, world_framework.default_states, world_framework.state_categories);
    LogManpowerStats(hoi4_states, world_framework.default_states);
    LogInfrastructure(infrastructure_mapper);
+   LogNavalBases(hoi4_states);
 
    return {hoi4_states,
        province_to_state_id_map,
