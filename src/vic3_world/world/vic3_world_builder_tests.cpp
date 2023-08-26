@@ -61,10 +61,7 @@ TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStateRegionsWorks)
 TEST(Vic3WorldWorldVic3WorldBuilder, AddBuildingsWorks)
 {
    const auto nullWorld = WorldBuilder::CreateNullWorld()
-                              .AddBuildings({
-                                  {1, std::vector{vic3::Building("", 1, 700'000)}},
-                                  {2, std::vector{vic3::Building("", 2, 1'400'000)}},
-                              })
+                              .AddBuildings({vic3::Building("", 1, 700'000), vic3::Building("", 2, 1'400'000)})
                               .Build();
 
    EXPECT_EQ(nullWorld.GetBuildings().GetTotalGoodSalesValueInState(1), 700'000);

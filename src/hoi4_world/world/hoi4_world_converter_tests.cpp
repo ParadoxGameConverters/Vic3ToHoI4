@@ -562,6 +562,9 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
        "x000012",
    });
 
+   const std::map<int, std::vector<vic3::Building>> buildings = {
+       {1, {vic3::Building(vic3::BuildingType::NavalBase, 1, 0.0F, 5.0F, {})}}};
+
    const vic3::World source_world({
        .states =
            {
@@ -578,7 +581,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
                {"state", vic3_state_region},
            },
        .province_definitions = province_definitions,
-   });
+       .buildings = vic3::Buildings(buildings)
+       });
 
    const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
                                                  .AddProvinces({
