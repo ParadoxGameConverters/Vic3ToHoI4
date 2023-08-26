@@ -192,7 +192,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework =
-       WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(6).AddCoastalProvinces(std::map<int, std::vector<int>>{{40, {41}}}));
+       WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(6).AddCoastalProvinces(std::map<int, std::vector<int>>{{40, {41}}});
    const maps::MapData map_data({
        .province_neighbors =
            {

@@ -27,7 +27,7 @@ TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserForwardsElements)
    input << "}\n";
 
    std::vector<std::pair<std::string, std::string>> dbElements;
-   CallableParser dbElementParser;
+   commonItems::parser dbElementParser;
    dbElementParser.registerKeyword("key1", [&](std::istream& stream) {
       dbElements.emplace_back("key1", commonItems::getString(stream));
    });
@@ -63,7 +63,7 @@ TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserSkipsNoneElements)
    input << "}\n";
 
    std::vector<std::pair<std::string, std::string>> dbElements;
-   CallableParser dbElementParser;
+   commonItems::parser dbElementParser;
    dbElementParser.registerKeyword("key1", [&](std::istream& stream) {
       dbElements.emplace_back("key1", commonItems::getString(stream));
    });
