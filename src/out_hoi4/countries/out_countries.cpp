@@ -27,8 +27,9 @@ void out::OutputCountries(std::string_view output_name,
       OutputCommonCountriesFile(output_name, country);
       OutputCommonCharactersFile(output_name, country, characters);
       OutputCountryHistory(output_name, country, characters);
-      commonItems::TryCopyFile("configurables/division_templates.txt",
-          fmt::format("output/{}/history/units/{}_1936.txt", output_name, tag));
+      auto oob_file = fmt::format("output/{}/history/units/{}_1936.txt", output_name, tag);
+      commonItems::TryCopyFile("configurables/division_templates.txt", oob_file);
+      OutputCountryUnits(oob_file, country);
       OutputFocusTree(output_name, tag);
    }
 

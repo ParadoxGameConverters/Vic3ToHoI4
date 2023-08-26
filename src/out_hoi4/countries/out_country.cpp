@@ -1,6 +1,7 @@
 #include "src/out_hoi4/countries/out_country.h"
 
 #include <fstream>
+#include <ios>
 #include <string>
 
 #include "external/commonItems/OSCompatibilityLayer.h"
@@ -244,4 +245,35 @@ void out::OutputCountryHistory(std::string_view output_name,
    country_history << "}\n";
 
    country_history.close();
+}
+
+void out::OutputCountryUnits(const std::string& oob_file, const hoi4::Country& country)
+{
+   if (country.GetUnits().empty())
+   {
+      return;
+   }
+   // Note append mode as division templates were copied, not output.
+   std::ofstream country_oob(oob_file, std::ios_base::app);
+   if (!country_oob.is_open())
+   {
+      throw std::runtime_error(fmt::format("Could not open {} for updates", oob_file));
+   }
+   country_oob << "\n\nunits = {\n";
+   std::map<std::string, int> counts;
+   for (const auto& unit : country.GetUnits()) {
+     counts[unit.unit_template]++;
+     country_oob << "\tdivision = {\n";
+     country_oob << "\t\tdivision_name = {\n";
+     country_oob << "\t\t\tis_name_ordered = yes\n";
+     country_oob << "\t\t\tname_order = " << counts[unit.unit_template] << "\n";
+     country_oob << "\t\t}\n";
+     country_oob << "\t\tlocation = " << unit.location << "\n";
+     country_oob << "\t\tdivision_template = \"" << unit.unit_template << "\"\n";
+     country_oob << "\t\tstart_equipment_factor = " << unit.equipment << "\n";
+     country_oob << "\t\tstart_experience_factor = 0.2\n";
+     country_oob << "\t}\n";
+   }
+   country_oob << "}\n";
+   country_oob.close();
 }
