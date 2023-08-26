@@ -494,6 +494,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
            {
                {1,
                    vic3::State({
+                       .id = 1,
                        .owner_number = 1,
                        .owner_tag = "TAG",
                        .provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12},

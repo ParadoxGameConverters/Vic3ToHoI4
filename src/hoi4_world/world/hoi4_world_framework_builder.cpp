@@ -9,6 +9,7 @@
 #include "src/hoi4_world/states/default_states_importer.h"
 #include "src/hoi4_world/states/state_categories.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
+#include "src/maps/map_data_importer.h"
 
 namespace hoi4
 {
@@ -22,6 +23,9 @@ WorldFrameworkBuilder WorldFrameworkBuilder::CreateDefaultWorldFramework(
    wfb.DefaultResourcesMap();
    wfb.DefaultStateCategories();
    wfb.DefaultProvinceDefinitions();
+
+   auto tmpMapData = maps::MapDataImporter(wfb.province_definitions_).ImportMapData(hoi4_mod_filesystem);
+   wfb.DefaultCoastalProvinces(tmpMapData);
    return wfb;
 }
 

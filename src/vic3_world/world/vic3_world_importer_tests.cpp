@@ -75,8 +75,8 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                }))));
    EXPECT_THAT(world.GetStates(),
        testing::UnorderedElementsAre(testing::Pair(0, State({.provinces = {1, 2, 3}})),
-           testing::Pair(1, State({.owner_number = 3, .owner_tag = "TWO", .provinces = {10, 11, 12}})),
-           testing::Pair(2, State({.owner_number = 133, .provinces = {20}}))));
+           testing::Pair(1, State({.id = 1, .owner_number = 3, .owner_tag = "TWO", .provinces = {10, 11, 12}})),
+           testing::Pair(2, State({.id = 2, .owner_number = 133, .provinces = {20}}))));
    EXPECT_THAT(world.GetStateRegions(),
        testing::UnorderedElementsAre(testing::Pair("STATE_LOMBARDY",
                                          StateRegion(

@@ -18,6 +18,8 @@ std::map<int, vic3::State> vic3::ImportStates(std::istream& input_stream)
       states.emplace(state_number, state_importer.ImportState(number_string, input_stream));
    };
 
-   DatabaseParser(parser_func).parseStream(input_stream);
+   DatabaseParser parser(parser_func);
+   
+   parser.parseStream(input_stream);
    return states;
 }

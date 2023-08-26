@@ -30,9 +30,17 @@ DatabaseParser::DatabaseParser(commonItems::parsingFunctionStreamOnly single_ele
           // i have a mouth and i must scream
           skipSpaces(stream);
           char m = stream.get();
-          skipSpaces(stream);
+          char n = stream.peek();
+          if (n == ' ')
+          {
+             stream.get();
+          }
           if (stream.peek() == '{')
           {
+             if (n == ' ')
+             {
+                stream.putback(n);
+             }
              stream.putback(m);
              single_element_func(stream);
           }
@@ -54,11 +62,21 @@ DatabaseParser::DatabaseParser(commonItems::parsingFunction multi_element_func):
    this->db_entry_parser_.registerRegex(commonItems::integerRegex,
        [multi_element_func](std::string key, std::istream& stream) {
           // i have a mouth and i must scream
+          char streamChars[10];
+          int streamCharIndex = 0;
           skipSpaces(stream);
           char m = stream.get();
-          skipSpaces(stream);
+          char n = stream.peek();
+          if (n == ' ')
+          {
+             stream.get();
+          }
           if (stream.peek() == '{')
           {
+             if (n == ' ')
+             {
+                stream.putback(n);
+             }
              stream.putback(m);
              multi_element_func(key, stream);
           }
