@@ -1,5 +1,7 @@
 #include "src/vic3_world/states/vic3_state_importer.h"
 
+#include <charconv>
+
 #include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/ParserHelpers.h"
 
@@ -91,7 +93,7 @@ vic3::StateImporter::StateImporter()
 }
 
 
-vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
+vic3::State vic3::StateImporter::ImportState(std::string_view key, std::istream& input_stream)
 {
    owner_number_.reset();
    incorporated_ = false;
@@ -100,9 +102,12 @@ vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
    population_ = 0;
    employed_population_ = 0;
 
+   int id;
+   std::from_chars(key.data(), key.data() + key.size(), id);
    state_parser_.parseStream(input_stream);
 
-   return State({.owner_number = owner_number_,
+   return State({.id = id,
+       .owner_number = owner_number_,
        .incorporated = incorporated_,
        .infrastructure = infrastructure_,
        .provinces = provinces_,

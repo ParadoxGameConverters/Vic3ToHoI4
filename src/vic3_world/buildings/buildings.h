@@ -13,6 +13,9 @@
 namespace vic3
 {
 
+/// <summary>
+/// Map from state to buildings
+/// </summary>
 class Buildings
 {
   public:
@@ -22,6 +25,16 @@ class Buildings
 
    [[nodiscard]] float GetTotalGoodSalesValueInState(int state_number) const;
    [[nodiscard]] float GetTotalGoodSalesValueInWorld() const;
+   [[nodiscard]] std::map<int, std::vector<Building>> GetStorage() const { return buildings_; }
+   [[nodiscard]] std::vector<Building> GetBuildingsInState(int state_number) const
+   {
+      if (buildings_.contains(state_number))
+      {
+         return buildings_.at(state_number);
+      }
+      return {};
+   }
+
 
   private:
    std::map<int, std::vector<Building>> buildings_;

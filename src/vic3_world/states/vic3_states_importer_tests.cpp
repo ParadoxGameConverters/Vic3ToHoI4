@@ -17,7 +17,6 @@ TEST(Vic3worldStateVic3statesimporter, NoStatesByDefault)
    EXPECT_TRUE(states.empty());
 }
 
-
 TEST(Vic3worldStateVic3statesimporter, StatesCanBeImported)
 {
    std::stringstream input;
@@ -33,7 +32,7 @@ TEST(Vic3worldStateVic3statesimporter, StatesCanBeImported)
 
    EXPECT_THAT(states,
        testing::UnorderedElementsAre(testing::Pair(0, State({.owner_number = 42})),
-           testing::Pair(1, State({.owner_number = 144}))));
+           testing::Pair(1, State({.id = 1, .owner_number = 144}))));
 }
 
 
@@ -53,7 +52,7 @@ TEST(Vic3worldStateVic3statesimporter, StatesIndexesCanBeSkipped)
 
    EXPECT_THAT(states,
        testing::UnorderedElementsAre(testing::Pair(0, State({.owner_number = 42})),
-           testing::Pair(2, State({.owner_number = 144}))));
+           testing::Pair(2, State({.id = 2, .owner_number = 144}))));
 }
 
 }  // namespace vic3

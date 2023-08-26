@@ -24,8 +24,6 @@ States ConvertStates(const vic3::World& source_world,
     const hoi4::WorldFramework& world_framework,
     const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const maps::MapData& map_data,
-    const maps::ProvinceDefinitions& hoi4_province_definitions,
-    const CoastalProvinces& coastal_provinces,
     bool debug = false);
 
 }  // namespace hoi4

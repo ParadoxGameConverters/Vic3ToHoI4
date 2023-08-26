@@ -257,6 +257,7 @@
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions.cpp" />
     <ClCompile Include="src\vic3_world\provinces\vic3_province_definitions_loader.cpp" />
     <ClCompile Include="src\vic3_world\states\state_regions_importer.cpp" />
+    <ClCompile Include="src\vic3_world\states\vic3_state.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_states_importer.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_state_importer.cpp" />
     <ClCompile Include="src\vic3_world\technology\vic3_technology_importer.cpp" />

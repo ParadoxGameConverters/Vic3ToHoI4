@@ -33,8 +33,8 @@ TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStatesWorks)
 {
    const auto nullWorld = WorldBuilder::CreateNullWorld().AddTestStates({{1, 2, 3}, {4, 5}}).Build();
 
-   EXPECT_EQ(nullWorld.GetStates().at(1), State({.owner_number = 1, .provinces = {1, 2, 3}}));
-   EXPECT_EQ(nullWorld.GetStates().at(2), State({.owner_number = 2, .provinces = {4, 5}}));
+   EXPECT_EQ(nullWorld.GetStates().at(1), State({.id = 1, .owner_number = 1, .provinces = {1, 2, 3}}));
+   EXPECT_EQ(nullWorld.GetStates().at(2), State({.id = 2, .owner_number = 2, .provinces = {4, 5}}));
 }
 
 TEST(Vic3WorldWorldVic3WorldBuilder, AddStateRegionsWorks)

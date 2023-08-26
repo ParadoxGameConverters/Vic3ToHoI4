@@ -929,6 +929,9 @@
     <ClCompile Include="src\support\converter_utils.cpp">
       <Filter>src\support</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\states\vic3_state.cpp">
+      <Filter>src\vic3_world\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="external\rakaly\rakaly.dll.lib">

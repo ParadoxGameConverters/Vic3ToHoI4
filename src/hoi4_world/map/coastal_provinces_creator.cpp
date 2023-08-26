@@ -4,7 +4,7 @@
 
 
 
-hoi4::CoastalProvinces hoi4::CreateCoastalProvinces(const maps::MapData& map_data,
+hoi4::CoastalProvinces::storage_type hoi4::CreateCoastalProvinces(const maps::MapData& map_data,
     const std::set<std::string>& land_provinces,
     const std::set<std::string>& sea_provinces)
 {
@@ -43,5 +43,5 @@ hoi4::CoastalProvinces hoi4::CreateCoastalProvinces(const maps::MapData& map_dat
       }
    }
 
-   return CoastalProvinces(coastal_provinces);
+   return coastal_provinces;
 }
