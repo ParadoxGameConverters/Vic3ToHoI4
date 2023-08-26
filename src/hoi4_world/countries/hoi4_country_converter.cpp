@@ -506,6 +506,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .puppets = puppets,
        .overlord = overlord,
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
-       .stability = ConvertStability(source_world, source_country),
-       .units = units});
+       .units = units,
+       .stability = ConvertStability(source_world, source_country)});
 }

@@ -11,7 +11,6 @@
 
 namespace hoi4
 {
-#ifdef KNOCKOUT
 TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -1782,14 +1781,16 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityDefaultsToZero)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    vic3::World source_world = vic3::World({});
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
-       vic3_state_ids_to_hoi4_state_ids,
-       {},
+       States{
+      .vic3_state_ids_to_hoi4_state_ids = vic3_state_ids_to_hoi4_state_ids},
        mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1814,14 +1815,15 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    vic3::World source_world = vic3::World({});
    const std::map<int, int> vic3_state_ids_to_hoi4_state_ids{{2, 4}};
+   mappers::TemplateMap templates;
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
-       vic3_state_ids_to_hoi4_state_ids,
-       {},
+       States{.vic3_state_ids_to_hoi4_state_ids = vic3_state_ids_to_hoi4_state_ids},
        mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
@@ -1837,9 +1839,9 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
        source_country_two,
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
-       vic3_state_ids_to_hoi4_state_ids,
-       {},
+       States{.vic3_state_ids_to_hoi4_state_ids = vic3_state_ids_to_hoi4_state_ids},
        mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
        {},
        {},
        {},
