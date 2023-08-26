@@ -54,6 +54,8 @@ class Building
    [[nodiscard]] float GetStaffingLevel() const { return staffing_level_; }
    [[nodiscard]] const std::vector<std::string>& GetProductionMethods() const { return production_methods_; }
 
+   auto operator<=>(const Building& other) const = default;
+
   private:
    std::string type_;
    std::optional<int> state_number_;

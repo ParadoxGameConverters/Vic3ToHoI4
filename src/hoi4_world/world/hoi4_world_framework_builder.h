@@ -42,6 +42,11 @@ class WorldFrameworkBuilder
 
    //require other data first
    WorldFrameworkBuilder& DefaultCoastalProvinces(const maps::MapData& map_data);
+   /// <summary>
+   /// Add coastal provinces. format is {land_province_id, {adjacent_sea_province_id,...}}
+   /// </summary>
+   /// <param name="provinces"></param>
+   /// <returns></returns>
    WorldFrameworkBuilder& AddCoastalProvinces(CoastalProvinces::storage_type provinces);
 
   private:
