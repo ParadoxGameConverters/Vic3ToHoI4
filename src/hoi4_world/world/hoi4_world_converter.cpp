@@ -88,6 +88,26 @@ std::optional<int> GetCapitalStateNumber(int vic3_country_number,
 }
 
 
+void IncreaseAirBasesInCapitals(const std::map<std::string, hoi4::Country>& countries, std::vector<hoi4::State>& states)
+{
+   for (const hoi4::Country& country: countries | std::views::values)
+   {
+      const std::optional<int> possible_capital = country.GetCapitalState();
+      if (!possible_capital)
+      {
+         continue;
+      }
+      if (*possible_capital - 1 > states.size())
+      {
+         continue;
+      }
+
+      hoi4::State& capital_state = states.at(*possible_capital - 1);
+      capital_state.IncreaseAirBaseLevel(5);
+   }
+}
+
+
 void IncreaseVictoryPointsInCapitals(std::vector<hoi4::State>& states,
     const vic3::CountryRankings& country_rankings,
     const mappers::CountryMapper& country_mapper,
@@ -237,6 +257,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        MapPowers(source_world.GetCountryRankings().GetGreatPowers(), world_mapper.country_mapper);
    std::set<std::string> major_powers =
        MapPowers(source_world.GetCountryRankings().GetMajorPowers(), world_mapper.country_mapper);
+   IncreaseAirBasesInCapitals(countries, states.states);
    IncreaseVictoryPointsInCapitals(states.states,
        source_world.GetCountryRankings(),
        world_mapper.country_mapper,
