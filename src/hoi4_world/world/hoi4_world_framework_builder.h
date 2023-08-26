@@ -3,8 +3,8 @@
 #include "src/hoi4_world/states/default_state.h"
 #include "src/hoi4_world/states/state_categories.h"
 #include "src/hoi4_world/world/hoi4_world_framework.h"
-#include "src/maps/province_definitions.h"
 #include "src/maps/map_data.h"
+#include "src/maps/province_definitions.h"
 
 // This represents the input hoi4 elements (eg, state maps, resource maps, etc)
 // that are used in conjunction with the vic3 data  and the WorldMapper to create the final hoi4 mod.
@@ -40,7 +40,7 @@ class WorldFrameworkBuilder
    // for intermediate test stuff
    maps::ProvinceDefinitions CopyProvinceDefinitions();
 
-   //require other data first
+   // require other data first
    WorldFrameworkBuilder& DefaultCoastalProvinces(const maps::MapData& map_data);
    /// <summary>
    /// Add coastal provinces. format is {land_province_id, {adjacent_sea_province_id,...}}

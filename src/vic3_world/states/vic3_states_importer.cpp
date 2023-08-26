@@ -19,7 +19,7 @@ std::map<int, vic3::State> vic3::ImportStates(std::istream& input_stream)
    };
 
    DatabaseParser parser(parser_func);
-   
+
    parser.parseStream(input_stream);
    return states;
 }

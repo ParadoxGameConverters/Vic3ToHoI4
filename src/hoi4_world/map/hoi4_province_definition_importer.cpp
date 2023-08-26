@@ -7,7 +7,8 @@
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 
 
-maps::ProvinceDefinitions::storage_type hoi4::ImportProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem)
+maps::ProvinceDefinitions::storage_type hoi4::ImportProvinceDefinitions(
+    const commonItems::ModFilesystem& mod_filesystem)
 {
    const auto path = mod_filesystem.GetActualFileLocation("/map/definition.csv");
    if (!path)
