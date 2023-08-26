@@ -7,6 +7,7 @@
 
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
+#include "src/hoi4_world/military/division_template.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/states/hoi4_states.h"
 #include "src/mappers/character/character_trait_mapper.h"
@@ -39,6 +40,7 @@ std::optional<Country> ConvertCountry(const vic3::World& source_world,
     const std::vector<EquipmentVariant>& all_ship_variants,
     const std::vector<EquipmentVariant>& all_plane_variants,
     const std::vector<EquipmentVariant>& all_tank_variants,
+    const std::vector<DivisionTemplate>& division_templates,
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,

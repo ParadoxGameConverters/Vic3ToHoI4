@@ -3,6 +3,7 @@
 #include <ranges>
 
 #include "external/fmt/include/fmt/format.h"
+#include "src/hoi4_world/military/division_templates_importer.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/equipment_variants_importer.h"
 #include "src/mappers/character/character_trait_mapper_importer.h"
@@ -69,6 +70,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
    const std::vector<EquipmentVariant> all_ship_variants = ImportEquipmentVariants("configurables/ship_types.txt");
    const std::vector<EquipmentVariant> all_plane_variants = ImportEquipmentVariants("configurables/plane_designs.txt");
    const std::vector<EquipmentVariant> all_tank_variants = ImportEquipmentVariants("configurables/tank_designs.txt");
+   const std::vector<DivisionTemplate> division_templates = ImportDivisionTemplates("configurables/division_templates.txt");
 
    const mappers::LeaderTypeMapper leader_type_mapper =
        mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
@@ -89,6 +91,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
           all_ship_variants,
           all_plane_variants,
           all_tank_variants,
+          division_templates,
           world_mapper.culture_graphics_mapper,
           leader_type_mapper,
           character_trait_mapper,
