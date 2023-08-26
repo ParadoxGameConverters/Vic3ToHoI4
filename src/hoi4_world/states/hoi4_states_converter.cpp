@@ -529,8 +529,7 @@ int DetermineAirbaseLevel(int total_factories, int total_infrastructure)
    constexpr int kNumFactoriesPerAirbase = 4;
    constexpr int kAirbasesForInfrastructureLevel = 3;
 
-   int airbase_level = 1;
-   airbase_level += total_factories / kNumFactoriesPerAirbase;
+   int airbase_level = total_factories / kNumFactoriesPerAirbase;
    if (total_infrastructure >= kAirbasesForInfrastructureLevel)
    {
       ++airbase_level;

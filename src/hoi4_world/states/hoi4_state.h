@@ -33,7 +33,7 @@ struct StateOptions
    int dockyards = 0;
    std::optional<int> naval_base_location;
    std::optional<int> naval_base_level;
-   int air_base_level = 1;
+   int air_base_level = 0;
    std::set<std::string> cores;
 
    float vic3_infrastructure = 0.0F;
@@ -102,7 +102,7 @@ class State
    int dockyards_ = 0;
    std::optional<int> naval_base_location_;
    std::optional<int> naval_base_level_;
-   int air_base_level_ = 1;
+   int air_base_level_ = 0;
    std::set<std::string> cores_;
 
    float vic3_infrastructure_ = 0.0F;

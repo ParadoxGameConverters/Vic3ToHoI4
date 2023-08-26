@@ -15,7 +15,7 @@ TEST(Hoi4worldStatesHoi4state, AirBaseLevelCanBeIncreased)
    hoi4::State test_state(1, {});
    test_state.IncreaseAirBaseLevel(5);
 
-   EXPECT_EQ(test_state.GetAirBaseLevel(), 6);
+   EXPECT_EQ(test_state.GetAirBaseLevel(), 5);
 }
 
 

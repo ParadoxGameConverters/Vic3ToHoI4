@@ -203,7 +203,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
                                     .victory_points = {{30, 3}},
                                     .civilian_factories = 3,
                                     .military_factories = 2,
-                                    .air_base_level = 2}),
+                                    .air_base_level = 1}),
            State(2,
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
@@ -211,7 +211,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
                    .victory_points = {{50, 2}},
                    .civilian_factories = 2,
                    .military_factories = 2,
-                   .air_base_level = 2})));
+                   .air_base_level = 1})));
    EXPECT_THAT(world.GetStates().province_to_state_id_map,
        testing::UnorderedElementsAre(testing::Pair(10, 1),
            testing::Pair(20, 1),
@@ -385,9 +385,9 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraAirBaseLevel)
                                     .provinces = {10, 20, 30},
                                     .category = "rural",
                                     .victory_points = {{30, 1}},
-                                    .air_base_level = 6}),
+                                    .air_base_level = 5}),
            State(2,
-               {.provinces = {40, 50, 60}, .category = "rural", .victory_points = {{50, 1}}, .air_base_level = 1})));
+               {.provinces = {40, 50, 60}, .category = "rural", .victory_points = {{50, 1}}, .air_base_level = 0})));
 }
 
 

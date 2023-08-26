@@ -282,13 +282,13 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
                                     .provinces = {10, 20, 30},
                                     .civilian_factories = 3,
                                     .military_factories = 2,
-                                    .air_base_level = 2}),
+                                    .air_base_level = 1}),
            State(2,
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
                    .civilian_factories = 3,
                    .military_factories = 2,
-                   .air_base_level = 2})));
+                   .air_base_level = 1})));
 }
 
 
@@ -332,14 +332,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
                                     .provinces = {10, 20, 30},
                                     .civilian_factories = 3,
                                     .military_factories = 2,
-                                    .air_base_level = 2}),
+                                    .air_base_level = 1}),
            State(2,
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
                    .civilian_factories = 2,
                    .military_factories = 2,
                    .dockyards = 1,
-                   .air_base_level = 2})));
+                   .air_base_level = 1})));
 }
 
 
@@ -428,9 +428,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           State(1, {.provinces = {10, 20, 30}, .civilian_factories = 0, .military_factories = 0, .air_base_level = 1}),
+           State(1, {.provinces = {10, 20, 30}, .civilian_factories = 0, .military_factories = 0, .air_base_level = 0}),
            State(2,
-               {.provinces = {40, 50, 60}, .civilian_factories = 0, .military_factories = 0, .air_base_level = 1})));
+               {.provinces = {40, 50, 60}, .civilian_factories = 0, .military_factories = 0, .air_base_level = 0})));
 }
 
 
@@ -471,7 +471,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
                .provinces = {10, 20, 30},
                .civilian_factories = 8,
                .military_factories = 4,
-               .air_base_level = 4})));
+               .air_base_level = 3})));
 }
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
@@ -514,19 +514,19 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
                                     .provinces = {40, 50},
                                     .civilian_factories = 8,
                                     .military_factories = 4,
-                                    .air_base_level = 4}),
+                                    .air_base_level = 3}),
            State(2,
                {.owner = "TWO",
                    .provinces = {60},
                    .civilian_factories = 6,
                    .military_factories = 3,
-                   .air_base_level = 3}),
+                   .air_base_level = 2}),
            State(3,
                {.owner = "ONE",
                    .provinces = {10, 20, 30},
                    .civilian_factories = 1,
                    .military_factories = 1,
-                   .air_base_level = 1})));
+                   .air_base_level = 0})));
 }
 
 
@@ -574,19 +574,19 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextSta
                                     .provinces = {10, 20},
                                     .civilian_factories = 3,
                                     .military_factories = 9,
-                                    .air_base_level = 4}),
+                                    .air_base_level = 3}),
            State(2,
                {.owner = "ONE",
                    .provinces = {30, 40},
                    .civilian_factories = 12,
                    .military_factories = 0,
-                   .air_base_level = 4}),
+                   .air_base_level = 3}),
            State(3,
                {.owner = "ONE",
                    .provinces = {50, 60},
                    .civilian_factories = 6,
                    .military_factories = 0,
-                   .air_base_level = 2})));
+                   .air_base_level = 1})));
 }
 
 
@@ -628,25 +628,25 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
                                     .provinces = {40, 50},
                                     .civilian_factories = 4,
                                     .military_factories = 2,
-                                    .air_base_level = 2}),
+                                    .air_base_level = 1}),
            State(2,
                {.owner = "TWO",
                    .provinces = {60},
                    .civilian_factories = 2,
                    .military_factories = 1,
-                   .air_base_level = 1}),
+                   .air_base_level = 0}),
            State(3,
                {.owner = "ONE",
                    .provinces = {10, 20},
                    .civilian_factories = 2,
                    .military_factories = 1,
-                   .air_base_level = 1}),
+                   .air_base_level = 0}),
            State(4,
                {.owner = "ONE",
                    .provinces = {30},
                    .civilian_factories = 0,
                    .military_factories = 1,
-                   .air_base_level = 1})));
+                   .air_base_level = 0})));
 }
 
 
@@ -692,15 +692,15 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
                                     .provinces = {10, 20},
                                     .civilian_factories = 3,
                                     .military_factories = 2,
-                                    .air_base_level = 2}),
-           State(2, {.owner = "ONE", .provinces = {30}, .category = "wasteland", .air_base_level = 1}),
+                                    .air_base_level = 1}),
+           State(2, {.owner = "ONE", .provinces = {30}, .category = "wasteland", .air_base_level = 0}),
            State(3,
                {.owner = "TWO",
                    .provinces = {60},
                    .civilian_factories = 3,
                    .military_factories = 2,
-                   .air_base_level = 2}),
-           State(4, {.owner = "TWO", .provinces = {40, 50}, .category = "wasteland", .air_base_level = 1})));
+                   .air_base_level = 1}),
+           State(4, {.owner = "TWO", .provinces = {40, 50}, .category = "wasteland", .air_base_level = 0})));
 }
 
 
@@ -752,7 +752,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, AirBaseLevelDefaultsToOne)
+TEST(Hoi4worldStatesHoi4statesconverter, AirBaseLevelDefaultsToZero)
 {
    const maps::ProvinceDefinitions hoi4_province_definitions({.land_provinces = {"10", "20", "30", "40", "50", "60"}});
    const maps::MapData map_data({
@@ -782,8 +782,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, AirBaseLevelDefaultsToOne)
        CoastalProvinces());
 
    EXPECT_THAT(hoi4_states.states,
-       testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .air_base_level = 1}),
-           State(2, {.provinces = {40, 50, 60}, .air_base_level = 1})));
+       testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .air_base_level = 0}),
+           State(2, {.provinces = {40, 50, 60}, .air_base_level = 0})));
 }
 
 
@@ -826,13 +826,13 @@ TEST(Hoi4worldStatesHoi4statesconverter, AirBaseLevelIncreasesFromIndustry)
                                     .provinces = {40, 50, 60},
                                     .civilian_factories = 5,
                                     .military_factories = 3,
-                                    .air_base_level = 3}),
+                                    .air_base_level = 2}),
            State(2,
                {.owner = "ONE",
                    .provinces = {10, 20, 30},
                    .civilian_factories = 2,
                    .military_factories = 2,
-                   .air_base_level = 2})));
+                   .air_base_level = 1})));
 }
 
 
@@ -867,12 +867,16 @@ TEST(Hoi4worldStatesHoi4statesconverter, AirBaseLevelIncreasesFromInfrastructure
        CoastalProvinces());
 
    EXPECT_THAT(hoi4_states.states,
-       testing::ElementsAre(
-           State(1, {.owner = "ONE", .provinces = {10, 20, 30}, .air_base_level = 1, .vic3_infrastructure = 123.4F}),
+       testing::ElementsAre(State(1,
+                                {.owner = "ONE",
+                                    .provinces = {10, 20, 30},
+                                    .air_base_level = 0,
+                                    .vic3_infrastructure = 123.4F,
+                                    .infrastructure = 1}),
            State(2,
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
-                   .air_base_level = 2,
+                   .air_base_level = 1,
                    .vic3_infrastructure = 567.8F,
                    .infrastructure = 3})));
 }
@@ -1042,14 +1046,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
                                     .category = "test_category_four",
                                     .civilian_factories = 5,
                                     .military_factories = 3,
-                                    .air_base_level = 3}),
+                                    .air_base_level = 2}),
            State(2,
                {.owner = "ONE",
                    .provinces = {10, 20, 30},
                    .category = "test_category_two",
                    .civilian_factories = 2,
                    .military_factories = 2,
-                   .air_base_level = 2})));
+                   .air_base_level = 1})));
 }
 
 
@@ -1183,14 +1187,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreValuedAtHalfTotalFactor
                                     .victory_points = {{30, 3}},
                                     .civilian_factories = 3,
                                     .military_factories = 2,
-                                    .air_base_level = 2}),
+                                    .air_base_level = 1}),
            State(2,
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
                    .victory_points = {{50, 2}},
                    .civilian_factories = 2,
                    .military_factories = 2,
-                   .air_base_level = 2})));
+                   .air_base_level = 1})));
 }
 
 
@@ -1318,11 +1322,11 @@ TEST(Hoi4worldStatesHoi4statesconverter, InfrastructureIsTransferredFromVic3Stat
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(
-           State(1, {.owner = "TAG", .provinces = {10, 20, 30}, .air_base_level = 1, .vic3_infrastructure = 123.4F}),
+           State(1, {.owner = "TAG", .provinces = {10, 20, 30}, .air_base_level = 0, .vic3_infrastructure = 123.4F}),
            State(2,
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
-                   .air_base_level = 2,
+                   .air_base_level = 1,
                    .vic3_infrastructure = 567.8F,
                    .infrastructure = 3})));
    EXPECT_THAT(hoi4_states.province_to_state_id_map,
