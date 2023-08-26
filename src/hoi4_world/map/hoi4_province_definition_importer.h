@@ -11,7 +11,8 @@
 namespace hoi4
 {
 
-[[nodiscard]] maps::ProvinceDefinitions::storage_type ImportProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem);
+[[nodiscard]] maps::ProvinceDefinitions::storage_type ImportProvinceDefinitions(
+    const commonItems::ModFilesystem& mod_filesystem);
 
 }
 
