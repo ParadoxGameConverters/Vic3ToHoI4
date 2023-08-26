@@ -1,7 +1,7 @@
 ## Army units.
 
-pm_line_infantry = {
-}
+pm_irregular_infantry = {}
+pm_line_infantry = {}
 pm_skirmish_infantry = {
    infantry = 0.25
    cavalry = 0.05
@@ -22,15 +22,13 @@ pm_mechanized_infantry = {
    equipment_scale = 100
 }
 
-pm_cannon_artillery = {
-}
+pm_no_artillery = {}
+pm_cannon_artillery = {}
 pm_mobile_artillery = {
   artillery = 0.1
 }
-pm_shrapnel_artillery = {
-}
-pm_siege_artillery = {
-}
+pm_shrapnel_artillery = {}
+pm_siege_artillery = {}
 
 pm_cavalry_scouts = {
   cavalry = 0.2
@@ -40,6 +38,11 @@ pm_bicycle_messengers = {
 pm_motorized_recon = {
 }
 pm_aerial_recon = {
+}
+
+pm_no_specialists = {
+}
+pm_machine_gunners = {
 }
 
 pm_wound_dressing = {
