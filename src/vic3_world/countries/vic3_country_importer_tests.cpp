@@ -35,6 +35,7 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
    EXPECT_EQ(country->GetLastElection(), std::nullopt);
    EXPECT_EQ(country->GetHeadOfStateId(), 0);
    EXPECT_FALSE(country->IsCivilWarCountry());
+   EXPECT_EQ(country->GetLegitimacy(), 0);
 }
 
 
@@ -167,6 +168,26 @@ TEST(Vic3WorldCountriesCountryImporter, DeadCountriesAreSkipped)
    const auto country = CountryImporter{}.ImportCountry(0, input, {});
 
    EXPECT_FALSE(country.has_value());
+}
+
+TEST(Vic3WorldCountriesCountryImporter, CountersSectionParsed)
+{
+   CountryImporter country_importer;
+
+   std::stringstream input_one;
+   input_one << "={\n";
+   input_one << "\tdefinition=\"TAG\"";
+   input_one << "\tcapital=12345\n";
+   input_one << "\tcounters={\n";
+   input_one << "\tbuildings=279\n";
+   input_one << "\tlegitimacy=48\n";
+   input_one << "\t}\n";
+   input_one << "}";
+   const auto country_one =
+       country_importer.ImportCountry(144, input_one, {{"TAG", commonItems::Color(std::array{1, 2, 3})}});
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one.value().GetLegitimacy(), 48);
 }
 
 

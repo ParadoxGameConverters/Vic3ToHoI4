@@ -7,11 +7,24 @@
 
 #include "external/commonItems/Color.h"
 #include "external/commonItems/Date.h"
+#include "src/vic3_world/institutions/institution.h"
 
 namespace vic3
 {
 // need to extra-forward-declare this because World uses Country, and Country uses World
 class World;
+
+/// <summary>
+/// tax level, salary level, etc.
+/// </summary>
+enum class BudgetLevel
+{
+   VeryLow,
+   Low,
+   Medium,
+   High,
+   VeryHigh
+};
 
 struct CountryOptions
 {
@@ -20,7 +33,7 @@ struct CountryOptions
    commonItems::Color color;
    std::optional<int> capital_state;
    std::string country_type;
-   bool is_civil_war;
+   bool is_civil_war = false;
    std::set<std::string> active_laws;
    std::set<int> primary_culture_ids;
    std::set<std::string> primary_cultures;
@@ -30,6 +43,10 @@ struct CountryOptions
    std::vector<int> ig_ids;
    std::set<int> puppets;
    std::optional<int> overlord;
+   int legitimacy = 0;
+   BudgetLevel tax_level;
+   BudgetLevel salary_level;
+   BudgetLevel mil_salary_level;
 };
 
 enum class RankCategory
@@ -60,7 +77,11 @@ class Country
        character_ids_(std::move(options.character_ids)),
        ig_ids_(std::move(options.ig_ids)),
        puppets_(std::move(options.puppets)),
-       overlord_(options.overlord)
+       overlord_(options.overlord),
+       legitimacy_(options.legitimacy),
+       tax_level_(options.tax_level),
+       salary_level_(options.salary_level),
+       mil_salary_level_(options.mil_salary_level)
    {
    }
 
@@ -82,6 +103,10 @@ class Country
    [[nodiscard]] const std::vector<int>& GetInterestGroupIds() const { return ig_ids_; }
    [[nodiscard]] const std::set<int>& GetPuppets() const { return puppets_; }
    [[nodiscard]] const std::optional<int>& GetOverlord() const { return overlord_; }
+   [[nodiscard]] const int GetLegitimacy() const { return legitimacy_; }
+   [[nodiscard]] const BudgetLevel GetTaxLevel() const { return tax_level_; }
+   [[nodiscard]] const BudgetLevel GetGovernmentSalaryLevel() const { return salary_level_; }
+   [[nodiscard]] const BudgetLevel GetMilitarySalaryLevel() const { return mil_salary_level_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
@@ -93,6 +118,7 @@ class Country
 
    [[nodiscard]] std::set<std::string> GetAcquiredTechnologies(const vic3::World& world) const;
    [[nodiscard]] RankCategory GetCountryRankCategory(const vic3::World& world) const;
+   [[nodiscard]] std::vector<Institution> GetInstitutions(const vic3::World& world) const;
 
    bool operator==(const Country&) const = default;
 
@@ -112,6 +138,10 @@ class Country
    std::vector<int> ig_ids_;
    std::set<int> puppets_;
    std::optional<int> overlord_;
+   int legitimacy_;
+   BudgetLevel tax_level_;
+   BudgetLevel salary_level_;
+   BudgetLevel mil_salary_level_;
 };
 
 }  // namespace vic3

@@ -1,5 +1,7 @@
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 
+#include <src/hoi4_world/world/hoi4_world.h>
+
 #include <algorithm>
 #include <cstdint>
 #include <numeric>
@@ -11,7 +13,8 @@
 #include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
 #include "src/maps/map_data.h"
-
+#include "src/out_hoi4/world/out_world.h"
+#include "src/support/converter_utils.h"
 
 
 namespace
@@ -754,16 +757,13 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
       }
    }
 
-   Log(LogLevel::Info) << fmt::format("\t\tTotal factories: {} (vanilla hoi4 had {})",
+   OutputStats("Total factories",
        civilian_factories + military_factories + dockyards,
        default_civilian_factories + default_military_factories + default_dockyards);
-   Log(LogLevel::Info) << fmt::format("\t\t\tCivilian factories: {} (vanilla hoi4 had {})",
-       civilian_factories,
-       default_civilian_factories);
-   Log(LogLevel::Info) << fmt::format("\t\t\tMilitary factories: {} (vanilla hoi4 had {})",
-       military_factories,
-       default_military_factories);
-   Log(LogLevel::Info) << fmt::format("\t\t\tDockyards: {} (vanilla hoi4 had {})", dockyards, default_dockyards);
+   OutputStats("Civilian factories", civilian_factories, default_civilian_factories);
+   OutputStats("Military factories", military_factories, default_military_factories);
+   OutputStats("Dockyards", dockyards, default_dockyards);
+
    for (const auto& [factories, num_states]: state_factory_numbers)
    {
       Log(LogLevel::Info) << fmt::format("\t\t\t{} states had {} factories", num_states, factories);
@@ -805,19 +805,14 @@ void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
           return total + state.second.GetManpower();
        });
 
-   Log(LogLevel::Info) << fmt::format("\t\tManpower conversion: total={}, target={}, match={}%",
-       manpower,
-       default_manpower,
-       static_cast<double>(manpower) / static_cast<double>(default_manpower) * 100.0F);
+   OutputStats("Manpower", manpower, default_manpower);
 }
 
 void LogInfrastructure(mappers::InfrastructureMapper infrastructure_mapper)
 {
-   Log(LogLevel::Info) << fmt::format("Infrastructure conversion: total={}, target={}, match={}%",
+   OutputStats("Infrastructure",
        infrastructure_mapper.GetConvertedInfrastructure(),
-       infrastructure_mapper.GetTargetInfrastructure(),
-       static_cast<float>(infrastructure_mapper.GetConvertedInfrastructure()) /
-           static_cast<float>(infrastructure_mapper.GetTargetInfrastructure()) * 100.0F);
+       infrastructure_mapper.GetTargetInfrastructure());
    Log(LogLevel::Info) << fmt::format("\tfudge factor is {}", infrastructure_mapper.GetFudgeFactor());
 }
 
@@ -848,7 +843,6 @@ hoi4::States CreateStates(const vic3::World& source_world,
        MapVic3ProvincesToStateNames(source_world.GetStateRegions());
    std::map<std::string, std::string> hoi4_state_names_to_vic3_state_names;
    mappers::InfrastructureMapper infrastructure_mapper(source_world.GetStates());
-
    for (const auto& vic3_state_id: vic3_state_ids_by_vic3_industry)
    {
       const auto& hoi4_provinces = vic3_state_id_to_hoi4_provinces.at(vic3_state_id);
@@ -891,7 +885,6 @@ hoi4::States CreateStates(const vic3::World& source_world,
              return total + static_cast<int>(province_set.size());
           });
       int total_non_wasteland_provinces = static_cast<int>(hoi4_provinces.size()) - total_wasteland_provinces;
-
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
       const float total_factories =
           static_cast<float>(source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;

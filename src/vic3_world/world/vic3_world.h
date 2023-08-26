@@ -12,12 +12,12 @@
 #include "src/vic3_world/country_rankings/country_rankings.h"
 #include "src/vic3_world/cultures/culture_definition.h"
 #include "src/vic3_world/ideologies/ideologies.h"
+#include "src/vic3_world/institutions/institution.h"
 #include "src/vic3_world/interest_groups/interest_group.h"
 #include "src/vic3_world/pacts/pact.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/states/state_region.h"
 #include "src/vic3_world/states/vic3_state.h"
-
 
 
 namespace vic3
@@ -39,6 +39,7 @@ struct WorldOptions
    std::map<int, Pact> pacts;
    Ideologies ideologies;
    int playthrough_id;
+   std::map<int, std::vector<Institution>> institutions;
 };
 
 
@@ -59,7 +60,8 @@ class World
        igs_(std::move(world_options.igs)),
        pacts_(std::move(world_options.pacts)),
        ideologies_(std::move(world_options.ideologies)),
-       playthrough_id_(world_options.playthrough_id)
+       playthrough_id_(world_options.playthrough_id),
+       institutions_(world_options.institutions)
    {
    }
 
@@ -83,6 +85,14 @@ class World
    [[nodiscard]] const std::map<int, Pact>& GetPacts() const { return pacts_; }
    [[nodiscard]] const Ideologies& GetIdeologies() const { return ideologies_; }
    [[nodiscard]] int GetPlaythroughId() const { return playthrough_id_; }
+   [[nodiscard]] std::vector<Institution> GetInstitutions(int country_id) const
+   {
+      if (institutions_.contains(country_id))
+      {
+         return institutions_.at(country_id);
+      }
+      return {};
+   }
 
   private:
    std::map<int, Country> countries_;
@@ -98,6 +108,7 @@ class World
    std::map<int, InterestGroup> igs_;
    std::map<int, Pact> pacts_;
    Ideologies ideologies_;
+   std::map<int, std::vector<Institution>> institutions_;
 
    int playthrough_id_;  // Seed, for deterministic results across conversions for the same series of saves
 };

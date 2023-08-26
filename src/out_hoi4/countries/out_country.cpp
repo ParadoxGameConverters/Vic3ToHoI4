@@ -208,8 +208,8 @@ void out::OutputCountryHistory(std::string_view output_name,
       country_history << fmt::format("\t{}\n", law);
    }
    country_history << "}\n";
-   country_history << "set_stability = 0.60\n";
-   country_history << "set_war_support = 0.60\n";
+   country_history << fmt::format("set_stability = {}\n", country.GetStability());
+   country_history << fmt::format("set_war_support = {:.2f}\n", country.GetWarSupport());
    country_history << "\n";
 
    country_history << country.GetTechnologies();
