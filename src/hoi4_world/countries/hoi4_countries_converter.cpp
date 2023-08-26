@@ -70,7 +70,8 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
    const std::vector<EquipmentVariant> all_ship_variants = ImportEquipmentVariants("configurables/ship_types.txt");
    const std::vector<EquipmentVariant> all_plane_variants = ImportEquipmentVariants("configurables/plane_designs.txt");
    const std::vector<EquipmentVariant> all_tank_variants = ImportEquipmentVariants("configurables/tank_designs.txt");
-   const std::vector<DivisionTemplate> division_templates = ImportDivisionTemplates("configurables/division_templates.txt");
+   const std::vector<DivisionTemplate> division_templates =
+       ImportDivisionTemplates("configurables/division_templates.txt");
 
    const mappers::LeaderTypeMapper leader_type_mapper =
        mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
