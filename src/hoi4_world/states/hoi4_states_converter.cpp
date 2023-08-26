@@ -527,6 +527,21 @@ std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const std:
 }
 
 
+int DetermineAirbaseLevel(int total_factories, int total_infrastructure)
+{
+   constexpr int kNumFactoriesPerAirbase = 4;
+   constexpr int kAirbasesForInfrastructureLevel = 3;
+
+   int airbase_level = total_factories / kNumFactoriesPerAirbase;
+   if (total_infrastructure >= kAirbasesForInfrastructureLevel)
+   {
+      ++airbase_level;
+   }
+
+   return airbase_level;
+}
+
+
 hoi4::Resources AssignResources(const std::set<int>& provinces, const hoi4::ResourcesMap& resources_map)
 {
    hoi4::Resources resources;
@@ -900,6 +915,11 @@ hoi4::States CreateStates(const vic3::World& source_world,
          const auto [naval_base_location, naval_base_level] =
              DetermineNavalBase(province_set, significant_provinces, coastal_provinces, hoi4_to_vic3_province_mappings);
 
+         int infrastructure = infrastructure_mapper.Map(vic3_state_itr->second.GetInfrastructure());
+
+         const int air_base_level =
+             DetermineAirbaseLevel(civilian_factories + military_factories + dockyards, infrastructure);
+
          const hoi4::Resources resources = AssignResources(province_set, world_framework.resources_map);
 
          const std::string category = world_framework.state_categories.GetBestCategory(
@@ -940,9 +960,10 @@ hoi4::States CreateStates(const vic3::World& source_world,
                  .dockyards = dockyards,
                  .naval_base_location = naval_base_location,
                  .naval_base_level = naval_base_level,
+                 .air_base_level = air_base_level,
                  .cores = cores,
                  .vic3_infrastructure = vic3_state_itr->second.GetInfrastructure(),
-                 .infrastructure = infrastructure_mapper.Map(vic3_state_itr->second.GetInfrastructure())});
+                 .infrastructure = infrastructure});
       }
       for (const auto& province_set: final_wasteland_connected_province_sets)
       {
