@@ -40,7 +40,7 @@ float vic3::Buildings::GetTotalGoodSalesValueInWorld() const
 }
 
 
-const std::optional<vic3::Building> vic3::Buildings::GetBuildingInState(const std::string building_type,
+const std::optional<vic3::Building> vic3::Buildings::GetBuildingInState(const std::string& building_type,
     int state_number) const
 {
    const auto itr = buildings_.find(state_number);
