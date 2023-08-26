@@ -91,7 +91,7 @@ vic3::StateImporter::StateImporter()
 }
 
 
-vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
+vic3::State vic3::StateImporter::ImportState(const std::string& key, std::istream& input_stream)
 {
    owner_number_.reset();
    incorporated_ = false;
@@ -100,9 +100,11 @@ vic3::State vic3::StateImporter::ImportState(std::istream& input_stream)
    population_ = 0;
    employed_population_ = 0;
 
+   int id = std::stoi(key);
    state_parser_.parseStream(input_stream);
 
-   return State({.owner_number = owner_number_,
+   return State({ .id = id,
+       .owner_number = owner_number_,
        .incorporated = incorporated_,
        .infrastructure = infrastructure_,
        .provinces = provinces_,

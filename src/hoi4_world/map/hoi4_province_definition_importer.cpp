@@ -7,7 +7,7 @@
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 
 
-maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem)
+maps::ProvinceDefinitions::storage_type hoi4::ImportProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem)
 {
    const auto path = mod_filesystem.GetActualFileLocation("/map/definition.csv");
    if (!path)
@@ -114,8 +114,8 @@ maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::Mod
       terrain_types.emplace(province_name, terrain);
    }
 
-   return maps::ProvinceDefinitions({.land_provinces = land_provinces,
+   return {.land_provinces = land_provinces,
        .sea_provinces = sea_provinces,
        .terrain_types = terrain_types,
-       .color_to_province_map = color_to_province_map});
+       .color_to_province_map = color_to_province_map};
 }

@@ -4,14 +4,17 @@
 
 
 #include <set>
+#include <ranges>
 
-
+#include "src/vic3_world/buildings/building.h"
 
 namespace vic3
 {
+class World;
 
 struct StateOptions
 {
+   int id;
    std::optional<int> owner_number;
    std::optional<std::string> owner_tag;
    bool incorporated = false;
@@ -26,7 +29,7 @@ class State
 {
   public:
    State() = default;
-   explicit State(StateOptions state_options):
+   explicit State(StateOptions state_options): id_(state_options.id),
        owner_number_(state_options.owner_number),
        owner_tag_(std::move(state_options.owner_tag)),
        incorporated_(state_options.incorporated),
@@ -44,12 +47,14 @@ class State
    [[nodiscard]] const std::set<int>& GetProvinces() const { return provinces_; }
    [[nodiscard]] int GetPopulation() const { return population_; }
    [[nodiscard]] int GetEmployedPopulation() const { return employed_population_; }
+   [[nodiscard]] std::vector<Building> GetBuildings(const World& source_world);
 
    void SetOwnerTag(std::string_view owner_tag) { owner_tag_ = owner_tag; }
 
    bool operator==(const State&) const = default;
 
   private:
+   int id_;
    std::optional<int> owner_number_;
    std::optional<std::string> owner_tag_;
    bool incorporated_ = false;
