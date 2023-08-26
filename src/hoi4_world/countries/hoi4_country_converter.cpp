@@ -9,6 +9,7 @@
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
+#include "src/support/converter_utils.h"
 #include "src/vic3_world/countries/vic3_country.h"
 #include "src/vic3_world/ideologies/ideologies.h"
 #include "src/vic3_world/world/vic3_world.h"
@@ -17,12 +18,6 @@
 
 namespace
 {
-
-constexpr int FloorMod(const int lhs, const int rhs)
-{
-   return (lhs % rhs + rhs) % rhs;
-}
-
 
 bool StateAsCapitalCompareFunction(const hoi4::State& a, const hoi4::State& b)
 {
@@ -197,6 +192,13 @@ std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std
    }
 
    return {economy_law, trade_law, military_law};
+}
+
+float ConvertStability(const vic3::World& source_world, const vic3::Country& country)
+{
+   // TODO once we can calculate legitimacy
+   float stability = std::clamp(country.GetLegitimacy(), 0, 100) * 0.8F / 100.0F;
+   return stability == 0.0 ? 0.0F : 0.60F;
 }
 
 
@@ -504,5 +506,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .puppets = puppets,
        .overlord = overlord,
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
+       .stability = ConvertStability(source_world, source_country),
        .units = units});
 }

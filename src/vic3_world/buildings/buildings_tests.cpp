@@ -87,5 +87,39 @@ TEST(Vic3WorldBuildingsBuildingsTests, TotalGoodsValueInStateAreReported)
    EXPECT_EQ(buildings.GetTotalGoodSalesValueInState(2), 0.75F);
 }
 
+TEST(Vic3WorldBuildingsBuildingsTests, BuildingsInNonexistentStateIsEmptyList)
+{
+   const Buildings buildings({
+       {1,
+           {
+               Building("", std::nullopt, 1.0F),
+           }},
+       {2,
+           {
+               Building("", std::nullopt, 0.5F),
+               Building("", std::nullopt, 0.25F),
+           }},
+   });
+
+   EXPECT_TRUE(buildings.GetBuildingsInState(100).empty());
+}
+
+TEST(Vic3WorldBuildingsBuildingsTests, BuildingsCanBeReturnedByState)
+{
+   const Buildings buildings({
+       {1,
+           {
+               Building("", std::nullopt, 1.0F),
+           }},
+       {2,
+           {
+               Building("", std::nullopt, 0.5F),
+               Building("", std::nullopt, 0.25F),
+           }},
+   });
+
+   EXPECT_THAT(buildings.GetBuildingsInState(2),
+       testing::UnorderedElementsAre(Building("", std::nullopt, 0.5F), Building("", std::nullopt, 0.25F)));
+}
 
 }  // namespace vic3

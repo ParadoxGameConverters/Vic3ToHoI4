@@ -9,6 +9,24 @@
 namespace hoi4
 {
 
+
+TEST(Hoi4worldStatesHoi4state, AirBaseLevelCanBeIncreased)
+{
+   hoi4::State test_state(1, {});
+   test_state.IncreaseAirBaseLevel(5);
+
+   EXPECT_EQ(test_state.GetAirBaseLevel(), 5);
+}
+
+
+TEST(Hoi4worldStatesHoi4state, AirBaseLevelCappedAtTen)
+{
+   hoi4::State test_state(1, {});
+   test_state.IncreaseAirBaseLevel(20);
+
+   EXPECT_EQ(test_state.GetAirBaseLevel(), 10);
+}
+
 TEST(Hoi4worldStatesHoi4state, HighestVictoryPointValueCanBeChanged)
 {
    hoi4::State test_state(1, {.victory_points = {{1, 1}, {2, 2}}});

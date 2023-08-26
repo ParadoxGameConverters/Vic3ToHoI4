@@ -1,9 +1,15 @@
 #include "src/hoi4_world/world/hoi4_world_framework_builder.h"
 
-#include <src/hoi4_world/map/resources_map_importer.h>
-#include <src/hoi4_world/map/strategic_regions_importer.h>
-#include <src/hoi4_world/states/default_states_importer.h>
-#include <src/hoi4_world/states/state_categories.h>
+#include "external/fmt/include/fmt/format.h"
+#include "src/hoi4_world/map/coastal_provinces.h"
+#include "src/hoi4_world/map/coastal_provinces_creator.h"
+#include "src/hoi4_world/map/hoi4_province_definition_importer.h"
+#include "src/hoi4_world/map/resources_map_importer.h"
+#include "src/hoi4_world/map/strategic_regions_importer.h"
+#include "src/hoi4_world/states/default_states_importer.h"
+#include "src/hoi4_world/states/state_categories.h"
+#include "src/maps/map_data_importer.h"
+#include "src/vic3_world/provinces/vic3_province_definitions.h"
 
 namespace hoi4
 {
@@ -16,6 +22,10 @@ WorldFrameworkBuilder WorldFrameworkBuilder::CreateDefaultWorldFramework(
    wfb.DefaultDefaultStates();
    wfb.DefaultResourcesMap();
    wfb.DefaultStateCategories();
+   wfb.DefaultProvinceDefinitions();
+
+   auto tmpMapData = maps::MapDataImporter(wfb.province_definitions_).ImportMapData(hoi4_mod_filesystem);
+   wfb.DefaultCoastalProvinces(tmpMapData);
    return wfb;
 }
 
@@ -27,6 +37,7 @@ WorldFrameworkBuilder WorldFrameworkBuilder::CreateNullWorldFramework()
    wfb.default_states_ = {};
    wfb.resources_map_ = {};
    wfb.state_categories_ = {};
+   wfb.province_definitions_ = {};
    return wfb;
 }
 WorldFramework WorldFrameworkBuilder::Build()
@@ -34,7 +45,9 @@ WorldFramework WorldFrameworkBuilder::Build()
    return WorldFramework(std::move(this->strategic_regions_),
        std::move(this->default_states_),
        std::move(this->resources_map_),
-       std::move(this->state_categories_));
+       std::move(this->state_categories_),
+       maps::ProvinceDefinitions{std::move(this->province_definitions_)},
+       CoastalProvinces{std::move(this->coastal_provinces_)});
 }
 
 WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultStrategicRegions()
@@ -97,6 +110,62 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultStateCategories()
 WorldFrameworkBuilder& WorldFrameworkBuilder::SetStateCategories(StateCategories new_categories)
 {
    this->state_categories_ = new_categories;
+   return *this;
+}
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultProvinceDefinitions()
+{
+   province_definitions_ = ImportProvinceDefinitions(hoi4_mod_filesystem_);
+   return *this;
+}
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddLandProvinces(std::vector<std::string> province_ids)
+{
+   for (const auto& id: province_ids)
+   {
+      province_definitions_.land_provinces.emplace(id);
+   }
+   return *this;
+}
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddTestLandProvinces(int count)
+{
+   for (int i = 0; i < count; ++i)
+   {
+      test_province_number_ += 10;
+      province_definitions_.land_provinces.emplace(fmt::format("{}", test_province_number_));
+   }
+   return *this;
+}
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddSeaProvinces(std::vector<std::string> province_ids)
+{
+   for (const auto& id: province_ids)
+   {
+      province_definitions_.sea_provinces.emplace(id);
+   }
+   return *this;
+}
+
+maps::ProvinceDefinitions WorldFrameworkBuilder::CopyProvinceDefinitions()
+{
+   return maps::ProvinceDefinitions{this->province_definitions_};
+}
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultCoastalProvinces(const maps::MapData& map_data)
+{
+   this->coastal_provinces_ = CreateCoastalProvinces(map_data,
+       this->province_definitions_.land_provinces,
+       this->province_definitions_.sea_provinces);
+   return *this;
+}
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddCoastalProvinces(CoastalProvinces::storage_type provinces)
+{
+   for (const auto& province: provinces)
+   {
+      this->coastal_provinces_.emplace(province);
+   }
    return *this;
 }
 

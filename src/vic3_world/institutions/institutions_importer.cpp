@@ -15,7 +15,7 @@ void InstitutionsImporter::operator()(std::istream& input_stream)
 {
    // create single institution parser
    // this has to be in the operator() method so this object can be copied/moved and still work
-   CallableParser institution_parser_;
+   commonItems::parser institution_parser_;
    institution_parser_.registerKeyword("institution", [this](std::istream& input_stream) {
       this->current_institution_.type = commonItems::getString(input_stream);
    });

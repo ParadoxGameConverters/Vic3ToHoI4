@@ -77,8 +77,6 @@ void OutputBookmark(std::string_view output_name,
 
 }  // namespace
 
-
-
 void out::OutputWorld(std::string_view output_name, const hoi4::World& world)
 {
    OutputCountries(output_name, world.GetCountries(), world.GetCharacters());

@@ -13,6 +13,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, NullFrameworkIsEmpty)
    EXPECT_TRUE(world_framework.resources_map.empty());
    EXPECT_EQ(world_framework.state_categories.GetBestCategory(12), "rural");
    EXPECT_TRUE(world_framework.strategic_regions.GetStrategicRegions().empty());
+   EXPECT_TRUE(world_framework.province_definitions.GetLandProvinces().empty());
 }
 
 TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultFrameworkContainsDefaults)
@@ -62,6 +63,10 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultFrameworkContainsDefaults)
                           "\t}"}))));
    EXPECT_THAT(world_framework.strategic_regions.GetProvinceToStrategicRegionMap(),
        testing::UnorderedElementsAre(testing::Pair(144, 42), testing::Pair(169, 42)));
+   EXPECT_THAT(world_framework.province_definitions.GetLandProvinces(),
+       testing::ElementsAre("10", "20", "30", "40", "50", "60"));
+   EXPECT_THAT(world_framework.province_definitions.GetSeaProvinces(), testing::ElementsAre("2"));
+   EXPECT_TRUE(world_framework.coastal_provinces.GetCoastalProvinces().empty());
 }
 
 TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultStrategicRegionsHasValues)
@@ -185,4 +190,37 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStateCategoriesWorks)
    EXPECT_EQ(world_framework.state_categories.GetBestCategory(10), "test_category_four");
 }
 
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddLandProvincesWorks)
+{
+   WorldFramework world_framework =
+       WorldFrameworkBuilder::CreateNullWorldFramework().AddLandProvinces({"10", "30"}).Build();
+
+   EXPECT_THAT(world_framework.province_definitions.GetLandProvinces(), testing::ElementsAreArray({"10", "30"}));
+}
+
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddTestLandProvincesWorks)
+{
+   WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(3).Build();
+
+   EXPECT_THAT(world_framework.province_definitions.GetLandProvinces(), testing::ElementsAreArray({"10", "20", "30"}));
+}
+
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddSeaProvincesWorks)
+{
+   WorldFramework world_framework =
+       WorldFrameworkBuilder::CreateNullWorldFramework().AddSeaProvinces({"10", "30"}).Build();
+
+   EXPECT_THAT(world_framework.province_definitions.GetSeaProvinces(), testing::ElementsAreArray({"10", "30"}));
+}
+
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddCoastalProvincesWorks)
+{
+   WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework()
+                                        .AddTestLandProvinces(2)
+                                        .AddSeaProvinces({"30"})
+                                        .AddCoastalProvinces({{10, {30}}})
+                                        .Build();
+
+   EXPECT_TRUE(world_framework.coastal_provinces.contains(10));
+}
 }  // namespace hoi4

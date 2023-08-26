@@ -614,6 +614,9 @@
     <ClInclude Include="src\mappers\infrastructure\infrastructure_mapper.h">
       <Filter>src\mappers\infrastructure</Filter>
     </ClInclude>
+    <ClInclude Include="src\support\converter_utils.h">
+      <Filter>src\support</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -936,6 +939,12 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\database\database_parser.cpp">
       <Filter>src\vic3_world\database</Filter>
+    </ClCompile>
+    <ClCompile Include="src\support\converter_utils.cpp">
+      <Filter>src\support</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\states\vic3_state.cpp">
+      <Filter>src\vic3_world\states</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

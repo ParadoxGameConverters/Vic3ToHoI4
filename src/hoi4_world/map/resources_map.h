@@ -7,7 +7,6 @@
 #include <string>
 
 
-
 namespace hoi4
 {
 
