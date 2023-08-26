@@ -63,8 +63,11 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultFrameworkContainsDefaults)
                           "\t}"}))));
    EXPECT_THAT(world_framework.strategic_regions.GetProvinceToStrategicRegionMap(),
        testing::UnorderedElementsAre(testing::Pair(144, 42), testing::Pair(169, 42)));
-   EXPECT_TRUE(world_framework.province_definitions.GetLandProvinces().empty());
-   EXPECT_TRUE(world_framework.coastal_provinces.contains(0));
+   EXPECT_THAT(world_framework.province_definitions.GetLandProvinces(),
+       testing::ElementsAre("10", "20", "30", "40", "50", "60"));
+   EXPECT_THAT(world_framework.province_definitions.GetSeaProvinces(),
+       testing::ElementsAre("2"));
+   EXPECT_TRUE(world_framework.coastal_provinces.GetCoastalProvinces().empty());
 }
 
 TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultStrategicRegionsHasValues)
