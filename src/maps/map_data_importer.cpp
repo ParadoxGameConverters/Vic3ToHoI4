@@ -166,7 +166,6 @@ void maps::MapDataImporter::ImportProvinces(const commonItems::ModFilesystem& mo
          Log(LogLevel::Progress) << current_progress;
          prev_progress = current_progress;
       }
-      
    }
 }
 

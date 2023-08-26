@@ -213,14 +213,11 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    hoi4::WorldFramework world_framework =
        hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
 
-   const maps::MapData map_data = maps::MapDataImporter(world_framework.province_definitions).ImportMapData(hoi4_mod_filesystem);
+   const maps::MapData map_data =
+       maps::MapDataImporter(world_framework.province_definitions).ImportMapData(hoi4_mod_filesystem);
 
-   States states = ConvertStates(source_world,
-       world_mapper,
-       world_framework,
-       vic3_significant_provinces,
-       map_data,
-       debug);
+   States states =
+       ConvertStates(source_world, world_mapper, world_framework, vic3_significant_provinces, map_data, debug);
 
    world_framework.strategic_regions.UpdateToMatchNewStates(states.states);
    Buildings buildings = ImportBuildings(states, world_framework.coastal_provinces, map_data, hoi4_mod_filesystem);

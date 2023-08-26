@@ -65,8 +65,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultFrameworkContainsDefaults)
        testing::UnorderedElementsAre(testing::Pair(144, 42), testing::Pair(169, 42)));
    EXPECT_THAT(world_framework.province_definitions.GetLandProvinces(),
        testing::ElementsAre("10", "20", "30", "40", "50", "60"));
-   EXPECT_THAT(world_framework.province_definitions.GetSeaProvinces(),
-       testing::ElementsAre("2"));
+   EXPECT_THAT(world_framework.province_definitions.GetSeaProvinces(), testing::ElementsAre("2"));
    EXPECT_TRUE(world_framework.coastal_provinces.GetCoastalProvinces().empty());
 }
 
@@ -193,16 +192,15 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStateCategoriesWorks)
 
 TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddLandProvincesWorks)
 {
-   WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().AddLandProvinces({"10","30"})
-                                        .Build();
+   WorldFramework world_framework =
+       WorldFrameworkBuilder::CreateNullWorldFramework().AddLandProvinces({"10", "30"}).Build();
 
    EXPECT_THAT(world_framework.province_definitions.GetLandProvinces(), testing::ElementsAreArray({"10", "30"}));
 }
 
 TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddTestLandProvincesWorks)
 {
-   WorldFramework world_framework =
-       WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(3).Build();
+   WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(3).Build();
 
    EXPECT_THAT(world_framework.province_definitions.GetLandProvinces(), testing::ElementsAreArray({"10", "20", "30"}));
 }

@@ -28,8 +28,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
    mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().Build();
    hoi4::WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().Build();
 
-   const auto hoi4_states =
-       ConvertStates(world, world_mapper, world_framework, {}, map_data);
+   const auto hoi4_states = ConvertStates(world, world_mapper, world_framework, {}, map_data);
 
    EXPECT_TRUE(hoi4_states.states.empty());
    EXPECT_TRUE(hoi4_states.province_to_state_id_map.empty());
@@ -58,11 +57,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
    const StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper;
 
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}}), State(2, {.provinces = {40, 50, 60}})));
@@ -113,7 +108,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
            {10, {"x000001", "x000002", "x000003"}},
            {20, {"x000004", "x000005", "x000006"}},
        });
-   
+
    const StrategicRegions strategic_regions;
    const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}, {3, "THR"}, {4, "FOR"}});
 
@@ -139,11 +134,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
    hoi4::WorldFramework world_framework =
        WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(2).Build();
    const maps::MapData map_data({.province_definitions = world_framework.province_definitions});
-   const auto hoi4_states = ConvertStates(world,
-       world_mapper,
-       world_framework,
-       {{"x000001", "city"}, {"x000004", "port"}},
-       map_data);
+   const auto hoi4_states =
+       ConvertStates(world, world_mapper, world_framework, {{"x000001", "city"}, {"x000004", "port"}}, map_data);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.owner = "ONE", .provinces = {10}}),
@@ -164,7 +156,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
            {10, {"x000001", "x000002", "x000003"}},
            {20, {"x000004", "x000005", "x000006"}},
        });
-   
+
    const mappers::CountryMapper country_mapper({{1, "ONE"}, {4, "FOR"}});
 
    vic3::World world = vic3::WorldBuilder::CreateNullWorld()
@@ -189,8 +181,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
    hoi4::WorldFramework world_framework =
        WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(2).Build();
    const maps::MapData map_data({.province_definitions = world_framework.province_definitions});
-   const auto hoi4_states =
-       ConvertStates(world, world_mapper, world_framework, {}, map_data);
+   const auto hoi4_states = ConvertStates(world, world_mapper, world_framework, {}, map_data);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.owner = "ONE", .provinces = {10}}),
@@ -222,11 +213,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
            },
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20}}),
@@ -265,11 +252,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
    const maps::MapData map_data({
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    std::cout.rdbuf(cout_buffer);
 
@@ -326,11 +309,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
    const maps::MapData map_data({
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}}), State(2, {.provinces = {40, 50, 60}})));
@@ -359,10 +338,10 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
    world_mapper.CopyToVicWorld(world);
    hoi4::WorldFrameworkBuilder world_framework =
        WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(6).AddDefaultStates({
-       {1, DefaultState({.provinces = {10, 20}})},
-       {2, DefaultState({.impassable = true, .provinces = {30, 40, 50}})},
-       {3, DefaultState({.provinces = {60}})},
-   });
+           {1, DefaultState({.provinces = {10, 20}})},
+           {2, DefaultState({.impassable = true, .provinces = {30, 40, 50}})},
+           {3, DefaultState({.provinces = {60}})},
+       });
    const maps::MapData map_data({
        .province_neighbors =
            {
@@ -371,11 +350,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
            },
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20}}),
@@ -408,11 +383,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
    mappers::WorldMapperBuilder world_mapper = mappers::WorldMapperBuilder::CreateNullMapper();
    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework();
 
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    EXPECT_TRUE(hoi4_states.states.empty());
    EXPECT_TRUE(hoi4_states.province_to_state_id_map.empty());
@@ -443,11 +414,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
            },
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    std::cout.rdbuf(cout_buffer);
 
@@ -513,8 +480,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
            },
        .province_definitions = world_framework.province_definitions,
    });
-   const auto hoi4_states =
-       ConvertStates(world, world_mapper, world_framework, {}, map_data);
+   const auto hoi4_states = ConvertStates(world, world_mapper, world_framework, {}, map_data);
 
    std::cout.rdbuf(cout_buffer);
 
@@ -557,11 +523,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
            },
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    std::cout.rdbuf(cout_buffer);
 
@@ -611,11 +573,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
    const maps::MapData map_data({
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10}}),
@@ -651,11 +609,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
            },
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.owner = "TAG", .provinces = {10, 20, 30}}),
@@ -675,7 +629,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
 
 
 TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
-{std::stringstream log;
+{
+   std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
@@ -698,11 +653,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
            },
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states = ConvertStates(world.Build(),
-       world_mapper.Build(),
-       world_framework.Build(),
-       {},
-       map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
    std::cout.rdbuf(cout_buffer);
 

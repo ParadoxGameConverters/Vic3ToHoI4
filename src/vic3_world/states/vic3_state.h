@@ -3,8 +3,8 @@
 
 
 
-#include <set>
 #include <ranges>
+#include <set>
 
 #include "src/vic3_world/buildings/building.h"
 
@@ -29,7 +29,8 @@ class State
 {
   public:
    State() = default;
-   explicit State(StateOptions state_options): id_(state_options.id),
+   explicit State(StateOptions state_options):
+       id_(state_options.id),
        owner_number_(state_options.owner_number),
        owner_tag_(std::move(state_options.owner_tag)),
        incorporated_(state_options.incorporated),

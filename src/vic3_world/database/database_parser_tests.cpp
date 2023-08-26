@@ -116,9 +116,7 @@ TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserCanForwardIds)
    parser.parseStream(input);
 
    EXPECT_THAT(dbElements,
-       testing::ElementsAre(testing::Pair("0", "value1"),
-           testing::Pair("1", "value4"),
-           testing::Pair("3", "value2")));
+       testing::ElementsAre(testing::Pair("0", "value1"), testing::Pair("1", "value4"), testing::Pair("3", "value2")));
 }
 
 }  // namespace vic3

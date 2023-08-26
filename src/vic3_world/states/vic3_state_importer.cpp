@@ -103,7 +103,7 @@ vic3::State vic3::StateImporter::ImportState(const std::string& key, std::istrea
    int id = std::stoi(key);
    state_parser_.parseStream(input_stream);
 
-   return State({ .id = id,
+   return State({.id = id,
        .owner_number = owner_number_,
        .incorporated = incorporated_,
        .infrastructure = infrastructure_,

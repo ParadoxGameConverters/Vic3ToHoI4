@@ -8,8 +8,8 @@
 #include "src/hoi4_world/map/strategic_regions_importer.h"
 #include "src/hoi4_world/states/default_states_importer.h"
 #include "src/hoi4_world/states/state_categories.h"
-#include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/maps/map_data_importer.h"
+#include "src/vic3_world/provinces/vic3_province_definitions.h"
 
 namespace hoi4
 {
