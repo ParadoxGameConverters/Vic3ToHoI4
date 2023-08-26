@@ -12,7 +12,7 @@ namespace vic3
 TEST(Vic3worldStateVic3stateimporter, DefaultsAreDefaulted)
 {
    std::stringstream input;
-   const auto state = StateImporter{}.ImportState(0, input);
+   const auto state = StateImporter{}.ImportState("0", input);
 
    EXPECT_FALSE(state.GetOwnerNumber().has_value());
    EXPECT_FALSE(state.GetOwnerTag().has_value());
@@ -33,7 +33,7 @@ TEST(Vic3worldStateVic3stateimporter, ExceptionWhenProvinceHasOddNumberOfItems)
    input << "\t}";
    input << "}";
 
-   EXPECT_THROW(const auto _ = StateImporter{}.ImportState(0, input), std::runtime_error);
+   EXPECT_THROW(const auto _ = StateImporter{}.ImportState("0", input), std::runtime_error);
 }
 
 
@@ -59,7 +59,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
    input << "\t\tpopulation_unemployed_workforce=18\n";
    input << "\t}\n";
    input << "}";
-   const auto state = StateImporter{}.ImportState(0, input);
+   const auto state = StateImporter{}.ImportState("0", input);
 
    EXPECT_EQ(state.GetOwnerNumber(), 42);
    EXPECT_FALSE(state.GetOwnerTag().has_value());
@@ -91,7 +91,7 @@ TEST(Vic3worldStateVic3stateimporter, PartialIncorporationIsNotIncorporated)
    input << "={\n";
    input << "\tincorporation = 0.123\n";
    input << "}";
-   const auto state = StateImporter{}.ImportState(0, input);
+   const auto state = StateImporter{}.ImportState("0", input);
 
    EXPECT_FALSE(state.IsIncorporated());
 }
@@ -111,7 +111,7 @@ TEST(Vic3worldStateVic3stateimporter, Pre1_3PopStatisticsCanBeImported)
    input << "\t\tsubsisting_working_adults=14\n";  // subsisting workers are not counted for employed workers
    input << "\t}\n";
    input << "}";
-   const auto state = StateImporter{}.ImportState(0, input);
+   const auto state = StateImporter{}.ImportState("0", input);
 
    EXPECT_EQ(state.GetPopulation(), 12);
    EXPECT_EQ(state.GetEmployedPopulation(), 18);
@@ -140,10 +140,10 @@ TEST(Vic3worldStateVic3stateimporter, MultipleStatesCanBeInput)
    input_one << "\t\tsubsisting_working_adults=14";  // subsisting workers are not counted for employed workers
    input_one << "\t}\n";
    input_one << "}";
-   const auto state_one = state_importer.ImportState(0, input_one);
+   const auto state_one = state_importer.ImportState("0", input_one);
 
    std::stringstream input_two;
-   const auto state_two = state_importer.ImportState(0, input_two);
+   const auto state_two = state_importer.ImportState("0", input_two);
 
    EXPECT_EQ(state_one.GetOwnerNumber(), 42);
    EXPECT_FALSE(state_one.GetOwnerTag().has_value());

@@ -111,6 +111,7 @@ void maps::MapDataImporter::ImportProvinces(const commonItems::ModFilesystem& mo
       throw std::runtime_error(fmt::format("Could not open {}/map/provinces.bmp", *path));
    }
 
+   int prev_progress = 50;
    const int height = static_cast<int>(province_map.height());
    const int width = static_cast<int>(province_map.width());
    for (int y = 0; y < height; y++)
@@ -159,7 +160,13 @@ void maps::MapDataImporter::ImportProvinces(const commonItems::ModFilesystem& mo
             }
          }
       }
-      Log(LogLevel::Progress) << 50 + (10 * y / height);
+      int current_progress = 50 + (10 * y / height);
+      if (prev_progress != current_progress)
+      {
+         Log(LogLevel::Progress) << current_progress;
+         prev_progress = current_progress;
+      }
+      
    }
 }
 
