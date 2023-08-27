@@ -70,11 +70,11 @@ WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>>
    return *this;
 }
 
-WorldBuilder& WorldBuilder::AddBuildings(const std::map<int, std::vector<vic3::Building>>& buildings)
+WorldBuilder& WorldBuilder::AddBuildings(const std::vector<vic3::Building>& buildings)
 {
    for (auto& building: buildings)
    {
-      this->buildings_.emplace(building);
+      this->buildings_[building.GetStateNumber().value()].emplace_back(building);
    }
    return *this;
 }

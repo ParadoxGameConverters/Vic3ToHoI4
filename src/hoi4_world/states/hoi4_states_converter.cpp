@@ -487,40 +487,46 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
    return {civilian_factories, military_factories, dockyards};
 }
 
-
-std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const std::set<int>& hoi4_provinces,
-    const std::map<std::string, std::string>& significant_vic3_provinces,
-    const hoi4::CoastalProvinces& coastal_provinces,
-    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings)
+/// <summary>
+/// Determine naval bases in the hoi4 state.
+/// We pick 1 hoi4 province and stick all the naval bases there.
+/// </summary>
+std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const vic3::World& source_world,
+    int source_state_id,
+    const hoi4::WorldFramework& world_framework,
+    int total_coastal_provinces,
+    const std::set<int>& hoi4_provinces)
 {
+   const int coastal_province_count = std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
+      return world_framework.coastal_provinces.contains(province_id);
+   });
+
+   const float naval_base_ratio = static_cast<float>(coastal_province_count) / total_coastal_provinces;
+   float total_naval_bases = 0;
+   // get amount of naval bases in the source vic3 state
+   {
+      auto bldgs = source_world.GetBuildings().GetBuildingsInState(source_state_id);
+      auto maybe_building = std::ranges::find_if(bldgs, [](const vic3::Building& b) {
+         return b.GetType() == vic3::BuildingType::NavalBase;
+      });
+      if (maybe_building != bldgs.end())
+      {
+         total_naval_bases = std::min(maybe_building->GetStaffingLevel(), 50.0F);
+      }
+   }
+
+   if (total_naval_bases == 0.0F)
+   {
+      return {std::nullopt, std::nullopt};
+   }
+
+   // find a coastal province to make naval base.
    for (const auto& hoi4_province: hoi4_provinces)
    {
-      if (!coastal_provinces.IsProvinceCoastal(hoi4_province))
+      if (world_framework.coastal_provinces.IsProvinceCoastal(hoi4_province))
       {
-         continue;
+         return {hoi4_province, static_cast<int>(total_naval_bases * naval_base_ratio / 5.0F)};
       }
-
-      const auto province_mapping = hoi4_to_vic3_province_mappings.find(hoi4_province);
-      if (province_mapping == hoi4_to_vic3_province_mappings.end())
-      {
-         continue;
-      }
-
-      if (std::ranges::none_of(province_mapping->second,
-              [significant_vic3_provinces](const std::string& vic3_province) {
-                 if (const auto& significant_province = significant_vic3_provinces.find(vic3_province);
-                     significant_province != significant_vic3_provinces.end())
-                 {
-                    return significant_province->second == "port";
-                 }
-
-                 return false;
-              }))
-      {
-         continue;
-      }
-
-      return {hoi4_province, 1};
    }
 
    return {std::nullopt, std::nullopt};
@@ -816,6 +822,16 @@ void LogInfrastructure(mappers::InfrastructureMapper infrastructure_mapper)
    Log(LogLevel::Info) << fmt::format("\tfudge factor is {}", infrastructure_mapper.GetFudgeFactor());
 }
 
+void LogNavalBases(const std::vector<hoi4::State>& hoi4_states)
+{
+   int64_t naval_bases = std::accumulate(hoi4_states.begin(),
+       hoi4_states.end(),
+       static_cast<int64_t>(0),
+       [](int64_t total, const hoi4::State& state) {
+          return static_cast<uint64_t>(total + state.GetNavalBaseLevel().value_or(0));
+       });
+   OutputStats("Naval base", naval_bases, 1347);
+}
 
 hoi4::States CreateStates(const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
@@ -886,6 +902,9 @@ hoi4::States CreateStates(const vic3::World& source_world,
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
       const float total_factories =
           static_cast<float>(source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
+      const int total_coastal_provinces = std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
+         return world_framework.coastal_provinces.contains(province_id);
+      });
       for (const auto& province_set: final_connected_province_sets)
       {
          RecordStateNamesMapping(province_set,
@@ -910,10 +929,8 @@ hoi4::States CreateStates(const vic3::World& source_world,
             dockyards = std::get<2>(all_factories);
          }
 
-         const auto [naval_base_location, naval_base_level] = DetermineNavalBase(province_set,
-             significant_provinces,
-             world_framework.coastal_provinces,
-             hoi4_to_vic3_province_mappings);
+         const auto [naval_base_location, naval_base_level] =
+             DetermineNavalBase(source_world, vic3_state_id, world_framework, total_coastal_provinces, province_set);
 
          int infrastructure = infrastructure_mapper.Map(vic3_state_itr->second.GetInfrastructure());
 
@@ -992,6 +1009,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
    LogIndustryStats(hoi4_states, world_framework.default_states, world_framework.state_categories);
    LogManpowerStats(hoi4_states, world_framework.default_states);
    LogInfrastructure(infrastructure_mapper);
+   LogNavalBases(hoi4_states);
 
    return {hoi4_states,
        province_to_state_id_map,

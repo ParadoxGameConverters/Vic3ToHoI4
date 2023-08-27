@@ -41,6 +41,7 @@ class State
    {
    }
 
+   [[nodiscard]] int GetId() const { return id_; }
    [[nodiscard]] const std::optional<int>& GetOwnerNumber() const { return owner_number_; }
    [[nodiscard]] const std::optional<std::string>& GetOwnerTag() const { return owner_tag_; }
    [[nodiscard]] bool IsIncorporated() const { return incorporated_; }
