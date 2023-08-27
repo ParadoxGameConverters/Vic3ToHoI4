@@ -13,6 +13,42 @@
 namespace
 {
 
+
+std::string ModificationFunction(std::string_view placeholder,
+    std::string_view base_localization,
+    std::string_view modifying_localization)
+{
+   std::string updated_localization(base_localization);
+   if (updated_localization.find(placeholder) == std::string::npos)
+   {
+      return updated_localization;
+   }
+
+   return updated_localization.replace(updated_localization.find(placeholder),
+       placeholder.size(),
+       modifying_localization);
+}
+
+
+std::string LoweringModificationFunction(std::string_view placeholder,
+    std::string_view base_localization,
+    std::string_view modifying_localization)
+{
+   std::string updated_localization(base_localization);
+   if (updated_localization.find(placeholder) == std::string::npos)
+   {
+      return updated_localization;
+   }
+
+   std::string lowercase_modifying_localization{modifying_localization};
+   std::ranges::transform(lowercase_modifying_localization, lowercase_modifying_localization.begin(), ::tolower);
+
+   return updated_localization.replace(updated_localization.find(placeholder),
+       placeholder.size(),
+       lowercase_modifying_localization);
+}
+
+
 commonItems::LocalizationDatabase ConvertCountryLocalizations(
     const commonItems::LocalizationDatabase& vic3_localizations,
     const std::map<int, std::string>& country_mappings,
@@ -60,67 +96,33 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
              [](const std::string& base_localization,
                  const std::string& modifying_localization,
                  const std::string& language) {
-                const std::string placeholder = "[COUNTRY.GetDefinition.GetName]";
-                std::string updated_localization = base_localization;
-                if (updated_localization.find(placeholder) == std::string::npos)
-                {
-                   return updated_localization;
-                }
-                return updated_localization.replace(updated_localization.find(placeholder),
-                    placeholder.size(),
+                return ModificationFunction("[COUNTRY.GetDefinition.GetName]",
+                    base_localization,
                     modifying_localization);
              });
          name_block.ModifyForEveryLanguage(*country_localization_block,
              [](const std::string& base_localization,
                  const std::string& modifying_localization,
                  const std::string& language) {
-                const std::string placeholder = "[COUNTRY.GetDefinition.GetName|l]";
-                std::string updated_localization = base_localization;
-                if (updated_localization.find(placeholder) == std::string::npos)
-                {
-                   return updated_localization;
-                }
-                std::string lowercase_modifying_localization{modifying_localization};
-                std::transform(lowercase_modifying_localization.begin(),
-                    lowercase_modifying_localization.end(),
-                    lowercase_modifying_localization.begin(),
-                    ::tolower);
-                return updated_localization.replace(updated_localization.find(placeholder),
-                    placeholder.size(),
-                    lowercase_modifying_localization);
-             });
-         name_block.ModifyForEveryLanguage(*adjective_localization_block,
-             [](const std::string& base_localization,
-                 const std::string& modifying_localization,
-                 const std::string& language) {
-                const std::string placeholder = "[COUNTRY.GetDefinition.GetAdjective]";
-                std::string updated_localization = base_localization;
-                if (updated_localization.find(placeholder) == std::string::npos)
-                {
-                   return updated_localization;
-                }
-                return updated_localization.replace(updated_localization.find(placeholder),
-                    placeholder.size(),
+                return LoweringModificationFunction("[COUNTRY.GetDefinition.GetName|l]",
+                    base_localization,
                     modifying_localization);
              });
          name_block.ModifyForEveryLanguage(*adjective_localization_block,
              [](const std::string& base_localization,
                  const std::string& modifying_localization,
                  const std::string& language) {
-                const std::string placeholder = "[COUNTRY.GetDefinition.GetAdjective|l]";
-                std::string updated_localization = base_localization;
-                if (updated_localization.find(placeholder) == std::string::npos)
-                {
-                   return updated_localization;
-                }
-                std::string lowercase_modifying_localization{modifying_localization};
-                std::transform(lowercase_modifying_localization.begin(),
-                    lowercase_modifying_localization.end(),
-                    lowercase_modifying_localization.begin(),
-                    ::tolower);
-                return updated_localization.replace(updated_localization.find(placeholder),
-                    placeholder.size(),
-                    lowercase_modifying_localization);
+                return ModificationFunction("[COUNTRY.GetDefinition.GetAdjective]",
+                    base_localization,
+                    modifying_localization);
+             });
+         name_block.ModifyForEveryLanguage(*adjective_localization_block,
+             [](const std::string& base_localization,
+                 const std::string& modifying_localization,
+                 const std::string& language) {
+                return LoweringModificationFunction("[COUNTRY.GetDefinition.GetAdjective|l]",
+                    base_localization,
+                    modifying_localization);
              });
          country_localizations.AddOrModifyLocalizationBlock(hoi4_country, name_block);
          country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_DEF", hoi4_country), name_block);
@@ -145,68 +147,33 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
              [](const std::string& base_localization,
                  const std::string& modifying_localization,
                  const std::string& language) {
-                const std::string placeholder = "[COUNTRY.GetDefinition.GetName]";
-                std::string updated_localization = base_localization;
-                if (updated_localization.find(placeholder) == std::string::npos)
-                {
-                   return updated_localization;
-                }
-                return updated_localization.replace(updated_localization.find(placeholder),
-                    placeholder.size(),
+                return ModificationFunction("[COUNTRY.GetDefinition.GetName]",
+                    base_localization,
                     modifying_localization);
              });
          adjective_block.ModifyForEveryLanguage(*country_localization_block,
              [](const std::string& base_localization,
                  const std::string& modifying_localization,
                  const std::string& language) {
-                const std::string placeholder = "[COUNTRY.GetDefinition.GetName|l]";
-                std::string updated_localization = base_localization;
-                if (updated_localization.find(placeholder) == std::string::npos)
-                {
-                   return updated_localization;
-                }
-
-                std::string lowercase_modifying_localization{modifying_localization};
-                std::transform(lowercase_modifying_localization.begin(),
-                    lowercase_modifying_localization.end(),
-                    lowercase_modifying_localization.begin(),
-                    ::tolower);
-                return updated_localization.replace(updated_localization.find(placeholder),
-                    placeholder.size(),
-                    lowercase_modifying_localization);
-             });
-         adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
-             [](const std::string& base_localization,
-                 const std::string& modifying_localization,
-                 const std::string& language) {
-                const std::string placeholder = "[COUNTRY.GetDefinition.GetAdjective]";
-                std::string updated_localization = base_localization;
-                if (updated_localization.find(placeholder) == std::string::npos)
-                {
-                   return updated_localization;
-                }
-                return updated_localization.replace(updated_localization.find(placeholder),
-                    placeholder.size(),
+                return LoweringModificationFunction("[COUNTRY.GetDefinition.GetName|l]",
+                    base_localization,
                     modifying_localization);
              });
          adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
              [](const std::string& base_localization,
                  const std::string& modifying_localization,
                  const std::string& language) {
-                const std::string placeholder = "[COUNTRY.GetDefinition.GetAdjective|l]";
-                std::string updated_localization = base_localization;
-                if (updated_localization.find(placeholder) == std::string::npos)
-                {
-                   return updated_localization;
-                }
-                std::string lowercase_modifying_localization{modifying_localization};
-                std::transform(lowercase_modifying_localization.begin(),
-                    lowercase_modifying_localization.end(),
-                    lowercase_modifying_localization.begin(),
-                    ::tolower);
-                return updated_localization.replace(updated_localization.find(placeholder),
-                    placeholder.size(),
-                    lowercase_modifying_localization);
+                return ModificationFunction("[COUNTRY.GetDefinition.GetAdjective]",
+                    base_localization,
+                    modifying_localization);
+             });
+         adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
+             [](const std::string& base_localization,
+                 const std::string& modifying_localization,
+                 const std::string& language) {
+                return LoweringModificationFunction("[COUNTRY.GetDefinition.GetAdjective|l]",
+                    base_localization,
+                    modifying_localization);
              });
          country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_ADJ", hoi4_country), adjective_block);
       }
