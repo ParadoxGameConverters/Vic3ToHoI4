@@ -27,6 +27,8 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
 
    EXPECT_TRUE(country.has_value());
    EXPECT_TRUE(country.value_or(Country({})).GetTag().empty());
+   EXPECT_FALSE(country.value_or(Country({})).GetDynamicName());
+   EXPECT_FALSE(country.value_or(Country({})).GetDynamicAdjective());
    EXPECT_EQ(country.value_or(Country({})).GetColor(), commonItems::Color(std::array{0, 0, 0}));
    EXPECT_EQ(country.value_or(Country({})).GetCapitalState(), std::nullopt);
    EXPECT_FALSE(country.value_or(Country({})).IsDecentralized());
@@ -44,6 +46,8 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    std::stringstream input;
    input << "={\n";
    input << "\tdefinition=\"TAG\"";
+   input << "\tdynamic_country_name=\"dynamic_name\"";
+   input << "\tdynamic_country_adjective=\"dynamic_adjective\"";
    input << "\tmap_color=rgb {\n";
    input << "\t\t8 89 54\n";
    input << "\t}\n";
@@ -57,6 +61,8 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    EXPECT_TRUE(country.has_value());
    EXPECT_EQ(country.value_or(Country({})).GetNumber(), 42);
    EXPECT_EQ(country.value_or(Country({})).GetTag(), "TAG");
+   EXPECT_EQ(country.value_or(Country({})).GetDynamicName().value_or(""), "dynamic_name");
+   EXPECT_EQ(country.value_or(Country({})).GetDynamicAdjective().value_or(""), "dynamic_adjective");
    EXPECT_EQ(country.value_or(Country({})).GetColor(), commonItems::Color(std::array{8, 89, 54}));
    EXPECT_EQ(country.value_or(Country({})).GetCapitalState(), std::optional<int>(12345));
    EXPECT_TRUE(country.value_or(Country({})).IsDecentralized());

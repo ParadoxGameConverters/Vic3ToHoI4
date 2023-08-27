@@ -45,6 +45,12 @@ vic3::CountryImporter::CountryImporter()
    country_parser_.registerKeyword("definition", [this](std::istream& input_stream) {
       options_.tag = commonItems::remQuotes(commonItems::getString(input_stream));
    });
+   country_parser_.registerKeyword("dynamic_country_name", [this](std::istream& input_stream) {
+      options_.dynamic_name = commonItems::remQuotes(commonItems::getString(input_stream));
+   });
+   country_parser_.registerKeyword("dynamic_country_adjective", [this](std::istream& input_stream) {
+      options_.dynamic_adjective = commonItems::remQuotes(commonItems::getString(input_stream));
+   });
    country_parser_.registerKeyword("map_color", [this](std::istream& input_stream) {
       options_.color = commonItems::Color::Factory{}.getColor(input_stream);
    });

@@ -30,6 +30,8 @@ struct CountryOptions
 {
    int number = 0;
    std::string tag;
+   std::optional<std::string> dynamic_name;
+   std::optional<std::string> dynamic_adjective;
    commonItems::Color color;
    std::optional<int> capital_state;
    std::string country_type;
@@ -65,6 +67,8 @@ class Country
    explicit Country(CountryOptions options):
        number_(options.number),
        tag_(std::move(options.tag)),
+       dynamic_name_(std::move(options.dynamic_name)),
+       dynamic_adjective_(std::move(options.dynamic_adjective)),
        color_(options.color),
        capital_state_(options.capital_state),
        country_type_(std::move(options.country_type)),
@@ -87,6 +91,8 @@ class Country
 
    [[nodiscard]] int GetNumber() const { return number_; }
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
+   [[nodiscard]] const std::optional<std::string>& GetDynamicName() const { return dynamic_name_; }
+   [[nodiscard]] const std::optional<std::string>& GetDynamicAdjective() const { return dynamic_adjective_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
@@ -103,10 +109,10 @@ class Country
    [[nodiscard]] const std::vector<int>& GetInterestGroupIds() const { return ig_ids_; }
    [[nodiscard]] const std::set<int>& GetPuppets() const { return puppets_; }
    [[nodiscard]] const std::optional<int>& GetOverlord() const { return overlord_; }
-   [[nodiscard]] const int GetLegitimacy() const { return legitimacy_; }
-   [[nodiscard]] const BudgetLevel GetTaxLevel() const { return tax_level_; }
-   [[nodiscard]] const BudgetLevel GetGovernmentSalaryLevel() const { return salary_level_; }
-   [[nodiscard]] const BudgetLevel GetMilitarySalaryLevel() const { return mil_salary_level_; }
+   [[nodiscard]] int GetLegitimacy() const { return legitimacy_; }
+   [[nodiscard]] BudgetLevel GetTaxLevel() const { return tax_level_; }
+   [[nodiscard]] BudgetLevel GetGovernmentSalaryLevel() const { return salary_level_; }
+   [[nodiscard]] BudgetLevel GetMilitarySalaryLevel() const { return mil_salary_level_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
@@ -125,6 +131,8 @@ class Country
   private:
    int number_ = 0;
    std::string tag_;
+   std::optional<std::string> dynamic_name_;
+   std::optional<std::string> dynamic_adjective_;
    commonItems::Color color_;
    std::optional<int> capital_state_;
    std::string country_type_;
