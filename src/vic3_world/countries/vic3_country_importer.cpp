@@ -6,34 +6,38 @@
 #include "external/fmt/include/fmt/format.h"
 
 
+
+namespace
+{
+
 vic3::BudgetLevel parseBudgetLevel(const std::string& level_string)
 {
    if (level_string == "very_low")
    {
       return vic3::BudgetLevel::VeryLow;
    }
-   else if (level_string == "low")
+   if (level_string == "low")
    {
       return vic3::BudgetLevel::Low;
    }
-   else if (level_string == "medium")
+   if (level_string == "medium")
    {
       return vic3::BudgetLevel::Medium;
    }
-   else if (level_string == "high")
+   if (level_string == "high")
    {
       return vic3::BudgetLevel::High;
    }
-   else if (level_string == "very_high")
+   if (level_string == "very_high")
    {
       return vic3::BudgetLevel::VeryHigh;
    }
-   else
-   {
-      Log(LogLevel::Error) << fmt::format("Unknown budget level {}", level_string);
-      return vic3::BudgetLevel::Medium;
-   }
+
+   Log(LogLevel::Error) << fmt::format("Unknown budget level {}", level_string);
+   return vic3::BudgetLevel::Medium;
 }
+
+}  // namespace
 
 
 vic3::CountryImporter::CountryImporter()
