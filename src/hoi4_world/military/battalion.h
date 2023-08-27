@@ -21,8 +21,8 @@ class Battalion
    [[nodiscard]] int GetEquipmentScale() const { return equipment_scale_; }
    [[nodiscard]] int GetLocation() const { return location_; }
    [[nodiscard]] float GetStrength() const { return strength_; }
-   [[nodiscard]] void AddStrength(float s) { strength_ += s; }
-   [[nodiscard]] void SetLocation(int l) { location_ = l; }
+   void AddStrength(float s) { strength_ += s; }
+   void SetLocation(int l) { location_ = l; }
 
    std::partial_ordering operator<=>(const Battalion&) const = default;
 
