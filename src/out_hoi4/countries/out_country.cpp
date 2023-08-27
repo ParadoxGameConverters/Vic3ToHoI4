@@ -271,7 +271,7 @@ void out::OutputCountryUnits(const std::string& oob_file, const hoi4::Country& c
       country_oob << "\t\t}\n";
       country_oob << "\t\tlocation = " << unit.location << "\n";
       country_oob << "\t\tdivision_template = \"" << unit.unit_template << "\"\n";
-      country_oob << "\t\tstart_equipment_factor = " << unit.equipment << "\n";
+      country_oob << "\t\tstart_equipment_factor = " << 0.01 * unit.equipment << "\n";
       country_oob << "\t\tstart_experience_factor = 0.2\n";
       country_oob << "\t}\n";
    }

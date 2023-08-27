@@ -1907,12 +1907,6 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
    EXPECT_FLOAT_EQ(country_two->GetStability(), 0.00F);
 }
 
-MATCHER_P(UnitsMatch, unit, "")
-{
-   return arg.unit_template == unit.unit_template && arg.location == unit.location &&
-          std::abs(arg.equipment - unit.equipment) < 0.0001;
-}
-
 TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
@@ -1992,10 +1986,10 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetUnits(),
-       testing::UnorderedElementsAre(UnitsMatch(hoi4::Unit{"Light Infantry", 0.6, 1}),
-           UnitsMatch(hoi4::Unit{"Light Infantry", 0.6, 1}),
-           UnitsMatch(hoi4::Unit{"Light Infantry", 0.5, 2}),
-           UnitsMatch(hoi4::Unit{"Light Infantry", 0.5, 2})));
+       testing::UnorderedElementsAre(hoi4::Unit{"Light Infantry", 60, 1},
+                                     hoi4::Unit{"Light Infantry", 60, 1},
+                                     hoi4::Unit{"Light Infantry", 50, 2},
+                                     hoi4::Unit{"Light Infantry", 50, 2}));
 }
 
 

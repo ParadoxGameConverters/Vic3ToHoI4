@@ -228,7 +228,7 @@ std::optional<hoi4::Unit> MakeTemplate(const hoi4::DivisionTemplate division, st
          needed -= current;
          // Create division with equipment of worst battalion in it.
          // Approximate but reasonable.
-         equipment = std::min(equipment, battalion.GetEquipmentScale());
+         equipment = std::min(equipment, std::min(100, battalion.GetEquipmentScale()));
          if (needed < tolerance)
          {
             location = battalion.GetLocation();
@@ -241,7 +241,7 @@ std::optional<hoi4::Unit> MakeTemplate(const hoi4::DivisionTemplate division, st
       return cand.GetStrength() < tolerance;
    });
 
-   return hoi4::Unit{division.GetName(), float(0.01F * equipment), location};
+   return hoi4::Unit{division.GetName(), equipment, location};
 }
 
 std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
