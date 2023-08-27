@@ -1834,8 +1834,7 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityDefaultsToZero)
        source_country_one,
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
-       States{
-      .vic3_state_ids_to_hoi4_state_ids = vic3_state_ids_to_hoi4_state_ids},
+       States{.vic3_state_ids_to_hoi4_state_ids = vic3_state_ids_to_hoi4_state_ids},
        mappers::IdeologyMapper({}, {}),
        mappers::UnitMapper(templates),
        {},

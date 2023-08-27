@@ -9,7 +9,13 @@ namespace hoi4
 class Battalion
 {
   public:
-  Battalion(const std::string ut, int es, float str): unit_type_(ut), equipment_scale_(es), strength_(str), location_(0) {}
+   Battalion(const std::string ut, int es, float str):
+       unit_type_(ut),
+       equipment_scale_(es),
+       strength_(str),
+       location_(0)
+   {
+   }
 
    [[nodiscard]] const std::string& GetType() const { return unit_type_; }
    [[nodiscard]] int GetEquipmentScale() const { return equipment_scale_; }

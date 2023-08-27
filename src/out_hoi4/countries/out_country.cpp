@@ -261,18 +261,19 @@ void out::OutputCountryUnits(const std::string& oob_file, const hoi4::Country& c
    }
    country_oob << "\n\nunits = {\n";
    std::map<std::string, int> counts;
-   for (const auto& unit : country.GetUnits()) {
-     counts[unit.unit_template]++;
-     country_oob << "\tdivision = {\n";
-     country_oob << "\t\tdivision_name = {\n";
-     country_oob << "\t\t\tis_name_ordered = yes\n";
-     country_oob << "\t\t\tname_order = " << counts[unit.unit_template] << "\n";
-     country_oob << "\t\t}\n";
-     country_oob << "\t\tlocation = " << unit.location << "\n";
-     country_oob << "\t\tdivision_template = \"" << unit.unit_template << "\"\n";
-     country_oob << "\t\tstart_equipment_factor = " << unit.equipment << "\n";
-     country_oob << "\t\tstart_experience_factor = 0.2\n";
-     country_oob << "\t}\n";
+   for (const auto& unit: country.GetUnits())
+   {
+      counts[unit.unit_template]++;
+      country_oob << "\tdivision = {\n";
+      country_oob << "\t\tdivision_name = {\n";
+      country_oob << "\t\t\tis_name_ordered = yes\n";
+      country_oob << "\t\t\tname_order = " << counts[unit.unit_template] << "\n";
+      country_oob << "\t\t}\n";
+      country_oob << "\t\tlocation = " << unit.location << "\n";
+      country_oob << "\t\tdivision_template = \"" << unit.unit_template << "\"\n";
+      country_oob << "\t\tstart_equipment_factor = " << unit.equipment << "\n";
+      country_oob << "\t\tstart_experience_factor = 0.2\n";
+      country_oob << "\t}\n";
    }
    country_oob << "}\n";
    country_oob.close();
