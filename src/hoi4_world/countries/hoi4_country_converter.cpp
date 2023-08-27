@@ -185,10 +185,12 @@ std::optional<hoi4::Unit> MakeTemplate(const hoi4::DivisionTemplate division, st
    {
       required[ut] += str;
    }
+   float total = 0.0F;
    for (const auto& [ut, str]: required)
    {
+      total += str;
       float found = 0.0F;
-      for (auto battalion: battalions)
+      for (const auto& battalion: battalions)
       {
          if (battalion.GetType() != ut)
          {
@@ -200,6 +202,11 @@ std::optional<hoi4::Unit> MakeTemplate(const hoi4::DivisionTemplate division, st
       {
          return {};
       }
+   }
+   if (total < tolerance)
+   {
+      // Avoid an infinite loop of making divisions that don't require any strength.
+      return {};
    }
    int equipment = 100;
    int location = 11666;  // Vienna.

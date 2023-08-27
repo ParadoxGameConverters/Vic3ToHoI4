@@ -1124,7 +1124,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultToEmpty)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, DecentrailzedCountriesGetDecentralizedIdea)
+TEST(Hoi4worldCountriesCountryConverter, DecentralizedCountriesGetDecentralizedIdeas)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -1906,5 +1906,97 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
    EXPECT_EQ(country_one->GetStability(), 0.60F);
    EXPECT_FLOAT_EQ(country_two->GetStability(), 0.00F);
 }
+
+MATCHER_P(UnitsMatch, unit, "")
+{
+   return arg.unit_template == unit.unit_template && arg.location == unit.location &&
+          std::abs(arg.equipment - unit.equipment) < 0.0001;
+}
+
+TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   vic3::Buildings buildings(std::map<int, std::vector<vic3::Building>>{
+       {1,
+           {vic3::Building("building_barracks",
+               1,
+               0,
+               1,
+               std::vector<std::string>{"trench_infantry", "field_hospitals"})}},
+       {2,
+           {vic3::Building("building_barracks",
+               2,
+               0,
+               1,
+               std::vector<std::string>{"trench_infantry", "wound_dressing"})}},
+   });
+   const vic3::World source_world = vic3::World(vic3::WorldOptions{.buildings = buildings});
+   const vic3::Country source_country_one({.number = 1});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   const States states({.states{
+                            State(1,
+                                {
+                                    .owner = "TAG",
+                                    .provinces = {1},
+                                }),
+                            State(2,
+                                {
+                                    .owner = "TAG",
+                                    .provinces = {2},
+                                }),
+                            State(3,
+                                {
+                                    .owner = "TAG",
+                                    .provinces = {3},
+                                }),
+                        },
+       .vic3_state_ids_to_hoi4_state_ids{{1, 1}, {2, 2}, {3, 3}},
+       .hoi4_state_ids_to_owner{{1, "TAG"}, {2, "TAG"}, {3, "TAG"}}});
+   mappers::TemplateMap templates{
+       {"trench_infantry", mappers::BattalionTemplate(50, {{"infantry", 2.0}})},
+       {"field_hospitals", mappers::BattalionTemplate(10, {})},
+       {"wound_dressing", mappers::BattalionTemplate(0, {})},
+   };
+   std::vector<std::string> template_names{"Heavy Infantry", "Cavalry", "Light Infantry", "Ghosts"};
+   hoi4::UnitCount heavy_infantry{{"infantry", 2}};
+   hoi4::UnitCount light_infantry{{"infantry", 1}};
+   hoi4::UnitCount cavalry{{"cavalry", 1}};
+   hoi4::UnitCount artillery{{"artillery", 1}};
+   hoi4::UnitCount empty;
+   std::vector<hoi4::DivisionTemplate> division_templates{
+       hoi4::DivisionTemplate(template_names[0], heavy_infantry, artillery),
+       hoi4::DivisionTemplate(template_names[1], cavalry, empty),
+       hoi4::DivisionTemplate(template_names[2], light_infantry, empty),
+       hoi4::DivisionTemplate(template_names[3], empty, empty),
+   };
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       states,
+       mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
+       {},
+       {},
+       {},
+       {},
+       {},
+       division_templates,
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetUnits(),
+       testing::UnorderedElementsAre(UnitsMatch(hoi4::Unit{"Light Infantry", 0.6, 1}),
+           UnitsMatch(hoi4::Unit{"Light Infantry", 0.6, 1}),
+           UnitsMatch(hoi4::Unit{"Light Infantry", 0.5, 2}),
+           UnitsMatch(hoi4::Unit{"Light Infantry", 0.5, 2})));
+}
+
 
 }  // namespace hoi4
