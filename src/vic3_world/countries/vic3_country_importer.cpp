@@ -6,40 +6,53 @@
 #include "external/fmt/include/fmt/format.h"
 
 
+
+namespace
+{
+
 vic3::BudgetLevel parseBudgetLevel(const std::string& level_string)
 {
    if (level_string == "very_low")
    {
       return vic3::BudgetLevel::VeryLow;
    }
-   else if (level_string == "low")
+   if (level_string == "low")
    {
       return vic3::BudgetLevel::Low;
    }
-   else if (level_string == "medium")
+   if (level_string == "medium")
    {
       return vic3::BudgetLevel::Medium;
    }
-   else if (level_string == "high")
+   if (level_string == "high")
    {
       return vic3::BudgetLevel::High;
    }
-   else if (level_string == "very_high")
+   if (level_string == "very_high")
    {
       return vic3::BudgetLevel::VeryHigh;
    }
-   else
-   {
-      Log(LogLevel::Error) << fmt::format("Unknown budget level {}", level_string);
-      return vic3::BudgetLevel::Medium;
-   }
+
+   Log(LogLevel::Error) << fmt::format("Unknown budget level {}", level_string);
+   return vic3::BudgetLevel::Medium;
 }
+
+}  // namespace
 
 
 vic3::CountryImporter::CountryImporter()
 {
    country_parser_.registerKeyword("definition", [this](std::istream& input_stream) {
       options_.tag = commonItems::remQuotes(commonItems::getString(input_stream));
+   });
+   country_parser_.registerKeyword("dynamic_country_name", [this](std::istream& input_stream) {
+      options_.dynamic_name = commonItems::remQuotes(commonItems::getString(input_stream));
+   });
+   country_parser_.registerKeyword("dynamic_country_adjective", [this](std::istream& input_stream) {
+      options_.dynamic_adjective = commonItems::remQuotes(commonItems::getString(input_stream));
+   });
+   country_parser_.registerKeyword("map_color", [this](std::istream& input_stream) {
+      options_.color = commonItems::Color::Factory{}.getColor(input_stream);
    });
    country_parser_.registerKeyword("capital", [this](std::istream& input_stream) {
       options_.capital_state = commonItems::getInt(input_stream);
@@ -102,9 +115,12 @@ std::optional<vic3::Country> vic3::CountryImporter::ImportCountry(const int numb
       return std::nullopt;
    }
 
-   if (const auto color_itr = color_definitions.find(options_.tag); color_itr != color_definitions.end())
+   if (options_.color == commonItems::Color())
    {
-      options_.color = color_itr->second;
+      if (const auto color_itr = color_definitions.find(options_.tag); color_itr != color_definitions.end())
+      {
+         options_.color = color_itr->second;
+      }
    }
 
    options_.number = number;
