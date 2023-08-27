@@ -1,13 +1,13 @@
 ## Army units.
 
-# 100 max-modernised Vicky barracks levels convert to:
+# 100 max-moderniszd Vicky barracks levels convert to:
 #  45 infantry
 #  10 motorized
 #  15 artillery brigades
 #   5 support artillery
 #  10 light armour
 # battalions, which in turn become
-#  1 armoured division   (6 LA, 3 MOT, 1 SA)
+#  1 armored division    (6 LA, 3 MOT, 1 SA)
 #  1 mechanized division (3 LA, 6 MOT, 1 SA)
 #  5 infantry divisions  (45 INF, 15 ART)
 
