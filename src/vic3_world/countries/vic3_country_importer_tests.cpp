@@ -44,22 +44,38 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    std::stringstream input;
    input << "={\n";
    input << "\tdefinition=\"TAG\"";
+   input << "\tmap_color=rgb {\n";
+   input << "\t\t8 89 54\n";
+   input << "\t}\n";
    input << "\tcapital=12345\n";
    input << "\tcountry_type=\"decentralized\"\n";
    input << "\tcultures={ 35 7 }\n";
    input << "\truler=10\n";
    input << "}";
-   const auto country = CountryImporter{}.ImportCountry(42, input, {{"TAG", commonItems::Color(std::array{1, 2, 3})}});
+   const auto country = CountryImporter{}.ImportCountry(42, input, {});
 
    ASSERT_TRUE(country.has_value());
    EXPECT_EQ(country->GetNumber(), 42);
    EXPECT_EQ(country->GetTag(), "TAG");
-   EXPECT_EQ(country->GetColor(), commonItems::Color(std::array{1, 2, 3}));
+   EXPECT_EQ(country->GetColor(), commonItems::Color(std::array{8, 89, 54}));
    EXPECT_EQ(country->GetCapitalState(), std::optional<int>(12345));
    EXPECT_TRUE(country->IsDecentralized());
    EXPECT_FALSE(country->IsRecognized());
    EXPECT_THAT(country->GetPrimaryCultureIds(), testing::UnorderedElementsAre(35, 7));
    EXPECT_EQ(country->GetHeadOfStateId(), 10);
+}
+
+
+TEST(Vic3WorldCountriesCountryImporter, ColorCanBeFromColorDefinitions)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "\tdefinition=\"TAG\"";
+   input << "}";
+   const auto country = CountryImporter{}.ImportCountry(42, input, {{"TAG", commonItems::Color(std::array{1, 2, 3})}});
+
+   ASSERT_TRUE(country.has_value());
+   EXPECT_EQ(country->GetColor(), commonItems::Color(std::array{1, 2, 3}));
 }
 
 
