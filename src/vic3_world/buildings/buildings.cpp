@@ -48,12 +48,13 @@ const std::optional<vic3::Building> vic3::Buildings::GetBuildingInState(const st
    {
       return {};
    }
-   for (const auto& b: itr->second)
+   auto buildings = itr->second;
+   auto match = std::find_if(buildings.begin(), buildings.end(), [building_type](const vic3::Building& b) {
+      return b.GetType() == building_type;
+   });
+   if (match != buildings.end())
    {
-      if (b.GetType() == building_type)
-      {
-         return b;
-      }
+      return *match;
    }
    return {};
 }

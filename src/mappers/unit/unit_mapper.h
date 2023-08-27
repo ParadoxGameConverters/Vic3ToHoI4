@@ -2,6 +2,7 @@
 #define SRC_MAPPERS_UNIT_UNITMAPPER_H
 
 #include <map>
+#include <set>
 #include <string>
 
 #include "src/hoi4_world/military/battalion.h"
@@ -28,10 +29,10 @@ class UnitMapper
 
   private:
    TemplateMap templates_;
+   static std::set<std::string> warned_;
 };
 
 }  // namespace mappers
-
 
 
 #endif  // SRC_MAPPERS_UNIT_UNITMAPPER_H

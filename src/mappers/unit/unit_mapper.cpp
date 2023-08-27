@@ -5,11 +5,11 @@
 
 #include "external/fmt/include/fmt/format.h"
 
+std::set<std::string> mappers::UnitMapper::warned_;
+
 std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const std::vector<std::string> methods,
     int scale) const
 {
-   static std::set<std::string> warned;
-
    int equip = 0;
    BattalionMap current;
    for (const auto& pm: methods)
@@ -17,11 +17,11 @@ std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const std::vect
       const auto& itr = templates_.find(pm);
       if (itr == templates_.end())
       {
-         if (warned.find(pm) == warned.end())
+         if (warned_.find(pm) == warned_.end())
          {
-            warned.insert(pm);
             Log(LogLevel::Warning) << fmt::format("Missing unit mapping rule for {}", pm);
          }
+         warned_.insert(pm);
          continue;
       }
 
