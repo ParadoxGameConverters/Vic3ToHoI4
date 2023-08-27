@@ -565,24 +565,22 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
    const std::map<int, std::vector<vic3::Building>> buildings = {
        {1, {vic3::Building(vic3::BuildingType::NavalBase, 1, 0.0F, 5.0F, {})}}};
 
-   const vic3::World source_world({
-       .states =
-           {
-               {1,
-                   vic3::State({
-                       .id = 1,
-                       .owner_number = 1,
-                       .owner_tag = "TAG",
-                       .provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12},
-                   })},
-           },
+   const vic3::World source_world({.states =
+                                       {
+                                           {1,
+                                               vic3::State({
+                                                   .id = 1,
+                                                   .owner_number = 1,
+                                                   .owner_tag = "TAG",
+                                                   .provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12},
+                                               })},
+                                       },
        .state_regions =
            {
                {"state", vic3_state_region},
            },
        .province_definitions = province_definitions,
-       .buildings = vic3::Buildings(buildings)
-       });
+       .buildings = vic3::Buildings(buildings)});
 
    const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
                                                  .AddProvinces({

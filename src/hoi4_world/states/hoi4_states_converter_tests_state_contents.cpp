@@ -593,7 +593,39 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
            State(4, {.owner = "TWO", .provinces = {40, 50}, .category = "wasteland", .air_base_level = 0})));
 }
 
+TEST(Hoi4worldStatesHoi4statesconverter, NavalBaseDefaultsToZero)
+{
+   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
+                                  .AddTestStates({{1, 2, 3}})
+                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
+                                  .AddStateRegions({
+                                      {"REGION_ONE", vic3::StateRegion({{"x000002", "port"}}, {})},
+                                      {"REGION_TWO", vic3::StateRegion({{"x000005", "port"}}, {})},
+                                  });
+   mappers::WorldMapperBuilder world_mapper = std::move(
+       mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
+   world_mapper.CopyToVicWorld(world);
+   hoi4::WorldFrameworkBuilder world_framework =
+       WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(6).AddCoastalProvinces(
+           {{20, {21}}, {50, {51}}});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = world_framework.CopyProvinceDefinitions(),
+   });
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1,
+           {.owner = "ONE",
+               .provinces = {10, 20, 30},
+               .victory_points = {{20, 1}},
+               .naval_base_location = std::nullopt,
+               .naval_base_level = std::nullopt})));
+}
 TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
 {
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
