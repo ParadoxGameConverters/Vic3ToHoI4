@@ -1,54 +1,97 @@
 ## Army units.
 
+# 100 max-modernised Vicky barracks levels convert to:
+#  45 infantry
+#  10 motorized
+#  15 artillery brigades
+#   5 support artillery
+#  10 light armour
+# battalions, which in turn become
+#  1 armoured division   (6 LA, 3 MOT, 1 SA)
+#  1 mechanized division (3 LA, 6 MOT, 1 SA)
+#  5 infantry divisions  (45 INF, 15 ART)
+
+# Napoleonic infantry doesn't convert.
 pm_irregular_infantry = {}
 pm_line_infantry = {}
+
+# Rifled muskets become bad light infantry.
 pm_skirmish_infantry = {
-   infantry = 0.25
+   infantry = 0.4
    cavalry = 0.05
+   equipment_scale = 10
+}
+
+# Machine guns improve equipment and shoot cavalry.
+pm_trench_infantry = {
+   infantry = 0.45
    equipment_scale = 25
 }
-pm_trench_infantry = {
-   infantry = 0.25
-   equipment_scale = 66
-}
+
+# Great War infantry has actual guns.
 pm_squad_infantry = {
-   infantry = 0.25
-   artillery = 0.05
-   equipment_scale = 100
+   infantry = 0.35
+   artillery_brigade = 0.1
+   equipment_scale = 40
 }
+# Early thirties infantry is mechanised.
 pm_mechanized_infantry = {
-   infantry = 0.25
-   artillery = 0.05
-   equipment_scale = 100
+   infantry = 0.35
+   motorized = 0.1
+   equipment_scale = 55
 }
 
 pm_no_artillery = {}
 pm_cannon_artillery = {}
 pm_mobile_artillery = {
-  artillery = 0.1
+  artillery_brigade = 0.05
 }
-pm_shrapnel_artillery = {}
-pm_siege_artillery = {}
+pm_shrapnel_artillery = {
+  artillery_brigade = 0.1
+}
+pm_siege_artillery = {
+  artillery = 0.05
+  artillery_brigade = 0.15
+}
 
 pm_cavalry_scouts = {
   cavalry = 0.2
 }
 pm_bicycle_messengers = {
+  cavalry = 0.1
+  equipment_scale = 10
 }
 pm_motorized_recon = {
+  light_armor = 0.05
+  equipment_scale = 15
 }
 pm_aerial_recon = {
+  light_armor = 0.1
+  equipment_scale = 20
 }
 
-pm_no_specialists = {
-}
+pm_no_specialists = {}
 pm_machine_gunners = {
+  infantry = 0.05 
+}
+pm_flamethrower_companies = {
+  infantry = 0.1
+  equipment_scale = 5
+}
+pm_chemical_weapon_specialists = {
+  infantry = 0.1
+  equipment_scale = 10
+}
+pm_infiltrators = {
+  infantry = 0.1
+  equipment_scale = 15
 }
 
-pm_wound_dressing = {
-}
+pm_wound_dressing = {}
 pm_first_aid = {
+  equipment_scale = 5
 }
 pm_field_hospitals = {
+  equipment_scale = 10
 }
 
