@@ -85,38 +85,32 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, CountryLocalizationsCanBeConv
 
    const std::optional<commonItems::LocalizationBlock> hoi_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("HOI");
-   ASSERT_TRUE(hoi_localization_block.has_value());
-   EXPECT_THAT(hoi_localization_block->GetLocalizations(),
+   EXPECT_THAT(hoi_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test"), testing::Pair("spanish", "prueba")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_def_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("HOI_DEF");
-   ASSERT_TRUE(hoi_def_localization_block.has_value());
-   EXPECT_THAT(hoi_def_localization_block->GetLocalizations(),
+   EXPECT_THAT(hoi_def_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test"), testing::Pair("spanish", "prueba")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_adj_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("HOI_ADJ");
-   ASSERT_TRUE(hoi_adj_localization_block.has_value());
-   EXPECT_THAT(hoi_adj_localization_block->GetLocalizations(),
+   EXPECT_THAT(hoi_adj_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "testy"), testing::Pair("spanish", "pruebamente")));
 
    const std::optional<commonItems::LocalizationBlock> two_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("TWO");
-   ASSERT_TRUE(two_localization_block.has_value());
-   EXPECT_THAT(two_localization_block->GetLocalizations(),
+   EXPECT_THAT(two_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
 
    const std::optional<commonItems::LocalizationBlock> two_def_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("TWO_DEF");
-   ASSERT_TRUE(two_def_localization_block.has_value());
-   EXPECT_THAT(two_def_localization_block->GetLocalizations(),
+   EXPECT_THAT(two_def_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
 
    const std::optional<commonItems::LocalizationBlock> two_adj_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("TWO_ADJ");
-   ASSERT_TRUE(two_adj_localization_block.has_value());
-   EXPECT_THAT(two_adj_localization_block->GetLocalizations(),
+   EXPECT_THAT(two_adj_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "testy two"),
            testing::Pair("spanish", "pruebamente dos")));
 }
@@ -204,64 +198,55 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, DynamicCountryLocalizationsCa
 
    const std::optional<commonItems::LocalizationBlock> hoi_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("ONE");
-   ASSERT_TRUE(hoi_localization_block.has_value());
-   EXPECT_THAT(hoi_localization_block->GetLocalizations(),
+   EXPECT_THAT(hoi_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "dynamic test"),
            testing::Pair("spanish", "dinámica prueba")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_def_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("ONE_DEF");
-   ASSERT_TRUE(hoi_def_localization_block.has_value());
-   EXPECT_THAT(hoi_def_localization_block->GetLocalizations(),
+   EXPECT_THAT(hoi_def_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "dynamic test"),
            testing::Pair("spanish", "dinámica prueba")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_adj_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("ONE_ADJ");
-   ASSERT_TRUE(hoi_adj_localization_block.has_value());
-   EXPECT_THAT(hoi_adj_localization_block->GetLocalizations(),
+   EXPECT_THAT(hoi_adj_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "dynamic testy"),
            testing::Pair("spanish", "dinámica pruebamente")));
 
    const std::optional<commonItems::LocalizationBlock> two_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("TWO");
-   ASSERT_TRUE(two_localization_block.has_value());
-   EXPECT_THAT(two_localization_block->GetLocalizations(),
+   EXPECT_THAT(two_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "Test two dynamic test two"),
            testing::Pair("spanish", "prueba dos dinámica prueba dos")));
 
    const std::optional<commonItems::LocalizationBlock> two_def_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("TWO_DEF");
-   ASSERT_TRUE(two_def_localization_block.has_value());
-   EXPECT_THAT(two_def_localization_block->GetLocalizations(),
+   EXPECT_THAT(two_def_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "Test two dynamic test two"),
            testing::Pair("spanish", "prueba dos dinámica prueba dos")));
 
    const std::optional<commonItems::LocalizationBlock> two_adj_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("TWO_ADJ");
-   ASSERT_TRUE(two_adj_localization_block.has_value());
-   EXPECT_THAT(two_adj_localization_block->GetLocalizations(),
+   EXPECT_THAT(two_adj_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "Test two dynamic testy two"),
            testing::Pair("spanish", "prueba dos dinámica pruebamente dos")));
 
    const std::optional<commonItems::LocalizationBlock> three_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("THR");
-   ASSERT_TRUE(three_localization_block.has_value());
-   EXPECT_THAT(three_localization_block->GetLocalizations(),
+   EXPECT_THAT(three_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "Testy three dynamic test three"),
            testing::Pair("spanish", "pruebamente tres dinámica prueba tres")));
 
    const std::optional<commonItems::LocalizationBlock> three_def_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("THR_DEF");
-   ASSERT_TRUE(three_def_localization_block.has_value());
-   EXPECT_THAT(three_def_localization_block->GetLocalizations(),
+   EXPECT_THAT(three_def_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "Testy three dynamic test three"),
            testing::Pair("spanish", "pruebamente tres dinámica prueba tres")));
 
    const std::optional<commonItems::LocalizationBlock> three_adj_localization_block =
        hoi4_localizations.GetCountryLocalizations().GetLocalizationBlock("THR_ADJ");
-   ASSERT_TRUE(three_adj_localization_block.has_value());
-   EXPECT_THAT(three_adj_localization_block->GetLocalizations(),
+   EXPECT_THAT(three_adj_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "Testy three dynamic testy three"),
            testing::Pair("spanish", "pruebamente tres dinámica pruebamente tres")));
 }
@@ -331,14 +316,12 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, StateLocalizationsCanBeConver
 
    const std::optional<commonItems::LocalizationBlock> one_localization_block =
        hoi4_localizations.GetStateLocalizations().GetLocalizationBlock("STATE_ONE");
-   ASSERT_TRUE(one_localization_block.has_value());
-   EXPECT_THAT(one_localization_block->GetLocalizations(),
+   EXPECT_THAT(one_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test"), testing::Pair("spanish", "prueba")));
 
    const std::optional<commonItems::LocalizationBlock> two_localization_block =
        hoi4_localizations.GetStateLocalizations().GetLocalizationBlock("STATE_TWO");
-   ASSERT_TRUE(two_localization_block.has_value());
-   EXPECT_THAT(two_localization_block->GetLocalizations(),
+   EXPECT_THAT(two_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
 }
 
@@ -435,14 +418,12 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, VictoryPointLocalizationsCanB
 
    const std::optional<commonItems::LocalizationBlock> one_localization_block =
        hoi4_localizations.GetVictoryPointLocalizations().GetLocalizationBlock("VICTORY_POINTS_1");
-   ASSERT_TRUE(one_localization_block.has_value());
-   EXPECT_THAT(one_localization_block->GetLocalizations(),
+   EXPECT_THAT(one_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test"), testing::Pair("spanish", "prueba")));
 
    const std::optional<commonItems::LocalizationBlock> two_localization_block =
        hoi4_localizations.GetVictoryPointLocalizations().GetLocalizationBlock("VICTORY_POINTS_2");
-   ASSERT_TRUE(two_localization_block.has_value());
-   EXPECT_THAT(two_localization_block->GetLocalizations(),
+   EXPECT_THAT(two_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
 }
 
@@ -503,20 +484,17 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, CharacterLocalizationsCanBeCo
 
    const std::optional<commonItems::LocalizationBlock> one_localization_block =
        hoi4_localizations.GetCharacterLocalizations().GetLocalizationBlock("Doug");
-   ASSERT_TRUE(one_localization_block.has_value());
-   EXPECT_THAT(one_localization_block->GetLocalizations(),
+   EXPECT_THAT(one_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "Douggie"), testing::Pair("spanish", "Dougesa")));
 
    const std::optional<commonItems::LocalizationBlock> two_localization_block =
        hoi4_localizations.GetCharacterLocalizations().GetLocalizationBlock("Romney1");
-   ASSERT_TRUE(two_localization_block.has_value());
-   EXPECT_THAT(two_localization_block->GetLocalizations(),
+   EXPECT_THAT(two_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "Romney"), testing::Pair("spanish", "Romney")));
 
    const std::optional<commonItems::LocalizationBlock> three_localization_block =
        hoi4_localizations.GetCharacterLocalizations().GetLocalizationBlock("Doug_Romney1");
-   ASSERT_TRUE(three_localization_block.has_value());
-   EXPECT_THAT(three_localization_block->GetLocalizations(),
+   EXPECT_THAT(three_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "$Doug$ $Romney1$"),
            testing::Pair("spanish", "$Doug$ $Romney1$")));
 }
