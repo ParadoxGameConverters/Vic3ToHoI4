@@ -273,6 +273,7 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
 
    for (const int interest_group_id: interest_group_ids)
    {
+      std::map<std::string, float> ig_ideology_support;
       const auto ig_itr = interest_groups.find(interest_group_id);
       if (ig_itr == interest_groups.end())
       {
@@ -293,16 +294,27 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
                itr->second += static_cast<float>(support) * interest_group.GetClout();
             }
             total_ideologies_per_law[vic3_law][ideology] += static_cast<float>(support) * interest_group.GetClout();
+            ig_ideology_support[ideology] += static_cast<float>(support) * interest_group.GetClout();
          }
       }
+    Log(LogLevel::Debug) << fmt::format("{}: {:.0f} {:.0f} {:.0f} {:.0f}",
+        ig_itr->second.GetType(),
+        ig_ideology_support.at("democratic"),
+        ig_ideology_support.at("communism"),
+        ig_ideology_support.at("fascism"),
+        ig_ideology_support.at("neutrality"));
    }
+   
+
    // for debugging
    for (const auto& law: total_ideologies_per_law)
    {
-      for (const auto& ideology: law.second)
-      {
-         Log(LogLevel::Debug) << fmt::format("{} : {} : {}", law.first, ideology.first, ideology.second);
-      }
+      Log(LogLevel::Debug) << fmt::format("{} : {:.0f} {:.0f} {:.0f} {:.0f}", 
+          law.first,
+          law.second.at("democratic"),
+          law.second.at("communism"),
+          law.second.at("fascism"),
+          law.second.at("neutrality"));
    }
 
    if (ideology_support.empty())
@@ -493,8 +505,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    // this order matches the order in the map
    Log(LogLevel::Debug) << fmt::format("{}: {} {} {} {}",
        tag.value_or(""),
-       ideology_support.at("communism"),
        ideology_support.at("democratic"),
+       ideology_support.at("communism"),
        ideology_support.at("fascism"),
        ideology_support.at("neutrality"));
 
