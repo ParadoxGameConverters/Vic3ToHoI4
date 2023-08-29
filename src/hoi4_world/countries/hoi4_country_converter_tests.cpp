@@ -1912,13 +1912,13 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    vic3::Buildings buildings(std::map<int, std::vector<vic3::Building>>{
        {1,
-           {vic3::Building("building_barracks",
+           {vic3::Building(vic3::BuildingType::Barracks,
                1,
                0,
                1,
                std::vector<std::string>{"trench_infantry", "field_hospitals"})}},
        {2,
-           {vic3::Building("building_barracks",
+           {vic3::Building(vic3::BuildingType::Barracks,
                2,
                0,
                1,
