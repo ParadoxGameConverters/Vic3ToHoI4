@@ -20,10 +20,6 @@
 namespace
 {
 
-constexpr int FloorMod(const int lhs, const int rhs)
-{
-   return (lhs % rhs + rhs) % rhs;
-}
 constexpr float tolerance = 0.01F;
 
 bool StateAsCapitalCompareFunction(const hoi4::State& a, const hoi4::State& b)
