@@ -7,6 +7,19 @@
 
 std::set<std::string> mappers::UnitMapper::warned_;
 
+namespace
+{
+
+void WarnForMissingMapping(const std::string& pm, std::set<std::string>& warned)
+{
+   if (warned.find(pm) == warned.end())
+   {
+      Log(LogLevel::Warning) << fmt::format("Missing unit mapping rule for {}", pm);
+   }
+   warned.insert(pm);
+}
+}  // namespace
+
 std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const std::vector<std::string> methods,
     int scale) const
 {
@@ -17,11 +30,7 @@ std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const std::vect
       const auto& itr = templates_.find(pm);
       if (itr == templates_.end())
       {
-         if (warned_.find(pm) == warned_.end())
-         {
-            Log(LogLevel::Warning) << fmt::format("Missing unit mapping rule for {}", pm);
-         }
-         warned_.insert(pm);
+         WarnForMissingMapping(pm, warned_);
          continue;
       }
 
