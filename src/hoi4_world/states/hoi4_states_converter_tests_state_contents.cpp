@@ -226,10 +226,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsConverted)
                                   .AddStates({{1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
                                       {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})}})
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-                                  .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 875'000)}},
-                                      {2, std::vector{vic3::Building("", 2, 875'000)}},
-                                  });
+                                  .AddBuildings({vic3::Building("", 1, 875'000), vic3::Building("", 2, 875'000)});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
@@ -268,10 +265,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DockyardsAreConvertedInCoastalStates)
                                       {1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
                                       {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})},
                                   })
-                                  .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 875'000)}},
-                                      {2, std::vector{vic3::Building("", 2, 875'000)}},
-                                  });
+                                  .AddBuildings({vic3::Building("", 1, 875'000), vic3::Building("", 2, 875'000)});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
@@ -315,10 +309,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsLogged)
                                   .AddStates({{1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
                                       {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})}})
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-                                  .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 875'000)}},
-                                      {2, std::vector{vic3::Building("", 2, 875'000)}},
-                                  });
+                                  .AddBuildings({vic3::Building("", 1, 875'000), vic3::Building("", 2, 875'000)});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
@@ -358,10 +349,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsNotConvertedInUnownedStates)
        vic3::WorldBuilder::CreateNullWorld()
            .AddStates({{1, vic3::State({.provinces = {1, 2, 3}})}, {2, vic3::State({.provinces = {4, 5, 6}})}})
            .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-           .AddBuildings({
-               {1, std::vector{vic3::Building("", 1, 1'250'000)}},
-               {2, std::vector{vic3::Building("", 2, 1'250'000)}},
-           });
+           .AddBuildings({vic3::Building("", 1, 1'250'000), vic3::Building("", 2, 1'250'000)});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
@@ -391,7 +379,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
                                   .AddTestStates({{1, 2, 3}})
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
                                   .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 2'100'000)}},
+                                      vic3::Building("", 1, 2'100'000),
                                   });
    mappers::WorldMapperBuilder world_mapper =
        std::move(mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}}));
@@ -419,15 +407,13 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryIsCappedAtTwelve)
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
 {
-   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
-                                  .AddTestStates({{1, 2, 3}, {4, 5}})
-                                  .AddStates({{3, vic3::State({.owner_number = 2, .provinces = {6}})}})
-                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-                                  .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 350'000)}},
-                                      {2, std::vector{vic3::Building("", 2, 2'100'000)}},
-                                      {3, std::vector{vic3::Building("", 3, 1'575'000)}},
-                                  });
+   vic3::WorldBuilder world =
+       vic3::WorldBuilder::CreateNullWorld()
+           .AddTestStates({{1, 2, 3}, {4, 5}})
+           .AddStates({{3, vic3::State({.owner_number = 2, .provinces = {6}})}})
+           .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
+           .AddBuildings(
+               {vic3::Building("", 1, 350'000), vic3::Building("", 2, 2'100'000), vic3::Building("", 3, 1'575'000)});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
@@ -467,18 +453,15 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreSortedByIndustry)
 
 TEST(Hoi4worldStatesHoi4statesconverter, UnconvertedIndustryIsConvertedInNextStateOfSameOwner)
 {
-   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
-                                  .AddStates({
-                                      {1, vic3::State({.owner_number = 1, .provinces = {1, 2}})},
-                                      {2, vic3::State({.owner_number = 1, .provinces = {3, 4}})},
-                                      {3, vic3::State({.owner_number = 1, .provinces = {5, 6}})},
-                                  })
-                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-                                  .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 5'250'000)}},
-                                      {2, std::vector{vic3::Building("", 2, 0)}},
-                                      {3, std::vector{vic3::Building("", 3, 0)}},
-                                  });
+   vic3::WorldBuilder world =
+       vic3::WorldBuilder::CreateNullWorld()
+           .AddStates({
+               {1, vic3::State({.owner_number = 1, .provinces = {1, 2}})},
+               {2, vic3::State({.owner_number = 1, .provinces = {3, 4}})},
+               {3, vic3::State({.owner_number = 1, .provinces = {5, 6}})},
+           })
+           .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
+           .AddBuildings({vic3::Building("", 1, 5'250'000), vic3::Building("", 2, 0), vic3::Building("", 3, 0)});
    mappers::WorldMapperBuilder world_mapper =
        std::move(mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}}));
    world_mapper.CopyToVicWorld(world);
@@ -522,10 +505,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInSplitStatesIsProportionalToTo
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
                                   .AddTestStates({{1, 2, 3}, {4, 5, 6}})
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-                                  .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 700'000)}},
-                                      {2, std::vector{vic3::Building("", 2, 1'575'000)}},
-                                  });
+                                  .AddBuildings({vic3::Building("", 1, 700'000), vic3::Building("", 2, 1'575'000)});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
@@ -574,10 +554,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
                                   .AddTestStates({{1, 2, 3}, {4, 5, 6}})
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-                                  .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 875'000)}},
-                                      {2, std::vector{vic3::Building("", 2, 875'000)}},
-                                  });
+                                  .AddBuildings({vic3::Building("", 1, 875'000), vic3::Building("", 2, 875'000)});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
@@ -616,7 +593,39 @@ TEST(Hoi4worldStatesHoi4statesconverter, IndustryInWastelandSplitStatesIsZero)
            State(4, {.owner = "TWO", .provinces = {40, 50}, .category = "wasteland", .air_base_level = 0})));
 }
 
+TEST(Hoi4worldStatesHoi4statesconverter, NavalBaseDefaultsToZero)
+{
+   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
+                                  .AddTestStates({{1, 2, 3}})
+                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
+                                  .AddStateRegions({
+                                      {"REGION_ONE", vic3::StateRegion({{"x000002", "port"}}, {})},
+                                      {"REGION_TWO", vic3::StateRegion({{"x000005", "port"}}, {})},
+                                  });
+   mappers::WorldMapperBuilder world_mapper = std::move(
+       mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
+   world_mapper.CopyToVicWorld(world);
+   hoi4::WorldFrameworkBuilder world_framework =
+       WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(6).AddCoastalProvinces(
+           {{20, {21}}, {50, {51}}});
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = world_framework.CopyProvinceDefinitions(),
+   });
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1,
+           {.owner = "ONE",
+               .provinces = {10, 20, 30},
+               .victory_points = {{20, 1}},
+               .naval_base_location = std::nullopt,
+               .naval_base_level = std::nullopt})));
+}
 TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
 {
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
@@ -625,7 +634,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
                                   .AddStateRegions({
                                       {"REGION_ONE", vic3::StateRegion({{"x000002", "port"}}, {})},
                                       {"REGION_TWO", vic3::StateRegion({{"x000005", "port"}}, {})},
-                                  });
+                                  })
+                                  .AddBuildings({vic3::Building(vic3::BuildingType::NavalBase, 1, 0.0F, 9.0F, {}),
+                                      vic3::Building(vic3::BuildingType::NavalBase, 2, 0.0F, 10.0F, {})});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
@@ -654,7 +665,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
                    .provinces = {40, 50, 60},
                    .victory_points = {{50, 1}},
                    .naval_base_location = 50,
-                   .naval_base_level = 1})));
+                   .naval_base_level = 2})));
 }
 
 
@@ -690,10 +701,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, AirBaseLevelIncreasesFromIndustry)
                                   .AddStates({{1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
                                       {2, vic3::State({.owner_number = 2, .provinces = {4, 5, 6}})}})
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-                                  .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 700'000)}},
-                                      {2, std::vector{vic3::Building("", 2, 1'400'000)}},
-                                  });
+                                  .AddBuildings({vic3::Building("", 1, 700'000), vic3::Building("", 2, 1'400'000)});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
@@ -861,10 +869,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
                                   .AddTestStates({{1, 2, 3}, {4, 5, 6}})
                                   .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
-                                  .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 700'000)}},
-                                      {2, std::vector{vic3::Building("", 2, 1'400'000)}},
-                                  });
+                                  .AddBuildings({vic3::Building("", 1, 700'000), vic3::Building("", 2, 1'400'000)});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);
@@ -983,10 +988,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, VictoryPointsAreValuedAtHalfTotalFactor
                                               },
                                               {})},
                                   })
-                                  .AddBuildings({
-                                      {1, std::vector{vic3::Building("", 1, 875'000)}},
-                                      {2, std::vector{vic3::Building("", 2, 700'000)}},
-                                  });
+                                  .AddBuildings({vic3::Building("", 1, 875'000), vic3::Building("", 2, 700'000)});
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
    world_mapper.CopyToVicWorld(world);

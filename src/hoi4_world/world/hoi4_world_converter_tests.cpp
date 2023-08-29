@@ -562,23 +562,25 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
        "x000012",
    });
 
-   const vic3::World source_world({
-       .states =
-           {
-               {1,
-                   vic3::State({
-                       .id = 1,
-                       .owner_number = 1,
-                       .owner_tag = "TAG",
-                       .provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12},
-                   })},
-           },
+   const std::map<int, std::vector<vic3::Building>> buildings = {
+       {1, {vic3::Building(vic3::BuildingType::NavalBase, 1, 0.0F, 5.0F, {})}}};
+
+   const vic3::World source_world({.states =
+                                       {
+                                           {1,
+                                               vic3::State({
+                                                   .id = 1,
+                                                   .owner_number = 1,
+                                                   .owner_tag = "TAG",
+                                                   .provinces = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12},
+                                               })},
+                                       },
        .state_regions =
            {
                {"state", vic3_state_region},
            },
        .province_definitions = province_definitions,
-   });
+       .buildings = vic3::Buildings(buildings)});
 
    const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
                                                  .AddProvinces({
@@ -692,10 +694,18 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
    country_block_one.ModifyLocalization("english", "test");
    country_block_one.ModifyLocalization("spanish", "prueba");
    vic3_localizations.AddOrModifyLocalizationBlock("TAG", country_block_one);
+   commonItems::LocalizationBlock country_adj_block_one("TAG_ADJ", "english");
+   country_adj_block_one.ModifyLocalization("english", "testy");
+   country_adj_block_one.ModifyLocalization("spanish", "pruebamente");
+   vic3_localizations.AddOrModifyLocalizationBlock("TAG_ADJ", country_adj_block_one);
    commonItems::LocalizationBlock country_block_two("THR", "english");
    country_block_two.ModifyLocalization("english", "test three");
    country_block_two.ModifyLocalization("spanish", "prueba tres");
    vic3_localizations.AddOrModifyLocalizationBlock("THR", country_block_two);
+   commonItems::LocalizationBlock country_adj_block_two("THR_ADJ", "english");
+   country_adj_block_two.ModifyLocalization("english", "testy three");
+   country_adj_block_two.ModifyLocalization("spanish", "pruebamente tres");
+   vic3_localizations.AddOrModifyLocalizationBlock("THR_ADJ", country_adj_block_two);
    commonItems::LocalizationBlock state_block_one("REGION_ONE", "english");
    state_block_one.ModifyLocalization("english", "test");
    state_block_one.ModifyLocalization("spanish", "prueba");
@@ -741,38 +751,33 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
 
    const std::optional<commonItems::LocalizationBlock> hoi_country_localization_block =
        world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("TAG");
-   ASSERT_TRUE(hoi_country_localization_block.has_value());
-   EXPECT_THAT(hoi_country_localization_block->GetLocalizations(),
+   EXPECT_THAT(hoi_country_localization_block.value_or(commonItems::LocalizationBlock("", "")).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test"), testing::Pair("spanish", "prueba")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_country_localization_block_two =
        world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("THR");
-   ASSERT_TRUE(hoi_country_localization_block_two.has_value());
-   EXPECT_THAT(hoi_country_localization_block_two->GetLocalizations(),
+   EXPECT_THAT(hoi_country_localization_block_two.value_or(commonItems::LocalizationBlock("", "")).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test three"), testing::Pair("spanish", "prueba tres")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_state_localization_block =
        world.GetLocalizations().GetStateLocalizations().GetLocalizationBlock("STATE_1");
-   ASSERT_TRUE(hoi_state_localization_block.has_value());
-   EXPECT_THAT(hoi_state_localization_block->GetLocalizations(),
+   EXPECT_THAT(hoi_state_localization_block.value_or(commonItems::LocalizationBlock("", "")).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test"), testing::Pair("spanish", "prueba")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_state_localization_block_two =
        world.GetLocalizations().GetStateLocalizations().GetLocalizationBlock("STATE_2");
-   ASSERT_TRUE(hoi_state_localization_block_two.has_value());
-   EXPECT_THAT(hoi_state_localization_block_two->GetLocalizations(),
+   EXPECT_THAT(hoi_state_localization_block_two.value_or(commonItems::LocalizationBlock("", "")).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_victory_point_localization_block =
        world.GetLocalizations().GetVictoryPointLocalizations().GetLocalizationBlock("VICTORY_POINTS_10");
-   ASSERT_TRUE(hoi_victory_point_localization_block.has_value());
-   EXPECT_THAT(hoi_victory_point_localization_block->GetLocalizations(),
+   EXPECT_THAT(hoi_victory_point_localization_block.value_or(commonItems::LocalizationBlock("", "")).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test"), testing::Pair("spanish", "prueba")));
 
    const std::optional<commonItems::LocalizationBlock> hoi_victory_point_localization_block_two =
        world.GetLocalizations().GetVictoryPointLocalizations().GetLocalizationBlock("VICTORY_POINTS_40");
-   ASSERT_TRUE(hoi_victory_point_localization_block_two.has_value());
-   EXPECT_THAT(hoi_victory_point_localization_block_two->GetLocalizations(),
+   EXPECT_THAT(
+       hoi_victory_point_localization_block_two.value_or(commonItems::LocalizationBlock("", "")).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "test two"), testing::Pair("spanish", "prueba dos")));
 }
 
