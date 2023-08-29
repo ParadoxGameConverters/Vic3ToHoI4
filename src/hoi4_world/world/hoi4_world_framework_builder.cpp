@@ -24,8 +24,8 @@ WorldFrameworkBuilder WorldFrameworkBuilder::CreateDefaultWorldFramework(
    wfb.DefaultStateCategories();
    wfb.DefaultProvinceDefinitions();
 
-   auto tmpMapData = maps::MapDataImporter(wfb.province_definitions_).ImportMapData(hoi4_mod_filesystem);
-   wfb.DefaultCoastalProvinces(tmpMapData);
+   wfb.DefaultMapData();
+   wfb.DefaultCoastalProvinces(wfb.map_data_);
    return wfb;
 }
 
@@ -47,6 +47,7 @@ WorldFramework WorldFrameworkBuilder::Build()
        std::move(this->resources_map_),
        std::move(this->state_categories_),
        maps::ProvinceDefinitions{std::move(this->province_definitions_)},
+       std::move(this->map_data_),
        CoastalProvinces{std::move(this->coastal_provinces_)});
 }
 
@@ -151,6 +152,20 @@ maps::ProvinceDefinitions WorldFrameworkBuilder::CopyProvinceDefinitions()
 {
    return maps::ProvinceDefinitions{this->province_definitions_};
 }
+
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultMapData()
+{
+   map_data_ = maps::MapDataImporter(this->province_definitions_).ImportMapData(this->hoi4_mod_filesystem_);
+   return *this;
+}
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::SetMapData(const maps::MapData& map_data)
+{
+   this->map_data_ = map_data;
+   return *this;
+}
+
 
 WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultCoastalProvinces(const maps::MapData& map_data)
 {

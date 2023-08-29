@@ -269,6 +269,8 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
     const mappers::IdeologyMapper& ideology_mapper)
 {
    std::map<std::string, float> ideology_support;
+   std::map<std::string, std::map<std::string, float>> total_ideologies_per_law; 
+
    for (const int interest_group_id: interest_group_ids)
    {
       const auto ig_itr = interest_groups.find(interest_group_id);
@@ -290,7 +292,16 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
             {
                itr->second += static_cast<float>(support) * interest_group.GetClout();
             }
+            total_ideologies_per_law[vic3_law][ideology] += static_cast<float>(support) * interest_group.GetClout();
          }
+      }
+   }
+   // for debugging
+   for (const auto& law: total_ideologies_per_law)
+   {
+      for (const auto& ideology: law.second)
+      {
+         Log(LogLevel::Debug) << fmt::format("{} : {} : {}", law.first, ideology.first, ideology.second);
       }
    }
 
@@ -473,11 +484,19 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    {
       overlord = country_mapper.GetHoiTag(*source_overlord);
    }
-
+   Log(LogLevel::Debug) << fmt::format("{}", tag.value_or(""));
    const auto ideology_support = DetermineIdeologySupport(source_country.GetInterestGroupIds(),
        source_world.GetInterestGroups(),
        source_world.GetIdeologies(),
        ideology_mapper);
+
+   // this order matches the order in the map
+   Log(LogLevel::Debug) << fmt::format("{}: {} {} {} {}",
+       tag.value_or(""),
+       ideology_support.at("communism"),
+       ideology_support.at("democratic"),
+       ideology_support.at("fascism"),
+       ideology_support.at("neutrality"));
 
    return Country({.tag = *tag,
        .color = source_country.GetColor(),

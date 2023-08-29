@@ -6,7 +6,7 @@
 
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/map/possible_path.h"
-
+#include "src/support/progress_manager.h"
 
 
 namespace
@@ -548,6 +548,8 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
        DetermineNeighboringStates(hoi4_states.province_to_state_id_map, hoi4_map_data);
 
    std::vector<hoi4::PossiblePath> interstate_paths;
+   int progress = 0;
+   int prevProgress = 0;
    for (const hoi4::State& state: hoi4_states.states)
    {
       int id = state.GetId();
@@ -582,6 +584,13 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
                 return first_path.GetCost() < second_path.GetCost();
              });
          interstate_paths.push_back(all_interstate_paths.front());
+      }
+      progress++;
+      int currentProgress = progress / hoi4_states.states.size();
+      if (prevProgress != currentProgress)
+      {
+         prevProgress = currentProgress;
+         ProgressManager::AddProgress(1);
       }
    }
 

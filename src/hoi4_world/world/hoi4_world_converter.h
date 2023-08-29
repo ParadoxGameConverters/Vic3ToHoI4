@@ -12,6 +12,7 @@
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/states/hoi4_state.h"
+#include "src/hoi4_world/world/hoi4_world_framework.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapper.h"
@@ -26,6 +27,7 @@ namespace hoi4
 World ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
+    std::future<WorldFramework> world_framework_future,
     bool debug);
 
 }  // namespace hoi4
