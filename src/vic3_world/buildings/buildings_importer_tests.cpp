@@ -37,8 +37,8 @@ TEST(Vic3WorldBuildingsBuildingsImporterTests, BuildingsCanBeImported)
    EXPECT_EQ(buildings.GetTotalGoodSalesValueInWorld(), 1.75F);
    EXPECT_EQ(buildings.GetTotalGoodSalesValueInState(1), 1.5F);
    EXPECT_EQ(buildings.GetTotalGoodSalesValueInState(2), 0.25F);
-   EXPECT_TRUE(buildings.GetBuildingInState("building_iron_mine", 2).has_value());
-   EXPECT_FALSE(buildings.GetBuildingInState("nonesuch", 2).has_value());
+   EXPECT_TRUE(buildings.GetBuildingInState(2, "building_iron_mine").has_value());
+   EXPECT_FALSE(buildings.GetBuildingInState(2, "nonesuch").has_value());
 }
 
 

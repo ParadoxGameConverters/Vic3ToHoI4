@@ -263,7 +263,7 @@ std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
       {
          continue;
       }
-      const auto barracks = buildings.GetBuildingInState(vic3::BuildingType::Barracks, vic3_id);
+      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::Barracks);
       if (!barracks.has_value())
       {
          continue;
