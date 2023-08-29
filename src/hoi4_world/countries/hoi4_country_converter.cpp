@@ -178,7 +178,7 @@ std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<ho
 }
 
 
-std::optional<hoi4::Unit> MakeTemplate(const hoi4::DivisionTemplate division, std::vector<hoi4::Battalion>& battalions)
+std::optional<hoi4::Unit> MakeTemplate(const hoi4::DivisionTemplate& division, std::vector<hoi4::Battalion>& battalions)
 {
    hoi4::UnitCount required = division.GetBattalions();
    for (const auto& [ut, str]: division.GetSupport())
