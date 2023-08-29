@@ -1,6 +1,6 @@
 ## Army units.
 
-# 100 max-moderniszd Vicky barracks levels convert to:
+# 100 max-modernized Vicky barracks levels convert to:
 #  45 infantry
 #  10 motorized
 #  15 artillery brigades
