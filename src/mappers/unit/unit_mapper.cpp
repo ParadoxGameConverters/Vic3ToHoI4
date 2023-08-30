@@ -20,7 +20,7 @@ void WarnForMissingMapping(const std::string& pm, std::set<std::string>& warned)
 }
 }  // namespace
 
-std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const std::vector<std::string> methods,
+std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const std::vector<std::string>& methods,
     int scale) const
 {
    int equip = 0;
