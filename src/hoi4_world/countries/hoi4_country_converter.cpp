@@ -288,14 +288,13 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
          for (auto& [ideology, support]: ideology_points_map)
          {
             float total_support = static_cast<float>(support) * interest_group.GetClout() * approval_amount;
-            if (auto [itr, success] =
-                    ideology_support.emplace(ideology, static_cast<float>(support) * interest_group.GetClout());
+            if (auto [itr, success] = ideology_support.emplace(ideology, total_support);
                 !success)
             {
-               itr->second += static_cast<float>(support) * interest_group.GetClout();
+               itr->second += total_support;
             }
-            total_ideologies_per_law[vic3_law][ideology] += static_cast<float>(support) * interest_group.GetClout();
-            ig_ideology_support[ideology] += static_cast<float>(support) * interest_group.GetClout();
+            total_ideologies_per_law[vic3_law][ideology] += total_support;
+            ig_ideology_support[ideology] += total_support;
          }
       }
     Log(LogLevel::Debug) << fmt::format("{}: {:.0f} {:.0f} {:.0f} {:.0f}",

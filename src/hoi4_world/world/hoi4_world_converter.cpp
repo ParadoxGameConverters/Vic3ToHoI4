@@ -225,15 +225,27 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        debug);
 
    world_framework.strategic_regions.UpdateToMatchNewStates(states.states);
-   hoi4::Buildings buildings =
-       ImportBuildings(states, world_framework.coastal_provinces, world_framework.map_data, hoi4_mod_filesystem);
 
-   ProgressManager::AddProgress(5);
-   hoi4::Railways railways = ConvertRailways(vic3_significant_provinces,
-       world_mapper.province_mapper,
-       world_framework.map_data,
-       world_framework.province_definitions,
-       states);
+
+   std::future<hoi4::Buildings> buildings_future =
+       std::async(std::launch::async, [&states, &world_framework, &hoi4_mod_filesystem]() {
+          const auto result =
+              ImportBuildings(states, world_framework.coastal_provinces, world_framework.map_data, hoi4_mod_filesystem);
+          ProgressManager::AddProgress(5);
+          return result;
+       });
+
+
+
+   std::future<hoi4::Railways> railways_future =
+       std::async(std::launch::async, [&vic3_significant_provinces, &world_mapper, &world_framework, &states]() {
+          // convertRailways logs progress internally
+          return ConvertRailways(vic3_significant_provinces,
+              world_mapper.province_mapper,
+              world_framework.map_data,
+              world_framework.province_definitions,
+              states);
+       });
 
    Log(LogLevel::Info) << "\tConverting countries";
    ProgressManager::AddProgress(10);
@@ -277,6 +289,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        source_world.GetCountries(),
        source_world.GetCharacters());
 
+   hoi4::Railways railways = railways_future.get();
+   hoi4::Buildings buildings = buildings_future.get();
    return hoi4::World(hoi4::WorldOptions{.countries = countries,
        .great_powers = great_powers,
        .major_powers = major_powers,
