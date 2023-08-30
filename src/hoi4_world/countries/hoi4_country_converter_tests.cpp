@@ -1653,11 +1653,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
    vic3::World source_world = vic3::World(worldOptions);
 
    mappers::ItemToPointsMap pointsMap;
-   pointsMap.insert({"test_law_one",
-       {
-           {"democratic", 2},
-           {"fascist", 3},
-       }});
+   pointsMap.insert({"test_law_one", {{"democratic", 2}, {"fascist", 3}, {"neutrality", 0}}});
    pointsMap.insert({"test_law_two",
        {
            {"communist", 5},
@@ -1669,6 +1665,16 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
            {"communist", 7},
        }});
    const mappers::IdeologyMapper ideologyMapper = mappers::IdeologyMapper(pointsMap, {});
+
+   // TG1 has testlaw1: support, testlaw2: strong support
+   // TG2 has testlaw1: support, testlaw3: strongly oppose
+   // this maps to:
+   // TG1: democratic2, fasc3 + com10,fasc6 = (2,10,9,0) (total 21) * 50clout
+   // TG1 has a 0, so normalization has no offset
+   // TG2: democratic2,fasc3+ democratic-10, com-14 = (-8,-14,3,0) (total 25) *150clout
+   // total is then (-1100,-1600,900,0)
+   // get all positive: (500,0,2500,1600).
+   // divide by total of 4600: (.10,0,.54,.36)
 
    const auto country_one = ConvertCountry(source_world,
        source_country_one,
@@ -1690,10 +1696,10 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetIdeologySupport(),
-       testing::UnorderedElementsAre(testing::Pair("communist", 57),
-           testing::Pair("democratic", 42),
-           testing::Pair("fascist", 0),
-           testing::Pair("neutrality", 1)));
+       testing::UnorderedElementsAre(testing::Pair("democratic", 10),
+           testing::Pair("communist", 0),
+           testing::Pair("fascist", 54),
+           testing::Pair("neutrality", 36)));
 }
 
 

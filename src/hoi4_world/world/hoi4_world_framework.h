@@ -3,13 +3,13 @@
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/states/default_state.h"
 #include "src/hoi4_world/states/state_categories.h"
-#include "src/maps/province_definitions.h"
 #include "src/maps/map_data.h"
+#include "src/maps/province_definitions.h"
 
 namespace hoi4
 {
 
-    
+
 // This represents the input hoi4 elements (eg, state maps, resource maps, etc)
 // that are used in conjunction with the vic3 data  and the WorldMapper to create the final hoi4 mod.
 class WorldFramework

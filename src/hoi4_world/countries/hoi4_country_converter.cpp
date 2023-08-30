@@ -13,7 +13,7 @@
 #include "src/vic3_world/ideologies/ideologies.h"
 #include "src/vic3_world/world/vic3_world.h"
 
-
+constexpr bool IDEOLOGY_DEBUG = false;
 
 namespace
 {
@@ -269,7 +269,7 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
     const mappers::IdeologyMapper& ideology_mapper)
 {
    std::map<std::string, float> ideology_support;
-   std::map<std::string, std::map<std::string, float>> total_ideologies_per_law; 
+   std::map<std::string, std::map<std::string, float>> total_ideologies_per_law;
 
    for (const int interest_group_id: interest_group_ids)
    {
@@ -288,8 +288,7 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
          for (auto& [ideology, support]: ideology_points_map)
          {
             float total_support = static_cast<float>(support) * interest_group.GetClout() * approval_amount;
-            if (auto [itr, success] = ideology_support.emplace(ideology, total_support);
-                !success)
+            if (auto [itr, success] = ideology_support.emplace(ideology, total_support); !success)
             {
                itr->second += total_support;
             }
@@ -297,24 +296,28 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
             ig_ideology_support[ideology] += total_support;
          }
       }
-    Log(LogLevel::Debug) << fmt::format("{}: {:.0f} {:.0f} {:.0f} {:.0f}",
-        ig_itr->second.GetType(),
-        ig_ideology_support.at("democratic"),
-        ig_ideology_support.at("communism"),
-        ig_ideology_support.at("fascism"),
-        ig_ideology_support.at("neutrality"));
+      if (IDEOLOGY_DEBUG)
+      {
+         Log(LogLevel::Debug) << fmt::format("{}: {:.0f} {:.0f} {:.0f} {:.0f}",
+             ig_itr->second.GetType(),
+             ig_ideology_support.at("democratic"),
+             ig_ideology_support.at("communism"),
+             ig_ideology_support.at("fascism"),
+             ig_ideology_support.at("neutrality"));
+      }
    }
-   
 
-   // for debugging
-   for (const auto& law: total_ideologies_per_law)
+   if (IDEOLOGY_DEBUG)
    {
-      Log(LogLevel::Debug) << fmt::format("{} : {:.0f} {:.0f} {:.0f} {:.0f}", 
-          law.first,
-          law.second.at("democratic"),
-          law.second.at("communism"),
-          law.second.at("fascism"),
-          law.second.at("neutrality"));
+      for (const auto& law: total_ideologies_per_law)
+      {
+         Log(LogLevel::Debug) << fmt::format("{} : {:.0f} {:.0f} {:.0f} {:.0f}",
+             law.first,
+             law.second.at("democratic"),
+             law.second.at("communism"),
+             law.second.at("fascism"),
+             law.second.at("neutrality"));
+      }
    }
 
    if (ideology_support.empty())
@@ -338,11 +341,13 @@ std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, 
       return a.second < b.second;
    })->second;
 
+
    std::map<std::string, float> adjusted_ideology_support;
    for (const auto& [ideology, raw_value]: raw_ideology_support)
    {
       adjusted_ideology_support.emplace(ideology, raw_value - lowest_support);
    }
+
 
    const float total_raw_support = std::accumulate(adjusted_ideology_support.begin(),
        adjusted_ideology_support.end(),
@@ -502,13 +507,15 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        source_world.GetIdeologies(),
        ideology_mapper);
 
-   // this order matches the order in the map
-   Log(LogLevel::Debug) << fmt::format("{}: {} {} {} {}",
-       tag.value_or(""),
-       ideology_support.at("democratic"),
-       ideology_support.at("communism"),
-       ideology_support.at("fascism"),
-       ideology_support.at("neutrality"));
+   if (IDEOLOGY_DEBUG)
+   {
+      Log(LogLevel::Debug) << fmt::format("{}: {} {} {} {}",
+          tag.value_or(""),
+          ideology_support.at("democratic"),
+          ideology_support.at("communism"),
+          ideology_support.at("fascism"),
+          ideology_support.at("neutrality"));
+   }
 
    return Country({.tag = *tag,
        .color = source_country.GetColor(),
