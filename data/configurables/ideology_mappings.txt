@@ -7,9 +7,9 @@ law_national_militia	= { democratic = 0	communism = 0	fascism = 0		neutrality = 
 law_mass_conscription	= { democratic = 0	communism = 25	fascism = 25		neutrality = 0 } # TBD
 
 # bureaucracy
-law_hereditary_bureaucrats	= { democratic = -25	communism = -75	fascism = 0	neutrality = 0 }
+law_hereditary_bureaucrats	= { democratic = -25	communism = -50	fascism = 0	neutrality = 0 }
 law_appointed_bureaucrats	= { democratic = 0		communism = 50	fascism = 50	neutrality = 0 }
-law_elected_bureaucrats		= { democratic = 50		communism = 25	fascism = 0		neutrality = 0 }
+law_elected_bureaucrats		= { democratic = 30		communism = 25	fascism = 0		neutrality = 0 }
 
 # childrens_rights
 law_child_labor_allowed			= { democratic = 0	communism = 0	fascism = 0		neutrality = 0 } # TBD
@@ -17,17 +17,17 @@ law_restricted_child_labor		= { democratic = 0	communism = 0	fascism = 0		neutra
 law_compulsory_primary_school	= { democratic = 0	communism = 0	fascism = 0		neutrality = 0 } # TBD
 
 # church and state
-law_state_religion			= { democratic = 0	communism = -75	fascism = 50	neutrality = 25 }
-law_freedom_of_conscience	= { democratic = 25	communism = -50	fascism = -25		neutrality = 0 }
-law_total_separation		= { democratic = 50	communism = 50	fascism = 0		neutrality = -25 }
+law_state_religion			= { democratic = 0	communism = -40	fascism = 50	neutrality = 25 }
+law_freedom_of_conscience	= { democratic = 20	communism = -40	fascism = -25		neutrality = 0 }
+law_total_separation		= { democratic = 40	communism = 40	fascism = 0		neutrality = -25 }
 law_state_atheism			= { democratic = 0	communism = 50	fascism = 25		neutrality = 0 } # TBD
 
 # citizenship
 law_ethnostate			= { democratic = -50	communism = -100	fascism = 100	neutrality = 25 }
 law_national_supremacy	= { democratic = -25	communism = 0		fascism = 75	neutrality = 50 }
-law_racial_segregation	= { democratic = 25		communism = 0		fascism = 50	neutrality = 0 }
-law_cultural_exclusion	= { democratic = 50		communism = 25		fascism = 25	neutrality = 0 }
-law_multicultural		= { democratic = 75		communism = 75		fascism = -50	neutrality = -25 }
+law_racial_segregation	= { democratic = 10		communism = 0		fascism = 50	neutrality = 0 }
+law_cultural_exclusion	= { democratic = 30		communism = 25		fascism = 25	neutrality = 0 }
+law_multicultural		= { democratic = 50		communism = 50		fascism = -50	neutrality = -25 }
 
 # colonial_affairs
 law_no_colonial_affairs		= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TBD
@@ -42,8 +42,8 @@ law_elder_council		= { democratic = -50	communism = -50		fascism = 0			neutralit
 law_landed_voting		= { democratic = 25		communism = -50		fascism = 0			neutrality = 25 }
 law_wealth_voting		= { democratic = 25		communism = -50		fascism = 0			neutrality = 25 }
 law_census_voting		= { democratic = 50		communism = -50		fascism = 0		neutrality = 0 }
-law_universal_suffrage	= { democratic = 100	communism = 100		fascism = -25		neutrality = 0 }
-law_anarchy				= { democratic = -100	communism = 100		fascism = -100		neutrality = -100 }
+law_universal_suffrage	= { democratic = 80	communism = 80		fascism = -25		neutrality = 0 }
+law_anarchy				= { democratic = -100	communism = 50		fascism = -100		neutrality = -100 }
 law_single_party_state	= { democratic = 0		communism = 50		fascism = 50			neutrality = 0 } # TDB
 
 # economic_system
@@ -51,9 +51,9 @@ law_traditionalism			= { democratic = 0		communism = 0		fascism = 0			neutrality
 law_interventionism			= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TDB
 law_agrarianism				= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TDB
 law_industry_banned			= { democratic = 0		communism = 0		fascism = 0			neutrality = 20 } # TDB
-law_laissez_faire			= { democratic = 100		communism = 0		fascism = 0			neutrality = 0 } # TDB
-law_cooperative_ownership	= { democratic = 0		communism = 100		fascism = 0			neutrality = 0 } # TDB
-law_command_economy			= { democratic = 0		communism = 0		fascism = 100			neutrality = 0 } # TDB
+law_laissez_faire			= { democratic = 80		communism = 20		fascism = 0			neutrality = 0 } # TDB
+law_cooperative_ownership	= { democratic = -10		communism = 80		fascism = -25			neutrality = -25 } # TDB
+law_command_economy			= { democratic = -25		communism = 0		fascism = 50			neutrality = 0 } # TDB
 
 # education_system
 law_no_schools			= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TDB
@@ -69,10 +69,10 @@ law_protected_speech	= { democratic = 50		communism = 0		fascism = -75			neutral
 
 # governance principles
 law_chiefdom				= { democratic = -25	communism = -50		fascism = -25	neutrality = 25 }
-law_monarchy				= { democratic = 10		communism = -100	fascism = 30		neutrality = 50 }
-law_presidential_republic	= { democratic = 50		communism = 0		fascism = 50	neutrality = 25 }
+law_monarchy				= { democratic = 10		communism = -100	fascism = 75		neutrality = 75 }
+law_presidential_republic	= { democratic = 50		communism = 0		fascism = 25	neutrality = 0 }
 law_parliamentary_republic	= { democratic = 50		communism = 50		fascism = 25	neutrality = 25 }
-law_theocracy				= { democratic = 10		communism = -50		fascism = 30	neutrality = 50 }
+law_theocracy				= { democratic = 10		communism = -50		fascism = 50	neutrality = 50 }
 law_council_republic		= { democratic = 25		communism = 100		fascism = -50	neutrality = -25 }
 
 # health_system
