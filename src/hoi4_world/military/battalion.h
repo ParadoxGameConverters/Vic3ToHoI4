@@ -12,8 +12,7 @@ class Battalion
    Battalion(const std::string ut, int es, float str):
        unit_type_(ut),
        equipment_scale_(es),
-       strength_(str),
-       location_(0)
+       strength_(str)
    {
    }
 
