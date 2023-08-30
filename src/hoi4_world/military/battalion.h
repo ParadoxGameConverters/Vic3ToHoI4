@@ -19,7 +19,7 @@ class Battalion
 
    [[nodiscard]] const std::string& GetType() const { return unit_type_; }
    [[nodiscard]] int GetEquipmentScale() const { return equipment_scale_; }
-   [[nodiscard]] int GetLocation() const { return location_; }
+   [[nodiscard]] const std::optional<int>& GetLocation() const { return location_; }
    [[nodiscard]] float GetStrength() const { return strength_; }
    void AddStrength(float s) { strength_ += s; }
    void SetLocation(int l) { location_ = l; }
@@ -30,7 +30,7 @@ class Battalion
    std::string unit_type_;
    int equipment_scale_;
    float strength_;
-   int location_;
+   std::optional<int> location_;
 };
 
 }  // namespace hoi4

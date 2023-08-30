@@ -227,9 +227,10 @@ std::optional<hoi4::Unit> MakeTemplate(const hoi4::DivisionTemplate& division,
          // Create division with equipment of worst battalion in it.
          // Approximate but reasonable.
          equipment = std::min(equipment, std::min(100, battalion.GetEquipmentScale()));
-         if (battalion.GetLocation() > 0)
+         const auto& battalion_location = battalion.GetLocation();
+         if (battalion_location.has_value())
          {
-            location = battalion.GetLocation();
+            location = *battalion_location;
          }
          if (needed < tolerance)
          {
