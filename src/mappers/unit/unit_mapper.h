@@ -25,7 +25,7 @@ class UnitMapper
   public:
    explicit UnitMapper(TemplateMap& templates): templates_(std::move(templates)) {}
 
-   std::vector<hoi4::Battalion> MakeBattalions(const std::vector<std::string> methods, int scale) const;
+   std::vector<hoi4::Battalion> MakeBattalions(const std::vector<std::string>& methods, int scale) const;
 
   private:
    TemplateMap templates_;
