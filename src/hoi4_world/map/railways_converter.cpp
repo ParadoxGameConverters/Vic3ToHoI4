@@ -586,7 +586,7 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
          interstate_paths.push_back(all_interstate_paths.front());
       }
       progress++;
-      int currentProgress = progress / hoi4_states.states.size();
+      int currentProgress = progress * 10 / hoi4_states.states.size();
       if (prevProgress != currentProgress)
       {
          prevProgress = currentProgress;

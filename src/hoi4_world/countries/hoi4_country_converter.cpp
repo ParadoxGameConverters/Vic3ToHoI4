@@ -287,6 +287,7 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
          mappers::IdeologyPointsMap ideology_points_map = ideology_mapper.CalculateIdeologyPoints({vic3_law});
          for (auto& [ideology, support]: ideology_points_map)
          {
+            float total_support = static_cast<float>(support) * interest_group.GetClout() * approval_amount;
             if (auto [itr, success] =
                     ideology_support.emplace(ideology, static_cast<float>(support) * interest_group.GetClout());
                 !success)
