@@ -704,7 +704,8 @@ TEST(Outhoi4CountriesOutcountryTests, UnitsAreOutputToCountryOOBFile)
    auto oob_file = "output/UnitsAreOutputToCountryOOBFile/history/units/TAG_1936.txt";
    commonItems::TryCopyFile("configurables/division_templates.txt", oob_file);
 
-   const hoi4::Country country({.tag = "TAG", .units = {{.unit_template = "test", .equipment = 60, .location = 11666}}});
+   const hoi4::Country country(
+       {.tag = "TAG", .units = {{.unit_template = "test", .equipment = 60, .location = 11666}}});
    OutputCountryUnits(oob_file, country);
 
    ASSERT_TRUE(commonItems::DoesFileExist(oob_file));
