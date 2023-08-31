@@ -695,4 +695,44 @@ TEST(Outhoi4CountriesOutcountryTests, FascistOverlordsAreOutputToCountryHistoryF
 }
 
 
+TEST(Outhoi4CountriesOutcountryTests, UnitsAreOutputToCountryOOBFile)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/UnitsAreOutputToCountryOOBFile");
+   commonItems::TryCreateFolder("output/UnitsAreOutputToCountryOOBFile/history");
+   commonItems::TryCreateFolder("output/UnitsAreOutputToCountryOOBFile/history/units");
+   auto oob_file = "output/UnitsAreOutputToCountryOOBFile/history/units/TAG_1936.txt";
+   commonItems::TryCopyFile("configurables/division_templates.txt", oob_file);
+
+   const hoi4::Country country({.tag = "TAG", .units = {{.unit_template = "test", .equipment = 60, .location = 11666}}});
+   OutputCountryUnits(oob_file, country);
+
+   ASSERT_TRUE(commonItems::DoesFileExist(oob_file));
+   std::ifstream country_file(oob_file);
+   ASSERT_TRUE(country_file.is_open());
+   std::stringstream country_file_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_stream));
+   country_file.close();
+
+   const char* expected =
+       "contents don't matter for tests\n\n"
+       "units = {\n"
+       "\tdivision = {\n"
+       "\t\tdivision_name = {\n"
+       "\t\t\tis_name_ordered = yes\n"
+       "\t\t\tname_order = 1\n"
+       "\t\t}\n"
+       "\t\tlocation = 11666\n"
+       "\t\tdivision_template = \"test\"\n"
+       "\t\tstart_equipment_factor = 0.6\n"
+       "\t\tstart_experience_factor = 0.2\n"
+       "\t}\n"
+       "}\n";
+
+   EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected));
+}
+
+
 }  // namespace out
