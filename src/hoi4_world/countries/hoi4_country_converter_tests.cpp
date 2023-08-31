@@ -1922,7 +1922,7 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
                2,
                0,
                1,
-               std::vector<std::string>{"trench_infantry", "wound_dressing"})}},
+               std::vector<std::string>{"trench_infantry", "wound_dressing", "useless_militia"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.buildings = buildings});
    const vic3::Country source_country_one({.number = 1});
@@ -1949,6 +1949,7 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
        .hoi4_state_ids_to_owner{{1, "TAG"}, {2, "TAG"}, {3, "TAG"}}});
    mappers::TemplateMap templates{
        {"trench_infantry", mappers::BattalionTemplate(50, {{"infantry", 2.0}})},
+       {"useless_militia", mappers::BattalionTemplate(0, {{"useless_militia", 1.0}})},
        {"field_hospitals", mappers::BattalionTemplate(10, {})},
        {"wound_dressing", mappers::BattalionTemplate(0, {})},
    };
