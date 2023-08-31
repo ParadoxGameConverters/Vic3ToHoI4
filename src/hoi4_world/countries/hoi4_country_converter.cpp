@@ -174,7 +174,7 @@ std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<ho
 }
 
 
-std::optional<hoi4::Unit> MakeTemplate(const hoi4::DivisionTemplate& division,
+std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
     std::vector<hoi4::Battalion>& battalions,
     int default_location)
 {
@@ -313,7 +313,7 @@ std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
       // Try to create division templates in the order they were loaded.
       for (const auto& div_template: division_templates)
       {
-         unit = MakeTemplate(div_template, battalions, default_location);
+         unit = FillTemplate(div_template, battalions, default_location);
          if (!unit.has_value())
          {
             continue;
