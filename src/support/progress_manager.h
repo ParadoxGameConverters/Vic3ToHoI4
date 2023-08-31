@@ -1,7 +1,7 @@
 #pragma once
 
 #include <mutex>
-
+#include <atomic>
 
 class ProgressManager
 {
