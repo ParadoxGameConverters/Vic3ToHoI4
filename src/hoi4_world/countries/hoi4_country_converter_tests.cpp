@@ -1922,7 +1922,7 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
                2,
                0,
                1,
-               std::vector<std::string>{"trench_infantry", "wound_dressing", "useless_militia"})}},
+               std::vector<std::string>{"trench_infantry", "wound_dressing", "militia"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.buildings = buildings});
    const vic3::Country source_country_one({.number = 1});
@@ -1948,8 +1948,8 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
        .vic3_state_ids_to_hoi4_state_ids{{1, 1}, {2, 2}, {3, 3}},
        .hoi4_state_ids_to_owner{{1, "TAG"}, {2, "TAG"}, {3, "TAG"}}});
    mappers::TemplateMap templates{
-       {"trench_infantry", mappers::BattalionTemplate(50, {{"infantry", 2.0}})},
-       {"useless_militia", mappers::BattalionTemplate(0, {{"useless_militia", 1.0}})},
+       {"trench_infantry", mappers::BattalionTemplate(30, {{"infantry", 2.0}})},
+       {"militia", mappers::BattalionTemplate(40, {{"militia", 1.0}})},
        {"field_hospitals", mappers::BattalionTemplate(10, {})},
        {"wound_dressing", mappers::BattalionTemplate(0, {})},
    };
@@ -1987,10 +1987,10 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetUnits(),
-       testing::UnorderedElementsAre(hoi4::Unit{"Light Infantry", 60, 1},
-           hoi4::Unit{"Light Infantry", 60, 1},
-           hoi4::Unit{"Light Infantry", 50, 2},
-           hoi4::Unit{"Light Infantry", 50, 2}));
+       testing::UnorderedElementsAre(hoi4::Unit{"Light Infantry", 40, 1},
+           hoi4::Unit{"Light Infantry", 40, 1},
+           hoi4::Unit{"Light Infantry", 70, 2},
+           hoi4::Unit{"Light Infantry", 70, 2}));
 }
 
 
