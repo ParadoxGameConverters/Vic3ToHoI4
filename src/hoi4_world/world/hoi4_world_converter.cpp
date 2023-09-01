@@ -237,8 +237,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    countries = ConvertCountries(source_world,
        world_mapper,
        source_world.GetLocalizations(),
-       states.vic3_state_ids_to_hoi4_state_ids,
-       states.states,
+       states,
        characters,
        culture_queues);
 

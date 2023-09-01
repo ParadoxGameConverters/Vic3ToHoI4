@@ -4,6 +4,7 @@
 
 
 #include <map>
+#include <optional>
 #include <vector>
 
 #include "src/vic3_world/buildings/building.h"
@@ -34,6 +35,8 @@ class Buildings
       }
       return {};
    }
+   [[nodiscard]] const std::optional<vic3::Building> GetBuildingInState(int state_number,
+       const std::string& building_type) const;
 
 
   private:

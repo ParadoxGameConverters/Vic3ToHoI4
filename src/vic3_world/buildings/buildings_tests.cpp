@@ -122,4 +122,24 @@ TEST(Vic3WorldBuildingsBuildingsTests, BuildingsCanBeReturnedByState)
        testing::UnorderedElementsAre(Building("", std::nullopt, 0.5F), Building("", std::nullopt, 0.25F)));
 }
 
+TEST(Vic3WorldBuildingsBuildingsTests, StateBuildingIsReturned)
+{
+   const Buildings buildings({
+       {1,
+           {
+               Building("factory", std::nullopt, 1.0F),
+           }},
+       {2,
+           {
+               Building("factory", std::nullopt, 0.5F),
+               Building("barracks", std::nullopt, 0.25F),
+           }},
+   });
+
+   EXPECT_FALSE(buildings.GetBuildingInState(1, "barracks").has_value());
+   EXPECT_TRUE(buildings.GetBuildingInState(2, "barracks").has_value());
+   EXPECT_NEAR(buildings.GetBuildingInState(2, "barracks")->GetGoodsSalesValues(), 0.25F, 0.001F);
+}
+
+
 }  // namespace vic3

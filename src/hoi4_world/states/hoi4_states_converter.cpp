@@ -844,6 +844,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
    std::vector<hoi4::State> hoi4_states;
    std::map<int, int> province_to_state_id_map;
    std::map<int, int> vic3_state_ids_to_hoi4_state_ids;
+   std::map<int, std::string> hoi4_state_ids_to_owner;
    std::unordered_map<std::string, FactoriesStruct> accumulator;
 
    mappers::Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_mappings =
@@ -964,8 +965,13 @@ hoi4::States CreateStates(const vic3::World& source_world,
          {
             province_to_state_id_map.emplace(province, static_cast<int>(hoi4_states.size() + 1U));
          }
-         vic3_state_ids_to_hoi4_state_ids.emplace(vic3_state_id, static_cast<int>(hoi4_states.size() + 1U));
-         hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U),
+         int state_id = static_cast<int>(hoi4_states.size() + 1U);
+         vic3_state_ids_to_hoi4_state_ids.emplace(vic3_state_id, state_id);
+         if (state_owner.has_value())
+         {
+            hoi4_state_ids_to_owner[state_id] = state_owner.value();
+         }
+         hoi4_states.emplace_back(state_id,
              hoi4::StateOptions{.owner = state_owner,
                  .provinces = province_set,
                  .manpower = manpower,
@@ -1011,10 +1017,11 @@ hoi4::States CreateStates(const vic3::World& source_world,
    LogInfrastructure(infrastructure_mapper);
    LogNavalBases(hoi4_states);
 
-   return {hoi4_states,
-       province_to_state_id_map,
-       vic3_state_ids_to_hoi4_state_ids,
-       hoi4_state_names_to_vic3_state_names};
+   return hoi4::States{.states = hoi4_states,
+       .province_to_state_id_map = province_to_state_id_map,
+       .vic3_state_ids_to_hoi4_state_ids = vic3_state_ids_to_hoi4_state_ids,
+       .hoi4_state_names_to_vic3_state_names = hoi4_state_names_to_vic3_state_names,
+       .hoi4_state_ids_to_owner = hoi4_state_ids_to_owner};
 }
 
 }  // namespace

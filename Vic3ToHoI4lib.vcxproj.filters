@@ -118,6 +118,8 @@
     <Filter Include="src\mappers\ideology">
       <UniqueIdentifier>{2fd0d878-6751-44e9-988b-d9fcb5ff3c6c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\mappers\unit">
+    </Filter>
     <Filter Include="src\vic3_world\elections">
       <UniqueIdentifier>{19009fed-5cae-42e6-9143-a8090227d061}</UniqueIdentifier>
     </Filter>
@@ -458,6 +460,12 @@
     </ClInclude>
     <ClInclude Include="src\mappers\ideology\ideology_mapper_importer.h">
       <Filter>src\mappers\ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\unit\unit_mapper.h">
+      <Filter>src\mappers\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\unit\unit_mapper_importer.h">
+      <Filter>src\mappers\unit</Filter>
     </ClInclude>
     <ClInclude Include="src\vic3_world\elections\elections_importer.h">
       <Filter>src\vic3_world\elections</Filter>
@@ -805,6 +813,12 @@
     </ClCompile>
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer.cpp">
       <Filter>src\mappers\ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\unit\unit_mapper.cpp">
+      <Filter>src\mappers\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\unit\unit_mapper_importer.cpp">
+      <Filter>src\mappers\unit</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\elections\elections_importer.cpp">
       <Filter>src\vic3_world\elections</Filter>

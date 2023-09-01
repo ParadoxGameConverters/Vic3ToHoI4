@@ -34,6 +34,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
    EXPECT_TRUE(hoi4_states.province_to_state_id_map.empty());
    EXPECT_TRUE(hoi4_states.vic3_state_ids_to_hoi4_state_ids.empty());
    EXPECT_TRUE(hoi4_states.hoi4_state_names_to_vic3_state_names.empty());
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
@@ -72,6 +73,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
    EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"), testing::Pair("STATE_2", "REGION_002")));
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 TEST(Hoi4worldStatesHoi4statesconverter, ProvincesMapToStates)
@@ -146,6 +148,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(3, 2)));
    EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"), testing::Pair("STATE_2", "REGION_002")));
+   EXPECT_THAT(hoi4_states.hoi4_state_ids_to_owner,
+       testing::UnorderedElementsAre(testing::Pair(1, "ONE"), testing::Pair(2, "THR")));
 }
 
 
@@ -192,6 +196,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(4, 2)));
    EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"), testing::Pair("STATE_2", "REGION_002")));
+   EXPECT_THAT(hoi4_states.hoi4_state_ids_to_owner,
+       testing::UnorderedElementsAre(testing::Pair(1, "ONE"), testing::Pair(2, "FOR")));
 }
 
 
@@ -232,6 +238,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"),
            testing::Pair("STATE_2", "REGION_001"),
            testing::Pair("STATE_3", "REGION_002")));
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 
@@ -281,6 +288,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
            testing::Pair("STATE_4", "REGION_002"),
            testing::Pair("STATE_5", "REGION_002"),
            testing::Pair("STATE_6", "REGION_002")));
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 
@@ -324,6 +332,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
    EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"), testing::Pair("STATE_2", "REGION_002")));
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 
@@ -371,6 +380,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
            testing::Pair("STATE_2", "REGION_001"),
            testing::Pair("STATE_3", "REGION_002"),
            testing::Pair("STATE_4", "REGION_002")));
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 
@@ -389,6 +399,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
    EXPECT_TRUE(hoi4_states.province_to_state_id_map.empty());
    EXPECT_TRUE(hoi4_states.vic3_state_ids_to_hoi4_state_ids.empty());
    EXPECT_TRUE(hoi4_states.hoi4_state_names_to_vic3_state_names.empty());
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 
@@ -431,6 +442,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
    EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"), testing::Pair("STATE_2", "REGION_002")));
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 
@@ -497,6 +509,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
    EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"), testing::Pair("STATE_2", "REGION_002")));
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 
@@ -540,6 +553,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
    EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"), testing::Pair("STATE_2", "REGION_002")));
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 
@@ -587,6 +601,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"),
            testing::Pair("STATE_2", "REGION_002"),
            testing::Pair("STATE_3", "REGION_003")));
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 
@@ -625,6 +640,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
        testing::UnorderedElementsAre(testing::Pair(1, 1), testing::Pair(2, 2)));
    EXPECT_THAT(hoi4_states.hoi4_state_names_to_vic3_state_names,
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"), testing::Pair("STATE_2", "REGION_002")));
+   EXPECT_THAT(hoi4_states.hoi4_state_ids_to_owner,
+       testing::UnorderedElementsAre(testing::Pair(1, "TAG"), testing::Pair(2, "TWO")));
 }
 
 
@@ -672,6 +689,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
        testing::UnorderedElementsAre(testing::Pair("STATE_1", "REGION_001"), testing::Pair("STATE_2", "REGION_002")));
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not get tag for owner of Vic3 state 1."));
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not get tag for owner of Vic3 state 2."));
+   EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
 }  // namespace hoi4

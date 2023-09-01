@@ -131,6 +131,8 @@
     <ClCompile Include="src\hoi4_world\map\strategic_regions_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_region_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_region_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\military\battalion_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\military\division_templates_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\military\equipment_variants_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\states\default_states_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\states\hoi4_states_converter_tests.cpp" />
@@ -152,6 +154,8 @@
     <ClCompile Include="src\mappers\provinces\province_mapping_importer_tests.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mappings_importer_tests.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mapping_importer_tests.cpp" />
+    <ClCompile Include="src\mappers\unit\unit_mapper_importer_tests.cpp" />
+    <ClCompile Include="src\mappers\unit\unit_mapper_tests.cpp" />
     <ClCompile Include="src\maps\map_data_tests.cpp" />
     <ClCompile Include="src\maps\province_definitions_tests.cpp" />
     <ClCompile Include="src\maps\province_points_tests.cpp" />

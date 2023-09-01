@@ -25,6 +25,8 @@ void OutputCountryHistory(std::string_view output_name,
     const hoi4::Country& country,
     const std::map<int, hoi4::Character>& characters);
 
+void OutputCountryUnits(const std::string& oob_file, const hoi4::Country& country);
+
 }  // namespace out
 
 

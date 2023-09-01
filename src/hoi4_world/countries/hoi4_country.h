@@ -26,6 +26,15 @@ struct NameList
    std::partial_ordering operator<=>(const NameList&) const = default;
 };
 
+struct Unit
+{
+   std::string unit_template;
+   int equipment;
+   int location;
+
+   std::partial_ordering operator<=>(const Unit&) const = default;
+};
+
 struct CountryOptions
 {
    std::string tag;
@@ -52,9 +61,9 @@ struct CountryOptions
    std::set<std::string> puppets;
    std::optional<std::string> overlord;
    int starting_research_slots = 3;
+   std::vector<Unit> units;
    float stability = 0.0F;
 };
-
 
 class Country
 {
@@ -84,7 +93,8 @@ class Country
        puppets_(std::move(country_options.puppets)),
        overlord_(std::move(country_options.overlord)),
        starting_research_slots_(country_options.starting_research_slots),
-       stability_(country_options.stability)
+       stability_(country_options.stability),
+       units_(country_options.units)
    {
    }
 
@@ -113,6 +123,7 @@ class Country
    [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
    [[nodiscard]] float GetStability() const { return stability_; }
    [[nodiscard]] float GetWarSupport() const { return 0.60F; }
+   [[nodiscard]] const std::vector<Unit>& GetUnits() const { return units_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
@@ -142,6 +153,7 @@ class Country
    std::optional<std::string> overlord_;
    int starting_research_slots_;
    float stability_ = 0.0F;
+   std::vector<Unit> units_;
 };
 
 }  // namespace hoi4
