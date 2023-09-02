@@ -144,26 +144,6 @@ ideas = {
 				}
 			}
 		}
-		#big_gun_club_spirit = {
-		#	modifier = {
-		#		ship_hull_heavy_design_cost_factor = -0.6
-		#	}
-		#}
-		#aviation_enthusiasts_spirit = {
-		#	modifier = {
-		#		ship_hull_carrier_design_cost_factor = -0.6
-		#	}
-		#}
-		#cruiser_warfare_spirit = {
-		#	modifier = {
-		#		ship_hull_cruiser_design_cost_factor = -0.6
-		#	}
-		#}
-		#wolfpacks_spirit = {
-		#	modifier = {
-		#		ship_hull_submarine_design_cost_factor = -0.6
-		#	}
-		#}
 		flexible_contracts_spirit = {
 			ledger = navy
 			modifier = {
@@ -219,11 +199,6 @@ ideas = {
 				}
 			}
 		}
-		#naval_modernism_spirit = {
-		#	research_bonus = {
-		#		naval_equipment = 0.10
-		#	}
-		#}
 		fleet_in_being_navy_spirit = {
 			ledger = navy
 			visible = { has_tech = fleet_in_being }
@@ -336,12 +311,6 @@ ideas = {
 				}
 			}
 		}
-		#discrete_valor_spirit = {
-		#	modifier = {
-		#		naval_retreat_chance = 0.1
-		#		naval_retreat_speed = 0.1
-		#	}
-		#}
 		surface_raiders_spirit = {
 			ledger = navy
 			visible = { has_tech = trade_interdiction }
@@ -402,15 +371,5 @@ ideas = {
 				}
 			}
 		} 
-		bureau_of_ordnance_spirit = {
-			ledger = navy
-			visible = { tag = USA }
-			modifier = {
-				naval_torpedo_hit_chance_factor = -0.1
-			}
-			ai_will_do = {
-				factor = 0
-			}
-		}
 	}
 }

@@ -598,10 +598,6 @@ ideas = {
 					has_tech = mobile_warfare
 				}
 
-				modifier = {
-					factor = 4
-					original_tag = GER
-				}
 			}
 		}
 
