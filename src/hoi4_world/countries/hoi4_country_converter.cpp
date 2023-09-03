@@ -13,8 +13,6 @@
 #include "src/vic3_world/ideologies/ideologies.h"
 #include "src/vic3_world/world/vic3_world.h"
 
-constexpr bool IDEOLOGY_DEBUG = false;
-
 namespace
 {
 
@@ -266,7 +264,8 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
 std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>& interest_group_ids,
     const std::map<int, vic3::InterestGroup>& interest_groups,
     const vic3::Ideologies& vic3_ideologies,
-    const mappers::IdeologyMapper& ideology_mapper)
+    const mappers::IdeologyMapper& ideology_mapper,
+    bool debug)
 {
    std::map<std::string, float> ideology_support;
    std::map<std::string, std::map<std::string, float>> total_ideologies_per_law;
@@ -296,7 +295,7 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
             ig_ideology_support[ideology] += total_support;
          }
       }
-      if (IDEOLOGY_DEBUG)
+      if (debug)
       {
          Log(LogLevel::Debug) << fmt::format("{}: {:.0f} {:.0f} {:.0f} {:.0f}",
              ig_itr->second.GetType(),
@@ -307,7 +306,7 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
       }
    }
 
-   if (IDEOLOGY_DEBUG)
+   if (debug)
    {
       for (const auto& law: total_ideologies_per_law)
       {
@@ -389,10 +388,11 @@ std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, 
 std::map<std::string, int> DetermineIdeologySupport(const std::vector<int>& interest_group_ids,
     const std::map<int, vic3::InterestGroup>& interest_groups,
     const vic3::Ideologies& vic3_ideologies,
-    const mappers::IdeologyMapper& ideology_mapper)
+    const mappers::IdeologyMapper& ideology_mapper,
+    bool debug)
 {
    const std::map<std::string, float> raw_ideology_support =
-       CalculateRawIdeologySupport(interest_group_ids, interest_groups, vic3_ideologies, ideology_mapper);
+       CalculateRawIdeologySupport(interest_group_ids, interest_groups, vic3_ideologies, ideology_mapper, debug);
 
    return NormalizeIdeologySupport(raw_ideology_support);
 }
@@ -433,12 +433,18 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
     std::map<int, hoi4::Character>& characters,
-    std::map<std::string, mappers::CultureQueue>& culture_queues)
+    std::map<std::string, mappers::CultureQueue>& culture_queues,
+    bool debug)
 {
    const std::optional<std::string> tag = country_mapper.GetHoiTag(source_country.GetNumber());
    if (!tag.has_value())
    {
       return std::nullopt;
+   }
+
+   if (debug)
+   {
+      Log(LogLevel::Debug) << fmt::format("converting {} (vic {})", tag.value()), source_country.GetTag());
    }
 
    const std::optional<int> capital_state =
@@ -501,13 +507,14 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    {
       overlord = country_mapper.GetHoiTag(*source_overlord);
    }
-   Log(LogLevel::Debug) << fmt::format("{}", tag.value_or(""));
+
    const auto ideology_support = DetermineIdeologySupport(source_country.GetInterestGroupIds(),
        source_world.GetInterestGroups(),
        source_world.GetIdeologies(),
-       ideology_mapper);
+       ideology_mapper,
+       debug);
 
-   if (IDEOLOGY_DEBUG)
+   if (debug)
    {
       Log(LogLevel::Debug) << fmt::format("{}: {} {} {} {}",
           tag.value_or(""),
