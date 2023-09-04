@@ -13,7 +13,7 @@ float vic3::Buildings::GetTotalGoodSalesValueInState(int state_number) const
           buildings_in_state->second.end(),
           0.0F,
           [](float total_value, const vic3::Building& building) {
-             return total_value + building.GetGoodsSalesVales();
+             return total_value + building.GetGoodsSalesValues();
           });
    }
 
@@ -32,9 +32,29 @@ float vic3::Buildings::GetTotalGoodSalesValueInWorld() const
           buildings_in_state.end(),
           0.0F,
           [](float total_value, const vic3::Building& building) {
-             return total_value + building.GetGoodsSalesVales();
+             return total_value + building.GetGoodsSalesValues();
           });
    }
 
    return total_value;
+}
+
+
+const std::optional<vic3::Building> vic3::Buildings::GetBuildingInState(int state_number,
+    const std::string& building_type) const
+{
+   const auto itr = buildings_.find(state_number);
+   if (itr == buildings_.end())
+   {
+      return {};
+   }
+   auto buildings = itr->second;
+   auto match = std::find_if(buildings.begin(), buildings.end(), [building_type](const vic3::Building& b) {
+      return b.GetType() == building_type;
+   });
+   if (match != buildings.end())
+   {
+      return *match;
+   }
+   return {};
 }

@@ -73,16 +73,16 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
            },
    };
 
+   const States states{
+       .states{},
+       .vic3_state_ids_to_hoi4_state_ids{{1, 10}, {2, 20}},
+   };
    const vic3::World v3World = vic3::World(options);
 
    const auto countries = ConvertCountries(v3World,
        world_mapper,
        commonItems::LocalizationDatabase{{}, {}},
-       {
-           {1, 10},
-           {2, 20},
-       },
-       {},
+       states,
        characters,
        culture_queues);
 
@@ -147,7 +147,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .graphics_block = expected_graphics_block_one,
                                     .character_ids = {1, 3},
                                     .spy_ids = {4},
-                                    .starting_research_slots = 3})),
+                                    .starting_research_slots = 3,
+                                    .units = {}})),
            testing::Pair("TWO",
                Country(CountryOptions{.tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
@@ -161,7 +162,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .tank_variants = expected_tank_variants_two,
                    .graphics_block = expected_graphics_block_two,
                    .character_ids = {2},
-                   .starting_research_slots = 3}))));
+                   .starting_research_slots = 3,
+                   .units = {}}))));
 }
 
 }  // namespace hoi4

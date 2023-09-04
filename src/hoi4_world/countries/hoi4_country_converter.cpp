@@ -2,10 +2,12 @@
 
 #include <numeric>
 #include <ranges>
+#include <vector>
 
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_character_converter.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
+#include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
 #include "src/support/converter_utils.h"
@@ -15,6 +17,8 @@
 
 namespace
 {
+
+constexpr float tolerance = 0.01F;
 
 bool StateAsCapitalCompareFunction(const hoi4::State& a, const hoi4::State& b)
 {
@@ -165,6 +169,163 @@ std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<ho
    }
 
    return active_variants;
+}
+
+
+std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
+    std::vector<hoi4::Battalion>& battalions,
+    int default_location)
+{
+   hoi4::UnitCount required = division.GetBattalions();
+   for (const auto& [ut, str]: division.GetSupport())
+   {
+      required[ut] += str;
+   }
+   float total = 0.0F;
+   for (const auto& [ut, str]: required)
+   {
+      total += str;
+      float found = 0.0F;
+      for (const auto& battalion: battalions)
+      {
+         if (battalion.GetType() != ut)
+         {
+            continue;
+         }
+         found += battalion.GetStrength();
+      }
+      if (found < str)
+      {
+         return {};
+      }
+   }
+   if (total < tolerance)
+   {
+      // Avoid an infinite loop of making divisions that don't require any strength.
+      return {};
+   }
+   int equipment = 100;
+   int location = default_location;
+   for (const auto& [ut, str]: required)
+   {
+      float needed = str;
+      for (auto& battalion: battalions)
+      {
+         if (battalion.GetType() != ut)
+         {
+            continue;
+         }
+         auto current = battalion.GetStrength();
+         if (current > needed)
+         {
+            current = needed;
+         }
+         battalion.AddStrength(-current);
+         needed -= current;
+         // Create division with equipment of worst battalion in it.
+         // Approximate but reasonable.
+         equipment = std::min(equipment, std::min(100, battalion.GetEquipmentScale()));
+         const auto& battalion_location = battalion.GetLocation();
+         if (battalion_location.has_value())
+         {
+            location = *battalion_location;
+         }
+         if (needed < tolerance)
+         {
+            break;
+         }
+      }
+   }
+
+   std::erase_if(battalions, [](const hoi4::Battalion& cand) {
+      return cand.GetStrength() < tolerance;
+   });
+
+   return hoi4::Unit{division.GetName(), equipment, location};
+}
+
+std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
+    const mappers::UnitMapper& unit_mapper,
+    const vic3::Buildings& buildings,
+    const std::vector<hoi4::DivisionTemplate>& division_templates,
+    const hoi4::States& states,
+    const std::optional<int>& capital_state)
+{
+   std::vector<hoi4::Battalion> battalions;
+   std::vector<hoi4::Unit> units;
+   int default_location = 11666;  // Vienna.
+   if (capital_state.has_value())
+   {
+      auto cap = *capital_state;
+      if (cap < states.states.size())
+      {
+         if (!states.states[cap].GetProvinces().empty())
+         {
+            default_location = *states.states[cap].GetProvinces().begin();
+         }
+      }
+   }
+   for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
+   {
+      const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
+      if (itr == states.hoi4_state_ids_to_owner.end())
+      {
+         continue;
+      }
+      if (itr->second != tag)
+      {
+         continue;
+      }
+      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::Barracks);
+      if (!barracks.has_value())
+      {
+         continue;
+      }
+      auto current = unit_mapper.MakeBattalions(barracks->GetProductionMethods(), barracks->GetStaffingLevel());
+      const auto& provs = states.states[hoi4_id - 1].GetProvinces();
+      auto pitr = provs.begin();
+      for (auto& b: current)
+      {
+         b.SetLocation(*pitr);
+         if (pitr++ == provs.end())
+         {
+            pitr = provs.begin();
+         }
+      }
+      battalions.insert(battalions.end(), current.begin(), current.end());
+   }
+
+   if (battalions.empty())
+   {
+      return units;
+   }
+
+   // Sort by decreasing equipment.
+   std::sort(battalions.begin(), battalions.end(), [](const hoi4::Battalion& one, const hoi4::Battalion& two) {
+      return one.GetEquipmentScale() > two.GetEquipmentScale();
+   });
+
+   while (!battalions.empty())
+   {
+      std::optional<hoi4::Unit> unit;
+      // Try to create division templates in the order they were loaded.
+      for (const auto& div_template: division_templates)
+      {
+         unit = FillTemplate(div_template, battalions, default_location);
+         if (!unit.has_value())
+         {
+            continue;
+         }
+         units.push_back(*unit);
+         break;
+      }
+      if (!unit.has_value())
+      {
+         break;
+      }
+   };
+
+   return units;
 }
 
 
@@ -421,14 +582,15 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
     const vic3::Country& source_country,
     const commonItems::LocalizationDatabase& source_localizations,
     const mappers::CountryMapper& country_mapper,
-    const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
-    const std::vector<State>& states,
+    const States& states,
     const mappers::IdeologyMapper& ideology_mapper,
+    const mappers::UnitMapper& unit_mapper,
     const std::vector<mappers::TechMapping>& tech_mappings,
     const std::vector<EquipmentVariant>& all_legacy_ship_variants,
     const std::vector<EquipmentVariant>& all_ship_variants,
     const std::vector<EquipmentVariant>& all_plane_variants,
     const std::vector<EquipmentVariant>& all_tank_variants,
+    const std::vector<DivisionTemplate>& division_templates,
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
@@ -448,7 +610,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    }
 
    const std::optional<int> capital_state =
-       ConvertCapital(source_country, *tag, vic3_state_ids_to_hoi4_state_ids, states);
+       ConvertCapital(source_country, *tag, states.vic3_state_ids_to_hoi4_state_ids, states.states);
    const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
    const std::string sub_ideology = ideology_mapper.GetSubIdeology(ideology, source_country.GetActiveLaws());
    const date last_election = ConvertElection(source_country.GetLastElection());
@@ -460,6 +622,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    const std::vector<EquipmentVariant>& active_plane_variants =
        DetermineActiveVariants(all_plane_variants, technologies);
    const std::vector<EquipmentVariant>& active_tank_variants = DetermineActiveVariants(all_tank_variants, technologies);
+   auto units =
+       ConvertArmies(*tag, unit_mapper, source_world.GetBuildings(), division_templates, states, capital_state);
 
    const auto& [economy_law, trade_law, military_law] = ConvertLaws(source_country.GetActiveLaws(), ideology);
 
@@ -548,5 +712,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .puppets = puppets,
        .overlord = overlord,
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
+       .units = units,
        .stability = ConvertStability(source_world, source_country)});
 }

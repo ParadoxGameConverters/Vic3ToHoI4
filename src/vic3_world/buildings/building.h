@@ -50,7 +50,7 @@ class Building
 
    [[nodiscard]] const std::string& GetType() const { return type_; }
    [[nodiscard]] std::optional<int> GetStateNumber() const { return state_number_; }
-   [[nodiscard]] float GetGoodsSalesVales() const { return goods_sales_value_; }
+   [[nodiscard]] float GetGoodsSalesValues() const { return goods_sales_value_; }
    [[nodiscard]] float GetStaffingLevel() const { return staffing_level_; }
    [[nodiscard]] const std::vector<std::string>& GetProductionMethods() const { return production_methods_; }
 

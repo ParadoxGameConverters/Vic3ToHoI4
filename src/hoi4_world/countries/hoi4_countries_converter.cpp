@@ -3,6 +3,7 @@
 #include <ranges>
 
 #include "external/fmt/include/fmt/format.h"
+#include "src/hoi4_world/military/division_templates_importer.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/equipment_variants_importer.h"
 #include "src/mappers/character/character_trait_mapper_importer.h"
@@ -10,6 +11,8 @@
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 #include "src/mappers/ideology/ideology_mapper.h"
 #include "src/mappers/ideology/ideology_mapper_importer.h"
+#include "src/mappers/unit/unit_mapper.h"
+#include "src/mappers/unit/unit_mapper_importer.h"
 #include "src/mappers/world/world_mapper.h"
 
 
@@ -53,8 +56,7 @@ namespace hoi4
 std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
     const mappers::WorldMapper& world_mapper,
     const commonItems::LocalizationDatabase& source_localizations,
-    const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
-    const std::vector<State>& states,
+    const States& states,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues,
     bool debug)
@@ -62,12 +64,15 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
    std::map<std::string, Country> countries;
 
    const mappers::IdeologyMapper ideology_mapper = mappers::ImportIdeologyMapper("configurables/ideology_mappings.txt");
+   const mappers::UnitMapper unit_mapper = mappers::ImportUnitMapper("configurables/unit_mappings.txt");
 
    const std::vector<EquipmentVariant> all_legacy_ship_variants =
        ImportEquipmentVariants("configurables/legacy_ship_types.txt");
    const std::vector<EquipmentVariant> all_ship_variants = ImportEquipmentVariants("configurables/ship_types.txt");
    const std::vector<EquipmentVariant> all_plane_variants = ImportEquipmentVariants("configurables/plane_designs.txt");
    const std::vector<EquipmentVariant> all_tank_variants = ImportEquipmentVariants("configurables/tank_designs.txt");
+   const std::vector<DivisionTemplate> division_templates =
+       ImportDivisionTemplates("configurables/division_templates.txt");
 
    const mappers::LeaderTypeMapper leader_type_mapper =
        mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
@@ -80,14 +85,15 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
           source_country,
           source_localizations,
           world_mapper.country_mapper,
-          vic3_state_ids_to_hoi4_state_ids,
           states,
           ideology_mapper,
+          unit_mapper,
           world_mapper.tech_mapper,
           all_legacy_ship_variants,
           all_ship_variants,
           all_plane_variants,
           all_tank_variants,
+          division_templates,
           world_mapper.culture_graphics_mapper,
           leader_type_mapper,
           character_trait_mapper,

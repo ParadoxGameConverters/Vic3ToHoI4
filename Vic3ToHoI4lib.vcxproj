@@ -43,6 +43,9 @@
     <ClInclude Include="src\hoi4_world\map\strategic_regions.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_regions_importer.h" />
     <ClInclude Include="src\hoi4_world\map\strategic_region_importer.h" />
+    <ClInclude Include="src\hoi4_world\military\battalion.h" />
+    <ClInclude Include="src\hoi4_world\military\division_templates_importer.h" />
+    <ClInclude Include="src\hoi4_world\military\division_template.h" />
     <ClInclude Include="src\hoi4_world\military\equipment_variants_importer.h" />
     <ClInclude Include="src\hoi4_world\military\equipment_variant.h" />
     <ClInclude Include="src\hoi4_world\states\default_state.h" />
@@ -78,6 +81,8 @@
     <ClInclude Include="src\mappers\technology\tech_mappings_importer.h" />
     <ClInclude Include="src\mappers\technology\tech_mapping.h" />
     <ClInclude Include="src\mappers\technology\tech_mapping_importer.h" />
+    <ClInclude Include="src\mappers\unit\unit_mapper.h" />
+    <ClInclude Include="src\mappers\unit\unit_mapper_importer.h" />
     <ClInclude Include="src\mappers\world\world_mapper.h" />
     <ClInclude Include="src\mappers\world\world_mapper_builder.h" />
     <ClInclude Include="src\maps\map_data.h" />
@@ -174,6 +179,7 @@
     <ClCompile Include="src\hoi4_world\map\strategic_regions.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_regions_importer.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_region_importer.cpp" />
+    <ClCompile Include="src\hoi4_world\military\division_templates_importer.cpp" />
     <ClCompile Include="src\hoi4_world\military\equipment_variants_importer.cpp" />
     <ClCompile Include="src\hoi4_world\states\default_states_importer.cpp" />
     <ClCompile Include="src\hoi4_world\states\hoi4_state.cpp" />
@@ -199,6 +205,8 @@
     <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mappings_importer.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mapping_importer.cpp" />
+    <ClCompile Include="src\mappers\unit\unit_mapper.cpp" />
+    <ClCompile Include="src\mappers\unit\unit_mapper_importer.cpp" />
     <ClCompile Include="src\mappers\world\world_mapper_builder.cpp" />
     <ClCompile Include="src\maps\map_data.cpp" />
     <ClCompile Include="src\maps\map_data_importer.cpp" />
