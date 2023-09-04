@@ -5174,7 +5174,7 @@
 	link = { vic3 = x007035 vic3 = x451783 vic3 = x67EC55 vic3 = x72698B vic3 = x923040 vic3 = x96AB5D vic3 = xBED190 vic3 = xD66487 vic3 = xDFC0B0 hoi4 = 13086 } # Tacna [farm], STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, Moquegua [mine] -> Tacna
 	link = { comment = "* * STATE_URUGUAY " }
 	link = { vic3 = x02C6DE vic3 = xDD1206 hoi4 = 1613 } # STATE_URUGUAY, STATE_URUGUAY -> Paso de los Toros
-	link = { vic3 = x061EE6 vic3 = x8136C4 vic3 = x466506 vic3 = xC707C7 hoi4 = 1626 } # Bagé [mine], STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY -> Rivera
+	link = { vic3 = x061EE6 vic3 = x8136C4 vic3 = x466506 vic3 = xC707C7 vic3 = xC53004 hoi4 = 1626 } # Bagé [mine], STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY -> Rivera
 	link = { vic3 = x44A7CD vic3 = x7AADBF vic3 = xD5325F hoi4 = 1641 } # STATE_URUGUAY, STATE_URUGUAY, Melo [wood] -> Melo
 	link = { vic3 = x3D3A57 vic3 = x3EA75C vic3 = x754BF8 vic3 = xA7EB2E hoi4 = 1654 } # STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY -> Sarandí del Yí
 	link = { vic3 = x104529 vic3 = x4E1442 vic3 = xE25670 vic3 = xE69F06 hoi4 = 4457 } # STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY -> Colonia del Sacramento
@@ -5182,7 +5182,7 @@
 	link = { vic3 = x302DDA vic3 = x3588C8 vic3 = x490187 hoi4 = 10362 } # Montevideo [city], STATE_URUGUAY, STATE_URUGUAY -> Montevideo
 	link = { vic3 = x46C43D vic3 = x65E74D vic3 = x7764E0 vic3 = xEE9484 hoi4 = 10502 } # STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY, Paysandú [farm] -> Paysandú
 	link = { vic3 = x4934E2 vic3 = x49D0F9 vic3 = xA46ED2 vic3 = xFEBAD0 hoi4 = 12336 } # STATE_URUGUAY, STATE_URUGUAY, Punta del Este [port], STATE_URUGUAY -> Maldonado
-	link = { vic3 = x3AF263 vic3 = xA282BC vic3 = xC2A28B vic3 = xE2D434 vic3 = xC53004 vic3 = x08CCA6 hoi4 = 12440 } # STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY -> Artigas
+	link = { vic3 = x3AF263 vic3 = xA282BC vic3 = xC2A28B vic3 = xE2D434 vic3 = x08CCA6 hoi4 = 12440 } # STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY -> Artigas
 	link = { vic3 = x9C6453 vic3 = xE2BE85 vic3 = xABC305 hoi4 = 12468 } # STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY -> Salto
 	link = { vic3 = xCB8D8C vic3 = xD8A44F vic3 = xD45E0C hoi4 = 12481 } # STATE_URUGUAY, STATE_URUGUAY, STATE_URUGUAY -> Treinta y Tres
 	link = { vic3 = x3F05CB hoi4 = 12496 } # STATE_URUGUAY -> Duranzo
