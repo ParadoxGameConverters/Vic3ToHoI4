@@ -2,6 +2,7 @@
 
 #include "external/commonItems/Log.h"
 #include "external/commonItems/ModLoader/ModFilesystem.h"
+#include "hoi4_world/world/hoi4_world_framework_builder.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 #include "src/hoi4_world/world/hoi4_world_converter.h"
 #include "src/mappers/world/world_mapper_builder.h"
@@ -14,16 +15,21 @@
 
 void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const GameVersion& game_version)
 {
-   const auto source_world = vic3::ImportWorld(configuration);
-
    const commonItems::ModFilesystem hoi4_mod_filesystem(configuration.hoi4_directory, {});
 
+   auto hoi4_framework = std::async(std::launch::async, [&hoi4_mod_filesystem]() {
+      return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
+   });
 
+   const auto source_world = vic3::ImportWorld(configuration);
    auto world_mapper = mappers::WorldMapperBuilder::CreateDefaultMapper(hoi4_mod_filesystem, source_world).Build();
    world_mapper.province_mapper.CheckAllVic3ProvincesMapped(
        source_world.GetProvinceDefinitions().GetProvinceDefinitions());
-   const hoi4::World destination_world =
-       hoi4::ConvertWorld(hoi4_mod_filesystem, source_world, world_mapper, configuration.debug);
+   const hoi4::World destination_world = hoi4::ConvertWorld(hoi4_mod_filesystem,
+       source_world,
+       world_mapper,
+       std::move(hoi4_framework),
+       configuration.debug);
 
    out::ClearOutputFolder(configuration.output_name);
    out::OutputMod(configuration.output_name, game_version);

@@ -17,6 +17,7 @@
 #include "external/fmt/include/fmt/format.h"
 #include "external/rakaly/rakaly.h"
 #include "src/support/date_fmt.h"
+#include "src/support/progress_manager.h"
 #include "src/vic3_world/buildings/buildings_importer.h"
 #include "src/vic3_world/characters/vic3_character_manager.h"
 #include "src/vic3_world/countries/country_definitions_importer.h"
@@ -38,7 +39,6 @@
 #include "src/vic3_world/states/vic3_state.h"
 #include "src/vic3_world/states/vic3_states_importer.h"
 #include "src/vic3_world/technology/vic3_technology_importer.h"
-
 
 
 namespace
@@ -306,12 +306,11 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    localizations.ScrapeLocalizations(mod_filesystem, "localization");
    world_options.localizations = localizations;
    world_options.culture_definitions = ImportCultureDefinitions(mod_filesystem);
-   Log(LogLevel::Progress) << "5 %";
+   ProgressManager::AddProgress(5);
 
    Log(LogLevel::Info) << "-> Reading Vic3 save.";
-   Log(LogLevel::Progress) << "7 %";
    std::istringstream save_stream = MeltSave(save, save_string);
-
+   ProgressManager::AddProgress(1);
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
    const std::map<std::string, commonItems::Color> color_definitions = ImportCountryColorDefinitions(mod_filesystem);
    std::map<int, std::string> cultures;
@@ -399,19 +398,23 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        world_options.acquired_technologies.size());
    Log(LogLevel::Info) << fmt::format("\t{} in goods being sold",
        world_options.buildings.GetTotalGoodSalesValueInWorld());
-   Log(LogLevel::Progress) << "15 %";
+   ProgressManager::AddProgress(10);
 
    AssignCulturesToCountries(world_options.countries, cultures);
+   ProgressManager::AddProgress(1);
    AssignCulturesToCharacters(world_options.characters, cultures);
+   ProgressManager::AddProgress(1);
    AssignOwnersToStates(world_options.countries, world_options.states);
-   Log(LogLevel::Progress) << "16 %";
+   ProgressManager::AddProgress(1);
    const auto& country_tag_to_id_map = MapCountryTagsToId(world_options.countries);
    AssignHomeCountriesToExiledAgitators(country_tag_to_id_map, world_options.characters);
+   ProgressManager::AddProgress(1);
    AssignIgsToCountries(world_options.countries, world_options.igs);
+   ProgressManager::AddProgress(1);
    AssignCharactersToCountries(world_options.characters, country_character_map, world_options.countries);
-
+   ProgressManager::AddProgress(1);
    vic3::IdeologiesImporter ideologies_importer;
    world_options.ideologies = ideologies_importer.ImportIdeologies(mod_filesystem);
-
+   ProgressManager::AddProgress(1);
    return World(world_options);
 }

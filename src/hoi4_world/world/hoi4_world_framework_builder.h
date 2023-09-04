@@ -40,8 +40,14 @@ class WorldFrameworkBuilder
    // for intermediate test stuff
    maps::ProvinceDefinitions CopyProvinceDefinitions();
 
+
+
    // require other data first
-   WorldFrameworkBuilder& DefaultCoastalProvinces(const maps::MapData& map_data);
+   // requires province_definitions
+   WorldFrameworkBuilder& DefaultMapData();
+   WorldFrameworkBuilder& SetMapData(const maps::MapData& map_data);
+   // requires map_data, province_definitions
+   WorldFrameworkBuilder& DefaultCoastalProvinces();
    /// <summary>
    /// Add coastal provinces. format is {land_province_id, {adjacent_sea_province_id,...}}
    /// </summary>
@@ -58,6 +64,7 @@ class WorldFrameworkBuilder
    StateCategories state_categories_;
    int test_province_number_ = 0;
    maps::ProvinceDefinitions::storage_type province_definitions_;
+   maps::MapData map_data_;
 
    // requires province_definitions_
    CoastalProvinces::storage_type coastal_provinces_;

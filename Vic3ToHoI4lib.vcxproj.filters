@@ -617,6 +617,9 @@
     <ClInclude Include="src\support\converter_utils.h">
       <Filter>src\support</Filter>
     </ClInclude>
+    <ClInclude Include="src\support\progress_manager.h">
+      <Filter>src\support</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -945,6 +948,9 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\states\vic3_state.cpp">
       <Filter>src\vic3_world\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\support\progress_manager.cpp">
+      <Filter>src\support</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
