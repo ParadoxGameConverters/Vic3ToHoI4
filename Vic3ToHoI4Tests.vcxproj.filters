@@ -374,6 +374,9 @@
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer_tests.cpp">
       <Filter>src\mappers\ideology</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\resources\resource_mapper_tests.cpp">
+      <Filter>src\mappers\resources</Filter>
+    </ClCompile>
     <ClCompile Include="src\mappers\unit\unit_mapper_tests.cpp">
       <Filter>src\mappers\unit</Filter>
     </ClCompile>
