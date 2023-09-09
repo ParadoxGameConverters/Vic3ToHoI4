@@ -153,6 +153,7 @@
     <ClCompile Include="src\mappers\provinces\province_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapping_importer_tests.cpp" />
     <ClCompile Include="src\mappers\resources\resource_mapper_tests.cpp" />
+    <ClCompile Include="src\mappers\resources\resource_mapper_importer_tests.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mappings_importer_tests.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mapping_importer_tests.cpp" />
     <ClCompile Include="src\mappers\unit\unit_mapper_importer_tests.cpp" />
