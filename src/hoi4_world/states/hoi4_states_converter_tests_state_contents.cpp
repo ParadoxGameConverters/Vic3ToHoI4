@@ -840,51 +840,49 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreAssigned)
 
 TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreLogged)
 {
-    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
-        .AddTestStates({ {1, 2, 3}, {4, 5, 6} })
-        .AddTestStateRegions({ {1, 2, 3}, {4, 5, 6} });
-    mappers::WorldMapperBuilder world_mapper =
-        std::move(mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6));
-    world_mapper.CopyToVicWorld(world);
-    hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework()
-        .AddResources({
-        /* 10 not included to force the continue */
-        {
-            20,
-            {{"test_resource", 2.0}},
-        },
-        {
-            30,
-            {{"test_resource", 3.0}},
-        },
-        {40,
-            {
-                {"test_resource", 7.0},
-                {"test_resource_two", 11.0},
-            }},
-            })
-            .AddTestLandProvinces(6);
-    const maps::MapData map_data({
-        .province_neighbors =
-            {
-                {"10", {"20", "30"}},
-                {"40", {"50", "60"}},
-            },
-        .province_definitions = world_framework.CopyProvinceDefinitions(),
-        });
+   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
+                                  .AddTestStates({{1, 2, 3}, {4, 5, 6}})
+                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}});
+   mappers::WorldMapperBuilder world_mapper =
+       std::move(mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6));
+   world_mapper.CopyToVicWorld(world);
+   hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework()
+                                                     .AddResources({
+                                                         /* 10 not included to force the continue */
+                                                         {
+                                                             20,
+                                                             {{"test_resource", 2.0}},
+                                                         },
+                                                         {
+                                                             30,
+                                                             {{"test_resource", 3.0}},
+                                                         },
+                                                         {40,
+                                                             {
+                                                                 {"test_resource", 7.0},
+                                                                 {"test_resource_two", 11.0},
+                                                             }},
+                                                     })
+                                                     .AddTestLandProvinces(6);
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = world_framework.CopyProvinceDefinitions(),
+   });
 
-    std::stringstream log;
-    std::streambuf* cout_buffer = std::cout.rdbuf();
-    std::cout.rdbuf(log.rdbuf());
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
 
-    const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
 
-    std::cout.rdbuf(cout_buffer);
+   std::cout.rdbuf(cout_buffer);
 
-    EXPECT_THAT(log.str(),
-        testing::HasSubstr("[INFO] \t\t\tConverter Resource test_resource:12"));
-    EXPECT_THAT(log.str(),
-        testing::HasSubstr("[INFO] \t\t\tConverter Resource test_resource_two:11"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\t\tConverter Resource test_resource:12"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \t\t\tConverter Resource test_resource_two:11"));
 }
 
 
