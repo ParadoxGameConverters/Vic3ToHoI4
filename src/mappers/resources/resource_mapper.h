@@ -19,7 +19,7 @@ struct ResourceScore
 class ResourceMapper
 {
   public:
-   explicit ResourceMapper(std::map<std::string, ResourceScore>& scores): scores_(std::move(scores)) {}
+   explicit ResourceMapper(std::map<std::string, ResourceScore> scores): scores_(std::move(scores)) {}
 
    float CalculateScore(const std::string& hoi_resource, const std::vector<vic3::Building>& buildings) const;
 

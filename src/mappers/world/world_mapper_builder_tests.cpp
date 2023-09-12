@@ -5,6 +5,7 @@
 #include "external/fmt/include/fmt/format.h"
 #include "src/mappers/world/world_mapper_builder.h"
 
+constexpr float kTolerance = 0.0001F;
 
 namespace mappers
 {
@@ -17,6 +18,15 @@ TEST(MappersWorldWorldMapperBuilderTests, NullBuilderOutputsNull)
    EXPECT_TRUE(nullMapper.province_mapper.GetHoi4ToVic3ProvinceMappings().empty());
    EXPECT_TRUE(nullMapper.province_mapper.GetVic3ToHoi4ProvinceMappings().empty());
    EXPECT_TRUE(nullMapper.tech_mapper.empty());
+   std::vector<vic3::Building> buildings{
+     {"building_iron_mine",
+      1,
+      1.0F,
+      1.0F,
+      {}},
+   };
+   EXPECT_NEAR(nullMapper.resource_mapper.CalculateScore("steel", buildings), 0.0F, kTolerance);
+   EXPECT_NEAR(nullMapper.resource_mapper.CalculateScore("oil", buildings), 0.0F, kTolerance);
 }
 
 TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)
@@ -31,6 +41,43 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)
    EXPECT_EQ(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMapping("x002000").at(0), 2);
    EXPECT_THAT(worldMapper.tech_mapper.at(0).GetTechs(),
        testing::UnorderedElementsAre("dest_tech_one", "dest_tech_two"));
+}
+
+TEST(MappersWorldWorldMapperBuilderTests, LoadResourceMappingWorks)
+{
+   const vic3::World world(vic3::WorldOptions({.countries = {
+                                                   {1, vic3::Country({.number = 1, .tag = "Z00"})},
+                                               }}));
+   auto builder =
+       WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem("test_files/hoi4_world", {}), world);
+   builder.LoadResourceMapper("test_files/configurables/resource_mappings.txt");
+
+   const auto worldMapper = builder.Build();
+   std::vector<vic3::Building> buildings{
+     {"building_iron_mine",
+      1,
+      1.0F,
+      1.0F,
+      {}},
+     {"building_oil_rig",
+      1,
+      0.8F,
+      1.0F,
+      {}},
+     {"building_coal_mine",
+      1,
+      0.2F,
+      1.0F,
+      {}},
+     {"building_steel_factory",
+      1,
+      0.8F,
+      1.0F,
+      {}},
+   };
+   EXPECT_NEAR(worldMapper.resource_mapper.CalculateScore("steel", buildings), 1.1F, kTolerance);
+   EXPECT_NEAR(worldMapper.resource_mapper.CalculateScore("oil", buildings), 0.48F, kTolerance);
+   EXPECT_NEAR(worldMapper.resource_mapper.CalculateScore("tungsten", buildings), 0.0F, kTolerance);
 }
 
 TEST(MappersWorldWorldMapperBuilderTests, DefaultCountryWorks)
