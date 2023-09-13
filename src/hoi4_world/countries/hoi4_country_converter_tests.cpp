@@ -1948,8 +1948,8 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
        .vic3_state_ids_to_hoi4_state_ids{{1, 1}, {2, 2}, {3, 3}},
        .hoi4_state_ids_to_owner{{1, "TAG"}, {2, "TAG"}, {3, "TAG"}}});
    mappers::TemplateMap templates{
-       {"trench_infantry", mappers::BattalionTemplate(30, {{"infantry", 2.0}})},
-       {"militia", mappers::BattalionTemplate(40, {{"militia", 1.0}})},
+       {"trench_infantry", mappers::BattalionTemplate(30, {{"infantry", 2.0F}})},
+       {"militia", mappers::BattalionTemplate(40, {{"militia", 1.0F}})},
        {"field_hospitals", mappers::BattalionTemplate(10, {})},
        {"wound_dressing", mappers::BattalionTemplate(0, {})},
    };
