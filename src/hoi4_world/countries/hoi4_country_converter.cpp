@@ -606,7 +606,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
 
    if (debug)
    {
-      Log(LogLevel::Debug) << fmt::format("converting {} (vic {})", tag.value()), source_country.GetTag());
+      Log(LogLevel::Debug) << fmt::format("converting {} (vic {})", tag.value(), source_country.GetTag());
    }
 
    const std::optional<int> capital_state =
