@@ -31,8 +31,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
        std::async<>(std::launch::async,
            []() {
               return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
-           }),
-       false);
+           }));
 
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().states.empty());
@@ -87,8 +86,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
        std::async<>(std::launch::async,
            []() {
               return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
-           }),
-       false);
+           }));
 
    const Technologies expected_techs_one{std::map<std::optional<std::string>, std::set<std::string>>{
        {std::nullopt, std::set<std::string>{"dest_tech_one", "dest_tech_two"}}}};
@@ -213,8 +211,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
               return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
                   commonItems::ModFilesystem("test_files/hoi4_world", {}))
                   .Build();
-           }),
-       false);
+           }));
 
    EXPECT_THAT(world.GetStates().states,
        testing::ElementsAre(State(1,
@@ -297,8 +294,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
                   return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
                       commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}))
                       .Build();
-               }),
-           false);
+               }));
 
    // HoI4 states are in an arbitrary order compared to Vic3 states, so store by province number for the actual checks
    std::map<int, State> states;
@@ -411,8 +407,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraAirBaseLevel)
               return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
                   commonItems::ModFilesystem("test_files/hoi4_world", {}))
                   .Build();
-           }),
-       false);
+           }));
 
    EXPECT_THAT(world.GetStates().states,
        testing::ElementsAre(State(1,
@@ -464,8 +459,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
               return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
                   commonItems::ModFilesystem("test_files/hoi4_world/StrategicRegionsAreCreated", {}))
                   .Build();
-           }),
-       false);
+           }));
 
    const auto strategic_regions = world.GetStrategicRegions().GetStrategicRegions();
    ASSERT_TRUE(strategic_regions.contains(10));
@@ -582,8 +576,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
               return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
                   commonItems::ModFilesystem("test_files/hoi4_world/BuildingsAreCreated", {}))
                   .Build();
-           }),
-       false);
+           }));
 
    EXPECT_FALSE(world.GetBuildings().GetBuildings().empty());
    EXPECT_FALSE(world.GetBuildings().GetAirportLocations().empty());
@@ -654,8 +647,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
               return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
                   commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}))
                   .Build();
-           }),
-       false);
+           }));
 
    EXPECT_FALSE(world.GetRailways().railways.empty());
 }
@@ -686,8 +678,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
        std::async<>(std::launch::async,
            []() {
               return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
-           }),
-       false);
+           }));
 
    EXPECT_THAT(world.GetGreatPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
 }
@@ -721,8 +712,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
               return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
                   commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}))
                   .Build();
-           }),
-       false);
+           }));
 
    EXPECT_THAT(world.GetMajorPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
 }
@@ -817,8 +807,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
               return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
                   commonItems::ModFilesystem("test_files/hoi4_world", {}))
                   .Build();
-           }),
-       false);
+           }));
 
    const std::optional<commonItems::LocalizationBlock> hoi_country_localization_block =
        world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("TAG");
@@ -911,8 +900,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
        std::async<>(std::launch::async,
            []() {
               return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
-           }),
-       false);
+           }));
 
    const auto expected_data_leader = std::optional<Leader>({.sub_ideology = "despotism"});
    const auto expected_data_spy = std::optional<Spy>({.nationalities = {"TAG", "TWO"}});

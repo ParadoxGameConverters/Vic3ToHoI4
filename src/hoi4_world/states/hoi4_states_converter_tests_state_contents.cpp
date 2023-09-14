@@ -4,6 +4,7 @@
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/configuration/configuration.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 #include "src/hoi4_world/world/hoi4_world_framework_builder.h"
@@ -1103,7 +1104,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DebugVictoryPointsAreConverted)
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
    const auto hoi4_states =
-       ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data, true);
+       ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data, configuration::debugConfig);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .victory_points = {{10, 1}, {20, 2}, {30, 3}}}),

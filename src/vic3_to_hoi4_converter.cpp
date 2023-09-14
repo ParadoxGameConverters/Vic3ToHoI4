@@ -29,7 +29,7 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const 
        source_world,
        world_mapper,
        std::move(hoi4_framework),
-       configuration.debug);
+       configuration);
 
    out::ClearOutputFolder(configuration.output_name);
    out::OutputMod(configuration.output_name, game_version);

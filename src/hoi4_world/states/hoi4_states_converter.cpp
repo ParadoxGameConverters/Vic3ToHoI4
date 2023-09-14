@@ -12,6 +12,7 @@
 
 #include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/configuration/configuration.h"
 #include "src/maps/map_data.h"
 #include "src/out_hoi4/world/out_world.h"
 #include "src/support/converter_utils.h"
@@ -1057,7 +1058,7 @@ hoi4::States ConvertStates(const vic3::World& source_world,
     const hoi4::WorldFramework& world_framework,
     const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const maps::MapData& map_data,
-    bool debug)
+    const configuration::Configuration& config)
 {
    const std::map<std::string, int> vic3_province_to_state_id_map =
        MapVic3ProvincesToStates(source_world.GetStates(), source_world.GetProvinceDefinitions());
@@ -1074,6 +1075,6 @@ hoi4::States ConvertStates(const vic3::World& source_world,
        vic3_state_id_to_hoi4_provinces,
        vic3_state_ids_by_vic3_industry,
        map_data,
-       debug);
+       config.debug);
 }
 }  // namespace hoi4

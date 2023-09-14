@@ -22,6 +22,8 @@ struct Configuration
    bool dynamic_resources = false;
 };
 
+constexpr Configuration defaultConfig = {};
+constexpr Configuration debugConfig = {.debug = true};
 
 }  // namespace configuration
 
