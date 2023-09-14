@@ -8,3 +8,7 @@ l_english:
  DEBUGTIP: "Whether or not to output a debug mod."
  DEBUGNOTIP: "Output a normal mod."
  DEBUGYESTIP: "Output a debug mod."
+ DYNAMIC_RESOURCES: "Dynamic Resources"
+ DYNAMIC_RESOURCESTIP: "Whether to convert resources from the Victoria save."
+ DYNAMIC_RESOURCESNOTIP: "Static, 'historical' resources."
+ DYNAMIC_RESOURCESYESTIP: "Resources from Victoria buildings."

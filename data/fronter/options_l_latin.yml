@@ -8,3 +8,7 @@ l_latin:
  DEBUGTIP: "Uter creare vel non creare correctionem genus debug?"
  DEBUGNOTIP: "Creatur solita correctio."
  DEBUGYESTIP: "Creatur correctio genus debug"
+ DYNAMIC_RESOURCES: "Bonae mutabilis"
+ DYNAMIC_RESOURCESTIP: "Ut opes a Victoria salvas convertas."
+ DYNAMIC_RESOURCESNOTIP: "Bonae statica et historica."
+ DYNAMIC_RESOURCESYESTIP: "Victoriae facultates tecta."
