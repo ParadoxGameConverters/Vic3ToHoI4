@@ -1103,8 +1103,12 @@ TEST(Hoi4worldStatesHoi4statesconverter, DebugVictoryPointsAreConverted)
            },
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states =
-       ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data, configuration::debugConfig);
+   const auto hoi4_states = ConvertStates(world.Build(),
+       world_mapper.Build(),
+       world_framework.Build(),
+       {},
+       map_data,
+       configuration::debugConfig);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .victory_points = {{10, 1}, {20, 2}, {30, 3}}}),

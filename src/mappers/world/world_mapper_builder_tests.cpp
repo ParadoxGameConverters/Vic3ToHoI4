@@ -19,11 +19,7 @@ TEST(MappersWorldWorldMapperBuilderTests, NullBuilderOutputsNull)
    EXPECT_TRUE(nullMapper.province_mapper.GetVic3ToHoi4ProvinceMappings().empty());
    EXPECT_TRUE(nullMapper.tech_mapper.empty());
    std::vector<vic3::Building> buildings{
-     {"building_iron_mine",
-      1,
-      1.0F,
-      1.0F,
-      {}},
+       {"building_iron_mine", 1, 1.0F, 1.0F, {}},
    };
    EXPECT_NEAR(nullMapper.resource_mapper.CalculateScore("steel", buildings), 0.0F, kTolerance);
    EXPECT_NEAR(nullMapper.resource_mapper.CalculateScore("oil", buildings), 0.0F, kTolerance);
@@ -54,26 +50,10 @@ TEST(MappersWorldWorldMapperBuilderTests, LoadResourceMappingWorks)
 
    const auto worldMapper = builder.Build();
    std::vector<vic3::Building> buildings{
-     {"building_iron_mine",
-      1,
-      1.0F,
-      1.0F,
-      {}},
-     {"building_oil_rig",
-      1,
-      0.8F,
-      1.0F,
-      {}},
-     {"building_coal_mine",
-      1,
-      0.2F,
-      1.0F,
-      {}},
-     {"building_steel_factory",
-      1,
-      0.8F,
-      1.0F,
-      {}},
+       {"building_iron_mine", 1, 1.0F, 1.0F, {}},
+       {"building_oil_rig", 1, 0.8F, 1.0F, {}},
+       {"building_coal_mine", 1, 0.2F, 1.0F, {}},
+       {"building_steel_factory", 1, 0.8F, 1.0F, {}},
    };
    EXPECT_NEAR(worldMapper.resource_mapper.CalculateScore("steel", buildings), 1.1F, kTolerance);
    EXPECT_NEAR(worldMapper.resource_mapper.CalculateScore("oil", buildings), 0.48F, kTolerance);

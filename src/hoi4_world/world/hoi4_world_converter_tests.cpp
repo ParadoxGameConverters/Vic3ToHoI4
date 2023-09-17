@@ -28,10 +28,9 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
+       }));
 
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().states.empty());
@@ -83,10 +82,9 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
+       }));
 
    const Technologies expected_techs_one{std::map<std::optional<std::string>, std::set<std::string>>{
        {std::nullopt, std::set<std::string>{"dest_tech_one", "dest_tech_two"}}}};
@@ -206,12 +204,11 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
-                  commonItems::ModFilesystem("test_files/hoi4_world", {}))
-                  .Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
+              commonItems::ModFilesystem("test_files/hoi4_world", {}))
+              .Build();
+       }));
 
    EXPECT_THAT(world.GetStates().states,
        testing::ElementsAre(State(1,
@@ -289,12 +286,11 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
        ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}),
            source_world,
            mapperBuilder.Build(),
-           std::async<>(std::launch::async,
-               []() {
-                  return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
-                      commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}))
-                      .Build();
-               }));
+           std::async<>(std::launch::async, []() {
+              return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
+                  commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}))
+                  .Build();
+           }));
 
    // HoI4 states are in an arbitrary order compared to Vic3 states, so store by province number for the actual checks
    std::map<int, State> states;
@@ -402,12 +398,11 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraAirBaseLevel)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
-                  commonItems::ModFilesystem("test_files/hoi4_world", {}))
-                  .Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
+              commonItems::ModFilesystem("test_files/hoi4_world", {}))
+              .Build();
+       }));
 
    EXPECT_THAT(world.GetStates().states,
        testing::ElementsAre(State(1,
@@ -454,12 +449,11 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/StrategicRegionsAreCreated", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
-                  commonItems::ModFilesystem("test_files/hoi4_world/StrategicRegionsAreCreated", {}))
-                  .Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
+              commonItems::ModFilesystem("test_files/hoi4_world/StrategicRegionsAreCreated", {}))
+              .Build();
+       }));
 
    const auto strategic_regions = world.GetStrategicRegions().GetStrategicRegions();
    ASSERT_TRUE(strategic_regions.contains(10));
@@ -571,12 +565,11 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/BuildingsAreCreated", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
-                  commonItems::ModFilesystem("test_files/hoi4_world/BuildingsAreCreated", {}))
-                  .Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
+              commonItems::ModFilesystem("test_files/hoi4_world/BuildingsAreCreated", {}))
+              .Build();
+       }));
 
    EXPECT_FALSE(world.GetBuildings().GetBuildings().empty());
    EXPECT_FALSE(world.GetBuildings().GetAirportLocations().empty());
@@ -642,12 +635,11 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
-                  commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}))
-                  .Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
+              commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}))
+              .Build();
+       }));
 
    EXPECT_FALSE(world.GetRailways().railways.empty());
 }
@@ -675,10 +667,9 @@ TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
+       }));
 
    EXPECT_THAT(world.GetGreatPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
 }
@@ -707,12 +698,11 @@ TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
-                  commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}))
-                  .Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
+              commonItems::ModFilesystem("test_files/hoi4_world/RailwaysAreCreated", {}))
+              .Build();
+       }));
 
    EXPECT_THAT(world.GetMajorPowers(), testing::UnorderedElementsAre("ONE", "THR", "FIV"));
 }
@@ -802,12 +792,11 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
-                  commonItems::ModFilesystem("test_files/hoi4_world", {}))
-                  .Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
+              commonItems::ModFilesystem("test_files/hoi4_world", {}))
+              .Build();
+       }));
 
    const std::optional<commonItems::LocalizationBlock> hoi_country_localization_block =
        world.GetLocalizations().GetCountryLocalizations().GetLocalizationBlock("TAG");
@@ -897,10 +886,9 @@ TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
    const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
        source_world,
        world_mapper,
-       std::async<>(std::launch::async,
-           []() {
-              return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
-           }));
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
+       }));
 
    const auto expected_data_leader = std::optional<Leader>({.sub_ideology = "despotism"});
    const auto expected_data_spy = std::optional<Spy>({.nationalities = {"TAG", "TWO"}});
