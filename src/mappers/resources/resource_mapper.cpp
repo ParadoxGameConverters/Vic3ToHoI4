@@ -7,9 +7,10 @@
 namespace
 {
 
+std::set<std::string> seen;
+
 void warn(const std::string& hoi_resource)
 {
-   static std::set<std::string> seen;
    if (seen.contains(hoi_resource))
    {
       return;
