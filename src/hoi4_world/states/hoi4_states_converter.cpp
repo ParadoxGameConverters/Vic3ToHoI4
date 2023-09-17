@@ -585,8 +585,16 @@ hoi4::Resources CalculateResources(const mappers::ResourceMapper& resource_mappe
    hoi4::Resources resources;
    for (const auto& name: kResourceNames)
    {
+      if (!totals.contains(name))
+      {
+         continue;
+      }
       auto score = resource_mapper.CalculateScore(name, buildings);
       score *= resource_mapper.WorldTotal(name);
+      if (score < 0.01)
+      {
+         continue;
+      }
       score *= fraction;
       resources[name] = round(score / totals.at(name));
    }

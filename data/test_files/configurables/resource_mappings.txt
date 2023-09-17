@@ -15,3 +15,15 @@ oil = {
   bonus_building = building_coal_mine
   total = 250
 }
+aluminium = {
+  total = 0
+}
+chromium = {
+  total = 0
+}
+rubber = {
+  total = 0
+}
+tungsten = {
+  total = 0
+}
