@@ -973,14 +973,17 @@ hoi4::States CreateStates(const vic3::World& source_world,
 
 
          hoi4::Resources resources = {};
-         if (config.dynamic_resources) {
+         if (config.dynamic_resources)
+         {
             float fraction = province_set.size();
             fraction /= total_non_wasteland_provinces;
             resources = CalculateResources(world_mapper.resource_mapper,
                 resource_totals,
                 source_world.GetBuildings().GetBuildingsInState(vic3_state_id),
                 fraction);
-         } else {
+         }
+         else
+         {
             resources = AssignResources(province_set, world_framework.resources_map);
          }
 
