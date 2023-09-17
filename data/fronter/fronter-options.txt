@@ -36,13 +36,13 @@ option = {
 			name = no
 			displayName = NO
 			tooltip = DYNAMIC_RESOURCESNOTIP
-			default = true
+			default = false
 		}
 		radioOption = {
 			name = yes
 			displayName = YES
 			tooltip = DYNAMIC_RESOURCESYESTIP
-			default = false
+			default = true
 		}
 	}
 }
