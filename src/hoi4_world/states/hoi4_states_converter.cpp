@@ -3,6 +3,7 @@
 #include <src/hoi4_world/world/hoi4_world.h>
 
 #include <algorithm>
+#include <cmath>
 #include <cstdint>
 #include <numeric>
 #include <optional>
@@ -22,6 +23,7 @@ namespace
 {
 
 constexpr int MAX_FACTORY_SLOTS = 12;
+const std::vector<std::string> kResourceNames = {"steel", "oil", "tungsten", "aluminium", "chromium", "rubber"};
 
 
 bool AllVic3ProvincesAreInSameState(const std::vector<std::string>& vic3_provinces,
@@ -575,6 +577,23 @@ hoi4::Resources AssignResources(const std::set<int>& provinces, const hoi4::Reso
 }
 
 
+hoi4::Resources CalculateResources(const mappers::ResourceMapper& resource_mapper,
+    const hoi4::Resources& totals,
+    const std::vector<vic3::Building>& buildings,
+    float fraction)
+{
+   hoi4::Resources resources;
+   for (const auto& name: kResourceNames)
+   {
+      auto score = resource_mapper.CalculateScore(name, buildings);
+      score *= resource_mapper.WorldTotal(name);
+      score *= fraction;
+      resources[name] = round(score / totals.at(name));
+   }
+   return resources;
+}
+
+
 std::optional<int> GetBestHoi4Province(const mappers::Hoi4ToVic3ProvinceMapping::const_iterator province_mapping,
     const mappers::Vic3ToHoi4ProvinceMapping& vic3_to_hoi4_province_mappings,
     const std::set<int>& hoi4_provinces)
@@ -840,7 +859,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
     const std::map<int, std::set<int>>& vic3_state_id_to_hoi4_provinces,
     const std::vector<int>& vic3_state_ids_by_vic3_industry,
     const maps::MapData& map_data,
-    bool debug)
+    const configuration::Configuration& config)
 {
    std::vector<hoi4::State> hoi4_states;
    std::map<int, int> province_to_state_id_map;
@@ -859,6 +878,19 @@ hoi4::States CreateStates(const vic3::World& source_world,
        MapVic3ProvincesToStateNames(source_world.GetStateRegions());
    std::map<std::string, std::string> hoi4_state_names_to_vic3_state_names;
    mappers::InfrastructureMapper infrastructure_mapper(source_world.GetStates());
+   hoi4::Resources resource_totals;
+   if (config.dynamic_resources)
+   {
+      const auto& all_buildings = source_world.GetBuildings().GetStorage();
+      for (const auto& [id, buildings]: all_buildings)
+      {
+         for (const auto& name: kResourceNames)
+         {
+            resource_totals[name] += world_mapper.resource_mapper.CalculateScore(name, buildings);
+         }
+      }
+   }
+
    for (const auto& vic3_state_id: vic3_state_ids_by_vic3_industry)
    {
       const auto& hoi4_provinces = vic3_state_id_to_hoi4_provinces.at(vic3_state_id);
@@ -939,7 +971,18 @@ hoi4::States CreateStates(const vic3::World& source_world,
          const int air_base_level =
              DetermineAirbaseLevel(civilian_factories + military_factories + dockyards, infrastructure);
 
-         const hoi4::Resources resources = AssignResources(province_set, world_framework.resources_map);
+
+         hoi4::Resources resources = {};
+         if (config.dynamic_resources) {
+            float fraction = province_set.size();
+            fraction /= total_non_wasteland_provinces;
+            resources = CalculateResources(world_mapper.resource_mapper,
+                resource_totals,
+                source_world.GetBuildings().GetBuildingsInState(vic3_state_id),
+                fraction);
+         } else {
+            resources = AssignResources(province_set, world_framework.resources_map);
+         }
 
          const std::string category = world_framework.state_categories.GetBestCategory(
              std::min(civilian_factories + military_factories + dockyards + 2, static_cast<int>(MAX_FACTORY_SLOTS)));
@@ -954,7 +997,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
              significant_provinces,
              static_cast<int>(
                  std::round((static_cast<float>(civilian_factories + military_factories + dockyards)) / 2.0F)),
-             debug);
+             config.debug);
 
          std::set<std::string> cores;
          if (vic3_state_itr->second.IsIncorporated())
@@ -1075,6 +1118,6 @@ hoi4::States ConvertStates(const vic3::World& source_world,
        vic3_state_id_to_hoi4_provinces,
        vic3_state_ids_by_vic3_industry,
        map_data,
-       config.debug);
+       config);
 }
 }  // namespace hoi4
