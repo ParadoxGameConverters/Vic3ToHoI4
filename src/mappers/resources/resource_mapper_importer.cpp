@@ -23,6 +23,9 @@ mappers::ResourceMapper mappers::ImportResourceMapper(std::string_view mapping_f
    score_parser.registerKeyword("bonus", [&current](std::istream& input_stream) {
       current.bonus = commonItems::getDouble(input_stream);
    });
+   score_parser.registerKeyword("total", [&current](std::istream& input_stream) {
+      current.total = commonItems::getDouble(input_stream);
+   });
    score_parser.registerKeyword("bonus_building", [&current](std::istream& input_stream) {
       current.bonus_buildings.emplace(commonItems::getString(input_stream));
    });
