@@ -1,10 +1,31 @@
 #include "src/mappers/resources/resource_mapper.h"
 
+#include <set>
+
+#include "external/commonItems/Log.h"
+
+namespace
+{
+
+void warn(const std::string& hoi_resource)
+{
+   static std::set<std::string> seen;
+   if (seen.contains(hoi_resource))
+   {
+      return;
+   }
+   Log(LogLevel::Warning) << "Configuration for " << hoi_resource << " is missing.";
+   seen.insert(hoi_resource);
+}
+
+}  // namespace
+
 float mappers::ResourceMapper::CalculateScore(const std::string& hoi_resource,
     const std::vector<vic3::Building>& buildings) const
 {
    if (!scores_.contains(hoi_resource))
    {
+      warn(hoi_resource);
       return 0.0F;
    }
    float base = 0.0F;
@@ -22,6 +43,10 @@ float mappers::ResourceMapper::CalculateScore(const std::string& hoi_resource,
       }
    }
 
+   if (base == 0.0F)
+   {
+      return base;
+   }
    if (bonus > base)
    {
       bonus = base;
@@ -29,4 +54,15 @@ float mappers::ResourceMapper::CalculateScore(const std::string& hoi_resource,
    bonus /= base;
    bonus *= score.bonus;
    return base * (1.0F + bonus);
+}
+
+float mappers::ResourceMapper::WorldTotal(const std::string& hoi_resource) const
+{
+   if (!scores_.contains(hoi_resource))
+   {
+      warn(hoi_resource);
+      return 0.0F;
+   }
+
+   return scores_.at(hoi_resource).total;
 }
