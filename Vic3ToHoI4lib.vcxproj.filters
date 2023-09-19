@@ -461,6 +461,12 @@
     <ClInclude Include="src\mappers\ideology\ideology_mapper_importer.h">
       <Filter>src\mappers\ideology</Filter>
     </ClInclude>
+    <ClInclude Include="src\mappers\resources\resource_mapper.h">
+      <Filter>src\mappers\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\resources\resource_mapper_importer.h">
+      <Filter>src\mappers\resources</Filter>
+    </ClInclude>
     <ClInclude Include="src\mappers\unit\unit_mapper.h">
       <Filter>src\mappers\unit</Filter>
     </ClInclude>
@@ -816,6 +822,12 @@
     </ClCompile>
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer.cpp">
       <Filter>src\mappers\ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\resources\resource_mapper.cpp">
+      <Filter>src\mappers\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\resources\resource_mapper_importer.cpp">
+      <Filter>src\mappers\resources</Filter>
     </ClCompile>
     <ClCompile Include="src\mappers\unit\unit_mapper.cpp">
       <Filter>src\mappers\unit</Filter>

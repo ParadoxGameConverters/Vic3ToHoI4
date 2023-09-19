@@ -8,3 +8,7 @@ l_italian:
  DEBUGTIP: "Se produrre o meno un mod di debug."
  DEBUGNOTIP: "Emette un mod normale."
  DEBUGYESTIP: "Emette un mod di debug."
+ DYNAMIC_RESOURCES: "Risorse dinamiche"
+ DYNAMIC_RESOURCESTIP: "Se convertire le risorse dal salvataggio Victoria."
+ DYNAMIC_RESOURCESNOTIP: "Risorse statiche e storiche."
+ DYNAMIC_RESOURCESYESTIP: "Risorse dagli edifici Victoria."

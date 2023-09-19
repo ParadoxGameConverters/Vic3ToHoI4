@@ -9,6 +9,7 @@
 
 #include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "external/commonItems/ModLoader/ModFilesystem.h"
+#include "src/configuration/configuration.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/states/hoi4_state.h"
@@ -28,7 +29,7 @@ World ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
     std::future<WorldFramework> world_framework_future,
-    bool debug);
+    const configuration::Configuration& config = configuration::defaultConfig);
 
 }  // namespace hoi4
 

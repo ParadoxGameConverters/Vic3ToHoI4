@@ -4,6 +4,7 @@
 
 #include <map>
 
+#include "src/configuration/configuration.h"
 #include "src/hoi4_world/map/coastal_provinces.h"
 #include "src/hoi4_world/states/hoi4_states.h"
 #include "src/hoi4_world/world/hoi4_world_framework.h"
@@ -24,7 +25,7 @@ States ConvertStates(const vic3::World& source_world,
     const hoi4::WorldFramework& world_framework,
     const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const maps::MapData& map_data,
-    bool debug = false);
+    const configuration::Configuration& = configuration::defaultConfig);
 
 }  // namespace hoi4
 

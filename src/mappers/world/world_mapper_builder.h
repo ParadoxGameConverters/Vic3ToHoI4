@@ -5,6 +5,7 @@
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/mappers/provinces/province_mapper_importer.h"
 #include "src/mappers/provinces/province_mapping_types.h"
+#include "src/mappers/resources/resource_mapper.h"
 #include "src/mappers/technology/tech_mapping.h"
 #include "src/mappers/world/world_mapper.h"
 #include "src/vic3_world/world/vic3_world.h"
@@ -20,9 +21,10 @@ class WorldMapperBuilder
    Hoi4ToVic3ProvinceMapping hoi_vic_province_mappings;
    std::vector<mappers::TechMapping> tech_mappings;
    CultureGraphicsMapper culture_graphics_mapper;
+   ResourceMapper resource_mapper;
 
    std::future<std::map<std::string, int>> vic3_province_to_state_mapper_;
-   WorldMapperBuilder(): culture_graphics_mapper({}) {}
+   WorldMapperBuilder(): culture_graphics_mapper({}), resource_mapper({}) {}
 
 
   public:
@@ -68,6 +70,10 @@ class WorldMapperBuilder
    /// Set culture graphics mapper. Must be constructed separately.
    /// </summary>
    WorldMapperBuilder& SetCultureGraphicsMapper(CultureGraphicsMapper mapper);
+   /// <summary>
+   /// Load a resource mapping from the file.
+   /// </summary>
+   WorldMapperBuilder& LoadResourceMapper(const std::string& resource_mapping);
 
    WorldMapperBuilder& DefaultVic3ProvinceToStateMapper(const vic3::World& source_world);
 

@@ -78,6 +78,8 @@
     <ClInclude Include="src\mappers\provinces\province_mapping.h" />
     <ClInclude Include="src\mappers\provinces\province_mapping_importer.h" />
     <ClInclude Include="src\mappers\provinces\province_mapping_types.h" />
+    <ClInclude Include="src\mappers\resources\resource_mapper.h" />
+    <ClInclude Include="src\mappers\resources\resource_mapper_importer.h" />
     <ClInclude Include="src\mappers\technology\tech_mappings_importer.h" />
     <ClInclude Include="src\mappers\technology\tech_mapping.h" />
     <ClInclude Include="src\mappers\technology\tech_mapping_importer.h" />
@@ -203,6 +205,8 @@
     <ClCompile Include="src\mappers\provinces\province_mapper.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper_importer.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapping_importer.cpp" />
+    <ClCompile Include="src\mappers\resources\resource_mapper.cpp" />
+    <ClCompile Include="src\mappers\resources\resource_mapper_importer.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mappings_importer.cpp" />
     <ClCompile Include="src\mappers\technology\tech_mapping_importer.cpp" />
     <ClCompile Include="src\mappers\unit\unit_mapper.cpp" />

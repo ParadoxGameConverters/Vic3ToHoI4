@@ -8,3 +8,8 @@ l_german:
  DEBUGTIP: "Gibt an, ob ein Debug-Mod ausgegeben werden soll oder nicht."
  DEBUGNOTIP: "Gib einen normalen Mod aus."
  DEBUGYESTIP: "Gib einen Debug-Mod aus."
+ DYNAMIC_RESOURCES: "Dynamisch Ressourcen"
+ DYNAMIC_RESOURCESTIP: "Ob Ressourcen aus dem Victoria-Speicher konvertiert werden sollen."
+ DYNAMIC_RESOURCESNOTIP: "Statische, historische Ressourcen."
+ DYNAMIC_RESOURCESYESTIP: "Ressourcen aus Victoria-Gebäuden."
+ 

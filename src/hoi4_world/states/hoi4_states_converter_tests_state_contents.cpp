@@ -4,6 +4,7 @@
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/configuration/configuration.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 #include "src/hoi4_world/world/hoi4_world_framework_builder.h"
@@ -838,6 +839,42 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreAssigned)
 }
 
 
+TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreCalculated)
+{
+   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
+                                  .AddTestStates({{1, 2, 3}, {4, 5, 6}})
+                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}})
+                                  .AddBuildings({vic3::Building("building_iron_mine", 1, 1),
+                                      vic3::Building("building_some_factory", 1, 1),
+                                      vic3::Building("building_iron_mine", 2, 1),
+                                      vic3::Building("building_oil_rig", 2, 1)});
+   mappers::WorldMapperBuilder world_mapper =
+       std::move(mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).LoadResourceMapper(
+           "test_files/configurables/resource_mappings.txt"));
+   world_mapper.CopyToVicWorld(world);
+   hoi4::WorldFrameworkBuilder world_framework =
+       WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(6);
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = world_framework.CopyProvinceDefinitions(),
+   });
+   const auto hoi4_states = ConvertStates(world.Build(),
+       world_mapper.Build(),
+       world_framework.Build(),
+       {},
+       map_data,
+       configuration::Configuration{.dynamic_resources = true});
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .resources = {{"steel", 500.0}}}),
+           State(2, {.provinces = {40, 50, 60}, .resources = {{"steel", 500.0}, {"oil", 250.0}}})));
+}
+
+
 TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreLogged)
 {
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
@@ -1102,8 +1139,12 @@ TEST(Hoi4worldStatesHoi4statesconverter, DebugVictoryPointsAreConverted)
            },
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states =
-       ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data, true);
+   const auto hoi4_states = ConvertStates(world.Build(),
+       world_mapper.Build(),
+       world_framework.Build(),
+       {},
+       map_data,
+       configuration::debugConfig);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .victory_points = {{10, 1}, {20, 2}, {30, 3}}}),

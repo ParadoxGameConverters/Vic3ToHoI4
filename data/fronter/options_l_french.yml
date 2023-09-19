@@ -8,3 +8,7 @@ l_french:
  DEBUGTIP: "Indique s'il faut ou non afficher un mod de débogage."
  DEBUGNOTIP: "Sortie d'un mod normal."
  DEBUGYESTIP: "Sortie d'un mod de débogage."
+ DYNAMIC_RESOURCES: "Ressources Dynamiques"
+ DYNAMIC_RESOURCESTIP: "S'il faut convertir les ressources de la sauvegarde Victoria."
+ DYNAMIC_RESOURCESNOTIP: "Ressources statiques et historiques."
+ DYNAMIC_RESOURCESYESTIP: "Ressources des immeubles Victoria."
