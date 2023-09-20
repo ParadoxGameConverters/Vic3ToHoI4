@@ -131,6 +131,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        leader_type_mapper,
        character_trait_mapper,
        country_mapper,
+       false,
        characters,
        culture_queues);
 
@@ -345,6 +346,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PortraitsAreAssigned)
        leader_type_mapper,
        mappers::CharacterTraitMapper({}, {}, {}),
        {},
+       false,
        characters,
        culture_queues);
 
@@ -386,6 +388,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
        leader_type_mapper,
        mappers::CharacterTraitMapper({}, {}, {}),
        {},
+       false,
        characters,
        culture_queues);
 
@@ -424,6 +427,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCol
        leader_type_mapper,
        mappers::CharacterTraitMapper({}, {}, {}),
        {},
+       false,
        characters,
        culture_queues);
 
@@ -488,6 +492,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInCoaliti
        leader_type_mapper,
        mappers::CharacterTraitMapper({}, {}, {}),
        {},
+       false,
        characters,
        culture_queues);
 
@@ -558,6 +563,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderP
        leader_type_mapper,
        mappers::CharacterTraitMapper({}, {}, {}),
        {},
+       false,
        characters,
        culture_queues);
 

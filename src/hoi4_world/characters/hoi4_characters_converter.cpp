@@ -287,8 +287,7 @@ mappers::PortraitPaths GetPortraitPaths(const vic3::CultureDefinition& culture,
 }  // namespace
 
 
-std::pair<hoi4::CharacterIds, hoi4::SpyIds> hoi4::ConvertCharacters(
-    const std::map<int, vic3::Character>& source_characters,
+hoi4::Characters hoi4::ConvertCharacters(const std::map<int, vic3::Character>& source_characters,
     const std::string& tag,
     const std::string& country_ideology,
     const std::string& sub_ideology,
@@ -297,6 +296,7 @@ std::pair<hoi4::CharacterIds, hoi4::SpyIds> hoi4::ConvertCharacters(
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
     const mappers::CountryMapper& country_mapper,
+    bool should_have_monarch_idea,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues)
 {
@@ -341,7 +341,14 @@ std::pair<hoi4::CharacterIds, hoi4::SpyIds> hoi4::ConvertCharacters(
               character_trait_mapper,
               culture_queues));
    }
-   return {character_ids, role_ids.spy_ids};
+
+   std::optional<int64_t> monarch_id;
+   if (should_have_monarch_idea)
+   {
+      monarch_id = source_country.GetHeadOfStateId();
+   }
+
+   return {character_ids, role_ids.spy_ids, monarch_id};
 }
 
 void hoi4::AssignPortraits(const std::map<std::string, mappers::CultureQueue>& culture_queues,
