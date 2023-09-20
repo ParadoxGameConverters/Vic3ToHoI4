@@ -53,13 +53,7 @@ class CharacterTraitMapper
    explicit CharacterTraitMapper(AdmiralTraitMap admiral_trait_rules,
        GeneralTraitMap general_trait_rules,
        SpyTraitMap spy_trait_rules,
-       AdvisorTraitMap advisor_trait_rules):
-       admiral_trait_rules_(std::move(admiral_trait_rules)),
-       general_trait_rules_(std::move(general_trait_rules)),
-       spy_trait_rules_(std::move(spy_trait_rules)),
-       advisor_trait_rules_(std::move(advisor_trait_rules))
-   {
-   }
+       AdvisorTraitMap advisor_trait_rules);
 
    [[nodiscard]] hoi4::Admiral GetAdmiralMappedData(const std::set<vic3::Trait>& source_traits) const;
    [[nodiscard]] hoi4::General GetGeneralMappedData(const std::set<vic3::Trait>& source_traits,

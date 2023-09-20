@@ -9,6 +9,21 @@ namespace
 std::map<hoi4::Trait, int> used_traits;
 }
 
+mappers::CharacterTraitMapper::CharacterTraitMapper(mappers::AdmiralTraitMap admiral_trait_rules,
+    mappers::GeneralTraitMap general_trait_rules,
+    mappers::SpyTraitMap spy_trait_rules,
+    mappers::AdvisorTraitMap advisor_trait_rules):
+    admiral_trait_rules_(std::move(admiral_trait_rules)),
+    general_trait_rules_(std::move(general_trait_rules)),
+    spy_trait_rules_(std::move(spy_trait_rules)),
+    advisor_trait_rules_(std::move(advisor_trait_rules))
+{
+   // Clear used_traits on construction so tests don't get confused
+   // by data from previous ones.
+   used_traits.clear();
+}
+
+
 hoi4::Admiral mappers::CharacterTraitMapper::GetAdmiralMappedData(const std::set<vic3::Trait>& source_traits) const
 {
    hoi4::Admiral admiral_mapping{

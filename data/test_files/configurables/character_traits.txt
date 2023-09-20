@@ -44,4 +44,7 @@ political_advisor = {
 		trench_rat
 		defense_in_depth_specialist
 	}
+	ideological_crusader = {
+		inspirational_orator
+	}
 }
