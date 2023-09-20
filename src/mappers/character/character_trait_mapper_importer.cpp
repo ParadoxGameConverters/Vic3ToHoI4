@@ -10,6 +10,7 @@ mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(std::string_vi
    AdmiralTraitMap admiral_trait_map;
    GeneralTraitMap general_trait_map;
    SpyTraitMap spy_trait_map;
+   AdvisorTraitMap advisor_trait_map;
 
    // Capture building blocks
    AdmiralTraitMapping admiral_trait_mapping;
@@ -88,6 +89,14 @@ mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(std::string_vi
           }
        });
 
+   commonItems::parser advisor_parser;
+   advisor_parser.registerRegex(commonItems::catchallRegex,
+       [&advisor_trait_map](const std::string hoi4_trait, std::istream& input_stream) {
+          for (const auto& vic3_trait: commonItems::getStrings(input_stream))
+          {
+             advisor_trait_map.emplace(vic3_trait, hoi4_trait);
+          }
+       });
 
    commonItems::parser type_parser;
    type_parser.registerKeyword("navy", [&admiral_parser](std::istream& input_stream) {
@@ -99,8 +108,11 @@ mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(std::string_vi
    type_parser.registerKeyword("spy", [&spy_parser](std::istream& input_stream) {
       spy_parser.parseStream(input_stream);
    });
+   type_parser.registerKeyword("political_advisor", [&advisor_parser](std::istream& input_stream) {
+      advisor_parser.parseStream(input_stream);
+   });
 
    type_parser.parseFile(mapping_file);
 
-   return CharacterTraitMapper(admiral_trait_map, general_trait_map, spy_trait_map);
+   return CharacterTraitMapper(admiral_trait_map, general_trait_map, spy_trait_map, advisor_trait_map);
 }
