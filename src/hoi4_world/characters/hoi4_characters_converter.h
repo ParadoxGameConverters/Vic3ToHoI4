@@ -47,6 +47,10 @@ void AssignPortraits(const std::map<std::string, mappers::CultureQueue>& culture
     const std::map<std::string, vic3::CultureDefinition>& source_cultures,
     int playthrough_id,
     std::map<int, Character>& characters);
+
+
+std::string GetMonarchIdeaName(std::string_view tag, const Character& monarch);
+
 }  // namespace hoi4
 
 

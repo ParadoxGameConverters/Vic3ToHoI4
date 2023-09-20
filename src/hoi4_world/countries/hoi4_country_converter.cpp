@@ -619,6 +619,15 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        ShouldHaveMonarchIdea(has_elections, source_country.GetActiveLaws()),
        characters,
        culture_queues);
+   if (monarch_id.has_value())
+   {
+      const auto& monarch_itr = characters.find(*monarch_id);
+      if (monarch_itr != characters.end())
+      {
+         ideas.insert(GetMonarchIdeaName(*tag, monarch_itr->second));
+      }
+   }
+
    mappers::GraphicsBlock graphics_block =
        culture_graphics_mapper.MatchPrimaryCulturesToGraphics(source_country.GetPrimaryCultures(),
            source_world.GetCultureDefinitions());

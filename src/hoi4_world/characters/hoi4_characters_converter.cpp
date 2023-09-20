@@ -372,3 +372,9 @@ void hoi4::AssignPortraits(const std::map<std::string, mappers::CultureQueue>& c
       ProcessCultureQueue(culture_queue, portrait_paths, portrait_counts, characters);
    }
 }
+
+
+std::string hoi4::GetMonarchIdeaName(std::string_view tag, const hoi4::Character& monarch)
+{
+   return fmt::format("{}_{}_{}", tag, monarch.GetFirstName(), monarch.GetLastName());
+}
