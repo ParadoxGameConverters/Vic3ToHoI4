@@ -183,8 +183,7 @@ TEST(Outhoi4Characters, TraitlessAdvisorsAreNotOutput)
        .first_name = "Test",
        .last_name = "Mann",
        .portrait_alias = "GFX_test",
-       .advisor_data = std::make_optional<hoi4::Advisor>(
-           hoi4::Advisor{.slot = "theorist", .ledger = "army"}),
+       .advisor_data = std::make_optional<hoi4::Advisor>(hoi4::Advisor{.slot = "theorist", .ledger = "army"}),
    });
 
    std::stringstream out;

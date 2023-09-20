@@ -91,7 +91,7 @@ mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(std::string_vi
 
    commonItems::parser advisor_parser;
    advisor_parser.registerRegex(commonItems::catchallRegex,
-       [&advisor_trait_map](const std::string hoi4_trait, std::istream& input_stream) {
+       [&advisor_trait_map](const std::string& hoi4_trait, std::istream& input_stream) {
           for (const auto& vic3_trait: commonItems::getStrings(input_stream))
           {
              advisor_trait_map.emplace(vic3_trait, hoi4_trait);

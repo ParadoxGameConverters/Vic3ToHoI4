@@ -154,17 +154,13 @@ TEST(MappersCharacterCharactertraitmapper, AdvisorsUseRarityAsTiebreaker)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
-   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits(
-                   {"trench_rat", "inspirational_orator"}),
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"trench_rat", "inspirational_orator"}),
        testing::UnorderedElementsAre("fortification_engineer"));
-   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits(
-                   {"trench_rat", "inspirational_orator"}),
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"trench_rat", "inspirational_orator"}),
        testing::UnorderedElementsAre("ideological_crusader"));
-   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits(
-                   {"trench_rat", "inspirational_orator"}),
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"trench_rat", "inspirational_orator"}),
        testing::UnorderedElementsAre("fortification_engineer"));
-   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits(
-                   {"trench_rat", "inspirational_orator"}),
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"trench_rat", "inspirational_orator"}),
        testing::UnorderedElementsAre("ideological_crusader"));
 }
 
