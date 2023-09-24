@@ -148,7 +148,8 @@ void out::OutputCharacter(std::ostream& out, const std::string& tag, const hoi4:
    {
       OutputAdmiral(out, admiral_data.value());
    }
-   if (advisor_data)
+   // Don't bother with traitless advisors, as they do nothing.
+   if (advisor_data && !advisor_data->traits.empty())
    {
       OutputAdvisor(out, advisor_data.value(), character.GetId());
    }

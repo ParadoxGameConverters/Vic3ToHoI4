@@ -66,6 +66,14 @@ TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsTraitlessSpies)
 }
 
 
+TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsTraitlessAdvisors)
+{
+   const CharacterTraitMapper character_trait_mapper =
+       ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
+   EXPECT_TRUE(character_trait_mapper.GetAdvisorMappedTraits({}).empty());
+}
+
+
 TEST(MappersCharacterCharactertraitmapper, AdmiralDataIsMapped)
 {
    const CharacterTraitMapper character_trait_mapper =
@@ -119,6 +127,41 @@ TEST(MappersCharacterCharactertraitmapper, SpyDataIsMapped)
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
    EXPECT_THAT(character_trait_mapper.GetSpyMappedTraits({"brave", "persistent"}),
        testing::UnorderedElementsAre("operative_tough", "operative_commando"));
+}
+
+
+TEST(MappersCharacterCharactertraitmapper, AdvisorDataIsMapped)
+{
+   const CharacterTraitMapper character_trait_mapper =
+       ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"trench_rat"}),
+       testing::UnorderedElementsAre("fortification_engineer"));
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"inspirational_orator"}),
+       testing::UnorderedElementsAre("ideological_crusader"));
+}
+
+
+TEST(MappersCharacterCharactertraitmapper, AdvisorsUseHighestScoringTrait)
+{
+   const CharacterTraitMapper character_trait_mapper =
+       ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits(
+                   {"trench_rat", "defense_in_depth_specialist", "inspirational_orator"}),
+       testing::UnorderedElementsAre("fortification_engineer"));
+}
+
+TEST(MappersCharacterCharactertraitmapper, AdvisorsUseRarityAsTiebreaker)
+{
+   const CharacterTraitMapper character_trait_mapper =
+       ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"trench_rat", "inspirational_orator"}),
+       testing::UnorderedElementsAre("fortification_engineer"));
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"trench_rat", "inspirational_orator"}),
+       testing::UnorderedElementsAre("ideological_crusader"));
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"trench_rat", "inspirational_orator"}),
+       testing::UnorderedElementsAre("fortification_engineer"));
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"trench_rat", "inspirational_orator"}),
+       testing::UnorderedElementsAre("ideological_crusader"));
 }
 
 

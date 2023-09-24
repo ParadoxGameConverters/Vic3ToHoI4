@@ -22,6 +22,10 @@ TEST(MappersCharacterCharactertraitmapperimporter, MappingsCanBeImported)
    EXPECT_THAT(character_trait_mapper.GetSpyMappedTraits({"bandit"}), testing::UnorderedElementsAre("operative_tough"));
    EXPECT_THAT(character_trait_mapper.GetSpyMappedTraits({"persistent"}),
        testing::UnorderedElementsAre("operative_tough"));
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"trench_rat"}),
+       testing::UnorderedElementsAre("fortification_engineer"));
+   EXPECT_THAT(character_trait_mapper.GetAdvisorMappedTraits({"defense_in_depth_specialist"}),
+       testing::UnorderedElementsAre("fortification_engineer"));
 }
 
 
