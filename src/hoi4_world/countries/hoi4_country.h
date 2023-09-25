@@ -58,6 +58,7 @@ struct CountryOptions
    NameList name_list;
    std::vector<int> character_ids;
    std::set<int> spy_ids;
+   std::optional<int64_t> monarch_idea_id;
    std::set<std::string> puppets;
    std::optional<std::string> overlord;
    int starting_research_slots = 3;
@@ -90,6 +91,7 @@ class Country
        name_list_(std::move(country_options.name_list)),
        character_ids_(std::move(country_options.character_ids)),
        spy_ids_(std::move(country_options.spy_ids)),
+       monarch_idea_id_(std::move(country_options.monarch_idea_id)),
        puppets_(std::move(country_options.puppets)),
        overlord_(std::move(country_options.overlord)),
        starting_research_slots_(country_options.starting_research_slots),
@@ -118,6 +120,7 @@ class Country
    [[nodiscard]] const NameList& GetNameList() const { return name_list_; }
    [[nodiscard]] const std::vector<int>& GetLeaderIds() const { return character_ids_; }
    [[nodiscard]] const std::set<int>& GetSpyIds() const { return spy_ids_; }
+   [[nodiscard]] const std::optional<int64_t>& GetMonarchIdeaIds() const { return monarch_idea_id_; }
    [[nodiscard]] const std::set<std::string>& GetPuppets() const { return puppets_; }
    [[nodiscard]] const std::optional<std::string>& GetOverlord() const { return overlord_; }
    [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
@@ -149,6 +152,7 @@ class Country
    NameList name_list_;
    std::vector<int> character_ids_;
    std::set<int> spy_ids_;
+   std::optional<int64_t> monarch_idea_id_;
    std::set<std::string> puppets_;
    std::optional<std::string> overlord_;
    int starting_research_slots_;

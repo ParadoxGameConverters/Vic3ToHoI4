@@ -682,6 +682,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .name_list = name_list,
        .character_ids = character_ids,
        .spy_ids = spy_ids,
+       .monarch_idea_id = monarch_id,
        .puppets = puppets,
        .overlord = overlord,
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
