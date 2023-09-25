@@ -1,10 +1,11 @@
-#include "src/hoi4_world/localizations/localizations_converter.h"
+﻿#include "src/hoi4_world/localizations/localizations_converter.h"
 
 #include <ranges>
 
 #include "external/commonItems/Localization/LocalizationBlock.h"
 #include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/vic3_world/characters/vic3_character.h"
 #include "src/vic3_world/countries/vic3_country.h"
 
@@ -322,6 +323,80 @@ commonItems::LocalizationDatabase ConvertCharacterLocalizations(
    }
    return character_localizations;
 }
+
+
+commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::LocalizationDatabase& vic3_localizations,
+    const std::map<std::string, hoi4::Country>& hoi4_countries,
+    const std::map<int, hoi4::Character>& hoi4_characters)
+{
+   commonItems::LocalizationDatabase idea_localizations("english",
+       {"braz_por", "french", "german", "japanese", "polish", "russian", "spanish"});
+
+   commonItems::LocalizationBlock male_localization_block("king", "english");
+   male_localization_block.ModifyLocalization("english", "King");
+   male_localization_block.ModifyLocalization("braz_por", "Rei");
+   male_localization_block.ModifyLocalization("french", "Roi");
+   male_localization_block.ModifyLocalization("german", "König");
+   male_localization_block.ModifyLocalization("japanese", "王");
+   male_localization_block.ModifyLocalization("polish", "Król");
+   male_localization_block.ModifyLocalization("russian", "Король");
+   male_localization_block.ModifyLocalization("spanish", "Rey");
+
+   commonItems::LocalizationBlock female_localization_block("queen", "english");
+   female_localization_block.ModifyLocalization("english", "Queen");
+   female_localization_block.ModifyLocalization("braz_por", "Rainha");
+   female_localization_block.ModifyLocalization("french", "Reine");
+   female_localization_block.ModifyLocalization("german", "Königin");
+   female_localization_block.ModifyLocalization("japanese", "女王");
+   female_localization_block.ModifyLocalization("polish", "Królowa");
+   female_localization_block.ModifyLocalization("russian", "Королева");
+   female_localization_block.ModifyLocalization("spanish", "Reina");
+
+
+   for (const auto& [tag, country]: hoi4_countries)
+   {
+      const std::optional<int64_t>& monarch_idea_id = country.GetMonarchIdeaIds();
+      if (!monarch_idea_id.has_value())
+      {
+         continue;
+      }
+
+      const auto monarch_itr = hoi4_characters.find(*monarch_idea_id);
+      if (monarch_itr == hoi4_characters.end())
+      {
+         continue;
+      }
+
+      const std::string monarch_idea_name = hoi4::GetMonarchIdeaName(tag, monarch_itr->second);
+      commonItems::LocalizationBlock name_localization_block(monarch_idea_name, "english");
+      if (!monarch_itr->second.IsFemale())
+      {
+         name_localization_block.CopyFrom(male_localization_block);
+      }
+      else
+      {
+         name_localization_block.CopyFrom(female_localization_block);
+      }
+      name_localization_block.ModifyForEveryLanguage(
+          [monarch_itr](const std::string& base_localization, const std::string& language) {
+             if (language == "japanese")
+             {
+                return fmt::format("{} {} {}",
+                    monarch_itr->second.GetFirstName(),
+                    monarch_itr->second.GetLastName(),
+                    base_localization);
+             }
+             return fmt::format("{} {} {}",
+                 base_localization,
+                 monarch_itr->second.GetFirstName(),
+                 monarch_itr->second.GetLastName());
+          });
+      idea_localizations.AddOrModifyLocalizationBlock(name_localization_block.GetKey(), name_localization_block);
+   }
+
+   return idea_localizations;
+}
+
 }  // namespace
 
 
@@ -332,7 +407,9 @@ hoi4::Localizations hoi4::ConvertLocalizations(const commonItems::LocalizationDa
     const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
     const mappers::ProvinceMapper& province_mapper,
     const std::map<int, vic3::Country>& vic3_countries,
-    const std::map<int, vic3::Character>& vic3_characters)
+    const std::map<int, vic3::Character>& vic3_characters,
+    const std::map<std::string, hoi4::Country>& hoi4_countries,
+    const std::map<int, hoi4::Character>& hoi4_characters)
 {
    Log(LogLevel::Info) << "\tConverting localizations";
    commonItems::LocalizationDatabase country_localizations =
@@ -343,6 +420,12 @@ hoi4::Localizations hoi4::ConvertLocalizations(const commonItems::LocalizationDa
        ConvertVictoryPointLocalizations(vic3_localizations, vic3_state_regions, province_mapper);
    commonItems::LocalizationDatabase character_localizations =
        ConvertCharacterLocalizations(vic3_localizations, vic3_characters);
+   commonItems::LocalizationDatabase idea_localizations =
+       ConvertIdeaLocalizations(vic3_localizations, hoi4_countries, hoi4_characters);
 
-   return {country_localizations, state_localizations, victory_point_localizations, character_localizations};
+   return {country_localizations,
+       state_localizations,
+       victory_point_localizations,
+       character_localizations,
+       idea_localizations};
 }

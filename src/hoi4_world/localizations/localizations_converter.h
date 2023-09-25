@@ -4,6 +4,8 @@
 
 
 #include "external/commonItems/Localization/LocalizationDatabase.h"
+#include "src/hoi4_world/characters/hoi4_character.h"
+#include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/localizations/localizations.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/provinces/province_mapper.h"
@@ -22,7 +24,9 @@ Localizations ConvertLocalizations(const commonItems::LocalizationDatabase& vic3
     const std::map<std::string, vic3::StateRegion>& vic3_state_regions,
     const mappers::ProvinceMapper& province_mapper,
     const std::map<int, vic3::Country>& vic3_countries,
-    const std::map<int, vic3::Character>& vic3_characters);
+    const std::map<int, vic3::Character>& vic3_characters,
+    const std::map<std::string, hoi4::Country>& hoi4_countries,
+    const std::map<int, hoi4::Character>& hoi4_characters);
 
 }  // namespace hoi4
 

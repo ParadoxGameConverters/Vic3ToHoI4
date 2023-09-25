@@ -54,11 +54,13 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
    const commonItems::LocalizationDatabase state_localizations("english", {"spanish"});
    const commonItems::LocalizationDatabase victory_point_localizations("english", {"spanish"});
    const commonItems::LocalizationDatabase character_localizations("english", {"spanish"});
+   const commonItems::LocalizationDatabase idea_localizations("english", {"spanish"});
 
    const hoi4::Localizations localizations(country_localizations,
        state_localizations,
        victory_point_localizations,
-       character_localizations);
+       character_localizations,
+       idea_localizations);
 
    OutputLocalizations("Outhoi4Localizations/CountryLocalizationsAreOutput", localizations);
 
@@ -204,11 +206,13 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
 
    const commonItems::LocalizationDatabase victory_point_localizations("english", {"spanish"});
    const commonItems::LocalizationDatabase character_localizations("english", {"spanish"});
+   const commonItems::LocalizationDatabase idea_localizations("english", {"spanish"});
 
    const hoi4::Localizations localizations(country_localizations,
        state_localizations,
        victory_point_localizations,
-       character_localizations);
+       character_localizations,
+       idea_localizations);
 
    OutputLocalizations("Outhoi4Localizations/StateLocalizationsAreOutput", localizations);
 
@@ -354,11 +358,13 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
    victory_point_localizations.AddOrModifyLocalizationBlock("test_state_two", block_two);
 
    const commonItems::LocalizationDatabase character_localizations("english", {"spanish"});
+   const commonItems::LocalizationDatabase idea_localizations("english", {"spanish"});
 
    const hoi4::Localizations localizations(country_localizations,
        state_localizations,
        victory_point_localizations,
-       character_localizations);
+       character_localizations,
+       idea_localizations);
 
    OutputLocalizations("Outhoi4Localizations/VictoryPointLocalizationsAreOutput", localizations);
 
@@ -524,10 +530,13 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
    block_three.ModifyLocalization("spanish", "$Lizzy$ $Stanton$");
    character_localizations.AddOrModifyLocalizationBlock("Lizzy_Stanton", block_three);
 
+   const commonItems::LocalizationDatabase idea_localizations("english", {"spanish"});
+
    const hoi4::Localizations localizations(country_localizations,
        state_localizations,
        victory_point_localizations,
-       character_localizations);
+       character_localizations,
+       idea_localizations);
 
    OutputLocalizations("Outhoi4Localizations/CharacterLocalizationsAreOutput", localizations);
 

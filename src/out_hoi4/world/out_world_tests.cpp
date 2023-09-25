@@ -270,10 +270,13 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
    character_block_two.ModifyLocalization("spanish", "prueba dos");
    character_localizations.AddOrModifyLocalizationBlock("test_state_two", character_block_two);
 
+   commonItems::LocalizationDatabase idea_localizations("english", {"spanish"});
+
    const hoi4::Localizations localizations(country_localizations,
        state_localizations,
        victory_point_localizations,
-       character_localizations);
+       character_localizations,
+       idea_localizations);
 
    OutputWorld("LocalizationsAreOutput", hoi4::World({.localizations = localizations}));
    ASSERT_TRUE(
