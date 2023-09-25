@@ -94,6 +94,7 @@
     <ClInclude Include="src\out_hoi4\characters\out_character.h" />
     <ClInclude Include="src\out_hoi4\countries\out_countries.h" />
     <ClInclude Include="src\out_hoi4\countries\out_country.h" />
+    <ClInclude Include="src\out_hoi4\ideas\out_ideas.h" />
     <ClInclude Include="src\out_hoi4\localizations\out_localizations.h" />
     <ClInclude Include="src\out_hoi4\map\out_building.h" />
     <ClInclude Include="src\out_hoi4\map\out_buildings.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="src\out_hoi4\characters\out_character.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp" />
+    <ClCompile Include="src\out_hoi4\ideas\out_ideas.cpp" />
     <ClCompile Include="src\out_hoi4\localizations\out_localizations.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_building.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_buildings.cpp" />
