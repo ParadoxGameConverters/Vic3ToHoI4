@@ -15,7 +15,11 @@ std::string CreateTestFolders(std::string_view test_name)
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder(fmt::format("output/{}", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/gfx", test_name));
-   return fmt::format("output/{}/gfx/flags", test_name);
+   auto flag_folder = fmt::format("output/{}/gfx/flags", test_name);
+   commonItems::TryCreateFolder(flag_folder);
+   commonItems::TryCreateFolder(flag_folder + "/small");
+   commonItems::TryCreateFolder(flag_folder + "/medium");
+   return flag_folder;
 }
 
 }  // namespace
@@ -25,29 +29,61 @@ std::string CreateTestFolders(std::string_view test_name)
 namespace mappers
 {
 
-TEST(MappersFlagsFlagMapper, FlagDirsAreCreated)
+TEST(MappersFlagsFlagMapper, SingleFlagsAreCopied)
 {
-   const std::string base_folder = CreateTestFolders("FlagDirsAreCreated");
-   FlagMapper flag_mapper(std::filesystem::path(base_folder), std::map<std::string, std::filesystem::path>{});
-   EXPECT_TRUE(flag_mapper.CreateFlagFolders());
-   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder));
-   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder + "/small"));
-   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder + "/medium"));
-}
-
-
-TEST(MappersFlagsFlagMapper, FlagFilesAreCopied)
-{
-   const std::string base_folder = CreateTestFolders("FlagFilesAreCopied");
+   const std::string base_folder = CreateTestFolders("SingleFlagsAreCopied");
    FlagMapper flag_mapper(std::filesystem::path(base_folder),
        std::map<std::string, std::filesystem::path>{
-           {"ABC", std::filesystem::path("test_files/hoi4_world/flags/gfx/flags/ABC.tga")}});
-   EXPECT_TRUE(flag_mapper.CreateFlagFolders());
+         {"ABC", std::filesystem::path("test_files/hoi4_world/flags/gfx/flags/ABC.tga")},
+         {"DEF", std::filesystem::path("test_files/hoi4_world/flags/gfx/flags/DEF.tga")},
+       });
    EXPECT_TRUE(flag_mapper.CopyFlag("TAG"));
+   // Won't override existing flag.
+   EXPECT_FALSE(flag_mapper.CopyFlag("DEF"));
+   // Refuses to use DEF since it exists, so it's now out of flags.
    EXPECT_FALSE(flag_mapper.CopyFlag("Z00"));
    EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/TAG.tga"));
    EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/small/TAG.tga"));
    EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/medium/TAG.tga"));
+   EXPECT_FALSE(commonItems::DoesFileExist(base_folder + "/Z00.tga"));
+   EXPECT_FALSE(commonItems::DoesFileExist(base_folder + "/DEF.tga"));
+}
+
+TEST(MappersFlagsFlagMapper, MultipleFlagsAreCopied)
+{
+   const std::string base_folder = CreateTestFolders("MultipleFlagsAreCopied");
+   FlagMapper flag_mapper(std::filesystem::path(base_folder),
+       std::map<std::string, std::filesystem::path>{
+         {"ABC", std::filesystem::path("test_files/hoi4_world/flags/gfx/flags/ABC.tga")},
+         {"DEF", std::filesystem::path("test_files/hoi4_world/flags/gfx/flags/DEF.tga")},
+       });
+   auto tags = std::vector<std::string>{"TAG", "Z00"};
+   EXPECT_TRUE(flag_mapper.CopyFlags(tags));
+   EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/TAG.tga"));
+   EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/small/TAG.tga"));
+   EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/medium/TAG.tga"));
+   EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/Z00.tga"));
+   EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/small/Z00.tga"));
+   EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/medium/Z00.tga"));
+   EXPECT_FALSE(commonItems::DoesFileExist(base_folder + "/DEF.tga"));
+}
+
+TEST(MappersFlagsFlagMapper, ExistingFlagsAreNotCopied)
+{
+   const std::string base_folder = CreateTestFolders("ExistingFlagsAreNotCopied");
+   FlagMapper flag_mapper(std::filesystem::path(base_folder),
+       std::map<std::string, std::filesystem::path>{
+         {"ABC", std::filesystem::path("test_files/hoi4_world/flags/gfx/flags/ABC.tga")},
+         {"DEF", std::filesystem::path("test_files/hoi4_world/flags/gfx/flags/DEF.tga")},
+       });
+   auto tags = std::vector<std::string>{"TAG", "Z00", "DEF"};
+   // Will return false because there aren't enough flags for Z00.
+   EXPECT_FALSE(flag_mapper.CopyFlags(tags));
+   EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/TAG.tga"));
+   EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/small/TAG.tga"));
+   EXPECT_TRUE(commonItems::DoesFileExist(base_folder + "/medium/TAG.tga"));
+   EXPECT_FALSE(commonItems::DoesFileExist(base_folder + "/Z00.tga"));
+   EXPECT_FALSE(commonItems::DoesFileExist(base_folder + "/DEF.tga"));
 }
 
 

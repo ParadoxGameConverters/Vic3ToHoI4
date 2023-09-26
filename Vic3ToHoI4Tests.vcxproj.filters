@@ -368,6 +368,12 @@
     <ClCompile Include="src\vic3_world\laws\laws_importer_tests.cpp">
       <Filter>src\vic3_world\laws</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\flags\flag_mapper_tests.cpp">
+      <Filter>src\mappers\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\flags\flag_mapper_builder_tests.cpp">
+      <Filter>src\mappers\unit</Filter>
+    </ClCompile>
     <ClCompile Include="src\mappers\ideology\ideology_mapper_tests.cpp">
       <Filter>src\mappers\ideology</Filter>
     </ClCompile>

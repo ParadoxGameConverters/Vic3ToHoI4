@@ -455,6 +455,12 @@
     <ClInclude Include="src\vic3_world\laws\laws_importer.h">
       <Filter>src\vic3_world\laws</Filter>
     </ClInclude>
+    <ClInclude Include="src\mappers\flags\flag_mapper.h">
+      <Filter>src\mappers\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\flags\flag_mapper_importer.h">
+      <Filter>src\mappers\unit</Filter>
+    </ClInclude>
     <ClInclude Include="src\mappers\ideology\ideology_mapper.h">
       <Filter>src\mappers\ideology</Filter>
     </ClInclude>

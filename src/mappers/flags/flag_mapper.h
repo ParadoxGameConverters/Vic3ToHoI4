@@ -4,9 +4,12 @@
 #include <filesystem>
 #include <map>
 #include <string>
+#include <vector>
 
 namespace mappers
 {
+
+extern const std::vector<std::string> kFlagFolders;
 
 class FlagMapper
 {
@@ -17,7 +20,7 @@ class FlagMapper
    {
    }
 
-   bool CreateFlagFolders() const;
+   bool CopyFlags(const std::vector<std::string>& tags);
    bool CopyFlag(const std::string& tag);
 
   private:

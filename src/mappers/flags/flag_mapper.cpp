@@ -9,23 +9,33 @@
 namespace
 {
 
-const std::vector<std::string> folders{"\\", "\\small\\", "\\medium\\"};
 
 }  // namespace
 
 
-bool mappers::FlagMapper::CreateFlagFolders() const
+bool mappers::FlagMapper::CopyFlags(const std::vector<std::string>& tags)
 {
-   for (const auto& folder: folders)
+   std::set<std::string> tags_needing_flags;
+   for (const auto& tag: tags)
    {
-      auto target = fmt::format("{}{}", base_flag_folder_.string(), folder);
-      if (!commonItems::DoesFolderExist(target))
+      // Ignore if we already have a custom or mod flag.
+      if (available_flags_.contains(tag))
       {
-         if (!commonItems::TryCreateFolder(target))
-         {
-            Log(LogLevel::Warning) << "Could not create " << target << ", flags will not be copied.";
-            return false;
-         }
+         available_flags_.erase(tag);
+         continue;
+      }
+      tags_needing_flags.insert(tag);
+   }
+   for (const auto& tag: tags_needing_flags)
+   {
+      if (available_flags_.empty())
+      {
+         Log(LogLevel::Warning) << "Ran out of available flags.";
+         return false;
+      }
+      if (!CopyFlag(tag))
+      {
+         return false;
       }
    }
    return true;
@@ -33,16 +43,21 @@ bool mappers::FlagMapper::CreateFlagFolders() const
 
 bool mappers::FlagMapper::CopyFlag(const std::string& tag)
 {
-   if (available_flags_.empty())
+   if (available_flags_.contains(tag))
    {
-      Log(LogLevel::Warning) << "Ran out of available flags.";
+      available_flags_.erase(tag);
       return false;
    }
+   if (available_flags_.empty())
+   {
+      return false;
+   }
+
    auto file_to_copy = available_flags_.extract(available_flags_.begin()).mapped().make_preferred();
    const auto fname = file_to_copy.filename();
    const auto extension = file_to_copy.extension();
    file_to_copy.remove_filename();
-   for (const auto& folder: folders)
+   for (const auto& folder: kFlagFolders)
    {
       // This ought to use path's operator/=, but it doesn't do what the
       // documentation says it ought to do. So use primitive string concat
