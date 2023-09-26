@@ -377,19 +377,38 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
       {
          name_localization_block.CopyFrom(female_localization_block);
       }
-      name_localization_block.ModifyForEveryLanguage(
-          [monarch_itr](const std::string& base_localization, const std::string& language) {
+
+      const std::optional<commonItems::LocalizationBlock>& first_name =
+          vic3_localizations.GetLocalizationBlock(monarch_itr->second.GetFirstName());
+      if (!first_name.has_value())
+      {
+         continue;
+      }
+
+      const std::optional<commonItems::LocalizationBlock>& last_name =
+          vic3_localizations.GetLocalizationBlock(monarch_itr->second.GetLastName());
+      if (!last_name.has_value())
+      {
+         continue;
+      }
+      commonItems::LocalizationBlock combined_name(*first_name);
+
+      combined_name.ModifyForEveryLanguage(*last_name,
+          [](const std::string& base_localization,
+              const std::string& modifying_localization,
+              const std::string& language) {
+             return fmt::format("{} {}", base_localization, modifying_localization);
+          });
+
+      name_localization_block.ModifyForEveryLanguage(combined_name,
+          [](const std::string& base_localization,
+              const std::string& modifying_localization,
+              const std::string& language) {
              if (language == "japanese")
              {
-                return fmt::format("{} {} {}",
-                    monarch_itr->second.GetFirstName(),
-                    monarch_itr->second.GetLastName(),
-                    base_localization);
+                return fmt::format("{} {}", modifying_localization, base_localization);
              }
-             return fmt::format("{} {} {}",
-                 base_localization,
-                 monarch_itr->second.GetFirstName(),
-                 monarch_itr->second.GetLastName());
+             return fmt::format("{} {}", base_localization, modifying_localization);
           });
       idea_localizations.AddOrModifyLocalizationBlock(name_localization_block.GetKey(), name_localization_block);
    }
@@ -398,7 +417,6 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
 }
 
 }  // namespace
-
 
 
 hoi4::Localizations hoi4::ConvertLocalizations(const commonItems::LocalizationDatabase& vic3_localizations,
