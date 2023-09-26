@@ -28,7 +28,6 @@ TEST(MappersFlagsFlagMapperBuilder, ForbidIsRespected)
 {
    FlagMapperBuilder builder("");
    builder.ReadConfig("configurables/flag_mapper_config.txt");
-   std::string base_folder("output/FlagDirsAreCreated");
    EXPECT_TRUE(builder.CreateTargetFolders("ForbidIsRespected"));
    commonItems::ModFilesystem flag_mod("test_files/hoi4_world/flags", {});
    auto flag_mapper = builder.Build(flag_mod);
@@ -51,7 +50,6 @@ TEST(MappersFlagsFlagMapperBuilder, CustomFlagsAreUsed)
 {
    FlagMapperBuilder builder("test_files/mappers/flags/");
    builder.ReadConfig("configurables/flag_mapper_config.txt");
-   std::string base_folder("output/CustomFlagsAreUsed");
    EXPECT_TRUE(builder.CreateTargetFolders("CustomFlagsAreUsed"));
    commonItems::ModFilesystem flag_mod("test_files/hoi4_world/flags", {});
    auto flag_mapper = builder.Build(flag_mod);
