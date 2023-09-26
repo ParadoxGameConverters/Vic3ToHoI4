@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <map>
 #include <string>
+#include <set>
 #include <vector>
 
 namespace mappers
@@ -14,8 +15,11 @@ extern const std::vector<std::string> kFlagFolders;
 class FlagMapper
 {
   public:
-   explicit FlagMapper(const std::filesystem::path& base, std::map<std::string, std::filesystem::path>&& flags):
+   explicit FlagMapper(const std::filesystem::path& base,
+       std::set<std::string>&& custom_flags,
+       std::map<std::string, std::filesystem::path>&& flags):
        base_flag_folder_(base),
+       custom_flags_(custom_flags),
        available_flags_(flags)
    {
    }
@@ -26,6 +30,7 @@ class FlagMapper
   private:
    std::filesystem::path base_flag_folder_;
    std::map<std::string, std::filesystem::path> available_flags_;
+   std::set<std::string> custom_flags_;
 };
 
 }  // namespace mappers

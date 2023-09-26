@@ -72,9 +72,12 @@ bool FlagMapperBuilder::CreateTargetFolders(const std::string output_name)
 FlagMapper FlagMapperBuilder::Build(const commonItems::ModFilesystem& hoi4_mod_filesystem)
 {
    std::map<std::string, std::filesystem::path> available_flags;
+   std::set<std::string> custom_flags;
    // Check if there are custom flags in blank mod.
+   Log(LogLevel::Info) << "Custom flag folder: " << custom_flag_folder_;
    if (!custom_flag_folder_.empty() && commonItems::DoesFolderExist(custom_flag_folder_))
    {
+      Log(LogLevel::Info) << "  Exists.";
       for (const auto& filename: commonItems::GetAllFilesInFolder(custom_flag_folder_))
       {
          // Ignore non-tga files.
@@ -85,7 +88,8 @@ FlagMapper FlagMapperBuilder::Build(const commonItems::ModFilesystem& hoi4_mod_f
          }
          const auto& tag = path.stem().string();
          // Will be removed later when notified of tag list.
-         available_flags[tag] = path;
+         Log(LogLevel::Info) << "  Found tag " << tag << " at " << path.string();
+         custom_flags.insert(tag);
          forbid_.insert(tag);
       }
    }
@@ -118,7 +122,7 @@ FlagMapper FlagMapperBuilder::Build(const commonItems::ModFilesystem& hoi4_mod_f
    std::erase_if(available_flags, [](const auto& item){
      return item.second == kIgnoreFlag;
    });
-   FlagMapper flag_mapper(base_folder_, std::move(available_flags));
+   FlagMapper flag_mapper(base_folder_, std::move(custom_flags), std::move(available_flags));
    return flag_mapper;
 }
 

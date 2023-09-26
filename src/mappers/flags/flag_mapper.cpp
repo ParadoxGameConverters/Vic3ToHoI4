@@ -19,7 +19,7 @@ bool mappers::FlagMapper::CopyFlags(const std::vector<std::string>& tags)
    for (const auto& tag: tags)
    {
       // Ignore if we already have a custom or mod flag.
-      if (available_flags_.contains(tag))
+      if (available_flags_.contains(tag) || custom_flags_.contains(tag))
       {
          available_flags_.erase(tag);
          continue;
@@ -43,7 +43,7 @@ bool mappers::FlagMapper::CopyFlags(const std::vector<std::string>& tags)
 
 bool mappers::FlagMapper::CopyFlag(const std::string& tag)
 {
-   if (available_flags_.contains(tag))
+   if (available_flags_.contains(tag) || custom_flags_.contains(tag))
    {
       available_flags_.erase(tag);
       return false;
@@ -64,6 +64,7 @@ bool mappers::FlagMapper::CopyFlag(const std::string& tag)
       // instead like Turing intended.
       const auto source = fmt::format("{}{}{}", file_to_copy.string(), folder, fname.string());
       const auto target = fmt::format("{}{}{}{}", base_flag_folder_.string(), folder, tag, extension.string());
+      Log(LogLevel::Info) << tag << ": Copying " << source << " to " << target;
       if (!commonItems::TryCopyFile(source, target))
       {
          Log(LogLevel::Warning) << "Could not copy flag file " << source << " to " << target;
