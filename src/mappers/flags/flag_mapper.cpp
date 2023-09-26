@@ -64,7 +64,6 @@ bool mappers::FlagMapper::CopyFlag(const std::string& tag)
       // instead like Turing intended.
       const auto source = fmt::format("{}{}{}", file_to_copy.string(), folder, fname.string());
       const auto target = fmt::format("{}{}{}{}", base_flag_folder_.string(), folder, tag, extension.string());
-      Log(LogLevel::Info) << tag << ": Copying " << source << " to " << target;
       if (!commonItems::TryCopyFile(source, target))
       {
          Log(LogLevel::Warning) << "Could not copy flag file " << source << " to " << target;

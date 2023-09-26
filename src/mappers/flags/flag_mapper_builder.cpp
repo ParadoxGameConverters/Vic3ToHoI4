@@ -32,6 +32,9 @@ void FlagMapperBuilder::ReadConfig(const std::string& config_file)
    config_parser.registerKeyword("forbid", [&](std::istream& input_stream) {
       forbid_.insert(commonItems::getString(input_stream));
    });
+   config_parser.registerKeyword("custom_flags", [&](std::istream& input_stream) {
+      custom_flag_folder_ = commonItems::getString(input_stream);
+   });
    // TODO: Add a 'force' keyword to allow tag-to-flag mappings without copying flags to blank_mod.
    config_parser.parseFile(config_file);
 }

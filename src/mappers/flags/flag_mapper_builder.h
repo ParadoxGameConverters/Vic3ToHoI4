@@ -14,7 +14,6 @@ namespace mappers
 class FlagMapperBuilder
 {
   public:
-   explicit FlagMapperBuilder(const std::string& custom_flag_folder): custom_flag_folder_(custom_flag_folder) {}
    void ReadConfig(const std::string& config_file);
    bool CreateTargetFolders(const std::string output_name);
    FlagMapper Build(const commonItems::ModFilesystem& hoi4_mod_filesystem);

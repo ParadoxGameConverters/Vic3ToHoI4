@@ -1,1 +1,2 @@
 forbid = ABC
+custom_flags = "test_files/mappers/flags/"
