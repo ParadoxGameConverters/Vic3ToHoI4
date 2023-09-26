@@ -188,6 +188,9 @@
     <ClCompile Include="src\out_hoi4\countries\out_country_tests.cpp">
       <Filter>src\out_hoi4\countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\out_hoi4\flags\out_flags_tests.cpp">
+      <Filter>src\out_hoi4\flags</Filter>
+    </ClCompile>
     <ClCompile Include="src\vic3_world\countries\vic3_countries_importer_tests.cpp">
       <Filter>src\vic3_world\countries</Filter>
     </ClCompile>
