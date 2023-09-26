@@ -1,5 +1,6 @@
 ﻿#include "src/hoi4_world/localizations/localizations_converter.h"
 
+#include <format>
 #include <ranges>
 
 #include "external/commonItems/Localization/LocalizationBlock.h"
@@ -333,24 +334,24 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
        {"braz_por", "french", "german", "japanese", "polish", "russian", "spanish"});
 
    commonItems::LocalizationBlock male_localization_block("king", "english");
-   male_localization_block.ModifyLocalization("english", "King");
-   male_localization_block.ModifyLocalization("braz_por", "Rei");
-   male_localization_block.ModifyLocalization("french", "Roi");
-   male_localization_block.ModifyLocalization("german", "König");
-   male_localization_block.ModifyLocalization("japanese", "王");
-   male_localization_block.ModifyLocalization("polish", "Król");
-   male_localization_block.ModifyLocalization("russian", "Король");
-   male_localization_block.ModifyLocalization("spanish", "Rey");
+   male_localization_block.ModifyLocalization("english", "King {}");
+   male_localization_block.ModifyLocalization("braz_por", "Rei {}");
+   male_localization_block.ModifyLocalization("french", "Roi {}");
+   male_localization_block.ModifyLocalization("german", "König {}");
+   male_localization_block.ModifyLocalization("japanese", "{} 王");
+   male_localization_block.ModifyLocalization("polish", "Król {}");
+   male_localization_block.ModifyLocalization("russian", "Король {}");
+   male_localization_block.ModifyLocalization("spanish", "Rey {}");
 
    commonItems::LocalizationBlock female_localization_block("queen", "english");
-   female_localization_block.ModifyLocalization("english", "Queen");
-   female_localization_block.ModifyLocalization("braz_por", "Rainha");
-   female_localization_block.ModifyLocalization("french", "Reine");
-   female_localization_block.ModifyLocalization("german", "Königin");
-   female_localization_block.ModifyLocalization("japanese", "女王");
-   female_localization_block.ModifyLocalization("polish", "Królowa");
-   female_localization_block.ModifyLocalization("russian", "Королева");
-   female_localization_block.ModifyLocalization("spanish", "Reina");
+   female_localization_block.ModifyLocalization("english", "Queen {}");
+   female_localization_block.ModifyLocalization("braz_por", "Rainha {}");
+   female_localization_block.ModifyLocalization("french", "Reine {}");
+   female_localization_block.ModifyLocalization("german", "Königin {}");
+   female_localization_block.ModifyLocalization("japanese", "{} 女王");
+   female_localization_block.ModifyLocalization("polish", "Królowa {}");
+   female_localization_block.ModifyLocalization("russian", "Королева {}");
+   female_localization_block.ModifyLocalization("spanish", "Reina {}");
 
 
    for (const auto& [tag, country]: hoi4_countries)
@@ -404,11 +405,7 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
           [](const std::string& base_localization,
               const std::string& modifying_localization,
               const std::string& language) {
-             if (language == "japanese")
-             {
-                return fmt::format("{} {}", modifying_localization, base_localization);
-             }
-             return fmt::format("{} {}", base_localization, modifying_localization);
+             return fmt::vformat(base_localization,  fmt::make_format_args(modifying_localization));
           });
       idea_localizations.AddOrModifyLocalizationBlock(name_localization_block.GetKey(), name_localization_block);
    }
