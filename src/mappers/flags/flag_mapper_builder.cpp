@@ -12,7 +12,7 @@
 #include "external/fmt/include/fmt/format.h"
 
 
-namespace 
+namespace
 {
 
 extern const std::filesystem::path kIgnoreFlag("ignore");
@@ -43,18 +43,19 @@ bool FlagMapperBuilder::CreateTargetFolders(const std::string output_name)
 {
    std::vector<std::string> flag_path{"", "/gfx", "/flags"};
    std::string suffix;
-   for (const auto& folder : flag_path) {
-     suffix += folder;
-     const std::string target = fmt::format("output/{}{}", output_name, suffix);
-     if (!commonItems::DoesFolderExist(target))
-     {
-        if (!commonItems::TryCreateFolder(target))
-        {
-           Log(LogLevel::Warning) << "Could not create " << target << ", flags will not be copied.";
-           return false;
-        }
-     }
-     base_folder_ = std::filesystem::path(target);
+   for (const auto& folder: flag_path)
+   {
+      suffix += folder;
+      const std::string target = fmt::format("output/{}{}", output_name, suffix);
+      if (!commonItems::DoesFolderExist(target))
+      {
+         if (!commonItems::TryCreateFolder(target))
+         {
+            Log(LogLevel::Warning) << "Could not create " << target << ", flags will not be copied.";
+            return false;
+         }
+      }
+      base_folder_ = std::filesystem::path(target);
    }
    for (const auto& folder: kFlagFolders)
    {
@@ -122,8 +123,8 @@ FlagMapper FlagMapperBuilder::Build(const commonItems::ModFilesystem& hoi4_mod_f
    }
 
    // Remove the ignore flags so they don't get used for redistribution.
-   std::erase_if(available_flags, [](const auto& item){
-     return item.second == kIgnoreFlag;
+   std::erase_if(available_flags, [](const auto& item) {
+      return item.second == kIgnoreFlag;
    });
    FlagMapper flag_mapper(base_folder_, std::move(custom_flags), std::move(available_flags));
    return flag_mapper;
