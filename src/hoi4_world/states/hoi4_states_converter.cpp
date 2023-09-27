@@ -746,8 +746,20 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    std::map<std::string, int> state_category_counts;
    std::map<int, int> state_slot_differences;
    std::map<int, int> state_factory_numbers;
+   std::unordered_map<std::string, FactoriesStruct> accumulator;
    for (const hoi4::State& hoi4_state: hoi4_states)
    {
+      if (hoi4_state.GetOwner())
+      {
+        const auto& tag = hoi4_state.GetOwner().value();
+        if (!accumulator.contains(tag))
+        {
+            accumulator[tag] = {0, 0, 0};
+        }
+        accumulator[tag].military += hoi4_state.GetMilitaryFactories();
+        accumulator[tag].civilian += hoi4_state.GetCivilianFactories();
+        accumulator[tag].docks += hoi4_state.GetDockyards();
+      }
       civilian_factories += hoi4_state.GetCivilianFactories();
       military_factories += hoi4_state.GetMilitaryFactories();
       dockyards += hoi4_state.GetDockyards();
@@ -818,6 +830,20 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    for (const auto& dr: default_resources)
    {
       Log(LogLevel::Info) << fmt::format("\t\t\tDefault Resource {}:{}", dr.first, dr.second);
+   }
+   Log(LogLevel::Info) << "\t\tTop industrial powers:";
+   auto key_view = std::views::keys(accumulator);
+   std::vector<std::string> tags(key_view.begin(), key_view.end());
+   std::sort(tags.begin(), tags.end(), [&accumulator](const std::string& one, const std::string& two) {
+      return accumulator[one].civilian > accumulator[two].civilian;
+   });
+   Log(LogLevel::Info) << "\t\t\tTag\tCiv\tMil\tDoc";
+   for (const auto& tag : tags) {
+      Log(LogLevel::Info) << fmt::format("\t\t\t{}\t{}\t{}\t{}",
+          tag,
+          accumulator[tag].civilian,
+          accumulator[tag].military,
+          accumulator[tag].docks);
    }
 }
 
