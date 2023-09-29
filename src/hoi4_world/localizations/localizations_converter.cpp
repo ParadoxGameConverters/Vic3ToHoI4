@@ -353,6 +353,58 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
    female_localization_block.ModifyLocalization("russian", "Королева {}");
    female_localization_block.ModifyLocalization("spanish", "Reina {}");
 
+   commonItems::LocalizationBlock male_localization_description_block("king", "english");
+   male_localization_description_block.ModifyLocalization("english",
+       "Rallying around the King of [{}.GetName] and the [{}.GetAdjective] Dominions, the [{}.GetAdjective] people "
+       "stand united and proud of their imperial legacy.");
+   male_localization_description_block.ModifyLocalization("braz_por",
+       "Reunindo-se em torno do Rei da [{}.GetName] e dos Domínios [{}.GetAdjective], o povo [{}.GetAdjective] se "
+       "mantém unido e orgulhoso de seu legado imperial.");
+   male_localization_description_block.ModifyLocalization("french",
+       "Rassemblant autour du Roi de [{}.GetName] et des colonies [{}.GetAdjective]s, la nation [{}.GetAdjective] est "
+       "unie et fière de son héritage impérial.");
+   male_localization_description_block.ModifyLocalization("german",
+       "Das [{}.GetAdjective]e Volk versammelt sich um den König von [{}.GetName] und die [{}.GetAdjective]e Kolonien "
+       "und ist vereint und stolz auf sein kaiserliches Erbe.");
+   male_localization_description_block.ModifyLocalization("japanese",
+       "[{}.GetName]の国王と[{}.GetAdjective]の領土の周りに結集し、[{}.GetAdjective]"
+       "人は団結し、帝国の遺産を誇りに思っています");
+   male_localization_description_block.ModifyLocalization("polish",
+       "Gromadząc się wokół Króla [{}.GetName] i [{}.GetAdjective]ich Dominiów, [{}.GetAdjective] są zjednoczeni i "
+       "dumni ze swojego imperialnego dziedzictwa.");
+   male_localization_description_block.ModifyLocalization("russian",
+       "Сплотившись вокруг Короля [{}.GetName] и [{}.GetAdjective]их Доминионов, [{}.GetAdjective]ий народ "
+       "объединяется и гордится своим имперским наследием.");
+   male_localization_description_block.ModifyLocalization("spanish",
+       "Reunida en torno al Rey de [{}.GetName] y las tierras [{}.GetAdjective]s, la nación [{}.GetAdjective] está "
+       "unida y orgullosa de su legado imperial.");
+
+   commonItems::LocalizationBlock female_localization_description_block("queen", "english");
+   female_localization_block.ModifyLocalization("english",
+       "Rallying around the Queen of [{}.GetName] and the [{}.GetAdjective] Dominions, the [{}.GetAdjective] people "
+       "stand united and proud of their imperial legacy.");
+   female_localization_block.ModifyLocalization("braz_por",
+       "Reunindo-se em torno da Rainha da [{}.GetName] e dos Domínios [{}.GetAdjective], o povo [{}.GetAdjective] se "
+       "mantém unido e orgulhoso de seu legado imperial.");
+   female_localization_block.ModifyLocalization("french",
+       "Rassemblant autour de la Reine de [{}.GetName] et des colonies [{}.GetAdjective]s, la nation [{}.GetAdjective] "
+       "est unie et fière de son héritage impérial.");
+   female_localization_block.ModifyLocalization("german",
+       "Das [{}.GetAdjective]e Volk versammelt sich um die Königin von [{}.GetName] und die [{}.GetAdjective]e "
+       "Kolonien und ist vereint und stolz auf sein kaiserliches Erbe.");
+   female_localization_block.ModifyLocalization("japanese",
+       "[{}.GetName]の女王と[{}.GetAdjective]の領土の周りに結集し、[{}.GetAdjective]"
+       "人は団結し、帝国の遺産を誇りに思っています");
+   female_localization_block.ModifyLocalization("polish",
+       "Gromadząc się wokół Królowej [{}.GetName] i [{}.GetAdjective]ich Dominiów, [{}.GetAdjective] są zjednoczeni i "
+       "dumni ze swojego imperialnego dziedzictwa.");
+   female_localization_block.ModifyLocalization("russian",
+       "Сплотившись вокруг Королевы [{}.GetName] и [{}.GetAdjective]их Доминионов, [{}.GetAdjective]ий народ "
+       "объединяется и гордится своим имперским наследием.");
+   female_localization_block.ModifyLocalization("spanish",
+       "Reunida en torno a la Reina de [{}.GetName] y las tierras [{}.GetAdjective]s, la nación [{}.GetAdjective] está "
+       "unida y orgullosa de su legado imperial.");
+
 
    for (const auto& [tag, country]: hoi4_countries)
    {
@@ -405,9 +457,26 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
           [](const std::string& base_localization,
               const std::string& modifying_localization,
               const std::string& language) {
-             return fmt::vformat(base_localization,  fmt::make_format_args(modifying_localization));
+             return fmt::vformat(base_localization, fmt::make_format_args(modifying_localization));
           });
       idea_localizations.AddOrModifyLocalizationBlock(name_localization_block.GetKey(), name_localization_block);
+
+      const std::string monarch_idea_description = fmt::format("{}_desc", monarch_idea_name);
+      commonItems::LocalizationBlock description_localization_block(monarch_idea_description, "english");
+      if (!monarch_itr->second.IsFemale())
+      {
+         description_localization_block.CopyFrom(male_localization_description_block);
+      }
+      else
+      {
+         description_localization_block.CopyFrom(female_localization_description_block);
+      }
+      description_localization_block.ModifyForEveryLanguage(
+          [tag](const std::string& base_localization, const std::string& language) {
+             return fmt::vformat(base_localization, fmt::make_format_args(tag, tag, tag));
+          });
+      idea_localizations.AddOrModifyLocalizationBlock(description_localization_block.GetKey(),
+          description_localization_block);
    }
 
    return idea_localizations;
