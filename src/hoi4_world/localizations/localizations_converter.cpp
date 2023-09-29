@@ -1,6 +1,5 @@
 ﻿#include "src/hoi4_world/localizations/localizations_converter.h"
 
-#include <format>
 #include <ranges>
 
 #include "external/commonItems/Localization/LocalizationBlock.h"
