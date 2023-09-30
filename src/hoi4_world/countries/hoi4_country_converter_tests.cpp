@@ -2033,7 +2033,7 @@ TEST(Hoi4worldCountriesCountryConverter, MonarchIdeaCanBeAdded)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        characters,
        dummy_culture_queues);
 
