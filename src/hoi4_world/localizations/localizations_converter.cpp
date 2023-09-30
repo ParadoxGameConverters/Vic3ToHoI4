@@ -379,28 +379,28 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
        "unida y orgullosa de su legado imperial.");
 
    commonItems::LocalizationBlock female_localization_description_block("queen", "english");
-   female_localization_block.ModifyLocalization("english",
+   female_localization_description_block.ModifyLocalization("english",
        "Rallying around the Queen of [{}.GetName] and the [{}.GetAdjective] Dominions, the [{}.GetAdjective] people "
        "stand united and proud of their imperial legacy.");
-   female_localization_block.ModifyLocalization("braz_por",
+   female_localization_description_block.ModifyLocalization("braz_por",
        "Reunindo-se em torno da Rainha da [{}.GetName] e dos Domínios [{}.GetAdjective], o povo [{}.GetAdjective] se "
        "mantém unido e orgulhoso de seu legado imperial.");
-   female_localization_block.ModifyLocalization("french",
+   female_localization_description_block.ModifyLocalization("french",
        "Rassemblant autour de la Reine de [{}.GetName] et des colonies [{}.GetAdjective]s, la nation [{}.GetAdjective] "
        "est unie et fière de son héritage impérial.");
-   female_localization_block.ModifyLocalization("german",
+   female_localization_description_block.ModifyLocalization("german",
        "Das [{}.GetAdjective]e Volk versammelt sich um die Königin von [{}.GetName] und die [{}.GetAdjective]e "
        "Kolonien und ist vereint und stolz auf sein kaiserliches Erbe.");
-   female_localization_block.ModifyLocalization("japanese",
+   female_localization_description_block.ModifyLocalization("japanese",
        "[{}.GetName]の女王と[{}.GetAdjective]の領土の周りに結集し、[{}.GetAdjective]"
        "人は団結し、帝国の遺産を誇りに思っています");
-   female_localization_block.ModifyLocalization("polish",
+   female_localization_description_block.ModifyLocalization("polish",
        "Gromadząc się wokół Królowej [{}.GetName] i [{}.GetAdjective]ich Dominiów, [{}.GetAdjective] są zjednoczeni i "
        "dumni ze swojego imperialnego dziedzictwa.");
-   female_localization_block.ModifyLocalization("russian",
+   female_localization_description_block.ModifyLocalization("russian",
        "Сплотившись вокруг Королевы [{}.GetName] и [{}.GetAdjective]их Доминионов, [{}.GetAdjective]ий народ "
        "объединяется и гордится своим имперским наследием.");
-   female_localization_block.ModifyLocalization("spanish",
+   female_localization_description_block.ModifyLocalization("spanish",
        "Reunida en torno a la Reina de [{}.GetName] y las tierras [{}.GetAdjective]s, la nación [{}.GetAdjective] está "
        "unida y orgullosa de su legado imperial.");
 

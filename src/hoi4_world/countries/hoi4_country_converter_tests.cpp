@@ -1487,6 +1487,7 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
    EXPECT_THAT(country_one->GetGraphicsBlock().portrait_paths.at("army"), testing::ElementsAre("GFX_general"));
 }
 
+
 TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
 {
    std::stringstream log;
@@ -1713,6 +1714,7 @@ TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
                }))));
 }
 
+
 TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
@@ -1820,6 +1822,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
    EXPECT_THAT(country_one->GetIdeologySupport(), testing::UnorderedElementsAre(testing::Pair("neutrality", 100)));
 }
 
+
 TEST(Hoi4worldCountriesCountryConverter, StabilityDefaultsToZero)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
@@ -1852,6 +1855,7 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityDefaultsToZero)
    ASSERT_TRUE(country_one.has_value());
    EXPECT_THAT(country_one->GetStability(), 0.0F);
 }
+
 
 TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
 {
@@ -1906,6 +1910,7 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
    EXPECT_EQ(country_one->GetStability(), 0.60F);
    EXPECT_FLOAT_EQ(country_two->GetStability(), 0.00F);
 }
+
 
 TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
 {
@@ -1991,6 +1996,50 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
            hoi4::Unit{"Light Infantry", 40, 1},
            hoi4::Unit{"Light Infantry", 70, 2},
            hoi4::Unit{"Light Infantry", 70, 2}));
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, MonarchIdeaCanBeAdded)
+{
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::World source_world = vic3::World(vic3::WorldOptions{});
+   const vic3::Country source_country_one(
+       {.number = 1, .active_laws = {"law_monarchy"}, .last_election = date("1932.1.1"), .head_of_state_id = 42});
+   std::map<int, Character> characters = {{42, Character({.first_name = "FirstName", .last_name = "LastName"})}};
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   const States states({.states{
+                            State(1,
+                                {
+                                    .owner = "TAG",
+                                    .provinces = {1},
+                                }),
+                        },
+       .vic3_state_ids_to_hoi4_state_ids{{1, 1}},
+       .hoi4_state_ids_to_owner{{1, "TAG"}}});
+   mappers::TemplateMap templates;
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       states,
+       mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
+       {},
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}),
+       characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetIdeas(), testing::ElementsAre("TAG_FirstName_LastName"));
+   EXPECT_THAT(country_one->GetMonarchIdeaIds(), 42);
 }
 
 
