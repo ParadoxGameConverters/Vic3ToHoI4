@@ -6,7 +6,7 @@ updates:
     # default location of `.github/workflows`
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
 
   - package-ecosystem: "gitsubmodule"
     directory: "external/common_items"
@@ -16,12 +16,12 @@ updates:
   - package-ecosystem: "gitsubmodule"
     directory: "external/fmt"
     schedule:
-      interval: "daily"
+      interval: "monthly"
 
   - package-ecosystem: "gitsubmodule"
     directory: "external/bitmap"
     schedule:
-      interval: "daily"
+      interval: "monthly"
 
   - package-ecosystem: "gitsubmodule"
     directory: "external/Fronter"
@@ -31,4 +31,4 @@ updates:
   - package-ecosystem: "gitsubmodule"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
