@@ -83,7 +83,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
               sub_ideology,
               source_country.GetActiveLaws(),
               {},  // country_mapper only needed for spies
-              mappers::CharacterTraitMapper({}, {}, {}),
+              mappers::CharacterTraitMapper({}, {}, {}, {}),
               culture_queues)};
    }
 

@@ -27,3 +27,22 @@ option = {
 		tooltip = MODNAMETIP2
 	}
 }
+option = {
+	name = dynamic_resources
+	displayName = DYNAMIC_RESOURCES
+	tooltip = DYNAMIC_RESOURCESTIP
+	radioSelector = {
+		radioOption = {
+			name = no
+			displayName = NO
+			tooltip = DYNAMIC_RESOURCESNOTIP
+			default = false
+		}
+		radioOption = {
+			name = yes
+			displayName = YES
+			tooltip = DYNAMIC_RESOURCESYESTIP
+			default = true
+		}
+	}
+}

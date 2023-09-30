@@ -132,7 +132,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
    mappers::WorldMapper world_mapper(std::move(country_mapper),
        std::move(province_mapper),
        {},
-       mappers::CultureGraphicsMapper({}));
+       mappers::CultureGraphicsMapper({}),
+       mappers::ResourceMapper({}));
    hoi4::WorldFramework world_framework =
        WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(2).Build();
    const maps::MapData map_data({.province_definitions = world_framework.province_definitions});
@@ -181,7 +182,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
    mappers::WorldMapper world_mapper(std::move(country_mapper),
        std::move(province_mapper),
        {},
-       mappers::CultureGraphicsMapper({}));
+       mappers::CultureGraphicsMapper({}),
+       mappers::ResourceMapper({}));
    hoi4::WorldFramework world_framework =
        WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(2).Build();
    const maps::MapData map_data({.province_definitions = world_framework.province_definitions});
@@ -481,7 +483,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
    mappers::WorldMapper world_mapper(mappers::CountryMapper(),
        std::move(province_mapper),
        {},
-       mappers::CultureGraphicsMapper({}));
+       mappers::CultureGraphicsMapper({}),
+       mappers::ResourceMapper({}));
    hoi4::WorldFramework world_framework =
        WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(6).Build();
    const maps::MapData map_data({

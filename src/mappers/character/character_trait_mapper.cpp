@@ -1,6 +1,28 @@
 ﻿#include "character_trait_mapper.h"
 
+#include <climits>
+
 #include "external/fmt/include/fmt/format.h"
+
+namespace
+{
+std::map<hoi4::Trait, int> used_traits;
+}
+
+mappers::CharacterTraitMapper::CharacterTraitMapper(mappers::AdmiralTraitMap admiral_trait_rules,
+    mappers::GeneralTraitMap general_trait_rules,
+    mappers::SpyTraitMap spy_trait_rules,
+    mappers::AdvisorTraitMap advisor_trait_rules):
+    admiral_trait_rules_(std::move(admiral_trait_rules)),
+    general_trait_rules_(std::move(general_trait_rules)),
+    spy_trait_rules_(std::move(spy_trait_rules)),
+    advisor_trait_rules_(std::move(advisor_trait_rules))
+{
+   // Clear used_traits on construction so tests don't get confused
+   // by data from previous ones.
+   used_traits.clear();
+}
+
 
 hoi4::Admiral mappers::CharacterTraitMapper::GetAdmiralMappedData(const std::set<vic3::Trait>& source_traits) const
 {
@@ -80,5 +102,69 @@ std::set<hoi4::Trait> mappers::CharacterTraitMapper::GetSpyMappedTraits(
          hoi4_traits.emplace(trait_itr->second);
       }
    }
+   return hoi4_traits;
+}
+
+std::set<hoi4::Trait> mappers::CharacterTraitMapper::GetAdvisorMappedTraits(
+    const std::set<vic3::Trait>& source_traits) const
+{
+   // Count Vic3 traits for each HoI4 trait.
+   std::map<hoi4::Trait, int> trait_points;
+   for (const vic3::Trait& vic3_trait: source_traits)
+   {
+      if (!advisor_trait_rules_.contains(vic3_trait))
+      {
+         continue;
+      }
+      trait_points[advisor_trait_rules_.at(vic3_trait)]++;
+   }
+   std::set<hoi4::Trait> hoi4_traits;
+   if (trait_points.empty())
+   {
+      return hoi4_traits;
+   }
+
+   // Reduce to highest-scoring candidate traits.
+   int most_points = 0;
+   for (const auto [hoi4_trait, points]: trait_points)
+   {
+      if (points < most_points)
+      {
+         continue;
+      }
+      if (points > most_points)
+      {
+         hoi4_traits.clear();
+         most_points = points;
+      }
+      hoi4_traits.emplace(hoi4_trait);
+   }
+
+   if (hoi4_traits.size() < 2)
+   {
+      return hoi4_traits;
+   }
+
+   // Pick least-used trait among the remainder.
+   hoi4::Trait rarest;
+   int least_used = INT_MAX;
+   for (const auto& cand: hoi4_traits)
+   {
+      auto curr_use = used_traits[cand];
+      if (curr_use >= least_used)
+      {
+         continue;
+      }
+      least_used = curr_use;
+      rarest = cand;
+   }
+
+   hoi4_traits.clear();
+   if (!rarest.empty())
+   {
+      hoi4_traits.emplace(rarest);
+      used_traits[rarest]++;
+   }
+
    return hoi4_traits;
 }

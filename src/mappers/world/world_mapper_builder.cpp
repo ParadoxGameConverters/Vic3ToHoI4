@@ -6,6 +6,7 @@
 #include "src/mappers/country/country_mapper_creator.h"
 #include "src/mappers/culture/culture_graphics_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
+#include "src/mappers/resources/resource_mapper_importer.h"
 #include "src/mappers/technology/tech_mapping.h"
 #include "src/mappers/technology/tech_mappings_importer.h"
 #include "src/vic3_world/world/vic3_world.h"
@@ -25,6 +26,7 @@ WorldMapperBuilder WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFiles
    builder.vic_hoi_province_mappings = province_mapper.GetVic3ToHoi4ProvinceMappings();
    builder.DefaultTechMapper();
    builder.DefaultCultureGraphicsMapper();
+   builder.LoadResourceMapper("configurables/resource_mappings.txt");
    return builder;
 }
 
@@ -36,6 +38,7 @@ WorldMapperBuilder WorldMapperBuilder::CreateNullMapper()
    builder.vic_hoi_province_mappings = {};
    builder.tech_mappings = {};
    builder.culture_graphics_mapper = CultureGraphicsMapper({});
+   builder.resource_mapper = ResourceMapper({});
    return builder;
 }
 
@@ -44,7 +47,8 @@ WorldMapper WorldMapperBuilder::Build()
    return WorldMapper(std::move(CountryMapper(this->country_mappings)),
        std::move(ProvinceMapper(this->vic_hoi_province_mappings, this->hoi_vic_province_mappings)),
        std::move(tech_mappings),
-       std::move(this->culture_graphics_mapper));
+       std::move(this->culture_graphics_mapper),
+       std::move(this->resource_mapper));
 }
 
 WorldMapperBuilder& WorldMapperBuilder::DefaultCountryMapper(const vic3::World& source_world)
@@ -109,6 +113,13 @@ WorldMapperBuilder& WorldMapperBuilder::SetCultureGraphicsMapper(CultureGraphics
    this->culture_graphics_mapper = mapper;
    return *this;
 }
+
+WorldMapperBuilder& WorldMapperBuilder::LoadResourceMapper(const std::string& resource_mapping)
+{
+   this->resource_mapper = mappers::ImportResourceMapper(resource_mapping);
+   return *this;
+}
+
 
 WorldMapperBuilder& WorldMapperBuilder::DefaultCultureGraphicsMapper()
 {

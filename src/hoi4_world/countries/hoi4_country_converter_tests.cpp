@@ -37,7 +37,7 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
    const auto country_two = ConvertCountry(source_world,
@@ -55,7 +55,7 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -94,7 +94,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -127,7 +127,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -162,7 +162,7 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
    const auto country_two = ConvertCountry(source_world,
@@ -180,7 +180,7 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -219,7 +219,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -252,7 +252,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStat
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -290,7 +290,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNo
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -328,7 +328,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVps
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -366,7 +366,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfInd
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -404,7 +404,7 @@ TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersA
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -441,7 +441,7 @@ TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapi
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -474,7 +474,7 @@ TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -507,7 +507,7 @@ TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -540,7 +540,7 @@ TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -573,7 +573,7 @@ TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -606,7 +606,7 @@ TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -640,7 +640,7 @@ TEST(Hoi4worldCountriesCountryConverter, InYearPastElectionsAreNextCycle)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -680,7 +680,7 @@ TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -699,7 +699,7 @@ TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -751,7 +751,7 @@ TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -770,7 +770,7 @@ TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -806,7 +806,7 @@ TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -881,7 +881,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -967,7 +967,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1012,7 +1012,7 @@ TEST(Hoi4worldCountriesCountryConverter, LawsDefaultsToDefaultLaws)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1046,7 +1046,7 @@ TEST(Hoi4worldCountriesCountryConverter, FascistCountriesGetDifferentEconomicIde
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1082,7 +1082,7 @@ TEST(Hoi4worldCountriesCountryConverter, MassConscriptionLeadsToLimitedConscript
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1116,7 +1116,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultToEmpty)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
    ASSERT_TRUE(country_one.has_value());
@@ -1148,7 +1148,7 @@ TEST(Hoi4worldCountriesCountryConverter, DecentralizedCountriesGetDecentralizedI
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
    ASSERT_TRUE(country_one.has_value());
@@ -1223,7 +1223,7 @@ TEST(Hoi4worldCountriesCountryConverter, OnlyConservativeMonarchiesHaveNobleLead
        {},
        mappers::CultureGraphicsMapper{{}},
        leader_type_mapper,
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1242,7 +1242,7 @@ TEST(Hoi4worldCountriesCountryConverter, OnlyConservativeMonarchiesHaveNobleLead
        {},
        mappers::CultureGraphicsMapper{{}},
        leader_type_mapper,
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1303,7 +1303,7 @@ TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1359,7 +1359,7 @@ TEST(Hoi4worldCountriesCountryConverter, TooFewNobleFirstsAddsCommonFirsts)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1398,7 +1398,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsUseSentinielValue)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1440,7 +1440,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsLogWarning)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1479,7 +1479,7 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
        {},
        culture_graphics_mapper,
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1521,7 +1521,7 @@ TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
    const auto country_two = ConvertCountry(source_world,
@@ -1539,7 +1539,7 @@ TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1582,7 +1582,7 @@ TEST(Hoi4worldCountriesCountryConverter, OverlordIsConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
    const auto country_two = ConvertCountry(source_world,
@@ -1600,7 +1600,7 @@ TEST(Hoi4worldCountriesCountryConverter, OverlordIsConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1643,7 +1643,7 @@ TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)
        {},
        mappers::CultureGraphicsMapper({}),
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1685,7 +1685,7 @@ TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
        {},
        mappers::CultureGraphicsMapper({}),
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        characters,
        dummy_culture_queues);
 
@@ -1776,7 +1776,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1814,7 +1814,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1848,7 +1848,7 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityDefaultsToZero)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1883,7 +1883,7 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1902,7 +1902,7 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
        {},
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 
@@ -1953,8 +1953,8 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
        .vic3_state_ids_to_hoi4_state_ids{{1, 1}, {2, 2}, {3, 3}},
        .hoi4_state_ids_to_owner{{1, "TAG"}, {2, "TAG"}, {3, "TAG"}}});
    mappers::TemplateMap templates{
-       {"trench_infantry", mappers::BattalionTemplate(30, {{"infantry", 2.0}})},
-       {"militia", mappers::BattalionTemplate(40, {{"militia", 1.0}})},
+       {"trench_infantry", mappers::BattalionTemplate(30, {{"infantry", 2.0F}})},
+       {"militia", mappers::BattalionTemplate(40, {{"militia", 1.0F}})},
        {"field_hospitals", mappers::BattalionTemplate(10, {})},
        {"wound_dressing", mappers::BattalionTemplate(0, {})},
    };
@@ -1986,7 +1986,7 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
        division_templates,
        mappers::CultureGraphicsMapper{{}},
        mappers::LeaderTypeMapper({}),
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_characters,
        dummy_culture_queues);
 

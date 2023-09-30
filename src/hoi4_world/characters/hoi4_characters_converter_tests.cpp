@@ -92,6 +92,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .first_name = "Test",
        .last_name = "Mann",
        .roles = {"politician"},
+       .traits = {"inspirational_orator"},
    });
    // General Advisor
    const auto character_nine = vic3::Character({
@@ -163,7 +164,11 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .maneuvering = 2,
        .coordination = 2,
    });
-   const auto advisor_data = std::optional<Advisor>({
+   const auto advisor_data_1 = std::optional<Advisor>({
+       .traits = {"ideological_crusader"},
+       .slot = "political_advisor",
+   });
+   const auto advisor_data_2 = std::optional<Advisor>({
        .slot = "political_advisor",
    });
    const auto spy_data = std::optional<Spy>({
@@ -218,21 +223,21 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .id = 8,
        .first_name = "Test",
        .last_name = "Mann",
-       .advisor_data = advisor_data,
+       .advisor_data = advisor_data_1,
    });
    const auto expected_character_nine = Character({
        .id = 9,
        .first_name = "Test",
        .last_name = "Mann",
        .general_data = general_data,
-       .advisor_data = advisor_data,
+       .advisor_data = advisor_data_2,
    });
    const auto expected_character_ten = Character({
        .id = 10,
        .first_name = "Test",
        .last_name = "Mann",
        .admiral_data = admiral_data,
-       .advisor_data = advisor_data,
+       .advisor_data = advisor_data_2,
    });
 
    EXPECT_THAT(characters,
@@ -347,7 +352,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PortraitsAreAssigned)
        vic3::Country({.head_of_state_id = 2, .character_ids = {2, 4, 5, 6, 7, 8, 9, 10}}),
        {},
        leader_type_mapper,
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        {},
        false,
        characters,
@@ -385,7 +390,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
        vic3::Country({.active_laws = {"law_council_republic", "law_anarchy"}, .primary_cultures = {"culture_1"}}),
        {},
        leader_type_mapper,
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        {},
        false,
        characters,
@@ -424,7 +429,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCol
        vic3::Country({.active_laws = {"law_council_republic", "law_anarchy"}, .primary_cultures = {"culture_1"}}),
        {},
        leader_type_mapper,
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        {},
        false,
        characters,
@@ -489,7 +494,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInCoaliti
        vic3::Country({.active_laws = {"law_monarchy", "law_census_voting"}, .ig_ids = {1, 2, 3}}),
        igs,
        leader_type_mapper,
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        {},
        false,
        characters,
@@ -560,7 +565,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderP
        vic3::Country({.active_laws = {"law_monarchy", "law_census_voting"}, .ig_ids = {1, 2, 3}}),
        igs,
        leader_type_mapper,
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        {},
        false,
        characters,

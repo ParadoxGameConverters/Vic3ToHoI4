@@ -124,7 +124,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorsCanBeConverted)
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_queue);
    EXPECT_EQ(character, Character({.id = 1, .advisor_data = expected_data}));
 }
@@ -147,7 +147,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeadersCanBeConverted)
        "test_ideology",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_queue);
    EXPECT_EQ(character, Character({.id = 1, .leader_data = expected_data}));
 }
@@ -201,7 +201,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, GenericCharacterDataCanBeConvert
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_queue);
    EXPECT_EQ(character, Character({.id = 1, .first_name = "Test", .last_name = "Woman", .is_female = true}));
 }
@@ -225,7 +225,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralPortraitIsEnqueued)
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"navy", {1}}}));
 }
@@ -249,7 +249,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, GeneralPortraitIsEnqueued)
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"army", {1}}}));
 }
@@ -288,7 +288,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorIdeologyPortraitsAreEnque
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    ConvertCharacter(source_character_d,
        0,
@@ -299,7 +299,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorIdeologyPortraitsAreEnque
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    ConvertCharacter(source_character_f,
        0,
@@ -310,7 +310,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorIdeologyPortraitsAreEnque
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    ConvertCharacter(source_character_n,
        0,
@@ -321,7 +321,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorIdeologyPortraitsAreEnque
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
 
    EXPECT_EQ(culture_queues.at("culture_2"),
@@ -367,7 +367,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeaderIdeologyPortraitsAr
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    ConvertCharacter(source_character_d,
        2,
@@ -378,7 +378,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeaderIdeologyPortraitsAr
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    ConvertCharacter(source_character_f,
        3,
@@ -389,7 +389,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeaderIdeologyPortraitsAr
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    ConvertCharacter(source_character_n,
        4,
@@ -400,7 +400,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeaderIdeologyPortraitsAr
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
 
    EXPECT_EQ(culture_queues.at("culture_2"),
@@ -430,7 +430,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, SpyPortraitIsEnqueued)
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"operative_male", {1}}}));
 }
@@ -454,7 +454,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, FemaleSpyPortraitsAreEnqueued)
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"operative_female", {1}}}));
 }
@@ -482,7 +482,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, LeaderMilitaryEnqueuesMilitaryPo
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    ConvertCharacter(source_character_a,
        2,
@@ -493,7 +493,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, LeaderMilitaryEnqueuesMilitaryPo
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"),
        mappers::CultureQueue({
@@ -525,7 +525,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorMilitaryEnqueuesMilitaryP
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    ConvertCharacter(source_character_a,
        0,
@@ -536,7 +536,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorMilitaryEnqueuesMilitaryP
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"),
        mappers::CultureQueue({
@@ -564,7 +564,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, MonarchMilitaryEnqueuesMonarchPo
        "",
        {"law_monarchy"},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"monarch_male", {1}}}));
 }
@@ -588,7 +588,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CouncilPortraitsAreEnqueued)
        "",
        {""},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"council", {1}}}));
 }
@@ -611,7 +611,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, MonarchPortraitsAreEnqueued)
        "",
        {"law_monarchy"},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"monarch_male", {1}}}));
 }
@@ -635,7 +635,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, FemaleMonarchPortraitsAreEnqueue
        "",
        {"law_monarchy"},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"monarch_female", {1}}}));
 }
@@ -660,7 +660,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AllMiscFemalePortraitsAreEnqueue
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        culture_queues);
    EXPECT_EQ(culture_queues.at("culture_2"), mappers::CultureQueue({{"female_leader", {1}}}));
 }
@@ -687,7 +687,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, PoorlyDefinedCharactersAreLogged
        "",
        {},
        {},
-       mappers::CharacterTraitMapper({}, {}, {}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
        dummy_queue);
 
    std::cout.rdbuf(cout_buffer);

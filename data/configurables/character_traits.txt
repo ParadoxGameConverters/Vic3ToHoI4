@@ -25,6 +25,12 @@
 # 		vic3_trait_1
 # 	}
 # }
+# ex_advisor = { # Advisor traits.
+# 	hoi4_trait = {
+# 		vic3_trait_0
+# 		vic3_trait_1
+# 	}
+# }
 
 
 army = { # Generals & Field Marshals
@@ -352,7 +358,7 @@ navy = {
 	explorer = {
 		traits = { arctic_water_expert }
 	}
-	bandit = { 
+	bandit = {
 		maneuvering = 1
 	}
 }
@@ -403,5 +409,157 @@ spy = {
 		tactful
 		romantic
 		expensive_tastes
+	}
+}
+
+# Government ministers.
+political_advisor = {
+	fortification_engineer = {
+		trench_rat
+		defense_in_depth_specialist
+	}
+	ideological_crusader = {
+		inspirational_orator
+	}
+	communist_revolutionary = {
+		demagogue
+	}
+	fascist_demagogue = {
+		firebrand
+	}
+	backroom_backstabber = {
+		expert_political_operator
+	}
+	editor = {
+		erudite
+		literary
+	}
+	reluctant_interventionist = {
+		basic_colonial_administrator
+		experienced_colonial_administrator
+		expert_colonial_administrator
+	}
+	propaganda_expert = {
+		experienced_political_operator
+	}
+	smooth_talking_charmer = {
+		basic_political_operator
+	}
+	prince_of_terror = {
+		cruel
+		wrathful
+	}
+	technocrat = {
+		engineer
+	}
+	silent_workhorse = {
+		master_bureaucrat
+	}
+	backroom_windbag = {
+		arrogant
+	}
+	adventurous_daredevil = {
+		reckless
+	}
+	economic_organizer = {
+		meticulous
+	}
+	genial_anti_revolutionary = {
+		cautious
+	}
+	education_reformer = {
+		innovative
+	}
+	democratic_crusader = {
+		romantic
+	}
+	agricultural_capitalist = {
+		resupply_commander
+	}
+	military_theorist = {
+		basic_offensive_planner
+		experienced_offensive_planner
+		expert_offensive_planner
+		basic_defensive_strategist
+		experienced_defensive_strategist
+		expert_defensive_strategist
+	}
+	superior_firepower_expert = {
+		basic_artillery_commander
+		experienced_artillery_commander
+		expert_artillery_commander
+
+	}
+	grand_battle_plan_expert = {
+		stalwart_defender
+	}
+	mass_assault_expert = {
+		forest_commander
+		plains_commander
+		mountain_commander
+		
+	}
+	naval_theorist = {
+		basic_naval_commander
+		experienced_naval_commander
+		expert_naval_commander
+	}
+	submarine_specialist = {
+		convoy_raider_commander
+		experienced_convoy_raider
+		expert_convoy_raider
+
+	}
+	grand_fleet_proponent = {
+		traditionalist_commander
+	}
+	naval_aviation_pioneer = {
+		celebrity_commander
+	}
+	mobile_warfare_expert = {
+		popular_commander
+	}
+	inexperienced_imperialist = {
+		pillager
+	}
+	socialite_connections = {
+		hedonist
+	}
+	headstrong = {
+		persistent
+	}
+	conservative_grandee = {
+		charismatic
+	}
+	great_architect = {
+		ambitious
+		imperious
+	}
+	mastermind_code_cracker = {
+		surveyor
+	}
+	political_dancer = {
+		tactful
+	}
+	permanent_revolutionary = {
+		bigoted
+	}
+	anti_communist = {
+		pious
+	}
+	tenacious_negotiator = {
+		direct
+	}
+	popular_figurehead = {
+		imposing
+	}
+	great_war_hero = {
+		honorable
+	}
+	resistance_banker = {
+		brave
+	}
+	liberal_journalist = {
+		reserved
 	}
 }
