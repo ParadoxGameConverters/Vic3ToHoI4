@@ -286,7 +286,9 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        source_world.GetStateRegions(),
        world_mapper.province_mapper,
        source_world.GetCountries(),
-       source_world.GetCharacters());
+       source_world.GetCharacters(),
+       countries,
+       characters);
 
    hoi4::Railways railways = railways_future.get();
    hoi4::Buildings buildings = buildings_future.get();
