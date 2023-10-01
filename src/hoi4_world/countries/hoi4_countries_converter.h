@@ -24,7 +24,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
     const States& states,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues,
-    bool debug);
+    bool debug = false);
 
 }  // namespace hoi4
 
