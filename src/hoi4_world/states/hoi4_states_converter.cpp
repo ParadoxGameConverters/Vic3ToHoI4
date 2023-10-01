@@ -751,14 +751,14 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    {
       if (hoi4_state.GetOwner())
       {
-        const auto& tag = hoi4_state.GetOwner().value();
-        if (!accumulator.contains(tag))
-        {
+         const auto& tag = hoi4_state.GetOwner().value();
+         if (!accumulator.contains(tag))
+         {
             accumulator[tag] = {0, 0, 0};
-        }
-        accumulator[tag].military += hoi4_state.GetMilitaryFactories();
-        accumulator[tag].civilian += hoi4_state.GetCivilianFactories();
-        accumulator[tag].docks += hoi4_state.GetDockyards();
+         }
+         accumulator[tag].military += hoi4_state.GetMilitaryFactories();
+         accumulator[tag].civilian += hoi4_state.GetCivilianFactories();
+         accumulator[tag].docks += hoi4_state.GetDockyards();
       }
       civilian_factories += hoi4_state.GetCivilianFactories();
       military_factories += hoi4_state.GetMilitaryFactories();
@@ -838,7 +838,8 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
       return accumulator[one].civilian > accumulator[two].civilian;
    });
    Log(LogLevel::Info) << "\t\t\tTag\tCiv\tMil\tDoc";
-   for (const auto& tag : tags) {
+   for (const auto& tag: tags)
+   {
       Log(LogLevel::Info) << fmt::format("\t\t\t{}\t{}\t{}\t{}",
           tag,
           accumulator[tag].civilian,
