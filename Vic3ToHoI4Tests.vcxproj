@@ -147,6 +147,8 @@
     <ClCompile Include="src\mappers\country\country_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper_importer_tests.cpp" />
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper_tests.cpp" />
+    <ClCompile Include="src\mappers\flags\flag_mapper_tests.cpp" />
+    <ClCompile Include="src\mappers\flags\flag_mapper_builder_tests.cpp" />
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer_tests.cpp" />
     <ClCompile Include="src\mappers\ideology\ideology_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\provinces\province_mapper_importer_tests.cpp" />
@@ -165,6 +167,7 @@
     <ClCompile Include="src\out_hoi4\characters\out_character_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\flags\out_flags_tests.cpp" />
     <ClCompile Include="src\out_hoi4\localizations\out_localizations_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_buildings_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_building_tests.cpp" />

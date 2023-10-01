@@ -70,6 +70,8 @@
     <ClInclude Include="src\mappers\culture\culture_graphics_mapper.h" />
     <ClInclude Include="src\mappers\culture\culture_graphics_mapper_importer.h" />
     <ClInclude Include="src\mappers\culture\culture_graphics_mapping.h" />
+    <ClInclude Include="src\mappers\flags\flag_mapper.h" />
+    <ClInclude Include="src\mappers\flags\flag_mapper_builder.h" />
     <ClInclude Include="src\mappers\ideology\ideology_mapper.h" />
     <ClInclude Include="src\mappers\ideology\ideology_mapper_importer.h" />
     <ClInclude Include="src\mappers\infrastructure\infrastructure_mapper.h" />
@@ -96,6 +98,7 @@
     <ClInclude Include="src\out_hoi4\characters\out_character.h" />
     <ClInclude Include="src\out_hoi4\countries\out_countries.h" />
     <ClInclude Include="src\out_hoi4\countries\out_country.h" />
+    <ClInclude Include="src\out_hoi4\flags\out_flags.h" />
     <ClInclude Include="src\out_hoi4\ideas\out_ideas.h" />
     <ClInclude Include="src\out_hoi4\localizations\out_localizations.h" />
     <ClInclude Include="src\out_hoi4\map\out_building.h" />
@@ -200,6 +203,8 @@
     <ClCompile Include="src\mappers\country\country_mapper_creator.cpp" />
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper.cpp" />
     <ClCompile Include="src\mappers\culture\culture_graphics_mapper_importer.cpp" />
+    <ClCompile Include="src\mappers\flags\flag_mapper.cpp" />
+    <ClCompile Include="src\mappers\flags\flag_mapper_builder.cpp" />
     <ClCompile Include="src\mappers\ideology\ideology_mapper.cpp" />
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer.cpp" />
     <ClCompile Include="src\mappers\infrastructure\infrastructure_mapper.cpp" />
@@ -221,6 +226,7 @@
     <ClCompile Include="src\out_hoi4\characters\out_character.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp" />
+    <ClCompile Include="src\out_hoi4\flags\out_flags.cpp" />
     <ClCompile Include="src\out_hoi4\ideas\out_ideas.cpp" />
     <ClCompile Include="src\out_hoi4\localizations\out_localizations.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_building.cpp" />

@@ -1,0 +1,10 @@
+# These flags are all placeholders.
+forbid = AOI
+forbid = BEG
+forbid = HAR
+forbid = LBV
+forbid = ORO
+forbid = PAP
+forbid = QEM
+custom_flags = "blank_mod/gfx/flags/"
+
