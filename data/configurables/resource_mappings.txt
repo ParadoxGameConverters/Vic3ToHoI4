@@ -1,0 +1,53 @@
+steel = {
+  base = {
+    building_iron_mine = 1
+  }
+  bonus = 0.1
+  bonus_building = building_coal_mine
+  bonus_building = building_steel_factory
+  total = 2565
+}
+oil = {
+  base = {
+    building_oil_rig = 1
+  }
+  bonus = 0.1
+  bonus_building = building_coal_mine
+  total = 1224
+}
+aluminium = {
+  base = {
+    building_sulfur_mine = 1
+  }
+  bonus = 0.1
+  bonus_building = building_power_plant
+  total = 1184
+}
+chromium = {
+  base = {
+    building_lead_mine = 1
+  }
+  bonus = 0.1
+  bonus_building = building_coal_mine
+  total = 1251
+}
+rubber = {
+  base = {
+    building_rubber_plantation = 1
+  }
+  bonus = 0.0
+  bonus_building = building_dye_plantation
+  total = 1033
+}
+tungsten = {
+  base = {
+    building_gold_mine = 1
+    building_tea_plantation = 1
+    building_coffee_plantation = 1
+    building_tobacco_plantation = 1
+    building_sugar_plantation = 1
+  }
+  bonus = 0.2
+  bonus_building = building_coal_mine
+  total = 1191
+}

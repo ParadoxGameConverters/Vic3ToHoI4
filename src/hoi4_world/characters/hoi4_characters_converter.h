@@ -19,7 +19,16 @@ namespace hoi4
 {
 using CharacterIds = std::vector<int>;
 using SpyIds = std::set<int>;
-std::pair<CharacterIds, SpyIds> ConvertCharacters(const std::map<int, vic3::Character>& source_characters,
+
+struct Characters
+{
+   CharacterIds character_ids;
+   SpyIds spy_ids;
+   std::optional<int64_t> monarch_idea_id;
+};
+
+
+Characters ConvertCharacters(const std::map<int, vic3::Character>& source_characters,
     const std::string& tag,
     const std::string& country_ideology,
     const std::string& sub_ideology,
@@ -28,14 +37,20 @@ std::pair<CharacterIds, SpyIds> ConvertCharacters(const std::map<int, vic3::Char
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
     const mappers::CountryMapper& country_mapper,
+    bool should_have_monarch_idea,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues);
+
 
 void AssignPortraits(const std::map<std::string, mappers::CultureQueue>& culture_queues,
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     const std::map<std::string, vic3::CultureDefinition>& source_cultures,
     int playthrough_id,
     std::map<int, Character>& characters);
+
+
+std::string GetMonarchIdeaName(std::string_view tag, const Character& monarch);
+
 }  // namespace hoi4
 
 

@@ -19,8 +19,11 @@ struct Configuration
    std::string save_game;
    bool debug = false;
    std::string output_name;
+   bool dynamic_resources = false;
 };
 
+constexpr Configuration defaultConfig = {};
+constexpr Configuration debugConfig = {.debug = true};
 
 }  // namespace configuration
 

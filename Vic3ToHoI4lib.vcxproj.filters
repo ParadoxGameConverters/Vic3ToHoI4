@@ -174,6 +174,9 @@
     <Filter Include="src\vic3_world\database">
       <UniqueIdentifier>{8d3018a3-1e26-4f92-b83b-713b954b7ca0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\out_hoi4\ideas">
+      <UniqueIdentifier>{8ab43aef-3180-475f-b046-4dadf1d7ff19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -461,6 +464,12 @@
     <ClInclude Include="src\mappers\ideology\ideology_mapper_importer.h">
       <Filter>src\mappers\ideology</Filter>
     </ClInclude>
+    <ClInclude Include="src\mappers\resources\resource_mapper.h">
+      <Filter>src\mappers\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\resources\resource_mapper_importer.h">
+      <Filter>src\mappers\resources</Filter>
+    </ClInclude>
     <ClInclude Include="src\mappers\unit\unit_mapper.h">
       <Filter>src\mappers\unit</Filter>
     </ClInclude>
@@ -619,6 +628,12 @@
     </ClInclude>
     <ClInclude Include="src\support\progress_manager.h">
       <Filter>src\support</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\military\battalion.h" />
+    <ClInclude Include="src\hoi4_world\military\division_templates_importer.h" />
+    <ClInclude Include="src\hoi4_world\military\division_template.h" />
+    <ClInclude Include="src\out_hoi4\ideas\out_ideas.h">
+      <Filter>src\out_hoi4\ideas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -817,6 +832,12 @@
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer.cpp">
       <Filter>src\mappers\ideology</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\resources\resource_mapper.cpp">
+      <Filter>src\mappers\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\resources\resource_mapper_importer.cpp">
+      <Filter>src\mappers\resources</Filter>
+    </ClCompile>
     <ClCompile Include="src\mappers\unit\unit_mapper.cpp">
       <Filter>src\mappers\unit</Filter>
     </ClCompile>
@@ -951,6 +972,10 @@
     </ClCompile>
     <ClCompile Include="src\support\progress_manager.cpp">
       <Filter>src\support</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\military\division_templates_importer.cpp" />
+    <ClCompile Include="src\out_hoi4\ideas\out_ideas.cpp">
+      <Filter>src\out_hoi4\ideas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

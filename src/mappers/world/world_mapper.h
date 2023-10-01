@@ -10,6 +10,8 @@
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/mappers/provinces/province_mapper_importer.h"
 #include "src/mappers/provinces/province_mapping_types.h"
+#include "src/mappers/resources/resource_mapper.h"
+#include "src/mappers/resources/resource_mapper_importer.h"
 #include "src/mappers/technology/tech_mapping.h"
 #include "src/vic3_world/world/vic3_world.h"
 
@@ -24,11 +26,13 @@ class WorldMapper
    WorldMapper(const CountryMapper country_mapper,
        const ProvinceMapper province_mapper,
        const std::vector<mappers::TechMapping> tech_mapper,
-       const CultureGraphicsMapper culture_graphics_mapper):
+       const CultureGraphicsMapper culture_graphics_mapper,
+       const ResourceMapper resource_mapper):
        country_mapper(std::move(country_mapper)),
        province_mapper(std::move(province_mapper)),
        tech_mapper(std::move(tech_mapper)),
-       culture_graphics_mapper(std::move(culture_graphics_mapper))
+       culture_graphics_mapper(std::move(culture_graphics_mapper)),
+       resource_mapper(std::move(resource_mapper))
    {
    }
 
@@ -38,6 +42,7 @@ class WorldMapper
    const ProvinceMapper province_mapper;
    const std::vector<mappers::TechMapping> tech_mapper;
    const CultureGraphicsMapper culture_graphics_mapper;
+   const ResourceMapper resource_mapper;
 };
 
 }  // namespace mappers

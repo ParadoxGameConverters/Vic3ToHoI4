@@ -8,3 +8,7 @@ l_russian:
  DEBUGTIP: "Нужно ли выводить мод отладки."
  DEBUGNOTIP: "Выведите нормальный мод."
  DEBUGYESTIP: "Выведите отладочный мод."
+ DYNAMIC_RESOURCES: "Динамические ресурсы"
+ DYNAMIC_RESOURCESTIP: "Конвертировать ли ресурсы из сохранения Виктории."
+ DYNAMIC_RESOURCESNOTIP: "Статические, исторические ресурсы."
+ DYNAMIC_RESOURCESYESTIP: "Ресурсы из зданий Виктории."

@@ -202,7 +202,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
     const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
     std::future<hoi4::WorldFramework> world_framework_future,
-    bool debug)
+    const configuration::Configuration& config)
 {
    std::map<std::string, hoi4::Country> countries;
 
@@ -222,7 +222,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        world_framework,
        vic3_significant_provinces,
        world_framework.map_data,
-       debug);
+       config);
 
    world_framework.strategic_regions.UpdateToMatchNewStates(states.states);
 
@@ -287,7 +287,9 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        source_world.GetStateRegions(),
        world_mapper.province_mapper,
        source_world.GetCountries(),
-       source_world.GetCharacters());
+       source_world.GetCharacters(),
+       countries,
+       characters);
 
    hoi4::Railways railways = railways_future.get();
    hoi4::Buildings buildings = buildings_future.get();
