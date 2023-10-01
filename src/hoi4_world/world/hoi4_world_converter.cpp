@@ -259,7 +259,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        states,
        characters,
        culture_queues,
-       configuration.debug);
+       config.debug);
 
    Log(LogLevel::Info) << "\tAssigning portraits to characters";
    ProgressManager::AddProgress(5);
