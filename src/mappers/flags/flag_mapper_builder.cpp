@@ -24,7 +24,7 @@ extern const std::filesystem::path kIgnoreFlag("ignore");
 namespace mappers
 {
 
-const std::vector<std::string> kFlagFolders{"\\", "\\small\\", "\\medium\\"};
+const std::vector<std::string> kFlagFolders{"/", "/small/", "/medium/"};
 
 void FlagMapperBuilder::ReadConfig(const std::string& config_file)
 {
