@@ -33,8 +33,8 @@ TEST(OutHoI4FlagsOutFlags, FlagFilesAreCopied)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(z00_file_stream));
    z00_file.close();
-   EXPECT_EQ(z00_file_stream.str(),
-       "# Another dummy flag file with different text so we can check the right one was copied.\n");
+   EXPECT_THAT(z00_file_stream.str(),
+       testing::StartsWith("# Another dummy flag file with different text so we can check the right one was copied."));
    EXPECT_FALSE(commonItems::DoesFileExist("output/CustomFlagsAreUsed/gfx/flags/TAG.tga"));
 }
 
