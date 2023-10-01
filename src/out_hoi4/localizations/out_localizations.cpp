@@ -69,4 +69,5 @@ void out::OutputLocalizations(std::string_view output_name, const hoi4::Localiza
    OutputLocalisations(output_name, "state_names_l_", localizations.GetStateLocalizations());
    OutputLocalisations(output_name, "victory_points_l_", localizations.GetVictoryPointLocalizations());
    OutputLocalisations(output_name, "character_names_l_", localizations.GetCharacterLocalizations());
+   OutputLocalisations(output_name, "converter_ideas_l_", localizations.GetIdeaLocalizations());
 }

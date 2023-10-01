@@ -5,6 +5,7 @@
 
 #include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/countries/out_countries.h"
+#include "src/out_hoi4/ideas/out_ideas.h"
 #include "src/out_hoi4/localizations/out_localizations.h"
 #include "src/out_hoi4/map/out_buildings.h"
 #include "src/out_hoi4/map/out_railways.h"
@@ -80,6 +81,7 @@ void OutputBookmark(std::string_view output_name,
 void out::OutputWorld(std::string_view output_name, const hoi4::World& world)
 {
    OutputCountries(output_name, world.GetCountries(), world.GetCharacters());
+   OutputMonarchIdeas(output_name, world.GetCountries(), world.GetCharacters());
    OutputStates(output_name, world.GetStates().states);
    OutputStrategicRegions(output_name, world.GetStrategicRegions());
    OutputBuildings(output_name, world.GetBuildings());

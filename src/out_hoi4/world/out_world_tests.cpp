@@ -23,6 +23,7 @@ void CreateTestFolders(std::string_view test_name)
    commonItems::TryCreateFolder(fmt::format("output/{}/common/characters", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/countries", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/country_tags", test_name));
+   commonItems::TryCreateFolder(fmt::format("output/{}/common/ideas", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/names", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/common/national_focus", test_name));
    commonItems::TryCreateFolder(fmt::format("output/{}/history", test_name));
@@ -228,7 +229,6 @@ TEST(Outhoi4WorldOutworld, PortraitsFileIsCreated)
 TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
 {
    CreateTestFolders("LocalizationsAreOutput");
-   commonItems::TryCreateFolder("LocalizationsAreOutput");
 
    commonItems::LocalizationDatabase country_localizations("english", {"spanish"});
    commonItems::LocalizationBlock country_block_one("test_country", "english");
@@ -270,10 +270,13 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
    character_block_two.ModifyLocalization("spanish", "prueba dos");
    character_localizations.AddOrModifyLocalizationBlock("test_state_two", character_block_two);
 
+   commonItems::LocalizationDatabase idea_localizations("english", {"spanish"});
+
    const hoi4::Localizations localizations(country_localizations,
        state_localizations,
        victory_point_localizations,
-       character_localizations);
+       character_localizations,
+       idea_localizations);
 
    OutputWorld("LocalizationsAreOutput", hoi4::World({.localizations = localizations}));
    ASSERT_TRUE(
@@ -345,15 +348,7 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
 
 TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/BookmarkIsOutput");
-   commonItems::TryCreateFolder("output/BookmarkIsOutput/common");
-   commonItems::TryCreateFolder("output/BookmarkIsOutput/common/bookmarks");
-   commonItems::TryCreateFolder("output/BookmarkIsOutput/common/country_tags");
-   commonItems::TryCreateFolder("output/BookmarkIsOutput/common/names");
-   commonItems::TryCreateFolder("output/BookmarkIsOutput/map");
-   commonItems::TryCreateFolder("output/BookmarkIsOutput/map/strategicregions");
-   commonItems::TryCreateFolder("output/BookmarkIsOutput/portraits");
+   CreateTestFolders("BookmarkIsOutput");
 
    OutputWorld("BookmarkIsOutput",
        hoi4::World({
@@ -400,12 +395,8 @@ TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
 
 TEST(Outhoi4WorldOutworld, ExceptionIfBookmarkFileNotCreated)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated");
-   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/common");
-   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/common/country_tags");
-   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/map");
-   commonItems::TryCreateFolder("output/ExceptionIfBookmarkFileNotCreated/map/strategicregions");
+   CreateTestFolders("ExceptionIfBookmarkFileNotCreated");
+   std::filesystem::remove("output/ExceptionIfBookmarkFileNotCreated/common/bookmarks");
 
    EXPECT_THROW(OutputWorld("ExceptionIfBookmarkFileNotCreated", hoi4::World({})), std::runtime_error);
 }

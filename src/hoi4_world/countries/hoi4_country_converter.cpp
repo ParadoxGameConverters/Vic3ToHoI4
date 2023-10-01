@@ -147,6 +147,13 @@ date ConvertElection(const std::optional<date>& vic_election)
    return last_election;
 }
 
+
+bool ShouldHaveMonarchIdea(bool has_elections, const std::set<std::string>& active_laws)
+{
+   return has_elections && active_laws.contains("law_monarchy");
+}
+
+
 std::vector<hoi4::EquipmentVariant> DetermineActiveVariants(const std::vector<hoi4::EquipmentVariant>& all_variants,
     const hoi4::Technologies& technologies)
 {
@@ -580,6 +587,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
    const std::string sub_ideology = ideology_mapper.GetSubIdeology(ideology, source_country.GetActiveLaws());
    const date last_election = ConvertElection(source_country.GetLastElection());
+   bool has_elections = source_country.GetLastElection().has_value();
    const hoi4::Technologies technologies =
        ConvertTechnologies(source_country.GetAcquiredTechnologies(source_world), tech_mappings);
    const std::vector<EquipmentVariant>& active_legacy_ship_variants =
@@ -599,7 +607,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
       ideas.insert("decentralized");
    }
 
-   const auto [character_ids, spy_ids] = ConvertCharacters(source_world.GetCharacters(),
+   const auto [character_ids, spy_ids, monarch_id] = ConvertCharacters(source_world.GetCharacters(),
        *tag,
        ideology,
        sub_ideology,
@@ -608,8 +616,18 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        leader_type_mapper,
        character_trait_mapper,
        country_mapper,
+       ShouldHaveMonarchIdea(has_elections, source_country.GetActiveLaws()),
        characters,
        culture_queues);
+   if (monarch_id.has_value())
+   {
+      const auto& monarch_itr = characters.find(*monarch_id);
+      if (monarch_itr != characters.end())
+      {
+         ideas.insert(GetMonarchIdeaName(*tag, monarch_itr->second));
+      }
+   }
+
    mappers::GraphicsBlock graphics_block =
        culture_graphics_mapper.MatchPrimaryCulturesToGraphics(source_country.GetPrimaryCultures(),
            source_world.GetCultureDefinitions());
@@ -650,7 +668,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .sub_ideology = sub_ideology,
        .ideology_support = ideology_support,
        .last_election = last_election,
-       .has_elections = source_country.GetLastElection().has_value(),
+       .has_elections = has_elections,
        .technologies = technologies,
        .legacy_ship_variants = active_legacy_ship_variants,
        .ship_variants = active_ship_variants,
@@ -664,6 +682,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .name_list = name_list,
        .character_ids = character_ids,
        .spy_ids = spy_ids,
+       .monarch_idea_id = monarch_id,
        .puppets = puppets,
        .overlord = overlord,
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),

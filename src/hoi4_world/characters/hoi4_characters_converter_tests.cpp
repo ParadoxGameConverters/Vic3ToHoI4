@@ -6,6 +6,9 @@
 #include "src/mappers/character/character_trait_mapper_importer.h"
 #include "src/mappers/character/leader_type_mapper_importer.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
+
+
+
 namespace hoi4
 {
 
@@ -132,6 +135,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        leader_type_mapper,
        character_trait_mapper,
        country_mapper,
+       false,
        characters,
        culture_queues);
 
@@ -350,13 +354,10 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PortraitsAreAssigned)
        leader_type_mapper,
        mappers::CharacterTraitMapper({}, {}, {}, {}),
        {},
+       false,
        characters,
        culture_queues);
 
-
-   std::map<std::string, std::vector<int>> culture_2_queue = {
-       {"operative_male", {7}},
-   };
    EXPECT_THAT(culture_queues.at("culture_1"),
        testing::UnorderedElementsAre(testing::Pair("army", std::vector{2, 4, 9}),
            testing::Pair("navy", std::vector{6, 10}),
@@ -391,6 +392,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
        leader_type_mapper,
        mappers::CharacterTraitMapper({}, {}, {}, {}),
        {},
+       false,
        characters,
        culture_queues);
 
@@ -429,6 +431,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCol
        leader_type_mapper,
        mappers::CharacterTraitMapper({}, {}, {}, {}),
        {},
+       false,
        characters,
        culture_queues);
 
@@ -493,6 +496,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInCoaliti
        leader_type_mapper,
        mappers::CharacterTraitMapper({}, {}, {}, {}),
        {},
+       false,
        characters,
        culture_queues);
 
@@ -563,6 +567,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderP
        leader_type_mapper,
        mappers::CharacterTraitMapper({}, {}, {}, {}),
        {},
+       false,
        characters,
        culture_queues);
 
@@ -576,6 +581,51 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderP
    });
 
    EXPECT_EQ(characters.at(4), expected_leader);
+}
+
+
+TEST(Hoi4worldCharactersHoi4charactersconverter, MonarchIdFromHeadOfStateId)
+{
+   std::map<int, Character> characters_map;
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+
+   const auto characters = ConvertCharacters({},
+       "",
+       "",
+       "",
+       vic3::Country({.head_of_state_id = 42}),
+       {},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       {},
+       true,
+       characters_map,
+       culture_queues);
+
+   EXPECT_TRUE(characters.monarch_idea_id.has_value());
+   EXPECT_EQ(characters.monarch_idea_id.value_or(0), 42);
+}
+
+
+TEST(Hoi4worldCharactersHoi4charactersconverter, NoMonarchIdIfShouldHaveMonarchIdeaFalse)
+{
+   std::map<int, Character> characters_map;
+   std::map<std::string, mappers::CultureQueue> culture_queues;
+
+   const auto characters = ConvertCharacters({},
+       "",
+       "",
+       "",
+       vic3::Country({.head_of_state_id = 42}),
+       {},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       {},
+       false,
+       characters_map,
+       culture_queues);
+
+   EXPECT_FALSE(characters.monarch_idea_id.has_value());
 }
 
 
@@ -600,10 +650,10 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrou
        {6, Character({.id = 6})},
        {7, Character({.id = 7})},
    };
-   std::map<std::string, mappers::CultureQueue> culture_queues{
+   const std::map<std::string, mappers::CultureQueue> culture_queues{
        {"culture_2", {{"operative_female", {1, 2, 3, 4, 5, 6, 7}}}},
    };
-   std::map<std::string, vic3::CultureDefinition> source_cultures{
+   const std::map<std::string, vic3::CultureDefinition> source_cultures{
        {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
    };
 
@@ -634,10 +684,10 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlayth
        {6, Character({.id = 6})},
        {7, Character({.id = 7})},
    };
-   std::map<std::string, mappers::CultureQueue> culture_queues{
+   const std::map<std::string, mappers::CultureQueue> culture_queues{
        {"culture_2", {{"operative_female", {1, 2, 3, 4, 5, 6, 7}}}},
    };
-   std::map<std::string, vic3::CultureDefinition> source_cultures{
+   const std::map<std::string, vic3::CultureDefinition> source_cultures{
        {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
    };
 
@@ -659,7 +709,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCul
        {4, Character({.id = 4})},
        {5, Character({.id = 5})},
    };
-   std::map<std::string, mappers::CultureQueue> culture_queues{
+   const std::map<std::string, mappers::CultureQueue> culture_queues{
        {"culture_3", {{"army", {1}}}},
        {"culture_4", {{"army", {2}}}},
        {"culture_5", {{"army", {3}}}},
@@ -667,7 +717,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCul
        {"culture_7", {{"army", {5}}}},
    };
    // Each culture has an army portrait list of the same length, so they will all be shuffled the same way
-   std::map<std::string, vic3::CultureDefinition> source_cultures{
+   const std::map<std::string, vic3::CultureDefinition> source_cultures{
        {"culture_3", vic3::CultureDefinition({"culture_3"}, {}, {}, {})},
        {"culture_4", vic3::CultureDefinition({"culture_4"}, {}, {}, {})},
        {"culture_5", vic3::CultureDefinition({"culture_5"}, {}, {}, {})},
@@ -688,6 +738,14 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCul
    {
       EXPECT_LE(count, 2);
    }
+}
+
+
+TEST(Hoi4worldCharactersHoi4charactersconverter, GetMonarchIdeaNameConcatenatesTagAndCharacterName)
+{
+   const std::string idea_name =
+       hoi4::GetMonarchIdeaName("TAG", hoi4::Character({.first_name = "FirstName", .last_name = "LastName"}));
+   EXPECT_EQ(idea_name, "TAG_FirstName_LastName");
 }
 
 }  // namespace hoi4
