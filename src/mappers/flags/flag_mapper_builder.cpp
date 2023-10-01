@@ -43,6 +43,16 @@ bool FlagMapperBuilder::CreateTargetFolders(const std::string output_name)
 {
    std::vector<std::string> flag_path{"", "/gfx", "/flags"};
    std::string suffix;
+   // In case this method is called first or alone on a system that doesn't
+   // permit recursive directory creation, e.g. Unix tests.
+   if (!commonItems::DoesFolderExist("output"))
+   {
+      if (!commonItems::TryCreateFolder("output"))
+      {
+         Log(LogLevel::Warning) << "Output folder doesn't exist and can't be created.";
+         return false;
+      }
+   }
    for (const auto& folder: flag_path)
    {
       suffix += folder;
@@ -126,7 +136,7 @@ FlagMapper FlagMapperBuilder::Build(const commonItems::ModFilesystem& hoi4_mod_f
    std::erase_if(available_flags, [](const auto& item) {
       return item.second == kIgnoreFlag;
    });
-   FlagMapper flag_mapper(base_folder_, std::move(custom_flags), std::move(available_flags));
+   FlagMapper flag_mapper(base_folder_, available_flags, custom_flags);
    return flag_mapper;
 }
 

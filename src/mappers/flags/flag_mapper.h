@@ -16,11 +16,11 @@ class FlagMapper
 {
   public:
    explicit FlagMapper(const std::filesystem::path& base,
-       std::set<std::string>&& custom_flags,
-       std::map<std::string, std::filesystem::path>&& flags):
-       base_flag_folder_(base),
-       custom_flags_(custom_flags),
-       available_flags_(flags)
+       std::map<std::string, std::filesystem::path> flags,
+       std::set<std::string> custom_flags):
+       base_flag_folder_(std::move(base)),
+       available_flags_(std::move(flags)),
+       custom_flags_(std::move(custom_flags))
    {
    }
 
