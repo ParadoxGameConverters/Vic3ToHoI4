@@ -36,7 +36,7 @@ struct CountryOptions
    std::optional<int> capital_state;
    std::string country_type;
    bool is_civil_war = false;
-   std::set<std::string> active_laws;
+   std::set<std::string> active_laws = {};
    std::set<int> primary_culture_ids;
    std::set<std::string> primary_cultures;
    std::optional<date> last_election;

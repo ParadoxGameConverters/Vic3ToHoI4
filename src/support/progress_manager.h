@@ -3,6 +3,7 @@
 #include <atomic>
 #include <mutex>
 
+
 class ProgressManager
 {
    std::atomic<int> progress_ = 0;

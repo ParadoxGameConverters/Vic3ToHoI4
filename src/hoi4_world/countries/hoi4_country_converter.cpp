@@ -15,8 +15,6 @@
 #include "src/vic3_world/ideologies/ideologies.h"
 #include "src/vic3_world/world/vic3_world.h"
 
-
-
 namespace
 {
 
@@ -434,11 +432,15 @@ hoi4::NameList ConvertNameList(const std::set<std::string>& primary_cultures,
 std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>& interest_group_ids,
     const std::map<int, vic3::InterestGroup>& interest_groups,
     const vic3::Ideologies& vic3_ideologies,
-    const mappers::IdeologyMapper& ideology_mapper)
+    const mappers::IdeologyMapper& ideology_mapper,
+    bool debug)
 {
    std::map<std::string, float> ideology_support;
+   std::map<std::string, std::map<std::string, float>> total_ideologies_per_law;
+
    for (const int interest_group_id: interest_group_ids)
    {
+      std::map<std::string, float> ig_ideology_support;
       const auto ig_itr = interest_groups.find(interest_group_id);
       if (ig_itr == interest_groups.end())
       {
@@ -452,13 +454,36 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
          mappers::IdeologyPointsMap ideology_points_map = ideology_mapper.CalculateIdeologyPoints({vic3_law});
          for (auto& [ideology, support]: ideology_points_map)
          {
-            if (auto [itr, success] =
-                    ideology_support.emplace(ideology, static_cast<float>(support) * interest_group.GetClout());
-                !success)
+            float total_support = static_cast<float>(support) * interest_group.GetClout() * approval_amount;
+            if (auto [itr, success] = ideology_support.emplace(ideology, total_support); !success)
             {
-               itr->second += static_cast<float>(support) * interest_group.GetClout();
+               itr->second += total_support;
             }
+            total_ideologies_per_law[vic3_law][ideology] += total_support;
+            ig_ideology_support[ideology] += total_support;
          }
+      }
+      if (debug)
+      {
+         Log(LogLevel::Debug) << fmt::format("{}: {:.0f} {:.0f} {:.0f} {:.0f}",
+             ig_itr->second.GetType(),
+             ig_ideology_support.at("democratic"),
+             ig_ideology_support.at("communism"),
+             ig_ideology_support.at("fascism"),
+             ig_ideology_support.at("neutrality"));
+      }
+   }
+
+   if (debug)
+   {
+      for (const auto& law: total_ideologies_per_law)
+      {
+         Log(LogLevel::Debug) << fmt::format("{} : {:.0f} {:.0f} {:.0f} {:.0f}",
+             law.first,
+             law.second.at("democratic"),
+             law.second.at("communism"),
+             law.second.at("fascism"),
+             law.second.at("neutrality"));
       }
    }
 
@@ -483,11 +508,13 @@ std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, 
       return a.second < b.second;
    })->second;
 
+
    std::map<std::string, float> adjusted_ideology_support;
    for (const auto& [ideology, raw_value]: raw_ideology_support)
    {
       adjusted_ideology_support.emplace(ideology, raw_value - lowest_support);
    }
+
 
    const float total_raw_support = std::accumulate(adjusted_ideology_support.begin(),
        adjusted_ideology_support.end(),
@@ -529,10 +556,11 @@ std::map<std::string, int> NormalizeIdeologySupport(const std::map<std::string, 
 std::map<std::string, int> DetermineIdeologySupport(const std::vector<int>& interest_group_ids,
     const std::map<int, vic3::InterestGroup>& interest_groups,
     const vic3::Ideologies& vic3_ideologies,
-    const mappers::IdeologyMapper& ideology_mapper)
+    const mappers::IdeologyMapper& ideology_mapper,
+    bool debug)
 {
    const std::map<std::string, float> raw_ideology_support =
-       CalculateRawIdeologySupport(interest_group_ids, interest_groups, vic3_ideologies, ideology_mapper);
+       CalculateRawIdeologySupport(interest_group_ids, interest_groups, vic3_ideologies, ideology_mapper, debug);
 
    return NormalizeIdeologySupport(raw_ideology_support);
 }
@@ -574,12 +602,18 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
     std::map<int, hoi4::Character>& characters,
-    std::map<std::string, mappers::CultureQueue>& culture_queues)
+    std::map<std::string, mappers::CultureQueue>& culture_queues,
+    bool debug)
 {
    const std::optional<std::string> tag = country_mapper.GetHoiTag(source_country.GetNumber());
    if (!tag.has_value())
    {
       return std::nullopt;
+   }
+
+   if (debug)
+   {
+      Log(LogLevel::Debug) << fmt::format("converting {} (vic {})", tag.value(), source_country.GetTag());
    }
 
    const std::optional<int> capital_state =
@@ -659,7 +693,18 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    const auto ideology_support = DetermineIdeologySupport(source_country.GetInterestGroupIds(),
        source_world.GetInterestGroups(),
        source_world.GetIdeologies(),
-       ideology_mapper);
+       ideology_mapper,
+       debug);
+
+   if (debug)
+   {
+      Log(LogLevel::Debug) << fmt::format("{}: {} {} {} {}",
+          tag.value_or(""),
+          ideology_support.at("democratic"),
+          ideology_support.at("communism"),
+          ideology_support.at("fascism"),
+          ideology_support.at("neutrality"));
+   }
 
    return Country({.tag = *tag,
        .color = source_country.GetColor(),

@@ -23,7 +23,8 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
     const commonItems::LocalizationDatabase& source_localizations,
     const States& states,
     std::map<int, Character>& characters,
-    std::map<std::string, mappers::CultureQueue>& culture_queues);
+    std::map<std::string, mappers::CultureQueue>& culture_queues,
+    bool debug = false);
 
 }  // namespace hoi4
 

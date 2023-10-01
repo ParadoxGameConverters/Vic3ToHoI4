@@ -58,7 +58,8 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
     const commonItems::LocalizationDatabase& source_localizations,
     const States& states,
     std::map<int, Character>& characters,
-    std::map<std::string, mappers::CultureQueue>& culture_queues)
+    std::map<std::string, mappers::CultureQueue>& culture_queues,
+    bool debug)
 {
    std::map<std::string, Country> countries;
 
@@ -97,7 +98,8 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
           leader_type_mapper,
           character_trait_mapper,
           characters,
-          culture_queues);
+          culture_queues,
+          debug);
       if (new_country.has_value())
       {
          countries.emplace(new_country->GetTag(), *new_country);

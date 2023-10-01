@@ -45,7 +45,8 @@ std::optional<Country> ConvertCountry(const vic3::World& source_world,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
     std::map<int, Character>& characters,
-    std::map<std::string, mappers::CultureQueue>& culture_queues);
+    std::map<std::string, mappers::CultureQueue>& culture_queues,
+    bool debug = false);
 
 }  // namespace hoi4
 
