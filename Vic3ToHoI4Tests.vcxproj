@@ -167,6 +167,7 @@
     <ClCompile Include="src\out_hoi4\characters\out_character_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_countries_tests.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\decisions\out_decisions_tests.cpp" />
     <ClCompile Include="src\out_hoi4\flags\out_flags_tests.cpp" />
     <ClCompile Include="src\out_hoi4\localizations\out_localizations_tests.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_buildings_tests.cpp" />
