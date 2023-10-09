@@ -224,6 +224,9 @@
     <ClInclude Include="src\out_hoi4\countries\out_country.h">
       <Filter>src\out_hoi4\countries</Filter>
     </ClInclude>
+    <ClInclude Include="src\out_hoi4\decisions\out_decisions.h">
+      <Filter>src\out_hoi4\decisions</Filter>
+    </ClInclude>
     <ClInclude Include="src\out_hoi4\flags\out_flags.h">
       <Filter>src\out_hoi4\flags</Filter>
     </ClInclude>
@@ -681,6 +684,9 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp">
       <Filter>src\out_hoi4\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\decisions\out_decisions.cpp">
+      <Filter>src\out_hoi4\decisions</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\flags\out_flags.cpp">
       <Filter>src\out_hoi4\flags</Filter>
