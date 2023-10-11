@@ -24,7 +24,7 @@ namespace
 
 constexpr int MAX_FACTORY_SLOTS = 12;
 const std::vector<std::string> kResourceNames = {"steel", "oil", "tungsten", "aluminium", "chromium", "rubber"};
-
+const std::map<std::string, int> kNavalBasePoints = {{"port", 5}, {"city", 4}, {"mine", 3}, {"farm", 2}, {"wood", 1}};
 
 bool AllVic3ProvincesAreInSameState(const std::vector<std::string>& vic3_provinces,
     int state_to_match,
@@ -498,7 +498,9 @@ std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const vic3
     int source_state_id,
     const hoi4::WorldFramework& world_framework,
     int total_coastal_provinces,
-    const std::set<int>& hoi4_provinces)
+    const std::set<int>& hoi4_provinces,
+    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
+    const std::map<std::string, std::string>& significant_provinces)
 {
    const int coastal_province_count = std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
       return world_framework.coastal_provinces.contains(province_id);
@@ -523,16 +525,32 @@ std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const vic3
       return {std::nullopt, std::nullopt};
    }
 
-   // find a coastal province to make naval base.
+   auto level = static_cast<int>(total_naval_bases * naval_base_ratio / 5.0F);
+
+   // Find a coastal province to make naval base.
+   std::optional<int> target;
+   int best = -1;
    for (const auto& hoi4_province: hoi4_provinces)
    {
-      if (world_framework.coastal_provinces.IsProvinceCoastal(hoi4_province))
+      if (!world_framework.coastal_provinces.IsProvinceCoastal(hoi4_province))
       {
-         return {hoi4_province, static_cast<int>(total_naval_bases * naval_base_ratio / 5.0F)};
+         continue;
+      }
+      int points = 0;
+      for (const auto& vic3_prov: hoi4_to_vic3_province_mappings.at(hoi4_province))
+      {
+         if (significant_provinces.contains(vic3_prov))
+         {
+            points = kNavalBasePoints.at(significant_provinces.at(vic3_prov));
+         }
+         if (points > best)
+         {
+            best = points;
+            target = hoi4_province;
+         }
       }
    }
-
-   return {std::nullopt, std::nullopt};
+   return {target, level};
 }
 
 
@@ -999,7 +1017,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
          }
 
          const auto [naval_base_location, naval_base_level] =
-             DetermineNavalBase(source_world, vic3_state_id, world_framework, total_coastal_provinces, province_set);
+             DetermineNavalBase(source_world, vic3_state_id, world_framework, total_coastal_provinces, province_set, hoi4_to_vic3_province_mappings, significant_provinces);
 
          int infrastructure = infrastructure_mapper.Map(vic3_state_itr->second.GetInfrastructure());
 
