@@ -1016,8 +1016,13 @@ hoi4::States CreateStates(const vic3::World& source_world,
             dockyards = std::get<2>(all_factories);
          }
 
-         const auto [naval_base_location, naval_base_level] =
-             DetermineNavalBase(source_world, vic3_state_id, world_framework, total_coastal_provinces, province_set, hoi4_to_vic3_province_mappings, significant_provinces);
+         const auto [naval_base_location, naval_base_level] = DetermineNavalBase(source_world,
+             vic3_state_id,
+             world_framework,
+             total_coastal_provinces,
+             province_set,
+             hoi4_to_vic3_province_mappings,
+             significant_provinces);
 
          int infrastructure = infrastructure_mapper.Map(vic3_state_itr->second.GetInfrastructure());
 
