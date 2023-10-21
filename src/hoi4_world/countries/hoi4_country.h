@@ -64,6 +64,7 @@ struct CountryOptions
    int starting_research_slots = 3;
    std::vector<Unit> units;
    float stability = 0.0F;
+   int convoys = 0;
 };
 
 class Country
@@ -96,7 +97,8 @@ class Country
        overlord_(std::move(country_options.overlord)),
        starting_research_slots_(country_options.starting_research_slots),
        stability_(country_options.stability),
-       units_(country_options.units)
+       units_(country_options.units),
+       convoys_(country_options.convoys)
    {
    }
 
@@ -104,6 +106,7 @@ class Country
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
+   [[nodiscard]] int GetConvoys() const { return convoys_; }
    [[nodiscard]] const std::string& GetIdeology() const { return ideology_; }
    [[nodiscard]] const std::string& GetSubIdeology() const { return sub_ideology_; }
    [[nodiscard]] const std::map<std::string, int>& GetIdeologySupport() const { return ideology_support_; }
@@ -158,6 +161,7 @@ class Country
    int starting_research_slots_;
    float stability_ = 0.0F;
    std::vector<Unit> units_;
+   int convoys_;
 };
 
 }  // namespace hoi4
