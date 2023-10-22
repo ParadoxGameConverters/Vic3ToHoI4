@@ -642,6 +642,7 @@
       <Filter>src\support</Filter>
     </ClInclude>
     <ClInclude Include="src\hoi4_world\military\battalion.h" />
+    <ClInclude Include="src\hoi4_world\military\convoy_distributor.h" />
     <ClInclude Include="src\hoi4_world\military\division_templates_importer.h" />
     <ClInclude Include="src\hoi4_world\military\division_template.h" />
     <ClInclude Include="src\out_hoi4\ideas\out_ideas.h">
@@ -991,6 +992,7 @@
     <ClCompile Include="src\support\progress_manager.cpp">
       <Filter>src\support</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\military\convoy_distributor.cpp" />
     <ClCompile Include="src\hoi4_world\military\division_templates_importer.cpp" />
     <ClCompile Include="src\out_hoi4\ideas\out_ideas.cpp">
       <Filter>src\out_hoi4\ideas</Filter>
