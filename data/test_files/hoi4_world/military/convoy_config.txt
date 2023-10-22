@@ -1,0 +1,6 @@
+world_convoys = 111
+method_weights = {
+  pm_port_1 = 1
+  pm_port_2 = 10
+  pm_port_3 = 100
+}
