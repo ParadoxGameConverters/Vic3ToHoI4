@@ -1,2 +1,8 @@
 # TODO: Import this number from the HoI mod instead of setting it here.
-world_convoys = 1000
+world_convoys = 2500
+method_weights = {
+  pm_anchorage = 40
+  pm_basic_port = 200
+  pm_industrial_port = 400
+  pm_modern_port = 800
+}
