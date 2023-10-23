@@ -2183,8 +2183,6 @@ TEST(Hoi4worldCountriesCountryConverter, ConvoysConvert)
    EXPECT_THAT(country_one->GetConvoys(), 11);
    ASSERT_TRUE(country_two.has_value());
    EXPECT_THAT(country_two->GetConvoys(), 100);
-
-
 }
 
 

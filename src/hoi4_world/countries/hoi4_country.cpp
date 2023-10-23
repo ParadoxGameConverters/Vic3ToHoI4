@@ -1,7 +1,8 @@
+#include "src/hoi4_world/countries/hoi4_country.h"
+
 #include <sstream>
 
 #include "external/fmt/include/fmt/format.h"
-#include "src/hoi4_world/countries/hoi4_country.h"
 
 namespace hoi4
 {

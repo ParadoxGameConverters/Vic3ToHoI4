@@ -321,7 +321,7 @@ TEST(Outhoi4CountriesOutcountryTests, ConvoysAreWrittenToCountryHistoryFile)
    const hoi4::Country country({
        .tag = "TAG",
        .convoys = 11,
-     });
+   });
    OutputCountryHistory("ConvoysAreWrittenToCountryHistoryFile", country, {});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/ConvoysAreWrittenToCountryHistoryFile/history/countries/TAG.txt"));
