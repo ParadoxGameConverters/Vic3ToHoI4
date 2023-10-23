@@ -581,6 +581,25 @@ int DetermineStartingResearchSlots(const vic3::World& source_world, const vic3::
    }
 }
 
+int ConvertConvoys(const std::string& tag, const hoi4::States& states, const hoi4::ConvoyDistributor& convoys)
+{
+   int numConvoys = 0;
+   for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
+   {
+      const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
+      if (itr == states.hoi4_state_ids_to_owner.end())
+      {
+         continue;
+      }
+      if (itr->second != tag)
+      {
+         continue;
+      }
+      numConvoys += convoys.ConvoysFromState(vic3_id);
+   }
+   return numConvoys;
+}
+
 }  // namespace
 
 
@@ -601,6 +620,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
+    const ConvoyDistributor& convoys,
     std::map<int, hoi4::Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues,
     bool debug)
@@ -640,6 +660,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    {
       ideas.insert("decentralized");
    }
+
+   auto numConvoys = ConvertConvoys(*tag, states, convoys);
 
    const auto [character_ids, spy_ids, monarch_id] = ConvertCharacters(source_world.GetCharacters(),
        *tag,
@@ -733,5 +755,5 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
        .units = units,
        .stability = ConvertStability(source_world, source_country),
-       .convoys = 0});
+       .convoys = numConvoys});
 }

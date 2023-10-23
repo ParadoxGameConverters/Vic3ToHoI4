@@ -1,0 +1,2 @@
+# TODO: Import this number from the HoI mod instead of setting it here.
+world_convoys = 1000
