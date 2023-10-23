@@ -10,7 +10,7 @@ namespace hoi4
 
 TEST(Hoi4worldMilitaryConvoyDistributorBuilderTests, CanBuildConvoyDistributor)
 {
-   auto distributor = BuildConvoyDistributor("test_files/hoi4_world/military/convoy_config.txt");
+   auto distributor = BuildConvoyDistributor("test_files/configurables/convoy_config.txt");
    const std::map<int, vic3::State> states{
        {1, vic3::State({.id = 1})},
        {2, vic3::State({.id = 2})},
