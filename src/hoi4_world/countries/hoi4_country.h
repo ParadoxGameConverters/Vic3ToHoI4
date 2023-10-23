@@ -133,6 +133,9 @@ class Country
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
+   // This allows the Google test framework to print human-readable countries if a test fails.
+   friend void PrintTo(const Country& point, std::ostream* os);
+
   private:
    std::string tag_;
    commonItems::Color color_;

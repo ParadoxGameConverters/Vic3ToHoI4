@@ -750,6 +750,9 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter.cpp">
       <Filter>src\hoi4_world\countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp">
+      <Filter>src\hoi4_world\countries</Filter>
+    </ClCompile>
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp">
       <Filter>src\hoi4_world\countries</Filter>
     </ClCompile>
