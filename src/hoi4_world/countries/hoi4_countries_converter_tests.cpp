@@ -59,6 +59,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                {1, vic3::State({.id = 1})},
                {2, vic3::State({.id = 2})},
                {3, vic3::State({.id = 3})},
+               {4, vic3::State({.id = 4})},
            },
        .acquired_technologies =
            {
@@ -101,9 +102,14 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .owner = "TWO",
                    .provinces = {30},
                }),
+           State(40,
+               {
+                   .owner = "TWO",
+                   .provinces = {40},
+               }),
        },
-       .vic3_state_ids_to_hoi4_state_ids{{1, 10}, {2, 20}, {3, 30}},
-       .hoi4_state_ids_to_owner{{10, "TAG"}, {20, "TWO"}, {30, "TWO"}},
+       .vic3_state_ids_to_hoi4_state_ids{{1, 10}, {2, 20}, {3, 30}, {4, 40}},
+       .hoi4_state_ids_to_owner{{10, "TAG"}, {20, "TWO"}, {30, "TWO"}, {40, "TWO"}},
    };
    const vic3::World v3World = vic3::World(options);
 
