@@ -182,7 +182,7 @@ void out::OutputCountryHistory(std::string_view output_name,
    country_history << fmt::format("oob = \"{}_1936\"", country.GetTag());
    country_history << "\n";
    country_history << fmt::format("set_research_slots = {}\n", country.GetStartingResearchSlots());
-   country_history << "set_convoys = 0\n";
+   country_history << fmt::format("set_convoys = {}\n", country.GetConvoys());
    country_history << "\n";
 
    OutputCharacterRecruitment(country_history, tag, country.GetLeaderIds());

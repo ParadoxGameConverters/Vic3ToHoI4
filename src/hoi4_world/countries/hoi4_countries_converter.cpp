@@ -3,6 +3,8 @@
 #include <ranges>
 
 #include "external/fmt/include/fmt/format.h"
+#include "src/hoi4_world/military/convoy_distributor.h"
+#include "src/hoi4_world/military/convoy_distributor_builder.h"
 #include "src/hoi4_world/military/division_templates_importer.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/equipment_variants_importer.h"
@@ -78,6 +80,8 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
        mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
    const mappers::CharacterTraitMapper character_trait_mapper =
        mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
+   ConvoyDistributor convoys = BuildConvoyDistributor("configurables/convoy_config.txt");
+   convoys.CalculateStateWeights(source_world);
 
    for (const auto& [country_number, source_country]: source_world.GetCountries())
    {
@@ -97,6 +101,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
           world_mapper.culture_graphics_mapper,
           leader_type_mapper,
           character_trait_mapper,
+          convoys,
           characters,
           culture_queues,
           debug);

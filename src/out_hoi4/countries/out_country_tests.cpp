@@ -311,6 +311,29 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    EXPECT_EQ(country_file_stream.str(), expected_one.str());
 }
 
+TEST(Outhoi4CountriesOutcountryTests, ConvoysAreWrittenToCountryHistoryFile)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/ConvoysAreWrittenToCountryHistoryFile");
+   commonItems::TryCreateFolder("output/ConvoysAreWrittenToCountryHistoryFile/history");
+   commonItems::TryCreateFolder("output/ConvoysAreWrittenToCountryHistoryFile/history/countries");
+
+   const hoi4::Country country({
+       .tag = "TAG",
+       .convoys = 11,
+   });
+   OutputCountryHistory("ConvoysAreWrittenToCountryHistoryFile", country, {});
+
+   ASSERT_TRUE(commonItems::DoesFileExist("output/ConvoysAreWrittenToCountryHistoryFile/history/countries/TAG.txt"));
+   std::ifstream country_file("output/ConvoysAreWrittenToCountryHistoryFile/history/countries/TAG.txt");
+   ASSERT_TRUE(country_file.is_open());
+   std::stringstream country_file_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_stream));
+   country_file.close();
+   EXPECT_THAT(country_file_stream.str(), testing::HasSubstr("set_convoys = 11"));
+}
 
 TEST(Outhoi4CountriesOutcountryTests, IdeologyIsSetCountryHistoryFile)
 {

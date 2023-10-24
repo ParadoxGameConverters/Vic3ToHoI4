@@ -132,6 +132,8 @@
     <ClCompile Include="src\hoi4_world\map\strategic_region_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\map\strategic_region_tests.cpp" />
     <ClCompile Include="src\hoi4_world\military\battalion_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\military\convoy_distributor_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\military\convoy_distributor_builder_tests.cpp" />
     <ClCompile Include="src\hoi4_world\military\division_templates_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\military\equipment_variants_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\states\default_states_importer_tests.cpp" />

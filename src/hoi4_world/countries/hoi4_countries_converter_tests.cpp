@@ -54,11 +54,23 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                {1, source_country_one},
                {2, source_country_two},
            },
+       .states =
+           {
+               {1, vic3::State({.id = 1})},
+               {2, vic3::State({.id = 2})},
+               {3, vic3::State({.id = 3})},
+               {4, vic3::State({.id = 4})},
+           },
        .acquired_technologies =
            {
                {1, {"source_technology_one"}},
                {2, {"source_technology_two"}},
            },
+       .buildings = vic3::Buildings({
+           {1, {vic3::Building(vic3::BuildingType::Port, 1, 0, 1, std::vector<std::string>{"pm_port_3"})}},
+           {2, {vic3::Building(vic3::BuildingType::Port, 2, 0, 1, std::vector<std::string>{"pm_port_1"})}},
+           {3, {vic3::Building(vic3::BuildingType::Port, 3, 0, 1, std::vector<std::string>{"pm_port_2"})}},
+       }),
        .culture_definitions =
            {
                {"culture_0", vic3::CultureDefinition({"culture_0"}, {}, {}, {})},
@@ -74,8 +86,30 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
    };
 
    const States states{
-       .states{},
-       .vic3_state_ids_to_hoi4_state_ids{{1, 10}, {2, 20}},
+       .states{
+           State(10,
+               {
+                   .owner = "TAG",
+                   .provinces = {10},
+               }),
+           State(20,
+               {
+                   .owner = "TWO",
+                   .provinces = {20},
+               }),
+           State(30,
+               {
+                   .owner = "TWO",
+                   .provinces = {30},
+               }),
+           State(40,
+               {
+                   .owner = "TWO",
+                   .provinces = {40},
+               }),
+       },
+       .vic3_state_ids_to_hoi4_state_ids{{1, 10}, {2, 20}, {3, 30}, {4, 40}},
+       .hoi4_state_ids_to_owner{{10, "TAG"}, {20, "TWO"}, {30, "TWO"}, {40, "TWO"}},
    };
    const vic3::World v3World = vic3::World(options);
 
@@ -148,7 +182,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .character_ids = {1, 3},
                                     .spy_ids = {4},
                                     .starting_research_slots = 3,
-                                    .units = {}})),
+                                    .units = {},
+                                    .convoys = 100})),
            testing::Pair("TWO",
                Country(CountryOptions{.tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
@@ -163,7 +198,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .graphics_block = expected_graphics_block_two,
                    .character_ids = {2},
                    .starting_research_slots = 3,
-                   .units = {}}))));
+                   .units = {},
+                   .convoys = 11}))));
 }
 
 }  // namespace hoi4
