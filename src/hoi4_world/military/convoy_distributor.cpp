@@ -1,5 +1,7 @@
 #include "src/hoi4_world/military/convoy_distributor.h"
 
+#include "external/commonItems/Log.h"
+
 namespace hoi4
 {
 
@@ -23,6 +25,7 @@ void ConvoyDistributor::CalculateStateWeights(const vic3::World& source_world)
       {
          if (!pm_weights_.contains(pm))
          {
+            Log(LogLevel::Warning) << "Unhandled port production method \"" << pm << "\"";
             continue;
          }
          pmWeight = pm_weights_[pm];
