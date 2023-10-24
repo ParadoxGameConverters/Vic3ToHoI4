@@ -14,6 +14,20 @@ TEST(Hoi4MilitaryConvoyDistributorTests, EmptyWorldNoConvoys)
    EXPECT_EQ(convoy.ConvoysFromState(1), 0);
 }
 
+TEST(Hoi4MilitaryConvoyDistributorTests, HandlesUnstaffedPort)
+{
+   const std::map<int, vic3::State> states{
+       {1, vic3::State({.id = 1})},
+   };
+   vic3::Buildings buildings(std::map<int, std::vector<vic3::Building>>{
+       {1, {vic3::Building(vic3::BuildingType::Port, 1, 0, 0, std::vector<std::string>{"dummy", "pm_port_1"})}},
+   });
+   const vic3::World source_world = vic3::World(vic3::WorldOptions{.states = states, .buildings = buildings});
+   ConvoyDistributor convoy(100, {{"pm_port", 1}});
+   convoy.CalculateStateWeights(source_world);
+   EXPECT_EQ(convoy.ConvoysFromState(1), 0);
+}
+
 TEST(Hoi4MilitaryConvoyDistributorTests, WeightByProductionMethod)
 {
    const std::map<int, vic3::State> states{
