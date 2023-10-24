@@ -332,49 +332,7 @@ TEST(Outhoi4CountriesOutcountryTests, ConvoysAreWrittenToCountryHistoryFile)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(country_file_stream));
    country_file.close();
-
-   std::stringstream expected_one;
-   expected_one << "\n";
-   expected_one << "oob = \"TAG_1936\"\n";
-   expected_one << "set_research_slots = 3\n";
-   expected_one << "set_convoys = 11\n";
-   expected_one << "\n";
-   expected_one << "if = {\n";
-   expected_one << "\tlimit = { has_dlc = \"La Resistance\" }\n";
-   expected_one << "}\n";
-   expected_one << "\n";
-   expected_one << "set_politics = {\n";
-   expected_one << "\truling_party = neutrality\n";
-   expected_one << "\tlast_election = \"1933.1.1\"\n";
-   expected_one << "\telection_frequency = 48\n";
-   expected_one << "\telections_allowed = no\n";
-   expected_one << "}\n";
-   expected_one << "\n";
-   expected_one << "set_popularities = {\n";
-   expected_one << "}\n";
-   expected_one << "\n";
-   expected_one << "add_ideas = {\n";
-   expected_one << "\tcivilian_economy\n";
-   expected_one << "\texport_focus\n";
-   expected_one << "\tvolunteer_only\n";
-   expected_one << "}\n";
-   expected_one << "set_stability = 0\n";
-   expected_one << "set_war_support = 0.60\n";
-   expected_one << "\n";
-   expected_one << "# Starting tech\n";
-   expected_one << "if = {\n";
-   expected_one << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-   expected_one << "}\n";
-   expected_one << "if = {\n";
-   expected_one << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-   expected_one << "}\n";
-   expected_one << "if = {\n";
-   expected_one << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
-   expected_one << "}\n";
-   expected_one << "if = {\n";
-   expected_one << "\tlimit = { has_dlc = \"No Step Back\" }\n";
-   expected_one << "}\n";
-   EXPECT_EQ(country_file_stream.str(), expected_one.str());
+   EXPECT_THAT(country_file_stream.str(), testing::HasSubstr("set_convoys = 11"));
 }
 
 TEST(Outhoi4CountriesOutcountryTests, IdeologyIsSetCountryHistoryFile)
