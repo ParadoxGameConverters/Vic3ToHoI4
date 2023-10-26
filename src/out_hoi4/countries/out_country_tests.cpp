@@ -298,9 +298,11 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    expected_one << "# Starting tech\n";
    expected_one << "if = {\n";
    expected_one << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+   expected_one << "\tset_naval_oob = TAG_1936_Naval_Legacy\n";
    expected_one << "}\n";
    expected_one << "if = {\n";
    expected_one << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+   expected_one << "\tset_naval_oob = TAG_1936_Naval\n";
    expected_one << "}\n";
    expected_one << "if = {\n";
    expected_one << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
@@ -410,9 +412,11 @@ TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
    expected_one << "# Starting tech\n";
    expected_one << "if = {\n";
    expected_one << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+   expected_one << "\tset_naval_oob = TAG_1936_Naval_Legacy\n";
    expected_one << "}\n";
    expected_one << "if = {\n";
    expected_one << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+   expected_one << "\tset_naval_oob = TAG_1936_Naval\n";
    expected_one << "}\n";
    expected_one << "if = {\n";
    expected_one << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
@@ -598,6 +602,7 @@ TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)
    const std::string expected_output =
        "if = {\n"
        "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n"
+       "\tset_naval_oob = TAG_1936_Naval_Legacy\n"
        "\tcreate_equipment_variant = {\n"
        "\t\tname = legacy_ship: variant_one\n"
        "\t}\n"
@@ -607,6 +612,7 @@ TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)
        "}\n"
        "if = {\n"
        "\tlimit = { has_dlc = \"Man the Guns\" }\n"
+       "\tset_naval_oob = TAG_1936_Naval\n"
        "\tcreate_equipment_variant = {\n"
        "\t\tname = ship: variant_one\n"
        "\t}\n"
@@ -756,6 +762,41 @@ TEST(Outhoi4CountriesOutcountryTests, UnitsAreOutputToCountryOOBFile)
        "}\n";
 
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected));
+}
+
+TEST(Outhoi4CountriesOutcountryTests, NaviesAreOutputToCountryNavalFiles)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/NaviesAreOutputToCountryNavalFiles");
+   commonItems::TryCreateFolder("output/NaviesAreOutputToCountryNavalFiles/history");
+   commonItems::TryCreateFolder("output/NaviesAreOutputToCountryNavalFiles/history/units");
+
+   const hoi4::Country country({.tag = "TAG"});
+   OutputCountryNavy("NaviesAreOutputToCountryNavalFiles", country);
+
+   const std::string naval_file = "output/NaviesAreOutputToCountryNavalFiles/history/units/TAG_1936_Naval.txt";
+   ASSERT_TRUE(commonItems::DoesFileExist(naval_file));
+   std::ifstream navy(naval_file);
+   ASSERT_TRUE(navy.is_open());
+   std::stringstream navy_stream;
+   std::copy(std::istreambuf_iterator<char>(navy),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(navy_stream));
+   navy.close();
+   const char* expected_navy = "Dummy file";
+   EXPECT_THAT(navy_stream.str(), testing::HasSubstr(expected_navy));
+
+   const std::string legacy_file = "output/NaviesAreOutputToCountryNavalFiles/history/units/TAG_1936_Naval_Legacy.txt";
+   ASSERT_TRUE(commonItems::DoesFileExist(legacy_file));
+   std::ifstream legacy(legacy_file);
+   ASSERT_TRUE(legacy.is_open());
+   std::stringstream legacy_stream;
+   std::copy(std::istreambuf_iterator<char>(legacy),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(legacy_stream));
+   legacy.close();
+   const char* expected_legacy = "Dummy file";
+   EXPECT_THAT(legacy_stream.str(), testing::HasSubstr(expected_legacy));
 }
 
 
