@@ -30,6 +30,7 @@ void out::OutputCountries(std::string_view output_name,
       auto oob_file = fmt::format("output/{}/history/units/{}_1936.txt", output_name, tag);
       commonItems::TryCopyFile("configurables/division_templates.txt", oob_file);
       OutputCountryUnits(oob_file, country);
+      OutputCountryNavy(output_name, country);
       OutputFocusTree(output_name, tag);
    }
 
