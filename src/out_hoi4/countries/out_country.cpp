@@ -217,6 +217,7 @@ void out::OutputCountryHistory(std::string_view output_name,
 
    country_history << "if = {\n";
    country_history << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+   country_history << fmt::format("\tset_naval_oob = {}_1936_Naval_Legacy\n", tag);
    for (const auto& variant: country.GetLegacyShipVariants())
    {
       country_history << variant;
@@ -224,6 +225,7 @@ void out::OutputCountryHistory(std::string_view output_name,
    country_history << "}\n";
    country_history << "if = {\n";
    country_history << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+   country_history << fmt::format("\tset_naval_oob = {}_1936_Naval\n", tag);
    for (const auto& variant: country.GetShipVariants())
    {
       country_history << variant;
@@ -246,6 +248,29 @@ void out::OutputCountryHistory(std::string_view output_name,
 
    country_history.close();
 }
+
+
+void out::OutputCountryNavy(std::string_view output_name, const hoi4::Country& country)
+{
+   const std::string& tag = country.GetTag();
+   const auto naval_file_name = fmt::format("output/{}/history/units/{}_1936_Naval.txt", output_name, tag);
+   std::ofstream navy(naval_file_name);
+   if (!navy.is_open())
+   {
+      throw std::runtime_error(fmt::format("Could not create {}", naval_file_name));
+   }
+   const auto legacy_file_name = fmt::format("output/{}/history/units/{}_1936_Naval_Legacy.txt", output_name, tag);
+   std::ofstream legacy(legacy_file_name);
+   if (!legacy.is_open())
+   {
+      throw std::runtime_error(fmt::format("Could not create {}", legacy_file_name));
+   }
+   navy << "# Dummy file\n";
+   legacy << "# Dummy file\n";
+   navy.close();
+   legacy.close();
+}
+
 
 void out::OutputCountryUnits(const std::string& oob_file, const hoi4::Country& country)
 {

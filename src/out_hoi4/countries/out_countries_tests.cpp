@@ -210,4 +210,53 @@ TEST(Outhoi4CountriesOutcountriesTests, NationalFocusFilesAreCreated)
    country_file_two.close();
 }
 
+
+TEST(Outhoi4CountriesOutcountriesTests, NavyFilesAreCreated)
+{
+   CreateFolders("NavyFilesAreCreated");
+
+   OutputCountries("NavyFilesAreCreated",
+       {
+           {"TAG", hoi4::Country({.tag = "TAG"})},
+           {"TWO", hoi4::Country({.tag = "TWO"})},
+       },
+       {});
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/NavyFilesAreCreated/history/units/TAG_1936_Naval.txt"));
+   std::ifstream country_file_one("output/NavyFilesAreCreated/history/units/TAG_1936_Naval.txt");
+   ASSERT_TRUE(country_file_one.is_open());
+   std::stringstream country_file_one_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_one_stream));
+   country_file_one.close();
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/NavyFilesAreCreated/history/units/TAG_1936_Naval_Legacy.txt"));
+   std::ifstream legacy_file_one("output/NavyFilesAreCreated/history/units/TAG_1936_Naval_Legacy.txt");
+   ASSERT_TRUE(legacy_file_one.is_open());
+   std::stringstream legacy_file_one_stream;
+   std::copy(std::istreambuf_iterator<char>(legacy_file_one),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(legacy_file_one_stream));
+   legacy_file_one.close();
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/NavyFilesAreCreated/history/units/TWO_1936_Naval.txt"));
+   std::ifstream country_file_two("output/NavyFilesAreCreated/history/units/TWO_1936_Naval.txt");
+   ASSERT_TRUE(country_file_two.is_open());
+   std::stringstream country_file_two_stream;
+   std::copy(std::istreambuf_iterator<char>(country_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(country_file_two_stream));
+   country_file_two.close();
+
+   EXPECT_TRUE(commonItems::DoesFileExist("output/NavyFilesAreCreated/history/units/TWO_1936_Naval_Legacy.txt"));
+   std::ifstream legacy_file_two("output/NavyFilesAreCreated/history/units/TWO_1936_Naval_Legacy.txt");
+   ASSERT_TRUE(legacy_file_two.is_open());
+   std::stringstream legacy_file_two_stream;
+   std::copy(std::istreambuf_iterator<char>(legacy_file_two),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(legacy_file_two_stream));
+   legacy_file_two.close();
+}
+
 }  // namespace out
