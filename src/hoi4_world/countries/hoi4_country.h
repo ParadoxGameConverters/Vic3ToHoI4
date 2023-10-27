@@ -66,6 +66,7 @@ struct CountryOptions
    std::vector<Unit> units;
    float stability = 0.0F;
    int convoys = 0;
+   std::vector<Ship> ships;
 };
 
 class Country
@@ -99,7 +100,8 @@ class Country
        starting_research_slots_(country_options.starting_research_slots),
        stability_(country_options.stability),
        units_(country_options.units),
-       convoys_(country_options.convoys)
+       convoys_(country_options.convoys),
+       ships_(country_options.ships)
    {
    }
 
@@ -130,6 +132,7 @@ class Country
    [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
    [[nodiscard]] float GetStability() const { return stability_; }
    [[nodiscard]] float GetWarSupport() const { return 0.60F; }
+   [[nodiscard]] const std::vector<Ship>& GetShips() const { return ships_; }
    [[nodiscard]] const std::vector<Unit>& GetUnits() const { return units_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
