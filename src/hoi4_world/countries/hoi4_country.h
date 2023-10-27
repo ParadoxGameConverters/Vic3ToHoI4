@@ -8,6 +8,7 @@
 #include "external/commonItems/Color.h"
 #include "external/commonItems/Date.h"
 #include "src/hoi4_world/military/equipment_variant.h"
+#include "src/hoi4_world/military/ship.h"
 #include "src/hoi4_world/technology/technologies.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapping.h"
@@ -165,6 +166,7 @@ class Country
    float stability_ = 0.0F;
    std::vector<Unit> units_;
    int convoys_;
+   std::vector<Ship> ships_;
 };
 
 }  // namespace hoi4

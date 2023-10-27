@@ -644,10 +644,19 @@
     <ClInclude Include="src\hoi4_world\military\battalion.h">
       <Filter>src\hoi4_world\military</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\military\convoy_distributor.h">
+      <Filter>src\hoi4_world\military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\military\convoy_distributor_builder.h">
+      <Filter>src\hoi4_world\military</Filter>
+    </ClInclude>
     <ClInclude Include="src\hoi4_world\military\division_template.h">
       <Filter>src\hoi4_world\military</Filter>
     </ClInclude>
     <ClInclude Include="src\hoi4_world\military\division_templates_importer.h">
+      <Filter>src\hoi4_world\military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\military\ship.h">
       <Filter>src\hoi4_world\military</Filter>
     </ClInclude>
     <ClInclude Include="src\out_hoi4\decisions\out_decisions.h">

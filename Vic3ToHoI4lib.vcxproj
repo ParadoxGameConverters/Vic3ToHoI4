@@ -50,6 +50,7 @@
     <ClInclude Include="src\hoi4_world\military\division_template.h" />
     <ClInclude Include="src\hoi4_world\military\equipment_variants_importer.h" />
     <ClInclude Include="src\hoi4_world\military\equipment_variant.h" />
+    <ClInclude Include="src\hoi4_world\military\ship.h" />
     <ClInclude Include="src\hoi4_world\states\default_state.h" />
     <ClInclude Include="src\hoi4_world\states\default_states_importer.h" />
     <ClInclude Include="src\hoi4_world\states\hoi4_state.h" />
