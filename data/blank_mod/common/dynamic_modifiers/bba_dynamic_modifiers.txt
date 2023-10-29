@@ -1258,12 +1258,12 @@ ITA_anti_colonialism_sentiment = {
 
 ITA_novus_ordo_modifier = {
 	enable = { always = yes  }
-	icon = modifiers_generic_military_industry
+	icon = GFX_modifiers_generic_military_industry
 	local_non_core_manpower = 0.25
 	local_resources_factor = 0.15
 	compliance_growth = 0.1
 	resistance_decay = 0.05
-	production_speed_arms_factory_factor = 0.2
+	state_production_speed_arms_factory_factor = 0.2
 	local_factories = 0.5
 }
 
@@ -1348,7 +1348,9 @@ SWI_gold_trade_with_switzerland = {
 }
 
 SWI_swiss_gold_market = {
-	enable = { always = yes }
+	enable = { 
+		always = yes
+	 }
 	icon = GFX_idea_SPR_seize_the_gold_reserves
 
 	consumer_goods_factor = SWI_gold_trade_consumer_goods_factor

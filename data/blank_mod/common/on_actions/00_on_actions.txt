@@ -616,10 +616,25 @@ on_actions = {
 	# root country that invades
 	# scope state that is invaded
 	# from scope state that the invasion started
-	# on_naval_invasion = {
-	# 	effect = {
-	# 	}
-	# }
+	on_naval_invasion = {
+	 	effect = {
+		 	if = {
+				limit = {
+					ROOT = {
+						divisions_in_state = {
+							 unit = marine_commando
+							 size > 0
+							 state = PREV
+						}
+						 has_tech = marines_commandos_demolition 
+					}
+					NOT = { has_state_flag = marines_commando_effect }
+					OWNER = { NOT = { tag = ROOT } }
+				}
+				SF_marine_demoliton_effect = yes # Note that the state flag condition is not preventing it from doing 1 damage per division 
+			}
+	 	}
+	}
 
 
 	# root country that paradrops
@@ -627,7 +642,7 @@ on_actions = {
 	# from scope state that the paradrop started
 	on_paradrop = {
 	    effect = {
-		    set_country_flag = has_paradropped_flag
+		    ROOT = { set_country_flag = has_paradropped_flag }
 		}
 	}
 	on_ruling_party_change = {
@@ -669,4 +684,26 @@ on_actions = {
 		}
 	}
 
+	# root is the state that was dropped into
+	# from is the dropping country
+	# this differs from on_paradrop in that it is run once per paradrop, not once per unit dropped
+	on_units_paradropped_in_state = {
+		effect = {
+			if = {
+				limit = { 
+					FROM = { has_tech = paras_dispersed_drop } 
+					NOT = { has_state_flag = para_drop_effect }
+					CONTROLLER = { NOT = { tag = FROM } }
+				}
+				SF_PARA_sabotage_effect = yes
+			}
+			if = {
+				limit = { 
+					FROM = { has_tech = paras_combat_drop } 
+					NOT = { has_state_flag = para_drop_effect }
+				}
+				SF_PARA_combat_effect = yes
+			}
+		}
+	}
 }

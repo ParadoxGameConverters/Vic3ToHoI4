@@ -1,11 +1,44 @@
 debug_decisions = {
 
+	debug_show_decisions = {
+		priority = 100
+		allowed = {
+			always = yes
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			NOT = { has_global_flag = show_debug_decisions_flag }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_flag
+		}
+	}
+
+	debug_hide_decisions = {
+		priority = -1
+		allowed = {
+			always = yes
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
+		complete_effect = {
+			clr_global_flag = show_debug_decisions_flag
+		}
+	}
+	
 	research_all_tank_techs_nsb = {
 		icon = generic_tank
 
 		visible = {
 			is_ai = no
 			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		complete_effect = {
@@ -213,7 +246,9 @@ debug_decisions = {
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -233,7 +268,9 @@ debug_decisions = {
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -264,7 +301,9 @@ debug_decisions = {
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -284,11 +323,13 @@ debug_decisions = {
 		icon = generic_research
 
 		available = {
-			always = yes
+			is_ai = no
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -311,16 +352,19 @@ debug_decisions = {
 		}
 	}
 
+
 	create_operative_debug = {
 
 		icon = generic_research
 
 		available = {
-			always = yes
+			is_ai = no
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -344,11 +388,13 @@ debug_decisions = {
 		icon = generic_research
 
 		available = {
-			always = yes
+			is_ai = no
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -370,11 +416,13 @@ debug_decisions = {
 		icon = generic_research
 
 		available = {
-			always = yes
+			is_ai = no
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -393,24 +441,25 @@ debug_decisions = {
 
 
 	#FRA_capture_operative_debug - Removed because references FRA tag
-	#FRA_turn_operative_debug
+	#FRA_turn_operative_debug - Removed because references FRA tag
   
 	harm_operative_debug = {
 		available = {
-			num_of_operatives > 0
+			#num_of_operatives > 0
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
 		cost = 0
 
 		complete_effect = {
-			random_operative = {
-				harm_operative_leader = 1
-			#Some easter egg from Vanilla HoI4 - can be removed safely
+			if = {
+				add_political_power = 1000
 			}
 		}
 
@@ -426,7 +475,9 @@ debug_decisions = {
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -453,11 +504,13 @@ debug_decisions = {
 
 	slot_machine = { # we pegi 18 now
 		available = {
-			always = yes
+			is_ai = no
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		days_remove = 777
@@ -468,6 +521,15 @@ debug_decisions = {
 	}
 
 	decryption_tech_1 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			decryption = 1
@@ -475,6 +537,15 @@ debug_decisions = {
 	}
 
 	decryption_tech_2 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			decryption = 1
@@ -482,6 +553,15 @@ debug_decisions = {
 	}
 
 	decryption_tech_3 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			decryption = 1
@@ -489,6 +569,15 @@ debug_decisions = {
 	}
 
 	encryption_tech_1 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			encryption = 1
@@ -496,6 +585,15 @@ debug_decisions = {
 	}
 
 	encryption_tech_2 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			encryption = 1
@@ -503,10 +601,36 @@ debug_decisions = {
 	}
 
 	encryption_tech_3 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			encryption = 1
 		}
 	}
 
+	plane_generator_test = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
+		complete_effect = {
+			set_variable = { fighter_buy_amount = 200 }
+			save_event_target_as = license_target
+			bba_get_fighter_GER_effect = yes
+		}
+		
+	}
 }

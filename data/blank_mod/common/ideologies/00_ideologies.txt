@@ -42,11 +42,11 @@ ideologies = {
 		faction_impact_on_world_tension = 0.1
 
 		modifiers = {
-			generate_wargoal_tension = 0.00
-			join_faction_tension = 0.00
-			lend_lease_tension = 0.00
-			send_volunteers_tension = 0.00
-			guarantee_tension = 0.00
+			generate_wargoal_tension = 1.00
+			join_faction_tension = 0.80
+			lend_lease_tension = 0.50
+			send_volunteers_tension = 0.50
+			guarantee_tension = 0.25
 			# annex_cost_factor = 0.5 # Deprecated, use common\peace_conference\00_generic_peace.txt instead
 			civilian_intel_to_others = 20.0
 			army_intel_to_others = 5.0
@@ -60,7 +60,7 @@ ideologies = {
 			faction_trade_opinion_factor = 0.50 #plus 50% trade opinion
 		}
 		ai_democratic = yes # uses the democratic AI behaviour
-		ai_ideology_wanted_units_factor = 1.0 # multiplies threat impact on number of desired units by this value, defaults to 1.0. If at war, the larger of this value and NDefines::NAI::WANTED_UNITS_WAR_THREAT_FACTOR will be used instead
+		ai_ideology_wanted_units_factor = 1.10 # multiplies threat impact on number of desired units by this value, defaults to 1.0. If at war, the larger of this value and NDefines::NAI::WANTED_UNITS_WAR_THREAT_FACTOR will be used instead
 	}
 
 
@@ -116,6 +116,7 @@ ideologies = {
 			airforce_intel_to_others = 7.5
 			hidden_modifier = { join_faction_tension = -0.1 }
 			embargo_threshold_factor = 0.5
+			lend_lease_tension = 0.50
 		}
 
 		faction_modifiers = {
@@ -173,6 +174,7 @@ ideologies = {
 			airforce_intel_to_others = 10.0
 			hidden_modifier = { join_faction_tension = -0.1 }
 			embargo_cost_factor = 1
+			lend_lease_tension = 0.50
 		}
 
 		ai_fascist = yes # uses the fascist AI behaviour
@@ -222,11 +224,11 @@ ideologies = {
 
 		modifiers = {
 			#increased_influence_factor = 0.3 #30% easier to influence
-			generate_wargoal_tension = 0.0
-			join_faction_tension = 0.0
-			lend_lease_tension = 0.0
-			send_volunteers_tension = 0.0
-			guarantee_tension = 0.0
+			generate_wargoal_tension = 0.5
+			join_faction_tension = 0.4
+			lend_lease_tension = 0.6
+			send_volunteers_tension = 0.4
+			guarantee_tension = 0.4
 			drift_defence_factor = -0.3
 			civilian_intel_to_others = 20.0
 			army_intel_to_others = 10.0

@@ -658,8 +658,8 @@ naval_cruiser_heavy = {
 				mid_2_custom_slot = {
 					any_of = { ship_airplane_launcher ship_anti_air }
 					upgrade > current
-				}
-				rear_1_custom_slot > ship_medium_battery_2
+				
+}				rear_1_custom_slot > ship_medium_battery_2
 				rear_2_custom_slot = ship_anti_air
 			}
 		}
