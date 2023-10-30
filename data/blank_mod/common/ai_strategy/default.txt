@@ -6,6 +6,7 @@ default_unit_production = {
 	enable = {
 		always = yes
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = role_ratio
@@ -1411,24 +1412,5 @@ default_produce_floating_harbors = {
 		type = unit_ratio
 		id = floating_harbor # for floating harbors, 'unit_ratio' is actually not a ratio but an absolute desired number
 		value = 10
-	}
-}
-
-we_dont_believe_in_mountain_tanks = {
-	enable = {
-		is_historical_focus_on = yes
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = front_armor_score
-		id = "GRE"
-		value = -100
-	}
-
-	ai_strategy = {
-		type = front_armor_score
-		id = "YUG"
-		value = -100
 	}
 }
