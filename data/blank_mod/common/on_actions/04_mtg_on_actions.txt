@@ -145,7 +145,7 @@ on_actions = {
 		effect = {
 		}
 	}
-
+	# FROM is the faction Leader, ROOT is the country leaving the faction 
 	on_leave_faction = {
 		effect = {
 		}

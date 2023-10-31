@@ -121,3 +121,11 @@ d_add_tech = {
 
 d_spawn_3D_models = {
 }
+
+d_add_subsidies = {
+	add_equipment_subsidy = {
+		cic = 100
+		equipment_type = infantry_equipment
+		seller_trigger = is_democratic_seller_trigger
+	}
+}

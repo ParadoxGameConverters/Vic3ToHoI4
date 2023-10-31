@@ -19,6 +19,8 @@ std::map<int, vic3::State> vic3::ImportStates(std::istream& input_stream)
    };
 
    DatabaseParser parser(parser_func);
+   parser.registerKeyword("state_region_to_state_array", commonItems::ignoreItem);
+   parser.registerKeyword("dead_objects", commonItems::ignoreItem);
 
    parser.parseStream(input_stream);
    return states;

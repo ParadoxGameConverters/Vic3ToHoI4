@@ -67,6 +67,11 @@ technologies = {
 			cat_ship_light_battery
 			cat_ship_medium_battery
 			cat_ship_heavy_battery
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_carrier_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -107,6 +112,9 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_ship_light_battery
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -163,6 +171,9 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -209,6 +220,9 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_ship_light_battery
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -264,6 +278,9 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -299,6 +316,9 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_ship_light_battery
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -344,6 +364,9 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_ship_medium_battery
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
 		}
 	}
 
@@ -382,6 +405,9 @@ technologies = {
 
 		categories = {
 			naval_equipment
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
 		}
 	}
 
@@ -423,6 +449,9 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_ship_medium_battery
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
 		}
 	}
 
@@ -467,6 +496,9 @@ technologies = {
 
 		categories = {
 			naval_equipment
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
 		}
 	}
 
@@ -498,6 +530,9 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_ship_medium_battery
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
 		}
 	}
 	
@@ -539,8 +574,10 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_ship_heavy_battery
+			mio_cat_tech_all_capital_ship_and_modules
 		}
 	}
+
 	improved_heavy_battery = {
 
 		research_cost = 1
@@ -577,8 +614,10 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_ship_heavy_battery
+			mio_cat_tech_all_capital_ship_and_modules
 		}
 	}
+
 	advanced_heavy_battery = {
 
 		research_cost = 1
@@ -610,8 +649,10 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_ship_heavy_battery
+			mio_cat_tech_all_capital_ship_and_modules
 		}
 	}
+
 	basic_heavy_shell = {
 
 		research_cost = 0.5
@@ -649,8 +690,10 @@ technologies = {
 
 		categories = {
 			naval_equipment
+			mio_cat_tech_all_capital_ship_and_modules
 		}
 	}
+
 	improved_heavy_shell = {
 
 		research_cost = 0.5
@@ -687,6 +730,7 @@ technologies = {
 
 		categories = {
 			naval_equipment
+			mio_cat_tech_all_capital_ship_and_modules
 		}
 	}
 
@@ -724,6 +768,11 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_carrier_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -759,6 +808,11 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_carrier_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -789,6 +843,11 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_carrier_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -818,6 +877,9 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
 		}
 	}
 
@@ -869,6 +931,10 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_torpedoes
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
+			mio_cat_tech_all_submarine_and_modules #Not really Sub but unlocks tech improving Subs torpedo stuff later
 		}
 	}
 
@@ -923,6 +989,10 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_torpedoes
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
+			mio_cat_tech_all_submarine_and_modules
 		}
 	}
 
@@ -963,6 +1033,10 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_torpedoes
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
+			mio_cat_tech_all_submarine_and_modules
 		}
 	}
 
@@ -992,6 +1066,10 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_torpedoes
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
+			mio_cat_tech_all_submarine_and_modules
 		}
 	}
 	improved_ship_torpedo_launcher = {
@@ -1011,7 +1089,6 @@ technologies = {
 
 		enable_equipment_modules = {
 			ship_torpedo_2
-			ship_modules_tech
 		}
 
 
@@ -1025,6 +1102,9 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_torpedoes
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 	advanced_ship_torpedo_launcher = {
@@ -1057,6 +1137,9 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_torpedoes
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 	modern_ship_torpedo_launcher = {
@@ -1083,6 +1166,9 @@ technologies = {
 			naval_equipment
 			ship_modules_tech
 			cat_torpedoes
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -1121,6 +1207,12 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_submarine_and_modules
+			mio_cat_tech_all_carrier_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -1152,6 +1244,12 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_submarine_and_modules
+			mio_cat_tech_all_carrier_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -1179,6 +1277,12 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_submarine_and_modules
+			mio_cat_tech_all_carrier_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -1224,6 +1328,10 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules #Not really but for further tech
+			mio_cat_tech_all_cruiser_and_modules #Not really but for further tech
+			mio_cat_tech_all_destroyer_and_modules #Not really but for further tech
 		}
 	}
 
@@ -1265,6 +1373,10 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules #Not really but for further tech
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules #Not really but for further tech
 		}
 	}
 
@@ -1310,6 +1422,10 @@ technologies = {
 		categories = {
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -1365,6 +1481,9 @@ technologies = {
 			naval_mines
 			naval_minelaying
 			naval_equipment
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -1397,6 +1516,7 @@ technologies = {
 			naval_minelaying
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_submarine_and_modules
 		}
 	}
 
@@ -1424,6 +1544,7 @@ technologies = {
 			naval_minelaying
 			naval_equipment
 			ship_modules_tech
+			mio_cat_tech_all_submarine_and_modules
 		}
 	}
 
@@ -1467,6 +1588,9 @@ technologies = {
 			naval_mines
 			naval_minelaying
 			naval_equipment
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -1491,6 +1615,12 @@ technologies = {
 			naval_mines
 			naval_minesweeping
 			naval_equipment
+			mio_cat_tech_all_capital_ship_and_modules
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_submarine_and_modules
+			mio_cat_tech_all_carrier_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -1528,6 +1658,9 @@ technologies = {
 			naval_mines
 			naval_minelaying
 			naval_equipment
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -1620,6 +1753,9 @@ technologies = {
 			naval_mines
 			naval_minelaying
 			naval_equipment
+			mio_cat_tech_all_screen_ship_and_modules
+			mio_cat_tech_all_cruiser_and_modules
+			mio_cat_tech_all_destroyer_and_modules
 		}
 	}
 
@@ -1687,7 +1823,7 @@ technologies = {
 
 	mtg_transport = { #WHEN BALANCING - ALSO FIX REGULAR NAVAL TREE
 
-		transport_capacity = -0.5
+		transport_capacity = -0.33
 		naval_invasion_capacity = 10
 
 		path = {
@@ -1720,9 +1856,9 @@ technologies = {
 
 	mtg_landing_craft = {
 
-		invasion_preparation = -0.5
+		invasion_preparation = -0.25
 		amphibious_invasion_defence = 0.15
-		naval_invasion_capacity = 40
+		naval_invasion_capacity = 20
 
 		path = {
 			leads_to_tech = mtg_tank_landing_craft
