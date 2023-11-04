@@ -550,6 +550,19 @@ mio_original_country_exists_and_not_at_war_with_ROOT = { #Used for MIO decisions
 	NOT = { has_war_with = ROOT }
 }
 
+mio_original_country_available_with_opinion_subject_and_war_requirements_fulfilled = { #Used for MIO decisions availability - THIS is original country
+	has_opinion = {
+		target = ROOT
+		value > 49
+	}
+	OR = {
+		is_subject = no
+		is_subject_of = ROOT
+	}
+	has_capitulated = no
+	NOT = { has_war_with = ROOT }
+}
+
 
 can_unlock_new_special_forces_tree = {
 	if = {

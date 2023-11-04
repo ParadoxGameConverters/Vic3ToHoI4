@@ -11,6 +11,13 @@ default = {
 				GFX_light_plane_4_medium
 			 }
 		}
+
+		pool = {
+			models = { 
+				light_plane_entity
+			 }
+		}
+
 	}
 	cv_small_plane_airframe = {
 		pool = {
@@ -22,6 +29,11 @@ default = {
 				GFX_jet_plane_1_medium
 				GFX_light_plane_5_medium
 				GFX_light_plane_6_medium
+			 }
+		}
+		pool = {
+			models = { 
+				light_plane_entity
 			 }
 		}
 	}
@@ -38,6 +50,11 @@ default = {
 				GFX_medium_plane_1_medium
 			 }
 		}
+		pool = {
+			models = { 
+				medium_plane_entity
+			 }
+		}
 	}
 	large_plane_airframe = {
 		pool = {
@@ -47,6 +64,11 @@ default = {
 				GFX_improved_large_airframe_medium
 				GFX_basic_large_airframe_medium
 				GFX_iw_large_airframe_medium
+			 }
+		}
+		pool = {
+			models = { 
+				heavy_plane_entity
 			 }
 		}
 	}

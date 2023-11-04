@@ -247,7 +247,7 @@ generic_infantry_tank_organization = {
 	}
 
 	equipment_type = { armor }
-	research_categories = { armor }
+	research_categories = { mio_cat_tech_all_armor_and_modules }
 
 	tree_header_text = {
 		text = mio_header_light_tank_department
@@ -517,7 +517,7 @@ generic_mobile_tank_organization = {
 	}
 
 	equipment_type = { armor }
-	research_categories = { armor }
+	research_categories = { mio_cat_tech_all_armor_and_modules }
 
 	tree_header_text = {
 		text = mio_header_engine_and_suspension
@@ -2551,7 +2551,7 @@ generic_submarine_organization = {
 		ship_hull_submarine
 	}
 	research_categories = {
-		naval_equipment 
+		mio_cat_tech_all_submarine_and_modules
 	}
 	
 	tree_header_text = {
@@ -4146,7 +4146,7 @@ generic_medium_aircraft_organization = {
 	trait = {
 		token = generic_mio_trait_multi_role_transport
 		name = generic_mio_trait_multi_role_transport
-		icon = GFX_generic_mio_department_icon_plane_general_technology
+		icon = GFX_generic_mio_department_icon_air_transport_technology
 
 		position = { x=0 y=1 }
 		relative_position_id = generic_mio_trait_mixed_material_construction
@@ -4460,7 +4460,7 @@ generic_heavy_aircraft_organization = {
 	trait = {
 		token = generic_mio_trait_transport_conversions
 		name = generic_mio_trait_transport_conversions
-		icon = GFX_generic_mio_department_icon_plane_general_production
+		icon = GFX_generic_mio_department_icon_air_transport_production
 
 		position = { x=-2 y=1 }
 		relative_position_id = generic_mio_trait_standardized_alloys
@@ -5777,7 +5777,7 @@ generic_high_agility_fighter_aircraft_organization = {
 		mutually_exclusive = { generic_mio_trait_gunboat }
 
 		equipment_bonus = {
-			air_attack = 0.5
+			air_attack = 0.05
 		}
 	}
 
@@ -5835,7 +5835,7 @@ generic_high_agility_fighter_aircraft_organization = {
 
 		equipment_bonus = {
 			air_range = 0.10
-			air_attack = 0.5
+			air_attack = 0.05
 		}
 	}
 }
@@ -5933,7 +5933,7 @@ generic_range_focused_aircraft_organization = {
 	trait = {
 		token = generic_mio_trait_extra_cargo_doors
 		name = generic_mio_trait_extra_cargo_doors
-		icon = GFX_generic_mio_department_icon_plane_general_production
+		icon = GFX_generic_mio_department_icon_air_transport_production
 
 		position = { x=9 y=0 }
 
@@ -6394,7 +6394,7 @@ generic_artillery_organization = {
 	trait = {
 		token = generic_mio_trait_big_guns
 		name = generic_mio_trait_big_guns
-		icon = GFX_generic_mio_department_icon_artillery_production
+		icon = GFX_generic_mio_trait_icon_soft_attack
 
 		position = { x=2 y=0 }
 		relative_position_id = generic_mio_trait_advanced_barrel_forging
@@ -7056,8 +7056,7 @@ generic_motorized_mechanized_organization = {
 	}
 	
 	research_categories = {
-		motorized_equipment
-		mot_rockets
+		mio_cat_tech_all_motorized_mechanized
 	}
 
 	

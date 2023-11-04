@@ -14,4 +14,35 @@ on_actions = {
 	on_mio_tech_research_cancelled = {}
 	on_mio_tech_research_completed = {}
 	on_mio_industrial_manufacturer_unassigned = {}
+
+
+	#Not run on a specific country.
+	on_startup = {
+		#SET UP MIO SIZE IN 1939 BOOKMARK
+		effect = {
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+					date > 1939.01.01 #1939 Bookmark
+				}
+				every_country = {
+					limit = {
+						is_major = yes
+					}
+					every_military_industrial_organization = {
+						add_mio_size = 4
+					}
+				}
+				every_country = {
+					limit = {
+						is_major = no
+					}
+					every_military_industrial_organization = {
+						add_mio_size = 3
+					}
+				}
+			}
+		}
+
+	}
 }
