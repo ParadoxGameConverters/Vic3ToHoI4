@@ -135,7 +135,7 @@ SWE_folkhemmet_communism = {
 SWE_hygenic_housing_output_bonus = {
 	enable = { always = yes }
 	icon = GFX_modifiers_SWE_hygienic_housing
-	state_production_speed_industrial_complex_factor = 0.12
+	state_production_speed_industrial_complex_factor = 0.1
 }
 
 SWE_blown_up_mines = {
@@ -399,6 +399,10 @@ DEN_political_edicts_dynamic_modifier = {
 DEN_occupation_laws_dynamic_modifier = {
 	enable = { always = yes }
 	icon = GFX_idea_DEN_occupation_laws
+
+	remove_trigger = {
+		is_subject = no
+	}
 	
 	cic_to_overlord_factor = DEN_occupation_laws_cic_to_overlord
 	mic_to_overlord_factor = DEN_occupation_laws_mic_to_overlord

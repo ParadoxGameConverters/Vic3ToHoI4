@@ -886,15 +886,15 @@ default_market_stockpile_management = {
 	}
 
 	# Better not put all your boats up for sail
-	ai_strategy = {
-		type = equipment_market_for_sale_threshold
-		id = convoy
-		value = 100  # only start considering selling convoys if surplus more than 100
-	}
+	# ai_strategy = {  # Commented because handled dynamically in code through the EQUIPMENT_MARKET_WANTED_CONVOY_USAGE_RATIO define
+	# 	type = equipment_market_for_sale_threshold
+	# 	id = convoy
+	# 	value = 100  # only start considering selling convoys if surplus more than 100
+	# }
 	ai_strategy = {
 		type = equipment_market_min_for_sale
 		id = convoy
-		value = 30  # only put up for sale in chunks of 5
+		value = 20  # only put up for sale in chunks of 20
 	}
 
 	# Don't let all your planes just fly out the window.
@@ -986,7 +986,7 @@ default_market_convoy_purchases = {
 	ai_strategy = {
 		type = equipment_market_buying_threshold
 		id = convoy
-		value = 30  # Consider buying if we have too few (less than 30) convoys
+		value = 30  # Consider buying if we have too few (less than 30) convoys. Also interacts with the EQUIPMENT_MARKET_WANTED_CONVOY_USAGE_RATIO define.
 	}
 }
 

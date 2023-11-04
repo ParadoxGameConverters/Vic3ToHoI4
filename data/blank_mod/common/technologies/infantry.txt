@@ -1450,6 +1450,7 @@ technologies = {
 		
 		categories = {
 			motorized_equipment
+			mio_cat_tech_all_motorized_mechanized
 			infantry_tech
 		}
 		
@@ -1530,6 +1531,7 @@ technologies = {
 		
 		categories = {
 			motorized_equipment
+			mio_cat_tech_all_motorized_mechanized
 			infantry_tech
 		}
 		
@@ -1577,6 +1579,7 @@ technologies = {
 		
 		categories = {
 			mot_rockets
+			mio_cat_tech_all_motorized_mechanized
 		}
 	}
 	
@@ -1810,7 +1813,7 @@ technologies = {
 			#hardness = 1
 			forest = {
 		    	attack = 0.05
-				movement = 0.1
+				movement = 0.05
 			}
 			desert = {
 		    	attack = -0.15
@@ -1818,13 +1821,17 @@ technologies = {
 			}
 
 			snow = {
-				attack = 0.2
-				movement = 0.25
+				attack = 0.05
+				movement = 0.08
 			}
 		}
 	}
 
 	mechanised_infantry = {
+
+		enable_subunits = {
+			mechanized
+		}
 
 		enable_equipments = {
 			mechanized_equipment_1
@@ -1869,6 +1876,7 @@ technologies = {
 		
 		categories = {
 			motorized_equipment
+			mio_cat_tech_all_motorized_mechanized
 			infantry_tech
 			cat_mechanized_equipment
 		}
@@ -1913,6 +1921,7 @@ technologies = {
 		
 		categories = {
 			motorized_equipment
+			mio_cat_tech_all_motorized_mechanized
 			infantry_tech
 			cat_mechanized_equipment
 			tp_tech
@@ -1940,6 +1949,7 @@ technologies = {
 		
 		categories = {
 			motorized_equipment
+			mio_cat_tech_all_motorized_mechanized
 			infantry_tech
 			cat_mechanized_equipment
 			tp_tech
@@ -1970,6 +1980,7 @@ technologies = {
 		
 		categories = {
 			motorized_equipment
+			mio_cat_tech_all_motorized_mechanized
 			infantry_tech
 			cat_mechanized_equipment
 		}
@@ -1999,6 +2010,7 @@ technologies = {
 		
 		categories = {
 			motorized_equipment
+			mio_cat_tech_all_motorized_mechanized
 			infantry_tech
 			cat_mechanized_equipment
 		}
