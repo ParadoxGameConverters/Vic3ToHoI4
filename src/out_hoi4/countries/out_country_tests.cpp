@@ -771,7 +771,7 @@ TEST(Outhoi4CountriesOutcountryTests, NaviesAreOutputToCountryNavalFiles)
    commonItems::TryCreateFolder("output/NaviesAreOutputToCountryNavalFiles/history");
    commonItems::TryCreateFolder("output/NaviesAreOutputToCountryNavalFiles/history/units");
 
-   const hoi4::Country country({.tag = "TAG"});
+   const hoi4::Country country({.tag = "TAG", .ships = {hoi4::Ship("Ship", "", "", "", "")}});
    OutputCountryNavy("NaviesAreOutputToCountryNavalFiles", country);
 
    const std::string naval_file = "output/NaviesAreOutputToCountryNavalFiles/history/units/TAG_1936_Naval.txt";
@@ -783,7 +783,9 @@ TEST(Outhoi4CountriesOutcountryTests, NaviesAreOutputToCountryNavalFiles)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(navy_stream));
    navy.close();
-   const char* expected_navy = "Dummy file";
+   const char* expected_navy =
+       "Naval OOB\n"
+       "# Cannot find naval base, ignoring 1 ships";
    EXPECT_THAT(navy_stream.str(), testing::HasSubstr(expected_navy));
 
    const std::string legacy_file = "output/NaviesAreOutputToCountryNavalFiles/history/units/TAG_1936_Naval_Legacy.txt";
@@ -795,9 +797,91 @@ TEST(Outhoi4CountriesOutcountryTests, NaviesAreOutputToCountryNavalFiles)
        std::istreambuf_iterator<char>(),
        std::ostreambuf_iterator<char>(legacy_stream));
    legacy.close();
-   const char* expected_legacy = "Dummy file";
+   const char* expected_legacy =
+       "Naval non-MTG OOB\n"
+       "# Cannot find naval base, ignoring 1 ships";
    EXPECT_THAT(legacy_stream.str(), testing::HasSubstr(expected_legacy));
 }
+
+TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
+{
+   commonItems::TryCreateFolder("output");
+   commonItems::TryCreateFolder("output/ShipsAreOutputInBothFormats");
+   commonItems::TryCreateFolder("output/ShipsAreOutputInBothFormats/history");
+   commonItems::TryCreateFolder("output/ShipsAreOutputInBothFormats/history/units");
+
+   const hoi4::Country country({.tag = "TAG",
+       .ships = {hoi4::Ship("Test Ship",
+           "test_ship_type",
+           "mtg_equipment_template",
+           "legacy_equipment_template",
+           "Test Class")},
+       .naval_base = 123});
+   OutputCountryNavy("ShipsAreOutputInBothFormats", country);
+
+   const std::string naval_file = "output/ShipsAreOutputInBothFormats/history/units/TAG_1936_Naval.txt";
+   ASSERT_TRUE(commonItems::DoesFileExist(naval_file));
+   std::ifstream navy(naval_file);
+   ASSERT_TRUE(navy.is_open());
+   std::stringstream navy_stream;
+   std::copy(std::istreambuf_iterator<char>(navy),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(navy_stream));
+   navy.close();
+   const char* expected_navy =
+       "Naval OOB\n"
+       "units = {\n"
+       "\tfleet = {\n"
+       "\t\tname = \"Conversion Navy\"\n"
+       "\t\tnaval_base = 123\n"
+       "\t\ttask_force = {\n"
+       "\t\t\tname = \"Home Fleet\"\n"
+       "\t\t\tlocation = 123\n"
+       "\t\t\tship = {"
+       " name = \"Test Ship\""
+       " definition = test_ship_type"
+       " equipment = { mtg_equipment_template = { "
+       " amount = 1 "
+       " owner = TAG "
+       " version_name = \"Test Class\" } } }\n"
+       "\t\t}\n"
+       "\t}\n"
+       "}\n";
+
+   EXPECT_THAT(navy_stream.str(), testing::HasSubstr(expected_navy));
+
+   const std::string legacy_file = "output/ShipsAreOutputInBothFormats/history/units/TAG_1936_Naval_Legacy.txt";
+   ASSERT_TRUE(commonItems::DoesFileExist(legacy_file));
+   std::ifstream legacy(legacy_file);
+   ASSERT_TRUE(legacy.is_open());
+   std::stringstream legacy_stream;
+   std::copy(std::istreambuf_iterator<char>(legacy),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(legacy_stream));
+   legacy.close();
+   const char* expected_legacy =
+       "Naval non-MTG OOB\n"
+       "units = {\n"
+       "\tfleet = {\n"
+       "\t\tname = \"Conversion Navy\"\n"
+       "\t\tnaval_base = 123\n"
+       "\t\ttask_force = {\n"
+       "\t\t\tname = \"Home Fleet\"\n"
+       "\t\t\tlocation = 123\n"
+       "\t\t\tship = {"
+       " name = \"Test Ship\""
+       " definition = test_ship_type"
+       " equipment = { legacy_equipment_template = { "
+       " amount = 1 "
+       " owner = TAG "
+       " version_name = \"Test Class\" } } }\n"
+       "\t\t}\n"
+       "\t}\n"
+       "}\n";
+   EXPECT_THAT(legacy_stream.str(), testing::HasSubstr(expected_legacy));
+}
+
+
 
 
 }  // namespace out
