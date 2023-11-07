@@ -12,10 +12,12 @@ class Ship
    Ship(const std::string& name,
        const std::string& definition,
        const std::string& equipment,
+       const std::string& legacy_equipment,
        const std::string& version):
        name_(name),
        definition_(definition),
        equipment_(equipment),
+       legacy_equipment_(legacy_equipment),
        version_(version)
    {
    }
@@ -23,6 +25,7 @@ class Ship
    const std::string& GetName() const { return name_; }
    const std::string& GetDefinition() const { return definition_; }
    const std::string& GetEquipment() const { return equipment_; }
+   const std::string& GetLegacyEquipment() const { return legacy_equipment_; }
    const std::string& GetVersion() const { return version_; }
 
    std::partial_ordering operator<=>(const Ship&) const = default;
@@ -31,6 +34,7 @@ class Ship
    std::string name_;
    std::string definition_;
    std::string equipment_;
+   std::string legacy_equipment_;
    std::string version_;
 };
 
