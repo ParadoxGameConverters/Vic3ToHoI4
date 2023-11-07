@@ -1,10 +1,12 @@
 # Written by Henrik "Groogy" Hansson
 # Modified by Daniel "Da9L" Sjöberg
 
-default_unit_production = { #If adding country-unique ones, bear in mind that they STACK
+default_unit_production = {
+	# If adding country-unique ones, bear in mind that they STACK unless excluding countries in the enable
 	enable = {
 		always = yes
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = role_ratio
@@ -46,19 +48,19 @@ default_unit_production = { #If adding country-unique ones, bear in mind that th
 	ai_strategy = {
 		type = unit_ratio
 		id = cas
-		value = 5
+		value = 10
 	}
 
 	ai_strategy = {
 		type = unit_ratio
 		id = tactical_bomber
-		value = 5
+		value = 10
 	}
 
 	ai_strategy = {
 		type = unit_ratio
 		id = strategic_bomber
-		value = 1
+		value = 5
 	}
 
 	ai_strategy = {
@@ -105,6 +107,12 @@ default_unit_production = { #If adding country-unique ones, bear in mind that th
 	}
 
 	ai_strategy = {
+		type = equipment_production_min_factories
+		id = convoy
+		value = 1
+	}
+
+	ai_strategy = {
 		type = equipment_production_factor
 		id = fighter
 		value = 35
@@ -129,6 +137,7 @@ default_role_ratios = {
 			has_dlc = "Man the Guns"
 		}
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = role_ratio
@@ -159,6 +168,7 @@ default_role_ratios = {
 	enable = {
 		has_dlc = "Man the Guns"
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = role_ratio
@@ -221,6 +231,50 @@ default_role_ratios = {
 	}
 }
 
+default_surplus_management = {
+	# If we manage to get all equipment we want, keep producing more stuff according to this
+	enable = {
+		always = yes  # For now, applies to everyone
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_production_surplus_management
+		id = infantry_equipment
+		value = 10
+	}
+
+	ai_strategy = {
+		type = equipment_production_surplus_management
+		id = support_equipment
+		value = 5
+	}
+
+	ai_strategy = {
+		type = equipment_production_surplus_management
+		id = artillery_equipment
+		value = 5
+	}
+
+	ai_strategy = {  # Potentially move into a "specialization" strategy
+		type = equipment_production_surplus_management
+		id = anti_air_equipment
+		value = 3
+	}
+
+	ai_strategy = {  # Potentially move into a "specialization" strategy
+		type = equipment_production_surplus_management
+		id = anti_tank_equipment
+		value = 2
+	}
+
+	ai_strategy = {
+		type = equipment_production_surplus_management
+		id = convoy
+		value = 5
+	}
+}
+
 bba_air_prod_1 = {
 	# TODO BFW: this was moved from germany's strats
 
@@ -264,7 +318,7 @@ bba_air_prod_1 = {
 	ai_strategy = {
 		type = unit_ratio
 		id = tactical_bomber
-		value = 15
+		value = 10
 	}
 
 	ai_strategy = {
@@ -330,12 +384,12 @@ bba_air_prod_1 = {
 }
 
 bba_support_boosts = {
-	# TODO BFW: this was moved from germany's strats
 
 	enable = {
 		is_historical_focus_on = yes
 		date < 1939.1.1
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = equipment_variant_production_factor
@@ -385,7 +439,7 @@ convoy_voy_voy_voy = {
 	ai_strategy = {
 		type = unit_ratio
 		id = convoy
-		value = 25
+		value = 50
 	}
 }
 
@@ -449,6 +503,7 @@ default_pp_spend_amount = {
 	enable = {
 		always = yes
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = pp_spend_amount
@@ -478,14 +533,40 @@ default_paratroopers_production = {
 	}
 }
 
-build_patrol_bombers = {
+default_major_SF_para = {
+	enable = {
+		is_major = yes
+		has_tech = special_forces_paratroopers
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = role_ratio
+		id = paratroopers
+		value = 4
+	}
+}
 
+default_major_SF_marines = {
+	enable = {
+		is_major = yes
+		has_tech = special_forces_marines
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = role_ratio
+		id = marines
+		value = 2
+	}
+}
+
+build_patrol_bombers = {
 	enable = {
 		has_dlc = "By Blood Alone"
 		has_navy_size = {
 			size > 1
 		}
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = unit_ratio
@@ -604,6 +685,7 @@ slightly_naval_focused_nation = {
 	enable = {
 		always = yes
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = unit_ratio
@@ -630,11 +712,43 @@ slightly_naval_focused_nation = {
 	}
 }
 
+more_naval_focused_nation = {
+	enable = {
+		date > "1941.1.1"  # Delaying it by a couple of years
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = unit_ratio
+		id = capital_ship
+		value = 2		 #1 to 2
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = submarine
+		value = 1
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = screen_ship
+		value = 1
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = convoy
+		value = 1
+	}
+}
+
 
 default_area_priority = {
 	enable = {
 		always = yes
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = area_priority
@@ -702,6 +816,7 @@ default_area_priority_non_africa = {
     enable = {
         NOT = { capital_scope = { is_on_continent = africa } }
     }
+    abort_when_not_enabled = yes
 
     ai_strategy = {
         type = area_priority
@@ -743,10 +858,137 @@ default_stockpile_management = {
 
 	ai_strategy = {
 		type = equipment_stockpile_surplus_ratio
-		value = 35 # double base stockpile #from 25 to 35
+		value = 35 # add this to default PRODUCTION_EQUIPMENT_SURPLUS_FACTOR
 	}
 }
 
+default_market_stockpile_management = {
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+
+	# Hold your trains there, partner
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = train
+		value = 20  # only start considering selling trains if surplus more than 20
+	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = train
+		value = 5  # only put up for sale in chunks of 5
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_factor
+		id = train
+		value = -50  # put fewer trains up for sale
+	}
+
+	# Better not put all your boats up for sail
+	# ai_strategy = {  # Commented because handled dynamically in code through the EQUIPMENT_MARKET_WANTED_CONVOY_USAGE_RATIO define
+	# 	type = equipment_market_for_sale_threshold
+	# 	id = convoy
+	# 	value = 100  # only start considering selling convoys if surplus more than 100
+	# }
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = convoy
+		value = 20  # only put up for sale in chunks of 20
+	}
+
+	# Don't let all your planes just fly out the window.
+	# Only sell planes if we have more than one airwing in surplus.
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = fighter
+		value = 100
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = cas
+		value = 100
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = cv_fighter
+		value = 100
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = cv_cas
+		value = 100
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = tactical_bomber
+		value = 100
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = strategic_bomber
+		value = 100
+	}
+}
+
+default_market_stockpile_management_if_at_war = {
+	enable = {
+		has_war = yes
+		# something something preparing for war?
+		# NOT = { original_tag = GER } # commented until actually needs override
+	}
+	abort_when_not_enabled = yes
+
+	# Don't sell stuff that we need for the war
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = infantry
+		value = 20000
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = support
+		value = 6000
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = artillery
+		value = 1000
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = fighter
+		value = 200
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = motorized
+		value = 1000
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = train
+		value = 50
+	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = convoy
+		value = 50
+	}
+}
+
+default_market_convoy_purchases = {
+	enable = {
+		naval_base > 0  # not land-locked
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_market_buying_threshold
+		id = convoy
+		value = 30  # Consider buying if we have too few (less than 30) convoys. Also interacts with the EQUIPMENT_MARKET_WANTED_CONVOY_USAGE_RATIO define.
+	}
+}
 
 dont_build_capitals_if_on_treaty = {
 	enable = {
@@ -830,6 +1072,7 @@ DEFAULT_midlate_template_design = {
 	enable = {
 		date > 1940.1.1
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = template_prio
@@ -935,6 +1178,7 @@ build_intelligence_agency_as_major = {
 			date > 1938.1.1
 		}
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = intelligence_agency_usable_factories
@@ -999,10 +1243,11 @@ upgrade_intelligence_agency_as_spy_master = {
 	}
 }
 
-addintelligence_agency_normal_upgrade_prio = {
+add_intelligence_agency_normal_upgrade_prio = {
 	enable = {
 		always = yes
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = intelligence_agency_branch_desire_factor
@@ -1074,6 +1319,7 @@ put_garrisons_on_high_prio = {
 	enable = {
 		always = yes
 	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = garrison_reinforcement_priority
@@ -1135,6 +1381,21 @@ minors_dont_spy = {
 		type = unit_ratio
 		id = scout_plane
 		value = -10
+	}
+}
+
+default_produce_some_trucks_for_buffer = {
+	enable = {
+		num_of_military_factories > 12
+		has_tech = tech_trucks
+		has_equipment = { motorized_equipment < 3000 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = motorized
+		value = 1
 	}
 }
 

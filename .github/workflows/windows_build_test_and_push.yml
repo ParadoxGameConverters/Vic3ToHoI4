@@ -74,8 +74,8 @@ jobs:
        echo 'minSource = "1.3"' | out-file data/version.txt -encoding ASCII -append
        echo 'maxSource = "1.4"' | out-file data/version.txt -encoding ASCII -append
        echo 'target = "HoI4"' | out-file data/version.txt -encoding ASCII -append
-       echo 'minTarget = "1.12"' | out-file data/version.txt -encoding ASCII -append
-       echo 'maxTarget = "1.12"' | out-file data/version.txt -encoding ASCII -append
+       echo 'minTarget = "1.13"' | out-file data/version.txt -encoding ASCII -append
+       echo 'maxTarget = "1.13"' | out-file data/version.txt -encoding ASCII -append
        cat data/version.txt
 
     - name: "Build solution"

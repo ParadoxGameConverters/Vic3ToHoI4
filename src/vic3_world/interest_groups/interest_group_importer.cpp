@@ -14,7 +14,7 @@ vic3::InterestGroupImporter::InterestGroupImporter()
       type_ = commonItems::getString(input_stream);
    });
    ig_parser_.registerKeyword("leader", [this](std::istream& input_stream) {
-      leader_ = commonItems::getInt(input_stream);
+      leader_ = commonItems::getLlong(input_stream);
    });
    ig_parser_.registerKeyword("clout", [this](std::istream& input_stream) {
       clout_ = static_cast<float>(commonItems::getDouble(input_stream));

@@ -78,7 +78,7 @@ ideas = {
 				modifier = {
 					#Prio if low on manpower
 					factor = 20
-					manpower_per_military_factory < 1000
+					manpower_per_military_factory < 2000
 				}
 				modifier = {
 					factor = 0

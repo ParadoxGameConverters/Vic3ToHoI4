@@ -962,7 +962,7 @@ ideas = {
 			picture = generic_production_bonus
 			
 			modifier = {
-				consumer_goods_factor = 0.2
+				consumer_goods_factor = 0.4
 				local_resources_factor = -0.2
 				industrial_capacity_factory = -0.2
 				industrial_capacity_dockyard = -0.2
@@ -983,7 +983,7 @@ ideas = {
 			picture = generic_production_bonus
 			
 			modifier = {
-				consumer_goods_factor = 0.3
+				consumer_goods_factor = 0.6
 				local_resources_factor = -0.3
 				industrial_capacity_factory = -0.3
 				industrial_capacity_dockyard = -0.3
@@ -1004,7 +1004,7 @@ ideas = {
 			picture = generic_production_bonus
 			
 			modifier = {
-				consumer_goods_factor = 0.5
+				consumer_goods_factor = 0.8
 				local_resources_factor = -0.5
 				industrial_capacity_factory = -0.5
 				industrial_capacity_dockyard = -0.5
@@ -1225,7 +1225,7 @@ ideas = {
 			
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = tank_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = tank_manufacturer limit = 1 }
 				}
 			}
 			
@@ -1250,7 +1250,7 @@ ideas = {
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = naval_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = naval_manufacturer limit = 1 }
 				}
 			}
 			
@@ -1275,7 +1275,7 @@ ideas = {
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }
 				}
 			}
 			
@@ -1295,7 +1295,7 @@ ideas = {
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
 				}
 			}
 			
@@ -1315,7 +1315,7 @@ ideas = {
 			
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }
 				}
 			}
 			
@@ -1335,7 +1335,7 @@ ideas = {
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
 				}
 			}
 			
@@ -1358,7 +1358,7 @@ ideas = {
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = industrial_concern limit = 1 }
+					has_allowed_idea_with_traits = { idea = industrial_concern limit = 1 }
 				}
 			}
 			
@@ -1378,7 +1378,7 @@ ideas = {
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = electronics_concern limit = 1 }
+					has_allowed_idea_with_traits = { idea = electronics_concern limit = 1 }
 				}
 			}
 			
@@ -1403,7 +1403,7 @@ ideas = {
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }
 				}
 			}
 			
@@ -1423,7 +1423,7 @@ ideas = {
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }
 				}
 			}
 			
@@ -1443,7 +1443,7 @@ ideas = {
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = artillery_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = artillery_manufacturer limit = 1 }
 				}
 			}
 			

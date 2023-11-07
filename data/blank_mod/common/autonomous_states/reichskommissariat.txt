@@ -29,6 +29,7 @@ autonomy_state = {
 		license_subject_master_purchase_cost = -1
 		autonomy_gain_global_factor = -0.3
 		peace_score_ratio_transferred_to_overlord = 0.1
+		lend_lease_tension_with_overlord = -0.20
 	}
 	
 	ai_subject_wants_higher = {
@@ -45,7 +46,8 @@ autonomy_state = {
 
 	allowed = {
 		has_dlc = "Death or Dishonor"
-		has_government = fascism
+		OVERLORD = { has_government = fascism }
+		ROOT = { has_government = fascism }
 	}
 	
 	can_take_level = {

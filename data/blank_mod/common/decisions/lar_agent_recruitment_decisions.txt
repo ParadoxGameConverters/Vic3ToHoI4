@@ -58,10 +58,17 @@ lar_local_recruitment = {
 			
 		}
 
-		state_target = yes
+		target_root_trigger = {
+			OR = {
+				has_country_flag = europe_recruitment_unlocked
+				capital_scope = { is_on_continent = europe }
+			}
+			NOT = { has_country_flag = europe_recruitment_in_process }
+		}
+
+		state_target = europe
 		target_trigger = {
 			FROM = {
-				is_on_continent = europe
 				OR = {
 					AND = {
 						has_variable = historical_capital_for_country
@@ -178,10 +185,16 @@ lar_local_recruitment = {
 			
 		}
 
-		state_target = yes
+		state_target = north_america
+		target_root_trigger = {
+			OR = {
+				has_country_flag = north_america_recruitment_unlocked
+				capital_scope = { is_on_continent = north_america }
+			}
+			NOT = { has_country_flag = north_america_recruitment_in_process }
+		}
 		target_trigger = {
 			FROM = {
-				is_on_continent = north_america
 				OR = {
 					AND = {
 						has_variable = historical_capital_for_country
@@ -301,10 +314,16 @@ lar_local_recruitment = {
 			
 		}
 
-		state_target = yes
+		state_target = south_america
+		target_root_trigger = {
+			OR = {
+				has_country_flag = south_america_recruitment_unlocked
+				capital_scope = { is_on_continent = south_america }
+			}
+			NOT = { has_country_flag = south_america_recruitment_in_process }
+		}
 		target_trigger = {
 			FROM = {
-				is_on_continent = south_america
 				OR = {
 					AND = {
 						has_variable = historical_capital_for_country
@@ -424,10 +443,16 @@ lar_local_recruitment = {
 			
 		}
 
-		state_target = yes
+		state_target = africa
+		target_root_trigger = {
+			OR = {
+				has_country_flag = africa_recruitment_unlocked
+				capital_scope = { is_on_continent = africa }
+			}
+			NOT = { has_country_flag = africa_recruitment_in_process }
+		}
 		target_trigger = {
 			FROM = {
-				is_on_continent = africa
 				OR = {
 					AND = {
 						has_variable = historical_capital_for_country
@@ -547,10 +572,16 @@ lar_local_recruitment = {
 			
 		}
 
-		state_target = yes
+		state_target = middle_east
+		target_root_trigger = {
+			OR = {
+				has_country_flag = middle_east_recruitment_unlocked
+				capital_scope = { is_on_continent = middle_east }
+			}
+			NOT = { has_country_flag = middle_east_recruitment_in_process }
+		}
 		target_trigger = {
 			FROM = {
-				is_on_continent = middle_east
 				OR = {
 					AND = {
 						has_variable = historical_capital_for_country
@@ -670,10 +701,18 @@ lar_local_recruitment = {
 			
 		}
 
-		state_target = yes
+		state_target = asia
+		target_root_trigger = {
+			OR = {
+				has_country_flag = asia_recruitment_unlocked
+				capital_scope = {
+					is_on_continent = asia
+				}
+			}
+			NOT = { has_country_flag = asia_recruitment_in_process }
+		}
 		target_trigger = {
 			FROM = {
-				is_on_continent = asia
 				OR = {
 					AND = {
 						has_variable = historical_capital_for_country
@@ -795,10 +834,16 @@ lar_local_recruitment = {
 			
 		}
 
-		state_target = yes
+		state_target = australia
+		target_root_trigger = {
+			OR = {
+				has_country_flag = australia_recruitment_unlocked
+				capital_scope = { is_on_continent = australia }
+			}
+			NOT = { has_country_flag = australia_recruitment_in_process }
+		}
 		target_trigger = {
 			FROM = {
-				is_on_continent = australia
 				OR = {
 					AND = {
 						has_variable = historical_capital_for_country
