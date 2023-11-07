@@ -67,6 +67,7 @@ struct CountryOptions
    float stability = 0.0F;
    int convoys = 0;
    std::vector<Ship> ships;
+   std::optional<int> naval_base;
 };
 
 class Country
@@ -101,7 +102,8 @@ class Country
        stability_(country_options.stability),
        units_(country_options.units),
        convoys_(country_options.convoys),
-       ships_(country_options.ships)
+       ships_(country_options.ships),
+       naval_base_(country_options.naval_base)
    {
    }
 
@@ -127,6 +129,7 @@ class Country
    [[nodiscard]] const std::vector<int>& GetLeaderIds() const { return character_ids_; }
    [[nodiscard]] const std::set<int>& GetSpyIds() const { return spy_ids_; }
    [[nodiscard]] const std::optional<int64_t>& GetMonarchIdeaIds() const { return monarch_idea_id_; }
+   [[nodiscard]] const std::optional<int>& GetNavalBase() const { return naval_base_; }
    [[nodiscard]] const std::set<std::string>& GetPuppets() const { return puppets_; }
    [[nodiscard]] const std::optional<std::string>& GetOverlord() const { return overlord_; }
    [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
@@ -170,6 +173,7 @@ class Country
    std::vector<Unit> units_;
    int convoys_;
    std::vector<Ship> ships_;
+   std::optional<int> naval_base_;
 };
 
 }  // namespace hoi4
