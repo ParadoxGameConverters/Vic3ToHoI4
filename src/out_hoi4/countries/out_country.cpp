@@ -24,17 +24,15 @@ constexpr std::string_view kShip =
     " owner = {} "
     " version_name = \"{}\" }} }} }}\n";
 constexpr std::string_view kNavyHeader =
-    "units = {{\n"
     "\tfleet = {{\n"
-    "\t\tname = \"Conversion Navy\"\n"
-    "\t\tnaval_base = {}\n"
+    "\t\tname = \"{0} Fleet\"\n"
+    "\t\tnaval_base = {0}\n"
     "\t\ttask_force = {{\n"
-    "\t\t\tname = \"Home Fleet\"\n"
-    "\t\t\tlocation = {}\n";
+    "\t\t\tname = \"{0} Squadron\"\n"
+    "\t\t\tlocation = {0}\n";
 constexpr std::string_view kNavyFooter =
     "\t\t}\n"
-    "\t}\n"
-    "}\n";
+    "\t}\n";
 
 
 void OutputPolitics(std::ostream& country_history,
@@ -280,31 +278,30 @@ void outputShip(std::ofstream& navy, std::ofstream& lgcy, const std::string& tag
 
 void outputNavy(std::ofstream& navy,
     std::ofstream& legacy,
-    const hoi4::Country& country,
-    const std::vector<hoi4::Ship>& ships)
+    const std::string& tag,
+    const std::vector<hoi4::TaskForce>& task_forces)
 {
-   if (ships.empty())
+   if (task_forces.empty())
    {
       return;
    }
-   auto location = country.GetNavalBase();
-   if (!location)
-   {
-      auto warning = fmt::format("# Cannot find naval base, ignoring {} ships\n", ships.size());
-      navy << warning;
-      legacy << warning;
-      return;
-   }
+   navy << "units = {\n";
+   legacy << "units = {\n";
 
-   auto header = fmt::format(kNavyHeader, *location, *location);
-   navy << header;
-   legacy << header;
-   for (const auto& ship: ships)
+   for (const auto& task_force: task_forces)
    {
-      outputShip(navy, legacy, country.GetTag(), ship);
+      auto header = fmt::format(kNavyHeader, task_force.location);
+      navy << header;
+      legacy << header;
+      for (const auto& ship: task_force.ships)
+      {
+         outputShip(navy, legacy, tag, ship);
+      }
+      navy << kNavyFooter;
+      legacy << kNavyFooter;
    }
-   navy << kNavyFooter;
-   legacy << kNavyFooter;
+   navy << "}\n";
+   legacy << "}\n";
 }
 
 void out::OutputCountryNavy(std::string_view output_name, const hoi4::Country& country)
@@ -325,7 +322,7 @@ void out::OutputCountryNavy(std::string_view output_name, const hoi4::Country& c
 
    navy << "# Naval OOB\n";
    legacy << "# Naval non-MTG OOB\n";
-   outputNavy(navy, legacy, country, country.GetShips());
+   outputNavy(navy, legacy, tag, country.GetTaskForces());
    navy.close();
    legacy.close();
 }

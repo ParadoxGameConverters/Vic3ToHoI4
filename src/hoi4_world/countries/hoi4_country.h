@@ -36,6 +36,14 @@ struct Unit
    std::partial_ordering operator<=>(const Unit&) const = default;
 };
 
+struct TaskForce
+{
+   std::vector<Ship> ships;
+   int location;
+
+   std::partial_ordering operator<=>(const TaskForce&) const = default;
+};
+
 struct CountryOptions
 {
    std::string tag;
@@ -66,8 +74,7 @@ struct CountryOptions
    std::vector<Unit> units;
    float stability = 0.0F;
    int convoys = 0;
-   std::vector<Ship> ships;
-   std::optional<int> naval_base;
+   std::vector<TaskForce> task_forces;
 };
 
 class Country
@@ -102,8 +109,7 @@ class Country
        stability_(country_options.stability),
        units_(country_options.units),
        convoys_(country_options.convoys),
-       ships_(country_options.ships),
-       naval_base_(country_options.naval_base)
+       task_forces_(country_options.task_forces)
    {
    }
 
@@ -129,13 +135,12 @@ class Country
    [[nodiscard]] const std::vector<int>& GetLeaderIds() const { return character_ids_; }
    [[nodiscard]] const std::set<int>& GetSpyIds() const { return spy_ids_; }
    [[nodiscard]] const std::optional<int64_t>& GetMonarchIdeaIds() const { return monarch_idea_id_; }
-   [[nodiscard]] const std::optional<int>& GetNavalBase() const { return naval_base_; }
    [[nodiscard]] const std::set<std::string>& GetPuppets() const { return puppets_; }
    [[nodiscard]] const std::optional<std::string>& GetOverlord() const { return overlord_; }
    [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
    [[nodiscard]] float GetStability() const { return stability_; }
    [[nodiscard]] float GetWarSupport() const { return 0.60F; }
-   [[nodiscard]] const std::vector<Ship>& GetShips() const { return ships_; }
+   [[nodiscard]] const std::vector<TaskForce>& GetTaskForces() const { return task_forces_; }
    [[nodiscard]] const std::vector<Unit>& GetUnits() const { return units_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
@@ -172,8 +177,7 @@ class Country
    float stability_ = 0.0F;
    std::vector<Unit> units_;
    int convoys_;
-   std::vector<Ship> ships_;
-   std::optional<int> naval_base_;
+   std::vector<TaskForce> task_forces_;
 };
 
 }  // namespace hoi4
