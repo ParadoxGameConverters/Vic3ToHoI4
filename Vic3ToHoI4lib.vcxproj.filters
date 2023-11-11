@@ -659,6 +659,9 @@
     <ClInclude Include="src\hoi4_world\military\ship.h">
       <Filter>src\hoi4_world\military</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\military\task_force_template.h">
+      <Filter>src\hoi4_world\military</Filter>
+    </ClInclude>
     <ClInclude Include="src\out_hoi4\decisions\out_decisions.h">
       <Filter>src\out_hoi4\decisions</Filter>
     </ClInclude>
@@ -1019,6 +1022,9 @@
       <Filter>src\out_hoi4\ideas</Filter>
     </ClCompile>
     <ClCompile Include="src\hoi4_world\military\division_templates_importer.cpp">
+      <Filter>src\hoi4_world\military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\military\task_force_template.cpp">
       <Filter>src\hoi4_world\military</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\decisions\out_decisions.cpp">
