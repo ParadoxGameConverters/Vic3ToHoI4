@@ -1,0 +1,68 @@
+task_force = {
+  cost = {
+    pm_basic_bigship = 10
+    pm_basic_smallship = 10
+  }
+  ship = {
+    name = "Big Ship"
+    definition = test1
+    equipment = test1
+    legacy_equipment = legacy_test1
+    version = "Basic Big Ship"
+  }
+  ship = {
+    name = "Small Ship"
+    definition = test1
+    equipment = test1
+    legacy_equipment = legacy_test1
+    version = "Basic Small Ship"
+  }
+  ship = {
+    name = "Small Ship"
+    definition = test1
+    equipment = test1
+    legacy_equipment = legacy_test1
+    version = "Basic Small Ship"
+  }
+}
+
+task_force = {
+  cost = {
+    pm_1936_bigship = 10
+    pm_1936_smallship = 10
+  }
+  ship = {
+    name = "Big Ship"
+    definition = test2
+    equipment = test2
+    legacy_equipment = legacy_test2
+    version = "1936 Big Ship"
+  }
+  ship = {
+    name = "Small Ship"
+    definition = test2
+    equipment = test2
+    legacy_equipment = legacy_test2
+    version = "1936 Small Ship"
+  }
+  ship = {
+    name = "Small Ship"
+    definition = test2
+    equipment = test2
+    legacy_equipment = legacy_test2
+    version = "1936 Small Ship"
+  }
+}
+
+task_force = {
+  cost = {
+    pm_humongous = 1
+  }
+  ship = {
+    name = "Humongous Ship"
+    definition = test3
+    equipment = test3
+    legacy_equipment = legacy_test3
+    version = "1936 Humongous Ship"
+  }
+}

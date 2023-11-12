@@ -39,14 +39,13 @@ void hoi4::TaskForceTemplate::AddShipsIfPossible(std::vector<hoi4::Ship>& ships,
    {
       points[pm] -= amount * multiple;
    }
-   char shipNum[10];
+   char shipName[1000];
    for (int i = 0; i < multiple; ++i)
    {
       for (const auto& ship: ships_)
       {
          shipCounts[ship.GetName()]++;
-         sprintf(shipNum, "%d", shipCounts[ship.GetName()]);
-         std::string shipName = ship.GetName() + " " + shipNum;
+         sprintf(shipName, "%s %d", ship.GetName().c_str(), shipCounts[ship.GetName()]);
          ships.emplace_back(shipName,
              ship.GetDefinition(),
              ship.GetEquipment(),
