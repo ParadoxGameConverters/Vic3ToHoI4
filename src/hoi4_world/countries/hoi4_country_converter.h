@@ -10,6 +10,7 @@
 #include "src/hoi4_world/military/convoy_distributor.h"
 #include "src/hoi4_world/military/division_template.h"
 #include "src/hoi4_world/military/equipment_variant.h"
+#include "src/hoi4_world/military/task_force_template.h"
 #include "src/hoi4_world/states/hoi4_states.h"
 #include "src/mappers/character/character_trait_mapper.h"
 #include "src/mappers/character/culture_queue.h"
@@ -46,6 +47,7 @@ std::optional<Country> ConvertCountry(const vic3::World& source_world,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
     const ConvoyDistributor& convoys,
+    const std::vector<hoi4::TaskForceTemplate>& task_force_templates,
     std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues,
     bool debug = false);

@@ -10,7 +10,7 @@ namespace hoi4
 
 void PrintTo(const Country& country, std::ostream* os)
 {
-   *os << "\nTag            = " << country.tag_ << "\n"
+   *os << "\nTag          = " << country.tag_ << "\n"
        << "Capital        = " << country.capital_state_.value_or(-1) << "\n"
        << "Ideology       = " << country.ideology_ << " (" << country.sub_ideology_ << ")\n"
        << "Elections      = " << country.last_election_ << " (" << country.has_elections_ << ")\n"
@@ -28,5 +28,20 @@ void PrintTo(const Country& country, std::ostream* os)
        << "NB: Techs, equipment variants, color, graphics block, and name list not printed.\n"
        << "If you are testing one of these, add them to the debug printer in hoi4_country.cpp.\n";
 }
+
+void PrintTo(const TaskForce& force, std::ostream* os)
+{
+   *os << "Location = " << force.location << "\n" << fmt::format("{} ships:\n", force.ships.size());
+   for (const auto& ship: force.ships)
+   {
+      *os << fmt::format("{} {} {} {} {} \n",
+          ship.GetName(),
+          ship.GetDefinition(),
+          ship.GetEquipment(),
+          ship.GetLegacyEquipment(),
+          ship.GetVersion());
+   }
+}
+
 
 }  // namespace hoi4

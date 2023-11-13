@@ -8,6 +8,7 @@
 #include "src/hoi4_world/military/division_templates_importer.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/equipment_variants_importer.h"
+#include "src/hoi4_world/military/task_force_template.h"
 #include "src/mappers/character/character_trait_mapper_importer.h"
 #include "src/mappers/character/leader_type_mapper_importer.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
@@ -102,6 +103,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
           leader_type_mapper,
           character_trait_mapper,
           convoys,
+          {},
           characters,
           culture_queues,
           debug);

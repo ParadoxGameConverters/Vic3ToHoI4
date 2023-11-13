@@ -42,6 +42,7 @@ struct TaskForce
    int location;
 
    std::partial_ordering operator<=>(const TaskForce&) const = default;
+   friend void PrintTo(const TaskForce& force, std::ostream* os);
 };
 
 struct CountryOptions
