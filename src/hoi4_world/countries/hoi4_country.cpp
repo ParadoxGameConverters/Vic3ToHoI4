@@ -23,6 +23,7 @@ void PrintTo(const Country& country, std::ostream* os)
        << "Stability      = " << country.stability_ << "\n"
        << "Convoys        = " << country.convoys_ << "\n"
        << "Units          = " << country.units_.size() << "\n"
+       << "Task forces    = " << country.task_forces_.size() << "\n"
        << fmt::format("Ideas          = {{ {} }}\n", fmt::join(country.ideas_, " "))
        << fmt::format("Puppets        = {{ {} }}\n", fmt::join(country.puppets_, " "))
        << "NB: Techs, equipment variants, color, graphics block, and name list not printed.\n"

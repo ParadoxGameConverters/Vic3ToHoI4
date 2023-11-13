@@ -12,6 +12,8 @@ std::vector<hoi4::EquipmentVariant> hoi4::ImportEquipmentVariants(std::string_vi
 
    std::set<std::string> required_techs;
    std::set<std::string> blocking_techs;
+   std::string eq_name;
+   std::string eq_type;
    std::vector<std::pair<std::string, std::string>> text_items;
 
    commonItems::parser variant_parser;
@@ -20,6 +22,12 @@ std::vector<hoi4::EquipmentVariant> hoi4::ImportEquipmentVariants(std::string_vi
       {
          required_techs.insert(tech);
       }
+   });
+   variant_parser.registerKeyword("name", [&eq_name](std::istream& input_stream) {
+      eq_name = commonItems::getString(input_stream);
+   });
+   variant_parser.registerKeyword("type", [&eq_type](std::istream& input_stream) {
+      eq_type = commonItems::getString(input_stream);
    });
    variant_parser.registerKeyword("blocking_techs", [&blocking_techs](std::istream& input_stream) {
       for (const std::string& tech: commonItems::getStrings(input_stream))
@@ -34,15 +42,18 @@ std::vector<hoi4::EquipmentVariant> hoi4::ImportEquipmentVariants(std::string_vi
 
    commonItems::parser file_parser;
    file_parser.registerRegex(commonItems::catchallRegex,
-       [&equipment_variants, &required_techs, &blocking_techs, &text_items, &variant_parser](const std::string& unused,
+       [&equipment_variants, &required_techs, &blocking_techs, &eq_name, &eq_type, &text_items, &variant_parser](
+           const std::string& unused,
            std::istream& input_stream) {
           required_techs.clear();
           blocking_techs.clear();
+          eq_name.clear();
+          eq_type.clear();
           text_items.clear();
 
           variant_parser.parseStream(input_stream);
 
-          equipment_variants.emplace_back(required_techs, blocking_techs, text_items);
+          equipment_variants.emplace_back(eq_name, eq_type, required_techs, blocking_techs, text_items);
        });
 
    file_parser.parseFile(variants_filename);

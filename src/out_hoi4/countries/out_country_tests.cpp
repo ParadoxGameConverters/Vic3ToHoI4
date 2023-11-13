@@ -567,20 +567,20 @@ TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)
    commonItems::TryCreateFolder("output/EquipmentVariantsAreOutput/history/countries");
 
    const std::vector<hoi4::EquipmentVariant> legacy_ship_variants = {
-       hoi4::EquipmentVariant({}, {}, {{"name", "= legacy_ship: variant_one"}}),
-       hoi4::EquipmentVariant({}, {"blocking_tech_missing"}, {{"name", "= legacy_ship: variant_two"}}),
+       hoi4::EquipmentVariant("legacy_ship: variant_one", "", {}, {}, {}),
+       hoi4::EquipmentVariant("legacy_ship: variant_two", "", {}, {"blocking_tech_missing"}, {}),
    };
    const std::vector<hoi4::EquipmentVariant> ship_variants = {
-       hoi4::EquipmentVariant({}, {}, {{"name", "= ship: variant_one"}}),
-       hoi4::EquipmentVariant({}, {"blocking_tech_missing"}, {{"name", "= ship: variant_two"}}),
+       hoi4::EquipmentVariant("ship: variant_one", "", {}, {}, {}),
+       hoi4::EquipmentVariant("ship: variant_two", "", {}, {"blocking_tech_missing"}, {}),
    };
    const std::vector<hoi4::EquipmentVariant> plane_variants = {
-       hoi4::EquipmentVariant({}, {}, {{"name", "= plane: variant_one"}}),
-       hoi4::EquipmentVariant({}, {"blocking_tech_missing"}, {{"name", "= plane: variant_two"}}),
+       hoi4::EquipmentVariant("plane: variant_one", "", {}, {}, {}),
+       hoi4::EquipmentVariant("plane: variant_two", "", {}, {"blocking_tech_missing"}, {}),
    };
    const std::vector<hoi4::EquipmentVariant> tank_variants = {
-       hoi4::EquipmentVariant({}, {}, {{"name", "= tank: variant_one"}}),
-       hoi4::EquipmentVariant({}, {"blocking_tech_missing"}, {{"name", "= tank: variant_two"}}),
+       hoi4::EquipmentVariant("tank: variant_one", "", {}, {}, {}),
+       hoi4::EquipmentVariant("tank: variant_two", "", {}, {"blocking_tech_missing"}, {}),
    };
 
    const hoi4::Country country({.tag = "TAG",
@@ -604,38 +604,38 @@ TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)
        "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n"
        "\tset_naval_oob = TAG_1936_Naval_Legacy\n"
        "\tcreate_equipment_variant = {\n"
-       "\t\tname = legacy_ship: variant_one\n"
+       "\t\tname = \"legacy_ship: variant_one\"\n"
        "\t}\n"
        "\tcreate_equipment_variant = {\n"
-       "\t\tname = legacy_ship: variant_two\n"
+       "\t\tname = \"legacy_ship: variant_two\"\n"
        "\t}\n"
        "}\n"
        "if = {\n"
        "\tlimit = { has_dlc = \"Man the Guns\" }\n"
        "\tset_naval_oob = TAG_1936_Naval\n"
        "\tcreate_equipment_variant = {\n"
-       "\t\tname = ship: variant_one\n"
+       "\t\tname = \"ship: variant_one\"\n"
        "\t}\n"
        "\tcreate_equipment_variant = {\n"
-       "\t\tname = ship: variant_two\n"
+       "\t\tname = \"ship: variant_two\"\n"
        "\t}\n"
        "}\n"
        "if = {\n"
        "\tlimit = { has_dlc = \"By Blood Alone\" }\n"
        "\tcreate_equipment_variant = {\n"
-       "\t\tname = plane: variant_one\n"
+       "\t\tname = \"plane: variant_one\"\n"
        "\t}\n"
        "\tcreate_equipment_variant = {\n"
-       "\t\tname = plane: variant_two\n"
+       "\t\tname = \"plane: variant_two\"\n"
        "\t}\n"
        "}\n"
        "if = {\n"
        "\tlimit = { has_dlc = \"No Step Back\" }\n"
        "\tcreate_equipment_variant = {\n"
-       "\t\tname = tank: variant_one\n"
+       "\t\tname = \"tank: variant_one\"\n"
        "\t}\n"
        "\tcreate_equipment_variant = {\n"
-       "\t\tname = tank: variant_two\n"
+       "\t\tname = \"tank: variant_two\"\n"
        "\t}\n"
        "}\n";
 

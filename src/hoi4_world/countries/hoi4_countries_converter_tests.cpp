@@ -67,7 +67,11 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                {2, {"source_technology_two"}},
            },
        .buildings = vic3::Buildings({
-           {1, {vic3::Building(vic3::BuildingType::Port, 1, 0, 1, std::vector<std::string>{"pm_port_3"})}},
+           {1,
+               {
+                   vic3::Building(vic3::BuildingType::Port, 1, 0, 1, std::vector<std::string>{"pm_port_3"}),
+                   vic3::Building(vic3::BuildingType::NavalBase, 1, 0, 1, std::vector<std::string>{"pm_navy"}),
+               }},
            {2, {vic3::Building(vic3::BuildingType::Port, 2, 0, 1, std::vector<std::string>{"pm_port_1"})}},
            {3, {vic3::Building(vic3::BuildingType::Port, 3, 0, 1, std::vector<std::string>{"pm_port_2"})}},
        }),
@@ -91,6 +95,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                {
                    .owner = "TAG",
                    .provinces = {10},
+                   .naval_base_location = 10,
                }),
            State(20,
                {
@@ -129,36 +134,42 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
            {std::nullopt, std::set<std::string>{"dest_technology_three", "dest_technology_four"}}},
    };
    const std::vector<EquipmentVariant> expected_legacy_ship_variants_one = {
-       EquipmentVariant({"dest_technology_one"}, {}, {{"name", "= \"Test Legacy Ship Variant One\""}}),
-       EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Legacy Ship Variant Four\""}}),
+       EquipmentVariant("Test Legacy Ship Variant One", "legacy_test_ship", {"dest_technology_one"}, {}, {}),
+       EquipmentVariant("Test Legacy Ship Variant Four", "", {}, {"dest_technology_four"}, {}),
    };
    const std::vector<EquipmentVariant> expected_legacy_ship_variants_two = {
-       EquipmentVariant({"dest_technology_three"}, {}, {{"name", "= \"Test Legacy Ship Variant Two\""}}),
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Legacy Ship Variant Three\""}}),
+       EquipmentVariant("Test Legacy Ship Variant Two", "", {"dest_technology_three"}, {}, {}),
+       EquipmentVariant("Test Legacy Ship Variant Three", "", {}, {"dest_technology_two"}, {}),
    };
    const std::vector<EquipmentVariant> expected_ship_variants_one = {
-       EquipmentVariant({"dest_technology_one"}, {}, {{"name", "= \"Test Ship Variant One\""}}),
-       EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Ship Variant Four\""}}),
+       EquipmentVariant("Test Ship Variant One", "mtg_test_ship", {"dest_technology_one"}, {}, {}),
+       EquipmentVariant("Test Ship Variant Four", "", {}, {"dest_technology_four"}, {}),
    };
    const std::vector<EquipmentVariant> expected_ship_variants_two = {
-       EquipmentVariant({"dest_technology_three"}, {}, {{"name", "= \"Test Ship Variant Two\""}}),
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Ship Variant Three\""}}),
+       EquipmentVariant("Test Ship Variant Two", "", {"dest_technology_three"}, {}, {}),
+       EquipmentVariant("Test Ship Variant Three", "", {}, {"dest_technology_two"}, {}),
    };
    const std::vector<EquipmentVariant> expected_plane_variants_one = {
-       EquipmentVariant({"dest_technology_one"}, {}, {{"name", "= \"Test Plane Design One\""}}),
-       EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Plane Design Four\""}}),
+       EquipmentVariant("Test Plane Design One", "", {"dest_technology_one"}, {}, {}),
+       EquipmentVariant("Test Plane Design Four", "", {}, {"dest_technology_four"}, {}),
    };
    const std::vector<EquipmentVariant> expected_plane_variants_two = {
-       EquipmentVariant({"dest_technology_three"}, {}, {{"name", "= \"Test Plane Design Two\""}}),
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Plane Design Three\""}}),
+       EquipmentVariant("Test Plane Design Two", "", {"dest_technology_three"}, {}, {}),
+       EquipmentVariant("Test Plane Design Three", "", {}, {"dest_technology_two"}, {}),
    };
    const std::vector<EquipmentVariant> expected_tank_variants_one = {
-       EquipmentVariant({"dest_technology_one"}, {}, {{"name", "= \"Test Tank Design One\""}}),
-       EquipmentVariant({}, {"dest_technology_four"}, {{"name", "= \"Test Tank Design Four\""}}),
+       EquipmentVariant("Test Tank Design One", "", {"dest_technology_one"}, {}, {}),
+       EquipmentVariant("Test Tank Design Four", "", {}, {"dest_technology_four"}, {}),
    };
    const std::vector<EquipmentVariant> expected_tank_variants_two = {
-       EquipmentVariant({"dest_technology_three"}, {}, {{"name", "= \"Test Tank Design Two\""}}),
-       EquipmentVariant({}, {"dest_technology_two"}, {{"name", "= \"Test Tank Design Three\""}}),
+       EquipmentVariant("Test Tank Design Two", "", {"dest_technology_three"}, {}, {}),
+       EquipmentVariant("Test Tank Design Three", "", {}, {"dest_technology_two"}, {}),
+   };
+   const std::vector<TaskForce> expected_task_forces = {
+       TaskForce{
+           .ships = {Ship("Test Ship 1", "test_ship", "mtg_test_ship", "legacy_test_ship", "Test Ship Variant One")},
+           .location = 10,
+       },
    };
 
    const mappers::GraphicsBlock expected_graphics_block_one{{{"army", {"GFX_general_0"}}},
@@ -183,7 +194,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .spy_ids = {4},
                                     .starting_research_slots = 3,
                                     .units = {},
-                                    .convoys = 100})),
+                                    .convoys = 100,
+                                    .task_forces = expected_task_forces})),
            testing::Pair("TWO",
                Country(CountryOptions{.tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
@@ -199,7 +211,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .character_ids = {2},
                    .starting_research_slots = 3,
                    .units = {},
-                   .convoys = 11}))));
+                   .convoys = 11,
+                   .task_forces = {}}))));
 }
 
 }  // namespace hoi4

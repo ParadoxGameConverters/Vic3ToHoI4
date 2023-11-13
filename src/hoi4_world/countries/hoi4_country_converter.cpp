@@ -254,17 +254,17 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
 
 void extractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std::set<std::string>& active)
 {
-   const std::set<std::string> toExtract{"name", "type"};
    for (const auto& variant: variants)
    {
-      const auto& items = variant.GetTextItems();
-      for (const auto& item: items)
+      const auto eq_name = variant.GetName();
+      if (!eq_name.empty())
       {
-         if (!toExtract.contains(item.first))
-         {
-            continue;
-         }
-         active.insert(commonItems::remQuotes(item.second));
+         active.insert(eq_name);
+      }
+      const auto eq_type = variant.GetType();
+      if (!eq_type.empty())
+      {
+         active.insert(eq_type);
       }
    }
 }
@@ -280,8 +280,19 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
    std::map<std::string, float> pm_amounts;
    std::map<std::string, int> ship_names;
    std::set<std::string> active_variants;
+   std::map<int, int> naval_base_locations;
    extractActiveItems(active_ship_variants, active_variants);
    extractActiveItems(active_legacy_ship_variants, active_variants);
+
+   for (const auto& state: states.states)
+   {
+      auto location = state.GetNavalBaseLocation();
+      if (!location)
+      {
+         continue;
+      }
+      naval_base_locations[state.GetId()] = location.value();
+   }
 
    for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
    {
@@ -304,13 +315,12 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
          pm_amounts[pm] += navalbase->GetStaffingLevel();
       }
 
-      auto location = states.states[hoi4_id - 1].GetNavalBaseLocation();
-      if (!location)
+      if (!naval_base_locations.contains(hoi4_id))
       {
          continue;
       }
 
-      hoi4::TaskForce task_force{.ships = {}, .location = location.value()};
+      hoi4::TaskForce task_force{.ships = {}, .location = naval_base_locations[hoi4_id]};
       for (const auto& tmpl: task_force_templates)
       {
          if (!tmpl.AllVariantsActive(active_variants))
