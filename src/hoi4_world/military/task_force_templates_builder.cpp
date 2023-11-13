@@ -14,17 +14,16 @@ std::vector<hoi4::TaskForceTemplate> hoi4::ImportTaskForceTemplates(std::string_
    std::vector<hoi4::Ship> ships;
 
    commonItems::parser cost_parser;
-   cost_parser.registerRegex(commonItems::catchallRegex,
-       [&costs](const std::string& key, std::istream& input_stream) {
-          auto value = commonItems::getDouble(input_stream);
-          // Disallow tiny costs to avoid spamming conversion
-          // with ships and infinite ship-creation loops.
-          if (value < 0.01)
-          {
-             return;
-          }
-          costs[key] = value;
-       });
+   cost_parser.registerRegex(commonItems::catchallRegex, [&costs](const std::string& key, std::istream& input_stream) {
+      auto value = commonItems::getDouble(input_stream);
+      // Disallow tiny costs to avoid spamming conversion
+      // with ships and infinite ship-creation loops.
+      if (value < 0.01)
+      {
+         return;
+      }
+      costs[key] = value;
+   });
    commonItems::parser template_parser;
    template_parser.registerKeyword("cost", [&costs, &cost_parser](std::istream& input_stream) {
       cost_parser.parseStream(input_stream);
