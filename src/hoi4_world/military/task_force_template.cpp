@@ -47,7 +47,6 @@ void hoi4::TaskForceTemplate::AddShipsIfPossible(std::vector<hoi4::Ship>& ships,
       for (const auto& ship: ships_)
       {
          shipCounts[ship.GetName()]++;
-         //sprintf(shipName, "%s %d", ship.GetName().c_str(), shipCounts[ship.GetName()]);
          ship_name = fmt::format("{} {}", ship.GetName().c_str(), shipCounts[ship.GetName()]);
          ships.emplace_back(ship_name,
              ship.GetDefinition(),
