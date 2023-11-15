@@ -80,6 +80,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/convoy_distr
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/convoy_distributor_builder.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/division_templates_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/equipment_variants_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/task_force.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/task_force_template.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/task_force_templates_builder.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/default_states_importer.cpp")

@@ -9,6 +9,7 @@
 #include "external/commonItems/Date.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/ship.h"
+#include "src/hoi4_world/military/task_force.h"
 #include "src/hoi4_world/technology/technologies.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapping.h"
@@ -34,15 +35,6 @@ struct Unit
    int location;
 
    std::partial_ordering operator<=>(const Unit&) const = default;
-};
-
-struct TaskForce
-{
-   std::vector<Ship> ships;
-   int location;
-
-   std::partial_ordering operator<=>(const TaskForce&) const = default;
-   friend void PrintTo(const TaskForce& force, std::ostream* os);
 };
 
 struct CountryOptions

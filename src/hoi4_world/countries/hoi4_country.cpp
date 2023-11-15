@@ -30,19 +30,4 @@ void PrintTo(const Country& country, std::ostream* os)
        << "If you are testing one of these, add them to the debug printer in hoi4_country.cpp.\n";
 }
 
-void PrintTo(const TaskForce& force, std::ostream* os)
-{
-   *os << "Location = " << force.location << "\n" << fmt::format("{} ships:\n", force.ships.size());
-   for (const auto& ship: force.ships)
-   {
-      *os << fmt::format("{} {} {} {} {} \n",
-          ship.GetName(),
-          ship.GetDefinition(),
-          ship.GetEquipment(),
-          ship.GetLegacyEquipment(),
-          ship.GetVersion());
-   }
-}
-
-
 }  // namespace hoi4
