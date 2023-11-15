@@ -356,6 +356,12 @@
     <ClCompile Include="src\out_hoi4\military\out_equipment_variant_tests.cpp">
       <Filter>src\out_hoi4\military</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\military\task_force_template_tests.cpp">
+      <Filter>src\hoi4_world\military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\military\task_force_templates_builder_tests.cpp">
+      <Filter>src\hoi4_world\military</Filter>
+    </ClCompile>
     <ClCompile Include="src\hoi4_world\map\railway_tests.cpp">
       <Filter>src\hoi4_world\map</Filter>
     </ClCompile>

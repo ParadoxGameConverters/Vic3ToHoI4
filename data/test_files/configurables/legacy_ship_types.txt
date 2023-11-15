@@ -3,6 +3,7 @@ legacy_ship_type = {
 		dest_technology_one
 	}
 	name = "Test Legacy Ship Variant One"
+	type = legacy_test_ship
 }
 
 legacy_ship_type = {

@@ -8,6 +8,8 @@
 #include "external/commonItems/Color.h"
 #include "external/commonItems/Date.h"
 #include "src/hoi4_world/military/equipment_variant.h"
+#include "src/hoi4_world/military/ship.h"
+#include "src/hoi4_world/military/task_force.h"
 #include "src/hoi4_world/technology/technologies.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapping.h"
@@ -65,6 +67,7 @@ struct CountryOptions
    std::vector<Unit> units;
    float stability = 0.0F;
    int convoys = 0;
+   std::vector<TaskForce> task_forces;
 };
 
 class Country
@@ -98,7 +101,8 @@ class Country
        starting_research_slots_(country_options.starting_research_slots),
        stability_(country_options.stability),
        units_(country_options.units),
-       convoys_(country_options.convoys)
+       convoys_(country_options.convoys),
+       task_forces_(country_options.task_forces)
    {
    }
 
@@ -129,6 +133,7 @@ class Country
    [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
    [[nodiscard]] float GetStability() const { return stability_; }
    [[nodiscard]] float GetWarSupport() const { return 0.60F; }
+   [[nodiscard]] const std::vector<TaskForce>& GetTaskForces() const { return task_forces_; }
    [[nodiscard]] const std::vector<Unit>& GetUnits() const { return units_; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
@@ -165,6 +170,7 @@ class Country
    float stability_ = 0.0F;
    std::vector<Unit> units_;
    int convoys_;
+   std::vector<TaskForce> task_forces_;
 };
 
 }  // namespace hoi4

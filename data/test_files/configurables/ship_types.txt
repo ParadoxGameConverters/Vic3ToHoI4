@@ -3,6 +3,7 @@ mtg_ship_type = {
 		dest_technology_one
 	}
 	name = "Test Ship Variant One"
+	type = mtg_test_ship
 }
 
 mtg_ship_type = {

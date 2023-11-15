@@ -7,6 +7,7 @@
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_character_converter.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
+#include "src/hoi4_world/military/task_force_template.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
 #include "src/mappers/character/leader_type_mapper.h"
@@ -250,6 +251,97 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
 
    return hoi4::Unit{division.GetName(), equipment, location};
 }
+
+void extractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std::set<std::string>& active)
+{
+   for (const auto& variant: variants)
+   {
+      const auto eq_name = variant.GetName();
+      if (!eq_name.empty())
+      {
+         active.insert(eq_name);
+      }
+      const auto eq_type = variant.GetType();
+      if (!eq_type.empty())
+      {
+         active.insert(eq_type);
+      }
+   }
+}
+
+std::map<int, int> makeNavalBaseMap(const std::vector<hoi4::State>& states)
+{
+   std::map<int, int> naval_base_locations;
+   for (const auto& state: states)
+   {
+      auto location = state.GetNavalBaseLocation();
+      if (!location)
+      {
+         continue;
+      }
+      naval_base_locations[state.GetId()] = location.value();
+   }
+   return naval_base_locations;
+}
+
+std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
+    const vic3::Buildings& buildings,
+    const std::vector<hoi4::TaskForceTemplate>& task_force_templates,
+    const std::vector<hoi4::EquipmentVariant>& active_ship_variants,
+    const std::vector<hoi4::EquipmentVariant>& active_legacy_ship_variants,
+    const hoi4::States& states)
+{
+   std::vector<hoi4::TaskForce> forces;
+   std::map<std::string, float> pm_amounts;
+   std::map<std::string, int> ship_names;
+   std::set<std::string> active_variants;
+   extractActiveItems(active_ship_variants, active_variants);
+   extractActiveItems(active_legacy_ship_variants, active_variants);
+   const auto naval_base_locations = makeNavalBaseMap(states.states);
+
+   for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
+   {
+      const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
+      if (itr == states.hoi4_state_ids_to_owner.end())
+      {
+         continue;
+      }
+      if (itr->second != tag)
+      {
+         continue;
+      }
+      const auto navalbase = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::NavalBase);
+      if (!navalbase.has_value())
+      {
+         continue;
+      }
+      for (const auto& pm: navalbase->GetProductionMethods())
+      {
+         pm_amounts[pm] += navalbase->GetStaffingLevel();
+      }
+
+      if (!naval_base_locations.contains(hoi4_id))
+      {
+         continue;
+      }
+
+      hoi4::TaskForce task_force{.ships = {}, .location = naval_base_locations.at(hoi4_id)};
+      for (const auto& tmpl: task_force_templates)
+      {
+         if (!tmpl.AllVariantsActive(active_variants))
+         {
+            continue;
+         }
+         tmpl.AddShipsIfPossible(task_force.ships, ship_names, pm_amounts);
+      }
+      if (!task_force.ships.empty())
+      {
+         forces.push_back(task_force);
+      }
+   }
+   return forces;
+}
+
 
 std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
     const mappers::UnitMapper& unit_mapper,
@@ -621,6 +713,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
     const ConvoyDistributor& convoys,
+    const std::vector<hoi4::TaskForceTemplate>& task_force_templates,
     std::map<int, hoi4::Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues,
     bool debug)
@@ -652,6 +745,12 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    const std::vector<EquipmentVariant>& active_tank_variants = DetermineActiveVariants(all_tank_variants, technologies);
    auto units =
        ConvertArmies(*tag, unit_mapper, source_world.GetBuildings(), division_templates, states, capital_state);
+   auto task_forces = ConvertNavies(*tag,
+       source_world.GetBuildings(),
+       task_force_templates,
+       active_ship_variants,
+       active_legacy_ship_variants,
+       states);
 
    const auto& [economy_law, trade_law, military_law] = ConvertLaws(source_country.GetActiveLaws(), ideology);
 
@@ -755,5 +854,6 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
        .units = units,
        .stability = ConvertStability(source_world, source_country),
-       .convoys = numConvoys});
+       .convoys = numConvoys,
+       .task_forces = task_forces});
 }

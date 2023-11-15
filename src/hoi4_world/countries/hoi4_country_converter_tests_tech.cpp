@@ -36,6 +36,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_Decentralized)
        mappers::LeaderTypeMapper({}),
        mappers::CharacterTraitMapper({}, {}, {}, {}),
        {0, {}},
+       {},
        dummy_characters,
        dummy_culture_queues);
 
@@ -70,6 +71,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_default)
        mappers::LeaderTypeMapper({}),
        mappers::CharacterTraitMapper({}, {}, {}, {}),
        {0, {}},
+       {},
        dummy_characters,
        dummy_culture_queues);
 
@@ -104,6 +106,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_Unrecognized)
        mappers::LeaderTypeMapper({}),
        mappers::CharacterTraitMapper({}, {}, {}, {}),
        {0, {}},
+       {},
        dummy_characters,
        dummy_culture_queues);
 
@@ -138,6 +141,7 @@ TEST(Hoi4worldCountriesCountryConverter, StartingResearchSlots_GreatPower)
        mappers::LeaderTypeMapper({}),
        mappers::CharacterTraitMapper({}, {}, {}, {}),
        {0, {}},
+       {},
        dummy_characters,
        dummy_culture_queues);
 

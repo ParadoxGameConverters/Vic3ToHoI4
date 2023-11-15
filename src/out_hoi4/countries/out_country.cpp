@@ -15,6 +15,26 @@
 namespace
 {
 
+constexpr std::string_view kShip =
+    "\t\t\tship = {{"
+    " name = \"{}\""
+    " definition = {}"
+    " equipment = {{ {} = {{ "
+    " amount = 1 "
+    " owner = {} "
+    " version_name = \"{}\" }} }} }}\n";
+constexpr std::string_view kNavyHeader =
+    "\tfleet = {{\n"
+    "\t\tname = \"{0} Fleet\"\n"
+    "\t\tnaval_base = {0}\n"
+    "\t\ttask_force = {{\n"
+    "\t\t\tname = \"{0} Squadron\"\n"
+    "\t\t\tlocation = {0}\n";
+constexpr std::string_view kNavyFooter =
+    "\t\t}\n"
+    "\t}\n";
+
+
 void OutputPolitics(std::ostream& country_history,
     const std::string& government_ideology,
     const date& last_election,
@@ -249,6 +269,40 @@ void out::OutputCountryHistory(std::string_view output_name,
    country_history.close();
 }
 
+void outputShip(std::ofstream& navy, std::ofstream& lgcy, const std::string& tag, const hoi4::Ship& ship)
+{
+   navy << fmt::format(kShip, ship.GetName(), ship.GetDefinition(), ship.GetEquipment(), tag, ship.GetVersion());
+   lgcy << fmt::format(kShip, ship.GetName(), ship.GetDefinition(), ship.GetLegacyEquipment(), tag, ship.GetVersion());
+}
+
+
+void outputNavy(std::ofstream& navy,
+    std::ofstream& legacy,
+    const std::string& tag,
+    const std::vector<hoi4::TaskForce>& task_forces)
+{
+   if (task_forces.empty())
+   {
+      return;
+   }
+   navy << "units = {\n";
+   legacy << "units = {\n";
+
+   for (const auto& task_force: task_forces)
+   {
+      auto header = fmt::format(kNavyHeader, task_force.location);
+      navy << header;
+      legacy << header;
+      for (const auto& ship: task_force.ships)
+      {
+         outputShip(navy, legacy, tag, ship);
+      }
+      navy << kNavyFooter;
+      legacy << kNavyFooter;
+   }
+   navy << "}\n";
+   legacy << "}\n";
+}
 
 void out::OutputCountryNavy(std::string_view output_name, const hoi4::Country& country)
 {
@@ -265,12 +319,13 @@ void out::OutputCountryNavy(std::string_view output_name, const hoi4::Country& c
    {
       throw std::runtime_error(fmt::format("Could not create {}", legacy_file_name));
    }
-   navy << "# Dummy file\n";
-   legacy << "# Dummy file\n";
+
+   navy << "# Naval OOB\n";
+   legacy << "# Naval non-MTG OOB\n";
+   outputNavy(navy, legacy, tag, country.GetTaskForces());
    navy.close();
    legacy.close();
 }
-
 
 void out::OutputCountryUnits(const std::string& oob_file, const hoi4::Country& country)
 {

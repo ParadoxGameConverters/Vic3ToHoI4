@@ -16,11 +16,12 @@ TEST(Hoi4worldMilitaryEquipmentvariantimporterTests, EquipmentVariantsCanBeImpor
        ImportEquipmentVariants("test_files/hoi4_world/military/EquipmentVariantsCanBeImported.txt");
 
    EXPECT_THAT(variants,
-       testing::UnorderedElementsAre(EquipmentVariant({}, {}, {{"name", "= \"Test Variant One\""}}),
-           EquipmentVariant({"required_tech_one", "required_tech_two"},
+       testing::UnorderedElementsAre(EquipmentVariant("Test Variant One", "", {}, {}, {}),
+           EquipmentVariant("Test Variant Two",
+               "",
+               {"required_tech_one", "required_tech_two"},
                {"blocking_tech_one", "blocking_tech_two"},
                {
-                   {"name", "= \"Test Variant Two\""},
                    {"item_block",
                        "= {\n"
                        "\t\titem_one = true\n"

@@ -1,0 +1,12 @@
+task_force = {
+  cost = {
+    pm_navy = 1
+  }
+  ship = {
+    name = "Test Ship"
+    definition = test_ship
+    equipment = mtg_test_ship
+    legacy_equipment = legacy_test_ship
+    version = "Test Ship Variant One"
+  }
+}

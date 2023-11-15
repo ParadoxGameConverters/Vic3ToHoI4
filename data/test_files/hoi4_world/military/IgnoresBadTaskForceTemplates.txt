@@ -1,0 +1,79 @@
+# Bad keyword.
+taks_force = {
+  cost = {
+    some_pm = 1
+  }
+  ship = {
+    name = "Big Ship"
+    definition = test
+    equipment = mtg_equipment
+    legacy_equipment = legacy_equipment
+    version = "Basic Ship"
+  }
+}
+
+# No costs.
+task_force = {
+  cost = {
+  }
+  ship = {
+    name = "Big Ship"
+    definition = test
+    equipment = mtg_equipment
+    legacy_equipment = legacy_equipment
+    version = "Basic Ship"
+  }
+}
+
+# Costs below threshold.
+task_force = {
+  cost = {
+    some_pm = 0.001
+    another_pm = -1
+  }
+  ship = {
+    name = "Big Ship"
+    definition = test
+    equipment = mtg_equipment
+    legacy_equipment = legacy_equipment
+    version = "Basic Ship"
+  }
+}
+
+# Bad ships.
+task_force = {
+  cost = {
+    some_pm = 1
+  }
+  ship = {
+    definition = test
+    equipment = mtg_equipment
+    legacy_equipment = legacy_equipment
+    version = "Basic Ship"
+  }
+  ship = {
+    name = "Big Ship"
+    equipment = mtg_equipment
+    legacy_equipment = legacy_equipment
+    version = "Basic Ship"
+  }
+  ship = {
+    name = "Big Ship"
+    definition = test
+    legacy_equipment = legacy_equipment
+    version = "Basic Ship"
+  }
+  ship = {
+    name = "Big Ship"
+    definition = test
+    equipment = mtg_equipment
+    version = "Basic Ship"
+  }
+  ship = {
+    name = "Big Ship"
+    definition = test
+    equipment = mtg_equipment
+    legacy_equipment = legacy_equipment
+  }
+}
+
