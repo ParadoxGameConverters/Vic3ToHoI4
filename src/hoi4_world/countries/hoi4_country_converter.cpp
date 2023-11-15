@@ -269,6 +269,21 @@ void extractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std
    }
 }
 
+std::map<int, int> makeNavalBaseMap(const std::vector<hoi4::State>& states)
+{
+   std::map<int, int> naval_base_locations;
+   for (const auto& state: states)
+   {
+      auto location = state.GetNavalBaseLocation();
+      if (!location)
+      {
+         continue;
+      }
+      naval_base_locations[state.GetId()] = location.value();
+   }
+   return naval_base_locations;
+}
+
 std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
     const vic3::Buildings& buildings,
     const std::vector<hoi4::TaskForceTemplate>& task_force_templates,
@@ -280,19 +295,9 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
    std::map<std::string, float> pm_amounts;
    std::map<std::string, int> ship_names;
    std::set<std::string> active_variants;
-   std::map<int, int> naval_base_locations;
    extractActiveItems(active_ship_variants, active_variants);
    extractActiveItems(active_legacy_ship_variants, active_variants);
-
-   for (const auto& state: states.states)
-   {
-      auto location = state.GetNavalBaseLocation();
-      if (!location)
-      {
-         continue;
-      }
-      naval_base_locations[state.GetId()] = location.value();
-   }
+   const auto naval_base_locations = makeNavalBaseMap(states.states);
 
    for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
    {
@@ -320,7 +325,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
          continue;
       }
 
-      hoi4::TaskForce task_force{.ships = {}, .location = naval_base_locations[hoi4_id]};
+      hoi4::TaskForce task_force{.ships = {}, .location = naval_base_locations.at(hoi4_id)};
       for (const auto& tmpl: task_force_templates)
       {
          if (!tmpl.AllVariantsActive(active_variants))
