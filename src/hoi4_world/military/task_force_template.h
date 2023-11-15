@@ -14,7 +14,11 @@ namespace hoi4
 class TaskForceTemplate
 {
   public:
-   TaskForceTemplate(std::map<std::string, float> cost, std::vector<Ship> ships): cost_(cost), ships_(ships) {}
+   TaskForceTemplate(std::map<std::string, float> cost, std::vector<Ship> ships):
+       cost_(std::move(cost)),
+       ships_(std::move(ships))
+   {
+   }
 
    bool AllVariantsActive(const std::set<std::string>& active_variants) const;
    void AddShipsIfPossible(std::vector<hoi4::Ship>& ships,
