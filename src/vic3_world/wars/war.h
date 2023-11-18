@@ -24,7 +24,7 @@ struct WarOptions
 class War
 {
   public:
-   War(const WarOptions& options):
+   explicit War(const WarOptions& options):
        original_attacker_(options.original_attacker),
        attackers_(options.attackers),
        original_defender_(options.original_defender),
