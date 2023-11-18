@@ -689,6 +689,9 @@
     <ClInclude Include="src\mappers\resources\resource_mapper_importer.h">
       <Filter>src\mappers\resources</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\wars\war.h">
+      <Filter>src\vic3_world\wars</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
