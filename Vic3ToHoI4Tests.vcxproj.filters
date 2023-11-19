@@ -542,6 +542,9 @@
     <ClCompile Include="src\mappers\infrastructure\infrastructure_mapper_tests.cpp">
       <Filter>src\mappers\infrastructure</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\wars\war_importer_tests.cpp">
+      <Filter>src\vic3_world\wars</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">

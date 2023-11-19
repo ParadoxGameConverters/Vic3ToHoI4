@@ -37,6 +37,8 @@ class War
    [[nodiscard]] int GetOriginalDefender() const { return original_defender_; }
    [[nodiscard]] const std::set<int>& GetDefenders() const { return defenders_; }
 
+   std::partial_ordering operator<=>(const War&) const = default;
+
   private:
    int original_attacker_;
    std::set<int> attackers_;
