@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-War ConvertWar(const vic3::War& source_war,
+std::optional<War> ConvertWar(const vic3::War& source_war,
     const std::set<std::string>& independent_countries,
     const mappers::CountryMapper& country_mapper);
 

@@ -208,10 +208,15 @@ void ConvertWars(const std::vector<vic3::War>& source_wars,
 
    for (const vic3::War& source_war: source_wars)
    {
-      hoi4::War war = hoi4::ConvertWar(source_war, independent_countries, country_mapper);
-      if (auto country_itr = countries.find(war.original_attacker); country_itr != countries.end())
+      std::optional<hoi4::War> war = hoi4::ConvertWar(source_war, independent_countries, country_mapper);
+      if (!war.has_value())
       {
-         country_itr->second.AddWar(war);
+         continue;
+      }
+
+      if (auto country_itr = countries.find(war->original_attacker); country_itr != countries.end())
+      {
+         country_itr->second.AddWar(*war);
       }
    }
 }

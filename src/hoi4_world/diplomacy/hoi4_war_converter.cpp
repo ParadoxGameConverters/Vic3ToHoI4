@@ -5,7 +5,7 @@
 
 
 
-hoi4::War hoi4::ConvertWar(const vic3::War& source_war,
+std::optional<hoi4::War> hoi4::ConvertWar(const vic3::War& source_war,
     const std::set<std::string>& independent_countries,
     const mappers::CountryMapper& country_mapper)
 {
@@ -24,6 +24,7 @@ hoi4::War hoi4::ConvertWar(const vic3::War& source_war,
    {
       Log(LogLevel::Warning) << fmt::format("Could not map {}, original defender in a war",
           source_war.GetOriginalDefender());
+      return std::nullopt;
    }
 
    for (const int defender: source_war.GetDefenders())
@@ -54,6 +55,7 @@ hoi4::War hoi4::ConvertWar(const vic3::War& source_war,
    {
       Log(LogLevel::Warning) << fmt::format("Could not map {}, original attacker in a war",
           source_war.GetOriginalAttacker());
+      return std::nullopt;
    }
 
    for (const int attacker: source_war.GetAttackers())
@@ -75,7 +77,7 @@ hoi4::War hoi4::ConvertWar(const vic3::War& source_war,
       }
    }
 
-   return {
+   return War{
        .original_defender = original_defender,
        .extra_defenders = extra_defenders,
        .original_attacker = original_attacker,
