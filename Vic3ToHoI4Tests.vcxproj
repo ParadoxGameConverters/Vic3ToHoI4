@@ -217,6 +217,7 @@
     <ClCompile Include="src\vic3_world\states\vic3_states_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\states\vic3_state_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\technology\vic3_technology_importer_tests.cpp" />
+    <ClCompile Include="src\vic3_world\wars\wars_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\wars\war_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\world\vic3_world_builder_tests.cpp" />
     <ClCompile Include="src\vic3_world\world\vic3_world_importer_tests.cpp" />

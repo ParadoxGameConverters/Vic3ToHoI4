@@ -698,6 +698,9 @@
     <ClInclude Include="src\vic3_world\wars\war_importer.h">
       <Filter>src\vic3_world\wars</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\wars\wars_importer.h">
+      <Filter>src\vic3_world\wars</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -1073,6 +1076,9 @@
       <Filter>src\mappers\resources</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\wars\war_importer.cpp">
+      <Filter>src\vic3_world\wars</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\wars\wars_importer.cpp">
       <Filter>src\vic3_world\wars</Filter>
     </ClCompile>
   </ItemGroup>
