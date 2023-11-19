@@ -2135,6 +2135,82 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
 }
 
 
+TEST(Hoi4worldCountriesCountryConverter, WarsDefaultToEmpty)
+{
+   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const mappers::CountryMapper country_mapper({{1, "T00"}});
+   const vic3::Country source_country_one({.number = 1, .color = commonItems::Color{std::array{1, 2, 3}}});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
+       {},
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       {0, {}},
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_TRUE(country_one->GetWars().empty());
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, WarsCanBeAdded)
+{
+   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const mappers::CountryMapper country_mapper({{1, "T00"}});
+   const vic3::Country source_country_one({.number = 1, .color = commonItems::Color{std::array{1, 2, 3}}});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
+
+   auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
+       {},
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       {0, {}},
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+
+   const War war_one({.original_attacker = "ONE"});
+   country_one->AddWar(war_one);
+   const War war_two({.original_attacker = "TWO"});
+   country_one->AddWar(war_two);
+
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetWars(), testing::ElementsAre(war_one, war_two));
+}
+
+
 TEST(Hoi4worldCountriesCountryConverter, MonarchIdeaCanBeAdded)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
