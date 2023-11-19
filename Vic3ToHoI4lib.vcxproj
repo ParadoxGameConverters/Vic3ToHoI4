@@ -24,6 +24,8 @@
     <ClInclude Include="src\hoi4_world\countries\hoi4_countries_converter.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_country.h" />
     <ClInclude Include="src\hoi4_world\countries\hoi4_country_converter.h" />
+    <ClInclude Include="src\hoi4_world\diplomacy\hoi4_war.h" />
+    <ClInclude Include="src\hoi4_world\diplomacy\hoi4_war_converter.h" />
     <ClInclude Include="src\hoi4_world\localizations\localizations.h" />
     <ClInclude Include="src\hoi4_world\localizations\localizations_converter.h" />
     <ClInclude Include="src\hoi4_world\map\buildings.h" />
@@ -105,6 +107,7 @@
     <ClInclude Include="src\out_hoi4\countries\out_countries.h" />
     <ClInclude Include="src\out_hoi4\countries\out_country.h" />
     <ClInclude Include="src\out_hoi4\decisions\out_decisions.h" />
+    <ClInclude Include="src\out_hoi4\diplomacy\out_war.h" />
     <ClInclude Include="src\out_hoi4\flags\out_flags.h" />
     <ClInclude Include="src\out_hoi4\ideas\out_ideas.h" />
     <ClInclude Include="src\out_hoi4\localizations\out_localizations.h" />
@@ -171,6 +174,9 @@
     <ClInclude Include="src\vic3_world\states\vic3_state.h" />
     <ClInclude Include="src\vic3_world\states\vic3_states_importer.h" />
     <ClInclude Include="src\vic3_world\states\vic3_state_importer.h" />
+    <ClInclude Include="src\vic3_world\wars\war.h" />
+    <ClInclude Include="src\vic3_world\wars\wars_importer.h" />
+    <ClInclude Include="src\vic3_world\wars\war_importer.h" />
     <ClInclude Include="src\vic3_world\world\vic3_world.h" />
     <ClInclude Include="src\vic3_world\world\vic3_world_builder.h" />
     <ClInclude Include="src\vic3_world\world\vic3_world_importer.h" />
@@ -184,6 +190,7 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_countries_converter.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
+    <ClCompile Include="src\hoi4_world\diplomacy\hoi4_war_converter.cpp" />
     <ClCompile Include="src\hoi4_world\localizations\localizations_converter.cpp" />
     <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator.cpp" />
@@ -240,6 +247,7 @@
     <ClCompile Include="src\out_hoi4\countries\out_countries.cpp" />
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp" />
     <ClCompile Include="src\out_hoi4\decisions\out_decisions.cpp" />
+    <ClCompile Include="src\out_hoi4\diplomacy\out_war.cpp" />
     <ClCompile Include="src\out_hoi4\flags\out_flags.cpp" />
     <ClCompile Include="src\out_hoi4\ideas\out_ideas.cpp" />
     <ClCompile Include="src\out_hoi4\localizations\out_localizations.cpp" />
@@ -298,6 +306,8 @@
     <ClCompile Include="src\vic3_world\states\vic3_state_importer.cpp" />
     <ClCompile Include="src\vic3_world\technology\vic3_technology_importer.cpp" />
     <ClInclude Include="src\vic3_world\technology\vic3_technology_importer.h" />
+    <ClCompile Include="src\vic3_world\wars\wars_importer.cpp" />
+    <ClCompile Include="src\vic3_world\wars\war_importer.cpp" />
     <ClCompile Include="src\vic3_world\world\vic3_world_builder.cpp" />
     <ClCompile Include="src\vic3_world\world\vic3_world_importer.cpp" />
   </ItemGroup>

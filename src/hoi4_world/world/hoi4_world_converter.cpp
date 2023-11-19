@@ -8,6 +8,7 @@
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
+#include "src/hoi4_world/diplomacy/hoi4_war_converter.h"
 #include "src/hoi4_world/localizations/localizations_converter.h"
 #include "src/hoi4_world/map/buildings_creator.h"
 #include "src/hoi4_world/map/coastal_provinces_creator.h"
@@ -23,6 +24,7 @@
 #include "src/maps/map_data.h"
 #include "src/maps/map_data_importer.h"
 #include "src/support/progress_manager.h"
+#include "src/vic3_world/wars/war.h"
 
 
 
@@ -196,6 +198,29 @@ void LogVictoryPointData(const std::vector<hoi4::State>& states)
    }
 }
 
+
+void ConvertWars(const std::vector<vic3::War>& source_wars,
+    const mappers::CountryMapper& country_mapper,
+    std::map<std::string, hoi4::Country>& countries)
+{
+   std::set<std::string> independent_countries;
+   std::ranges::copy(countries | std::views::keys, std::inserter(independent_countries, independent_countries.begin()));
+
+   for (const vic3::War& source_war: source_wars)
+   {
+      std::optional<hoi4::War> war = hoi4::ConvertWar(source_war, independent_countries, country_mapper);
+      if (!war.has_value())
+      {
+         continue;
+      }
+
+      if (auto country_itr = countries.find(war->original_attacker); country_itr != countries.end())
+      {
+         country_itr->second.AddWar(*war);
+      }
+   }
+}
+
 }  // namespace
 
 hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
@@ -229,13 +254,11 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    std::future<hoi4::Buildings> buildings_future =
        std::async(std::launch::async, [&states, &world_framework, &hoi4_mod_filesystem]() {
-          const auto result =
+          auto result =
               ImportBuildings(states, world_framework.coastal_provinces, world_framework.map_data, hoi4_mod_filesystem);
           ProgressManager::AddProgress(5);
           return result;
        });
-
-
 
    std::future<hoi4::Railways> railways_future =
        std::async(std::launch::async, [&vic3_significant_provinces, &world_mapper, &world_framework, &states]() {
@@ -252,7 +275,6 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    std::map<int, hoi4::Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
-   const std::map<int, vic3::Country>& source_countries = source_world.GetCountries();
    countries = ConvertCountries(source_world,
        world_mapper,
        source_world.GetLocalizations(),
@@ -280,6 +302,9 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        countries);
    LogVictoryPointData(states.states);
    ProgressManager::AddProgress(5);
+
+   ConvertWars(source_world.GetWars(), world_mapper.country_mapper, countries);
+   ProgressManager::AddProgress(1);
 
    hoi4::Localizations localizations = ConvertLocalizations(source_world.GetLocalizations(),
        world_mapper.country_mapper.GetCountryMappings(),

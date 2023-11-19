@@ -7,6 +7,7 @@
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/characters/out_character.h"
+#include "src/out_hoi4/diplomacy/out_war.h"
 #include "src/out_hoi4/military/out_equipment_variant.h"
 #include "src/out_hoi4/technology/out_technologies.h"
 
@@ -202,6 +203,10 @@ void out::OutputCountryHistory(std::string_view output_name,
    country_history << fmt::format("oob = \"{}_1936\"", country.GetTag());
    country_history << "\n";
    country_history << fmt::format("set_research_slots = {}\n", country.GetStartingResearchSlots());
+   for (const auto& war: country.GetWars())
+   {
+      country_history << war;
+   }
    country_history << fmt::format("set_convoys = {}\n", country.GetConvoys());
    country_history << "\n";
 

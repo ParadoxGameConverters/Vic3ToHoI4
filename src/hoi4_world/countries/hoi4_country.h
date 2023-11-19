@@ -7,6 +7,7 @@
 
 #include "external/commonItems/Color.h"
 #include "external/commonItems/Date.h"
+#include "src/hoi4_world/diplomacy/hoi4_war.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/ship.h"
 #include "src/hoi4_world/military/task_force.h"
@@ -68,6 +69,7 @@ struct CountryOptions
    float stability = 0.0F;
    int convoys = 0;
    std::vector<TaskForce> task_forces;
+   std::vector<War> wars;
 };
 
 class Country
@@ -95,14 +97,15 @@ class Country
        name_list_(std::move(country_options.name_list)),
        character_ids_(std::move(country_options.character_ids)),
        spy_ids_(std::move(country_options.spy_ids)),
-       monarch_idea_id_(std::move(country_options.monarch_idea_id)),
+       monarch_idea_id_(country_options.monarch_idea_id),
        puppets_(std::move(country_options.puppets)),
        overlord_(std::move(country_options.overlord)),
        starting_research_slots_(country_options.starting_research_slots),
        stability_(country_options.stability),
        units_(country_options.units),
        convoys_(country_options.convoys),
-       task_forces_(country_options.task_forces)
+       task_forces_(country_options.task_forces),
+       wars_(country_options.wars)
    {
    }
 
@@ -122,7 +125,7 @@ class Country
    [[nodiscard]] const std::vector<EquipmentVariant>& GetPlaneVariants() const { return plane_variants_; }
    [[nodiscard]] const std::vector<EquipmentVariant>& GetTankVariants() const { return tank_variants_; }
    [[nodiscard]] const std::set<std::string>& GetIdeas() const { return ideas_; }
-   [[nodiscard]] const std::vector<std::string> GetLaws() const { return {economy_law_, trade_law_, military_law_}; }
+   [[nodiscard]] std::vector<std::string> GetLaws() const { return {economy_law_, trade_law_, military_law_}; }
    [[nodiscard]] const mappers::GraphicsBlock& GetGraphicsBlock() const { return graphics_block_; }
    [[nodiscard]] const NameList& GetNameList() const { return name_list_; }
    [[nodiscard]] const std::vector<int>& GetLeaderIds() const { return character_ids_; }
@@ -130,16 +133,19 @@ class Country
    [[nodiscard]] const std::optional<int64_t>& GetMonarchIdeaIds() const { return monarch_idea_id_; }
    [[nodiscard]] const std::set<std::string>& GetPuppets() const { return puppets_; }
    [[nodiscard]] const std::optional<std::string>& GetOverlord() const { return overlord_; }
-   [[nodiscard]] const int GetStartingResearchSlots() const { return starting_research_slots_; }
+   [[nodiscard]] int GetStartingResearchSlots() const { return starting_research_slots_; }
    [[nodiscard]] float GetStability() const { return stability_; }
    [[nodiscard]] float GetWarSupport() const { return 0.60F; }
    [[nodiscard]] const std::vector<TaskForce>& GetTaskForces() const { return task_forces_; }
    [[nodiscard]] const std::vector<Unit>& GetUnits() const { return units_; }
+   [[nodiscard]] const std::vector<War>& GetWars() const { return wars_; }
+
+   void AddWar(War war) { wars_.emplace_back(std::move(war)); }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
    // This allows the Google test framework to print human-readable countries if a test fails.
-   friend void PrintTo(const Country& point, std::ostream* os);
+   friend void PrintTo(const Country& country, std::ostream* os);
 
   private:
    std::string tag_;
@@ -171,6 +177,7 @@ class Country
    std::vector<Unit> units_;
    int convoys_;
    std::vector<TaskForce> task_forces_;
+   std::vector<War> wars_;
 };
 
 }  // namespace hoi4

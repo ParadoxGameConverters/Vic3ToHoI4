@@ -26,7 +26,7 @@ void PrintTo(const Country& country, std::ostream* os)
        << "Task forces    = " << country.task_forces_.size() << "\n"
        << fmt::format("Ideas          = {{ {} }}\n", fmt::join(country.ideas_, " "))
        << fmt::format("Puppets        = {{ {} }}\n", fmt::join(country.puppets_, " "))
-       << "NB: Techs, equipment variants, color, graphics block, and name list not printed.\n"
+       << "NB: Techs, equipment variants, color, graphics block, name list, and wars not printed.\n"
        << "If you are testing one of these, add them to the debug printer in hoi4_country.cpp.\n";
 }
 

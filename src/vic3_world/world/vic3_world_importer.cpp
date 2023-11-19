@@ -39,6 +39,7 @@
 #include "src/vic3_world/states/vic3_state.h"
 #include "src/vic3_world/states/vic3_states_importer.h"
 #include "src/vic3_world/technology/vic3_technology_importer.h"
+#include "src/vic3_world/wars/wars_importer.h"
 
 
 namespace
@@ -386,6 +387,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
             }
          }
       }
+   });
+   save_parser.registerKeyword("diplomatic_plays", [&world_options](std::istream& input_stream) {
+      world_options.wars = ImportWars(input_stream);
    });
    save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {
    });
