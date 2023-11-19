@@ -43,8 +43,8 @@ std::map<std::string, std::string> ImportMappingRules(std::string_view country_m
 
 }  // namespace
 
-/// Class so that different mapping strategies can share global variables like country_mappings and
-/// country_mapping_rules
+
+
 mappers::CountryMappingCreator::CountryMappingCreator(std::string_view country_mappings_file)
 {
    country_mapping_rules_ = ImportMappingRules(country_mappings_file);
@@ -60,10 +60,10 @@ mappers::CountryMappingCreator::CountryMappingCreator(std::string_view country_m
 
    AddCountryWithRule = [this](const vic3::Country& country) -> bool {
       const auto& vic3_tag = country.GetTag();
-      const auto& mappingRule = country_mapping_rules_.find(vic3_tag);
-      if (mappingRule != country_mapping_rules_.end() && used_hoi4_tags_.emplace(mappingRule->second).second)
+      const auto& mapping_rule = country_mapping_rules_.find(vic3_tag);
+      if (mapping_rule != country_mapping_rules_.end() && used_hoi4_tags_.emplace(mapping_rule->second).second)
       {
-         country_mappings_.emplace(country.GetNumber(), mappingRule->second);
+         country_mappings_.emplace(country.GetNumber(), mapping_rule->second);
          return true;
       }
       return false;
@@ -110,7 +110,7 @@ mappers::CountryMappingCreator::CountryMappingCreator(std::string_view country_m
 void mappers::CountryMappingCreator::ExecuteStrategiesForCountry(const vic3::Country& country,
     const std::vector<CountryStrategyFn>&& strategies)
 {
-   static_cast<void>(std::any_of(strategies.begin(), strategies.end(), [&country](CountryStrategyFn fn) {
+   static_cast<void>(std::ranges::any_of(strategies, [&country](const CountryStrategyFn& fn) {
       return fn(country);
    }));
 }
@@ -131,16 +131,16 @@ std::map<int, std::string> mappers::CountryMappingCreator::AssignTags(auto count
    }
 
    // after we got the initial rule countries, try again via vicId and then Znn
-   std::vector<const vic3::Country*> currentDeferredCountries(std::move(deferred_map_countries_));
+   std::vector<const vic3::Country*> current_deferred_countries(std::move(deferred_map_countries_));
    deferred_map_countries_.clear();
-   for (const auto& country: currentDeferredCountries)
+   for (const auto& country: current_deferred_countries)
    {
       ExecuteStrategiesForCountry(*country, {DeferCountryWithCivilWar, AddCountryWithVicId, AddCountryWithZ});
    }
    // finally try the civil war countries
-   currentDeferredCountries = std::move(deferred_map_countries_);
+   current_deferred_countries = std::move(deferred_map_countries_);
    deferred_map_countries_.clear();
-   for (const auto& country: currentDeferredCountries)
+   for (const auto& country: current_deferred_countries)
    {
       ExecuteStrategiesForCountry(*country, {AddCountryWithRule, AddCountryWithVicId, AddCountryWithZ});
    }
@@ -153,6 +153,6 @@ std::map<int, std::string> mappers::CountryMappingCreator::AssignTags(auto count
 mappers::CountryMapper mappers::CreateCountryMappings(std::string_view country_mappings_file,
     const std::map<int, vic3::Country>& countries)
 {
-   CountryMappingCreator mappingCreator(country_mappings_file);
-   return CountryMapper(mappingCreator.AssignTags(countries | std::views::values));
+   CountryMappingCreator mapping_creator(country_mappings_file);
+   return CountryMapper(mapping_creator.AssignTags(countries | std::views::values));
 }
