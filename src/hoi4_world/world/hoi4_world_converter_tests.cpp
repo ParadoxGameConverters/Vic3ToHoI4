@@ -936,4 +936,43 @@ TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
                }))));
 }
 
+
+TEST(Hoi4worldWorldHoi4worldconverter, WarsAreConverted)
+{
+   const vic3::Country source_country_one({
+       .number = 1,
+       .tag = "TAG",
+       .color = commonItems::Color{std::array{1, 2, 3}},
+       .head_of_state_id = 1,
+       .character_ids = {1, 4, 5, 6},
+   });
+   const vic3::Country source_country_two({
+       .number = 3,
+       .tag = "TWO",
+       .color = commonItems::Color{std::array{2, 4, 6}},
+       .head_of_state_id = 3,
+       .character_ids = {2, 3},
+   });
+
+   const vic3::World source_world({
+       .countries = {{1, source_country_one}, {3, source_country_two}},
+       .states = {},
+       .wars = {vic3::War({.original_attacker = 1, .original_defender = 3})},
+   });
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
+                                                 .AddCountries({{1, "TAG"}, {3, "TWO"}})
+                                                 .DefaultCultureGraphicsMapper()
+                                                 .Build();
+
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+       source_world,
+       world_mapper,
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
+       }));
+
+   EXPECT_THAT(world.GetCountries().find("TAG")->second.GetWars(),
+       testing::ElementsAre(War({.original_defender = "TWO", .original_attacker = "TAG"})));
+}
+
 }  // namespace hoi4
