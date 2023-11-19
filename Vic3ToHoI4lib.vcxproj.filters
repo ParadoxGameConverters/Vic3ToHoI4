@@ -189,6 +189,9 @@
     <Filter Include="src\mappers\resources">
       <UniqueIdentifier>{715f0c1b-fefe-42f0-9b65-a8ab8869b92e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\diplomacy">
+      <UniqueIdentifier>{27561272-19b8-4275-86e6-202d69629156}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\vic3_world\wars">
       <UniqueIdentifier>{f81bdcd3-9fdd-4a81-b245-ab3bae1d4db4}</UniqueIdentifier>
     </Filter>
@@ -692,6 +695,12 @@
     <ClInclude Include="src\mappers\resources\resource_mapper_importer.h">
       <Filter>src\mappers\resources</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\diplomacy\hoi4_war.h">
+      <Filter>src\hoi4_world\diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\diplomacy\hoi4_war_converter.h">
+      <Filter>src\hoi4_world\diplomacy</Filter>
+    </ClInclude>
     <ClInclude Include="src\vic3_world\wars\war.h">
       <Filter>src\vic3_world\wars</Filter>
     </ClInclude>
@@ -1074,6 +1083,9 @@
     </ClCompile>
     <ClCompile Include="src\mappers\resources\resource_mapper_importer.cpp">
       <Filter>src\mappers\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\diplomacy\hoi4_war_converter.cpp">
+      <Filter>src\hoi4_world\diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\wars\war_importer.cpp">
       <Filter>src\vic3_world\wars</Filter>

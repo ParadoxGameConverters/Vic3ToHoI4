@@ -171,6 +171,9 @@
     <Filter Include="src\vic3_world\institutions">
       <UniqueIdentifier>{a31b8c90-8381-4ee6-b76f-3ccce22f66e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\diplomacy">
+      <UniqueIdentifier>{5867d162-42d8-4c4b-afc9-d69ad5581eff}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\vic3_world\wars">
       <UniqueIdentifier>{bb02c3bf-ee2c-41e9-9a19-1b1bd63be99a}</UniqueIdentifier>
     </Filter>
@@ -544,6 +547,9 @@
     </ClCompile>
     <ClCompile Include="src\mappers\infrastructure\infrastructure_mapper_tests.cpp">
       <Filter>src\mappers\infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\diplomacy\hoi4_war_converter_tests.cpp">
+      <Filter>src\hoi4_world\diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\wars\war_importer_tests.cpp">
       <Filter>src\vic3_world\wars</Filter>
