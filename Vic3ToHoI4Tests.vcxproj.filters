@@ -177,6 +177,9 @@
     <Filter Include="src\vic3_world\wars">
       <UniqueIdentifier>{bb02c3bf-ee2c-41e9-9a19-1b1bd63be99a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\out_hoi4\diplomacy">
+      <UniqueIdentifier>{22bef3c9-5e92-4aa9-8e42-801243baefc1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -199,12 +202,6 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\countries\vic3_country_importer_tests.cpp">
       <Filter>src\vic3_world\countries</Filter>
-    </ClCompile>
-    <ClCompile Include="src\out_hoi4\decisions\out_decisions_tests.cpp">
-      <Filter>src\out_hoi4\decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="src\out_hoi4\flags\out_flags_tests.cpp">
-      <Filter>src\out_hoi4\flags</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\states\vic3_state_importer_tests.cpp">
       <Filter>src\vic3_world\states</Filter>
@@ -404,12 +401,6 @@
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer_tests.cpp">
       <Filter>src\mappers\ideology</Filter>
     </ClCompile>
-    <ClCompile Include="src\mappers\resources\resource_mapper_tests.cpp">
-      <Filter>src\mappers\resources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mappers\resources\resource_mapper_importer_tests.cpp">
-      <Filter>src\mappers\resources</Filter>
-    </ClCompile>
     <ClCompile Include="src\mappers\unit\unit_mapper_tests.cpp">
       <Filter>src\mappers\unit</Filter>
     </ClCompile>
@@ -548,6 +539,12 @@
     <ClCompile Include="src\mappers\infrastructure\infrastructure_mapper_tests.cpp">
       <Filter>src\mappers\infrastructure</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\military\battalion_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\military\division_templates_importer_tests.cpp" />
+    <ClCompile Include="src\mappers\resources\resource_mapper_tests.cpp" />
+    <ClCompile Include="src\mappers\resources\resource_mapper_importer_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\decisions\out_decisions_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\flags\out_flags_tests.cpp" />
     <ClCompile Include="src\hoi4_world\diplomacy\hoi4_war_converter_tests.cpp">
       <Filter>src\hoi4_world\diplomacy</Filter>
     </ClCompile>
@@ -556,6 +553,9 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\wars\wars_importer_tests.cpp">
       <Filter>src\vic3_world\wars</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\wars\out_war_tests.cpp">
+      <Filter>src\out_hoi4\diplomacy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -189,6 +189,9 @@
     <Filter Include="src\mappers\resources">
       <UniqueIdentifier>{715f0c1b-fefe-42f0-9b65-a8ab8869b92e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\out_hoi4\diplomacy">
+      <UniqueIdentifier>{829be655-c72c-4d52-a636-61d65bd139f6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\hoi4_world\diplomacy">
       <UniqueIdentifier>{27561272-19b8-4275-86e6-202d69629156}</UniqueIdentifier>
     </Filter>
@@ -241,6 +244,12 @@
     </ClInclude>
     <ClInclude Include="src\out_hoi4\countries\out_country.h">
       <Filter>src\out_hoi4\countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\decisions\out_decisions.h">
+      <Filter>src\out_hoi4\decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\flags\out_flags.h">
+      <Filter>src\out_hoi4\flags</Filter>
     </ClInclude>
     <ClInclude Include="src\out_hoi4\world\out_world.h">
       <Filter>src\out_hoi4\world</Filter>
@@ -479,11 +488,20 @@
     <ClInclude Include="src\mappers\flags\flag_mapper.h">
       <Filter>src\mappers\unit</Filter>
     </ClInclude>
+    <ClInclude Include="src\mappers\flags\flag_mapper_importer.h">
+      <Filter>src\mappers\unit</Filter>
+    </ClInclude>
     <ClInclude Include="src\mappers\ideology\ideology_mapper.h">
       <Filter>src\mappers\ideology</Filter>
     </ClInclude>
     <ClInclude Include="src\mappers\ideology\ideology_mapper_importer.h">
       <Filter>src\mappers\ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\resources\resource_mapper.h">
+      <Filter>src\mappers\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mappers\resources\resource_mapper_importer.h">
+      <Filter>src\mappers\resources</Filter>
     </ClInclude>
     <ClInclude Include="src\mappers\unit\unit_mapper.h">
       <Filter>src\mappers\unit</Filter>
@@ -644,6 +662,11 @@
     <ClInclude Include="src\support\progress_manager.h">
       <Filter>src\support</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\military\battalion.h" />
+    <ClInclude Include="src\hoi4_world\military\convoy_distributor.h" />
+    <ClInclude Include="src\hoi4_world\military\convoy_distributor_builder.h" />
+    <ClInclude Include="src\hoi4_world\military\division_templates_importer.h" />
+    <ClInclude Include="src\hoi4_world\military\division_template.h" />
     <ClInclude Include="src\out_hoi4\ideas\out_ideas.h">
       <Filter>src\out_hoi4\ideas</Filter>
     </ClInclude>
@@ -694,6 +717,9 @@
     </ClInclude>
     <ClInclude Include="src\mappers\resources\resource_mapper_importer.h">
       <Filter>src\mappers\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\diplomacy\out_war.h">
+      <Filter>src\out_hoi4\diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="src\hoi4_world\diplomacy\hoi4_war.h">
       <Filter>src\hoi4_world\diplomacy</Filter>
@@ -747,6 +773,12 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\countries\out_country.cpp">
       <Filter>src\out_hoi4\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\decisions\out_decisions.cpp">
+      <Filter>src\out_hoi4\decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\flags\out_flags.cpp">
+      <Filter>src\out_hoi4\flags</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\world\out_world.cpp">
       <Filter>src\out_hoi4\world</Filter>
@@ -910,6 +942,12 @@
     <ClCompile Include="src\mappers\ideology\ideology_mapper_importer.cpp">
       <Filter>src\mappers\ideology</Filter>
     </ClCompile>
+    <ClCompile Include="src\mappers\resources\resource_mapper.cpp">
+      <Filter>src\mappers\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mappers\resources\resource_mapper_importer.cpp">
+      <Filter>src\mappers\resources</Filter>
+    </ClCompile>
     <ClCompile Include="src\mappers\unit\unit_mapper.cpp">
       <Filter>src\mappers\unit</Filter>
     </ClCompile>
@@ -1045,6 +1083,9 @@
     <ClCompile Include="src\support\progress_manager.cpp">
       <Filter>src\support</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\military\convoy_distributor.cpp" />
+    <ClCompile Include="src\hoi4_world\military\convoy_distributor_builder.cpp" />
+    <ClCompile Include="src\hoi4_world\military\division_templates_importer.cpp" />
     <ClCompile Include="src\out_hoi4\ideas\out_ideas.cpp">
       <Filter>src\out_hoi4\ideas</Filter>
     </ClCompile>
@@ -1083,6 +1124,9 @@
     </ClCompile>
     <ClCompile Include="src\mappers\resources\resource_mapper_importer.cpp">
       <Filter>src\mappers\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\diplomacy\out_war.cpp">
+      <Filter>src\out_hoi4\diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="src\hoi4_world\diplomacy\hoi4_war_converter.cpp">
       <Filter>src\hoi4_world\diplomacy</Filter>
