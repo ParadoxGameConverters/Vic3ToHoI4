@@ -88,11 +88,7 @@ mappers::CountryMappingCreator::CountryMappingCreator(std::string_view country_m
       std::string possible_hoi4_tag;
       do
       {
-         char prefix = tag_prefix_;
-         int tens = tag_suffix_ / 10;
-         int ones = tag_suffix_ % 10;
-
-         possible_hoi4_tag = fmt::format("{}{}{}", prefix, tens, ones);
+         possible_hoi4_tag = fmt::format("{}{:0>2}", tag_prefix_, tag_suffix_);
          ++tag_suffix_;
          if (tag_suffix_ > 99)
          {
