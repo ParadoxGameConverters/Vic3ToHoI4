@@ -118,7 +118,7 @@ void mappers::CountryMappingCreator::ExecuteStrategiesForCountry(const vic3::Cou
 
 
 // Where the logic happens
-std::map<int, std::string>&& mappers::CountryMappingCreator::AssignTags(auto countries)
+std::map<int, std::string> mappers::CountryMappingCreator::AssignTags(auto countries)
 {
    country_mappings_.clear();
    deferred_map_countries_.clear();
@@ -145,7 +145,7 @@ std::map<int, std::string>&& mappers::CountryMappingCreator::AssignTags(auto cou
       ExecuteStrategiesForCountry(*country, {AddCountryWithRule, AddCountryWithVicId, AddCountryWithZ});
    }
 
-   return std::move(country_mappings_);
+   return country_mappings_;
 }
 
 

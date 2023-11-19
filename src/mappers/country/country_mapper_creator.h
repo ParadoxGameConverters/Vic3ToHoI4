@@ -26,15 +26,14 @@ class CountryMappingCreator
   public:
    explicit CountryMappingCreator(std::string_view country_mappings_file);
 
-   // Where the logic happens
-   std::map<int, std::string>&& AssignTags(auto countries);
+   std::map<int, std::string> AssignTags(auto countries);
 
   private:
-   std::map<int, std::string> country_mappings_ = {};
-   std::map<std::string, std::string> country_mapping_rules_ = {};
-   std::vector<const vic3::Country*> deferred_map_countries_ = {};
+   std::map<int, std::string> country_mappings_;
+   std::map<std::string, std::string> country_mapping_rules_;
+   std::vector<const vic3::Country*> deferred_map_countries_;
 
-   std::set<std::string> used_hoi4_tags_ = {};
+   std::set<std::string> used_hoi4_tags_;
    char tag_prefix_ = 'Z';
    int tag_suffix_ = 0;
 
