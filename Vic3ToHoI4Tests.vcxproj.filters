@@ -554,7 +554,7 @@
     <ClCompile Include="src\vic3_world\wars\wars_importer_tests.cpp">
       <Filter>src\vic3_world\wars</Filter>
     </ClCompile>
-    <ClCompile Include="src\vic3_world\wars\out_war_tests.cpp">
+    <ClCompile Include="src\out_hoi4\diplomacy\out_war_tests.cpp">
       <Filter>src\out_hoi4\diplomacy</Filter>
     </ClCompile>
   </ItemGroup>
