@@ -44,7 +44,6 @@ std::map<std::string, std::string> ImportMappingRules(std::string_view country_m
 }  // namespace
 
 
-
 mappers::CountryMappingCreator::CountryMappingCreator(std::string_view country_mappings_file)
 {
    country_mapping_rules_ = ImportMappingRules(country_mappings_file);
@@ -102,6 +101,7 @@ mappers::CountryMappingCreator::CountryMappingCreator(std::string_view country_m
    };
 }
 
+
 // Attempt to name (or defer naming of) a country. Only the first successful strategy will be used.
 void mappers::CountryMappingCreator::ExecuteStrategiesForCountry(const vic3::Country& country,
     const std::vector<CountryStrategyFn>&& strategies)
@@ -112,8 +112,6 @@ void mappers::CountryMappingCreator::ExecuteStrategiesForCountry(const vic3::Cou
 }
 
 
-
-// Where the logic happens
 std::map<int, std::string> mappers::CountryMappingCreator::AssignTags(auto countries)
 {
    country_mappings_.clear();
@@ -143,7 +141,6 @@ std::map<int, std::string> mappers::CountryMappingCreator::AssignTags(auto count
 
    return country_mappings_;
 }
-
 
 
 mappers::CountryMapper mappers::CreateCountryMappings(std::string_view country_mappings_file,
