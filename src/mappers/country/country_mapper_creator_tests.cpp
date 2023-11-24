@@ -52,12 +52,14 @@ TEST(MappersCountryCountryMapperCreator, SourceTagAsPrimaryFallback)
        {1, vic3::Country({.number = 1, .tag = "TAG"})},
        {2, vic3::Country({.number = 2, .tag = "TWO"})},
        {3, vic3::Country({.number = 3, .tag = "TWO"})},
+       {4, vic3::Country({.number = 4, .tag = "D01"})},
    };
 
    const CountryMapper country_mapper = CreateCountryMappings("", source_countries);
    EXPECT_EQ(country_mapper.GetHoiTag(1), "TAG");
    EXPECT_EQ(country_mapper.GetHoiTag(2), "TWO");
    EXPECT_EQ(country_mapper.GetHoiTag(3), "Z00");  // "TWO" was already taken, so fall back to the Znn system
+   EXPECT_EQ(country_mapper.GetHoiTag(4), "Z01");  // "D01" is a dynamic tag, fall back to the Znn system
 }
 
 TEST(MappersCountryCountryMapperCreator, CivilWarCountryIsSecondary)

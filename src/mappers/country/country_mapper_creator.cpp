@@ -41,6 +41,12 @@ std::map<std::string, std::string> ImportMappingRules(std::string_view country_m
    return country_mapping_rules;
 }
 
+
+bool IsDynamicTag(std::string_view tag)
+{
+   return tag.size() == 3 && tag.starts_with('D') && std::isdigit(tag[1]) && std::isdigit(tag[2]);
+}
+
 }  // namespace
 
 
@@ -75,6 +81,10 @@ mappers::CountryMappingCreator::CountryMappingCreator(std::string_view country_m
 
    AddCountryWithVicId = [this](const vic3::Country& country) -> bool {
       const auto& vic3_tag = country.GetTag();
+      if (IsDynamicTag(vic3_tag))
+      {
+         return false;
+      }
       if (vic3_tag.length() == 3 && used_hoi4_tags_.emplace(vic3_tag).second)
       {
          country_mappings_.emplace(country.GetNumber(), vic3_tag);
