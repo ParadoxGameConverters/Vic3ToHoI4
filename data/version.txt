@@ -1,10 +1,10 @@
 # Version info
 
-version = "0.2.0"
-name = "Blamey"
+version = "0.3.0"
+name = "Chen"
 source = "Vic3"
 minSource = "1.3"
-maxSource = "1.4"
+maxSource = "1.5"
 target = "HoI4"
 minTarget = "1.13"
 maxTarget = "1.13"

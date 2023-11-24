@@ -12,7 +12,7 @@ Documentation: https://hoi4.paradoxwikis.com/Victoria_3_to_Hearts_of_Iron_IV_con
 SUPPORTED VERSIONS
 ----
 Hoi4 - 1.13
-Vic3 - 1.0-1.4
+Vic3 - 1.0-1.5
 
 
 ----
@@ -34,7 +34,7 @@ Idhrendur			- Project Lead, Programming, Analysis
 Zemurin				- Programming, Code reviews, Tools
 IhateTrains			- Programming, Code reviews, Tools
 Drasilabyss			- Programming
-Ultrapotassium			- Programming
+Ultrapotassium		- Programming
 cetvrtak			- Data Files
 DaJay42				- Data Files
 gawquon				- Data Files
