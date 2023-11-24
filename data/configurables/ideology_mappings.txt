@@ -31,6 +31,7 @@ law_multicultural		= { democratic = 50		communism = 50		fascism = -50	neutrality
 
 # colonial_affairs
 law_no_colonial_affairs		= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 }
+law_frontier_colonization	= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TBD
 law_colonial_resettlement	= { democratic = 0		communism = 0		fascism = 30			neutrality = 20 }
 law_colonial_exploitation	= { democratic = 0		communism = 0		fascism = 30			neutrality = 20 }
 
@@ -180,6 +181,7 @@ law_multicultural		= { conservatism = 25	liberalism = 50		socialism = 75 }
 
 # colonial_affairs
 law_no_colonial_affairs		= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_frontier_colonization	= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TBD
 law_colonial_resettlement	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 law_colonial_exploitation	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 
@@ -325,6 +327,7 @@ law_multicultural		= { marxism = 100	leninism = 100	stalinism = 75	anti_revision
 
 # colonial_affairs
 law_no_colonial_affairs		= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_frontier_colonization	= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TBD
 law_colonial_resettlement	= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
 law_colonial_exploitation	= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
 
@@ -470,6 +473,7 @@ law_multicultural		= { gen_nazism = -100	fascism_ideology = 0	falangism = -25	re
 
 # colonial_affairs
 law_no_colonial_affairs		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_frontier_colonization	= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TBD
 law_colonial_resettlement	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_colonial_exploitation	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 
@@ -615,6 +619,7 @@ law_multicultural		= { despotism = -100	oligarchism = -75	anarchism = 100		moder
 
 # colonial_affairs
 law_no_colonial_affairs		= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_frontier_colonization	= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TBD
 law_colonial_resettlement	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
 law_colonial_exploitation	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
 

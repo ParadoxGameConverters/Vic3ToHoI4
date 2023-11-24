@@ -13,7 +13,7 @@ std::ostream& out::operator<<(std::ostream& out_stream, const hoi4::EquipmentVar
    }
    if (!equipment_variant.GetType().empty())
    {
-      out_stream << fmt::format("\t\ttype = \"{}\"\n", equipment_variant.GetType());
+      out_stream << fmt::format("\t\ttype = {}\n", equipment_variant.GetType());
    }
    for (const auto& [key, value]: equipment_variant.GetTextItems())
    {
