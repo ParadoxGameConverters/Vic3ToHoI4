@@ -24,7 +24,7 @@ TEST(Outhoi4MilitaryEquipmentvariant, VariantCanBeOutput)
    EXPECT_EQ(out.str(),
        "\tcreate_equipment_variant = {\n"
        "\t\tname = \"test_variant\"\n"
-       "\t\ttype = \"test_type\"\n"
+       "\t\ttype = test_type\n"
        "\t\tcomplex_item = {\n\tfoo = bar\n}\n"
        "\t}\n");
 }
