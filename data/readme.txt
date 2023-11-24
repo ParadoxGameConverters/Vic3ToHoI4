@@ -12,7 +12,7 @@ Documentation: https://hoi4.paradoxwikis.com/Victoria_3_to_Hearts_of_Iron_IV_con
 SUPPORTED VERSIONS
 ----
 Hoi4 - 1.13
-Vic3 - 1.0-1.5
+Vic3 - 1.3-1.5
 
 
 ----
