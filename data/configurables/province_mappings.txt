@@ -6,15 +6,13 @@
 	link = { comment = "* * STATE_SVEALAND " }
 	link = { vic3 = x93C76C hoi4 = 35 } # STATE_SVEALAND -> Västerås
 	link = { vic3 = xA6C31B hoi4 = 69 } # STATE_SVEALAND -> Åmål
-	link = { vic3 = xE6C5FC hoi4 = 77 } # STATE_SVEALAND -> Transtrand
 	link = { vic3 = x656512 hoi4 = 147 } # STATE_SVEALAND -> Årjäng
-	link = { vic3 = x6F40EC vic3 = xD155CE hoi4 = 156 } # Falun [mine], STATE_SVEALAND -> Falun
+	link = { vic3 = xD155CE hoi4 = 156 } # STATE_SVEALAND -> Falun
 	link = { vic3 = x604060 hoi4 = 161 } # STATE_SVEALAND -> Nynäshamn
-	link = { vic3 = x90845E hoi4 = 3005 } # STATE_SVEALAND -> Älvdalen
+	link = { vic3 = x90845E vic3 = xE6C5FC hoi4 = 3005 } # STATE_SVEALAND, STATE_SVEALAND -> Älvdalen
 	link = { vic3 = x3E2C22 hoi4 = 3070 } # STATE_SVEALAND -> Malung
 	link = { vic3 = x317138 hoi4 = 3106 } # STATE_SVEALAND -> Fagersta
-	link = { vic3 = xE7A6D6 hoi4 = 3128 } # STATE_SVEALAND -> Sysslebäck
-	link = { vic3 = x4C9918 hoi4 = 3141 } # Karlstad [wood] -> Filipstad
+	link = { vic3 = xE7A6D6 hoi4 = 3128 hoi4 = 77 } # STATE_SVEALAND -> Sysslebäck, Transtrand
 	link = { vic3 = xD702F7 hoi4 = 3148 } # STATE_SVEALAND -> Svärdsjö
 	link = { vic3 = xA86C50 hoi4 = 3182 } # STATE_SVEALAND -> Tierp
 	link = { vic3 = x4FA424 hoi4 = 6028 } # STATE_SVEALAND -> Säffle
@@ -40,17 +38,17 @@
 	link = { vic3 = x4B02EB hoi4 = 9185 } # STATE_SVEALAND -> Köping
 	link = { vic3 = xEB5D5F hoi4 = 9193 } # STATE_SVEALAND -> Avesta
 	link = { vic3 = xF48646 hoi4 = 9209 } # Örebro [farm] -> Örebro
-	link = { vic3 = x3844C0 vic3 = xFCCAFA hoi4 = 9218 } # STATE_SVEALAND, STATE_SVEALAND -> Lesjöfors
+	link = { vic3 = x3844C0 vic3 = xFCCAFA hoi4 = 9218 hoi4 = 3141 } # MANY-TO-MANY: STATE_SVEALAND, STATE_SVEALAND -> Lesjöfors, Filipstad
 	link = { vic3 = x432E07 hoi4 = 9308 } # STATE_SVEALAND -> Finspång
 	link = { vic3 = xA82FF7 hoi4 = 9393 } # STATE_SVEALAND -> Linköping
 	link = { vic3 = xCBFD28 vic3 = xA001A0 hoi4 = 11044 } # STATE_SVEALAND, STATE_SVEALAND -> Hällefors
 	link = { vic3 = xBC0288 hoi4 = 11053 } # STATE_SVEALAND -> land
 	link = { vic3 = xA08021 hoi4 = 11070 } # STATE_SVEALAND -> Mellerud
 	link = { vic3 = x93C3BC vic3 = xB3F1FB hoi4 = 11082 } # Nyköping [port], STATE_SVEALAND -> Nyköping
-	link = { vic3 = x823263 hoi4 = 11114 } # STATE_SVEALAND -> Karlstad
+	link = { vic3 = x4C9918 vic3 = x823263 hoi4 = 11114 } # Karlstad [wood], STATE_SVEALAND -> Karlstad
 	link = { vic3 = xC480A5 hoi4 = 11163 } # STATE_SVEALAND -> Enköping
 	link = { vic3 = x0974E5 hoi4 = 11188 } # STATE_SVEALAND -> Eskilstuna
-	link = { vic3 = x24A2F1 hoi4 = 11197 } # STATE_SVEALAND -> Borlänge
+	link = { vic3 = x24A2F1 vic3 = x6F40EC hoi4 = 11197 } # STATE_SVEALAND, Falun [mine] -> Borlänge
 	link = { vic3 = x45B6EF vic3 = x8AC21D hoi4 = 11278 } # STATE_SVEALAND, STATE_SVEALAND -> Norrtälje
 	link = { vic3 = xC0C0E0 vic3 = xD96FB9 hoi4 = 11289 } # STATE_SVEALAND, STATE_SVEALAND -> Kisa
 	link = { vic3 = xEFA14D vic3 = x404643 hoi4 = 11380 } # STATE_SVEALAND, STATE_SVEALAND -> Norrköping
@@ -63,17 +61,15 @@
 	link = { vic3 = x06D48F vic3 = xA67CC8 hoi4 = 299 } # STATE_GOTALAND, Kalmar [mine] -> Kalmar
 	link = { vic3 = x4539F8 hoi4 = 329 } # STATE_GOTALAND -> Torsås
 	link = { vic3 = xCD8A76 hoi4 = 363 } # STATE_GOTALAND -> Emmaboda
-	link = { vic3 = xB7733E hoi4 = 383 } # STATE_GOTALAND -> Göteborg
-	link = { vic3 = x6C9F3E hoi4 = 3375 } # STATE_GOTALAND -> Skövde
+	link = { vic3 = x6C9F3E vic3 = x0212F4 hoi4 = 3375 } # STATE_GOTALAND, Skövde [farm] -> Skövde
 	link = { vic3 = xE70DB3 hoi4 = 6148 } # STATE_GOTALAND -> Vimmerby
 	link = { vic3 = x2B5590 hoi4 = 3229 hoi4 = 13264 } # STATE_GOTALAND -> Oskarshamn, land
-	link = { vic3 = x0212F4 vic3 = xB714A1 hoi4 = 3286 } # Skövde [farm], STATE_GOTALAND -> Falköping
+	link = { vic3 = xB714A1 hoi4 = 3286 } # STATE_GOTALAND -> Falköping
 	link = { vic3 = xA00120 hoi4 = 3386 } # STATE_GOTALAND -> Kinna
-	link = { vic3 = x41C0E0 hoi4 = 6310 } # Göteborg [port] -> Uddevalla
-	link = { vic3 = x786C46 hoi4 = 6331 } # STATE_GOTALAND -> Borås
-	link = { vic3 = x04C53E vic3 = xA0DB88 hoi4 = 6406 } # STATE_GOTALAND, STATE_GOTALAND -> Ulricehamn
-	link = { vic3 = xC62E6A hoi4 = 9329 } # STATE_GOTALAND -> Jönköping
-	link = { vic3 = x90B30A hoi4 = 9406 hoi4 = 13265 } # Jönköping [city] -> Tranås, land
+	link = { vic3 = x41C0E0 hoi4 = 383 hoi4 = 6310 } # Göteborg [port] -> Göteborg, Uddevalla
+	link = { vic3 = x786C46 vic3 = xB7733E hoi4 = 6331 } # STATE_GOTALAND, STATE_GOTALAND -> Borås
+	link = { vic3 = x04C53E vic3 = xA0DB88 vic3 = xC62E6A hoi4 = 6406 } # STATE_GOTALAND, STATE_GOTALAND, STATE_GOTALAND -> Ulricehamn
+	link = { vic3 = x90B30A hoi4 = 9329 hoi4 = 9406 hoi4 = 13265 } # Jönköping [city] -> Jönköping, Tranås, land
 	link = { vic3 = xEA7E80 hoi4 = 242 } # Växjö [wood] -> Växjö
 	link = { vic3 = xDFD8A5 hoi4 = 9251 hoi4 = 9410 } # STATE_GOTALAND -> Gislaved, Ljungby
 	link = { vic3 = xE5A269 hoi4 = 11231 } # STATE_GOTALAND -> Värnamo
@@ -83,29 +79,27 @@
 	link = { vic3 = x02C8FA hoi4 = 13095 } # x02C8FA -> (Lake)
 	link = { comment = "* * STATE_SCANIA " }
 	link = { vic3 = x187CE5 vic3 = xBE3D27 hoi4 = 3307 } # STATE_SCANIA, STATE_SCANIA -> Varberg
-	link = { vic3 = xC0C061 hoi4 = 6120 } # STATE_SCANIA -> Åhus
-	link = { vic3 = xD19738 hoi4 = 6345 } # Hör [wood] -> Helsingborg
+	link = { vic3 = xC0C061 hoi4 = 6120 hoi4 = 11376 } # STATE_SCANIA -> Åhus, Ystad
 	link = { vic3 = xD4DC3C hoi4 = 6412 } # Halmstad [farm] -> Halmstad
-	link = { vic3 = xAB6EC7 hoi4 = 9300 hoi4 = 11160 } # STATE_SCANIA -> Hässleholm, Kristianstad
-	link = { vic3 = x2F5177 hoi4 = 9362 } # Helsingborg [city] -> Ängelholm
+	link = { vic3 = xAB6EC7 hoi4 = 9300 } # STATE_SCANIA -> Hässleholm
+	link = { vic3 = x2F5177 hoi4 = 6345 hoi4 = 9362 } # Helsingborg [city] -> Helsingborg, Ängelholm
 	link = { vic3 = x5D997D hoi4 = 11215 } # STATE_SCANIA -> Karlskrona
-	link = { vic3 = xC04161 hoi4 = 11376 hoi4 = 9279 } # Malmö [port] -> Ystad, Malmö
-	link = { vic3 = xFBA406 hoi4 = 11327 } # Kristianstad [mine] -> Karlshamn
+	link = { vic3 = xC04161 vic3 = xD19738 hoi4 = 9279 } # Malmö [port], Hör [wood] -> Malmö
+	link = { vic3 = xFBA406 hoi4 = 11160 hoi4 = 11327 } # Kristianstad [mine] -> Kristianstad, Karlshamn
 	link = { comment = "* * STATE_NORRLAND " }
 	link = { vic3 = x45F53A vic3 = x69CDA6 hoi4 = 11 } # STATE_NORRLAND, STATE_NORRLAND -> Sorsele
 	link = { vic3 = xA33BA5 hoi4 = 46 } # STATE_NORRLAND -> Hammerdal
-	link = { vic3 = x5ECC55 hoi4 = 49 } # STATE_NORRLAND -> Kilafors
 	link = { vic3 = x47F238 vic3 = xE04BF5 hoi4 = 58 } # STATE_NORRLAND, STATE_NORRLAND -> Kvikkjokk
 	link = { vic3 = xB0CD27 vic3 = x3C380F hoi4 = 61 } # STATE_NORRLAND, STATE_NORRLAND -> Kuttainen
 	link = { vic3 = x2D39E7 vic3 = xD582BB vic3 = xE99CC9 hoi4 = 101 } # STATE_NORRLAND, STATE_NORRLAND, STATE_NORRLAND -> Kiruna
 	link = { vic3 = x5C738D hoi4 = 109 } # STATE_NORRLAND -> Malå
 	link = { vic3 = x542385 hoi4 = 113 } # STATE_NORRLAND -> Rätan
-	link = { vic3 = x5A1735 vic3 = xAEC76F hoi4 = 118 } # STATE_NORRLAND, STATE_NORRLAND -> Bjurholm
+	link = { vic3 = x5A1735 hoi4 = 118 } # STATE_NORRLAND -> Bjurholm
 	link = { vic3 = xC2087C hoi4 = 130 } # STATE_NORRLAND -> Härnösand
-	link = { vic3 = x0D190C hoi4 = 145 } # STATE_NORRLAND -> Åsele
+	link = { vic3 = x0D190C vic3 = x918BA2 hoi4 = 145 } # STATE_NORRLAND, STATE_NORRLAND -> Åsele
 	link = { vic3 = x1F7647 hoi4 = 148 } # STATE_NORRLAND -> Arjeplog
-	link = { vic3 = xD56867 vic3 = xD5FBFC hoi4 = 151 } # STATE_NORRLAND, Kiruna [mine] -> Övre Soppero
-	link = { vic3 = x4DDB2C vic3 = xC59B64 hoi4 = 168 } # STATE_NORRLAND, STATE_NORRLAND -> land
+	link = { vic3 = xD56867 hoi4 = 151 } # STATE_NORRLAND -> Övre Soppero
+	link = { vic3 = x4DDB2C hoi4 = 168 } # STATE_NORRLAND -> land
 	link = { vic3 = x10D8D8 hoi4 = 182 } # STATE_NORRLAND -> Nordmaling
 	link = { vic3 = x988205 hoi4 = 184 } # STATE_NORRLAND -> land
 	link = { vic3 = x088E56 vic3 = x578A4F hoi4 = 190 } # STATE_NORRLAND, STATE_NORRLAND -> land
@@ -126,7 +120,7 @@
 	link = { vic3 = x9001B6 vic3 = x610180 hoi4 = 3113 } # STATE_NORRLAND, STATE_NORRLAND -> Umeå
 	link = { vic3 = x7EB12E vic3 = xCC3115 hoi4 = 3138 } # STATE_NORRLAND, STATE_NORRLAND -> Storuman
 	link = { vic3 = x8EADE6 vic3 = x8009C9 hoi4 = 3162 } # STATE_NORRLAND, STATE_NORRLAND -> Krokom
-	link = { vic3 = x918BA2 hoi4 = 3173 } # STATE_NORRLAND -> Fredrika
+	link = { vic3 = xAEC76F hoi4 = 3173 } # STATE_NORRLAND -> Fredrika
 	link = { vic3 = x611A6B vic3 = xB44696 vic3 = xE56FE5 hoi4 = 3179 } # STATE_NORRLAND, STATE_NORRLAND, STATE_NORRLAND -> land
 	link = { vic3 = x09FFED vic3 = xF3C7F6 hoi4 = 3191 } # STATE_NORRLAND, STATE_NORRLAND -> Vemdalen
 	link = { vic3 = x1A295F vic3 = xDAF45E hoi4 = 6010 } # STATE_NORRLAND, STATE_NORRLAND -> Sveg
@@ -147,13 +141,13 @@
 	link = { vic3 = x3DFA21 vic3 = xD2B7E0 hoi4 = 6165 } # STATE_NORRLAND, Luleå [port] -> Råneå
 	link = { vic3 = x8806E2 vic3 = xD30875 hoi4 = 6168 } # STATE_NORRLAND, STATE_NORRLAND -> Junosuando
 	link = { vic3 = x3A414C vic3 = x5F6273 hoi4 = 6170 } # STATE_NORRLAND, STATE_NORRLAND -> Karesuando
-	link = { vic3 = xC416A1 hoi4 = 6185 } # STATE_NORRLAND -> land
+	link = { vic3 = xC416A1 vic3 = xC59B64 hoi4 = 6185 } # STATE_NORRLAND, STATE_NORRLAND -> land
 	link = { vic3 = x008BB6 vic3 = x84DE76 hoi4 = 6200 } # STATE_NORRLAND, STATE_NORRLAND -> Lycksele
 	link = { vic3 = xE0D494 vic3 = xE5591E hoi4 = 6206 } # STATE_NORRLAND, STATE_NORRLAND -> Jokkmokk
 	link = { vic3 = x71B772 hoi4 = 6207 } # STATE_NORRLAND -> Funäsdalen
 	link = { vic3 = x761B27 vic3 = x7C4A83 vic3 = x83A641 hoi4 = 6208 } # STATE_NORRLAND, STATE_NORRLAND, STATE_NORRLAND -> land
 	link = { vic3 = xB2E726 vic3 = xD884CA hoi4 = 9035 } # STATE_NORRLAND, STATE_NORRLAND -> Fränsta
-	link = { vic3 = x724142 vic3 = xBAA18C hoi4 = 9051 } # STATE_NORRLAND, STATE_NORRLAND -> Bollnäs
+	link = { vic3 = x724142 hoi4 = 9051 hoi4 = 49 } # STATE_NORRLAND -> Bollnäs, Kilafors
 	link = { vic3 = x36C15B hoi4 = 9066 } # STATE_NORRLAND -> Åre
 	link = { vic3 = x41C0C0 hoi4 = 9068 } # STATE_NORRLAND -> land
 	link = { vic3 = xBA8A9D vic3 = x62F809 hoi4 = 9083 } # STATE_NORRLAND, STATE_NORRLAND -> land
@@ -165,24 +159,24 @@
 	link = { vic3 = x9DE993 vic3 = xFECE8F hoi4 = 9134 } # STATE_NORRLAND, STATE_NORRLAND -> Saxnäs
 	link = { vic3 = xA56D10 hoi4 = 9141 } # STATE_NORRLAND -> land
 	link = { vic3 = x6CBB46 vic3 = xED6A40 hoi4 = 9143 } # STATE_NORRLAND, STATE_NORRLAND -> Byske
-	link = { vic3 = x17C5B9 vic3 = x96C8D6 hoi4 = 9147 } # STATE_NORRLAND, STATE_NORRLAND -> Haparanda
+	link = { vic3 = x17C5B9 vic3 = x96C8D6 vic3 = xB08854 hoi4 = 9147 } # STATE_NORRLAND, STATE_NORRLAND, STATE_NORRLAND -> Haparanda
 	link = { vic3 = x4265D2 vic3 = x628C3C hoi4 = 9148 } # STATE_NORRLAND, STATE_NORRLAND -> land
 	link = { vic3 = xE08001 hoi4 = 9151 } # Sundsvall [city] -> Sundsvall
 	link = { vic3 = x3755D9 vic3 = xC24915 hoi4 = 9154 } # Östersund [farm], STATE_NORRLAND -> Stugun
 	link = { vic3 = xC13E1E vic3 = x4C05DB hoi4 = 9171 } # STATE_NORRLAND, STATE_NORRLAND -> Gäddede
 	link = { vic3 = xAAC957 hoi4 = 9175 } # STATE_NORRLAND -> Gäddede
 	link = { vic3 = xD94B80 vic3 = xA23443 vic3 = x86050C hoi4 = 9178 } # STATE_NORRLAND, STATE_NORRLAND, STATE_NORRLAND -> Nikkaluokta
-	link = { vic3 = x4B2FC0 hoi4 = 9186 } # STATE_NORRLAND -> Harads
+	link = { vic3 = x4B2FC0 vic3 = xA5646C hoi4 = 9186 } # STATE_NORRLAND, STATE_NORRLAND -> Harads
 	link = { vic3 = xFE7B03 vic3 = x19490C hoi4 = 9211 } # STATE_NORRLAND, STATE_NORRLAND -> Maskaur
 	link = { vic3 = xB2359B hoi4 = 9220 } # STATE_NORRLAND -> Bastuträsk
-	link = { vic3 = x137BA3 vic3 = xA5646C hoi4 = 9226 } # STATE_NORRLAND, STATE_NORRLAND -> Vuollerim
+	link = { vic3 = x137BA3 vic3 = x8BB571 hoi4 = 9226 } # STATE_NORRLAND, STATE_NORRLAND -> Vuollerim
 	link = { vic3 = xEE68C2 hoi4 = 9229 } # STATE_NORRLAND -> Höglekardalen
 	link = { vic3 = x0C8979 vic3 = x151F54 hoi4 = 11026 } # STATE_NORRLAND, STATE_NORRLAND -> Slussfors
 	link = { vic3 = x2D90A0 hoi4 = 11040 hoi4 = 125 } # STATE_NORRLAND -> Hudiksvall, Ljusdal
 	link = { vic3 = xA0D2B0 vic3 = x1B880D hoi4 = 11049 } # STATE_NORRLAND, STATE_NORRLAND -> Järpen
 	link = { vic3 = x0B904B hoi4 = 11052 } # STATE_NORRLAND -> Föllinge
 	link = { vic3 = xF561EA vic3 = xC202DF hoi4 = 11058 } # STATE_NORRLAND, STATE_NORRLAND -> land
-	link = { vic3 = x5D8E92 vic3 = x66BF36 hoi4 = 11060 } # STATE_NORRLAND, STATE_NORRLAND -> Jukkasjärvi
+	link = { vic3 = x5D8E92 vic3 = x66BF36 vic3 = xD5FBFC hoi4 = 11060 } # STATE_NORRLAND, STATE_NORRLAND, Kiruna [mine] -> Jukkasjärvi
 	link = { vic3 = xD2391D hoi4 = 11067 } # STATE_NORRLAND -> Vindeln
 	link = { vic3 = xFAE2CD vic3 = x280ADD hoi4 = 11069 } # STATE_NORRLAND, STATE_NORRLAND -> Vilhelmina
 	link = { vic3 = xD42DD0 vic3 = x2400E6 vic3 = xD65AA2 hoi4 = 11073 } # STATE_NORRLAND, STATE_NORRLAND, STATE_NORRLAND -> Överkalix
@@ -193,25 +187,25 @@
 	link = { vic3 = x5F4052 vic3 = x9DC69F hoi4 = 11120 } # STATE_NORRLAND, STATE_NORRLAND -> Åsele
 	link = { vic3 = x60D50A hoi4 = 11123 } # STATE_NORRLAND -> Bräcke
 	link = { vic3 = x254371 vic3 = xA23906 hoi4 = 11129 } # STATE_NORRLAND, STATE_NORRLAND -> Junsele
-	link = { vic3 = x420C00 hoi4 = 11147 } # Söderhamn [wood] -> Söderhamn
+	link = { vic3 = x420C00 vic3 = x5ECC55 hoi4 = 11147 } # Söderhamn [wood], STATE_NORRLAND -> Söderhamn
 	link = { vic3 = x08D197 vic3 = x57503D hoi4 = 11148 } # STATE_NORRLAND, STATE_NORRLAND -> Hoting
 	link = { vic3 = x96F571 vic3 = xCD1FD5 vic3 = xC4C901 hoi4 = 11152 } # STATE_NORRLAND, STATE_NORRLAND, STATE_NORRLAND -> Adolfsström
-	link = { vic3 = x7238AF vic3 = x7A8123 vic3 = x8BB571 hoi4 = 11155 } # STATE_NORRLAND, STATE_NORRLAND, STATE_NORRLAND -> Gällivare
+	link = { vic3 = x7238AF vic3 = x7A8123 hoi4 = 11155 } # STATE_NORRLAND, STATE_NORRLAND -> Gällivare
 	link = { vic3 = x09D644 vic3 = x114DC0 hoi4 = 11185 } # STATE_NORRLAND, STATE_NORRLAND -> Bredbyn
 	link = { vic3 = xD11F7D hoi4 = 11187 } # STATE_NORRLAND -> land
 	link = { vic3 = x9371B0 hoi4 = 11190 } # STATE_NORRLAND -> land
 	link = { vic3 = x23BDCB hoi4 = 11201 } # STATE_NORRLAND -> Gällivare
 	link = { vic3 = x62CF2F vic3 = x8039FC vic3 = xD523E3 vic3 = xE612BF hoi4 = 11208 } # STATE_NORRLAND, STATE_NORRLAND, STATE_NORRLAND, STATE_NORRLAND -> Hakkas
-	link = { vic3 = x3C0AB2 hoi4 = 11209 } # STATE_NORRLAND -> Ytterhogdal
+	link = { vic3 = x3C0AB2 vic3 = xBAA18C hoi4 = 11209 } # STATE_NORRLAND, STATE_NORRLAND -> Ytterhogdal
 	link = { hoi4 = 13119 hoi4 = 13117 } # NOTHING -> (Lake), (Lake)
 	link = { comment = "* * STATE_GOTLAND " }
 	link = { vic3 = x21C0E0 hoi4 = 408 } # Visby [port] -> Visby
 	link = { vic3 = xF93B61 hoi4 = 6258 } # Hemse [city][farm] -> Hemse
 	link = { comment = "* * STATE_JUTLAND " }
 	link = { vic3 = x2D2259 hoi4 = 316 } # STATE_JUTLAND -> Thisted
-	link = { vic3 = x78B203 hoi4 = 332 hoi4 = 11251 } # STATE_SCHLESWIG_HOLSTEIN -> Ribe, Kolding
 	link = { vic3 = x770871 hoi4 = 394 } # Hjørring [mine] -> Hjørring
-	link = { vic3 = x94468F vic3 = x0040DF hoi4 = 399 hoi4 = 13263 } # MANY-TO-MANY: STATE_JUTLAND, STATE_JUTLAND -> Esbjerg, land
+	link = { vic3 = x0040DF hoi4 = 13263 } # STATE_JUTLAND -> land
+	link = { vic3 = x94468F hoi4 = 399 } # STATE_JUTLAND -> Esbjerg
 	link = { vic3 = x83E6B1 vic3 = x00BFDF hoi4 = 3206 } # STATE_JUTLAND, STATE_JUTLAND -> Viborg
 	link = { vic3 = xB0B469 hoi4 = 3277 } # Kolding [farm] -> Horsens
 	link = { vic3 = xEBF079 hoi4 = 3341 hoi4 = 13262 } # Herning [wood] -> Herning, land
@@ -220,7 +214,7 @@
 	link = { comment = "* * STATE_ZEALAND " }
 	link = { vic3 = xED2792 hoi4 = 3260 } # Kalundborg [port] -> Slagelse
 	link = { vic3 = x0CAEA7 hoi4 = 3305 hoi4 = 6393 hoi4 = 13261 } # Næstved [farm] -> Næstved, Roskilde, land
-	link = { vic3 = xC16C09 hoi4 = 3374 hoi4 = 3325 hoi4 = 13260 } # Odense [wood] -> Svendborg, Odense, land
+	link = { vic3 = xC16C09 hoi4 = 3325 hoi4 = 3374 hoi4 = 13260 } # Odense [wood] -> Odense, Svendborg, land
 	link = { vic3 = x7F0BF0 hoi4 = 6287 } # Copenhagen [city] -> København
 	link = { vic3 = x9000E0 hoi4 = 6361 } # Rønne [mine] -> Rønne
 	link = { comment = "* * STATE_WESTERN_NORWAY " }
@@ -228,17 +222,17 @@
 	link = { vic3 = x0E3D86 hoi4 = 53 } # Stavanger [farm] -> Stavanger
 	link = { vic3 = x95773A hoi4 = 65 } # STATE_WESTERN_NORWAY -> Odda
 	link = { vic3 = xD5D1BC hoi4 = 100 } # STATE_WESTERN_NORWAY -> Seljord
-	link = { vic3 = x14B28C vic3 = x68D9BA vic3 = x818B5C hoi4 = 122 } # STATE_WESTERN_NORWAY, Bergen [port], STATE_WESTERN_NORWAY -> Bergen
+	link = { vic3 = x68D9BA vic3 = x14B28C vic3 = x818B5C hoi4 = 122 } # Bergen [port], STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY -> Bergen
 	link = { vic3 = xCD61E8 hoi4 = 137 } # STATE_WESTERN_NORWAY -> Jørpeland
 	link = { vic3 = x4F31B0 hoi4 = 144 } # STATE_WESTERN_NORWAY -> Krøderen
 	link = { vic3 = xBDB05B hoi4 = 199 } # STATE_WESTERN_NORWAY -> Høyanger
 	link = { vic3 = xE5E38E hoi4 = 3049 } # STATE_WESTERN_NORWAY -> Tonstad
-	link = { vic3 = x7F0E9A vic3 = x2803F8 hoi4 = 3059 } # STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY -> land
-	link = { vic3 = x79D41F vic3 = xD26499 hoi4 = 3090 } # STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY -> Førde
+	link = { vic3 = x7F0E9A vic3 = x2803F8 vic3 = x4E1EF2 hoi4 = 3059 } # STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY -> land
+	link = { vic3 = x79D41F hoi4 = 3090 hoi4 = 188 } # STATE_WESTERN_NORWAY -> Førde, Ørsta
 	link = { vic3 = x3B7813 hoi4 = 3094 } # STATE_WESTERN_NORWAY -> Rjukan
 	link = { vic3 = x698566 vic3 = xF0F6EC hoi4 = 3114 } # STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY -> Viksøyri
 	link = { vic3 = x281240 vic3 = xBD2765 hoi4 = 3129 } # STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY -> Bykle
-	link = { vic3 = x902BE5 hoi4 = 3180 } # STATE_WESTERN_NORWAY -> Stryn
+	link = { vic3 = x902BE5 vic3 = xD26499 hoi4 = 3180 } # STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY -> Stryn
 	link = { vic3 = x639BE2 vic3 = x68D218 hoi4 = 3188 } # STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY -> Sogndalsfjøra
 	link = { vic3 = xE08020 vic3 = xE75551 vic3 = xF68E1F hoi4 = 3192 } # STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY -> Haugesund
 	link = { vic3 = x7F0C6C hoi4 = 6072 } # STATE_WESTERN_NORWAY -> Tveitsund
@@ -256,13 +250,12 @@
 	link = { vic3 = x1AE434 hoi4 = 9174 } # STATE_WESTERN_NORWAY -> Skien
 	link = { vic3 = x71D161 hoi4 = 9196 } # STATE_WESTERN_NORWAY -> Evje
 	link = { vic3 = xC32D3B hoi4 = 9204 } # STATE_WESTERN_NORWAY -> Drammen
-	link = { vic3 = xFB677C vic3 = x130906 hoi4 = 9296 } # STATE_WESTERN_NORWAY, Christianssand [city] -> Kristiansand
+	link = { vic3 = x130906 hoi4 = 9296 } # Christianssand [city] -> Kristiansand
 	link = { vic3 = x054DDE hoi4 = 11029 } # STATE_WESTERN_NORWAY -> Kongsberg
-	link = { vic3 = x35369F vic3 = x4E1EF2 hoi4 = 11037 } # STATE_EASTERN_NORWAY, STATE_WESTERN_NORWAY -> Vågåmo
 	link = { vic3 = xE37D01 hoi4 = 11101 } # STATE_WESTERN_NORWAY -> Hovden
 	link = { vic3 = x713F62 hoi4 = 11176 } # STATE_WESTERN_NORWAY -> Grimstad
 	link = { vic3 = x25D82F hoi4 = 11198 } # STATE_WESTERN_NORWAY -> land
-	link = { vic3 = x4427D4 hoi4 = 11367 } # STATE_WESTERN_NORWAY -> Mandal
+	link = { vic3 = x4427D4 vic3 = xFB677C hoi4 = 11367 } # STATE_WESTERN_NORWAY, STATE_WESTERN_NORWAY -> Mandal
 	link = { comment = "* * STATE_NORTHERN_NORWAY " }
 	link = { vic3 = x54FB07 hoi4 = 21 } # STATE_NORTHERN_NORWAY -> Kyrksæterøra
 	link = { vic3 = x019127 hoi4 = 22 } # STATE_NORTHERN_NORWAY -> Hammerfest
@@ -273,10 +266,9 @@
 	link = { vic3 = x09E374 vic3 = x6D989B vic3 = xB50EB0 hoi4 = 91 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, Tromsø [mine] -> Finnsnes
 	link = { vic3 = x4121CE hoi4 = 102 } # STATE_NORTHERN_NORWAY -> Valldalen
 	link = { vic3 = x38427D hoi4 = 107 hoi4 = 9132 } # Stranden [farm] -> Namsos, Steinkjer
-	link = { vic3 = x0DE95F vic3 = x485E7C vic3 = x89ED8E hoi4 = 115 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Vera
+	link = { vic3 = x0DE95F vic3 = x89ED8E hoi4 = 115 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Vera
 	link = { vic3 = x09C02E vic3 = xF90CF0 hoi4 = 128 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Masi
 	link = { vic3 = x0A9659 vic3 = x2A5968 vic3 = xFAC5E3 hoi4 = 173 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Storforshei
-	link = { vic3 = xCD2ECC hoi4 = 188 } # STATE_NORTHERN_NORWAY -> Ørsta
 	link = { vic3 = x3A4A5B vic3 = x4899E9 hoi4 = 192 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Narvik
 	link = { vic3 = x46AD99 vic3 = xC9D240 hoi4 = 2995 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Honningsvåg
 	link = { vic3 = x1E1123 vic3 = x25FF71 vic3 = xFAFC5B hoi4 = 3016 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Kvalsund
@@ -285,8 +277,8 @@
 	link = { vic3 = xC456A3 hoi4 = 3034 } # STATE_NORTHERN_NORWAY -> Ballangen
 	link = { vic3 = xC1B67D vic3 = xE22563 hoi4 = 3040 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Alta
 	link = { vic3 = x73F0BB vic3 = xB359B3 hoi4 = 3048 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Mo i Rana
-	link = { vic3 = x3411CB vic3 = x614319 vic3 = xEB97D0 hoi4 = 3058 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Skibotn
-	link = { vic3 = x7F2EF1 vic3 = xFEA2FF hoi4 = 3082 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Skjervøy
+	link = { vic3 = x3411CB vic3 = xEB97D0 hoi4 = 3058 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Skibotn
+	link = { vic3 = x7F2EF1 vic3 = xFEA2FF vic3 = x614319 hoi4 = 3082 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Skjervøy
 	link = { vic3 = x3D2F34 vic3 = xEE26D3 hoi4 = 3088 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Sandnessjøen
 	link = { vic3 = x4EA73C hoi4 = 3096 } # STATE_NORTHERN_NORWAY -> Sunndalsøra
 	link = { vic3 = x1AF7FA vic3 = xE4D32D hoi4 = 3098 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Sandvika
@@ -294,7 +286,7 @@
 	link = { vic3 = xC3E351 vic3 = xD7313C hoi4 = 3132 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Oppeid
 	link = { vic3 = x041759 vic3 = x1D6E8B vic3 = xDAD4E4 hoi4 = 3145 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Bjerkvik
 	link = { vic3 = x3A108F vic3 = x47561E hoi4 = 6015 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Kunes
-	link = { vic3 = x86E184 vic3 = x98003F hoi4 = 6038 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Stjørdal
+	link = { vic3 = x86E184 vic3 = x98003F vic3 = x485E7C hoi4 = 6038 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Stjørdal
 	link = { vic3 = xC4495B vic3 = xCB1829 hoi4 = 6041 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Kolvereid
 	link = { vic3 = xB1B071 vic3 = xF317ED hoi4 = 6071 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Ørnes
 	link = { vic3 = x23D076 vic3 = x3C706D vic3 = x6F0070 hoi4 = 6079 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Burfjord
@@ -307,13 +299,13 @@
 	link = { vic3 = x9CCA2C hoi4 = 6173 } # STATE_NORTHERN_NORWAY -> Grong
 	link = { vic3 = xC0C0C0 vic3 = xD642D6 hoi4 = 6187 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Brønnøysund
 	link = { vic3 = x2714DA vic3 = x9648D4 hoi4 = 6214 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Rognan
-	link = { vic3 = x6278B4 vic3 = xC82160 hoi4 = 9042 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Kjøllefjord
-	link = { vic3 = x420A56 vic3 = x5AE106 vic3 = x70DE38 hoi4 = 9064 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Tana Bru
+	link = { vic3 = x6278B4 vic3 = xC82160 vic3 = x420A56 hoi4 = 9042 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Kjøllefjord
+	link = { vic3 = x5AE106 vic3 = x70DE38 hoi4 = 9064 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Tana Bru
 	link = { vic3 = x34DA8D vic3 = xCEC4EF vic3 = xD09F0A hoi4 = 9069 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Røyrvik
 	link = { vic3 = x81E110 vic3 = xD1393B vic3 = x46033F hoi4 = 9089 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Lakselv
 	link = { vic3 = x2495FE vic3 = xFEC50D vic3 = x7005BB hoi4 = 9116 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Kirkenes
 	link = { vic3 = x4FB8C3 vic3 = xE5B868 vic3 = x7AE985 vic3 = x3B2323 hoi4 = 9126 } # STATE_NORTHERN_NORWAY, Bodø [port], STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Bodø
-	link = { vic3 = x4040C0 hoi4 = 9127 } # STATE_NORTHERN_NORWAY -> Ålesund
+	link = { vic3 = x4040C0 vic3 = xCD2ECC hoi4 = 9127 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Ålesund
 	link = { vic3 = x4FB481 vic3 = xF2B264 vic3 = xECB406 hoi4 = 9128 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Karasjok
 	link = { vic3 = x474F84 hoi4 = 9139 } # STATE_NORTHERN_NORWAY -> Mebonden
 	link = { vic3 = x207DC7 vic3 = xD27CE2 hoi4 = 9191 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> Kautokeino
@@ -332,20 +324,20 @@
 	link = { vic3 = x14814F vic3 = x1D68E4 vic3 = x9BF025 hoi4 = 11169 } # STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY, STATE_NORTHERN_NORWAY -> land
 	link = { vic3 = xE1D87A hoi4 = 11173 } # STATE_NORTHERN_NORWAY -> Snåsa
 	link = { comment = "* * STATE_EASTERN_NORWAY " }
+	link = { vic3 = x35369F hoi4 = 11037 } # STATE_EASTERN_NORWAY -> Vågåmo
 	link = { vic3 = xE8E297 vic3 = x0844FB hoi4 = 10 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> Innbygda
 	link = { vic3 = x2AAFE1 hoi4 = 27 } # STATE_EASTERN_NORWAY -> Fagernes
 	link = { vic3 = x777860 vic3 = xDE9061 hoi4 = 133 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> Deset
-	link = { vic3 = x2080A0 hoi4 = 179 } # STATE_EASTERN_NORWAY -> Skotterud
-	link = { vic3 = x5710E5 vic3 = x8FC6B4 hoi4 = 3007 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> Mysen
+	link = { vic3 = x2080A0 vic3 = x8FC6B4 hoi4 = 179 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> Skotterud
+	link = { vic3 = x5710E5 hoi4 = 3007 hoi4 = 11184 } # STATE_EASTERN_NORWAY -> Mysen, Lillestrøm
 	link = { vic3 = x907B35 vic3 = x4D0D24 hoi4 = 3021 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> Hamar
 	link = { vic3 = xFE44C9 hoi4 = 3093 } # STATE_EASTERN_NORWAY -> Eikesdalen
 	link = { vic3 = xA32B85 hoi4 = 3105 hoi4 = 111 } # STATE_EASTERN_NORWAY -> Drevsjø, Øversjødalen
 	link = { vic3 = x673DA2 hoi4 = 3136 } # STATE_EASTERN_NORWAY -> Flisa
-	link = { vic3 = xC041E0 hoi4 = 3171 } # Christiania [city][port] -> Fredrikstad
+	link = { vic3 = xC041E0 hoi4 = 6115 hoi4 = 3171 } # Christiania [city][port] -> Oslo, Fredrikstad
 	link = { vic3 = x85F71F hoi4 = 3183 } # STATE_EASTERN_NORWAY -> Røros
 	link = { vic3 = xAEEE54 hoi4 = 6042 } # STATE_EASTERN_NORWAY -> Elverum
 	link = { vic3 = x8F7F39 hoi4 = 6114 } # STATE_EASTERN_NORWAY -> Oppdal
-	link = { vic3 = xB182B1 hoi4 = 6115 } # STATE_EASTERN_NORWAY -> Oslo
 	link = { vic3 = x60BE85 vic3 = xB88734 hoi4 = 6136 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> Dombås
 	link = { vic3 = x1255CC hoi4 = 6160 } # Kongsvinger [wood] -> Kongsvinger
 	link = { vic3 = x12548F vic3 = x8277CF hoi4 = 6204 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> Geiranger
@@ -354,24 +346,23 @@
 	link = { vic3 = x49B529 vic3 = x6000A0 hoi4 = 9157 } # Lillehammer [mine], STATE_EASTERN_NORWAY -> Gjøvik
 	link = { vic3 = x43B12C vic3 = x6AC2AF hoi4 = 9227 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> Tynset
 	link = { vic3 = xA57AFC hoi4 = 11028 } # STATE_EASTERN_NORWAY -> Lillehammer
-	link = { vic3 = x01EB0A hoi4 = 11078 } # STATE_EASTERN_NORWAY -> Ullensaker
+	link = { vic3 = x01EB0A vic3 = x3AE094 vic3 = xB182B1 hoi4 = 11078 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> Ullensaker
 	link = { vic3 = x549C3A vic3 = x9DB9F4 hoi4 = 11113 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> land
 	link = { vic3 = xC9D63F hoi4 = 11135 } # STATE_EASTERN_NORWAY -> Ringebu
 	link = { vic3 = x95A154 hoi4 = 11151 } # Frederikshald [farm] -> Sarpsborg
-	link = { vic3 = x3AE094 hoi4 = 11184 } # STATE_EASTERN_NORWAY -> Lillestrøm
 	link = { vic3 = xB9763B vic3 = xE12212 hoi4 = 11206 } # STATE_EASTERN_NORWAY, STATE_EASTERN_NORWAY -> Tolga
 	link = { comment = "* * STATE_ICELAND " }
-	link = { vic3 = x004160 vic3 = x0D5D48 vic3 = x1E1FC1 vic3 = x27F04F vic3 = x285571 vic3 = x2A8549 vic3 = x45F99B vic3 = x555934 vic3 = x581B4C vic3 = x63D42C vic3 = x6B8B1C vic3 = x6DF0C4 vic3 = x933D7E vic3 = xA6BB87 vic3 = xF65D73 vic3 = x08D106 vic3 = xEB01CE vic3 = xCF05D9 vic3 = x943FCD hoi4 = 4861 } # STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, Akureyri [farm], STATE_ICELAND, STATE_ICELAND, Blönduós [mine], STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND -> Akureyri
-	link = { vic3 = x10DC5B vic3 = x2362E4 vic3 = x317A6A vic3 = x85D626 vic3 = xB5D7AC vic3 = xC59154 vic3 = xF07C2C hoi4 = 12674 } # STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, Reykjavík [city], STATE_ICELAND, STATE_ICELAND -> Reykjavík
-	link = { vic3 = xE2B048 vic3 = x0578F9 vic3 = x1FAD4E vic3 = x251E56 vic3 = x894E8F vic3 = xC3D20F vic3 = x5AED3F vic3 = x571934 vic3 = x22E916 vic3 = x668EB2 hoi4 = 13271 } # STATE_ICELAND, Ísafjörður [port], STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND -> land
+	link = { vic3 = x27F04F vic3 = x45F99B vic3 = xF65D73 vic3 = x933D7E vic3 = xCF05D9 vic3 = xEB01CE vic3 = x581B4C vic3 = x943FCD vic3 = x1E1FC1 vic3 = x6DF0C4 vic3 = x004160 vic3 = x555934 vic3 = x63D42C vic3 = x0D5D48 vic3 = x2A8549 vic3 = xA6BB87 vic3 = x6B8B1C vic3 = x285571 vic3 = x08D106 hoi4 = 4861 } # Akureyri [farm], Blönduós [mine], STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND -> Akureyri
+	link = { vic3 = xB5D7AC vic3 = x2362E4 vic3 = x10DC5B vic3 = x317A6A vic3 = xC59154 vic3 = x85D626 vic3 = xF07C2C hoi4 = 12674 } # Reykjavík [city], STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND -> Reykjavík
+	link = { vic3 = x0578F9 vic3 = x1FAD4E vic3 = x251E56 vic3 = x894E8F vic3 = xC3D20F vic3 = x5AED3F vic3 = x571934 vic3 = x22E916 vic3 = x668EB2 vic3 = xE2B048 hoi4 = 13271 } # Ísafjörður [port], STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND -> land
 	link = { vic3 = x7DAE65 vic3 = x853A46 vic3 = x9832AA vic3 = xBA991B vic3 = xD51DB5 vic3 = xEBDBE0 hoi4 = 12689 } # STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND -> Reyðarfjörður
 	link = { vic3 = x160AFE vic3 = x9D7B96 vic3 = x7F72E8 vic3 = x6BE524 vic3 = x34920F vic3 = x70DC28 vic3 = x7A16C0 vic3 = x5CFCC7 hoi4 = 13266 } # STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND -> land
 	link = { vic3 = x7AA0B3 vic3 = x2971FB vic3 = x804040 vic3 = xFEF5A7 vic3 = x7E9967 vic3 = x5DEB93 hoi4 = 13268 } # STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND -> land
-	link = { vic3 = xCC60C4 vic3 = x22B84A vic3 = xF8054C vic3 = x2720D0 vic3 = x4F18CA vic3 = x90A249 vic3 = xBD1A69 vic3 = x8BDAD5 vic3 = x09AC69 vic3 = x74FA3E vic3 = xC72379 vic3 = x808FE7 vic3 = x678B7C hoi4 = 13267 } # STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, Egilsstaðir [wood], STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND -> land
+	link = { vic3 = x09AC69 vic3 = x22B84A vic3 = x90A249 vic3 = xBD1A69 vic3 = x678B7C vic3 = x808FE7 vic3 = x8BDAD5 vic3 = x2720D0 vic3 = xF8054C vic3 = xCC60C4 vic3 = x4F18CA vic3 = x74FA3E vic3 = xC72379 hoi4 = 13267 } # Egilsstaðir [wood], STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND, STATE_ICELAND -> land
 	link = { vic3 = x8B7790 hoi4 = 13003 } # STATE_ICELAND -> Tórshavn
 	link = { comment = "* * STATE_GREENLAND " }
 	link = { vic3 = x665F61 vic3 = xE43641 vic3 = x10B739 vic3 = xF0F8D5 vic3 = x62B357 vic3 = x019043 vic3 = x5D1EE3 vic3 = x1A4267 vic3 = xFAC3E4 vic3 = x5D9349 vic3 = x9F438F vic3 = xF162C2 vic3 = xB3F025 vic3 = x325620 vic3 = x8B0F28 vic3 = xD5C48E vic3 = xA62EAA vic3 = x294234 vic3 = x23A0CB vic3 = x36A036 vic3 = xF6C505 vic3 = xB35AD6 vic3 = x42DF86 vic3 = x884170 vic3 = xE5B709 vic3 = xC20A82 vic3 = xE98F5C vic3 = xA9AF29 vic3 = x28EF12 vic3 = x485920 vic3 = x0C8FC6 vic3 = xBD889C vic3 = x32DBED vic3 = x680BB5 vic3 = xB63F36 vic3 = x5AC0B5 vic3 = x4A237A vic3 = xD5115E vic3 = xF2FD47 vic3 = x8D1714 vic3 = xDDC889 vic3 = x813BEC vic3 = x82F13A vic3 = x5B326C vic3 = x0BAB3C vic3 = x1BAB17 vic3 = x59D1D2 vic3 = xB38065 vic3 = xD20A8F vic3 = x60AA49 vic3 = x67E452 vic3 = xBDCB6F vic3 = xDF9239 vic3 = x751C4C vic3 = xE289BC vic3 = x59A50C vic3 = x3E3DBE vic3 = xC06CEF vic3 = xAE8D8C vic3 = x20B5F6 vic3 = xDBB478 vic3 = xB944BE vic3 = x5FF2CC vic3 = x8CC82F vic3 = x8EAFCB vic3 = xC6C6EB vic3 = x6DB5A6 vic3 = x4061C4 vic3 = xFB2EF8 vic3 = x4D47A2 vic3 = x31F2A9 vic3 = xAAE5ED vic3 = x18820A vic3 = xE200D5 vic3 = x5B3F42 vic3 = x1213E4 vic3 = x74D66A vic3 = xB52B26 vic3 = x83A8EE vic3 = xC84380 vic3 = xB41450 vic3 = x698B9B vic3 = xD788E8 vic3 = x78CFED vic3 = xD5E317 vic3 = x3B33B6 vic3 = x2D621B vic3 = xC6A074 vic3 = xE7C441 vic3 = x0C3790 vic3 = xC12C04 vic3 = x3E78C3 vic3 = xB460E8 vic3 = x76C842 vic3 = x833619 vic3 = x832740 vic3 = xA9FDAD vic3 = x7AC814 vic3 = x721C60 vic3 = x96E540 vic3 = x1AE570 vic3 = x7A1E26 vic3 = x441330 vic3 = x7B8C27 vic3 = x2EB6AA vic3 = x64794B vic3 = x830E78 vic3 = xA0EFE7 vic3 = x554C3D vic3 = x1A9422 vic3 = x3E6BD8 vic3 = x6FAF4D vic3 = x2204E2 hoi4 = 10245 } # STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, Godhavn [port], STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, Godthaab [city], STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, Søndre Strømfjord [farm], STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND -> Godthåb
-	link = { vic3 = x3C81BD vic3 = xC13204 vic3 = x8C64F5 vic3 = x550BBD vic3 = xB6A165 vic3 = x3792E7 vic3 = x5FD6D3 vic3 = x46BDE7 vic3 = x7E24C2 vic3 = x999944 vic3 = x17C50A vic3 = x173BCB vic3 = xAD5556 vic3 = xF51FF4 vic3 = xDF058C vic3 = x0A0235 vic3 = x0489D2 vic3 = x15940C vic3 = x7847B1 vic3 = x9CDC3F vic3 = xFF51DC vic3 = xDA4CED vic3 = x2E8797 vic3 = x4C6F83 vic3 = x8F4B96 vic3 = x189543 vic3 = xE3E358 vic3 = xA6199A vic3 = xF8FE89 vic3 = x191E0A vic3 = xF1D239 vic3 = xA6CE70 vic3 = x4352D2 vic3 = xA72096 vic3 = xDE68A4 vic3 = x972E69 vic3 = x2DDD74 vic3 = x51FFBC vic3 = xA2CFEA vic3 = x2AC988 vic3 = x664F9B vic3 = xE002A0 vic3 = x1B77ED vic3 = xFFD9F4 vic3 = x4ACC4E vic3 = x28EBA7 vic3 = x60CF04 vic3 = xE56D29 vic3 = x52B22D vic3 = x1AB55E vic3 = xCC0322 vic3 = xC9A105 hoi4 = 12512 } # STATE_GREENLAND, Fiskenæsset [wood], STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, Frederiksdal [mine], STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND -> Julianehåb
+	link = { vic3 = xC13204 vic3 = x8C64F5 vic3 = x550BBD vic3 = xB6A165 vic3 = x3792E7 vic3 = x5FD6D3 vic3 = x46BDE7 vic3 = x7E24C2 vic3 = x999944 vic3 = x17C50A vic3 = x173BCB vic3 = xAD5556 vic3 = xF51FF4 vic3 = xDF058C vic3 = x0A0235 vic3 = x0489D2 vic3 = x15940C vic3 = x7847B1 vic3 = x9CDC3F vic3 = xFF51DC vic3 = xDA4CED vic3 = x2E8797 vic3 = x4C6F83 vic3 = x8F4B96 vic3 = x189543 vic3 = xE3E358 vic3 = xA6199A vic3 = xF8FE89 vic3 = x191E0A vic3 = xF1D239 vic3 = xA6CE70 vic3 = x4352D2 vic3 = xA72096 vic3 = xDE68A4 vic3 = x972E69 vic3 = x2DDD74 vic3 = x51FFBC vic3 = xA2CFEA vic3 = x2AC988 vic3 = x664F9B vic3 = xE002A0 vic3 = x1B77ED vic3 = xFFD9F4 vic3 = x4ACC4E vic3 = x28EBA7 vic3 = x60CF04 vic3 = xE56D29 vic3 = x52B22D vic3 = x1AB55E vic3 = xCC0322 vic3 = xC9A105 vic3 = x3C81BD hoi4 = 12512 } # Fiskenæsset [wood], STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, Frederiksdal [mine], STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND -> Julianehåb
 	link = { vic3 = xEC5065 vic3 = x35427B vic3 = xD8B192 vic3 = xA4966B vic3 = xE0DCFA vic3 = x5B4806 vic3 = x3A4F58 vic3 = x66D327 vic3 = x35EC65 vic3 = xD78CF2 vic3 = x67D4D9 vic3 = xDA8974 vic3 = x7447EA vic3 = x63B507 vic3 = x9DE8E1 vic3 = x1F1EB4 vic3 = xF2A511 vic3 = x71D436 vic3 = x1E0CB2 vic3 = xABB8A9 vic3 = xFEE1AC vic3 = xCDB076 vic3 = xD274AC vic3 = x7E458B vic3 = xCBFA01 vic3 = x2FF14B vic3 = xCD02DA vic3 = x80C4C8 vic3 = xB95090 vic3 = x5E2FCE vic3 = xE12026 vic3 = x8225B4 hoi4 = 13066 } # STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND -> land
 	link = { vic3 = xA80537 vic3 = x816E36 vic3 = x899222 vic3 = x045371 vic3 = x5E7A77 vic3 = xF68FCE vic3 = xF5DF93 vic3 = x15AE5B vic3 = x7023CA vic3 = x6FFF74 vic3 = xDFB6F4 vic3 = x85BAD0 vic3 = xF1014B vic3 = xA1E0B3 vic3 = x6817F7 vic3 = x52511D vic3 = x9CEA48 vic3 = x0C2B43 vic3 = x2F4B10 vic3 = xF5ED80 vic3 = x8B199B vic3 = x8AD1E9 vic3 = x3DBEF4 vic3 = x8032F6 vic3 = x20228B vic3 = x18434C vic3 = x97C242 vic3 = xAE86F9 vic3 = x49E5F6 vic3 = xAE3205 vic3 = x6BB73A vic3 = x228995 vic3 = xE43391 vic3 = xEB7FCA vic3 = xAB9A68 vic3 = x31DEF7 vic3 = x451A6D vic3 = x0E081D vic3 = x5F273C vic3 = x4D4904 vic3 = x881F10 vic3 = x992454 vic3 = xD2DC36 vic3 = xF68608 vic3 = x586D77 vic3 = x47B719 vic3 = x4602D4 vic3 = x046A22 vic3 = x0BEE23 vic3 = xC52DC4 vic3 = x89E717 vic3 = x10C9E8 vic3 = xBFD228 vic3 = xE917CD vic3 = x7538BF vic3 = x345503 vic3 = x6F8095 vic3 = x04C479 vic3 = x86622C vic3 = xBEBDBB vic3 = xFEF851 vic3 = xEFAE70 vic3 = x47C1F2 vic3 = x22C365 vic3 = xEBEA77 vic3 = x8A3761 vic3 = x2A33C0 vic3 = x1187D1 vic3 = x135194 vic3 = x9541C5 vic3 = x315E14 vic3 = x3E0F09 vic3 = x75E8EC vic3 = xE174E4 vic3 = xCBAA78 vic3 = x51A97F vic3 = x12A0C8 vic3 = xBDA0F3 vic3 = xE83E6C vic3 = x79AB30 vic3 = x3EF6DB vic3 = x9D6298 vic3 = x3ED2BE vic3 = xFC86C6 vic3 = x9A14C0 vic3 = x949AD5 vic3 = x0B75AA vic3 = x4D34C9 vic3 = xFEF0A7 vic3 = x8D72FA vic3 = x1164D0 vic3 = x0B820F vic3 = xAC5EF8 vic3 = x54716A vic3 = x7C9625 vic3 = x1096C5 vic3 = xD353DD vic3 = xCD8B06 vic3 = xB736D5 vic3 = x2F616A vic3 = xCB0338 vic3 = x4D0DB5 vic3 = x1440C6 vic3 = x8C09AE vic3 = x3BEA40 vic3 = x8DAC9C vic3 = x8E8368 vic3 = xE28564 vic3 = xACC160 vic3 = xFB37DA vic3 = x09BEF7 vic3 = x7CA3C1 vic3 = x50748E vic3 = xED815B vic3 = x15354C vic3 = x137F78 vic3 = x293D01 vic3 = xDD4B17 vic3 = x000A19 vic3 = x6CF4E2 vic3 = x1376E8 vic3 = xFD03D4 vic3 = xE4FA88 vic3 = xAE77E8 vic3 = x4BF6A9 vic3 = x71E0AB vic3 = xEB5453 vic3 = x93F601 vic3 = x510F90 vic3 = xA2EC4A vic3 = x8AC169 vic3 = xE7CC7E vic3 = x7C04E8 vic3 = x2CEF5A vic3 = x705ADB vic3 = x1A5496 vic3 = x1D11A0 vic3 = xFC7F77 vic3 = x20083F vic3 = x5FA68A vic3 = x2BE17D vic3 = xBB6ADF vic3 = xAD6F70 vic3 = xD0D788 vic3 = xEB9A78 vic3 = x1BAA4F vic3 = xBD5DCF vic3 = xE9617F vic3 = x9FE3D7 vic3 = x6190CF vic3 = x1AE7EA hoi4 = 10636 } # STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND, STATE_GREENLAND -> Ammassalik
 	link = { vic3 = x8391B2 hoi4 = 13058 } # STATE_GREENLAND -> land
@@ -385,14 +376,13 @@
 	link = { vic3 = xE98BC6 hoi4 = 3009 } # STATE_SOUTHERN_FINLAND -> Kankaanpää
 	link = { vic3 = x8C31CF hoi4 = 3013 } # STATE_SOUTHERN_FINLAND -> Mikkeli
 	link = { vic3 = xAFE141 hoi4 = 3025 } # Tampere [wood] -> Kyröskoski
-	link = { vic3 = x33CFEC vic3 = xD2FDBF vic3 = xE041E0 hoi4 = 3083 } # STATE_SOUTHERN_FINLAND, Turku [port], STATE_SOUTHERN_FINLAND -> Turku
+	link = { vic3 = xD2FDBF vic3 = xE041E0 vic3 = x33CFEC hoi4 = 3083 } # Turku [port], STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Turku
 	link = { vic3 = x86C729 hoi4 = 3117 } # STATE_SOUTHERN_FINLAND -> Merikarvia
 	link = { vic3 = xEF788A hoi4 = 3119 } # STATE_SOUTHERN_FINLAND -> Ähtäri
-	link = { vic3 = x523560 vic3 = x0D3DF3 hoi4 = 3125 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Kajaani
 	link = { vic3 = xB45BFF hoi4 = 3137 hoi4 = 6047 } # STATE_SOUTHERN_FINLAND -> Tampere, Mänttä
 	link = { vic3 = x4A6463 hoi4 = 3161 hoi4 = 9183 } # STATE_SOUTHERN_FINLAND -> Loviisa, Kouvola
 	link = { vic3 = x07C636 hoi4 = 6009 } # STATE_SOUTHERN_FINLAND -> Porvoo
-	link = { vic3 = x7B45A5 vic3 = xD516FA hoi4 = 6033 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Kangaslampi
+	link = { vic3 = xD516FA hoi4 = 11076 } # STATE_SOUTHERN_FINLAND -> Juankoski
 	link = { vic3 = xC168B6 hoi4 = 6066 } # STATE_SOUTHERN_FINLAND -> Uusikaupunki
 	link = { vic3 = xFF4B4C vic3 = x2401AE hoi4 = 6078 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Kiuruvesi
 	link = { vic3 = x76CE44 hoi4 = 6108 } # STATE_SOUTHERN_FINLAND -> Inkoo
@@ -400,12 +390,12 @@
 	link = { vic3 = x9C363D vic3 = xED84C3 hoi4 = 6141 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Äänekoski
 	link = { vic3 = x61C0E0 hoi4 = 6144 } # STATE_SOUTHERN_FINLAND -> Nurmijärvi
 	link = { vic3 = x969608 hoi4 = 6146 } # STATE_SOUTHERN_FINLAND -> Rasimäki
-	link = { vic3 = x7753B6 hoi4 = 6156 } # STATE_SOUTHERN_FINLAND -> Heinävesi
+	link = { vic3 = x7B45A5 hoi4 = 6156 hoi4 = 6033 } # STATE_SOUTHERN_FINLAND -> Heinävesi, Kangaslampi
 	link = { vic3 = x9106DB hoi4 = 6163 hoi4 = 9167 } # STATE_SOUTHERN_FINLAND -> Kuhmoinen, Hämeenlinna
 	link = { vic3 = x214180 vic3 = x3C48A2 hoi4 = 9056 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Jyväskylä
 	link = { vic3 = x154428 vic3 = xCBE76E hoi4 = 9073 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Heinola
 	link = { vic3 = x278F84 hoi4 = 9094 } # STATE_SOUTHERN_FINLAND -> Loimaa
-	link = { vic3 = x51CC44 hoi4 = 9104 } # STATE_SOUTHERN_FINLAND -> Iisalmi
+	link = { vic3 = x51CC44 vic3 = x523560 hoi4 = 9104 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Iisalmi
 	link = { vic3 = x0BA694 vic3 = xF6F046 hoi4 = 9129 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Lohja
 	link = { vic3 = x3D47C3 hoi4 = 9160 } # STATE_SOUTHERN_FINLAND -> Jämsä
 	link = { vic3 = xBC487D vic3 = xE761B2 hoi4 = 9163 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Hankasalmi
@@ -415,35 +405,34 @@
 	link = { vic3 = xFEA699 hoi4 = 11033 } # STATE_SOUTHERN_FINLAND -> Saarijärvi
 	link = { vic3 = xF09EDC hoi4 = 11066 } # STATE_SOUTHERN_FINLAND -> Loppi
 	link = { vic3 = x5D1467 hoi4 = 193 } # STATE_SOUTHERN_FINLAND -> Nurmes
-	link = { vic3 = xCC8E28 hoi4 = 11076 } # STATE_SOUTHERN_FINLAND -> Juankoski
+	link = { vic3 = xCC8E28 vic3 = x7753B6 hoi4 = 9169 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Juuka
 	link = { vic3 = xCC9AA7 hoi4 = 11105 } # Helsinki [city] -> Helsinki
 	link = { vic3 = x40C040 hoi4 = 11138 } # STATE_SOUTHERN_FINLAND -> Hartola
 	link = { vic3 = xED8DC6 hoi4 = 11141 hoi4 = 141 hoi4 = 11210 } # STATE_SOUTHERN_FINLAND -> Kuopio, Karttula, Konnevesi
 	link = { vic3 = xF3D220 hoi4 = 11144 } # STATE_SOUTHERN_FINLAND -> Kannonkoski
 	link = { vic3 = x79D379 hoi4 = 11172 } # STATE_SOUTHERN_FINLAND -> Forssa
-	link = { vic3 = x4753CB hoi4 = 11199 } # STATE_SOUTHERN_FINLAND -> Pyhäntä
+	link = { vic3 = x4753CB vic3 = x0D3DF3 hoi4 = 11199 } # STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Pyhäntä
 	link = { vic3 = xE0C0E0 hoi4 = 11211 } # STATE_SOUTHERN_FINLAND -> Hanko
 	link = { comment = "* * STATE_WEST_KARELIA " }
-	link = { vic3 = x934610 hoi4 = 52 hoi4 = 37 } # STATE_WEST_KARELIA -> Imatra, Juva
+	link = { vic3 = x934610 hoi4 = 37 } # STATE_WEST_KARELIA -> Juva
 	link = { vic3 = xFC48AF hoi4 = 139 } # STATE_WEST_KARELIA -> Simpele
 	link = { vic3 = xA04180 hoi4 = 3030 } # STATE_WEST_KARELIA -> Kitee
 	link = { vic3 = x664F54 hoi4 = 3050 } # STATE_WEST_KARELIA -> Kaarlahti
 	link = { vic3 = x208001 hoi4 = 3060 } # STATE_WEST_KARELIA -> Raivola
 	link = { vic3 = xB81268 hoi4 = 3131 } # STATE_WEST_KARELIA -> Savonlinna
 	link = { vic3 = x0A00AC hoi4 = 3133 } # STATE_WEST_KARELIA -> Värtsilä
-	link = { vic3 = xF571CB hoi4 = 3185 } # STATE_WEST_KARELIA -> Lieksa
+	link = { vic3 = xF571CB vic3 = xD105A8 hoi4 = 3185 } # STATE_WEST_KARELIA, STATE_WEST_KARELIA -> Lieksa
 	link = { vic3 = x3CFB81 hoi4 = 3187 } # Sortavala [mine] -> Sortavala
 	link = { vic3 = x74C1F3 hoi4 = 6052 } # STATE_WEST_KARELIA -> Pitkäranta
 	link = { vic3 = xBB0055 hoi4 = 6150 } # STATE_WEST_KARELIA -> Lahdenpohja
 	link = { vic3 = x65EF3B hoi4 = 6153 } # STATE_WEST_KARELIA -> Suojärvi
-	link = { vic3 = x3EFDA0 hoi4 = 6186 hoi4 = 3061 hoi4 = 6082 hoi4 = 11056 } # Hamina [port] -> Hamina, Kotka, Lappeenranta, Taavetti
-	link = { vic3 = xD26819 hoi4 = 3068 } # STATE_WEST_KARELIA -> Kontiolahti
+	link = { vic3 = x3EFDA0 hoi4 = 6186 hoi4 = 3061 hoi4 = 6082 hoi4 = 11056 hoi4 = 52 } # Hamina [port] -> Hamina, Kotka, Lappeenranta, Taavetti, Imatra
+	link = { vic3 = xD26819 vic3 = x467F2F hoi4 = 3068 } # STATE_WEST_KARELIA, STATE_WEST_KARELIA -> Kontiolahti
 	link = { vic3 = x78FDD6 hoi4 = 6210 } # STATE_WEST_KARELIA -> Uimaharju
 	link = { vic3 = x825979 hoi4 = 9061 } # Joensuu [wood] -> Joensuu
 	link = { vic3 = xAB4A30 hoi4 = 9100 } # Viipuri [city] -> Koivisto
 	link = { vic3 = xD093D4 hoi4 = 9105 } # Käkisalmi [farm] -> Käkisalmi
 	link = { vic3 = xBC376C hoi4 = 9150 } # STATE_WEST_KARELIA -> Kiviniemi
-	link = { vic3 = x467F2F vic3 = xD105A8 hoi4 = 9169 } # STATE_WEST_KARELIA, STATE_WEST_KARELIA -> Juuka
 	link = { vic3 = x43E91D vic3 = xAD3FF9 hoi4 = 9176 } # STATE_WEST_KARELIA, STATE_WEST_KARELIA -> Salmi
 	link = { vic3 = xC5A424 vic3 = xFFBD54 hoi4 = 9181 } # STATE_WEST_KARELIA, STATE_WEST_KARELIA -> Ilomantsi
 	link = { vic3 = x1E964A hoi4 = 9206 } # STATE_WEST_KARELIA -> Viipuri
@@ -453,35 +442,36 @@
 	link = { comment = "* * STATE_ALAND " }
 	link = { vic3 = x459052 vic3 = xE04161 hoi4 = 9228 } # Mariehamn [port][farm], Bomarsund [city] -> Maarianhamina
 	link = { comment = "* * STATE_OSTROBOTHNIA " }
-	link = { vic3 = x917130 hoi4 = 7 } # STATE_OSTROBOTHNIA -> Viiksimo
+	link = { vic3 = x917130 vic3 = xA0C000 hoi4 = 7 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Viiksimo
 	link = { vic3 = x09E7C8 vic3 = x31A599 hoi4 = 30 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Rauna
 	link = { vic3 = xF89B5A vic3 = x9402DB hoi4 = 63 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Lapua
-	link = { vic3 = x1C3DCF hoi4 = 66 } # STATE_OSTROBOTHNIA -> Kokkola
-	link = { vic3 = x870682 hoi4 = 82 } # STATE_OSTROBOTHNIA -> Kurimo
+	link = { vic3 = x9AB681 hoi4 = 3125 } # Kajaani [wood] -> Kajaani
+	link = { vic3 = x870682 vic3 = xF82995 hoi4 = 82 hoi4 = 9233 } # MANY-TO-MANY: STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kurimo, Jaalanka
 	link = { vic3 = x39FFFD vic3 = xEE71BD vic3 = x35F442 vic3 = x84C20E hoi4 = 103 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Inari
-	link = { vic3 = x2DCFFF hoi4 = 120 } # STATE_OSTROBOTHNIA -> Ylikiiminki
+	link = { vic3 = x2DCFFF vic3 = x58DADD hoi4 = 120 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Ylikiiminki
 	link = { vic3 = x003DC2 vic3 = x12D5CC hoi4 = 124 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Tervola
 	link = { vic3 = x31F14B vic3 = x657C52 vic3 = x938C81 hoi4 = 132 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kärsämäki
-	link = { vic3 = xB84B48 hoi4 = 158 } # STATE_OSTROBOTHNIA -> Oulu
+	link = { vic3 = xA9BAEB vic3 = xB84B48 hoi4 = 158 } # Oulu [port], STATE_OSTROBOTHNIA -> Oulu
 	link = { vic3 = x73B911 vic3 = x9AE86E hoi4 = 162 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Hosio
 	link = { vic3 = x15D36E vic3 = x40B01E hoi4 = 167 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> land
-	link = { vic3 = xCEEBD6 vic3 = xEC1FAF vic3 = x2C00E3 hoi4 = 195 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kalajoki
-	link = { vic3 = xCCDC03 hoi4 = 197 } # STATE_OSTROBOTHNIA -> Alakurtti
+	link = { vic3 = xCEEBD6 vic3 = x2C00E3 vic3 = x1C3DCF hoi4 = 195 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kalajoki
+	link = { vic3 = xCCDC03 vic3 = xDAADD6 hoi4 = 197 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Alakurtti
 	link = { vic3 = x05C9D5 vic3 = x51D315 vic3 = xAB98EE vic3 = xCAEF23 vic3 = xAD5504 hoi4 = 203 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Enontekiö
 	link = { vic3 = x84C17D vic3 = xE803B4 hoi4 = 2992 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kuttura
-	link = { vic3 = xA52381 vic3 = xF82995 hoi4 = 3026 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Pudasjärvi
-	link = { vic3 = x1D75EA vic3 = xEDB9FD hoi4 = 3055 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kittilä
+	link = { vic3 = xA52381 hoi4 = 3026 } # STATE_OSTROBOTHNIA -> Pudasjärvi
+	link = { vic3 = xEDB9FD hoi4 = 3055 } # STATE_OSTROBOTHNIA -> Kittilä
 	link = { vic3 = x326999 vic3 = x407CB4 vic3 = x743757 hoi4 = 3069 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Karigasniemi
 	link = { vic3 = x55FBB0 vic3 = xF5DEDB hoi4 = 3073 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Suomussalmi
 	link = { vic3 = x199FCA vic3 = x8EC6E7 vic3 = x96B319 vic3 = xCB04BB hoi4 = 3097 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Sevettijärvi
 	link = { vic3 = x04ACCE vic3 = x41B925 vic3 = x4FFAB9 hoi4 = 3107 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Tanhua
-	link = { vic3 = xB16417 hoi4 = 3115 } # STATE_OSTROBOTHNIA -> Puolanka
+	link = { vic3 = xB16417 vic3 = xC0F405 hoi4 = 3115 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Puolanka
 	link = { vic3 = xED5B1B hoi4 = 3122 } # Vaasa [city] -> Vaasa
 	link = { vic3 = x14E25A vic3 = xE0C6EC hoi4 = 3149 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Hyrynsalmi
-	link = { vic3 = x100DE3 vic3 = xC0F405 hoi4 = 3153 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Taivalkoski
+	link = { vic3 = x100DE3 hoi4 = 3153 } # STATE_OSTROBOTHNIA -> Taivalkoski
 	link = { vic3 = x582BE1 vic3 = x5D6094 vic3 = xB29B34 vic3 = xFD8980 hoi4 = 3156 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Ruka
 	link = { vic3 = x45C196 vic3 = x8FABCB hoi4 = 3158 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Saariselkä
-	link = { vic3 = xF2C73E vic3 = xFBFA4C hoi4 = 3172 } # Kokkola [farm], STATE_OSTROBOTHNIA -> Pietarsaari
+	link = { vic3 = xF2C73E hoi4 = 66 } # Kokkola [farm] -> Kokkola
+	link = { vic3 = xFBFA4C hoi4 = 3172 } # STATE_OSTROBOTHNIA -> Pietarsaari
 	link = { vic3 = x331F4E vic3 = xEA6156 vic3 = x35660F hoi4 = 3193 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Pello
 	link = { vic3 = x47E04D vic3 = x7C55E0 hoi4 = 6013 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kurikka
 	link = { vic3 = x0193AC vic3 = x40EC6F vic3 = x634F6A hoi4 = 6045 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kuusamo
@@ -494,30 +484,29 @@
 	link = { vic3 = xB3923B vic3 = xF99D80 vic3 = xBF4702 hoi4 = 6137 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kemijärvi
 	link = { vic3 = x511691 vic3 = xE798B3 vic3 = xFB8899 hoi4 = 6142 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Ivalo
 	link = { vic3 = x827FC4 vic3 = xA29D5A vic3 = xE7E8FB hoi4 = 6179 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Ahola
-	link = { vic3 = x45734E vic3 = xA9BAEB hoi4 = 6212 } # STATE_OSTROBOTHNIA, Oulu [port] -> Muhos
+	link = { vic3 = x45734E hoi4 = 6212 } # STATE_OSTROBOTHNIA -> Muhos
 	link = { vic3 = x24FC8C vic3 = x398433 vic3 = xC4EB7D hoi4 = 9038 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Seinäjoki
 	link = { vic3 = x06CB86 vic3 = xFEF24A hoi4 = 9112 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Pelkosenniemi
 	link = { vic3 = x9DB817 hoi4 = 6198 } # STATE_OSTROBOTHNIA -> Vimpeli
 	link = { vic3 = x993955 hoi4 = 9156 } # STATE_OSTROBOTHNIA -> Lappajärvi
 	link = { vic3 = x76BD66 vic3 = xC15DED vic3 = xFE27F7 hoi4 = 9158 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> land
-	link = { vic3 = xD70C51 vic3 = x6B44F2 hoi4 = 9189 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Tepsa
+	link = { vic3 = xD70C51 vic3 = x6B44F2 vic3 = x1D75EA hoi4 = 9189 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Tepsa
 	link = { vic3 = x22A760 vic3 = xCEC631 hoi4 = 9223 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Vanttauskoski
 	link = { vic3 = x09ACC3 hoi4 = 9106 } # STATE_OSTROBOTHNIA -> Säräisniemi
-	link = { vic3 = x9AB681 hoi4 = 9233 } # Kajaani [wood] -> Jaalanka
-	link = { vic3 = x3DE2C5 vic3 = xA0C000 hoi4 = 11024 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kuhmo
-	link = { vic3 = x4C423D vic3 = x420121 vic3 = xDAADD6 hoi4 = 11030 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Salla
-	link = { vic3 = x58DADD vic3 = x90A5A7 vic3 = xC38A5B hoi4 = 11041 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kurenalus
+	link = { vic3 = x3DE2C5 hoi4 = 11024 } # STATE_OSTROBOTHNIA -> Kuhmo
+	link = { vic3 = x4C423D vic3 = x420121 hoi4 = 11030 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Salla
+	link = { vic3 = x90A5A7 vic3 = xC38A5B hoi4 = 11041 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kurenalus
 	link = { vic3 = xE01B70 hoi4 = 11065 } # STATE_OSTROBOTHNIA -> Oravainen
 	link = { vic3 = x6073DE vic3 = x9E4B4E vic3 = xAD965E hoi4 = 11079 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Paltamo
 	link = { vic3 = x4C8DA2 hoi4 = 11081 } # STATE_OSTROBOTHNIA -> Iin Hamina
 	link = { vic3 = xBCEB2E vic3 = xA40B1E hoi4 = 11085 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> land
 	link = { vic3 = x1F98EC vic3 = xA8D2B9 vic3 = xD249FD hoi4 = 11115 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Muonio
-	link = { vic3 = x1ADDF7 hoi4 = 11121 } # STATE_OSTROBOTHNIA -> Raahe
-	link = { vic3 = x098AD4 vic3 = x58107D vic3 = xB08854 hoi4 = 11125 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_NORRLAND -> Tornio
+	link = { vic3 = x1ADDF7 vic3 = xEC1FAF hoi4 = 11121 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Raahe
+	link = { vic3 = x098AD4 vic3 = x58107D hoi4 = 11125 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Tornio
 	link = { vic3 = x08E342 vic3 = x69F3E6 hoi4 = 11126 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Närpiö
 	link = { vic3 = x193FE3 vic3 = x3DFFE2 vic3 = x5A2E3F vic3 = x6E6888 vic3 = x81EB90 vic3 = xA8B626 hoi4 = 11130 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Kilpisjärvi
 	link = { vic3 = x5BA0C6 hoi4 = 11132 } # STATE_OSTROBOTHNIA -> Kaustinen
-	link = { vic3 = xE08080 vic3 = x31BE08 hoi4 = 11164 } # STATE_OSTROBOTHNIA, Kemi [mine] -> Kemi
+	link = { vic3 = x31BE08 vic3 = xE08080 hoi4 = 11164 } # Kemi [mine], STATE_OSTROBOTHNIA -> Kemi
 	link = { vic3 = x56D667 vic3 = xE37E57 vic3 = x7BFD0A hoi4 = 11167 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Sodankylä
 	link = { vic3 = x41D99D vic3 = x75CD93 vic3 = xAD8817 hoi4 = 11204 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Unari
 	link = { comment = "* * STATE_HOME_COUNTIES " }
@@ -662,10 +651,10 @@
 	link = { vic3 = xA060C0 hoi4 = 11287 } # Athlone [farm] -> Roscommon
 	link = { vic3 = x5DEF58 hoi4 = 11371 } # Sligo [port] -> Sligo
 	link = { comment = "* * STATE_ILE_DE_FRANCE " }
-	link = { vic3 = x7080DF hoi4 = 6518 } # STATE_ILE_DE_FRANCE -> Montargis
-	link = { vic3 = x906000 hoi4 = 11506 hoi4 = 9523 hoi4 = 9534 } # Paris [city] -> Paris, Versailles, Cergy
-	link = { vic3 = x12462D hoi4 = 6949 hoi4 = 11518 } # STATE_ILE_DE_FRANCE -> Coulommiers, Meaux
-	link = { vic3 = x71DA2E hoi4 = 9725 hoi4 = 11491 } # Meaux [farm] -> Évry, Melun
+	link = { vic3 = x7080DF hoi4 = 6518 } # Fontainebleau [wood] -> Montargis
+	link = { vic3 = x906000 hoi4 = 11506 hoi4 = 9523 hoi4 = 9534 } # Paris [city][mine] -> Paris, Versailles, Cergy
+	link = { vic3 = x12462D hoi4 = 6949 hoi4 = 11518 } # Meaux [farm] -> Coulommiers, Meaux
+	link = { vic3 = x71DA2E hoi4 = 9725 hoi4 = 11491 } # STATE_ILE_DE_FRANCE -> Évry, Melun
 	link = { comment = "* * STATE_PROVENCE " }
 	link = { vic3 = x3040E0 hoi4 = 911 hoi4 = 3928 } # Toulon [port][wood] -> Toulon, Fréjus
 	link = { vic3 = xC03918 hoi4 = 3762 } # STATE_PROVENCE -> Digne-les-Bains
@@ -699,7 +688,7 @@
 	link = { vic3 = xECF077 hoi4 = 943 } # STATE_LANGUEDOC -> Castres
 	link = { vic3 = x106040 hoi4 = 6931 } # STATE_LANGUEDOC -> Foix
 	link = { vic3 = x7C1D57 vic3 = x3784B2 vic3 = x5615DD hoi4 = 3915 } # STATE_LANGUEDOC, STATE_LANGUEDOC, STATE_LANGUEDOC -> Saint-Gaudens
-	link = { vic3 = xF0C060 hoi4 = 6770 } # STATE_LANGUEDOC -> Mende
+	link = { vic3 = xF0C060 hoi4 = 6770 } # Alais [mine] -> Mende
 	link = { comment = "* * STATE_RHONE " }
 	link = { vic3 = xB8E48D hoi4 = 11713 } # STATE_RHONE -> Montélimar
 	link = { vic3 = x73F176 hoi4 = 762 } # STATE_RHONE -> Valence
@@ -714,44 +703,44 @@
 	link = { vic3 = x704060 hoi4 = 11716 hoi4 = 780 hoi4 = 3589 hoi4 = 6786 hoi4 = 9728 } # Valence [farm] -> Aubenas, Romans-sur-Isère, Vienne, Saint-Étienne, Privas
 	link = { vic3 = x1114E9 hoi4 = 13124 hoi4 = 13126 } # x1114E9 -> (Lake), (Lake)
 	link = { comment = "* * STATE_FRENCH_LOW_COUNTRIES" }
-	link = { vic3 = xE0A0C0 hoi4 = 11548 hoi4 = 9500 hoi4 = 3536 } # STATE_FRENCH_LOW_COUNTRIES -> Calais, Boulogne-sur-Mer, Béthune
-	link = { vic3 = xD0854D hoi4 = 575 } # STATE_FRENCH_LOW_COUNTRIES -> Dunkerque
-	link = { vic3 = x106000 hoi4 = 3476 } # STATE_FRENCH_LOW_COUNTRIES -> Arras
+	link = { vic3 = xE0A0C0 hoi4 = 11548 hoi4 = 9500 hoi4 = 3536 } # Calais [farm] -> Calais, Boulogne-sur-Mer, Béthune
+	link = { vic3 = xD0854D hoi4 = 575 } # Dunkirk [port] -> Dunkerque
+	link = { vic3 = x106000 hoi4 = 3476 } # Arras [wood] -> Arras
 	link = { vic3 = x5362AC hoi4 = 6504 } # STATE_FRENCH_LOW_COUNTRIES -> Lens
 	link = { vic3 = x70C020 hoi4 = 11606 } # STATE_FRENCH_LOW_COUNTRIES -> Valenciennes
-	link = { vic3 = xA0A080 hoi4 = 11483 } # STATE_FRENCH_LOW_COUNTRIES -> Lille
+	link = { vic3 = xA0A080 hoi4 = 11483 } # Lille [city][mine] -> Lille
 	link = { comment = "* * STATE_PICARDY " }
-	link = { vic3 = x10A0C0 hoi4 = 11420 } # Saint-Quentin [mine] -> Amiens
+	link = { vic3 = x10A0C0 hoi4 = 11420 } # Amiens [city] -> Amiens
 	link = { vic3 = xCF1F6D hoi4 = 454 } # STATE_PICARDY -> Albert
-	link = { vic3 = xE0A624 hoi4 = 485 } # STATE_PICARDY -> Dieppe
-	link = { vic3 = xC4C61A hoi4 = 9561 hoi4 = 6585 hoi4 = 6569 } # Compiègne [wood] -> Compiègne, Beauvais, Vernon
+	link = { vic3 = xE0A624 hoi4 = 485 } # Le Crotoy [port] -> Dieppe
+	link = { vic3 = xC4C61A hoi4 = 9561 hoi4 = 6585 hoi4 = 6569 } # Compiègne [wood][mine] -> Compiègne, Beauvais, Vernon
 	link = { vic3 = x7040A0 hoi4 = 11549 } # STATE_PICARDY -> land
 	link = { vic3 = x075199 hoi4 = 3402 hoi4 = 3447 } # STATE_PICARDY -> Saint-Quentin, Hirson
 	link = { comment = "* * STATE_ALSACE_LORRAINE " }
 	link = { vic3 = xF0C0A0 hoi4 = 3629 } # STATE_ALSACE_LORRAINE -> Sarreguemines
-	link = { vic3 = xCC3250 hoi4 = 6529 } # STATE_ALSACE_LORRAINE -> Colmar
+	link = { vic3 = xCC3250 hoi4 = 6529 } # Mulhouse [mine] -> Colmar
 	link = { vic3 = x6E4891 hoi4 = 9503 hoi4 = 1346 hoi4 = 549 } # Strasbourg [city][wood] -> Strasbourg, Sarrebourg, Haguenau
 	link = { vic3 = x4899A2 hoi4 = 11502 hoi4 = 9559 } # Metz [farm] -> Metz, Thionville
 	link = { comment = "* * STATE_POITOU " }
 	link = { vic3 = x19234B hoi4 = 629 hoi4 = 11869 hoi4 = 625 } # STATE_POITOU -> Poitiers, La Souterraine, Saint-Junien
 	link = { vic3 = xD0A040 hoi4 = 6657 hoi4 = 9597 } # La Rochelle [port][wood] -> La Rochelle, Saintes
-	link = { vic3 = xE269A3 hoi4 = 655 } # STATE_POITOU -> Niort
+	link = { vic3 = xE269A3 hoi4 = 655 } # Niort [farm] -> Niort
 	link = { vic3 = x9401C7 hoi4 = 595 hoi4 = 11582 } # Angoulême [mine] -> Angoulême, Ruffec
 	link = { vic3 = xD020C0 hoi4 = 3598 } # Poitiers [city] -> Nontron
 	link = { vic3 = x50A040 hoi4 = 3659 } # STATE_POITOU -> Thouars
 	link = { vic3 = x3F74AF hoi4 = 9631 } # STATE_POITOU -> Bressuire
 	link = { vic3 = xDD4DD0 hoi4 = 11600 } # STATE_POITOU -> La Roche-sur-Yon
 	link = { comment = "* * STATE_GUYENNE" }
-	link = { vic3 = xA2BBE9 hoi4 = 929 hoi4 = 3749 hoi4 = 6766 hoi4 = 3948 } # Agen [farm] -> Agen, L'Isle-Jourdain, Toulouse, Albi
+	link = { vic3 = xA2BBE9 hoi4 = 929 hoi4 = 3749 hoi4 = 6766 hoi4 = 3948 } # Montauban [city] -> Agen, L'Isle-Jourdain, Toulouse, Albi
 	link = { vic3 = x30E000 hoi4 = 11702 hoi4 = 755 } # STATE_GUYENNE -> Montauban, Villefranche-de- Rouergue
 	link = { vic3 = x086618 hoi4 = 9717 } # STATE_GUYENNE -> Marmande
-	link = { vic3 = xB06000 hoi4 = 6775 } # STATE_GUYENNE -> Cahors
-	link = { vic3 = xC8CD2F hoi4 = 11720 } # STATE_GUYENNE -> Bergerac
+	link = { vic3 = xB06000 hoi4 = 6775 } # Agen [farm] -> Cahors
+	link = { vic3 = xC8CD2F hoi4 = 11720 } # Bergerac [wood] -> Bergerac
 	link = { vic3 = x5020C0 hoi4 = 6792 } # STATE_GUYENNE -> Périgueux
 	link = { vic3 = x306000 hoi4 = 9751 hoi4 = 9734 } # STATE_GUYENNE -> Brive-la-Gaillarde, Sarlat-la-Canéda
 	link = { vic3 = xF3D359 hoi4 = 11718 } # STATE_GUYENNE -> Padirac
 	link = { vic3 = xAF89BC hoi4 = 752 hoi4 = 3754 } # STATE_GUYENNE -> Rodez, Saint-Flour
-	link = { vic3 = x106080 hoi4 = 3751 hoi4 = 6962 } # STATE_GUYENNE -> Saint-Affrique, Bédarieux
+	link = { vic3 = x106080 hoi4 = 3751 hoi4 = 6962 } # Rodez [mine] -> Saint-Affrique, Bédarieux
 	link = { vic3 = x7BCDC4 hoi4 = 760 } # STATE_GUYENNE -> Le Vigan
 	link = { vic3 = x061121 hoi4 = 11709 } # STATE_GUYENNE -> Millau
 	link = { comment = "* * STATE_AUVERGNE_LIMOUSIN" }
@@ -796,23 +785,23 @@
 	link = { vic3 = x999D4B hoi4 = 3506 } # STATE_BURGUNDY -> Auxerre
 	link = { comment = "* * STATE_CHAMPAGNE " }
 	link = { vic3 = xE280FC hoi4 = 551 } # STATE_CHAMPAGNE -> Châlons-sur-Marne
-	link = { vic3 = x669027 vic3 = xEFBF20 hoi4 = 9472 } # STATE_CHAMPAGNE, STATE_CHAMPAGNE -> Mézières
-	link = { vic3 = xEF00DF hoi4 = 9490 } # Chaumont [wood] -> Troyes
+	link = { vic3 = x669027 vic3 = xEFBF20 hoi4 = 9472 } # STATE_CHAMPAGNE, Charleville [mine] -> Mézières
+	link = { vic3 = xEF00DF hoi4 = 9490 } # Troyes [farm] -> Troyes
 	link = { vic3 = x8AE8D1 vic3 = xEF40A0 vic3 = x4B7684 hoi4 = 11732 } # STATE_CHAMPAGNE, STATE_CHAMPAGNE, STATE_CHAMPAGNE -> Saint-Dizier
 	link = { vic3 = x5FEA2F vic3 = xD6A06D hoi4 = 13011 } # STATE_CHAMPAGNE, Reims [city] -> Reims
-	link = { vic3 = x600883 hoi4 = 3533 hoi4 = 6531 } # STATE_CHAMPAGNE -> Chaumont, Langres
+	link = { vic3 = x600883 hoi4 = 3533 hoi4 = 6531 } # Chaumont [wood] -> Chaumont, Langres
 	link = { comment = "* * STATE_FRANCHE_COMTE " }
-	link = { vic3 = xB000E0 hoi4 = 678 } # STATE_FRANCHE_COMTE -> Mulhouse
-	link = { vic3 = x3D8EF9 hoi4 = 698 } # Lons-le-Saunier [mine] -> Belfort
-	link = { vic3 = xF00060 hoi4 = 3646 } # STATE_FRANCHE_COMTE -> Lons-le-Saunier
-	link = { vic3 = xCF46D1 hoi4 = 3666 } # STATE_FRANCHE_COMTE -> Montbéliard
+	link = { vic3 = xB000E0 hoi4 = 678 } # Belfort [farm] -> Mulhouse
+	link = { vic3 = x3D8EF9 hoi4 = 698 } # STATE_FRANCHE_COMTE -> Belfort
+	link = { vic3 = xF00060 hoi4 = 3646 } # Lons-le-Saunier [mine] -> Lons-le-Saunier
+	link = { vic3 = xCF46D1 hoi4 = 3666 } # Besançon [city][wood] -> Montbéliard
 	link = { vic3 = xA9D961 hoi4 = 6698 } # STATE_FRANCHE_COMTE -> Vesoul
 	link = { vic3 = x700060 hoi4 = 9642 hoi4 = 9658 } # STATE_FRANCHE_COMTE -> Besançon, Gray
 	link = { comment = "* * STATE_LORRAINE" }
-	link = { vic3 = xC5F13A hoi4 = 3560 } # STATE_LORRAINE -> Sedan
-	link = { vic3 = xB080E0 hoi4 = 5291 hoi4 = 11516 } # STATE_LORRAINE -> Longwy, Nancy
-	link = { vic3 = x3080E0 hoi4 = 521 hoi4 = 11642 hoi4 = 11488 } # STATE_LORRAINE -> Saint-Dié-des- Vosges, Épinal, Neufchâteau
-	link = { vic3 = x70BFA0 hoi4 = 3546 } # STATE_LORRAINE -> Verdun
+	link = { vic3 = xC5F13A hoi4 = 3560 } # Longwy [mine] -> Sedan
+	link = { vic3 = xB080E0 hoi4 = 5291 hoi4 = 11516 } # Nancy [city] -> Longwy, Nancy
+	link = { vic3 = x3080E0 hoi4 = 521 hoi4 = 11642 hoi4 = 11488 } # Épinal [wood] -> Saint-Dié-des- Vosges, Épinal, Neufchâteau
+	link = { vic3 = x70BFA0 hoi4 = 3546 } # Verdun [farm] -> Verdun
 	link = { vic3 = x282DCC hoi4 = 6545 } # STATE_LORRAINE -> Bar-le-Duc
 	link = { vic3 = x7FC1E6 hoi4 = 9505 } # STATE_LORRAINE -> Commercy
 	link = { comment = "* * STATE_AQUITAINE " }
@@ -824,7 +813,7 @@
 	link = { vic3 = xF0A080 hoi4 = 9710 } # STATE_AQUITAINE -> Dax
 	link = { vic3 = x606DEC hoi4 = 6759 } # STATE_AQUITAINE -> Casteljaloux
 	link = { vic3 = xBBF036 hoi4 = 9737 hoi4 = 11565 hoi4 = 6762 } # Bordeaux [city] -> Bordeaux, Libourne, Morcenx
-	link = { vic3 = xF02080 hoi4 = 9882 hoi4 = 9884 } # STATE_AQUITAINE -> Lourdes, Arette
+	link = { vic3 = xF02080 hoi4 = 9882 hoi4 = 9884 } # Lourdes [mine] -> Lourdes, Arette
 	link = { vic3 = xCD8E77 hoi4 = 11697 } # Pau [wood] -> Mauléon-Licharre
 	link = { vic3 = xD957E6 hoi4 = 12169 } # STATE_AQUITAINE -> Tarbes
 	link = { comment = "* * STATE_ORLEANS " }
@@ -837,7 +826,7 @@
 	link = { vic3 = x6E4717 vic3 = x14F855 hoi4 = 3626 } # STATE_ORLEANS, STATE_ORLEANS -> Guéret
 	link = { vic3 = xE7B296 hoi4 = 6651 } # STATE_ORLEANS -> Boussac
 	link = { vic3 = x47B641 hoi4 = 9507 } # Orléans [city] -> Artenay
-	link = { vic3 = x90A0C0 vic3 = xE13BC2 hoi4 = 6547 } # STATE_ORLEANS, STATE_ORLEANS -> Chartres
+	link = { vic3 = x90A0C0 vic3 = xE13BC2 hoi4 = 6547 } # Chartres [mine], STATE_ORLEANS -> Chartres
 	link = { vic3 = xF522D9 hoi4 = 3534 } # STATE_ORLEANS -> Mortagne-au-Perche
 	link = { comment = "* * STATE_HOLLAND " }
 	link = { vic3 = x777732 hoi4 = 3314 hoi4 = 68 } # Amsterdam [city][mine] -> Alkmaar, Haarlem
@@ -979,7 +968,7 @@
 	link = { vic3 = xD08060 hoi4 = 11590 } # Lausanne [farm] -> Lausanne
 	link = { comment = "* * STATE_WESTPHALIA " }
 	link = { vic3 = x1BA4F6 hoi4 = 405 } # STATE_WESTPHALIA -> Bielefeld
-	link = { vic3 = xA08061 vic3 = x1DD141 hoi4 = 6535 } # Dortmund [city], Münster [farm] -> Münster
+	link = { vic3 = xA08061 vic3 = x1DD141 hoi4 = 6535 } # Dortmund [city], Essen [wood][farm] -> Münster
 	link = { vic3 = x9F0060 hoi4 = 3355 } # STATE_WESTPHALIA -> Paderborn
 	link = { vic3 = x910095 hoi4 = 9509 hoi4 = 11431 } # STATE_WESTPHALIA -> Gütersloh, Lippstadt
 	link = { vic3 = x4101A0 hoi4 = 9443 } # STATE_WESTPHALIA -> Hamm
@@ -1003,11 +992,11 @@
 	link = { vic3 = xC1B963 hoi4 = 11494 hoi4 = 3423 } # STATE_RHINELAND -> Andernach, Koblenz
 	link = { vic3 = x904020 hoi4 = 11531 } # Saarbrücken [city] -> Saarbrücken
 	link = { comment = "* * STATE_NORTH_RHINE " }
-	link = { vic3 = x9F4072 hoi4 = 587 } # STATE_NORTH_RHINE -> Köln
+	link = { vic3 = x9F4072 hoi4 = 587 } # Cologne [city] -> Köln
 	link = { vic3 = x8001E0 hoi4 = 3444 } # STATE_NORTH_RHINE -> Düsseldorf
-	link = { vic3 = x486F6A hoi4 = 3488 } # STATE_NORTH_RHINE -> Eupen
-	link = { vic3 = x518021 hoi4 = 3547 } # STATE_NORTH_RHINE -> Bonn
-	link = { vic3 = x834B66 hoi4 = 9522 } # Eupen [wood] -> Aachen
+	link = { vic3 = x486F6A hoi4 = 3488 } # Eupen [wood] -> Eupen
+	link = { vic3 = x518021 hoi4 = 3547 } # Bonn [farm] -> Bonn
+	link = { vic3 = x834B66 hoi4 = 9522 } # Aachen [mine] -> Aachen
 	link = { vic3 = x29CCD6 hoi4 = 11435 hoi4 = 11470 } # STATE_NORTH_RHINE -> Bitburg, Cochem
 	link = { comment = "* * STATE_BRANDENBURG " }
 	link = { vic3 = x61C0A0 hoi4 = 375 hoi4 = 11444 } # STATE_BRANDENBURG -> Oranienburg, Eberswalde
@@ -1031,6 +1020,7 @@
 	link = { vic3 = x64824C hoi4 = 6389 hoi4 = 6257 } # Kiel [city] -> Kiel, Neümunster
 	link = { vic3 = xE3C876 hoi4 = 13258 } # STATE_SCHLESWIG_HOLSTEIN -> land
 	link = { vic3 = x60809F hoi4 = 11331 } # Lübeck [port] -> Lübeck
+	link = { vic3 = x78B203 hoi4 = 332 hoi4 = 11251 } # STATE_SCHLESWIG_HOLSTEIN -> Ribe, Kolding
 	link = { vic3 = x00C060 hoi4 = 11366 hoi4 = 317 } # Flensburg [farm][mine] -> Sylt, Flensburg
 	link = { vic3 = xE000A0 hoi4 = 9320 } # STATE_SCHLESWIG_HOLSTEIN -> Ahrensburg
 	link = { comment = "* * STATE_WURTTEMBERG " }
@@ -3093,11 +3083,11 @@
 	link = { vic3 = xCB898B hoi4 = 7166 } # STATE_ALGIERS -> Akbou
 	link = { vic3 = xF151FD hoi4 = 12020 } # STATE_ALGIERS -> Sougueur
 	link = { vic3 = xC6BA37 vic3 = x7E5293 hoi4 = 12760 } # STATE_ALGIERS, STATE_ALGIERS -> Tissemsilt
-	link = { vic3 = xA75E78 hoi4 = 1013 hoi4 = 9964 } # STATE_ALGIERS -> Chlef, Affreville
+	link = { vic3 = xA75E78 hoi4 = 1013 hoi4 = 9964 } # Cherchel [port][wood] -> Chlef, Affreville
 	link = { vic3 = x713C2F hoi4 = 1145 } # Algiers [city] -> Algiers
-	link = { vic3 = xAA79B2 hoi4 = 4146 } # STATE_ALGIERS -> Médéa
+	link = { vic3 = xAA79B2 hoi4 = 4146 } # Médéa [farm] -> Médéa
 	link = { vic3 = xB951DE vic3 = xEF919A vic3 = xD9F21C vic3 = x16B315 hoi4 = 7040 } # STATE_ALGIERS, STATE_ALGIERS, STATE_ALGIERS, STATE_ALGIERS -> Ksar Chellala
-	link = { vic3 = x0811DE hoi4 = 1128 } # STATE_ALGIERS -> Aïn Oussera
+	link = { vic3 = x0811DE hoi4 = 1128 } # Djelfa [mine] -> Aïn Oussera
 	link = { vic3 = x9D893C vic3 = xFEE41A hoi4 = 7033 } # STATE_ALGIERS, STATE_ALGIERS -> Bou Saada
 	link = { vic3 = x5ACA8F vic3 = xD14DAC hoi4 = 4131 } # STATE_ALGIERS, STATE_ALGIERS -> Bouira
 	link = { vic3 = x20EF40 hoi4 = 11939 } # STATE_ALGIERS -> Tizi Ouzou
@@ -3107,32 +3097,32 @@
 	link = { vic3 = x513113 vic3 = x267471 hoi4 = 9960 } # STATE_ALGIERS, STATE_ALGIERS -> Djelfa
 	link = { comment = "* * STATE_CONSTANTINE " }
 	link = { vic3 = x265E07 hoi4 = 10078 } # STATE_CONSTANTINE -> Djidjelli
-	link = { vic3 = x1AF7B7 vic3 = xA39A15 hoi4 = 12051 } # Constantine [city][wood], STATE_CONSTANTINE -> Constantine
-	link = { vic3 = x0050A0 hoi4 = 7081 } # STATE_CONSTANTINE -> Guelma
+	link = { vic3 = x1AF7B7 vic3 = xA39A15 hoi4 = 12051 } # Constantine [city], STATE_CONSTANTINE -> Constantine
+	link = { vic3 = x0050A0 hoi4 = 7081 } # Bona [port] -> Guelma
 	link = { vic3 = x7C6240 hoi4 = 1160 } # STATE_CONSTANTINE -> Annaba
-	link = { vic3 = x8050A0 vic3 = xDC0687 hoi4 = 1058 } # STATE_CONSTANTINE, STATE_CONSTANTINE -> Tébessa
-	link = { vic3 = x01D0A0 vic3 = xFCF985 hoi4 = 1141 } # STATE_CONSTANTINE, Bougie [farm] -> Bir El Ater
-	link = { vic3 = xB04F35 vic3 = x0C42E2 hoi4 = 4970 } # Tebessa [mine], STATE_CONSTANTINE -> land
+	link = { vic3 = x8050A0 vic3 = xDC0687 hoi4 = 1058 } # Tebessa [mine], STATE_CONSTANTINE -> Tébessa
+	link = { vic3 = x01D0A0 vic3 = xFCF985 hoi4 = 1141 } # STATE_CONSTANTINE, STATE_CONSTANTINE -> Bir El Ater
+	link = { vic3 = xB04F35 vic3 = x0C42E2 hoi4 = 4970 } # STATE_CONSTANTINE, STATE_CONSTANTINE -> land
 	link = { vic3 = xC3090D hoi4 = 12888 } # STATE_CONSTANTINE -> Biskra
 	link = { vic3 = x3EE58D vic3 = x991E79 hoi4 = 5053 } # STATE_CONSTANTINE, STATE_CONSTANTINE -> Ouled Djellal
 	link = { vic3 = x79D029 vic3 = xB1BCFF hoi4 = 7149 } # STATE_CONSTANTINE, STATE_CONSTANTINE -> Aïn El Melh
 	link = { vic3 = x01EE15 vic3 = x8FFB18 vic3 = xD99A74 hoi4 = 9943 } # STATE_CONSTANTINE, STATE_CONSTANTINE, STATE_CONSTANTINE -> El Oued
-	link = { vic3 = x3A0E38 vic3 = x0090A0 hoi4 = 7065 } # STATE_CONSTANTINE, STATE_CONSTANTINE -> Sétif
+	link = { vic3 = x3A0E38 vic3 = x0090A0 hoi4 = 7065 } # Sétif [wood], STATE_CONSTANTINE -> Sétif
 	link = { vic3 = xA31194 hoi4 = 9976 } # STATE_CONSTANTINE -> Batna
 	link = { vic3 = x0C5C65 vic3 = xDF1F38 hoi4 = 10059 } # STATE_CONSTANTINE, STATE_CONSTANTINE -> Barika
 	link = { vic3 = xA12B39 hoi4 = 11953 } # STATE_CONSTANTINE -> Aïn Beïda
 	link = { vic3 = x137E91 vic3 = x3AD789 vic3 = xC65997 hoi4 = 12034 } # STATE_CONSTANTINE, STATE_CONSTANTINE, STATE_CONSTANTINE -> Zeribet El Oued
-	link = { vic3 = x429B12 vic3 = x8090DF vic3 = xB5486B vic3 = x9AF6A4 hoi4 = 4046 } # STATE_CONSTANTINE, STATE_CONSTANTINE, STATE_CONSTANTINE, Bona [port] -> Béjaïa
+	link = { vic3 = x429B12 vic3 = x8090DF vic3 = xB5486B vic3 = x9AF6A4 hoi4 = 4046 } # STATE_CONSTANTINE, Bougie [farm], STATE_CONSTANTINE, STATE_CONSTANTINE -> Béjaïa
 	link = { vic3 = x2DF9DB vic3 = x8E7690 hoi4 = 13077 } # STATE_CONSTANTINE, STATE_CONSTANTINE -> M'Sila
 	link = { comment = "* * STATE_ORAN " }
 	link = { vic3 = x0D2515 vic3 = x60D278 vic3 = x95CBD4 hoi4 = 3991 } # STATE_ORAN, STATE_ORAN, STATE_ORAN -> Makman Ben Amer
-	link = { vic3 = x3E6888 hoi4 = 4116 } # Oran [port] -> Tlemcen
-	link = { vic3 = x207040 vic3 = xE76FA0 hoi4 = 4150 } # STATE_ORAN, STATE_ORAN -> Saïda
+	link = { vic3 = x3E6888 hoi4 = 4116 } # Tlemcen [wood] -> Tlemcen
+	link = { vic3 = x207040 vic3 = xE76FA0 hoi4 = 4150 } # STATE_ORAN, Mascara [city] -> Saïda
 	link = { vic3 = x7534E5 vic3 = x8C4FD5 hoi4 = 7008 } # STATE_ORAN, STATE_ORAN -> Mécheria
-	link = { vic3 = xDFB0C0 vic3 = xB735DB hoi4 = 7132 } # STATE_ORAN, STATE_ORAN -> Oran
-	link = { vic3 = xC2269C vic3 = x6736D2 hoi4 = 11923 } # Aïn Séfra [mine], STATE_ORAN -> Mostaganem
+	link = { vic3 = xDFB0C0 vic3 = xB735DB hoi4 = 7132 } # Mostaganem [farm], Oran [port] -> Oran
+	link = { vic3 = xC2269C vic3 = x6736D2 hoi4 = 11923 } # STATE_ORAN, STATE_ORAN -> Mostaganem
 	link = { vic3 = x6F831B hoi4 = 10045 } # STATE_ORAN -> Tiaret
-	link = { vic3 = xA07040 vic3 = xCEB068 vic3 = x465605 hoi4 = 12018 } # STATE_ORAN, STATE_ORAN, STATE_ORAN -> Aïn Sefra
+	link = { vic3 = xA07040 vic3 = xCEB068 vic3 = x465605 hoi4 = 12018 } # Aïn Séfra [mine], STATE_ORAN, STATE_ORAN -> Aïn Sefra
 	link = { vic3 = x4CE79E vic3 = xEFD8F4 vic3 = xBCA418 vic3 = xB78BBE hoi4 = 13074 } # STATE_ORAN, STATE_ORAN, STATE_ORAN, STATE_ORAN -> El Bayadh
 	link = { comment = "* * STATE_TUNISIA " }
 	link = { vic3 = x18A545 vic3 = xA42759 hoi4 = 1037 } # STATE_TUNISIA, STATE_TUNISIA -> Sidi Bouzid
@@ -5160,7 +5150,7 @@
 	link = { vic3 = x49AE7D vic3 = x5C955D vic3 = x5ED420 vic3 = xDC3D44 vic3 = xE8C4B9 vic3 = xF91A3D vic3 = x8170A2 vic3 = xAD65A3 vic3 = xE709F8 vic3 = x2E0608 vic3 = x4080D0 vic3 = x66279A hoi4 = 8199 } # STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, Cajamarca [mine], STATE_CAJAMARCA, Chiclayo [port], STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, Trujillo [city], STATE_CAJAMARCA, STATE_CAJAMARCA -> Trujillo
 	link = { vic3 = x069581 vic3 = x215FF5 vic3 = x6EDBA1 vic3 = xA33231 vic3 = xD57EEE vic3 = x53C9A1 vic3 = xA6A663 vic3 = x54BF7F hoi4 = 12969 } # STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA -> Huánuco
 	link = { comment = "* * STATE_LIMA " }
-	link = { vic3 = x2AFF79 vic3 = x3528D6 vic3 = x631487 vic3 = xC2FE32 vic3 = xF333CF vic3 = x3060D7 vic3 = xC64601 vic3 = x96560E vic3 = x32FF31 vic3 = xA101CC vic3 = x7991EE vic3 = xDF00B0 hoi4 = 2162 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, Huancayo [mine], STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_ICA, STATE_LIMA -> Huancayo
+	link = { vic3 = x2AFF79 vic3 = x3528D6 vic3 = x631487 vic3 = xC2FE32 vic3 = xF333CF vic3 = x3060D7 vic3 = xC64601 vic3 = x96560E vic3 = x32FF31 vic3 = xA101CC vic3 = x7991EE vic3 = xDF00B0 hoi4 = 2162 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_ICA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> Huancayo
 	link = { vic3 = x0B1EE1 vic3 = x26F77F vic3 = x539023 vic3 = x59E553 vic3 = x786D2C vic3 = xCBB91A vic3 = x131D6D vic3 = x690D59 vic3 = xF405A2 vic3 = x7C6BF6 vic3 = xCD4EF2 vic3 = x88CDF0 vic3 = x03B9CB hoi4 = 2212 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA -> Pucallpa
 	link = { vic3 = x48284E vic3 = x6EB212 vic3 = x9BBC5E vic3 = xA03573 vic3 = xA06991 vic3 = xC9CBD8 vic3 = xCF5BB8 vic3 = xE69BC9 vic3 = xF2A18E vic3 = x9E0F14 vic3 = x99E70D vic3 = xDEA3E2 vic3 = xA4735B vic3 = x64989F vic3 = x9866F2 hoi4 = 2226 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, Pucallpa [farm], STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA -> Contamana
 	link = { vic3 = x5E4494 vic3 = xD7B13A vic3 = xF3F25C vic3 = x7C29E5 hoi4 = 5190 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA -> Chimbote
@@ -5168,15 +5158,15 @@
 	link = { vic3 = x20C0B0 vic3 = x6BEF27 vic3 = x928ED8 vic3 = xC0A53C vic3 = xF19D07 vic3 = xA0C0B0 vic3 = x60C030 hoi4 = 12997 } # STATE_LIMA, Callao [port], Lima [city], STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA -> Lima
 	link = { comment = "* * STATE_ICA " }
 	link = { vic3 = x08BBBC vic3 = x38EE47 vic3 = xDF4030 vic3 = xE7EB9B vic3 = x68D883 hoi4 = 2182 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> Juliaca
-	link = { vic3 = x25CF2A vic3 = x32863F vic3 = xA7C0A9 vic3 = xD3F539 hoi4 = 2225 } # Ica [farm], Pisco [port], STATE_ICA, STATE_ICA -> Ica
+	link = { vic3 = x25CF2A vic3 = x32863F vic3 = xA7C0A9 vic3 = xD3F539 hoi4 = 2225 } # STATE_LIMA, STATE_LIMA, STATE_ICA, STATE_LIMA -> Ica
 	link = { vic3 = x3B8AB8 vic3 = x40E12A vic3 = x44B4A5 vic3 = x82F15A vic3 = x98E058 vic3 = xA4DAF3 vic3 = xA4CA0B vic3 = x807F09 hoi4 = 5166 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, Cuzco [city], STATE_ICA, STATE_ICA, STATE_ICA -> Cusco
-	link = { vic3 = x08623F vic3 = x6040B0 vic3 = xB0BAC0 vic3 = xDFC030 vic3 = xFB1969 vic3 = xE5E702 vic3 = x05FB9B hoi4 = 5202 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> Abancay
+	link = { vic3 = x08623F vic3 = x6040B0 vic3 = xB0BAC0 vic3 = xDFC030 vic3 = xFB1969 vic3 = xE5E702 vic3 = x05FB9B hoi4 = 5202 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_LIMA -> Abancay
 	link = { vic3 = x08AC16 vic3 = x0AF425 vic3 = x6780B3 vic3 = xB3DC65 vic3 = xF0A4FE vic3 = xF3A702 vic3 = xD54205 hoi4 = 8160 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> Atalaya
 	link = { vic3 = x1F2F47 vic3 = x3F9FD5 vic3 = x43494D vic3 = x7DD2F8 vic3 = x817BB5 vic3 = x83E894 vic3 = xB15AC4 vic3 = xF211E2 vic3 = xFF8828 hoi4 = 8191 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> land
 	link = { vic3 = x186AEE vic3 = x1CA561 vic3 = x7B9FBE vic3 = xB2AB53 vic3 = xBDFBD1 vic3 = x199608 hoi4 = 10940 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, Puerto Maldonado [wood], STATE_ICA -> Puerto Maldonado
 	link = { vic3 = x003582 vic3 = x0D8A39 vic3 = x3C568C vic3 = x4061BE vic3 = x52BF37 vic3 = x5F849A vic3 = xCAB5E1 hoi4 = 12953 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, Ayacucho [mine], STATE_ICA, STATE_ICA -> Ayacucho
 	link = { comment = "* * STATE_AREQUIPA " }
-	link = { vic3 = x79A3B0 vic3 = x7C1054 vic3 = x96798E vic3 = xDF23D0 vic3 = xE326BA vic3 = xF6869A vic3 = x728391 vic3 = xD464CF vic3 = xC6E532 vic3 = xC72B01 vic3 = x8EC087 vic3 = xD619E0 vic3 = x3BC37F vic3 = x2E3791 vic3 = x89775D vic3 = xB077B0 vic3 = xC16B62 vic3 = xBB02B0 hoi4 = 2210 } # STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, Mollendo [port], STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, Arequipa [city], STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, Puno [wood] -> Arequipa
+	link = { vic3 = x79A3B0 vic3 = x7C1054 vic3 = x96798E vic3 = xDF23D0 vic3 = xE326BA vic3 = xF6869A vic3 = x728391 vic3 = xD464CF vic3 = xC6E532 vic3 = xC72B01 vic3 = x8EC087 vic3 = xD619E0 vic3 = x3BC37F vic3 = x2E3791 vic3 = x89775D vic3 = xB077B0 vic3 = xC16B62 vic3 = xBB02B0 hoi4 = 2210 } # STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, Mollendo [port], STATE_ICA, STATE_ICA, STATE_ICA, Arequipa [city], STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, Puno [wood] -> Arequipa
 	link = { vic3 = x007035 vic3 = x451783 vic3 = x67EC55 vic3 = x72698B vic3 = x923040 vic3 = x96AB5D vic3 = xBED190 vic3 = xD66487 vic3 = xDFC0B0 hoi4 = 13086 } # Tacna [farm], STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, Moquegua [mine] -> Tacna
 	link = { comment = "* * STATE_URUGUAY " }
 	link = { vic3 = x02C6DE vic3 = xDD1206 hoi4 = 1613 } # STATE_URUGUAY, STATE_URUGUAY -> Paso de los Toros
@@ -5194,7 +5184,7 @@
 	link = { vic3 = x3F05CB hoi4 = 12496 } # STATE_URUGUAY -> Duranzo
 	link = { comment = "* * STATE_JUJUY " }
 	link = { vic3 = x02AD51 vic3 = x0643B5 vic3 = x15263F vic3 = x155297 vic3 = x2D4E45 vic3 = x463063 vic3 = x90F196 vic3 = xA94375 vic3 = xCA4A31 hoi4 = 2224 } # STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY -> La Quiaca
-	link = { vic3 = x15D9B2 vic3 = x1FD39C vic3 = x3B871C vic3 = x9319AA vic3 = xF32BA0 vic3 = xDF00F0 vic3 = xD60DF3 vic3 = xAB85CC vic3 = xD719A6 vic3 = x28C317 hoi4 = 5229 } # STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, Yacuiba [wood], STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY -> Tarija
+	link = { vic3 = x15D9B2 vic3 = x1FD39C vic3 = x3B871C vic3 = x9319AA vic3 = xF32BA0 vic3 = xDF00F0 vic3 = xD60DF3 vic3 = xAB85CC vic3 = xD719A6 vic3 = x28C317 hoi4 = 5229 } # STATE_SANTA_CRUZ, STATE_SANTA_CRUZ, STATE_SANTA_CRUZ, STATE_SANTA_CRUZ, STATE_SANTA_CRUZ, STATE_SANTA_CRUZ, STATE_SANTA_CRUZ, STATE_SANTA_CRUZ, STATE_SANTA_CRUZ, STATE_SANTA_CRUZ -> Tarija
 	link = { vic3 = x0D83A7 vic3 = x2080F0 vic3 = x45BE94 vic3 = x829F7D vic3 = xAB66CC vic3 = xAB88AD vic3 = xD2B642 vic3 = x5CCB77 vic3 = xE6D25C hoi4 = 8195 } # STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, Salta [city], STATE_JUJUY -> Belén
 	link = { vic3 = x369CE3 vic3 = x3DEF82 vic3 = x402B62 vic3 = xB01D65 vic3 = xC3F7F6 vic3 = xC9249D vic3 = xDF80F0 hoi4 = 10944 } # STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, Orán [farm] -> Tartagal
 	link = { vic3 = x204070 vic3 = x256EF2 vic3 = x8C37BE vic3 = x8D1ED0 vic3 = x92E924 vic3 = xC0183E vic3 = xC11533 vic3 = xE6ADAE vic3 = xEAB107 vic3 = x702282 vic3 = x5F3E39 hoi4 = 10965 } # STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY, STATE_JUJUY -> San José de Metán
@@ -5405,7 +5395,7 @@
 	link = { vic3 = x44FB4A vic3 = x492CDF vic3 = x946DFF vic3 = xA7D75D vic3 = xB9F1A1 vic3 = xC550D6 vic3 = x6B95AD vic3 = x3A6B08 vic3 = xE80B69 hoi4 = 4587 } # STATE_PARANA, Cascavel [wood], STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA -> Paranavaí
 	link = { vic3 = xE122FE vic3 = x53CD15 vic3 = xDB9540 vic3 = x535BBC vic3 = x966EB0 vic3 = x01887B hoi4 = 5156 } # STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA -> União da Vitória
 	link = { vic3 = x1D2749 vic3 = x38FE72 vic3 = x859E23 vic3 = xB6F7AD vic3 = xB989FC vic3 = xBACBB5 vic3 = x32FF03 hoi4 = 5178 } # STATE_PARANA, Castro [mine], STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA -> Foz do Iguaçu
-	link = { vic3 = x5CDB1F vic3 = x7B795B vic3 = x8A1D55 vic3 = x3B0630 vic3 = x666C0F vic3 = x003689 hoi4 = 8181 } # STATE_PARANA, STATE_PARANA, Jacarezinho [farm], STATE_PARANA, STATE_PARANA, Curitiba [city] -> Curitiba
+	link = { vic3 = x5CDB1F vic3 = x7B795B vic3 = x8A1D55 vic3 = x3B0630 vic3 = x666C0F vic3 = x003689 hoi4 = 8181 } # STATE_PARANA, STATE_PARANA, Paranaguá [port][farm], STATE_PARANA, STATE_PARANA, Curitiba [city] -> Curitiba
 	link = { vic3 = xC4A130 vic3 = xDF9E45 vic3 = xF98F63 vic3 = x6806EF vic3 = xA30827 hoi4 = 8239 } # STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA, STATE_PARANA -> land
 	link = { vic3 = x5A3B50 vic3 = xC8530D hoi4 = 12466 } # STATE_PARANA, STATE_PARANA -> Chapecó
 	link = { comment = "* * STATE_SANTA_CATARINA " }
@@ -9143,7 +9133,7 @@
 	link = { vic3 = xD04090 vic3 = x692B64 hoi4 = 10319 } # STATE_SOLOMON_ISLANDS, STATE_SOLOMON_ISLANDS -> Gizo
 	link = { vic3 = x3B8EEB hoi4 = 12265 } # Munda [mine] -> Taro
 	link = { comment = "* * STATE_NAURU " }
-	link = { vic3 = x418382 vic3 = xC041F0 hoi4 = 13038 } # STATE_NAURU, Yaren [port][farm] -> Moqua
+	link = { vic3 = x418382 vic3 = xC041F0 hoi4 = 13038 } # Anabar [city][farm], Yaren [port] -> Moqua
 	link = { comment = "* * STATE_FIJI " }
 	link = { vic3 = x61A3E3 hoi4 = 4286 } # Nalotu [port] -> Suva
 	link = { vic3 = xC04D30 hoi4 = 7302 } # Nadi [city] -> Lautoka
