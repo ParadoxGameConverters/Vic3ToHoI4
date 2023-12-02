@@ -35,12 +35,13 @@ Zemurin				- Programming, Code reviews, Tools
 IhateTrains			- Programming, Code reviews, Tools
 Drasilabyss			- Programming
 Ultrapotassium		- Programming
+Bratmon				- Programming
 cetvrtak			- Data Files
 DaJay42				- Data Files
 gawquon				- Data Files
 klorpa				- Data Files
+Limabot				- Data Files
 Anate				- Translations
-Bratmon				- Programming
 
 Special thanks to LukyLucaz, who allowed us to incorporate Increased Resources into the converter.
 
