@@ -510,24 +510,20 @@
 	link = { vic3 = x56D667 vic3 = xE37E57 vic3 = x7BFD0A hoi4 = 11167 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Sodankylä
 	link = { vic3 = x41D99D vic3 = x75CD93 vic3 = xAD8817 hoi4 = 11204 } # STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA, STATE_OSTROBOTHNIA -> Unari
 	link = { comment = "* * STATE_HOME_COUNTIES " }
-	link = { vic3 = x19CECD hoi4 = 507 } # STATE_HOME_COUNTIES -> Reading
 	link = { vic3 = x39F45B hoi4 = 3501 } # STATE_HOME_COUNTIES -> Dover
-	link = { vic3 = x625993 hoi4 = 13070 } # Canterbury [farm] -> Maidstone
-	link = { vic3 = x58D3AE hoi4 = 6221 } # Oxford [wood] -> Swindon
-	link = { vic3 = xE060C0 hoi4 = 6489 hoi4 = 9458 } # Portsmouth [port] -> Southampton, Portsmouth
-	link = { vic3 = x7543C8 hoi4 = 6103 } # London [city] -> London
+	link = { vic3 = x625993 hoi4 = 13070 hoi4 = 11333 } # Canterbury [farm] -> Maidstone, Croydon
+	link = { vic3 = x58D3AE hoi4 = 9239 } # Oxford [wood] -> Oxford
+	link = { vic3 = xE060C0 vic3 = x19CECD hoi4 = 9458 hoi4 = 6489 } # MANY-TO-MANY: Portsmouth [port], STATE_HOME_COUNTIES -> Portsmouth, Southampton
+	link = { vic3 = x7543C8 vic3 = xE0E0C0 hoi4 = 6103 } # London [city], STATE_HOME_COUNTIES -> London
 	link = { vic3 = x800020 hoi4 = 11446 } # STATE_HOME_COUNTIES -> Brighton
-	link = { vic3 = x60E0C0 hoi4 = 11471 } # Reading [mine] -> Chippenham
-	link = { vic3 = xE0E0C0 hoi4 = 11333 } # STATE_HOME_COUNTIES -> Croydon
+	link = { vic3 = x60E0C0 hoi4 = 507 } # Reading [mine] -> Reading
 	link = { comment = "* * STATE_LANCASHIRE " }
-	link = { vic3 = xE74158 hoi4 = 219 } # STATE_LANCASHIRE -> Carlisle
 	link = { vic3 = x65617C hoi4 = 3205 } # STATE_LANCASHIRE -> Chester
 	link = { vic3 = x137263 hoi4 = 3311 } # STATE_LANCASHIRE -> Douglas
-	link = { vic3 = xE0E000 hoi4 = 6318 hoi4 = 6268 } # Manchester [city][mine] -> Manchester, Skipton
+	link = { vic3 = xE0E000 hoi4 = 6318 } # Manchester [city][mine] -> Manchester
 	link = { vic3 = x60E000 hoi4 = 6384 } # Liverpool [port] -> Liverpool
 	link = { vic3 = x410CE6 hoi4 = 6399 hoi4 = 6335 } # Barrow-in-Furness [wood] -> Barrow-in-Furness, Blackburn
-	link = { vic3 = xE06000 hoi4 = 9285 hoi4 = 9397 } # STATE_LANCASHIRE -> Appleby, Richmond
-	link = { vic3 = xA242B2 hoi4 = 11332 } # Carlisle [farm] -> Whitehaven
+	link = { vic3 = xA242B2 vic3 = xE06000 vic3 = xE74158 hoi4 = 11332 } # Carlisle [farm], STATE_LANCASHIRE, STATE_LANCASHIRE -> Whitehaven
 	link = { comment = "* * STATE_WALES " }
 	link = { vic3 = x20A040 hoi4 = 253 } # Merthyr Tydfil [mine] -> Brecon
 	link = { vic3 = x70D92B hoi4 = 311 } # STATE_WALES -> Newtown
@@ -538,14 +534,15 @@
 	link = { vic3 = x633EF5 hoi4 = 9364 } # STATE_WALES -> Wrexham
 	link = { vic3 = x775D55 vic3 = xA0A040 hoi4 = 11361 } # STATE_WALES, STATE_WALES -> Haverfordwest
 	link = { comment = "* * STATE_YORKSHIRE " }
-	link = { vic3 = x606000 hoi4 = 351 } # Newcastle [port] -> Newcastle
+	link = { vic3 = x606000 hoi4 = 351 hoi4 = 219 hoi4 = 9285 } # Newcastle [port] -> Newcastle, Carlisle, Appleby
 	link = { vic3 = x5544D0 hoi4 = 9315 } # STATE_YORKSHIRE -> Sheffield
-	link = { vic3 = xB5BF4E vic3 = xEDC0BA hoi4 = 9332 } # York [city], STATE_YORKSHIRE -> Ripon
-	link = { vic3 = x606080 hoi4 = 9379 } # Leeds [mine] -> Leeds
+	link = { vic3 = xEDC0BA hoi4 = 9397 } # STATE_YORKSHIRE -> Richmond
+	link = { vic3 = xB5BF4E hoi4 = 9269 hoi4 = 9332 } # York [city] -> York, Ripon
+	link = { vic3 = x606080 hoi4 = 9379 hoi4 = 6268 } # Leeds [mine] -> Leeds, Skipton
 	link = { vic3 = x527116 hoi4 = 11270 } # Middlesbrough [farm] -> Middlesbrough
 	link = { vic3 = xE06080 hoi4 = 11297 hoi4 = 11317 } # Hull [wood] -> Kingston upon Hull, Scarborough
 	link = { vic3 = x824DB7 hoi4 = 11299 } # STATE_YORKSHIRE -> Berwick upon Tweed
-	link = { vic3 = x86B021 hoi4 = 11382 hoi4 = 9269 } # STATE_YORKSHIRE -> Doncaster, York
+	link = { vic3 = x86B021 hoi4 = 11382 } # STATE_YORKSHIRE -> Doncaster
 	link = { comment = "* * STATE_HIGHLANDS " }
 	link = { vic3 = x8E7728 hoi4 = 131 } # STATE_HIGHLANDS -> Tongue
 	link = { vic3 = x3CFF08 hoi4 = 3159 } # STATE_HIGHLANDS -> Alness
@@ -574,43 +571,41 @@
 	link = { vic3 = xE0E080 hoi4 = 6237 } # Nottingham [mine] -> Derby
 	link = { vic3 = x99305F hoi4 = 6270 } # STATE_MIDLANDS -> Coventry
 	link = { vic3 = xA220D6 hoi4 = 6301 } # STATE_MIDLANDS -> Shrewsbury
-	link = { vic3 = x6020C0 hoi4 = 7239 } # Birmingham [city] -> Wolverhampton
+	link = { vic3 = x6020C0 hoi4 = 9297 hoi4 = 7239 hoi4 = 6221 } # Birmingham [city] -> Birmingham, Wolverhampton, Swindon
 	link = { vic3 = x2482B4 hoi4 = 9250 } # Grimsby [port] -> Grimsby
-	link = { vic3 = xA0A0C0 hoi4 = 11279 hoi4 = 9268 } # Leicester [farm] -> Leicester, Northampton
-	link = { vic3 = x20A0C0 hoi4 = 11345 hoi4 = 9297 } # STATE_MIDLANDS -> Burton-upon-Trent, Birmingham
+	link = { vic3 = xA0A0C0 hoi4 = 11279 } # Leicester [farm] -> Leicester
+	link = { vic3 = x20A0C0 hoi4 = 11345 } # STATE_MIDLANDS -> Burton-upon-Trent
 	link = { comment = "* * STATE_EAST_ANGLIA " }
-	link = { vic3 = xE02040 hoi4 = 221 } # Ipswich [port] -> Ipswich
-	link = { vic3 = x8C667B hoi4 = 296 } # Cambridge [city][mine] -> Peterborough
+	link = { vic3 = xE02040 vic3 = x6D87D7 hoi4 = 221 } # Ipswich [port], STATE_EAST_ANGLIA -> Ipswich
+	link = { vic3 = xE0A040 hoi4 = 9268 } # STATE_EAST_ANGLIA -> Northampton
+	link = { vic3 = x8C667B hoi4 = 11253 hoi4 = 296 } # Cambridge [city][mine] -> Cambridge, Peterborough
 	link = { vic3 = x5024FD hoi4 = 271 } # STATE_EAST_ANGLIA -> Lowestoft
 	link = { vic3 = x516676 hoi4 = 322 } # Norwich [wood] -> Norwich
 	link = { vic3 = x73EF57 hoi4 = 3287 } # STATE_EAST_ANGLIA -> King's Lynn
 	link = { vic3 = x618949 hoi4 = 11221 } # STATE_EAST_ANGLIA -> Luton
-	link = { vic3 = xE0A040 hoi4 = 9239 } # STATE_EAST_ANGLIA -> Oxford
-	link = { vic3 = x6D87D7 hoi4 = 11253 } # STATE_EAST_ANGLIA -> Cambridge
 	link = { vic3 = x60A040 hoi4 = 11374 } # Chelmsford [farm] -> Southend-on-Sea
 	link = { comment = "* * STATE_WEST_COUNTRY " }
-	link = { vic3 = x225544 hoi4 = 3369 } # STATE_WEST_COUNTRY -> Bristol
+	link = { vic3 = x225544 hoi4 = 11471 } # STATE_WEST_COUNTRY -> Chippenham
 	link = { vic3 = xE020C0 hoi4 = 6378 } # Gloucester [mine] -> Gloucester
 	link = { vic3 = x6060C0 vic3 = xB78E54 hoi4 = 3422 hoi4 = 3463 } # MANY-TO-MANY: STATE_WEST_COUNTRY, STATE_WEST_COUNTRY -> Bournemouth, Exeter
 	link = { vic3 = x65B395 hoi4 = 6351 } # STATE_WEST_COUNTRY -> Salisbury
-	link = { vic3 = x1E38F8 hoi4 = 6526 } # STATE_WEST_COUNTRY -> Truro
-	link = { vic3 = xE0E040 hoi4 = 9484 } # Bristol [city][farm] -> Weston-super-Mare
-	link = { vic3 = xA2DD9E vic3 = xEB9862 hoi4 = 9562 } # Barnstaple [wood], STATE_WEST_COUNTRY -> Taunton
+	link = { vic3 = x1E38F8 vic3 = x63EF7E hoi4 = 6526 } # STATE_WEST_COUNTRY, Plymouth [port] -> Truro
+	link = { vic3 = xE0E040 hoi4 = 3369 hoi4 = 9484 } # Bristol [city][farm] -> Bristol, Weston-super-Mare
+	link = { vic3 = xA2DD9E hoi4 = 11406 } # Barnstaple [wood] -> Barnstaple
+	link = { vic3 = xEB9862 hoi4 = 9562 } # STATE_WEST_COUNTRY -> Taunton
 	link = { vic3 = xC900EF hoi4 = 540 } # STATE_WEST_COUNTRY -> Plymouth
-	link = { vic3 = x63EF7E hoi4 = 11406 } # Plymouth [port] -> Barnstaple
 	link = { comment = "* * STATE_LOWLANDS " }
-	link = { vic3 = x206080 hoi4 = 159 } # STATE_LOWLANDS -> Perth
-	link = { vic3 = x002C82 hoi4 = 3150 } # STATE_LOWLANDS -> Dundee
-	link = { vic3 = x9B6ACC hoi4 = 6300 } # Dundee [wood] -> Dunfermline
+	link = { vic3 = x206080 hoi4 = 159 hoi4 = 6300 } # STATE_LOWLANDS -> Perth, Dunfermline
+	link = { vic3 = x9B6ACC vic3 = x002C82 hoi4 = 3150 } # Dundee [wood], STATE_LOWLANDS -> Dundee
 	link = { vic3 = x676072 hoi4 = 6320 } # STATE_LOWLANDS -> Lanark
 	link = { vic3 = x20E080 hoi4 = 6350 } # STATE_LOWLANDS -> Stranraer
-	link = { vic3 = xA06080 hoi4 = 6395 } # Glasgow [farm] -> Kilmarnock
+	link = { vic3 = xA06080 hoi4 = 3273 hoi4 = 6395 } # Glasgow [farm] -> Glasgow, Kilmarnock
 	link = { vic3 = xB2A15E hoi4 = 9237 } # STATE_LOWLANDS -> Ayr
 	link = { vic3 = x80F634 hoi4 = 9314 } # STATE_LOWLANDS -> Hawick
 	link = { vic3 = x363883 hoi4 = 9350 } # STATE_LOWLANDS -> Dalbeattie
-	link = { vic3 = x832656 hoi4 = 9383 hoi4 = 3273 } # STATE_LOWLANDS -> Cumbernauld, Glasgow
+	link = { vic3 = x832656 hoi4 = 9383 } # STATE_LOWLANDS -> Cumbernauld
 	link = { vic3 = xA0E080 hoi4 = 9392 } # Edinburgh [city] -> Edinburgh
-	link = { vic3 = xA0E000 hoi4 = 200 hoi4 = 11136 } # Aberdeen [port] -> Peterhead, Aberdeen
+	link = { vic3 = xA0E000 hoi4 = 11136 hoi4 = 200 } # Aberdeen [port] -> Aberdeen, Peterhead
 	link = { vic3 = x193EFC hoi4 = 11207 } # STATE_LOWLANDS -> Elgin
 	link = { vic3 = xDCD566 hoi4 = 11218 } # Dumfries [mine] -> Dumfries
 	link = { vic3 = x0B53FA vic3 = xD01BE2 hoi4 = 11378 } # STATE_LOWLANDS, STATE_LOWLANDS -> Dunbar
