@@ -620,10 +620,11 @@
 	link = { comment = "* * STATE_MUNSTER " }
 	link = { vic3 = xA0E0C0 hoi4 = 6289 } # Killarney [mine] -> Newcastle West
 	link = { vic3 = xECB3A5 hoi4 = 6405 } # STATE_MUNSTER -> Tralee
-	link = { vic3 = xEF3F71 hoi4 = 7394 hoi4 = 9284 } # Mallow [farm] -> Cork, Mallow
+	link = { vic3 = xEF3F71 hoi4 = 9284 } # Mallow [farm] -> Mallow
 	link = { vic3 = xBDAB32 hoi4 = 11267 } # STATE_MUNSTER -> Clonmel
 	link = { vic3 = xD9BB34 hoi4 = 9310 } # STATE_MUNSTER -> Thurles
-	link = { vic3 = xE06040 vic3 = xF53F9B hoi4 = 9405 } # STATE_MUNSTER, Cork [city] -> Bandon
+	link = { vic3 = xF53F9B hoi4 = 7394 } # Cork [city] -> Cork
+	link = { vic3 = xE06040 hoi4 = 9405 } # STATE_MUNSTER -> Bandon
 	link = { vic3 = x969279 hoi4 = 11237 } # STATE_MUNSTER -> Waterford
 	link = { vic3 = x02061B hoi4 = 6313 } # Shannon [port][wood] -> Limerick
 	link = { vic3 = x849939 hoi4 = 11334 } # STATE_MUNSTER -> Ennis
