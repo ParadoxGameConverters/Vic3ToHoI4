@@ -375,7 +375,7 @@
 	link = { vic3 = x85F5A0 hoi4 = 204 } # STATE_SOUTHERN_FINLAND -> Koskenkylä
 	link = { vic3 = xE98BC6 hoi4 = 3009 } # STATE_SOUTHERN_FINLAND -> Kankaanpää
 	link = { vic3 = x8C31CF hoi4 = 3013 } # STATE_SOUTHERN_FINLAND -> Mikkeli
-	link = { vic3 = xAFE141 hoi4 = 3025 } # Tampere [wood] -> Kyröskoski
+	link = { vic3 = xAFE141 hoi4 = 3025 } # STATE_SOUTHERN_FINLAND -> Kyröskoski
 	link = { vic3 = xD2FDBF vic3 = xE041E0 vic3 = x33CFEC hoi4 = 3083 } # Turku [port], STATE_SOUTHERN_FINLAND, STATE_SOUTHERN_FINLAND -> Turku
 	link = { vic3 = x86C729 hoi4 = 3117 } # STATE_SOUTHERN_FINLAND -> Merikarvia
 	link = { vic3 = xEF788A hoi4 = 3119 } # STATE_SOUTHERN_FINLAND -> Ähtäri
@@ -767,11 +767,11 @@
 	link = { comment = "* * STATE_BURGUNDY " }
 	link = { vic3 = x09BB96 hoi4 = 667 hoi4 = 3681 } # Nevers [farm] -> Nevers, Avallon
 	link = { vic3 = x380D42 hoi4 = 680 } # STATE_BURGUNDY -> Is-sur-Tille
-	link = { vic3 = x708060 hoi4 = 3650 hoi4 = 641 hoi4 = 6668 } # Le Creusot [mine] -> Lons-le-Saunier, Bourg-en-Bresse, Oyonnax
+	link = { vic3 = x708060 hoi4 = 3650 hoi4 = 641 hoi4 = 6668 } # STATE_BURGUNDY -> Lons-le-Saunier, Bourg-en-Bresse, Oyonnax
 	link = { vic3 = x79B85C hoi4 = 817 } # STATE_BURGUNDY -> Dole
 	link = { vic3 = x7000E0 hoi4 = 3669 } # STATE_BURGUNDY -> Montbard
 	link = { vic3 = xC69235 vic3 = x10DF00 hoi4 = 9644 } # STATE_BURGUNDY, STATE_BURGUNDY -> Sancerre
-	link = { vic3 = xF08060 hoi4 = 9625 hoi4 = 11628 } # STATE_BURGUNDY -> Le Creusot, Pouilly-en-Auxois
+	link = { vic3 = xF08060 hoi4 = 9625 hoi4 = 11628 } # Le Creusot [mine] -> Le Creusot, Pouilly-en-Auxois
 	link = { vic3 = x8C3297 hoi4 = 3652 } # Dijon [city] -> Dijon
 	link = { vic3 = x8329EC hoi4 = 648 } # STATE_BURGUNDY -> Chalon-sur-Saône
 	link = { vic3 = x6D7896 hoi4 = 11794 } # STATE_BURGUNDY -> Mâcon
@@ -1108,11 +1108,11 @@
 	link = { vic3 = x2101E0 hoi4 = 495 hoi4 = 6469 } # Düsseldorf [city] -> Dortmund, Essen
 	link = { vic3 = x0180E0 hoi4 = 3512 hoi4 = 6622 } # Siegen [wood] -> Wesel, Recklinghausen
 	link = { comment = "* * STATE_MAINE_ANJOU" }
-	link = { vic3 = x192CA5 hoi4 = 3523 } # Le Mans [farm] -> Mayenne
+	link = { vic3 = x192CA5 hoi4 = 3523 } # STATE_MAINE_ANJOU -> Mayenne
 	link = { vic3 = x30E080 hoi4 = 3495 } # Laval [mine] -> La Flèche
 	link = { vic3 = x7CAE05 hoi4 = 9478 } # STATE_MAINE_ANJOU -> Noyant
 	link = { vic3 = x093DF5 hoi4 = 11613 } # Angers [city] -> Saumur
-	link = { vic3 = x56E158 hoi4 = 3509 } # STATE_MAINE_ANJOU -> Le Mans
+	link = { vic3 = x56E158 hoi4 = 3509 } # Le Mans [farm] -> Le Mans
 	link = { vic3 = xB0E080 hoi4 = 11463 } # STATE_MAINE_ANJOU -> Château-du-Loir
 	link = { vic3 = xF6A48C hoi4 = 9492 } # STATE_MAINE_ANJOU -> Château-Renault
 	link = { vic3 = x6B5474 hoi4 = 3671 } # Tours [wood] -> Tours
