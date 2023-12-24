@@ -158,7 +158,11 @@ TEST(Hoi4WorldMapStrategicRegionsTests, DesynchronizedInternalsCauseLogging)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   strategic_regions.UpdateToMatchNewStates({State(1, {.provinces = {144}}), State(2, {.provinces = {169, 42, 76}})},
+   strategic_regions.UpdateToMatchNewStates(
+       {
+           State(1, {.provinces = {144}}),
+           State(2, {.provinces = {169, 42, 76}}),
+       },
        {});
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Strategic region 42 was not in the list of regions."));
