@@ -297,7 +297,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
 TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
 {
    const StrategicRegions strategic_regions({
-       .province_to_strategic_region_map =
+       .original_province_to_strategic_region_map =
            {
                {10, 1},
                {20, 1},

@@ -30,6 +30,6 @@ hoi4::StrategicRegions hoi4::ImportStrategicRegions(const commonItems::ModFilesy
       }
    }
 
-   return StrategicRegions(
-       {.strategic_regions = strategic_regions, .province_to_strategic_region_map = province_to_strategic_region_map});
+   return StrategicRegions({.strategic_regions = strategic_regions,
+       .original_province_to_strategic_region_map = province_to_strategic_region_map});
 }
