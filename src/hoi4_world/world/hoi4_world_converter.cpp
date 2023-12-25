@@ -249,7 +249,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        world_framework.map_data,
        config);
 
-   world_framework.strategic_regions.UpdateToMatchNewStates(states.states);
+   world_framework.strategic_regions.UpdateToMatchNewStates(states.states, world_framework.map_data);
 
 
    std::future<hoi4::Buildings> buildings_future =
