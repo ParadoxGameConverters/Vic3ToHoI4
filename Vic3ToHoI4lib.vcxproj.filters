@@ -198,6 +198,9 @@
     <Filter Include="src\vic3_world\wars">
       <UniqueIdentifier>{f81bdcd3-9fdd-4a81-b245-ab3bae1d4db4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\military">
+      <UniqueIdentifier>{5c7d0789-b5d6-46fe-906f-5e9065413240}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -488,9 +491,6 @@
     <ClInclude Include="src\mappers\flags\flag_mapper.h">
       <Filter>src\mappers\unit</Filter>
     </ClInclude>
-    <ClInclude Include="src\mappers\flags\flag_mapper_importer.h">
-      <Filter>src\mappers\unit</Filter>
-    </ClInclude>
     <ClInclude Include="src\mappers\ideology\ideology_mapper.h">
       <Filter>src\mappers\ideology</Filter>
     </ClInclude>
@@ -735,6 +735,12 @@
     </ClInclude>
     <ClInclude Include="src\vic3_world\wars\wars_importer.h">
       <Filter>src\vic3_world\wars</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\military\military_formation.h">
+      <Filter>src\vic3_world\military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vic3_world\military\military_formation_importer.h">
+      <Filter>src\vic3_world\military</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1136,6 +1142,9 @@
     </ClCompile>
     <ClCompile Include="src\vic3_world\wars\wars_importer.cpp">
       <Filter>src\vic3_world\wars</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\military\military_formation_importer.cpp">
+      <Filter>src\vic3_world\military</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
