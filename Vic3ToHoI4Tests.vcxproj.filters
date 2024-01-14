@@ -563,6 +563,9 @@
     <ClCompile Include="src\vic3_world\military\military_formation_importer_test.cpp">
       <Filter>src\vic3_world\military</Filter>
     </ClCompile>
+    <ClCompile Include="src\vic3_world\military\military_formations_importer_tests.cpp">
+      <Filter>src\vic3_world\military</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">

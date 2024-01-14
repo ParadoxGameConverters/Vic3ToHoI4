@@ -742,6 +742,9 @@
     <ClInclude Include="src\vic3_world\military\military_formation_importer.h">
       <Filter>src\vic3_world\military</Filter>
     </ClInclude>
+    <ClInclude Include="src\vic3_world\military\military_formations_importer.h">
+      <Filter>src\vic3_world\military</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -1144,6 +1147,9 @@
       <Filter>src\vic3_world\wars</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\military\military_formation_importer.cpp">
+      <Filter>src\vic3_world\military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\military\military_formations_importer.cpp">
       <Filter>src\vic3_world\military</Filter>
     </ClCompile>
   </ItemGroup>
