@@ -9,7 +9,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldMilitaryMilitaryFormatonImporter, NoCountryNumberMeanNoImport)
+TEST(Vic3worldMilitaryMilitaryFormationImporter, NoCountryNumberMeanNoImport)
 {
    MilitaryFormationImporter importer;
 
@@ -20,7 +20,7 @@ TEST(Vic3worldMilitaryMilitaryFormatonImporter, NoCountryNumberMeanNoImport)
 }
 
 
-TEST(Vic3worldMilitaryMilitaryFormatonImporter, DefaultsAreDefaulted)
+TEST(Vic3worldMilitaryMilitaryFormationImporter, DefaultsAreDefaulted)
 {
    MilitaryFormationImporter importer;
 
@@ -39,7 +39,7 @@ TEST(Vic3worldMilitaryMilitaryFormatonImporter, DefaultsAreDefaulted)
 }
 
 
-TEST(Vic3worldMilitaryMilitaryFormatonImporter, ItemsCanBeImported)
+TEST(Vic3worldMilitaryMilitaryFormationImporter, ItemsCanBeImported)
 {
    MilitaryFormationImporter importer;
 
@@ -92,7 +92,7 @@ TEST(Vic3worldMilitaryMilitaryFormatonImporter, ItemsCanBeImported)
 }
 
 
-TEST(Vic3worldMilitaryMilitaryFormatonImporter, TypeCanBeFleet)
+TEST(Vic3worldMilitaryMilitaryFormationImporter, TypeCanBeFleet)
 {
    MilitaryFormationImporter importer;
 

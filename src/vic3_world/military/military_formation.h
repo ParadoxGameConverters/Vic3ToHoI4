@@ -12,6 +12,7 @@ enum class MilitaryFormationType
    kFleet
 };
 
+
 struct MilitaryFormation
 {
    int country;
@@ -19,6 +20,8 @@ struct MilitaryFormation
    std::optional<std::string> name;
    std::optional<int> ordinal_number;
    std::map<std::string, int> units;
+
+   std::strong_ordering operator<=>(const MilitaryFormation&) const = default;
 };
 
 // correlate with data from new_combat_unit_manager
