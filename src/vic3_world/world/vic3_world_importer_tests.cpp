@@ -111,6 +111,27 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
        testing::UnorderedElementsAre(testing::Pair(1, std::set<std::string>{"technology_one", "technology_two"}),
            testing::Pair(3, std::set<std::string>{"technology_three"})));
    EXPECT_EQ(world.GetBuildings().GetTotalGoodSalesValueInWorld(), 1.0F);
+   EXPECT_THAT(world.GetMilitaryFormations(),
+       testing::UnorderedElementsAre(testing::Pair(1234,
+                                         MilitaryFormation{
+                                             .country = 12345,
+                                             .type = MilitaryFormationType::kArmy,
+                                             .name = "Formation Name",
+                                             .ordinal_number = 2,
+                                             .units =
+                                                 {
+                                                     {"combat_unit_type_shrapnel_artillery", 2},
+                                                     {"combat_unit_type_dragoons", 3},
+                                                     {"combat_unit_type_trench_infantry", 24},
+                                                     {"combat_unit_type_siege_artillery", 2},
+                                                     {"combat_unit_type_skirmish_infantry", 8},
+                                                 },
+                                         }),
+           testing::Pair(5678,
+               MilitaryFormation{
+                   .country = 12345,
+                   .type = MilitaryFormationType::kFleet,
+               })));
    EXPECT_THAT(world.GetCountryRankings().GetGreatPowers(), testing::UnorderedElementsAre(1));
    EXPECT_THAT(world.GetCountryRankings().GetMajorPowers(), testing::UnorderedElementsAre(9));
    EXPECT_EQ(world.GetLocalizations().size(), 1);

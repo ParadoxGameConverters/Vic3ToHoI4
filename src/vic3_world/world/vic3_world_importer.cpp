@@ -32,6 +32,7 @@
 #include "src/vic3_world/institutions/institutions_importer.h"
 #include "src/vic3_world/interest_groups/interest_groups_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
+#include "src/vic3_world/military/military_formations_importer.h"
 #include "src/vic3_world/pacts/pacts_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
@@ -360,6 +361,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    });
    save_parser.registerKeyword("building_manager", [&world_options](std::istream& input_stream) {
       world_options.buildings = ImportBuildings(input_stream);
+   });
+   save_parser.registerKeyword("military_formation_manager", [&world_options](std::istream& input_stream) {
+      world_options.military_formations = ImportMilitaryFormations(input_stream);
    });
    save_parser.registerKeyword("election_manager", [&world_options](std::istream& input_stream) {
       for (const auto& [country_number, last_election]: ImportElections(input_stream))
