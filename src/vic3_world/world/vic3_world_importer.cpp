@@ -228,26 +228,47 @@ void AssignCharactersToCountries(const std::map<int, vic3::Character>& character
 void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryFormation>& military_formations,
     std::map<int, vic3::Country>& countries)
 {
-   std::map<int, std::map<int, vic3::MilitaryFormation>> military_formations_by_country;
+   std::map<int, std::map<int, vic3::MilitaryFormation>> army_formations_by_country;
+   std::map<int, std::map<int, vic3::MilitaryFormation>> navy_formations_by_country;
    for (const auto& [formation_number, formation]: military_formations)
    {
-      auto [iterator, success] = military_formations_by_country.emplace(formation.country,
-          std::map<int, vic3::MilitaryFormation>{{formation_number, formation}});
-      if (!success)
+      if (formation.type == vic3::MilitaryFormationType::kArmy)
       {
-         iterator->second.emplace(formation_number, formation);
+         auto [iterator, success] = army_formations_by_country.emplace(formation.country,
+             std::map<int, vic3::MilitaryFormation>{{formation_number, formation}});
+         if (!success)
+         {
+            iterator->second.emplace(formation_number, formation);
+         }
+      }
+      else
+      {
+         auto [iterator, success] = navy_formations_by_country.emplace(formation.country,
+             std::map<int, vic3::MilitaryFormation>{{formation_number, formation}});
+         if (!success)
+         {
+            iterator->second.emplace(formation_number, formation);
+         }
       }
    }
 
-   for (const auto& [country_number, military_formations]: military_formations_by_country)
+   for (const auto& [country_number, army_formations]: army_formations_by_country)
    {
       auto country = countries.find(country_number);
       if (country == countries.end())
       {
-         Log(LogLevel::Warning) << fmt::format("Could not find country {} to assign military formations.",
-             country_number);
+         Log(LogLevel::Warning) << fmt::format("Could not find country {} to assign army formations.", country_number);
       }
-      country->second.SetMilitaryFormations(military_formations);
+      country->second.SetArmyFormations(army_formations);
+   }
+   for (const auto& [country_number, navy_formations]: navy_formations_by_country)
+   {
+      auto country = countries.find(country_number);
+      if (country == countries.end())
+      {
+         Log(LogLevel::Warning) << fmt::format("Could not find country {} to assign navy formations.", country_number);
+      }
+      country->second.SetNavyFormations(navy_formations);
    }
 }
 

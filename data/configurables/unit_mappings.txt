@@ -61,6 +61,9 @@ combat_unit_type_light_tanks = {
   light_tank = 0.1
 }
 
+pm_no_organization = {}
+pm_general_training = {}
+
 ## Pre-1.5 conversions
 
 # 100 max-modernized Vicky barracks levels convert to:

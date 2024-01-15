@@ -55,7 +55,8 @@ struct CountryOptions
    BudgetLevel tax_level;
    BudgetLevel salary_level;
    BudgetLevel mil_salary_level;
-   std::map<int, MilitaryFormation> military_formations;
+   std::map<int, MilitaryFormation> army_formations;
+   std::map<int, MilitaryFormation> navy_formations;
 };
 
 
@@ -94,7 +95,8 @@ class Country
        tax_level_(options.tax_level),
        salary_level_(options.salary_level),
        mil_salary_level_(options.mil_salary_level),
-       military_formations_(options.military_formations)
+       army_formations_(options.army_formations),
+       navy_formations_(options.navy_formations)
    {
    }
 
@@ -122,7 +124,8 @@ class Country
    [[nodiscard]] BudgetLevel GetTaxLevel() const { return tax_level_; }
    [[nodiscard]] BudgetLevel GetGovernmentSalaryLevel() const { return salary_level_; }
    [[nodiscard]] BudgetLevel GetMilitarySalaryLevel() const { return mil_salary_level_; }
-   [[nodiscard]] const std::map<int, MilitaryFormation>& GetMilitaryFormations() const { return military_formations_; }
+   [[nodiscard]] const std::map<int, MilitaryFormation>& GetArmyFormations() const { return army_formations_; }
+   [[nodiscard]] const std::map<int, MilitaryFormation>& GetNavyFormations() const { return navy_formations_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
@@ -131,9 +134,13 @@ class Country
    void AddInterestGroupId(int ig_id) { ig_ids_.push_back(ig_id); }
    void AddPuppet(int puppet) { puppets_.insert(puppet); }
    void AddOverlord(int overlord) { overlord_ = overlord; }
-   void SetMilitaryFormations(const std::map<int, MilitaryFormation>& military_formations)
+   void SetArmyFormations(const std::map<int, MilitaryFormation>& military_formations)
    {
-      military_formations_ = military_formations;
+      army_formations_ = military_formations;
+   }
+   void SetNavyFormations(const std::map<int, MilitaryFormation>& military_formations)
+   {
+      navy_formations_ = military_formations;
    }
 
    [[nodiscard]] std::set<std::string> GetAcquiredTechnologies(const vic3::World& world) const;
@@ -164,7 +171,8 @@ class Country
    BudgetLevel tax_level_;
    BudgetLevel salary_level_;
    BudgetLevel mil_salary_level_;
-   std::map<int, MilitaryFormation> military_formations_;
+   std::map<int, MilitaryFormation> army_formations_;
+   std::map<int, MilitaryFormation> navy_formations_;
 };
 
 }  // namespace vic3

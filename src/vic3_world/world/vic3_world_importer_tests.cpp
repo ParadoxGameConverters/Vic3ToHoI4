@@ -61,7 +61,7 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                                                  .character_ids = {1, 2, 4},
                                                  .ig_ids = {1, 2},
                                                  .puppets = {3},
-                                                 .military_formations =
+                                                 .army_formations =
                                                      {
                                                          {1234,
                                                              MilitaryFormation{
@@ -90,7 +90,7 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                    .character_ids = {5},
                    .ig_ids = {3},
                    .overlord = 1,
-                   .military_formations = {{5678,
+                   .navy_formations = {{5678,
                        MilitaryFormation{
                            .country = 3,
                            .type = MilitaryFormationType::kFleet,

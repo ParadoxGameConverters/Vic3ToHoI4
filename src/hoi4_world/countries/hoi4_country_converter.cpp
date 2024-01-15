@@ -768,7 +768,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    const std::vector<EquipmentVariant>& active_tank_variants = DetermineActiveVariants(all_tank_variants, technologies);
    auto units = ConvertArmies(*tag,
        unit_mapper,
-       source_country.GetMilitaryFormations(),
+       source_country.GetArmyFormations(),
        source_world.GetBuildings(),
        division_templates,
        states,
