@@ -92,7 +92,7 @@ interest_groups={
 military_formation_manager={
 	database={
 1234={
-  country=12345
+  country=1
   type=army
   name="Formation Name"
   ordinal_number=2
@@ -119,7 +119,7 @@ combat_unit_type_trench_infantry=16       }
     }   }
 }
 5678={
-  country=12345
+  country=3
   type=fleet
 }
 	}
