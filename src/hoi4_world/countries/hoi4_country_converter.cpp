@@ -343,6 +343,48 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
 }
 
 
+std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag, const hoi4::States& states, const vic3::Buildings& buildings, const mappers::UnitMapper& unit_mapper)
+{
+    std::vector<hoi4::Battalion> battalions;
+
+    for (const auto& [vic3_id, hoi4_id] : states.vic3_state_ids_to_hoi4_state_ids)
+    {
+        const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
+        if (itr == states.hoi4_state_ids_to_owner.end())
+        {
+            continue;
+        }
+        if (itr->second != tag)
+        {
+            continue;
+        }
+        const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::Barracks);
+        if (!barracks.has_value())
+        {
+            continue;
+        }
+        auto current = unit_mapper.MakeBattalions(barracks->GetProductionMethods(), barracks->GetStaffingLevel());
+        const auto& provs = states.states[hoi4_id - 1].GetProvinces();
+        auto pitr = provs.begin();
+        for (auto& b : current)
+        {
+            b.SetLocation(*pitr);
+            if (pitr++ == provs.end())
+            {
+                pitr = provs.begin();
+            }
+        }
+        battalions.insert(battalions.end(), current.begin(), current.end());
+    }
+
+    std::sort(battalions.begin(), battalions.end(), [](const hoi4::Battalion& one, const hoi4::Battalion& two) {
+        return one.GetEquipmentScale() > two.GetEquipmentScale();
+    });
+
+    return battalions;
+}
+
+
 std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
     const mappers::UnitMapper& unit_mapper,
     const vic3::Buildings& buildings,
@@ -350,8 +392,14 @@ std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
     const hoi4::States& states,
     const std::optional<int>& capital_state)
 {
-   std::vector<hoi4::Battalion> battalions;
-   std::vector<hoi4::Unit> units;
+    std::vector<hoi4::Unit> units;
+
+   std::vector<hoi4::Battalion> battalions = DetermineBattalions(tag, states, buildings, unit_mapper);
+   if (battalions.empty())
+   {
+       return units;
+   }
+
    int default_location = 11666;  // Vienna.
    if (capital_state.has_value())
    {
@@ -364,45 +412,6 @@ std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
          }
       }
    }
-   for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
-   {
-      const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
-      if (itr == states.hoi4_state_ids_to_owner.end())
-      {
-         continue;
-      }
-      if (itr->second != tag)
-      {
-         continue;
-      }
-      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::Barracks);
-      if (!barracks.has_value())
-      {
-         continue;
-      }
-      auto current = unit_mapper.MakeBattalions(barracks->GetProductionMethods(), barracks->GetStaffingLevel());
-      const auto& provs = states.states[hoi4_id - 1].GetProvinces();
-      auto pitr = provs.begin();
-      for (auto& b: current)
-      {
-         b.SetLocation(*pitr);
-         if (pitr++ == provs.end())
-         {
-            pitr = provs.begin();
-         }
-      }
-      battalions.insert(battalions.end(), current.begin(), current.end());
-   }
-
-   if (battalions.empty())
-   {
-      return units;
-   }
-
-   // Sort by decreasing equipment.
-   std::sort(battalions.begin(), battalions.end(), [](const hoi4::Battalion& one, const hoi4::Battalion& two) {
-      return one.GetEquipmentScale() > two.GetEquipmentScale();
-   });
 
    while (!battalions.empty())
    {
