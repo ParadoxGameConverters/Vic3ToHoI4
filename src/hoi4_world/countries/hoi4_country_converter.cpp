@@ -343,61 +343,75 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
 }
 
 
-std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag, const hoi4::States& states, const vic3::Buildings& buildings, const mappers::UnitMapper& unit_mapper)
+std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag,
+    const std::map<int, vic3::MilitaryFormation>& military_formations,
+    const hoi4::States& states,
+    const vic3::Buildings& buildings,
+    const mappers::UnitMapper& unit_mapper)
 {
-    std::vector<hoi4::Battalion> battalions;
+   std::vector<hoi4::Battalion> battalions;
 
-    for (const auto& [vic3_id, hoi4_id] : states.vic3_state_ids_to_hoi4_state_ids)
-    {
-        const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
-        if (itr == states.hoi4_state_ids_to_owner.end())
-        {
-            continue;
-        }
-        if (itr->second != tag)
-        {
-            continue;
-        }
-        const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::Barracks);
-        if (!barracks.has_value())
-        {
-            continue;
-        }
-        auto current = unit_mapper.MakeBattalions(barracks->GetProductionMethods(), barracks->GetStaffingLevel());
-        const auto& provs = states.states[hoi4_id - 1].GetProvinces();
-        auto pitr = provs.begin();
-        for (auto& b : current)
-        {
-            b.SetLocation(*pitr);
-            if (pitr++ == provs.end())
-            {
-                pitr = provs.begin();
-            }
-        }
-        battalions.insert(battalions.end(), current.begin(), current.end());
-    }
+   // Pre 1.5
+   for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
+   {
+      const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
+      if (itr == states.hoi4_state_ids_to_owner.end())
+      {
+         continue;
+      }
+      if (itr->second != tag)
+      {
+         continue;
+      }
+      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::Barracks);
+      if (!barracks.has_value())
+      {
+         continue;
+      }
+      auto current =
+          unit_mapper.MakeBattalions(barracks->GetProductionMethods(), static_cast<int>(barracks->GetStaffingLevel()));
+      const auto& provinces = states.states[hoi4_id - 1].GetProvinces();
+      auto province_itr = provinces.begin();
+      for (auto& b: current)
+      {
+         b.SetLocation(*province_itr);
+         if (province_itr++ == provinces.end())
+         {
+            province_itr = provinces.begin();
+         }
+      }
+      battalions.insert(battalions.end(), current.begin(), current.end());
+   }
 
-    std::sort(battalions.begin(), battalions.end(), [](const hoi4::Battalion& one, const hoi4::Battalion& two) {
-        return one.GetEquipmentScale() > two.GetEquipmentScale();
-    });
+   for (const auto& formation: military_formations | std::views::values)
+   {
+      auto current = unit_mapper.MakeBattalions(formation);
+      battalions.insert(battalions.end(), current.begin(), current.end());
+   }
 
-    return battalions;
+   std::ranges::sort(battalions, [](const hoi4::Battalion& one, const hoi4::Battalion& two) {
+      return one.GetEquipmentScale() > two.GetEquipmentScale();
+   });
+
+   return battalions;
 }
 
 
 std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
     const mappers::UnitMapper& unit_mapper,
+    const std::map<int, vic3::MilitaryFormation>& military_formations,
     const vic3::Buildings& buildings,
     const std::vector<hoi4::DivisionTemplate>& division_templates,
     const hoi4::States& states,
     const std::optional<int>& capital_state)
 {
-    std::vector<hoi4::Unit> units;
+   std::vector<hoi4::Unit> units;
 
-   std::vector<hoi4::Battalion> battalions = DetermineBattalions(tag, states, buildings, unit_mapper);
+   std::vector<hoi4::Battalion> battalions =
+       DetermineBattalions(tag, military_formations, states, buildings, unit_mapper);
    if (battalions.empty())
    {
-       return units;
+      return units;
    }
 
    int default_location = 11666;  // Vienna.
@@ -752,8 +766,13 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    const std::vector<EquipmentVariant>& active_plane_variants =
        DetermineActiveVariants(all_plane_variants, technologies);
    const std::vector<EquipmentVariant>& active_tank_variants = DetermineActiveVariants(all_tank_variants, technologies);
-   auto units =
-       ConvertArmies(*tag, unit_mapper, source_world.GetBuildings(), division_templates, states, capital_state);
+   auto units = ConvertArmies(*tag,
+       unit_mapper,
+       source_country.GetMilitaryFormations(),
+       source_world.GetBuildings(),
+       division_templates,
+       states,
+       capital_state);
    auto task_forces = ConvertNavies(*tag,
        source_world.GetBuildings(),
        task_force_templates,
