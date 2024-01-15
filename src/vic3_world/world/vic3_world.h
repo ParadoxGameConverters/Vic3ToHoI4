@@ -14,7 +14,6 @@
 #include "src/vic3_world/ideologies/ideologies.h"
 #include "src/vic3_world/institutions/institution.h"
 #include "src/vic3_world/interest_groups/interest_group.h"
-#include "src/vic3_world/military/military_formation.h"
 #include "src/vic3_world/pacts/pact.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/states/state_region.h"
@@ -33,7 +32,6 @@ struct WorldOptions
    ProvinceDefinitions province_definitions;
    std::map<int, std::set<std::string>> acquired_technologies;
    Buildings buildings;
-   std::map<int, MilitaryFormation> military_formations;
    CountryRankings country_rankings;
    commonItems::LocalizationDatabase localizations = commonItems::LocalizationDatabase("english", {});
    std::map<std::string, CultureDefinition> culture_definitions;
@@ -57,7 +55,6 @@ class World
        province_definitions_(world_options.province_definitions),
        acquired_technologies_(std::move(world_options.acquired_technologies)),
        buildings_(std::move(world_options.buildings)),
-       military_formations_(std::move(world_options.military_formations)),
        country_rankings_(std::move(world_options.country_rankings)),
        localizations_(std::move(world_options.localizations)),
        culture_definitions_(std::move(world_options.culture_definitions)),
@@ -80,7 +77,6 @@ class World
       return acquired_technologies_;
    }
    [[nodiscard]] const Buildings& GetBuildings() const { return buildings_; }
-   [[nodiscard]] const std::map<int, MilitaryFormation>& GetMilitaryFormations() const { return military_formations_; }
    [[nodiscard]] const CountryRankings& GetCountryRankings() const { return country_rankings_; }
    [[nodiscard]] const commonItems::LocalizationDatabase& GetLocalizations() const { return localizations_; }
    [[nodiscard]] const std::map<std::string, CultureDefinition>& GetCultureDefinitions() const
@@ -110,7 +106,6 @@ class World
    ProvinceDefinitions province_definitions_;
    std::map<int, std::set<std::string>> acquired_technologies_;
    Buildings buildings_;
-   std::map<int, MilitaryFormation> military_formations_;
    CountryRankings country_rankings_;
    commonItems::LocalizationDatabase localizations_;
    std::map<std::string, CultureDefinition> culture_definitions_;

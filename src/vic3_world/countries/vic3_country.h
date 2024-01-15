@@ -8,11 +8,16 @@
 #include "external/commonItems/Color.h"
 #include "external/commonItems/Date.h"
 #include "src/vic3_world/institutions/institution.h"
+#include "src/vic3_world/military/military_formation.h"
+
+
 
 namespace vic3
 {
+
 // need to extra-forward-declare this because World uses Country, and Country uses World
 class World;
+
 
 /// <summary>
 /// tax level, salary level, etc.
@@ -25,6 +30,7 @@ enum class BudgetLevel
    High,
    VeryHigh
 };
+
 
 struct CountryOptions
 {
@@ -49,7 +55,9 @@ struct CountryOptions
    BudgetLevel tax_level;
    BudgetLevel salary_level;
    BudgetLevel mil_salary_level;
+   std::map<int, MilitaryFormation> military_formations;
 };
+
 
 enum class RankCategory
 {
@@ -85,7 +93,8 @@ class Country
        legitimacy_(options.legitimacy),
        tax_level_(options.tax_level),
        salary_level_(options.salary_level),
-       mil_salary_level_(options.mil_salary_level)
+       mil_salary_level_(options.mil_salary_level),
+       military_formations_(options.military_formations)
    {
    }
 
@@ -113,6 +122,7 @@ class Country
    [[nodiscard]] BudgetLevel GetTaxLevel() const { return tax_level_; }
    [[nodiscard]] BudgetLevel GetGovernmentSalaryLevel() const { return salary_level_; }
    [[nodiscard]] BudgetLevel GetMilitarySalaryLevel() const { return mil_salary_level_; }
+   [[nodiscard]] const std::map<int, MilitaryFormation>& GetMilitaryFormations() const { return military_formations_; }
 
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
@@ -121,6 +131,10 @@ class Country
    void AddInterestGroupId(int ig_id) { ig_ids_.push_back(ig_id); }
    void AddPuppet(int puppet) { puppets_.insert(puppet); }
    void AddOverlord(int overlord) { overlord_ = overlord; }
+   void SetMilitaryFormations(const std::map<int, MilitaryFormation>& military_formations)
+   {
+      military_formations_ = military_formations;
+   }
 
    [[nodiscard]] std::set<std::string> GetAcquiredTechnologies(const vic3::World& world) const;
    [[nodiscard]] RankCategory GetCountryRankCategory(const vic3::World& world) const;
@@ -150,6 +164,7 @@ class Country
    BudgetLevel tax_level_;
    BudgetLevel salary_level_;
    BudgetLevel mil_salary_level_;
+   std::map<int, MilitaryFormation> military_formations_;
 };
 
 }  // namespace vic3

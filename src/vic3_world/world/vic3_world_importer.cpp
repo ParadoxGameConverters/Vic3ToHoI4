@@ -225,6 +225,33 @@ void AssignCharactersToCountries(const std::map<int, vic3::Character>& character
 }
 
 
+void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryFormation>& military_formations,
+    std::map<int, vic3::Country>& countries)
+{
+   std::map<int, std::map<int, vic3::MilitaryFormation>> military_formations_by_country;
+   for (const auto& [formation_number, formation]: military_formations)
+   {
+      auto [iterator, success] = military_formations_by_country.emplace(formation.country,
+          std::map<int, vic3::MilitaryFormation>{{formation_number, formation}});
+      if (!success)
+      {
+         iterator->second.emplace(formation_number, formation);
+      }
+   }
+
+   for (const auto& [country_number, military_formations]: military_formations_by_country)
+   {
+      auto country = countries.find(country_number);
+      if (country == countries.end())
+      {
+         Log(LogLevel::Warning) << fmt::format("Could not find country {} to assign military formations.",
+             country_number);
+      }
+      country->second.SetMilitaryFormations(military_formations);
+   }
+}
+
+
 std::map<std::string, int> MapCountryTagsToId(std::map<int, vic3::Country>& countries)
 {
    std::map<std::string, int> tag_to_id_map;
@@ -317,6 +344,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    const std::map<std::string, commonItems::Color> color_definitions = ImportCountryColorDefinitions(mod_filesystem);
    std::map<int, std::string> cultures;
    std::map<int, std::vector<int>> country_character_map;
+   std::map<int, MilitaryFormation> military_formations;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("playthrough_id", [&world_options](std::istream& input_stream) {
@@ -362,8 +390,8 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    save_parser.registerKeyword("building_manager", [&world_options](std::istream& input_stream) {
       world_options.buildings = ImportBuildings(input_stream);
    });
-   save_parser.registerKeyword("military_formation_manager", [&world_options](std::istream& input_stream) {
-      world_options.military_formations = ImportMilitaryFormations(input_stream);
+   save_parser.registerKeyword("military_formation_manager", [&military_formations](std::istream& input_stream) {
+      military_formations = ImportMilitaryFormations(input_stream);
    });
    save_parser.registerKeyword("election_manager", [&world_options](std::istream& input_stream) {
       for (const auto& [country_number, last_election]: ImportElections(input_stream))
@@ -420,6 +448,8 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    AssignIgsToCountries(world_options.countries, world_options.igs);
    ProgressManager::AddProgress(1);
    AssignCharactersToCountries(world_options.characters, country_character_map, world_options.countries);
+   ProgressManager::AddProgress(1);
+   AssignMilitaryFormationsToCountries(military_formations, world_options.countries);
    ProgressManager::AddProgress(1);
    vic3::IdeologiesImporter ideologies_importer;
    world_options.ideologies = ideologies_importer.ImportIdeologies(mod_filesystem);

@@ -49,18 +49,36 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
 
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(testing::Pair(1,
-                                         Country({
-                                             .number = 1,
-                                             .tag = "TAG",
-                                             .color = commonItems::Color(std::array{1, 2, 3}),
-                                             .active_laws = {"law_monarchy"},
-                                             .primary_culture_ids = {0},
-                                             .primary_cultures = {"welsh"},
-                                             .head_of_state_id = 1,
-                                             .character_ids = {1, 2, 4},
-                                             .ig_ids = {1, 2},
-                                             .puppets = {3},
-                                         })),
+                                         Country(
+                                             {
+                                                 .number = 1,
+                                                 .tag = "TAG",
+                                                 .color = commonItems::Color(std::array{1, 2, 3}),
+                                                 .active_laws = {"law_monarchy"},
+                                                 .primary_culture_ids = {0},
+                                                 .primary_cultures = {"welsh"},
+                                                 .head_of_state_id = 1,
+                                                 .character_ids = {1, 2, 4},
+                                                 .ig_ids = {1, 2},
+                                                 .puppets = {3},
+                                                 .military_formations =
+                                                     {
+                                                         {1234,
+                                                             MilitaryFormation{
+                                                                 .country = 1,
+                                                                 .type = MilitaryFormationType::kArmy,
+                                                                 .name = "Formation Name",
+                                                                 .ordinal_number = 2,
+                                                                 .units =
+                                                                     {
+                                                                         {"combat_unit_type_shrapnel_artillery", 2},
+                                                                         {"combat_unit_type_dragoons", 3},
+                                                                         {"combat_unit_type_trench_infantry", 24},
+                                                                         {"combat_unit_type_siege_artillery", 2},
+                                                                         {"combat_unit_type_skirmish_infantry", 8},
+                                                                     },
+                                                             }}},
+                                             })),
            testing::Pair(3,
                Country({
                    .number = 3,
@@ -72,6 +90,11 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                    .character_ids = {5},
                    .ig_ids = {3},
                    .overlord = 1,
+                   .military_formations = {{5678,
+                       MilitaryFormation{
+                           .country = 3,
+                           .type = MilitaryFormationType::kFleet,
+                       }}},
                }))));
    EXPECT_THAT(world.GetStates(),
        testing::UnorderedElementsAre(testing::Pair(0, State({.provinces = {1, 2, 3}})),
@@ -111,27 +134,6 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
        testing::UnorderedElementsAre(testing::Pair(1, std::set<std::string>{"technology_one", "technology_two"}),
            testing::Pair(3, std::set<std::string>{"technology_three"})));
    EXPECT_EQ(world.GetBuildings().GetTotalGoodSalesValueInWorld(), 1.0F);
-   EXPECT_THAT(world.GetMilitaryFormations(),
-       testing::UnorderedElementsAre(testing::Pair(1234,
-                                         MilitaryFormation{
-                                             .country = 12345,
-                                             .type = MilitaryFormationType::kArmy,
-                                             .name = "Formation Name",
-                                             .ordinal_number = 2,
-                                             .units =
-                                                 {
-                                                     {"combat_unit_type_shrapnel_artillery", 2},
-                                                     {"combat_unit_type_dragoons", 3},
-                                                     {"combat_unit_type_trench_infantry", 24},
-                                                     {"combat_unit_type_siege_artillery", 2},
-                                                     {"combat_unit_type_skirmish_infantry", 8},
-                                                 },
-                                         }),
-           testing::Pair(5678,
-               MilitaryFormation{
-                   .country = 12345,
-                   .type = MilitaryFormationType::kFleet,
-               })));
    EXPECT_THAT(world.GetCountryRankings().GetGreatPowers(), testing::UnorderedElementsAre(1));
    EXPECT_THAT(world.GetCountryRankings().GetMajorPowers(), testing::UnorderedElementsAre(9));
    EXPECT_EQ(world.GetLocalizations().size(), 1);
