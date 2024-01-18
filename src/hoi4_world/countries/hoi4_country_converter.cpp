@@ -284,7 +284,9 @@ std::map<int, int> makeNavalBaseMap(const std::vector<hoi4::State>& states)
    return naval_base_locations;
 }
 
+
 std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
+    const std::map<int, vic3::MilitaryFormation>& naval_formations,
     const vic3::Buildings& buildings,
     const std::vector<hoi4::TaskForceTemplate>& task_force_templates,
     const std::vector<hoi4::EquipmentVariant>& active_ship_variants,
@@ -339,6 +341,29 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
          forces.push_back(task_force);
       }
    }
+
+   for (const vic3::MilitaryFormation& naval_formation: naval_formations | std::views::values)
+   {
+      for (const auto& [ship_type, number]: naval_formation.units)
+      {
+         pm_amounts[ship_type] += number;
+      }
+
+      hoi4::TaskForce task_force;
+      for (const auto& tmpl: task_force_templates)
+      {
+         if (!tmpl.AllVariantsActive(active_variants))
+         {
+            continue;
+         }
+         tmpl.AddShipsIfPossible(task_force.ships, ship_names, pm_amounts);
+      }
+      if (!task_force.ships.empty())
+      {
+         forces.push_back(task_force);
+      }
+   }
+
    return forces;
 }
 
@@ -774,6 +799,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        states,
        capital_state);
    auto task_forces = ConvertNavies(*tag,
+       source_country.GetNavyFormations(),
        source_world.GetBuildings(),
        task_force_templates,
        active_ship_variants,
