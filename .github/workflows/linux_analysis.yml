@@ -39,7 +39,7 @@ jobs:
            submodule update --init --recursive external/Fronter
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+      uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
 
@@ -71,7 +71,7 @@ jobs:
         path-to-lcov: build/lcoverage/coverage.info
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      uses: github/codeql-action/analyze@v3
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
@@ -100,7 +100,7 @@ jobs:
            submodule update --init --recursive external/Fronter
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+      uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
 
@@ -146,13 +146,13 @@ jobs:
        make lcov
 
     - name: Upload lcoverage artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: coverage-report
         path: build/lcoverage/
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      uses: github/codeql-action/analyze@v3
 
     - name: Cleanup
       uses: colpal/actions-clean@v1

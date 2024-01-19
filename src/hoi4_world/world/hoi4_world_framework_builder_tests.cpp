@@ -115,7 +115,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultStrategicRegionsHasValues)
 TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStrategicRegionsWorks)
 {
    const StrategicRegions strategic_regions({
-       .province_to_strategic_region_map =
+       .original_province_to_strategic_region_map =
            {
                {10, 1},
                {20, 1},
