@@ -301,6 +301,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
    extractActiveItems(active_legacy_ship_variants, active_variants);
    const auto naval_base_locations = makeNavalBaseMap(states.states);
 
+   int num_fleets = 1;
    for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
    {
       const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
@@ -312,14 +313,14 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       {
          continue;
       }
-      const auto navalbase = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::NavalBase);
-      if (!navalbase.has_value())
+      const auto naval_base = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::NavalBase);
+      if (!naval_base.has_value())
       {
          continue;
       }
-      for (const auto& pm: navalbase->GetProductionMethods())
+      for (const auto& pm: naval_base->GetProductionMethods())
       {
-         pm_amounts[pm] += navalbase->GetStaffingLevel();
+         pm_amounts[pm] += naval_base->GetStaffingLevel();
       }
 
       if (!naval_base_locations.contains(hoi4_id))
@@ -327,7 +328,9 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
          continue;
       }
 
-      hoi4::TaskForce task_force{.ships = {}, .location = naval_base_locations.at(hoi4_id)};
+      hoi4::TaskForce task_force{.name = fmt::format("{}. Fleet", num_fleets),
+          .ships = {},
+          .location = naval_base_locations.at(hoi4_id)};
       for (const auto& tmpl: task_force_templates)
       {
          if (!tmpl.AllVariantsActive(active_variants))
@@ -339,6 +342,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       if (!task_force.ships.empty())
       {
          forces.push_back(task_force);
+         ++num_fleets;
       }
    }
 
@@ -350,17 +354,31 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       }
 
       hoi4::TaskForce task_force;
-      for (const auto& tmpl: task_force_templates)
+      if (naval_formation.name)
       {
-         if (!tmpl.AllVariantsActive(active_variants))
+         task_force.name = *naval_formation.name;
+      }
+      else if (naval_formation.ordinal_number)
+      {
+         task_force.name = fmt::format("{}. Fleet", *naval_formation.ordinal_number);
+      }
+      else
+      {
+         task_force.name = fmt::format("{}. Fleet", num_fleets);
+      }
+
+      for (const auto& task_force_template: task_force_templates)
+      {
+         if (!task_force_template.AllVariantsActive(active_variants))
          {
             continue;
          }
-         tmpl.AddShipsIfPossible(task_force.ships, ship_names, pm_amounts);
+         task_force_template.AddShipsIfPossible(task_force.ships, ship_names, pm_amounts);
       }
       if (!task_force.ships.empty())
       {
          forces.push_back(task_force);
+         ++num_fleets;
       }
    }
 
