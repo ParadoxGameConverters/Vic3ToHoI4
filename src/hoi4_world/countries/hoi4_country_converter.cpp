@@ -442,12 +442,17 @@ std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
    int default_location = 11666;  // Vienna.
    if (capital_state.has_value())
    {
-      auto cap = *capital_state;
-      if (cap < states.states.size())
+      if (const int capital_number = *capital_state; capital_number < states.states.size())
       {
-         if (!states.states[cap].GetProvinces().empty())
+         const hoi4::State& capital = states.states[capital_number - 1];
+         const std::map<int, int>& victory_points = capital.GetVictoryPoints();
+         if (!victory_points.empty())
          {
-            default_location = *states.states[cap].GetProvinces().begin();
+            default_location = victory_points.begin()->first;
+         }
+         else
+         {
+            default_location = *capital.GetProvinces().begin();
          }
       }
    }
@@ -470,7 +475,7 @@ std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
       {
          break;
       }
-   };
+   }
 
    return units;
 }
