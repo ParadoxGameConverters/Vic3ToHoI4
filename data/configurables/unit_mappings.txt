@@ -1,5 +1,71 @@
 ## Army units.
 
+# Napoleonic infantry doesn't convert.
+combat_unit_type_irregular_infantry = {}
+combat_unit_type_line_infantry = {}
+
+# Rifled muskets become bad light infantry.
+combat_unit_type_skirmish_infantry = {
+   infantry = 0.4
+   cavalry = 0.05
+}
+
+# Machine guns improve equipment and shoot cavalry.
+combat_unit_type_trench_infantry = {
+   infantry = 0.45
+   equipment_scale = 25
+}
+
+# Great War infantry has actual guns.
+combat_unit_type_squad_infantry = {
+   infantry = 0.35
+   artillery_brigade = 0.1
+}
+# Early thirties infantry is mechanised.
+combat_unit_type_mechanized_infantry = {
+   infantry = 0.35
+   motorized = 0.1
+}
+
+pm_no_artillery = {}
+combat_unit_type_cannon_artillery = {}
+combat_unit_type_mobile_artillery = {
+  artillery_brigade = 0.05
+}
+combat_unit_type_shrapnel_artillery = {
+  artillery_brigade = 0.1
+}
+combat_unit_type_siege_artillery = {
+  artillery = 0.05
+  artillery_brigade = 0.15
+}
+combat_unit_type_heavy_tank = {
+  motorized = 0.1
+  light_tank = 0.2
+}
+
+combat_unit_type_hussars = {
+  cavalry = 0.2
+}
+combat_unit_type_dragoons = {
+  cavalry = 0.3
+}
+combat_unit_type_cuirassiers = {
+  cavalry = 0.3
+}
+combat_unit_type_lancers = {
+  cavalry = 0.4
+}
+combat_unit_type_light_tanks = {
+  motorized = 0.1
+  light_tank = 0.1
+}
+
+pm_no_organization = {}
+pm_general_training = {}
+
+## Pre-1.5 conversions
+
 # 100 max-modernized Vicky barracks levels convert to:
 #  45 infantry
 #  10 motorized

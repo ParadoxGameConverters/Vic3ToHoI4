@@ -180,6 +180,9 @@
     <Filter Include="src\out_hoi4\diplomacy">
       <UniqueIdentifier>{22bef3c9-5e92-4aa9-8e42-801243baefc1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\vic3_world\military">
+      <UniqueIdentifier>{7b80163d-64f7-4031-959c-c160201e684e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -556,6 +559,12 @@
     </ClCompile>
     <ClCompile Include="src\out_hoi4\diplomacy\out_war_tests.cpp">
       <Filter>src\out_hoi4\diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\military\military_formation_importer_tests.cpp">
+      <Filter>src\vic3_world\military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vic3_world\military\military_formations_importer_tests.cpp">
+      <Filter>src\vic3_world\military</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

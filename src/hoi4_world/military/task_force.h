@@ -11,6 +11,7 @@ namespace hoi4
 
 struct TaskForce
 {
+   std::string name;
    std::vector<Ship> ships;
    int location;
 

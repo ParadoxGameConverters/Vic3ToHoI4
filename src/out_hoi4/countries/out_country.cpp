@@ -26,11 +26,11 @@ constexpr std::string_view kShip =
     " version_name = \"{}\" }} }} }}\n";
 constexpr std::string_view kNavyHeader =
     "\tfleet = {{\n"
-    "\t\tname = \"{0} Fleet\"\n"
-    "\t\tnaval_base = {0}\n"
+    "\t\tname = \"{0}\"\n"
+    "\t\tnaval_base = {1}\n"
     "\t\ttask_force = {{\n"
-    "\t\t\tname = \"{0} Squadron\"\n"
-    "\t\t\tlocation = {0}\n";
+    "\t\t\tname = \"{0}\"\n"
+    "\t\t\tlocation = {1}\n";
 constexpr std::string_view kNavyFooter =
     "\t\t}\n"
     "\t}\n";
@@ -295,7 +295,7 @@ void outputNavy(std::ofstream& navy,
 
    for (const auto& task_force: task_forces)
    {
-      auto header = fmt::format(kNavyHeader, task_force.location);
+      const std::string header = fmt::format(kNavyHeader, task_force.name, task_force.location);
       navy << header;
       legacy << header;
       for (const auto& ship: task_force.ships)

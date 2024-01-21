@@ -1,6 +1,299 @@
 # Modern battleship group.
 task_force = {
   cost = {
+    combat_unit_type_battleship = 20
+    combat_unit_type_carrier = 20
+  }
+  ship = {
+    name = "Battleship"
+    definition = battleship
+    equipment = ship_hull_heavy_2
+    legacy_equipment = battleship_2
+    version = "1936 Battleship"
+  }
+  ship = {
+    name = "Heavy Cruiser"
+    definition = heavy_cruiser
+    equipment = ship_hull_cruiser_2
+    legacy_equipment = heavy_cruiser_2
+    version = "1936 Heavy Cruiser"
+  }
+  ship = {
+    name = "Light Cruiser"
+    definition = light_cruiser
+    equipment = ship_hull_cruiser_2
+    legacy_equipment = light_cruiser_2
+    version = "1936 Light Cruiser"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+}
+
+# Heavy cruiser backup.
+task_force = {
+  cost = {
+    combat_unit_type_battleship = 10
+    combat_unit_type_carrier = 10
+  }
+  ship = {
+    name = "Heavy Cruiser"
+    definition = heavy_cruiser
+    equipment = ship_hull_cruiser_2
+    legacy_equipment = heavy_cruiser_2
+    version = "1936 Heavy Cruiser"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+}
+
+# Older battleship group.
+task_force = {
+  cost = {
+    combat_unit_type_dreadnought = 20
+  }
+  ship = {
+    name = "Battleship"
+    definition = battleship
+    equipment = ship_hull_heavy_1
+    legacy_equipment = battleship_1
+    version = "Early Battleship"
+  }
+  ship = {
+    name = "Heavy Cruiser"
+    definition = heavy_cruiser
+    equipment = ship_hull_cruiser_1
+    legacy_equipment = heavy_cruiser_1
+    version = "Early Heavy Cruiser"
+  }
+  ship = {
+    name = "Light Cruiser"
+    definition = light_cruiser
+    equipment = ship_hull_cruiser_1
+    legacy_equipment = light_cruiser_1
+    version = "Early Light Cruiser"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+}
+
+# Heavy cruiser backup.
+task_force = {
+  cost = {
+    combat_unit_type_dreadnought = 10
+  }
+  ship = {
+    name = "Heavy Cruiser"
+    definition = heavy_cruiser
+    equipment = ship_hull_cruiser_1
+    legacy_equipment = heavy_cruiser_1
+    version = "Early Heavy Cruiser"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+}
+
+# Modern destroyer flotilla.
+task_force = {
+  cost = {
+    combat_unit_type_carrier = 10
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_2
+    legacy_equipment = destroyer_2
+    version = "1936 Destroyer"
+  }
+}
+
+# Older destroyers.
+task_force = {
+  cost = {
+    combat_unit_type_destroyer = 10
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+  ship = {
+    name = "Destroyer"
+    definition = destroyer
+    equipment = ship_hull_light_1
+    legacy_equipment = destroyer_1
+    version = "Early Destroyer"
+  }
+}
+
+
+# More modern submarines.
+task_force = {
+  cost = {
+    combat_unit_type_submarine = 10
+  }
+  ship = {
+    name = "Submarine"
+    definition = submarine
+    equipment = ship_hull_submarine_2
+    legacy_equipment = submarine_2
+    version = "1936 Submarine"
+  }
+  ship = {
+    name = "Submarine"
+    definition = submarine
+    equipment = ship_hull_submarine_2
+    legacy_equipment = submarine_2
+    version = "1936 Submarine"
+  }
+  ship = {
+    name = "Submarine"
+    definition = submarine
+    equipment = ship_hull_submarine_2
+    legacy_equipment = submarine_2
+    version = "1936 Submarine"
+  }
+  ship = {
+    name = "Submarine"
+    definition = submarine
+    equipment = ship_hull_submarine_2
+    legacy_equipment = submarine_2
+    version = "1936 Submarine"
+  }
+}
+
+
+### Pre 1.5
+
+# Modern battleship group.
+task_force = {
+  cost = {
     pm_battlefleet_tactics = 20
     pm_battleships = 20
     pm_carriers = 20

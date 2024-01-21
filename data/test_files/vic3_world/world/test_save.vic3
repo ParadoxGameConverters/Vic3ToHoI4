@@ -89,6 +89,41 @@ interest_groups={
 }
 	}
 }
+military_formation_manager={
+	database={
+1234={
+  country=1
+  type=army
+  name="Formation Name"
+  ordinal_number=2
+  position={ 4743.02784 910.80912 }
+  organization=25
+  current_location={
+    type=hq
+    identity=50331767
+  }
+  target_location={
+    type=hq
+    identity=50331767
+  }
+  building_to_expected_units_map={
+8061={
+      unit_types_num_list={
+combat_unit_type_shrapnel_artillery=2 combat_unit_type_dragoons=3 combat_unit_type_trench_infantry=8 combat_unit_type_siege_artillery=2       }
+    } 11850={
+      unit_types_num_list={
+combat_unit_type_skirmish_infantry=8       }
+    } 50334733={
+      unit_types_num_list={
+combat_unit_type_trench_infantry=16       }
+    }   }
+}
+5678={
+  country=3
+  type=fleet
+}
+	}
+}
 country_rankings={
 	average_prestige=170
 	highest_prestige=5544

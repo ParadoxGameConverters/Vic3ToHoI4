@@ -32,6 +32,7 @@
 #include "src/vic3_world/institutions/institutions_importer.h"
 #include "src/vic3_world/interest_groups/interest_groups_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
+#include "src/vic3_world/military/military_formations_importer.h"
 #include "src/vic3_world/pacts/pacts_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
@@ -224,6 +225,54 @@ void AssignCharactersToCountries(const std::map<int, vic3::Character>& character
 }
 
 
+void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryFormation>& military_formations,
+    std::map<int, vic3::Country>& countries)
+{
+   std::map<int, std::map<int, vic3::MilitaryFormation>> army_formations_by_country;
+   std::map<int, std::map<int, vic3::MilitaryFormation>> navy_formations_by_country;
+   for (const auto& [formation_number, formation]: military_formations)
+   {
+      if (formation.type == vic3::MilitaryFormationType::kArmy)
+      {
+         auto [iterator, success] = army_formations_by_country.emplace(formation.country,
+             std::map<int, vic3::MilitaryFormation>{{formation_number, formation}});
+         if (!success)
+         {
+            iterator->second.emplace(formation_number, formation);
+         }
+      }
+      else
+      {
+         auto [iterator, success] = navy_formations_by_country.emplace(formation.country,
+             std::map<int, vic3::MilitaryFormation>{{formation_number, formation}});
+         if (!success)
+         {
+            iterator->second.emplace(formation_number, formation);
+         }
+      }
+   }
+
+   for (const auto& [country_number, army_formations]: army_formations_by_country)
+   {
+      auto country = countries.find(country_number);
+      if (country == countries.end())
+      {
+         Log(LogLevel::Warning) << fmt::format("Could not find country {} to assign army formations.", country_number);
+      }
+      country->second.SetArmyFormations(army_formations);
+   }
+   for (const auto& [country_number, navy_formations]: navy_formations_by_country)
+   {
+      auto country = countries.find(country_number);
+      if (country == countries.end())
+      {
+         Log(LogLevel::Warning) << fmt::format("Could not find country {} to assign navy formations.", country_number);
+      }
+      country->second.SetNavyFormations(navy_formations);
+   }
+}
+
+
 std::map<std::string, int> MapCountryTagsToId(std::map<int, vic3::Country>& countries)
 {
    std::map<std::string, int> tag_to_id_map;
@@ -316,6 +365,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    const std::map<std::string, commonItems::Color> color_definitions = ImportCountryColorDefinitions(mod_filesystem);
    std::map<int, std::string> cultures;
    std::map<int, std::vector<int>> country_character_map;
+   std::map<int, MilitaryFormation> military_formations;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("playthrough_id", [&world_options](std::istream& input_stream) {
@@ -360,6 +410,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    });
    save_parser.registerKeyword("building_manager", [&world_options](std::istream& input_stream) {
       world_options.buildings = ImportBuildings(input_stream);
+   });
+   save_parser.registerKeyword("military_formation_manager", [&military_formations](std::istream& input_stream) {
+      military_formations = ImportMilitaryFormations(input_stream);
    });
    save_parser.registerKeyword("election_manager", [&world_options](std::istream& input_stream) {
       for (const auto& [country_number, last_election]: ImportElections(input_stream))
@@ -416,6 +469,8 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    AssignIgsToCountries(world_options.countries, world_options.igs);
    ProgressManager::AddProgress(1);
    AssignCharactersToCountries(world_options.characters, country_character_map, world_options.countries);
+   ProgressManager::AddProgress(1);
+   AssignMilitaryFormationsToCountries(military_formations, world_options.countries);
    ProgressManager::AddProgress(1);
    vic3::IdeologiesImporter ideologies_importer;
    world_options.ideologies = ideologies_importer.ImportIdeologies(mod_filesystem);
