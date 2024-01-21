@@ -346,41 +346,43 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       }
    }
 
-   for (const vic3::MilitaryFormation& naval_formation: naval_formations | std::views::values)
-   {
-      for (const auto& [ship_type, number]: naval_formation.units)
-      {
-         pm_amounts[ship_type] += number;
-      }
+   // Disable converting navies until naval bases can be converted
+   // Without naval bases set, navies crash hoi4
+   // for (const vic3::MilitaryFormation& naval_formation: naval_formations | std::views::values)
+   //{
+   //    for (const auto& [ship_type, number]: naval_formation.units)
+   //    {
+   //       pm_amounts[ship_type] += number;
+   //    }
 
-      hoi4::TaskForce task_force;
-      if (naval_formation.name)
-      {
-         task_force.name = *naval_formation.name;
-      }
-      else if (naval_formation.ordinal_number)
-      {
-         task_force.name = fmt::format("{}. Fleet", *naval_formation.ordinal_number);
-      }
-      else
-      {
-         task_force.name = fmt::format("{}. Fleet", num_fleets);
-      }
+   //   hoi4::TaskForce task_force;
+   //   if (naval_formation.name)
+   //   {
+   //      task_force.name = *naval_formation.name;
+   //   }
+   //   else if (naval_formation.ordinal_number)
+   //   {
+   //      task_force.name = fmt::format("{}. Fleet", *naval_formation.ordinal_number);
+   //   }
+   //   else
+   //   {
+   //      task_force.name = fmt::format("{}. Fleet", num_fleets);
+   //   }
 
-      for (const auto& task_force_template: task_force_templates)
-      {
-         if (!task_force_template.AllVariantsActive(active_variants))
-         {
-            continue;
-         }
-         task_force_template.AddShipsIfPossible(task_force.ships, ship_names, pm_amounts);
-      }
-      if (!task_force.ships.empty())
-      {
-         forces.push_back(task_force);
-         ++num_fleets;
-      }
-   }
+   //   for (const auto& task_force_template: task_force_templates)
+   //   {
+   //      if (!task_force_template.AllVariantsActive(active_variants))
+   //      {
+   //         continue;
+   //      }
+   //      task_force_template.AddShipsIfPossible(task_force.ships, ship_names, pm_amounts);
+   //   }
+   //   if (!task_force.ships.empty())
+   //   {
+   //      forces.push_back(task_force);
+   //      ++num_fleets;
+   //   }
+   //}
 
    return forces;
 }
