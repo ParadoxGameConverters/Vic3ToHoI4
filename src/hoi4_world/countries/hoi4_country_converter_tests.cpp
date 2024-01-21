@@ -2440,17 +2440,23 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
        dummy_characters,
        dummy_culture_queues);
 
-   ASSERT_TRUE(country_one.has_value());
-   ASSERT_TRUE(country_two.has_value());
-   EXPECT_THAT(country_one->GetTaskForces(),
+   EXPECT_THAT(country_one.value_or(Country({})).GetTaskForces(),
        testing::UnorderedElementsAre(TaskForce{
-           .ships = {Ship("Cruiser 1", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"),
-               Ship("Cruiser 2", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship")},
+           .name = "1. Fleet",
+           .ships =
+               {
+                   Ship("Cruiser 1", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"),
+                   Ship("Cruiser 2", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"),
+               },
            .location = 1,
        }));
-   EXPECT_THAT(country_two->GetTaskForces(),
+   EXPECT_THAT(country_two.value_or(Country({})).GetTaskForces(),
        testing::UnorderedElementsAre(TaskForce{
-           .ships = {Ship("Battleship 1", "1936_ship", "mtg_1936_ship", "legacy_1936_ship", "1936 Ship")},
+           .name = "1. Fleet",
+           .ships =
+               {
+                   Ship("Battleship 1", "1936_ship", "mtg_1936_ship", "legacy_1936_ship", "1936 Ship"),
+               },
            .location = 3,
        }));
 }
