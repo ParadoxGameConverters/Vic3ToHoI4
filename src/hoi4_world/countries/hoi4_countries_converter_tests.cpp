@@ -167,6 +167,7 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
    };
    const std::vector<TaskForce> expected_task_forces = {
        TaskForce{
+           .name = "1. Fleet",
            .ships = {Ship("Test Ship 1", "test_ship", "mtg_test_ship", "legacy_test_ship", "Test Ship Variant One")},
            .location = 10,
        },
@@ -179,7 +180,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
 
    EXPECT_THAT(countries,
        testing::ElementsAre(testing::Pair("TAG",
-                                Country(CountryOptions{.tag = "TAG",
+                                Country(CountryOptions{
+                                    .tag = "TAG",
                                     .color = commonItems::Color{std::array{1, 2, 3}},
                                     .capital_state = 10,
                                     .ideology = "neutrality",
@@ -195,9 +197,11 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                     .starting_research_slots = 3,
                                     .units = {},
                                     .convoys = 100,
-                                    .task_forces = expected_task_forces})),
+                                    .task_forces = expected_task_forces,
+                                })),
            testing::Pair("TWO",
-               Country(CountryOptions{.tag = "TWO",
+               Country(CountryOptions{
+                   .tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
                    .capital_state = 20,
                    .ideology = "democratic",
@@ -212,7 +216,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                    .starting_research_slots = 3,
                    .units = {},
                    .convoys = 11,
-                   .task_forces = {}}))));
+                   .task_forces = {},
+               }))));
 }
 
 }  // namespace hoi4
