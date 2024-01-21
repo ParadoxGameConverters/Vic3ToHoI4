@@ -560,7 +560,7 @@
     <ClCompile Include="src\out_hoi4\diplomacy\out_war_tests.cpp">
       <Filter>src\out_hoi4\diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="src\vic3_world\military\military_formation_importer_test.cpp">
+    <ClCompile Include="src\vic3_world\military\military_formation_importer_tests.cpp">
       <Filter>src\vic3_world\military</Filter>
     </ClCompile>
     <ClCompile Include="src\vic3_world\military\military_formations_importer_tests.cpp">

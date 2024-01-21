@@ -115,7 +115,7 @@
     <ClCompile Include="src\vic3_world\ideologies\ideology_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\institutions\institutions_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\military\military_formations_importer_tests.cpp" />
-    <ClCompile Include="src\vic3_world\military\military_formation_importer_test.cpp" />
+    <ClCompile Include="src\vic3_world\military\military_formation_importer_tests.cpp" />
     <ClCompile Include="src\vic3_world\pacts\pacts_importer_tests.cpp" />
     <ClCompile Include="src\configuration\configuration_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\characters\hoi4_characters_converter_tests.cpp" />
