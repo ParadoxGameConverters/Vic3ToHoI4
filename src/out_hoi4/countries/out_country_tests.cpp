@@ -810,18 +810,30 @@ TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
        .tag = "TAG",
        .task_forces =
            {
-               {.ships = {hoi4::Ship("Test Ship",
-                    "test_ship_type",
-                    "mtg_equipment_template",
-                    "legacy_equipment_template",
-                    "Test Class")},
-                   .location = 123},
-               {.ships = {hoi4::Ship("Test Ship 2",
-                    "another_ship_type",
-                    "mtg_equipment_template_2",
-                    "legacy_equipment_template_2",
-                    "Another Class")},
-                   .location = 456},
+               {
+                   .name = "123 Fleet",
+                   .ships =
+                       {
+                           hoi4::Ship("Test Ship",
+                               "test_ship_type",
+                               "mtg_equipment_template",
+                               "legacy_equipment_template",
+                               "Test Class"),
+                       },
+                   .location = 123,
+               },
+               {
+                   .name = "456 Fleet",
+                   .ships =
+                       {
+                           hoi4::Ship("Test Ship 2",
+                               "another_ship_type",
+                               "mtg_equipment_template_2",
+                               "legacy_equipment_template_2",
+                               "Another Class"),
+                       },
+                   .location = 456,
+               },
            },
    });
    OutputCountryNavy("ShipsAreOutputInBothFormats", country);
@@ -842,7 +854,7 @@ TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
        "\t\tname = \"123 Fleet\"\n"
        "\t\tnaval_base = 123\n"
        "\t\ttask_force = {\n"
-       "\t\t\tname = \"123 Squadron\"\n"
+       "\t\t\tname = \"123 Fleet\"\n"
        "\t\t\tlocation = 123\n"
        "\t\t\tship = {"
        " name = \"Test Ship\""
@@ -857,7 +869,7 @@ TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
        "\t\tname = \"456 Fleet\"\n"
        "\t\tnaval_base = 456\n"
        "\t\ttask_force = {\n"
-       "\t\t\tname = \"456 Squadron\"\n"
+       "\t\t\tname = \"456 Fleet\"\n"
        "\t\t\tlocation = 456\n"
        "\t\t\tship = {"
        " name = \"Test Ship 2\""
@@ -888,7 +900,7 @@ TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
        "\t\tname = \"123 Fleet\"\n"
        "\t\tnaval_base = 123\n"
        "\t\ttask_force = {\n"
-       "\t\t\tname = \"123 Squadron\"\n"
+       "\t\t\tname = \"123 Fleet\"\n"
        "\t\t\tlocation = 123\n"
        "\t\t\tship = {"
        " name = \"Test Ship\""
@@ -903,7 +915,7 @@ TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
        "\t\tname = \"456 Fleet\"\n"
        "\t\tnaval_base = 456\n"
        "\t\ttask_force = {\n"
-       "\t\t\tname = \"456 Squadron\"\n"
+       "\t\t\tname = \"456 Fleet\"\n"
        "\t\t\tlocation = 456\n"
        "\t\t\tship = {"
        " name = \"Test Ship 2\""
