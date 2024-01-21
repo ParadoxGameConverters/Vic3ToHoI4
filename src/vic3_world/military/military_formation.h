@@ -24,8 +24,6 @@ struct MilitaryFormation
    std::strong_ordering operator<=>(const MilitaryFormation&) const = default;
 };
 
-// correlate with data from new_combat_unit_manager
-
 }  // namespace vic3
 
 
