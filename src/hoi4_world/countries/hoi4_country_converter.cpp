@@ -291,7 +291,8 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
     const std::vector<hoi4::TaskForceTemplate>& task_force_templates,
     const std::vector<hoi4::EquipmentVariant>& active_ship_variants,
     const std::vector<hoi4::EquipmentVariant>& active_legacy_ship_variants,
-    const hoi4::States& states)
+    const hoi4::States& states,
+    const std::optional<int> capital_state)
 {
    std::vector<hoi4::TaskForce> forces;
    std::map<std::string, float> pm_amounts;
@@ -346,43 +347,56 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       }
    }
 
-   // Disable converting navies until naval bases can be converted
-   // Without naval bases set, navies crash hoi4
-   // for (const vic3::MilitaryFormation& naval_formation: naval_formations | std::views::values)
-   //{
-   //    for (const auto& [ship_type, number]: naval_formation.units)
-   //    {
-   //       pm_amounts[ship_type] += number;
-   //    }
+   std::optional<int> default_naval_base;
+   if (capital_state)
+   {
+      const auto state_id_to_naval_base = naval_base_locations.find(*capital_state);
+      if (state_id_to_naval_base != naval_base_locations.end())
+      {
+         default_naval_base = state_id_to_naval_base->second;
+      }
+   }
 
-   //   hoi4::TaskForce task_force;
-   //   if (naval_formation.name)
-   //   {
-   //      task_force.name = *naval_formation.name;
-   //   }
-   //   else if (naval_formation.ordinal_number)
-   //   {
-   //      task_force.name = fmt::format("{}. Fleet", *naval_formation.ordinal_number);
-   //   }
-   //   else
-   //   {
-   //      task_force.name = fmt::format("{}. Fleet", num_fleets);
-   //   }
+   if (!default_naval_base)
+   {
+      return forces;
+   }
 
-   //   for (const auto& task_force_template: task_force_templates)
-   //   {
-   //      if (!task_force_template.AllVariantsActive(active_variants))
-   //      {
-   //         continue;
-   //      }
-   //      task_force_template.AddShipsIfPossible(task_force.ships, ship_names, pm_amounts);
-   //   }
-   //   if (!task_force.ships.empty())
-   //   {
-   //      forces.push_back(task_force);
-   //      ++num_fleets;
-   //   }
-   //}
+   for (const vic3::MilitaryFormation& naval_formation: naval_formations | std::views::values)
+   {
+      for (const auto& [ship_type, number]: naval_formation.units)
+      {
+         pm_amounts[ship_type] += number;
+      }
+
+      hoi4::TaskForce task_force{.location = *default_naval_base};
+      if (naval_formation.name)
+      {
+         task_force.name = *naval_formation.name;
+      }
+      else if (naval_formation.ordinal_number)
+      {
+         task_force.name = fmt::format("{}. Fleet", *naval_formation.ordinal_number);
+      }
+      else
+      {
+         task_force.name = fmt::format("{}. Fleet", num_fleets);
+      }
+
+      for (const auto& task_force_template: task_force_templates)
+      {
+         if (!task_force_template.AllVariantsActive(active_variants))
+         {
+            continue;
+         }
+         task_force_template.AddShipsIfPossible(task_force.ships, ship_names, pm_amounts);
+      }
+      if (!task_force.ships.empty())
+      {
+         forces.push_back(task_force);
+         ++num_fleets;
+      }
+   }
 
    return forces;
 }
@@ -829,7 +843,8 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        task_force_templates,
        active_ship_variants,
        active_legacy_ship_variants,
-       states);
+       states,
+       capital_state);
 
    const auto& [economy_law, trade_law, military_law] = ConvertLaws(source_country.GetActiveLaws(), ideology);
 
