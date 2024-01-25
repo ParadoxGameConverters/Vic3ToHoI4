@@ -356,6 +356,28 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
          default_naval_base = state_id_to_naval_base->second;
       }
    }
+   if (!default_naval_base)
+   {
+       for (const auto&  hoi4_id : states.vic3_state_ids_to_hoi4_state_ids | std::views::values)
+       {
+           const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
+           if (itr == states.hoi4_state_ids_to_owner.end())
+           {
+               continue;
+           }
+           if (itr->second != tag)
+           {
+               continue;
+           }
+
+           const auto state_id_to_naval_base = naval_base_locations.find(hoi4_id);
+           if (state_id_to_naval_base != naval_base_locations.end())
+           {
+               default_naval_base = state_id_to_naval_base->second;
+               break;
+           }
+       }
+   }
 
    if (!default_naval_base)
    {
