@@ -2,9 +2,6 @@ legacy_ship_type = {
 	required_techs = {
 		early_submarine
 	}
-	blocking_techs = {
-		basic_submarine
-	}
 	name = "Early Submarine"
 	type = submarine_1
 	upgrades = {
@@ -35,9 +32,6 @@ legacy_ship_type = {
 	required_techs = {
 		early_destroyer
 	}
-	blocking_techs = {
-		basic_destroyer
-	}
 	name = "Early Destroyer"
 	type = destroyer_1
 	upgrades = {
@@ -51,9 +45,6 @@ legacy_ship_type = {
 legacy_ship_type = {
 	required_techs = {
 		early_light_cruiser
-	}
-	blocking_techs = {
-		basic_light_cruiser
 	}
 	name = "Early Light Cruiser"
 	type = light_cruiser_1
@@ -69,9 +60,6 @@ legacy_ship_type = {
 	required_techs = {
 		early_heavy_cruiser
 	}
-	blocking_techs = {
-		basic_heavy_cruiser
-	}
 	name = "Early Heavy Cruiser"
 	type = heavy_cruiser_1
 	upgrades = {
@@ -85,9 +73,6 @@ legacy_ship_type = {
 legacy_ship_type = {
 	required_techs = {
 		early_battleship
-	}
-	blocking_techs = {
-		basic_battleship
 	}
 	name = "Early Battleship"
 	type = battleship_1

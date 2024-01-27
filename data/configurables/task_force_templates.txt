@@ -1,8 +1,8 @@
 # Modern battleship group.
 task_force = {
   cost = {
-    combat_unit_type_battleship = 20
-    combat_unit_type_carrier = 20
+    combat_unit_type_battleship = 2
+    combat_unit_type_carrier = 2
   }
   ship = {
     name = "Battleship"
@@ -58,8 +58,8 @@ task_force = {
 # Heavy cruiser backup.
 task_force = {
   cost = {
-    combat_unit_type_battleship = 10
-    combat_unit_type_carrier = 10
+    combat_unit_type_battleship = 1
+    combat_unit_type_carrier = 1
   }
   ship = {
     name = "Heavy Cruiser"
@@ -94,7 +94,7 @@ task_force = {
 # Older battleship group.
 task_force = {
   cost = {
-    combat_unit_type_dreadnought = 20
+    combat_unit_type_dreadnought = 2
   }
   ship = {
     name = "Battleship"
@@ -150,7 +150,7 @@ task_force = {
 # Heavy cruiser backup.
 task_force = {
   cost = {
-    combat_unit_type_dreadnought = 10
+    combat_unit_type_dreadnought = 1
   }
   ship = {
     name = "Heavy Cruiser"
@@ -185,7 +185,7 @@ task_force = {
 # Modern destroyer flotilla.
 task_force = {
   cost = {
-    combat_unit_type_carrier = 10
+    combat_unit_type_carrier = 1
   }
   ship = {
     name = "Destroyer"
@@ -285,6 +285,41 @@ task_force = {
     equipment = ship_hull_submarine_2
     legacy_equipment = submarine_2
     version = "1936 Submarine"
+  }
+}
+
+# Older submarines.
+task_force = {
+  cost = {
+    combat_unit_type_submarine = 10
+  }
+  ship = {
+    name = "Submarine"
+    definition = submarine
+    equipment = ship_hull_submarine_1
+    legacy_equipment = submarine_1
+    version = "Early Submarine"
+  }
+  ship = {
+    name = "Submarine"
+    definition = submarine
+    equipment = ship_hull_submarine_1
+    legacy_equipment = submarine_1
+    version = "Early Submarine"
+  }
+  ship = {
+    name = "Submarine"
+    definition = submarine
+    equipment = ship_hull_submarine_1
+    legacy_equipment = submarine_1
+    version = "Early Submarine"
+  }
+  ship = {
+    name = "Submarine"
+    definition = submarine
+    equipment = ship_hull_submarine_1
+    legacy_equipment = submarine_1
+    version = "Early Submarine"
   }
 }
 

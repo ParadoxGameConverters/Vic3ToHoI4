@@ -2,9 +2,6 @@ mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_submarine
 	}
-	blocking_techs = {
-		basic_ship_hull_submarine
-	}
 	name = "Early Submarine"
 	type = ship_hull_submarine_1
 	name_group = SS_HISTORICAL
@@ -34,9 +31,6 @@ mtg_ship_type = {
 mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_heavy
-	}
-	blocking_techs = {
-		basic_ship_hull_heavy
 	}
 	name = "Early Battleship"
 	type = ship_hull_heavy_1
@@ -84,9 +78,6 @@ mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_light
 	}
-	blocking_techs = {
-		basic_ship_hull_light
-	}
 	name = "Early Destroyer"
 	type = ship_hull_light_1
 	name_group = DD_HISTORICAL
@@ -126,9 +117,6 @@ mtg_ship_type = {
 mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_cruiser
-	}
-	blocking_techs = {
-		basic_ship_hull_cruiser
 	}
 	name = "Early Heavy Cruiser"
 	type = ship_hull_cruiser_1
@@ -173,9 +161,6 @@ mtg_ship_type = {
 mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_cruiser
-	}
-	blocking_techs = {
-		basic_ship_hull_cruiser
 	}
 	name = "Early Light Cruiser"
 	type = ship_hull_cruiser_1
@@ -222,9 +207,6 @@ legacy_ship_type = {
 	required_techs = {
 		early_submarine
 	}
-	blocking_techs = {
-		basic_submarine
-	}
 	name = "Early Submarine"
 	type = submarine_1
 	upgrades = {
@@ -255,9 +237,6 @@ legacy_ship_type = {
 	required_techs = {
 		early_destroyer
 	}
-	blocking_techs = {
-		basic_destroyer
-	}
 	name = "Early Destroyer"
 	type = destroyer_1
 	upgrades = {
@@ -271,9 +250,6 @@ legacy_ship_type = {
 legacy_ship_type = {
 	required_techs = {
 		early_light_cruiser
-	}
-	blocking_techs = {
-		basic_light_cruiser
 	}
 	name = "Early Light Cruiser"
 	type = light_cruiser_1
@@ -289,9 +265,6 @@ legacy_ship_type = {
 	required_techs = {
 		early_heavy_cruiser
 	}
-	blocking_techs = {
-		basic_heavy_cruiser
-	}
 	name = "Early Heavy Cruiser"
 	type = heavy_cruiser_1
 	upgrades = {
@@ -305,9 +278,6 @@ legacy_ship_type = {
 legacy_ship_type = {
 	required_techs = {
 		early_battleship
-	}
-	blocking_techs = {
-		basic_battleship
 	}
 	name = "Early Battleship"
 	type = battleship_1
