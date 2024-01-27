@@ -83,9 +83,14 @@ configuration::Configuration configuration::ImportConfiguration(std::string_view
    });
    configuration_parser.registerKeyword("output_name", [&configuration](std::istream& stream) {
       configuration.output_name = commonItems::getString(stream);
+      Log(LogLevel::Info) << "\tOutput name is " << configuration.output_name;
    });
    configuration_parser.registerKeyword("dynamic_resources", [&configuration](std::istream& stream) {
       configuration.dynamic_resources = commonItems::getString(stream) == "yes";
+      if (configuration.dynamic_resources)
+      {
+         Log(LogLevel::Info) << "\tDynamic resources is active";
+      }
    });
 
    configuration_parser.parseFile(configuration_file);
