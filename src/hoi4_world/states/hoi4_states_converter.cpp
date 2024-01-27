@@ -490,44 +490,39 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
    return {civilian_factories, military_factories, dockyards};
 }
 
-/// <summary>
-/// Determine naval bases in the hoi4 state.
-/// We pick 1 hoi4 province and stick all the naval bases there.
-/// </summary>
-std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const vic3::World& source_world,
-    int source_state_id,
+
+float CalculateNavalBaseRatio(const std::set<int>& hoi4_provinces,
     const hoi4::WorldFramework& world_framework,
-    int total_coastal_provinces,
-    const std::set<int>& hoi4_provinces,
-    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
-    const std::map<std::string, std::string>& significant_provinces)
+    int total_coastal_provinces)
 {
    const int coastal_province_count = std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
       return world_framework.coastal_provinces.contains(province_id);
    });
+   return static_cast<float>(coastal_province_count) / static_cast<float>(total_coastal_provinces);
+}
 
-   const float naval_base_ratio = static_cast<float>(coastal_province_count) / total_coastal_provinces;
+
+float FindNavalBaseStaffing(const vic3::World& source_world, int source_state_id)
+{
    float total_naval_bases = 0;
-   // get amount of naval bases in the source vic3 state
+   std::vector<vic3::Building> buildings = source_world.GetBuildings().GetBuildingsInState(source_state_id);
+   auto maybe_building = std::ranges::find_if(buildings, [](const vic3::Building& b) {
+      return b.GetType() == vic3::BuildingType::NavalBase;
+   });
+   if (maybe_building != buildings.end())
    {
-      auto bldgs = source_world.GetBuildings().GetBuildingsInState(source_state_id);
-      auto maybe_building = std::ranges::find_if(bldgs, [](const vic3::Building& b) {
-         return b.GetType() == vic3::BuildingType::NavalBase;
-      });
-      if (maybe_building != bldgs.end())
-      {
-         total_naval_bases = std::min(maybe_building->GetStaffingLevel(), 50.0F);
-      }
+      return std::min(maybe_building->GetStaffingLevel(), 50.0F);
    }
 
-   if (total_naval_bases == 0.0F)
-   {
-      return {std::nullopt, std::nullopt};
-   }
+   return 0.0F;
+}
 
-   auto level = static_cast<int>(total_naval_bases * naval_base_ratio / 5.0F);
 
-   // Find a coastal province to make naval base.
+std::optional<int> DetermineNavalBaseLocation(const std::set<int>& hoi4_provinces,
+    const hoi4::WorldFramework& world_framework,
+    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
+    const std::map<std::string, std::string>& significant_provinces)
+{
    std::optional<int> target;
    int best = -1;
    for (const auto& hoi4_province: hoi4_provinces)
@@ -550,6 +545,36 @@ std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const vic3
          }
       }
    }
+
+   return target;
+}
+
+
+/// <summary>
+/// Determine naval bases in the hoi4 state.
+/// We pick 1 hoi4 province and stick all the naval bases there.
+/// </summary>
+std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const vic3::World& source_world,
+    int source_state_id,
+    const hoi4::WorldFramework& world_framework,
+    int total_coastal_provinces,
+    const std::set<int>& hoi4_provinces,
+    const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_mappings,
+    const std::map<std::string, std::string>& significant_provinces)
+{
+   const float naval_base_ratio = CalculateNavalBaseRatio(hoi4_provinces, world_framework, total_coastal_provinces);
+   const float naval_base_staffing = FindNavalBaseStaffing(source_world, source_state_id);
+   if (naval_base_staffing == 0.0F)
+   {
+      return {std::nullopt, std::nullopt};
+   }
+
+   auto level = std::max(1, static_cast<int>(naval_base_staffing * naval_base_ratio / 5.0F));
+   std::optional<int> target = DetermineNavalBaseLocation(hoi4_provinces,
+       world_framework,
+       hoi4_to_vic3_province_mappings,
+       significant_provinces);
+
    return {target, level};
 }
 
