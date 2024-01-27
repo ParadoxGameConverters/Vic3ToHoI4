@@ -80,6 +80,10 @@ configuration::Configuration configuration::ImportConfiguration(std::string_view
       {
          Log(LogLevel::Info) << "\tDebug is active";
       }
+      else
+      {
+         Log(LogLevel::Info) << "\tDebug is not active";
+      }
    });
    configuration_parser.registerKeyword("output_name", [&configuration](std::istream& stream) {
       configuration.output_name = commonItems::getString(stream);
@@ -90,6 +94,10 @@ configuration::Configuration configuration::ImportConfiguration(std::string_view
       if (configuration.dynamic_resources)
       {
          Log(LogLevel::Info) << "\tDynamic resources is active";
+      }
+      else
+      {
+         Log(LogLevel::Info) << "\tDynamic resources is not active";
       }
    });
 
