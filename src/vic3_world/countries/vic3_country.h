@@ -36,6 +36,7 @@ struct CountryOptions
 {
    int number = 0;
    std::string tag;
+   bool is_dead;
    std::optional<std::string> dynamic_name;
    std::optional<std::string> dynamic_adjective;
    commonItems::Color color;
@@ -76,6 +77,7 @@ class Country
    explicit Country(CountryOptions options):
        number_(options.number),
        tag_(std::move(options.tag)),
+       is_dead_(options.is_dead),
        dynamic_name_(std::move(options.dynamic_name)),
        dynamic_adjective_(std::move(options.dynamic_adjective)),
        color_(options.color),
@@ -102,6 +104,7 @@ class Country
 
    [[nodiscard]] int GetNumber() const { return number_; }
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
+   [[nodiscard]] bool IsDead() const { return is_dead_; }
    [[nodiscard]] const std::optional<std::string>& GetDynamicName() const { return dynamic_name_; }
    [[nodiscard]] const std::optional<std::string>& GetDynamicAdjective() const { return dynamic_adjective_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
@@ -152,6 +155,7 @@ class Country
   private:
    int number_ = 0;
    std::string tag_;
+   bool is_dead_;
    std::optional<std::string> dynamic_name_;
    std::optional<std::string> dynamic_adjective_;
    commonItems::Color color_;

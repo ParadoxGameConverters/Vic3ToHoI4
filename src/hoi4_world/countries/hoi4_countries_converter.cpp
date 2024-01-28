@@ -87,8 +87,13 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
    ConvoyDistributor convoys = BuildConvoyDistributor("configurables/convoy_config.txt");
    convoys.CalculateStateWeights(source_world);
 
-   for (const auto& [country_number, source_country]: source_world.GetCountries())
+   for (const auto& source_country: source_world.GetCountries() | std::views::values)
    {
+      if (source_country.IsDead())
+      {
+         continue;
+      }
+
       std::optional<Country> new_country = ConvertCountry(source_world,
           source_country,
           source_localizations,
