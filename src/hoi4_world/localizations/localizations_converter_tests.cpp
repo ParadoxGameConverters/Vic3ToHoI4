@@ -568,7 +568,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, IdeaLocalizationsCanBeConvert
        hoi4_localizations.GetIdeaLocalizations().GetLocalizationBlock(idea_one_name);
 
 #pragma warning(push)
-#pragma warning(disable: 4566)
+#pragma warning(disable : 4566)
    EXPECT_THAT(one_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "King MaleName Surname"),
            testing::Pair("braz_por", "Rei MaleName Surname"),

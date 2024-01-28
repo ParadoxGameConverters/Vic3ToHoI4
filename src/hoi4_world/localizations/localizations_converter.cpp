@@ -333,7 +333,7 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
        {"braz_por", "french", "german", "japanese", "polish", "russian", "spanish"});
 
 #pragma warning(push)
-#pragma warning(disable: 4566)
+#pragma warning(disable : 4566)
    commonItems::LocalizationBlock male_localization_block("king", "english");
    male_localization_block.ModifyLocalization("english", "King {}");
    male_localization_block.ModifyLocalization("braz_por", "Rei {}");
