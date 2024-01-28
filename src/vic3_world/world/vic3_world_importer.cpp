@@ -258,6 +258,7 @@ void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryForma
       if (country == countries.end())
       {
          Log(LogLevel::Warning) << fmt::format("Could not find country {} to assign army formations.", country_number);
+         continue;
       }
       country->second.SetArmyFormations(army_formations);
    }
@@ -267,6 +268,7 @@ void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryForma
       if (country == countries.end())
       {
          Log(LogLevel::Warning) << fmt::format("Could not find country {} to assign navy formations.", country_number);
+         continue;
       }
       country->second.SetNavyFormations(navy_formations);
    }
