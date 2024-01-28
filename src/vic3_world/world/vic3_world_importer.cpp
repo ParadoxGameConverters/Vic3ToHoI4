@@ -104,6 +104,10 @@ std::istringstream MeltSave(const rakaly::GameFile& save, const std::string& sav
    std::string melted_save_string;
    melt.writeData(melted_save_string);
 
+   if (melted_save_string.empty())
+   {
+      return std::istringstream{save_string};
+   }
    return std::istringstream{melted_save_string};
 }
 
