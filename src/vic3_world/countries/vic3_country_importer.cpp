@@ -55,7 +55,15 @@ vic3::CountryImporter::CountryImporter()
       options_.color = commonItems::Color::Factory{}.getColor(input_stream);
    });
    country_parser_.registerKeyword("capital", [this](std::istream& input_stream) {
-      options_.capital_state = commonItems::getInt(input_stream);
+      int64_t temp_number = commonItems::getLlong(input_stream);
+      if (temp_number == 4294967295)
+      {
+         options_.capital_state = -1;
+      }
+      else
+      {
+         options_.capital_state = temp_number;
+      }
    });
    country_parser_.registerKeyword("country_type", [this](std::istream& input_stream) {
       options_.country_type = commonItems::getString(input_stream);
@@ -83,7 +91,7 @@ vic3::CountryImporter::CountryImporter()
    });
 
    country_parser_.registerKeyword("dead", [this](std::istream& input_stream) {
-      is_dead_ = commonItems::getString(input_stream) == "yes";
+      options_.is_dead = commonItems::getString(input_stream) == "yes";
    });
 
    /// ---- counters parser ----
@@ -107,13 +115,6 @@ std::optional<vic3::Country> vic3::CountryImporter::ImportCountry(const int numb
     const std::map<std::string, commonItems::Color>& color_definitions)
 {
    options_ = {};
-   is_dead_ = false;
-
-   country_parser_.parseStream(input_stream);
-   if (is_dead_)
-   {
-      return std::nullopt;
-   }
 
    if (options_.color == commonItems::Color())
    {
