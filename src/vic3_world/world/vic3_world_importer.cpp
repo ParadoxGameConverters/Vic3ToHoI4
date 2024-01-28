@@ -95,21 +95,14 @@ std::vector<Mod> GetModsFromSave(const std::vector<std::string>& mod_names)
 
 std::istringstream MeltSave(const rakaly::GameFile& save, const std::string& save_string)
 {
-   std::string melted_save_string;
-   if (save.is_binary())
+   const auto melt = save.melt();
+   if (melt.has_unknown_tokens())
    {
-      const auto melt = save.melt();
-      if (melt.has_unknown_tokens())
-      {
-         throw std::runtime_error("Unable to melt ironman save");
-      }
+      throw std::runtime_error("Unable to melt ironman save");
+   }
 
-      melt.writeData(melted_save_string);
-   }
-   else
-   {
-      melted_save_string = save_string;
-   }
+   std::string melted_save_string;
+   melt.writeData(melted_save_string);
 
    return std::istringstream{melted_save_string};
 }
