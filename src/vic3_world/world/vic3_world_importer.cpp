@@ -95,22 +95,19 @@ std::vector<Mod> GetModsFromSave(const std::vector<std::string>& mod_names)
 
 std::istringstream MeltSave(const rakaly::GameFile& save, const std::string& save_string)
 {
+   const auto melt = save.melt();
+   if (melt.has_unknown_tokens())
+   {
+      throw std::runtime_error("Unable to melt ironman save");
+   }
+
    std::string melted_save_string;
-   if (save.is_binary())
-   {
-      const auto melt = save.melt();
-      if (melt.has_unknown_tokens())
-      {
-         throw std::runtime_error("Unable to melt ironman save");
-      }
+   melt.writeData(melted_save_string);
 
-      melt.writeData(melted_save_string);
-   }
-   else
+   if (melted_save_string.empty())
    {
-      melted_save_string = save_string;
+      return std::istringstream{save_string};
    }
-
    return std::istringstream{melted_save_string};
 }
 
@@ -258,6 +255,7 @@ void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryForma
       if (country == countries.end())
       {
          Log(LogLevel::Warning) << fmt::format("Could not find country {} to assign army formations.", country_number);
+         continue;
       }
       country->second.SetArmyFormations(army_formations);
    }
@@ -267,6 +265,7 @@ void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryForma
       if (country == countries.end())
       {
          Log(LogLevel::Warning) << fmt::format("Could not find country {} to assign navy formations.", country_number);
+         continue;
       }
       country->second.SetNavyFormations(navy_formations);
    }

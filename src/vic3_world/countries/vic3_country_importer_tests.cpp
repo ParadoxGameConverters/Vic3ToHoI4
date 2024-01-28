@@ -27,6 +27,7 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
 
    EXPECT_TRUE(country.has_value());
    EXPECT_TRUE(country.value_or(Country({})).GetTag().empty());
+   EXPECT_FALSE(country.value_or(Country({})).IsDead());
    EXPECT_FALSE(country.value_or(Country({})).GetDynamicName());
    EXPECT_FALSE(country.value_or(Country({})).GetDynamicAdjective());
    EXPECT_EQ(country.value_or(Country({})).GetColor(), commonItems::Color(std::array{0, 0, 0}));
@@ -170,7 +171,7 @@ TEST(Vic3WorldCountriesCountryImporter, IgIdsCanBeAdded)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, DeadCountriesAreSkipped)
+TEST(Vic3WorldCountriesCountryImporter, DeadCountriesAreImported)
 {
    std::stringstream input;
    input << "={\n";
@@ -180,7 +181,8 @@ TEST(Vic3WorldCountriesCountryImporter, DeadCountriesAreSkipped)
    input << "}";
    const auto country = CountryImporter{}.ImportCountry(0, input, {});
 
-   EXPECT_FALSE(country.has_value());
+   EXPECT_TRUE(country.has_value());
+   EXPECT_TRUE(country.value_or(Country({})).IsDead());
 }
 
 TEST(Vic3WorldCountriesCountryImporter, CountersSectionParsed)

@@ -69,7 +69,9 @@ std::map<int, std::set<std::string>> vic3::ImportLaws(std::istream& input_stream
       }
    };
 
-   DatabaseParser(law_parser_function).parseStream(input_stream);
+   DatabaseParser database_parser(law_parser_function);
+   database_parser.registerKeyword("dead", commonItems::ignoreItem);
+   database_parser.parseStream(input_stream);
 
    LOG(LogLevel::Info) << fmt::format("\tImported {} active laws.", active_laws);
    LOG(LogLevel::Info) << fmt::format("\tImported {} inactive laws.", inactive_laws);
