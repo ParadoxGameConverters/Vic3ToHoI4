@@ -41,7 +41,9 @@ void InstitutionsImporter::operator()(std::istream& input_stream)
       this->current_institution_ = {};
    };
 
-   DatabaseParser(elementParser).parseStream(input_stream);
+   DatabaseParser database_parser(elementParser);
+   database_parser.registerKeyword("dead", commonItems::ignoreItem);
+   database_parser.parseStream(input_stream);
 }
 
 }  // namespace vic3
