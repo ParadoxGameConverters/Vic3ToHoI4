@@ -138,7 +138,7 @@ army = { # Generals & Field Marshals
 		logistics = 2
 	}
 	pillager = {
-		trait = { commando }
+		traits = { commando }
 		attack = 1
 		logistics = 1
 	}
