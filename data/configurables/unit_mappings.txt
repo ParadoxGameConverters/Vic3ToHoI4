@@ -63,6 +63,8 @@ combat_unit_type_light_tanks = {
 
 pm_no_organization = {}
 pm_general_training = {}
+pm_training_streamlining = {}
+pm_advanced_tactics_training = {}
 
 ## Pre-1.5 conversions
 
