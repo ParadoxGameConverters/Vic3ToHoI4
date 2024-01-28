@@ -32,28 +32,28 @@ TEST(Hoi4MilitaryTaskForceTemplateTests, TracksRequiredVariants)
 
 TEST(Hoi4MilitaryTaskForceTemplateTests, AddsShipsAndPaysCosts)
 {
-   const TaskForceTemplate tmpl1({{"pm_basic_bigship", 10}, {"pm_basic_smallship", 10}},
+   const TaskForceTemplate tmpl1({{"pm_basic_bigship", 10.0F}, {"pm_basic_smallship", 10.0F}},
        {
            Ship("Big Ship", "test1", "test1", "legacy_test1", "Basic Big Ship"),
            Ship("Small Ship", "test1", "test1", "legacy_test1", "Basic Small Ship"),
            Ship("Small Ship", "test1", "test1", "legacy_test1", "Basic Small Ship"),
        });
-   const TaskForceTemplate tmpl2({{"pm_1936_bigship", 10}, {"pm_1936_smallship", 10}},
+   const TaskForceTemplate tmpl2({{"pm_1936_bigship", 10.0F}, {"pm_1936_smallship", 10.0F}},
        {
            Ship("Big Ship", "test2", "test2", "legacy_test2", "1936 Big Ship"),
            Ship("Small Ship", "test2", "test2", "legacy_test2", "1936 Small Ship"),
            Ship("Small Ship", "test2", "test2", "legacy_test2", "1936 Small Ship"),
        });
-   const TaskForceTemplate tmpl3({{"pm_humongous", 1}},
+   const TaskForceTemplate tmpl3({{"pm_humongous", 1.0F}},
        {
            Ship("Humongous Ship", "test3", "test3", "legacy_test3", "1936 Humongous Ship"),
        });
 
    std::vector<Ship> ships;
-   std::map<std::string, float> naval_pms{{"pm_basic_bigship", 25},
-       {"pm_basic_smallship", 50},
-       {"pm_1936_bigship", 21},
-       {"pm_1936_smallship", 11}};
+   std::map<std::string, float> naval_pms{{"pm_basic_bigship", 25.0F},
+       {"pm_basic_smallship", 50.0F},
+       {"pm_1936_bigship", 21.0F},
+       {"pm_1936_smallship", 11.0F}};
    std::map<std::string, int> nameCounts;
    tmpl3.AddShipsIfPossible(ships, nameCounts, naval_pms);
    tmpl2.AddShipsIfPossible(ships, nameCounts, naval_pms);
@@ -70,11 +70,11 @@ TEST(Hoi4MilitaryTaskForceTemplateTests, AddsShipsAndPaysCosts)
            Ship("Small Ship 5", "test1", "test1", "legacy_test1", "Basic Small Ship"),
            Ship("Small Ship 6", "test1", "test1", "legacy_test1", "Basic Small Ship")));
    EXPECT_THAT(naval_pms,
-       testing::ContainerEq(std::map<std::string, float>{{"pm_basic_bigship", 5},
-           {"pm_basic_smallship", 30},
-           {"pm_1936_bigship", 11},
-           {"pm_1936_smallship", 1},
-           {"pm_humongous", 0}}));
+       testing::ContainerEq(std::map<std::string, float>{{"pm_basic_bigship", 5.0F},
+           {"pm_basic_smallship", 30.0F},
+           {"pm_1936_bigship", 11.0F},
+           {"pm_1936_smallship", 1.0F},
+           {"pm_humongous", 0.0F}}));
 }
 
 }  // namespace hoi4

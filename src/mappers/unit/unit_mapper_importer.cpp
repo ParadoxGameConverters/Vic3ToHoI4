@@ -14,7 +14,7 @@ mappers::UnitMapper mappers::ImportUnitMapper(std::string_view mapping_file)
       current.equipment = commonItems::getInt(input_stream);
    });
    pm_parser.registerRegex(commonItems::catchallRegex, [&current](const std::string& key, std::istream& input_stream) {
-      current.units.emplace(key, commonItems::getDouble(input_stream));
+      current.units.emplace(key, static_cast<float>(commonItems::getDouble(input_stream)));
    });
 
    commonItems::parser file_parser;
