@@ -332,6 +332,8 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
    commonItems::LocalizationDatabase idea_localizations("english",
        {"braz_por", "french", "german", "japanese", "polish", "russian", "spanish"});
 
+#pragma warning(push)
+#pragma warning(disable : 4566)
    commonItems::LocalizationBlock male_localization_block("king", "english");
    male_localization_block.ModifyLocalization("english", "King {}");
    male_localization_block.ModifyLocalization("braz_por", "Rei {}");
@@ -403,7 +405,7 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
    female_localization_description_block.ModifyLocalization("spanish",
        "Reunida en torno a la Reina de [{}.GetName] y las tierras [{}.GetAdjective]s, la nación [{}.GetAdjective] está "
        "unida y orgullosa de su legado imperial.");
-
+#pragma warning(pop)
 
    for (const auto& [tag, country]: hoi4_countries)
    {

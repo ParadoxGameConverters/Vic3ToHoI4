@@ -2294,7 +2294,7 @@ TEST(Hoi4worldCountriesCountryConverter, ConvoysConvert)
        .vic3_state_ids_to_hoi4_state_ids{{1, 1}, {2, 2}, {3, 3}},
        .hoi4_state_ids_to_owner{{1, "TAG"}, {2, "TAG"}, {3, "ABC"}}});
    mappers::TemplateMap templates;
-   ConvoyDistributor convoy_distributor(111, {{"pm_port_1", 1}, {"pm_port_2", 10}, {"pm_port_3", 100}});
+   ConvoyDistributor convoy_distributor(111, {{"pm_port_1", 1.0F}, {"pm_port_2", 10.0F}, {"pm_port_3", 100.0F}});
    convoy_distributor.CalculateStateWeights(source_world);
 
    const auto country_one = ConvertCountry(source_world,
@@ -2395,8 +2395,8 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
        EquipmentVariant("1936 Ship", "mtg_1936_ship", {}, {}, {}),
    };
    std::vector<TaskForceTemplate> task_force_templates{
-       {{{"pm_victorian", 5}}, {Ship("Cruiser", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship")}},
-       {{{"pm_modern", 10}}, {Ship("Battleship", "1936_ship", "mtg_1936_ship", "legacy_1936_ship", "1936 Ship")}},
+       {{{"pm_victorian", 5.0F}}, {Ship("Cruiser", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship")}},
+       {{{"pm_modern", 10.0F}}, {Ship("Battleship", "1936_ship", "mtg_1936_ship", "legacy_1936_ship", "1936 Ship")}},
    };
 
    const auto country_one = ConvertCountry(source_world,

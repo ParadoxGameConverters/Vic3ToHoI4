@@ -24,10 +24,10 @@ TEST(Hoi4worldMilitaryTaskForceTemplatesBuilderTests, ImportsTaskForceTemplates)
    EXPECT_EQ(3, task_forces.size());
 
    std::vector<Ship> ships;
-   std::map<std::string, float> naval_pms{{"pm_basic_bigship", 25},
-       {"pm_basic_smallship", 50},
-       {"pm_1936_bigship", 21},
-       {"pm_1936_smallship", 11}};
+   std::map<std::string, float> naval_pms{{"pm_basic_bigship", 25.0F},
+       {"pm_basic_smallship", 50.0F},
+       {"pm_1936_bigship", 21.0F},
+       {"pm_1936_smallship", 11.0F}};
    std::map<std::string, int> nameCounts;
    for (const auto& tmpl: task_forces)
    {
@@ -45,11 +45,11 @@ TEST(Hoi4worldMilitaryTaskForceTemplatesBuilderTests, ImportsTaskForceTemplates)
            Ship("Small Ship 5", "test2", "test2", "legacy_test2", "1936 Small Ship"),
            Ship("Small Ship 6", "test2", "test2", "legacy_test2", "1936 Small Ship")));
    EXPECT_THAT(naval_pms,
-       testing::ContainerEq(std::map<std::string, float>{{"pm_basic_bigship", 5},
-           {"pm_basic_smallship", 30},
-           {"pm_1936_bigship", 11},
-           {"pm_1936_smallship", 1},
-           {"pm_humongous", 0}}));
+       testing::ContainerEq(std::map<std::string, float>{{"pm_basic_bigship", 5.0F},
+           {"pm_basic_smallship", 30.0F},
+           {"pm_1936_bigship", 11.0F},
+           {"pm_1936_smallship", 1.0F},
+           {"pm_humongous", 0.0F}}));
 }
 
 

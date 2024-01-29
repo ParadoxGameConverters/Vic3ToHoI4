@@ -13,7 +13,7 @@ mappers::ResourceMapper mappers::ImportResourceMapper(std::string_view mapping_f
    commonItems::parser base_parser;
    base_parser.registerRegex(commonItems::catchallRegex,
        [&current](const std::string& key, std::istream& input_stream) {
-          current.base.emplace(key, commonItems::getDouble(input_stream));
+          current.base.emplace(key, static_cast<float>(commonItems::getDouble(input_stream)));
        });
 
    commonItems::parser score_parser;

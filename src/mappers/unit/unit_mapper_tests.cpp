@@ -20,8 +20,8 @@ TEST(MappersUnitUnitMapperTests, NoRulesMeansNoUnits)
 TEST(MappersUnitUnitMapperTests, BattalionsAreMade)
 {
    TemplateMap templates{
-       {"trench_infantry", BattalionTemplate(50, {{"infantry", 0.25}})},
-       {"cavalry_scouts", BattalionTemplate(0, {{"cavalry", 0.20}})},
+       {"trench_infantry", BattalionTemplate(50, {{"infantry", 0.25F}})},
+       {"cavalry_scouts", BattalionTemplate(0, {{"cavalry", 0.20F}})},
        {"field_hospitals", BattalionTemplate(10, {})},
    };
    const UnitMapper unit_mapper(templates);

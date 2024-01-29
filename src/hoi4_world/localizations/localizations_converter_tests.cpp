@@ -566,6 +566,9 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, IdeaLocalizationsCanBeConvert
    const std::string idea_one_desc = fmt::format("{}_desc", idea_one_name);
    const std::optional<commonItems::LocalizationBlock> one_localization_block =
        hoi4_localizations.GetIdeaLocalizations().GetLocalizationBlock(idea_one_name);
+
+#pragma warning(push)
+#pragma warning(disable : 4566)
    EXPECT_THAT(one_localization_block.value_or(commonItems::LocalizationBlock{"", ""}).GetLocalizations(),
        testing::UnorderedElementsAre(testing::Pair("english", "King MaleName Surname"),
            testing::Pair("braz_por", "Rei MaleName Surname"),
@@ -647,6 +650,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, IdeaLocalizationsCanBeConvert
            testing::Pair("spanish",
                "Reunida en torno a la Reina de [TWO.GetName] y las tierras [TWO.GetAdjective]s, la nación "
                "[TWO.GetAdjective] está unida y orgullosa de su legado imperial.")));
+#pragma warning(pop)
 }
 
 }  // namespace hoi4

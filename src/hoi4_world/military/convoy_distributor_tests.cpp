@@ -9,7 +9,7 @@ namespace hoi4
 TEST(Hoi4MilitaryConvoyDistributorTests, EmptyWorldNoConvoys)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
-   ConvoyDistributor convoy(100, {{"pm_port", 1}});
+   ConvoyDistributor convoy(100, {{"pm_port", 1.0F}});
    convoy.CalculateStateWeights(source_world);
    EXPECT_EQ(convoy.ConvoysFromState(1), 0);
 }
@@ -23,7 +23,7 @@ TEST(Hoi4MilitaryConvoyDistributorTests, HandlesUnstaffedPort)
        {1, {vic3::Building(vic3::BuildingType::Port, 1, 0, 0, std::vector<std::string>{"dummy", "pm_port_1"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.states = states, .buildings = buildings});
-   ConvoyDistributor convoy(100, {{"pm_port", 1}});
+   ConvoyDistributor convoy(100, {{"pm_port", 1.0F}});
    convoy.CalculateStateWeights(source_world);
    EXPECT_EQ(convoy.ConvoysFromState(1), 0);
 }
@@ -41,7 +41,7 @@ TEST(Hoi4MilitaryConvoyDistributorTests, WeightByProductionMethod)
        {3, {vic3::Building(vic3::BuildingType::Port, 3, 0, 1, std::vector<std::string>{"pm_port_3"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.states = states, .buildings = buildings});
-   ConvoyDistributor convoy(111, {{"pm_port_1", 1}, {"pm_port_2", 10}, {"pm_port_3", 100}});
+   ConvoyDistributor convoy(111, {{"pm_port_1", 1.0F}, {"pm_port_2", 10.0F}, {"pm_port_3", 100.0F}});
    convoy.CalculateStateWeights(source_world);
    EXPECT_EQ(convoy.ConvoysFromState(1), 1);
    EXPECT_EQ(convoy.ConvoysFromState(2), 10);
@@ -61,7 +61,7 @@ TEST(Hoi4MilitaryConvoyDistributorTests, WeightByStaffingLevel)
        {3, {vic3::Building(vic3::BuildingType::Port, 3, 0, 100, std::vector<std::string>{"pm_port_1"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.states = states, .buildings = buildings});
-   ConvoyDistributor convoy(111, {{"pm_port_1", 1}, {"pm_port_2", 10}, {"pm_port_3", 100}});
+   ConvoyDistributor convoy(111, {{"pm_port_1", 1.0F}, {"pm_port_2", 10.0F}, {"pm_port_3", 100.0F}});
    convoy.CalculateStateWeights(source_world);
    EXPECT_EQ(convoy.ConvoysFromState(1), 1);
    EXPECT_EQ(convoy.ConvoysFromState(2), 10);
@@ -81,7 +81,7 @@ TEST(Hoi4MilitaryConvoyDistributorTests, UnknownStateNoConvoys)
        {2, {vic3::Building(vic3::BuildingType::Port, 2, 0, 10, std::vector<std::string>{"dummy", "pm_port_1"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.states = states, .buildings = buildings});
-   ConvoyDistributor convoy(111, {{"pm_port_1", 1}, {"pm_port_2", 10}, {"pm_port_3", 100}});
+   ConvoyDistributor convoy(111, {{"pm_port_1", 1.0F}, {"pm_port_2", 10.0F}, {"pm_port_3", 100.0F}});
    convoy.CalculateStateWeights(source_world);
    EXPECT_EQ(convoy.ConvoysFromState(5), 0);
 }
