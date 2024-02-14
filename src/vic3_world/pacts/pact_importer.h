@@ -20,6 +20,7 @@ class PactImporter
 
   private:
    commonItems::parser pact_parser_;
+   commonItems::parser targets_parser_;
 
    int first_id_ = 0;
    int second_id_ = 0;
