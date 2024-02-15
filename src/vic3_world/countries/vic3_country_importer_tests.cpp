@@ -78,6 +78,21 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
 }
 
 
+TEST(Vic3WorldCountriesCountryImporter, Pre1_5DynamicsCanBeImported)
+{
+    std::stringstream input;
+    input << "={\n";
+    input << "\tdynamic_country_name=\"dynamic_name\"";
+    input << "\tdynamic_country_adjective=\"dynamic_adjective\"";
+    input << "}";
+    const auto country = CountryImporter{}.ImportCountry(42, input, {});
+
+    EXPECT_TRUE(country.has_value());
+    EXPECT_EQ(country.value_or(Country({})).GetDynamicName().value_or(""), "dynamic_name");
+    EXPECT_EQ(country.value_or(Country({})).GetDynamicAdjective().value_or(""), "dynamic_adjective");
+}
+
+
 TEST(Vic3WorldCountriesCountryImporter, ColorCanBeFromColorDefinitions)
 {
    std::stringstream input;
