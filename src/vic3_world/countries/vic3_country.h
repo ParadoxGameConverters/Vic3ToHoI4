@@ -133,6 +133,7 @@ class Country
    [[nodiscard]] const std::map<int, MilitaryFormation>& GetArmyFormations() const { return army_formations_; }
    [[nodiscard]] const std::map<int, MilitaryFormation>& GetNavyFormations() const { return navy_formations_; }
 
+   void SetColor(commonItems::Color color) { color_ = std::move(color); }
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
    void AddPrimaryCulture(const std::string& culture) { primary_cultures_.emplace(culture); }
