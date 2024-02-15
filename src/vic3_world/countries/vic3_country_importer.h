@@ -25,6 +25,7 @@ class CountryImporter
 
   private:
    commonItems::parser country_parser_;
+   commonItems::parser dynamic_name_parser_;
    commonItems::parser counters_parser_;
 
    CountryOptions options_;
