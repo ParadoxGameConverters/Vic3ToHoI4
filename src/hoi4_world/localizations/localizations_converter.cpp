@@ -15,6 +15,47 @@ namespace
 {
 
 
+std::optional<std::string> GetOverlordTag(const std::optional<int>& overlord_number,
+    const std::map<int, vic3::Country>& vic3_countries)
+{
+   if (!overlord_number.has_value())
+   {
+      return std::nullopt;
+   }
+
+   if (const auto vic3_overlord_itr = vic3_countries.find(*overlord_number); vic3_overlord_itr != vic3_countries.end())
+   {
+      return vic3_overlord_itr->second.GetTag();
+   }
+
+   return std::nullopt;
+}
+
+
+std::optional<commonItems::LocalizationBlock> GetLocalizationBlock(const std::optional<std::string>& item,
+    const commonItems::LocalizationDatabase& vic3_localizations)
+{
+   if (item.has_value())
+   {
+      return vic3_localizations.GetLocalizationBlock(*item);
+   }
+
+   return std::nullopt;
+}
+
+
+std::optional<commonItems::LocalizationBlock> GetAdjectiveLocalizationBlock(const std::optional<std::string>& item,
+    const commonItems::LocalizationDatabase& vic3_localizations)
+{
+   if (item.has_value())
+   {
+      return vic3_localizations.GetLocalizationBlock(fmt::format("{}_ADJ", *item));
+   }
+
+   return std::nullopt;
+}
+
+
 std::string ModificationFunction(std::string_view placeholder,
     std::string_view base_localization,
     std::string_view modifying_localization)
@@ -50,14 +91,19 @@ std::string LoweringModificationFunction(std::string_view placeholder,
 }
 
 
-std::optional<commonItems::LocalizationBlock> GetDynamicBlock(const std::optional<std::string>& dynamic_item, const commonItems::LocalizationDatabase& vic3_localizations)
+std::string OverlordNameModificationFunction(std::string_view base_localization,
+    std::string_view modifying_localization,
+    const std::string_view language)
 {
-    if (dynamic_item.has_value())
-    {
-        return vic3_localizations.GetLocalizationBlock(*dynamic_item);
-    }
+   return std::string(base_localization);
+}
 
-    return std::nullopt;
+
+std::string OverlordAdjectiveModificationFunction(std::string_view base_localization,
+    std::string_view modifying_localization,
+    const std::string_view language)
+{
+   return std::string(base_localization);
 }
 
 
@@ -82,16 +128,20 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
          continue;
       }
       const vic3::Country& vic3_country = vic3_country_itr->second;
+      const std::optional<std::string> vic3_overlord_tag = GetOverlordTag(vic3_country.GetOverlord(), vic3_countries);
 
-      const auto& country_localization_block = vic3_localizations.GetLocalizationBlock(vic3_country_tag);
-      const auto& adjective_localization_block =
-          vic3_localizations.GetLocalizationBlock(fmt::format("{}_ADJ", vic3_country_tag));
-      const auto& dynamic_name_block = GetDynamicBlock(vic3_country.GetDynamicName(), vic3_localizations);
-      const auto& dynamic_adjective_block = GetDynamicBlock(vic3_country.GetDynamicAdjective(), vic3_localizations);
+      const auto& country_localization_block = GetLocalizationBlock(vic3_country_tag, vic3_localizations);
+      const auto& adjective_localization_block = GetAdjectiveLocalizationBlock(vic3_country_tag, vic3_localizations);
+      const auto& dynamic_name_block = GetLocalizationBlock(vic3_country.GetDynamicName(), vic3_localizations);
+      const auto& dynamic_adjective_block =
+          GetLocalizationBlock(vic3_country.GetDynamicAdjective(), vic3_localizations);
+      const auto& overlord_name_block = GetLocalizationBlock(vic3_overlord_tag, vic3_localizations);
+      const auto& overlord_adjective_block = GetAdjectiveLocalizationBlock(vic3_overlord_tag, vic3_localizations);
 
+      commonItems::LocalizationBlock name_block(hoi4_country, "english");
       if (dynamic_name_block.has_value())
       {
-         commonItems::LocalizationBlock name_block = *dynamic_name_block;
+         name_block = *dynamic_name_block;
          if (country_localization_block.has_value())
          {
             name_block.ModifyForEveryLanguage(*country_localization_block,
@@ -114,10 +164,8 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
                     const std::string& language) {
-                return ModificationFunction("$NAME$",
-                base_localization,
-                modifying_localization);
-            });
+                   return ModificationFunction("$NAME$", base_localization, modifying_localization);
+                });
          }
          if (adjective_localization_block.has_value())
          {
@@ -141,85 +189,99 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
                     const std::string& language) {
-                return ModificationFunction("$ADJECTIVE$",
-                base_localization,
-                modifying_localization);
-            });
+                   return ModificationFunction("$ADJECTIVE$", base_localization, modifying_localization);
+                });
          }
-         country_localizations.AddOrModifyLocalizationBlock(hoi4_country, name_block);
-         country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_DEF", hoi4_country), name_block);
       }
       else if (country_localization_block.has_value())
       {
-         country_localizations.AddOrModifyLocalizationBlock(hoi4_country, *country_localization_block);
-         country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_DEF", hoi4_country),
-             *country_localization_block);
+         name_block = *country_localization_block;
       }
 
+      if (vic3_country.GetUseOverlordPrefix() && overlord_name_block.has_value())
+      {
+         name_block.ModifyForEveryLanguage(*overlord_name_block,
+             [](const std::string& base_localization,
+                 const std::string& modifying_localization,
+                 const std::string& language) {
+                return OverlordNameModificationFunction(base_localization, modifying_localization, language);
+             });
+      }
+
+      country_localizations.AddOrModifyLocalizationBlock(hoi4_country, name_block);
+      country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_DEF", hoi4_country), name_block);
+
+      commonItems::LocalizationBlock adjective_block(fmt::format("{}_ADJ", hoi4_country), "english");
       if (dynamic_adjective_block.has_value())
       {
-         commonItems::LocalizationBlock adjective_block = *dynamic_adjective_block;
+         adjective_block = *dynamic_adjective_block;
          if (country_localization_block.has_value())
          {
-             adjective_block.ModifyForEveryLanguage(*country_localization_block,
-                 [](const std::string& base_localization,
-                     const std::string& modifying_localization,
-                     const std::string& language) {
-                 return ModificationFunction("[COUNTRY.GetDefinition.GetName]",
-                 base_localization,
-                 modifying_localization);
-             });
-             adjective_block.ModifyForEveryLanguage(*country_localization_block,
-                 [](const std::string& base_localization,
-                     const std::string& modifying_localization,
-                     const std::string& language) {
-                 return LoweringModificationFunction("[COUNTRY.GetDefinition.GetName|l]",
-                 base_localization,
-                 modifying_localization);
-             });
-             adjective_block.ModifyForEveryLanguage(*country_localization_block,
-                 [](const std::string& base_localization,
-                     const std::string& modifying_localization,
-                     const std::string& language) {
-                 return ModificationFunction("$NAME$",
-                 base_localization,
-                 modifying_localization);
-             });
+            adjective_block.ModifyForEveryLanguage(*country_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                   return ModificationFunction("[COUNTRY.GetDefinition.GetName]",
+                       base_localization,
+                       modifying_localization);
+                });
+            adjective_block.ModifyForEveryLanguage(*country_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                   return LoweringModificationFunction("[COUNTRY.GetDefinition.GetName|l]",
+                       base_localization,
+                       modifying_localization);
+                });
+            adjective_block.ModifyForEveryLanguage(*country_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                   return ModificationFunction("$NAME$", base_localization, modifying_localization);
+                });
          }
          if (adjective_localization_block.has_value())
          {
-             adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
-                 [](const std::string& base_localization,
-                     const std::string& modifying_localization,
-                     const std::string& language) {
-                 return ModificationFunction("[COUNTRY.GetDefinition.GetAdjective]",
-                 base_localization,
-                 modifying_localization);
-             });
-             adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
-                 [](const std::string& base_localization,
-                     const std::string& modifying_localization,
-                     const std::string& language) {
-                 return LoweringModificationFunction("[COUNTRY.GetDefinition.GetAdjective|l]",
-                 base_localization,
-                 modifying_localization);
-             });
-             adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
-                 [](const std::string& base_localization,
-                     const std::string& modifying_localization,
-                     const std::string& language) {
-                 return ModificationFunction("$ADJECTIVE$",
-                 base_localization,
-                 modifying_localization);
-             });
+            adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                   return ModificationFunction("[COUNTRY.GetDefinition.GetAdjective]",
+                       base_localization,
+                       modifying_localization);
+                });
+            adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                   return LoweringModificationFunction("[COUNTRY.GetDefinition.GetAdjective|l]",
+                       base_localization,
+                       modifying_localization);
+                });
+            adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                   return ModificationFunction("$ADJECTIVE$", base_localization, modifying_localization);
+                });
          }
-         country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_ADJ", hoi4_country), adjective_block);
       }
       else if (adjective_localization_block.has_value())
       {
-         country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_ADJ", hoi4_country),
-             *adjective_localization_block);
+         adjective_block = *adjective_localization_block;
       }
+
+      if (vic3_country.GetUseOverlordPrefix() && overlord_adjective_block.has_value())
+      {
+         adjective_block.ModifyForEveryLanguage(*overlord_adjective_block,
+             [](const std::string& base_localization,
+                 const std::string& modifying_localization,
+                 const std::string& language) {
+                return OverlordAdjectiveModificationFunction(base_localization, modifying_localization, language);
+             });
+      }
+
+      country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_ADJ", hoi4_country), adjective_block);
    }
 
    return country_localizations;
