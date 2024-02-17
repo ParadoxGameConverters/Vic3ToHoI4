@@ -57,6 +57,7 @@ void LogIdeologies(const std::map<std::string, hoi4::Country>& countries)
 
 namespace hoi4
 {
+
 std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
     const mappers::WorldMapper& world_mapper,
     const commonItems::LocalizationDatabase& source_localizations,
@@ -121,8 +122,31 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
       }
    }
 
+   for (Country& country: countries | std::views::values)
+   {
+      std::set<std::string> puppets_to_remove;
+      for (const std::string& puppet_tag: country.GetPuppets())
+      {
+         if (const auto puppet = countries.find(puppet_tag); puppet != countries.end())
+         {
+            // lacking a capital state indicates there was no owned territory
+            if (!puppet->second.GetCapitalState().has_value())
+            {
+               puppets_to_remove.insert(puppet_tag);
+            }
+         }
+         else
+         {
+            puppets_to_remove.insert(puppet_tag);
+         }
+      }
+
+      country.RemovePuppets(puppets_to_remove);
+   }
+
    LogIdeologies(countries);
 
    return countries;
 }
+
 }  // namespace hoi4
