@@ -50,6 +50,17 @@ std::string LoweringModificationFunction(std::string_view placeholder,
 }
 
 
+std::optional<commonItems::LocalizationBlock> GetDynamicBlock(const std::optional<std::string>& dynamic_item, const commonItems::LocalizationDatabase& vic3_localizations)
+{
+    if (dynamic_item.has_value())
+    {
+        return vic3_localizations.GetLocalizationBlock(*dynamic_item);
+    }
+
+    return std::nullopt;
+}
+
+
 commonItems::LocalizationDatabase ConvertCountryLocalizations(
     const commonItems::LocalizationDatabase& vic3_localizations,
     const std::map<int, std::string>& country_mappings,
@@ -73,112 +84,138 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
       const vic3::Country& vic3_country = vic3_country_itr->second;
 
       const auto& country_localization_block = vic3_localizations.GetLocalizationBlock(vic3_country_tag);
-      if (!country_localization_block)
-      {
-         continue;
-      }
       const auto& adjective_localization_block =
           vic3_localizations.GetLocalizationBlock(fmt::format("{}_ADJ", vic3_country_tag));
-      if (!adjective_localization_block)
-      {
-         continue;
-      }
+      const auto& dynamic_name_block = GetDynamicBlock(vic3_country.GetDynamicName(), vic3_localizations);
+      const auto& dynamic_adjective_block = GetDynamicBlock(vic3_country.GetDynamicAdjective(), vic3_localizations);
 
-      if (const auto& dynamic_name = vic3_country.GetDynamicName(); dynamic_name.has_value())
+      if (dynamic_name_block.has_value())
       {
-         const auto& dynamic_name_localization_block = vic3_localizations.GetLocalizationBlock(*dynamic_name);
-         if (!dynamic_name_localization_block)
+         commonItems::LocalizationBlock name_block = *dynamic_name_block;
+         if (country_localization_block.has_value())
          {
-            continue;
+            name_block.ModifyForEveryLanguage(*country_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                   return ModificationFunction("[COUNTRY.GetDefinition.GetName]",
+                       base_localization,
+                       modifying_localization);
+                });
+            name_block.ModifyForEveryLanguage(*country_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                   return LoweringModificationFunction("[COUNTRY.GetDefinition.GetName|l]",
+                       base_localization,
+                       modifying_localization);
+                });
+            name_block.ModifyForEveryLanguage(*country_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                return ModificationFunction("$NAME$",
+                base_localization,
+                modifying_localization);
+            });
          }
-
-         commonItems::LocalizationBlock name_block = *dynamic_name_localization_block;
-         name_block.ModifyForEveryLanguage(*country_localization_block,
-             [](const std::string& base_localization,
-                 const std::string& modifying_localization,
-                 const std::string& language) {
-                return ModificationFunction("[COUNTRY.GetDefinition.GetName]",
-                    base_localization,
-                    modifying_localization);
-             });
-         name_block.ModifyForEveryLanguage(*country_localization_block,
-             [](const std::string& base_localization,
-                 const std::string& modifying_localization,
-                 const std::string& language) {
-                return LoweringModificationFunction("[COUNTRY.GetDefinition.GetName|l]",
-                    base_localization,
-                    modifying_localization);
-             });
-         name_block.ModifyForEveryLanguage(*adjective_localization_block,
-             [](const std::string& base_localization,
-                 const std::string& modifying_localization,
-                 const std::string& language) {
-                return ModificationFunction("[COUNTRY.GetDefinition.GetAdjective]",
-                    base_localization,
-                    modifying_localization);
-             });
-         name_block.ModifyForEveryLanguage(*adjective_localization_block,
-             [](const std::string& base_localization,
-                 const std::string& modifying_localization,
-                 const std::string& language) {
-                return LoweringModificationFunction("[COUNTRY.GetDefinition.GetAdjective|l]",
-                    base_localization,
-                    modifying_localization);
-             });
+         if (adjective_localization_block.has_value())
+         {
+            name_block.ModifyForEveryLanguage(*adjective_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                   return ModificationFunction("[COUNTRY.GetDefinition.GetAdjective]",
+                       base_localization,
+                       modifying_localization);
+                });
+            name_block.ModifyForEveryLanguage(*adjective_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                   return LoweringModificationFunction("[COUNTRY.GetDefinition.GetAdjective|l]",
+                       base_localization,
+                       modifying_localization);
+                });
+            name_block.ModifyForEveryLanguage(*adjective_localization_block,
+                [](const std::string& base_localization,
+                    const std::string& modifying_localization,
+                    const std::string& language) {
+                return ModificationFunction("$ADJECTIVE$",
+                base_localization,
+                modifying_localization);
+            });
+         }
          country_localizations.AddOrModifyLocalizationBlock(hoi4_country, name_block);
          country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_DEF", hoi4_country), name_block);
       }
-      else
+      else if (country_localization_block.has_value())
       {
          country_localizations.AddOrModifyLocalizationBlock(hoi4_country, *country_localization_block);
          country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_DEF", hoi4_country),
              *country_localization_block);
       }
 
-      if (const auto& dynamic_adjective = vic3_country.GetDynamicAdjective(); dynamic_adjective.has_value())
+      if (dynamic_adjective_block.has_value())
       {
-         const auto& dynamic_name_localization_block = vic3_localizations.GetLocalizationBlock(*dynamic_adjective);
-         if (!dynamic_name_localization_block)
+         commonItems::LocalizationBlock adjective_block = *dynamic_adjective_block;
+         if (country_localization_block.has_value())
          {
-            continue;
+             adjective_block.ModifyForEveryLanguage(*country_localization_block,
+                 [](const std::string& base_localization,
+                     const std::string& modifying_localization,
+                     const std::string& language) {
+                 return ModificationFunction("[COUNTRY.GetDefinition.GetName]",
+                 base_localization,
+                 modifying_localization);
+             });
+             adjective_block.ModifyForEveryLanguage(*country_localization_block,
+                 [](const std::string& base_localization,
+                     const std::string& modifying_localization,
+                     const std::string& language) {
+                 return LoweringModificationFunction("[COUNTRY.GetDefinition.GetName|l]",
+                 base_localization,
+                 modifying_localization);
+             });
+             adjective_block.ModifyForEveryLanguage(*country_localization_block,
+                 [](const std::string& base_localization,
+                     const std::string& modifying_localization,
+                     const std::string& language) {
+                 return ModificationFunction("$NAME$",
+                 base_localization,
+                 modifying_localization);
+             });
          }
-
-         commonItems::LocalizationBlock adjective_block = *dynamic_name_localization_block;
-         adjective_block.ModifyForEveryLanguage(*country_localization_block,
-             [](const std::string& base_localization,
-                 const std::string& modifying_localization,
-                 const std::string& language) {
-                return ModificationFunction("[COUNTRY.GetDefinition.GetName]",
-                    base_localization,
-                    modifying_localization);
+         if (adjective_localization_block.has_value())
+         {
+             adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
+                 [](const std::string& base_localization,
+                     const std::string& modifying_localization,
+                     const std::string& language) {
+                 return ModificationFunction("[COUNTRY.GetDefinition.GetAdjective]",
+                 base_localization,
+                 modifying_localization);
              });
-         adjective_block.ModifyForEveryLanguage(*country_localization_block,
-             [](const std::string& base_localization,
-                 const std::string& modifying_localization,
-                 const std::string& language) {
-                return LoweringModificationFunction("[COUNTRY.GetDefinition.GetName|l]",
-                    base_localization,
-                    modifying_localization);
+             adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
+                 [](const std::string& base_localization,
+                     const std::string& modifying_localization,
+                     const std::string& language) {
+                 return LoweringModificationFunction("[COUNTRY.GetDefinition.GetAdjective|l]",
+                 base_localization,
+                 modifying_localization);
              });
-         adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
-             [](const std::string& base_localization,
-                 const std::string& modifying_localization,
-                 const std::string& language) {
-                return ModificationFunction("[COUNTRY.GetDefinition.GetAdjective]",
-                    base_localization,
-                    modifying_localization);
+             adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
+                 [](const std::string& base_localization,
+                     const std::string& modifying_localization,
+                     const std::string& language) {
+                 return ModificationFunction("$ADJECTIVE$",
+                 base_localization,
+                 modifying_localization);
              });
-         adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
-             [](const std::string& base_localization,
-                 const std::string& modifying_localization,
-                 const std::string& language) {
-                return LoweringModificationFunction("[COUNTRY.GetDefinition.GetAdjective|l]",
-                    base_localization,
-                    modifying_localization);
-             });
+         }
          country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_ADJ", hoi4_country), adjective_block);
       }
-      else
+      else if (adjective_localization_block.has_value())
       {
          country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_ADJ", hoi4_country),
              *adjective_localization_block);
