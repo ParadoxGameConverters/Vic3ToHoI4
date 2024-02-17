@@ -4,8 +4,25 @@
 
 #include "external/fmt/include/fmt/format.h"
 
+
+
 namespace hoi4
 {
+
+void Country::RemovePuppets(const std::set<std::string>& puppet_tags)
+{
+   std::set<std::string> puppets_to_keep;
+
+   for (const std::string& puppet: puppets_)
+   {
+      if (!puppet_tags.contains(puppet))
+      {
+         puppets_to_keep.insert(puppet);
+      }
+   }
+
+   puppets_ = puppets_to_keep;
+}
 
 
 void PrintTo(const Country& country, std::ostream* os)
