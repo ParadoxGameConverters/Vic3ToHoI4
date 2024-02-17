@@ -42,14 +42,27 @@ vic3::BudgetLevel parseBudgetLevel(const std::string& level_string)
 
 vic3::CountryImporter::CountryImporter()
 {
+   dynamic_name_parser_.registerKeyword("dynamic_country_name", [this](std::istream& input_stream) {
+      options_.dynamic_name = commonItems::getString(input_stream);
+   });
+   dynamic_name_parser_.registerKeyword("dynamic_country_adjective", [this](std::istream& input_stream) {
+      options_.dynamic_adjective = commonItems::getString(input_stream);
+   });
+   dynamic_name_parser_.registerKeyword("use_overlord_prefix", [this](std::istream& input_stream) {
+      options_.use_overlord_prefix = (commonItems::getString(input_stream) == "yes");
+   });
+
    country_parser_.registerKeyword("definition", [this](std::istream& input_stream) {
-      options_.tag = commonItems::remQuotes(commonItems::getString(input_stream));
+      options_.tag = commonItems::getString(input_stream);
    });
    country_parser_.registerKeyword("dynamic_country_name", [this](std::istream& input_stream) {
-      options_.dynamic_name = commonItems::remQuotes(commonItems::getString(input_stream));
+      options_.dynamic_name = commonItems::getString(input_stream);
    });
    country_parser_.registerKeyword("dynamic_country_adjective", [this](std::istream& input_stream) {
-      options_.dynamic_adjective = commonItems::remQuotes(commonItems::getString(input_stream));
+      options_.dynamic_adjective = commonItems::getString(input_stream);
+   });
+   country_parser_.registerKeyword("dynamic_name", [this](std::istream& input_stream) {
+      dynamic_name_parser_.parseStream(input_stream);
    });
    country_parser_.registerKeyword("map_color", [this](std::istream& input_stream) {
       options_.color = commonItems::Color::Factory{}.getColor(input_stream);

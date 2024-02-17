@@ -272,6 +272,28 @@ void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryForma
 }
 
 
+void ApplySubjectRelationships(const std::map<int, vic3::Pact>& pacts, std::map<int, vic3::Country>& countries)
+{
+   for (const vic3::Pact& pact: pacts | std::views::values)
+   {
+      if (pact.isSubjectRelationship())
+      {
+         auto overlord = countries.find(pact.GetFirstId());
+         auto subject = countries.find(pact.GetSecondId());
+         if (overlord != countries.end() && subject != countries.end())
+         {
+            overlord->second.AddPuppet(pact.GetSecondId());
+            subject->second.AddOverlord(pact.GetFirstId());
+            if (subject->second.GetColor() == commonItems::Color{})
+            {
+               subject->second.SetColor(overlord->second.GetColor());
+            }
+         }
+      }
+   }
+}
+
+
 std::map<std::string, int> MapCountryTagsToId(std::map<int, vic3::Country>& countries)
 {
    std::map<std::string, int> tag_to_id_map;
@@ -426,19 +448,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    });
    save_parser.registerKeyword("pacts", [&world_options](std::istream& input_stream) {
       world_options.pacts = ImportPacts(input_stream);
-      for (const auto& [_, pact]: world_options.pacts)
-      {
-         if (pact.isSubjectRelationship())
-         {
-            auto overlord = world_options.countries.find(pact.GetFirstId());
-            auto subject = world_options.countries.find(pact.GetSecondId());
-            if (overlord != world_options.countries.end() && subject != world_options.countries.end())
-            {
-               overlord->second.AddPuppet(pact.GetSecondId());
-               subject->second.AddOverlord(pact.GetFirstId());
-            }
-         }
-      }
    });
    save_parser.registerKeyword("diplomatic_plays", [&world_options](std::istream& input_stream) {
       world_options.wars = ImportWars(input_stream);
@@ -470,6 +479,8 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    AssignCharactersToCountries(world_options.characters, country_character_map, world_options.countries);
    ProgressManager::AddProgress(1);
    AssignMilitaryFormationsToCountries(military_formations, world_options.countries);
+   ProgressManager::AddProgress(1);
+   ApplySubjectRelationships(world_options.pacts, world_options.countries);
    ProgressManager::AddProgress(1);
    vic3::IdeologiesImporter ideologies_importer;
    world_options.ideologies = ideologies_importer.ImportIdeologies(mod_filesystem);

@@ -30,6 +30,7 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
    EXPECT_FALSE(country.value_or(Country({})).IsDead());
    EXPECT_FALSE(country.value_or(Country({})).GetDynamicName());
    EXPECT_FALSE(country.value_or(Country({})).GetDynamicAdjective());
+   EXPECT_FALSE(country.value_or(Country({})).GetUseOverlordPrefix());
    EXPECT_EQ(country.value_or(Country({})).GetColor(), commonItems::Color(std::array{0, 0, 0}));
    EXPECT_EQ(country.value_or(Country({})).GetCapitalState(), std::nullopt);
    EXPECT_FALSE(country.value_or(Country({})).IsDecentralized());
@@ -47,8 +48,11 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    std::stringstream input;
    input << "={\n";
    input << "\tdefinition=\"TAG\"";
-   input << "\tdynamic_country_name=\"dynamic_name\"";
-   input << "\tdynamic_country_adjective=\"dynamic_adjective\"";
+   input << "\tdynamic_name={\n";
+   input << "\t\tdynamic_country_name=\"dynamic_name\"";
+   input << "\t\tdynamic_country_adjective=\"dynamic_adjective\"";
+   input << "\t\tuse_overlord_prefix=yes";
+   input << "\t}\n";
    input << "\tmap_color=rgb {\n";
    input << "\t\t8 89 54\n";
    input << "\t}\n";
@@ -64,12 +68,28 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    EXPECT_EQ(country.value_or(Country({})).GetTag(), "TAG");
    EXPECT_EQ(country.value_or(Country({})).GetDynamicName().value_or(""), "dynamic_name");
    EXPECT_EQ(country.value_or(Country({})).GetDynamicAdjective().value_or(""), "dynamic_adjective");
+   EXPECT_TRUE(country.value_or(Country({})).GetUseOverlordPrefix());
    EXPECT_EQ(country.value_or(Country({})).GetColor(), commonItems::Color(std::array{8, 89, 54}));
    EXPECT_EQ(country.value_or(Country({})).GetCapitalState(), std::optional<int>(12345));
    EXPECT_TRUE(country.value_or(Country({})).IsDecentralized());
    EXPECT_FALSE(country.value_or(Country({})).IsRecognized());
    EXPECT_THAT(country.value_or(Country({})).GetPrimaryCultureIds(), testing::UnorderedElementsAre(35, 7));
    EXPECT_EQ(country.value_or(Country({})).GetHeadOfStateId(), 10);
+}
+
+
+TEST(Vic3WorldCountriesCountryImporter, Pre1_5DynamicsCanBeImported)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "\tdynamic_country_name=\"dynamic_name\"";
+   input << "\tdynamic_country_adjective=\"dynamic_adjective\"";
+   input << "}";
+   const auto country = CountryImporter{}.ImportCountry(42, input, {});
+
+   EXPECT_TRUE(country.has_value());
+   EXPECT_EQ(country.value_or(Country({})).GetDynamicName().value_or(""), "dynamic_name");
+   EXPECT_EQ(country.value_or(Country({})).GetDynamicAdjective().value_or(""), "dynamic_adjective");
 }
 
 

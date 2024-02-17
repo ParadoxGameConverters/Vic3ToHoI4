@@ -141,6 +141,7 @@ class Country
    [[nodiscard]] const std::vector<War>& GetWars() const { return wars_; }
 
    void AddWar(War war) { wars_.emplace_back(std::move(war)); }
+   void RemovePuppets(const std::set<std::string>& puppet_tags);
 
    std::partial_ordering operator<=>(const Country&) const = default;
 

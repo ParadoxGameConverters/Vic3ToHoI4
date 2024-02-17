@@ -39,6 +39,7 @@ struct CountryOptions
    bool is_dead;
    std::optional<std::string> dynamic_name;
    std::optional<std::string> dynamic_adjective;
+   bool use_overlord_prefix = false;
    commonItems::Color color;
    std::optional<int> capital_state;
    std::string country_type;
@@ -80,6 +81,7 @@ class Country
        is_dead_(options.is_dead),
        dynamic_name_(std::move(options.dynamic_name)),
        dynamic_adjective_(std::move(options.dynamic_adjective)),
+       use_overlord_prefix_(options.use_overlord_prefix),
        color_(options.color),
        capital_state_(options.capital_state),
        country_type_(std::move(options.country_type)),
@@ -107,6 +109,7 @@ class Country
    [[nodiscard]] bool IsDead() const { return is_dead_; }
    [[nodiscard]] const std::optional<std::string>& GetDynamicName() const { return dynamic_name_; }
    [[nodiscard]] const std::optional<std::string>& GetDynamicAdjective() const { return dynamic_adjective_; }
+   [[nodiscard]] bool GetUseOverlordPrefix() const { return use_overlord_prefix_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
@@ -130,6 +133,7 @@ class Country
    [[nodiscard]] const std::map<int, MilitaryFormation>& GetArmyFormations() const { return army_formations_; }
    [[nodiscard]] const std::map<int, MilitaryFormation>& GetNavyFormations() const { return navy_formations_; }
 
+   void SetColor(commonItems::Color color) { color_ = std::move(color); }
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
    void AddPrimaryCulture(const std::string& culture) { primary_cultures_.emplace(culture); }
@@ -158,6 +162,7 @@ class Country
    bool is_dead_;
    std::optional<std::string> dynamic_name_;
    std::optional<std::string> dynamic_adjective_;
+   bool use_overlord_prefix_ = false;
    commonItems::Color color_;
    std::optional<int> capital_state_;
    std::string country_type_;
