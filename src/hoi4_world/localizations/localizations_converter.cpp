@@ -91,19 +91,17 @@ std::string LoweringModificationFunction(std::string_view placeholder,
 }
 
 
-std::string OverlordNameModificationFunction(std::string_view base_localization,
+std::string OverlordModificationFunction(std::string_view base_localization,
     std::string_view modifying_localization,
     const std::string_view language)
 {
-   return std::string(base_localization);
-}
+   std::string language_string(language);
+   if (language_string == "braz_por" || language_string == "french" || language_string == "spanish")
+   {
+      return fmt::format("{} {}", base_localization, modifying_localization);
+   }
 
-
-std::string OverlordAdjectiveModificationFunction(std::string_view base_localization,
-    std::string_view modifying_localization,
-    const std::string_view language)
-{
-   return std::string(base_localization);
+   return fmt::format("{} {}", modifying_localization, base_localization);
 }
 
 
@@ -135,7 +133,6 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
       const auto& dynamic_name_block = GetLocalizationBlock(vic3_country.GetDynamicName(), vic3_localizations);
       const auto& dynamic_adjective_block =
           GetLocalizationBlock(vic3_country.GetDynamicAdjective(), vic3_localizations);
-      const auto& overlord_name_block = GetLocalizationBlock(vic3_overlord_tag, vic3_localizations);
       const auto& overlord_adjective_block = GetAdjectiveLocalizationBlock(vic3_overlord_tag, vic3_localizations);
 
       commonItems::LocalizationBlock name_block(hoi4_country, "english");
@@ -198,13 +195,13 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
          name_block = *country_localization_block;
       }
 
-      if (vic3_country.GetUseOverlordPrefix() && overlord_name_block.has_value())
+      if (vic3_country.GetUseOverlordPrefix() && overlord_adjective_block.has_value())
       {
-         name_block.ModifyForEveryLanguage(*overlord_name_block,
+         name_block.ModifyForEveryLanguage(*overlord_adjective_block,
              [](const std::string& base_localization,
                  const std::string& modifying_localization,
                  const std::string& language) {
-                return OverlordNameModificationFunction(base_localization, modifying_localization, language);
+                return OverlordModificationFunction(base_localization, modifying_localization, language);
              });
       }
 
@@ -277,7 +274,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
              [](const std::string& base_localization,
                  const std::string& modifying_localization,
                  const std::string& language) {
-                return OverlordAdjectiveModificationFunction(base_localization, modifying_localization, language);
+                return OverlordModificationFunction(base_localization, modifying_localization, language);
              });
       }
 
