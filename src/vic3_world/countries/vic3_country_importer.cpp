@@ -64,9 +64,6 @@ vic3::CountryImporter::CountryImporter()
    country_parser_.registerKeyword("dynamic_name", [this](std::istream& input_stream) {
       dynamic_name_parser_.parseStream(input_stream);
    });
-   country_parser_.registerKeyword("dynamic_name", [this](std::istream& input_stream) {
-      dynamic_name_parser_.parseStream(input_stream);
-   });
    country_parser_.registerKeyword("map_color", [this](std::istream& input_stream) {
       options_.color = commonItems::Color::Factory{}.getColor(input_stream);
    });
