@@ -1,0 +1,12 @@
+spriteTypes = {
+	spriteType = {
+		name = GFX_Nunavut_Paul_Okalik
+		texturefile = "gfx/leaders/converter/Portrait_Nunavut_Paul_Okalik.dds"
+	}
+
+	spriteType = {
+		name = GFX_Nunavut_Paul_Okalik_small
+		texturefile = "gfx/interface/ideas/idea_Nunavut_Paul_Okalik.dds"
+	}
+
+}
