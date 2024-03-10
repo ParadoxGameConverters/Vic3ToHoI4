@@ -3,6 +3,7 @@
 #include <sstream>
 
 #include "external/fmt/include/fmt/format.h"
+#include "external/fmt/include/fmt/ranges.h"
 
 
 
