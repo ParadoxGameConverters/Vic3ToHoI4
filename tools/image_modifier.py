@@ -13,7 +13,7 @@ def DetermineSmallFilename(big_filename):
     return small_filename
 
 def GetScalingFactor(width):
-    return 34.0 / width;
+    return 34.0 / width
 
 def GetDefinition(filename):
     definition = "\tspriteType = {\n"
