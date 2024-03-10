@@ -1,8 +1,11 @@
 * Add new banner to data/resources/images
 * Update data/version.txt with new version and name
+	* Name is currently TBD. Update and remove this line prior to release.
 * Update Vic3ToHoI4-Installer.iss with new version and name
+	* Name is currently TBD. Update and remove this line prior to release.
 * Update data/readme.txt with new version
 * Update .github/workflows/windows_build_test_and_push.yml with new name, filename, tag, and artifact
+	* Many workflows disabled until release is ready. Reenable them prior to release and delete this line.
 * Create commit with MINOR or MAJOR in the commit message as appropriate, and tagged with new version
 * Push and merge on github
 * Wait for build, confirm updates

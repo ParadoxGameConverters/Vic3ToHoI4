@@ -69,13 +69,13 @@ jobs:
        echo '# Version info' | out-file data/version.txt -encoding ASCII
        echo '' | out-file data/version.txt -encoding ASCII -append
        echo 'version = "${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}.${{ steps.version_number.outputs.patch }}"' | out-file data/version.txt -encoding ASCII -append
-       echo 'name = "Chen"' | out-file data/version.txt -encoding ASCII -append
+       echo 'name = "TBD"' | out-file data/version.txt -encoding ASCII -append
        echo 'source = "Vic3"' | out-file data/version.txt -encoding ASCII -append
        echo 'minSource = "1.3"' | out-file data/version.txt -encoding ASCII -append
-       echo 'maxSource = "1.5"' | out-file data/version.txt -encoding ASCII -append
+       echo 'maxSource = "1.6"' | out-file data/version.txt -encoding ASCII -append
        echo 'target = "HoI4"' | out-file data/version.txt -encoding ASCII -append
-       echo 'minTarget = "1.13"' | out-file data/version.txt -encoding ASCII -append
-       echo 'maxTarget = "1.13"' | out-file data/version.txt -encoding ASCII -append
+       echo 'minTarget = "1.14"' | out-file data/version.txt -encoding ASCII -append
+       echo 'maxTarget = "1.14"' | out-file data/version.txt -encoding ASCII -append
        cat data/version.txt
 
     - name: "Build solution"
@@ -110,16 +110,16 @@ jobs:
         artifacts: Vic3ToHoI4-${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}-win-x64.zip, Output\Vic3ToHoI4-${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}-win-x64.exe
         token: ${{ secrets.API_TOKEN_GITHUB }}
 
-    - name: "Upload binaries to latest release"
-      if: ${{ github.event_name == 'push' }}
-      uses: ncipollo/release-action@v1
-      with:
-        tag: latest
-        allowUpdates: true
-        omitBodyDuringUpdate: true
-        omitNameDuringUpdate: true
-        artifacts: Vic3ToHoI4-latest-win-x64.zip, Output\Vic3ToHoI4-latest-win-x64.exe
-        token: ${{ secrets.API_TOKEN_GITHUB }}
+    # - name: "Upload binaries to latest release"
+      # if: ${{ github.event_name == 'push' }}
+      # uses: ncipollo/release-action@v1
+      # with:
+        # tag: latest
+        # allowUpdates: true
+        # omitBodyDuringUpdate: true
+        # omitNameDuringUpdate: true
+        # artifacts: Vic3ToHoI4-latest-win-x64.zip, Output\Vic3ToHoI4-latest-win-x64.exe
+        # token: ${{ secrets.API_TOKEN_GITHUB }}
 
     - name: "Prepare pull request artifact"
       if: ${{ github.event_name == 'pull_request' }}
