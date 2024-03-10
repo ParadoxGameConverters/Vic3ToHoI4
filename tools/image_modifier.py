@@ -1,7 +1,6 @@
 from PIL import Image
 import os
 import glob
-import sys
 
 
 files_to_skip = ["data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_admiral_south_america_1.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_middle_east_1.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_fascism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_fascism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_south_america_2.dds"]
