@@ -113,6 +113,11 @@ technologies = {
 		ai_will_do = {
 			factor = 2
 
+			modifier = { #This is needed for a lot of tank designs
+				factor = 2.0
+				is_major = yes
+			}
+
 			modifier = {
 				factor = 2
 				date > "1937.1.1"
@@ -875,7 +880,12 @@ technologies = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			base = 1
+
+			modifier = { #This is needed for a lot of tank designs
+				factor = 4
+				is_major = yes
+			}
 
 			modifier = {
 				factor = 2
