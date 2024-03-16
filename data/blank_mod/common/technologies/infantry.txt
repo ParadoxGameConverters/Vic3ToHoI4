@@ -73,11 +73,16 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			base = 2
+
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
 			
 			modifier = {
 				factor = 10
-				date > "1936.1.3"
+				date > 1936.1.3
 			}
 		}
 	}	
@@ -120,8 +125,14 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 2
-			
+			base = 2
+						
+			modifier = {
+				factor = 5
+				is_major = yes
+				date > "1938.1.1"
+			}
+
 			modifier = {
 				factor = 5
 				date > "1939.1.1"
@@ -158,6 +169,11 @@ technologies = {
 		ai_will_do = {
 			factor = 3
 						
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+
 			modifier = {
 				factor = 10
 				date > "1939.1.1"
@@ -206,11 +222,11 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 2
 			
 			modifier = {
 				factor = 2
-				date > "1940.1.6"
+				date > "1940.1.1"
 			}
 			
 			modifier = {
@@ -329,9 +345,18 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 0.8
-			
-			
+			base = 1
+
+			modifier = {
+				factor = 2
+				date > "1942.1.1"
+			}
+
+			modifier = {
+				factor = 2
+				date > "1944.1.1"
+			}
+
 			modifier = {
 				num_of_military_factories > 150
 				factor = 2.5
@@ -2236,4 +2261,36 @@ technologies = {
 		}
 	}
 	
+	TOA_jungle_pioneers_support_tech = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		enable_subunits = {
+			jungle_pioneers_support
+		}
+	}
+
+	ToA_river_boats_tech = { #hidden tech to boost Brazil via Brown Water Navy focus
+		# Remember to update tt: BRA_brown_water_navy_idea_bonus_tt
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		category_all_infantry = {
+			river = {
+				movement = 0.1
+				attack = 0.1
+				defence = 0.05
+			}
+		}
+	}
 }

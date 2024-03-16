@@ -476,10 +476,6 @@ technologies = {
 			base = 0.5
 			
 			modifier = {
-				factor = 2
-				is_major = yes
-			}
-			modifier = {
 				not = {
 					any_controlled_state = {
 						is_coastal = yes
