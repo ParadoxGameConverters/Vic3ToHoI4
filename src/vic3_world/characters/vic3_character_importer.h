@@ -30,6 +30,7 @@ class CharacterImporter
    int rank_ = 0;
    std::string ideology_;
    std::set<std::string> traits_;
+   std::optional<int> formation_id_;
 };
 
 }  // namespace vic3

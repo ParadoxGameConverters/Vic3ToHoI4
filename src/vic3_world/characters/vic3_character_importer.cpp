@@ -37,6 +37,9 @@ vic3::CharacterImporter::CharacterImporter()
          Log(LogLevel::Warning) << fmt::format("Failed to read rank: {}. {}", rank_string, e.what());
       }
    });
+   character_parser_.registerKeyword("formation", [this](std::istream& input_stream) {
+      formation_id_ = commonItems::getInt(input_stream);
+   });
    character_parser_.registerKeyword("ideology", [this](std::istream& input_stream) {
       ideology_ = commonItems::getString(input_stream);
    });
@@ -58,6 +61,7 @@ vic3::Character vic3::CharacterImporter::ImportCharacter(const int id, std::istr
    rank_ = 0;
    ideology_.clear();
    traits_.clear();
+   formation_id_.reset();
 
    character_parser_.parseStream(input_stream);
 
@@ -69,5 +73,6 @@ vic3::Character vic3::CharacterImporter::ImportCharacter(const int id, std::istr
        .roles = roles_,
        .rank = rank_,
        .ideology = ideology_,
-       .traits = traits_});
+       .traits = traits_,
+   .formation_id = formation_id_});
 }
