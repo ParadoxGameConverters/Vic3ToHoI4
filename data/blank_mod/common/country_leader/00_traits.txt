@@ -541,7 +541,7 @@ leader_traits = {
 		}
 	}
 
-	revolutionary_general = { #Francisco José Mugica
+	revolutionary_general = { #Francisco Josï¿½ Mugica
 		random = no
 		resistance_growth_on_our_occupied_states = 0.25
 		mobilization_laws_cost_factor = -0.25
@@ -553,7 +553,7 @@ leader_traits = {
 		}
 	}
 
-	fascist_militia_leader = { #Nicolás Rodríguez Carrasco, probably others too could be used for random fascist leaders
+	fascist_militia_leader = { #Nicolï¿½s Rodrï¿½guez Carrasco, probably others too could be used for random fascist leaders
 		random = no
 		war_support_factor = 0.05
 		ai_will_do = {
@@ -561,7 +561,7 @@ leader_traits = {
 		}
 	}
 
-	cristero_general = { #Jesús Degollado Guízar
+	cristero_general = { #Jesï¿½s Degollado Guï¿½zar
 		random = no
 		conscription = 0.01
 		ai_will_do = {
@@ -569,7 +569,7 @@ leader_traits = {
 		}
 	}
 
-	primate_of_mexico = { # Luis María Martínez
+	primate_of_mexico = { # Luis Marï¿½a Martï¿½nez
 		random = no
 		stability_factor = 0.05
 		ai_will_do = {
@@ -1336,7 +1336,7 @@ leader_traits = {
 		mobilization_speed = 0.25
 	}
 
-	sultana = { #Dürrü?ehvar
+	sultana = { #Dï¿½rrï¿½sehvar
 		random = no
 		stability_factor = 0.15
 		war_support_factor = 0.1
@@ -6242,7 +6242,7 @@ leader_traits = {
 		}
 	}
 
-	gran_carabinero = { # Hundred Thousand Sons of Negrín!
+	gran_carabinero = { # Hundred Thousand Sons of Negrï¿½n!
 		random = no
 		sprite = 13
 
