@@ -29,11 +29,15 @@ maps::ProvinceDefinitions::storage_type hoi4::ImportProvinceDefinitions(
 
    while (true)
    {
+      if (definitions.eof())
+      {
+         break;
+      }
       std::string line;
       getline(definitions, line);
       if (line.empty())
       {
-         break;
+         continue;
       }
 
       // number
