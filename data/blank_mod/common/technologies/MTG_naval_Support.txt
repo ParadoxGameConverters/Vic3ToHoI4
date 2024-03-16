@@ -1198,6 +1198,11 @@ technologies = {
 
 		ai_will_do = {
 			factor = 3
+
+			modifier = {
+				has_navy_size = { size < 10 }
+				factor = 0.1
+			}
 			modifier = {
 				has_war = yes
 				factor = 2
@@ -1319,6 +1324,10 @@ technologies = {
 
 		ai_will_do = {
 			factor = 3
+			modifier = {
+				has_navy_size = { size < 10 }
+				factor = 0.1
+			}
 			modifier = {
 				has_war = yes
 				factor = 2

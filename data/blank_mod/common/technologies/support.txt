@@ -106,7 +106,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			base = 4
 			
 			modifier = {
 				factor = 2
@@ -114,7 +114,7 @@ technologies = {
 			}
 			
 			modifier = {
-				factor = 1.2
+				factor = 2
 				date > "1937.1.1"
 			}
 			
@@ -174,10 +174,15 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 2
+			base = 4
 			
 			modifier = {
-				factor = 1.2
+				factor = 2
+				is_major = yes
+			}
+
+			modifier = {
+				factor = 2
 				date > "1940.1.1"
 			}
 			
@@ -245,10 +250,15 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 2
+			base = 4
 			
 			modifier = {
-				factor = 1.2
+				factor = 2
+				is_major = yes
+			}
+
+			modifier = {
+				factor = 2
 				date > "1943.1.1"
 			}
 			
@@ -310,10 +320,15 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 2
+			factor = 4
+
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
 			
 			modifier = {
-				factor = 1.2
+				factor = 2
 				date > "1946.1.1"
 			}
 			

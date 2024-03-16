@@ -42,11 +42,16 @@ technologies = {
 
 		
 		ai_will_do = {
-			factor = 1
+			factor = 5
 			
 			modifier = {
 				factor = 2
 				is_major = yes
+			}
+
+			modifier = {
+				num_of_military_factories < 7
+				factor = 0.1
 			}
 		}
 	}
@@ -345,7 +350,12 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
+
+			modifier = {
+				num_of_military_factories < 15
+				factor = 0.1
+			}
 		}
 	}
 	
@@ -579,7 +589,12 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
+
+			modifier = {
+				num_of_military_factories < 30
+				factor = 0.1
+			}
 		}
 	}
 	
@@ -861,7 +876,7 @@ technologies = {
 				OR = {
 					has_tech = basic_medium_airframe
 				}
-				factor = 5
+				factor = 3
 			}
 		}
 	}
