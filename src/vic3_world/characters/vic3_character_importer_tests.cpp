@@ -28,7 +28,8 @@ TEST(Vic3worldCharactersVic3characterimporter, DefaultsDefaultToDefault)
            .ideology = "",
            .traits = std::set<std::string>{},
            .origin_tag = "",
-           .origin_country_id = std::nullopt}));
+           .origin_country_id = std::nullopt,
+           .formation_id = std::nullopt}));
 }
 
 
@@ -47,6 +48,7 @@ TEST(Vic3worldCharactersVic3characterimporter, CharacterCanBeImported)
    input << "\tideology = \"ideology_0\"\n";
    input << "\trank = commander_rank_5\n";
    input << "\ttraits = { \"trait_0\" \"trait_1\" }\n";
+   input << "\tformation = 238\n";
    input << "}\n";
 
    const auto character = character_importer.ImportCharacter(1, input);
@@ -60,7 +62,8 @@ TEST(Vic3worldCharactersVic3characterimporter, CharacterCanBeImported)
            .roles = {"politician", "agitator"},
            .rank = 5,
            .ideology = "ideology_0",
-           .traits = {"trait_0", "trait_1"}}));
+           .traits = {"trait_0", "trait_1"},
+           .formation_id = 238}));
 }
 
 
@@ -137,6 +140,19 @@ TEST(Vic3worldCharactersVic3characterimporter, IgIdCanBeSet)
    character.SetIgId(1);
 
    EXPECT_EQ(character, Character({.id = 1, .ig_id = 1}));
+}
+
+
+TEST(Vic3worldCharactersVic3characterimporter, CommanderCanBeSet)
+{
+   CharacterImporter character_importer;
+
+   std::stringstream input;
+   auto character = character_importer.ImportCharacter(1, input);
+
+   character.SetCommander();
+
+   EXPECT_EQ(character, Character({.id = 1, .formation_id = 0}));
 }
 
 

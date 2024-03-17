@@ -179,6 +179,7 @@ last_name=Mande
 culture=0
 role=general
 rank="commander_rank_2"
+formation = 1234
 }
 3=none
 4={
@@ -194,6 +195,7 @@ culture=1
 role=politician
 role=general
 rank="commander_rank_ruler"
+formation = 1234
 }
 6={
 first_name=Martin

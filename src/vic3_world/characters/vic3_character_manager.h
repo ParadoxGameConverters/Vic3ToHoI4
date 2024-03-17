@@ -35,6 +35,7 @@ class CharacterManager
    std::map<int, int> character_ig_map_;
    std::set<int> exile_pool_;
    std::set<int> hired_commanders_;
+   std::set<int> obituaries_;
 };
 
 }  // namespace vic3

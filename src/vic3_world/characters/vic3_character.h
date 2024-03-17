@@ -24,7 +24,7 @@ struct CharacterOptions
    std::set<std::string> traits;
    std::string origin_tag;
    std::optional<int> origin_country_id;
-   bool is_commander = false;
+   std::optional<int> formation_id;
 };
 
 class Character
@@ -44,7 +44,7 @@ class Character
        traits_(std::move(options.traits)),
        origin_tag_(std::move(options.origin_tag)),
        origin_country_id_(options.origin_country_id),
-       is_commander_(options.is_commander)
+       formation_id_(options.formation_id)
    {
    }
 
@@ -62,14 +62,14 @@ class Character
    [[nodiscard]] const std::set<std::string>& GetTraits() const { return traits_; }
    [[nodiscard]] const std::string& GetOriginTag() const { return origin_tag_; }
    [[nodiscard]] const std::optional<int>& GetOriginCountryId() const { return origin_country_id_; }
-   [[nodiscard]] bool IsCommander() const { return is_commander_; }
+   [[nodiscard]] bool IsCommander() const { return formation_id_.has_value(); }
 
 
    void SetCulture(std::string culture) { culture_ = std::move(culture); }
    void SetHomeTag(std::string tag) { origin_tag_ = std::move(tag); }
    void SetOriginCountryId(int id) { origin_country_id_ = id; }
    void SetIgId(const int id) { ig_id_ = id; }
-   void SetCommander() { is_commander_ = true; }
+   void SetCommander() { formation_id_ = 0; }  // For backwards compatibility with pre 1.5 Vic
 
    std::partial_ordering operator<=>(const Character&) const = default;
 
@@ -88,7 +88,7 @@ class Character
    std::set<std::string> traits_;
    std::string origin_tag_;  // Where an agitator was exiled from, resolve to ID before HoI
    std::optional<int> origin_country_id_;
-   bool is_commander_ = false;  // Actively hired to lead boats/troops
+   std::optional<int> formation_id_;  // Commanders with formations are actively hired to lead boats/troops
 };
 }  // namespace vic3
 

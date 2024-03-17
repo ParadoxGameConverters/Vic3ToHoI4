@@ -163,7 +163,7 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                    .ig_id = 2,
                    .roles = {"general"},
                    .rank = 2,
-                   .is_commander = true,
+                   .formation_id = 1234,
                })),
            testing::Pair(4,
                Character({
@@ -187,7 +187,7 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                    .ig_id = 3,
                    .roles = {"general", "politician"},
                    .rank = 1,
-                   .is_commander = true,
+                   .formation_id = 1234,
                })),
            testing::Pair(6,
                Character({
