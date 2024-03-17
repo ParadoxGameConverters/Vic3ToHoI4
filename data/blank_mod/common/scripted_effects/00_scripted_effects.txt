@@ -1708,10 +1708,20 @@ increase_state_category = {
 	else_if = {
 		limit = {
 			has_state_category = city
+		}		
+		set_state_category = large_city
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 2
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_state_category = large_city
 		}
 		set_state_category = metropolis
 		effect_tooltip = {
-			add_extra_state_shared_building_slots = 4
+			add_extra_state_shared_building_slots = 2
 		}
 	}
 
@@ -1724,6 +1734,7 @@ increase_state_category = {
 			add_extra_state_shared_building_slots = 2
 		}
 	}
+	
 }
 
 add_potential_special_forces_tree = {

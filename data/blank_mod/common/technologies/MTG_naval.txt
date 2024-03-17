@@ -183,9 +183,14 @@ technologies = {
 		}
 
 		ai_will_do = {
-			factor = 8
+			base = 2
+		
+			modifier = {
+					has_navy_size = { size < 10 }
+					factor = 0.1
+			}
 		}
-
+		
 		categories = {
 			naval_equipment
 			dd_tech
@@ -625,7 +630,12 @@ technologies = {
 		}
 
 		ai_will_do = {
-			factor = 2
+			factor = 2			
+			
+			modifier = {
+				has_navy_size = { size < 20 }
+				factor = 0.1
+			}
 		}
 
 		categories = {

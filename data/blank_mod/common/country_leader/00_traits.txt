@@ -1439,6 +1439,44 @@ leader_traits = {
 		command_power_gain_mult = 0.25
 		defensive_war_stability_factor = 0.4
 	}
+	
+	### Canada ###
+
+	CAN_liberal_corporatist = {
+		random = no
+		sprite = 13
+
+		production_speed_infrastructure_factor = 0.1
+		drift_defence_factor = 0.15
+		research_speed_factor = 0.02
+	}
+
+	CAN_father_of_the_canadian_welfare_state = {
+		random = no
+		sprite = 13
+
+		production_speed_industrial_complex_factor = 0.05
+		stability_factor = 0.1
+	}
+
+	CAN_canadian_fuhrer = {
+		random = no
+		sprite = 13
+
+		political_power_factor = 0.15
+		war_support_factor = 0.05
+		fascism_drift = 0.02
+	}
+
+	CAN_social_gospel = {
+		random = no
+		sprite = 13
+
+		mobilization_speed = 0.15
+		stability_factor = 0.05
+		communism_drift = 0.02
+		neutrality_drift = 0.02
+	}
 
 	#GREECE MINISTERS
 
@@ -2152,7 +2190,8 @@ leader_traits = {
 		surrender_limit = 0.05
 		production_speed_buildings_factor = 0.05
 		enemy_operative_detection_chance = 0.1
-		foreign_subversive_activites = -0.1
+		#foreign_subversive_activites = -0.1
+		improve_relations_maintain_cost_factor = -0.3
 	}
 	minister_of_the_interior_abate = {
 		random = no
@@ -3453,6 +3492,7 @@ leader_traits = {
 	#LEINO
 	devoted_communist = {
 		random = no
+		sprite = 13
 		industrial_capacity_factory = 0.1
 		resistance_activity = -0.1
 		compliance_gain = 0.05
@@ -4355,6 +4395,532 @@ leader_traits = {
 		civilian_intel_factor = 0.15
 		political_power_factor = 0.15
 	}
+	
+	minister_of_the_interior_aregai_no_lar = {
+		random = no
+		sprite = 13
+		surrender_limit = 0.05
+		production_speed_buildings_factor = 0.05
+		improve_relations_maintain_cost_factor = -0.5
+		foreign_subversive_activites = -0.1
+	}
+	
+	########################
+	### ARGENTINA TRAITS ###
+	########################
+
+	ARG_fraudulent_industrialist = {
+		random = no
+		political_power_factor = 0.05
+		production_speed_buildings_factor = 0.15
+		stability_factor = -0.05
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_radical_antipersonnel = {
+		random = no
+		political_power_factor = 0.05
+		democratic_drift = 0.03
+		neutrality_drift = 0.01
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_conservative_traditionalist = {
+		random = no
+		political_power_factor = 0.05
+		neutrality_drift = 0.03
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_moderate_dictator = {
+		random = no
+		fascism_drift = 0.03
+		war_support_factor = 0.1
+		fascism_acceptance = 30
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_brigadier_general = {
+		random = no
+		mobilization_speed = 0.05
+		conscription_factor = 0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_argentine_nationalist = {
+		random = no
+		justify_war_goal_time = -0.1
+		war_support_factor = 0.1
+		conscription_factor = 0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_harsh_democrat = {
+		random = no
+		stability_factor = 0.1
+		democratic_drift = 0.1
+		democratic_acceptance = 40
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_feminist_revolutionary = {
+		random = no
+		conscription =  0.005
+		communism_drift = 0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_communist_insurrectionist = {
+		random = no
+		war_support_factor = 0.1
+		communism_drift = 0.1
+		justify_war_goal_time = -0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_anarchosyndicalist = {
+		random = no
+		communism_drift = 0.1
+		war_support_factor = 0.1
+		minimum_training_level = -0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_socialist_feminist = {
+		random = no
+		sprite = 13
+		communism_drift = 0.05
+		political_power_gain = 0.05
+		stability_weekly = 0.005
+	}
+
+	ARG_university_rector = {
+		sprite = 10
+		random = yes
+		research_speed_factor = 0.1
+
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	ARG_nobel_peace_prize_winner = {
+		sprite = 13
+		random = no
+		justify_war_goal_time = 0.3
+		enemy_justify_war_goal_time = 0.3
+		send_volunteers_tension = -0.2
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_bolivar_agent = {
+		sprite = 13
+		random = no
+		subversive_activites_upkeep = -0.35
+		war_support_factor = 0.1
+		stability_factor = -0.1
+		decryption_factor = 0.1
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_prominent_centrist = {
+		sprite = 13
+		random = no
+		stability_factor = 0.2
+		democratic_drift = 0.02
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_father_of_argentine_democracy = {
+		sprite = 13
+		random = no
+		stability_factor = 0.2
+		democratic_drift = 0.05
+		party_popularity_stability_factor = 0.05
+		enemy_justify_war_goal_time = 0.1
+		research_speed_factor = 0.1
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_peronism_trait = {
+		sprite = 13
+		random = no
+		army_core_defence_factor = 0.05
+		political_power_factor = 0.1
+		stability_factor = 0.05
+		production_factory_max_efficiency_factor = 0.05
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ARG_womans_peronist = {
+		sprite = 13
+		random = no
+		conscription_factor = 0.05
+		stability_factor = 0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+
+	########################
+
+	BRA_father_of_the_poor = {
+		random = no
+		stability_factor = 0.05
+		conscription_factor = 0.02
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_sugar_king = {
+		random = no
+		stability_factor = -0.05
+		consumer_goods_factor = -0.05
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_reluctant_integralist = {
+		random = no
+		political_power_factor = -0.1
+		fascism_drift = 0.03
+		war_support_factor = 0.1
+		defensive_war_stability_factor = 0.1
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_authoritarian_populist = {
+		random = no
+		political_power_factor = 0.1
+		neutrality_drift = 0.01
+		#stability_factor = 0.05
+		party_popularity_stability_factor = 0.05
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_supreme_court_justice = {
+		random = no
+		sprite = 13
+		political_power_factor = -0.05
+		democratic_drift = 0.02
+		stability_factor = 0.05
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_political_fox = {
+		random = no
+		sprite = 13
+		political_power_factor = 0.1
+		drift_defence_factor = 0.15
+		political_advisor_cost_factor = -0.2
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+
+	BRA_modernist_architect = {
+		random = no
+		sprite = 13
+		research_speed_factor = 0.02
+		production_speed_buildings_factor = 0.05
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_distinguished_diplomat = {
+		random = no
+		sprite = 13
+		neutrality_acceptance = 50
+		democratic_acceptance = 50
+		trade_opinion_factor = 0.5
+		political_power_factor = 0.07
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_minister_of_transport = {
+		sprite = 13
+		random = no
+		production_speed_infrastructure_factor = 0.1
+		production_speed_rail_way_factor = 0.1
+		production_speed_supply_node_factor = 0.1
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_right_wing_ideologue = {
+		sprite = 13
+		random = no
+		fascism_drift = 0.03
+		fascism_acceptance = 50
+		opinion_gain_monthly_same_ideology_factor = 0.15
+		supply_combat_penalties_on_core_factor = 0.1
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_head_of_political_police = {
+		sprite = 13
+		random = no
+		intel_network_gain_factor = 0.2
+		agency_upgrade_time = -0.2
+		operative_slot = 1
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_nobel_peace_prize_nominee = {
+		sprite = 13
+		random = no
+		justify_war_goal_time = 0.2
+		enemy_justify_war_goal_time = 0.2
+		send_volunteers_tension = -0.75
+		send_volunteer_divisions_required = 0.3
+		send_volunteer_size = 3
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_deposed_former_president = {
+		sprite = 13
+		random = no
+		stability_factor = -0.1
+		political_power_factor = -0.1
+		neutrality_drift = 0.02
+		drift_defence_factor = 0.05
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+
+	BRA_renowned_ambassador = {
+		sprite = 13
+		random = no
+		democratic_drift = 0.02
+		democratic_acceptance = 50
+		fascism_acceptance = -50
+		trade_opinion_factor = 0.3
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_anti_authoritarian = {
+		sprite = 13
+		random = no
+		political_power_factor = 0.15
+		defensive_war_stability_factor = 0.2
+		political_advisor_cost_factor = -0.2
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_academic_writer = {
+		sprite = 13
+		random = no
+		research_speed_factor = 0.05
+		democratic_drift = 0.02
+		neutrality_acceptance = 40
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_controversial_academic = {
+		sprite = 13
+		random = no
+		research_speed_factor = 0.03
+		neutrality_drift = 0.05
+		mobilization_laws_cost_factor = -0.1
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_education_pioneer = {
+		sprite = 13
+		random = no
+		research_speed_factor = 0.05
+		fascism_drift = -0.03
+		war_support_factor = -0.05
+		stability_factor = 0.03
+	}
+
+	BRA_democratic_engineer = {
+		sprite = 13
+		random = no
+		research_speed_factor = 0.05
+		democratic_drift = 0.02
+		production_speed_rail_way_factor = 0.05
+		production_speed_supply_node_factor = 0.05
+	}
+
+	BRA_minister_of_defense = {
+		random = no
+		sprite = 13
+		army_core_defence_factor = 0.05
+		war_support_factor = 0.1
+		conscription = 0.02
+		democratic_acceptance = -25
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	BRA_politically_educated = {
+		random = no
+		sprite = 13
+		neutrality_drift = 0.02
+		economy_cost_factor = -0.1
+		trade_laws_cost_factor = -0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_the_white_dove = {
+		random = no
+		sprite = 13
+		neutrality_drift = 0.02
+		air_accidents_factor = 0.05
+		army_speed_factor = 0.02
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_militant_communist = {
+		random = no
+		sprite = 13
+		war_support_factor = 0.1
+		conscription_factor = 0.02
+		send_volunteers_tension = -0.2
+		communism_drift = 0.02
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	BRA_soviet_spy = { #Unlocks Anti-Fascist Drive
+		random = no 
+		sprite = 15
+		intel_network_gain_factor = 0.2
+		communism_drift = 0.05
+		war_support_factor = 0.10
+		operative_slot = 1
+	}
+
+	BRA_emperor_trait = {
+		random = no
+		stability_factor = 0.1
+		war_support_factor = 0.1
+		political_power_factor = 0.1
+		army_core_defence_factor = 0.1
+		army_core_attack_factor = 0.1
+	}
+
+	BRA_coffee_king = {
+		random = no
+		sprite = 10 
+		production_speed_rail_way_factor = 0.05
+		production_speed_buildings_factor = 0.1
+		industrial_capacity_factory = 0.1
+		research_speed_factor = -0.05
+	}
+
+	BRA_vengeful_industrialist = {
+		sprite = 10
+		random = yes
+		production_speed_industrial_complex_factor = 0.1
+		production_speed_infrastructure_factor = 0.1
+		production_speed_arms_factory_factor = 0.1
+		fascism_drift = 0.01
+		war_support_factor = 0.05
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 1.8
+				date < 1939.1.1
+			}
+		}
+	}
+
+	################################
+	## URUGUAY TRAITS ##
+	################################
+
+	JUNO_uruguyan_revisionist = {
+		sprite = 10
+		random = no
+		weekly_manpower = 75
+		fascism_drift = 0.1
+		justify_war_goal_time = -0.35
+	}
 
 	################################
 	## SOVIET UNION LEADER TRAITS ##
@@ -5156,7 +5722,7 @@ leader_traits = {
 		drift_defence_factor = 0.25
 
 		ai_will_do = {
-			factor = 1
+			factor = 0.25
 		}
 	}
 
@@ -6483,7 +7049,7 @@ leader_traits = {
 		cat_mobile_warfare_cost_factor = -0.15
 
 		ai_will_do = {
-			factor = 500
+			factor = 5
 		}
 	}
 
@@ -7023,7 +7589,7 @@ leader_traits = {
 			train_equipment = {
 				instant = yes
 				build_cost_ic = -0.25
-				reliability = 0.1
+				armor_value = 0.15
 			}
 		}
 		ai_will_do = {
@@ -7041,8 +7607,47 @@ leader_traits = {
 			factor = 1
 		}
 	}
+	
+	forestry_company = {
+		random = no
+
+		global_building_slots_factor = 0.3
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	refining_concern = {
+		random = no
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	merchant_marine_manufacturer = {
+		random = no
+		equipment_bonus = {
+			convoy = {
+				reliability = 0.3 build_cost_ic = -0.5
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
 
 	refinery_concern = {
+		random = no
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	central_bank = {
 		random = no
 
 		ai_will_do = {
@@ -7500,6 +8105,14 @@ leader_traits = {
 		production_factory_max_efficiency_factor = 0.14
 		production_factory_efficiency_gain_factor = 0.5
 		production_lack_of_resource_penalty_factor = -0.5
+	}
+
+JUNO_emergency_powers = {
+		random = no
+		consumer_goods_factor = -0.1
+		production_speed_arms_factory_factor = 0.05
+		production_speed_dockyard_factor = 0.05
+
 	}
 
 
@@ -8883,8 +9496,7 @@ leader_traits = {
 		}
 	}
 
-	# Guesstimation of what % increased efficiency might look like
-	air_naval_strike_1 = { # Naval Strike mission efficiency increased by 4%
+	air_naval_strike_1 = {
 		sprite = 2
 		naval_strike_attack_factor = 0.02
 		naval_strike_targetting_factor = 0.02
@@ -8902,7 +9514,7 @@ leader_traits = {
 		}
 	}
 
-	air_naval_strike_2 = { # Naval Strike mission efficiency increased by 8%
+	air_naval_strike_2 = {
 		sprite = 2
 		naval_strike_attack_factor = 0.03
 		naval_strike_targetting_factor = 0.03
@@ -8920,7 +9532,7 @@ leader_traits = {
 		}
 	}
 
-	air_naval_strike_3 = { # Naval Strike mission efficiency increased by 12%
+	air_naval_strike_3 = {
 		sprite = 2
 		naval_strike_attack_factor = 0.05
 		naval_strike_targetting_factor = 0.05
@@ -8939,11 +9551,9 @@ leader_traits = {
 	}
 
 
-	air_bomber_interception_1 = { # Bomber Interception mission efficiency increased by 4%
+	air_bomber_interception_1 = {
 		sprite = 1
-		air_interception_attack_factor = 0.02
-		air_interception_defence_factor = 0.02
-		air_interception_agility_factor = 0.02
+		air_intercept_efficiency = 0.05
 		#experience_gain_air = @experience_gain_low
 
 		command_cap = @tier1
@@ -8957,11 +9567,9 @@ leader_traits = {
 		}
 	}
 
-	air_bomber_interception_2 = { # Bomber Interception mission efficiency increased by 8%
+	air_bomber_interception_2 = {
 		sprite = 1
-		air_interception_attack_factor = 0.03
-		air_interception_defence_factor = 0.03
-		air_interception_agility_factor = 0.03
+		air_intercept_efficiency = 0.10
 		#experience_gain_air = @experience_gain_medium
 
 		command_cap = @tier2
@@ -8975,11 +9583,9 @@ leader_traits = {
 		}
 	}
 
-	air_bomber_interception_3 = { # Bomber Interception mission efficiency increased by 12%
+	air_bomber_interception_3 = {
 		sprite = 1
-		air_interception_attack_factor = 0.05
-		air_interception_defence_factor = 0.05
-		air_interception_agility_factor = 0.05
+		air_intercept_efficiency = 0.15
 		#experience_gain_air = @experience_gain_high
 
 		command_cap = @tier3
@@ -8994,11 +9600,9 @@ leader_traits = {
 	}
 
 
-	air_air_superiority_1 = { # Air Superiority mission efficiency increased by 4%
+	air_air_superiority_1 = {
 		sprite = 1
-		air_air_superiority_attack_factor = 0.02
-		air_air_superiority_defence_factor = 0.02
-		air_air_superiority_agility_factor = 0.02
+		air_superiority_efficiency = 0.05
 		#experience_gain_air = @experience_gain_low
 
 		command_cap = @tier1
@@ -9012,11 +9616,9 @@ leader_traits = {
 		}
 	}
 
-	air_air_superiority_2 = { # Air Superiority mission efficiency increased by 8%
+	air_air_superiority_2 = {
 		sprite = 1
-		air_air_superiority_attack_factor = 0.03
-		air_air_superiority_defence_factor = 0.03
-		air_air_superiority_agility_factor = 0.03
+		air_superiority_efficiency = 0.1
 		#experience_gain_air = @experience_gain_medium
 
 		command_cap = @tier2
@@ -9030,11 +9632,9 @@ leader_traits = {
 		}
 	}
 
-	air_air_superiority_3 = { # Air Superiority mission efficiency increased by 12%
+	air_air_superiority_3 = {
 		sprite = 1
-		air_air_superiority_attack_factor = 0.05
-		air_air_superiority_defence_factor = 0.05
-		air_air_superiority_agility_factor = 0.05
+		air_superiority_efficiency = 0.15
 		#experience_gain_air = @experience_gain_high
 
 		command_cap = @tier3
@@ -9049,11 +9649,10 @@ leader_traits = {
 	}
 
 
-	air_close_air_support_1 = { # Close Air Support mission efficiency increased by 4%
+	air_close_air_support_1 = {
 		sprite = 1
-		air_close_air_support_attack_factor = 0.02
-		air_close_air_support_defence_factor = 0.02
-		air_close_air_support_agility_factor = 0.02
+		air_cas_efficiency = 0.05
+		ground_attack_factor = 0.03
 		#experience_gain_air = @experience_gain_low
 
 		command_cap = @tier1
@@ -9067,11 +9666,10 @@ leader_traits = {
 		}
 	}
 
-	air_close_air_support_2 = { # Close Air Support mission efficiency increased by 8%
+	air_close_air_support_2 = {
 		sprite = 1
-		air_close_air_support_attack_factor = 0.03
-		air_close_air_support_defence_factor = 0.03
-		air_close_air_support_agility_factor = 0.03
+		air_cas_efficiency = 0.1
+		ground_attack_factor = 0.05
 		#experience_gain_air = @experience_gain_medium
 
 		command_cap = @tier2
@@ -9085,11 +9683,10 @@ leader_traits = {
 		}
 	}
 
-	air_close_air_support_3 = { # Close Air Support mission efficiency increased by 12%
+	air_close_air_support_3 = {
 		sprite = 1
-		air_close_air_support_attack_factor = 0.05
-		air_close_air_support_defence_factor = 0.05
-		air_close_air_support_agility_factor = 0.05
+		air_cas_efficiency = 0.15
+		ground_attack_factor = 0.08
 		#experience_gain_air = @experience_gain_high
 
 		command_cap = @tier3
@@ -9104,11 +9701,9 @@ leader_traits = {
 	}
 
 
-	air_strategic_bombing_1 = { # Strategic Bombing mission efficiency increased by 4%
+	air_strategic_bombing_1 = {
 		sprite = 2
-		air_strategic_bomber_attack_factor = 0.01
 		air_strategic_bomber_defence_factor = 0.01
-		air_strategic_bomber_agility_factor = 0.01
 		air_strategic_bomber_bombing_factor = 0.03
 		#experience_gain_air = @experience_gain_low
 
@@ -9123,11 +9718,9 @@ leader_traits = {
 		}
 	}
 
-	air_strategic_bombing_2 = { # Strategic Bombing mission efficiency increased by 8%
+	air_strategic_bombing_2 = {
 		sprite = 2
-		air_strategic_bomber_attack_factor = 0.02
 		air_strategic_bomber_defence_factor = 0.02
-		air_strategic_bomber_agility_factor = 0.02
 		air_strategic_bomber_bombing_factor = 0.05
 		#experience_gain_air = @experience_gain_medium
 
@@ -9142,11 +9735,9 @@ leader_traits = {
 		}
 	}
 
-	air_strategic_bombing_3 = { # Strategic Bombing mission efficiency increased by 12%
+	air_strategic_bombing_3 = {
 		sprite = 2
-		air_strategic_bomber_attack_factor = 0.03
 		air_strategic_bomber_defence_factor = 0.03
-		air_strategic_bomber_agility_factor = 0.03
 		air_strategic_bomber_bombing_factor = 0.09
 		#experience_gain_air = @experience_gain_high
 
@@ -9161,8 +9752,7 @@ leader_traits = {
 		}
 	}
 
-	# Removed?
-	air_tactical_bombing_1 = { # Tactical Bombing mission efficiency increased
+	air_tactical_bombing_1 = {
 		sprite = 2
 		air_cas_present_factor = 0.1
 		#experience_gain_air = @experience_gain_low
@@ -9178,7 +9768,7 @@ leader_traits = {
 		}
 	}
 
-	air_tactical_bombing_2 = { # Tactical Bombing mission efficiency increased
+	air_tactical_bombing_2 = {
 		sprite = 2
 		air_cas_present_factor = 0.15
 		#experience_gain_air = @experience_gain_medium
@@ -9194,7 +9784,7 @@ leader_traits = {
 		}
 	}
 
-	air_tactical_bombing_3 = { # Tactical Bombing mission efficiency increased
+	air_tactical_bombing_3 = {
 		sprite = 2
 		air_cas_present_factor = 0.2
 		#experience_gain_air = @experience_gain_high
@@ -9211,11 +9801,10 @@ leader_traits = {
 	}
 
 
-	air_airborne_1 = { # Paratrooper drop efficiency increased by 4%
+	air_airborne_1 = {
 		sprite = 1
-		air_paradrop_attack_factor = 0.01
-		air_paradrop_defence_factor = 0.03
-		air_paradrop_agility_factor = 0.03
+		paradrop_organization_factor = 1.2
+		paratrooper_aa_defense = 0.1
 		#experience_gain_air = @experience_gain_low
 
 		command_cap = @tier1
@@ -9229,11 +9818,10 @@ leader_traits = {
 		}
 	}
 
-	air_airborne_2 = { # Paratrooper drop efficiency increased by 8%
+	air_airborne_2 = {
 		sprite = 1
-		air_paradrop_attack_factor = 0.02
-		air_paradrop_defence_factor = 0.05
-		air_paradrop_agility_factor = 0.05
+		paradrop_organization_factor = 1.5
+		paratrooper_aa_defense = 0.15
 		#experience_gain_air = @experience_gain_medium
 
 		command_cap = @tier2
@@ -9247,11 +9835,10 @@ leader_traits = {
 		}
 	}
 
-	air_airborne_3 = { # Paratrooper drop efficiency increased by 12%
+	air_airborne_3 = {
 		sprite = 1
-		air_paradrop_attack_factor = 0.03
-		air_paradrop_defence_factor = 0.07
-		air_paradrop_agility_factor = 0.07
+		paradrop_organization_factor = 1.8
+		paratrooper_aa_defense = 0.25
 		#experience_gain_air = @experience_gain_high
 
 		command_cap = @tier3
@@ -10053,5 +10640,22 @@ leader_traits = {
 			factor = 1
 		}
 	}
+	
+surveyor = { 
+		sprite = 5
+		army_speed_factor = 0.1
+		initiative_factor = 0.08
+		land_reinforce_rate = 0.02
+		#experience_gain_army = @experience_gain_medium
 
+		command_cap = @tier2
+
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0
+				command_power < @tier2
+			}
+		}
+	}
 }
