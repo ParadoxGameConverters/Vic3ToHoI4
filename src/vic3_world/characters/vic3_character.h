@@ -69,6 +69,7 @@ class Character
    void SetHomeTag(std::string tag) { origin_tag_ = std::move(tag); }
    void SetOriginCountryId(int id) { origin_country_id_ = id; }
    void SetIgId(const int id) { ig_id_ = id; }
+   void SetCommander() { formation_id_ = 0; }  // For backwards compatibility with pre 1.5 Vic
 
    std::partial_ordering operator<=>(const Character&) const = default;
 

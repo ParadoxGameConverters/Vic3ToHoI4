@@ -58,14 +58,32 @@ std::set<int> ImportExilePool(std::istream& input_stream)
    Log(LogLevel::Info) << fmt::format("\tFound {} homeless agitators.", exile_pool.size());
    return exile_pool;
 }
+
+//// For backwards compatibility with pre 1.5 Vic - uses HQs
+std::set<int> ImportEmployedCommanders(std::istream& input_stream)
+{
+   std::set<int> hired_commanders;
+   commonItems::parser map_parser;
+   map_parser.registerRegex(commonItems::integerRegex,
+       [&hired_commanders](const std::string& hq_number_string, std::istream& input_stream) {
+          std::ranges::copy(commonItems::getInts(input_stream),
+              std::inserter(hired_commanders, hired_commanders.begin()));
+       });
+   map_parser.IgnoreUnregisteredItems();
+   map_parser.parseStream(input_stream);
+
+   Log(LogLevel::Info) << fmt::format("\tFound {} commanders employed in HQs.", hired_commanders.size());
+   return hired_commanders;
+}
+//
+
 int ImportObituary(std::istream& input_stream)
 {
-    int obituary = 0;
+   int obituary = 0;
    commonItems::parser map_parser;
-   map_parser.registerKeyword("object",
-       [&obituary](std::istream& input_stream) {
-           obituary = commonItems::getInt(input_stream);
-       });
+   map_parser.registerKeyword("object", [&obituary](std::istream& input_stream) {
+      obituary = commonItems::getInt(input_stream);
+   });
    map_parser.IgnoreUnregisteredItems();
    map_parser.parseStream(input_stream);
 
@@ -73,15 +91,15 @@ int ImportObituary(std::istream& input_stream)
 }
 std::set<int> ImportObituaries(std::istream& input_stream)
 {
-    std::set<int> obituaries;
-    const auto& blobs = commonItems::blobList(input_stream);
-    for (const std::string& blob : blobs.getBlobs())
-    {
-        auto obit_stream = std::stringstream(blob);
-        obituaries.insert(ImportObituary(obit_stream));
-    }
+   std::set<int> obituaries;
+   const auto& blobs = commonItems::blobList(input_stream);
+   for (const std::string& blob: blobs.getBlobs())
+   {
+      auto obit_stream = std::stringstream(blob);
+      obituaries.insert(ImportObituary(obit_stream));
+   }
    Log(LogLevel::Info) << fmt::format("\tFound {} dead characters. Hiding the bodies.", obituaries.size());
-    return obituaries;
+   return obituaries;
 }
 }  // namespace
 
@@ -99,14 +117,16 @@ vic3::CharacterManager::CharacterManager(std::istream& input_stream)
    character_manager_parser_.registerKeyword("character_ig_map", [this](std::istream& input_stream) {
       character_ig_map_ = ImportCharacterIgMap(input_stream);
    });
+   character_manager_parser_.registerKeyword("home_hq_character_map", [this](std::istream& input_stream) {
+      hired_commanders_ = ImportEmployedCommanders(input_stream);
+   });
    character_manager_parser_.registerKeyword("dead_objects", [this](std::istream& input_stream) {
-       commonItems::parser dead_parser;
-       dead_parser.registerKeyword("dead_objects",
-           [this](std::istream& input_stream) {
-               obituaries_ = ImportObituaries(input_stream);
-           });
-       dead_parser.IgnoreUnregisteredItems();
-       dead_parser.parseStream(input_stream);
+      commonItems::parser dead_parser;
+      dead_parser.registerKeyword("dead_objects", [this](std::istream& input_stream) {
+         obituaries_ = ImportObituaries(input_stream);
+      });
+      dead_parser.IgnoreUnregisteredItems();
+      dead_parser.parseStream(input_stream);
    });
    character_manager_parser_.registerKeyword("exile_pool", [this](std::istream& input_stream) {
       exile_pool_ = ImportExilePool(input_stream);
@@ -116,6 +136,7 @@ vic3::CharacterManager::CharacterManager(std::istream& input_stream)
 
    AssignHomeTagToExiles();
    AssignIgToCharacters();
+   HireCommanders();
 }
 
 void vic3::CharacterManager::AssignHomeTagToExiles()
@@ -144,7 +165,7 @@ void vic3::CharacterManager::AssignIgToCharacters()
 
       if (obituaries_.contains(character.GetId()))
       {
-          continue;
+         continue;
       }
 
       if (const auto itr = character_ig_map_.find(character.GetId()); itr != character_ig_map_.end())
@@ -157,6 +178,22 @@ void vic3::CharacterManager::AssignIgToCharacters()
              character.GetFirstName(),
              character.GetLastName(),
              character.GetId());
+      }
+   }
+}
+
+void vic3::CharacterManager::HireCommanders()
+{
+   for (auto& character: characters_ | std::views::values)
+   {
+      if (character.IsCommander())
+      {
+         break;
+      }
+
+      if (hired_commanders_.contains(character.GetId()))
+      {
+         character.SetCommander();
       }
    }
 }

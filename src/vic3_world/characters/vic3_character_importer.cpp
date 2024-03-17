@@ -74,5 +74,5 @@ vic3::Character vic3::CharacterImporter::ImportCharacter(const int id, std::istr
        .rank = rank_,
        .ideology = ideology_,
        .traits = traits_,
-   .formation_id = formation_id_});
+       .formation_id = formation_id_});
 }

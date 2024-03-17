@@ -69,7 +69,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CharactersCanBeImported)
                    .rank = 2,
                    .ideology = "ideology_1",
                    .traits = {"trait_2", "trait_3"},
-               .formation_id = 238}))));
+                   .formation_id = 238}))));
 }
 
 
@@ -113,33 +113,64 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, IgsAreAssigned)
        testing::UnorderedElementsAre(testing::Pair(1, Character({.id = 1, .ig_id = 1})),
            testing::Pair(3, Character({.id = 3, .ig_id = 2}))));
 }
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, EmployedCommandersAreMarked)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "database={\n";
+   input << "1 = {\n";
+   input << "role = general\n";
+   input << "}\n";
+   input << "3 ={ \n";
+   input << "role = general\n";
+   input << "}\n";
+   input << "4 = {\n";
+   input << "role = admiral\n";
+   input << "}\n";
+   input << "6 ={ \n";
+   input << "role = admiral\n";
+   input << "}\n";
+   input << "}\n";
+   input << "home_hq_character_map={\n";
+   input << "max=6552\n";
+   input << "14151 = { 1 4 }\n";
+   input << "}\n";
+
+   CharacterManager character_manager(input);
+   EXPECT_THAT(character_manager.GetCharacters(),
+       testing::UnorderedElementsAre(testing::Pair(1, Character({.id = 1, .roles = {"general"}, .formation_id = 0})),
+           testing::Pair(3, Character({.id = 3, .roles = {"general"}, .formation_id = std::nullopt})),
+           testing::Pair(4, Character({.id = 4, .roles = {"admiral"}, .formation_id = 0})),
+           testing::Pair(6, Character({.id = 6, .roles = {"admiral"}, .formation_id = std::nullopt}))));
+}
+
 
 TEST(Vic3WorldCharactersVic3CharacterManagerImporter, TheDeadAreLogged)
 {
-    std::stringstream input;
-    input << "={\n";
-    input << "database={\n";
-    input << "1 = {\n";
-    input << "}\n";
-    input << "3 ={ \n";
-    input << "}\n";
-    input << "}\n";
-    input << "dead_objects={\n";
-    input << "dead_objects={\n";
-    input << "{ object = 3 \ndeath_date = 1899.12.15 }\n"; 
-    input << "{ object = 1 \ndeath_date = 1869.12.17 }\n"; 
+   std::stringstream input;
+   input << "={\n";
+   input << "database={\n";
+   input << "1 = {\n";
+   input << "}\n";
+   input << "3 ={ \n";
+   input << "}\n";
+   input << "}\n";
+   input << "dead_objects={\n";
+   input << "dead_objects={\n";
+   input << "{ object = 3 \ndeath_date = 1899.12.15 }\n";
+   input << "{ object = 1 \ndeath_date = 1869.12.17 }\n";
    input << "}\n";
    input << "}\n";
 
-    std::stringstream log;
-    std::streambuf* cout_buffer = std::cout.rdbuf();
-    std::cout.rdbuf(log.rdbuf());
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
 
-    CharacterManager _(input);
+   CharacterManager _(input);
 
-    std::cout.rdbuf(cout_buffer);
+   std::cout.rdbuf(cout_buffer);
 
-    EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tFound 2 dead characters. Hiding the bodies.\n"));
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tFound 2 dead characters. Hiding the bodies.\n"));
 }
 
 
@@ -350,6 +381,29 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsMatchesAreLogged
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tFound home countries of 1 exiles.\n"));
+}
+
+
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OldCommanderCountIsLogged)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "home_hq_character_map={\n";
+   input << "max=6552\n";
+   input << "14151 = { 1 2 3 4 5 6 7 }\n";
+   input << "25617 = { 8 9 10 }\n";
+   input << "}\n";
+   input << "}\n";
+
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   CharacterManager _(input);
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tFound 10 commanders employed in HQs.\n"));
 }
 
 }  // namespace vic3
