@@ -48,7 +48,7 @@ struct CountryOptions
    std::set<int> primary_culture_ids;
    std::set<std::string> primary_cultures;
    std::optional<date> last_election;
-   std::int64_t head_of_state_id = 0;
+   int head_of_state_id = 0;
    std::vector<int> character_ids;
    std::vector<int> ig_ids;
    std::set<int> puppets;
@@ -121,7 +121,7 @@ class Country
    [[nodiscard]] const std::set<std::string>& GetPrimaryCultures() const { return primary_cultures_; }
    [[nodiscard]] const std::set<int>& GetPrimaryCultureIds() const { return primary_culture_ids_; }
    [[nodiscard]] const std::optional<date>& GetLastElection() const { return last_election_; }
-   [[nodiscard]] std::int64_t GetHeadOfStateId() const { return head_of_state_id_; }
+   [[nodiscard]] int GetHeadOfStateId() const { return head_of_state_id_; }
    [[nodiscard]] const std::vector<int>& GetCharacterIds() const { return character_ids_; }
    [[nodiscard]] const std::vector<int>& GetInterestGroupIds() const { return ig_ids_; }
    [[nodiscard]] const std::set<int>& GetPuppets() const { return puppets_; }
@@ -171,7 +171,7 @@ class Country
    std::set<std::string> primary_cultures_;
    std::set<int> primary_culture_ids_;  // Resolve to culture name before HoI
    std::optional<date> last_election_;
-   std::int64_t head_of_state_id_ = 0;
+   int head_of_state_id_ = 0;
    std::vector<int> character_ids_;
    std::vector<int> ig_ids_;
    std::set<int> puppets_;

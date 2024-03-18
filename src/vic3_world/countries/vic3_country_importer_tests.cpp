@@ -78,6 +78,21 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
 }
 
 
+TEST(Vic3WorldCountriesCountryImporter, LongSentinelValueMapsToNegativeOne)
+{
+   std::stringstream input;
+   input << "={\n";
+   input << "\tcapital=4294967295\n";
+   input << "\truler=4294967295\n";
+   input << "}";
+   const auto country = CountryImporter{}.ImportCountry(42, input, {});
+
+   EXPECT_TRUE(country.has_value());
+   EXPECT_EQ(country.value_or(Country({})).GetCapitalState(), std::optional<int>(-1));
+   EXPECT_EQ(country.value_or(Country({})).GetHeadOfStateId(), -1);
+}
+
+
 TEST(Vic3WorldCountriesCountryImporter, Pre1_5DynamicsCanBeImported)
 {
    std::stringstream input;

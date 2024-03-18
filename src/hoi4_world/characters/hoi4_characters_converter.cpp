@@ -88,7 +88,8 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
    }
 
    int leader_id;
-   if (leader_type == "prime_minister")
+   // If head of state doesn't exist, default to prime_minister. (Happens with monarchical subjects.)
+   if (leader_type == "prime_minister" || source_country.GetHeadOfStateId() == -1)
    {
       leader_id = FindPrimeMinister(igs, source_country);
    }
