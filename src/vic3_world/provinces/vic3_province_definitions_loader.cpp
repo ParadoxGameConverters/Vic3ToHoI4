@@ -20,12 +20,7 @@ vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions(const commonItems::ModFi
        });
    parser.IgnoreAndLogUnregisteredItems();
 
-   const auto& terrains_file = mod_filesystem.GetActualFileLocation("/map_data/province_terrains.txt");
-   if (!terrains_file.has_value())
-   {
-      throw std::runtime_error("Could not find /map_data/province_terrains.txt");
-   }
-   parser.parseFile(*terrains_file);
+   parser.parseFile("configurables/province_terrains.txt");
 
    return ProvinceDefinitions(province_definitions);
 }
