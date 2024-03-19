@@ -5,7 +5,7 @@
 
 
 
-vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem)
+vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions()
 {
    std::vector<std::string> province_definitions;
 
