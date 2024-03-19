@@ -100,7 +100,15 @@ vic3::CountryImporter::CountryImporter()
       }
    });
    country_parser_.registerKeyword("ruler", [this](std::istream& input_stream) {
-      options_.head_of_state_id = commonItems::getLlong(input_stream);
+      const int64_t temp_number = commonItems::getLlong(input_stream);
+      if (temp_number == 4294967295)
+      {
+         options_.head_of_state_id = -1;
+      }
+      else
+      {
+         options_.head_of_state_id = static_cast<int>(temp_number);
+      }
    });
 
    country_parser_.registerKeyword("dead", [this](std::istream& input_stream) {
