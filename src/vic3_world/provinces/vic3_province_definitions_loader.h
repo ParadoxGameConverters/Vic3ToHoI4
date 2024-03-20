@@ -15,7 +15,7 @@
 namespace vic3
 {
 
-[[nodiscard]] ProvinceDefinitions LoadProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem);
+[[nodiscard]] ProvinceDefinitions LoadProvinceDefinitions();
 
 }  // namespace vic3
 

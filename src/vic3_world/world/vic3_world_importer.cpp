@@ -361,7 +361,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
    commonItems::ModFilesystem mod_filesystem(fmt::format("{}/game", configuration.vic3_directory),
        mod_loader.getMods());
-   world_options.province_definitions = LoadProvinceDefinitions(mod_filesystem);
+   world_options.province_definitions = LoadProvinceDefinitions();
    world_options.state_regions = ImportStateRegions(mod_filesystem);
    commonItems::LocalizationDatabase localizations("english",
        {"braz_por",
