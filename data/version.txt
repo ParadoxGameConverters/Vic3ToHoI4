@@ -1,7 +1,7 @@
 # Version info
 
 version = "0.4.0"
-name = "TBD"
+name = "Doorman"
 source = "Vic3"
 minSource = "1.3"
 maxSource = "1.6"
