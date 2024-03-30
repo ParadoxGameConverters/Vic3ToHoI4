@@ -29,7 +29,7 @@ struct RoleOptions
 class Role
 {
   public:
-   Role(RoleOptions options):
+   explicit Role(RoleOptions options):
        name_(std::move(options.name)),
        category_(std::move(options.category)),
        requirements_(std::move(options.requirements)),
@@ -42,6 +42,17 @@ class Role
        events_(std::move(options.events))
    {
    }
+
+   [[nodiscard]] const std::string& GetName() const { return name_; }
+   [[nodiscard]] const std::string& GetCategory() const { return category_; }
+   [[nodiscard]] const std::string& GetRequirements() const { return requirements_; }
+   [[nodiscard]] float GetScore() const { return score_; }
+   [[nodiscard]] const std::vector<std::string>& GetBlockers() const { return blockers_; }
+   [[nodiscard]] const std::vector<std::string>& GetFocuses() const { return focuses_; }
+   [[nodiscard]] const std::vector<std::string>& GetRepeatFocuses() const { return repeat_focuses_; }
+   [[nodiscard]] const std::vector<std::string>& GetRemovedFocuses() const { return removed_focuses_; }
+   [[nodiscard]] const std::vector<std::string>& GetDecisions() const { return decisions_; }
+   [[nodiscard]] const std::vector<std::string>& GetEvents() const { return events_; }
 
   private:
    std::string name_;
