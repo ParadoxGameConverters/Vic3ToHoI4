@@ -321,7 +321,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    hoi4::Buildings buildings = buildings_future.get();
 
    Log(LogLevel::Info) << "Writing stories";
-   std::vector<Role> roles = ImportRoles();
+   std::map<std::string, Role> roles = ImportRoles();
    Log(LogLevel::Info) << fmt::format("\tImported {} roles.", roles.size());
 
    return hoi4::World(hoi4::WorldOptions{.countries = countries,

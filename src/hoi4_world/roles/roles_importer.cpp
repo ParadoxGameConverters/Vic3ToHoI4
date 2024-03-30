@@ -7,15 +7,15 @@
 
 
 
-std::vector<hoi4::Role> hoi4::ImportRoles()
+std::map<std::string, hoi4::Role> hoi4::ImportRoles()
 {
-   std::vector<hoi4::Role> roles;
+   std::map<std::string, hoi4::Role> roles;
 
    RoleImporter role_importer;
    commonItems::parser roles_parser;
    roles_parser.registerRegex(commonItems::catchallRegex,
        [&roles, &role_importer](const std::string name, std::istream& input) {
-          roles.emplace_back(role_importer.ImportRole(name, input));
+          roles.emplace(name, role_importer.ImportRole(name, input));
        });
 
    for (const std::string& roles_file: commonItems::GetAllFilesInFolderRecursive("configurables/stories"))

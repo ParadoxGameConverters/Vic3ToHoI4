@@ -3,7 +3,8 @@
 
 
 
-#include <vector>
+#include <map>
+#include <string>
 
 #include "role.h"
 
@@ -12,7 +13,7 @@
 namespace hoi4
 {
 
-std::vector<Role> ImportRoles();
+std::map<std::string, Role> ImportRoles();
 
 }
 
