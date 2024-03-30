@@ -748,7 +748,7 @@
     <ClInclude Include="src\vic3_world\military\military_formations_importer.h">
       <Filter>src\vic3_world\military</Filter>
     </ClInclude>
-    <ClInclude Include="src\hoi4_world\roles\Role.h">
+    <ClInclude Include="src\hoi4_world\roles\role.h">
       <Filter>src\hoi4_world\roles</Filter>
     </ClInclude>
     <ClInclude Include="src\hoi4_world\roles\role_importer.h">
