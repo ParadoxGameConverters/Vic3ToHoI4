@@ -16,6 +16,7 @@
 #include "src/hoi4_world/map/railways_converter.h"
 #include "src/hoi4_world/map/resources_map_importer.h"
 #include "src/hoi4_world/map/strategic_regions_importer.h"
+#include "src/hoi4_world/roles/roles_importer.h"
 #include "src/hoi4_world/states/default_states_importer.h"
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 #include "src/hoi4_world/world/hoi4_world_framework_builder.h"
@@ -318,6 +319,11 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    hoi4::Railways railways = railways_future.get();
    hoi4::Buildings buildings = buildings_future.get();
+
+   Log(LogLevel::Info) << "Writing stories";
+   std::map<std::string, Role> roles = ImportRoles();
+   Log(LogLevel::Info) << fmt::format("\tImported {} roles.", roles.size());
+
    return hoi4::World(hoi4::WorldOptions{.countries = countries,
        .great_powers = great_powers,
        .major_powers = major_powers,

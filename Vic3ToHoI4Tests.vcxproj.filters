@@ -183,6 +183,9 @@
     <Filter Include="src\vic3_world\military">
       <UniqueIdentifier>{7b80163d-64f7-4031-959c-c160201e684e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\roles">
+      <UniqueIdentifier>{ae2f9cf6-49d6-43f2-85d9-cb73df446453}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -568,6 +571,12 @@
     </ClCompile>
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_tests.cpp">
       <Filter>src\hoi4_world\countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\roles\role_importer_tests.cpp">
+      <Filter>src\hoi4_world\roles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\roles\roles_importer_tests.cpp">
+      <Filter>src\hoi4_world\roles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,113 @@
+unification_italy = {
+
+    category=unification
+
+    requirements={
+        OR = {
+            tag=ITA
+            #has_idea = culture_all_italian #not sure if this would work with how the culture ideas in the converter are set up?
+        }
+    }
+
+    score=100
+
+    block_category=unification
+
+
+    focus={
+        id = $TAG$_italia_irredenta #start of tree for an italian unifier
+        icon = GFX_goal_generic_construction
+        x = $X_POSITION$
+        y = 0
+        cost = 10
+        ai_will_do = {
+            factor = 5
+        }
+
+
+        completion_reward = {
+            add_political_power = 50
+            add_war_support = 0.1
+        }
+    }
+
+    repeat_focus={ #creates wargoal and ai strategy vs another country that owns a core or claim of ITA
+        requirement={
+            any_other_country = {
+                    any_owned_state = {
+                        OR = {
+                            is_core_of = ITA
+                            is_claimed_by = ITA
+                        }
+                    }
+            }
+        }
+        focus={
+            id = $TAG$_invade_$TARGET_TAG$
+            icon = GFX_goal_generic_more_territorial_claims
+            relative_position_id = $TAG$_italia_irredenta
+            x = -1
+            y = 1
+            cost = 10
+            prerequisite = { focus = $TAG$_italia_irredenta }
+            
+            available = {
+                $TARGET_TAG$ = {
+                    can_ROOT_get_wargoal_on_THIS = yes
+                }
+            }
+            
+            ai_will_do = {
+                factor = 1
+                    modifier = { #don't try it if we're getting our ass kicked
+                        factor = 0
+                        surrender_progress > 0.01
+                    }
+                    modifier = { #don't try it if we can't reach them
+                        factor = 0
+                        $TARGET_TAG$ = {
+                            NOT = {
+                                OR = {
+                                    is_neighbor_of = $TAG$
+                                    $TARGET_TAG$ = {
+                                        any_owned_state = {
+                                            is_coastal = yes
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+            }
+            
+            bypass = {
+                has_war_with = $TARGET_TAG$
+            }
+            
+            will_lead_to_war_with = $TARGET_TAG$
+            
+            select_effect = { #should make AI prepare to invade
+                add_ai_strategy = {
+                    type = prepare_for_war
+                    id = $TARGET_TAG$
+                    value = 100
+                }
+            }
+            
+            completion_reward = { #wargoal would be more appropriate as take_claimed_state or such, maybe
+                create_wargoal = {
+                    type = annex_everything
+                    target = $TARGET_TAG$
+                }
+                add_ai_strategy = {
+                    type = conquer
+                    id = $TARGET_TAG$
+                    value = 200
+                }
+            }
+            
+        }
+    }
+    
+}
