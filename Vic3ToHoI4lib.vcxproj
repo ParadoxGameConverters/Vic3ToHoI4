@@ -57,6 +57,7 @@
     <ClInclude Include="src\hoi4_world\military\task_force_template.h" />
     <ClInclude Include="src\hoi4_world\military\task_force_templates_builder.h" />
     <ClInclude Include="src\hoi4_world\roles\role.h" />
+    <ClInclude Include="src\hoi4_world\roles\roles_importer.h" />
     <ClInclude Include="src\hoi4_world\roles\role_importer.h" />
     <ClInclude Include="src\hoi4_world\states\default_state.h" />
     <ClInclude Include="src\hoi4_world\states\default_states_importer.h" />
@@ -212,6 +213,7 @@
     <ClCompile Include="src\hoi4_world\military\task_force.cpp" />
     <ClCompile Include="src\hoi4_world\military\task_force_template.cpp" />
     <ClCompile Include="src\hoi4_world\military\task_force_templates_builder.cpp" />
+    <ClCompile Include="src\hoi4_world\roles\roles_importer.cpp" />
     <ClCompile Include="src\hoi4_world\roles\role_importer.cpp" />
     <ClCompile Include="src\hoi4_world\states\default_states_importer.cpp" />
     <ClCompile Include="src\hoi4_world\states\hoi4_state.cpp" />

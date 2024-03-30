@@ -54,6 +54,8 @@ class Role
    [[nodiscard]] const std::vector<std::string>& GetDecisions() const { return decisions_; }
    [[nodiscard]] const std::vector<std::string>& GetEvents() const { return events_; }
 
+   std::partial_ordering operator<=>(const Role&) const = default;
+
   private:
    std::string name_;
    std::string category_;
