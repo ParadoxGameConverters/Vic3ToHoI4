@@ -20,7 +20,10 @@ std::vector<std::pair<Tag, CombinationName>> MakeCombinations(const std::map<std
    {
       for (const auto& [country_tag, country]: countries)
       {
-         combinations.emplace_back(country_tag, role_name);
+         if (country_tag == "ITA")
+         {
+            combinations.emplace_back(country_tag, role_name);
+         }
       }
    }
 
