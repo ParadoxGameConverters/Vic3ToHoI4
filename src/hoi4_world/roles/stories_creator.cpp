@@ -5,9 +5,39 @@
 
 
 
-void hoi4::CreateStories()
+namespace
+{
+
+using Tag = std::string;
+using CombinationName = std::string;
+
+std::vector<std::pair<Tag, CombinationName>> MakeCombinations(const std::map<std::string, hoi4::Role>& roles,
+    const std::map<std::string, hoi4::Country>& countries)
+{
+   std::vector<std::pair<Tag, CombinationName>> combinations;
+
+   for (const auto& [role_name, role]: roles)
+   {
+      for (const auto& [country_tag, country]: countries)
+      {
+         combinations.emplace_back(country_tag, role_name);
+      }
+   }
+
+   return combinations;
+}
+
+}  // namespace
+
+
+
+void hoi4::CreateStories(const std::map<std::string, hoi4::Country>& countries)
 {
    Log(LogLevel::Info) << "Writing stories";
-   std::map<std::string, Role> roles = ImportRoles();
+
+   const std::map<std::string, Role> roles = ImportRoles();
    Log(LogLevel::Info) << fmt::format("\tImported {} roles.", roles.size());
+
+   const std::vector<std::pair<Tag, CombinationName>> role_combinations = MakeCombinations(roles, countries);
+   Log(LogLevel::Info) << fmt::format("\tCreated {} role combinations.", role_combinations.size());
 }
