@@ -1,5 +1,7 @@
 #include "src/hoi4_world/roles/stories_creator.h"
 
+#include <ranges>
+
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/roles/roles_importer.h"
 
@@ -11,6 +13,7 @@ namespace
 using Tag = std::string;
 using CombinationName = std::string;
 
+
 std::vector<std::pair<Tag, CombinationName>> MakeCombinations(const std::map<std::string, hoi4::Role>& roles,
     const std::map<std::string, hoi4::Country>& countries)
 {
@@ -18,9 +21,18 @@ std::vector<std::pair<Tag, CombinationName>> MakeCombinations(const std::map<std
 
    for (const auto& [role_name, role]: roles)
    {
-      for (const auto& [country_tag, country]: countries)
+      // scan for 'tag=TAG' constructs
+      std::regex tag_match_regex(R"([\s\S]+tag=(.+)[\s\S]+)");
+      std::smatch match;
+      if (!std::regex_match(role.GetRequirements(), match, tag_match_regex))
       {
-         if (country_tag == "ITA")
+         continue;
+      }
+      std::string required_tag = match[1];
+
+      for (const std::string& country_tag: countries | std::views::keys)
+      {
+         if (required_tag == country_tag)
          {
             combinations.emplace_back(country_tag, role_name);
          }
