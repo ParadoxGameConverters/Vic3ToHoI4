@@ -98,7 +98,7 @@ std::istringstream MeltSave(const rakaly::GameFile& save, const std::string& sav
    const auto melt = save.melt();
    if (melt.has_unknown_tokens())
    {
-      throw std::runtime_error("Unable to melt ironman save");
+      Log(LogLevel::Warning) << "Save had unmeltable tokens.";
    }
 
    std::string melted_save_string;
