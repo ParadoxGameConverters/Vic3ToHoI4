@@ -13,6 +13,7 @@ vic3::PactImporter::PactImporter()
    targets_parser_.registerKeyword("second", [this](std::istream& input_stream) {
       second_id_ = commonItems::getInt(input_stream);
    });
+   targets_parser_.IgnoreUnregisteredItems();
 
    pact_parser_.registerKeyword("targets", [this](std::istream& input_stream) {
       targets_parser_.parseStream(input_stream);
