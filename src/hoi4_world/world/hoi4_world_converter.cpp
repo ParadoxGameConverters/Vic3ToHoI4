@@ -320,7 +320,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    hoi4::Railways railways = railways_future.get();
    hoi4::Buildings buildings = buildings_future.get();
 
-   CreateStories();
+   CreateStories(countries);
 
    return hoi4::World(hoi4::WorldOptions{.countries = countries,
        .great_powers = great_powers,
