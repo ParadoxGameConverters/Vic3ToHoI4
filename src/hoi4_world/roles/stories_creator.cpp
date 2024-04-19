@@ -30,6 +30,8 @@ std::vector<std::pair<Tag, CombinationName>> MakeCombinations(const std::map<std
       }
       std::string required_tag = match[1];
 
+      // even though a direct lookup would suffice for this simple condition, loop over all countries because we'll
+      // eventually have more complex conditions that aren't so easily checked
       for (const std::string& country_tag: countries | std::views::keys)
       {
          if (required_tag == country_tag)
