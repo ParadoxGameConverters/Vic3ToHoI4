@@ -31,8 +31,18 @@ database={
 
    const std::vector<War> wars = ImportWars(input);
    EXPECT_THAT(wars,
-       testing::ElementsAre(War({.original_attacker = 144, .original_defender = 169}),
-           War({.original_attacker = 12, .original_defender = 13})));
+       testing::ElementsAre(War({
+                                .original_attacker = 144,
+                                .attackers = {144},
+                                .original_defender = 169,
+                                .defenders = {169},
+                            }),
+           War({
+               .original_attacker = 12,
+               .attackers = {12},
+               .original_defender = 13,
+               .defenders = {13},
+           })));
 }
 
 

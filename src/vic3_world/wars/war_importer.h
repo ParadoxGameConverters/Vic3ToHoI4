@@ -24,8 +24,9 @@ class WarImporter
    commonItems::parser war_parser_;
 
    std::optional<int> initiator_;
+   std::vector<int> additional_initiators_;
    std::optional<int> target_;
-   std::vector<int> involved_;
+   std::vector<int> additional_targets_;
    std::optional<int64_t> war_;
 };
 
