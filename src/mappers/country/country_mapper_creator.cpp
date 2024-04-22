@@ -40,6 +40,10 @@ std::map<std::string, std::string> ImportMappingRules(std::string_view country_m
           {
              country_mapping_rules.emplace(vic3_tag, hoi4_tag);
           }
+          else
+          {
+             Log(LogLevel::Warning) << fmt::format("{} is a disallowed tag, skipping", hoi4_tag);
+          }
        });
 
    country_mappings_parser.parseFile(country_mappings_file);
