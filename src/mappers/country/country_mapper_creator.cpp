@@ -13,6 +13,9 @@
 namespace
 {
 
+const std::set<std::string> kDisallowedTags{"CON", "PRN", "AUX", "NUL"};
+
+
 std::map<std::string, std::string> ImportMappingRules(std::string_view country_mappings_file)
 {
    std::map<std::string, std::string> country_mapping_rules;  // vic3 tag -> hoi4 tag
@@ -33,7 +36,10 @@ std::map<std::string, std::string> ImportMappingRules(std::string_view country_m
           vic3_tag.clear();
           hoi4_tag.clear();
           mapping_rule_parser.parseStream(input_stream);
-          country_mapping_rules.emplace(vic3_tag, hoi4_tag);
+          if (!kDisallowedTags.contains(hoi4_tag))
+          {
+             country_mapping_rules.emplace(vic3_tag, hoi4_tag);
+          }
        });
 
    country_mappings_parser.parseFile(country_mappings_file);
@@ -82,6 +88,10 @@ mappers::CountryMappingCreator::CountryMappingCreator(std::string_view country_m
    AddCountryWithVicId = [this](const vic3::Country& country) -> bool {
       const auto& vic3_tag = country.GetTag();
       if (IsDynamicTag(vic3_tag))
+      {
+         return false;
+      }
+      if (kDisallowedTags.contains(vic3_tag))
       {
          return false;
       }

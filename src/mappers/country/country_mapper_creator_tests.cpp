@@ -62,6 +62,24 @@ TEST(MappersCountryCountryMapperCreator, SourceTagAsPrimaryFallback)
    EXPECT_EQ(country_mapper.GetHoiTag(4), "Z01");  // "D01" is a dynamic tag, fall back to the Znn system
 }
 
+
+TEST(MappersCountryCountryMapperCreator, DisallowedSourceTagsAreNotPrimaryFallback)
+{
+   const std::map<int, vic3::Country> source_countries{
+       {1, vic3::Country({.number = 1, .tag = "CON"})},
+       {2, vic3::Country({.number = 2, .tag = "PRN"})},
+       {3, vic3::Country({.number = 3, .tag = "AUX"})},
+       {4, vic3::Country({.number = 4, .tag = "NUL"})},
+   };
+
+   const CountryMapper country_mapper = CreateCountryMappings("", source_countries);
+   EXPECT_EQ(country_mapper.GetHoiTag(1), "Z00");
+   EXPECT_EQ(country_mapper.GetHoiTag(2), "Z01");
+   EXPECT_EQ(country_mapper.GetHoiTag(3), "Z02");
+   EXPECT_EQ(country_mapper.GetHoiTag(4), "Z03");
+}
+
+
 TEST(MappersCountryCountryMapperCreator, CivilWarCountryIsSecondary)
 {
    const std::map<int, vic3::Country> source_countries{
@@ -81,6 +99,10 @@ TEST(MappersCountryCountryMapperCreator, MappingsCanComeFromRulesFile)
        {2, vic3::Country({.number = 2, .tag = "TWO"})},
        {3, vic3::Country({.number = 3, .tag = "THR"})},
        {4, vic3::Country({.number = 4, .tag = "Z00"})},
+       {5, vic3::Country({.number = 5, .tag = "NO0"})},
+       {6, vic3::Country({.number = 6, .tag = "NO1"})},
+       {7, vic3::Country({.number = 7, .tag = "NO2"})},
+       {8, vic3::Country({.number = 8, .tag = "NO3"})},
    };
 
    const CountryMapper country_mapper = CreateCountryMappings(
@@ -90,6 +112,10 @@ TEST(MappersCountryCountryMapperCreator, MappingsCanComeFromRulesFile)
    EXPECT_EQ(country_mapper.GetHoiTag(2), "2ND");  // From rule.
    EXPECT_EQ(country_mapper.GetHoiTag(3), "Z00");  // From rule.
    EXPECT_EQ(country_mapper.GetHoiTag(4), "Z01");  // Generated. Previous rule generated Z00, so advanced to Z01.
+   EXPECT_EQ(country_mapper.GetHoiTag(5), "NO0");  // Vic3 tag. Rule had a disallowed tag.
+   EXPECT_EQ(country_mapper.GetHoiTag(6), "NO1");  // Vic3 tag. Rule had a disallowed tag.
+   EXPECT_EQ(country_mapper.GetHoiTag(7), "NO2");  // Vic3 tag. Rule had a disallowed tag.
+   EXPECT_EQ(country_mapper.GetHoiTag(8), "NO3");  // Vic3 tag. Rule had a disallowed tag.
 }
 
 }  // namespace mappers
