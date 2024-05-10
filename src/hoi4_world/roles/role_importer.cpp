@@ -21,6 +21,9 @@ hoi4::RoleImporter::RoleImporter()
    role_parser_.registerKeyword("block_category", [this](std::istream& input) {
       role_options_.blockers.emplace_back(commonItems::getString(input));
    });
+   role_parser_.registerKeyword("shared_focus", [this](std::istream& input) {
+      role_options_.shared_focuses.emplace_back(commonItems::getString(input));
+   });
    role_parser_.registerKeyword("focus", [this](std::istream& input) {
       role_options_.focuses.emplace_back(commonItems::stringOfItem(input).getString());
    });

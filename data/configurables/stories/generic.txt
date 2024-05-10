@@ -1,0 +1,59 @@
+generic_army = {
+    category=generic
+
+    requirements={
+        always = yes
+    }
+
+    score=100004
+
+    shared_focus = army_effort
+}
+
+generic_aviation = {
+    category=generic
+
+    requirements={
+        always = yes
+    }
+
+    score=100003
+
+    shared_focus = aviation_effort
+}
+
+generic_naval = {
+    category=generic
+
+    requirements={
+        always = yes
+    }
+
+    score=100002
+
+    shared_focus = naval_effort
+}
+
+generic_industry = {
+    category=generic
+
+    requirements={
+        always = yes
+    }
+
+    score=100001
+
+    shared_focus = industrial_effort
+}
+
+generic_political = {
+    category=generic
+
+    requirements={
+        always = yes
+    }
+
+    score=100000
+
+    shared_focus = political_effort
+}
