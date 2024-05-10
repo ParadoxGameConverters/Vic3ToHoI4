@@ -40,6 +40,7 @@ struct Unit
 
 struct CountryOptions
 {
+   int source_country_number;
    std::string tag;
    commonItems::Color color;
    std::optional<int> capital_state;
@@ -76,6 +77,7 @@ class Country
 {
   public:
    explicit Country(CountryOptions country_options):
+       source_country_number_(country_options.source_country_number),
        tag_(std::move(country_options.tag)),
        color_(country_options.color),
        capital_state_(country_options.capital_state),
@@ -109,7 +111,7 @@ class Country
    {
    }
 
-
+   [[nodiscard]] const int GetSourceCountryNumber() const { return source_country_number_; }
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
@@ -149,6 +151,7 @@ class Country
    friend void PrintTo(const Country& country, std::ostream* os);
 
   private:
+   int source_country_number_;
    std::string tag_;
    commonItems::Color color_;
    std::optional<int> capital_state_;
