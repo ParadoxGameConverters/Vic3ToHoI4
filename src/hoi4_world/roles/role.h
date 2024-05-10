@@ -18,6 +18,7 @@ struct RoleOptions
    std::string requirements;
    float score;
    std::vector<std::string> blockers;
+   std::vector<std::string> shared_focuses;
    std::vector<std::string> focuses;
    std::vector<std::string> repeat_focuses;
    std::vector<std::string> removed_focuses;
@@ -35,6 +36,7 @@ class Role
        requirements_(std::move(options.requirements)),
        score_(options.score),
        blockers_(std::move(options.blockers)),
+       shared_focuses_(std::move(options.shared_focuses)),
        focuses_(std::move(options.focuses)),
        repeat_focuses_(std::move(options.repeat_focuses)),
        removed_focuses_(std::move(options.removed_focuses)),
@@ -48,6 +50,7 @@ class Role
    [[nodiscard]] const std::string& GetRequirements() const { return requirements_; }
    [[nodiscard]] float GetScore() const { return score_; }
    [[nodiscard]] const std::vector<std::string>& GetBlockers() const { return blockers_; }
+   [[nodiscard]] const std::vector<std::string>& GetSharedFocuses() const { return shared_focuses_; }
    [[nodiscard]] const std::vector<std::string>& GetFocuses() const { return focuses_; }
    [[nodiscard]] const std::vector<std::string>& GetRepeatFocuses() const { return repeat_focuses_; }
    [[nodiscard]] const std::vector<std::string>& GetRemovedFocuses() const { return removed_focuses_; }
@@ -62,6 +65,7 @@ class Role
    std::string requirements_;
    float score_;
    std::vector<std::string> blockers_;
+   std::vector<std::string> shared_focuses_;
    std::vector<std::string> focuses_;
    std::vector<std::string> repeat_focuses_;
    std::vector<std::string> removed_focuses_;

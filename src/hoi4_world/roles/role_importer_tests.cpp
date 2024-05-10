@@ -19,6 +19,7 @@ TEST(Hoi4worldRolesRoleimporterTests, DefaultsAreDefaulted)
    EXPECT_TRUE(role.GetRequirements().empty());
    EXPECT_EQ(role.GetScore(), 0.0F);
    EXPECT_TRUE(role.GetBlockers().empty());
+   EXPECT_TRUE(role.GetSharedFocuses().empty());
    EXPECT_TRUE(role.GetFocuses().empty());
    EXPECT_TRUE(role.GetRepeatFocuses().empty());
    EXPECT_TRUE(role.GetRemovedFocuses().empty());
@@ -43,6 +44,8 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    input << "\tblock_role=unification_role\n";
    input << "\tblock_category=unification_category\n";
    input << "\n";
+   input << "\tshared_focus=army_effort\n";
+   input << "\tshared_focus=aviation_effort\n";
    input << "\tfocus={\n";
    input << "\t\tid = $TAG$_italia_irredenta #start of tree for an italian unifier\n";
    input << "\t}\n";
@@ -114,6 +117,7 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
        "\t}");
    EXPECT_FLOAT_EQ(role.GetScore(), 100.0F);
    EXPECT_THAT(role.GetBlockers(), testing::ElementsAre("unification_role", "unification_category"));
+   EXPECT_THAT(role.GetSharedFocuses(), testing::ElementsAre("army_effort", "aviation_effort"));
    EXPECT_THAT(role.GetFocuses(),
        testing::ElementsAre("= {\n"
                             "\t\tid = $TAG$_italia_irredenta #start of tree for an italian unifier\n"
