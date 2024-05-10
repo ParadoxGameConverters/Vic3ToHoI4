@@ -32,6 +32,14 @@ bool IsRoleValidForCountry(const hoi4::Role& role, const std::string& country_ta
       return country_tag == tag_match[1];
    }
 
+   // scan for 'has_culture=culture' constructs
+   const std::regex culture_match_regex(R"([\s\S]*has_culture[\s\S]?=[\s\S]?(.+)[\s\S]*)");
+   std::smatch culture_match;
+   if (std::regex_match(role.GetRequirements(), tag_match, tag_match_regex))
+   {
+       return country_tag == tag_match[1];
+   }
+
    return false;
 }
 

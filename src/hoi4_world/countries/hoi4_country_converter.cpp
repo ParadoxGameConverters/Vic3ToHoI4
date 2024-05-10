@@ -948,6 +948,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .tag = *tag,
        .color = source_country.GetColor(),
        .capital_state = capital_state,
+       .primary_cultures = source_country.GetPrimaryCultures(),
        .ideology = ideology,
        .sub_ideology = sub_ideology,
        .ideology_support = ideology_support,

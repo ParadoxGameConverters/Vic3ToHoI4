@@ -534,6 +534,41 @@ TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapi
 }
 
 
+TEST(Hoi4worldCountriesCountryConverter, PrimaryCulturesAreCopied)
+{
+   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::Country source_country_one({.number = 1, .primary_cultures = {"culture_one", "culture_two"}});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
+       {},
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       {0, {}},
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetPrimaryCultures(), testing::UnorderedElementsAre("culture_one", "culture_two"));
+}
+
+
 TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
