@@ -14,7 +14,7 @@ using Tag = std::string;
 using CombinationName = std::string;
 
 
-bool IsRoleValidForCountry(const hoi4::Role& role, const std::string& country_tag)
+bool IsRoleValidForCountry(const hoi4::Role& role, const std::string_view country_tag, const hoi4::Country& country)
 {
    // scan for 'always=yes' constructs
    const std::regex always_match_regex(R"([\s\S]*always[\s\S]?=[\s\S]?yes[\s\S]*)");
@@ -29,15 +29,15 @@ bool IsRoleValidForCountry(const hoi4::Role& role, const std::string& country_ta
    std::smatch tag_match;
    if (std::regex_match(role.GetRequirements(), tag_match, tag_match_regex))
    {
-      return country_tag == tag_match[1];
+      return tag_match[1] == std::string(country_tag);
    }
 
    // scan for 'has_culture=culture' constructs
    const std::regex culture_match_regex(R"([\s\S]*has_culture[\s\S]?=[\s\S]?(.+)[\s\S]*)");
    std::smatch culture_match;
-   if (std::regex_match(role.GetRequirements(), tag_match, tag_match_regex))
+   if (std::regex_match(role.GetRequirements(), culture_match, culture_match_regex))
    {
-       return country_tag == tag_match[1];
+      return country.GetPrimaryCultures().contains(tag_match[1]);
    }
 
    return false;
@@ -51,9 +51,9 @@ std::vector<std::pair<Tag, CombinationName>> MakeCombinations(const std::map<std
 
    for (const auto& [role_name, role]: roles)
    {
-      for (const std::string& country_tag: countries | std::views::keys)
+      for (const auto& [country_tag, country]: countries)
       {
-         if (IsRoleValidForCountry(role, country_tag))
+         if (IsRoleValidForCountry(role, country_tag, country))
          {
             combinations.emplace_back(country_tag, role_name);
          }
