@@ -4,20 +4,24 @@
 
 
 
+namespace hoi4
+{
+
 TEST(Hoi4worldMapHoi4provincedefinitionimporter, ExceptionThrownForNoDefinitions)
 {
-   commonItems::ModFilesystem mod_filesystem("", {});
+   const commonItems::ModFilesystem mod_filesystem("", {});
 
-   EXPECT_THROW(const maps::ProvinceDefinitions province_definitions = hoi4::ImportProvinceDefinitions(mod_filesystem),
+   EXPECT_THROW([[maybe_unused]] const maps::ProvinceDefinitions province_definitions =
+                    ImportProvinceDefinitions(mod_filesystem),
        std::runtime_error);
 }
 
 
 TEST(Hoi4worldMapHoi4provincedefinitionimporter, DefinitionsCanBeImported)
 {
-   commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
+   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
 
-   const maps::ProvinceDefinitions province_definitions = hoi4::ImportProvinceDefinitions(mod_filesystem);
+   const maps::ProvinceDefinitions province_definitions = ImportProvinceDefinitions(mod_filesystem);
 
    EXPECT_THAT(province_definitions.GetLandProvinces(),
        testing::UnorderedElementsAre("10", "20", "30", "40", "50", "60"));
@@ -26,9 +30,11 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, DefinitionsCanBeImported)
 
 TEST(Hoi4worldMapHoi4provincedefinitionimporter, SeaProvincesAreDetected)
 {
-   commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
+   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
 
-   const maps::ProvinceDefinitions province_definitions = hoi4::ImportProvinceDefinitions(mod_filesystem);
+   const maps::ProvinceDefinitions province_definitions = ImportProvinceDefinitions(mod_filesystem);
 
    EXPECT_TRUE(province_definitions.IsSeaProvince("2"));
 }
+
+}  // namespace hoi4

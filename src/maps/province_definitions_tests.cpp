@@ -4,9 +4,12 @@
 
 
 
+namespace maps
+{
+
 TEST(MapsProvincedefinitions, LandProvincesDefaultToEmpty)
 {
-   const maps::ProvinceDefinitions province_definitions;
+   const ProvinceDefinitions province_definitions;
 
    EXPECT_TRUE(province_definitions.GetLandProvinces().empty());
 }
@@ -14,7 +17,7 @@ TEST(MapsProvincedefinitions, LandProvincesDefaultToEmpty)
 
 TEST(MapsProvincedefinitions, LandProvincesAreReturned)
 {
-   const maps::ProvinceDefinitions province_definitions({.land_provinces = {"1", "2", "3", "4", "0x000005"}});
+   const ProvinceDefinitions province_definitions({.land_provinces = {"1", "2", "3", "4", "0x000005"}});
 
    EXPECT_THAT(province_definitions.GetLandProvinces(), testing::UnorderedElementsAre("1", "2", "3", "4", "0x000005"));
 }
@@ -22,7 +25,7 @@ TEST(MapsProvincedefinitions, LandProvincesAreReturned)
 
 TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotLandProvinces)
 {
-   const maps::ProvinceDefinitions province_definitions;
+   const ProvinceDefinitions province_definitions;
 
    EXPECT_FALSE(province_definitions.IsLandProvince("1"));
    EXPECT_FALSE(province_definitions.IsLandProvince("0x000002"));
@@ -31,7 +34,7 @@ TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotLandProvinces)
 
 TEST(MapsProvincedefinitions, ProvincesCanBeShownAreLandProvinces)
 {
-   const maps::ProvinceDefinitions province_definitions({.land_provinces = {"1", "0x000002"}});
+   const ProvinceDefinitions province_definitions({.land_provinces = {"1", "0x000002"}});
 
    EXPECT_TRUE(province_definitions.IsLandProvince("1"));
    EXPECT_TRUE(province_definitions.IsLandProvince("0x000002"));
@@ -40,7 +43,7 @@ TEST(MapsProvincedefinitions, ProvincesCanBeShownAreLandProvinces)
 
 TEST(MapsProvincedefinitions, SeaProvincesAreReturned)
 {
-   const maps::ProvinceDefinitions province_definitions({.sea_provinces = {"1", "2", "3", "4", "0x000005"}});
+   const ProvinceDefinitions province_definitions({.sea_provinces = {"1", "2", "3", "4", "0x000005"}});
 
    EXPECT_THAT(province_definitions.GetSeaProvinces(), testing::UnorderedElementsAre("1", "2", "3", "4", "0x000005"));
 }
@@ -48,7 +51,7 @@ TEST(MapsProvincedefinitions, SeaProvincesAreReturned)
 
 TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotSeaProvinces)
 {
-   const maps::ProvinceDefinitions province_definitions;
+   const ProvinceDefinitions province_definitions;
 
    EXPECT_FALSE(province_definitions.IsSeaProvince("1"));
    EXPECT_FALSE(province_definitions.IsSeaProvince("0x000002"));
@@ -57,7 +60,7 @@ TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotSeaProvinces)
 
 TEST(MapsProvincedefinitions, ProvincesCanBeShownAreSeaProvinces)
 {
-   const maps::ProvinceDefinitions province_definitions({.sea_provinces = {"1", "0x000002"}});
+   const ProvinceDefinitions province_definitions({.sea_provinces = {"1", "0x000002"}});
 
    EXPECT_TRUE(province_definitions.IsSeaProvince("1"));
    EXPECT_TRUE(province_definitions.IsSeaProvince("0x000002"));
@@ -66,7 +69,7 @@ TEST(MapsProvincedefinitions, ProvincesCanBeShownAreSeaProvinces)
 
 TEST(MapsProvincedefinitions, ColorWithNoProvinceReturnsNullopt)
 {
-   const maps::ProvinceDefinitions province_definitions;
+   const ProvinceDefinitions province_definitions;
 
    EXPECT_EQ(province_definitions.GetProvinceFromColor(commonItems::Color(std::array{0, 0, 0})), std::nullopt);
 }
@@ -74,7 +77,7 @@ TEST(MapsProvincedefinitions, ColorWithNoProvinceReturnsNullopt)
 
 TEST(MapsProvincedefinitions, ProvincesCanBeLookedUpByColor)
 {
-   const maps::ProvinceDefinitions province_definitions(
+   const ProvinceDefinitions province_definitions(
        {.color_to_province_map = {{{0x01'02'03, "1"}, {0x10'20'30, "0x000010"}}}});
 
    EXPECT_EQ(province_definitions.GetProvinceFromColor(commonItems::Color(std::array{1, 2, 3})), "1");
@@ -84,7 +87,7 @@ TEST(MapsProvincedefinitions, ProvincesCanBeLookedUpByColor)
 
 TEST(MapsProvincedefinitions, TerrainTypeDefaultsToNullopt)
 {
-   const maps::ProvinceDefinitions province_definitions;
+   const ProvinceDefinitions province_definitions;
 
    EXPECT_EQ(province_definitions.GetTerrainType("1"), std::nullopt);
    EXPECT_EQ(province_definitions.GetTerrainType("0x000002"), std::nullopt);
@@ -93,9 +96,11 @@ TEST(MapsProvincedefinitions, TerrainTypeDefaultsToNullopt)
 
 TEST(MapsProvincedefinitions, TerrainTypeCanBeLookedUp)
 {
-   const maps::ProvinceDefinitions province_definitions(
+   const ProvinceDefinitions province_definitions(
        {.terrain_types = {{"1", "test_terrain"}, {"0x000002", "test_terrain_two"}}});
 
    EXPECT_EQ(province_definitions.GetTerrainType("1"), "test_terrain");
    EXPECT_EQ(province_definitions.GetTerrainType("0x000002"), "test_terrain_two");
 }
+
+}  // namespace maps

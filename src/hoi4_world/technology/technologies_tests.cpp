@@ -7,9 +7,13 @@
 
 
 
+namespace hoi4
+{
+
+
 TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsFalseIfTechNotThere)
 {
-   const hoi4::Technologies technologies(std::map<std::optional<std::string>, std::set<std::string>>{});
+   const Technologies technologies(std::map<std::optional<std::string>, std::set<std::string>>{});
 
    EXPECT_FALSE(technologies.HasTechnology("missing_technology"));
 }
@@ -17,7 +21,7 @@ TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsFalseIfTechNotThe
 
 TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsTrueIfTechIsThere)
 {
-   const hoi4::Technologies technologies({{std::nullopt, {"test_technology"}}});
+   const Technologies technologies({{std::nullopt, {"test_technology"}}});
 
    EXPECT_TRUE(technologies.HasTechnology("test_technology"));
 }
@@ -25,8 +29,10 @@ TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsTrueIfTechIsThere
 
 TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsTrueIfTechIsThereWithLimit)
 {
-   const hoi4::Technologies technologies(
+   const Technologies technologies(
        {{std::nullopt, {"test_technology"}}, {"test_limit", {"test_technology_two"}}});
 
    EXPECT_TRUE(technologies.HasTechnology("test_technology_two"));
 }
+
+}  // namespace hoi4

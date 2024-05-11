@@ -7,12 +7,15 @@
 
 
 
+namespace hoi4
+{
+
 TEST(Hoi4worldRolesRoleimporterTests, DefaultsAreDefaulted)
 {
    std::stringstream input;
 
-   hoi4::RoleImporter importer;
-   const hoi4::Role role = importer.ImportRole("", input);
+   RoleImporter importer;
+   const Role role = importer.ImportRole("", input);
 
    EXPECT_TRUE(role.GetName().empty());
    EXPECT_TRUE(role.GetCategory().empty());
@@ -104,8 +107,8 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    input << "\t\n";
    input << "}\n";
 
-   hoi4::RoleImporter importer;
-   const hoi4::Role role = importer.ImportRole("unification_italy", input);
+   RoleImporter importer;
+   const Role role = importer.ImportRole("unification_italy", input);
 
    EXPECT_EQ(role.GetName(), "unification_italy");
    EXPECT_EQ(role.GetCategory(), "unification");
@@ -178,3 +181,5 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
            "\t\tid = $TAG$_another_event\n"
            "\t}"));
 }
+
+}  // namespace hoi4

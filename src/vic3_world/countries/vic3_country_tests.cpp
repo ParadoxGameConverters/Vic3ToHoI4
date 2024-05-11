@@ -6,10 +6,12 @@
 
 
 
+namespace vic3
+{
+
 TEST(Vic3worldCountriesVic3country, ColorCanBeSet)
 {
-   vic3::Country country({.number = 1});
-
+   Country country({.number = 1});
    country.SetColor(commonItems::Color{std::array<int, 3>{1, 2, 3}});
 
    const commonItems::Color expected_color{std::array<int, 3>{1, 2, 3}};
@@ -19,21 +21,21 @@ TEST(Vic3worldCountriesVic3country, ColorCanBeSet)
 
 TEST(Vic3worldCountriesVic3country, GetAcquiredTechEmpty)
 {
-   const auto state = vic3::Country(vic3::CountryOptions{
+   const Country country = Country(CountryOptions{
        .number = 2,
    });
-   const auto world = vic3::World({.acquired_technologies = {{1, {"tech_a", "tech_b"}}}});
-   EXPECT_TRUE(state.GetAcquiredTechnologies(world).empty());
+   const auto world = World({.acquired_technologies = {{1, {"tech_a", "tech_b"}}}});
+   EXPECT_TRUE(country.GetAcquiredTechnologies(world).empty());
 }
 
 
 TEST(Vic3worldCountriesVic3country, GetAcquiredTech)
 {
-   const auto state = vic3::Country(vic3::CountryOptions{
+   const Country country = Country(CountryOptions{
        .number = 1,
    });
-   const auto world = vic3::World({.acquired_technologies = {{1, {"tech_a", "tech_b"}}}});
-   EXPECT_THAT(state.GetAcquiredTechnologies(world), testing::UnorderedElementsAre("tech_a", "tech_b"));
+   const auto world = World({.acquired_technologies = {{1, {"tech_a", "tech_b"}}}});
+   EXPECT_THAT(country.GetAcquiredTechnologies(world), testing::UnorderedElementsAre("tech_a", "tech_b"));
 }
 
 
@@ -64,13 +66,13 @@ TEST(Vic3worldCountriesVic3country, PowerRankWorks)
    input << " }\n";
    input << "}";
 
-   const vic3::CountryRankings country_rankings = vic3::ImportCountryRankings(input);
+   const CountryRankings country_rankings = ImportCountryRankings(input);
 
-   const vic3::Country c1({.number = 1});
-   const vic3::Country c2({.number = 2});
-   const vic3::Country c3({.number = 3});
+   const Country c1({.number = 1});
+   const Country c2({.number = 2});
+   const Country c3({.number = 3});
 
-   const vic3::World world({
+   const World world({
        .countries =
            {
                {1, c1},
@@ -80,69 +82,71 @@ TEST(Vic3worldCountriesVic3country, PowerRankWorks)
        .country_rankings = country_rankings,
    });
 
-   EXPECT_EQ(c1.GetCountryRankCategory(world), vic3::RankCategory::GreatPower);
-   EXPECT_EQ(c2.GetCountryRankCategory(world), vic3::RankCategory::MajorPower);
-   EXPECT_EQ(c3.GetCountryRankCategory(world), vic3::RankCategory::MinorPower);
+   EXPECT_EQ(c1.GetCountryRankCategory(world), RankCategory::GreatPower);
+   EXPECT_EQ(c2.GetCountryRankCategory(world), RankCategory::MajorPower);
+   EXPECT_EQ(c3.GetCountryRankCategory(world), RankCategory::MinorPower);
 }
 
 
-TEST(Vic3worldCountriesVic3country, IsDecentralized_DecentralizedNation)
+TEST(Vic3worldCountriesVic3country, DecentralizedCountriesAreDecentralized)
 {
-   vic3::Country c1({.country_type = "decentralized"});
+   const Country c1({.country_type = "decentralized"});
    EXPECT_TRUE(c1.IsDecentralized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, IsDecentralized_ColonialNation)
+TEST(Vic3worldCountriesVic3country, ColonalCountriesAreNotDecentralized)
 {
-   vic3::Country c2({.country_type = "colonial"});
+   const Country c2({.country_type = "colonial"});
    EXPECT_FALSE(c2.IsDecentralized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, IsDecentralized_UnrecognizedNation)
+TEST(Vic3worldCountriesVic3country, UnrecognizedCountriesAreNotDecentralized)
 {
-   vic3::Country c3({.country_type = "unrecognized"});
+   const Country c3({.country_type = "unrecognized"});
    EXPECT_FALSE(c3.IsDecentralized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, IsDecentralized_RecognizedNation)
+TEST(Vic3worldCountriesVic3country, RecognizedCountriesAreNotDecentralized)
 {
-   vic3::Country c4({.country_type = "recognized"});
+   const Country c4({.country_type = "recognized"});
    EXPECT_FALSE(c4.IsDecentralized());
 }
 
-TEST(Vic3worldCountriesVic3country, IsRecognized_DecentralizedNation)
+TEST(Vic3worldCountriesVic3country, DecentralizedCountriesAreNotRecognized)
 {
-   vic3::Country c1({.country_type = "decentralized"});
+   const Country c1({.country_type = "decentralized"});
    EXPECT_FALSE(c1.IsRecognized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, IsRecognized_ColonialNation)
+TEST(Vic3worldCountriesVic3country, ColonialCountriesAreRecognized)
 {
-   vic3::Country c2({.country_type = "colonial"});
+   const Country c2({.country_type = "colonial"});
    EXPECT_TRUE(c2.IsRecognized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, IsRecognized_UnrecognizedNation)
+TEST(Vic3worldCountriesVic3country, UnrecognizedCountriesAreNotRecognized)
 {
-   vic3::Country c3({.country_type = "unrecognized"});
+   const Country c3({.country_type = "unrecognized"});
    EXPECT_FALSE(c3.IsRecognized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, IsRecognized_RecognizedNation)
+TEST(Vic3worldCountriesVic3country, RecognizedCountriesAreRecognized)
 {
-   vic3::Country c4({.country_type = "recognized"});
+   const Country c4({.country_type = "recognized"});
    EXPECT_TRUE(c4.IsRecognized());
 }
 
 
 TEST(Vic3worldCountriesVic3country, DefaultLegitimacyZero)
 {
-   vic3::Country c4({});
+   const Country c4({});
    EXPECT_EQ(c4.GetLegitimacy(), 0);
 }
+
+}  // namespace vic3

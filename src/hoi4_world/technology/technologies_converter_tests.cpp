@@ -9,11 +9,14 @@
 
 
 
+namespace hoi4
+{
+
 TEST(Hoi4worldTechnologyTechnologiesconverterTests, NoVic3TechsGivesNoHoi4Techs)
 {
    const std::set<std::string> old_technologies;
-   const hoi4::Technologies technologies =
-       hoi4::ConvertTechnologies(old_technologies, {{{"vic3_tech"}, std::nullopt, {"hoi4_tech_one", "hoi4_tech_two"}}});
+   const Technologies technologies =
+       ConvertTechnologies(old_technologies, {{{"vic3_tech"}, std::nullopt, {"hoi4_tech_one", "hoi4_tech_two"}}});
 
    EXPECT_TRUE(technologies.GetTechnologies().empty());
 }
@@ -22,7 +25,7 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, NoVic3TechsGivesNoHoi4Techs)
 TEST(Hoi4worldTechnologyTechnologiesconverterTests, NonmatchingVic3TechsGiveNoHoi4Techs)
 {
    const std::set<std::string> old_technologies{"non_matching_tech"};
-   const hoi4::Technologies technologies = hoi4::ConvertTechnologies(old_technologies, {});
+   const Technologies technologies = ConvertTechnologies(old_technologies, {});
 
    EXPECT_TRUE(technologies.GetTechnologies().empty());
 }
@@ -31,8 +34,8 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, NonmatchingVic3TechsGiveNoHo
 TEST(Hoi4worldTechnologyTechnologiesconverterTests, MatchingVic3TechGivesHoi4Techs)
 {
    const std::set<std::string> old_technologies{"vic3_tech"};
-   const hoi4::Technologies technologies =
-       hoi4::ConvertTechnologies(old_technologies, {{{"vic3_tech"}, std::nullopt, {"hoi4_tech_one", "hoi4_tech_two"}}});
+   const Technologies technologies =
+       ConvertTechnologies(old_technologies, {{{"vic3_tech"}, std::nullopt, {"hoi4_tech_one", "hoi4_tech_two"}}});
 
    EXPECT_THAT(technologies.GetTechnologies(),
        testing::UnorderedElementsAre(
@@ -43,7 +46,7 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, MatchingVic3TechGivesHoi4Tec
 TEST(Hoi4worldTechnologyTechnologiesconverterTests, OnlyOneInstanceOfEachTech)
 {
    const std::set<std::string> old_technologies{"vic3_tech", "vic3_tech_two"};
-   const hoi4::Technologies technologies = hoi4::ConvertTechnologies(old_technologies,
+   const Technologies technologies = ConvertTechnologies(old_technologies,
        {
            {{"vic3_tech"}, std::nullopt, {"hoi4_tech_one", "hoi4_tech_two"}},
            {{"vic3_tech_two"}, std::nullopt, {"hoi4_tech_two", "hoi4_tech_three"}},
@@ -58,7 +61,7 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, OnlyOneInstanceOfEachTech)
 TEST(Hoi4worldTechnologyTechnologiesconverterTests, ConvertedTechsAreCategorizedByLimits)
 {
    const std::set<std::string> old_technologies{"vic3_non_mtg_naval_tech", "vic3_mtg_naval_tech"};
-   const hoi4::Technologies technologies = hoi4::ConvertTechnologies(old_technologies,
+   const Technologies technologies = ConvertTechnologies(old_technologies,
        {{{"vic3_non_mtg_naval_tech"},
             R"(not = { has_dlc = "Man the Guns" })",
             {"hoi4_non_mtg_naval_tech_one", "hoi4_non_mtg_naval_tech_two"}},
@@ -78,7 +81,7 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, ConvertedTechsAreCategorized
 TEST(Hoi4worldTechnologyTechnologiesconverterTests, NoTechIfNotAllRequirementsAreMet)
 {
    const std::set<std::string> old_technologies{"requirement1"};
-   const hoi4::Technologies technologies = hoi4::ConvertTechnologies(old_technologies,
+   const Technologies technologies = ConvertTechnologies(old_technologies,
        {{{"requirement1", "requirement2"}, std::nullopt, {"test_tech1", "test_tech2"}}});
 
    EXPECT_TRUE(technologies.GetTechnologies().empty());
@@ -88,9 +91,11 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, NoTechIfNotAllRequirementsAr
 TEST(Hoi4worldTechnologyTechnologiesconverterTests, MultipleVic3RequirementsCanSucceed)
 {
    const std::set<std::string> old_technologies{"requirement1", "requirement2"};
-   const hoi4::Technologies technologies = hoi4::ConvertTechnologies(old_technologies,
+   const Technologies technologies = ConvertTechnologies(old_technologies,
        {{{"requirement1", "requirement2"}, std::nullopt, {"test_tech1", "test_tech2"}}});
 
    EXPECT_THAT(technologies.GetTechnologies(),
        testing::UnorderedElementsAre(testing::Pair(std::nullopt, std::set<std::string>{"test_tech1", "test_tech2"})));
 }
+
+}  // namespace hoi4

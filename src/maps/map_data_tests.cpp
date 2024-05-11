@@ -40,11 +40,14 @@ maps::MapData MapsMapdata::map_data;
 }  // namespace
 
 
+namespace maps
+{
+
 TEST_F(MapsMapdata, ExceptionThrownForMissingProvincesBmp)
 {
    const commonItems::ModFilesystem mod_filesystem("", {});
-   const maps::ProvinceDefinitions province_definitions;
-   maps::MapDataImporter importer(province_definitions);
+   const ProvinceDefinitions province_definitions;
+   MapDataImporter importer(province_definitions);
 
    EXPECT_THROW(importer.ImportMapData(mod_filesystem), std::runtime_error);
 }
@@ -53,8 +56,8 @@ TEST_F(MapsMapdata, ExceptionThrownForMissingProvincesBmp)
 TEST_F(MapsMapdata, ExceptionThrownForMissingAdjacenciesCsv)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/maps/nocsv", {});
-   const maps::ProvinceDefinitions province_definitions;
-   maps::MapDataImporter importer(province_definitions);
+   const ProvinceDefinitions province_definitions;
+   MapDataImporter importer(province_definitions);
 
    EXPECT_THROW(importer.ImportMapData(mod_filesystem), std::runtime_error);
 }
@@ -83,14 +86,14 @@ TEST_F(MapsMapdata, SpecifiedBordersCanBeLookedUp)
    // Bordering provinces
    const auto border_point = map_data.GetSpecifiedBorderCenter("1", "3");
    ASSERT_TRUE(border_point);
-   constexpr maps::Point expected_point{13, 591};  // y-axis is from the bottom
+   constexpr Point expected_point{13, 591};  // y-axis is from the bottom
    EXPECT_EQ(*border_point, expected_point);
 
    // Impassable border for bordering provinces
    const auto impassable_border_point = map_data.GetSpecifiedBorderCenter("6", "7");
    ASSERT_TRUE(impassable_border_point);
 
-   constexpr maps::Point expected_impassable_point{44, 586};  // y-axis is from the bottom
+   constexpr Point expected_impassable_point{44, 586};  // y-axis is from the bottom
    EXPECT_EQ(*impassable_border_point, expected_impassable_point);
 }
 
@@ -104,7 +107,7 @@ TEST_F(MapsMapdata, AnyBordersCanBeLookedUp)
    const auto border_point = map_data.GetAnyBorderCenter("3");
    ASSERT_TRUE(border_point);
 
-   constexpr maps::Point expected_point{13, 590};  // y-axis is from the bottom
+   constexpr Point expected_point{13, 590};  // y-axis is from the bottom
    EXPECT_EQ(*border_point, expected_point);
 }
 
@@ -113,7 +116,7 @@ TEST_F(MapsMapdata, CentralPointCanBeLookedUp)
 {
    const auto central_point = map_data.GetCentermostPoint("3");
 
-   EXPECT_EQ(central_point, std::make_optional(maps::Point{13, 586}));
+   EXPECT_EQ(central_point, std::make_optional(Point{13, 586}));
 }
 
 
@@ -144,6 +147,8 @@ TEST_F(MapsMapdata, ProvincePointsCanBeLookedUp)
    const auto provincePoints = map_data.GetProvincePoints("1");
    ASSERT_TRUE(provincePoints);
 
-   constexpr maps::Point expected_point{13, 595};
+   constexpr Point expected_point{13, 595};
    EXPECT_EQ(provincePoints->GetCentermostPoint(), expected_point);
 }
+
+}  // namespace maps
