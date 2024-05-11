@@ -4,25 +4,30 @@
 
 
 
+namespace maps
+{
+
 TEST(MapsUtility, IntDefaultsToZero)
 {
-   EXPECT_EQ(maps::GetIntFromColor(commonItems::Color(std::array{0, 0, 0})), 0);
+   EXPECT_EQ(GetIntFromColor(commonItems::Color(std::array{0, 0, 0})), 0);
 }
 
 
 TEST(MapsUtility, RedIsLeftShiftedBy16)
 {
-   EXPECT_EQ(maps::GetIntFromColor(commonItems::Color(std::array{0x42, 0, 0})), 0x42'00'00);
+   EXPECT_EQ(GetIntFromColor(commonItems::Color(std::array{0x42, 0, 0})), 0x42'00'00);
 }
 
 
 TEST(MapsUtility, GreenIsLeftShiftedBy8)
 {
-   EXPECT_EQ(maps::GetIntFromColor(commonItems::Color(std::array{0, 0x42, 0})), 0x00'42'00);
+   EXPECT_EQ(GetIntFromColor(commonItems::Color(std::array{0, 0x42, 0})), 0x00'42'00);
 }
 
 
 TEST(MapsUtility, BlueIsNotShifted)
 {
-   EXPECT_EQ(maps::GetIntFromColor(commonItems::Color(std::array{0, 0, 0x42})), 0x00'00'42);
+   EXPECT_EQ(GetIntFromColor(commonItems::Color(std::array{0, 0, 0x42})), 0x00'00'42);
 }
+
+}  // namespace maps

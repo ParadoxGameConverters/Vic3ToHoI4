@@ -4,11 +4,16 @@
 
 
 
+namespace hoi4
+{
+
 TEST(Hoi4worldCountriesCountry, PuppetsCanBeRemoved)
 {
-   hoi4::Country country({.puppets = {"ONE", "TWO", "THR", "FOR"}});
+   Country country({.puppets = {"ONE", "TWO", "THR", "FOR"}});
 
    country.RemovePuppets({"TWO", "FOR"});
 
    EXPECT_THAT(country.GetPuppets(), testing::UnorderedElementsAre("ONE", "THR"));
 }
+
+}  // namespace hoi4

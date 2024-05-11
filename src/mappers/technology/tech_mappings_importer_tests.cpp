@@ -5,15 +5,20 @@
 
 
 
+namespace mappers
+{
+
 TEST(MappersTechnologyTechmappingsimporterTests, TechMappingsAreImported)
 {
-   const std::vector<mappers::TechMapping> tech_mappings = mappers::ImportTechMappings();
+   const std::vector<TechMapping> tech_mappings = ImportTechMappings();
 
    EXPECT_THAT(tech_mappings,
-       testing::ElementsAre(mappers::TechMapping{std::set<std::string>{"source_tech"},
+       testing::ElementsAre(TechMapping{std::set<std::string>{"source_tech"},
                                 std::nullopt,
                                 std::set<std::string>{"dest_tech_one", "dest_tech_two"}},
-           mappers::TechMapping{std::set<std::string>{"source_tech_two", "source_tech_three"},
+           TechMapping{std::set<std::string>{"source_tech_two", "source_tech_three"},
                std::optional{R"(not = { has_dlc = "Test DLC" })"},
                std::set<std::string>{"dest_tech_three"}}));
 }
+
+}  // namespace mappers

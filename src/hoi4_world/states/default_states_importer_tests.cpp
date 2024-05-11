@@ -7,10 +7,13 @@
 
 
 
+namespace hoi4
+{
+
 TEST(Hoi4worldStatesDefaultstatesimporterTests, NoStateFilesMeansNoStates)
 {
-   commonItems::ModFilesystem filesystem("test_files/hoi4_world/NoStateFilesMeansNoStates", {});
-   const auto default_states = hoi4::ImportDefaultStates(filesystem);
+   const commonItems::ModFilesystem filesystem("test_files/hoi4_world/NoStateFilesMeansNoStates", {});
+   const auto default_states = ImportDefaultStates(filesystem);
 
    EXPECT_TRUE(default_states.empty());
 }
@@ -18,12 +21,12 @@ TEST(Hoi4worldStatesDefaultstatesimporterTests, NoStateFilesMeansNoStates)
 
 TEST(Hoi4worldStatesDefaultstatesimporterTests, DefaultStatesCanBeImported)
 {
-   commonItems::ModFilesystem filesystem("test_files/hoi4_world/DefaultStatesCanBeImported", {});
-   const auto default_states = hoi4::ImportDefaultStates(filesystem);
+   const commonItems::ModFilesystem filesystem("test_files/hoi4_world/DefaultStatesCanBeImported", {});
+   const auto default_states = ImportDefaultStates(filesystem);
 
    EXPECT_THAT(default_states,
        testing::UnorderedElementsAre(testing::Pair(1,
-                                         hoi4::DefaultState({.impassable = true,
+                                         DefaultState({.impassable = true,
                                              .owner_tag = "FRA",
                                              .provinces = {3838, 9851, 11804},
                                              .manpower = 322900,
@@ -32,7 +35,7 @@ TEST(Hoi4worldStatesDefaultstatesimporterTests, DefaultStatesCanBeImported)
                                              .dockyards = 2,
                                              .resources = {{"steel", 5}, {"test_resource", 42}}})),
            testing::Pair(2,
-               hoi4::DefaultState({.impassable = false,
+               DefaultState({.impassable = false,
                    .owner_tag = "ITA",
                    .provinces = {923, 6862, 9794, 9904, 11751, 11846, 11882},
                    .manpower = 2781971,
@@ -41,3 +44,5 @@ TEST(Hoi4worldStatesDefaultstatesimporterTests, DefaultStatesCanBeImported)
                    .dockyards = 0,
                    .resources = {}}))));
 }
+
+}  // namespace hoi4

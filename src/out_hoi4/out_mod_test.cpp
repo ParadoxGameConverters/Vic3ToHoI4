@@ -15,13 +15,16 @@
 
 
 
+namespace out
+{
+
 TEST(OutHoi4OutModTest, ModFolderIsCleared)
 {
    commonItems::TryCreateFolder("output");
    commonItems::TryCreateFolder("output/test_output");
    EXPECT_TRUE(commonItems::DoesFolderExist("output/test_output"));
 
-   out::ClearOutputFolder("test_output");
+   ClearOutputFolder("test_output");
    EXPECT_FALSE(commonItems::DoesFolderExist("output/test_output"));
 }
 
@@ -35,7 +38,7 @@ TEST(OutHoi4OutModTest, FolderIsLoggedWhenCleared)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   out::ClearOutputFolder("test_output");
+   ClearOutputFolder("test_output");
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Removing pre-existing copy of test_output"));
    std::cout.rdbuf(cout_buffer);
@@ -46,7 +49,7 @@ TEST(OutHoi4OutModTest, NoOperationOnMissingModFolder)
 {
    EXPECT_FALSE(commonItems::DoesFolderExist("output/test_output"));
 
-   out::ClearOutputFolder("test_output");
+   ClearOutputFolder("test_output");
    EXPECT_FALSE(commonItems::DoesFolderExist("output/test_output"));
 }
 
@@ -57,7 +60,7 @@ TEST(OutHoi4OutModTest, FolderIsNotLoggedWhenNotCleared)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   out::ClearOutputFolder("test_output");
+   ClearOutputFolder("test_output");
 
    EXPECT_EQ(log.str(), "");
 
@@ -67,14 +70,14 @@ TEST(OutHoi4OutModTest, FolderIsNotLoggedWhenNotCleared)
 
 TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
 {
-   out::ClearOutputFolder("status_test_output");
+   ClearOutputFolder("status_test_output");
    std::filesystem::remove("output/status_test_output.mod");
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   out::OutputMod("status_test_output", GameVersion());
+   OutputMod("status_test_output", GameVersion());
 
    EXPECT_THAT(log.str(), testing::HasSubstr("[PROGRESS] 80%"));
    EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Outputting mod"));
@@ -88,9 +91,9 @@ TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
 
 TEST(OutHoi4OutModTest, ModFolderIsCreated)
 {
-   out::ClearOutputFolder("mod_folder_test_output");
+   ClearOutputFolder("mod_folder_test_output");
    std::filesystem::remove("output/mod_folder_test_output.mod");
-   out::OutputMod("mod_folder_test_output", GameVersion());
+   OutputMod("mod_folder_test_output", GameVersion());
 
    EXPECT_TRUE(commonItems::DoesFolderExist("output/mod_folder_test_output"));
 }
@@ -98,9 +101,9 @@ TEST(OutHoi4OutModTest, ModFolderIsCreated)
 
 TEST(OutHoi4OutModTest, ModFileIsCreated)
 {
-   out::ClearOutputFolder("mod_file_test_output");
+   ClearOutputFolder("mod_file_test_output");
    std::filesystem::remove("output/mod_file_test_output.mod");
-   out::OutputMod("mod_file_test_output", GameVersion());
+   OutputMod("mod_file_test_output", GameVersion());
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/mod_file_test_output"));
 
@@ -132,9 +135,9 @@ TEST(OutHoi4OutModTest, ModFileIsCreated)
 
 TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
 {
-   out::ClearOutputFolder("descriptor_file_test_output");
+   ClearOutputFolder("descriptor_file_test_output");
    std::filesystem::remove("output/descriptor_file_test_output.mod");
-   out::OutputMod("descriptor_file_test_output", GameVersion());
+   OutputMod("descriptor_file_test_output", GameVersion());
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/descriptor_file_test_output"));
 
@@ -166,9 +169,9 @@ TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
 
 TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
 {
-   out::ClearOutputFolder("version_test_output");
+   ClearOutputFolder("version_test_output");
    std::filesystem::remove("output/version_test_output.mod");
-   out::OutputMod("version_test_output", GameVersion("42.13"));
+   OutputMod("version_test_output", GameVersion("42.13"));
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/version_test_output"));
 
@@ -192,3 +195,5 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
 
    EXPECT_THAT(descriptor_file_stream.str(), testing::HasSubstr("supported_version=\"42.13.*\""));
 }
+
+}  // namespace out
