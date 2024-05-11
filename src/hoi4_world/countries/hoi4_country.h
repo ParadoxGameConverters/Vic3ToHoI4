@@ -113,7 +113,7 @@ class Country
    {
    }
 
-   [[nodiscard]] const int GetSourceCountryNumber() const { return source_country_number_; }
+   [[nodiscard]] int GetSourceCountryNumber() const { return source_country_number_; }
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
@@ -154,6 +154,7 @@ class Country
    friend void PrintTo(const Country& country, std::ostream* os);
 
   private:
+   // if making changes here also update PrintTo()
    int source_country_number_;
    std::string tag_;
    commonItems::Color color_;

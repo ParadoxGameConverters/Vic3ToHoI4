@@ -126,6 +126,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
    EXPECT_THAT(world.GetCountries(),
        testing::ElementsAre(testing::Pair("TAG",
                                 Country(CountryOptions{
+                                    .source_country_number = 1,
                                     .tag = "TAG",
                                     .color = commonItems::Color{std::array{1, 2, 3}},
                                     .ideology_support = {{"neutrality", 100}},
@@ -139,6 +140,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
                                 })),
            testing::Pair("TWO",
                Country(CountryOptions{
+                   .source_country_number = 3,
                    .tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
                    .ideology_support = {{"neutrality", 100}},

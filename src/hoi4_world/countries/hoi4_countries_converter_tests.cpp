@@ -181,9 +181,11 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
    EXPECT_THAT(countries,
        testing::ElementsAre(testing::Pair("TAG",
                                 Country(CountryOptions{
+                                    .source_country_number = 1,
                                     .tag = "TAG",
                                     .color = commonItems::Color{std::array{1, 2, 3}},
                                     .capital_state = 10,
+                                    .primary_cultures = {"culture_0"},
                                     .ideology = "neutrality",
                                     .ideology_support = {{"neutrality", 100}},
                                     .technologies = expected_techs_one,
@@ -201,9 +203,11 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
                                 })),
            testing::Pair("TWO",
                Country(CountryOptions{
+                   .source_country_number = 2,
                    .tag = "TWO",
                    .color = commonItems::Color{std::array{2, 4, 6}},
                    .capital_state = 20,
+                   .primary_cultures = {"culture_1"},
                    .ideology = "democratic",
                    .ideology_support = {{"neutrality", 100}},
                    .technologies = expected_techs_two,
