@@ -4,7 +4,6 @@ unification_italy = {
     requirements={
         OR = {
             tag=ITA
-            #has_idea = culture_all_italian #not sure if this would work with how the culture ideas in the converter are set up?
         }
     }
 
