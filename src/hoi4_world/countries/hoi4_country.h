@@ -40,9 +40,11 @@ struct Unit
 
 struct CountryOptions
 {
+   int source_country_number;
    std::string tag;
    commonItems::Color color;
    std::optional<int> capital_state;
+   std::set<std::string> primary_cultures;
    std::string ideology = "neutrality";
    std::string sub_ideology = "despotism";
    std::map<std::string, int> ideology_support;
@@ -76,9 +78,11 @@ class Country
 {
   public:
    explicit Country(CountryOptions country_options):
+       source_country_number_(country_options.source_country_number),
        tag_(std::move(country_options.tag)),
        color_(country_options.color),
        capital_state_(country_options.capital_state),
+       primary_cultures_(std::move(country_options.primary_cultures)),
        ideology_(std::move(country_options.ideology)),
        sub_ideology_(std::move(country_options.sub_ideology)),
        ideology_support_(std::move(country_options.ideology_support)),
@@ -109,10 +113,11 @@ class Country
    {
    }
 
-
+   [[nodiscard]] int GetSourceCountryNumber() const { return source_country_number_; }
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
+   [[nodiscard]] const std::set<std::string>& GetPrimaryCultures() const { return primary_cultures_; }
    [[nodiscard]] int GetConvoys() const { return convoys_; }
    [[nodiscard]] const std::string& GetIdeology() const { return ideology_; }
    [[nodiscard]] const std::string& GetSubIdeology() const { return sub_ideology_; }
@@ -149,9 +154,12 @@ class Country
    friend void PrintTo(const Country& country, std::ostream* os);
 
   private:
+   // if making changes here also update PrintTo()
+   int source_country_number_;
    std::string tag_;
    commonItems::Color color_;
    std::optional<int> capital_state_;
+   std::set<std::string> primary_cultures_;
    std::string ideology_ = "neutrality";
    std::string sub_ideology_ = "despotism";
    std::map<std::string, int> ideology_support_{{"neutrality", 100}};

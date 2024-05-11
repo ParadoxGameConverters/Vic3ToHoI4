@@ -12,6 +12,64 @@
 namespace hoi4
 {
 
+TEST(Hoi4worldCountriesCountryConverter, SourceCountryNumberIsFromSourceCountry)
+{
+   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const mappers::CountryMapper country_mapper({{1, "T00"}, {2, "T01"}});
+   const vic3::Country source_country_one({.number = 1, .color = commonItems::Color{std::array{1, 2, 3}}});
+   const vic3::Country source_country_two({.number = 2, .color = commonItems::Color{std::array{2, 4, 6}}});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
+       {},
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       {0, {}},
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+   const auto country_two = ConvertCountry(source_world,
+       source_country_two,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
+       {},
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       {0, {}},
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_EQ(country_one->GetSourceCountryNumber(), 1);
+   ASSERT_TRUE(country_two.has_value());
+   EXPECT_EQ(country_two->GetSourceCountryNumber(), 2);
+}
+
+
 TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -473,6 +531,41 @@ TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapi
 
    ASSERT_TRUE(country_one.has_value());
    EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
+}
+
+
+TEST(Hoi4worldCountriesCountryConverter, PrimaryCulturesAreCopied)
+{
+   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const mappers::CountryMapper country_mapper({{1, "TAG"}});
+   const vic3::Country source_country_one({.number = 1, .primary_cultures = {"culture_one", "culture_two"}});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       {},
+       mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
+       {},
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       {0, {}},
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetPrimaryCultures(), testing::UnorderedElementsAre("culture_one", "culture_two"));
 }
 
 
