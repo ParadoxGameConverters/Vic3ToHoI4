@@ -29,8 +29,7 @@ TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsTrueIfTechIsThere
 
 TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsTrueIfTechIsThereWithLimit)
 {
-   const Technologies technologies(
-       {{std::nullopt, {"test_technology"}}, {"test_limit", {"test_technology_two"}}});
+   const Technologies technologies({{std::nullopt, {"test_technology"}}, {"test_limit", {"test_technology_two"}}});
 
    EXPECT_TRUE(technologies.HasTechnology("test_technology_two"));
 }
