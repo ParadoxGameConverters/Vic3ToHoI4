@@ -55,7 +55,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/fmt/include;$(SolutionDir)/external/commonItems/external/googletest/googletest/;$(SolutionDir)/external/commonItems/external/googletest/googletest/include/;$(SolutionDir)/external/commonItems/external/googletest/googlemock/;$(SolutionDir)/external/commonItems/external/googletest/googlemock/include/;$(SolutionDir)external/commonItems/pch</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ProgramDataBaseFileName>$(SolutionDir)lib\common.pdb</ProgramDataBaseFileName>
@@ -75,7 +75,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/fmt/include;$(SolutionDir)/external/commonItems/external/googletest/googletest/;$(SolutionDir)/external/commonItems/external/googletest/googletest/include/;$(SolutionDir)/external/commonItems/external/googletest/googlemock/;$(SolutionDir)/external/commonItems/external/googletest/googlemock/include/;$(SolutionDir)external/commonItems/pch</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ProgramDataBaseFileName>$(SolutionDir)lib\common.pdb</ProgramDataBaseFileName>

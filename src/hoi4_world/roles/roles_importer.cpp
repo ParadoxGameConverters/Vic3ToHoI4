@@ -3,11 +3,12 @@
 #include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/commonItems/ParserHelpers.h"
+#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/roles/role_importer.h"
 
 
 
-std::map<std::string, hoi4::Role> hoi4::ImportRoles()
+std::optional<std::map<std::string, hoi4::Role>> hoi4::ImportRoles()
 {
    std::map<std::string, hoi4::Role> roles;
 
@@ -20,8 +21,16 @@ std::map<std::string, hoi4::Role> hoi4::ImportRoles()
 
    for (const std::string& roles_file: commonItems::GetAllFilesInFolderRecursive("configurables/stories"))
    {
-      roles_parser.parseFile("configurables/stories/" + roles_file);
+      try
+      {
+         roles_parser.parseFile("configurables/stories/" + roles_file);
+      }
+      catch (...)
+      {
+         return std::nullopt;
+      }
    }
 
+   Log(LogLevel::Info) << fmt::format("\tImported {} roles.", roles.size());
    return roles;
 }

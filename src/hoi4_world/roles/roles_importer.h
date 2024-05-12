@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-std::map<std::string, Role> ImportRoles();
+std::optional<std::map<std::string, Role>> ImportRoles();
 
 }
 

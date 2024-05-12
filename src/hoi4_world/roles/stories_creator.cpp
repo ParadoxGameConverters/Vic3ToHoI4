@@ -44,7 +44,8 @@ bool IsRoleValidForCountry(const hoi4::Role& role, const std::string_view countr
 }
 
 
-std::vector<std::pair<Tag, CombinationName>> MakeCombinations(const std::map<std::string, hoi4::Role>& roles,
+std::optional<std::vector<std::pair<Tag, CombinationName>>> MakeCombinations(
+    const std::map<std::string, hoi4::Role>& roles,
     const std::map<std::string, hoi4::Country>& countries)
 {
    std::vector<std::pair<Tag, CombinationName>> combinations;
@@ -71,9 +72,11 @@ void hoi4::CreateStories(const std::map<std::string, hoi4::Country>& countries)
 {
    Log(LogLevel::Info) << "Writing stories";
 
-   const std::map<std::string, Role> roles = ImportRoles();
-   Log(LogLevel::Info) << fmt::format("\tImported {} roles.", roles.size());
-
-   const std::vector<std::pair<Tag, CombinationName>> role_combinations = MakeCombinations(roles, countries);
+   const std::vector<std::pair<Tag, CombinationName>> role_combinations =
+       ImportRoles()
+           .and_then([countries](std::map<std::string, Role> roles) {
+              return MakeCombinations(roles, countries);
+           })
+           .value_or(std::vector<std::pair<Tag, CombinationName>>{});
    Log(LogLevel::Info) << fmt::format("\tCreated {} role combinations.", role_combinations.size());
 }
