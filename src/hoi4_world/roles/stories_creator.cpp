@@ -1,6 +1,7 @@
 #include "src/hoi4_world/roles/stories_creator.h"
 
 #include <ranges>
+#include <set>
 
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/roles/roles_importer.h"
@@ -97,6 +98,41 @@ std::optional<std::vector<std::pair<Tag, CombinationName>>> SortCombinations(
 }
 
 
+std::optional<std::vector<std::pair<Tag, CombinationName>>> FilterCombinations(
+    std::vector<std::pair<Tag, CombinationName>> combinations,
+    const std::map<std::string, hoi4::Role>& roles)
+{
+   std::set<std::pair<Tag, std::string>> blocked_combinations;
+
+   const auto [first, last] = std::ranges::remove_if(combinations,
+       [&blocked_combinations, roles](const std::pair<Tag, CombinationName>& combination) {
+          const auto& role = roles.find(combination.second);
+          if (role == roles.end())
+          {
+             return true;
+          }
+
+          if (blocked_combinations.contains(combination))
+          {
+             return true;
+          }
+          if (blocked_combinations.contains(std::make_pair(combination.first, role->second.GetCategory())))
+          {
+             return true;
+          }
+
+          for (const std::string blocker: role->second.GetBlockers())
+          {
+             blocked_combinations.emplace(std::make_pair(combination.first, blocker));
+          }
+
+          return false;
+       });
+   combinations.erase(first, last);
+
+   return combinations;
+}
+
 }  // namespace
 
 
@@ -110,6 +146,9 @@ void hoi4::CreateStories(const std::map<std::string, hoi4::Country>& countries)
        MakeCombinations(roles, countries)
            .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
               return SortCombinations(combinations, roles);
+           })
+           .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
+              return FilterCombinations(combinations, roles);
            })
            .value_or(std::vector<std::pair<Tag, CombinationName>>{});
 
