@@ -130,19 +130,41 @@ std::optional<std::vector<std::pair<Tag, CombinationName>>> FilterCombinations(
        });
    combinations.erase(first, last);
 
+   Log(LogLevel::Info) << fmt::format("\tFiltered to {} role combinations.", combinations.size());
    return combinations;
+}
+
+
+std::optional<std::vector<std::pair<Tag, hoi4::Role>>> ExpandCombinations(
+    const std::vector<std::pair<Tag, CombinationName>>& combinations,
+    const std::map<std::string, hoi4::Role>& roles)
+{
+   std::vector<std::pair<Tag, hoi4::Role>> expanded_combinations;
+
+   for (const auto& [tag, role_name]: combinations)
+   {
+      const auto& role = roles.find(role_name);
+      if (role == roles.end())
+      {
+         return std::nullopt;
+      }
+
+      expanded_combinations.emplace_back(tag, role->second);
+   }
+
+   return expanded_combinations;
 }
 
 }  // namespace
 
 
 
-void hoi4::CreateStories(const std::map<std::string, hoi4::Country>& countries)
+std::vector<std::pair<Tag, hoi4::Role>> hoi4::CreateStories(const std::map<std::string, hoi4::Country>& countries)
 {
    Log(LogLevel::Info) << "Writing stories";
    const std::map<std::string, Role> roles = ImportRoles();
 
-   const std::vector<std::pair<Tag, CombinationName>> role_combinations =
+   const std::vector<std::pair<Tag, Role>> role_combinations =
        MakeCombinations(roles, countries)
            .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
               return SortCombinations(combinations, roles);
@@ -150,11 +172,17 @@ void hoi4::CreateStories(const std::map<std::string, hoi4::Country>& countries)
            .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
               return FilterCombinations(combinations, roles);
            })
-           .value_or(std::vector<std::pair<Tag, CombinationName>>{});
+           .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
+              return ExpandCombinations(combinations, roles);
+           })
+           .value_or(std::vector<std::pair<Tag, Role>>{});
 
+   // remove this once tests are written and just return the results above
    Log(LogLevel::Info) << "\tCombinations:";
    for (const auto& combination: role_combinations)
    {
-      Log(LogLevel::Info) << fmt::format("\t\t{} - {}", combination.first, combination.second);
+      Log(LogLevel::Info) << fmt::format("\t\t{} - {}", combination.first, combination.second.GetName());
    }
+
+   return role_combinations;
 }
