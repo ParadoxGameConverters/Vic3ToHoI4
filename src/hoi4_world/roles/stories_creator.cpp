@@ -61,8 +61,41 @@ std::optional<std::vector<std::pair<Tag, CombinationName>>> MakeCombinations(
       }
    }
 
+   Log(LogLevel::Info) << fmt::format("\tCreated {} role combinations.", combinations.size());
    return combinations;
 }
+
+
+std::optional<std::vector<std::pair<Tag, CombinationName>>> SortCombinations(
+    std::vector<std::pair<Tag, CombinationName>> combinations,
+    const std::map<std::string, hoi4::Role>& roles)
+{
+   std::ranges::sort(combinations, [roles](const auto& a, const auto& b) {
+      int a_score = 0;
+      if (const auto role = roles.find(a.first); role != roles.end())
+      {
+         a_score = role->second.GetScore();
+      }
+      int b_score = 0;
+      if (const auto role = roles.find(b.first); role != roles.end())
+      {
+         b_score = role->second.GetScore();
+      }
+
+      if (a_score != b_score)
+      {
+         return a_score < b_score;
+      }
+      if (a.first != b.first)
+      {
+         return a.first < b.first;
+      }
+      return a.second < b.second;
+   });
+
+   return combinations;
+}
+
 
 }  // namespace
 
@@ -71,12 +104,18 @@ std::optional<std::vector<std::pair<Tag, CombinationName>>> MakeCombinations(
 void hoi4::CreateStories(const std::map<std::string, hoi4::Country>& countries)
 {
    Log(LogLevel::Info) << "Writing stories";
+   const std::map<std::string, Role> roles = ImportRoles();
 
    const std::vector<std::pair<Tag, CombinationName>> role_combinations =
-       ImportRoles()
-           .and_then([countries](std::map<std::string, Role> roles) {
-              return MakeCombinations(roles, countries);
+       MakeCombinations(roles, countries)
+           .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
+              return SortCombinations(combinations, roles);
            })
            .value_or(std::vector<std::pair<Tag, CombinationName>>{});
-   Log(LogLevel::Info) << fmt::format("\tCreated {} role combinations.", role_combinations.size());
+
+   Log(LogLevel::Info) << "\tCombinations:";
+   for (const auto& combination: role_combinations)
+   {
+      Log(LogLevel::Info) << fmt::format("\t\t{} - {}", combination.first, combination.second);
+   }
 }

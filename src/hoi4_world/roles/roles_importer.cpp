@@ -8,7 +8,7 @@
 
 
 
-std::optional<std::map<std::string, hoi4::Role>> hoi4::ImportRoles()
+std::map<std::string, hoi4::Role> hoi4::ImportRoles()
 {
    std::map<std::string, hoi4::Role> roles;
 
@@ -21,14 +21,7 @@ std::optional<std::map<std::string, hoi4::Role>> hoi4::ImportRoles()
 
    for (const std::string& roles_file: commonItems::GetAllFilesInFolderRecursive("configurables/stories"))
    {
-      try
-      {
-         roles_parser.parseFile("configurables/stories/" + roles_file);
-      }
-      catch (...)
-      {
-         return std::nullopt;
-      }
+      roles_parser.parseFile("configurables/stories/" + roles_file);
    }
 
    Log(LogLevel::Info) << fmt::format("\tImported {} roles.", roles.size());
