@@ -115,9 +115,7 @@ unification_italy_2 = {
     category=unification
 
     requirements={
-        OR = {
-            has_culture = north_italian
-        }
+        country_has_primary_culture = north_italian
     }
 
     score=101
@@ -243,9 +241,7 @@ unification_italy_3 = {
     category=unification
 
     requirements={
-        OR = {
-            has_culture = south_italian
-        }
+        country_has_primary_culture = south_italian
     }
 
     score=100
