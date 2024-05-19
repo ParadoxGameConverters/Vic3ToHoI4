@@ -159,11 +159,10 @@ std::optional<std::vector<std::pair<Tag, hoi4::Role>>> ExpandCombinations(
 
 
 
-std::vector<std::pair<Tag, hoi4::Role>> hoi4::CreateStories(const std::map<std::string, hoi4::Country>& countries)
+std::vector<std::pair<Tag, hoi4::Role>> hoi4::CreateStories(const std::map<std::string, hoi4::Role>& roles,
+    const std::map<std::string, hoi4::Country>& countries)
 {
    Log(LogLevel::Info) << "Writing stories";
-   const std::map<std::string, Role> roles = ImportRoles();
-
    const std::vector<std::pair<Tag, Role>> role_combinations =
        MakeCombinations(roles, countries)
            .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {

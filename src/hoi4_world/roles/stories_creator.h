@@ -13,7 +13,8 @@
 namespace hoi4
 {
 
-std::vector<std::pair<std::string, hoi4::Role>> CreateStories(const std::map<std::string, hoi4::Country>& countries);
+std::vector<std::pair<std::string, hoi4::Role>> CreateStories(const std::map<std::string, hoi4::Role>& roles,
+    const std::map<std::string, hoi4::Country>& countries);
 
 }  // namespace hoi4
 
