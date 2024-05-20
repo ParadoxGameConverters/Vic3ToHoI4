@@ -73,24 +73,28 @@ std::optional<std::vector<std::pair<Tag, CombinationName>>> SortCombinations(
 {
    std::ranges::sort(combinations, [roles](const auto& a, const auto& b) {
       int a_score = 0;
-      if (const auto role = roles.find(a.first); role != roles.end())
+      if (const auto role = roles.find(a.second); role != roles.end())
       {
          a_score = role->second.GetScore();
       }
       int b_score = 0;
-      if (const auto role = roles.find(b.first); role != roles.end())
+      if (const auto role = roles.find(b.second); role != roles.end())
       {
          b_score = role->second.GetScore();
       }
 
       if (a_score != b_score)
       {
-         return a_score < b_score;
+        // higher scores go first
+         return a_score > b_score;
       }
       if (a.first != b.first)
       {
+        // lexicographically lower tags go first
          return a.first < b.first;
       }
+
+      // lexicographically lower role names go first
       return a.second < b.second;
    });
 
