@@ -85,12 +85,12 @@ std::optional<std::vector<std::pair<Tag, CombinationName>>> SortCombinations(
 
       if (a_score != b_score)
       {
-        // higher scores go first
+         // higher scores go first
          return a_score > b_score;
       }
       if (a.first != b.first)
       {
-        // lexicographically lower tags go first
+         // lexicographically lower tags go first
          return a.first < b.first;
       }
 
@@ -167,25 +167,15 @@ std::vector<std::pair<Tag, hoi4::Role>> hoi4::CreateStories(const std::map<std::
     const std::map<std::string, hoi4::Country>& countries)
 {
    Log(LogLevel::Info) << "Writing stories";
-   const std::vector<std::pair<Tag, Role>> role_combinations =
-       MakeCombinations(roles, countries)
-           .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
-              return SortCombinations(combinations, roles);
-           })
-           .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
-              return FilterCombinations(combinations, roles);
-           })
-           .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
-              return ExpandCombinations(combinations, roles);
-           })
-           .value_or(std::vector<std::pair<Tag, Role>>{});
-
-   // remove this once tests are written and just return the results above
-   Log(LogLevel::Info) << "\tCombinations:";
-   for (const auto& combination: role_combinations)
-   {
-      Log(LogLevel::Info) << fmt::format("\t\t{} - {}", combination.first, combination.second.GetName());
-   }
-
-   return role_combinations;
+   return MakeCombinations(roles, countries)
+       .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
+          return SortCombinations(combinations, roles);
+       })
+       .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
+          return FilterCombinations(combinations, roles);
+       })
+       .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
+          return ExpandCombinations(combinations, roles);
+       })
+       .value_or(std::vector<std::pair<Tag, Role>>{});
 }
