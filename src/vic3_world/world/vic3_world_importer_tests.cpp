@@ -223,7 +223,7 @@ TEST(Vic3worldWorldVic3worldimporter, ConversionDateIsLogged)
 
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"([INFO] Converting at 1923.6.12.)"));
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"([INFO] Converting at 1923.6.10.)"));
 }
 
 

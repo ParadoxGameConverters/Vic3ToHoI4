@@ -578,6 +578,9 @@
     <ClCompile Include="src\hoi4_world\roles\roles_importer_tests.cpp">
       <Filter>src\hoi4_world\roles</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\roles\stories_creator_tests.cpp">
+      <Filter>src\hoi4_world\roles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
