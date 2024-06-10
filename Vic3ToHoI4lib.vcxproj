@@ -26,6 +26,8 @@
     <ClInclude Include="src\hoi4_world\countries\hoi4_country_converter.h" />
     <ClInclude Include="src\hoi4_world\diplomacy\hoi4_war.h" />
     <ClInclude Include="src\hoi4_world\diplomacy\hoi4_war_converter.h" />
+    <ClInclude Include="src\hoi4_world\focus_trees\focus.h" />
+    <ClInclude Include="src\hoi4_world\focus_trees\focus_importer.h" />
     <ClInclude Include="src\hoi4_world\localizations\localizations.h" />
     <ClInclude Include="src\hoi4_world\localizations\localizations_converter.h" />
     <ClInclude Include="src\hoi4_world\map\buildings.h" />
@@ -198,6 +200,7 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
     <ClCompile Include="src\hoi4_world\diplomacy\hoi4_war_converter.cpp" />
+    <ClCompile Include="src\hoi4_world\focus_trees\focus_importer.cpp" />
     <ClCompile Include="src\hoi4_world\localizations\localizations_converter.cpp" />
     <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator.cpp" />
