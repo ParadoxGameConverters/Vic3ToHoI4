@@ -204,6 +204,9 @@
     <Filter Include="src\hoi4_world\roles">
       <UniqueIdentifier>{f5cd94ce-f93a-487a-b538-f5559c16ae34}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\focus_trees">
+      <UniqueIdentifier>{e75e61e2-d258-4f81-ae2d-b2f2374594be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -760,6 +763,12 @@
     <ClInclude Include="src\hoi4_world\roles\stories_creator.h">
       <Filter>src\hoi4_world\roles</Filter>
     </ClInclude>
+    <ClInclude Include="src\hoi4_world\focus_trees\focus.h">
+      <Filter>src\hoi4_world\focus_trees</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hoi4_world\focus_trees\focus_importer.h">
+      <Filter>src\hoi4_world\focus_trees</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -1175,6 +1184,9 @@
     </ClCompile>
     <ClCompile Include="src\hoi4_world\roles\stories_creator.cpp">
       <Filter>src\hoi4_world\roles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\focus_trees\focus_importer.cpp">
+      <Filter>src\hoi4_world\focus_trees</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -186,6 +186,9 @@
     <Filter Include="src\hoi4_world\roles">
       <UniqueIdentifier>{ae2f9cf6-49d6-43f2-85d9-cb73df446453}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\hoi4_world\focus_trees">
+      <UniqueIdentifier>{898f4205-e33b-4ab7-bce9-02f705f1c46a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\out_hoi4\out_mod_test.cpp">
@@ -580,6 +583,9 @@
     </ClCompile>
     <ClCompile Include="src\hoi4_world\roles\stories_creator_tests.cpp">
       <Filter>src\hoi4_world\roles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hoi4_world\focus_trees\focus_tree_importer_tests.cpp">
+      <Filter>src\hoi4_world\focus_trees</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
