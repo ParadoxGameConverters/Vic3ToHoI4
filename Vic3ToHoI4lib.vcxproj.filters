@@ -1197,6 +1197,9 @@
     <ClCompile Include="src\hoi4_world\focus_trees\focus_importer.cpp">
       <Filter>src\hoi4_world\focus_trees</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\focus_trees\focus.cpp">
+      <Filter>src\hoi4_world\focus_trees</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="external\rakaly\rakaly.dll.lib">

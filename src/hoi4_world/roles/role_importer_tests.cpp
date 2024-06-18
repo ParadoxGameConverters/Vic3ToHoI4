@@ -122,12 +122,7 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    EXPECT_THAT(role.GetBlockers(), testing::ElementsAre("unification_role", "unification_category"));
    EXPECT_THAT(role.GetSharedFocuses(), testing::ElementsAre("army_effort", "aviation_effort"));
    EXPECT_THAT(role.GetFocuses(),
-       testing::ElementsAre("= {\n"
-                            "\t\tid = $TAG$_italia_irredenta #start of tree for an italian unifier\n"
-                            "\t}",
-           "= {\n"
-           "\t\tid = $TAG$_italia_irredenta_2 #start of tree for an italian unifier\n"
-           "\t}"));
+       testing::ElementsAre(Focus{.id = "$TAG$_italia_irredenta"}, Focus{.id = "$TAG$_italia_irredenta_2"}));
    EXPECT_THAT(role.GetRepeatFocuses(),
        testing::ElementsAre("= { #creates wargoal and ai strategy vs another country that owns a core or claim of ITA\n"
                             "\t\trequirement={\n"

@@ -25,7 +25,7 @@ hoi4::RoleImporter::RoleImporter()
       role_options_.shared_focuses.emplace_back(commonItems::getString(input));
    });
    role_parser_.registerKeyword("focus", [this](std::istream& input) {
-      role_options_.focuses.emplace_back(commonItems::stringOfItem(input).getString());
+      role_options_.focuses.emplace_back(focus_importer_.ImportFocus(input));
    });
    role_parser_.registerKeyword("repeat_focus", [this](std::istream& input) {
       role_options_.repeat_focuses.emplace_back(commonItems::stringOfItem(input).getString());
@@ -39,6 +39,7 @@ hoi4::RoleImporter::RoleImporter()
    role_parser_.registerKeyword("event", [this](std::istream& input) {
       role_options_.events.emplace_back(commonItems::stringOfItem(input).getString());
    });
+   role_parser_.registerKeyword("repeat_focus", commonItems::ignoreItem);
 }
 
 

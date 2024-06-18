@@ -32,6 +32,7 @@ class FocusImporter
    std::vector<std::string> prerequisites_;
    std::optional<std::string> mutually_exclusive_;
    std::optional<std::string> bypass_;
+   bool tree_starter_ = false;
    int x_position_ = 0;
    int y_position_ = 0;
    std::optional<std::string> relative_position_id_;

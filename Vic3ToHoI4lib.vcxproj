@@ -202,6 +202,7 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
     <ClCompile Include="src\hoi4_world\diplomacy\hoi4_war_converter.cpp" />
+    <ClCompile Include="src\hoi4_world\focus_trees\focus.cpp" />
     <ClCompile Include="src\hoi4_world\focus_trees\focus_importer.cpp" />
     <ClCompile Include="src\hoi4_world\localizations\localizations_converter.cpp" />
     <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp" />

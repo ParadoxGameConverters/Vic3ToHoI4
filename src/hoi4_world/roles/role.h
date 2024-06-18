@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "src/hoi4_world/focus_trees/focus.h"
+
 
 
 namespace hoi4
@@ -19,7 +21,7 @@ struct RoleOptions
    float score;
    std::vector<std::string> blockers;
    std::vector<std::string> shared_focuses;
-   std::vector<std::string> focuses;
+   std::vector<Focus> focuses;
    std::vector<std::string> repeat_focuses;
    std::vector<std::string> removed_focuses;
    std::vector<std::string> decisions;
@@ -51,7 +53,7 @@ class Role
    [[nodiscard]] float GetScore() const { return score_; }
    [[nodiscard]] const std::vector<std::string>& GetBlockers() const { return blockers_; }
    [[nodiscard]] const std::vector<std::string>& GetSharedFocuses() const { return shared_focuses_; }
-   [[nodiscard]] const std::vector<std::string>& GetFocuses() const { return focuses_; }
+   [[nodiscard]] const std::vector<Focus>& GetFocuses() const { return focuses_; }
    [[nodiscard]] const std::vector<std::string>& GetRepeatFocuses() const { return repeat_focuses_; }
    [[nodiscard]] const std::vector<std::string>& GetRemovedFocuses() const { return removed_focuses_; }
    [[nodiscard]] const std::vector<std::string>& GetDecisions() const { return decisions_; }
@@ -66,7 +68,7 @@ class Role
    float score_;
    std::vector<std::string> blockers_;
    std::vector<std::string> shared_focuses_;
-   std::vector<std::string> focuses_;
+   std::vector<Focus> focuses_;
    std::vector<std::string> repeat_focuses_;
    std::vector<std::string> removed_focuses_;
    std::vector<std::string> decisions_;
