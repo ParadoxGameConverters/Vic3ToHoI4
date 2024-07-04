@@ -2648,7 +2648,7 @@ generic_submarine_organization = {
 
 		equipment_bonus = {
 			sub_visibility = 0.02
-			maximum_speed = 0.05
+			naval_speed = 0.05
 		}
 	}
 
@@ -2664,7 +2664,7 @@ generic_submarine_organization = {
 		mutually_exclusive = { generic_mio_trait_highly_efficient_diesel_electric_propulsion_systems }
 
 		equipment_bonus = {
-			maximum_speed = 0.05
+			naval_speed = 0.05
 		}
 	}
 
@@ -2743,7 +2743,7 @@ generic_submarine_organization = {
 
 		equipment_bonus = {
 			max_strength = 0.06
-			maximum_speed = 0.01
+			naval_speed = 0.01
 		}
 	}
 
@@ -3398,7 +3398,7 @@ generic_refurbishment_repair_organization = {
 			hg_armor_piercing = 0.05
 			hg_attack = 0.1
 			naval_range = -0.15
-			maximum_speed = -0.08
+			naval_speed = -0.08
 		}
 	}
 
@@ -3438,7 +3438,7 @@ generic_refurbishment_repair_organization = {
 			armor_value = 0.03
 			lg_attack = 0.03
 			naval_range = -0.05
-			maximum_speed = -0.04
+			naval_speed = -0.04
 		}
 	}
 }
@@ -3742,7 +3742,7 @@ generic_light_aircraft_organization = {
 	}
 
 	research_categories = {	
-		mio_cat_all_light_fighter_and_modules
+		mio_cat_all_light_fighter_and_modules 
 		mio_cat_all_cas_and_modules 
 	}
 	
@@ -5762,7 +5762,7 @@ generic_high_agility_fighter_aircraft_organization = {
 		}
 
 		equipment_bonus = {
-			reliability_factor = 0.05
+			reliability = 0.05
 			air_agility = 0.05
 		}
 	}
@@ -5917,7 +5917,7 @@ generic_range_focused_aircraft_organization = {
 
 		equipment_bonus = {
 			air_range = 0.10
-			reliability_factor = 0.10
+			reliability = 0.10
 		}
 	}
 
@@ -6002,7 +6002,7 @@ generic_range_focused_aircraft_organization = {
 		}
 
 		equipment_bonus = {
-			reliability_factor = 0.10
+			reliability = 0.07
 		}
 
 		production_bonus = {
@@ -6484,7 +6484,6 @@ generic_artillery_organization = {
 			defense = 0.1
 		}
 	}
-
 }
 
 	
