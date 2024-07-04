@@ -617,6 +617,7 @@ leader_traits = {
 	}
 
 	conservative_nationalist = { #Antonio de Oliveira Salazar - Vanilla
+		sprite = 13 #Needed since Iceland uses this traits in an advisor.
 		random = no
 		stability_factor = 0.1
 		production_speed_infrastructure_factor = 0.2
@@ -1439,7 +1440,7 @@ leader_traits = {
 		command_power_gain_mult = 0.25
 		defensive_war_stability_factor = 0.4
 	}
-	
+
 	### Canada ###
 
 	CAN_liberal_corporatist = {
@@ -1902,7 +1903,7 @@ leader_traits = {
 		sprite = 13
 		democratic_drift = 0.05
 		political_power_gain = 0.05
-		stability_weekly = 0.005
+		stability_factor = 0.05
 	}
 
 	marxist_philosopher = {
@@ -3865,7 +3866,7 @@ leader_traits = {
 
 	SWE_close_ties_to_the_military = {
 		sprite = 10
-		random = NO
+		random = no
 		max_command_power = 30
 		training_time_factor = -0.1
 
@@ -4395,7 +4396,7 @@ leader_traits = {
 		civilian_intel_factor = 0.15
 		political_power_factor = 0.15
 	}
-	
+
 	minister_of_the_interior_aregai_no_lar = {
 		random = no
 		sprite = 13
@@ -5301,7 +5302,7 @@ leader_traits = {
 		equipment_bonus = {
 			train_equipment = {
 				build_cost_ic = 0.05
-				reliability = 0.15
+				armor_value = 0.1
 			}
 		}
 		production_speed_rail_way_factor = 0.05
@@ -7607,7 +7608,7 @@ leader_traits = {
 			factor = 1
 		}
 	}
-	
+
 	forestry_company = {
 		random = no
 
@@ -7630,7 +7631,7 @@ leader_traits = {
 		random = no
 		equipment_bonus = {
 			convoy = {
-				reliability = 0.3 build_cost_ic = -0.5
+				reliability = 0.1 build_cost_ic = -0.25
 			}
 		}
 
@@ -7664,7 +7665,7 @@ leader_traits = {
 	}
 
 	telephone_company = {
-		random= No
+		random = no
 		land_reinforce_rate = 0.02
 		coordination_bonus = 0.04
 		ai_will_do = {
@@ -7951,12 +7952,38 @@ leader_traits = {
 		production_speed_industrial_complex_factor = 0.2
 	}
 
+	NOR_tobacco_industrialist_leader = {
+		random = no
+		sprite = 10  
+
+		consumer_goods_factor = -0.1
+		production_speed_infrastructure_factor = 0.1
+		production_speed_industrial_complex_factor = 0.05
+	}
+
 	NOR_compliant_politician = {
 		random = no
 		sprite = 13  
 
 		stability_factor = 0.10
 		political_power_factor = 0.1
+	}
+
+	NOR_popular_reformer = {
+		random = no
+		sprite = 13  
+
+		stability_factor = 0.05
+		war_support_factor = -0.03
+		political_power_factor = 0.05
+	}
+
+	NOR_temperate_miners_unionist = {
+		random = no
+		sprite = 13  
+
+		stability_factor = 0.05
+		local_resources_factor = 0.1
 	}
 
 	NOR_conservative_businessman = {
@@ -8107,7 +8134,7 @@ leader_traits = {
 		production_lack_of_resource_penalty_factor = -0.5
 	}
 
-JUNO_emergency_powers = {
+	JUNO_emergency_powers = {
 		random = no
 		consumer_goods_factor = -0.1
 		production_speed_arms_factory_factor = 0.05
@@ -8234,7 +8261,7 @@ JUNO_emergency_powers = {
 
 	army_chief_old_guard = { # Rate at which field experience is gained decreases by 10%
 		sprite = 5 # Should not need sprite, should mostly be secondary
-		experience_gain_army = @chief_experience_gain_medium
+		experience_gain_army = @chief_experience_gain_low
 		max_command_power = 10
 
 		ai_will_do = {
@@ -10640,8 +10667,8 @@ JUNO_emergency_powers = {
 			factor = 1
 		}
 	}
-	
-surveyor = { 
+
+	surveyor = { 
 		sprite = 5
 		army_speed_factor = 0.1
 		initiative_factor = 0.08

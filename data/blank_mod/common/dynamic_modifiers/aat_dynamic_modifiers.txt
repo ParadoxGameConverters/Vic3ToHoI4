@@ -149,7 +149,7 @@ SWE_blown_up_mines = {
 SWE_hygenic_housing_resource_bonus = {
 	enable = { always = yes }
 	icon = GFX_modifiers_SWE_hygienic_housing
-	local_resources_factor = 0.12
+	state_resources_factor = 0.12
 
 }
 
@@ -690,7 +690,7 @@ DEN_pan_scandinavianism_modifier = {
 	}
 
 	non_core_manpower = 0.25
-	local_resources_factor = 0.15
+	state_resources_factor = 0.15
 	production_speed_industrial_complex_factor = 0.1
 	production_speed_infrastructure_factor = 0.1
 	production_speed_arms_factory_factor = 0.1

@@ -8,7 +8,7 @@ shared_focus = {
 	available_if_capitulated = yes
 
 	completion_reward = {
-		army_experience = 5
+		army_experience = 25
 		add_doctrine_cost_reduction = {
 			name = land_doc_bonus
 			cost_reduction = 0.5
@@ -59,7 +59,7 @@ shared_focus = {
 	completion_reward = {
 		add_tech_bonus = {
 			name = motorized_bonus
-			bonus = 3.0
+			bonus = 1.0
 			technology = motorised_infantry
 		}
 	}
@@ -79,7 +79,7 @@ shared_focus = {
 	available_if_capitulated = yes
 
 	completion_reward = {
-		army_experience = 5
+		army_experience = 25
 		add_doctrine_cost_reduction = {
 			name = land_doc_bonus
 			cost_reduction = 0.5
@@ -133,6 +133,10 @@ shared_focus = {
 			uses = 1
 			category = motorized_equipment
 		}
+		add_equipment_to_stockpile = { 
+			type = motorized_equipment
+			amount = 1
+		}
 	}
 }
 
@@ -150,7 +154,7 @@ shared_focus = {
 	available_if_capitulated = yes
 
 	completion_reward = {
-		army_experience = 5
+		army_experience = 25
 		add_doctrine_cost_reduction = {
 			name = land_doc_bonus
 			cost_reduction = 0.5

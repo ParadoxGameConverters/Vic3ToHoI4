@@ -223,6 +223,28 @@ ideas = {
 				fascism_acceptance = 85
 			}
 		}
+
+		strong_fascist_influence = {
+			name = fascist_influence
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+			
+			modifier = {
+				fascism_drift = 0.25
+				fascism_acceptance = 150
+				drift_defence_factor = -0.25
+
+			}
+		}
 		
 		communist_influence = {
 			
@@ -545,7 +567,7 @@ ideas = {
 			picture = generic_manpower_bonus
 	
 			modifier = {
-				conscription = 0.05
+				conscription = 0.02
 				resistance_damage_to_garrison = -0.1 
 			}
 		}
@@ -569,7 +591,8 @@ ideas = {
 			picture = generic_manpower_bonus
 	
 			modifier = {
-				conscription = 0.02
+				conscription = 0.01
+				mobilization_speed = 0.25
 			}
 		}
 	
@@ -593,6 +616,7 @@ ideas = {
 	
 			modifier = {
 				training_time_army_factor = -0.1
+				supply_combat_penalties_on_core_factor = -0.15
 			}
 		}
 	
@@ -616,6 +640,7 @@ ideas = {
 	
 			modifier = {
 				stability_factor = 0.05
+				weekly_manpower = 400
 			}
 		}
 	
