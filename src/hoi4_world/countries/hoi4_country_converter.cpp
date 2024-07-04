@@ -563,8 +563,13 @@ std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std
 float ConvertStability(const vic3::World& source_world, const vic3::Country& country)
 {
    // TODO once we can calculate legitimacy
-   float stability = std::clamp(country.GetLegitimacy(), 0, 100) * 0.8F / 100.0F;
-   return stability == 0.0 ? 0.0F : 0.60F;
+   float stability = std::clamp(country.GetLegitimacy(), 0, 100);
+   if (stability <= 50)
+   {
+      // Range between 20 and 50 so it is not to harsh  
+      stability = 0.6 * stability + 20;
+   }
+   return stability ;
 }
 
 
