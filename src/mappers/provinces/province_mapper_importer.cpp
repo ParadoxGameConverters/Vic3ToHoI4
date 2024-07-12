@@ -7,6 +7,8 @@
 #include "external/commonItems/ModLoader/ModFilesystem.h"
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
+#include "src/vic3_world/states/state_regions_importer.h"
+#include "src/vic3_world/world/vic3_world.h"
 
 
 
@@ -42,6 +44,42 @@ void VerifyProvinceIsMapped(const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vi
    {
       Log(LogLevel::Warning) << "No mapping for Hoi4 province " << province_number;
    }
+}
+
+std::vector<std::string> AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_from_map,
+    const std::map<std::string, vic3::StateRegion>& state_regions_from_save)
+{
+   std::map<std::string, std::string> province_to_state_map;
+   for (const auto& state_from_save: state_regions_from_save)
+   {
+      for (const std::string& province_from_map: provinces_from_map)
+      {
+         std::set<std::string> provinces_from_save = state_from_save.second.GetProvinces();
+         if (provinces_from_save.find(province_from_map) != provinces_from_save.end())
+         {
+            province_to_state_map[province_from_map] = state_from_save.first;
+         }
+      }
+   }
+
+   std::set<std::string> state_names;
+   for (const auto& entry: province_to_state_map)
+   {
+      state_names.insert(entry.second);
+   }
+
+   std::vector<std::string> warnings;
+   if (state_names.size() > 1)
+   {
+      for (const auto& province_from_map: provinces_from_map)
+      {
+         std::string warning = "Province " + province_from_map + " is designated as part of " +
+                               province_to_state_map[province_from_map] +
+                               " in Vic3 data but is placed in a different state block in the mappings file.";
+         warnings.push_back(warning);
+      }
+   }
+   return warnings;
 }
 
 
@@ -80,9 +118,8 @@ void CheckAllHoi4ProvincesMapped(const mappers::Hoi4ToVic3ProvinceMapping& hoi4_
 
 }  // namespace
 
-
-
-mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFilesystem& filesystem)
+mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFilesystem& filesystem,
+    const std::optional<vic3::World>& vic3_world)
 {
    version_parser_.registerRegex(R"(\d\.[\d]+\.\d)",
        [this, &filesystem](const std::string& unused, std::istream& input_stream) {
@@ -90,12 +127,24 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
           CheckAllHoi4ProvincesMapped(hoi4_to_vic3_province_map_, filesystem);
        });
 
-   mapping_parser_.registerKeyword("link", [this](std::istream& input_stream) {
+   mapping_parser_.registerKeyword("link", [this, &vic3_world](std::istream& input_stream) {
       const auto the_mapping = mapping_importer_.ImportProvinceMapping(input_stream);
       if (the_mapping.vic3_provinces.empty() && the_mapping.hoi4_provinces.empty())
       {
          return;
       }
+
+      if (vic3_world)
+      {
+         auto vic3_province = the_mapping.vic3_provinces;
+         auto state_regions = vic3_world->GetStateRegions();
+         auto warnings = AreVic3ProvincesFromSameState(vic3_province, state_regions);
+         for (const auto& warning: warnings)
+         {
+            Log(LogLevel::Warning) << warning;
+         }
+      }
+
 
       for (auto color: the_mapping.vic3_provinces)
       {
