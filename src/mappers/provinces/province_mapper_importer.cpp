@@ -68,7 +68,6 @@ std::vector<std::string> AreVic3ProvincesFromSameState(const std::vector<std::st
       state_names.insert(entry.second);
    }
 
-   std::vector<std::string> warnings;
    if (state_names.size() > 1)
    {
       for (const auto& province_from_map: provinces_from_map)
@@ -76,10 +75,9 @@ std::vector<std::string> AreVic3ProvincesFromSameState(const std::vector<std::st
          std::string warning = "Province " + province_from_map + " is designated as part of " +
                                province_to_state_map[province_from_map] +
                                " in Vic3 data but is placed in a different state block in the mappings file.";
-         warnings.push_back(warning);
+         Log(LogLevel::Warning) << warning;
       }
    }
-   return warnings;
 }
 
 
@@ -138,11 +136,7 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
       {
          auto vic3_province = the_mapping.vic3_provinces;
          auto state_regions = vic3_world->GetStateRegions();
-         auto warnings = AreVic3ProvincesFromSameState(vic3_province, state_regions);
-         for (const auto& warning: warnings)
-         {
-            Log(LogLevel::Warning) << warning;
-         }
+         AreVic3ProvincesFromSameState(vic3_province, state_regions);
       }
 
 
