@@ -1,5 +1,5 @@
-#include <sstream>
 #include <optional>
+#include <sstream>
 
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
@@ -37,7 +37,6 @@ TEST(MappersProvincesProvinceMapperImporterTests, MissingMapDefinitionThrowsExce
    EXPECT_THROW((ProvinceMapperImporter{mod_filesystem, std::optional<vic3::World>()}.ImportProvinceMappings()),
        std::runtime_error);
 }
-
 
 
 
