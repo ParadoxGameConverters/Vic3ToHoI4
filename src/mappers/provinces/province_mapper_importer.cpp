@@ -127,7 +127,7 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
           CheckAllHoi4ProvincesMapped(hoi4_to_vic3_province_map_, filesystem);
        });
 
-   mapping_parser_.registerKeyword("link", [this, &vic3_world](std::istream& input_stream) {
+   mapping_parser_.registerKeyword("link", [this, vic3_world](std::istream& input_stream) {
       const auto the_mapping = mapping_importer_.ImportProvinceMapping(input_stream);
       if (the_mapping.vic3_provinces.empty() && the_mapping.hoi4_provinces.empty())
       {
