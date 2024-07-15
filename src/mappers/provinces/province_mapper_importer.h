@@ -23,7 +23,8 @@ namespace mappers
 class ProvinceMapperImporter
 {
   public:
-   ProvinceMapperImporter(const commonItems::ModFilesystem& filesystem, const std::optional<vic3::World>& vic3_world);
+   ProvinceMapperImporter(const commonItems::ModFilesystem& filesystem,
+       const std::optional<std::map<std::string, vic3::StateRegion>>& vic3_state_regions);
 
    ProvinceMapper ImportProvinceMappings();
 

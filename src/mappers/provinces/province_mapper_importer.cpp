@@ -117,7 +117,7 @@ void CheckAllHoi4ProvincesMapped(const mappers::Hoi4ToVic3ProvinceMapping& hoi4_
 }  // namespace
 
 mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFilesystem& filesystem,
-    const std::optional<vic3::World>& vic3_world)
+    const std::optional<std::map<std::string, vic3::StateRegion>>& vic3_state_regions)
 {
    version_parser_.registerRegex(R"(\d\.[\d]+\.\d)",
        [this, &filesystem](const std::string& unused, std::istream& input_stream) {
@@ -125,18 +125,17 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
           CheckAllHoi4ProvincesMapped(hoi4_to_vic3_province_map_, filesystem);
        });
 
-   mapping_parser_.registerKeyword("link", [this, vic3_world](std::istream& input_stream) {
+   mapping_parser_.registerKeyword("link", [this, vic3_state_regions](std::istream& input_stream) {
       const auto the_mapping = mapping_importer_.ImportProvinceMapping(input_stream);
       if (the_mapping.vic3_provinces.empty() && the_mapping.hoi4_provinces.empty())
       {
          return;
       }
 
-      if (vic3_world)
+      if (vic3_state_regions)
       {
          auto vic3_province = the_mapping.vic3_provinces;
-         auto state_regions = vic3_world->GetStateRegions();
-         AreVic3ProvincesFromSameState(vic3_province, state_regions);
+         AreVic3ProvincesFromSameState(vic3_province, vic3_state_regions.value());
       }
 
 
