@@ -35,6 +35,7 @@ class ProvinceMapperImporter
 
    Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map_;
    Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map_;
+   std::map<std::string, std::string> province_to_state_map_;
 };
 
 

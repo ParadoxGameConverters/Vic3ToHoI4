@@ -74,7 +74,7 @@ void AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_fro
          state_names.insert(it->second);
       }
    }
-   // if the provinces are part of multiple different state
+   //if the provinces are part of multiple different state
    if (state_names.size() > 1)
    {
       for (const auto& province_from_map: provinces_from_map)
