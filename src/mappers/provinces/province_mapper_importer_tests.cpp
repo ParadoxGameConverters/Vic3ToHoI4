@@ -1,3 +1,4 @@
+#include <optional>
 #include <sstream>
 
 #include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
@@ -31,10 +32,10 @@ TEST(MappersProvincesProvinceMapperImporterTests, ProvinceMappingsCanBeImported)
 TEST(MappersProvincesProvinceMapperImporterTests, MissingMapDefinitionThrowsException)
 {
    const commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/no_definition/", {});
-   EXPECT_THROW(
-       [[maybe_unused]] const auto province_mappings = ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings(),
-       std::runtime_error);
+
+   EXPECT_THROW((ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings()), std::runtime_error);
 }
+
 
 
 TEST(MappersProvincesProvinceMapperImporterTests, BadLineInMapDefinitionLogsWarning)

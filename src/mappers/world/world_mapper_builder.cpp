@@ -18,7 +18,9 @@ namespace mappers
 WorldMapperBuilder WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem hoi4_mod_filesystem,
     const vic3::World& source_world)
 {
-   const auto province_mapper = mappers::ProvinceMapperImporter(hoi4_mod_filesystem).ImportProvinceMappings();
+   auto province_mapper =
+       mappers::ProvinceMapperImporter(hoi4_mod_filesystem, source_world.GetStateRegions()).ImportProvinceMappings();
+
 
    WorldMapperBuilder builder = WorldMapperBuilder();
    builder.DefaultCountryMapper(source_world);

@@ -13,6 +13,7 @@
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/mappers/provinces/province_mapping_importer.h"
 #include "src/mappers/provinces/province_mapping_types.h"
+#include "src/vic3_world/world/vic3_world.h"
 
 
 
@@ -22,7 +23,8 @@ namespace mappers
 class ProvinceMapperImporter
 {
   public:
-   ProvinceMapperImporter(const commonItems::ModFilesystem& filesystem);
+   ProvinceMapperImporter(const commonItems::ModFilesystem& filesystem,
+       const std::map<std::string, vic3::StateRegion>& vic3_state_regions = {});
 
    ProvinceMapper ImportProvinceMappings();
 
@@ -33,6 +35,7 @@ class ProvinceMapperImporter
 
    Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map_;
    Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map_;
+   std::map<std::string, std::string> province_to_state_map_;
 };
 
 
