@@ -62,7 +62,6 @@ std::map<std::string, std::string> GenerateProvinceToStateMap(
 }
 
 void AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_from_map,
-    const std::map<std::string, vic3::StateRegion>& state_regions_from_save,
     std::map<std::string, std::string> province_to_state_map)
 {
    std::set<std::string> state_names;
@@ -125,12 +124,10 @@ void CheckAllHoi4ProvincesMapped(const mappers::Hoi4ToVic3ProvinceMapping& hoi4_
 }  // namespace
 
 mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFilesystem& filesystem,
-    const std::optional<std::map<std::string, vic3::StateRegion>>& vic3_state_regions)
+    const std::map<std::string, vic3::StateRegion>& vic3_state_regions)
 {
-   if (vic3_state_regions)
-   {
-      province_to_state_map_ = GenerateProvinceToStateMap(vic3_state_regions.value());
-   }
+   province_to_state_map_ = GenerateProvinceToStateMap(vic3_state_regions);
+
    version_parser_.registerRegex(R"(\d\.[\d]+\.\d)",
        [this, &filesystem](const std::string& unused, std::istream& input_stream) {
           mapping_parser_.parseStream(input_stream);
@@ -144,10 +141,10 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
          return;
       }
 
-      if (vic3_state_regions)
+      if (!vic3_state_regions.empty())
       {
          auto vic3_province = the_mapping.vic3_provinces;
-         AreVic3ProvincesFromSameState(vic3_province, vic3_state_regions.value(), province_to_state_map_);
+         AreVic3ProvincesFromSameState(vic3_province, province_to_state_map_);
       }
 
 

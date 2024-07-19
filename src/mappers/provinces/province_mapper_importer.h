@@ -24,7 +24,7 @@ class ProvinceMapperImporter
 {
   public:
    ProvinceMapperImporter(const commonItems::ModFilesystem& filesystem,
-       const std::optional<std::map<std::string, vic3::StateRegion>>& vic3_state_regions);
+       const std::map<std::string, vic3::StateRegion>& vic3_state_regions = {});
 
    ProvinceMapper ImportProvinceMappings();
 
