@@ -30,27 +30,15 @@ def GetDefinition(filename):
 def CreateSmallVersion(filename):
     small_filename = DetermineSmallFilename(filename)
     big_image = Image.open(filename)
-    resized = big_image.resize((34, int(GetScalingFactor(big_image.size[0]) * big_image.size[1])))
+    resized = big_image.resize((34, int(GetScalingFactor(big_image.size[0]) * big_image.size[1]) + 6), Image.Resampling.BICUBIC)
     new = Image.new("RGBA", (65, 67))
-    new.paste(resized, (15,int((67-resized.size[1])/2)))
-    rotated = new.rotate(5)
+    new.paste(resized, (15,int((67-resized.size[1])/2) + 2))
+    rotated = new.rotate(5, Image.Resampling.BICUBIC)
     on_canvas = Image.open("data/resources/images/nat_ideas_template_canvas.png")
-    on_canvas.paste(rotated,(-6,-4),rotated)
+    on_canvas.alpha_composite(rotated,(-6,-4))
     frame = Image.open("data/resources/images/nat_ideas_template_frame.png")
-    on_canvas.paste(frame, (0,0), frame)
+    on_canvas.alpha_composite(frame)
     on_canvas.save(small_filename)
-
-def UpdateMappings(filename):
-    to_replace = '\"' + filename.replace('data/blank_mod/', '') + '\"'
-    replacement = "GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","")
-    mappings_file = open("data/configurables/culture_graphics.txt", "r")
-    mappings_lines = mappings_file.read()
-    mappings_file.close()
-    new_mappings_file = open("data/configurables/culture_graphics.txt", "w")
-    replacement_lines = mappings_lines.replace(to_replace, replacement)
-    new_mappings_file.write(replacement_lines)
-    new_mappings_file.close()
-
 
 gfx_file = open("data/blank_mod/interface/_leader_portraits_mod_generated.gfx", "w")
 gfx_file.write("spriteTypes = {\n")
@@ -62,7 +50,6 @@ for image_file in glob.iglob('data/blank_mod/gfx/leaders/**/*', recursive=True):
         continue
     CreateSmallVersion(image_file)
     gfx_file.write(GetDefinition(image_file))
-    UpdateMappings(image_file.replace('data/blank_mod/', ''))
 
 gfx_file.write("}")
 gfx_file.close()
