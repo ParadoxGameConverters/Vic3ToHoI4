@@ -1,6 +1,7 @@
 from PIL import Image
 import os
 import glob
+import sys
 
 
 files_to_skip = ["data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_admiral_south_america_1.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_middle_east_1.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_fascism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_fascism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_south_america_2.dds"]
@@ -12,7 +13,7 @@ def DetermineSmallFilename(big_filename):
     return small_filename
 
 def GetScalingFactor(width):
-    return 34.0 / width
+    return 34.0 / width;
 
 def GetDefinition(filename):
     definition = "\tspriteType = {\n"
@@ -30,23 +31,23 @@ def GetDefinition(filename):
 def CreateSmallVersion(filename):
     small_filename = DetermineSmallFilename(filename)
     big_image = Image.open(filename)
-    resized = big_image.resize((34, int(GetScalingFactor(big_image.size[0]) * big_image.size[1])))
+    resized = big_image.resize((34, int(GetScalingFactor(big_image.size[0]) * big_image.size[1]) + 6), Image.Resampling.BICUBIC)
     new = Image.new("RGBA", (65, 67))
-    new.paste(resized, (15,int((67-resized.size[1])/2)))
-    rotated = new.rotate(5)
+    new.paste(resized, (15,int((67-resized.size[1])/2) + 2))
+    rotated = new.rotate(5, Image.Resampling.BICUBIC)
     on_canvas = Image.open("data/resources/images/nat_ideas_template_canvas.png")
-    on_canvas.paste(rotated,(-6,-4),rotated)
+    on_canvas.alpha_composite(rotated,(-6,-4))
     frame = Image.open("data/resources/images/nat_ideas_template_frame.png")
-    on_canvas.paste(frame, (0,0), frame)
+    on_canvas.alpha_composite(frame)
     on_canvas.save(small_filename)
 
 def UpdateMappings(filename):
     to_replace = '\"' + filename.replace('data/blank_mod/', '') + '\"'
     replacement = "GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","")
-    mappings_file = open("data/configurables/culture_graphics.txt", "r")
+    mappings_file = open("data/configurables/cultureGroupToGraphics.txt", "r")
     mappings_lines = mappings_file.read()
     mappings_file.close()
-    new_mappings_file = open("data/configurables/culture_graphics.txt", "w")
+    new_mappings_file = open("data/configurables/cultureGroupToGraphics.txt", "w")
     replacement_lines = mappings_lines.replace(to_replace, replacement)
     new_mappings_file.write(replacement_lines)
     new_mappings_file.close()
