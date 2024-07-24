@@ -327,46 +327,6 @@ int MungePlaythroughIdIntoInteger(const std::string& playthrough_id_string)
       return id + static_cast<int>(digit);
    });
 }
-void CheckProvinceTerrainsGrouping(const std::vector<std::string>& all_provinces,
-    std::map<std::string, vic3::StateRegion>& state_regions)
-{
-   for (const auto& pair: state_regions)
-   {
-      auto provinces_in_state = pair.second.GetProvinces();
-      std::vector<int> provinces_indexes;
-      for (const auto& province: provinces_in_state)
-      {
-         auto it = std::find(all_provinces.begin(), all_provinces.end(), province);
-         if (it != all_provinces.end())
-         {
-            int index = std::distance(all_provinces.begin(), it);
-            provinces_indexes.push_back(index);
-         }
-      }
-      std::sort(provinces_indexes.begin(), provinces_indexes.end());
-      for (size_t i = 1; i < provinces_indexes.size(); ++i)
-      {
-         if (provinces_indexes[i] - provinces_indexes[i - 1] != 1)
-         {
-            std::string province_warning;
-            for (size_t j = 0; j < provinces_indexes.size(); ++j)
-            {
-               if (j != 0)
-               {
-                  province_warning += ", ";
-               }
-               province_warning +=
-                   fmt::format("{} (index: {})", all_provinces[provinces_indexes[j]], provinces_indexes[j]);
-            }
-            Log(LogLevel::Warning) << fmt::format(
-                "Provinces: [{}] are not next to each other in province_terrain.txt but are in the same state: {}\n",
-                province_warning,
-                pair.first);
-            break;
-         }
-      }
-   }
-}
 }  // namespace
 
 
@@ -403,8 +363,6 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
        mod_loader.getMods());
    world_options.province_definitions = LoadProvinceDefinitions();
    world_options.state_regions = ImportStateRegions(mod_filesystem);
-   CheckProvinceTerrainsGrouping(world_options.province_definitions.GetProvinceDefinitions(),
-       world_options.state_regions);
    commonItems::LocalizationDatabase localizations("english",
        {"braz_por",
            "french",
