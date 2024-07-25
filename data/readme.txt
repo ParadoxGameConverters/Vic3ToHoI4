@@ -36,7 +36,8 @@ IhateTrains			- Programming, Code reviews, Tools
 Drasilabyss			- Programming
 Ultrapotassium		- Programming
 Bratmon				- Programming
-shadowofneptune  - Programming
+shadowofneptune     - Programming
+Cocopioche          - Programming
 cetvrtak			- Data Files
 DaJay42				- Data Files
 gawquon				- Data Files
