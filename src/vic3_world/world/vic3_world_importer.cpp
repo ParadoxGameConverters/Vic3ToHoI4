@@ -358,7 +358,7 @@ void CheckProvinceTerrainsGrouping(const std::vector<std::string>& all_provinces
                province_warning +=
                    fmt::format("{} (index: {})", all_provinces[provinces_indexes[j]], provinces_indexes[j]);
             }
-            Log(LogLevel::Warning) << fmt::format(
+            Log(LogLevel::Debug) << fmt::format(
                 "Provinces: [{}] are not next to each other in province_terrain.txt but are in the same state: {}\n",
                 province_warning,
                 pair.first);
