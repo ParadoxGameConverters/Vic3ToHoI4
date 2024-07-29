@@ -1714,7 +1714,7 @@
 	link = { vic3 = x0087C9 hoi4 = 290 } # STATE_MAZOVIA -> Bielsk Podlaski
 	link = { vic3 = x406020 hoi4 = 318 } # STATE_BREST -> Wolkowysk
 	link = { vic3 = x4969E4 vic3 = xDE551D hoi4 = 347 } # Bialystok [wood], STATE_MAZOVIA -> Sokolka
-	link = { vic3 = x0EB3C7 vic3 = xE87D11 hoi4 = 535 } # STATE_VOLHYNIA, STATE_BREST -> Stolin
+	link = { vic3 = x0EB3C7 hoi4 = 535 } # STATE_VOLHYNIA -> Stolin
 	link = { vic3 = xCB21FD hoi4 = 560 } # STATE_BREST -> Pinsk
 	link = { vic3 = x84FE3D hoi4 = 3256 } # STATE_BREST -> Pruzana
 	link = { vic3 = xDE471E hoi4 = 3281 } # STATE_BREST -> Chaniewicze
@@ -1728,14 +1728,14 @@
 	link = { vic3 = xCCD197 vic3 = x18020B hoi4 = 6415 } # STATE_BREST, STATE_BREST -> Janów Poleski
 	link = { vic3 = xBFDF20 hoi4 = 6546 } # STATE_BREST -> Maloryta
 	link = { vic3 = xA201E3 hoi4 = 3556 hoi4 = 6280 } # STATE_BREST -> Luniniec, Hancewicze
-	link = { vic3 = xC15AD8 hoi4 = 6579 } # STATE_BREST -> Dawidgródek
+	link = { vic3 = xAC6FAE hoi4 = 6579 } # STATE_BREST -> Dawidgródek
 	link = { vic3 = x66FB56 vic3 = x80E0A0 hoi4 = 9236 } # STATE_BREST, STATE_MINSK -> Iwje
 	link = { vic3 = x6D7F7E hoi4 = 9359 } # STATE_BREST -> Nowogródek
 	link = { vic3 = xB491B1 hoi4 = 9544 } # STATE_LESSER_POLAND -> Miedzyrzec Podlaski
 	link = { vic3 = x416161 vic3 = x31F90F hoi4 = 9554 } # STATE_MINSK, STATE_KIEV -> Lel'chytsy
 	link = { vic3 = xC06121 hoi4 = 11247 } # STATE_MAZOVIA -> Hajnówka
 	link = { vic3 = x28C9D9 vic3 = x4B3105 hoi4 = 3759 } # STATE_MINSK, STATE_MINSK -> Nyasvizh
-	link = { vic3 = x2FD0B1 hoi4 = 11285 } # STATE_MINSK -> Mikaszewicze
+	link = { vic3 = xE87D11 vic3 = xC15AD8 hoi4 = 11285 } # STATE_BREST, STATE_BREST -> Mikaszewicze
 	link = { vic3 = x117AE1 hoi4 = 11301 } # STATE_MAZOVIA -> Bialystok
 	link = { vic3 = xE06176 hoi4 = 11341 hoi4 = 9304 } # STATE_BREST -> Lachowicze, Baranowicze
 	link = { vic3 = x46B950 hoi4 = 11466 } # STATE_LESSER_POLAND -> Biala Podlaska
@@ -1748,7 +1748,7 @@
 	link = { vic3 = x4700D0 hoi4 = 3457 } # STATE_KIEV -> Proskuriv
 	link = { vic3 = x7161A0 vic3 = x884128 hoi4 = 3430 } # STATE_KIEV, STATE_KIEV -> Kam'yanets'-Podil's'kyi
 	link = { vic3 = xBD8617 hoi4 = 3470 } # STATE_KIEV -> Novohrad-Volyns'kyi
-	link = { vic3 = xAC6FAE hoi4 = 11503 } # STATE_BREST -> Fiadory
+	link = { hoi4 = 11503 } # NOTHING -> Fiadory
 	link = { vic3 = x862F77 hoi4 = 3496 } # STATE_BREST -> Machro
 	link = { vic3 = x6AC779 hoi4 = 3511 } # STATE_KIEV -> Shepetivka
 	link = { vic3 = x1121A0 vic3 = x6168EB hoi4 = 3570 } # STATE_KIEV, STATE_KIEV -> Baranivka
@@ -1769,11 +1769,11 @@
 	link = { vic3 = x0319ED hoi4 = 418 hoi4 = 11397 } # STATE_KHARKOV -> Kharkiv, Bohodukhiv
 	link = { vic3 = xF061A0 hoi4 = 434 } # STATE_KIEV -> Vatutine
 	link = { vic3 = xD5E7D2 hoi4 = 441 } # STATE_KIEV -> Malyn
-	link = { vic3 = x7FC1CF vic3 = x82AE2F hoi4 = 458 } # STATE_CHERSON, STATE_KIEV -> Smila
+	link = { vic3 = x7FC1CF hoi4 = 458 } # STATE_CHERSON -> Smila
 	link = { vic3 = x7EAE07 hoi4 = 6605 } # STATE_KHARKOV -> Lokhvytsya
 	link = { vic3 = x2C6090 hoi4 = 463 hoi4 = 11425 } # STATE_KHARKOV -> Romny, Varva
 	link = { vic3 = x11F253 hoi4 = 476 } # STATE_KIEV -> Vinnytsia
-	link = { vic3 = x54B5C4 hoi4 = 488 } # Vinnytsia [wood] -> Cherkasy
+	link = { vic3 = x54B5C4 vic3 = xE996D1 hoi4 = 488 } # Vinnytsia [wood], STATE_KIEV -> Cherkasy
 	link = { vic3 = xAD965B hoi4 = 501 } # STATE_KHARKOV -> Krasnopillya
 	link = { vic3 = xCB4129 hoi4 = 511 } # STATE_KHARKOV -> Poltava
 	link = { vic3 = x8CE323 hoi4 = 525 } # Kyiv [city] -> Kyiv
@@ -1781,26 +1781,26 @@
 	link = { vic3 = x7DF67D hoi4 = 550 } # STATE_KIEV -> land
 	link = { vic3 = x3ACCE8 hoi4 = 559 } # STATE_KHARKOV -> Myrhorod
 	link = { vic3 = x2E05DE hoi4 = 489 } # STATE_KIEV -> Khotyanivka
-	link = { vic3 = xDD790F hoi4 = 11557 } # STATE_KIEV -> Brovary
-	link = { vic3 = xE08061 hoi4 = 582 } # STATE_KHARKOV -> Yahotyn
+	link = { vic3 = x83B302 hoi4 = 11557 } # STATE_CHERNIHIV -> Brovary
+	link = { vic3 = xE08061 hoi4 = 9543 hoi4 = 582 } # STATE_KHARKOV -> Pereyaslav, Yahotyn
 	link = { vic3 = xA12B5A hoi4 = 3225 } # STATE_CHERNIHIV -> Seredyna-Buda
 	link = { vic3 = xE682D3 hoi4 = 9413 hoi4 = 3557 } # STATE_KHARKOV -> Hadyach, Kotel'va
 	link = { vic3 = x1CB8D8 hoi4 = 3455 } # Kremenchuk [wood] -> Okhtyrka
 	link = { vic3 = xF49A18 hoi4 = 3480 } # STATE_CHERNIHIV -> Mena
-	link = { vic3 = x01E0E0 hoi4 = 3494 } # STATE_KIEV -> Karahlyk
+	link = { vic3 = x01E0E0 vic3 = xDD790F hoi4 = 3494 } # STATE_KIEV, STATE_KIEV -> Karahlyk
 	link = { vic3 = x0B484F hoi4 = 3508 } # STATE_KHARKOV -> Krasnohrad
 	link = { vic3 = xD0DA95 hoi4 = 3520 } # Sumy [farm] -> Sumy
 	link = { vic3 = xFC92C5 hoi4 = 3531 } # STATE_KHARKOV -> Likhachove
 	link = { vic3 = x675DF4 hoi4 = 3542 } # STATE_CHERNIHIV -> Sosnytsya
 	link = { vic3 = xA9FA61 hoi4 = 3543 } # STATE_KIEV -> Irpin'
 	link = { vic3 = x34B4C6 hoi4 = 3568 } # STATE_CHERNIHIV -> Chernihiv
-	link = { vic3 = x270CD8 hoi4 = 11530 hoi4 = 9543 } # STATE_KHARKOV -> Drabiv, Pereyaslav
+	link = { vic3 = x270CD8 hoi4 = 11530 } # STATE_KHARKOV -> Drabiv
 	link = { vic3 = x817D22 hoi4 = 3584 } # STATE_KHARKOV -> Pyryatyn
 	link = { vic3 = x022620 hoi4 = 6455 } # STATE_KIEV -> Zhmerynka
-	link = { vic3 = xBDDA3A vic3 = x83B302 hoi4 = 6458 } # STATE_CHERNIHIV, STATE_CHERNIHIV -> Nosivka
-	link = { vic3 = xE996D1 hoi4 = 6495 } # STATE_KIEV -> Kremenchuk
+	link = { vic3 = xBDDA3A hoi4 = 6458 } # STATE_CHERNIHIV -> Nosivka
+	link = { vic3 = xDAAE11 hoi4 = 6495 } # STATE_KHARKOV -> Kremenchuk
 	link = { vic3 = x18E9E1 hoi4 = 6497 hoi4 = 504 } # STATE_KIEV -> Skvyra, land
-	link = { vic3 = xCD72A1 vic3 = xDAAE11 hoi4 = 6507 } # STATE_KHARKOV, STATE_KHARKOV -> Kobelyaky
+	link = { vic3 = xCD72A1 hoi4 = 6507 } # STATE_KHARKOV -> Kobelyaky
 	link = { vic3 = xC31716 vic3 = xFB1DC5 hoi4 = 6508 } # STATE_CHERNIHIV, Nizhyn [wood] -> Bakhmach
 	link = { vic3 = x387D75 hoi4 = 6532 } # STATE_CHERNIHIV -> Kozelets'
 	link = { vic3 = xDD344F hoi4 = 9477 } # Konotop [farm] -> Konotop
@@ -1821,7 +1821,7 @@
 	link = { vic3 = xDCE378 hoi4 = 11409 } # STATE_CHERSON -> Uman'
 	link = { vic3 = xCD2CE5 hoi4 = 11424 hoi4 = 9451 } # Uman [mine] -> Zvenyhorodka, Zhashkiv
 	link = { vic3 = xD8EA8C hoi4 = 11438 hoi4 = 9465 } # STATE_KIEV -> Korsun'-Shevchenkivs'kyi, Rokytne
-	link = { vic3 = x7DA787 hoi4 = 11454 } # STATE_KIEV -> Kaniv
+	link = { vic3 = x7DA787 vic3 = x82AE2F hoi4 = 11454 } # STATE_KIEV, STATE_KIEV -> Kaniv
 	link = { vic3 = x1458A6 hoi4 = 11462 } # STATE_KHARKOV -> Nedryhayliv
 	link = { vic3 = x46B48F hoi4 = 11464 } # STATE_KIEV -> Berdychiv
 	link = { vic3 = x4C92CC hoi4 = 11490 } # STATE_KIEV -> Andrushivka
@@ -2167,7 +2167,7 @@
 	link = { vic3 = xBA2909 hoi4 = 6432 } # STATE_KURSK -> Valuyki
 	link = { vic3 = xBC52ED hoi4 = 570 } # STATE_KHARKOV -> Troits'ke
 	link = { vic3 = x580D2A hoi4 = 429 } # STATE_TAURIDA -> Polohy
-	link = { vic3 = x055C67 hoi4 = 3399 } # STATE_TAURIDA -> Orikhiv
+	link = { vic3 = x055C67 hoi4 = 3399 hoi4 = 11405 } # STATE_TAURIDA -> Orikhiv, Zaporizhzhia
 	link = { vic3 = x14786A hoi4 = 3409 } # STATE_KHARKOV -> Vovchans'k
 	link = { vic3 = x87109C hoi4 = 3449 hoi4 = 486 } # STATE_TAURIDA -> Kurakhove, Pershotravens'k
 	link = { vic3 = x5AB195 hoi4 = 3479 } # Bakhmut [wood] -> Horlivka
@@ -2175,14 +2175,14 @@
 	link = { vic3 = xA1BAF7 hoi4 = 3573 } # STATE_TAURIDA -> Velyka Lepetykha
 	link = { vic3 = x35FCF1 hoi4 = 3767 } # STATE_TAURIDA -> Tokmak
 	link = { vic3 = xF0E061 hoi4 = 6420 } # Mariupol [port] -> Mariupol'
-	link = { vic3 = xFD6659 vic3 = xF60A93 hoi4 = 6423 } # Kryvyi Rih [mine], STATE_CHERSON -> Zhovti Vody
+	link = { vic3 = xFD6659 hoi4 = 6423 } # Kryvyi Rih [mine] -> Zhovti Vody
 	link = { vic3 = x500F88 hoi4 = 3421 } # STATE_ROSTOV -> Novoazovs'k
-	link = { vic3 = xAD4F1C hoi4 = 6474 hoi4 = 3466 } # STATE_TAURIDA -> Stalino, Pokrovs'k
-	link = { vic3 = x386376 hoi4 = 6493 } # STATE_ROSTOV -> Chystyakove
+	link = { vic3 = xAD4F1C hoi4 = 3466 } # STATE_TAURIDA -> Pokrovs'k
+	link = { vic3 = x386376 hoi4 = 6493 hoi4 = 6474 } # STATE_ROSTOV -> Chystyakove, Stalino
 	link = { vic3 = xB06935 hoi4 = 6505 } # STATE_TAURIDA -> Voroshylovs'k
 	link = { vic3 = x04E110 hoi4 = 6530 } # STATE_KHARKOV -> Izyum
 	link = { vic3 = x58331B hoi4 = 6596 hoi4 = 588 } # STATE_TAURIDA -> Vesele, land
-	link = { vic3 = x000AE0 hoi4 = 9712 hoi4 = 737 } # STATE_TAURIDA -> Novotroits'ke, Kakhovka
+	link = { vic3 = x000AE0 hoi4 = 9712 } # STATE_TAURIDA -> Novotroits'ke
 	link = { vic3 = xF06161 hoi4 = 6771 hoi4 = 767 } # STATE_TAURIDA -> Henichens'k, Ivanivka
 	link = { vic3 = x7020DF hoi4 = 6776 } # STATE_TAURIDA -> Yenakiyeve
 	link = { vic3 = x924D7E hoi4 = 9433 } # STATE_CHERSON -> Kam'yans'ke
@@ -2195,10 +2195,9 @@
 	link = { vic3 = x46BD2E hoi4 = 9556 } # STATE_KHARKOV -> Chuhuyiv
 	link = { vic3 = x4202ED hoi4 = 9729 } # STATE_TAURIDA -> Prymors'k
 	link = { vic3 = xB69E4B hoi4 = 9571 } # STATE_TAURIDA -> Berdyans'k
-	link = { vic3 = xB285AE hoi4 = 11405 } # STATE_CHERSON -> Zaporizhzhia
 	link = { vic3 = x3DA304 hoi4 = 9419 } # STATE_CHERSON -> Pokrov
-	link = { vic3 = x71E061 hoi4 = 11422 } # STATE_CHERSON -> Nikopol'
-	link = { vic3 = x5BE6ED hoi4 = 11437 } # Yekaterinoslav [wood] -> Dnipropetrovsk
+	link = { vic3 = x71E061 vic3 = xB285AE hoi4 = 11422 } # STATE_CHERSON, STATE_CHERSON -> Nikopol'
+	link = { vic3 = x5BE6ED vic3 = xF60A93 hoi4 = 11437 } # Yekaterinoslav [wood], STATE_CHERSON -> Dnipropetrovsk
 	link = { vic3 = x0EBC1D hoi4 = 11452 } # Kakhovka [farm] -> Ternivka
 	link = { vic3 = x76E2A3 hoi4 = 11461 } # STATE_TAURIDA -> Lozova
 	link = { vic3 = xBBC6BF hoi4 = 11487 } # STATE_KHARKOV -> Svatove
@@ -2298,7 +2297,7 @@
 	link = { comment = "* * STATE_CHERSON " }
 	link = { vic3 = x726291 hoi4 = 409 } # STATE_CHERSON -> Kirovo
 	link = { vic3 = x8A09FD hoi4 = 721 } # STATE_TAURIDA -> Zaliznyi Port
-	link = { vic3 = x135B1E hoi4 = 568 } # STATE_TAURIDA -> Skadovs'k
+	link = { vic3 = x135B1E hoi4 = 568 hoi4 = 737 } # STATE_TAURIDA -> Skadovs'k, Kakhovka
 	link = { vic3 = x13997A hoi4 = 574 } # STATE_CHERSON -> Bashtanka
 	link = { vic3 = x3E66A1 vic3 = x71E021 hoi4 = 741 } # STATE_CHERSON, STATE_CHERSON -> Rozdil'na
 	link = { vic3 = xA81C77 hoi4 = 754 } # STATE_CHERSON -> land
@@ -2402,7 +2401,7 @@
 	link = { vic3 = x7AB134 vic3 = xDA6E23 hoi4 = 11192 } # STATE_GALICH, STATE_GALICH -> land
 	link = { vic3 = x773532 vic3 = xE06227 vic3 = xF2E758 vic3 = xB10522 vic3 = xF61C7D vic3 = xC55EBF vic3 = xBF0692 hoi4 = 11200 } # STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH -> land
 	link = { comment = "* * STATE_MINSK " }
-	link = { vic3 = x80E061 hoi4 = 215 } # STATE_MINSK -> Zhytkavichy
+	link = { vic3 = x80E061 vic3 = x2FD0B1 hoi4 = 215 } # STATE_MINSK, STATE_MINSK -> Zhytkavichy
 	link = { vic3 = xC06C1A hoi4 = 304 } # STATE_MINSK -> Lyuban'
 	link = { vic3 = x21175E vic3 = x51F4A4 hoi4 = 360 } # STATE_MINSK, STATE_MINSK -> Slutsk
 	link = { vic3 = x557F9F hoi4 = 216 } # STATE_MINSK -> Chervyen'
