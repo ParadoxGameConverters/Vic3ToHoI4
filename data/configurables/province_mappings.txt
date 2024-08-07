@@ -1616,15 +1616,15 @@
 	link = { vic3 = xDED975 hoi4 = 104 } # Yamburg [farm] -> Kingisepp
 	link = { vic3 = xAEBDCB hoi4 = 126 } # STATE_INGRIA -> Slantsy
 	link = { vic3 = x57DF51 hoi4 = 181 hoi4 = 6139 } # STATE_INGRIA -> Izvara, Voloshovo
-	link = { vic3 = x89D566 hoi4 = 207 } # STATE_PSKOV -> Novosokol'niki
-	link = { vic3 = x02D30A hoi4 = 319 hoi4 = 3298 } # STATE_RIGA -> Balvi, Aluksne
+	link = { vic3 = x89D566 hoi4 = 9353 } # STATE_PSKOV -> Pustoshka
+	link = { vic3 = x02D30A hoi4 = 3298 } # STATE_RIGA -> Aluksne
 	link = { vic3 = xD0DA34 hoi4 = 3310 } # STATE_PSKOV -> Pytalovo
 	link = { vic3 = xDF3F5C hoi4 = 415 } # STATE_PSKOV -> Pechory
 	link = { vic3 = x93FBC9 hoi4 = 3053 } # STATE_INGRIA -> Strugi Krasnye
 	link = { vic3 = x0FEA4B hoi4 = 3089 } # STATE_INGRIA -> Sol'tsy
 	link = { vic3 = x246095 hoi4 = 3120 } # STATE_INGRIA -> Os'mino
 	link = { vic3 = xB64167 hoi4 = 3151 hoi4 = 149 } # Shlisselburg [mine] -> Leningrad, land
-	link = { vic3 = x86F5A3 hoi4 = 3333 } # STATE_PSKOV -> Krasnogorodsk
+	link = { vic3 = x86F5A3 vic3 = x1AE461 hoi4 = 3333 } # STATE_PSKOV, STATE_VITEBSK -> Krasnogorodsk
 	link = { vic3 = x01A0E0 hoi4 = 6197 } # STATE_INGRIA -> Lyuban'
 	link = { vic3 = xF06F29 hoi4 = 6242 } # STATE_PSKOV -> Opochka
 	link = { vic3 = x3266DE vic3 = x6F9858 hoi4 = 6324 } # STATE_PSKOV, STATE_PSKOV -> Ostrov
@@ -1634,7 +1634,6 @@
 	link = { vic3 = x9A8A71 hoi4 = 9254 } # STATE_PSKOV -> Bezhanitsy
 	link = { vic3 = x6FD5E3 vic3 = x87C547 hoi4 = 9319 } # STATE_PSKOV, STATE_PSKOV -> Dedovichi
 	link = { vic3 = xBA361B hoi4 = 9331 } # STATE_PSKOV -> Loknya
-	link = { vic3 = x0020E0 hoi4 = 9353 } # STATE_VITEBSK -> Pustoshka
 	link = { vic3 = xD14E99 hoi4 = 9408 } # STATE_INGRIA -> Seryodka
 	link = { vic3 = xBB73A3 hoi4 = 11032 } # STATE_INGRIA -> Siverskiy
 	link = { vic3 = xE97616 hoi4 = 11080 } # STATE_INGRIA -> Volosovo
@@ -1643,7 +1642,7 @@
 	link = { vic3 = x80A0E0 hoi4 = 11139 } # Luga [wood] -> Druzhnaya Gorka
 	link = { vic3 = xD1CBDD hoi4 = 11186 } # STATE_INGRIA -> Zimititsy
 	link = { vic3 = xA981B3 hoi4 = 11202 } # Pskov [city] -> Pskov
-	link = { vic3 = x1AE461 hoi4 = 11259 } # STATE_VITEBSK -> Sebezh
+	link = { vic3 = x0020E0 hoi4 = 11259 } # STATE_VITEBSK -> Sebezh
 	link = { vic3 = xE7438E hoi4 = 11304 } # STATE_PSKOV -> Krasnyy Luch
 	link = { vic3 = xA577B1 hoi4 = 11392 } # STATE_PSKOV -> Novorzhev
 	link = { vic3 = x0CFAFA hoi4 = 2332 } # x0CFAFA -> (Lake)
@@ -1872,7 +1871,7 @@
 	link = { vic3 = xECBC4D hoi4 = 223 } # Smolensk [city] -> Krasnyy
 	link = { vic3 = x04FF4D hoi4 = 226 } # STATE_TVER -> Kuvshinovo
 	link = { vic3 = xC0DF60 hoi4 = 236 } # STATE_ORYOL -> Vorga
-	link = { vic3 = xB5BA9C hoi4 = 248 } # STATE_PSKOV -> land
+	link = { vic3 = xB5BA9C vic3 = x9CC46F hoi4 = 248 } # STATE_PSKOV, STATE_PSKOV -> land
 	link = { vic3 = xA0A021 hoi4 = 287 } # STATE_SMOLENSK -> Olenino
 	link = { vic3 = x9EF309 hoi4 = 387 } # STATE_VITEBSK -> Nevel'
 	link = { vic3 = x9BF7E1 hoi4 = 3210 } # STATE_SMOLENSK -> Pochinok
@@ -1882,19 +1881,20 @@
 	link = { vic3 = xC0A060 hoi4 = 3247 } # STATE_SMOLENSK -> Dukhovshchina
 	link = { vic3 = xD8537A hoi4 = 3278 } # STATE_SMOLENSK -> Shumyachi
 	link = { vic3 = x93DF31 hoi4 = 3297 } # STATE_SMOLENSK -> Kardymovo
-	link = { vic3 = x9CC46F vic3 = x9ECE91 hoi4 = 3344 } # STATE_PSKOV, STATE_PSKOV -> Bologovo
+	link = { vic3 = x9ECE91 hoi4 = 3344 hoi4 = 9287 } # STATE_PSKOV -> Bologovo, Toropets
 	link = { vic3 = xEA523C hoi4 = 6264 } # STATE_TVER -> Molodoy Tud
 	link = { vic3 = x6100EC hoi4 = 11272 hoi4 = 3313 } # STATE_SMOLENSK -> Zharovskiy, Przheval'skoye
-	link = { vic3 = x6D38D7 hoi4 = 6293 hoi4 = 354 } # STATE_PSKOV -> Usvyaty, Kunya
+	link = { vic3 = x6D38D7 hoi4 = 6293 } # STATE_PSKOV -> Usvyaty
 	link = { vic3 = x534355 hoi4 = 6367 } # STATE_SMOLENSK -> Nelidovo
 	link = { vic3 = x74F08E hoi4 = 6387 } # STATE_SMOLENSK -> Safonovo
 	link = { vic3 = x219D59 hoi4 = 6400 } # STATE_SMOLENSK -> Belyy
 	link = { vic3 = x391276 hoi4 = 9265 } # STATE_TVER -> Yeltsy
-	link = { vic3 = xD1D45B hoi4 = 9287 } # STATE_PSKOV -> Toropets
+	link = { vic3 = xD1D45B hoi4 = 354 } # STATE_PSKOV -> Kunya
 	link = { vic3 = x1CD991 hoi4 = 9343 } # STATE_TVER -> Staritsa
 	link = { vic3 = x1DE5C6 hoi4 = 9386 } # STATE_VITEBSK -> land
 	link = { vic3 = xFBBA8C hoi4 = 9399 } # STATE_SMOLENSK -> Kholm-Zhirkovskiy
-	link = { vic3 = x55425A vic3 = x6859CA hoi4 = 11234 } # STATE_PSKOV, STATE_PSKOV -> Velikiye Luki
+	link = { vic3 = x6859CA hoi4 = 207 } # STATE_PSKOV -> Novosokol'niki
+	link = { vic3 = x55425A hoi4 = 11234 } # STATE_PSKOV -> Velikiye Luki
 	link = { vic3 = x4786C3 hoi4 = 11250 } # STATE_TVER -> Redkino
 	link = { vic3 = x03673A hoi4 = 11290 } # STATE_SMOLENSK -> Rudnya
 	link = { vic3 = x6B02CC hoi4 = 2999 } # STATE_TVER -> Vyshniy Volochyok
@@ -2570,7 +2570,7 @@
 	link = { vic3 = x1D7342 hoi4 = 11426 } # STATE_TALINN -> Maardu
 	link = { vic3 = x0BDCFA hoi4 = 13127 } # x0BDCFA -> (Lake)
 	link = { comment = "* * STATE_LATVIA " }
-	link = { vic3 = x7F93C7 hoi4 = 222 } # STATE_RIGA -> Karsava
+	link = { vic3 = x7F93C7 hoi4 = 222 hoi4 = 319 } # STATE_RIGA -> Karsava, Balvi
 	link = { vic3 = xF4B54B vic3 = xFA8436 hoi4 = 265 } # Mitava [city], Tukkum [mine] -> Jelgava
 	link = { vic3 = x5DC582 hoi4 = 341 } # STATE_RIGA -> Preili
 	link = { vic3 = x74042F hoi4 = 3194 } # Goldingen [wood] -> land
