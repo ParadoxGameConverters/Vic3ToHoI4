@@ -6169,7 +6169,7 @@
 	link = { vic3 = xB42F67 vic3 = xDCE3DC vic3 = xE44235 hoi4 = 1406 } # STATE_UFA, STATE_UFA, STATE_SAMARA -> Akbulak
 	link = { vic3 = xC4B284 hoi4 = 3196 } # STATE_TARTARIA -> Nikolayevka
 	link = { vic3 = x1E5008 hoi4 = 3216 } # STATE_SAMARA -> Borskoye
-	link = { vic3 = x8BB04E hoi4 = 3246 } # STATE_TARTARIA -> Novospasskoye
+	link = { vic3 = x8BB04E hoi4 = 3246 hoi4 = 6394 } # STATE_TARTARIA -> Novospasskoye, Staraya Kulatka
 	link = { vic3 = x51CA06 hoi4 = 3265 } # Buguruslan [mine] -> Buguruslan
 	link = { vic3 = x346C85 hoi4 = 3276 hoi4 = 286 } # STATE_TARTARIA -> Kuzovatovo, Barysh
 	link = { vic3 = xFEBB19 hoi4 = 3289 } # STATE_UFA -> Davlekanovo
@@ -6193,7 +6193,6 @@
 	link = { vic3 = x45F63E vic3 = x942B77 hoi4 = 4411 } # STATE_CHELYABINSK, STATE_CHELYABINSK -> Kartaly
 	link = { vic3 = x2D0CA0 hoi4 = 6226 } # STATE_TARTARIA -> Syzran'
 	link = { vic3 = x231291 vic3 = x4F79AF hoi4 = 6246 } # STATE_UFA, STATE_UFA -> Agidel'
-	link = { vic3 = x90C19D hoi4 = 6275 } # STATE_SAMARA -> Otvazhnoye
 	link = { vic3 = x41FA73 vic3 = xA6E140 hoi4 = 6285 } # STATE_UFA, Birsk [wood] -> Dyurtyuli
 	link = { vic3 = xA121CB hoi4 = 6302 } # STATE_SAMARA -> Teren'ga
 	link = { vic3 = x117254 hoi4 = 6308 } # STATE_KAZAN -> Aznakayevo
@@ -6216,11 +6215,12 @@
 	link = { vic3 = xB4E168 vic3 = xEF4BDA hoi4 = 7444 } # STATE_UFA, STATE_UFA -> Askino
 	link = { vic3 = xA0E021 hoi4 = 9243 } # STATE_SAMARA -> Chapayevsk
 	link = { vic3 = xCEF631 vic3 = xE6ED05 hoi4 = 9271 } # STATE_SAMARA, STATE_SAMARA -> Sudokhol
-	link = { vic3 = x795854 vic3 = xD49810 hoi4 = 9299 } # STATE_SAMARA, STATE_SAMARA -> Stavropol'-na-Volge
+	link = { vic3 = x795854 hoi4 = 9299 } # STATE_SAMARA -> Stavropol'-na-Volge
+	link = { vic3 = xD49810 hoi4 = 6275 } # STATE_SAMARA -> Otvazhnoye
 	link = { vic3 = x1C1FB7 hoi4 = 9337 } # Nikolaevsk [wood] -> Ivanteyevka
 	link = { vic3 = x161ACD hoi4 = 9338 } # STATE_TARTARIA -> Sengiley
 	link = { vic3 = x7B1203 vic3 = x84C5D0 vic3 = xD1DF3A vic3 = xD518C5 hoi4 = 9349 } # STATE_KAZAN, STATE_UFA, STATE_UFA, STATE_UFA -> Tuymazy
-	link = { vic3 = x0DFFD3 hoi4 = 6394 hoi4 = 9365 } # STATE_SAMARA -> Staraya Kulatka, Privolzh'ye
+	link = { vic3 = x0DFFD3 hoi4 = 9365 } # STATE_SAMARA -> Privolzh'ye
 	link = { vic3 = xA84ECC hoi4 = 6323 hoi4 = 9385 } # STATE_KAZAN -> Yelabuga, Menzelinsk
 	link = { vic3 = x42401C vic3 = x7C8665 hoi4 = 9391 } # STATE_SAMARA, STATE_SAMARA -> Pestravka
 	link = { vic3 = xDADB41 hoi4 = 9420 } # STATE_SAMARA -> Ilek
@@ -6230,7 +6230,7 @@
 	link = { vic3 = x44BA57 vic3 = xA060A0 hoi4 = 10226 } # STATE_UFA, STATE_UFA -> Ishimbay
 	link = { vic3 = xB70239 vic3 = xCF5257 hoi4 = 10299 } # STATE_SAMARA, STATE_SAMARA -> Novosergiyevka
 	link = { vic3 = xD38CCF hoi4 = 10301 } # STATE_KAZAN -> Naberezhnyye Chelny
-	link = { vic3 = xBF7060 hoi4 = 11225 } # Samara [city] -> Kuybyshev
+	link = { vic3 = xBF7060 vic3 = x90C19D hoi4 = 11225 } # Samara [city], STATE_SAMARA -> Kuybyshev
 	link = { vic3 = x341DB2 hoi4 = 11240 } # STATE_TAMBOV -> Chaadayevka
 	link = { vic3 = xA7620E hoi4 = 11256 } # STATE_SAMARA -> Pokhvistnevo
 	link = { vic3 = xC45745 hoi4 = 11273 } # STATE_SAMARA -> Dimitrovgrad
