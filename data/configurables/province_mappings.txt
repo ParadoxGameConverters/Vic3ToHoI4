@@ -1875,13 +1875,13 @@
 	link = { vic3 = xA0A021 hoi4 = 287 } # STATE_SMOLENSK -> Olenino
 	link = { vic3 = x9EF309 hoi4 = 387 } # STATE_VITEBSK -> Nevel'
 	link = { vic3 = x9BF7E1 hoi4 = 3210 } # STATE_SMOLENSK -> Pochinok
-	link = { vic3 = x50AF51 vic3 = x712640 hoi4 = 3215 } # STATE_TVER, STATE_TVER -> Torzhok
+	link = { vic3 = x712640 hoi4 = 3215 } # STATE_TVER -> Torzhok
 	link = { vic3 = x25D843 hoi4 = 3235 hoi4 = 11272 } # STATE_SMOLENSK -> Zapadnaya Dvina, Zharovskiy
 	link = { vic3 = xACF404 hoi4 = 306 hoi4 = 3362 hoi4 = 6273 } # STATE_SMOLENSK -> Smolensk, Yartsevo, Ozyornyy
 	link = { vic3 = xC0A060 hoi4 = 3247 } # STATE_SMOLENSK -> Dukhovshchina
 	link = { vic3 = xD8537A hoi4 = 3278 } # STATE_SMOLENSK -> Shumyachi
 	link = { vic3 = x93DF31 hoi4 = 3297 } # STATE_SMOLENSK -> Kardymovo
-	link = { vic3 = x9ECE91 hoi4 = 9287 } # STATE_PSKOV -> Toropets
+	link = { vic3 = x9ECE91 hoi4 = 9287 hoi4 = 3344 } # STATE_PSKOV -> Toropets, Bologovo
 	link = { vic3 = xEA523C vic3 = xD4F88C hoi4 = 6264 } # STATE_TVER, STATE_TVER -> Molodoy Tud
 	link = { vic3 = x6100EC hoi4 = 3313 } # STATE_SMOLENSK -> Przheval'skoye
 	link = { vic3 = x6D38D7 hoi4 = 6293 } # STATE_PSKOV -> Usvyaty
@@ -1895,7 +1895,7 @@
 	link = { vic3 = xFBBA8C hoi4 = 9399 } # STATE_SMOLENSK -> Kholm-Zhirkovskiy
 	link = { vic3 = x6859CA hoi4 = 207 } # STATE_PSKOV -> Novosokol'niki
 	link = { vic3 = x55425A hoi4 = 11234 } # STATE_PSKOV -> Velikiye Luki
-	link = { vic3 = x4786C3 hoi4 = 11250 } # STATE_TVER -> Redkino
+	link = { vic3 = x4786C3 vic3 = x50AF51 hoi4 = 11250 } # STATE_TVER, STATE_TVER -> Redkino
 	link = { vic3 = x03673A hoi4 = 11290 } # STATE_SMOLENSK -> Rudnya
 	link = { vic3 = x6B02CC hoi4 = 2999 } # STATE_TVER -> Vyshniy Volochyok
 	link = { vic3 = x74E5E0 hoi4 = 11315 } # STATE_TVER -> Spirovo
@@ -2076,7 +2076,7 @@
 	link = { vic3 = xE35415 hoi4 = 6073 } # STATE_NOVGOROD -> land
 	link = { vic3 = x4BA77A hoi4 = 160 } # STATE_NOVGOROD -> Kiyno
 	link = { vic3 = x5357F0 hoi4 = 81 } # STATE_NOVGOROD -> Borisovo-Sudskoye
-	link = { vic3 = x513224 hoi4 = 85 } # STATE_TVER -> Maksatikha
+	link = { vic3 = x513224 vic3 = x30386A hoi4 = 85 } # STATE_TVER, STATE_TVER -> Maksatikha
 	link = { vic3 = x3CBDA1 hoi4 = 93 } # STATE_NOVGOROD -> Babayevo
 	link = { vic3 = x20B928 vic3 = x6D9FEE hoi4 = 129 } # STATE_NOVGOROD, STATE_NOVGOROD -> Suda
 	link = { vic3 = xFB5C50 hoi4 = 150 } # STATE_TVER -> Sandovo
@@ -2131,7 +2131,7 @@
 	link = { vic3 = xB1EE74 hoi4 = 9256 hoi4 = 3323 } # STATE_TVER -> Orsha, Goritsy
 	link = { vic3 = x89264F vic3 = xFA15E7 hoi4 = 11039 } # STATE_YAROSLAVL, STATE_TVER -> Martynovo
 	link = { vic3 = x0F63E6 hoi4 = 11071 } # STATE_ARKHANGELSK -> Kargopol'
-	link = { vic3 = x30386A vic3 = xB6FE8B hoi4 = 11084 } # STATE_TVER, STATE_NOVGOROD -> Lesnoye
+	link = { vic3 = xB6FE8B hoi4 = 11084 } # STATE_NOVGOROD -> Lesnoye
 	link = { vic3 = x3988B7 hoi4 = 11093 } # STATE_NOVGOROD -> Chagoda
 	link = { vic3 = x309392 vic3 = x69648C hoi4 = 11095 } # STATE_GALICH, STATE_GALICH -> Yubileynyy
 	link = { vic3 = x7EFD2D hoi4 = 11107 } # Cherepovets [mine] -> Vologda
@@ -2285,7 +2285,7 @@
 	link = { vic3 = xDA4154 hoi4 = 9184 } # STATE_NOVGOROD -> Shugozero
 	link = { vic3 = xC7C158 hoi4 = 9212 } # STATE_NOVGOROD -> Kresttsy
 	link = { vic3 = x4961C9 hoi4 = 9234 } # STATE_PSKOV -> Staraya Russa
-	link = { vic3 = x40A060 hoi4 = 9242 hoi4 = 3344 } # STATE_PSKOV -> Peno, Bologovo
+	link = { vic3 = x40A060 hoi4 = 9242 } # STATE_PSKOV -> Peno
 	link = { vic3 = x8B9F17 hoi4 = 9333 } # STATE_NOVGOROD -> Firovo
 	link = { vic3 = x6122C5 vic3 = xAD3522 hoi4 = 11059 } # STATE_INGRIA, STATE_INGRIA -> Lodeynoye Pole
 	link = { vic3 = x743B9C hoi4 = 11072 } # STATE_INGRIA -> Batetskoye
