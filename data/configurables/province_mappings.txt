@@ -2078,7 +2078,7 @@
 	link = { vic3 = x5357F0 hoi4 = 81 } # STATE_NOVGOROD -> Borisovo-Sudskoye
 	link = { vic3 = x513224 vic3 = x30386A hoi4 = 85 } # STATE_TVER, STATE_TVER -> Maksatikha
 	link = { vic3 = x3CBDA1 hoi4 = 93 } # STATE_NOVGOROD -> Babayevo
-	link = { vic3 = x20B928 vic3 = x6D9FEE hoi4 = 129 } # STATE_NOVGOROD, STATE_NOVGOROD -> Suda
+	link = { vic3 = x20B928 hoi4 = 129 } # STATE_NOVGOROD -> Suda
 	link = { vic3 = xFB5C50 hoi4 = 150 } # STATE_TVER -> Sandovo
 	link = { vic3 = x4706A4 vic3 = xBF07AC hoi4 = 6182 } # STATE_NOVGOROD, STATE_ARKHANGELSK -> Prokshino
 	link = { vic3 = x16B74D vic3 = x89E2E6 hoi4 = 163 hoi4 = 11168 } # MANY-TO-MANY: STATE_NOVGOROD, STATE_NOVGOROD -> Troitskoye, land
@@ -2088,7 +2088,7 @@
 	link = { vic3 = x9A12DD hoi4 = 333 hoi4 = 3176 } # STATE_TVER -> Tolmachi, Moldino
 	link = { vic3 = xF42CBB hoi4 = 2996 } # Vologda [city] -> Staroye
 	link = { vic3 = x28E71E vic3 = x6145FA hoi4 = 3031 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Vershinino
-	link = { vic3 = x80AA34 hoi4 = 3035 } # STATE_NOVGOROD -> Ves'yegonsk
+	link = { vic3 = x80AA34 vic3 = x6D9FEE hoi4 = 3035 } # STATE_NOVGOROD, STATE_NOVGOROD -> Ves'yegonsk
 	link = { vic3 = xF2F837 hoi4 = 3057 } # STATE_NOVGOROD -> Annenskiy Most
 	link = { vic3 = x1A0823 hoi4 = 6203 } # STATE_TVER -> Bezhetsk
 	link = { vic3 = x99879C hoi4 = 3077 } # STATE_TVER -> Myshkin
