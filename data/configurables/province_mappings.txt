@@ -6287,7 +6287,7 @@
 	link = { vic3 = x339ADC hoi4 = 3303 } # STATE_NIZHNY_NOVGOROD -> Arzamas
 	link = { vic3 = x9DA7C7 hoi4 = 3315 } # STATE_KAZAN -> Volzhsk
 	link = { vic3 = x7C85D2 hoi4 = 3349 } # STATE_NIZHNY_NOVGOROD -> Shakhun'ya
-	link = { vic3 = x29EC04 hoi4 = 11277 } # STATE_NIZHNY_NOVGOROD -> Shatki
+	link = { vic3 = x29EC04 hoi4 = 11277 hoi4 = 11394 } # STATE_NIZHNY_NOVGOROD -> Shatki, Pervomaysk
 	link = { vic3 = x193A00 hoi4 = 297 } # STATE_NIZHNY_NOVGOROD -> Lukoyanov
 	link = { vic3 = x9439A0 hoi4 = 3352 hoi4 = 9325 } # Sergach [wood] -> Sergach, Barmino
 	link = { vic3 = x1D5A12 hoi4 = 9305 } # STATE_CHUVASHIA -> Fokino
@@ -6303,10 +6303,10 @@
 	link = { vic3 = x30B835 hoi4 = 6253 } # STATE_NIZHNY_NOVGOROD -> Shumerlya
 	link = { vic3 = xF26043 hoi4 = 6294 hoi4 = 6337 } # STATE_TARTARIA -> Mayna, Veshkayma
 	link = { vic3 = x35FB76 hoi4 = 6295 } # STATE_NIZHNY_NOVGOROD -> Gorokhovets
-	link = { vic3 = xC23BD0 vic3 = xD13AC6 hoi4 = 6312 } # STATE_CHUVASHIA, STATE_CHUVASHIA -> Alatyr'
+	link = { vic3 = xC23BD0 hoi4 = 6312 } # STATE_CHUVASHIA -> Alatyr'
 	link = { vic3 = x96DCF9 hoi4 = 6327 } # STATE_NIZHNY_NOVGOROD -> Lyskovo
 	link = { vic3 = xEAF220 hoi4 = 11387 } # STATE_KAZAN -> Morki
-	link = { vic3 = xDB5DBD hoi4 = 6357 } # STATE_CHUVASHIA -> Staryye Aybesi
+	link = { vic3 = xDB5DBD vic3 = xD13AC6 hoi4 = 6357 } # STATE_CHUVASHIA, STATE_CHUVASHIA -> Staryye Aybesi
 	link = { vic3 = x088E55 hoi4 = 6370 hoi4 = 9389 } # STATE_NIZHNY_NOVGOROD -> Balakhna, Dzherzhinsk
 	link = { vic3 = x298ED1 hoi4 = 6372 } # STATE_NIZHNY_NOVGOROD -> Kiknur
 	link = { vic3 = x80F7CE hoi4 = 6383 hoi4 = 11263 } # STATE_CHUVASHIA -> Sovetsk, Pizhanskoye
@@ -6354,8 +6354,8 @@
 	link = { vic3 = x21DF21 hoi4 = 11373 } # STATE_TARTARIA -> Bazarnyy Syzgan
 	link = { vic3 = xAA65A0 hoi4 = 11496 } # STATE_KAZAN -> Chistopol'
 	link = { comment = "* * STATE_TARTARIA " }
-	link = { vic3 = xD7547A hoi4 = 232 } # STATE_TAMBOV -> Morshansk
-	link = { vic3 = x0B35A0 hoi4 = 275 } # STATE_TAMBOV -> Algasovo
+	link = { vic3 = xD7547A hoi4 = 232 hoi4 = 3266 } # STATE_TAMBOV -> Morshansk, Zemetchino
+	link = { vic3 = x0B35A0 hoi4 = 6329 } # STATE_TAMBOV -> Vyazemka
 	link = { vic3 = x1084B6 hoi4 = 313 } # STATE_TAMBOV -> Inzhavino
 	link = { vic3 = x22B4AF hoi4 = 330 } # STATE_RYAZAN -> Pitelino
 	link = { vic3 = xF0F779 hoi4 = 353 hoi4 = 3477 } # STATE_TARTARIA -> Baltay, Voskresenskoye
@@ -6370,8 +6370,8 @@
 	link = { vic3 = x75659C hoi4 = 3221 } # STATE_TAMBOV -> Bashmakovo
 	link = { vic3 = x19C20A hoi4 = 3302 } # STATE_RYAZAN -> Shatsk
 	link = { vic3 = x45E723 hoi4 = 3257 hoi4 = 11363 } # STATE_TAMBOV -> Sasovo, Usady
-	link = { vic3 = xCC3356 hoi4 = 3317 hoi4 = 324 } # STATE_TAMBOV -> Sosnovoborsk, Nikol'sk
-	link = { vic3 = x248B83 vic3 = x461223 hoi4 = 3322 } # STATE_TAMBOV, STATE_YAROSLAVL -> Yermish
+	link = { vic3 = xCC3356 hoi4 = 3317 } # STATE_TAMBOV -> Sosnovoborsk
+	link = { vic3 = x248B83 vic3 = x461223 hoi4 = 3322 hoi4 = 6284 } # MANY-TO-MANY: STATE_TAMBOV, STATE_YAROSLAVL -> Yermish, Kadom
 	link = { vic3 = x1C9CEB hoi4 = 3343 hoi4 = 326 } # STATE_TARTARIA -> Cherkasskoye, Vol'sk
 	link = { vic3 = xA2AEA2 hoi4 = 3360 } # STATE_TAMBOV -> Belinskiy
 	link = { vic3 = x00DA3C hoi4 = 3371 } # STATE_TAMBOV -> Kovylkino
@@ -6383,15 +6383,15 @@
 	link = { vic3 = xAE82E6 hoi4 = 3566 } # STATE_KURSK -> Borisoglebsk
 	link = { vic3 = x302B65 hoi4 = 3578 } # STATE_TARTARIA -> Saratov
 	link = { vic3 = x7EB0D3 hoi4 = 6248 } # STATE_TAMBOV -> Mokshan
-	link = { vic3 = x352ACF hoi4 = 6284 hoi4 = 376 } # STATE_TAMBOV -> Kadom, Zubova Polyana
+	link = { vic3 = x352ACF hoi4 = 376 } # STATE_TAMBOV -> Zubova Polyana
 	link = { vic3 = xFE56AF hoi4 = 6317 hoi4 = 6341 } # Lipetsk [mine] -> Usman', Khlevnoye
 	link = { vic3 = x370996 hoi4 = 3304 } # STATE_TARTARIA -> Makarovo
 	link = { vic3 = xE4E080 hoi4 = 6328 hoi4 = 6353 } # STATE_TARTARIA -> Rtishchevo, Tamala
-	link = { vic3 = x61384B vic3 = x6DC89F hoi4 = 6343 } # STATE_TAMBOV, STATE_TAMBOV -> Yavas
+	link = { vic3 = x6DC89F hoi4 = 6343 } # STATE_TAMBOV -> Yavas
 	link = { vic3 = x5DC7DF hoi4 = 3316 } # STATE_TARTARIA -> Alekseyevka
 	link = { vic3 = x36696F hoi4 = 6366 } # STATE_TARTARIA -> Khvalynsk
 	link = { vic3 = xDB5E3F hoi4 = 6382 } # STATE_TARTARIA -> Serdobsk
-	link = { vic3 = x616020 hoi4 = 6409 hoi4 = 6291 } # STATE_TAMBOV -> Pokrovskaya Archada, Kamenka
+	link = { vic3 = x616020 hoi4 = 6409 } # STATE_TAMBOV -> Pokrovskaya Archada
 	link = { vic3 = x1233B6 vic3 = xFAB9A8 hoi4 = 6450 } # STATE_TARTARIA, Saratov [city] -> Tatishchevo
 	link = { vic3 = x112A5D hoi4 = 6479 } # STATE_TARTARIA -> Pallasovka
 	link = { vic3 = x8447C0 hoi4 = 6492 hoi4 = 3465 } # STATE_TARTARIA -> Arkadak, Romanovka
@@ -6400,12 +6400,11 @@
 	link = { vic3 = x8F80BA hoi4 = 6574 } # STATE_SAMARA -> land
 	link = { vic3 = x269530 vic3 = x1E7643 hoi4 = 6587 } # STATE_TARTARIA, STATE_TARTARIA -> Povorino
 	link = { vic3 = xE66DB2 hoi4 = 9258 } # Penza [farm] -> Penza
-	link = { vic3 = x75FC6F hoi4 = 9276 } # STATE_TAMBOV -> Torbeyevo
+	link = { vic3 = x75FC6F vic3 = x61384B hoi4 = 9276 } # STATE_TAMBOV, STATE_TAMBOV -> Torbeyevo
 	link = { vic3 = xB3B6D0 hoi4 = 9286 } # STATE_TAMBOV -> Lunino
-	link = { vic3 = x003D07 hoi4 = 6329 hoi4 = 3266 } # STATE_TAMBOV -> Vyazemka, Zemetchino
-	link = { vic3 = x54F76C hoi4 = 9324 } # STATE_TAMBOV -> Nizhniy Lomov
+	link = { vic3 = x54F76C vic3 = x003D07 hoi4 = 9324 } # STATE_TAMBOV, STATE_TAMBOV -> Nizhniy Lomov
 	link = { vic3 = x904CD8 hoi4 = 9326 hoi4 = 11449 } # STATE_TARTARIA -> land, Atkarsk
-	link = { vic3 = x006422 hoi4 = 9344 hoi4 = 11394 hoi4 = 9407 } # STATE_NIZHNY_NOVGOROD -> Krasnoslobodsk, Pervomaysk, Sarov
+	link = { vic3 = x006422 hoi4 = 9344 hoi4 = 9407 } # STATE_NIZHNY_NOVGOROD -> Krasnoslobodsk, Sarov
 	link = { vic3 = x66929F hoi4 = 9352 } # STATE_TARTARIA -> Yekaterinovka
 	link = { vic3 = xB2B5F4 hoi4 = 9367 } # STATE_TAMBOV -> Michurinsk
 	link = { vic3 = x0BAE1A hoi4 = 9380 hoi4 = 9409 } # STATE_TARTARIA -> Kolyshley, Telegino
@@ -6418,12 +6417,12 @@
 	link = { vic3 = x2517B5 hoi4 = 9564 } # STATE_TARTARIA -> Samoylovka
 	link = { vic3 = x184EBD hoi4 = 9577 hoi4 = 6601 } # STATE_TARTARIA -> Mikhaylovskiy, Mokrous
 	link = { vic3 = x135BEB hoi4 = 11227 } # STATE_TAMBOV -> Sosnovka
-	link = { vic3 = x5EA87F hoi4 = 11258 } # STATE_RYAZAN -> Sarai
-	link = { vic3 = x7D40C9 hoi4 = 11262 } # STATE_TAMBOV -> Saransk
-	link = { vic3 = x11A456 hoi4 = 11269 } # STATE_TAMBOV -> Gorodishche
+	link = { vic3 = x5EA87F hoi4 = 11258 hoi4 = 275 } # STATE_RYAZAN -> Sarai, Algasovo
+	link = { vic3 = x7D40C9 hoi4 = 11262 hoi4 = 11309 } # STATE_TAMBOV -> Saransk, Issa
+	link = { vic3 = x11A456 hoi4 = 11269 hoi4 = 324 } # STATE_TAMBOV -> Gorodishche, Nikol'sk
 	link = { vic3 = xBFDE90 hoi4 = 11296 } # STATE_TAMBOV -> Znamenka
 	link = { vic3 = x69239F hoi4 = 11308 hoi4 = 483 } # STATE_TARTARIA -> Petrovsk, Yelshanka
-	link = { vic3 = x5F82DE hoi4 = 11309 } # STATE_TAMBOV -> Issa
+	link = { vic3 = x5F82DE hoi4 = 6291 } # STATE_TAMBOV -> Kamenka
 	link = { vic3 = xEB7873 hoi4 = 11323 } # STATE_TAMBOV -> Volchki
 	link = { vic3 = x783E80 hoi4 = 11351 } # STATE_TAMBOV -> Tambov
 	link = { vic3 = x060F1F hoi4 = 208 hoi4 = 380 } # STATE_TARTARIA -> Verkhozim, Neverkino
