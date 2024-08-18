@@ -328,11 +328,11 @@ int MungePlaythroughIdIntoInteger(const std::string& playthrough_id_string)
    });
 }
 void CheckProvinceTerrainsGrouping(const std::vector<std::string>& all_provinces,
-    std::map<std::string, vic3::StateRegion>& state_regions)
+    const std::map<std::string, vic3::StateRegion>& state_regions)
 {
-   for (const auto& pair: state_regions)
+   for (const auto& [region_name, region]: state_regions)
    {
-      auto provinces_in_state = pair.second.GetProvinces();
+      auto provinces_in_state = region.GetProvinces();
       std::vector<int> provinces_indexes;
       for (const auto& province: provinces_in_state)
       {
@@ -361,7 +361,7 @@ void CheckProvinceTerrainsGrouping(const std::vector<std::string>& all_provinces
             Log(LogLevel::Debug) << fmt::format(
                 "Provinces: [{}] are not next to each other in province_terrain.txt but are in the same state: {}\n",
                 province_warning,
-                pair.first);
+                region_name);
             break;
          }
       }
