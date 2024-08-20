@@ -2123,7 +2123,7 @@
 	link = { vic3 = x824587 hoi4 = 11099 } # STATE_YAROSLAVL -> Guzitsino
 	link = { vic3 = x74EDD1 hoi4 = 9122 } # Yaroslavl [city] -> Ust'ye
 	link = { vic3 = x475460 vic3 = xEDE24C vic3 = x6F6902 vic3 = x03B78B vic3 = x6B4598 hoi4 = 9130 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> land
-	link = { vic3 = x604180 vic3 = xCF3ACB hoi4 = 9168 } # STATE_GALICH, STATE_GALICH -> Vokhtoga
+	link = { vic3 = x604180 hoi4 = 9168 } # STATE_GALICH -> Vokhtoga
 	link = { vic3 = x14D961 vic3 = x19C43D vic3 = xA4D7E2 vic3 = xA51FC9 hoi4 = 9187 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Nyandoma
 	link = { vic3 = xAB60B3 hoi4 = 9199 } # STATE_NOVGOROD -> Ust'ye
 	link = { vic3 = x42C9C5 hoi4 = 9207 } # STATE_NOVGOROD -> land
@@ -2319,7 +2319,7 @@
 	link = { vic3 = xB02161 vic3 = xFDD2CF hoi4 = 11683 } # Kherson [city], STATE_CHERSON -> Mykolaiv
 	link = { comment = "* * STATE_GALICH " }
 	link = { vic3 = x208040 vic3 = xEB242F vic3 = x21F08B vic3 = xE88D06 vic3 = xA5410C vic3 = x4CDCC1 hoi4 = 6 } # STATE_GALICH, STATE_GALICH, Ust-Sysolsk [farm], STATE_GALICH, STATE_GALICH, STATE_GALICH -> land
-	link = { vic3 = x1D2223 hoi4 = 196 hoi4 = 23 } # STATE_GALICH -> Nikol'sk, Pyshchug
+	link = { vic3 = x1D2223 vic3 = xCADAA7 hoi4 = 196 hoi4 = 23 } # MANY-TO-MANY: STATE_GALICH, STATE_GALICH -> Nikol'sk, Pyshchug
 	link = { vic3 = xEEC9C6 hoi4 = 9192 } # STATE_GALICH -> Nagorsk
 	link = { vic3 = x7CFCC5 hoi4 = 11087 } # STATE_VYATKA -> Belaya Kholunitsa
 	link = { vic3 = xF39D33 vic3 = xFEF0CB hoi4 = 73 hoi4 = 175 } # MANY-TO-MANY: STATE_YAROSLAVL, STATE_GALICH -> Ponazyrevo, Syava
@@ -2334,7 +2334,7 @@
 	link = { vic3 = x516DF0 vic3 = x7C223A vic3 = xB59626 hoi4 = 186 } # STATE_GALICH, STATE_GALICH, STATE_GALICH -> Kotlas
 	link = { vic3 = x0E2DCA hoi4 = 11193 } # STATE_GALICH -> land
 	link = { vic3 = x4E5B9F hoi4 = 3041 hoi4 = 11133 } # STATE_GALICH -> Ob'yachevo, Koygorodok
-	link = { vic3 = x6ED279 hoi4 = 3056 } # STATE_GALICH -> Buy
+	link = { vic3 = x6ED279 vic3 = xCF3ACB hoi4 = 3056 } # STATE_GALICH, STATE_GALICH -> Buy
 	link = { vic3 = x741EFC vic3 = xAF0F6E hoi4 = 3079 } # STATE_GALICH, STATE_GALICH -> Vostroye
 	link = { vic3 = x075A1C vic3 = x16B133 vic3 = x7FE794 hoi4 = 3081 } # STATE_GALICH, STATE_GALICH, STATE_GALICH -> Sogra
 	link = { vic3 = x23F3C4 hoi4 = 3091 hoi4 = 9159 } # STATE_YAROSLAVL -> Ostrovskoye, Zavolzh'ye
@@ -2382,18 +2382,18 @@
 	link = { vic3 = x0EACC1 vic3 = xD586F1 hoi4 = 9133 } # STATE_GALICH, STATE_GALICH -> Kichmengskiy Gorodok
 	link = { vic3 = x58DBC8 hoi4 = 9155 } # STATE_GALICH -> Oparino
 	link = { vic3 = x4B1E24 hoi4 = 9180 } # STATE_GALICH -> land
-	link = { vic3 = x028EC5 vic3 = xCADAA7 hoi4 = 9200 } # STATE_YAROSLAVL, STATE_GALICH -> Manturovo
+	link = { vic3 = x028EC5 hoi4 = 9200 } # STATE_YAROSLAVL -> Manturovo
 	link = { vic3 = x26F544 vic3 = x34514C hoi4 = 9202 } # STATE_GALICH, STATE_GALICH -> land
 	link = { vic3 = x6B739D hoi4 = 9210 } # STATE_GALICH -> Ust'-Alekseyevo
 	link = { vic3 = xBC2FD3 vic3 = xBF9952 vic3 = x9E074B vic3 = x1CE50A vic3 = xDF420E hoi4 = 9213 } # STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH -> Kulikovo
 	link = { vic3 = x6221DB hoi4 = 9222 } # STATE_GALICH -> Min'kovo
 	link = { vic3 = x0354D9 vic3 = x0A7A8A hoi4 = 9232 } # STATE_GALICH, STATE_GALICH -> Pinyug
 	link = { vic3 = xEDE915 hoi4 = 11025 } # STATE_GALICH -> land
-	link = { vic3 = x60C080 hoi4 = 11027 } # STATE_YAROSLAVL -> Makaryev
+	link = { vic3 = x60C080 hoi4 = 11027 hoi4 = 9136 } # STATE_YAROSLAVL -> Makaryev, Shemyatino
 	link = { vic3 = xE0FC8D hoi4 = 11035 } # STATE_GALICH -> land
 	link = { vic3 = xF8A01C hoi4 = 11051 } # STATE_GALICH -> land
 	link = { vic3 = x801A38 vic3 = x8E109A hoi4 = 11061 } # STATE_GALICH, STATE_GALICH -> land
-	link = { vic3 = xEE2E88 hoi4 = 11075 } # STATE_YAROSLAVL -> Shar'ya
+	link = { vic3 = xEE2E88 vic3 = x4D1D44 hoi4 = 11075 } # STATE_YAROSLAVL, STATE_YAROSLAVL -> Shar'ya
 	link = { vic3 = x29DFEF hoi4 = 11110 } # Velikiy Ustyug [wood] -> land
 	link = { vic3 = x96D4D5 hoi4 = 10200 } # STATE_GALICH -> Lesnoy
 	link = { vic3 = x0C1CF9 hoi4 = 11158 } # STATE_GALICH -> land
@@ -6241,7 +6241,6 @@
 	link = { vic3 = xA7B747 hoi4 = 12270 } # STATE_SAMARA -> Kashirinsk
 	link = { vic3 = x28AD29 vic3 = x7F204D vic3 = xE9B9FB hoi4 = 12298 } # STATE_SAMARA, STATE_SAMARA, Orenburg [farm] -> Cheben'ki
 	link = { comment = "* * STATE_KAZAN " }
-	link = { vic3 = x4D1D44 hoi4 = 9136 } # STATE_YAROSLAVL -> Shemyatino
 	link = { vic3 = xEA0D0B hoi4 = 11180 } # STATE_NIZHNY_NOVGOROD -> land
 	link = { vic3 = x05F5DA hoi4 = 12 } # STATE_NIZHNY_NOVGOROD -> Vetluga
 	link = { vic3 = xADD34A vic3 = xD0936B hoi4 = 112 } # STATE_NIZHNY_NOVGOROD, STATE_GALICH -> Vakhtan
