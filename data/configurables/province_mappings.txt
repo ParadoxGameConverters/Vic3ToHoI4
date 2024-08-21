@@ -2040,14 +2040,14 @@
 	link = { vic3 = x7F854D vic3 = xCB6CAD vic3 = xCD5877 hoi4 = 11196 } # STATE_KOLA, STATE_KOLA, STATE_KOLA -> land
 	link = { vic3 = xE6B3AA hoi4 = 11212 } # STATE_EAST_KARELIA -> Nadvoitsy
 	link = { comment = "* * STATE_ARKHANGELSK " }
-	link = { vic3 = xAC7A28 vic3 = xC699CC vic3 = x60053A vic3 = xA2F602 hoi4 = 87 } # STATE_NENETSIA, STATE_ARKHANGELSK, STATE_GALICH, STATE_GALICH -> Verkola
+	link = { vic3 = x60053A vic3 = xA2F602 hoi4 = 87 } # STATE_GALICH, STATE_GALICH -> Verkola
 	link = { vic3 = x39C3D7 vic3 = x45C3AD vic3 = x73AE5B hoi4 = 140 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Yarnema
-	link = { vic3 = x178A5C vic3 = x4A6073 vic3 = x4D2452 vic3 = x577ADC vic3 = x5A9872 vic3 = x6E148E vic3 = x7FE1CB vic3 = x81827E vic3 = x877BDE vic3 = x8F45AB hoi4 = 180 } # STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, Pinega [farm] -> Pinega
-	link = { vic3 = x67A6D0 vic3 = xD0FC2C vic3 = xE587B2 vic3 = xAC4E81 hoi4 = 183 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Shenkursk
-	link = { vic3 = x009EB7 vic3 = x48BC6F vic3 = xA57615 vic3 = xB663D9 vic3 = xC86EE7 hoi4 = 312 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Sudostroy
-	link = { vic3 = x7D80D6 vic3 = xBCC48C vic3 = x37D5D3 hoi4 = 3064 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> land
+	link = { vic3 = x178A5C vic3 = x4A6073 vic3 = x4D2452 vic3 = x577ADC vic3 = x5A9872 vic3 = x6E148E vic3 = x7FE1CB vic3 = xAC7A28 hoi4 = 180 } # STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA, STATE_NENETSIA -> Pinega
+	link = { vic3 = x67A6D0 vic3 = xE587B2 vic3 = xAC4E81 vic3 = xD0FC2C hoi4 = 183 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Shenkursk
+	link = { vic3 = x009EB7 vic3 = x48BC6F vic3 = xA57615 vic3 = xB663D9 vic3 = xC86EE7 vic3 = x6DBE60 vic3 = x9AAAF0 hoi4 = 312 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Sudostroy
+	link = { vic3 = x7D80D6 vic3 = x37D5D3 vic3 = xBCC48C hoi4 = 3064 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> land
 	link = { vic3 = x116B4E vic3 = x49C142 vic3 = x78A0D5 vic3 = x35C277 vic3 = x360D95 vic3 = x9A6F0B vic3 = xFE65B5 hoi4 = 3065 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, Bereznik [wood], STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Bereznik
-	link = { vic3 = x1230DB vic3 = x237586 vic3 = x6DBE60 vic3 = x9AAAF0 hoi4 = 3075 } # STATE_NENETSIA, STATE_NENETSIA, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Svetlyy
+	link = { vic3 = x1230DB vic3 = x237586 vic3 = x8F45AB vic3 = x81827E vic3 = x877BDE hoi4 = 3075 } # STATE_NENETSIA, STATE_NENETSIA, Pinega [farm], STATE_NENETSIA, STATE_NENETSIA -> Svetlyy
 	link = { vic3 = x848EFC vic3 = xEF2B17 vic3 = x1405E0 hoi4 = 3080 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Pertominsk
 	link = { vic3 = xC280EF hoi4 = 3086 } # STATE_ARKHANGELSK -> land
 	link = { vic3 = x09201E vic3 = x125781 hoi4 = 3092 } # STATE_ARKHANGELSK, Arkhangelsk [port] -> Maloshuyka
@@ -2061,11 +2061,11 @@
 	link = { vic3 = x952880 vic3 = x53C825 hoi4 = 9101 } # STATE_GALICH, STATE_GALICH -> land
 	link = { vic3 = x58F495 vic3 = x5943FE vic3 = xA3F91A hoi4 = 9248 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Onega
 	link = { vic3 = xE05893 vic3 = x7A00E6 hoi4 = 11038 } # STATE_EAST_KARELIA, STATE_ARKHANGELSK -> Unezhma
-	link = { vic3 = x84213E vic3 = x85CE81 vic3 = xB272FC vic3 = xF3672D hoi4 = 11042 } # STATE_GALICH, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Verkhnyaya Toyma
-	link = { vic3 = x835452 vic3 = x8A82B0 hoi4 = 11074 } # STATE_GALICH, STATE_GALICH -> Shangaly
-	link = { vic3 = x40D3DA vic3 = x417983 vic3 = x73F31C vic3 = xC35BA4 vic3 = xEDEE19 vic3 = xA10EA2 hoi4 = 11089 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> land
+	link = { vic3 = x85CE81 vic3 = xF3672D hoi4 = 11042 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Verkhnyaya Toyma
+	link = { vic3 = x835452 vic3 = x8A82B0 vic3 = xC6AC60 hoi4 = 11074 } # STATE_GALICH, STATE_GALICH, STATE_GALICH -> Shangaly
+	link = { vic3 = x40D3DA vic3 = x417983 vic3 = x73F31C vic3 = xC35BA4 vic3 = xEDEE19 vic3 = xB272FC vic3 = xC699CC hoi4 = 11089 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> land
 	link = { vic3 = x8DA9F9 vic3 = xD8621E hoi4 = 11137 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK -> land
-	link = { vic3 = x17C3A9 vic3 = x8ED444 hoi4 = 11171 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Brin-Navolok
+	link = { vic3 = x17C3A9 vic3 = x8ED444 vic3 = xA10EA2 hoi4 = 11171 } # STATE_ARKHANGELSK, STATE_ARKHANGELSK, STATE_ARKHANGELSK -> Brin-Navolok
 	link = { comment = "* * STATE_TVER " }
 	link = { vic3 = xC37BBA hoi4 = 2 } # STATE_YAROSLAVL -> Danilov
 	link = { vic3 = xDA1620 hoi4 = 62 } # STATE_GALICH -> Lyubim
@@ -2336,7 +2336,7 @@
 	link = { vic3 = x4E5B9F hoi4 = 3041 hoi4 = 11133 } # STATE_GALICH -> Ob'yachevo, Koygorodok
 	link = { vic3 = x6ED279 vic3 = xCF3ACB hoi4 = 3056 } # STATE_GALICH, STATE_GALICH -> Buy
 	link = { vic3 = x741EFC vic3 = xAF0F6E hoi4 = 3079 } # STATE_GALICH, STATE_GALICH -> Vostroye
-	link = { vic3 = x075A1C vic3 = x16B133 vic3 = x7FE794 hoi4 = 3081 } # STATE_GALICH, STATE_GALICH, STATE_GALICH -> Sogra
+	link = { vic3 = x075A1C vic3 = x16B133 vic3 = x7FE794 vic3 = x84213E hoi4 = 3081 } # STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH -> Sogra
 	link = { vic3 = x23F3C4 hoi4 = 3091 hoi4 = 9159 } # STATE_YAROSLAVL -> Ostrovskoye, Zavolzh'ye
 	link = { vic3 = xA3D7FA hoi4 = 3099 hoi4 = 9043 } # STATE_GALICH -> Soligalich, Chukhloma
 	link = { vic3 = x8E4C3B vic3 = xE6AA10 hoi4 = 3102 } # STATE_GALICH, STATE_GALICH -> Luza
@@ -2357,7 +2357,7 @@
 	link = { vic3 = x64B6B7 vic3 = xCC8451 hoi4 = 6077 } # STATE_YAROSLAVL, STATE_YAROSLAVL -> Susanino
 	link = { vic3 = x54E958 vic3 = x5E9259 vic3 = x6DE113 hoi4 = 6088 } # STATE_GALICH, STATE_GALICH, STATE_GALICH -> land
 	link = { vic3 = xDF4080 hoi4 = 6089 hoi4 = 6191 } # STATE_GALICH -> land, Kotel'nich
-	link = { vic3 = x031459 vic3 = xC6AC60 hoi4 = 6091 } # STATE_GALICH, STATE_GALICH -> Verkhovazh'ye
+	link = { vic3 = x031459 hoi4 = 6091 } # STATE_GALICH -> Verkhovazh'ye
 	link = { vic3 = x9150D1 hoi4 = 6100 } # STATE_GALICH -> Poldarsa
 	link = { vic3 = xCC786B hoi4 = 6110 } # STATE_GALICH -> Peganovo
 	link = { vic3 = x3CFD3C hoi4 = 6112 hoi4 = 3087 } # STATE_GALICH -> Roslyatino, Gorodishchna
