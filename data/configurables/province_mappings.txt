@@ -2500,7 +2500,7 @@
 	link = { vic3 = xCB3697 vic3 = x132F3A hoi4 = 11365 } # STATE_VYATKA, STATE_VYATKA -> Arkul'
 	link = { vic3 = x948973 hoi4 = 3300 hoi4 = 3294 } # STATE_VYATKA -> Kizner, Kil'mez'
 	link = { vic3 = x10A63E vic3 = x1F52FF vic3 = x285C9C vic3 = x30A266 vic3 = x484022 vic3 = x494FA9 vic3 = x70CD14 vic3 = x77EAD9 vic3 = x9F906D vic3 = xBD0CFC hoi4 = 4298 } # STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH -> Ust'-Kulom
-	link = { vic3 = x081DE7 vic3 = x0E298C vic3 = xC36A65 vic3 = xCEF2EA hoi4 = 4314 } # STATE_PERM, STATE_GALICH, STATE_GALICH, STATE_GALICH -> land
+	link = { vic3 = xCEF2EA vic3 = xC36A65 vic3 = x0E298C hoi4 = 4314 } # STATE_GALICH, STATE_GALICH, STATE_GALICH -> land
 	link = { vic3 = xC4199A vic3 = x77CB43 hoi4 = 4372 } # Kungur [farm], STATE_PERM -> Yugo-Kamskiy
 	link = { vic3 = x27D9A3 vic3 = x2BA46E vic3 = x56C499 vic3 = x5E5BAD vic3 = xC249F9 vic3 = xD00DDF vic3 = xFB3B8C vic3 = xA11DD7 vic3 = x15D25C vic3 = x501FAB vic3 = xC3CE60 vic3 = xDFFE19 vic3 = x65EE9B vic3 = x6BC20A hoi4 = 4802 } # STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM -> Valay
 	link = { vic3 = x3094DC vic3 = x46DC5A vic3 = x5106B9 vic3 = x7D601C vic3 = xC44B2B vic3 = xE0632D vic3 = xF3943F vic3 = xB56FB9 vic3 = x7F8CDA vic3 = x3D9F1E hoi4 = 4874 } # STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM -> Kytlym
@@ -2528,7 +2528,7 @@
 	link = { vic3 = x25A538 vic3 = x187498 hoi4 = 6121 } # STATE_GALICH, STATE_GALICH -> Syktyvkar
 	link = { vic3 = x42E39F vic3 = x7BAA6C vic3 = xCF44D5 hoi4 = 11203 } # STATE_GALICH, STATE_GALICH, STATE_GALICH -> Kortkeros
 	link = { vic3 = x39A857 vic3 = x88305D vic3 = x78C443 vic3 = x7738DD vic3 = x014042 vic3 = x26FB73 hoi4 = 11228 } # STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM -> Lys'va
-	link = { vic3 = xD30253 vic3 = x6F37B1 vic3 = xBE68A3 vic3 = xE0557D vic3 = xEB5380 hoi4 = 11195 } # STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM -> Cherdyn'
+	link = { vic3 = xD30253 vic3 = x6F37B1 vic3 = xBE68A3 vic3 = xE0557D vic3 = xEB5380 vic3 = x081DE7 hoi4 = 11195 } # STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM -> Cherdyn'
 	link = { vic3 = xADCD83 vic3 = xBC57C3 vic3 = x7EBF8B hoi4 = 12175 } # STATE_GALICH, STATE_GALICH, STATE_GALICH -> land
 	link = { vic3 = x1503E7 vic3 = xE53D48 vic3 = xDB9616 vic3 = x146D55 vic3 = x8D1320 vic3 = x929A7E hoi4 = 12187 } # STATE_PERM, Krasnoufimsk [wood], STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM -> Solikamsk
 	link = { vic3 = x5A83AD vic3 = xF4A935 vic3 = x2080C0 hoi4 = 1365 } # STATE_VYATKA, STATE_VYATKA, STATE_VYATKA -> Bolshaya Sosnova
