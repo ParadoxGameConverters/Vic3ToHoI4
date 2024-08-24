@@ -2471,7 +2471,7 @@
 	link = { comment = "* * STATE_PERM " }
 	link = { vic3 = x2D9E21 hoi4 = 146 hoi4 = 31 } # Vyatka [farm] -> Belokholunitskiy, Peskovka
 	link = { vic3 = x494CD7 vic3 = xCA4466 hoi4 = 206 } # STATE_VYATKA, STATE_VYATKA -> Chaykovskiy
-	link = { vic3 = x149A38 vic3 = xE0812B hoi4 = 237 } # STATE_URAL, STATE_PERM -> Serebryanka
+	link = { vic3 = xE0812B hoi4 = 237 } # STATE_PERM -> Serebryanka
 	link = { vic3 = x4624B5 vic3 = xCD1012 hoi4 = 278 } # STATE_PERM, STATE_PERM -> Gornozavodsk
 	link = { vic3 = x336835 hoi4 = 305 } # STATE_VYATKA -> Selty
 	link = { vic3 = x7C3CC4 vic3 = xBB4EAE vic3 = x3217FC hoi4 = 361 } # STATE_PERM, STATE_PERM, STATE_PERM -> Achit
@@ -9534,7 +9534,7 @@
 	link = { vic3 = x119BF2 vic3 = x1CA3E0 vic3 = x21B3D9 vic3 = x228262 vic3 = x85430F vic3 = xA5D60F vic3 = xC852C0 vic3 = xD1A55D vic3 = xC2D9D1 hoi4 = 4710 } # STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT -> Uray
 	link = { vic3 = x3B9503 vic3 = x50ECA0 vic3 = x91EE28 vic3 = xB610CE vic3 = xB7A837 vic3 = xB8BF89 vic3 = xC50D86 vic3 = xC65BA4 vic3 = xD6396F vic3 = xD6A715 hoi4 = 4746 } # STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT -> land
 	link = { vic3 = x0460D2 vic3 = x3228AA vic3 = x3BA83B vic3 = x615B11 vic3 = x803089 vic3 = xA21EB0 hoi4 = 4754 } # STATE_TOBOLSK, STATE_TOBOLSK, STATE_TOBOLSK, STATE_TOBOLSK, STATE_TOBOLSK, STATE_TOBOLSK -> Nizhnyaya Tavda
-	link = { vic3 = x045539 vic3 = x08919A vic3 = x25E5EC vic3 = xDBB4A7 hoi4 = 4758 } # STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL -> Visim
+	link = { vic3 = x045539 vic3 = x08919A vic3 = x25E5EC vic3 = xDBB4A7 vic3 = x149A38 hoi4 = 4758 } # STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL -> Visim
 	link = { vic3 = x04C68F vic3 = x2C6B7D vic3 = x3BA591 vic3 = x416CA1 vic3 = x948CDA vic3 = xC1E991 vic3 = xC64487 vic3 = xE20865 vic3 = x5F5AE1 hoi4 = 4774 } # STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT -> Beryozovo
 	link = { vic3 = x39A92E vic3 = x477761 vic3 = x761B70 vic3 = xA5B013 vic3 = xE6C0A8 hoi4 = 4813 } # STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL -> Tavda
 	link = { vic3 = x0711D2 vic3 = x31D194 vic3 = x585608 vic3 = xFA60B8 vic3 = xC47E7C hoi4 = 4824 } # STATE_TOBOLSK, STATE_TOBOLSK, STATE_TOBOLSK, STATE_TOBOLSK, STATE_TOBOLSK -> Tyumen'
@@ -9556,14 +9556,14 @@
 	link = { vic3 = x411273 vic3 = x81AABD vic3 = xB04FCE vic3 = xE733FC vic3 = x4B8F1F hoi4 = 10170 } # STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL -> Kurtamysh
 	link = { vic3 = x1A12D2 vic3 = xC8DEA6 vic3 = xDC82C3 hoi4 = 10189 } # STATE_URAL, STATE_URAL, STATE_URAL -> Talitsa
 	link = { vic3 = x60DFA0 vic3 = xA09A50 vic3 = xB2CEE0 vic3 = xE239D3 vic3 = xEFFDD6 hoi4 = 10213 } # STATE_CHELYABINSK, STATE_CHELYABINSK, STATE_CHELYABINSK, STATE_CHELYABINSK, STATE_CHELYABINSK -> Troitsk
-	link = { vic3 = xB83FDC vic3 = xC6F9FC vic3 = xCC45E3 hoi4 = 10216 } # STATE_PERM, STATE_URAL, STATE_PERM -> Nizhnyaya Tura
+	link = { vic3 = xB83FDC vic3 = xCC45E3 hoi4 = 10216 } # STATE_PERM, STATE_PERM -> Nizhnyaya Tura
 	link = { vic3 = x2280E9 vic3 = x4110C0 hoi4 = 10256 } # STATE_CHELYABINSK, STATE_CHELYABINSK -> Magnitogorsk
 	link = { vic3 = x16720C vic3 = x179ABF vic3 = x795CFC hoi4 = 10329 } # Zlatoust [wood], STATE_CHELYABINSK, STATE_CHELYABINSK -> Zlatoust
 	link = { vic3 = xB50B04 hoi4 = 1292 } # STATE_TOBOLSK -> Kurgan
 	link = { vic3 = x1883B9 vic3 = x794580 vic3 = xD41229 vic3 = xFC2C1B hoi4 = 10542 } # STATE_TOBOLSK, STATE_TOBOLSK, STATE_TOBOLSK, STATE_TOBOLSK -> Belozerskoye
 	link = { vic3 = x0D0C98 vic3 = x38156E vic3 = x513511 vic3 = x7AAADA vic3 = x7D2617 vic3 = x891FE7 vic3 = xECCB00 vic3 = xF1BD83 hoi4 = 10604 } # STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT, STATE_SURGUT -> Mezhdurechenskiy
 	link = { vic3 = x3919DD vic3 = x69C65B vic3 = xB3BA06 vic3 = xBA43BB vic3 = xBBEF1C hoi4 = 10648 } # STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL -> Severoural'sk
-	link = { vic3 = x198BFB vic3 = x8C6EE6 vic3 = xD28CD5 hoi4 = 10716 } # STATE_URAL, STATE_URAL, STATE_URAL -> Krasnoturyinsk
+	link = { vic3 = x198BFB vic3 = x8C6EE6 vic3 = xD28CD5 vic3 = xC6F9FC hoi4 = 10716 } # STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL -> Krasnoturyinsk
 	link = { vic3 = x078B1C vic3 = x1B5FD5 vic3 = x9E09F4 vic3 = xE0ECDB hoi4 = 10720 } # STATE_URAL, STATE_URAL, STATE_URAL, STATE_URAL -> Gari
 	link = { vic3 = x2E246D vic3 = xA74553 vic3 = xAD2C19 vic3 = xD38934 hoi4 = 11223 } # STATE_CHELYABINSK, STATE_URAL, STATE_URAL, STATE_CHELYABINSK -> Arti
 	link = { vic3 = x2C0531 vic3 = x5D8A53 vic3 = x626750 hoi4 = 11307 } # STATE_URAL, STATE_URAL, STATE_URAL -> Kushva
