@@ -2321,8 +2321,8 @@
 	link = { vic3 = x208040 vic3 = xEB242F vic3 = x21F08B vic3 = xE88D06 vic3 = xA5410C vic3 = x4CDCC1 hoi4 = 6 } # STATE_GALICH, STATE_GALICH, Ust-Sysolsk [farm], STATE_GALICH, STATE_GALICH, STATE_GALICH -> land
 	link = { vic3 = x1D2223 vic3 = xCADAA7 hoi4 = 196 hoi4 = 23 } # MANY-TO-MANY: STATE_GALICH, STATE_GALICH -> Nikol'sk, Pyshchug
 	link = { vic3 = xEEC9C6 hoi4 = 9192 } # STATE_GALICH -> Nagorsk
-	link = { vic3 = x7CFCC5 hoi4 = 11087 } # STATE_VYATKA -> Belaya Kholunitsa
-	link = { vic3 = xF39D33 vic3 = xFEF0CB hoi4 = 73 hoi4 = 175 } # MANY-TO-MANY: STATE_YAROSLAVL, STATE_GALICH -> Ponazyrevo, Syava
+	link = { vic3 = x7CFCC5 vic3 = x6C1B87 hoi4 = 11087 } # STATE_VYATKA, STATE_VYATKA -> Belaya Kholunitsa
+	link = { vic3 = xFEF0CB hoi4 = 73 hoi4 = 175 } # STATE_GALICH -> Ponazyrevo, Syava
 	link = { vic3 = x559AAA hoi4 = 75 } # STATE_NOVGOROD -> Vozhega
 	link = { vic3 = x6579D2 hoi4 = 84 } # STATE_GALICH -> Nyuksenitsa
 	link = { vic3 = x5F949C vic3 = x625F98 vic3 = xA4FE2F vic3 = xB824A5 hoi4 = 99 } # STATE_GALICH, STATE_GALICH, STATE_GALICH, STATE_GALICH -> land
@@ -2348,7 +2348,7 @@
 	link = { vic3 = x13128B hoi4 = 3164 } # Totma [mine] -> Sergiyevskaya
 	link = { vic3 = x0AEB68 vic3 = x70EE4A hoi4 = 3166 } # STATE_GALICH, STATE_GALICH -> Loyga
 	link = { vic3 = x62E9DA hoi4 = 3167 } # STATE_GALICH -> Novotroitskoye
-	link = { vic3 = xF28202 hoi4 = 3103 } # STATE_GALICH -> Svecha
+	link = { vic3 = xF28202 hoi4 = 6089 } # STATE_GALICH -> land
 	link = { vic3 = x9A1A6D hoi4 = 3177 } # STATE_GALICH -> Dem'yanovo
 	link = { vic3 = x8DEF0D hoi4 = 3017 } # STATE_GALICH -> Pavino
 	link = { vic3 = x6F2AC4 hoi4 = 3186 } # STATE_GALICH -> Nizhniy Yenangsk
@@ -2356,7 +2356,7 @@
 	link = { vic3 = x221D59 hoi4 = 3190 } # STATE_YAROSLAVL -> Kostroma
 	link = { vic3 = x64B6B7 vic3 = xCC8451 hoi4 = 6077 } # STATE_YAROSLAVL, STATE_YAROSLAVL -> Susanino
 	link = { vic3 = x54E958 vic3 = x5E9259 vic3 = x6DE113 hoi4 = 6088 } # STATE_GALICH, STATE_GALICH, STATE_GALICH -> land
-	link = { vic3 = xDF4080 hoi4 = 6089 hoi4 = 6191 } # STATE_GALICH -> land, Kotel'nich
+	link = { vic3 = xDF4080 vic3 = x25E8A6 hoi4 = 6191 } # STATE_GALICH, STATE_GALICH -> Kotel'nich
 	link = { vic3 = x031459 hoi4 = 6091 } # STATE_GALICH -> Verkhovazh'ye
 	link = { vic3 = x9150D1 hoi4 = 6100 } # STATE_GALICH -> Poldarsa
 	link = { vic3 = xCC786B hoi4 = 6110 } # STATE_GALICH -> Peganovo
@@ -2393,7 +2393,7 @@
 	link = { vic3 = xE0FC8D hoi4 = 11035 } # STATE_GALICH -> land
 	link = { vic3 = xF8A01C hoi4 = 11051 } # STATE_GALICH -> land
 	link = { vic3 = x801A38 vic3 = x8E109A hoi4 = 11061 } # STATE_GALICH, STATE_GALICH -> land
-	link = { vic3 = xEE2E88 vic3 = x4D1D44 hoi4 = 11075 } # STATE_YAROSLAVL, STATE_YAROSLAVL -> Shar'ya
+	link = { vic3 = x4D1D44 vic3 = xF39D33 vic3 = xEE2E88 hoi4 = 11075 } # STATE_YAROSLAVL, STATE_YAROSLAVL, STATE_YAROSLAVL -> Shar'ya
 	link = { vic3 = x29DFEF hoi4 = 11110 } # Velikiy Ustyug [wood] -> land
 	link = { vic3 = x96D4D5 hoi4 = 10200 } # STATE_GALICH -> Lesnoy
 	link = { vic3 = x0C1CF9 hoi4 = 11158 } # STATE_GALICH -> land
@@ -6242,7 +6242,6 @@
 	link = { comment = "* * STATE_KAZAN " }
 	link = { vic3 = xEA0D0B hoi4 = 11180 } # STATE_NIZHNY_NOVGOROD -> land
 	link = { vic3 = x05F5DA hoi4 = 12 } # STATE_NIZHNY_NOVGOROD -> Vetluga
-	link = { vic3 = xADD34A vic3 = xD0936B hoi4 = 112 } # STATE_NIZHNY_NOVGOROD, STATE_GALICH -> Vakhtan
 	link = { vic3 = xF04BD2 hoi4 = 135 } # STATE_YAROSLAVL -> land
 	link = { vic3 = xABCA9F hoi4 = 6323 } # STATE_KAZAN -> Yelabuga
 	link = { vic3 = x5FDE4C hoi4 = 3214 } # STATE_KAZAN -> Kamskiye Polyany
@@ -6256,14 +6255,15 @@
 	link = { vic3 = x36D99A hoi4 = 292 } # STATE_KAZAN -> Nurlat
 	link = { vic3 = xC29095 hoi4 = 381 } # STATE_VYATKA -> Baryshnikovo
 	link = { vic3 = xAB7912 hoi4 = 370 } # STATE_VYATKA -> Glazov
-	link = { vic3 = x5D5433 hoi4 = 359 hoi4 = 3027 } # STATE_VYATKA -> land, Yar
+	link = { vic3 = x568002 hoi4 = 359 } # STATE_VYATKA -> land
+	link = { vic3 = x5D5433 hoi4 = 3027 } # STATE_VYATKA -> Yar
 	link = { vic3 = x1FDAE5 hoi4 = 372 hoi4 = 6338 } # Kazan [city] -> Laishevo, Kazan'
 	link = { vic3 = x108711 hoi4 = 9354 hoi4 = 392 hoi4 = 9338 } # Simbirsk [farm] -> Buinsk, Ulyanovsk, Sengiley
 	link = { vic3 = x328BF7 } # STATE_TARTARIA -> DROPPED
 	link = { vic3 = x0B1757 hoi4 = 404 } # STATE_KAZAN -> Baltasi
 	link = { vic3 = x40B6D6 hoi4 = 3004 } # STATE_NIZHNY_NOVGOROD -> Skryabino
+	link = { vic3 = xD0936B hoi4 = 3103 } # STATE_GALICH -> Svecha
 	link = { vic3 = x2478A2 hoi4 = 3066 } # STATE_GALICH -> Leninskoye
-	link = { vic3 = x25E8A6 } # STATE_GALICH -> DROPPED
 	link = { vic3 = xFD9F1D vic3 = x1C24B7 hoi4 = 3139 } # STATE_VYATKA, STATE_VYATKA -> Zuyevka
 	link = { vic3 = x0434D7 hoi4 = 3197 } # STATE_TAMBOV -> Surskoye
 	link = { vic3 = x4CC372 hoi4 = 3328 } # STATE_KAZAN -> Novaya Pis'myanka
@@ -6277,7 +6277,7 @@
 	link = { vic3 = x35FB76 hoi4 = 6299 } # STATE_NIZHNY_NOVGOROD -> Pavlovo
 	link = { vic3 = x339ADC hoi4 = 3303 } # STATE_NIZHNY_NOVGOROD -> Arzamas
 	link = { vic3 = x9DA7C7 hoi4 = 3315 } # STATE_KAZAN -> Volzhsk
-	link = { vic3 = x7C85D2 hoi4 = 3349 } # STATE_NIZHNY_NOVGOROD -> Shakhun'ya
+	link = { vic3 = x7C85D2 vic3 = xA99531 hoi4 = 3349 } # STATE_NIZHNY_NOVGOROD, STATE_NIZHNY_NOVGOROD -> Shakhun'ya
 	link = { vic3 = x29EC04 hoi4 = 11277 hoi4 = 11394 } # STATE_NIZHNY_NOVGOROD -> Shatki, Pervomaysk
 	link = { vic3 = x193A00 hoi4 = 297 } # STATE_NIZHNY_NOVGOROD -> Lukoyanov
 	link = { vic3 = x9439A0 hoi4 = 3352 } # Sergach [wood] -> Sergach
@@ -6285,12 +6285,12 @@
 	link = { vic3 = x83DB48 hoi4 = 6307 } # STATE_CHUVASHIA -> Yoshkar-Ola
 	link = { vic3 = x5D97AC hoi4 = 325 } # STATE_CHUVASHIA -> Vizim'yary
 	link = { vic3 = x635E09 hoi4 = 9280 } # STATE_CHUVASHIA -> Kilemary
-	link = { vic3 = x7DA8A0 vic3 = x0D7D00 hoi4 = 3361 } # STATE_NIZHNY_NOVGOROD, STATE_CHUVASHIA -> Sanchursk
+	link = { vic3 = x0D7D00 hoi4 = 3361 } # STATE_CHUVASHIA -> Sanchursk
 	link = { vic3 = x118263 vic3 = x534B98 hoi4 = 3365 } # Chistopol [farm], STATE_KAZAN -> Rybnaya Sloboda
 	link = { vic3 = x5E59E5 hoi4 = 3383 } # STATE_NIZHNY_NOVGOROD -> Vorotynets
 	link = { vic3 = xCE626F vic3 = xAF5831 hoi4 = 6124 } # STATE_VYATKA, STATE_GALICH -> Kirov
 	link = { vic3 = x3F9FBA vic3 = x975454 hoi4 = 6149 } # STATE_NIZHNY_NOVGOROD, STATE_NIZHNY_NOVGOROD -> Vakhtan
-	link = { vic3 = xE82CFC vic3 = xF62997 hoi4 = 6171 } # STATE_GALICH, STATE_GALICH -> Murygino
+	link = { vic3 = xE82CFC vic3 = xF62997 hoi4 = 9146 } # STATE_GALICH, STATE_GALICH -> Slobodskoy
 	link = { vic3 = x30B835 hoi4 = 6374 } # STATE_NIZHNY_NOVGOROD -> Sechenovo
 	link = { vic3 = xF26043 hoi4 = 6294 } # STATE_TARTARIA -> Mayna
 	link = { vic3 = xC23BD0 hoi4 = 6312 } # STATE_CHUVASHIA -> Alatyr'
@@ -6303,16 +6303,16 @@
 	link = { vic3 = x1066EF hoi4 = 6403 } # STATE_CHUVASHIA -> Yurino
 	link = { vic3 = xD9ACBE hoi4 = 9033 } # STATE_YAROSLAVL -> Zavrazh'ye
 	link = { vic3 = x02BE2C hoi4 = 9050 } # STATE_NIZHNY_NOVGOROD -> Pizhma
-	link = { vic3 = x6E239F hoi4 = 11149 } # STATE_GALICH -> Tuzha
-	link = { vic3 = x6C1B87 vic3 = x568002 hoi4 = 9146 } # STATE_VYATKA, STATE_VYATKA -> Slobodskoy
+	link = { vic3 = x6E239F vic3 = x5E8636 hoi4 = 11149 } # STATE_GALICH, STATE_GALICH -> Tuzha
+	link = { vic3 = xADD34A hoi4 = 112 } # STATE_NIZHNY_NOVGOROD -> Vakhtan
 	link = { vic3 = x2A61E0 hoi4 = 9172 } # STATE_NIZHNY_NOVGOROD -> Shaygino
 	link = { vic3 = x45F663 hoi4 = 1307 } # STATE_GALICH -> Namsk
 	link = { vic3 = x730769 hoi4 = 11170 } # STATE_GALICH -> Ust'-Chyornaya
 	link = { vic3 = xF1ACF2 vic3 = xA7F595 hoi4 = 88 } # STATE_GALICH, STATE_GALICH -> Rudnichnyy
 	link = { vic3 = x40D3F3 hoi4 = 11124 } # STATE_VYATKA -> Kirs
-	link = { vic3 = x61562C hoi4 = 9214 } # STATE_GALICH -> Orlov
+	link = { vic3 = x61562C hoi4 = 9214 hoi4 = 6171 } # STATE_GALICH -> Orlov, Murygino
 	link = { vic3 = xCD3A7F hoi4 = 9244 } # STATE_TARTARIA -> Batyrevo
-	link = { vic3 = xA99531 hoi4 = 9270 } # STATE_NIZHNY_NOVGOROD -> Sharanga
+	link = { vic3 = x7DA8A0 hoi4 = 9270 } # STATE_NIZHNY_NOVGOROD -> Sharanga
 	link = { vic3 = x202BAA hoi4 = 9291 hoi4 = 9358 hoi4 = 9368 } # Nizhny Novgorod [city] -> Nikolo-Pogost, Gorodets, Bor
 	link = { vic3 = x4C71B7 vic3 = x6CDD7C hoi4 = 11375 } # STATE_NIZHNY_NOVGOROD, STATE_NIZHNY_NOVGOROD -> Gor'kiy
 	link = { vic3 = x0C5F95 vic3 = x0D8767 hoi4 = 9298 } # STATE_NIZHNY_NOVGOROD, STATE_NIZHNY_NOVGOROD -> Ardatov
@@ -6321,26 +6321,26 @@
 	link = { vic3 = xEBD068 vic3 = xDFA0A0 hoi4 = 11339 } # STATE_KAZAN, STATE_KAZAN -> Bolgar
 	link = { vic3 = x400383 hoi4 = 6410 } # STATE_YAROSLAVL -> Vilya
 	link = { vic3 = xDF20A0 hoi4 = 9360 } # STATE_YAROSLAVL -> Vyska
-	link = { vic3 = x643CDB vic3 = xD53291 vic3 = x6C039E vic3 = x5E8636 hoi4 = 9370 } # STATE_VYATKA, STATE_GALICH, STATE_GALICH, STATE_GALICH -> Verkhoshizhem'ye
+	link = { vic3 = x643CDB vic3 = xD53291 vic3 = x6C039E hoi4 = 9370 } # STATE_VYATKA, STATE_GALICH, STATE_GALICH -> Verkhoshizhem'ye
 	link = { vic3 = xDA0014 vic3 = xD6E65F hoi4 = 9259 } # STATE_CHUVASHIA, STATE_CHUVASHIA -> Cheboksary
 	link = { vic3 = xE89369 hoi4 = 9373 } # STATE_CHUVASHIA -> Vurnary
 	link = { vic3 = xEDEDEF hoi4 = 9381 } # STATE_KAZAN -> Paran'ga
 	link = { vic3 = x4EC74B hoi4 = 9514 } # STATE_KAZAN -> Alekseyevskoye
 	link = { vic3 = x34999F vic3 = x003051 hoi4 = 3363 } # STATE_VYATKA, STATE_VYATKA -> Omutninsk
 	link = { vic3 = xED58E5 hoi4 = 11243 } # STATE_KAZAN -> Nizhniye Vyazovye
-	link = { vic3 = x823348 hoi4 = 11255 hoi4 = 6383 } # STATE_GALICH -> Yaransk, Sovetsk
+	link = { vic3 = x823348 hoi4 = 11255 } # STATE_GALICH -> Yaransk
 	link = { vic3 = xC6E27A hoi4 = 9325 } # STATE_NIZHNY_NOVGOROD -> Barmino
-	link = { vic3 = x1910A8 hoi4 = 3394 hoi4 = 6224 } # STATE_KAZAN -> Malmyzh, Urzhum
-	link = { vic3 = x062B1B hoi4 = 11286 hoi4 = 11354 } # STATE_CHUVASHIA -> Urzhum, Lebyazh'ye
+	link = { vic3 = x1910A8 hoi4 = 3394 } # STATE_KAZAN -> Malmyzh
+	link = { vic3 = x062B1B hoi4 = 11354 hoi4 = 6224 } # STATE_CHUVASHIA -> Lebyazh'ye, Urzhum
 	link = { vic3 = xF51C0D hoi4 = 11292 } # STATE_KAZAN -> Apastovo
 	link = { vic3 = x47EA0C hoi4 = 3285 } # STATE_TAMBOV -> Bol'shoye Boldino
 	link = { vic3 = x74730E hoi4 = 6391 } # Saransk [wood] -> Chamzinka
 	link = { vic3 = x60A0A0 hoi4 = 11324 } # STATE_NIZHNY_NOVGOROD -> Pochinki
 	link = { vic3 = xE1A4D3 hoi4 = 11340 } # Semyonov [mine] -> Vetluzhskiy
 	link = { vic3 = xF0B801 hoi4 = 11344 } # Arzamas [farm] -> Shatovka
-	link = { vic3 = x67980D hoi4 = 9402 } # STATE_CHUVASHIA -> Orshanka
-	link = { vic3 = xA000C0 hoi4 = 282 } # STATE_CHUVASHIA -> Sernur
-	link = { vic3 = x2101B3 hoi4 = 9390 } # Yaransk [mine] -> Lebyazh'ye
+	link = { vic3 = x67980D hoi4 = 9402 hoi4 = 282 } # STATE_CHUVASHIA -> Orshanka, Sernur
+	link = { vic3 = xA000C0 hoi4 = 11286 hoi4 = 9390 } # STATE_CHUVASHIA -> Urzhum, Lebyazh'ye
+	link = { vic3 = x2101B3 hoi4 = 6383 } # Yaransk [mine] -> Sovetsk
 	link = { vic3 = x0CBEE6 hoi4 = 11356 } # STATE_KAZAN -> Kozlovka
 	link = { vic3 = x21DF21 hoi4 = 11373 hoi4 = 6337 } # STATE_TARTARIA -> Bazarnyy Syzgan, Veshkayma
 	link = { vic3 = xAA65A0 hoi4 = 11496 } # STATE_KAZAN -> Chistopol'
