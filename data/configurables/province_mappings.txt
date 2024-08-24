@@ -6150,14 +6150,14 @@
 	link = { vic3 = xA0DFA0 hoi4 = 410 } # STATE_SAMARA -> Ozinki
 	link = { vic3 = x6364BE hoi4 = 452 } # STATE_SAMARA -> Pugachyov
 	link = { vic3 = xE41C9D hoi4 = 497 } # STATE_SAMARA -> Bol'shaya Cheringovka
-	link = { vic3 = x37CD87 hoi4 = 1210 } # STATE_SAMARA -> Saraktash
+	link = { vic3 = x37CD87 vic3 = xCF6246 hoi4 = 1210 } # STATE_SAMARA, STATE_SAMARA -> Saraktash
 	link = { vic3 = x21DFA0 vic3 = x9F49D5 hoi4 = 1254 } # STATE_SAMARA, STATE_SAMARA -> Akbulak
 	link = { vic3 = x40CEBB vic3 = xB808A3 hoi4 = 1258 } # STATE_UFA, STATE_UFA -> Krasnousolskiy
 	link = { vic3 = x95F664 hoi4 = 1278 } # STATE_UFA -> Ufa
 	link = { vic3 = x09A64F vic3 = x2C4BD2 vic3 = xEF14C8 hoi4 = 1305 } # STATE_UFA, Sterlitamak [farm], STATE_UFA -> Tolbazy
 	link = { vic3 = x71BA78 vic3 = xAC95C4 hoi4 = 1350 } # STATE_SAMARA, STATE_SAMARA -> Pleshanovo
-	link = { vic3 = x4394A4 vic3 = xCF6246 vic3 = xFC5E47 hoi4 = 1378 } # STATE_UFA, STATE_SAMARA, STATE_UFA -> Tyul'gan
-	link = { vic3 = xB42F67 vic3 = xDCE3DC vic3 = xE44235 hoi4 = 1406 } # STATE_UFA, STATE_UFA, STATE_SAMARA -> Akbulak
+	link = { vic3 = x4394A4 vic3 = xFC5E47 hoi4 = 1378 } # STATE_UFA, STATE_UFA -> Tyul'gan
+	link = { vic3 = xB42F67 vic3 = xDCE3DC vic3 = xE44235 vic3 = x756FF5 hoi4 = 1406 } # STATE_UFA, STATE_UFA, STATE_SAMARA, STATE_UFA -> Akbulak
 	link = { vic3 = xC4B284 hoi4 = 3196 } # STATE_TARTARIA -> Nikolayevka
 	link = { vic3 = x1E5008 hoi4 = 3216 } # STATE_SAMARA -> Borskoye
 	link = { vic3 = x8BB04E hoi4 = 3246 hoi4 = 6394 } # STATE_TARTARIA -> Novospasskoye, Staraya Kulatka
@@ -6179,7 +6179,7 @@
 	link = { vic3 = x2FE543 hoi4 = 4322 } # STATE_SAMARA -> Sol'-Iletsk
 	link = { vic3 = x3F9C38 vic3 = x658056 hoi4 = 4324 } # STATE_SAMARA, STATE_SAMARA -> Abdulino
 	link = { vic3 = xCE72AB hoi4 = 4354 } # STATE_UFA -> Sterlitamak
-	link = { vic3 = x00CB99 vic3 = x323E2B vic3 = x756FF5 vic3 = xC4AD2A hoi4 = 4383 } # STATE_CHELYABINSK, STATE_CHELYABINSK, STATE_UFA, STATE_UFA -> Zilair
+	link = { vic3 = x00CB99 vic3 = x323E2B vic3 = xC4AD2A hoi4 = 4383 } # STATE_CHELYABINSK, STATE_CHELYABINSK, STATE_UFA -> Zilair
 	link = { vic3 = xB0A1F1 vic3 = x199917 hoi4 = 4400 } # STATE_KAZAN, STATE_VYATKA -> Karakulino
 	link = { vic3 = x45F63E vic3 = x942B77 hoi4 = 4411 } # STATE_CHELYABINSK, STATE_CHELYABINSK -> Kartaly
 	link = { vic3 = x2D0CA0 hoi4 = 6226 } # STATE_TARTARIA -> Syzran'
