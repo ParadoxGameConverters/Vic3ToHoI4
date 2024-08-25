@@ -4974,7 +4974,8 @@
 	link = { vic3 = x1E5008 hoi4 = 3216 } # STATE_SAMARA -> Borskoye
 	link = { vic3 = x8BB04E hoi4 = 3246 hoi4 = 6394 } # STATE_TARTARIA -> Novospasskoye, Staraya Kulatka
 	link = { vic3 = x51CA06 hoi4 = 3265 } # Buguruslan [mine] -> Buguruslan
-	link = { vic3 = x346C85 vic3 = x161ACD hoi4 = 3276 } # STATE_TARTARIA, STATE_TARTARIA -> Kuzovatovo
+	link = { vic3 = x161ACD hoi4 = 9338 } # STATE_TARTARIA -> Sengiley
+	link = { vic3 = x346C85 hoi4 = 3276 } # STATE_TARTARIA -> Kuzovatovo
 	link = { vic3 = x59D2D4 hoi4 = 3330 } # STATE_SAMARA -> Totskoye
 	link = { vic3 = x56CB77 vic3 = x7B1203 hoi4 = 3348 } # STATE_KAZAN, STATE_KAZAN -> Muslyumovo
 	link = { vic3 = x024868 hoi4 = 3357 } # STATE_SAMARA -> Buzuluk
@@ -8429,6 +8430,7 @@
 	link = { vic3 = x70D145 vic3 = xC575FD hoi4 = 9140 } # STATE_KOLA, STATE_KOLA -> Petsamo
 	link = { vic3 = x8A9DB3 vic3 = xDF49EB hoi4 = 9162 } # STATE_KOLA, STATE_EAST_KARELIA -> Lesozavodskiy
 	link = { vic3 = x0066B6 vic3 = x5A4AAB vic3 = xF7F846 vic3 = xFAD2A2 vic3 = xFD1CCF hoi4 = 9165 } # STATE_KOLA, STATE_KOLA, STATE_KOLA, STATE_KOLA, STATE_KOLA -> Tetrino
+	link = { vic3 = x8969D9 vic3 = x73FFD0 vic3 = x63FFF5 vic3 = x187B70 vic3 = xC5C353 hoi4 = 3170 } # STATE_KOLA, STATE_KOLA, STATE_KOLA, STATE_KOLA, STATE_KOLA -> Dalniye Zelentsy
 	link = { vic3 = x3DE633 vic3 = xAF87D1 vic3 = xB6A456 vic3 = xDF1F54 vic3 = xEDCD34 hoi4 = 9179 } # STATE_KOLA, STATE_KOLA, STATE_KOLA, STATE_KOLA, STATE_KOLA -> land
 	link = { vic3 = x1B744E hoi4 = 6181 } # STATE_KOLA -> Kandalaksha
 	link = { vic3 = xFC6114 hoi4 = 6183 } # STATE_KOLA -> Jäniskoski
@@ -8528,7 +8530,7 @@
 	link = { vic3 = x4700D0 hoi4 = 3457 } # STATE_KIEV -> Proskuriv
 	link = { vic3 = x7161A0 vic3 = x884128 hoi4 = 3430 } # STATE_KIEV, STATE_KIEV -> Kam'yanets'-Podil's'kyi
 	link = { vic3 = xBD8617 hoi4 = 3470 } # STATE_KIEV -> Novohrad-Volyns'kyi
-	link = { vic3 = x862F77 hoi4 = 3496 } # STATE_BREST -> Machro
+	link = { vic3 = x862F77 hoi4 = 3496 hoi4 = 11503 } # STATE_BREST -> Machro, Fiadory
 	link = { vic3 = x6AC779 hoi4 = 3511 } # STATE_KIEV -> Shepetivka
 	link = { vic3 = x1121A0 vic3 = x6168EB hoi4 = 3570 } # STATE_KIEV, STATE_KIEV -> Baranivka
 	link = { vic3 = x33471E hoi4 = 462 } # STATE_KIEV -> Horodok
@@ -9113,7 +9115,7 @@
 	link = { vic3 = x7B0FEF vic3 = xA06020 hoi4 = 9401 } # STATE_KAZAN, STATE_SAMARA -> Cheremshan
 	link = { vic3 = x36D99A hoi4 = 292 } # STATE_KAZAN -> Nurlat
 	link = { vic3 = x1FDAE5 hoi4 = 372 hoi4 = 6338 } # Kazan [city] -> Laishevo, Kazan'
-	link = { vic3 = x108711 hoi4 = 9354 hoi4 = 392 hoi4 = 9338 } # Simbirsk [farm] -> Buinsk, Ulyanovsk, Sengiley
+	link = { vic3 = x108711 hoi4 = 9354 } # Simbirsk [farm] -> Buinsk
 	link = { vic3 = x0B1757 hoi4 = 404 } # STATE_KAZAN -> Baltasi
 	link = { vic3 = xD0936B hoi4 = 3103 } # STATE_GALICH -> Svecha
 	link = { vic3 = x2478A2 hoi4 = 3066 } # STATE_GALICH -> Leninskoye
@@ -9124,7 +9126,8 @@
 	link = { vic3 = x118263 vic3 = x534B98 hoi4 = 3365 } # Chistopol [farm], STATE_KAZAN -> Rybnaya Sloboda
 	link = { vic3 = xCE626F vic3 = xAF5831 hoi4 = 6124 } # STATE_VYATKA, STATE_GALICH -> Kirov
 	link = { vic3 = xE82CFC vic3 = xF62997 hoi4 = 9146 } # STATE_GALICH, STATE_GALICH -> Slobodskoy
-	link = { vic3 = xF26043 hoi4 = 6294 } # STATE_TARTARIA -> Mayna
+	link = { vic3 = x328BF7 hoi4 = 392 } # STATE_TARTARIA -> Ulyanovsk
+	link = { vic3 = xF26043 hoi4 = 6294 hoi4 = 6337 } # STATE_TARTARIA -> Mayna, Veshkayma
 	link = { vic3 = xEAF220 hoi4 = 11387 } # STATE_KAZAN -> Morki
 	link = { vic3 = x6E239F vic3 = x5E8636 hoi4 = 11149 } # STATE_GALICH, STATE_GALICH -> Tuzha
 	link = { vic3 = x45F663 hoi4 = 1307 } # STATE_GALICH -> Namsk
@@ -9146,7 +9149,7 @@
 	link = { vic3 = xF0B801 hoi4 = 11344 } # Arzamas [farm] -> Shatovka
 	link = { vic3 = x2101B3 hoi4 = 6383 } # Yaransk [mine] -> Sovetsk
 	link = { vic3 = x0CBEE6 hoi4 = 11356 } # STATE_KAZAN -> Kozlovka
-	link = { vic3 = x21DF21 hoi4 = 11373 hoi4 = 6337 } # STATE_TARTARIA -> Bazarnyy Syzgan, Veshkayma
+	link = { vic3 = x21DF21 hoi4 = 11373 } # STATE_TARTARIA -> Bazarnyy Syzgan
 	link = { vic3 = xAA65A0 hoi4 = 11496 } # STATE_KAZAN -> Chistopol'
 	link = { comment = "* * STATE_URALSK " }
 	link = { vic3 = xA73E93 vic3 = xDF5085 hoi4 = 432 } # STATE_URALSK, STATE_URALSK -> land
