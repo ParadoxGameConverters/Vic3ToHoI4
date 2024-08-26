@@ -3930,7 +3930,7 @@
 	link = { vic3 = x008396 vic3 = x685D84 vic3 = x90A9AC vic3 = xE393EC vic3 = x836854 vic3 = x8EE105 hoi4 = 12703 } # STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA -> Caucasia
 	link = { vic3 = x4E89E7 vic3 = x8FBCCC hoi4 = 12790 } # Cartagena [farm], STATE_ANTIOQUIA -> Cartagena
 	link = { vic3 = x5A7C3B vic3 = x5F834B vic3 = x87A5C6 vic3 = xA36731 vic3 = xA390B8 vic3 = xB979D3 vic3 = xF7A68F vic3 = x52CED6 vic3 = x7AE883 vic3 = x13EF21 vic3 = x80C090 hoi4 = 12845 } # STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, Bucaramanga [wood], STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, Puerto Berrío [mine] -> Bucaramanga
-	link = { vic3 = x004090 vic3 = x8FB1CC vic3 = xEAF021 vic3 = xF16BCF vic3 = x69559D hoi4 = 12872 } # STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_CAUCA -> Quibdó
+	link = { vic3 = x004090 vic3 = x8FB1CC vic3 = xEAF021 vic3 = xF16BCF hoi4 = 12872 } # STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA, STATE_ANTIOQUIA -> Quibdó
 	link = { comment = "* * STATE_GUAVIARE " }
 	link = { vic3 = x005ED2 vic3 = x46C0F4 vic3 = x5CE536 vic3 = x675E58 vic3 = xA287D5 vic3 = xB44C66 vic3 = xB6803E vic3 = xE8A35E vic3 = xF0F246 vic3 = x0F4006 vic3 = x00004B vic3 = x59B14F vic3 = x2B8932 vic3 = x17F9D8 vic3 = x7909D1 hoi4 = 1887 } # STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE -> Yopal
 	link = { vic3 = x0864EA vic3 = x2E83FB vic3 = x72EC48 vic3 = xAFEEFC vic3 = xB5D64F vic3 = xBD3DDF vic3 = xD9DA42 vic3 = xDA8750 vic3 = xE17FAB vic3 = xEF218E vic3 = x4B7075 vic3 = x21A132 vic3 = xCED0AA vic3 = x3A1BE1 vic3 = x41165C vic3 = x7FE7D9 vic3 = xF4E257 hoi4 = 2007 } # STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, STATE_GUAVIARE, Florencia [mine], STATE_GUAVIARE, STATE_GUAVIARE -> Florencia
@@ -3945,7 +3945,7 @@
 	link = { vic3 = x00C090 vic3 = x2649CF vic3 = x74FDB3 vic3 = x804090 vic3 = x1BE3E2 vic3 = x844175 hoi4 = 10790 } # STATE_CUNDINAMARCA, STATE_CUNDINAMARCA, Ibagué [farm], STATE_CUNDINAMARCA, Manizales [wood], STATE_CUNDINAMARCA -> Ibagué
 	link = { comment = "* * STATE_CAUCA " }
 	link = { vic3 = xDFB23F vic3 = xCCF8B8 vic3 = x70B453 hoi4 = 2079 } # Neiva [mine], STATE_CAUCA, STATE_CAUCA -> Neiva
-	link = { vic3 = x53873F vic3 = x808050 vic3 = xB98FDD vic3 = x488A71 hoi4 = 7936 } # STATE_CAUCA, Cali [city], STATE_CAUCA, Buenaventura [port] -> Cali
+	link = { vic3 = x53873F vic3 = x808050 vic3 = xB98FDD vic3 = x488A71 vic3 = x69559D hoi4 = 7936 } # STATE_CAUCA, Cali [city], STATE_CAUCA, Buenaventura [port], STATE_CAUCA -> Cali
 	link = { vic3 = x008050 vic3 = x04F7D1 vic3 = xB81135 vic3 = xF294CC vic3 = x6E5F7F hoi4 = 7991 } # STATE_CAUCA, STATE_CAUCA, STATE_CAUCA, STATE_CAUCA, STATE_CAUCA -> Popayán
 	link = { vic3 = x5437B1 vic3 = x824FE7 vic3 = xA03713 vic3 = x8000D0 vic3 = x0000D0 vic3 = x5575E4 hoi4 = 10846 } # STATE_CAUCA, Pasto [farm], STATE_CAUCA, STATE_CAUCA, STATE_CAUCA, Popayán [wood] -> Pasto
 	link = { comment = "* * STATE_PASTAZA " }
@@ -4000,25 +4000,25 @@
 	link = { vic3 = x49AE7D vic3 = x5C955D vic3 = x5ED420 vic3 = xDC3D44 vic3 = xE8C4B9 vic3 = xF91A3D vic3 = x8170A2 vic3 = xAD65A3 vic3 = xE709F8 vic3 = x2E0608 vic3 = x4080D0 vic3 = x66279A hoi4 = 8199 } # STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, Cajamarca [mine], STATE_CAJAMARCA, Chiclayo [port], STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, Trujillo [city], STATE_CAJAMARCA, STATE_CAJAMARCA -> Trujillo
 	link = { vic3 = x069581 vic3 = x215FF5 vic3 = x6EDBA1 vic3 = xA33231 vic3 = xD57EEE vic3 = x53C9A1 vic3 = xA6A663 vic3 = x54BF7F hoi4 = 12969 } # STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA, STATE_CAJAMARCA -> Huánuco
 	link = { comment = "* * STATE_LIMA " }
-	link = { vic3 = x2AFF79 vic3 = x3528D6 vic3 = x631487 vic3 = xC2FE32 vic3 = xF333CF vic3 = x3060D7 vic3 = xC64601 vic3 = x96560E vic3 = x32FF31 vic3 = xA101CC vic3 = x7991EE vic3 = xDF00B0 hoi4 = 2162 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_ICA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> Huancayo
+	link = { vic3 = x2AFF79 vic3 = x3528D6 vic3 = x631487 vic3 = xC2FE32 vic3 = x3060D7 vic3 = xC64601 vic3 = x96560E hoi4 = 2162 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA -> Huancayo
 	link = { vic3 = x0B1EE1 vic3 = x26F77F vic3 = x539023 vic3 = x59E553 vic3 = x786D2C vic3 = xCBB91A vic3 = x131D6D vic3 = x690D59 vic3 = xF405A2 vic3 = x7C6BF6 vic3 = xCD4EF2 vic3 = x88CDF0 vic3 = x03B9CB hoi4 = 2212 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA -> Pucallpa
 	link = { vic3 = x6EB212 vic3 = xCF5BB8 vic3 = xDEA3E2 vic3 = x99E70D vic3 = xF2A18E vic3 = xA4735B vic3 = x48284E vic3 = x64989F vic3 = x9866F2 hoi4 = 13316 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA -> land
 	link = { vic3 = x9BBC5E vic3 = xA03573 vic3 = xA06991 vic3 = xC9CBD8 vic3 = xE69BC9 vic3 = x9E0F14 hoi4 = 2226 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, Pucallpa [farm] -> Contamana
 	link = { vic3 = x5E4494 vic3 = xD7B13A vic3 = xF3F25C vic3 = x7C29E5 hoi4 = 5190 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA -> Chimbote
 	link = { vic3 = x187234 vic3 = x2B7493 vic3 = x4411B8 vic3 = x91B0BF vic3 = xA146DE vic3 = xA3F17B hoi4 = 12983 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA, Huanuco [wood] -> Huacho
 	link = { vic3 = x20C0B0 vic3 = x6BEF27 vic3 = x928ED8 vic3 = xC0A53C vic3 = xF19D07 vic3 = xA0C0B0 vic3 = x60C030 hoi4 = 12997 } # STATE_LIMA, Callao [port], Lima [city], STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA -> Lima
+	link = { vic3 = x25CF2A vic3 = x32863F vic3 = xD3F539 vic3 = x05FB9B hoi4 = 2225 } # STATE_LIMA, STATE_LIMA, STATE_LIMA, STATE_LIMA -> Ica
 	link = { comment = "* * STATE_ICA " }
 	link = { vic3 = x08BBBC vic3 = x38EE47 vic3 = xDF4030 vic3 = xE7EB9B vic3 = x68D883 hoi4 = 2182 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> Juliaca
-	link = { vic3 = x25CF2A vic3 = x32863F vic3 = xA7C0A9 vic3 = xD3F539 hoi4 = 2225 } # STATE_LIMA, STATE_LIMA, STATE_ICA, STATE_LIMA -> Ica
 	link = { vic3 = x3B8AB8 vic3 = x40E12A vic3 = x44B4A5 vic3 = x82F15A vic3 = x98E058 vic3 = xA4DAF3 vic3 = xA4CA0B vic3 = x807F09 hoi4 = 5166 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, Cuzco [city], STATE_ICA, STATE_ICA, STATE_ICA -> Cusco
-	link = { vic3 = x08623F vic3 = x6040B0 vic3 = xB0BAC0 vic3 = xDFC030 vic3 = xFB1969 vic3 = xE5E702 vic3 = x05FB9B hoi4 = 5202 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_LIMA -> Abancay
+	link = { vic3 = x08623F vic3 = x6040B0 vic3 = xB0BAC0 vic3 = xDFC030 vic3 = xFB1969 vic3 = xE5E702 vic3 = x728391 vic3 = xD464CF vic3 = xC6E532 hoi4 = 5202 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> Abancay
 	link = { vic3 = x08AC16 vic3 = x0AF425 vic3 = x6780B3 vic3 = xB3DC65 vic3 = xF0A4FE vic3 = xF3A702 vic3 = xD54205 hoi4 = 8160 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> Atalaya
 	link = { vic3 = x1F2F47 vic3 = x3F9FD5 vic3 = x43494D vic3 = x7DD2F8 vic3 = x817BB5 vic3 = x83E894 vic3 = xB15AC4 vic3 = xF211E2 vic3 = xFF8828 hoi4 = 8191 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> land
 	link = { vic3 = x186AEE vic3 = x1CA561 vic3 = x7B9FBE vic3 = xB2AB53 vic3 = xBDFBD1 vic3 = x199608 hoi4 = 10940 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, Puerto Maldonado [wood], STATE_ICA -> Puerto Maldonado
-	link = { vic3 = x003582 vic3 = x0D8A39 vic3 = x3C568C vic3 = x4061BE vic3 = x52BF37 vic3 = x5F849A vic3 = xCAB5E1 hoi4 = 12953 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, Ayacucho [mine], STATE_ICA, STATE_ICA -> Ayacucho
+	link = { vic3 = x003582 vic3 = x0D8A39 vic3 = x3C568C vic3 = x4061BE vic3 = x52BF37 vic3 = x5F849A vic3 = xCAB5E1 vic3 = x7991EE vic3 = xF333CF vic3 = xA101CC vic3 = x32FF31 vic3 = xDF00B0 vic3 = xA7C0A9 hoi4 = 12953 } # STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, Ayacucho [mine], STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA, STATE_ICA -> Ayacucho
 	link = { comment = "* * STATE_AREQUIPA " }
 	link = { vic3 = xF6869A vic3 = xE326BA vic3 = x7C1054 hoi4 = 13288 } # Mollendo [port], STATE_AREQUIPA, STATE_AREQUIPA -> land
-	link = { vic3 = x79A3B0 vic3 = x96798E vic3 = xDF23D0 vic3 = x728391 vic3 = xD464CF vic3 = xC6E532 vic3 = xC72B01 vic3 = x8EC087 vic3 = xD619E0 vic3 = x3BC37F vic3 = x2E3791 vic3 = x89775D vic3 = xB077B0 vic3 = xC16B62 vic3 = xBB02B0 hoi4 = 2210 } # STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_ICA, STATE_ICA, STATE_ICA, Arequipa [city], STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, Puno [wood] -> Arequipa
+	link = { vic3 = x79A3B0 vic3 = x96798E vic3 = xDF23D0 vic3 = xC72B01 vic3 = x8EC087 vic3 = xD619E0 vic3 = x3BC37F vic3 = x2E3791 vic3 = x89775D vic3 = xB077B0 vic3 = xC16B62 vic3 = xBB02B0 hoi4 = 2210 } # STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, Arequipa [city], STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, Puno [wood] -> Arequipa
 	link = { vic3 = x96AB5D vic3 = x72698B hoi4 = 13286 } # STATE_AREQUIPA, STATE_AREQUIPA -> land
 	link = { vic3 = xDFC0B0 vic3 = x451783 vic3 = xBED190 vic3 = x923040 vic3 = xD66487 hoi4 = 13287 } # Moquegua [mine], STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA, STATE_AREQUIPA -> land
 	link = { vic3 = x007035 vic3 = x67EC55 hoi4 = 13086 } # Tacna [farm], STATE_AREQUIPA -> Tacna
@@ -4332,9 +4332,9 @@
 	link = { vic3 = x1870F2 vic3 = xB57BC4 vic3 = xBF9DEB vic3 = xD35977 vic3 = xDA3977 vic3 = x66900C hoi4 = 1583 } # Marília [farm], STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO -> Presidente Prudente
 	link = { vic3 = x9D3688 vic3 = x5C09B3 hoi4 = 5112 } # Santos [port], STATE_SAO_PAULO -> Santos
 	link = { vic3 = x727D50 hoi4 = 5167 } # STATE_SAO_PAULO -> Itanhaém
-	link = { vic3 = x8D426B vic3 = xB9F859 vic3 = xC5C85C vic3 = xEF2FE4 vic3 = xE0C50E hoi4 = 5186 } # STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO -> Catanduva
+	link = { vic3 = x8D426B vic3 = xB9F859 vic3 = xC5C85C vic3 = xEF2FE4 vic3 = xE0C50E vic3 = xFCB8BC hoi4 = 5186 } # STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO -> Catanduva
 	link = { vic3 = x298D6C vic3 = x9FCD15 vic3 = xB854DD vic3 = xC87548 hoi4 = 7553 } # STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO -> Registro
-	link = { vic3 = x31F83B vic3 = x479986 vic3 = x6AE592 vic3 = xA0E429 hoi4 = 7636 } # STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO -> Barretos
+	link = { vic3 = x31F83B vic3 = x479986 vic3 = x6AE592 vic3 = xA0E429 vic3 = x23A418 hoi4 = 7636 } # STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO -> Barretos
 	link = { vic3 = x68DC5F vic3 = xC06C0B hoi4 = 10432 } # STATE_SAO_PAULO, STATE_SAO_PAULO -> Taubaté
 	link = { vic3 = x09198A vic3 = x78C1FA vic3 = xD2EC89 hoi4 = 10360 } # STATE_SAO_PAULO, STATE_SAO_PAULO, Campinas [mine] -> Campinas
 	link = { vic3 = x544559 vic3 = x9C9A53 vic3 = xCF1240 hoi4 = 10513 } # São Paulo [city], STATE_SAO_PAULO, STATE_SAO_PAULO -> São Paulo
@@ -4342,10 +4342,10 @@
 	link = { vic3 = x567C72 vic3 = xC59376 vic3 = xD7EC24 vic3 = xDA0243 hoi4 = 10994 } # STATE_SAO_PAULO, STATE_SAO_PAULO, São José do Rio Prêto  [wood], STATE_SAO_PAULO -> Araçatuba
 	link = { vic3 = x7EE747 vic3 = x803B36 vic3 = x67A607 vic3 = xA03AAD hoi4 = 11003 } # STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO -> Bauru
 	link = { vic3 = x317917 vic3 = x81DA8F vic3 = xD62837 hoi4 = 11008 } # STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO -> Avaré
-	link = { vic3 = x23A418 vic3 = xFCB8BC vic3 = xEAC29B vic3 = x754F27 hoi4 = 12438 } # STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_MINAS_GERAIS, STATE_MINAS_GERAIS -> Ribeirão Preto
 	link = { vic3 = x21316A vic3 = x283F5F vic3 = x53877A vic3 = x9EAC59 vic3 = xA1C66C hoi4 = 12937 } # STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO -> São José do Rio Preto
 	link = { vic3 = x5C709E vic3 = x94E2E8 vic3 = xB450CA hoi4 = 12972 } # STATE_SAO_PAULO, STATE_SAO_PAULO, STATE_SAO_PAULO -> São Carlos
 	link = { comment = "* * STATE_MINAS_GERAIS " }
+	link = { vic3 = xEAC29B vic3 = x754F27 hoi4 = 12438 } # STATE_MINAS_GERAIS, STATE_MINAS_GERAIS -> Ribeirão Preto
 	link = { vic3 = x1ECD15 vic3 = x6B6A3B vic3 = xB6ECD1 vic3 = xFCDEAB vic3 = x1E0C88 hoi4 = 2167 } # STATE_MINAS_GERAIS, STATE_MINAS_GERAIS, STATE_MINAS_GERAIS, STATE_MINAS_GERAIS, STATE_MINAS_GERAIS -> Araxá
 	link = { vic3 = x52D36E vic3 = xC72E22 hoi4 = 2185 } # STATE_MINAS_GERAIS, STATE_MINAS_GERAIS -> Lavras
 	link = { vic3 = x249745 vic3 = x7BC5C4 vic3 = xC671F6 vic3 = xCB325E vic3 = xED0F30 vic3 = x9F0BC3 hoi4 = 2190 } # STATE_MINAS_GERAIS, STATE_MINAS_GERAIS, STATE_MINAS_GERAIS, STATE_MINAS_GERAIS, STATE_MINAS_GERAIS, STATE_MINAS_GERAIS -> Januária
@@ -4410,6 +4410,7 @@
 	link = { vic3 = x516DE8 vic3 = x594558 vic3 = x5F988B vic3 = xEF30C9 vic3 = xF7C27D hoi4 = 7561 } # STATE_PARAIBA, STATE_PARAIBA, Patos [mine], STATE_PARAIBA, Piancó [wood] -> Patos
 	link = { vic3 = xB20898 vic3 = x1A2590 hoi4 = 2227 } # Parahyba [port], Campina Grande [city] -> João Pessoa
 	link = { vic3 = xCCF195 hoi4 = 10989 } # Juazeirinho [farm] -> Campina Grande
+	link = { vic3 = xA00150 hoi4 = 12961 } # STATE_PARAIBA -> Arcoverde
 	link = { comment = "* * STATE_PERNAMBUCO " }
 	link = { vic3 = x30CFD0 hoi4 = 1446 } # STATE_PERNAMBUCO -> Santa Cruz do Capibaribe
 	link = { vic3 = x8941F9 vic3 = xC4D392 hoi4 = 1524 } # STATE_PERNAMBUCO, STATE_PERNAMBUCO -> Arapiraca
@@ -4417,11 +4418,10 @@
 	link = { vic3 = x0973C9 vic3 = x0F585E vic3 = x218050 hoi4 = 5182 } # STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO -> Garanhuns
 	link = { vic3 = x69F57B vic3 = xC0A070 hoi4 = 8143 } # STATE_PERNAMBUCO, Aracaju [port] -> Aracaju
 	link = { vic3 = x0FC0EC vic3 = x124BA3 vic3 = x3DBD72 vic3 = x4C7639 vic3 = x60C011 vic3 = xA04868 vic3 = xFAA9EB hoi4 = 8227 } # STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO -> Petrolina
-	link = { vic3 = x102F7B vic3 = x26F1F5 vic3 = x3A24E6 vic3 = x6BB748 vic3 = x756819 vic3 = x7BA55B hoi4 = 10345 } # STATE_PERNAMBUCO, Salgueiro [farm], STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO -> Serra Talhada
+	link = { vic3 = x102F7B vic3 = x26F1F5 vic3 = x3A24E6 vic3 = x6BB748 vic3 = x756819 vic3 = x7BA55B vic3 = x8ED4A6 hoi4 = 10345 } # STATE_PERNAMBUCO, Salgueiro [farm], STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO, STATE_PERNAMBUCO -> Serra Talhada
 	link = { vic3 = x344DF2 vic3 = x781B63 hoi4 = 10939 } # STATE_PERNAMBUCO, STATE_PERNAMBUCO -> Palmares
 	link = { vic3 = x1A21F3 hoi4 = 10967 } # Caruaru [wood][mine] -> Caruaru
 	link = { vic3 = x937969 vic3 = xA08050 hoi4 = 10998 } # STATE_PERNAMBUCO, STATE_PERNAMBUCO -> Maceió
-	link = { vic3 = x8ED4A6 vic3 = xA00150 hoi4 = 12961 } # STATE_PERNAMBUCO, STATE_PARAIBA -> Arcoverde
 	link = { comment = "* " }
 	link = { comment = "* **********" }
 	link = { comment = "middle_east" }
