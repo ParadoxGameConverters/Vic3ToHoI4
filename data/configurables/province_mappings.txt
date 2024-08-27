@@ -4480,7 +4480,6 @@
 	link = { vic3 = x778137 vic3 = x93BDD6 vic3 = xE49A74 hoi4 = 2033 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ -> Yanbu al-Bahr
 	link = { vic3 = x1BC05F vic3 = x3BE5E7 vic3 = x4F8C15 vic3 = xA8EF8C vic3 = xBBA7D8 vic3 = xE4415E vic3 = xE4A66C vic3 = x320615 vic3 = xCD06B6 hoi4 = 2090 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ -> Al-Khurmah
 	link = { vic3 = x3B598C vic3 = x9DCEC5 vic3 = xAF3276 vic3 = x8DCF10 hoi4 = 2095 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ -> Al-Wajh
-	link = { vic3 = x50A387 hoi4 = 4115 } # STATE_HEDJAZ -> Aqaba
 	link = { vic3 = x05AA56 vic3 = x27A2A8 vic3 = x61CFA0 vic3 = x694321 vic3 = xE463A6 vic3 = xF5C539 vic3 = x21BF48 hoi4 = 4981 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ -> Khulais
 	link = { vic3 = x1B7D77 vic3 = x21EDF5 vic3 = x60CD79 vic3 = xE2A4DE vic3 = xE78A14 vic3 = x12C743 hoi4 = 5006 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ -> Najran
 	link = { vic3 = x04F7B6 vic3 = x521E15 vic3 = xA3FA9D vic3 = xADCFD1 vic3 = xCEC06C vic3 = x73D602 hoi4 = 5037 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ -> Makkah
@@ -4490,7 +4489,7 @@
 	link = { vic3 = x034F87 vic3 = x24FBED vic3 = x7E1168 vic3 = xB2A43B vic3 = xD128E6 vic3 = xEEB4B7 hoi4 = 10748 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ -> Al-Muwayh
 	link = { vic3 = x189DA8 vic3 = x1EBD1A vic3 = x46CB97 vic3 = x5DF095 vic3 = x6E30A8 vic3 = xA1824A vic3 = xE5D28A vic3 = x9D05B5 hoi4 = 10786 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ -> Bishah
 	link = { vic3 = x75C3D2 vic3 = x8BF770 vic3 = x6809FA vic3 = x7CE787 vic3 = x6AB15B vic3 = xF9520D vic3 = xE0B808 hoi4 = 10835 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ -> Al-'Ais
-	link = { vic3 = x74B86E vic3 = x74CB6D vic3 = xDAF133 vic3 = xE6B022 vic3 = x91C7AF vic3 = xB47D47 vic3 = x5F15CE hoi4 = 12101 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, Tabük [farm] -> Haql
+	link = { vic3 = x74B86E vic3 = x74CB6D vic3 = xDAF133 vic3 = xE6B022 vic3 = x91C7AF vic3 = xB47D47 vic3 = x5F15CE vic3 = x50A387 vic3 = x8DED0C hoi4 = 12101 } # STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, STATE_HEDJAZ, Tabük [farm], STATE_HEDJAZ, STATE_HEDJAZ -> Haql
 	link = { vic3 = x01B53C vic3 = x2999ED vic3 = x2B5B11 vic3 = xE19850 hoi4 = 12883 } # STATE_HEDJAZ, Jiddah [wood], STATE_HEDJAZ, Mecca [city] -> Jiddah
 	link = { comment = "* * STATE_HAIL " }
 	link = { vic3 = xE0D0E0 hoi4 = 1544 } # STATE_HAIL -> Azraq Shamali
@@ -4499,7 +4498,6 @@
 	link = { vic3 = x3B179D vic3 = x54B461 vic3 = x5BA9F3 vic3 = x8582F8 vic3 = xAC7DDC vic3 = xD088C8 vic3 = xD0C6ED vic3 = xF14451 hoi4 = 2057 } # STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL -> Baq'a'
 	link = { vic3 = x2BC2EE vic3 = x332989 vic3 = x46784B vic3 = xF85497 hoi4 = 4440 } # STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL -> Rwaished
 	link = { vic3 = xEF6A66 vic3 = x8241B7 vic3 = x9F049F hoi4 = 4562 } # STATE_HAIL, STATE_HAIL, STATE_HAIL -> land
-	link = { vic3 = x8DED0C vic3 = x32C1E8 hoi4 = 11976 } # STATE_HEDJAZ, STATE_TRANSJORDAN -> Jafr
 	link = { vic3 = x1CF62E vic3 = xA04148 hoi4 = 4603 } # STATE_HAIL, STATE_HAIL -> land
 	link = { vic3 = x82B24D vic3 = x908AEA vic3 = x94ADBF vic3 = x9CED6B vic3 = xB9C9EB vic3 = x4CF20D hoi4 = 4951 } # STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL -> An-Nukhayb
 	link = { vic3 = x27DDAC vic3 = xC1AFC6 vic3 = xDD224F vic3 = xDF5AFC vic3 = xF6C5D3 vic3 = x5A6200 vic3 = xA5E10E vic3 = xDA2107 vic3 = x389704 hoi4 = 4968 } # STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, STATE_HAIL, Buraydah [city] -> Buraydah
@@ -4527,13 +4525,15 @@
 	link = { vic3 = x79685E hoi4 = 7193 } # Lefke [farm] -> Limassol
 	link = { vic3 = x40B020 vic3 = xBF3020 hoi4 = 11984 } # Nicosia [city], Larnaca [port] -> Nicosia
 	link = { comment = "* * STATE_TRANSJORDAN " }
-	link = { vic3 = x599378 vic3 = xE050E0 hoi4 = 4017 } # STATE_TRANSJORDAN, Aqaba [port] -> Ma'an
-	link = { vic3 = xA25988 vic3 = x720E3F hoi4 = 4574 } # STATE_TRANSJORDAN, Kerak [farm] -> land
+	link = { vic3 = xE050E0 vic3 = x599378 hoi4 = 4115 } # Aqaba [port], STATE_TRANSJORDAN -> Aqaba
+	link = { vic3 = x60D0E0 hoi4 = 4017 } # Tafilah [wood] -> Ma'an
+	link = { vic3 = x720E3F hoi4 = 10089 } # Kerak [farm] -> Kerak
+	link = { vic3 = xA25988 hoi4 = 4574 } # STATE_TRANSJORDAN -> land
+	link = { vic3 = x32C1E8 hoi4 = 11976 } # STATE_TRANSJORDAN -> Jafr
 	link = { vic3 = x104A1B hoi4 = 4591 } # Ma’an [mine] -> land
 	link = { vic3 = x0C8C1E hoi4 = 7151 } # STATE_TRANSJORDAN -> Amman
 	link = { vic3 = x5BDBD7 hoi4 = 7001 } # STATE_TRANSJORDAN -> Zarqa
 	link = { vic3 = xC2B483 hoi4 = 7170 } # al-Salt [city] -> Irbid
-	link = { vic3 = x60D0E0 hoi4 = 10089 } # Tafilah [wood] -> Kerak
 	link = { vic3 = x47B037 hoi4 = 1 } # x47B037 -> (Lake)
 	link = { comment = "* * STATE_PALESTINE " }
 	link = { vic3 = xE0D060 hoi4 = 1015 } # STATE_PALESTINE -> land
@@ -4560,11 +4560,10 @@
 	link = { vic3 = xD1C9DA vic3 = xCB0113 hoi4 = 12442 } # STATE_SYRIA, Salamiyah [wood] -> Tadmor
 	link = { vic3 = x3E0347 vic3 = x499A08 hoi4 = 7184 } # STATE_SYRIA, STATE_SYRIA -> land
 	link = { comment = "* * STATE_ALEPPO " }
-	link = { vic3 = x7125D6 vic3 = x19152C hoi4 = 6883 } # STATE_ALEPPO, STATE_DEIR_EZ_ZOR -> Aïn al-Arab
-	link = { vic3 = x7A47D7 vic3 = xECD96B hoi4 = 7671 } # Aleppo [city], STATE_ALEPPO -> Manbij
-	link = { vic3 = x619060 hoi4 = 10087 } # Tartus [port][farm] -> Tartous
-	link = { vic3 = xE01160 vic3 = x14AB01 hoi4 = 12029 hoi4 = 1088 } # MANY-TO-MANY: Antioch [mine], Alexandretta [wood] -> Antioche, Lattaquié
-	link = { vic3 = x7B5D3F hoi4 = 12473 } # STATE_ALEPPO -> Alep
+	link = { vic3 = xECD96B vic3 = x68D9E3 vic3 = x7125D6 hoi4 = 7671 } # STATE_ALEPPO, STATE_ALEPPO, STATE_ALEPPO -> Manbij
+	link = { vic3 = x619060 hoi4 = 10087 hoi4 = 1088 } # Tartus [port][farm] -> Tartous, Lattaquié
+	link = { vic3 = xE01160 vic3 = x14AB01 hoi4 = 12029 } # Antioch [mine], Alexandretta [wood] -> Antioche
+	link = { vic3 = x7B5D3F vic3 = x7A47D7 hoi4 = 12473 } # STATE_ALEPPO, Aleppo [city] -> Alep
 	link = { comment = "* * STATE_BAGHDAD " }
 	link = { vic3 = x50D95C vic3 = xDC55AB vic3 = x54DF0B hoi4 = 1600 } # STATE_BAGHDAD, STATE_BAGHDAD, STATE_BAGHDAD -> Tikrit
 	link = { vic3 = xA4A407 hoi4 = 2097 } # STATE_BAGHDAD -> Baghdad
@@ -4589,7 +4588,8 @@
 	link = { vic3 = x849047 vic3 = xA6B14C hoi4 = 901 } # Deir [city], STATE_DEIR_EZ_ZOR -> Hajine
 	link = { vic3 = x205956 vic3 = xCE5C9A vic3 = x56095E hoi4 = 1549 } # STATE_DEIR_EZ_ZOR, STATE_DEIR_EZ_ZOR, STATE_DEIR_EZ_ZOR -> Kamychli
 	link = { vic3 = x97B814 hoi4 = 1578 } # Ras al-Ayn [farm] -> Ras al-Aïn
-	link = { vic3 = x68D9E3 vic3 = x1ECFDA vic3 = x6BDF5C hoi4 = 1606 } # STATE_ALEPPO, Raqqa [wood], STATE_DEIR_EZ_ZOR -> Raqqa
+	link = { vic3 = x19152C hoi4 = 6883 } # STATE_DEIR_EZ_ZOR -> Aïn al-Arab
+	link = { vic3 = x1ECFDA vic3 = x6BDF5C hoi4 = 1606 } # Raqqa [wood], STATE_DEIR_EZ_ZOR -> Raqqa
 	link = { vic3 = x24B968 vic3 = x9A097B hoi4 = 1634 } # STATE_DEIR_EZ_ZOR, STATE_DEIR_EZ_ZOR -> Madan
 	link = { vic3 = xE67DB6 vic3 = xBD22F1 vic3 = x246A9F vic3 = x0D20D8 hoi4 = 1938 } # STATE_DEIR_EZ_ZOR, STATE_DEIR_EZ_ZOR, STATE_DEIR_EZ_ZOR, STATE_DEIR_EZ_ZOR -> land
 	link = { vic3 = x519F26 vic3 = xF5D646 vic3 = xC414B6 hoi4 = 2013 } # Abu Kamal [mine], STATE_DEIR_EZ_ZOR, STATE_DEIR_EZ_ZOR -> Mayadine
@@ -4604,7 +4604,7 @@
 	link = { vic3 = x7CAD29 vic3 = x93CB74 vic3 = xBE6A23 vic3 = x1CC9CC vic3 = xDB6370 hoi4 = 12726 } # Nasiriya [wood], STATE_BASRA, STATE_BASRA, STATE_BASRA, STATE_BASRA -> An-Nasiriyah
 	link = { comment = "* * STATE_FARS " }
 	link = { vic3 = x37295A vic3 = x672217 vic3 = x6F0F7C hoi4 = 4928 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN -> Yasuj
-	link = { vic3 = x6375B3 vic3 = x89054E vic3 = x898FBC vic3 = xFDAFF4 vic3 = x75053B vic3 = xF033FA vic3 = x879264 vic3 = xB5A598 hoi4 = 4966 } # STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS, STATE_KERMAN, STATE_FARS, STATE_FARS, Abadeh [mine] -> Abadeh
+	link = { vic3 = x6375B3 vic3 = x89054E vic3 = x898FBC vic3 = xFDAFF4 vic3 = xB5A598 vic3 = xF033FA vic3 = x879264 hoi4 = 4966 } # STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS, Abadeh [mine], STATE_FARS, STATE_FARS -> Abadeh
 	link = { vic3 = x4AB629 vic3 = x8030DF vic3 = xEB15EE vic3 = x00B0DF vic3 = x80B060 hoi4 = 5089 } # STATE_FARS, Ardakan [wood], STATE_FARS, STATE_FARS, STATE_FARS -> Behbahan
 	link = { vic3 = x077437 vic3 = x2A39A6 vic3 = x5FE0AF vic3 = xF29735 vic3 = x95A3F5 vic3 = xB1591C hoi4 = 8031 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN -> Yazd
 	link = { vic3 = x35A806 vic3 = x3C79B5 vic3 = x8D9D57 vic3 = x95EAC4 vic3 = xEB8219 vic3 = xB9E770 vic3 = x20B506 vic3 = x759BE2 hoi4 = 8117 } # STATE_FARS, STATE_FARS, STATE_FARS, Shiraz [city], STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS -> Shiraz
@@ -4618,7 +4618,7 @@
 	link = { vic3 = x3FA81D vic3 = xB80596 vic3 = x517637 hoi4 = 12832 } # STATE_LARISTAN, STATE_LARISTAN, STATE_LARISTAN -> Jahrom
 	link = { vic3 = xA54E11 vic3 = xF14D58 vic3 = x407020 hoi4 = 12863 } # Bandar Abbas [city], STATE_LARISTAN, STATE_LARISTAN -> Baft
 	link = { comment = "* * STATE_KERMAN " }
-	link = { vic3 = x124E6F vic3 = x8D0125 vic3 = xF4E18B vic3 = x5E1734 vic3 = x39E6FA vic3 = xD4E165 hoi4 = 12780 } # STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN -> Rafsanjan
+	link = { vic3 = x124E6F vic3 = x8D0125 vic3 = xF4E18B vic3 = x5E1734 vic3 = x39E6FA vic3 = xD4E165 vic3 = x75053B hoi4 = 12780 } # STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN -> Rafsanjan
 	link = { vic3 = x5D2CF2 vic3 = x6DDC3B vic3 = x80F020 vic3 = xE9C86A vic3 = x83424B vic3 = xF6D834 vic3 = x2E57B1 hoi4 = 10913 } # STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN -> Kerman
 	link = { vic3 = x159AB3 vic3 = x177599 vic3 = x5293C9 vic3 = x9869E8 vic3 = x99F186 vic3 = xAFF45C vic3 = xCCDD76 vic3 = xE862E9 hoi4 = 11249 } # STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN -> Zarand
 	link = { vic3 = x648853 vic3 = x901598 vic3 = xD73959 vic3 = xF8EBE8 vic3 = xFF73DA vic3 = xB55662 vic3 = x48E7B8 vic3 = x1E9374 vic3 = xEADB0F hoi4 = 12809 } # STATE_KERMAN, Kerman [city][wood][farm][mine], STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN, STATE_KERMAN -> land
@@ -4682,7 +4682,7 @@
 	link = { vic3 = x018E23 vic3 = x2B1395 hoi4 = 1896 } # STATE_TABRIZ, Tabriz [city] -> Tabriz
 	link = { vic3 = x04D39A vic3 = x211111 vic3 = xDC46D1 hoi4 = 2071 } # STATE_TABRIZ, STATE_TABRIZ, STATE_TABRIZ -> Takab
 	link = { vic3 = x6050A0 vic3 = xC5BF2C vic3 = xFF325A vic3 = xBF30DF hoi4 = 4553 } # STATE_TABRIZ, STATE_TABRIZ, STATE_TABRIZ, STATE_TABRIZ -> Zanjan
-	link = { vic3 = x264C9D vic3 = x63528E vic3 = x9B1366 vic3 = xC277FE hoi4 = 4755 } # STATE_TABRIZ, STATE_TABRIZ, Khoy [farm], Zanjan [mine] -> Marand
+	link = { vic3 = x264C9D vic3 = x63528E vic3 = xC277FE hoi4 = 4755 } # STATE_TABRIZ, STATE_TABRIZ, Zanjan [mine] -> Marand
 	link = { vic3 = x102BCB vic3 = x2C653E vic3 = xC8C637 hoi4 = 4825 } # STATE_TABRIZ, STATE_TABRIZ, STATE_TABRIZ -> Ahar
 	link = { vic3 = x7417A0 hoi4 = 4901 } # STATE_MAZANDARAN -> Ardabil
 	link = { vic3 = xA010DF vic3 = xADF8DB hoi4 = 7604 } # Salmas [wood], Urmia [city] -> Orumiyeh
@@ -4692,7 +4692,7 @@
 	link = { vic3 = x2281CB vic3 = x780DBA hoi4 = 12861 } # STATE_TABRIZ, Maragheh [farm] -> Maragheh
 	link = { vic3 = x15FECC hoi4 = 13120 } # x15FECC -> (Lake)
 	link = { comment = "* * STATE_URMIA " }
-	link = { vic3 = x0256AF vic3 = x7F1958 hoi4 = 1636 } # Maku [mine], STATE_URMIA -> Khuy
+	link = { vic3 = x0256AF vic3 = x7F1958 vic3 = x9B1366 hoi4 = 1636 } # Maku [mine], STATE_URMIA, Khoy [farm] -> Khuy
 	link = { vic3 = x80B0A0 vic3 = xB0C672 vic3 = xCCA63F hoi4 = 1822 } # STATE_URMIA, STATE_URMIA, STATE_URMIA -> Mahabad
 	link = { comment = "* * STATE_LURISTAN " }
 	link = { vic3 = xBC8ADC vic3 = xBDD368 vic3 = xC3A894 hoi4 = 829 } # STATE_LURISTAN, Borujerd [farm], STATE_LURISTAN -> Ilam
@@ -4799,8 +4799,7 @@
 	link = { vic3 = x4DA0F1 vic3 = x7DD48B hoi4 = 3921 } # STATE_ADANA, STATE_ADANA -> Afsin
 	link = { vic3 = xE8DCC5 hoi4 = 4124 } # Silifke [farm] -> Silifke
 	link = { vic3 = xF657D8 hoi4 = 6813 } # Aintab [wood] -> Kahramanmaras
-	link = { vic3 = x39CBF7 vic3 = xF470A0 hoi4 = 6888 } # STATE_ADANA, STATE_ANKARA -> Sariz
-	link = { vic3 = x63E9DB hoi4 = 6956 } # STATE_ADANA -> Kozan
+	link = { vic3 = x63E9DB vic3 = x39CBF7 hoi4 = 6956 } # STATE_ADANA, STATE_ADANA -> Kozan
 	link = { vic3 = xA09060 hoi4 = 7026 } # STATE_ADANA -> Anamur
 	link = { vic3 = xDAD836 hoi4 = 9893 } # STATE_ADANA -> Gaziantep
 	link = { vic3 = xFA9C84 hoi4 = 10056 } # STATE_ADANA -> Mersin
@@ -4827,9 +4826,8 @@
 	link = { vic3 = x31B08C vic3 = xF51B98 hoi4 = 7470 } # STATE_ERZURUM, STATE_ERZURUM -> Ercis
 	link = { vic3 = x81F589 vic3 = x8F5A6A hoi4 = 9858 } # STATE_ERZURUM, STATE_ERZURUM -> Mus
 	link = { vic3 = x669A31 hoi4 = 9868 } # STATE_ERZURUM -> Erzincan
-	link = { vic3 = x795751 vic3 = x90BA49 vic3 = x52EB9A hoi4 = 9954 } # STATE_ERZURUM, STATE_ERZURUM, STATE_ERZURUM -> Tercan
+	link = { vic3 = x795751 vic3 = x90BA49 vic3 = x52EB9A vic3 = xC01080 hoi4 = 9954 } # STATE_ERZURUM, STATE_ERZURUM, STATE_ERZURUM, Erzincan [mine] -> Tercan
 	link = { vic3 = x7BC870 hoi4 = 10399 } # Mush [wood] -> Solhan
-	link = { vic3 = xC01080 vic3 = x8713CE hoi4 = 11797 } # Erzincan [mine], STATE_ANKARA -> Pülümür
 	link = { vic3 = x5C223C hoi4 = 11880 } # STATE_ERZURUM -> Bulanik
 	link = { vic3 = x409080 vic3 = xA23F9A vic3 = xC7DC49 hoi4 = 12318 } # STATE_ERZURUM, STATE_ERZURUM, STATE_ERZURUM -> Tatvan
 	link = { vic3 = x60677E hoi4 = 12376 } # STATE_ERZURUM -> Karaköse 
@@ -4846,12 +4844,14 @@
 	link = { vic3 = x5F00C0 hoi4 = 6871 hoi4 = 9806 hoi4 = 6808 } # STATE_ANKARA -> Gevye, Kizilcahamam, Alpu
 	link = { vic3 = x30A0E0 hoi4 = 3907 } # STATE_ANKARA -> Polatli
 	link = { vic3 = xC29DFD hoi4 = 3935 } # STATE_ANKARA -> Erbaa
+	link = { vic3 = x8713CE hoi4 = 11797 } # STATE_ANKARA -> Pülümür
 	link = { vic3 = x964F97 vic3 = xCB8C83 hoi4 = 3950 } # STATE_ANKARA, STATE_ANKARA -> Zara
 	link = { vic3 = x5D2F75 hoi4 = 3862 } # STATE_ANKARA -> Yozgat
 	link = { vic3 = x785849 hoi4 = 3964 } # STATE_ANKARA -> Akdagmadeni
 	link = { vic3 = xE17847 hoi4 = 6908 } # STATE_ANKARA -> Çubuk
 	link = { vic3 = x098D9C hoi4 = 6925 } # STATE_ANKARA -> Balâ
 	link = { vic3 = x465D69 vic3 = x62FAA8 vic3 = x1A75C7 hoi4 = 6950 } # STATE_ANKARA, STATE_ANKARA, STATE_ANKARA -> Koyulhisar
+	link = { vic3 = xF470A0 hoi4 = 6888 } # STATE_ANKARA -> Sariz
 	link = { vic3 = x431F60 hoi4 = 6977 } # STATE_ANKARA -> Sarkisla
 	link = { vic3 = xB556A0 hoi4 = 6978 } # STATE_ANKARA -> Boyabat
 	link = { vic3 = x401080 hoi4 = 9761 } # STATE_ANKARA -> Ulas
