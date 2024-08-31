@@ -5263,20 +5263,20 @@
 	link = { vic3 = x079122 vic3 = x1D347B vic3 = x3ABF14 vic3 = x46B9A4 vic3 = x5118D9 vic3 = x98B829 vic3 = xAF48A8 vic3 = xBB32F7 vic3 = xEC6359 vic3 = xEC796C hoi4 = 2093 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Nyima
 	link = { vic3 = x1CFF92 vic3 = xAD51C7 vic3 = xC26410 vic3 = xCA37D3 vic3 = xD131AF vic3 = xF43E98 vic3 = x4E0F52 vic3 = x47086E hoi4 = 5011 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> land
 	link = { vic3 = x0AF6C3 vic3 = x11E671 vic3 = x14902D vic3 = x3CB9E1 vic3 = x5B57ED vic3 = x712371 vic3 = x91C023 vic3 = x93B8A1 vic3 = x971123 vic3 = xF52146 vic3 = xCA8101 hoi4 = 5094 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> land
-	link = { vic3 = x2D753F vic3 = x3F866E vic3 = x51AF41 vic3 = x55DF74 vic3 = x85C67F vic3 = xC2996A vic3 = xC66B24 vic3 = xCB9F59 vic3 = xEC9086 vic3 = xFB8251 vic3 = x95F294 vic3 = x8F8A0A hoi4 = 8029 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Burang
+	link = { vic3 = x2D753F vic3 = x3F866E vic3 = x51AF41 vic3 = x55DF74 vic3 = x85C67F vic3 = xC2996A vic3 = xC66B24 vic3 = xCB9F59 vic3 = xEC9086 vic3 = xFB8251 vic3 = x95F294 vic3 = x8F8A0A vic3 = x1EE05B hoi4 = 8029 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Burang
 	link = { vic3 = x0A15CB vic3 = x376EF5 vic3 = x57E79A vic3 = x76854B vic3 = x834650 vic3 = xAE2370 vic3 = xD0DEBB vic3 = x7E6B07 vic3 = x5F0A6B hoi4 = 8068 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> land
 	link = { vic3 = x2EED68 vic3 = x63CF7D vic3 = x6A1D9E vic3 = xCE4141 vic3 = x020A13 vic3 = x18089F hoi4 = 8121 } # STATE_NGARI, Lhatse [mine], STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Namling
 	link = { vic3 = x1F1D7F vic3 = x2DCE44 vic3 = x347CA5 vic3 = x79ACD9 vic3 = x7F19F5 vic3 = xA070A0 vic3 = xC39437 vic3 = xE03D5D vic3 = xE4D2EB vic3 = xE89BB3 vic3 = xF2DD04 vic3 = xBF3208 vic3 = x390A85 vic3 = xF33F0A vic3 = xBFC102 vic3 = x245D66 vic3 = x4CA3AB hoi4 = 10755 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Co Nyi
-	link = { vic3 = x0E4CEA vic3 = x41CAED vic3 = x466E81 vic3 = x519C2B vic3 = x606587 vic3 = xDB6487 vic3 = xEC346C vic3 = xFF92B9 vic3 = xA16534 vic3 = x6DC955 vic3 = xDB00C4 vic3 = xCC4CCB hoi4 = 10802 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Sênggêkanbab
+	link = { vic3 = x0E4CEA vic3 = x41CAED vic3 = x466E81 vic3 = x519C2B vic3 = x606587 vic3 = xEC346C vic3 = xFF92B9 vic3 = xA16534 vic3 = x6DC955 vic3 = xDB00C4 vic3 = xCC4CCB hoi4 = 10802 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Sênggêkanbab
 	link = { vic3 = x23C36A vic3 = xAF11F0 vic3 = x920B51 hoi4 = 10910 } # STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Pokhara
 	link = { vic3 = x068080 vic3 = x59FA24 vic3 = x69B840 vic3 = x6E1A6F vic3 = x8847CC vic3 = x8A52C8 vic3 = xAD3B3E vic3 = xB3B12D vic3 = xC7C56B vic3 = xC8A273 vic3 = xDCB233 vic3 = xF0E6C2 vic3 = xB1FB06 hoi4 = 12784 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Gê'gyai
 	link = { vic3 = x181275 vic3 = x1AA558 vic3 = x1F7ABA vic3 = x3F45B6 vic3 = x48393E vic3 = x49DA7A vic3 = x6C636E vic3 = x92D428 vic3 = xAFCD47 vic3 = xBA5131 vic3 = xDAA8C5 vic3 = xF7AD84 vic3 = x10A70E hoi4 = 12801 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Rutog
 	link = { vic3 = x1FF09F vic3 = x48F15F vic3 = x5D87C2 vic3 = x757EC9 vic3 = xB53246 vic3 = x0DDF07 vic3 = x87A015 hoi4 = 12807 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Lhatse
 	link = { comment = "* * STATE_HIMALAYAS " }
-	link = { vic3 = x11C815 vic3 = x4D5FC1 vic3 = x4DE9D5 vic3 = x605021 vic3 = x4874D9 hoi4 = 4386 } # STATE_HIMALAYAS, STATE_HIMALAYAS, Pokhara [mine], STATE_HIMALAYAS, STATE_HIMALAYAS -> Butwal
+	link = { vic3 = x11C815 vic3 = x4D5FC1 vic3 = x4DE9D5 vic3 = x605021 vic3 = x4874D9 vic3 = xC1C87A hoi4 = 4386 } # STATE_HIMALAYAS, STATE_HIMALAYAS, Pokhara [mine], STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Butwal
 	link = { vic3 = x2070E0 vic3 = xE0B0E0 hoi4 = 4435 } # STATE_HIMALAYAS, Gangktok [wood] -> Gangtok
 	link = { vic3 = x1619ED vic3 = xA228F8 vic3 = xC6D4A8 vic3 = xDA8130 hoi4 = 4987 } # Kathmandu [city], STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Kathmandu
-	link = { vic3 = x515E66 vic3 = xC1DA32 vic3 = xCE4DAE hoi4 = 5310 } # STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Biratnagar
+	link = { vic3 = x515E66 vic3 = xC1DA32 vic3 = xCE4DAE vic3 = xA5D1EB vic3 = x213060 hoi4 = 5310 } # STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Biratnagar
 	link = { vic3 = x25994F vic3 = x812FBE vic3 = xAF5B29 vic3 = xC13072 vic3 = xC6179B vic3 = x6E233E hoi4 = 7374 } # STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Mahendranagar
 	link = { vic3 = x388D2C vic3 = xDA7F32 vic3 = xD10C8F hoi4 = 8010 } # STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Punakha
 	link = { vic3 = x833D63 vic3 = xE18F72 hoi4 = 8082 } # STATE_HIMALAYAS, STATE_HIMALAYAS -> Lakhimpur
@@ -5298,6 +5298,7 @@
 	link = { vic3 = x01F1CD vic3 = x590FA7 hoi4 = 4459 } # STATE_BIHAR, STATE_BIHAR -> Muzaffarpur
 	link = { vic3 = x04D4E4 vic3 = x21B060 vic3 = x5FCB1C vic3 = x7FC191 hoi4 = 4516 } # STATE_BIHAR, Patna [city], STATE_BIHAR, STATE_BIHAR -> Patna
 	link = { vic3 = x9B7C7A hoi4 = 4544 } # Bhagalpur [mine] -> Bihar
+	link = { vic3 = x3521C5 hoi4 = 1656 } # STATE_BIHAR -> Araria
 	link = { vic3 = x172E64 vic3 = x5F1E9B hoi4 = 7475 } # STATE_BIHAR, STATE_BIHAR -> Purnea
 	link = { vic3 = x2DDA9A vic3 = x48B87D vic3 = xD5188D hoi4 = 7537 } # STATE_BIHAR, STATE_BIHAR, STATE_BIHAR -> Bhagalpur
 	link = { vic3 = x303EFE vic3 = x3DDDBF vic3 = xE0B0A0 hoi4 = 7593 } # STATE_BIHAR, STATE_BIHAR, STATE_BIHAR -> Asansol
@@ -5305,52 +5306,51 @@
 	link = { vic3 = x8B9115 vic3 = xAEDA4D hoi4 = 10361 } # STATE_BIHAR, Muzaffarpur [wood] -> Begusarai
 	link = { vic3 = x1C310A vic3 = xF4E206 hoi4 = 4571 } # STATE_BIHAR, STATE_BIHAR -> Gaya
 	link = { vic3 = xCEC816 vic3 = x534D04 hoi4 = 10471 } # STATE_BIHAR, STATE_BIHAR -> Medininagar
-	link = { vic3 = x951929 vic3 = xA5D1EB vic3 = xF767B3 hoi4 = 10878 } # STATE_BIHAR, STATE_HIMALAYAS, STATE_BIHAR -> Darbhanga
+	link = { vic3 = x951929 vic3 = xF767B3 hoi4 = 10878 } # STATE_BIHAR, STATE_BIHAR -> Darbhanga
 	link = { vic3 = xA462B0 vic3 = xABBB11 hoi4 = 12035 } # STATE_BIHAR, STATE_BIHAR -> Ranchi
 	link = { vic3 = x70BE78 vic3 = x79438B hoi4 = 12307 } # STATE_BIHAR, STATE_BIHAR -> Gumla
 	link = { vic3 = x50B0A0 vic3 = xBA3A4F hoi4 = 12452 } # STATE_BIHAR, STATE_BIHAR -> Dhanbad
 	link = { comment = "* * STATE_NORTH_BENGAL " }
-	link = { vic3 = x475FC4 vic3 = x9419F5 hoi4 = 1075 } # STATE_NORTH_BENGAL, STATE_ASSAM -> Agartala
 	link = { vic3 = x397092 hoi4 = 1609 } # STATE_NORTH_BENGAL -> Berhampore
-	link = { vic3 = x213060 vic3 = x3521C5 vic3 = xBF385A vic3 = xD2FEA1 hoi4 = 1656 } # STATE_HIMALAYAS, STATE_BIHAR, STATE_NORTH_BENGAL, STATE_NORTH_BENGAL -> Araria
 	link = { vic3 = x272AEE vic3 = xEF5060 hoi4 = 4204 } # STATE_NORTH_BENGAL, STATE_NORTH_BENGAL -> Bankura
 	link = { vic3 = x8F846C hoi4 = 4245 } # STATE_NORTH_BENGAL -> Calcutta
 	link = { vic3 = xD06FA1 vic3 = x30B0A0 hoi4 = 4616 } # STATE_NORTH_BENGAL, Pabna [wood] -> Pabna
-	link = { vic3 = x1DBB94 vic3 = xD0B0DF hoi4 = 7220 } # STATE_NORTH_BENGAL, STATE_SOUTH_BENGAL -> Kharagpur
-	link = { vic3 = x71E2DE vic3 = xE2E92B vic3 = xE6CD14 hoi4 = 7565 } # STATE_NORTH_BENGAL, STATE_NORTH_BENGAL, Rangpur [farm][mine] -> Balurghat
-	link = { vic3 = x408BEB vic3 = xDA53DA hoi4 = 7634 } # STATE_ASSAM, STATE_NORTH_BENGAL -> Karimganj
+	link = { vic3 = x1DBB94 hoi4 = 7220 } # STATE_NORTH_BENGAL -> Kharagpur
+	link = { vic3 = x71E2DE vic3 = xE2E92B vic3 = xE6CD14 vic3 = xD2FEA1 hoi4 = 7565 } # STATE_NORTH_BENGAL, STATE_NORTH_BENGAL, Rangpur [farm][mine], STATE_NORTH_BENGAL -> Balurghat
 	link = { vic3 = xF3A964 hoi4 = 7662 } # STATE_NORTH_BENGAL -> Rajshahi
-	link = { vic3 = xAC2CB6 vic3 = x3E5D45 vic3 = x0C82AB hoi4 = 9993 } # STATE_NORTH_BENGAL, STATE_NORTH_BENGAL, STATE_NORTH_BENGAL -> Tangail
+	link = { vic3 = xAC2CB6 vic3 = x3E5D45 vic3 = xCB5C0A hoi4 = 9993 } # STATE_NORTH_BENGAL, STATE_NORTH_BENGAL, STATE_NORTH_BENGAL -> Tangail
 	link = { vic3 = x82150A hoi4 = 4644 } # STATE_NORTH_BENGAL -> Durgapur
 	link = { vic3 = x89538D hoi4 = 10077 } # Jamshedpur [city] -> Burdwan
-	link = { vic3 = xF04684 hoi4 = 10389 } # STATE_NORTH_BENGAL -> Rangpur
+	link = { vic3 = xF04684 vic3 = x13A493 vic3 = x844FCF vic3 = xBF385A hoi4 = 10389 } # STATE_NORTH_BENGAL, STATE_NORTH_BENGAL, STATE_NORTH_BENGAL, STATE_NORTH_BENGAL -> Rangpur
 	link = { vic3 = xD28E5F hoi4 = 10443 } # STATE_NORTH_BENGAL -> Bogra
-	link = { vic3 = xD2E951 vic3 = x117060 vic3 = xCB5C0A hoi4 = 11929 } # STATE_NORTH_BENGAL, STATE_NORTH_BENGAL, STATE_NORTH_BENGAL -> Dacca
-	link = { vic3 = x13A493 vic3 = x2FF791 vic3 = x844FCF hoi4 = 12338 } # STATE_NORTH_BENGAL, STATE_NORTH_BENGAL, STATE_NORTH_BENGAL -> Dacca
+	link = { vic3 = xD2E951 vic3 = x117060 hoi4 = 11929 } # STATE_NORTH_BENGAL, STATE_NORTH_BENGAL -> Dacca
+	link = { vic3 = x2FF791 hoi4 = 12338 } # STATE_NORTH_BENGAL -> Dacca
 	link = { comment = "* * STATE_ASSAM " }
 	link = { vic3 = x5D1160 vic3 = xD9940E hoi4 = 997 } # STATE_ASSAM, STATE_ASSAM -> Lunglei
 	link = { vic3 = x86D527 vic3 = x954C46 hoi4 = 10416 } # STATE_ASSAM, STATE_ASSAM -> Jamalpur
-	link = { vic3 = x1D0302 vic3 = x17E33F vic3 = x0BB5E2 hoi4 = 12423 } # STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Mymensingh
-	link = { vic3 = x12647B vic3 = x70069E hoi4 = 1497 } # STATE_ASSAM, STATE_ASSAM -> Tura
+	link = { vic3 = x0C82AB vic3 = x475FC4 hoi4 = 12423 } # STATE_NORTH_BENGAL, STATE_NORTH_BENGAL -> Mymensingh
+	link = { vic3 = x12647B vic3 = x70069E vic3 = x17E33F vic3 = x0BB5E2 vic3 = x1D0302 hoi4 = 1497 } # STATE_ASSAM, STATE_ASSAM, STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Tura
 	link = { vic3 = x3FD07D vic3 = xF71958 vic3 = x344BF5 hoi4 = 12322 } # Dibrugarh [mine], STATE_ASSAM, STATE_ASSAM -> Dibrugarh
 	link = { vic3 = x1B997A vic3 = xCC2DA0 vic3 = x9700B9 hoi4 = 1525 } # STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Jorhat
 	link = { vic3 = x8F90F5 vic3 = xB238B2 vic3 = xE101DA vic3 = x6030DF hoi4 = 1553 } # STATE_ASSAM, STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Kohima
 	link = { vic3 = x8C53B3 vic3 = xB03121 vic3 = xA17DC4 vic3 = xCB0893 hoi4 = 1581 } # STATE_ASSAM, STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Imphal
 	link = { vic3 = x47C5A9 hoi4 = 4454 } # STATE_KACHIN -> Tedim
+	link = { vic3 = x9419F5 hoi4 = 1075 } # STATE_ASSAM -> Agartala
+	link = { vic3 = x408BEB hoi4 = 7634 } # STATE_ASSAM -> Karimganj
 	link = { vic3 = x337820 vic3 = xC6301B vic3 = xF3B09A hoi4 = 10090 } # STATE_ASSAM, Aizawl [city], STATE_ASSAM -> Aizawl
 	link = { vic3 = x30B15A vic3 = x8C6C79 hoi4 = 10514 } # Imphal [farm], STATE_ASSAM -> Silchar
 	link = { vic3 = x4803C7 vic3 = xA458FC vic3 = xFB1561 hoi4 = 12366 } # STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Gauhati
-	link = { vic3 = x3D8CD6 vic3 = x9A1864 vic3 = xF9B21B vic3 = x4CCA97 hoi4 = 12395 } # STATE_ASSAM, Guwahati [wood], STATE_ASSAM, STATE_ASSAM -> Shillong
-	link = { vic3 = xA030E0 vic3 = xA77996 hoi4 = 13208 } # STATE_ASSAM, STATE_ASSAM -> Sylhet
+	link = { vic3 = x3D8CD6 vic3 = x9A1864 vic3 = xF9B21B vic3 = x4CCA97 vic3 = xA030E0 vic3 = xA77996 hoi4 = 12395 } # STATE_ASSAM, Guwahati [wood], STATE_ASSAM, STATE_ASSAM, STATE_ASSAM, STATE_ASSAM -> Shillong
+	link = { vic3 = xDA53DA hoi4 = 13208 } # STATE_NORTH_BENGAL -> Sylhet
 	link = { comment = "* * STATE_DELHI " }
-	link = { vic3 = x1EE05B vic3 = x6B646E vic3 = xE77282 hoi4 = 1898 } # STATE_NGARI, STATE_DELHI, STATE_DELHI -> Pithoragarh
-	link = { vic3 = x0C25D9 vic3 = x1EA5F8 vic3 = x947B18 vic3 = xA0F0A0 hoi4 = 2002 } # STATE_PUNJAB, STATE_DELHI, STATE_DELHI, STATE_PUNJAB -> Bhatinda
+	link = { vic3 = x6B646E vic3 = xE77282 hoi4 = 1898 } # STATE_DELHI, STATE_DELHI -> Pithoragarh
+	link = { vic3 = x1EA5F8 vic3 = x947B18 hoi4 = 2002 } # STATE_DELHI, STATE_DELHI -> Bhatinda
 	link = { vic3 = x1DC68F vic3 = x45756F vic3 = x4E70D0 hoi4 = 2032 } # STATE_DELHI, STATE_DELHI, STATE_DELHI -> Panipat
 	link = { vic3 = xB39D42 vic3 = xB949B4 vic3 = xE0EFA0 hoi4 = 2086 } # STATE_DELHI, STATE_DELHI, Delhi [city] -> Delhi
 	link = { vic3 = xAD283F vic3 = xE3A5A5 hoi4 = 3989 } # STATE_DELHI, STATE_DELHI -> land
 	link = { vic3 = x13E50E vic3 = xFB8F08 hoi4 = 4915 } # Aligarh [wood], STATE_DELHI -> Alwar
 	link = { vic3 = x11EE65 vic3 = xA4A19F vic3 = xCF1974 hoi4 = 5002 } # STATE_DELHI, STATE_DELHI, STATE_DELHI -> Muradabad
-	link = { vic3 = x4E8563 vic3 = x99FE9A hoi4 = 5086 } # STATE_DELHI, STATE_DELHI -> Agra
+	link = { vic3 = x4E8563 vic3 = x99FE9A vic3 = xF37EE6 hoi4 = 5086 } # STATE_DELHI, STATE_DELHI, STATE_DELHI -> Agra
 	link = { vic3 = x03A411 vic3 = x51177D vic3 = xF15B70 vic3 = xFBA109 hoi4 = 5157 } # STATE_DELHI, STATE_DELHI, STATE_DELHI, STATE_DELHI -> Dehradun
 	link = { vic3 = xB050DF vic3 = xC26B82 vic3 = xDCAA17 hoi4 = 9951 } # Bareilly [mine], STATE_DELHI, STATE_DELHI -> Sambhal
 	link = { vic3 = x037AF5 vic3 = x584C9B vic3 = x733AB7 vic3 = x49337F hoi4 = 10021 } # STATE_DELHI, STATE_DELHI, STATE_DELHI, STATE_DELHI -> Haldwani
@@ -5360,26 +5360,27 @@
 	link = { comment = "* * STATE_AWADH " }
 	link = { vic3 = x0CE121 vic3 = x4E84EF vic3 = x669ECB hoi4 = 1377 } # STATE_AWADH, STATE_AWADH, STATE_AWADH -> Harodi
 	link = { vic3 = x9EA436 vic3 = xD99008 vic3 = x1405D1 hoi4 = 1983 } # STATE_AWADH, Gorakhpur [mine], STATE_AWADH -> Bahraich
-	link = { vic3 = x26284F vic3 = x4333C1 vic3 = xEC8496 hoi4 = 2005 } # STATE_AWADH, STATE_AWADH, STATE_AWADH -> Mirzapur
+	link = { vic3 = x117021 hoi4 = 7938 } # Allahabad [city] -> Allahabad
+	link = { vic3 = x26284F vic3 = x4333C1 vic3 = xEC8496 vic3 = xD0B0A0 vic3 = x4020A0 hoi4 = 2005 } # STATE_AWADH, STATE_AWADH, STATE_AWADH, STATE_AWADH, STATE_AWADH -> Mirzapur
 	link = { vic3 = x048AD9 vic3 = x277419 vic3 = x52F672 vic3 = x6738CF hoi4 = 4045 } # STATE_AWADH, STATE_AWADH, STATE_AWADH, STATE_AWADH -> Jhansi
 	link = { vic3 = xACD960 vic3 = xBBC0A2 hoi4 = 8114 } # STATE_AWADH, STATE_AWADH -> Bareilly
 	link = { vic3 = x41D87C hoi4 = 4299 } # STATE_AWADH -> Lucknow
-	link = { vic3 = x63AA19 vic3 = xDC471F vic3 = xE81D4F vic3 = xEB50A4 hoi4 = 5040 } # STATE_AWADH, STATE_AWADH, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Chhatarpur
+	link = { vic3 = x63AA19 vic3 = xDC471F hoi4 = 5040 } # STATE_AWADH, STATE_AWADH -> Chhatarpur
 	link = { vic3 = xBF1DC0 vic3 = xE070A0 hoi4 = 5055 } # STATE_AWADH, STATE_AWADH -> Fatehpur
-	link = { vic3 = xA3C721 vic3 = xC1C87A vic3 = xC8BC69 hoi4 = 7064 } # STATE_AWADH, STATE_HIMALAYAS, STATE_AWADH -> Gorakhpur
+	link = { vic3 = xA3C721 vic3 = xC8BC69 hoi4 = 7064 } # STATE_AWADH, STATE_AWADH -> Gorakhpur
 	link = { vic3 = xBEE076 hoi4 = 7334 } # STATE_AWADH -> Siwan
 	link = { vic3 = x564B78 vic3 = xFD9E2F vic3 = x43F651 hoi4 = 9973 } # STATE_AWADH, STATE_AWADH, STATE_AWADH -> Faizabad
-	link = { vic3 = x4020A0 vic3 = x845EA7 vic3 = xD0B0A0 vic3 = xD0F986 hoi4 = 10332 } # STATE_AWADH, STATE_CENTRAL_INDIA, STATE_AWADH, STATE_CENTRAL_INDIA -> Satna
+	link = { vic3 = x845EA7 vic3 = xD0F986 vic3 = x618D5B hoi4 = 10332 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Satna
 	link = { vic3 = x4AAE9F vic3 = xA03160 vic3 = x7F01B0 hoi4 = 10751 } # STATE_AWADH, STATE_AWADH, STATE_AWADH -> Mau
 	link = { vic3 = x61F0A0 vic3 = x7D8325 vic3 = x923D4D vic3 = xB4FE19 hoi4 = 12137 } # STATE_AWADH, STATE_AWADH, STATE_AWADH, Kanpur [farm] -> Cawnpore
 	link = { vic3 = x337F6C vic3 = x7D9692 hoi4 = 12777 } # STATE_AWADH, Lucknow [wood] -> Unnao
 	link = { vic3 = x63A78D hoi4 = 12786 } # STATE_AWADH -> Benares
 	link = { comment = "* * STATE_GUJARAT " }
 	link = { vic3 = x8F568D vic3 = xC0310F vic3 = xEB6009 hoi4 = 1061 } # STATE_GUJARAT, STATE_GUJARAT, STATE_GUJARAT -> Rapar
-	link = { vic3 = xD8CEF7 vic3 = xE0B020 vic3 = xEB1229 hoi4 = 1103 } # STATE_GUJARAT, STATE_RAJPUTANA, STATE_GUJARAT -> Mahesana
+	link = { vic3 = xD8CEF7 vic3 = xEB1229 hoi4 = 1103 } # STATE_GUJARAT, STATE_GUJARAT -> Mahesana
 	link = { vic3 = x0A4C7A vic3 = x49DDB8 vic3 = xC7C3FD hoi4 = 1144 } # STATE_GUJARAT, STATE_GUJARAT, STATE_GUJARAT -> Surendranagar
 	link = { vic3 = xB05060 vic3 = xB89EF0 hoi4 = 1190 } # Bhuj [wood], STATE_GUJARAT -> Bhuj
-	link = { vic3 = x425430 vic3 = x73656F vic3 = xD31590 hoi4 = 4064 } # STATE_RAJPUTANA, STATE_GUJARAT, STATE_GUJARAT -> Patan
+	link = { vic3 = x73656F vic3 = xD31590 hoi4 = 4064 } # STATE_GUJARAT, STATE_GUJARAT -> Patan
 	link = { vic3 = x075A8E vic3 = xB3D1CD hoi4 = 4090 } # STATE_GUJARAT, Porbandar [port] -> Junagadh
 	link = { vic3 = x0C6CB1 vic3 = x30D060 vic3 = x697511 vic3 = xB11F7B hoi4 = 4132 } # STATE_GUJARAT, STATE_GUJARAT, STATE_GUJARAT, STATE_GUJARAT -> Bhaunagar
 	link = { vic3 = xF01160 vic3 = x7E0401 vic3 = x31D0E0 hoi4 = 4187 } # STATE_GUJARAT, STATE_GUJARAT, Surat [farm] -> Navsari
@@ -5398,24 +5399,23 @@
 	link = { vic3 = x6A8538 vic3 = xCD2556 vic3 = xDCAFE4 hoi4 = 2036 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Shivpuri
 	link = { vic3 = x585F79 vic3 = xEFD0DF hoi4 = 2105 } # Indore [city], STATE_CENTRAL_INDIA -> Indore
 	link = { vic3 = x746A39 vic3 = xA9E591 vic3 = xC0F1B9 hoi4 = 4106 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Ujjain
-	link = { vic3 = x355332 vic3 = x907021 vic3 = xFE11FD vic3 = xBC06E9 hoi4 = 4410 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, Rewa [mine] -> Damoh
+	link = { vic3 = x355332 vic3 = x907021 vic3 = xFE11FD vic3 = xBC06E9 vic3 = xE81D4F vic3 = xEB50A4 vic3 = x114EAE hoi4 = 4410 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, Rewa [mine], STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Damoh
 	link = { vic3 = x19F551 vic3 = x6D9182 vic3 = xA14BC3 vic3 = xAD6D79 hoi4 = 4950 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Hoshangabad
 	link = { vic3 = x0D7633 vic3 = x5FEE46 vic3 = x68D277 vic3 = xEB362A vic3 = xDB0DEC hoi4 = 4953 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Sagar
 	link = { vic3 = x5272B3 vic3 = x6170A0 vic3 = x9E6DB9 hoi4 = 5096 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Lalitpur
 	link = { vic3 = xE3AF55 vic3 = x0A05FF hoi4 = 7080 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Baran
 	link = { vic3 = x26C3A2 vic3 = x4CA2A3 vic3 = x70D0E0 hoi4 = 7205 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Chopda
-	link = { vic3 = x114EAE vic3 = x117021 vic3 = x618D5B hoi4 = 7938 } # STATE_CENTRAL_INDIA, Allahabad [city], STATE_CENTRAL_INDIA -> Allahabad
 	link = { vic3 = x2A9BFB vic3 = x82DEEF vic3 = xB8A7B3 hoi4 = 8076 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Jhabua
 	link = { vic3 = x0E5FEA vic3 = xD0B021 hoi4 = 8120 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Bilaspur
 	link = { vic3 = x58E042 vic3 = x987B84 hoi4 = 10801 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Jabalpur
-	link = { vic3 = x87DE7B vic3 = xF37EE6 vic3 = xFBDCC9 hoi4 = 10807 } # STATE_CENTRAL_INDIA, STATE_DELHI, Gwalior [farm] -> Gwalior
+	link = { vic3 = x87DE7B vic3 = xFBDCC9 hoi4 = 10807 } # STATE_CENTRAL_INDIA, Gwalior [farm] -> Gwalior
 	link = { vic3 = x346A50 vic3 = xC77D13 hoi4 = 10816 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Shajapur
-	link = { vic3 = x10B021 vic3 = xAAE528 vic3 = xDA84A6 hoi4 = 10872 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_NAGPUR -> Burhanpur
+	link = { vic3 = x10B021 vic3 = xAAE528 hoi4 = 10872 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Burhanpur
 	link = { vic3 = x0E199B hoi4 = 11993 } # STATE_CENTRAL_INDIA -> Nandurbar
 	link = { vic3 = x51E979 vic3 = x983C0D hoi4 = 11995 } # Bhopal [wood], STATE_CENTRAL_INDIA -> Bhopal
 	link = { vic3 = xE9D03F vic3 = xFA701B hoi4 = 12080 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Dhar
-	link = { vic3 = x6E192A vic3 = xA06520 vic3 = xD93D0D vic3 = x1A0456 vic3 = x650D91 hoi4 = 12799 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Chhindwara
-	link = { vic3 = x8B8B4D vic3 = x9D79AD hoi4 = 12854 } # STATE_NAGPUR, STATE_CENTRAL_INDIA -> Seoni
+	link = { vic3 = x6E192A vic3 = xA06520 vic3 = xD93D0D vic3 = x1A0456 vic3 = x650D91 vic3 = x903020 hoi4 = 12799 } # STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA, STATE_CENTRAL_INDIA -> Chhindwara
+	link = { vic3 = x9D79AD hoi4 = 12854 } # STATE_CENTRAL_INDIA -> Seoni
 	link = { comment = "* * STATE_KASHMIR " }
 	link = { vic3 = x3FDA5A vic3 = x808216 vic3 = x874936 vic3 = xB0FE2D vic3 = xB4AA65 vic3 = xF8D822 vic3 = x963360 hoi4 = 1910 } # STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR -> Kotli
 	link = { vic3 = x07D342 vic3 = x43B99F vic3 = x6326A6 vic3 = xCDB7DB vic3 = xF28F90 hoi4 = 2041 } # STATE_KASHMIR, STATE_KASHMIR, Srinagar [city], STATE_KASHMIR, Kargil [mine] -> Skardu
@@ -5424,7 +5424,7 @@
 	link = { vic3 = x2D5D46 vic3 = x72F7C2 vic3 = x9666D9 vic3 = xAA60FC vic3 = xD25436 vic3 = xEDCC3E hoi4 = 8005 } # STATE_KASHMIR, STATE_KASHMIR, Leh [wood], STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR -> land
 	link = { vic3 = x964219 vic3 = xD71AAB vic3 = xF469BC vic3 = xD107A3 hoi4 = 10905 } # STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR -> Jammu
 	link = { vic3 = x217021 vic3 = xA875F3 vic3 = xCCD333 vic3 = xFD692B vic3 = x24EF26 hoi4 = 12754 } # STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR -> Pathankot
-	link = { vic3 = x18CED8 vic3 = x20771F vic3 = x2DDFDB vic3 = x6AA44A vic3 = xB637A4 vic3 = x21F020 hoi4 = 12884 } # STATE_KASHMIR, STATE_NGARI, STATE_KASHMIR, STATE_KASHMIR, Tashigang [farm], STATE_KASHMIR -> Kullu
+	link = { vic3 = x18CED8 vic3 = x2DDFDB vic3 = x6AA44A vic3 = xB637A4 vic3 = x21F020 hoi4 = 12884 } # STATE_KASHMIR, STATE_KASHMIR, STATE_KASHMIR, Tashigang [farm], STATE_KASHMIR -> Kullu
 	link = { comment = "* * STATE_PUNJAB " }
 	link = { vic3 = x12D43A vic3 = x767A66 vic3 = x91DEAB vic3 = x9B38C0 vic3 = xAA60D3 hoi4 = 1107 } # STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> Dera Ghazi Khan
 	link = { vic3 = xD52082 vic3 = xE0C455 vic3 = xE60F80 vic3 = xF202E0 hoi4 = 1129 } # STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> land
@@ -5439,9 +5439,9 @@
 	link = { vic3 = x50D414 vic3 = x713583 vic3 = x80F0E0 vic3 = xF58253 hoi4 = 10066 } # STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> Sahiwal
 	link = { vic3 = x8F5440 vic3 = xF8614B hoi4 = 10139 } # STATE_PUNJAB, STATE_PUNJAB -> Leiah
 	link = { vic3 = x97232F vic3 = xA0B0A0 vic3 = xCA5BC1 vic3 = xDB08EC hoi4 = 10173 } # STATE_PUNJAB, Islamabad [mine], STATE_PUNJAB, STATE_PUNJAB -> Chakwal
-	link = { vic3 = x394B7F vic3 = x5A5F96 vic3 = xA07020 hoi4 = 10729 } # STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> Ludhiana
+	link = { vic3 = x394B7F vic3 = x5A5F96 vic3 = xA07020 vic3 = x0C25D9 vic3 = xA0F0A0 hoi4 = 10729 } # STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> Ludhiana
 	link = { vic3 = x66C9D9 vic3 = xDB91D3 vic3 = xDEFFE6 hoi4 = 10772 } # STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> Firozpur
-	link = { vic3 = x19E5C0 vic3 = x84F1F8 vic3 = xB4E322 vic3 = xCA516D vic3 = xEFC3B4 hoi4 = 10843 } # Bahawalpur [farm], STATE_RAJPUTANA, STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> Bahawalpur
+	link = { vic3 = x19E5C0 vic3 = xB4E322 vic3 = xCA516D vic3 = xEFC3B4 hoi4 = 10843 } # Bahawalpur [farm], STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> Bahawalpur
 	link = { vic3 = xE0C4D2 vic3 = x9AB208 vic3 = x6C44CE hoi4 = 10887 } # STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> Gujranwala
 	link = { vic3 = x918140 vic3 = xCF602F vic3 = xD597DC hoi4 = 10898 } # STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> Rahim Yar Khan
 	link = { vic3 = x0EC528 vic3 = x4E722C vic3 = xCEAF5E vic3 = x280F05 hoi4 = 12005 } # STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB, STATE_PUNJAB -> Lahore
@@ -5451,20 +5451,20 @@
 	link = { vic3 = x022D2B hoi4 = 1971 } # STATE_PUNJAB -> Ghotki
 	link = { comment = "* * STATE_NAGPUR " }
 	link = { vic3 = x4A2157 hoi4 = 1510 } # STATE_NAGPUR -> Korba
-	link = { vic3 = x1622F2 vic3 = xBDB272 vic3 = xE1911A hoi4 = 1579 } # STATE_ORISSA, STATE_NAGPUR, STATE_NAGPUR -> Balangir
+	link = { vic3 = xBDB272 vic3 = xE1911A hoi4 = 1579 } # STATE_NAGPUR, STATE_NAGPUR -> Balangir
 	link = { vic3 = x013159 vic3 = x20BC2C hoi4 = 1622 } # Jagdalpur [farm], STATE_NAGPUR -> Kondagaon
 	link = { vic3 = x4B7422 vic3 = xF036D0 hoi4 = 4557 } # STATE_NAGPUR, STATE_NAGPUR -> Gadchiroli
-	link = { vic3 = x015F11 vic3 = x903020 vic3 = x96CDBD vic3 = xD51B8A hoi4 = 4883 } # STATE_NAGPUR, STATE_CENTRAL_INDIA, STATE_NAGPUR, STATE_NAGPUR -> Nagpur
+	link = { vic3 = x015F11 vic3 = x96CDBD vic3 = xD51B8A vic3 = x8B8B4D hoi4 = 4883 } # STATE_NAGPUR, STATE_NAGPUR, STATE_NAGPUR, STATE_NAGPUR -> Nagpur
 	link = { vic3 = x1170A0 vic3 = x8ECE82 vic3 = x2F70FB hoi4 = 7428 } # STATE_NAGPUR, STATE_NAGPUR, STATE_NAGPUR -> Malkangiri
 	link = { vic3 = x03614F vic3 = xE167A8 hoi4 = 7430 } # STATE_NAGPUR, STATE_NAGPUR -> Akola
 	link = { vic3 = x66F24C vic3 = xB56E8E vic3 = xF09DA1 hoi4 = 7465 } # STATE_NAGPUR, STATE_NAGPUR, STATE_NAGPUR -> Bade Bacheli
 	link = { vic3 = x6B7184 vic3 = x7884D6 vic3 = x4605A8 vic3 = x52001D hoi4 = 7497 } # STATE_NAGPUR, STATE_NAGPUR, Ambikapur [mine], STATE_NAGPUR -> Jashpurnagar
 	link = { vic3 = x78E85C vic3 = xE9111A hoi4 = 7574 } # STATE_NAGPUR, STATE_NAGPUR -> Mahasamund
 	link = { vic3 = x958AC3 vic3 = xCC1F79 vic3 = x9B0E9E hoi4 = 7619 } # STATE_NAGPUR, STATE_NAGPUR, STATE_NAGPUR -> Chandrapur
-	link = { vic3 = x9CDEF7 vic3 = xA939B9 vic3 = xFE794D hoi4 = 10030 } # Amravati [wood], Nagpur [city], STATE_NAGPUR -> Oomrawutty
+	link = { vic3 = x9CDEF7 vic3 = xA939B9 vic3 = xFE794D vic3 = xDA84A6 hoi4 = 10030 } # Amravati [wood], Nagpur [city], STATE_NAGPUR, STATE_NAGPUR -> Oomrawutty
 	link = { vic3 = x9C673D vic3 = xD03120 hoi4 = 10171 } # STATE_NAGPUR, STATE_NAGPUR -> Sironcha
 	link = { vic3 = x0E41BA vic3 = x51B021 vic3 = xED9802 hoi4 = 10401 } # STATE_NAGPUR, STATE_NAGPUR, STATE_NAGPUR -> Raipur
-	link = { vic3 = x90F020 vic3 = xD19AD8 hoi4 = 10469 } # STATE_NAGPUR, STATE_CIRCARS -> Umarkot
+	link = { vic3 = x90F020 hoi4 = 10469 } # STATE_NAGPUR -> Umarkot
 	link = { vic3 = xC38F66 hoi4 = 12241 } # STATE_NAGPUR -> Jagdalpur
 	link = { vic3 = x471CDC vic3 = x66337F hoi4 = 12375 } # STATE_NAGPUR, STATE_NAGPUR -> Raigarh
 	link = { vic3 = x53D2AE vic3 = x9473DC vic3 = xBE1F55 hoi4 = 12420 } # STATE_NAGPUR, STATE_NAGPUR, STATE_NAGPUR -> Dhamtari
@@ -5474,7 +5474,7 @@
 	link = { comment = "* * STATE_SOUTH_BENGAL " }
 	link = { vic3 = x0A2277 hoi4 = 1159 } # Calcutta [city] -> Baruipur
 	link = { vic3 = x55F631 hoi4 = 2843 } # STATE_SOUTH_BENGAL -> Jessore
-	link = { vic3 = x89D769 hoi4 = 4062 } # STATE_SOUTH_BENGAL -> Haldia
+	link = { vic3 = x89D769 vic3 = xD0B0DF hoi4 = 4062 } # STATE_SOUTH_BENGAL, STATE_SOUTH_BENGAL -> Haldia
 	link = { vic3 = x40F5CE vic3 = x474C54 hoi4 = 7078 } # STATE_SOUTH_BENGAL, STATE_SOUTH_BENGAL -> Khulna
 	link = { vic3 = x92DA2C vic3 = x1E0385 hoi4 = 7124 } # STATE_SOUTH_BENGAL, STATE_SOUTH_BENGAL -> Chuadanga
 	link = { vic3 = xA605E3 hoi4 = 4162 } # STATE_SOUTH_BENGAL -> Faridpur
@@ -5488,7 +5488,7 @@
 	link = { vic3 = x802A5E hoi4 = 12050 } # STATE_SOUTH_BENGAL -> Habra
 	link = { comment = "* * STATE_SINDH " }
 	link = { vic3 = x315160 vic3 = x59EE31 vic3 = x882A58 vic3 = xF5592F vic3 = xB2850D vic3 = xDB079F hoi4 = 1147 } # STATE_SINDH, STATE_SINDH, Mirpur Khas [mine], STATE_SINDH, STATE_SINDH, STATE_SINDH -> Umerkot
-	link = { vic3 = x23DFA9 vic3 = x25467F vic3 = x6031A0 vic3 = x60B021 hoi4 = 1980 } # STATE_SINDH, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_SINDH -> Mithi
+	link = { vic3 = x23DFA9 vic3 = x60B021 hoi4 = 1980 } # STATE_SINDH, STATE_SINDH -> Mithi
 	link = { vic3 = x56F6E9 vic3 = x6E9D54 vic3 = x705060 vic3 = x8C4F5A hoi4 = 3456 } # STATE_SINDH, Karachi [port], STATE_SINDH, STATE_SINDH -> Karachi
 	link = { vic3 = x105356 vic3 = xC7D26A vic3 = xE4B4A2 hoi4 = 4003 } # STATE_SINDH, Hyderabad [city], STATE_SINDH -> Badin
 	link = { vic3 = xCC14D7 hoi4 = 4110 } # STATE_SINDH -> Hyderabad
@@ -5506,14 +5506,14 @@
 	link = { vic3 = x166BD9 vic3 = x4922B9 vic3 = xD77479 vic3 = xBD1F80 vic3 = xD76ACC vic3 = xCBE6C4 hoi4 = 4984 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, Ajmer [farm], STATE_RAJPUTANA, STATE_RAJPUTANA -> Jodhpur
 	link = { vic3 = x67EA54 vic3 = xBA06BC hoi4 = 7905 } # STATE_RAJPUTANA, STATE_RAJPUTANA -> Tonk
 	link = { vic3 = x0170B1 vic3 = xC40894 vic3 = xEB0422 vic3 = xB9580C vic3 = x5A410D vic3 = xBAD851 hoi4 = 7998 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Sikar
-	link = { vic3 = x0C11FE vic3 = x4CEAC0 vic3 = x599EC5 hoi4 = 10847 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Barmer
+	link = { vic3 = x0C11FE vic3 = x4CEAC0 vic3 = x599EC5 vic3 = x25467F vic3 = x6031A0 hoi4 = 10847 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Barmer
 	link = { vic3 = x006D72 vic3 = x6E8BCD vic3 = x77810B vic3 = xBD0984 hoi4 = 10866 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Jaisalmer
-	link = { vic3 = x214E7A vic3 = x6A103F vic3 = xF3C5EA vic3 = xF591B3 hoi4 = 12041 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Hanumangarh
+	link = { vic3 = x214E7A vic3 = x6A103F vic3 = xF3C5EA vic3 = xF591B3 vic3 = x84F1F8 hoi4 = 12041 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Hanumangarh
 	link = { vic3 = x1031A8 vic3 = x3C6F90 vic3 = x3FF532 vic3 = x7B1C30 vic3 = xD0F7A0 hoi4 = 12718 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Phalodi
-	link = { vic3 = x0A34C2 vic3 = x40881F vic3 = xF671B7 hoi4 = 12829 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Udaipur
+	link = { vic3 = x0A34C2 vic3 = x40881F vic3 = xF671B7 vic3 = xE0B020 hoi4 = 12829 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Udaipur
 	link = { vic3 = x01F0E0 vic3 = x5DACF4 vic3 = x9A6A95 vic3 = xDD12D2 vic3 = x53A30A vic3 = x9601FD hoi4 = 12844 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, Bikaner [wood], STATE_RAJPUTANA -> Nagaur
 	link = { vic3 = xA99FB3 vic3 = xEBA05F hoi4 = 12876 } # STATE_RAJPUTANA, STATE_RAJPUTANA -> Bikaner
-	link = { vic3 = x5C95B5 vic3 = xA389C9 vic3 = xC28B1B vic3 = xCA50D5 hoi4 = 12886 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Jalore
+	link = { vic3 = x5C95B5 vic3 = xA389C9 vic3 = xC28B1B vic3 = xCA50D5 vic3 = x425430 hoi4 = 12886 } # STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA, STATE_RAJPUTANA -> Jalore
 	link = { vic3 = xDCFF99 vic3 = xF051DF hoi4 = 12743 } # STATE_RAJPUTANA, STATE_RAJPUTANA -> Ratlam
 	link = { comment = "* * STATE_CEYLON " }
 	link = { vic3 = x47B038 hoi4 = 1213 } # STATE_CEYLON -> Kandy
@@ -5536,14 +5536,14 @@
 	link = { vic3 = x0CE6EA vic3 = xBB9552 vic3 = xCCE5B7 hoi4 = 4104 } # STATE_ORISSA, Baleshwar [port], STATE_ORISSA -> land
 	link = { vic3 = xBAE4B3 hoi4 = 4513 } # STATE_ORISSA -> Sundergarh
 	link = { vic3 = x5031A0 hoi4 = 7090 } # STATE_ORISSA -> Bhawanipatna
-	link = { vic3 = x404EEA vic3 = xFBF096 vic3 = x1504AD hoi4 = 9946 } # STATE_ORISSA, STATE_ORISSA, STATE_ORISSA -> Sambalpur
-	link = { vic3 = x11D169 vic3 = x30C2D5 hoi4 = 10060 } # STATE_ORISSA, STATE_ORISSA -> Angul
+	link = { vic3 = x404EEA vic3 = xFBF096 vic3 = x1504AD vic3 = x1622F2 hoi4 = 9946 } # STATE_ORISSA, STATE_ORISSA, STATE_ORISSA, STATE_ORISSA -> Sambalpur
+	link = { vic3 = x11D169 vic3 = x30C2D5 vic3 = xB6E5C1 hoi4 = 10060 } # STATE_ORISSA, STATE_ORISSA, STATE_ORISSA -> Angul
 	link = { vic3 = x597E99 vic3 = xA15F01 hoi4 = 10088 } # Bhubaneshwar [farm], STATE_ORISSA -> Cuttack
-	link = { vic3 = xA0A8E0 vic3 = xA2EF24 hoi4 = 10116 } # STATE_ORISSA, STATE_ORISSA -> Puri
+	link = { vic3 = xA0A8E0 vic3 = xA2EF24 vic3 = xD031A0 hoi4 = 10116 } # STATE_ORISSA, STATE_ORISSA, STATE_ORISSA -> Puri
 	link = { vic3 = x5BC5C8 vic3 = xB07FDD hoi4 = 10428 } # Sambalpur [city], Phulabani [wood] -> Deogarh
-	link = { vic3 = x73B187 vic3 = xB6E5C1 hoi4 = 11924 } # STATE_CIRCARS, STATE_ORISSA -> Phulbani
+	link = { vic3 = x73B187 hoi4 = 11924 } # STATE_CIRCARS -> Phulbani
 	link = { vic3 = xFFBC41 hoi4 = 12063 } # STATE_ORISSA -> Bhadrak
-	link = { vic3 = xD031A0 vic3 = xF8BB81 hoi4 = 12462 } # STATE_ORISSA, Brahmapur [mine] -> Berhampur
+	link = { vic3 = xF8BB81 hoi4 = 12462 } # Brahmapur [mine] -> Berhampur
 	link = { comment = "* * STATE_CIRCARS " }
 	link = { vic3 = x9193B1 hoi4 = 1228 } # Vijayawada [wood] -> Rajahmundry
 	link = { vic3 = xE9BCE7 hoi4 = 1430 } # STATE_CIRCARS -> Ongole
@@ -5551,11 +5551,11 @@
 	link = { vic3 = x11F0A0 vic3 = x207C4F hoi4 = 4321 } # STATE_CIRCARS, STATE_CIRCARS -> Guntur
 	link = { vic3 = x42F4F2 vic3 = x063403 hoi4 = 4365 } # STATE_CIRCARS, STATE_CIRCARS -> Narasaraopet
 	link = { vic3 = x0F1912 vic3 = x338BFB hoi4 = 4414 } # STATE_CIRCARS, STATE_CIRCARS -> Anantapur
-	link = { vic3 = x461A00 vic3 = xA26314 hoi4 = 10208 } # STATE_CIRCARS, STATE_MYSORE -> Davangere
+	link = { vic3 = x461A00 hoi4 = 10208 } # STATE_CIRCARS -> Davangere
 	link = { vic3 = x669373 vic3 = xF46AEC hoi4 = 5032 } # STATE_CIRCARS, Adoni [farm] -> Bellary
 	link = { vic3 = x8B1F32 hoi4 = 7297 } # STATE_CIRCARS -> Cocanada
 	link = { vic3 = x365CC3 hoi4 = 7340 } # STATE_CIRCARS -> Vijayawada
-	link = { vic3 = x3EC5D1 vic3 = x7166FA vic3 = xB00B6B hoi4 = 7372 } # STATE_CIRCARS, STATE_CIRCARS, STATE_CIRCARS -> Jeypore
+	link = { vic3 = x3EC5D1 vic3 = x7166FA vic3 = xB00B6B vic3 = xD19AD8 hoi4 = 7372 } # STATE_CIRCARS, STATE_CIRCARS, STATE_CIRCARS, STATE_CIRCARS -> Jeypore
 	link = { vic3 = x6B15F1 vic3 = xC744F9 vic3 = xCDFBE6 hoi4 = 10001 } # STATE_CIRCARS, STATE_CIRCARS, STATE_CIRCARS -> Chicacole
 	link = { vic3 = x0AC82E vic3 = x180640 hoi4 = 10152 } # STATE_CIRCARS, STATE_CIRCARS -> Nellore
 	link = { vic3 = x477063 hoi4 = 10255 } # Vishakhapalman [port] -> Vizagapatam
@@ -5568,13 +5568,13 @@
 	link = { vic3 = x34BB3B vic3 = xF91482 hoi4 = 12779 } # STATE_CIRCARS, STATE_CIRCARS -> Proddatur
 	link = { comment = "* * STATE_MYSORE " }
 	link = { vic3 = x9FE13F vic3 = xBFDC26 hoi4 = 1412 } # Shivamogga [wood], STATE_MYSORE -> Shimoga
-	link = { vic3 = x2A60B3 vic3 = xB278DD hoi4 = 4315 } # Mysore [farm], STATE_MADRAS -> Mysore
-	link = { vic3 = xB4ABD5 vic3 = xE5A1AC hoi4 = 4344 } # STATE_MYSORE, STATE_MYSORE -> Hassan
+	link = { vic3 = x2A60B3 hoi4 = 4315 } # Mysore [farm] -> Mysore
+	link = { vic3 = xB4ABD5 vic3 = xE5A1AC vic3 = xD0F0A0 hoi4 = 4344 } # STATE_MYSORE, STATE_MYSORE, STATE_MYSORE -> Hassan
 	link = { vic3 = x696049 hoi4 = 7244 } # STATE_MYSORE -> Udupi
-	link = { vic3 = xB0934C vic3 = xD0F0A0 hoi4 = 7391 } # STATE_TRAVANCORE, STATE_MYSORE -> Calicut
+	link = { vic3 = xB0934C hoi4 = 7391 } # STATE_TRAVANCORE -> Calicut
 	link = { vic3 = x16AA78 hoi4 = 7395 } # STATE_MYSORE -> Bhatkal
 	link = { vic3 = x102D8B vic3 = x903060 hoi4 = 8011 } # Bangalore [city][mine], STATE_MYSORE -> Bangalore
-	link = { vic3 = x1B7225 vic3 = xEDFC06 hoi4 = 8100 } # STATE_MYSORE, STATE_MYSORE -> Tumkur
+	link = { vic3 = x1B7225 vic3 = xEDFC06 vic3 = xA26314 hoi4 = 8100 } # STATE_MYSORE, STATE_MYSORE, STATE_MYSORE -> Tumkur
 	link = { vic3 = x189045 hoi4 = 10190 } # Mangalore [port] -> Mangalore
 	link = { vic3 = x25CBCC hoi4 = 12146 } # STATE_MYSORE -> Mandya
 	link = { vic3 = x8E3C9D hoi4 = 12734 } # STATE_MYSORE -> Kolar
@@ -5592,7 +5592,7 @@
 	link = { vic3 = x1FF7C6 vic3 = x5AF5BE hoi4 = 1409 } # STATE_MADRAS, STATE_MADRAS -> Madurai
 	link = { vic3 = xA02050 hoi4 = 4416 } # STATE_MADRAS -> Trichinopoly
 	link = { vic3 = xA63901 hoi4 = 8067 } # STATE_MADRAS -> Salem
-	link = { vic3 = x9E4F00 hoi4 = 10808 } # Salem [wood] -> Hosur
+	link = { vic3 = x9E4F00 vic3 = xB278DD hoi4 = 10808 } # Salem [wood], STATE_MADRAS -> Hosur
 	link = { vic3 = x486310 vic3 = x56456B vic3 = xAEAE4C hoi4 = 4420 } # Krishnagiri [mine], STATE_MADRAS, STATE_MADRAS -> Vellore
 	link = { vic3 = x0559B3 hoi4 = 7265 } # STATE_MADRAS -> Karaikudi
 	link = { vic3 = x2D75FD vic3 = x6A381C hoi4 = 7363 } # STATE_MADRAS, STATE_MADRAS -> Tiruppur
@@ -5616,11 +5616,11 @@
 	link = { vic3 = xE3DECE hoi4 = 5104 } # STATE_HYDERABAD -> Yadgir
 	link = { vic3 = xACAC7B vic3 = x6C4C5A vic3 = x0607C9 hoi4 = 7060 } # STATE_HYDERABAD, STATE_HYDERABAD, STATE_HYDERABAD -> Aurangabad
 	link = { vic3 = x4FCA8A vic3 = x75599C hoi4 = 8087 } # Hyderabad [city], STATE_HYDERABAD -> Hyderabad
-	link = { vic3 = x67DBD9 vic3 = xB08536 vic3 = xFFACEF hoi4 = 10259 } # STATE_HYDERABAD, STATE_HYDERABAD, Mahbubnagar [farm] -> Raichur
+	link = { vic3 = x67DBD9 vic3 = xB08536 vic3 = xFFACEF vic3 = x25B964 hoi4 = 10259 } # STATE_HYDERABAD, STATE_HYDERABAD, Mahbubnagar [farm], STATE_HYDERABAD -> Raichur
 	link = { vic3 = x6B578E vic3 = xE2709D hoi4 = 10311 } # STATE_HYDERABAD, STATE_HYDERABAD -> Parbhani
 	link = { vic3 = x0B9150 vic3 = xA1516D hoi4 = 10324 } # STATE_HYDERABAD, Karnareddi [wood] -> Bidar
 	link = { vic3 = x01F273 vic3 = x8729D5 vic3 = xD0440A hoi4 = 10511 } # STATE_HYDERABAD, STATE_HYDERABAD, STATE_HYDERABAD -> Ramagundam
-	link = { vic3 = x11B0A0 vic3 = x50F020 hoi4 = 10799 } # STATE_BOMBAY, STATE_HYDERABAD -> Koppal
+	link = { vic3 = x50F020 hoi4 = 10799 } # STATE_HYDERABAD -> Koppal
 	link = { vic3 = xDE9FE5 hoi4 = 11950 } # STATE_HYDERABAD -> Karimnagar
 	link = { vic3 = x2B94C1 hoi4 = 12114 } # STATE_HYDERABAD -> Manuguru
 	link = { vic3 = xB4928F vic3 = xF189CD vic3 = x774B02 hoi4 = 12226 } # STATE_HYDERABAD, STATE_HYDERABAD, STATE_HYDERABAD -> Nizamabad
@@ -5637,7 +5637,7 @@
 	link = { vic3 = x33E560 vic3 = x4D118A vic3 = xE73C3C hoi4 = 7232 } # STATE_BOMBAY, Ratnagiri [farm], STATE_BOMBAY -> Ratnagiri
 	link = { vic3 = xD6660F hoi4 = 7250 } # STATE_BOMBAY -> Bagalkot
 	link = { vic3 = x42ACA6 hoi4 = 4291 } # Belgaum [wood] -> Belgaum
-	link = { vic3 = x187C37 vic3 = x25B964 vic3 = xE01853 hoi4 = 7411 } # STATE_BOMBAY, STATE_HYDERABAD, STATE_BOMBAY -> Gulbarga
+	link = { vic3 = x187C37 vic3 = xE01853 vic3 = x11B0A0 hoi4 = 7411 } # STATE_BOMBAY, STATE_BOMBAY, STATE_BOMBAY -> Gulbarga
 	link = { vic3 = x195332 vic3 = x5B30D1 vic3 = xF8B0CF hoi4 = 10019 } # STATE_BOMBAY, STATE_BOMBAY, STATE_BOMBAY -> Malegaon
 	link = { vic3 = x47EE55 vic3 = x4F5C91 vic3 = xC9CD8E hoi4 = 10210 } # STATE_BOMBAY, STATE_BOMBAY, STATE_BOMBAY -> Kolhapur
 	link = { vic3 = x53A379 vic3 = x3E5505 vic3 = x1B071A hoi4 = 10270 } # STATE_BOMBAY, STATE_BOMBAY, STATE_BOMBAY -> Poona
@@ -5701,7 +5701,7 @@
 	link = { vic3 = x667869 vic3 = x697F38 vic3 = x8DA34D vic3 = x90469C vic3 = xA6A681 vic3 = xA81260 vic3 = xAC153D vic3 = xC6097A vic3 = xCE1425 vic3 = xFB7575 hoi4 = 5016 } # STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN -> Guma
 	link = { vic3 = x147DD8 vic3 = x2070A0 vic3 = x6A9303 vic3 = x6D7ECD vic3 = x801667 vic3 = x80DEE7 vic3 = x950143 hoi4 = 5042 } # STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN -> land
 	link = { vic3 = x0D13D1 vic3 = x26E97C vic3 = x2EB1A7 vic3 = x9FE994 vic3 = xA41B06 hoi4 = 5087 } # STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN -> Yarkant
-	link = { vic3 = x47E5AB vic3 = x641782 vic3 = xA0F020 vic3 = xC08722 hoi4 = 7273 } # STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN -> Leh
+	link = { vic3 = x47E5AB vic3 = x641782 vic3 = xA0F020 vic3 = xC08722 vic3 = xDB6487 vic3 = x20771F hoi4 = 7273 } # STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_NGARI, STATE_NGARI -> Leh
 	link = { vic3 = x0D47B1 vic3 = x0E2C60 vic3 = x13D429 vic3 = x38BCD8 vic3 = x976B0B vic3 = xA3748E vic3 = xCB2607 hoi4 = 7790 } # STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN -> Kargilik
 	link = { vic3 = x3BBD51 vic3 = x5CAA4E vic3 = x62A9EA vic3 = x81F793 vic3 = x989FD5 hoi4 = 7949 } # STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN -> Maralbexi
 	link = { vic3 = x08CA02 vic3 = x0D33DF vic3 = x15278E vic3 = x4DD585 vic3 = x746D8E vic3 = x8C461A vic3 = x9889E4 vic3 = xAE04C9 vic3 = xB6D07F vic3 = xBADD19 vic3 = xC809B4 vic3 = xD0D8AE vic3 = xFDC95F hoi4 = 8042 } # STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN, STATE_TIANSHAN -> land
