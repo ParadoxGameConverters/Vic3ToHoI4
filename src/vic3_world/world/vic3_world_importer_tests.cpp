@@ -13,7 +13,7 @@ TEST(Vic3worldWorldVic3worldimporter, ExceptionForMissingSave)
 {
    EXPECT_THROW(ImportWorld(configuration::Configuration{
                     .save_game = "test_files/vic3_world/world/missing_save.vic3",
-                }),
+                    }, commonItems::ConverterVersion()),
        std::runtime_error);
 }
 
@@ -25,7 +25,8 @@ TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
        .vic3_steam_mod_path = "test_files/vic3_world/documents/mod",
        .vic3_mod_path = "test_files/vic3_world/documents/mod",
        .save_game = "test_files/vic3_world/world/empty_save.vic3",
-   });
+       },
+       commonItems::ConverterVersion());
 
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().empty());
@@ -45,7 +46,8 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
        .vic3_steam_mod_path = "test_files/vic3_world/documents/mod",
        .vic3_mod_path = "test_files/vic3_world/documents/mod",
        .save_game = "test_files/vic3_world/world/test_save.vic3",
-   });
+       },
+       commonItems::ConverterVersion());
 
    EXPECT_THAT(world.GetCountries(),
        testing::UnorderedElementsAre(testing::Pair(1,
@@ -219,7 +221,8 @@ TEST(Vic3worldWorldVic3worldimporter, ConversionDateIsLogged)
        .vic3_steam_mod_path = "test_files/vic3_world/documents/mod",
        .vic3_mod_path = "test_files/vic3_world/documents/mod",
        .save_game = "test_files/vic3_world/world/test_save.vic3",
-   });
+       },
+       commonItems::ConverterVersion());
 
    std::cout.rdbuf(cout_buffer);
 
@@ -238,7 +241,8 @@ TEST(Vic3worldWorldVic3worldimporter, StateWithInvalidOwnerIsLogged)
        .vic3_steam_mod_path = "test_files/vic3_world/documents/mod",
        .vic3_mod_path = "test_files/vic3_world/documents/mod",
        .save_game = "test_files/vic3_world/world/test_save.vic3",
-   });
+       },
+       commonItems::ConverterVersion());
 
    std::cout.rdbuf(cout_buffer);
 
@@ -257,7 +261,8 @@ TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)
        .vic3_steam_mod_path = "test_files/vic3_world/workshop/529340",
        .vic3_mod_path = "test_files/vic3_world/documents/mod",
        .save_game = "test_files/vic3_world/world/test_save.vic3",
-   });
+       },
+       commonItems::ConverterVersion());
 
    std::cout.rdbuf(cout_buffer);
 
@@ -276,7 +281,8 @@ TEST(Vic3worldWorldVic3worldimporter, PactsBecomeSubjectsAndOverlords)
        .vic3_steam_mod_path = "test_files/vic3_world/documents/mod",
        .vic3_mod_path = "test_files/vic3_world/documents/mod",
        .save_game = "test_files/vic3_world/world/test_save.vic3",
-   });
+       },
+       commonItems::ConverterVersion());
    Country v1 = world.GetCountries().at(1);
    Country v3 = world.GetCountries().at(3);
    EXPECT_EQ(v1.GetPuppets(), std::set<int>({3}));

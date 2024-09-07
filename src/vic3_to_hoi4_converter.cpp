@@ -14,7 +14,8 @@
 
 
 
-void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const GameVersion& game_version)
+void ConvertVic3ToHoi4(const configuration::Configuration& configuration,
+    const commonItems::ConverterVersion& converter_version)
 {
    const commonItems::ModFilesystem hoi4_mod_filesystem(configuration.hoi4_directory, {});
 
@@ -22,7 +23,7 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const 
       return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
    });
 
-   const auto source_world = vic3::ImportWorld(configuration);
+   const auto source_world = vic3::ImportWorld(configuration, converter_version);
    auto world_mapper = mappers::WorldMapperBuilder::CreateDefaultMapper(hoi4_mod_filesystem, source_world).Build();
    world_mapper.province_mapper.CheckAllVic3ProvincesMapped(
        source_world.GetProvinceDefinitions().GetProvinceDefinitions());
@@ -30,7 +31,7 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const 
        hoi4::ConvertWorld(hoi4_mod_filesystem, source_world, world_mapper, std::move(hoi4_framework), configuration);
 
    out::ClearOutputFolder(configuration.output_name);
-   out::OutputMod(configuration.output_name, game_version);
+   out::OutputMod(configuration.output_name, converter_version.getMaxTarget());
    out::OutputFlags(configuration.output_name, destination_world.GetCountries(), hoi4_mod_filesystem);
    out::OutputWorld(configuration.output_name, destination_world);
    Log(LogLevel::Progress) << "100%";

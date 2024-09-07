@@ -370,7 +370,8 @@ void CheckProvinceTerrainsGrouping(const std::vector<std::string>& all_provinces
 }  // namespace
 
 
-vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
+vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
+    const commonItems::ConverterVersion& converter_version)
 {
    WorldOptions world_options;
    Log(LogLevel::Info) << "*** Hello Vic3, loading World. ***";
@@ -389,6 +390,24 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration)
    });
    meta_parser.registerKeyword("mods", [&mod_names](std::istream& input_stream) {
       mod_names = commonItems::stringList(input_stream).getStrings();
+   });
+   meta_parser.registerKeyword("version", [&converter_version](std::istream& input_stream) {
+      const auto str_version = commonItems::getString(input_stream);
+      GameVersion version = GameVersion(str_version);
+      Log(LogLevel::Info) << "Savegame version: " << version;
+
+      if (converter_version.getMinSource() > version)
+      {
+         Log(LogLevel::Error) << "Converter requires a minimum save from v"
+                              << converter_version.getMinSource().toShortString();
+         throw std::runtime_error("Savegame vs converter version mismatch!");
+      }
+      if (!converter_version.getMaxSource().isLargerishThan(version))
+      {
+         Log(LogLevel::Error) << "Converter requires a maximum save from v"
+                              << converter_version.getMaxSource().toShortString();
+         throw std::runtime_error("Savegame vs converter version mismatch!");
+      }
    });
    meta_parser.IgnoreUnregisteredItems();
    meta_parser.parseStream(meta_stream);

@@ -8,7 +8,8 @@
 
 
 
-void ConvertVic3ToHoi4(const configuration::Configuration& configuration, const GameVersion& game_version);
+void ConvertVic3ToHoi4(const configuration::Configuration& configuration,
+    const commonItems::ConverterVersion& converter_version);
 
 
 

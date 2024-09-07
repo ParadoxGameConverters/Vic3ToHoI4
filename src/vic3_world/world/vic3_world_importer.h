@@ -15,7 +15,8 @@ namespace vic3
 {
 
 
-World ImportWorld(const configuration::Configuration& configuration);
+World ImportWorld(const configuration::Configuration& configuration,
+    const commonItems::ConverterVersion& converter_version);
 
 
 }  // namespace vic3

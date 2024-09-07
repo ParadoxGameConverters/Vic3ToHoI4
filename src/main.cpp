@@ -12,10 +12,10 @@ int main()
       converterVersion.loadVersion("../version.txt");
       Log(LogLevel::Info) << converterVersion;
 
-      const auto configuration = configuration::ImportConfiguration("configuration.txt");
+      const auto configuration = configuration::ImportConfiguration("configuration.txt", converterVersion);
 
       Log(LogLevel::Progress) << "0%";
-      ConvertVic3ToHoi4(configuration, converterVersion.getMaxTarget());
+      ConvertVic3ToHoi4(configuration, converterVersion);
 
       return 0;
    }
