@@ -10,7 +10,8 @@ namespace configuration
 
 TEST(ConfigurationTest, DefaultsAreDefaulted)
 {
-   const auto configuration = ImportConfiguration("test_files/configuration/blank_configuration.txt", commonItems::ConverterVersion());
+   const auto configuration =
+       ImportConfiguration("test_files/configuration/blank_configuration.txt", commonItems::ConverterVersion());
 
    EXPECT_TRUE(configuration.vic3_directory.empty());
    EXPECT_TRUE(configuration.vic3_steam_mod_path.empty());
