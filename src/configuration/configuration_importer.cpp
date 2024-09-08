@@ -27,23 +27,17 @@ std::string DetermineOutputName(std::string_view save_name)
 }  // namespace
 
 
-configuration::Configuration configuration::ImportConfiguration(std::string_view configuration_file)
+configuration::Configuration configuration::ImportConfiguration(std::string_view configuration_file,
+    const commonItems::ConverterVersion& converter_version)
 {
    commonItems::parser configuration_parser;
    Configuration configuration;
 
-   configuration_parser.registerKeyword("Vic3directory", [&configuration](std::istream& stream) {
+   configuration_parser.registerKeyword("Vic3directory", [&configuration, &converter_version](std::istream& stream) {
       configuration.vic3_directory = commonItems::getString(stream);
-      if (!commonItems::DoesFolderExist(configuration.vic3_directory))
-      {
-         throw std::runtime_error(fmt::format("Victoria 3 path {} doesn't exist.", configuration.vic3_directory));
-      }
-      if (!commonItems::DoesFileExist(configuration.vic3_directory + "/binaries/victoria3.exe") &&
-          !commonItems::DoesFileExist(configuration.vic3_directory + "/binaries/victoria3"))
-      {
-         throw std::runtime_error(fmt::format("{} does not contain Victoria 3.", configuration.vic3_directory));
-      }
       Log(LogLevel::Info) << "\tVictoria 3 install path is " << configuration.vic3_directory;
+      configuration.verifyVic3Path();
+      configuration.verifyVic3Version(converter_version);
    });
    configuration_parser.registerKeyword("Vic3SteamModDirectory", [&configuration](std::istream& stream) {
       configuration.vic3_steam_mod_path = commonItems::getString(stream);
@@ -53,18 +47,11 @@ configuration::Configuration configuration::ImportConfiguration(std::string_view
       configuration.vic3_mod_path = commonItems::getString(stream);
       Log(LogLevel::Info) << "\tVictoria 3 mod path is " << configuration.vic3_mod_path;
    });
-   configuration_parser.registerKeyword("HoI4directory", [&configuration](std::istream& stream) {
+   configuration_parser.registerKeyword("HoI4directory", [&configuration, &converter_version](std::istream& stream) {
       configuration.hoi4_directory = commonItems::getString(stream);
-      if (!commonItems::DoesFolderExist(configuration.hoi4_directory))
-      {
-         throw std::runtime_error(fmt::format("Hearts of Iron 4 path {} doesn't exist.", configuration.hoi4_directory));
-      }
-      if (!commonItems::DoesFileExist(configuration.hoi4_directory + "/hoi4.exe") &&
-          !commonItems::DoesFileExist(configuration.hoi4_directory + "/hoi4"))
-      {
-         throw std::runtime_error(fmt::format("{} does not contain Hearts of Iron 4.", configuration.hoi4_directory));
-      }
       Log(LogLevel::Info) << "\tHearts of Iron 4 install path is " << configuration.hoi4_directory;
+      configuration.verifyHOI4Path();
+      configuration.verifyHOI4Version(converter_version);
    });
    configuration_parser.registerKeyword("targetGameModPath", [&configuration](std::istream& stream) {
       configuration.hoi4_mod_path = commonItems::getString(stream);

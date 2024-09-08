@@ -13,7 +13,8 @@
 namespace configuration
 {
 
-[[nodiscard]] Configuration ImportConfiguration(std::string_view configuration_file);
+[[nodiscard]] Configuration ImportConfiguration(std::string_view configuration_file,
+    const commonItems::ConverterVersion& converter_version);
 
 }  // namespace configuration
 
