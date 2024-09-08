@@ -1469,15 +1469,14 @@
 	link = { comment = "* " }
 	link = { comment = "* * STATE_MAZOVIA " }
 	link = { vic3 = xF8C8F6 hoi4 = 400 hoi4 = 3254 } # STATE_MAZOVIA -> Augustow, Suwalki
-	link = { vic3 = x9444C9 hoi4 = 402 } # STATE_LESSER_POLAND -> Siedlce
-	link = { vic3 = xA3A3A9 hoi4 = 3544 } # STATE_GREATER_POLAND -> Warszawa
 	link = { vic3 = x46B451 hoi4 = 9290 } # STATE_MAZOVIA -> Ciechanów
 	link = { vic3 = xDC58D0 hoi4 = 6567 } # STATE_MAZOVIA -> Wyszków
 	link = { vic3 = x4F022C hoi4 = 9316 } # STATE_MAZOVIA -> Ostroleka
 	link = { vic3 = xC17590 hoi4 = 11329 hoi4 = 11274 } # Lomza [farm] -> Kolno, Lomza
 	link = { vic3 = x809F60 hoi4 = 11357 } # STATE_MAZOVIA -> Grajewo
 	link = { vic3 = x1AA8FB vic3 = x009F60 hoi4 = 11385 } # STATE_MAZOVIA, STATE_MAZOVIA -> Ostrów Mazowiecka
-	link = { vic3 = x4161A0 hoi4 = 12562 hoi4 = 524 } # STATE_LESSER_POLAND -> Minsk Mazowiecki, Legionowo
+	link = { vic3 = xE165F5 hoi4 = 3230 } # STATE_MAZOVIA -> Plock
+	link = { vic3 = x802161 hoi4 = 6259 hoi4 = 6321 } # STATE_MAZOVIA -> Plonsk, Mlawa
 	link = { comment = "* * STATE_SILESIA " }
 	link = { vic3 = x732DC0 hoi4 = 9470 } # STATE_SILESIA -> Glogau
 	link = { vic3 = xC108EA hoi4 = 552 } # STATE_SILESIA -> Liegnitz
@@ -1494,13 +1493,12 @@
 	link = { vic3 = x272E48 hoi4 = 11517 } # Görbitz [mine] -> Lauban
 	link = { vic3 = x821F52 hoi4 = 11467 } # STATE_SILESIA -> Gleiwitz
 	link = { comment = "* * STATE_GREATER_POLAND " }
+	link = { vic3 = xA3A3A9 hoi4 = 3544 } # STATE_GREATER_POLAND -> Warszawa
 	link = { vic3 = x1F6F99 hoi4 = 467 } # STATE_GREATER_POLAND -> Grójec
 	link = { vic3 = xC02B8C hoi4 = 493 hoi4 = 548 } # Lódz [mine] -> Borysew, Gostynin
 	link = { vic3 = xC0E0A0 hoi4 = 506 hoi4 = 479 } # Czestochowa [wood] -> Tarnowskie Gory, Kreuzburg
 	link = { vic3 = x1CB894 hoi4 = 584 } # STATE_GREATER_POLAND -> land
-	link = { vic3 = xE165F5 hoi4 = 3230 } # STATE_MAZOVIA -> Plock
 	link = { vic3 = x577EE4 hoi4 = 3482 } # STATE_GREATER_POLAND -> Tomaszów Mazowiecki
-	link = { vic3 = x802161 hoi4 = 6259 hoi4 = 6321 } # STATE_MAZOVIA -> Plonsk, Mlawa
 	link = { vic3 = x0E40DA hoi4 = 9400 } # STATE_GREATER_POLAND -> Pruszków
 	link = { vic3 = x2F0D92 hoi4 = 6401 } # STATE_GREATER_POLAND -> Wloclawek
 	link = { vic3 = x24BBED hoi4 = 9439 hoi4 = 11515 } # STATE_GREATER_POLAND -> Turek, Konin
@@ -1508,22 +1506,24 @@
 	link = { vic3 = x738072 hoi4 = 9546 hoi4 = 11558 } # STATE_GREATER_POLAND -> Kalisz, Ostrów Wielkopolski
 	link = { vic3 = xDE06BA vic3 = x471A61 hoi4 = 11428 } # STATE_GREATER_POLAND, STATE_GREATER_POLAND -> Piotrków Trybunalski
 	link = { vic3 = x8FE2DB hoi4 = 11532 } # STATE_GREATER_POLAND -> Skarzysko-Kamienna
-	link = { comment = "* * STATE_LESSER_POLAND " }
 	link = { vic3 = xA7B86B hoi4 = 3497 } # STATE_GREATER_POLAND -> Staszow
-	link = { vic3 = x40DF20 hoi4 = 3521 } # STATE_LESSER_POLAND -> Lukow
 	link = { vic3 = xC061A0 vic3 = x29408F hoi4 = 3586 } # STATE_GREATER_POLAND, STATE_GREATER_POLAND -> Wloszczowa
 	link = { vic3 = x9FEDC5 vic3 = xAB3C62 hoi4 = 6416 } # Radom [farm], STATE_GREATER_POLAND -> Starachowice
-	link = { vic3 = x496950 hoi4 = 6484 } # STATE_LESSER_POLAND -> Lubartow
 	link = { vic3 = x955F09 hoi4 = 6511 } # STATE_GREATER_POLAND -> Piaseczno
 	link = { vic3 = x6000DF hoi4 = 3458 hoi4 = 562 } # STATE_GREATER_POLAND -> Radom, Ostrowiec
+	link = { vic3 = x57A53D vic3 = xD0A0E0 hoi4 = 9427 } # STATE_GREATER_POLAND, STATE_GREATER_POLAND -> Kraków
+	link = { vic3 = x5FF022 hoi4 = 11430 } # STATE_GREATER_POLAND -> Kielce
+	link = { comment = "* * STATE_LESSER_POLAND " }
+	link = { vic3 = x4161A0 hoi4 = 12562 hoi4 = 524 } # STATE_LESSER_POLAND -> Minsk Mazowiecki, Legionowo
+	link = { vic3 = x9444C9 hoi4 = 402 } # STATE_LESSER_POLAND -> Siedlce
+	link = { vic3 = x40DF20 hoi4 = 3521 } # STATE_LESSER_POLAND -> Lukow
+	link = { vic3 = x496950 hoi4 = 6484 } # STATE_LESSER_POLAND -> Lubartow
 	link = { vic3 = xEB0783 hoi4 = 9452 } # STATE_LESSER_POLAND -> Chelm
 	link = { vic3 = x51A0E0 hoi4 = 6580 } # Biala Podlaska [wood] -> Zamosc
 	link = { vic3 = x44ACBB hoi4 = 536 } # STATE_LESSER_POLAND -> Krystynopol
-	link = { vic3 = x57A53D vic3 = xD0A0E0 hoi4 = 9427 } # STATE_GREATER_POLAND, STATE_GREATER_POLAND -> Kraków
 	link = { vic3 = xE0BB00 hoi4 = 3559 } # Lublin [city] -> Pulawy
 	link = { vic3 = xF73169 hoi4 = 9521 } # STATE_LESSER_POLAND -> Krasnik
 	link = { vic3 = xAEB9A5 hoi4 = 11399 } # STATE_LESSER_POLAND -> Lublin
-	link = { vic3 = x5FF022 hoi4 = 11430 } # STATE_GREATER_POLAND -> Kielce
 	link = { comment = "* * STATE_WEST_PRUSSIA " }
 	link = { vic3 = x41A021 hoi4 = 243 } # Thorn [farm] -> Inowroclaw
 	link = { vic3 = x178C99 vic3 = x945000 hoi4 = 334 } # STATE_WEST_PRUSSIA, Konitz [mine] -> Chojnice
