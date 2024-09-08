@@ -3,6 +3,8 @@
 
 
 
+#include <optional>
+#include <string>
 #include <vector>
 
 
@@ -14,6 +16,7 @@ struct ProvinceMapping
 {
    std::vector<std::string> vic3_provinces;
    std::vector<int> hoi4_provinces;
+   std::optional<std::string> comment;
 };
 
 }  // namespace mappers
