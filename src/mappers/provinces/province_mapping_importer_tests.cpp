@@ -51,4 +51,25 @@ TEST(MappersProvincesProvinceMappingImporterTests, HoI4ProvincesCanBeAdded)
    EXPECT_THAT(mapping.hoi4_provinces, testing::ElementsAre(42, 144));
 }
 
+
+TEST(MappersProvincesProvinceMappingImporterTests, CommentDefaultsToNullopt)
+{
+   std::stringstream input;
+
+   const auto mapping = ProvinceMappingImporter{}.ImportProvinceMapping(input);
+
+   EXPECT_FALSE(mapping.comment.has_value());
+}
+
+
+TEST(MappersProvincesProvinceMappingImporterTests, CommentCanBeSet)
+{
+   std::stringstream input;
+   input << R"(= { comment = "test_comment" })";
+
+   const auto mapping = ProvinceMappingImporter{}.ImportProvinceMapping(input);
+
+   EXPECT_EQ(mapping.comment.value_or(""), "test_comment");
+}
+
 }  // namespace mappers
