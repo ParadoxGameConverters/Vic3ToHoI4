@@ -77,7 +77,7 @@ void AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_fro
    {
       for (const auto& province_from_map: provinces_from_map)
       {
-         Log(LogLevel::Warning) << fmt::format(
+         Log(LogLevel::Debug) << fmt::format(
              "Province {} is designated as part of {} in Vic3 data and is placed in a mapping with provinces from "
              "other states.",
              province_from_map,
@@ -96,7 +96,7 @@ void IsMappingInWrongRegion(std::string_view current_region,
       auto linked_state = province_to_state_map.find(province);
       if (linked_state != province_to_state_map.end() && linked_state->second != current_region)
       {
-         Log(LogLevel::Warning) << fmt::format(
+         Log(LogLevel::Debug) << fmt::format(
              "Province {} is designated as part of {} in Vic3 data and is placed in a mapping in the {} region.",
              province,
              province_to_state_map.at(province),
@@ -166,14 +166,6 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
       if (!vic3_state_regions.empty())
       {
          AreVic3ProvincesFromSameState(the_mapping.vic3_provinces, province_to_state_map_);
-      }
-
-      if (!vic3_state_regions.empty())
-      {
-         AreVic3ProvincesFromSameState(the_mapping.vic3_provinces, province_to_state_map_);
-      }
-      if (!vic3_state_regions.empty())
-      {
          IsMappingInWrongRegion(current_region_, the_mapping.vic3_provinces, province_to_state_map_);
       }
 
