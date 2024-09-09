@@ -1790,6 +1790,7 @@
 	link = { vic3 = xA050A0 hoi4 = 7144 } # STATE_MIDDLE_EGYPT -> Mallawi
 	link = { vic3 = xA41CF4 vic3 = x0EBC9F hoi4 = 10126 } # El Suweis [port][mine], STATE_MIDDLE_EGYPT -> Ras Gharib
 	link = { vic3 = x50D060 hoi4 = 11974 hoi4 = 12044 } # Sohag [wood][farm] -> Asyut, Sohag
+	link = { vic3 = xC7858D hoi4 = 7117 } # STATE_MIDDLE_EGYPT -> land
 	link = { comment = "* * STATE_EGYPTIAN_DESERT " }
 	link = { vic3 = x91BF54 vic3 = xBA5529 vic3 = xC48A06 vic3 = x9A6DB5 vic3 = x941E53 hoi4 = 1206 } # STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT -> Bimban
 	link = { vic3 = x2B6F28 vic3 = x3FFE56 vic3 = x4B8A20 vic3 = x5D6A34 vic3 = x811823 vic3 = x88E19F vic3 = x8F31B0 vic3 = x9130F8 vic3 = xA14C64 vic3 = xACEBEA vic3 = xB01121 vic3 = xE21A78 vic3 = xE95AD6 vic3 = xF87E36 vic3 = xFF4484 vic3 = xCC0432 hoi4 = 2064 } # STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, El Kharga [mine], STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT, STATE_EGYPTIAN_DESERT -> Baris
@@ -1805,7 +1806,6 @@
 	link = { vic3 = x05FF42 vic3 = x252184 vic3 = x3DCE56 vic3 = x80A9AC hoi4 = 1143 } # STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH -> land
 	link = { vic3 = xB5969E hoi4 = 5078 } # STATE_MATRUH -> land
 	link = { vic3 = x87D6C4 vic3 = x93D215 hoi4 = 7079 } # El Salloum [city], STATE_MATRUH -> Sidi Barrani
-	link = { vic3 = xC7858D hoi4 = 7117 } # STATE_MIDDLE_EGYPT -> land
 	link = { vic3 = x246457 vic3 = xC1822C vic3 = xF942C3 hoi4 = 7148 } # STATE_MATRUH, STATE_MATRUH, STATE_MATRUH -> land
 	link = { vic3 = x53834E vic3 = x5E1EA3 vic3 = x6EB0BA vic3 = x7F64AC vic3 = x908947 vic3 = xDF5EBB vic3 = xEC728B vic3 = xE68265 vic3 = x45DB44 vic3 = xA0ECF8 vic3 = xBB2E89 vic3 = xF901CB vic3 = x20D0A0 vic3 = x0EE79F hoi4 = 7216 } # STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH, STATE_MATRUH -> Bawiti
 	link = { vic3 = x0C6712 hoi4 = 9989 } # Sidi Barrani [wood] -> Mersa Matruh
@@ -1896,7 +1896,6 @@
 	link = { vic3 = x60B040 vic3 = xE445EF hoi4 = 11987 } # STATE_FEZ, STATE_FEZ -> Fès
 	link = { vic3 = xB98CBC vic3 = xA0F040 vic3 = xB73221 hoi4 = 12042 } # STATE_FEZ, STATE_FEZ, STATE_FEZ -> Azrou
 	link = { comment = "* * STATE_AL_RIF " }
-	link = { vic3 = xDF30C0 vic3 = xFAE302 hoi4 = 7116 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Aïn Beni Mathar
 	link = { vic3 = xF05E87 vic3 = x75DC50 hoi4 = 989 } # Oujda [farm], STATE_AL_RIF -> Oujda
 	link = { vic3 = x8FBBB6 hoi4 = 1111 } # STATE_AL_RIF -> Taourirt
 	link = { vic3 = x9BC3AC vic3 = xE95985 hoi4 = 4097 } # Taza [mine], STATE_AL_RIF -> Taza
@@ -1906,6 +1905,7 @@
 	link = { vic3 = xA0B0C0 hoi4 = 12087 } # STATE_AL_RIF -> Tetuán
 	link = { vic3 = xCA9F75 vic3 = xDFB040 hoi4 = 12100 } # Melilla [port], STATE_AL_RIF -> Melilla
 	link = { comment = "* * STATE_INNER_MOROCCO " }
+	link = { vic3 = xDF30C0 vic3 = xFAE302 hoi4 = 7116 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Aïn Beni Mathar
 	link = { vic3 = x96EF9B vic3 = xB14383 hoi4 = 1152 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Midelt
 	link = { vic3 = x7D32B3 vic3 = xAC4646 vic3 = xD89587 hoi4 = 1207 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO -> Béni Mellal
 	link = { vic3 = x9015D0 vic3 = xBA134C vic3 = xBD6AB5 vic3 = x0488C2 hoi4 = 1989 } # STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, STATE_INNER_MOROCCO, Quarzazate [farm] -> Ouarzazate
@@ -2313,7 +2313,6 @@
 	link = { comment = "* * STATE_SOMALILAND " }
 	link = { vic3 = x20E090 vic3 = x85FD85 vic3 = xDEFB4F vic3 = xDF951C hoi4 = 1905 } # STATE_SOMALILAND, STATE_SOMALILAND, Laascaanood [wood], STATE_SOMALILAND -> Las Anod
 	link = { vic3 = x049442 vic3 = x469B34 vic3 = x76595D vic3 = xA05C39 hoi4 = 1964 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND -> Rocca Littorio
-	link = { vic3 = x37058F hoi4 = 8000 } # STATE_YEMEN -> Tamrida
 	link = { vic3 = x0C544E vic3 = x42DA4F vic3 = xB19FD2 vic3 = xB9F779 vic3 = xD0FF66 vic3 = xEF3903 vic3 = x560238 hoi4 = 1966 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND -> Bosaso
 	link = { vic3 = xE4636A vic3 = xE585C3 vic3 = xF5E822 vic3 = xCB3B07 vic3 = x6D0680 hoi4 = 2020 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND -> Belet Uen
 	link = { vic3 = x10CF18 vic3 = x1CE5E9 vic3 = x3587B8 vic3 = x72DC5E vic3 = x992BFC vic3 = xA1A21B vic3 = xAFF79D vic3 = xF26F4C vic3 = x5BF703 hoi4 = 2063 } # STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND, STATE_SOMALILAND -> Baidoa
@@ -4462,6 +4461,7 @@
 	link = { vic3 = xC9472E vic3 = xD12977 vic3 = xFF7473 vic3 = xA9240B hoi4 = 8108 } # STATE_ABU_DHABI, STATE_ABU_DHABI, STATE_ABU_DHABI, STATE_ABU_DHABI -> Ar-Ruwais
 	link = { vic3 = x0DC972 vic3 = xF0D021 hoi4 = 10904 } # Khasab [wood], Sharjah [farm] -> Dubai
 	link = { comment = "* * STATE_YEMEN " }
+	link = { vic3 = x37058F hoi4 = 8000 } # STATE_YEMEN -> Tamrida
 	link = { vic3 = x2576C1 vic3 = x6290E6 vic3 = x7EC879 vic3 = xCF401E vic3 = xE5892F vic3 = xDD033C vic3 = x9D8A78 vic3 = xF86F58 hoi4 = 1920 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> Sa'dah
 	link = { vic3 = x9E941B vic3 = x00E3EF hoi4 = 1973 } # STATE_YEMEN, STATE_YEMEN -> Dhamar
 	link = { vic3 = x319060 vic3 = xB090E0 hoi4 = 5074 } # Aden [city], STATE_YEMEN -> Aden
