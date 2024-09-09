@@ -22,11 +22,11 @@ mappers::ProvinceMappingImporter::ProvinceMappingImporter()
       const std::string raw_string = commonItems::getString(the_stream);
       if (const size_t start = raw_string.find_first_not_of("* "); start != std::string::npos)
       {
-          comment_ = raw_string.substr(start, raw_string.length());
-          if (const size_t last = comment_.value().find_last_not_of("* "); last != std::string::npos)
-          {
-              comment_ = comment_.value().substr(0, last + 1);
-          }
+         comment_ = raw_string.substr(start, raw_string.length());
+         if (const size_t last = comment_.value().find_last_not_of("* "); last != std::string::npos)
+         {
+            comment_ = comment_.value().substr(0, last + 1);
+         }
       }
    });
    parser_.IgnoreAndLogUnregisteredItems();
