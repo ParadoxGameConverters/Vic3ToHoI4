@@ -62,13 +62,12 @@ std::map<std::string, std::string> GenerateProvinceToStateMap(
 }
 
 void AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_from_map,
-    std::map<std::string, std::string> province_to_state_map)
+    const std::map<std::string, std::string>& province_to_state_map)
 {
    std::set<std::string> state_names;
    for (const auto& province: provinces_from_map)
    {
-      auto linked_state = province_to_state_map.find(province);
-      if (linked_state != province_to_state_map.end())
+      if (auto linked_state = province_to_state_map.find(province); linked_state != province_to_state_map.end())
       {
          state_names.insert(linked_state->second);
       }
@@ -78,11 +77,30 @@ void AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_fro
    {
       for (const auto& province_from_map: provinces_from_map)
       {
-         Log(LogLevel::Warning) << fmt::format(
+         Log(LogLevel::Debug) << fmt::format(
              "Province {} is designated as part of {} in Vic3 data and is placed in a mapping with provinces from "
              "other states.",
              province_from_map,
-             province_to_state_map[province_from_map]);
+             province_to_state_map.at(province_from_map));
+      }
+   }
+}
+
+
+void IsMappingInWrongRegion(std::string_view current_region,
+    const std::vector<std::string>& provinces_from_map,
+    const std::map<std::string, std::string>& province_to_state_map)
+{
+   for (const auto& province: provinces_from_map)
+   {
+      auto linked_state = province_to_state_map.find(province);
+      if (linked_state != province_to_state_map.end() && linked_state->second != current_region)
+      {
+         Log(LogLevel::Debug) << fmt::format(
+             "Province {} is designated as part of {} in Vic3 data and is placed in a mapping in the {} region.",
+             province,
+             province_to_state_map.at(province),
+             current_region);
       }
    }
 }
@@ -136,6 +154,10 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
 
    mapping_parser_.registerKeyword("link", [this, vic3_state_regions](std::istream& input_stream) {
       const auto the_mapping = mapping_importer_.ImportProvinceMapping(input_stream);
+      if (the_mapping.comment.has_value())
+      {
+         current_region_ = the_mapping.comment.value();
+      }
       if (the_mapping.vic3_provinces.empty() && the_mapping.hoi4_provinces.empty())
       {
          return;
@@ -143,10 +165,9 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
 
       if (!vic3_state_regions.empty())
       {
-         auto vic3_province = the_mapping.vic3_provinces;
-         AreVic3ProvincesFromSameState(vic3_province, province_to_state_map_);
+         AreVic3ProvincesFromSameState(the_mapping.vic3_provinces, province_to_state_map_);
+         IsMappingInWrongRegion(current_region_, the_mapping.vic3_provinces, province_to_state_map_);
       }
-
 
       for (auto color: the_mapping.vic3_provinces)
       {
@@ -171,6 +192,7 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
 
 mappers::ProvinceMapper mappers::ProvinceMapperImporter::ImportProvinceMappings()
 {
+   Log(LogLevel::Info) << "Importing province mappings.";
    vic3_to_hoi4_province_map_.clear();
    hoi4_to_vic3_province_map_.clear();
 

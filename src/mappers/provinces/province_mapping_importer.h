@@ -3,7 +3,9 @@
 
 
 
-#include <memory>
+#include <optional>
+#include <string>
+#include <vector>
 
 #include "external/commonItems/Parser.h"
 #include "src/mappers/provinces/province_mapping.h"
@@ -24,6 +26,7 @@ class ProvinceMappingImporter
 
    std::vector<std::string> vic3_provinces_;
    std::vector<int> hoi4_provinces_;
+   std::optional<std::string> comment_;
 };
 
 }  // namespace mappers
