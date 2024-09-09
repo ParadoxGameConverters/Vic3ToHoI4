@@ -110,7 +110,7 @@ void CheckAllHoi4ProvincesMapped(const mappers::Hoi4ToVic3ProvinceMapping& hoi4_
     const commonItems::ModFilesystem& filesystem)
 {
    const auto definition_location = filesystem.GetActualFileLocation("/map/definition.csv");
-   if (!definition_location.has_value()) 
+   if (!definition_location.has_value())
    {
       throw std::runtime_error("Could not find /map/definition.csv");
    }
