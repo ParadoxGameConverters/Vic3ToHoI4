@@ -4603,10 +4603,8 @@
 	link = { vic3 = x00F060 vic3 = x68C89A vic3 = xDABB9C hoi4 = 8085 } # Kuwait [port], STATE_BASRA, STATE_BASRA -> Kuwait City
 	link = { vic3 = x7CAD29 vic3 = x93CB74 vic3 = xBE6A23 vic3 = x1CC9CC vic3 = xDB6370 hoi4 = 12726 } # Nasiriya [wood], STATE_BASRA, STATE_BASRA, STATE_BASRA, STATE_BASRA -> An-Nasiriyah
 	link = { comment = "* * STATE_FARS " }
-	link = { vic3 = x37295A vic3 = x672217 vic3 = x6F0F7C hoi4 = 4928 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN -> Yasuj
 	link = { vic3 = x6375B3 vic3 = x89054E vic3 = x898FBC vic3 = xFDAFF4 vic3 = xB5A598 vic3 = xF033FA vic3 = x879264 hoi4 = 4966 } # STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS, Abadeh [mine], STATE_FARS, STATE_FARS -> Abadeh
 	link = { vic3 = x4AB629 vic3 = x8030DF vic3 = xEB15EE vic3 = x00B0DF vic3 = x80B060 hoi4 = 5089 } # STATE_FARS, Ardakan [wood], STATE_FARS, STATE_FARS, STATE_FARS -> Behbahan
-	link = { vic3 = x077437 vic3 = x2A39A6 vic3 = x5FE0AF vic3 = xF29735 vic3 = x95A3F5 vic3 = xB1591C hoi4 = 8031 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN -> Yazd
 	link = { vic3 = x35A806 vic3 = x3C79B5 vic3 = x8D9D57 vic3 = x95EAC4 vic3 = xEB8219 vic3 = xB9E770 vic3 = x20B506 vic3 = x759BE2 hoi4 = 8117 } # STATE_FARS, STATE_FARS, STATE_FARS, Shiraz [city], STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS -> Shiraz
 	link = { vic3 = x0130E0 vic3 = x80F0A0 vic3 = x8A4184 vic3 = xA194C3 vic3 = xE622E5 vic3 = x01F0A0 hoi4 = 10797 } # Bushehr [port], STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS -> Bushehr
 	link = { vic3 = x01B060 vic3 = x626618 vic3 = x8C28A6 vic3 = xB2B395 vic3 = xC83D18 vic3 = xF58FBD vic3 = xAFE8A5 vic3 = xE816BC hoi4 = 10881 } # STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS -> Sirjan
@@ -4648,16 +4646,14 @@
 	link = { vic3 = x250EA9 vic3 = x4CD18D vic3 = x57893E vic3 = xC0F0E0 hoi4 = 12739 } # STATE_KHORASAN, STATE_KHORASAN, STATE_KHORASAN, STATE_KHORASAN -> Nehbandan
 	link = { vic3 = x09EC79 vic3 = x62D297 vic3 = xBEA6BB vic3 = xEBB44F hoi4 = 12852 } # STATE_KHORASAN, STATE_KHORASAN, STATE_KHORASAN, STATE_KHORASAN -> Meyghan
 	link = { comment = "* * STATE_KHUZESTAN " }
-	link = { vic3 = x241E05 vic3 = x5D400F vic3 = x80B0E0 vic3 = x7D89AA vic3 = x202B10 vic3 = xFFA8FA hoi4 = 1922 } # STATE_LURISTAN, STATE_LURISTAN, STATE_LURISTAN, STATE_LURISTAN, STATE_LURISTAN, STATE_LURISTAN -> Defzul
 	link = { vic3 = x09F8D1 vic3 = x4CA291 vic3 = xFBA38B hoi4 = 5005 } # STATE_KHUZESTAN, Dezful [farm], Bandar Mahshahr [port] -> Abadan
 	link = { vic3 = x55D475 vic3 = x872ACE vic3 = xA18555 vic3 = xA99276 vic3 = x4FDA9B vic3 = x80E4E1 vic3 = xF5BD8F hoi4 = 7953 } # Shushtar [city], STATE_KHUZESTAN, STATE_KHUZESTAN, STATE_KHUZESTAN, STATE_KHUZESTAN, Muhammara [mine], Ahvaz [wood] -> Ahvaz
 	link = { comment = "* * STATE_ISFAHAN " }
+	link = { vic3 = x37295A vic3 = x672217 vic3 = x6F0F7C hoi4 = 4928 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN -> Yasuj
+	link = { vic3 = x077437 vic3 = x2A39A6 vic3 = x5FE0AF vic3 = xF29735 vic3 = x95A3F5 vic3 = xB1591C hoi4 = 8031 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN -> Yazd
 	link = { vic3 = x7AE349 vic3 = x7CCE94 vic3 = xED39D0 vic3 = x8D9CEC vic3 = xF17A7A vic3 = x8DDEC3 hoi4 = 1963 } # STATE_ISFAHAN, STATE_ISFAHAN, Isfahan [city], STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN -> Meybod
-	link = { vic3 = x361152 vic3 = xDF5E83 vic3 = xC241E1 vic3 = xAF4250 vic3 = xC0B060 hoi4 = 1982 } # STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI -> Arak
 	link = { vic3 = x527229 vic3 = x803160 vic3 = xB75FFC vic3 = xE9B06D vic3 = xC5AECF hoi4 = 2026 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, Nain [mine], STATE_ISFAHAN -> Esfahan
-	link = { vic3 = x077C30 vic3 = x9DC400 vic3 = xA37A77 vic3 = xB0AA8F vic3 = xE679AF hoi4 = 5067 } # STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI -> Kashan
 	link = { vic3 = x124E8C vic3 = x4C1CD8 vic3 = xD35B7E vic3 = x6C648A hoi4 = 8074 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN -> Na'in
-	link = { vic3 = x44E945 vic3 = xC77B7D vic3 = x2AAA44 vic3 = x793216 vic3 = x141ABA hoi4 = 8125 } # STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI -> Kabudarahang
 	link = { vic3 = x24A57B vic3 = x31DF75 vic3 = x362C14 vic3 = x616406 vic3 = xC07020 vic3 = x89719E hoi4 = 10828 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN -> Bafq
 	link = { vic3 = x4E9FD1 vic3 = xC03160 vic3 = x2657C9 hoi4 = 12756 } # STATE_ISFAHAN, STATE_ISFAHAN, STATE_ISFAHAN -> Shahr-e Kord
 	link = { comment = "* * STATE_MAZANDARAN " }
@@ -4667,11 +4663,16 @@
 	link = { vic3 = x129FA5 vic3 = x4070A0 vic3 = x5694AE vic3 = x5ADBFF vic3 = xE6DB67 hoi4 = 7602 } # STATE_MAZANDARAN, STATE_MAZANDARAN, STATE_MAZANDARAN, STATE_MAZANDARAN, STATE_MAZANDARAN -> Gorgan
 	link = { vic3 = x0FF449 vic3 = x63F238 vic3 = xE697E6 hoi4 = 10385 } # STATE_MAZANDARAN, Rasht [farm], Barfurush [city] -> Sari
 	link = { vic3 = x40EFA0 vic3 = x8070DF hoi4 = 10768 } # STATE_MAZANDARAN, STATE_MAZANDARAN -> Amol
+	link = { vic3 = x7417A0 hoi4 = 4901 } # STATE_MAZANDARAN -> Ardabil
 	link = { comment = "* * STATE_IRAKAJEMI " }
+	link = { vic3 = x361152 vic3 = xDF5E83 vic3 = xC241E1 vic3 = xAF4250 vic3 = xC0B060 hoi4 = 1982 } # STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI -> Arak
+	link = { vic3 = x077C30 vic3 = x9DC400 vic3 = xA37A77 vic3 = xB0AA8F vic3 = xE679AF hoi4 = 5067 } # STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI -> Kashan
+	link = { vic3 = x44E945 vic3 = xC77B7D vic3 = x2AAA44 vic3 = x793216 vic3 = x141ABA hoi4 = 8125 } # STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI -> Kabudarahang
 	link = { vic3 = x4030E0 vic3 = x68FFB7 vic3 = x70C503 vic3 = x588437 vic3 = xD710D1 hoi4 = 7969 } # Qazvin [farm], STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI -> Karaj
 	link = { vic3 = x8F1825 vic3 = xC0F0A0 vic3 = xDA35F1 hoi4 = 10837 } # STATE_IRAKAJEMI, Tehran [city], STATE_IRAKAJEMI -> Tehran
 	link = { vic3 = x3701A3 vic3 = xE131D0 vic3 = xE92D8F vic3 = x41B060 vic3 = x3DB0B9 hoi4 = 10922 } # STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI, Qom [mine], STATE_IRAKAJEMI -> Qom
 	link = { vic3 = x6AB1CB vic3 = x71249D vic3 = xE7E218 hoi4 = 12818 } # STATE_IRAKAJEMI, STATE_IRAKAJEMI, STATE_IRAKAJEMI -> Garmsar
+	link = { vic3 = x2E8EE8 hoi4 = 8040 } # STATE_IRAKAJEMI -> Hamedan
 	link = { comment = "* * STATE_SEMNAN " }
 	link = { vic3 = x991C41 vic3 = x9DF482 vic3 = xE47095 vic3 = xEB4F2E vic3 = x662658 vic3 = x5E50D5 vic3 = x346B17 vic3 = x7A9D34 vic3 = x8EC8D6 vic3 = x356EFD vic3 = x5E4062 hoi4 = 4983 } # STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN -> Khur
 	link = { vic3 = xC070A0 vic3 = x64A12B vic3 = x466F62 vic3 = x6FEED1 hoi4 = 12704 } # STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN, STATE_SEMNAN -> land
@@ -4684,25 +4685,24 @@
 	link = { vic3 = x6050A0 vic3 = xC5BF2C vic3 = xFF325A vic3 = xBF30DF hoi4 = 4553 } # STATE_TABRIZ, STATE_TABRIZ, STATE_TABRIZ, STATE_TABRIZ -> Zanjan
 	link = { vic3 = x264C9D vic3 = x63528E vic3 = xC277FE hoi4 = 4755 } # STATE_TABRIZ, STATE_TABRIZ, Zanjan [mine] -> Marand
 	link = { vic3 = x102BCB vic3 = x2C653E vic3 = xC8C637 hoi4 = 4825 } # STATE_TABRIZ, STATE_TABRIZ, STATE_TABRIZ -> Ahar
-	link = { vic3 = x7417A0 hoi4 = 4901 } # STATE_MAZANDARAN -> Ardabil
-	link = { vic3 = xA010DF vic3 = xADF8DB hoi4 = 7604 } # Salmas [wood], Urmia [city] -> Orumiyeh
 	link = { vic3 = x97DFB2 vic3 = xCC139E vic3 = xCEA2AE vic3 = xD82CB4 vic3 = x43A850 hoi4 = 10454 } # STATE_TABRIZ, STATE_TABRIZ, STATE_TABRIZ, STATE_TABRIZ, STATE_TABRIZ -> Parsabad
 	link = { vic3 = x41B0E0 vic3 = xA70D55 hoi4 = 10523 } # STATE_TABRIZ, STATE_TABRIZ -> Abhar
 	link = { vic3 = x592890 vic3 = xBD5DC4 vic3 = xCA2489 hoi4 = 12793 } # STATE_TABRIZ, STATE_TABRIZ, Ardabil [wood] -> Mianeh
 	link = { vic3 = x2281CB vic3 = x780DBA hoi4 = 12861 } # STATE_TABRIZ, Maragheh [farm] -> Maragheh
 	link = { vic3 = x15FECC hoi4 = 13120 } # x15FECC -> (Lake)
 	link = { comment = "* * STATE_URMIA " }
+	link = { vic3 = xA010DF vic3 = xADF8DB hoi4 = 7604 } # Salmas [wood], Urmia [city] -> Orumiyeh
 	link = { vic3 = x0256AF vic3 = x7F1958 vic3 = x9B1366 hoi4 = 1636 } # Maku [mine], STATE_URMIA, Khoy [farm] -> Khuy
 	link = { vic3 = x80B0A0 vic3 = xB0C672 vic3 = xCCA63F hoi4 = 1822 } # STATE_URMIA, STATE_URMIA, STATE_URMIA -> Mahabad
 	link = { comment = "* * STATE_LURISTAN " }
+	link = { vic3 = x241E05 vic3 = x5D400F vic3 = x80B0E0 vic3 = x7D89AA vic3 = x202B10 vic3 = xFFA8FA hoi4 = 1922 } # STATE_LURISTAN, STATE_LURISTAN, STATE_LURISTAN, STATE_LURISTAN, STATE_LURISTAN, STATE_LURISTAN -> Defzul
 	link = { vic3 = xBC8ADC vic3 = xBDD368 vic3 = xC3A894 hoi4 = 829 } # STATE_LURISTAN, Borujerd [farm], STATE_LURISTAN -> Ilam
 	link = { vic3 = x2EA8EE vic3 = x349E91 vic3 = x4FD77D hoi4 = 2065 } # Ilam [wood], STATE_LURISTAN, STATE_LURISTAN -> Borujerd
 	link = { vic3 = x38B60D vic3 = x5E4B82 vic3 = x9963BE vic3 = x78B5D4 vic3 = xC82A67 hoi4 = 5050 } # Khorramabad [city], STATE_LURISTAN, STATE_LURISTAN, STATE_LURISTAN, STATE_LURISTAN -> Khorramabad
-	link = { vic3 = x51BDFA vic3 = xE050A0 hoi4 = 5098 } # Saqqiz [mine], Kermanshah [city] -> Kermanshahan
-	link = { vic3 = x2E8EE8 hoi4 = 8040 } # STATE_IRAKAJEMI -> Hamedan
 	link = { vic3 = x0170E0 vic3 = x01B2D8 hoi4 = 10774 } # STATE_LURISTAN, STATE_LURISTAN -> Kuhdash
-	link = { vic3 = x928FFD hoi4 = 12773 } # Senneh [farm] -> Nurabad
 	link = { comment = "* * STATE_PERSIAN_KURDISTAN " }
+	link = { vic3 = x928FFD hoi4 = 12773 } # Senneh [farm] -> Nurabad
+	link = { vic3 = x51BDFA vic3 = xE050A0 hoi4 = 5098 } # Saqqiz [mine], Kermanshah [city] -> Kermanshahan
 	link = { vic3 = x6B83E1 vic3 = x80F060 vic3 = xB25FAE vic3 = xC186BC vic3 = x2D2CC8 hoi4 = 9816 } # STATE_PERSIAN_KURDISTAN, Qasr-i-Shirin [wood], STATE_PERSIAN_KURDISTAN, STATE_PERSIAN_KURDISTAN, STATE_PERSIAN_KURDISTAN -> Qorveh
 	link = { vic3 = x4A1B9A vic3 = x6F8D9F vic3 = xD7D07C hoi4 = 4943 } # STATE_PERSIAN_KURDISTAN, STATE_PERSIAN_KURDISTAN, STATE_PERSIAN_KURDISTAN -> Sanandaj
 	link = { comment = "* * STATE_HUDAVENDIGAR " }
@@ -4815,8 +4815,8 @@
 	link = { vic3 = x288BCD vic3 = x809080 hoi4 = 11881 } # STATE_TRABZON, Samsun [farm] -> Samsun
 	link = { vic3 = x146DD9 hoi4 = 11894 } # Ordu [city] -> Ünye
 	link = { vic3 = xAE07E3 hoi4 = 3979 } # STATE_TRABZON -> Gümüshane
-	link = { vic3 = x895074 vic3 = x740ED1 hoi4 = 11853 } # Erzurum [city], STATE_ERZURUM -> Erzurum
 	link = { comment = "* * STATE_ERZURUM " }
+	link = { vic3 = x895074 vic3 = x740ED1 hoi4 = 11853 } # Erzurum [city], STATE_ERZURUM -> Erzurum
 	link = { vic3 = x801080 hoi4 = 652 } # STATE_ERZURUM -> land
 	link = { vic3 = x59E513 vic3 = x92A943 hoi4 = 789 } # STATE_ERZURUM, STATE_ERZURUM -> Göle
 	link = { vic3 = x25E046 vic3 = x4F6E8F hoi4 = 864 } # STATE_ERZURUM, Van [farm] -> Edremit
