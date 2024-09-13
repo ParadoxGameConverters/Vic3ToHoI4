@@ -179,6 +179,7 @@
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions.h" />
     <ClInclude Include="src\vic3_world\provinces\vic3_province_definitions_loader.h" />
     <ClInclude Include="src\vic3_world\states\state_region.h" />
+    <ClInclude Include="src\vic3_world\states\state_regions.h" />
     <ClInclude Include="src\vic3_world\states\state_regions_importer.h" />
     <ClInclude Include="src\vic3_world\states\vic3_state.h" />
     <ClInclude Include="src\vic3_world\states\vic3_states_importer.h" />

@@ -8,9 +8,10 @@
 
 
 
-std::map<std::string, vic3::StateRegion> vic3::ImportStateRegions(const commonItems::ModFilesystem filesystem)
+vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& filesystem)
 {
-   std::map<std::string, vic3::StateRegion> state_regions;
+   std::map<std::string, vic3::StateRegion> name_to_region_map;
+   std::vector<std::string> regions_in_order;
 
    std::map<ProvinceId, ProvinceType> significant_provinces;
    std::set<ProvinceId> provinces;
@@ -46,12 +47,14 @@ std::map<std::string, vic3::StateRegion> vic3::ImportStateRegions(const commonIt
 
    commonItems::parser file_parser;
    file_parser.registerRegex(commonItems::catchallRegex,
-       [&state_regions, &region_parser, &significant_provinces, &provinces](const std::string& region_name,
+       [&name_to_region_map, &regions_in_order, &region_parser, &significant_provinces, &provinces](
+           const std::string& region_name,
            std::istream& input_stream) {
           significant_provinces.clear();
           provinces.clear();
           region_parser.parseStream(input_stream);
-          state_regions.emplace(region_name, StateRegion(significant_provinces, provinces));
+          name_to_region_map.emplace(region_name, StateRegion(significant_provinces, provinces));
+          regions_in_order.push_back(region_name);
           for (const auto& [id, type]: significant_provinces)
           {
              if (!provinces.contains(id))
@@ -70,5 +73,5 @@ std::map<std::string, vic3::StateRegion> vic3::ImportStateRegions(const commonIt
       file_parser.parseFile(state_regions_file);
    }
 
-   return state_regions;
+   return {.name_to_region_map = name_to_region_map, .regions_in_order = regions_in_order};
 }
