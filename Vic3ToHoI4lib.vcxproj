@@ -16,6 +16,7 @@
     <ClInclude Include="external\fmt\include\fmt\format.h" />
     <ClInclude Include="external\fmt\include\fmt\os.h" />
     <ClInclude Include="external\rakaly\rakaly.h" />
+    <ClInclude Include="external\stb\stb_image.h" />
     <ClInclude Include="src\configuration\configuration.h" />
     <ClInclude Include="src\configuration\configuration_importer.h" />
     <ClInclude Include="src\hoi4_world\characters\hoi4_character.h" />

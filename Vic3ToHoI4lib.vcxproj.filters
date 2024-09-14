@@ -207,6 +207,9 @@
     <Filter Include="src\hoi4_world\focus_trees">
       <UniqueIdentifier>{e75e61e2-d258-4f81-ae2d-b2f2374594be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="external\stb">
+      <UniqueIdentifier>{c5041c0a-68e3-4cdb-bb92-0c41f9860e3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vic3_to_hoi4_converter.h">
@@ -771,6 +774,9 @@
     </ClInclude>
     <ClInclude Include="src\vic3_world\states\state_regions.h">
       <Filter>src\vic3_world\states</Filter>
+    </ClInclude>
+    <ClInclude Include="external\stb\stb_image.h">
+      <Filter>external\stb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

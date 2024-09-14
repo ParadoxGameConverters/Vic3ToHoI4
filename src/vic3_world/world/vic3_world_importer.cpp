@@ -421,7 +421,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    commonItems::ModFilesystem mod_filesystem(fmt::format("{}/game", configuration.vic3_directory),
        mod_loader.getMods());
    StateRegions state_regions = ImportStateRegions(mod_filesystem);
-   world_options.province_definitions = LoadProvinceDefinitions();
+   world_options.province_definitions = LoadProvinceDefinitions(state_regions, mod_filesystem);
    world_options.state_regions = state_regions.name_to_region_map;
    CheckProvinceTerrainsGrouping(world_options.province_definitions.GetProvinceDefinitions(),
        world_options.state_regions);
