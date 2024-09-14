@@ -15,7 +15,7 @@ TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
    const StateRegions state_regions = ImportStateRegions(mod_filesystem);
 
    EXPECT_TRUE(state_regions.name_to_region_map.empty());
-   EXPECT_TRUE(state_regions.regions_in_order.empty());
+   EXPECT_TRUE(state_regions.region_indexes.empty());
 }
 
 
@@ -45,8 +45,10 @@ TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
                                {"x6F40EC", "mine"},
                                {"x4C9918", "wood"}},
                    {"x0974E5", "x216569"}))));
-   EXPECT_THAT(state_regions.regions_in_order,
-       testing::ElementsAre("STATE_SVEALAND", "STATE_LOMBARDY", "STATE_PIEDMONT"));
+   EXPECT_THAT(state_regions.region_indexes,
+       testing::UnorderedElementsAre(testing::Pair("STATE_SVEALAND", 0),
+           testing::Pair("STATE_LOMBARDY", 1),
+           testing::Pair("STATE_PIEDMONT", 2)));
 }
 
 
