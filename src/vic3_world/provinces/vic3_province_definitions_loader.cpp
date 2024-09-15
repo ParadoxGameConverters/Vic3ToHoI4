@@ -31,6 +31,9 @@ std::map<std::string, int> DetermineProvinceOrdering(const commonItems::ModFiles
 
    std::map<std::string, int> province_indexes;
    std::unordered_set<std::string> found_provinces;
+   uint8_t last_r = 0;
+   uint8_t last_g = 0;
+   uint8_t last_b = 0;
    for (int y = height - 1; y >= 0; --y)
    {
       for (int x = 0; x < width; ++x)
@@ -39,7 +42,14 @@ std::map<std::string, int> DetermineProvinceOrdering(const commonItems::ModFiles
          const uint8_t r = data[pixel * depth + 0];
          const uint8_t g = data[pixel * depth + 1];
          const uint8_t b = data[pixel * depth + 2];
+         if (r == last_r && g == last_g && b == last_b)
+         {
+            continue;
+         }
          const std::string province = fmt::format("x{:0>2X}{:0>2X}{:0>2X}", r, g, b);
+         last_r = r;
+         last_g = g;
+         last_b = b;
          if (auto [_, success] = found_provinces.insert(province); success)
          {
             // successful insertion means this is the first we saw this province's color
@@ -59,6 +69,7 @@ std::map<std::string, int> DetermineProvinceOrdering(const commonItems::ModFiles
 vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions(const StateRegions& state_regions,
     const commonItems::ModFilesystem& filesystem)
 {
+    Log(LogLevel::Info) << "Importing province definitions";
    std::vector<std::string> province_definitions;
 
    const std::map<std::string, int> province_indexes = DetermineProvinceOrdering(filesystem);
@@ -105,5 +116,6 @@ vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions(const StateRegions& stat
       file_parser.parseFile(strategic_region);
    }
 
+   Log(LogLevel::Info) << "done";
    return ProvinceDefinitions(province_definitions);
 }
