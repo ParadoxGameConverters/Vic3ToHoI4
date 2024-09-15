@@ -11,28 +11,98 @@
 namespace vic3
 {
 
-TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionsCanBeLoaded)
+TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByStrategicRegionFile)
 {
-   const auto province_definitions = LoadProvinceDefinitions();
+   const auto province_definitions = LoadProvinceDefinitions(
+       {
+           .name_to_region_map =
+               {
+                   {"STATE_1", StateRegion{{}, {"xFF0000"}}},
+                   {"STATE_2", StateRegion{{}, {"x00FF00"}}},
+               },
+           .region_indexes = {{"STATE_1", 1}, {"STATE_2", 2}},
+       },
+       commonItems::ModFilesystem{
+           "test_files/Vic3WorldProvincesVic3ProvinceDefinitions/DefinitionsAreOrderedByStrategicRegionFile",
+           {}});
 
-   EXPECT_THAT(province_definitions.GetProvinceDefinitions(),
-       testing::ElementsAre("x000001", "x030000", "xABCDEF", "x000200"));
+   EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));
 }
 
 
-TEST(Vic3WorldProvincesVic3ProvinceDefinitions, BadDefinitionsAreLogged)
+TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByRegionOrderInStrategicRegionFile)
 {
-   std::stringstream log;
-   std::streambuf* cout_buffer = std::cout.rdbuf();
-   std::cout.rdbuf(log.rdbuf());
+   const auto province_definitions = LoadProvinceDefinitions(
+       {
+           .name_to_region_map =
+               {
+                   {"STATE_1", StateRegion{{}, {"xFF0000"}}},
+                   {"STATE_2", StateRegion{{}, {"x00FF00"}}},
+               },
+           .region_indexes = {{"STATE_1", 1}, {"STATE_2", 2}},
+       },
+       commonItems::ModFilesystem{"test_files/Vic3WorldProvincesVic3ProvinceDefinitions/"
+                                  "DefinitionsAreOrderedByRegionOrderInStrategicRegionFile",
+           {}});
 
-   const auto province_definitions = LoadProvinceDefinitions();
+   EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));
+}
 
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"([DEBUG]     Ignoring keyword: 0x000004)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"([DEBUG]     Ignoring keyword: x12345)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"([DEBUG]     Ignoring keyword: x1234567)"));
 
-   std::cout.rdbuf(cout_buffer);
+TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByStateRegionIndexingOrder)
+{
+   // The state region indexing order is from scanning map_data/state_regions in file order and the order within the
+   // files
+   const auto province_definitions = LoadProvinceDefinitions(
+       {
+           .name_to_region_map =
+               {
+                   {"STATE_1", StateRegion{{}, {"xFF0000"}}},
+                   {"STATE_2", StateRegion{{}, {"x00FF00"}}},
+               },
+           .region_indexes = {{"STATE_1", 2}, {"STATE_2", 1}},
+       },
+       commonItems::ModFilesystem{
+           "test_files/Vic3WorldProvincesVic3ProvinceDefinitions/DefinitionsAreOrderedByStateRegionIndexingOrder",
+           {}});
+
+   EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));
+}
+
+
+TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByBottomToTopInMapDataProvincesDotPng)
+{
+   const auto province_definitions = LoadProvinceDefinitions(
+       {
+           .name_to_region_map =
+               {
+                   {"STATE", StateRegion{{}, {"xFF0000", "x00FF00"}}},
+               },
+           .region_indexes = {{"STATE", 1}},
+       },
+       commonItems::ModFilesystem{"test_files/Vic3WorldProvincesVic3ProvinceDefinitions/"
+                                  "DefinitionsAreOrderedByBottomToTopInMapDataProvincesDotPng",
+           {}});
+
+   EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));
+}
+
+
+TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByLeftToRightInMapDataProvincesDotPng)
+{
+   const auto province_definitions = LoadProvinceDefinitions(
+       {
+           .name_to_region_map =
+               {
+                   {"STATE", StateRegion{{}, {"xFF0000", "x00FF00"}}},
+               },
+           .region_indexes = {{"STATE", 1}},
+       },
+       commonItems::ModFilesystem{"test_files/Vic3WorldProvincesVic3ProvinceDefinitions/"
+                                  "DefinitionsAreOrderedByLeftToRightInMapDataProvincesDotPng",
+           {}});
+
+   EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));
 }
 
 }  // namespace vic3

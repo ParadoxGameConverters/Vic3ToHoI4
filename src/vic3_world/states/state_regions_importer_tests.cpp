@@ -12,18 +12,19 @@ namespace vic3
 TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
 {
    const commonItems::ModFilesystem mod_filesystem("", {});
-   const std::map<std::string, StateRegion> state_regions = ImportStateRegions(mod_filesystem);
+   const StateRegions state_regions = ImportStateRegions(mod_filesystem);
 
-   EXPECT_TRUE(state_regions.empty());
+   EXPECT_TRUE(state_regions.name_to_region_map.empty());
+   EXPECT_TRUE(state_regions.region_indexes.empty());
 }
 
 
 TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/states/ItemsAreImported/game", {});
-   const std::map<std::string, StateRegion> state_regions = ImportStateRegions(mod_filesystem);
+   const StateRegions state_regions = ImportStateRegions(mod_filesystem);
 
-   EXPECT_THAT(state_regions,
+   EXPECT_THAT(state_regions.name_to_region_map,
        testing::UnorderedElementsAre(testing::Pair("STATE_LOMBARDY",
                                          StateRegion(std::map<std::string, std::string>{{"xD04060", "city"},
                                                          {"x867A90", "farm"},
@@ -44,6 +45,10 @@ TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
                                {"x6F40EC", "mine"},
                                {"x4C9918", "wood"}},
                    {"x0974E5", "x216569"}))));
+   EXPECT_THAT(state_regions.region_indexes,
+       testing::UnorderedElementsAre(testing::Pair("STATE_SVEALAND", 0),
+           testing::Pair("STATE_LOMBARDY", 1),
+           testing::Pair("STATE_PIEDMONT", 2)));
 }
 
 
@@ -55,7 +60,7 @@ TEST(Vic3worldStatesStateRegionsImporterTests, BadSpecialProvincesAreLogged)
 
    const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/states/BadSpecialProvincesAreLogged/game",
        {});
-   const std::map<std::string, StateRegion> _ = ImportStateRegions(mod_filesystem);
+   const StateRegions _ = ImportStateRegions(mod_filesystem);
 
    std::cout.rdbuf(cout_buffer);
 
