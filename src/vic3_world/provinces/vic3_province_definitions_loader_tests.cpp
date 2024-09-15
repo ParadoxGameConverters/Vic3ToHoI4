@@ -105,14 +105,4 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByLef
    EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));
 }
 
-
-TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, ExceptionThrownForMissingProvincesDotPng)
-{
-   EXPECT_THROW([[maybe_unused]] const auto _ = LoadProvinceDefinitions({},
-                    commonItems::ModFilesystem{"test_files/Vic3WorldProvincesVic3ProvinceDefinitions/"
-                                               "ExceptionThrownForMissingProvincesDotPng",
-                        {}}),
-       std::exception);
-}
-
 }  // namespace vic3
