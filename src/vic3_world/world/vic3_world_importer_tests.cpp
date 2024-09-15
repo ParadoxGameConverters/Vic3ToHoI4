@@ -33,7 +33,7 @@ TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
 
    EXPECT_TRUE(world.GetCountries().empty());
    EXPECT_TRUE(world.GetStates().empty());
-   EXPECT_FALSE(world.GetProvinceDefinitions().GetProvinceDefinitions().empty());
+   EXPECT_TRUE(world.GetProvinceDefinitions().GetProvinceDefinitions().empty());
    EXPECT_TRUE(world.GetAcquiredTechnologies().empty());
    EXPECT_EQ(world.GetLocalizations().size(), 0);
    EXPECT_TRUE(world.GetCultureDefinitions().empty());
