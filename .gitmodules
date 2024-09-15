@@ -10,6 +10,3 @@
 [submodule "external/Fronter"]
 	path = external/Fronter
 	url = https://github.com/ParadoxGameConverters/Fronter
-[submodule "external/stb"]
-	path = external/stb
-	url = https://github.com/nothings/stb
