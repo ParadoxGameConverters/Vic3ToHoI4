@@ -5,8 +5,8 @@
 #include <external/fmt/include/fmt/format.h>
 #include <external/stb/stb_image.h>
 
-#include <exception>
 #include <filesystem>
+#include <stdexcept>
 #include <unordered_set>
 
 #include "external/commonItems/CommonRegexes.h"
@@ -26,7 +26,7 @@ std::map<std::string, int> DetermineProvinceOrdering(const commonItems::ModFiles
        stbi_load(filesystem.GetActualFileLocation("map_data/provinces.png")->c_str(), &width, &height, &depth, 0);
    if (data == nullptr)
    {
-      throw std::exception("Could not load map_data/provinces.png");
+      throw std::runtime_error("Could not load map_data/provinces.png");
    }
 
    std::map<std::string, int> province_indexes;
