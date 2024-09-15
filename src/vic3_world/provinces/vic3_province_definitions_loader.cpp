@@ -5,6 +5,7 @@
 #include <external/fmt/include/fmt/format.h>
 #include <external/stb/stb_image.h>
 
+#include <exception>
 #include <filesystem>
 #include <unordered_set>
 
