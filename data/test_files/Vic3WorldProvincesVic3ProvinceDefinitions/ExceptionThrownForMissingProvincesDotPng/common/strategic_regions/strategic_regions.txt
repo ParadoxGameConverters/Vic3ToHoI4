@@ -1,0 +1,7 @@
+﻿region_b = {
+	states = { STATE_2 }
+}
+
+region_a = {
+	states = { STATE_1 }
+}
