@@ -47,6 +47,8 @@ std::map<std::string, int> DetermineProvinceOrdering(const commonItems::ModFiles
       }
    }
    stbi_image_free(data);
+
+   return province_indexes;
 }
 
 }  // namespace
