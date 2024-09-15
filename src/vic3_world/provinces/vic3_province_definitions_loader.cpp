@@ -69,7 +69,6 @@ std::map<std::string, int> DetermineProvinceOrdering(const commonItems::ModFiles
 vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions(const StateRegions& state_regions,
     const commonItems::ModFilesystem& filesystem)
 {
-    Log(LogLevel::Info) << "Importing province definitions";
    std::vector<std::string> province_definitions;
 
    const std::map<std::string, int> province_indexes = DetermineProvinceOrdering(filesystem);
@@ -116,6 +115,5 @@ vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions(const StateRegions& stat
       file_parser.parseFile(strategic_region);
    }
 
-   Log(LogLevel::Info) << "done";
    return ProvinceDefinitions(province_definitions);
 }
