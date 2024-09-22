@@ -9,7 +9,7 @@
 namespace out
 {
 
-TEST(Outhoi4FocustreesOutfocusTests, NationalFocusFileIsGenericFocusTree)
+TEST(Outhoi4FocustreesOutfocusTests, DefaultsAreOutput)
 {
    std::stringstream out;
 
