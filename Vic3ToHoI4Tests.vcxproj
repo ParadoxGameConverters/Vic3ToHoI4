@@ -100,7 +100,8 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests_tech.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_tests.cpp" />
     <ClCompile Include="src\hoi4_world\diplomacy\hoi4_war_converter_tests.cpp" />
-    <ClCompile Include="src\hoi4_world\focus_trees\focus_tree_importer_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\focus_trees\focus_importer_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\focus_trees\focus_tree_assembler_tests.cpp" />
     <ClCompile Include="src\hoi4_world\roles\roles_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\roles\role_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\roles\stories_creator_tests.cpp" />
@@ -109,7 +110,8 @@
     <ClCompile Include="src\mappers\infrastructure\infrastructure_mapper_tests.cpp" />
     <ClCompile Include="src\mappers\world\world_mapper_builder_tests.cpp" />
     <ClCompile Include="src\out_hoi4\diplomacy\out_war_tests.cpp" />
-    <ClCompile Include="src\out_hoi4\national_focus\out_focus_tree_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\focus_trees\out_focus_tests.cpp" />
+    <ClCompile Include="src\out_hoi4\focus_trees\out_focus_tree_tests.cpp" />
     <ClCompile Include="src\vic3_world\countries\vic3_country_tests.cpp" />
     <ClCompile Include="src\vic3_world\database\database_parser_tests.cpp" />
     <ClCompile Include="src\vic3_world\ideologies\ideologies.cpp" />

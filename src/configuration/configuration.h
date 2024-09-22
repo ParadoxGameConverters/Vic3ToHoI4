@@ -11,6 +11,13 @@
 namespace configuration
 {
 
+enum class UseStories
+{
+   kNo,
+   kYes
+};
+
+
 struct Configuration
 {
    std::string vic3_directory;
@@ -21,7 +28,8 @@ struct Configuration
    std::string save_game;
    bool debug = false;
    std::string output_name;
-   bool dynamic_resources = false;
+   bool dynamic_resources = true;
+   UseStories use_stories = UseStories::kNo;
 
    void verifyVic3Path()
    {

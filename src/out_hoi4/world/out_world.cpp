@@ -79,9 +79,9 @@ void OutputBookmark(std::string_view output_name,
 
 }  // namespace
 
-void out::OutputWorld(std::string_view output_name, const hoi4::World& world)
+void out::OutputWorld(std::string_view output_name, const hoi4::World& world, configuration::UseStories use_stories)
 {
-   OutputCountries(output_name, world.GetCountries(), world.GetCharacters());
+   OutputCountries(output_name, world.GetCountries(), world.GetCharacters(), use_stories);
    OutputDecisions(output_name, world.GetCountries());
    OutputMonarchIdeas(output_name, world.GetCountries(), world.GetCharacters());
    OutputStates(output_name, world.GetStates().states);

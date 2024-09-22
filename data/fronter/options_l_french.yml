@@ -12,3 +12,7 @@ l_french:
  DYNAMIC_RESOURCESTIP: "S'il faut convertir les ressources de la sauvegarde Victoria."
  DYNAMIC_RESOURCESNOTIP: "Ressources statiques et historiques."
  DYNAMIC_RESOURCESYESTIP: "Ressources des immeubles Victoria."
+ STORIES_SYSTEM: "Stories System"
+ STORIES_SYSTEMTIP: "Whether or not to use the stories system."
+ STORIES_SYSTEMNOTIP: "Don't use the stories system."
+ STORIES_SYSTEMYESTIP: "Use the stories system."

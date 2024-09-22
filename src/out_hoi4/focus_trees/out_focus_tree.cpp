@@ -1,13 +1,17 @@
-#include "src/out_hoi4/national_focus/out_focus_tree.h"
+#include "src/out_hoi4/focus_trees/out_focus_tree.h"
 
 #include <filesystem>
 #include <fstream>
 
 #include "external/fmt/include/fmt/format.h"
+#include "src/out_hoi4/focus_trees/out_focus.h"
 
 
 
-void out::OutputFocusTree(std::string_view output_name, std::string_view tag)
+void out::OutputFocusTree(std::string_view output_name,
+    std::string_view tag,
+    const hoi4::FocusTree& focus_tree,
+    configuration::UseStories use_stories)
 {
    std::ofstream tree_file(fmt::format("output/{}/common/national_focus/{}_NF.txt", output_name, tag));
    if (!tree_file.is_open())
@@ -30,11 +34,17 @@ void out::OutputFocusTree(std::string_view output_name, std::string_view tag)
    tree_file << "\tdefault = no\n";
    tree_file << "\treset_on_civilwar = no\n";
    tree_file << "\n";
-   tree_file << "\tshared_focus = army_effort\n";
-   tree_file << "\tshared_focus = aviation_effort\n";
-   tree_file << "\tshared_focus = naval_effort\n";
-   tree_file << "\tshared_focus = industrial_effort\n";
-   tree_file << "\tshared_focus = political_effort\n";
+   for (const std::string& shared_focus: focus_tree.shared_focuses)
+   {
+      tree_file << fmt::format("\tshared_focus = {}\n", shared_focus);
+   }
+   if (use_stories == configuration::UseStories::kYes)
+   {
+      for (const hoi4::Focus& focus: focus_tree.focuses)
+      {
+         tree_file << focus;
+      }
+   }
    tree_file << "\n";
    tree_file << "}\n";
 

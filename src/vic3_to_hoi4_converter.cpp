@@ -33,7 +33,7 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration,
    out::ClearOutputFolder(configuration.output_name);
    out::OutputMod(configuration.output_name, converter_version.getMaxTarget());
    out::OutputFlags(configuration.output_name, destination_world.GetCountries(), hoi4_mod_filesystem);
-   out::OutputWorld(configuration.output_name, destination_world);
+   out::OutputWorld(configuration.output_name, destination_world, configuration.use_stories);
    Log(LogLevel::Progress) << "100%";
    Log(LogLevel::Notice) << "* Conversion complete *";
 }

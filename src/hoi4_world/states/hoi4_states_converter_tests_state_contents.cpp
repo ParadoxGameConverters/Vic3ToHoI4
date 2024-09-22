@@ -874,7 +874,12 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreAssigned)
            },
        .province_definitions = world_framework.CopyProvinceDefinitions(),
    });
-   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
+   const auto hoi4_states = ConvertStates(world.Build(),
+       world_mapper.Build(),
+       world_framework.Build(),
+       {},
+       map_data,
+       {.dynamic_resources = false});
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .resources = {{"test_resource", 5.0}}}),
@@ -957,7 +962,12 @@ TEST(Hoi4worldStatesHoi4statesconverter, ResourcesAreLogged)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
+   const auto hoi4_states = ConvertStates(world.Build(),
+       world_mapper.Build(),
+       world_framework.Build(),
+       {},
+       map_data,
+       {.dynamic_resources = false});
 
    std::cout.rdbuf(cout_buffer);
 

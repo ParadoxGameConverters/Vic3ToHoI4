@@ -12,3 +12,7 @@ l_latin:
  DYNAMIC_RESOURCESTIP: "Ut opes a Victoria salvas convertas."
  DYNAMIC_RESOURCESNOTIP: "Bonae statica et historica."
  DYNAMIC_RESOURCESYESTIP: "Victoriae facultates tecta."
+ STORIES_SYSTEM: "Stories System"
+ STORIES_SYSTEMTIP: "Whether or not to use the stories system."
+ STORIES_SYSTEMNOTIP: "Don't use the stories system."
+ STORIES_SYSTEMYESTIP: "Use the stories system."

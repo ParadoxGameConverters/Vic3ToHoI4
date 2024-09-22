@@ -18,7 +18,12 @@ TEST(ConfigurationTest, DefaultsAreDefaulted)
    EXPECT_TRUE(configuration.vic3_mod_path.empty());
    EXPECT_TRUE(configuration.hoi4_directory.empty());
    EXPECT_TRUE(configuration.hoi4_mod_path.empty());
+   EXPECT_EQ(configuration.save_game,
+       "test_save.v3");  // a missing save would throw an exception, so this is set in the 'blank' config
    EXPECT_FALSE(configuration.debug);
+   EXPECT_EQ(configuration.output_name, "test_save");  // if not specified, derived from the save
+   EXPECT_TRUE(configuration.dynamic_resources);
+   EXPECT_EQ(configuration.use_stories, UseStories::kNo);
 }
 
 
@@ -67,6 +72,8 @@ TEST(ConfigurationTest, ItemsCanBeImported)
    EXPECT_EQ(configuration.save_game, "test_save.v3");
    EXPECT_TRUE(configuration.debug);
    EXPECT_EQ(configuration.output_name, "test_output_name");
+   EXPECT_FALSE(configuration.dynamic_resources);
+   EXPECT_EQ(configuration.use_stories, UseStories::kYes);
 }
 
 
@@ -88,6 +95,8 @@ TEST(ConfigurationTest, ItemsAreLoggedWhenImported)
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Save game is test_save.v3)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Debug is active)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Using output name test_output_name)"));
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Dynamic resources is not active)"));
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Stories system is active)"));
 
    std::cout.rdbuf(cout_buffer);
 }

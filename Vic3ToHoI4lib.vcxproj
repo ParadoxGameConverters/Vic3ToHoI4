@@ -29,6 +29,8 @@
     <ClInclude Include="src\hoi4_world\diplomacy\hoi4_war_converter.h" />
     <ClInclude Include="src\hoi4_world\focus_trees\focus.h" />
     <ClInclude Include="src\hoi4_world\focus_trees\focus_importer.h" />
+    <ClInclude Include="src\hoi4_world\focus_trees\focus_tree.h" />
+    <ClInclude Include="src\hoi4_world\focus_trees\focus_tree_assembler.h" />
     <ClInclude Include="src\hoi4_world\localizations\localizations.h" />
     <ClInclude Include="src\hoi4_world\localizations\localizations_converter.h" />
     <ClInclude Include="src\hoi4_world\map\buildings.h" />
@@ -116,6 +118,8 @@
     <ClInclude Include="src\out_hoi4\decisions\out_decisions.h" />
     <ClInclude Include="src\out_hoi4\diplomacy\out_war.h" />
     <ClInclude Include="src\out_hoi4\flags\out_flags.h" />
+    <ClInclude Include="src\out_hoi4\focus_trees\out_focus.h" />
+    <ClInclude Include="src\out_hoi4\focus_trees\out_focus_tree.h" />
     <ClInclude Include="src\out_hoi4\ideas\out_ideas.h" />
     <ClInclude Include="src\out_hoi4\localizations\out_localizations.h" />
     <ClInclude Include="src\out_hoi4\map\out_building.h" />
@@ -129,7 +133,6 @@
     <ClInclude Include="src\out_hoi4\military\out_equipment_variant.h" />
     <ClInclude Include="src\out_hoi4\names\out_names.h" />
     <ClInclude Include="src\out_hoi4\names\out_name_list.h" />
-    <ClInclude Include="src\out_hoi4\national_focus\out_focus_tree.h" />
     <ClInclude Include="src\out_hoi4\out_mod.h" />
     <ClInclude Include="src\out_hoi4\portraits\out_portrait_paths.h" />
     <ClInclude Include="src\out_hoi4\portraits\out_portraits.h" />
@@ -202,7 +205,9 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_country.cpp" />
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter.cpp" />
     <ClCompile Include="src\hoi4_world\diplomacy\hoi4_war_converter.cpp" />
+    <ClCompile Include="src\hoi4_world\focus_trees\focus.cpp" />
     <ClCompile Include="src\hoi4_world\focus_trees\focus_importer.cpp" />
+    <ClCompile Include="src\hoi4_world\focus_trees\focus_tree_assembler.cpp" />
     <ClCompile Include="src\hoi4_world\localizations\localizations_converter.cpp" />
     <ClCompile Include="src\hoi4_world\map\buildings_creator.cpp" />
     <ClCompile Include="src\hoi4_world\map\coastal_provinces_creator.cpp" />
@@ -264,6 +269,8 @@
     <ClCompile Include="src\out_hoi4\decisions\out_decisions.cpp" />
     <ClCompile Include="src\out_hoi4\diplomacy\out_war.cpp" />
     <ClCompile Include="src\out_hoi4\flags\out_flags.cpp" />
+    <ClCompile Include="src\out_hoi4\focus_trees\out_focus.cpp" />
+    <ClCompile Include="src\out_hoi4\focus_trees\out_focus_tree.cpp" />
     <ClCompile Include="src\out_hoi4\ideas\out_ideas.cpp" />
     <ClCompile Include="src\out_hoi4\localizations\out_localizations.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_building.cpp" />
@@ -277,7 +284,6 @@
     <ClCompile Include="src\out_hoi4\military\out_equipment_variant.cpp" />
     <ClCompile Include="src\out_hoi4\names\out_names.cpp" />
     <ClCompile Include="src\out_hoi4\names\out_name_list.cpp" />
-    <ClCompile Include="src\out_hoi4\national_focus\out_focus_tree.cpp" />
     <ClCompile Include="src\out_hoi4\out_mod.cpp" />
     <ClCompile Include="src\out_hoi4\portraits\out_portrait_paths.cpp" />
     <ClCompile Include="src\out_hoi4\portraits\out_portraits.cpp" />

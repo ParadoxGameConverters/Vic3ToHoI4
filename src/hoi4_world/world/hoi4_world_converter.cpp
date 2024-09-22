@@ -9,6 +9,7 @@
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 #include "src/hoi4_world/diplomacy/hoi4_war_converter.h"
+#include "src/hoi4_world/focus_trees/focus_tree_assembler.h"
 #include "src/hoi4_world/localizations/localizations_converter.h"
 #include "src/hoi4_world/map/buildings_creator.h"
 #include "src/hoi4_world/map/coastal_provinces_creator.h"
@@ -322,7 +323,18 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    hoi4::Buildings buildings = buildings_future.get();
 
    const std::map<std::string, Role> roles = ImportRoles();
-   [[maybe_unused]] const auto role_combinations = CreateStories(roles, countries);
+   for (const auto& [tag, country_roles]: CreateStories(roles, countries))
+   {
+      auto country_itr = countries.find(tag);
+      if (country_itr == countries.end())
+      {
+         Log(LogLevel::Warning) << fmt::format("Country {} in story could not be found.", tag);
+         continue;
+      }
+
+      const FocusTree tree = AssembleTree(country_roles, tag);
+      country_itr->second.SetFocusTree(tree);
+   }
 
    return hoi4::World(hoi4::WorldOptions{.countries = countries,
        .great_powers = great_powers,

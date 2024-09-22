@@ -20,6 +20,7 @@ struct Focus
    std::vector<std::string> prerequisites;
    std::optional<std::string> mutually_exclusive;
    std::optional<std::string> bypass;
+   bool tree_starter = false;
    int x_position = 0;
    int y_position = 0;
    std::optional<std::string> relative_position_id;
@@ -33,6 +34,11 @@ struct Focus
    std::string completion_reward;
    std::optional<std::string> ai_will_do;
    std::optional<std::string> allow_branch;
+
+   std::strong_ordering operator<=>(const Focus&) const = default;
+
+   // This allows the Google test framework to print human-readable focuses if a test fails.
+   friend void PrintTo(const Focus& focus, std::ostream* os);
 };
 
 }  // namespace hoi4

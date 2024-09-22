@@ -159,11 +159,28 @@ std::optional<std::vector<std::pair<Tag, hoi4::Role>>> ExpandCombinations(
    return expanded_combinations;
 }
 
+
+std::optional<std::map<Tag, std::vector<hoi4::Role>>> GroupCombinations(
+    const std::vector<std::pair<Tag, hoi4::Role>>& combinations)
+{
+   std::map<Tag, std::vector<hoi4::Role>> grouped_combinations;
+   for (const auto& [tag, role]: combinations)
+   {
+      auto [itr, success] = grouped_combinations.emplace(tag, std::vector{role});
+      if (!success)
+      {
+         itr->second.push_back(role);
+      }
+   }
+
+   return grouped_combinations;
+}
+
 }  // namespace
 
 
 
-std::vector<std::pair<Tag, hoi4::Role>> hoi4::CreateStories(const std::map<std::string, hoi4::Role>& roles,
+std::map<Tag, std::vector<hoi4::Role>> hoi4::CreateStories(const std::map<std::string, hoi4::Role>& roles,
     const std::map<std::string, hoi4::Country>& countries)
 {
    Log(LogLevel::Info) << "Writing stories";
@@ -177,5 +194,8 @@ std::vector<std::pair<Tag, hoi4::Role>> hoi4::CreateStories(const std::map<std::
        .and_then([roles](std::vector<std::pair<Tag, CombinationName>> combinations) {
           return ExpandCombinations(combinations, roles);
        })
-       .value_or(std::vector<std::pair<Tag, Role>>{});
+       .and_then([](std::vector<std::pair<Tag, hoi4::Role>> combinations) {
+          return GroupCombinations(combinations);
+       })
+       .value_or(std::map<Tag, std::vector<hoi4::Role>>{});
 }
