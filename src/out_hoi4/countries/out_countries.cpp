@@ -6,7 +6,7 @@
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/countries/out_country.h"
-#include "src/out_hoi4/national_focus/out_focus_tree.h"
+#include "src/out_hoi4/focus_trees/out_focus_tree.h"
 
 
 
@@ -31,7 +31,7 @@ void out::OutputCountries(std::string_view output_name,
       commonItems::TryCopyFile("configurables/division_templates.txt", oob_file);
       OutputCountryUnits(oob_file, country);
       OutputCountryNavy(output_name, country);
-      OutputFocusTree(output_name, tag);
+      OutputFocusTree(output_name, tag, country.GetFocusTree());
    }
 
    tags_file.close();

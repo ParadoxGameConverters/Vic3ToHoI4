@@ -162,9 +162,6 @@
     <Filter Include="src\mappers\infrastructure">
       <UniqueIdentifier>{7c444af2-8b43-42a1-8594-5ed2a47917c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\out_hoi4\national_focus">
-      <UniqueIdentifier>{51068702-9c15-4e02-8b2e-f7993d075b29}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\vic3_world\database">
       <UniqueIdentifier>{6d91a079-4253-4803-8d94-ca26bcaa0bcd}</UniqueIdentifier>
     </Filter>
@@ -530,9 +527,6 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_converter_tests_tech.cpp">
       <Filter>src\hoi4_world\countries</Filter>
     </ClCompile>
-    <ClCompile Include="src\out_hoi4\national_focus\out_focus_tree_tests.cpp">
-      <Filter>src\out_hoi4\national_focus</Filter>
-    </ClCompile>
     <ClCompile Include="src\hoi4_world\states\hoi4_states_converter_tests_state_contents.cpp">
       <Filter>src\hoi4_world\states</Filter>
     </ClCompile>
@@ -594,6 +588,9 @@
       <Filter>src\hoi4_world\focus_trees</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\focus_trees\out_focus_tests.cpp">
+      <Filter>src\out_hoi4\focus_trees</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\focus_trees\out_focus_tree_tests.cpp">
       <Filter>src\out_hoi4\focus_trees</Filter>
     </ClCompile>
   </ItemGroup>

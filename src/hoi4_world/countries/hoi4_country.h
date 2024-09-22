@@ -146,6 +146,7 @@ class Country
    [[nodiscard]] const std::vector<TaskForce>& GetTaskForces() const { return task_forces_; }
    [[nodiscard]] const std::vector<Unit>& GetUnits() const { return units_; }
    [[nodiscard]] const std::vector<War>& GetWars() const { return wars_; }
+   [[nodiscard]] const FocusTree& GetFocusTree() const { return focus_tree_; }
 
    void AddWar(War war) { wars_.emplace_back(std::move(war)); }
    void RemovePuppets(const std::set<std::string>& puppet_tags);

@@ -165,9 +165,6 @@
     <Filter Include="src\mappers\infrastructure">
       <UniqueIdentifier>{866b1f82-743b-4a7d-a2e9-9175d7a16f92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\out_hoi4\national_focus">
-      <UniqueIdentifier>{6a73785e-ecc8-45e2-b5b4-a89ffff0628c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\vic3_world\institutions">
       <UniqueIdentifier>{ad5258ba-3028-43b7-875d-df5fa5eb841c}</UniqueIdentifier>
     </Filter>
@@ -641,9 +638,6 @@
     <ClInclude Include="src\mappers\world\world_mapper.h">
       <Filter>src\mappers\world</Filter>
     </ClInclude>
-    <ClInclude Include="src\out_hoi4\national_focus\out_focus_tree.h">
-      <Filter>src\out_hoi4\national_focus</Filter>
-    </ClInclude>
     <ClInclude Include="src\hoi4_world\world\hoi4_world_framework.h">
       <Filter>src\hoi4_world\world</Filter>
     </ClInclude>
@@ -788,6 +782,9 @@
       <Filter>src\hoi4_world\focus_trees</Filter>
     </ClInclude>
     <ClInclude Include="src\out_hoi4\focus_trees\out_focus.h">
+      <Filter>src\out_hoi4\focus_trees</Filter>
+    </ClInclude>
+    <ClInclude Include="src\out_hoi4\focus_trees\out_focus_tree.h">
       <Filter>src\out_hoi4\focus_trees</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1119,9 +1116,6 @@
     <ClCompile Include="src\mappers\infrastructure\infrastructure_mapper.cpp">
       <Filter>src\mappers\infrastructure</Filter>
     </ClCompile>
-    <ClCompile Include="src\out_hoi4\national_focus\out_focus_tree.cpp">
-      <Filter>src\out_hoi4\national_focus</Filter>
-    </ClCompile>
     <ClCompile Include="src\vic3_world\institutions\institutions_importer.cpp">
       <Filter>src\vic3_world\institutions</Filter>
     </ClCompile>
@@ -1216,6 +1210,9 @@
       <Filter>src\hoi4_world\focus_trees</Filter>
     </ClCompile>
     <ClCompile Include="src\out_hoi4\focus_trees\out_focus.cpp">
+      <Filter>src\out_hoi4\focus_trees</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\focus_trees\out_focus_tree.cpp">
       <Filter>src\out_hoi4\focus_trees</Filter>
     </ClCompile>
   </ItemGroup>
