@@ -787,6 +787,9 @@
     <ClInclude Include="src\hoi4_world\focus_trees\focus_tree_assembler.h">
       <Filter>src\hoi4_world\focus_trees</Filter>
     </ClInclude>
+    <ClInclude Include="src\out_hoi4\focus_trees\out_focus.h">
+      <Filter>src\out_hoi4\focus_trees</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\vic3_to_hoi4_converter.cpp">
@@ -1211,6 +1214,9 @@
     </ClCompile>
     <ClCompile Include="src\hoi4_world\focus_trees\focus_tree_assembler.cpp">
       <Filter>src\hoi4_world\focus_trees</Filter>
+    </ClCompile>
+    <ClCompile Include="src\out_hoi4\focus_trees\out_focus.cpp">
+      <Filter>src\out_hoi4\focus_trees</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

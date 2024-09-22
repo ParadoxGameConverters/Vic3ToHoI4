@@ -118,6 +118,7 @@
     <ClInclude Include="src\out_hoi4\decisions\out_decisions.h" />
     <ClInclude Include="src\out_hoi4\diplomacy\out_war.h" />
     <ClInclude Include="src\out_hoi4\flags\out_flags.h" />
+    <ClInclude Include="src\out_hoi4\focus_trees\out_focus.h" />
     <ClInclude Include="src\out_hoi4\ideas\out_ideas.h" />
     <ClInclude Include="src\out_hoi4\localizations\out_localizations.h" />
     <ClInclude Include="src\out_hoi4\map\out_building.h" />
@@ -268,6 +269,7 @@
     <ClCompile Include="src\out_hoi4\decisions\out_decisions.cpp" />
     <ClCompile Include="src\out_hoi4\diplomacy\out_war.cpp" />
     <ClCompile Include="src\out_hoi4\flags\out_flags.cpp" />
+    <ClCompile Include="src\out_hoi4\focus_trees\out_focus.cpp" />
     <ClCompile Include="src\out_hoi4\ideas\out_ideas.cpp" />
     <ClCompile Include="src\out_hoi4\localizations\out_localizations.cpp" />
     <ClCompile Include="src\out_hoi4\map\out_building.cpp" />
