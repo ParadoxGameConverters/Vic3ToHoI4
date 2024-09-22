@@ -101,6 +101,7 @@
     <ClCompile Include="src\hoi4_world\countries\hoi4_country_tests.cpp" />
     <ClCompile Include="src\hoi4_world\diplomacy\hoi4_war_converter_tests.cpp" />
     <ClCompile Include="src\hoi4_world\focus_trees\focus_importer_tests.cpp" />
+    <ClCompile Include="src\hoi4_world\focus_trees\focus_tree_assembler_tests.cpp" />
     <ClCompile Include="src\hoi4_world\roles\roles_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\roles\role_importer_tests.cpp" />
     <ClCompile Include="src\hoi4_world\roles\stories_creator_tests.cpp" />
