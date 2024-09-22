@@ -13,8 +13,8 @@ namespace configuration
 
 enum class UseStories
 {
-	kNo,
-    kYes
+   kNo,
+   kYes
 };
 
 

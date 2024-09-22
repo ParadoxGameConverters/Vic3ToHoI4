@@ -88,15 +88,15 @@ configuration::Configuration configuration::ImportConfiguration(std::string_view
       }
    });
    configuration_parser.registerKeyword("stories_system", [&configuration](std::istream& stream) {
-       configuration.use_stories = commonItems::getString(stream) == "yes" ? UseStories::kYes : UseStories::kNo;
-       if (configuration.use_stories == UseStories::kYes)
-       {
-           Log(LogLevel::Info) << "\tStories system is active";
-       }
-       else
-       {
-           Log(LogLevel::Info) << "\tStories system is not active";
-       }
+      configuration.use_stories = commonItems::getString(stream) == "yes" ? UseStories::kYes : UseStories::kNo;
+      if (configuration.use_stories == UseStories::kYes)
+      {
+         Log(LogLevel::Info) << "\tStories system is active";
+      }
+      else
+      {
+         Log(LogLevel::Info) << "\tStories system is not active";
+      }
    });
 
    configuration_parser.parseFile(configuration_file);

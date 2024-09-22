@@ -26,7 +26,7 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
 
       while (focus.id.find("$TAG$") != std::string::npos)
       {
-          focus.id.replace(focus.id.find("$TAG$"), 5, tag);
+         focus.id.replace(focus.id.find("$TAG$"), 5, tag);
       }
    }
 
