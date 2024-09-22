@@ -8,7 +8,10 @@
 
 
 
-void out::OutputFocusTree(std::string_view output_name, std::string_view tag, const hoi4::FocusTree& focus_tree)
+void out::OutputFocusTree(std::string_view output_name,
+    std::string_view tag,
+    const hoi4::FocusTree& focus_tree,
+    configuration::UseStories use_stories)
 {
    std::ofstream tree_file(fmt::format("output/{}/common/national_focus/{}_NF.txt", output_name, tag));
    if (!tree_file.is_open())
@@ -35,9 +38,12 @@ void out::OutputFocusTree(std::string_view output_name, std::string_view tag, co
    {
       tree_file << fmt::format("\tshared_focus = {}\n", shared_focus);
    }
-   for (const hoi4::Focus& focus: focus_tree.focuses)
+   if (use_stories == configuration::UseStories::kYes)
    {
-      tree_file << focus;
+      for (const hoi4::Focus& focus: focus_tree.focuses)
+      {
+         tree_file << focus;
+      }
    }
    tree_file << "\n";
    tree_file << "}\n";

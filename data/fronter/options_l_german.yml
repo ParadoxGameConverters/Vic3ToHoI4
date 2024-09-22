@@ -12,4 +12,8 @@ l_german:
  DYNAMIC_RESOURCESTIP: "Ob Ressourcen aus dem Victoria-Speicher konvertiert werden sollen."
  DYNAMIC_RESOURCESNOTIP: "Statische, historische Ressourcen."
  DYNAMIC_RESOURCESYESTIP: "Ressourcen aus Victoria-Gebäuden."
+ STORIES_SYSTEM: "Stories System"
+ STORIES_SYSTEMTIP: "Whether or not to use the stories system."
+ STORIES_SYSTEMNOTIP: "Don't use the stories system."
+ STORIES_SYSTEMYESTIP: "Use the stories system."
  

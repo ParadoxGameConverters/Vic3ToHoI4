@@ -12,7 +12,8 @@
 
 void out::OutputCountries(std::string_view output_name,
     const std::map<std::string, hoi4::Country>& countries,
-    const std::map<int, hoi4::Character>& characters)
+    const std::map<int, hoi4::Character>& characters,
+    configuration::UseStories use_stories)
 {
    std::ofstream tags_file(fmt::format("output/{}/common/country_tags/00_countries.txt", output_name));
    if (!tags_file.is_open())
@@ -31,7 +32,7 @@ void out::OutputCountries(std::string_view output_name,
       commonItems::TryCopyFile("configurables/division_templates.txt", oob_file);
       OutputCountryUnits(oob_file, country);
       OutputCountryNavy(output_name, country);
-      OutputFocusTree(output_name, tag, country.GetFocusTree());
+      OutputFocusTree(output_name, tag, country.GetFocusTree(), use_stories);
    }
 
    tags_file.close();

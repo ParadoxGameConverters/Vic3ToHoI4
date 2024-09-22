@@ -49,7 +49,8 @@ TEST(Outhoi4WorldOutworld, CountriesFilesAreCreated)
 
    OutputWorld("WorldCountriesFilesAreCreated",
        hoi4::World(hoi4::WorldOptions{
-           .countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+           .countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCountriesFilesAreCreated/common/countries/TAG.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCountriesFilesAreCreated/common/countries/TWO.txt"));
@@ -61,7 +62,8 @@ TEST(Outhoi4WorldOutworld, TagsFileIsCreated)
    CreateTestFolders("WorldTagsFileIsCreated");
 
    OutputWorld("WorldTagsFileIsCreated",
-       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
+       configuration::UseStories::kNo);
 
    std::ifstream country_file("output/WorldTagsFileIsCreated/common/country_tags/00_countries.txt");
    ASSERT_TRUE(country_file.is_open());
@@ -82,7 +84,8 @@ TEST(Outhoi4WorldOutworld, CharactersFilesAreCreated)
 
    OutputWorld("WorldCharactersFilesAreCreated",
        hoi4::World(hoi4::WorldOptions{
-           .countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+           .countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCharactersFilesAreCreated/common/characters/TAG.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCharactersFilesAreCreated/common/characters/TWO.txt"));
@@ -94,7 +97,8 @@ TEST(Outhoi4WorldOutworld, NamesFileIsCreated)
    CreateTestFolders("WorldNamesFileIsCreated");
 
    OutputWorld("WorldNamesFileIsCreated",
-       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldNamesFileIsCreated/common/names/converter_names.txt"));
 }
@@ -105,7 +109,8 @@ TEST(Outhoi4WorldOutworld, CountryHistoryFilesAreCreated)
    CreateTestFolders("WorldCountryHistoryFilesAreCreated");
 
    OutputWorld("WorldCountryHistoryFilesAreCreated",
-       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCountryHistoryFilesAreCreated/history/countries/TAG.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldCountryHistoryFilesAreCreated/history/countries/TWO.txt"));
@@ -117,7 +122,8 @@ TEST(Outhoi4WorldOutworld, DivisionTemplatesAreCopied)
    CreateTestFolders("WorldDivisionTemplatesAreCopied");
 
    OutputWorld("WorldDivisionTemplatesAreCopied",
-       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldDivisionTemplatesAreCopied/history/units/TAG_1936.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldDivisionTemplatesAreCopied/history/units/TWO_1936.txt"));
@@ -129,7 +135,8 @@ TEST(Outhoi4WorldOutworld, StatesHistoryFilesAreCreatedAndOutput)
    CreateTestFolders("StatesHistoryFilesAreCreatedAreOutput");
 
    OutputWorld("StatesHistoryFilesAreCreatedAreOutput",
-       hoi4::World({.states = {.states = {hoi4::State(1, {}), hoi4::State(2, {})}, .province_to_state_id_map = {}}}));
+       hoi4::World({.states = {.states = {hoi4::State(1, {}), hoi4::State(2, {})}, .province_to_state_id_map = {}}}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/StatesHistoryFilesAreCreatedAreOutput/history/states/1.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/StatesHistoryFilesAreCreatedAreOutput/history/states/2.txt"));
@@ -145,7 +152,8 @@ TEST(Outhoi4WorldOutworld, StrategicRegionsFilesAreCreatedAndOutput)
        {2, hoi4::StrategicRegion({.filename = "strategic_region_2.txt", .id = 2})}};
 
    OutputWorld("StrategicRegionsFilesAreCreatedAndOutput",
-       hoi4::World({.strategic_regions = hoi4::StrategicRegions({.strategic_regions = strategic_regions})}));
+       hoi4::World({.strategic_regions = hoi4::StrategicRegions({.strategic_regions = strategic_regions})}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist(
        "output/StrategicRegionsFilesAreCreatedAndOutput/map/strategicregions/strategic_region_1.txt"));
@@ -174,7 +182,9 @@ TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
    const hoi4::BuildingsOptions options{.buildings = buildings_list, .airport_locations = {{2, 4}, {3, 9}, {4, 16}}};
    const hoi4::Buildings buildings(options);
 
-   OutputWorld("BuildingsFileIsCreatedAndOutput", hoi4::World({.buildings = buildings}));
+   OutputWorld("BuildingsFileIsCreatedAndOutput",
+       hoi4::World({.buildings = buildings}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/BuildingsFileIsCreatedAndOutput/map/buildings.txt"));
    EXPECT_TRUE(commonItems::DoesFileExist("output/BuildingsFileIsCreatedAndOutput/map/airports.txt"));
@@ -190,7 +200,9 @@ TEST(Outhoi4WorldOutworld, RailwaysFileIsCreatedAndOutput)
                                           hoi4::Railway(2, {2, 4, 8}),
                                       }};
 
-   OutputWorld("RailwaysFileIsCreatedAndOutput", hoi4::World({.railways = railways_list}));
+   OutputWorld("RailwaysFileIsCreatedAndOutput",
+       hoi4::World({.railways = railways_list}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/BuildingsFileIsCreatedAndOutput/map/railways.txt"));
 }
@@ -209,7 +221,9 @@ TEST(Outhoi4WorldOutworld, SupplyNodesFileIsCreatedAndOutput)
        .supply_nodes = {1, 2, 4, 8},
    };
 
-   OutputWorld("SupplyNodesFileIsCreatedAndOutput", hoi4::World({.railways = railways_list}));
+   OutputWorld("SupplyNodesFileIsCreatedAndOutput",
+       hoi4::World({.railways = railways_list}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/BuildingsFileIsCreatedAndOutput/map/supply_nodes.txt"));
 }
@@ -220,7 +234,8 @@ TEST(Outhoi4WorldOutworld, PortraitsFileIsCreated)
    CreateTestFolders("WorldPortraitsFileIsCreated");
 
    OutputWorld("WorldPortraitsFileIsCreated",
-       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}));
+       hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
+       configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/WorldPortraitsFileIsCreated/portraits/converter_portraits.txt"));
 }
@@ -278,7 +293,7 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
        character_localizations,
        idea_localizations);
 
-   OutputWorld("LocalizationsAreOutput", hoi4::World({.localizations = localizations}));
+   OutputWorld("LocalizationsAreOutput", hoi4::World({.localizations = localizations}), configuration::UseStories::kNo);
    ASSERT_TRUE(
        commonItems::DoesFileExist("output/LocalizationsAreOutput/localisation/braz_por/countries_l_braz_por.yml"));
    ASSERT_TRUE(
@@ -354,7 +369,8 @@ TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
        hoi4::World({
            .great_powers = {"ONE", "TWO"},
            .major_powers = {"THR", "FOR"},
-       }));
+       }),
+       configuration::UseStories::kNo);
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/BookmarkIsOutput/common/bookmarks/the_grand_campaign.txt"));
    std::ifstream bookmark_file("output/BookmarkIsOutput/common/bookmarks/the_grand_campaign.txt");
@@ -398,7 +414,8 @@ TEST(Outhoi4WorldOutworld, ExceptionIfBookmarkFileNotCreated)
    CreateTestFolders("ExceptionIfBookmarkFileNotCreated");
    std::filesystem::remove("output/ExceptionIfBookmarkFileNotCreated/common/bookmarks");
 
-   EXPECT_THROW(OutputWorld("ExceptionIfBookmarkFileNotCreated", hoi4::World({})), std::runtime_error);
+   EXPECT_THROW(OutputWorld("ExceptionIfBookmarkFileNotCreated", hoi4::World({}), configuration::UseStories::kNo),
+       std::runtime_error);
 }
 
 }  // namespace out
