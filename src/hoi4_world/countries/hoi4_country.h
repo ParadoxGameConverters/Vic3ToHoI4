@@ -8,12 +8,14 @@
 #include "external/commonItems/Color.h"
 #include "external/commonItems/Date.h"
 #include "src/hoi4_world/diplomacy/hoi4_war.h"
+#include "src/hoi4_world/focus_trees/focus_tree.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/ship.h"
 #include "src/hoi4_world/military/task_force.h"
 #include "src/hoi4_world/technology/technologies.h"
 #include "src/mappers/country/country_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapping.h"
+
 
 
 namespace hoi4
@@ -147,6 +149,7 @@ class Country
 
    void AddWar(War war) { wars_.emplace_back(std::move(war)); }
    void RemovePuppets(const std::set<std::string>& puppet_tags);
+   void SetFocusTree(const FocusTree& focus_tree) { focus_tree_ = focus_tree; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
 
@@ -187,6 +190,7 @@ class Country
    int convoys_;
    std::vector<TaskForce> task_forces_;
    std::vector<War> wars_;
+   FocusTree focus_tree_;
 };
 
 }  // namespace hoi4
