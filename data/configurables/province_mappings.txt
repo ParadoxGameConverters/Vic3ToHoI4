@@ -4889,9 +4889,7 @@
 	link = { vic3 = x537501 hoi4 = 712 hoi4 = 683 } # STATE_DAGESTAN -> Terekli-Mekteb, Shelkovskaya
 	link = { vic3 = x4C6398 hoi4 = 6748 hoi4 = 6730 hoi4 = 728 } # STATE_DAGESTAN -> Kochubey, Tarumovka, land
 	link = { vic3 = xC09041 hoi4 = 7554 } # STATE_DAGESTAN -> Tsurib
-	link = { vic3 = x0BDBDA hoi4 = 11609 } # Vladikavkaz [mine] -> Kazbegi
 	link = { vic3 = x84A24F hoi4 = 9645 hoi4 = 3711 } # STATE_DAGESTAN -> Buynaksk, Rutul
-	link = { vic3 = xEE9B40 hoi4 = 11614 hoi4 = 9647 } # Nalchik [farm] -> Ardon, Malgobek
 	link = { comment = "* * STATE_KUBAN " }
 	link = { vic3 = x16687C hoi4 = 719 } # STATE_KUBAN -> Gelendzhik
 	link = { vic3 = x9A01E0 hoi4 = 9726 } # STATE_KUBAN -> Novoaleksandrovskaya
@@ -4910,7 +4908,6 @@
 	link = { vic3 = x522F82 vic3 = x6F16AA hoi4 = 6781 } # STATE_KUBAN, STATE_KUBAN -> Belaya Glina
 	link = { vic3 = xE6667B hoi4 = 6783 } # STATE_KUBAN -> Yeysk
 	link = { vic3 = x7BCBCC hoi4 = 9674 } # STATE_KUBAN -> Psebay
-	link = { vic3 = x2790A8 hoi4 = 714 } # Batalpashinskaya [wood] -> Pyatigorsk
 	link = { vic3 = xAF4F59 hoi4 = 735 } # STATE_KUBAN -> Armavir
 	link = { vic3 = xD5648D hoi4 = 3760 } # STATE_KUBAN -> Krymskaya
 	link = { vic3 = xC88562 hoi4 = 9696 } # STATE_KUBAN -> Goryachiy Klyuch
@@ -4930,7 +4927,6 @@
 	link = { vic3 = x16A02D hoi4 = 11708 } # STATE_ARMENIA -> Ijevan
 	link = { vic3 = x805000 hoi4 = 12450 } # Yerevan [city][mine] -> Basargechar
 	link = { comment = "* * STATE_AZERBAIJAN " }
-	link = { vic3 = x2F7A57 hoi4 = 1467 } # Shusha [wood] -> Step'anakert
 	link = { vic3 = x493F0B vic3 = x0B74ED hoi4 = 4614 } # Shemakha [farm], STATE_AZERBAIJAN -> Haciqabul
 	link = { vic3 = x008FBF hoi4 = 1536 } # STATE_AZERBAIJAN -> Zubovka
 	link = { vic3 = x007060 hoi4 = 4473 } # STATE_AZERBAIJAN -> Lankaran
@@ -4958,9 +4954,10 @@
 	link = { vic3 = x4A4DF9 hoi4 = 4534 } # Bolnisi [mine] -> Dusheti
 	link = { vic3 = xFB53B8 hoi4 = 12309 } # STATE_GREATER_CAUCASUS -> Sagarejo
 	link = { comment = "* * STATE_SAMARA " }
+	link = { vic3 = xFBE9D0 hoi4 = 3551 } # STATE_SAMARA -> Yershov
+	link = { vic3 = x53AFD2 hoi4 = 9473 } # STATE_SAMARA -> Dergachi
+	link = { vic3 = x8F80BA hoi4 = 6574 } # STATE_SAMARA -> land
 	link = { vic3 = xEF1983 vic3 = xA46A6B hoi4 = 227 } # STATE_SAMARA, STATE_SAMARA -> Sok-Karmala
-	link = { vic3 = x1889E9 hoi4 = 257 } # STATE_TARTARIA -> Kuznetsk
-	link = { vic3 = xF413F5 hoi4 = 291 } # Ufa [city] -> Birsk
 	link = { vic3 = xB7AA35 hoi4 = 298 } # STATE_SAMARA -> Sok-Karmala
 	link = { vic3 = x32A08B hoi4 = 339 } # STATE_SAMARA -> Bol'shaya Rakovka
 	link = { vic3 = xFA8D56 hoi4 = 365 } # STATE_SAMARA -> Bol'shaya Glushitsa
@@ -4970,14 +4967,9 @@
 	link = { vic3 = xE41C9D hoi4 = 497 } # STATE_SAMARA -> Bol'shaya Cheringovka
 	link = { vic3 = x37CD87 vic3 = xCF6246 hoi4 = 1210 } # STATE_SAMARA, STATE_SAMARA -> Saraktash
 	link = { vic3 = x21DFA0 vic3 = x9F49D5 vic3 = xE44235 hoi4 = 1254 } # STATE_SAMARA, STATE_SAMARA, STATE_SAMARA -> Akbulak
-	link = { vic3 = xC4B284 hoi4 = 3196 } # STATE_TARTARIA -> Nikolayevka
 	link = { vic3 = x1E5008 hoi4 = 3216 } # STATE_SAMARA -> Borskoye
-	link = { vic3 = x8BB04E hoi4 = 3246 hoi4 = 6394 } # STATE_TARTARIA -> Novospasskoye, Staraya Kulatka
 	link = { vic3 = x51CA06 hoi4 = 3265 } # Buguruslan [mine] -> Buguruslan
-	link = { vic3 = x161ACD hoi4 = 9338 } # STATE_TARTARIA -> Sengiley
-	link = { vic3 = x346C85 hoi4 = 3276 } # STATE_TARTARIA -> Kuzovatovo
 	link = { vic3 = x59D2D4 hoi4 = 3330 } # STATE_SAMARA -> Totskoye
-	link = { vic3 = x56CB77 vic3 = x7B1203 hoi4 = 3348 } # STATE_KAZAN, STATE_KAZAN -> Muslyumovo
 	link = { vic3 = x024868 hoi4 = 3357 } # STATE_SAMARA -> Buzuluk
 	link = { vic3 = x16B7FE hoi4 = 3382 hoi4 = 11319 } # STATE_SAMARA -> Cherdakly, Mullovka
 	link = { vic3 = x93546F vic3 = xE9FFBB hoi4 = 3385 } # STATE_SAMARA, STATE_SAMARA -> Koltubanka
@@ -4985,13 +4977,9 @@
 	link = { vic3 = x2505DB hoi4 = 3563 } # STATE_SAMARA -> Krasnokholm
 	link = { vic3 = x2FE543 hoi4 = 4322 } # STATE_SAMARA -> Sol'-Iletsk
 	link = { vic3 = x3F9C38 vic3 = x658056 hoi4 = 4324 } # STATE_SAMARA, STATE_SAMARA -> Abdulino
-	link = { vic3 = x199917 hoi4 = 4400 } # STATE_VYATKA -> Karakulino
-	link = { vic3 = x2D0CA0 hoi4 = 6226 } # STATE_TARTARIA -> Syzran'
 	link = { vic3 = xA121CB hoi4 = 6302 } # STATE_SAMARA -> Teren'ga
-	link = { vic3 = x117254 vic3 = x27325A hoi4 = 6308 } # STATE_KAZAN, STATE_KAZAN -> Aznakayevo
 	link = { vic3 = xB53431 hoi4 = 6339 } # STATE_SAMARA -> Dukhovnitskoye
 	link = { vic3 = x250FCA vic3 = xA06020 hoi4 = 6352 } # STATE_SAMARA, STATE_SAMARA -> Bugul'ma
-	link = { vic3 = x219B42 vic3 = x35E9F6 vic3 = xF9072C vic3 = xDC7014 vic3 = xB0A1F1 hoi4 = 6368 } # STATE_KAZAN, STATE_KAZAN, STATE_KAZAN, STATE_KAZAN, STATE_KAZAN -> Aktanysh
 	link = { vic3 = xD914CA hoi4 = 6379 } # STATE_SAMARA -> Grachevka
 	link = { vic3 = xD4F3FD hoi4 = 6404 } # STATE_SAMARA -> Koshki
 	link = { vic3 = x11EA2C vic3 = x942629 hoi4 = 6424 } # STATE_SAMARA, STATE_SAMARA -> Malochagansk
@@ -4999,18 +4987,15 @@
 	link = { vic3 = x20D17F hoi4 = 6502 } # STATE_SAMARA -> Balakovo
 	link = { vic3 = x7EA5A3 hoi4 = 6515 } # STATE_SAMARA -> Sorochinsk
 	link = { vic3 = xB921A7 vic3 = xE0856C hoi4 = 7343 } # STATE_SAMARA, STATE_SAMARA -> Sharlyk
-	link = { vic3 = xA9655B vic3 = x75D7E5 vic3 = x094CC5 vic3 = x031756 hoi4 = 1380 } # STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM -> Chernushka
 	link = { vic3 = xA0E021 hoi4 = 9243 } # STATE_SAMARA -> Chapayevsk
 	link = { vic3 = xCEF631 vic3 = xE6ED05 hoi4 = 9271 } # STATE_SAMARA, STATE_SAMARA -> Sudokhol
 	link = { vic3 = x795854 hoi4 = 9299 } # STATE_SAMARA -> Stavropol'-na-Volge
 	link = { vic3 = xD49810 hoi4 = 6275 } # STATE_SAMARA -> Otvazhnoye
 	link = { vic3 = x1C1FB7 hoi4 = 9337 } # Nikolaevsk [wood] -> Ivanteyevka
 	link = { vic3 = x0DFFD3 hoi4 = 9365 } # STATE_SAMARA -> Privolzh'ye
-	link = { vic3 = xA84ECC vic3 = x0E6979 hoi4 = 9385 } # STATE_KAZAN, Yelabuga [wood] -> Menzelinsk
 	link = { vic3 = x42401C vic3 = x7C8665 hoi4 = 9391 } # STATE_SAMARA, STATE_SAMARA -> Pestravka
 	link = { vic3 = xDADB41 hoi4 = 9420 } # STATE_SAMARA -> Ilek
 	link = { vic3 = xB70239 vic3 = xCF5257 hoi4 = 10299 } # STATE_SAMARA, STATE_SAMARA -> Novosergiyevka
-	link = { vic3 = xD38CCF hoi4 = 10301 } # STATE_KAZAN -> Naberezhnyye Chelny
 	link = { vic3 = xBF7060 vic3 = x90C19D hoi4 = 11225 } # Samara [city], STATE_SAMARA -> Kuybyshev
 	link = { vic3 = xA7620E hoi4 = 11256 } # STATE_SAMARA -> Pokhvistnevo
 	link = { vic3 = xC45745 hoi4 = 11273 } # STATE_SAMARA -> Dimitrovgrad
@@ -5018,26 +5003,25 @@
 	link = { vic3 = xD9B952 hoi4 = 11321 } # STATE_SAMARA -> Smorodnika
 	link = { vic3 = xEE1033 hoi4 = 11348 } # STATE_SAMARA -> Pavlovka
 	link = { vic3 = x115723 hoi4 = 11377 } # STATE_SAMARA -> Kinel'
-	link = { vic3 = xCB5C74 hoi4 = 403 } # STATE_KAZAN -> Bavly
-	link = { vic3 = xDEBD6D hoi4 = 11389 } # Almetyevsk [mine] -> Karabash
 	link = { vic3 = x1CF34F hoi4 = 11433 } # STATE_SAMARA -> Tashla
 	link = { vic3 = xB52DF6 hoi4 = 11458 } # STATE_SAMARA -> land
 	link = { vic3 = x5B392A hoi4 = 12242 } # STATE_SAMARA -> Uranbash
 	link = { vic3 = xA7B747 hoi4 = 12270 } # STATE_SAMARA -> Kashirinsk
 	link = { vic3 = x28AD29 vic3 = x7F204D vic3 = xE9B9FB hoi4 = 12298 } # STATE_SAMARA, STATE_SAMARA, Orenburg [farm] -> Cheben'ki
 	link = { comment = "* * STATE_TARTARIA " }
+	link = { vic3 = x2D0CA0 hoi4 = 6226 } # STATE_TARTARIA -> Syzran'
+	link = { vic3 = x8BB04E hoi4 = 3246 hoi4 = 6394 } # STATE_TARTARIA -> Novospasskoye, Staraya Kulatka
+	link = { vic3 = x161ACD hoi4 = 9338 } # STATE_TARTARIA -> Sengiley
+	link = { vic3 = x346C85 hoi4 = 3276 } # STATE_TARTARIA -> Kuzovatovo
+	link = { vic3 = xC4B284 hoi4 = 3196 } # STATE_TARTARIA -> Nikolayevka
+	link = { vic3 = x1889E9 hoi4 = 257 } # STATE_TARTARIA -> Kuznetsk
 	link = { vic3 = xF0F779 hoi4 = 353 hoi4 = 3477 } # STATE_TARTARIA -> Baltay, Voskresenskoye
-	link = { vic3 = x41D846 hoi4 = 367 hoi4 = 340 } # Tambov [city] -> Bondari, Rasskazovo
 	link = { vic3 = x587F59 hoi4 = 433 } # STATE_TARTARIA -> Kazachka
 	link = { vic3 = xD9BEED hoi4 = 499 } # STATE_TARTARIA -> Krasnyy Kut
 	link = { vic3 = xD6ACAE hoi4 = 578 hoi4 = 11551 hoi4 = 3426 } # STATE_TARTARIA -> Rybushka, Kolokol'tsova, Balanda
 	link = { vic3 = x1C9CEB hoi4 = 3343 hoi4 = 326 } # STATE_TARTARIA -> Cherkasskoye, Vol'sk
 	link = { vic3 = xD19BE5 hoi4 = 3372 } # STATE_TARTARIA -> Pavlovka
-	link = { vic3 = xAA798E hoi4 = 3517 } # STATE_ASTRAKHAN -> Zolotari
-	link = { vic3 = x60DF21 hoi4 = 3518 hoi4 = 6539 hoi4 = 6563 } # STATE_ASTRAKHAN -> Krasnyy Yar, Bal'tser, Zhirnovsk
-	link = { vic3 = xFBE9D0 hoi4 = 3551 } # STATE_SAMARA -> Yershov
 	link = { vic3 = x302B65 hoi4 = 3578 } # STATE_TARTARIA -> Saratov
-	link = { vic3 = xFE56AF hoi4 = 6317 hoi4 = 6341 } # Lipetsk [mine] -> Usman', Khlevnoye
 	link = { vic3 = x370996 hoi4 = 3304 } # STATE_TARTARIA -> Makarovo
 	link = { vic3 = xE4E080 hoi4 = 6328 hoi4 = 6353 } # STATE_TARTARIA -> Rtishchevo, Tamala
 	link = { vic3 = x5DC7DF hoi4 = 3316 } # STATE_TARTARIA -> Alekseyevka
@@ -5046,33 +5030,29 @@
 	link = { vic3 = x1233B6 vic3 = xFAB9A8 hoi4 = 6450 } # STATE_TARTARIA, Saratov [city] -> Tatishchevo
 	link = { vic3 = x112A5D hoi4 = 6479 } # STATE_TARTARIA -> Pallasovka
 	link = { vic3 = x8447C0 hoi4 = 6492 hoi4 = 3465 } # STATE_TARTARIA -> Arkadak, Romanovka
-	link = { vic3 = x4190C0 vic3 = x41AA95 hoi4 = 6541 } # STATE_ASTRAKHAN, STATE_ASTRAKHAN -> El'ton
-	link = { vic3 = x53AFD2 hoi4 = 9473 } # STATE_SAMARA -> Dergachi
-	link = { vic3 = x8F80BA hoi4 = 6574 } # STATE_SAMARA -> land
 	link = { vic3 = x269530 vic3 = x1E7643 hoi4 = 6587 } # STATE_TARTARIA, STATE_TARTARIA -> Povorino
-	link = { vic3 = xE66DB2 hoi4 = 9258 } # Penza [farm] -> Penza
 	link = { vic3 = x904CD8 hoi4 = 9326 hoi4 = 11449 } # STATE_TARTARIA -> land, Atkarsk
 	link = { vic3 = x66929F hoi4 = 9352 } # STATE_TARTARIA -> Yekaterinovka
 	link = { vic3 = x0BAE1A hoi4 = 9380 hoi4 = 9409 } # STATE_TARTARIA -> Kolyshley, Telegino
 	link = { vic3 = xEBD048 vic3 = xC7340F hoi4 = 9432 } # STATE_TARTARIA, STATE_TARTARIA -> Marksshtadt
 	link = { vic3 = xF2884A hoi4 = 9460 } # STATE_TARTARIA -> Slastukha
-	link = { vic3 = xE8B3EC hoi4 = 9475 } # STATE_ASTRAKHAN -> Nizhnyaya Dobrinka
-	link = { vic3 = x6161A0 hoi4 = 9529 hoi4 = 6428 } # Novokhopersk [wood] -> Novokhopyorskiy, Ternovka
 	link = { vic3 = x2517B5 hoi4 = 9564 } # STATE_TARTARIA -> Samoylovka
 	link = { vic3 = x184EBD hoi4 = 9577 hoi4 = 6601 } # STATE_TARTARIA -> Mikhaylovskiy, Mokrous
 	link = { vic3 = x69239F hoi4 = 11308 hoi4 = 483 } # STATE_TARTARIA -> Petrovsk, Yelshanka
 	link = { vic3 = x060F1F hoi4 = 208 hoi4 = 380 } # STATE_TARTARIA -> Verkhozim, Neverkino
 	link = { vic3 = x9672A5 hoi4 = 11364 } # STATE_TARTARIA -> Lopatino
 	link = { vic3 = x3BA63A hoi4 = 11393 hoi4 = 11335 } # STATE_TARTARIA -> Shemysheyka, Kondol'
-	link = { vic3 = xB5D0F6 hoi4 = 11395 } # STATE_ASTRAKHAN -> Rovnoye
 	link = { vic3 = x85FB7E hoi4 = 11408 hoi4 = 544 } # Balashov [wood] -> Balashov, Preobrazhenskaya
 	link = { vic3 = x5DFE91 hoi4 = 11421 } # STATE_TARTARIA -> Podlesnoye
 	link = { vic3 = x9633B6 hoi4 = 11460 } # STATE_TARTARIA -> Rovnoye
 	link = { vic3 = xB353F0 hoi4 = 11523 } # STATE_TARTARIA -> Engel's
 	link = { comment = "* * STATE_ASTRAKHAN " }
-	link = { vic3 = x9743F5 hoi4 = 481 } # Sadovoye [mine] -> Sadovoye
+	link = { vic3 = xB5D0F6 hoi4 = 11395 } # STATE_ASTRAKHAN -> Rovnoye
+	link = { vic3 = xAA798E hoi4 = 3517 } # STATE_ASTRAKHAN -> Zolotari
+	link = { vic3 = x60DF21 hoi4 = 3518 hoi4 = 6539 hoi4 = 6563 } # STATE_ASTRAKHAN -> Krasnyy Yar, Bal'tser, Zhirnovsk
+	link = { vic3 = x4190C0 vic3 = x41AA95 hoi4 = 6541 } # STATE_ASTRAKHAN, STATE_ASTRAKHAN -> El'ton
+	link = { vic3 = xE8B3EC hoi4 = 9475 } # STATE_ASTRAKHAN -> Nizhnyaya Dobrinka
 	link = { vic3 = xD4CB58 hoi4 = 520 hoi4 = 11474 } # Tsaritsyn [mine] -> Tsarev, Krasnaya Sloboda
-	link = { vic3 = xEEDC59 hoi4 = 759 } # Yashkul [wood] -> Yashkul'
 	link = { vic3 = xEDBFF9 hoi4 = 3435 } # STATE_ASTRAKHAN -> land
 	link = { vic3 = x805140 hoi4 = 3461 } # STATE_ASTRAKHAN -> Chyornyy Yar
 	link = { vic3 = x70BC3A hoi4 = 3475 hoi4 = 3487 } # STATE_ASTRAKHAN -> Malyye Derbety, Solodniki
@@ -5094,38 +5074,32 @@
 	link = { vic3 = x047D6D hoi4 = 11484 hoi4 = 3529 hoi4 = 3555 } # STATE_ASTRAKHAN -> Bykovo, Stalingrad, Dubovka
 	link = { vic3 = x2DED24 hoi4 = 11579 } # STATE_ASTRAKHAN -> Yenotayevsk
 	link = { vic3 = x015040 hoi4 = 11706 } # STATE_ASTRAKHAN -> Bertyul'
-	link = { vic3 = x1D7F6C hoi4 = 11724 hoi4 = 9739 } # Elista [city] -> Elista, Priyutnoye
 	link = { vic3 = x4DC8C8 hoi4 = 1271 hoi4 = 1496 hoi4 = 1050 hoi4 = 843 } # x4DC8C8 -> (Lake), (Lake), (Lake), (Lake)
 	link = { comment = "* * STATE_UZBEKIA " }
 	link = { vic3 = x17227F hoi4 = 1216 } # STATE_UZBEKIA -> Khayronbed
-	link = { vic3 = x5B18B1 vic3 = x6DA038 vic3 = x65165E hoi4 = 1384 } # STATE_TAJIKISTAN, Dushanbe [city], STATE_TAJIKISTAN -> Stalinobod
-	link = { vic3 = xB24B12 vic3 = x3D854F vic3 = x4B7066 hoi4 = 1459 } # STATE_FERGANA, Tashkent [city], STATE_FERGANA -> Toshkent
 	link = { vic3 = x33A3BE vic3 = x7BF1C1 vic3 = x82E6C0 vic3 = x95C1EA vic3 = xB24806 hoi4 = 1532 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA -> land
 	link = { vic3 = x6B31FF vic3 = x72D3A8 vic3 = x8D638E vic3 = xA69653 vic3 = xDAD39B vic3 = xFD83A1 vic3 = xC87F8A vic3 = x1F4F98 vic3 = x9A8732 vic3 = x14A7BE hoi4 = 1554 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA -> Uchquduq
 	link = { vic3 = x11BEB1 vic3 = x865AAB vic3 = x8A56DC vic3 = x8B8972 vic3 = xD87EBF hoi4 = 1573 } # STATE_UZBEKIA, STATE_UZBEKIA, Bukhara [farm], STATE_UZBEKIA, STATE_UZBEKIA -> Buxoro
 	link = { vic3 = x078459 vic3 = x367C49 vic3 = x3ABB84 vic3 = xC3D59A vic3 = xDC6A33 hoi4 = 1623 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA -> land
-	link = { vic3 = x1A750E vic3 = x224CB7 vic3 = x6DD7B6 hoi4 = 1919 } # STATE_TAJIKISTAN, STATE_TAJIKISTAN, STATE_TAJIKISTAN -> Panjakent
 	link = { vic3 = x18805C vic3 = x7A943A vic3 = xDFE90C hoi4 = 4488 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA -> land
-	link = { vic3 = x8AE0DC hoi4 = 4499 } # STATE_KHIVA -> land
 	link = { vic3 = x44F40B vic3 = x7A884B vic3 = xA1DF6D vic3 = x973B9F hoi4 = 4629 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA -> Bulung'ur
 	link = { vic3 = x086B0D vic3 = x5DEB84 vic3 = xB38748 hoi4 = 7501 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA -> Tomdibuloq
 	link = { vic3 = x7A0CCA vic3 = xCEA4C1 vic3 = xD38A78 hoi4 = 7507 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA -> land
 	link = { vic3 = x156B96 vic3 = xFD2FE1 hoi4 = 7639 } # STATE_UZBEKIA, Karshi [wood] -> Qarshi
 	link = { vic3 = xA02922 vic3 = xA3FA94 vic3 = xC359F7 hoi4 = 7682 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA -> Do'stlik
 	link = { vic3 = x417F81 vic3 = x8DE506 vic3 = xED1489 vic3 = xF5EF8A hoi4 = 7775 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, Nurata [mine] -> Nurota
-	link = { vic3 = x669165 vic3 = xF9A3AF hoi4 = 10148 } # Shymkent [mine], STATE_SYRDARYA -> Qazyghurt
-	link = { vic3 = x62B5FA hoi4 = 10205 } # STATE_TAJIKISTAN -> Denov
 	link = { vic3 = x52C5B4 vic3 = x6BD3A0 vic3 = x73D87A vic3 = x97161C vic3 = x9F6258 hoi4 = 10420 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA -> land
 	link = { vic3 = xB0C419 vic3 = xB1E3FB hoi4 = 10470 } # STATE_UZBEKIA, STATE_UZBEKIA -> land
 	link = { vic3 = xD056DC vic3 = xF9BC1A hoi4 = 10671 } # Samarkand [city], STATE_UZBEKIA -> Samarqand
 	link = { vic3 = x71F3E8 vic3 = xA69FFF vic3 = xD5BC6F hoi4 = 12161 } # STATE_UZBEKIA, STATE_UZBEKIA, STATE_UZBEKIA -> land
-	link = { vic3 = x94C7A6 vic3 = xD84D24 hoi4 = 12218 } # Kurgan-Tube [farm], STATE_TAJIKISTAN -> Bokhtar
-	link = { vic3 = x9856D4 vic3 = xB09020 hoi4 = 12239 } # STATE_TAJIKISTAN, STATE_TAJIKISTAN -> Termiz
 	link = { vic3 = xC07A80 vic3 = xC89C46 hoi4 = 12722 } # STATE_UZBEKIA, STATE_UZBEKIA -> Shahrisabz
 	link = { comment = "* * STATE_TAJIKISTAN " }
+	link = { vic3 = x5B18B1 vic3 = x6DA038 vic3 = x65165E hoi4 = 1384 } # STATE_TAJIKISTAN, Dushanbe [city], STATE_TAJIKISTAN -> Stalinobod
+	link = { vic3 = x1A750E vic3 = x224CB7 vic3 = x6DD7B6 hoi4 = 1919 } # STATE_TAJIKISTAN, STATE_TAJIKISTAN, STATE_TAJIKISTAN -> Panjakent
+	link = { vic3 = x62B5FA hoi4 = 10205 } # STATE_TAJIKISTAN -> Denov
+	link = { vic3 = x94C7A6 vic3 = xD84D24 hoi4 = 12218 } # Kurgan-Tube [farm], STATE_TAJIKISTAN -> Bokhtar
+	link = { vic3 = x9856D4 vic3 = xB09020 hoi4 = 12239 } # STATE_TAJIKISTAN, STATE_TAJIKISTAN -> Termiz
 	link = { vic3 = x5DA229 vic3 = x85CE06 hoi4 = 4542 } # STATE_TAJIKISTAN, STATE_TAJIKISTAN -> Jirgatol
-	link = { vic3 = xB8051E vic3 = x4C120A vic3 = xF8FE8B vic3 = xB843AB vic3 = xAFD189 hoi4 = 12763 } # STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, Mingora [mine] -> Peshawar
-	link = { vic3 = x15A4E6 vic3 = x9DA767 vic3 = xA96256 hoi4 = 4558 } # STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, STATE_PASHTUNISTAN -> Mingora
 	link = { vic3 = x6F2EC3 vic3 = x8DFA40 vic3 = xEF90FF vic3 = xFEB233 vic3 = x151461 hoi4 = 8027 } # STATE_TAJIKISTAN, STATE_TAJIKISTAN, STATE_TAJIKISTAN, STATE_TAJIKISTAN, STATE_TAJIKISTAN -> Vanj
 	link = { vic3 = x2565D9 vic3 = x42B020 vic3 = x596BB1 vic3 = xB4B7D9 hoi4 = 10417 } # STATE_TAJIKISTAN, Khorog [mine], STATE_TAJIKISTAN, STATE_TAJIKISTAN -> Khorugh
 	link = { vic3 = x44A62C vic3 = x6C9619 vic3 = xCDD089 vic3 = x2390CB hoi4 = 12250 } # STATE_TAJIKISTAN, STATE_TAJIKISTAN, STATE_TAJIKISTAN, STATE_TAJIKISTAN -> Norak
@@ -5144,7 +5118,6 @@
 	link = { vic3 = x01387D vic3 = x71586F vic3 = xA553A3 vic3 = xB7562E hoi4 = 4768 } # STATE_KIRGHIZIA, STATE_KIRGHIZIA, STATE_KIRGHIZIA, STATE_KIRGHIZIA -> Karakol
 	link = { vic3 = x7AAB55 vic3 = xA5418A hoi4 = 4923 } # STATE_KIRGHIZIA, STATE_KIRGHIZIA -> Erkeshtam
 	link = { vic3 = x0BD6F5 vic3 = x5BFB6D vic3 = x7E2912 vic3 = x999094 hoi4 = 5062 } # STATE_KIRGHIZIA, STATE_KIRGHIZIA, STATE_KIRGHIZIA, STATE_KIRGHIZIA -> At-Bashy
-	link = { vic3 = xC425C5 vic3 = xCD3064 hoi4 = 7706 } # STATE_SYRDARYA, STATE_SYRDARYA -> Taraz
 	link = { vic3 = x261D0F vic3 = xBA55E4 vic3 = xF0EADF vic3 = x4214B3 vic3 = x480704 vic3 = xBE2F49 hoi4 = 10408 } # STATE_KIRGHIZIA, STATE_KIRGHIZIA, STATE_KIRGHIZIA, STATE_KIRGHIZIA, Talas [wood], STATE_KIRGHIZIA -> Toktogul
 	link = { vic3 = x30CC9D vic3 = x3EF868 vic3 = x427426 hoi4 = 10530 } # STATE_KIRGHIZIA, STATE_KIRGHIZIA, STATE_KIRGHIZIA -> Žalal-Abat
 	link = { vic3 = x3582E9 vic3 = x643CF5 vic3 = xAA36C3 hoi4 = 10660 } # STATE_KIRGHIZIA, STATE_KIRGHIZIA, STATE_KIRGHIZIA -> Talas
@@ -5175,6 +5148,8 @@
 	link = { vic3 = x184E72 vic3 = x2E361B hoi4 = 12465 } # STATE_TURKMENIA, STATE_TURKMENIA -> Urganch
 	link = { vic3 = x1046AA vic3 = x2D73A6 vic3 = xB402D5 vic3 = xEA083E hoi4 = 12491 } # STATE_TURKMENIA, STATE_TURKMENIA, STATE_TURKMENIA, STATE_TURKMENIA -> land
 	link = { comment = "* * STATE_PASHTUNISTAN " }
+	link = { vic3 = xB8051E vic3 = x4C120A vic3 = xF8FE8B vic3 = xB843AB vic3 = xAFD189 hoi4 = 12763 } # STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, Mingora [mine] -> Peshawar
+	link = { vic3 = x15A4E6 vic3 = x9DA767 vic3 = xA96256 hoi4 = 4558 } # STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, STATE_PASHTUNISTAN -> Mingora
 	link = { vic3 = x20B0A0 vic3 = x54D767 vic3 = x76933F vic3 = x076502 hoi4 = 1978 } # STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, STATE_PASHTUNISTAN -> Dera Ismail Khan
 	link = { vic3 = x54228F vic3 = xAAE0FA vic3 = xEC3398 hoi4 = 4998 } # STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, Bannu [wood] -> Bannu
 	link = { vic3 = x69B8C7 vic3 = x7436D6 vic3 = x783680 vic3 = xC0234F vic3 = xE9EA78 hoi4 = 12717 } # Kohat [city], Peshawar [farm], STATE_PASHTUNISTAN, STATE_PASHTUNISTAN, STATE_PASHTUNISTAN -> Kohat
@@ -5268,11 +5243,11 @@
 	link = { vic3 = x2EED68 vic3 = x63CF7D vic3 = x6A1D9E vic3 = xCE4141 vic3 = x020A13 vic3 = x18089F hoi4 = 8121 } # STATE_NGARI, Lhatse [mine], STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Namling
 	link = { vic3 = x1F1D7F vic3 = x2DCE44 vic3 = x347CA5 vic3 = x79ACD9 vic3 = x7F19F5 vic3 = xA070A0 vic3 = xC39437 vic3 = xE03D5D vic3 = xE4D2EB vic3 = xE89BB3 vic3 = xF2DD04 vic3 = xBF3208 vic3 = x390A85 vic3 = xF33F0A vic3 = xBFC102 vic3 = x245D66 vic3 = x4CA3AB hoi4 = 10755 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Co Nyi
 	link = { vic3 = x0E4CEA vic3 = x41CAED vic3 = x466E81 vic3 = x519C2B vic3 = x606587 vic3 = xEC346C vic3 = xFF92B9 vic3 = xA16534 vic3 = x6DC955 vic3 = xDB00C4 vic3 = xCC4CCB vic3 = x20771F vic3 = xDB6487 hoi4 = 10802 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Sênggêkanbab
-	link = { vic3 = x23C36A vic3 = xAF11F0 vic3 = x920B51 hoi4 = 10910 } # STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Pokhara
 	link = { vic3 = x068080 vic3 = x59FA24 vic3 = x69B840 vic3 = x6E1A6F vic3 = x8847CC vic3 = x8A52C8 vic3 = xAD3B3E vic3 = xB3B12D vic3 = xC7C56B vic3 = xC8A273 vic3 = xDCB233 vic3 = xF0E6C2 vic3 = xB1FB06 hoi4 = 12784 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Gê'gyai
 	link = { vic3 = x181275 vic3 = x1AA558 vic3 = x1F7ABA vic3 = x3F45B6 vic3 = x48393E vic3 = x49DA7A vic3 = x6C636E vic3 = x92D428 vic3 = xAFCD47 vic3 = xBA5131 vic3 = xDAA8C5 vic3 = xF7AD84 vic3 = x10A70E hoi4 = 12801 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Rutog
 	link = { vic3 = x1FF09F vic3 = x48F15F vic3 = x5D87C2 vic3 = x757EC9 vic3 = xB53246 vic3 = x0DDF07 vic3 = x87A015 hoi4 = 12807 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Lhatse
 	link = { comment = "* * STATE_HIMALAYAS " }
+	link = { vic3 = x23C36A vic3 = xAF11F0 vic3 = x920B51 hoi4 = 10910 } # STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Pokhara
 	link = { vic3 = x11C815 vic3 = x4D5FC1 vic3 = x4DE9D5 vic3 = x605021 vic3 = x4874D9 vic3 = xC1C87A hoi4 = 4386 } # STATE_HIMALAYAS, STATE_HIMALAYAS, Pokhara [mine], STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Butwal
 	link = { vic3 = x2070E0 vic3 = xE0B0E0 hoi4 = 4435 } # STATE_HIMALAYAS, Gangktok [wood] -> Gangtok
 	link = { vic3 = x1619ED vic3 = xA228F8 vic3 = xC6D4A8 vic3 = xDA8130 hoi4 = 4987 } # Kathmandu [city], STATE_HIMALAYAS, STATE_HIMALAYAS, STATE_HIMALAYAS -> Kathmandu
@@ -8771,6 +8746,7 @@
 	link = { vic3 = x1458A6 hoi4 = 11462 } # STATE_KHARKOV -> Nedryhayliv
 	link = { vic3 = xBCC260 hoi4 = 11504 } # STATE_KHARKOV -> Reshetylivka
 	link = { comment = "* * STATE_KURSK " }
+	link = { vic3 = x6161A0 hoi4 = 9529 hoi4 = 6428 } # Novokhopersk [wood] -> Novokhopyorskiy, Ternovka
 	link = { vic3 = xC761A3 hoi4 = 413 } # Voronezh [mine] -> Voronezh
 	link = { vic3 = xA6F3BC hoi4 = 437 hoi4 = 6591 } # STATE_KURSK -> Kalach, Boguchar
 	link = { vic3 = xA79E4A hoi4 = 457 hoi4 = 6603 } # STATE_KURSK -> Shchigry, Tim
@@ -9074,6 +9050,7 @@
 	link = { vic3 = xFE531B hoi4 = 11555 } # Ust-Medveditskaya [farm] -> Ust'Buzulukskaya
 	link = { vic3 = x92B853 hoi4 = 11559 } # STATE_ROSTOV -> Azov
 	link = { comment = "* * STATE_PERM " }
+	link = { vic3 = xA9655B vic3 = x75D7E5 vic3 = x094CC5 vic3 = x031756 hoi4 = 1380 } # STATE_PERM, STATE_PERM, STATE_PERM, STATE_PERM -> Chernushka
 	link = { vic3 = x2D9E21 hoi4 = 146 hoi4 = 31 } # Vyatka [farm] -> Belokholunitskiy, Peskovka
 	link = { vic3 = xE0812B hoi4 = 237 } # STATE_PERM -> Serebryanka
 	link = { vic3 = x4624B5 vic3 = xCD1012 hoi4 = 278 } # STATE_PERM, STATE_PERM -> Gornozavodsk
@@ -9114,6 +9091,13 @@
 	link = { vic3 = x1C0487 vic3 = x2C862B hoi4 = 12587 } # STATE_GALICH, STATE_GALICH -> land
 	link = { vic3 = x679157 vic3 = x9D18DE vic3 = x7FCAB3 hoi4 = 12626 } # STATE_PERM, STATE_PERM, STATE_PERM -> Osa
 	link = { comment = "* * STATE_KAZAN " }
+	link = { vic3 = xDEBD6D hoi4 = 11389 } # Almetyevsk [mine] -> Karabash
+	link = { vic3 = x56CB77 vic3 = x7B1203 hoi4 = 3348 } # STATE_KAZAN, STATE_KAZAN -> Muslyumovo
+	link = { vic3 = x117254 vic3 = x27325A hoi4 = 6308 } # STATE_KAZAN, STATE_KAZAN -> Aznakayevo
+	link = { vic3 = x219B42 vic3 = x35E9F6 vic3 = xF9072C vic3 = xDC7014 vic3 = xB0A1F1 hoi4 = 6368 } # STATE_KAZAN, STATE_KAZAN, STATE_KAZAN, STATE_KAZAN, STATE_KAZAN -> Aktanysh
+	link = { vic3 = xA84ECC vic3 = x0E6979 hoi4 = 9385 } # STATE_KAZAN, Yelabuga [wood] -> Menzelinsk
+	link = { vic3 = xD38CCF hoi4 = 10301 } # STATE_KAZAN -> Naberezhnyye Chelny
+	link = { vic3 = xCB5C74 hoi4 = 403 } # STATE_KAZAN -> Bavly
 	link = { vic3 = xABCA9F hoi4 = 6323 } # STATE_KAZAN -> Yelabuga
 	link = { vic3 = x5FDE4C hoi4 = 3214 } # STATE_KAZAN -> Kamskiye Polyany
 	link = { vic3 = x175F74 hoi4 = 260 } # STATE_KAZAN -> Arsk
@@ -9239,6 +9223,7 @@
 	link = { vic3 = x41E1DD vic3 = xF2637F hoi4 = 12229 } # STATE_AKMOLINSK, STATE_AKMOLINSK -> Qarabalyq
 	link = { vic3 = x48B3B4 vic3 = x6D870C vic3 = xD0064B hoi4 = 12266 } # STATE_AKMOLINSK, STATE_AKMOLINSK, STATE_AKMOLINSK -> Amangeldi
 	link = { comment = "* * STATE_KHIVA " }
+	link = { vic3 = x8AE0DC hoi4 = 4499 } # STATE_KHIVA -> land
 	link = { vic3 = x1343FA vic3 = x1EA24F vic3 = x202061 vic3 = x5E6DE0 vic3 = xF8D42E hoi4 = 475 } # STATE_URALSK, STATE_URALSK, STATE_URALSK, STATE_URALSK, STATE_URALSK -> land
 	link = { vic3 = x5743DD vic3 = xC19656 vic3 = xEA2F67 vic3 = xF1C7F1 vic3 = xB22914 vic3 = x2C7B0C hoi4 = 1479 } # STATE_KHIVA, STATE_KHIVA, STATE_KHIVA, STATE_KHIVA, STATE_KHIVA, STATE_KHIVA -> Chimboy
 	link = { vic3 = x0264AE vic3 = x20999F vic3 = x396B2F vic3 = x466F4E vic3 = x969B20 vic3 = x8A60EF hoi4 = 1517 } # STATE_URALSK, STATE_URALSK, STATE_URALSK, STATE_URALSK, STATE_URALSK, STATE_URALSK -> Zhanaozen
@@ -9358,6 +9343,7 @@
 	link = { vic3 = x38CB07 vic3 = x56B464 vic3 = x9B348C vic3 = xBA66D8 vic3 = xC09120 hoi4 = 12616 } # STATE_SEMIRECHE, STATE_SEMIRECHE, STATE_SEMIRECHE, STATE_SEMIRECHE, STATE_SEMIRECHE -> Zhelezin
 	link = { vic3 = x32DF16 vic3 = xC47A4C vic3 = xC7DA51 vic3 = xD44E92 hoi4 = 12619 } # STATE_AKMOLINSK, STATE_AKMOLINSK, STATE_AKMOLINSK, STATE_AKMOLINSK -> Talshyq
 	link = { comment = "* * STATE_FERGANA " }
+	link = { vic3 = xB24B12 vic3 = x3D854F vic3 = x4B7066 hoi4 = 1459 } # STATE_FERGANA, Tashkent [city], STATE_FERGANA -> Toshkent
 	link = { vic3 = xC0D040 vic3 = xD767AD hoi4 = 11687 } # STATE_FERGANA, STATE_FERGANA -> Jizzax
 	link = { vic3 = x542EFD vic3 = xDBD8BE vic3 = xC78F24 vic3 = x7625F5 hoi4 = 10187 } # Khojend [mine], STATE_FERGANA, STATE_FERGANA, STATE_FERGANA -> Khujand
 	link = { vic3 = x6EA842 vic3 = x8828FB vic3 = xAD3425 vic3 = xFB192C vic3 = x1C545C vic3 = x5A2C97 vic3 = xBB21A5 hoi4 = 10488 } # Kokand [farm], STATE_FERGANA, Andijan [wood], STATE_FERGANA, STATE_FERGANA, STATE_FERGANA, STATE_FERGANA -> Namangan
@@ -9374,6 +9360,8 @@
 	link = { vic3 = x6CF557 vic3 = x7B3A19 vic3 = xFAAE74 hoi4 = 9605 } # STATE_MERZ, STATE_MERZ, Chardzhuy [city] -> Farab
 	link = { vic3 = x1B9E03 vic3 = x8851E8 vic3 = xB1243B vic3 = xE16FA1 hoi4 = 10742 } # STATE_MERZ, STATE_MERZ, STATE_MERZ, STATE_MERZ -> Çärjew
 	link = { comment = "* * STATE_SYRDARYA " }
+	link = { vic3 = xC425C5 vic3 = xCD3064 hoi4 = 7706 } # STATE_SYRDARYA, STATE_SYRDARYA -> Taraz
+	link = { vic3 = x669165 vic3 = xF9A3AF hoi4 = 10148 } # Shymkent [mine], STATE_SYRDARYA -> Qazyghurt
 	link = { vic3 = x9CE782 vic3 = xA782F8 vic3 = xBBC62C vic3 = xBF034D vic3 = xF0F84D vic3 = x61AE5C vic3 = x9C08EB hoi4 = 7392 } # STATE_SYRDARYA, STATE_SYRDARYA, STATE_SYRDARYA, STATE_SYRDARYA, STATE_SYRDARYA, STATE_SYRDARYA, STATE_SYRDARYA -> land
 	link = { vic3 = x594580 vic3 = x79CF5A vic3 = xBFF435 vic3 = xE0006E vic3 = xFA45E1 vic3 = x0336B0 hoi4 = 7486 } # STATE_SYRDARYA, STATE_SYRDARYA, STATE_SYRDARYA, STATE_SYRDARYA, STATE_SYRDARYA, STATE_SYRDARYA -> land
 	link = { vic3 = x3FB5F1 vic3 = x4EA876 hoi4 = 7600 } # STATE_SYRDARYA, STATE_SYRDARYA -> land
@@ -9450,6 +9438,9 @@
 	link = { vic3 = x21907E vic3 = x74A226 vic3 = xD32A64 hoi4 = 12294 } # STATE_AKTOBE, STATE_AKTOBE, STATE_AKTOBE -> Birshoghyr
 	link = { vic3 = x447DA8 vic3 = x482E88 vic3 = x544E52 hoi4 = 13008 } # STATE_URALSK, STATE_URALSK, STATE_URALSK -> land
 	link = { comment = "* * STATE_KALMYKIA " }
+	link = { vic3 = x1D7F6C hoi4 = 11724 hoi4 = 9739 } # Elista [city] -> Elista, Priyutnoye
+	link = { vic3 = x9743F5 hoi4 = 481 } # Sadovoye [mine] -> Sadovoye
+	link = { vic3 = xEEDC59 hoi4 = 759 } # Yashkul [wood] -> Yashkul'
 	link = { vic3 = xCC78E2 vic3 = xDDC14D hoi4 = 742 } # STATE_KALMYKIA, STATE_KALMYKIA -> Ulan-Tug
 	link = { vic3 = x12D336 hoi4 = 3413 } # STATE_KALMYKIA -> Ketchener-Shebenery
 	link = { vic3 = x12A2B2 vic3 = x693D71 hoi4 = 3439 } # STATE_KALMYKIA, STATE_KALMYKIA -> Bolshoy Tsaryn
@@ -9471,6 +9462,9 @@
 	link = { vic3 = x3AC527 hoi4 = 3746 } # STATE_KALMYKIA -> Chonin-Sala
 	link = { vic3 = x1EBACB hoi4 = 6765 } # STATE_KALMYKIA -> Krestovaya
 	link = { comment = "* * STATE_NORTH_CAUCASUS " }
+	link = { vic3 = x0BDBDA hoi4 = 11609 } # Vladikavkaz [mine] -> Kazbegi
+	link = { vic3 = xEE9B40 hoi4 = 11614 hoi4 = 9647 } # Nalchik [farm] -> Ardon, Malgobek
+	link = { vic3 = x2790A8 hoi4 = 714 } # Batalpashinskaya [wood] -> Pyatigorsk
 	link = { vic3 = x019041 vic3 = xDA8EF4 hoi4 = 666 } # STATE_NORTH_CAUCASUS, STATE_NORTH_CAUCASUS -> Shali
 	link = { vic3 = x676C0E hoi4 = 3667 } # STATE_NORTH_CAUCASUS -> Itum-Kale
 	link = { vic3 = x27E9C3 vic3 = x9A6A44 hoi4 = 3672 } # STATE_NORTH_CAUCASUS, Grozny [city] -> Groznyy
@@ -9505,6 +9499,9 @@
 	link = { vic3 = x76E2A3 hoi4 = 11461 } # STATE_TAURIDA -> Lozova
 	link = { vic3 = xE6C06A hoi4 = 11700 } # STATE_TAURIDA -> Melitopol'
 	link = { comment = "* * STATE_TAMBOV " }
+	link = { vic3 = xE66DB2 hoi4 = 9258 } # Penza [farm] -> Penza
+	link = { vic3 = xFE56AF hoi4 = 6317 hoi4 = 6341 } # Lipetsk [mine] -> Usman', Khlevnoye
+	link = { vic3 = x41D846 hoi4 = 367 hoi4 = 340 } # Tambov [city] -> Bondari, Rasskazovo
 	link = { vic3 = x341DB2 hoi4 = 11240 } # STATE_TAMBOV -> Chaadayevka
 	link = { vic3 = xD7547A hoi4 = 232 hoi4 = 3266 } # STATE_TAMBOV -> Morshansk, Zemetchino
 	link = { vic3 = x0B35A0 hoi4 = 6329 } # STATE_TAMBOV -> Vyazemka
@@ -9676,6 +9673,7 @@
 	link = { vic3 = xC6E27A hoi4 = 9325 } # STATE_NIZHNY_NOVGOROD -> Barmino
 	link = { vic3 = x60A0A0 hoi4 = 11324 } # STATE_NIZHNY_NOVGOROD -> Pochinki
 	link = { comment = "* * STATE_VYATKA " }
+	link = { vic3 = x199917 hoi4 = 4400 } # STATE_VYATKA -> Karakulino
 	link = { vic3 = x7CFCC5 vic3 = x6C1B87 hoi4 = 11087 } # STATE_VYATKA, STATE_VYATKA -> Belaya Kholunitsa
 	link = { vic3 = x494CD7 vic3 = xCA4466 hoi4 = 206 } # STATE_VYATKA, STATE_VYATKA -> Chaykovskiy
 	link = { vic3 = x336835 hoi4 = 305 } # STATE_VYATKA -> Selty
@@ -9714,6 +9712,7 @@
 	link = { vic3 = x40D3F3 hoi4 = 11124 } # STATE_VYATKA -> Kirs
 	link = { vic3 = x34999F vic3 = x003051 hoi4 = 3363 } # STATE_VYATKA, STATE_VYATKA -> Omutninsk
 	link = { comment = "* * STATE_UFA " }
+	link = { vic3 = xF413F5 hoi4 = 291 } # Ufa [city] -> Birsk
 	link = { vic3 = x4F79AF vic3 = x231291 hoi4 = 7237 } # STATE_UFA, STATE_UFA -> Bakaly
 	link = { vic3 = x40CEBB vic3 = xB808A3 hoi4 = 4265 } # STATE_UFA, STATE_UFA -> Ust'-Katav
 	link = { vic3 = xA7BD05 vic3 = xCB2D15 hoi4 = 7300 } # STATE_UFA, STATE_UFA -> Verkhniy Avzyan
@@ -9908,6 +9907,7 @@
 	link = { vic3 = x629CB4 vic3 = x96F70A vic3 = xCB291D vic3 = x389A65 vic3 = x6453FB vic3 = xE8465C hoi4 = 7401 } # STATE_CHELYABINSK, STATE_CHELYABINSK, STATE_CHELYABINSK, STATE_CHELYABINSK, STATE_CHELYABINSK, STATE_CHELYABINSK -> Chesma
 	link = { vic3 = x2FE367 vic3 = x56E27E hoi4 = 9292 } # Chelyabinsk [city], STATE_CHELYABINSK -> Chelyabinsk
 	link = { comment = "* * STATE_ELIZAVETPOL" }
+	link = { vic3 = x2F7A57 hoi4 = 1467 } # Shusha [wood] -> Step'anakert
 	link = { vic3 = x9195D4 vic3 = xDFB2B0 hoi4 = 1539 } # STATE_ELIZAVETPOL, Gazakh [mine] -> Qazax
 	link = { vic3 = x0E70E4 hoi4 = 1610 } # STATE_ELIZAVETPOL -> Agdam
 	link = { vic3 = x8090BF hoi4 = 4477 } # STATE_ELIZAVETPOL -> Göyçay
