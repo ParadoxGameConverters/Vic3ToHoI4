@@ -29,6 +29,7 @@ struct Focus
    std::optional<std::string> available;
    std::optional<std::string> cancel_if_invalid;
    std::optional<std::string> continue_if_invalid;
+   std::optional<std::string> will_lead_to_war_with;
    std::optional<std::string> select_effect;
    std::optional<std::string> complete_tooltip;
    std::string completion_reward;
