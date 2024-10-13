@@ -5,6 +5,7 @@
 
 #include "external/commonItems/Parser.h"
 #include "src/hoi4_world/focus_trees/focus_importer.h"
+#include "src/hoi4_world/roles/repeat_focus_importer.h"
 #include "src/hoi4_world/roles/role.h"
 
 
@@ -25,6 +26,7 @@ class RoleImporter
 
    commonItems::parser role_parser_;
    FocusImporter focus_importer_;
+   RepeatFocusImporter repeat_focus_importer_;
 };
 
 };  // namespace hoi4

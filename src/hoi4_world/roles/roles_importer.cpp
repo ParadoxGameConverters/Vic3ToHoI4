@@ -7,7 +7,7 @@
 #include "src/hoi4_world/roles/role_importer.h"
 
 
-
+#pragma optimize("",off)
 std::map<std::string, hoi4::Role> hoi4::ImportRoles()
 {
    std::map<std::string, hoi4::Role> roles;
@@ -27,3 +27,4 @@ std::map<std::string, hoi4::Role> hoi4::ImportRoles()
    Log(LogLevel::Info) << fmt::format("\tImported {} roles.", roles.size());
    return roles;
 }
+#pragma optimize("",on)

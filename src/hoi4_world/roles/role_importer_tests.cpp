@@ -124,36 +124,8 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    EXPECT_THAT(role.GetFocuses(),
        testing::ElementsAre(Focus{.id = "$TAG$_italia_irredenta"}, Focus{.id = "$TAG$_italia_irredenta_2"}));
    EXPECT_THAT(role.GetRepeatFocuses(),
-       testing::ElementsAre("= { #creates wargoal and ai strategy vs another country that owns a core or claim of ITA\n"
-                            "\t\trequirement={\n"
-                            "\t\t\tany_other_country = {\n"
-                            "\t\t\t\t\tany_owned_state = {\n"
-                            "\t\t\t\t\t\tOR = {\n"
-                            "\t\t\t\t\t\t\tis_core_of = ITA\n"
-                            "\t\t\t\t\t\t\tis_claimed_by = ITA\n"
-                            "\t\t\t\t\t\t}\n"
-                            "\t\t\t\t\t}\n"
-                            "\t\t\t}\n"
-                            "\t\t}\n"
-                            "\t\tfocus={\n"
-                            "\t\t\tid = $TAG$_invade_$TARGET_TAG$\n"
-                            "\t\t}\n"
-                            "\t}",
-           "= { #creates wargoal and ai strategy vs another country that owns a core or claim of ITA\n"
-           "\t\trequirement={\n"
-           "\t\t\tany_other_country = {\n"
-           "\t\t\t\t\tany_owned_state = {\n"
-           "\t\t\t\t\t\tOR = {\n"
-           "\t\t\t\t\t\t\tis_core_of = ITA\n"
-           "\t\t\t\t\t\t\tis_claimed_by = ITA\n"
-           "\t\t\t\t\t\t}\n"
-           "\t\t\t\t\t}\n"
-           "\t\t\t}\n"
-           "\t\t}\n"
-           "\t\tfocus={\n"
-           "\t\t\tid = $TAG$_invade_$TARGET_TAG$_2\n"
-           "\t\t}\n"
-           "\t}"));
+       testing::ElementsAre(RepeatFocus{.focuses = {Focus{.id = "$TAG$_invade_$TARGET_TAG$"}}},
+           RepeatFocus{.focuses = {Focus{.id = "$TAG$_invade_$TARGET_TAG$_2"}}}));
    EXPECT_THAT(role.GetRemovedFocuses(),
        testing::ElementsAre("= {\n"
                             "\t\tid = $TAG$_remove_me\n"
