@@ -17,7 +17,7 @@ void PrintTo(const Focus& focus, std::ostream* os)
        << fmt::format("prerequisites = {{ {} }}\n", fmt::join(focus.prerequisites, " "))
        << "mutually_exclusive = " << focus.mutually_exclusive.value_or("nullopt") << "\n"
        << "bypass = " << focus.bypass.value_or("nullopt") << "\n"
-       << "tree_started = " << focus.tree_starter << "\n"
+       << "tree_starter = " << (focus.tree_starter ? "true" : "false") << "\n"
        << "x_position = " << focus.x_position << "\n"
        << "y_position = " << focus.y_position << "\n"
        << "relative_position_id = " << focus.relative_position_id.value_or("nullopt") << "\n"
