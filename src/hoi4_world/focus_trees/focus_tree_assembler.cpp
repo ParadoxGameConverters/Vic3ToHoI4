@@ -125,6 +125,57 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
       {
          focus.id.replace(focus.id.find("$TAG$"), 5, tag);
       }
+      for (std::string& prerequisite: focus.prerequisites)
+      {
+         if (prerequisite.contains("repeat_focus"))
+         {
+            std::string prerequisite_string = prerequisite;
+
+            std::string to_replace;
+            std::regex prerequisite_regex(R"(.*(repeat_focus = [^\s]+).*)");
+            if (std::smatch match; std::regex_match(prerequisite_string, match, prerequisite_regex))
+            {
+               to_replace = match.str(1);
+            }
+
+            std::string replace_with;
+            std::regex lookup_regex(R"(.*repeat_focus =\s([^\s]+).*)");
+            if (std::smatch match; std::regex_match(prerequisite_string, match, lookup_regex))
+            {
+               if (auto role = role_lookup.find(match.str(1)); role != role_lookup.end())
+               {
+                  if (!role->second.empty())
+                  {
+                     if ((role->second.size() % 2) == 0)
+                     {
+                        focus.relative_position_id = role->second.at(role->second.size() / 2 - 1);
+                        focus.x_position = 1;
+                     }
+                     else
+                     {
+                        focus.relative_position_id = role->second.at(role->second.size() / 2);
+                        focus.x_position = 0;
+                     }
+                  }
+
+                  for (auto& new_id: role->second)
+                  {
+                     replace_with = fmt::format("{} focus = {}", replace_with, new_id);
+                  }
+               }
+            }
+
+            while (prerequisite.find(to_replace) != std::string::npos)
+            {
+               prerequisite.replace(prerequisite.find(to_replace), to_replace.size(), replace_with);
+            }
+         }
+
+         while (prerequisite.find("$TAG$") != std::string::npos)
+         {
+            prerequisite.replace(prerequisite.find("$TAG$"), 5, tag);
+         }
+      }
       if (focus.relative_position_id.has_value())
       {
          while (focus.relative_position_id->find("$TAG$") != std::string::npos)

@@ -231,4 +231,67 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreBalancedInPosit
            Focus{.id = "TWO_focus_three", .x_position = 2}));
 }
 
+
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, PrerequisitesEithRepeatFocusesAreExpanded)
+{
+   const FocusTree focus_tree = AssembleTree(
+       {
+           Role{{
+               .focuses =
+                   {
+                       Focus{.id = "$TAG$_focus_one", .tree_starter = true},
+                       Focus{.id = "$TAG$_focus_three", .prerequisites = {"repeat_focus = $TARGET_TAG$_focus_two"}},
+                   },
+               .repeat_focuses =
+                   {
+                       RepeatFocus{
+                           .requirement =
+                               [](const Country&, const World&) {
+                                  return true;
+                               },
+                           .focuses =
+                               {
+                                   Focus{
+                                       .id = "$TARGET_TAG$_focus_two",
+                                       .prerequisites = {"$TAG$_focus_one"},
+                                       .relative_position_id = "$TAG$_focus_one",
+                                   },
+                               },
+                       },
+                   },
+           }},
+       },
+       "TAG",
+       World({.countries = {
+                  {"ONE", Country({})},
+                  {"TWO", Country({})},
+              }}));
+
+   EXPECT_TRUE(focus_tree.shared_focuses.empty());
+   EXPECT_THAT(focus_tree.focuses,
+       testing::ElementsAre(
+           Focus{
+               .id = "TAG_focus_one",
+               .tree_starter = true,
+           },
+           Focus{
+               .id = "TAG_focus_three",
+               .prerequisites = {" focus = ONE_focus_two focus = TWO_focus_two"},
+               .x_position = 1,
+               .relative_position_id = "ONE_focus_two",
+           },
+           Focus{
+               .id = "ONE_focus_two",
+               .prerequisites = {"TAG_focus_one"},
+               .x_position = -1,
+               .relative_position_id = "TAG_focus_one",
+           },
+           Focus{
+               .id = "TWO_focus_two",
+               .prerequisites = {"TAG_focus_one"},
+               .x_position = 1,
+               .relative_position_id = "TAG_focus_one",
+           }));
+}
+
 }  // namespace hoi4
