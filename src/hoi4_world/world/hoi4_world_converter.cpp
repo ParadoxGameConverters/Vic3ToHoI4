@@ -343,7 +343,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
          continue;
       }
 
-      const FocusTree tree = AssembleTree(country_roles, tag);
+      const FocusTree tree = AssembleTree(country_roles, tag, world);
       country_itr->second.SetFocusTree(tree);
    }
 
