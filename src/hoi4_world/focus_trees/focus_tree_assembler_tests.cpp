@@ -276,7 +276,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, PrerequisitesEithRepeatFocusesA
            },
            Focus{
                .id = "TAG_focus_three",
-               .prerequisites = {" focus = ONE_focus_two focus = TWO_focus_two"},
+               .prerequisites = {"focus = ONE_focus_two focus = TWO_focus_two"},
                .x_position = 1,
                .relative_position_id = "ONE_focus_two",
            },

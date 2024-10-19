@@ -160,7 +160,14 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
 
                   for (auto& new_id: role->second)
                   {
-                     replace_with = fmt::format("{} focus = {}", replace_with, new_id);
+                     if (replace_with.empty())
+                     {
+                        replace_with = fmt::format("focus = {}", new_id);
+                     }
+                     else
+                     {
+                        replace_with = fmt::format("{} focus = {}", replace_with, new_id);
+                     }
                   }
                }
             }
