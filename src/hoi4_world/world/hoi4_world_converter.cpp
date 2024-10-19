@@ -322,11 +322,22 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    hoi4::Railways railways = railways_future.get();
    hoi4::Buildings buildings = buildings_future.get();
 
+   hoi4::World world(hoi4::WorldOptions{ .countries = countries,
+      .great_powers = great_powers,
+      .major_powers = major_powers,
+      .states = states,
+      .strategic_regions = world_framework.strategic_regions,
+      .buildings = buildings,
+      .railways = railways,
+      .localizations = localizations,
+      .characters = characters });
+
    const std::map<std::string, Role> roles = ImportRoles();
-   for (const auto& [tag, country_roles]: CreateStories(roles, countries))
+   std::map<std::string, Country>& modifiable_countries = world.GetModifiableCountries();
+   for (const auto& [tag, country_roles]: CreateStories(roles, modifiable_countries))
    {
-      auto country_itr = countries.find(tag);
-      if (country_itr == countries.end())
+      auto country_itr = modifiable_countries.find(tag);
+      if (country_itr == modifiable_countries.end())
       {
          Log(LogLevel::Warning) << fmt::format("Country {} in story could not be found.", tag);
          continue;
@@ -336,13 +347,5 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
       country_itr->second.SetFocusTree(tree);
    }
 
-   return hoi4::World(hoi4::WorldOptions{.countries = countries,
-       .great_powers = great_powers,
-       .major_powers = major_powers,
-       .states = states,
-       .strategic_regions = world_framework.strategic_regions,
-       .buildings = buildings,
-       .railways = railways,
-       .localizations = localizations,
-       .characters = characters});
+   return world;
 }
