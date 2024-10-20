@@ -22,7 +22,7 @@ FocusImporter::FocusImporter()
       mutually_exclusive_ = commonItems::getString(input_stream);
    });
    focus_parser_.registerKeyword("bypass", [this](std::istream& input_stream) {
-       bypass_ = commonItems::stringOfItem(input_stream).getString();
+      bypass_ = commonItems::stringOfItem(input_stream).getString();
    });
    focus_parser_.registerKeyword("tree_starter", [this](std::istream& input_stream) {
       tree_starter_ = (commonItems::getString(input_stream) == "yes");

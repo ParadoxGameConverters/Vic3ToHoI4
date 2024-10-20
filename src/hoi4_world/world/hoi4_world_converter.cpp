@@ -322,15 +322,15 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    hoi4::Railways railways = railways_future.get();
    hoi4::Buildings buildings = buildings_future.get();
 
-   hoi4::World world(hoi4::WorldOptions{ .countries = countries,
-      .great_powers = great_powers,
-      .major_powers = major_powers,
-      .states = states,
-      .strategic_regions = world_framework.strategic_regions,
-      .buildings = buildings,
-      .railways = railways,
-      .localizations = localizations,
-      .characters = characters });
+   hoi4::World world(hoi4::WorldOptions{.countries = countries,
+       .great_powers = great_powers,
+       .major_powers = major_powers,
+       .states = states,
+       .strategic_regions = world_framework.strategic_regions,
+       .buildings = buildings,
+       .railways = railways,
+       .localizations = localizations,
+       .characters = characters});
 
    const std::map<std::string, Role> roles = ImportRoles();
    std::map<std::string, Country>& modifiable_countries = world.GetModifiableCountries();
