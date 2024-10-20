@@ -39,6 +39,7 @@ class Focus
 
    std::strong_ordering operator<=>(const Focus&) const = default;
 
+   // replaces text in all applicable focus items
    void apply_replacement(std::string_view to_replace, std::string_view replace_with);
 
    // This allows the Google test framework to print human-readable focuses if a test fails.

@@ -13,6 +13,7 @@
 namespace hoi4
 {
 
+// Creates a focus tree for the specified tag from the provided roles
 FocusTree AssembleTree(const std::vector<Role>& roles, std::string_view tag, const hoi4::World& world);
 
 }  // namespace hoi4

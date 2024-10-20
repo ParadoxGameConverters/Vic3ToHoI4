@@ -7,66 +7,8 @@
 namespace
 {
 
-void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& role_lookup,
-    std::string_view tag,
-    hoi4::Focus& focus)
-{
-   for (std::string& prerequisite: focus.prerequisites)
-   {
-      if (prerequisite.contains("repeat_focus"))
-      {
-         std::string prerequisite_string = prerequisite;
-
-         std::string to_replace;
-         std::regex prerequisite_regex(R"(.*(repeat_focus = [^\s]+).*)");
-         if (std::smatch match; std::regex_match(prerequisite_string, match, prerequisite_regex))
-         {
-            to_replace = match.str(1);
-         }
-
-         std::string replace_with;
-         std::regex lookup_regex(R"(.*repeat_focus =\s([^\s]+).*)");
-         if (std::smatch match; std::regex_match(prerequisite_string, match, lookup_regex))
-         {
-            if (auto role = role_lookup.find(match.str(1)); role != role_lookup.end())
-            {
-               if (!role->second.empty())
-               {
-                  if ((role->second.size() % 2) == 0)
-                  {
-                     focus.relative_position_id = role->second.at(role->second.size() / 2 - 1);
-                     focus.x_position = 1;
-                  }
-                  else
-                  {
-                     focus.relative_position_id = role->second.at(role->second.size() / 2);
-                     focus.x_position = 0;
-                  }
-               }
-
-               for (auto& new_id: role->second)
-               {
-                  if (replace_with.empty())
-                  {
-                     replace_with = fmt::format("focus = {}", new_id);
-                  }
-                  else
-                  {
-                     replace_with = fmt::format("{} focus = {}", replace_with, new_id);
-                  }
-               }
-            }
-         }
-
-         while (prerequisite.find(to_replace) != std::string::npos)
-         {
-            prerequisite.replace(prerequisite.find(to_replace), to_replace.size(), replace_with);
-         }
-      }
-   }
-}
-
-
+// For all repeated focuses defined them into the role, expand them into actual focuses.
+// Also add to a lookup map of the original repeat focus id to the resulting focus ids.
 std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
     const hoi4::World& world,
     std::map<std::string, std::vector<std::string>>& role_lookup)
@@ -75,8 +17,10 @@ std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
 
    for (const hoi4::RepeatFocus& repeat_focus: role.GetRepeatFocuses())
    {
+      // Track how many countries are applicable so that the focuses can be balanced in position.
       int num_targets = 0;
 
+      // Generate all the focuses
       std::map<std::string, std::vector<hoi4::Focus>> target_focuses;
       for (const auto& [target_tag, country]: world.GetCountries())
       {
@@ -100,6 +44,7 @@ std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
          }
       }
 
+      // Properly position all the focuses
       for (std::vector<hoi4::Focus>& focuses: target_focuses | std::views::values)
       {
          int x_position = 1 - num_targets;
@@ -123,6 +68,74 @@ std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
    return repeated_focuses;
 }
 
+
+// For any prerequisites that are of the form repeat_focus = <a repeat focus>, expand them to be normal prerequisites
+// than include all of the focuses that the repeat focus had been expanded into
+void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& role_lookup,
+    std::string_view tag,
+    hoi4::Focus& focus)
+{
+   for (std::string& prerequisite: focus.prerequisites)
+   {
+      if (!prerequisite.contains("repeat_focus"))
+      {
+         continue;
+      }
+
+      std::string prerequisite_string = prerequisite;
+
+      // determine the text to replace
+      std::string to_replace;
+      constexpr std::regex prerequisite_regex(R"(.*(repeat_focus = [^\s]+).*)");
+      if (std::smatch match; std::regex_match(prerequisite_string, match, prerequisite_regex))
+      {
+         to_replace = match.str(1);
+      }
+
+      // determine the replacement text
+      std::string replace_with;
+      constexpr std::regex lookup_regex(R"(.*repeat_focus =\s([^\s]+).*)");
+      if (std::smatch match; std::regex_match(prerequisite_string, match, lookup_regex))
+      {
+         if (auto role = role_lookup.find(match.str(1)); role != role_lookup.end())
+         {
+            // while we're here, position this focus evenly under the repeat focuses
+            if (!role->second.empty())
+            {
+               if ((role->second.size() % 2) == 0)
+               {
+                  focus.relative_position_id = role->second.at(role->second.size() / 2 - 1);
+                  focus.x_position = 1;
+               }
+               else
+               {
+                  focus.relative_position_id = role->second.at(role->second.size() / 2);
+                  focus.x_position = 0;
+               }
+            }
+
+            for (auto& new_id: role->second)
+            {
+               if (replace_with.empty())
+               {
+                  replace_with = fmt::format("focus = {}", new_id);
+               }
+               else
+               {
+                  replace_with = fmt::format("{} focus = {}", replace_with, new_id);
+               }
+            }
+         }
+      }
+
+      // actually do the text replacement
+      while (prerequisite.find(to_replace) != std::string::npos)
+      {
+         prerequisite.replace(prerequisite.find(to_replace), to_replace.size(), replace_with);
+      }
+   }
+}
+
 }  // namespace
 
 
@@ -134,16 +147,20 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
    std::map<std::string, std::vector<std::string>> role_lookup;
    for (const Role& role: roles)
    {
+      // add all shared focuses to the tree
       const std::vector<std::string>& shared_focuses = role.GetSharedFocuses();
       tree.shared_focuses.insert(tree.shared_focuses.end(), shared_focuses.begin(), shared_focuses.end());
 
+      // add all regular focuses to the tree
       const std::vector<Focus>& focuses = role.GetFocuses();
       tree.focuses.insert(tree.focuses.end(), focuses.begin(), focuses.end());
 
+      // add all repeated focuses to the tree
       const std::vector<Focus> repeated_focuses = CreateRepeatedFocuses(role, world, role_lookup);
       tree.focuses.insert(tree.focuses.end(), repeated_focuses.begin(), repeated_focuses.end());
    }
 
+   // make final updates to the focuses - positions, fixes to prerequisites, and replace $TAG$ with the actual tag
    int position = tree.shared_focuses.size() * 10;
    for (Focus& focus: tree.focuses)
    {
