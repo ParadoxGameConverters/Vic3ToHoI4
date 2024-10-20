@@ -61,6 +61,8 @@ class World
    [[nodiscard]] const Localizations& GetLocalizations() const { return localizations_; }
    [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
 
+   [[nodiscard]] std::map<std::string, Country>& GetModifiableCountries() { return countries_; }
+
   private:
    std::map<std::string, Country> countries_;
    std::set<std::string> great_powers_;

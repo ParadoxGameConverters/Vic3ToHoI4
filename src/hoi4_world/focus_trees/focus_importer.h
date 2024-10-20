@@ -41,6 +41,7 @@ class FocusImporter
    std::optional<std::string> available_;
    std::optional<std::string> cancel_if_invalid_;
    std::optional<std::string> continue_if_invalid_;
+   std::optional<std::string> will_lead_to_war_with_;
    std::optional<std::string> select_effect_;
    std::optional<std::string> complete_tooltip_;
    std::string completion_reward_;
