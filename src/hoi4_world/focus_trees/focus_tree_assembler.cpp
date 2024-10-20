@@ -63,11 +63,6 @@ void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& 
             prerequisite.replace(prerequisite.find(to_replace), to_replace.size(), replace_with);
          }
       }
-
-      while (prerequisite.find("$TAG$") != std::string::npos)
-      {
-         prerequisite.replace(prerequisite.find("$TAG$"), 5, tag);
-      }
    }
 }
 
