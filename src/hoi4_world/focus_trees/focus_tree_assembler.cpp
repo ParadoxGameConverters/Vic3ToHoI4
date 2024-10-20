@@ -86,7 +86,7 @@ void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& 
 
       // determine the text to replace
       std::string to_replace;
-      constexpr std::regex prerequisite_regex(R"(.*(repeat_focus = [^\s]+).*)");
+      std::regex prerequisite_regex(R"(.*(repeat_focus = [^\s]+).*)");
       if (std::smatch match; std::regex_match(prerequisite_string, match, prerequisite_regex))
       {
          to_replace = match.str(1);
@@ -94,7 +94,7 @@ void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& 
 
       // determine the replacement text
       std::string replace_with;
-      constexpr std::regex lookup_regex(R"(.*repeat_focus =\s([^\s]+).*)");
+      std::regex lookup_regex(R"(.*repeat_focus =\s([^\s]+).*)");
       if (std::smatch match; std::regex_match(prerequisite_string, match, lookup_regex))
       {
          if (auto role = role_lookup.find(match.str(1)); role != role_lookup.end())
