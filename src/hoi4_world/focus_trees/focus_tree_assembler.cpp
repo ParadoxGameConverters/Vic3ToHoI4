@@ -34,53 +34,7 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
             for (Focus focus_copy: repeat_focus.focuses)
             {
                std::string original_id = focus_copy.id;
-               while (focus_copy.id.find("$TARGET_TAG$") != std::string::npos)
-               {
-                  focus_copy.id.replace(focus_copy.id.find("$TARGET_TAG$"), 12, target_tag);
-               }
-               for (std::string& prerequisite: focus_copy.prerequisites)
-               {
-                  while (prerequisite.find("$TARGET_TAG$") != std::string::npos)
-                  {
-                     prerequisite.replace(prerequisite.find("$TARGET_TAG$"), 12, target_tag);
-                  }
-               }
-               if (focus_copy.relative_position_id.has_value())
-               {
-                  while (focus_copy.relative_position_id->find("$TARGET_TAG$") != std::string::npos)
-                  {
-                     focus_copy.relative_position_id->replace(focus_copy.relative_position_id->find("$TARGET_TAG$"),
-                         12,
-                         target_tag);
-                  }
-               }
-               if (focus_copy.available.has_value())
-               {
-                  while (focus_copy.available->find("$TARGET_TAG$") != std::string::npos)
-                  {
-                     focus_copy.available->replace(focus_copy.available->find("$TARGET_TAG$"), 12, target_tag);
-                  }
-               }
-               if (focus_copy.select_effect.has_value())
-               {
-                  while (focus_copy.select_effect->find("$TARGET_TAG$") != std::string::npos)
-                  {
-                     focus_copy.select_effect->replace(focus_copy.select_effect->find("$TARGET_TAG$"), 12, target_tag);
-                  }
-               }
-               while (focus_copy.completion_reward.find("$TARGET_TAG$") != std::string::npos)
-               {
-                  focus_copy.completion_reward.replace(focus_copy.completion_reward.find("$TARGET_TAG$"),
-                      12,
-                      target_tag);
-               }
-               if (focus_copy.ai_will_do.has_value())
-               {
-                  while (focus_copy.ai_will_do->find("$TARGET_TAG$") != std::string::npos)
-                  {
-                     focus_copy.ai_will_do->replace(focus_copy.ai_will_do->find("$TARGET_TAG$"), 12, target_tag);
-                  }
-               }
+               focus_copy.apply_replacement("$TARGET_TAG$", target_tag);
 
                role_lookup[original_id].push_back(focus_copy.id);
                if (auto [itr, success] = target_focuses.emplace(original_id, std::vector{focus_copy}); !success)
@@ -121,10 +75,6 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
          position += 10;
       }
 
-      while (focus.id.find("$TAG$") != std::string::npos)
-      {
-         focus.id.replace(focus.id.find("$TAG$"), 5, tag);
-      }
       for (std::string& prerequisite: focus.prerequisites)
       {
          if (prerequisite.contains("repeat_focus"))
@@ -183,20 +133,7 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
             prerequisite.replace(prerequisite.find("$TAG$"), 5, tag);
          }
       }
-      if (focus.relative_position_id.has_value())
-      {
-         while (focus.relative_position_id->find("$TAG$") != std::string::npos)
-         {
-            focus.relative_position_id->replace(focus.relative_position_id->find("$TAG$"), 5, tag);
-         }
-      }
-      if (focus.ai_will_do.has_value())
-      {
-         while (focus.ai_will_do->find("$TAG$") != std::string::npos)
-         {
-            focus.ai_will_do->replace(focus.ai_will_do->find("$TAG$"), 5, tag);
-         }
-      }
+      focus.apply_replacement("$TAG$", tag);
    }
 
    return tree;

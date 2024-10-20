@@ -12,8 +12,9 @@
 namespace hoi4
 {
 
-struct Focus
+class Focus
 {
+  public:
    std::string id;
    std::string icon;
    std::optional<std::string> text;
@@ -37,6 +38,8 @@ struct Focus
    std::optional<std::string> allow_branch;
 
    std::strong_ordering operator<=>(const Focus&) const = default;
+
+   void apply_replacement(std::string_view to_replace, std::string_view replace_with);
 
    // This allows the Google test framework to print human-readable focuses if a test fails.
    friend void PrintTo(const Focus& focus, std::ostream* os);

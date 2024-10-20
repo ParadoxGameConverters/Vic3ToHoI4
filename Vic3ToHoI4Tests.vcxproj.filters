@@ -596,6 +596,9 @@
     <ClCompile Include="src\hoi4_world\roles\repeat_focus_importer_tests.cpp">
       <Filter>src\hoi4_world\roles</Filter>
     </ClCompile>
+    <ClCompile Include="src\hoi4_world\focus_trees\focus_tests.cpp">
+      <Filter>src\hoi4_world\focus_trees</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="external\rakaly\rakaly.dll">
