@@ -232,7 +232,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreBalancedInPosit
 }
 
 
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, PrerequisitesEithRepeatFocusesAreExpanded)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, PrerequisitesWithRepeatFocusesAreExpanded)
 {
    const FocusTree focus_tree = AssembleTree(
        {
