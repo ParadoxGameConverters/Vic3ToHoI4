@@ -4,6 +4,75 @@
 
 
 
+namespace
+{
+
+void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& role_lookup, std::string_view tag, hoi4::Focus& focus)
+{
+   for (std::string& prerequisite: focus.prerequisites)
+   {
+      if (prerequisite.contains("repeat_focus"))
+      {
+         std::string prerequisite_string = prerequisite;
+
+         std::string to_replace;
+         std::regex prerequisite_regex(R"(.*(repeat_focus = [^\s]+).*)");
+         if (std::smatch match; std::regex_match(prerequisite_string, match, prerequisite_regex))
+         {
+            to_replace = match.str(1);
+         }
+
+         std::string replace_with;
+         std::regex lookup_regex(R"(.*repeat_focus =\s([^\s]+).*)");
+         if (std::smatch match; std::regex_match(prerequisite_string, match, lookup_regex))
+         {
+            if (auto role = role_lookup.find(match.str(1)); role != role_lookup.end())
+            {
+               if (!role->second.empty())
+               {
+                  if ((role->second.size() % 2) == 0)
+                  {
+                     focus.relative_position_id = role->second.at(role->second.size() / 2 - 1);
+                     focus.x_position = 1;
+                  }
+                  else
+                  {
+                     focus.relative_position_id = role->second.at(role->second.size() / 2);
+                     focus.x_position = 0;
+                  }
+               }
+
+               for (auto& new_id: role->second)
+               {
+                  if (replace_with.empty())
+                  {
+                     replace_with = fmt::format("focus = {}", new_id);
+                  }
+                  else
+                  {
+                     replace_with = fmt::format("{} focus = {}", replace_with, new_id);
+                  }
+               }
+            }
+         }
+
+         while (prerequisite.find(to_replace) != std::string::npos)
+         {
+            prerequisite.replace(prerequisite.find(to_replace), to_replace.size(), replace_with);
+         }
+      }
+
+      while (prerequisite.find("$TAG$") != std::string::npos)
+      {
+         prerequisite.replace(prerequisite.find("$TAG$"), 5, tag);
+      }
+   }
+}
+
+}  // namespace
+
+
+
 hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_view tag, const hoi4::World& world)
 {
    FocusTree tree;
@@ -44,7 +113,6 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
             }
          }
 
-
          for (std::vector<Focus>& focuses: target_focuses | std::views::values)
          {
             int x_position = 1 - num_targets;
@@ -75,64 +143,7 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
          position += 10;
       }
 
-      for (std::string& prerequisite: focus.prerequisites)
-      {
-         if (prerequisite.contains("repeat_focus"))
-         {
-            std::string prerequisite_string = prerequisite;
-
-            std::string to_replace;
-            std::regex prerequisite_regex(R"(.*(repeat_focus = [^\s]+).*)");
-            if (std::smatch match; std::regex_match(prerequisite_string, match, prerequisite_regex))
-            {
-               to_replace = match.str(1);
-            }
-
-            std::string replace_with;
-            std::regex lookup_regex(R"(.*repeat_focus =\s([^\s]+).*)");
-            if (std::smatch match; std::regex_match(prerequisite_string, match, lookup_regex))
-            {
-               if (auto role = role_lookup.find(match.str(1)); role != role_lookup.end())
-               {
-                  if (!role->second.empty())
-                  {
-                     if ((role->second.size() % 2) == 0)
-                     {
-                        focus.relative_position_id = role->second.at(role->second.size() / 2 - 1);
-                        focus.x_position = 1;
-                     }
-                     else
-                     {
-                        focus.relative_position_id = role->second.at(role->second.size() / 2);
-                        focus.x_position = 0;
-                     }
-                  }
-
-                  for (auto& new_id: role->second)
-                  {
-                     if (replace_with.empty())
-                     {
-                        replace_with = fmt::format("focus = {}", new_id);
-                     }
-                     else
-                     {
-                        replace_with = fmt::format("{} focus = {}", replace_with, new_id);
-                     }
-                  }
-               }
-            }
-
-            while (prerequisite.find(to_replace) != std::string::npos)
-            {
-               prerequisite.replace(prerequisite.find(to_replace), to_replace.size(), replace_with);
-            }
-         }
-
-         while (prerequisite.find("$TAG$") != std::string::npos)
-         {
-            prerequisite.replace(prerequisite.find("$TAG$"), 5, tag);
-         }
-      }
+      UpdatePrerequisites(role_lookup, tag, focus);
       focus.apply_replacement("$TAG$", tag);
    }
 
