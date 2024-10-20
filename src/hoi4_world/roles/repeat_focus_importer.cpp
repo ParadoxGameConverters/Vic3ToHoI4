@@ -17,9 +17,9 @@ hoi4::RepeatFocusImporter::RepeatFocusImporter()
 hoi4::RepeatFocus hoi4::RepeatFocusImporter::ImportRepeatFocus(std::istream& input)
 {
    requirement_ = [](const Country&, const World&) {
-       static int num_matched = 0;
-       ++num_matched;
-       return num_matched <= 4;
+      static int num_matched = 0;
+      ++num_matched;
+      return num_matched <= 4;
    };
    focuses_.clear();
 
