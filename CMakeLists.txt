@@ -258,6 +258,9 @@ configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPY
 configure_file("data/readme.txt" "${FRONTER_OUTPUT_DIRECTORY}/readme.txt" COPYONLY)
 file(COPY "data/blank_mod" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
 file(COPY "data/configurables" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
+if (PLATFORM STREQUAL "Windows")
+	configure_file("external/rakaly/rakaly.dll" "${FRONTER_OUTPUT_DIRECTORY}/Vic3toHoi4/rakaly.dll" COPYONLY)
+endif (PLATFORM STREQUAL "Windows")
 add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > ${CONVERTER_OUTPUT_DIRECTORY}/../commit_id.txt)
 
 #### Fronter ####
