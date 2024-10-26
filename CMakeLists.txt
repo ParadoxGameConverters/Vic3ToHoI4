@@ -469,8 +469,15 @@ target_precompile_headers(Vic3ToHoi4Tests REUSE_FROM Vic3ToHoi4lib)
 file(COPY "data/blank_mod" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 file(COPY "data/test_files" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 file(COPY "data/test_files/configurables" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
+if (PLATFORM STREQUAL "Windows")
+	configure_file("external/rakaly/rakaly.dll" "${TEST_OUTPUT_DIRECTORY}/rakaly.dll" COPYONLY)
+endif (PLATFORM STREQUAL "Windows")
 
 target_link_libraries(Vic3ToHoi4Tests LINK_PUBLIC Vic3ToHoi4lib)
+
+enable_testing()
+
+add_test(NAME Vic3ToHoI4Tests COMMAND Vic3ToHoI4Tests WORKING_DIRECTORY ${TEST_OUTPUT_DIRECTORY})
 
 ####  Coverage ####
 
@@ -530,11 +537,6 @@ target_link_libraries(Vic3ToHoi4Tests LINK_PUBLIC Vic3ToHoi4lib)
 #	COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcda
 #	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 #)
-
-# Testing
-enable_testing()
-
-add_test(Vic3ToHoI4Tests ${CMAKE_CURRENT_BINARY_DIR}/test/Release-Linux/Vic3ToHoI4Tests)
 
 
 #### Clang-tidy ####
