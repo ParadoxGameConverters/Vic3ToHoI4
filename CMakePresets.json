@@ -18,34 +18,73 @@
         "rhs": "Windows"
       }
     },
+	{
+      "name": "linux-base",
+      "description": "Target Linux with the gcc/g++ build environment.",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/install/${presetName}",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g+++"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
     {
-      "name": "x64-debug",
-      "displayName": "x64 Debug",
+      "name": "x64-debug-windows",
+      "displayName": "x64 Debug Windows",
       "description": "Target Windows (64-bit) with the Visual Studio development environment. (Debug)",
       "inherits": "windows-base",
       "architecture": {
         "value": "x64",
         "strategy": "external"
       },
-      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug", "PLATFORM": "Windows" }
     },
     {
-      "name": "x64-release",
-      "displayName": "x64 Release",
+      "name": "x64-release-windows",
+      "displayName": "x64 Release Windows",
       "description": "Target Windows (64-bit) with the Visual Studio development environment. (Release)",
       "inherits": "windows-base",
       "architecture": {
         "value": "x64",
         "strategy": "external"
       },
-      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release", "PLATFORM": "Windows" }
+    },
+    {
+      "name": "x64-debug-linux",
+      "displayName": "x64 Debug Linux",
+      "description": "Target Linux with the gcc/g++ build environment. (Debug)",
+      "inherits": "linux-base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug", "PLATFORM": "Linux" }
+    },
+    {
+      "name": "x64-release-linux",
+      "displayName": "x64 Release Linux",
+      "description": "Target Linux with the gcc/g++ build environment. (Release)",
+      "inherits": "linux-base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release", "PLATFORM": "Linux" }
     }
   ],
   "buildPresets": [
     {
-      "name": "build-x64-debug",
+      "name": "build-x64-debug-windows",
       "displayName": "x64 debug",
-      "configurePreset": "x64-debug",
+      "configurePreset": "x64-debug-windows",
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
@@ -53,15 +92,34 @@
       }
     },
     {
-      "name": "build-x64-release",
+      "name": "build-x64-release-windows",
       "displayName": "x64 release",
-      "configurePreset": "x64-release",
+      "configurePreset": "x64-release-windows",
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
         "rhs": "Windows"
       }
+    },
+	{
+      "name": "build-x64-debug-linux",
+      "displayName": "x64 debug",
+      "configurePreset": "x64-debug-linux",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
+      "name": "build-x64-release-linux",
+      "displayName": "x64 release",
+      "configurePreset": "x64-release-linux",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
     }
-
   ]
 }
