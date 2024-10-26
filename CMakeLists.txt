@@ -213,7 +213,7 @@ if (PLATFORM STREQUAL "Windows")
 	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/WinUtils.cpp")
 elseif (PLATFORM STREQUAL "Linux")
 	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/LinuxUtils.cpp")
-endif (PLATFORM)
+endif (PLATFORM STREQUAL "Windows")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Localization/LocalizationBlock.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Localization/LocalizationDatabase.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Log.cpp")
@@ -241,7 +241,7 @@ if (PLATFORM STREQUAL "Windows")
 	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC CommonItems rakaly.dll.lib)
 elseif (PLATFORM STREQUAL "Linux")
 	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC CommonItems rakaly)
-endif (PLATFORM STREQUAL)
+endif (PLATFORM  STREQUAL "Windows")
 
 add_executable(
 	Vic3ToHoi4
