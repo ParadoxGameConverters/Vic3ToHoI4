@@ -346,14 +346,17 @@ elseif (PLATFORM STREQUAL "Linux")
 endif (PLATFORM STREQUAL "Windows")
 
 if (PLATFORM STREQUAL "Windows")
-	#add_custom_command(TARGET ConverterFrontend
-	#	COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
-#		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-#	)
-#	configure_file("external/Fronter/Fronter/Resources/converter.ico" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-#	configure_file("external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-#	file(COPY "data/fronter" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
-	#file(COPY "external/Fronter/Fronter/Resources/*.yml" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
+	configure_file("external/Fronter/Fronter/Resources/converter.ico" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/Fronter/Resources/libcrypto-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/Fronter/Resources/libssl-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/external/curl/bin/libcurl-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32u_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32u_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	file(GLOB FRONTER_CONFIG "data/fronter/*")
+	file(COPY ${FRONTER_CONFIG} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
+	file(GLOB LOCALIZATIONS "external/Fronter/Fronter/Resources/*.yml")
+	file(COPY ${LOCALIZATIONS} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
 elseif (PLATFORM STREQUAL "Linux")
 	add_custom_command(TARGET ConverterFrontend
 		COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
