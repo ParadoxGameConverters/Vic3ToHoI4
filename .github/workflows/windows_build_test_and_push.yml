@@ -78,21 +78,24 @@ jobs:
        echo 'maxTarget = "1.14"' | out-file data/version.txt -encoding ASCII -append
        cat data/version.txt
 
+    #- name: "Build solution"
+    #  run: |
+    #   cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
+    #   .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
+    
     - name: "Build solution"
-      run: |
-       cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
-       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
+      run: cmake --build ./ --config build-x64-release-windows
 
     - name: "Run tests"
       run: |
-       cd $Env:GITHUB_WORKSPACE\build\test\Release
+       cd $Env:GITHUB_WORKSPACE\build\test\Release-Windows
        .\Vic3ToHoI4Tests.exe
 
     - name: "Prepare release"
       run: |
        cd "C:\Program Files\7-Zip\"
-       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
-       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-latest-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}-win-x64.zip $Env:GITHUB_WORKSPACE\build\x64-release-windows\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-latest-win-x64.zip $Env:GITHUB_WORKSPACE\build\x64-release-windows\*
 
     - name: "Prepare installer"
       run: |
@@ -125,7 +128,7 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       run: |
        cd "C:\Program Files\7-Zip\"
-       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\build\x64-release-windows\*
 
     - uses: actions/upload-artifact@v4
       if: ${{ github.event_name == 'pull_request' }}
@@ -155,14 +158,17 @@ jobs:
        git -c submodule."external/commonItems".update=none `
            submodule update --init --recursive external\Fronter
 
+    #- name: "Build solution"
+    #  run: |
+    #   cd "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\"
+    #   .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoI4.sln
+    
     - name: "Build solution"
-      run: |
-       cd "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\"
-       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoI4.sln
+      run: cmake --build ./ --config build-x64-release-windows
 
     - name: "Run tests"
       run: |
-       cd $Env:GITHUB_WORKSPACE\build\test\Release
+       cd $Env:GITHUB_WORKSPACE\build\test\Release-Windows
        .\Vic3ToHoI4Tests.exe
 
     - name: "Cleanup"
