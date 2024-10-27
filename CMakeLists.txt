@@ -259,10 +259,6 @@ if (PLATFORM STREQUAL "Windows")
 	link_directories("./external/Fronter/external/curl/lib")
 	find_library(LIBCURL_LIB libcurl HINT "./external/Fronter/external/curl/lib")
 	find_library(LIBCURL_DLL_LIB libcurl.dll HINT "./external/Fronter/external/curl/lib")
-	find_library(CRYPT32 Crypt32)
-	find_library(LEGACY_STDIO_DEFINITIONS legacy_stdio_definitions)
-	find_library(NGHTTP2 nghttp2)
-	find_library(WS2_32 Ws2_32)
 endif (PLATFORM STREQUAL "Windows")
 
 include_directories("./external/Fronter/external/SQLiteCpp/include")
@@ -305,21 +301,39 @@ file(GLOB F_MODCOPIER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ModCopier/*.c
 file(GLOB F_SQLITE_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/src/*.cpp")
 file(GLOB F_SQLITE3_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/sqlite3/*.c")
 
-add_executable(ConverterFrontend WIN32
-	${F_MAIN_SOURCES}
-	${F_CONFIGURATION_SOURCES}
-	${F_CONFIGURATION_OPTIONS_SOURCES}
-	${F_FRAMES_SOURCES}
-	${F_FRAMES_TABS_SOURCES}
-	${F_UTILS_SOURCES}
-	${F_UTILS_LOCALIZATION_SOURCES}
-	${F_CONVERTERLAUNCHER_SOURCES}
-	${F_LOGWATCHER_SOURCES}
-	${F_MODCOPIER_SOURCES}
-	${F_UPDATECHECKER_SOURCES}
-	${F_SQLITE_SOURCES}
-	${F_SQLITE3_SOURCES}
-)
+if (PLATFORM STREQUAL "Windows")
+	add_executable(ConverterFrontend WIN32
+		${F_MAIN_SOURCES}
+		${F_CONFIGURATION_SOURCES}
+		${F_CONFIGURATION_OPTIONS_SOURCES}
+		${F_FRAMES_SOURCES}
+		${F_FRAMES_TABS_SOURCES}
+		${F_UTILS_SOURCES}
+		${F_UTILS_LOCALIZATION_SOURCES}
+		${F_CONVERTERLAUNCHER_SOURCES}
+		${F_LOGWATCHER_SOURCES}
+		${F_MODCOPIER_SOURCES}
+		${F_UPDATECHECKER_SOURCES}
+		${F_SQLITE_SOURCES}
+		${F_SQLITE3_SOURCES}
+	)
+elseif (PLATFORM STREQUAL "Linux")
+	add_executable(ConverterFrontend
+		${F_MAIN_SOURCES}
+		${F_CONFIGURATION_SOURCES}
+		${F_CONFIGURATION_OPTIONS_SOURCES}
+		${F_FRAMES_SOURCES}
+		${F_FRAMES_TABS_SOURCES}
+		${F_UTILS_SOURCES}
+		${F_UTILS_LOCALIZATION_SOURCES}
+		${F_CONVERTERLAUNCHER_SOURCES}
+		${F_LOGWATCHER_SOURCES}
+		${F_MODCOPIER_SOURCES}
+		${F_UPDATECHECKER_SOURCES}
+		${F_SQLITE_SOURCES}
+		${F_SQLITE3_SOURCES}
+	)
+endif (PLATFORM STREQUAL "Windows")
 
 set_target_properties(ConverterFrontend
     PROPERTIES
