@@ -45,7 +45,6 @@ jobs:
 
     - name: Install Prerequisites
       run: |
-       sudo apt-key adv --fetch-keys https://repos.codelite.org/CodeLite.asc
        sudo apt-add-repository 'deb https://repos.codelite.org/wx3.2/ubuntu/ jammy universe'
        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
        sudo apt-get update
