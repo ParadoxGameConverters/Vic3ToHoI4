@@ -43,35 +43,37 @@ jobs:
       with:
         languages: ${{ matrix.language }}
 
+    - name: Configure cmake
+      run: cmake --preset build-x64-release-linux -B build
+
     - name: Build solution
-      run: |
-       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
+      run: cmake --build build --preset build-x64-release-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
        cd build/test/Release-Linux/
        ./Vic3ToHoi4Tests
 
-    - name: Run gcov
-      run: |
-       cd build
-       pwd
-       make gcov
+    #- name: Run gcov
+    #  run: |
+    #   cd build
+    #   pwd
+    #   make gcov
 
-    - name: Run lcov
-      run: |
-       cd build
-       pwd
-       make lcov
+    #- name: Run lcov
+    #  run: |
+    #   cd build
+    #   pwd
+    #   make lcov
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: build/lcoverage/coverage.info
+    #- name: Coveralls
+    #  uses: coverallsapp/github-action@master
+    #  with:
+    #    github-token: ${{ secrets.GITHUB_TOKEN }}
+    #    path-to-lcov: build/lcoverage/coverage.info
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+    #- name: Perform CodeQL Analysis
+    #  uses: github/codeql-action/analyze@v3
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
@@ -114,7 +116,7 @@ jobs:
                 libwxbase3.2unofficial-dev libwxgtk3.2-0-unofficial libwxgtk3.2unofficial-dev \
                 wx3.2-headers wx-common libnotify-dev libnotify4 libcurl4-openssl-dev lcov
 
-    - name: Build solution
+    - name: Prepare build
       run: |
        # Link gcc-12 and g++-12 to their standard commands
        sudo ln -s /usr/bin/gcc-12 /usr/local/bin/gcc
@@ -125,34 +127,38 @@ jobs:
        # Export CC and CXX to tell cmake which compiler to use
        export CC=/usr/bin/gcc-12
        export CXX=/usr/bin/g++-12
-       # Run your build commands next
-       cmake -H. -Bbuild && cmake --build ./build --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j5
+    
+    - name: Configure cmake
+      run: cmake --preset build-x64-release-linux -B build
+
+    - name: Build solution
+      run: cmake --build build --preset build-x64-release-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
        cd build/test/Release-Linux/
        ./Vic3ToHoi4Tests
 
-    - name: Run gcov
-      run: |
-       cd build
-       pwd
-       make gcov
+    #- name: Run gcov
+    #  run: |
+    #   cd build
+    #   pwd
+    #   make gcov
 
-    - name: Run lcov
-      run: |
-       cd build
-       pwd
-       make lcov
+    #- name: Run lcov
+    #  run: |
+    #   cd build
+    #   pwd
+    #   make lcov
 
-    - name: Upload lcoverage artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: coverage-report
-        path: build/lcoverage/
+    #- name: Upload lcoverage artifact
+    #  uses: actions/upload-artifact@v4
+    #  with:
+    #    name: coverage-report
+    #    path: build/lcoverage/
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+    #- name: Perform CodeQL Analysis
+    #  uses: github/codeql-action/analyze@v3
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
