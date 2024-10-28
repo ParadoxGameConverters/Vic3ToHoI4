@@ -43,13 +43,6 @@ jobs:
       with:
         languages: ${{ matrix.language }}
 
-    - name: Install Prerequisites
-      run: |
-       sudo apt-add-repository 'deb https://repos.codelite.org/wx3.2/ubuntu/ jammy universe'
-       sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-       sudo apt-get update
-       sudo apt-get install ninja
-
     - name: Configure cmake
       run: cmake --preset x64-release-linux -B build
 
