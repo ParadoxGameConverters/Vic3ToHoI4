@@ -27,7 +27,7 @@
       "installDir": "${sourceDir}/install/${presetName}",
       "cacheVariables": {
         "CMAKE_C_COMPILER": "gcc",
-        "CMAKE_CXX_COMPILER": "g+++"
+        "CMAKE_CXX_COMPILER": "g++"
       },
       "condition": {
         "type": "equals",
