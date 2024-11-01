@@ -44,10 +44,10 @@ jobs:
         languages: ${{ matrix.language }}
 
     - name: Configure cmake
-      run: cmake --preset x64-release-linux
+      run: cmake --preset build-x64-release-linux
 
     - name: Build solution
-      run: cmake --build --preset x64-release-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
+      run: cmake --build --preset build-x64-release-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
