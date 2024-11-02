@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
+set(VERBOSE true)
 
 project(Vic3ToHoi4)
 set(FRONTER_SOURCE_DIR ${PROJECT_SOURCE_DIR}/external/Fronter/Fronter/Source)
