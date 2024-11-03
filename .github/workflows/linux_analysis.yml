@@ -33,8 +33,7 @@ jobs:
         submodules: true
 
     - name: "Cloning submodules"
-      run: |
-       git submodule update --init --recursive
+      run: git submodule update --init --recursive
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
@@ -51,24 +50,19 @@ jobs:
       run: |
        cd build/test/Coverage-Linux/
        ./Vic3ToHoi4Tests
+       cd ../../..
 
     - name: Run gcov
-      run: |
-       cd build
-       pwd
-       make gcov
+      run: cmake --build --preset build-x64-coverage-linux --target gcov
 
     - name: Run lcov
-      run: |
-       cd build
-       pwd
-       make lcov
+      run: cmake --build --preset build-x64-coverage-linux --target lcov
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: build/lcoverage/coverage.info
+        path-to-lcov: build/x64-coverage-linux/lcoverage/coverage.info
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
@@ -94,10 +88,7 @@ jobs:
         submodules: true
 
     - name: "Cloning selective submodules"
-      run: |
-       git submodule update --init --recursive external/commonItems
-       git -c submodule."external/commonItems".update=none \
-           submodule update --init --recursive external/Fronter
+      run: git submodule update --init --recursive
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
@@ -127,33 +118,28 @@ jobs:
        export CXX=/usr/bin/g++-12
     
     - name: Configure cmake
-      run: cmake --preset x64-release-linux -B build
+      run: cmake --preset x64-coverage-linux -B build
 
     - name: Build solution
-      run: cmake --build build --preset x64-release-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
+      run: cmake --build build --preset x64-coverage-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
-       cd build/test/Release-Linux/
+       cd build/test/Coverage-Linux/
        ./Vic3ToHoi4Tests
+       cd ../../..
 
     - name: Run gcov
-      run: |
-       cd build
-       pwd
-       make gcov
+      run: cmake --build --preset build-x64-coverage-linux --target gcov
 
     - name: Run lcov
-      run: |
-       cd build
-       pwd
-       make lcov
+      run: cmake --build --preset build-x64-coverage-linux --target lcov
 
     - name: Upload lcoverage artifact
       uses: actions/upload-artifact@v4
       with:
         name: coverage-report
-        path: build/lcoverage/
+        path: build/x64-coverage-linux/lcoverage/
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
