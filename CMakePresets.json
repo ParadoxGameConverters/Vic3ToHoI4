@@ -79,6 +79,18 @@
       },
       "cacheVariables": { "CMAKE_BUILD_TYPE": "Release", "PLATFORM": "Linux" }
     }
+	,
+    {
+      "name": "x64-coverage-linux",
+      "displayName": "x64 Release Linux",
+      "description": "Target Linux with the gcc/g++ build environment. (Code Coverage)",
+      "inherits": "linux-base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Coverage", "PLATFORM": "Linux", "COVERAGE": "true" }
+    }
   ],
   "buildPresets": [
     {
@@ -115,6 +127,16 @@
       "name": "build-x64-release-linux",
       "displayName": "x64 release",
       "configurePreset": "x64-release-linux",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
+      "name": "build-x64-coverage-linux",
+      "displayName": "x64 code coverage",
+      "configurePreset": "x64-coverage-linux",
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",

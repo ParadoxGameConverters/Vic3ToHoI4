@@ -14,14 +14,14 @@ set (UNICODE_DEFAULT OFF)
 if (PLATFORM STREQUAL "Windows")
 	ADD_DEFINITIONS(-DUNICODE)
 	ADD_DEFINITIONS(-D_UNICODE)
+elseif (PLATFORM STREQUAL "Linux")
+	if (COVERAGE STREQUAL true)
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
+		set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
+	else (COVERAGE STREQUAL true)
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall")
+	endif (COVERAGE STREQUAL true)
 endif (PLATFORM STREQUAL "Windows")
-
-if (DEFINED ENV{COVERAGE})
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
-	set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
-#else (DEFINED ENV{COVERAGE})
-#	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall")
-endif (DEFINED ENV{COVERAGE})
 
 
 #### Converter ####
@@ -542,62 +542,62 @@ add_test(NAME Vic3ToHoI4Tests COMMAND Vic3ToHoI4Tests WORKING_DIRECTORY ${TEST_O
 
 ####  Coverage ####
 
-#add_custom_target(gcov
-#	COMMAND mkdir -p gcoverage
-#	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-#)
-#add_custom_command(TARGET gcov
-#	COMMAND echo "=================== GCOV ===================="
-#	COMMAND echo "-- Source directories:"
-#	COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
-#	COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
-#	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/gcoverage
-#)
+add_custom_target(gcov
+	COMMAND mkdir -p gcoverage
+	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
+add_custom_command(TARGET gcov
+	COMMAND echo "=================== GCOV ===================="
+	COMMAND echo "-- Source directories:"
+	COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
+	COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
+	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/gcoverage
+)
 
-#add_custom_target(lcov
-#	COMMAND mkdir -p lcoverage
-#)
-#add_custom_command(TARGET lcov
-#	COMMAND echo "=================== LCOV ===================="
-#	COMMAND echo "-- Passing lcov tool under code coverage"
-#	COMMAND lcov --c --d CMakeFiles/Vic3ToHoi4lib.dir/src/ --d CMakeFiles/Vic3ToHoi4Tests.dir/src/ --o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/bits/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/ext/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/11/bits/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/bits/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/ext/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/12/bits/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/bits/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/ext/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/13/bits/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info "/usr/lib/gcc/x86_64-linux-gnu/13/include/*" -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info '*/external/bitmap/*' -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info '*/external/commonItems/*' -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info '*/external/fmt/include/fmt/*' -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info '*/external/rakaly/*' -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info '*/external/stb/*' -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info '*/gmock/*' -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info '*/gtest/*' -o lcoverage/coverage.info
-#	COMMAND lcov --remove lcoverage/coverage.info '*/gtest/internal/*' -o lcoverage/coverage.info
-#	COMMAND echo "-- Generating HTML output files"
-#	COMMAND genhtml lcoverage/coverage.info --output-directory lcoverage
-#)
-#add_dependencies(gcov Vic3ToHoi4Tests)
+add_custom_target(lcov
+	COMMAND mkdir -p lcoverage
+)
+add_custom_command(TARGET lcov
+	COMMAND echo "=================== LCOV ===================="
+	COMMAND echo "-- Passing lcov tool under code coverage"
+	COMMAND lcov --c --d CMakeFiles/Vic3ToHoi4lib.dir/src/ --d CMakeFiles/Vic3ToHoi4Tests.dir/src/ --o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/11/ext/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/11/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/12/ext/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/12/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/ext/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/13/bits/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info "/usr/lib/gcc/x86_64-linux-gnu/13/include/*" -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/external/bitmap/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/external/commonItems/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/external/fmt/include/fmt/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/external/rakaly/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/external/stb/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/gmock/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/gtest/*' -o lcoverage/coverage.info
+	COMMAND lcov --remove lcoverage/coverage.info '*/gtest/internal/*' -o lcoverage/coverage.info
+	COMMAND echo "-- Generating HTML output files"
+	COMMAND genhtml lcoverage/coverage.info --output-directory lcoverage
+)
+add_dependencies(gcov Vic3ToHoi4Tests)
 
 # Make sure to clean up the coverage folder
-#set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES gcoverage)
+set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES gcoverage)
 
 # Create the gcov-clean target. This cleans the build as well as generated 
 # .gcda and .gcno files.
-#add_custom_target(init
-#	COMMAND ${CMAKE_MAKE_PROGRAM} clean
-#	COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcno
-#	COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcda
-#	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-#)
+add_custom_target(init
+	COMMAND ${CMAKE_MAKE_PROGRAM} clean
+	COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcno
+	COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcda
+	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
 
 
 #### Clang-tidy ####

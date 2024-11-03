@@ -42,36 +42,36 @@ jobs:
         languages: ${{ matrix.language }}
 
     - name: Configure cmake
-      run: cmake --preset x64-release-linux
+      run: cmake --preset x64-coverage-linux
 
     - name: Build solution
-      run: cmake --build --preset build-x64-release-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
+      run: cmake --build --preset build-x64-coverage-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
-       cd build/test/Release-Linux/
+       cd build/test/Coverage-Linux/
        ./Vic3ToHoi4Tests
 
-    #- name: Run gcov
-    #  run: |
-    #   cd build
-    #   pwd
-    #   make gcov
+    - name: Run gcov
+      run: |
+       cd build
+       pwd
+       make gcov
 
-    #- name: Run lcov
-    #  run: |
-    #   cd build
-    #   pwd
-    #   make lcov
+    - name: Run lcov
+      run: |
+       cd build
+       pwd
+       make lcov
 
-    #- name: Coveralls
-    #  uses: coverallsapp/github-action@master
-    #  with:
-    #    github-token: ${{ secrets.GITHUB_TOKEN }}
-    #    path-to-lcov: build/lcoverage/coverage.info
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: build/lcoverage/coverage.info
 
-    #- name: Perform CodeQL Analysis
-    #  uses: github/codeql-action/analyze@v3
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
@@ -137,26 +137,26 @@ jobs:
        cd build/test/Release-Linux/
        ./Vic3ToHoi4Tests
 
-    #- name: Run gcov
-    #  run: |
-    #   cd build
-    #   pwd
-    #   make gcov
+    - name: Run gcov
+      run: |
+       cd build
+       pwd
+       make gcov
 
-    #- name: Run lcov
-    #  run: |
-    #   cd build
-    #   pwd
-    #   make lcov
+    - name: Run lcov
+      run: |
+       cd build
+       pwd
+       make lcov
 
-    #- name: Upload lcoverage artifact
-    #  uses: actions/upload-artifact@v4
-    #  with:
-    #    name: coverage-report
-    #    path: build/lcoverage/
+    - name: Upload lcoverage artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: build/lcoverage/
 
-    #- name: Perform CodeQL Analysis
-    #  uses: github/codeql-action/analyze@v3
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
