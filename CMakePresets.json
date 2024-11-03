@@ -35,6 +35,17 @@
         "rhs": "Linux"
       }
     },
+	{
+      "name": "x64-release-windows",
+      "displayName": "x64 Release Windows",
+      "description": "Target Windows (64-bit) with the Visual Studio development environment. (Release)",
+      "inherits": "windows-base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release", "PLATFORM": "Windows" }
+    },
     {
       "name": "x64-debug-windows",
       "displayName": "x64 Debug Windows",
@@ -45,17 +56,6 @@
         "strategy": "external"
       },
       "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug", "PLATFORM": "Windows" }
-    },
-    {
-      "name": "x64-release-windows",
-      "displayName": "x64 Release Windows",
-      "description": "Target Windows (64-bit) with the Visual Studio development environment. (Release)",
-      "inherits": "windows-base",
-      "architecture": {
-        "value": "x64",
-        "strategy": "external"
-      },
-      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release", "PLATFORM": "Windows" }
     },
     {
       "name": "x64-debug-linux",
@@ -94,19 +94,19 @@
   ],
   "buildPresets": [
     {
-      "name": "build-x64-debug-windows",
-      "displayName": "x64 debug",
-      "configurePreset": "x64-debug-windows",
+      "name": "build-x64-release-windows",
+      "displayName": "x64 release",
+      "configurePreset": "x64-release-windows",
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
         "rhs": "Windows"
       }
     },
-    {
-      "name": "build-x64-release-windows",
-      "displayName": "x64 release",
-      "configurePreset": "x64-release-windows",
+	{
+      "name": "build-x64-debug-windows",
+      "displayName": "x64 debug",
+      "configurePreset": "x64-debug-windows",
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
