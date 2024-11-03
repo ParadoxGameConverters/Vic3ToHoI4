@@ -32,11 +32,9 @@ jobs:
       with:
         submodules: true
 
-    - name: "Cloning selective submodules"
+    - name: "Cloning submodules"
       run: |
-       git submodule update --init --recursive external/commonItems
-       git -c submodule."external/commonItems".update=none \
-           submodule update --init --recursive external/Fronter
+       git submodule update --init --recursive
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
