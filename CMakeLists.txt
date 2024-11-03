@@ -545,14 +545,12 @@ add_test(NAME Vic3ToHoI4Tests COMMAND Vic3ToHoI4Tests WORKING_DIRECTORY ${TEST_O
 if (COVERAGE STREQUAL true)
 	add_custom_target(gcov
 		COMMAND mkdir -p gcoverage
-		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 	)
 	add_custom_command(TARGET gcov
 		COMMAND echo "=================== GCOV ===================="
 		COMMAND echo "-- Source directories:"
 		COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
 		COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
-		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/gcoverage
 	)
 
 	add_custom_target(lcov
@@ -574,6 +572,7 @@ if (COVERAGE STREQUAL true)
 		COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/bits/*" -o lcoverage/coverage.info
 		COMMAND lcov --remove lcoverage/coverage.info "/usr/include/c++/13/ext/*" -o lcoverage/coverage.info
 		COMMAND lcov --remove lcoverage/coverage.info "/usr/include/x86_64-linux-gnu/c++/13/bits/*" -o lcoverage/coverage.info
+		COMMAND lcov --remove lcoverage/coverage.info "/usr/lib/gcc/x86_64-linux-gnu/12/include/*" -o lcoverage/coverage.info
 		COMMAND lcov --remove lcoverage/coverage.info "/usr/lib/gcc/x86_64-linux-gnu/13/include/*" -o lcoverage/coverage.info
 		COMMAND lcov --remove lcoverage/coverage.info '*/external/bitmap/*' -o lcoverage/coverage.info
 		COMMAND lcov --remove lcoverage/coverage.info '*/external/commonItems/*' -o lcoverage/coverage.info
