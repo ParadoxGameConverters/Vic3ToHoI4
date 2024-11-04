@@ -258,8 +258,8 @@ add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE
 if (PLATFORM STREQUAL "Windows")
 	link_directories("./external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll")
 	link_directories("./external/Fronter/external/curl/lib")
-	find_library(LIBCURL_LIB libcurl HINT "./external/Fronter/external/curl/lib")
-	find_library(LIBCURL_DLL_LIB libcurl.dll HINT "./external/Fronter/external/curl/lib")
+	find_library(LIBCURL_LIB libcurl HINT "./external/Fronter/external/curl/lib" NO_DEFAULT_PATH)
+	find_library(LIBCURL_DLL_LIB libcurl.dll HINT "./external/Fronter/external/curl/lib" NO_DEFAULT_PATH)
 endif (PLATFORM STREQUAL "Windows")
 
 include_directories("./external/Fronter/external/SQLiteCpp/include")

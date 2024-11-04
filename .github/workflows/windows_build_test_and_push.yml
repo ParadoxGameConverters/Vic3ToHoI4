@@ -78,13 +78,11 @@ jobs:
        echo 'maxTarget = "1.14"' | out-file data/version.txt -encoding ASCII -append
        cat data/version.txt
 
-    #- name: "Build solution"
-    #  run: |
-    #   cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
-    #   .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic3ToHoi4.sln
-    
-    - name: "Build solution"
-      run: cmake --build ./ --config build-x64-release-windows
+    - name: Configure cmake
+      run: cmake --preset x64-release-windows
+
+    - name: Build solution
+      run: cmake --build --preset build-x64-release-windows --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: "Run tests"
       run: |
