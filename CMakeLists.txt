@@ -603,15 +603,16 @@ endif (COVERAGE STREQUAL true)
 
 #### Clang-tidy ####
 
-#find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
-#set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}")
+find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
+set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}")
 # checks to maybe add:
 #  cert-*
 #  cppcoreguidelines-*,
 
-#add_library(run_clang_tidy
-#	${CONVERTER_SOURCES}
-#	${TEST_SOURCES}
-#)
-#target_link_libraries(run_clang_tidy pthread)
-#set_target_properties(run_clang_tidy PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+add_library(run_clang_tidy
+	${CONVERTER_SOURCES}
+	${TEST_SOURCES}
+)
+target_link_libraries(run_clang_tidy pthread)
+set_target_properties(run_clang_tidy PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+add_dependencies(run_clang_tidy Vic3ToHoi4 Vic3ToHoi4Tests)
