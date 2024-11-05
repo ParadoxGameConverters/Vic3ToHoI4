@@ -27,6 +27,7 @@ jobs:
     - name: Add to PATH
       run: |
         echo "c:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        echo "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\bin\Hostx64\x64" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
         echo "c:\program files\ninja" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
     - name: "Cloning repo"
