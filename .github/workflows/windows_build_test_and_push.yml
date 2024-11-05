@@ -20,7 +20,9 @@ jobs:
       run: git config --global --add safe.directory /github/workspace
 
     - name: "Running vcvars"
-      run: "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+      run: |
+        cd C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build
+        .\vcvars64.bat
 
     - name: Add to PATH
       run: |
