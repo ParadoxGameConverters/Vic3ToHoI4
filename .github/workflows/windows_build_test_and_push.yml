@@ -21,7 +21,7 @@ jobs:
 
     - name: "Running vcvars"
       run: |
-        cd C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build
+        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build"
         .\vcvars64.bat
 
     - name: Add to PATH
