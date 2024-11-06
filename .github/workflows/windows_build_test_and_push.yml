@@ -99,9 +99,6 @@ jobs:
         cmake --preset x64-release-windows
         cmake --build --preset build-x64-release-windows --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
-    - name: Build solution
-      run: 
-
     - name: "Run tests"
       run: |
        cd $Env:GITHUB_WORKSPACE\build\test\Release-Windows
