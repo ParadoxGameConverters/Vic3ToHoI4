@@ -19,10 +19,10 @@ jobs:
     - name: work around permission issue
       run: git config --global --add safe.directory /github/workspace
 
-    - name: "Running vcvars"
-      run: |
-        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build"
-        .\vcvars64.bat
+    - name: Set up Visual Studio shell
+      uses: egor-tensin/vs-shell@v2
+      with:
+        arch: x64
 
     - name: "Check windows kits"
       run: |
