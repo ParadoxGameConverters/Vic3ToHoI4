@@ -28,6 +28,12 @@ jobs:
       run: |
         dir "C:\Program Files (x86)\Windows Kits\10\bin"
         dir "C:\Program Files (x86)\Windows Kits\10\lib"
+        dir "C:\Program Files"
+        dir "C:\Program Files\Microsoft Visual Studio"
+        dir "C:\Program Files\Microsoft Visual Studio\2022"
+        dir "C:\Program Files\Microsoft Visual Studio\2022\Community"
+        dir "C:\Program Files\Microsoft Visual Studio\2022\Community\VC"
+        dir "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary"
         dir "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build"
 
     - name: Add to PATH
