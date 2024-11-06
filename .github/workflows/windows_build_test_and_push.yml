@@ -19,11 +19,6 @@ jobs:
     - name: work around permission issue
       run: git config --global --add safe.directory /github/workspace
 
-    - name: "Running vcvars"
-      run: |
-        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build"
-        .\vcvars64.bat
-
     - name: "Check windows kits"
       run: |
         dir "C:\Program Files (x86)\Windows Kits\10\bin"
@@ -99,10 +94,13 @@ jobs:
        cat data/version.txt
 
     - name: Configure cmake
-      run: cmake --preset x64-release-windows
+      run: |
+        "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+        cmake --preset x64-release-windows
+        cmake --build --preset build-x64-release-windows --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: Build solution
-      run: cmake --build --preset build-x64-release-windows --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
+      run: 
 
     - name: "Run tests"
       run: |
