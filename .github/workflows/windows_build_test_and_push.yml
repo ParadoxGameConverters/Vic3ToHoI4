@@ -94,11 +94,12 @@ jobs:
        echo 'maxTarget = "1.14"' | out-file data/version.txt -encoding ASCII -append
        cat data/version.txt
 
-    - name: Configure cmake
+    - name: Build with cmake
+      shell: cmd
       run: |
         echo $env:GITHUB_PATH
         echo $env:PATH
-        "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+        call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
         echo "c:\program files\ninja" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
         echo "C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
         cmake --preset x64-release-windows
