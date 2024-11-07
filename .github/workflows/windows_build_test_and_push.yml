@@ -85,14 +85,6 @@ jobs:
       shell: cmd
       run: |
         call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
-        dir "."
-        dir "./external"
-        dir "./external/Fronter"
-        dir "./external/Fronter/external"
-        dir "./external/Fronter/external/commonItems"
-        dir "./external/Fronter/external/commonItems/external"
-        dir "./external/Fronter/external/commonItems/external/json"
-        dir "./external/Fronter/external/commonItems/external/json/single_include"
         cmake --preset x64-release-windows
         cmake --build --preset build-x64-release-windows --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
