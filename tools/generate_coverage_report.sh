@@ -4,12 +4,12 @@ rm -rf build/CMakeFiles
 rm -rf build/gcoverage
 rm -rf build/lcoverage
 
-cmake -H. -Bbuild -DCOVERAGE=TRUE && cmake --build ./build --target Vic3ToHoi4 Vic3ToHoi4Tests -- -j40
+cmake --preset x64-coverage-linux
+cmake --build --preset build-x64-coverage-linux --target Vic3ToHoi4 Vic3ToHoi4Tests -- -j40
 
-cd build || exit
-cd test/Release-Linux || exit
+cd build/test/Coverage-Linux || exit
 ./Vic3ToHoi4Tests
-cd ../.. || exit
+cd ../../.. || exit
 
-make gcov
-make lcov
+cmake --build --preset build-x64-coverage-linux --target gcov
+cmake --build --preset build-x64-coverage-linux --target lcov

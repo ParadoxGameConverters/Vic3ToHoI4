@@ -1,0 +1,21 @@
+Vic3 to Hoi4 is built using CMake.
+
+# Windows using Visual Studio
+In Visual Studio, Choose File -> Open -> Folder and select the Vic3 to HoI4 directory.
+If CMake does not automatically generate, right-click on CMakeLists.txt in the Solution Explorer and select Configure Vic3ToHoi4
+Once CMake has finished generation, build all with Build -> Build All or Ctrl+Shift+B
+
+# Windows via Command Line
+Install ninja build on your system and add the install location to your path.
+Open Visual Studio's x64 Native Tools Command Prompt
+Navigate to the Vic3ToHoI4 directory
+Configure CMake with `cmake --preset x64-release-windows`
+Build with `cmake --build --preset build-x64-release-windows --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40`
+
+# Linux
+Install all prerequisites to your system:
+	sudo apt-get install libcurl4-openssl-dev libwxbase3.2-0-unofficial \
+                libwxbase3.2unofficial-dev libwxgtk3.2-0-unofficial libwxgtk3.2unofficial-dev \
+                wx3.2-headers wx-common libnotify-dev libnotify4 libcurl4-openssl-dev lcov cmake
+Configure cmake: cmake --preset x64-coverage-linux -B build
+Build: cmake --build build --preset x64-coverage-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
