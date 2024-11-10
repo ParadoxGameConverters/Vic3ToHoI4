@@ -96,8 +96,8 @@ jobs:
     - name: "Prepare release"
       run: |
        cd "C:\Program Files\7-Zip\"
-       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}-win-x64.zip $Env:GITHUB_WORKSPACE\build\x64-release-windows\*
-       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-latest-win-x64.zip $Env:GITHUB_WORKSPACE\build\x64-release-windows\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release-Windows\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-latest-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release-Windows\*
 
     - name: "Prepare installer"
       run: |
@@ -130,7 +130,7 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       run: |
        cd "C:\Program Files\7-Zip\"
-       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\build\x64-release-windows\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release-Windows\*
 
     - uses: actions/upload-artifact@v4
       if: ${{ github.event_name == 'pull_request' }}
