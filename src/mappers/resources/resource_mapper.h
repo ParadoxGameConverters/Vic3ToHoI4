@@ -2,8 +2,8 @@
 #define SRC_MAPPERS_RESOURCE_RESOURCEMAPPER_H
 
 #include <map>
-#include <string>
 #include <set>
+#include <string>
 
 #include "src/vic3_world/buildings/building.h"
 
