@@ -5,7 +5,10 @@
 
 #include <string>
 
+#include "external/commonItems/ConverterVersion.h"
+#include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
+
 
 
 namespace configuration

@@ -3,6 +3,12 @@
 
 
 
+#include <map>
+#include <optional>
+#include <string>
+
+
+
 namespace vic3
 {
 

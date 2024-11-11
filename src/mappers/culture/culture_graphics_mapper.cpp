@@ -1,8 +1,12 @@
 #include "src/mappers/culture/culture_graphics_mapper.h"
 
+#include <algorithm>
 #include <ranges>
 
+#include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
+
+
 
 namespace
 {

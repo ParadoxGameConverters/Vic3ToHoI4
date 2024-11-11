@@ -7,6 +7,9 @@
 #include <string>
 
 #include "culture_definition.h"
+#include "external/commonItems/ModLoader/ModFilesystem.h"
+
+
 
 namespace vic3
 {

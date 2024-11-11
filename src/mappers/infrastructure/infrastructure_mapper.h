@@ -1,7 +1,13 @@
 #pragma once
+
+
+
+#include <functional>
 #include <map>
 
 #include "src/vic3_world/states/vic3_state.h"
+
+
 
 // maps state infrastructure
 namespace mappers

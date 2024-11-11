@@ -4,6 +4,7 @@
 
 #include "external/commonItems/Localization/LocalizationBlock.h"
 #include "external/commonItems/Localization/LocalizationDatabase.h"
+#include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/vic3_world/characters/vic3_character.h"

@@ -4,8 +4,10 @@
 
 
 #include <istream>
+#include <map>
 
 #include "src/vic3_world/interest_groups/interest_group.h"
+
 
 
 namespace vic3

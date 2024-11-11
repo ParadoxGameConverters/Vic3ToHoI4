@@ -3,7 +3,11 @@
 
 
 
+#include <map>
+#include <set>
 #include <string>
+#include <vector>
+
 
 
 namespace mappers
@@ -22,6 +26,7 @@ struct GraphicsBlock
 
    std::partial_ordering operator<=>(const GraphicsBlock&) const = default;
 };
+
 
 struct CultureGraphicsMapping
 {

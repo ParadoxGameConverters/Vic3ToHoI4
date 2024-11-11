@@ -3,6 +3,7 @@
 #include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/Parser.h"
 #include "external/commonItems/ParserHelpers.h"
+#include "external/commonItems/StringUtils.h"
 
 
 

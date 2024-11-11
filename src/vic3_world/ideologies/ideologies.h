@@ -4,6 +4,7 @@
 
 
 #include <map>
+#include <set>
 #include <string>
 
 #include "src/vic3_world/ideologies/ideology.h"

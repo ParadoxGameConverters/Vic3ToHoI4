@@ -1,5 +1,7 @@
 #include "src/hoi4_world/technology/technologies_converter.h"
 
+#include <algorithm>
+
 
 
 hoi4::Technologies hoi4::ConvertTechnologies(const std::set<std::string>& vic3_technologies,

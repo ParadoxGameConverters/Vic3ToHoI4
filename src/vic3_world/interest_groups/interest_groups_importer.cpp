@@ -1,5 +1,6 @@
 #include "src/vic3_world/interest_groups/interest_groups_importer.h"
 
+#include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/Log.h"
 #include "external/commonItems/Parser.h"
 #include "external/commonItems/ParserHelpers.h"

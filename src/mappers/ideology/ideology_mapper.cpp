@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <ranges>
 
+#include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
 
 
