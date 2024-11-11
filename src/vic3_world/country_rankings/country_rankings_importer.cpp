@@ -1,6 +1,10 @@
 #include "src/vic3_world/country_rankings/country_rankings_importer.h"
 
+#include <istream>
+#include <sstream>
+
 #include "external/commonItems/Parser.h"
+#include "external/commonItems/ParserHelpers.h"
 
 
 

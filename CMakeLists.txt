@@ -603,8 +603,8 @@ endif (COVERAGE STREQUAL true)
 
 #### Clang-tidy ####
 
-find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
-set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}")
+#find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
+#set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}")
 # checks to maybe add:
 #  cert-*
 #  cppcoreguidelines-*,

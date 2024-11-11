@@ -7,6 +7,8 @@
 #include <map>
 #include <string>
 
+#include "external/commonItems/Date.h"
+
 
 
 namespace vic3

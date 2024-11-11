@@ -2,9 +2,12 @@
 #define SRC_MAPPERS_RESOURCE_RESOURCEMAPPER_H
 
 #include <map>
+#include <set>
 #include <string>
 
 #include "src/vic3_world/buildings/building.h"
+
+
 
 namespace mappers
 {

@@ -4,8 +4,10 @@
 
 
 #include <istream>
+#include <map>
 
 #include "src/vic3_world/pacts/pact.h"
+
 
 
 namespace vic3

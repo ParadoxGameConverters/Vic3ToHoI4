@@ -1,8 +1,10 @@
 #include "src/out_hoi4/localizations/out_localizations.h"
 
+#include <array>
 #include <fstream>
 
 #include "external/commonItems/CommonFunctions.h"
+#include "external/commonItems/OSCompatibilityLayer.h"
 #include "external/fmt/include/fmt/format.h"
 
 

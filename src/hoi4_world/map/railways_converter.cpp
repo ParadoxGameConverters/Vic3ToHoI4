@@ -4,6 +4,7 @@
 #include <queue>
 #include <ranges>
 
+#include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/map/possible_path.h"
 #include "src/support/progress_manager.h"

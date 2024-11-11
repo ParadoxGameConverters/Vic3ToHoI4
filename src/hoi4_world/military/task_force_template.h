@@ -4,8 +4,10 @@
 #include <map>
 #include <set>
 #include <string>
+#include <vector>
 
 #include "src/hoi4_world/military/ship.h"
+
 
 
 namespace hoi4

@@ -1,6 +1,7 @@
 #include "src/vic3_world/buildings/buildings_importer.h"
 
 #include <map>
+#include <sstream>
 #include <vector>
 
 #include "external/commonItems/CommonRegexes.h"

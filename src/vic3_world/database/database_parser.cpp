@@ -1,4 +1,9 @@
-#include "database_parser.h"
+#include "src/vic3_world/database/database_parser.h"
+
+#include "external/commonItems/CommonRegexes.h"
+#include "external/commonItems/ParserHelpers.h"
+
+
 
 namespace vic3
 {

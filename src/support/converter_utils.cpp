@@ -1,6 +1,9 @@
 #include "converter_utils.h"
 
+#include "external/commonItems/Log.h"
 #include "external/fmt/include/fmt/format.h"
+
+
 
 void OutputStats(const std::string& stat_name, double converted_value, double base_value)
 {

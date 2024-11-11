@@ -3,8 +3,11 @@
 
 
 
+#include <vector>
+
 #include "src/mappers/culture/culture_graphics_mapping.h"
 #include "src/vic3_world/cultures/culture_definition.h"
+
 
 
 namespace mappers

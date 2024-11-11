@@ -4,6 +4,8 @@
 
 
 #include <istream>
+#include <set>
+#include <string>
 
 
 

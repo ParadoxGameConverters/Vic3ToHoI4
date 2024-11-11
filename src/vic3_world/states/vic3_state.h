@@ -3,10 +3,13 @@
 
 
 
+#include <optional>
 #include <ranges>
 #include <set>
 
 #include "src/vic3_world/buildings/building.h"
+
+
 
 namespace vic3
 {

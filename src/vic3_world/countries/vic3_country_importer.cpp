@@ -1,6 +1,7 @@
 #include "src/vic3_world/countries/vic3_country_importer.h"
 
 #include "external/commonItems/CommonRegexes.h"
+#include "external/commonItems/Log.h"
 #include "external/commonItems/ParserHelpers.h"
 #include "external/commonItems/StringUtils.h"
 #include "external/fmt/include/fmt/format.h"

@@ -1,7 +1,12 @@
 #ifndef SRC_HOI4WORLD_MILITARY_BATTALION_H
 #define SRC_HOI4WORLD_MILITARY_BATTALION_H
 
+
+
+#include <optional>
 #include <string>
+
+
 
 namespace hoi4
 {

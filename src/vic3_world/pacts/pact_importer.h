@@ -5,7 +5,9 @@
 
 #include <istream>
 
+#include "external/commonItems/Parser.h"
 #include "src/vic3_world/pacts/pact.h"
+
 
 
 namespace vic3

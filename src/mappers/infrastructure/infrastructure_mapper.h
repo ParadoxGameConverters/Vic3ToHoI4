@@ -1,7 +1,14 @@
-#pragma once
+#ifndef SRC_MAPPERS_INFRASTRUCTURE_INFRASTRUCTUREMAPPER_H_
+#define SRC_MAPPERS_INFRASTRUCTURE_INFRASTRUCTUREMAPPER_H_
+
+
+
+#include <functional>
 #include <map>
 
 #include "src/vic3_world/states/vic3_state.h"
+
+
 
 // maps state infrastructure
 namespace mappers
@@ -72,4 +79,9 @@ class InfrastructureMapper
 
    float FindFudgeFactor(const std::map<int, vic3::State>& states);
 };
+
 }  // namespace mappers
+
+
+
+#endif  // SRC_MAPPERS_INFRASTRUCTURE_INFRASTRUCTUREMAPPER_H_

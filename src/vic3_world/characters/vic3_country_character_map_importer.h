@@ -4,6 +4,9 @@
 
 
 #include <istream>
+#include <map>
+#include <vector>
+
 
 
 namespace vic3

@@ -1,8 +1,10 @@
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"
 
 #include "external/commonItems/CommonRegexes.h"
+#include "external/commonItems/Log.h"
 #include "external/commonItems/ParserHelpers.h"
 #include "external/fmt/include/fmt/format.h"
+
 
 
 mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_view mapping_file)
