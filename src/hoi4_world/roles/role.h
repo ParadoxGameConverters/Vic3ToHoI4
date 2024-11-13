@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 
+#include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/hoi4_world/focus_trees/focus.h"
 #include "src/hoi4_world/roles/repeat_focus.h"
 
@@ -25,6 +26,7 @@ struct RoleOptions
    std::vector<Focus> focuses;
    std::vector<RepeatFocus> repeat_focuses;
    std::vector<std::string> removed_focuses;
+   std::vector<DecisionsCategory> decisions_categories;
    std::vector<std::string> decisions;
    std::vector<std::string> events;
 };
@@ -43,6 +45,7 @@ class Role
        focuses_(std::move(options.focuses)),
        repeat_focuses_(std::move(options.repeat_focuses)),
        removed_focuses_(std::move(options.removed_focuses)),
+       decisions_categories_(std::move(options.decisions_categories)),
        decisions_(std::move(options.decisions)),
        events_(std::move(options.events))
    {
@@ -57,6 +60,7 @@ class Role
    [[nodiscard]] const std::vector<Focus>& GetFocuses() const { return focuses_; }
    [[nodiscard]] const std::vector<RepeatFocus>& GetRepeatFocuses() const { return repeat_focuses_; }
    [[nodiscard]] const std::vector<std::string>& GetRemovedFocuses() const { return removed_focuses_; }
+   [[nodiscard]] const std::vector<DecisionsCategory>& GetDecisionsCategories() const { return decisions_categories_; }
    [[nodiscard]] const std::vector<std::string>& GetDecisions() const { return decisions_; }
    [[nodiscard]] const std::vector<std::string>& GetEvents() const { return events_; }
 
@@ -72,6 +76,7 @@ class Role
    std::vector<Focus> focuses_;
    std::vector<RepeatFocus> repeat_focuses_;
    std::vector<std::string> removed_focuses_;
+   std::vector<DecisionsCategory> decisions_categories_;
    std::vector<std::string> decisions_;
    std::vector<std::string> events_;
 };

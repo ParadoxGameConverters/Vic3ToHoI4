@@ -33,6 +33,9 @@ hoi4::RoleImporter::RoleImporter()
    role_parser_.registerKeyword("removed_focus", [this](std::istream& input) {
       role_options_.removed_focuses.emplace_back(commonItems::stringOfItem(input).getString());
    });
+   role_parser_.registerKeyword("decisions_category", [this](std::istream& input) {
+      role_options_.decisions_categories.emplace_back(decisions_category_importer_.GetDecisionsCategory(input));
+   });
    role_parser_.registerKeyword("decision", [this](std::istream& input) {
       role_options_.decisions.emplace_back(commonItems::stringOfItem(input).getString());
    });
