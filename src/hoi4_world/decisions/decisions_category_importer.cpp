@@ -7,6 +7,9 @@
 
 hoi4::DecisionsCategoryImporter::DecisionsCategoryImporter()
 {
+   parser.registerKeyword("name", [this](std::istream& the_stream) {
+      name = commonItems::getString(the_stream);
+   });
    parser.registerKeyword("icon", [this](std::istream& the_stream) {
       icon = commonItems::getString(the_stream);
    });
@@ -32,9 +35,9 @@ hoi4::DecisionsCategoryImporter::DecisionsCategoryImporter()
 
 
 
-hoi4::DecisionsCategory hoi4::DecisionsCategoryImporter::GetDecisionsCategory(std::string_view name,
-    std::istream& the_stream)
+hoi4::DecisionsCategory hoi4::DecisionsCategoryImporter::GetDecisionsCategory(std::istream& the_stream)
 {
+   name.clear();
    icon.clear();
    picture.clear();
    priority.reset();
@@ -45,5 +48,5 @@ hoi4::DecisionsCategory hoi4::DecisionsCategoryImporter::GetDecisionsCategory(st
 
    parser.parseStream(the_stream);
 
-   return {std::string(name), icon, picture, priority, allowed, visible, visibilityType, extraItems};
+   return {name, icon, picture, priority, allowed, visible, visibilityType, extraItems};
 }

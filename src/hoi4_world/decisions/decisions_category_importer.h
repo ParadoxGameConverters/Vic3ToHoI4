@@ -19,11 +19,12 @@ class DecisionsCategoryImporter
   public:
    DecisionsCategoryImporter();
 
-   [[nodiscard]] DecisionsCategory GetDecisionsCategory(std::string_view name, std::istream& the_stream);
+   [[nodiscard]] DecisionsCategory GetDecisionsCategory(std::istream& the_stream);
 
   private:
    commonItems::parser parser;
 
+   std::string name;
    std::string icon;
    std::string picture;
    std::optional<int> priority;

@@ -23,7 +23,7 @@ struct DecisionsCategory
    std::string visibilityType;
    std::vector<std::pair<std::string, std::string>> extraItems;
 
-   std::strong_ordering operator<=>(const DecisionsCategory& rhs) const { return name <=> rhs.name; }
+   std::strong_ordering operator<=>(const DecisionsCategory& rhs) const = default;
 };
 
 }  // namespace hoi4
