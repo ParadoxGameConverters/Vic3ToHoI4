@@ -203,7 +203,9 @@ on_actions = {
 	on_declare_war = {
 		effect = {
 		}
+
 	}
+	
 	#FROM is faction leader on join faction requests.
 	on_offer_join_faction = {
 		effect = {

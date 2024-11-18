@@ -282,6 +282,4 @@ continuous_focus_palette = {
 		available_if_capitulated = yes
 	}
 
-	
-
 }

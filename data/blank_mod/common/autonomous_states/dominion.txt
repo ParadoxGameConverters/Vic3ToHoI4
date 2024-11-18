@@ -46,7 +46,7 @@ autonomy_state = {
 	}
 
 	can_lose_level = {
-		if = {
+		IF = {
 			limit = {
 
 			}

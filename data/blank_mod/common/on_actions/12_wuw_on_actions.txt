@@ -1,0 +1,662 @@
+on_actions = {
+	
+	# FROM is the faction Leader, ROOT is the country leaving the faction 
+	on_leave_faction = {
+
+		effect = { # Removing Joint Focus Tree modifiers 
+			IF = {
+				limit = {
+					ROOT = {
+						HABSBURG_is_a_habsburg_viable_nation = yes
+						NOT = {
+							tag = global.AH_originator_country
+						}
+						OR = {
+							is_subject = no
+							AND = {
+								is_subject = yes
+								NOT = {
+									is_subject_of = global.AH_originator_country
+								}
+							}
+						}
+					}
+				}
+				IF = {
+					limit = {
+						ROOT = {
+							has_dynamic_modifier = {
+								modifier = HABSBURG_army_modifier
+							}	
+						}
+					}
+					ROOT = {
+						remove_dynamic_modifier = {
+							modifier = HABSBURG_army_modifier
+						}
+					}
+				}
+				IF = {
+					limit = {
+						ROOT = {
+							has_dynamic_modifier = {
+								modifier = HABSBURG_cavalry_modifier
+							}	
+						}
+					}
+					ROOT = {
+						remove_dynamic_modifier = {
+							modifier = HABSBURG_cavalry_modifier
+						}
+					}
+				}
+				IF = {
+					limit = {
+						ROOT = {
+							has_dynamic_modifier = {
+								modifier = HABSBURG_economy_dynamic_modifier
+							}	
+						}
+					}
+					ROOT = {
+						remove_dynamic_modifier = {
+							modifier = HABSBURG_economy_dynamic_modifier
+						}
+					}
+				}
+				IF = {
+					limit = {
+						ROOT = {
+							has_dynamic_modifier = {
+								modifier = HABSBURG_joint_industry_modifier
+							}	
+						}
+					}
+					ROOT = {
+						remove_dynamic_modifier = {
+							modifier = HABSBURG_joint_industry_modifier
+						}
+					}
+				}
+				IF = {
+					limit = {
+						has_global_flag = {
+							flag = AH_joint_tech_sharing_group_activated_flag
+						}
+					}
+					ROOT = {
+						remove_from_tech_sharing_group = HABSBURG_tech_sharing_group
+					}
+				}
+			}
+			#German Autarky Trade Influence Stuff
+			if = {
+				limit = {
+					OR = {
+						FROM = { 
+							has_opinion_modifier = GER_autarky_trade_opinion
+						}
+						ROOT = { #In case Germany isn't faction leader any more
+							has_opinion_modifier = GER_autarky_trade_opinion
+						}
+					}
+				}
+				if = { #If Germany is faction leader, remove German trade Influence
+					limit = {
+						FROM = { 
+							has_opinion_modifier = GER_autarky_trade_opinion
+						}
+					}
+					ROOT = { #Remove trade opinion
+						remove_opinion_modifier = {
+							target = FROM
+							modifier = GER_autarky_trade_opinion
+						}
+					}
+				}
+				if = { #If Germany is NOT faction leader any more; remove German trade influence
+					limit = {
+						ROOT = { 
+							has_opinion_modifier = GER_autarky_trade_opinion
+						}
+					}
+					FROM = { #Remove trade opinion
+						remove_opinion_modifier = {
+							target = ROOT
+							modifier = GER_autarky_trade_opinion
+						}
+					}
+				}
+				if = { #If Germany is faction leader; remove faction leader trade influence
+					limit = {
+						ROOT = { 
+							has_opinion_modifier = GER_german_trade_opinion
+						}
+					}
+					FROM = { #Remove trade opinion
+						remove_opinion_modifier = {
+							target = ROOT
+							modifier = GER_german_trade_opinion
+						}
+					}
+				}
+				if = { #If Germany is NOT faction leader any more; remove faction leader trade influence
+					limit = {
+						FROM = { 
+							has_opinion_modifier = GER_german_trade_opinion
+						}
+					}
+					ROOT = { #Remove trade opinion
+						remove_opinion_modifier = {
+							target = FROM
+							modifier = GER_german_trade_opinion
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+
+	#FROM is faction leader on join faction requests. THIS DOES NOT FIRE ON ADD_TO_FACTION EFFECT! USE ON_OFFER_JOIN_FACTION!
+	on_join_faction = { 
+	}
+
+	# FROM is the country invited, THIS and ROOT are the faction leader.
+	on_offer_join_faction = { 
+	}
+
+	# FROM is the one that joins the faction. Trigger the following commands whenever a country creates a faction.	
+	on_create_faction = {
+	}
+
+	# ROOT is the nation being puppeted, FROM is the overlord. 	OBS: Trigger the following commands whenever a country is puppeted in a peace conference only.
+	on_puppet = {
+	}
+
+	on_liberate = { # ROOT is the nation being liberated, FROM is the leader of the liberators.
+		effect = {
+			# European States Array
+			if = {
+				limit = {
+					ROOT = { #Countries Germany can seize gold reserves from and use Operational Planning against
+						capital_scope = { is_on_continent = europe }
+					}
+				}
+				add_to_array = { 
+					array = GER.GER_european_targets_array 
+					value = THIS
+				}
+			}
+		}
+		effect = { #If a Reichskommissariat is liberated through a peace conference, make Alfred Rosenberg suck a bit
+			IF = {
+				limit = {
+					ROOT = {
+						has_country_flag = GER_reichskommissariats_puppet_flag
+					}
+					GER = {
+						has_dynamic_modifier = { modifier = GER_alfred_rosenberg_modifier }
+					}
+				}
+				GER = {
+					GER_worsen_rosenbergs_trait_effect = yes
+				}
+				ROOT = {
+					clr_country_flag = GER_reichskommissariats_puppet_flag
+				}
+			}
+		}
+	}
+
+	# ROOT is the nation being released, FROM is the overlord. Trigger the following commands whenever puppeting through the occupied territories menu during peace time (or when releasing from non-core but owned territory).
+	on_release_as_puppet = {
+
+		effect = {
+			# European States Array
+			if = {
+				limit = {
+					ROOT = { #Countries Germany can seize gold reserves from and use Operational Planning against
+						capital_scope = { is_on_continent = europe }
+					}
+				}
+				add_to_array = { 
+					array = GER.GER_european_targets_array 
+					value = THIS
+				}
+			}
+		}
+	}
+
+	on_release_as_free = { #ROOT is free nation FROM is releaser.
+		effect = {
+			# European States Array
+			if = {
+				limit = {
+					ROOT = { #Countries Germany can seize gold reserves from and use Operational Planning against
+						capital_scope = { is_on_continent = europe }
+					}
+				}
+				add_to_array = { 
+					array = GER.GER_european_targets_array 
+					value = THIS
+				}
+			}
+		}
+	}
+
+	on_monthly = {
+
+		effect = {
+			IF = {
+				limit = {
+					ROOT = {
+						HABSBURG_is_a_habsburg_viable_nation = yes
+					}
+					any_other_country = {
+						tag = global.AH_originator_country
+						has_subject = ROOT
+					}
+					ROOT = {
+						NOT = {
+							AND = {
+								is_in_tech_sharing_group = HABSBURG_tech_sharing_group
+								has_dynamic_modifier = {
+									modifier = HABSBURG_economy_dynamic_modifier
+								}
+								has_dynamic_modifier = {
+									modifier = HABSBURG_joint_industry_modifier
+								}
+								has_dynamic_modifier = {
+									modifier = HABSBURG_army_modifier
+								}
+								has_dynamic_modifier = {
+									modifier =  HABSBURG_cavalry_modifier
+								}
+							}
+						}
+					}
+					OR = {
+						has_global_flag = {
+							flag = AH_joint_tech_sharing_group_activated_flag
+						}
+						has_global_flag = {
+							flag = AH_joint_economy_spirit_activated_flag
+						}
+						has_global_flag = {
+							flag = AH_joint_industry_spirit_activated_flag
+						}
+						has_global_flag = {
+							flag = AH_joint_army_spirit_activated_flag
+						}
+						has_global_flag = {
+							flag = AH_joint_cavalry_spirit_activated_flag
+						}
+					}
+				}
+				IF = {
+					limit = {
+						has_global_flag = {
+							flag = AH_joint_tech_sharing_group_activated_flag
+						}
+						ROOT = {
+							NOT = {
+								is_in_tech_sharing_group = HABSBURG_tech_sharing_group
+							}
+						}
+					}
+					ROOT = {
+						add_to_tech_sharing_group = HABSBURG_tech_sharing_group
+					}
+				}
+
+				IF = {
+					limit = {
+						has_global_flag = {
+							flag = AH_joint_economy_spirit_activated_flag
+						}
+						ROOT = {
+							NOT = {
+								has_dynamic_modifier = {
+									modifier = HABSBURG_economy_dynamic_modifier
+								}
+							}
+						}
+					}
+					ROOT = {
+						add_dynamic_modifier = { modifier = HABSBURG_economy_dynamic_modifier }
+					}
+				}
+
+				IF = {
+					limit = {
+						has_global_flag = {
+							flag = AH_joint_industry_spirit_activated_flag
+						}
+						ROOT = {
+							NOT = {
+								has_dynamic_modifier = {
+									modifier = HABSBURG_joint_industry_modifier
+								}
+							}
+						}
+					}
+					ROOT = {
+						add_dynamic_modifier = { modifier = HABSBURG_joint_industry_modifier }
+					}
+				}
+
+				IF = {
+					limit = {
+						has_global_flag = {
+							flag = AH_joint_army_spirit_activated_flag
+						}
+						ROOT = {
+							NOT = {
+								has_dynamic_modifier = {
+									modifier = HABSBURG_army_modifier
+								}
+							}
+						}
+					}
+					ROOT = {
+						add_dynamic_modifier = { modifier = HABSBURG_army_modifier }
+					}
+				}
+
+				IF = {
+					limit = {
+						has_global_flag = {
+							flag = AH_joint_cavalry_spirit_activated_flag
+						}
+						ROOT = {
+							NOT = {
+								has_dynamic_modifier = {
+									modifier =  HABSBURG_cavalry_modifier
+								}
+							}
+						}
+					}
+					ROOT = {
+						add_dynamic_modifier = { modifier = HABSBURG_cavalry_modifier }
+					}
+				}
+			}
+		}
+	}
+
+	#ROOT is capitulated country, FROM is winner.
+	on_capitulation_immediate = {
+		effect = { #If a Reichskommissariat has capitulated, make Alfred Rosenberg suck a bit
+			IF = {
+				limit = {
+					ROOT = {
+						has_country_flag = GER_reichskommissariats_puppet_flag
+					}
+					GER = {
+						has_dynamic_modifier = { modifier = GER_alfred_rosenberg_modifier }
+					}
+				}
+				GER = {
+					GER_worsen_rosenbergs_trait_effect = yes
+				}
+				ROOT = {
+					clr_country_flag = GER_reichskommissariats_puppet_flag
+				}
+			}
+		}
+	}
+	
+	
+	on_capitulation = { # ROOT is capitulated country, FROM is winner
+
+		effect = {
+			IF = {
+				limit = {
+					ROOT = { 
+						capital_scope = {
+							is_in_array = {
+								array = AUS.expansion_targets
+								value = THIS
+							}
+						}
+					}
+				}
+
+				ROOT = {
+					capital_scope = {
+						remove_from_array = {
+							array = AUS.expansion_targets
+							value = THIS
+						}
+						set_state_flag = AUS_no_longer_expansion_target
+					}
+				}
+				
+			}
+		}
+	}
+	
+	on_war = {
+	}
+
+	on_war_relation_added = {
+	}
+
+	on_send_volunteers = { 
+	}
+	
+	# ROOT Tag FROM Project
+	# Triggered when a project is completed
+	on_project_completion = {
+	}
+
+
+
+	on_join_allies = { # ROOT is the country which joined, FROM is the country whose war was joined
+	}
+
+	on_call_allies = { # ROOT is the country which called, FROM is the country that joined
+	}
+
+	on_declare_war = {
+	}
+
+	on_startup = {
+		effect = {
+			# European States Array
+			every_country = { #Countries Germany can seize gold reserves from
+				limit = {
+					capital_scope = { is_on_continent = europe }
+				}
+				add_to_array = { 
+					array = GER.GER_european_targets_array 
+					value = THIS
+				}
+			}  
+		}
+
+		effect = {
+			IF = {
+				limit = { has_dlc = "Gotterdammerung" }
+				set_variable = { global.deployed_manpower_ratio_needed_for_anschluss = 24 }
+				set_variable = { global.deployed_manpower_ratio_needed_for_anschluss_incrementor = 1 } #if this is changed, please update loc AUS_anschluss_ratio_lowered and AUS_anschluss_ratio_raised
+
+				set_variable = { global.low_anschluss_risk = global.deployed_manpower_ratio_needed_for_anschluss }
+
+				set_variable = { global.medium_anschluss_risk = global.deployed_manpower_ratio_needed_for_anschluss }
+
+				set_variable = { global.high_anschluss_risk = global.deployed_manpower_ratio_needed_for_anschluss }
+
+				multiply_variable = {
+					var = global.low_anschluss_risk
+					value = 0.5
+				}
+
+				multiply_variable = {
+					var = global.medium_anschluss_risk
+					value = 0.75
+				}
+
+				multiply_variable = {
+					var = global.high_anschluss_risk
+					value = 0.90
+				}
+			}
+		}
+	}
+
+	on_subject_free = {
+
+		effect = { #If a Reichskommissariat is freed, make Alfred Rosenberg suck a bit
+			IF = {
+				limit = {
+					ROOT = {
+						has_country_flag = GER_reichskommissariats_puppet_flag
+					}
+					GER = {
+						has_dynamic_modifier = { modifier = GER_alfred_rosenberg_modifier }
+					}
+				}
+				GER = {
+					GER_worsen_rosenbergs_trait_effect = yes
+				}
+				ROOT = {
+					clr_country_flag = GER_reichskommissariats_puppet_flag
+				}
+			}
+		}
+
+	}
+
+	on_peaceconference_ended = {
+	}
+
+	on_peace = {
+	}
+
+	on_monthly_COG = {
+	}
+
+	on_monthly_ENG = {
+	}
+
+	on_ruling_party_change = {
+	}
+
+	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
+	on_state_control_changed = {
+	}
+
+	on_weekly_GER = {
+	}
+
+	on_monthly_AUS = {
+
+		effect = {
+			IF = {
+				limit = {
+					has_dlc = "Gotterdammerung"
+					AUS = { has_country_flag = AUS_antischluss_active_flag }
+				}
+
+				#below variables are set to be multiplied with a percentage to check how close Germany are to achieving the fighting army strength ratio needed for anschluss
+
+				set_variable = { global.low_anschluss_risk = global.deployed_manpower_ratio_needed_for_anschluss }
+
+				set_variable = { global.medium_anschluss_risk = global.deployed_manpower_ratio_needed_for_anschluss }
+
+				set_variable = { global.high_anschluss_risk = global.deployed_manpower_ratio_needed_for_anschluss }
+
+				multiply_variable = {
+					var = global.low_anschluss_risk
+					value = 0.5
+				}
+
+				multiply_variable = {
+					var = global.medium_anschluss_risk
+					value = 0.75
+				}
+
+				multiply_variable = {
+					var = global.high_anschluss_risk
+					value = 0.90
+				}
+			}
+		}
+	}
+
+	on_annex = {
+		effect = {
+			IF = {
+				limit = {
+					FROM = { 
+						capital_scope = {
+							is_in_array = {
+								array = AUS.expansion_targets
+								value = THIS
+							}
+						}
+					}
+				}
+
+				FROM = {
+					capital_scope = {
+						remove_from_array = {
+							array = AUS.expansion_targets
+							value = THIS
+						}
+						set_state_flag = AUS_no_longer_expansion_target
+
+						log = "[THIS.GetName] was removed"
+					}
+				}
+			}
+		}
+		effect = { #If a Reichskommissariat is annexed by another country than Germany, make Alfred Rosenberg suck a bit more
+			IF = {
+				limit = {
+					FROM = {
+						has_country_flag = GER_reichskommissariats_puppet_flag
+					}
+					GER = {
+						has_dynamic_modifier = { modifier = GER_alfred_rosenberg_modifier }
+					}
+				}
+				GER = {
+					GER_worsen_rosenbergs_trait_effect = yes
+				}
+				FROM = {
+					clr_country_flag = GER_reichskommissariats_puppet_flag
+				}
+			}
+		}
+	}
+
+	#ROOT is subject, FROM is overlord
+	on_subject_annexed = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						has_dynamic_modifier = { modifier = GER_alfred_rosenberg_modifier }
+					}
+					ROOT = {
+						has_country_flag = GER_reichskommissariats_puppet_flag
+					}
+				}
+				GER = {
+					GER_worsen_rosenbergs_trait_effect = yes
+				}
+				FROM = {
+					clr_country_flag = GER_reichskommissariats_puppet_flag
+				}
+			}
+		}
+	}
+
+	on_civil_war_end = {
+	}
+
+}	

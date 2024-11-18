@@ -142,33 +142,28 @@ adjacency_rule =
 }
 
 #Panama Canal
-adjacency_rule =
-{
+adjacency_rule = {
 	name = "PANAMA_CANAL"
 
-	contested =
-	{
+	contested = {
 		army = no
 		navy = no
 		submarine = no
 		trade = no
 	}
-	enemy =
-	{
+	enemy = {
 		army = no
 		navy = no
 		submarine = no
 		trade = no
 	}
-	friend =
-	{
+	friend = {
 		army = yes
 		navy = yes
 		submarine = yes
 		trade = yes
 	}
-	neutral =
-	{
+	neutral = {
 		army = no
 		navy = no
 		submarine = no
@@ -183,7 +178,8 @@ adjacency_rule =
 			has_global_flag = PANAMA_CANAL_BLOCKED
 			has_country_flag = PANAMA_CANAL_BLOCKED_FOR_COUNTRY
 		}
-		tooltip = disable_canal_tt
+		#tooltip = disable_canal_tt
+		tooltip = kiel_canal_damaged_tt
 	}
 		
 	icon = 7617
@@ -281,8 +277,7 @@ adjacency_rule =
 }
 
 #Kiel Canal
-adjacency_rule =
-{
+adjacency_rule = {
 	name = "KIEL_CANAL"
 
 	contested =
@@ -315,7 +310,7 @@ adjacency_rule =
 	}
 	
 	required_provinces = { 317 3231 3368 6257 6389 }
-	
+
 	is_disabled = {
 		has_global_flag = KIEL_CANAL_UNBUILT
 		tooltip = canal_unbuilt_tt
@@ -324,6 +319,7 @@ adjacency_rule =
 	icon = 6389
 	offset = { -9 0 2 }
 }
+
 #Strait of Hormuz
 adjacency_rule =
 {
@@ -364,34 +360,29 @@ adjacency_rule =
 	offset = { 2 0 12 }
 }
 
-#Strait of Otranto #TODO_Manu: TEST THIS OUT AND REMOVE IF NOT SATISFACTORY
-adjacency_rule =
-{
-	name = "OTRANTO_STRAIT" #TODO_Manu: Remove this loc key too if not necessary
+#Strait of Otranto 
+adjacency_rule = {
+	name = "OTRANTO_STRAIT" 
 
-	contested =
-	{
-		army = yes
-		navy = yes
-		submarine = yes
-		trade = yes
-	}
-	enemy =
-	{
+	contested = {
 		army = no
 		navy = no
 		submarine = yes
 		trade = no
 	}
-	friend =
-	{
+	enemy = {
+		army = no
+		navy = no
+		submarine = yes
+		trade = no
+	}
+	friend = {
 		army = yes
 		navy = yes
 		submarine = yes
 		trade = yes
 	}
-	neutral =
-	{
+	neutral = {
 		army = yes
 		navy = yes
 		submarine = yes

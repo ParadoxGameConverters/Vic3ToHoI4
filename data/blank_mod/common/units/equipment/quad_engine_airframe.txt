@@ -216,13 +216,43 @@ equipments = {
 		year = 1933
 
 		archetype = transport_plane_equipment
-		active = yes
+		active = no
 		priority = 130
 
 		air_superiority = 0
 		
 		air_range = 1000
 		maximum_speed = 400
+		air_agility = 10
+		air_defence = 20
+	}
+
+	transport_plane_equipment_2 = {
+		year = 1940
+
+		archetype = transport_plane_equipment
+		active = no
+		priority = 130
+
+		air_superiority = 0
+		
+		air_range = 1300
+		maximum_speed = 450
+		air_agility = 10
+		air_defence = 20
+	}
+
+	transport_plane_equipment_3 = {
+		year = 1948
+
+		archetype = transport_plane_equipment
+		active = no
+		priority = 130
+
+		air_superiority = 0
+		
+		air_range = 1800
+		maximum_speed = 480
 		air_agility = 10
 		air_defence = 20
 	}

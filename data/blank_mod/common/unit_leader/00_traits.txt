@@ -1738,7 +1738,7 @@ leader_traits = {
 		gui_row = 0
 		gui_column = 0
 	}
-	
+
 	seawolf = { 
 		type = navy
 		gain_xp = {
@@ -1876,10 +1876,10 @@ leader_traits = {
 # naval assignable traits
 ##################################
 
-concealment_expert = { 
+	concealment_expert = { 
 		type = navy
 		modifier = {
-			navy_visibility = -0.2
+			navy_visibility = -0.15
 		}
 				
 		ai_will_do = {
@@ -1898,7 +1898,7 @@ concealment_expert = {
 		mutually_exclusive = lone_wolf
 		gui_row = 0
 		gui_column = 1
-	}	
+	}
 
 	lone_wolf = { 
 		type = navy
@@ -1932,7 +1932,7 @@ concealment_expert = {
 		mutually_exclusive = lancer
 		gui_row = 2
 		gui_column = 1
-	}	
+	}
 
 	lancer = {
 		type = navy
@@ -1945,7 +1945,8 @@ concealment_expert = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = { seawolf spotter fleet_protector superior_tactician }
+		any_parent = { seawolf spotter fleet_protector superior_tactician } 
+		mutually_exclusive = silent_hunter
 		
 		gui_row = 3
 		gui_column = 1
@@ -2124,7 +2125,7 @@ concealment_expert = {
 		gui_row = 11
 		gui_column = 1
 	}
-	
+
 	smoke_screen_expert = { 
 		type = navy
 		modifier = {
@@ -2268,7 +2269,7 @@ concealment_expert = {
 		gui_row = 8
 		gui_column = 2
 	}
-		
+
 	torpedo_bomber = { 
 		type = navy
 		sub_unit_modifiers = {
@@ -2296,7 +2297,7 @@ concealment_expert = {
 		gui_row = 9
 		gui_column = 2
 	}
-	
+
 	marksman = { 
 		type = navy
 		modifier = {
@@ -2319,7 +2320,7 @@ concealment_expert = {
 		gui_row = 10
 		gui_column = 2
 	}
-	
+
 	crisis_magician = { 
 		type = navy
 		modifier = {
@@ -2337,7 +2338,7 @@ concealment_expert = {
 		gui_row = 11
 		gui_column = 2
 	}
-	
+
 
 ##################################
 # navy terrain trait
@@ -2930,6 +2931,25 @@ concealment_expert = {
 		}
 	}
 
+	trait_HUN_fascist_sympathies = {
+
+		type = all
+		trait_type = personality_trait
+
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+
+	trait_HUN_vitez = {
+
+		type = all
+		trait_type = personality_trait
+
+		new_commander_weight = {
+			factor = 0
+		}
+	}
 
 ##################################
 # operative traits
