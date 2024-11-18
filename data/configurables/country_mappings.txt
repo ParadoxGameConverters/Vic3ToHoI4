@@ -2,6 +2,7 @@
 
 #link = { vic = GBR hoi = ENG } # Great Britain => United Kingdom
 
+link = { vic = ABK hoi = ABK } # Abkhazia
 #link = { vic = ABS hoi = ??? } # Absaroka
 link = { vic = ABU hoi = UAE } # Trucial States
 #link = { vic = ACE hoi = ??? } # Aceh
@@ -16,6 +17,7 @@ link = { vic = AFG hoi = AFG } # Afghanistan
 #link = { vic = AIR hoi = ??? } # Air
 link = { vic = ALB hoi = ALB } # Albania
 link = { vic = ALD hoi = ALG } # Algeria
+link = { vic = ALI hoi = ALT } # Altai
 #link = { vic = ALT hoi = ??? } # Los Altos
 #link = { vic = AMZ hoi = ??? } # Amazonia
 #link = { vic = ANH hoi = ??? } # Anhalt
@@ -24,6 +26,7 @@ link = { vic = ANL hoi = ADU } # Andalusia
 link = { vic = AOT hoi = NZL } # Aotearoa
 #link = { vic = APC hoi = ??? } # Apache
 #link = { vic = ARA hoi = ??? } # Arabia
+#link = { vic = ARB hoi = ??? } # Arabistan
 link = { vic = ARG hoi = ARG } # Argentina
 link = { vic = ARM hoi = ARM } # Armenia
 #link = { vic = ARP hoi = ??? } # Arapaho
@@ -44,6 +47,7 @@ link = { vic = BAH hoi = BAH } # Bahamas
 #link = { vic = BAL hoi = ??? } # Bali
 #link = { vic = BAS hoi = ??? } # Bastar
 link = { vic = BAV hoi = BAY } # Bavaria
+#link = { vic = BEI hoi = ??? } # Beiyang
 link = { vic = BEL hoi = BEL } # Belgium
 #link = { vic = BEN hoi = ??? } # Benin
 #link = { vic = BER hoi = ??? } # Baroda
@@ -57,6 +61,7 @@ link = { vic = BHU hoi = BHU } # Bhutan
 link = { vic = BIC hoi = RAJ } # East India Company
 #link = { vic = BIK hoi = ??? } # Bikaner
 #link = { vic = BJA hoi = ??? } # Beja
+link = { vic = BKR hoi = BSK } # Bashkiria => Bashkortostan
 #link = { vic = BLA hoi = ??? } # Bilua
 #link = { vic = BLE hoi = ??? } # Baule
 #link = { vic = BLF hoi = ??? } # Niitsitapi
@@ -66,6 +71,7 @@ link = { vic = BIC hoi = RAJ } # East India Company
 #link = { vic = BND hoi = ??? } # Bundu
 #link = { vic = BNG hoi = ??? } # Bangala
 #link = { vic = BNJ hoi = ??? } # Banjar
+#link = { vic = BNN hoi = ??? } # Pannakwati
 #link = { vic = BNY hoi = ??? } # Bunyoro
 #link = { vic = BOB hoi = ??? } # Bobangi
 #link = { vic = BOH hoi = ??? } # Bohemia
@@ -105,10 +111,14 @@ link = { vic = CHI hoi = CHI } # China
 #link = { vic = CHK hoi = ??? } # Chokwe
 link = { vic = CHL hoi = CHL } # Chile
 #link = { vic = CHP hoi = ??? } # Champassak
+#link = { vic = CHT hoi = ??? } # Chitral
+link = { vic = CHV hoi = CHU } # Chuvashia
 #link = { vic = CHW hoi = ??? } # Chewa
 #link = { vic = CIR hoi = ??? } # Circassia
+link = { vic = CKC hoi = CKK } # Chukotka
 link = { vic = CLM hoi = COL } # Colombia
 #link = { vic = CMI hoi = ??? } # Chiang Mai
+#link = { vic = CNW hoi = ??? } # Cornwall
 #link = { vic = COB hoi = ??? } # Saxe-Coburg-Gotha
 #link = { vic = COL hoi = ??? } # Columbia
 #link = { vic = COM hoi = ??? } # Comanche
@@ -136,7 +146,7 @@ link = { vic = DEN hoi = DEN } # Denmark
 #link = { vic = DLA hoi = ??? } # Duala
 #link = { vic = DNK hoi = ??? } # Dinka
 link = { vic = DOM hoi = DOM } # Santo Domingo => Dominican Republic
-link = { vic = DON hoi = DON } # Don Cossack Host => Don Host
+link = { vic = DON hoi = DON } # Don Cossack Host
 link = { vic = DZG hoi = DNZ } # Danzig
 link = { vic = ECU hoi = ECU } # Ecuador
 link = { vic = EGY hoi = EGY } # Egypt
@@ -148,7 +158,7 @@ link = { vic = EST hoi = EST } # Estonia
 link = { vic = ETH hoi = ETH } # Ethiopia
 #link = { vic = EWE hoi = ??? } # Ewe
 #link = { vic = EZO hoi = ??? } # Ezo
-#link = { vic = FER hoi = ??? } # Kamchatka
+link = { vic = FER hoi = FER } # Far East
 link = { vic = FIN hoi = FIN } # Finland
 link = { vic = FJI hoi = FIJ } # Fiji
 #link = { vic = FLA hoi = ??? } # Flanders
@@ -171,7 +181,7 @@ link = { vic = GER hoi = GER } # Germany
 link = { vic = GLI hoi = GLC } # Galicia
 #link = { vic = GML hoi = ??? } # Gamilaraay
 #link = { vic = GNG hoi = ??? } # Da Cheng
-#link = { vic = GNI hoi = ??? } # Guarani
+link = { vic = GNI hoi = GAR } # Guarani
 link = { vic = GRE hoi = GRE } # Greece
 #link = { vic = GRI hoi = ??? } # Guarani
 #link = { vic = GRN hoi = ??? } # Greenland
@@ -187,7 +197,7 @@ link = { vic = HAW hoi = HAW } # Hawaii
 #link = { vic = HBC hoi = ??? } # Hudson Bay Company
 #link = { vic = HDJ hoi = ??? } # Hedjaz
 #link = { vic = HEK hoi = ??? } # Hesse-Kassel
-#link = { vic = HES hoi = ??? } # Hesse
+link = { vic = HES hoi = HES } # Hesse
 #link = { vic = HHE hoi = ??? } # Hehe
 #link = { vic = HLA hoi = ??? } # Halia
 #link = { vic = HMB hoi = ??? } # Hemba
@@ -197,6 +207,7 @@ link = { vic = HND hoi = RAJ } # India
 #link = { vic = HOH hoi = ??? } # Hohenzollern
 link = { vic = HOL hoi = SHL } # Holstein
 link = { vic = HON hoi = HON } # Honduras
+#link = { vic = HRE hoi = ??? } # Central Europe
 #link = { vic = HRO hoi = ??? } # Herero
 #link = { vic = HTH hoi = ??? } # Hathawaddy
 link = { vic = HUN hoi = HUN } # Hungary
@@ -204,7 +215,7 @@ link = { vic = HUN hoi = HUN } # Hungary
 #link = { vic = HZJ hoi = ??? } # Hazarajat
 #link = { vic = IBE hoi = ??? } # Iberia
 #link = { vic = IBL hoi = ??? } # IBL
-#link = { vic = IBO hoi = ??? } # Igbo
+link = { vic = IBO hoi = BIA } # Igbo => Biafra
 link = { vic = ICL hoi = ICE } # Iceland
 link = { vic = IDN hoi = INS } # Indonesia
 #link = { vic = IND hoi = ??? } # Indore
@@ -216,7 +227,7 @@ link = { vic = IRQ hoi = IRQ } # Iraq
 #link = { vic = ISQ hoi = ??? } # Isaaq
 link = { vic = ISR hoi = ISR } # Israel
 link = { vic = ITA hoi = ITA } # Italy
-#link = { vic = IUS hoi = ??? } # Kazan
+#link = { vic = IUS hoi = ??? } # Idel-Ural
 #link = { vic = JAB hoi = ??? } # Jabal Shammar
 #link = { vic = JAI hoi = ??? } # Jaipur
 link = { vic = JAM hoi = JAM } # Jamaica
@@ -242,13 +253,16 @@ link = { vic = KHI hoi = KHI } # Khiva
 #link = { vic = KKY hoi = ??? } # Kikuyu
 link = { vic = KLM hoi = KAL } # Kalmykia
 #link = { vic = KLT hoi = ??? } # Kalimantan
+#link = { vic = KMC hoi = ??? } # Kamchatka
 #link = { vic = KNG hoi = ??? } # Kong
 #link = { vic = KNK hoi = ??? } # Kanak
+link = { vic = KNT hoi = OVO } # Kanty-Mansi => Ostyak-Vogul
 #link = { vic = KOK hoi = ??? } # Kokand
 link = { vic = KON hoi = COG } # Kongo
 link = { vic = KOR hoi = KOR } # Korea
 #link = { vic = KRA hoi = ??? } # Krakow
 #link = { vic = KRG hoi = ??? } # Karagwe
+link = { vic = KRL hoi = KAR } # Karelia
 #link = { vic = KRN hoi = ??? } # Karen
 #link = { vic = KRT hoi = ??? } # Kaarta
 #link = { vic = KRU hoi = ??? } # Kru
@@ -258,6 +272,7 @@ link = { vic = KOR hoi = KOR } # Korea
 #link = { vic = KUK hoi = ??? } # Danubian State
 link = { vic = KUR hoi = KUR } # Kurdistan
 #link = { vic = KUT hoi = ??? } # Kutch
+link = { vic = KYR hoi = KYR } # Kirgizia => Kyrgyzstan
 #link = { vic = KZH hoi = ??? } # Kishi Zhuz
 #link = { vic = KZM hoi = ??? } # Kazembe
 #link = { vic = LAD hoi = ??? } # Ladakh
@@ -278,18 +293,21 @@ link = { vic = LIT hoi = LIT } # Lithuania
 #link = { vic = LOM hoi = ??? } # Lombardia
 #link = { vic = LOU hoi = ??? } # Louisiana
 #link = { vic = LUA hoi = ??? } # Luang Prabang
-#link = { vic = LUB hoi = ??? } # Lübeck
+#link = { vic = LUB hoi = ??? } # LÃ¼beck
 #link = { vic = LUC hoi = ??? } # Lucca
 #link = { vic = LUO hoi = ??? } # Luo
+#link = { vic = LUR hoi = ??? } # Luristan
 link = { vic = LUX hoi = LUX } # Luxembourg
-#link = { vic = LZO hoi = ??? } # Barotse
+link = { vic = LZO hoi = BAR } # Barotse
 link = { vic = MAD hoi = MAD } # Madagascar
 #link = { vic = MAH hoi = ??? } # Mahra
+#link = { vic = MAI hoi = ??? } # Maimana
 #link = { vic = MAK hoi = ??? } # Makran
 link = { vic = MAL hoi = MLI } # Mali
-#link = { vic = MAY hoi = ??? } # Maya
+link = { vic = MAY hoi = MAY } # Maya
+#link = { vic = MAZ hoi = ??? } # Mazandaran
 #link = { vic = MCH hoi = ??? } # Manchuria
-#link = { vic = MCO hoi = ??? } # Michoacán
+#link = { vic = MCO hoi = ??? } # MichoacÃ¡n
 link = { vic = MCR hoi = FSM } # Micronesia
 #link = { vic = MDK hoi = ??? } # Mandinka
 link = { vic = MEC hoi = MEK } # Mecklenburg
@@ -299,7 +317,7 @@ link = { vic = MEX hoi = MEX } # Mexico
 #link = { vic = MGD hoi = ??? } # Maguindanao
 link = { vic = MGL hoi = MON } # Mongolia
 #link = { vic = MJT hoi = ??? } # Majerteen
-#link = { vic = MKT hoi = ??? } # Miskitia
+link = { vic = MKT hoi = MIS } # Miskitia
 #link = { vic = MKU hoi = ??? } # Makua
 link = { vic = MLT hoi = MLT } # Malta
 #link = { vic = MNB hoi = ??? } # Mangbetu
@@ -310,6 +328,8 @@ link = { vic = MOL hoi = MOL } # Moldavia
 link = { vic = MON hoi = MNT } # Montenegro
 link = { vic = MOR hoi = MOR } # Morocco
 #link = { vic = MOS hoi = ??? } # Mossi
+link = { vic = MRI hoi = MEL } # Mari El
+#link = { vic = MRN hoi = ??? } # Mirning
 #link = { vic = MSC hoi = ??? } # Muscogee
 #link = { vic = MSH hoi = ??? } # Mashona
 #link = { vic = MSI hoi = ??? } # Masai
@@ -317,12 +337,12 @@ link = { vic = MOR hoi = MOR } # Morocco
 #link = { vic = MSN hoi = ??? } # Massina
 #link = { vic = MST hoi = ??? } # Mecklenburg-Strelitz
 #link = { vic = MTB hoi = ??? } # Matabele
-#link = { vic = MTC hoi = ??? } # Métis
+#link = { vic = MTC hoi = ??? } # MÃ©tis
 #link = { vic = MUG hoi = ??? } # Hindustan
 #link = { vic = MUI hoi = ??? } # Muisca
 #link = { vic = MYS hoi = ??? } # Mysore
 #link = { vic = NAG hoi = ??? } # Nagpur
-#link = { vic = NAH hoi = ??? } # Anahuac
+link = { vic = NAH hoi = NAH } # Anahuac => Nahua
 #link = { vic = NAL hoi = ??? } # Natalia
 #link = { vic = NAM hoi = ??? } # Nama
 #link = { vic = NAS hoi = ??? } # Nassau
@@ -338,7 +358,7 @@ link = { vic = NET hoi = HOL } # Netherlands
 link = { vic = NGF hoi = DDR } # North German Federation
 link = { vic = NIC hoi = NIC } # Nicaragua
 #link = { vic = NNG hoi = ??? } # Noongar
-#link = { vic = NNV hoi = ??? } # Nunavut
+link = { vic = NNV hoi = INU } # Nunavut => United Inuit States
 link = { vic = NOR hoi = NOR } # Norway
 #link = { vic = NRU hoi = ??? } # Nauru
 #link = { vic = NSW hoi = ??? } # New South Wales
@@ -350,7 +370,7 @@ link = { vic = NOR hoi = NOR } # Norway
 #link = { vic = NVS hoi = ??? } # Nova Scotia
 #link = { vic = NYM hoi = ??? } # Nyamwezi
 link = { vic = NZL hoi = NZL } # New Zealand
-#link = { vic = NZP hoi = ??? } # Nimíipuu
+#link = { vic = NZP hoi = ??? } # NimÃ­ipuu
 #link = { vic = OAX hoi = ??? } # Oaxaca
 link = { vic = OCC hoi = OCC } # Occitania
 #link = { vic = OLD hoi = ??? } # Oldenburg
@@ -382,7 +402,7 @@ link = { vic = POL hoi = POL } # Poland
 #link = { vic = PON hoi = ??? } # Pontianak
 link = { vic = POR hoi = POR } # Portugal
 link = { vic = PPU hoi = PNG } # Papua
-#link = { vic = PRA hoi = ??? } # Grão-Pará
+#link = { vic = PRA hoi = ??? } # GrÃ£o-ParÃ¡
 link = { vic = PRG hoi = PAR } # Paraguay
 #link = { vic = PRK hoi = ??? } # Perak
 #link = { vic = PRM hoi = ??? } # Perm
@@ -390,8 +410,10 @@ link = { vic = PRU hoi = PRE } # Prussia
 #link = { vic = PUE hoi = ??? } # Pueblo
 #link = { vic = PWN hoi = ??? } # Pawnee
 #link = { vic = QIA hoi = ??? } # Qian
-#link = { vic = QUE hoi = ??? } # Quebec
-#link = { vic = RIO hoi = ??? } # Río Grande
+link = { vic = QUE hoi = QUE } # Quebec
+link = { vic = RHE hoi = RHI } # Rhineland
+#link = { vic = RHN hoi = ??? } # Confederation of the Rhine
+link = { vic = RIO hoi = RIG } # RÃ­o Grande
 link = { vic = ROM hoi = ROM } # Romania
 link = { vic = RUS hoi = SOV } # Russia
 link = { vic = RWD hoi = RWA } # Rwanda
@@ -426,14 +448,16 @@ link = { vic = SIL hoi = SIE } # Sierra Leone
 #link = { vic = SKH hoi = ??? } # Sakhalin
 #link = { vic = SKM hoi = ??? } # Sukuma
 #link = { vic = SLK hoi = ??? } # Selk'nam
+#link = { vic = SLS hoi = ??? } # SÃ©liÅ¡
 link = { vic = SLO hoi = SLV } # Slovenia
 link = { vic = SLV hoi = SLO } # Slovakia
 #link = { vic = SLW hoi = ??? } # Sulawesi
 #link = { vic = SMB hoi = ??? } # Sambas
-#link = { vic = SMI hoi = ??? } # Sapmi
+link = { vic = SMI hoi = SMI } # Sapmi
+#link = { vic = SML hoi = ??? } # Yat'siminoli
 #link = { vic = SNA hoi = ??? } # Sena
 #link = { vic = SNG hoi = ??? } # Sangu
-#link = { vic = SOK hoi = ??? } # Sokoto
+link = { vic = SOK hoi = SOK } # Sokoto
 link = { vic = SPA hoi = SPR } # Spain
 #link = { vic = SRA hoi = ??? } # Sara
 #link = { vic = SRB hoi = ??? } # Sorbia
@@ -446,6 +470,7 @@ link = { vic = SUD hoi = SUD } # Sudan
 link = { vic = SWE hoi = SWE } # Sweden
 link = { vic = SWI hoi = SWI } # Switzerland
 link = { vic = SYR hoi = SYR } # Syria
+link = { vic = TAR hoi = TAT } # Tatarstan
 #link = { vic = TAS hoi = ??? } # Tasmania
 #link = { vic = TBI hoi = ??? } # Tibesti
 #link = { vic = TEX hoi = ??? } # Texas
@@ -455,19 +480,21 @@ link = { vic = TIB hoi = TIB } # Tibet
 #link = { vic = TID hoi = ??? } # Tidore
 #link = { vic = TIR hoi = ??? } # Tiris
 #link = { vic = TIV hoi = ??? } # Tivland
+link = { vic = TJI hoi = TAJ } # Tajikistan
 #link = { vic = TKE hoi = ??? } # Teke
 #link = { vic = TNG hoi = ??? } # Tonga
-#link = { vic = TNS hoi = ??? } # Tungus
+link = { vic = TNS hoi = EVE } # Tungus => Evenkia
 #link = { vic = TOB hoi = ??? } # Toba
 #link = { vic = TPG hoi = ??? } # Heavenly Kingdom
 #link = { vic = TPI hoi = ??? } # Tupinamba
 #link = { vic = TPS hoi = ??? } # Toposa
 #link = { vic = TRA hoi = ??? } # Travancore
-#link = { vic = TRC hoi = ??? } # Turkmenia
+link = { vic = TRC hoi = TMS } # Turkmenistan
 #link = { vic = TRE hoi = ??? } # Trieste
 #link = { vic = TRH hoi = ??? } # Turkestan
 link = { vic = TRI hoi = LBA } # Tripolitania
 #link = { vic = TRK hoi = ??? } # Turkana
+#link = { vic = TRM hoi = ??? } # Turkmenia
 #link = { vic = TRN hoi = ??? } # Transvaal
 link = { vic = TRS hoi = TRA } # Transylvania
 #link = { vic = TRZ hoi = ??? } # Trarza
@@ -477,18 +504,22 @@ link = { vic = TUN hoi = TUN } # Tunis
 link = { vic = TUR hoi = TUR } # Turkey
 link = { vic = TUS hoi = TOS } # Tuscany
 link = { vic = TUV hoi = TAN } # Tuva
-#link = { vic = TWT hoi = ??? } # Tawantinsuyu
+link = { vic = TWT hoi = INC } # Tawantinsuyu => Inca Empire
 #link = { vic = UBD hoi = ??? } # United Baltic Provinces
 #link = { vic = UCA hoi = ??? } # Central America
+link = { vic = UDM hoi = UDM } # Udmurtia
 link = { vic = UKR hoi = UKR } # Ukraine
 #link = { vic = ULR hoi = ??? } # Uluru
 link = { vic = ULS hoi = NIR } # Ulster
+#link = { vic = UNL hoi = ??? } # United Netherlands
 #link = { vic = UNT hoi = ??? } # United Tribes
 #link = { vic = UOM hoi = ??? } # Michigan
+#link = { vic = URL hoi = ??? } # Ural
 link = { vic = URU hoi = URG } # Uruguay
 link = { vic = USA hoi = USA } # America
 #link = { vic = UTE hoi = ??? } # Ute
 #link = { vic = UYA hoi = ??? } # Uyao
+link = { vic = UZB hoi = UZB } # Uzbekistan
 #link = { vic = UZH hoi = ??? } # Uly Zhuz
 #link = { vic = VEN hoi = ??? } # Venice
 #link = { vic = VIE hoi = ??? } # Vientiane
@@ -507,7 +538,8 @@ link = { vic = VNZ hoi = VEN } # Venezuela
 #link = { vic = WLO hoi = ??? } # Wello
 link = { vic = WLS hoi = WLS } # Wales
 #link = { vic = WSG hoi = ??? } # Warsangali
-link = { vic = WUR hoi = WUR } # Württemberg
+#link = { vic = WTI hoi = ??? } # Wati
+link = { vic = WUR hoi = WUR } # WÃ¼rttemberg
 #link = { vic = WYU hoi = ??? } # Wayuu
 #link = { vic = XHO hoi = ??? } # Xhosa
 #link = { vic = XIB hoi = ??? } # Xibei
@@ -516,7 +548,7 @@ link = { vic = YAK hoi = YAK } # Yakutia
 link = { vic = YEM hoi = YEM } # Yemen
 #link = { vic = YKA hoi = ??? } # Yaka
 #link = { vic = YOG hoi = ??? } # Yogyakarta
-#link = { vic = YUC hoi = ??? } # Yucatán
+link = { vic = YUC hoi = YUC } # YucatÃ¡n
 #link = { vic = YUE hoi = ??? } # Yue
 link = { vic = YUG hoi = YUG } # Yugoslavia
 link = { vic = YUN hoi = YUN } # Yunnan
