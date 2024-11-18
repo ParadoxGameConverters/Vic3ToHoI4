@@ -184,7 +184,7 @@ link = { vic = GLI hoi = GLC } # Galicia
 link = { vic = GNI hoi = GAR } # Guarani
 link = { vic = GRE hoi = GRE } # Greece
 #link = { vic = GRI hoi = ??? } # Guarani
-#link = { vic = GRN hoi = ??? } # Greenland
+link = { vic = GRN hoi = GRN } # Greenland
 link = { vic = GUA hoi = GUA } # Guatemala
 #link = { vic = GUI hoi = ??? } # Guizhou
 #link = { vic = GWA hoi = ??? } # Gwalior
