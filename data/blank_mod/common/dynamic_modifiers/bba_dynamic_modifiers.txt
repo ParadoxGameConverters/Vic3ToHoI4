@@ -444,6 +444,9 @@ ITA_regio_esercito_dynamic_modifier = { #NATIONAL SPIRIT
 	modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor
 	modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor
 
+	#SP Stuff (Gotterdammerung)
+	sp_land_land_cruiser_speed_factor = ITA_re_sp_land_land_cruiser_speed_factor
+
 
 
 	#DANNES STUFF
@@ -502,6 +505,9 @@ ITA_regio_esercito_2_dynamic_modifier = { #NATIONAL SPIRIT
 	modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor
 	modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor
 
+	#SP Stuff (Gotterdammerung)
+	sp_land_land_cruiser_speed_factor = ITA_re_sp_land_land_cruiser_speed_factor
+
 
 
 	#DANNES STUFF
@@ -559,6 +565,9 @@ ITA_regio_esercito_3_dynamic_modifier = { #NATIONAL SPIRIT
 	heat_attrition_factor = ITA_re_heat_attrition_factor #-0.1
 	modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor
 	modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor
+
+	#SP Stuff (Gotterdammerung)
+	sp_land_land_cruiser_speed_factor = ITA_re_sp_land_land_cruiser_speed_factor
 
 
 
@@ -621,6 +630,9 @@ ITA_regio_esercito_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor
 	modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor
 
+	#SP Stuff (Gotterdammerung)
+	sp_land_land_cruiser_speed_factor = ITA_re_sp_land_land_cruiser_speed_factor
+
 
 
 	#DANNES STUFF
@@ -679,6 +691,9 @@ ITA_regio_esercito_2_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	heat_attrition_factor = ITA_re_heat_attrition_factor #-0.1
 	modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor
 	modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor
+
+	#SP Stuff (Gotterdammerung)
+	sp_land_land_cruiser_speed_factor = ITA_re_sp_land_land_cruiser_speed_factor
 
 
 
@@ -739,6 +754,9 @@ ITA_regio_esercito_3_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor
 	modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor = ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor
 
+	#SP Stuff (Gotterdammerung)
+	sp_land_land_cruiser_speed_factor = ITA_re_sp_land_land_cruiser_speed_factor
+
 
 
 	#DANNES STUFF
@@ -774,7 +792,9 @@ ITA_regia_aeronautica_dynamic_modifier = { #NATIONAL SPIRIT
 	air_intercept_efficiency = ITA_ra_air_intercept_efficiency # 0.05
 	air_mission_xp_gain_factor = ITA_ra_air_mission_xp_gain_factor #0.05
 
-
+	#SP Stuff (Gotterdammerung)
+	sp_air_intercontinental_bomber_speed_factor = ITA_ra_sp_air_intercontinental_bomber_speed_factor
+	sp_air_mothership_aircraft_speed_factor = ITA_ra_sp_air_mothership_aircraft_speed_factor
 
 	#DANNES STUFF
 	air_agility_factor = ITA_ra_air_agility_factor
@@ -782,7 +802,6 @@ ITA_regia_aeronautica_dynamic_modifier = { #NATIONAL SPIRIT
 	air_cas_present_factor = ITA_ra_air_cas_present_factor
 	air_mission_efficiency = ITA_ra_air_mission_efficiency
 	air_attack_factor = ITA_ra_air_attack
-	air_intercept_efficiency = ITA_ra_air_interception
 }
 
 ITA_regia_aeronautica_2_dynamic_modifier = { #NATIONAL SPIRIT
@@ -808,6 +827,10 @@ ITA_regia_aeronautica_2_dynamic_modifier = { #NATIONAL SPIRIT
 	air_intercept_efficiency = ITA_ra_air_intercept_efficiency # 0.05
 	air_mission_xp_gain_factor = ITA_ra_air_mission_xp_gain_factor #0.05
 
+	#SP Stuff (Gotterdammerung)
+	sp_air_intercontinental_bomber_speed_factor = ITA_ra_sp_air_intercontinental_bomber_speed_factor
+	sp_air_mothership_aircraft_speed_factor = ITA_ra_sp_air_mothership_aircraft_speed_factor
+
 
 
 	#DANNES STUFF
@@ -816,7 +839,6 @@ ITA_regia_aeronautica_2_dynamic_modifier = { #NATIONAL SPIRIT
 	air_cas_present_factor = ITA_ra_air_cas_present_factor
 	air_mission_efficiency = ITA_ra_air_mission_efficiency
 	air_attack_factor = ITA_ra_air_attack
-	air_intercept_efficiency = ITA_ra_air_interception
 }
 
 ITA_regia_aeronautica_3_dynamic_modifier = { #NATIONAL SPIRIT
@@ -842,6 +864,10 @@ ITA_regia_aeronautica_3_dynamic_modifier = { #NATIONAL SPIRIT
 	air_intercept_efficiency = ITA_ra_air_intercept_efficiency # 0.05
 	air_mission_xp_gain_factor = ITA_ra_air_mission_xp_gain_factor #0.05
 
+	#SP Stuff (Gotterdammerung)
+	sp_air_intercontinental_bomber_speed_factor = ITA_ra_sp_air_intercontinental_bomber_speed_factor
+	sp_air_mothership_aircraft_speed_factor = ITA_ra_sp_air_mothership_aircraft_speed_factor
+
 
 
 	#DANNES STUFF
@@ -850,7 +876,6 @@ ITA_regia_aeronautica_3_dynamic_modifier = { #NATIONAL SPIRIT
 	air_cas_present_factor = ITA_ra_air_cas_present_factor
 	air_mission_efficiency = ITA_ra_air_mission_efficiency
 	air_attack_factor = ITA_ra_air_attack
-	air_intercept_efficiency = ITA_ra_air_interception
 }
 
 
@@ -879,6 +904,10 @@ ITA_regia_aeronautica_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	air_intercept_efficiency = ITA_ra_air_intercept_efficiency # 0.05
 	air_mission_xp_gain_factor = ITA_ra_air_mission_xp_gain_factor #0.05
 
+	#SP Stuff (Gotterdammerung)
+	sp_air_intercontinental_bomber_speed_factor = ITA_ra_sp_air_intercontinental_bomber_speed_factor
+	sp_air_mothership_aircraft_speed_factor = ITA_ra_sp_air_mothership_aircraft_speed_factor
+
 
 
 	#DANNES STUFF
@@ -887,7 +916,6 @@ ITA_regia_aeronautica_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	air_cas_present_factor = ITA_ra_air_cas_present_factor
 	air_mission_efficiency = ITA_ra_air_mission_efficiency
 	air_attack_factor = ITA_ra_air_attack
-	air_intercept_efficiency = ITA_ra_air_interception
 }
 
 #ALT NAME
@@ -914,6 +942,10 @@ ITA_regia_aeronautica_2_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	air_intercept_efficiency = ITA_ra_air_intercept_efficiency # 0.05
 	air_mission_xp_gain_factor = ITA_ra_air_mission_xp_gain_factor #0.05
 
+	#SP Stuff (Gotterdammerung)
+	sp_air_intercontinental_bomber_speed_factor = ITA_ra_sp_air_intercontinental_bomber_speed_factor
+	sp_air_mothership_aircraft_speed_factor = ITA_ra_sp_air_mothership_aircraft_speed_factor
+
 
 
 	#DANNES STUFF
@@ -922,7 +954,6 @@ ITA_regia_aeronautica_2_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	air_cas_present_factor = ITA_ra_air_cas_present_factor
 	air_mission_efficiency = ITA_ra_air_mission_efficiency
 	air_attack_factor = ITA_ra_air_attack
-	air_intercept_efficiency = ITA_ra_air_interception
 }
 
 #ALT NAME
@@ -949,6 +980,10 @@ ITA_regia_aeronautica_3_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	air_intercept_efficiency = ITA_ra_air_intercept_efficiency # 0.05
 	air_mission_xp_gain_factor = ITA_ra_air_mission_xp_gain_factor #0.05
 
+	#SP Stuff (Gotterdammerung)
+	sp_air_intercontinental_bomber_speed_factor = ITA_ra_sp_air_intercontinental_bomber_speed_factor
+	sp_air_mothership_aircraft_speed_factor = ITA_ra_sp_air_mothership_aircraft_speed_factor
+
 
 
 	#DANNES STUFF
@@ -957,7 +992,6 @@ ITA_regia_aeronautica_3_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	air_cas_present_factor = ITA_ra_air_cas_present_factor
 	air_mission_efficiency = ITA_ra_air_mission_efficiency
 	air_attack_factor = ITA_ra_air_attack
-	air_intercept_efficiency = ITA_ra_air_interception
 }
 
 
@@ -994,6 +1028,9 @@ ITA_regia_marina_dynamic_modifier = { #NATIONAL SPIRIT
 	decryption_factor = ITA_rm_decryption_factor #0.05
 	navy_intel_factor = ITA_rm_navy_intel_factor #0.1
 	naval_invasion_prep_speed = ITA_rm_naval_invasion_prep_speed #0.15
+
+	#SP Stuff (Gotterdammerung)
+	sp_naval_ice_carrier_speed_factor = ITA_rm_sp_naval_ice_carrier_speed_factor
 }
 
 ITA_regia_marina_2_dynamic_modifier = { #NATIONAL SPIRIT
@@ -1027,6 +1064,9 @@ ITA_regia_marina_2_dynamic_modifier = { #NATIONAL SPIRIT
 	decryption_factor = ITA_rm_decryption_factor #0.05
 	navy_intel_factor = ITA_rm_navy_intel_factor #0.1
 	naval_invasion_prep_speed = ITA_rm_naval_invasion_prep_speed #0.15
+
+	#SP Stuff (Gotterdammerung)
+	sp_naval_ice_carrier_speed_factor = ITA_rm_sp_naval_ice_carrier_speed_factor
 }
 
 ITA_regia_marina_3_dynamic_modifier = { #NATIONAL SPIRIT
@@ -1060,6 +1100,9 @@ ITA_regia_marina_3_dynamic_modifier = { #NATIONAL SPIRIT
 	decryption_factor = ITA_rm_decryption_factor #0.05
 	navy_intel_factor = ITA_rm_navy_intel_factor #0.1
 	naval_invasion_prep_speed = ITA_rm_naval_invasion_prep_speed #0.15
+
+	#SP Stuff (Gotterdammerung)
+	sp_naval_ice_carrier_speed_factor = ITA_rm_sp_naval_ice_carrier_speed_factor
 }
 
 
@@ -1096,6 +1139,9 @@ ITA_regia_marina_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	decryption_factor = ITA_rm_decryption_factor #0.05
 	navy_intel_factor = ITA_rm_navy_intel_factor #0.1
 	naval_invasion_prep_speed = ITA_rm_naval_invasion_prep_speed #0.15
+
+	#SP Stuff (Gotterdammerung)
+	sp_naval_ice_carrier_speed_factor = ITA_rm_sp_naval_ice_carrier_speed_factor
 }
 
 #ALT NAME
@@ -1130,6 +1176,9 @@ ITA_regia_marina_2_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	decryption_factor = ITA_rm_decryption_factor #0.05
 	navy_intel_factor = ITA_rm_navy_intel_factor #0.1
 	naval_invasion_prep_speed = ITA_rm_naval_invasion_prep_speed #0.15
+
+	#SP Stuff (Gotterdammerung)
+	sp_naval_ice_carrier_speed_factor = ITA_rm_sp_naval_ice_carrier_speed_factor
 }
 
 #ALT NAME
@@ -1164,6 +1213,9 @@ ITA_regia_marina_3_alt_dynamic_modifier = { #NATIONAL SPIRIT
 	decryption_factor = ITA_rm_decryption_factor #0.05
 	navy_intel_factor = ITA_rm_navy_intel_factor #0.1
 	naval_invasion_prep_speed = ITA_rm_naval_invasion_prep_speed #0.15
+
+	#SP Stuff (Gotterdammerung)
+	sp_naval_ice_carrier_speed_factor = ITA_rm_sp_naval_ice_carrier_speed_factor
 }
 
 
@@ -1260,7 +1312,7 @@ ITA_novus_ordo_modifier = {
 	enable = { always = yes  }
 	icon = GFX_modifiers_generic_military_industry
 	local_non_core_manpower = 0.25
-	local_resources_factor = 0.15
+	state_resources_factor = 0.15
 	compliance_growth = 0.1
 	resistance_decay = 0.05
 	state_production_speed_arms_factory_factor = 0.2
@@ -1270,7 +1322,7 @@ ITA_novus_ordo_modifier = {
 ITA_expanded_corporatism_modifier = {
 	enable = { always = yes  }
 	icon = GFX_modifiers_generic_fascist_corporatism
-	local_resources_factor = 0.1
+	state_resources_factor = 0.1
 	local_factories = 0.2
 	local_supplies = 0.1
 	compliance_growth = 0.05
@@ -1433,7 +1485,7 @@ SWI_alpine_redoubt_dynamic_modifier = {
 	army_defence_factor = 0.2
 	enemy_army_bonus_air_superiority_factor = -0.15
 	cas_damage_reduction = 0.1
-	production_speed_bunker_factor = 0.35
+	state_production_speed_bunker_factor = 0.35
 	production_speed_anti_air_building_factor = 0.2
 }
 
@@ -1441,5 +1493,5 @@ SWI_infrastructure_rigged_to_blow = {
 	enable = { always = yes }
 	icon = GFX_modifiers_SOV_civilian_labor_in_defense
 
-	production_speed_buildings_factor = -0.15
+	state_production_speed_buildings_factor = -0.15
 }
