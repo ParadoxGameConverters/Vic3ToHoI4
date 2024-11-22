@@ -7,6 +7,8 @@
 #include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/out_hoi4/portraits/out_portraits.h"
 
+
+
 namespace out
 {
 TEST(Outhoi4PortraitsTests, PortraitFileIsCreated)
@@ -35,6 +37,8 @@ TEST(Outhoi4PortraitsTests, PortraitFileIsCreated)
        "\t}\n"
        "\toperative = {\n"
        "\t}\n"
+       "\tscientist = {\n"
+       "\t}\n"
        "}\n"
        "TWO = {\n"
        "\tarmy = {\n"
@@ -44,6 +48,8 @@ TEST(Outhoi4PortraitsTests, PortraitFileIsCreated)
        "\tpolitical = {\n"
        "\t}\n"
        "\toperative = {\n"
+       "\t}\n"
+       "\tscientist = {\n"
        "\t}\n"
        "}\n");
 }
