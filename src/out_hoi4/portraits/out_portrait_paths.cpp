@@ -93,6 +93,7 @@ void mappers::OutPortraitPaths(std::ostream& out, const mappers::PortraitPaths& 
    OutPortraitCategory(out, portrait_paths, "navy", 1);
    OutPoliticalCategories(out, portrait_paths);
    OutPortraitCategory(out, portrait_paths, "operative", 1, {"male", "female"});
+   OutPortraitCategory(out, portrait_paths, "scientist", 1, {"male", "female"});
    if (const auto& itr = portrait_paths.find("female_leader"); itr != portrait_paths.end())
    {
       OutGenderPathVector(out, "female", itr->second, 1);
