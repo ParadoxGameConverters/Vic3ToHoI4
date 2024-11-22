@@ -12,7 +12,7 @@ void PrintTo(const GraphicsBlock& block, std::ostream* os)
 {
    *os << "\n";
    *os << "PortraitPaths:\n";
-    for (const auto& [portrait_type, portraits_names]: block.portrait_paths)
+   for (const auto& [portrait_type, portraits_names]: block.portrait_paths)
    {
       *os << fmt::format("\t{}: {{\n", portrait_type);
       for (const PortraitName& name: portraits_names)
