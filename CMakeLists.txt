@@ -101,6 +101,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/country/country_mapper.c
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/country/country_mapper_creator.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/culture/culture_graphics_mapper.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/culture/culture_graphics_mapper_importer.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/culture/culture_graphics_mapping.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/flags/flag_mapper.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/flags/flag_mapper_builder.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/ideology/ideology_mapper.cpp")

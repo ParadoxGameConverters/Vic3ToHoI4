@@ -11,6 +11,16 @@ sample_group = {
         "admiral0.dds"
         admiral1.dds
     }
+	scientist_portraits = {
+		female = {
+			"scientist0.dds"
+			scientist1.dds
+		}
+		male = {
+			"scientist2.dds"
+			scientist3.dds
+		}
+	}
     political_portraits = {
         communism = { leader = { "communism0.dds"} minister = { "communism1.dds" } }
         democratic = { leader = { "democratic0.dds"} minister = { "democratic1.dds" } }
