@@ -80,6 +80,8 @@ TEST(Outhoi4PortraitPathTests, PortraitPathsAreOutput)
        "\t\t\tf_spy1\n"
        "\t\t}\n"
        "\t}\n"
+       "\tscientist = {\n"
+       "\t}\n"
        "\tfemale = {\n"
        "\t\tf_lead0\n"
        "\t\tf_lead1\n"

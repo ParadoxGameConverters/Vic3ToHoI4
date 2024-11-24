@@ -25,6 +25,7 @@ struct GraphicsBlock
    std::string graphical_culture_2d;
 
    std::partial_ordering operator<=>(const GraphicsBlock&) const = default;
+   friend void PrintTo(const GraphicsBlock& country, std::ostream* os);
 };
 
 

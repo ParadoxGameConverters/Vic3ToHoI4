@@ -93,6 +93,10 @@ mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_
    mapping_parser.registerKeyword("navy_portraits", [&mapping](std::istream& input_stream) {
       mapping.graphics_block.portrait_paths["navy"] = commonItems::getStrings(input_stream);
    });
+   mapping_parser.registerKeyword("scientist_portraits", [&gender_prefix, &gender_parser](std::istream& input_stream) {
+      gender_prefix = "scientist";
+      gender_parser.parseStream(input_stream);
+   });
    mapping_parser.registerKeyword("female_portraits", [&mapping](std::istream& input_stream) {
       mapping.graphics_block.portrait_paths["female_leader"] = commonItems::getStrings(input_stream);
    });
