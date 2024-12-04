@@ -10,7 +10,6 @@
 #include "src/out_hoi4/localizations/out_localizations.h"
 #include "src/out_hoi4/map/out_buildings.h"
 #include "src/out_hoi4/map/out_railways.h"
-#include "src/out_hoi4/map/out_rocket_sites.h"
 #include "src/out_hoi4/map/out_strategic_regions.h"
 #include "src/out_hoi4/map/out_supply_nodes.h"
 #include "src/out_hoi4/names/out_names.h"
@@ -87,7 +86,6 @@ void out::OutputWorld(std::string_view output_name, const hoi4::World& world, co
    OutputStates(output_name, world.GetStates().states);
    OutputStrategicRegions(output_name, world.GetStrategicRegions());
    OutputBuildings(output_name, world.GetBuildings());
-   OutputRocketSites(output_name, world.GetStates().states);
    OutputRailways(output_name, world.GetRailways().railways);
    OutputSupplyNodes(output_name, world.GetRailways().supply_nodes);
    OutputLocalizations(output_name, world.GetLocalizations());
