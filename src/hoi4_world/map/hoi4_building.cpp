@@ -17,7 +17,7 @@ void PrintTo(const Building& building, std::ostream* os)
               building.GetPosition().x_coordinate,
               building.GetPosition().y_coordinate,
               building.GetPosition().z_coordinate)
-       << fmt::format("rotation: {}", building.GetPosition().rotation);
+       << fmt::format("rotation: {}\n", building.GetPosition().rotation);
    if (building.GetConnectingSeaProvince().has_value())
    {
       *os << fmt::format("connecting sea province: {}", building.GetConnectingSeaProvince().value());

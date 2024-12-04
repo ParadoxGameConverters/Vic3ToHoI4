@@ -24,11 +24,11 @@
 1;industrial_complex;7.00;6.00;1.00;180.0;0
 1;industrial_complex;7.00;6.00;4.00;225.0;0
 1;industrial_complex;1.00;6.00;7.00;270.0;0
-1;naval_base;2.00;6.00;1.00;90.0;5
-1;naval_base;5.00;6.00;1.00;180.0;6
-1;naval_base;2.00;6.00;6.00;270.0;7
-1;naval_base;5.00;6.00;6.00;359.0;8
-1;nuclear_reactor;4.00;6.00;1.00;90.00;0
+1;naval_base_spawn;2.00;6.00;1.00;90.0;5
+1;naval_base_spawn;5.00;6.00;1.00;180.0;6
+1;naval_base_spawn;2.00;6.00;6.00;270.0;7
+1;naval_base_spawn;5.00;6.00;6.00;359.0;8
+1;nuclear_reactor_spawn;4.00;6.00;1.00;90.00;0
 1;supply_node;3.00;6.00;2.00;90.00;0
 1;supply_node;4.00;6.00;2.00;180.00;0
 1;supply_node;2.00;6.00;4.00;270.00;0
