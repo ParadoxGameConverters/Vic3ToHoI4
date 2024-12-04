@@ -25,7 +25,6 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DefaultsToNoBuildings)
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
-   EXPECT_TRUE(buildings.GetAirportLocations().empty());
 }
 
 
@@ -80,7 +79,6 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
        testing::IsSupersetOf({Building({.state_id = 1,
            .type = "air_base",
            .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
-   EXPECT_THAT(buildings.GetAirportLocations(), testing::UnorderedElementsAre(testing::Pair(1, 1)));
 }
 
 
@@ -115,45 +113,6 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
                commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
-   EXPECT_TRUE(buildings.GetAirportLocations().empty());
-}
-
-
-TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInMisnamedProvince)
-{
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {maps::Point{2, 2}, "bad_name"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
-
-   EXPECT_THAT(buildings.GetBuildings(),
-       testing::IsSupersetOf({Building({.state_id = 1,
-           .type = "air_base",
-           .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
-   EXPECT_TRUE(buildings.GetAirportLocations().empty());
 }
 
 
@@ -179,7 +138,6 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
-   EXPECT_TRUE(buildings.GetAirportLocations().empty());
    EXPECT_THAT(log.str(),
        testing::HasSubstr("[WARNING] Province 1 did not have any points. air_base not fully set in state 1."));
 }
@@ -236,7 +194,6 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocati
        testing::IsSupersetOf({Building({.state_id = 1,
            .type = "air_base",
            .position = {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 1.0, .rotation = 90.0}})}));
-   EXPECT_THAT(buildings.GetAirportLocations(), testing::UnorderedElementsAre(testing::Pair(1, 2)));
 }
 
 
@@ -291,7 +248,6 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
        testing::IsSupersetOf({Building({.state_id = 1,
            .type = "air_base",
            .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
-   EXPECT_THAT(buildings.GetAirportLocations(), testing::UnorderedElementsAre(testing::Pair(1, 1)));
 }
 
 

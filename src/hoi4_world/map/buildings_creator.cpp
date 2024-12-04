@@ -226,10 +226,13 @@ int PlacePredefinedBuildings(const std::vector<hoi4::State>& states,
     std::string_view building_type,
     std::vector<hoi4::Building>& buildings)
 {
+   int num_placed = 0;
    for (const auto& state: states)
    {
-      PlacePredefinedBuildings(state, default_buildings, building_type, std::nullopt, buildings);
+      num_placed += PlacePredefinedBuildings(state, default_buildings, building_type, std::nullopt, buildings);
    }
+
+   return num_placed;
 }
 
 
@@ -649,35 +652,6 @@ void PlaceSupplyNodes(const std::map<int, int>& province_to_state_id_map,
 }
 
 
-std::map<int, int> RecordAirportLocations(const maps::MapData& map_data, std::vector<hoi4::Building>& buildings)
-{
-   std::map<int, int> airport_locations;
-   for (const auto& building: buildings)
-   {
-      if (building.GetType() != "air_base")
-      {
-         continue;
-      }
-
-      const hoi4::BuildingPosition position = building.GetPosition();
-      if (const auto name = map_data.GetProvinceName(
-              {static_cast<int>(position.x_coordinate), static_cast<int>(position.z_coordinate)});
-          name)
-      {
-         try
-         {
-            airport_locations.emplace(building.GetStateId(), std::stoi(*name));
-         }
-         catch (...)
-         {
-         }
-      }
-   }
-
-   return airport_locations;
-}
-
-
 hoi4::Buildings PlaceBuildings(const hoi4::States& states,
     const hoi4::CoastalProvinces& coastal_provinces,
     const maps::MapData& map_data,
@@ -767,9 +741,7 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
    PlacePredefinedBuildings(states.states, all_default_positions.default_dams, "dam_spawn", buildings);
    PlacePredefinedBuildings(states.states, all_default_positions.default_locks, "locks_spawn", buildings);
 
-   const std::map<int, int> airport_locations = RecordAirportLocations(map_data, buildings);
-
-   return hoi4::Buildings({.buildings = buildings, .airport_locations = airport_locations});
+   return hoi4::Buildings({.buildings = buildings});
 }
 
 }  // namespace

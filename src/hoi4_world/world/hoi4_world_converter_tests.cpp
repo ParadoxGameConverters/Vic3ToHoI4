@@ -574,7 +574,6 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
        }));
 
    EXPECT_FALSE(world.GetBuildings().GetBuildings().empty());
-   EXPECT_FALSE(world.GetBuildings().GetAirportLocations().empty());
 }
 
 

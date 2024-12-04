@@ -40,6 +40,9 @@ class Building
    [[nodiscard]] BuildingPosition GetPosition() const { return position_; }
    [[nodiscard]] std::optional<int> GetConnectingSeaProvince() const { return connecting_sea_province_; }
 
+   // This allows the Google test framework to print human-readable countries if a test fails.
+   friend void PrintTo(const Building& building, std::ostream* os);
+
   private:
    int state_id_ = 0;
    std::string type_;

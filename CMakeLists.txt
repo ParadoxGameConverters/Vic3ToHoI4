@@ -68,6 +68,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/focus_trees/focus_tre
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/localizations/localizations_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/buildings_creator.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/coastal_provinces_creator.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/hoi4_building.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/hoi4_province_definition_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/railways_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/map/resources_map_importer.cpp")
@@ -224,7 +225,7 @@ add_library(CommonItems ${COMMON_SOURCES})
 add_library(Vic3ToHoi4lib
 	${CONVERTER_SOURCES}
 	${FORMAT_SOURCES}
-)
+ )
 target_precompile_headers(Vic3ToHoi4lib PUBLIC ${PCH_SOURCES})
 if (PLATFORM STREQUAL "Windows")
 	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC CommonItems rakaly.dll.lib)
@@ -235,7 +236,7 @@ endif (PLATFORM  STREQUAL "Windows")
 add_executable(
 	Vic3ToHoi4
 	${MAIN_SOURCE}
-)
+ )
 set_target_properties( Vic3ToHoi4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
@@ -316,7 +317,7 @@ if (PLATFORM STREQUAL "Windows")
 		${F_UPDATECHECKER_SOURCES}
 		${F_SQLITE_SOURCES}
 		${F_SQLITE3_SOURCES}
-	)
+	 )
 elseif (PLATFORM STREQUAL "Linux")
 	add_executable(ConverterFrontend
 		${F_MAIN_SOURCES}
@@ -518,7 +519,7 @@ add_executable(
 	Vic3ToHoi4Tests
 	${TEST_SOURCES}
 	${GTEST_SOURCES}
-)
+ )
 set_target_properties( Vic3ToHoi4Tests
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
@@ -610,7 +611,7 @@ endif (COVERAGE STREQUAL true)
 add_library(run_clang_tidy
 	${CONVERTER_SOURCES}
 	${TEST_SOURCES}
-)
+ )
 target_link_libraries(run_clang_tidy pthread)
 set_target_properties(run_clang_tidy PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 add_dependencies(run_clang_tidy Vic3ToHoi4 Vic3ToHoi4Tests)
