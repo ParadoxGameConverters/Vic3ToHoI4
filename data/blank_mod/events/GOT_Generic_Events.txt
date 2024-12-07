@@ -1,0 +1,35 @@
+add_namespace = GOT_guarantee_events
+add_namespace = GOT_newsevents
+
+#### GUARANTEE EVENTS ###
+
+
+# Formation of Greater Proletarian State
+news_event = {
+	id = GOT_newsevents.1
+	title = GOT_newsevents.1.t
+	desc = GOT_newsevents.1.desc
+	picture = GFX_news_event_generic_parliament
+
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = GOT_newsevents.1.a
+		trigger = {
+			OR = {
+				original_tag = FROM
+				is_in_faction_with = FROM
+			}
+		}
+	}
+	option = {
+		name = GOT_newsevents.1.b
+		trigger = {
+			NOT = {
+				original_tag = FROM
+				is_in_faction_with = FROM
+			}
+		}
+	}
+}

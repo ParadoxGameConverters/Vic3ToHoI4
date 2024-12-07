@@ -662,12 +662,12 @@ country_event = {
 				}
 			}
 			
-			modifier = {
-				factor = 0.5
-				NOT = {
-					has_government = neutrality
-				}
-			}
+			#modifier = {
+			#	factor = 0.5
+			#	NOT = {
+			#		has_government = neutrality
+			#	}
+			#}
 			
 			modifier = {
 				factor = 0.75
@@ -702,7 +702,7 @@ country_event = {
 			is_in_faction = no
 		}
 		ai_chance = {
-			factor = 50
+			factor = 45
 			
 			modifier = {
 				factor = 0.5
