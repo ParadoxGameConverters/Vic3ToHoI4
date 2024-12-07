@@ -187,7 +187,6 @@ TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
        configuration::UseStories::kNo);
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/BuildingsFileIsCreatedAndOutput/map/buildings.txt"));
-   EXPECT_TRUE(commonItems::DoesFileExist("output/BuildingsFileIsCreatedAndOutput/map/airports.txt"));
 }
 
 

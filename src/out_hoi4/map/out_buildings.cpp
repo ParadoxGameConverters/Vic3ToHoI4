@@ -21,16 +21,4 @@ void out::OutputBuildings(std::string_view output_name, const hoi4::Buildings& b
       buildings_file << building;
    }
    buildings_file.close();
-
-   const std::string airports_path = fmt::format("output/{}/map/airports.txt", output_name);
-   std::ofstream airports_file(airports_path);
-   if (!airports_file.is_open())
-   {
-      throw std::runtime_error(fmt::format("Could not open {}", airports_path));
-   }
-   for (const auto& airport_location: buildings.GetAirportLocations())
-   {
-      airports_file << airport_location.first << "={" << airport_location.second << " }\n";
-   }
-   airports_file.close();
 }

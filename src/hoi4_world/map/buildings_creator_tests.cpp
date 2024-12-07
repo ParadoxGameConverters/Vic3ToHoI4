@@ -25,7 +25,6 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DefaultsToNoBuildings)
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
-   EXPECT_TRUE(buildings.GetAirportLocations().empty());
 }
 
 
@@ -80,15 +79,16 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
        testing::IsSupersetOf({Building({.state_id = 1,
            .type = "air_base",
            .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
-   EXPECT_THAT(buildings.GetAirportLocations(), testing::UnorderedElementsAre(testing::Pair(1, 1)));
 }
 
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
 {
+   // clang-format off
    const Buildings
        buildings =
-           ImportBuildings(States({.states = {State(1, {})},
+           ImportBuildings(States({
+                               .states = {State(1, {})},
                                .province_to_state_id_map =
                                    {
                                        {1, 1},
@@ -96,64 +96,47 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
                                        {3, 1},
                                        {4, 1},
                                        {5, 1},
-                                   }}),
+                                   },
+                           }),
                CoastalProvinces(),
                maps::MapData(
-                   {.the_province_points =
+                   {
+                       .the_province_points =
                            {
                                {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                                   maps::ProvincePoints({
+                                       {1, 1},
+                                       {1, 2},
+                                       {1, 3},
+                                       {2, 1},
+                                       {2, 2},
+                                       {2, 3},
+                                       {3, 1},
+                                       {3, 2},
+                                       {3, 3},
+                                   })},
                                {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                                   maps::ProvincePoints({
+                                       {4, 1},
+                                       {4, 2},
+                                       {4, 3},
+                                       {5, 1},
+                                       {5, 2},
+                                       {5, 3},
+                                       {6, 1},
+                                       {6, 2},
+                                       {6, 3},
+                                   })},
                            },
                        .points_to_provinces =
                            {
                                {maps::Point{2, 2}, "1"},
-                           }}),
+                           },
+                   }),
                commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+   // clang-format on
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
-   EXPECT_TRUE(buildings.GetAirportLocations().empty());
-}
-
-
-TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInMisnamedProvince)
-{
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {maps::Point{2, 2}, "bad_name"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
-
-   EXPECT_THAT(buildings.GetBuildings(),
-       testing::IsSupersetOf({Building({.state_id = 1,
-           .type = "air_base",
-           .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
-   EXPECT_TRUE(buildings.GetAirportLocations().empty());
 }
 
 
@@ -179,7 +162,6 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)
    std::cout.rdbuf(cout_buffer);
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
-   EXPECT_TRUE(buildings.GetAirportLocations().empty());
    EXPECT_THAT(log.str(),
        testing::HasSubstr("[WARNING] Province 1 did not have any points. air_base not fully set in state 1."));
 }
@@ -236,7 +218,6 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocati
        testing::IsSupersetOf({Building({.state_id = 1,
            .type = "air_base",
            .position = {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 1.0, .rotation = 90.0}})}));
-   EXPECT_THAT(buildings.GetAirportLocations(), testing::UnorderedElementsAre(testing::Pair(1, 2)));
 }
 
 
@@ -291,7 +272,6 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
        testing::IsSupersetOf({Building({.state_id = 1,
            .type = "air_base",
            .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
-   EXPECT_THAT(buildings.GetAirportLocations(), testing::UnorderedElementsAre(testing::Pair(1, 1)));
 }
 
 
@@ -4263,6 +4243,960 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstPr
        testing::IsSupersetOf({Building({.state_id = 1,
            .type = "synthetic_refinery",
            .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceOfState)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "rocket_site_spawn",
+           .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, NoRocketSiteInStateWithNoProvinces)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   EXPECT_TRUE(buildings.GetBuildings().empty());
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, RocketSiteNotPlacedInProvincesWithNoPoints)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_TRUE(buildings.GetBuildings().empty());
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 1 did not have any points. rocket_site_spawn not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 2 did not have any points. rocket_site_spawn not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 3 did not have any points. rocket_site_spawn not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 4 did not have any points. rocket_site_spawn not fully set in state 1."));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacementOverridenByDefaultLocations)
+{
+   const Buildings
+       buildings =
+           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                               .province_to_state_id_map =
+                                   {
+                                       {1, 1},
+                                       {2, 1},
+                                       {3, 1},
+                                       {4, 1},
+                                       {5, 1},
+                                   }}),
+               CoastalProvinces(),
+               maps::MapData(
+                   {.the_province_points =
+                           {
+                               {"1",
+                                   maps::ProvincePoints(
+                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                               {"2",
+                                   maps::ProvincePoints(
+                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                               {"3",
+                                   maps::ProvincePoints(
+                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                               {"4",
+                                   maps::ProvincePoints(
+                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           },
+                       .points_to_provinces =
+                           {
+                               {{4, 1}, "2"},
+                               {{1, 4}, "3"},
+                               {{4, 4}, "4"},
+                           }}),
+               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "rocket_site_spawn",
+           .position = {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 1.0, .rotation = 90.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "rocket_site_spawn",
+           .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinceOfState)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "radar_station",
+           .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, NoRadarStationInStateWithNoProvinces)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   EXPECT_TRUE(buildings.GetBuildings().empty());
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationNotPlacedInProvincesWithNoPoints)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_TRUE(buildings.GetBuildings().empty());
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 1 did not have any points. radar_station not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 2 did not have any points. radar_station not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 3 did not have any points. radar_station not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 4 did not have any points. radar_station not fully set in state 1."));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacementOverridenByDefaultLocations)
+{
+   const Buildings
+       buildings =
+           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                               .province_to_state_id_map =
+                                   {
+                                       {1, 1},
+                                       {2, 1},
+                                       {3, 1},
+                                       {4, 1},
+                                       {5, 1},
+                                   }}),
+               CoastalProvinces(),
+               maps::MapData(
+                   {.the_province_points =
+                           {
+                               {"1",
+                                   maps::ProvincePoints(
+                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                               {"2",
+                                   maps::ProvincePoints(
+                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                               {"3",
+                                   maps::ProvincePoints(
+                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                               {"4",
+                                   maps::ProvincePoints(
+                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           },
+                       .points_to_provinces =
+                           {
+                               {{4, 1}, "2"},
+                               {{1, 4}, "3"},
+                               {{4, 4}, "4"},
+                           }}),
+               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "radar_station",
+           .position = {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 1.0, .rotation = 90.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "radar_station",
+           .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
+}
+
+TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfState)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "fuel_silo",
+           .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, NoFuelSiloInStateWithNoProvinces)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   EXPECT_TRUE(buildings.GetBuildings().empty());
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloNotPlacedInProvincesWithNoPoints)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_TRUE(buildings.GetBuildings().empty());
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 1 did not have any points. fuel_silo not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 2 did not have any points. fuel_silo not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 3 did not have any points. fuel_silo not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[WARNING] Province 4 did not have any points. fuel_silo not fully set in state 1."));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacementOverridenByDefaultLocations)
+{
+   const Buildings
+       buildings =
+           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                               .province_to_state_id_map =
+                                   {
+                                       {1, 1},
+                                       {2, 1},
+                                       {3, 1},
+                                       {4, 1},
+                                       {5, 1},
+                                   }}),
+               CoastalProvinces(),
+               maps::MapData(
+                   {.the_province_points =
+                           {
+                               {"1",
+                                   maps::ProvincePoints(
+                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                               {"2",
+                                   maps::ProvincePoints(
+                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                               {"3",
+                                   maps::ProvincePoints(
+                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                               {"4",
+                                   maps::ProvincePoints(
+                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           },
+                       .points_to_provinces =
+                           {
+                               {{4, 1}, "2"},
+                               {{1, 4}, "3"},
+                               {{4, 4}, "4"},
+                           }}),
+               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "fuel_silo",
+           .position = {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 1.0, .rotation = 90.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "fuel_silo",
+           .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, SpecialProjectFacilitesPlacedIndefaultLocationsAndOnlyInDefaultLocations)
+{
+   const Buildings
+       buildings =
+           ImportBuildings(States({.states =
+                                       {
+                                           State(1, {.provinces = {1, 2, 3, 4, 5}}),
+                                           State(2, {.provinces = {6, 7, 8, 9, 10}}),
+                                           State(3, {.provinces = {11, 12, 13, 14, 15}}),
+                                       },
+                               .province_to_state_id_map =
+                                   {
+                                       {1, 1},
+                                       {2, 1},
+                                       {3, 1},
+                                       {4, 1},
+                                       {5, 1},
+                                       {6, 2},
+                                       {7, 2},
+                                       {8, 2},
+                                       {9, 2},
+                                       {10, 2},
+                                       {11, 3},
+                                       {12, 3},
+                                       {13, 3},
+                                       {14, 3},
+                                       {15, 3},
+                                   }}),
+               CoastalProvinces(),
+               maps::MapData(
+                   {.the_province_points =
+                           {
+                               {"1",
+                                   maps::ProvincePoints(
+                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                               {"4",
+                                   maps::ProvincePoints(
+                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                               {"7",
+                                   maps::ProvincePoints(
+                                       {{7, 7}, {7, 8}, {7, 9}, {8, 7}, {8, 8}, {8, 9}, {9, 7}, {9, 8}, {9, 9}})},
+                           },
+                       .points_to_provinces =
+                           {
+                               {{1, 3}, "1"},
+                               {{4, 6}, "4"},
+                               {{7, 9}, "7"},
+                           }}),
+               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({
+           Building({.state_id = 1,
+               .type = "special_project_facility_spawn",
+               .position = {.x_coordinate = 1.0, .y_coordinate = 3.0, .z_coordinate = 3.0, .rotation = 90.0}}),
+           Building({.state_id = 1,
+               .type = "special_project_facility_spawn",
+               .position = {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 6.0, .rotation = 135.0}}),
+           Building({.state_id = 2,
+               .type = "special_project_facility_spawn",
+               .position = {.x_coordinate = 7.0, .y_coordinate = 9.0, .z_coordinate = 9.0, .rotation = 180.0}}),
+       }));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, LandmarksPlacedIndefaultLocationsAndOnlyInDefaultLocations)
+{
+   const Buildings
+       buildings =
+           ImportBuildings(States({.states =
+                                       {
+                                           State(1, {.provinces = {1, 2, 3, 4, 5}}),
+                                           State(2, {.provinces = {6, 7, 8, 9, 10}}),
+                                           State(3, {.provinces = {11, 12, 13, 14, 15}}),
+                                       },
+                               .province_to_state_id_map =
+                                   {
+                                       {1, 1},
+                                       {2, 1},
+                                       {3, 1},
+                                       {4, 1},
+                                       {5, 1},
+                                       {6, 2},
+                                       {7, 2},
+                                       {8, 2},
+                                       {9, 2},
+                                       {10, 2},
+                                       {11, 3},
+                                       {12, 3},
+                                       {13, 3},
+                                       {14, 3},
+                                       {15, 3},
+                                   }}),
+               CoastalProvinces(),
+               maps::MapData(
+                   {.the_province_points =
+                           {
+                               {"1",
+                                   maps::ProvincePoints(
+                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                               {"4",
+                                   maps::ProvincePoints(
+                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                               {"7",
+                                   maps::ProvincePoints(
+                                       {{7, 7}, {7, 8}, {7, 9}, {8, 7}, {8, 8}, {8, 9}, {9, 7}, {9, 8}, {9, 9}})},
+                           },
+                       .points_to_provinces =
+                           {
+                               {{1, 3}, "1"},
+                               {{4, 6}, "4"},
+                               {{7, 9}, "7"},
+                           }}),
+               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({
+           Building({.state_id = 1,
+               .type = "landmark_spawn",
+               .position = {.x_coordinate = 1.0, .y_coordinate = 3.0, .z_coordinate = 3.0, .rotation = 90.0}}),
+           Building({.state_id = 1,
+               .type = "landmark_spawn",
+               .position = {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 6.0, .rotation = 135.0}}),
+           Building({.state_id = 2,
+               .type = "landmark_spawn",
+               .position = {.x_coordinate = 7.0, .y_coordinate = 9.0, .z_coordinate = 9.0, .rotation = 180.0}}),
+       }));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstProvinceOfState)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "stronghold_network",
+           .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, NoStrongholdNetworkInStateWithNoProvinces)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   EXPECT_TRUE(buildings.GetBuildings().empty());
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkNotPlacedInProvincesWithNoPoints)
+{
+   std::stringstream log;
+   std::streambuf* cout_buffer = std::cout.rdbuf();
+   std::cout.rdbuf(log.rdbuf());
+
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+
+   std::cout.rdbuf(cout_buffer);
+
+   EXPECT_TRUE(buildings.GetBuildings().empty());
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr(
+           "[WARNING] Province 1 did not have any points. stronghold_network not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr(
+           "[WARNING] Province 2 did not have any points. stronghold_network not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr(
+           "[WARNING] Province 3 did not have any points. stronghold_network not fully set in state 1."));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr(
+           "[WARNING] Province 4 did not have any points. stronghold_network not fully set in state 1."));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacementOverridenByDefaultLocations)
+{
+   const Buildings
+       buildings =
+           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                               .province_to_state_id_map =
+                                   {
+                                       {1, 1},
+                                       {2, 1},
+                                       {3, 1},
+                                       {4, 1},
+                                       {5, 1},
+                                   }}),
+               CoastalProvinces(),
+               maps::MapData(
+                   {.the_province_points =
+                           {
+                               {"1",
+                                   maps::ProvincePoints(
+                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                               {"2",
+                                   maps::ProvincePoints(
+                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                               {"3",
+                                   maps::ProvincePoints(
+                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                               {"4",
+                                   maps::ProvincePoints(
+                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           },
+                       .points_to_provinces =
+                           {
+                               {{4, 1}, "2"},
+                               {{1, 4}, "3"},
+                               {{4, 4}, "4"},
+                           }}),
+               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "stronghold_network",
+           .position = {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 1.0, .rotation = 90.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
+{
+   const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                                                   .province_to_state_id_map =
+                                                       {
+                                                           {1, 1},
+                                                           {2, 1},
+                                                           {3, 1},
+                                                           {4, 1},
+                                                           {5, 1},
+                                                       }}),
+       CoastalProvinces(),
+       maps::MapData(
+           {.the_province_points =
+                   {
+                       {"1",
+                           maps::ProvincePoints(
+                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                       {"2",
+                           maps::ProvincePoints(
+                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                       {"3",
+                           maps::ProvincePoints(
+                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                       {"4",
+                           maps::ProvincePoints(
+                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                   }}),
+       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({Building({.state_id = 1,
+           .type = "stronghold_network",
+           .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
+}
+
+
+TEST(Hoi4worldMapBuildingsCreatorTests, DamsPlacedIndefaultLocationsAndOnlyInDefaultLocations)
+{
+   const Buildings
+       buildings =
+           ImportBuildings(States({.states =
+                                       {
+                                           State(1, {.provinces = {1, 2, 3, 4, 5}}),
+                                           State(2, {.provinces = {6, 7, 8, 9, 10}}),
+                                           State(3, {.provinces = {11, 12, 13, 14, 15}}),
+                                       },
+                               .province_to_state_id_map =
+                                   {
+                                       {1, 1},
+                                       {2, 1},
+                                       {3, 1},
+                                       {4, 1},
+                                       {5, 1},
+                                       {6, 2},
+                                       {7, 2},
+                                       {8, 2},
+                                       {9, 2},
+                                       {10, 2},
+                                       {11, 3},
+                                       {12, 3},
+                                       {13, 3},
+                                       {14, 3},
+                                       {15, 3},
+                                   }}),
+               CoastalProvinces(),
+               maps::MapData(
+                   {.the_province_points =
+                           {
+                               {"1",
+                                   maps::ProvincePoints(
+                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                               {"4",
+                                   maps::ProvincePoints(
+                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                               {"7",
+                                   maps::ProvincePoints(
+                                       {{7, 7}, {7, 8}, {7, 9}, {8, 7}, {8, 8}, {8, 9}, {9, 7}, {9, 8}, {9, 9}})},
+                           },
+                       .points_to_provinces =
+                           {
+                               {{1, 3}, "1"},
+                               {{4, 6}, "4"},
+                               {{7, 9}, "7"},
+                           }}),
+               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({
+           Building({.state_id = 1,
+               .type = "dam_spawn",
+               .position = {.x_coordinate = 1.0, .y_coordinate = 3.0, .z_coordinate = 3.0, .rotation = 90.0}}),
+           Building({.state_id = 1,
+               .type = "dam_spawn",
+               .position = {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 6.0, .rotation = 135.0}}),
+           Building({.state_id = 2,
+               .type = "dam_spawn",
+               .position = {.x_coordinate = 7.0, .y_coordinate = 9.0, .z_coordinate = 9.0, .rotation = 180.0}}),
+       }));
+   EXPECT_THAT(buildings.GetBuildings(),
+       testing::IsSupersetOf({
+           Building({.state_id = 1,
+               .type = "locks_spawn",
+               .position = {.x_coordinate = 1.0, .y_coordinate = 3.0, .z_coordinate = 3.0, .rotation = 90.0}}),
+           Building({.state_id = 1,
+               .type = "locks_spawn",
+               .position = {.x_coordinate = 4.0, .y_coordinate = 6.0, .z_coordinate = 6.0, .rotation = 135.0}}),
+           Building({.state_id = 2,
+               .type = "locks_spawn",
+               .position = {.x_coordinate = 7.0, .y_coordinate = 9.0, .z_coordinate = 9.0, .rotation = 180.0}}),
+       }));
 }
 
 }  // namespace hoi4
