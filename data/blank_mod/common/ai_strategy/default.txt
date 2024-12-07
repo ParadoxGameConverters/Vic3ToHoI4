@@ -1460,6 +1460,16 @@ default_build_an_air_facility = {
 	}
 }
 
+default_become_spymaster = {
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = become_spymaster
+		value = 30
+	}
+}
 
 default_recruit_land_scientist = {
 	enable = {

@@ -907,7 +907,7 @@ technologies = {
 
 		armored_maintenance = {
 			reliability_factor = 0.02
-			recovery = 0.3
+			recovery = 0.03
 			
 			battalion_mult = {
 				category = category_all_armor
@@ -1721,11 +1721,6 @@ technologies = {
 			position = { x = 4 y = 3 }
 		}
 
-		path = {
-			leads_to_tech = sp_cluster_shells
-			research_cost_coeff = 1
-		}
-		
 		categories = {
 			train_tech
 			artillery

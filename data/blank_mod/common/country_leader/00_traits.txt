@@ -401,6 +401,7 @@ leader_traits = {
 		decryption_power = 10
 	}
 
+
 #ai_focus_defense_factor
 #ai_focus_aggressive_factor
 #ai_focus_production_factor
@@ -1208,6 +1209,10 @@ leader_traits = {
 		minimum_training_level = -0.1
 	}
 
+	militant_socialist = {
+		random = no
+		war_support_factor = 0.05
+	}
 
 	constitutional_monarch_minor = { #Dom Duarte Nuno, King of Portugal
 		random = no
@@ -9911,6 +9916,7 @@ leader_traits = {
 		random = no
 		surrender_limit = 0.1
 		war_support_factor = 0.1
+		democratic_drift = 0.05
 	}	
 
 	#Van Zeeland
@@ -10010,7 +10016,7 @@ leader_traits = {
 
 	#Charles - Quiet Royal
 	BEL_quiet_royal = { 
-		sprite = 10
+		sprite = 13
 		random = no
 		stability_factor = 0.05
 		political_power_gain = 0.1
@@ -10039,7 +10045,7 @@ leader_traits = {
 
 	#Spaak - Advisor 
 	BEL_canny_diplomat = { 
-		sprite = 10
+		sprite = 13
 		random = no
 		resource_trade_cost_bonus_per_factory = 1
 		communism_drift = 0.01
@@ -10057,14 +10063,6 @@ leader_traits = {
 		production_factory_max_efficiency_factor = 0.05
 	}
 
-	#Charles - Advisor
-	BEL_quiet_royal = { 
-		sprite = 10
-		random = no
-		neutrality_drift = 0.8
-		stability_factor = 0.05
-	}
-
 	#Degrelle
 	BEL_fascist_firebrand = { 
 		sprite = 10
@@ -10075,7 +10073,7 @@ leader_traits = {
 
 	#Dewe
 	BEL_illusive_mastermind = { 
-		sprite = 10
+		sprite = 15
 		random = no
 		operative_slot = 2
 		agency_upgrade_time = -0.2
@@ -10097,7 +10095,7 @@ leader_traits = {
 
 	#Marchienne
 	BEL_ambassador_to_london = { 
-		sprite = 10
+		sprite = 13
 		random = no
 		democratic_drift = 0.08
 		war_support_factor = 0.05
@@ -10115,7 +10113,7 @@ leader_traits = {
 
 	#Burgen
 	BEL_mobilization_proponent = { 
-		sprite = 10
+		sprite = 5
 		random = no
 		mobilization_speed = 0.20
 		conscription_factor = 0.05
@@ -10123,7 +10121,7 @@ leader_traits = {
 
 	#Deveze
 	BEL_minister_of_national_defence_deveze = { 
-		sprite = 10
+		sprite = 9
 		random = no
 		army_core_attack_factor = 0.1
 		army_org_factor = 0.05
@@ -10131,7 +10129,7 @@ leader_traits = {
 
 	#Nuyten
 	BEL_minister_of_national_defence_nuyten = { 
-		sprite = 10
+		sprite = 9
 		random = no
 		army_core_defence_factor = 0.1
 		dig_in_speed_factor = 0.1
@@ -10427,7 +10425,7 @@ leader_traits = {
 	}
 
 	GER_reich_minister_foreign_affairs_neurath = { #von Neurath
-		random = yes
+		random = no
 		sprite = 13
 		improve_relations_maintain_cost_factor = -0.5
 		trade_opinion_factor = 0.10
@@ -10441,7 +10439,7 @@ leader_traits = {
 	}
 
 	GER_reich_minister_foreign_affairs_ribbentrop = { #Ribbentrop
-		random = yes
+		random = no
 		sprite = 13
 		subversive_activites_upkeep = -0.25
 		drift_defence_factor = 0.25

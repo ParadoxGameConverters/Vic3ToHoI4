@@ -131,6 +131,10 @@ governments_in_exile = {
 				factor = 0
 				has_war = no
 			}
+			modifier = {
+				factor = 0
+				has_legitimacy > 90
+			}
 		}
 	}
 
