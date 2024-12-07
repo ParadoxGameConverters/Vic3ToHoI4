@@ -1324,6 +1324,7 @@ enable = { always = yes }
 	exile_manpower_factor = BEL_belgian_legion_exile_manpower_factor
 	army_core_attack_factor = BEL_belgian_legion_army_core_attack_factor
 	army_core_defence_factor = BEL_belgian_legion_army_core_defence_factor
+	weekly_manpower = BEL_belgian_legion_weekly_manpower
 }
 
 #Belgian Gold Reserves
@@ -1420,7 +1421,7 @@ BEL_flooded_tank_barriers_dynamic_modifier = {
 	enable = { always = yes }
 	icon = GFX_modifiers_SOV_civilian_labor_in_defense
 
-	enemy_army_speed_factor = -0.25
+	army_attack_speed_factor = -0.25
 	army_core_defence_factor = 0.1
 
 }
