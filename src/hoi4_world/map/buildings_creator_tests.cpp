@@ -84,32 +84,57 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
 
 TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
 {
-   const Buildings buildings = ImportBuildings(States({
-                                                   .states = {State(1, {})},
-                                                   .province_to_state_id_map =
-                                                       {
-                                                           {1, 1},
-                                                           {2, 1},
-                                                           {3, 1},
-                                                           {4, 1},
-                                                           {5, 1},
-                                                       },
-                                               }),
-       CoastalProvinces(),
-       maps::MapData({
-           .the_province_points =
-               {
-                   {"1",
-                       maps::ProvincePoints({{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                   {"2",
-                       maps::ProvincePoints({{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-               },
-           .points_to_provinces =
-               {
-                   {maps::Point{2, 2}, "1"},
-               },
-       }),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+   // clang-format off
+   const Buildings
+       buildings =
+           ImportBuildings(States({
+                               .states = {State(1, {})},
+                               .province_to_state_id_map =
+                                   {
+                                       {1, 1},
+                                       {2, 1},
+                                       {3, 1},
+                                       {4, 1},
+                                       {5, 1},
+                                   },
+                           }),
+               CoastalProvinces(),
+               maps::MapData(
+                   {
+                       .the_province_points =
+                           {
+                               {"1",
+                                   maps::ProvincePoints({
+                                       {1, 1},
+                                       {1, 2},
+                                       {1, 3},
+                                       {2, 1},
+                                       {2, 2},
+                                       {2, 3},
+                                       {3, 1},
+                                       {3, 2},
+                                       {3, 3},
+                                   })},
+                               {"2",
+                                   maps::ProvincePoints({
+                                       {4, 1},
+                                       {4, 2},
+                                       {4, 3},
+                                       {5, 1},
+                                       {5, 2},
+                                       {5, 3},
+                                       {6, 1},
+                                       {6, 2},
+                                       {6, 3},
+                                   })},
+                           },
+                       .points_to_provinces =
+                           {
+                               {maps::Point{2, 2}, "1"},
+                           },
+                   }),
+               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+   // clang-format on
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
