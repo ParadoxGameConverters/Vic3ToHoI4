@@ -1468,7 +1468,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = political.32.b
+		name = political.32.b #Only for AI. No need to localize
 		trigger = {
 			ROOT = { is_ai = yes }
 		}
