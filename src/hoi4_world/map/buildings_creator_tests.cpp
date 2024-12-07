@@ -86,7 +86,8 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
 {
    const Buildings
        buildings =
-           ImportBuildings(States({.states = {State(1, {})},
+           ImportBuildings(States({
+                               .states = {State(1, {})},
                                .province_to_state_id_map =
                                    {
                                        {1, 1},
@@ -94,10 +95,12 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
                                        {3, 1},
                                        {4, 1},
                                        {5, 1},
-                                   }}),
+                                   },
+                           }),
                CoastalProvinces(),
                maps::MapData(
-                   {.the_province_points =
+                   {
+                       .the_province_points =
                            {
                                {"1",
                                    maps::ProvincePoints({
@@ -127,7 +130,8 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
                        .points_to_provinces =
                            {
                                {maps::Point{2, 2}, "1"},
-                           }}),
+                           },
+                   }),
                commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
