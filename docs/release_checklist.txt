@@ -1,8 +1,8 @@
 * Add new banner to data/release_banners
-* Update data/version.txt with new version and name
+* Update data/version.txt with new supported versions, new converter version, and name
 * Update Vic3ToHoI4-Installer.iss with new version and name
-* Update data/readme.txt with new version
-* Update .github/workflows/windows_build_test_and_push.yml with new name, filename, tag, and artifact
+* Update data/readme.txt with new supported version and new converter version
+* Update .github/workflows/windows_build_test_and_push.yml with new supported version, new name, filename, tag, and artifact
 * Create commit with MINOR or MAJOR in the commit message as appropriate, and tagged with new version
 * Push and merge on github
 * Wait for build, confirm updates
