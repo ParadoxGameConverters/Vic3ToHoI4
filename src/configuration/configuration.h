@@ -114,8 +114,8 @@ struct Configuration
    }
 };
 
-constexpr Configuration defaultConfig = {};
-constexpr Configuration debugConfig = {.debug = true};
+const Configuration defaultConfig = {};
+const Configuration debugConfig = {.debug = true};
 
 
 }  // namespace configuration
