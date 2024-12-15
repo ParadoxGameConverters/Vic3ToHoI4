@@ -35,16 +35,10 @@ vic3::IdeologyImporter::IdeologyImporter()
           law_approvals_.emplace(law, approval);
        });
 
-   ideology_parser_.registerKeyword("icon", commonItems::ignoreItem);
-   ideology_parser_.registerKeyword("show_in_list", commonItems::ignoreItem);
-   ideology_parser_.registerKeyword("priority", commonItems::ignoreItem);
-   ideology_parser_.registerKeyword("character_ideology", commonItems::ignoreItem);
-   ideology_parser_.registerKeyword("possible", commonItems::ignoreItem);
-   ideology_parser_.registerKeyword("leader_weight", commonItems::ignoreItem);
-   ideology_parser_.registerRegex(commonItems::catchallRegex,
-       [this](const std::string& unused, std::istream& input_stream) {
-          lawgroup_parser_.parseStream(input_stream);
-       });
+   ideology_parser_.registerRegex("lawgroup.*", [this](const std::string& unused, std::istream& input_stream) {
+      lawgroup_parser_.parseStream(input_stream);
+   });
+   ideology_parser_.IgnoreUnregisteredItems();
 }
 
 
