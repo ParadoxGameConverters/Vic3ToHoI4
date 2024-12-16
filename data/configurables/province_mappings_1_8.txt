@@ -6946,11 +6946,11 @@
 	link = { vic3 = x5B9D2D vic3 = x9E56C2 hoi4 = 1512 } # STATE_HOKKAIDO, STATE_HOKKAIDO -> Kushiro
 	link = { vic3 = x601140 hoi4 = 1515 } # STATE_HOKKAIDO -> land
 	link = { vic3 = xEEB7F4 vic3 = xC85C0C vic3 = x420E86 hoi4 = 1642 } # STATE_HOKKAIDO, STATE_HOKKAIDO, STATE_HOKKAIDO -> Nayoro
-	link = { vic3 = x40BDB8 vic3 = xA090C0 hoi4 = 3962 } # STATE_HOKKAIDO, Hakodate [port] -> Hakodate
+	link = { vic3 = xA090C0 vic3 = x40BDB8 hoi4 = 3962 } # Hakodate [port], STATE_HOKKAIDO -> Hakodate
 	link = { vic3 = x103C2B vic3 = x1E9A93 hoi4 = 4576 } # STATE_HOKKAIDO, STATE_HOKKAIDO -> Wakkanai
 	link = { vic3 = x70C55B vic3 = x86757A hoi4 = 4646 } # STATE_HOKKAIDO, Nemuro [wood] -> Kitami
-	link = { vic3 = x17C8CA vic3 = x210B6E vic3 = xF17C01 hoi4 = 7532 } # STATE_HOKKAIDO, STATE_HOKKAIDO, STATE_HOKKAIDO -> Otaru
 	link = { vic3 = x03E00D hoi4 = 12421 } # STATE_HOKKAIDO -> Asahigawa
+	link = { vic3 = x210B6E vic3 = x17C8CA vic3 = xF17C01 hoi4 = 7532 } # STATE_HOKKAIDO, STATE_HOKKAIDO, STATE_HOKKAIDO -> Otaru
 	link = { vic3 = x493B76 hoi4 = 7595 } # STATE_HOKKAIDO -> Obihiro
 	link = { vic3 = xA011C0 hoi4 = 10444 } # Sapporo [city] -> Sapporo
 	link = { vic3 = x65D8B2 hoi4 = 10512 } # STATE_HOKKAIDO -> Iwamizawa
