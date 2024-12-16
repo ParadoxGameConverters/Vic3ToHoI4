@@ -10,6 +10,7 @@
 #include <unordered_set>
 
 #include "external/commonItems/CommonRegexes.h"
+#include "external/commonItems/Log.h"
 #include "external/commonItems/ParserHelpers.h"
 
 
@@ -78,7 +79,20 @@ vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions(const StateRegions& stat
        [state_regions, province_indexes, &province_definitions](std::istream& input_stream) {
           std::vector<std::string> states = commonItems::stringList{input_stream}.getStrings();
 
+          // sort states by their order in the state regions indexes, removing states not in the indexes
           const auto& region_indexes = state_regions.region_indexes;
+          std::ranges::for_each(states, [region_indexes](const std::string& state) {
+             if (!region_indexes.contains(state))
+             {
+                Log(LogLevel::Error) << fmt::format(
+                    "{} was not defined in map_data/state_regions. Report this to the forum thread: "
+                    "https://forum.paradoxplaza.com/forum/threads/vic3-to-hoi4-converter-thread.1475076/",
+                    state);
+             }
+          });
+          std::erase_if(states, [region_indexes](const std::string& state) {
+             return !region_indexes.contains(state);
+          });
           std::ranges::sort(states, [region_indexes](const std::string& a, const std::string& b) {
              return region_indexes.at(a) < region_indexes.at(b);
           });
