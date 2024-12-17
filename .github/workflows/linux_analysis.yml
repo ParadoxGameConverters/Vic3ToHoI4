@@ -118,10 +118,10 @@ jobs:
        export CXX=/usr/bin/g++-12
     
     - name: Configure cmake
-      run: cmake --preset x64-coverage-linux -B build
+      run: cmake --preset x64-coverage-linux
 
     - name: Build solution
-      run: cmake --build build --preset x64-coverage-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
+      run: cmake --build --preset build-x64-coverage-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
