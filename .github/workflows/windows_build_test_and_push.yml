@@ -160,6 +160,10 @@ jobs:
        git -c submodule."external/commonItems".update=none `
            submodule update --init --recursive external\Fronter
 
+    - name: Install ninja
+      run: |
+        choco install ninja
+
     - name: Build with cmake
       shell: cmd
       run: |
