@@ -118,29 +118,16 @@ jobs:
        export CC=/usr/bin/gcc-12
        export CXX=/usr/bin/g++-12
     
-    - name: Configure cmake
-      run: cmake --preset x64-coverage-linux
-
     - name: Build solution
-      run: cmake --build --preset build-x64-coverage-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
+      run: |
+        cmake --preset x64-release-linux
+        cmake --build --preset build-x64-release-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
-       cd build/test/Coverage-Linux/
+       cd build/test/Release-Linux/
        ./Vic3ToHoi4Tests
        cd ../../..
-
-    - name: Run gcov
-      run: cmake --build --preset build-x64-coverage-linux --target gcov
-
-    - name: Run lcov
-      run: cmake --build --preset build-x64-coverage-linux --target lcov
-
-    - name: Upload lcoverage artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: coverage-report
-        path: build/x64-coverage-linux/lcoverage/
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
