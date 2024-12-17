@@ -160,11 +160,12 @@ jobs:
        git -c submodule."external/commonItems".update=none `
            submodule update --init --recursive external\Fronter
 
-    - name: Configure cmake
-      run: cmake --preset build-x64-release-windows -B build
-
-    - name: Build solution
-      run: cmake --build build --preset build-x64-release-windows --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
+    - name: Build with cmake
+      shell: cmd
+      run: |
+        call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+        cmake --preset x64-release-windows
+        cmake --build --preset build-x64-release-windows --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
     - name: "Run tests"
       run: |
