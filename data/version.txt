@@ -1,10 +1,10 @@
 # Version info
 
-version = "0.5.0"
-name = "Eisenhower"
+version = "0.6.0"
+name = "Fioravanzo"
 source = "Vic3"
-minSource = "1.7"
-maxSource = "1.7"
+minSource = "1.8"
+maxSource = "1.8"
 target = "HoI4"
 minTarget = "1.15"
 maxTarget = "1.15"
