@@ -10,6 +10,7 @@
 #include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
+#include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/hoi4_world/localizations/localizations.h"
 #include "src/hoi4_world/map/buildings.h"
 #include "src/hoi4_world/map/railways.h"
@@ -60,8 +61,14 @@ class World
    [[nodiscard]] const Railways& GetRailways() const { return railways_; }
    [[nodiscard]] const Localizations& GetLocalizations() const { return localizations_; }
    [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
+   [[nodiscard]] const std::set<DecisionsCategory>& GetDecisionsCategories() const { return decisions_categories_; }
 
    [[nodiscard]] std::map<std::string, Country>& GetModifiableCountries() { return countries_; }
+
+   void SetDecisionsCategories(std::set<DecisionsCategory> decisions_categories)
+   {
+      decisions_categories_ = std::move(decisions_categories);
+   }
 
   private:
    std::map<std::string, Country> countries_;
@@ -73,6 +80,8 @@ class World
    Railways railways_;
    Localizations localizations_;
    std::map<int, Character> characters_;
+
+   std::set<DecisionsCategory> decisions_categories_;
 };
 
 }  // namespace hoi4
