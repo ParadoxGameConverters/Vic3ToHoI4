@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Vic3 to HoI4"
-#define MyAppVersion "0.5 Eisenhower"
+#define MyAppVersion "0.6 Fioravanzo"
 #define MyAppPublisher "Paradox Game Converters Group"
 #define MyAppURL "https://paradoxgameconverters.com/"
 #define MyAppExeName "ConverterFrontend.exe"
