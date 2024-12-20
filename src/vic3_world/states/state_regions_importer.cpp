@@ -1,5 +1,7 @@
 #include "src/vic3_world/states/state_regions_importer.h"
 
+#include <filesystem>
+
 #include "external/commonItems/CommonRegexes.h"
 #include "external/commonItems/Log.h"
 #include "external/commonItems/Parser.h"
@@ -55,20 +57,15 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
           region_parser.parseStream(input_stream);
           name_to_region_map.emplace(region_name, StateRegion(significant_provinces, provinces));
           region_indexes.emplace(region_name, static_cast<int>(region_indexes.size()));
-          for (const auto& [id, type]: significant_provinces)
-          {
-             if (!provinces.contains(id))
-             {
-                Log(LogLevel::Warning) << fmt::format(
-                    "Significant province {} ({}) does not correspond to a province in state region {}.",
-                    id,
-                    type,
-                    region_name);
-             }
-          }
        });
 
-   for (const auto& state_regions_file: filesystem.GetAllFilesInFolder("map_data/state_regions"))
+   const std::set<std::string> files = filesystem.GetAllFilesInFolder("map_data/state_regions");
+   std::vector<std::string> sorted_files(files.begin(), files.end());
+   std::ranges::sort(sorted_files, [](const std::string& a, const std::string& b) {
+      return std::filesystem::path(a).filename() < std::filesystem::path(b).filename();
+   });
+
+   for (const std::string& state_regions_file: sorted_files)
    {
       file_parser.parseFile(state_regions_file);
    }
