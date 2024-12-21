@@ -26,10 +26,10 @@ hoi4::DecisionsCategoryImporter::DecisionsCategoryImporter()
       visible = commonItems::stringOfItem(the_stream).getString();
    });
    parser.registerKeyword("visibility_type", [this](std::istream& the_stream) {
-      visibilityType = commonItems::stringOfItem(the_stream).getString();
+      visibility_type = commonItems::stringOfItem(the_stream).getString();
    });
    parser.registerRegex(commonItems::catchallRegex, [this](const std::string& itemName, std::istream& the_stream) {
-      extraItems.push_back(std::make_pair(itemName, commonItems::stringOfItem(the_stream).getString()));
+      extra_items.push_back(std::make_pair(itemName, commonItems::stringOfItem(the_stream).getString()));
    });
 }
 
@@ -43,10 +43,10 @@ hoi4::DecisionsCategory hoi4::DecisionsCategoryImporter::GetDecisionsCategory(st
    priority.reset();
    allowed.clear();
    visible.clear();
-   visibilityType.clear();
-   extraItems.clear();
+   visibility_type.clear();
+   extra_items.clear();
 
    parser.parseStream(the_stream);
 
-   return {name, icon, picture, priority, allowed, visible, visibilityType, extraItems};
+   return {name, icon, picture, priority, allowed, visible, visibility_type, extra_items};
 }

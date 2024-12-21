@@ -30,8 +30,8 @@ class DecisionsCategoryImporter
    std::optional<int> priority;
    std::string allowed;
    std::string visible;
-   std::string visibilityType;
-   std::vector<std::pair<std::string, std::string>> extraItems;
+   std::string visibility_type;
+   std::vector<std::pair<std::string, std::string>> extra_items;
 };
 
 }  // namespace hoi4

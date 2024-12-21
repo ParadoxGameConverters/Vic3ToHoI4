@@ -28,11 +28,11 @@ std::ostream& operator<<(std::ostream& out, const hoi4::DecisionsCategory& decis
    {
       out << "\tvisible " << decisions_category.visible << "\n";
    }
-   if (!decisions_category.visibilityType.empty())
+   if (!decisions_category.visibility_type.empty())
    {
-      out << "\tvisibility_type " << decisions_category.visibilityType << "\n";
+      out << "\tvisibility_type " << decisions_category.visibility_type << "\n";
    }
-   for (const auto& extraItem: decisions_category.extraItems)
+   for (const auto& extraItem: decisions_category.extra_items)
    {
       out << "\t" << extraItem.first << " " << extraItem.second << "\n";
    }

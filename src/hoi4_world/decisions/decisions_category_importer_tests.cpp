@@ -22,8 +22,8 @@ TEST(Hoi4worldDecisionsDecisionscategoryimporterTests, DefaultsAreDefaulted)
    EXPECT_FALSE(decisions_category.priority.has_value());
    EXPECT_TRUE(decisions_category.allowed.empty());
    EXPECT_TRUE(decisions_category.visible.empty());
-   EXPECT_TRUE(decisions_category.visibilityType.empty());
-   EXPECT_TRUE(decisions_category.extraItems.empty());
+   EXPECT_TRUE(decisions_category.visibility_type.empty());
+   EXPECT_TRUE(decisions_category.extra_items.empty());
 }
 
 
@@ -62,8 +62,8 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, ItemsCanBeSet)
        "= {\n"
        "\t\tis_debug = yes\n"
        "\t}");
-   EXPECT_EQ(decisions_category.visibilityType, "= map_and_decisions_view");
-   EXPECT_THAT(decisions_category.extraItems,
+   EXPECT_EQ(decisions_category.visibility_type, "= map_and_decisions_view");
+   EXPECT_THAT(decisions_category.extra_items,
        testing::ElementsAre(std::pair{"extra_item_one",
                                 "= {\n"
                                 "\t}"},

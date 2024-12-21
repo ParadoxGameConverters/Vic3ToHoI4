@@ -20,8 +20,8 @@ struct DecisionsCategory
    std::optional<int> priority;
    std::string allowed;
    std::string visible;
-   std::string visibilityType;
-   std::vector<std::pair<std::string, std::string>> extraItems;
+   std::string visibility_type;
+   std::vector<std::pair<std::string, std::string>> extra_items;
 
    std::strong_ordering operator<=>(const DecisionsCategory& rhs) const = default;
 };
