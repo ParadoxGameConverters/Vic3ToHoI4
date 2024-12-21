@@ -4,10 +4,10 @@
 
 
 #include "external/commonItems/Parser.h"
+#include "src/hoi4_world/decisions/decisions_category_importer.h"
 #include "src/hoi4_world/focus_trees/focus_importer.h"
 #include "src/hoi4_world/roles/repeat_focus_importer.h"
 #include "src/hoi4_world/roles/role.h"
-#include "src/hoi4_world/decisions/decisions_category_importer.h"
 
 
 
@@ -29,6 +29,7 @@ class RoleImporter
    FocusImporter focus_importer_;
    RepeatFocusImporter repeat_focus_importer_;
    DecisionsCategoryImporter decisions_category_importer_;
+   commonItems::parser decisions_categories_parser_;
 };
 
 };  // namespace hoi4

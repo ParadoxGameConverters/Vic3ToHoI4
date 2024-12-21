@@ -19,19 +19,19 @@ class DecisionsCategoryImporter
   public:
    DecisionsCategoryImporter();
 
-   [[nodiscard]] DecisionsCategory GetDecisionsCategory(std::istream& the_stream);
+   [[nodiscard]] DecisionsCategory GetDecisionsCategory(std::string_view name, std::istream& the_stream);
 
   private:
    commonItems::parser parser;
 
-   std::string name;
-   std::string icon;
-   std::string picture;
-   std::optional<int> priority;
-   std::string allowed;
-   std::string visible;
-   std::string visibility_type;
-   std::vector<std::pair<std::string, std::string>> extra_items;
+   std::string name_;
+   std::string icon_;
+   std::string picture_;
+   std::optional<int> priority_;
+   std::string allowed_;
+   std::string visible_;
+   std::string visibility_type_;
+   std::vector<std::pair<std::string, std::string>> extra_items_;
 };
 
 }  // namespace hoi4

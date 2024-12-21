@@ -14,9 +14,10 @@ TEST(Hoi4worldDecisionsDecisionscategoryimporterTests, DefaultsAreDefaulted)
    std::stringstream input;
    input << "= {\n";
    input << "}";
-   const DecisionsCategory decisions_category = hoi4::DecisionsCategoryImporter{}.GetDecisionsCategory(input);
+   const DecisionsCategory decisions_category =
+       hoi4::DecisionsCategoryImporter{}.GetDecisionsCategory("test_name", input);
 
-   EXPECT_TRUE(decisions_category.name.empty());
+   EXPECT_EQ(decisions_category.name, "test_name");
    EXPECT_TRUE(decisions_category.icon.empty());
    EXPECT_TRUE(decisions_category.picture.empty());
    EXPECT_FALSE(decisions_category.priority.has_value());
@@ -31,7 +32,6 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, ItemsCanBeSet)
 {
    std::stringstream input;
    input << "= {\n";
-   input << "\tname = category_name\n";
    input << "\ticon = generic_research\n";
    input << "\tpicture = GFX_decision_cat_picture_naval_treaties\n";
    input << "\tpriority = 100\n";
@@ -48,7 +48,8 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, ItemsCanBeSet)
    input << "\t\tcan_it_have_stuff_inside = yes\n";
    input << "\t}\n";
    input << "}";
-   const DecisionsCategory decisions_category = hoi4::DecisionsCategoryImporter{}.GetDecisionsCategory(input);
+   const DecisionsCategory decisions_category =
+       hoi4::DecisionsCategoryImporter{}.GetDecisionsCategory("category_name", input);
 
    EXPECT_EQ(decisions_category.name, "category_name");
    EXPECT_EQ(decisions_category.icon, "generic_research");

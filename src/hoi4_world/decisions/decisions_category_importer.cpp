@@ -8,45 +8,46 @@
 hoi4::DecisionsCategoryImporter::DecisionsCategoryImporter()
 {
    parser.registerKeyword("name", [this](std::istream& the_stream) {
-      name = commonItems::getString(the_stream);
+      name_ = commonItems::getString(the_stream);
    });
    parser.registerKeyword("icon", [this](std::istream& the_stream) {
-      icon = commonItems::getString(the_stream);
+      icon_ = commonItems::getString(the_stream);
    });
    parser.registerKeyword("picture", [this](std::istream& the_stream) {
-      picture = commonItems::getString(the_stream);
+      picture_ = commonItems::getString(the_stream);
    });
    parser.registerKeyword("priority", [this](std::istream& the_stream) {
-      priority = commonItems::getInt(the_stream);
+      priority_ = commonItems::getInt(the_stream);
    });
    parser.registerKeyword("allowed", [this](std::istream& the_stream) {
-      allowed = commonItems::stringOfItem(the_stream).getString();
+      allowed_ = commonItems::stringOfItem(the_stream).getString();
    });
    parser.registerKeyword("visible", [this](std::istream& the_stream) {
-      visible = commonItems::stringOfItem(the_stream).getString();
+      visible_ = commonItems::stringOfItem(the_stream).getString();
    });
    parser.registerKeyword("visibility_type", [this](std::istream& the_stream) {
-      visibility_type = commonItems::stringOfItem(the_stream).getString();
+      visibility_type_ = commonItems::stringOfItem(the_stream).getString();
    });
    parser.registerRegex(commonItems::catchallRegex, [this](const std::string& itemName, std::istream& the_stream) {
-      extra_items.push_back(std::make_pair(itemName, commonItems::stringOfItem(the_stream).getString()));
+      extra_items_.push_back(std::make_pair(itemName, commonItems::stringOfItem(the_stream).getString()));
    });
 }
 
 
 
-hoi4::DecisionsCategory hoi4::DecisionsCategoryImporter::GetDecisionsCategory(std::istream& the_stream)
+hoi4::DecisionsCategory hoi4::DecisionsCategoryImporter::GetDecisionsCategory(std::string_view name,
+    std::istream& the_stream)
 {
-   name.clear();
-   icon.clear();
-   picture.clear();
-   priority.reset();
-   allowed.clear();
-   visible.clear();
-   visibility_type.clear();
-   extra_items.clear();
+   name_ = name;
+   icon_.clear();
+   picture_.clear();
+   priority_.reset();
+   allowed_.clear();
+   visible_.clear();
+   visibility_type_.clear();
+   extra_items_.clear();
 
    parser.parseStream(the_stream);
 
-   return {name, icon, picture, priority, allowed, visible, visibility_type, extra_items};
+   return {name_, icon_, picture_, priority_, allowed_, visible_, visibility_type_, extra_items_};
 }

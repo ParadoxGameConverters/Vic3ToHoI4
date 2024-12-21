@@ -93,11 +93,11 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    input << "\tremoved_focus={\n";
    input << "\t\tid = $TAG$_remove_me_2\n";
    input << "\t}\n";
-   input << "\tdecisions_category={\n";
-   input << "\t\tname = $TAG$_a_decisions_category\n";
-   input << "\t}\n";
-   input << "\tdecisions_category={\n";
-   input << "\t\tname = $TAG$_another_decisions_category\n";
+   input << "\tdecisions_categories={\n";
+   input << "\t\t$TAG$_a_decisions_category={\n";
+   input << "\t\t}\n";
+   input << "\t\t$TAG$_another_decisions_category={\n";
+   input << "\t\t}\n";
    input << "\t}\n";
    input << "\tdecision={\n";
    input << "\t\tid = $TAG$_a_decision\n";
