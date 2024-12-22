@@ -10,7 +10,7 @@
 namespace out
 {
 
-TEST(Outhoi4DecisionsOutdecisionscategory, BasicsAreOutput)
+TEST(Outhoi4DecisionsOutdecisionscategoryTests, BasicsAreOutput)
 {
    const hoi4::DecisionsCategory category({.name = "test_name"});
 
@@ -25,7 +25,7 @@ TEST(Outhoi4DecisionsOutdecisionscategory, BasicsAreOutput)
 }
 
 
-TEST(Outhoi4DecisionsOutdecisionscategory, SetItemsAreOutput)
+TEST(Outhoi4DecisionsOutdecisionscategoryTests, SetItemsAreOutput)
 {
    const hoi4::DecisionsCategory category({
        .name = "test_name",

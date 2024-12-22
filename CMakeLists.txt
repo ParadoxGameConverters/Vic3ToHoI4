@@ -459,6 +459,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/characters/out_character_tests.cp
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/out_countries_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/out_country_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/decisions/out_decisions_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/decisions/out_decisions_categories_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/decisions/out_decisions_category_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/diplomacy/out_war_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/flags/out_flags_tests.cpp")
