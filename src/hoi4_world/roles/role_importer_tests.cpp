@@ -26,6 +26,7 @@ TEST(Hoi4worldRolesRoleimporterTests, DefaultsAreDefaulted)
    EXPECT_TRUE(role.GetFocuses().empty());
    EXPECT_TRUE(role.GetRepeatFocuses().empty());
    EXPECT_TRUE(role.GetRemovedFocuses().empty());
+   EXPECT_TRUE(role.GetDecisionsCategories().empty());
    EXPECT_TRUE(role.GetDecisions().empty());
    EXPECT_TRUE(role.GetEvents().empty());
 }
@@ -92,6 +93,12 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    input << "\tremoved_focus={\n";
    input << "\t\tid = $TAG$_remove_me_2\n";
    input << "\t}\n";
+   input << "\tdecisions_categories={\n";
+   input << "\t\t$TAG$_a_decisions_category={\n";
+   input << "\t\t}\n";
+   input << "\t\t$TAG$_another_decisions_category={\n";
+   input << "\t\t}\n";
+   input << "\t}\n";
    input << "\tdecision={\n";
    input << "\t\tid = $TAG$_a_decision\n";
    input << "\t}\n";
@@ -133,6 +140,9 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
            "= {\n"
            "\t\tid = $TAG$_remove_me_2\n"
            "\t}"));
+   EXPECT_THAT(role.GetDecisionsCategories(),
+       testing::ElementsAre(DecisionsCategory{.name = "$TAG$_a_decisions_category"},
+           DecisionsCategory{.name = "$TAG$_another_decisions_category"}));
    EXPECT_THAT(role.GetDecisions(),
        testing::ElementsAre("= {\n"
                             "\t\tid = $TAG$_a_decision\n"

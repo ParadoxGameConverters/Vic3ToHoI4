@@ -108,6 +108,13 @@ unification_italy = {
 		}
 	}
 	
+	decisions_categories={
+		sample_decision_category={
+			icon=generic_form_nation
+			visible={
+			}
+		}
+	}
 }
 
 
@@ -234,6 +241,14 @@ unification_italy_2 = {
 			set_cosmetic_tag = ITA_UNIFIED
 		}
 	}
+	
+	decisions_categories={
+		sample_decision_category={
+			icon=generic_form_nation
+			visible={
+			}
+		}
+	}
 }
 
 
@@ -358,6 +373,14 @@ unification_italy_3 = {
 
 		completion_reward = {
 			set_cosmetic_tag = ITA_UNIFIED
+		}
+	}
+	
+	decisions_categories={
+		sample_decision_category={
+			icon=generic_form_nation
+			visible={
+			}
 		}
 	}
 }

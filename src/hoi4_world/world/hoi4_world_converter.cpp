@@ -232,8 +232,6 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
     std::future<hoi4::WorldFramework> world_framework_future,
     const configuration::Configuration& config)
 {
-   std::map<std::string, hoi4::Country> countries;
-
    Log(LogLevel::Info) << "Creating Hoi4 world";
 
 
@@ -278,7 +276,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    std::map<int, hoi4::Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
-   countries = ConvertCountries(source_world,
+   std::map<std::string, hoi4::Country> countries = ConvertCountries(source_world,
        world_mapper,
        source_world.GetLocalizations(),
        states,
@@ -332,6 +330,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        .localizations = localizations,
        .characters = characters});
 
+   std::set<DecisionsCategory> decisions_categories;
+
    const std::map<std::string, Role> roles = ImportRoles();
    std::map<std::string, Country>& modifiable_countries = world.GetModifiableCountries();
    for (const auto& [tag, country_roles]: CreateStories(roles, modifiable_countries))
@@ -343,9 +343,19 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
          continue;
       }
 
+      for (const Role& country_role: country_roles)
+      {
+         for (const DecisionsCategory& role_category: country_role.GetDecisionsCategories())
+         {
+            decisions_categories.insert(role_category);
+         }
+      }
+
       const FocusTree tree = AssembleTree(country_roles, tag, world);
       country_itr->second.SetFocusTree(tree);
    }
+
+   world.SetDecisionsCategories(decisions_categories);
 
    return world;
 }

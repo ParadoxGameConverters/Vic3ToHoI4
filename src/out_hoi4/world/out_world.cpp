@@ -6,6 +6,7 @@
 #include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/countries/out_countries.h"
 #include "src/out_hoi4/decisions/out_decisions.h"
+#include "src/out_hoi4/decisions/out_decisions_categories.h"
 #include "src/out_hoi4/ideas/out_ideas.h"
 #include "src/out_hoi4/localizations/out_localizations.h"
 #include "src/out_hoi4/map/out_buildings.h"
@@ -91,6 +92,7 @@ void out::OutputWorld(std::string_view output_name, const hoi4::World& world, co
    OutputLocalizations(output_name, world.GetLocalizations());
    OutputNames(output_name, world.GetCountries());
    OutputPortraits(output_name, world.GetCountries());
+   OutputDecisionsCategories(output_name, world.GetDecisionsCategories());
    OutputBookmark(output_name,
        "grand_campaign",
        date("1936.1.1"),
