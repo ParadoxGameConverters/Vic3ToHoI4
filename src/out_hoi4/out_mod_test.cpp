@@ -1,5 +1,9 @@
 #include "out_mod.h"
 
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+#include <external/fmt/include/fmt/format.h>
 #include <gmock/gmock-matchers.h>
 
 #include <algorithm>
@@ -7,11 +11,6 @@
 #include <fstream>
 #include <iterator>
 #include <sstream>
-
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/fmt/include/fmt/format.h"
 
 
 

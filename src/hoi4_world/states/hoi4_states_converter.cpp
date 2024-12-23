@@ -1,5 +1,7 @@
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
 #include <src/hoi4_world/world/hoi4_world.h>
 
 #include <algorithm>
@@ -11,8 +13,6 @@
 #include <ranges>
 #include <vector>
 
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/configuration/configuration.h"
 #include "src/maps/map_data.h"
 #include "src/out_hoi4/world/out_world.h"

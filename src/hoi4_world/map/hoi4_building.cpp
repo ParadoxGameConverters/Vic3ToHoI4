@@ -1,8 +1,8 @@
 #include "src/hoi4_world/map/hoi4_building.h"
 
-#include <sstream>
+#include <external/fmt/include/fmt/format.h>
 
-#include "external/fmt/include/fmt/format.h"
+#include <sstream>
 
 
 

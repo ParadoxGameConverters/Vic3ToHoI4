@@ -1,6 +1,7 @@
 #include "src/mappers/technology/tech_mappings_importer.h"
 
-#include "external/commonItems/Parser.h"
+#include <external/commonItems/Parser.h>
+
 #include "src/mappers/technology/tech_mapping_importer.h"
 
 

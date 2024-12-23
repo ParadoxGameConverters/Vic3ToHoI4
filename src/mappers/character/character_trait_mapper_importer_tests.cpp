@@ -1,7 +1,8 @@
-﻿#include <sstream>
+﻿#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include <sstream>
+
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/mappers/character/character_trait_mapper_importer.h"
 

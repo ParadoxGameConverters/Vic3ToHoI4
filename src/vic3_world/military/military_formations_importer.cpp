@@ -1,6 +1,7 @@
 #include "src/vic3_world/military/military_formations_importer.h"
 
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/ParserHelpers.h>
+
 #include "src/vic3_world/database/database_parser.h"
 
 

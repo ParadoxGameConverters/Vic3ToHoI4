@@ -1,8 +1,9 @@
 #include "src/out_hoi4/map/out_railways.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/map/out_railway.h"
 
 

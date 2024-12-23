@@ -1,8 +1,9 @@
 #include "src/hoi4_world/map/hoi4_province_definition_importer.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/maps/utility.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 

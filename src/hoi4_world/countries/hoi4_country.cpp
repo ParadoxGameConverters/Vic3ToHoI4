@@ -1,9 +1,9 @@
 #include "src/hoi4_world/countries/hoi4_country.h"
 
-#include <sstream>
+#include <external/fmt/include/fmt/format.h>
+#include <external/fmt/include/fmt/ranges.h>
 
-#include "external/fmt/include/fmt/format.h"
-#include "external/fmt/include/fmt/ranges.h"
+#include <sstream>
 
 
 

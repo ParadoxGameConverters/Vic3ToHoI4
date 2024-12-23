@@ -2,10 +2,11 @@
 #define SRC_VIC3WORLD_WORLD_VIC3WORLD_H
 
 
+#include <external/commonItems/Localization/LocalizationDatabase.h>
+
 #include <map>
 #include <set>
 
-#include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "src/vic3_world/buildings/buildings.h"
 #include "src/vic3_world/characters/vic3_character.h"
 #include "src/vic3_world/countries/vic3_country.h"

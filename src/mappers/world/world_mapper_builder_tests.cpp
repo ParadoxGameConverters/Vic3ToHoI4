@@ -1,8 +1,9 @@
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <string>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/mappers/world/world_mapper_builder.h"
 
 constexpr float kTolerance = 0.0001F;

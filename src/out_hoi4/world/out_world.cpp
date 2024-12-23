@@ -1,9 +1,10 @@
 #include "out_world.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 #include <ranges>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/countries/out_countries.h"
 #include "src/out_hoi4/decisions/out_decisions.h"
 #include "src/out_hoi4/decisions/out_decisions_categories.h"

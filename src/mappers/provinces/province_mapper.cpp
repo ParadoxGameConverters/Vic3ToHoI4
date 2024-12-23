@@ -1,6 +1,6 @@
 #include "src/mappers/provinces/province_mapper.h"
 
-#include "external/commonItems/Log.h"
+#include <external/commonItems/Log.h>
 
 
 std::vector<int> mappers::ProvinceMapper::GetVic3ToHoi4ProvinceMapping(std::string_view vic3_province) const

@@ -1,21 +1,22 @@
 #include "src/vic3_world/world/vic3_world_importer.h"
 
+#include <external/commonItems/Color.h>
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Date.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/ModLoader/Mod.h>
+#include <external/commonItems/ModLoader/ModLoader.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+#include <external/rakaly/rakaly.h>
+
 #include <filesystem>
 #include <fstream>
 #include <numeric>
 #include <ranges>
 #include <sstream>
 
-#include "external/commonItems/Color.h"
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Date.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/ModLoader/Mod.h"
-#include "external/commonItems/ModLoader/ModLoader.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
-#include "external/rakaly/rakaly.h"
 #include "src/support/date_fmt.h"
 #include "src/support/progress_manager.h"
 #include "src/vic3_world/buildings/buildings_importer.h"

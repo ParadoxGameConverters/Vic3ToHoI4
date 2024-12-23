@@ -1,10 +1,11 @@
 #include "src/out_hoi4/countries/out_countries.h"
 
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 #include <ranges>
 
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/countries/out_country.h"
 #include "src/out_hoi4/focus_trees/out_focus_tree.h"
 

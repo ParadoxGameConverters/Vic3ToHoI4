@@ -1,6 +1,7 @@
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include <sstream>
 
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/focus_trees/focus.h"
 #include "src/out_hoi4/focus_trees/out_focus.h"
 

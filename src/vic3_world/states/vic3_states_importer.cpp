@@ -1,9 +1,10 @@
 #include "src/vic3_world/states/vic3_states_importer.h"
 
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/ParserHelpers.h>
+
 #include <sstream>
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/ParserHelpers.h"
 #include "src/vic3_world/database/database_parser.h"
 
 

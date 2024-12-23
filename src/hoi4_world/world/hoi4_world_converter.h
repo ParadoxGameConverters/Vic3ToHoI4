@@ -3,12 +3,13 @@
 
 
 
+#include <external/commonItems/Localization/LocalizationDatabase.h>
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+
 #include <map>
 #include <memory>
 #include <string>
 
-#include "external/commonItems/Localization/LocalizationDatabase.h"
-#include "external/commonItems/ModLoader/ModFilesystem.h"
 #include "src/configuration/configuration.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/map/strategic_regions.h"

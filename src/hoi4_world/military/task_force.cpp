@@ -1,8 +1,9 @@
 #include "src/hoi4_world/military/task_force.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <sstream>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/military/ship.h"
 
 namespace hoi4

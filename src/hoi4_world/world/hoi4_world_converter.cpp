@@ -1,9 +1,10 @@
 #include "src/hoi4_world/world/hoi4_world_converter.h"
 
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <ranges>
 
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
 #include "hoi4_world.h"
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
@@ -274,7 +275,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    Log(LogLevel::Info) << "\tConverting countries";
    ProgressManager::AddProgress(10);
 
-   std::map<int, hoi4::Character> characters;
+   std::map<int64_t, hoi4::Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
    std::map<std::string, hoi4::Country> countries = ConvertCountries(source_world,
        world_mapper,

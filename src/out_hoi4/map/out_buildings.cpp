@@ -1,9 +1,10 @@
 #include "src/out_hoi4/map/out_buildings.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 #include <ranges>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/map/out_building.h"
 
 

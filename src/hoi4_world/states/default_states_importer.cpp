@@ -1,10 +1,10 @@
 #include "src/hoi4_world/states/default_states_importer.h"
 
-#include <istream>
+#include <external/commonItems/CommonFunctions.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
 
-#include "external/commonItems/CommonFunctions.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <istream>
 
 
 

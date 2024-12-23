@@ -3,12 +3,13 @@
 
 
 
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+#include <external/commonItems/Parser.h>
+
 #include <map>
 #include <set>
 #include <vector>
 
-#include "external/commonItems/ModLoader/ModFilesystem.h"
-#include "external/commonItems/Parser.h"
 #include "src/configuration/configuration.h"
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/mappers/provinces/province_mapping_importer.h"

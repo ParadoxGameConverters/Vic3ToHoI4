@@ -1,7 +1,7 @@
 #include "src/hoi4_world/characters/hoi4_character_converter.h"
 
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
 
 
 

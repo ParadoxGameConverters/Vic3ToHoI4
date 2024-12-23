@@ -1,9 +1,10 @@
 #include "src/hoi4_world/roles/stories_creator.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <ranges>
 #include <set>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/roles/roles_importer.h"
 
 

@@ -1,10 +1,10 @@
 #include "src/mappers/flags/flag_mapper.h"
 
-#include <filesystem>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/fmt/include/fmt/format.h>
 
-#include "external/commonItems/Log.h"
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/fmt/include/fmt/format.h"
+#include <filesystem>
 
 namespace
 {

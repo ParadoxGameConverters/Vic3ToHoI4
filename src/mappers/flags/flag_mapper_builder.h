@@ -1,11 +1,12 @@
 #ifndef SRC_MAPPERS_FLAGS_FLAGMAPPERBUILDER_H
 #define SRC_MAPPERS_FLAGS_FLAGMAPPERBUILDER_H
 
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+
 #include <filesystem>
 #include <set>
 #include <string>
 
-#include "external/commonItems/ModLoader/ModFilesystem.h"
 #include "src/mappers/flags/flag_mapper.h"
 
 

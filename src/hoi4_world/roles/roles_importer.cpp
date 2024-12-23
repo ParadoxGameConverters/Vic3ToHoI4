@@ -1,9 +1,10 @@
 #include "src/hoi4_world/roles/roles_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include "src/hoi4_world/roles/role_importer.h"
 
 

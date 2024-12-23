@@ -1,11 +1,12 @@
 #include "src/out_hoi4/countries/out_country.h"
 
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 #include <ios>
 #include <string>
 
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/characters/out_character.h"
 #include "src/out_hoi4/diplomacy/out_war.h"
 #include "src/out_hoi4/military/out_equipment_variant.h"

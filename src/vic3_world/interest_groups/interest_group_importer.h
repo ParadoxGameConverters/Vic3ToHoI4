@@ -3,9 +3,10 @@
 
 
 
+#include <external/commonItems/Parser.h>
+
 #include <istream>
 
-#include "external/commonItems/Parser.h"
 #include "src/vic3_world/interest_groups/interest_group.h"
 
 

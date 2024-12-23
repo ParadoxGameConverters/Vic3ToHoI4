@@ -1,12 +1,13 @@
 #include "src/mappers/provinces/province_mapper_importer.h"
 
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/ModLoader/ModFilesystem.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/vic3_world/states/state_regions_importer.h"
 #include "src/vic3_world/world/vic3_world.h"
 

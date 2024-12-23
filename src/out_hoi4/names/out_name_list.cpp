@@ -1,6 +1,6 @@
 #include "src/out_hoi4/names/out_name_list.h"
 
-#include "external/fmt/include/fmt/format.h"
+#include <external/fmt/include/fmt/format.h>
 
 namespace
 {

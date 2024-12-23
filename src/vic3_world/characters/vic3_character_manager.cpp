@@ -1,12 +1,13 @@
 #include "src/vic3_world/characters/vic3_character_manager.h"
 
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <ranges>
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/vic3_world/characters/vic3_characters_importer.h"
 #include "src/vic3_world/characters/vic3_country_character_map_importer.h"
 

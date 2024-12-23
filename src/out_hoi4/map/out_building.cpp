@@ -1,8 +1,8 @@
 #include "src/out_hoi4/map/out_building.h"
 
-#include <iomanip>
+#include <external/fmt/include/fmt/format.h>
 
-#include "external/fmt/include/fmt/format.h"
+#include <iomanip>
 
 
 

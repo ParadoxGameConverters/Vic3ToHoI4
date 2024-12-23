@@ -1,8 +1,9 @@
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <ranges>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/military/convoy_distributor.h"
 #include "src/hoi4_world/military/convoy_distributor_builder.h"
 #include "src/hoi4_world/military/division_templates_importer.h"
@@ -62,7 +63,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
     const mappers::WorldMapper& world_mapper,
     const commonItems::LocalizationDatabase& source_localizations,
     const States& states,
-    std::map<int, Character>& characters,
+    std::map<int64_t, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues,
     bool debug)
 {

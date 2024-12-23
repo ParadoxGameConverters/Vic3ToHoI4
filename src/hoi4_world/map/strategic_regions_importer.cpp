@@ -1,6 +1,7 @@
 #include "src/hoi4_world/map/strategic_regions_importer.h"
 
-#include "external/commonItems/Log.h"
+#include <external/commonItems/Log.h>
+
 #include "src/hoi4_world/map/strategic_region_importer.h"
 
 

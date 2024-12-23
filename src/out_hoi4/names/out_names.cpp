@@ -1,9 +1,10 @@
 #include "src/out_hoi4/names/out_names.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 #include <ranges>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/names/out_name_list.h"
 
 

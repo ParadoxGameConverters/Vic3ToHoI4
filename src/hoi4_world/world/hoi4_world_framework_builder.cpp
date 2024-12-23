@@ -1,6 +1,7 @@
 #include "src/hoi4_world/world/hoi4_world_framework_builder.h"
 
-#include "external/fmt/include/fmt/format.h"
+#include <external/fmt/include/fmt/format.h>
+
 #include "src/hoi4_world/map/coastal_provinces.h"
 #include "src/hoi4_world/map/coastal_provinces_creator.h"
 #include "src/hoi4_world/map/hoi4_province_definition_importer.h"

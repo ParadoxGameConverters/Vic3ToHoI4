@@ -1,9 +1,9 @@
 #include "src/vic3_world/interest_groups/interest_group_importer.h"
 
-#include <ranges>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
 
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+#include <ranges>
 
 vic3::InterestGroupImporter::InterestGroupImporter()
 {

@@ -1,11 +1,12 @@
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <filesystem>
 #include <fstream>
 #include <sstream>
 
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/out_hoi4/decisions/out_decisions_categories.h"
 

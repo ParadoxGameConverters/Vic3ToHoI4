@@ -1,11 +1,12 @@
 #include "src/hoi4_world/map/railways_converter.h"
 
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <numeric>
 #include <queue>
 #include <ranges>
 
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/map/possible_path.h"
 #include "src/support/progress_manager.h"
 
@@ -587,7 +588,7 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
          interstate_paths.push_back(all_interstate_paths.front());
       }
       progress++;
-      int currentProgress = progress * 10 / hoi4_states.states.size();
+      const int currentProgress = progress * 10 / static_cast<int>(hoi4_states.states.size());
       if (prevProgress != currentProgress)
       {
          prevProgress = currentProgress;

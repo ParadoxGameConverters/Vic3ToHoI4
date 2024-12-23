@@ -1,7 +1,9 @@
 #include "src/maps/map_data_importer.h"
 
-#include "external/bitmap/bitmap_image.hpp"
-#include "external/fmt/include/fmt/format.h"
+#include <external/fmt/include/fmt/format.h>
+
+#include <external/bitmap/bitmap_image.hpp>
+
 #include "src/support/progress_manager.h"
 
 

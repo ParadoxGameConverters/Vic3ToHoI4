@@ -1,8 +1,9 @@
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <sstream>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/fmt/include/fmt/format.h"
 #include "hoi4_world_framework_builder.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/world/hoi4_world.h"

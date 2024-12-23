@@ -1,8 +1,8 @@
 #include "src/vic3_world/cultures/culture_definitions_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/commonItems/StringUtils.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/commonItems/StringUtils.h>
 
 std::map<std::string, vic3::CultureDefinition> vic3::ImportCultureDefinitions(
     const commonItems::ModFilesystem& mod_filesystem)

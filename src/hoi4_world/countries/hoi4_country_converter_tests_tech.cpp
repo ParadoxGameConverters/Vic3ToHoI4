@@ -1,6 +1,7 @@
 // Contains tech and research tests for Country
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include "hoi4_country_converter.h"
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/mappers/character/culture_queue.h"

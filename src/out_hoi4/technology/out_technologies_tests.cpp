@@ -1,8 +1,9 @@
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <sstream>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/technology/technologies.h"
 #include "src/out_hoi4/technology/out_technologies.h"
 

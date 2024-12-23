@@ -1,10 +1,11 @@
 #include "src/hoi4_world/map/buildings_creator.h"
 
+#include <external/commonItems/Log.h>
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 
-#include "external/commonItems/Log.h"
-#include "external/commonItems/ModLoader/ModFilesystem.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/map/coastal_provinces.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 

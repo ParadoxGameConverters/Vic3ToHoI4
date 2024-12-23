@@ -1,6 +1,6 @@
 #include "src/out_hoi4/decisions/out_decisions.h"
 
-#include "external/commonItems/Log.h"
+#include <external/commonItems/Log.h>
 
 
 namespace out

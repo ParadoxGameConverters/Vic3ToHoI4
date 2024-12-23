@@ -1,11 +1,11 @@
 #include "src/hoi4_world/map/strategic_region_importer.h"
 
-#include <fstream>
+#include <external/commonItems/CommonFunctions.h>
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
 
-#include "external/commonItems/CommonFunctions.h"
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+#include <fstream>
 
 
 

@@ -1,9 +1,9 @@
 #include "src/vic3_world/countries/vic3_countries_importer.h"
 
-#include <sstream>
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/ParserHelpers.h>
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <sstream>
 
 
 

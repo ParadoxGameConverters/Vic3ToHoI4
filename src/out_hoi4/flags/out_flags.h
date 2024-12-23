@@ -1,10 +1,11 @@
 #ifndef SRC_OUTHOI4_FLAGS_OUTFLAGS_H
 #define SRC_OUTHOI4_FLAGS_OUTFLAGS_H
 
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+
 #include <map>
 #include <string>
 
-#include "external/commonItems/ModLoader/ModFilesystem.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 
 

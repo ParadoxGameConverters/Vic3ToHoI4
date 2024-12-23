@@ -1,11 +1,12 @@
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <numeric>
 #include <ranges>
 #include <vector>
 
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_character_converter.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/military/task_force_template.h"

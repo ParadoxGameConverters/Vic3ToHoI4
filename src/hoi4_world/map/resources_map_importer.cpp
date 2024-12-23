@@ -1,8 +1,8 @@
 #include "src/hoi4_world/map/resources_map_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
 
 
 

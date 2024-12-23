@@ -1,7 +1,7 @@
 #include "src/vic3_world/pacts/pact_importer.h"
 
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
 
 
 

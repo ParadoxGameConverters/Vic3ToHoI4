@@ -1,7 +1,7 @@
 #include "src/hoi4_world/focus_trees/focus.h"
 
-#include "external/fmt/include/fmt/format.h"
-#include "external/fmt/include/fmt/ranges.h"
+#include <external/fmt/include/fmt/format.h>
+#include <external/fmt/include/fmt/ranges.h>
 
 
 

@@ -1,8 +1,8 @@
 #include "world_mapper_builder.h"
 
+#include <external/fmt/include/fmt/format.h>
 #include <src/hoi4_world/states/hoi4_states_converter.h>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/mappers/country/country_mapper_creator.h"
 #include "src/mappers/culture/culture_graphics_mapper.h"
 #include "src/mappers/culture/culture_graphics_mapper_importer.h"

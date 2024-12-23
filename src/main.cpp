@@ -1,4 +1,5 @@
-#include "external/commonItems/Log.h"
+#include <external/commonItems/Log.h>
+
 #include "src/configuration/configuration_importer.h"
 #include "src/vic3_to_hoi4_converter.h"
 

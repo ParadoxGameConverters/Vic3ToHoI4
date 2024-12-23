@@ -1,8 +1,9 @@
 #include "src/out_hoi4/flags/out_flags.h"
 
+#include <external/commonItems/Log.h>
+
 #include <ranges>
 
-#include "external/commonItems/Log.h"
 #include "src/mappers/flags/flag_mapper.h"
 #include "src/mappers/flags/flag_mapper_builder.h"
 

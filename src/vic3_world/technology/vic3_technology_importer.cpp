@@ -1,10 +1,10 @@
 #include "src/vic3_world/technology/vic3_technology_importer.h"
 
-#include <sstream>
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <sstream>
 
 
 

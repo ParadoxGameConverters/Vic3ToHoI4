@@ -1,8 +1,8 @@
 #include "src/mappers/resources/resource_mapper.h"
 
-#include <set>
+#include <external/commonItems/Log.h>
 
-#include "external/commonItems/Log.h"
+#include <set>
 
 namespace
 {

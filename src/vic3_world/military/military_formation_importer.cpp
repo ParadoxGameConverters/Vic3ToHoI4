@@ -1,7 +1,7 @@
 #include "src/vic3_world/military/military_formation_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/ParserHelpers.h>
 
 
 

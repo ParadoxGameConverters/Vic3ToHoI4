@@ -1,9 +1,10 @@
 #include "src/out_hoi4/portraits/out_portraits.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 #include <ranges>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/out_hoi4/portraits/out_portrait_paths.h"
 

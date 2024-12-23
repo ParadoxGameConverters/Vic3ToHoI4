@@ -3,10 +3,11 @@
 
 
 
+#include <external/commonItems/Parser.h>
+
 #include <istream>
 #include <optional>
 
-#include "external/commonItems/Parser.h"
 #include "src/vic3_world/wars/war.h"
 
 

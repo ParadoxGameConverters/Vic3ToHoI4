@@ -1,5 +1,6 @@
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include "src/mappers/technology/tech_mapping.h"
 #include "src/mappers/technology/tech_mapping_importer.h"
 

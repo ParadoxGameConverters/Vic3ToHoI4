@@ -1,9 +1,10 @@
 #include "src/out_hoi4/map/out_strategic_regions.h"
 
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <ranges>
 
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/map/out_strategic_region.h"
 
 

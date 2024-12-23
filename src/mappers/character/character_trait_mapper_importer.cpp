@@ -1,8 +1,8 @@
 ﻿#include "src/mappers/character/character_trait_mapper_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
 
 mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(std::string_view mapping_file)
 {

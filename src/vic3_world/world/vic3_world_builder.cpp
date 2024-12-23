@@ -1,6 +1,6 @@
 #include "vic3_world_builder.h"
 
-#include "external/fmt/include/fmt/format.h"
+#include <external/fmt/include/fmt/format.h>
 
 namespace vic3
 {

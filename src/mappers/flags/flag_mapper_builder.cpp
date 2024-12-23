@@ -1,15 +1,15 @@
 #include "src/mappers/flags/flag_mapper_builder.h"
 
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <filesystem>
 #include <map>
 #include <string>
-
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
 
 
 namespace

@@ -1,11 +1,12 @@
 #include "src/mappers/infrastructure/infrastructure_mapper.h"
 
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <algorithm>
 #include <cmath>
 #include <numeric>
 
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/vic3_world/states/vic3_state.h"
 
 

@@ -1,11 +1,11 @@
 #include "src/maps/map_data.h"
 
-#include <fstream>
+#include <external/commonItems/Color.h>
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
 
-#include "external/bitmap/bitmap_image.hpp"
-#include "external/commonItems/Color.h"
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
+#include <external/bitmap/bitmap_image.hpp>
+#include <fstream>
 
 
 

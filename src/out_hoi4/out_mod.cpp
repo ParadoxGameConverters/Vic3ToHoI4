@@ -1,12 +1,12 @@
 #include "out_mod.h"
 
+#include <external/commonItems/Log.h>
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/fmt/include/fmt/format.h>
+#include <external/fmt/include/fmt/ostream.h>
+
 #include <fstream>
 #include <string>
-
-#include "external/commonItems/Log.h"
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/fmt/include/fmt/format.h"
-#include "external/fmt/include/fmt/ostream.h"
 
 
 

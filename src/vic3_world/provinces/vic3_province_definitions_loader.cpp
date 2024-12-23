@@ -2,16 +2,15 @@
 
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
 
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/ParserHelpers.h>
 #include <external/fmt/include/fmt/format.h>
 #include <external/stb/stb_image.h>
 
 #include <filesystem>
 #include <stdexcept>
 #include <unordered_set>
-
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/ParserHelpers.h"
 
 
 

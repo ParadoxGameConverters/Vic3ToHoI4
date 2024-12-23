@@ -3,10 +3,11 @@
 
 
 
+#include <external/commonItems/Color.h>
+#include <external/commonItems/Date.h>
+
 #include <string>
 
-#include "external/commonItems/Color.h"
-#include "external/commonItems/Date.h"
 #include "src/vic3_world/institutions/institution.h"
 #include "src/vic3_world/military/military_formation.h"
 

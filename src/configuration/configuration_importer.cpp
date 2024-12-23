@@ -1,10 +1,10 @@
 #include "src/configuration/configuration_importer.h"
 
-#include "external/commonItems/CommonFunctions.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+#include <external/commonItems/CommonFunctions.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
 
 
 

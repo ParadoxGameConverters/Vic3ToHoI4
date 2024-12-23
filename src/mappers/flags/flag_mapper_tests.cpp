@@ -1,9 +1,10 @@
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <filesystem>
 
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/mappers/flags/flag_mapper.h"
 
 

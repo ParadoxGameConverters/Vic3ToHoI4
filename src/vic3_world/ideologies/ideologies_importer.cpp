@@ -1,6 +1,6 @@
 #include "src/vic3_world/ideologies/ideologies_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
+#include <external/commonItems/CommonRegexes.h>
 
 
 

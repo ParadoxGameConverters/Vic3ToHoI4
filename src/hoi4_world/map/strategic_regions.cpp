@@ -1,9 +1,9 @@
 #include "src/hoi4_world/map/strategic_regions.h"
 
+#include <external/commonItems/Log.h>
+
 #include <algorithm>
 #include <ranges>
-
-#include "external/commonItems/Log.h"
 
 
 

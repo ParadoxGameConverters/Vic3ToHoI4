@@ -3,14 +3,15 @@
 
 
 
+#include <external/commonItems/Color.h>
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+
 #include <map>
 #include <optional>
 #include <set>
 #include <string_view>
 #include <unordered_map>
 
-#include "external/commonItems/Color.h"
-#include "external/commonItems/ModLoader/ModFilesystem.h"
 #include "src/maps/point.h"
 #include "src/maps/province_definitions.h"
 #include "src/maps/province_points.h"

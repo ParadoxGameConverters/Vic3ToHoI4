@@ -1,9 +1,10 @@
 #include "src/out_hoi4/ideas/out_ideas.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 #include <ranges>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 
 

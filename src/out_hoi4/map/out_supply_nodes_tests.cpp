@@ -1,7 +1,8 @@
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include <fstream>
 
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/out_hoi4/map/out_supply_nodes.h"
 
 

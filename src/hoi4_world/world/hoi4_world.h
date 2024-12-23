@@ -3,11 +3,12 @@
 
 
 
+#include <external/commonItems/Localization/LocalizationDatabase.h>
+
 #include <map>
 #include <memory>
 #include <string>
 
-#include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/decisions/decisions_category.h"

@@ -1,8 +1,8 @@
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 
 #include <sstream>
 
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "hoi4_war_converter.h"
 #include "src/hoi4_world/diplomacy/hoi4_war.h"
 #include "src/mappers/country/country_mapper.h"

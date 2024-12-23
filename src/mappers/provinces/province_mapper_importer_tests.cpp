@@ -1,8 +1,9 @@
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include <optional>
 #include <sstream>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/mappers/provinces/province_mapper.h"
 #include "src/mappers/provinces/province_mapper_importer.h"
 
