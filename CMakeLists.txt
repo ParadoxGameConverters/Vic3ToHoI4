@@ -194,47 +194,23 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/wars/war_importer.cpp
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/world/vic3_world_builder.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/world/vic3_world_importer.cpp")
 
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/BulkParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Color.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/CommonFunctions.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ConvenientParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ConverterVersion.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Date.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/GameVersion.cpp")
-if (PLATFORM STREQUAL "Windows")
-	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/WinUtils.cpp")
-elseif (PLATFORM STREQUAL "Linux")
-	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/LinuxUtils.cpp")
-endif (PLATFORM STREQUAL "Windows")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Localization/LocalizationBlock.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Localization/LocalizationDatabase.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Log.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ModLoader/ModFilesystem.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ModLoader/ModLoader.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ModLoader/ModParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/OSCommonLayer.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Parser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ParserHelpers.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/StringUtils.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/external/zip/src/zip.c")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/iconvlite.cpp")
-
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/format.cc")
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/os.cc")
 
 
 link_directories("./external/rakaly")
 
-add_library(CommonItems ${COMMON_SOURCES})
+add_subdirectory(external/commonItems EXCLUDE_FROM_ALL)
+
 add_library(Vic3ToHoi4lib
 	${CONVERTER_SOURCES}
 	${FORMAT_SOURCES}
- )
+)
 target_precompile_headers(Vic3ToHoi4lib PUBLIC ${PCH_SOURCES})
 if (PLATFORM STREQUAL "Windows")
-	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC CommonItems rakaly.dll.lib)
+	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC commonLib rakaly.dll.lib)
 elseif (PLATFORM STREQUAL "Linux")
-	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC CommonItems rakaly)
+	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC commonLib rakaly)
 endif (PLATFORM  STREQUAL "Windows")
 
 add_executable(
@@ -345,9 +321,9 @@ set_target_properties(ConverterFrontend
     RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
 )
 if (PLATFORM STREQUAL "Windows")
-	target_link_libraries(ConverterFrontend LINK_PUBLIC ${LIBCURL_LIB} ${LIBCURL_DLL_LIB} CommonItems) 
+	target_link_libraries(ConverterFrontend LINK_PUBLIC ${LIBCURL_LIB} ${LIBCURL_DLL_LIB} commonLib) 
 elseif (PLATFORM STREQUAL "Linux")
-	target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} CommonItems)
+	target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} commonLib)
 endif (PLATFORM STREQUAL "Windows")
 
 if (PLATFORM STREQUAL "Windows")
@@ -362,7 +338,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
 elseif (CMAKE_BUILD_TYPE STREQUAL "Debug")
 	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32ud_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
 	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32ud_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-endif (PLATFORM STREQUAL "Release")
+endif (CMAKE_BUILD_TYPE STREQUAL "Release")
 	file(GLOB FRONTER_CONFIG "data/fronter/*")
 	file(COPY ${FRONTER_CONFIG} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
 	file(GLOB LOCALIZATIONS "external/Fronter/Fronter/Resources/*.yml")
