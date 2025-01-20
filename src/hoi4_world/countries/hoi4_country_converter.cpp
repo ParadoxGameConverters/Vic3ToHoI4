@@ -460,7 +460,7 @@ std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag,
       for (auto& b: current)
       {
          b.SetLocation(*province_itr);
-         if (province_itr++ == provinces.end())
+         if (++province_itr == provinces.end())
          {
             province_itr = provinces.begin();
          }
@@ -567,7 +567,7 @@ std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std
 float ConvertStability(const vic3::Country& country)
 {
    // TODO once we can calculate legitimacy
-   float stability = std::clamp(country.GetLegitimacy(), 0, 100) * 0.8F / 100.0F;
+   const float stability = std::clamp(country.GetLegitimacy(), 0, 100) * 0.8F / 100.0F;
    return stability == 0.0 ? 0.0F : 0.60F;
 }
 
