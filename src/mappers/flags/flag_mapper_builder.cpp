@@ -20,7 +20,7 @@ using std::filesystem::path;
 namespace
 {
 
-extern const path kIgnoreFlag("ignore");
+const path kIgnoreFlag("ignore");
 
 
 }  // namespace
