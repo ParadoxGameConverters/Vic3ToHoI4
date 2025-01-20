@@ -513,7 +513,7 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
          continue;
       }
 
-      const auto monarch_itr = hoi4_characters.find(*monarch_idea_id);
+      const auto monarch_itr = hoi4_characters.find(static_cast<int>(*monarch_idea_id));
       if (monarch_itr == hoi4_characters.end())
       {
          continue;

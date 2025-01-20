@@ -129,7 +129,7 @@ void IncreaseVictoryPointsInCapitals(std::vector<hoi4::State>& states,
    for (int vic3_country_number: country_rankings.GetScoredCountries() | std::views::values)
    {
       std::optional<int> possible_capital_state_number =
-          GetCapitalStateNumber(vic3_country_number, country_mapper, countries, states.size());
+          GetCapitalStateNumber(vic3_country_number, country_mapper, countries, static_cast<int>(states.size()));
       if (!possible_capital_state_number)
       {
          continue;
@@ -275,7 +275,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    Log(LogLevel::Info) << "\tConverting countries";
    ProgressManager::AddProgress(10);
 
-   std::map<int64_t, hoi4::Character> characters;
+   std::map<int, hoi4::Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
    std::map<std::string, hoi4::Country> countries = ConvertCountries(source_world,
        world_mapper,

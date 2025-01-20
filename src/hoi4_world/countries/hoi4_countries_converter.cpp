@@ -63,7 +63,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
     const mappers::WorldMapper& world_mapper,
     const commonItems::LocalizationDatabase& source_localizations,
     const States& states,
-    std::map<int64_t, Character>& characters,
+    std::map<int, Character>& characters,
     std::map<std::string, mappers::CultureQueue>& culture_queues,
     bool debug)
 {

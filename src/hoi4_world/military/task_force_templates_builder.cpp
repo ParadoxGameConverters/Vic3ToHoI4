@@ -16,10 +16,10 @@ std::vector<hoi4::TaskForceTemplate> hoi4::ImportTaskForceTemplates(const std::f
 
    commonItems::parser cost_parser;
    cost_parser.registerRegex(commonItems::catchallRegex, [&costs](const std::string& key, std::istream& input_stream) {
-      auto value = commonItems::getDouble(input_stream);
+      const auto value = static_cast<float>(commonItems::getDouble(input_stream));
       // Disallow tiny costs to avoid spamming conversion
       // with ships and infinite ship-creation loops.
-      if (value < 0.01)
+      if (value < 0.01F)
       {
          return;
       }

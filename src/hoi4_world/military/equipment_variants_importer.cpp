@@ -43,7 +43,7 @@ std::vector<hoi4::EquipmentVariant> hoi4::ImportEquipmentVariants(const std::fil
    commonItems::parser file_parser;
    file_parser.registerRegex(commonItems::catchallRegex,
        [&equipment_variants, &required_techs, &blocking_techs, &eq_name, &eq_type, &text_items, &variant_parser](
-           const std::string& unused,
+           [[maybe_unused]] const std::string& unused,
            std::istream& input_stream) {
           required_techs.clear();
           blocking_techs.clear();

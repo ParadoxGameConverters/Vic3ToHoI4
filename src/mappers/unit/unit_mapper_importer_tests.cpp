@@ -17,7 +17,7 @@ TEST(MappersUnitUnitMapperImporterTests, RulesCanBeImported)
    const auto battalions =
        unit_mapper.MakeBattalions({"pm_trench_infantry", "pm_cavalry_scouts", "some_other_thing"}, 1);
    EXPECT_THAT(battalions,
-       testing::UnorderedElementsAre(hoi4::Battalion("infantry", 50, 0.25), hoi4::Battalion("cavalry", 50, 0.2)));
+       testing::UnorderedElementsAre(hoi4::Battalion("infantry", 50, 0.25F), hoi4::Battalion("cavalry", 50, 0.2F)));
 }
 
 }  // namespace mappers

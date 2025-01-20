@@ -45,47 +45,47 @@ TEST(MappersInfrastructureInfrastructureMapperTests, FudgeFactorIsReadable)
 TEST(MappersInfrastructureInfrastructureMapperTests, ConvertedInfrastructureIsReadable)
 {
    InfrastructureMapper infrastructure_mapper(0.5F, 0.5F);
-   static_cast<void>(infrastructure_mapper.Map(2));  // maps to (0.5*2)+0.5 = 2 additional infra
-   static_cast<void>(infrastructure_mapper.Map(8));  // maps to 4 (max) additional infra
+   static_cast<void>(infrastructure_mapper.Map(2.0F));  // maps to (0.5*2)+0.5 = 2 additional infra
+   static_cast<void>(infrastructure_mapper.Map(8.0F));  // maps to 4 (max) additional infra
    EXPECT_EQ(infrastructure_mapper.GetConvertedInfrastructure(), 6.0F / 2.0F);
 }
 
 TEST(MappersInfrastructureInfrastructureMapperTests, Default1Infrastructure)
 {
    InfrastructureMapper infrastructure_mapper(0, 0);
-   EXPECT_EQ(infrastructure_mapper.Map(100), 1);
+   EXPECT_EQ(infrastructure_mapper.Map(100.0F), 1);
 }
 
 TEST(MappersInfrastructureInfrastructureMapperTests, Minimum1Infrastructure)
 {
    InfrastructureMapper infrastructure_mapper(1, 0);
-   EXPECT_EQ(infrastructure_mapper.Map(0), 1);
+   EXPECT_EQ(infrastructure_mapper.Map(0.0F), 1);
 }
 
 TEST(MappersInfrastructureInfrastructureMapperTests, Maximum5Infrastructure)
 {
    InfrastructureMapper infrastructure_mapper(1, 0);
-   EXPECT_EQ(infrastructure_mapper.Map(1000), 5);
+   EXPECT_EQ(infrastructure_mapper.Map(1000.0F), 5);
 }
 
 TEST(MappersInfrastructureInfrastructureMapperTests, RoundingWorks)
 {
    InfrastructureMapper infrastructure_mapper(1, 0);
-   EXPECT_EQ(infrastructure_mapper.Map(0.5), 2);
-   EXPECT_EQ(infrastructure_mapper.Map(0.49), 1);
+   EXPECT_EQ(infrastructure_mapper.Map(0.5F), 2);
+   EXPECT_EQ(infrastructure_mapper.Map(0.49F), 1);
 }
 
 TEST(MappersInfrastructureInfrastructureMapperTests, FudgeFactorWorksPositive)
 {
    InfrastructureMapper infrastructure_mapper(1, 0.5F);
    EXPECT_EQ(infrastructure_mapper.Map(0.4F), 2);
-   EXPECT_EQ(infrastructure_mapper.Map(5), 5);
+   EXPECT_EQ(infrastructure_mapper.Map(5.0F), 5);
 }
 
 TEST(MappersInfrastructureInfrastructureMapperTests, FudgeFactorWorksNegative)
 {
    InfrastructureMapper infrastructure_mapper(1, -0.5F);
-   EXPECT_EQ(infrastructure_mapper.Map(0), 1);
+   EXPECT_EQ(infrastructure_mapper.Map(0.0F), 1);
    EXPECT_EQ(infrastructure_mapper.Map(2.9F), 3);
 }
 

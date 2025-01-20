@@ -220,7 +220,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
    int location = default_location;
    for (const auto& [ut, str]: required)
    {
-      float needed = str;
+      float needed = static_cast<float>(str);
       for (auto& battalion: battalions)
       {
          if (battalion.GetType() != ut)
@@ -896,7 +896,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        culture_queues);
    if (monarch_id.has_value())
    {
-      const auto& monarch_itr = characters.find(*monarch_id);
+      const auto& monarch_itr = characters.find(static_cast<int>(*monarch_id));
       if (monarch_itr != characters.end())
       {
          ideas.insert(GetMonarchIdeaName(*tag, monarch_itr->second));

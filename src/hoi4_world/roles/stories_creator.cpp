@@ -73,12 +73,12 @@ std::optional<std::vector<std::pair<Tag, CombinationName>>> SortCombinations(
     const std::map<std::string, hoi4::Role>& roles)
 {
    std::ranges::sort(combinations, [roles](const auto& a, const auto& b) {
-      int a_score = 0;
+      float a_score = 0.0F;
       if (const auto role = roles.find(a.second); role != roles.end())
       {
          a_score = role->second.GetScore();
       }
-      int b_score = 0;
+      float b_score = 0.0F;
       if (const auto role = roles.find(b.second); role != roles.end())
       {
          b_score = role->second.GetScore();

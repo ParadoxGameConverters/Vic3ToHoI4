@@ -24,10 +24,10 @@ mappers::ResourceMapper mappers::ImportResourceMapper(const std::filesystem::pat
           base_parser.parseStream(input_stream);
        });
    score_parser.registerKeyword("bonus", [&current](std::istream& input_stream) {
-      current.bonus = commonItems::getDouble(input_stream);
+      current.bonus = static_cast<float>(commonItems::getDouble(input_stream));
    });
    score_parser.registerKeyword("total", [&current](std::istream& input_stream) {
-      current.total = commonItems::getDouble(input_stream);
+      current.total = static_cast<float>(commonItems::getDouble(input_stream));
    });
    score_parser.registerKeyword("bonus_building", [&current](std::istream& input_stream) {
       current.bonus_buildings.emplace(commonItems::getString(input_stream));

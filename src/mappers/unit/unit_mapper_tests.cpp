@@ -27,7 +27,7 @@ TEST(MappersUnitUnitMapperTests, BattalionsAreMade)
    };
    const UnitMapper unit_mapper(templates);
    EXPECT_THAT(unit_mapper.MakeBattalions({"trench_infantry", "cavalry_scouts", "field_hospitals"}, 2),
-       testing::UnorderedElementsAre(hoi4::Battalion("infantry", 60, 0.50), hoi4::Battalion("cavalry", 60, 0.40)));
+       testing::UnorderedElementsAre(hoi4::Battalion("infantry", 60, 0.50F), hoi4::Battalion("cavalry", 60, 0.40F)));
 }
 
 

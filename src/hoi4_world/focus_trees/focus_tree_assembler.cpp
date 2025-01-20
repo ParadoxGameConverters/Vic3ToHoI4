@@ -159,7 +159,7 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
    }
 
    // make final updates to the focuses - positions, fixes to prerequisites, and replace $TAG$ with the actual tag
-   int position = tree.shared_focuses.size() * 10;
+   int position = static_cast<int>(tree.shared_focuses.size()) * 10;
    for (Focus& focus: tree.focuses)
    {
       if (focus.tree_starter)
