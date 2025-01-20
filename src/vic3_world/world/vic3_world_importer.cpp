@@ -16,6 +16,7 @@
 #include <numeric>
 #include <ranges>
 #include <sstream>
+#include <string>
 
 #include "src/support/date_fmt.h"
 #include "src/support/progress_manager.h"

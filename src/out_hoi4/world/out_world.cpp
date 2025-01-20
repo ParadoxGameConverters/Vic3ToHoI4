@@ -2,6 +2,7 @@
 
 #include <external/fmt/include/fmt/format.h>
 
+#include <cctype>
 #include <fstream>
 #include <ranges>
 

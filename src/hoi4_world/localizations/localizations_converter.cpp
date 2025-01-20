@@ -5,6 +5,7 @@
 #include <external/commonItems/Log.h>
 #include <external/fmt/include/fmt/format.h>
 
+#include <cctype>
 #include <ranges>
 
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
