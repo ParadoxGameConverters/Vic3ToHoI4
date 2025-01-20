@@ -49,6 +49,7 @@ std::map<int, date> vic3::ImportElections(std::istream& input_stream)
           {
              LOG(LogLevel::Warning)
                  << "Election without a country. Please report to the converters team and upload your save.";
+             return;
           }
 
           ++democracies;
