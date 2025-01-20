@@ -110,16 +110,16 @@ void IsMappingInWrongRegion(std::string_view current_region,
 void CheckAllHoi4ProvincesMapped(const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_map,
     const commonItems::ModFilesystem& filesystem)
 {
-   const auto definition_location = filesystem.GetActualFileLocation("/map/definition.csv");
+   const auto definition_location = filesystem.GetActualFileLocation("map/definition.csv");
    if (!definition_location.has_value())
    {
-      throw std::runtime_error("Could not find /map/definition.csv");
+      throw std::runtime_error("Could not find map/definition.csv");
    }
 
    std::ifstream definitions(*definition_location);
    if (!definitions.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not open {}", *definition_location));
+      throw std::runtime_error(fmt::format("Could not open {}", definition_location->string()));
    }
 
    while (true)
@@ -197,7 +197,7 @@ mappers::ProvinceMapper mappers::ProvinceMapperImporter::ImportProvinceMappings(
    vic3_to_hoi4_province_map_.clear();
    hoi4_to_vic3_province_map_.clear();
 
-   version_parser_.parseFile("configurables/province_mappings.txt");
+   version_parser_.parseFile(std::filesystem::path("configurables/province_mappings.txt"));
 
    return ProvinceMapper(vic3_to_hoi4_province_map_, hoi4_to_vic3_province_map_);
 }

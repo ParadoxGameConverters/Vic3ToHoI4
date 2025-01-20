@@ -14,7 +14,7 @@ hoi4::StrategicRegions hoi4::ImportStrategicRegions(const commonItems::ModFilesy
    std::map<int, StrategicRegion> strategic_regions;
    std::map<int, int> province_to_strategic_region_map;
 
-   for (const auto& filename: hoi4_mod_filesystem.GetAllFilesInFolder("/map/strategicregions/"))
+   for (const auto& filename: hoi4_mod_filesystem.GetAllFilesInFolder("map/strategicregions/"))
    {
       auto new_region = strategic_region_importer.ImportStrategicRegion(filename);
       const auto id = new_region.GetID();

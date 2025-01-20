@@ -9,11 +9,16 @@
 
 
 
-void out::OutputStrategicRegions(std::string_view output_name, const hoi4::StrategicRegions& strategic_regions)
+using std::filesystem::path;
+
+
+
+void out::OutputStrategicRegions(const path& output_name, const hoi4::StrategicRegions& strategic_regions)
 {
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/map/strategicregions", output_name)))
+   if (const path strategic_path = "output" / output_name / "map/strategicregions";
+       !commonItems::DoesFolderExist(strategic_path) && !create_directories(strategic_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/map/strategicregions", output_name));
+      throw std::runtime_error(fmt::format("Could not create output/{}/map/strategicregions", output_name.string()));
    }
    for (const auto& strategic_region: strategic_regions.GetStrategicRegions() | std::views::values)
    {

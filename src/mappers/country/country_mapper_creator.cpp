@@ -11,13 +11,17 @@
 
 
 
+using std::filesystem::path;
+
+
+
 namespace
 {
 
 const std::set<std::string> kDisallowedTags{"CON", "PRN", "AUX", "NUL"};
 
 
-std::map<std::string, std::string> ImportMappingRules(std::string_view country_mappings_file)
+std::map<std::string, std::string> ImportMappingRules(const path& country_mappings_file)
 {
    std::map<std::string, std::string> country_mapping_rules;  // vic3 tag -> hoi4 tag
 
@@ -61,7 +65,7 @@ bool IsDynamicTag(std::string_view tag)
 }  // namespace
 
 
-mappers::CountryMappingCreator::CountryMappingCreator(std::string_view country_mappings_file)
+mappers::CountryMappingCreator::CountryMappingCreator(const path& country_mappings_file)
 {
    country_mapping_rules_ = ImportMappingRules(country_mappings_file);
 

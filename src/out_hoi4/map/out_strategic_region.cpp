@@ -6,14 +6,18 @@
 
 
 
-void out::OutputStrategicRegion(std::string_view output_name, const hoi4::StrategicRegion& strategic_region)
+using std::filesystem::path;
+
+
+
+void out::OutputStrategicRegion(const path& output_name, const hoi4::StrategicRegion& strategic_region)
 {
-   const auto strategic_region_file_name =
-       fmt::format("output/{}/map/strategicregions/{}", output_name, strategic_region.GetFilename());
+   const path strategic_region_file_name =
+       "output" / output_name / "map/strategicregions" / strategic_region.GetFilename();
    std::ofstream strategic_region_file(strategic_region_file_name);
    if (!strategic_region_file.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create {}", strategic_region_file_name));
+      throw std::runtime_error(fmt::format("Could not create {}", strategic_region_file_name.string()));
    }
 
    strategic_region_file << "\n";

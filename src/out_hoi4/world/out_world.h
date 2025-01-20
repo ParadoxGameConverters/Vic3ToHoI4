@@ -3,6 +3,7 @@
 
 
 
+#include <filesystem>
 #include <string_view>
 
 #include "src/configuration/configuration.h"
@@ -13,7 +14,9 @@
 namespace out
 {
 
-void OutputWorld(std::string_view output_name, const hoi4::World& world, configuration::UseStories use_stories);
+void OutputWorld(const std::filesystem::path& output_name,
+    const hoi4::World& world,
+    configuration::UseStories use_stories);
 
 }  // namespace out
 

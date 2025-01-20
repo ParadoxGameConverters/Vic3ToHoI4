@@ -8,7 +8,7 @@
 
 
 
-std::vector<hoi4::TaskForceTemplate> hoi4::ImportTaskForceTemplates(std::string_view templates_filename)
+std::vector<hoi4::TaskForceTemplate> hoi4::ImportTaskForceTemplates(const std::filesystem::path& templates_filename)
 {
    std::vector<TaskForceTemplate> taskforce_templates;
    std::map<std::string, float> costs;

@@ -44,13 +44,18 @@
 #include "src/vic3_world/wars/wars_importer.h"
 
 
+
+using std::filesystem::path;
+
+
+
 namespace
 {
 
-std::string ReadSave(std::string_view save_filename)
+std::string ReadSave(const path& save_filename)
 {
-   std::ifstream save_file(std::filesystem::u8path(save_filename), std::ios::in | std::ios::binary);
-   const auto save_size = static_cast<std::streamsize>(std::filesystem::file_size(save_filename));
+   std::ifstream save_file(save_filename, std::ios::in | std::ios::binary);
+   const auto save_size = static_cast<std::basic_string<char>::size_type>(file_size(save_filename));
    std::string save_string(save_size, '\0');
    save_file.read(save_string.data(), save_size);
 
@@ -376,12 +381,11 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
 
    Log(LogLevel::Info) << "-> Loading Vic3 mods.";
    commonItems::ModLoader mod_loader;
-   mod_loader.loadMods(std::vector<std::string>{configuration.vic3_mod_path, configuration.vic3_steam_mod_path},
+   mod_loader.loadMods(std::vector<path>{configuration.vic3_mod_path, configuration.vic3_steam_mod_path},
        GetModsFromSave(mod_names));
 
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
-   commonItems::ModFilesystem mod_filesystem(fmt::format("{}/game", configuration.vic3_directory),
-       mod_loader.getMods());
+   commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory / "game", mod_loader.getMods());
    StateRegions state_regions = ImportStateRegions(mod_filesystem);
    Log(LogLevel::Info) << "->   Loading province definitions.";
    world_options.province_definitions = LoadProvinceDefinitions(state_regions, mod_filesystem);
@@ -398,7 +402,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
            "simp_chinese",
            "spanish",
            "turkish"});
-   localizations.ScrapeLocalizations(mod_filesystem, "localization");
+   localizations.ScrapeLocalizations(mod_filesystem, path("localization"));
    world_options.localizations = localizations;
    world_options.culture_definitions = ImportCultureDefinitions(mod_filesystem);
    ProgressManager::AddProgress(5);

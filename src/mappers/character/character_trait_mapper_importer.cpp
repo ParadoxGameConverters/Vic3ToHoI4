@@ -4,7 +4,7 @@
 #include <external/commonItems/Parser.h>
 #include <external/commonItems/ParserHelpers.h>
 
-mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(std::string_view mapping_file)
+mappers::CharacterTraitMapper mappers::ImportCharacterTraitMapper(const std::filesystem::path& mapping_file)
 {
    // Outputs
    AdmiralTraitMap admiral_trait_map;

@@ -6,7 +6,7 @@
 
 
 
-hoi4::ResourcesMap hoi4::ImportResources(std::string_view resources_file)
+hoi4::ResourcesMap hoi4::ImportResources(const std::filesystem::path& resources_file)
 {
    ResourcesMap resources_map;
    std::optional<Province> province;

@@ -8,12 +8,16 @@
 
 
 
+using std::filesystem::path;
+
+
+
 namespace hoi4
 {
 
 TEST(Hoi4worldStatesDefaultstatesimporterTests, NoStateFilesMeansNoStates)
 {
-   const commonItems::ModFilesystem filesystem("test_files/hoi4_world/NoStateFilesMeansNoStates", {});
+   const commonItems::ModFilesystem filesystem(path("test_files/hoi4_world/NoStateFilesMeansNoStates"), {});
    const auto default_states = ImportDefaultStates(filesystem);
 
    EXPECT_TRUE(default_states.empty());
@@ -22,7 +26,7 @@ TEST(Hoi4worldStatesDefaultstatesimporterTests, NoStateFilesMeansNoStates)
 
 TEST(Hoi4worldStatesDefaultstatesimporterTests, DefaultStatesCanBeImported)
 {
-   const commonItems::ModFilesystem filesystem("test_files/hoi4_world/DefaultStatesCanBeImported", {});
+   const commonItems::ModFilesystem filesystem(path("test_files/hoi4_world/DefaultStatesCanBeImported"), {});
    const auto default_states = ImportDefaultStates(filesystem);
 
    EXPECT_THAT(default_states,

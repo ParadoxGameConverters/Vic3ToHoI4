@@ -71,7 +71,7 @@ std::map<std::string, vic3::CultureDefinition> vic3::ImportCultureDefinitions(
               vic3::CultureDefinition{culture_name, name_list, traits, ethnicities});
        });
 
-   for (const auto& definition_filename: mod_filesystem.GetAllFilesInFolder("/common/cultures/"))
+   for (const auto& definition_filename: mod_filesystem.GetAllFilesInFolder("common/cultures/"))
    {
       culture_definitions_parser.parseFile(definition_filename);
    }

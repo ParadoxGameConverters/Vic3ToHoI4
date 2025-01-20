@@ -14,6 +14,10 @@
 
 
 
+using std::filesystem::path;
+
+
+
 namespace
 {
 
@@ -22,8 +26,11 @@ std::map<std::string, int> DetermineProvinceOrdering(const commonItems::ModFiles
    int width = 0;
    int height = 0;
    int depth = 0;
-   unsigned char* data =
-       stbi_load(filesystem.GetActualFileLocation("map_data/provinces.png")->c_str(), &width, &height, &depth, 0);
+   unsigned char* data = stbi_load(filesystem.GetActualFileLocation("map_data/provinces.png")->string().c_str(),
+       &width,
+       &height,
+       &depth,
+       0);
    if (data == nullptr)
    {
       throw std::runtime_error("Could not load map_data/provinces.png");
@@ -119,15 +126,15 @@ vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions(const StateRegions& stat
        });
    file_parser.IgnoreAndLogUnregisteredItems();
 
-   const std::set<std::string> files = filesystem.GetAllFilesInFolder("common/strategic_regions");
-   std::vector<std::string> sorted_files(files.begin(), files.end());
-   std::ranges::sort(sorted_files, [](const std::string& a, const std::string& b) {
-      return std::filesystem::path(a).filename() < std::filesystem::path(b).filename();
+   const std::set<path> files = filesystem.GetAllFilesInFolder("common/strategic_regions");
+   std::vector<path> sorted_files(files.begin(), files.end());
+   std::ranges::sort(sorted_files, [](const path& a, const path& b) {
+      return a.filename() < b.filename();
    });
 
-   for (const std::string& strategic_region: sorted_files)
+   for (const path& strategic_region: sorted_files)
    {
-      if (std::filesystem::path(strategic_region).extension() != ".txt")
+      if (strategic_region.extension() != ".txt")
       {
          continue;
       }

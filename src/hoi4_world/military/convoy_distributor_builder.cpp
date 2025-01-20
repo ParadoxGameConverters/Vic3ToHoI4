@@ -7,7 +7,7 @@
 namespace hoi4
 {
 
-ConvoyDistributor BuildConvoyDistributor(std::string_view filename)
+ConvoyDistributor BuildConvoyDistributor(const std::filesystem::path& filename)
 {
    int hoi4_convoys;
    std::map<std::string, float> weights;

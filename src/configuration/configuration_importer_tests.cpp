@@ -87,13 +87,13 @@ TEST(ConfigurationTest, ItemsAreLoggedWhenImported)
    const auto _ =
        ImportConfiguration("test_files/configuration/test_configuration.txt", commonItems::ConverterVersion());
 
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 install path is test_files/test_folders/vic3_folder)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 Steam mod path is vic3_steam_mod_directory)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 mod path is vic3_mod_directory)"));
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 install path is "test_files/test_folders/vic3_folder")"));
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 Steam mod path is "vic3_steam_mod_directory")"));
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Victoria 3 mod path is "vic3_mod_directory")"));
    EXPECT_THAT(log.str(),
-       testing::HasSubstr(R"(Hearts of Iron 4 install path is test_files/test_folders/hoi4_folder)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Hearts of Iron 4 mod path is hoi4_mod_directory)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Save game is test_save.v3)"));
+       testing::HasSubstr(R"(Hearts of Iron 4 install path is "test_files/test_folders/hoi4_folder")"));
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Hearts of Iron 4 mod path is "hoi4_mod_directory")"));
+   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Save game is "test_save.v3")"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Debug is active)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Using output name test_output_name)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Dynamic resources is not active)"));

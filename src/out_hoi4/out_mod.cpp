@@ -10,68 +10,90 @@
 
 
 
+using std::filesystem::copy_options;
+using std::filesystem::create_directories;
+using std::filesystem::path;
+
+
+
 namespace out
 {
 
 namespace
 {
 
-void CreateOutputFolder(const std::string_view output_name)
+void CreateOutputFolder(const path& output_name)
 {
    Log(LogLevel::Info) << "\tCopying blank mod";
-   if (!commonItems::TryCreateFolder("output"))
+   if (!commonItems::DoesFolderExist(path("output")))
    {
-      throw std::runtime_error("Could not create output folder");
+      if (!create_directories("output"))
+      {
+         throw std::runtime_error("Could not create output folder");
+      }
    }
-   if (!commonItems::CopyFolder("blank_mod", fmt::format("output/{}", output_name)))
+   try
+   {
+      copy(path("blank_mod"), "output" / output_name, copy_options::recursive);
+   }
+   catch (...)
    {
       throw std::runtime_error("Could not copy blank_mod");
    }
 
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/common", output_name)))
+   if (const path common_path = "output" / output_name / "common";
+       !commonItems::DoesFolderExist(common_path) && !create_directories(common_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/common", output_name));
+      throw std::runtime_error(fmt::format("Could not create {}", common_path.string()));
    }
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/common/countries", output_name)))
+   if (const path countries_path = "output" / output_name / "common/countries";
+       !commonItems::DoesFolderExist(countries_path) && !create_directories(countries_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/common/countries", output_name));
+      throw std::runtime_error(fmt::format("Could not create {}", countries_path.string()));
    }
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/common/country_tags", output_name)))
+   if (const path country_tags_path = "output" / output_name / "common/country_tags";
+       !commonItems::DoesFolderExist(country_tags_path) && !create_directories(country_tags_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/common/country_tags", output_name));
+      throw std::runtime_error(fmt::format("Could not create {}", country_tags_path.string()));
    }
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/history", output_name)))
+   if (const path history_path = "output" / output_name / "history";
+       !commonItems::DoesFolderExist(history_path) && !create_directories(history_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/history", output_name));
+      throw std::runtime_error(fmt::format("Could not create {}", history_path.string()));
    }
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/history/countries", output_name)))
+   if (const path country_history_path = "output" / output_name / "history/countries";
+       !commonItems::DoesFolderExist(country_history_path) && !create_directories(country_history_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/history/countries", output_name));
+      throw std::runtime_error(fmt::format("Could not create {}", country_history_path.string()));
    }
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/history/states", output_name)))
+   if (const path state_history_path = "output" / output_name / "history/states";
+       !commonItems::DoesFolderExist(state_history_path) && !create_directories(state_history_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/history/states", output_name));
+      throw std::runtime_error(fmt::format("Could not create {}", state_history_path.string()));
    }
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/history/units", output_name)))
+   if (const path unit_history_path = "output" / output_name / "history/units";
+       !commonItems::DoesFolderExist(unit_history_path) && !create_directories(unit_history_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/history/units", output_name));
+      throw std::runtime_error(fmt::format("Could not create {}", unit_history_path.string()));
    }
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/map", output_name)))
+   if (const path map_path = "output" / output_name / "map";
+       !commonItems::DoesFolderExist(map_path) && !create_directories(map_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/map", output_name));
+      throw std::runtime_error(fmt::format("Could not create {}", map_path.string()));
    }
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/map/strategicregions", output_name)))
+   if (const path strategicregions_path = "output" / output_name / "map/strategicregions";
+       !commonItems::DoesFolderExist(strategicregions_path) && !create_directories(strategicregions_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/map/strategicregions", output_name));
+      throw std::runtime_error(fmt::format("Could not create {}", strategicregions_path.string()));
    }
 }
 
 
-void CreateModFiles(const std::string_view output_name, const GameVersion& game_version)
+void CreateModFiles(std::string_view output_name, const GameVersion& game_version)
 {
    Log(LogLevel::Info) << "\tCreating .mod files";
 
-   std::ofstream mod_file(std::string("output/").append(output_name).append(".mod"));
+   std::ofstream mod_file(path("output") / fmt::format("{}.mod", output_name));
    if (!mod_file.is_open())
    {
       throw std::runtime_error("Could not create .mod file");
@@ -97,7 +119,7 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
        game_version.toWildCard());
    mod_file.close();
 
-   std::ofstream descriptor_file(std::string("output/").append(output_name).append("/descriptor.mod"));
+   std::ofstream descriptor_file("output" / path(output_name) / "descriptor.mod");
    if (!descriptor_file.is_open())
    {
       throw std::runtime_error("Could not create descriptor.mod");
@@ -123,23 +145,22 @@ void CreateModFiles(const std::string_view output_name, const GameVersion& game_
 }  // namespace
 
 
-void ClearOutputFolder(std::string_view output_name)
+void ClearOutputFolder(const path& output_name)
 {
-   const std::string output_folder = std::string("output/").append(output_name);
+   const path output_folder = "output" / output_name;
    if (commonItems::DoesFolderExist(output_folder))
    {
-      Log(LogLevel::Info) << "Removing pre-existing copy of " << output_name;
-   }
-
-   if (!commonItems::DeleteFolder(output_folder))
-   {
-      throw std::runtime_error("Could not remove pre-existing output folder " + output_folder +
-                               ". Please delete folder and try converting again.");
+      Log(LogLevel::Info) << "Removing pre-existing copy of " << output_name.string();
+      if (remove_all(output_folder) == static_cast<std::uintmax_t>(-1))
+      {
+         throw std::runtime_error("Could not remove pre-existing output folder " + output_folder.string() +
+                                  ". Please delete folder and try converting again.");
+      }
    }
 }
 
 
-void OutputMod(const std::string_view output_name, const GameVersion& game_version)
+void OutputMod(std::string_view output_name, const GameVersion& game_version)
 {
    Log(LogLevel::Progress) << "80%";
    Log(LogLevel::Info) << "Outputting mod";

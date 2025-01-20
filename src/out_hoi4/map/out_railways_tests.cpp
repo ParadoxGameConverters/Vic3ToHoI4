@@ -12,35 +12,38 @@
 
 
 
+using std::filesystem::create_directories;
+using std::filesystem::path;
+using std::filesystem::remove_all;
+
+
+
 namespace out
 {
 
 
 TEST(Outhoi4MapOutrailwaysTests, ExceptionForBadPath)
 {
+   remove_all("output/ExceptionForBadPath");
    EXPECT_THROW(OutputRailways("ExceptionForBadPath", {}), std::runtime_error);
 }
 
 
 TEST(Outhoi4MapOutrailwaysTests, FilesAreCreated)
 {
-   commonItems::DeleteFolder("output/Outhoi4MapOutrailwaysTestsFilesAreCreated");
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/Outhoi4MapOutrailwaysTestsFilesAreCreated");
-   commonItems::TryCreateFolder("output/Outhoi4MapOutrailwaysTestsFilesAreCreated/map");
+   remove_all("output/Outhoi4MapOutrailwaysTestsFilesAreCreated");
+   create_directories("output/Outhoi4MapOutrailwaysTestsFilesAreCreated/map");
 
    OutputRailways("Outhoi4MapOutrailwaysTestsFilesAreCreated", {});
 
-   EXPECT_TRUE(commonItems::DoesFileExist("output/Outhoi4MapOutrailwaysTestsFilesAreCreated/map/railways.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/Outhoi4MapOutrailwaysTestsFilesAreCreated/map/railways.txt")));
 }
 
 
 TEST(Outhoi4MapOutrailwaysTests, RailwaysAreOutput)
 {
-   commonItems::DeleteFolder("output/Outhoi4MapBuildingsTestsRailwaysAreOutput");
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/Outhoi4MapBuildingsTestsRailwaysAreOutput");
-   commonItems::TryCreateFolder("output/Outhoi4MapBuildingsTestsRailwaysAreOutput/map");
+   remove_all("output/Outhoi4MapBuildingsTestsRailwaysAreOutput");
+   create_directories("output/Outhoi4MapBuildingsTestsRailwaysAreOutput/map");
 
    OutputRailways("Outhoi4MapBuildingsTestsRailwaysAreOutput",
        {
@@ -49,8 +52,9 @@ TEST(Outhoi4MapOutrailwaysTests, RailwaysAreOutput)
            hoi4::Railway{0, {3, 9, 27}},
        });
 
-   ASSERT_TRUE(commonItems::DoesFileExist("output/Outhoi4MapBuildingsTestsRailwaysAreOutput/map/railways.txt"));
-   std::ifstream buildings_file("output/Outhoi4MapBuildingsTestsRailwaysAreOutput/map/railways.txt");
+   const path railways_path("output/Outhoi4MapBuildingsTestsRailwaysAreOutput/map/railways.txt");
+   ASSERT_TRUE(commonItems::DoesFileExist(railways_path));
+   std::ifstream buildings_file(railways_path);
    ASSERT_TRUE(buildings_file.is_open());
    std::stringstream buildings_file_stream;
    std::copy(std::istreambuf_iterator<char>(buildings_file),

@@ -36,7 +36,7 @@ std::map<std::string, commonItems::Color> vic3::ImportCountryColorDefinitions(
        });
    country_definition_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-   for (const auto& definition_filename: mod_filesystem.GetAllFilesInFolder("/common/country_definitions/"))
+   for (const auto& definition_filename: mod_filesystem.GetAllFilesInFolder("common/country_definitions/"))
    {
       country_definitions_parser.parseFile(definition_filename);
    }

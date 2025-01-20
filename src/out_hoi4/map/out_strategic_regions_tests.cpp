@@ -12,35 +12,32 @@
 
 
 
+using std::filesystem::create_directories;
+using std::filesystem::path;
+using std::filesystem::remove_all;
+
+
+
 namespace out
 {
 
-
-TEST(Outhoi4MapStrategicregionsTests, ExceptionForBadPath)
-{
-   EXPECT_THROW(OutputStrategicRegions("ExceptionForBadPath", hoi4::StrategicRegions()), std::runtime_error);
-}
-
-
 TEST(Outhoi4MapStrategicregionsTests, FolderIsCreated)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/FolderIsCreated");
-   commonItems::TryCreateFolder("output/FolderIsCreated/map");
+   remove_all("output/FolderIsCreated/map");
+   create_directories("output/FolderIsCreated/map");
 
    const hoi4::StrategicRegions strategic_regions;
 
    OutputStrategicRegions("FolderIsCreated", strategic_regions);
 
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/FolderIsCreated/map/strategicregions"));
+   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/FolderIsCreated/map/strategicregions")));
 }
 
 
 TEST(Outhoi4MapStrategicregionsTests, StrategicRegionsAreOutput)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/StrategicRegionsAreOutput");
-   commonItems::TryCreateFolder("output/StrategicRegionsAreOutput/map");
+   remove_all("output/StrategicRegionsAreOutput/map");
+   create_directories("output/StrategicRegionsAreOutput/map");
 
    const hoi4::StrategicRegions strategic_regions(
        {.strategic_regions = {{1, hoi4::StrategicRegion({.filename = "strategic_region_one.txt", .id = 1})},
@@ -48,10 +45,10 @@ TEST(Outhoi4MapStrategicregionsTests, StrategicRegionsAreOutput)
 
    OutputStrategicRegions("StrategicRegionsAreOutput", strategic_regions);
 
-   EXPECT_TRUE(
-       commonItems::DoesFileExist("output/StrategicRegionsAreOutput/map/strategicregions/strategic_region_one.txt"));
-   EXPECT_TRUE(
-       commonItems::DoesFileExist("output/StrategicRegionsAreOutput/map/strategicregions/strategic_region_two.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist(
+       path("output/StrategicRegionsAreOutput/map/strategicregions/strategic_region_one.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(
+       path("output/StrategicRegionsAreOutput/map/strategicregions/strategic_region_two.txt")));
 }
 
 }  // namespace out

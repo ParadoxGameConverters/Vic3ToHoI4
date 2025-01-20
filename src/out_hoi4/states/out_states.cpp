@@ -4,7 +4,7 @@
 
 
 
-void out::OutputStates(std::string_view output_name, const std::vector<hoi4::State>& states)
+void out::OutputStates(const std::filesystem::path& output_name, const std::vector<hoi4::State>& states)
 {
    for (const auto& state: states)
    {

@@ -7,12 +7,16 @@
 
 
 
+using std::filesystem::path;
+
+
+
 namespace vic3
 {
 
 TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
 {
-   const commonItems::ModFilesystem mod_filesystem("", {});
+   const commonItems::ModFilesystem mod_filesystem(path(""), {});
    const StateRegions state_regions = ImportStateRegions(mod_filesystem);
 
    EXPECT_TRUE(state_regions.name_to_region_map.empty());
@@ -22,7 +26,7 @@ TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
 
 TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/states/ItemsAreImported/game", {});
+   const commonItems::ModFilesystem mod_filesystem(path("test_files/vic3_world/states/ItemsAreImported/game"), {});
    const StateRegions state_regions = ImportStateRegions(mod_filesystem);
 
    EXPECT_THAT(state_regions.name_to_region_map,

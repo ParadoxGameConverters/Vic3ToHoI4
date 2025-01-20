@@ -10,7 +10,7 @@ int main()
    try
    {
       commonItems::ConverterVersion converterVersion;
-      converterVersion.loadVersion("../version.txt");
+      converterVersion.loadVersion(std::filesystem::path("../version.txt"));
       Log(LogLevel::Info) << converterVersion;
 
       const auto configuration = configuration::ImportConfiguration("configuration.txt", converterVersion);

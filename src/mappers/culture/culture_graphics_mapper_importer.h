@@ -3,6 +3,8 @@
 
 
 
+#include <filesystem>
+
 #include "src/mappers/culture/culture_graphics_mapper.h"
 
 
@@ -10,7 +12,7 @@
 namespace mappers
 {
 
-CultureGraphicsMapper ImportCultureGraphicsMapper(std::string_view mapping_file);
+CultureGraphicsMapper ImportCultureGraphicsMapper(const std::filesystem::path& mapping_file);
 
 }  // namespace mappers
 

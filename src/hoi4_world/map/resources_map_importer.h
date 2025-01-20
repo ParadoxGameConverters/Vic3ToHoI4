@@ -3,7 +3,7 @@
 
 
 
-#include <string_view>
+#include <filesystem>
 
 #include "src/hoi4_world/map/resources_map.h"
 
@@ -12,7 +12,7 @@
 namespace hoi4
 {
 
-ResourcesMap ImportResources(std::string_view resources_file);
+ResourcesMap ImportResources(const std::filesystem::path& resources_file);
 
 }  // namespace hoi4
 

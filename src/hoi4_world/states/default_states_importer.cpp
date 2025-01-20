@@ -68,7 +68,7 @@ std::map<int, hoi4::DefaultState> hoi4::ImportDefaultStates(const commonItems::M
 
    for (const auto& state_file: mod_filesystem.GetAllFilesInFolder("history/states"))
    {
-      std::string trimmed_path = trimPath(state_file);
+      std::string trimmed_path = state_file.filename().string();
       int num = std::stoi(trimmed_path.substr(0, trimmed_path.find_first_of('-')));
 
       options.impassable = false;

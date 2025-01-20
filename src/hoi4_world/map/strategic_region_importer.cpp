@@ -40,7 +40,7 @@ hoi4::StrategicRegionImporter::StrategicRegionImporter()
 }
 
 
-hoi4::StrategicRegion hoi4::StrategicRegionImporter::ImportStrategicRegion(std::string_view filename)
+hoi4::StrategicRegion hoi4::StrategicRegionImporter::ImportStrategicRegion(const std::filesystem::path& filename)
 {
    id_ = 0;
    name_.clear();
@@ -51,7 +51,7 @@ hoi4::StrategicRegion hoi4::StrategicRegionImporter::ImportStrategicRegion(std::
 
    state_region_parser_.parseFile(filename);
 
-   return StrategicRegion(StrategicRegionOptions{.filename = trimPath(std::string(filename)),
+   return StrategicRegion(StrategicRegionOptions{.filename = filename.filename(),
        .id = id_,
        .name = name_,
        .old_provinces = old_provinces_,

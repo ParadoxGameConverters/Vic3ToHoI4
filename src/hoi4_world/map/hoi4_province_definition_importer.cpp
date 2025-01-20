@@ -11,7 +11,7 @@
 maps::ProvinceDefinitions::storage_type hoi4::ImportProvinceDefinitions(
     const commonItems::ModFilesystem& mod_filesystem)
 {
-   const auto path = mod_filesystem.GetActualFileLocation("/map/definition.csv");
+   const auto path = mod_filesystem.GetActualFileLocation("map/definition.csv");
    if (!path)
    {
       throw std::runtime_error("Could not find /map/definition.csv");
@@ -20,7 +20,7 @@ maps::ProvinceDefinitions::storage_type hoi4::ImportProvinceDefinitions(
    std::ifstream definitions(*path);
    if (!definitions.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not open {}/map/definition.csv", *path));
+      throw std::runtime_error(fmt::format("Could not open {}/map/definition.csv", path->string()));
    }
 
    std::set<std::string> land_provinces;

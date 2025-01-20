@@ -3,6 +3,8 @@
 
 
 
+#include <filesystem>
+
 #include "src/mappers/ideology/ideology_mapper.h"
 
 
@@ -10,7 +12,7 @@
 namespace mappers
 {
 
-IdeologyMapper ImportIdeologyMapper(std::string_view mapping_file);
+IdeologyMapper ImportIdeologyMapper(const std::filesystem::path& mapping_file);
 
 }  // namespace mappers
 

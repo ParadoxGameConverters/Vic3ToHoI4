@@ -276,10 +276,10 @@ TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)
 
    EXPECT_THAT(log.str(),
        testing::HasSubstr(
-           "[INFO] \t\t->> Found potentially useful [Test Mod]: test_files/vic3_world/documents/mod/test_mod/"));
+           "[INFO] \t\t->> Found potentially useful [Test Mod]: test_files\\vic3_world\\documents\\mod\\test_mod"));
    EXPECT_THAT(log.str(),
        testing::HasSubstr("[INFO] \t\t->> Found potentially useful [Test Mod Two]: "
-                          "test_files/vic3_world/workshop/529340/test_mod_two/"));
+                          "test_files\\vic3_world\\workshop\\529340\\test_mod_two"));
 }
 
 TEST(Vic3worldWorldVic3worldimporter, PactsBecomeSubjectsAndOverlords)

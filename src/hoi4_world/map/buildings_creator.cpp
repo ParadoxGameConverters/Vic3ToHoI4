@@ -169,7 +169,7 @@ AllDefaultPositions ImportDefaultBuildings(const maps::MapData& map_data,
 {
    AllDefaultPositions all_default_positions;
 
-   const auto path = mod_filesystem.GetActualFileLocation("/map/buildings.txt");
+   const auto path = mod_filesystem.GetActualFileLocation("map/buildings.txt");
    if (!path)
    {
       throw std::runtime_error("Could not find /map/buildings.txt");
@@ -178,7 +178,7 @@ AllDefaultPositions ImportDefaultBuildings(const maps::MapData& map_data,
    std::ifstream buildings_file(*path);
    if (!buildings_file.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not open {}/map/buildings.txt", *path));
+      throw std::runtime_error(fmt::format("Could not open {}/map/buildings.txt", path->string()));
    }
 
    while (!buildings_file.eof())

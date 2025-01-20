@@ -12,7 +12,7 @@ namespace vic3
 
 TEST(Vic3worldIdeologiesIdeologiesimporterTests, IdeologiesAreImported)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/ideologies", {});
+   const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("test_files/vic3_world/ideologies"), {});
 
    const Ideologies ideologies = IdeologiesImporter{}.ImportIdeologies(mod_filesystem);
 

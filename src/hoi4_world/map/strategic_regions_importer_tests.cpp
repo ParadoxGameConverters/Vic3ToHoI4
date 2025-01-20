@@ -9,12 +9,16 @@
 
 
 
+using std::filesystem::path;
+
+
+
 namespace hoi4
 {
 
 TEST(Hoi4WorldMapStrategicRegionsImporter, DefaultsAreEmpty)
 {
-   const commonItems::ModFilesystem mod_filesystem("", {});
+   const commonItems::ModFilesystem mod_filesystem(path(""), {});
    const auto strategic_regions = ImportStrategicRegions(mod_filesystem);
 
    EXPECT_TRUE(strategic_regions.GetStrategicRegions().empty());
@@ -24,7 +28,7 @@ TEST(Hoi4WorldMapStrategicRegionsImporter, DefaultsAreEmpty)
 
 TEST(Hoi4WorldMapStrategicRegionsImporter, StrategicRegionsCanBeImported)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
+   const commonItems::ModFilesystem mod_filesystem(path("test_files/hoi4_world"), {});
    const auto strategic_regions = ImportStrategicRegions(mod_filesystem);
 
    EXPECT_THAT(strategic_regions.GetStrategicRegions(),

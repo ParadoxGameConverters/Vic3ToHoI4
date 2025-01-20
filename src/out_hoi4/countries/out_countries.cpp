@@ -11,16 +11,21 @@
 
 
 
-void out::OutputCountries(std::string_view output_name,
+using std::filesystem::copy_options;
+using std::filesystem::path;
+
+
+
+void out::OutputCountries(const path& output_name,
     const std::map<std::string, hoi4::Country>& countries,
     const std::map<int, hoi4::Character>& characters,
     configuration::UseStories use_stories)
 {
-   std::ofstream tags_file(fmt::format("output/{}/common/country_tags/00_countries.txt", output_name));
+   std::ofstream tags_file("output" / output_name / "common/country_tags/00_countries.txt");
    if (!tags_file.is_open())
    {
       throw std::runtime_error(
-          fmt::format("Could not open output/{}/common/country_tags/00_countries.txt", output_name));
+          fmt::format("Could not open output/{}/common/country_tags/00_countries.txt", output_name.string()));
    }
 
    for (const auto& [tag, country]: countries)
@@ -29,8 +34,11 @@ void out::OutputCountries(std::string_view output_name,
       OutputCommonCountriesFile(output_name, country);
       OutputCommonCharactersFile(output_name, country, characters);
       OutputCountryHistory(output_name, country, characters);
-      auto oob_file = fmt::format("output/{}/history/units/{}_1936.txt", output_name, tag);
-      commonItems::TryCopyFile("configurables/division_templates.txt", oob_file);
+      const path oob_file = "output" / output_name / fmt::format("history/units/{}_1936.txt", tag);
+      if (!copy_file("configurables/division_templates.txt", oob_file, copy_options::overwrite_existing))
+      {
+         throw std::runtime_error("Could not copy to " + oob_file.string());
+      }
       OutputCountryUnits(oob_file, country);
       OutputCountryNavy(output_name, country);
       OutputFocusTree(output_name, tag, country.GetFocusTree(), use_stories);

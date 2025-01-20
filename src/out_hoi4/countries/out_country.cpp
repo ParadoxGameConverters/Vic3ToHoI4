@@ -14,6 +14,10 @@
 
 
 
+using std::filesystem::path;
+
+
+
 namespace
 {
 
@@ -136,15 +140,15 @@ void OutputOverlord(std::ostream& output,
 }  // namespace
 
 
-void out::OutputCommonCountriesFile(std::string_view output_name, const hoi4::Country& country)
+void out::OutputCommonCountriesFile(const path& output_name, const hoi4::Country& country)
 {
    const std::string& tag = country.GetTag();
 
-   const auto common_country_file_name = fmt::format("output/{}/common/countries/{}.txt", output_name, tag);
+   const path common_country_file_name = "output" / output_name / fmt::format("common/countries/{}.txt", tag);
    std::ofstream common_country(common_country_file_name);
    if (!common_country.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create {}", common_country_file_name));
+      throw std::runtime_error(fmt::format("Could not create {}", common_country_file_name.string()));
    }
 
    common_country << "graphical_culture = western_european_gfx\n";
@@ -161,17 +165,17 @@ void out::OutputCommonCountryTag(const hoi4::Country& country, std::ofstream& ta
 }
 
 
-void out::OutputCommonCharactersFile(std::string_view output_name,
+void out::OutputCommonCharactersFile(const path& output_name,
     const hoi4::Country& country,
     const std::map<int, hoi4::Character>& characters)
 {
    const std::string& tag = country.GetTag();
 
-   const auto common_characters_file_name = fmt::format("output/{}/common/characters/{}.txt", output_name, tag);
+   const path common_characters_file_name = "output" / output_name / fmt::format("common/characters/{}.txt", tag);
    std::ofstream common_characters(common_characters_file_name);
    if (!common_characters.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create {}", common_characters_file_name));
+      throw std::runtime_error(fmt::format("Could not create {}", common_characters_file_name.string()));
    }
 
    common_characters << "characters = {\n";
@@ -183,17 +187,17 @@ void out::OutputCommonCharactersFile(std::string_view output_name,
 }
 
 
-void out::OutputCountryHistory(std::string_view output_name,
+void out::OutputCountryHistory(const path& output_name,
     const hoi4::Country& country,
     const std::map<int, hoi4::Character>& characters)
 {
    const std::string& tag = country.GetTag();
 
-   const auto country_history_file_name = fmt::format("output/{}/history/countries/{}.txt", output_name, tag);
+   const path country_history_file_name = "output" / output_name / fmt::format("history/countries/{}.txt", tag);
    std::ofstream country_history(country_history_file_name);
    if (!country_history.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create {}", country_history_file_name));
+      throw std::runtime_error(fmt::format("Could not create {}", country_history_file_name.string()));
    }
 
    if (const auto capital = country.GetCapitalState(); capital)
@@ -310,20 +314,20 @@ void outputNavy(std::ofstream& navy,
    legacy << "}\n";
 }
 
-void out::OutputCountryNavy(std::string_view output_name, const hoi4::Country& country)
+void out::OutputCountryNavy(const path& output_name, const hoi4::Country& country)
 {
    const std::string& tag = country.GetTag();
-   const auto naval_file_name = fmt::format("output/{}/history/units/{}_1936_Naval.txt", output_name, tag);
+   const path naval_file_name = "output" / output_name / fmt::format("history/units/{}_1936_Naval.txt", tag);
    std::ofstream navy(naval_file_name);
    if (!navy.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create {}", naval_file_name));
+      throw std::runtime_error(fmt::format("Could not create {}", naval_file_name.string()));
    }
-   const auto legacy_file_name = fmt::format("output/{}/history/units/{}_1936_Naval_Legacy.txt", output_name, tag);
+   const path legacy_file_name = "output" / output_name / fmt::format("history/units/{}_1936_Naval_Legacy.txt", tag);
    std::ofstream legacy(legacy_file_name);
    if (!legacy.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create {}", legacy_file_name));
+      throw std::runtime_error(fmt::format("Could not create {}", legacy_file_name.string()));
    }
 
    navy << "# Naval OOB\n";
@@ -333,7 +337,7 @@ void out::OutputCountryNavy(std::string_view output_name, const hoi4::Country& c
    legacy.close();
 }
 
-void out::OutputCountryUnits(const std::string& oob_file, const hoi4::Country& country)
+void out::OutputCountryUnits(const path& oob_file, const hoi4::Country& country)
 {
    if (country.GetUnits().empty())
    {
@@ -343,7 +347,7 @@ void out::OutputCountryUnits(const std::string& oob_file, const hoi4::Country& c
    std::ofstream country_oob(oob_file, std::ios_base::app);
    if (!country_oob.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not open {} for updates", oob_file));
+      throw std::runtime_error(fmt::format("Could not open {} for updates", oob_file.string()));
    }
    country_oob << "\n\nunits = {\n";
    std::map<std::string, int> counts;

@@ -6,7 +6,7 @@
 
 
 
-std::vector<hoi4::EquipmentVariant> hoi4::ImportEquipmentVariants(std::string_view variants_filename)
+std::vector<hoi4::EquipmentVariant> hoi4::ImportEquipmentVariants(const std::filesystem::path& variants_filename)
 {
    std::vector<EquipmentVariant> equipment_variants;
 

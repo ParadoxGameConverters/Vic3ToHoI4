@@ -6,13 +6,17 @@
 
 
 
-void out::OutputSupplyNodes(std::string_view output_name, const std::set<int>& supply_nodes)
+using std::filesystem::path;
+
+
+
+void out::OutputSupplyNodes(const path& output_name, const std::set<int>& supply_nodes)
 {
-   const auto file_path = fmt::format("output/{}/map/supply_nodes.txt", output_name);
+   const path file_path = "output" / output_name / "map/supply_nodes.txt";
    std::ofstream out(file_path);
    if (!out.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not open {}", file_path));
+      throw std::runtime_error(fmt::format("Could not open {}", file_path.string()));
    }
 
    for (const int supply_node: supply_nodes)

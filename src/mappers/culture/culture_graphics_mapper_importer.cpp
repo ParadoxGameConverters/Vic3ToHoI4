@@ -7,7 +7,7 @@
 
 
 
-mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(std::string_view mapping_file)
+mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(const std::filesystem::path& mapping_file)
 {
    std::vector<CultureGraphicsMapping> mappings;
 

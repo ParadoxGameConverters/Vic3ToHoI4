@@ -12,16 +12,22 @@
 
 
 
+using std::filesystem::create_directories;
+using std::filesystem::path;
+
+
+
 namespace
 {
 
 void CreateFolders(std::string_view test_name)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder(fmt::format("output/{}", test_name));
-   commonItems::TryCreateFolder(fmt::format("output/{}/common", test_name));
-   commonItems::TryCreateFolder(fmt::format("output/{}/common/decisions", test_name));
-   commonItems::TryCreateFolder(fmt::format("output/{}/common/decisions/categories", test_name));
+   const path test_path(test_name);
+   create_directories("output");
+   create_directories("output" / test_path);
+   create_directories("output" / test_path / "common");
+   create_directories("output" / test_path / "common/decisions");
+   create_directories("output" / test_path / "common/decisions/categories");
 }
 
 }  // namespace
@@ -41,10 +47,10 @@ TEST(Outhoi4DecisionsOutdecisionscategoriesTests, CategoriesFileIsCreated)
            {.name = "category_two"},
        });
 
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       "output/CategoriesFileIsCreated/common/decisions/categories/converter_decision_categories.txt"));
-   std::ifstream categories_file(
+   const path output_file(
        "output/CategoriesFileIsCreated/common/decisions/categories/converter_decision_categories.txt");
+   EXPECT_TRUE(commonItems::DoesFileExist(output_file));
+   std::ifstream categories_file(output_file);
    ASSERT_TRUE(categories_file.is_open());
    std::stringstream categories_file_stream;
    std::copy(std::istreambuf_iterator<char>(categories_file),

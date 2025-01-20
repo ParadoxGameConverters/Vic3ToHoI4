@@ -3,6 +3,7 @@
 
 
 
+#include <filesystem>
 #include <set>
 
 #include "src/hoi4_world/decisions/decisions_category.h"
@@ -12,7 +13,7 @@
 namespace out
 {
 
-void OutputDecisionsCategories(std::string_view output_name,
+void OutputDecisionsCategories(const std::filesystem::path& output_name,
     const std::set<hoi4::DecisionsCategory>& decisions_categories);
 
 }  // namespace out

@@ -14,9 +14,7 @@ namespace out
 {
 TEST(Outhoi4PortraitsTests, PortraitFileIsCreated)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/PortraitFileIsCreated");
-   commonItems::TryCreateFolder("output/PortraitFileIsCreated/portraits");
+   std::filesystem::create_directories("output/PortraitFileIsCreated/portraits");
 
    OutputPortraits("PortraitFileIsCreated",
        {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}});

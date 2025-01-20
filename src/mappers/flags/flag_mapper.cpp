@@ -6,6 +6,13 @@
 
 #include <filesystem>
 
+
+
+using std::filesystem::copy_options;
+using std::filesystem::path;
+
+
+
 namespace
 {
 
@@ -53,18 +60,24 @@ bool mappers::FlagMapper::CopyFlag(const std::string& tag)
       return false;
    }
 
-   auto file_to_copy = available_flags_.extract(available_flags_.begin()).mapped().make_preferred();
-   const auto fname = file_to_copy.filename();
-   const auto extension = file_to_copy.extension();
+   path file_to_copy = available_flags_.extract(available_flags_.begin()).mapped();
+   const path filename = file_to_copy.filename();
+   const path extension = file_to_copy.extension();
    file_to_copy.remove_filename();
    for (const auto& folder: kFlagFolders)
    {
-      // This ought to use path's operator/=, but it doesn't do what the
-      // documentation says it ought to do. So use primitive string concat
-      // instead like Turing intended.
-      const auto source = fmt::format("{}{}{}", file_to_copy.string(), folder, fname.string());
-      const auto target = fmt::format("{}{}{}{}", base_flag_folder_.string(), folder, tag, extension.string());
-      if (!commonItems::TryCopyFile(source, target))
+      const path source = file_to_copy / folder / filename;
+      path target = base_flag_folder_ / folder / tag;
+      target += extension;
+      try
+      {
+         if (!copy_file(source, target, copy_options::overwrite_existing))
+         {
+            Log(LogLevel::Warning) << "Could not copy flag file " << source << " to " << target;
+            return false;
+         }
+      }
+      catch (...)
       {
          Log(LogLevel::Warning) << "Could not copy flag file " << source << " to " << target;
          return false;

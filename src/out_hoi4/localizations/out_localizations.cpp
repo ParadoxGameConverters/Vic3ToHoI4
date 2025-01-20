@@ -9,6 +9,10 @@
 
 
 
+using std::filesystem::path;
+
+
+
 namespace
 {
 
@@ -16,38 +20,37 @@ constexpr std::array supported_languages =
     {"braz_por", "english", "french", "german", "japanese", "polish", "russian", "spanish"};
 
 
-void CreateFolders(std::string_view output_name)
+void CreateFolders(const path& output_name)
 {
-   if (!commonItems::TryCreateFolder(fmt::format("output/{}/localisation", output_name)))
+   const path localisations_path = "output" / output_name / "localisation";
+   if (!commonItems::DoesFolderExist(localisations_path) && !create_directories(localisations_path))
    {
-      throw std::runtime_error(fmt::format("Could not create output/{}/localisation", output_name));
+      throw std::runtime_error(fmt::format("Could not create {}", localisations_path.string()));
    }
 
    for (const auto& language: supported_languages)
    {
-      if (!commonItems::TryCreateFolder(fmt::format("output/{}/localisation/{}", output_name, language)))
+      if (const path language_path = localisations_path / language;
+          !commonItems::DoesFolderExist(language_path) && !create_directories(language_path))
       {
-         throw std::runtime_error(fmt::format("Could not create output/{}/localisation/{}", output_name, language));
+         throw std::runtime_error(fmt::format("Could not create {}", language_path.string()));
       }
    }
 }
 
 
-void OutputLocalisations(std::string_view output_name,
+void OutputLocalisations(const path& output_name,
     std::string_view localization_file,
     const commonItems::LocalizationDatabase& localization_database)
 {
    for (const auto& language: supported_languages)
    {
-      std::ofstream file(
-          fmt::format("output/{}/localisation/{}/{}{}.yml", output_name, language, localization_file, language));
+      const path path(
+          "output" / output_name / fmt::format("localisation/{}/{}{}.yml", language, localization_file, language));
+      std::ofstream file(path);
       if (!file.is_open())
       {
-         throw std::runtime_error(fmt::format("Could not create output/{}/localisation/{}/{}{}.yml",
-             output_name,
-             language,
-             localization_file,
-             language));
+         throw std::runtime_error(path.string());
       }
       file << fmt::format("{}l_{}:\n", commonItems::utf8BOM, language);
 
@@ -64,7 +67,7 @@ void OutputLocalisations(std::string_view output_name,
 
 
 
-void out::OutputLocalizations(std::string_view output_name, const hoi4::Localizations& localizations)
+void out::OutputLocalizations(const path& output_name, const hoi4::Localizations& localizations)
 {
    CreateFolders(output_name);
    OutputLocalisations(output_name, "countries_l_", localizations.GetCountryLocalizations());

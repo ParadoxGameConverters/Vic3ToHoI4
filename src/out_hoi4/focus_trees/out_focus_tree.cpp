@@ -9,15 +9,15 @@
 
 
 
-void out::OutputFocusTree(std::string_view output_name,
+void out::OutputFocusTree(const std::filesystem::path& output_name,
     std::string_view tag,
     const hoi4::FocusTree& focus_tree,
     configuration::UseStories use_stories)
 {
-   std::ofstream tree_file(fmt::format("output/{}/common/national_focus/{}_NF.txt", output_name, tag));
+   std::ofstream tree_file("output" / output_name / fmt::format("common/national_focus/{}_NF.txt", tag));
    if (!tree_file.is_open())
    {
-      throw std::runtime_error(fmt::format("output/{}/common/national_focus/{}.txt", output_name, tag));
+      throw std::runtime_error(fmt::format("output/{}/common/national_focus/{}.txt", output_name.string(), tag));
    }
 
    tree_file << "focus_tree = {\n";

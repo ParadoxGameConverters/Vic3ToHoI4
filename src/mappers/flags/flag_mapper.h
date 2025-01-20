@@ -15,7 +15,7 @@ extern const std::vector<std::string> kFlagFolders;
 class FlagMapper
 {
   public:
-   explicit FlagMapper(const std::filesystem::path& base,
+   explicit FlagMapper(std::filesystem::path base,
        std::map<std::string, std::filesystem::path> flags,
        std::set<std::string> custom_flags):
        base_flag_folder_(std::move(base)),

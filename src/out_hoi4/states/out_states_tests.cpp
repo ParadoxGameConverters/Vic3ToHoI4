@@ -12,23 +12,25 @@
 
 
 
+using std::filesystem::create_directories;
+using std::filesystem::path;
+
+
+
 namespace out
 {
 
 TEST(Outhoi4StatesStates, StatesAreOutput)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/StatesAreOutput");
-   commonItems::TryCreateFolder("output/StatesAreOutput/history");
-   commonItems::TryCreateFolder("output/StatesAreOutput/history/states");
+   create_directories("output/StatesAreOutput/history/states");
 
    const hoi4::State state_one(1, {});
    const hoi4::State state_two(2, {});
 
    OutputStates("StatesAreOutput", {state_one, state_two});
 
-   EXPECT_TRUE(commonItems::DoesFileExist("output/StatesAreOutput/history/states/1.txt"));
-   EXPECT_TRUE(commonItems::DoesFileExist("output/StatesAreOutput/history/states/2.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/StatesAreOutput/history/states/1.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/StatesAreOutput/history/states/2.txt")));
 }
 
 }  // namespace out

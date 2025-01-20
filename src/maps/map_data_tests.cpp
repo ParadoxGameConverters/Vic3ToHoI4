@@ -9,6 +9,10 @@
 
 
 
+using std::filesystem::path;
+
+
+
 namespace
 {
 
@@ -17,7 +21,7 @@ class MapsMapdata: public ::testing::Test
   protected:
    static void SetUpTestSuite()
    {
-      const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
+      const commonItems::ModFilesystem mod_filesystem(path("test_files/maps"), {});
       const maps::ProvinceDefinitions province_definitions({.color_to_province_map = {
                                                                 {0x88'00'15, "1"},  // the dark red one on top
                                                                 {0xED'1C'24, "2"},  // the red red one on the left
@@ -46,7 +50,7 @@ namespace maps
 
 TEST_F(MapsMapdata, ExceptionThrownForMissingProvincesBmp)
 {
-   const commonItems::ModFilesystem mod_filesystem("", {});
+   const commonItems::ModFilesystem mod_filesystem(path(""), {});
    const ProvinceDefinitions province_definitions;
    MapDataImporter importer(province_definitions);
 
@@ -56,7 +60,7 @@ TEST_F(MapsMapdata, ExceptionThrownForMissingProvincesBmp)
 
 TEST_F(MapsMapdata, ExceptionThrownForMissingAdjacenciesCsv)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/maps/nocsv", {});
+   const commonItems::ModFilesystem mod_filesystem(path("test_files/maps/nocsv"), {});
    const ProvinceDefinitions province_definitions;
    MapDataImporter importer(province_definitions);
 

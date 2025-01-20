@@ -18,10 +18,7 @@ TEST(Outhoi4MapOutsupplynodesTests, ExceptionThrownOnBadPath)
 
 TEST(Outhoi4MapOutsupplynodesTests, SupplyNodesAreOutput)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/Outhoi4MapOutsupplynodesTests");
-   commonItems::TryCreateFolder("output/Outhoi4MapOutsupplynodesTests/SupplyNodesAreOutput");
-   commonItems::TryCreateFolder("output/Outhoi4MapOutsupplynodesTests/SupplyNodesAreOutput/map");
+   std::filesystem::create_directories("output/Outhoi4MapOutsupplynodesTests/SupplyNodesAreOutput/map");
 
    OutputSupplyNodes("Outhoi4MapOutsupplynodesTests/SupplyNodesAreOutput", {1, 2, 3});
 

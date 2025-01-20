@@ -3,6 +3,7 @@
 
 
 
+#include <filesystem>
 #include <string_view>
 
 #include "src/hoi4_world/characters/hoi4_character.h"
@@ -13,21 +14,21 @@
 namespace out
 {
 
-void OutputCommonCountriesFile(std::string_view output_name, const hoi4::Country& country);
+void OutputCommonCountriesFile(const std::filesystem::path& output_name, const hoi4::Country& country);
 
 void OutputCommonCountryTag(const hoi4::Country& country, std::ofstream& tags_file);
 
-void OutputCommonCharactersFile(std::string_view output_name,
+void OutputCommonCharactersFile(const std::filesystem::path& output_name,
     const hoi4::Country& country,
     const std::map<int, hoi4::Character>& characters);
 
-void OutputCountryHistory(std::string_view output_name,
+void OutputCountryHistory(const std::filesystem::path& output_name,
     const hoi4::Country& country,
     const std::map<int, hoi4::Character>& characters);
 
-void OutputCountryNavy(std::string_view output_name, const hoi4::Country& country);
+void OutputCountryNavy(const std::filesystem::path& output_name, const hoi4::Country& country);
 
-void OutputCountryUnits(const std::string& oob_file, const hoi4::Country& country);
+void OutputCountryUnits(const std::filesystem::path& oob_file, const hoi4::Country& country);
 
 
 

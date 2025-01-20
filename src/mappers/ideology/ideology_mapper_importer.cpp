@@ -6,7 +6,7 @@
 
 
 
-mappers::IdeologyMapper mappers::ImportIdeologyMapper(std::string_view mapping_file)
+mappers::IdeologyMapper mappers::ImportIdeologyMapper(const std::filesystem::path& mapping_file)
 {
    ItemToPointsMap rules;
    std::map<std::string, ItemToPointsMap> sub_ideology_rules;

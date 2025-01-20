@@ -7,7 +7,7 @@
 
 
 
-std::vector<hoi4::DivisionTemplate> hoi4::ImportDivisionTemplates(std::string_view templates_filename)
+std::vector<hoi4::DivisionTemplate> hoi4::ImportDivisionTemplates(const std::filesystem::path& templates_filename)
 {
    std::vector<DivisionTemplate> division_templates;
 

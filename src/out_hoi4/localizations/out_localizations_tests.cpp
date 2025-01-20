@@ -11,36 +11,45 @@
 
 
 
+using std::filesystem::create_directories;
+using std::filesystem::path;
+using std::filesystem::remove_all;
+
+
+
 namespace out
 {
 
 TEST(Outhoi4LocalizationsOutlocalizationsTests, FoldersAreCreated)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations/FoldersAreCreated/");
+   remove_all("output/Outhoi4Localizations/FoldersAreCreated/");
+   create_directories("output/Outhoi4Localizations/FoldersAreCreated/");
 
    const hoi4::Localizations localizations;
 
    OutputLocalizations("Outhoi4Localizations/FoldersAreCreated", localizations);
 
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation"));
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/braz_por"));
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/english"));
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/french"));
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/german"));
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/japanese"));
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/polish"));
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/russian"));
-   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/spanish"));
+   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation")));
+   EXPECT_TRUE(
+       commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/braz_por")));
+   EXPECT_TRUE(
+       commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/english")));
+   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/french")));
+   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/german")));
+   EXPECT_TRUE(
+       commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/japanese")));
+   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/polish")));
+   EXPECT_TRUE(
+       commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/russian")));
+   EXPECT_TRUE(
+       commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/spanish")));
 }
 
 
 TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations/CountryLocalizationsAreOutput/");
+   remove_all("output/Outhoi4Localizations/CountryLocalizationsAreOutput/");
+   create_directories("output/Outhoi4Localizations/CountryLocalizationsAreOutput/");
 
    commonItems::LocalizationDatabase country_localizations("english", {"spanish"});
    commonItems::LocalizationBlock block_one("test_country", "english");
@@ -65,10 +74,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
 
    OutputLocalizations("Outhoi4Localizations/CountryLocalizationsAreOutput", localizations);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/braz_por/countries_l_braz_por.yml"));
-   std::ifstream braz_por_file(
+   path portuguese_path(
        "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/braz_por/countries_l_braz_por.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(portuguese_path));
+   std::ifstream braz_por_file(portuguese_path);
    ASSERT_TRUE(braz_por_file.is_open());
    std::stringstream braz_por_file_stream;
    std::copy(std::istreambuf_iterator<char>(braz_por_file),
@@ -80,10 +89,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
        " test_country:0 \"test\"\n"
        " test_country_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/english/countries_l_english.yml"));
-   std::ifstream english_file(
+   path english_path(
        "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/english/countries_l_english.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(english_path));
+   std::ifstream english_file(english_path);
    ASSERT_TRUE(english_file.is_open());
    std::stringstream english_file_stream;
    std::copy(std::istreambuf_iterator<char>(english_file),
@@ -95,10 +104,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
        " test_country:0 \"test\"\n"
        " test_country_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/french/countries_l_french.yml"));
-   std::ifstream french_file(
+   path french_path(
        "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/french/countries_l_french.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(french_path));
+   std::ifstream french_file(french_path);
    ASSERT_TRUE(french_file.is_open());
    std::stringstream french_file_stream;
    std::copy(std::istreambuf_iterator<char>(french_file),
@@ -110,10 +119,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
        " test_country:0 \"test\"\n"
        " test_country_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/german/countries_l_german.yml"));
-   std::ifstream german_file(
+   path german_path(
        "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/german/countries_l_german.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(german_path));
+   std::ifstream german_file(german_path);
    ASSERT_TRUE(german_file.is_open());
    std::stringstream german_file_stream;
    std::copy(std::istreambuf_iterator<char>(german_file),
@@ -125,10 +134,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
        " test_country:0 \"test\"\n"
        " test_country_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/japanese/countries_l_japanese.yml"));
-   std::ifstream japanese_file(
+   path japanese_path(
        "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/japanese/countries_l_japanese.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(japanese_path));
+   std::ifstream japanese_file(japanese_path);
    ASSERT_TRUE(japanese_file.is_open());
    std::stringstream japanese_file_stream;
    std::copy(std::istreambuf_iterator<char>(japanese_file),
@@ -140,10 +149,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
        " test_country:0 \"test\"\n"
        " test_country_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/polish/countries_l_polish.yml"));
-   std::ifstream polish_file(
+   path polish_path(
        "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/polish/countries_l_polish.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(polish_path));
+   std::ifstream polish_file(polish_path);
    ASSERT_TRUE(polish_file.is_open());
    std::stringstream polish_file_stream;
    std::copy(std::istreambuf_iterator<char>(polish_file),
@@ -155,10 +164,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
        " test_country:0 \"test\"\n"
        " test_country_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/russian/countries_l_russian.yml"));
-   std::ifstream russian_file(
+   path russian_path(
        "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/russian/countries_l_russian.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(russian_path));
+   std::ifstream russian_file(russian_path);
    ASSERT_TRUE(russian_file.is_open());
    std::stringstream russian_file_stream;
    std::copy(std::istreambuf_iterator<char>(russian_file),
@@ -170,10 +179,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
        " test_country:0 \"test\"\n"
        " test_country_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/spanish/countries_l_spanish.yml"));
-   std::ifstream spanish_file(
+   path spanish_path(
        "output/Outhoi4Localizations/CountryLocalizationsAreOutput/localisation/spanish/countries_l_spanish.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(spanish_path));
+   std::ifstream spanish_file(spanish_path);
    ASSERT_TRUE(spanish_file.is_open());
    std::stringstream spanish_file_stream;
    std::copy(std::istreambuf_iterator<char>(spanish_file),
@@ -189,9 +198,8 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
 
 TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations/StateLocalizationsAreOutput/");
+   remove_all("output/Outhoi4Localizations/StateLocalizationsAreOutput/");
+   create_directories("output/Outhoi4Localizations/StateLocalizationsAreOutput/");
 
    const commonItems::LocalizationDatabase country_localizations("english", {"spanish"});
 
@@ -217,10 +225,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
 
    OutputLocalizations("Outhoi4Localizations/StateLocalizationsAreOutput", localizations);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/braz_por/state_names_l_braz_por.yml"));
-   std::ifstream braz_por_file(
+   path portuguese_path(
        "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/braz_por/state_names_l_braz_por.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(portuguese_path));
+   std::ifstream braz_por_file(portuguese_path);
    ASSERT_TRUE(braz_por_file.is_open());
    std::stringstream braz_por_file_stream;
    std::copy(std::istreambuf_iterator<char>(braz_por_file),
@@ -232,10 +240,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/english/state_names_l_english.yml"));
-   std::ifstream english_file(
+   path english_path(
        "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/english/state_names_l_english.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(english_path));
+   std::ifstream english_file(english_path);
    ASSERT_TRUE(english_file.is_open());
    std::stringstream english_file_stream;
    std::copy(std::istreambuf_iterator<char>(english_file),
@@ -247,10 +255,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/french/state_names_l_french.yml"));
-   std::ifstream french_file(
+   path french_path(
        "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/french/state_names_l_french.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(french_path));
+   std::ifstream french_file(french_path);
    ASSERT_TRUE(french_file.is_open());
    std::stringstream french_file_stream;
    std::copy(std::istreambuf_iterator<char>(french_file),
@@ -262,10 +270,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/german/state_names_l_german.yml"));
-   std::ifstream german_file(
+   path german_path(
        "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/german/state_names_l_german.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(german_path));
+   std::ifstream german_file(german_path);
    ASSERT_TRUE(german_file.is_open());
    std::stringstream german_file_stream;
    std::copy(std::istreambuf_iterator<char>(german_file),
@@ -277,10 +285,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/japanese/state_names_l_japanese.yml"));
-   std::ifstream japanese_file(
+   path japanese_path(
        "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/japanese/state_names_l_japanese.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(japanese_path));
+   std::ifstream japanese_file(japanese_path);
    ASSERT_TRUE(japanese_file.is_open());
    std::stringstream japanese_file_stream;
    std::copy(std::istreambuf_iterator<char>(japanese_file),
@@ -292,10 +300,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/polish/state_names_l_polish.yml"));
-   std::ifstream polish_file(
+   path polish_path(
        "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/polish/state_names_l_polish.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(polish_path));
+   std::ifstream polish_file(polish_path);
    ASSERT_TRUE(polish_file.is_open());
    std::stringstream polish_file_stream;
    std::copy(std::istreambuf_iterator<char>(polish_file),
@@ -307,10 +315,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/russian/state_names_l_russian.yml"));
-   std::ifstream russian_file(
+   path russian_path(
        "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/russian/state_names_l_russian.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(russian_path));
+   std::ifstream russian_file(russian_path);
    ASSERT_TRUE(russian_file.is_open());
    std::stringstream russian_file_stream;
    std::copy(std::istreambuf_iterator<char>(russian_file),
@@ -322,10 +330,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/spanish/state_names_l_spanish.yml"));
-   std::ifstream spanish_file(
+   path spanish_path(
        "output/Outhoi4Localizations/StateLocalizationsAreOutput/localisation/spanish/state_names_l_spanish.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(spanish_path));
+   std::ifstream spanish_file(spanish_path);
    ASSERT_TRUE(spanish_file.is_open());
    std::stringstream spanish_file_stream;
    std::copy(std::istreambuf_iterator<char>(spanish_file),
@@ -341,9 +349,8 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
 
 TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutput)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/");
+   remove_all("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/");
+   create_directories("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/");
 
    const commonItems::LocalizationDatabase country_localizations("english", {"spanish"});
    const commonItems::LocalizationDatabase state_localizations("english", {"spanish"});
@@ -369,12 +376,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
 
    OutputLocalizations("Outhoi4Localizations/VictoryPointLocalizationsAreOutput", localizations);
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/"
-                                  "braz_por/victory_points_l_braz_por.yml"));
-   std::ifstream braz_por_file(
+   path portuguese_path(
        "output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/braz_por/"
        "victory_points_l_braz_por.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(portuguese_path));
+   std::ifstream braz_por_file(portuguese_path);
    ASSERT_TRUE(braz_por_file.is_open());
    std::stringstream braz_por_file_stream;
    std::copy(std::istreambuf_iterator<char>(braz_por_file),
@@ -386,12 +392,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/english/"
-                                  "victory_points_l_english.yml"));
-   std::ifstream english_file(
+   path english_path(
        "output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/english/"
        "victory_points_l_english.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(english_path));
+   std::ifstream english_file(english_path);
    ASSERT_TRUE(english_file.is_open());
    std::stringstream english_file_stream;
    std::copy(std::istreambuf_iterator<char>(english_file),
@@ -403,12 +408,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/french/"
-                                  "victory_points_l_french.yml"));
-   std::ifstream french_file(
+   path french_path(
        "output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/french/"
        "victory_points_l_french.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(french_path));
+   std::ifstream french_file(french_path);
    ASSERT_TRUE(french_file.is_open());
    std::stringstream french_file_stream;
    std::copy(std::istreambuf_iterator<char>(french_file),
@@ -420,12 +424,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/german/"
-                                  "victory_points_l_german.yml"));
-   std::ifstream german_file(
+   path german_path(
        "output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/german/"
        "victory_points_l_german.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(german_path));
+   std::ifstream german_file(german_path);
    ASSERT_TRUE(german_file.is_open());
    std::stringstream german_file_stream;
    std::copy(std::istreambuf_iterator<char>(german_file),
@@ -437,12 +440,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/"
-                                  "japanese/victory_points_l_japanese.yml"));
-   std::ifstream japanese_file(
+   path japanese_path(
        "output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/japanese/"
        "victory_points_l_japanese.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(japanese_path));
+   std::ifstream japanese_file(japanese_path);
    ASSERT_TRUE(japanese_file.is_open());
    std::stringstream japanese_file_stream;
    std::copy(std::istreambuf_iterator<char>(japanese_file),
@@ -454,12 +456,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/polish/"
-                                  "victory_points_l_polish.yml"));
-   std::ifstream polish_file(
+   path polish_path(
        "output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/polish/"
        "victory_points_l_polish.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(polish_path));
+   std::ifstream polish_file(polish_path);
    ASSERT_TRUE(polish_file.is_open());
    std::stringstream polish_file_stream;
    std::copy(std::istreambuf_iterator<char>(polish_file),
@@ -471,12 +472,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/russian/"
-                                  "victory_points_l_russian.yml"));
-   std::ifstream russian_file(
+   path russian_path(
        "output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/russian/"
        "victory_points_l_russian.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(russian_path));
+   std::ifstream russian_file(russian_path);
    ASSERT_TRUE(russian_file.is_open());
    std::stringstream russian_file_stream;
    std::copy(std::istreambuf_iterator<char>(russian_file),
@@ -488,12 +488,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
        " test_state:0 \"test\"\n"
        " test_state_two:0 \"test two\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/spanish/"
-                                  "victory_points_l_spanish.yml"));
-   std::ifstream spanish_file(
+   path spanish_path(
        "output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/localisation/spanish/"
        "victory_points_l_spanish.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(spanish_path));
+   std::ifstream spanish_file(spanish_path);
    ASSERT_TRUE(spanish_file.is_open());
    std::stringstream spanish_file_stream;
    std::copy(std::istreambuf_iterator<char>(spanish_file),
@@ -509,9 +508,8 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
 
 TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/");
+   remove_all("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/");
+   create_directories("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/");
 
    const commonItems::LocalizationDatabase country_localizations("english", {"spanish"});
    const commonItems::LocalizationDatabase state_localizations("english", {"spanish"});
@@ -541,12 +539,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
 
    OutputLocalizations("Outhoi4Localizations/CharacterLocalizationsAreOutput", localizations);
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/"
-                                  "braz_por/character_names_l_braz_por.yml"));
-   std::ifstream braz_por_file(
+   path portuguese_path(
        "output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/braz_por/"
        "character_names_l_braz_por.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(portuguese_path));
+   std::ifstream braz_por_file(portuguese_path);
    ASSERT_TRUE(braz_por_file.is_open());
    std::stringstream braz_por_file_stream;
    std::copy(std::istreambuf_iterator<char>(braz_por_file),
@@ -559,12 +556,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
        " Lizzy_Stanton:0 \"$Lizzy$ $Stanton$\"\n"
        " Stanton:0 \"Cady Stanton\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/english/"
-                                  "character_names_l_english.yml"));
-   std::ifstream english_file(
+   path english_path(
        "output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/english/"
        "character_names_l_english.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(english_path));
+   std::ifstream english_file(english_path);
    ASSERT_TRUE(english_file.is_open());
    std::stringstream english_file_stream;
    std::copy(std::istreambuf_iterator<char>(english_file),
@@ -577,12 +573,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
        " Lizzy_Stanton:0 \"$Lizzy$ $Stanton$\"\n"
        " Stanton:0 \"Cady Stanton\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/french/"
-                                  "character_names_l_french.yml"));
-   std::ifstream french_file(
+   path french_path(
        "output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/french/"
        "character_names_l_french.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(french_path));
+   std::ifstream french_file(french_path);
    ASSERT_TRUE(french_file.is_open());
    std::stringstream french_file_stream;
    std::copy(std::istreambuf_iterator<char>(french_file),
@@ -595,12 +590,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
        " Lizzy_Stanton:0 \"$Lizzy$ $Stanton$\"\n"
        " Stanton:0 \"Cady Stanton\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/german/"
-                                  "character_names_l_german.yml"));
-   std::ifstream german_file(
+   path german_path(
        "output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/german/"
        "character_names_l_german.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(german_path));
+   std::ifstream german_file(german_path);
    ASSERT_TRUE(german_file.is_open());
    std::stringstream german_file_stream;
    std::copy(std::istreambuf_iterator<char>(german_file),
@@ -613,12 +607,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
        " Lizzy_Stanton:0 \"$Lizzy$ $Stanton$\"\n"
        " Stanton:0 \"Cady Stanton\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/"
-                                  "japanese/character_names_l_japanese.yml"));
-   std::ifstream japanese_file(
+   path japanese_path(
        "output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/japanese/"
        "character_names_l_japanese.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(japanese_path));
+   std::ifstream japanese_file(japanese_path);
    ASSERT_TRUE(japanese_file.is_open());
    std::stringstream japanese_file_stream;
    std::copy(std::istreambuf_iterator<char>(japanese_file),
@@ -631,12 +624,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
        " Lizzy_Stanton:0 \"$Lizzy$ $Stanton$\"\n"
        " Stanton:0 \"Cady Stanton\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/polish/"
-                                  "character_names_l_polish.yml"));
-   std::ifstream polish_file(
+   path polish_path(
        "output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/polish/"
        "character_names_l_polish.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(polish_path));
+   std::ifstream polish_file(polish_path);
    ASSERT_TRUE(polish_file.is_open());
    std::stringstream polish_file_stream;
    std::copy(std::istreambuf_iterator<char>(polish_file),
@@ -649,12 +641,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
        " Lizzy_Stanton:0 \"$Lizzy$ $Stanton$\"\n"
        " Stanton:0 \"Cady Stanton\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/russian/"
-                                  "character_names_l_russian.yml"));
-   std::ifstream russian_file(
+   path russian_path(
        "output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/russian/"
        "character_names_l_russian.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(russian_path));
+   std::ifstream russian_file(russian_path);
    ASSERT_TRUE(russian_file.is_open());
    std::stringstream russian_file_stream;
    std::copy(std::istreambuf_iterator<char>(russian_file),
@@ -667,12 +658,11 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
        " Lizzy_Stanton:0 \"$Lizzy$ $Stanton$\"\n"
        " Stanton:0 \"Cady Stanton\"\n");
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/spanish/"
-                                  "character_names_l_spanish.yml"));
-   std::ifstream spanish_file(
+   path spanish_path(
        "output/Outhoi4Localizations/CharacterLocalizationsAreOutput/localisation/spanish/"
        "character_names_l_spanish.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(spanish_path));
+   std::ifstream spanish_file(spanish_path);
    ASSERT_TRUE(spanish_file.is_open());
    std::stringstream spanish_file_stream;
    std::copy(std::istreambuf_iterator<char>(spanish_file),
@@ -689,9 +679,8 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
 
 TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)
 {
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations");
-   commonItems::TryCreateFolder("output/Outhoi4Localizations/IdeaLocalizationsAreOutput/");
+   remove_all("output/Outhoi4Localizations/IdeaLocalizationsAreOutput/");
+   create_directories("output/Outhoi4Localizations/IdeaLocalizationsAreOutput/");
 
    const commonItems::LocalizationDatabase country_localizations("english", {"spanish"});
    const commonItems::LocalizationDatabase state_localizations("english", {"spanish"});
@@ -716,10 +705,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)
 
    OutputLocalizations("Outhoi4Localizations/IdeaLocalizationsAreOutput", localizations);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/braz_por/converter_ideas_l_braz_por.yml"));
-   std::ifstream braz_por_file(
+   path portuguese_path(
        "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/braz_por/converter_ideas_l_braz_por.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(portuguese_path));
+   std::ifstream braz_por_file(portuguese_path);
    ASSERT_TRUE(braz_por_file.is_open());
    std::stringstream braz_por_file_stream;
    std::copy(std::istreambuf_iterator<char>(braz_por_file),
@@ -731,10 +720,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)
        " test_idea:0 \"test\"\n"
        " test_idea_desc:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/english/converter_ideas_l_english.yml"));
-   std::ifstream english_file(
+   path english_path(
        "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/english/converter_ideas_l_english.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(english_path));
+   std::ifstream english_file(english_path);
    ASSERT_TRUE(english_file.is_open());
    std::stringstream english_file_stream;
    std::copy(std::istreambuf_iterator<char>(english_file),
@@ -746,10 +735,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)
        " test_idea:0 \"test\"\n"
        " test_idea_desc:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/french/converter_ideas_l_french.yml"));
-   std::ifstream french_file(
+   path french_path(
        "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/french/converter_ideas_l_french.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(french_path));
+   std::ifstream french_file(french_path);
    ASSERT_TRUE(french_file.is_open());
    std::stringstream french_file_stream;
    std::copy(std::istreambuf_iterator<char>(french_file),
@@ -761,10 +750,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)
        " test_idea:0 \"test\"\n"
        " test_idea_desc:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/german/converter_ideas_l_german.yml"));
-   std::ifstream german_file(
+   path german_path(
        "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/german/converter_ideas_l_german.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(german_path));
+   std::ifstream german_file(german_path);
    ASSERT_TRUE(german_file.is_open());
    std::stringstream german_file_stream;
    std::copy(std::istreambuf_iterator<char>(german_file),
@@ -776,10 +765,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)
        " test_idea:0 \"test\"\n"
        " test_idea_desc:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/japanese/converter_ideas_l_japanese.yml"));
-   std::ifstream japanese_file(
+   path japanese_path(
        "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/japanese/converter_ideas_l_japanese.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(japanese_path));
+   std::ifstream japanese_file(japanese_path);
    ASSERT_TRUE(japanese_file.is_open());
    std::stringstream japanese_file_stream;
    std::copy(std::istreambuf_iterator<char>(japanese_file),
@@ -791,10 +780,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)
        " test_idea:0 \"test\"\n"
        " test_idea_desc:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/polish/converter_ideas_l_polish.yml"));
-   std::ifstream polish_file(
+   path polish_path(
        "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/polish/converter_ideas_l_polish.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(polish_path));
+   std::ifstream polish_file(polish_path);
    ASSERT_TRUE(polish_file.is_open());
    std::stringstream polish_file_stream;
    std::copy(std::istreambuf_iterator<char>(polish_file),
@@ -806,10 +795,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)
        " test_idea:0 \"test\"\n"
        " test_idea_desc:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/russian/converter_ideas_l_russian.yml"));
-   std::ifstream russian_file(
+   path russian_path(
        "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/russian/converter_ideas_l_russian.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(russian_path));
+   std::ifstream russian_file(russian_path);
    ASSERT_TRUE(russian_file.is_open());
    std::stringstream russian_file_stream;
    std::copy(std::istreambuf_iterator<char>(russian_file),
@@ -821,10 +810,10 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)
        " test_idea:0 \"test\"\n"
        " test_idea_desc:0 \"test two\"\n");
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/spanish/converter_ideas_l_spanish.yml"));
-   std::ifstream spanish_file(
+   path spanish_path(
        "output/Outhoi4Localizations/IdeaLocalizationsAreOutput/localisation/spanish/converter_ideas_l_spanish.yml");
+   ASSERT_TRUE(commonItems::DoesFileExist(spanish_path));
+   std::ifstream spanish_file(spanish_path);
    ASSERT_TRUE(spanish_file.is_open());
    std::stringstream spanish_file_stream;
    std::copy(std::istreambuf_iterator<char>(spanish_file),

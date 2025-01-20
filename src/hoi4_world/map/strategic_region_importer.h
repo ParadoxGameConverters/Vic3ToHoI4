@@ -5,6 +5,8 @@
 
 #include <external/commonItems/Parser.h>
 
+#include <filesystem>
+
 #include "src/hoi4_world/map/strategic_region.h"
 
 
@@ -17,7 +19,7 @@ class StrategicRegionImporter
   public:
    StrategicRegionImporter();
 
-   [[nodiscard]] StrategicRegion ImportStrategicRegion(std::string_view filename);
+   [[nodiscard]] StrategicRegion ImportStrategicRegion(const std::filesystem::path& filename);
 
   private:
    commonItems::parser state_region_parser_;

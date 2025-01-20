@@ -4,7 +4,9 @@
 #include "external/commonItems/Parser.h"
 #include "external/commonItems/ParserHelpers.h"
 
-mappers::LeaderTypeMapper mappers::ImportLeaderTypeMapper(std::string_view mapping_file)
+
+
+mappers::LeaderTypeMapper mappers::ImportLeaderTypeMapper(const std::filesystem::path& mapping_file)
 {
    GovernancePowerMap governance_power_map;
    PowerLeaderMap power_leader_map;

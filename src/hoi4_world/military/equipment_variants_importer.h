@@ -3,7 +3,7 @@
 
 
 
-#include <string_view>
+#include <filesystem>
 #include <vector>
 
 #include "src/hoi4_world/military/equipment_variant.h"
@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-std::vector<EquipmentVariant> ImportEquipmentVariants(std::string_view variants_filename);
+std::vector<EquipmentVariant> ImportEquipmentVariants(const std::filesystem::path& variants_filename);
 
 }  // namespace hoi4
 

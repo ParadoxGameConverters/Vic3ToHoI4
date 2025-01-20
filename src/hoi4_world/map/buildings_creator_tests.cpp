@@ -5,6 +5,10 @@
 
 
 
+using std::filesystem::path;
+
+
+
 namespace hoi4
 {
 
@@ -13,7 +17,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ExceptionForMissingBuildingsDotTxt)
    EXPECT_THROW(ImportBuildings(States(),
                     CoastalProvinces(),
                     maps::MapData(),
-                    commonItems::ModFilesystem{"ExceptionForMissingBuildingsDotTxt", {}}),
+                    commonItems::ModFilesystem{path("ExceptionForMissingBuildingsDotTxt"), {}}),
        std::runtime_error);
 }
 
@@ -23,7 +27,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DefaultsToNoBuildings)
    const Buildings buildings = ImportBuildings(States(),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -74,7 +78,8 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
                                {maps::Point{6, 2}, "2"},
                                {maps::Point{6, 3}, "2"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"),
+                   {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -134,7 +139,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
                                {maps::Point{2, 2}, "1"},
                            },
                    }),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
    // clang-format on
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
@@ -158,7 +163,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -213,7 +218,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocati
                                {maps::Point{6, 2}, "2"},
                                {maps::Point{6, 3}, "2"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -267,7 +272,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
                                {maps::Point{6, 2}, "2"},
                                {maps::Point{6, 3}, "2"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -304,7 +309,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvinc
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -348,7 +353,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAntiAirInStateWithNoProvinces)
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -371,7 +376,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirNotPlacedInProvincesWithNoPoints)
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -423,7 +428,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacementOverridenByDefaultLocati
                                {{1, 4}, "3"},
                                {{4, 4}, "4"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -467,7 +472,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvinc
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -522,7 +527,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
                            maps::ProvincePoints(
                                {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -586,7 +591,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoArmsFactoriesInStateWithNoProvinces)
                            maps::ProvincePoints(
                                {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -611,7 +616,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesNotPlacedInProvincesWithNoP
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -677,7 +682,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacementOverridenByDefault
                                {{7, 4}, "6"},
                                {{1, 7}, "7"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -741,7 +746,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
                            maps::ProvincePoints(
                                {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -842,7 +847,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        maps::MapData({.borders = borders}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -939,7 +944,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoBunkersInStateWithNoProvinces)
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    for (const auto& building: buildings.GetBuildings())
    {
@@ -964,7 +969,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkersNotPlacedInProvincesWithNoBorders
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -1065,7 +1070,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocatio
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -1163,7 +1168,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -1286,7 +1291,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -1407,7 +1412,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenNoCoastalProvinces)
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    for (const auto& building: buildings.GetBuildings())
    {
@@ -1518,7 +1523,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenCoastalProvincesNotI
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -1546,7 +1551,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkersNotPlacedInProvincesWithNo
                                                        }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -1677,7 +1682,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacementOverridenByDefault
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -1801,7 +1806,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -1924,7 +1929,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -2035,7 +2040,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoDockyardInStateWithNoCoastalProvinces)
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    for (const auto& building: buildings.GetBuildings())
    {
@@ -2127,7 +2132,8 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoBorder
 
    const maps::MapData map_data({.borders = borders});
 
-   const commonItems::ModFilesystem mod_filesystem("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings",
+   const commonItems::ModFilesystem mod_filesystem(
+       path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"),
        {});
 
    const Buildings buildings = ImportBuildings(states, coastal_provinces, map_data, mod_filesystem);
@@ -2256,7 +2262,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacementOverridenByDefaultLocat
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -2369,7 +2375,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -2434,7 +2440,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacedInSeaBorderCenterOf
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -2498,7 +2504,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoFloatingHarborsInStateWithNoCoastalPro
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -2520,7 +2526,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsNotPlacedInProvincesWithN
                                                        }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -2592,7 +2598,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacementOverridenByDefau
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -2657,7 +2663,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests,
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        maps::MapData({.borders = borders}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -2693,7 +2699,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        maps::MapData({.the_province_points = the_province_points}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -2757,7 +2763,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoIndustrialComplexesInStateWithNoProvin
                            maps::ProvincePoints(
                                {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -2782,7 +2788,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesNotPlacedInProvincesW
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -2852,7 +2858,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacementOverridenByD
                                {{7, 4}, "6"},
                                {{1, 7}, "7"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -2916,7 +2922,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
                            maps::ProvincePoints(
                                {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -3043,7 +3049,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAl
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        maps::MapData({.borders = borders}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -3168,7 +3174,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoNavalBasesWhenNoCoastalProvinces)
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    for (const auto& building: buildings.GetBuildings())
    {
@@ -3193,7 +3199,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesNotPlacedInProvincesWithNoBord
                                                        }}),
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -3323,7 +3329,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacementOverridenByDefaultLoc
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces({{1, {5}}, {2, {6}}, {3, {7}}, {4, {8}}}),
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -3447,7 +3453,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAl
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
        maps::MapData({.borders = borders}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -3499,7 +3505,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvi
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -3536,7 +3542,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoNuclearReactorInStateWithNoProvinces)
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -3559,7 +3565,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorNotPlacedInProvincesWithNo
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -3608,7 +3614,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacementOverridenByDefaul
                    {{1, 4}, "3"},
                    {{4, 4}, "4"},
                }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -3645,7 +3651,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvi
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -3728,7 +3734,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesPlacedInCenterOfABorderForAll
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        maps::MapData({.borders = borders}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -3817,7 +3823,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoSupplyNodesInStateWithNoProvinces)
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -3839,7 +3845,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesNotPlacedInProvincesWithNoBor
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -3944,7 +3950,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacementOverridenByDefaultLoc
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        map_data,
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -4038,7 +4044,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacedInCenterOfABorderForAllP
    const Buildings buildings = ImportBuildings(states,
        CoastalProvinces(),
        maps::MapData({.borders = borders}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -4085,7 +4091,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstPr
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4122,7 +4128,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoSyntheticRefineryInStateWithNoProvince
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -4145,7 +4151,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryNotPlacedInProvincesWit
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -4201,7 +4207,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacementOverridenByDef
                                {{1, 4}, "3"},
                                {{4, 4}, "4"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4238,7 +4244,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstPr
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4275,7 +4281,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceO
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4312,7 +4318,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoRocketSiteInStateWithNoProvinces)
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -4335,7 +4341,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSiteNotPlacedInProvincesWithNoPoin
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -4387,7 +4393,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacementOverridenByDefaultLoc
                                {{1, 4}, "3"},
                                {{4, 4}, "4"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4424,7 +4430,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceO
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4461,7 +4467,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinc
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4498,7 +4504,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoRadarStationInStateWithNoProvinces)
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -4521,7 +4527,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationNotPlacedInProvincesWithNoPo
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -4573,7 +4579,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacementOverridenByDefaultL
                                {{1, 4}, "3"},
                                {{4, 4}, "4"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4610,7 +4616,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinc
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4646,7 +4652,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfS
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4683,7 +4689,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoFuelSiloInStateWithNoProvinces)
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -4706,7 +4712,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloNotPlacedInProvincesWithNoPoints
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -4758,7 +4764,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacementOverridenByDefaultLocat
                                {{1, 4}, "3"},
                                {{4, 4}, "4"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4795,7 +4801,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfS
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4852,7 +4858,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SpecialProjectFacilitesPlacedIndefaultLo
                                {{4, 6}, "4"},
                                {{7, 9}, "7"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({
@@ -4917,7 +4923,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, LandmarksPlacedIndefaultLocationsAndOnly
                                {{4, 6}, "4"},
                                {{7, 9}, "7"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({
@@ -4962,7 +4968,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstPr
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4999,7 +5005,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoStrongholdNetworkInStateWithNoProvince
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    EXPECT_TRUE(buildings.GetBuildings().empty());
 }
@@ -5022,7 +5028,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkNotPlacedInProvincesWit
                                                        }}),
        CoastalProvinces(),
        maps::MapData(),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings"), {}});
 
    std::cout.rdbuf(cout_buffer);
 
@@ -5078,7 +5084,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacementOverridenByDef
                                {{1, 4}, "3"},
                                {{4, 4}, "4"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -5115,7 +5121,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstPr
                            maps::ProvincePoints(
                                {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
                    }}),
-       commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+       commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -5172,7 +5178,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DamsPlacedIndefaultLocationsAndOnlyInDef
                                {{4, 6}, "4"},
                                {{7, 9}, "7"},
                            }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+               commonItems::ModFilesystem{path("test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist"), {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({

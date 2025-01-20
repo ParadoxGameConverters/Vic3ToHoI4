@@ -9,6 +9,10 @@
 
 
 
+using std::filesystem::path;
+
+
+
 std::map<std::string, hoi4::Role> hoi4::ImportRoles()
 {
    std::map<std::string, hoi4::Role> roles;
@@ -20,9 +24,9 @@ std::map<std::string, hoi4::Role> hoi4::ImportRoles()
           roles.emplace(name, role_importer.ImportRole(name, input));
        });
 
-   for (const std::string& roles_file: commonItems::GetAllFilesInFolderRecursive("configurables/stories"))
+   for (const path& roles_file: commonItems::GetAllFilesInFolderRecursive(path("configurables/stories")))
    {
-      roles_parser.parseFile("configurables/stories/" + roles_file);
+      roles_parser.parseFile("configurables/stories/" / roles_file);
    }
 
    Log(LogLevel::Info) << fmt::format("\tImported {} roles.", roles.size());

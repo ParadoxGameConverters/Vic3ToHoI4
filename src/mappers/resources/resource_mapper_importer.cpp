@@ -4,7 +4,9 @@
 #include <external/commonItems/Parser.h>
 #include <external/commonItems/ParserHelpers.h>
 
-mappers::ResourceMapper mappers::ImportResourceMapper(std::string_view mapping_file)
+
+
+mappers::ResourceMapper mappers::ImportResourceMapper(const std::filesystem::path& mapping_file)
 {
    std::map<std::string, mappers::ResourceScore> scores;
    mappers::ResourceScore current;

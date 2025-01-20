@@ -19,7 +19,7 @@ vic3::Ideologies vic3::IdeologiesImporter::ImportIdeologies(const commonItems::M
 {
    ideologies_.clear();
 
-   for (const auto& filename: mod_filesystem.GetAllFilesInFolder("/common/ideologies"))
+   for (const auto& filename: mod_filesystem.GetAllFilesInFolder("common/ideologies"))
    {
       ideologies_parser_.parseFile(filename);
    }

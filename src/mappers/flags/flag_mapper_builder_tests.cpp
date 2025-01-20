@@ -10,6 +10,11 @@
 #include "src/mappers/flags/flag_mapper_builder.h"
 
 
+
+using std::filesystem::path;
+
+
+
 namespace mappers
 {
 
@@ -17,20 +22,21 @@ TEST(MappersFlagsFlagMapperBuilder, FlagDirsAreCreated)
 {
    FlagMapperBuilder builder;
    EXPECT_TRUE(builder.CreateTargetFolders("FlagDirsAreCreated"));
-   std::string base_folder("output/FlagDirsAreCreated");
+   path base_folder("output/FlagDirsAreCreated");
    EXPECT_TRUE(commonItems::DoesFolderExist(base_folder));
-   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder + "/gfx"));
-   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder + "/gfx/flags"));
-   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder + "/gfx/flags/small"));
-   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder + "/gfx/flags/medium"));
+   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder / "gfx"));
+   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder / "gfx/flags"));
+   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder / "gfx/flags/small"));
+   EXPECT_TRUE(commonItems::DoesFolderExist(base_folder / "gfx/flags/medium"));
 }
+
 
 TEST(MappersFlagsFlagMapperBuilder, ForbidIsRespectedAndCustomIsUsed)
 {
    FlagMapperBuilder builder;
    builder.ReadConfig("configurables/flag_mapper_config.txt");
    EXPECT_TRUE(builder.CreateTargetFolders("ForbidIsRespectedAndCustomIsUsed"));
-   commonItems::ModFilesystem flag_mod("test_files/hoi4_world/flags", {});
+   commonItems::ModFilesystem flag_mod(path("test_files/hoi4_world/flags"), {});
    auto flag_mapper = builder.Build(flag_mod);
    // There is a custom flag for TAG, so we can find one for Z00.
    EXPECT_TRUE(flag_mapper.CopyFlags({"TAG", "Z00"}));
@@ -45,7 +51,7 @@ TEST(MappersFlagsFlagMapperBuilder, ForbidIsRespectedAndCustomIsUsed)
    EXPECT_THAT(z00_file_stream.str(),
        testing::StartsWith("# Another dummy flag file with different text so we can check the right one was copied."));
    // Custom flags are copied by main mod creator.
-   EXPECT_FALSE(commonItems::DoesFileExist("output/CustomFlagsAreUsed/gfx/flags/TAG.tga"));
+   EXPECT_FALSE(commonItems::DoesFileExist(path("output/CustomFlagsAreUsed/gfx/flags/TAG.tga")));
 }
 
 }  // namespace mappers
