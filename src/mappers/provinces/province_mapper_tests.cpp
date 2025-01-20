@@ -12,11 +12,11 @@ namespace mappers
 
 TEST(Mappers_Provinces_ProvinceMapperTests, Vic3ProvincesCanBeMappedToHoi4)
 {
-   Vic3ToHoi4ProvinceMapping vic3_to_hoI4_province_map{{"x000001", {1, 10}},
+   const Vic3ToHoi4ProvinceMapping vic3_to_hoI4_province_map{{"x000001", {1, 10}},
        {"x000200", {2}},
        {"x002000", {2}},
        {"x030000", {}}};
-   Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map;
+   const Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map;
    const ProvinceMapper province_mappings(vic3_to_hoI4_province_map, hoi4_to_vic3_province_map);
 
    EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("x000001"), testing::ElementsAre(1, 10));

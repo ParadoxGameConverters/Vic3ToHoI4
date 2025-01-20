@@ -16,7 +16,7 @@ namespace mappers
 InfrastructureMapper::InfrastructureMapper(const std::map<int, vic3::State>& states)
 {
    target_hoi_infra_per_state_ = 1098.0F / 899;
-   float total_vic_infra =
+   const float total_vic_infra =
        std::accumulate(states.begin(), states.end(), 0.0F, [](float f, std::map<int, vic3::State>::value_type s) {
           return f + s.second.GetInfrastructure();
        });
@@ -43,7 +43,7 @@ int InfrastructureMapper::Map(float vic3Infrastructure)
    // we calculate the amount of additional infra (above 1), and then add 1 to the result at the end.
    // this works better* than just clamp(value, 1, 5) for some math reason that I haven't explored.
    // *better = less 5* infra provinces, more 2-4 infra provinces.
-   int result = static_cast<int>(
+   const int result = static_cast<int>(
        std::round(std::clamp(fudge_factor_ + vic3Infrastructure * hoi_infra_per_vic_infra_, 0.0F, 4.0F)));
    converted_hoi_infra_ += result;
    converted_hoi_states_ += 1;

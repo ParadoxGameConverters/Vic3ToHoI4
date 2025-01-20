@@ -505,7 +505,7 @@ float CalculateNavalBaseRatio(const std::set<int>& hoi4_provinces,
 float FindNavalBaseStaffing(const vic3::World& source_world, int source_state_id)
 {
    std::vector<vic3::Building> buildings = source_world.GetBuildings().GetBuildingsInState(source_state_id);
-   auto maybe_building = std::ranges::find_if(buildings, [](const vic3::Building& b) {
+   const auto maybe_building = std::ranges::find_if(buildings, [](const vic3::Building& b) {
       return b.GetType() == vic3::BuildingType::NavalBase;
    });
    if (maybe_building != buildings.end())
