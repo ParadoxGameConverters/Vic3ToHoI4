@@ -12,8 +12,7 @@ set(CMAKE_CXX_STANDARD 23)
 set (UNICODE_DEFAULT OFF)
 
 if (PLATFORM STREQUAL "Windows")
-	ADD_DEFINITIONS(-DUNICODE)
-	ADD_DEFINITIONS(-D_UNICODE)
+	ADD_DEFINITIONS(-DUNICODE -D_UNICODE)
 elseif (PLATFORM STREQUAL "Linux")
 	if (COVERAGE STREQUAL true)
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
@@ -196,7 +195,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/world/vic3_world_impo
 
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/format.cc")
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/os.cc")
-
+add_library(fmtLib ${FORMAT_SOURCES})
 
 link_directories("./external/rakaly")
 
@@ -204,13 +203,15 @@ add_subdirectory(external/commonItems EXCLUDE_FROM_ALL)
 
 add_library(Vic3ToHoi4lib
 	${CONVERTER_SOURCES}
-	${FORMAT_SOURCES}
 )
 target_precompile_headers(Vic3ToHoi4lib PUBLIC ${PCH_SOURCES})
 if (PLATFORM STREQUAL "Windows")
-	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC commonLib rakaly.dll.lib)
+	target_compile_options(Vic3ToHoi4lib PRIVATE /permissive /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 
+        /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 
+        /external:anglebrackets /external:W0 /WX)
+	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC commonLib fmtLib rakaly.dll.lib)
 elseif (PLATFORM STREQUAL "Linux")
-	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC commonLib rakaly)
+	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC commonLib fmtLib rakaly)
 endif (PLATFORM  STREQUAL "Windows")
 
 add_executable(
@@ -223,6 +224,14 @@ set_target_properties( Vic3ToHoi4
 )
 target_precompile_headers(Vic3ToHoi4 REUSE_FROM Vic3ToHoi4lib)
 target_link_libraries(Vic3ToHoi4 LINK_PUBLIC Vic3ToHoi4lib)
+if (PLATFORM STREQUAL "Windows")
+	target_compile_options(Vic3ToHoi4 PRIVATE /permissive /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 
+        /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 
+        /external:anglebrackets /external:W0 /WX)
+	target_link_libraries(Vic3ToHoi4 LINK_PUBLIC commonLib rakaly.dll.lib)
+elseif (PLATFORM STREQUAL "Linux")
+	target_link_libraries(Vic3ToHoi4 LINK_PUBLIC commonLib rakaly)
+endif (PLATFORM  STREQUAL "Windows")
 
 configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
 configure_file("data/readme.txt" "${FRONTER_OUTPUT_DIRECTORY}/readme.txt" COPYONLY)
@@ -508,11 +517,17 @@ add_executable(
 	${TEST_SOURCES}
 	${GTEST_SOURCES}
  )
-set_target_properties( Vic3ToHoi4Tests
+set_target_properties(Vic3ToHoi4Tests
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
 )
 target_precompile_headers(Vic3ToHoi4Tests REUSE_FROM Vic3ToHoi4lib)
+if (PLATFORM STREQUAL "Windows")
+    target_compile_options(Vic3ToHoi4Tests PRIVATE /permissive /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 
+        /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 
+        /external:anglebrackets /external:W0 /WX)
+elseif (PLATFORM STREQUAL "Linux")
+endif (PLATFORM STREQUAL "Windows")
 
 file(COPY "data/blank_mod" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 file(COPY "data/test_files" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
