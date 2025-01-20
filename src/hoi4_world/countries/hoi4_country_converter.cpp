@@ -564,7 +564,7 @@ std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std
    return {economy_law, trade_law, military_law};
 }
 
-float ConvertStability(const vic3::World& source_world, const vic3::Country& country)
+float ConvertStability(const vic3::Country& country)
 {
    // TODO once we can calculate legitimacy
    float stability = std::clamp(country.GetLegitimacy(), 0, 100) * 0.8F / 100.0F;
@@ -976,7 +976,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .overlord = overlord,
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
        .units = units,
-       .stability = ConvertStability(source_world, source_country),
+       .stability = ConvertStability(source_country),
        .convoys = numConvoys,
        .task_forces = task_forces,
    });

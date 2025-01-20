@@ -58,6 +58,7 @@ std::map<int, std::set<std::string>> vic3::ImportLaws(std::istream& input_stream
       if (!country_number)
       {
          LOG(LogLevel::Warning) << "Law without a country. Please report to the converters team and upload your save.";
+         return;
       }
 
       ++active_laws;

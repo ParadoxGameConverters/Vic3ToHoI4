@@ -30,7 +30,7 @@ std::map<int, date> vic3::ImportElections(std::istream& input_stream)
    commonItems::parser database_parser;
    database_parser.registerRegex(commonItems::integerRegex,
        [&elections, &empty_elections, &democracies, &last_election, &country_number, &election_parser](
-           const std::string& number_string,
+           [[maybe_unused]] const std::string& number_string,
            std::istream& input_stream) {
           const std::string election_string = commonItems::stringOfItem(input_stream).getString();
           if (election_string.find("{") == std::string::npos)

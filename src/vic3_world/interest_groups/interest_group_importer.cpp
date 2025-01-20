@@ -29,7 +29,7 @@ vic3::InterestGroupImporter::InterestGroupImporter()
 }
 
 
-vic3::InterestGroup vic3::InterestGroupImporter::ImportInterestGroup(const int id, std::istream& input_stream)
+vic3::InterestGroup vic3::InterestGroupImporter::ImportInterestGroup(std::istream& input_stream)
 {
    type_.clear();
    country_id_ = 0;

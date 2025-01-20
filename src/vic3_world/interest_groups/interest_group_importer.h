@@ -19,7 +19,7 @@ class InterestGroupImporter
   public:
    InterestGroupImporter();
 
-   [[nodiscard]] InterestGroup ImportInterestGroup(int id, std::istream& input_stream);
+   [[nodiscard]] InterestGroup ImportInterestGroup(std::istream& input_stream);
 
   private:
    commonItems::parser ig_parser_;

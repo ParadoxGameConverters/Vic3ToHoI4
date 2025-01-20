@@ -26,7 +26,7 @@ std::map<int, vic3::InterestGroup> vic3::ImportInterestGroups(std::istream& inpu
           }
           std::istringstream ig_stream(ig_string);
 
-          igs.emplace(id, ig_importer.ImportInterestGroup(id, ig_stream));
+          igs.emplace(id, ig_importer.ImportInterestGroup(ig_stream));
        });
    database_parser.IgnoreUnregisteredItems();
 

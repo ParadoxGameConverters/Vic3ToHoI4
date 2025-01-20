@@ -26,7 +26,7 @@ std::map<int, vic3::Pact> vic3::ImportPacts(std::istream& input_stream)
           }
           std::istringstream pact_stream(pact_string);
 
-          pacts.emplace(id, pact_importer.ImportPact(id, pact_stream));
+          pacts.emplace(id, pact_importer.ImportPact(pact_stream));
        });
    database_parser.IgnoreUnregisteredItems();
 

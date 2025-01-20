@@ -14,7 +14,7 @@ mappers::LeaderTypeMapper mappers::ImportLeaderTypeMapper(const std::filesystem:
 
    commonItems::parser power_parser;
    power_parser.registerRegex(commonItems::catchallRegex,
-       [&power_leader_map, &leader_type](const std::string& law, std::istream& input_stream) {
+       [&power_leader_map, &leader_type](const std::string& law, [[maybe_unused]] std::istream& input_stream) {
           power_leader_map.emplace(law, leader_type);
        });
 

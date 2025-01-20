@@ -40,7 +40,7 @@ mappers::IdeologyMapper mappers::ImportIdeologyMapper(const std::filesystem::pat
 
    commonItems::parser file_parser;
    file_parser.registerKeyword("sub_ideologies",
-       [&sub_ideologies_parser, &sub_ideology_rules](const std::string& unused, std::istream& input_stream) {
+       [&sub_ideologies_parser, &sub_ideology_rules]([[maybe_unused]] const std::string& unused, std::istream& input_stream) {
           sub_ideology_rules.clear();
           sub_ideologies_parser.parseStream(input_stream);
        });

@@ -70,7 +70,7 @@ std::set<int> ImportEmployedCommanders(std::istream& input_stream)
    std::set<int> hired_commanders;
    commonItems::parser map_parser;
    map_parser.registerRegex(commonItems::integerRegex,
-       [&hired_commanders](const std::string& hq_number_string, std::istream& input_stream) {
+       [&hired_commanders]([[maybe_unused]] const std::string& hq_number_string, std::istream& input_stream) {
           std::ranges::copy(commonItems::getInts(input_stream),
               std::inserter(hired_commanders, hired_commanders.begin()));
        });

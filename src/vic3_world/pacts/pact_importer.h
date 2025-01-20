@@ -19,7 +19,7 @@ class PactImporter
   public:
    PactImporter();
 
-   [[nodiscard]] Pact ImportPact(int id, std::istream& input_stream);
+   [[nodiscard]] Pact ImportPact(std::istream& input_stream);
 
   private:
    commonItems::parser pact_parser_;

@@ -480,8 +480,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    save_parser.registerKeyword("diplomatic_plays", [&world_options](std::istream& input_stream) {
       world_options.wars = ImportWars(input_stream);
    });
-   save_parser.registerRegex("SAV.*", [](const std::string& unused, std::istream& input_stream) {
-   });
+   save_parser.registerRegex("SAV.*",
+       []([[maybe_unused]] const std::string& unused, [[maybe_unused]] std::istream& input_stream) {
+       });
    save_parser.IgnoreUnregisteredItems();
 
    save_parser.parseStream(save_stream);

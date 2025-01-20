@@ -15,7 +15,7 @@ std::map<std::string, vic3::CultureDefinition> vic3::ImportCultureDefinitions(
 
    commonItems::parser ethnicityParser;
    ethnicityParser.registerRegex(commonItems::integerRegex,
-       [&ethnicities](const std::string& weight, std::istream& input_stream) {
+       [&ethnicities]([[maybe_unused]] const std::string& weight, std::istream& input_stream) {
           ethnicities.emplace(commonItems::getString(input_stream));
        });
    ethnicityParser.IgnoreUnregisteredItems();

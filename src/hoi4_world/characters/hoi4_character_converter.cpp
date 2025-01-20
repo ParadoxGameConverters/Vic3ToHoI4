@@ -41,8 +41,9 @@ std::optional<hoi4::General> GeneratePossibleGeneral(const vic3::Character& sour
    return character_trait_mapper.GetGeneralMappedData(source_character.GetTraits(),
        field_marshal_ids.contains(source_character.GetId()));
 }
+
+
 std::optional<hoi4::Advisor> GeneratePossibleAdvisor(const vic3::Character& source_character,
-    const std::optional<hoi4::Leader>& is_leader,
     const std::set<int>& advisor_ids,
     const mappers::CharacterTraitMapper& character_trait_mapper)
 {
@@ -241,7 +242,7 @@ hoi4::Character hoi4::ConvertCharacter(const vic3::Character& source_character,
        character_trait_mapper);
    std::optional<Leader> leader_data = GeneratePossibleLeader(source_character, sub_ideology, leader_id);
    std::optional<Advisor> advisor_data =
-       GeneratePossibleAdvisor(source_character, leader_data, role_ids.advisor_ids, character_trait_mapper);
+       GeneratePossibleAdvisor(source_character, role_ids.advisor_ids, character_trait_mapper);
    std::optional<Spy> spy_data =
        GeneratePossibleSpy(source_character, tag, country_mapper, role_ids.spy_ids, character_trait_mapper);
 

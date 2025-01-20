@@ -10,9 +10,10 @@ namespace vic3
 
 DatabaseParser::DatabaseParser(): commonItems::parser(), db_entry_parser_()
 {
-   this->db_entry_parser_.registerRegex(commonItems::integerRegex, [](const std::string& key, std::istream& stream) {
-      return;
-   });
+   this->db_entry_parser_.registerRegex(commonItems::integerRegex,
+       []([[maybe_unused]] const std::string& key, [[maybe_unused]] std::istream& stream) {
+          return;
+       });
    this->db_entry_parser_.IgnoreUnregisteredItems();
    this->registerKeyword("database", db_entry_parser_);
    this->IgnoreAndLogUnregisteredItems();

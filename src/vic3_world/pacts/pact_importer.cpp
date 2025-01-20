@@ -37,7 +37,7 @@ vic3::PactImporter::PactImporter()
 }
 
 
-vic3::Pact vic3::PactImporter::ImportPact(const int id, std::istream& input_stream)
+vic3::Pact vic3::PactImporter::ImportPact(std::istream& input_stream)
 {
    first_id_ = 0;
    second_id_ = 0;

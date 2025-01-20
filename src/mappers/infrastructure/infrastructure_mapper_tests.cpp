@@ -17,7 +17,7 @@ TEST(MappersInfrastructureInfrastructureMapperTests, FindRootWorks)
    EXPECT_FLOAT_EQ((find_root<float, float>(
                        func,
                        0.0F,
-                       [](float f) {
+                       []([[maybe_unused]] float f) {
                           return -1.0F;
                        },
                        5)),

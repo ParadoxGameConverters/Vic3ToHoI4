@@ -117,7 +117,7 @@ mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(const std::f
 
    commonItems::parser file_parser;
    file_parser.registerRegex(commonItems::catchallRegex,
-       [&mappings, &mapping, &mapping_parser](const std::string& name, std::istream& input_stream) {
+       [&mappings, &mapping, &mapping_parser]([[maybe_unused]] const std::string& name, std::istream& input_stream) {
           mapping = CultureGraphicsMapping();
           mapping_parser.parseStream(input_stream);
           mappings.push_back(mapping);

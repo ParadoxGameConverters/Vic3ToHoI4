@@ -148,7 +148,7 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
    province_to_state_map_ = GenerateProvinceToStateMap(vic3_state_regions);
 
    version_parser_.registerRegex(R"(\d\.[\d]+\.\d)",
-       [this, &filesystem](const std::string& unused, std::istream& input_stream) {
+       [this, &filesystem]([[maybe_unused]] const std::string& unused, std::istream& input_stream) {
           mapping_parser_.parseStream(input_stream);
           CheckAllHoi4ProvincesMapped(hoi4_to_vic3_province_map_, filesystem);
        });

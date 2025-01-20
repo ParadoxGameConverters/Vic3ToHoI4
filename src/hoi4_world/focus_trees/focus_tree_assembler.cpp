@@ -71,9 +71,7 @@ std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
 
 // For any prerequisites that are of the form repeat_focus = <a repeat focus>, expand them to be normal prerequisites
 // than include all of the focuses that the repeat focus had been expanded into
-void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& role_lookup,
-    std::string_view tag,
-    hoi4::Focus& focus)
+void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& role_lookup, hoi4::Focus& focus)
 {
    for (std::string& prerequisite: focus.prerequisites)
    {
@@ -170,7 +168,7 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
          position += 10;
       }
 
-      UpdatePrerequisites(role_lookup, tag, focus);
+      UpdatePrerequisites(role_lookup, focus);
       focus.apply_replacement("$TAG$", tag);
    }
 

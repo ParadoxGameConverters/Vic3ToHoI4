@@ -6,7 +6,8 @@
 namespace out
 {
 
-void OutputDecisions(const std::filesystem::path& output_name, const std::map<std::string, hoi4::Country>& countries)
+void OutputDecisions([[maybe_unused]] const std::filesystem::path& output_name,
+    [[maybe_unused]] const std::map<std::string, hoi4::Country>& countries)
 {
    Log(LogLevel::Debug) << "Decisions not implemented yet, no decisions output.";
 }
