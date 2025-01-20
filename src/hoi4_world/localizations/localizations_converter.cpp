@@ -86,7 +86,10 @@ std::string LoweringModificationFunction(std::string_view placeholder,
    }
 
    std::string lowercase_modifying_localization{modifying_localization};
+#pragma warning(push)
+#pragma warning(disable : 4242)
    std::ranges::transform(lowercase_modifying_localization, lowercase_modifying_localization.begin(), ::tolower);
+#pragma warning(push)
 
    return updated_localization.replace(updated_localization.find(placeholder),
        placeholder.size(),
