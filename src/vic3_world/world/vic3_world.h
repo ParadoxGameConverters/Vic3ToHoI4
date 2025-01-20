@@ -42,7 +42,7 @@ struct WorldOptions
    Ideologies ideologies;
    std::map<int, std::vector<Institution>> institutions;
    std::vector<War> wars;
-   int playthrough_id;
+   int playthrough_id = 0;
 };
 
 
@@ -117,7 +117,7 @@ class World
    std::map<int, std::vector<Institution>> institutions_;
    std::vector<War> wars_;
 
-   int playthrough_id_;  // Seed, for deterministic results across conversions for the same series of saves
+   int playthrough_id_ = 0;  // Seed, for deterministic results across conversions for the same series of saves
 };
 
 
