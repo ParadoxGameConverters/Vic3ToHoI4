@@ -1086,9 +1086,9 @@ hoi4::States CreateStates(const vic3::World& source_world,
              config.debug);
 
          std::set<std::string> cores;
-         if (vic3_state_itr->second.IsIncorporated())
+         if (vic3_state_itr->second.IsIncorporated() && state_owner.has_value())
          {
-            cores.insert(*state_owner);
+            cores.insert(state_owner.value());
          }
 
          for (const int province: province_set)
