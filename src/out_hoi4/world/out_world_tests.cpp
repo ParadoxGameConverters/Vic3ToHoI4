@@ -58,10 +58,8 @@ TEST(Outhoi4WorldOutworld, CountriesFilesAreCreated)
            .countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/WorldCountriesFilesAreCreated/common/countries/TAG.txt")));
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/WorldCountriesFilesAreCreated/common/countries/TWO.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/WorldCountriesFilesAreCreated/common/countries/TAG.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/WorldCountriesFilesAreCreated/common/countries/TWO.txt")));
 }
 
 
@@ -95,10 +93,8 @@ TEST(Outhoi4WorldOutworld, CharactersFilesAreCreated)
            .countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/WorldCharactersFilesAreCreated/common/characters/TAG.txt")));
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/WorldCharactersFilesAreCreated/common/characters/TWO.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/WorldCharactersFilesAreCreated/common/characters/TAG.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/WorldCharactersFilesAreCreated/common/characters/TWO.txt")));
 }
 
 
@@ -110,8 +106,7 @@ TEST(Outhoi4WorldOutworld, NamesFileIsCreated)
        hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/WorldNamesFileIsCreated/common/names/converter_names.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/WorldNamesFileIsCreated/common/names/converter_names.txt")));
 }
 
 
@@ -123,10 +118,8 @@ TEST(Outhoi4WorldOutworld, CountryHistoryFilesAreCreated)
        hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/WorldCountryHistoryFilesAreCreated/history/countries/TAG.txt")));
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/WorldCountryHistoryFilesAreCreated/history/countries/TWO.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/WorldCountryHistoryFilesAreCreated/history/countries/TAG.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/WorldCountryHistoryFilesAreCreated/history/countries/TWO.txt")));
 }
 
 
@@ -138,10 +131,8 @@ TEST(Outhoi4WorldOutworld, DivisionTemplatesAreCopied)
        hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/WorldDivisionTemplatesAreCopied/history/units/TAG_1936.txt")));
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/WorldDivisionTemplatesAreCopied/history/units/TWO_1936.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/WorldDivisionTemplatesAreCopied/history/units/TAG_1936.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/WorldDivisionTemplatesAreCopied/history/units/TWO_1936.txt")));
 }
 
 
@@ -153,10 +144,8 @@ TEST(Outhoi4WorldOutworld, StatesHistoryFilesAreCreatedAndOutput)
        hoi4::World({.states = {.states = {hoi4::State(1, {}), hoi4::State(2, {})}, .province_to_state_id_map = {}}}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/StatesHistoryFilesAreCreatedAreOutput/history/states/1.txt")));
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/StatesHistoryFilesAreCreatedAreOutput/history/states/2.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/StatesHistoryFilesAreCreatedAreOutput/history/states/1.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/StatesHistoryFilesAreCreatedAreOutput/history/states/2.txt")));
 }
 
 
@@ -172,10 +161,10 @@ TEST(Outhoi4WorldOutworld, StrategicRegionsFilesAreCreatedAndOutput)
        hoi4::World({.strategic_regions = hoi4::StrategicRegions({.strategic_regions = strategic_regions})}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(path(
-       "output/StrategicRegionsFilesAreCreatedAndOutput/map/strategicregions/strategic_region_1.txt")));
-   EXPECT_TRUE(commonItems::DoesFileExist(path(
-       "output/StrategicRegionsFilesAreCreatedAndOutput/map/strategicregions/strategic_region_2.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(
+       path("output/StrategicRegionsFilesAreCreatedAndOutput/map/strategicregions/strategic_region_1.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(
+       path("output/StrategicRegionsFilesAreCreatedAndOutput/map/strategicregions/strategic_region_2.txt")));
 }
 
 
@@ -203,8 +192,7 @@ TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
        hoi4::World({.buildings = buildings}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(
-       commonItems::DoesFileExist(path("output/BuildingsFileIsCreatedAndOutput/map/buildings.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/BuildingsFileIsCreatedAndOutput/map/buildings.txt")));
 }
 
 
@@ -221,8 +209,7 @@ TEST(Outhoi4WorldOutworld, RailwaysFileIsCreatedAndOutput)
        hoi4::World({.railways = railways_list}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(
-       commonItems::DoesFileExist(path("output/BuildingsFileIsCreatedAndOutput/map/railways.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/BuildingsFileIsCreatedAndOutput/map/railways.txt")));
 }
 
 
@@ -243,8 +230,7 @@ TEST(Outhoi4WorldOutworld, SupplyNodesFileIsCreatedAndOutput)
        hoi4::World({.railways = railways_list}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/BuildingsFileIsCreatedAndOutput/map/supply_nodes.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/BuildingsFileIsCreatedAndOutput/map/supply_nodes.txt")));
 }
 
 
@@ -256,8 +242,8 @@ TEST(Outhoi4WorldOutworld, PortraitsFileIsCreated)
        hoi4::World({.countries = {{"TAG", hoi4::Country({.tag = "TAG"})}, {"TWO", hoi4::Country({.tag = "TWO"})}}}),
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/WorldPortraitsFileIsCreated/portraits/converter_portraits.txt")));
+   EXPECT_TRUE(
+       commonItems::DoesFileExist(path("output/WorldPortraitsFileIsCreated/portraits/converter_portraits.txt")));
 }
 
 
@@ -316,33 +302,33 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
    OutputWorld("LocalizationsAreOutput", hoi4::World({.localizations = localizations}), configuration::UseStories::kNo);
    ASSERT_TRUE(commonItems::DoesFileExist(
        path("output/LocalizationsAreOutput/localisation/braz_por/countries_l_braz_por.yml")));
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/LocalizationsAreOutput/localisation/english/countries_l_english.yml")));
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/LocalizationsAreOutput/localisation/french/countries_l_french.yml")));
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/LocalizationsAreOutput/localisation/german/countries_l_german.yml")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist(path("output/LocalizationsAreOutput/localisation/english/countries_l_english.yml")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist(path("output/LocalizationsAreOutput/localisation/french/countries_l_french.yml")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist(path("output/LocalizationsAreOutput/localisation/german/countries_l_german.yml")));
    ASSERT_TRUE(commonItems::DoesFileExist(
        path("output/LocalizationsAreOutput/localisation/japanese/countries_l_japanese.yml")));
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/LocalizationsAreOutput/localisation/polish/countries_l_polish.yml")));
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/LocalizationsAreOutput/localisation/russian/countries_l_russian.yml")));
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/LocalizationsAreOutput/localisation/spanish/countries_l_spanish.yml")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist(path("output/LocalizationsAreOutput/localisation/polish/countries_l_polish.yml")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist(path("output/LocalizationsAreOutput/localisation/russian/countries_l_russian.yml")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist(path("output/LocalizationsAreOutput/localisation/spanish/countries_l_spanish.yml")));
 
    ASSERT_TRUE(commonItems::DoesFileExist(
        path("output/LocalizationsAreOutput/localisation/braz_por/state_names_l_braz_por.yml")));
    ASSERT_TRUE(commonItems::DoesFileExist(
        path("output/LocalizationsAreOutput/localisation/english/state_names_l_english.yml")));
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/LocalizationsAreOutput/localisation/french/state_names_l_french.yml")));
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/LocalizationsAreOutput/localisation/german/state_names_l_german.yml")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist(path("output/LocalizationsAreOutput/localisation/french/state_names_l_french.yml")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist(path("output/LocalizationsAreOutput/localisation/german/state_names_l_german.yml")));
    ASSERT_TRUE(commonItems::DoesFileExist(
        path("output/LocalizationsAreOutput/localisation/japanese/state_names_l_japanese.yml")));
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/LocalizationsAreOutput/localisation/polish/state_names_l_polish.yml")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist(path("output/LocalizationsAreOutput/localisation/polish/state_names_l_polish.yml")));
    ASSERT_TRUE(commonItems::DoesFileExist(
        path("output/LocalizationsAreOutput/localisation/russian/state_names_l_russian.yml")));
    ASSERT_TRUE(commonItems::DoesFileExist(
