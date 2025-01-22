@@ -13,6 +13,7 @@
 
 
 using std::filesystem::path;
+using std::filesystem::remove_all;
 
 
 
@@ -422,7 +423,7 @@ TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
 TEST(Outhoi4WorldOutworld, ExceptionIfBookmarkFileNotCreated)
 {
    CreateTestFolders("ExceptionIfBookmarkFileNotCreated");
-   remove("output/ExceptionIfBookmarkFileNotCreated/common/bookmarks");
+   remove_all("output/ExceptionIfBookmarkFileNotCreated/common/bookmarks");
 
    EXPECT_THROW(OutputWorld("ExceptionIfBookmarkFileNotCreated", hoi4::World({}), configuration::UseStories::kNo),
        std::runtime_error);
