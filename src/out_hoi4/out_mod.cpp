@@ -22,6 +22,16 @@ namespace out
 namespace
 {
 
+void CreateSubfolder(const path& output_name, std::string_view subfolder)
+{
+   if (const path path = "output" / output_name / subfolder;
+       !commonItems::DoesFolderExist(path) && !create_directories(path))
+   {
+      throw std::runtime_error(fmt::format("Could not create {}", path.string()));
+   }
+}
+
+
 void CreateOutputFolder(const path& output_name)
 {
    Log(LogLevel::Info) << "\tCopying blank mod";
@@ -41,51 +51,15 @@ void CreateOutputFolder(const path& output_name)
       throw std::runtime_error("Could not copy blank_mod");
    }
 
-   if (const path common_path = "output" / output_name / "common";
-       !commonItems::DoesFolderExist(common_path) && !create_directories(common_path))
-   {
-      throw std::runtime_error(fmt::format("Could not create {}", common_path.string()));
-   }
-   if (const path countries_path = "output" / output_name / "common/countries";
-       !commonItems::DoesFolderExist(countries_path) && !create_directories(countries_path))
-   {
-      throw std::runtime_error(fmt::format("Could not create {}", countries_path.string()));
-   }
-   if (const path country_tags_path = "output" / output_name / "common/country_tags";
-       !commonItems::DoesFolderExist(country_tags_path) && !create_directories(country_tags_path))
-   {
-      throw std::runtime_error(fmt::format("Could not create {}", country_tags_path.string()));
-   }
-   if (const path history_path = "output" / output_name / "history";
-       !commonItems::DoesFolderExist(history_path) && !create_directories(history_path))
-   {
-      throw std::runtime_error(fmt::format("Could not create {}", history_path.string()));
-   }
-   if (const path country_history_path = "output" / output_name / "history/countries";
-       !commonItems::DoesFolderExist(country_history_path) && !create_directories(country_history_path))
-   {
-      throw std::runtime_error(fmt::format("Could not create {}", country_history_path.string()));
-   }
-   if (const path state_history_path = "output" / output_name / "history/states";
-       !commonItems::DoesFolderExist(state_history_path) && !create_directories(state_history_path))
-   {
-      throw std::runtime_error(fmt::format("Could not create {}", state_history_path.string()));
-   }
-   if (const path unit_history_path = "output" / output_name / "history/units";
-       !commonItems::DoesFolderExist(unit_history_path) && !create_directories(unit_history_path))
-   {
-      throw std::runtime_error(fmt::format("Could not create {}", unit_history_path.string()));
-   }
-   if (const path map_path = "output" / output_name / "map";
-       !commonItems::DoesFolderExist(map_path) && !create_directories(map_path))
-   {
-      throw std::runtime_error(fmt::format("Could not create {}", map_path.string()));
-   }
-   if (const path strategicregions_path = "output" / output_name / "map/strategicregions";
-       !commonItems::DoesFolderExist(strategicregions_path) && !create_directories(strategicregions_path))
-   {
-      throw std::runtime_error(fmt::format("Could not create {}", strategicregions_path.string()));
-   }
+   CreateSubfolder(output_name, "common");
+   CreateSubfolder(output_name, "common/countries");
+   CreateSubfolder(output_name, "common/country_tags");
+   CreateSubfolder(output_name, "history");
+   CreateSubfolder(output_name, "history/countries");
+   CreateSubfolder(output_name, "history/states");
+   CreateSubfolder(output_name, "history/units");
+   CreateSubfolder(output_name, "map");
+   CreateSubfolder(output_name, "map/strategicregions");
 }
 
 
