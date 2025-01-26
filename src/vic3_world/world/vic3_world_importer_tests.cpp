@@ -274,12 +274,21 @@ TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)
 
    std::cout.rdbuf(cout_buffer);
 
+#ifdef WINDOWS
    EXPECT_THAT(log.str(),
        testing::HasSubstr(
            "[INFO] \t\t->> Found potentially useful [Test Mod]: test_files\\vic3_world\\documents\\mod\\test_mod"));
    EXPECT_THAT(log.str(),
        testing::HasSubstr("[INFO] \t\t->> Found potentially useful [Test Mod Two]: "
                           "test_files\\vic3_world\\workshop\\529340\\test_mod_two"));
+#else
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr(
+           "[INFO] \t\t->> Found potentially useful [Test Mod]: test_files/vic3_world/documents/mod/test_mod"));
+   EXPECT_THAT(log.str(),
+       testing::HasSubstr("[INFO] \t\t->> Found potentially useful [Test Mod Two]: "
+           "test_files/vic3_world/workshop/529340/test_mod_two"));
+#endif
 }
 
 TEST(Vic3worldWorldVic3worldimporter, PactsBecomeSubjectsAndOverlords)
