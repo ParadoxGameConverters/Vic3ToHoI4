@@ -1,8 +1,8 @@
 #include "src/vic3_world/cultures/culture_definitions_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/commonItems/StringUtils.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/commonItems/StringUtils.h>
 
 std::map<std::string, vic3::CultureDefinition> vic3::ImportCultureDefinitions(
     const commonItems::ModFilesystem& mod_filesystem)
@@ -15,7 +15,7 @@ std::map<std::string, vic3::CultureDefinition> vic3::ImportCultureDefinitions(
 
    commonItems::parser ethnicityParser;
    ethnicityParser.registerRegex(commonItems::integerRegex,
-       [&ethnicities](const std::string& weight, std::istream& input_stream) {
+       [&ethnicities]([[maybe_unused]] const std::string& weight, std::istream& input_stream) {
           ethnicities.emplace(commonItems::getString(input_stream));
        });
    ethnicityParser.IgnoreUnregisteredItems();
@@ -71,7 +71,7 @@ std::map<std::string, vic3::CultureDefinition> vic3::ImportCultureDefinitions(
               vic3::CultureDefinition{culture_name, name_list, traits, ethnicities});
        });
 
-   for (const auto& definition_filename: mod_filesystem.GetAllFilesInFolder("/common/cultures/"))
+   for (const auto& definition_filename: mod_filesystem.GetAllFilesInFolder("common/cultures/"))
    {
       culture_definitions_parser.parseFile(definition_filename);
    }

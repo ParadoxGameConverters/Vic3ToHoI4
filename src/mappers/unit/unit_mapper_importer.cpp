@@ -1,10 +1,12 @@
 #include "src/mappers/unit/unit_mapper_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
 
-mappers::UnitMapper mappers::ImportUnitMapper(std::string_view mapping_file)
+
+
+mappers::UnitMapper mappers::ImportUnitMapper(const std::filesystem::path& mapping_file)
 {
    mappers::TemplateMap templates;
    mappers::BattalionTemplate current;

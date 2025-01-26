@@ -3,10 +3,11 @@
 
 
 
+#include <external/commonItems/Parser.h>
+
 #include <istream>
 
 #include "decisions_category.h"
-#include "external/commonItems/Parser.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
 
 

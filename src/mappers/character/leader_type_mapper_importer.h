@@ -3,6 +3,8 @@
 
 
 
+#include <filesystem>
+
 #include "src/mappers/character/leader_type_mapper.h"
 
 
@@ -10,7 +12,7 @@
 namespace mappers
 {
 
-LeaderTypeMapper ImportLeaderTypeMapper(std::string_view mapping_file);
+LeaderTypeMapper ImportLeaderTypeMapper(const std::filesystem::path& mapping_file);
 
 }  // namespace mappers
 

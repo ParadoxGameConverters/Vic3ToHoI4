@@ -24,7 +24,7 @@ using CountryStrategyFn = std::function<bool(const vic3::Country&)>;
 class CountryMappingCreator
 {
   public:
-   explicit CountryMappingCreator(std::string_view country_mappings_file);
+   explicit CountryMappingCreator(const std::filesystem::path& country_mappings_file);
 
    std::map<int, std::string> AssignTags(auto countries);
 

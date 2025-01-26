@@ -1,10 +1,12 @@
 ﻿#include "src/mappers/character/leader_type_mapper_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
 
-mappers::LeaderTypeMapper mappers::ImportLeaderTypeMapper(std::string_view mapping_file)
+
+
+mappers::LeaderTypeMapper mappers::ImportLeaderTypeMapper(const std::filesystem::path& mapping_file)
 {
    GovernancePowerMap governance_power_map;
    PowerLeaderMap power_leader_map;
@@ -12,7 +14,7 @@ mappers::LeaderTypeMapper mappers::ImportLeaderTypeMapper(std::string_view mappi
 
    commonItems::parser power_parser;
    power_parser.registerRegex(commonItems::catchallRegex,
-       [&power_leader_map, &leader_type](const std::string& law, std::istream& input_stream) {
+       [&power_leader_map, &leader_type](const std::string& law, [[maybe_unused]] std::istream& input_stream) {
           power_leader_map.emplace(law, leader_type);
        });
 

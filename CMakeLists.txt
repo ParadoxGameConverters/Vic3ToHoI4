@@ -12,8 +12,7 @@ set(CMAKE_CXX_STANDARD 23)
 set (UNICODE_DEFAULT OFF)
 
 if (PLATFORM STREQUAL "Windows")
-	ADD_DEFINITIONS(-DUNICODE)
-	ADD_DEFINITIONS(-D_UNICODE)
+	ADD_DEFINITIONS(-DUNICODE -D_UNICODE -DWINDOWS)
 elseif (PLATFORM STREQUAL "Linux")
 	if (COVERAGE STREQUAL true)
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
@@ -194,47 +193,25 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/wars/war_importer.cpp
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/world/vic3_world_builder.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/world/vic3_world_importer.cpp")
 
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/BulkParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Color.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/CommonFunctions.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ConvenientParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ConverterVersion.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Date.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/GameVersion.cpp")
-if (PLATFORM STREQUAL "Windows")
-	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/WinUtils.cpp")
-elseif (PLATFORM STREQUAL "Linux")
-	set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/LinuxUtils.cpp")
-endif (PLATFORM STREQUAL "Windows")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Localization/LocalizationBlock.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Localization/LocalizationDatabase.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Log.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ModLoader/ModFilesystem.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ModLoader/ModLoader.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ModLoader/ModParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/OSCommonLayer.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/Parser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/ParserHelpers.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/StringUtils.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/external/zip/src/zip.c")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/commonItems/iconvlite.cpp")
-
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/format.cc")
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/os.cc")
-
+add_library(fmtLib ${FORMAT_SOURCES})
 
 link_directories("./external/rakaly")
 
-add_library(CommonItems ${COMMON_SOURCES})
+add_subdirectory(external/commonItems EXCLUDE_FROM_ALL)
+
 add_library(Vic3ToHoi4lib
 	${CONVERTER_SOURCES}
-	${FORMAT_SOURCES}
- )
+)
 target_precompile_headers(Vic3ToHoi4lib PUBLIC ${PCH_SOURCES})
 if (PLATFORM STREQUAL "Windows")
-	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC CommonItems rakaly.dll.lib)
+	target_compile_options(Vic3ToHoi4lib PRIVATE /permissive /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 
+        /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 
+        /external:anglebrackets /external:W0 /WX)
+	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC commonLib fmtLib rakaly.dll.lib)
 elseif (PLATFORM STREQUAL "Linux")
-	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC CommonItems rakaly)
+	target_link_libraries(Vic3ToHoi4lib LINK_PUBLIC commonLib fmtLib rakaly)
 endif (PLATFORM  STREQUAL "Windows")
 
 add_executable(
@@ -247,6 +224,14 @@ set_target_properties( Vic3ToHoi4
 )
 target_precompile_headers(Vic3ToHoi4 REUSE_FROM Vic3ToHoi4lib)
 target_link_libraries(Vic3ToHoi4 LINK_PUBLIC Vic3ToHoi4lib)
+if (PLATFORM STREQUAL "Windows")
+	target_compile_options(Vic3ToHoi4 PRIVATE /permissive /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 
+        /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 
+        /external:anglebrackets /external:W0 /WX)
+	target_link_libraries(Vic3ToHoi4 LINK_PUBLIC commonLib rakaly.dll.lib)
+elseif (PLATFORM STREQUAL "Linux")
+	target_link_libraries(Vic3ToHoi4 LINK_PUBLIC commonLib rakaly)
+endif (PLATFORM  STREQUAL "Windows")
 
 configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
 configure_file("data/readme.txt" "${FRONTER_OUTPUT_DIRECTORY}/readme.txt" COPYONLY)
@@ -345,9 +330,9 @@ set_target_properties(ConverterFrontend
     RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
 )
 if (PLATFORM STREQUAL "Windows")
-	target_link_libraries(ConverterFrontend LINK_PUBLIC ${LIBCURL_LIB} ${LIBCURL_DLL_LIB} CommonItems) 
+	target_link_libraries(ConverterFrontend LINK_PUBLIC ${LIBCURL_LIB} ${LIBCURL_DLL_LIB} commonLib) 
 elseif (PLATFORM STREQUAL "Linux")
-	target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} CommonItems)
+	target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} commonLib)
 endif (PLATFORM STREQUAL "Windows")
 
 if (PLATFORM STREQUAL "Windows")
@@ -362,7 +347,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
 elseif (CMAKE_BUILD_TYPE STREQUAL "Debug")
 	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32ud_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
 	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32ud_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-endif (PLATFORM STREQUAL "Release")
+endif (CMAKE_BUILD_TYPE STREQUAL "Release")
 	file(GLOB FRONTER_CONFIG "data/fronter/*")
 	file(COPY ${FRONTER_CONFIG} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
 	file(GLOB LOCALIZATIONS "external/Fronter/Fronter/Resources/*.yml")
@@ -532,11 +517,17 @@ add_executable(
 	${TEST_SOURCES}
 	${GTEST_SOURCES}
  )
-set_target_properties( Vic3ToHoi4Tests
+set_target_properties(Vic3ToHoi4Tests
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
 )
 target_precompile_headers(Vic3ToHoi4Tests REUSE_FROM Vic3ToHoi4lib)
+if (PLATFORM STREQUAL "Windows")
+    target_compile_options(Vic3ToHoi4Tests PRIVATE /permissive /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 
+        /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 
+        /external:anglebrackets /external:W0 /WX)
+elseif (PLATFORM STREQUAL "Linux")
+endif (PLATFORM STREQUAL "Windows")
 
 file(COPY "data/blank_mod" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
 file(COPY "data/test_files" DESTINATION "${TEST_OUTPUT_DIRECTORY}")

@@ -1,6 +1,6 @@
 #include "src/hoi4_world/military/task_force_template.h"
 
-#include "external/fmt/include/fmt/format.h"
+#include <external/fmt/include/fmt/format.h>
 
 bool hoi4::TaskForceTemplate::AllVariantsActive(const std::set<std::string>& active_variants) const
 {

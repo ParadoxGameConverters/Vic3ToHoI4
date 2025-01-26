@@ -1,8 +1,9 @@
 #include "src/hoi4_world/countries/hoi4_countries_converter.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <ranges>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/military/convoy_distributor.h"
 #include "src/hoi4_world/military/convoy_distributor_builder.h"
 #include "src/hoi4_world/military/division_templates_importer.h"

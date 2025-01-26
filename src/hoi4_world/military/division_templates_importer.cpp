@@ -1,13 +1,13 @@
 #include "src/hoi4_world/military/division_templates_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/commonItems/StringUtils.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/commonItems/StringUtils.h>
 
 
 
-std::vector<hoi4::DivisionTemplate> hoi4::ImportDivisionTemplates(std::string_view templates_filename)
+std::vector<hoi4::DivisionTemplate> hoi4::ImportDivisionTemplates(const std::filesystem::path& templates_filename)
 {
    std::vector<DivisionTemplate> division_templates;
 

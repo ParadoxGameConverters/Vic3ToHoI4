@@ -1,7 +1,8 @@
 #include "vic3_to_hoi4_converter.h"
 
-#include "external/commonItems/Log.h"
-#include "external/commonItems/ModLoader/ModFilesystem.h"
+#include <external/commonItems/Log.h>
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+
 #include "hoi4_world/world/hoi4_world_framework_builder.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 #include "src/hoi4_world/world/hoi4_world_converter.h"

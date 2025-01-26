@@ -1,9 +1,9 @@
 #include "src/vic3_world/interest_groups/interest_group_importer.h"
 
-#include <ranges>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
 
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+#include <ranges>
 
 vic3::InterestGroupImporter::InterestGroupImporter()
 {
@@ -14,7 +14,7 @@ vic3::InterestGroupImporter::InterestGroupImporter()
       type_ = commonItems::getString(input_stream);
    });
    ig_parser_.registerKeyword("leader", [this](std::istream& input_stream) {
-      leader_ = commonItems::getLlong(input_stream);
+      leader_ = static_cast<int>(commonItems::getLlong(input_stream));
    });
    ig_parser_.registerKeyword("clout", [this](std::istream& input_stream) {
       clout_ = static_cast<float>(commonItems::getDouble(input_stream));
@@ -29,7 +29,7 @@ vic3::InterestGroupImporter::InterestGroupImporter()
 }
 
 
-vic3::InterestGroup vic3::InterestGroupImporter::ImportInterestGroup(const int id, std::istream& input_stream)
+vic3::InterestGroup vic3::InterestGroupImporter::ImportInterestGroup(std::istream& input_stream)
 {
    type_.clear();
    country_id_ = 0;

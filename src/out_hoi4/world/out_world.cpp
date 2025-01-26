@@ -1,9 +1,11 @@
 #include "out_world.h"
 
+#include <external/fmt/include/fmt/format.h>
+
+#include <cctype>
 #include <fstream>
 #include <ranges>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/countries/out_countries.h"
 #include "src/out_hoi4/decisions/out_decisions.h"
 #include "src/out_hoi4/decisions/out_decisions_categories.h"
@@ -20,10 +22,14 @@
 
 
 
+using std::filesystem::path;
+
+
+
 namespace
 {
 
-void OutputBookmark(std::string_view output_name,
+void OutputBookmark(const path& output_name,
     std::string_view bookmark_name,
     date start_date,
     bool default_bookmark,
@@ -31,13 +37,16 @@ void OutputBookmark(std::string_view output_name,
     const std::set<std::string>& major_powers)
 {
    std::string uppercase_bookmark_name{bookmark_name};
+#pragma warning(push)
+#pragma warning(disable : 4242)
    std::ranges::transform(uppercase_bookmark_name, uppercase_bookmark_name.begin(), ::toupper);
+#pragma warning(pop)
 
-   std::string bookmark_file_name = fmt::format("output/{}/common/bookmarks/the_{}.txt", output_name, bookmark_name);
+   const path bookmark_file_name = "output" / output_name / fmt::format("common/bookmarks/the_{}.txt", bookmark_name);
    std::ofstream bookmark_file(bookmark_file_name);
    if (!bookmark_file.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create {}", bookmark_file_name));
+      throw std::runtime_error(fmt::format("Could not create {}", bookmark_file_name.string()));
    }
 
    bookmark_file << "bookmarks = {\n";
@@ -79,7 +88,8 @@ void OutputBookmark(std::string_view output_name,
 
 }  // namespace
 
-void out::OutputWorld(std::string_view output_name, const hoi4::World& world, configuration::UseStories use_stories)
+
+void out::OutputWorld(const path& output_name, const hoi4::World& world, configuration::UseStories use_stories)
 {
    OutputCountries(output_name, world.GetCountries(), world.GetCharacters(), use_stories);
    OutputDecisions(output_name, world.GetCountries());

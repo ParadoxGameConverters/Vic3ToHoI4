@@ -1,7 +1,7 @@
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+#include <external/fmt/include/fmt/format.h>
 #include <gmock/gmock-matchers.h>
 
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/map/railways_converter.h"
 
 

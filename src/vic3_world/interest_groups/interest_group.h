@@ -19,7 +19,7 @@ class InterestGroup
        const int leader,
        const float clout,
        const bool in_government,
-       const std::set<std::string> ideologies):
+       std::set<std::string> ideologies):
        type_(std::move(type)),
        country_id_(country_id),
        leader_(leader),

@@ -1,20 +1,25 @@
 #include "src/out_hoi4/names/out_names.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 #include <ranges>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/out_hoi4/names/out_name_list.h"
 
 
 
-void out::OutputNames(std::string_view output_name, const std::map<std::string, hoi4::Country>& countries)
+using std::filesystem::path;
+
+
+
+void out::OutputNames(const path& output_name, const std::map<std::string, hoi4::Country>& countries)
 {
-   const auto file_path = fmt::format("output/{}/common/names/converter_names.txt", output_name);
+   const path file_path = "output" / output_name / "common/names/converter_names.txt";
    std::ofstream out(file_path);
    if (!out.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not open {}", file_path));
+      throw std::runtime_error(fmt::format("Could not open {}", file_path.string()));
    }
 
    for (const auto& country: countries | std::views::values)

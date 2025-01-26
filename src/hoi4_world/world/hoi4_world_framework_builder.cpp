@@ -1,6 +1,7 @@
 #include "src/hoi4_world/world/hoi4_world_framework_builder.h"
 
-#include "external/fmt/include/fmt/format.h"
+#include <external/fmt/include/fmt/format.h>
+
 #include "src/hoi4_world/map/coastal_provinces.h"
 #include "src/hoi4_world/map/coastal_provinces_creator.h"
 #include "src/hoi4_world/map/hoi4_province_definition_importer.h"
@@ -34,7 +35,7 @@ WorldFrameworkBuilder WorldFrameworkBuilder::CreateDefaultWorldFramework(
 WorldFrameworkBuilder WorldFrameworkBuilder::CreateNullWorldFramework()
 {
    WorldFrameworkBuilder wfb{};
-   wfb.hoi4_mod_filesystem_ = commonItems::ModFilesystem("test_files/hoi4_world", {});
+   wfb.hoi4_mod_filesystem_ = commonItems::ModFilesystem(std::filesystem::path("test_files/hoi4_world"), {});
    wfb.strategic_regions_ = {};
    wfb.default_states_ = {};
    wfb.resources_map_ = {};

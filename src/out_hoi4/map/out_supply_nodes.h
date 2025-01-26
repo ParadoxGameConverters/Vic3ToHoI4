@@ -3,6 +3,7 @@
 
 
 
+#include <filesystem>
 #include <set>
 #include <string>
 
@@ -11,7 +12,7 @@
 namespace out
 {
 
-void OutputSupplyNodes(std::string_view output_name, const std::set<int>& supply_nodes);
+void OutputSupplyNodes(const std::filesystem::path& output_name, const std::set<int>& supply_nodes);
 
 }  // namespace out
 

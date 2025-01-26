@@ -2,15 +2,18 @@
 #define SRC_HOI4WORLD_MILITARY_DIVISIONTEMPLATESIMPORTER_H
 
 
-#include <string_view>
+
+#include <filesystem>
 #include <vector>
 
 #include "src/hoi4_world/military/division_template.h"
 
+
+
 namespace hoi4
 {
 
-std::vector<DivisionTemplate> ImportDivisionTemplates(std::string_view templates_filename);
+std::vector<DivisionTemplate> ImportDivisionTemplates(const std::filesystem::path& templates_filename);
 
 }  // namespace hoi4
 

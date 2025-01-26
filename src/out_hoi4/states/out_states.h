@@ -3,6 +3,7 @@
 
 
 
+#include <filesystem>
 #include <string_view>
 #include <vector>
 
@@ -13,7 +14,7 @@
 namespace out
 {
 
-void OutputStates(std::string_view output_name, const std::vector<hoi4::State>& states);
+void OutputStates(const std::filesystem::path& output_name, const std::vector<hoi4::State>& states);
 
 }  // namespace out
 

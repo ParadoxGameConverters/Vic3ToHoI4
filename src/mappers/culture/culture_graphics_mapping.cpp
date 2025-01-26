@@ -1,6 +1,7 @@
+#include <external/fmt/include/fmt/format.h>
+
 #include <sstream>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/mappers/culture/culture_graphics_mapper.h"
 
 

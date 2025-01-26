@@ -1,7 +1,8 @@
-﻿#include <sstream>
+﻿#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include <sstream>
+
 #include "src/mappers/character/leader_type_mapper.h"
 #include "src/mappers/character/leader_type_mapper_importer.h"
 

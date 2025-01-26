@@ -1,33 +1,34 @@
 #include "src/configuration/configuration_importer.h"
 
-#include "external/commonItems/CommonFunctions.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+#include <external/commonItems/CommonFunctions.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
+
+
+using std::filesystem::path;
 
 
 
 namespace
 {
 
-std::string DetermineOutputName(std::string_view save_name)
+std::string DetermineOutputName(const path& save_name)
 {
-   std::string output_name = trimPath(std::string(save_name));
-   if (getExtension(output_name) != "v3")
+   if (save_name.extension() != ".v3")
    {
       throw std::invalid_argument("The save was not a Vic3 save. Choose a save ending in '.v3' and convert again.");
    }
 
-   output_name = trimExtension(output_name);
-
-   return output_name;
+   return save_name.stem().string();
 }
 
 }  // namespace
 
 
-configuration::Configuration configuration::ImportConfiguration(std::string_view configuration_file,
+configuration::Configuration configuration::ImportConfiguration(const path& configuration_file,
     const commonItems::ConverterVersion& converter_version)
 {
    commonItems::parser configuration_parser;

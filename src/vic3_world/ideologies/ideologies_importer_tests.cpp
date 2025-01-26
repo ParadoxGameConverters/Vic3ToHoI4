@@ -1,7 +1,8 @@
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include <sstream>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/vic3_world/ideologies/ideologies_importer.h"
 
 
@@ -11,7 +12,7 @@ namespace vic3
 
 TEST(Vic3worldIdeologiesIdeologiesimporterTests, IdeologiesAreImported)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/ideologies", {});
+   const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("test_files/vic3_world/ideologies"), {});
 
    const Ideologies ideologies = IdeologiesImporter{}.ImportIdeologies(mod_filesystem);
 

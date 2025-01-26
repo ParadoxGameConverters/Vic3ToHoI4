@@ -1,4 +1,5 @@
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include "src/maps/province_points.h"
 
 

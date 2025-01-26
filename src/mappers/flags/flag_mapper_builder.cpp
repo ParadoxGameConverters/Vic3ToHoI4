@@ -1,21 +1,26 @@
 #include "src/mappers/flags/flag_mapper_builder.h"
 
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <filesystem>
 #include <map>
 #include <string>
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+
+
+using std::filesystem::path;
+
 
 
 namespace
 {
 
-extern const std::filesystem::path kIgnoreFlag("ignore");
+const path kIgnoreFlag("ignore");
 
 
 }  // namespace
@@ -24,9 +29,9 @@ extern const std::filesystem::path kIgnoreFlag("ignore");
 namespace mappers
 {
 
-const std::vector<std::string> kFlagFolders{"/", "/small/", "/medium/"};
+const std::vector<std::string> kFlagFolders{"", "small", "medium"};
 
-void FlagMapperBuilder::ReadConfig(const std::string& config_file)
+void FlagMapperBuilder::ReadConfig(const path& config_file)
 {
    commonItems::parser config_parser;
    config_parser.registerKeyword("forbid", [&](std::istream& input_stream) {
@@ -39,53 +44,34 @@ void FlagMapperBuilder::ReadConfig(const std::string& config_file)
    config_parser.parseFile(config_file);
 }
 
-bool FlagMapperBuilder::CreateTargetFolders(const std::string output_name)
+
+bool FlagMapperBuilder::CreateTargetFolders(const path& output_name)
 {
-   std::vector<std::string> flag_path{"", "/gfx", "/flags"};
-   std::string suffix;
-   // In case this method is called first or alone on a system that doesn't
-   // permit recursive directory creation, e.g. Unix tests.
-   if (!commonItems::DoesFolderExist("output"))
+   base_folder_ = "output" / output_name / "gfx/flags";
+   remove_all(base_folder_);
+   if (!create_directories(base_folder_))
    {
-      if (!commonItems::TryCreateFolder("output"))
-      {
-         Log(LogLevel::Warning) << "Output folder doesn't exist and can't be created.";
-         return false;
-      }
+      Log(LogLevel::Warning) << "Could not create flags folder.";
+      return false;
    }
-   for (const auto& folder: flag_path)
+   if (!create_directories(base_folder_ / "small"))
    {
-      suffix += folder;
-      const std::string target = fmt::format("output/{}{}", output_name, suffix);
-      if (!commonItems::DoesFolderExist(target))
-      {
-         if (!commonItems::TryCreateFolder(target))
-         {
-            Log(LogLevel::Warning) << "Could not create " << target << ", flags will not be copied.";
-            return false;
-         }
-      }
-      base_folder_ = std::filesystem::path(target);
+      Log(LogLevel::Warning) << "Could not create small flags folder.";
+      return false;
    }
-   for (const auto& folder: kFlagFolders)
+   if (!create_directories(base_folder_ / "medium"))
    {
-      auto target = fmt::format("{}{}", base_folder_.string(), folder);
-      if (!commonItems::DoesFolderExist(target))
-      {
-         if (!commonItems::TryCreateFolder(target))
-         {
-            Log(LogLevel::Warning) << "Could not create " << target << ", flags will not be copied.";
-            return false;
-         }
-      }
+      Log(LogLevel::Warning) << "Could not create medium flags folder.";
+      return false;
    }
 
    return true;
 }
 
+
 FlagMapper FlagMapperBuilder::Build(const commonItems::ModFilesystem& hoi4_mod_filesystem)
 {
-   std::map<std::string, std::filesystem::path> available_flags;
+   std::map<std::string, path> available_flags;
    std::set<std::string> custom_flags;
    // Check if there are custom flags in blank mod.
    Log(LogLevel::Info) << "Custom flag folder: " << custom_flag_folder_;
@@ -95,24 +81,22 @@ FlagMapper FlagMapperBuilder::Build(const commonItems::ModFilesystem& hoi4_mod_f
       for (const auto& filename: commonItems::GetAllFilesInFolder(custom_flag_folder_))
       {
          // Ignore non-tga files.
-         const auto path = std::filesystem::path(filename);
-         if (path.extension() != ".tga")
+         if (filename.extension() != ".tga")
          {
             continue;
          }
-         const auto& tag = path.stem().string();
+         const auto& tag = filename.stem().string();
          // Will be removed later when notified of tag list.
-         Log(LogLevel::Info) << "  Found tag " << tag << " at " << path.string();
+         Log(LogLevel::Info) << "  Found tag " << tag << " at " << filename.string();
          custom_flags.insert(tag);
          forbid_.insert(tag);
       }
    }
 
    // Find all available flags in HoI mod.
-   for (const auto& file: hoi4_mod_filesystem.GetAllFilesInFolder("/gfx/flags/"))
+   for (const auto& file: hoi4_mod_filesystem.GetAllFilesInFolder("gfx/flags"))
    {
-      auto fpath = std::filesystem::path(file);
-      const auto& tag = fpath.stem().string();
+      const auto& tag = file.stem().string();
       if (tag.size() != 3)
       {
          // Don't use government-specific flags to redistribute; but do mark
@@ -129,7 +113,7 @@ FlagMapper FlagMapperBuilder::Build(const commonItems::ModFilesystem& hoi4_mod_f
       {
          continue;
       }
-      available_flags[tag] = fpath;
+      available_flags[tag] = file;
    }
 
    // Remove the ignore flags so they don't get used for redistribution.

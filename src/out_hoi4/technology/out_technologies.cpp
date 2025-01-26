@@ -1,6 +1,6 @@
 #include "src/out_hoi4/technology/out_technologies.h"
 
-#include "external/fmt/include/fmt/format.h"
+#include <external/fmt/include/fmt/format.h>
 
 
 

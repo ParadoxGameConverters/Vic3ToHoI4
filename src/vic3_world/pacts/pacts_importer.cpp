@@ -1,10 +1,11 @@
 #include "src/vic3_world/pacts/pacts_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include "src/vic3_world/pacts/pact_importer.h"
 
 
@@ -25,7 +26,7 @@ std::map<int, vic3::Pact> vic3::ImportPacts(std::istream& input_stream)
           }
           std::istringstream pact_stream(pact_string);
 
-          pacts.emplace(id, pact_importer.ImportPact(id, pact_stream));
+          pacts.emplace(id, pact_importer.ImportPact(pact_stream));
        });
    database_parser.IgnoreUnregisteredItems();
 

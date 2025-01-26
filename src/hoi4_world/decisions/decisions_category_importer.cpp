@@ -1,7 +1,7 @@
 #include "src/hoi4_world/decisions/decisions_category_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/ParserHelpers.h>
 
 
 

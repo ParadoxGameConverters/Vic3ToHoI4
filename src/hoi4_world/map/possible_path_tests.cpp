@@ -1,6 +1,6 @@
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/map/possible_path.h"
 
 

@@ -1,8 +1,8 @@
 ﻿#include "character_trait_mapper.h"
 
-#include <climits>
+#include <external/fmt/include/fmt/format.h>
 
-#include "external/fmt/include/fmt/format.h"
+#include <climits>
 
 namespace
 {

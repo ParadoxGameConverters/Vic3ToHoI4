@@ -1,6 +1,6 @@
 #include "src/out_hoi4/military/out_equipment_variant.h"
 
-#include "external/fmt/include/fmt/format.h"
+#include <external/fmt/include/fmt/format.h>
 
 
 

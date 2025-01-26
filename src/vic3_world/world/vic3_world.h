@@ -2,10 +2,11 @@
 #define SRC_VIC3WORLD_WORLD_VIC3WORLD_H
 
 
+#include <external/commonItems/Localization/LocalizationDatabase.h>
+
 #include <map>
 #include <set>
 
-#include "external/commonItems/Localization/LocalizationDatabase.h"
 #include "src/vic3_world/buildings/buildings.h"
 #include "src/vic3_world/characters/vic3_character.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -41,7 +42,7 @@ struct WorldOptions
    Ideologies ideologies;
    std::map<int, std::vector<Institution>> institutions;
    std::vector<War> wars;
-   int playthrough_id;
+   int playthrough_id = 0;
 };
 
 
@@ -116,7 +117,7 @@ class World
    std::map<int, std::vector<Institution>> institutions_;
    std::vector<War> wars_;
 
-   int playthrough_id_;  // Seed, for deterministic results across conversions for the same series of saves
+   int playthrough_id_ = 0;  // Seed, for deterministic results across conversions for the same series of saves
 };
 
 

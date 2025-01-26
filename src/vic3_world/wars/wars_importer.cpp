@@ -1,10 +1,11 @@
 #include "src/vic3_world/wars/wars_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include "src/vic3_world/wars/war_importer.h"
 
 
@@ -16,7 +17,7 @@ std::vector<vic3::War> vic3::ImportWars(std::istream& input_stream)
 
    commonItems::parser database_parser;
    database_parser.registerRegex(commonItems::integerRegex,
-       [&war_importer, &wars](const std::string& unused, std::istream& input_stream) {
+       [&war_importer, &wars]([[maybe_unused]] const std::string& unused, std::istream& input_stream) {
           const std::string war_string = commonItems::stringOfItem(input_stream).getString();
           if (war_string.find('{') == std::string::npos)
           {

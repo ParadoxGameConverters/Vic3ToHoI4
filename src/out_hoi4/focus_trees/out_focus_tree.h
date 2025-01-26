@@ -3,6 +3,7 @@
 
 
 
+#include <filesystem>
 #include <string_view>
 
 #include "src/configuration/configuration.h"
@@ -13,7 +14,7 @@
 namespace out
 {
 
-void OutputFocusTree(std::string_view output_name,
+void OutputFocusTree(const std::filesystem::path& output_name,
     std::string_view tag,
     const hoi4::FocusTree& focus_tree,
     configuration::UseStories use_stories);

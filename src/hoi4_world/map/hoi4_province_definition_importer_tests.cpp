@@ -1,6 +1,11 @@
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include "src/hoi4_world/map/hoi4_province_definition_importer.h"
+
+
+
+using std::filesystem::path;
 
 
 
@@ -9,7 +14,7 @@ namespace hoi4
 
 TEST(Hoi4worldMapHoi4provincedefinitionimporter, ExceptionThrownForNoDefinitions)
 {
-   const commonItems::ModFilesystem mod_filesystem("", {});
+   const commonItems::ModFilesystem mod_filesystem(path(""), {});
 
    EXPECT_THROW([[maybe_unused]] const maps::ProvinceDefinitions province_definitions =
                     ImportProvinceDefinitions(mod_filesystem),
@@ -19,7 +24,7 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, ExceptionThrownForNoDefinitions
 
 TEST(Hoi4worldMapHoi4provincedefinitionimporter, DefinitionsCanBeImported)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
+   const commonItems::ModFilesystem mod_filesystem(path("test_files/hoi4_world"), {});
 
    const maps::ProvinceDefinitions province_definitions = ImportProvinceDefinitions(mod_filesystem);
 
@@ -30,7 +35,7 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, DefinitionsCanBeImported)
 
 TEST(Hoi4worldMapHoi4provincedefinitionimporter, SeaProvincesAreDetected)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
+   const commonItems::ModFilesystem mod_filesystem(path("test_files/hoi4_world"), {});
 
    const maps::ProvinceDefinitions province_definitions = ImportProvinceDefinitions(mod_filesystem);
 

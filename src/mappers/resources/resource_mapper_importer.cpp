@@ -1,10 +1,12 @@
 #include "src/mappers/resources/resource_mapper_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
 
-mappers::ResourceMapper mappers::ImportResourceMapper(std::string_view mapping_file)
+
+
+mappers::ResourceMapper mappers::ImportResourceMapper(const std::filesystem::path& mapping_file)
 {
    std::map<std::string, mappers::ResourceScore> scores;
    mappers::ResourceScore current;
@@ -17,14 +19,15 @@ mappers::ResourceMapper mappers::ImportResourceMapper(std::string_view mapping_f
        });
 
    commonItems::parser score_parser;
-   score_parser.registerKeyword("base", [&base_parser](const std::string& key, std::istream& input_stream) {
-      base_parser.parseStream(input_stream);
-   });
+   score_parser.registerKeyword("base",
+       [&base_parser]([[maybe_unused]] const std::string& key, std::istream& input_stream) {
+          base_parser.parseStream(input_stream);
+       });
    score_parser.registerKeyword("bonus", [&current](std::istream& input_stream) {
-      current.bonus = commonItems::getDouble(input_stream);
+      current.bonus = static_cast<float>(commonItems::getDouble(input_stream));
    });
    score_parser.registerKeyword("total", [&current](std::istream& input_stream) {
-      current.total = commonItems::getDouble(input_stream);
+      current.total = static_cast<float>(commonItems::getDouble(input_stream));
    });
    score_parser.registerKeyword("bonus_building", [&current](std::istream& input_stream) {
       current.bonus_buildings.emplace(commonItems::getString(input_stream));

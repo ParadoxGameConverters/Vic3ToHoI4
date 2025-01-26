@@ -1,12 +1,13 @@
 #include "src/vic3_world/buildings/buildings_importer.h"
 
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+
 #include <map>
 #include <sstream>
 #include <vector>
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
 #include "src/vic3_world/buildings/building_importer.h"
 
 
@@ -19,7 +20,7 @@ vic3::Buildings vic3::ImportBuildings(std::istream& input_stream)
 
    commonItems::parser database_parser;
    database_parser.registerRegex(commonItems::integerRegex,
-       [&buildings, &building_importer](const std::string& unused, std::istream& input_stream) {
+       [&buildings, &building_importer]([[maybe_unused]] const std::string& unused, std::istream& input_stream) {
           const auto building_string = commonItems::stringOfItem(input_stream).getString();
           if (building_string.find("{") == std::string::npos)
           {

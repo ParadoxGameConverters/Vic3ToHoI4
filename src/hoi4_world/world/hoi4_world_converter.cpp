@@ -1,9 +1,10 @@
 #include "src/hoi4_world/world/hoi4_world_converter.h"
 
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <ranges>
 
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
 #include "hoi4_world.h"
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
@@ -128,7 +129,7 @@ void IncreaseVictoryPointsInCapitals(std::vector<hoi4::State>& states,
    for (int vic3_country_number: country_rankings.GetScoredCountries() | std::views::values)
    {
       std::optional<int> possible_capital_state_number =
-          GetCapitalStateNumber(vic3_country_number, country_mapper, countries, states.size());
+          GetCapitalStateNumber(vic3_country_number, country_mapper, countries, static_cast<int>(states.size()));
       if (!possible_capital_state_number)
       {
          continue;

@@ -1,45 +1,48 @@
+#include <external/commonItems/OSCompatibilityLayer.h>
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <filesystem>
 #include <fstream>
 #include <sstream>
 
-#include "external/commonItems/OSCompatibilityLayer.h"
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/map/buildings.h"
 #include "src/out_hoi4/map/out_buildings.h"
+
+
+
+using std::filesystem::create_directories;
+using std::filesystem::path;
+using std::filesystem::remove_all;
 
 
 
 namespace out
 {
 
-
 TEST(Outhoi4MapBuildingsTests, ExceptionForBadPath)
 {
+   remove_all("output/ExceptionForBadPath");
    EXPECT_THROW(OutputBuildings("ExceptionForBadPath", hoi4::Buildings()), std::runtime_error);
 }
 
 
 TEST(Outhoi4MapBuildingsTests, FilesAreCreated)
 {
-   commonItems::DeleteFolder("output/FilesAreCreated");
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/FilesAreCreated");
-   commonItems::TryCreateFolder("output/FilesAreCreated/map");
+   remove_all("output/FilesAreCreated");
+   create_directories("output/FilesAreCreated/map");
 
    OutputBuildings("FilesAreCreated", hoi4::Buildings());
 
-   EXPECT_TRUE(commonItems::DoesFileExist("output/FilesAreCreated/map/buildings.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist(path("output/FilesAreCreated/map/buildings.txt")));
 }
 
 
 TEST(Outhoi4MapBuildingsTests, BuildingsAreOutput)
 {
-   commonItems::DeleteFolder("output/BuildingsAreOutput");
-   commonItems::TryCreateFolder("output");
-   commonItems::TryCreateFolder("output/BuildingsAreOutput");
-   commonItems::TryCreateFolder("output/BuildingsAreOutput/map");
+   remove_all("output/BuildingsAreOutput");
+   create_directories("output/BuildingsAreOutput/map");
 
    OutputBuildings("BuildingsAreOutput",
        hoi4::Buildings(
@@ -58,7 +61,7 @@ TEST(Outhoi4MapBuildingsTests, BuildingsAreOutput)
                     .position = {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
                     .connecting_sea_province = 170})}}));
 
-   ASSERT_TRUE(commonItems::DoesFileExist("output/BuildingsAreOutput/map/buildings.txt"));
+   ASSERT_TRUE(commonItems::DoesFileExist(path("output/BuildingsAreOutput/map/buildings.txt")));
    std::ifstream buildings_file("output/BuildingsAreOutput/map/buildings.txt");
    ASSERT_TRUE(buildings_file.is_open());
    std::stringstream buildings_file_stream;

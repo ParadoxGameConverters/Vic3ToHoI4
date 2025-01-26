@@ -3,7 +3,8 @@
 
 
 
-#include "external/commonItems/Parser.h"
+#include <external/commonItems/Parser.h>
+
 #include "src/vic3_world/ideologies/ideology.h"
 
 

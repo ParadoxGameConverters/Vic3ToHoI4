@@ -1,5 +1,7 @@
 #include "src/hoi4_world/states/hoi4_states_converter.h"
 
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
 #include <src/hoi4_world/world/hoi4_world.h>
 
 #include <algorithm>
@@ -11,8 +13,6 @@
 #include <ranges>
 #include <vector>
 
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/configuration/configuration.h"
 #include "src/maps/map_data.h"
 #include "src/out_hoi4/world/out_world.h"
@@ -495,7 +495,7 @@ float CalculateNavalBaseRatio(const std::set<int>& hoi4_provinces,
     const hoi4::WorldFramework& world_framework,
     int total_coastal_provinces)
 {
-   const int coastal_province_count = std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
+   const int64_t coastal_province_count = std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
       return world_framework.coastal_provinces.contains(province_id);
    });
    return static_cast<float>(coastal_province_count) / static_cast<float>(total_coastal_provinces);
@@ -504,9 +504,8 @@ float CalculateNavalBaseRatio(const std::set<int>& hoi4_provinces,
 
 float FindNavalBaseStaffing(const vic3::World& source_world, int source_state_id)
 {
-   float total_naval_bases = 0;
    std::vector<vic3::Building> buildings = source_world.GetBuildings().GetBuildingsInState(source_state_id);
-   auto maybe_building = std::ranges::find_if(buildings, [](const vic3::Building& b) {
+   const auto maybe_building = std::ranges::find_if(buildings, [](const vic3::Building& b) {
       return b.GetType() == vic3::BuildingType::NavalBase;
    });
    if (maybe_building != buildings.end())
@@ -895,19 +894,19 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
 void LogManpowerStats(const std::vector<hoi4::State>& hoi4_states,
     const std::map<int, hoi4::DefaultState>& default_states)
 {
-   int64_t manpower = std::accumulate(hoi4_states.begin(),
+   const auto manpower = static_cast<double>(std::accumulate(hoi4_states.begin(),
        hoi4_states.end(),
        static_cast<int64_t>(0),
        [](int64_t total, const hoi4::State& state) {
           return static_cast<uint64_t>(total + state.GetManpower());
-       });
+       }));
 
-   int64_t default_manpower = std::accumulate(default_states.begin(),
+   const auto default_manpower = static_cast<double>(std::accumulate(default_states.begin(),
        default_states.end(),
        static_cast<int64_t>(0),
        [](int64_t total, const std::pair<int, hoi4::DefaultState>& state) {
           return total + state.second.GetManpower();
-       });
+       }));
 
    OutputStats("Manpower", manpower, default_manpower);
 }
@@ -922,12 +921,12 @@ void LogInfrastructure(mappers::InfrastructureMapper infrastructure_mapper)
 
 void LogNavalBases(const std::vector<hoi4::State>& hoi4_states)
 {
-   int64_t naval_bases = std::accumulate(hoi4_states.begin(),
+   const auto naval_bases = static_cast<double>(std::accumulate(hoi4_states.begin(),
        hoi4_states.end(),
        static_cast<int64_t>(0),
        [](int64_t total, const hoi4::State& state) {
           return static_cast<uint64_t>(total + state.GetNavalBaseLevel().value_or(0));
-       });
+       }));
    OutputStats("Naval base", naval_bases, 1347);
 }
 
@@ -1014,9 +1013,10 @@ hoi4::States CreateStates(const vic3::World& source_world,
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
       const float total_factories =
           static_cast<float>(source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
-      const int total_coastal_provinces = std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
-         return world_framework.coastal_provinces.contains(province_id);
-      });
+      const int total_coastal_provinces =
+          static_cast<int>(std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
+             return world_framework.coastal_provinces.contains(province_id);
+          }));
       for (const auto& province_set: final_connected_province_sets)
       {
          RecordStateNamesMapping(province_set,
@@ -1058,7 +1058,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
          hoi4::Resources resources = {};
          if (config.dynamic_resources)
          {
-            float fraction = province_set.size();
+            auto fraction = static_cast<float>(province_set.size());
             fraction /= total_non_wasteland_provinces;
             resources = CalculateResources(world_mapper.resource_mapper,
                 resource_totals,
@@ -1086,9 +1086,9 @@ hoi4::States CreateStates(const vic3::World& source_world,
              config.debug);
 
          std::set<std::string> cores;
-         if (vic3_state_itr->second.IsIncorporated())
+         if (vic3_state_itr->second.IsIncorporated() && state_owner.has_value())
          {
-            cores.insert(*state_owner);
+            cores.insert(state_owner.value());
          }
 
          for (const int province: province_set)

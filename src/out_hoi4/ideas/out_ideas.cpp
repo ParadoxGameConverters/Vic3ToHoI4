@@ -1,22 +1,27 @@
 #include "src/out_hoi4/ideas/out_ideas.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 #include <ranges>
 
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 
 
 
-void out::OutputMonarchIdeas(std::string_view output_name,
+using std::filesystem::path;
+
+
+
+void out::OutputMonarchIdeas(const path& output_name,
     const std::map<std::string, hoi4::Country>& countries,
     const std::map<int, hoi4::Character>& characters)
 {
-   const auto monarch_ideas_file_name = fmt::format("output/{}/common/ideas/_monarchs.txt", output_name);
+   const path monarch_ideas_file_name = "output" / output_name / "common/ideas/_monarchs.txt";
    std::ofstream monarch_ideas(monarch_ideas_file_name);
    if (!monarch_ideas.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create {}", monarch_ideas_file_name));
+      throw std::runtime_error(fmt::format("Could not create {}", monarch_ideas_file_name.string()));
    }
 
    monarch_ideas << "ideas = {\n";
@@ -30,7 +35,7 @@ void out::OutputMonarchIdeas(std::string_view output_name,
          continue;
       }
 
-      const auto monarch_itr = characters.find(*monarch_idea_id);
+      const auto monarch_itr = characters.find(static_cast<int>(*monarch_idea_id));
       if (monarch_itr == characters.end())
       {
          continue;

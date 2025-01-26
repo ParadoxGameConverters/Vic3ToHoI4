@@ -3,6 +3,7 @@
 
 
 
+#include <filesystem>
 #include <string_view>
 
 #include "src/hoi4_world/localizations/localizations.h"
@@ -12,7 +13,7 @@
 namespace out
 {
 
-void OutputLocalizations(std::string_view output_name, const hoi4::Localizations& localizations);
+void OutputLocalizations(const std::filesystem::path& output_name, const hoi4::Localizations& localizations);
 
 }  // namespace out
 

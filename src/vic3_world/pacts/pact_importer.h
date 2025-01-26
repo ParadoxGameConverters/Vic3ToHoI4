@@ -3,9 +3,10 @@
 
 
 
+#include <external/commonItems/Parser.h>
+
 #include <istream>
 
-#include "external/commonItems/Parser.h"
 #include "src/vic3_world/pacts/pact.h"
 
 
@@ -18,7 +19,7 @@ class PactImporter
   public:
    PactImporter();
 
-   [[nodiscard]] Pact ImportPact(int id, std::istream& input_stream);
+   [[nodiscard]] Pact ImportPact(std::istream& input_stream);
 
   private:
    commonItems::parser pact_parser_;

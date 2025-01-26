@@ -3,12 +3,13 @@
 
 
 
+#include <external/commonItems/Parser.h>
+
 #include <istream>
 #include <optional>
 #include <string>
 #include <vector>
 
-#include "external/commonItems/Parser.h"
 #include "src/hoi4_world/focus_trees/focus.h"
 
 

@@ -1,7 +1,8 @@
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include <sstream>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/vic3_world/pacts/pact_importer.h"
 
 
@@ -19,7 +20,7 @@ TEST(Vic3WorldPactImporter, DefaultsAreDefaulted)
 }
 )"";
 
-   const Pact pact = importer.ImportPact(0, input);
+   const Pact pact = importer.ImportPact(input);
 
    EXPECT_EQ(pact.GetFirstId(), 0);
    EXPECT_EQ(pact.GetSecondId(), 0);
@@ -45,7 +46,7 @@ TEST(Vic3WorldPactImporter, PactsCanBeImported)
 }
 )"";
 
-   const Pact pact = importer.ImportPact(0, input);
+   const Pact pact = importer.ImportPact(input);
 
    EXPECT_EQ(pact.GetFirstId(), 1053);
    EXPECT_EQ(pact.GetSecondId(), 268);
@@ -69,7 +70,7 @@ TEST(Vic3WorldPactImporter, Pre1_5PactsCanBeImported)
 }
 )"";
 
-   const Pact pact = importer.ImportPact(0, input);
+   const Pact pact = importer.ImportPact(input);
 
    EXPECT_EQ(pact.GetFirstId(), 1053);
    EXPECT_EQ(pact.GetSecondId(), 268);

@@ -14,7 +14,7 @@
 namespace out
 {
 
-void OutputCountries(std::string_view output_name,
+void OutputCountries(const std::filesystem::path& output_name,
     const std::map<std::string, hoi4::Country>& countries,
     const std::map<int, hoi4::Character>& characters,
     configuration::UseStories use_stories);

@@ -1,10 +1,15 @@
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include <sstream>
 
-#include "external/commonItems/ModLoader/ModFilesystem.h"
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/map/strategic_regions_importer.h"
+
+
+
+using std::filesystem::path;
 
 
 
@@ -13,7 +18,7 @@ namespace hoi4
 
 TEST(Hoi4WorldMapStrategicRegionsImporter, DefaultsAreEmpty)
 {
-   const commonItems::ModFilesystem mod_filesystem("", {});
+   const commonItems::ModFilesystem mod_filesystem(path(""), {});
    const auto strategic_regions = ImportStrategicRegions(mod_filesystem);
 
    EXPECT_TRUE(strategic_regions.GetStrategicRegions().empty());
@@ -23,7 +28,7 @@ TEST(Hoi4WorldMapStrategicRegionsImporter, DefaultsAreEmpty)
 
 TEST(Hoi4WorldMapStrategicRegionsImporter, StrategicRegionsCanBeImported)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
+   const commonItems::ModFilesystem mod_filesystem(path("test_files/hoi4_world"), {});
    const auto strategic_regions = ImportStrategicRegions(mod_filesystem);
 
    EXPECT_THAT(strategic_regions.GetStrategicRegions(),

@@ -1,7 +1,9 @@
 #include "src/maps/map_data_importer.h"
 
-#include "external/bitmap/bitmap_image.hpp"
-#include "external/fmt/include/fmt/format.h"
+#include <external/fmt/include/fmt/format.h>
+
+#include <external/bitmap/bitmap_image.hpp>
+
 #include "src/support/progress_manager.h"
 
 
@@ -99,16 +101,16 @@ maps::MapData maps::MapDataImporter::ImportMapData(const commonItems::ModFilesys
 
 void maps::MapDataImporter::ImportProvinces(const commonItems::ModFilesystem& mod_filesystem)
 {
-   const auto path = mod_filesystem.GetActualFileLocation("/map/provinces.bmp");
+   const auto path = mod_filesystem.GetActualFileLocation("map/provinces.bmp");
    if (!path)
    {
-      throw std::runtime_error("Could not find /map/provinces.bmp");
+      throw std::runtime_error("Could not find map/provinces.bmp");
    }
 
-   bitmap_image province_map(*path);
+   bitmap_image province_map(path->string());
    if (!province_map)
    {
-      throw std::runtime_error(fmt::format("Could not open {}/map/provinces.bmp", *path));
+      throw std::runtime_error(fmt::format("Could not open {}/map/provinces.bmp", path->string()));
    }
 
    int prev_progress = 0;
@@ -243,16 +245,16 @@ void maps::MapDataImporter::AddPointToBorder(const std::string& main_province,
 
 void maps::MapDataImporter::ImportAdjacencies(const commonItems::ModFilesystem& mod_filesystem)
 {
-   const auto path = mod_filesystem.GetActualFileLocation("/map/adjacencies.csv");
+   const auto path = mod_filesystem.GetActualFileLocation("map/adjacencies.csv");
    if (!path)
    {
-      throw std::runtime_error("Could not find /map/adjacencies.csv");
+      throw std::runtime_error("Could not find map/adjacencies.csv");
    }
 
    std::ifstream adjacencies_file(*path);
    if (!adjacencies_file.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not open {}", *path));
+      throw std::runtime_error(fmt::format("Could not open {}", path->string()));
    }
 
    while (!adjacencies_file.eof())

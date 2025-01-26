@@ -1,12 +1,13 @@
 #include "src/mappers/provinces/province_mapper_importer.h"
 
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/ModLoader/ModFilesystem.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/vic3_world/states/state_regions_importer.h"
 #include "src/vic3_world/world/vic3_world.h"
 
@@ -109,16 +110,16 @@ void IsMappingInWrongRegion(std::string_view current_region,
 void CheckAllHoi4ProvincesMapped(const mappers::Hoi4ToVic3ProvinceMapping& hoi4_to_vic3_province_map,
     const commonItems::ModFilesystem& filesystem)
 {
-   const auto definition_location = filesystem.GetActualFileLocation("/map/definition.csv");
+   const auto definition_location = filesystem.GetActualFileLocation("map/definition.csv");
    if (!definition_location.has_value())
    {
-      throw std::runtime_error("Could not find /map/definition.csv");
+      throw std::runtime_error("Could not find map/definition.csv");
    }
 
    std::ifstream definitions(*definition_location);
    if (!definitions.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not open {}", *definition_location));
+      throw std::runtime_error(fmt::format("Could not open {}", definition_location->string()));
    }
 
    while (true)
@@ -147,7 +148,7 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
    province_to_state_map_ = GenerateProvinceToStateMap(vic3_state_regions);
 
    version_parser_.registerRegex(R"(\d\.[\d]+\.\d)",
-       [this, &filesystem](const std::string& unused, std::istream& input_stream) {
+       [this, &filesystem]([[maybe_unused]] const std::string& unused, std::istream& input_stream) {
           mapping_parser_.parseStream(input_stream);
           CheckAllHoi4ProvincesMapped(hoi4_to_vic3_province_map_, filesystem);
        });
@@ -196,7 +197,7 @@ mappers::ProvinceMapper mappers::ProvinceMapperImporter::ImportProvinceMappings(
    vic3_to_hoi4_province_map_.clear();
    hoi4_to_vic3_province_map_.clear();
 
-   version_parser_.parseFile("configurables/province_mappings.txt");
+   version_parser_.parseFile(std::filesystem::path("configurables/province_mappings.txt"));
 
    return ProvinceMapper(vic3_to_hoi4_province_map_, hoi4_to_vic3_province_map_);
 }

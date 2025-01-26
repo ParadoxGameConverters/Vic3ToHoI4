@@ -1,20 +1,24 @@
 #include "src/out_hoi4/states/out_state.h"
 
+#include <external/fmt/include/fmt/format.h>
+
 #include <fstream>
 
-#include "external/fmt/include/fmt/format.h"
+
+
+using std::filesystem::path;
 
 
 
-void out::OutputState(std::string_view output_name, const hoi4::State& state)
+void out::OutputState(const path& output_name, const hoi4::State& state)
 {
    const int state_number = state.GetId();
 
-   const auto state_history_file_name = fmt::format("output/{}/history/states/{}.txt", output_name, state_number);
+   const path state_history_file_name = "output" / output_name / fmt::format("history/states/{}.txt", state_number);
    std::ofstream state_history(state_history_file_name);
    if (!state_history.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not create {}", state_history_file_name));
+      throw std::runtime_error(fmt::format("Could not create {}", state_history_file_name.string()));
    }
 
 

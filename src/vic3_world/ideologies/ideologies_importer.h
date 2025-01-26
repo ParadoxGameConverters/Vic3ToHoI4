@@ -3,8 +3,9 @@
 
 
 
-#include "external/commonItems/ModLoader/ModFilesystem.h"
-#include "external/commonItems/Parser.h"
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+#include <external/commonItems/Parser.h>
+
 #include "src/vic3_world/ideologies/ideologies.h"
 #include "src/vic3_world/ideologies/ideology_importer.h"
 

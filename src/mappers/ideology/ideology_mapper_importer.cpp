@@ -1,12 +1,12 @@
 #include "src/mappers/ideology/ideology_mapper_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
 
 
 
-mappers::IdeologyMapper mappers::ImportIdeologyMapper(std::string_view mapping_file)
+mappers::IdeologyMapper mappers::ImportIdeologyMapper(const std::filesystem::path& mapping_file)
 {
    ItemToPointsMap rules;
    std::map<std::string, ItemToPointsMap> sub_ideology_rules;
@@ -40,7 +40,8 @@ mappers::IdeologyMapper mappers::ImportIdeologyMapper(std::string_view mapping_f
 
    commonItems::parser file_parser;
    file_parser.registerKeyword("sub_ideologies",
-       [&sub_ideologies_parser, &sub_ideology_rules](const std::string& unused, std::istream& input_stream) {
+       [&sub_ideologies_parser, &sub_ideology_rules]([[maybe_unused]] const std::string& unused,
+           std::istream& input_stream) {
           sub_ideology_rules.clear();
           sub_ideologies_parser.parseStream(input_stream);
        });

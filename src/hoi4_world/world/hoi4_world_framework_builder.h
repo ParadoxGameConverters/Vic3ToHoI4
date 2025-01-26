@@ -1,4 +1,9 @@
 #pragma once
+
+
+
+#include <filesystem>
+
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/states/default_state.h"
 #include "src/hoi4_world/states/state_categories.h"
@@ -6,12 +11,13 @@
 #include "src/maps/map_data.h"
 #include "src/maps/province_definitions.h"
 
+
+
 // This represents the input hoi4 elements (eg, state maps, resource maps, etc)
 // that are used in conjunction with the vic3 data  and the WorldMapper to create the final hoi4 mod.
 
 namespace hoi4
 {
-
 
 class WorldFrameworkBuilder
 {
@@ -56,7 +62,7 @@ class WorldFrameworkBuilder
    WorldFrameworkBuilder& AddCoastalProvinces(CoastalProvinces::storage_type provinces);
 
   private:
-   WorldFrameworkBuilder(): hoi4_mod_filesystem_("", {}){};
+   WorldFrameworkBuilder(): hoi4_mod_filesystem_(std::filesystem::path(""), {}) {}
    commonItems::ModFilesystem hoi4_mod_filesystem_;
    StrategicRegions strategic_regions_;
    std::map<int, DefaultState> default_states_;

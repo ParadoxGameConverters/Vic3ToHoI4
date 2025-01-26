@@ -1,8 +1,13 @@
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include <sstream>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/vic3_world/states/state_regions_importer.h"
+
+
+
+using std::filesystem::path;
 
 
 
@@ -11,7 +16,7 @@ namespace vic3
 
 TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
 {
-   const commonItems::ModFilesystem mod_filesystem("", {});
+   const commonItems::ModFilesystem mod_filesystem(path(""), {});
    const StateRegions state_regions = ImportStateRegions(mod_filesystem);
 
    EXPECT_TRUE(state_regions.name_to_region_map.empty());
@@ -21,7 +26,7 @@ TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
 
 TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/states/ItemsAreImported/game", {});
+   const commonItems::ModFilesystem mod_filesystem(path("test_files/vic3_world/states/ItemsAreImported/game"), {});
    const StateRegions state_regions = ImportStateRegions(mod_filesystem);
 
    EXPECT_THAT(state_regions.name_to_region_map,

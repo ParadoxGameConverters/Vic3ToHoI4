@@ -1,11 +1,13 @@
 ﻿#include "src/hoi4_world/localizations/localizations_converter.h"
 
+#include <external/commonItems/Localization/LocalizationBlock.h>
+#include <external/commonItems/Localization/LocalizationDatabase.h>
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
+
+#include <cctype>
 #include <ranges>
 
-#include "external/commonItems/Localization/LocalizationBlock.h"
-#include "external/commonItems/Localization/LocalizationDatabase.h"
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/vic3_world/characters/vic3_character.h"
 #include "src/vic3_world/countries/vic3_country.h"
@@ -84,7 +86,10 @@ std::string LoweringModificationFunction(std::string_view placeholder,
    }
 
    std::string lowercase_modifying_localization{modifying_localization};
+#pragma warning(push)
+#pragma warning(disable : 4242)
    std::ranges::transform(lowercase_modifying_localization, lowercase_modifying_localization.begin(), ::tolower);
+#pragma warning(push)
 
    return updated_localization.replace(updated_localization.find(placeholder),
        placeholder.size(),
@@ -145,7 +150,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             name_block.ModifyForEveryLanguage(*country_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return ModificationFunction("[COUNTRY.GetDefinition.GetName]",
                        base_localization,
                        modifying_localization);
@@ -153,7 +158,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             name_block.ModifyForEveryLanguage(*country_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return LoweringModificationFunction("[COUNTRY.GetDefinition.GetName|l]",
                        base_localization,
                        modifying_localization);
@@ -161,7 +166,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             name_block.ModifyForEveryLanguage(*country_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return ModificationFunction("$NAME$", base_localization, modifying_localization);
                 });
          }
@@ -170,7 +175,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             name_block.ModifyForEveryLanguage(*adjective_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return ModificationFunction("[COUNTRY.GetDefinition.GetAdjective]",
                        base_localization,
                        modifying_localization);
@@ -178,7 +183,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             name_block.ModifyForEveryLanguage(*adjective_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return LoweringModificationFunction("[COUNTRY.GetDefinition.GetAdjective|l]",
                        base_localization,
                        modifying_localization);
@@ -186,7 +191,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             name_block.ModifyForEveryLanguage(*adjective_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return ModificationFunction("$ADJECTIVE$", base_localization, modifying_localization);
                 });
          }
@@ -218,7 +223,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             adjective_block.ModifyForEveryLanguage(*country_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return ModificationFunction("[COUNTRY.GetDefinition.GetName]",
                        base_localization,
                        modifying_localization);
@@ -226,7 +231,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             adjective_block.ModifyForEveryLanguage(*country_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return LoweringModificationFunction("[COUNTRY.GetDefinition.GetName|l]",
                        base_localization,
                        modifying_localization);
@@ -234,7 +239,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             adjective_block.ModifyForEveryLanguage(*country_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return ModificationFunction("$NAME$", base_localization, modifying_localization);
                 });
          }
@@ -243,7 +248,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return ModificationFunction("[COUNTRY.GetDefinition.GetAdjective]",
                        base_localization,
                        modifying_localization);
@@ -251,7 +256,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return LoweringModificationFunction("[COUNTRY.GetDefinition.GetAdjective|l]",
                        base_localization,
                        modifying_localization);
@@ -259,7 +264,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
             adjective_block.ModifyForEveryLanguage(*adjective_localization_block,
                 [](const std::string& base_localization,
                     const std::string& modifying_localization,
-                    const std::string& language) {
+                    [[maybe_unused]] const std::string& language) {
                    return ModificationFunction("$ADJECTIVE$", base_localization, modifying_localization);
                 });
          }
@@ -412,10 +417,10 @@ commonItems::LocalizationDatabase ConvertCharacterLocalizations(
       commonItems::LocalizationBlock name_localization_block(fmt::format("{}_{}", first_key, last_key),
           *first_name_localization_block);
 
-      name_localization_block.ModifyForEveryLanguage(
-          [&first_key, &last_key](const std::string& unused, const std::string& language) {
-             return fmt::format("${}$ ${}$", first_key, last_key);
-          });
+      name_localization_block.ModifyForEveryLanguage([&first_key, &last_key]([[maybe_unused]] const std::string& unused,
+                                                         [[maybe_unused]] const std::string& language) {
+         return fmt::format("${}$ ${}$", first_key, last_key);
+      });
       character_localizations.AddOrModifyLocalizationBlock(name_localization_block.GetKey(), name_localization_block);
    }
    return character_localizations;
@@ -512,7 +517,7 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
          continue;
       }
 
-      const auto monarch_itr = hoi4_characters.find(*monarch_idea_id);
+      const auto monarch_itr = hoi4_characters.find(static_cast<int>(*monarch_idea_id));
       if (monarch_itr == hoi4_characters.end())
       {
          continue;
@@ -547,14 +552,14 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
       combined_name.ModifyForEveryLanguage(*last_name,
           [](const std::string& base_localization,
               const std::string& modifying_localization,
-              const std::string& language) {
+              [[maybe_unused]] const std::string& language) {
              return fmt::format("{} {}", base_localization, modifying_localization);
           });
 
       name_localization_block.ModifyForEveryLanguage(combined_name,
           [](const std::string& base_localization,
               const std::string& modifying_localization,
-              const std::string& language) {
+              [[maybe_unused]] const std::string& language) {
              return fmt::vformat(base_localization, fmt::make_format_args(modifying_localization));
           });
       idea_localizations.AddOrModifyLocalizationBlock(name_localization_block.GetKey(), name_localization_block);
@@ -570,7 +575,7 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
          description_localization_block.CopyFrom(female_localization_description_block);
       }
       description_localization_block.ModifyForEveryLanguage(
-          [tag](const std::string& base_localization, const std::string& language) {
+          [tag](const std::string& base_localization, [[maybe_unused]] const std::string& language) {
              return fmt::vformat(base_localization, fmt::make_format_args(tag, tag, tag));
           });
       idea_localizations.AddOrModifyLocalizationBlock(description_localization_block.GetKey(),

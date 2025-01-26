@@ -1,7 +1,7 @@
 #include "src/vic3_world/ideologies/ideology_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/ParserHelpers.h>
 
 
 
@@ -35,9 +35,10 @@ vic3::IdeologyImporter::IdeologyImporter()
           law_approvals_.emplace(law, approval);
        });
 
-   ideology_parser_.registerRegex("lawgroup.*", [this](const std::string& unused, std::istream& input_stream) {
-      lawgroup_parser_.parseStream(input_stream);
-   });
+   ideology_parser_.registerRegex("lawgroup.*",
+       [this]([[maybe_unused]] const std::string& unused, std::istream& input_stream) {
+          lawgroup_parser_.parseStream(input_stream);
+       });
    ideology_parser_.IgnoreUnregisteredItems();
 }
 

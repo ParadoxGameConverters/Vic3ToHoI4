@@ -1,10 +1,11 @@
 #include "src/vic3_world/interest_groups/interest_groups_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include "src/vic3_world/interest_groups/interest_group_importer.h"
 
 
@@ -25,7 +26,7 @@ std::map<int, vic3::InterestGroup> vic3::ImportInterestGroups(std::istream& inpu
           }
           std::istringstream ig_stream(ig_string);
 
-          igs.emplace(id, ig_importer.ImportInterestGroup(id, ig_stream));
+          igs.emplace(id, ig_importer.ImportInterestGroup(ig_stream));
        });
    database_parser.IgnoreUnregisteredItems();
 

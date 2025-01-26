@@ -1,9 +1,9 @@
 #include "src/vic3_world/pacts/pact.h"
 
-#include <sstream>
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include <sstream>
 
 namespace vic3
 {

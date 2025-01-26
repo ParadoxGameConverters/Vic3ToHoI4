@@ -1,8 +1,9 @@
-﻿#include <sstream>
+﻿#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+#include <external/fmt/include/fmt/format.h>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/fmt/include/fmt/format.h"
+#include <sstream>
+
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/localizations/localizations_converter.h"
 

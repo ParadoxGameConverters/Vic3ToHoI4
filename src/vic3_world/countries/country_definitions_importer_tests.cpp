@@ -1,9 +1,14 @@
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include <sstream>
 
-#include "external/commonItems/ModLoader/ModFilesystem.h"
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/vic3_world/countries/country_definitions_importer.h"
+
+
+
+using std::filesystem::path;
 
 
 
@@ -12,7 +17,8 @@ namespace vic3
 
 TEST(Vic3WorldCountriesCountriesDefinitionsImporter, NoDefinitionsByInput)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/countries/no_definitions_by_default/game",
+   const commonItems::ModFilesystem mod_filesystem(
+       path("test_files/vic3_world/countries/no_definitions_by_default/game"),
        {});
    const auto tags_to_colors = ImportCountryColorDefinitions(mod_filesystem);
 
@@ -21,7 +27,8 @@ TEST(Vic3WorldCountriesCountriesDefinitionsImporter, NoDefinitionsByInput)
 
 TEST(Vic3WorldCountriesCountriesDefinitionsImporter, DefinitionsCanBeImported)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/countries/definitions_can_be_imported/game",
+   const commonItems::ModFilesystem mod_filesystem(
+       path("test_files/vic3_world/countries/definitions_can_be_imported/game"),
        {});
    const auto tags_to_colors = ImportCountryColorDefinitions(mod_filesystem);
 

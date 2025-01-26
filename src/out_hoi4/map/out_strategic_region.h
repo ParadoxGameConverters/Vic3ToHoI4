@@ -12,9 +12,9 @@
 namespace out
 {
 
-void OutputStrategicRegion(std::string_view output_name, const hoi4::StrategicRegion& strategic_region);
+void OutputStrategicRegion(const std::filesystem::path& output_name, const hoi4::StrategicRegion& strategic_region);
 
-}
+}  // namespace out
 
 
 

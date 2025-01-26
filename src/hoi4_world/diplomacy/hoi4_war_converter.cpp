@@ -1,7 +1,7 @@
 #include "src/hoi4_world/diplomacy/hoi4_war_converter.h"
 
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
 
 
 

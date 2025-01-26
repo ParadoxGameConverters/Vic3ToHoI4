@@ -4,6 +4,7 @@
 
 
 #include <compare>
+#include <filesystem>
 #include <map>
 #include <optional>
 #include <string>
@@ -16,7 +17,7 @@ namespace hoi4
 
 struct StrategicRegionOptions
 {
-   std::string filename;
+   std::filesystem::path filename;
    int id = 0;
    std::string name;
    std::vector<int> old_provinces;
@@ -40,7 +41,7 @@ class StrategicRegion
    {
    }
 
-   [[nodiscard]] const std::string_view GetFilename() const { return filename_; }
+   [[nodiscard]] const std::filesystem::path& GetFilename() const { return filename_; }
    [[nodiscard]] int GetID() const { return id_; }
    [[nodiscard]] std::string_view GetName() const { return name_; }
    [[nodiscard]] const std::vector<int>& GetOldProvinces() const { return old_provinces_; }
@@ -55,7 +56,7 @@ class StrategicRegion
    std::strong_ordering operator<=>(const StrategicRegion&) const = default;
 
   private:
-   std::string filename_;
+   std::filesystem::path filename_;
    int id_ = 0;
    std::string name_;
    std::vector<int> old_provinces_;

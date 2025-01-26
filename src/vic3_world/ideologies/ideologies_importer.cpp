@@ -1,6 +1,6 @@
 #include "src/vic3_world/ideologies/ideologies_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
+#include <external/commonItems/CommonRegexes.h>
 
 
 
@@ -19,7 +19,7 @@ vic3::Ideologies vic3::IdeologiesImporter::ImportIdeologies(const commonItems::M
 {
    ideologies_.clear();
 
-   for (const auto& filename: mod_filesystem.GetAllFilesInFolder("/common/ideologies"))
+   for (const auto& filename: mod_filesystem.GetAllFilesInFolder("common/ideologies"))
    {
       ideologies_parser_.parseFile(filename);
    }

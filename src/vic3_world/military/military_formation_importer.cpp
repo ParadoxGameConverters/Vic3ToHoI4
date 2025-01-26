@@ -1,7 +1,7 @@
 #include "src/vic3_world/military/military_formation_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/ParserHelpers.h>
 
 
 
@@ -37,7 +37,7 @@ vic3::MilitaryFormationImporter::MilitaryFormationImporter()
    military_formation_parser_.IgnoreUnregisteredItems();
 
    building_to_expected_unit_parser_.registerRegex(commonItems::integerRegex,
-       [this](const std::string& _, std::istream& input) {
+       [this]([[maybe_unused]] const std::string& unused, std::istream& input) {
           building_parser_.parseStream(input);
        });
 

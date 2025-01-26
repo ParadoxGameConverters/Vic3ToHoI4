@@ -1,4 +1,5 @@
-#include "external/commonItems/Log.h"
+#include <external/commonItems/Log.h>
+
 #include "src/configuration/configuration_importer.h"
 #include "src/vic3_to_hoi4_converter.h"
 
@@ -9,7 +10,7 @@ int main()
    try
    {
       commonItems::ConverterVersion converterVersion;
-      converterVersion.loadVersion("../version.txt");
+      converterVersion.loadVersion(std::filesystem::path("../version.txt"));
       Log(LogLevel::Info) << converterVersion;
 
       const auto configuration = configuration::ImportConfiguration("configuration.txt", converterVersion);

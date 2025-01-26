@@ -3,10 +3,11 @@
 
 
 
+#include <external/commonItems/Parser.h>
+
 #include <istream>
 #include <string>
 
-#include "external/commonItems/Parser.h"
 #include "src/vic3_world/countries/vic3_country.h"
 
 

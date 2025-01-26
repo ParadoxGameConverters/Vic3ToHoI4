@@ -3,6 +3,8 @@
 
 
 
+#include <filesystem>
+
 #include "src/mappers/character/character_trait_mapper.h"
 
 
@@ -10,7 +12,7 @@
 namespace mappers
 {
 
-CharacterTraitMapper ImportCharacterTraitMapper(std::string_view mapping_file);
+CharacterTraitMapper ImportCharacterTraitMapper(const std::filesystem::path& mapping_file);
 
 }  // namespace mappers
 

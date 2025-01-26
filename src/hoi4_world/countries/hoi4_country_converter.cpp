@@ -1,11 +1,12 @@
 #include "src/hoi4_world/countries/hoi4_country_converter.h"
 
+#include <external/commonItems/Log.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <numeric>
 #include <ranges>
 #include <vector>
 
-#include "external/commonItems/Log.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/hoi4_world/characters/hoi4_character_converter.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/hoi4_world/military/task_force_template.h"
@@ -219,7 +220,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
    int location = default_location;
    for (const auto& [ut, str]: required)
    {
-      float needed = str;
+      float needed = static_cast<float>(str);
       for (auto& battalion: battalions)
       {
          if (battalion.GetType() != ut)
@@ -459,7 +460,7 @@ std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag,
       for (auto& b: current)
       {
          b.SetLocation(*province_itr);
-         if (province_itr++ == provinces.end())
+         if (++province_itr == provinces.end())
          {
             province_itr = provinces.begin();
          }
@@ -563,10 +564,10 @@ std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std
    return {economy_law, trade_law, military_law};
 }
 
-float ConvertStability(const vic3::World& source_world, const vic3::Country& country)
+float ConvertStability(const vic3::Country& country)
 {
    // TODO once we can calculate legitimacy
-   float stability = std::clamp(country.GetLegitimacy(), 0, 100) * 0.8F / 100.0F;
+   const float stability = std::clamp(country.GetLegitimacy(), 0, 100) * 0.8F / 100.0F;
    return stability == 0.0 ? 0.0F : 0.60F;
 }
 
@@ -895,7 +896,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        culture_queues);
    if (monarch_id.has_value())
    {
-      const auto& monarch_itr = characters.find(*monarch_id);
+      const auto& monarch_itr = characters.find(static_cast<int>(*monarch_id));
       if (monarch_itr != characters.end())
       {
          ideas.insert(GetMonarchIdeaName(*tag, monarch_itr->second));
@@ -975,7 +976,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .overlord = overlord,
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
        .units = units,
-       .stability = ConvertStability(source_world, source_country),
+       .stability = ConvertStability(source_country),
        .convoys = numConvoys,
        .task_forces = task_forces,
    });

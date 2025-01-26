@@ -1,6 +1,6 @@
 #include "src/out_hoi4/portraits/out_portrait_paths.h"
 
-#include "external/fmt/include/fmt/format.h"
+#include <external/fmt/include/fmt/format.h>
 
 namespace
 {

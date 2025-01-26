@@ -1,8 +1,9 @@
 #include "src/out_hoi4/flags/out_flags.h"
 
+#include <external/commonItems/Log.h>
+
 #include <ranges>
 
-#include "external/commonItems/Log.h"
 #include "src/mappers/flags/flag_mapper.h"
 #include "src/mappers/flags/flag_mapper_builder.h"
 
@@ -10,7 +11,7 @@
 namespace out
 {
 
-void OutputFlags(const std::string& output_name,
+void OutputFlags(const std::filesystem::path& output_name,
     const std::map<std::string, hoi4::Country>& countries,
     const commonItems::ModFilesystem& hoi4_mod_filesystem)
 {

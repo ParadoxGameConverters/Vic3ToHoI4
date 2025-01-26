@@ -3,9 +3,11 @@
 
 
 
+#include <external/commonItems/Parser.h>
+
+#include <filesystem>
 #include <string_view>
 
-#include "external/commonItems/Parser.h"
 #include "src/configuration/configuration.h"
 
 
@@ -13,7 +15,7 @@
 namespace configuration
 {
 
-[[nodiscard]] Configuration ImportConfiguration(std::string_view configuration_file,
+[[nodiscard]] Configuration ImportConfiguration(const std::filesystem::path& configuration_file,
     const commonItems::ConverterVersion& converter_version);
 
 }  // namespace configuration

@@ -1,10 +1,15 @@
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include <sstream>
 
-#include "external/commonItems/ModLoader/ModFilesystem.h"
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
+
+
+
+using std::filesystem::path;
 
 
 
@@ -23,7 +28,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByStr
            .region_indexes = {{"STATE_1", 1}, {"STATE_2", 2}},
        },
        commonItems::ModFilesystem{
-           "test_files/Vic3WorldProvincesVic3ProvinceDefinitions/DefinitionsAreOrderedByStrategicRegionFile",
+           path("test_files/Vic3WorldProvincesVic3ProvinceDefinitions/DefinitionsAreOrderedByStrategicRegionFile"),
            {}});
 
    EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));
@@ -41,8 +46,8 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByReg
                },
            .region_indexes = {{"STATE_1", 1}, {"STATE_2", 2}},
        },
-       commonItems::ModFilesystem{"test_files/Vic3WorldProvincesVic3ProvinceDefinitions/"
-                                  "DefinitionsAreOrderedByRegionOrderInStrategicRegionFile",
+       commonItems::ModFilesystem{path("test_files/Vic3WorldProvincesVic3ProvinceDefinitions/"
+                                       "DefinitionsAreOrderedByRegionOrderInStrategicRegionFile"),
            {}});
 
    EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));
@@ -63,7 +68,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedBySta
            .region_indexes = {{"STATE_1", 2}, {"STATE_2", 1}},
        },
        commonItems::ModFilesystem{
-           "test_files/Vic3WorldProvincesVic3ProvinceDefinitions/DefinitionsAreOrderedByStateRegionIndexingOrder",
+           path("test_files/Vic3WorldProvincesVic3ProvinceDefinitions/DefinitionsAreOrderedByStateRegionIndexingOrder"),
            {}});
 
    EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));
@@ -80,8 +85,8 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByBot
                },
            .region_indexes = {{"STATE", 1}},
        },
-       commonItems::ModFilesystem{"test_files/Vic3WorldProvincesVic3ProvinceDefinitions/"
-                                  "DefinitionsAreOrderedByBottomToTopInMapDataProvincesDotPng",
+       commonItems::ModFilesystem{path("test_files/Vic3WorldProvincesVic3ProvinceDefinitions/"
+                                       "DefinitionsAreOrderedByBottomToTopInMapDataProvincesDotPng"),
            {}});
 
    EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));
@@ -98,8 +103,8 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByLef
                },
            .region_indexes = {{"STATE", 1}},
        },
-       commonItems::ModFilesystem{"test_files/Vic3WorldProvincesVic3ProvinceDefinitions/"
-                                  "DefinitionsAreOrderedByLeftToRightInMapDataProvincesDotPng",
+       commonItems::ModFilesystem{path("test_files/Vic3WorldProvincesVic3ProvinceDefinitions/"
+                                       "DefinitionsAreOrderedByLeftToRightInMapDataProvincesDotPng"),
            {}});
 
    EXPECT_THAT(province_definitions.GetProvinceDefinitions(), testing::ElementsAre("x00FF00", "xFF0000"));

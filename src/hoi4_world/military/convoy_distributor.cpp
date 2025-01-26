@@ -1,6 +1,6 @@
 #include "src/hoi4_world/military/convoy_distributor.h"
 
-#include "external/commonItems/Log.h"
+#include <external/commonItems/Log.h>
 
 namespace hoi4
 {

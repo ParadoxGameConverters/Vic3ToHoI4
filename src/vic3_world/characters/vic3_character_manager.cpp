@@ -1,12 +1,13 @@
 #include "src/vic3_world/characters/vic3_character_manager.h"
 
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
+
 #include <ranges>
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
 #include "src/vic3_world/characters/vic3_characters_importer.h"
 #include "src/vic3_world/characters/vic3_country_character_map_importer.h"
 
@@ -69,7 +70,7 @@ std::set<int> ImportEmployedCommanders(std::istream& input_stream)
    std::set<int> hired_commanders;
    commonItems::parser map_parser;
    map_parser.registerRegex(commonItems::integerRegex,
-       [&hired_commanders](const std::string& hq_number_string, std::istream& input_stream) {
+       [&hired_commanders]([[maybe_unused]] const std::string& hq_number_string, std::istream& input_stream) {
           std::ranges::copy(commonItems::getInts(input_stream),
               std::inserter(hired_commanders, hired_commanders.begin()));
        });

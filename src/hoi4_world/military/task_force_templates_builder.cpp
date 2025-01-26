@@ -1,14 +1,14 @@
 #include "src/hoi4_world/military/task_force_templates_builder.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Log.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/commonItems/StringUtils.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Log.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/commonItems/StringUtils.h>
 
 
 
-std::vector<hoi4::TaskForceTemplate> hoi4::ImportTaskForceTemplates(std::string_view templates_filename)
+std::vector<hoi4::TaskForceTemplate> hoi4::ImportTaskForceTemplates(const std::filesystem::path& templates_filename)
 {
    std::vector<TaskForceTemplate> taskforce_templates;
    std::map<std::string, float> costs;
@@ -16,10 +16,10 @@ std::vector<hoi4::TaskForceTemplate> hoi4::ImportTaskForceTemplates(std::string_
 
    commonItems::parser cost_parser;
    cost_parser.registerRegex(commonItems::catchallRegex, [&costs](const std::string& key, std::istream& input_stream) {
-      auto value = commonItems::getDouble(input_stream);
+      const auto value = static_cast<float>(commonItems::getDouble(input_stream));
       // Disallow tiny costs to avoid spamming conversion
       // with ships and infinite ship-creation loops.
-      if (value < 0.01)
+      if (value < 0.01F)
       {
          return;
       }

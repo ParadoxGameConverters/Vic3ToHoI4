@@ -3,10 +3,11 @@
 
 
 
+#include <external/commonItems/Color.h>
+#include <external/commonItems/Date.h>
+
 #include <string>
 
-#include "external/commonItems/Color.h"
-#include "external/commonItems/Date.h"
 #include "src/hoi4_world/diplomacy/hoi4_war.h"
 #include "src/hoi4_world/focus_trees/focus_tree.h"
 #include "src/hoi4_world/military/equipment_variant.h"
@@ -20,6 +21,7 @@
 
 namespace hoi4
 {
+
 struct NameList
 {
    std::set<std::string> male_names;

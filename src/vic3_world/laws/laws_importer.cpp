@@ -1,11 +1,10 @@
 #include "src/vic3_world/laws/laws_importer.h"
 
+#include <external/commonItems/Log.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
+#include <external/fmt/include/fmt/format.h>
 #include <src/vic3_world/database/database_parser.h>
-
-#include "external/commonItems/Log.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
-#include "external/fmt/include/fmt/format.h"
 
 
 
@@ -59,6 +58,7 @@ std::map<int, std::set<std::string>> vic3::ImportLaws(std::istream& input_stream
       if (!country_number)
       {
          LOG(LogLevel::Warning) << "Law without a country. Please report to the converters team and upload your save.";
+         return;
       }
 
       ++active_laws;

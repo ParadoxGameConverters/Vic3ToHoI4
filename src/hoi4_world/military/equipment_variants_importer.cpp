@@ -1,12 +1,12 @@
 #include "src/hoi4_world/military/equipment_variants_importer.h"
 
-#include "external/commonItems/CommonRegexes.h"
-#include "external/commonItems/Parser.h"
-#include "external/commonItems/ParserHelpers.h"
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
+#include <external/commonItems/ParserHelpers.h>
 
 
 
-std::vector<hoi4::EquipmentVariant> hoi4::ImportEquipmentVariants(std::string_view variants_filename)
+std::vector<hoi4::EquipmentVariant> hoi4::ImportEquipmentVariants(const std::filesystem::path& variants_filename)
 {
    std::vector<EquipmentVariant> equipment_variants;
 
@@ -43,7 +43,7 @@ std::vector<hoi4::EquipmentVariant> hoi4::ImportEquipmentVariants(std::string_vi
    commonItems::parser file_parser;
    file_parser.registerRegex(commonItems::catchallRegex,
        [&equipment_variants, &required_techs, &blocking_techs, &eq_name, &eq_type, &text_items, &variant_parser](
-           const std::string& unused,
+           [[maybe_unused]] const std::string& unused,
            std::istream& input_stream) {
           required_techs.clear();
           blocking_techs.clear();

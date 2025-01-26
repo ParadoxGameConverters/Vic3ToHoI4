@@ -1,9 +1,14 @@
+#include <external/commonItems/ModLoader/ModFilesystem.h>
+#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
+
 #include <sstream>
 
-#include "external/commonItems/ModLoader/ModFilesystem.h"
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/vic3_world/cultures/culture_definitions_importer.h"
+
+
+
+using std::filesystem::path;
 
 
 
@@ -12,7 +17,9 @@ namespace vic3
 
 TEST(Vic3WorldCulturesCultureDefinitionsImporter, NoDefinitionsByDefault)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/cultures/no_definitions_by_default/game", {});
+   const commonItems::ModFilesystem mod_filesystem(
+       path("test_files/vic3_world/cultures/no_definitions_by_default/game"),
+       {});
    const auto culture_definitions = ImportCultureDefinitions(mod_filesystem);
 
    EXPECT_TRUE(culture_definitions.empty());
@@ -20,7 +27,8 @@ TEST(Vic3WorldCulturesCultureDefinitionsImporter, NoDefinitionsByDefault)
 
 TEST(Vic3WorldCulturesCultureDefinitionsImporter, DefinitionsCanBeImported)
 {
-   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/cultures/definitions_can_be_imported/game",
+   const commonItems::ModFilesystem mod_filesystem(
+       path("test_files/vic3_world/cultures/definitions_can_be_imported/game"),
        {});
    const auto culture_definitions = ImportCultureDefinitions(mod_filesystem);
 

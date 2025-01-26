@@ -1,7 +1,8 @@
-﻿#include <ranges>
+﻿#include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
 
-#include "external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/commonItems/external/googletest/googletest/include/gtest/gtest.h"
+#include <ranges>
+
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
 #include "src/mappers/character/character_trait_mapper_importer.h"
 #include "src/mappers/character/leader_type_mapper_importer.h"

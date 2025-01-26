@@ -3,9 +3,10 @@
 
 
 
+#include <external/commonItems/Parser.h>
+
 #include <istream>
 
-#include "external/commonItems/Parser.h"
 #include "src/vic3_world/characters/vic3_character.h"
 
 

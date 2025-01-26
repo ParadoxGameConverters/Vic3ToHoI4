@@ -3,6 +3,7 @@
 
 
 
+#include <filesystem>
 #include <vector>
 
 #include "src/hoi4_world/countries/hoi4_country.h"
@@ -12,7 +13,7 @@
 namespace out
 {
 
-void OutputPortraits(std::string_view output_name, const std::map<std::string, hoi4::Country>& countries);
+void OutputPortraits(const std::filesystem::path& output_name, const std::map<std::string, hoi4::Country>& countries);
 
 }  // namespace out
 

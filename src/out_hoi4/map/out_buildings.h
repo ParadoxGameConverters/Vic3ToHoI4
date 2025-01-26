@@ -3,6 +3,8 @@
 
 
 
+#include <filesystem>
+
 #include "src/hoi4_world/map/buildings.h"
 
 
@@ -10,9 +12,9 @@
 namespace out
 {
 
-void OutputBuildings(std::string_view output_name, const hoi4::Buildings& buildings);
+void OutputBuildings(const std::filesystem::path& output_name, const hoi4::Buildings& buildings);
 
-}
+}  // namespace out
 
 
 
