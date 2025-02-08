@@ -44,7 +44,7 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
           ProvinceId province = commonItems::getString(input_stream);
           if (province.empty())
           {
-              return;
+              throw std::runtime_error("State regions have been corrupted. Verify your Vic3 install and mods.");
           }
 #pragma warning(push)
 #pragma warning(disable : 4242)
