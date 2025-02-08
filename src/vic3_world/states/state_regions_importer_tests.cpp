@@ -56,4 +56,11 @@ TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
            testing::Pair("STATE_PIEDMONT", 2)));
 }
 
+
+TEST(Vic3worldStatesStateRegionsImporterTests, BadItemCausesCrash)
+{
+   const commonItems::ModFilesystem mod_filesystem(path("test_files/vic3_world/states/BadItemCausesCrash/game"), {});
+   EXPECT_THROW(const auto _ = ImportStateRegions(mod_filesystem), std::runtime_error);
+}
+
 }  // namespace vic3
