@@ -387,6 +387,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
 
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
    commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory / "game", mod_loader.getMods());
+   Log(LogLevel::Info) << "->   Importing state regions.";
    StateRegions state_regions = ImportStateRegions(mod_filesystem);
    Log(LogLevel::Info) << "->   Loading province definitions.";
    world_options.province_definitions = LoadProvinceDefinitions(state_regions, mod_filesystem);
