@@ -44,7 +44,9 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
    region_parser.registerRegex("city|port|farm|mine|wood",
        [&significant_provinces](const std::string& significant_province_type, std::istream& input_stream) {
           ProvinceId province = commonItems::getString(input_stream);
-          Log(LogLevel::Info) << fmt::format("->             significant province: {} - {}", province);
+          Log(LogLevel::Info) << fmt::format("->             significant province: {} - {}",
+              significant_province_type,
+              province);
           if (province.empty())
           {
              throw std::runtime_error("State regions have been corrupted. Verify your Vic3 install and mods.");
@@ -86,7 +88,7 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
 
    for (const path& state_regions_file: sorted_files)
    {
-      Log(LogLevel::Info) << fmt::format("->     Parsing {}.", state_regions_file);
+      Log(LogLevel::Info) << fmt::format("->     Parsing {}.", state_regions_file.string());
       file_parser.parseFile(state_regions_file);
    }
 
