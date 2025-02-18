@@ -42,25 +42,23 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
    region_parser.registerRegex("city|port|farm|mine|wood",
        [&significant_provinces](const std::string& significant_province_type, std::istream& input_stream) {
           ProvinceId province = commonItems::getString(input_stream);
-              significant_province_type,
-              province);
-              if (province.empty())
-              {
-                 throw std::runtime_error("State regions have been corrupted. Verify your Vic3 install and mods.");
-              }
+          if (province.empty())
+          {
+             throw std::runtime_error("State regions have been corrupted. Verify your Vic3 install and mods.");
+          }
 #pragma warning(push)
 #pragma warning(disable : 4242)
-              std::transform(++province.begin(), province.end(), ++province.begin(), ::toupper);
+          std::transform(++province.begin(), province.end(), ++province.begin(), ::toupper);
 #pragma warning(pop)
-              province[0] = 'x';
-              if (auto [itr, success] = significant_provinces.emplace(province, significant_province_type); !success)
-              {
-                 if ((significant_province_type == "city") ||
-                     (significant_province_type == "port" && itr->second != "city"))
-                 {
-                    itr->second = significant_province_type;
-                 }
-              }
+          province[0] = 'x';
+          if (auto [itr, success] = significant_provinces.emplace(province, significant_province_type); !success)
+          {
+             if ((significant_province_type == "city") ||
+                 (significant_province_type == "port" && itr->second != "city"))
+             {
+                itr->second = significant_province_type;
+             }
+          }
        });
    region_parser.IgnoreUnregisteredItems();
 
