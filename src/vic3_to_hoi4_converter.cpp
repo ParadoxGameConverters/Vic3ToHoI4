@@ -21,6 +21,7 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration,
    const commonItems::ModFilesystem hoi4_mod_filesystem(configuration.hoi4_directory, {});
 
    auto hoi4_framework = std::async(std::launch::async, [&hoi4_mod_filesystem]() {
+      Log(LogLevel::Info) << "*** Hello Hoi4, asynchronously loading World. ***";
       return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
    });
 
