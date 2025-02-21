@@ -20,10 +20,12 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration,
 {
    const commonItems::ModFilesystem hoi4_mod_filesystem(configuration.hoi4_directory, {});
 
-   auto hoi4_framework = std::async(std::launch::async, [&hoi4_mod_filesystem]() {
+   /*auto hoi4_framework = std::async(std::launch::async, [&hoi4_mod_filesystem]() {
       Log(LogLevel::Info) << "*** Hello Hoi4, asynchronously loading World. ***";
       return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
-   });
+   });*/
+
+   auto hoi4_framework = hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
 
    const vic3::World source_world = vic3::ImportWorld(configuration, converter_version);
    const mappers::WorldMapper world_mapper =
@@ -31,7 +33,7 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration,
    world_mapper.province_mapper.CheckAllVic3ProvincesMapped(
        source_world.GetProvinceDefinitions().GetProvinceDefinitions());
    const hoi4::World destination_world =
-       hoi4::ConvertWorld(hoi4_mod_filesystem, source_world, world_mapper, std::move(hoi4_framework), configuration);
+       hoi4::ConvertWorld(hoi4_mod_filesystem, source_world, world_mapper, hoi4_framework, configuration);
 
    out::ClearOutputFolder(configuration.output_name);
    out::OutputMod(configuration.output_name, converter_version.getMaxTarget());
