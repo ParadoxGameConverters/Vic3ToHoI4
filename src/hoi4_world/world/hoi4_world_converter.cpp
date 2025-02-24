@@ -230,7 +230,7 @@ void ConvertWars(const std::vector<vic3::War>& source_wars,
 hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
-    std::future<hoi4::WorldFramework> world_framework_future,
+    hoi4::WorldFramework& world_framework,
     const configuration::Configuration& config)
 {
    Log(LogLevel::Info) << "Creating Hoi4 world";
@@ -239,7 +239,6 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    std::map<std::string, vic3::ProvinceType> vic3_significant_provinces =
        GatherVic3SignificantProvinces(source_world.GetStateRegions());
-   hoi4::WorldFramework world_framework = world_framework_future.get();
 
    ProgressManager::SetProgress(50);
    Log(LogLevel::Info) << "\tConverting states";

@@ -17,17 +17,25 @@ namespace hoi4
 WorldFrameworkBuilder WorldFrameworkBuilder::CreateDefaultWorldFramework(
     const commonItems::ModFilesystem& hoi4_mod_filesystem)
 {
+   Log(LogLevel::Info) << "  -> Creating hoi4 builder";
    WorldFrameworkBuilder wfb{};
    wfb.hoi4_mod_filesystem_ = hoi4_mod_filesystem;
+   Log(LogLevel::Info) << "  -> Loading hoi4 default strategic regions";
    wfb.DefaultStrategicRegions();
+   Log(LogLevel::Info) << "  -> Loading hoi4 default states";
    wfb.DefaultDefaultStates();
+   Log(LogLevel::Info) << "  -> Loading hoi4 default resources";
    wfb.DefaultResourcesMap();
+   Log(LogLevel::Info) << "  -> Loading hoi4 default state categories";
    wfb.DefaultStateCategories();
+   Log(LogLevel::Info) << "  -> Loading hoi4 default province definitions";
    wfb.DefaultProvinceDefinitions();
 
    // requires province_definitions
+   Log(LogLevel::Info) << "  -> Loading hoi4 default map data";
    wfb.DefaultMapData();
    // requires map_data, province_definitions
+   Log(LogLevel::Info) << "  -> Loading hoi4 default coastal provinces";
    wfb.DefaultCoastalProvinces();
    return wfb;
 }

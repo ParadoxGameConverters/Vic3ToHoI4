@@ -25,6 +25,7 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
 
    commonItems::parser region_parser;
    region_parser.registerKeyword("provinces", [&provinces](std::istream& input_stream) {
+      Log(LogLevel::Info) << "->             Reading provinces.";
       for (const auto& province: commonItems::getStrings(input_stream))
       {
          ProvinceId transformed_province = province;
@@ -41,6 +42,7 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
    });
    region_parser.registerRegex("city|port|farm|mine|wood",
        [&significant_provinces](const std::string& significant_province_type, std::istream& input_stream) {
+          Log(LogLevel::Info) << "->             Reading significant province " << significant_province_type;
           ProvinceId province = commonItems::getString(input_stream);
           if (province.empty())
           {
@@ -67,21 +69,30 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
        [&name_to_region_map, &region_indexes, &region_parser, &significant_provinces, &provinces](
            const std::string& region_name,
            std::istream& input_stream) {
+          Log(LogLevel::Info) << "->         Parsing region " << region_name;
+          Log(LogLevel::Info) << "->           Clearing items.";
           significant_provinces.clear();
           provinces.clear();
+          Log(LogLevel::Info) << "->           Parsing stream.";
           region_parser.parseStream(input_stream);
+          Log(LogLevel::Info) << "->           Emplacing region.";
           name_to_region_map.emplace(region_name, StateRegion(significant_provinces, provinces));
+          Log(LogLevel::Info) << "->           Emplacing index.";
           region_indexes.emplace(region_name, static_cast<int>(region_indexes.size()));
        });
 
+   Log(LogLevel::Info) << "->     Getting list of files.";
    const std::set<path> files = filesystem.GetAllFilesInFolder("map_data/state_regions");
    std::vector<path> sorted_files(files.begin(), files.end());
+   Log(LogLevel::Info) << "->     Sorting files.";
    std::ranges::sort(sorted_files, [](const path& a, const path& b) {
       return a.filename() < b.filename();
    });
 
+   Log(LogLevel::Info) << "->     Parsing files.";
    for (const path& state_regions_file: sorted_files)
    {
+      Log(LogLevel::Info) << "->        " << state_regions_file.string();
       file_parser.parseFile(state_regions_file);
    }
 
