@@ -14,8 +14,8 @@
 namespace vic3
 {
 // This could be expanded into a mapper between Vic3 pact types and HoI4 autonomous_states
-static std::set<std::string> SUBJECT_PACT_TYPES =
-    {"protectorate", "puppet", "dominion", "personal_union", "vassal", "tributary"};
+static const std::set<std::string> SUBJECT_PACT_TYPES =
+    {"protectorate", "puppet", "dominion", "personal_union", "vassal", "tributary", "chartered_company", "colony"};
 
 class Pact
 {
