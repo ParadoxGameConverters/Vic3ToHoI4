@@ -11,6 +11,7 @@
 
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
+#include "src/hoi4_world/decisions/decision.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/hoi4_world/localizations/localizations.h"
 #include "src/hoi4_world/map/buildings.h"
@@ -70,6 +71,7 @@ class World
    {
       decisions_categories_ = std::move(decisions_categories);
    }
+   void SetDecisions(std::vector<Decision> decisions) { decisions_ = std::move(decisions); }
 
   private:
    std::map<std::string, Country> countries_;
@@ -83,6 +85,7 @@ class World
    std::map<int, Character> characters_;
 
    std::set<DecisionsCategory> decisions_categories_;
+   std::vector<Decision> decisions_;
 };
 
 }  // namespace hoi4
