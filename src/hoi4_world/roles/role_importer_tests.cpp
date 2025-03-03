@@ -100,11 +100,11 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    input << "\t\t$TAG$_another_decisions_category={\n";
    input << "\t\t}\n";
    input << "\t}\n";
-   input << "\tdecision={\n";
-   input << "\t\tid = $TAG$_a_decision\n";
-   input << "\t}\n";
-   input << "\tdecision={\n";
-   input << "\t\tid = $TAG$_another_decision\n";
+   input << "\tdecisions={\n";
+   input << "\t\t$TAG$_a_decision={\n";
+   input << "\t\t}\n";
+   input << "\t\t$TAG$_another_decision={\n";
+   input << "\t\t}\n";
    input << "\t}\n";
    input << "\tevent={\n";
    input << "\t\tid = $TAG$_an_event\n";
@@ -145,12 +145,7 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
        testing::ElementsAre(DecisionsCategory{.name = "$TAG$_a_decisions_category"},
            DecisionsCategory{.name = "$TAG$_another_decisions_category"}));
    EXPECT_THAT(role.GetDecisions(),
-       testing::ElementsAre("= {\n"
-                            "\t\tid = $TAG$_a_decision\n"
-                            "\t}",
-           "= {\n"
-           "\t\tid = $TAG$_another_decision\n"
-           "\t}"));
+       testing::ElementsAre(Decision{.name = "$TAG$_a_decision"}, Decision{.name = "$TAG$_another_decision"}));
    EXPECT_THAT(role.GetEvents(),
        testing::ElementsAre("= {\n"
                             "\t\tid = $TAG$_an_event\n"
