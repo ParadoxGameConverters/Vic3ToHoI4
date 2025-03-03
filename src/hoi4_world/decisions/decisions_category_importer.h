@@ -23,7 +23,7 @@ class DecisionsCategoryImporter
    [[nodiscard]] DecisionsCategory GetDecisionsCategory(std::string_view name, std::istream& the_stream);
 
   private:
-   commonItems::parser parser;
+   commonItems::parser parser_;
 
    std::string name_;
    std::string icon_;
