@@ -33,7 +33,9 @@ class RoleImporter
    DecisionsCategoryImporter decisions_category_importer_;
    commonItems::parser decisions_categories_parser_;
    DecisionImporter decision_importer_;
+   commonItems::parser decisions_category_parser_;
    commonItems::parser decisions_parser_;
+   std::string current_decision_category_;
 };
 
 };  // namespace hoi4

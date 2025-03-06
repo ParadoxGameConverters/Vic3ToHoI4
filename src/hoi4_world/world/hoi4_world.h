@@ -64,6 +64,10 @@ class World
    [[nodiscard]] const Localizations& GetLocalizations() const { return localizations_; }
    [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
    [[nodiscard]] const std::set<DecisionsCategory>& GetDecisionsCategories() const { return decisions_categories_; }
+   [[nodiscard]] const std::map<std::string, std::vector<Decision>>& GetDecisionsInCategories() const
+   {
+      return decisions_in_categories_;
+   }
 
    [[nodiscard]] std::map<std::string, Country>& GetModifiableCountries() { return countries_; }
 
@@ -71,7 +75,10 @@ class World
    {
       decisions_categories_ = std::move(decisions_categories);
    }
-   void SetDecisions(std::vector<Decision> decisions) { decisions_ = std::move(decisions); }
+   void SetDecisions(std::map<std::string, std::vector<Decision>> decisions_in_categories)
+   {
+      decisions_in_categories_ = std::move(decisions_in_categories);
+   }
 
   private:
    std::map<std::string, Country> countries_;
@@ -85,7 +92,7 @@ class World
    std::map<int, Character> characters_;
 
    std::set<DecisionsCategory> decisions_categories_;
-   std::vector<Decision> decisions_;
+   std::map<std::string, std::vector<Decision>> decisions_in_categories_;
 };
 
 }  // namespace hoi4
