@@ -1,4 +1,4 @@
-#include <external/CommonItems/external/googletest/googletest/include/gtest/gtest.h>
+#include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
 
 #include <sstream>
 
