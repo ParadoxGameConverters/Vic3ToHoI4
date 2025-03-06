@@ -7,7 +7,7 @@ namespace hoi4
 
 void PrintTo(const Decision& decision, std::ostream* os)
 {
-	*os << decision.name;
+   *os << decision.name;
 }
 
 }  // namespace hoi4
