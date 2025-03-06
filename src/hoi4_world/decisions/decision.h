@@ -3,6 +3,7 @@
 
 
 #include <optional>
+#include <ostream>
 #include <string>
 
 
