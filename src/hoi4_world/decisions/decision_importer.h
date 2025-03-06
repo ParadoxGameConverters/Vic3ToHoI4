@@ -2,7 +2,7 @@
 #define HOI4_DECISION_IMPORTER_H
 
 
-#include <external/CommonItems/Parser.h>
+#include <external/commonItems/Parser.h>
 
 #include <optional>
 #include <string>
