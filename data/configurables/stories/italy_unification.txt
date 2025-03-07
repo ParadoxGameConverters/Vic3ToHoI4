@@ -115,6 +115,15 @@ unification_italy = {
 			}
 		}
 	}
+	
+	decisions={
+		sample_decision_category={
+			decision_one={
+			}
+			decision_two={
+			}
+		}
+	}
 }
 
 
@@ -249,6 +258,15 @@ unification_italy_2 = {
 			}
 		}
 	}
+	
+	decisions={
+		sample_decision_category={
+			decision_three={
+			}
+			decision_four={
+			}
+		}
+	}
 }
 
 
@@ -380,6 +398,15 @@ unification_italy_3 = {
 		sample_decision_category={
 			icon=generic_form_nation
 			visible={
+			}
+		}
+	}
+	
+	decisions={
+		sample_decision_category={
+			decision_five={
+			}
+			decision_six={
 			}
 		}
 	}

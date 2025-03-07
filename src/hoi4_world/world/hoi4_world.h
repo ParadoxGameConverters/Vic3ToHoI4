@@ -11,6 +11,7 @@
 
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
+#include "src/hoi4_world/decisions/decision.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/hoi4_world/localizations/localizations.h"
 #include "src/hoi4_world/map/buildings.h"
@@ -63,12 +64,20 @@ class World
    [[nodiscard]] const Localizations& GetLocalizations() const { return localizations_; }
    [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
    [[nodiscard]] const std::set<DecisionsCategory>& GetDecisionsCategories() const { return decisions_categories_; }
+   [[nodiscard]] const std::map<std::string, std::vector<Decision>>& GetDecisionsInCategories() const
+   {
+      return decisions_in_categories_;
+   }
 
    [[nodiscard]] std::map<std::string, Country>& GetModifiableCountries() { return countries_; }
 
    void SetDecisionsCategories(std::set<DecisionsCategory> decisions_categories)
    {
       decisions_categories_ = std::move(decisions_categories);
+   }
+   void SetDecisions(std::map<std::string, std::vector<Decision>> decisions_in_categories)
+   {
+      decisions_in_categories_ = std::move(decisions_in_categories);
    }
 
   private:
@@ -83,6 +92,7 @@ class World
    std::map<int, Character> characters_;
 
    std::set<DecisionsCategory> decisions_categories_;
+   std::map<std::string, std::vector<Decision>> decisions_in_categories_;
 };
 
 }  // namespace hoi4
