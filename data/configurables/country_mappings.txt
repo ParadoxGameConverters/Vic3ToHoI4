@@ -494,7 +494,7 @@ link = { vic = TRC hoi = TMS } # Turkmenistan
 #link = { vic = TRH hoi = ??? } # Turkestan
 link = { vic = TRI hoi = LBA } # Tripolitania
 #link = { vic = TRK hoi = ??? } # Turkana
-link = { vic = TRM hoi = TMS # Turkmenia => Turkmenistan
+link = { vic = TRM hoi = TMS } # Turkmenia => Turkmenistan
 #link = { vic = TRN hoi = ??? } # Transvaal
 link = { vic = TRS hoi = TRA } # Transylvania
 #link = { vic = TRZ hoi = ??? } # Trarza
