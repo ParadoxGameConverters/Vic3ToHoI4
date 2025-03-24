@@ -380,6 +380,46 @@ on_actions = {
 	on_peaceconference_ended = {
 		effect = {
 		}
+		effect = {
+			#Country becomes a colonial power
+			if = {
+				limit = {
+					ROOT = {
+						any_owned_state = {
+							NOT = { is_core_of = PREV }
+						}
+						NOT = {
+							is_in_array = {
+								array = global.colonial_powers
+								value = THIS
+							}
+						}
+					}
+				}
+				ROOT = {
+					add_to_array = { global.colonial_powers = THIS }
+				}
+			}
+			#Country loses colonial possessions
+			if = {
+				limit = {
+					ROOT = {
+						is_in_array = {
+							array = global.colonial_powers
+							value = THIS
+						}
+						NOT = {
+							any_owned_state = {
+								NOT = { is_core_of = PREV }
+							}
+						}
+					}
+				}
+				ROOT = {
+					remove_from_array = { global.colonial_powers = THIS }
+				}
+			}
+		}
 	}
 
 	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
@@ -584,4 +624,5 @@ on_actions = {
 			}
 		}
 	}
+
 }

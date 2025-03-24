@@ -1248,3 +1248,7 @@ PAR_protected_by_humaita = {
 	supply_factor = 0.15
 }
 
+malaria = {
+	icon = GFX_modifiers_SOV_defend_moscow
+	
+}

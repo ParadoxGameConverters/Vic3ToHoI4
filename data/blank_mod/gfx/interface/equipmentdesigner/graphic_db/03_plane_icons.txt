@@ -1,0 +1,18 @@
+default = {
+	large_plane_airframe = {
+		pool = {
+			icons = { 
+				GFX_modern_large_airframe_medium
+				GFX_advanced_large_airframe_medium
+				GFX_improved_large_airframe_medium
+				GFX_basic_large_airframe_medium
+				GFX_iw_large_airframe_medium
+			 }
+		}
+		pool = {
+			models = { 
+				heavy_plane_entity
+			 }
+		}
+	}
+}

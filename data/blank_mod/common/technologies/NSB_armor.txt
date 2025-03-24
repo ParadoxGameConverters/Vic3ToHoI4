@@ -133,17 +133,17 @@ technologies = {
 
 			modifier = {
 				factor = 1.2
-				date > "1937.1.1"
+				date > 1937.1.1
 			}
 
 			modifier = {
 				factor = 1.2
-				date > "1938.1.1"
+				date > 1938.1.1
 			}
 
 			modifier = {
 				factor = 1.2
-				date > "1939.1.1"
+				date > 1939.1.1
 			}
 		}
 
@@ -216,17 +216,17 @@ technologies = {
 
 			modifier = {
 				factor = 1.1
-				date > "1937.1.1"
+				date > 1937.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1938.1.1"
+				date > 1938.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1939.1.1"
+				date > 1939.1.1
 			}
 		}
 
@@ -281,17 +281,17 @@ technologies = {
 
 			modifier = {
 				factor = 1.1
-				date > "1937.1.1"
+				date > 1937.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1938.1.1"
+				date > 1938.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1939.1.1"
+				date > 1939.1.1
 			}
 		}
 
@@ -441,17 +441,17 @@ technologies = {
 
 			modifier = {
 				factor = 1.1
-				date > "1942.1.1"
+				date > 1942.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1943.1.1"
+				date > 1943.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1944.1.1"
+				date > 1944.1.1
 			}
 		}
 
@@ -517,26 +517,26 @@ technologies = {
 		}
 
 		ai_will_do = {
-			factor = 2
+			base = 2
 
 			modifier = {
-				factor = 2
-				is_major = yes
-				date > "1938.1.1"
-			}
-			modifier = {
 				factor = 1.1
-				date > "1940.1.1"
+				date > 1939.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1941.1.1"
+				date > 1940.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1942.1.1"
+				date > 1941.1.1
+			}
+
+			modifier = {
+				factor = 1.1
+				date > 1942.1.1
 			}
 		}
 
@@ -579,24 +579,25 @@ technologies = {
 				factor = 2
 				is_major = yes
 			}
+
 			modifier = {
-				date < "1941.1.1"
-				factor = 0.3
+				factor = 1.1
+				date > 1941.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1942.1.1"
+				date > 1942.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1943.1.1"
+				date > 1943.1.1
 			}
 
 			modifier = {
 				factor = 1.1
-				date > "1944.1.1"
+				date > 1944.1.1
 			}
 		}
 
@@ -684,17 +685,17 @@ technologies = {
 
 			modifier = {
 				factor = 2
-				date > "1946.1.1"
+				date > 1946.1.1
 			}
 
 			modifier = {
 				factor = 2
-				date > "1947.1.1"
+				date > 1947.1.1
 			}
 
 			modifier = {
 				factor = 2
-				date > "1948.1.1"
+				date > 1948.1.1
 			}
 		}
 
@@ -944,13 +945,19 @@ technologies = {
 				}
 				custom_effect_tooltip = {
 					localization_key = SP_UNLOCK_PROJECT
-					PROJECT = sp_land_land_cruiser	
+					PROJECT = sp_land_land_cruiser
 				}
 			}
 		}
 
 		ai_will_do = {
-			factor = 0 # Hitler cries on the inside
+			base = 0
+			modifier = {
+				add = 1
+				date > 1943.6.1
+				NOT = { has_government = democratic }
+				num_of_military_factories > 150
+			}
 		}
 
 		categories = {
@@ -1087,7 +1094,7 @@ technologies = {
 		enable_equipment_modules = {
 			lc_armored_skirts #Module for Land Cruiser
 		}
-		
+
 		path = {
 			leads_to_tech = armor_tech_4
 			research_cost_coeff = 1
@@ -1428,7 +1435,7 @@ technologies = {
 		}
 
 		on_research_complete = {
-		
+
 		}
 
 		show_effect_as_desc = no
@@ -1459,14 +1466,14 @@ technologies = {
 
 		research_cost = 1
 		start_year = 1941
-		
+
 		folder = {
 			name = nsb_armour_folder
 			position = { x = 12 y = @1941 }
 		}
 
 		enable_equipment_modules = {
-			advanced_flamethrower			
+			advanced_flamethrower
 		}
 
 		light_flame_tank = {
@@ -1592,7 +1599,7 @@ technologies = {
 
 		research_cost = 1
 		start_year = 1943
-		
+
 		folder = {
 			name = nsb_armour_folder
 			position = { x = 7 y = @1943 }
@@ -1679,12 +1686,6 @@ technologies = {
 			forest = {
 				movement = 0.2
 			}
-			hills = {
-				movement = 0.2
-			}
-			mountain = 	{
-				movement = 0.2
-			}
 			jungle = {
 				movement = 0.2
 			}
@@ -1692,7 +1693,7 @@ technologies = {
 
 		research_cost = 1
 		start_year = 1943
-		
+
 		folder = {
 			name = nsb_armour_folder
 			position = { x = 9 y = @1943 }
@@ -1762,7 +1763,7 @@ technologies = {
 
 		research_cost = 1
 		start_year = 1943
-		
+
 		folder = {
 			name = nsb_armour_folder
 			position = { x = 11 y = @1943 }
@@ -1826,7 +1827,7 @@ technologies = {
 
 		research_cost = 1
 		start_year = 1945
-		
+
 		folder = {
 			name = nsb_armour_folder
 			position = { x = 9 y = @1945 }
@@ -1885,14 +1886,14 @@ technologies = {
 
 		research_cost = 1
 		start_year = 1943
-		
+
 		folder = {
 			name = nsb_armour_folder
 			position = { x = 13 y = @1943 }
 		}
 
 		enable_equipment_modules = {
-			lc_high_impact_obliterator_cannon			
+			lc_high_impact_obliterator_cannon
 		}
 
 		show_effect_as_desc = yes
