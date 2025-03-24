@@ -275,6 +275,9 @@ ability = {
 		allowed = {
 			has_ability = extra_suplies
 			is_border_war = no
+			OWNER = {
+				NOT = { has_country_flag = has_quinine }
+			}
 		}
 		
 		unit_modifiers = {

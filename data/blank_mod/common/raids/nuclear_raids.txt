@@ -156,13 +156,7 @@ types = {
 					raid_add_unit_experience = 0.1
 				}
 				victim_effects = {
-					var:target_state = {
-						custom_effect_tooltip = raid_nuclear_strike_tt
-						add_dynamic_modifier = {
-							modifier = fallout_atomic
-							days = 180
-						}
-					}
+					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:actor_country = {
 						custom_effect_tooltip = raid_nuclear_secondary_target_tt
 						launch_nuke = {
@@ -182,13 +176,7 @@ types = {
 					raid_add_unit_experience = 0.35
 				}
 				victim_effects = {
-					var:target_state = {
-						custom_effect_tooltip = raid_nuclear_strike_tt
-						add_dynamic_modifier = {
-							modifier = fallout_atomic
-							days = 365
-						}
-					}
+					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:actor_country = {
 						launch_nuke = {
 							province = var:ROOT.target_province #optional use either province or state
@@ -209,14 +197,7 @@ types = {
 							use_nuke = no
 						}
 					}
-					var:target_state = {
-						custom_effect_tooltip = raid_nuclear_strike_tt
-						add_dynamic_modifier = {
-							modifier = fallout_atomic
-							days = 730
-						}
-					}
-					
+					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 				}
 			}
 		}
@@ -342,13 +323,7 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
-					var:target_state = {
-						#custom_effect_tooltip = raid_nuclear_strike_tt
-						add_dynamic_modifier = {
-							modifier = fallout_atomic
-							days = 365
-						}
-					}
+					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:actor_country = {
 						launch_nuke = {
 							province = var:ROOT.target_province #optional use either province or state
@@ -361,13 +336,9 @@ types = {
 			    custom_sound = raid_result_critical_success_nuclear
 				actor_effects = {
 				}
+
 				victim_effects = {
-					var:target_state = {
-						add_dynamic_modifier = {
-							modifier = fallout_atomic
-							days = 365
-						}
-					}
+					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:actor_country = {
 						launch_nuke = {
 							province = var:ROOT.target_province #optional use either province or state
@@ -552,25 +523,7 @@ types = {
 					raid_add_unit_experience = 0.35
 				}
 				victim_effects = {
-					var:target_state = {
-						custom_effect_tooltip = raid_nuclear_strike_tt
-						hidden_effect = {
-							IF = {
-								limit = { 
-									has_dynamic_modifier = {
-										modifier = fallout_atomic
-									}
-								}	
-								remove_dynamic_modifier = {
-									modifier = fallout_atomic
-								}
-							}
-						}
-						add_dynamic_modifier = {
-							modifier = fallout_thermonuclear
-							days = 730
-						}
-					}
+					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }   
 					var:actor_country = {
 						launch_nuke = {
 							province = var:ROOT.target_province #optional use either province or state
@@ -586,25 +539,7 @@ types = {
 					raid_add_unit_experience = 0.5
 				}
 				victim_effects = {
-					var:target_state = {
-						custom_effect_tooltip = raid_nuclear_strike_tt
-						hidden_effect = {
-							IF = {
-								limit = { 
-									has_dynamic_modifier = {
-										modifier = fallout_atomic
-									}
-								}	
-								remove_dynamic_modifier = {
-									modifier = fallout_atomic
-								}
-							}
-						}
-						add_dynamic_modifier = {
-							modifier = fallout_thermonuclear
-							days = 730
-						}
-					}
+					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:actor_country = {
 						launch_nuke = {
 							province = var:ROOT.target_province #optional use either province or state
@@ -737,13 +672,7 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
-					var:target_state = {
-						#custom_effect_tooltip = raid_nuclear_strike_tt
-						add_dynamic_modifier = {
-							modifier = fallout_thermonuclear
-							days = 730
-						}
-					}
+					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:actor_country = {
 						launch_nuke = {
 							province = var:ROOT.target_province #optional use either province or state
@@ -758,12 +687,7 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
-					var:target_state = {
-						add_dynamic_modifier = {
-							modifier = fallout_thermonuclear
-							days = 730
-						}
-					}
+					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:actor_country = {
 						launch_nuke = {
 							province = var:ROOT.target_province #optional use either province or state

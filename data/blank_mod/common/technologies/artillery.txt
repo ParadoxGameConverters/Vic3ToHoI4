@@ -23,6 +23,7 @@ technologies = {
 			leads_to_tech = interwar_antiair
 			research_cost_coeff = 1
 		}
+
 		enable_equipment_modules = {
 			ship_anti_air_1
 			tank_small_cannon
@@ -438,13 +439,15 @@ technologies = {
 
 		artillery_brigade = {
 			mountain = {
-				movement = 0.15 #If you change this - Change the custom tooltip too: RAJ_revive_the_screw_guns_effect ROM_modern_at_guns_tech_tt
+				attack = 0.08
+				movement = 0.15 #If you change this - Change the custom tooltip too: mountain_guns_tt ROM_modern_at_guns_tech_tt
 			}
 		}
 
 		anti_tank_brigade = {
 			mountain = {
-				movement = 0.15 #If you change this - Change the custom tooltip too: RAJ_revive_the_screw_guns_effect ROM_modern_at_guns_tech_tt
+				attack = 0.08
+				movement = 0.15 #If you change this - Change the custom tooltip too: mountain_guns_tt ROM_modern_at_guns_tech_tt
 			}
 		}
 	}
@@ -516,7 +519,7 @@ technologies = {
 
 		folder = {
 			name = artillery_folder
-			position = { x = 3 y = 8 }
+			position = { x = @rocket_artillery y = 8 }
 		}
 
 		ai_will_do = {
@@ -1347,7 +1350,7 @@ technologies = {
 
 		research_cost = 1.5
 
-		start_year = 1940 #TODO_Manu: Adjust if necessary
+		start_year = 1940
 
 		folder = {
 			name = artillery_folder
@@ -1401,7 +1404,7 @@ technologies = {
 
 		research_cost = 1.5
 
-		start_year = 1940 #TODO_Manu: Adjust if necessary
+		start_year = 1940
 
 		folder = {
 			name = artillery_folder
@@ -1440,7 +1443,7 @@ technologies = {
 			}
 		}
 
-		static_anti_air_damage_factor = 0.15 #Remember to adjust sp_naval_proximity_fuze_custom_tt when changing value
+		static_anti_air_damage_factor = 0.15
 		static_anti_air_hit_chance_factor = 0.3 
 
 		path = {
