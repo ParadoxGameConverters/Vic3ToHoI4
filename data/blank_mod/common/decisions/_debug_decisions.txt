@@ -684,10 +684,6 @@ debug_decisions = {
 		complete_effect = {
 			set_variable = { fighter_buy_amount = 200 }
 			save_event_target_as = license_target
-			bba_get_fighter_GER_effect = yes
-			GER = {
-				bba_create_fighter_license_effect = yes
-			}
 		}
 		
 	}

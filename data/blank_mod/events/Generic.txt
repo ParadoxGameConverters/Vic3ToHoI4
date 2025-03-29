@@ -578,8 +578,6 @@ country_event = {
 				}
 				has_government = democratic
 			}
-			#Lone Wolf Finland can't join any factions
-			FIN_is_lone_wolf_finland = no
 		}
 		ai_chance = {
 			base = 100

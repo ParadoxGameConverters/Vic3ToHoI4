@@ -1292,12 +1292,16 @@ war_measures = {
 
 		icon = GFX_decision_generic_military
 
+		allowed = {
+			has_dlc = "Arms Against Tyranny"
+		}
+
 		available = {
-			date > 1940.1.1
 		}
 
 		visible = {
-			has_dlc = "Arms Against Tyranny"
+			is_major = yes
+			date > 1940.1.1
 		}
 
 		fire_only_once = yes

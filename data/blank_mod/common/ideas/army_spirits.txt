@@ -99,7 +99,7 @@ ideas = {
 				}
 			}
 			modifier = {
-				military_leader_cost_factor = -0.5
+				army_leader_cost_factor = -0.5
 				party_popularity_stability_factor = 0.10
 				custom_modifier_tooltip = political_loyalty_spirit_tt
 			}
@@ -399,6 +399,7 @@ ideas = {
 				unit_medium_sp_artillery_brigade_design_cost_factor = -1
 				unit_heavy_sp_artillery_brigade_design_cost_factor = -1
 				unit_super_heavy_sp_artillery_brigade_design_cost_factor = -1
+				unit_bicycle_battalion_design_cost_factor = -1
 			}
 			ai_will_do = {
 				base = 1
@@ -449,6 +450,7 @@ ideas = {
 				unit_infantry_design_cost_factor = -1
 				unit_motorized_design_cost_factor = -1
 				unit_mechanized_design_cost_factor = -1
+				unit_bicycle_battalion_design_cost_factor = -1
 			}
 			ai_will_do = {
 				base = 1

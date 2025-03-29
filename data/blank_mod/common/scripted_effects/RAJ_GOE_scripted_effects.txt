@@ -1,0 +1,980 @@
+
+accelerating_independence_movement_swap = {
+    if = {
+        limit = {
+            has_idea = idea_RAJ_growing_independence_movement_0
+        }
+
+        hidden_effect = {
+        	remove_ideas = {
+        		idea_RAJ_growing_independence_movement_0
+        	}
+        }
+        add_timed_idea = {
+        	idea = idea_RAJ_growing_independence_movement_1
+        	days = 365
+        } 
+    }
+    else = {
+        add_timed_idea = {
+        	idea = idea_RAJ_growing_independence_movement_0
+        	days = 365
+        } 
+    }
+}
+
+try_build_civ_in_core_otherwise_build_in_controlled = {
+    set_country_flag = try_build_civ #to fix tooltip and only that, otherwise it will show up twice and look like its adding double civs
+    random_core_state = {
+        limit = {
+            free_building_slots = {
+                building = industrial_complex
+                size > 0 # use < or >
+                include_locked = yes
+            }
+            is_controlled_by = ROOT
+        }
+        add_extra_state_shared_building_slots = 1
+        add_building_construction = {
+             type = industrial_complex
+             level = 1
+             instant_build = yes
+         }
+
+         ROOT = { set_country_flag = built_civ_in_core_successfully }
+    }
+
+    if = {
+        limit = {
+            NOT = { has_country_flag = built_civ_in_core_successfully }
+            has_country_flag = try_build_civ
+        }
+
+        random_controlled_state = {
+            limit = {
+               free_building_slots = {
+                    building = industrial_complex
+                    size > 0 # use < or >
+                    include_locked = yes
+                } 
+            }
+            add_extra_state_shared_building_slots = 1
+            add_building_construction = {
+                 type = industrial_complex
+                 level = 1
+                 instant_build = yes
+             }
+        }
+    }
+
+    if = { 
+        limit = { has_country_flag = try_build_civ } #clear everything so that it works again on repeat calls
+        clr_country_flag = try_build_civ
+    }
+    if = { 
+        limit = { has_country_flag = built_civ_in_core_successfully }
+        clr_country_flag = built_civ_in_core_successfully
+    }
+}
+
+
+try_build_dockyard_in_core_otherwise_build_in_controlled = {
+    set_country_flag = try_build_dockyard #to fix tooltip and only that, otherwise it will show up twice and look like its adding double civs
+    random_core_state = {
+        limit = {
+            free_building_slots = {
+                building = dockyard
+                size > 0 # use < or >
+                include_locked = yes
+            }
+            is_coastal = yes
+            is_controlled_by = ROOT
+        }
+        add_extra_state_shared_building_slots = 1
+        add_building_construction = {
+             type = dockyard
+             level = 1
+             instant_build = yes
+         }
+
+         ROOT = { set_country_flag = built_dockyard_in_core_successfully }
+    }
+
+    if = {
+        limit = {
+            NOT = { has_country_flag = built_dockyard_in_core_successfully }
+            has_country_flag = try_build_dockyard
+        }
+
+        random_controlled_state = {
+            limit = {
+               is_coastal = yes
+               free_building_slots = {
+                    building = dockyard
+                    size > 0 # use < or >
+                    include_locked = yes
+                } 
+            }
+            add_extra_state_shared_building_slots = 1
+            add_building_construction = {
+                 type = dockyard
+                 level = 1
+                 instant_build = yes
+             }
+        }
+    }
+
+    if = { 
+        limit = { has_country_flag = try_build_dockyard } #clear everything so that it works again on repeat calls
+        clr_country_flag = try_build_dockyard
+    }
+    if = { 
+        limit = { has_country_flag = built_dockyard_in_core_successfully }
+        clr_country_flag = built_dockyard_in_core_successfully
+    }
+}
+
+
+
+
+try_build_infra_in_core_otherwise_build_in_controlled = {
+    set_country_flag = try_build_infra #to fix tooltip and only that, otherwise it will show up twice and look like its adding double civs
+    random_core_state = {
+        limit = {
+            infrastructure < 5
+            is_controlled_by = ROOT
+        }
+        add_building_construction = {
+             type = infrastructure
+             level = 1
+             instant_build = yes
+         }
+
+         ROOT = { set_country_flag = built_infra_in_core_successfully }
+    }
+
+    if = {
+        limit = {
+            NOT = { has_country_flag = built_infra_in_core_successfully }
+            has_country_flag = try_build_infra
+        }
+
+        random_controlled_state = {
+            limit = {
+                infrastructure < 5
+            }
+            add_building_construction = {
+                 type = infrastructure
+                 level = 1
+                 instant_build = yes
+             }
+        }
+    }
+
+    if = { 
+        limit = { has_country_flag = try_build_infra } #clear everything so that it works again on repeat calls
+        clr_country_flag = try_build_infra
+    }
+    if = { 
+        limit = { has_country_flag = built_infra_in_core_successfully }
+        clr_country_flag = built_infra_in_core_successfully
+    }
+}
+
+try_build_mil_in_core_otherwise_build_in_controlled = {
+    set_country_flag = try_build_mil #to fix tooltip and only that, otherwise it will show up twice and look like its adding double civs
+    random_core_state = {
+        limit = {
+            free_building_slots = {
+                building = arms_factory
+                size > 0 # use < or >
+                include_locked = yes
+            }
+            is_controlled_by = ROOT
+        }
+        add_extra_state_shared_building_slots = 1
+        add_building_construction = {
+             type = arms_factory
+             level = 1
+             instant_build = yes
+         }
+
+         ROOT = { set_country_flag = built_mil_in_core_successfully }
+    }
+
+    if = {
+        limit = {
+            NOT = { has_country_flag = built_mil_in_core_successfully }
+            has_country_flag = try_build_mil
+        }
+
+        random_controlled_state = {
+            limit = {
+               free_building_slots = {
+                    building = arms_factory
+                    size > 0 # use < or >
+                    include_locked = yes
+                } 
+            }
+            add_extra_state_shared_building_slots = 1
+            add_building_construction = {
+                 type = arms_factory
+                 level = 1
+                 instant_build = yes
+             }
+        }
+    }
+
+    if = { 
+        limit = { has_country_flag = try_build_mil } #clear everything so that it works again on repeat calls
+        clr_country_flag = try_build_mil
+    }
+    if = { 
+        limit = { has_country_flag = built_mil_in_core_successfully }
+        clr_country_flag = built_mil_in_core_successfully
+    }
+}
+
+try_build_civ_in_core_otherwise_build_in_controlled_2_civs = {
+    try_build_civ_in_core_otherwise_build_in_controlled = yes
+    try_build_civ_in_core_otherwise_build_in_controlled = yes
+}
+
+try_build_mil_in_core_otherwise_build_in_controlled_2_mil = {
+    try_build_mil_in_core_otherwise_build_in_controlled = yes
+    try_build_mil_in_core_otherwise_build_in_controlled = yes
+}
+
+
+calculate_famine_shield_and_risk = {     
+    set_variable = { RAJ_famine_spreads = 100 }
+    subtract_from_variable = { RAJ_famine_spreads = RAJ_famine_shield } 
+}
+
+calculate_famine_black_market ={
+
+        set_variable = { amount_of_states_with_famine = 0 }
+        set_variable = { amount_of_states_with_crushed_black_markets = 0 }
+        subtract_from_variable = { RAJ_famine_shield = RAJ_black_market_shield  }
+
+        set_variable = { RAJ_black_market_shield = 20 } #total amount of possible shield gain from crushing all markets , update custom_effect_tooltip = RAJ_black_markets_tt if changed!
+
+        
+        every_state = {
+            limit = {
+                has_dynamic_modifier = { modifier = idea_RAJ_famine_state }
+            }
+            add_to_variable = { PREV.amount_of_states_with_famine = 1 }
+
+            if = {
+                limit = { has_state_flag = RAJ_has_crushed_black_market }
+                add_to_variable = { PREV.amount_of_states_with_crushed_black_markets = 1 }
+            }
+        }
+
+
+        divide_variable = { amount_of_states_with_crushed_black_markets = amount_of_states_with_famine }
+        multiply_variable = { RAJ_black_market_shield  = amount_of_states_with_crushed_black_markets }
+        add_to_variable = { RAJ_famine_shield = RAJ_black_market_shield }
+
+
+        calculate_famine_shield_and_risk = yes  
+        clear_variable = amount_of_states_with_famine
+        clear_variable = amount_of_states_with_crushed_black_markets
+}
+
+upgrade_ordance_factories_no_aat = {
+    
+
+    if = {
+        limit = { 
+            check_variable = { RAJ.khadi_level = 0 } 
+            has_idea = idea_RAJ_ammunition_factory_khadki
+        }
+
+        custom_effect_tooltip = upgrades_design_company
+        swap_ideas = {
+            remove_idea = idea_RAJ_ammunition_factory_khadki
+            add_idea = idea_RAJ_ammunition_factory_khadki_1
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = { RAJ.khadi_level = 0 } 
+        }
+        custom_effect_tooltip = upgrades_design_company
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = idea_RAJ_ammunition_factory_khadki
+                add_idea = idea_RAJ_ammunition_factory_khadki_1
+            }
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = { RAJ.khadi_level = 1  }
+            has_idea = idea_RAJ_ammunition_factory_khadki_1
+            
+        }
+        custom_effect_tooltip = upgrades_design_company
+        swap_ideas = {
+            remove_idea = idea_RAJ_ammunition_factory_khadki_1
+            add_idea = idea_RAJ_ammunition_factory_khadki_2
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = { RAJ.khadi_level = 1 }
+        }
+        custom_effect_tooltip = upgrades_design_company
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = idea_RAJ_ammunition_factory_khadki_1
+                add_idea = idea_RAJ_ammunition_factory_khadki_2
+            }
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = { RAJ.khadi_level = 2  }
+            has_idea = idea_RAJ_ammunition_factory_khadki_2
+            
+        }
+        custom_effect_tooltip = upgrades_design_company
+        swap_ideas = {
+            remove_idea = idea_RAJ_ammunition_factory_khadki_2
+            add_idea = idea_RAJ_ammunition_factory_khadki_3
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = { RAJ.khadi_level = 2 }
+        }
+        custom_effect_tooltip = upgrades_design_company
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = idea_RAJ_ammunition_factory_khadki_2
+                add_idea = idea_RAJ_ammunition_factory_khadki_3
+            }
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = { RAJ.khadi_level = 3 }
+        }
+        try_build_mil_in_core_otherwise_build_in_controlled = yes
+    }
+
+    add_to_variable = { RAJ.khadi_level = 1 }
+
+}
+
+upgrade_ordance_factories_art_no_aat = {
+    
+
+    if = {
+        limit = { 
+            check_variable = { RAJ.gun_and_shell_level = 0 } 
+            has_idea = idea_gun_and_shell_factory_cossipore
+        }
+        swap_ideas = {
+            remove_idea = idea_gun_and_shell_factory_cossipore
+            add_idea = idea_gun_and_shell_factory_cossipore_1
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = { RAJ.gun_and_shell_level = 0 } 
+        }
+        custom_effect_tooltip = upgrades_design_company
+        effect_tooltip = {
+           swap_ideas = {
+                remove_idea = idea_gun_and_shell_factory_cossipore
+                add_idea = idea_gun_and_shell_factory_cossipore_1
+            } 
+        }
+        
+    }
+
+    if = {
+        limit = {
+            check_variable = { RAJ.gun_and_shell_level = 1  }
+            has_idea = idea_RAJ_ammunition_factory_khadki_1
+            
+        }
+
+        swap_ideas = {
+            remove_idea = idea_gun_and_shell_factory_cossipore_1
+            add_idea = idea_gun_and_shell_factory_cossipore_2
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = { RAJ.gun_and_shell_level = 1 }
+        }
+        custom_effect_tooltip = upgrades_design_company
+        effect_tooltip = {
+           swap_ideas = {
+                remove_idea = idea_gun_and_shell_factory_cossipore_1
+                add_idea = idea_gun_and_shell_factory_cossipore_2
+            } 
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = { RAJ.gun_and_shell_level = 2  }
+            has_idea = idea_RAJ_ammunition_factory_khadki_2
+            
+        }
+
+        swap_ideas = {
+            remove_idea = idea_gun_and_shell_factory_cossipore_2
+            add_idea = idea_gun_and_shell_factory_cossipore_3
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = { RAJ.gun_and_shell_level = 2 }
+        }
+        custom_effect_tooltip = upgrades_design_company
+        effect_tooltip = {
+           swap_ideas = {
+                remove_idea = idea_gun_and_shell_factory_cossipore_2
+                add_idea = idea_gun_and_shell_factory_cossipore_3
+            } 
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = { RAJ.gun_and_shell_level = 3 }
+        }
+        add_tech_bonus = {
+            bonus = 0.5
+            uses = 2
+            category = artillery # optional 
+            # technology  = technology_id # optional
+        }
+    }
+
+    add_to_variable = { RAJ.gun_and_shell_level = 1 }
+
+}
+
+recalc_projected_time_local_recruitment_offices = {
+    set_variable = { RAJ_projected_time_left = RAJ_recruitment_process } 
+    subtract_from_variable = { RAJ_projected_time_left = 100 }
+    multiply_variable = {RAJ_projected_time_left  = -1 }
+    divide_variable = { RAJ_projected_time_left =  RAJ_established_recruitment_offices  } #RAJ_established_recruitment_offices
+    round_variable =  RAJ_projected_time_left
+}
+
+set_princely_states_freedom_desire = {
+    set_variable = { leanings = 0 } #-1 PAK +1 RAJ 0 no leanings
+    set_variable = { liberty_desire = 0 }
+
+    set_variable = { mils = num_of_military_factories }
+    multiply_variable = { mils  = 4 } #mils are more important in terms of actual defense
+    
+    add_to_variable = { civs = num_of_civilian_factories }
+    multiply_variable = { civs = 2 }
+
+    set_variable = { projected_manpower = manpower_k }
+    add_to_variable = { liberty_desire = industry }
+    add_to_variable = { liberty_desire = painful_memory  }
+    
+    set_variable = { historical_liberty_desire = 1.5 }
+    multiply_variable = { liberty_desire = historical_liberty_desire }
+
+}
+
+check_painful_memory = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = RAJ_GOE_partition_has_happened
+            }
+            has_dlc = "Graveyard of Empires"
+        }
+
+        for_each_scope_loop = {
+            array = RAJ.owned_states_at_game_start
+            if = {
+                limit = {
+                    resistance > 59
+                    resistance < 85
+                    NOT = { 
+                        has_state_flag = {
+                            flag = painful_memory_cooldown
+                            value = 0
+                        }
+                    }
+                }
+                add_to_variable = { painful_memory = 1 }
+                set_state_flag = { flag =  painful_memory_cooldown days = 20 } #cooldown so that it cant happen again within 20 days if its called from an event nd on ation
+
+            }
+            else_if = {
+                limit = {
+                    resistance > 85
+                    NOT = { 
+                        has_state_flag = {
+                            flag = painful_memory_cooldown
+                            value = 0
+                        }
+                    }
+                }
+                add_to_variable = { painful_memory = 2 }
+                set_state_flag = { flag =  painful_memory_cooldown days = 20 }
+            }
+        }
+    }
+}
+
+controlled_civilian_factories_excluding_trade = {
+    set_variable = { ROOT.actually_controlled_civs = 0 }
+    every_controlled_state = {
+        if = {
+            limit = {
+                check_variable = { var:industrial_complex_level > 0 }
+            }
+            add_to_variable = { ROOT.actually_controlled_civs  = var:industrial_complex_level }
+        }
+    }
+
+    if = { #lock up civs if they are used for paying out investors so u can like double invest
+        limit = {
+            ROOT = { has_country_flag = has_payed_high_dividends }
+        }
+        subtract_from_variable = { ROOT.actually_controlled_civs = 5 }
+    }
+    else_if = {
+        limit = {
+            ROOT = { has_country_flag = has_payed_normal_dividends }
+        }
+        subtract_from_variable = { ROOT.actually_controlled_civs = 2 }
+    }
+    else_if = {
+        limit = {
+           ROOT = { has_country_flag = has_payed_small_dividends } 
+        }
+        subtract_from_variable = { ROOT.actually_controlled_civs = 1 }
+    }
+}
+
+calc_expected_consumer_goods_for_taxes = {
+    controlled_civilian_factories_excluding_trade = yes
+    ROOT = {
+        set_variable = { taxes = actually_controlled_civs }
+        #every_controlled_state = {
+        #    #PREV = { add_to_variable = { taxes = PREV.arms_factory_level } } 
+        #    PREV = { add_to_variable = { taxes = PREV.industrial_complex_level } }
+        #    #PREV = { add_to_variable = { taxes = PREV.building_level@dockyard } }
+        #    
+        #}
+        set_variable = { total_income = taxes } #total factories, saves for tooltip
+        #multiply_variable = { taxes = 0.015 }
+        if = {
+            limit = {
+                check_variable = {
+                    var = taxes
+                    value = tier_two_taxes_threshold #0
+                    compare = less_than_or_equals 
+                }
+            } 
+            set_variable = { taxes = tier_one_taxes_tax } #0%
+        }
+        else_if = {
+            limit = { 
+                # > 0F <= 14F
+                check_variable = {
+                    var = taxes
+                    value = tier_two_taxes_threshold # >0
+                    compare = greater_than
+                }
+
+                check_variable = {
+                    var = taxes
+                    value = tier_three_taxes_threshold # <= 14
+                    compare = less_than_or_equals
+                }
+            }
+            set_variable = { taxes = tier_two_taxes_tax } #0.25%
+        }
+
+        else_if = {
+            limit = { 
+                #>14F <= 27F
+                check_variable = {
+                    var = taxes
+                    value = tier_three_taxes_threshold #> 14
+                    compare = greater_than
+                }
+
+                check_variable = {
+                    var = taxes
+                    value = tier_four_taxes_threshold #<= 27
+                    compare = less_than_or_equals
+                }
+            }
+            set_variable = { taxes = tier_three_taxes_tax } #0.4%
+        }
+        else_if = {
+            limit = { 
+                #>40F
+                check_variable = {
+                    var = taxes
+                    value = tier_four_taxes_tax
+                    compare = greater_than
+                }
+            }
+            set_variable = { taxes = tier_four_taxes_tax } #0.55%
+        }
+        else = {
+            if = {
+                limit = {
+                    is_debug = yes
+                }
+                log = "Taxes calculation has gone horribly wrong somehow"
+                set_variable = { taxes = -1 } #Make me see error more easily
+            }
+            else = {
+                set_variable = { taxes = tier_two_taxes_tax } #fallback to mellanmjölk taxes if something goes to shit
+            }
+            
+        }
+
+        set_variable = { taxes_display_tt = taxes }
+        
+        multiply_variable = { taxes_display_tt = 100 }
+    }
+}
+
+eic_low_investments = {
+    hidden_effect = {
+        every_owned_state = {
+            random_select_amount = 1
+            limit = { check_variable = { industrial_complex_level > 0 }  }
+            remove_building = {
+                type = industrial_complex 
+                level = 1
+            }
+        }
+    }
+
+    custom_effect_tooltip = eic_low_investments_cost  #Need to update both tt and how many civs gets removed if changing
+    custom_effect_tooltip = RAJ_GOE_modify_dividends
+    set_variable = { RAJ_eic_dividends_investment_efficiency_max = 0.04 tooltip = production_factory_efficiency_gain_factor_tt } 
+    set_variable = { RAJ_eic_dividends_investment_building_speed = 0.1 tooltip = production_speed_buildings_factor_tt }
+    custom_effect_tooltip = RAJ_GOE_modify_dividends_2
+}
+
+eic_normal_investments = {
+    hidden_effect = {
+        every_owned_state = {
+            random_select_amount = 2
+            limit = { check_variable = { industrial_complex_level > 0 }  }
+            remove_building = {
+                type = industrial_complex 
+                level = 1
+            }
+        }
+    }
+    
+    custom_effect_tooltip = eic_normal_investments_cost  #Need to update both tt and how many civs gets removed if changing
+    custom_effect_tooltip = RAJ_GOE_modify_dividends
+    set_variable = { RAJ_eic_dividends_investment_efficiency_max = 0.09 tooltip = production_factory_efficiency_gain_factor_tt } 
+    set_variable = { RAJ_eic_dividends_investment_building_speed = 0.23 tooltip = production_speed_buildings_factor_tt }
+    custom_effect_tooltip = RAJ_GOE_modify_dividends_2
+}
+
+eic_high_investments = {
+    hidden_effect = {
+        every_owned_state = {
+            random_select_amount = 4
+            limit = { check_variable = { industrial_complex_level > 0 }  }
+            remove_building = {
+                type = industrial_complex 
+                level = 1
+            }
+        }
+    }
+    custom_effect_tooltip = eic_high_investments_cost  #Need to update both tt and how many civs gets removed if changing
+
+    custom_effect_tooltip = RAJ_GOE_modify_dividends
+    set_variable = { RAJ_eic_dividends_investment_efficiency_max = 0.16 tooltip = production_factory_efficiency_gain_factor_tt } 
+    set_variable = { RAJ_eic_dividends_investment_building_speed = 0.35 tooltip = production_speed_buildings_factor_tt }
+    custom_effect_tooltip = RAJ_GOE_modify_dividends_2
+}
+
+indian_railways_increase_bonus = {
+    ROOT = {
+        if = {
+            limit = {
+                NOT = { 
+                    has_dynamic_modifier = {
+                         modifier = idea_RAJ_indian_railways
+                     }
+                }
+            }
+
+            add_dynamic_modifier = {
+                modifier = idea_RAJ_indian_railways
+            }
+
+        }
+        if = {
+            limit = {
+                NOT = { has_variable = RAJ_indian_railway_production_speed_rail_way_factor }
+            }
+
+            set_variable = { RAJ_indian_railway_production_speed_rail_way_factor = 0 }
+        }
+
+        if = {
+            limit = {
+                NOT = { has_variable = RAJ_indian_railway_production_speed_supply_node_factor }
+            }
+
+            set_variable = { RAJ_indian_railway_production_speed_supply_node_factor = 0 }
+        }
+
+        if = {
+            limit = {
+                NOT = { has_variable = RAJ_indian_railway_production_speed_infrastructure_factor }
+            }
+
+            set_variable = { RAJ_indian_railway_production_speed_infrastructure_factor = 0 }
+        }
+
+        if = {
+            limit = {
+                has_completed_focus = RAJ_orchestrate_train_robberies
+            }
+             custom_effect_tooltip = RAJ_modify_indian_railways_tt  
+            if = {
+                limit = {
+                    NOT = { has_country_flag = switch_to_robbing }
+                }
+               
+                if = {
+                    limit = { check_variable = { RAJ_railway_focuses = 1 } }
+                    set_variable = { RAJ_indian_railway_industrial_capacity_factory = 0.03 tooltip = industrial_capacity_factory_tt }
+                    
+                    set_variable = { RAJ_indian_railway_production_speed_infrastructure_factor = -0.02 tooltip = production_speed_rail_way_factor_tt }
+                    set_variable = { RAJ_indian_railway_production_speed_supply_node_factor = -0.02  tooltip = production_speed_supply_node_factor_tt }
+                    set_variable = { RAJ_indian_railway_production_speed_rail_way_factor = -0.02 tooltip = production_speed_infrastructure_factor_tt }
+                }
+                else_if = {
+                    limit = { check_variable = { RAJ_railway_focuses = 2 } }
+                    set_variable = { RAJ_indian_railway_industrial_capacity_factory = 0.06 tooltip = industrial_capacity_factory_tt }
+
+                    set_variable = { RAJ_indian_railway_production_speed_infrastructure_factor = -0.04 tooltip = production_speed_rail_way_factor_tt }
+                    set_variable = { RAJ_indian_railway_production_speed_supply_node_factor = -0.04  tooltip = production_speed_supply_node_factor_tt }
+                    set_variable = { RAJ_indian_railway_production_speed_rail_way_factor = -0.04 tooltip = production_speed_infrastructure_factor_tt }
+                }
+                else_if = {
+                    limit = { check_variable = { RAJ_railway_focuses = 3 } }
+                    set_variable = { RAJ_indian_railway_industrial_capacity_factory = 0.09 tooltip = industrial_capacity_factory_tt }
+
+                    set_variable = { RAJ_indian_railway_production_speed_infrastructure_factor = -0.06 tooltip = production_speed_rail_way_factor_tt }
+                    set_variable = { RAJ_indian_railway_production_speed_supply_node_factor = -0.06  tooltip = production_speed_supply_node_factor_tt }
+                    set_variable = { RAJ_indian_railway_production_speed_rail_way_factor = -0.06 tooltip = production_speed_infrastructure_factor_tt }
+                }
+                else_if = {
+                    limit = { check_variable = { RAJ_railway_focuses = 4 } }
+                    set_variable = { RAJ_indian_railway_industrial_capacity_factory = 0.12 tooltip = industrial_capacity_factory_tt }
+                    
+                    set_variable = { RAJ_indian_railway_production_speed_infrastructure_factor = -0.09 tooltip = production_speed_rail_way_factor_tt }
+                    set_variable = { RAJ_indian_railway_production_speed_supply_node_factor = -0.09  tooltip = production_speed_supply_node_factor_tt }
+                    set_variable = { RAJ_indian_railway_production_speed_rail_way_factor = -0.09 tooltip = production_speed_infrastructure_factor_tt }
+                }
+                else_if = {
+                    limit = { check_variable = { RAJ_railway_focuses = 5 } }
+                    set_variable = { RAJ_indian_railway_industrial_capacity_factory = 0.15 tooltip = industrial_capacity_factory_tt }
+
+                    set_variable = { RAJ_indian_railway_production_speed_infrastructure_factor = -0.12 tooltip = production_speed_rail_way_factor_tt }
+                    set_variable = { RAJ_indian_railway_production_speed_supply_node_factor = -0.12  tooltip = production_speed_supply_node_factor_tt }
+                    set_variable = { RAJ_indian_railway_production_speed_rail_way_factor = -0.12 tooltip = production_speed_infrastructure_factor_tt }
+                }
+                else = {
+                    set_variable = { RAJ_indian_railway_industrial_capacity_factory = 0 tooltip = industrial_capacity_factory_tt }
+                }
+
+                set_country_flag = switch_to_robbing
+               
+            }
+            else = {
+                add_to_variable = { RAJ_indian_railway_industrial_capacity_factory = RAJ_railway_default_increase tooltip = industrial_capacity_factory_tt }
+                add_to_variable = { RAJ_indian_railway_production_speed_infrastructure_factor = RAJ_railway_default_decrease tooltip = production_speed_rail_way_factor_tt }
+                add_to_variable = { RAJ_indian_railway_production_speed_supply_node_factor = RAJ_railway_default_decrease  tooltip = production_speed_supply_node_factor_tt }
+                add_to_variable = { RAJ_indian_railway_production_speed_rail_way_factor = RAJ_railway_default_decrease tooltip = production_speed_infrastructure_factor_tt }
+
+            }
+        }
+        else = {
+            custom_effect_tooltip = RAJ_modify_indian_railways_tt
+            add_to_variable = { RAJ_indian_railway_production_speed_rail_way_factor = 0.05  tooltip = production_speed_rail_way_factor_tt }
+            add_to_variable = { RAJ_indian_railway_production_speed_supply_node_factor = 0.05  tooltip = production_speed_supply_node_factor_tt }
+            add_to_variable = { RAJ_indian_railway_production_speed_infrastructure_factor = 0.05  tooltip = production_speed_infrastructure_factor_tt } 
+            set_variable = { RAJ_indian_railway_industrial_capacity_factory = 0 }
+            set_variable = { RAJ_indian_railway_stability_factor= 0 }
+        }
+    }
+}
+
+build_civ_in_indian_releasables_once = {
+    for_each_scope_loop = {
+        array = RAJ.raj_releasables
+        if = {
+            limit = {
+                NOT = { has_country_flag = has_recieved_civ_from_funnel_british_investments }
+                exists = yes
+                is_subject_of = RAJ
+            }
+            random_core_state = {
+                limit = {
+                    is_controlled_by = PREV
+                }
+                add_extra_state_shared_building_slots = 3
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+
+            set_country_flag = has_recieved_civ_from_funnel_british_investments
+        }
+    }
+}
+
+remove_agrarian_society_if_void = { #removes martial races if conscription is completely gone
+    if = {
+        limit = {
+            check_variable = {
+                var = RAJ_agrarian_society_conscription_factor
+                value = 0
+                compare = greater_than_or_equals
+            }
+
+            has_dynamic_modifier = {
+                modifier = idea_RAJ_agrarian_society
+            }
+        }
+
+        remove_dynamic_modifier = {
+            modifier = idea_RAJ_agrarian_society
+        }
+    }
+}
+
+increase_taxes_threshold_by_4 = {
+    
+    custom_effect_tooltip = tier_threshold_increase_0
+    custom_effect_tooltip = tier_threshold_increase_1
+    custom_effect_tooltip = tier_threshold_increase_2
+
+   
+    add_to_variable = { tier_two_taxes_threshold = 4 } 
+    set_variable = { tier_two_taxes_threshold_plus_1 = tier_two_taxes_threshold } #for tooltip
+    add_to_variable = { tier_two_taxes_threshold_plus_1 = 1  }
+
+    add_to_variable = { tier_three_taxes_threshold = 4 } 
+    set_variable = { tier_three_taxes_threshold_plus_1 = tier_three_taxes_threshold } #for tooltip
+    add_to_variable = { tier_three_taxes_threshold_plus_1 = 1  }
+    
+    add_to_variable = { tier_four_taxes_threshold = 4 } 
+    set_variable = { tier_four_taxes_threshold_plus_1 = tier_four_taxes_threshold } #for tooltip
+    add_to_variable = { tier_four_taxes_threshold_plus_1 = 1  }
+    
+    #for displayp in the tooltiup for focuses
+    set_variable = { tier_two_taxes_threshold_plus_4 = tier_two_taxes_threshold }
+    add_to_variable = { tier_two_taxes_threshold_plus_4 = 4 } #only for tooltip
+
+    set_variable = { tier_three_taxes_threshold_plus_4 = tier_three_taxes_threshold }
+    add_to_variable = { tier_three_taxes_threshold_plus_4 = 4 } #only for tooltip
+
+    set_variable = { tier_four_taxes_threshold_plus_4 = tier_four_taxes_threshold }
+    add_to_variable = { tier_four_taxes_threshold_plus_4 = 4 } #only for tooltip
+}
+
+bathe_in_hellfire_nuclear = {
+    if = {
+        limit = {
+            has_event_target = nuclear_gandhi_actor_country
+            event_target:nuclear_gandhi_actor_country = {
+                original_tag = RAJ
+                has_completed_focus = RAJ_bathe_in_hellfire
+            }
+            has_dlc = "Graveyard of Empires"
+
+        }
+
+        clear_global_event_target = nuclear_gandhi_actor_country
+
+        THIS = {
+            set_variable = { t_arms_factory_level = arms_factory_level }
+            if = {
+                limit = {
+                    check_variable = { t_arms_factory_level > 0 }
+                }
+
+                multiply_variable = { t_arms_factory_level = 0.5 } 
+                round_variable = t_arms_factory_level #highest int is chosen 
+                if = {
+                    limit = {
+                        check_variable = { t_arms_factory_level > 0 }
+                    }
+
+                    remove_building = {
+                        type =  arms_factory
+                        level = t_arms_factory_level
+                    }
+                }
+            }
+        }
+    }
+}
+
+bathe_in_hellfire_thermonuclear = {
+    if = {
+        limit = {
+            has_event_target = nuclear_gandhi_actor_country
+            event_target:nuclear_gandhi_actor_country = {
+                original_tag = RAJ
+                has_completed_focus = RAJ_bathe_in_hellfire
+            }
+            has_dlc = "Graveyard of Empires"
+
+        }
+
+        clear_global_event_target = nuclear_gandhi_actor_country
+
+        THIS = {
+            set_variable = { t_arms_factory_level = arms_factory_level }
+            if = {
+                limit = {
+                    check_variable = { t_arms_factory_level > 0 }
+                }
+
+                multiply_variable = { t_arms_factory_level = 1 } 
+                round_variable = t_arms_factory_level #highest int is chosen 
+                if = {
+                    limit = {
+                        check_variable = { t_arms_factory_level > 0 }
+                    }
+
+                    remove_building = {
+                        type =  arms_factory
+                        level = t_arms_factory_level
+                    }
+                }
+            }
+        }
+    }
+}

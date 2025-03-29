@@ -2,159 +2,6 @@ on_actions = {
 	
 	# FROM is the faction Leader, ROOT is the country leaving the faction 
 	on_leave_faction = {
-
-		effect = { # Removing Joint Focus Tree modifiers 
-			IF = {
-				limit = {
-					ROOT = {
-						HABSBURG_is_a_habsburg_viable_nation = yes
-						NOT = {
-							tag = global.AH_originator_country
-						}
-						OR = {
-							is_subject = no
-							AND = {
-								is_subject = yes
-								NOT = {
-									is_subject_of = global.AH_originator_country
-								}
-							}
-						}
-					}
-				}
-				IF = {
-					limit = {
-						ROOT = {
-							has_dynamic_modifier = {
-								modifier = HABSBURG_army_modifier
-							}	
-						}
-					}
-					ROOT = {
-						remove_dynamic_modifier = {
-							modifier = HABSBURG_army_modifier
-						}
-					}
-				}
-				IF = {
-					limit = {
-						ROOT = {
-							has_dynamic_modifier = {
-								modifier = HABSBURG_cavalry_modifier
-							}	
-						}
-					}
-					ROOT = {
-						remove_dynamic_modifier = {
-							modifier = HABSBURG_cavalry_modifier
-						}
-					}
-				}
-				IF = {
-					limit = {
-						ROOT = {
-							has_dynamic_modifier = {
-								modifier = HABSBURG_economy_dynamic_modifier
-							}	
-						}
-					}
-					ROOT = {
-						remove_dynamic_modifier = {
-							modifier = HABSBURG_economy_dynamic_modifier
-						}
-					}
-				}
-				IF = {
-					limit = {
-						ROOT = {
-							has_dynamic_modifier = {
-								modifier = HABSBURG_joint_industry_modifier
-							}	
-						}
-					}
-					ROOT = {
-						remove_dynamic_modifier = {
-							modifier = HABSBURG_joint_industry_modifier
-						}
-					}
-				}
-				IF = {
-					limit = {
-						has_global_flag = {
-							flag = AH_joint_tech_sharing_group_activated_flag
-						}
-					}
-					ROOT = {
-						remove_from_tech_sharing_group = HABSBURG_tech_sharing_group
-					}
-				}
-			}
-			#German Autarky Trade Influence Stuff
-			if = {
-				limit = {
-					OR = {
-						FROM = { 
-							has_opinion_modifier = GER_autarky_trade_opinion
-						}
-						ROOT = { #In case Germany isn't faction leader any more
-							has_opinion_modifier = GER_autarky_trade_opinion
-						}
-					}
-				}
-				if = { #If Germany is faction leader, remove German trade Influence
-					limit = {
-						FROM = { 
-							has_opinion_modifier = GER_autarky_trade_opinion
-						}
-					}
-					ROOT = { #Remove trade opinion
-						remove_opinion_modifier = {
-							target = FROM
-							modifier = GER_autarky_trade_opinion
-						}
-					}
-				}
-				if = { #If Germany is NOT faction leader any more; remove German trade influence
-					limit = {
-						ROOT = { 
-							has_opinion_modifier = GER_autarky_trade_opinion
-						}
-					}
-					FROM = { #Remove trade opinion
-						remove_opinion_modifier = {
-							target = ROOT
-							modifier = GER_autarky_trade_opinion
-						}
-					}
-				}
-				if = { #If Germany is faction leader; remove faction leader trade influence
-					limit = {
-						ROOT = { 
-							has_opinion_modifier = GER_german_trade_opinion
-						}
-					}
-					FROM = { #Remove trade opinion
-						remove_opinion_modifier = {
-							target = ROOT
-							modifier = GER_german_trade_opinion
-						}
-					}
-				}
-				if = { #If Germany is NOT faction leader any more; remove faction leader trade influence
-					limit = {
-						FROM = { 
-							has_opinion_modifier = GER_german_trade_opinion
-						}
-					}
-					ROOT = { #Remove trade opinion
-						remove_opinion_modifier = {
-							target = FROM
-							modifier = GER_german_trade_opinion
-						}
-					}
-				}
-			}
-		}
 	}
 
 
@@ -196,12 +43,6 @@ on_actions = {
 					ROOT = {
 						has_country_flag = GER_reichskommissariats_puppet_flag
 					}
-					GER = {
-						has_dynamic_modifier = { modifier = GER_alfred_rosenberg_modifier }
-					}
-				}
-				GER = {
-					GER_worsen_rosenbergs_trait_effect = yes
 				}
 				ROOT = {
 					clr_country_flag = GER_reichskommissariats_puppet_flag
@@ -247,143 +88,6 @@ on_actions = {
 	}
 
 	on_monthly = {
-
-		effect = {
-			IF = {
-				limit = {
-					ROOT = {
-						HABSBURG_is_a_habsburg_viable_nation = yes
-					}
-					any_other_country = {
-						tag = global.AH_originator_country
-						has_subject = ROOT
-					}
-					ROOT = {
-						NOT = {
-							AND = {
-								is_in_tech_sharing_group = HABSBURG_tech_sharing_group
-								has_dynamic_modifier = {
-									modifier = HABSBURG_economy_dynamic_modifier
-								}
-								has_dynamic_modifier = {
-									modifier = HABSBURG_joint_industry_modifier
-								}
-								has_dynamic_modifier = {
-									modifier = HABSBURG_army_modifier
-								}
-								has_dynamic_modifier = {
-									modifier =  HABSBURG_cavalry_modifier
-								}
-							}
-						}
-					}
-					OR = {
-						has_global_flag = {
-							flag = AH_joint_tech_sharing_group_activated_flag
-						}
-						has_global_flag = {
-							flag = AH_joint_economy_spirit_activated_flag
-						}
-						has_global_flag = {
-							flag = AH_joint_industry_spirit_activated_flag
-						}
-						has_global_flag = {
-							flag = AH_joint_army_spirit_activated_flag
-						}
-						has_global_flag = {
-							flag = AH_joint_cavalry_spirit_activated_flag
-						}
-					}
-				}
-				IF = {
-					limit = {
-						has_global_flag = {
-							flag = AH_joint_tech_sharing_group_activated_flag
-						}
-						ROOT = {
-							NOT = {
-								is_in_tech_sharing_group = HABSBURG_tech_sharing_group
-							}
-						}
-					}
-					ROOT = {
-						add_to_tech_sharing_group = HABSBURG_tech_sharing_group
-					}
-				}
-
-				IF = {
-					limit = {
-						has_global_flag = {
-							flag = AH_joint_economy_spirit_activated_flag
-						}
-						ROOT = {
-							NOT = {
-								has_dynamic_modifier = {
-									modifier = HABSBURG_economy_dynamic_modifier
-								}
-							}
-						}
-					}
-					ROOT = {
-						add_dynamic_modifier = { modifier = HABSBURG_economy_dynamic_modifier }
-					}
-				}
-
-				IF = {
-					limit = {
-						has_global_flag = {
-							flag = AH_joint_industry_spirit_activated_flag
-						}
-						ROOT = {
-							NOT = {
-								has_dynamic_modifier = {
-									modifier = HABSBURG_joint_industry_modifier
-								}
-							}
-						}
-					}
-					ROOT = {
-						add_dynamic_modifier = { modifier = HABSBURG_joint_industry_modifier }
-					}
-				}
-
-				IF = {
-					limit = {
-						has_global_flag = {
-							flag = AH_joint_army_spirit_activated_flag
-						}
-						ROOT = {
-							NOT = {
-								has_dynamic_modifier = {
-									modifier = HABSBURG_army_modifier
-								}
-							}
-						}
-					}
-					ROOT = {
-						add_dynamic_modifier = { modifier = HABSBURG_army_modifier }
-					}
-				}
-
-				IF = {
-					limit = {
-						has_global_flag = {
-							flag = AH_joint_cavalry_spirit_activated_flag
-						}
-						ROOT = {
-							NOT = {
-								has_dynamic_modifier = {
-									modifier =  HABSBURG_cavalry_modifier
-								}
-							}
-						}
-					}
-					ROOT = {
-						add_dynamic_modifier = { modifier = HABSBURG_cavalry_modifier }
-					}
-				}
-			}
-		}
 	}
 
 	#ROOT is capitulated country, FROM is winner.
@@ -394,12 +98,6 @@ on_actions = {
 					ROOT = {
 						has_country_flag = GER_reichskommissariats_puppet_flag
 					}
-					GER = {
-						has_dynamic_modifier = { modifier = GER_alfred_rosenberg_modifier }
-					}
-				}
-				GER = {
-					GER_worsen_rosenbergs_trait_effect = yes
 				}
 				ROOT = {
 					clr_country_flag = GER_reichskommissariats_puppet_flag
@@ -515,12 +213,6 @@ on_actions = {
 					ROOT = {
 						has_country_flag = GER_reichskommissariats_puppet_flag
 					}
-					GER = {
-						has_dynamic_modifier = { modifier = GER_alfred_rosenberg_modifier }
-					}
-				}
-				GER = {
-					GER_worsen_rosenbergs_trait_effect = yes
 				}
 				ROOT = {
 					clr_country_flag = GER_reichskommissariats_puppet_flag
@@ -536,55 +228,11 @@ on_actions = {
 	on_peace = {
 	}
 
-	on_monthly_COG = {
-	}
-
-	on_monthly_ENG = {
-	}
-
 	on_ruling_party_change = {
 	}
 
 	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
 	on_state_control_changed = {
-	}
-
-	on_weekly_GER = {
-	}
-
-	on_monthly_AUS = {
-
-		effect = {
-			IF = {
-				limit = {
-					has_dlc = "Gotterdammerung"
-					AUS = { has_country_flag = AUS_antischluss_active_flag }
-				}
-
-				#below variables are set to be multiplied with a percentage to check how close Germany are to achieving the fighting army strength ratio needed for anschluss
-
-				set_variable = { global.low_anschluss_risk = global.deployed_manpower_ratio_needed_for_anschluss }
-
-				set_variable = { global.medium_anschluss_risk = global.deployed_manpower_ratio_needed_for_anschluss }
-
-				set_variable = { global.high_anschluss_risk = global.deployed_manpower_ratio_needed_for_anschluss }
-
-				multiply_variable = {
-					var = global.low_anschluss_risk
-					value = 0.5
-				}
-
-				multiply_variable = {
-					var = global.medium_anschluss_risk
-					value = 0.75
-				}
-
-				multiply_variable = {
-					var = global.high_anschluss_risk
-					value = 0.90
-				}
-			}
-		}
 	}
 
 	on_annex = {
@@ -620,12 +268,6 @@ on_actions = {
 					FROM = {
 						has_country_flag = GER_reichskommissariats_puppet_flag
 					}
-					GER = {
-						has_dynamic_modifier = { modifier = GER_alfred_rosenberg_modifier }
-					}
-				}
-				GER = {
-					GER_worsen_rosenbergs_trait_effect = yes
 				}
 				FROM = {
 					clr_country_flag = GER_reichskommissariats_puppet_flag
@@ -645,9 +287,6 @@ on_actions = {
 					ROOT = {
 						has_country_flag = GER_reichskommissariats_puppet_flag
 					}
-				}
-				GER = {
-					GER_worsen_rosenbergs_trait_effect = yes
 				}
 				FROM = {
 					clr_country_flag = GER_reichskommissariats_puppet_flag

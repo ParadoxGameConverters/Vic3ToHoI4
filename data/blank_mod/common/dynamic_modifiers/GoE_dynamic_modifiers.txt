@@ -171,16 +171,6 @@ idea_RAJ_agrarian_society = {
 	mobilization_speed = RAJ_agrarian_society_mobilization_speed
 }
 
-#Added on states if invaded
-idea_RAJ_resistant_to_occupation = {
-	icon = GFX_modifiers_FIN_weapon_caches
-	compliance_growth = -0.25
-	local_manpower = -0.33
-	remove_trigger = {	
-		CONTROLLER = { is_raj_or_raj_inheritor = yes } 	
-	}
-}
-
 idea_RAJ_indian_railways = {
 	icon = GFX_idea_ARG_invest_in_railways 
 	production_speed_rail_way_factor = RAJ_indian_railway_production_speed_rail_way_factor 
