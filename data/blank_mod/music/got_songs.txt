@@ -1,0 +1,113 @@
+
+music_station = "base_music"
+
+music = {
+	song = "apocalyptic_weapons"
+
+	chance = {
+		base = 1
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_facility_specialization = specialization_nuclear
+				has_facility_specialization = specialization_air
+				has_facility_specialization = specialization_land
+				has_facility_specialization = specialization_naval
+			}
+		}
+		modifier = { #Scary things
+			factor = 2
+			OR = {
+				is_special_project_completed = sp:sp_nuclear_bomb
+				is_special_project_completed = sp:sp_land_land_cruiser
+				is_special_project_completed = sp:sp_naval_ice_carrier
+				is_special_project_completed = sp:sp_rockets_ballistic_missile
+			}
+		}
+	}
+}
+
+music = {
+	song = "austria_peace"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "austria_war"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "belgium_peace"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "belgium_war"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "commando_raid"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "germany_freedom"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "germany_war"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "great_empire_rises_again"
+
+	chance = {
+		base = 1
+
+		modifier = {
+			factor = 2
+			is_faction_leader = yes
+		}
+	}
+}
+
+music = {
+	song = "hungary_peace"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "hungary_war"
+
+	chance = {
+		base = 1
+	}
+}

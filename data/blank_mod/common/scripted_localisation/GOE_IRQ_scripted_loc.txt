@@ -1,0 +1,132 @@
+defined_text = {
+	name = IRQ_royal_iraqi_army_key
+	text = {
+		trigger = {
+			NOT = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_royal_iraqi_army_IRQ
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_royal_iraqi_army_KUR
+	}
+}
+
+defined_text = {
+	name = IRQ_establish_iraqi_coastal_defense_force_key
+	text = {
+		trigger = {
+			NOT = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_establish_iraqi_coastal_defense_force_IRQ
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_establish_iraqi_coastal_defense_force_KUR
+	}
+}
+
+defined_text = {
+	name = IRQ_found_the_iraqi_state_railways_key
+	text = {
+		trigger = {
+			NOT = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_found_the_iraqi_state_railways_IRQ
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_found_the_iraqi_state_railways_KUR
+	}
+}
+
+defined_text = {
+	name = IRQ_strengthen_the_iraqi_dinar_key
+	text = {
+		trigger = {
+			NOT = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_strengthen_the_iraqi_dinar_IRQ
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_strengthen_the_iraqi_dinar_KUR
+	}
+}
+
+defined_text = {
+	name = IRQ_royal_army_modifier_key
+	text = {
+		trigger = {
+			NOT = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_royal_army_modifier_IRQ
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_royal_army_modifier_KUR
+	}
+}
+
+defined_text = {
+	name = IRQ_navy_modifier_key
+	text = {
+		trigger = {
+			NOT = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_navy_modifier_IRQ
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_cosmetic_tag = IRQ_kurdistan_tag
+				has_cosmetic_tag = greater_kurdistan
+			}
+		}
+		localization_key = IRQ_navy_modifier_KUR
+	}
+}
+

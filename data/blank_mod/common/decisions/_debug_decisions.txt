@@ -258,6 +258,33 @@ debug_decisions = {
 			add_ideas = add_production_efficiency
 		}
 	}
+
+	#nuke_target_debug = {
+	#	icon = generic_research
+#
+	#	available = {
+	#		is_ai = no
+	#		is_debug = yes
+	#	}
+#
+	#	visible = {
+	#		is_ai = no
+	#		is_debug = yes
+	#		has_global_flag = show_debug_decisions_flag
+	#	}
+#
+	#	fire_only_once = no
+	#	cost = 0
+#
+	#	complete_effect = {
+	#		TIB = {
+	#			launch_nuke = {
+	#				province = 9950
+	#				use_nuke = no
+	#			}	
+	#		}
+	#	}
+	#}
 		
 	remove_efficiency_growth_debug = {
 		icon = generic_research
@@ -458,9 +485,7 @@ debug_decisions = {
 		cost = 0
 
 		complete_effect = {
-			if = {
-				add_political_power = 1000
-			}
+			controlled_civilian_factories_excluding_trade = yes
 		}
 
 		ai_will_do = {
@@ -659,10 +684,6 @@ debug_decisions = {
 		complete_effect = {
 			set_variable = { fighter_buy_amount = 200 }
 			save_event_target_as = license_target
-			bba_get_fighter_GER_effect = yes
-			GER = {
-				bba_create_fighter_license_effect = yes
-			}
 		}
 		
 	}

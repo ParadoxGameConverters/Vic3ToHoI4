@@ -103,7 +103,7 @@ ideas = {
 			}		
 		}
 
-#		sp_multi_charge_large_caliber_gun_small_size_ns = { #TODO_Manu: Used for Small version of V-3 SP. Uncomment if Code Support gets implemented 
+#		sp_multi_charge_large_caliber_gun_small_size_ns = { #MM: Used for Small version of V-3 SP. Uncomment if Code Support gets implemented 
 #			allowed = {
 #				always = no
 #			}

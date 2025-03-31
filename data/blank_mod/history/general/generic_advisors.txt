@@ -116,7 +116,7 @@ every_possible_country = {
 		token_base = generic_air_close_air_sup # token will be TAG_token_base
 		advisor = {
 			slot = air_chief
-			traits = { air_close_air_support_2 }
+			traits = { air_chief_ground_support_2 }
 			cost = 100
 		}
 		portraits = { 

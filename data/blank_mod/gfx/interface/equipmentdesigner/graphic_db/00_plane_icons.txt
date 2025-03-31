@@ -1,45 +1,144 @@
 default = {
+
+	######################
+	### SMALL AIRFRAME ###
+	######################
+
 	small_plane_airframe = {
 		pool = {
-			icons = { 
-				GFX_light_plane_5_medium
-				GFX_light_plane_6_medium
-				GFX_jet_plane_1_medium
-				GFX_light_plane_1_medium
-				GFX_light_plane_2_medium
-				GFX_light_plane_3_medium
-				GFX_light_plane_4_medium
-				GFX_light_plane_5_medium
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_iw_small_airframe_medium #IW Small Fighter Aviotehas PN-3 (EST)
+				GFX_basic_small_airframe_medium #Basic Small Fighter Renard R.36 (BEL)
+				GFX_light_plane_6_medium #Improved Small Fighter Fokker D.XXIII (HOL)
+				GFX_improved_small_airframe_medium #Improved Small Fighter Curtiss YP-37 (USA)
+				GFX_light_plane_5_medium #Improved Small Fighter Vultee P-66 Vanguard (USA) -> First of Improved tier since it has 3D model
+				GFX_advanced_small_airframe_medium #Advanced Small Fighter Saab 21 (SWE)
 				
-			 }
+				#Show Jet Planes only in Modern Airframes
+				#GFX_jet_plane_1_medium #Modern Small (Jet) Fighter Saab 29 Tunnan (SWE)
+			}
+			models = {
+				light_plane_entity #Improved Small Fighter Vultee P-66 Vanguard (USA)
+			}
 		}
-
-		pool = {
-			models = { 
-				light_plane_entity
-			 }
-		}
-
 	}
+	small_plane_airframe_0 = {
+		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_iw_small_airframe_medium #IW Small Fighter Aviotehas PN-3 (EST)
+			}
+		}
+	}
+	small_plane_airframe_1 = {
+		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_basic_small_airframe_medium #Basic Small Fighter Renard R.36 (BEL)
+			}
+		}
+	}
+	small_plane_airframe_2 = {
+		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_light_plane_6_medium #Improved Small Fighter Fokker D.XXIII (HOL)
+				GFX_improved_small_airframe_medium #Improved Small Fighter Curtiss YP-37 (USA)
+				GFX_light_plane_5_medium #Improved Small Fighter Vultee P-66 Vanguard (USA) -> First of Improved tier since it has 3D model
+			}
+			models = {
+				light_plane_entity #Improved Small Fighter Vultee P-66 Vanguard (USA)
+			}
+		}
+	}
+	small_plane_airframe_3 = {
+		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_advanced_small_airframe_medium #Advanced Small Fighter Saab 21 (SWE)
+			}
+		}
+	}
+	small_plane_airframe_4 = {
+		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_jet_plane_1_medium #Modern Small (Jet) Fighter Saab 29 Tunnan (SWE)
+			}
+		}
+	}
+
+
+	### CARRIER AIRFRAME ###
 
 	cv_small_plane_airframe = {
 		pool = {
-			icons = { 
-				GFX_light_plane_1_medium
-				GFX_light_plane_2_medium
-				GFX_light_plane_3_medium
-				GFX_light_plane_4_medium
-				GFX_jet_plane_1_medium
-				GFX_light_plane_5_medium
-				GFX_light_plane_6_medium
-			 }
-		}
-		pool = {
-			models = { 
-				light_plane_entity
-			 }
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_iw_small_airframe_medium #IW Small Fighter Aviotehas PN-3 (EST)
+				GFX_basic_small_airframe_medium #Basic Small Fighter Renard R.36 (BEL)
+				GFX_light_plane_6_medium #Improved Small Fighter Fokker D.XXIII (HOL)
+				GFX_improved_small_airframe_medium #Improved Small Fighter Curtiss YP-37 (USA)
+				GFX_light_plane_5_medium #Improved Small Fighter Vultee P-66 Vanguard (USA) -> First of Improved tier since it has 3D model
+				GFX_advanced_small_airframe_medium #Advanced Small Fighter Saab 21 (SWE)
+				
+				#Show Jet Planes only in Modern Airframes
+				#GFX_jet_plane_1_medium #Modern Small (Jet) Fighter Saab 29 Tunnan (SWE)
+			}
+			models = {
+				light_plane_entity #Improved Small Fighter Vultee P-66 Vanguard (USA)
+			}
 		}
 	}
+	cv_small_plane_airframe_0 = {
+		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_iw_small_airframe_medium #IW Small Fighter Aviotehas PN-3 (EST)
+			}
+		}
+	}
+	cv_small_plane_airframe_1 = {
+		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_basic_small_airframe_medium #Basic Small Fighter Renard R.36 (BEL)
+			}
+		}
+	}
+	cv_small_plane_airframe_2 = {
+		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_light_plane_6_medium #Improved Small Fighter Fokker D.XXIII (HOL)
+				GFX_improved_small_airframe_medium #Improved Small Fighter Curtiss YP-37 (USA)
+				GFX_light_plane_5_medium #Improved Small Fighter Vultee P-66 Vanguard (USA) -> First of Improved tier since it has 3D model
+			}
+			models = {
+				light_plane_entity #Improved Small Fighter Vultee P-66 Vanguard (USA)
+			}
+		}
+	}
+	cv_small_plane_airframe_3 = {
+		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_advanced_small_airframe_medium #Advanced Small Fighter Saab 21 (SWE)
+			}
+		}
+	}
+	cv_small_plane_airframe_4 = {
+		pool = {
+			weight = 0.1 #Should appear at the bottom of the list
+			icons = {
+				GFX_jet_plane_1_medium #Modern Small (Jet) Fighter Saab 29 Tunnan (SWE)
+			}
+		}
+	}
+
+
+	### SPECIAL PROJECTS ###
 
 	small_plane_airframe_5 = { #Supersonic Jet
 		pool = {
@@ -65,39 +164,159 @@ default = {
 		}
 	}
 
+
+	#######################
+	### MEDIUM AIRFRAME ###
+	#######################
+
 	medium_plane_airframe = {
 		pool = {
-			icons = { 
-				GFX_scout_plane1_medium
-				GFX_scout_plane2_medium
-				GFX_medium_plane_3_medium
-				GFX_advanced_medium_airframe_medium
-				GFX_modern_medium_airframe_medium
-				GFX_medium_plane_4_medium
-				GFX_medium_plane_2_medium
-				GFX_medium_plane_1_medium
-			 }
-		}
-		pool = {
-			models = { 
-				medium_plane_entity
-			 }
+			weight = 0.1
+			icons = {
+				GFX_iw_medium_airframe_medium #IW Medium Tac Bomber Martin B-10 (USA)
+				GFX_basic_medium_airframe_medium #Basic Medium Tac Bomber Martin B-10 (USA) (Yes, same as above, icon is just slightly different)
+				GFX_improved_medium_airframe_medium #Improved Medium Tac Bomber Dornier Do 24 (GER)
+				GFX_advanced_medium_airframe_medium #Advanced Medium Tac Bomber Fokker T.IX (HOL)
+				GFX_modern_medium_airframe_medium #Modern Medium Tac Bomber I.Ae. 24 Calquin (ARG) -> Has model
+			}
+			models = {
+				medium_plane_entity #Modern Medium Tac Bomber I.Ae. 24 Calquin (ARG)
+			}
 		}
 	}
+	medium_plane_airframe_0 = {
+		pool = {
+			weight = 0.1
+			icons = {
+				GFX_iw_medium_airframe_medium #IW Medium Tac Bomber Martin B-10 (USA)
+			}
+		}
+	}
+	medium_plane_airframe_1 = {
+		pool = {
+			weight = 0.1
+			icons = {
+				GFX_basic_medium_airframe_medium #Basic Medium Tac Bomber Martin B-10 (USA) (Yes, same as above, icon is just slightly different)
+			}
+		}
+	}
+	medium_plane_airframe_2 = {
+		pool = {
+			weight = 0.1
+			icons = {
+				GFX_improved_medium_airframe_medium #Improved Medium Tac Bomber Dornier Do 24 (GER)
+			}
+		}
+	}
+	medium_plane_airframe_3 = {
+		pool = {
+			weight = 0.1
+			icons = {
+				GFX_advanced_medium_airframe_medium #Advanced Medium Tac Bomber Fokker T.IX (HOL)
+			}
+		}
+	}
+	medium_plane_airframe_4 = {
+		pool = {
+			weight = 0.1
+			icons = {
+				GFX_modern_medium_airframe_medium #Modern Medium Tac Bomber I.Ae. 24 Calquin (ARG) -> Has model
+			}
+			models = {
+				medium_plane_entity #Modern Medium Tac Bomber I.Ae. 24 Calquin (ARG)
+			}
+		}
+	}
+
+	# SCOUT PLANE
+	medium_plane_scout_plane_airframe = {
+		pool = {
+			icons = {
+				GFX_scout_plane1_medium
+				GFX_scout_plane2_medium
+			}
+		}
+	}
+	medium_plane_scout_plane_airframe_0 = {
+		pool = {
+			icons = {
+				GFX_scout_plane1_medium #Pick oldest plane
+			}
+		}
+	}
+	medium_plane_scout_plane_airframe_1 = {
+		pool = {
+			icons = {
+				GFX_scout_plane1_medium
+			}
+		}
+	}
+	medium_plane_scout_plane_airframe_2 = {
+		pool = {
+			icons = {
+				GFX_scout_plane2_medium
+			}
+		}
+	}
+
+
+	######################
+	### LARGE AIRFRAME ###
+	######################
+
 	large_plane_airframe = {
 		pool = {
-			icons = { 
-				GFX_modern_large_airframe_medium
-				GFX_advanced_large_airframe_medium
-				GFX_improved_large_airframe_medium
-				GFX_basic_large_airframe_medium
-				GFX_iw_large_airframe_medium
-			 }
+			weight = 0.1
+			icons = {
+				GFX_iw_large_airframe_medium #IW Large Strat Bomber F.220 (FRA)
+				GFX_basic_large_airframe_medium #Basic Large Strat Bomber Fokker T.VI (HOL)
+				GFX_improved_large_airframe_medium #Improved Large Nav. Patrol PB2Y Coronado (USA)
+				GFX_advanced_large_airframe_medium #Advanced Large Strat Bomber Lockheed C-69 Constellation (USA) 
+				GFX_modern_large_airframe_medium #Modern Small (Jet) Strat Bomber Bristol Type 159 (ENG)
+			}
+			models = {
+				heavy_plane_entity #No idea where this came from tbh
+			}
 		}
+	}
+	large_plane_airframe_0 = {
 		pool = {
-			models = { 
-				heavy_plane_entity
-			 }
+			weight = 0.1
+			icons = {
+				GFX_iw_large_airframe_medium #IW Large Strat Bomber F.220 (FRA)
+			}
+		}
+	}
+	large_plane_airframe_1 = {
+		pool = {
+			weight = 0.1
+			icons = {
+				GFX_basic_large_airframe_medium #Basic Large Strat Bomber Fokker T.VI (HOL)
+			}
+		}
+	}
+	large_plane_airframe_2 = {
+		pool = {
+			weight = 0.1
+			icons = {
+				GFX_improved_large_airframe_medium #Improved Large Nav. Patrol PB2Y Coronado (USA)
+			}
+		}
+	}
+	large_plane_airframe_3 = {
+		pool = {
+			weight = 0.1
+			icons = {
+				GFX_advanced_large_airframe_medium #Advanced Large Strat Bomber Lockheed C-69 Constellation (USA) 
+			}
+		}
+	}
+	large_plane_airframe_4 = {
+		pool = {
+			weight = 0.1
+			icons = {
+				GFX_modern_large_airframe_medium #Modern Small (Jet) Strat Bomber Bristol Type 159 (ENG)
+			}
 		}
 	}
 }

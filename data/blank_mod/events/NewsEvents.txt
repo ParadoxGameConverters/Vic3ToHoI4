@@ -26,17 +26,8 @@ news_event = {
 				has_war = no
 			}
 			AND = {
-				has_rule = { can_create_factions }
-				num_faction_members > 1
-				has_war = no
-			}
-			AND = {
 				is_major = yes
 				has_war = no
-				every_country = {
-					is_in_faction = no
-					NOT = { has_rule = { can_create_factions } }
-				}
 			}
 			is_major = no
 		}

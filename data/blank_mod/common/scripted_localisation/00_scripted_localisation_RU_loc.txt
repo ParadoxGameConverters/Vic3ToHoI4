@@ -1,0 +1,424 @@
+#####################################################
+#   Hearts of Iron IV RUSSIAN CUSTOM LOCALISATION   #
+#    By Loktionov Alexander	       					#
+#####################################################
+
+#Lowercase Ideology Adjective Short Lower
+defined_text = {
+	name = GetRulingIdeology_RU_lower_ShortAdj
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = RU_lower_ShortAdj_fascism
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = RU_lower_ShortAdj_communism
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = RU_lower_ShortAdj_democratic
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = RU_lower_ShortAdj_neutrality
+	}
+}
+
+#Lowercase Ideology Noun Nominative Lower
+defined_text = {
+	name = GetRulingIdeologyNoun_RU_lower_Nom
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = RU_lower_Nom_fascism
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = RU_lower_Nom_communism
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = RU_lower_Nom_democratic
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = RU_lower_Nom_neutrality
+	}
+}
+
+#Lowercase Ideology Noun Accusative Lower
+defined_text = {
+	name = GetRulingIdeologyNoun_RU_lower_Acc
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = RU_lower_Acc_fascism
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = RU_lower_Acc_communism
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = RU_lower_Acc_democratic
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = RU_lower_Acc_neutrality
+	}
+}
+
+#Lowercase Ideology Noun Genitive Lower
+defined_text = {
+	name = GetRulingIdeologyNoun_RU_lower_Gen
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = RU_lower_Gen_fascism
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = RU_lower_Gen_communism
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = RU_lower_Gen_democratic
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = RU_lower_Gen_neutrality
+	}
+}
+
+
+#Lowercase Ideology Adherent Nominativ
+defined_text = {
+	name = GetRulingIdeology_RU_lower_Adherent_Nom
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = RU_lower_Adherent_Nom_fascism
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = RU_lower_Adherent_Nom_communism
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = RU_lower_Adherent_Nom_democratic
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = RU_lower_Adherent_Nom_neutrality
+	}
+}
+
+#Lowercase Ideology Adjective Endings_IeYe
+defined_text = {
+	name = GetRulingIdeology_RU_Adj_Ending_IeYe
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = RU_Adj_Ending_Ie
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = RU_Adj_Ending_Ie
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = RU_Adj_Ending_Ie
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = RU_Adj_Ending_Ye
+	}
+}
+
+#Lowercase Ideology Adjective Endings_IhYh
+defined_text = {
+	name = GetRulingIdeology_RU_Adj_Ending_IhYh
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = RU_Adj_Ending_Ih
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = RU_Adj_Ending_Ih
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = RU_Adj_Ending_Ih
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = RU_Adj_Ending_Yh
+	}
+}
+
+#Lowercase Ideology Adjective Endings_YyAya
+defined_text = {
+	name = GetRulingIdeology_RU_Adj_Ending_YyAya
+	text = {
+		trigger = { has_government = fascism }
+		localization_key = RU_Adj_Ending_Yy
+	}
+	text = {
+		trigger = { has_government = communism }
+		localization_key = RU_Adj_Ending_Yy
+	}
+	text = {
+		trigger = { has_government = democratic }
+		localization_key = RU_Adj_Ending_Aya
+	}
+	text = {
+		trigger = { has_government = neutrality }
+		localization_key = RU_Adj_Ending_Yy
+	}
+}
+
+#Russians Demonym Genitiv
+defined_text = {
+	name = GetRussiansDemonym_RU_Gen
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = RU_Gen_SOV_RUSSIANS_DEMONYM_SOVIETS
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = RU_Gen_SOV_RUSSIANS_DEMONYM_RUSSIANS
+	}
+}
+
+#Russians Demonym Dativ
+defined_text = {
+	name = GetRussiansDemonym_RU_Dat
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = RU_Dat_SOV_RUSSIANS_DEMONYM_SOVIETS
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = RU_Dat_SOV_RUSSIANS_DEMONYM_RUSSIANS
+	}
+}
+
+#Russians Demonym Dativ
+defined_text = {
+	name = GetRussiansDemonym_RU_Dat
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = RU_Dat_SOV_RUSSIANS_DEMONYM_SOVIETS
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = RU_Dat_SOV_RUSSIANS_DEMONYM_RUSSIANS
+	}
+}
+
+#Russians Demonym Accusativ
+defined_text = {
+	name = GetRussiansDemonym_RU_Acc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = RU_Acc_SOV_RUSSIANS_DEMONYM_SOVIETS
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = RU_Acc_SOV_RUSSIANS_DEMONYM_RUSSIANS
+	}
+}
+
+#Russians Demonym Instrumental
+defined_text = {
+	name = GetRussiansDemonym_RU_Inst
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = RU_Inst_SOV_RUSSIANS_DEMONYM_SOVIETS
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = RU_Inst_SOV_RUSSIANS_DEMONYM_RUSSIANS
+	}
+}
+
+#Russians Demonym Prepositional
+defined_text = {
+	name = GetRussiansDemonym_RU_Prep
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = RU_Prep_SOV_RUSSIANS_DEMONYM_SOVIETS
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = RU_Prep_SOV_RUSSIANS_DEMONYM_RUSSIANS
+	}
+}
+
+#Gender Pronouns Capital#
+
+defined_text = {
+	name = GetOnOna_RUCap
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = RULOC_OnCap
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = RULOC_OnaCap
+	}
+}
+
+defined_text = {
+	name = GetEgoEye_RUCap
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = RULOC_EgoCap
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = RULOC_EyeCap
+	}
+}
+
+defined_text = {
+	name = GetEmuEy_RUCap
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = RULOC_EmuCap
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = RULOC_EyCap
+	}
+}
+
+#Gender Pronouns#
+
+defined_text = {
+	name = GetOnOna_RU
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = RULOC_On
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = RULOC_Ona
+	}
+}
+
+defined_text = {
+	name = GetEgoEye_RU
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = RULOC_Ego
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = RULOC_Eye
+	}
+}
+
+defined_text = {
+	name = GetEmuEy_RU
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = RULOC_Emu
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = RULOC_Ey
+	}
+}
+
+defined_text = {
+	name = GetImEy_RU
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = RULOC_Im
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = RULOC_Ey
+	}
+}
+
+defined_text = {
+	name = GetImEy_RUCap
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = RULOC_ImCap
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = RULOC_EyCap
+	}
+}
+
+defined_text = {
+	name = GetNemNey_RU
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = RULOC_Nem
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = RULOC_Ney
+	}
+}
+
+
+defined_text = {
+	name = GetVerbGendEndA_RU
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = RULOC_VerbMaleEnd_
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = RULOC_VerbFemaleEndA
+	}
+}

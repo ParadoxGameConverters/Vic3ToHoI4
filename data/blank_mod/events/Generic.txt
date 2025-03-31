@@ -42,6 +42,9 @@ country_event = {
 country_event = {
 	id = generic.2
 	title = generic.2.t
+	trigger = {
+		country_exists = FROM
+	}
 	desc = { # FROM and ROOT are Democratic
 		text = generic.2.d.a
 		trigger = {
@@ -116,6 +119,8 @@ country_event = {
 	option = { #Agree / Both Democratic
 		name = generic.2.a
 		trigger = {
+			has_rule = can_join_factions
+			FROM = { has_rule = can_join_factions }
 			AND = {
 				FROM = {
 					has_government = democratic
@@ -137,6 +142,8 @@ country_event = {
 	option = { #Agree / Both Fascist
 		name = generic.2.b
 		trigger = {
+			has_rule = can_join_factions
+			FROM = { has_rule = can_join_factions }
 			AND = {
 				FROM = {
 					has_government = fascism
@@ -146,18 +153,30 @@ country_event = {
 		}
 		ai_chance = {
 			base = 100
+			modifier = { # For shared Nordic Tree in AAT
+				factor = 1.7
+				FROM = {
+					has_country_flag = NORDIC_requesting_through_NORDIC_shared
+				}
+			}
+
 		}
 		add_to_faction = FROM
 		FROM = { country_event = { id = generic.3 hours = 6 } }
 		hidden_effect = {
 			set_country_flag = alliance_inviter@ROOT
-			FROM = { set_country_flag = alliance_applicant@ROOT }
+			FROM = { 
+				set_country_flag = alliance_applicant@ROOT
+				clr_country_flag = NORDIC_requesting_through_NORDIC_shared # For shared Nordic Tree in AAT
+			}
 			news_event = { id = news.289 hours = 12 }
 		}
 	}
 	option = { #Agree / Both Communist
 		name = generic.2.c
 		trigger = {
+			has_rule = can_join_factions
+			FROM = { has_rule = can_join_factions }
 			AND = {
 				FROM = {
 					has_government = communism
@@ -167,18 +186,29 @@ country_event = {
 		}
 		ai_chance = {
 			base = 100
+			modifier = { # For shared Nordic Tree in AAT
+				factor = 1.7
+				FROM = {
+					has_country_flag = NORDIC_requesting_through_NORDIC_shared
+				}
+			}
 		}
 		add_to_faction = FROM
 		FROM = { country_event = { id = generic.3 hours = 6 } }
 		hidden_effect = {
 			set_country_flag = alliance_inviter@ROOT
-			FROM = { set_country_flag = alliance_applicant@ROOT }
+			FROM = { 
+				set_country_flag = alliance_applicant@ROOT
+				clr_country_flag = NORDIC_requesting_through_NORDIC_shared # For shared Nordic Tree in AAT 
+			}
 			news_event = { id = news.289 hours = 12 }
 		}
 	}
 	option = { #Agree / Both different
 		name = generic.2.e
 		trigger = {
+			has_rule = can_join_factions
+			FROM = { has_rule = can_join_factions }
 			NOT = {
 				AND = {
 					FROM = {
@@ -217,7 +247,7 @@ country_event = {
 					has_government = neutrality
 				}
 			}
-			
+
 			modifier = {
 				factor = 0.75
 				FROM = {
@@ -348,7 +378,6 @@ country_event = {
 				has_government = fascism
 			}
 		}
-
 
 	}
 	option = {
@@ -540,6 +569,8 @@ country_event = {
 	option = { #Agree / Both Democratic
 		name = generic.5.a
 		trigger = {
+			has_rule = can_join_factions
+			FROM = { has_rule = can_join_factions }
 			is_in_faction = no
 			AND = {
 				FROM = {
@@ -571,6 +602,8 @@ country_event = {
 	option = { #Agree / Both Fascist
 		name = generic.5.b
 		trigger = {
+			has_rule = can_join_factions
+			FROM = { has_rule = can_join_factions }
 			is_in_faction = no
 			AND = {
 				FROM = {
@@ -600,6 +633,8 @@ country_event = {
 	option = { #Agree / Both Communist
 		name = generic.5.c
 		trigger = {
+			has_rule = can_join_factions
+			FROM = { has_rule = can_join_factions }
 			is_in_faction = no
 			AND = {
 				FROM = {
@@ -629,6 +664,8 @@ country_event = {
 	option = { #Agree / Both different
 		name = generic.5.e
 		trigger = {
+			has_rule = can_join_factions
+			FROM = { has_rule = can_join_factions }
 			is_in_faction = no
 			NOT = {
 				AND = {
