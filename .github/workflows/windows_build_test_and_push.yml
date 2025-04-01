@@ -77,8 +77,8 @@ jobs:
        echo 'minSource = "1.8"' | out-file data/version.txt -encoding ASCII -append
        echo 'maxSource = "1.8"' | out-file data/version.txt -encoding ASCII -append
        echo 'target = "HoI4"' | out-file data/version.txt -encoding ASCII -append
-       echo 'minTarget = "1.15"' | out-file data/version.txt -encoding ASCII -append
-       echo 'maxTarget = "1.15"' | out-file data/version.txt -encoding ASCII -append
+       echo 'minTarget = "1.16"' | out-file data/version.txt -encoding ASCII -append
+       echo 'maxTarget = "1.16"' | out-file data/version.txt -encoding ASCII -append
        cat data/version.txt
 
     - name: Build with cmake
