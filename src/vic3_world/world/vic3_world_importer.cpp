@@ -55,8 +55,11 @@ namespace
 
 std::string ReadSave(const path& save_filename)
 {
+   Log(LogLevel::Info) << "  -> Opening save";
    std::ifstream save_file(save_filename, std::ios::in | std::ios::binary);
+   Log(LogLevel::Info) << "  -> Getting save size";
    const auto save_size = static_cast<std::basic_string<char>::size_type>(file_size(save_filename));
+   Log(LogLevel::Info) << "  -> Getting string text";
    std::string save_string(save_size, '\0');
    save_file.read(save_string.data(), save_size);
 
@@ -66,20 +69,24 @@ std::string ReadSave(const path& save_filename)
 
 std::istringstream GetSaveMeta(const rakaly::GameFile& save, const std::string& save_string)
 {
+   Log(LogLevel::Info) << "  -> Getting save meta";
    std::string save_meta;
 
    if (save.is_binary())
    {
+      Log(LogLevel::Info) << "    -> Save was binary, melting meta";
       const auto melt = save.meltMeta();
       if (!melt || melt->has_unknown_tokens())
       {
          throw std::runtime_error("Unable to melt ironman save's metadata");
       }
 
+      Log(LogLevel::Info) << "    -> writing melted meta";
       melt->writeData(save_meta);
    }
    else
    {
+      Log(LogLevel::Info) << "    -> writing meta";
       save_meta = save_string;
    }
 
@@ -344,6 +351,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    WorldOptions world_options;
    Log(LogLevel::Info) << "*** Hello Vic3, loading World. ***";
    std::string save_string = ReadSave(configuration.save_game);
+   Log(LogLevel::Info) << "  -> Parsing save";
    const rakaly::GameFile save = rakaly::parseVic3(save_string);
 
    std::istringstream meta_stream = GetSaveMeta(save, save_string);
@@ -387,6 +395,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
 
    Log(LogLevel::Info) << "-> Reading Vic3 install.";
    commonItems::ModFilesystem mod_filesystem(configuration.vic3_directory / "game", mod_loader.getMods());
+   Log(LogLevel::Info) << "->   Importing state regions.";
    StateRegions state_regions = ImportStateRegions(mod_filesystem);
    Log(LogLevel::Info) << "->   Loading province definitions.";
    world_options.province_definitions = LoadProvinceDefinitions(state_regions, mod_filesystem);
