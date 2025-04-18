@@ -385,7 +385,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/decisions/decisions_category_im
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/decisions/decision_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/decisions/decision_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/diplomacy/hoi4_war_converter_tests.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/events/event_option_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/events/event_option_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/focus_trees/focus_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/focus_trees/focus_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/focus_trees/focus_tree_assembler_tests.cpp")

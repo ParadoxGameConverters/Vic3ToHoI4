@@ -18,7 +18,8 @@ EventOptionImporter::EventOptionImporter()
       trigger_ = script_block_string.getString();
    });
    option_parser_.registerKeyword("ai_chance", [this](std::istream& the_stream) {
-      ai_chance_ = commonItems::getString(the_stream);
+      const commonItems::stringOfItem ai_chance_string(the_stream);
+      ai_chance_ = ai_chance_string.getString();
    });
    option_parser_.registerRegex(commonItems::catchallRegex,
        [this](const std::string& block_name, std::istream& the_stream) {
