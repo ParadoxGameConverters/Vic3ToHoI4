@@ -25,6 +25,7 @@ void ConvertVic3ToHoi4(const configuration::Configuration& configuration,
       return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
    });*/
 
+   Log(LogLevel::Info) << "*** Hello Hoi4, synchronously loading World. ***";
    auto hoi4_framework = hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(hoi4_mod_filesystem).Build();
 
    const vic3::World source_world = vic3::ImportWorld(configuration, converter_version);
