@@ -27,13 +27,6 @@ has_unsupported_economic_law = {
 		has_idea = tot_economic_mobilisation
 		has_war_support < 0.8
 	}
-	else_if = {
-		limit = {
-			has_idea = totaler_krieg_economy
-		}
-		has_idea = totaler_krieg_economy
-		has_war_support < 0.8
-	}
 	else = {
 		always = no
 	}

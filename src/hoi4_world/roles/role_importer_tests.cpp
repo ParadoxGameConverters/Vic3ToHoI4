@@ -28,7 +28,7 @@ TEST(Hoi4worldRolesRoleimporterTests, DefaultsAreDefaulted)
    EXPECT_TRUE(role.GetRepeatFocuses().empty());
    EXPECT_TRUE(role.GetRemovedFocuses().empty());
    EXPECT_TRUE(role.GetDecisionsCategories().empty());
-   EXPECT_TRUE(role.GetDecisions().empty());
+   EXPECT_TRUE(role.GetDecisionsInCategories().empty());
    EXPECT_TRUE(role.GetEvents().empty());
 }
 
@@ -100,11 +100,17 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    input << "\t\t$TAG$_another_decisions_category={\n";
    input << "\t\t}\n";
    input << "\t}\n";
-   input << "\tdecision={\n";
-   input << "\t\tid = $TAG$_a_decision\n";
-   input << "\t}\n";
-   input << "\tdecision={\n";
-   input << "\t\tid = $TAG$_another_decision\n";
+   input << "\tdecisions={\n";
+   input << "\t\t$TAG$_a_decisions_category = {\n";
+   input << "\t\t\t$TAG$_a_decision={\n";
+   input << "\t\t\t}\n";
+   input << "\t\t\t$TAG$_another_decision={\n";
+   input << "\t\t\t}\n";
+   input << "\t\t}\n";
+   input << "\t\t$TAG$_another_decisions_category = {\n";
+   input << "\t\t\t$TAG$_a_third_decision={\n";
+   input << "\t\t\t}\n";
+   input << "\t\t}\n";
    input << "\t}\n";
    input << "\tevent={\n";
    input << "\t\tid = $TAG$_an_event\n";
@@ -144,13 +150,12 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    EXPECT_THAT(role.GetDecisionsCategories(),
        testing::ElementsAre(DecisionsCategory{.name = "$TAG$_a_decisions_category"},
            DecisionsCategory{.name = "$TAG$_another_decisions_category"}));
-   EXPECT_THAT(role.GetDecisions(),
-       testing::ElementsAre("= {\n"
-                            "\t\tid = $TAG$_a_decision\n"
-                            "\t}",
-           "= {\n"
-           "\t\tid = $TAG$_another_decision\n"
-           "\t}"));
+   EXPECT_THAT(role.GetDecisionsInCategories(),
+       testing::ElementsAre(
+           testing::Pair("$TAG$_a_decisions_category",
+               std::vector<Decision>{Decision{.name = "$TAG$_a_decision"}, Decision{.name = "$TAG$_another_decision"}}),
+           testing::Pair("$TAG$_another_decisions_category",
+               std::vector<Decision>{Decision{.name = "$TAG$_a_third_decision"}})));
    EXPECT_THAT(role.GetEvents(),
        testing::ElementsAre("= {\n"
                             "\t\tid = $TAG$_an_event\n"

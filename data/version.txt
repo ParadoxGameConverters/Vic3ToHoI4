@@ -1,4 +1,4 @@
-# Version info
+# Version info - if editing, remember to also update the workflow, which generates a fresh copy of this
 
 version = "0.6.0"
 name = "Fioravanzo"
@@ -6,5 +6,5 @@ source = "Vic3"
 minSource = "1.8"
 maxSource = "1.8"
 target = "HoI4"
-minTarget = "1.15"
-maxTarget = "1.15"
+minTarget = "1.16"
+maxTarget = "1.16"

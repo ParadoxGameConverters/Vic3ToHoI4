@@ -695,7 +695,8 @@
 	link = { vic3 = x41C0A0 hoi4 = 11346 } # Arnhem [wood] -> Gronau
 	link = { comment = "* * STATE_WALLONIA " }
 	link = { vic3 = x8080A0 hoi4 = 9536 } # STATE_WALLONIA -> Charleroi
-	link = { vic3 = x5180A0 vic3 = xD001A0 hoi4 = 6583 } # Luxembourg [city], STATE_WALLONIA -> Lëtzebuerg
+	link = { vic3 = x5180A0 hoi4 = 13375 } # Luxembourg [city] -> land
+	link = { vic3 = xD001A0 hoi4 = 6583 } # STATE_WALLONIA -> Lëtzebuerg
 	link = { vic3 = x3A5FB9 hoi4 = 9418 hoi4 = 11407 } # STATE_WALLONIA -> Arlon, Bastogne
 	link = { vic3 = x916574 hoi4 = 9444 } # Namur [farm] -> Rochefort
 	link = { vic3 = xEF2040 hoi4 = 11519 hoi4 = 6537 } # Liège [mine] -> Liége, Verviers
@@ -715,7 +716,7 @@
 	link = { vic3 = xFDA6CB hoi4 = 6708 } # STATE_AUSTRIA -> Braunau
 	link = { vic3 = x7F2E4E hoi4 = 6739 hoi4 = 3718 } # STATE_AUSTRIA -> Gänserndorf, Mistelbach
 	link = { vic3 = xA40093 hoi4 = 9527 } # STATE_AUSTRIA -> Krems
-	link = { vic3 = x1180A0 hoi4 = 9661 hoi4 = 6690 } # STATE_AUSTRIA -> Wiener Neustadt, Kapfenberg
+	link = { vic3 = x1180A0 hoi4 = 6690 } # STATE_AUSTRIA -> Kapfenberg
 	link = { vic3 = x84C7C3 hoi4 = 11651 } # STATE_AUSTRIA -> Amstetten
 	link = { vic3 = x316141 hoi4 = 11666 } # Vienna [city] -> Wien
 	link = { comment = "* * STATE_BOHEMIA " }
@@ -756,7 +757,7 @@
 	link = { vic3 = xB4D292 hoi4 = 6673 hoi4 = 668 } # STATE_STYRIA -> Kirchbach, Obervellach
 	link = { vic3 = x1101A0 hoi4 = 6687 } # STATE_STYRIA -> Sankt Veit
 	link = { vic3 = x59D927 hoi4 = 6691 } # Liezen [mine] -> Liezen
-	link = { vic3 = x86FD73 hoi4 = 9648 hoi4 = 9646 hoi4 = 11630 } # Hartberg [wood] -> Graz, Leibnitz, Oberwart
+	link = { vic3 = x86FD73 hoi4 = 9648 hoi4 = 9646 } # Hartberg [wood] -> Graz, Leibnitz
 	link = { vic3 = x017E3C hoi4 = 9650 } # STATE_STYRIA -> Knittelfeld
 	link = { vic3 = x155A44 hoi4 = 9679 } # STATE_STYRIA -> Leoben
 	link = { comment = "* * STATE_TYROL " }
@@ -1631,14 +1632,16 @@
 	link = { vic3 = x124D73 vic3 = xA709B7 hoi4 = 6672 } # STATE_TRANSDANUBIA, STATE_TRANSDANUBIA -> Murksa Sobota
 	link = { vic3 = x2668FB hoi4 = 6685 hoi4 = 682 } # Pécs [mine] -> Kaposvár, Siófok
 	link = { vic3 = xCFDFDF hoi4 = 6703 } # Székesfehérvár [city] -> Székesfehérvár
-	link = { vic3 = x715F5D vic3 = x6F8D2A hoi4 = 6720 } # STATE_TRANSDANUBIA, Szombathely [wood] -> Gyor
+	link = { vic3 = x6F8D2A hoi4 = 686 } # Szombathely [wood] -> Sopron
+	link = { vic3 = x715F5D hoi4 = 6720 } # STATE_TRANSDANUBIA -> Gyor
 	link = { vic3 = xB02121 hoi4 = 9624 } # Keszthely [farm] -> Barcs
 	link = { vic3 = xCACEBC hoi4 = 9676 } # STATE_TRANSDANUBIA -> Tatabánya
 	link = { vic3 = x3C6913 hoi4 = 11610 } # STATE_TRANSDANUBIA -> Pécs
 	link = { vic3 = x1CAC04 hoi4 = 3680 } # STATE_TRANSDANUBIA -> Szekszárd
 	link = { vic3 = xCF2020 hoi4 = 9643 } # STATE_TRANSDANUBIA -> Mohács
-	link = { vic3 = xF0E001 vic3 = x27F483 hoi4 = 3683 } # STATE_TRANSDANUBIA, STATE_TRANSDANUBIA -> Keszthely
-	link = { vic3 = x30A020 hoi4 = 3700 hoi4 = 686 hoi4 = 11627 } # STATE_TRANSDANUBIA -> Eisenstadt, Sopron, Szombathely
+	link = { vic3 = x27F483 hoi4 = 3683 } # STATE_TRANSDANUBIA -> Keszthely
+	link = { vic3 = xF0E001 hoi4 = 11627 } # STATE_TRANSDANUBIA -> Szombathely
+	link = { vic3 = x30A020 hoi4 = 3700 hoi4 = 11630 hoi4 = 9661 } # STATE_TRANSDANUBIA -> Eisenstadt, Oberwart, Wiener Neustadt
 	link = { vic3 = x906A5F hoi4 = 11663 } # STATE_TRANSDANUBIA -> Esztergom
 	link = { vic3 = x4CFAFA hoi4 = 13125 } # x4CFAFA -> (Lake)
 	link = { comment = "* * STATE_DELVIDEK " }
@@ -2438,7 +2441,8 @@
 	link = { vic3 = x446615 vic3 = x4E12AF vic3 = x781636 vic3 = x887EAD vic3 = xAC6C45 vic3 = xE27B61 vic3 = xEDA145 vic3 = xFB5473 hoi4 = 7716 } # STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI -> Luluabourg
 	link = { vic3 = x00AB77 vic3 = x0C478F vic3 = x12AF57 vic3 = x30F98F vic3 = x461B6A vic3 = xAD1FDB vic3 = xB28685 vic3 = xC97739 vic3 = xE05B64 vic3 = x5B0E0F vic3 = x57AD06 vic3 = xC0DC10 vic3 = x60613A hoi4 = 8016 } # STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI -> Lodja
 	link = { vic3 = x0A1B1F vic3 = x107E49 vic3 = x13B9F7 vic3 = x53CF10 vic3 = x6871A4 vic3 = x908070 vic3 = xAA289E vic3 = xEA13E1 vic3 = xA10D56 vic3 = x354D3E vic3 = xFF070B vic3 = xB5E777 hoi4 = 9986 } # STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, Mwene-Ditu [mine], STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI -> Bakwanga
-	link = { vic3 = x1E2B55 vic3 = x23FD54 vic3 = x2DE815 vic3 = x41E0F0 vic3 = x5F6A22 vic3 = x689CB8 vic3 = xBB6F40 vic3 = xDFF631 vic3 = xF15770 hoi4 = 12775 } # STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI -> Nioki
+	link = { vic3 = x23FD54 vic3 = xBB6F40 vic3 = x689CB8 hoi4 = 13370 } # STATE_KASAI, STATE_KASAI, STATE_KASAI -> land
+	link = { vic3 = x1E2B55 vic3 = x2DE815 vic3 = x41E0F0 vic3 = x5F6A22 vic3 = xDFF631 vic3 = xF15770 hoi4 = 12775 } # STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI, STATE_KASAI -> Nioki
 	link = { comment = "* * STATE_BAS_CONGO " }
 	link = { vic3 = x0E91BE vic3 = x7F1954 vic3 = xB593B6 vic3 = xB8838B vic3 = xD0721B vic3 = xF4AA39 vic3 = xFAB5FE vic3 = xFDCF01 hoi4 = 5117 } # STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, Kinshasa [city], STATE_BAS_CONGO, STATE_BAS_CONGO -> Léopoldville
 	link = { vic3 = x42B7B8 vic3 = x649428 vic3 = x70E55C vic3 = x852DC3 vic3 = x928FE6 vic3 = x961734 vic3 = xA2D384 vic3 = xA98DF0 vic3 = xB477E9 vic3 = xC6CC3A vic3 = x4901C3 vic3 = xDD3D05 vic3 = x464D82 hoi4 = 10025 } # STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO, STATE_BAS_CONGO -> Kahumba
@@ -2469,13 +2473,16 @@
 	link = { vic3 = x02B371 vic3 = x0446CA vic3 = x068F41 vic3 = x1B547C vic3 = xA95021 vic3 = xCB3588 vic3 = xD891B2 vic3 = x8F380E vic3 = xE10AC9 vic3 = x8060F0 hoi4 = 12985 } # STATE_SOUTH_ANGOLA, STATE_SOUTH_ANGOLA, STATE_SOUTH_ANGOLA, Namibe [port], STATE_SOUTH_ANGOLA, Lubango [city], STATE_SOUTH_ANGOLA, STATE_SOUTH_ANGOLA, STATE_SOUTH_ANGOLA, STATE_SOUTH_ANGOLA -> Namibe
 	link = { comment = "* * STATE_EAST_ANGOLA " }
 	link = { vic3 = x026C7C vic3 = x13337D vic3 = x46D213 vic3 = x6DA2F8 vic3 = x71242E vic3 = x8CD684 vic3 = x8E5C2C vic3 = x987C51 vic3 = x9D299E vic3 = xA4743F vic3 = xA58230 vic3 = xAEDF8D vic3 = xB9B44D vic3 = xBA7076 vic3 = xBF7C79 vic3 = xF0B5C8 vic3 = xFE25B5 vic3 = xFF9F41 vic3 = x14060C vic3 = x2A05BC vic3 = x240C96 hoi4 = 1552 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Luso
-	link = { vic3 = x038498 vic3 = x2DA6B2 vic3 = x394358 vic3 = x397ECF vic3 = x3CC799 vic3 = x5EF091 vic3 = x9FF064 vic3 = xA56219 vic3 = xCB202F vic3 = xD0957F vic3 = xDA9B9B vic3 = xEF87AC vic3 = xEFBB62 vic3 = xF27BBF vic3 = xAA8201 vic3 = xB44BFF vic3 = x75CE39 vic3 = x6EF4BD vic3 = xE63D84 vic3 = x75CF43 vic3 = x26E40F vic3 = xF0D700 hoi4 = 2126 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, Andulo [farm], STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Cuito
+	link = { vic3 = xA56219 vic3 = xDA9B9B vic3 = xEFBB62 vic3 = x5EF091 vic3 = x038498 vic3 = x9FF064 vic3 = x6EF4BD vic3 = x75CE39 vic3 = xB44BFF vic3 = xAA8201 vic3 = x397ECF vic3 = x2DA6B2 vic3 = xE63D84 vic3 = x75CF43 hoi4 = 13372 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> land
+	link = { vic3 = x394358 vic3 = x3CC799 vic3 = xCB202F vic3 = xD0957F vic3 = xEF87AC vic3 = xF27BBF vic3 = x26E40F vic3 = xF0D700 hoi4 = 2126 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, Andulo [farm], STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Cuito
 	link = { vic3 = x0BB61B vic3 = x13D88A vic3 = x18F2DB vic3 = x19E0EC vic3 = x1BA1E9 vic3 = x1BFAF4 vic3 = x2C4958 vic3 = x32C7A1 vic3 = x35E7D8 vic3 = x39697F vic3 = x52FB3B vic3 = x7E292B vic3 = xA83686 vic3 = xBC2F51 vic3 = xD964CA vic3 = xF186BA vic3 = x8BD90C vic3 = xC0DF70 vic3 = x2156A2 vic3 = xB5F875 hoi4 = 4735 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Mavinga
 	link = { vic3 = x4751C5 vic3 = x4B8691 vic3 = x61B712 vic3 = x9B54A4 vic3 = xD9E162 vic3 = xF9B5FA vic3 = xADB506 vic3 = x4563FE vic3 = x683088 vic3 = xD13871 vic3 = xBD3AD2 hoi4 = 5158 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Novo Redondo
-	link = { vic3 = x328C62 vic3 = x38EF9A vic3 = x46904B vic3 = x60BAFF vic3 = x72404E vic3 = x762355 vic3 = x83904E vic3 = x864664 vic3 = x88222F vic3 = x8FD34F vic3 = x9A6962 vic3 = x9BC612 vic3 = x9E1832 vic3 = xAE2519 vic3 = xBC2358 vic3 = xC5BC31 vic3 = xD7D12D vic3 = xDACDF2 vic3 = xEC44B5 vic3 = xF62A21 vic3 = xFACD1E vic3 = x4D5307 vic3 = x71F000 vic3 = xD8ED0A vic3 = x3FAA40 vic3 = x7F002D vic3 = x162508 vic3 = x42066F vic3 = x1E660F vic3 = x3B96EC vic3 = x77427E hoi4 = 7548 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, Saurimo [wood], STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Henrique de Carvalho
+	link = { vic3 = xDACDF2 vic3 = x9E1832 vic3 = x7F002D vic3 = x864664 vic3 = x328C62 vic3 = x72404E vic3 = x83904E vic3 = x762355 vic3 = xAE2519 vic3 = x77427E vic3 = x3B96EC hoi4 = 13371 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, Saurimo [wood], STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> land
+	link = { vic3 = x38EF9A vic3 = x46904B vic3 = x60BAFF vic3 = x88222F vic3 = x8FD34F vic3 = x9A6962 vic3 = x9BC612 vic3 = xBC2358 vic3 = xC5BC31 vic3 = xD7D12D vic3 = xEC44B5 vic3 = xF62A21 vic3 = xFACD1E vic3 = x4D5307 vic3 = x71F000 vic3 = xD8ED0A vic3 = x3FAA40 vic3 = x162508 vic3 = x42066F vic3 = x1E660F hoi4 = 7548 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Henrique de Carvalho
 	link = { vic3 = x26A913 vic3 = x5196FE vic3 = x5C5E88 vic3 = x60145A vic3 = x7C5ED1 vic3 = x7E5C6B vic3 = x91E34C vic3 = x9A89E2 vic3 = xBFE0EF vic3 = xCE2E7B vic3 = x19017C hoi4 = 8054 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Teixeira de Sousa
 	link = { vic3 = x228781 vic3 = x566AB9 vic3 = x5EC8D3 vic3 = x72E7AB vic3 = x7482EB vic3 = x7F4B2D vic3 = xB3A1E9 vic3 = xC16219 vic3 = xCD7DCB vic3 = xD442BF vic3 = xF08800 vic3 = x8502C4 vic3 = x300F17 hoi4 = 10966 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Nova Lisboa
-	link = { vic3 = x223B92 vic3 = x317712 vic3 = x44D11A vic3 = x5EAE5F vic3 = x9127EF vic3 = xB92820 vic3 = xD45955 vic3 = xE96E66 vic3 = xFE2EC3 vic3 = x610700 vic3 = x7C0874 vic3 = xD8809C vic3 = x3EB02A vic3 = x03B050 vic3 = xECAEC9 vic3 = x97A08F vic3 = xD4E9E2 hoi4 = 12981 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, Malanje [city], STATE_EAST_ANGOLA, Cafunfo [mine], STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Malanje
+	link = { vic3 = x223B92 vic3 = x5EAE5F vic3 = x317712 vic3 = x7C0874 vic3 = x610700 vic3 = xD8809C vic3 = x03B050 vic3 = x3EB02A vic3 = xD45955 vic3 = xECAEC9 hoi4 = 13373 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> land
+	link = { vic3 = x44D11A vic3 = x9127EF vic3 = xB92820 vic3 = xE96E66 vic3 = xFE2EC3 vic3 = x97A08F vic3 = xD4E9E2 hoi4 = 12981 } # STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, Malanje [city], Cafunfo [mine], STATE_EAST_ANGOLA, STATE_EAST_ANGOLA, STATE_EAST_ANGOLA -> Malanje
 	link = { comment = "* * STATE_KATANGA " }
 	link = { vic3 = x024FB7 vic3 = x3141F5 vic3 = x78528D vic3 = x8FC2E6 vic3 = x9B45C3 vic3 = xA586BD vic3 = xB8CA50 vic3 = xD4C5CC vic3 = xE5F496 hoi4 = 191 } # STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA -> Elisabethville
 	link = { vic3 = x2C1E9F vic3 = x54A236 vic3 = x645FCD vic3 = x7CD240 vic3 = x885EAA vic3 = xB02110 vic3 = xEC29A0 vic3 = xF4CEE0 vic3 = xAD062C vic3 = x2F00E6 vic3 = x4E9500 vic3 = xD9B170 hoi4 = 1516 } # Kamina [farm], STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA, STATE_KATANGA -> Kamina
@@ -4467,18 +4474,20 @@
 	link = { vic3 = x505AE0 hoi4 = 13313 } # Manama [city] -> land
 	link = { vic3 = x2768F8 vic3 = xEF5020 hoi4 = 8051 } # Doha [mine], STATE_ABU_DHABI -> Doha
 	link = { vic3 = xC9472E vic3 = xD12977 vic3 = xFF7473 vic3 = xA9240B hoi4 = 8108 } # STATE_ABU_DHABI, STATE_ABU_DHABI, STATE_ABU_DHABI, STATE_ABU_DHABI -> Ar-Ruwais
-	link = { vic3 = x0DC972 vic3 = xF0D021 hoi4 = 10904 } # Khasab [wood], Sharjah [farm] -> Dubai
+	link = { vic3 = x0DC972 hoi4 = 13369 } # Khasab [wood] -> land
+	link = { vic3 = xF0D021 hoi4 = 10904 } # Sharjah [farm] -> Dubai
 	link = { comment = "* * STATE_YEMEN " }
 	link = { vic3 = x37058F hoi4 = 8000 } # STATE_YEMEN -> Tamrida
 	link = { vic3 = x2576C1 vic3 = x6290E6 vic3 = x7EC879 vic3 = xCF401E vic3 = xE5892F vic3 = xDD033C vic3 = x9D8A78 vic3 = xF86F58 hoi4 = 1920 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> Sa'dah
-	link = { vic3 = x9E941B vic3 = x00E3EF hoi4 = 1973 } # STATE_YEMEN, STATE_YEMEN -> Dhamar
-	link = { vic3 = x319060 vic3 = xB090E0 hoi4 = 5074 } # Aden [city], STATE_YEMEN -> Aden
+	link = { vic3 = x9E941B vic3 = x00E3EF vic3 = x54840B hoi4 = 1973 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> Dhamar
+	link = { vic3 = xB090E0 vic3 = x2BD409 vic3 = xFA0283 hoi4 = 13374 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> land
+	link = { vic3 = x319060 hoi4 = 5074 } # Aden [city] -> Aden
 	link = { vic3 = x1C7B77 vic3 = x5C91FE vic3 = x672267 vic3 = x6D2F95 vic3 = xA05CB5 vic3 = xB8A8D2 vic3 = xD6CC22 vic3 = xDD732E hoi4 = 2029 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, al-Mukalla [farm], STATE_YEMEN -> Al-Mukalla
-	link = { vic3 = x075453 vic3 = x567A83 vic3 = x625380 vic3 = x68B524 vic3 = x7C3EA9 vic3 = x84FA60 vic3 = xBB387A vic3 = xEF2E43 vic3 = x02F9FF vic3 = xFE5027 vic3 = xCF6C49 hoi4 = 4924 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> Al-Marhinah
+	link = { vic3 = x075453 vic3 = x625380 vic3 = x68B524 vic3 = x7C3EA9 vic3 = x84FA60 vic3 = xBB387A vic3 = xEF2E43 vic3 = x02F9FF vic3 = xFE5027 vic3 = xCF6C49 hoi4 = 4924 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> Al-Marhinah
 	link = { vic3 = x0B9A27 vic3 = x3D86FC vic3 = x5DF9FC vic3 = x75D341 vic3 = x872CEB vic3 = x8E96A7 vic3 = x95D64E vic3 = xF385EB vic3 = x0C7E0C vic3 = x843C65 vic3 = x895FE6 vic3 = xCF61E1 vic3 = x90602A hoi4 = 4976 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> Al-Qatn
 	link = { vic3 = x314190 vic3 = xB08F60 vic3 = x8436FE vic3 = x034B03 hoi4 = 10752 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, Taizz [wood] -> Ta'izz
 	link = { vic3 = x1A7BB0 vic3 = x2197EF vic3 = x49FCAB vic3 = x8B1488 vic3 = x9EDF3C vic3 = xB79DED vic3 = xE5DF3B hoi4 = 10840 } # STATE_YEMEN, STATE_YEMEN, Sana’a [mine], STATE_YEMEN, al-Hudaydah [port], STATE_YEMEN, STATE_YEMEN -> San'a'
-	link = { vic3 = x2975A3 vic3 = x308FDF vic3 = x3D1674 vic3 = x60DFF9 vic3 = x657048 vic3 = xA1AAB0 vic3 = xD3F276 vic3 = x54840B vic3 = x2BD409 vic3 = xFA0283 vic3 = xBAA208 hoi4 = 12821 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> Ataq
+	link = { vic3 = x2975A3 vic3 = x308FDF vic3 = x3D1674 vic3 = x60DFF9 vic3 = x657048 vic3 = xA1AAB0 vic3 = xD3F276 vic3 = xBAA208 vic3 = x567A83 hoi4 = 12821 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> Ataq
 	link = { vic3 = x02B35C vic3 = x2A9E89 vic3 = x3D7345 vic3 = x5F3582 vic3 = x8D121D vic3 = xA2FDFA vic3 = xAD1CE2 vic3 = xC09525 vic3 = xDFA579 vic3 = x299C0F vic3 = xC790E8 vic3 = x346541 vic3 = x8BF4B8 vic3 = xBDEA27 hoi4 = 12894 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> Thamud
 	link = { vic3 = x30A3E2 vic3 = x6BD0A9 vic3 = x9D6547 vic3 = xB010DF vic3 = xA0540A vic3 = x8D6307 hoi4 = 13079 } # STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN, STATE_YEMEN -> Al-Ghaydah
 	link = { comment = "* * STATE_HEDJAZ " }
@@ -4607,8 +4616,11 @@
 	link = { comment = "* * STATE_BASRA " }
 	link = { vic3 = x1D7F5E vic3 = x88ADC8 vic3 = x9F9CCA hoi4 = 78 } # STATE_BASRA, Kut [mine], Amara [farm] -> Al-'Amarah
 	link = { vic3 = x41F864 vic3 = xF1BF17 vic3 = xFE18C1 hoi4 = 2004 } # STATE_BASRA, STATE_BASRA, STATE_BASRA -> Ad-Diwaniyah
-	link = { vic3 = x2050E0 vic3 = x6CBE21 vic3 = x807060 hoi4 = 2089 } # STATE_BASRA, STATE_BASRA, Basra [city] -> Al-Basrah
-	link = { vic3 = x00F060 vic3 = x68C89A vic3 = xDABB9C hoi4 = 8085 } # Kuwait [port], STATE_BASRA, STATE_BASRA -> Kuwait City
+	link = { vic3 = x2050E0 hoi4 = 13368 } # STATE_BASRA -> land
+	link = { vic3 = x6CBE21 vic3 = x807060 hoi4 = 2089 } # STATE_BASRA, Basra [city] -> Al-Basrah
+	link = { vic3 = xDABB9C hoi4 = 13367 } # STATE_BASRA -> land
+	link = { vic3 = x68C89A hoi4 = 13366 } # STATE_BASRA -> land
+	link = { vic3 = x00F060 hoi4 = 8085 } # Kuwait [port] -> Kuwait City
 	link = { vic3 = x7CAD29 vic3 = x93CB74 vic3 = xBE6A23 vic3 = x1CC9CC vic3 = xDB6370 hoi4 = 12726 } # Nasiriya [wood], STATE_BASRA, STATE_BASRA, STATE_BASRA, STATE_BASRA -> An-Nasiriyah
 	link = { comment = "* * STATE_FARS " }
 	link = { vic3 = x6375B3 vic3 = x89054E vic3 = x898FBC vic3 = xFDAFF4 vic3 = xB5A598 vic3 = xF033FA vic3 = x879264 hoi4 = 4966 } # STATE_FARS, STATE_FARS, STATE_FARS, STATE_FARS, Abadeh [mine], STATE_FARS, STATE_FARS -> Abadeh
@@ -10115,7 +10127,7 @@
 	link = { comment = "* * STATE_GULF_OF_SAINT_LAWRENCE " }
 	link = { vic3 = x74FBFB hoi4 = 8642 hoi4 = 8614 hoi4 = 2768 hoi4 = 8668 hoi4 = 2935 hoi4 = 3826 hoi4 = 4035 hoi4 = 4484 hoi4 = 2361 hoi4 = 8589 hoi4 = 2864 hoi4 = 2888 hoi4 = 3441 } # STATE_GULF_OF_SAINT_LAWRENCE -> (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile)
 	link = { comment = "* * STATE_PERSIAN_GULF " }
-	link = { vic3 = x56C8FA hoi4 = 2896 hoi4 = 2691 hoi4 = 2666 hoi4 = 2919 hoi4 = 2943 hoi4 = 2640 } # STATE_PERSIAN_GULF -> (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile)
+	link = { vic3 = x56C8FA hoi4 = 2896 hoi4 = 2691 hoi4 = 2666 hoi4 = 2919 hoi4 = 2640 hoi4 = 2943 } # STATE_PERSIAN_GULF -> (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile)
 	link = { comment = "* * STATE_RED_SEA " }
 	link = { vic3 = x4FDCFA hoi4 = 5388 hoi4 = 2825 hoi4 = 8742 hoi4 = 8766 hoi4 = 2800 } # STATE_RED_SEA -> (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile), (Sea Tile)
 	link = { comment = "* * STATE_ARABIAN_SEA " }

@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 
+#include "src/hoi4_world/decisions/decision.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/hoi4_world/focus_trees/focus.h"
 #include "src/hoi4_world/roles/repeat_focus.h"
@@ -27,7 +28,7 @@ struct RoleOptions
    std::vector<RepeatFocus> repeat_focuses;
    std::vector<std::string> removed_focuses;
    std::vector<DecisionsCategory> decisions_categories;
-   std::vector<std::string> decisions;
+   std::map<std::string, std::vector<Decision>> decisions_in_categories;
    std::vector<std::string> events;
 };
 
@@ -46,7 +47,7 @@ class Role
        repeat_focuses_(std::move(options.repeat_focuses)),
        removed_focuses_(std::move(options.removed_focuses)),
        decisions_categories_(std::move(options.decisions_categories)),
-       decisions_(std::move(options.decisions)),
+       decisions_in_categories_(std::move(options.decisions_in_categories)),
        events_(std::move(options.events))
    {
    }
@@ -61,7 +62,10 @@ class Role
    [[nodiscard]] const std::vector<RepeatFocus>& GetRepeatFocuses() const { return repeat_focuses_; }
    [[nodiscard]] const std::vector<std::string>& GetRemovedFocuses() const { return removed_focuses_; }
    [[nodiscard]] const std::vector<DecisionsCategory>& GetDecisionsCategories() const { return decisions_categories_; }
-   [[nodiscard]] const std::vector<std::string>& GetDecisions() const { return decisions_; }
+   [[nodiscard]] const std::map<std::string, std::vector<Decision>>& GetDecisionsInCategories() const
+   {
+      return decisions_in_categories_;
+   }
    [[nodiscard]] const std::vector<std::string>& GetEvents() const { return events_; }
 
    std::partial_ordering operator<=>(const Role&) const = default;
@@ -77,7 +81,7 @@ class Role
    std::vector<RepeatFocus> repeat_focuses_;
    std::vector<std::string> removed_focuses_;
    std::vector<DecisionsCategory> decisions_categories_;
-   std::vector<std::string> decisions_;
+   std::map<std::string, std::vector<Decision>> decisions_in_categories_;
    std::vector<std::string> events_;
 };
 

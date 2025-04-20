@@ -814,6 +814,7 @@ equipments = {
 		visual_level = 1
 		archetype = ship_hull_carrier
 		model = ship_hull_super_carrier
+		parent = carrier_4
 		priority = 1000
 		upgrades = {
 			ship_deckspace_upgrade

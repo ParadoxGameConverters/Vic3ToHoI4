@@ -92,7 +92,6 @@ void OutputBookmark(const path& output_name,
 void out::OutputWorld(const path& output_name, const hoi4::World& world, configuration::UseStories use_stories)
 {
    OutputCountries(output_name, world.GetCountries(), world.GetCharacters(), use_stories);
-   OutputDecisions(output_name, world.GetCountries());
    OutputMonarchIdeas(output_name, world.GetCountries(), world.GetCharacters());
    OutputStates(output_name, world.GetStates().states);
    OutputStrategicRegions(output_name, world.GetStrategicRegions());
@@ -103,6 +102,7 @@ void out::OutputWorld(const path& output_name, const hoi4::World& world, configu
    OutputNames(output_name, world.GetCountries());
    OutputPortraits(output_name, world.GetCountries());
    OutputDecisionsCategories(output_name, world.GetDecisionsCategories());
+   OutputDecisions(output_name, world.GetDecisionsInCategories());
    OutputBookmark(output_name,
        "grand_campaign",
        date("1936.1.1"),

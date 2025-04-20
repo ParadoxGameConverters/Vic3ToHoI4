@@ -6,7 +6,7 @@
 ### Operations
 # Operations will randomly pick from national pools until exhausted
 # You can specify a strategic region for which an order name will be drawn
-# if any enemy province along the frontline matches this strategic region, this sub-pool will be considered and used in preference to default. 
+# if any enemy province along the frontline matches this strategic region, this sub-pool will be considered and used in preference to default.
 # Whether this 'historical' name pool is exhausted is dependent on the define: HISTORICAL_ORDER_NAME_EXHAUSTION
 # Strategic region index '0' is the generic national pool.
 # You can specify the same name in several regions, though I would suggest not doing this too often, for performance reasons.
@@ -26,18 +26,18 @@ default = {
 	#}
 	surnames = { "Smith" "Jones" "Taylor" "Brown" "Williams" "Wilson" "Evans" "Walker" "White" "Roberts" }
 	callsigns = { "Easy Kill" "The Lightning" "The Devil" "Grasshopper" "Handsome" "Moose" "Mouse" "Pebbles" "Sunshine" Demon}
-	
-	
+
+
 	#Operations - treat these as keys, not strings.
 	prefix = o_operation
-	
+
 	operation = {
 		0 = { o_default_operation }
 	}
-	
+
 	use_geographical_default_operation_names = yes
 	offensive_operation_suffix = o_strat_offensive_default
 	defensive_operation_suffix = o_strat_defensive_default
 	naval_operation_suffix = o_strat_naval_default
-	
+
 }

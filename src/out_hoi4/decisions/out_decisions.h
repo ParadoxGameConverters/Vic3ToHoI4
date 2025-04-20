@@ -5,16 +5,17 @@
 
 #include <filesystem>
 #include <map>
-#include <string_view>
+#include <vector>
 
-#include "src/hoi4_world/countries/hoi4_country.h"
+#include "src/hoi4_world/decisions/decision.h"
 
 
 
 namespace out
 {
 
-void OutputDecisions(const std::filesystem::path& output_name, const std::map<std::string, hoi4::Country>& countries);
+void OutputDecisions(const std::filesystem::path& output_name,
+    const std::map<std::string, std::vector<hoi4::Decision>>& decisions);
 
 }  // namespace out
 
