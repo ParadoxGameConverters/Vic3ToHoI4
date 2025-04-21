@@ -62,6 +62,23 @@ std::map<std::string, std::string> GenerateProvinceToStateMap(
    return province_to_state_map;
 }
 
+
+void AreVic3ProvincesNotInStates(const std::vector<std::string>& provinces_from_map,
+    const std::map<std::string, std::string>& province_to_state_map)
+{
+   for (const auto& province: provinces_from_map)
+   {
+      if (auto linked_state = province_to_state_map.find(province); linked_state == province_to_state_map.end())
+      {
+         throw std::runtime_error(
+             fmt::format("Province {} is not in a Vic3 region. Double-check your Vic3 install and "
+                         "/map_data/state_regions in any used mods.",
+                 province));
+      }
+   }
+}
+
+
 void AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_from_map,
     const std::map<std::string, std::string>& province_to_state_map)
 {
@@ -71,6 +88,10 @@ void AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_fro
       if (auto linked_state = province_to_state_map.find(province); linked_state != province_to_state_map.end())
       {
          state_names.insert(linked_state->second);
+      }
+      else
+      {
+         state_names.insert("");
       }
    }
    // if the provinces are part of multiple different state
@@ -166,6 +187,7 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
 
       /*if (!vic3_state_regions.empty())
       {
+         AreVic3ProvincesNotInStates(the_mapping.vic3_provinces, province_to_state_map_);
          AreVic3ProvincesFromSameState(the_mapping.vic3_provinces, province_to_state_map_);
          IsMappingInWrongRegion(current_region_, the_mapping.vic3_provinces, province_to_state_map_);
       }*/
