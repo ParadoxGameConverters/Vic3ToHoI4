@@ -29,7 +29,7 @@ namespace hoi4
 World ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
-    std::future<hoi4::WorldFramework> world_framework_future,
+    std::future<WorldFramework> world_framework_future,
     const configuration::Configuration& config = configuration::defaultConfig);
 
 }  // namespace hoi4
