@@ -76,7 +76,11 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
           Log(LogLevel::Info) << "->           Parsing stream.";
           region_parser.parseStream(input_stream);
           Log(LogLevel::Info) << "->           Emplacing region.";
-          name_to_region_map.emplace(region_name, StateRegion(significant_provinces, provinces));
+          StateRegion new_region(significant_provinces, provinces);
+          if (auto [itr, success] = name_to_region_map.emplace(region_name, new_region); !success)
+          {
+             itr->second = new_region;
+          }
           Log(LogLevel::Info) << "->           Emplacing index.";
           region_indexes.emplace(region_name, static_cast<int>(region_indexes.size()));
        });
