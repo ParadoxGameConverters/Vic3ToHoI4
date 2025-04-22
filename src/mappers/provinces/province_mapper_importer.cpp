@@ -185,12 +185,12 @@ mappers::ProvinceMapperImporter::ProvinceMapperImporter(const commonItems::ModFi
          return;
       }
 
-      /*if (!vic3_state_regions.empty())
+      if (!vic3_state_regions.empty())
       {
          AreVic3ProvincesNotInStates(the_mapping.vic3_provinces, province_to_state_map_);
          AreVic3ProvincesFromSameState(the_mapping.vic3_provinces, province_to_state_map_);
          IsMappingInWrongRegion(current_region_, the_mapping.vic3_provinces, province_to_state_map_);
-      }*/
+      }
 
       for (auto color: the_mapping.vic3_provinces)
       {
