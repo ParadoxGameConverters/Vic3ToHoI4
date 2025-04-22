@@ -230,15 +230,14 @@ void ConvertWars(const std::vector<vic3::War>& source_wars,
 hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
-    hoi4::WorldFramework& world_framework,
+    std::future<hoi4::WorldFramework> world_framework_future,
     const configuration::Configuration& config)
 {
    Log(LogLevel::Info) << "Creating Hoi4 world";
 
-
-
    std::map<std::string, vic3::ProvinceType> vic3_significant_provinces =
        GatherVic3SignificantProvinces(source_world.GetStateRegions());
+   hoi4::WorldFramework world_framework = world_framework_future.get();
 
    ProgressManager::SetProgress(50);
    Log(LogLevel::Info) << "\tConverting states";
@@ -253,23 +252,23 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    world_framework.strategic_regions.UpdateToMatchNewStates(states.states, world_framework.map_data);
 
 
-   /*std::future<hoi4::Buildings> buildings_future =
+   std::future<hoi4::Buildings> buildings_future =
        std::async(std::launch::async, [&states, &world_framework, &hoi4_mod_filesystem]() {
           auto result =
               ImportBuildings(states, world_framework.coastal_provinces, world_framework.map_data, hoi4_mod_filesystem);
           ProgressManager::AddProgress(5);
           return result;
-       });*/
+       });
 
-   //std::future<hoi4::Railways> railways_future =
-   //    std::async(std::launch::async, [&vic3_significant_provinces, &world_mapper, &world_framework, &states]() {
-   //       // convertRailways logs progress internally
-   //       return ConvertRailways(vic3_significant_provinces,
-   //           world_mapper.province_mapper,
-   //           world_framework.map_data,
-   //           world_framework.province_definitions,
-   //           states);
-   //    });
+   std::future<hoi4::Railways> railways_future =
+       std::async(std::launch::async, [&vic3_significant_provinces, &world_mapper, &world_framework, &states]() {
+          // convertRailways logs progress internally
+          return ConvertRailways(vic3_significant_provinces,
+              world_mapper.province_mapper,
+              world_framework.map_data,
+              world_framework.province_definitions,
+              states);
+       });
 
    Log(LogLevel::Info) << "\tConverting countries";
    ProgressManager::AddProgress(10);
@@ -317,14 +316,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        countries,
        characters);
 
-   //hoi4::Railways railways = railways_future.get();
-   hoi4::Railways railways = ConvertRailways(vic3_significant_provinces,
-       world_mapper.province_mapper,
-                  world_framework.map_data,
-                  world_framework.province_definitions,
-                  states);
-   //hoi4::Buildings buildings = buildings_future.get();
-   hoi4::Buildings buildings = ImportBuildings(states, world_framework.coastal_provinces, world_framework.map_data, hoi4_mod_filesystem);
+   hoi4::Railways railways = railways_future.get();
+   hoi4::Buildings buildings = buildings_future.get();
    ProgressManager::AddProgress(5);
 
    hoi4::World world(hoi4::WorldOptions{.countries = countries,
