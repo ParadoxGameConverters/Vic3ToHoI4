@@ -109,14 +109,12 @@ void maps::MapDataImporter::ImportProvinces(const commonItems::ModFilesystem& mo
       throw std::runtime_error("Could not find map/provinces.bmp");
    }
 
-   Log(LogLevel::Info) << fmt::format("      -> opening {}", path->string());
    bitmap_image province_map(path->string());
    if (!province_map)
    {
       throw std::runtime_error(fmt::format("Could not open {}/map/provinces.bmp", path->string()));
    }
 
-   Log(LogLevel::Info) << "      -> scanning colors";
    int prev_progress = 0;
    const int height = static_cast<int>(province_map.height());
    const int width = static_cast<int>(province_map.width());
@@ -255,14 +253,12 @@ void maps::MapDataImporter::ImportAdjacencies(const commonItems::ModFilesystem& 
       throw std::runtime_error("Could not find map/adjacencies.csv");
    }
 
-   Log(LogLevel::Info) << fmt::format("      -> opening {}", path->string());
    std::ifstream adjacencies_file(*path);
    if (!adjacencies_file.is_open())
    {
       throw std::runtime_error(fmt::format("Could not open {}", path->string()));
    }
 
-   Log(LogLevel::Info) << "      -> scanning file";
    while (!adjacencies_file.eof())
    {
       std::string line;
