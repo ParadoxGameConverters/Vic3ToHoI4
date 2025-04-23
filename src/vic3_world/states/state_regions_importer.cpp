@@ -79,6 +79,7 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
           StateRegion new_region(significant_provinces, provinces);
           if (auto [itr, success] = name_to_region_map.emplace(region_name, new_region); !success)
           {
+             Log(LogLevel::Info) << "->             Region was a repeat";
              itr->second = new_region;
           }
           Log(LogLevel::Info) << "->           Emplacing index.";
