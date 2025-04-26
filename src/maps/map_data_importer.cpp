@@ -1,5 +1,6 @@
 #include "src/maps/map_data_importer.h"
 
+#include <external/commonItems/Log.h>
 #include <external/fmt/include/fmt/format.h>
 
 #include <external/bitmap/bitmap_image.hpp>
