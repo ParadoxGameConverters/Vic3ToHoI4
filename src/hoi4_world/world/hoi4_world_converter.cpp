@@ -235,8 +235,6 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 {
    Log(LogLevel::Info) << "Creating Hoi4 world";
 
-
-
    std::map<std::string, vic3::ProvinceType> vic3_significant_provinces =
        GatherVic3SignificantProvinces(source_world.GetStateRegions());
    hoi4::WorldFramework world_framework = world_framework_future.get();
@@ -320,6 +318,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    hoi4::Railways railways = railways_future.get();
    hoi4::Buildings buildings = buildings_future.get();
+   ProgressManager::AddProgress(5);
 
    hoi4::World world(hoi4::WorldOptions{.countries = countries,
        .great_powers = great_powers,

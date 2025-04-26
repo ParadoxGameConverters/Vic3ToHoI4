@@ -1,5 +1,6 @@
 #include "src/maps/map_data_importer.h"
 
+#include <external/commonItems/Log.h>
 #include <external/fmt/include/fmt/format.h>
 
 #include <external/bitmap/bitmap_image.hpp>
@@ -88,7 +89,9 @@ commonItems::Color GetRightColor(maps::Point position, int width, const bitmap_i
 
 maps::MapData maps::MapDataImporter::ImportMapData(const commonItems::ModFilesystem& mod_filesystem)
 {
+   Log(LogLevel::Info) << "    -> Importing Provinces";
    ImportProvinces(mod_filesystem);
+   Log(LogLevel::Info) << "    -> Importing Adjacencies";
    ImportAdjacencies(mod_filesystem);
 
    return maps::MapData({.province_neighbors = province_neighbors_,

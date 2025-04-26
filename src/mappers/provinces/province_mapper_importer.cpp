@@ -62,6 +62,7 @@ std::map<std::string, std::string> GenerateProvinceToStateMap(
    return province_to_state_map;
 }
 
+
 void AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_from_map,
     const std::map<std::string, std::string>& province_to_state_map)
 {
@@ -71,6 +72,10 @@ void AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_fro
       if (auto linked_state = province_to_state_map.find(province); linked_state != province_to_state_map.end())
       {
          state_names.insert(linked_state->second);
+      }
+      else
+      {
+         state_names.insert("");
       }
    }
    // if the provinces are part of multiple different state
