@@ -25,7 +25,6 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
 
    commonItems::parser region_parser;
    region_parser.registerKeyword("provinces", [&provinces](std::istream& input_stream) {
-      Log(LogLevel::Info) << "->             Reading provinces.";
       for (const auto& province: commonItems::getStrings(input_stream))
       {
          ProvinceId transformed_province = province;
@@ -42,7 +41,6 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
    });
    region_parser.registerRegex("city|port|farm|mine|wood",
        [&significant_provinces](const std::string& significant_province_type, std::istream& input_stream) {
-          Log(LogLevel::Info) << "->             Reading significant province " << significant_province_type;
           ProvinceId province = commonItems::getString(input_stream);
           if (province.empty())
           {
@@ -69,35 +67,29 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
        [&name_to_region_map, &region_indexes, &region_parser, &significant_provinces, &provinces](
            const std::string& region_name,
            std::istream& input_stream) {
-          Log(LogLevel::Info) << "->         Parsing region " << region_name;
-          Log(LogLevel::Info) << "->           Clearing items.";
           significant_provinces.clear();
           provinces.clear();
-          Log(LogLevel::Info) << "->           Parsing stream.";
           region_parser.parseStream(input_stream);
-          Log(LogLevel::Info) << "->           Emplacing region.";
           StateRegion new_region(significant_provinces, provinces);
           if (auto [itr, success] = name_to_region_map.emplace(region_name, new_region); !success)
           {
-             Log(LogLevel::Info) << "->             Region was a repeat";
-             itr->second = new_region;
+             throw std::runtime_error(fmt::format(
+                 "Region {} was repeatedly defined. This indicates irrecoverable mod corruption. If this was an EU4 to "
+                 "Vic3 conversion mod, delete your copy of EU4 to Vic3 and download a fresh copy, delete your mod and "
+                 "reconvert, do a test conversion to verify this error goes away, then play through Vic3 again.",
+                 region_name));
           }
-          Log(LogLevel::Info) << "->           Emplacing index.";
           region_indexes.emplace(region_name, static_cast<int>(region_indexes.size()));
        });
 
-   Log(LogLevel::Info) << "->     Getting list of files.";
    const std::set<path> files = filesystem.GetAllFilesInFolder("map_data/state_regions");
    std::vector<path> sorted_files(files.begin(), files.end());
-   Log(LogLevel::Info) << "->     Sorting files.";
    std::ranges::sort(sorted_files, [](const path& a, const path& b) {
       return a.filename() < b.filename();
    });
 
-   Log(LogLevel::Info) << "->     Parsing files.";
    for (const path& state_regions_file: sorted_files)
    {
-      Log(LogLevel::Info) << "->        " << state_regions_file.string();
       file_parser.parseFile(state_regions_file);
    }
 
