@@ -19,6 +19,8 @@ struct EventOption
    std::string ai_chance;
    std::vector<std::string> script_blocks;
    std::string hidden_effect;
+
+   std::strong_ordering operator<=>(const EventOption&) const = default;
 };
 
 }  // namespace hoi4
