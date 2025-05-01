@@ -112,11 +112,13 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    input << "\t\t\t}\n";
    input << "\t\t}\n";
    input << "\t}\n";
-   input << "\tevent={\n";
-   input << "\t\tid = $TAG$_an_event\n";
-   input << "\t}\n";
-   input << "\tevent={\n";
-   input << "\t\tid = $TAG$_another_event\n";
+   input << "\tevents={\n";
+   input << "\t\tcountry_event={\n";
+   input << "\t\t\tid = $TAG$_an_event\n";
+   input << "\t\t}\n";
+   input << "\t\ttest_event_type={\n";
+   input << "\t\t\tid = $TAG$_another_event\n";
+   input << "\t\t}\n";
    input << "\t}\n";
    input << "\t\n";
    input << "}\n";
@@ -157,12 +159,8 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
            testing::Pair("$TAG$_another_decisions_category",
                std::vector<Decision>{Decision{.name = "$TAG$_a_third_decision"}})));
    EXPECT_THAT(role.GetEvents(),
-       testing::ElementsAre("= {\n"
-                            "\t\tid = $TAG$_an_event\n"
-                            "\t}",
-           "= {\n"
-           "\t\tid = $TAG$_another_event\n"
-           "\t}"));
+       testing::ElementsAre(Event{.type = "country_event", .id = "$TAG$_an_event"},
+           Event{.type = "test_event_type", .id = "$TAG$_another_event"}));
 }
 
 }  // namespace hoi4

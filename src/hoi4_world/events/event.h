@@ -29,6 +29,8 @@ struct Event
    std::string mean_time_to_happen;
    std::string immediate;
    std::vector<EventOption> options;
+
+   std::strong_ordering operator<=>(const Event&) const = default;
 };
 
 }  // namespace hoi4

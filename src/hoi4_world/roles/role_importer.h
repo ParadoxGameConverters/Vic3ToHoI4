@@ -7,6 +7,7 @@
 
 #include "src/hoi4_world/decisions/decision_importer.h"
 #include "src/hoi4_world/decisions/decisions_category_importer.h"
+#include "src/hoi4_world/events/event_importer.h"
 #include "src/hoi4_world/focus_trees/focus_importer.h"
 #include "src/hoi4_world/roles/repeat_focus_importer.h"
 #include "src/hoi4_world/roles/role.h"
@@ -36,6 +37,8 @@ class RoleImporter
    commonItems::parser decisions_category_parser_;
    commonItems::parser decisions_parser_;
    std::string current_decision_category_;
+   commonItems::parser events_parser_;
+   EventImporter event_importer_;
 };
 
 };  // namespace hoi4
