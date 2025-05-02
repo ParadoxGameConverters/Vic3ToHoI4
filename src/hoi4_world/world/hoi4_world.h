@@ -13,6 +13,7 @@
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/decisions/decision.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
+#include "src/hoi4_world/events/event.h"
 #include "src/hoi4_world/localizations/localizations.h"
 #include "src/hoi4_world/map/buildings.h"
 #include "src/hoi4_world/map/railways.h"
@@ -80,9 +81,9 @@ class World
       decisions_in_categories_ = std::move(decisions_in_categories);
    }
 
-   void SetCountryEvents(std::map<std::string, std::vector<Event>> country_events_)
+   void SetCountryEvents(std::map<std::string, std::vector<Event>> country_events)
    {
-      country_events_ = std::move(country_events_);
+      country_events_ = std::move(country_events);
    }
 
   private:
