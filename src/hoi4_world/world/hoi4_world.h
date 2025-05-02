@@ -80,6 +80,11 @@ class World
       decisions_in_categories_ = std::move(decisions_in_categories);
    }
 
+   void SetCountryEvents(std::map<std::string, std::vector<Event>> country_events_)
+   {
+      country_events_ = std::move(country_events_);
+   }
+
   private:
    std::map<std::string, Country> countries_;
    std::set<std::string> great_powers_;
@@ -93,6 +98,8 @@ class World
 
    std::set<DecisionsCategory> decisions_categories_;
    std::map<std::string, std::vector<Decision>> decisions_in_categories_;
+
+   std::map<std::string, std::vector<Event>> country_events_;
 };
 
 }  // namespace hoi4
