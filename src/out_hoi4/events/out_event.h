@@ -9,12 +9,12 @@
 
 
 
-namespace hoi4
+namespace out
 {
 
-std::ostream& operator<<(std::ostream& out, const Event& event);
+std::ostream& operator<<(std::ostream& out, const hoi4::Event& event);
 
-}  // namespace hoi4
+}  // namespace out
 
 
 

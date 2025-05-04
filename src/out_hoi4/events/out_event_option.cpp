@@ -2,10 +2,10 @@
 
 
 
-namespace hoi4
+namespace out
 {
 
-std::ostream& operator<<(std::ostream& out, const EventOption& option)
+std::ostream& operator<<(std::ostream& out, const hoi4::EventOption& option)
 {
    out << "\toption = {\n";
    if (!option.name.empty())
@@ -33,4 +33,4 @@ std::ostream& operator<<(std::ostream& out, const EventOption& option)
    return out;
 }
 
-}  // namespace hoi4
+}  // namespace out

@@ -4,10 +4,10 @@
 
 
 
-namespace hoi4
+namespace out
 {
 
-std::ostream& operator<<(std::ostream& out, const Event& event)
+std::ostream& operator<<(std::ostream& out, const hoi4::Event& event)
 {
    out << event.type << " = {\n";
    out << "\tid = " << event.id << "\n";
@@ -87,4 +87,4 @@ std::ostream& operator<<(std::ostream& out, const Event& event)
    return out;
 }
 
-}  // namespace hoi4
+}  // namespace out
