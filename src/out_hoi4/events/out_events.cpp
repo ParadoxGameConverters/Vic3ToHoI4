@@ -2,6 +2,7 @@
 
 #include <fstream>
 
+#include "external/commonItems/CommonFunctions.h"
 #include "external/commonItems/OSCompatibilityLayer.h"
 #include "src/out_hoi4/events/out_event.h"
 
@@ -30,7 +31,7 @@ void OutputEvents(const std::filesystem::path& output_name,
          throw std::runtime_error("Could not create " + filename.string());
       }
 
-      out_events << "\xEF\xBB\xBF";
+      out_events << commonItems::utf8BOM;
       out_events << "add_namespace = " << tag << "\n";
       for (const auto& event: events)
       {
