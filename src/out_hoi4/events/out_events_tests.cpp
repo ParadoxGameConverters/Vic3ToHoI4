@@ -63,12 +63,12 @@ TEST(Outhoi4EventsOuteventsTests, ExceptionIfDirectoryNotCreated)
 
 TEST(Outhoi4EventsOuteventsTests, ExceptionIfFileNotCreated)
 {
-    EXPECT_THROW(OutputEvents("ExceptionIfFileNotCreated",
-        {
-            {"???", {}},
-            {"TWO", {}},
-        }),
-        std::runtime_error);
+   EXPECT_THROW(OutputEvents("ExceptionIfFileNotCreated",
+                    {
+                        {"???", {}},
+                        {"TWO", {}},
+                    }),
+       std::runtime_error);
 }
 
 }  // namespace out
