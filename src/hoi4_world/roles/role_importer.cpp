@@ -27,6 +27,10 @@ hoi4::RoleImporter::RoleImporter()
       }
    });
 
+   events_parser_.registerRegex(commonItems::catchallRegex, [this](std::string name, std::istream& input) {
+      role_options_.events.emplace_back(event_importer_.ImportEvent(name, input));
+   });
+
    role_parser_.registerKeyword("category", [this](std::istream& input) {
       role_options_.category = commonItems::getString(input);
    });
@@ -60,8 +64,8 @@ hoi4::RoleImporter::RoleImporter()
    role_parser_.registerKeyword("decisions", [this](std::istream& input) {
       decisions_category_parser_.parseStream(input);
    });
-   role_parser_.registerKeyword("event", [this](std::istream& input) {
-      role_options_.events.emplace_back(commonItems::stringOfItem(input).getString());
+   role_parser_.registerKeyword("events", [this](std::istream& input) {
+      events_parser_.parseStream(input);
    });
 }
 

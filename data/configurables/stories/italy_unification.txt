@@ -124,6 +124,12 @@ unification_italy = {
 			}
 		}
 	}
+	
+	events={
+		country_event={
+			id=sample_event
+		}
+	}
 }
 
 
@@ -267,6 +273,12 @@ unification_italy_2 = {
 			}
 		}
 	}
+
+	events={
+		country_event={
+			id=sample_event
+		}
+	}
 }
 
 
@@ -408,6 +420,12 @@ unification_italy_3 = {
 			}
 			decision_six={
 			}
+		}
+	}
+
+	events={
+		country_event={
+			id=sample_event
 		}
 	}
 }

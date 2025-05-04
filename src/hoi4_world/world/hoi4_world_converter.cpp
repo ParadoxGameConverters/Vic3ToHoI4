@@ -332,6 +332,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    std::set<DecisionsCategory> decisions_categories;
    std::map<std::string, std::vector<Decision>> decisions_in_categories;
+   std::map<std::string, std::vector<Event>> country_events;
 
    const std::map<std::string, Role> roles = ImportRoles();
    std::map<std::string, Country>& modifiable_countries = world.GetModifiableCountries();
@@ -354,6 +355,13 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
          {
             decisions_in_categories.emplace(category, decisions);
          }
+         for (const Event& event: country_role.GetEvents())
+         {
+            if (auto [itr, success] = country_events.emplace(tag, std::vector{event}); !success)
+            {
+               itr->second.push_back(event);
+            }
+         }
       }
 
       const FocusTree tree = AssembleTree(country_roles, tag, world);
@@ -362,6 +370,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    world.SetDecisionsCategories(decisions_categories);
    world.SetDecisions(decisions_in_categories);
+   world.SetCountryEvents(country_events);
 
    return world;
 }
