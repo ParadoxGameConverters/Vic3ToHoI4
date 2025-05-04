@@ -69,6 +69,7 @@ class World
    {
       return decisions_in_categories_;
    }
+   [[nodiscard]] const std::map<std::string, std::vector<Event>>& GetEvents() const { return country_events_; }
 
    [[nodiscard]] std::map<std::string, Country>& GetModifiableCountries() { return countries_; }
 
