@@ -94,6 +94,7 @@ link = { vic = BUK hoi = BUK } # Bukhara
 link = { vic = BUL hoi = BUL } # Bulgaria
 #link = { vic = BUN hoi = ??? } # Bundelkhand
 link = { vic = BUR hoi = BRM } # Burma
+link = { vic = BRY hoi = BRY } # Buryatia
 link = { vic = BYE hoi = BLR } # Belarus
 #link = { vic = BYZ hoi = ??? } # Byzantium
 #link = { vic = CAL hoi = ??? } # California
