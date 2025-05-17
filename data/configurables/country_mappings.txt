@@ -94,6 +94,7 @@ link = { vic = BUK hoi = BUK } # Bukhara
 link = { vic = BUL hoi = BUL } # Bulgaria
 #link = { vic = BUN hoi = ??? } # Bundelkhand
 link = { vic = BUR hoi = BRM } # Burma
+link = { vic = BRY hoi = BRY } # Buryatia
 link = { vic = BYE hoi = BLR } # Belarus
 #link = { vic = BYZ hoi = ??? } # Byzantium
 #link = { vic = CAL hoi = ??? } # California
@@ -135,7 +136,7 @@ link = { vic = CYP hoi = CYP } # Cyprus
 link = { vic = CZH hoi = CZE } # Czechoslovakia
 link = { vic = DAG hoi = DAG } # Dagestan
 link = { vic = DAH hoi = DAH } # Dahomey
-#link = { vic = DAI hoi = ??? } # Dai Nam
+link = { vic = DAI hoi = VIN } # Dai Nam => Vietnam
 #link = { vic = DAK hoi = ??? } # Dar al Kuti
 link = { vic = DEI hoi = INS } # Dutch East Indies
 link = { vic = DEN hoi = DEN } # Denmark
