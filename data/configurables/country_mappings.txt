@@ -66,7 +66,7 @@ link = { vic = BKR hoi = BSK } # Bashkiria => Bashkortostan
 #link = { vic = BLE hoi = ??? } # Baule
 #link = { vic = BLF hoi = ??? } # Niitsitapi
 #link = { vic = BLG hoi = ??? } # Bulungan
-#link = { vic = BLH hoi = ??? } # Baluchistan
+link = { vic = BLH hoi = BLC } # Baluchistan => Balochistan
 #link = { vic = BMB hoi = ??? } # Bemba
 #link = { vic = BND hoi = ??? } # Bundu
 #link = { vic = BNG hoi = ??? } # Bangala
@@ -240,7 +240,7 @@ link = { vic = JLF hoi = SEN } # Jolof
 #link = { vic = JMB hoi = ??? } # Jambi
 #link = { vic = JOD hoi = ??? } # Jodhpur
 #link = { vic = JOH hoi = ??? } # Johore
-#link = { vic = KAL hoi = ??? } # Kalat
+link = { vic = KAL hoi = KLT } # Kalat
 link = { vic = KAS hoi = KAS } # Kashmir
 #link = { vic = KAT hoi = ??? } # Kathiri
 link = { vic = KAZ hoi = KAZ } # Kazakhstan
@@ -385,6 +385,7 @@ link = { vic = OMA hoi = IMO } # Oman
 #link = { vic = OVM hoi = ??? } # Ovimbundu
 #link = { vic = OYO hoi = ??? } # Oyo
 #link = { vic = OZH hoi = ??? } # Orta Zhuz
+link = { vic = PAK hoi = PAK } # Pakistan
 link = { vic = PAL hoi = PAL } # Palestine
 link = { vic = PAN hoi = KHL } # Punjab => Khalistan
 link = { vic = PAP hoi = PAP } # Rome
@@ -412,6 +413,7 @@ link = { vic = PRU hoi = PRE } # Prussia
 #link = { vic = PWN hoi = ??? } # Pawnee
 #link = { vic = QIA hoi = ??? } # Qian
 link = { vic = QUE hoi = QUE } # Quebec
+link = { vic = RAJ hoi = RJP } # Rajputana
 link = { vic = RHE hoi = RHI } # Rhineland
 #link = { vic = RHN hoi = ??? } # Confederation of the Rhine
 link = { vic = RIO hoi = RIG } # Río Grande
@@ -567,7 +569,6 @@ link = { vic = ZIM hoi = ZIM } # Zimbabwe
 #link = { vic = ??? hoi = OMA } # Muscat and Oman
 #link = { vic = ??? hoi = KOL } # Kolhapur and Deccan States
 #link = { vic = ??? hoi = NWF } # Northwestern Provinces
-#link = { vic = ??? hoi = RJP } # Rajputana
 #link = { vic = ??? hoi = WIS } # West Indian Provinces (Gujarat)
 
 #link = { vic = ??? hoi = SPA } 
