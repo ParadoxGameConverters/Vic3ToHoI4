@@ -320,6 +320,7 @@ link = { vic = MGL hoi = MON } # Mongolia
 #link = { vic = MJT hoi = ??? } # Majerteen
 link = { vic = MKT hoi = MIS } # Miskitia
 #link = { vic = MKU hoi = ??? } # Makua
+link = { vic = MLD hoi = MLD } # Maldives
 link = { vic = MLT hoi = MLT } # Malta
 #link = { vic = MNB hoi = ??? } # Mangbetu
 #link = { vic = MNC hoi = ??? } # Manica
