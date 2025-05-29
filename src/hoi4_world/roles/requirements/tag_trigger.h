@@ -2,6 +2,8 @@
 
 
 
+#include <string>
+
 #include "src/hoi4_world/roles/requirements/trigger_base.h"
 
 

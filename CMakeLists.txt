@@ -410,6 +410,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/repeat_focus_importer_tes
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/role_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/roles_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/stories_creator_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/requirements/always_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/requirements/tag_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/default_states_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/hoi4_states_converter_tests.cpp")
