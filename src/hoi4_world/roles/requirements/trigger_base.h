@@ -16,7 +16,7 @@ class Trigger
    Trigger() = default;
    virtual ~Trigger() = default;
 
-   virtual bool IsValid(const Scope& scope, const World& world) const = 0;
+   [[nodiscard]] virtual bool IsValid(const Scope& scope, const World& world) const = 0;
 };
 
 }  // namespace hoi4

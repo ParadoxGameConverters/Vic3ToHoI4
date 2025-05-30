@@ -11,10 +11,10 @@
 namespace hoi4
 {
 
-class TagTrigger: private Trigger
+class TagTrigger: public Trigger
 {
   public:
-   TagTrigger(std::string_view tag): tag_(tag) {}
+   explicit TagTrigger(std::string_view tag): tag_(tag) {}
    ~TagTrigger() override = default;
 
    [[nodiscard]] bool IsValid(const Scope& scope, const World& world) const override;

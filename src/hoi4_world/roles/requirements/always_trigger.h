@@ -9,10 +9,10 @@
 namespace hoi4
 {
 
-class AlwaysTrigger: private Trigger
+class AlwaysTrigger: public Trigger
 {
   public:
-   AlwaysTrigger(bool value): value_(value) {}
+   explicit AlwaysTrigger(bool value): value_(value) {}
    ~AlwaysTrigger() override = default;
 
    [[nodiscard]] bool IsValid([[maybe_unused]] const Scope& scope, [[maybe_unused]] const World& world) const override
