@@ -14,7 +14,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsAndTriggerTests, TriggerReturnTrueIfAllChildrenTrue)
+TEST(Hoi4worldRolesRequirementsAndTriggerTests, IsValidReturnsTrueIfAllChildrenTrue)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(true);
@@ -31,7 +31,7 @@ TEST(Hoi4worldRolesRequirementsAndTriggerTests, TriggerReturnTrueIfAllChildrenTr
 }
 
 
-TEST(Hoi4worldRolesRequirementsAndTriggerTests, TriggerReturnTrueIfAnyChildrenFalse)
+TEST(Hoi4worldRolesRequirementsAndTriggerTests, IsValidReturnsTrueIfAnyChildrenFalse)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);

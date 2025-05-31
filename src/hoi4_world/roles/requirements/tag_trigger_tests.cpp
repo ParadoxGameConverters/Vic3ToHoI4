@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsTagTriggerTests, TriggerReturnsTrueIfCountryTagMatches)
+TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsTrueIfCountryTagMatches)
 {
    const TagTrigger tag_trigger("TAG");
 
@@ -25,7 +25,7 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, TriggerReturnsTrueIfCountryTagMa
 }
 
 
-TEST(Hoi4worldRolesRequirementsTagTriggerTests, TriggerReturnsFalseIfCountryTagNotMatches)
+TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfCountryTagNotMatches)
 {
    const TagTrigger tag_trigger("TAG");
 
@@ -37,7 +37,7 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, TriggerReturnsFalseIfCountryTagN
 }
 
 
-TEST(Hoi4worldRolesRequirementsTagTriggerTests, TriggerReturnsFalseIfScopeNotCountry)
+TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfScopeNotCountry)
 {
    const TagTrigger tag_trigger("TAG");
 

@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, TriggerReturnsValueInConstructor)
+TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, IsValidReturnsValueInConstructor)
 {
    const Country country({.tag = "TAG"});
    const Scope scope = CountryScope{.country = country};
