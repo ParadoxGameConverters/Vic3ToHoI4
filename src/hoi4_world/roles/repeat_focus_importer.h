@@ -24,7 +24,7 @@ class RepeatFocusImporter
    commonItems::parser parser_;
    FocusImporter focus_importer_;
 
-   std::function<bool(const Country&, const World&)> requirement_;
+   std::unique_ptr<Trigger> requirement_;
    std::vector<Focus> focuses_;
 };
 

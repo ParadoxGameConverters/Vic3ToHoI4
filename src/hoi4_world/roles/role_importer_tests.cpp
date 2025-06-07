@@ -3,6 +3,8 @@
 
 #include <sstream>
 
+#include "src/hoi4_world/roles/requirements/always_trigger.h"
+#include "src/hoi4_world/roles/requirements/tag_trigger.h"
 #include "src/hoi4_world/roles/role.h"
 #include "src/hoi4_world/roles/role_importer.h"
 
@@ -20,7 +22,7 @@ TEST(Hoi4worldRolesRoleimporterTests, DefaultsAreDefaulted)
 
    EXPECT_TRUE(role.GetName().empty());
    EXPECT_TRUE(role.GetCategory().empty());
-   EXPECT_TRUE(role.GetRequirements().empty());
+   EXPECT_EQ(role.GetRequirement(), AlwaysTrigger(true));
    EXPECT_EQ(role.GetScore(), 0.0F);
    EXPECT_TRUE(role.GetBlockers().empty());
    EXPECT_TRUE(role.GetSharedFocuses().empty());
@@ -126,20 +128,16 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
 
    EXPECT_EQ(role.GetName(), "unification_italy");
    EXPECT_EQ(role.GetCategory(), "unification");
-   EXPECT_EQ(role.GetRequirements(),
-       "= {\n"
-       "\t\tOR = {\n"
-       "\t\t\ttag=ITA\n"
-       "\t\t}\n"
-       "\t}");
+   EXPECT_EQ(role.GetRequirement(), TagTrigger("ITA"));
    EXPECT_FLOAT_EQ(role.GetScore(), 100.0F);
    EXPECT_THAT(role.GetBlockers(), testing::ElementsAre("unification_role", "unification_category"));
    EXPECT_THAT(role.GetSharedFocuses(), testing::ElementsAre("army_effort", "aviation_effort"));
    EXPECT_THAT(role.GetFocuses(),
        testing::ElementsAre(Focus{.id = "$TAG$_italia_irredenta"}, Focus{.id = "$TAG$_italia_irredenta_2"}));
    EXPECT_THAT(role.GetRepeatFocuses(),
-       testing::ElementsAre(RepeatFocus{.focuses = {Focus{.id = "$TAG$_invade_$TARGET_TAG$"}}},
-           RepeatFocus{.focuses = {Focus{.id = "$TAG$_invade_$TARGET_TAG$_2"}}}));
+       testing::ElementsAre(
+           RepeatFocus(std::make_unique<AlwaysTrigger>(true), {Focus{.id = "$TAG$_invade_$TARGET_TAG$"}}),
+           RepeatFocus(std::make_unique<AlwaysTrigger>(true), {Focus{.id = "$TAG$_invade_$TARGET_TAG$_2"}})));
    EXPECT_THAT(role.GetRemovedFocuses(),
        testing::ElementsAre("= {\n"
                             "\t\tid = $TAG$_remove_me\n"

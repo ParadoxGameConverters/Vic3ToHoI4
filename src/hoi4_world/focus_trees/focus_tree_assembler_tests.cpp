@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "src/hoi4_world/focus_trees/focus_tree_assembler.h"
+#include "src/hoi4_world/roles/requirements/always_trigger.h"
 
 
 
@@ -105,21 +106,13 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreAddedToTree)
        {
            Role{{.repeat_focuses =
                      {
-                         RepeatFocus{.requirement =
-                                         [](const Country&, const World&) {
-                                            static int num_matched = 0;
-                                            ++num_matched;
-                                            return num_matched <= 2;
-                                         },
-                             .focuses = {Focus{.id = "$TARGET_TAG$_focus_one"}, Focus{.id = "$TARGET_TAG$_focus_two"}}},
-                         RepeatFocus{.requirement =
-                                         [](const Country&, const World&) {
-                                            static int num_matched = 0;
-                                            ++num_matched;
-                                            return num_matched <= 2;
-                                         },
-                             .focuses = {Focus{.id = "$TARGET_TAG$_focus_three"},
-                                 Focus{.id = "$TARGET_TAG$_focus_four"}}},
+                         RepeatFocus(std::make_unique<AlwaysTrigger>(true),
+                             {Focus{.id = "$TARGET_TAG$_focus_one"}, Focus{.id = "$TARGET_TAG$_focus_two"}}),
+                         RepeatFocus(std::make_unique<AlwaysTrigger>(true),
+                             {
+                                 Focus{.id = "$TARGET_TAG$_focus_three"},
+                                 Focus{.id = "$TARGET_TAG$_focus_four"},
+                             }),
                      }}},
        },
        "",
@@ -149,24 +142,18 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesHaveTargetTagSubst
            Role{{
                .repeat_focuses =
                    {
-                       RepeatFocus{
-                           .requirement =
-                               [](const Country&, const World&) {
-                                  return true;
+                       RepeatFocus(std::make_unique<AlwaysTrigger>(true),
+                           {
+                               Focus{
+                                   .id = "$TARGET_TAG$_focus_one",
+                                   .prerequisites = {"$TARGET_TAG$_prerequisite"},
+                                   .relative_position_id = "$TARGET_TAG$_focus",
+                                   .available = "$TARGET_TAG$_available",
+                                   .select_effect = "$TARGET_TAG$_select_effect",
+                                   .completion_reward = "$TARGET_TAG$_completion_reward",
+                                   .ai_will_do = "$TARGET_TAG$_ai_will_do",
                                },
-                           .focuses =
-                               {
-                                   Focus{
-                                       .id = "$TARGET_TAG$_focus_one",
-                                       .prerequisites = {"$TARGET_TAG$_prerequisite"},
-                                       .relative_position_id = "$TARGET_TAG$_focus",
-                                       .available = "$TARGET_TAG$_available",
-                                       .select_effect = "$TARGET_TAG$_select_effect",
-                                       .completion_reward = "$TARGET_TAG$_completion_reward",
-                                       .ai_will_do = "$TARGET_TAG$_ai_will_do",
-                                   },
-                               },
-                       },
+                           }),
                    },
            }},
        },
@@ -192,24 +179,18 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreBalancedInPosit
 {
    const FocusTree focus_tree = AssembleTree(
        {
-           Role{{.repeat_focuses =
-                     {
-                         RepeatFocus{.requirement =
-                                         [](const Country&, const World&) {
-                                            static int num_matched = 0;
-                                            ++num_matched;
-                                            return num_matched <= 2;
-                                         },
-                             .focuses = {Focus{.id = "$TARGET_TAG$_focus_one"}, Focus{.id = "$TARGET_TAG$_focus_two"}}},
-                         RepeatFocus{.requirement =
-                                         [](const Country&, const World&) {
-                                            static int num_matched = 0;
-                                            ++num_matched;
-                                            return num_matched <= 3;
-                                         },
-                             .focuses = {Focus{.id = "$TARGET_TAG$_focus_three"},
-                                 Focus{.id = "$TARGET_TAG$_focus_four"}}},
-                     }}},
+           Role{{
+               .repeat_focuses =
+                   {
+                       RepeatFocus(std::make_unique<AlwaysTrigger>(true),
+                           {Focus{.id = "$TARGET_TAG$_focus_one"}, Focus{.id = "$TARGET_TAG$_focus_two"}}),
+                       RepeatFocus(std::make_unique<AlwaysTrigger>(true),
+                           {
+                               Focus{.id = "$TARGET_TAG$_focus_three"},
+                               Focus{.id = "$TARGET_TAG$_focus_four"},
+                           }),
+                   },
+           }},
        },
        "",
        World({.countries = {
@@ -245,20 +226,14 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, PrerequisitesWithRepeatFocusesA
                    },
                .repeat_focuses =
                    {
-                       RepeatFocus{
-                           .requirement =
-                               [](const Country&, const World&) {
-                                  return true;
+                       RepeatFocus(std::make_unique<AlwaysTrigger>(true),
+                           {
+                               Focus{
+                                   .id = "$TARGET_TAG$_focus_two",
+                                   .prerequisites = {"$TAG$_focus_one"},
+                                   .relative_position_id = "$TAG$_focus_one",
                                },
-                           .focuses =
-                               {
-                                   Focus{
-                                       .id = "$TARGET_TAG$_focus_two",
-                                       .prerequisites = {"$TAG$_focus_one"},
-                                       .relative_position_id = "$TAG$_focus_one",
-                                   },
-                               },
-                       },
+                           }),
                    },
            }},
        },
@@ -309,20 +284,14 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAfterRepeatFocusesAreBal
                    },
                .repeat_focuses =
                    {
-                       RepeatFocus{
-                           .requirement =
-                               [](const Country&, const World&) {
-                                  return true;
+                       RepeatFocus(std::make_unique<AlwaysTrigger>(true),
+                           {
+                               Focus{
+                                   .id = "$TARGET_TAG$_focus_two",
+                                   .prerequisites = {"$TAG$_focus_one"},
+                                   .relative_position_id = "$TAG$_focus_one",
                                },
-                           .focuses =
-                               {
-                                   Focus{
-                                       .id = "$TARGET_TAG$_focus_two",
-                                       .prerequisites = {"$TAG$_focus_one"},
-                                       .relative_position_id = "$TAG$_focus_one",
-                                   },
-                               },
-                       },
+                           }),
                    },
            }},
        },

@@ -10,6 +10,7 @@
 #include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/hoi4_world/focus_trees/focus.h"
 #include "src/hoi4_world/roles/repeat_focus.h"
+#include "src/hoi4_world/roles/requirements/trigger_base.h"
 
 
 
@@ -20,7 +21,7 @@ struct RoleOptions
 {
    std::string name;
    std::string category;
-   std::string requirements;
+   std::unique_ptr<Trigger> requirement;
    float score;
    std::vector<std::string> blockers;
    std::vector<std::string> shared_focuses;
@@ -36,10 +37,11 @@ struct RoleOptions
 class Role
 {
   public:
+   Role() = default;
    explicit Role(RoleOptions options):
        name_(std::move(options.name)),
        category_(std::move(options.category)),
-       requirements_(std::move(options.requirements)),
+       requirement_(std::move(options.requirement)),
        score_(options.score),
        blockers_(std::move(options.blockers)),
        shared_focuses_(std::move(options.shared_focuses)),
@@ -54,7 +56,7 @@ class Role
 
    [[nodiscard]] const std::string& GetName() const { return name_; }
    [[nodiscard]] const std::string& GetCategory() const { return category_; }
-   [[nodiscard]] const std::string& GetRequirements() const { return requirements_; }
+   [[nodiscard]] const Trigger& GetRequirement() const { return *requirement_; }
    [[nodiscard]] float GetScore() const { return score_; }
    [[nodiscard]] const std::vector<std::string>& GetBlockers() const { return blockers_; }
    [[nodiscard]] const std::vector<std::string>& GetSharedFocuses() const { return shared_focuses_; }
@@ -73,7 +75,7 @@ class Role
   private:
    std::string name_;
    std::string category_;
-   std::string requirements_;
+   std::unique_ptr<Trigger> requirement_;
    float score_;
    std::vector<std::string> blockers_;
    std::vector<std::string> shared_focuses_;
