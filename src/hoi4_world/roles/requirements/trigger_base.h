@@ -16,6 +16,9 @@ class Trigger
    Trigger() = default;
    virtual ~Trigger() = default;
 
+   [[nodiscard]] virtual bool operator==(const Trigger& rhs) const = 0;
+   [[nodiscard]] virtual bool operator<(const Trigger& rhs) const = 0;
+
    [[nodiscard]] virtual bool IsValid(const Scope& scope, const World& world) const = 0;
 };
 

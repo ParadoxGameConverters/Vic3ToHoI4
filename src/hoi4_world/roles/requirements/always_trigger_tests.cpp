@@ -26,4 +26,18 @@ TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, IsValidReturnsValueInConstruc
    EXPECT_FALSE(false_trigger.IsValid(scope, world));
 }
 
+
+TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, EquavalentTriggersAreEqual)
+{
+   const AlwaysTrigger true_trigger(true);
+   const AlwaysTrigger true_trigger_two(true);
+
+   const AlwaysTrigger false_trigger(false);
+   const AlwaysTrigger false_trigger_two(false);
+
+   EXPECT_EQ(true_trigger, true_trigger_two);
+   EXPECT_EQ(false_trigger, false_trigger_two);
+   EXPECT_NE(true_trigger, false_trigger);
+}
+
 }  // namespace hoi4

@@ -14,4 +14,50 @@ bool NotTrigger::IsValid(const Scope& scope, const World& world) const
    });
 }
 
+
+bool NotTrigger::operator==(const NotTrigger& rhs) const
+{
+   if (children_.size() != rhs.children_.size())
+   {
+      return false;
+   }
+
+   for (unsigned i = 0; i < children_.size(); ++i)
+   {
+      if (*children_[i] != *rhs.children_[i])
+      {
+         return false;
+      }
+   }
+
+   return true;
+}
+
+
+bool NotTrigger::operator<(const NotTrigger& rhs) const
+{
+   if (children_.size() < rhs.children_.size())
+   {
+      return true;
+   }
+   if (children_.size() > rhs.children_.size())
+   {
+      return false;
+   }
+
+   for (unsigned i = 0; i < children_.size(); ++i)
+   {
+      if (*children_[i] < *rhs.children_[i])
+      {
+         return true;
+      }
+      if (*children_[i] != *rhs.children_[i])
+      {
+         return false;
+      }
+   }
+
+   return true;
+}
+
 }  // namespace hoi4

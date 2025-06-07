@@ -48,4 +48,15 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfScopeNotCou
    EXPECT_FALSE(tag_trigger.IsValid(scope, world));
 }
 
+
+TEST(Hoi4worldRolesRequirementsTagTriggerTests, EquavalentTriggersAreEqual)
+{
+	const TagTrigger tag_trigger("TAG");
+	const TagTrigger tag_trigger_two("TAG");
+	const TagTrigger two_trigger("TWO");
+
+	EXPECT_EQ(tag_trigger, tag_trigger_two);
+	EXPECT_NE(tag_trigger, two_trigger);
+}
+
 }  // namespace hoi4

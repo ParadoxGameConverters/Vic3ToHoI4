@@ -23,12 +23,12 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsReturnTrueIfAllChi
    std::vector<std::unique_ptr<Trigger>> children;
    children.push_back(std::move(trigger_one));
    children.push_back(std::move(trigger_two));
-   const NotTrigger and_trigger(std::move(children));
+   const NotTrigger not_trigger(std::move(children));
 
    const Country country({});
    const Scope scope = CountryScope{.country = country};
    const hoi4::World world({});
-   EXPECT_TRUE(and_trigger.IsValid(scope, world));
+   EXPECT_TRUE(not_trigger.IsValid(scope, world));
 }
 
 
@@ -40,12 +40,49 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsFalseIfAnyChildren
    std::vector<std::unique_ptr<Trigger>> children;
    children.push_back(std::move(trigger_one));
    children.push_back(std::move(trigger_two));
-   const NotTrigger and_trigger(std::move(children));
+   const NotTrigger not_trigger(std::move(children));
 
    const Country country({});
    const Scope scope = CountryScope{.country = country};
    const hoi4::World world({});
-   EXPECT_FALSE(and_trigger.IsValid(scope, world));
+   EXPECT_FALSE(not_trigger.IsValid(scope, world));
+}
+
+
+TEST(Hoi4worldRolesRequirementsNotTriggerTests, EquivalentTriggersAreEqual)
+{
+	std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
+	std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);
+
+	std::vector<std::unique_ptr<Trigger>> children_one;
+	children_one.push_back(std::move(true_trigger_one));
+	children_one.push_back(std::move(false_trigger_one));
+	const NotTrigger and_trigger_one(std::move(children_one));
+
+	std::unique_ptr<Trigger> true_trigger_two = std::make_unique<AlwaysTrigger>(true);
+	std::unique_ptr<Trigger> false_trigger_two = std::make_unique<AlwaysTrigger>(false);
+
+	std::vector<std::unique_ptr<Trigger>> children_two;
+	children_two.push_back(std::move(true_trigger_two));
+	children_two.push_back(std::move(false_trigger_two));
+	const NotTrigger and_trigger_two(std::move(children_two));
+
+	std::unique_ptr<Trigger> false_trigger_three = std::make_unique<AlwaysTrigger>(false);
+	std::unique_ptr<Trigger> true_trigger_three = std::make_unique<AlwaysTrigger>(false);
+
+	std::vector<std::unique_ptr<Trigger>> children_three;
+	children_three.push_back(std::move(false_trigger_three));
+	children_three.push_back(std::move(true_trigger_three));
+	const NotTrigger and_trigger_three(std::move(children_three));
+
+	const NotTrigger and_trigger_four({});
+
+	EXPECT_EQ(and_trigger_one, and_trigger_two);
+	EXPECT_NE(and_trigger_one, and_trigger_three);
+	EXPECT_NE(and_trigger_two, and_trigger_three);
+	EXPECT_NE(and_trigger_one, and_trigger_four);
+	EXPECT_NE(and_trigger_two, and_trigger_four);
+	EXPECT_NE(and_trigger_three, and_trigger_four);
 }
 
 }  // namespace hoi4
