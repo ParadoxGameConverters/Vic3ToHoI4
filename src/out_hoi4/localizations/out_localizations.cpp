@@ -17,7 +17,7 @@ namespace
 {
 
 constexpr std::array supported_languages =
-    {"braz_por", "english", "french", "german", "japanese", "polish", "russian", "spanish"};
+    {"braz_por", "english", "french", "german", "japanese", "polish", "russian", "spanish","simp_chinese"};
 
 
 void CreateFolders(const path& output_name)
