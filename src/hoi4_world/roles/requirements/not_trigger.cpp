@@ -73,4 +73,15 @@ std::unique_ptr<Trigger> NotTrigger::Copy() const
    return std::move(copy);
 }
 
+
+void PrintTo(const NotTrigger& trigger, std::ostream* os)
+{
+   *os << "NotTrigger: {\n";
+   for (const std::unique_ptr<Trigger>& child: trigger.children_)
+   {
+      *os << child;
+   }
+   *os << "}\n";
+}
+
 }  // namespace hoi4

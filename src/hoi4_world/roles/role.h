@@ -72,6 +72,9 @@ class Role
 
    std::partial_ordering operator<=>(const Role&) const = default;
 
+   // This allows the Google test framework to print human-readable Role if a test fails.
+   friend void PrintTo(const Role& repeat_focus, std::ostream* os);
+
   private:
    std::string name_;
    std::string category_;

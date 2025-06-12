@@ -30,6 +30,9 @@ struct RepeatFocus
 
    bool operator==(const RepeatFocus& b) const = default;
 
+   // This allows the Google test framework to print human-readable RepeatFocuses if a test fails.
+   friend void PrintTo(const RepeatFocus& repeat_focus, std::ostream* os);
+
   private:
    std::unique_ptr<Trigger> requirement_;
    std::vector<Focus> focuses_;

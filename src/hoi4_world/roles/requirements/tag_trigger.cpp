@@ -22,4 +22,10 @@ std::unique_ptr<Trigger> TagTrigger::Copy() const
    return std::make_unique<TagTrigger>(tag_);
 }
 
+
+void PrintTo(const TagTrigger& trigger, std::ostream* os)
+{
+   *os << "TagTrigger: " << trigger.tag_ << "\n";
+}
+
 }  // namespace hoi4

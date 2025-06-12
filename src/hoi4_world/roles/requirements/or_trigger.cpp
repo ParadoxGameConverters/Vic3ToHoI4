@@ -72,4 +72,15 @@ std::unique_ptr<Trigger> OrTrigger::Copy() const
    return std::make_unique<OrTrigger>(std::move(children));
 }
 
+
+void PrintTo(const OrTrigger& trigger, std::ostream* os)
+{
+   *os << "OrTrigger: {\n";
+   for (const std::unique_ptr<Trigger>& child: trigger.children_)
+   {
+      *os << child;
+   }
+   *os << "}\n";
+}
+
 }  // namespace hoi4

@@ -31,6 +31,12 @@ class AlwaysTrigger: public Trigger
       return value_;
    }
 
+   // This allows the Google test framework to print human-readable RepeatFocuses if a test fails.
+   friend void PrintTo(const AlwaysTrigger& trigger, std::ostream* os)
+   {
+      *os << "AlwaysTrigger: " << trigger.value_ << "\n";
+   }
+
   private:
    bool value_;
 };
