@@ -22,7 +22,7 @@ TEST(Hoi4worldRolesRoleimporterTests, DefaultsAreDefaulted)
 
    EXPECT_TRUE(role.GetName().empty());
    EXPECT_TRUE(role.GetCategory().empty());
-   EXPECT_EQ(role.GetRequirement(), AlwaysTrigger(true));
+   EXPECT_EQ(role.GetRequirement(), AlwaysTrigger(false));
    EXPECT_EQ(role.GetScore(), 0.0F);
    EXPECT_TRUE(role.GetBlockers().empty());
    EXPECT_TRUE(role.GetSharedFocuses().empty());
@@ -40,11 +40,7 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    std::stringstream input;
    input << " = {\n";
    input << "\tcategory=unification\n";
-   input << "\trequirements={\n";
-   input << "\t\tOR = {\n";
-   input << "\t\t\ttag=ITA\n";
-   input << "\t\t}\n";
-   input << "\t}\n";
+   input << "\trequirements={ tag = ITA }\n";
    input << "\n";
    input << "\tscore=100\n";
    input << "\n";
@@ -136,8 +132,8 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
        testing::ElementsAre(Focus{.id = "$TAG$_italia_irredenta"}, Focus{.id = "$TAG$_italia_irredenta_2"}));
    EXPECT_THAT(role.GetRepeatFocuses(),
        testing::ElementsAre(
-           RepeatFocus(std::make_unique<AlwaysTrigger>(true), {Focus{.id = "$TAG$_invade_$TARGET_TAG$"}}),
-           RepeatFocus(std::make_unique<AlwaysTrigger>(true), {Focus{.id = "$TAG$_invade_$TARGET_TAG$_2"}})));
+           RepeatFocus(std::make_unique<AlwaysTrigger>(false), {Focus{.id = "$TAG$_invade_$TARGET_TAG$"}}),
+           RepeatFocus(std::make_unique<AlwaysTrigger>(false), {Focus{.id = "$TAG$_invade_$TARGET_TAG$_2"}})));
    EXPECT_THAT(role.GetRemovedFocuses(),
        testing::ElementsAre("= {\n"
                             "\t\tid = $TAG$_remove_me\n"
