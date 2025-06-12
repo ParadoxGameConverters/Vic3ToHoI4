@@ -40,4 +40,17 @@ TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, EquavalentTriggersAreEqual)
    EXPECT_NE(true_trigger, false_trigger);
 }
 
+
+TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, CopyReturnsACopy)
+{
+   const AlwaysTrigger true_trigger(true);
+   const std::unique_ptr<Trigger> true_copy = true_trigger.Copy();
+
+   const AlwaysTrigger false_trigger(false);
+
+   EXPECT_NE(true_copy.get(), &true_trigger);
+   EXPECT_EQ(*true_copy, true_trigger);
+   EXPECT_NE(*true_copy, false_trigger);
+}
+
 }  // namespace hoi4

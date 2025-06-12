@@ -84,4 +84,27 @@ TEST(Hoi4worldRolesRequirementsAndTriggerTests, EquavalentTriggersAreEqual)
    EXPECT_NE(and_trigger_three, and_trigger_four);
 }
 
+
+TEST(Hoi4worldRolesRequirementsAndTriggerTests, CopyReturnsACopy)
+{
+   std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);
+   std::vector<std::unique_ptr<Trigger>> children_one;
+   children_one.push_back(std::move(true_trigger_one));
+   children_one.push_back(std::move(false_trigger_one));
+   const AndTrigger and_trigger_one(std::move(children_one));
+
+   const auto and_copy = and_trigger_one.Copy();
+   EXPECT_NE(and_copy.get(), &and_trigger_one);
+   EXPECT_EQ(*and_copy.get(), and_trigger_one);
+
+   std::unique_ptr<Trigger> true_trigger_two = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> false_trigger_two = std::make_unique<AlwaysTrigger>(false);
+   std::vector<std::unique_ptr<Trigger>> children_two;
+   children_two.push_back(std::move(false_trigger_two));
+   children_two.push_back(std::move(true_trigger_two));
+   const AndTrigger and_trigger_two(std::move(children_two));
+   EXPECT_NE(*and_copy.get(), and_trigger_two);
+}
+
 }  // namespace hoi4

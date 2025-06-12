@@ -60,4 +60,17 @@ bool NotTrigger::operator<(const NotTrigger& rhs) const
    return true;
 }
 
+
+std::unique_ptr<Trigger> NotTrigger::Copy() const
+{
+   std::vector<std::unique_ptr<Trigger>> children;
+   for (const auto& child: children_)
+   {
+      children.push_back(child->Copy());
+   }
+
+   std::unique_ptr<Trigger> copy = std::make_unique<NotTrigger>(std::move(children));
+   return std::move(copy);
+}
+
 }  // namespace hoi4

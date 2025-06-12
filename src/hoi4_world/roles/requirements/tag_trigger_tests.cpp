@@ -30,7 +30,7 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfCountryTagN
    const TagTrigger tag_trigger("TAG");
 
    const Country country({.tag = "TWO"});
-   const Scope scope = CountryScope{ .country = country };
+   const Scope scope = CountryScope{.country = country};
    const hoi4::World world({});
 
    EXPECT_FALSE(tag_trigger.IsValid(scope, world));
@@ -42,7 +42,7 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfScopeNotCou
    const TagTrigger tag_trigger("TAG");
 
    const State state(1, {});
-   const Scope scope = StateScope{ .state = state };
+   const Scope scope = StateScope{.state = state};
    const hoi4::World world({});
 
    EXPECT_FALSE(tag_trigger.IsValid(scope, world));
@@ -51,12 +51,25 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfScopeNotCou
 
 TEST(Hoi4worldRolesRequirementsTagTriggerTests, EquavalentTriggersAreEqual)
 {
-	const TagTrigger tag_trigger("TAG");
-	const TagTrigger tag_trigger_two("TAG");
-	const TagTrigger two_trigger("TWO");
+   const TagTrigger tag_trigger("TAG");
+   const TagTrigger tag_trigger_two("TAG");
+   const TagTrigger two_trigger("TWO");
 
-	EXPECT_EQ(tag_trigger, tag_trigger_two);
-	EXPECT_NE(tag_trigger, two_trigger);
+   EXPECT_EQ(tag_trigger, tag_trigger_two);
+   EXPECT_NE(tag_trigger, two_trigger);
+}
+
+
+TEST(Hoi4worldRolesRequirementsTagTriggerTests, CopyReturnsACopy)
+{
+   const TagTrigger tag_trigger("TAG");
+   const std::unique_ptr<Trigger> tag_copy = tag_trigger.Copy();
+
+   const TagTrigger two_trigger("TWO");
+
+   EXPECT_NE(tag_copy.get(), &tag_trigger);
+   EXPECT_EQ(*tag_copy, tag_trigger);
+   EXPECT_NE(*tag_copy, two_trigger);
 }
 
 }  // namespace hoi4

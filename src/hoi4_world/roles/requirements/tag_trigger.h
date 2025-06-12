@@ -16,6 +16,10 @@ class TagTrigger: public Trigger
 {
   public:
    explicit TagTrigger(std::string_view tag): tag_(tag) {}
+   TagTrigger(const TagTrigger&) = default;
+   TagTrigger& operator=(const TagTrigger&) = default;
+   TagTrigger(TagTrigger&&) = default;
+   TagTrigger& operator=(TagTrigger&&) = default;
    ~TagTrigger() override = default;
 
    [[nodiscard]] bool operator==(const Trigger& rhs) const override { return PolymorphicEquality(*this, rhs); }
@@ -23,6 +27,7 @@ class TagTrigger: public Trigger
    [[nodiscard]] bool operator<(const Trigger& rhs) const override { return PolymorphicLess(*this, rhs); }
    [[nodiscard]] bool operator<(const TagTrigger& rhs) const { return tag_ < rhs.tag_; }
 
+   [[nodiscard]] std::unique_ptr<Trigger> Copy() const override;
    [[nodiscard]] bool IsValid(const Scope& scope, const World& world) const override;
 
   private:

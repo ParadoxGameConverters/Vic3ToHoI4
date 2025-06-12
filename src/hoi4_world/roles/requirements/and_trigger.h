@@ -14,6 +14,10 @@ class AndTrigger: public Trigger
 {
   public:
    explicit AndTrigger(std::vector<std::unique_ptr<Trigger>> children): children_(std::move(children)) {}
+   AndTrigger(const AndTrigger&) = default;
+   AndTrigger& operator=(const AndTrigger&) = default;
+   AndTrigger(AndTrigger&&) = default;
+   AndTrigger& operator=(AndTrigger&&) = default;
    ~AndTrigger() override = default;
 
    [[nodiscard]] bool operator==(const Trigger& rhs) const override { return PolymorphicEquality(*this, rhs); }
@@ -21,6 +25,7 @@ class AndTrigger: public Trigger
    [[nodiscard]] bool operator<(const Trigger& rhs) const override { return PolymorphicLess(*this, rhs); }
    [[nodiscard]] bool operator<(const AndTrigger& rhs) const;
 
+   [[nodiscard]] std::unique_ptr<Trigger> Copy() const override;
    [[nodiscard]] bool IsValid(const Scope& scope, const World& world) const override;
 
   private:

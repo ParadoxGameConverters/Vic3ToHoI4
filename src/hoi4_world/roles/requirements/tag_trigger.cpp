@@ -16,4 +16,10 @@ bool TagTrigger::IsValid(const Scope& scope, [[maybe_unused]] const World& world
    return maybe_country->country.GetTag() == tag_;
 }
 
+
+std::unique_ptr<Trigger> TagTrigger::Copy() const
+{
+   return std::make_unique<TagTrigger>(tag_);
+}
+
 }  // namespace hoi4

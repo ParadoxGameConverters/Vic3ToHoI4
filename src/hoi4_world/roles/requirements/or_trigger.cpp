@@ -60,4 +60,16 @@ bool OrTrigger::operator<(const OrTrigger& rhs) const
    return true;
 }
 
+
+std::unique_ptr<Trigger> OrTrigger::Copy() const
+{
+   std::vector<std::unique_ptr<Trigger>> children;
+   for (const auto& child: children_)
+   {
+      children.push_back(child->Copy());
+   }
+
+   return std::make_unique<OrTrigger>(std::move(children));
+}
+
 }  // namespace hoi4

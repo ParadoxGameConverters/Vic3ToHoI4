@@ -14,6 +14,11 @@ class OrTrigger: public Trigger
 {
   public:
    explicit OrTrigger(std::vector<std::unique_ptr<Trigger>> children): children_(std::move(children)) {}
+   OrTrigger(const OrTrigger&) = default;
+   OrTrigger& operator=(const OrTrigger&) = default;
+   OrTrigger(OrTrigger&&) = default;
+   OrTrigger& operator=(OrTrigger&&) = default;
+
    ~OrTrigger() override = default;
 
    [[nodiscard]] bool operator==(const Trigger& rhs) const override { return PolymorphicEquality(*this, rhs); }
@@ -21,6 +26,7 @@ class OrTrigger: public Trigger
    [[nodiscard]] bool operator<(const Trigger& rhs) const override { return PolymorphicLess(*this, rhs); }
    [[nodiscard]] bool operator<(const OrTrigger& rhs) const;
 
+   [[nodiscard]] std::unique_ptr<Trigger> Copy() const override;
    [[nodiscard]] bool IsValid(const Scope& scope, const World& world) const override;
 
   private:
