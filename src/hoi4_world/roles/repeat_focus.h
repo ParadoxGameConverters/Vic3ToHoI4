@@ -24,11 +24,27 @@ struct RepeatFocus
        focuses_(std::move(focuses))
    {
    }
+   RepeatFocus(const RepeatFocus& other): requirement_(other.requirement_->Copy()), focuses_(other.focuses_) {}
+   RepeatFocus& operator=(const RepeatFocus& other)
+   {
+      requirement_ = other.requirement_->Copy();
+      focuses_ = other.focuses_;
+      return *this;
+   }
+   RepeatFocus(RepeatFocus&& other): requirement_(std::move(other.requirement_)), focuses_(std::move(other.focuses_)) {}
+   RepeatFocus& operator=(RepeatFocus&& other)
+   {
+      requirement_ = std::move(other.requirement_);
+      focuses_ = std::move(other.focuses_);
+
+      return *this;
+   }
 
    [[nodiscard]] const Trigger& GetRequirement() const { return *requirement_; }
    [[nodiscard]] const std::vector<Focus>& GetFocuses() const { return focuses_; }
 
-   bool operator==(const RepeatFocus& b) const = default;
+   std::strong_ordering operator<=>(const RepeatFocus& other) const;
+   bool operator==(const RepeatFocus& other) const { return (*this <=> other) == std::partial_ordering::equivalent; }
 
    // This allows the Google test framework to print human-readable RepeatFocuses if a test fails.
    friend void PrintTo(const RepeatFocus& repeat_focus, std::ostream* os);

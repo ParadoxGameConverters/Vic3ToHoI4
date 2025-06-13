@@ -79,7 +79,7 @@ class Role
    bool operator==(const Role& other) const { return (*this <=> other) == std::partial_ordering::equivalent; }
 
    // This allows the Google test framework to print human-readable Role if a test fails.
-   friend void PrintTo(const Role& repeat_focus, std::ostream* os);
+   friend void PrintTo(const Role& role, std::ostream* os);
 
   private:
    std::string name_;
