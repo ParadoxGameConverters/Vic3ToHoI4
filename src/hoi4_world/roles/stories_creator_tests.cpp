@@ -3,6 +3,8 @@
 
 #include <sstream>
 
+#include "src/hoi4_world/roles/requirements/always_trigger.h"
+#include "src/hoi4_world/roles/requirements/tag_trigger.h"
 #include "src/hoi4_world/roles/stories_creator.h"
 
 
@@ -12,15 +14,16 @@ namespace hoi4
 
 TEST(Hoi4worldRolesStoriescreatorTests, AlwaysRolesAreAppliedToAllCountries)
 {
-   const Role role({
+   const Role role(RoleOptions{
        .name = "test_role",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({{"test_role", role}},
+       World({}),
        {
-           {"TAG", Country({})},
-           {"TWO", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
+           {"TWO", Country({.tag = "TWO"})},
        });
 
    EXPECT_THAT(stories,
@@ -31,48 +34,33 @@ TEST(Hoi4worldRolesStoriescreatorTests, AlwaysRolesAreAppliedToAllCountries)
 
 TEST(Hoi4worldRolesStoriescreatorTests, TagRolesAreAppliedToCountriesWithMatchingTag)
 {
-   const Role role({
+   const Role role(RoleOptions{
        .name = "test_role",
-       .requirements = "tag = TAG",
+       .requirement = std::make_unique<TagTrigger>("TAG"),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({{"test_role", role}},
+       World({}),
        {
-           {"TAG", Country({})},
-           {"TWO", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
+           {"TWO", Country({.tag = "TWO"})},
        });
 
    EXPECT_THAT(stories, testing::UnorderedElementsAre(std::pair<std::string, std::vector<hoi4::Role>>{"TAG", {role}}));
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, PrimaryCultureRolesAreAppliedToCountriesWithMatchingPrimaryCulture)
-{
-   const Role role({
-       .name = "test_role",
-       .requirements = "country_has_primary_culture = test_culture",
-   });
-
-   const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({{"test_role", role}},
-       {
-           {"TAG", Country({.primary_cultures = {"non_match_culture"}})},
-           {"TWO", Country({.primary_cultures = {"test_culture"}})},
-       });
-
-   EXPECT_THAT(stories, testing::UnorderedElementsAre(std::pair<std::string, std::vector<hoi4::Role>>{"TWO", {role}}));
-}
-
-
 TEST(Hoi4worldRolesStoriescreatorTests, RolesWithNoRequirementsAreNotApplied)
 {
-   const Role role({
+   const Role role(RoleOptions{
        .name = "test_role",
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({{"test_role", role}},
+       World({}),
        {
-           {"TAG", Country({})},
-           {"TWO", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
+           {"TWO", Country({.tag = "TWO"})},
        });
 
    EXPECT_THAT(stories, testing::UnorderedElementsAre());
@@ -81,12 +69,12 @@ TEST(Hoi4worldRolesStoriescreatorTests, RolesWithNoRequirementsAreNotApplied)
 
 TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoCountries)
 {
-   const Role role({
+   const Role role(RoleOptions{
        .name = "test_role",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
    });
 
-   const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({{"test_role", role}}, {});
+   const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({{"test_role", role}}, World({}), {});
 
    EXPECT_THAT(stories, testing::UnorderedElementsAre());
 }
@@ -95,9 +83,10 @@ TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoCountries)
 TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoRoles)
 {
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({},
+       World({}),
        {
-           {"TAG", Country({})},
-           {"TWO", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
+           {"TWO", Country({.tag = "TWO"})},
        });
 
    EXPECT_THAT(stories, testing::UnorderedElementsAre());
@@ -106,19 +95,19 @@ TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoRoles)
 
 TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleScore)
 {
-   const Role role_one({
+   const Role role_one(RoleOptions{
        .name = "test_role_one",
-       .requirements = "tag = TAG",
+       .requirement = std::make_unique<TagTrigger>("TAG"),
        .score = 100,
    });
-   const Role role_two({
+   const Role role_two(RoleOptions{
        .name = "test_role_two",
-       .requirements = "tag = TWO",
+       .requirement = std::make_unique<TagTrigger>("TWO"),
        .score = 200,
    });
-   const Role role_three({
+   const Role role_three(RoleOptions{
        .name = "test_role_three",
-       .requirements = "tag = THR",
+       .requirement = std::make_unique<TagTrigger>("THR"),
        .score = 300,
    });
 
@@ -128,10 +117,11 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleScore)
            {"test_role_two", role_two},
            {"test_role_three", role_three},
        },
+       World({}),
        {
-           {"TAG", Country({})},
-           {"TWO", Country({})},
-           {"THR", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
+           {"TWO", Country({.tag = "TWO"})},
+           {"THR", Country({.tag = "THR"})},
        });
 
    EXPECT_THAT(stories,
@@ -143,20 +133,20 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleScore)
 
 TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByTagIfScoresAreEqual)
 {
-   const Role role_one({
+   const Role role_one(RoleOptions{
        .name = "test_role_one",
-       .requirements = "tag = TAG",
+       .requirement = std::make_unique<TagTrigger>("TAG"),
        .score = 100,
    });
-   const Role role_two({
+   const Role role_two(RoleOptions{
        .name = "test_role_two",
-       .requirements = "tag = TWO",
-       .score = 100,
+       .requirement = std::make_unique<TagTrigger>("TWO"),
+       .score = 200,
    });
-   const Role role_three({
+   const Role role_three(RoleOptions{
        .name = "test_role_three",
-       .requirements = "tag = THR",
-       .score = 100,
+       .requirement = std::make_unique<TagTrigger>("THR"),
+       .score = 300,
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories(
@@ -165,10 +155,11 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByTagIfScoresAreEqual)
            {"test_role_two", role_two},
            {"test_role_three", role_three},
        },
+       World({}),
        {
-           {"TAG", Country({})},
-           {"TWO", Country({})},
-           {"THR", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
+           {"TWO", Country({.tag = "TWO"})},
+           {"THR", Country({.tag = "THR"})},
        });
 
    EXPECT_THAT(stories,
@@ -180,19 +171,19 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByTagIfScoresAreEqual)
 
 TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleNameIfScoresAndTagsAreEqual)
 {
-   const Role role_one({
+   const Role role_one(RoleOptions{
        .name = "test_role_second",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
        .score = 100,
    });
-   const Role role_two({
+   const Role role_two(RoleOptions{
        .name = "test_role_first",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
        .score = 100,
    });
-   const Role role_three({
+   const Role role_three(RoleOptions{
        .name = "test_role_zzz",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
        .score = 100,
    });
 
@@ -202,8 +193,9 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleNameIfScoresAndTag
            {"test_role_first", role_two},
            {"test_role_zzz", role_three},
        },
+       World({}),
        {
-           {"TAG", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
        });
 
    EXPECT_THAT(stories,
@@ -214,14 +206,14 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleNameIfScoresAndTag
 
 TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByName)
 {
-   const Role role({
+   const Role role(RoleOptions{
        .name = "test_role",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
        .blockers = {"test_role_two"},
    });
-   const Role role_two({
+   const Role role_two(RoleOptions{
        .name = "test_role_two",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories(
@@ -229,8 +221,9 @@ TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByName)
            {"test_role", role},
            {"test_role_two", role_two},
        },
+       World({}),
        {
-           {"TAG", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
        });
 
    EXPECT_THAT(stories, testing::UnorderedElementsAre(std::pair<std::string, std::vector<hoi4::Role>>{"TAG", {role}}));
@@ -239,15 +232,15 @@ TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByName)
 
 TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByCategory)
 {
-   const Role role({
+   const Role role(RoleOptions{
        .name = "test_role",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
        .blockers = {"test_role_two_category"},
    });
-   const Role role_two({
+   const Role role_two(RoleOptions{
        .name = "test_role_two",
        .category = "test_role_two_category",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories(
@@ -255,8 +248,9 @@ TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByCategory)
            {"test_role", role},
            {"test_role_two", role_two},
        },
+       World({}),
        {
-           {"TAG", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
        });
 
    EXPECT_THAT(stories, testing::UnorderedElementsAre(std::pair<std::string, std::vector<hoi4::Role>>{"TAG", {role}}));
@@ -265,19 +259,19 @@ TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByCategory)
 
 TEST(Hoi4worldRolesStoriescreatorTests, MultipleBlockersCanBlockRoles)
 {
-   const Role role({
+   const Role role(RoleOptions{
        .name = "test_role",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
        .blockers = {"test_role_two_category", "test_role_three"},
    });
-   const Role role_two({
+   const Role role_two(RoleOptions{
        .name = "test_role_two",
        .category = "test_role_two_category",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
    });
-   const Role role_three({
+   const Role role_three(RoleOptions{
        .name = "test_role_three",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories(
@@ -286,8 +280,9 @@ TEST(Hoi4worldRolesStoriescreatorTests, MultipleBlockersCanBlockRoles)
            {"test_role_two", role_two},
            {"test_role_three", role_three},
        },
+       World({}),
        {
-           {"TAG", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
        });
 
    EXPECT_THAT(stories, testing::UnorderedElementsAre(std::pair<std::string, std::vector<hoi4::Role>>{"TAG", {role}}));
@@ -296,21 +291,21 @@ TEST(Hoi4worldRolesStoriescreatorTests, MultipleBlockersCanBlockRoles)
 
 TEST(Hoi4worldRolesStoriescreatorTests, BlockersOnlyBlockWithSameCountry)
 {
-   const Role role({
+   const Role role(RoleOptions{
        .name = "test_role",
-       .requirements = "tag = TAG",
+       .requirement = std::make_unique<TagTrigger>("TAG"),
        .score = 102,
        .blockers = {"test_role_two_category", "test_role_three"},
    });
-   const Role role_two({
+   const Role role_two(RoleOptions{
        .name = "test_role_two",
        .category = "test_role_two_category",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
        .score = 101,
    });
-   const Role role_three({
+   const Role role_three(RoleOptions{
        .name = "test_role_three",
-       .requirements = "always = yes",
+       .requirement = std::make_unique<AlwaysTrigger>(true),
        .score = 100,
    });
 
@@ -320,9 +315,10 @@ TEST(Hoi4worldRolesStoriescreatorTests, BlockersOnlyBlockWithSameCountry)
            {"test_role_two", role_two},
            {"test_role_three", role_three},
        },
+       World({}),
        {
-           {"TAG", Country({})},
-           {"TWO", Country({})},
+           {"TAG", Country({.tag = "TAG"})},
+           {"TWO", Country({.tag = "TWO"})},
        });
 
    EXPECT_THAT(stories,
