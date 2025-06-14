@@ -57,7 +57,7 @@ void PrintTo(const RepeatFocus& repeat_focus, std::ostream* os)
    }
    else
    {
-      *os << "nullptr\n";
+      *os << "no requirement\n";
    }
    *os << "{\n";
    for (const Focus& focus: repeat_focus.focuses_)
