@@ -9,6 +9,7 @@
 #include "src/out_hoi4/countries/out_countries.h"
 #include "src/out_hoi4/decisions/out_decisions.h"
 #include "src/out_hoi4/decisions/out_decisions_categories.h"
+#include "src/out_hoi4/events/out_events.h"
 #include "src/out_hoi4/ideas/out_ideas.h"
 #include "src/out_hoi4/localizations/out_localizations.h"
 #include "src/out_hoi4/map/out_buildings.h"
@@ -89,7 +90,10 @@ void OutputBookmark(const path& output_name,
 }  // namespace
 
 
-void out::OutputWorld(const path& output_name, const hoi4::World& world, configuration::UseStories use_stories)
+namespace out
+{
+
+void OutputWorld(const path& output_name, const hoi4::World& world, configuration::UseStories use_stories)
 {
    OutputCountries(output_name, world.GetCountries(), world.GetCharacters(), use_stories);
    OutputMonarchIdeas(output_name, world.GetCountries(), world.GetCharacters());
@@ -103,6 +107,7 @@ void out::OutputWorld(const path& output_name, const hoi4::World& world, configu
    OutputPortraits(output_name, world.GetCountries());
    OutputDecisionsCategories(output_name, world.GetDecisionsCategories());
    OutputDecisions(output_name, world.GetDecisionsInCategories());
+   OutputEvents(output_name, world.GetEvents());
    OutputBookmark(output_name,
        "grand_campaign",
        date("1936.1.1"),
@@ -110,3 +115,5 @@ void out::OutputWorld(const path& output_name, const hoi4::World& world, configu
        world.GetGreatPowers(),
        world.GetMajorPowers());
 }
+
+}  // namespace out

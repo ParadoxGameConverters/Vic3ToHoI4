@@ -13,6 +13,7 @@
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/decisions/decision.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
+#include "src/hoi4_world/events/event.h"
 #include "src/hoi4_world/localizations/localizations.h"
 #include "src/hoi4_world/map/buildings.h"
 #include "src/hoi4_world/map/railways.h"
@@ -68,6 +69,7 @@ class World
    {
       return decisions_in_categories_;
    }
+   [[nodiscard]] const std::map<std::string, std::vector<Event>>& GetEvents() const { return country_events_; }
 
    [[nodiscard]] std::map<std::string, Country>& GetModifiableCountries() { return countries_; }
 
@@ -78,6 +80,11 @@ class World
    void SetDecisions(std::map<std::string, std::vector<Decision>> decisions_in_categories)
    {
       decisions_in_categories_ = std::move(decisions_in_categories);
+   }
+
+   void SetCountryEvents(std::map<std::string, std::vector<Event>> country_events)
+   {
+      country_events_ = std::move(country_events);
    }
 
   private:
@@ -93,6 +100,8 @@ class World
 
    std::set<DecisionsCategory> decisions_categories_;
    std::map<std::string, std::vector<Decision>> decisions_in_categories_;
+
+   std::map<std::string, std::vector<Event>> country_events_;
 };
 
 }  // namespace hoi4

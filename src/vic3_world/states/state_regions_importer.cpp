@@ -70,7 +70,15 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
           significant_provinces.clear();
           provinces.clear();
           region_parser.parseStream(input_stream);
-          name_to_region_map.emplace(region_name, StateRegion(significant_provinces, provinces));
+          StateRegion new_region(significant_provinces, provinces);
+          if (auto [itr, success] = name_to_region_map.emplace(region_name, new_region); !success)
+          {
+             throw std::runtime_error(fmt::format(
+                 "Region {} was repeatedly defined. This indicates irrecoverable mod corruption. If this was an EU4 to "
+                 "Vic3 conversion mod, delete your copy of EU4 to Vic3 and download a fresh copy, delete your mod and "
+                 "reconvert, do a test conversion to verify this error goes away, then play through Vic3 again.",
+                 region_name));
+          }
           region_indexes.emplace(region_name, static_cast<int>(region_indexes.size()));
        });
 

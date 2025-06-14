@@ -9,6 +9,7 @@
 #include "requirements/always_trigger.h"
 #include "src/hoi4_world/decisions/decision.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
+#include "src/hoi4_world/events/event.h"
 #include "src/hoi4_world/focus_trees/focus.h"
 #include "src/hoi4_world/roles/repeat_focus.h"
 #include "src/hoi4_world/roles/requirements/trigger_base.h"
@@ -31,7 +32,7 @@ struct RoleOptions
    std::vector<std::string> removed_focuses;
    std::vector<DecisionsCategory> decisions_categories;
    std::map<std::string, std::vector<Decision>> decisions_in_categories;
-   std::vector<std::string> events;
+   std::vector<Event> events;
 };
 
 
@@ -73,7 +74,7 @@ class Role
    {
       return decisions_in_categories_;
    }
-   [[nodiscard]] const std::vector<std::string>& GetEvents() const { return events_; }
+   [[nodiscard]] const std::vector<Event>& GetEvents() const { return events_; }
 
    std::partial_ordering operator<=>(const Role& other) const;
    bool operator==(const Role& other) const { return (*this <=> other) == std::partial_ordering::equivalent; }
@@ -93,7 +94,7 @@ class Role
    std::vector<std::string> removed_focuses_;
    std::vector<DecisionsCategory> decisions_categories_;
    std::map<std::string, std::vector<Decision>> decisions_in_categories_;
-   std::vector<std::string> events_;
+   std::vector<Event> events_;
 };
 
 }  // namespace hoi4
