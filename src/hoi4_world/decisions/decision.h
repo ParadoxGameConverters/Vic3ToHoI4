@@ -45,7 +45,7 @@ struct Decision
    std::optional<std::string> cost;
    std::string modifier;
 
-   bool operator==(const Decision& other) const { return (name == other.name); }
+   std::strong_ordering operator<=>(const Decision&) const = default;
    friend void PrintTo(const Decision& decision, std::ostream* os);
 };
 

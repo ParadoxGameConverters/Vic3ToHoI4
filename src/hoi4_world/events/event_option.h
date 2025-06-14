@@ -21,6 +21,8 @@ struct EventOption
    std::string hidden_effect;
 
    std::strong_ordering operator<=>(const EventOption&) const = default;
+
+   friend void PrintTo(const EventOption& option, std::ostream* os);
 };
 
 }  // namespace hoi4

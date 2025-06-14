@@ -19,7 +19,7 @@ TEST(Hoi4worldRolesRepeatfocusimporterTests, DefaultsAreDefaulted)
    const RepeatFocus repeat_focus = importer.ImportRepeatFocus(input);
 
    // requirement is handled in a currently-untestable way. When it is replaced, actually test it here.
-   EXPECT_TRUE(repeat_focus.focuses.empty());
+   EXPECT_TRUE(repeat_focus.GetFocuses().empty());
 }
 
 
@@ -37,7 +37,7 @@ TEST(Hoi4worldRolesRepeatfocusimporterTests, ItemsCanBeImported)
    const RepeatFocus repeat_focus = importer.ImportRepeatFocus(input);
 
    // requirement is handled in a currently-untestable way. When it is replaced, actually test it here.
-   EXPECT_THAT(repeat_focus.focuses, testing::ElementsAre(Focus{.id = "focus_one"}, Focus{.id = "focus_two"}));
+   EXPECT_THAT(repeat_focus.GetFocuses(), testing::ElementsAre(Focus{.id = "focus_one"}, Focus{.id = "focus_two"}));
 }
 
 }  // namespace hoi4

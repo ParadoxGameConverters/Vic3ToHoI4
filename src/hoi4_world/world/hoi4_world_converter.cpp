@@ -336,7 +336,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    const std::map<std::string, Role> roles = ImportRoles();
    std::map<std::string, Country>& modifiable_countries = world.GetModifiableCountries();
-   for (const auto& [tag, country_roles]: CreateStories(roles, modifiable_countries))
+   for (const auto& [tag, country_roles]: CreateStories(roles, world, modifiable_countries))
    {
       auto country_itr = modifiable_countries.find(tag);
       if (country_itr == modifiable_countries.end())

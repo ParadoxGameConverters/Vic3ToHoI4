@@ -3,10 +3,12 @@
 
 
 
+#include <memory>
 #include <string>
 #include <vector>
 
 #include "src/hoi4_world/focus_trees/focus.h"
+#include "src/hoi4_world/roles/requirements/trigger_base.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 
 
@@ -16,12 +18,29 @@ namespace hoi4
 
 struct RepeatFocus
 {
-   std::function<bool(const Country&, const World&)> requirement;
-   std::vector<Focus> focuses;
+  public:
+   RepeatFocus(std::unique_ptr<Trigger> requirement, std::vector<Focus> focuses):
+       requirement_(std::move(requirement)),
+       focuses_(std::move(focuses))
+   {
+   }
+   RepeatFocus(const RepeatFocus& other): requirement_(other.requirement_->Copy()), focuses_(other.focuses_) {}
+   RepeatFocus& operator=(const RepeatFocus& other);
+   RepeatFocus(RepeatFocus&& other): requirement_(std::move(other.requirement_)), focuses_(std::move(other.focuses_)) {}
+   RepeatFocus& operator=(RepeatFocus&& other);
 
-   // operator<=> doesn't work for unknown reasons. When requirement is done properly and test are updated, try
-   // replacing this with operator <=>
-   bool operator==(const RepeatFocus& b) const { return focuses == b.focuses; }
+   [[nodiscard]] const Trigger& GetRequirement() const { return *requirement_; }
+   [[nodiscard]] const std::vector<Focus>& GetFocuses() const { return focuses_; }
+
+   std::strong_ordering operator<=>(const RepeatFocus& other) const;
+   bool operator==(const RepeatFocus& other) const { return (*this <=> other) == std::partial_ordering::equivalent; }
+
+   // This allows the Google test framework to print human-readable RepeatFocuses if a test fails.
+   friend void PrintTo(const RepeatFocus& repeat_focus, std::ostream* os);
+
+  private:
+   std::unique_ptr<Trigger> requirement_;
+   std::vector<Focus> focuses_;
 };
 
 }  // namespace hoi4

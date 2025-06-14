@@ -24,14 +24,14 @@ std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
       std::map<std::string, std::vector<hoi4::Focus>> target_focuses;
       for (const auto& [target_tag, country]: world.GetCountries())
       {
-         if (!repeat_focus.requirement(country, world))
+         if (!repeat_focus.GetRequirement().IsValid(hoi4::CountryScope(country), world))
          {
             continue;
          }
 
          ++num_targets;
 
-         for (hoi4::Focus focus_copy: repeat_focus.focuses)
+         for (hoi4::Focus focus_copy: repeat_focus.GetFocuses())
          {
             std::string original_id = focus_copy.id;
             focus_copy.apply_replacement("$TARGET_TAG$", target_tag);

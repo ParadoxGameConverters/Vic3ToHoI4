@@ -2,6 +2,7 @@
 
 #include <external/commonItems/ParserHelpers.h>
 
+#include "requirements/always_trigger.h"
 
 
 hoi4::RepeatFocusImporter::RepeatFocusImporter()
@@ -18,14 +19,10 @@ hoi4::RepeatFocusImporter::RepeatFocusImporter()
 
 hoi4::RepeatFocus hoi4::RepeatFocusImporter::ImportRepeatFocus(std::istream& input)
 {
-   requirement_ = [](const Country&, const World&) {
-      static int num_matched = 0;
-      ++num_matched;
-      return num_matched <= 4;
-   };
+   requirement_ = std::make_unique<AlwaysTrigger>(false);
    focuses_.clear();
 
    parser_.parseStream(input);
 
-   return {requirement_, focuses_};
+   return {std::move(requirement_), focuses_};
 }

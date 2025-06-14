@@ -31,6 +31,8 @@ struct Event
    std::vector<EventOption> options;
 
    std::strong_ordering operator<=>(const Event&) const = default;
+
+   friend void PrintTo(const Event& event, std::ostream* os);
 };
 
 }  // namespace hoi4
