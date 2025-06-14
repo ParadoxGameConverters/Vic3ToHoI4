@@ -16,9 +16,7 @@ using Tag = std::string;
 using CombinationName = std::string;
 
 
-bool IsRoleValidForCountry(const hoi4::Role& role,
-    const hoi4::World& world,
-    const hoi4::Country& country)
+bool IsRoleValidForCountry(const hoi4::Role& role, const hoi4::World& world, const hoi4::Country& country)
 {
    return role.GetRequirement().IsValid(hoi4::CountryScope{country}, world);
 }
