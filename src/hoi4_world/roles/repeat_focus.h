@@ -25,20 +25,9 @@ struct RepeatFocus
    {
    }
    RepeatFocus(const RepeatFocus& other): requirement_(other.requirement_->Copy()), focuses_(other.focuses_) {}
-   RepeatFocus& operator=(const RepeatFocus& other)
-   {
-      requirement_ = other.requirement_->Copy();
-      focuses_ = other.focuses_;
-      return *this;
-   }
+   RepeatFocus& operator=(const RepeatFocus& other);
    RepeatFocus(RepeatFocus&& other): requirement_(std::move(other.requirement_)), focuses_(std::move(other.focuses_)) {}
-   RepeatFocus& operator=(RepeatFocus&& other)
-   {
-      requirement_ = std::move(other.requirement_);
-      focuses_ = std::move(other.focuses_);
-
-      return *this;
-   }
+   RepeatFocus& operator=(RepeatFocus&& other);
 
    [[nodiscard]] const Trigger& GetRequirement() const { return *requirement_; }
    [[nodiscard]] const std::vector<Focus>& GetFocuses() const { return focuses_; }

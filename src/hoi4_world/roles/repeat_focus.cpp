@@ -7,6 +7,23 @@
 namespace hoi4
 {
 
+RepeatFocus& RepeatFocus::operator=(const RepeatFocus& other)
+{
+   requirement_ = other.requirement_->Copy();
+   focuses_ = other.focuses_;
+   return *this;
+}
+
+
+RepeatFocus& RepeatFocus::operator=(RepeatFocus&& other)
+{
+   requirement_ = std::move(other.requirement_);
+   focuses_ = std::move(other.focuses_);
+
+   return *this;
+}
+
+
 std::strong_ordering RepeatFocus::operator<=>(const RepeatFocus& other) const
 {
    if (!requirement_ && other.requirement_)
