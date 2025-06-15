@@ -12,7 +12,6 @@
 
 
 using std::filesystem::create_directories;
-using std::filesystem::path;
 
 
 
@@ -25,8 +24,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, NationalFocusFileIsNamedForTag)
 
    OutputFocusTree("NationalFocusFileIsNamedForTag", "TST", {}, configuration::UseStories::kNo);
 
-   EXPECT_TRUE(
-       commonItems::DoesFileExist(path("output/NationalFocusFileIsNamedForTag/common/national_focus/TST_NF.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/NationalFocusFileIsNamedForTag/common/national_focus/TST_NF.txt"));
 }
 
 
@@ -36,7 +34,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, DefaultsAreOutput)
 
    OutputFocusTree("DefaultsAreOutput", "TST", {}, configuration::UseStories::kNo);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/DefaultsAreOutput/common/national_focus/TST_NF.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/DefaultsAreOutput/common/national_focus/TST_NF.txt"));
    std::ifstream national_focus_file("output/DefaultsAreOutput/common/national_focus/TST_NF.txt");
    ASSERT_TRUE(national_focus_file.is_open());
    std::stringstream national_focus_file_stream;
@@ -76,7 +74,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, SharedFocusesAreOutput)
        {.shared_focuses = {"shared_focus_one", "shared_focus_two"}},
        configuration::UseStories::kNo);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/SharedFocusesAreOutput/common/national_focus/TST_NF.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/SharedFocusesAreOutput/common/national_focus/TST_NF.txt"));
    std::ifstream national_focus_file("output/SharedFocusesAreOutput/common/national_focus/TST_NF.txt");
    ASSERT_TRUE(national_focus_file.is_open());
    std::stringstream national_focus_file_stream;
@@ -118,7 +116,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, FocusesAreOutput)
        {.focuses = {{.id = "focus_one"}, {.id = "focus_two"}}},
        configuration::UseStories::kYes);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/FocusesAreOutput/common/national_focus/TST_NF.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/FocusesAreOutput/common/national_focus/TST_NF.txt"));
    std::ifstream national_focus_file("output/FocusesAreOutput/common/national_focus/TST_NF.txt");
    ASSERT_TRUE(national_focus_file.is_open());
    std::stringstream national_focus_file_stream;
@@ -174,7 +172,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, FocusesArentOutputIfNotUsingStoriesSyst
        {.focuses = {{.id = "focus_one"}, {.id = "focus_two"}}},
        configuration::UseStories::kNo);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/FocusesAreOutput/common/national_focus/TST_NF.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/FocusesAreOutput/common/national_focus/TST_NF.txt"));
    std::ifstream national_focus_file("output/FocusesAreOutput/common/national_focus/TST_NF.txt");
    ASSERT_TRUE(national_focus_file.is_open());
    std::stringstream national_focus_file_stream;

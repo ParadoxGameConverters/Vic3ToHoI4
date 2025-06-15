@@ -3,6 +3,8 @@
 
 #include "src/hoi4_world/world/hoi4_world_framework_builder.h"
 
+
+
 namespace hoi4
 {
 
@@ -19,9 +21,9 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, NullFrameworkIsEmpty)
 
 TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultFrameworkContainsDefaults)
 {
-   WorldFramework world_framework = WorldFrameworkBuilder::CreateDefaultWorldFramework(
-       commonItems::ModFilesystem(std::filesystem::path("test_files/hoi4_world"), {}))
-                                        .Build();
+   WorldFramework world_framework =
+       WorldFrameworkBuilder::CreateDefaultWorldFramework(commonItems::ModFilesystem("test_files/hoi4_world", {}))
+           .Build();
 
    EXPECT_TRUE(world_framework.default_states.empty());
    EXPECT_TRUE(world_framework.resources_map.empty());

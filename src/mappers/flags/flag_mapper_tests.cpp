@@ -38,10 +38,10 @@ namespace mappers
 TEST(MappersFlagsFlagMapper, SingleFlagsAreCopied)
 {
    const path base_folder = CreateTestFolders("SingleFlagsAreCopied");
-   FlagMapper flag_mapper(path(base_folder),
+   FlagMapper flag_mapper(base_folder,
        std::map<std::string, path>{
-           {"ABC", path("test_files/hoi4_world/flags/gfx/flags/ABC.tga")},
-           {"DEF", path("test_files/hoi4_world/flags/gfx/flags/DEF.tga")},
+           {"ABC", "test_files/hoi4_world/flags/gfx/flags/ABC.tga"},
+           {"DEF", "test_files/hoi4_world/flags/gfx/flags/DEF.tga"},
        },
        {});
    EXPECT_TRUE(flag_mapper.CopyFlag("TAG"));
@@ -60,10 +60,10 @@ TEST(MappersFlagsFlagMapper, SingleFlagsAreCopied)
 TEST(MappersFlagsFlagMapper, MultipleFlagsAreCopied)
 {
    const path base_folder = CreateTestFolders("MultipleFlagsAreCopied");
-   FlagMapper flag_mapper(path(base_folder),
+   FlagMapper flag_mapper(base_folder,
        std::map<std::string, path>{
-           {"ABC", path("test_files/hoi4_world/flags/gfx/flags/ABC.tga")},
-           {"DEF", path("test_files/hoi4_world/flags/gfx/flags/DEF.tga")},
+           {"ABC", "test_files/hoi4_world/flags/gfx/flags/ABC.tga"},
+           {"DEF", "test_files/hoi4_world/flags/gfx/flags/DEF.tga"},
        },
        {});
    auto tags = std::vector<std::string>{"TAG", "Z00"};
@@ -81,10 +81,10 @@ TEST(MappersFlagsFlagMapper, MultipleFlagsAreCopied)
 TEST(MappersFlagsFlagMapper, ExistingFlagsAreNotCopied)
 {
    const path base_folder = CreateTestFolders("ExistingFlagsAreNotCopied");
-   FlagMapper flag_mapper(path(base_folder),
+   FlagMapper flag_mapper(base_folder,
        std::map<std::string, path>{
-           {"ABC", path("test_files/hoi4_world/flags/gfx/flags/ABC.tga")},
-           {"DEF", path("test_files/hoi4_world/flags/gfx/flags/DEF.tga")},
+           {"ABC", "test_files/hoi4_world/flags/gfx/flags/ABC.tga"},
+           {"DEF", "test_files/hoi4_world/flags/gfx/flags/DEF.tga"},
        },
        {});
    auto tags = std::vector<std::string>{"TAG", "Z00", "DEF"};
@@ -101,9 +101,11 @@ TEST(MappersFlagsFlagMapper, ExistingFlagsAreNotCopied)
 TEST(MappersFlagsFlagMapper, CustomFlagsAreNotCopied)
 {
    const path base_folder = CreateTestFolders("CustomFlagsAreNotCopied");
-   FlagMapper flag_mapper(path(base_folder),
-       std::map<std::string, path>{{"ABC", path("test_files/hoi4_world/flags/gfx/flags/ABC.tga")},
-           {"DEF", path("test_files/hoi4_world/flags/gfx/flags/DEF.tga")}},
+   FlagMapper flag_mapper(base_folder,
+       std::map<std::string, path>{
+           {"ABC", "test_files/hoi4_world/flags/gfx/flags/ABC.tga"},
+           {"DEF", "test_files/hoi4_world/flags/gfx/flags/DEF.tga"},
+       },
        {"TAG"});
    auto tags = std::vector<std::string>{"TAG", "Z00", "DEF"};
    // TAG has a custom flag so Z00 can be assigned one.

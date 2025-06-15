@@ -45,12 +45,12 @@ void OutputLocalisations(const path& output_name,
 {
    for (const auto& language: supported_languages)
    {
-      const path path(
+      const path localization_path(
           "output" / output_name / fmt::format("localisation/{}/{}{}.yml", language, localization_file, language));
-      std::ofstream file(path);
+      std::ofstream file(localization_path);
       if (!file.is_open())
       {
-         throw std::runtime_error(path.string());
+         throw std::runtime_error(localization_path.string());
       }
       file << fmt::format("{}l_{}:\n", commonItems::utf8BOM, language);
 

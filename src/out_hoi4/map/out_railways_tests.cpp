@@ -36,7 +36,7 @@ TEST(Outhoi4MapOutrailwaysTests, FilesAreCreated)
 
    OutputRailways("Outhoi4MapOutrailwaysTestsFilesAreCreated", {});
 
-   EXPECT_TRUE(commonItems::DoesFileExist(path("output/Outhoi4MapOutrailwaysTestsFilesAreCreated/map/railways.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/Outhoi4MapOutrailwaysTestsFilesAreCreated/map/railways.txt"));
 }
 
 
