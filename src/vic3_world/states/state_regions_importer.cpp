@@ -82,13 +82,7 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
           region_indexes.emplace(region_name, static_cast<int>(region_indexes.size()));
        });
 
-   const std::set<path> files = filesystem.GetAllFilesInFolder("map_data/state_regions");
-   std::vector<path> sorted_files(files.begin(), files.end());
-   std::ranges::sort(sorted_files, [](const path& a, const path& b) {
-      return a.filename() < b.filename();
-   });
-
-   for (const path& state_regions_file: sorted_files)
+   for (const path& state_regions_file: filesystem.GetAllFilesInFolder("map_data/state_regions"))
    {
       file_parser.parseFile(state_regions_file);
    }
