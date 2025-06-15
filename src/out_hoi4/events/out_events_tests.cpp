@@ -52,7 +52,7 @@ TEST(Outhoi4EventsOuteventsTests, EventFilesAreCreated)
 
 TEST(Outhoi4EventsOuteventsTests, ExceptionIfDirectoryNotCreated)
 {
-   EXPECT_THROW(OutputEvents("???/.",
+   EXPECT_THROW(OutputEvents("/proc/???",
                     {
                         {"TAG", {}},
                         {"TWO", {}},
