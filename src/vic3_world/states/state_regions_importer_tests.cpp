@@ -7,16 +7,12 @@
 
 
 
-using std::filesystem::path;
-
-
-
 namespace vic3
 {
 
 TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
 {
-   const commonItems::ModFilesystem mod_filesystem(path(""), {});
+   const commonItems::ModFilesystem mod_filesystem("", {});
    const StateRegions state_regions = ImportStateRegions(mod_filesystem);
 
    EXPECT_TRUE(state_regions.name_to_region_map.empty());
@@ -26,7 +22,7 @@ TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
 
 TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
 {
-   const commonItems::ModFilesystem mod_filesystem(path("test_files/vic3_world/states/ItemsAreImported/game"), {});
+   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/states/ItemsAreImported/game", {});
    const StateRegions state_regions = ImportStateRegions(mod_filesystem);
 
    EXPECT_THAT(state_regions.name_to_region_map,
@@ -59,7 +55,7 @@ TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
 
 TEST(Vic3worldStatesStateRegionsImporterTests, BadItemCausesCrash)
 {
-   const commonItems::ModFilesystem mod_filesystem(path("test_files/vic3_world/states/BadItemCausesCrash/game"), {});
+   const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/states/BadItemCausesCrash/game", {});
    EXPECT_THROW(const auto _ = ImportStateRegions(mod_filesystem), std::runtime_error);
 }
 

@@ -412,7 +412,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
            "simp_chinese",
            "spanish",
            "turkish"});
-   localizations.ScrapeLocalizations(mod_filesystem, path("localization"));
+   localizations.ScrapeLocalizations(mod_filesystem, "localization");
    world_options.localizations = localizations;
    world_options.culture_definitions = ImportCultureDefinitions(mod_filesystem);
    ProgressManager::AddProgress(5);

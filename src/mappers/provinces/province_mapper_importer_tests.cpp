@@ -9,16 +9,12 @@
 
 
 
-using std::filesystem::path;
-
-
-
 namespace mappers
 {
 
 TEST(MappersProvincesProvinceMapperImporterTests, ProvinceMappingsCanBeImported)
 {
-   const commonItems::ModFilesystem mod_filesystem(path("./test_files/mappers/provinces/empty_definition/"), {});
+   const commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/empty_definition/", {});
    const auto province_mappings = ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
 
    EXPECT_THAT(province_mappings.GetVic3ToHoi4ProvinceMapping("x000001"), testing::ElementsAre(1, 10));
@@ -36,7 +32,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, ProvinceMappingsCanBeImported)
 
 TEST(MappersProvincesProvinceMapperImporterTests, MissingMapDefinitionThrowsException)
 {
-   const commonItems::ModFilesystem mod_filesystem(path("./test_files/mappers/provinces/no_definition/"), {});
+   const commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/no_definition/", {});
 
    EXPECT_THROW((ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings()), std::runtime_error);
 }
@@ -49,7 +45,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, BadLineInMapDefinitionLogsWarn
    std::streambuf* stdOutBuf = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const commonItems::ModFilesystem mod_filesystem(path("./test_files/mappers/provinces/bad_line_definition/"), {});
+   const commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/bad_line_definition/", {});
    auto _ = ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
    std::cout.rdbuf(stdOutBuf);
 
@@ -64,7 +60,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, MissingHoi4ProvinceMappingLogs
    std::streambuf* stdOutBuf = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const commonItems::ModFilesystem mod_filesystem(path("./test_files/mappers/provinces/missing_definition/"), {});
+   const commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/missing_definition/", {});
    const auto province_mappings = ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
    const auto _ = province_mappings.GetHoi4ToVic3ProvinceMapping(12);
 
@@ -77,7 +73,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, MissingHoi4ProvinceMappingLogs
 
 TEST(MappersProvincesProvinceMapperImporterTests, MissingVic3ProvinceMappingLogsWarning)
 {
-   const commonItems::ModFilesystem mod_filesystem(path("./test_files/mappers/provinces/empty_definition/"), {});
+   const commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/empty_definition/", {});
    const auto province_mappings = ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
 
    std::stringstream log;
@@ -98,7 +94,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, ExtraProvinceMappingsLogWarnin
    std::streambuf* stdOutBuf = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   const commonItems::ModFilesystem mod_filesystem(path("./test_files/mappers/provinces/good_definition/"), {});
+   const commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/good_definition/", {});
    [[maybe_unused]] const auto province_mappings = ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
 
    std::cout.rdbuf(stdOutBuf);
