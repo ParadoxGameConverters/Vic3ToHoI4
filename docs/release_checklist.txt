@@ -10,3 +10,4 @@
 * Update first post on forum thread
 * Post on Patreon
 * Post on reddit
+* Update wiki
