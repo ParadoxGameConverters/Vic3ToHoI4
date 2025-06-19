@@ -75,7 +75,7 @@ jobs:
        echo 'name = "Fioravanzo"' | out-file data/version.txt -encoding ASCII -append
        echo 'source = "Vic3"' | out-file data/version.txt -encoding ASCII -append
        echo 'minSource = "1.8"' | out-file data/version.txt -encoding ASCII -append
-       echo 'maxSource = "1.8"' | out-file data/version.txt -encoding ASCII -append
+       echo 'maxSource = "1.9"' | out-file data/version.txt -encoding ASCII -append
        echo 'target = "HoI4"' | out-file data/version.txt -encoding ASCII -append
        echo 'minTarget = "1.16"' | out-file data/version.txt -encoding ASCII -append
        echo 'maxTarget = "1.16"' | out-file data/version.txt -encoding ASCII -append
