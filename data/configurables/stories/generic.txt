@@ -1,9 +1,7 @@
 generic_army = {
     category=generic
 
-    requirements={
-        always = yes
-    }
+    requirements={ always = yes }
 
     score=100004
 
@@ -13,9 +11,7 @@ generic_army = {
 generic_aviation = {
     category=generic
 
-    requirements={
-        always = yes
-    }
+    requirements={ always = yes }
 
     score=100003
 
@@ -25,9 +21,7 @@ generic_aviation = {
 generic_naval = {
     category=generic
 
-    requirements={
-        always = yes
-    }
+    requirements={ always = yes }
 
     score=100002
 
@@ -37,9 +31,7 @@ generic_naval = {
 generic_industry = {
     category=generic
 
-    requirements={
-        always = yes
-    }
+    requirements={ always = yes }
 
     score=100001
 
@@ -49,9 +41,7 @@ generic_industry = {
 generic_political = {
     category=generic
 
-    requirements={
-        always = yes
-    }
+    requirements={ always = yes }
 
     score=100000
 
