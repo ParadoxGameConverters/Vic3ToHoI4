@@ -13,7 +13,6 @@
 
 
 using std::filesystem::create_directories;
-using std::filesystem::path;
 using std::filesystem::remove_all;
 
 
@@ -35,7 +34,7 @@ TEST(Outhoi4MapBuildingsTests, FilesAreCreated)
 
    OutputBuildings("FilesAreCreated", hoi4::Buildings());
 
-   EXPECT_TRUE(commonItems::DoesFileExist(path("output/FilesAreCreated/map/buildings.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/FilesAreCreated/map/buildings.txt"));
 }
 
 
@@ -61,7 +60,7 @@ TEST(Outhoi4MapBuildingsTests, BuildingsAreOutput)
                     .position = {.x_coordinate = 4.25, .y_coordinate = 9.25, .z_coordinate = 16.25, .rotation = 25.25},
                     .connecting_sea_province = 170})}}));
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/BuildingsAreOutput/map/buildings.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/BuildingsAreOutput/map/buildings.txt"));
    std::ifstream buildings_file("output/BuildingsAreOutput/map/buildings.txt");
    ASSERT_TRUE(buildings_file.is_open());
    std::stringstream buildings_file_stream;

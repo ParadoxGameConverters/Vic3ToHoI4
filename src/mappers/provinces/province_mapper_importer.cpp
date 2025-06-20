@@ -202,7 +202,7 @@ mappers::ProvinceMapper mappers::ProvinceMapperImporter::ImportProvinceMappings(
    vic3_to_hoi4_province_map_.clear();
    hoi4_to_vic3_province_map_.clear();
 
-   version_parser_.parseFile(std::filesystem::path("configurables/province_mappings.txt"));
+   version_parser_.parseFile("configurables/province_mappings.txt");
 
    return ProvinceMapper(vic3_to_hoi4_province_map_, hoi4_to_vic3_province_map_);
 }
