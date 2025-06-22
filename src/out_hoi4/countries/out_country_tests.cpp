@@ -228,9 +228,9 @@ TEST(Outhoi4CountriesOutcountryTests, CountryHistoryFileIsCreatedWithTagForName)
    OutputCountryHistory("CountryHistoryFileIsCreatedWithTagForName", country_two, {});
 
    ASSERT_TRUE(
-       commonItems::DoesFileExist(path("output/CountryHistoryFileIsCreatedWithTagForName/history/countries/TAG.txt")));
+       commonItems::DoesFileExist("output/CountryHistoryFileIsCreatedWithTagForName/history/countries/TAG.txt"));
    ASSERT_TRUE(
-       commonItems::DoesFileExist(path("output/CountryHistoryFileIsCreatedWithTagForName/history/countries/TWO.txt")));
+       commonItems::DoesFileExist("output/CountryHistoryFileIsCreatedWithTagForName/history/countries/TWO.txt"));
 }
 
 

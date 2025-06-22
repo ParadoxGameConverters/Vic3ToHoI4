@@ -24,7 +24,7 @@ std::map<std::string, hoi4::Role> hoi4::ImportRoles()
           roles.emplace(name, role_importer.ImportRole(name, input));
        });
 
-   for (const path& roles_file: commonItems::GetAllFilesInFolderRecursive(path("configurables/stories")))
+   for (const path& roles_file: commonItems::GetAllFilesInFolderRecursive("configurables/stories"))
    {
       roles_parser.parseFile("configurables/stories" / roles_file);
    }

@@ -13,7 +13,6 @@
 
 
 using std::filesystem::create_directories;
-using std::filesystem::path;
 
 
 
@@ -39,10 +38,8 @@ TEST(Outhoi4MapStrategicregionTests, FileIsFromFilename)
    OutputStrategicRegion("FileIsFromFilename", strategic_region_one);
    OutputStrategicRegion("FileIsFromFilename", strategic_region_two);
 
-   EXPECT_TRUE(
-       commonItems::DoesFileExist(path("output/FileIsFromFilename/map/strategicregions/strategic_region_one.txt")));
-   EXPECT_TRUE(
-       commonItems::DoesFileExist(path("output/FileIsFromFilename/map/strategicregions/strategic_region_two.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/FileIsFromFilename/map/strategicregions/strategic_region_one.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/FileIsFromFilename/map/strategicregions/strategic_region_two.txt"));
 }
 
 
@@ -54,8 +51,7 @@ TEST(Outhoi4MapStrategicregionTests, BasicsAreOutput)
 
    OutputStrategicRegion("BasicsAreOutput", strategic_region_one);
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist(path("output/BasicsAreOutput/map/strategicregions/strategic_region_one.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/BasicsAreOutput/map/strategicregions/strategic_region_one.txt"));
    std::ifstream strategic_region_file("output/BasicsAreOutput/map/strategicregions/strategic_region_one.txt");
    ASSERT_TRUE(strategic_region_file.is_open());
    std::stringstream strategic_region_file_stream;
@@ -84,7 +80,7 @@ TEST(Outhoi4MapStrategicregionTests, IdIsOutput)
 
    OutputStrategicRegion("IdIsOutput", strategic_region_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/IdIsOutput/map/strategicregions/strategic_region_one.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/IdIsOutput/map/strategicregions/strategic_region_one.txt"));
    std::ifstream strategic_region_file("output/IdIsOutput/map/strategicregions/strategic_region_one.txt");
    ASSERT_TRUE(strategic_region_file.is_open());
    std::stringstream strategic_region_file_stream;
@@ -114,7 +110,7 @@ TEST(Outhoi4MapStrategicregionTests, NameIsOutput)
 
    OutputStrategicRegion("NameIsOutput", strategic_region_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/NameIsOutput/map/strategicregions/strategic_region_one.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NameIsOutput/map/strategicregions/strategic_region_one.txt"));
    std::ifstream strategic_region_file("output/NameIsOutput/map/strategicregions/strategic_region_one.txt");
    ASSERT_TRUE(strategic_region_file.is_open());
    std::stringstream strategic_region_file_stream;
@@ -144,8 +140,8 @@ TEST(Outhoi4MapStrategicregionTests, OldProvincesAreNotOutput)
 
    OutputStrategicRegion("OldProvincesAreNotOutput", strategic_region_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/OldProvincesAreNotOutput/map/strategicregions/strategic_region_one.txt")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/OldProvincesAreNotOutput/map/strategicregions/strategic_region_one.txt"));
    std::ifstream strategic_region_file("output/OldProvincesAreNotOutput/map/strategicregions/strategic_region_one.txt");
    ASSERT_TRUE(strategic_region_file.is_open());
    std::stringstream strategic_region_file_stream;
@@ -177,7 +173,7 @@ TEST(Outhoi4MapStrategicregionTests, NewProvincesAreOutput)
    OutputStrategicRegion("NewProvincesAreOutput", strategic_region_one);
 
    ASSERT_TRUE(
-       commonItems::DoesFileExist(path("output/NewProvincesAreOutput/map/strategicregions/strategic_region_one.txt")));
+       commonItems::DoesFileExist("output/NewProvincesAreOutput/map/strategicregions/strategic_region_one.txt"));
    std::ifstream strategic_region_file("output/NewProvincesAreOutput/map/strategicregions/strategic_region_one.txt");
    ASSERT_TRUE(strategic_region_file.is_open());
    std::stringstream strategic_region_file_stream;
@@ -208,8 +204,8 @@ TEST(Outhoi4MapStrategicregionTests, StaticModifiersAreOutput)
 
    OutputStrategicRegion("StaticModifiersAreOutput", strategic_region_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(
-       path("output/StaticModifiersAreOutput/map/strategicregions/strategic_region_one.txt")));
+   ASSERT_TRUE(
+       commonItems::DoesFileExist("output/StaticModifiersAreOutput/map/strategicregions/strategic_region_one.txt"));
    std::ifstream strategic_region_file("output/StaticModifiersAreOutput/map/strategicregions/strategic_region_one.txt");
    ASSERT_TRUE(strategic_region_file.is_open());
    std::stringstream strategic_region_file_stream;
@@ -244,8 +240,7 @@ TEST(Outhoi4MapStrategicregionTests, NavalTerrainIsOutput)
 
    OutputStrategicRegion("NavalTerrainIsOutput", strategic_region_one);
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist(path("output/NavalTerrainIsOutput/map/strategicregions/strategic_region_one.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NavalTerrainIsOutput/map/strategicregions/strategic_region_one.txt"));
    std::ifstream strategic_region_file("output/NavalTerrainIsOutput/map/strategicregions/strategic_region_one.txt");
    ASSERT_TRUE(strategic_region_file.is_open());
    std::stringstream strategic_region_file_stream;
@@ -281,8 +276,7 @@ TEST(Outhoi4MapStrategicregionTests, WeatherIsOutput)
 
    OutputStrategicRegion("WeatherIsOutput", strategic_region_one);
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist(path("output/WeatherIsOutput/map/strategicregions/strategic_region_one.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/WeatherIsOutput/map/strategicregions/strategic_region_one.txt"));
    std::ifstream strategic_region_file("output/WeatherIsOutput/map/strategicregions/strategic_region_one.txt");
    ASSERT_TRUE(strategic_region_file.is_open());
    std::stringstream strategic_region_file_stream;

@@ -13,7 +13,6 @@
 
 
 using std::filesystem::create_directories;
-using std::filesystem::path;
 
 
 
@@ -29,8 +28,8 @@ TEST(Outhoi4StatesStates, StatesAreOutput)
 
    OutputStates("StatesAreOutput", {state_one, state_two});
 
-   EXPECT_TRUE(commonItems::DoesFileExist(path("output/StatesAreOutput/history/states/1.txt")));
-   EXPECT_TRUE(commonItems::DoesFileExist(path("output/StatesAreOutput/history/states/2.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/StatesAreOutput/history/states/1.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/StatesAreOutput/history/states/2.txt"));
 }
 
 }  // namespace out

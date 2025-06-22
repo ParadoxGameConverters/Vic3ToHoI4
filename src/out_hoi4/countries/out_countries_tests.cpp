@@ -194,8 +194,8 @@ TEST(Outhoi4CountriesOutcountriesTests, DivisionTemplatesAreCopied)
        {},
        configuration::UseStories::kNo);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(path("output/DivisionTemplatesAreCopied/history/units/TAG_1936.txt")));
-   EXPECT_TRUE(commonItems::DoesFileExist(path("output/DivisionTemplatesAreCopied/history/units/TWO_1936.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/DivisionTemplatesAreCopied/history/units/TAG_1936.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/DivisionTemplatesAreCopied/history/units/TWO_1936.txt"));
 }
 
 

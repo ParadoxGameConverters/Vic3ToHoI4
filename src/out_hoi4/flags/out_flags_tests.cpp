@@ -23,7 +23,7 @@ TEST(OutHoI4FlagsOutFlags, FlagFilesAreCopied)
        {"TAG", hoi4::Country({.tag = "TAG"})},
        {"Z00", hoi4::Country({.tag = "Z00"})},
    };
-   commonItems::ModFilesystem flag_mod(path("test_files/hoi4_world/flags"), {});
+   commonItems::ModFilesystem flag_mod("test_files/hoi4_world/flags", {});
    OutputFlags("FlagFilesAreCopied", countries, flag_mod);
    path base_folder("output/FlagFilesAreCopied");
    EXPECT_TRUE(commonItems::DoesFolderExist(base_folder));
@@ -41,7 +41,7 @@ TEST(OutHoI4FlagsOutFlags, FlagFilesAreCopied)
    z00_file.close();
    EXPECT_THAT(z00_file_stream.str(),
        testing::StartsWith("# Another dummy flag file with different text so we can check the right one was copied."));
-   EXPECT_FALSE(commonItems::DoesFileExist(path("output/CustomFlagsAreUsed/gfx/flags/TAG.tga")));
+   EXPECT_FALSE(commonItems::DoesFileExist("output/CustomFlagsAreUsed/gfx/flags/TAG.tga"));
 }
 
 }  // namespace out

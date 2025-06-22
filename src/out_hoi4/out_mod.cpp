@@ -35,7 +35,7 @@ void CreateSubfolder(const path& output_name, std::string_view subfolder)
 void CreateOutputFolder(const path& output_name)
 {
    Log(LogLevel::Info) << "\tCopying blank mod";
-   if (!commonItems::DoesFolderExist(path("output")))
+   if (!commonItems::DoesFolderExist("output"))
    {
       if (!create_directories("output"))
       {
@@ -44,7 +44,7 @@ void CreateOutputFolder(const path& output_name)
    }
    try
    {
-      copy(path("blank_mod"), "output" / output_name, copy_options::recursive);
+      copy("blank_mod", "output" / output_name, copy_options::recursive);
    }
    catch (...)
    {
@@ -67,7 +67,7 @@ void CreateModFiles(std::string_view output_name, const GameVersion& game_versio
 {
    Log(LogLevel::Info) << "\tCreating .mod files";
 
-   std::ofstream mod_file(path("output") / fmt::format("{}.mod", output_name));
+   std::ofstream mod_file(fmt::format("output/{}.mod", output_name));
    if (!mod_file.is_open())
    {
       throw std::runtime_error("Could not create .mod file");
@@ -93,7 +93,7 @@ void CreateModFiles(std::string_view output_name, const GameVersion& game_versio
        game_version.toWildCard());
    mod_file.close();
 
-   std::ofstream descriptor_file("output" / path(output_name) / "descriptor.mod");
+   std::ofstream descriptor_file(fmt::format("output/{}/descriptor.mod", output_name));
    if (!descriptor_file.is_open())
    {
       throw std::runtime_error("Could not create descriptor.mod");

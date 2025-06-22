@@ -62,7 +62,7 @@ class WorldFrameworkBuilder
    WorldFrameworkBuilder& AddCoastalProvinces(CoastalProvinces::storage_type provinces);
 
   private:
-   WorldFrameworkBuilder(): hoi4_mod_filesystem_(std::filesystem::path(""), {}) {}
+   WorldFrameworkBuilder(): hoi4_mod_filesystem_("", {}) {}
    commonItems::ModFilesystem hoi4_mod_filesystem_;
    StrategicRegions strategic_regions_;
    std::map<int, DefaultState> default_states_;

@@ -8,10 +8,6 @@
 
 
 
-using std::filesystem::path;
-
-
-
 constexpr float kTolerance = 0.0001F;
 
 namespace mappers
@@ -38,8 +34,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)
                                                    {1, vic3::Country({.number = 1, .tag = "Z00"})},
                                                }}));
    const auto worldMapper =
-       WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem(path("test_files/hoi4_world"), {}), world)
-           .Build();
+       WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem("test_files/hoi4_world", {}), world).Build();
 
    EXPECT_EQ(worldMapper.country_mapper.GetHoiTag(1).value(), "Z00");
    EXPECT_EQ(worldMapper.province_mapper.GetVic3ToHoi4ProvinceMapping("x002000").at(0), 2);
@@ -53,7 +48,7 @@ TEST(MappersWorldWorldMapperBuilderTests, LoadResourceMappingWorks)
                                                    {1, vic3::Country({.number = 1, .tag = "Z00"})},
                                                }}));
    auto builder =
-       WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem(path("test_files/hoi4_world"), {}), world);
+       WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem("test_files/hoi4_world", {}), world);
    builder.LoadResourceMapper("test_files/configurables/resource_mappings.txt");
 
    const auto worldMapper = builder.Build();

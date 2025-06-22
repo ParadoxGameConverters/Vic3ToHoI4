@@ -15,7 +15,6 @@
 
 
 using std::filesystem::create_directories;
-using std::filesystem::path;
 using std::filesystem::remove_all;
 
 
@@ -26,7 +25,7 @@ TEST(OutHoi4OutModTest, ModFolderIsCleared)
 {
    remove_all("output/test_output");
    ASSERT_TRUE(create_directories("output/test_output"));
-   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/test_output")));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/test_output"));
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -37,13 +36,13 @@ TEST(OutHoi4OutModTest, ModFolderIsCleared)
    EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Removing pre-existing copy of test_output"));
    std::cout.rdbuf(cout_buffer);
 
-   EXPECT_FALSE(commonItems::DoesFolderExist(path("output/test_output")));
+   EXPECT_FALSE(commonItems::DoesFolderExist("output/test_output"));
 }
 
 
 TEST(OutHoi4OutModTest, FolderIsNotLoggedWhenNotCleared)
 {
-   EXPECT_FALSE(commonItems::DoesFolderExist(path("output/test_output")));
+   EXPECT_FALSE(commonItems::DoesFolderExist("output/test_output"));
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -84,7 +83,7 @@ TEST(OutHoi4OutModTest, ModFolderIsCreated)
    remove("output/mod_folder_test_output.mod");
    OutputMod("mod_folder_test_output", GameVersion());
 
-   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/mod_folder_test_output")));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/mod_folder_test_output"));
 }
 
 
@@ -94,7 +93,7 @@ TEST(OutHoi4OutModTest, ModFileIsCreated)
    remove("output/mod_file_test_output.mod");
    OutputMod("mod_file_test_output", GameVersion());
 
-   ASSERT_TRUE(commonItems::DoesFolderExist(path("output/mod_file_test_output")));
+   ASSERT_TRUE(commonItems::DoesFolderExist("output/mod_file_test_output"));
 
    std::ifstream mod_file("output/mod_file_test_output.mod");
    ASSERT_TRUE(mod_file.is_open());
@@ -128,7 +127,7 @@ TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
    remove("output/descriptor_file_test_output.mod");
    OutputMod("descriptor_file_test_output", GameVersion());
 
-   ASSERT_TRUE(commonItems::DoesFolderExist(path("output/descriptor_file_test_output")));
+   ASSERT_TRUE(commonItems::DoesFolderExist("output/descriptor_file_test_output"));
 
    std::ifstream descriptor_file("output/descriptor_file_test_output.mod");
    ASSERT_TRUE(descriptor_file.is_open());
@@ -162,7 +161,7 @@ TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
    remove("output/version_test_output.mod");
    OutputMod("version_test_output", GameVersion("42.13"));
 
-   ASSERT_TRUE(commonItems::DoesFolderExist(path("output/version_test_output")));
+   ASSERT_TRUE(commonItems::DoesFolderExist("output/version_test_output"));
 
    std::ifstream mod_file("output/version_test_output.mod");
    ASSERT_TRUE(mod_file.is_open());

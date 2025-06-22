@@ -13,7 +13,6 @@
 
 
 using std::filesystem::create_directories;
-using std::filesystem::path;
 using std::filesystem::remove_all;
 
 
@@ -30,7 +29,7 @@ TEST(Outhoi4MapStrategicregionsTests, FolderIsCreated)
 
    OutputStrategicRegions("FolderIsCreated", strategic_regions);
 
-   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/FolderIsCreated/map/strategicregions")));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/FolderIsCreated/map/strategicregions"));
 }
 
 
@@ -45,10 +44,10 @@ TEST(Outhoi4MapStrategicregionsTests, StrategicRegionsAreOutput)
 
    OutputStrategicRegions("StrategicRegionsAreOutput", strategic_regions);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/StrategicRegionsAreOutput/map/strategicregions/strategic_region_one.txt")));
-   EXPECT_TRUE(commonItems::DoesFileExist(
-       path("output/StrategicRegionsAreOutput/map/strategicregions/strategic_region_two.txt")));
+   EXPECT_TRUE(
+       commonItems::DoesFileExist("output/StrategicRegionsAreOutput/map/strategicregions/strategic_region_one.txt"));
+   EXPECT_TRUE(
+       commonItems::DoesFileExist("output/StrategicRegionsAreOutput/map/strategicregions/strategic_region_two.txt"));
 }
 
 }  // namespace out

@@ -12,6 +12,8 @@
 #include "src/maps/map_data_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 
+
+
 namespace hoi4
 {
 WorldFrameworkBuilder WorldFrameworkBuilder::CreateDefaultWorldFramework(
@@ -43,7 +45,7 @@ WorldFrameworkBuilder WorldFrameworkBuilder::CreateDefaultWorldFramework(
 WorldFrameworkBuilder WorldFrameworkBuilder::CreateNullWorldFramework()
 {
    WorldFrameworkBuilder wfb{};
-   wfb.hoi4_mod_filesystem_ = commonItems::ModFilesystem(std::filesystem::path("test_files/hoi4_world"), {});
+   wfb.hoi4_mod_filesystem_ = commonItems::ModFilesystem("test_files/hoi4_world", {});
    wfb.strategic_regions_ = {};
    wfb.default_states_ = {};
    wfb.resources_map_ = {};

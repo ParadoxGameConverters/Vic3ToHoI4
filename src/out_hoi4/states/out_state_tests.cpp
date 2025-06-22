@@ -13,7 +13,6 @@
 
 
 using std::filesystem::create_directories;
-using std::filesystem::path;
 
 
 
@@ -39,8 +38,8 @@ TEST(Outhoi4StatesState, StateFileIsNamedForId)
    OutputState("StateFileIsNamedForId", state_one);
    OutputState("StateFileIsNamedForId", state_two);
 
-   EXPECT_TRUE(commonItems::DoesFileExist(path("output/StateFileIsNamedForId/history/states/1.txt")));
-   EXPECT_TRUE(commonItems::DoesFileExist(path("output/StateFileIsNamedForId/history/states/2.txt")));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/StateFileIsNamedForId/history/states/1.txt"));
+   EXPECT_TRUE(commonItems::DoesFileExist("output/StateFileIsNamedForId/history/states/2.txt"));
 }
 
 
@@ -52,7 +51,7 @@ TEST(Outhoi4StatesState, BasicsAreOutput)
 
    OutputState("BasicsAreOutput", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/StateFileIsNamedForId/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/StateFileIsNamedForId/history/states/1.txt"));
    std::ifstream state_file("output/StateFileIsNamedForId/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -93,7 +92,7 @@ TEST(Outhoi4StatesState, IdIsSetById)
    OutputState("IdIsSetById", state_one);
    OutputState("IdIsSetById", state_two);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/IdIsSetById/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/IdIsSetById/history/states/1.txt"));
    std::ifstream state_file_one("output/IdIsSetById/history/states/1.txt");
    ASSERT_TRUE(state_file_one.is_open());
    std::stringstream state_file_stream_one;
@@ -103,7 +102,7 @@ TEST(Outhoi4StatesState, IdIsSetById)
    state_file_one.close();
    EXPECT_THAT(state_file_stream_one.str(), testing::HasSubstr("id = 1"));
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/IdIsSetById/history/states/2.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/IdIsSetById/history/states/2.txt"));
    std::ifstream state_file_two("output/IdIsSetById/history/states/2.txt");
    ASSERT_TRUE(state_file_two.is_open());
    std::stringstream state_file_stream_two;
@@ -125,7 +124,7 @@ TEST(Outhoi4StatesState, NameIsSetById)
    OutputState("NameIsSetById", state_one);
    OutputState("NameIsSetById", state_two);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/NameIsSetById/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NameIsSetById/history/states/1.txt"));
    std::ifstream state_file_one("output/NameIsSetById/history/states/1.txt");
    ASSERT_TRUE(state_file_one.is_open());
    std::stringstream state_file_stream_one;
@@ -135,7 +134,7 @@ TEST(Outhoi4StatesState, NameIsSetById)
    state_file_one.close();
    EXPECT_THAT(state_file_stream_one.str(), testing::HasSubstr("name = \"STATE_1\""));
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/NameIsSetById/history/states/2.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NameIsSetById/history/states/2.txt"));
    std::ifstream state_file_two("output/NameIsSetById/history/states/2.txt");
    ASSERT_TRUE(state_file_two.is_open());
    std::stringstream state_file_stream_two;
@@ -157,7 +156,7 @@ TEST(Outhoi4StatesState, ManpowerIsSetByManpower)
    OutputState("manpowerIsSetByManpower", state_one);
    OutputState("manpowerIsSetByManpower", state_two);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/manpowerIsSetByManpower/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/manpowerIsSetByManpower/history/states/1.txt"));
    std::ifstream state_file_one("output/manpowerIsSetByManpower/history/states/1.txt");
    ASSERT_TRUE(state_file_one.is_open());
    std::stringstream state_file_stream_one;
@@ -167,7 +166,7 @@ TEST(Outhoi4StatesState, ManpowerIsSetByManpower)
    state_file_one.close();
    EXPECT_THAT(state_file_stream_one.str(), testing::HasSubstr("manpower = 12345"));
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/manpowerIsSetByManpower/history/states/2.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/manpowerIsSetByManpower/history/states/2.txt"));
    std::ifstream state_file_two("output/manpowerIsSetByManpower/history/states/2.txt");
    ASSERT_TRUE(state_file_two.is_open());
    std::stringstream state_file_stream_two;
@@ -189,7 +188,7 @@ TEST(Outhoi4StatesState, NoResourcesMeansNoResourcesSection)
    OutputState("NoResourcesMeansNoResourcesSection", state_one);
    OutputState("NoResourcesMeansNoResourcesSection", state_two);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/NoResourcesMeansNoResourcesSection/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NoResourcesMeansNoResourcesSection/history/states/1.txt"));
    std::ifstream state_file_one("output/NoResourcesMeansNoResourcesSection/history/states/1.txt");
    ASSERT_TRUE(state_file_one.is_open());
    std::stringstream state_file_stream_one;
@@ -202,7 +201,7 @@ TEST(Outhoi4StatesState, NoResourcesMeansNoResourcesSection)
                           "\n"
                           "\tstate_category = rural"));
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/NoResourcesMeansNoResourcesSection/history/states/2.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NoResourcesMeansNoResourcesSection/history/states/2.txt"));
    std::ifstream state_file_two("output/NoResourcesMeansNoResourcesSection/history/states/2.txt");
    ASSERT_TRUE(state_file_two.is_open());
    std::stringstream state_file_stream_two;
@@ -228,7 +227,7 @@ TEST(Outhoi4StatesState, ResourcesAreOutput)
    OutputState("NoResourcesMeansNoResourcesSection", state_one);
    OutputState("NoResourcesMeansNoResourcesSection", state_two);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/NoResourcesMeansNoResourcesSection/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NoResourcesMeansNoResourcesSection/history/states/1.txt"));
    std::ifstream state_file_one("output/NoResourcesMeansNoResourcesSection/history/states/1.txt");
    ASSERT_TRUE(state_file_one.is_open());
    std::stringstream state_file_stream_one;
@@ -241,7 +240,7 @@ TEST(Outhoi4StatesState, ResourcesAreOutput)
                           "\t\tresource_one = 2\n"
                           "\t}"));
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/NoResourcesMeansNoResourcesSection/history/states/2.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NoResourcesMeansNoResourcesSection/history/states/2.txt"));
    std::ifstream state_file_two("output/NoResourcesMeansNoResourcesSection/history/states/2.txt");
    ASSERT_TRUE(state_file_two.is_open());
    std::stringstream state_file_stream_two;
@@ -267,7 +266,7 @@ TEST(Outhoi4StatesState, CategoryIsSetByCategory)
    OutputState("CategoryIsSetByCategory", state_one);
    OutputState("CategoryIsSetByCategory", state_two);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/CategoryIsSetByCategory/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/CategoryIsSetByCategory/history/states/1.txt"));
    std::ifstream state_file_one("output/CategoryIsSetByCategory/history/states/1.txt");
    ASSERT_TRUE(state_file_one.is_open());
    std::stringstream state_file_stream_one;
@@ -277,7 +276,7 @@ TEST(Outhoi4StatesState, CategoryIsSetByCategory)
    state_file_one.close();
    EXPECT_THAT(state_file_stream_one.str(), testing::HasSubstr("state_category = category_one"));
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/CategoryIsSetByCategory/history/states/2.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/CategoryIsSetByCategory/history/states/2.txt"));
    std::ifstream state_file_two("output/CategoryIsSetByCategory/history/states/2.txt");
    ASSERT_TRUE(state_file_two.is_open());
    std::stringstream state_file_stream_two;
@@ -297,7 +296,7 @@ TEST(Outhoi4StatesState, WastelandsAreImpassable)
 
    OutputState("WastelandsAreImpassable", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/WastelandsAreImpassable/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/WastelandsAreImpassable/history/states/1.txt"));
    std::ifstream state_file_one("output/WastelandsAreImpassable/history/states/1.txt");
    ASSERT_TRUE(state_file_one.is_open());
    std::stringstream state_file_stream_one;
@@ -317,7 +316,7 @@ TEST(Outhoi4StatesState, ProvincesAreOutput)
 
    OutputState("ProvincesAreOutput", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/ProvincesAreOutput/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/ProvincesAreOutput/history/states/1.txt"));
    std::ifstream state_file("output/ProvincesAreOutput/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -339,7 +338,7 @@ TEST(Outhoi4StatesState, OwnerIsOutput)
 
    OutputState("ProvincesAreOutput", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/ProvincesAreOutput/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/ProvincesAreOutput/history/states/1.txt"));
    std::ifstream state_file("output/ProvincesAreOutput/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -361,7 +360,7 @@ TEST(Outhoi4StatesState, VictoryPointsAreOutput)
 
    OutputState("VictoryPointsAreOutput", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/VictoryPointsAreOutput/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/VictoryPointsAreOutput/history/states/1.txt"));
    std::ifstream state_file("output/VictoryPointsAreOutput/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -397,7 +396,7 @@ TEST(Outhoi4StatesState, BuildingsAreOutput)
 
    OutputState("BuildingsAreOutput", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/BuildingsAreOutput/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/BuildingsAreOutput/history/states/1.txt"));
    std::ifstream state_file("output/BuildingsAreOutput/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -431,7 +430,7 @@ TEST(Outhoi4StatesState, DockyardsNotOutputWhenZero)
 
    OutputState("DockyardsNotOutputWhenZero", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/DockyardsNotOutputWhenZero/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/DockyardsNotOutputWhenZero/history/states/1.txt"));
    std::ifstream state_file("output/DockyardsNotOutputWhenZero/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -464,7 +463,7 @@ TEST(Outhoi4StatesState, AirBasesNotOutputWhenZero)
 
    OutputState("BuildingsAreOutput", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/BuildingsAreOutput/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/BuildingsAreOutput/history/states/1.txt"));
    std::ifstream state_file("output/BuildingsAreOutput/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -492,7 +491,7 @@ TEST(Outhoi4StatesState, NavalBasesCanBeOutput)
 
    OutputState("NavalBasesCanBeOutput", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/NavalBasesCanBeOutput/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NavalBasesCanBeOutput/history/states/1.txt"));
    std::ifstream state_file("output/NavalBasesCanBeOutput/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -522,8 +521,7 @@ TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLevelIsMissing)
 
    OutputState("NavalBasesAreNotOutputWhenLevelIsMissing", state_one);
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist(path("output/NavalBasesAreNotOutputWhenLevelIsMissing/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NavalBasesAreNotOutputWhenLevelIsMissing/history/states/1.txt"));
    std::ifstream state_file("output/NavalBasesAreNotOutputWhenLevelIsMissing/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -550,8 +548,7 @@ TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLocationIsMissing)
 
    OutputState("NavalBasesAreNotOutputWhenLocationIsMissing", state_one);
 
-   ASSERT_TRUE(
-       commonItems::DoesFileExist(path("output/NavalBasesAreNotOutputWhenLocationIsMissing/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/NavalBasesAreNotOutputWhenLocationIsMissing/history/states/1.txt"));
    std::ifstream state_file("output/NavalBasesAreNotOutputWhenLocationIsMissing/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -578,7 +575,7 @@ TEST(Outhoi4StatesState, AirBaseLevelIsAsSet)
 
    OutputState("AirBaseLevelIsAsSet", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/AirBaseLevelIsAsSet/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/AirBaseLevelIsAsSet/history/states/1.txt"));
    std::ifstream state_file("output/AirBaseLevelIsAsSet/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -606,7 +603,7 @@ TEST(Outhoi4StatesState, CoresCanBeOutput)
 
    OutputState("CoresCanBeOutput", state_one);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/CoresCanBeOutput/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/CoresCanBeOutput/history/states/1.txt"));
    std::ifstream state_file("output/CoresCanBeOutput/history/states/1.txt");
    ASSERT_TRUE(state_file.is_open());
    std::stringstream state_file_stream;
@@ -636,7 +633,7 @@ TEST(Outhoi4StatesState, InfrastructureIsOutput)
    OutputState("infrastructureIsOutput", state_one);
    OutputState("infrastructureIsOutput", state_two);
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/infrastructureIsOutput/history/states/1.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/infrastructureIsOutput/history/states/1.txt"));
    std::ifstream state_file_one("output/infrastructureIsOutput/history/states/1.txt");
    ASSERT_TRUE(state_file_one.is_open());
    std::stringstream state_file_stream_one;
@@ -646,7 +643,7 @@ TEST(Outhoi4StatesState, InfrastructureIsOutput)
    state_file_one.close();
    EXPECT_THAT(state_file_stream_one.str(), testing::HasSubstr("infrastructure = 3"));
 
-   ASSERT_TRUE(commonItems::DoesFileExist(path("output/infrastructureIsOutput/history/states/2.txt")));
+   ASSERT_TRUE(commonItems::DoesFileExist("output/infrastructureIsOutput/history/states/2.txt"));
    std::ifstream state_file_two("output/infrastructureIsOutput/history/states/2.txt");
    ASSERT_TRUE(state_file_two.is_open());
    std::stringstream state_file_stream_two;

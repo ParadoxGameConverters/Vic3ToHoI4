@@ -29,20 +29,15 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, FoldersAreCreated)
 
    OutputLocalizations("Outhoi4Localizations/FoldersAreCreated", localizations);
 
-   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation")));
-   EXPECT_TRUE(
-       commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/braz_por")));
-   EXPECT_TRUE(
-       commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/english")));
-   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/french")));
-   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/german")));
-   EXPECT_TRUE(
-       commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/japanese")));
-   EXPECT_TRUE(commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/polish")));
-   EXPECT_TRUE(
-       commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/russian")));
-   EXPECT_TRUE(
-       commonItems::DoesFolderExist(path("output/Outhoi4Localizations/FoldersAreCreated/localisation/spanish")));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation"));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/braz_por"));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/english"));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/french"));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/german"));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/japanese"));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/polish"));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/russian"));
+   EXPECT_TRUE(commonItems::DoesFolderExist("output/Outhoi4Localizations/FoldersAreCreated/localisation/spanish"));
 }
 
 

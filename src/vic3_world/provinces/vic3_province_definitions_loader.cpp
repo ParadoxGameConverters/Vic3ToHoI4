@@ -126,13 +126,7 @@ vic3::ProvinceDefinitions vic3::LoadProvinceDefinitions(const StateRegions& stat
        });
    file_parser.IgnoreAndLogUnregisteredItems();
 
-   const std::set<path> files = filesystem.GetAllFilesInFolder("common/strategic_regions");
-   std::vector<path> sorted_files(files.begin(), files.end());
-   std::ranges::sort(sorted_files, [](const path& a, const path& b) {
-      return a.filename() < b.filename();
-   });
-
-   for (const path& strategic_region: sorted_files)
+   for (const path& strategic_region: filesystem.GetAllFilesInFolder("common/strategic_regions"))
    {
       if (strategic_region.extension() != ".txt")
       {
