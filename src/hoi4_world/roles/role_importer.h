@@ -10,6 +10,7 @@
 #include "src/hoi4_world/events/event_importer.h"
 #include "src/hoi4_world/focus_trees/focus_importer.h"
 #include "src/hoi4_world/roles/repeat_focus_importer.h"
+#include "src/hoi4_world/roles/requirements/trigger_importer.h"
 #include "src/hoi4_world/roles/role.h"
 
 
@@ -29,6 +30,7 @@ class RoleImporter
    RoleOptions role_options_;
 
    commonItems::parser role_parser_;
+   TriggerImporter trigger_importer_;
    FocusImporter focus_importer_;
    RepeatFocusImporter repeat_focus_importer_;
    DecisionsCategoryImporter decisions_category_importer_;
