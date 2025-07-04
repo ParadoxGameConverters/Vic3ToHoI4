@@ -1,7 +1,7 @@
 unification_italy = {
     category=unification
 
-    requirements={
+    trigger={
         OR = {
             tag=ITA
         }
@@ -136,7 +136,7 @@ unification_italy = {
 unification_italy_2 = {
 	category=unification
 
-	requirements={
+	trigger={
 		country_has_primary_culture = north_italian
 	}
 
@@ -285,7 +285,7 @@ unification_italy_2 = {
 unification_italy_3 = {
 	category=unification
 
-	requirements={
+	trigger={
 		country_has_primary_culture = south_italian
 	}
 
