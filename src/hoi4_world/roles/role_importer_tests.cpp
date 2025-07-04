@@ -3,8 +3,8 @@
 
 #include <sstream>
 
-#include "requirements/and_trigger.h"
 #include "src/hoi4_world/roles/requirements/always_trigger.h"
+#include "src/hoi4_world/roles/requirements/and_trigger.h"
 #include "src/hoi4_world/roles/requirements/tag_trigger.h"
 #include "src/hoi4_world/roles/role.h"
 #include "src/hoi4_world/roles/role_importer.h"
@@ -23,7 +23,7 @@ TEST(Hoi4worldRolesRoleimporterTests, DefaultsAreDefaulted)
 
    EXPECT_TRUE(role.GetName().empty());
    EXPECT_TRUE(role.GetCategory().empty());
-   EXPECT_EQ(role.GetRequirement(), AlwaysTrigger(false));
+   EXPECT_EQ(role.GetTrigger(), AlwaysTrigger(false));
    EXPECT_EQ(role.GetScore(), 0.0F);
    EXPECT_TRUE(role.GetBlockers().empty());
    EXPECT_TRUE(role.GetSharedFocuses().empty());
@@ -41,7 +41,7 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    std::stringstream input;
    input << " = {\n";
    input << "\tcategory=unification\n";
-   input << "\trequirements={\n";
+   input << "\ttrigger={\n";
    input << "\t\ttag = ITA\n";
    input << "\t\ttag = SIC\n";
    input << "\t}\n";
@@ -125,7 +125,7 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    children_one.push_back(std::move(tag_trigger_ita_one));
    children_one.push_back(std::move(tag_trigger_sic_one));
    const AndTrigger and_trigger_one(std::move(children_one));
-   EXPECT_EQ(role.GetRequirement(), and_trigger_one);
+   EXPECT_EQ(role.GetTrigger(), and_trigger_one);
    EXPECT_FLOAT_EQ(role.GetScore(), 100.0F);
    EXPECT_THAT(role.GetBlockers(), testing::ElementsAre("unification_role", "unification_category"));
    EXPECT_THAT(role.GetSharedFocuses(), testing::ElementsAre("army_effort", "aviation_effort"));

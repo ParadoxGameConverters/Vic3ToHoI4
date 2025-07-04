@@ -16,7 +16,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, AlwaysRolesAreAppliedToAllCountries)
 {
    const Role role(RoleOptions{
        .name = "test_role",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({{"test_role", role}},
@@ -36,7 +36,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, TagRolesAreAppliedToCountriesWithMatchin
 {
    const Role role(RoleOptions{
        .name = "test_role",
-       .requirement = std::make_unique<TagTrigger>("TAG"),
+       .trigger = std::make_unique<TagTrigger>("TAG"),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({{"test_role", role}},
@@ -71,7 +71,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoCountries)
 {
    const Role role(RoleOptions{
        .name = "test_role",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({{"test_role", role}}, World({}), {});
@@ -97,17 +97,17 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleScore)
 {
    const Role role_one(RoleOptions{
        .name = "test_role_one",
-       .requirement = std::make_unique<TagTrigger>("TAG"),
+       .trigger = std::make_unique<TagTrigger>("TAG"),
        .score = 100,
    });
    const Role role_two(RoleOptions{
        .name = "test_role_two",
-       .requirement = std::make_unique<TagTrigger>("TWO"),
+       .trigger = std::make_unique<TagTrigger>("TWO"),
        .score = 200,
    });
    const Role role_three(RoleOptions{
        .name = "test_role_three",
-       .requirement = std::make_unique<TagTrigger>("THR"),
+       .trigger = std::make_unique<TagTrigger>("THR"),
        .score = 300,
    });
 
@@ -135,17 +135,17 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByTagIfScoresAreEqual)
 {
    const Role role_one(RoleOptions{
        .name = "test_role_one",
-       .requirement = std::make_unique<TagTrigger>("TAG"),
+       .trigger = std::make_unique<TagTrigger>("TAG"),
        .score = 100,
    });
    const Role role_two(RoleOptions{
        .name = "test_role_two",
-       .requirement = std::make_unique<TagTrigger>("TWO"),
+       .trigger = std::make_unique<TagTrigger>("TWO"),
        .score = 200,
    });
    const Role role_three(RoleOptions{
        .name = "test_role_three",
-       .requirement = std::make_unique<TagTrigger>("THR"),
+       .trigger = std::make_unique<TagTrigger>("THR"),
        .score = 300,
    });
 
@@ -173,17 +173,17 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleNameIfScoresAndTag
 {
    const Role role_one(RoleOptions{
        .name = "test_role_second",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
        .score = 100,
    });
    const Role role_two(RoleOptions{
        .name = "test_role_first",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
        .score = 100,
    });
    const Role role_three(RoleOptions{
        .name = "test_role_zzz",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
        .score = 100,
    });
 
@@ -208,12 +208,12 @@ TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByName)
 {
    const Role role(RoleOptions{
        .name = "test_role",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
        .blockers = {"test_role_two"},
    });
    const Role role_two(RoleOptions{
        .name = "test_role_two",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories(
@@ -234,13 +234,13 @@ TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByCategory)
 {
    const Role role(RoleOptions{
        .name = "test_role",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
        .blockers = {"test_role_two_category"},
    });
    const Role role_two(RoleOptions{
        .name = "test_role_two",
        .category = "test_role_two_category",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories(
@@ -261,17 +261,17 @@ TEST(Hoi4worldRolesStoriescreatorTests, MultipleBlockersCanBlockRoles)
 {
    const Role role(RoleOptions{
        .name = "test_role",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
        .blockers = {"test_role_two_category", "test_role_three"},
    });
    const Role role_two(RoleOptions{
        .name = "test_role_two",
        .category = "test_role_two_category",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
    });
    const Role role_three(RoleOptions{
        .name = "test_role_three",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
    });
 
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories(
@@ -293,19 +293,19 @@ TEST(Hoi4worldRolesStoriescreatorTests, BlockersOnlyBlockWithSameCountry)
 {
    const Role role(RoleOptions{
        .name = "test_role",
-       .requirement = std::make_unique<TagTrigger>("TAG"),
+       .trigger = std::make_unique<TagTrigger>("TAG"),
        .score = 102,
        .blockers = {"test_role_two_category", "test_role_three"},
    });
    const Role role_two(RoleOptions{
        .name = "test_role_two",
        .category = "test_role_two_category",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
        .score = 101,
    });
    const Role role_three(RoleOptions{
        .name = "test_role_three",
-       .requirement = std::make_unique<AlwaysTrigger>(true),
+       .trigger = std::make_unique<AlwaysTrigger>(true),
        .score = 100,
    });
 

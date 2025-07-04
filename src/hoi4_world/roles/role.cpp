@@ -9,7 +9,7 @@ Role::Role(const Role& rhs)
 {
    name_ = rhs.name_;
    category_ = rhs.category_;
-   requirement_ = rhs.requirement_->Copy();
+   trigger_ = rhs.trigger_->Copy();
    score_ = rhs.score_;
    blockers_ = rhs.blockers_;
    shared_focuses_ = rhs.shared_focuses_;
@@ -26,7 +26,7 @@ Role& Role::operator=(const Role& other)
 {
    name_ = other.name_;
    category_ = other.category_;
-   requirement_ = other.requirement_->Copy();
+   trigger_ = other.trigger_->Copy();
    score_ = other.score_;
    blockers_ = other.blockers_;
    shared_focuses_ = other.shared_focuses_;
@@ -51,17 +51,17 @@ std::partial_ordering Role::operator<=>(const Role& other) const
    {
       return category_ <=> other.category_;
    }
-   if (!other.requirement_ && requirement_)
+   if (!other.trigger_ && trigger_)
    {
       return std::strong_ordering::less;
    }
-   if (!requirement_ && other.requirement_)
+   if (!trigger_ && other.trigger_)
    {
       return std::strong_ordering::greater;
    }
-   if (*requirement_ != *other.requirement_)
+   if (*trigger_ != *other.trigger_)
    {
-      if (*requirement_ < *other.requirement_)
+      if (*trigger_ < *other.trigger_)
       {
          return std::partial_ordering::less;
       }
@@ -113,11 +113,11 @@ void PrintTo(const Role& role, std::ostream* os)
    *os << "\nrole:";
    *os << "name - " << role.name_ << "\n";
    *os << "category - " << role.category_ << "\n";
-   *os << "requirement - ";
-   if (role.requirement_)
+   *os << "trigger - ";
+   if (role.trigger_)
    {
       *os << "{\n";
-      PrintTo(*role.requirement_, os);
+      PrintTo(*role.trigger_, os);
       *os << "}\n";
    }
    else
