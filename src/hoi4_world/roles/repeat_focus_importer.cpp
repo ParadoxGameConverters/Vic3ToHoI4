@@ -10,8 +10,8 @@ hoi4::RepeatFocusImporter::RepeatFocusImporter()
    parser_.registerKeyword("focus", [this](std::istream& input) {
       focuses_.emplace_back(focus_importer_.ImportFocus(input));
    });
-   parser_.registerKeyword("requirement", [](std::istream& input) {
-      commonItems::ignoreItem("", input);
+   parser_.registerKeyword("requirement", [this](std::istream& input) {
+      requirement_ = trigger_importer_.ImportTrigger(input);
    });
    parser_.IgnoreUnregisteredItems();
 }
