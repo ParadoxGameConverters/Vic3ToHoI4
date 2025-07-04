@@ -10,8 +10,8 @@
 #include "src/hoi4_world/events/event_importer.h"
 #include "src/hoi4_world/focus_trees/focus_importer.h"
 #include "src/hoi4_world/roles/repeat_focus_importer.h"
-#include "src/hoi4_world/roles/triggers/trigger_importer.h"
 #include "src/hoi4_world/roles/role.h"
+#include "src/hoi4_world/roles/triggers/trigger_importer.h"
 
 
 
