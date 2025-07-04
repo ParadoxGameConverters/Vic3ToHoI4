@@ -21,7 +21,7 @@ TEST(Hoi4worldRolesRepeatfocusimporterTests, DefaultsAreDefaulted)
    RepeatFocusImporter importer;
    const RepeatFocus repeat_focus = importer.ImportRepeatFocus(input);
 
-   // requirement is handled in a currently-untestable way. When it is replaced, actually test it here.
+   EXPECT_EQ(repeat_focus.GetTrigger(), AlwaysTrigger{false});
    EXPECT_TRUE(repeat_focus.GetFocuses().empty());
 }
 
@@ -29,7 +29,7 @@ TEST(Hoi4worldRolesRepeatfocusimporterTests, DefaultsAreDefaulted)
 TEST(Hoi4worldRolesRepeatfocusimporterTests, ItemsCanBeImported)
 {
    std::stringstream input;
-   input << "requirement = {\n";
+   input << "trigger = {\n";
    input << "\ttag = TAG\n";
    input << "\talways = yes\n";
    input << "}\n";
@@ -49,7 +49,7 @@ TEST(Hoi4worldRolesRepeatfocusimporterTests, ItemsCanBeImported)
    children.push_back(std::move(tag_trigger));
    children.push_back(std::move(always_yes_trigger));
    const AndTrigger and_trigger(std::move(children));
-   EXPECT_EQ(repeat_focus.GetRequirement(), and_trigger);
+   EXPECT_EQ(repeat_focus.GetTrigger(), and_trigger);
 
    EXPECT_THAT(repeat_focus.GetFocuses(), testing::ElementsAre(Focus{.id = "focus_one"}, Focus{.id = "focus_two"}));
 }

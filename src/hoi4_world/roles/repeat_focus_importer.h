@@ -26,7 +26,7 @@ class RepeatFocusImporter
    FocusImporter focus_importer_;
    TriggerImporter trigger_importer_;
 
-   std::unique_ptr<Trigger> requirement_;
+   std::unique_ptr<Trigger> trigger_;
    std::vector<Focus> focuses_;
 };
 

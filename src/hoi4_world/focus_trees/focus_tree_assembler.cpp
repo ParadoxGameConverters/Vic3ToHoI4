@@ -24,7 +24,7 @@ std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
       std::map<std::string, std::vector<hoi4::Focus>> target_focuses;
       for (const auto& [target_tag, country]: world.GetCountries())
       {
-         if (!repeat_focus.GetRequirement().IsValid(hoi4::CountryScope(country), world))
+         if (!repeat_focus.GetTrigger().IsValid(hoi4::CountryScope(country), world))
          {
             continue;
          }
