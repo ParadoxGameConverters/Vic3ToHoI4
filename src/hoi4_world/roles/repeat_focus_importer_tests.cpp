@@ -5,9 +5,9 @@
 
 #include "src/hoi4_world/roles/repeat_focus.h"
 #include "src/hoi4_world/roles/repeat_focus_importer.h"
-#include "src/hoi4_world/roles/requirements/always_trigger.h"
-#include "src/hoi4_world/roles/requirements/and_trigger.h"
-#include "src/hoi4_world/roles/requirements/tag_trigger.h"
+#include "src/hoi4_world/roles/triggers/always_trigger.h"
+#include "src/hoi4_world/roles/triggers/and_trigger.h"
+#include "src/hoi4_world/roles/triggers/tag_trigger.h"
 
 
 

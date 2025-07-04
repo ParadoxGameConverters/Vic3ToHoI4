@@ -1,6 +1,6 @@
 #include "src/hoi4_world/roles/repeat_focus.h"
 
-#include "src/hoi4_world/roles/requirements/trigger_base.h"
+#include "src/hoi4_world/roles/triggers/trigger_base.h"
 
 
 

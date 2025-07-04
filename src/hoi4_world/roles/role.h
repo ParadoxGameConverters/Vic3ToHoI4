@@ -6,13 +6,13 @@
 #include <string>
 #include <vector>
 
-#include "requirements/always_trigger.h"
 #include "src/hoi4_world/decisions/decision.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/hoi4_world/events/event.h"
 #include "src/hoi4_world/focus_trees/focus.h"
 #include "src/hoi4_world/roles/repeat_focus.h"
-#include "src/hoi4_world/roles/requirements/trigger_base.h"
+#include "src/hoi4_world/roles/triggers/always_trigger.h"
+#include "src/hoi4_world/roles/triggers/trigger_base.h"
 
 
 

@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "external/commonItems/Parser.h"
-#include "src/hoi4_world/roles/requirements/trigger_base.h"
+#include "src/hoi4_world/roles/triggers/trigger_base.h"
 
 
 

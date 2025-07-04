@@ -4,9 +4,9 @@
 #include <sstream>
 
 #include "src/hoi4_world/focus_trees/focus_tree_assembler.h"
-#include "src/hoi4_world/roles/requirements/always_trigger.h"
-#include "src/hoi4_world/roles/requirements/or_trigger.h"
-#include "src/hoi4_world/roles/requirements/tag_trigger.h"
+#include "src/hoi4_world/roles/triggers/always_trigger.h"
+#include "src/hoi4_world/roles/triggers/or_trigger.h"
+#include "src/hoi4_world/roles/triggers/tag_trigger.h"
 
 
 
