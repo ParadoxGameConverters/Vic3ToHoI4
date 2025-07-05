@@ -29,132 +29,6 @@ elseif (PLATFORM STREQUAL "Linux")
 endif (PLATFORM STREQUAL "Windows")
 
 
-#### Fronter ####
-
-if (PLATFORM STREQUAL "Windows")
-	link_directories("./external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll")
-	link_directories("./external/Fronter/external/curl/lib")
-	find_library(LIBCURL_LIB libcurl HINT "./external/Fronter/external/curl/lib" NO_DEFAULT_PATH)
-	find_library(LIBCURL_DLL_LIB libcurl.dll HINT "./external/Fronter/external/curl/lib" NO_DEFAULT_PATH)
-endif (PLATFORM STREQUAL "Windows")
-
-include_directories("./external/Fronter/external/SQLiteCpp/include")
-include_directories("./external/Fronter/external/SQLiteCpp/sqlite3")
-include_directories("./external/Fronter/external/commonItems/external/json/single_include")
-if (PLATFORM STREQUAL "Windows")
-	include_directories(${PROJECT_SOURCE_DIR}/external/Fronter/external/curl/include)
-	include_directories(${PROJECT_SOURCE_DIR}/external/Fronter/external/wxWidgets/3.2.1/include)
-	include_directories(${PROJECT_SOURCE_DIR}/external/Fronter/external/wxWidgets/3.2.1/include/msvc)
-	ADD_DEFINITIONS(-D_WINDOWS)
-	ADD_DEFINITIONS(-D__WXMSW__)
-	ADD_DEFINITIONS(-DwxMSVC_VERSION_AUTO)
-	ADD_DEFINITIONS(-DWXUSINGDLL)
-	ADD_DEFINITIONS(-DwxMSVC_VERSION_ABI_COMPAT)
-elseif (PLATFORM STREQUAL "Linux")
-	find_package(CURL REQUIRED)
-	find_package(wxWidgets REQUIRED COMPONENTS net core base)
-	include_directories("/usr/include/wx-3.2-unofficial")
-	include_directories("/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2-unofficial")
-	include(${wxWidgets_USE_FILE})
-	add_compile_options(-D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXGTK__ -pthread)
-endif (PLATFORM STREQUAL "Windows")
-
-file(GLOB F_MAIN_SOURCES "${FRONTER_SOURCE_DIR}/*.cpp")
-file(GLOB F_CONFIGURATION_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/*.cpp")
-file(GLOB F_CONFIGURATION_OPTIONS_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/Options/*.cpp")
-file(GLOB F_FRAMES_SOURCES "${FRONTER_SOURCE_DIR}/Frames/*.cpp")
-file(GLOB F_FRAMES_TABS_SOURCES "${FRONTER_SOURCE_DIR}/Frames/Tabs/*.cpp")
-file(GLOB F_UPDATECHECKER_SOURCES "${FRONTER_SOURCE_DIR}/UpdateChecker/*.cpp")
-file(GLOB F_UTILS_SOURCES "${FRONTER_SOURCE_DIR}/Utils/*.cpp")
-file(GLOB F_UTILS_LOCALIZATION_SOURCES "${FRONTER_SOURCE_DIR}/Utils/Localization/*.cpp")
-file(GLOB F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/*.cpp")
-if (PLATFORM STREQUAL "Windows")
-	list(REMOVE_ITEM F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/LinuxConverterLauncher.cpp")
-elseif (PLATFORM STREQUAL "Linux")
-	list(REMOVE_ITEM F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/WinConverterLauncher.cpp")
-endif (PLATFORM STREQUAL "Windows")
-file(GLOB F_LOGWATCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/LogWatcher/*.cpp")
-file(GLOB F_MODCOPIER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ModCopier/*.cpp")
-file(GLOB F_SQLITE_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/src/*.cpp")
-file(GLOB F_SQLITE3_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/sqlite3/*.c")
-
-if (PLATFORM STREQUAL "Windows")
-	add_executable(ConverterFrontend WIN32
-		${F_MAIN_SOURCES}
-		${F_CONFIGURATION_SOURCES}
-		${F_CONFIGURATION_OPTIONS_SOURCES}
-		${F_FRAMES_SOURCES}
-		${F_FRAMES_TABS_SOURCES}
-		${F_UTILS_SOURCES}
-		${F_UTILS_LOCALIZATION_SOURCES}
-		${F_CONVERTERLAUNCHER_SOURCES}
-		${F_LOGWATCHER_SOURCES}
-		${F_MODCOPIER_SOURCES}
-		${F_UPDATECHECKER_SOURCES}
-		${F_SQLITE_SOURCES}
-		${F_SQLITE3_SOURCES}
-	 )
-	 set_target_properties(ConverterFrontend
-		PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
-	)
-elseif (PLATFORM STREQUAL "Linux")
-	add_executable(ConverterFrontend
-		${F_MAIN_SOURCES}
-		${F_CONFIGURATION_SOURCES}
-		${F_CONFIGURATION_OPTIONS_SOURCES}
-		${F_FRAMES_SOURCES}
-		${F_FRAMES_TABS_SOURCES}
-		${F_UTILS_SOURCES}
-		${F_UTILS_LOCALIZATION_SOURCES}
-		${F_CONVERTERLAUNCHER_SOURCES}
-		${F_LOGWATCHER_SOURCES}
-		${F_MODCOPIER_SOURCES}
-		${F_UPDATECHECKER_SOURCES}
-		${F_SQLITE_SOURCES}
-		${F_SQLITE3_SOURCES}
-	)
-	set_target_properties(ConverterFrontend
-		PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
-	)
-endif (PLATFORM STREQUAL "Windows")
-
-if (PLATFORM STREQUAL "Windows")
-	target_link_libraries(ConverterFrontend LINK_PUBLIC ${LIBCURL_LIB} ${LIBCURL_DLL_LIB} commonLib) 
-elseif (PLATFORM STREQUAL "Linux")
-	target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} commonLib)
-endif (PLATFORM STREQUAL "Windows")
-
-if (PLATFORM STREQUAL "Windows" AND NOT RUN_CLANG_TIDY)
-	configure_file("external/Fronter/Fronter/Resources/converter.ico" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-	configure_file("external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-	configure_file("external/Fronter/Fronter/Resources/libcrypto-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-	configure_file("external/Fronter/Fronter/Resources/libssl-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-	configure_file("external/Fronter/external/curl/bin/libcurl-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-if (CMAKE_BUILD_TYPE STREQUAL "Release")
-	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32u_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32u_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-elseif (CMAKE_BUILD_TYPE STREQUAL "Debug")
-	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32ud_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32ud_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-endif (CMAKE_BUILD_TYPE STREQUAL "Release")
-	file(GLOB FRONTER_CONFIG "data/fronter/*")
-	file(COPY ${FRONTER_CONFIG} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
-	file(GLOB LOCALIZATIONS "external/Fronter/Fronter/Resources/*.yml")
-	file(COPY ${LOCALIZATIONS} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
-elseif (PLATFORM STREQUAL "Linux" AND NOT RUN_CLANG_TIDY)
-	add_custom_command(TARGET ConverterFrontend
-		COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
-		cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
-		cp -r "external/Fronter/Fronter/Resources/*yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
-		cp external/Fronter/Fronter/Resources/converter.ico ${FRONTER_OUTPUT_DIRECTORY} &&
-		cp external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt ${FRONTER_OUTPUT_DIRECTORY}
-		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-	)
-endif (PLATFORM STREQUAL "Windows" AND NOT RUN_CLANG_TIDY)
-
-
 #### Converter ####
 
 include_directories(.)
@@ -396,6 +270,133 @@ if (NOT RUN_CLANG_TIDY)
 	endif (PLATFORM STREQUAL "Windows")
 	add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > ${CONVERTER_OUTPUT_DIRECTORY}/../commit_id.txt)
 endif (NOT RUN_CLANG_TIDY)
+
+
+#### Fronter ####
+
+if (PLATFORM STREQUAL "Windows")
+	link_directories("./external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll")
+	link_directories("./external/Fronter/external/curl/lib")
+	find_library(LIBCURL_LIB libcurl HINT "./external/Fronter/external/curl/lib" NO_DEFAULT_PATH)
+	find_library(LIBCURL_DLL_LIB libcurl.dll HINT "./external/Fronter/external/curl/lib" NO_DEFAULT_PATH)
+endif (PLATFORM STREQUAL "Windows")
+
+include_directories("./external/Fronter/external/SQLiteCpp/include")
+include_directories("./external/Fronter/external/SQLiteCpp/sqlite3")
+include_directories("./external/Fronter/external/commonItems/external/json/single_include")
+if (PLATFORM STREQUAL "Windows")
+	include_directories(${PROJECT_SOURCE_DIR}/external/Fronter/external/curl/include)
+	include_directories(${PROJECT_SOURCE_DIR}/external/Fronter/external/wxWidgets/3.2.1/include)
+	include_directories(${PROJECT_SOURCE_DIR}/external/Fronter/external/wxWidgets/3.2.1/include/msvc)
+	ADD_DEFINITIONS(-D_WINDOWS)
+	ADD_DEFINITIONS(-D__WXMSW__)
+	ADD_DEFINITIONS(-DwxMSVC_VERSION_AUTO)
+	ADD_DEFINITIONS(-DWXUSINGDLL)
+	ADD_DEFINITIONS(-DwxMSVC_VERSION_ABI_COMPAT)
+elseif (PLATFORM STREQUAL "Linux")
+	find_package(CURL REQUIRED)
+	find_package(wxWidgets REQUIRED COMPONENTS net core base)
+	include_directories("/usr/include/wx-3.2-unofficial")
+	include_directories("/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2-unofficial")
+	include(${wxWidgets_USE_FILE})
+	add_compile_options(-D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXGTK__ -pthread)
+endif (PLATFORM STREQUAL "Windows")
+
+file(GLOB F_MAIN_SOURCES "${FRONTER_SOURCE_DIR}/*.cpp")
+file(GLOB F_CONFIGURATION_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/*.cpp")
+file(GLOB F_CONFIGURATION_OPTIONS_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/Options/*.cpp")
+file(GLOB F_FRAMES_SOURCES "${FRONTER_SOURCE_DIR}/Frames/*.cpp")
+file(GLOB F_FRAMES_TABS_SOURCES "${FRONTER_SOURCE_DIR}/Frames/Tabs/*.cpp")
+file(GLOB F_UPDATECHECKER_SOURCES "${FRONTER_SOURCE_DIR}/UpdateChecker/*.cpp")
+file(GLOB F_UTILS_SOURCES "${FRONTER_SOURCE_DIR}/Utils/*.cpp")
+file(GLOB F_UTILS_LOCALIZATION_SOURCES "${FRONTER_SOURCE_DIR}/Utils/Localization/*.cpp")
+file(GLOB F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/*.cpp")
+if (PLATFORM STREQUAL "Windows")
+	list(REMOVE_ITEM F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/LinuxConverterLauncher.cpp")
+elseif (PLATFORM STREQUAL "Linux")
+	list(REMOVE_ITEM F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/WinConverterLauncher.cpp")
+endif (PLATFORM STREQUAL "Windows")
+file(GLOB F_LOGWATCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/LogWatcher/*.cpp")
+file(GLOB F_MODCOPIER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ModCopier/*.cpp")
+file(GLOB F_SQLITE_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/src/*.cpp")
+file(GLOB F_SQLITE3_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/sqlite3/*.c")
+
+if (PLATFORM STREQUAL "Windows")
+	add_executable(ConverterFrontend WIN32
+		${F_MAIN_SOURCES}
+		${F_CONFIGURATION_SOURCES}
+		${F_CONFIGURATION_OPTIONS_SOURCES}
+		${F_FRAMES_SOURCES}
+		${F_FRAMES_TABS_SOURCES}
+		${F_UTILS_SOURCES}
+		${F_UTILS_LOCALIZATION_SOURCES}
+		${F_CONVERTERLAUNCHER_SOURCES}
+		${F_LOGWATCHER_SOURCES}
+		${F_MODCOPIER_SOURCES}
+		${F_UPDATECHECKER_SOURCES}
+		${F_SQLITE_SOURCES}
+		${F_SQLITE3_SOURCES}
+	 )
+	 set_target_properties(ConverterFrontend
+		PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
+	)
+elseif (PLATFORM STREQUAL "Linux")
+	add_executable(ConverterFrontend
+		${F_MAIN_SOURCES}
+		${F_CONFIGURATION_SOURCES}
+		${F_CONFIGURATION_OPTIONS_SOURCES}
+		${F_FRAMES_SOURCES}
+		${F_FRAMES_TABS_SOURCES}
+		${F_UTILS_SOURCES}
+		${F_UTILS_LOCALIZATION_SOURCES}
+		${F_CONVERTERLAUNCHER_SOURCES}
+		${F_LOGWATCHER_SOURCES}
+		${F_MODCOPIER_SOURCES}
+		${F_UPDATECHECKER_SOURCES}
+		${F_SQLITE_SOURCES}
+		${F_SQLITE3_SOURCES}
+	)
+	set_target_properties(ConverterFrontend
+		PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
+	)
+endif (PLATFORM STREQUAL "Windows")
+
+if (PLATFORM STREQUAL "Windows")
+	target_link_libraries(ConverterFrontend LINK_PUBLIC ${LIBCURL_LIB} ${LIBCURL_DLL_LIB} commonLib) 
+elseif (PLATFORM STREQUAL "Linux")
+	target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} commonLib)
+endif (PLATFORM STREQUAL "Windows")
+
+if (PLATFORM STREQUAL "Windows" AND NOT RUN_CLANG_TIDY)
+	configure_file("external/Fronter/Fronter/Resources/converter.ico" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/Fronter/Resources/libcrypto-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/Fronter/Resources/libssl-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/external/curl/bin/libcurl-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32u_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32u_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+elseif (CMAKE_BUILD_TYPE STREQUAL "Debug")
+	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32ud_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32ud_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+endif (CMAKE_BUILD_TYPE STREQUAL "Release")
+	file(GLOB FRONTER_CONFIG "data/fronter/*")
+	file(COPY ${FRONTER_CONFIG} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
+	file(GLOB LOCALIZATIONS "external/Fronter/Fronter/Resources/*.yml")
+	file(COPY ${LOCALIZATIONS} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
+elseif (PLATFORM STREQUAL "Linux" AND NOT RUN_CLANG_TIDY)
+	add_custom_command(TARGET ConverterFrontend
+		COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+		cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+		cp -r "external/Fronter/Fronter/Resources/*yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+		cp external/Fronter/Fronter/Resources/converter.ico ${FRONTER_OUTPUT_DIRECTORY} &&
+		cp external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt ${FRONTER_OUTPUT_DIRECTORY}
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+	)
+endif (PLATFORM STREQUAL "Windows" AND NOT RUN_CLANG_TIDY)
+
 
 #### Tests ####
 
