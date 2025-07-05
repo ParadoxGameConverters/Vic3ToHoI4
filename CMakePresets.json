@@ -18,7 +18,7 @@
         "rhs": "Windows"
       }
     },
-	{
+    {
       "name": "linux-base",
       "description": "Target Linux with the gcc/g++ build environment.",
       "hidden": true,
@@ -35,7 +35,7 @@
         "rhs": "Linux"
       }
     },
-	{
+    {
       "name": "x64-release-windows",
       "displayName": "x64 Release Windows",
       "description": "Target Windows (64-bit) with the Visual Studio development environment. (Release)",
@@ -44,7 +44,10 @@
         "value": "x64",
         "strategy": "external"
       },
-      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release", "PLATFORM": "Windows" }
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "PLATFORM": "Windows"
+      }
     },
     {
       "name": "x64-debug-windows",
@@ -55,7 +58,23 @@
         "value": "x64",
         "strategy": "external"
       },
-      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug", "PLATFORM": "Windows" }
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "PLATFORM": "Windows"
+      }
+    },
+    {
+      "name": "x64-clang-tidy-windows",
+      "displayName": "x64 Clang Tidy Windows",
+      "description": "Target Windows (64-bit) with clang-tidy",
+      "inherits": "windows-base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "RUN_CLANG_TIDY": "ON"
+      }
     },
     {
       "name": "x64-debug-linux",
@@ -66,7 +85,10 @@
         "value": "x64",
         "strategy": "external"
       },
-      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug", "PLATFORM": "Linux" }
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "PLATFORM": "Linux"
+      }
     },
     {
       "name": "x64-release-linux",
@@ -77,9 +99,11 @@
         "value": "x64",
         "strategy": "external"
       },
-      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release", "PLATFORM": "Linux" }
-    }
-	,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "PLATFORM": "Linux"
+      }
+    },
     {
       "name": "x64-coverage-linux",
       "displayName": "x64 Release Linux",
@@ -89,7 +113,11 @@
         "value": "x64",
         "strategy": "external"
       },
-      "cacheVariables": { "CMAKE_BUILD_TYPE": "Coverage", "PLATFORM": "Linux", "COVERAGE": "true" }
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Coverage",
+        "PLATFORM": "Linux",
+        "COVERAGE": "true"
+      }
     }
   ],
   "buildPresets": [
@@ -103,7 +131,7 @@
         "rhs": "Windows"
       }
     },
-	{
+    {
       "name": "build-x64-debug-windows",
       "displayName": "x64 debug",
       "configurePreset": "x64-debug-windows",
@@ -113,7 +141,17 @@
         "rhs": "Windows"
       }
     },
-	{
+    {
+      "name": "build-x64-clang-tidy-windows",
+      "displayName": "x64 clang-tidy",
+      "configurePreset": "x64-clang-tidy-windows",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
       "name": "build-x64-debug-linux",
       "displayName": "x64 debug",
       "configurePreset": "x64-debug-linux",
