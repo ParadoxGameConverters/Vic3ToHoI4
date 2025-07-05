@@ -340,7 +340,7 @@ if (PLATFORM STREQUAL "Windows")
 	 set_target_properties(ConverterFrontend
 		PROPERTIES
 		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
-	)
+	 )
 elseif (PLATFORM STREQUAL "Linux")
 	add_executable(ConverterFrontend
 		${F_MAIN_SOURCES}
