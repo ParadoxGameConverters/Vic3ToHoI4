@@ -2,11 +2,17 @@ cmake_minimum_required(VERSION 3.25)
 set(VERBOSE true)
 
 project(Vic3ToHoi4)
+if (RUN_CLANG_TIDY)
+	set(BUILD_TYPE "Clang-tidy")
+else (RUN_CLANG_TIDY)
+	set(BUILD_TYPE ${CMAKE_BUILD_TYPE})
+endif (RUN_CLANG_TIDY)
+
 set(FRONTER_SOURCE_DIR ${PROJECT_SOURCE_DIR}/external/Fronter/Fronter/Source)
 set(FRONTER_COMMONS_SOURCE_DIR ${PROJECT_SOURCE_DIR}/external/Fronter/commonItems)
-set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/${CMAKE_BUILD_TYPE}-${PLATFORM})
-set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/${CMAKE_BUILD_TYPE}-${PLATFORM}/Vic3ToHoi4)
-set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/test/${CMAKE_BUILD_TYPE}-${PLATFORM})
+set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/${BUILD_TYPE}-${PLATFORM})
+set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/${BUILD_TYPE}-${PLATFORM}/Vic3ToHoi4)
+set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/test/${BUILD_TYPE}-${PLATFORM})
 
 set(CMAKE_CXX_STANDARD 23)
 set (UNICODE_DEFAULT OFF)
@@ -120,7 +126,7 @@ elseif (PLATFORM STREQUAL "Linux")
 	target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} commonLib)
 endif (PLATFORM STREQUAL "Windows")
 
-if (PLATFORM STREQUAL "Windows")
+if (PLATFORM STREQUAL "Windows" AND NOT RUN_CLANG_TIDY)
 	configure_file("external/Fronter/Fronter/Resources/converter.ico" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
 	configure_file("external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
 	configure_file("external/Fronter/Fronter/Resources/libcrypto-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
@@ -137,7 +143,7 @@ endif (CMAKE_BUILD_TYPE STREQUAL "Release")
 	file(COPY ${FRONTER_CONFIG} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
 	file(GLOB LOCALIZATIONS "external/Fronter/Fronter/Resources/*.yml")
 	file(COPY ${LOCALIZATIONS} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
-elseif (PLATFORM STREQUAL "Linux")
+elseif (PLATFORM STREQUAL "Linux" AND NOT RUN_CLANG_TIDY)
 	add_custom_command(TARGET ConverterFrontend
 		COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
 		cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
@@ -146,7 +152,7 @@ elseif (PLATFORM STREQUAL "Linux")
 		cp external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt ${FRONTER_OUTPUT_DIRECTORY}
 		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 	)
-endif (PLATFORM STREQUAL "Windows")
+endif (PLATFORM STREQUAL "Windows" AND NOT RUN_CLANG_TIDY)
 
 
 #### Converter ####
@@ -380,14 +386,16 @@ elseif (PLATFORM STREQUAL "Linux")
 	target_link_libraries(Vic3ToHoi4 LINK_PUBLIC commonLib rakaly)
 endif (PLATFORM  STREQUAL "Windows")
 
-configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
-configure_file("data/readme.txt" "${FRONTER_OUTPUT_DIRECTORY}/readme.txt" COPYONLY)
-file(COPY "data/blank_mod" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
-file(COPY "data/configurables" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
-if (PLATFORM STREQUAL "Windows")
-	configure_file("external/rakaly/rakaly.dll" "${FRONTER_OUTPUT_DIRECTORY}/Vic3toHoi4/rakaly.dll" COPYONLY)
-endif (PLATFORM STREQUAL "Windows")
-add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > ${CONVERTER_OUTPUT_DIRECTORY}/../commit_id.txt)
+if (NOT RUN_CLANG_TIDY)
+	configure_file("data/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
+	configure_file("data/readme.txt" "${FRONTER_OUTPUT_DIRECTORY}/readme.txt" COPYONLY)
+	file(COPY "data/blank_mod" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
+	file(COPY "data/configurables" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
+	if (PLATFORM STREQUAL "Windows")
+		configure_file("external/rakaly/rakaly.dll" "${FRONTER_OUTPUT_DIRECTORY}/Vic3toHoi4/rakaly.dll" COPYONLY)
+	endif (PLATFORM STREQUAL "Windows")
+	add_custom_command(TARGET Vic3ToHoi4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > ${CONVERTER_OUTPUT_DIRECTORY}/../commit_id.txt)
+endif (NOT RUN_CLANG_TIDY)
 
 #### Tests ####
 

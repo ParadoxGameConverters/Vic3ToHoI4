@@ -73,7 +73,9 @@
         "strategy": "external"
       },
       "cacheVariables": {
-        "RUN_CLANG_TIDY": "ON"
+        "RUN_CLANG_TIDY": "ON",
+        "CMAKE_BUILD_TYPE": "Release",
+        "PLATFORM": "Windows"
       }
     },
     {
