@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "src/hoi4_world/focus_trees/focus.h"
-#include "src/hoi4_world/roles/requirements/trigger_base.h"
+#include "src/hoi4_world/roles/triggers/trigger_base.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 
 
@@ -19,17 +19,17 @@ namespace hoi4
 struct RepeatFocus
 {
   public:
-   RepeatFocus(std::unique_ptr<Trigger> requirement, std::vector<Focus> focuses):
-       requirement_(std::move(requirement)),
+   RepeatFocus(std::unique_ptr<Trigger> trigger, std::vector<Focus> focuses):
+       trigger_(std::move(trigger)),
        focuses_(std::move(focuses))
    {
    }
-   RepeatFocus(const RepeatFocus& other): requirement_(other.requirement_->Copy()), focuses_(other.focuses_) {}
+   RepeatFocus(const RepeatFocus& other): trigger_(other.trigger_->Copy()), focuses_(other.focuses_) {}
    RepeatFocus& operator=(const RepeatFocus& other);
-   RepeatFocus(RepeatFocus&& other): requirement_(std::move(other.requirement_)), focuses_(std::move(other.focuses_)) {}
+   RepeatFocus(RepeatFocus&& other): trigger_(std::move(other.trigger_)), focuses_(std::move(other.focuses_)) {}
    RepeatFocus& operator=(RepeatFocus&& other);
 
-   [[nodiscard]] const Trigger& GetRequirement() const { return *requirement_; }
+   [[nodiscard]] const Trigger& GetTrigger() const { return *trigger_; }
    [[nodiscard]] const std::vector<Focus>& GetFocuses() const { return focuses_; }
 
    std::strong_ordering operator<=>(const RepeatFocus& other) const;
@@ -39,7 +39,7 @@ struct RepeatFocus
    friend void PrintTo(const RepeatFocus& repeat_focus, std::ostream* os);
 
   private:
-   std::unique_ptr<Trigger> requirement_;
+   std::unique_ptr<Trigger> trigger_;
    std::vector<Focus> focuses_;
 };
 

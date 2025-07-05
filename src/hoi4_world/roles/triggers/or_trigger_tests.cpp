@@ -3,10 +3,9 @@
 
 #include <sstream>
 
-#include "not_trigger.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
-#include "src/hoi4_world/roles/requirements/always_trigger.h"
-#include "src/hoi4_world/roles/requirements/not_trigger.h"
+#include "src/hoi4_world/roles/triggers/always_trigger.h"
+#include "src/hoi4_world/roles/triggers/or_trigger.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 
@@ -15,7 +14,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsReturnTrueIfAllChildrenFalse)
+TEST(Hoi4worldRolesRequirementsOrTriggerTests, IsValidReturnsFalseIfAllChildrenFalse)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(false);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);
@@ -23,16 +22,16 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsReturnTrueIfAllChi
    std::vector<std::unique_ptr<Trigger>> children;
    children.push_back(std::move(trigger_one));
    children.push_back(std::move(trigger_two));
-   const NotTrigger not_trigger(std::move(children));
+   const OrTrigger or_trigger(std::move(children));
 
    const Country country({});
    const Scope scope = CountryScope{.country = country};
    const hoi4::World world({});
-   EXPECT_TRUE(not_trigger.IsValid(scope, world));
+   EXPECT_FALSE(or_trigger.IsValid(scope, world));
 }
 
 
-TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsFalseIfAnyChildrenTrue)
+TEST(Hoi4worldRolesRequirementsOrTriggerTests, IsValidReturnsTrueIfAnyChildrenTrue)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);
@@ -40,16 +39,16 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsFalseIfAnyChildren
    std::vector<std::unique_ptr<Trigger>> children;
    children.push_back(std::move(trigger_one));
    children.push_back(std::move(trigger_two));
-   const NotTrigger not_trigger(std::move(children));
+   const OrTrigger or_trigger(std::move(children));
 
    const Country country({});
    const Scope scope = CountryScope{.country = country};
    const hoi4::World world({});
-   EXPECT_FALSE(not_trigger.IsValid(scope, world));
+   EXPECT_TRUE(or_trigger.IsValid(scope, world));
 }
 
 
-TEST(Hoi4worldRolesRequirementsNotTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesRequirementsOrTriggerTests, EquavalentTriggersAreEqual)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);
@@ -57,7 +56,7 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, EquivalentTriggersAreEqual)
    std::vector<std::unique_ptr<Trigger>> children_one;
    children_one.push_back(std::move(true_trigger_one));
    children_one.push_back(std::move(false_trigger_one));
-   const NotTrigger not_trigger_one(std::move(children_one));
+   const OrTrigger or_trigger_one(std::move(children_one));
 
    std::unique_ptr<Trigger> true_trigger_two = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_two = std::make_unique<AlwaysTrigger>(false);
@@ -65,7 +64,7 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, EquivalentTriggersAreEqual)
    std::vector<std::unique_ptr<Trigger>> children_two;
    children_two.push_back(std::move(true_trigger_two));
    children_two.push_back(std::move(false_trigger_two));
-   const NotTrigger not_trigger_two(std::move(children_two));
+   const OrTrigger or_trigger_two(std::move(children_two));
 
    std::unique_ptr<Trigger> false_trigger_three = std::make_unique<AlwaysTrigger>(false);
    std::unique_ptr<Trigger> true_trigger_three = std::make_unique<AlwaysTrigger>(false);
@@ -73,39 +72,39 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, EquivalentTriggersAreEqual)
    std::vector<std::unique_ptr<Trigger>> children_three;
    children_three.push_back(std::move(false_trigger_three));
    children_three.push_back(std::move(true_trigger_three));
-   const NotTrigger not_trigger_three(std::move(children_three));
+   const OrTrigger or_trigger_three(std::move(children_three));
 
-   const NotTrigger not_trigger_four({});
+   const OrTrigger or_trigger_four({});
 
-   EXPECT_EQ(not_trigger_one, not_trigger_two);
-   EXPECT_NE(not_trigger_one, not_trigger_three);
-   EXPECT_NE(not_trigger_two, not_trigger_three);
-   EXPECT_NE(not_trigger_one, not_trigger_four);
-   EXPECT_NE(not_trigger_two, not_trigger_four);
-   EXPECT_NE(not_trigger_three, not_trigger_four);
+   EXPECT_EQ(or_trigger_one, or_trigger_two);
+   EXPECT_NE(or_trigger_one, or_trigger_three);
+   EXPECT_NE(or_trigger_two, or_trigger_three);
+   EXPECT_NE(or_trigger_one, or_trigger_four);
+   EXPECT_NE(or_trigger_two, or_trigger_four);
+   EXPECT_NE(or_trigger_three, or_trigger_four);
 }
 
 
-TEST(Hoi4worldRolesRequirementsNotTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesRequirementsOrTriggerTests, CopyReturnsACopy)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);
    std::vector<std::unique_ptr<Trigger>> children_one;
    children_one.push_back(std::move(true_trigger_one));
    children_one.push_back(std::move(false_trigger_one));
-   const NotTrigger not_trigger_one(std::move(children_one));
+   const OrTrigger or_trigger_one(std::move(children_one));
 
-   const auto not_copy = not_trigger_one.Copy();
-   EXPECT_NE(not_copy.get(), &not_trigger_one);
-   EXPECT_EQ(*not_copy.get(), not_trigger_one);
+   const auto or_copy = or_trigger_one.Copy();
+   EXPECT_NE(or_copy.get(), &or_trigger_one);
+   EXPECT_EQ(*or_copy.get(), or_trigger_one);
 
    std::unique_ptr<Trigger> true_trigger_two = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_two = std::make_unique<AlwaysTrigger>(false);
    std::vector<std::unique_ptr<Trigger>> children_two;
    children_two.push_back(std::move(false_trigger_two));
    children_two.push_back(std::move(true_trigger_two));
-   const NotTrigger not_trigger_two(std::move(children_two));
-   EXPECT_NE(*not_copy.get(), not_trigger_two);
+   const OrTrigger or_trigger_two(std::move(children_two));
+   EXPECT_NE(*or_copy.get(), or_trigger_two);
 }
 
 }  // namespace hoi4

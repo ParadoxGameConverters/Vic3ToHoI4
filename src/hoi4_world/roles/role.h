@@ -6,13 +6,13 @@
 #include <string>
 #include <vector>
 
-#include "requirements/always_trigger.h"
 #include "src/hoi4_world/decisions/decision.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/hoi4_world/events/event.h"
 #include "src/hoi4_world/focus_trees/focus.h"
 #include "src/hoi4_world/roles/repeat_focus.h"
-#include "src/hoi4_world/roles/requirements/trigger_base.h"
+#include "src/hoi4_world/roles/triggers/always_trigger.h"
+#include "src/hoi4_world/roles/triggers/trigger_base.h"
 
 
 
@@ -23,7 +23,7 @@ struct RoleOptions
 {
    std::string name;
    std::string category;
-   std::unique_ptr<Trigger> requirement = std::make_unique<AlwaysTrigger>(false);
+   std::unique_ptr<Trigger> trigger = std::make_unique<AlwaysTrigger>(false);
    float score;
    std::vector<std::string> blockers;
    std::vector<std::string> shared_focuses;
@@ -43,7 +43,7 @@ class Role
    explicit Role(RoleOptions options):
        name_(std::move(options.name)),
        category_(std::move(options.category)),
-       requirement_(std::move(options.requirement)),
+       trigger_(std::move(options.trigger)),
        score_(options.score),
        blockers_(std::move(options.blockers)),
        shared_focuses_(std::move(options.shared_focuses)),
@@ -62,7 +62,7 @@ class Role
 
    [[nodiscard]] const std::string& GetName() const { return name_; }
    [[nodiscard]] const std::string& GetCategory() const { return category_; }
-   [[nodiscard]] const Trigger& GetRequirement() const { return *requirement_; }
+   [[nodiscard]] const Trigger& GetTrigger() const { return *trigger_; }
    [[nodiscard]] float GetScore() const { return score_; }
    [[nodiscard]] const std::vector<std::string>& GetBlockers() const { return blockers_; }
    [[nodiscard]] const std::vector<std::string>& GetSharedFocuses() const { return shared_focuses_; }
@@ -85,7 +85,7 @@ class Role
   private:
    std::string name_;
    std::string category_;
-   std::unique_ptr<Trigger> requirement_ = std::make_unique<AlwaysTrigger>(false);
+   std::unique_ptr<Trigger> trigger_ = std::make_unique<AlwaysTrigger>(false);
    float score_;
    std::vector<std::string> blockers_;
    std::vector<std::string> shared_focuses_;

@@ -1,4 +1,4 @@
-#include "src/hoi4_world/roles/requirements/tag_trigger.h"
+#include "src/hoi4_world/roles/triggers/tag_trigger.h"
 
 
 

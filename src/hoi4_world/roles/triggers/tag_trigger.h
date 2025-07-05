@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include "src/hoi4_world/roles/requirements/trigger_base.h"
+#include "src/hoi4_world/roles/triggers/trigger_base.h"
 #include "src/support/polymorphic_equality.h"
 
 

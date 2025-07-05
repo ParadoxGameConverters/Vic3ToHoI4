@@ -4,8 +4,8 @@
 #include <sstream>
 
 #include "src/hoi4_world/countries/hoi4_country.h"
-#include "src/hoi4_world/roles/requirements/always_trigger.h"
-#include "src/hoi4_world/roles/requirements/and_trigger.h"
+#include "src/hoi4_world/roles/triggers/always_trigger.h"
+#include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 

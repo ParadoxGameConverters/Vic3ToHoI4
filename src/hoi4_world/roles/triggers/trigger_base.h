@@ -2,7 +2,7 @@
 
 
 
-#include "src/hoi4_world/roles/requirements/scope.h"
+#include "src/hoi4_world/roles/triggers/scope.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 
 
