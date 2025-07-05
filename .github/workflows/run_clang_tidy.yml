@@ -1,4 +1,4 @@
-name: Build, test and publish
+name: Run clang-tidy
 on:
   push:
     branches: [ main ]
