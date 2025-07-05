@@ -318,7 +318,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       {
          continue;
       }
-      const auto naval_base = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::NavalBase);
+      const auto naval_base = buildings.GetBuildingInState(vic3_id, vic3::BuildingTypeNavalBase);
       if (!naval_base.has_value())
       {
          continue;
@@ -448,7 +448,7 @@ std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag,
       {
          continue;
       }
-      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::Barracks);
+      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingTypeBarracks);
       if (!barracks.has_value())
       {
          continue;

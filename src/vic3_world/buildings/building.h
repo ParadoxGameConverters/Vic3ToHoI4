@@ -12,19 +12,16 @@ namespace vic3
 {
 
 // useful vanilla building types
-namespace BuildingType
-{
-const std::string Barracks = "building_barracks";
-const std::string ConscriptionCenter = "building_conscription_center";
-const std::string ConstructionSector = "building_construction_sector";
-const std::string NavalBase = "building_naval_base";
-const std::string OilRig = "building_oil_rig";
-const std::string Port = "building_port";
-const std::string Shipyards = "building_shipyards";
-const std::string UrbanCenter = "building_urban_center";
-const std::string WarMachineIndustry = "building_war_machine_industry";
+const std::string BuildingTypeBarracks = "building_barracks";
+const std::string BuildingTypeConscriptionCenter = "building_conscription_center";
+const std::string BuildingTypeConstructionSector = "building_construction_sector";
+const std::string BuildingTypeNavalBase = "building_naval_base";
+const std::string BuildingTypeOilRig = "building_oil_rig";
+const std::string BuildingTypePort = "building_port";
+const std::string BuildingTypeShipyards = "building_shipyards";
+const std::string BuildingTypeUrbanCenter = "building_urban_center";
+const std::string BuildingTypeWarMachineIndustry = "building_war_machine_industry";
 
-}  // namespace BuildingType
 
 class Building
 {

@@ -506,7 +506,7 @@ float FindNavalBaseStaffing(const vic3::World& source_world, int source_state_id
 {
    std::vector<vic3::Building> buildings = source_world.GetBuildings().GetBuildingsInState(source_state_id);
    const auto maybe_building = std::ranges::find_if(buildings, [](const vic3::Building& b) {
-      return b.GetType() == vic3::BuildingType::NavalBase;
+      return b.GetType() == vic3::BuildingTypeNavalBase;
    });
    if (maybe_building != buildings.end())
    {
