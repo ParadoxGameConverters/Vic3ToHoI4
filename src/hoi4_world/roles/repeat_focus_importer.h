@@ -7,6 +7,7 @@
 
 #include "src/hoi4_world/focus_trees/focus_importer.h"
 #include "src/hoi4_world/roles/repeat_focus.h"
+#include "src/hoi4_world/roles/triggers/trigger_importer.h"
 
 
 
@@ -23,8 +24,9 @@ class RepeatFocusImporter
   private:
    commonItems::parser parser_;
    FocusImporter focus_importer_;
+   TriggerImporter trigger_importer_;
 
-   std::unique_ptr<Trigger> requirement_;
+   std::unique_ptr<Trigger> trigger_;
    std::vector<Focus> focuses_;
 };
 

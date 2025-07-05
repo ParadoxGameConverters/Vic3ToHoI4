@@ -3,8 +3,8 @@
 #include <external/commonItems/CommonRegexes.h>
 #include <external/commonItems/ParserHelpers.h>
 
-#include "src/hoi4_world/roles/requirements/always_trigger.h"
-#include "src/hoi4_world/roles/requirements/tag_trigger.h"
+#include "src/hoi4_world/roles/triggers/always_trigger.h"
+#include "src/hoi4_world/roles/triggers/tag_trigger.h"
 
 
 hoi4::RoleImporter::RoleImporter()
@@ -36,29 +36,8 @@ hoi4::RoleImporter::RoleImporter()
    role_parser_.registerKeyword("category", [this](std::istream& input) {
       role_options_.category = commonItems::getString(input);
    });
-   role_parser_.registerKeyword("requirements", [this](std::istream& input) {
-      const std::string requirement_string = commonItems::stringOfItem(input).getString();
-
-      // scan for 'always=yes' constructs
-      const std::regex always_match_regex(R"(.*always[\s\S]?=[\s\S]?yes.*)");
-      std::smatch always_match;
-      if (std::regex_match(requirement_string, always_match, always_match_regex))
-      {
-         role_options_.requirement = std::make_unique<AlwaysTrigger>(true);
-         return;
-      }
-
-      // scan for 'tag=TAG' constructs
-      const std::regex tag_match_regex(R"(.*tag = (\w{3}).*)");
-      std::smatch tag_match;
-      if (std::regex_match(requirement_string, tag_match, tag_match_regex))
-      {
-         role_options_.requirement = std::make_unique<TagTrigger>(tag_match[1].str());
-         return;
-      }
-
-      Log(LogLevel::Warning) << "Requirement cannot be handled: " << requirement_string;
-      role_options_.requirement = std::make_unique<AlwaysTrigger>(false);
+   role_parser_.registerKeyword("trigger", [this](std::istream& input) {
+      role_options_.trigger = trigger_importer_.ImportTrigger(input);
    });
    role_parser_.registerKeyword("score", [this](std::istream& input) {
       role_options_.score = static_cast<float>(commonItems::getDouble(input));

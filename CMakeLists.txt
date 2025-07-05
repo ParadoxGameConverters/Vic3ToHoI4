@@ -101,11 +101,12 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/role.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/role_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/roles_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/stories_creator.cpp")
-set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/requirements/and_trigger.cpp")
-set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/requirements/not_trigger.cpp")
-set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/requirements/or_trigger.cpp")
-set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/requirements/tag_trigger.cpp")
-set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/requirements/trigger_base.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/and_trigger.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/not_trigger.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/or_trigger.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/tag_trigger.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/trigger_base.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/trigger_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/default_states_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/hoi4_state.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/hoi4_states_converter.cpp")
@@ -244,7 +245,7 @@ endif (PLATFORM  STREQUAL "Windows")
 add_executable(
 	Vic3ToHoi4
 	${MAIN_SOURCE}
- )
+)
 set_target_properties( Vic3ToHoi4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
@@ -443,11 +444,12 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/repeat_focus_importer_tes
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/role_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/roles_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/stories_creator_tests.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/requirements/always_trigger_tests.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/requirements/and_trigger_tests.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/requirements/not_trigger_tests.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/requirements/or_trigger_tests.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/requirements/tag_trigger_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/always_trigger_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/and_trigger_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/not_trigger_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/or_trigger_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/tag_trigger_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/trigger_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/default_states_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/hoi4_states_converter_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/hoi4_states_converter_tests_state_contents.cpp")
@@ -564,7 +566,7 @@ add_executable(
 	Vic3ToHoi4Tests
 	${TEST_SOURCES}
 	${GTEST_SOURCES}
- )
+)
 set_target_properties(Vic3ToHoi4Tests
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
@@ -662,7 +664,7 @@ endif (COVERAGE STREQUAL true)
 add_library(run_clang_tidy
 	${CONVERTER_SOURCES}
 	${TEST_SOURCES}
- )
+)
 target_link_libraries(run_clang_tidy pthread)
 set_target_properties(run_clang_tidy PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 add_dependencies(run_clang_tidy Vic3ToHoi4 Vic3ToHoi4Tests)

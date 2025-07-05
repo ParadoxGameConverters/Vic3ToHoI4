@@ -1,4 +1,4 @@
-#include "src/hoi4_world/roles/requirements/or_trigger.h"
+#include "src/hoi4_world/roles/triggers/and_trigger.h"
 
 #include <algorithm>
 
@@ -7,15 +7,15 @@
 namespace hoi4
 {
 
-bool OrTrigger::IsValid(const Scope& scope, const World& world) const
+bool AndTrigger::IsValid(const Scope& scope, const World& world) const
 {
-   return std::ranges::any_of(children_.begin(), children_.end(), [scope, world](const std::unique_ptr<Trigger>& a) {
+   return std::ranges::all_of(children_.begin(), children_.end(), [scope, world](const std::unique_ptr<Trigger>& a) {
       return a->IsValid(scope, world);
    });
 }
 
 
-bool OrTrigger::operator==(const OrTrigger& rhs) const
+bool AndTrigger::operator==(const AndTrigger& rhs) const
 {
    if (children_.size() != rhs.children_.size())
    {
@@ -34,7 +34,7 @@ bool OrTrigger::operator==(const OrTrigger& rhs) const
 }
 
 
-bool OrTrigger::operator<(const OrTrigger& rhs) const
+bool AndTrigger::operator<(const AndTrigger& rhs) const
 {
    if (children_.size() < rhs.children_.size())
    {
@@ -61,7 +61,7 @@ bool OrTrigger::operator<(const OrTrigger& rhs) const
 }
 
 
-std::unique_ptr<Trigger> OrTrigger::Copy() const
+std::unique_ptr<Trigger> AndTrigger::Copy() const
 {
    std::vector<std::unique_ptr<Trigger>> children;
    for (const auto& child: children_)
@@ -69,13 +69,13 @@ std::unique_ptr<Trigger> OrTrigger::Copy() const
       children.push_back(child->Copy());
    }
 
-   return std::make_unique<OrTrigger>(std::move(children));
+   return std::make_unique<AndTrigger>(std::move(children));
 }
 
 
-void PrintTo(const OrTrigger& trigger, std::ostream* os)
+void PrintTo(const AndTrigger& trigger, std::ostream* os)
 {
-   *os << "OrTrigger: {\n";
+   *os << "AndTrigger: {\n";
    for (const std::unique_ptr<Trigger>& child: trigger.children_)
    {
       *os << child;
