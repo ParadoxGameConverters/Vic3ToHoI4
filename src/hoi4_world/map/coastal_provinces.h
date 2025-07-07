@@ -14,7 +14,6 @@ namespace hoi4
 class CoastalProvinces
 {
   public:
-   using storage_type = std::map<int, std::vector<int>>;
    CoastalProvinces() = default;
    explicit CoastalProvinces(std::map<int, std::vector<int>> coastal_provinces):
        coastal_provinces_(std::move(coastal_provinces))

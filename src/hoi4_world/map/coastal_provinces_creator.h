@@ -15,7 +15,7 @@ namespace hoi4
 {
 
 // create coastal province mapping from the map data and the names of land provinces and sea provinces.
-CoastalProvinces::storage_type CreateCoastalProvinces(const maps::MapData& map_data,
+std::map<int, std::vector<int>> CreateCoastalProvinces(const maps::MapData& map_data,
     const std::set<std::string>& land_provinces,
     const std::set<std::string>& sea_provinces);
 

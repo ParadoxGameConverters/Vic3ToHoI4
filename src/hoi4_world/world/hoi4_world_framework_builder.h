@@ -59,7 +59,7 @@ class WorldFrameworkBuilder
    /// </summary>
    /// <param name="provinces"></param>
    /// <returns></returns>
-   WorldFrameworkBuilder& AddCoastalProvinces(CoastalProvinces::storage_type provinces);
+   WorldFrameworkBuilder& AddCoastalProvinces(const std::map<int, std::vector<int>>& provinces);
 
   private:
    WorldFrameworkBuilder(): hoi4_mod_filesystem_("", {}) {}
@@ -69,10 +69,10 @@ class WorldFrameworkBuilder
    ResourcesMap resources_map_;
    StateCategories state_categories_;
    int test_province_number_ = 0;
-   maps::ProvinceDefinitions::storage_type province_definitions_;
+   maps::ProvinceDefinitionsOptions province_definitions_;
    maps::MapData map_data_;
 
    // requires province_definitions_
-   CoastalProvinces::storage_type coastal_provinces_;
+   std::map<int, std::vector<int>> coastal_provinces_;
 };
 }  // namespace hoi4

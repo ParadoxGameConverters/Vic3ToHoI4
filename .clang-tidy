@@ -4,6 +4,18 @@ WarningsAsErrors: '*'
 HeaderFilterRegex: ""
 ExcludeHeaderFilterRegex: '.*external.*'
 CheckOptions:
-#  - { key: readability-identifier-naming.PrivateMemberSuffix
-#    value: "_"
-  - { key: readability-identifier-naming.NamespaceCase,    value: lower_case }
+  - { key: readability-identifier-naming.AbstractClassCase,             value: CamelCase  }
+  - { key: readability-identifier-naming.ConceptCase,                   value: CamelCase  }
+  - { key: readability-identifier-naming.EnumCase,                      value: CamelCase  }
+  - { key: readability-identifier-naming.EnumConstantCase,              value: CamelCase  }
+  - { key: readability-identifier-naming.EnumConstantPrefix,            value: 'k'        }
+  - { key: readability-identifier-naming.InlineNamespaceCase,           value: lower_case }
+  - { key: readability-identifier-naming.MacroDefinitionCase,           value: UPPER_CASE }
+  - { key: readability-identifier-naming.NamespaceCase,                 value: lower_case }
+  - { key: readability-identifier-naming.ScopedEnumConstantCase,        value: CamelCase  }
+  - { key: readability-identifier-naming.ScopedEnumConstantPrefix,      value: 'k'        }
+  - { key: readability-identifier-naming.StructCase,                    value: CamelCase  }
+  - { key: readability-identifier-naming.TypeAliasCase,                 value: CamelCase  }
+  - { key: readability-identifier-naming.TypedefCase,                   value: CamelCase  }
+  - { key: readability-identifier-naming.UnionCase,                     value: CamelCase  }
+  - { key: readability-identifier-naming.ValueTemplateParameterCase,    value: lower_case }

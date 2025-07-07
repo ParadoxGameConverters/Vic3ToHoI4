@@ -772,7 +772,7 @@ std::map<std::string, int> DetermineIdeologySupport(const std::vector<int>& inte
 
 int DetermineStartingResearchSlots(const vic3::World& source_world, const vic3::Country& source_country)
 {
-   if (source_country.GetCountryRankCategory(source_world) == vic3::RankCategory::GreatPower)
+   if (source_country.GetCountryRankCategory(source_world) == vic3::RankCategory::kGreatPower)
    {
       return 4;
    }

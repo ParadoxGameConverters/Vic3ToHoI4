@@ -1,5 +1,5 @@
-#ifndef OUT_HOI4_OUT_MOD_H_
-#define OUT_HOI4_OUT_MOD_H_
+#ifndef OUT_HOI4_OUT_MOD_H
+#define OUT_HOI4_OUT_MOD_H
 
 
 
@@ -20,4 +20,4 @@ void OutputMod(std::string_view output_name, const GameVersion& game_version);
 
 
 
-#endif  // OUT_HOI4_OUT_MOD_H_
+#endif  // OUT_HOI4_OUT_MOD_H

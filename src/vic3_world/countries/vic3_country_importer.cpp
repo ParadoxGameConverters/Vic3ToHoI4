@@ -15,27 +15,27 @@ vic3::BudgetLevel parseBudgetLevel(const std::string& level_string)
 {
    if (level_string == "very_low")
    {
-      return vic3::BudgetLevel::VeryLow;
+      return vic3::BudgetLevel::kVeryLow;
    }
    if (level_string == "low")
    {
-      return vic3::BudgetLevel::Low;
+      return vic3::BudgetLevel::kLow;
    }
    if (level_string == "medium")
    {
-      return vic3::BudgetLevel::Medium;
+      return vic3::BudgetLevel::kMedium;
    }
    if (level_string == "high")
    {
-      return vic3::BudgetLevel::High;
+      return vic3::BudgetLevel::kHigh;
    }
    if (level_string == "very_high")
    {
-      return vic3::BudgetLevel::VeryHigh;
+      return vic3::BudgetLevel::kVeryHigh;
    }
 
    Log(LogLevel::Error) << fmt::format("Unknown budget level {}", level_string);
-   return vic3::BudgetLevel::Medium;
+   return vic3::BudgetLevel::kMedium;
 }
 
 }  // namespace

@@ -188,7 +188,7 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultCoastalProvinces()
    return *this;
 }
 
-WorldFrameworkBuilder& WorldFrameworkBuilder::AddCoastalProvinces(CoastalProvinces::storage_type provinces)
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddCoastalProvinces(const std::map<int, std::vector<int>>& provinces)
 {
    for (const auto& province: provinces)
    {
