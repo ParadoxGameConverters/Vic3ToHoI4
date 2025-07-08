@@ -9,7 +9,7 @@ namespace
 
 std::set<std::string> seen;
 
-void warn(const std::string& hoi_resource)
+void Warn(const std::string& hoi_resource)
 {
    if (seen.contains(hoi_resource))
    {
@@ -26,7 +26,7 @@ float mappers::ResourceMapper::CalculateScore(const std::string& hoi_resource,
 {
    if (!scores_.contains(hoi_resource))
    {
-      warn(hoi_resource);
+      Warn(hoi_resource);
       return 0.0F;
    }
    float base = 0.0F;
@@ -61,7 +61,7 @@ float mappers::ResourceMapper::WorldTotal(const std::string& hoi_resource) const
 {
    if (!scores_.contains(hoi_resource))
    {
-      warn(hoi_resource);
+      Warn(hoi_resource);
       return 0.0F;
    }
 

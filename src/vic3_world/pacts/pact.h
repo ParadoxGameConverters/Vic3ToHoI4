@@ -34,7 +34,7 @@ class Pact
    [[nodiscard]] std::string GetAction() const { return action_; }
    [[nodiscard]] date GetStartDate() const { return start_date_; }
    [[nodiscard]] std::optional<int> GetForcedDuration() const { return forced_duration_; }
-   bool isSubjectRelationship() const { return SUBJECT_PACT_TYPES.find(action_) != SUBJECT_PACT_TYPES.end(); }
+   bool IsSubjectRelationship() const { return SUBJECT_PACT_TYPES.find(action_) != SUBJECT_PACT_TYPES.end(); }
 
    std::partial_ordering operator<=>(const Pact&) const = default;
 

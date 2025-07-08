@@ -32,7 +32,7 @@ void out::OutputStrategicRegion(const path& output_name, const hoi4::StrategicRe
    }
    strategic_region_file << "\n";
    strategic_region_file << "\t}\n";
-   if (strategic_region.hasStaticModifiers())
+   if (strategic_region.HasStaticModifiers())
    {
       strategic_region_file << "\tstatic_modifiers={\n";
       for (const auto& modifier: strategic_region.GetStaticModifiers())

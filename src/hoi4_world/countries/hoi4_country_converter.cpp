@@ -256,7 +256,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
    return hoi4::Unit{division.GetName(), equipment, location};
 }
 
-void extractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std::set<std::string>& active)
+void ExtractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std::set<std::string>& active)
 {
    for (const auto& variant: variants)
    {
@@ -273,7 +273,7 @@ void extractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std
    }
 }
 
-std::map<int, int> makeNavalBaseMap(const std::vector<hoi4::State>& states)
+std::map<int, int> MakeNavalBaseMap(const std::vector<hoi4::State>& states)
 {
    std::map<int, int> naval_base_locations;
    for (const auto& state: states)
@@ -302,9 +302,9 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
    std::map<std::string, float> pm_amounts;
    std::map<std::string, int> ship_names;
    std::set<std::string> active_variants;
-   extractActiveItems(active_ship_variants, active_variants);
-   extractActiveItems(active_legacy_ship_variants, active_variants);
-   const auto naval_base_locations = makeNavalBaseMap(states.states);
+   ExtractActiveItems(active_ship_variants, active_variants);
+   ExtractActiveItems(active_legacy_ship_variants, active_variants);
+   const auto naval_base_locations = MakeNavalBaseMap(states.states);
 
    int num_fleets = 1;
    for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)

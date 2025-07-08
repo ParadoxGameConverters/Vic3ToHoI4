@@ -469,7 +469,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
    EXPECT_EQ(region_10.GetName(), "STRATEGICREGION_10");
    EXPECT_THAT(region_10.GetOldProvinces(), testing::UnorderedElementsAre(10, 20, 30, 40));
    EXPECT_THAT(region_10.GetNewProvinces(), testing::UnorderedElementsAre(10, 20, 30));
-   EXPECT_TRUE(region_10.hasStaticModifiers());
+   EXPECT_TRUE(region_10.HasStaticModifiers());
    EXPECT_THAT(region_10.GetStaticModifiers(),
        testing::UnorderedElementsAre(testing::Pair("test_modifier", "always"),
            testing::Pair("test_modifier_two", "always")));
@@ -511,7 +511,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
    EXPECT_EQ(region_50.GetName(), "STRATEGICREGION_50");
    EXPECT_THAT(region_50.GetOldProvinces(), testing::UnorderedElementsAre(50, 60));
    EXPECT_THAT(region_50.GetNewProvinces(), testing::UnorderedElementsAre(40, 50, 60));
-   EXPECT_FALSE(region_50.hasStaticModifiers());
+   EXPECT_FALSE(region_50.HasStaticModifiers());
    EXPECT_TRUE(region_50.GetStaticModifiers().empty());
    ASSERT_FALSE(region_50.GetNavalTerrain().has_value());
    EXPECT_TRUE(region_50.GetWeather().empty());

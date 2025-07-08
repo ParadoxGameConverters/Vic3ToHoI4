@@ -496,7 +496,7 @@ float CalculateNavalBaseRatio(const std::set<int>& hoi4_provinces,
     int total_coastal_provinces)
 {
    const int64_t coastal_province_count = std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
-      return world_framework.coastal_provinces.contains(province_id);
+      return world_framework.coastal_provinces.Contains(province_id);
    });
    return static_cast<float>(coastal_province_count) / static_cast<float>(total_coastal_provinces);
 }
@@ -1015,7 +1015,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
           static_cast<float>(source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
       const int total_coastal_provinces =
           static_cast<int>(std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
-             return world_framework.coastal_provinces.contains(province_id);
+             return world_framework.coastal_provinces.Contains(province_id);
           }));
       for (const auto& province_set: final_connected_province_sets)
       {

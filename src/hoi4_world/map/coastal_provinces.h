@@ -22,7 +22,7 @@ class CoastalProvinces
 
    [[nodiscard]] const std::map<int, std::vector<int>>& GetCoastalProvinces() const { return coastal_provinces_; }
    [[nodiscard]] bool IsProvinceCoastal(int province_num) const { return coastal_provinces_.contains(province_num); }
-   [[nodiscard]] bool contains(int province_num) const { return coastal_provinces_.contains(province_num); }
+   [[nodiscard]] bool Contains(int province_num) const { return coastal_provinces_.contains(province_num); }
 
   private:
    std::map<int, std::vector<int>> coastal_provinces_;  // province, connecting sea provinces

@@ -35,7 +35,7 @@ struct Configuration
    bool dynamic_resources = true;
    UseStories use_stories = UseStories::kNo;
 
-   void verifyVic3Path()
+   void VerifyVic3Path()
    {
       if (!commonItems::DoesFolderExist(vic3_directory))
       {
@@ -48,7 +48,7 @@ struct Configuration
       }
    }
 
-   void verifyHOI4Path()
+   void VerifyHOI4Path()
    {
       if (!commonItems::DoesFolderExist(hoi4_directory))
       {
@@ -61,7 +61,7 @@ struct Configuration
       }
    }
 
-   void verifyVic3Version(const commonItems::ConverterVersion& converterVersion) const
+   void VerifyVic3Version(const commonItems::ConverterVersion& converterVersion) const
    {
       const auto V3Version =
           GameVersion::extractVersionFromLauncher(vic3_directory / "launcher/launcher-settings.json");
@@ -88,7 +88,7 @@ struct Configuration
       }
    }
 
-   void verifyHOI4Version(const commonItems::ConverterVersion& converterVersion) const
+   void VerifyHOI4Version(const commonItems::ConverterVersion& converterVersion) const
    {
       const auto HOI4Version = GameVersion::extractVersionFromLauncher(hoi4_directory / "launcher-settings.json");
       if (!HOI4Version)

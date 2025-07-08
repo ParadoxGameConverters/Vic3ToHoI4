@@ -9,7 +9,7 @@ namespace hoi4
 {
 
 
-void Focus::apply_replacement(std::string_view to_replace, std::string_view replace_with)
+void Focus::ApplyReplacement(std::string_view to_replace, std::string_view replace_with)
 {
    while (id.find(to_replace) != std::string::npos)
    {

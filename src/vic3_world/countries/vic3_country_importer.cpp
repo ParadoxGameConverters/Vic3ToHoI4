@@ -11,7 +11,7 @@
 namespace
 {
 
-vic3::BudgetLevel parseBudgetLevel(const std::string& level_string)
+vic3::BudgetLevel ParseBudgetLevel(const std::string& level_string)
 {
    if (level_string == "very_low")
    {
@@ -83,13 +83,13 @@ vic3::CountryImporter::CountryImporter()
       options_.country_type = commonItems::getString(input_stream);
    });
    country_parser_.registerKeyword("tax_level", [this](std::istream& input_stream) {
-      options_.tax_level = parseBudgetLevel(commonItems::getString(input_stream));
+      options_.tax_level = ParseBudgetLevel(commonItems::getString(input_stream));
    });
    country_parser_.registerKeyword("salaries", [this](std::istream& input_stream) {
-      options_.salary_level = parseBudgetLevel(commonItems::getString(input_stream));
+      options_.salary_level = ParseBudgetLevel(commonItems::getString(input_stream));
    });
    country_parser_.registerKeyword("mil_salaries", [this](std::istream& input_stream) {
-      options_.mil_salary_level = parseBudgetLevel(commonItems::getString(input_stream));
+      options_.mil_salary_level = ParseBudgetLevel(commonItems::getString(input_stream));
    });
    country_parser_.registerKeyword("civil_war", [this](std::istream& input_stream) {
       options_.is_civil_war = commonItems::getString(input_stream) == "yes";
