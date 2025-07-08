@@ -11,31 +11,31 @@
 namespace
 {
 
-vic3::BudgetLevel parseBudgetLevel(const std::string& level_string)
+vic3::BudgetLevel ParseBudgetLevel(const std::string& level_string)
 {
    if (level_string == "very_low")
    {
-      return vic3::BudgetLevel::VeryLow;
+      return vic3::BudgetLevel::kVeryLow;
    }
    if (level_string == "low")
    {
-      return vic3::BudgetLevel::Low;
+      return vic3::BudgetLevel::kLow;
    }
    if (level_string == "medium")
    {
-      return vic3::BudgetLevel::Medium;
+      return vic3::BudgetLevel::kMedium;
    }
    if (level_string == "high")
    {
-      return vic3::BudgetLevel::High;
+      return vic3::BudgetLevel::kHigh;
    }
    if (level_string == "very_high")
    {
-      return vic3::BudgetLevel::VeryHigh;
+      return vic3::BudgetLevel::kVeryHigh;
    }
 
    Log(LogLevel::Error) << fmt::format("Unknown budget level {}", level_string);
-   return vic3::BudgetLevel::Medium;
+   return vic3::BudgetLevel::kMedium;
 }
 
 }  // namespace
@@ -83,13 +83,13 @@ vic3::CountryImporter::CountryImporter()
       options_.country_type = commonItems::getString(input_stream);
    });
    country_parser_.registerKeyword("tax_level", [this](std::istream& input_stream) {
-      options_.tax_level = parseBudgetLevel(commonItems::getString(input_stream));
+      options_.tax_level = ParseBudgetLevel(commonItems::getString(input_stream));
    });
    country_parser_.registerKeyword("salaries", [this](std::istream& input_stream) {
-      options_.salary_level = parseBudgetLevel(commonItems::getString(input_stream));
+      options_.salary_level = ParseBudgetLevel(commonItems::getString(input_stream));
    });
    country_parser_.registerKeyword("mil_salaries", [this](std::istream& input_stream) {
-      options_.mil_salary_level = parseBudgetLevel(commonItems::getString(input_stream));
+      options_.mil_salary_level = ParseBudgetLevel(commonItems::getString(input_stream));
    });
    country_parser_.registerKeyword("civil_war", [this](std::istream& input_stream) {
       options_.is_civil_war = commonItems::getString(input_stream) == "yes";

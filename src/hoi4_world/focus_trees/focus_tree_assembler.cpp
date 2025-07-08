@@ -34,7 +34,7 @@ std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
          for (hoi4::Focus focus_copy: repeat_focus.GetFocuses())
          {
             std::string original_id = focus_copy.id;
-            focus_copy.apply_replacement("$TARGET_TAG$", target_tag);
+            focus_copy.ApplyReplacement("$TARGET_TAG$", target_tag);
 
             role_lookup[original_id].push_back(focus_copy.id);
             if (auto [itr, success] = target_focuses.emplace(original_id, std::vector{focus_copy}); !success)
@@ -169,7 +169,7 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
       }
 
       UpdatePrerequisites(role_lookup, focus);
-      focus.apply_replacement("$TAG$", tag);
+      focus.ApplyReplacement("$TAG$", tag);
    }
 
    return tree;

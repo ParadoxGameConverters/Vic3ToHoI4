@@ -83,9 +83,9 @@ TEST(Vic3worldCountriesVic3country, PowerRankWorks)
        .country_rankings = country_rankings,
    });
 
-   EXPECT_EQ(c1.GetCountryRankCategory(world), RankCategory::GreatPower);
-   EXPECT_EQ(c2.GetCountryRankCategory(world), RankCategory::MajorPower);
-   EXPECT_EQ(c3.GetCountryRankCategory(world), RankCategory::MinorPower);
+   EXPECT_EQ(c1.GetCountryRankCategory(world), RankCategory::kGreatPower);
+   EXPECT_EQ(c2.GetCountryRankCategory(world), RankCategory::kMajorPower);
+   EXPECT_EQ(c3.GetCountryRankCategory(world), RankCategory::kMinorPower);
 }
 
 

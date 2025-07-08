@@ -8,6 +8,8 @@
 
 
 
+// NOLINTBEGIN
+// These are for compatibility with fmt::format, and must be named exactly
 template <>
 struct fmt::formatter<date>
 {
@@ -31,6 +33,7 @@ auto fmt::formatter<date>::format(const date& the_date, FormatContext& ctx) cons
 {
    return fmt::format_to(ctx.out(), "{0}.{1}.{2}", the_date.getYear(), the_date.getMonth(), the_date.getDay());
 }
+// NOLINTEND
 
 
 

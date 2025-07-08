@@ -36,7 +36,7 @@ TEST(Hoi4worldFocustreesFocusTests, ReplacementIsApplied)
    focus.ai_will_do = "= { test_ai_will_do }";
    focus.allow_branch = "= { test_allow_branch }";
 
-   focus.apply_replacement("test", "result");
+   focus.ApplyReplacement("test", "result");
 
    EXPECT_EQ(focus.id, "result_id");
    EXPECT_EQ(focus.icon, "result_icon");

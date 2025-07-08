@@ -14,7 +14,7 @@ TEST(MappersInfrastructureInfrastructureMapperTests, FindRootWorks)
       return 0.6F * input + 4;
    };
 
-   EXPECT_FLOAT_EQ((find_root<float, float>(
+   EXPECT_FLOAT_EQ((FindRoot<float, float>(
                        func,
                        0.0F,
                        []([[maybe_unused]] float f) {

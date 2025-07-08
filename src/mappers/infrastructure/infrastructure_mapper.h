@@ -1,5 +1,5 @@
-#ifndef SRC_MAPPERS_INFRASTRUCTURE_INFRASTRUCTUREMAPPER_H_
-#define SRC_MAPPERS_INFRASTRUCTURE_INFRASTRUCTUREMAPPER_H_
+#ifndef SRC_MAPPERS_INFRASTRUCTURE_INFRASTRUCTUREMAPPER_H
+#define SRC_MAPPERS_INFRASTRUCTURE_INFRASTRUCTUREMAPPER_H
 
 
 
@@ -16,7 +16,7 @@ namespace mappers
 
 // Find root of a function fn using secant approximation.
 template <typename T, typename U>
-U find_root(const std::function<U(T)>& fn, T x_0, const std::function<T(U)>& x_1_func, int iterations)
+U FindRoot(const std::function<U(T)>& fn, T x_0, const std::function<T(U)>& x_1_func, int iterations)
 {
    U y_0 = fn(x_0);
    T x_1 = x_1_func(y_0);
@@ -84,4 +84,4 @@ class InfrastructureMapper
 
 
 
-#endif  // SRC_MAPPERS_INFRASTRUCTURE_INFRASTRUCTUREMAPPER_H_
+#endif  // SRC_MAPPERS_INFRASTRUCTURE_INFRASTRUCTUREMAPPER_H

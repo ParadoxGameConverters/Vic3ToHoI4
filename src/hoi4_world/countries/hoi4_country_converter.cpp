@@ -256,7 +256,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
    return hoi4::Unit{division.GetName(), equipment, location};
 }
 
-void extractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std::set<std::string>& active)
+void ExtractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std::set<std::string>& active)
 {
    for (const auto& variant: variants)
    {
@@ -273,7 +273,7 @@ void extractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std
    }
 }
 
-std::map<int, int> makeNavalBaseMap(const std::vector<hoi4::State>& states)
+std::map<int, int> MakeNavalBaseMap(const std::vector<hoi4::State>& states)
 {
    std::map<int, int> naval_base_locations;
    for (const auto& state: states)
@@ -302,9 +302,9 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
    std::map<std::string, float> pm_amounts;
    std::map<std::string, int> ship_names;
    std::set<std::string> active_variants;
-   extractActiveItems(active_ship_variants, active_variants);
-   extractActiveItems(active_legacy_ship_variants, active_variants);
-   const auto naval_base_locations = makeNavalBaseMap(states.states);
+   ExtractActiveItems(active_ship_variants, active_variants);
+   ExtractActiveItems(active_legacy_ship_variants, active_variants);
+   const auto naval_base_locations = MakeNavalBaseMap(states.states);
 
    int num_fleets = 1;
    for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
@@ -318,7 +318,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       {
          continue;
       }
-      const auto naval_base = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::NavalBase);
+      const auto naval_base = buildings.GetBuildingInState(vic3_id, vic3::BuildingTypeNavalBase);
       if (!naval_base.has_value())
       {
          continue;
@@ -448,7 +448,7 @@ std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag,
       {
          continue;
       }
-      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::Barracks);
+      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingTypeBarracks);
       if (!barracks.has_value())
       {
          continue;
@@ -772,7 +772,7 @@ std::map<std::string, int> DetermineIdeologySupport(const std::vector<int>& inte
 
 int DetermineStartingResearchSlots(const vic3::World& source_world, const vic3::Country& source_country)
 {
-   if (source_country.GetCountryRankCategory(source_world) == vic3::RankCategory::GreatPower)
+   if (source_country.GetCountryRankCategory(source_world) == vic3::RankCategory::kGreatPower)
    {
       return 4;
    }

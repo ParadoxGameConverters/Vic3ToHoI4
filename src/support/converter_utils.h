@@ -1,5 +1,5 @@
-#ifndef SRC_SUPPORT_CONVERTERUTILS_H_
-#define SRC_SUPPORT_CONVERTERUTILS_H_
+#ifndef SRC_SUPPORT_CONVERTERUTILS_H
+#define SRC_SUPPORT_CONVERTERUTILS_H
 
 
 
@@ -17,4 +17,4 @@ void OutputStats(const std::string& stat_name, double converted_value, double ba
 
 
 
-#endif  // SRC_SUPPORT_CONVERTERUTILS_H_
+#endif  // SRC_SUPPORT_CONVERTERUTILS_H

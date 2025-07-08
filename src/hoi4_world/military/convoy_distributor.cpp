@@ -14,7 +14,7 @@ void ConvoyDistributor::CalculateStateWeights(const vic3::World& source_world)
    vic3_map_ = {};
    for (const auto [id, state]: states)
    {
-      const auto building = buildings.GetBuildingInState(id, vic3::BuildingType::Port);
+      const auto building = buildings.GetBuildingInState(id, vic3::BuildingTypePort);
       if (!building)
       {
          continue;

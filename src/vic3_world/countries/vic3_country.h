@@ -25,11 +25,11 @@ class World;
 /// </summary>
 enum class BudgetLevel
 {
-   VeryLow,
-   Low,
-   Medium,
-   High,
-   VeryHigh
+   kVeryLow,
+   kLow,
+   kMedium,
+   kHigh,
+   kVeryHigh
 };
 
 
@@ -65,11 +65,11 @@ struct CountryOptions
 
 enum class RankCategory
 {
-   GreatPower,
-   MajorPower,
-   MinorPower,          // called "unrecognized regional power" if unrecognized
-   InsignificantPower,  // called "unrecognized power" if unrecognized
-   DecentralizedPower
+   kGreatPower,
+   kMajorPower,
+   kMinorPower,          // called "unrecognized regional power" if unrecognized
+   kInsignificantPower,  // called "unrecognized power" if unrecognized
+   kDecentralizedPower
 };
 
 

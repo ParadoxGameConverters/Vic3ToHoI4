@@ -224,6 +224,6 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddCoastalProvincesWorks)
                                         .AddCoastalProvinces({{10, {30}}})
                                         .Build();
 
-   EXPECT_TRUE(world_framework.coastal_provinces.contains(10));
+   EXPECT_TRUE(world_framework.coastal_provinces.Contains(10));
 }
 }  // namespace hoi4

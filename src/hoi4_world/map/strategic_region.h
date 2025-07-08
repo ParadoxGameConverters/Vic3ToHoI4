@@ -46,7 +46,7 @@ class StrategicRegion
    [[nodiscard]] std::string_view GetName() const { return name_; }
    [[nodiscard]] const std::vector<int>& GetOldProvinces() const { return old_provinces_; }
    [[nodiscard]] const std::vector<int>& GetNewProvinces() const { return new_provinces_; }
-   [[nodiscard]] bool hasStaticModifiers() const { return !static_modifiers_.empty(); }
+   [[nodiscard]] bool HasStaticModifiers() const { return !static_modifiers_.empty(); }
    [[nodiscard]] const std::map<std::string, std::string>& GetStaticModifiers() const { return static_modifiers_; }
    [[nodiscard]] const std::optional<std::string>& GetNavalTerrain() const { return naval_terrain_; }
    [[nodiscard]] std::string_view GetWeather() const { return weather_; }

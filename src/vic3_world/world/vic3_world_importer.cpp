@@ -290,7 +290,7 @@ void ApplySubjectRelationships(const std::map<int, vic3::Pact>& pacts, std::map<
 {
    for (const vic3::Pact& pact: pacts | std::views::values)
    {
-      if (pact.isSubjectRelationship())
+      if (pact.IsSubjectRelationship())
       {
          auto overlord = countries.find(pact.GetFirstId());
          auto subject = countries.find(pact.GetSecondId());

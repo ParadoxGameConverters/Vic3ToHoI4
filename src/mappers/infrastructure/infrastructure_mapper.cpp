@@ -71,7 +71,7 @@ float InfrastructureMapper::FindFudgeFactor(const std::map<int, vic3::State>& st
       return ((new_infra / states.size()) - target_hoi_infra_per_state) * target_hoi_infra_per_state;
    };
 
-   return find_root<float, float>(
+   return FindRoot<float, float>(
        function,
        0.0,
        [](float f) {  // good initial of fudge factor = -(difference%)

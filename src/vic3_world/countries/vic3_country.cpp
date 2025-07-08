@@ -23,20 +23,20 @@ RankCategory Country::GetCountryRankCategory(const vic3::World& world) const
    const auto& rankings = world.GetCountryRankings();
    if (rankings.GetGreatPowers().contains(this->GetNumber()))
    {
-      return RankCategory::GreatPower;
+      return RankCategory::kGreatPower;
    }
    else if (rankings.GetMajorPowers().contains(this->GetNumber()))
    {
-      return RankCategory::MajorPower;
+      return RankCategory::kMajorPower;
    }
    else if (rankings.GetScoredCountries().contains(this->GetNumber()))
    {
       // todo: distinguish between minor and insignificant power
-      return RankCategory::MinorPower;
+      return RankCategory::kMinorPower;
    }
    else
    {
-      return RankCategory::DecentralizedPower;
+      return RankCategory::kDecentralizedPower;
    }
 }
 
