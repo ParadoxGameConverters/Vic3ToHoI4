@@ -599,7 +599,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
    });
 
    const std::map<int, std::vector<vic3::Building>> buildings = {
-       {1, {vic3::Building(vic3::BuildingTypeNavalBase, 1, 0.0F, 5.0F, {})}},
+       {1, {vic3::Building(vic3::kBuildingTypeNavalBase, 1, 0.0F, 5.0F, {})}},
    };
 
    const vic3::World source_world({.states =

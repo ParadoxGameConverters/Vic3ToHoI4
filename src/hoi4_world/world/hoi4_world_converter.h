@@ -30,7 +30,7 @@ World ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesystem,
     const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
     std::future<WorldFramework> world_framework_future,
-    const configuration::Configuration& config = configuration::defaultConfig);
+    const configuration::Configuration& config = configuration::kDefaultConfig);
 
 }  // namespace hoi4
 

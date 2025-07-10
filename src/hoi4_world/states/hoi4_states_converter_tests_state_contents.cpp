@@ -638,8 +638,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
                                       {"REGION_TWO", vic3::StateRegion({{"x000005", "port"}}, {})},
                                   })
                                   .AddBuildings({
-                                      vic3::Building(vic3::BuildingTypeNavalBase, 1, 0.0F, 9.0F, {}),
-                                      vic3::Building(vic3::BuildingTypeNavalBase, 2, 0.0F, 10.0F, {}),
+                                      vic3::Building(vic3::kBuildingTypeNavalBase, 1, 0.0F, 9.0F, {}),
+                                      vic3::Building(vic3::kBuildingTypeNavalBase, 2, 0.0F, 10.0F, {}),
                                   });
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
@@ -682,8 +682,8 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesPrioritisePorts)
                                       {"REGION_TWO", vic3::StateRegion({{"x000005", "mine"}, {"x000004", "city"}}, {})},
                                   })
                                   .AddBuildings({
-                                      vic3::Building(vic3::BuildingTypeNavalBase, 1, 0.0F, 9.0F, {}),
-                                      vic3::Building(vic3::BuildingTypeNavalBase, 2, 0.0F, 10.0F, {}),
+                                      vic3::Building(vic3::kBuildingTypeNavalBase, 1, 0.0F, 9.0F, {}),
+                                      vic3::Building(vic3::kBuildingTypeNavalBase, 2, 0.0F, 10.0F, {}),
                                   });
    mappers::WorldMapperBuilder world_mapper = std::move(
        mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
@@ -1202,7 +1202,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DebugVictoryPointsAreConverted)
        world_framework.Build(),
        {},
        map_data,
-       configuration::debugConfig);
+       configuration::kDebugConfig);
 
    EXPECT_THAT(hoi4_states.states,
        testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .victory_points = {{10, 1}, {20, 2}, {30, 3}}}),

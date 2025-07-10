@@ -70,11 +70,11 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        .buildings = vic3::Buildings({
            {1,
                {
-                   vic3::Building(vic3::BuildingTypePort, 1, 0, 1, std::vector<std::string>{"pm_port_3"}),
-                   vic3::Building(vic3::BuildingTypeNavalBase, 1, 0, 1, std::vector<std::string>{"pm_navy"}),
+                   vic3::Building(vic3::kBuildingTypePort, 1, 0, 1, std::vector<std::string>{"pm_port_3"}),
+                   vic3::Building(vic3::kBuildingTypeNavalBase, 1, 0, 1, std::vector<std::string>{"pm_navy"}),
                }},
-           {2, {vic3::Building(vic3::BuildingTypePort, 2, 0, 1, std::vector<std::string>{"pm_port_1"})}},
-           {3, {vic3::Building(vic3::BuildingTypePort, 3, 0, 1, std::vector<std::string>{"pm_port_2"})}},
+           {2, {vic3::Building(vic3::kBuildingTypePort, 2, 0, 1, std::vector<std::string>{"pm_port_1"})}},
+           {3, {vic3::Building(vic3::kBuildingTypePort, 3, 0, 1, std::vector<std::string>{"pm_port_2"})}},
        }),
        .culture_definitions =
            {

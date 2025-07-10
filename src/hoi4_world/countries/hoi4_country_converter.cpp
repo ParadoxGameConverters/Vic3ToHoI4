@@ -23,7 +23,7 @@
 namespace
 {
 
-constexpr float tolerance = 0.01F;
+constexpr float kTolerance = 0.01F;
 
 bool StateAsCapitalCompareFunction(const hoi4::State& a, const hoi4::State& b)
 {
@@ -121,8 +121,8 @@ std::optional<int> ConvertCapital(const vic3::Country& source_country,
 date ConvertElection(const std::optional<date>& vic_election)
 {
    const auto start_date = date("1936.1.1");
-   constexpr int election_period = 4;  // All Vic elections have 4-year cycles
-   const auto pivot_date = date(start_date.getYear() - election_period, start_date.getMonth(), start_date.getDay());
+   constexpr int kElectionPeriod = 4;  // All Vic elections have 4-year cycles
+   const auto pivot_date = date(start_date.getYear() - kElectionPeriod, start_date.getMonth(), start_date.getDay());
 
    if (!vic_election)  // Country has no elections in Vic
    {
@@ -131,19 +131,19 @@ date ConvertElection(const std::optional<date>& vic_election)
 
    date last_election = vic_election.value();
    int election_year = pivot_date.getYear();
-   if (const auto year_offset = FloorMod(pivot_date.getYear() - last_election.getYear(), election_period);
+   if (const auto year_offset = FloorMod(pivot_date.getYear() - last_election.getYear(), kElectionPeriod);
        year_offset == 0)
    {
       // Only matters when last_election is on January 1st.
       // Or if we ever allow non January 1st start dates.
       if (pivot_date >= date(pivot_date.getYear(), last_election.getMonth(), last_election.getDay()))
       {
-         election_year = pivot_date.getYear() + election_period;
+         election_year = pivot_date.getYear() + kElectionPeriod;
       }
    }
    else
    {
-      election_year = pivot_date.getYear() + election_period - year_offset;
+      election_year = pivot_date.getYear() + kElectionPeriod - year_offset;
    }
 
    last_election = date(election_year, last_election.getMonth(), last_election.getDay());
@@ -211,7 +211,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
          return {};
       }
    }
-   if (total < tolerance)
+   if (total < kTolerance)
    {
       // Avoid an infinite loop of making divisions that don't require any strength.
       return {};
@@ -242,7 +242,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
          {
             location = *battalion_location;
          }
-         if (needed < tolerance)
+         if (needed < kTolerance)
          {
             break;
          }
@@ -250,7 +250,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
    }
 
    std::erase_if(battalions, [](const hoi4::Battalion& cand) {
-      return cand.GetStrength() < tolerance;
+      return cand.GetStrength() < kTolerance;
    });
 
    return hoi4::Unit{division.GetName(), equipment, location};
@@ -318,7 +318,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       {
          continue;
       }
-      const auto naval_base = buildings.GetBuildingInState(vic3_id, vic3::BuildingTypeNavalBase);
+      const auto naval_base = buildings.GetBuildingInState(vic3_id, vic3::kBuildingTypeNavalBase);
       if (!naval_base.has_value())
       {
          continue;
@@ -448,7 +448,7 @@ std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag,
       {
          continue;
       }
-      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingTypeBarracks);
+      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::kBuildingTypeBarracks);
       if (!barracks.has_value())
       {
          continue;

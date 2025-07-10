@@ -22,7 +22,7 @@
 namespace
 {
 
-constexpr int MAX_FACTORY_SLOTS = 12;
+constexpr int kMaxFactorySlots = 12;
 const std::vector<std::string> kResourceNames = {"steel", "oil", "tungsten", "aluminium", "chromium", "rubber"};
 const std::map<std::string, int> kNavalBasePoints = {{"port", 5}, {"city", 4}, {"mine", 3}, {"farm", 2}, {"wood", 1}};
 
@@ -468,7 +468,7 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
                                    (IsStateCoastal(province_set, {}) ? std::max(0.0F, country_factories.docks) : 0.0F);
    const int factories_floor = static_cast<int>(std::round(std::max(factories, applied_factories)));
 
-   for (int i = 0; i < std::min(factories_floor, MAX_FACTORY_SLOTS); i++)
+   for (int i = 0; i < std::min(factories_floor, kMaxFactorySlots); i++)
    {
       if (IsStateCoastal(province_set, coastal_provinces) && (country_factories.docks > 0.0F))
       {
@@ -506,7 +506,7 @@ float FindNavalBaseStaffing(const vic3::World& source_world, int source_state_id
 {
    std::vector<vic3::Building> buildings = source_world.GetBuildings().GetBuildingsInState(source_state_id);
    const auto maybe_building = std::ranges::find_if(buildings, [](const vic3::Building& b) {
-      return b.GetType() == vic3::BuildingTypeNavalBase;
+      return b.GetType() == vic3::kBuildingTypeNavalBase;
    });
    if (maybe_building != buildings.end())
    {
@@ -669,14 +669,14 @@ std::optional<int> GetBestHoi4Province(const mappers::Hoi4ToVic3ProvinceMapping:
 
 std::optional<int> GetVictoryPointValue(const std::string& special_province_type)
 {
-   static const std::map<std::string, int> vp_values{
+   static const std::map<std::string, int> kVpValues{
        {"city", 5},
        {"port", 4},
        {"farm", 3},
        {"mine", 2},
        {"wood", 1},
    };
-   if (const auto& mapping = vp_values.find(special_province_type); mapping != vp_values.end())
+   if (const auto& mapping = kVpValues.find(special_province_type); mapping != kVpValues.end())
    {
       return mapping->second;
    }
@@ -1071,7 +1071,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
          }
 
          const std::string category = world_framework.state_categories.GetBestCategory(
-             std::min(civilian_factories + military_factories + dockyards + 2, static_cast<int>(MAX_FACTORY_SLOTS)));
+             std::min(civilian_factories + military_factories + dockyards + 2, static_cast<int>(kMaxFactorySlots)));
 
 
          const int manpower = static_cast<int>(

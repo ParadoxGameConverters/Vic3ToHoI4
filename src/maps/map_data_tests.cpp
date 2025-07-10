@@ -87,15 +87,15 @@ TEST_F(MapsMapdata, SpecifiedBordersCanBeLookedUp)
    // Bordering provinces
    const auto border_point = map_data.GetSpecifiedBorderCenter("1", "3");
    ASSERT_TRUE(border_point);
-   constexpr Point expected_point{13, 591};  // y-axis is from the bottom
-   EXPECT_EQ(*border_point, expected_point);
+   constexpr Point kExpectedPoint{13, 591};  // y-axis is from the bottom
+   EXPECT_EQ(*border_point, kExpectedPoint);
 
    // Impassable border for bordering provinces
    const auto impassable_border_point = map_data.GetSpecifiedBorderCenter("6", "7");
    ASSERT_TRUE(impassable_border_point);
 
-   constexpr Point expected_impassable_point{44, 586};  // y-axis is from the bottom
-   EXPECT_EQ(*impassable_border_point, expected_impassable_point);
+   constexpr Point kExpectedImpassablePoint{44, 586};  // y-axis is from the bottom
+   EXPECT_EQ(*impassable_border_point, kExpectedImpassablePoint);
 }
 
 
@@ -108,8 +108,8 @@ TEST_F(MapsMapdata, AnyBordersCanBeLookedUp)
    const auto border_point = map_data.GetAnyBorderCenter("3");
    ASSERT_TRUE(border_point);
 
-   constexpr Point expected_point{13, 590};  // y-axis is from the bottom
-   EXPECT_EQ(*border_point, expected_point);
+   constexpr Point kExpectedPoint{13, 590};  // y-axis is from the bottom
+   EXPECT_EQ(*border_point, kExpectedPoint);
 }
 
 
@@ -148,8 +148,8 @@ TEST_F(MapsMapdata, ProvincePointsCanBeLookedUp)
    const auto provincePoints = map_data.GetProvincePoints("1");
    ASSERT_TRUE(provincePoints);
 
-   constexpr Point expected_point{13, 595};
-   EXPECT_EQ(provincePoints->GetCentermostPoint(), expected_point);
+   constexpr Point kExpectedPoint{13, 595};
+   EXPECT_EQ(provincePoints->GetCentermostPoint(), kExpectedPoint);
 }
 
 }  // namespace maps

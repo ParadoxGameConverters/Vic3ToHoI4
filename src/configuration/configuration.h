@@ -115,8 +115,8 @@ struct Configuration
    }
 };
 
-const Configuration defaultConfig = {};
-const Configuration debugConfig = {.debug = true};
+const Configuration kDefaultConfig = {};
+const Configuration kDebugConfig = {.debug = true};
 
 
 }  // namespace configuration
