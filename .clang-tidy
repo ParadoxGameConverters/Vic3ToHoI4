@@ -8,12 +8,11 @@ CheckOptions:
   - { key: readability-identifier-naming.ClassCase,                     value: CamelCase  }
   - { key: readability-identifier-naming.ClassConstantCase,             value: CamelCase  }
   - { key: readability-identifier-naming.ClassConstantCasePrefix,       value: 'k'        }
-#  - { key: readability-identifier-naming.ClassMemberCase,               value: lower_case }
-#  - { key: readability-identifier-naming.ClassMemberSuffix,             value: '_'        }
+  - { key: readability-identifier-naming.ClassMemberCase,               value: lower_case }
   - { key: readability-identifier-naming.ClassMethodCase,               value: CamelCase  }
   - { key: readability-identifier-naming.ConceptCase,                   value: CamelCase  }
-# - { key: readability-identifier-naming.ConstantCase,                  value: CamelCase  }
-# - { key: readability-identifier-naming.ConstantPrefix,                value: 'k'        }
+  - { key: readability-identifier-naming.ConstantCase,                  value: CamelCase  }
+  - { key: readability-identifier-naming.ConstantPrefix,                value: 'k'        }
   - { key: readability-identifier-naming.ConstantMemberCase,            value: lower_case }
 #  - { key: readability-identifier-naming.ConstantMemberSuffix,          value: '_'        }
   - { key: readability-identifier-naming.ConstantParameterCase,         value: lower_case }
@@ -32,7 +31,7 @@ CheckOptions:
   - { key: readability-identifier-naming.GlobalConstantPointerPrefix,   value: 'k'        }
   - { key: readability-identifier-naming.GlobalFunctionCase,            value: CamelCase  }
   - { key: readability-identifier-naming.GlobalPointerCase,             value: lower_case }
-#  - { key: readability-identifier-naming.GlobalVariableCase,            value: lower_case }
+  - { key: readability-identifier-naming.GlobalVariableCase,            value: lower_case }
   - { key: readability-identifier-naming.InlineNamespaceCase,           value: lower_case }
   - { key: readability-identifier-naming.LocalConstantCase,             value: lower_case }
   - { key: readability-identifier-naming.LocalConstantPointerCase,      value: lower_case }
@@ -52,7 +51,6 @@ CheckOptions:
   - { key: readability-identifier-naming.ProtectedMemberSuffix,         value: '_'        }
   - { key: readability-identifier-naming.ProtectedMethodCase,           value: CamelCase  }
   - { key: readability-identifier-naming.PublicMemberCase,              value: lower_case }
-#  - { key: readability-identifier-naming.PublicMemberSuffix,            value: '_'        }
   - { key: readability-identifier-naming.PublicMethodCase,              value: CamelCase  }
   - { key: readability-identifier-naming.ScopedEnumConstantCase,        value: CamelCase  }
   - { key: readability-identifier-naming.ScopedEnumConstantPrefix,      value: 'k'        }

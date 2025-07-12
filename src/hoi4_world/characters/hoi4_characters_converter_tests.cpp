@@ -378,7 +378,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
 
    const auto leader_data = std::optional<Leader>({.sub_ideology = "sub_ideology"});
    const auto expected_council = Character({
-       .id = Character::GetGenId(),
+       .id = 1000,
        .first_name = "The",
        .last_name = "Council",
        .leader_data = leader_data,
@@ -397,7 +397,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
        characters,
        culture_queues);
 
-   EXPECT_THAT(characters, testing::UnorderedElementsAre(testing::Pair(Character::GetGenId() - 1, expected_council)));
+   EXPECT_THAT(characters, testing::UnorderedElementsAre(testing::Pair(1000, expected_council)));
 }
 
 
@@ -407,17 +407,17 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCol
    // Input council laws, see that newly generated character resolves collision
    // SrcCharacter intact, old council with ID 1001, new council with 1002
    std::map<int, Character> characters{
-       {Character::GetGenId() + 1, hoi4::Character({.id = Character::GetGenId() + 1})},
+       {1001, hoi4::Character({.id = 1001})},
    };
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const std::map<int, vic3::Character> source_characters{
-       {Character::GetGenId(), vic3::Character({.id = Character::GetGenId()})},
+       {1000, vic3::Character({.id = 1000})},
    };
    const auto leader_type_mapper = mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
 
    const auto leader_data = std::optional<Leader>({.sub_ideology = "sub_ideology"});
    const auto expected_council = Character({
-       .id = Character::GetGenId() + 2,
+       .id = 1002,
        .first_name = "The",
        .last_name = "Council",
        .leader_data = leader_data,
@@ -437,9 +437,8 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCol
        culture_queues);
 
    EXPECT_THAT(characters,
-       testing::UnorderedElementsAre(
-           testing::Pair(Character::GetGenId() - 2, Character({.id = Character::GetGenId() - 2})),
-           testing::Pair(Character::GetGenId() - 1, expected_council)));
+       testing::UnorderedElementsAre(testing::Pair(1001, Character({.id = 1001})),
+           testing::Pair(1002, expected_council)));
 }
 
 
