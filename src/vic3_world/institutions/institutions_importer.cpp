@@ -19,20 +19,20 @@ void InstitutionsImporter::operator()(std::istream& input_stream)
 {
    // create single institution parser
    // this has to be in the operator() method so this object can be copied/moved and still work
-   commonItems::parser institution_parser_;
-   institution_parser_.registerKeyword("institution", [this](std::istream& input_stream) {
+   commonItems::parser institution_parser;
+   institution_parser.registerKeyword("institution", [this](std::istream& input_stream) {
       this->current_institution_.type = commonItems::getString(input_stream);
    });
-   institution_parser_.registerKeyword("investment", [this](std::istream& input_stream) {
+   institution_parser.registerKeyword("investment", [this](std::istream& input_stream) {
       this->current_institution_.investment = commonItems::getInt(input_stream);
    });
-   institution_parser_.registerKeyword("country", [this](std::istream& input_stream) {
+   institution_parser.registerKeyword("country", [this](std::istream& input_stream) {
       this->current_institution_.country = commonItems::getInt(input_stream);
    });
-   institution_parser_.IgnoreUnregisteredItems();
+   institution_parser.IgnoreUnregisteredItems();
 
-   const auto elementParser = [this, &institution_parser_](std::istream& input_stream) {
-      institution_parser_.parseStream(input_stream);
+   const auto element_parser = [this, &institution_parser](std::istream& input_stream) {
+      institution_parser.parseStream(input_stream);
       if (this->current_institution_.type != "")
       {
          auto [itr, success] = this->institutions_map_.emplace(this->current_institution_.country,
@@ -45,7 +45,7 @@ void InstitutionsImporter::operator()(std::istream& input_stream)
       this->current_institution_ = {};
    };
 
-   DatabaseParser database_parser(elementParser);
+   DatabaseParser database_parser(element_parser);
    database_parser.registerKeyword("dead", commonItems::ignoreItem);
    database_parser.parseStream(input_stream);
 }

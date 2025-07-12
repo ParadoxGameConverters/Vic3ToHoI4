@@ -1948,26 +1948,26 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
        {"test_ideology_two", vic3::Ideology({{"test_law_two", 2}})},
        {"test_ideology_three", vic3::Ideology({{"test_law_three", -2}})},
    });
-   vic3::WorldOptions worldOptions = vic3::WorldOptions{
+   vic3::WorldOptions world_options = vic3::WorldOptions{
        .igs = igs,
        .ideologies = ideologies,
    };
 
-   vic3::World source_world = vic3::World(worldOptions);
+   vic3::World source_world = vic3::World(world_options);
 
-   mappers::ItemToPointsMap pointsMap;
-   pointsMap.insert({"test_law_one", {{"democratic", 2}, {"fascist", 3}, {"neutrality", 0}}});
-   pointsMap.insert({"test_law_two",
+   mappers::ItemToPointsMap points_map;
+   points_map.insert({"test_law_one", {{"democratic", 2}, {"fascist", 3}, {"neutrality", 0}}});
+   points_map.insert({"test_law_two",
        {
            {"communist", 5},
            {"fascist", 3},
        }});
-   pointsMap.insert({"test_law_three",
+   points_map.insert({"test_law_three",
        {
            {"democratic", 5},
            {"communist", 7},
        }});
-   const mappers::IdeologyMapper ideologyMapper = mappers::IdeologyMapper(pointsMap, {});
+   const mappers::IdeologyMapper ideology_mapper = mappers::IdeologyMapper(points_map, {});
 
    // TG1 has testlaw1: support, testlaw2: strong support
    // TG2 has testlaw1: support, testlaw3: strongly oppose
@@ -1984,7 +1984,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        states,
-       ideologyMapper,
+       ideology_mapper,
        mappers::UnitMapper(templates),
        {},
        {},

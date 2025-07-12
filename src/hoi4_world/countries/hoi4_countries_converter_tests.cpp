@@ -117,9 +117,9 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        .vic3_state_ids_to_hoi4_state_ids{{1, 10}, {2, 20}, {3, 30}, {4, 40}},
        .hoi4_state_ids_to_owner{{10, "TAG"}, {20, "TWO"}, {30, "TWO"}, {40, "TWO"}},
    };
-   const vic3::World v3World = vic3::World(options);
+   const vic3::World v3_world = vic3::World(options);
 
-   const auto countries = ConvertCountries(v3World,
+   const auto countries = ConvertCountries(v3_world,
        world_mapper,
        commonItems::LocalizationDatabase{{}, {}},
        states,

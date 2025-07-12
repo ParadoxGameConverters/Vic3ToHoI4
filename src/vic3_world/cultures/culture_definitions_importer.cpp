@@ -13,12 +13,12 @@ std::map<std::string, vic3::CultureDefinition> vic3::ImportCultureDefinitions(
    std::set<std::string> traits;
    std::set<std::string> ethnicities;
 
-   commonItems::parser ethnicityParser;
-   ethnicityParser.registerRegex(commonItems::integerRegex,
+   commonItems::parser ethnicity_parser;
+   ethnicity_parser.registerRegex(commonItems::integerRegex,
        [&ethnicities]([[maybe_unused]] const std::string& weight, std::istream& input_stream) {
           ethnicities.emplace(commonItems::getString(input_stream));
        });
-   ethnicityParser.IgnoreUnregisteredItems();
+   ethnicity_parser.IgnoreUnregisteredItems();
 
    commonItems::parser culture_definition_parser;
    culture_definition_parser.registerKeyword("traits", [&traits](std::istream& input_stream) {
@@ -26,8 +26,8 @@ std::map<std::string, vic3::CultureDefinition> vic3::ImportCultureDefinitions(
       std::ranges::copy(cultural_traits, std::inserter(traits, traits.end()));
    });
    culture_definition_parser.registerKeyword("ethnicities",
-       [&ethnicities, &ethnicityParser](std::istream& input_stream) {
-          ethnicityParser.parseStream(input_stream);
+       [&ethnicities, &ethnicity_parser](std::istream& input_stream) {
+          ethnicity_parser.parseStream(input_stream);
        });
    culture_definition_parser.registerKeyword("male_common_first_names", [&name_list](std::istream& input_stream) {
       std::vector<std::string> male_names = commonItems::getStrings(input_stream);

@@ -87,9 +87,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvincesMapToStates)
    world_mapper.CopyToVicWorld(world);
 
    vic3::World source_world = world.Build();
-   const auto provinceMap = MapVic3ProvincesToStates(source_world.GetStates(), source_world.GetProvinceDefinitions());
+   const auto province_map = MapVic3ProvincesToStates(source_world.GetStates(), source_world.GetProvinceDefinitions());
 
-   EXPECT_THAT(provinceMap,
+   EXPECT_THAT(province_map,
        testing::ElementsAre(testing::Pair("x000001", 1),
            testing::Pair("x000002", 1),
            testing::Pair("x000003", 1),
@@ -99,9 +99,9 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvincesMapToStates)
 
 TEST(Hoi4worldStatesHoi4statesconverter, DefaultProvinceMapIsEmpty)
 {
-   const auto provinceMap = MapVic3ProvincesToStates({}, {});
+   const auto province_map = MapVic3ProvincesToStates({}, {});
 
-   EXPECT_TRUE(provinceMap.empty());
+   EXPECT_TRUE(province_map.empty());
 }
 
 TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersStates)

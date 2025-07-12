@@ -16,15 +16,15 @@ namespace mappers
 
 class WorldMapperBuilder
 {
-   std::map<int, std::string> country_mappings;
-   Vic3ToHoi4ProvinceMapping vic_hoi_province_mappings;
-   Hoi4ToVic3ProvinceMapping hoi_vic_province_mappings;
-   std::vector<mappers::TechMapping> tech_mappings;
-   CultureGraphicsMapper culture_graphics_mapper;
-   ResourceMapper resource_mapper;
+   std::map<int, std::string> country_mappings_;
+   Vic3ToHoi4ProvinceMapping vic_hoi_province_mappings_;
+   Hoi4ToVic3ProvinceMapping hoi_vic_province_mappings_;
+   std::vector<mappers::TechMapping> tech_mappings_;
+   CultureGraphicsMapper culture_graphics_mapper_;
+   ResourceMapper resource_mapper_;
 
    std::future<std::map<std::string, int>> vic3_province_to_state_mapper_;
-   WorldMapperBuilder(): culture_graphics_mapper({}), resource_mapper({}) {}
+   WorldMapperBuilder(): culture_graphics_mapper_({}), resource_mapper_({}) {}
 
 
   public:

@@ -204,10 +204,10 @@ std::vector<int> SortVic3StatesByIndustryDescending(const vic3::Buildings& vic3_
 {
    std::vector<int> vic3_state_ids;
    std::ranges::copy(vic3_state_id_to_hoi4_provinces | std::views::keys, std::back_inserter(vic3_state_ids));
-   const auto ByVic3Industry = [vic3_buildings](const int& lhs, const int& rhs) {
+   const auto by_vic3_industry = [vic3_buildings](const int& lhs, const int& rhs) {
       return vic3_buildings.GetTotalGoodSalesValueInState(lhs) > vic3_buildings.GetTotalGoodSalesValueInState(rhs);
    };
-   std::ranges::sort(vic3_state_ids, ByVic3Industry);
+   std::ranges::sort(vic3_state_ids, by_vic3_industry);
    return vic3_state_ids;
 }
 

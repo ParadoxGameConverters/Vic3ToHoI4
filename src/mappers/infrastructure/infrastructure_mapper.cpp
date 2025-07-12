@@ -38,13 +38,13 @@ InfrastructureMapper::InfrastructureMapper(const std::map<int, vic3::State>& sta
    converted_hoi_infra_ = 0;
 }
 
-int InfrastructureMapper::Map(float vic3Infrastructure)
+int InfrastructureMapper::Map(float vic3_infrastructure)
 {
    // we calculate the amount of additional infra (above 1), and then add 1 to the result at the end.
    // this works better* than just clamp(value, 1, 5) for some math reason that I haven't explored.
    // *better = less 5* infra provinces, more 2-4 infra provinces.
    const int result = static_cast<int>(
-       std::round(std::clamp(fudge_factor_ + vic3Infrastructure * hoi_infra_per_vic_infra_, 0.0F, 4.0F)));
+       std::round(std::clamp(fudge_factor_ + vic3_infrastructure * hoi_infra_per_vic_infra_, 0.0F, 4.0F)));
    converted_hoi_infra_ += result;
    converted_hoi_states_ += 1;
    // all states have minimum 1 infra.

@@ -256,13 +256,13 @@ void ProcessCultureQueue(const mappers::CultureQueue& culture_queue,
     std::map<std::string, int>& portrait_counts,
     std::map<int, hoi4::Character>& characters)
 {
-   const auto ByPortraitCount = [portrait_counts](const std::string& lhs, const std::string& rhs) {
+   const auto by_portrait_count = [portrait_counts](const std::string& lhs, const std::string& rhs) {
       return portrait_counts.at(lhs) < portrait_counts.at(rhs);
    };
 
    for (auto& [key, portraits]: portrait_paths)
    {
-      std::ranges::sort(portraits, ByPortraitCount);
+      std::ranges::sort(portraits, by_portrait_count);
       const auto& queued_characters_itr = culture_queue.find(key);
       if (queued_characters_itr == culture_queue.end())
       {

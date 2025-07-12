@@ -24,7 +24,7 @@ class TaskForceTemplate
 
    bool AllVariantsActive(const std::set<std::string>& active_variants) const;
    void AddShipsIfPossible(std::vector<hoi4::Ship>& ships,
-       std::map<std::string, int>& shipCounts,
+       std::map<std::string, int>& ship_counts,
        std::map<std::string, float>& points) const;
 
    std::partial_ordering operator<=>(const TaskForceTemplate&) const = default;

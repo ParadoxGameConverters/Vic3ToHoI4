@@ -23,7 +23,7 @@ bool hoi4::TaskForceTemplate::AllVariantsActive(const std::set<std::string>& act
 }
 
 void hoi4::TaskForceTemplate::AddShipsIfPossible(std::vector<hoi4::Ship>& ships,
-    std::map<std::string, int>& shipCounts,
+    std::map<std::string, int>& ship_counts,
     std::map<std::string, float>& points) const
 {
    int multiple = 1000;
@@ -45,8 +45,8 @@ void hoi4::TaskForceTemplate::AddShipsIfPossible(std::vector<hoi4::Ship>& ships,
    {
       for (const auto& ship: ships_)
       {
-         shipCounts[ship.GetName()]++;
-         std::string ship_name = fmt::format("{} {}", ship.GetName().c_str(), shipCounts[ship.GetName()]);
+         ship_counts[ship.GetName()]++;
+         std::string ship_name = fmt::format("{} {}", ship.GetName().c_str(), ship_counts[ship.GetName()]);
          ships.emplace_back(ship_name,
              ship.GetDefinition(),
              ship.GetEquipment(),

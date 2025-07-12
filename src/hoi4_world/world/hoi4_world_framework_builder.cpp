@@ -82,9 +82,9 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultDefaultStates()
    return *this;
 }
 
-WorldFrameworkBuilder& WorldFrameworkBuilder::AddDefaultStates(const std::map<int, DefaultState> defaultStates)
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddDefaultStates(const std::map<int, DefaultState> default_states)
 {
-   for (auto& state: defaultStates)
+   for (auto& state: default_states)
    {
       this->default_states_.emplace(state);
    }

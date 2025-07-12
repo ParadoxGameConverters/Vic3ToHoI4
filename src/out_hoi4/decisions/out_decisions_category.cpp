@@ -32,9 +32,9 @@ std::ostream& operator<<(std::ostream& out, const hoi4::DecisionsCategory& decis
    {
       out << "\tvisibility_type " << decisions_category.visibility_type << "\n";
    }
-   for (const auto& extraItem: decisions_category.extra_items)
+   for (const auto& extra_item: decisions_category.extra_items)
    {
-      out << "\t" << extraItem.first << " " << extraItem.second << "\n";
+      out << "\t" << extra_item.first << " " << extra_item.second << "\n";
    }
    out << "}\n";
    out << "\n";

@@ -47,16 +47,16 @@ std::optional<int> DetermineMostUsedRegion(const std::map<int, int>& used_region
 }
 
 
-void AddProvinceToRegion(int regionNumber, int provinceId, std::map<int, hoi4::StrategicRegion>& strategic_regions)
+void AddProvinceToRegion(int region_number, int province_id, std::map<int, hoi4::StrategicRegion>& strategic_regions)
 {
-   auto region = strategic_regions.find(regionNumber);
+   auto region = strategic_regions.find(region_number);
    if (region == strategic_regions.end())
    {
-      Log(LogLevel::Warning) << "Strategic region " << regionNumber << " was not in the list of regions.";
+      Log(LogLevel::Warning) << "Strategic region " << region_number << " was not in the list of regions.";
       return;
    }
 
-   region->second.AddNewProvince(provinceId);
+   region->second.AddNewProvince(province_id);
 }
 
 
@@ -134,13 +134,13 @@ void AddLeftoverProvincesToRegions(const std::set<int>& assigned_provinces,
 }
 
 
-void AddProvincesToRegion(int regionNumber,
+void AddProvincesToRegion(int region_number,
     const hoi4::State& state,
     std::map<int, hoi4::StrategicRegion>& strategic_regions)
 {
    for (const auto& province: state.GetProvinces())
    {
-      AddProvinceToRegion(regionNumber, province, strategic_regions);
+      AddProvinceToRegion(region_number, province, strategic_regions);
    }
 }
 

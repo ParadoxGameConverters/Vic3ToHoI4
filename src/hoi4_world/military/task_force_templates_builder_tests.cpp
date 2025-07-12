@@ -29,10 +29,10 @@ TEST(Hoi4worldMilitaryTaskForceTemplatesBuilderTests, ImportsTaskForceTemplates)
        {"pm_basic_smallship", 50.0F},
        {"pm_1936_bigship", 21.0F},
        {"pm_1936_smallship", 11.0F}};
-   std::map<std::string, int> nameCounts;
+   std::map<std::string, int> name_counts;
    for (const auto& tmpl: task_forces)
    {
-      tmpl.AddShipsIfPossible(ships, nameCounts, naval_pms);
+      tmpl.AddShipsIfPossible(ships, name_counts, naval_pms);
    }
 
    EXPECT_THAT(ships,

@@ -250,10 +250,10 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
    std::map<int, int> scored_countries;
    std::map<int, vic3::State> vic3_states;
 
-   mappers::WorldMapperBuilder mapperBuilder = mappers::WorldMapperBuilder::CreateNullMapper();
+   mappers::WorldMapperBuilder mapper_builder = mappers::WorldMapperBuilder::CreateNullMapper();
    for (int i = 1; i <= 80; ++i)
    {
-      mapperBuilder.AddCountries({{i, fmt::format("X{:0>2}", i)}});
+      mapper_builder.AddCountries({{i, fmt::format("X{:0>2}", i)}});
       countries.emplace(i,
           vic3::Country({
               .number = i,
@@ -271,7 +271,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
       scored_countries.emplace(i, i);
       vic3_states.emplace(i,
           vic3::State({.owner_number = i, .owner_tag = fmt::format("x0000{:0>2}", i), .provinces = {i}}));
-      mapperBuilder.AddProvinces({{fmt::format("x0000{:0>2}", i), i}});
+      mapper_builder.AddProvinces({{fmt::format("x0000{:0>2}", i), i}});
    }
    const vic3::ProvinceDefinitions province_definitions(province_definitions_initializer);
    const vic3::Buildings buildings;
@@ -289,7 +289,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
    const World world =
        ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}),
            source_world,
-           mapperBuilder.Build(),
+           mapper_builder.Build(),
            std::async<>(std::launch::async, []() {
               return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
                   commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}))

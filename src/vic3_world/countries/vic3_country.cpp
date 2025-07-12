@@ -6,11 +6,11 @@ namespace vic3
 {
 std::set<std::string> Country::GetAcquiredTechnologies(const vic3::World& world) const
 {
-   const auto allTechs = world.GetAcquiredTechnologies();
-   const auto maybeVal = allTechs.find(this->GetNumber());
-   if (maybeVal != allTechs.end())
+   const auto all_techs = world.GetAcquiredTechnologies();
+   const auto maybe_val = all_techs.find(this->GetNumber());
+   if (maybe_val != all_techs.end())
    {
-      return maybeVal->second;
+      return maybe_val->second;
    }
    else
    {

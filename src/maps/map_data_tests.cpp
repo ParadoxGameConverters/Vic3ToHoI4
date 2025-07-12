@@ -145,11 +145,11 @@ TEST_F(MapsMapdata, ProvincePointsCanBeLookedUp)
    EXPECT_EQ(map_data.GetProvincePoints("42"), std::nullopt);  // undefined province
 
    // defined province
-   const auto provincePoints = map_data.GetProvincePoints("1");
-   ASSERT_TRUE(provincePoints);
+   const auto province_points = map_data.GetProvincePoints("1");
+   ASSERT_TRUE(province_points);
 
    constexpr Point kExpectedPoint{13, 595};
-   EXPECT_EQ(provincePoints->GetCentermostPoint(), kExpectedPoint);
+   EXPECT_EQ(province_points->GetCentermostPoint(), kExpectedPoint);
 }
 
 }  // namespace maps

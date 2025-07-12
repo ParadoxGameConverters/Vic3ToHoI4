@@ -5,28 +5,28 @@
 
 
 
-static ProgressManager instance_;
+static ProgressManager instance;
 
 void ProgressManager::AddProgress(int progress)
 {
-   instance_.progress_ += progress;
+   instance.progress_ += progress;
    // if we don't have the lock, it means that another thread is outputting updated progress.
    // we don't need every single percent, so just skip updating in this case.
-   if (instance_.mutex_.try_lock())
+   if (instance.mutex_.try_lock())
    {
-      Log(LogLevel::Progress) << fmt::format("{} %", instance_.progress_.load());
-      instance_.mutex_.unlock();
+      Log(LogLevel::Progress) << fmt::format("{} %", instance.progress_.load());
+      instance.mutex_.unlock();
    }
 }
 
 void ProgressManager::SetProgress(int progress)
 {
-   instance_.progress_ = progress;
+   instance.progress_ = progress;
    // if we don't have the lock, it means that another thread is outputting updated progress.
    // we don't need every single percent, so just skip updating in this case.
-   if (instance_.mutex_.try_lock())
+   if (instance.mutex_.try_lock())
    {
-      Log(LogLevel::Progress) << fmt::format("{} %", instance_.progress_.load());
-      instance_.mutex_.unlock();
+      Log(LogLevel::Progress) << fmt::format("{} %", instance.progress_.load());
+      instance.mutex_.unlock();
    }
 }

@@ -788,7 +788,7 @@ int DetermineStartingResearchSlots(const vic3::World& source_world, const vic3::
 
 int ConvertConvoys(const std::string& tag, const hoi4::States& states, const hoi4::ConvoyDistributor& convoys)
 {
-   int numConvoys = 0;
+   int num_convoys = 0;
    for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
    {
       const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
@@ -800,9 +800,9 @@ int ConvertConvoys(const std::string& tag, const hoi4::States& states, const hoi
       {
          continue;
       }
-      numConvoys += convoys.ConvoysFromState(vic3_id);
+      num_convoys += convoys.ConvoysFromState(vic3_id);
    }
-   return numConvoys;
+   return num_convoys;
 }
 
 }  // namespace
@@ -880,7 +880,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
       ideas.insert("decentralized");
    }
 
-   auto numConvoys = ConvertConvoys(*tag, states, convoys);
+   auto num_convoys = ConvertConvoys(*tag, states, convoys);
 
    const auto [character_ids, spy_ids, monarch_id] = ConvertCharacters(source_world.GetCharacters(),
        *tag,
@@ -915,14 +915,14 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    std::set<std::string> puppets;
    for (const auto p: source_country.GetPuppets())
    {
-      std::optional<std::string> subjectTag = country_mapper.GetHoiTag(p);
-      if (!subjectTag.has_value())
+      std::optional<std::string> subject_tag = country_mapper.GetHoiTag(p);
+      if (!subject_tag.has_value())
       {
          Log(LogLevel::Error) << "Invalid subject relationship between " << source_country.GetNumber()
                               << " and nonexistent country " << p;
          continue;
       }
-      puppets.insert(*subjectTag);
+      puppets.insert(*subject_tag);
    }
 
    std::optional<std::string> overlord;
@@ -977,7 +977,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
        .units = units,
        .stability = ConvertStability(source_country),
-       .convoys = numConvoys,
+       .convoys = num_convoys,
        .task_forces = task_forces,
    });
 }

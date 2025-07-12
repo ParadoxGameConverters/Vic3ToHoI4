@@ -11,8 +11,8 @@
 
 hoi4::StrategicRegionImporter::StrategicRegionImporter()
 {
-   state_region_parser_.registerKeyword("strategic_region", [this](std::istream& theStream) {
-      map_region_parser_.parseStream(theStream);
+   state_region_parser_.registerKeyword("strategic_region", [this](std::istream& the_stream) {
+      map_region_parser_.parseStream(the_stream);
    });
    state_region_parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
@@ -26,8 +26,8 @@ hoi4::StrategicRegionImporter::StrategicRegionImporter()
       old_provinces_ = commonItems::getInts(input_stream);
    });
    map_region_parser_.registerKeyword("static_modifiers", [this](std::istream& input_stream) {
-      const commonItems::assignments staticModifierStrings(input_stream);
-      static_modifiers_ = staticModifierStrings.getAssignments();
+      const commonItems::assignments static_modifier_strings(input_stream);
+      static_modifiers_ = static_modifier_strings.getAssignments();
    });
    map_region_parser_.registerKeyword("naval_terrain", [this](std::istream& input_stream) {
       naval_terrain_ = commonItems::getString(input_stream);

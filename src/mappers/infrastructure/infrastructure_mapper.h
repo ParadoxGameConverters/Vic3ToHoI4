@@ -52,7 +52,7 @@ class InfrastructureMapper
    {
    }
 
-   int Map(float vic3Infrastructure);
+   int Map(float vic3_infrastructure);
 
    float GetTargetInfrastructure() { return target_hoi_infra_per_state_; }
    float GetConvertedInfrastructure() { return static_cast<float>(converted_hoi_infra_) / converted_hoi_states_; }

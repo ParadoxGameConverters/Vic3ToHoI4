@@ -13,8 +13,8 @@ std::vector<mappers::TechMapping> mappers::ImportTechMappings()
    TechMappingImporter mapping_importer;
 
    commonItems::parser parser;
-   parser.registerKeyword("link", [&mapping_importer, &tech_mappings](std::istream& theStream) {
-      tech_mappings.push_back(mapping_importer.ImportTechMapping(theStream));
+   parser.registerKeyword("link", [&mapping_importer, &tech_mappings](std::istream& the_stream) {
+      tech_mappings.push_back(mapping_importer.ImportTechMapping(the_stream));
    });
 
    parser.parseFile("configurables/tech_mappings.txt");

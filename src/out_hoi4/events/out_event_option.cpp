@@ -20,9 +20,9 @@ std::ostream& operator<<(std::ostream& out, const hoi4::EventOption& option)
    {
       out << "\t\tai_chance " << option.ai_chance << "\n";
    }
-   for (const auto& scriptBlock: option.script_blocks)
+   for (const auto& script_block: option.script_blocks)
    {
-      out << "\t\t" << scriptBlock << "\n";
+      out << "\t\t" << script_block << "\n";
    }
    if (!option.hidden_effect.empty())
    {

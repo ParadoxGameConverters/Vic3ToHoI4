@@ -34,13 +34,13 @@ WorldBuilder& WorldBuilder::AddStates(const std::map<int, State>& states)
    return *this;
 }
 
-WorldBuilder& WorldBuilder::AddTestStates(const std::vector<std::set<int>>& provinceListLists)
+WorldBuilder& WorldBuilder::AddTestStates(const std::vector<std::set<int>>& province_list_lists)
 {
-   for (const auto& provinceList: provinceListLists)
+   for (const auto& province_list: province_list_lists)
    {
-      const int stateNum = state_number_++;
-      this->world_options_.states.emplace(stateNum,
-          vic3::State(vic3::StateOptions{.id = stateNum, .owner_number = stateNum, .provinces = provinceList}));
+      const int state_num = state_number_++;
+      this->world_options_.states.emplace(state_num,
+          vic3::State(vic3::StateOptions{.id = state_num, .owner_number = state_num, .provinces = province_list}));
    }
    return *this;
 }
@@ -54,18 +54,18 @@ WorldBuilder& WorldBuilder::AddStateRegions(const std::map<std::string, StateReg
    return *this;
 }
 
-WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>>& provinceSets)
+WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>>& province_sets)
 {
-   for (auto& provinceSet: provinceSets)
+   for (auto& province_set: province_sets)
    {
-      std::set<std::string> provinceNames = {};
-      for (auto& provinceNum: provinceSet)
+      std::set<std::string> province_names = {};
+      for (auto& province_num: province_set)
       {
-         provinceNames.emplace(fmt::format("x0000{:0>2}", provinceNum));
+         province_names.emplace(fmt::format("x0000{:0>2}", province_num));
       }
 
       this->world_options_.state_regions.emplace(fmt::format("REGION_{:0>3}", this->state_region_number_++),
-          StateRegion({}, provinceNames));
+          StateRegion({}, province_names));
    }
    return *this;
 }

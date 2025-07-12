@@ -61,55 +61,55 @@ struct Configuration
       }
    }
 
-   void VerifyVic3Version(const commonItems::ConverterVersion& converterVersion) const
+   void VerifyVic3Version(const commonItems::ConverterVersion& converter_version) const
    {
-      const auto V3Version =
+      const auto v3_version =
           GameVersion::extractVersionFromLauncher(vic3_directory / "launcher/launcher-settings.json");
-      if (!V3Version)
+      if (!v3_version)
       {
          Log(LogLevel::Error) << "Vic3 version could not be determined, proceeding blind!";
          return;
       }
 
-      Log(LogLevel::Info) << "Vic3 version: " << V3Version->toShortString();
+      Log(LogLevel::Info) << "Vic3 version: " << v3_version->toShortString();
 
-      if (converterVersion.getMinSource() > *V3Version)
+      if (converter_version.getMinSource() > *v3_version)
       {
-         Log(LogLevel::Error) << "Vic3 version is v" << V3Version->toShortString() << ", converter requires minimum v"
-                              << converterVersion.getMinSource().toShortString() << "!";
+         Log(LogLevel::Error) << "Vic3 version is v" << v3_version->toShortString() << ", converter requires minimum v"
+                              << converter_version.getMinSource().toShortString() << "!";
          throw std::runtime_error("Converter vs Vic3 installation mismatch!");
       }
 
-      if (!converterVersion.getMaxSource().isLargerishThan(*V3Version))
+      if (!converter_version.getMaxSource().isLargerishThan(*v3_version))
       {
-         Log(LogLevel::Error) << "Vic3 version is v" << V3Version->toShortString() << ", converter requires maximum v"
-                              << converterVersion.getMaxSource().toShortString() << "!";
+         Log(LogLevel::Error) << "Vic3 version is v" << v3_version->toShortString() << ", converter requires maximum v"
+                              << converter_version.getMaxSource().toShortString() << "!";
          throw std::runtime_error("Converter vs Vic3 installation mismatch!");
       }
    }
 
-   void VerifyHOI4Version(const commonItems::ConverterVersion& converterVersion) const
+   void VerifyHOI4Version(const commonItems::ConverterVersion& converter_version) const
    {
-      const auto HOI4Version = GameVersion::extractVersionFromLauncher(hoi4_directory / "launcher-settings.json");
-      if (!HOI4Version)
+      const auto hoi4_version = GameVersion::extractVersionFromLauncher(hoi4_directory / "launcher-settings.json");
+      if (!hoi4_version)
       {
          Log(LogLevel::Error) << "HOI4 version could not be determined, proceeding blind!";
          return;
       }
 
-      Log(LogLevel::Info) << "HOI4 version: " << HOI4Version->toShortString();
+      Log(LogLevel::Info) << "HOI4 version: " << hoi4_version->toShortString();
 
-      if (converterVersion.getMinTarget() > *HOI4Version)
+      if (converter_version.getMinTarget() > *hoi4_version)
       {
-         Log(LogLevel::Error) << "HOI4 version is v" << HOI4Version->toShortString() << ", converter requires minimum v"
-                              << converterVersion.getMinTarget().toShortString() << "!";
+         Log(LogLevel::Error) << "HOI4 version is v" << hoi4_version->toShortString() << ", converter requires minimum v"
+                              << converter_version.getMinTarget().toShortString() << "!";
          throw std::runtime_error("Converter vs HOI4 installation mismatch!");
       }
 
-      if (!converterVersion.getMaxTarget().isLargerishThan(*HOI4Version))
+      if (!converter_version.getMaxTarget().isLargerishThan(*hoi4_version))
       {
-         Log(LogLevel::Error) << "HOI4 version is v" << HOI4Version->toShortString() << ", converter requires maximum v"
-                              << converterVersion.getMaxTarget().toShortString() << "!";
+         Log(LogLevel::Error) << "HOI4 version is v" << hoi4_version->toShortString() << ", converter requires maximum v"
+                              << converter_version.getMaxTarget().toShortString() << "!";
          throw std::runtime_error("Converter vs HOI4 installation mismatch!");
       }
    }
