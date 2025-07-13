@@ -150,7 +150,8 @@ std::map<int, std::string> mappers::CountryMappingCreator::AssignTags(auto count
 
    for (const auto& country: countries)
    {
-      ExecuteStrategiesForCountry(country, {defer_country_with_civil_war_, add_country_with_rule_, defer_country_always_});
+      ExecuteStrategiesForCountry(country,
+          {defer_country_with_civil_war_, add_country_with_rule_, defer_country_always_});
    }
 
    // after we got the initial rule countries, try again via vicId and then Znn
@@ -158,7 +159,8 @@ std::map<int, std::string> mappers::CountryMappingCreator::AssignTags(auto count
    deferred_map_countries_.clear();
    for (const auto& country: current_deferred_countries)
    {
-      ExecuteStrategiesForCountry(*country, {defer_country_with_civil_war_, add_country_with_vic_id_, add_country_with_z_});
+      ExecuteStrategiesForCountry(*country,
+          {defer_country_with_civil_war_, add_country_with_vic_id_, add_country_with_z_});
    }
    // finally try the civil war countries
    current_deferred_countries = std::move(deferred_map_countries_);

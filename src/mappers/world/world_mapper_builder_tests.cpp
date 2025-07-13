@@ -102,8 +102,8 @@ TEST(MappersWorldWorldMapperBuilderTests, AddTestProvincesWorks)
 TEST(MappersWorldWorldMapperBuilderTests, AddTechsWorks)
 {
    const auto world_mapper = WorldMapperBuilder::CreateNullMapper()
-                                .AddTechs({{{"vicTech1"}, std::nullopt, {"hoiTech1", "hoiTech2"}}})
-                                .Build();
+                                 .AddTechs({{{"vicTech1"}, std::nullopt, {"hoiTech1", "hoiTech2"}}})
+                                 .Build();
 
    EXPECT_THAT(world_mapper.tech_mapper.at(0).GetTechs(), testing::UnorderedElementsAre("hoiTech1", "hoiTech2"));
    EXPECT_THAT(world_mapper.tech_mapper.at(0).GetVic3Requirements(), testing::UnorderedElementsAre("vicTech1"));

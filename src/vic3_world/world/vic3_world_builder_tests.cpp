@@ -3,6 +3,9 @@
 
 #include "src/vic3_world/world/vic3_world.h"
 #include "src/vic3_world/world/vic3_world_builder.h"
+
+
+
 namespace vic3
 {
 
@@ -41,11 +44,11 @@ TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStatesWorks)
 TEST(Vic3WorldWorldVic3WorldBuilder, AddStateRegionsWorks)
 {
    const auto null_world = WorldBuilder::CreateNullWorld()
-                              .AddStateRegions({
-                                  {"REGION_ONE", vic3::StateRegion({{"x000002", "port"}}, {})},
-                                  {"REGION_TWO", vic3::StateRegion({{"x000005", "port"}}, {})},
-                              })
-                              .Build();
+                               .AddStateRegions({
+                                   {"REGION_ONE", vic3::StateRegion({{"x000002", "port"}}, {})},
+                                   {"REGION_TWO", vic3::StateRegion({{"x000005", "port"}}, {})},
+                               })
+                               .Build();
 
    EXPECT_EQ(null_world.GetStateRegions().at("REGION_ONE"), vic3::StateRegion({{"x000002", "port"}}, {}));
    EXPECT_EQ(null_world.GetStateRegions().at("REGION_TWO"), vic3::StateRegion({{"x000005", "port"}}, {}));
@@ -62,8 +65,8 @@ TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStateRegionsWorks)
 TEST(Vic3WorldWorldVic3WorldBuilder, AddBuildingsWorks)
 {
    const auto null_world = WorldBuilder::CreateNullWorld()
-                              .AddBuildings({vic3::Building("", 1, 700'000), vic3::Building("", 2, 1'400'000)})
-                              .Build();
+                               .AddBuildings({vic3::Building("", 1, 700'000), vic3::Building("", 2, 1'400'000)})
+                               .Build();
 
    EXPECT_EQ(null_world.GetBuildings().GetTotalGoodSalesValueInState(1), 700'000);
    EXPECT_EQ(null_world.GetBuildings().GetTotalGoodSalesValueInState(2), 1'400'000);

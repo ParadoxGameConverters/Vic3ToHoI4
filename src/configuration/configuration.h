@@ -101,15 +101,17 @@ struct Configuration
 
       if (converter_version.getMinTarget() > *hoi4_version)
       {
-         Log(LogLevel::Error) << "HOI4 version is v" << hoi4_version->toShortString() << ", converter requires minimum v"
-                              << converter_version.getMinTarget().toShortString() << "!";
+         Log(LogLevel::Error) << "HOI4 version is v" << hoi4_version->toShortString()
+                              << ", converter requires minimum v" << converter_version.getMinTarget().toShortString()
+                              << "!";
          throw std::runtime_error("Converter vs HOI4 installation mismatch!");
       }
 
       if (!converter_version.getMaxTarget().isLargerishThan(*hoi4_version))
       {
-         Log(LogLevel::Error) << "HOI4 version is v" << hoi4_version->toShortString() << ", converter requires maximum v"
-                              << converter_version.getMaxTarget().toShortString() << "!";
+         Log(LogLevel::Error) << "HOI4 version is v" << hoi4_version->toShortString()
+                              << ", converter requires maximum v" << converter_version.getMaxTarget().toShortString()
+                              << "!";
          throw std::runtime_error("Converter vs HOI4 installation mismatch!");
       }
    }
