@@ -1948,26 +1948,26 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
        {"test_ideology_two", vic3::Ideology({{"test_law_two", 2}})},
        {"test_ideology_three", vic3::Ideology({{"test_law_three", -2}})},
    });
-   vic3::WorldOptions worldOptions = vic3::WorldOptions{
+   vic3::WorldOptions world_options = vic3::WorldOptions{
        .igs = igs,
        .ideologies = ideologies,
    };
 
-   vic3::World source_world = vic3::World(worldOptions);
+   vic3::World source_world = vic3::World(world_options);
 
-   mappers::ItemToPointsMap pointsMap;
-   pointsMap.insert({"test_law_one", {{"democratic", 2}, {"fascist", 3}, {"neutrality", 0}}});
-   pointsMap.insert({"test_law_two",
+   mappers::ItemToPointsMap points_map;
+   points_map.insert({"test_law_one", {{"democratic", 2}, {"fascist", 3}, {"neutrality", 0}}});
+   points_map.insert({"test_law_two",
        {
            {"communist", 5},
            {"fascist", 3},
        }});
-   pointsMap.insert({"test_law_three",
+   points_map.insert({"test_law_three",
        {
            {"democratic", 5},
            {"communist", 7},
        }});
-   const mappers::IdeologyMapper ideologyMapper = mappers::IdeologyMapper(pointsMap, {});
+   const mappers::IdeologyMapper ideology_mapper = mappers::IdeologyMapper(points_map, {});
 
    // TG1 has testlaw1: support, testlaw2: strong support
    // TG2 has testlaw1: support, testlaw3: strongly oppose
@@ -1984,7 +1984,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
        states,
-       ideologyMapper,
+       ideology_mapper,
        mappers::UnitMapper(templates),
        {},
        {},
@@ -2144,18 +2144,26 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    vic3::Buildings buildings(std::map<int, std::vector<vic3::Building>>{
-       {1,
-           {vic3::Building(vic3::BuildingType::Barracks,
-               1,
-               0,
-               1,
-               std::vector<std::string>{"trench_infantry", "field_hospitals"})}},
-       {2,
-           {vic3::Building(vic3::BuildingType::Barracks,
-               2,
-               0,
-               1,
-               std::vector<std::string>{"trench_infantry", "wound_dressing", "militia"})}},
+       {
+           1,
+           {
+               vic3::Building(vic3::kBuildingTypeBarracks,
+                   1,
+                   0,
+                   1,
+                   std::vector<std::string>{"trench_infantry", "field_hospitals"}),
+           },
+       },
+       {
+           2,
+           {
+               vic3::Building(vic3::kBuildingTypeBarracks,
+                   2,
+                   0,
+                   1,
+                   std::vector<std::string>{"trench_infantry", "wound_dressing", "militia"}),
+           },
+       },
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.buildings = buildings});
    const vic3::Country source_country_one({.number = 1});
@@ -2363,9 +2371,9 @@ TEST(Hoi4worldCountriesCountryConverter, ConvoysConvert)
        {3, vic3::State({.id = 3})},
    };
    vic3::Buildings buildings(std::map<int, std::vector<vic3::Building>>{
-       {1, {vic3::Building(vic3::BuildingType::Port, 1, 0, 1, std::vector<std::string>{"dummy", "pm_port_1"})}},
-       {2, {vic3::Building(vic3::BuildingType::Port, 2, 0, 1, std::vector<std::string>{"pm_port_2"})}},
-       {3, {vic3::Building(vic3::BuildingType::Port, 3, 0, 1, std::vector<std::string>{"pm_port_3"})}},
+       {1, {vic3::Building(vic3::kBuildingTypePort, 1, 0, 1, std::vector<std::string>{"dummy", "pm_port_1"})}},
+       {2, {vic3::Building(vic3::kBuildingTypePort, 2, 0, 1, std::vector<std::string>{"pm_port_2"})}},
+       {3, {vic3::Building(vic3::kBuildingTypePort, 3, 0, 1, std::vector<std::string>{"pm_port_3"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.states = vic3_states, .buildings = buildings});
    const States states({.states{
@@ -2451,9 +2459,9 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
        {3, vic3::State({.id = 3})},
    };
    vic3::Buildings buildings(std::map<int, std::vector<vic3::Building>>{
-       {1, {vic3::Building(vic3::BuildingType::NavalBase, 1, 0, 10, std::vector<std::string>{"pm_victorian"})}},
-       {2, {vic3::Building(vic3::BuildingType::NavalBase, 2, 0, 10, std::vector<std::string>{"pm_ancient"})}},
-       {3, {vic3::Building(vic3::BuildingType::NavalBase, 3, 0, 10, std::vector<std::string>{"pm_modern"})}},
+       {1, {vic3::Building(vic3::kBuildingTypeNavalBase, 1, 0, 10, std::vector<std::string>{"pm_victorian"})}},
+       {2, {vic3::Building(vic3::kBuildingTypeNavalBase, 2, 0, 10, std::vector<std::string>{"pm_ancient"})}},
+       {3, {vic3::Building(vic3::kBuildingTypeNavalBase, 3, 0, 10, std::vector<std::string>{"pm_modern"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.states = vic3_states, .buildings = buildings});
    const States states({.states{

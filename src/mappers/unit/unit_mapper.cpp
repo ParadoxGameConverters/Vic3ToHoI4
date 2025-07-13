@@ -8,9 +8,6 @@
 
 
 
-std::set<std::string> mappers::UnitMapper::warned_;
-
-
 namespace
 {
 

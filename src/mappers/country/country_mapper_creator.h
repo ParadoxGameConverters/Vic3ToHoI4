@@ -38,19 +38,19 @@ class CountryMappingCreator
    int tag_suffix_ = 0;
 
    // Rebel countries should be deferred to give priority to non-rebel countries.
-   CountryStrategyFn DeferCountryWithCivilWar;
+   CountryStrategyFn defer_country_with_civil_war_;
 
    // Countries with an existing rule should be converted.
-   CountryStrategyFn AddCountryWithRule;
+   CountryStrategyFn add_country_with_rule_;
 
    // Countries should always be deferred.
-   CountryStrategyFn DeferCountryAlways;
+   CountryStrategyFn defer_country_always_;
 
    // Countries should be added via their vic3 tag.
-   CountryStrategyFn AddCountryWithVicId;
+   CountryStrategyFn add_country_with_vic_id_;
 
    // Countries should be added with Znn naming scheme. This always succeeds.
-   CountryStrategyFn AddCountryWithZ;
+   CountryStrategyFn add_country_with_z_;
 
    // Attempt to name (or defer naming of) a country. Only the first successful strategy will be used.
    void ExecuteStrategiesForCountry(const vic3::Country& country, const std::vector<CountryStrategyFn>&& strategies);

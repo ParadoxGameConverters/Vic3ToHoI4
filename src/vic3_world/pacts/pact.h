@@ -14,7 +14,7 @@
 namespace vic3
 {
 // This could be expanded into a mapper between Vic3 pact types and HoI4 autonomous_states
-static const std::set<std::string> SUBJECT_PACT_TYPES =
+static const std::set<std::string> kSubjectPactTypes =
     {"protectorate", "puppet", "dominion", "personal_union", "vassal", "tributary", "chartered_company", "colony"};
 
 class Pact
@@ -34,7 +34,7 @@ class Pact
    [[nodiscard]] std::string GetAction() const { return action_; }
    [[nodiscard]] date GetStartDate() const { return start_date_; }
    [[nodiscard]] std::optional<int> GetForcedDuration() const { return forced_duration_; }
-   bool isSubjectRelationship() const { return SUBJECT_PACT_TYPES.find(action_) != SUBJECT_PACT_TYPES.end(); }
+   bool IsSubjectRelationship() const { return kSubjectPactTypes.find(action_) != kSubjectPactTypes.end(); }
 
    std::partial_ordering operator<=>(const Pact&) const = default;
 

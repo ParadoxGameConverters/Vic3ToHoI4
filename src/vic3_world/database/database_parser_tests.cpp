@@ -29,18 +29,18 @@ TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserForwardsElements)
    input << "\t}\n";
    input << "}\n";
 
-   std::vector<std::pair<std::string, std::string>> dbElements;
-   commonItems::parser dbElementParser;
-   dbElementParser.registerKeyword("key1", [&](std::istream& stream) {
-      dbElements.emplace_back("key1", commonItems::getString(stream));
+   std::vector<std::pair<std::string, std::string>> db_elements;
+   commonItems::parser db_element_parser;
+   db_element_parser.registerKeyword("key1", [&](std::istream& stream) {
+      db_elements.emplace_back("key1", commonItems::getString(stream));
    });
-   dbElementParser.registerKeyword("key2", [&](std::istream& stream) {
-      dbElements.emplace_back("key2", commonItems::getString(stream));
+   db_element_parser.registerKeyword("key2", [&](std::istream& stream) {
+      db_elements.emplace_back("key2", commonItems::getString(stream));
    });
 
-   DatabaseParser(dbElementParser).parseStream(input);
+   DatabaseParser(db_element_parser).parseStream(input);
 
-   EXPECT_THAT(dbElements,
+   EXPECT_THAT(db_elements,
        testing::ElementsAre(testing::Pair("key1", "value1"),
            testing::Pair("key1", "value4"),
            testing::Pair("key2", "value3"),
@@ -65,18 +65,18 @@ TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserSkipsNoneElements)
    input << "\t}\n";
    input << "}\n";
 
-   std::vector<std::pair<std::string, std::string>> dbElements;
-   commonItems::parser dbElementParser;
-   dbElementParser.registerKeyword("key1", [&](std::istream& stream) {
-      dbElements.emplace_back("key1", commonItems::getString(stream));
+   std::vector<std::pair<std::string, std::string>> db_elements;
+   commonItems::parser db_element_parser;
+   db_element_parser.registerKeyword("key1", [&](std::istream& stream) {
+      db_elements.emplace_back("key1", commonItems::getString(stream));
    });
-   dbElementParser.registerKeyword("key2", [&](std::istream& stream) {
-      dbElements.emplace_back("key2", commonItems::getString(stream));
+   db_element_parser.registerKeyword("key2", [&](std::istream& stream) {
+      db_elements.emplace_back("key2", commonItems::getString(stream));
    });
 
-   DatabaseParser(dbElementParser).parseStream(input);
+   DatabaseParser(db_element_parser).parseStream(input);
 
-   EXPECT_THAT(dbElements,
+   EXPECT_THAT(db_elements,
        testing::ElementsAre(testing::Pair("key1", "value1"),
            testing::Pair("key1", "value4"),
            testing::Pair("key2", "value2")));
@@ -100,25 +100,25 @@ TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserCanForwardIds)
    input << "\t}\n";
    input << "}\n";
 
-   std::vector<std::pair<std::string, std::string>> dbElements;
-   std::string currentKey;
-   commonItems::parser dbElementParser;
-   dbElementParser.registerKeyword("key1", [&](std::istream& stream) {
-      dbElements.emplace_back(currentKey, commonItems::getString(stream));
+   std::vector<std::pair<std::string, std::string>> db_elements;
+   std::string current_key;
+   commonItems::parser db_element_parser;
+   db_element_parser.registerKeyword("key1", [&](std::istream& stream) {
+      db_elements.emplace_back(current_key, commonItems::getString(stream));
    });
-   dbElementParser.registerKeyword("key2", [&](std::istream& stream) {
-      dbElements.emplace_back(currentKey, commonItems::getString(stream));
+   db_element_parser.registerKeyword("key2", [&](std::istream& stream) {
+      db_elements.emplace_back(current_key, commonItems::getString(stream));
    });
-   const auto parseFunc = [&](const std::string& key, std::istream& stream) {
-      currentKey = key;
-      dbElementParser.parseStream(stream);
+   const auto parse_func = [&](const std::string& key, std::istream& stream) {
+      current_key = key;
+      db_element_parser.parseStream(stream);
    };
 
-   DatabaseParser parser(parseFunc);
+   DatabaseParser parser(parse_func);
 
    parser.parseStream(input);
 
-   EXPECT_THAT(dbElements,
+   EXPECT_THAT(db_elements,
        testing::ElementsAre(testing::Pair("0", "value1"), testing::Pair("1", "value4"), testing::Pair("3", "value2")));
 }
 

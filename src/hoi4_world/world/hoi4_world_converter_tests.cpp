@@ -250,10 +250,10 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
    std::map<int, int> scored_countries;
    std::map<int, vic3::State> vic3_states;
 
-   mappers::WorldMapperBuilder mapperBuilder = mappers::WorldMapperBuilder::CreateNullMapper();
+   mappers::WorldMapperBuilder mapper_builder = mappers::WorldMapperBuilder::CreateNullMapper();
    for (int i = 1; i <= 80; ++i)
    {
-      mapperBuilder.AddCountries({{i, fmt::format("X{:0>2}", i)}});
+      mapper_builder.AddCountries({{i, fmt::format("X{:0>2}", i)}});
       countries.emplace(i,
           vic3::Country({
               .number = i,
@@ -271,7 +271,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
       scored_countries.emplace(i, i);
       vic3_states.emplace(i,
           vic3::State({.owner_number = i, .owner_tag = fmt::format("x0000{:0>2}", i), .provinces = {i}}));
-      mapperBuilder.AddProvinces({{fmt::format("x0000{:0>2}", i), i}});
+      mapper_builder.AddProvinces({{fmt::format("x0000{:0>2}", i), i}});
    }
    const vic3::ProvinceDefinitions province_definitions(province_definitions_initializer);
    const vic3::Buildings buildings;
@@ -289,7 +289,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
    const World world =
        ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}),
            source_world,
-           mapperBuilder.Build(),
+           mapper_builder.Build(),
            std::async<>(std::launch::async, []() {
               return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
                   commonItems::ModFilesystem("test_files/hoi4_world/CapitalsGetExtraVictoryPointValue", {}))
@@ -469,7 +469,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
    EXPECT_EQ(region_10.GetName(), "STRATEGICREGION_10");
    EXPECT_THAT(region_10.GetOldProvinces(), testing::UnorderedElementsAre(10, 20, 30, 40));
    EXPECT_THAT(region_10.GetNewProvinces(), testing::UnorderedElementsAre(10, 20, 30));
-   EXPECT_TRUE(region_10.hasStaticModifiers());
+   EXPECT_TRUE(region_10.HasStaticModifiers());
    EXPECT_THAT(region_10.GetStaticModifiers(),
        testing::UnorderedElementsAre(testing::Pair("test_modifier", "always"),
            testing::Pair("test_modifier_two", "always")));
@@ -511,7 +511,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
    EXPECT_EQ(region_50.GetName(), "STRATEGICREGION_50");
    EXPECT_THAT(region_50.GetOldProvinces(), testing::UnorderedElementsAre(50, 60));
    EXPECT_THAT(region_50.GetNewProvinces(), testing::UnorderedElementsAre(40, 50, 60));
-   EXPECT_FALSE(region_50.hasStaticModifiers());
+   EXPECT_FALSE(region_50.HasStaticModifiers());
    EXPECT_TRUE(region_50.GetStaticModifiers().empty());
    ASSERT_FALSE(region_50.GetNavalTerrain().has_value());
    EXPECT_TRUE(region_50.GetWeather().empty());
@@ -599,7 +599,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
    });
 
    const std::map<int, std::vector<vic3::Building>> buildings = {
-       {1, {vic3::Building(vic3::BuildingType::NavalBase, 1, 0.0F, 5.0F, {})}}};
+       {1, {vic3::Building(vic3::kBuildingTypeNavalBase, 1, 0.0F, 5.0F, {})}},
+   };
 
    const vic3::World source_world({.states =
                                        {

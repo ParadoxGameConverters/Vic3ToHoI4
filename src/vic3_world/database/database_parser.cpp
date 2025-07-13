@@ -19,7 +19,7 @@ DatabaseParser::DatabaseParser(): commonItems::parser(), db_entry_parser_()
    this->IgnoreAndLogUnregisteredItems();
 }
 
-void skipSpaces(std::istream& stream)
+void SkipSpaces(std::istream& stream)
 {
    while (stream.peek() == ' ')
    {
@@ -34,7 +34,7 @@ DatabaseParser::DatabaseParser(commonItems::parsingFunctionStreamOnly single_ele
    this->db_entry_parser_.registerRegex(commonItems::integerRegex,
        [single_element_func](std::string key, std::istream& stream) {
           // i have a mouth and i must scream
-          skipSpaces(stream);
+          SkipSpaces(stream);
           const auto m = static_cast<char>(stream.get());
           const auto n = static_cast<char>(stream.peek());
           if (n == ' ')
@@ -68,7 +68,7 @@ DatabaseParser::DatabaseParser(commonItems::parsingFunction multi_element_func):
    this->db_entry_parser_.registerRegex(commonItems::integerRegex,
        [multi_element_func](std::string key, std::istream& stream) {
           // i have a mouth and i must scream
-          skipSpaces(stream);
+          SkipSpaces(stream);
           const auto m = static_cast<char>(stream.get());
           const auto n = static_cast<char>(stream.peek());
           if (n == ' ')

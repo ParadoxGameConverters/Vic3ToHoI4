@@ -30,12 +30,12 @@ std::vector<hoi4::TaskForceTemplate> hoi4::ImportTaskForceTemplates(const std::f
       cost_parser.parseStream(input_stream);
    });
    template_parser.registerKeyword("ship", [&ships](std::istream& input_stream) {
-      commonItems::simpleObject shipValues(input_stream);
-      hoi4::Ship ship(commonItems::remQuotes(shipValues.getValue("name")),
-          shipValues.getValue("definition"),
-          shipValues.getValue("equipment"),
-          shipValues.getValue("legacy_equipment"),
-          commonItems::remQuotes(shipValues.getValue("version")));
+      commonItems::simpleObject ship_values(input_stream);
+      hoi4::Ship ship(commonItems::remQuotes(ship_values.getValue("name")),
+          ship_values.getValue("definition"),
+          ship_values.getValue("equipment"),
+          ship_values.getValue("legacy_equipment"),
+          commonItems::remQuotes(ship_values.getValue("version")));
       if (ship.GetName().empty())
       {
          Log(LogLevel::Warning) << "Ignore ship without name";

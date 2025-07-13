@@ -18,7 +18,7 @@ class TriggerImporter
    TriggerImporter();
    std::unique_ptr<Trigger> ImportTrigger(std::istream& input);
 
-  public:
+  private:
    std::vector<std::unique_ptr<Trigger>> ImportTriggers(std::istream& input);
 
    commonItems::parser trigger_parser_;

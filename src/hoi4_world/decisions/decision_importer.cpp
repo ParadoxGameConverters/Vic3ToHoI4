@@ -20,89 +20,89 @@ DecisionImporter::DecisionImporter()
       decision_.is_good = commonItems::getString(the_stream);
    });
    parser_.registerKeyword("allowed", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theAllowed(the_stream);
-      decision_.allowed = theAllowed.getString();
+      const commonItems::stringOfItem allowed(the_stream);
+      decision_.allowed = allowed.getString();
    });
    parser_.registerRegex("highlight_state_targets|highlight_states",
        [this]([[maybe_unused]] const std::string& unused, std::istream& the_stream) {
-          const commonItems::stringOfItem theHighlightStates(the_stream);
-          decision_.highlight_state_targets = theHighlightStates.getString();
+          const commonItems::stringOfItem highlight_states(the_stream);
+          decision_.highlight_state_targets = highlight_states.getString();
        });
    parser_.registerKeyword("available", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theAvailable(the_stream);
-      decision_.available = theAvailable.getString();
+      const commonItems::stringOfItem available(the_stream);
+      decision_.available = available.getString();
    });
    parser_.registerKeyword("days_mission_timeout", [this](std::istream& the_stream) {
       decision_.days_mission_timeout = commonItems::getInt(the_stream);
    });
    parser_.registerKeyword("activation", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theActivation(the_stream);
-      decision_.activation = theActivation.getString();
+      const commonItems::stringOfItem activation(the_stream);
+      decision_.activation = activation.getString();
    });
    parser_.registerKeyword("targets", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theTargets(the_stream);
-      decision_.targets = theTargets.getString();
+      const commonItems::stringOfItem targets(the_stream);
+      decision_.targets = targets.getString();
    });
    parser_.registerKeyword("target_array", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theTargetArray(the_stream);
-      decision_.target_array = theTargetArray.getString();
+      const commonItems::stringOfItem target_array(the_stream);
+      decision_.target_array = target_array.getString();
    });
    parser_.registerKeyword("target_root_trigger", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theTargetRootTrigger(the_stream);
-      decision_.target_root_trigger = theTargetRootTrigger.getString();
+      const commonItems::stringOfItem target_root_trigger(the_stream);
+      decision_.target_root_trigger = target_root_trigger.getString();
    });
    parser_.registerKeyword("state_target", [this](std::istream& the_stream) {
       decision_.state_target = commonItems::getString(the_stream);
    });
    parser_.registerKeyword("target_trigger", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theTargetTrigger(the_stream);
-      decision_.target_trigger = theTargetTrigger.getString();
+      const commonItems::stringOfItem target_trigger(the_stream);
+      decision_.target_trigger = target_trigger.getString();
    });
    parser_.registerKeyword("target_non_existing", [this](std::istream& the_stream) {
       decision_.target_non_existing = commonItems::getString(the_stream) == "yes";
    });
    parser_.registerKeyword("visible", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theVisible(the_stream);
-      decision_.visible = theVisible.getString();
+      const commonItems::stringOfItem visible(the_stream);
+      decision_.visible = visible.getString();
    });
    parser_.registerKeyword("cancel_trigger", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theCancelTrigger(the_stream);
-      decision_.cancel_trigger = theCancelTrigger.getString();
+      const commonItems::stringOfItem cancel_trigger(the_stream);
+      decision_.cancel_trigger = cancel_trigger.getString();
    });
    parser_.registerKeyword("targeted_modifier", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theTargetedModifier(the_stream);
-      decision_.targeted_modifier = theTargetedModifier.getString();
+      const commonItems::stringOfItem targeted_modifier(the_stream);
+      decision_.targeted_modifier = targeted_modifier.getString();
    });
    parser_.registerKeyword("remove_trigger", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theRemoveTrigger(the_stream);
-      decision_.remove_trigger = theRemoveTrigger.getString();
+      const commonItems::stringOfItem remove_trigger(the_stream);
+      decision_.remove_trigger = remove_trigger.getString();
    });
    parser_.registerKeyword("custom_cost_trigger", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theCustomCostTrigger(the_stream);
-      decision_.custom_cost_trigger = theCustomCostTrigger.getString();
+      const commonItems::stringOfItem custom_cost_trigger(the_stream);
+      decision_.custom_cost_trigger = custom_cost_trigger.getString();
    });
    parser_.registerKeyword("custom_cost_text", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theCustomCostText(the_stream);
-      decision_.custom_cost_text = theCustomCostText.getString();
+      const commonItems::stringOfItem custom_cost_text(the_stream);
+      decision_.custom_cost_text = custom_cost_text.getString();
    });
    parser_.registerKeyword("on_map_mode", [this](std::istream& the_stream) {
       decision_.on_map_mode = commonItems::getString(the_stream);
    });
    parser_.registerKeyword("complete_effect", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theCompleteEffect(the_stream);
-      decision_.complete_effect = theCompleteEffect.getString();
+      const commonItems::stringOfItem complete_effect(the_stream);
+      decision_.complete_effect = complete_effect.getString();
    });
    parser_.registerKeyword("remove_effect", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theRemoveEffect(the_stream);
-      decision_.remove_effect = theRemoveEffect.getString();
+      const commonItems::stringOfItem remove_effect(the_stream);
+      decision_.remove_effect = remove_effect.getString();
    });
    parser_.registerKeyword("timeout_effect", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theTimeoutEffect(the_stream);
-      decision_.timeout_effect = theTimeoutEffect.getString();
+      const commonItems::stringOfItem timeout_effect(the_stream);
+      decision_.timeout_effect = timeout_effect.getString();
    });
    parser_.registerKeyword("ai_will_do", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theAiWillDo(the_stream);
-      decision_.ai_will_do = theAiWillDo.getString();
+      const commonItems::stringOfItem ai_will_do(the_stream);
+      decision_.ai_will_do = ai_will_do.getString();
    });
    parser_.registerKeyword("days_remove", [this](std::istream& the_stream) {
       decision_.days_remove = commonItems::getString(the_stream);
@@ -117,8 +117,8 @@ DecisionImporter::DecisionImporter()
       decision_.fire_only_once = commonItems::getString(the_stream);
    });
    parser_.registerKeyword("modifier", [this](std::istream& the_stream) {
-      const commonItems::stringOfItem theModifier(the_stream);
-      decision_.modifier = theModifier.getString();
+      const commonItems::stringOfItem modifier(the_stream);
+      decision_.modifier = modifier.getString();
    });
    parser_.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

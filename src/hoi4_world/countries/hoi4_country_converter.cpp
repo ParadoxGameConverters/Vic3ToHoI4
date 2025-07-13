@@ -23,7 +23,7 @@
 namespace
 {
 
-constexpr float tolerance = 0.01F;
+constexpr float kTolerance = 0.01F;
 
 bool StateAsCapitalCompareFunction(const hoi4::State& a, const hoi4::State& b)
 {
@@ -121,8 +121,8 @@ std::optional<int> ConvertCapital(const vic3::Country& source_country,
 date ConvertElection(const std::optional<date>& vic_election)
 {
    const auto start_date = date("1936.1.1");
-   constexpr int election_period = 4;  // All Vic elections have 4-year cycles
-   const auto pivot_date = date(start_date.getYear() - election_period, start_date.getMonth(), start_date.getDay());
+   constexpr int kElectionPeriod = 4;  // All Vic elections have 4-year cycles
+   const auto pivot_date = date(start_date.getYear() - kElectionPeriod, start_date.getMonth(), start_date.getDay());
 
    if (!vic_election)  // Country has no elections in Vic
    {
@@ -131,19 +131,19 @@ date ConvertElection(const std::optional<date>& vic_election)
 
    date last_election = vic_election.value();
    int election_year = pivot_date.getYear();
-   if (const auto year_offset = FloorMod(pivot_date.getYear() - last_election.getYear(), election_period);
+   if (const auto year_offset = FloorMod(pivot_date.getYear() - last_election.getYear(), kElectionPeriod);
        year_offset == 0)
    {
       // Only matters when last_election is on January 1st.
       // Or if we ever allow non January 1st start dates.
       if (pivot_date >= date(pivot_date.getYear(), last_election.getMonth(), last_election.getDay()))
       {
-         election_year = pivot_date.getYear() + election_period;
+         election_year = pivot_date.getYear() + kElectionPeriod;
       }
    }
    else
    {
-      election_year = pivot_date.getYear() + election_period - year_offset;
+      election_year = pivot_date.getYear() + kElectionPeriod - year_offset;
    }
 
    last_election = date(election_year, last_election.getMonth(), last_election.getDay());
@@ -211,7 +211,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
          return {};
       }
    }
-   if (total < tolerance)
+   if (total < kTolerance)
    {
       // Avoid an infinite loop of making divisions that don't require any strength.
       return {};
@@ -242,7 +242,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
          {
             location = *battalion_location;
          }
-         if (needed < tolerance)
+         if (needed < kTolerance)
          {
             break;
          }
@@ -250,13 +250,13 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
    }
 
    std::erase_if(battalions, [](const hoi4::Battalion& cand) {
-      return cand.GetStrength() < tolerance;
+      return cand.GetStrength() < kTolerance;
    });
 
    return hoi4::Unit{division.GetName(), equipment, location};
 }
 
-void extractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std::set<std::string>& active)
+void ExtractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std::set<std::string>& active)
 {
    for (const auto& variant: variants)
    {
@@ -273,7 +273,7 @@ void extractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std
    }
 }
 
-std::map<int, int> makeNavalBaseMap(const std::vector<hoi4::State>& states)
+std::map<int, int> MakeNavalBaseMap(const std::vector<hoi4::State>& states)
 {
    std::map<int, int> naval_base_locations;
    for (const auto& state: states)
@@ -302,9 +302,9 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
    std::map<std::string, float> pm_amounts;
    std::map<std::string, int> ship_names;
    std::set<std::string> active_variants;
-   extractActiveItems(active_ship_variants, active_variants);
-   extractActiveItems(active_legacy_ship_variants, active_variants);
-   const auto naval_base_locations = makeNavalBaseMap(states.states);
+   ExtractActiveItems(active_ship_variants, active_variants);
+   ExtractActiveItems(active_legacy_ship_variants, active_variants);
+   const auto naval_base_locations = MakeNavalBaseMap(states.states);
 
    int num_fleets = 1;
    for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
@@ -318,7 +318,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       {
          continue;
       }
-      const auto naval_base = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::NavalBase);
+      const auto naval_base = buildings.GetBuildingInState(vic3_id, vic3::kBuildingTypeNavalBase);
       if (!naval_base.has_value())
       {
          continue;
@@ -448,7 +448,7 @@ std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag,
       {
          continue;
       }
-      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::BuildingType::Barracks);
+      const auto barracks = buildings.GetBuildingInState(vic3_id, vic3::kBuildingTypeBarracks);
       if (!barracks.has_value())
       {
          continue;
@@ -772,7 +772,7 @@ std::map<std::string, int> DetermineIdeologySupport(const std::vector<int>& inte
 
 int DetermineStartingResearchSlots(const vic3::World& source_world, const vic3::Country& source_country)
 {
-   if (source_country.GetCountryRankCategory(source_world) == vic3::RankCategory::GreatPower)
+   if (source_country.GetCountryRankCategory(source_world) == vic3::RankCategory::kGreatPower)
    {
       return 4;
    }
@@ -788,7 +788,7 @@ int DetermineStartingResearchSlots(const vic3::World& source_world, const vic3::
 
 int ConvertConvoys(const std::string& tag, const hoi4::States& states, const hoi4::ConvoyDistributor& convoys)
 {
-   int numConvoys = 0;
+   int num_convoys = 0;
    for (const auto& [vic3_id, hoi4_id]: states.vic3_state_ids_to_hoi4_state_ids)
    {
       const auto itr = states.hoi4_state_ids_to_owner.find(hoi4_id);
@@ -800,9 +800,9 @@ int ConvertConvoys(const std::string& tag, const hoi4::States& states, const hoi
       {
          continue;
       }
-      numConvoys += convoys.ConvoysFromState(vic3_id);
+      num_convoys += convoys.ConvoysFromState(vic3_id);
    }
-   return numConvoys;
+   return num_convoys;
 }
 
 }  // namespace
@@ -880,7 +880,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
       ideas.insert("decentralized");
    }
 
-   auto numConvoys = ConvertConvoys(*tag, states, convoys);
+   auto num_convoys = ConvertConvoys(*tag, states, convoys);
 
    const auto [character_ids, spy_ids, monarch_id] = ConvertCharacters(source_world.GetCharacters(),
        *tag,
@@ -915,14 +915,14 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
    std::set<std::string> puppets;
    for (const auto p: source_country.GetPuppets())
    {
-      std::optional<std::string> subjectTag = country_mapper.GetHoiTag(p);
-      if (!subjectTag.has_value())
+      std::optional<std::string> subject_tag = country_mapper.GetHoiTag(p);
+      if (!subject_tag.has_value())
       {
          Log(LogLevel::Error) << "Invalid subject relationship between " << source_country.GetNumber()
                               << " and nonexistent country " << p;
          continue;
       }
-      puppets.insert(*subjectTag);
+      puppets.insert(*subject_tag);
    }
 
    std::optional<std::string> overlord;
@@ -977,7 +977,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .starting_research_slots = DetermineStartingResearchSlots(source_world, source_country),
        .units = units,
        .stability = ConvertStability(source_country),
-       .convoys = numConvoys,
+       .convoys = num_convoys,
        .task_forces = task_forces,
    });
 }

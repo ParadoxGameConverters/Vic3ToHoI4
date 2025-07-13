@@ -6,14 +6,14 @@
 
 mappers::TechMappingImporter::TechMappingImporter()
 {
-   parser.registerKeyword("vic3", [this](std::istream& theStream) {
-      vic3_requirements_.insert(commonItems::singleString{theStream}.getString());
+   parser_.registerKeyword("vic3", [this](std::istream& the_stream) {
+      vic3_requirements_.insert(commonItems::singleString{the_stream}.getString());
    });
-   parser.registerKeyword("limit", [this](std::istream& theStream) {
-      limit_ = commonItems::singleString{theStream}.getString();
+   parser_.registerKeyword("limit", [this](std::istream& the_stream) {
+      limit_ = commonItems::singleString{the_stream}.getString();
    });
-   parser.registerKeyword("hoi4", [this](std::istream& theStream) {
-      techs_.insert(commonItems::singleString{theStream}.getString());
+   parser_.registerKeyword("hoi4", [this](std::istream& the_stream) {
+      techs_.insert(commonItems::singleString{the_stream}.getString());
    });
 }
 
@@ -24,7 +24,7 @@ mappers::TechMapping mappers::TechMappingImporter::ImportTechMapping(std::istrea
    limit_.reset();
    techs_.clear();
 
-   parser.parseStream(input_stream);
+   parser_.parseStream(input_stream);
 
    return TechMapping{vic3_requirements_, limit_, techs_};
 }

@@ -25,7 +25,7 @@ States ConvertStates(const vic3::World& source_world,
     const hoi4::WorldFramework& world_framework,
     const std::map<std::string, vic3::ProvinceType>& significant_vic3_provinces,
     const maps::MapData& map_data,
-    const configuration::Configuration& = configuration::defaultConfig);
+    const configuration::Configuration& = configuration::kDefaultConfig);
 
 }  // namespace hoi4
 

@@ -10,6 +10,6 @@ class ProgressManager
    std::mutex mutex_;
 
   public:
-   static void AddProgress(int additionalProgress);
-   static void SetProgress(int totalProgress);
+   static void AddProgress(int additional_progress);
+   static void SetProgress(int total_progress);
 };

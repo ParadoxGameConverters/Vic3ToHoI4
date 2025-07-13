@@ -279,14 +279,14 @@ void out::OutputCountryHistory(const path& output_name,
    country_history.close();
 }
 
-void outputShip(std::ofstream& navy, std::ofstream& lgcy, const std::string& tag, const hoi4::Ship& ship)
+void OutputShip(std::ofstream& navy, std::ofstream& lgcy, const std::string& tag, const hoi4::Ship& ship)
 {
    navy << fmt::format(kShip, ship.GetName(), ship.GetDefinition(), ship.GetEquipment(), tag, ship.GetVersion());
    lgcy << fmt::format(kShip, ship.GetName(), ship.GetDefinition(), ship.GetLegacyEquipment(), tag, ship.GetVersion());
 }
 
 
-void outputNavy(std::ofstream& navy,
+void OutputNavy(std::ofstream& navy,
     std::ofstream& legacy,
     const std::string& tag,
     const std::vector<hoi4::TaskForce>& task_forces)
@@ -305,7 +305,7 @@ void outputNavy(std::ofstream& navy,
       legacy << header;
       for (const auto& ship: task_force.ships)
       {
-         outputShip(navy, legacy, tag, ship);
+         OutputShip(navy, legacy, tag, ship);
       }
       navy << kNavyFooter;
       legacy << kNavyFooter;
@@ -332,7 +332,7 @@ void out::OutputCountryNavy(const path& output_name, const hoi4::Country& countr
 
    navy << "# Naval OOB\n";
    legacy << "# Naval non-MTG OOB\n";
-   outputNavy(navy, legacy, tag, country.GetTaskForces());
+   OutputNavy(navy, legacy, tag, country.GetTaskForces());
    navy.close();
    legacy.close();
 }

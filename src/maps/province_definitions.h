@@ -28,7 +28,6 @@ struct ProvinceDefinitionsOptions
 class ProvinceDefinitions
 {
   public:
-   using storage_type = ProvinceDefinitionsOptions;
    ProvinceDefinitions() = default;
    ProvinceDefinitions(ProvinceDefinitionsOptions options):
        land_provinces_(std::move(options.land_provinces)),

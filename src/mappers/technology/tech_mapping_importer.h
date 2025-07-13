@@ -23,7 +23,7 @@ class TechMappingImporter
    TechMapping ImportTechMapping(std::istream& input_stream);
 
   private:
-   commonItems::parser parser;
+   commonItems::parser parser_;
 
    std::set<std::string> vic3_requirements_;
    std::optional<std::string> limit_;

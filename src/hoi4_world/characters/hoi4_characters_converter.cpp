@@ -10,21 +10,24 @@
 #include "src/hoi4_world/characters/hoi4_character_converter.h"
 
 
+
 namespace
 {
+
 int PickUnusedId(const std::map<int, vic3::Character>& source_characters,
     const std::map<int, hoi4::Character>& characters)
 {
-   while (source_characters.find(hoi4::Character::GetGenId()) != source_characters.end() ||
-          characters.find(hoi4::Character::GetGenId()) != characters.end())
-   {
-      hoi4::Character::IncrementGenId();
-   }
-   const int unused_id = hoi4::Character::GetGenId();
-   hoi4::Character::IncrementGenId();
+   static int generated_id = 1000;  // For generating new characters, like councils
 
-   return unused_id;
+   while (source_characters.contains(generated_id) || characters.contains(generated_id))
+   {
+      ++generated_id;
+   }
+
+   return generated_id;
 }
+
+
 int FindPrimeMinister(const std::map<int, vic3::InterestGroup>& igs, const vic3::Country& source_country)
 {
    int prime_minister_id = source_country.GetHeadOfStateId();
@@ -256,13 +259,13 @@ void ProcessCultureQueue(const mappers::CultureQueue& culture_queue,
     std::map<std::string, int>& portrait_counts,
     std::map<int, hoi4::Character>& characters)
 {
-   const auto ByPortraitCount = [portrait_counts](const std::string& lhs, const std::string& rhs) {
+   const auto by_portrait_count = [portrait_counts](const std::string& lhs, const std::string& rhs) {
       return portrait_counts.at(lhs) < portrait_counts.at(rhs);
    };
 
    for (auto& [key, portraits]: portrait_paths)
    {
-      std::ranges::sort(portraits, ByPortraitCount);
+      std::ranges::sort(portraits, by_portrait_count);
       const auto& queued_characters_itr = culture_queue.find(key);
       if (queued_characters_itr == culture_queue.end())
       {

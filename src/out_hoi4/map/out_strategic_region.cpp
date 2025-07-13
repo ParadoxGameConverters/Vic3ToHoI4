@@ -32,7 +32,7 @@ void out::OutputStrategicRegion(const path& output_name, const hoi4::StrategicRe
    }
    strategic_region_file << "\n";
    strategic_region_file << "\t}\n";
-   if (strategic_region.hasStaticModifiers())
+   if (strategic_region.HasStaticModifiers())
    {
       strategic_region_file << "\tstatic_modifiers={\n";
       for (const auto& modifier: strategic_region.GetStaticModifiers())
@@ -42,10 +42,10 @@ void out::OutputStrategicRegion(const path& output_name, const hoi4::StrategicRe
       strategic_region_file << "\n";
       strategic_region_file << "\t}\n";
    }
-   auto navalTerrain = strategic_region.GetNavalTerrain();
-   if (navalTerrain)
+   auto naval_terrain = strategic_region.GetNavalTerrain();
+   if (naval_terrain)
    {
-      strategic_region_file << "\tnaval_terrain=" << *navalTerrain << "\n";
+      strategic_region_file << "\tnaval_terrain=" << *naval_terrain << "\n";
    }
    strategic_region_file << "\tweather" << strategic_region.GetWeather() << "\n";
    strategic_region_file << "}";

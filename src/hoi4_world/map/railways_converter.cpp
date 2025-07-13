@@ -211,52 +211,52 @@ float DeterminePathDevelopment(const std::vector<int>& provinces, const hoi4::St
 }
 
 
-constexpr float urban_cost = 1.F;
-constexpr float plains_cost = 2.F;
-constexpr float forest_cost = 3.F;
-constexpr float hills_cost = 4.F;
-constexpr float desert_cost = 5.F;
-constexpr float marsh_cost = 6.F;
-constexpr float jungle_cost = 7.F;
-constexpr float mountain_cost = 8.F;
-constexpr float unhandled_cost = 100.F;
+constexpr float kUrbanCost = 1.F;
+constexpr float kPlainsCost = 2.F;
+constexpr float kForestCost = 3.F;
+constexpr float kHillsCost = 4.F;
+constexpr float kDesertCost = 5.F;
+constexpr float kMarshCost = 6.F;
+constexpr float kJungleCost = 7.F;
+constexpr float kMountainCost = 8.F;
+constexpr float kUnhandledCost = 100.F;
 float GetCostForTerrainType(std::string_view terrain_type)
 {
    if (terrain_type == "urban")
    {
-      return urban_cost;
+      return kUrbanCost;
    }
    if (terrain_type == "plains")
    {
-      return plains_cost;
+      return kPlainsCost;
    }
    if (terrain_type == "forest")
    {
-      return forest_cost;
+      return kForestCost;
    }
    if (terrain_type == "hills")
    {
-      return hills_cost;
+      return kHillsCost;
    }
    if (terrain_type == "desert")
    {
-      return desert_cost;
+      return kDesertCost;
    }
    if (terrain_type == "marsh")
    {
-      return marsh_cost;
+      return kMarshCost;
    }
    if (terrain_type == "jungle")
    {
-      return jungle_cost;
+      return kJungleCost;
    }
    if (terrain_type == "mountain")
    {
-      return mountain_cost;
+      return kMountainCost;
    }
 
    Log(LogLevel::Warning) << fmt::format("Unhandled terrain type {}. Please inform the converter team.", terrain_type);
-   return unhandled_cost;
+   return kUnhandledCost;
 }
 
 
@@ -551,7 +551,7 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
 
    std::vector<hoi4::PossiblePath> interstate_paths;
    int progress = 0;
-   int prevProgress = 0;
+   int prev_progress = 0;
    for (const hoi4::State& state: hoi4_states.states)
    {
       int id = state.GetId();
@@ -588,10 +588,10 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
          interstate_paths.push_back(all_interstate_paths.front());
       }
       progress++;
-      const int currentProgress = progress * 10 / static_cast<int>(hoi4_states.states.size());
-      if (prevProgress != currentProgress)
+      const int current_progress = progress * 10 / static_cast<int>(hoi4_states.states.size());
+      if (prev_progress != current_progress)
       {
-         prevProgress = currentProgress;
+         prev_progress = current_progress;
          ProgressManager::AddProgress(1);
       }
    }

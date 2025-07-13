@@ -28,8 +28,8 @@ hoi4::DecisionsCategoryImporter::DecisionsCategoryImporter()
    parser_.registerKeyword("visibility_type", [this](std::istream& the_stream) {
       visibility_type_ = commonItems::stringOfItem(the_stream).getString();
    });
-   parser_.registerRegex(commonItems::catchallRegex, [this](const std::string& itemName, std::istream& the_stream) {
-      extra_items_.push_back(std::make_pair(itemName, commonItems::stringOfItem(the_stream).getString()));
+   parser_.registerRegex(commonItems::catchallRegex, [this](const std::string& item_name, std::istream& the_stream) {
+      extra_items_.push_back(std::make_pair(item_name, commonItems::stringOfItem(the_stream).getString()));
    });
 }
 

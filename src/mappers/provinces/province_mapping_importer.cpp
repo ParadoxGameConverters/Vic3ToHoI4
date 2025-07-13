@@ -7,16 +7,16 @@
 
 mappers::ProvinceMappingImporter::ProvinceMappingImporter()
 {
-   parser_.registerKeyword("vic3", [this](std::istream& theStream) {
-      auto input = commonItems::getString(theStream);
+   parser_.registerKeyword("vic3", [this](std::istream& the_stream) {
+      auto input = commonItems::getString(the_stream);
       if (input.starts_with("0x"))
       {
          input = input.substr(1, input.length());
       }
       vic3_provinces_.push_back(input);
    });
-   parser_.registerKeyword("hoi4", [this](std::istream& theStream) {
-      hoi4_provinces_.push_back(commonItems::getInt(theStream));
+   parser_.registerKeyword("hoi4", [this](std::istream& the_stream) {
+      hoi4_provinces_.push_back(commonItems::getInt(the_stream));
    });
    parser_.registerKeyword("comment", [this](std::istream& the_stream) {
       const std::string raw_string = commonItems::getString(the_stream);

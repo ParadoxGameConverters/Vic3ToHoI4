@@ -22,7 +22,7 @@
 namespace
 {
 
-constexpr int MAX_FACTORY_SLOTS = 12;
+constexpr int kMaxFactorySlots = 12;
 const std::vector<std::string> kResourceNames = {"steel", "oil", "tungsten", "aluminium", "chromium", "rubber"};
 const std::map<std::string, int> kNavalBasePoints = {{"port", 5}, {"city", 4}, {"mine", 3}, {"farm", 2}, {"wood", 1}};
 
@@ -204,10 +204,10 @@ std::vector<int> SortVic3StatesByIndustryDescending(const vic3::Buildings& vic3_
 {
    std::vector<int> vic3_state_ids;
    std::ranges::copy(vic3_state_id_to_hoi4_provinces | std::views::keys, std::back_inserter(vic3_state_ids));
-   const auto ByVic3Industry = [vic3_buildings](const int& lhs, const int& rhs) {
+   const auto by_vic3_industry = [vic3_buildings](const int& lhs, const int& rhs) {
       return vic3_buildings.GetTotalGoodSalesValueInState(lhs) > vic3_buildings.GetTotalGoodSalesValueInState(rhs);
    };
-   std::ranges::sort(vic3_state_ids, ByVic3Industry);
+   std::ranges::sort(vic3_state_ids, by_vic3_industry);
    return vic3_state_ids;
 }
 
@@ -468,7 +468,7 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
                                    (IsStateCoastal(province_set, {}) ? std::max(0.0F, country_factories.docks) : 0.0F);
    const int factories_floor = static_cast<int>(std::round(std::max(factories, applied_factories)));
 
-   for (int i = 0; i < std::min(factories_floor, MAX_FACTORY_SLOTS); i++)
+   for (int i = 0; i < std::min(factories_floor, kMaxFactorySlots); i++)
    {
       if (IsStateCoastal(province_set, coastal_provinces) && (country_factories.docks > 0.0F))
       {
@@ -496,7 +496,7 @@ float CalculateNavalBaseRatio(const std::set<int>& hoi4_provinces,
     int total_coastal_provinces)
 {
    const int64_t coastal_province_count = std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
-      return world_framework.coastal_provinces.contains(province_id);
+      return world_framework.coastal_provinces.Contains(province_id);
    });
    return static_cast<float>(coastal_province_count) / static_cast<float>(total_coastal_provinces);
 }
@@ -506,7 +506,7 @@ float FindNavalBaseStaffing(const vic3::World& source_world, int source_state_id
 {
    std::vector<vic3::Building> buildings = source_world.GetBuildings().GetBuildingsInState(source_state_id);
    const auto maybe_building = std::ranges::find_if(buildings, [](const vic3::Building& b) {
-      return b.GetType() == vic3::BuildingType::NavalBase;
+      return b.GetType() == vic3::kBuildingTypeNavalBase;
    });
    if (maybe_building != buildings.end())
    {
@@ -669,14 +669,14 @@ std::optional<int> GetBestHoi4Province(const mappers::Hoi4ToVic3ProvinceMapping:
 
 std::optional<int> GetVictoryPointValue(const std::string& special_province_type)
 {
-   static const std::map<std::string, int> vp_values{
+   static const std::map<std::string, int> kVpValues{
        {"city", 5},
        {"port", 4},
        {"farm", 3},
        {"mine", 2},
        {"wood", 1},
    };
-   if (const auto& mapping = vp_values.find(special_province_type); mapping != vp_values.end())
+   if (const auto& mapping = kVpValues.find(special_province_type); mapping != kVpValues.end())
    {
       return mapping->second;
    }
@@ -1015,7 +1015,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
           static_cast<float>(source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
       const int total_coastal_provinces =
           static_cast<int>(std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
-             return world_framework.coastal_provinces.contains(province_id);
+             return world_framework.coastal_provinces.Contains(province_id);
           }));
       for (const auto& province_set: final_connected_province_sets)
       {
@@ -1071,7 +1071,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
          }
 
          const std::string category = world_framework.state_categories.GetBestCategory(
-             std::min(civilian_factories + military_factories + dockyards + 2, static_cast<int>(MAX_FACTORY_SLOTS)));
+             std::min(civilian_factories + military_factories + dockyards + 2, static_cast<int>(kMaxFactorySlots)));
 
 
          const int manpower = static_cast<int>(

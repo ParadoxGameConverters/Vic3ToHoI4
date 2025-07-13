@@ -173,7 +173,6 @@ void PrintTo(const Role& role, std::ostream* os)
       }
       *os << "}\n";
    }
-   std::map<std::string, std::vector<Decision>> decisions_in_categories_;
    *os << "}\n";
    *os << "events {\n";
    for (const Event& event: role.events_)

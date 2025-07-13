@@ -69,7 +69,7 @@ mappers::CountryMappingCreator::CountryMappingCreator(const path& country_mappin
 {
    country_mapping_rules_ = ImportMappingRules(country_mappings_file);
 
-   DeferCountryWithCivilWar = [this](const vic3::Country& country) -> bool {
+   defer_country_with_civil_war_ = [this](const vic3::Country& country) -> bool {
       if (country.IsCivilWarCountry())
       {
          deferred_map_countries_.push_back(&country);
@@ -78,7 +78,7 @@ mappers::CountryMappingCreator::CountryMappingCreator(const path& country_mappin
       return false;
    };
 
-   AddCountryWithRule = [this](const vic3::Country& country) -> bool {
+   add_country_with_rule_ = [this](const vic3::Country& country) -> bool {
       const auto& vic3_tag = country.GetTag();
       const auto& mapping_rule = country_mapping_rules_.find(vic3_tag);
       if (mapping_rule != country_mapping_rules_.end() && used_hoi4_tags_.emplace(mapping_rule->second).second)
@@ -89,12 +89,12 @@ mappers::CountryMappingCreator::CountryMappingCreator(const path& country_mappin
       return false;
    };
 
-   DeferCountryAlways = [this](const vic3::Country& country) -> bool {
+   defer_country_always_ = [this](const vic3::Country& country) -> bool {
       deferred_map_countries_.push_back(&country);
       return true;
    };
 
-   AddCountryWithVicId = [this](const vic3::Country& country) -> bool {
+   add_country_with_vic_id_ = [this](const vic3::Country& country) -> bool {
       const auto& vic3_tag = country.GetTag();
       if (IsDynamicTag(vic3_tag))
       {
@@ -112,7 +112,7 @@ mappers::CountryMappingCreator::CountryMappingCreator(const path& country_mappin
       return false;
    };
 
-   AddCountryWithZ = [this](const vic3::Country& country) -> bool {
+   add_country_with_z_ = [this](const vic3::Country& country) -> bool {
       std::string possible_hoi4_tag;
       do
       {
@@ -150,7 +150,8 @@ std::map<int, std::string> mappers::CountryMappingCreator::AssignTags(auto count
 
    for (const auto& country: countries)
    {
-      ExecuteStrategiesForCountry(country, {DeferCountryWithCivilWar, AddCountryWithRule, DeferCountryAlways});
+      ExecuteStrategiesForCountry(country,
+          {defer_country_with_civil_war_, add_country_with_rule_, defer_country_always_});
    }
 
    // after we got the initial rule countries, try again via vicId and then Znn
@@ -158,14 +159,15 @@ std::map<int, std::string> mappers::CountryMappingCreator::AssignTags(auto count
    deferred_map_countries_.clear();
    for (const auto& country: current_deferred_countries)
    {
-      ExecuteStrategiesForCountry(*country, {DeferCountryWithCivilWar, AddCountryWithVicId, AddCountryWithZ});
+      ExecuteStrategiesForCountry(*country,
+          {defer_country_with_civil_war_, add_country_with_vic_id_, add_country_with_z_});
    }
    // finally try the civil war countries
    current_deferred_countries = std::move(deferred_map_countries_);
    deferred_map_countries_.clear();
    for (const auto& country: current_deferred_countries)
    {
-      ExecuteStrategiesForCountry(*country, {AddCountryWithRule, AddCountryWithVicId, AddCountryWithZ});
+      ExecuteStrategiesForCountry(*country, {add_country_with_rule_, add_country_with_vic_id_, add_country_with_z_});
    }
 
    return country_mappings_;

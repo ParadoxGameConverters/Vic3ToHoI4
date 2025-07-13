@@ -16,7 +16,7 @@ using std::filesystem::path;
 namespace
 {
 
-constexpr std::array supported_languages =
+constexpr std::array kSupportedLanguages =
     {"braz_por", "english", "french", "german", "japanese", "polish", "russian", "spanish", "simp_chinese"};
 
 
@@ -28,7 +28,7 @@ void CreateFolders(const path& output_name)
       throw std::runtime_error(fmt::format("Could not create {}", localisations_path.string()));
    }
 
-   for (const auto& language: supported_languages)
+   for (const auto& language: kSupportedLanguages)
    {
       if (const path language_path = localisations_path / language;
           !commonItems::DoesFolderExist(language_path) && !create_directories(language_path))
@@ -43,7 +43,7 @@ void OutputLocalisations(const path& output_name,
     std::string_view localization_file,
     const commonItems::LocalizationDatabase& localization_database)
 {
-   for (const auto& language: supported_languages)
+   for (const auto& language: kSupportedLanguages)
    {
       const path localization_path(
           "output" / output_name / fmt::format("localisation/{}/{}{}.yml", language, localization_file, language));

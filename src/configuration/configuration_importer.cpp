@@ -37,8 +37,8 @@ configuration::Configuration configuration::ImportConfiguration(const path& conf
    configuration_parser.registerKeyword("Vic3directory", [&configuration, &converter_version](std::istream& stream) {
       configuration.vic3_directory = commonItems::getString(stream);
       Log(LogLevel::Info) << "\tVictoria 3 install path is " << configuration.vic3_directory;
-      configuration.verifyVic3Path();
-      configuration.verifyVic3Version(converter_version);
+      configuration.VerifyVic3Path();
+      configuration.VerifyVic3Version(converter_version);
    });
    configuration_parser.registerKeyword("Vic3SteamModDirectory", [&configuration](std::istream& stream) {
       configuration.vic3_steam_mod_path = commonItems::getString(stream);
@@ -51,8 +51,8 @@ configuration::Configuration configuration::ImportConfiguration(const path& conf
    configuration_parser.registerKeyword("HoI4directory", [&configuration, &converter_version](std::istream& stream) {
       configuration.hoi4_directory = commonItems::getString(stream);
       Log(LogLevel::Info) << "\tHearts of Iron 4 install path is " << configuration.hoi4_directory;
-      configuration.verifyHOI4Path();
-      configuration.verifyHOI4Version(converter_version);
+      configuration.VerifyHOI4Path();
+      configuration.VerifyHOI4Version(converter_version);
    });
    configuration_parser.registerKeyword("targetGameModPath", [&configuration](std::istream& stream) {
       configuration.hoi4_mod_path = commonItems::getString(stream);

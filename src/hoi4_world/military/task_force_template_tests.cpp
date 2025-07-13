@@ -55,10 +55,10 @@ TEST(Hoi4MilitaryTaskForceTemplateTests, AddsShipsAndPaysCosts)
        {"pm_basic_smallship", 50.0F},
        {"pm_1936_bigship", 21.0F},
        {"pm_1936_smallship", 11.0F}};
-   std::map<std::string, int> nameCounts;
-   tmpl3.AddShipsIfPossible(ships, nameCounts, naval_pms);
-   tmpl2.AddShipsIfPossible(ships, nameCounts, naval_pms);
-   tmpl1.AddShipsIfPossible(ships, nameCounts, naval_pms);
+   std::map<std::string, int> name_counts;
+   tmpl3.AddShipsIfPossible(ships, name_counts, naval_pms);
+   tmpl2.AddShipsIfPossible(ships, name_counts, naval_pms);
+   tmpl1.AddShipsIfPossible(ships, name_counts, naval_pms);
 
    EXPECT_THAT(ships,
        testing::ElementsAre(Ship("Big Ship 1", "test2", "test2", "legacy_test2", "1936 Big Ship"),
