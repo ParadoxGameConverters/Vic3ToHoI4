@@ -258,8 +258,8 @@ struct PdsFileResult *rakaly_hoi4_file(const char *data_ptr, size_t data_len);
 struct PdsFileResult *rakaly_vic3_file(const char *data_ptr, size_t data_len);
 
 #ifdef __cplusplus
-} // extern "C"
-#endif // __cplusplus
+}  // extern "C"
+#endif  // __cplusplus
 
 #ifdef __cplusplus
 #ifndef RAKALY_WRAPPER_H

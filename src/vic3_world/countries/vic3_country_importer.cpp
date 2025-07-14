@@ -52,6 +52,9 @@ vic3::CountryImporter::CountryImporter()
    dynamic_name_parser_.registerKeyword("use_overlord_prefix", [this](std::istream& input_stream) {
       options_.use_overlord_prefix = (commonItems::getString(input_stream) == "yes");
    });
+   dynamic_name_parser_.registerKeyword("state_region_template", [this](std::istream& input_stream) {
+      options_.use_overlord_prefix = (commonItems::getString(input_stream) == "yes");
+   });
 
    country_parser_.registerKeyword("definition", [this](std::istream& input_stream) {
       options_.tag = commonItems::getString(input_stream);
