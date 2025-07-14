@@ -137,7 +137,8 @@ unification_italy_2 = {
 	category=unification
 
 	trigger={
-		country_has_primary_culture = north_italian
+		#country_has_primary_culture = north_italian
+		always = no
 	}
 
 	score=101
@@ -286,7 +287,8 @@ unification_italy_3 = {
 	category=unification
 
 	trigger={
-		country_has_primary_culture = south_italian
+		#country_has_primary_culture = south_italian
+		always = no
 	}
 
 	score=100
