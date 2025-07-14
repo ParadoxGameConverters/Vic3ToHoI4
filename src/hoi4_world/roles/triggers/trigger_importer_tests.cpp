@@ -15,14 +15,16 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, EmptyInputGivesNoTrigger)
+TEST(Hoi4worldRolesRequirementsTriggerimporterTests, EmptyInputGivesAlwaysYesTrigger)
 {
    std::stringstream input;
 
    TriggerImporter importer;
    const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
 
-   EXPECT_FALSE(trigger);
+   ASSERT_TRUE(trigger);
+   const AlwaysTrigger always_trigger(true);
+   EXPECT_EQ(*trigger, always_trigger);
 }
 
 

@@ -48,7 +48,7 @@ std::unique_ptr<Trigger> TriggerImporter::ImportTrigger(std::istream& input)
 
    if (triggers.empty())
    {
-      return nullptr;
+      return std::make_unique<AlwaysTrigger>(true);
    }
    if (triggers.size() == 1)
    {
