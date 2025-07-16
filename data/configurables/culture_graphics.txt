@@ -196,6 +196,7 @@ african = {
 			}
 		}
 		anarchist = {
+			GFX_portrait_ETH_anarchist_council #DLC BBA
 		}
 		monarchist = {
 			male = {
@@ -919,7 +920,7 @@ west_horn_of_african = {
 	graphical_culture_2d = african_2d
 }
 
-### Specific
+### HoI4 Generic
 american = {
 	cultures = { yankee dixie }
 
@@ -1305,47 +1306,6 @@ japanese = {
 	graphical_culture_2d = asian_2d
 }
 
-manchu = {
-    cultures = { manchu } # DLC WTT
-
-    army_portraits = {
-        GFX_portrait_man_zhang_haipeng
-        GFX_portrait_man_aisin_gioro_xiqia
-		GFX_portrait_chi_zhang_xueliang
-		GFX_Portrait_Asia_Generic_land_2
-    }
-
-    leader_portraits = {
-        communism = {
-		leader = {
-			GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
-		}
-        }
-        democratic = {
-		leader = {
-			GFX_portrait_chi_zhang_xueliang
-			GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
-		}
-        }
-        fascism = {
-		leader = {
-            		GFX_portrait_man_zhang_jinghui
-		}
-        }
-        neutrality = {
-		leader = {
-         		GFX_portrait_man_henry_pu_yi_emperor
-		}
-        }
-    }
-    monarch_ideas = {
-		GFX_idea_man_low_legitimacy5
-    }
-
-    graphical_culture = asian_gfx
-    graphical_culture_2d = asian_2d
-}
-
 russian = {
 	cultures = { russian }
 
@@ -1370,4 +1330,93 @@ russian = {
 
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
+}
+
+### Converter specific
+manchu = {
+    cultures = { manchu }
+
+    army_portraits = {
+        GFX_portrait_man_zhang_haipeng
+        GFX_portrait_man_aisin_gioro_xiqia
+	GFX_portrait_chi_zhang_xueliang
+	GFX_Portrait_Asia_Generic_land_2
+    }
+
+    leader_portraits = {
+        communism = {
+		leader = {
+			GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
+		}
+        }
+        democratic = {
+		leader = {
+			GFX_portrait_chi_zhang_xueliang
+			GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
+		}
+        }
+        fascism = {
+		leader = {
+            		GFX_portrait_man_zhang_jinghui
+		}
+        }
+        neutrality = {
+		leader = {
+         		GFX_Portrait_Asia_Generic_land_2 
+		}
+        }
+	monarchist = {
+		male = {
+			GFX_portrait_man_henry_pu_yi_emperor
+		}
+		female =
+			GFX_portrait_man_yoshiko_kawashima
+		}
+    }
+    monarch_ideas = {
+		GFX_idea_man_low_legitimacy5
+    }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+bengali = {
+    cultures = { bengali } # DLC GoE
+
+    army_portraits = {
+        GFX_portrait_man_zhang_haipeng
+        GFX_portrait_man_aisin_gioro_xiqia
+	GFX_portrait_chi_zhang_xueliang
+	GFX_Portrait_Asia_Generic_land_2
+    }
+
+    leader_portraits = {
+        communism = {
+		leader = {
+			GFX_portrait_RAJ_m_n_roy
+		}
+        }
+        democratic = {
+		leader = {
+			GFX_portrait_BAN_a_k_fazlul_huq
+		}
+        }
+        fascism = {
+		leader = {
+            		GFX_RAJ_subhas_chandra_bose #TFV portrait, Do not place GoE one here!
+		}
+        }
+        neutrality = {
+		leader = {
+         		GFX_portrait_man_henry_pu_yi_emperor
+		}
+        }
+    }
+    monarch_ideas = {
+		GFX_idea_man_low_legitimacy5
+    }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
 }
