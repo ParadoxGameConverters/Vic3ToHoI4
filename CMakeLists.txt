@@ -93,7 +93,7 @@ if (PLATFORM STREQUAL "Windows")
 		${F_UPDATECHECKER_SOURCES}
 		${F_SQLITE_SOURCES}
 		${F_SQLITE3_SOURCES}
-	  "src/vic3_world/military/combat_units_importer.h")
+	 )
 	 set_target_properties(ConverterFrontend
 		PROPERTIES
 		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
@@ -348,7 +348,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/vic3_world/world/vic3_world_impo
 
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/format.cc")
 set(FORMAT_SOURCES ${FORMAT_SOURCES} "external/fmt/src/os.cc")
-add_library(fmtLib ${FORMAT_SOURCES} "src/vic3_world/military/combat_units_importer.h")
+add_library(fmtLib ${FORMAT_SOURCES})
 
 link_directories("./external/rakaly")
 
@@ -359,7 +359,7 @@ if (RUN_CLANG_TIDY)
 endif(RUN_CLANG_TIDY)
 add_library(Vic3ToHoi4lib
 	${CONVERTER_SOURCES}
- "src/vic3_world/military/combat_units_importer.h")
+ )
 target_precompile_headers(Vic3ToHoi4lib PUBLIC ${PCH_SOURCES})
 if (PLATFORM STREQUAL "Windows")
 	target_compile_options(Vic3ToHoi4lib PRIVATE /permissive /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 
@@ -373,7 +373,7 @@ endif (PLATFORM  STREQUAL "Windows")
 add_executable(
 	Vic3ToHoi4
 	${MAIN_SOURCE}
- "src/vic3_world/military/combat_units_importer.h")
+ )
 set_target_properties( Vic3ToHoi4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
@@ -568,7 +568,7 @@ add_executable(
 	Vic3ToHoi4Tests
 	${TEST_SOURCES}
 	${GTEST_SOURCES}
- "src/vic3_world/military/combat_units_importer.h")
+ )
 set_target_properties(Vic3ToHoi4Tests
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
@@ -666,7 +666,7 @@ endif (COVERAGE STREQUAL true)
 add_library(run_clang_tidy
 	${CONVERTER_SOURCES}
 	${TEST_SOURCES}
- "src/vic3_world/military/combat_units_importer.h")
+ )
 target_link_libraries(run_clang_tidy pthread)
 set_target_properties(run_clang_tidy PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 add_dependencies(run_clang_tidy Vic3ToHoi4 Vic3ToHoi4Tests)
