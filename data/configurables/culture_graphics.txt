@@ -301,6 +301,17 @@ arab = {
 			minister = {
 			}
 		}
+		anarchist = {
+			GFX_portrait_ETH_anarchist_council #DLC BBA
+		}
+		monarchist = {
+			male = {
+			}
+			female = {
+			}
+		}
+	}
+	female_portraits = {
 	}
 	operative_portraits = {
 		male = {
@@ -398,6 +409,19 @@ asian = {
 			minister = {
 			}
 		}
+		anarchist = {
+			GFX_portrait_SPR_anarchist_commune #DLC LaR
+		}
+		monarchist = {
+			male = {
+			}
+			female = {
+			}
+		}
+	}
+	female_portraits = {
+		GFX_portrait_BRM_myat_phaya_lat
+		GFX_portrait_Terii_nui_o_Tahiti_a_Pomare # Is actually a generic portrait in game files, which is based on Tetsuko Murakami, a Japanese-American
 	}
 
 	graphical_culture = asian_gfx
@@ -1384,13 +1408,6 @@ manchu = {
 bengali = {
     cultures = { bengali } # DLC GoE
 
-    army_portraits = {
-        GFX_portrait_man_zhang_haipeng
-        GFX_portrait_man_aisin_gioro_xiqia
-	GFX_portrait_chi_zhang_xueliang
-	GFX_Portrait_Asia_Generic_land_2
-    }
-
     leader_portraits = {
         communism = {
 		leader = {
@@ -1409,12 +1426,12 @@ bengali = {
         }
         neutrality = {
 		leader = {
-         		GFX_portrait_man_henry_pu_yi_emperor
+         		
 		}
         }
     }
     monarch_ideas = {
-		GFX_idea_man_low_legitimacy5
+		GFX_focus_RAJ_united_bengal
     }
 
     graphical_culture = asian_gfx
