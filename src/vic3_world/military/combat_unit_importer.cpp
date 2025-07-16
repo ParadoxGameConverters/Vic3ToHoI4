@@ -21,6 +21,7 @@ CombatUnitImporter::CombatUnitImporter()
    combat_unit_parser_.registerKeyword("formation", [this](std::istream& stream) {
       formation = commonItems::getInt(stream);
    });
+   combat_unit_parser_.IgnoreUnregisteredItems();
 }
 
 
