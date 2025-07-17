@@ -359,7 +359,7 @@ if (RUN_CLANG_TIDY)
 endif(RUN_CLANG_TIDY)
 add_library(Vic3ToHoi4lib
 	${CONVERTER_SOURCES}
- )
+)
 target_precompile_headers(Vic3ToHoi4lib PUBLIC ${PCH_SOURCES})
 if (PLATFORM STREQUAL "Windows")
 	target_compile_options(Vic3ToHoi4lib PRIVATE /permissive /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 
@@ -373,7 +373,7 @@ endif (PLATFORM  STREQUAL "Windows")
 add_executable(
 	Vic3ToHoi4
 	${MAIN_SOURCE}
- )
+)
 set_target_properties( Vic3ToHoi4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
@@ -568,7 +568,7 @@ add_executable(
 	Vic3ToHoi4Tests
 	${TEST_SOURCES}
 	${GTEST_SOURCES}
- )
+)
 set_target_properties(Vic3ToHoi4Tests
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
@@ -666,7 +666,7 @@ endif (COVERAGE STREQUAL true)
 add_library(run_clang_tidy
 	${CONVERTER_SOURCES}
 	${TEST_SOURCES}
- )
+)
 target_link_libraries(run_clang_tidy pthread)
 set_target_properties(run_clang_tidy PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 add_dependencies(run_clang_tidy Vic3ToHoi4 Vic3ToHoi4Tests)
