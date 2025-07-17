@@ -544,6 +544,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/institutions/institutions_impor
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/interest_groups/interest_groups_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/interest_groups/interest_group_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/laws/laws_importer_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/military/combat_unit_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/military/military_formations_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/military/military_formation_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/pacts/pacts_importer_tests.cpp")

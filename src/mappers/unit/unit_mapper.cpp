@@ -74,10 +74,14 @@ std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const vic3::Mil
    }
    for (const vic3::CombatUnit& combat_unit: formation.combat_units)
    {
-      const auto& itr = templates_.find(combat_unit.type);
+      if (!combat_unit.type)
+      {
+         continue;
+      }
+      const auto& itr = templates_.find(combat_unit.type.value());
       if (itr == templates_.end())
       {
-         WarnForMissingMapping(combat_unit.type, warned_);
+         WarnForMissingMapping(combat_unit.type.value(), warned_);
          continue;
       }
 

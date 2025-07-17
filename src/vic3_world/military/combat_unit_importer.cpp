@@ -28,9 +28,9 @@ CombatUnitImporter::CombatUnitImporter()
 CombatUnit CombatUnitImporter::ImportCombatUnit(std::istream& stream)
 {
    current_manpower = 0;
-   type.clear();
-   country = 0;
-   formation = 0;
+   type.reset();
+   country.reset();
+   formation.reset();
 
    combat_unit_parser_.parseStream(stream);
 
