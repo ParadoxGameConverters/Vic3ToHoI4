@@ -31,4 +31,21 @@ TEST(MappersUnitUnitMapperTests, BattalionsAreMade)
 }
 
 
+TEST(MappersUnitUnitMapperTests, BattalionsAreMadeFromFormations)
+{
+   TemplateMap templates{
+       {"trench_infantry", BattalionTemplate(50, {{"infantry", 0.25F}})},
+       {"cavalry_scouts", BattalionTemplate(0, {{"cavalry", 0.20F}})},
+       {"field_hospitals", BattalionTemplate(10, {})},
+   };
+   const UnitMapper unit_mapper(templates);
+   EXPECT_THAT(unit_mapper.MakeBattalions(vic3::MilitaryFormation{
+                   .units = {{"trench_infantry", 2}},
+                   .combat_units = {{.current_manpower = 2000, .type = "cavalry_scouts"},
+                       {.current_manpower = 2000, .type = "field_hospitals"}},
+               }),
+       testing::UnorderedElementsAre(hoi4::Battalion("infantry", 60, 0.50F), hoi4::Battalion("cavalry", 60, 0.40F)));
+}
+
+
 }  // namespace mappers
