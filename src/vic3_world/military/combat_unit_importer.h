@@ -19,10 +19,10 @@ class CombatUnitImporter
   private:
    commonItems::parser combat_unit_parser_;
 
-   int current_manpower = 0;
-   std::optional<std::string> type;
-   std::optional<int> country;
-   std::optional<int> formation;
+   int current_manpower_ = 0;
+   std::optional<std::string> type_;
+   std::optional<int> country_;
+   std::optional<int> formation_;
 };
 
 }  // namespace vic3

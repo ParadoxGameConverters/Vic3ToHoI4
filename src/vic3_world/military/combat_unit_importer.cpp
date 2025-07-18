@@ -10,16 +10,16 @@ namespace vic3
 CombatUnitImporter::CombatUnitImporter()
 {
    combat_unit_parser_.registerKeyword("current_manpower", [this](std::istream& stream) {
-      current_manpower = commonItems::getInt(stream);
+      current_manpower_ = commonItems::getInt(stream);
    });
    combat_unit_parser_.registerKeyword("type", [this](std::istream& stream) {
-      type = commonItems::getString(stream);
+      type_ = commonItems::getString(stream);
    });
    combat_unit_parser_.registerKeyword("country", [this](std::istream& stream) {
-      country = commonItems::getInt(stream);
+      country_ = commonItems::getInt(stream);
    });
    combat_unit_parser_.registerKeyword("formation", [this](std::istream& stream) {
-      formation = commonItems::getInt(stream);
+      formation_ = commonItems::getInt(stream);
    });
    combat_unit_parser_.IgnoreUnregisteredItems();
 }
@@ -27,14 +27,14 @@ CombatUnitImporter::CombatUnitImporter()
 
 CombatUnit CombatUnitImporter::ImportCombatUnit(std::istream& stream)
 {
-   current_manpower = 0;
-   type.reset();
-   country.reset();
-   formation.reset();
+   current_manpower_ = 0;
+   type_.reset();
+   country_.reset();
+   formation_.reset();
 
    combat_unit_parser_.parseStream(stream);
 
-   return {.current_manpower = current_manpower, .type = type, .country = country, .formation = formation};
+   return {.current_manpower = current_manpower_, .type = type_, .country = country_, .formation = formation_};
 }
 
 }  // namespace vic3
