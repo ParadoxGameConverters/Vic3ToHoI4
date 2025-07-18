@@ -1,6 +1,7 @@
 #include "src/vic3_world/military/combat_units_importer.h"
 
 #include "external/commonItems/CommonRegexes.h"
+#include "external/commonItems/ParserHelpers.h"
 #include "src/vic3_world/database/database_parser.h"
 #include "src/vic3_world/military/combat_unit_importer.h"
 
@@ -21,7 +22,7 @@ std::vector<CombatUnit> ImportCombatUnits(std::istream& input)
    };
 
    DatabaseParser parser(parser_function);
-   parser.registerRegex(commonItems::integerRegex, parser_function);
+   parser.registerKeyword("dead", commonItems::ignoreItem);
    parser.parseStream(input);
 
    return combat_units;
