@@ -72,6 +72,26 @@ std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const vic3::Mil
          current[ut] += str * static_cast<float>(amount);
       }
    }
+   for (const vic3::CombatUnit& combat_unit: formation.combat_units)
+   {
+      if (!combat_unit.type)
+      {
+         continue;
+      }
+      const auto& itr = templates_.find(combat_unit.type.value());
+      if (itr == templates_.end())
+      {
+         WarnForMissingMapping(combat_unit.type.value(), warned_);
+         continue;
+      }
+
+      equip += itr->second.equipment;
+      for (const auto& [ut, str]: itr->second.units)
+      {
+         current[ut] += str * combat_unit.current_manpower / 1000.0F;
+      }
+   }
+
 
    std::vector<hoi4::Battalion> units;
    for (const auto& [ut, str]: current)

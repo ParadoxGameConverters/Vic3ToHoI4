@@ -6,6 +6,9 @@
 #include <map>
 #include <optional>
 #include <string>
+#include <vector>
+
+#include "src/vic3_world/military/combat_unit.h"
 
 
 
@@ -26,6 +29,7 @@ struct MilitaryFormation
    std::optional<std::string> name;
    std::optional<int> ordinal_number;
    std::map<std::string, int> units;
+   std::vector<CombatUnit> combat_units;
 
    std::strong_ordering operator<=>(const MilitaryFormation&) const = default;
 };

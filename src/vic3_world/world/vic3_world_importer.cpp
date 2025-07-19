@@ -34,6 +34,8 @@
 #include "src/vic3_world/institutions/institutions_importer.h"
 #include "src/vic3_world/interest_groups/interest_groups_importer.h"
 #include "src/vic3_world/laws/laws_importer.h"
+#include "src/vic3_world/military/combat_unit.h"
+#include "src/vic3_world/military/combat_units_importer.h"
 #include "src/vic3_world/military/military_formations_importer.h"
 #include "src/vic3_world/pacts/pacts_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
@@ -237,6 +239,7 @@ void AssignCharactersToCountries(const std::map<int, vic3::Character>& character
 
 
 void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryFormation>& military_formations,
+    const std::vector<vic3::CombatUnit>& combat_units,
     std::map<int, vic3::Country>& countries)
 {
    std::map<int, std::map<int, vic3::MilitaryFormation>> army_formations_by_country;
@@ -261,6 +264,31 @@ void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryForma
             iterator->second.emplace(formation_number, formation);
          }
       }
+   }
+
+   for (const vic3::CombatUnit& combat_unit: combat_units)
+   {
+      if (!combat_unit.country)
+      {
+         continue;
+      }
+      auto country_itr = army_formations_by_country.find(combat_unit.country.value());
+      if (country_itr == army_formations_by_country.end())
+      {
+         continue;
+      }
+
+      if (!combat_unit.formation)
+      {
+         continue;
+      }
+      auto formation_itr = country_itr->second.find(combat_unit.formation.value());
+      if (formation_itr == country_itr->second.end())
+      {
+         continue;
+      }
+
+      formation_itr->second.combat_units.push_back(combat_unit);
    }
 
    for (const auto& [country_number, army_formations]: army_formations_by_country)
@@ -425,6 +453,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    std::map<int, std::string> cultures;
    std::map<int, std::vector<int>> country_character_map;
    std::map<int, MilitaryFormation> military_formations;
+   std::vector<CombatUnit> combat_units;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("playthrough_id", [&world_options](std::istream& input_stream) {
@@ -473,6 +502,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    save_parser.registerKeyword("military_formation_manager", [&military_formations](std::istream& input_stream) {
       military_formations = ImportMilitaryFormations(input_stream);
    });
+   save_parser.registerKeyword("new_combat_unit_manager", [&combat_units](std::istream& input_stream) {
+      combat_units = ImportCombatUnits(input_stream);
+   });
    save_parser.registerKeyword("election_manager", [&world_options](std::istream& input_stream) {
       for (const auto& [country_number, last_election]: ImportElections(input_stream))
       {
@@ -517,7 +549,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    ProgressManager::AddProgress(1);
    AssignCharactersToCountries(world_options.characters, country_character_map, world_options.countries);
    ProgressManager::AddProgress(1);
-   AssignMilitaryFormationsToCountries(military_formations, world_options.countries);
+   AssignMilitaryFormationsToCountries(military_formations, combat_units, world_options.countries);
    ProgressManager::AddProgress(1);
    ApplySubjectRelationships(world_options.pacts, world_options.countries);
    ProgressManager::AddProgress(1);
