@@ -1385,19 +1385,19 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwayLevelsAreSetBasedOnStateInfrastr
    std::vector<State> hoi4_states;
    for (int i = 1; i < 101; ++i)
    {
-      hoi4_states.push_back(State(i,
+      hoi4_states.emplace_back(i,
           StateOptions{
               .provinces = {1, 2, 3, 4, 5, 6, i},
               .victory_points = {{i, 1}},
               .vic3_infrastructure = i * 2.F,
-          }));
+          });
    }
-   hoi4_states.push_back(State(101,
+   hoi4_states.emplace_back(101,
        StateOptions{
            .provinces = {1, 2, 3, 4, 5, 6, 101},
            .victory_points = {{101, 1}},
            .vic3_infrastructure = 0.F,
-       }));
+       });
 
    std::map<int, StateId> province_to_state_id_map;
    for (int i = 1; i < 102; ++i)

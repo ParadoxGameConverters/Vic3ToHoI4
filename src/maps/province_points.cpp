@@ -77,7 +77,7 @@ maps::Point maps::ProvincePoints::GetCentermostPoint() const
    }
 
    auto shortest_distance = std::numeric_limits<double>::max();
-   Point closest_point{0, 0};
+   Point closest_point{.x = 0, .y = 0};
    for (const auto& possible_point: points_)
    {
       const auto distance_squared = CalculateDistanceSquared(possible_point, possible_center);

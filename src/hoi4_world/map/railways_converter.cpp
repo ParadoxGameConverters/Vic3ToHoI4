@@ -1000,5 +1000,5 @@ hoi4::Railways hoi4::ConvertRailways(const std::map<std::string, vic3::ProvinceT
    const std::vector<Railway> railways = GetRailwaysFromPaths(merged_paths);
    const std::set<int> endpoints = GetSupplyNodesFromPaths(merged_paths, naval_base_locations);
 
-   return {railways, endpoints};
+   return {.railways = railways, .supply_nodes = endpoints};
 }

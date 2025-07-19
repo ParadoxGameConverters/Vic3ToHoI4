@@ -38,9 +38,17 @@ mappers::GraphicsBlock operator+(const mappers::GraphicsBlock& lhs, const mapper
    // Union two GraphicsBlocks, this is for multi-ethnic cultures
    if (lhs.graphical_culture.empty())
    {
-      return {{lhs.portrait_paths + rhs.portrait_paths}, rhs.graphical_culture, rhs.graphical_culture_2d};
+      return {
+          .portrait_paths = {lhs.portrait_paths + rhs.portrait_paths},
+          .graphical_culture = rhs.graphical_culture,
+          .graphical_culture_2d = rhs.graphical_culture_2d,
+      };
    }
-   return {{lhs.portrait_paths + rhs.portrait_paths}, lhs.graphical_culture, lhs.graphical_culture_2d};
+   return {
+       .portrait_paths = {lhs.portrait_paths + rhs.portrait_paths},
+       .graphical_culture = lhs.graphical_culture,
+       .graphical_culture_2d = lhs.graphical_culture_2d,
+   };
 }
 
 mappers::PortraitPaths ValueOr(mappers::PortraitPaths& lhs, mappers::PortraitPaths& mhs, mappers::PortraitPaths& rhs)
@@ -139,7 +147,10 @@ mappers::GraphicsBlock mappers::CultureGraphicsMapper::MatchCultureToGraphics(
    if (!matched)
    {
       Log(LogLevel::Warning) << fmt::format("Culture {} has no matching portrait set.", culture_def.GetName());
-      return GraphicsBlock({{}, "western_european_gfx", "western_european_2d"});
+      return GraphicsBlock({
+          .graphical_culture = "western_european_gfx",
+          .graphical_culture_2d = "western_european_2d",
+      });
    }
    if (!(unit_graphics.contains("graphical_culture") && unit_graphics.contains("graphical_culture_2d")))
    {
@@ -150,7 +161,9 @@ mappers::GraphicsBlock mappers::CultureGraphicsMapper::MatchCultureToGraphics(
    }
 
    // Fill in lower blocks from higher blocks.
-   return {ValueOr(culture_paths, trait_paths, ethnicity_paths),
-       unit_graphics.at("graphical_culture"),
-       unit_graphics.at("graphical_culture_2d")};
+   return {
+       .portrait_paths = ValueOr(culture_paths, trait_paths, ethnicity_paths),
+       .graphical_culture = unit_graphics.at("graphical_culture"),
+       .graphical_culture_2d = unit_graphics.at("graphical_culture_2d"),
+   };
 }

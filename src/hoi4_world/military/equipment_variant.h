@@ -16,8 +16,8 @@ namespace hoi4
 class EquipmentVariant
 {
   public:
-   EquipmentVariant(const std::string& n,
-       const std::string& t,
+   EquipmentVariant(std::string_view n,
+       std::string_view t,
        std::set<std::string> required_techs,
        std::set<std::string> blocking_techs,
        std::vector<std::pair<std::string, std::string>> text_items):

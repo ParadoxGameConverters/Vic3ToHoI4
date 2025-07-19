@@ -29,7 +29,7 @@ hoi4::DecisionsCategoryImporter::DecisionsCategoryImporter()
       visibility_type_ = commonItems::stringOfItem(the_stream).getString();
    });
    parser_.registerRegex(commonItems::catchallRegex, [this](const std::string& item_name, std::istream& the_stream) {
-      extra_items_.push_back(std::make_pair(item_name, commonItems::stringOfItem(the_stream).getString()));
+      extra_items_.emplace_back(item_name, commonItems::stringOfItem(the_stream).getString());
    });
 }
 
@@ -49,5 +49,12 @@ hoi4::DecisionsCategory hoi4::DecisionsCategoryImporter::GetDecisionsCategory(st
 
    parser_.parseStream(the_stream);
 
-   return {name_, icon_, picture_, priority_, allowed_, visible_, visibility_type_, extra_items_};
+   return {.name = name_,
+       .icon = icon_,
+       .picture = picture_,
+       .priority = priority_,
+       .allowed = allowed_,
+       .visible = visible_,
+       .visibility_type = visibility_type_,
+       .extra_items = extra_items_};
 }

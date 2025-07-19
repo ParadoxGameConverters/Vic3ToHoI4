@@ -18,9 +18,9 @@ class CultureGraphicsMapper
   public:
    explicit CultureGraphicsMapper(std::vector<CultureGraphicsMapping> mappings): mappings_(std::move(mappings)) {}
 
-   GraphicsBlock MatchPrimaryCulturesToGraphics(const std::set<std::string>& primary_cultures,
+   [[nodiscard]] GraphicsBlock MatchPrimaryCulturesToGraphics(const std::set<std::string>& primary_cultures,
        const std::map<std::string, vic3::CultureDefinition>& cultures) const;
-   GraphicsBlock MatchCultureToGraphics(const vic3::CultureDefinition& culture_def) const;
+   [[nodiscard]] GraphicsBlock MatchCultureToGraphics(const vic3::CultureDefinition& culture_def) const;
 
   private:
    std::vector<CultureGraphicsMapping> mappings_;

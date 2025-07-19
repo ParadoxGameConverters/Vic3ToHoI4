@@ -123,7 +123,7 @@ void maps::MapDataImporter::ImportProvinces(const commonItems::ModFilesystem& mo
    {
       for (int x = 0; x < width; x++)
       {
-         Point position = {x, y};
+         Point position = {.x = x, .y = y};
 
          auto center_color = GetCenterColor(position, province_map);
          auto above_color = GetAboveColor(position, province_map);

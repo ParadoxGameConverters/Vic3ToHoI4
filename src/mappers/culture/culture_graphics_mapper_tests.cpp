@@ -10,94 +10,108 @@ namespace mappers
 {
 namespace
 {
-GraphicsBlock block0{{
-                         {"army", {"army0"}},
-                         {"navy", {"navy0"}},
-                         {"leader_communism", {"c_leader0"}},
-                         {"leader_democratic", {"d_leader0"}},
-                         {"leader_fascism", {"f_leader0"}},
-                         {"leader_neutrality", {"n_leader0"}},
-                         {"female_leader", {"fem_leader0"}},
-                         {"advisor_communism", {"c_minister0"}},
-                         {"advisor_democratic", {"d_minister0"}},
-                         {"advisor_fascism", {"f_minister0"}},
-                         {"advisor_neutrality", {"n_minister0"}},
-                         {"operative_male", {"m_op0"}},
-                         {"operative_female", {"f_op0"}},
-                         {"monarch_male", {"king0"}},
-                         {"monarch_female", {"queen0"}},
-                         {"council", {"council0"}},
-                     },
-    "west",
-    "west_2d"};
-GraphicsBlock block1{{
-                         {"army", {"army1"}},
-                         {"navy", {"navy1"}},
-                         {"leader_communism", {"c_leader1"}},
-                         {"leader_democratic", {"d_leader1"}},
-                         {"leader_fascism", {"f_leader1"}},
-                         {"leader_neutrality", {"n_leader1"}},
-                         {"female_leader", {"fem_leader1"}},
-                         {"advisor_communism", {"c_minister1"}},
-                         {"advisor_democratic", {"d_minister1"}},
-                         {"advisor_fascism", {"f_minister1"}},
-                         {"advisor_neutrality", {"n_minister1"}},
-                         {"operative_male", {"m_op1"}},
-                         {"operative_female", {"f_op1"}},
-                         {"monarch_male", {"king1"}},
-                         {"monarch_female", {"queen1"}},
-                         {"council", {"council1"}},
-                     },
-    "west",
-    "west_2d"};
-GraphicsBlock block2{{
-                         {"army", {"army2"}},
-                         {"navy", {"navy2"}},
-                         {"leader_communism", {"c_leader2"}},
-                         {"leader_democratic", {"d_leader2"}},
-                         {"leader_fascism", {"f_leader2"}},
-                         {"leader_neutrality", {"n_leader2"}},
-                         {"female_leader", {"fem_leader2"}},
-                         {"advisor_communism", {"c_minister2"}},
-                         {"advisor_democratic", {"d_minister2"}},
-                         {"advisor_fascism", {"f_minister2"}},
-                         {"advisor_neutrality", {"n_minister2"}},
-                         {"operative_male", {"m_op2"}},
-                         {"operative_female", {"f_op2"}},
-                         {"monarch_male", {"king2"}},
-                         {"monarch_female", {"queen2"}},
-                         {"council", {"council2"}},
-                     },
-    "east",
-    "east_2d"};
-GraphicsBlock blocks1_2{{
-                            {"army", {"army1", "army2"}},
-                            {"navy", {"navy1", "navy2"}},
-                            {"leader_communism", {"c_leader1", "c_leader2"}},
-                            {"leader_democratic", {"d_leader1", "d_leader2"}},
-                            {"leader_fascism", {"f_leader1", "f_leader2"}},
-                            {"leader_neutrality", {"n_leader1", "n_leader2"}},
-                            {"female_leader", {"fem_leader1", "fem_leader2"}},
-                            {"advisor_communism", {"c_minister1", "c_minister2"}},
-                            {"advisor_democratic", {"d_minister1", "d_minister2"}},
-                            {"advisor_fascism", {"f_minister1", "f_minister2"}},
-                            {"advisor_neutrality", {"n_minister1", "n_minister2"}},
-                            {"operative_male", {"m_op1", "m_op2"}},
-                            {"operative_female", {"f_op1", "f_op2"}},
-                            {"monarch_male", {"king1", "king2"}},
-                            {"monarch_female", {"queen1", "queen2"}},
-                            {"council", {"council1", "council2"}},
-                        },
-    "west",
-    "west_2d"};
-GraphicsBlock block_incomplete{{}, "asian", "asian_2d"};
-GraphicsBlock block3{{{"army", {"army3"}}}, "", ""};
+GraphicsBlock block0{
+    .portrait_paths =
+        {
+            {"army", {"army0"}},
+            {"navy", {"navy0"}},
+            {"leader_communism", {"c_leader0"}},
+            {"leader_democratic", {"d_leader0"}},
+            {"leader_fascism", {"f_leader0"}},
+            {"leader_neutrality", {"n_leader0"}},
+            {"female_leader", {"fem_leader0"}},
+            {"advisor_communism", {"c_minister0"}},
+            {"advisor_democratic", {"d_minister0"}},
+            {"advisor_fascism", {"f_minister0"}},
+            {"advisor_neutrality", {"n_minister0"}},
+            {"operative_male", {"m_op0"}},
+            {"operative_female", {"f_op0"}},
+            {"monarch_male", {"king0"}},
+            {"monarch_female", {"queen0"}},
+            {"council", {"council0"}},
+        },
+    .graphical_culture = "west",
+    .graphical_culture_2d = "west_2d",
+};
+GraphicsBlock block1{
+    .portrait_paths =
+        {
+            {"army", {"army1"}},
+            {"navy", {"navy1"}},
+            {"leader_communism", {"c_leader1"}},
+            {"leader_democratic", {"d_leader1"}},
+            {"leader_fascism", {"f_leader1"}},
+            {"leader_neutrality", {"n_leader1"}},
+            {"female_leader", {"fem_leader1"}},
+            {"advisor_communism", {"c_minister1"}},
+            {"advisor_democratic", {"d_minister1"}},
+            {"advisor_fascism", {"f_minister1"}},
+            {"advisor_neutrality", {"n_minister1"}},
+            {"operative_male", {"m_op1"}},
+            {"operative_female", {"f_op1"}},
+            {"monarch_male", {"king1"}},
+            {"monarch_female", {"queen1"}},
+            {"council", {"council1"}},
+        },
+    .graphical_culture = "west",
+    .graphical_culture_2d = "west_2d",
+};
+GraphicsBlock block2{
+    .portrait_paths =
+        {
+            {"army", {"army2"}},
+            {"navy", {"navy2"}},
+            {"leader_communism", {"c_leader2"}},
+            {"leader_democratic", {"d_leader2"}},
+            {"leader_fascism", {"f_leader2"}},
+            {"leader_neutrality", {"n_leader2"}},
+            {"female_leader", {"fem_leader2"}},
+            {"advisor_communism", {"c_minister2"}},
+            {"advisor_democratic", {"d_minister2"}},
+            {"advisor_fascism", {"f_minister2"}},
+            {"advisor_neutrality", {"n_minister2"}},
+            {"operative_male", {"m_op2"}},
+            {"operative_female", {"f_op2"}},
+            {"monarch_male", {"king2"}},
+            {"monarch_female", {"queen2"}},
+            {"council", {"council2"}},
+        },
+    .graphical_culture = "east",
+    .graphical_culture_2d = "east_2d",
+};
+GraphicsBlock blocks1_2{
+    .portrait_paths =
+        {
+            {"army", {"army1", "army2"}},
+            {"navy", {"navy1", "navy2"}},
+            {"leader_communism", {"c_leader1", "c_leader2"}},
+            {"leader_democratic", {"d_leader1", "d_leader2"}},
+            {"leader_fascism", {"f_leader1", "f_leader2"}},
+            {"leader_neutrality", {"n_leader1", "n_leader2"}},
+            {"female_leader", {"fem_leader1", "fem_leader2"}},
+            {"advisor_communism", {"c_minister1", "c_minister2"}},
+            {"advisor_democratic", {"d_minister1", "d_minister2"}},
+            {"advisor_fascism", {"f_minister1", "f_minister2"}},
+            {"advisor_neutrality", {"n_minister1", "n_minister2"}},
+            {"operative_male", {"m_op1", "m_op2"}},
+            {"operative_female", {"f_op1", "f_op2"}},
+            {"monarch_male", {"king1", "king2"}},
+            {"monarch_female", {"queen1", "queen2"}},
+            {"council", {"council1", "council2"}},
+        },
+    .graphical_culture = "west",
+    .graphical_culture_2d = "west_2d",
+};
+GraphicsBlock block_incomplete{.graphical_culture = "asian", .graphical_culture_2d = "asian_2d"};
+GraphicsBlock block3{.portrait_paths = {{"army", {"army3"}}}};
 
-std::vector<CultureGraphicsMapping> mappings{{{"cul0", "cul1"}, {}, {}, block0},
-    {{}, {"trait0", "trait3"}, {}, block1},
-    {{}, {"trait1"}, {"eth0"}, block2},
-    {{"cul3"}, {}, {}, block_incomplete},
-    {{"cul4"}, {}, {}, block3}};
+std::vector<CultureGraphicsMapping> mappings{
+    {.cultures = {"cul0", "cul1"}, .graphics_block = block0},
+    {.traits = {"trait0", "trait3"}, .graphics_block = block1},
+    {.traits = {"trait1"}, .ethnicities = {"eth0"}, .graphics_block = block2},
+    {.cultures = {"cul3"}, .graphics_block = block_incomplete},
+    {.cultures = {"cul4"}, .graphics_block = block3},
+};
 
 std::map<std::string, vic3::CultureDefinition> culture_defs{
     {"cul2", vic3::CultureDefinition({"cul2"}, {}, {"trait0"}, {"eth2"})},
@@ -148,7 +162,8 @@ TEST(MappersCultureCultureGraphicsMapperTests, NoMatchGivesWarning)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   culture_graphics_mapper.MatchCultureToGraphics(vic3::CultureDefinition({"cul2"}, {}, {"trait2"}, {"eth2"}));
+   [[maybe_unused]] auto _ =
+       culture_graphics_mapper.MatchCultureToGraphics(vic3::CultureDefinition({"cul2"}, {}, {"trait2"}, {"eth2"}));
 
    std::cout.rdbuf(cout_buffer);
 

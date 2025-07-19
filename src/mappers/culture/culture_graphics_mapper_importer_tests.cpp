@@ -12,28 +12,31 @@ namespace mappers
 {
 namespace
 {
-GraphicsBlock block{{
-                        {"army", {"general0.dds", "general1.dds"}},
-                        {"navy", {"admiral0.dds", "admiral1.dds"}},
-                        {"scientist_female", {"scientist0.dds", "scientist1.dds"}},
-                        {"scientist_male", {"scientist2.dds", "scientist3.dds"}},
-                        {"leader_communism", {"communism0.dds"}},
-                        {"leader_democratic", {"democratic0.dds"}},
-                        {"leader_fascism", {"fascism0.dds"}},
-                        {"leader_neutrality", {"neutrality0.dds"}},
-                        {"female_leader", {"female_leader.dds"}},
-                        {"advisor_communism", {"communism1.dds"}},
-                        {"advisor_democratic", {"democratic1.dds"}},
-                        {"advisor_fascism", {"fascism1.dds"}},
-                        {"advisor_neutrality", {"neutrality1.dds"}},
-                        {"operative_female", {"spy_f0.dds", "spy_f1.dds"}},
-                        {"operative_male", {"spy_m0.dds", "spy_m1.dds"}},
-                        {"monarch_male", {"king.dds"}},
-                        {"monarch_female", {"queen.dds"}},
-                        {"council", {"council.dds"}},
-                    },
-    "west",
-    "west_2d"};
+GraphicsBlock block{
+    .portrait_paths =
+        {
+            {"army", {"general0.dds", "general1.dds"}},
+            {"navy", {"admiral0.dds", "admiral1.dds"}},
+            {"scientist_female", {"scientist0.dds", "scientist1.dds"}},
+            {"scientist_male", {"scientist2.dds", "scientist3.dds"}},
+            {"leader_communism", {"communism0.dds"}},
+            {"leader_democratic", {"democratic0.dds"}},
+            {"leader_fascism", {"fascism0.dds"}},
+            {"leader_neutrality", {"neutrality0.dds"}},
+            {"female_leader", {"female_leader.dds"}},
+            {"advisor_communism", {"communism1.dds"}},
+            {"advisor_democratic", {"democratic1.dds"}},
+            {"advisor_fascism", {"fascism1.dds"}},
+            {"advisor_neutrality", {"neutrality1.dds"}},
+            {"operative_female", {"spy_f0.dds", "spy_f1.dds"}},
+            {"operative_male", {"spy_m0.dds", "spy_m1.dds"}},
+            {"monarch_male", {"king.dds"}},
+            {"monarch_female", {"queen.dds"}},
+            {"council", {"council.dds"}},
+        },
+    .graphical_culture = "west",
+    .graphical_culture_2d = "west_2d",
+};
 }
 
 
