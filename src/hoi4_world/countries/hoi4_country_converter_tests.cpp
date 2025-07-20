@@ -1662,7 +1662,7 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
    const mappers::CultureGraphicsMapper culture_graphics_mapper({
        mappers::CultureGraphicsMapping{
            .cultures = {"culture"},
-           .graphics_block = {.portrait_paths = {{"army", {"GFX_general"}}}}
+           .graphics_block = {.portrait_paths = {{"army", {"GFX_general"}}}},
        },
    });
 

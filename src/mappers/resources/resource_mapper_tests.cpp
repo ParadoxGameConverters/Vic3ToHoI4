@@ -21,8 +21,7 @@ TEST(MappersResourcesResourceMapperTests, EmptyMapperNoInfo)
 TEST(MappersResourcesResourceMapperTests, ScoresAreCalculated)
 {
    std::map<std::string, ResourceScore> steel{
-       {"steel", {.base = {{"building_iron_mine", 1.0F}}, .bonus_buildings = {}, .bonus = 0.0F, .total = 1.0F}}
-   };
+       {"steel", {.base = {{"building_iron_mine", 1.0F}}, .bonus_buildings = {}, .bonus = 0.0F, .total = 1.0F}}};
    ResourceMapper mapper(steel);
 
    std::vector<vic3::Building> buildings{{"building_iron_mine", 1, 1.0F, 1.0F, {}}};
