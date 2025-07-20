@@ -49,12 +49,14 @@ hoi4::DecisionsCategory hoi4::DecisionsCategoryImporter::GetDecisionsCategory(st
 
    parser_.parseStream(the_stream);
 
-   return {.name = name_,
+   return {
+       .name = name_,
        .icon = icon_,
        .picture = picture_,
        .priority = priority_,
        .allowed = allowed_,
        .visible = visible_,
        .visibility_type = visibility_type_,
-       .extra_items = extra_items_};
+       .extra_items = extra_items_,
+   };
 }
