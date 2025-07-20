@@ -23,11 +23,11 @@ namespace mappers
 class WorldMapper
 {
   public:
-   WorldMapper(const CountryMapper country_mapper,
-       const ProvinceMapper province_mapper,
-       const std::vector<mappers::TechMapping> tech_mapper,
-       const CultureGraphicsMapper culture_graphics_mapper,
-       const ResourceMapper resource_mapper):
+   WorldMapper(CountryMapper country_mapper,
+       ProvinceMapper province_mapper,
+       std::vector<mappers::TechMapping> tech_mapper,
+       CultureGraphicsMapper culture_graphics_mapper,
+       ResourceMapper resource_mapper):
        country_mapper(std::move(country_mapper)),
        province_mapper(std::move(province_mapper)),
        tech_mapper(std::move(tech_mapper)),

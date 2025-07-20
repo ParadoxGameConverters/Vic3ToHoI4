@@ -2,11 +2,14 @@
 
 #include <external/fmt/include/fmt/format.h>
 
+
+
 namespace vic3
 {
+
 WorldBuilder WorldBuilder::CreateNullWorld()
 {
-   return WorldBuilder();
+   return {};
 }
 
 World WorldBuilder::Build()
@@ -78,4 +81,5 @@ WorldBuilder& WorldBuilder::AddBuildings(const std::vector<vic3::Building>& buil
    }
    return *this;
 }
+
 }  // namespace vic3

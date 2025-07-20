@@ -442,7 +442,7 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
 
    if (!accumulator.contains(state_owner))
    {
-      accumulator[state_owner] = {0, 0, 0};
+      accumulator[state_owner] = {.military = 0, .civilian = 0, .docks = 0};
    }
    auto& country_factories = accumulator[state_owner];
    if (IsStateCoastal(province_set, coastal_provinces))
@@ -796,7 +796,7 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
          const auto& tag = hoi4_state.GetOwner().value();
          if (!accumulator.contains(tag))
          {
-            accumulator[tag] = {0, 0, 0};
+            accumulator[tag] = {.military = 0, .civilian = 0, .docks = 0};
          }
          accumulator[tag].military += hoi4_state.GetMilitaryFactories();
          accumulator[tag].civilian += hoi4_state.GetCivilianFactories();
@@ -876,7 +876,7 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    Log(LogLevel::Info) << "\t\tTop industrial powers:";
    auto key_view = std::views::keys(accumulator);
    std::vector<std::string> tags(key_view.begin(), key_view.end());
-   std::sort(tags.begin(), tags.end(), [&accumulator](const std::string& one, const std::string& two) {
+   std::ranges::sort(tags, [&accumulator](const std::string& one, const std::string& two) {
       return accumulator[one].civilian > accumulator[two].civilian;
    });
    Log(LogLevel::Info) << "\t\t\tTag\tCiv\tMil\tDoc";

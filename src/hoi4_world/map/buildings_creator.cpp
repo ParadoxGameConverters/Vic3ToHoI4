@@ -55,7 +55,7 @@ void ImportDefaultBuilding(const std::smatch& matches, const maps::MapData& map_
       auto connecting_sea_province = stoi(matches[7].str());
 
       if (const auto province_name = map_data.GetProvinceName(
-              {static_cast<int>(position.x_coordinate), static_cast<int>(position.z_coordinate)});
+              {.x = static_cast<int>(position.x_coordinate), .y = static_cast<int>(position.z_coordinate)});
           province_name)
       {
          int province_number = stoi(*province_name);

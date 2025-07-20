@@ -25,10 +25,10 @@ class ProvincePoints
 
   private:
    std::set<Point> points_;
-   Point leftmost_point_ = {INT_MAX, 0};
-   Point rightmost_point_ = {0, 0};
-   Point highest_point_ = {0, 0};
-   Point lowest_point_ = {0, INT_MAX};
+   Point leftmost_point_ = {.x = INT_MAX, .y = 0};
+   Point rightmost_point_ = {.x = 0, .y = 0};
+   Point highest_point_ = {.x = 0, .y = 0};
+   Point lowest_point_ = {.x = 0, .y = INT_MAX};
 };
 
 }  // namespace maps

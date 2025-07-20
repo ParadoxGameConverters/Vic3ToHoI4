@@ -29,6 +29,17 @@ elseif (PLATFORM STREQUAL "Linux")
 endif (PLATFORM STREQUAL "Windows")
 
 
+#### Gtest ####
+set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googletest/src/gtest_main.cc")
+set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googletest/src/gtest-all.cc")
+set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googlemock/src/gmock-all.cc")
+
+add_library(
+	GtestLib
+	${GTEST_SOURCES}
+)
+
+
 #### Fronter ####
 
 if (PLATFORM STREQUAL "Windows")
@@ -562,14 +573,9 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/wars/war_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/world/vic3_world_builder_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/world/vic3_world_importer_tests.cpp")
 
-set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googletest/src/gtest_main.cc")
-set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googletest/src/gtest-all.cc")
-set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/googlemock/src/gmock-all.cc")
-
 add_executable(
 	Vic3ToHoi4Tests
 	${TEST_SOURCES}
-	${GTEST_SOURCES}
 )
 set_target_properties(Vic3ToHoi4Tests
     PROPERTIES
@@ -590,7 +596,7 @@ if (PLATFORM STREQUAL "Windows")
 	configure_file("external/rakaly/rakaly.dll" "${TEST_OUTPUT_DIRECTORY}/rakaly.dll" COPYONLY)
 endif (PLATFORM STREQUAL "Windows")
 
-target_link_libraries(Vic3ToHoi4Tests LINK_PUBLIC Vic3ToHoi4lib)
+target_link_libraries(Vic3ToHoi4Tests LINK_PUBLIC Vic3ToHoi4lib GtestLib)
 
 enable_testing()
 

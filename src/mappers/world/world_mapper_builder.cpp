@@ -46,11 +46,13 @@ WorldMapperBuilder WorldMapperBuilder::CreateNullMapper()
 
 WorldMapper WorldMapperBuilder::Build()
 {
-   return WorldMapper(std::move(CountryMapper(this->country_mappings_)),
+   return {
+       std::move(CountryMapper(this->country_mappings_)),
        std::move(ProvinceMapper(this->vic_hoi_province_mappings_, this->hoi_vic_province_mappings_)),
        std::move(tech_mappings_),
        std::move(this->culture_graphics_mapper_),
-       std::move(this->resource_mapper_));
+       std::move(this->resource_mapper_),
+   };
 }
 
 WorldMapperBuilder& WorldMapperBuilder::DefaultCountryMapper(const vic3::World& source_world)

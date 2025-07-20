@@ -26,7 +26,7 @@ class WorldBuilder
    WorldBuilder& AddBuildings(const std::vector<vic3::Building>& buildings);
 
   private:
-   WorldBuilder(){};
+   WorldBuilder() = default;
    WorldOptions world_options_ = {};
    std::vector<std::string> province_definitions_ = {};
    int state_region_number_ = 1;

@@ -25,8 +25,9 @@ class ResourceMapper
   public:
    explicit ResourceMapper(std::map<std::string, ResourceScore> scores): scores_(std::move(scores)) {}
 
-   float CalculateScore(const std::string& hoi_resource, const std::vector<vic3::Building>& buildings) const;
-   float WorldTotal(const std::string& hoi_resource) const;
+   [[nodiscard]] float CalculateScore(const std::string& hoi_resource,
+       const std::vector<vic3::Building>& buildings) const;
+   [[nodiscard]] float WorldTotal(const std::string& hoi_resource) const;
 
   private:
    std::map<std::string, ResourceScore> scores_;

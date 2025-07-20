@@ -354,7 +354,7 @@ hoi4::Characters hoi4::ConvertCharacters(const std::map<int, vic3::Character>& s
       monarch_id = source_country.GetHeadOfStateId();
    }
 
-   return {character_ids, role_ids.spy_ids, monarch_id};
+   return {.character_ids = character_ids, .spy_ids = role_ids.spy_ids, .monarch_idea_id = monarch_id};
 }
 
 void hoi4::AssignPortraits(const std::map<std::string, mappers::CultureQueue>& culture_queues,

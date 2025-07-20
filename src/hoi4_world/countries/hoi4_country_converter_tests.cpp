@@ -1659,8 +1659,12 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
    const vic3::CultureDefinition culture_def{"culture", {}, {}, {}};
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.culture_definitions = culture_definitions});
-   const mappers::CultureGraphicsMapper culture_graphics_mapper{
-       {{{"culture"}, {}, {}, {{{"army", {"GFX_general"}}}, {}, {}}}}};
+   const mappers::CultureGraphicsMapper culture_graphics_mapper({
+       mappers::CultureGraphicsMapping{
+           .cultures = {"culture"},
+           .graphics_block = {.portrait_paths = {{"army", {"GFX_general"}}}},
+       },
+   });
 
    const std::optional<Country> country_one = ConvertCountry(source_world,
        source_country_one,

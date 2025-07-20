@@ -174,10 +174,16 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        },
    };
 
-   const mappers::GraphicsBlock expected_graphics_block_one{{{"army", {"GFX_general_0"}}},
-       "western_european_gfx",
-       "western_european_2d"};
-   const mappers::GraphicsBlock expected_graphics_block_two{{{"army", {"GFX_general_1"}}}, "asian_gfx", "asian_2d"};
+   const mappers::GraphicsBlock expected_graphics_block_one{
+       .portrait_paths = {{"army", {"GFX_general_0"}}},
+       .graphical_culture = "western_european_gfx",
+       .graphical_culture_2d = "western_european_2d",
+   };
+   const mappers::GraphicsBlock expected_graphics_block_two{
+       .portrait_paths = {{"army", {"GFX_general_1"}}},
+       .graphical_culture = "asian_gfx",
+       .graphical_culture_2d = "asian_2d",
+   };
 
    EXPECT_THAT(countries,
        testing::ElementsAre(testing::Pair("TAG",

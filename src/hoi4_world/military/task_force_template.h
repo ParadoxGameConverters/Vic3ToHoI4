@@ -22,7 +22,7 @@ class TaskForceTemplate
    {
    }
 
-   bool AllVariantsActive(const std::set<std::string>& active_variants) const;
+   [[nodiscard]] bool AllVariantsActive(const std::set<std::string>& active_variants) const;
    void AddShipsIfPossible(std::vector<hoi4::Ship>& ships,
        std::map<std::string, int>& ship_counts,
        std::map<std::string, float>& points) const;

@@ -9,11 +9,11 @@ namespace hoi4
 class Ship
 {
   public:
-   Ship(const std::string& name,
-       const std::string& definition,
-       const std::string& equipment,
-       const std::string& legacy_equipment,
-       const std::string& version):
+   Ship(std::string_view name,
+       std::string_view definition,
+       std::string_view equipment,
+       std::string_view legacy_equipment,
+       std::string_view version):
        name_(name),
        definition_(definition),
        equipment_(equipment),
@@ -22,13 +22,13 @@ class Ship
    {
    }
 
-   const std::string& GetName() const { return name_; }
-   const std::string& GetDefinition() const { return definition_; }
-   const std::string& GetEquipment() const { return equipment_; }
-   const std::string& GetLegacyEquipment() const { return legacy_equipment_; }
-   const std::string& GetVersion() const { return version_; }
+   [[nodiscard]] const std::string& GetName() const { return name_; }
+   [[nodiscard]] const std::string& GetDefinition() const { return definition_; }
+   [[nodiscard]] const std::string& GetEquipment() const { return equipment_; }
+   [[nodiscard]] const std::string& GetLegacyEquipment() const { return legacy_equipment_; }
+   [[nodiscard]] const std::string& GetVersion() const { return version_; }
 
-   std::partial_ordering operator<=>(const Ship&) const = default;
+   [[nodiscard]] std::partial_ordering operator<=>(const Ship&) const = default;
 
   private:
    std::string name_;

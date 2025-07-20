@@ -12,19 +12,14 @@ namespace hoi4
 class ConvoyDistributor
 {
   public:
-   ConvoyDistributor(int hoi, std::map<std::string, float>&& weights):
-       hoi4_total_(hoi),
-       vic3_total_(0),
-       pm_weights_(weights)
-   {
-   }
+   ConvoyDistributor(int hoi, std::map<std::string, float>&& weights): hoi4_total_(hoi), pm_weights_(weights) {}
 
    void CalculateStateWeights(const vic3::World& source_world);
-   int ConvoysFromState(int id) const;
+   [[nodiscard]] int ConvoysFromState(int id) const;
 
   private:
    int hoi4_total_;
-   float vic3_total_;
+   float vic3_total_ = 0.0F;
    std::map<int, float> vic3_map_;
    std::map<std::string, float> pm_weights_;
 };

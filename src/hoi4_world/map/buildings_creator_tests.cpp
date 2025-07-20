@@ -31,50 +31,67 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DefaultsToNoBuildings)
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfState)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {maps::Point{1, 1}, "1"},
-                               {maps::Point{1, 2}, "1"},
-                               {maps::Point{1, 3}, "1"},
-                               {maps::Point{2, 1}, "1"},
-                               {maps::Point{2, 2}, "1"},
-                               {maps::Point{2, 3}, "1"},
-                               {maps::Point{3, 1}, "1"},
-                               {maps::Point{3, 2}, "1"},
-                               {maps::Point{3, 3}, "1"},
-                               {maps::Point{4, 1}, "2"},
-                               {maps::Point{4, 2}, "2"},
-                               {maps::Point{4, 3}, "2"},
-                               {maps::Point{5, 1}, "2"},
-                               {maps::Point{5, 2}, "2"},
-                               {maps::Point{5, 3}, "2"},
-                               {maps::Point{6, 1}, "2"},
-                               {maps::Point{6, 2}, "2"},
-                               {maps::Point{6, 3}, "2"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {maps::Point{.x = 1, .y = 1}, "1"},
+                           {maps::Point{.x = 1, .y = 2}, "1"},
+                           {maps::Point{.x = 1, .y = 3}, "1"},
+                           {maps::Point{.x = 2, .y = 1}, "1"},
+                           {maps::Point{.x = 2, .y = 2}, "1"},
+                           {maps::Point{.x = 2, .y = 3}, "1"},
+                           {maps::Point{.x = 3, .y = 1}, "1"},
+                           {maps::Point{.x = 3, .y = 2}, "1"},
+                           {maps::Point{.x = 3, .y = 3}, "1"},
+                           {maps::Point{.x = 4, .y = 1}, "2"},
+                           {maps::Point{.x = 4, .y = 2}, "2"},
+                           {maps::Point{.x = 4, .y = 3}, "2"},
+                           {maps::Point{.x = 5, .y = 1}, "2"},
+                           {maps::Point{.x = 5, .y = 2}, "2"},
+                           {maps::Point{.x = 5, .y = 3}, "2"},
+                           {maps::Point{.x = 6, .y = 1}, "2"},
+                           {maps::Point{.x = 6, .y = 2}, "2"},
+                           {maps::Point{.x = 6, .y = 3}, "2"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -105,33 +122,15 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
                        .the_province_points =
                            {
                                {"1",
-                                   maps::ProvincePoints({
-                                       {1, 1},
-                                       {1, 2},
-                                       {1, 3},
-                                       {2, 1},
-                                       {2, 2},
-                                       {2, 3},
-                                       {3, 1},
-                                       {3, 2},
-                                       {3, 3},
+                                   maps::ProvincePoints({{.x=1, .y=1},{.x=1, .y=2},{.x=1, .y=3},{.x=2, .y=1},{.x=2, .y=2},{.x=2, .y=3},{.x=3, .y=1},{.x=3, .y=2},{.x=3, .y=3},
                                    })},
                                {"2",
-                                   maps::ProvincePoints({
-                                       {4, 1},
-                                       {4, 2},
-                                       {4, 3},
-                                       {5, 1},
-                                       {5, 2},
-                                       {5, 3},
-                                       {6, 1},
-                                       {6, 2},
-                                       {6, 3},
+                                   maps::ProvincePoints({{.x=4, .y=1},{.x=4, .y=2},{.x=4, .y=3},{.x=5, .y=1},{.x=5, .y=2},{.x=5, .y=3},{.x=6, .y=1},{.x=6, .y=2},{.x=6, .y=3},
                                    })},
                            },
                        .points_to_provinces =
                            {
-                               {maps::Point{2, 2}, "1"},
+                               {maps::Point{.x=2, .y=2}, "1"},
                            },
                    }),
                commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
@@ -170,50 +169,67 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocation)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {maps::Point{1, 1}, "1"},
-                               {maps::Point{1, 2}, "1"},
-                               {maps::Point{1, 3}, "1"},
-                               {maps::Point{2, 1}, "1"},
-                               {maps::Point{2, 2}, "1"},
-                               {maps::Point{2, 3}, "1"},
-                               {maps::Point{3, 1}, "1"},
-                               {maps::Point{3, 2}, "1"},
-                               {maps::Point{3, 3}, "1"},
-                               {maps::Point{4, 1}, "2"},
-                               {maps::Point{4, 2}, "2"},
-                               {maps::Point{4, 3}, "2"},
-                               {maps::Point{5, 1}, "2"},
-                               {maps::Point{5, 2}, "2"},
-                               {maps::Point{5, 3}, "2"},
-                               {maps::Point{6, 1}, "2"},
-                               {maps::Point{6, 2}, "2"},
-                               {maps::Point{6, 3}, "2"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {maps::Point{.x = 1, .y = 1}, "1"},
+                           {maps::Point{.x = 1, .y = 2}, "1"},
+                           {maps::Point{.x = 1, .y = 3}, "1"},
+                           {maps::Point{.x = 2, .y = 1}, "1"},
+                           {maps::Point{.x = 2, .y = 2}, "1"},
+                           {maps::Point{.x = 2, .y = 3}, "1"},
+                           {maps::Point{.x = 3, .y = 1}, "1"},
+                           {maps::Point{.x = 3, .y = 2}, "1"},
+                           {maps::Point{.x = 3, .y = 3}, "1"},
+                           {maps::Point{.x = 4, .y = 1}, "2"},
+                           {maps::Point{.x = 4, .y = 2}, "2"},
+                           {maps::Point{.x = 4, .y = 3}, "2"},
+                           {maps::Point{.x = 5, .y = 1}, "2"},
+                           {maps::Point{.x = 5, .y = 2}, "2"},
+                           {maps::Point{.x = 5, .y = 3}, "2"},
+                           {maps::Point{.x = 6, .y = 1}, "2"},
+                           {maps::Point{.x = 6, .y = 2}, "2"},
+                           {maps::Point{.x = 6, .y = 3}, "2"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -224,50 +240,67 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocati
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {maps::Point{1, 1}, "1"},
-                               {maps::Point{1, 2}, "1"},
-                               {maps::Point{1, 3}, "1"},
-                               {maps::Point{2, 1}, "1"},
-                               {maps::Point{2, 2}, "1"},
-                               {maps::Point{2, 3}, "1"},
-                               {maps::Point{3, 1}, "1"},
-                               {maps::Point{3, 2}, "1"},
-                               {maps::Point{3, 3}, "1"},
-                               {maps::Point{4, 1}, "2"},
-                               {maps::Point{4, 2}, "2"},
-                               {maps::Point{4, 3}, "2"},
-                               {maps::Point{5, 1}, "2"},
-                               {maps::Point{5, 2}, "2"},
-                               {maps::Point{5, 3}, "2"},
-                               {maps::Point{6, 1}, "2"},
-                               {maps::Point{6, 2}, "2"},
-                               {maps::Point{6, 3}, "2"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 3, 4, 5}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {maps::Point{.x = 1, .y = 1}, "1"},
+                           {maps::Point{.x = 1, .y = 2}, "1"},
+                           {maps::Point{.x = 1, .y = 3}, "1"},
+                           {maps::Point{.x = 2, .y = 1}, "1"},
+                           {maps::Point{.x = 2, .y = 2}, "1"},
+                           {maps::Point{.x = 2, .y = 3}, "1"},
+                           {maps::Point{.x = 3, .y = 1}, "1"},
+                           {maps::Point{.x = 3, .y = 2}, "1"},
+                           {maps::Point{.x = 3, .y = 3}, "1"},
+                           {maps::Point{.x = 4, .y = 1}, "2"},
+                           {maps::Point{.x = 4, .y = 2}, "2"},
+                           {maps::Point{.x = 4, .y = 3}, "2"},
+                           {maps::Point{.x = 5, .y = 1}, "2"},
+                           {maps::Point{.x = 5, .y = 2}, "2"},
+                           {maps::Point{.x = 5, .y = 3}, "2"},
+                           {maps::Point{.x = 6, .y = 1}, "2"},
+                           {maps::Point{.x = 6, .y = 2}, "2"},
+                           {maps::Point{.x = 6, .y = 3}, "2"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -292,17 +325,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvinc
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -336,17 +405,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAntiAirInStateWithNoProvinces)
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -389,41 +494,76 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirNotPlacedInProvincesWithNoPoints)
 
 TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacementOverridenByDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                               {"3",
-                                   maps::ProvincePoints(
-                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{4, 1}, "2"},
-                               {{1, 4}, "3"},
-                               {{4, 4}, "4"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                           {"3",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 4},
+                                   {.x = 1, .y = 5},
+                                   {.x = 1, .y = 6},
+                                   {.x = 2, .y = 4},
+                                   {.x = 2, .y = 5},
+                                   {.x = 2, .y = 6},
+                                   {.x = 3, .y = 4},
+                                   {.x = 3, .y = 5},
+                                   {.x = 3, .y = 6},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 4, .y = 1}, "2"},
+                           {{.x = 1, .y = 4}, "3"},
+                           {{.x = 4, .y = 4}, "4"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -455,17 +595,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvinc
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -501,26 +677,89 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                        {"5",
-                           maps::ProvincePoints(
-                               {{7, 1}, {7, 2}, {7, 3}, {8, 1}, {8, 2}, {8, 3}, {9, 1}, {9, 2}, {9, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 7, .y = 1},
+                               {.x = 7, .y = 2},
+                               {.x = 7, .y = 3},
+                               {.x = 8, .y = 1},
+                               {.x = 8, .y = 2},
+                               {.x = 8, .y = 3},
+                               {.x = 9, .y = 1},
+                               {.x = 9, .y = 2},
+                               {.x = 9, .y = 3},
+                           })},
                        {"6",
-                           maps::ProvincePoints(
-                               {{7, 4}, {7, 5}, {7, 6}, {8, 4}, {8, 5}, {8, 6}, {9, 4}, {9, 5}, {9, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 7, .y = 4},
+                               {.x = 7, .y = 5},
+                               {.x = 7, .y = 6},
+                               {.x = 8, .y = 4},
+                               {.x = 8, .y = 5},
+                               {.x = 8, .y = 6},
+                               {.x = 9, .y = 4},
+                               {.x = 9, .y = 5},
+                               {.x = 9, .y = 6},
+                           })},
                        {"7",
-                           maps::ProvincePoints(
-                               {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 7},
+                               {.x = 1, .y = 8},
+                               {.x = 1, .y = 9},
+                               {.x = 2, .y = 7},
+                               {.x = 2, .y = 8},
+                               {.x = 2, .y = 9},
+                               {.x = 3, .y = 7},
+                               {.x = 3, .y = 8},
+                               {.x = 3, .y = 9},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -565,26 +804,89 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoArmsFactoriesInStateWithNoProvinces)
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                        {"5",
-                           maps::ProvincePoints(
-                               {{7, 1}, {7, 2}, {7, 3}, {8, 1}, {8, 2}, {8, 3}, {9, 1}, {9, 2}, {9, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 7, .y = 1},
+                               {.x = 7, .y = 2},
+                               {.x = 7, .y = 3},
+                               {.x = 8, .y = 1},
+                               {.x = 8, .y = 2},
+                               {.x = 8, .y = 3},
+                               {.x = 9, .y = 1},
+                               {.x = 9, .y = 2},
+                               {.x = 9, .y = 3},
+                           })},
                        {"6",
-                           maps::ProvincePoints(
-                               {{7, 4}, {7, 5}, {7, 6}, {8, 4}, {8, 5}, {8, 6}, {9, 4}, {9, 5}, {9, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 7, .y = 4},
+                               {.x = 7, .y = 5},
+                               {.x = 7, .y = 6},
+                               {.x = 8, .y = 4},
+                               {.x = 8, .y = 5},
+                               {.x = 8, .y = 6},
+                               {.x = 9, .y = 4},
+                               {.x = 9, .y = 5},
+                               {.x = 9, .y = 6},
+                           })},
                        {"7",
-                           maps::ProvincePoints(
-                               {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 7},
+                               {.x = 1, .y = 8},
+                               {.x = 1, .y = 9},
+                               {.x = 2, .y = 7},
+                               {.x = 2, .y = 8},
+                               {.x = 2, .y = 9},
+                               {.x = 3, .y = 7},
+                               {.x = 3, .y = 8},
+                               {.x = 3, .y = 9},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -629,55 +931,117 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesNotPlacedInProvincesWithNoP
 
 TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacementOverridenByDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                       {6, 1},
-                                       {7, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                               {"3",
-                                   maps::ProvincePoints(
-                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                               {"5",
-                                   maps::ProvincePoints(
-                                       {{7, 1}, {7, 2}, {7, 3}, {8, 1}, {8, 2}, {8, 3}, {9, 1}, {9, 2}, {9, 3}})},
-                               {"6",
-                                   maps::ProvincePoints(
-                                       {{7, 4}, {7, 5}, {7, 6}, {8, 4}, {8, 5}, {8, 6}, {9, 4}, {9, 5}, {9, 6}})},
-                               {"7",
-                                   maps::ProvincePoints(
-                                       {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{4, 1}, "2"},
-                               {{1, 4}, "3"},
-                               {{4, 4}, "4"},
-                               {{7, 1}, "5"},
-                               {{7, 4}, "6"},
-                               {{1, 7}, "7"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                                   {6, 1},
+                                   {7, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                           {"3",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 4},
+                                   {.x = 1, .y = 5},
+                                   {.x = 1, .y = 6},
+                                   {.x = 2, .y = 4},
+                                   {.x = 2, .y = 5},
+                                   {.x = 2, .y = 6},
+                                   {.x = 3, .y = 4},
+                                   {.x = 3, .y = 5},
+                                   {.x = 3, .y = 6},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                           {"5",
+                               maps::ProvincePoints({
+                                   {.x = 7, .y = 1},
+                                   {.x = 7, .y = 2},
+                                   {.x = 7, .y = 3},
+                                   {.x = 8, .y = 1},
+                                   {.x = 8, .y = 2},
+                                   {.x = 8, .y = 3},
+                                   {.x = 9, .y = 1},
+                                   {.x = 9, .y = 2},
+                                   {.x = 9, .y = 3},
+                               })},
+                           {"6",
+                               maps::ProvincePoints({
+                                   {.x = 7, .y = 4},
+                                   {.x = 7, .y = 5},
+                                   {.x = 7, .y = 6},
+                                   {.x = 8, .y = 4},
+                                   {.x = 8, .y = 5},
+                                   {.x = 8, .y = 6},
+                                   {.x = 9, .y = 4},
+                                   {.x = 9, .y = 5},
+                                   {.x = 9, .y = 6},
+                               })},
+                           {"7",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 7},
+                                   {.x = 1, .y = 8},
+                                   {.x = 1, .y = 9},
+                                   {.x = 2, .y = 7},
+                                   {.x = 2, .y = 8},
+                                   {.x = 2, .y = 9},
+                                   {.x = 3, .y = 7},
+                                   {.x = 3, .y = 8},
+                                   {.x = 3, .y = 9},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 4, .y = 1}, "2"},
+                           {{.x = 1, .y = 4}, "3"},
+                           {{.x = 4, .y = 4}, "4"},
+                           {{.x = 7, .y = 1}, "5"},
+                           {{.x = 7, .y = 4}, "6"},
+                           {{.x = 1, .y = 7}, "7"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -720,26 +1084,89 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                        {"5",
-                           maps::ProvincePoints(
-                               {{7, 1}, {7, 2}, {7, 3}, {8, 1}, {8, 2}, {8, 3}, {9, 1}, {9, 2}, {9, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 7, .y = 1},
+                               {.x = 7, .y = 2},
+                               {.x = 7, .y = 3},
+                               {.x = 8, .y = 1},
+                               {.x = 8, .y = 2},
+                               {.x = 8, .y = 3},
+                               {.x = 9, .y = 1},
+                               {.x = 9, .y = 2},
+                               {.x = 9, .y = 3},
+                           })},
                        {"6",
-                           maps::ProvincePoints(
-                               {{7, 4}, {7, 5}, {7, 6}, {8, 4}, {8, 5}, {8, 6}, {9, 4}, {9, 5}, {9, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 7, .y = 4},
+                               {.x = 7, .y = 5},
+                               {.x = 7, .y = 6},
+                               {.x = 8, .y = 4},
+                               {.x = 8, .y = 5},
+                               {.x = 8, .y = 6},
+                               {.x = 9, .y = 4},
+                               {.x = 9, .y = 5},
+                               {.x = 9, .y = 6},
+                           })},
                        {"7",
-                           maps::ProvincePoints(
-                               {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 7},
+                               {.x = 1, .y = 8},
+                               {.x = 1, .y = 9},
+                               {.x = 2, .y = 7},
+                               {.x = 2, .y = 8},
+                               {.x = 2, .y = 9},
+                               {.x = 3, .y = 7},
+                               {.x = 3, .y = 8},
+                               {.x = 3, .y = 9},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -781,60 +1208,60 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
            }},
    };
@@ -876,60 +1303,60 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoBunkersInStateWithNoProvinces)
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
            }},
    };
@@ -996,70 +1423,70 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocatio
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
            }},
    };
 
    const maps::MapData map_data({.borders = borders,
        .points_to_provinces = {
-           {{3, 2}, "1"},
-           {{4, 2}, "2"},
-           {{2, 4}, "3"},
-           {{5, 4}, "4"},
+           {{.x = 3, .y = 2}, "1"},
+           {{.x = 4, .y = 2}, "2"},
+           {{.x = 2, .y = 4}, "3"},
+           {{.x = 5, .y = 4}, "4"},
        }});
 
    const Buildings buildings = ImportBuildings(states,
@@ -1100,60 +1527,60 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
            }},
    };
@@ -1199,84 +1626,84 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 1},
-                       {2, 1},
-                       {3, 1},
+                       {.x = 1, .y = 1},
+                       {.x = 2, .y = 1},
+                       {.x = 3, .y = 1},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 1},
-                       {5, 1},
-                       {6, 1},
+                       {.x = 4, .y = 1},
+                       {.x = 5, .y = 1},
+                       {.x = 6, .y = 1},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 6},
-                       {2, 6},
-                       {3, 6},
+                       {.x = 1, .y = 6},
+                       {.x = 2, .y = 6},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 6},
-                       {5, 6},
-                       {6, 6},
+                       {.x = 4, .y = 6},
+                       {.x = 5, .y = 6},
+                       {.x = 6, .y = 6},
                    }},
            }},
    };
@@ -1320,84 +1747,84 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenNoCoastalProvinces)
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
@@ -1431,84 +1858,84 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenCoastalProvincesNotI
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
@@ -1584,94 +2011,94 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacementOverridenByDefault
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 1},
-                       {2, 1},
-                       {3, 1},
+                       {.x = 1, .y = 1},
+                       {.x = 2, .y = 1},
+                       {.x = 3, .y = 1},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 1},
-                       {5, 1},
-                       {6, 1},
+                       {.x = 4, .y = 1},
+                       {.x = 5, .y = 1},
+                       {.x = 6, .y = 1},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 6},
-                       {2, 6},
-                       {3, 6},
+                       {.x = 1, .y = 6},
+                       {.x = 2, .y = 6},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 6},
-                       {5, 6},
-                       {6, 6},
+                       {.x = 4, .y = 6},
+                       {.x = 5, .y = 6},
+                       {.x = 6, .y = 6},
                    }},
            }},
    };
 
    const maps::MapData map_data({.borders = borders,
        .points_to_provinces = {
-           {{2, 1}, "1"},
-           {{5, 1}, "2"},
-           {{2, 6}, "3"},
-           {{5, 6}, "4"},
+           {{.x = 2, .y = 1}, "1"},
+           {{.x = 5, .y = 1}, "2"},
+           {{.x = 2, .y = 6}, "3"},
+           {{.x = 5, .y = 6}, "4"},
        }});
 
    const Buildings buildings = ImportBuildings(states,
@@ -1714,84 +2141,84 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 1},
-                       {2, 1},
-                       {3, 1},
+                       {.x = 1, .y = 1},
+                       {.x = 2, .y = 1},
+                       {.x = 3, .y = 1},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 1},
-                       {5, 1},
-                       {6, 1},
+                       {.x = 4, .y = 1},
+                       {.x = 5, .y = 1},
+                       {.x = 6, .y = 1},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 6},
-                       {2, 6},
-                       {3, 6},
+                       {.x = 1, .y = 6},
+                       {.x = 2, .y = 6},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 6},
-                       {5, 6},
-                       {6, 6},
+                       {.x = 4, .y = 6},
+                       {.x = 5, .y = 6},
+                       {.x = 6, .y = 6},
                    }},
            }},
    };
@@ -1837,84 +2264,84 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
@@ -1948,84 +2375,84 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoDockyardInStateWithNoCoastalProvinces)
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
@@ -2067,60 +2494,60 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoBorder
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
            }},
    };
@@ -2166,91 +2593,91 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacementOverridenByDefaultLocat
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
 
    const maps::MapData map_data({.borders = borders,
        .points_to_provinces = {
-           {{2, 1}, "1"},
+           {{.x = 2, .y = 1}, "1"},
        }});
 
    const Buildings buildings = ImportBuildings(states,
@@ -2282,84 +2709,84 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
@@ -2395,36 +2822,36 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacedInSeaBorderCenterOf
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"6",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"7",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"8",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
@@ -2459,36 +2886,36 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoFloatingHarborsInStateWithNoCoastalPro
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"6",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"7",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"8",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
@@ -2553,41 +2980,41 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacementOverridenByDefau
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"6",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"7",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"8",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
 
-   const maps::MapData map_data({.borders = borders, .points_to_provinces = {{{2, 0}, "5"}}});
+   const maps::MapData map_data({.borders = borders, .points_to_provinces = {{{.x = 2, .y = 0}, "5"}}});
 
    const Buildings buildings = ImportBuildings(states,
        coastal_provinces,
@@ -2620,36 +3047,36 @@ TEST(Hoi4worldMapBuildingsCreatorTests,
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"6",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"7",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"8",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
@@ -2681,13 +3108,90 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
        }});
 
    const std::unordered_map<std::string, maps::ProvincePoints> the_province_points = {
-       {"1", maps::ProvincePoints({{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-       {"2", maps::ProvincePoints({{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-       {"3", maps::ProvincePoints({{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-       {"4", maps::ProvincePoints({{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-       {"5", maps::ProvincePoints({{7, 1}, {7, 2}, {7, 3}, {8, 1}, {8, 2}, {8, 3}, {9, 1}, {9, 2}, {9, 3}})},
-       {"6", maps::ProvincePoints({{7, 4}, {7, 5}, {7, 6}, {8, 4}, {8, 5}, {8, 6}, {9, 4}, {9, 5}, {9, 6}})},
-       {"7", maps::ProvincePoints({{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
+       {"1",
+           maps::ProvincePoints({
+               {.x = 1, .y = 1},
+               {.x = 1, .y = 2},
+               {.x = 1, .y = 3},
+               {.x = 2, .y = 1},
+               {.x = 2, .y = 2},
+               {.x = 2, .y = 3},
+               {.x = 3, .y = 1},
+               {.x = 3, .y = 2},
+               {.x = 3, .y = 3},
+           })},
+       {"2",
+           maps::ProvincePoints({
+               {.x = 4, .y = 1},
+               {.x = 4, .y = 2},
+               {.x = 4, .y = 3},
+               {.x = 5, .y = 1},
+               {.x = 5, .y = 2},
+               {.x = 5, .y = 3},
+               {.x = 6, .y = 1},
+               {.x = 6, .y = 2},
+               {.x = 6, .y = 3},
+           })},
+       {"3",
+           maps::ProvincePoints({
+               {.x = 1, .y = 4},
+               {.x = 1, .y = 5},
+               {.x = 1, .y = 6},
+               {.x = 2, .y = 4},
+               {.x = 2, .y = 5},
+               {.x = 2, .y = 6},
+               {.x = 3, .y = 4},
+               {.x = 3, .y = 5},
+               {.x = 3, .y = 6},
+           })},
+       {"4",
+           maps::ProvincePoints({
+               {.x = 4, .y = 4},
+               {.x = 4, .y = 5},
+               {.x = 4, .y = 6},
+               {.x = 5, .y = 4},
+               {.x = 5, .y = 5},
+               {.x = 5, .y = 6},
+               {.x = 6, .y = 4},
+               {.x = 6, .y = 5},
+               {.x = 6, .y = 6},
+           })},
+       {"5",
+           maps::ProvincePoints({
+               {.x = 7, .y = 1},
+               {.x = 7, .y = 2},
+               {.x = 7, .y = 3},
+               {.x = 8, .y = 1},
+               {.x = 8, .y = 2},
+               {.x = 8, .y = 3},
+               {.x = 9, .y = 1},
+               {.x = 9, .y = 2},
+               {.x = 9, .y = 3},
+           })},
+       {"6",
+           maps::ProvincePoints({
+               {.x = 7, .y = 4},
+               {.x = 7, .y = 5},
+               {.x = 7, .y = 6},
+               {.x = 8, .y = 4},
+               {.x = 8, .y = 5},
+               {.x = 8, .y = 6},
+               {.x = 9, .y = 4},
+               {.x = 9, .y = 5},
+               {.x = 9, .y = 6},
+           })},
+       {"7",
+           maps::ProvincePoints({
+               {.x = 1, .y = 7},
+               {.x = 1, .y = 8},
+               {.x = 1, .y = 9},
+               {.x = 2, .y = 7},
+               {.x = 2, .y = 8},
+               {.x = 2, .y = 9},
+               {.x = 3, .y = 7},
+               {.x = 3, .y = 8},
+               {.x = 3, .y = 9},
+           })},
    };
 
    const Buildings buildings = ImportBuildings(states,
@@ -2736,26 +3240,89 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoIndustrialComplexesInStateWithNoProvin
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                        {"5",
-                           maps::ProvincePoints(
-                               {{7, 1}, {7, 2}, {7, 3}, {8, 1}, {8, 2}, {8, 3}, {9, 1}, {9, 2}, {9, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 7, .y = 1},
+                               {.x = 7, .y = 2},
+                               {.x = 7, .y = 3},
+                               {.x = 8, .y = 1},
+                               {.x = 8, .y = 2},
+                               {.x = 8, .y = 3},
+                               {.x = 9, .y = 1},
+                               {.x = 9, .y = 2},
+                               {.x = 9, .y = 3},
+                           })},
                        {"6",
-                           maps::ProvincePoints(
-                               {{7, 4}, {7, 5}, {7, 6}, {8, 4}, {8, 5}, {8, 6}, {9, 4}, {9, 5}, {9, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 7, .y = 4},
+                               {.x = 7, .y = 5},
+                               {.x = 7, .y = 6},
+                               {.x = 8, .y = 4},
+                               {.x = 8, .y = 5},
+                               {.x = 8, .y = 6},
+                               {.x = 9, .y = 4},
+                               {.x = 9, .y = 5},
+                               {.x = 9, .y = 6},
+                           })},
                        {"7",
-                           maps::ProvincePoints(
-                               {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 7},
+                               {.x = 1, .y = 8},
+                               {.x = 1, .y = 9},
+                               {.x = 2, .y = 7},
+                               {.x = 2, .y = 8},
+                               {.x = 2, .y = 9},
+                               {.x = 3, .y = 7},
+                               {.x = 3, .y = 8},
+                               {.x = 3, .y = 9},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -2804,55 +3371,117 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesNotPlacedInProvincesW
 
 TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacementOverridenByDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                       {6, 1},
-                                       {7, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                               {"3",
-                                   maps::ProvincePoints(
-                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                               {"5",
-                                   maps::ProvincePoints(
-                                       {{7, 1}, {7, 2}, {7, 3}, {8, 1}, {8, 2}, {8, 3}, {9, 1}, {9, 2}, {9, 3}})},
-                               {"6",
-                                   maps::ProvincePoints(
-                                       {{7, 4}, {7, 5}, {7, 6}, {8, 4}, {8, 5}, {8, 6}, {9, 4}, {9, 5}, {9, 6}})},
-                               {"7",
-                                   maps::ProvincePoints(
-                                       {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{4, 1}, "2"},
-                               {{1, 4}, "3"},
-                               {{4, 4}, "4"},
-                               {{7, 1}, "5"},
-                               {{7, 4}, "6"},
-                               {{1, 7}, "7"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                                   {6, 1},
+                                   {7, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                           {"3",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 4},
+                                   {.x = 1, .y = 5},
+                                   {.x = 1, .y = 6},
+                                   {.x = 2, .y = 4},
+                                   {.x = 2, .y = 5},
+                                   {.x = 2, .y = 6},
+                                   {.x = 3, .y = 4},
+                                   {.x = 3, .y = 5},
+                                   {.x = 3, .y = 6},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                           {"5",
+                               maps::ProvincePoints({
+                                   {.x = 7, .y = 1},
+                                   {.x = 7, .y = 2},
+                                   {.x = 7, .y = 3},
+                                   {.x = 8, .y = 1},
+                                   {.x = 8, .y = 2},
+                                   {.x = 8, .y = 3},
+                                   {.x = 9, .y = 1},
+                                   {.x = 9, .y = 2},
+                                   {.x = 9, .y = 3},
+                               })},
+                           {"6",
+                               maps::ProvincePoints({
+                                   {.x = 7, .y = 4},
+                                   {.x = 7, .y = 5},
+                                   {.x = 7, .y = 6},
+                                   {.x = 8, .y = 4},
+                                   {.x = 8, .y = 5},
+                                   {.x = 8, .y = 6},
+                                   {.x = 9, .y = 4},
+                                   {.x = 9, .y = 5},
+                                   {.x = 9, .y = 6},
+                               })},
+                           {"7",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 7},
+                                   {.x = 1, .y = 8},
+                                   {.x = 1, .y = 9},
+                                   {.x = 2, .y = 7},
+                                   {.x = 2, .y = 8},
+                                   {.x = 2, .y = 9},
+                                   {.x = 3, .y = 7},
+                                   {.x = 3, .y = 8},
+                                   {.x = 3, .y = 9},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 4, .y = 1}, "2"},
+                           {{.x = 1, .y = 4}, "3"},
+                           {{.x = 4, .y = 4}, "4"},
+                           {{.x = 7, .y = 1}, "5"},
+                           {{.x = 7, .y = 4}, "6"},
+                           {{.x = 1, .y = 7}, "7"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf(
@@ -2895,26 +3524,89 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                        {"5",
-                           maps::ProvincePoints(
-                               {{7, 1}, {7, 2}, {7, 3}, {8, 1}, {8, 2}, {8, 3}, {9, 1}, {9, 2}, {9, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 7, .y = 1},
+                               {.x = 7, .y = 2},
+                               {.x = 7, .y = 3},
+                               {.x = 8, .y = 1},
+                               {.x = 8, .y = 2},
+                               {.x = 8, .y = 3},
+                               {.x = 9, .y = 1},
+                               {.x = 9, .y = 2},
+                               {.x = 9, .y = 3},
+                           })},
                        {"6",
-                           maps::ProvincePoints(
-                               {{7, 4}, {7, 5}, {7, 6}, {8, 4}, {8, 5}, {8, 6}, {9, 4}, {9, 5}, {9, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 7, .y = 4},
+                               {.x = 7, .y = 5},
+                               {.x = 7, .y = 6},
+                               {.x = 8, .y = 4},
+                               {.x = 8, .y = 5},
+                               {.x = 8, .y = 6},
+                               {.x = 9, .y = 4},
+                               {.x = 9, .y = 5},
+                               {.x = 9, .y = 6},
+                           })},
                        {"7",
-                           maps::ProvincePoints(
-                               {{1, 7}, {1, 8}, {1, 9}, {2, 7}, {2, 8}, {2, 9}, {3, 7}, {3, 8}, {3, 9}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 7},
+                               {.x = 1, .y = 8},
+                               {.x = 1, .y = 9},
+                               {.x = 2, .y = 7},
+                               {.x = 2, .y = 8},
+                               {.x = 2, .y = 9},
+                               {.x = 3, .y = 7},
+                               {.x = 3, .y = 8},
+                               {.x = 3, .y = 9},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -2958,84 +3650,84 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAl
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 1},
-                       {2, 1},
-                       {3, 1},
+                       {.x = 1, .y = 1},
+                       {.x = 2, .y = 1},
+                       {.x = 3, .y = 1},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 1},
-                       {5, 1},
-                       {6, 1},
+                       {.x = 4, .y = 1},
+                       {.x = 5, .y = 1},
+                       {.x = 6, .y = 1},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 6},
-                       {2, 6},
-                       {3, 6},
+                       {.x = 1, .y = 6},
+                       {.x = 2, .y = 6},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 6},
-                       {5, 6},
-                       {6, 6},
+                       {.x = 4, .y = 6},
+                       {.x = 5, .y = 6},
+                       {.x = 6, .y = 6},
                    }},
            }},
    };
@@ -3081,84 +3773,84 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoNavalBasesWhenNoCoastalProvinces)
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 0},
-                       {2, 0},
-                       {3, 0},
+                       {.x = 1, .y = 0},
+                       {.x = 2, .y = 0},
+                       {.x = 3, .y = 0},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 0},
-                       {5, 0},
-                       {6, 0},
+                       {.x = 4, .y = 0},
+                       {.x = 5, .y = 0},
+                       {.x = 6, .y = 0},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 7},
-                       {2, 7},
-                       {3, 7},
+                       {.x = 1, .y = 7},
+                       {.x = 2, .y = 7},
+                       {.x = 3, .y = 7},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 7},
-                       {5, 7},
-                       {6, 7},
+                       {.x = 4, .y = 7},
+                       {.x = 5, .y = 7},
+                       {.x = 6, .y = 7},
                    }},
            }},
    };
@@ -3230,94 +3922,94 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacementOverridenByDefaultLoc
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
                {"5",
                    maps::BorderPoints{
-                       {1, 1},
-                       {2, 1},
-                       {3, 1},
+                       {.x = 1, .y = 1},
+                       {.x = 2, .y = 1},
+                       {.x = 3, .y = 1},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 1},
-                       {5, 1},
-                       {6, 1},
+                       {.x = 4, .y = 1},
+                       {.x = 5, .y = 1},
+                       {.x = 6, .y = 1},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 6},
-                       {2, 6},
-                       {3, 6},
+                       {.x = 1, .y = 6},
+                       {.x = 2, .y = 6},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 6},
-                       {5, 6},
-                       {6, 6},
+                       {.x = 4, .y = 6},
+                       {.x = 5, .y = 6},
+                       {.x = 6, .y = 6},
                    }},
            }},
    };
 
    const maps::MapData map_data({.borders = borders,
        .points_to_provinces = {
-           {{2, 1}, "1"},
-           {{5, 1}, "2"},
-           {{2, 6}, "3"},
-           {{5, 6}, "4"},
+           {{.x = 2, .y = 1}, "1"},
+           {{.x = 5, .y = 1}, "2"},
+           {{.x = 2, .y = 6}, "3"},
+           {{.x = 5, .y = 6}, "4"},
        }});
 
    const Buildings buildings = ImportBuildings(states,
@@ -3363,84 +4055,84 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAl
                                                                  maps::BordersWith{
                                                                      {"2",
                                                                          maps::BorderPoints{
-                                                                             {3, 1},
-                                                                             {3, 2},
-                                                                             {3, 3},
+                                                                             {.x = 3, .y = 1},
+                                                                             {.x = 3, .y = 2},
+                                                                             {.x = 3, .y = 3},
                                                                          }},
                                                                      {"3",
                                                                          maps::BorderPoints{
-                                                                             {1, 3},
-                                                                             {2, 3},
-                                                                             {3, 3},
+                                                                             {.x = 1, .y = 3},
+                                                                             {.x = 2, .y = 3},
+                                                                             {.x = 3, .y = 3},
                                                                          }},
                                                                      {"5",
                                                                          maps::BorderPoints{
-                                                                             {1, 1},
-                                                                             {2, 1},
-                                                                             {3, 1},
+                                                                             {.x = 1, .y = 1},
+                                                                             {.x = 2, .y = 1},
+                                                                             {.x = 3, .y = 1},
                                                                          }},
                                                                  }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
                {"6",
                    maps::BorderPoints{
-                       {4, 1},
-                       {5, 1},
-                       {6, 1},
+                       {.x = 4, .y = 1},
+                       {.x = 5, .y = 1},
+                       {.x = 6, .y = 1},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
                {"7",
                    maps::BorderPoints{
-                       {1, 6},
-                       {2, 6},
-                       {3, 6},
+                       {.x = 1, .y = 6},
+                       {.x = 2, .y = 6},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
                {"8",
                    maps::BorderPoints{
-                       {4, 6},
-                       {5, 6},
-                       {6, 6},
+                       {.x = 4, .y = 6},
+                       {.x = 5, .y = 6},
+                       {.x = 6, .y = 6},
                    }},
            }}};
 
@@ -3487,17 +4179,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvi
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -3524,17 +4252,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoNuclearReactorInStateWithNoProvinces)
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -3591,22 +4355,58 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacementOverridenByDefaul
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    },
                .points_to_provinces{
-                   {{4, 1}, "2"},
-                   {{1, 4}, "3"},
-                   {{4, 4}, "4"},
+                   {{.x = 4, .y = 1}, "2"},
+                   {{.x = 1, .y = 4}, "3"},
+                   {{.x = 4, .y = 4}, "4"},
                }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -3633,17 +4433,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvi
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -3668,60 +4504,60 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesPlacedInCenterOfABorderForAll
                                                                  maps::BordersWith{
                                                                      {"2",
                                                                          maps::BorderPoints{
-                                                                             {3, 1},
-                                                                             {3, 2},
-                                                                             {3, 3},
+                                                                             {.x = 3, .y = 1},
+                                                                             {.x = 3, .y = 2},
+                                                                             {.x = 3, .y = 3},
                                                                          }},
                                                                      {"3",
                                                                          maps::BorderPoints{
-                                                                             {1, 3},
-                                                                             {2, 3},
-                                                                             {3, 3},
+                                                                             {.x = 1, .y = 3},
+                                                                             {.x = 2, .y = 3},
+                                                                             {.x = 3, .y = 3},
                                                                          }},
                                                                  }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
            }}};
 
@@ -3755,60 +4591,60 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoSupplyNodesInStateWithNoProvinces)
                                                                  maps::BordersWith{
                                                                      {"2",
                                                                          maps::BorderPoints{
-                                                                             {3, 1},
-                                                                             {3, 2},
-                                                                             {3, 3},
+                                                                             {.x = 3, .y = 1},
+                                                                             {.x = 3, .y = 2},
+                                                                             {.x = 3, .y = 3},
                                                                          }},
                                                                      {"3",
                                                                          maps::BorderPoints{
-                                                                             {1, 3},
-                                                                             {2, 3},
-                                                                             {3, 3},
+                                                                             {.x = 1, .y = 3},
+                                                                             {.x = 2, .y = 3},
+                                                                             {.x = 3, .y = 3},
                                                                          }},
                                                                  }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
            }}};
 
@@ -3875,70 +4711,70 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacementOverridenByDefaultLoc
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {3, 1},
-                       {3, 2},
-                       {3, 3},
+                       {.x = 3, .y = 1},
+                       {.x = 3, .y = 2},
+                       {.x = 3, .y = 3},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {1, 3},
-                       {2, 3},
-                       {3, 3},
+                       {.x = 1, .y = 3},
+                       {.x = 2, .y = 3},
+                       {.x = 3, .y = 3},
                    }},
            }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
            }},
    };
 
    const maps::MapData map_data({.borders = borders,
        .points_to_provinces = {
-           {{3, 2}, "1"},
-           {{4, 2}, "2"},
-           {{2, 4}, "3"},
-           {{5, 4}, "4"},
+           {{.x = 3, .y = 2}, "1"},
+           {{.x = 4, .y = 2}, "2"},
+           {{.x = 2, .y = 4}, "3"},
+           {{.x = 5, .y = 4}, "4"},
        }});
 
    const Buildings buildings = ImportBuildings(states,
@@ -3978,60 +4814,60 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacedInCenterOfABorderForAllP
                                                                  maps::BordersWith{
                                                                      {"2",
                                                                          maps::BorderPoints{
-                                                                             {3, 1},
-                                                                             {3, 2},
-                                                                             {3, 3},
+                                                                             {.x = 3, .y = 1},
+                                                                             {.x = 3, .y = 2},
+                                                                             {.x = 3, .y = 3},
                                                                          }},
                                                                      {"3",
                                                                          maps::BorderPoints{
-                                                                             {1, 3},
-                                                                             {2, 3},
-                                                                             {3, 3},
+                                                                             {.x = 1, .y = 3},
+                                                                             {.x = 2, .y = 3},
+                                                                             {.x = 3, .y = 3},
                                                                          }},
                                                                  }},
        {"2",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {4, 1},
-                       {4, 2},
-                       {4, 3},
+                       {.x = 4, .y = 1},
+                       {.x = 4, .y = 2},
+                       {.x = 4, .y = 3},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {4, 3},
-                       {5, 3},
-                       {6, 3},
+                       {.x = 4, .y = 3},
+                       {.x = 5, .y = 3},
+                       {.x = 6, .y = 3},
                    }},
            }},
        {"3",
            maps::BordersWith{
                {"1",
                    maps::BorderPoints{
-                       {1, 4},
-                       {2, 4},
-                       {3, 4},
+                       {.x = 1, .y = 4},
+                       {.x = 2, .y = 4},
+                       {.x = 3, .y = 4},
                    }},
                {"4",
                    maps::BorderPoints{
-                       {3, 4},
-                       {3, 5},
-                       {3, 6},
+                       {.x = 3, .y = 4},
+                       {.x = 3, .y = 5},
+                       {.x = 3, .y = 6},
                    }},
            }},
        {"4",
            maps::BordersWith{
                {"2",
                    maps::BorderPoints{
-                       {4, 4},
-                       {5, 4},
-                       {6, 4},
+                       {.x = 4, .y = 4},
+                       {.x = 5, .y = 4},
+                       {.x = 6, .y = 4},
                    }},
                {"3",
                    maps::BorderPoints{
-                       {4, 4},
-                       {4, 5},
-                       {4, 6},
+                       {.x = 4, .y = 4},
+                       {.x = 4, .y = 5},
+                       {.x = 4, .y = 6},
                    }},
            }}};
 
@@ -4073,17 +4909,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstPr
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -4110,17 +4982,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoSyntheticRefineryInStateWithNoProvince
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -4167,41 +5075,76 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryNotPlacedInProvincesWit
 
 TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacementOverridenByDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                               {"3",
-                                   maps::ProvincePoints(
-                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{4, 1}, "2"},
-                               {{1, 4}, "3"},
-                               {{4, 4}, "4"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                           {"3",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 4},
+                                   {.x = 1, .y = 5},
+                                   {.x = 1, .y = 6},
+                                   {.x = 2, .y = 4},
+                                   {.x = 2, .y = 5},
+                                   {.x = 2, .y = 6},
+                                   {.x = 3, .y = 4},
+                                   {.x = 3, .y = 5},
+                                   {.x = 3, .y = 6},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 4, .y = 1}, "2"},
+                           {{.x = 1, .y = 4}, "3"},
+                           {{.x = 4, .y = 4}, "4"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4226,17 +5169,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstPr
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -4263,17 +5242,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceO
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -4300,17 +5315,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoRocketSiteInStateWithNoProvinces)
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -4353,41 +5404,76 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSiteNotPlacedInProvincesWithNoPoin
 
 TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacementOverridenByDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                               {"3",
-                                   maps::ProvincePoints(
-                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{4, 1}, "2"},
-                               {{1, 4}, "3"},
-                               {{4, 4}, "4"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                           {"3",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 4},
+                                   {.x = 1, .y = 5},
+                                   {.x = 1, .y = 6},
+                                   {.x = 2, .y = 4},
+                                   {.x = 2, .y = 5},
+                                   {.x = 2, .y = 6},
+                                   {.x = 3, .y = 4},
+                                   {.x = 3, .y = 5},
+                                   {.x = 3, .y = 6},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 4, .y = 1}, "2"},
+                           {{.x = 1, .y = 4}, "3"},
+                           {{.x = 4, .y = 4}, "4"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4412,17 +5498,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceO
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -4449,17 +5571,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinc
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -4486,17 +5644,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoRadarStationInStateWithNoProvinces)
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -4539,41 +5733,76 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationNotPlacedInProvincesWithNoPo
 
 TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacementOverridenByDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                               {"3",
-                                   maps::ProvincePoints(
-                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{4, 1}, "2"},
-                               {{1, 4}, "3"},
-                               {{4, 4}, "4"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                           {"3",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 4},
+                                   {.x = 1, .y = 5},
+                                   {.x = 1, .y = 6},
+                                   {.x = 2, .y = 4},
+                                   {.x = 2, .y = 5},
+                                   {.x = 2, .y = 6},
+                                   {.x = 3, .y = 4},
+                                   {.x = 3, .y = 5},
+                                   {.x = 3, .y = 6},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 4, .y = 1}, "2"},
+                           {{.x = 1, .y = 4}, "3"},
+                           {{.x = 4, .y = 4}, "4"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4598,17 +5827,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinc
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -4634,17 +5899,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfS
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -4671,17 +5972,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoFuelSiloInStateWithNoProvinces)
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -4724,41 +6061,76 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloNotPlacedInProvincesWithNoPoints
 
 TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacementOverridenByDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                               {"3",
-                                   maps::ProvincePoints(
-                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{4, 1}, "2"},
-                               {{1, 4}, "3"},
-                               {{4, 4}, "4"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                           {"3",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 4},
+                                   {.x = 1, .y = 5},
+                                   {.x = 1, .y = 6},
+                                   {.x = 2, .y = 4},
+                                   {.x = 2, .y = 5},
+                                   {.x = 2, .y = 6},
+                                   {.x = 3, .y = 4},
+                                   {.x = 3, .y = 5},
+                                   {.x = 3, .y = 6},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 4, .y = 1}, "2"},
+                           {{.x = 1, .y = 4}, "3"},
+                           {{.x = 4, .y = 4}, "4"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -4783,17 +6155,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfS
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -4806,53 +6214,79 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfS
 
 TEST(Hoi4worldMapBuildingsCreatorTests, SpecialProjectFacilitesPlacedIndefaultLocationsAndOnlyInDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states =
-                                       {
-                                           State(1, {.provinces = {1, 2, 3, 4, 5}}),
-                                           State(2, {.provinces = {6, 7, 8, 9, 10}}),
-                                           State(3, {.provinces = {11, 12, 13, 14, 15}}),
-                                       },
-                               .province_to_state_id_map =
+   const Buildings buildings =
+       ImportBuildings(States({.states =
                                    {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                       {6, 2},
-                                       {7, 2},
-                                       {8, 2},
-                                       {9, 2},
-                                       {10, 2},
-                                       {11, 3},
-                                       {12, 3},
-                                       {13, 3},
-                                       {14, 3},
-                                       {15, 3},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                               {"7",
-                                   maps::ProvincePoints(
-                                       {{7, 7}, {7, 8}, {7, 9}, {8, 7}, {8, 8}, {8, 9}, {9, 7}, {9, 8}, {9, 9}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{1, 3}, "1"},
-                               {{4, 6}, "4"},
-                               {{7, 9}, "7"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+                                       State(1, {.provinces = {1, 2, 3, 4, 5}}),
+                                       State(2, {.provinces = {6, 7, 8, 9, 10}}),
+                                       State(3, {.provinces = {11, 12, 13, 14, 15}}),
+                                   },
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                                   {6, 2},
+                                   {7, 2},
+                                   {8, 2},
+                                   {9, 2},
+                                   {10, 2},
+                                   {11, 3},
+                                   {12, 3},
+                                   {13, 3},
+                                   {14, 3},
+                                   {15, 3},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                           {"7",
+                               maps::ProvincePoints({
+                                   {.x = 7, .y = 7},
+                                   {.x = 7, .y = 8},
+                                   {.x = 7, .y = 9},
+                                   {.x = 8, .y = 7},
+                                   {.x = 8, .y = 8},
+                                   {.x = 8, .y = 9},
+                                   {.x = 9, .y = 7},
+                                   {.x = 9, .y = 8},
+                                   {.x = 9, .y = 9},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 1, .y = 3}, "1"},
+                           {{.x = 4, .y = 6}, "4"},
+                           {{.x = 7, .y = 9}, "7"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({
@@ -4871,53 +6305,79 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SpecialProjectFacilitesPlacedIndefaultLo
 
 TEST(Hoi4worldMapBuildingsCreatorTests, LandmarksPlacedIndefaultLocationsAndOnlyInDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states =
-                                       {
-                                           State(1, {.provinces = {1, 2, 3, 4, 5}}),
-                                           State(2, {.provinces = {6, 7, 8, 9, 10}}),
-                                           State(3, {.provinces = {11, 12, 13, 14, 15}}),
-                                       },
-                               .province_to_state_id_map =
+   const Buildings buildings =
+       ImportBuildings(States({.states =
                                    {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                       {6, 2},
-                                       {7, 2},
-                                       {8, 2},
-                                       {9, 2},
-                                       {10, 2},
-                                       {11, 3},
-                                       {12, 3},
-                                       {13, 3},
-                                       {14, 3},
-                                       {15, 3},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                               {"7",
-                                   maps::ProvincePoints(
-                                       {{7, 7}, {7, 8}, {7, 9}, {8, 7}, {8, 8}, {8, 9}, {9, 7}, {9, 8}, {9, 9}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{1, 3}, "1"},
-                               {{4, 6}, "4"},
-                               {{7, 9}, "7"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+                                       State(1, {.provinces = {1, 2, 3, 4, 5}}),
+                                       State(2, {.provinces = {6, 7, 8, 9, 10}}),
+                                       State(3, {.provinces = {11, 12, 13, 14, 15}}),
+                                   },
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                                   {6, 2},
+                                   {7, 2},
+                                   {8, 2},
+                                   {9, 2},
+                                   {10, 2},
+                                   {11, 3},
+                                   {12, 3},
+                                   {13, 3},
+                                   {14, 3},
+                                   {15, 3},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                           {"7",
+                               maps::ProvincePoints({
+                                   {.x = 7, .y = 7},
+                                   {.x = 7, .y = 8},
+                                   {.x = 7, .y = 9},
+                                   {.x = 8, .y = 7},
+                                   {.x = 8, .y = 8},
+                                   {.x = 8, .y = 9},
+                                   {.x = 9, .y = 7},
+                                   {.x = 9, .y = 8},
+                                   {.x = 9, .y = 9},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 1, .y = 3}, "1"},
+                           {{.x = 4, .y = 6}, "4"},
+                           {{.x = 7, .y = 9}, "7"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({
@@ -4950,17 +6410,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstPr
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -4987,17 +6483,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoStrongholdNetworkInStateWithNoProvince
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsToNoBuildings", {}});
 
@@ -5044,41 +6576,76 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkNotPlacedInProvincesWit
 
 TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacementOverridenByDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
-                               .province_to_state_id_map =
-                                   {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"2",
-                                   maps::ProvincePoints(
-                                       {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
-                               {"3",
-                                   maps::ProvincePoints(
-                                       {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{4, 1}, "2"},
-                               {{1, 4}, "3"},
-                               {{4, 4}, "4"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+   const Buildings buildings =
+       ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"2",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 1},
+                                   {.x = 4, .y = 2},
+                                   {.x = 4, .y = 3},
+                                   {.x = 5, .y = 1},
+                                   {.x = 5, .y = 2},
+                                   {.x = 5, .y = 3},
+                                   {.x = 6, .y = 1},
+                                   {.x = 6, .y = 2},
+                                   {.x = 6, .y = 3},
+                               })},
+                           {"3",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 4},
+                                   {.x = 1, .y = 5},
+                                   {.x = 1, .y = 6},
+                                   {.x = 2, .y = 4},
+                                   {.x = 2, .y = 5},
+                                   {.x = 2, .y = 6},
+                                   {.x = 3, .y = 4},
+                                   {.x = 3, .y = 5},
+                                   {.x = 3, .y = 6},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 4, .y = 1}, "2"},
+                           {{.x = 1, .y = 4}, "3"},
+                           {{.x = 4, .y = 4}, "4"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({Building({.state_id = 1,
@@ -5103,17 +6670,53 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstPr
            {.the_province_points =
                    {
                        {"1",
-                           maps::ProvincePoints(
-                               {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 1},
+                               {.x = 1, .y = 2},
+                               {.x = 1, .y = 3},
+                               {.x = 2, .y = 1},
+                               {.x = 2, .y = 2},
+                               {.x = 2, .y = 3},
+                               {.x = 3, .y = 1},
+                               {.x = 3, .y = 2},
+                               {.x = 3, .y = 3},
+                           })},
                        {"2",
-                           maps::ProvincePoints(
-                               {{4, 1}, {4, 2}, {4, 3}, {5, 1}, {5, 2}, {5, 3}, {6, 1}, {6, 2}, {6, 3}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 1},
+                               {.x = 4, .y = 2},
+                               {.x = 4, .y = 3},
+                               {.x = 5, .y = 1},
+                               {.x = 5, .y = 2},
+                               {.x = 5, .y = 3},
+                               {.x = 6, .y = 1},
+                               {.x = 6, .y = 2},
+                               {.x = 6, .y = 3},
+                           })},
                        {"3",
-                           maps::ProvincePoints(
-                               {{1, 4}, {1, 5}, {1, 6}, {2, 4}, {2, 5}, {2, 6}, {3, 4}, {3, 5}, {3, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 1, .y = 4},
+                               {.x = 1, .y = 5},
+                               {.x = 1, .y = 6},
+                               {.x = 2, .y = 4},
+                               {.x = 2, .y = 5},
+                               {.x = 2, .y = 6},
+                               {.x = 3, .y = 4},
+                               {.x = 3, .y = 5},
+                               {.x = 3, .y = 6},
+                           })},
                        {"4",
-                           maps::ProvincePoints(
-                               {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
+                           maps::ProvincePoints({
+                               {.x = 4, .y = 4},
+                               {.x = 4, .y = 5},
+                               {.x = 4, .y = 6},
+                               {.x = 5, .y = 4},
+                               {.x = 5, .y = 5},
+                               {.x = 5, .y = 6},
+                               {.x = 6, .y = 4},
+                               {.x = 6, .y = 5},
+                               {.x = 6, .y = 6},
+                           })},
                    }}),
        commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
@@ -5126,53 +6729,79 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstPr
 
 TEST(Hoi4worldMapBuildingsCreatorTests, DamsPlacedIndefaultLocationsAndOnlyInDefaultLocations)
 {
-   const Buildings
-       buildings =
-           ImportBuildings(States({.states =
-                                       {
-                                           State(1, {.provinces = {1, 2, 3, 4, 5}}),
-                                           State(2, {.provinces = {6, 7, 8, 9, 10}}),
-                                           State(3, {.provinces = {11, 12, 13, 14, 15}}),
-                                       },
-                               .province_to_state_id_map =
+   const Buildings buildings =
+       ImportBuildings(States({.states =
                                    {
-                                       {1, 1},
-                                       {2, 1},
-                                       {3, 1},
-                                       {4, 1},
-                                       {5, 1},
-                                       {6, 2},
-                                       {7, 2},
-                                       {8, 2},
-                                       {9, 2},
-                                       {10, 2},
-                                       {11, 3},
-                                       {12, 3},
-                                       {13, 3},
-                                       {14, 3},
-                                       {15, 3},
-                                   }}),
-               CoastalProvinces(),
-               maps::MapData(
-                   {.the_province_points =
-                           {
-                               {"1",
-                                   maps::ProvincePoints(
-                                       {{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}})},
-                               {"4",
-                                   maps::ProvincePoints(
-                                       {{4, 4}, {4, 5}, {4, 6}, {5, 4}, {5, 5}, {5, 6}, {6, 4}, {6, 5}, {6, 6}})},
-                               {"7",
-                                   maps::ProvincePoints(
-                                       {{7, 7}, {7, 8}, {7, 9}, {8, 7}, {8, 8}, {8, 9}, {9, 7}, {9, 8}, {9, 9}})},
-                           },
-                       .points_to_provinces =
-                           {
-                               {{1, 3}, "1"},
-                               {{4, 6}, "4"},
-                               {{7, 9}, "7"},
-                           }}),
-               commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
+                                       State(1, {.provinces = {1, 2, 3, 4, 5}}),
+                                       State(2, {.provinces = {6, 7, 8, 9, 10}}),
+                                       State(3, {.provinces = {11, 12, 13, 14, 15}}),
+                                   },
+                           .province_to_state_id_map =
+                               {
+                                   {1, 1},
+                                   {2, 1},
+                                   {3, 1},
+                                   {4, 1},
+                                   {5, 1},
+                                   {6, 2},
+                                   {7, 2},
+                                   {8, 2},
+                                   {9, 2},
+                                   {10, 2},
+                                   {11, 3},
+                                   {12, 3},
+                                   {13, 3},
+                                   {14, 3},
+                                   {15, 3},
+                               }}),
+           CoastalProvinces(),
+           maps::MapData(
+               {.the_province_points =
+                       {
+                           {"1",
+                               maps::ProvincePoints({
+                                   {.x = 1, .y = 1},
+                                   {.x = 1, .y = 2},
+                                   {.x = 1, .y = 3},
+                                   {.x = 2, .y = 1},
+                                   {.x = 2, .y = 2},
+                                   {.x = 2, .y = 3},
+                                   {.x = 3, .y = 1},
+                                   {.x = 3, .y = 2},
+                                   {.x = 3, .y = 3},
+                               })},
+                           {"4",
+                               maps::ProvincePoints({
+                                   {.x = 4, .y = 4},
+                                   {.x = 4, .y = 5},
+                                   {.x = 4, .y = 6},
+                                   {.x = 5, .y = 4},
+                                   {.x = 5, .y = 5},
+                                   {.x = 5, .y = 6},
+                                   {.x = 6, .y = 4},
+                                   {.x = 6, .y = 5},
+                                   {.x = 6, .y = 6},
+                               })},
+                           {"7",
+                               maps::ProvincePoints({
+                                   {.x = 7, .y = 7},
+                                   {.x = 7, .y = 8},
+                                   {.x = 7, .y = 9},
+                                   {.x = 8, .y = 7},
+                                   {.x = 8, .y = 8},
+                                   {.x = 8, .y = 9},
+                                   {.x = 9, .y = 7},
+                                   {.x = 9, .y = 8},
+                                   {.x = 9, .y = 9},
+                               })},
+                       },
+                   .points_to_provinces =
+                       {
+                           {{.x = 1, .y = 3}, "1"},
+                           {{.x = 4, .y = 6}, "4"},
+                           {{.x = 7, .y = 9}, "7"},
+                       }}),
+           commonItems::ModFilesystem{"test_files/Hoi4worldMapBuildingsCreatorTests/DefaultsExist", {}});
 
    EXPECT_THAT(buildings.GetBuildings(),
        testing::IsSupersetOf({

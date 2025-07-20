@@ -55,13 +55,15 @@ WorldFrameworkBuilder WorldFrameworkBuilder::CreateNullWorldFramework()
 }
 WorldFramework WorldFrameworkBuilder::Build()
 {
-   return WorldFramework(std::move(this->strategic_regions_),
+   return {
+       std::move(this->strategic_regions_),
        std::move(this->default_states_),
        std::move(this->resources_map_),
        std::move(this->state_categories_),
        maps::ProvinceDefinitions{std::move(this->province_definitions_)},
        std::move(this->map_data_),
-       CoastalProvinces{std::move(this->coastal_provinces_)});
+       CoastalProvinces{std::move(this->coastal_provinces_)},
+   };
 }
 
 WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultStrategicRegions()

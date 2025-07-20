@@ -220,7 +220,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
    int location = default_location;
    for (const auto& [ut, str]: required)
    {
-      float needed = static_cast<float>(str);
+      auto needed = static_cast<float>(str);
       for (auto& battalion: battalions)
       {
          if (battalion.GetType() != ut)
@@ -236,7 +236,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
          needed -= current;
          // Create division with equipment of worst battalion in it.
          // Approximate but reasonable.
-         equipment = std::min(equipment, std::min(100, battalion.GetEquipmentScale()));
+         equipment = std::min({equipment, 100, battalion.GetEquipmentScale()});
          const auto& battalion_location = battalion.GetLocation();
          if (battalion_location.has_value())
          {
@@ -253,7 +253,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
       return cand.GetStrength() < kTolerance;
    });
 
-   return hoi4::Unit{division.GetName(), equipment, location};
+   return hoi4::Unit{.unit_template = division.GetName(), .equipment = equipment, .location = location};
 }
 
 void ExtractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std::set<std::string>& active)

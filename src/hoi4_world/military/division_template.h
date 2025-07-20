@@ -14,8 +14,8 @@ using UnitCount = std::map<std::string, int>;
 class DivisionTemplate
 {
   public:
-   DivisionTemplate(const std::string& n, UnitCount& bs, UnitCount& sp):
-       name_(n),
+   DivisionTemplate(std::string n, UnitCount bs, UnitCount sp):
+       name_(std::move(n)),
        battalions_(std::move(bs)),
        support_(std::move(sp))
    {
