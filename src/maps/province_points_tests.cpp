@@ -18,8 +18,12 @@ TEST(MapsProvincepoints, CentermostIsOriginIfNoPoints)
 
 TEST(MapsProvincepoints, CenterPointIsAverageLatitude)
 {
-   const ProvincePoints province_points(
-       {Point{.x = 0, .y = 1}, Point{.x = 0, .y = 2}, Point{.x = 0, .y = 3}, Point{.x = 0, .y = 4}});
+   const ProvincePoints province_points({
+       Point{.x = 0, .y = 1},
+       Point{.x = 0, .y = 2},
+       Point{.x = 0, .y = 3},
+       Point{.x = 0, .y = 4},
+   });
 
    constexpr Point kExpectedPoint{.x = 0, .y = 2};
    EXPECT_EQ(province_points.GetCentermostPoint(), kExpectedPoint);
@@ -28,8 +32,12 @@ TEST(MapsProvincepoints, CenterPointIsAverageLatitude)
 
 TEST(MapsProvincepoints, CenterPointIsAverageLongitude)
 {
-   const ProvincePoints province_points(
-       {Point{.x = 1, .y = 0}, Point{.x = 2, .y = 0}, Point{.x = 3, .y = 0}, Point{.x = 4, .y = 0}});
+   const ProvincePoints province_points({
+       Point{.x = 1, .y = 0},
+       Point{.x = 2, .y = 0},
+       Point{.x = 3, .y = 0},
+       Point{.x = 4, .y = 0},
+   });
 
    constexpr Point kExpectedPoint{.x = 2, .y = 0};
    EXPECT_EQ(province_points.GetCentermostPoint(), kExpectedPoint);
