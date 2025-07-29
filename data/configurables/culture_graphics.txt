@@ -1426,12 +1426,55 @@ bengali = {
         }
         neutrality = {
 		leader = {
-         		
+         		GFX_portrait_RAJ_huseyn_shaheed_suhrawardy
 		}
         }
     }
     monarch_ideas = {
 		GFX_focus_RAJ_united_bengal
+    }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+north_pakistani = {
+    cultures = { punjabi kashmiri } # DLC GoE
+
+ army_portraits = {
+	GFX_portrait_RAJ_ishar_singh
+	GFX_portrait_RAJ_parkash_singh
+}
+    leader_portraits = {
+        communism = {
+		leader = {
+			GFX_portrait_india_generic_land_3
+		}
+        }
+        democratic = {
+		leader = {
+			GFX_portrait_RAJ_jawaharlal_nehru
+			GFX_portrait_RAJ_shah_nawaz_khan
+		}
+        }
+        fascism = {
+		leader = {
+            		GFX_portrait_RAJ_shah_nawaz_khan
+		}
+        }
+        neutrality = {
+		leader = {
+         		GFX_portrait_india_generic_land_3
+		}
+        }
+	monarchist = {
+		male = {
+			GFX_portrait_RAJ_maharaja_hari_singh
+			GFX_portrait_RAJ_tara_singh # Should really be a religious leader
+		}
+    }
+    monarch_ideas = {
+		
     }
 
     graphical_culture = asian_gfx
