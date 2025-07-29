@@ -7,10 +7,10 @@
 namespace hoi4
 {
 
-bool NotTrigger::IsValid(const Scope& scope, const World& world) const
+bool NotTrigger::IsValid(const Context& context, const World& world) const
 {
-   return std::ranges::none_of(children_.begin(), children_.end(), [scope, world](const std::unique_ptr<Trigger>& a) {
-      return a->IsValid(scope, world);
+   return std::ranges::none_of(children_.begin(), children_.end(), [context, world](const std::unique_ptr<Trigger>& a) {
+      return a->IsValid(context, world);
    });
 }
 

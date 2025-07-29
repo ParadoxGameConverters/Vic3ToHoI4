@@ -26,7 +26,7 @@ class AndTrigger: public Trigger
    [[nodiscard]] bool operator<(const AndTrigger& rhs) const;
 
    [[nodiscard]] std::unique_ptr<Trigger> Copy() const override;
-   [[nodiscard]] bool IsValid(const Scope& scope, const World& world) const override;
+   [[nodiscard]] bool IsValid(const Context& context, const World& world) const override;
 
    // This allows the Google test framework to print human-readable RepeatFocuses if a test fails.
    friend void PrintTo(const AndTrigger& trigger, std::ostream* os);

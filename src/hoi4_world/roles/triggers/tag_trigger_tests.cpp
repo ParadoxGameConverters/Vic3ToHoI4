@@ -19,9 +19,10 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsTrueIfCountryTagMa
 
    const Country country({.tag = "TAG"});
    const Scope scope = CountryScope{.country = country};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
 
-   EXPECT_TRUE(tag_trigger.IsValid(scope, world));
+   EXPECT_TRUE(tag_trigger.IsValid(context, world));
 }
 
 
@@ -31,9 +32,10 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfCountryTagN
 
    const Country country({.tag = "TWO"});
    const Scope scope = CountryScope{.country = country};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
 
-   EXPECT_FALSE(tag_trigger.IsValid(scope, world));
+   EXPECT_FALSE(tag_trigger.IsValid(context, world));
 }
 
 
@@ -43,9 +45,10 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfScopeNotCou
 
    const State state(1, {});
    const Scope scope = StateScope{.state = state};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
 
-   EXPECT_FALSE(tag_trigger.IsValid(scope, world));
+   EXPECT_FALSE(tag_trigger.IsValid(context, world));
 }
 
 

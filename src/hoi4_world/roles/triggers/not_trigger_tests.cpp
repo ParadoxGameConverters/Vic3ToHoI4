@@ -27,8 +27,9 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsReturnTrueIfAllChi
 
    const Country country({});
    const Scope scope = CountryScope{.country = country};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
-   EXPECT_TRUE(not_trigger.IsValid(scope, world));
+   EXPECT_TRUE(not_trigger.IsValid(context, world));
 }
 
 
@@ -44,8 +45,9 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsFalseIfAnyChildren
 
    const Country country({});
    const Scope scope = CountryScope{.country = country};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
-   EXPECT_FALSE(not_trigger.IsValid(scope, world));
+   EXPECT_FALSE(not_trigger.IsValid(context, world));
 }
 
 
