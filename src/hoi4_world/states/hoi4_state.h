@@ -25,6 +25,7 @@ struct StateOptions
    int manpower = 0;
    Resources resources;
    std::string category = "rural";
+   bool is_capital = false;
 
    std::map<int, int> victory_points;
 
@@ -51,6 +52,7 @@ class State
        manpower_(state_options.manpower),
        resources_(std::move(state_options.resources)),
        category_(std::move(state_options.category)),
+       is_capital_(state_options.is_capital),
        victory_points_(std::move(state_options.victory_points)),
        civilian_factories_(state_options.civilian_factories),
        military_factories_(state_options.military_factories),
@@ -70,6 +72,7 @@ class State
    [[nodiscard]] int GetManpower() const { return manpower_; }
    [[nodiscard]] const Resources& GetResources() const { return resources_; }
    [[nodiscard]] const std::string& GetCategory() const { return category_; }
+   [[nodiscard]] bool IsCapital() const { return is_capital_; }
    [[nodiscard]] const std::map<int, int>& GetVictoryPoints() const { return victory_points_; }
    [[nodiscard]] int GetCivilianFactories() const { return civilian_factories_; }
    [[nodiscard]] int GetMilitaryFactories() const { return military_factories_; }
@@ -81,6 +84,7 @@ class State
    [[nodiscard]] float GetVic3Infrastructure() const { return vic3_infrastructure_; }
    [[nodiscard]] int GetInfrastructure() const { return infrastructure_; }
 
+   void SetIsCapital(bool value) { is_capital_ = value; }
    void IncreaseAirBaseLevel(int amount) { air_base_level_ = std::min(air_base_level_ + amount, 10); }
 
    void SetHighestVictoryPointValue(int value);
@@ -94,6 +98,7 @@ class State
    int manpower_ = 0;
    Resources resources_;
    std::string category_ = "rural";
+   bool is_capital_ = false;
 
    std::map<int, int> victory_points_;
 
