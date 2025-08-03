@@ -16,7 +16,7 @@ CombatUnitImporter::CombatUnitImporter()
       type_ = commonItems::getString(stream);
    });
    combat_unit_parser_.registerKeyword("country", [this](std::istream& stream) {
-      country_ = commonItems::getInt(stream);
+      country_ = static_cast<int>(commonItems::getULlong(stream));
    });
    combat_unit_parser_.registerKeyword("formation", [this](std::istream& stream) {
       formation_ = commonItems::getInt(stream);

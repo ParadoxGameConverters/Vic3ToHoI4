@@ -27,7 +27,7 @@ void InstitutionsImporter::operator()(std::istream& input_stream)
       this->current_institution_.investment = commonItems::getInt(input_stream);
    });
    institution_parser.registerKeyword("country", [this](std::istream& input_stream) {
-      this->current_institution_.country = commonItems::getInt(input_stream);
+      this->current_institution_.country = static_cast<int>(commonItems::getULlong(input_stream));
    });
    institution_parser.IgnoreUnregisteredItems();
 

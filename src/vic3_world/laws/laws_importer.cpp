@@ -35,7 +35,7 @@ std::map<int, std::set<std::string>> vic3::ImportLaws(std::istream& input_stream
       law_name = commonItems::getString(input_stream);
    });
    law_parser.registerKeyword("country", [&country_number](std::istream& input_stream) {
-      country_number = commonItems::getInt(input_stream);
+      country_number = static_cast<int>(commonItems::getULlong(input_stream));
    });
    law_parser.IgnoreUnregisteredItems();
 

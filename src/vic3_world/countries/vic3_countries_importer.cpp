@@ -18,7 +18,7 @@ std::map<int, vic3::Country> vic3::ImportCountries(const std::map<std::string, c
    database_parser.registerRegex(commonItems::integerRegex,
        [color_definitions, &country_importer, &countries](const std::string& number_string,
            std::istream& input_stream) {
-          const int country_number = std::stoi(number_string);
+          const int country_number = static_cast<int>(std::stoul(number_string));
           const auto country_string = commonItems::stringOfItem(input_stream).getString();
           if (country_string.find("{") == std::string::npos)
           {
