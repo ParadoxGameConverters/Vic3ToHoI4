@@ -26,7 +26,7 @@ TEST(Vic3WorldInterestGroupsInterestGroupImporter, InterestGroupCanBeImported)
 
    std::stringstream input;
    input << "={\n";
-   input << "\tcountry = 2\n";
+   input << "\tcountry = 3019898882\n";
    input << "\tdefinition = \"ig_example\"\n";
    input << "\tleader = 1\n";
    input << "\tclout = 0.25447\n";
@@ -38,7 +38,7 @@ TEST(Vic3WorldInterestGroupsInterestGroupImporter, InterestGroupCanBeImported)
 
    EXPECT_EQ(interest_group,
        InterestGroup("ig_example",
-           2,
+           -1275068414,
            1,
            0.25447F,
            true,

@@ -44,7 +44,7 @@ TEST(Vic3WorldCountryRankingsCountryRankingsImporter, PowersCanBeImported)
    input << " {\n";
    input << "\t\t\trank=major_power\t\t\ttarget=major_power\t\t\tprestige=559\n";
    input << "\t\t\tscore=16\n";
-   input << "\t\t\tcountry=283\n";
+   input << "\t\t\tcountry=3019898882\n";
    input << "\t\t}\n";
    input << " }\n";
    input << "}";
@@ -52,7 +52,7 @@ TEST(Vic3WorldCountryRankingsCountryRankingsImporter, PowersCanBeImported)
    const CountryRankings country_rankings = ImportCountryRankings(input);
 
    EXPECT_THAT(country_rankings.GetGreatPowers(), testing::UnorderedElementsAre(1, 18));
-   EXPECT_THAT(country_rankings.GetMajorPowers(), testing::ElementsAre(183, 283));
+   EXPECT_THAT(country_rankings.GetMajorPowers(), testing::ElementsAre(-1275068414, 183));
 }
 
 
