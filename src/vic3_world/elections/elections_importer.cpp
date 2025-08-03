@@ -23,7 +23,7 @@ std::map<int, date> vic3::ImportElections(std::istream& input_stream)
       last_election = date(commonItems::getString(input_stream));
    });
    election_parser.registerKeyword("country", [&country_number](std::istream& input_stream) {
-      country_number = commonItems::getInt(input_stream);
+      country_number = static_cast<int>(commonItems::getULlong(input_stream));
    });
    election_parser.IgnoreUnregisteredItems();
 

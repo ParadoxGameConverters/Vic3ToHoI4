@@ -17,7 +17,7 @@ std::map<int, std::set<std::string>> vic3::ImportAcquiredTechnologies(std::istre
 
    commonItems::parser entry_parser;
    entry_parser.registerKeyword("country", [&country_number](std::istream& input_stream) {
-      country_number = commonItems::getInt(input_stream);
+      country_number = static_cast<int>(commonItems::getULlong(input_stream));
    });
    entry_parser.registerKeyword("acquired_technologies", [&acquired_technologies](std::istream& input_stream) {
       for (const auto& acquired_technology: commonItems::getStrings(input_stream))

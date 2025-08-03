@@ -36,7 +36,7 @@ TEST(Vic3worldMilitaryCombatunitImporter, ItemsAreInput)
    input << "={\n";
    input << "\tcurrent_manpower = 1000\n";
    input << "\ttype = \"combat_unit_type_torpedo_boat\"\n";
-   input << "\tcountry = 1\n";
+   input << "\tcountry = 3019898882\n";
    input << "\tculture = 294\n";
    input << "\tbuilding = 6628\n";
    input << "\tformation = 142\n";
@@ -51,7 +51,7 @@ TEST(Vic3worldMilitaryCombatunitImporter, ItemsAreInput)
    EXPECT_TRUE(combat_unit.type.has_value());
    EXPECT_EQ(combat_unit.type.value_or(""), "combat_unit_type_torpedo_boat");
    EXPECT_TRUE(combat_unit.country.has_value());
-   EXPECT_EQ(combat_unit.country.value_or(-1), 1);
+   EXPECT_EQ(combat_unit.country.value_or(-1), -1275068414);
    EXPECT_TRUE(combat_unit.formation.has_value());
    EXPECT_EQ(combat_unit.formation.value_or(-1), 142);
 }

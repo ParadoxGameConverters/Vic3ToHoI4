@@ -23,7 +23,7 @@ vic3::CountryRankings vic3::ImportCountryRankings(std::istream& input_stream)
       rank = commonItems::getString(input_stream);
    });
    ranking_parser.registerKeyword("country", [&country_number](std::istream& input_stream) {
-      country_number = commonItems::getInt(input_stream);
+      country_number = static_cast<int>(commonItems::getULlong(input_stream));
    });
    ranking_parser.registerKeyword("score", [&score](std::istream& input_stream) {
       score = commonItems::getInt(input_stream);

@@ -8,7 +8,7 @@
 vic3::MilitaryFormationImporter::MilitaryFormationImporter()
 {
    military_formation_parser_.registerKeyword("country", [this](std::istream& input) {
-      country_ = commonItems::getInt(input);
+      country_ = static_cast<int>(commonItems::getULlong(input));
    });
    military_formation_parser_.registerKeyword("type", [this](std::istream& input) {
       const std::string type_string = commonItems::getString(input);

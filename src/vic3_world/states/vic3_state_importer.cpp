@@ -10,7 +10,7 @@
 vic3::StateImporter::StateImporter()
 {
    state_parser_.registerKeyword("country", [this](std::istream& input_stream) {
-      owner_number_ = commonItems::getInt(input_stream);
+      owner_number_ = static_cast<int>(commonItems::getULlong(input_stream));
    });
    state_parser_.registerKeyword("incorporation", [this](std::istream& input_stream) {
       if (commonItems::getDouble(input_stream) >= 1.0F)

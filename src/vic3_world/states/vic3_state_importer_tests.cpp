@@ -42,7 +42,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
 {
    std::stringstream input;
    input << "={\n";
-   input << "\tcountry=42\n";
+   input << "\tcountry=3019898882\n";
    input << "\tincorporation = 1\n";
    input << "\tinfrastructure = 123.45\n";
    input << "\tprovinces={\n";
@@ -62,7 +62,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
    input << "}";
    const auto state = StateImporter{}.ImportState("0", input);
 
-   EXPECT_EQ(state.GetOwnerNumber(), 42);
+   EXPECT_EQ(state.GetOwnerNumber(), -1275068414);
    EXPECT_FALSE(state.GetOwnerTag().has_value());
    EXPECT_TRUE(state.IsIncorporated());
    EXPECT_NEAR(state.GetInfrastructure(), 123.45F, 0.0001F);
