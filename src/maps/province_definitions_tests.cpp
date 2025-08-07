@@ -104,4 +104,23 @@ TEST(MapsProvincedefinitions, TerrainTypeCanBeLookedUp)
    EXPECT_EQ(province_definitions.GetTerrainType("0x000002"), "test_terrain_two");
 }
 
+
+TEST(MapsProvincedefinitions, ContinentDefaultsToNullopt)
+{
+   const ProvinceDefinitions province_definitions;
+
+   EXPECT_EQ(province_definitions.GetContinent("1"), std::nullopt);
+   EXPECT_EQ(province_definitions.GetContinent("0x000002"), std::nullopt);
+}
+
+
+TEST(MapsProvincedefinitions, ContinentCanBeLookedUp)
+{
+   const ProvinceDefinitions province_definitions(
+       {.continents = {{"1", "test_continent"}, {"0x000002", "test_continent_two"}}});
+
+   EXPECT_EQ(province_definitions.GetContinent("1"), "test_continent");
+   EXPECT_EQ(province_definitions.GetContinent("0x000002"), "test_continent_two");
+}
+
 }  // namespace maps

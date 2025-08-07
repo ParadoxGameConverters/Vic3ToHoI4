@@ -26,6 +26,7 @@ struct StateOptions
    Resources resources;
    std::string category = "rural";
    bool is_capital = false;
+   std::optional<std::string> continent;
 
    std::map<int, int> victory_points;
 
@@ -53,6 +54,7 @@ class State
        resources_(std::move(state_options.resources)),
        category_(std::move(state_options.category)),
        is_capital_(state_options.is_capital),
+       continent_(std::move(state_options.continent)),
        victory_points_(std::move(state_options.victory_points)),
        civilian_factories_(state_options.civilian_factories),
        military_factories_(state_options.military_factories),
@@ -73,6 +75,7 @@ class State
    [[nodiscard]] const Resources& GetResources() const { return resources_; }
    [[nodiscard]] const std::string& GetCategory() const { return category_; }
    [[nodiscard]] bool IsCapital() const { return is_capital_; }
+   [[nodiscard]] std::optional<std::string> GetContinent() const { return continent_; }
    [[nodiscard]] const std::map<int, int>& GetVictoryPoints() const { return victory_points_; }
    [[nodiscard]] int GetCivilianFactories() const { return civilian_factories_; }
    [[nodiscard]] int GetMilitaryFactories() const { return military_factories_; }
@@ -91,6 +94,8 @@ class State
 
    std::partial_ordering operator<=>(const State&) const = default;
 
+   friend void PrintTo(const State& state, std::ostream* os);
+
   private:
    StateId id_;
    std::optional<std::string> owner_;
@@ -99,6 +104,7 @@ class State
    Resources resources_;
    std::string category_ = "rural";
    bool is_capital_ = false;
+   std::optional<std::string> continent_;
 
    std::map<int, int> victory_points_;
 

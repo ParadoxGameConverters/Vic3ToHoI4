@@ -26,3 +26,14 @@ std::optional<std::string> maps::ProvinceDefinitions::GetTerrainType(const std::
 
    return std::nullopt;
 }
+
+
+std::optional<std::string> maps::ProvinceDefinitions::GetContinent(const std::string& province) const
+{
+   if (const auto continent = continents_.find(province); continent != continents_.end())
+   {
+      return continent->second;
+   }
+
+   return std::nullopt;
+}

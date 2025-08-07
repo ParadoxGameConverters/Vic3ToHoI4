@@ -163,9 +163,20 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::AddSeaProvinces(std::vector<std::s
    return *this;
 }
 
+
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddProvinceContinents(std::vector<std::string> province_ids, std::string_view continent)
+{
+	for (const std::string& id: province_ids)
+    {
+        province_definitions_.continents.emplace(id, continent);
+    }
+    return *this;
+}
+
+
 maps::ProvinceDefinitions WorldFrameworkBuilder::CopyProvinceDefinitions()
 {
-   return maps::ProvinceDefinitions{this->province_definitions_};
+   return maps::ProvinceDefinitions{province_definitions_};
 }
 
 

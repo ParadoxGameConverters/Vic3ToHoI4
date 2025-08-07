@@ -219,6 +219,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
                                 {.owner = "TAG",
                                     .provinces = {10, 20, 30},
                                     .category = "large_city",
+                                    .continent = "europe",
                                     .victory_points = {{30, 3}},
                                     .civilian_factories = 3,
                                     .military_factories = 2,
@@ -227,6 +228,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
                    .category = "city",
+                   .continent = "australia",
                    .victory_points = {{50, 2}},
                    .civilian_factories = 2,
                    .military_factories = 2,
@@ -413,21 +415,23 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraAirBaseLevel)
                                 {.owner = "TAG",
                                     .provinces = {10, 20, 30},
                                     .category = "rural",
+                                    .is_capital = true,
+                                    .continent = "europe",
                                     .victory_points = {{30, 1}},
                                     .air_base_level = 5}),
            State(2,
-               {.provinces = {40, 50, 60}, .category = "rural", .victory_points = {{50, 1}}, .air_base_level = 0})));
+               {.provinces = {40, 50, 60},
+                   .category = "rural",
+                   .continent = "australia",
+                   .victory_points = {{50, 1}},
+                   .air_base_level = 0})));
 }
 
 
 TEST(Hoi4worldWorldHoi4worldconverter, CapitalsAreMarkedAsCapitals)
 {
-   const vic3::Country source_country_one({
-       .number = 1,
-       .tag = "TAG",
-       .color = commonItems::Color{std::array{1, 2, 3}},
-       .capital_state = 1
-   });
+   const vic3::Country source_country_one(
+       {.number = 1, .tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}, .capital_state = 1});
 
    const std::map<std::string, vic3::StateRegion> state_regions({{"STATE_ONE",
        vic3::StateRegion(

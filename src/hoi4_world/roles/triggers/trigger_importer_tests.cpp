@@ -6,6 +6,7 @@
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
+#include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
 #include "src/hoi4_world/roles/triggers/tag_trigger.h"
@@ -220,6 +221,22 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsCapitalTriggerCanBeImport
    ASSERT_TRUE(trigger);
    const IsCapitalTrigger is_capital_trigger(false);
    EXPECT_EQ(*trigger, is_capital_trigger);
+}
+
+
+TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsOnContinentTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  is_on_continent = test_continent\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const IsOnContinentTrigger is_on_continent_trigger("test_continent");
+   EXPECT_EQ(*trigger, is_on_continent_trigger);
 }
 
 }  // namespace hoi4

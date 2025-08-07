@@ -2,6 +2,7 @@
 
 #include <external/commonItems/Log.h>
 #include <external/fmt/include/fmt/format.h>
+#include <external/fmt/include/fmt/ranges.h>
 #include <src/hoi4_world/world/hoi4_world.h>
 
 #include <algorithm>
@@ -17,6 +18,7 @@
 #include "src/maps/map_data.h"
 #include "src/out_hoi4/world/out_world.h"
 #include "src/support/converter_utils.h"
+
 
 
 namespace
@@ -777,6 +779,32 @@ std::map<int, int> CreateVictoryPoints(const std::set<int>& hoi4_provinces,
 }
 
 
+std::optional<std::string> DetermineContinent(const std::set<int>& province_set,
+    const maps::ProvinceDefinitions& province_definitions)
+{
+   std::map<std::string, int> continent_counts;
+   for (int province: province_set)
+   {
+      const std::optional<std::string> possible_continent = province_definitions.GetContinent(std::to_string(province));
+      if (possible_continent.has_value())
+      {
+         continent_counts[*possible_continent]++;
+      }
+   }
+   if (continent_counts.empty())
+   {
+      Log(LogLevel::Warning) << fmt::format("Province set {} had no continents.", fmt::join(province_set, ", "));
+      return std::nullopt;
+   }
+
+   const auto element =
+       std::ranges::max_element(continent_counts, [](std::pair<std::string, int> a, std::pair<std::string, int> b) {
+          return a.second < b.second;
+       });
+   return element->first;
+}
+
+
 void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
     const std::map<int, hoi4::DefaultState>& default_states,
     const hoi4::StateCategories& state_categories)
@@ -1101,12 +1129,16 @@ hoi4::States CreateStates(const vic3::World& source_world,
          {
             hoi4_state_ids_to_owner[state_id] = state_owner.value();
          }
+
+         const std::optional<std::string> continent =
+             DetermineContinent(province_set, world_framework.province_definitions);
          hoi4_states.emplace_back(state_id,
              hoi4::StateOptions{.owner = state_owner,
                  .provinces = province_set,
                  .manpower = manpower,
                  .resources = resources,
                  .category = category,
+                 .continent = continent,
                  .victory_points = victory_points,
                  .civilian_factories = civilian_factories,
                  .military_factories = military_factories,
