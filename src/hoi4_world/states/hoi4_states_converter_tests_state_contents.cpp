@@ -1047,7 +1047,6 @@ TEST(Hoi4worldStatesHoi4statesconverter, ContinentsAreSet)
                                     .owner = "ONE",
                                     .provinces = {10, 20, 30},
                                     .continent = "continent_one",
-
                                 }),
            State(2,
                {

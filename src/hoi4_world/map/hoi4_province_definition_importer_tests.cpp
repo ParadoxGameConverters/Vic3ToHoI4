@@ -41,17 +41,16 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, SeaProvincesAreDetected)
 
 TEST(Hoi4worldMapHoi4provincedefinitionimporter, ContinentsAreDetected)
 {
-    const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
+   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
 
-    const maps::ProvinceDefinitions province_definitions = ImportProvinceDefinitions(mod_filesystem);
+   const maps::ProvinceDefinitions province_definitions = ImportProvinceDefinitions(mod_filesystem);
 
-    EXPECT_EQ(province_definitions.GetContinent("10"), "europe");
-    EXPECT_EQ(province_definitions.GetContinent("20"), "north_america");
-    EXPECT_EQ(province_definitions.GetContinent("30"), "south_america");
-    EXPECT_EQ(province_definitions.GetContinent("40"), "australia");
-    EXPECT_EQ(province_definitions.GetContinent("50"), std::nullopt);
-    EXPECT_EQ(province_definitions.GetContinent("60"), std::nullopt);
-
+   EXPECT_EQ(province_definitions.GetContinent("10"), "europe");
+   EXPECT_EQ(province_definitions.GetContinent("20"), "north_america");
+   EXPECT_EQ(province_definitions.GetContinent("30"), "south_america");
+   EXPECT_EQ(province_definitions.GetContinent("40"), "australia");
+   EXPECT_EQ(province_definitions.GetContinent("50"), std::nullopt);
+   EXPECT_EQ(province_definitions.GetContinent("60"), std::nullopt);
 }
 
 }  // namespace hoi4
