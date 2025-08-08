@@ -15,7 +15,7 @@ namespace hoi4
 class IsOnContinentTrigger: public Trigger
 {
   public:
-   explicit IsOnContinentTrigger(std::string value): value_(value) {}
+   explicit IsOnContinentTrigger(std::string_view value): value_(value) {}
    IsOnContinentTrigger(const IsOnContinentTrigger&) = default;
    IsOnContinentTrigger& operator=(const IsOnContinentTrigger&) = default;
    IsOnContinentTrigger(IsOnContinentTrigger&&) = default;
