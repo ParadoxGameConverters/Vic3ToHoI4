@@ -17,7 +17,7 @@ TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, IsValidReturnsValueInConstruc
 {
    const Country country({.tag = "TAG"});
    const Scope scope = CountryScope{.country = country};
-   const Context context{ .root = scope, .this_scope = scope, .prev = scope, .from = scope };
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
 
    const AlwaysTrigger true_trigger(true);
