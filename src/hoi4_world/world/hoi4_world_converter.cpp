@@ -98,21 +98,21 @@ std::optional<int> GetCapitalStateNumber(int vic3_country_number,
 
 void MarkCapitalsAsCapitals(const std::map<std::string, hoi4::Country>& countries, std::vector<hoi4::State>& states)
 {
-    for (const hoi4::Country& country : countries | std::views::values)
-    {
-        const std::optional<int> possible_capital = country.GetCapitalState();
-        if (!possible_capital)
-        {
-            continue;
-        }
-        if (*possible_capital - 1 > states.size())
-        {
-            continue;
-        }
+   for (const hoi4::Country& country: countries | std::views::values)
+   {
+      const std::optional<int> possible_capital = country.GetCapitalState();
+      if (!possible_capital)
+      {
+         continue;
+      }
+      if (*possible_capital - 1 > states.size())
+      {
+         continue;
+      }
 
-        hoi4::State& capital_state = states.at(*possible_capital - 1);
-        capital_state.SetIsCapital(true);
-    }
+      hoi4::State& capital_state = states.at(*possible_capital - 1);
+      capital_state.SetIsCapital(true);
+   }
 }
 
 
