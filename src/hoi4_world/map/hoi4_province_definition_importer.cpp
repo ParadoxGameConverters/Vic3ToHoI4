@@ -1,5 +1,7 @@
 #include "src/hoi4_world/map/hoi4_province_definition_importer.h"
 
+#include <external/commonItems/CommonRegexes.h>
+#include <external/commonItems/Parser.h>
 #include <external/fmt/include/fmt/format.h>
 
 #include <fstream>
@@ -8,8 +10,44 @@
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 
 
+
+namespace
+{
+
+std::map<int, std::string> ImportContinentDefinitions(const commonItems::ModFilesystem& mod_filesystem)
+{
+   std::map<int, std::string> continent_definitions;
+   int continent_index = 1;
+
+   commonItems::parser continent_parser;
+   continent_parser.registerRegex(commonItems::catchallRegex,
+       [&continent_definitions, &continent_index](const std::string& continent, [[maybe_unused]] std::istream& stream) {
+          continent_definitions.emplace(continent_index, continent);
+          ++continent_index;
+       });
+
+   commonItems::parser continents_parser;
+   continents_parser.registerKeyword("continents", [&continent_parser](std::istream& stream) {
+      continent_parser.parseStream(stream);
+   });
+
+   const auto path = mod_filesystem.GetActualFileLocation("map/continent.txt");
+   if (!path)
+   {
+      throw std::runtime_error("Could not find /map/continent.txt in {}");
+   }
+   continents_parser.parseFile(*path);
+
+   return continent_definitions;
+}
+
+}  // namespace
+
+
 maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem)
 {
+   const std::map<int, std::string> continent_definitions = ImportContinentDefinitions(mod_filesystem);
+
    const auto path = mod_filesystem.GetActualFileLocation("map/definition.csv");
    if (!path)
    {
@@ -25,6 +63,7 @@ maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonIte
    std::set<std::string> land_provinces;
    std::set<std::string> sea_provinces;
    std::map<std::string, std::string> terrain_types;
+   std::map<std::string, std::string> continents;
    std::map<int, std::string> color_to_province_map;
 
    while (true)
@@ -59,7 +98,15 @@ maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonIte
       {
          continue;
       }
-      const int red(std::stoi(line.substr(0, pos)));
+      int red;
+      try
+      {
+         red = std::stoi(line.substr(0, pos));
+      }
+      catch (...)
+      {
+         throw std::runtime_error(fmt::format("Province definition had bad red: {}", line.substr(0, pos)));
+      }
       line = line.substr(pos + 1, line.length());
 
       // green
@@ -68,7 +115,15 @@ maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonIte
       {
          continue;
       }
-      const int green(std::stoi(line.substr(0, pos)));
+      int green;
+      try
+      {
+         green = std::stoi(line.substr(0, pos));
+      }
+      catch (...)
+      {
+         throw std::runtime_error(fmt::format("Province definition had bad green: {}", line.substr(0, pos)));
+      }
       line = line.substr(pos + 1U, line.length());
 
       // blue
@@ -77,7 +132,15 @@ maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonIte
       {
          continue;
       }
-      const int blue(std::stoi(line.substr(0, pos)));
+      int blue;
+      try
+      {
+         blue = std::stoi(line.substr(0, pos));
+      }
+      catch (...)
+      {
+         throw std::runtime_error(fmt::format("Province definition had bad blue: {}", line.substr(0, pos)));
+      }
       line = line.substr(pos + 1U, line.length());
 
       // land or sea
@@ -117,10 +180,25 @@ maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonIte
          sea_provinces.insert(province_name);
       }
       terrain_types.emplace(province_name, terrain);
+
+      int continent_number;
+      try
+      {
+         continent_number = std::stoi(line);
+      }
+      catch (...)
+      {
+         throw std::runtime_error(fmt::format("Province definition had bad continent: {}", line));
+      }
+      if (const auto itr = continent_definitions.find(continent_number); itr != continent_definitions.end())
+      {
+         continents.emplace(province_name, itr->second);
+      }
    }
 
    return {.land_provinces = land_provinces,
        .sea_provinces = sea_provinces,
        .terrain_types = terrain_types,
+       .continents = continents,
        .color_to_province_map = color_to_province_map};
 }

@@ -8,9 +8,9 @@
 7;17;27;37;land
 8;18;28;38;land;false
 9;19;29;39;land;false;plains
-10;20;30;40;land;false;coast;42
-20;20;30;40;land;false;coast;42
-30;20;30;40;land;false;coast;42
-40;20;30;40;land;false;coast;42
-50;20;30;40;land;false;coast;42
-60;20;30;40;land;false;coast;42
+10;20;30;40;land;false;coast;1
+20;20;30;40;land;false;coast;2
+30;20;30;40;land;false;coast;3
+40;20;30;40;land;false;coast;4
+50;20;30;40;land;false;coast;0
+60;20;30;40;land;false;coast;8

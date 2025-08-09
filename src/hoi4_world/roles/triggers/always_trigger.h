@@ -26,7 +26,8 @@ class AlwaysTrigger: public Trigger
    [[nodiscard]] bool operator<(const AlwaysTrigger& rhs) const { return value_ < rhs.value_; }
 
    [[nodiscard]] std::unique_ptr<Trigger> Copy() const override { return std::make_unique<AlwaysTrigger>(value_); }
-   [[nodiscard]] bool IsValid([[maybe_unused]] const Scope& scope, [[maybe_unused]] const World& world) const override
+   [[nodiscard]] bool IsValid([[maybe_unused]] const Context& context,
+       [[maybe_unused]] const World& world) const override
    {
       return value_;
    }

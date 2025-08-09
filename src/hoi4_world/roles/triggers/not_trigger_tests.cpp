@@ -15,7 +15,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsReturnTrueIfAllChildrenFalse)
+TEST(Hoi4worldRolesTriggersNotTriggerTests, IsValidReturnsReturnTrueIfAllChildrenFalse)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(false);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);
@@ -27,12 +27,13 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsReturnTrueIfAllChi
 
    const Country country({});
    const Scope scope = CountryScope{.country = country};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
-   EXPECT_TRUE(not_trigger.IsValid(scope, world));
+   EXPECT_TRUE(not_trigger.IsValid(context, world));
 }
 
 
-TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsFalseIfAnyChildrenTrue)
+TEST(Hoi4worldRolesTriggersNotTriggerTests, IsValidReturnsFalseIfAnyChildrenTrue)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);
@@ -44,12 +45,13 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, IsValidReturnsFalseIfAnyChildren
 
    const Country country({});
    const Scope scope = CountryScope{.country = country};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
-   EXPECT_FALSE(not_trigger.IsValid(scope, world));
+   EXPECT_FALSE(not_trigger.IsValid(context, world));
 }
 
 
-TEST(Hoi4worldRolesRequirementsNotTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersNotTriggerTests, EquivalentTriggersAreEqual)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);
@@ -86,7 +88,7 @@ TEST(Hoi4worldRolesRequirementsNotTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesRequirementsNotTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersNotTriggerTests, CopyReturnsACopy)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);

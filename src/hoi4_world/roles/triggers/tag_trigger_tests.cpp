@@ -13,43 +13,46 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsTrueIfCountryTagMatches)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsTrueIfCountryTagMatches)
 {
    const TagTrigger tag_trigger("TAG");
 
    const Country country({.tag = "TAG"});
    const Scope scope = CountryScope{.country = country};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
 
-   EXPECT_TRUE(tag_trigger.IsValid(scope, world));
+   EXPECT_TRUE(tag_trigger.IsValid(context, world));
 }
 
 
-TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfCountryTagNotMatches)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsFalseIfCountryTagNotMatches)
 {
    const TagTrigger tag_trigger("TAG");
 
    const Country country({.tag = "TWO"});
    const Scope scope = CountryScope{.country = country};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
 
-   EXPECT_FALSE(tag_trigger.IsValid(scope, world));
+   EXPECT_FALSE(tag_trigger.IsValid(context, world));
 }
 
 
-TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfScopeNotCountry)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsFalseIfScopeNotCountry)
 {
    const TagTrigger tag_trigger("TAG");
 
    const State state(1, {});
    const Scope scope = StateScope{.state = state};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
 
-   EXPECT_FALSE(tag_trigger.IsValid(scope, world));
+   EXPECT_FALSE(tag_trigger.IsValid(context, world));
 }
 
 
-TEST(Hoi4worldRolesRequirementsTagTriggerTests, EquavalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, EquivalentTriggersAreEqual)
 {
    const TagTrigger tag_trigger("TAG");
    const TagTrigger tag_trigger_two("TAG");
@@ -60,7 +63,7 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, EquavalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesRequirementsTagTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, CopyReturnsACopy)
 {
    const TagTrigger tag_trigger("TAG");
    const std::unique_ptr<Trigger> tag_copy = tag_trigger.Copy();

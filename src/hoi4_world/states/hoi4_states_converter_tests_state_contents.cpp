@@ -1,6 +1,7 @@
 #include <external/commonItems/external/googletest/googlemock/include/gmock/gmock-matchers.h>
 #include <external/commonItems/external/googletest/googletest/include/gtest/gtest.h>
 #include <external/fmt/include/fmt/format.h>
+#include <external/fmt/include/fmt/ranges.h>
 
 #include <ostream>
 #include <sstream>
@@ -22,77 +23,6 @@
 
 namespace hoi4
 {
-
-// functions to allow test comparators to provide readable results
-void PrintTo(const State& state, std::ostream* os)
-{
-   *os << "{\n";
-   *os << fmt::format("\tid = {}\n", state.GetId());
-   if (const auto& owner = state.GetOwner(); owner)
-   {
-      *os << fmt::format("\towner = {}\n", *owner);
-   }
-   *os << "\tprovinces {\n";
-   for (const int province: state.GetProvinces())
-   {
-      *os << fmt::format("\t\t{}\n", province);
-   }
-   *os << "\t}\n";
-   if (const int manpower = state.GetManpower(); manpower != 0)
-   {
-      *os << fmt::format("\tmanpower = {}\n", manpower);
-   }
-   if (const auto& resources = state.GetResources(); !resources.empty())
-   {
-      *os << "\tresources {\n";
-      for (const auto& [resource, amount]: resources)
-      {
-         *os << fmt::format("\t\t{}: {}\n", resource, amount);
-      }
-      *os << "\t}\n";
-   }
-   *os << fmt::format("\tcategory = {}\n", state.GetCategory());
-   *os << "\tvictory points {\n";
-   for (const auto& [province, amount]: state.GetVictoryPoints())
-   {
-      *os << fmt::format("\t\t{} {}\n", province, amount);
-   }
-   *os << "\t}\n";
-   if (const int civilian_factories = state.GetCivilianFactories(); civilian_factories != 0)
-   {
-      *os << fmt::format("\tcivilian factories = {}\n", civilian_factories);
-   }
-   if (const int military_factories = state.GetMilitaryFactories(); military_factories != 0)
-   {
-      *os << fmt::format("\tmilitary factories = {}\n", military_factories);
-   }
-   if (const int dockyards = state.GetDockyards(); dockyards != 0)
-   {
-      *os << fmt::format("\tdockyards = {}\n", dockyards);
-   }
-   if (const auto& naval_base_location = state.GetNavalBaseLocation(); naval_base_location)
-   {
-      *os << fmt::format("\tnaval base location = {}\n", *naval_base_location);
-   }
-   if (const auto& naval_base_level = state.GetNavalBaseLevel(); naval_base_level)
-   {
-      *os << fmt::format("\tnaval base level = {}\n", *naval_base_level);
-   }
-   *os << fmt::format("\tair base level = {}\n", state.GetAirBaseLevel());
-   if (const auto& cores = state.GetCores(); !cores.empty())
-   {
-      *os << "\tcores {\n";
-      for (const auto& core: cores)
-      {
-         *os << fmt::format("\t\t{}\n", core);
-      }
-      *os << "\t}\n";
-   }
-   *os << fmt::format("\tvic3 infrastructure = {}\n", state.GetVic3Infrastructure());
-   *os << fmt::format("\tinfrastructure = {}\n", state.GetInfrastructure());
-   *os << "}";
-}
-
 
 TEST(Hoi4worldStatesHoi4statesconverter, ManpowerIsConverted)
 {
@@ -1049,6 +979,81 @@ TEST(Hoi4worldStatesHoi4statesconverter, CategoriesAreSet)
                    .civilian_factories = 2,
                    .military_factories = 2,
                    .air_base_level = 1})));
+}
+
+
+TEST(Hoi4worldStatesHoi4statesconverter, ContinentDefaultsToNullopt)
+{
+   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
+                                  .AddTestStates({{1, 2, 3}, {4, 5, 6}})
+                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}});
+   mappers::WorldMapperBuilder world_mapper =
+       std::move(mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6));
+   world_mapper.CopyToVicWorld(world);
+   hoi4::WorldFrameworkBuilder world_framework =
+       WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(6);
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = world_framework.CopyProvinceDefinitions(),
+   });
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1, {.provinces = {10, 20, 30}, .continent = std::nullopt}),
+           State(2, {.provinces = {40, 50, 60}, .continent = std::nullopt})));
+}
+
+
+TEST(Hoi4worldStatesHoi4statesconverter, ContinentsAreSet)
+{
+   vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
+                                  .AddTestStates({{1, 2, 3}, {4, 5, 6}})
+                                  .AddTestStateRegions({{1, 2, 3}, {4, 5, 6}});
+   mappers::WorldMapperBuilder world_mapper = std::move(
+       mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6).AddCountries({{1, "ONE"}, {2, "TWO"}}));
+   world_mapper.CopyToVicWorld(world);
+   hoi4::WorldFrameworkBuilder world_framework = WorldFrameworkBuilder::CreateNullWorldFramework()
+                                                     .AddTestLandProvinces(6)
+                                                     .AddProvinceContinents({"10", "20", "30"}, "continent_one")
+                                                     .AddProvinceContinents({"40", "50", "60"}, "continent_two");
+   const maps::MapData map_data({
+       .province_neighbors =
+           {
+               {"10", {"20", "30"}},
+               {"40", {"50", "60"}},
+           },
+       .province_definitions = world_framework.CopyProvinceDefinitions(),
+   });
+   const auto hoi4_states = ConvertStates(world.Build(), world_mapper.Build(), world_framework.Build(), {}, map_data);
+
+   std::cout << fmt::format("State {}, owned by {}, with provinces {}, on continent {}\n",
+       hoi4_states.states[0].GetId(),
+       hoi4_states.states[0].GetOwner().value_or(""),
+       fmt::join(hoi4_states.states[0].GetProvinces().begin(), hoi4_states.states[0].GetProvinces().end(), ", "),
+       hoi4_states.states[0].GetContinent().value_or(""));
+   std::cout << fmt::format("State {}, owned by {}, with provinces {}, on continent {}\n",
+       hoi4_states.states[1].GetId(),
+       hoi4_states.states[1].GetOwner().value_or(""),
+       fmt::join(hoi4_states.states[1].GetProvinces().begin(), hoi4_states.states[1].GetProvinces().end(), ", "),
+       hoi4_states.states[1].GetContinent().value_or(""));
+
+   EXPECT_THAT(hoi4_states.states,
+       testing::ElementsAre(State(1,
+                                {
+                                    .owner = "ONE",
+                                    .provinces = {10, 20, 30},
+                                    .continent = "continent_one",
+                                }),
+           State(2,
+               {
+                   .owner = "TWO",
+                   .provinces = {40, 50, 60},
+                   .continent = "continent_two",
+               })));
 }
 
 

@@ -219,6 +219,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
                                 {.owner = "TAG",
                                     .provinces = {10, 20, 30},
                                     .category = "large_city",
+                                    .continent = "europe",
                                     .victory_points = {{30, 3}},
                                     .civilian_factories = 3,
                                     .military_factories = 2,
@@ -227,6 +228,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
                {.owner = "TWO",
                    .provinces = {40, 50, 60},
                    .category = "city",
+                   .continent = "australia",
                    .victory_points = {{50, 2}},
                    .civilian_factories = 2,
                    .military_factories = 2,
@@ -413,10 +415,81 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraAirBaseLevel)
                                 {.owner = "TAG",
                                     .provinces = {10, 20, 30},
                                     .category = "rural",
+                                    .is_capital = true,
+                                    .continent = "europe",
                                     .victory_points = {{30, 1}},
                                     .air_base_level = 5}),
            State(2,
-               {.provinces = {40, 50, 60}, .category = "rural", .victory_points = {{50, 1}}, .air_base_level = 0})));
+               {.provinces = {40, 50, 60},
+                   .category = "rural",
+                   .continent = "australia",
+                   .victory_points = {{50, 1}},
+                   .air_base_level = 0})));
+}
+
+
+TEST(Hoi4worldWorldHoi4worldconverter, CapitalsAreMarkedAsCapitals)
+{
+   const vic3::Country source_country_one(
+       {.number = 1, .tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}, .capital_state = 1});
+
+   const std::map<std::string, vic3::StateRegion> state_regions({{"STATE_ONE",
+       vic3::StateRegion(
+           {
+               {"x000005", "city"},
+               {"x000004", "port"},
+               {"x000003", "farm"},
+               {"x000002", "mine"},
+               {"x000001", "wood"},
+           },
+           {})}});
+   const auto province_definitions = vic3::ProvinceDefinitions({
+       "x000001",
+       "x000002",
+       "x000003",
+       "x000004",
+       "x000005",
+       "x000006",
+   });
+   const vic3::Buildings vic3_buildings({
+       {1, std::vector{vic3::Building("", 1, 0)}},
+       {2, std::vector{vic3::Building("", 2, 0)}},
+   });
+
+   const vic3::World source_world(vic3::WorldOptions{
+       .countries = {{1, source_country_one}},
+       .states =
+           {
+               {1, vic3::State({.owner_number = 1, .owner_tag = "TAG", .provinces = {1, 2, 3}})},
+               {2, vic3::State({.owner_number = 2, .owner_tag = "TWO", .provinces = {4, 5, 6}})},
+           },
+       .state_regions = state_regions,
+       .province_definitions = province_definitions,
+       .buildings = vic3_buildings,
+   });
+
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
+                                                 .AddCountries({{1, "TAG"}})
+                                                 .AddProvinces({
+                                                     {"x000001", {10}},
+                                                     {"x000002", {20}},
+                                                     {"x000003", {30}},
+                                                     {"x000004", {40}},
+                                                     {"x000005", {50}},
+                                                     {"x000006", {60}},
+                                                 })
+                                                 .Build();
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+       source_world,
+       world_mapper,
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
+              commonItems::ModFilesystem("test_files/hoi4_world", {}))
+              .Build();
+       }));
+
+   EXPECT_TRUE(world.GetStates().states[0].IsCapital());
+   EXPECT_FALSE(world.GetStates().states[1].IsCapital());
 }
 
 

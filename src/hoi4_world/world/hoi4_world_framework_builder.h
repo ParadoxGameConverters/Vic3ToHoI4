@@ -43,6 +43,7 @@ class WorldFrameworkBuilder
    /// <returns></returns>
    WorldFrameworkBuilder& AddTestLandProvinces(int count);
    WorldFrameworkBuilder& AddSeaProvinces(std::vector<std::string> province_ids);
+   WorldFrameworkBuilder& AddProvinceContinents(std::vector<std::string> province_ids, std::string_view continent);
    // for intermediate test stuff
    maps::ProvinceDefinitions CopyProvinceDefinitions();
 

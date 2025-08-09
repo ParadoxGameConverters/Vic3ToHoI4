@@ -6,6 +6,7 @@
 #include <set>
 
 #include "src/hoi4_world/roles/roles_importer.h"
+#include "src/hoi4_world/roles/triggers/context.h"
 
 
 
@@ -18,7 +19,14 @@ using CombinationName = std::string;
 
 bool IsRoleValidForCountry(const hoi4::Role& role, const hoi4::World& world, const hoi4::Country& country)
 {
-   return role.GetTrigger().IsValid(hoi4::CountryScope{country}, world);
+   const hoi4::CountryScope country_scope{country};
+   const hoi4::Context context{
+       .root = country_scope,
+       .this_scope = country_scope,
+       .prev = country_scope,
+       .from = country_scope,
+   };
+   return role.GetTrigger().IsValid(context, world);
 }
 
 

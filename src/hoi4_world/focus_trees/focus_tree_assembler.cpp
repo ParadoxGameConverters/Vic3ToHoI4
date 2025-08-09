@@ -2,6 +2,8 @@
 
 #include <ranges>
 
+#include "src/hoi4_world/roles/triggers/context.h"
+
 
 
 namespace
@@ -24,7 +26,14 @@ std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
       std::map<std::string, std::vector<hoi4::Focus>> target_focuses;
       for (const auto& [target_tag, country]: world.GetCountries())
       {
-         if (!repeat_focus.GetTrigger().IsValid(hoi4::CountryScope(country), world))
+         hoi4::CountryScope country_scope(country);
+         hoi4::Context context{
+             .root = country_scope,
+             .this_scope = country_scope,
+             .prev = country_scope,
+             .from = country_scope,
+         };
+         if (!repeat_focus.GetTrigger().IsValid(context, world))
          {
             continue;
          }
