@@ -34,7 +34,7 @@ std::map<int, std::string> ImportContinentDefinitions(const commonItems::ModFile
    const auto path = mod_filesystem.GetActualFileLocation("map/continent.txt");
    if (!path)
    {
-      throw std::runtime_error("Could not find /map/continent.txt");
+      throw std::runtime_error("Could not find /map/continent.txt in {}");
    }
    continents_parser.parseFile(*path);
 
@@ -98,7 +98,15 @@ maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonIte
       {
          continue;
       }
-      const int red(std::stoi(line.substr(0, pos)));
+      int red;
+      try
+      {
+         red = std::stoi(line.substr(0, pos));
+      }
+      catch (...)
+      {
+         throw std::runtime_error(fmt::format("Province definition had bad red: {}", line.substr(0, pos)));
+      }
       line = line.substr(pos + 1, line.length());
 
       // green
@@ -107,7 +115,15 @@ maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonIte
       {
          continue;
       }
-      const int green(std::stoi(line.substr(0, pos)));
+      int green;
+      try
+      {
+         green = std::stoi(line.substr(0, pos));
+      }
+      catch (...)
+      {
+         throw std::runtime_error(fmt::format("Province definition had bad green: {}", line.substr(0, pos)));
+      }
       line = line.substr(pos + 1U, line.length());
 
       // blue
@@ -116,7 +132,15 @@ maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonIte
       {
          continue;
       }
-      const int blue(std::stoi(line.substr(0, pos)));
+      int blue;
+      try
+      {
+         blue = std::stoi(line.substr(0, pos));
+      }
+      catch (...)
+      {
+         throw std::runtime_error(fmt::format("Province definition had bad blue: {}", line.substr(0, pos)));
+      }
       line = line.substr(pos + 1U, line.length());
 
       // land or sea
@@ -157,7 +181,15 @@ maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonIte
       }
       terrain_types.emplace(province_name, terrain);
 
-      const int continent_number = std::stoi(line);
+      int continent_number;
+      try
+      {
+         continent_number = std::stoi(line);
+      }
+      catch (...)
+      {
+         throw std::runtime_error(fmt::format("Province definition had bad continent: {}", line));
+      }
       if (const auto itr = continent_definitions.find(continent_number); itr != continent_definitions.end())
       {
          continents.emplace(province_name, itr->second);

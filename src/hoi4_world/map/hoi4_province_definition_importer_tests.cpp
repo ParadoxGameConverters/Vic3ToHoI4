@@ -53,4 +53,56 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, ContinentsAreDetected)
    EXPECT_EQ(province_definitions.GetContinent("60"), std::nullopt);
 }
 
+
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadRedThrowsException)
+{
+   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world/BadRed", {});
+
+   EXPECT_THAT(
+       [mod_filesystem]() {
+          std::ignore = ImportProvinceDefinitions(mod_filesystem);
+       },
+       Throws<std::runtime_error>(
+           Property(&std::runtime_error::what, testing::HasSubstr("Province definition had bad red: BadRed"))));
+}
+
+
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadGreenThrowsException)
+{
+   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world/BadGreen", {});
+
+   EXPECT_THAT(
+       [mod_filesystem]() {
+          std::ignore = ImportProvinceDefinitions(mod_filesystem);
+       },
+       Throws<std::runtime_error>(
+           Property(&std::runtime_error::what, testing::HasSubstr("Province definition had bad green: BadGreen"))));
+}
+
+
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadBlueThrowsException)
+{
+   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world/BadBlue", {});
+
+   EXPECT_THAT(
+       [mod_filesystem]() {
+          std::ignore = ImportProvinceDefinitions(mod_filesystem);
+       },
+       Throws<std::runtime_error>(
+           Property(&std::runtime_error::what, testing::HasSubstr("Province definition had bad blue: BadBlue"))));
+}
+
+
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadContinentThrowsException)
+{
+   const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world/BadContinent", {});
+
+   EXPECT_THAT(
+       [mod_filesystem]() {
+          std::ignore = ImportProvinceDefinitions(mod_filesystem);
+       },
+       Throws<std::runtime_error>(Property(&std::runtime_error::what,
+           testing::HasSubstr("Province definition had bad continent: BadContinent"))));
+}
+
 }  // namespace hoi4
