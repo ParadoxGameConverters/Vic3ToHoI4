@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, IsValidReturnsValueInConstructor)
+TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, IsValidReturnsValueInConstructor)
 {
    const Country country({.tag = "TAG"});
    const Scope scope = CountryScope{.country = country};
@@ -28,7 +28,7 @@ TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, IsValidReturnsValueInConstruc
 }
 
 
-TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, EquivalentTriggersAreEqual)
 {
    const AlwaysTrigger true_trigger(true);
    const AlwaysTrigger true_trigger_two(true);
@@ -42,7 +42,7 @@ TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, CopyReturnsACopy)
 {
    const AlwaysTrigger true_trigger(true);
    const std::unique_ptr<Trigger> true_copy = true_trigger.Copy();

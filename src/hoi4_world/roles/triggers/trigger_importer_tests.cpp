@@ -17,7 +17,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, EmptyInputGivesAlwaysYesTrigger)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, EmptyInputGivesAlwaysYesTrigger)
 {
    std::stringstream input;
 
@@ -30,7 +30,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, EmptyInputGivesAlwaysYesTri
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, AlwaysTriggerCanBeImportedWithYes)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithYes)
 {
    std::stringstream input;
    input << "= {\n";
@@ -46,7 +46,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, AlwaysTriggerCanBeImportedW
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, AlwaysTriggerCanBeImportedWithNo)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithNo)
 {
    std::stringstream input;
    input << "= {\n";
@@ -62,7 +62,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, AlwaysTriggerCanBeImportedW
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, AlwaysTriggerCanBeImportedWithLoudYes)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithLoudYes)
 {
    std::stringstream input;
    input << "= {\n";
@@ -78,7 +78,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, AlwaysTriggerCanBeImportedW
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, TagTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, TagTriggerCanBeImported)
 {
    std::stringstream input;
    input << "= {\n";
@@ -94,7 +94,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, TagTriggerCanBeImported)
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, AndTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AndTriggerCanBeImported)
 {
    std::stringstream input;
    input << "= {\n";
@@ -123,7 +123,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, AndTriggerCanBeImported)
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, MultipleTopLevelTriggersCountAsAnAndTrigger)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, MultipleTopLevelTriggersCountAsAnAndTrigger)
 {
    std::stringstream input;
    input << "= {\n";
@@ -150,7 +150,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, MultipleTopLevelTriggersCou
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, OrTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, OrTriggerCanBeImported)
 {
    std::stringstream input;
    input << "= {\n";
@@ -179,7 +179,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, OrTriggerCanBeImported)
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, NotTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, NotTriggerCanBeImported)
 {
    std::stringstream input;
    input << "= {\n";
@@ -208,7 +208,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, NotTriggerCanBeImported)
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsCapitalTriggerCanBeImportedWithYes)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWithYes)
 {
    std::stringstream input;
    input << "= {\n";
@@ -224,7 +224,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsCapitalTriggerCanBeImport
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsCapitalTriggerCanBeImportedWithNo)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWithNo)
 {
    std::stringstream input;
    input << "= {\n";
@@ -240,7 +240,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsCapitalTriggerCanBeImport
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsCapitalTriggerCanBeImportedWithLoudYes)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWithLoudYes)
 {
    std::stringstream input;
    input << "= {\n";
@@ -256,7 +256,7 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsCapitalTriggerCanBeImport
 }
 
 
-TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsOnContinentTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsOnContinentTriggerCanBeImported)
 {
    std::stringstream input;
    input << "= {\n";

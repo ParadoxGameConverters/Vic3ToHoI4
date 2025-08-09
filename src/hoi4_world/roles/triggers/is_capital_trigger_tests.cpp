@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsIsCapitalTriggerTests, IsValidReturnsValueInConstructorIfStateIsCapital)
+TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, IsValidReturnsValueInConstructorIfStateIsCapital)
 {
    const State state(42, {.is_capital = true});
    const Scope scope = StateScope{.state = state};
@@ -28,7 +28,7 @@ TEST(Hoi4worldRolesRequirementsIsCapitalTriggerTests, IsValidReturnsValueInConst
 }
 
 
-TEST(Hoi4worldRolesRequirementsIsCapitalTriggerTests, IsValidReturnsInverseOfValueInConstructorIfStateIsNotCapital)
+TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, IsValidReturnsInverseOfValueInConstructorIfStateIsNotCapital)
 {
    const State state(42, {.is_capital = false});
    const Scope scope = StateScope{.state = state};
@@ -43,7 +43,7 @@ TEST(Hoi4worldRolesRequirementsIsCapitalTriggerTests, IsValidReturnsInverseOfVal
 }
 
 
-TEST(Hoi4worldRolesRequirementsIsCapitalTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, EquivalentTriggersAreEqual)
 {
    const IsCapitalTrigger true_trigger(true);
    const IsCapitalTrigger true_trigger_two(true);
@@ -57,7 +57,7 @@ TEST(Hoi4worldRolesRequirementsIsCapitalTriggerTests, EquivalentTriggersAreEqual
 }
 
 
-TEST(Hoi4worldRolesRequirementsIsCapitalTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, CopyReturnsACopy)
 {
    const IsCapitalTrigger true_trigger(true);
    const std::unique_ptr<Trigger> true_copy = true_trigger.Copy();

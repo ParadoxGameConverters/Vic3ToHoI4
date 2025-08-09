@@ -14,7 +14,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsOrTriggerTests, IsValidReturnsFalseIfAllChildrenFalse)
+TEST(Hoi4worldRolesTriggersOrTriggerTests, IsValidReturnsFalseIfAllChildrenFalse)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(false);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);
@@ -32,7 +32,7 @@ TEST(Hoi4worldRolesRequirementsOrTriggerTests, IsValidReturnsFalseIfAllChildrenF
 }
 
 
-TEST(Hoi4worldRolesRequirementsOrTriggerTests, IsValidReturnsTrueIfAnyChildrenTrue)
+TEST(Hoi4worldRolesTriggersOrTriggerTests, IsValidReturnsTrueIfAnyChildrenTrue)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);
@@ -50,7 +50,7 @@ TEST(Hoi4worldRolesRequirementsOrTriggerTests, IsValidReturnsTrueIfAnyChildrenTr
 }
 
 
-TEST(Hoi4worldRolesRequirementsOrTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersOrTriggerTests, EquivalentTriggersAreEqual)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);
@@ -87,7 +87,7 @@ TEST(Hoi4worldRolesRequirementsOrTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesRequirementsOrTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersOrTriggerTests, CopyReturnsACopy)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);

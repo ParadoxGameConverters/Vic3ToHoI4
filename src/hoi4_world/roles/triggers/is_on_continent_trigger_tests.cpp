@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRequirementsIsOnContinentTriggerTests, IsValidReturnsTrueIfStateIsOnContinent)
+TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, IsValidReturnsTrueIfStateIsOnContinent)
 {
    const State state(42, {.continent = "test_continent"});
    const Scope scope = StateScope{.state = state};
@@ -25,7 +25,7 @@ TEST(Hoi4worldRolesRequirementsIsOnContinentTriggerTests, IsValidReturnsTrueIfSt
 }
 
 
-TEST(Hoi4worldRolesRequirementsIsOnContinentTriggerTests, IsValidReturnsFalseIfStateIsNotOnContinent)
+TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, IsValidReturnsFalseIfStateIsNotOnContinent)
 {
    const State state(42, {.continent = "wrong_continent"});
    const Scope scope = StateScope{.state = state};
@@ -37,7 +37,7 @@ TEST(Hoi4worldRolesRequirementsIsOnContinentTriggerTests, IsValidReturnsFalseIfS
 }
 
 
-TEST(Hoi4worldRolesRequirementsIsOnContinentTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, EquivalentTriggersAreEqual)
 {
    const IsOnContinentTrigger is_on_continent_trigger("test_continent");
    const IsOnContinentTrigger is_on_continent_trigger_two("test_continent");
@@ -51,7 +51,7 @@ TEST(Hoi4worldRolesRequirementsIsOnContinentTriggerTests, EquivalentTriggersAreE
 }
 
 
-TEST(Hoi4worldRolesRequirementsIsOnContinentTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, CopyReturnsACopy)
 {
    const IsOnContinentTrigger is_on_continent_trigger("test_continent");
    const std::unique_ptr<Trigger> true_copy = is_on_continent_trigger.Copy();
