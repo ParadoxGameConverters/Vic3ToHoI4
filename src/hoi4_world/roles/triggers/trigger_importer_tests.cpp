@@ -62,6 +62,22 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, AlwaysTriggerCanBeImportedW
 }
 
 
+TEST(Hoi4worldRolesRequirementsTriggerimporterTests, AlwaysTriggerCanBeImportedWithLoudYes)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  always = YES\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const AlwaysTrigger always_trigger(true);
+   EXPECT_EQ(*trigger, always_trigger);
+}
+
+
 TEST(Hoi4worldRolesRequirementsTriggerimporterTests, TagTriggerCanBeImported)
 {
    std::stringstream input;
@@ -220,6 +236,22 @@ TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsCapitalTriggerCanBeImport
 
    ASSERT_TRUE(trigger);
    const IsCapitalTrigger is_capital_trigger(false);
+   EXPECT_EQ(*trigger, is_capital_trigger);
+}
+
+
+TEST(Hoi4worldRolesRequirementsTriggerimporterTests, IsCapitalTriggerCanBeImportedWithLoudYes)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  is_capital = YES\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const IsCapitalTrigger is_capital_trigger(true);
    EXPECT_EQ(*trigger, is_capital_trigger);
 }
 
