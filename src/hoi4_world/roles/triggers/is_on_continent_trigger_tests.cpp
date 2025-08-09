@@ -37,7 +37,7 @@ TEST(Hoi4worldRolesRequirementsIsOnContinentTriggerTests, IsValidReturnsFalseIfS
 }
 
 
-TEST(Hoi4worldRolesRequirementsIsOnContinentTriggerTests, EquavalentTriggersAreEqual)
+TEST(Hoi4worldRolesRequirementsIsOnContinentTriggerTests, EquivalentTriggersAreEqual)
 {
    const IsOnContinentTrigger is_on_continent_trigger("test_continent");
    const IsOnContinentTrigger is_on_continent_trigger_two("test_continent");

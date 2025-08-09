@@ -43,7 +43,7 @@ TEST(Hoi4worldRolesRequirementsIsCapitalTriggerTests, IsValidReturnsInverseOfVal
 }
 
 
-TEST(Hoi4worldRolesRequirementsIsCapitalTriggerTests, EquavalentTriggersAreEqual)
+TEST(Hoi4worldRolesRequirementsIsCapitalTriggerTests, EquivalentTriggersAreEqual)
 {
    const IsCapitalTrigger true_trigger(true);
    const IsCapitalTrigger true_trigger_two(true);

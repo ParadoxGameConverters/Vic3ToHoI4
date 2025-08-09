@@ -50,7 +50,7 @@ TEST(Hoi4worldRolesRequirementsOrTriggerTests, IsValidReturnsTrueIfAnyChildrenTr
 }
 
 
-TEST(Hoi4worldRolesRequirementsOrTriggerTests, EquavalentTriggersAreEqual)
+TEST(Hoi4worldRolesRequirementsOrTriggerTests, EquivalentTriggersAreEqual)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);

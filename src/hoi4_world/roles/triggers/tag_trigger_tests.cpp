@@ -52,7 +52,7 @@ TEST(Hoi4worldRolesRequirementsTagTriggerTests, IsValidReturnsFalseIfScopeNotCou
 }
 
 
-TEST(Hoi4worldRolesRequirementsTagTriggerTests, EquavalentTriggersAreEqual)
+TEST(Hoi4worldRolesRequirementsTagTriggerTests, EquivalentTriggersAreEqual)
 {
    const TagTrigger tag_trigger("TAG");
    const TagTrigger tag_trigger_two("TAG");

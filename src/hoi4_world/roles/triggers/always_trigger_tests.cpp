@@ -28,7 +28,7 @@ TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, IsValidReturnsValueInConstruc
 }
 
 
-TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, EquavalentTriggersAreEqual)
+TEST(Hoi4worldRolesRequirementsAlwaysTriggerTests, EquivalentTriggersAreEqual)
 {
    const AlwaysTrigger true_trigger(true);
    const AlwaysTrigger true_trigger_two(true);
