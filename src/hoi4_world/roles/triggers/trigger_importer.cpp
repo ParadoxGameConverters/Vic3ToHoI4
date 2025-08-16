@@ -22,15 +22,6 @@ TriggerImporter::TriggerImporter()
       triggers_.push_back(std::make_unique<AnyOtherCountryTrigger>(std::move(triggers)));
    });
 
-   // Dual scopes
-   trigger_parser_.registerKeyword("tag", [this](std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      if (const std::optional<std::string> tag_string = trigger_parser_.getNextTokenWithoutMatching(input); tag_string)
-      {
-         triggers_.push_back(std::make_unique<TagTrigger>(tag_string.value()));
-      }
-   });
-
    // flow control tools
    trigger_parser_.registerKeyword("AND", [this](std::istream& input) {
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
@@ -55,6 +46,15 @@ TriggerImporter::TriggerImporter()
 #pragma warning(push)
       const bool value = value_string == "yes";
       triggers_.push_back(std::make_unique<AlwaysTrigger>(value));
+   });
+
+   // country scope
+   trigger_parser_.registerKeyword("tag", [this](std::istream& input) {
+      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      if (const std::optional<std::string> tag_string = trigger_parser_.getNextTokenWithoutMatching(input); tag_string)
+      {
+         triggers_.push_back(std::make_unique<TagTrigger>(tag_string.value()));
+      }
    });
 
    // state scope
