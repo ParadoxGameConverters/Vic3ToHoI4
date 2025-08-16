@@ -5,6 +5,7 @@
 
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
+#include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
@@ -17,67 +18,36 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, EmptyInputGivesAlwaysYesTrigger)
-{
-   std::stringstream input;
-
-   TriggerImporter importer;
-   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
-
-   ASSERT_TRUE(trigger);
-   const AlwaysTrigger always_trigger(true);
-   EXPECT_EQ(*trigger, always_trigger);
-}
-
-
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithYes)
+// trigger scopes
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOtherCountryTriggerCanBeImported)
 {
    std::stringstream input;
    input << "= {\n";
-   input << "  always = yes\n";
+   input << "  any_other_country = {\n";
+   input << "    always = yes\n";
+   input << "    always = no\n";
+   input << "    tag = TAG\n";
+   input << "  }";
    input << "}";
 
    TriggerImporter importer;
    const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
 
    ASSERT_TRUE(trigger);
-   const AlwaysTrigger always_trigger(true);
-   EXPECT_EQ(*trigger, always_trigger);
+
+   std::unique_ptr<Trigger> always_yes_trigger = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> always_no_trigger = std::make_unique<AlwaysTrigger>(false);
+   std::unique_ptr<Trigger> tag_trigger = std::make_unique<TagTrigger>("TAG");
+   std::vector<std::unique_ptr<Trigger>> children;
+   children.push_back(std::move(always_yes_trigger));
+   children.push_back(std::move(always_no_trigger));
+   children.push_back(std::move(tag_trigger));
+   const AnyOtherCountryTrigger and_trigger(std::move(children));
+
+   EXPECT_EQ(*trigger, and_trigger);
 }
 
-
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithNo)
-{
-   std::stringstream input;
-   input << "= {\n";
-   input << "  always = no\n";
-   input << "}";
-
-   TriggerImporter importer;
-   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
-
-   ASSERT_TRUE(trigger);
-   const AlwaysTrigger always_trigger(false);
-   EXPECT_EQ(*trigger, always_trigger);
-}
-
-
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithLoudYes)
-{
-   std::stringstream input;
-   input << "= {\n";
-   input << "  always = YES\n";
-   input << "}";
-
-   TriggerImporter importer;
-   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
-
-   ASSERT_TRUE(trigger);
-   const AlwaysTrigger always_trigger(true);
-   EXPECT_EQ(*trigger, always_trigger);
-}
-
-
+// dual scopes
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, TagTriggerCanBeImported)
 {
    std::stringstream input;
@@ -94,6 +64,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, TagTriggerCanBeImported)
 }
 
 
+// flow control tools
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, AndTriggerCanBeImported)
 {
    std::stringstream input;
@@ -208,6 +179,69 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, NotTriggerCanBeImported)
 }
 
 
+// any scope
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, EmptyInputGivesAlwaysYesTrigger)
+{
+   std::stringstream input;
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const AlwaysTrigger always_trigger(true);
+   EXPECT_EQ(*trigger, always_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithYes)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  always = yes\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const AlwaysTrigger always_trigger(true);
+   EXPECT_EQ(*trigger, always_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithNo)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  always = no\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const AlwaysTrigger always_trigger(false);
+   EXPECT_EQ(*trigger, always_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithLoudYes)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  always = YES\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const AlwaysTrigger always_trigger(true);
+   EXPECT_EQ(*trigger, always_trigger);
+}
+
+
+// state scope
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWithYes)
 {
    std::stringstream input;
