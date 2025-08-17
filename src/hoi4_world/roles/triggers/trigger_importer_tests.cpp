@@ -9,6 +9,7 @@
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
+#include "src/hoi4_world/roles/triggers/nand_trigger.h"
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
 #include "src/hoi4_world/roles/triggers/tag_trigger.h"
@@ -51,30 +52,59 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOtherCountryTriggerCanBeImpo
 // flow control tools
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, AllFalseTriggerCanBeImportedAsNorTrigger)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "  all_false = {\n";
-	input << "    always = yes\n";
-	input << "    always = no\n";
-	input << "    tag = TAG\n";
-	input << "  }";
-	input << "}";
+   std::stringstream input;
+   input << "= {\n";
+   input << "  all_false = {\n";
+   input << "    always = yes\n";
+   input << "    always = no\n";
+   input << "    tag = TAG\n";
+   input << "  }";
+   input << "}";
 
-	TriggerImporter importer;
-	const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
 
-	ASSERT_TRUE(trigger);
+   ASSERT_TRUE(trigger);
 
-	std::unique_ptr<Trigger> always_yes_trigger = std::make_unique<AlwaysTrigger>(true);
-	std::unique_ptr<Trigger> always_no_trigger = std::make_unique<AlwaysTrigger>(false);
-	std::unique_ptr<Trigger> tag_trigger = std::make_unique<TagTrigger>("TAG");
-	std::vector<std::unique_ptr<Trigger>> children;
-	children.push_back(std::move(always_yes_trigger));
-	children.push_back(std::move(always_no_trigger));
-	children.push_back(std::move(tag_trigger));
-	const NorTrigger nor_trigger(std::move(children));
+   std::unique_ptr<Trigger> always_yes_trigger = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> always_no_trigger = std::make_unique<AlwaysTrigger>(false);
+   std::unique_ptr<Trigger> tag_trigger = std::make_unique<TagTrigger>("TAG");
+   std::vector<std::unique_ptr<Trigger>> children;
+   children.push_back(std::move(always_yes_trigger));
+   children.push_back(std::move(always_no_trigger));
+   children.push_back(std::move(tag_trigger));
+   const NorTrigger nor_trigger(std::move(children));
 
-	EXPECT_EQ(*trigger, nor_trigger);
+   EXPECT_EQ(*trigger, nor_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyFalseTriggerCanBeImportedAsNandTrigger)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  any_false = {\n";
+   input << "    always = yes\n";
+   input << "    always = no\n";
+   input << "    tag = TAG\n";
+   input << "  }";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+
+   std::unique_ptr<Trigger> always_yes_trigger = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> always_no_trigger = std::make_unique<AlwaysTrigger>(false);
+   std::unique_ptr<Trigger> tag_trigger = std::make_unique<TagTrigger>("TAG");
+   std::vector<std::unique_ptr<Trigger>> children;
+   children.push_back(std::move(always_yes_trigger));
+   children.push_back(std::move(always_no_trigger));
+   children.push_back(std::move(tag_trigger));
+   const NandTrigger nand_trigger(std::move(children));
+
+   EXPECT_EQ(*trigger, nand_trigger);
 }
 
 
@@ -133,6 +163,64 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseAndTriggerCanBeImporte
    const AndTrigger and_trigger(std::move(children));
 
    EXPECT_EQ(*trigger, and_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, NandTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  NAND = {\n";
+   input << "    always = yes\n";
+   input << "    always = no\n";
+   input << "    tag = TAG\n";
+   input << "  }";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+
+   std::unique_ptr<Trigger> always_yes_trigger = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> always_no_trigger = std::make_unique<AlwaysTrigger>(false);
+   std::unique_ptr<Trigger> tag_trigger = std::make_unique<TagTrigger>("TAG");
+   std::vector<std::unique_ptr<Trigger>> children;
+   children.push_back(std::move(always_yes_trigger));
+   children.push_back(std::move(always_no_trigger));
+   children.push_back(std::move(tag_trigger));
+   const NandTrigger nand_trigger(std::move(children));
+
+   EXPECT_EQ(*trigger, nand_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseNandTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  nand = {\n";
+   input << "    always = yes\n";
+   input << "    always = no\n";
+   input << "    tag = TAG\n";
+   input << "  }";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+
+   std::unique_ptr<Trigger> always_yes_trigger = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> always_no_trigger = std::make_unique<AlwaysTrigger>(false);
+   std::unique_ptr<Trigger> tag_trigger = std::make_unique<TagTrigger>("TAG");
+   std::vector<std::unique_ptr<Trigger>> children;
+   children.push_back(std::move(always_yes_trigger));
+   children.push_back(std::move(always_no_trigger));
+   children.push_back(std::move(tag_trigger));
+   const NandTrigger nand_trigger(std::move(children));
+
+   EXPECT_EQ(*trigger, nand_trigger);
 }
 
 

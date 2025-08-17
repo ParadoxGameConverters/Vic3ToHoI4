@@ -5,6 +5,7 @@
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
+#include "src/hoi4_world/roles/triggers/nand_trigger.h"
 #include "src/hoi4_world/roles/triggers/nor_trigger.h"
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
@@ -25,8 +26,12 @@ TriggerImporter::TriggerImporter()
 
    // flow control tools
    trigger_parser_.registerKeyword("all_false", [this](std::istream& input) {
-       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
-       triggers_.push_back(std::make_unique<OrTrigger>(std::move(triggers)));
+      std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+      triggers_.push_back(std::make_unique<NorTrigger>(std::move(triggers)));
+   });
+   trigger_parser_.registerKeyword("any_false", [this](std::istream& input) {
+      std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+      triggers_.push_back(std::make_unique<NandTrigger>(std::move(triggers)));
    });
    trigger_parser_.registerKeyword("AND", [this](std::istream& input) {
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
@@ -35,6 +40,14 @@ TriggerImporter::TriggerImporter()
    trigger_parser_.registerKeyword("and", [this](std::istream& input) {
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
       triggers_.push_back(std::make_unique<AndTrigger>(std::move(triggers)));
+   });
+   trigger_parser_.registerKeyword("NAND", [this](std::istream& input) {
+      std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+      triggers_.push_back(std::make_unique<NandTrigger>(std::move(triggers)));
+   });
+   trigger_parser_.registerKeyword("nand", [this](std::istream& input) {
+      std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+      triggers_.push_back(std::make_unique<NandTrigger>(std::move(triggers)));
    });
    trigger_parser_.registerKeyword("NOR", [this](std::istream& input) {
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
@@ -53,12 +66,12 @@ TriggerImporter::TriggerImporter()
       triggers_.push_back(std::make_unique<NotTrigger>(std::move(triggers)));
    });
    trigger_parser_.registerKeyword("OR", [this](std::istream& input) {
-       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
-       triggers_.push_back(std::make_unique<OrTrigger>(std::move(triggers)));
+      std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+      triggers_.push_back(std::make_unique<OrTrigger>(std::move(triggers)));
    });
    trigger_parser_.registerKeyword("or", [this](std::istream& input) {
-       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
-       triggers_.push_back(std::make_unique<OrTrigger>(std::move(triggers)));
+      std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+      triggers_.push_back(std::make_unique<OrTrigger>(std::move(triggers)));
    });
 
    // any scope
