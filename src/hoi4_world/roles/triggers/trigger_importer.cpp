@@ -27,13 +27,25 @@ TriggerImporter::TriggerImporter()
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
       triggers_.push_back(std::make_unique<AndTrigger>(std::move(triggers)));
    });
+   trigger_parser_.registerKeyword("and", [this](std::istream& input) {
+       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+       triggers_.push_back(std::make_unique<AndTrigger>(std::move(triggers)));
+   });
    trigger_parser_.registerKeyword("OR", [this](std::istream& input) {
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
       triggers_.push_back(std::make_unique<OrTrigger>(std::move(triggers)));
    });
+   trigger_parser_.registerKeyword("or", [this](std::istream& input) {
+       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+       triggers_.push_back(std::make_unique<OrTrigger>(std::move(triggers)));
+   });
    trigger_parser_.registerKeyword("NOT", [this](std::istream& input) {
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
       triggers_.push_back(std::make_unique<NotTrigger>(std::move(triggers)));
+   });
+   trigger_parser_.registerKeyword("not", [this](std::istream& input) {
+       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+       triggers_.push_back(std::make_unique<NotTrigger>(std::move(triggers)));
    });
 
    // any scope
