@@ -3,13 +3,14 @@
 
 #include <sstream>
 
-#include "nor_trigger.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
+#include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
+#include "src/hoi4_world/roles/triggers/nor_trigger.h"
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
 #include "src/hoi4_world/roles/triggers/tag_trigger.h"
@@ -48,6 +49,36 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOtherCountryTriggerCanBeImpo
 
    EXPECT_EQ(*trigger, and_trigger);
 }
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOwnedStateTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  any_owned_state = {\n";
+   input << "    always = yes\n";
+   input << "    always = no\n";
+   input << "    tag = TAG\n";
+   input << "  }";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+
+   std::unique_ptr<Trigger> always_yes_trigger = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> always_no_trigger = std::make_unique<AlwaysTrigger>(false);
+   std::unique_ptr<Trigger> tag_trigger = std::make_unique<TagTrigger>("TAG");
+   std::vector<std::unique_ptr<Trigger>> children;
+   children.push_back(std::move(always_yes_trigger));
+   children.push_back(std::move(always_no_trigger));
+   children.push_back(std::move(tag_trigger));
+   const AnyOwnedStateTrigger and_trigger(std::move(children));
+
+   EXPECT_EQ(*trigger, and_trigger);
+}
+
 
 // flow control tools
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, AllFalseTriggerCanBeImportedAsNorTrigger)
