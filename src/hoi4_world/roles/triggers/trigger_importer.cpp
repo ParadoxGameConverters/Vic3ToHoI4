@@ -4,6 +4,7 @@
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
+#include "src/hoi4_world/roles/triggers/has_homeland_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
@@ -28,6 +29,7 @@ TriggerImporter::TriggerImporter()
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
       triggers_.push_back(std::make_unique<AnyOwnedStateTrigger>(std::move(triggers)));
    });
+
 
    // flow control tools
    trigger_parser_.registerKeyword("all_false", [this](std::istream& input) {
@@ -79,7 +81,8 @@ TriggerImporter::TriggerImporter()
       triggers_.push_back(std::make_unique<OrTrigger>(std::move(triggers)));
    });
 
-   // any scope
+
+   // any scopes
    trigger_parser_.registerKeyword("always", [this](std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
       std::string value_string = trigger_parser_.getNextTokenWithoutMatching(input).value_or("no");
@@ -91,7 +94,8 @@ TriggerImporter::TriggerImporter()
       triggers_.push_back(std::make_unique<AlwaysTrigger>(value));
    });
 
-   // country scope
+
+   // country scopes
    trigger_parser_.registerKeyword("tag", [this](std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
       if (const std::optional<std::string> tag_string = trigger_parser_.getNextTokenWithoutMatching(input); tag_string)
@@ -100,7 +104,18 @@ TriggerImporter::TriggerImporter()
       }
    });
 
-   // state scope
+
+   // culture scopes
+   trigger_parser_.registerKeyword("has_homeland", [this](std::istream& input) {
+      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      if (const std::optional<std::string> tag_string = trigger_parser_.getNextTokenWithoutMatching(input); tag_string)
+      {
+         triggers_.push_back(std::make_unique<HasHomelandTrigger>(tag_string.value()));
+      }
+   });
+
+
+   // state scopes
    trigger_parser_.registerKeyword("is_capital", [this]([[maybe_unused]] std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
       std::string value_string = trigger_parser_.getNextTokenWithoutMatching(input).value_or("no");

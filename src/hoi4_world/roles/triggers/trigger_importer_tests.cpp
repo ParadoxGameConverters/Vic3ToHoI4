@@ -7,6 +7,7 @@
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
+#include "src/hoi4_world/roles/triggers/has_homeland_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
@@ -532,6 +533,23 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, TagTriggerCanBeImported)
    ASSERT_TRUE(trigger);
    const TagTrigger tag_trigger("TAG");
    EXPECT_EQ(*trigger, tag_trigger);
+}
+
+
+// culture scope
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, HasHomelandTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  has_homeland = test_culture\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const HasHomelandTrigger has_homeland_trigger("test_culture");
+   EXPECT_EQ(*trigger, has_homeland_trigger);
 }
 
 

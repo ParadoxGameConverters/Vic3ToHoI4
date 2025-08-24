@@ -32,7 +32,7 @@ unification_italy = {
             any_other_country = {
                 any_owned_state = {
                     not = { owner ?= root }
-                    "has_homeland = Italian"
+                    has_homeland = Italian
                 }
             }
         }
