@@ -47,6 +47,7 @@ struct CountryOptions
    int source_country_number;
    std::string tag;
    commonItems::Color color;
+   std::set<int> owned_states;
    std::optional<int> capital_state;
    std::set<std::string> primary_cultures;
    std::string ideology = "neutrality";
@@ -85,6 +86,7 @@ class Country
        source_country_number_(country_options.source_country_number),
        tag_(std::move(country_options.tag)),
        color_(country_options.color),
+       owned_states_(std::move(country_options.owned_states)),
        capital_state_(country_options.capital_state),
        primary_cultures_(std::move(country_options.primary_cultures)),
        ideology_(std::move(country_options.ideology)),
@@ -120,6 +122,7 @@ class Country
    [[nodiscard]] int GetSourceCountryNumber() const { return source_country_number_; }
    [[nodiscard]] const std::string& GetTag() const { return tag_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
+   [[nodiscard]] const std::set<int>& GetOwnedStates() const { return owned_states_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] const std::set<std::string>& GetPrimaryCultures() const { return primary_cultures_; }
    [[nodiscard]] int GetConvoys() const { return convoys_; }
@@ -164,6 +167,7 @@ class Country
    int source_country_number_;
    std::string tag_;
    commonItems::Color color_;
+   std::set<int> owned_states_;
    std::optional<int> capital_state_;
    std::set<std::string> primary_cultures_;
    std::string ideology_ = "neutrality";

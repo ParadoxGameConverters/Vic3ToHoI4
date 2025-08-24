@@ -202,6 +202,66 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
 }
 
 
+TEST(Hoi4worldCountriesCountryConverter, OwnedStatesAreConverted)
+{
+   const vic3::World source_world = vic3::World(vic3::WorldOptions());
+   const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
+   const vic3::Country source_country_one({.number = 1, .owned_states = {1, 2, 3}});
+   const vic3::Country source_country_two({.number = 2, .owned_states = {4, 5, 6}});
+   std::map<int, Character> dummy_characters;
+   std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
+   mappers::TemplateMap templates;
+
+   const States states({.vic3_state_ids_to_hoi4_state_ids{{1, 10}, {2, 20}, {3, 30}, {4, 40}, {5, 50}, {6, 60}}});
+
+   const auto country_one = ConvertCountry(source_world,
+       source_country_one,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       states,
+       mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
+       {},
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       {0, {}},
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+   const auto country_two = ConvertCountry(source_world,
+       source_country_two,
+       commonItems::LocalizationDatabase{{}, {}},
+       country_mapper,
+       states,
+       mappers::IdeologyMapper({}, {}),
+       mappers::UnitMapper(templates),
+       {},
+       {},
+       {},
+       {},
+       {},
+       {},
+       mappers::CultureGraphicsMapper{{}},
+       mappers::LeaderTypeMapper({}),
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       {0, {}},
+       {},
+       dummy_characters,
+       dummy_culture_queues);
+
+   ASSERT_TRUE(country_one.has_value());
+   EXPECT_THAT(country_one->GetOwnedStates(), testing::UnorderedElementsAre(10, 20, 30));
+   ASSERT_TRUE(country_two.has_value());
+   EXPECT_THAT(country_two->GetOwnedStates(), testing::UnorderedElementsAre(40, 50, 60));
+}
+
+
 TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());

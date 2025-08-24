@@ -21,11 +21,6 @@ bool AnyOwnedStateTrigger::IsValid(const Context& context, const World& world) c
       return std::ranges::all_of(children_.begin(),
           children_.end(),
           [context, country, &world, &state](const std::unique_ptr<Trigger>& a) {
-             if (state.GetOwner() != country.GetTag())
-             {
-                return false;
-             }
-
              const Context new_context{
                  .root = context.root,
                  .this_scope = StateScope{.state = state},
@@ -36,7 +31,14 @@ bool AnyOwnedStateTrigger::IsValid(const Context& context, const World& world) c
           });
    };
 
-   return std::ranges::any_of(world.GetStates().states, state_is_valid);
+   std::vector<std::reference_wrapper<const State>> owned_states;
+   for (const int owned_state: country.GetOwnedStates())
+   {
+      const State& state = world.GetStates().states.at(owned_state - 1);
+      owned_states.push_back(state);
+   }
+
+   return std::ranges::any_of(owned_states, state_is_valid);
 }
 
 

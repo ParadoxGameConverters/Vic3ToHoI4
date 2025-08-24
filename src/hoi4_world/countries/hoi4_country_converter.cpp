@@ -101,6 +101,26 @@ std::optional<int> DetermineBackupCapital(const std::string_view& tag, const std
 }
 
 
+std::set<int> ConvertOwnedStates(const vic3::Country& source_country,
+    const std::map<int, hoi4::StateId>& vic3_state_ids_to_hoi4_state_ids)
+{
+   std::set<int> owned_states;
+   for (const int vic3_state: source_country.GetOwnedStates())
+   {
+      if (auto itr = vic3_state_ids_to_hoi4_state_ids.find(vic3_state); itr != vic3_state_ids_to_hoi4_state_ids.end())
+      {
+         owned_states.insert(itr->second);
+      }
+      else
+      {
+         Log(LogLevel::Warning) << fmt::format("Vic3 state {} had no corresponding hoi4 state", vic3_state);
+      }
+   }
+
+   return owned_states;
+}
+
+
 std::optional<int> ConvertCapital(const vic3::Country& source_country,
     std::string_view tag,
     const std::map<int, int>& vic3_state_ids_to_hoi4_state_ids,
@@ -842,6 +862,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
       Log(LogLevel::Debug) << fmt::format("converting {} (vic {})", tag.value(), source_country.GetTag());
    }
 
+   const std::set<int> owned_states = ConvertOwnedStates(source_country, states.vic3_state_ids_to_hoi4_state_ids);
    const std::optional<int> capital_state =
        ConvertCapital(source_country, *tag, states.vic3_state_ids_to_hoi4_state_ids, states.states);
    const std::string ideology = ideology_mapper.GetRulingIdeology(source_country.GetActiveLaws());
@@ -951,6 +972,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        .source_country_number = source_country.GetNumber(),
        .tag = *tag,
        .color = source_country.GetColor(),
+       .owned_states = owned_states,
        .capital_state = capital_state,
        .primary_cultures = source_country.GetPrimaryCultures(),
        .ideology = ideology,

@@ -23,11 +23,12 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, IsValidReturnsTrueIfAnyOwn
    children.push_back(std::move(one_trigger));
    const AnyOwnedStateTrigger any_other_country_trigger(std::move(children));
 
-   const Scope this_scope = CountryScope{.country = Country({.tag = "ONE"})};
+   const Country country(CountryOptions{.tag = "ONE", .owned_states = {1, 2}});
+   const Scope this_scope = CountryScope{.country = country};
    const hoi4::World world({
        .countries =
            {
-               {"ONE", Country(CountryOptions{.tag = "ONE"})},
+               {"ONE", country},
            },
        .states = States{.states =
                             {
@@ -50,11 +51,12 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, IsValidReturnsFalseIfNoOwn
    children.push_back(std::move(two_trigger));
    const AnyOwnedStateTrigger any_other_country_trigger(std::move(children));
 
-   const Scope this_scope = CountryScope{.country = Country({.tag = "ONE"})};
+   const Country country({.tag = "ONE", .owned_states = {1}});
+   const Scope this_scope = CountryScope{.country = country};
    const hoi4::World world({
        .countries =
            {
-               {"ONE", Country(CountryOptions{.tag = "ONE"})},
+               {"ONE", country},
            },
        .states = States{.states = {State(1, StateOptions{.owner = "ONE", .is_capital = false})}},
    });
@@ -71,11 +73,12 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, IsValidReturnsFalseIfNoOwn
    children.push_back(std::move(one_trigger));
    const AnyOwnedStateTrigger any_other_country_trigger(std::move(children));
 
-   const Scope this_scope = CountryScope{.country = Country({.tag = "ONE"})};
+   const Country country({.tag = "ONE"});
+   const Scope this_scope = CountryScope{.country = country};
    const hoi4::World world({
        .countries =
            {
-               {"ONE", Country(CountryOptions{.tag = "ONE"})},
+               {"ONE", country},
            },
        .states = States{.states = {State(1, StateOptions{.owner = "TWO"})}},
    });
