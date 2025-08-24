@@ -66,7 +66,7 @@ class State
    bool operator==(const State&) const = default;
 
   private:
-   int id_;
+   int id_ = -1;
    std::optional<int> owner_number_;
    std::optional<std::string> owner_tag_;
    bool incorporated_ = false;
