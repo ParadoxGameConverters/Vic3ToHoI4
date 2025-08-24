@@ -114,7 +114,14 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                    .region = "STATE_ONE",
                    .homelands = {"welsh"},
                })),
-           testing::Pair(2, State({.id = 2, .owner_number = 133, .provinces = {20}, .region = "STATE_TWO", .homelands = {"scottish", "welsh"},}))));
+           testing::Pair(2,
+               State({
+                   .id = 2,
+                   .owner_number = 133,
+                   .provinces = {20},
+                   .region = "STATE_TWO",
+                   .homelands = {"scottish", "welsh"},
+               }))));
    EXPECT_THAT(world.GetStateRegions(),
        testing::UnorderedElementsAre(testing::Pair("STATE_LOMBARDY",
                                          StateRegion(
