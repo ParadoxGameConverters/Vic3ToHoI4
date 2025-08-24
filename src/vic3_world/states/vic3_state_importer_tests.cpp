@@ -20,6 +20,7 @@ TEST(Vic3worldStateVic3stateimporter, DefaultsAreDefaulted)
    EXPECT_FALSE(state.IsIncorporated());
    EXPECT_NEAR(state.GetInfrastructure(), 0.0F, 0.0001F);
    EXPECT_TRUE(state.GetProvinces().empty());
+   EXPECT_TRUE(state.GetRegion().empty());
    EXPECT_EQ(state.GetPopulation(), 0);
    EXPECT_EQ(state.GetEmployedPopulation(), 0);
 }
@@ -48,6 +49,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
    input << "\tprovinces={\n";
    input << "\t\tprovinces = { 37330 1 37333 9 37348 1 }\n";
    input << "\t}";
+   input << "\tregion=\"TEST_REGION\"\n";
    input << "\tpop_statistics={\n";
    input << "\t\tpopulation_lower_strata=2\n";
    input << "\t\tpopulation_middle_strata=4\n";
@@ -81,6 +83,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
            37342,
            37348,
            37349));
+   EXPECT_EQ(state.GetRegion(), "TEST_REGION");
    EXPECT_EQ(state.GetPopulation(), 12);
    EXPECT_EQ(state.GetEmployedPopulation(), 68);
 }

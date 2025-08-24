@@ -33,6 +33,7 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
    EXPECT_FALSE(country.value_or(Country({})).GetDynamicAdjective());
    EXPECT_FALSE(country.value_or(Country({})).GetUseOverlordPrefix());
    EXPECT_EQ(country.value_or(Country({})).GetColor(), commonItems::Color(std::array{0, 0, 0}));
+   EXPECT_TRUE(country.value_or(Country({})).GetOwnedStates().empty());
    EXPECT_EQ(country.value_or(Country({})).GetCapitalState(), std::nullopt);
    EXPECT_FALSE(country.value_or(Country({})).IsDecentralized());
    EXPECT_TRUE(country.value_or(Country({})).GetActiveLaws().empty());
@@ -57,6 +58,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    input << "\tmap_color=rgb {\n";
    input << "\t\t8 89 54\n";
    input << "\t}\n";
+   input << "\tstates={ 1 2 3 }\n";
    input << "\tcapital=12345\n";
    input << "\tcountry_type=\"decentralized\"\n";
    input << "\tcultures={ 35 7 }\n";
@@ -71,6 +73,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
    EXPECT_EQ(country.value_or(Country({})).GetDynamicAdjective().value_or(""), "dynamic_adjective");
    EXPECT_TRUE(country.value_or(Country({})).GetUseOverlordPrefix());
    EXPECT_EQ(country.value_or(Country({})).GetColor(), commonItems::Color(std::array{8, 89, 54}));
+   EXPECT_THAT(country.value_or(Country({})).GetOwnedStates(), testing::UnorderedElementsAre(1, 2, 3));
    EXPECT_EQ(country.value_or(Country({})).GetCapitalState(), std::optional<int>(12345));
    EXPECT_TRUE(country.value_or(Country({})).IsDecentralized());
    EXPECT_FALSE(country.value_or(Country({})).IsRecognized());

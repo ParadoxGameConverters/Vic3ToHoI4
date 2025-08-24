@@ -37,11 +37,12 @@ struct CountryOptions
 {
    int number = 0;
    std::string tag;
-   bool is_dead;
+   bool is_dead = false;
    std::optional<std::string> dynamic_name;
    std::optional<std::string> dynamic_adjective;
    bool use_overlord_prefix = false;
    commonItems::Color color;
+   std::set<int> owned_states;
    std::optional<int> capital_state;
    std::string country_type;
    bool is_civil_war = false;
@@ -55,9 +56,9 @@ struct CountryOptions
    std::set<int> puppets;
    std::optional<int> overlord;
    int legitimacy = 0;
-   BudgetLevel tax_level;
-   BudgetLevel salary_level;
-   BudgetLevel mil_salary_level;
+   BudgetLevel tax_level = BudgetLevel::kVeryLow;
+   BudgetLevel salary_level = BudgetLevel::kVeryLow;
+   BudgetLevel mil_salary_level = BudgetLevel::kVeryLow;
    std::map<int, MilitaryFormation> army_formations;
    std::map<int, MilitaryFormation> navy_formations;
 };
@@ -84,6 +85,7 @@ class Country
        dynamic_adjective_(std::move(options.dynamic_adjective)),
        use_overlord_prefix_(options.use_overlord_prefix),
        color_(options.color),
+       owned_states_(std::move(options.owned_states)),
        capital_state_(options.capital_state),
        country_type_(std::move(options.country_type)),
        is_civil_war_(options.is_civil_war),
@@ -112,6 +114,7 @@ class Country
    [[nodiscard]] const std::optional<std::string>& GetDynamicAdjective() const { return dynamic_adjective_; }
    [[nodiscard]] bool GetUseOverlordPrefix() const { return use_overlord_prefix_; }
    [[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
+   [[nodiscard]] const std::set<int>& GetOwnedStates() const { return owned_states_; }
    [[nodiscard]] const std::optional<int>& GetCapitalState() const { return capital_state_; }
    [[nodiscard]] bool IsDecentralized() const { return country_type_ == "decentralized"; }
    /// Is the country a recognized or colonial nation
@@ -165,6 +168,7 @@ class Country
    std::optional<std::string> dynamic_adjective_;
    bool use_overlord_prefix_ = false;
    commonItems::Color color_;
+   std::set<int> owned_states_;
    std::optional<int> capital_state_;
    std::string country_type_;
    bool is_civil_war_;

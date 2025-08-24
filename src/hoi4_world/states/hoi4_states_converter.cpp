@@ -1133,7 +1133,8 @@ hoi4::States CreateStates(const vic3::World& source_world,
          const std::optional<std::string> continent =
              DetermineContinent(province_set, world_framework.province_definitions);
          hoi4_states.emplace_back(state_id,
-             hoi4::StateOptions{.owner = state_owner,
+             hoi4::StateOptions{
+                 .owner = state_owner,
                  .provinces = province_set,
                  .manpower = manpower,
                  .resources = resources,
@@ -1147,8 +1148,10 @@ hoi4::States CreateStates(const vic3::World& source_world,
                  .naval_base_level = naval_base_level,
                  .air_base_level = air_base_level,
                  .cores = cores,
+                 .homelands = vic3_state_itr->second.GetHomelands(),
                  .vic3_infrastructure = vic3_state_itr->second.GetInfrastructure(),
-                 .infrastructure = infrastructure});
+                 .infrastructure = infrastructure,
+             });
       }
       for (const auto& province_set: final_wasteland_connected_province_sets)
       {
@@ -1167,10 +1170,12 @@ hoi4::States CreateStates(const vic3::World& source_world,
          }
          vic3_state_ids_to_hoi4_state_ids.emplace(vic3_state_id, static_cast<int>(hoi4_states.size() + 1U));
          hoi4_states.emplace_back(static_cast<int>(hoi4_states.size() + 1U),
-             hoi4::StateOptions{.owner = state_owner,
+             hoi4::StateOptions{
+                 .owner = state_owner,
                  .provinces = province_set,
                  .manpower = manpower,
-                 .category = "wasteland"});
+                 .category = "wasteland",
+             });
       }
    }
 

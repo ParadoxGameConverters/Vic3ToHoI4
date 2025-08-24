@@ -23,6 +23,8 @@ struct StateOptions
    bool incorporated = false;
    float infrastructure = 0.0F;
    std::set<int> provinces;
+   std::string region;
+   std::set<std::string> homelands;
    int population = 0;
    int employed_population = 0;
 };
@@ -39,6 +41,8 @@ class State
        incorporated_(state_options.incorporated),
        infrastructure_(state_options.infrastructure),
        provinces_(std::move(state_options.provinces)),
+       region_(std::move(state_options.region)),
+       homelands_(std::move(state_options.homelands)),
        population_(state_options.population),
        employed_population_(state_options.employed_population)
    {
@@ -50,21 +54,26 @@ class State
    [[nodiscard]] bool IsIncorporated() const { return incorporated_; }
    [[nodiscard]] float GetInfrastructure() const { return infrastructure_; }
    [[nodiscard]] const std::set<int>& GetProvinces() const { return provinces_; }
+   [[nodiscard]] const std::string& GetRegion() const { return region_; }
+   [[nodiscard]] const std::set<std::string>& GetHomelands() const { return homelands_; }
    [[nodiscard]] int GetPopulation() const { return population_; }
    [[nodiscard]] int GetEmployedPopulation() const { return employed_population_; }
    [[nodiscard]] std::vector<Building> GetBuildings(const World& source_world);
 
    void SetOwnerTag(std::string_view owner_tag) { owner_tag_ = owner_tag; }
+   void AddHomeland(std::string homeland) { homelands_.emplace(homeland); }
 
    bool operator==(const State&) const = default;
 
   private:
-   int id_;
+   int id_ = -1;
    std::optional<int> owner_number_;
    std::optional<std::string> owner_tag_;
    bool incorporated_ = false;
    float infrastructure_ = 0.0F;
    std::set<int> provinces_;
+   std::string region_;
+   std::set<std::string> homelands_;
    int population_ = 0;
    int employed_population_ = 0;
 };

@@ -8,13 +8,16 @@
 
 
 
-std::map<int, std::string> vic3::ImportCultures(std::istream& input_stream)
+namespace vic3
 {
-   std::map<int, std::string> cultures;
+
+std::map<int, Culture> ImportCultures(std::istream& input_stream)
+{
+   std::map<int, Culture> cultures;
 
    int active_cultures = 0;
 
-   std::string culture_name;
+   Culture culture;
 
    commonItems::parser culture_parser;
    // Guaranteed fields
@@ -27,14 +30,18 @@ std::map<int, std::string> vic3::ImportCultures(std::istream& input_stream)
    // fomenting migrations: potential_migration = { potential_migration_struct }
    // cultural obsessions: obsessions = { good_names }
 
-   culture_parser.registerKeyword("type", [&culture_name](std::istream& input_stream) {
-      culture_name = commonItems::getString(input_stream);
+   culture_parser.registerKeyword("type", [&culture](std::istream& input_stream) {
+      culture.name = commonItems::getString(input_stream);
+   });
+   culture_parser.registerKeyword("core_states", [&culture](std::istream& input_stream) {
+      std::vector<std::string> homeland_list = commonItems::getStrings(input_stream);
+      culture.homelands.insert(homeland_list.begin(), homeland_list.end());
    });
    culture_parser.IgnoreUnregisteredItems();
 
    commonItems::parser database_parser;
    database_parser.registerRegex(commonItems::integerRegex,
-       [&cultures, &active_cultures, &culture_name, &culture_parser](const std::string& number_string,
+       [&cultures, &active_cultures, &culture, &culture_parser](const std::string& number_string,
            std::istream& input_stream) {
           const int culture_number = std::stoi(number_string);
           const std::string culture_string = commonItems::stringOfItem(input_stream).getString();
@@ -44,13 +51,14 @@ std::map<int, std::string> vic3::ImportCultures(std::istream& input_stream)
              return;
           }
 
-          culture_name.clear();
+          culture.name.clear();
+          culture.homelands.clear();
 
           std::istringstream culture_stream(culture_string);
           culture_parser.parseStream(culture_stream);
 
           ++active_cultures;
-          cultures.emplace(culture_number, culture_name);
+          cultures.emplace(culture_number, culture);
        });
    database_parser.IgnoreUnregisteredItems();
 
@@ -74,3 +82,5 @@ std::map<int, std::string> vic3::ImportCultures(std::istream& input_stream)
 
    return cultures;
 }
+
+}  // namespace vic3

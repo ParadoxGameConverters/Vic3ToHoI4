@@ -71,6 +71,12 @@ vic3::CountryImporter::CountryImporter()
    country_parser_.registerKeyword("map_color", [this](std::istream& input_stream) {
       options_.color = commonItems::Color::Factory{}.getColor(input_stream);
    });
+   country_parser_.registerKeyword("states", [this](std::istream& input_stream) {
+      for (const auto& state_id: commonItems::getInts(input_stream))
+      {
+         options_.owned_states.emplace(state_id);
+      }
+   });
    country_parser_.registerKeyword("capital", [this](std::istream& input_stream) {
       const int64_t temp_number = commonItems::getLlong(input_stream);
       if (temp_number == 4294967295)

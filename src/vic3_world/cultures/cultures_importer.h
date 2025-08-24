@@ -8,12 +8,14 @@
 #include <set>
 #include <string>
 
+#include "src/vic3_world/cultures/culture.h"
+
 
 
 namespace vic3
 {
 
-std::map<int, std::string> ImportCultures(std::istream& input_stream);
+std::map<int, Culture> ImportCultures(std::istream& input_stream);
 
 }  // namespace vic3
 

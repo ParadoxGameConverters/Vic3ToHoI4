@@ -26,7 +26,9 @@ struct RepeatFocus
    }
    RepeatFocus(const RepeatFocus& other): trigger_(other.trigger_->Copy()), focuses_(other.focuses_) {}
    RepeatFocus& operator=(const RepeatFocus& other);
-   RepeatFocus(RepeatFocus&& other): trigger_(std::move(other.trigger_)), focuses_(std::move(other.focuses_)) {}
+   RepeatFocus(RepeatFocus&& other) noexcept: trigger_(std::move(other.trigger_)), focuses_(std::move(other.focuses_))
+   {
+   }
    RepeatFocus& operator=(RepeatFocus&& other);
 
    [[nodiscard]] const Trigger& GetTrigger() const { return *trigger_; }

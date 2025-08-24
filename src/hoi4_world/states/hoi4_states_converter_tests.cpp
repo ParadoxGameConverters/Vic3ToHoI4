@@ -106,14 +106,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, DefaultProvinceMapIsEmpty)
 
 TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersStates)
 {
-   const mappers::ProvinceMapper province_mapper({},
+   mappers::ProvinceMapper province_mapper({},
        {
            {10, {"x000001", "x000002", "x000003"}},
            {20, {"x000004", "x000005", "x000006"}},
        });
 
    const StrategicRegions strategic_regions;
-   const mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}, {3, "THR"}, {4, "FOR"}});
+   mappers::CountryMapper country_mapper({{1, "ONE"}, {2, "TWO"}, {3, "THR"}, {4, "FOR"}});
 
    vic3::World world = vic3::WorldBuilder::CreateNullWorld()
                            .AddStates({{1, vic3::State({.owner_number = 1, .provinces = {1}})},
@@ -157,13 +157,13 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
 
 TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
 {
-   const mappers::ProvinceMapper province_mapper({},
+   mappers::ProvinceMapper province_mapper({},
        {
            {10, {"x000001", "x000002", "x000003"}},
            {20, {"x000004", "x000005", "x000006"}},
        });
 
-   const mappers::CountryMapper country_mapper({{1, "ONE"}, {4, "FOR"}});
+   mappers::CountryMapper country_mapper({{1, "ONE"}, {4, "FOR"}});
 
    vic3::World world = vic3::WorldBuilder::CreateNullWorld()
                            .AddStates({{1, vic3::State({.owner_number = 1, .provinces = {1, 2}})},
@@ -452,7 +452,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
 
 TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
 {
-   const mappers::ProvinceMapper province_mapper({},
+   mappers::ProvinceMapper province_mapper({},
        {
            {10, {"x000001"}},
            {20, {"x000002"}},
