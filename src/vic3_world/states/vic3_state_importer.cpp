@@ -26,7 +26,6 @@ vic3::StateImporter::StateImporter()
       provinces_parser_.parseStream(input_stream);
    });
    state_parser_.registerKeyword("region", [this](std::istream& input_stream) {
-      Log(LogLevel::Debug) << "Parsing region";
       region_ = commonItems::getString(input_stream);
    });
    state_parser_.registerKeyword("pop_statistics", [this](std::istream& input_stream) {

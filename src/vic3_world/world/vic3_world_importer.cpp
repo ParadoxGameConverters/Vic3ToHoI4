@@ -192,14 +192,10 @@ void AssignOwnersToStates(const std::map<int, vic3::Country>& countries, std::ma
 
 void AssignCulturesToStates(const std::map<int, vic3::Culture>& cultures, std::map<int, vic3::State>& states)
 {
-   Log(LogLevel::Debug) << fmt::format("Assigning {} cultures to states based on homelands.", cultures.size());
+   Log(LogLevel::Debug) << fmt::format("Assigning homelands for {} cultures.", cultures.size());
    std::map<std::string, std::set<std::string>> homelands_to_cultures_map;
    for (const vic3::Culture& culture: cultures | std::views::values)
    {
-      if (!culture.homelands.empty())
-      {
-         Log(LogLevel::Debug) << fmt::format("\t{} had {} homelands.", culture.name, culture.homelands.size());
-      }
       for (const std::string& homeland: culture.homelands)
       {
          if (auto [itr, success] = homelands_to_cultures_map.emplace(homeland, std::set{culture.name}); !success)
@@ -211,13 +207,8 @@ void AssignCulturesToStates(const std::map<int, vic3::Culture>& cultures, std::m
 
    for (vic3::State& state: states | std::views::values)
    {
-      Log(LogLevel::Debug) << fmt::format("State {} is in region {}.", state.GetId(), state.GetRegion());
       if (auto itr = homelands_to_cultures_map.find(state.GetRegion()); itr != homelands_to_cultures_map.end())
       {
-         Log(LogLevel::Debug) << fmt::format("State {} in region {} had {} cultural homelands.",
-             state.GetId(),
-             state.GetRegion(),
-             itr->second.size());
          for (const std::string& culture: itr->second)
          {
             state.AddHomeland(culture);
