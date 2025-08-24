@@ -35,7 +35,7 @@ bool AnyOwnedStateTrigger::IsValid(const Context& context, const World& world) c
    for (const int owned_state: country.GetOwnedStates())
    {
       const State& state = world.GetStates().states.at(owned_state - 1);
-      owned_states.push_back(state);
+      owned_states.emplace_back(state);
    }
 
    return std::ranges::any_of(owned_states, state_is_valid);
