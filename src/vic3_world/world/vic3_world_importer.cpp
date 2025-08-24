@@ -128,7 +128,7 @@ std::istringstream MeltSave(const rakaly::GameFile& save, const std::string& sav
 }
 
 
-void AssignCulturesToCountries(std::map<int, vic3::Country>& countries, const std::map<int, std::string>& cultures)
+void AssignCulturesToCountries(std::map<int, vic3::Country>& countries, const std::map<int, vic3::Culture>& cultures)
 {
    for (auto& [country_id, country]: countries)
    {
@@ -136,7 +136,7 @@ void AssignCulturesToCountries(std::map<int, vic3::Country>& countries, const st
       {
          if (const auto culture_itr = cultures.find(id); culture_itr != cultures.end())
          {
-            country.AddPrimaryCulture(culture_itr->second);
+            country.AddPrimaryCulture(culture_itr->second.name);
          }
          else
          {
@@ -148,13 +148,14 @@ void AssignCulturesToCountries(std::map<int, vic3::Country>& countries, const st
    }
 }
 
-void AssignCulturesToCharacters(std::map<int, vic3::Character>& characters, const std::map<int, std::string>& cultures)
+void AssignCulturesToCharacters(std::map<int, vic3::Character>& characters,
+    const std::map<int, vic3::Culture>& cultures)
 {
    for (auto& character: characters | std::ranges::views::values)
    {
       if (const auto culture_itr = cultures.find(character.GetCultureId()); culture_itr != cultures.end())
       {
-         character.SetCulture(culture_itr->second);
+         character.SetCulture(culture_itr->second.name);
       }
       else
       {
@@ -187,6 +188,44 @@ void AssignOwnersToStates(const std::map<int, vic3::Country>& countries, std::ma
       }
    }
 }
+
+
+void AssignCulturesToStates(const std::map<int, vic3::Culture>& cultures, std::map<int, vic3::State>& states)
+{
+   Log(LogLevel::Debug) << fmt::format("Assigning {} cultures to states based on homelands.", cultures.size());
+   std::map<std::string, std::set<std::string>> homelands_to_cultures_map;
+   for (const vic3::Culture& culture: cultures | std::views::values)
+   {
+      if (!culture.homelands.empty())
+      {
+         Log(LogLevel::Debug) << fmt::format("\t{} had {} homelands.", culture.name, culture.homelands.size());
+      }
+      for (const std::string& homeland: culture.homelands)
+      {
+         if (auto [itr, success] = homelands_to_cultures_map.emplace(homeland, std::set{culture.name}); !success)
+         {
+            itr->second.insert(culture.name);
+         }
+      }
+   }
+
+   for (vic3::State& state: states | std::views::values)
+   {
+      Log(LogLevel::Debug) << fmt::format("State {} is in region {}.", state.GetId(), state.GetRegion());
+      if (auto itr = homelands_to_cultures_map.find(state.GetRegion()); itr != homelands_to_cultures_map.end())
+      {
+         Log(LogLevel::Debug) << fmt::format("State {} in region {} had {} cultural homelands.",
+             state.GetId(),
+             state.GetRegion(),
+             itr->second.size());
+         for (const std::string& culture: itr->second)
+         {
+            state.AddHomeland(culture);
+         }
+      }
+   }
+}
+
 
 void AssignIgsToCountries(std::map<int, vic3::Country>& countries, const std::map<int, vic3::InterestGroup>& igs)
 {
@@ -450,7 +489,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    ProgressManager::AddProgress(1);
    Log(LogLevel::Info) << "-> Processing Vic3 save.";
    const std::map<std::string, commonItems::Color> color_definitions = ImportCountryColorDefinitions(mod_filesystem);
-   std::map<int, std::string> cultures;
+   std::map<int, Culture> cultures;
    std::map<int, std::vector<int>> country_character_map;
    std::map<int, MilitaryFormation> military_formations;
    std::vector<CombatUnit> combat_units;
@@ -541,6 +580,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    AssignCulturesToCharacters(world_options.characters, cultures);
    ProgressManager::AddProgress(1);
    AssignOwnersToStates(world_options.countries, world_options.states);
+   AssignCulturesToStates(cultures, world_options.states);
    ProgressManager::AddProgress(1);
    const auto& country_tag_to_id_map = MapCountryTagsToId(world_options.countries);
    AssignHomeCountriesToExiledAgitators(country_tag_to_id_map, world_options.characters);

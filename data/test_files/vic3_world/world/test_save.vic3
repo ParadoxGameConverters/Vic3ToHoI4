@@ -27,18 +27,21 @@ states={
 	provinces={
 		provinces={ 1 2 }
 	}
+	region="STATE_ZERO"
 }
 1 = {
 	country=3
 	provinces={
 		provinces={ 10 2 }
 	}
+	region="STATE_ONE"
 }
 2 = {
 	country=133
 	provinces={
 		provinces={ 20 0 }
 	}
+	region="STATE_TWO"
 }
 	}
 }
@@ -243,5 +246,22 @@ pacts={
 		second=1
 		action=alliance start_date=1836.1.1
 }
+	}
+}
+cultures={
+	database={
+		0={
+			type="welsh"
+			core_states={
+				"STATE_ONE"
+				"STATE_TWO"
+			}
+		}
+		1={
+			type="scottish"
+			core_states={
+				"STATE_TWO"
+			}
+		}
 	}
 }

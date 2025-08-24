@@ -31,6 +31,7 @@ class StateImporter
    bool incorporated_ = false;
    float infrastructure_ = 0.0F;
    std::set<int> provinces_;
+   std::string region_;
    int population_ = 0;
    int employed_population_ = 0;
 };
