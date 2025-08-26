@@ -17,7 +17,7 @@ bool AnyOwnedStateTrigger::IsValid(const Context& context, const World& world) c
    }
    const Country& country = maybe_country->country;
 
-   const auto state_is_valid = [context, country, world, this](const State& state) {
+   const auto state_is_valid = [context, country, &world, this](const State& state) {
       return std::ranges::all_of(children_.begin(),
           children_.end(),
           [context, country, &world, &state](const std::unique_ptr<Trigger>& a) {
