@@ -9,7 +9,7 @@ namespace hoi4
 
 bool NorTrigger::IsValid(const Context& context, const World& world) const
 {
-   return std::ranges::none_of(children_.begin(), children_.end(), [context, world](const std::unique_ptr<Trigger>& a) {
+   return std::ranges::none_of(children_.begin(), children_.end(), [context, &world](const std::unique_ptr<Trigger>& a) {
       return a->IsValid(context, world);
    });
 }

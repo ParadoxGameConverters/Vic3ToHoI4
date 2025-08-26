@@ -11,7 +11,7 @@ bool AnyOtherCountryTrigger::IsValid(const Context& context, const World& world)
 {
    return std::ranges::any_of(world.GetCountries().begin(),
        world.GetCountries().end(),
-       [context, world, this](const auto& country) {
+       [context, &world, this](const auto& country) {
           // Check if all child triggers are valid for the other country
           return std::ranges::all_of(children_.begin(),
               children_.end(),
