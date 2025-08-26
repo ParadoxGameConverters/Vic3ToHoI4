@@ -37,6 +37,7 @@ struct StateOptions
    std::optional<int> naval_base_level;
    int air_base_level = 0;
    std::set<std::string> cores;
+   std::set<std::string> homelands;
 
    float vic3_infrastructure = 0.0F;
    int infrastructure = 1;
@@ -63,6 +64,7 @@ class State
        naval_base_level_(state_options.naval_base_level),
        air_base_level_(state_options.air_base_level),
        cores_(state_options.cores),
+       homelands_(state_options.homelands),
        vic3_infrastructure_(state_options.vic3_infrastructure),
        infrastructure_(state_options.infrastructure)
    {
@@ -84,6 +86,7 @@ class State
    [[nodiscard]] std::optional<int> GetNavalBaseLevel() const { return naval_base_level_; }
    [[nodiscard]] int GetAirBaseLevel() const { return air_base_level_; }
    [[nodiscard]] std::set<std::string> GetCores() const { return cores_; }
+   [[nodiscard]] bool HasHomeland(const std::string& homeland) const { return homelands_.contains(homeland); }
    [[nodiscard]] float GetVic3Infrastructure() const { return vic3_infrastructure_; }
    [[nodiscard]] int GetInfrastructure() const { return infrastructure_; }
 
@@ -115,6 +118,7 @@ class State
    std::optional<int> naval_base_level_;
    int air_base_level_ = 0;
    std::set<std::string> cores_;
+   std::set<std::string> homelands_;
 
    float vic3_infrastructure_ = 0.0F;
    int infrastructure_ = 1;

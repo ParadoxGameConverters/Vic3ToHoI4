@@ -31,8 +31,10 @@ unification_italy = {
         trigger={
             any_other_country = {
                 any_owned_state = {
-                    not = { owner ?= root }
-                    "has_homeland = Italian"
+					OR = {
+						has_homeland = north_italian
+						has_homeland = south_italian
+					}
                 }
             }
         }
@@ -120,7 +122,7 @@ unification_italy = {
             }
         }
     }
-    
+
     events={
         country_event={
             id=sample_event
@@ -185,13 +187,13 @@ unification_italy_2 = {
             y = 1
             cost = 10
             prerequisite = { focus = $TAG$_italia_irredenta }
-            
+
             available = {
                 $TARGET_TAG$ = {
                     can_ROOT_get_wargoal_on_THIS = yes
                 }
             }
-            
+
             ai_will_do = {
                 factor = 1
                     modifier = { #don't try it if we're getting our ass kicked
@@ -210,18 +212,18 @@ unification_italy_2 = {
                                         }
                                     }
                                 }
-                                
+
                             }
                         }
                     }
             }
-            
+
             bypass = {
                 has_war_with = $TARGET_TAG$
             }
-            
+
             will_lead_to_war_with = $TARGET_TAG$
-            
+
             select_effect = { #should make AI prepare to invade
                 add_ai_strategy = {
                     type = prepare_for_war
@@ -229,7 +231,7 @@ unification_italy_2 = {
                     value = 100
                 }
             }
-            
+
             completion_reward = { #wargoal would be more appropriate as take_claimed_state or such, maybe
                 create_wargoal = {
                     type = annex_everything
@@ -241,10 +243,10 @@ unification_italy_2 = {
                     value = 200
                 }
             }
-            
+
         }
     }
-    
+
     focus={
         id = $TAG$_proclaim_unity
         icon = GFX_goal_generic_construction
@@ -260,7 +262,7 @@ unification_italy_2 = {
             set_cosmetic_tag = ITA_UNIFIED
         }
     }
-    
+
     decisions_categories={
         sample_decision_category={
             icon=generic_form_nation
@@ -268,7 +270,7 @@ unification_italy_2 = {
             }
         }
     }
-    
+
     decisions={
         sample_decision_category={
             decision_three={
@@ -277,7 +279,7 @@ unification_italy_2 = {
             }
         }
     }
-
+    
     events={
         country_event={
             id=sample_event

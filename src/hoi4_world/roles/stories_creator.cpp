@@ -142,6 +142,7 @@ std::optional<std::vector<std::pair<Tag, hoi4::Role>>> ExpandCombinations(
       expanded_combinations.emplace_back(tag, role->second);
    }
 
+   Log(LogLevel::Info) << fmt::format("\tExpanded to {} role combinations.", expanded_combinations.size());
    return expanded_combinations;
 }
 
@@ -159,6 +160,7 @@ std::optional<std::map<Tag, std::vector<hoi4::Role>>> GroupCombinations(
       }
    }
 
+   Log(LogLevel::Info) << fmt::format("\tGrouped into {} countries with roles.", grouped_combinations.size());
    return grouped_combinations;
 }
 
