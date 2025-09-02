@@ -31,6 +31,11 @@ class AlwaysTrigger: public Trigger
    {
       return value_;
    }
+   [[nodiscard]] std::vector<Scope> FindAllValid([[maybe_unused]] const Context& context,
+       [[maybe_unused]] const World& world) const override
+   {
+      return {};
+   }
 
    // This allows the Google test framework to print human-readable RepeatFocuses if a test fails.
    friend void PrintTo(const AlwaysTrigger& trigger, std::ostream* os)

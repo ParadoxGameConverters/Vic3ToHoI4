@@ -37,6 +37,18 @@ TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, IsValidReturnsFalseIfState
 }
 
 
+TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, FindAllValidReturnsEmptyVector)
+{
+   const State state(42, {.continent = "wrong_continent"});
+   const Scope scope = StateScope{.state = state};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
+   const hoi4::World world({});
+
+   const IsOnContinentTrigger continent_trigger("test_continent");
+   EXPECT_TRUE(continent_trigger.FindAllValid(context, world).empty());
+}
+
+
 TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, EquivalentTriggersAreEqual)
 {
    const IsOnContinentTrigger is_on_continent_trigger("test_continent");

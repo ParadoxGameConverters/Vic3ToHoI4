@@ -95,7 +95,7 @@ class State
 
    void SetHighestVictoryPointValue(int value);
 
-   std::partial_ordering operator<=>(const State&) const = default;
+   bool operator==(const State&) const = default;
 
    friend void PrintTo(const State& state, std::ostream* os);
 
