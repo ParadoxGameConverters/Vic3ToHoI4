@@ -39,7 +39,7 @@ unification_italy = {
             }
         }
         focus={
-            id = $TAG$_invade_$TARGET_TAG$
+            id = $TAG$_invade_$TARGET_ID$
             icon = GFX_goal_generic_more_territorial_claims
             relative_position_id = $TAG$_italia_irredenta
             x = -1
@@ -48,7 +48,7 @@ unification_italy = {
             prerequisite = { focus = $TAG$_italia_irredenta }
             
             available = {
-                $TARGET_TAG$ = {
+                $TARGET_ID$ = {
                     can_ROOT_get_wargoal_on_THIS = yes
                 }
             }
@@ -61,11 +61,11 @@ unification_italy = {
                     }
                     modifier = { #don't try it if we can't reach them
                         factor = 0
-                        $TARGET_TAG$ = {
+                        $TARGET_ID$ = {
                             NOT = {
                                 OR = {
                                     is_neighbor_of = $TAG$
-                                    $TARGET_TAG$ = {
+                                    $TARGET_ID$ = {
                                         any_owned_state = {
                                             is_coastal = yes
                                         }
@@ -78,15 +78,15 @@ unification_italy = {
             }
             
             bypass = {
-                has_war_with = $TARGET_TAG$
+                has_war_with = $TARGET_ID$
             }
             
-            will_lead_to_war_with = $TARGET_TAG$
+            will_lead_to_war_with = $TARGET_ID$
             
             select_effect = { #should make AI prepare to invade
                 add_ai_strategy = {
                     type = prepare_for_war
-                    id = $TARGET_TAG$
+                    id = $TARGET_ID$
                     value = 100
                 }
             }
@@ -94,11 +94,11 @@ unification_italy = {
             completion_reward = { #wargoal would be more appropriate as take_claimed_state or such, maybe
                 create_wargoal = {
                     type = annex_everything
-                    target = $TARGET_TAG$
+                    target = $TARGET_ID$
                 }
                 add_ai_strategy = {
                     type = conquer
-                    id = $TARGET_TAG$
+                    id = $TARGET_ID$
                     value = 200
                 }
             }
@@ -180,7 +180,7 @@ unification_italy_2 = {
             }
         }
         focus={
-            id = $TAG$_invade_$TARGET_TAG$
+            id = $TAG$_invade_$TARGET_ID$
             icon = GFX_goal_generic_more_territorial_claims
             relative_position_id = $TAG$_italia_irredenta
             x = -1
@@ -189,7 +189,7 @@ unification_italy_2 = {
             prerequisite = { focus = $TAG$_italia_irredenta }
 
             available = {
-                $TARGET_TAG$ = {
+                $TARGET_ID$ = {
                     can_ROOT_get_wargoal_on_THIS = yes
                 }
             }
@@ -202,11 +202,11 @@ unification_italy_2 = {
                     }
                     modifier = { #don't try it if we can't reach them
                         factor = 0
-                        $TARGET_TAG$ = {
+                        $TARGET_ID$ = {
                             NOT = {
                                 OR = {
                                     is_neighbor_of = $TAG$
-                                    $TARGET_TAG$ = {
+                                    $TARGET_ID$ = {
                                         any_owned_state = {
                                             is_coastal = yes
                                         }
@@ -219,15 +219,15 @@ unification_italy_2 = {
             }
 
             bypass = {
-                has_war_with = $TARGET_TAG$
+                has_war_with = $TARGET_ID$
             }
 
-            will_lead_to_war_with = $TARGET_TAG$
+            will_lead_to_war_with = $TARGET_ID$
 
             select_effect = { #should make AI prepare to invade
                 add_ai_strategy = {
                     type = prepare_for_war
-                    id = $TARGET_TAG$
+                    id = $TARGET_ID$
                     value = 100
                 }
             }
@@ -235,11 +235,11 @@ unification_italy_2 = {
             completion_reward = { #wargoal would be more appropriate as take_claimed_state or such, maybe
                 create_wargoal = {
                     type = annex_everything
-                    target = $TARGET_TAG$
+                    target = $TARGET_ID$
                 }
                 add_ai_strategy = {
                     type = conquer
-                    id = $TARGET_TAG$
+                    id = $TARGET_ID$
                     value = 200
                 }
             }
@@ -253,7 +253,7 @@ unification_italy_2 = {
         tree_starter = yes
         y = 0
         cost = 10
-        prerequisite = { repeat_focus = $TAG$_invade_$TARGET_TAG$ }
+        prerequisite = { repeat_focus = $TAG$_invade_$TARGET_ID$ }
         ai_will_do = {
             factor = 5
         }
