@@ -39,7 +39,7 @@ void hoi4::TaskForceTemplate::AddShipsIfPossible(std::vector<hoi4::Ship>& ships,
 
    for (const auto& [pm, amount]: cost_)
    {
-      points[pm] -= amount * multiple;
+      points[pm] -= amount * static_cast<float>(multiple);
    }
    for (int i = 0; i < multiple; ++i)
    {

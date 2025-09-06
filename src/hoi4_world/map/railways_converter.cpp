@@ -887,8 +887,8 @@ std::tuple<float, float, float, float> DetermineRailwayLevelRequirements(const s
    const float level_four = development_levels.at(development_levels.size() * 99 / 100);
    const float level_three = development_levels.at(development_levels.size() * 96 / 100);
    const float level_two = development_levels.at(development_levels.size() * 50 / 100);
-   const float level_one =
-       std::accumulate(development_levels.begin(), development_levels.end(), 0.F) / development_levels.size() / 10.F;
+   const float level_one = std::accumulate(development_levels.begin(), development_levels.end(), 0.F) /
+                           static_cast<float>(development_levels.size()) / 10.F;
 
    return {level_one, level_two, level_three, level_four};
 }

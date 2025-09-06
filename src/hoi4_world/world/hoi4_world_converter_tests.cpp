@@ -269,7 +269,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
               },
               {}));
       province_definitions_initializer.emplace_back(fmt::format("x0000{:0>2}", i));
-      buildings_initializer.emplace(i, std::vector{vic3::Building("", i, 1000.0f - i)});
+      buildings_initializer.emplace(i, std::vector{vic3::Building("", i, 1000.0f - static_cast<float>(i))});
       scored_countries.emplace(i, i);
       vic3_states.emplace(i,
           vic3::State({.owner_number = i, .owner_tag = fmt::format("x0000{:0>2}", i), .provinces = {i}}));

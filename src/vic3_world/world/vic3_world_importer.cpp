@@ -63,7 +63,7 @@ std::string ReadSave(const path& save_filename)
    const auto save_size = static_cast<std::basic_string<char>::size_type>(file_size(save_filename));
    Log(LogLevel::Info) << "  -> Getting string text";
    std::string save_string(save_size, '\0');
-   save_file.read(save_string.data(), save_size);
+   save_file.read(save_string.data(), static_cast<std::streamsize>(save_size));
 
    return save_string;
 }

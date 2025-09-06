@@ -67,8 +67,9 @@ float InfrastructureMapper::FindFudgeFactor(const std::map<int, vic3::State>& st
       Log(LogLevel::Debug) << fmt::format("fudge factor of {} gives {} infrastructure ({} per state)",
           fudge_factor,
           new_infra,
-          (new_infra / states.size()));
-      return ((new_infra / states.size()) - target_hoi_infra_per_state) * target_hoi_infra_per_state;
+          (new_infra / static_cast<float>(states.size())));
+      return ((new_infra / static_cast<float>(states.size())) - target_hoi_infra_per_state) *
+             target_hoi_infra_per_state;
    };
 
    return FindRoot<float, float>(

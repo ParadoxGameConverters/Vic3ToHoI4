@@ -88,7 +88,7 @@ std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const vic3::Mil
       equip += itr->second.equipment;
       for (const auto& [ut, str]: itr->second.units)
       {
-         current[ut] += str * combat_unit.current_manpower / 1000.0F;
+         current[ut] += str * static_cast<float>(combat_unit.current_manpower) / 1000.0F;
       }
    }
 

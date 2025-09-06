@@ -436,7 +436,8 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
     const hoi4::CoastalProvinces& coastal_provinces,
     std::unordered_map<std::string, FactoriesStruct>& accumulator)
 {
-   const float factories = total_factories * province_set.size() / num_hoi4_provinces;
+   const float factories =
+       total_factories * static_cast<float>(province_set.size()) / static_cast<float>(num_hoi4_provinces);
 
    int civilian_factories = 0;
    int military_factories = 0;
@@ -826,9 +827,9 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
          {
             accumulator[tag] = {.military = 0, .civilian = 0, .docks = 0};
          }
-         accumulator[tag].military += hoi4_state.GetMilitaryFactories();
-         accumulator[tag].civilian += hoi4_state.GetCivilianFactories();
-         accumulator[tag].docks += hoi4_state.GetDockyards();
+         accumulator[tag].military += static_cast<float>(hoi4_state.GetMilitaryFactories());
+         accumulator[tag].civilian += static_cast<float>(hoi4_state.GetCivilianFactories());
+         accumulator[tag].docks += static_cast<float>(hoi4_state.GetDockyards());
       }
       civilian_factories += hoi4_state.GetCivilianFactories();
       military_factories += hoi4_state.GetMilitaryFactories();
@@ -1087,7 +1088,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
          if (config.dynamic_resources)
          {
             auto fraction = static_cast<float>(province_set.size());
-            fraction /= total_non_wasteland_provinces;
+            fraction /= static_cast<float>(total_non_wasteland_provinces);
             resources = CalculateResources(world_mapper.resource_mapper,
                 resource_totals,
                 source_world.GetBuildings().GetBuildingsInState(vic3_state_id),

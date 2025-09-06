@@ -55,7 +55,10 @@ class InfrastructureMapper
    int Map(float vic3_infrastructure);
 
    float GetTargetInfrastructure() { return target_hoi_infra_per_state_; }
-   float GetConvertedInfrastructure() { return static_cast<float>(converted_hoi_infra_) / converted_hoi_states_; }
+   float GetConvertedInfrastructure()
+   {
+      return static_cast<float>(converted_hoi_infra_) / static_cast<float>(converted_hoi_states_);
+   }
    float GetConversionRatio() { return hoi_infra_per_vic_infra_; };
    float GetFudgeFactor() { return fudge_factor_; }
 
