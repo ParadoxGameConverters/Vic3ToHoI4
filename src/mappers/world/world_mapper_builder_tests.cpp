@@ -36,7 +36,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)
    const auto world_mapper =
        WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem("test_files/hoi4_world", {}), world).Build();
 
-   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value(), "Z00");
+   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value_or(""), "Z00");
    EXPECT_EQ(world_mapper.province_mapper.GetVic3ToHoi4ProvinceMapping("x002000").at(0), 2);
    EXPECT_THAT(world_mapper.tech_mapper.at(0).GetTechs(),
        testing::UnorderedElementsAre("dest_tech_one", "dest_tech_two"));
@@ -70,7 +70,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultCountryWorks)
                                                }}));
    const auto world_mapper = WorldMapperBuilder::CreateNullMapper().DefaultCountryMapper(world).Build();
 
-   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value(), "Z00");
+   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value_or(""), "Z00");
 }
 
 TEST(MappersWorldWorldMapperBuilderTests, AddCountryWorks)
@@ -78,8 +78,8 @@ TEST(MappersWorldWorldMapperBuilderTests, AddCountryWorks)
    const auto world_mapper =
        WorldMapperBuilder::CreateNullMapper().AddCountries({{1, "ONE"}}).AddCountries({{2, "TWO"}}).Build();
 
-   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value(), "ONE");
-   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(2).value(), "TWO");
+   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value_or(""), "ONE");
+   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(2).value_or(""), "TWO");
 }
 
 TEST(MappersWorldWorldMapperBuilderTests, AddProvincesWorks)

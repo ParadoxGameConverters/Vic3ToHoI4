@@ -15,7 +15,7 @@ std::ostream& out::operator<<(std::ostream& out, const hoi4::Building& building)
        building.GetPosition().y_coordinate,
        building.GetPosition().z_coordinate,
        building.GetPosition().rotation,
-       building.GetConnectingSeaProvince().has_value() ? building.GetConnectingSeaProvince().value() : 0);
+       building.GetConnectingSeaProvince().value_or(0));
 
    return out;
 }

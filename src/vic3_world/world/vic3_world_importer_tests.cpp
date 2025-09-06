@@ -160,7 +160,10 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
    EXPECT_THAT(world.GetCountryRankings().GetMajorPowers(), testing::UnorderedElementsAre(9));
    EXPECT_EQ(world.GetLocalizations().size(), 1);
    ASSERT_TRUE(world.GetLocalizations().HasLocalization("test_localisation"));
-   EXPECT_EQ(world.GetLocalizations().GetLocalizationBlock("test_localisation")->GetLocalization("english"),
+   EXPECT_EQ(world.GetLocalizations()
+                 .GetLocalizationBlock("test_localisation")
+                 .value_or(commonItems::LocalizationBlock("", ""))
+                 .GetLocalization("english"),
        "testing testing 1 2 3");
    EXPECT_THAT(world.GetCharacters(),
        testing::UnorderedElementsAre(testing::Pair(1,

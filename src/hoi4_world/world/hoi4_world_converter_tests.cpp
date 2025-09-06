@@ -547,7 +547,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
        testing::UnorderedElementsAre(testing::Pair("test_modifier", "always"),
            testing::Pair("test_modifier_two", "always")));
    ASSERT_TRUE(region_10.GetNavalTerrain().has_value());
-   EXPECT_EQ(region_10.GetNavalTerrain().value(), "test_naval_terrain");
+   EXPECT_EQ(region_10.GetNavalTerrain().value_or(""), "test_naval_terrain");
    EXPECT_EQ(region_10.GetWeather(),
        "= {\n"
        "\t\tperiod={\n"

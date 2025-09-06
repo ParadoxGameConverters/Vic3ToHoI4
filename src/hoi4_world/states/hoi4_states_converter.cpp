@@ -822,7 +822,7 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    {
       if (hoi4_state.GetOwner())
       {
-         const auto& tag = hoi4_state.GetOwner().value();
+         const std::string& tag = hoi4_state.GetOwner().value_or("");
          if (!accumulator.contains(tag))
          {
             accumulator[tag] = {.military = 0, .civilian = 0, .docks = 0};
