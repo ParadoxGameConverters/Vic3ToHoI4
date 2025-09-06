@@ -280,12 +280,12 @@ void ExtractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std
 {
    for (const auto& variant: variants)
    {
-      const auto eq_name = variant.GetName();
+      const auto& eq_name = variant.GetName();
       if (!eq_name.empty())
       {
          active.insert(eq_name);
       }
-      const auto eq_type = variant.GetType();
+      const auto& eq_type = variant.GetType();
       if (!eq_type.empty())
       {
          active.insert(eq_type);
