@@ -18,10 +18,22 @@ struct CountryScope
 };
 
 
+inline bool operator==(const CountryScope& lhs, const CountryScope& rhs)
+{
+   return lhs.country == rhs.country;
+}
+
+
 struct StateScope
 {
    const State& state;
 };
+
+
+inline bool operator==(const StateScope& lhs, const StateScope& rhs)
+{
+   return lhs.state == rhs.state;
+}
 
 
 using Scope = std::variant<CountryScope, StateScope>;

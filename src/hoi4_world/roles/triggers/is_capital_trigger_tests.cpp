@@ -43,6 +43,18 @@ TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, IsValidReturnsInverseOfValueIn
 }
 
 
+TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, FindAllValidReturnsEmptyVector)
+{
+   const State state(42, {.is_capital = false});
+   const Scope scope = StateScope{.state = state};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
+   const hoi4::World world({});
+
+   const IsCapitalTrigger is_capital_trigger(false);
+   EXPECT_TRUE(is_capital_trigger.FindAllValid(context, world).empty());
+}
+
+
 TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, EquivalentTriggersAreEqual)
 {
    const IsCapitalTrigger true_trigger(true);

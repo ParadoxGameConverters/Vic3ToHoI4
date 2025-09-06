@@ -42,6 +42,55 @@ bool AnyOwnedStateTrigger::IsValid(const Context& context, const World& world) c
 }
 
 
+std::vector<Scope> AnyOwnedStateTrigger::FindAllValid(const Context& context, const World& world) const
+{
+   std::vector<Scope> valid_scopes;
+
+   const CountryScope* maybe_country = std::get_if<CountryScope>(&context.this_scope);
+   if (!maybe_country)
+   {
+      return {};
+   }
+   const Country& country = maybe_country->country;
+
+   const auto state_is_valid = [context, country, &world, this](const State& state) {
+      return std::ranges::all_of(children_.begin(),
+          children_.end(),
+          [context, country, &world, &state](const std::unique_ptr<Trigger>& a) {
+             const Context new_context{
+                 .root = context.root,
+                 .this_scope = StateScope{.state = state},
+                 .prev = context.this_scope,
+                 .from = context.from,
+             };
+             return a->IsValid(new_context, world);
+          });
+   };
+
+
+   for (const int owned_state: country.GetOwnedStates())
+   {
+      const State& state = world.GetStates().states.at(owned_state - 1);
+      if (std::ranges::all_of(children_.begin(),
+              children_.end(),
+              [context, country, &world, &state](const std::unique_ptr<Trigger>& a) {
+                 const Context new_context{
+                     .root = context.root,
+                     .this_scope = StateScope{.state = state},
+                     .prev = context.this_scope,
+                     .from = context.from,
+                 };
+                 return a->IsValid(new_context, world);
+              }))
+      {
+         valid_scopes.emplace_back(StateScope{.state = state});
+      }
+   }
+
+   return valid_scopes;
+}
+
+
 bool AnyOwnedStateTrigger::operator==(const AnyOwnedStateTrigger& rhs) const
 {
    if (children_.size() != rhs.children_.size())

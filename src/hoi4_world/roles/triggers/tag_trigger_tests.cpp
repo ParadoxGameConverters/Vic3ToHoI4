@@ -52,6 +52,19 @@ TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsFalseIfScopeNotCountry
 }
 
 
+TEST(Hoi4worldRolesTriggersTagTriggerTests, FindAllValidReturnsEmptyVector)
+{
+   const TagTrigger tag_trigger("TAG");
+
+   const State state(1, {});
+   const Scope scope = StateScope{.state = state};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
+   const hoi4::World world({});
+
+   EXPECT_TRUE(tag_trigger.FindAllValid(context, world).empty());
+}
+
+
 TEST(Hoi4worldRolesTriggersTagTriggerTests, EquivalentTriggersAreEqual)
 {
    const TagTrigger tag_trigger("TAG");

@@ -35,6 +35,39 @@ bool AnyOtherCountryTrigger::IsValid(const Context& context, const World& world)
 }
 
 
+std::vector<Scope> AnyOtherCountryTrigger::FindAllValid(const Context& context, const World& world) const
+{
+   std::vector<Scope> valid_scopes;
+
+   for (const auto& country: world.GetCountries())
+   {
+      // Check if all child triggers are valid for the other country
+      if (std::ranges::all_of(children_.begin(),
+              children_.end(),
+              [context, &world, &country](const std::unique_ptr<Trigger>& a) {
+                 // Skip the country itself
+                 const CountryScope* maybe_country = std::get_if<CountryScope>(&context.from);
+                 if (maybe_country && maybe_country->country.GetTag() == country.second.GetTag())
+                 {
+                    return false;
+                 }
+                 const Context new_context{
+                     .root = context.root,
+                     .this_scope = CountryScope{.country = country.second},
+                     .prev = context.this_scope,
+                     .from = context.from,
+                 };
+                 return a->IsValid(new_context, world);
+              }))
+      {
+         valid_scopes.emplace_back(CountryScope{.country = country.second});
+      }
+   }
+
+   return valid_scopes;
+}
+
+
 bool AnyOtherCountryTrigger::operator==(const AnyOtherCountryTrigger& rhs) const
 {
    if (children_.size() != rhs.children_.size())

@@ -35,6 +35,11 @@ class IsOnContinentTrigger: public Trigger
       return std::make_unique<IsOnContinentTrigger>(value_);
    }
    [[nodiscard]] bool IsValid(const Context& context, const World& world) const override;
+   [[nodiscard]] std::vector<Scope> FindAllValid([[maybe_unused]] const Context& context,
+       [[maybe_unused]] const World& world) const override
+   {
+       return {};
+   }
 
    // This allows the Google test framework to print human-readable RepeatFocuses if a test fails.
    friend void PrintTo(const IsOnContinentTrigger& trigger, std::ostream* os);

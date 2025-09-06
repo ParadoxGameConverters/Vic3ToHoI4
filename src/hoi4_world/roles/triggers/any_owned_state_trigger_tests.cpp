@@ -7,6 +7,7 @@
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
+#include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/world/hoi4_world.h"
 
@@ -21,7 +22,7 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, IsValidReturnsTrueIfAnyOwn
 
    std::vector<std::unique_ptr<Trigger>> children;
    children.push_back(std::move(one_trigger));
-   const AnyOwnedStateTrigger any_other_country_trigger(std::move(children));
+   const AnyOwnedStateTrigger any_owned_state_trigger(std::move(children));
 
    const Country country(CountryOptions{.tag = "ONE", .owned_states = {1, 2}});
    const Scope this_scope = CountryScope{.country = country};
@@ -37,7 +38,7 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, IsValidReturnsTrueIfAnyOwn
                             }},
    });
    const Context context{.root = this_scope, .this_scope = this_scope, .prev = this_scope, .from = this_scope};
-   EXPECT_TRUE(any_other_country_trigger.IsValid(context, world));
+   EXPECT_TRUE(any_owned_state_trigger.IsValid(context, world));
 }
 
 
@@ -49,7 +50,7 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, IsValidReturnsFalseIfNoOwn
    std::vector<std::unique_ptr<Trigger>> children;
    children.push_back(std::move(one_trigger));
    children.push_back(std::move(two_trigger));
-   const AnyOwnedStateTrigger any_other_country_trigger(std::move(children));
+   const AnyOwnedStateTrigger any_owned_state_trigger(std::move(children));
 
    const Country country({.tag = "ONE", .owned_states = {1}});
    const Scope this_scope = CountryScope{.country = country};
@@ -61,7 +62,7 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, IsValidReturnsFalseIfNoOwn
        .states = States{.states = {State(1, StateOptions{.owner = "ONE", .is_capital = false})}},
    });
    const Context context{.root = this_scope, .this_scope = this_scope, .prev = this_scope, .from = this_scope};
-   EXPECT_FALSE(any_other_country_trigger.IsValid(context, world));
+   EXPECT_FALSE(any_owned_state_trigger.IsValid(context, world));
 }
 
 
@@ -71,7 +72,7 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, IsValidReturnsFalseIfNoOwn
 
    std::vector<std::unique_ptr<Trigger>> children;
    children.push_back(std::move(one_trigger));
-   const AnyOwnedStateTrigger any_other_country_trigger(std::move(children));
+   const AnyOwnedStateTrigger any_owned_state_trigger(std::move(children));
 
    const Country country({.tag = "ONE"});
    const Scope this_scope = CountryScope{.country = country};
@@ -83,7 +84,45 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, IsValidReturnsFalseIfNoOwn
        .states = States{.states = {State(1, StateOptions{.owner = "TWO"})}},
    });
    const Context context{.root = this_scope, .this_scope = this_scope, .prev = this_scope, .from = this_scope};
-   EXPECT_FALSE(any_other_country_trigger.IsValid(context, world));
+   EXPECT_FALSE(any_owned_state_trigger.IsValid(context, world));
+}
+
+
+TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, FindAllValidReturnsStatesWithTrueCondition)
+{
+   std::unique_ptr<Trigger> capital_trigger = std::make_unique<IsCapitalTrigger>(true);
+
+   std::vector<std::unique_ptr<Trigger>> not_children;
+   not_children.push_back(std::move(capital_trigger));
+   std::unique_ptr<Trigger> not_trigger = std::make_unique<NotTrigger>(std::move(not_children));
+
+   std::vector<std::unique_ptr<Trigger>> any_children;
+   any_children.push_back(std::move(not_trigger));
+   const AnyOwnedStateTrigger any_owned_state_trigger(std::move(any_children));
+
+   const Country country(CountryOptions{.tag = "ONE", .owned_states = {1, 2}});
+   State state_one(1, StateOptions{.owner = "ONE", .is_capital = true});
+   State state_two(2, StateOptions{.owner = "ONE", .is_capital = false});
+   State state_three(3, StateOptions{.owner = "ONE", .is_capital = false});
+   const hoi4::World world({
+       .countries =
+           {
+               {"ONE", country},
+           },
+       .states = States{.states =
+                            {
+                                state_one,
+                                state_two,
+                                state_three,
+                            }},
+   });
+
+   const Scope this_scope = CountryScope{.country = country};
+   const Context context{.root = this_scope, .this_scope = this_scope, .prev = this_scope, .from = this_scope};
+   const Scope expected_one = StateScope{.state = state_two};
+   const Scope expected_two = StateScope{.state = state_three};
+
+   EXPECT_THAT(any_owned_state_trigger.FindAllValid(context, world), testing::ElementsAre(expected_one, expected_two));
 }
 
 
