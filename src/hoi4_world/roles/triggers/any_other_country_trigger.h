@@ -27,7 +27,7 @@ class AnyOtherCountryTrigger: public Trigger
 
    [[nodiscard]] std::unique_ptr<Trigger> Copy() const override;
    [[nodiscard]] bool IsValid(const Context& context, const World& world) const override;
-   [[nodiscard]] std::vector<Scope> FindAllValid(const Context& context, const World& world) const;
+   [[nodiscard]] std::vector<Scope> FindAllValid(const Context& context, const World& world) const override;
 
    // This allows the Google test framework to print human-readable RepeatFocuses if a test fails.
    friend void PrintTo(const AnyOtherCountryTrigger& trigger, std::ostream* os);
