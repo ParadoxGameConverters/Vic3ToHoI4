@@ -70,7 +70,7 @@ TEST(Hoi4worldRolesTriggersAnyOtherCountryTriggerTests, IsValidReturnsFalseIfOnl
 }
 
 
-TEST(Hoi4worldRolesTriggersAnyOtherCountryTriggerTests, FindAllValidReturnsStatesWithTrueCondition)
+TEST(Hoi4worldRolesTriggersAnyOtherCountryTriggerTests, FindAllValidReturnsCountriesWithTrueCondition)
 {
    std::unique_ptr<Trigger> one_trigger = std::make_unique<TagTrigger>("ONE");
    std::unique_ptr<Trigger> two_trigger = std::make_unique<TagTrigger>("TWO");

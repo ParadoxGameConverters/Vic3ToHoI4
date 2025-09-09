@@ -90,14 +90,10 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, IsValidReturnsFalseIfNoOwn
 
 TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, FindAllValidReturnsStatesWithTrueCondition)
 {
-   std::unique_ptr<Trigger> capital_trigger = std::make_unique<IsCapitalTrigger>(true);
-
-   std::vector<std::unique_ptr<Trigger>> not_children;
-   not_children.push_back(std::move(capital_trigger));
-   std::unique_ptr<Trigger> not_trigger = std::make_unique<NotTrigger>(std::move(not_children));
+   std::unique_ptr<Trigger> capital_trigger = std::make_unique<IsCapitalTrigger>(false);
 
    std::vector<std::unique_ptr<Trigger>> any_children;
-   any_children.push_back(std::move(not_trigger));
+   any_children.push_back(std::move(capital_trigger));
    const AnyOwnedStateTrigger any_owned_state_trigger(std::move(any_children));
 
    const Country country(CountryOptions{.tag = "ONE", .owned_states = {1, 2}});
@@ -119,10 +115,10 @@ TEST(Hoi4worldRolesTriggersAnyOwnedStateTriggerTests, FindAllValidReturnsStatesW
 
    const Scope this_scope = CountryScope{.country = country};
    const Context context{.root = this_scope, .this_scope = this_scope, .prev = this_scope, .from = this_scope};
-   const Scope expected_one = StateScope{.state = state_two};
-   const Scope expected_two = StateScope{.state = state_three};
 
-   EXPECT_THAT(any_owned_state_trigger.FindAllValid(context, world), testing::ElementsAre(expected_one, expected_two));
+   // state two is the only owned state that is not a capital
+   const Scope expected = StateScope{.state = state_two};
+   EXPECT_THAT(any_owned_state_trigger.FindAllValid(context, world), testing::ElementsAre(expected));
 }
 
 
