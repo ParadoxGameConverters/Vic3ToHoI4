@@ -27,8 +27,8 @@ class EquipmentVariant
        std::set<std::string> required_techs,
        std::set<std::string> blocking_techs,
        std::vector<std::pair<std::string, std::string>> text_items):
-       name_(name),
-       type_(type),
+       name_(std::move(name)),
+       type_(std::move(type)),
        required_techs_(std::move(required_techs)),
        blocking_techs_(std::move(blocking_techs)),
        text_items_(std::move(text_items))
