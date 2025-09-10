@@ -350,12 +350,13 @@ void ApplySubjectRelationships(const std::map<int, vic3::Pact>& pacts, std::map<
    {
       if (pact.IsSubjectRelationship())
       {
-         auto overlord = countries.find(pact.GetFirstId());
-         auto subject = countries.find(pact.GetSecondId());
+         vic3::PactPartners partners = pact.GetPartners();
+         auto overlord = countries.find(partners.first);
+         auto subject = countries.find(partners.second);
          if (overlord != countries.end() && subject != countries.end())
          {
-            overlord->second.AddPuppet(pact.GetSecondId());
-            subject->second.AddOverlord(pact.GetFirstId());
+            overlord->second.AddPuppet(partners.second);
+            subject->second.AddOverlord(partners.first);
             if (subject->second.GetColor() == commonItems::Color{})
             {
                subject->second.SetColor(overlord->second.GetColor());
