@@ -25,6 +25,7 @@ class Trigger
 
    [[nodiscard]] virtual std::unique_ptr<Trigger> Copy() const = 0;
    [[nodiscard]] virtual bool IsValid(const Context& context, const World& world) const = 0;
+   [[nodiscard]] virtual std::vector<Scope> FindAllValid(const Context& context, const World& world) const = 0;
 
    friend void PrintTo(const Trigger& trigger, std::ostream* os);
 };

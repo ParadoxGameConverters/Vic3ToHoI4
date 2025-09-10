@@ -13,42 +13,63 @@ namespace
 // Also add to a lookup map of the original repeat focus id to the resulting focus ids.
 std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
     const hoi4::World& world,
+    std::string_view tag,
     std::map<std::string, std::vector<std::string>>& role_lookup)
 {
    std::vector<hoi4::Focus> repeated_focuses;
+
+   const auto country_itr = world.GetCountries().find(std::string(tag));
+   if (country_itr == world.GetCountries().end())
+   {
+      return {};
+   }
+   hoi4::CountryScope country_scope(country_itr->second);
 
    for (const hoi4::RepeatFocus& repeat_focus: role.GetRepeatFocuses())
    {
       // Track how many countries are applicable so that the focuses can be balanced in position.
       int num_targets = 0;
 
+      // Get all applicable scopes
+      std::vector<hoi4::Scope> valid_scopes = repeat_focus.GetTrigger().FindAllValid(
+          {
+              .root = country_scope,
+              .this_scope = country_scope,
+              .prev = country_scope,
+              .from = country_scope,
+          },
+          world);
+
       // Generate all the focuses
       std::map<std::string, std::vector<hoi4::Focus>> target_focuses;
-      for (const auto& [target_tag, country]: world.GetCountries())
+      for (const auto& scope: valid_scopes)
       {
-         hoi4::CountryScope country_scope(country);
-         hoi4::Context context{
-             .root = country_scope,
-             .this_scope = country_scope,
-             .prev = country_scope,
-             .from = country_scope,
-         };
-         if (!repeat_focus.GetTrigger().IsValid(context, world))
+         // get the relevant id
+         std::string new_id;
+         if (const hoi4::CountryScope* maybe_country = std::get_if<hoi4::CountryScope>(&scope); maybe_country)
+         {
+            new_id = maybe_country->country.GetTag();
+         }
+         else if (const hoi4::StateScope* maybe_state = std::get_if<hoi4::StateScope>(&scope); maybe_state)
+         {
+            new_id = std::to_string(maybe_state->state.GetId());
+         }
+         else
          {
             continue;
          }
-
          ++num_targets;
 
+         // update focuses for this scope
          for (hoi4::Focus focus_copy: repeat_focus.GetFocuses())
          {
             std::string original_id = focus_copy.id;
-            focus_copy.ApplyReplacement("$TARGET_TAG$", target_tag);
+            focus_copy.ApplyReplacement("$TARGET_ID$", new_id);
 
             role_lookup[original_id].push_back(focus_copy.id);
-            if (auto [itr, success] = target_focuses.emplace(original_id, std::vector{focus_copy}); !success)
+            if (auto [target_itr, success] = target_focuses.emplace(original_id, std::vector{focus_copy}); !success)
             {
-               itr->second.push_back(focus_copy);
+               target_itr->second.push_back(focus_copy);
             }
          }
       }
@@ -163,7 +184,7 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
       tree.focuses.insert(tree.focuses.end(), focuses.begin(), focuses.end());
 
       // add all repeated focuses to the tree
-      const std::vector<Focus> repeated_focuses = CreateRepeatedFocuses(role, world, role_lookup);
+      const std::vector<Focus> repeated_focuses = CreateRepeatedFocuses(role, world, tag, role_lookup);
       tree.focuses.insert(tree.focuses.end(), repeated_focuses.begin(), repeated_focuses.end());
    }
 

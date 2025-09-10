@@ -28,6 +28,18 @@ TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, IsValidReturnsValueInConstructor)
 }
 
 
+TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, FindAllValidReturnsEmptyVector)
+{
+   const Country country({.tag = "TAG"});
+   const Scope scope = CountryScope{.country = country};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
+   const hoi4::World world({});
+
+   const AlwaysTrigger always_trigger(true);
+   EXPECT_TRUE(always_trigger.FindAllValid(context, world).empty());
+}
+
+
 TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, EquivalentTriggersAreEqual)
 {
    const AlwaysTrigger true_trigger(true);

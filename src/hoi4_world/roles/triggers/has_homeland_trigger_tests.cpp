@@ -37,6 +37,18 @@ TEST(Hoi4worldRolesTriggersHasHomelandTriggerTests, IsValidReturnsInverseOfValue
 }
 
 
+TEST(Hoi4worldRolesTriggersHasHomelandTriggerTests, FindAllValidReturnsEmptyVector)
+{
+   const State state(42, {});
+   const Scope scope = StateScope{.state = state};
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
+   const hoi4::World world({});
+
+   const HasHomelandTrigger homeland_trigger("good_homeland");
+   EXPECT_TRUE(homeland_trigger.FindAllValid(context, world).empty());
+}
+
+
 TEST(Hoi4worldRolesTriggersHasHomelandTriggerTests, EquivalentTriggersAreEqual)
 {
    const HasHomelandTrigger good_trigger("good_homeland");

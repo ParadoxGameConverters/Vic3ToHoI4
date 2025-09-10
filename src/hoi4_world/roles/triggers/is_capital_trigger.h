@@ -29,6 +29,11 @@ class IsCapitalTrigger: public Trigger
 
    [[nodiscard]] std::unique_ptr<Trigger> Copy() const override { return std::make_unique<IsCapitalTrigger>(value_); }
    [[nodiscard]] bool IsValid(const Context& context, const World& world) const override;
+   [[nodiscard]] std::vector<Scope> FindAllValid([[maybe_unused]] const Context& context,
+       [[maybe_unused]] const World& world) const override
+   {
+      return {};
+   }
 
    // This allows the Google test framework to print human-readable RepeatFocuses if a test fails.
    friend void PrintTo(const IsCapitalTrigger& trigger, std::ostream* os);

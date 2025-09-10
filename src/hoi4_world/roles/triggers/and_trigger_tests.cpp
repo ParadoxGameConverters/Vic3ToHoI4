@@ -50,6 +50,24 @@ TEST(Hoi4worldRolesTriggersAndTriggerTests, IsValidReturnsTrueIfAnyChildrenFalse
 }
 
 
+TEST(Hoi4worldRolesTriggersAndTriggerTests, FindAllValidReturnsEmptyVector)
+{
+   std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);
+
+   std::vector<std::unique_ptr<Trigger>> children;
+   children.push_back(std::move(trigger_one));
+   children.push_back(std::move(trigger_two));
+   const AndTrigger and_trigger(std::move(children));
+
+   const Country country({});
+   const Scope scope = CountryScope{.country = country};
+   const hoi4::World world({});
+   const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
+   EXPECT_TRUE(and_trigger.FindAllValid(context, world).empty());
+}
+
+
 TEST(Hoi4worldRolesTriggersAndTriggerTests, EquivalentTriggersAreEqual)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);

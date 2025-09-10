@@ -3,6 +3,7 @@
 
 #include <sstream>
 
+#include "or_trigger.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
@@ -66,6 +67,38 @@ TEST(Hoi4worldRolesTriggersAnyOtherCountryTriggerTests, IsValidReturnsFalseIfOnl
    const hoi4::World world({.countries = {{"BAD", Country(CountryOptions{})}, {"ONE", Country(CountryOptions{})}}});
    const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    EXPECT_FALSE(any_other_country_trigger.IsValid(context, world));
+}
+
+
+TEST(Hoi4worldRolesTriggersAnyOtherCountryTriggerTests, FindAllValidReturnsCountriesWithTrueCondition)
+{
+   std::unique_ptr<Trigger> one_trigger = std::make_unique<TagTrigger>("ONE");
+   std::unique_ptr<Trigger> two_trigger = std::make_unique<TagTrigger>("TWO");
+
+   std::vector<std::unique_ptr<Trigger>> or_children;
+   or_children.push_back(std::move(one_trigger));
+   or_children.push_back(std::move(two_trigger));
+   std::unique_ptr<Trigger> or_trigger = std::make_unique<OrTrigger>(std::move(or_children));
+
+   std::vector<std::unique_ptr<Trigger>> any_other_children;
+   any_other_children.push_back(std::move(or_trigger));
+   const AnyOtherCountryTrigger any_other_country_trigger(std::move(any_other_children));
+
+   const Scope from_scope = CountryScope{.country = Country({.tag = "FRO"})};
+   const hoi4::World world({
+       .countries =
+           {
+               {"ONE", Country(CountryOptions{.tag = "ONE"})},
+               {"FRO", Country(CountryOptions{.tag = "FRO"})},
+               {"TWO", Country(CountryOptions{.tag = "TWO"})},
+           },
+   });
+   const Context context{.root = from_scope, .this_scope = from_scope, .prev = from_scope, .from = from_scope};
+   const Scope expected_one = CountryScope{.country = world.GetCountries().at("ONE")};
+   const Scope expected_two = CountryScope{.country = world.GetCountries().at("TWO")};
+
+   EXPECT_THAT(any_other_country_trigger.FindAllValid(context, world),
+       testing::ElementsAre(expected_one, expected_two));
 }
 
 
