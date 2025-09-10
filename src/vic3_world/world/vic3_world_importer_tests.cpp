@@ -226,9 +226,27 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
                    .origin_country_id = 1,
                }))));
    EXPECT_THAT(world.GetInterestGroups(),
-       testing::UnorderedElementsAre(testing::Pair(1, InterestGroup("ig_devout", 1, 1, 0.34881F, true, {})),
-           testing::Pair(2, InterestGroup("ig_landowners", 1, 2, 0.15406F, false, {})),
-           testing::Pair(3, InterestGroup("ig_devout", 3, 5, 0.34652F, true, {}))));
+       testing::UnorderedElementsAre(testing::Pair(1,
+                                         InterestGroup("ig_devout",
+                                             InterestGroupCountryId{1},
+                                             InterestGroupLeader{1},
+                                             InterestGroupClout{0.34881F},
+                                             InterestGroupInGovernment{true},
+                                             {})),
+           testing::Pair(2,
+               InterestGroup("ig_landowners",
+                   InterestGroupCountryId{1},
+                   InterestGroupLeader{2},
+                   InterestGroupClout{0.15406F},
+                   InterestGroupInGovernment{false},
+                   {})),
+           testing::Pair(3,
+               InterestGroup("ig_devout",
+                   InterestGroupCountryId{3},
+                   InterestGroupLeader{5},
+                   InterestGroupClout{0.34652F},
+                   InterestGroupInGovernment{true},
+                   {}))));
    EXPECT_EQ(world.GetPlaythroughId(), 2311);
 }
 

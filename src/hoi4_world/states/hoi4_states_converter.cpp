@@ -18,6 +18,7 @@
 #include "src/maps/map_data.h"
 #include "src/out_hoi4/world/out_world.h"
 #include "src/support/converter_utils.h"
+#include "src/support/named_type.h"
 
 
 
@@ -581,13 +582,15 @@ std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const vic3
 }
 
 
-int DetermineAirbaseLevel(int total_factories, int total_infrastructure)
+using TotalFactoriesType = NamedType<int, struct TotalFactoriesParameter>;
+using TotalInfrastructureType = NamedType<int, struct TotalInfrastructureParameter>;
+int DetermineAirbaseLevel(TotalFactoriesType total_factories, TotalInfrastructureType total_infrastructure)
 {
    constexpr int kNumFactoriesPerAirbase = 4;
    constexpr int kAirbasesForInfrastructureLevel = 3;
 
-   int airbase_level = total_factories / kNumFactoriesPerAirbase;
-   if (total_infrastructure >= kAirbasesForInfrastructureLevel)
+   int airbase_level = total_factories.Get() / kNumFactoriesPerAirbase;
+   if (total_infrastructure.Get() >= kAirbasesForInfrastructureLevel)
    {
       ++airbase_level;
    }
@@ -1081,7 +1084,8 @@ hoi4::States CreateStates(const vic3::World& source_world,
          int infrastructure = infrastructure_mapper.Map(vic3_state_itr->second.GetInfrastructure());
 
          const int air_base_level =
-             DetermineAirbaseLevel(civilian_factories + military_factories + dockyards, infrastructure);
+             DetermineAirbaseLevel(TotalFactoriesType{civilian_factories + military_factories + dockyards},
+                 TotalInfrastructureType{infrastructure});
 
 
          hoi4::Resources resources = {};

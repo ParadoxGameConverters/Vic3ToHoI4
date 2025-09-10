@@ -93,36 +93,100 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
    const Technologies expected_techs_two{std::map<std::optional<std::string>, std::set<std::string>>{
        {R"(not = { has_dlc = "Test DLC" })", std::set<std::string>{"dest_tech_three"}}}};
    const std::vector<EquipmentVariant> expected_legacy_ship_variants_one = {
-       EquipmentVariant("Test Legacy Ship Variant Three", "", {}, {"dest_technology_two"}, {}),
-       EquipmentVariant("Test Legacy Ship Variant Four", "", {}, {"dest_technology_four"}, {}),
+       EquipmentVariant(EquipmentVariantName{"Test Legacy Ship Variant Three"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_two"},
+           {}),
+       EquipmentVariant(EquipmentVariantName{"Test Legacy Ship Variant Four"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_four"},
+           {}),
    };
    const std::vector<EquipmentVariant> expected_legacy_ship_variants_two = {
-       EquipmentVariant("Test Legacy Ship Variant Three", "", {}, {"dest_technology_two"}, {}),
-       EquipmentVariant("Test Legacy Ship Variant Four", "", {}, {"dest_technology_four"}, {}),
+       EquipmentVariant(EquipmentVariantName{"Test Legacy Ship Variant Three"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_two"},
+           {}),
+       EquipmentVariant(EquipmentVariantName{"Test Legacy Ship Variant Four"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_four"},
+           {}),
    };
    const std::vector<EquipmentVariant> expected_ship_variants_one = {
-       EquipmentVariant("Test Ship Variant Three", "", {}, {"dest_technology_two"}, {}),
-       EquipmentVariant("Test Ship Variant Four", "", {}, {"dest_technology_four"}, {}),
+       EquipmentVariant(EquipmentVariantName{"Test Ship Variant Three"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_two"},
+           {}),
+       EquipmentVariant(EquipmentVariantName{"Test Ship Variant Four"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_four"},
+           {}),
    };
    const std::vector<EquipmentVariant> expected_ship_variants_two = {
-       EquipmentVariant("Test Ship Variant Three", "", {}, {"dest_technology_two"}, {}),
-       EquipmentVariant("Test Ship Variant Four", "", {}, {"dest_technology_four"}, {}),
+       EquipmentVariant(EquipmentVariantName{"Test Ship Variant Three"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_two"},
+           {}),
+       EquipmentVariant(EquipmentVariantName{"Test Ship Variant Four"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_four"},
+           {}),
    };
    const std::vector<EquipmentVariant> expected_plane_variants_one = {
-       EquipmentVariant("Test Plane Design Three", "", {}, {"dest_technology_two"}, {}),
-       EquipmentVariant("Test Plane Design Four", "", {}, {"dest_technology_four"}, {}),
+       EquipmentVariant(EquipmentVariantName{"Test Plane Design Three"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_two"},
+           {}),
+       EquipmentVariant(EquipmentVariantName{"Test Plane Design Four"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_four"},
+           {}),
    };
    const std::vector<EquipmentVariant> expected_plane_variants_two = {
-       EquipmentVariant("Test Plane Design Three", "", {}, {"dest_technology_two"}, {}),
-       EquipmentVariant("Test Plane Design Four", "", {}, {"dest_technology_four"}, {}),
+       EquipmentVariant(EquipmentVariantName{"Test Plane Design Three"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_two"},
+           {}),
+       EquipmentVariant(EquipmentVariantName{"Test Plane Design Four"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_four"},
+           {}),
    };
    const std::vector<EquipmentVariant> expected_tank_variants_one = {
-       EquipmentVariant("Test Tank Design Three", "", {}, {"dest_technology_two"}, {}),
-       EquipmentVariant("Test Tank Design Four", "", {}, {"dest_technology_four"}, {}),
+       EquipmentVariant(EquipmentVariantName{"Test Tank Design Three"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_two"},
+           {}),
+       EquipmentVariant(EquipmentVariantName{"Test Tank Design Four"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_four"},
+           {}),
    };
    const std::vector<EquipmentVariant> expected_tank_variants_two = {
-       EquipmentVariant("Test Tank Design Three", "", {}, {"dest_technology_two"}, {}),
-       EquipmentVariant("Test Tank Design Four", "", {}, {"dest_technology_four"}, {}),
+       EquipmentVariant(EquipmentVariantName{"Test Tank Design Three"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_two"},
+           {}),
+       EquipmentVariant(EquipmentVariantName{"Test Tank Design Four"},
+           EquipmentVariantType{""},
+           {},
+           {"dest_technology_four"},
+           {}),
    };
 
    EXPECT_THAT(world.GetCountries(),
@@ -298,7 +362,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
                   .Build();
            }));
 
-   // HoI4 states are in an arbitrary order compared to Vic3 states, so store by province number for the actual checks
+   // HoI4 states are in an arbitrary order compared to Vic3 states, so store by province number for the actual
+   // checks
    std::map<int, State> states;
    for (const auto& state: world.GetStates().states)
    {
@@ -672,7 +737,12 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
    });
 
    const std::map<int, std::vector<vic3::Building>> buildings = {
-       {1, {vic3::Building(vic3::kBuildingTypeNavalBase, 1, 0.0F, 5.0F, {})}},
+       {1,
+           {vic3::Building(vic3::kBuildingTypeNavalBase,
+               1,
+               vic3::GoodsSalesValue{0.0F},
+               vic3::StaffingLevel{5.0F},
+               {})}},
    };
 
    const vic3::World source_world({.states =

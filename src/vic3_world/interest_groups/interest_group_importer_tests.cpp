@@ -16,7 +16,13 @@ TEST(Vic3WorldInterestGroupsInterestGroupImporter, DefaultsDefaultToDefault)
    std::stringstream input;
    const auto interest_group = interest_group_importer.ImportInterestGroup(input);
 
-   EXPECT_EQ(interest_group, InterestGroup("", 0, 0, 0.0F, false, {}));
+   EXPECT_EQ(interest_group,
+       InterestGroup("",
+           InterestGroupCountryId{0},
+           InterestGroupLeader{0},
+           InterestGroupClout{0.0F},
+           InterestGroupInGovernment{false},
+           {}));
 }
 
 
@@ -38,10 +44,10 @@ TEST(Vic3WorldInterestGroupsInterestGroupImporter, InterestGroupCanBeImported)
 
    EXPECT_EQ(interest_group,
        InterestGroup("ig_example",
-           -1275068414,
-           1,
-           0.25447F,
-           true,
+           InterestGroupCountryId{-1275068414},
+           InterestGroupLeader{1},
+           InterestGroupClout{0.25447F},
+           InterestGroupInGovernment{true},
            {"ideology_liberal", "ideology_anti_clerical", "ideology_republican", "ideology_anti_slavery"}));
 }
 }  // namespace vic3

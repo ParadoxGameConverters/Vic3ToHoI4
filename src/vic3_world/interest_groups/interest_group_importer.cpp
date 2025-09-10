@@ -40,5 +40,10 @@ vic3::InterestGroup vic3::InterestGroupImporter::ImportInterestGroup(std::istrea
 
    ig_parser_.parseStream(input_stream);
 
-   return {type_, country_id_, leader_, clout_, in_government_, ideologies_};
+   return {type_,
+       InterestGroupCountryId{country_id_},
+       InterestGroupLeader{leader_},
+       InterestGroupClout{clout_},
+       InterestGroupInGovernment{in_government_},
+       ideologies_};
 }

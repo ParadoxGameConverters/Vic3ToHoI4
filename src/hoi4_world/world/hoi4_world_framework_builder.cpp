@@ -197,8 +197,8 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::SetMapData(const maps::MapData& ma
 WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultCoastalProvinces()
 {
    this->coastal_provinces_ = CreateCoastalProvinces(map_data_,
-       this->province_definitions_.land_provinces,
-       this->province_definitions_.sea_provinces);
+       LandProvinces{province_definitions_.land_provinces},
+       SeaProvinces{province_definitions_.sea_provinces});
    return *this;
 }
 

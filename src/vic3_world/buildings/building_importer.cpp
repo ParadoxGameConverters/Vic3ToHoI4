@@ -39,5 +39,9 @@ vic3::Building vic3::BuildingImporter::ImportBuilding(std::istream& input_stream
 
    building_parser_.parseStream(input_stream);
 
-   return {type_, state_number_, goods_sales_value_, staffing_level_, production_methods_};
+   return {type_,
+       state_number_,
+       GoodsSalesValue{goods_sales_value_},
+       StaffingLevel{staffing_level_},
+       production_methods_};
 }
