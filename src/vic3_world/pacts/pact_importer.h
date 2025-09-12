@@ -25,8 +25,7 @@ class PactImporter
    commonItems::parser pact_parser_;
    commonItems::parser targets_parser_;
 
-   int first_id_ = 0;
-   int second_id_ = 0;
+   PactPartners partners_;
    std::string action_;
    date start_date_;
    std::optional<int> forced_duration_;

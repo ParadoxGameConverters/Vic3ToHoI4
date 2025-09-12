@@ -48,7 +48,7 @@ TEST(Hoi4WorldMapStrategicRegionImporter, ItemsCanBeImported)
        testing::UnorderedElementsAre(testing::Pair("test_modifier", "always"),
            testing::Pair("test_modifier_two", "always")));
    ASSERT_TRUE(strategic_region.GetNavalTerrain().has_value());
-   EXPECT_EQ(strategic_region.GetNavalTerrain().value(), "test_naval_terrain");
+   EXPECT_EQ(strategic_region.GetNavalTerrain().value_or(""), "test_naval_terrain");
    EXPECT_EQ(strategic_region.GetWeather(),
        "= {\n"
        "\t\tperiod={\n"

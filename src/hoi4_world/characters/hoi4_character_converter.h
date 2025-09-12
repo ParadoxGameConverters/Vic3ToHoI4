@@ -8,12 +8,14 @@
 #include "src/mappers/character/character_trait_mapper.h"
 #include "src/mappers/character/culture_queue.h"
 #include "src/mappers/country/country_mapper.h"
+#include "src/support/named_type.h"
 #include "src/vic3_world/characters/vic3_character.h"
 
 
 
 namespace hoi4
 {
+
 struct RoleIds
 {
    int leader_id = 0;
@@ -27,13 +29,19 @@ struct RoleIds
 
 bool HasMonarchs(const std::string& leader_type, const std::set<std::string>& laws);
 
+
+using ConvertCharacterLeaderType = NamedType<std::string, struct LeaderTypeParameter>;
+using ConvertCharacterCharacterTagType = NamedType<std::string, struct CharacterTagParameter>;
+using ConvertCharacterCountryIdeologyType = NamedType<std::string, struct CountryIdeologyParameter>;
+using ConvertCharacterSubIdeologyType = NamedType<std::string, struct SubIdeologyParameter>;
+
 Character ConvertCharacter(const vic3::Character& source_character,
     int leader_id,
     const RoleIds& role_ids,
-    const std::string& leader_type,
-    const std::string& tag,
-    const std::string& country_ideology,
-    const std::string& sub_ideology,
+    const ConvertCharacterLeaderType& leader_type,
+    const ConvertCharacterCharacterTagType& tag,
+    const ConvertCharacterCountryIdeologyType& country_ideology,
+    const ConvertCharacterSubIdeologyType& sub_ideology,
     const std::set<std::string>& laws,
     const mappers::CountryMapper& country_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,

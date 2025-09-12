@@ -149,7 +149,7 @@ TEST_F(MapsMapdata, ProvincePointsCanBeLookedUp)
    ASSERT_TRUE(province_points);
 
    constexpr Point kExpectedPoint{.x = 13, .y = 595};
-   EXPECT_EQ(province_points->GetCentermostPoint(), kExpectedPoint);
+   EXPECT_EQ(province_points.value_or(ProvincePoints{}).GetCentermostPoint(), kExpectedPoint);
 }
 
 }  // namespace maps

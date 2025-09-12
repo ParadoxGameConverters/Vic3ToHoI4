@@ -18,9 +18,24 @@ TEST(Hoi4worldMilitaryConvoyDistributorBuilderTests, CanBuildConvoyDistributor)
        {3, vic3::State({.id = 3})},
    };
    vic3::Buildings buildings(std::map<int, std::vector<vic3::Building>>{
-       {1, {vic3::Building(vic3::kBuildingTypePort, 1, 0, 1, std::vector<std::string>{"dummy", "pm_port_1"})}},
-       {2, {vic3::Building(vic3::kBuildingTypePort, 2, 0, 1, std::vector<std::string>{"pm_port_2"})}},
-       {3, {vic3::Building(vic3::kBuildingTypePort, 3, 0, 1, std::vector<std::string>{"pm_port_3"})}},
+       {1,
+           {vic3::Building(vic3::kBuildingTypePort,
+               1,
+               vic3::GoodsSalesValue{0},
+               vic3::StaffingLevel{1},
+               std::vector<std::string>{"dummy", "pm_port_1"})}},
+       {2,
+           {vic3::Building(vic3::kBuildingTypePort,
+               2,
+               vic3::GoodsSalesValue{0},
+               vic3::StaffingLevel{1},
+               std::vector<std::string>{"pm_port_2"})}},
+       {3,
+           {vic3::Building(vic3::kBuildingTypePort,
+               3,
+               vic3::GoodsSalesValue{0},
+               vic3::StaffingLevel{1},
+               std::vector<std::string>{"pm_port_3"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.states = states, .buildings = buildings});
    distributor.CalculateStateWeights(source_world);

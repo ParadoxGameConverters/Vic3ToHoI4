@@ -5,19 +5,19 @@
 
 
 std::map<int, std::vector<int>> hoi4::CreateCoastalProvinces(const maps::MapData& map_data,
-    const std::set<std::string>& land_provinces,
-    const std::set<std::string>& sea_provinces)
+    const LandProvinces& land_provinces,
+    const SeaProvinces& sea_provinces)
 {
    Log(LogLevel::Info) << "\tInitializing coastal provinces";
 
    std::map<int, std::vector<int>> coastal_provinces;
 
-   for (const auto& province_name: land_provinces)
+   for (const auto& province_name: land_provinces.Get())
    {
       auto neighbors = map_data.GetNeighbors(province_name);
       for (const auto& adjacent_province_number_string: neighbors)
       {
-         if (!sea_provinces.contains(adjacent_province_number_string))
+         if (!sea_provinces.Get().contains(adjacent_province_number_string))
          {
             continue;
          }

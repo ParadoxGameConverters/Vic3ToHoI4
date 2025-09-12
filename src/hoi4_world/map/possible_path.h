@@ -6,10 +6,16 @@
 #include <optional>
 #include <vector>
 
+#include "src/support/named_type.h"
+
 
 
 namespace hoi4
 {
+
+using PossiblePathProvinceType = NamedType<int, struct PossiblePathProvinceParameter>;
+using PossiblePathCostType = NamedType<double, struct PossiblePathCostParameter>;
+
 
 class PossiblePath
 {
@@ -17,10 +23,10 @@ class PossiblePath
    PossiblePath() = default;
    explicit PossiblePath(int initial_province) { provinces_.push_back(initial_province); }
 
-   void AddProvince(int province, double additional_cost)
+   void AddProvince(PossiblePathProvinceType province, PossiblePathCostType additional_cost)
    {
-      provinces_.push_back(province);
-      cost_ += additional_cost;
+      provinces_.push_back(province.Get());
+      cost_ += additional_cost.Get();
    }
    void ReplaceProvinces(std::vector<int> new_provinces) { provinces_ = std::move(new_provinces); }
    void SetDevelopment(float development) { development_ = development; }

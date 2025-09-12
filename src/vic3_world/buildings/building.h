@@ -7,6 +7,9 @@
 #include <string>
 #include <vector>
 
+#include "src/support/named_type.h"
+
+
 
 namespace vic3
 {
@@ -23,18 +26,23 @@ constexpr const char* kBuildingTypeUrbanCenter = "building_urban_center";
 constexpr const char* kBuildingTypeWarMachineIndustry = "building_war_machine_industry";
 
 
+
+using GoodsSalesValue = NamedType<float, struct GoodsSalesValueParameter>;
+using StaffingLevel = NamedType<float, struct StaffingLevelParameter>;
+
+
 class Building
 {
   public:
-   Building(std::string type,
+   Building(std::string_view type,
        std::optional<int> state_number,
-       float goods_sales_value,
-       float staffing,
+       GoodsSalesValue goods_sales_value,
+       StaffingLevel staffing_level,
        const std::vector<std::string>& production_methods):
-       type_(std::move(type)),
+       type_(type),
        state_number_(state_number),
        goods_sales_value_(goods_sales_value),
-       staffing_level_(staffing),
+       staffing_level_(staffing_level),
        production_methods_(production_methods)
    {
    }
@@ -48,17 +56,18 @@ class Building
 
    [[nodiscard]] const std::string& GetType() const { return type_; }
    [[nodiscard]] std::optional<int> GetStateNumber() const { return state_number_; }
-   [[nodiscard]] float GetGoodsSalesValues() const { return goods_sales_value_; }
-   [[nodiscard]] float GetStaffingLevel() const { return staffing_level_; }
+   [[nodiscard]] float GetGoodsSalesValues() const { return goods_sales_value_.Get(); }
+   [[nodiscard]] float GetStaffingLevel() const { return staffing_level_.Get(); }
    [[nodiscard]] const std::vector<std::string>& GetProductionMethods() const { return production_methods_; }
 
    auto operator<=>(const Building& other) const = default;
+   bool operator==(const Building& other) const;
 
   private:
    std::string type_;
    std::optional<int> state_number_;
-   float goods_sales_value_ = 0.0F;
-   float staffing_level_ = 0.0F;
+   GoodsSalesValue goods_sales_value_{0.0F};
+   StaffingLevel staffing_level_{0.0F};
    std::vector<std::string> production_methods_;
 };
 

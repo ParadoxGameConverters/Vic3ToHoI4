@@ -110,7 +110,7 @@ TEST(Vic3WorldWarImporter, AttackersAreExtracted)
 )";
    std::optional<War> war = importer.ImportWar(input);
    EXPECT_TRUE(war.has_value());
-   EXPECT_THAT(war->GetAttackers(), testing::ElementsAre(144, 149, 154, 159, 164));
+   EXPECT_THAT(war.value_or(War({})).GetAttackers(), testing::ElementsAre(144, 149, 154, 159, 164));
 }
 
 
@@ -130,7 +130,7 @@ TEST(Vic3WorldWarImporter, DefendersAreExtracted)
 )";
    std::optional<War> war = importer.ImportWar(input);
    EXPECT_TRUE(war.has_value());
-   EXPECT_THAT(war->GetDefenders(), testing::ElementsAre(169, 170, 171, 172));
+   EXPECT_THAT(war.value_or(War({})).GetDefenders(), testing::ElementsAre(169, 170, 171, 172));
 }
 
 }  // namespace vic3

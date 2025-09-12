@@ -341,11 +341,11 @@ void FindNextPaths(const hoi4::PossiblePath& possible_railway_path,
       }
 
       hoi4::PossiblePath new_possible_railway_path = possible_railway_path;
-      new_possible_railway_path.AddProvince(neighbor_number,
-          DeterminePathCost(hoi4_province_definitions,
+      new_possible_railway_path.AddProvince(hoi4::PossiblePathProvinceType{neighbor_number},
+          hoi4::PossiblePathCostType{DeterminePathCost(hoi4_province_definitions,
               neighbor_number_string,
               std::to_string(last_province),
-              hoi4_map_data));
+              hoi4_map_data)});
       possible_railway_paths.push(new_possible_railway_path);
    }
 }
@@ -630,7 +630,7 @@ std::vector<hoi4::PossiblePath> SplitPaths(const std::vector<hoi4::PossiblePath>
             continue;
          }
 
-         split_path.AddProvince(province, 0.0);
+         split_path.AddProvince(hoi4::PossiblePathProvinceType{province}, hoi4::PossiblePathCostType{0.0});
 
          if (province == path.GetLastProvince())
          {
@@ -887,8 +887,8 @@ std::tuple<float, float, float, float> DetermineRailwayLevelRequirements(const s
    const float level_four = development_levels.at(development_levels.size() * 99 / 100);
    const float level_three = development_levels.at(development_levels.size() * 96 / 100);
    const float level_two = development_levels.at(development_levels.size() * 50 / 100);
-   const float level_one =
-       std::accumulate(development_levels.begin(), development_levels.end(), 0.F) / development_levels.size() / 10.F;
+   const float level_one = std::accumulate(development_levels.begin(), development_levels.end(), 0.F) /
+                           static_cast<float>(development_levels.size()) / 10.F;
 
    return {level_one, level_two, level_three, level_four};
 }

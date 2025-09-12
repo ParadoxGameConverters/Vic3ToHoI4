@@ -20,7 +20,7 @@ void PrintTo(const Building& building, std::ostream* os)
        << fmt::format("rotation: {}\n", building.GetPosition().rotation);
    if (building.GetConnectingSeaProvince().has_value())
    {
-      *os << fmt::format("connecting sea province: {}", building.GetConnectingSeaProvince().value());
+      *os << fmt::format("connecting sea province: {}", building.GetConnectingSeaProvince().value_or(0));
    }
 }
 

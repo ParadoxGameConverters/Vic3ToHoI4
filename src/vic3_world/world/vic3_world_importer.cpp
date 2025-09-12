@@ -63,7 +63,7 @@ std::string ReadSave(const path& save_filename)
    const auto save_size = static_cast<std::basic_string<char>::size_type>(file_size(save_filename));
    Log(LogLevel::Info) << "  -> Getting string text";
    std::string save_string(save_size, '\0');
-   save_file.read(save_string.data(), save_size);
+   save_file.read(save_string.data(), static_cast<std::streamsize>(save_size));
 
    return save_string;
 }
@@ -350,12 +350,13 @@ void ApplySubjectRelationships(const std::map<int, vic3::Pact>& pacts, std::map<
    {
       if (pact.IsSubjectRelationship())
       {
-         auto overlord = countries.find(pact.GetFirstId());
-         auto subject = countries.find(pact.GetSecondId());
+         vic3::PactPartners partners = pact.GetPartners();
+         auto overlord = countries.find(partners.first);
+         auto subject = countries.find(partners.second);
          if (overlord != countries.end() && subject != countries.end())
          {
-            overlord->second.AddPuppet(pact.GetSecondId());
-            subject->second.AddOverlord(pact.GetFirstId());
+            overlord->second.AddPuppet(partners.second);
+            subject->second.AddOverlord(partners.first);
             if (subject->second.GetColor() == commonItems::Color{})
             {
                subject->second.SetColor(overlord->second.GetColor());

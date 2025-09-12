@@ -53,7 +53,11 @@ std::vector<hoi4::EquipmentVariant> hoi4::ImportEquipmentVariants(const std::fil
 
           variant_parser.parseStream(input_stream);
 
-          equipment_variants.emplace_back(eq_name, eq_type, required_techs, blocking_techs, text_items);
+          equipment_variants.emplace_back(EquipmentVariantName{eq_name},
+              EquipmentVariantType{eq_type},
+              required_techs,
+              blocking_techs,
+              text_items);
        });
 
    file_parser.parseFile(variants_filename);

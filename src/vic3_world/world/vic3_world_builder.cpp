@@ -1,5 +1,6 @@
 #include "vic3_world_builder.h"
 
+#include <external/commonItems/Log.h>
 #include <external/fmt/include/fmt/format.h>
 
 
@@ -77,7 +78,13 @@ WorldBuilder& WorldBuilder::AddBuildings(const std::vector<vic3::Building>& buil
 {
    for (auto& building: buildings)
    {
-      this->buildings_[building.GetStateNumber().value()].emplace_back(building);
+      const std::optional<int> state_number = building.GetStateNumber();
+      if (!state_number.has_value())
+      {
+         Log(LogLevel::Warning) << "Building " << building.GetType() << " has no state number, skipping.";
+         continue;
+      }
+      this->buildings_[*state_number].emplace_back(building);
    }
    return *this;
 }

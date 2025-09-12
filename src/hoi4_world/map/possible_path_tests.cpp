@@ -8,7 +8,6 @@
 namespace hoi4
 {
 
-
 TEST(Hoi4worldMapPossiblePathTests, DefaultsAreSet)
 {
    const PossiblePath possible_path;
@@ -18,11 +17,12 @@ TEST(Hoi4worldMapPossiblePathTests, DefaultsAreSet)
    EXPECT_EQ(possible_path.GetCost(), 0);
 }
 
+
 TEST(Hoi4worldMapPossiblePathTests, InitialProvinceCanBeSet)
 {
    const PossiblePath possible_path(1);
 
-   EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(1));
+   EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(PossiblePathProvinceType{1}));
    EXPECT_EQ(possible_path.GetDevelopment(), 0.F);
    EXPECT_EQ(possible_path.GetCost(), 0);
 }
@@ -31,8 +31,8 @@ TEST(Hoi4worldMapPossiblePathTests, InitialProvinceCanBeSet)
 TEST(Hoi4worldMapPossiblePathTests, ProvincesCanBeAdded)
 {
    PossiblePath possible_path(0);
-   possible_path.AddProvince(1, 0);
-   possible_path.AddProvince(2, 0);
+   possible_path.AddProvince(PossiblePathProvinceType{1}, PossiblePathCostType{0});
+   possible_path.AddProvince(PossiblePathProvinceType{2}, PossiblePathCostType{0});
 
    EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(0, 1, 2));
 }
@@ -41,8 +41,8 @@ TEST(Hoi4worldMapPossiblePathTests, ProvincesCanBeAdded)
 TEST(Hoi4worldMapPossiblePathTests, AddedProvincesIncreaseCost)
 {
    PossiblePath possible_path(0);
-   possible_path.AddProvince(1, 2);
-   possible_path.AddProvince(2, 3);
+   possible_path.AddProvince(PossiblePathProvinceType{1}, PossiblePathCostType{2});
+   possible_path.AddProvince(PossiblePathProvinceType{2}, PossiblePathCostType{3});
 
    EXPECT_EQ(possible_path.GetCost(), 5);
 }
@@ -87,10 +87,10 @@ TEST(Hoi4worldMapPossiblePathTests, LastProvinceCanBeRetrieved)
 TEST(Hoi4worldMapPossiblePathTests, LessThanIsBasedOnCostAndReversed)
 {
    PossiblePath possible_path_one(0);
-   possible_path_one.AddProvince(1, 2);
+   possible_path_one.AddProvince(PossiblePathProvinceType{1}, PossiblePathCostType{2});
 
    PossiblePath possible_path_two(0);
-   possible_path_two.AddProvince(1, 3);
+   possible_path_two.AddProvince(PossiblePathProvinceType{1}, PossiblePathCostType{3});
 
    EXPECT_LT(possible_path_two, possible_path_one);
 }

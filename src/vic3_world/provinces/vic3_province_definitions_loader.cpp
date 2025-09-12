@@ -26,11 +26,13 @@ std::map<std::string, int> DetermineProvinceOrdering(const commonItems::ModFiles
    int width = 0;
    int height = 0;
    int depth = 0;
-   unsigned char* data = stbi_load(filesystem.GetActualFileLocation("map_data/provinces.png")->string().c_str(),
-       &width,
-       &height,
-       &depth,
-       0);
+
+   const std::optional<path> possible_path = filesystem.GetActualFileLocation("map_data/provinces.png");
+   if (possible_path == std::nullopt)
+   {
+      throw std::runtime_error("Could not find map_data/provinces.png");
+   }
+   unsigned char* data = stbi_load(possible_path.value_or(path{}).string().c_str(), &width, &height, &depth, 0);
    if (data == nullptr)
    {
       throw std::runtime_error("Could not load map_data/provinces.png");

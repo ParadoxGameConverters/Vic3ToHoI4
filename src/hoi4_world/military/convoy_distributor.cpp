@@ -48,7 +48,7 @@ int ConvoyDistributor::ConvoysFromState(int id) const
       return 0;
    }
    auto weight = vic3_map_.at(id);
-   weight *= hoi4_total_;
+   weight *= static_cast<float>(hoi4_total_);
    weight /= vic3_total_;
    return static_cast<int>(std::round(weight));
 }

@@ -17,20 +17,26 @@ namespace vic3
 static const std::set<std::string> kSubjectPactTypes =
     {"protectorate", "puppet", "dominion", "personal_union", "vassal", "tributary", "chartered_company", "colony"};
 
+
+struct PactPartners
+{
+   int first = 0;
+   int second = 0;
+};
+
+
 class Pact
 {
   public:
-   Pact(int first_id, int second_id, std::string action, date start_date, std::optional<int> forced_duration):
-       first_id_(first_id),
-       second_id_(second_id),
+   Pact(PactPartners partners, std::string action, date start_date, std::optional<int> forced_duration):
+       partners_(partners),
        action_(std::move(action)),
        start_date_(std::move(start_date)),
        forced_duration_(std::move(forced_duration))
    {
    }
 
-   [[nodiscard]] int GetFirstId() const { return first_id_; }
-   [[nodiscard]] int GetSecondId() const { return second_id_; }
+   [[nodiscard]] PactPartners GetPartners() const { return partners_; }
    [[nodiscard]] std::string GetAction() const { return action_; }
    [[nodiscard]] date GetStartDate() const { return start_date_; }
    [[nodiscard]] std::optional<int> GetForcedDuration() const { return forced_duration_; }
@@ -43,8 +49,7 @@ class Pact
 
   private:
    // In vassal-type relationships, first_id_ is the id of the overlord, second_id_ is the id of the vassal.
-   int first_id_ = 0;
-   int second_id_ = 0;
+   PactPartners partners_;
    std::string action_;
    date start_date_;
    std::optional<int> forced_duration_;

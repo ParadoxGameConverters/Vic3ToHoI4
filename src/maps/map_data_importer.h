@@ -9,11 +9,17 @@
 #include <vector>
 
 #include "src/maps/map_data.h"
+#include "src/support/named_type.h"
 
 
 
 namespace maps
 {
+
+using MainProvince = NamedType<std::string, struct MainProvinceTag>;
+using NeighborProvince = NamedType<std::string, struct NeighborProvinceTag>;
+
+
 
 class MapDataImporter
 {
@@ -27,9 +33,9 @@ class MapDataImporter
    void HandleNeighbor(const commonItems::Color& center_color,
        const commonItems::Color& other_color,
        const Point& position);
-   void AddNeighbor(const std::string& main_province, const std::string& neighbor_province);
-   void RemoveNeighbor(const std::string& main_province, const std::string& neighbor_province);
-   void AddPointToBorder(const std::string& main_province, const std::string& neighbor_province, Point position);
+   void AddNeighbor(const MainProvince& main_province, const NeighborProvince& neighbor_province);
+   void RemoveNeighbor(const MainProvince& main_province, const NeighborProvince& neighbor_province);
+   void AddPointToBorder(const MainProvince& main_province, const NeighborProvince& neighbor_province, Point position);
 
    void ImportAdjacencies(const commonItems::ModFilesystem& mod_filesystem);
 

@@ -7,7 +7,14 @@
 #include <set>
 #include <string>
 
+#include "src/support/named_type.h"
 
+
+
+using InterestGroupCountryId = NamedType<int, struct InterestGroupCountryIdParameter>;
+using InterestGroupLeader = NamedType<int, struct InterestGroupLeaderParameter>;
+using InterestGroupClout = NamedType<float, struct InterestGroupCloutParameter>;
+using InterestGroupInGovernment = NamedType<bool, struct InterestGroupInGovernmentParameter>;
 
 namespace vic3
 {
@@ -15,10 +22,10 @@ class InterestGroup
 {
   public:
    InterestGroup(std::string type,
-       const int country_id,
-       const int leader,
-       const float clout,
-       const bool in_government,
+       const InterestGroupCountryId country_id,
+       const InterestGroupLeader leader,
+       const InterestGroupClout clout,
+       const InterestGroupInGovernment in_government,
        std::set<std::string> ideologies):
        type_(std::move(type)),
        country_id_(country_id),
@@ -31,23 +38,25 @@ class InterestGroup
 
    [[nodiscard]] const std::string& GetType() const { return type_; }
 
-   [[nodiscard]] int GetCountryId() const { return country_id_; }
-   [[nodiscard]] int GetLeader() const { return leader_; }
-   [[nodiscard]] float GetClout() const { return clout_; }
-   [[nodiscard]] bool IsInGovernment() const { return in_government_; }
+   [[nodiscard]] int GetCountryId() const { return country_id_.Get(); }
+   [[nodiscard]] int GetLeader() const { return leader_.Get(); }
+   [[nodiscard]] float GetClout() const { return clout_.Get(); }
+   [[nodiscard]] bool IsInGovernment() const { return in_government_.Get(); }
    [[nodiscard]] const std::set<std::string>& GetIdeologies() const { return ideologies_; }
 
    std::partial_ordering operator<=>(const InterestGroup&) const = default;
+   bool operator==(const InterestGroup& other) const;
 
   private:
    std::string type_;
 
-   int country_id_ = 0;
-   int leader_ = 0;
-   float clout_ = 0.0F;
-   bool in_government_ = false;
+   InterestGroupCountryId country_id_{0};
+   InterestGroupLeader leader_{0};
+   InterestGroupClout clout_{0.0F};
+   InterestGroupInGovernment in_government_{false};
    std::set<std::string> ideologies_;
 };
+
 }  // namespace vic3
 
 
