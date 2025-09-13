@@ -22,7 +22,7 @@ TEST(Hoi4worldMapPossiblePathTests, InitialProvinceCanBeSet)
 {
    const PossiblePath possible_path(1);
 
-   EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(PossiblePathProvinceType{1}));
+   EXPECT_THAT(possible_path.GetProvinces(), testing::ElementsAre(1));
    EXPECT_EQ(possible_path.GetDevelopment(), 0.F);
    EXPECT_EQ(possible_path.GetCost(), 0);
 }

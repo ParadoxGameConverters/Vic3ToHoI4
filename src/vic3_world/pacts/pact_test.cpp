@@ -10,9 +10,9 @@ namespace vic3
 
 TEST(Vic3WorldPact, SubjectRelationshipsAreDetermined)
 {
-   Pact puppet = Pact(0, 1, "puppet", date(""), std::nullopt);
+   const Pact puppet = Pact(PactPartners{.first = 0, .second = 1}, "puppet", date(""), std::nullopt);
    EXPECT_TRUE(puppet.IsSubjectRelationship());
-   Pact alliance = Pact(2, 3, "alliance", date(""), std::nullopt);
+   const Pact alliance = Pact(PactPartners{.first = 2, .second = 3}, "alliance", date(""), std::nullopt);
    EXPECT_FALSE(alliance.IsSubjectRelationship());
 }
 }  // namespace vic3

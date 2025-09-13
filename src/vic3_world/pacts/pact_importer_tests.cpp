@@ -22,8 +22,8 @@ TEST(Vic3WorldPactImporter, DefaultsAreDefaulted)
 
    const Pact pact = importer.ImportPact(input);
 
-   EXPECT_EQ(pact.GetFirstId(), 0);
-   EXPECT_EQ(pact.GetSecondId(), 0);
+   EXPECT_EQ(pact.GetPartners().first, 0);
+   EXPECT_EQ(pact.GetPartners().second, 0);
    EXPECT_TRUE(pact.GetAction().empty());
    EXPECT_EQ(pact.GetStartDate(), date());
    EXPECT_FALSE(pact.GetForcedDuration().has_value());

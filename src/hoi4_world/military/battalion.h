@@ -37,7 +37,8 @@ class Battalion
    void AddStrength(float s) { strength_.Get() += s; }
    void SetLocation(int l) { location_ = l; }
 
-   std::partial_ordering operator<=>(const Battalion&) const = default;
+   std::partial_ordering operator<=>(const Battalion& other) const;
+   bool operator==(const Battalion& other) const;
 
   private:
    std::string unit_type_;

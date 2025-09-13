@@ -13,6 +13,7 @@
 
 namespace vic3
 {
+
 // This could be expanded into a mapper between Vic3 pact types and HoI4 autonomous_states
 static const std::set<std::string> kSubjectPactTypes =
     {"protectorate", "puppet", "dominion", "personal_union", "vassal", "tributary", "chartered_company", "colony"};
@@ -22,6 +23,8 @@ struct PactPartners
 {
    int first = 0;
    int second = 0;
+
+   [[nodiscard]] std::partial_ordering operator<=>(const PactPartners&) const = default;
 };
 
 
