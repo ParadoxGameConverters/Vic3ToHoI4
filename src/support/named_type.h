@@ -18,24 +18,3 @@ class NamedType
   private:
    T value_;
 };
-
-
-template <typename Parameter>
-std::strong_ordering operator<=>(const NamedType<int, Parameter>& a, const NamedType<int, Parameter>& b)
-{
-   return a.Get() <=> b.Get();
-}
-
-
-template <typename Parameter>
-std::strong_ordering operator<=>(const NamedType<bool, Parameter>& a, const NamedType<bool, Parameter>& b)
-{
-   return a.Get() <=> b.Get();
-}
-
-
-template <typename Parameter>
-std::strong_ordering operator<=>(const NamedType<float, Parameter>& a, const NamedType<float, Parameter>& b)
-{
-   return a.Get() <=> b.Get();
-}
