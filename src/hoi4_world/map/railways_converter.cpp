@@ -377,16 +377,22 @@ std::set<int> DetermineAllowedProvinces(int start_province, int end_province, co
 }
 
 
-std::optional<hoi4::PossiblePath> FindPath(int start_province,
-    int end_province,
+struct Endpoints
+{
+   int start_province;
+   int end_province;
+};
+
+
+std::optional<hoi4::PossiblePath> FindPath(const Endpoints& endpoints,
     const std::set<int>& allowed_provinces,
     const maps::MapData& hoi4_map_data,
     const maps::ProvinceDefinitions& hoi4_province_definitions)
 {
    std::priority_queue<hoi4::PossiblePath> possible_railway_paths;
-   std::set reached_provinces{start_province};
+   std::set reached_provinces{endpoints.start_province};
 
-   const hoi4::PossiblePath starting_path(start_province);
+   const hoi4::PossiblePath starting_path(endpoints.start_province);
    possible_railway_paths.push(starting_path);
 
    while (!possible_railway_paths.empty())
@@ -394,7 +400,7 @@ std::optional<hoi4::PossiblePath> FindPath(int start_province,
       hoi4::PossiblePath possible_railway_path = possible_railway_paths.top();
 
       const int last_province = possible_railway_path.GetLastProvince();
-      if (possible_railway_path.GetLastProvince() == end_province)
+      if (possible_railway_path.GetLastProvince() == endpoints.end_province)
       {
          return possible_railway_paths.top();
       }
@@ -423,7 +429,7 @@ void BuildPath(int start_province,
 {
    const std::set<int> allowed_provinces = DetermineAllowedProvinces(start_province, end_province, states);
    auto possible_path =
-       FindPath(start_province, end_province, allowed_provinces, hoi4_map_data, hoi4_province_definitions);
+       FindPath(Endpoints{start_province, end_province}, allowed_provinces, hoi4_map_data, hoi4_province_definitions);
    if (!possible_path)
    {
       return;
