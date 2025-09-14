@@ -2768,8 +2768,26 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
        EquipmentVariant(EquipmentVariantName{"1936 Ship"}, EquipmentVariantType{"mtg_1936_ship"}, {}, {}, {}),
    };
    std::vector<TaskForceTemplate> task_force_templates{
-       {{{"pm_victorian", 5.0F}}, {Ship("Cruiser", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship")}},
-       {{{"pm_modern", 10.0F}}, {Ship("Battleship", "1936_ship", "mtg_1936_ship", "legacy_1936_ship", "1936 Ship")}},
+       {
+           {{"pm_victorian", 5.0F}},
+           {Ship(ShipOptions{
+               .name = "Cruiser",
+               .definition = "basic_ship",
+               .equipment = "mtg_basic_ship",
+               .legacy_equipment = "legacy_basic_ship",
+               .version = "Basic Ship",
+           })},
+       },
+       {
+           {{"pm_modern", 10.0F}},
+           {Ship(ShipOptions{
+               .name = "Battleship",
+               .definition = "1936_ship",
+               .equipment = "mtg_1936_ship",
+               .legacy_equipment = "legacy_1936_ship",
+               .version = "1936 Ship",
+           })},
+       },
    };
 
    const auto country_one = ConvertCountry(source_world,
@@ -2818,8 +2836,8 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
            .name = "1. Fleet",
            .ships =
                {
-                   Ship("Cruiser 1", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"),
-                   Ship("Cruiser 2", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"),
+                   Ship(ShipOptions{"Cruiser 1", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"}),
+                   Ship(ShipOptions{"Cruiser 2", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"}),
                },
            .location = 1,
        }));
@@ -2828,7 +2846,7 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
            .name = "1. Fleet",
            .ships =
                {
-                   Ship("Battleship 1", "1936_ship", "mtg_1936_ship", "legacy_1936_ship", "1936 Ship"),
+                   Ship(ShipOptions{"Battleship 1", "1936_ship", "mtg_1936_ship", "legacy_1936_ship", "1936 Ship"}),
                },
            .location = 3,
        }));

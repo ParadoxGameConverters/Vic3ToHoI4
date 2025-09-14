@@ -251,7 +251,13 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
    const std::vector<TaskForce> expected_task_forces = {
        TaskForce{
            .name = "1. Fleet",
-           .ships = {Ship("Test Ship 1", "test_ship", "mtg_test_ship", "legacy_test_ship", "Test Ship Variant One")},
+           .ships = {Ship(ShipOptions{
+               .name = "Test Ship 1",
+               .definition = "test_ship",
+               .equipment = "mtg_test_ship",
+               .legacy_equipment = "legacy_test_ship",
+               .version = "Test Ship Variant One",
+           })},
            .location = 10,
        },
    };

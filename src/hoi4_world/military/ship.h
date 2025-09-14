@@ -6,19 +6,25 @@
 namespace hoi4
 {
 
+struct ShipOptions
+{
+   std::string name;
+   std::string definition;
+   std::string equipment;
+   std::string legacy_equipment;
+   std::string version;
+};
+
+
 class Ship
 {
   public:
-   Ship(std::string_view name,
-       std::string_view definition,
-       std::string_view equipment,
-       std::string_view legacy_equipment,
-       std::string_view version):
-       name_(name),
-       definition_(definition),
-       equipment_(equipment),
-       legacy_equipment_(legacy_equipment),
-       version_(version)
+   explicit Ship(ShipOptions options):
+       name_(options.name),
+       definition_(options.definition),
+       equipment_(options.equipment),
+       legacy_equipment_(options.legacy_equipment),
+       version_(options.version)
    {
    }
 
