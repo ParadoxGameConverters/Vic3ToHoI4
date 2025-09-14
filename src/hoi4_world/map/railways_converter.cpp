@@ -513,14 +513,20 @@ std::set<int> GetSignificantProvincesInState(int state_id,
 }
 
 
-std::vector<std::pair<int, int>> EnumerateAllInterstateConnections(const std::set<int>& first_state_significant_points,
-    const std::set<int>& second_state_significant_points)
+struct SignificantPoints
+{
+   std::set<int> first_state_significant_points;
+   std::set<int> second_state_significant_points;
+};
+
+
+std::vector<std::pair<int, int>> EnumerateAllInterstateConnections(const SignificantPoints& significant_points)
 {
    std::set<std::pair<int, int>> interstate_connections_set;
 
-   for (const int first_state_point: first_state_significant_points)
+   for (const int first_state_point: significant_points.first_state_significant_points)
    {
-      for (const int second_state_point: second_state_significant_points)
+      for (const int second_state_point: significant_points.second_state_significant_points)
       {
          interstate_connections_set.emplace(first_state_point, second_state_point);
       }
@@ -555,7 +561,9 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
    for (const hoi4::State& state: hoi4_states.states)
    {
       int id = state.GetId();
-      const std::set<int>& state_significant_provinces = GetSignificantProvincesInState(id, significant_hoi4_provinces);
+      SignificantPoints significant_points;
+      significant_points.first_state_significant_points =
+          GetSignificantProvincesInState(id, significant_hoi4_provinces);
 
       const auto neighbors_itr = neighboring_states.find(id);
       if (neighbors_itr == neighboring_states.end())
@@ -570,10 +578,10 @@ std::vector<hoi4::PossiblePath> ConnectStatesWithRailways(
             continue;
          }
 
-         const std::set<int>& neighbor_significant_provinces =
+         significant_points.second_state_significant_points =
              GetSignificantProvincesInState(neighbor_id, significant_hoi4_provinces);
          const std::vector<std::pair<int, int>> interstate_connections =
-             EnumerateAllInterstateConnections(state_significant_provinces, neighbor_significant_provinces);
+             EnumerateAllInterstateConnections(significant_points);
          std::vector<hoi4::PossiblePath> all_interstate_paths =
              FindAllHoi4Paths(interstate_connections, hoi4_states, hoi4_map_data, hoi4_province_definitions);
          if (all_interstate_paths.empty())
@@ -870,7 +878,16 @@ std::vector<hoi4::PossiblePath> MergePaths(const std::vector<hoi4::PossiblePath>
 }
 
 
-std::tuple<float, float, float, float> DetermineRailwayLevelRequirements(const std::vector<hoi4::PossiblePath>& paths)
+struct RailwayLevelRequirements
+{
+   float level_one;
+   float level_two;
+   float level_three;
+   float level_four;
+};
+
+
+RailwayLevelRequirements DetermineRailwayLevelRequirements(const std::vector<hoi4::PossiblePath>& paths)
 {
    if (paths.empty())
    {
@@ -894,26 +911,22 @@ std::tuple<float, float, float, float> DetermineRailwayLevelRequirements(const s
 }
 
 
-int DetermineRailwayLevel(const hoi4::PossiblePath& path,
-    const float level_one,
-    const float level_two,
-    const float level_three,
-    const float level_four)
+int DetermineRailwayLevel(const hoi4::PossiblePath& path, const RailwayLevelRequirements& requirements)
 {
    const float total_development = path.GetDevelopment();
-   if (total_development >= level_four)
+   if (total_development >= requirements.level_four)
    {
       return 4;
    }
-   if (total_development >= level_three)
+   if (total_development >= requirements.level_three)
    {
       return 3;
    }
-   if (total_development >= level_two)
+   if (total_development >= requirements.level_two)
    {
       return 2;
    }
-   if (total_development >= level_one)
+   if (total_development >= requirements.level_one)
    {
       return 1;
    }
@@ -926,17 +939,11 @@ std::vector<hoi4::Railway> GetRailwaysFromPaths(const std::vector<hoi4::Possible
 {
    std::vector<hoi4::Railway> railways;
 
-   const auto [level_one_requirement, level_two_requirement, level_three_requirement, level_four_requirement] =
-       DetermineRailwayLevelRequirements(paths);
+   const RailwayLevelRequirements requirements = DetermineRailwayLevelRequirements(paths);
 
    for (const hoi4::PossiblePath& possible_path: paths)
    {
-      hoi4::Railway railway(DetermineRailwayLevel(possible_path,
-                                level_one_requirement,
-                                level_two_requirement,
-                                level_three_requirement,
-                                level_four_requirement),
-          possible_path.GetProvinces());
+      hoi4::Railway railway(DetermineRailwayLevel(possible_path, requirements), possible_path.GetProvinces());
       railways.push_back(railway);
    }
 

@@ -39,10 +39,3 @@ std::strong_ordering operator<=>(const NamedType<float, Parameter>& a, const Nam
 {
    return a.Get() <=> b.Get();
 }
-//
-//
-//template <typename Parameter>
-//std::strong_ordering operator<=>(const NamedType<std::string, Parameter>& a, const NamedType<std::string, Parameter>& b)
-//{
-//   return a.Get() <=> b.Get();
-//}
