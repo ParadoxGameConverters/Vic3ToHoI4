@@ -2522,7 +2522,7 @@ TEST(Hoi4worldCountriesCountryConverter, WarsCanBeAdded)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    mappers::TemplateMap templates;
 
-   auto country_one = ConvertCountry(source_world,
+   std::optional<Country> possible_country = ConvertCountry(source_world,
        source_country_one,
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -2542,15 +2542,16 @@ TEST(Hoi4worldCountriesCountryConverter, WarsCanBeAdded)
        {},
        dummy_characters,
        dummy_culture_queues);
+   Country country = possible_country.value_or(Country({}));
 
    const War war_one({.original_attacker = "ONE"});
-   country_one.value_or(Country({})).AddWar(war_one);
+   country.AddWar(war_one);
    const War war_two({.original_attacker = "TWO"});
-   country_one.value_or(Country({})).AddWar(war_two);
+   country.AddWar(war_two);
 
 
-   ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one.value_or(Country({})).GetWars(), testing::ElementsAre(war_one, war_two));
+   ASSERT_TRUE(country.has_value());
+   EXPECT_THAT(country.value_or(Country({})).GetWars(), testing::ElementsAre(war_one, war_two));
 }
 
 
