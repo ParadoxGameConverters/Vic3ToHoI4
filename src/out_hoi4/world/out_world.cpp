@@ -30,12 +30,18 @@ using std::filesystem::path;
 namespace
 {
 
+struct Powers
+{
+   std::set<std::string> great_powers;
+   std::set<std::string> major_powers;
+};
+
+
 void OutputBookmark(const path& output_name,
     std::string_view bookmark_name,
     date start_date,
     bool default_bookmark,
-    const std::set<std::string>& great_powers,
-    const std::set<std::string>& major_powers)
+    const Powers& powers)
 {
    std::string uppercase_bookmark_name{bookmark_name};
 #pragma warning(push)
@@ -62,7 +68,7 @@ void OutputBookmark(const path& output_name,
       bookmark_file << "\t\tdefault = yes\n";
    }
 
-   for (const std::string& great_power: great_powers)
+   for (const std::string& great_power: powers.great_powers)
    {
       bookmark_file << fmt::format("\t\t{}= {{}}\n", great_power);
    }
@@ -71,7 +77,7 @@ void OutputBookmark(const path& output_name,
    bookmark_file << fmt::format("\t\t\thistory = \"OTHER_{}_DESC\"\n", uppercase_bookmark_name);
    bookmark_file << "\t\t}\n";
 
-   for (const auto& major_power: major_powers)
+   for (const auto& major_power: powers.major_powers)
    {
       bookmark_file << fmt::format("\t\t{} = {{\n", major_power);
       bookmark_file << "\t\t\tminor = yes\n";
@@ -112,8 +118,10 @@ void OutputWorld(const path& output_name, const hoi4::World& world, configuratio
        "grand_campaign",
        date("1936.1.1"),
        true,
-       world.GetGreatPowers(),
-       world.GetMajorPowers());
+       {
+           .great_powers = world.GetGreatPowers(),
+           .major_powers = world.GetMajorPowers(),
+       });
 }
 
 }  // namespace out
