@@ -2542,6 +2542,7 @@ TEST(Hoi4worldCountriesCountryConverter, WarsCanBeAdded)
        {},
        dummy_characters,
        dummy_culture_queues);
+   ASSERT_TRUE(possible_country.has_value());
    Country country = possible_country.value_or(Country({}));
 
    const War war_one({.original_attacker = "ONE"});
@@ -2549,9 +2550,7 @@ TEST(Hoi4worldCountriesCountryConverter, WarsCanBeAdded)
    const War war_two({.original_attacker = "TWO"});
    country.AddWar(war_two);
 
-
-   ASSERT_TRUE(country.has_value());
-   EXPECT_THAT(country.value_or(Country({})).GetWars(), testing::ElementsAre(war_one, war_two));
+   EXPECT_THAT(country.GetWars(), testing::ElementsAre(war_one, war_two));
 }
 
 
