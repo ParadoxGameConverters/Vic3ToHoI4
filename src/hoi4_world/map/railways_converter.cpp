@@ -428,8 +428,10 @@ void BuildPath(int start_province,
     std::vector<hoi4::PossiblePath>& possible_paths)
 {
    const std::set<int> allowed_provinces = DetermineAllowedProvinces(start_province, end_province, states);
-   auto possible_path =
-       FindPath(Endpoints{start_province, end_province}, allowed_provinces, hoi4_map_data, hoi4_province_definitions);
+   auto possible_path = FindPath(Endpoints{.start_province = start_province, .end_province = end_province},
+       allowed_provinces,
+       hoi4_map_data,
+       hoi4_province_definitions);
    if (!possible_path)
    {
       return;
