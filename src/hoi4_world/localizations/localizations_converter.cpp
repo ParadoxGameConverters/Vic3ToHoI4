@@ -151,6 +151,8 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
       if (dynamic_name_block.has_value())
       {
          name_block = *dynamic_name_block;
+         // NOLINTBEGIN
+         // bugprone-easily-swappable-parameters: The parameters are defined in commonItems
          if (country_localization_block.has_value())
          {
             name_block.ModifyForEveryLanguage(*country_localization_block,
@@ -205,6 +207,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
                        ModifyingLocalization{modifying_localization});
                 });
          }
+         // NOLINTEND
       }
       else if (country_localization_block.has_value())
       {
@@ -227,6 +230,8 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
       country_localizations.AddOrModifyLocalizationBlock(fmt::format("{}_DEF", hoi4_country), name_block);
 
       commonItems::LocalizationBlock adjective_block(fmt::format("{}_ADJ", hoi4_country), "english");
+      // NOLINTBEGIN
+      // bugprone-easily-swappable-parameters: The parameters are defined in commonItems
       if (dynamic_adjective_block.has_value())
       {
          adjective_block = *dynamic_adjective_block;
@@ -285,6 +290,7 @@ commonItems::LocalizationDatabase ConvertCountryLocalizations(
                 });
          }
       }
+      // NOLINTEND
       else if (adjective_localization_block.has_value())
       {
          adjective_block = *adjective_localization_block;
@@ -567,6 +573,8 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
       }
       commonItems::LocalizationBlock combined_name(*first_name);
 
+      // NOLINTBEGIN
+      // bugprone-easily-swappable-parameters: The parameters are defined in commonItems
       combined_name.ModifyForEveryLanguage(*last_name,
           [](const std::string& base_localization,
               const std::string& modifying_localization,
@@ -581,6 +589,7 @@ commonItems::LocalizationDatabase ConvertIdeaLocalizations(const commonItems::Lo
              return fmt::vformat(base_localization, fmt::make_format_args(modifying_localization));
           });
       idea_localizations.AddOrModifyLocalizationBlock(name_localization_block.GetKey(), name_localization_block);
+      // NOLINTEND
 
       const std::string monarch_idea_description = fmt::format("{}_desc", monarch_idea_name);
       commonItems::LocalizationBlock description_localization_block(monarch_idea_description, "english");
