@@ -891,7 +891,7 @@ RailwayLevelRequirements DetermineRailwayLevelRequirements(const std::vector<hoi
 {
    if (paths.empty())
    {
-      return {0.F, 0.F, 0.F, 0.F};
+      return {.level_one = 0.F, .level_two = 0.F, .level_three = 0.F, .level_four = 0.F};
    }
 
    std::vector<float> development_levels;
@@ -907,7 +907,7 @@ RailwayLevelRequirements DetermineRailwayLevelRequirements(const std::vector<hoi
    const float level_one = std::accumulate(development_levels.begin(), development_levels.end(), 0.F) /
                            static_cast<float>(development_levels.size()) / 10.F;
 
-   return {level_one, level_two, level_three, level_four};
+   return {.level_one = level_one, .level_two = level_two, .level_three = level_three, .level_four = level_four};
 }
 
 
