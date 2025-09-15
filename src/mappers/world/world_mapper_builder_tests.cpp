@@ -22,7 +22,7 @@ TEST(MappersWorldWorldMapperBuilderTests, NullBuilderOutputsNull)
    EXPECT_TRUE(null_mapper.province_mapper.GetVic3ToHoi4ProvinceMappings().empty());
    EXPECT_TRUE(null_mapper.tech_mapper.empty());
    std::vector<vic3::Building> buildings{
-       {"building_iron_mine", 1, 1.0F, 1.0F, {}},
+       {"building_iron_mine", 1, vic3::GoodsSalesValue{1.0F}, vic3::StaffingLevel{1.0F}, {}},
    };
    EXPECT_NEAR(null_mapper.resource_mapper.CalculateScore("steel", buildings), 0.0F, kTolerance);
    EXPECT_NEAR(null_mapper.resource_mapper.CalculateScore("oil", buildings), 0.0F, kTolerance);
@@ -36,7 +36,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)
    const auto world_mapper =
        WorldMapperBuilder::CreateDefaultMapper(commonItems::ModFilesystem("test_files/hoi4_world", {}), world).Build();
 
-   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value(), "Z00");
+   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value_or(""), "Z00");
    EXPECT_EQ(world_mapper.province_mapper.GetVic3ToHoi4ProvinceMapping("x002000").at(0), 2);
    EXPECT_THAT(world_mapper.tech_mapper.at(0).GetTechs(),
        testing::UnorderedElementsAre("dest_tech_one", "dest_tech_two"));
@@ -53,10 +53,10 @@ TEST(MappersWorldWorldMapperBuilderTests, LoadResourceMappingWorks)
 
    const auto world_mapper = builder.Build();
    std::vector<vic3::Building> buildings{
-       {"building_iron_mine", 1, 1.0F, 1.0F, {}},
-       {"building_oil_rig", 1, 0.8F, 1.0F, {}},
-       {"building_coal_mine", 1, 0.2F, 1.0F, {}},
-       {"building_steel_factory", 1, 0.8F, 1.0F, {}},
+       {"building_iron_mine", 1, vic3::GoodsSalesValue{1.0F}, vic3::StaffingLevel{1.0F}, {}},
+       {"building_oil_rig", 1, vic3::GoodsSalesValue{0.8F}, vic3::StaffingLevel{1.0F}, {}},
+       {"building_coal_mine", 1, vic3::GoodsSalesValue{0.2F}, vic3::StaffingLevel{1.0F}, {}},
+       {"building_steel_factory", 1, vic3::GoodsSalesValue{0.8F}, vic3::StaffingLevel{1.0F}, {}},
    };
    EXPECT_NEAR(world_mapper.resource_mapper.CalculateScore("steel", buildings), 1.1F, kTolerance);
    EXPECT_NEAR(world_mapper.resource_mapper.CalculateScore("oil", buildings), 0.48F, kTolerance);
@@ -70,7 +70,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultCountryWorks)
                                                }}));
    const auto world_mapper = WorldMapperBuilder::CreateNullMapper().DefaultCountryMapper(world).Build();
 
-   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value(), "Z00");
+   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value_or(""), "Z00");
 }
 
 TEST(MappersWorldWorldMapperBuilderTests, AddCountryWorks)
@@ -78,8 +78,8 @@ TEST(MappersWorldWorldMapperBuilderTests, AddCountryWorks)
    const auto world_mapper =
        WorldMapperBuilder::CreateNullMapper().AddCountries({{1, "ONE"}}).AddCountries({{2, "TWO"}}).Build();
 
-   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value(), "ONE");
-   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(2).value(), "TWO");
+   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value_or(""), "ONE");
+   EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(2).value_or(""), "TWO");
 }
 
 TEST(MappersWorldWorldMapperBuilderTests, AddProvincesWorks)

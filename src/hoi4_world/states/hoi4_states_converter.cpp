@@ -18,6 +18,7 @@
 #include "src/maps/map_data.h"
 #include "src/out_hoi4/world/out_world.h"
 #include "src/support/converter_utils.h"
+#include "src/support/named_type.h"
 
 
 
@@ -436,7 +437,8 @@ std::tuple<int, int, int> ConvertIndustry(const float& total_factories,
     const hoi4::CoastalProvinces& coastal_provinces,
     std::unordered_map<std::string, FactoriesStruct>& accumulator)
 {
-   const float factories = total_factories * province_set.size() / num_hoi4_provinces;
+   const float factories =
+       total_factories * static_cast<float>(province_set.size()) / static_cast<float>(num_hoi4_provinces);
 
    int civilian_factories = 0;
    int military_factories = 0;
@@ -580,13 +582,15 @@ std::tuple<std::optional<int>, std::optional<int>> DetermineNavalBase(const vic3
 }
 
 
-int DetermineAirbaseLevel(int total_factories, int total_infrastructure)
+using TotalFactoriesType = NamedType<int, struct TotalFactoriesParameter>;
+using TotalInfrastructureType = NamedType<int, struct TotalInfrastructureParameter>;
+int DetermineAirbaseLevel(TotalFactoriesType total_factories, TotalInfrastructureType total_infrastructure)
 {
    constexpr int kNumFactoriesPerAirbase = 4;
    constexpr int kAirbasesForInfrastructureLevel = 3;
 
-   int airbase_level = total_factories / kNumFactoriesPerAirbase;
-   if (total_infrastructure >= kAirbasesForInfrastructureLevel)
+   int airbase_level = total_factories.Get() / kNumFactoriesPerAirbase;
+   if (total_infrastructure.Get() >= kAirbasesForInfrastructureLevel)
    {
       ++airbase_level;
    }
@@ -821,14 +825,14 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    {
       if (hoi4_state.GetOwner())
       {
-         const auto& tag = hoi4_state.GetOwner().value();
+         const std::string& tag = hoi4_state.GetOwner().value_or("");
          if (!accumulator.contains(tag))
          {
             accumulator[tag] = {.military = 0, .civilian = 0, .docks = 0};
          }
-         accumulator[tag].military += hoi4_state.GetMilitaryFactories();
-         accumulator[tag].civilian += hoi4_state.GetCivilianFactories();
-         accumulator[tag].docks += hoi4_state.GetDockyards();
+         accumulator[tag].military += static_cast<float>(hoi4_state.GetMilitaryFactories());
+         accumulator[tag].civilian += static_cast<float>(hoi4_state.GetCivilianFactories());
+         accumulator[tag].docks += static_cast<float>(hoi4_state.GetDockyards());
       }
       civilian_factories += hoi4_state.GetCivilianFactories();
       military_factories += hoi4_state.GetMilitaryFactories();
@@ -1080,14 +1084,15 @@ hoi4::States CreateStates(const vic3::World& source_world,
          int infrastructure = infrastructure_mapper.Map(vic3_state_itr->second.GetInfrastructure());
 
          const int air_base_level =
-             DetermineAirbaseLevel(civilian_factories + military_factories + dockyards, infrastructure);
+             DetermineAirbaseLevel(TotalFactoriesType{civilian_factories + military_factories + dockyards},
+                 TotalInfrastructureType{infrastructure});
 
 
          hoi4::Resources resources = {};
          if (config.dynamic_resources)
          {
             auto fraction = static_cast<float>(province_set.size());
-            fraction /= total_non_wasteland_provinces;
+            fraction /= static_cast<float>(total_non_wasteland_provinces);
             resources = CalculateResources(world_mapper.resource_mapper,
                 resource_totals,
                 source_world.GetBuildings().GetBuildingsInState(vic3_state_id),

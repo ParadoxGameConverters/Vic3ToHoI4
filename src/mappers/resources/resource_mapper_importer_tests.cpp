@@ -15,10 +15,10 @@ TEST(MappersResourcesResourceMapperImporterTests, RulesCanBeImported)
 {
    const ResourceMapper mapper = ImportResourceMapper("test_files/configurables/resource_mappings.txt");
    std::vector<vic3::Building> buildings{
-       {"building_iron_mine", 1, 1.0F, 1.0F, {}},
-       {"building_oil_rig", 1, 0.8F, 1.0F, {}},
-       {"building_coal_mine", 1, 0.2F, 1.0F, {}},
-       {"building_steel_factory", 1, 0.8F, 1.0F, {}},
+       {"building_iron_mine", 1, vic3::GoodsSalesValue{1.0F}, vic3::StaffingLevel{1.0F}, {}},
+       {"building_oil_rig", 1, vic3::GoodsSalesValue{0.8F}, vic3::StaffingLevel{1.0F}, {}},
+       {"building_coal_mine", 1, vic3::GoodsSalesValue{0.2F}, vic3::StaffingLevel{1.0F}, {}},
+       {"building_steel_factory", 1, vic3::GoodsSalesValue{0.8F}, vic3::StaffingLevel{1.0F}, {}},
    };
    EXPECT_NEAR(mapper.CalculateScore("steel", buildings), 1.1F, kTolerance);
    EXPECT_NEAR(mapper.CalculateScore("oil", buildings), 0.48F, kTolerance);

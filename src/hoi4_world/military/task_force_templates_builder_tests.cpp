@@ -36,15 +36,15 @@ TEST(Hoi4worldMilitaryTaskForceTemplatesBuilderTests, ImportsTaskForceTemplates)
    }
 
    EXPECT_THAT(ships,
-       testing::ElementsAre(Ship("Big Ship 1", "test1", "test1", "legacy_test1", "Basic Big Ship"),
-           Ship("Small Ship 1", "test1", "test1", "legacy_test1", "Basic Small Ship"),
-           Ship("Small Ship 2", "test1", "test1", "legacy_test1", "Basic Small Ship"),
-           Ship("Big Ship 2", "test1", "test1", "legacy_test1", "Basic Big Ship"),
-           Ship("Small Ship 3", "test1", "test1", "legacy_test1", "Basic Small Ship"),
-           Ship("Small Ship 4", "test1", "test1", "legacy_test1", "Basic Small Ship"),
-           Ship("Big Ship 3", "test2", "test2", "legacy_test2", "1936 Big Ship"),
-           Ship("Small Ship 5", "test2", "test2", "legacy_test2", "1936 Small Ship"),
-           Ship("Small Ship 6", "test2", "test2", "legacy_test2", "1936 Small Ship")));
+       testing::ElementsAre(Ship(ShipOptions{"Big Ship 1", "test1", "test1", "legacy_test1", "Basic Big Ship"}),
+           Ship(ShipOptions{"Small Ship 1", "test1", "test1", "legacy_test1", "Basic Small Ship"}),
+           Ship(ShipOptions{"Small Ship 2", "test1", "test1", "legacy_test1", "Basic Small Ship"}),
+           Ship(ShipOptions{"Big Ship 2", "test1", "test1", "legacy_test1", "Basic Big Ship"}),
+           Ship(ShipOptions{"Small Ship 3", "test1", "test1", "legacy_test1", "Basic Small Ship"}),
+           Ship(ShipOptions{"Small Ship 4", "test1", "test1", "legacy_test1", "Basic Small Ship"}),
+           Ship(ShipOptions{"Big Ship 3", "test2", "test2", "legacy_test2", "1936 Big Ship"}),
+           Ship(ShipOptions{"Small Ship 5", "test2", "test2", "legacy_test2", "1936 Small Ship"}),
+           Ship(ShipOptions{"Small Ship 6", "test2", "test2", "legacy_test2", "1936 Small Ship"})));
    EXPECT_THAT(naval_pms,
        testing::ContainerEq(std::map<std::string, float>{{"pm_basic_bigship", 5.0F},
            {"pm_basic_smallship", 30.0F},

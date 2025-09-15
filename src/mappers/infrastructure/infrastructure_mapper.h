@@ -6,6 +6,7 @@
 #include <functional>
 #include <map>
 
+#include "src/support/named_type.h"
 #include "src/vic3_world/states/vic3_state.h"
 
 
@@ -41,12 +42,14 @@ U FindRoot(const std::function<U(T)>& fn, T x_0, const std::function<T(U)>& x_1_
 /// <remarks>
 /// Most internal data is represented in terms of "additional hoi infra above 1" because that makes a prettier result.
 /// </remarks>
+using InfrastructureConversionRatio = NamedType<float, struct InfrastructureConversionRatioParameter>;
+using InfrastructureFudgeFactor = NamedType<float, struct FudgeFactorParameter>;
 class InfrastructureMapper
 {
   public:
    InfrastructureMapper(const std::map<int, vic3::State>& states);
 
-   InfrastructureMapper(float conversion_ratio, float fudge_factor):
+   InfrastructureMapper(InfrastructureConversionRatio conversion_ratio, InfrastructureFudgeFactor fudge_factor):
        hoi_infra_per_vic_infra_(conversion_ratio),
        fudge_factor_(fudge_factor)
    {
@@ -55,16 +58,19 @@ class InfrastructureMapper
    int Map(float vic3_infrastructure);
 
    float GetTargetInfrastructure() { return target_hoi_infra_per_state_; }
-   float GetConvertedInfrastructure() { return static_cast<float>(converted_hoi_infra_) / converted_hoi_states_; }
-   float GetConversionRatio() { return hoi_infra_per_vic_infra_; };
-   float GetFudgeFactor() { return fudge_factor_; }
+   float GetConvertedInfrastructure()
+   {
+      return static_cast<float>(converted_hoi_infra_) / static_cast<float>(converted_hoi_states_);
+   }
+   float GetConversionRatio() { return hoi_infra_per_vic_infra_.Get(); };
+   float GetFudgeFactor() { return fudge_factor_.Get(); }
 
   private:
    /// hoi infra per vic infra. should be <1.
    /// We use this value instead of the more obvious vic_infra_per_hoi_infra
    /// so that when we set this to 0 during tests, we get a result of 0 hoi
    /// infra instead of infinite hoi infra during the conversion.
-   float hoi_infra_per_vic_infra_ = 0.0f;
+   InfrastructureConversionRatio hoi_infra_per_vic_infra_{0.0f};
    /// <summary>
    /// target additional average hoi infra (amount above 1) per state.
    /// </summary>
@@ -75,7 +81,7 @@ class InfrastructureMapper
    /// Usually, a naïve conversion doesn't result in a very close match to vanilla hoi's infrastructure count.
    /// We adjust the infrastructure in each province until we get close.
    /// </summary>
-   float fudge_factor_ = 0.0F;
+   InfrastructureFudgeFactor fudge_factor_{0.0F};
 
    float FindFudgeFactor(const std::map<int, vic3::State>& states);
 };

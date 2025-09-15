@@ -22,8 +22,8 @@ TEST(Vic3WorldPactImporter, DefaultsAreDefaulted)
 
    const Pact pact = importer.ImportPact(input);
 
-   EXPECT_EQ(pact.GetFirstId(), 0);
-   EXPECT_EQ(pact.GetSecondId(), 0);
+   EXPECT_EQ(pact.GetPartners().first, 0);
+   EXPECT_EQ(pact.GetPartners().second, 0);
    EXPECT_TRUE(pact.GetAction().empty());
    EXPECT_EQ(pact.GetStartDate(), date());
    EXPECT_FALSE(pact.GetForcedDuration().has_value());
@@ -48,8 +48,8 @@ TEST(Vic3WorldPactImporter, PactsCanBeImported)
 
    const Pact pact = importer.ImportPact(input);
 
-   EXPECT_EQ(pact.GetFirstId(), 1053);
-   EXPECT_EQ(pact.GetSecondId(), 268);
+   EXPECT_EQ(pact.GetPartners().first, 1053);
+   EXPECT_EQ(pact.GetPartners().second, 268);
    EXPECT_EQ(pact.GetAction(), "alliance");
    EXPECT_EQ(pact.GetStartDate(), date("1930.2.27"));
    EXPECT_TRUE(pact.GetForcedDuration().has_value());
@@ -72,8 +72,8 @@ TEST(Vic3WorldPactImporter, Pre1_5PactsCanBeImported)
 
    const Pact pact = importer.ImportPact(input);
 
-   EXPECT_EQ(pact.GetFirstId(), 1053);
-   EXPECT_EQ(pact.GetSecondId(), 268);
+   EXPECT_EQ(pact.GetPartners().first, 1053);
+   EXPECT_EQ(pact.GetPartners().second, 268);
    EXPECT_EQ(pact.GetAction(), "alliance");
    EXPECT_EQ(pact.GetStartDate(), date("1930.2.27"));
    EXPECT_TRUE(pact.GetForcedDuration().has_value());

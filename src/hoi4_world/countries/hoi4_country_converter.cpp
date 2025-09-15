@@ -213,7 +213,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
    {
       required[ut] += str;
    }
-   float total = 0.0F;
+   int total = 0;
    for (const auto& [ut, str]: required)
    {
       total += str;
@@ -226,12 +226,12 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
          }
          found += battalion.GetStrength();
       }
-      if (found < str)
+      if (found < static_cast<float>(str))
       {
          return {};
       }
    }
-   if (total < kTolerance)
+   if (total == 0)
    {
       // Avoid an infinite loop of making divisions that don't require any strength.
       return {};
@@ -280,12 +280,12 @@ void ExtractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std
 {
    for (const auto& variant: variants)
    {
-      const auto eq_name = variant.GetName();
+      const auto& eq_name = variant.GetName();
       if (!eq_name.empty())
       {
          active.insert(eq_name);
       }
-      const auto eq_type = variant.GetType();
+      const auto& eq_type = variant.GetType();
       if (!eq_type.empty())
       {
          active.insert(eq_type);
@@ -412,7 +412,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
    {
       for (const auto& [ship_type, number]: naval_formation.units)
       {
-         pm_amounts[ship_type] += number;
+         pm_amounts[ship_type] += static_cast<float>(number);
       }
 
       hoi4::TaskForce task_force{.location = *default_naval_base};
@@ -587,8 +587,8 @@ std::tuple<std::string, std::string, std::string> ConvertLaws(const std::set<std
 float ConvertStability(const vic3::Country& country)
 {
    // TODO once we can calculate legitimacy
-   const float stability = std::clamp(country.GetLegitimacy(), 0, 100) * 0.8F / 100.0F;
-   return stability == 0.0 ? 0.0F : 0.60F;
+   const float stability = std::clamp(static_cast<float>(country.GetLegitimacy()), 0.0F, 100.0F) * 0.8F / 100.0F;
+   return stability == 0.0F ? 0.0F : 0.60F;
 }
 
 
@@ -679,7 +679,8 @@ std::map<std::string, float> CalculateRawIdeologySupport(const std::vector<int>&
          mappers::IdeologyPointsMap ideology_points_map = ideology_mapper.CalculateIdeologyPoints({vic3_law});
          for (auto& [ideology, support]: ideology_points_map)
          {
-            float total_support = static_cast<float>(support) * interest_group.GetClout() * approval_amount;
+            float total_support =
+                static_cast<float>(support) * interest_group.GetClout() * static_cast<float>(approval_amount);
             if (auto [itr, success] = ideology_support.emplace(ideology, total_support); !success)
             {
                itr->second += total_support;

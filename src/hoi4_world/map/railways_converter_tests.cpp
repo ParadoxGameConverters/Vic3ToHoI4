@@ -1389,7 +1389,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwayLevelsAreSetBasedOnStateInfrastr
           StateOptions{
               .provinces = {1, 2, 3, 4, 5, 6, i},
               .victory_points = {{i, 1}},
-              .vic3_infrastructure = i * 2.F,
+              .vic3_infrastructure = static_cast<float>(i) * 2.F,
           });
    }
    hoi4_states.emplace_back(101,

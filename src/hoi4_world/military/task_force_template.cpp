@@ -39,19 +39,21 @@ void hoi4::TaskForceTemplate::AddShipsIfPossible(std::vector<hoi4::Ship>& ships,
 
    for (const auto& [pm, amount]: cost_)
    {
-      points[pm] -= amount * multiple;
+      points[pm] -= amount * static_cast<float>(multiple);
    }
    for (int i = 0; i < multiple; ++i)
    {
       for (const auto& ship: ships_)
       {
          ship_counts[ship.GetName()]++;
-         std::string ship_name = fmt::format("{} {}", ship.GetName().c_str(), ship_counts[ship.GetName()]);
-         ships.emplace_back(ship_name,
-             ship.GetDefinition(),
-             ship.GetEquipment(),
-             ship.GetLegacyEquipment(),
-             ship.GetVersion());
+         const std::string ship_name = fmt::format("{} {}", ship.GetName().c_str(), ship_counts[ship.GetName()]);
+         ships.emplace_back(ShipOptions{
+             .name = ship_name,
+             .definition = ship.GetDefinition(),
+             .equipment = ship.GetEquipment(),
+             .legacy_equipment = ship.GetLegacyEquipment(),
+             .version = ship.GetVersion(),
+         });
       }
    }
 }

@@ -65,9 +65,9 @@ TEST(Hoi4worldCountriesCountryConverter, SourceCountryNumberIsFromSourceCountry)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetSourceCountryNumber(), 1);
+   EXPECT_EQ(country_one.value_or(Country({})).GetSourceCountryNumber(), 1);
    ASSERT_TRUE(country_two.has_value());
-   EXPECT_EQ(country_two->GetSourceCountryNumber(), 2);
+   EXPECT_EQ(country_two.value_or(Country({})).GetSourceCountryNumber(), 2);
 }
 
 
@@ -123,11 +123,11 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetTag(), "T00");
-   EXPECT_EQ(country_one->GetColor(), commonItems::Color(std::array{1, 2, 3}));
+   EXPECT_EQ(country_one.value_or(Country({})).GetTag(), "T00");
+   EXPECT_EQ(country_one.value_or(Country({})).GetColor(), commonItems::Color(std::array{1, 2, 3}));
    ASSERT_TRUE(country_two.has_value());
-   EXPECT_EQ(country_two->GetTag(), "T01");
-   EXPECT_EQ(country_two->GetColor(), commonItems::Color(std::array{2, 4, 6}));
+   EXPECT_EQ(country_two.value_or(Country({})).GetTag(), "T01");
+   EXPECT_EQ(country_two.value_or(Country({})).GetColor(), commonItems::Color(std::array{2, 4, 6}));
 }
 
 
@@ -256,9 +256,9 @@ TEST(Hoi4worldCountriesCountryConverter, OwnedStatesAreConverted)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetOwnedStates(), testing::UnorderedElementsAre(10, 20, 30));
+   EXPECT_THAT(country_one.value_or(Country({})).GetOwnedStates(), testing::UnorderedElementsAre(10, 20, 30));
    ASSERT_TRUE(country_two.has_value());
-   EXPECT_THAT(country_two->GetOwnedStates(), testing::UnorderedElementsAre(40, 50, 60));
+   EXPECT_THAT(country_two.value_or(Country({})).GetOwnedStates(), testing::UnorderedElementsAre(40, 50, 60));
 }
 
 
@@ -316,9 +316,9 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetCapitalState(), std::optional(4));
+   EXPECT_EQ(country_one.value_or(Country({})).GetCapitalState(), std::optional(4));
    ASSERT_TRUE(country_two.has_value());
-   EXPECT_EQ(country_two->GetCapitalState(), std::optional(9));
+   EXPECT_EQ(country_two.value_or(Country({})).GetCapitalState(), std::optional(9));
 }
 
 
@@ -357,7 +357,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
+   EXPECT_EQ(country_one.value_or(Country({})).GetCapitalState(), std::nullopt);
 }
 
 
@@ -392,7 +392,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStat
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
+   EXPECT_EQ(country_one.value_or(Country({})).GetCapitalState(), std::nullopt);
 }
 
 
@@ -432,7 +432,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNo
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetCapitalState(), std::optional(2));
+   EXPECT_EQ(country_one.value_or(Country({})).GetCapitalState(), std::optional(2));
 }
 
 
@@ -472,7 +472,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVps
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetCapitalState(), std::optional(2));
+   EXPECT_EQ(country_one.value_or(Country({})).GetCapitalState(), std::optional(2));
 }
 
 
@@ -512,7 +512,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfInd
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetCapitalState(), std::optional(2));
+   EXPECT_EQ(country_one.value_or(Country({})).GetCapitalState(), std::optional(2));
 }
 
 
@@ -552,7 +552,7 @@ TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersA
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetCapitalState(), std::optional(1));
+   EXPECT_EQ(country_one.value_or(Country({})).GetCapitalState(), std::optional(1));
 }
 
 
@@ -591,7 +591,7 @@ TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapi
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetCapitalState(), std::nullopt);
+   EXPECT_EQ(country_one.value_or(Country({})).GetCapitalState(), std::nullopt);
 }
 
 
@@ -626,7 +626,8 @@ TEST(Hoi4worldCountriesCountryConverter, PrimaryCulturesAreCopied)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetPrimaryCultures(), testing::UnorderedElementsAre("culture_one", "culture_two"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetPrimaryCultures(),
+       testing::UnorderedElementsAre("culture_one", "culture_two"));
 }
 
 
@@ -661,7 +662,7 @@ TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one.value().GetLastElection(), date("1933.1.1"));
+   EXPECT_EQ(country_one.value_or(Country({})).GetLastElection(), date("1933.1.1"));
 }
 
 
@@ -696,7 +697,7 @@ TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one.value().GetLastElection(), date("1934.4.23"));
+   EXPECT_EQ(country_one.value_or(Country({})).GetLastElection(), date("1934.4.23"));
 }
 
 
@@ -731,7 +732,7 @@ TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one.value().GetLastElection(), date("1933.2.15"));
+   EXPECT_EQ(country_one.value_or(Country({})).GetLastElection(), date("1933.2.15"));
 }
 
 
@@ -766,7 +767,7 @@ TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one.value().GetLastElection(), date("1935.11.4"));
+   EXPECT_EQ(country_one.value_or(Country({})).GetLastElection(), date("1935.11.4"));
 }
 
 
@@ -801,7 +802,7 @@ TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one.value().GetLastElection(), date("1932.10.14"));
+   EXPECT_EQ(country_one.value_or(Country({})).GetLastElection(), date("1932.10.14"));
 }
 
 
@@ -837,7 +838,7 @@ TEST(Hoi4worldCountriesCountryConverter, InYearPastElectionsAreNextCycle)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one.value().GetLastElection(), date("1936.1.1"));
+   EXPECT_EQ(country_one.value_or(Country({})).GetLastElection(), date("1936.1.1"));
 }
 
 
@@ -900,9 +901,9 @@ TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetIdeology(), "neutrality");
+   EXPECT_EQ(country_one.value_or(Country({})).GetIdeology(), "neutrality");
    ASSERT_TRUE(country_two.has_value());
-   EXPECT_EQ(country_two->GetIdeology(), "democratic");
+   EXPECT_EQ(country_two.value_or(Country({})).GetIdeology(), "democratic");
 }
 
 
@@ -975,9 +976,9 @@ TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetSubIdeology(), "despotism");
+   EXPECT_EQ(country_one.value_or(Country({})).GetSubIdeology(), "despotism");
    ASSERT_TRUE(country_two.has_value());
-   EXPECT_EQ(country_two->GetSubIdeology(), "liberalism");
+   EXPECT_EQ(country_two.value_or(Country({})).GetSubIdeology(), "liberalism");
 }
 
 
@@ -1013,7 +1014,7 @@ TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetTechnologies().GetTechnologies(),
+   EXPECT_THAT(country_one.value_or(Country({})).GetTechnologies().GetTechnologies(),
        testing::UnorderedElementsAre(
            testing::Pair(std::nullopt, std::set<std::string>{"dest_tech_one", "dest_tech_two"})));
 }
@@ -1037,61 +1038,109 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
        mappers::UnitMapper(templates),
        {{{"source_tech"}, std::nullopt, {"required_tech_one", "required_tech_two"}}},
        {
-           EquipmentVariant("legacy_ship: no_required_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("legacy_ship: missing_required_tech_fails", "", {"required_tech_missing"}, {}, {}),
-           EquipmentVariant("legacy_ship: present_required_tech_succeeds", "", {"required_tech_one"}, {}, {}),
-           EquipmentVariant("legacy_ship: missing_and_present_required_techs_fails",
-               "",
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: no_required_techs_automatically_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: missing_required_tech_fails"},
+               EquipmentVariantType{""},
+               {"required_tech_missing"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: present_required_tech_succeeds"},
+               EquipmentVariantType{""},
+               {"required_tech_one"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: missing_and_present_required_techs_fails"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_missing"},
                {},
                {}),
-           EquipmentVariant("legacy_ship: all_present_required_techs_succeeds",
-               "",
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: all_present_required_techs_succeeds"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_two"},
                {},
                {}),
        },
        {
-           EquipmentVariant("ship: no_required_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("ship: missing_required_tech_fails", "", {"required_tech_missing"}, {}, {}),
-           EquipmentVariant("ship: present_required_tech_succeeds", "", {"required_tech_one"}, {}, {}),
-           EquipmentVariant("ship: missing_and_present_required_techs_fails",
-               "",
+           EquipmentVariant(EquipmentVariantName{"ship: no_required_techs_automatically_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"ship: missing_required_tech_fails"},
+               EquipmentVariantType{""},
+               {"required_tech_missing"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"ship: present_required_tech_succeeds"},
+               EquipmentVariantType{""},
+               {"required_tech_one"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"ship: missing_and_present_required_techs_fails"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_missing"},
                {},
                {}),
-           EquipmentVariant("ship: all_present_required_techs_succeeds",
-               "",
+           EquipmentVariant(EquipmentVariantName{"ship: all_present_required_techs_succeeds"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_two"},
                {},
                {}),
        },
        {
-           EquipmentVariant("plane: no_required_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("plane: missing_required_tech_fails", "", {"required_tech_missing"}, {}, {}),
-           EquipmentVariant("plane: present_required_tech_succeeds", "", {"required_tech_one"}, {}, {}),
-           EquipmentVariant("plane: missing_and_present_required_techs_fails",
-               "",
+           EquipmentVariant(EquipmentVariantName{"plane: no_required_techs_automatically_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"plane: missing_required_tech_fails"},
+               EquipmentVariantType{""},
+               {"required_tech_missing"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"plane: present_required_tech_succeeds"},
+               EquipmentVariantType{""},
+               {"required_tech_one"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"plane: missing_and_present_required_techs_fails"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_missing"},
                {},
                {}),
-           EquipmentVariant("plane: all_present_required_techs_succeeds",
-               "",
+           EquipmentVariant(EquipmentVariantName{"plane: all_present_required_techs_succeeds"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_two"},
                {},
                {}),
        },
        {
-           EquipmentVariant("tank: no_required_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("tank: missing_required_tech_fails", "", {"required_tech_missing"}, {}, {}),
-           EquipmentVariant("tank: present_required_tech_succeeds", "", {"required_tech_one"}, {}, {}),
-           EquipmentVariant("tank: missing_and_present_required_techs_fails",
-               "",
+           EquipmentVariant(EquipmentVariantName{"tank: no_required_techs_automatically_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"tank: missing_required_tech_fails"},
+               EquipmentVariantType{""},
+               {"required_tech_missing"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"tank: present_required_tech_succeeds"},
+               EquipmentVariantType{""},
+               {"required_tech_one"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"tank: missing_and_present_required_techs_fails"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_missing"},
                {},
                {}),
-           EquipmentVariant("tank: all_present_required_techs_succeeds",
-               "",
+           EquipmentVariant(EquipmentVariantName{"tank: all_present_required_techs_succeeds"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_two"},
                {},
                {}),
@@ -1106,35 +1155,68 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetLegacyShipVariants(),
-       testing::ElementsAre(EquipmentVariant("legacy_ship: no_required_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("legacy_ship: present_required_tech_succeeds", "", {"required_tech_one"}, {}, {}),
-           EquipmentVariant("legacy_ship: all_present_required_techs_succeeds",
-               "",
+   EXPECT_THAT(country_one.value_or(Country({})).GetLegacyShipVariants(),
+       testing::ElementsAre(
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: no_required_techs_automatically_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: present_required_tech_succeeds"},
+               EquipmentVariantType{""},
+               {"required_tech_one"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: all_present_required_techs_succeeds"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_two"},
                {},
                {})));
-   EXPECT_THAT(country_one->GetShipVariants(),
-       testing::ElementsAre(EquipmentVariant("ship: no_required_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("ship: present_required_tech_succeeds", "", {"required_tech_one"}, {}, {}),
-           EquipmentVariant("ship: all_present_required_techs_succeeds",
-               "",
+   EXPECT_THAT(country_one.value_or(Country({})).GetShipVariants(),
+       testing::ElementsAre(EquipmentVariant(EquipmentVariantName{"ship: no_required_techs_automatically_succeeds"},
+                                EquipmentVariantType{""},
+                                {},
+                                {},
+                                {}),
+           EquipmentVariant(EquipmentVariantName{"ship: present_required_tech_succeeds"},
+               EquipmentVariantType{""},
+               {"required_tech_one"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"ship: all_present_required_techs_succeeds"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_two"},
                {},
                {})));
-   EXPECT_THAT(country_one->GetPlaneVariants(),
-       testing::ElementsAre(EquipmentVariant("plane: no_required_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("plane: present_required_tech_succeeds", "", {"required_tech_one"}, {}, {}),
-           EquipmentVariant("plane: all_present_required_techs_succeeds",
-               "",
+   EXPECT_THAT(country_one.value_or(Country({})).GetPlaneVariants(),
+       testing::ElementsAre(EquipmentVariant(EquipmentVariantName{"plane: no_required_techs_automatically_succeeds"},
+                                EquipmentVariantType{""},
+                                {},
+                                {},
+                                {}),
+           EquipmentVariant(EquipmentVariantName{"plane: present_required_tech_succeeds"},
+               EquipmentVariantType{""},
+               {"required_tech_one"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"plane: all_present_required_techs_succeeds"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_two"},
                {},
                {})));
-   EXPECT_THAT(country_one->GetTankVariants(),
-       testing::ElementsAre(EquipmentVariant("tank: no_required_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("tank: present_required_tech_succeeds", "", {"required_tech_one"}, {}, {}),
-           EquipmentVariant("tank: all_present_required_techs_succeeds",
-               "",
+   EXPECT_THAT(country_one.value_or(Country({})).GetTankVariants(),
+       testing::ElementsAre(EquipmentVariant(EquipmentVariantName{"tank: no_required_techs_automatically_succeeds"},
+                                EquipmentVariantType{""},
+                                {},
+                                {},
+                                {}),
+           EquipmentVariant(EquipmentVariantName{"tank: present_required_tech_succeeds"},
+               EquipmentVariantType{""},
+               {"required_tech_one"},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"tank: all_present_required_techs_succeeds"},
+               EquipmentVariantType{""},
                {"required_tech_one", "required_tech_two"},
                {},
                {})));
@@ -1160,41 +1242,89 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
        mappers::UnitMapper(templates),
        {{{"source_tech"}, std::nullopt, {"blocking_tech_one", "blocking_tech_two"}}},
        {
-           EquipmentVariant("legacy_ship: no_blocking_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("legacy_ship: having_blocking_tech_fails", "", {}, {"blocking_tech_one"}, {}),
-           EquipmentVariant("legacy_ship: missing_blocking_tech_succeeds", "", {}, {"blocking_tech_missing"}, {}),
-           EquipmentVariant("legacy_ship: missing_and_present_blocking_techs_fails",
-               "",
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: no_blocking_techs_automatically_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: having_blocking_tech_fails"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_one"},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: missing_blocking_tech_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_missing"},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: missing_and_present_blocking_techs_fails"},
+               EquipmentVariantType{""},
                {},
                {"blocking_tech_one", "blocking_tech_missing"},
                {}),
        },
        {
-           EquipmentVariant("ship: no_blocking_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("ship: having_blocking_tech_fails", "", {}, {"blocking_tech_one"}, {}),
-           EquipmentVariant("ship: missing_blocking_tech_succeeds", "", {}, {"blocking_tech_missing"}, {}),
-           EquipmentVariant("ship: missing_and_present_blocking_techs_fails",
-               "",
+           EquipmentVariant(EquipmentVariantName{"ship: no_blocking_techs_automatically_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"ship: having_blocking_tech_fails"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_one"},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"ship: missing_blocking_tech_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_missing"},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"ship: missing_and_present_blocking_techs_fails"},
+               EquipmentVariantType{""},
                {},
                {"blocking_tech_one", "blocking_tech_missing"},
                {}),
        },
        {
-           EquipmentVariant("plane: no_blocking_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("plane: having_blocking_tech_fails", "", {}, {"blocking_tech_one"}, {}),
-           EquipmentVariant("plane: missing_blocking_tech_succeeds", "", {}, {"blocking_tech_missing"}, {}),
-           EquipmentVariant("plane: missing_and_present_blocking_techs_fails",
-               "",
+           EquipmentVariant(EquipmentVariantName{"plane: no_blocking_techs_automatically_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"plane: having_blocking_tech_fails"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_one"},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"plane: missing_blocking_tech_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_missing"},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"plane: missing_and_present_blocking_techs_fails"},
+               EquipmentVariantType{""},
                {},
                {"blocking_tech_one", "blocking_tech_missing"},
                {}),
        },
        {
-           EquipmentVariant("tank: no_blocking_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("tank: having_blocking_tech_fails", "", {}, {"blocking_tech_one"}, {}),
-           EquipmentVariant("tank: missing_blocking_tech_succeeds", "", {}, {"blocking_tech_missing"}, {}),
-           EquipmentVariant("tank: missing_and_present_blocking_techs_fails",
-               "",
+           EquipmentVariant(EquipmentVariantName{"tank: no_blocking_techs_automatically_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"tank: having_blocking_tech_fails"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_one"},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"tank: missing_blocking_tech_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_missing"},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"tank: missing_and_present_blocking_techs_fails"},
+               EquipmentVariantType{""},
                {},
                {"blocking_tech_one", "blocking_tech_missing"},
                {}),
@@ -1209,18 +1339,51 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetLegacyShipVariants(),
-       testing::ElementsAre(EquipmentVariant("legacy_ship: no_blocking_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("legacy_ship: missing_blocking_tech_succeeds", "", {}, {"blocking_tech_missing"}, {})));
-   EXPECT_THAT(country_one->GetShipVariants(),
-       testing::ElementsAre(EquipmentVariant("ship: no_blocking_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("ship: missing_blocking_tech_succeeds", "", {}, {"blocking_tech_missing"}, {})));
-   EXPECT_THAT(country_one->GetPlaneVariants(),
-       testing::ElementsAre(EquipmentVariant("plane: no_blocking_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("plane: missing_blocking_tech_succeeds", "", {}, {"blocking_tech_missing"}, {})));
-   EXPECT_THAT(country_one->GetTankVariants(),
-       testing::ElementsAre(EquipmentVariant("tank: no_blocking_techs_automatically_succeeds", "", {}, {}, {}),
-           EquipmentVariant("tank: missing_blocking_tech_succeeds", "", {}, {"blocking_tech_missing"}, {})));
+   EXPECT_THAT(country_one.value_or(Country({})).GetLegacyShipVariants(),
+       testing::ElementsAre(
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: no_blocking_techs_automatically_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {},
+               {}),
+           EquipmentVariant(EquipmentVariantName{"legacy_ship: missing_blocking_tech_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_missing"},
+               {})));
+   EXPECT_THAT(country_one.value_or(Country({})).GetShipVariants(),
+       testing::ElementsAre(EquipmentVariant(EquipmentVariantName{"ship: no_blocking_techs_automatically_succeeds"},
+                                EquipmentVariantType{""},
+                                {},
+                                {},
+                                {}),
+           EquipmentVariant(EquipmentVariantName{"ship: missing_blocking_tech_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_missing"},
+               {})));
+   EXPECT_THAT(country_one.value_or(Country({})).GetPlaneVariants(),
+       testing::ElementsAre(EquipmentVariant(EquipmentVariantName{"plane: no_blocking_techs_automatically_succeeds"},
+                                EquipmentVariantType{""},
+                                {},
+                                {},
+                                {}),
+           EquipmentVariant(EquipmentVariantName{"plane: missing_blocking_tech_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_missing"},
+               {})));
+   EXPECT_THAT(country_one.value_or(Country({})).GetTankVariants(),
+       testing::ElementsAre(EquipmentVariant(EquipmentVariantName{"tank: no_blocking_techs_automatically_succeeds"},
+                                EquipmentVariantType{""},
+                                {},
+                                {},
+                                {}),
+           EquipmentVariant(EquipmentVariantName{"tank: missing_blocking_tech_succeeds"},
+               EquipmentVariantType{""},
+               {},
+               {"blocking_tech_missing"},
+               {})));
 }
 
 
@@ -1255,7 +1418,7 @@ TEST(Hoi4worldCountriesCountryConverter, LawsDefaultsToDefaultLaws)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetLaws(),
+   EXPECT_THAT(country_one.value_or(Country({})).GetLaws(),
        testing::UnorderedElementsAre("civilian_economy", "export_focus", "volunteer_only"));
 }
 
@@ -1291,7 +1454,7 @@ TEST(Hoi4worldCountriesCountryConverter, FascistCountriesGetDifferentEconomicIde
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetLaws(),
+   EXPECT_THAT(country_one.value_or(Country({})).GetLaws(),
        testing::UnorderedElementsAre("partial_economic_mobilisation", "limited_exports", "volunteer_only"));
 }
 
@@ -1329,7 +1492,7 @@ TEST(Hoi4worldCountriesCountryConverter, MassConscriptionLeadsToLimitedConscript
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetLaws(),
+   EXPECT_THAT(country_one.value_or(Country({})).GetLaws(),
        testing::UnorderedElementsAre("civilian_economy", "export_focus", "limited_conscription"));
 }
 
@@ -1364,7 +1527,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultToEmpty)
        dummy_characters,
        dummy_culture_queues);
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_TRUE(country_one->GetIdeas().empty());
+   EXPECT_TRUE(country_one.value_or(Country({})).GetIdeas().empty());
 }
 
 
@@ -1398,7 +1561,7 @@ TEST(Hoi4worldCountriesCountryConverter, DecentralizedCountriesGetDecentralizedI
        dummy_characters,
        dummy_culture_queues);
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetIdeas(), testing::UnorderedElementsAre("decentralized"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetIdeas(), testing::UnorderedElementsAre("decentralized"));
 }
 
 
@@ -1497,16 +1660,16 @@ TEST(Hoi4worldCountriesCountryConverter, OnlyConservativeMonarchiesHaveNobleLead
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetSubIdeology(), "despotism");
-   EXPECT_THAT(country_one->GetNameList().male_names,
+   EXPECT_EQ(country_one.value_or(Country({})).GetSubIdeology(), "despotism");
+   EXPECT_THAT(country_one.value_or(Country({})).GetNameList().male_names,
        testing::ElementsAre("king0", "king1", "king2", "king3", "king4"));
-   EXPECT_THAT(country_one->GetNameList().female_names,
+   EXPECT_THAT(country_one.value_or(Country({})).GetNameList().female_names,
        testing::ElementsAre("queen0", "queen1", "queen2", "queen3", "queen4"));
-   EXPECT_THAT(country_one->GetNameList().surnames, testing::ElementsAre("von Doe"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetNameList().surnames, testing::ElementsAre("von Doe"));
    ASSERT_TRUE(country_two.has_value());
-   EXPECT_THAT(country_two->GetNameList().male_names, testing::ElementsAre("president"));
-   EXPECT_THAT(country_two->GetNameList().female_names, testing::ElementsAre("presidentin"));
-   EXPECT_THAT(country_two->GetNameList().surnames, testing::ElementsAre("doe"));
+   EXPECT_THAT(country_two.value_or(Country({})).GetNameList().male_names, testing::ElementsAre("president"));
+   EXPECT_THAT(country_two.value_or(Country({})).GetNameList().female_names, testing::ElementsAre("presidentin"));
+   EXPECT_THAT(country_two.value_or(Country({})).GetNameList().surnames, testing::ElementsAre("doe"));
 }
 
 
@@ -1560,9 +1723,9 @@ TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetNameList().male_names, testing::ElementsAre("president"));
-   EXPECT_THAT(country_one->GetNameList().female_names, testing::ElementsAre("presidentin"));
-   EXPECT_THAT(country_one->GetNameList().surnames, testing::ElementsAre("von Doe"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetNameList().male_names, testing::ElementsAre("president"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetNameList().female_names, testing::ElementsAre("presidentin"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetNameList().surnames, testing::ElementsAre("von Doe"));
 }
 
 
@@ -1618,9 +1781,11 @@ TEST(Hoi4worldCountriesCountryConverter, TooFewNobleFirstsAddsCommonFirsts)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetNameList().male_names, testing::UnorderedElementsAre("president", "king"));
-   EXPECT_THAT(country_one->GetNameList().female_names, testing::UnorderedElementsAre("presidentin", "queen"));
-   EXPECT_THAT(country_one->GetNameList().surnames, testing::ElementsAre("von Doe"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetNameList().male_names,
+       testing::UnorderedElementsAre("president", "king"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetNameList().female_names,
+       testing::UnorderedElementsAre("presidentin", "queen"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetNameList().surnames, testing::ElementsAre("von Doe"));
 }
 
 
@@ -1659,7 +1824,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsUseSentinielValue)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetNameList().male_names, testing::ElementsAre("John"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetNameList().male_names, testing::ElementsAre("John"));
 }
 
 
@@ -1748,7 +1913,8 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetGraphicsBlock().portrait_paths.at("army"), testing::ElementsAre("GFX_general"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetGraphicsBlock().portrait_paths.at("army"),
+       testing::ElementsAre("GFX_general"));
 }
 
 
@@ -1812,9 +1978,9 @@ TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetPuppets(), std::set<std::string>({"T01"}));
+   EXPECT_EQ(country_one.value_or(Country({})).GetPuppets(), std::set<std::string>({"T01"}));
    ASSERT_TRUE(country_two.has_value());
-   EXPECT_EQ(country_two->GetPuppets(), std::set<std::string>());
+   EXPECT_EQ(country_two.value_or(Country({})).GetPuppets(), std::set<std::string>());
    std::cout.rdbuf(cout_buffer);
    EXPECT_THAT(log.str(),
        testing::HasSubstr(R"([ERROR] Invalid subject relationship between 1 and nonexistent country 50)"));
@@ -1877,9 +2043,9 @@ TEST(Hoi4worldCountriesCountryConverter, OverlordIsConverted)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetOverlord(), std::make_optional("T01"));
+   EXPECT_EQ(country_one.value_or(Country({})).GetOverlord(), std::make_optional("T01"));
    ASSERT_TRUE(country_two.has_value());
-   EXPECT_EQ(country_two->GetOverlord(), std::nullopt);
+   EXPECT_EQ(country_two.value_or(Country({})).GetOverlord(), std::nullopt);
 }
 
 
@@ -1922,8 +2088,8 @@ TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetLeaderIds(), testing::ElementsAre(1, 3));
-   EXPECT_THAT(country_one->GetSpyIds(), testing::ElementsAre(2));
+   EXPECT_THAT(country_one.value_or(Country({})).GetLeaderIds(), testing::ElementsAre(1, 3));
+   EXPECT_THAT(country_one.value_or(Country({})).GetSpyIds(), testing::ElementsAre(2));
 }
 
 
@@ -2002,10 +2168,20 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
    const States states({.vic3_state_ids_to_hoi4_state_ids{{2, 4}}});
 
    std::map<int, vic3::InterestGroup> igs;
-   igs.insert(
-       {1, vic3::InterestGroup("test_group_one", 1, 0, 50.F, false, {"test_ideology_one", "test_ideology_two"})});
-   igs.insert(
-       {2, vic3::InterestGroup("test_group_two", 1, 0, 150.F, false, {"test_ideology_one", "test_ideology_three"})});
+   igs.insert({1,
+       vic3::InterestGroup("test_group_one",
+           InterestGroupCountryId{1},
+           InterestGroupLeader{0},
+           InterestGroupClout{50.F},
+           InterestGroupInGovernment{false},
+           {"test_ideology_one", "test_ideology_two"})});
+   igs.insert({2,
+       vic3::InterestGroup("test_group_two",
+           InterestGroupCountryId{1},
+           InterestGroupLeader{0},
+           InterestGroupClout{150.F},
+           InterestGroupInGovernment{false},
+           {"test_ideology_one", "test_ideology_three"})});
 
    vic3::Ideologies ideologies = vic3::Ideologies({
        {"test_ideology_one", vic3::Ideology({{"test_law_one", 1}})},
@@ -2065,7 +2241,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetIdeologySupport(),
+   EXPECT_THAT(country_one.value_or(Country({})).GetIdeologySupport(),
        testing::UnorderedElementsAre(testing::Pair("democratic", 10),
            testing::Pair("communist", 0),
            testing::Pair("fascist", 54),
@@ -2105,7 +2281,8 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetIdeologySupport(), testing::UnorderedElementsAre(testing::Pair("neutrality", 100)));
+   EXPECT_THAT(country_one.value_or(Country({})).GetIdeologySupport(),
+       testing::UnorderedElementsAre(testing::Pair("neutrality", 100)));
 }
 
 
@@ -2141,7 +2318,7 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityDefaultsToZero)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetStability(), 0.0F);
+   EXPECT_THAT(country_one.value_or(Country({})).GetStability(), 0.0F);
 }
 
 
@@ -2199,8 +2376,8 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one->GetStability(), 0.60F);
-   EXPECT_FLOAT_EQ(country_two->GetStability(), 0.00F);
+   EXPECT_EQ(country_one.value_or(Country({})).GetStability(), 0.60F);
+   EXPECT_FLOAT_EQ(country_two.value_or(Country({})).GetStability(), 0.00F);
 }
 
 
@@ -2213,8 +2390,8 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
            {
                vic3::Building(vic3::kBuildingTypeBarracks,
                    1,
-                   0,
-                   1,
+                   vic3::GoodsSalesValue{0},
+                   vic3::StaffingLevel{1},
                    std::vector<std::string>{"trench_infantry", "field_hospitals"}),
            },
        },
@@ -2223,8 +2400,8 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
            {
                vic3::Building(vic3::kBuildingTypeBarracks,
                    2,
-                   0,
-                   1,
+                   vic3::GoodsSalesValue{0},
+                   vic3::StaffingLevel{1},
                    std::vector<std::string>{"trench_infantry", "wound_dressing", "militia"}),
            },
        },
@@ -2293,7 +2470,7 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetUnits(),
+   EXPECT_THAT(country_one.value_or(Country({})).GetUnits(),
        testing::UnorderedElementsAre(hoi4::Unit{"Light Infantry", 40, 1},
            hoi4::Unit{"Light Infantry", 40, 1},
            hoi4::Unit{"Light Infantry", 70, 2},
@@ -2332,7 +2509,7 @@ TEST(Hoi4worldCountriesCountryConverter, WarsDefaultToEmpty)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_TRUE(country_one->GetWars().empty());
+   EXPECT_TRUE(country_one.value_or(Country({})).GetWars().empty());
 }
 
 
@@ -2345,7 +2522,7 @@ TEST(Hoi4worldCountriesCountryConverter, WarsCanBeAdded)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    mappers::TemplateMap templates;
 
-   auto country_one = ConvertCountry(source_world,
+   std::optional<Country> possible_country = ConvertCountry(source_world,
        source_country_one,
        commonItems::LocalizationDatabase{{}, {}},
        country_mapper,
@@ -2365,15 +2542,15 @@ TEST(Hoi4worldCountriesCountryConverter, WarsCanBeAdded)
        {},
        dummy_characters,
        dummy_culture_queues);
+   ASSERT_TRUE(possible_country.has_value());
+   Country country = possible_country.value_or(Country({}));
 
    const War war_one({.original_attacker = "ONE"});
-   country_one->AddWar(war_one);
+   country.AddWar(war_one);
    const War war_two({.original_attacker = "TWO"});
-   country_one->AddWar(war_two);
+   country.AddWar(war_two);
 
-
-   ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetWars(), testing::ElementsAre(war_one, war_two));
+   EXPECT_THAT(country.GetWars(), testing::ElementsAre(war_one, war_two));
 }
 
 
@@ -2418,8 +2595,8 @@ TEST(Hoi4worldCountriesCountryConverter, MonarchIdeaCanBeAdded)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetIdeas(), testing::ElementsAre("TAG_FirstName_LastName"));
-   EXPECT_THAT(country_one->GetMonarchIdeaIds(), 42);
+   EXPECT_THAT(country_one.value_or(Country({})).GetIdeas(), testing::ElementsAre("TAG_FirstName_LastName"));
+   EXPECT_THAT(country_one.value_or(Country({})).GetMonarchIdeaIds(), 42);
 }
 
 TEST(Hoi4worldCountriesCountryConverter, ConvoysConvert)
@@ -2435,9 +2612,24 @@ TEST(Hoi4worldCountriesCountryConverter, ConvoysConvert)
        {3, vic3::State({.id = 3})},
    };
    vic3::Buildings buildings(std::map<int, std::vector<vic3::Building>>{
-       {1, {vic3::Building(vic3::kBuildingTypePort, 1, 0, 1, std::vector<std::string>{"dummy", "pm_port_1"})}},
-       {2, {vic3::Building(vic3::kBuildingTypePort, 2, 0, 1, std::vector<std::string>{"pm_port_2"})}},
-       {3, {vic3::Building(vic3::kBuildingTypePort, 3, 0, 1, std::vector<std::string>{"pm_port_3"})}},
+       {1,
+           {vic3::Building(vic3::kBuildingTypePort,
+               1,
+               vic3::GoodsSalesValue{0},
+               vic3::StaffingLevel{1},
+               std::vector<std::string>{"dummy", "pm_port_1"})}},
+       {2,
+           {vic3::Building(vic3::kBuildingTypePort,
+               2,
+               vic3::GoodsSalesValue{0},
+               vic3::StaffingLevel{1},
+               std::vector<std::string>{"pm_port_2"})}},
+       {3,
+           {vic3::Building(vic3::kBuildingTypePort,
+               3,
+               vic3::GoodsSalesValue{0},
+               vic3::StaffingLevel{1},
+               std::vector<std::string>{"pm_port_3"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.states = vic3_states, .buildings = buildings});
    const States states({.states{
@@ -2505,9 +2697,9 @@ TEST(Hoi4worldCountriesCountryConverter, ConvoysConvert)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_THAT(country_one->GetConvoys(), 11);
+   EXPECT_THAT(country_one.value_or(Country({})).GetConvoys(), 11);
    ASSERT_TRUE(country_two.has_value());
-   EXPECT_THAT(country_two->GetConvoys(), 100);
+   EXPECT_THAT(country_two.value_or(Country({})).GetConvoys(), 100);
 }
 
 TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
@@ -2523,9 +2715,24 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
        {3, vic3::State({.id = 3})},
    };
    vic3::Buildings buildings(std::map<int, std::vector<vic3::Building>>{
-       {1, {vic3::Building(vic3::kBuildingTypeNavalBase, 1, 0, 10, std::vector<std::string>{"pm_victorian"})}},
-       {2, {vic3::Building(vic3::kBuildingTypeNavalBase, 2, 0, 10, std::vector<std::string>{"pm_ancient"})}},
-       {3, {vic3::Building(vic3::kBuildingTypeNavalBase, 3, 0, 10, std::vector<std::string>{"pm_modern"})}},
+       {1,
+           {vic3::Building(vic3::kBuildingTypeNavalBase,
+               1,
+               vic3::GoodsSalesValue{0},
+               vic3::StaffingLevel{10},
+               std::vector<std::string>{"pm_victorian"})}},
+       {2,
+           {vic3::Building(vic3::kBuildingTypeNavalBase,
+               2,
+               vic3::GoodsSalesValue{0},
+               vic3::StaffingLevel{10},
+               std::vector<std::string>{"pm_ancient"})}},
+       {3,
+           {vic3::Building(vic3::kBuildingTypeNavalBase,
+               3,
+               vic3::GoodsSalesValue{0},
+               vic3::StaffingLevel{10},
+               std::vector<std::string>{"pm_modern"})}},
    });
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.states = vic3_states, .buildings = buildings});
    const States states({.states{
@@ -2553,16 +2760,34 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
    mappers::TemplateMap templates;
 
    std::vector<EquipmentVariant> legacy_ships{
-       EquipmentVariant("Basic Ship", "legacy_basic_ship", {}, {}, {}),
-       EquipmentVariant("1936 Ship", "legacy_1936_ship", {}, {}, {}),
+       EquipmentVariant(EquipmentVariantName{"Basic Ship"}, EquipmentVariantType{"legacy_basic_ship"}, {}, {}, {}),
+       EquipmentVariant(EquipmentVariantName{"1936 Ship"}, EquipmentVariantType{"legacy_1936_ship"}, {}, {}, {}),
    };
    std::vector<EquipmentVariant> mtg_ships{
-       EquipmentVariant("Basic Ship", "mtg_basic_ship", {}, {}, {}),
-       EquipmentVariant("1936 Ship", "mtg_1936_ship", {}, {}, {}),
+       EquipmentVariant(EquipmentVariantName{"Basic Ship"}, EquipmentVariantType{"mtg_basic_ship"}, {}, {}, {}),
+       EquipmentVariant(EquipmentVariantName{"1936 Ship"}, EquipmentVariantType{"mtg_1936_ship"}, {}, {}, {}),
    };
    std::vector<TaskForceTemplate> task_force_templates{
-       {{{"pm_victorian", 5.0F}}, {Ship("Cruiser", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship")}},
-       {{{"pm_modern", 10.0F}}, {Ship("Battleship", "1936_ship", "mtg_1936_ship", "legacy_1936_ship", "1936 Ship")}},
+       {
+           {{"pm_victorian", 5.0F}},
+           {Ship(ShipOptions{
+               .name = "Cruiser",
+               .definition = "basic_ship",
+               .equipment = "mtg_basic_ship",
+               .legacy_equipment = "legacy_basic_ship",
+               .version = "Basic Ship",
+           })},
+       },
+       {
+           {{"pm_modern", 10.0F}},
+           {Ship(ShipOptions{
+               .name = "Battleship",
+               .definition = "1936_ship",
+               .equipment = "mtg_1936_ship",
+               .legacy_equipment = "legacy_1936_ship",
+               .version = "1936 Ship",
+           })},
+       },
    };
 
    const auto country_one = ConvertCountry(source_world,
@@ -2611,8 +2836,8 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
            .name = "1. Fleet",
            .ships =
                {
-                   Ship("Cruiser 1", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"),
-                   Ship("Cruiser 2", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"),
+                   Ship(ShipOptions{"Cruiser 1", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"}),
+                   Ship(ShipOptions{"Cruiser 2", "basic_ship", "mtg_basic_ship", "legacy_basic_ship", "Basic Ship"}),
                },
            .location = 1,
        }));
@@ -2621,7 +2846,7 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
            .name = "1. Fleet",
            .ships =
                {
-                   Ship("Battleship 1", "1936_ship", "mtg_1936_ship", "legacy_1936_ship", "1936 Ship"),
+                   Ship(ShipOptions{"Battleship 1", "1936_ship", "mtg_1936_ship", "legacy_1936_ship", "1936 Ship"}),
                },
            .location = 3,
        }));

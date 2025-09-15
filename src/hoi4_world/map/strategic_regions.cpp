@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <ranges>
 
+#include "src/support/named_type.h"
+
 
 
 namespace
@@ -47,16 +49,22 @@ std::optional<int> DetermineMostUsedRegion(const std::map<int, int>& used_region
 }
 
 
-void AddProvinceToRegion(int region_number, int province_id, std::map<int, hoi4::StrategicRegion>& strategic_regions)
+using RegionNumber = NamedType<int, struct RegionNumberParameter>;
+using ProvinceID = NamedType<int, struct ProvinceIDParameter>;
+
+
+void AddProvinceToRegion(RegionNumber region_number,
+    ProvinceID province_id,
+    std::map<int, hoi4::StrategicRegion>& strategic_regions)
 {
-   auto region = strategic_regions.find(region_number);
+   const auto region = strategic_regions.find(region_number.Get());
    if (region == strategic_regions.end())
    {
-      Log(LogLevel::Warning) << "Strategic region " << region_number << " was not in the list of regions.";
+      Log(LogLevel::Warning) << "Strategic region " << region_number.Get() << " was not in the list of regions.";
       return;
    }
 
-   region->second.AddNewProvince(province_id);
+   region->second.AddNewProvince(province_id.Get());
 }
 
 
@@ -113,7 +121,7 @@ void AddSurroundedProvincesToRegions(const std::map<int, int>& original_province
 
       if (const auto best_region = DetermineMostUsedRegion(used_regions); best_region)
       {
-         AddProvinceToRegion(*best_region, province, strategic_regions);
+         AddProvinceToRegion(RegionNumber{*best_region}, ProvinceID{province}, strategic_regions);
       }
    }
 }
@@ -129,7 +137,7 @@ void AddLeftoverProvincesToRegions(const std::set<int>& assigned_provinces,
       {
          continue;
       }
-      AddProvinceToRegion(strategic_region, province, strategic_regions);
+      AddProvinceToRegion(RegionNumber{strategic_region}, ProvinceID{province}, strategic_regions);
    }
 }
 
@@ -140,7 +148,7 @@ void AddProvincesToRegion(int region_number,
 {
    for (const auto& province: state.GetProvinces())
    {
-      AddProvinceToRegion(region_number, province, strategic_regions);
+      AddProvinceToRegion(RegionNumber{region_number}, ProvinceID{province}, strategic_regions);
    }
 }
 

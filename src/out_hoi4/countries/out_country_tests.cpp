@@ -541,20 +541,52 @@ TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)
    create_directories("output/EquipmentVariantsAreOutput/history/countries");
 
    const std::vector<hoi4::EquipmentVariant> legacy_ship_variants = {
-       hoi4::EquipmentVariant("legacy_ship: variant_one", "", {}, {}, {}),
-       hoi4::EquipmentVariant("legacy_ship: variant_two", "", {}, {"blocking_tech_missing"}, {}),
+       hoi4::EquipmentVariant(hoi4::EquipmentVariantName{"legacy_ship: variant_one"},
+           hoi4::EquipmentVariantType{""},
+           {},
+           {},
+           {}),
+       hoi4::EquipmentVariant(hoi4::EquipmentVariantName{"legacy_ship: variant_two"},
+           hoi4::EquipmentVariantType{""},
+           {},
+           {"blocking_tech_missing"},
+           {}),
    };
    const std::vector<hoi4::EquipmentVariant> ship_variants = {
-       hoi4::EquipmentVariant("ship: variant_one", "", {}, {}, {}),
-       hoi4::EquipmentVariant("ship: variant_two", "", {}, {"blocking_tech_missing"}, {}),
+       hoi4::EquipmentVariant(hoi4::EquipmentVariantName{"ship: variant_one"},
+           hoi4::EquipmentVariantType{""},
+           {},
+           {},
+           {}),
+       hoi4::EquipmentVariant(hoi4::EquipmentVariantName{"ship: variant_two"},
+           hoi4::EquipmentVariantType{""},
+           {},
+           {"blocking_tech_missing"},
+           {}),
    };
    const std::vector<hoi4::EquipmentVariant> plane_variants = {
-       hoi4::EquipmentVariant("plane: variant_one", "", {}, {}, {}),
-       hoi4::EquipmentVariant("plane: variant_two", "", {}, {"blocking_tech_missing"}, {}),
+       hoi4::EquipmentVariant(hoi4::EquipmentVariantName{"plane: variant_one"},
+           hoi4::EquipmentVariantType{""},
+           {},
+           {},
+           {}),
+       hoi4::EquipmentVariant(hoi4::EquipmentVariantName{"plane: variant_two"},
+           hoi4::EquipmentVariantType{""},
+           {},
+           {"blocking_tech_missing"},
+           {}),
    };
    const std::vector<hoi4::EquipmentVariant> tank_variants = {
-       hoi4::EquipmentVariant("tank: variant_one", "", {}, {}, {}),
-       hoi4::EquipmentVariant("tank: variant_two", "", {}, {"blocking_tech_missing"}, {}),
+       hoi4::EquipmentVariant(hoi4::EquipmentVariantName{"tank: variant_one"},
+           hoi4::EquipmentVariantType{""},
+           {},
+           {},
+           {}),
+       hoi4::EquipmentVariant(hoi4::EquipmentVariantName{"tank: variant_two"},
+           hoi4::EquipmentVariantType{""},
+           {},
+           {"blocking_tech_missing"},
+           {}),
    };
 
    const hoi4::Country country({.tag = "TAG",
@@ -777,11 +809,13 @@ TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
                    .name = "123 Fleet",
                    .ships =
                        {
-                           hoi4::Ship("Test Ship",
-                               "test_ship_type",
-                               "mtg_equipment_template",
-                               "legacy_equipment_template",
-                               "Test Class"),
+                           hoi4::Ship(hoi4::ShipOptions{
+                               .name = "Test Ship",
+                               .definition = "test_ship_type",
+                               .equipment = "mtg_equipment_template",
+                               .legacy_equipment = "legacy_equipment_template",
+                               .version = "Test Class",
+                           }),
                        },
                    .location = 123,
                },
@@ -789,11 +823,13 @@ TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
                    .name = "456 Fleet",
                    .ships =
                        {
-                           hoi4::Ship("Test Ship 2",
-                               "another_ship_type",
-                               "mtg_equipment_template_2",
-                               "legacy_equipment_template_2",
-                               "Another Class"),
+                           hoi4::Ship(hoi4::ShipOptions{
+                               .name = "Test Ship 2",
+                               .definition = "another_ship_type",
+                               .equipment = "mtg_equipment_template_2",
+                               .legacy_equipment = "legacy_equipment_template_2",
+                               .version = "Another Class",
+                           }),
                        },
                    .location = 456,
                },

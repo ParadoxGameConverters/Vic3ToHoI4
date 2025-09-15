@@ -225,10 +225,10 @@ bool hoi4::HasMonarchs(const std::string& leader_type, const std::set<std::strin
 hoi4::Character hoi4::ConvertCharacter(const vic3::Character& source_character,
     int leader_id,
     const RoleIds& role_ids,
-    const std::string& leader_type,
-    const std::string& tag,
-    const std::string& country_ideology,
-    const std::string& sub_ideology,
+    const ConvertCharacterLeaderType& leader_type,
+    const ConvertCharacterCharacterTagType& tag,
+    const ConvertCharacterCountryIdeologyType& country_ideology,
+    const ConvertCharacterSubIdeologyType& sub_ideology,
     const std::set<std::string>& laws,
     const mappers::CountryMapper& country_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
@@ -240,18 +240,18 @@ hoi4::Character hoi4::ConvertCharacter(const vic3::Character& source_character,
        role_ids.field_marshal_ids,
        role_ids.general_ids,
        character_trait_mapper);
-   std::optional<Leader> leader_data = GeneratePossibleLeader(source_character, sub_ideology, leader_id);
+   std::optional<Leader> leader_data = GeneratePossibleLeader(source_character, sub_ideology.Get(), leader_id);
    std::optional<Advisor> advisor_data =
        GeneratePossibleAdvisor(source_character, role_ids.advisor_ids, character_trait_mapper);
    std::optional<Spy> spy_data =
-       GeneratePossibleSpy(source_character, tag, country_mapper, role_ids.spy_ids, character_trait_mapper);
+       GeneratePossibleSpy(source_character, tag.Get(), country_mapper, role_ids.spy_ids, character_trait_mapper);
 
    mappers::CultureQueue& culture_queue = PrepareCultureQueue(source_character.GetCulture(), culture_queues);
    EnqueueCharacterForPortrait(culture_queue,
        source_character,
-       country_ideology,
+       country_ideology.Get(),
        laws,
-       leader_type,
+       leader_type.Get(),
        admiral_data.has_value(),
        general_data.has_value(),
        leader_data.has_value(),
