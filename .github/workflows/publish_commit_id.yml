@@ -13,7 +13,7 @@ jobs:
       run: git config --global --add safe.directory /github/workspace
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Publish commit id
       uses: ParadoxGameConverters/publish_commit_id@main
