@@ -1209,11 +1209,6 @@ std::map<std::string, int> MapVic3ProvincesToStates(const std::map<int, vic3::St
        [&vic3_province_to_state_id_map, vic3_province_definitions](const std::pair<int, vic3::State>& state) {
           for (const auto& province: state.second.GetProvinces())
           {
-              bool pause = false;
-              if (province == 20594)
-              {
-                  pause = true;
-              }
              const auto possible_province_color = vic3_province_definitions.GetProvinceDefinition(province);
              if (possible_province_color.has_value())
              {
