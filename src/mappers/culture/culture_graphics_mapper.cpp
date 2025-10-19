@@ -8,12 +8,12 @@
 
 
 
-namespace mappers
+namespace
 {
 
-PortraitPaths operator+(const PortraitPaths& lhs, const PortraitPaths& rhs)
+mappers::PortraitPaths operator+(const mappers::PortraitPaths& lhs, const mappers::PortraitPaths& rhs)
 {
-   PortraitPaths sum;
+   mappers::PortraitPaths sum;
    for (const auto& side: {lhs, rhs})
    {
       for (const auto& [key, portraits]: side)
@@ -35,7 +35,7 @@ PortraitPaths operator+(const PortraitPaths& lhs, const PortraitPaths& rhs)
 }
 
 
-GraphicsBlock operator+(const GraphicsBlock& lhs, const GraphicsBlock& rhs)
+mappers::GraphicsBlock operator+(const mappers::GraphicsBlock& lhs, const mappers::GraphicsBlock& rhs)
 {
    // Union two GraphicsBlocks, this is for multi-ethnic cultures
    if (lhs.graphical_culture.empty())
@@ -54,9 +54,9 @@ GraphicsBlock operator+(const GraphicsBlock& lhs, const GraphicsBlock& rhs)
 }
 
 
-PortraitPaths ValueOr(PortraitPaths& lhs, PortraitPaths& mhs, PortraitPaths& rhs)
+mappers::PortraitPaths ValueOr(mappers::PortraitPaths& lhs, mappers::PortraitPaths& mhs, mappers::PortraitPaths& rhs)
 {
-   PortraitPaths paths;
+   mappers::PortraitPaths paths;
    for (const auto& side: {lhs, mhs, rhs})
    {
       for (const auto& [key, portraits]: side)
@@ -68,7 +68,7 @@ PortraitPaths ValueOr(PortraitPaths& lhs, PortraitPaths& mhs, PortraitPaths& rhs
 }
 
 
-void EmplaceUnitGraphics(std::map<std::string, std::string>& unit_graphics, const GraphicsBlock& block)
+void EmplaceUnitGraphics(std::map<std::string, std::string>& unit_graphics, const mappers::GraphicsBlock& block)
 {
    if (!block.graphical_culture.empty())
    {
@@ -80,8 +80,14 @@ void EmplaceUnitGraphics(std::map<std::string, std::string>& unit_graphics, cons
    }
 }
 
+}  // namespace
 
-GraphicsBlock CultureGraphicsMapper::MatchPrimaryCulturesToGraphics(const std::set<std::string>& primary_cultures,
+
+namespace mappers
+{
+
+GraphicsBlock mappers::CultureGraphicsMapper::MatchPrimaryCulturesToGraphics(
+    const std::set<std::string>& primary_cultures,
     const std::map<std::string, vic3::CultureDefinition>& cultures) const
 {
    GraphicsBlock graphics_block;
