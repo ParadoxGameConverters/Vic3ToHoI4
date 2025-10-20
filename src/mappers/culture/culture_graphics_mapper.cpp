@@ -86,8 +86,7 @@ void EmplaceUnitGraphics(std::map<std::string, std::string>& unit_graphics, cons
 namespace mappers
 {
 
-GraphicsBlock CultureGraphicsMapper::MatchPrimaryCulturesToGraphics(
-    const std::set<std::string>& primary_cultures,
+GraphicsBlock CultureGraphicsMapper::MatchPrimaryCulturesToGraphics(const std::set<std::string>& primary_cultures,
     const std::map<std::string, vic3::CultureDefinition>& cultures) const
 {
    GraphicsBlock graphics_block;
