@@ -8,6 +8,7 @@ law_mass_conscription	= { democratic = 0	communism = 25	fascism = 50	neutrality 
 
 # bureaucracy
 law_hereditary_bureaucrats	= { democratic = -25	communism = -50	fascism = 0		neutrality = 50 }
+law_crownland_diets			= { democratic = 0		communism = 0	fascism = 0		neutrality = 0 } # TBD
 law_appointed_bureaucrats	= { democratic = 0		communism = 50	fascism = 50	neutrality = 0 }
 law_elected_bureaucrats		= { democratic = 30		communism = 25	fascism = -10	neutrality = 0 }
 
@@ -22,13 +23,16 @@ law_child_labor_allowed			= { democratic = 0	communism = 0	fascism = 0	neutralit
 law_restricted_child_labor		= { democratic = 10	communism = 10	fascism = 0	neutrality = 25 }
 law_compulsory_primary_school	= { democratic = 25	communism = 25	fascism = 0	neutrality = 0 }
 
-# church and state
+# church_and_state
 law_state_religion			= { democratic = 0	communism = -50	fascism = 25	neutrality = 50 }
+law_millet_system			= { democratic = 0	communism = 0	fascism = 0		neutrality = 0 } # TBD
+law_people_of_the_book		= { democratic = 0	communism = 0	fascism = 0		neutrality = 0 } # TBD
 law_freedom_of_conscience	= { democratic = 20	communism = -40	fascism = -25	neutrality = 0 }
 law_total_separation		= { democratic = 40	communism = 40	fascism = 0		neutrality = -25 }
 law_state_atheism			= { democratic = 0	communism = 50	fascism = 25	neutrality = -50 }
 
 # citizenship
+law_subjecthood			= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
 law_ethnostate			= { democratic = -50	communism = -100	fascism = 100	neutrality = 25 }
 law_national_supremacy	= { democratic = -25	communism = 0		fascism = 75	neutrality = 50 }
 law_racial_segregation	= { democratic = 10		communism = 0		fascism = 50	neutrality = 10 }
@@ -43,8 +47,10 @@ law_colonial_exploitation	= { democratic = 0	communism = -10	fascism = 30	neutra
 
 # distribution of power
 law_autocracy			= { democratic = -100	communism = 50	fascism = 100	neutrality = 100 }
+law_neo_absolutism		= { democratic = 0		communism = 0	fascism = 0		neutrality = 0 } # TBD
 law_technocracy			= { democratic = -50	communism = -50	fascism = 25	neutrality = 0 }
 law_oligarchy			= { democratic = 25		communism = 25	fascism = 50	neutrality = 25 }
+law_organic_regulation	= { democratic = 0		communism = 0	fascism = 0		neutrality = 0 } # TBD
 law_elder_council		= { democratic = -50	communism = -50	fascism = 0		neutrality = 75 }
 law_landed_voting		= { democratic = 25		communism = -75	fascism = 0		neutrality = 25 }
 law_wealth_voting		= { democratic = 25		communism = -50	fascism = 0		neutrality = 25 }
@@ -103,8 +109,16 @@ law_no_workers_rights	= { democratic = 0	communism = -50	fascism = 10	neutrality
 law_regulatory_bodies	= { democratic = 20	communism = 20	fascism = 0		neutrality = -30 }
 law_worker_protections	= { democratic = 40	communism = 40	fascism = 0		neutrality = -50 }
 
+# labour_associations
+law_guild_system				= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
+law_combination_acts			= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
+law_anti_strike_laws			= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
+law_right_to_associate			= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
+law_corporatized_unions			= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
+
 # land_reform
 law_serfdom						= { democratic = -25	communism = -50	fascism = 0		neutrality = 50 }
+law_manorialism					= { democratic = 0		communism = 0	fascism = 0		neutrality = 0 } # TBD
 law_tenant_farmers				= { democratic = 0		communism = -25	fascism = 25	neutrality = 25 }
 law_commercialized_agriculture	= { democratic = 20		communism = -25	fascism = 10	neutrality = 0 }
 law_homesteading				= { democratic = 20		communism = 10	fascism = 0		neutrality = 0 }
@@ -123,15 +137,17 @@ law_militarized_police	= { democratic = -20	communism = -20	fascism = 30	neutral
 
 # rights_of_women
 law_no_womens_rights		= { democratic = -10	communism = -10	fascism = 10	neutrality = 25 }
+law_women_in_the_fields		= { democratic = 0		communism = 0	fascism = 0		neutrality = 0 } # TBD
 law_women_own_property		= { democratic = 10		communism = 0	fascism = 10	neutrality = -10 }
 law_women_in_the_workplace	= { democratic = 30		communism = 20	fascism = 0		neutrality = -25 }
 law_womens_suffrage			= { democratic = 50		communism = 50	fascism = 0		neutrality = -50 }
 
 # slavery
-law_slavery_banned	= { democratic = 10		communism = 10	fascism = 0		neutrality = -10 }
-law_debt_slavery	= { democratic = -50	communism = -50	fascism = -10	neutrality = 75 }
-law_slave_trade		= { democratic = 0		communism = -30	fascism = 0		neutrality = 50 }
-law_legacy_slavery	= { democratic = 0		communism = -15	fascism = 0		neutrality = 25 }
+law_slavery_banned		= { democratic = 10		communism = 10	fascism = 0		neutrality = -10 }
+law_colonial_slavery	= { democratic = 0		communism = 0	fascism = 0		neutrality = 0 } # TBD
+law_debt_slavery		= { democratic = -50	communism = -50	fascism = -10	neutrality = 75 }
+law_slave_trade			= { democratic = 0		communism = -30	fascism = 0		neutrality = 50 }
+law_legacy_slavery		= { democratic = 0		communism = -15	fascism = 0		neutrality = 25 }
 
 # taxation
 law_consumption_based_taxation	= { democratic = 0	communism = 0	fascism = 0	neutrality = 50 }
@@ -145,12 +161,14 @@ law_mercantilism	= { democratic = 0	communism = 0	fascism = 0		neutrality = 25 }
 law_protectionism	= { democratic = 0	communism = 30	fascism = 40	neutrality = 0 }
 law_free_trade		= { democratic = 30	communism = -20	fascism = -30	neutrality = 10 }
 law_isolationism	= { democratic = 0	communism = 0	fascism = 25	neutrality = 50 }
+law_canton_system	= { democratic = 0	communism = 0	fascism = 0		neutrality = 0 } # TBD
 
 # welfare
-law_no_social_security	= { democratic = -10	communism = 0	fascism = 0		neutrality = 25 }
-law_poor_laws			= { democratic = 0		communism = 20	fascism = 10	neutrality = 0 }
-law_wage_subsidies		= { democratic = 10		communism = 40	fascism = 0		neutrality = -25 }
-law_old_age_pension		= { democratic = 20		communism = 60	fascism = 0		neutrality = -25 }
+law_no_social_security		= { democratic = -10	communism = 0	fascism = 0		neutrality = 25 }
+law_chiefs_distribute_aid	= { democratic = -10	communism = 0	fascism = 0		neutrality = 25 }
+law_poor_laws				= { democratic = 0		communism = 20	fascism = 10	neutrality = 0 }
+law_wage_subsidies			= { democratic = 10		communism = 40	fascism = 0		neutrality = -25 }
+law_old_age_pension			= { democratic = 20		communism = 60	fascism = 0		neutrality = -25 }
 
 
 
@@ -167,6 +185,7 @@ law_mass_conscription	= { conservatism = 25	liberalism = 25	socialism = 25 }
 
 # bureaucracy
 law_hereditary_bureaucrats	= { conservatism = -25	liberalism = -50	socialism = -75 }
+law_crownland_diets			= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 law_appointed_bureaucrats	= { conservatism = 50	liberalism = 50		socialism = 25 }
 law_elected_bureaucrats		= { conservatism = 50	liberalism = 50		socialism = 75 }
 
@@ -181,13 +200,16 @@ law_child_labor_allowed			= { conservatism = 25	liberalism = 0	socialism = -25 }
 law_restricted_child_labor		= { conservatism = 25	liberalism = 25	socialism = 0 }
 law_compulsory_primary_school	= { conservatism = 0	liberalism = 25	socialism = 50 }
 
-# church and state
+# church_and_state
 law_state_religion			= { conservatism = 75	liberalism = 0	socialism = -50 }
+law_millet_system			= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_people_of_the_book		= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 law_freedom_of_conscience	= { conservatism = 50	liberalism = 25	socialism = 0 }
 law_total_separation		= { conservatism = 0	liberalism = 50	socialism = 75 }
 law_state_atheism			= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 
 # citizenship
+law_subjecthood			= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 law_ethnostate			= { conservatism = -25	liberalism = -75	socialism = -100 }
 law_national_supremacy	= { conservatism = 0	liberalism = -25	socialism = -75 }
 law_racial_segregation	= { conservatism = 25	liberalism = 0		socialism = -50 }
@@ -196,14 +218,16 @@ law_multicultural		= { conservatism = 25	liberalism = 50		socialism = 75 }
 
 # colonial_affairs
 law_no_colonial_affairs		= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
-law_frontier_colonization	= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TBD
+law_frontier_colonization	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 law_colonial_resettlement	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 law_colonial_exploitation	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 
 # distribution of power
 law_autocracy			= { conservatism = -100		liberalism = -10000	socialism = -10000 }
+law_neo_absolutism		= { conservatism = 0		liberalism = 0		socialism = 0 } # TBD
 law_technocracy			= { conservatism = 0		liberalism = 0		socialism = 0 } # TBD
 law_oligarchy			= { conservatism = 25		liberalism = 0		socialism = -50 }
+law_organic_regulation	= { conservatism = 0		liberalism = 0		socialism = 0 } # TBD
 law_elder_council		= { conservatism = 25		liberalism = 0		socialism = -50 }
 law_landed_voting		= { conservatism = 25		liberalism = 25		socialism = -25 }
 law_wealth_voting		= { conservatism = 25		liberalism = 25		socialism = -25 }
@@ -262,8 +286,16 @@ law_no_workers_rights	= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 law_regulatory_bodies	= { conservatism = 25	liberalism = 25		socialism = 50 }
 law_worker_protections	= { conservatism = -25	liberalism = 25		socialism = 75 }
 
+# labour_associations
+law_guild_system		= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_combination_acts	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_anti_strike_laws	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_right_to_associate	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_corporatized_unions	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+
 # land_reform
 law_serfdom						= { conservatism = -25	liberalism = -50	socialism = -75 }
+law_manorialism					= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 law_tenant_farmers				= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 law_commercialized_agriculture	= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 law_homesteading				= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
@@ -282,15 +314,17 @@ law_militarized_police	= { conservatism = 50	liberalism = 0		socialism = -25 }
 
 # rights_of_women
 law_no_womens_rights		= { conservatism = 50	liberalism = 0	socialism = -50 }
+law_women_in_the_fields		= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 law_women_own_property		= { conservatism = 25	liberalism = 25	socialism = -25 }
 law_women_in_the_workplace	= { conservatism = 0	liberalism = 25	socialism = 25 }
 law_womens_suffrage			= { conservatism = -25	liberalism = 50	socialism = 50 }
 
 # slavery
-law_slavery_banned	= { conservatism = 0	liberalism = 50		socialism = 50 }
-law_debt_slavery	= { conservatism = 25	liberalism = 0		socialism = -25 }
-law_slave_trade		= { conservatism = 25	liberalism = -50	socialism = -50 }
-law_legacy_slavery	= { conservatism = 25	liberalism = -50	socialism = -50 }
+law_slavery_banned		= { conservatism = 0	liberalism = 50		socialism = 50 }
+law_colonial_slavery	= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
+law_debt_slavery		= { conservatism = 25	liberalism = 0		socialism = -25 }
+law_slave_trade			= { conservatism = 25	liberalism = -50	socialism = -50 }
+law_legacy_slavery		= { conservatism = 25	liberalism = -50	socialism = -50 }
 
 # taxation
 law_consumption_based_taxation	= { conservatism = 0	liberalism = 0	socialism = 0 }
@@ -304,12 +338,14 @@ law_mercantilism	= { conservatism = 50	liberalism = 25		socialism = 0 }
 law_protectionism	= { conservatism = 50	liberalism = 50		socialism = 50 }
 law_free_trade		= { conservatism = 75	liberalism = 75		socialism = -50 }
 law_isolationism	= { conservatism = -50	liberalism = -75	socialism = -25 }
+law_canton_system	= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 
 # welfare
-law_no_social_security	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
-law_poor_laws			= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
-law_wage_subsidies		= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
-law_old_age_pension		= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_no_social_security		= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_chiefs_distribute_aid	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_poor_laws				= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_wage_subsidies			= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_old_age_pension			= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 }
 
 communism={
@@ -321,6 +357,7 @@ law_mass_conscription	= { marxism = 75	leninism = 75	stalinism = 100	anti_revisi
 
 # bureaucracy
 law_hereditary_bureaucrats	= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = 25	anarchist_communism = -100 }
+law_crownland_diets			= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
 law_appointed_bureaucrats	= { marxism = 0		leninism = 100	stalinism = 100		anti_revisionism = 100	anarchist_communism = -50 }
 law_elected_bureaucrats		= { marxism = 100	leninism = 0	stalinism = -25		anti_revisionism = -25	anarchist_communism = 100 }
 
@@ -335,13 +372,16 @@ law_child_labor_allowed			= { marxism = -50	leninism = -50	stalinism = -25	anti_
 law_restricted_child_labor		= { marxism = 50	leninism = 50	stalinism = 25	anti_revisionism = 25	anarchist_communism = 0 }
 law_compulsory_primary_school	= { marxism = 100	leninism = 100	stalinism = 100	anti_revisionism = 25	anarchist_communism = 50 }
 
-# church and state
+# church_and_state
 law_state_religion			= { marxism = -100	leninism = -100	stalinism = -50	anti_revisionism = -25	anarchist_communism = -100 }
+law_millet_system			= { marxism = 0		leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_people_of_the_book		= { marxism = 0		leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
 law_freedom_of_conscience	= { marxism = -100	leninism = -75	stalinism = -50	anti_revisionism = 0	anarchist_communism = -75 }
 law_total_separation		= { marxism = 100	leninism = 100	stalinism = 100	anti_revisionism = 75	anarchist_communism = 100 }
 law_state_atheism			= { marxism = 0		leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
 
 # citizenship
+law_subjecthood			= { marxism = 0		leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
 law_ethnostate			= { marxism = -100	leninism = -100	stalinism = -75	anti_revisionism = -75	anarchist_communism = -100 }
 law_national_supremacy	= { marxism = -100	leninism = -100	stalinism = -50	anti_revisionism = -25	anarchist_communism = -100 }
 law_racial_segregation	= { marxism = -100	leninism = -75	stalinism = -50	anti_revisionism = -25	anarchist_communism = -100 }
@@ -350,14 +390,16 @@ law_multicultural		= { marxism = 100	leninism = 100	stalinism = 75	anti_revision
 
 # colonial_affairs
 law_no_colonial_affairs		= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
-law_frontier_colonization	= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TBD
+law_frontier_colonization	= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
 law_colonial_resettlement	= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
 law_colonial_exploitation	= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
 
 # distribution of power
 law_autocracy			= { marxism = 0			leninism = 50		stalinism = 100		anti_revisionism = 100		anarchist_communism = -100 }
 law_technocracy			= { marxism = 0			leninism = 0		stalinism = 0		anti_revisionism = 0		anarchist_communism = 0 } # TBD
+law_neo_absolutism		= { marxism = 0			leninism = 0		stalinism = 0		anti_revisionism = 0		anarchist_communism = 0 } # TBD
 law_oligarchy			= { marxism = 25		leninism = 100		stalinism = 50		anti_revisionism = 75		anarchist_communism = -100 }
+law_organic_regulation	= { marxism = 0			leninism = 0		stalinism = 0		anti_revisionism = 0		anarchist_communism = 0 } # TBD
 law_landed_voting		= { marxism = -25		leninism = -50		stalinism = 0		anti_revisionism = 25		anarchist_communism = -100 }
 law_wealth_voting		= { marxism = -25		leninism = 0		stalinism = 0		anti_revisionism = 0		anarchist_communism = -100 }
 law_census_voting		= { marxism = 50		leninism = 25		stalinism = 0		anti_revisionism = 0		anarchist_communism = -50 }
@@ -416,8 +458,16 @@ law_no_workers_rights	= { marxism = 0		leninism = 0	stalinism = 0		anti_revision
 law_regulatory_bodies	= { marxism = 75	leninism = 75	stalinism = 75		anti_revisionism = 50	anarchist_communism = 75 }
 law_worker_protections	= { marxism = 100	leninism = 100	stalinism = 75		anti_revisionism = 50	anarchist_communism = 100 }
 
+# labour_associations
+law_guild_system		= { marxism = 0	leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_combination_acts	= { marxism = 0	leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_anti_strike_laws	= { marxism = 0	leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_right_to_associate	= { marxism = 0	leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_corporatized_unions	= { marxism = 0	leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
+
 # land_reform
 law_serfdom						= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -50	anarchist_communism = -100 }
+law_manorialism					= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } #TBD
 law_tenant_farmers				= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } #TBD
 law_commercialized_agriculture	= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } #TBD
 law_homesteading				= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } #TBD
@@ -436,15 +486,17 @@ law_militarized_police	= { marxism = -25	leninism = 50	stalinism = 75		anti_revi
 
 # rights_of_women
 law_no_womens_rights		= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -50	anarchist_communism = -100 }
+law_women_in_the_fields		= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
 law_women_own_property		= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -50	anarchist_communism = -75 }
 law_women_in_the_workplace	= { marxism = 100	leninism = 100	stalinism = 100		anti_revisionism = 75	anarchist_communism = 100 }
 law_womens_suffrage			= { marxism = 100	leninism = 100	stalinism = 100		anti_revisionism = 75	anarchist_communism = 100 }
 
 # slavery
-law_slavery_banned	= { marxism = 100	leninism = 100	stalinism = 100		anti_revisionism = 100	anarchist_communism = 100 }
-law_debt_slavery	= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -75	anarchist_communism = -100 }
-law_slave_trade		= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -100	anarchist_communism = -100 }
-law_legacy_slavery	= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -100	anarchist_communism = -100 }
+law_slavery_banned		= { marxism = 100	leninism = 100	stalinism = 100		anti_revisionism = 100	anarchist_communism = 100 }
+law_colonial_slavery	= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_debt_slavery		= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -75	anarchist_communism = -100 }
+law_slave_trade			= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -100	anarchist_communism = -100 }
+law_legacy_slavery		= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -100	anarchist_communism = -100 }
 
 # taxation
 law_consumption_based_taxation	= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
@@ -458,12 +510,14 @@ law_mercantilism	= { marxism = -100	leninism = -100	stalinism = -100	anti_revisi
 law_protectionism	= { marxism = -25	leninism = 25	stalinism = 25		anti_revisionism = 25	anarchist_communism = -100 }
 law_free_trade		= { marxism = 25	leninism = 25	stalinism = 0		anti_revisionism = 0	anarchist_communism = 100 }
 law_isolationism	= { marxism = 0		leninism = -25	stalinism = 0		anti_revisionism = 50	anarchist_communism = 0 }
+law_canton_system	= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
 
 # welfare
-law_no_social_security	= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
-law_poor_laws			= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
-law_wage_subsidies		= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
-law_old_age_pension		= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_no_social_security		= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_chiefs_distribute_aid	= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_poor_laws				= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_wage_subsidies			= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_old_age_pension			= { marxism = 0	leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
 }
 
 fascism={
@@ -475,6 +529,7 @@ law_mass_conscription	= { gen_nazism = 50		fascism_ideology = 75	falangism = 75	
 
 # bureaucracy
 law_hereditary_bureaucrats	= { gen_nazism = -25	fascism_ideology = -25	falangism = 50	rexism = 75 }
+law_crownland_diets			= { gen_nazism = 0		fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_appointed_bureaucrats	= { gen_nazism = 100	fascism_ideology = 75	falangism = 75	rexism = 75 }
 law_elected_bureaucrats		= { gen_nazism = -25	fascism_ideology = 0	falangism = -25	rexism = -25 }
 
@@ -489,13 +544,16 @@ law_child_labor_allowed			= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	
 law_restricted_child_labor		= { gen_nazism = 50	fascism_ideology = 75	falangism = 50	rexism = 50 }
 law_compulsory_primary_school	= { gen_nazism = 50	fascism_ideology = 50	falangism = 25	rexism = 50 }
 
-# church and state
+# church_and_state
 law_state_religion			= { gen_nazism = -25	fascism_ideology = 0	falangism = 75	rexism = 50 }
+law_millet_system			= { gen_nazism = 0		fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_people_of_the_book		= { gen_nazism = 0		fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_freedom_of_conscience	= { gen_nazism = 0		fascism_ideology = 25	falangism = 50	rexism = 75 }
 law_total_separation		= { gen_nazism = 50		fascism_ideology = 50	falangism = -50	rexism = -25 }
 law_state_atheism			= { gen_nazism = 0		fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 
 # citizenship
+law_subjecthood			= { gen_nazism = 0		fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_ethnostate			= { gen_nazism = 100	fascism_ideology = 50	falangism = 50	rexism = 0 }
 law_national_supremacy	= { gen_nazism = 75		fascism_ideology = 100	falangism = 100	rexism = 75 }
 law_racial_segregation	= { gen_nazism = 50		fascism_ideology = 50	falangism = 25	rexism = 0 }
@@ -504,14 +562,16 @@ law_multicultural		= { gen_nazism = -100	fascism_ideology = 0	falangism = -25	re
 
 # colonial_affairs
 law_no_colonial_affairs		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
-law_frontier_colonization	= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TBD
+law_frontier_colonization	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_colonial_resettlement	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_colonial_exploitation	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 
 # distribution of power
 law_autocracy			= { gen_nazism = 100	fascism_ideology = 010	falangism = 100		rexism = 100 }
+law_neo_absolutism		= { gen_nazism = 0		fascism_ideology = 0	falangism = 0		rexism = 0 } # TBD
 law_technocracy			= { gen_nazism = 0		fascism_ideology = 0	falangism = 0		rexism = 0 } # TBD
 law_oligarchy			= { gen_nazism = 100	fascism_ideology = 100	falangism = 100		rexism = 100 }
+law_organic_regulation	= { gen_nazism = 0		fascism_ideology = 0	falangism = 0		rexism = 0 } # TBD
 law_landed_voting		= { gen_nazism = 100	fascism_ideology = 100	falangism = 100		rexism = 100 }
 law_wealth_voting		= { gen_nazism = 75		fascism_ideology = 25	falangism = 25		rexism = 50 }
 law_census_voting		= { gen_nazism = 50		fascism_ideology = 75	falangism = 50		rexism = 50 }
@@ -570,8 +630,16 @@ law_no_workers_rights	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexi
 law_regulatory_bodies	= { gen_nazism = 25	fascism_ideology = 25	falangism = 0	rexism = 25 }
 law_worker_protections	= { gen_nazism = 25	fascism_ideology = 50	falangism = 25	rexism = 25 }
 
+# labour_associations
+law_guild_system		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_combination_acts	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_anti_strike_laws	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_right_to_associate	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_corporatized_unions	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+
 # land_reform
 law_serfdom						= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 25 }
+law_manorialism					= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
 law_tenant_farmers				= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
 law_commercialized_agriculture	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
 law_homesteading				= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
@@ -590,15 +658,17 @@ law_militarized_police	= { gen_nazism = 75		fascism_ideology = 75	falangism = 75
 
 # rights_of_women
 law_no_womens_rights		= { gen_nazism = 100	fascism_ideology = 75	falangism = 100	rexism = 100 }
+law_women_in_the_fields		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_women_own_property		= { gen_nazism = 100	fascism_ideology = 100	falangism = 75	rexism = 100 }
 law_women_in_the_workplace	= { gen_nazism = 0		fascism_ideology = 25	falangism = -50	rexism = -25 }
 law_womens_suffrage			= { gen_nazism = -50	fascism_ideology = 0	falangism = -75	rexism = -50 }
 
 # slavery
-law_slavery_banned	= { gen_nazism = 0	fascism_ideology = 0	falangism = 25	rexism = 0 }
-law_debt_slavery	= { gen_nazism = 25	fascism_ideology = 25	falangism = 0	rexism = 0 }
-law_slave_trade		= { gen_nazism = 0	fascism_ideology = 0	falangism = -25	rexism = 0 }
-law_legacy_slavery	= { gen_nazism = 0	fascism_ideology = 0	falangism = -25	rexism = 0 }
+law_slavery_banned		= { gen_nazism = 0	fascism_ideology = 0	falangism = 25	rexism = 0 }
+law_colonial_slavery	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_debt_slavery		= { gen_nazism = 25	fascism_ideology = 25	falangism = 0	rexism = 0 }
+law_slave_trade			= { gen_nazism = 0	fascism_ideology = 0	falangism = -25	rexism = 0 }
+law_legacy_slavery		= { gen_nazism = 0	fascism_ideology = 0	falangism = -25	rexism = 0 }
 
 # taxation
 law_consumption_based_taxation	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
@@ -612,12 +682,14 @@ law_mercantilism	= { gen_nazism = 25	fascism_ideology = 50	falangism = 50	rexism
 law_protectionism	= { gen_nazism = 75	fascism_ideology = 75	falangism = 75	rexism = 75 }
 law_free_trade		= { gen_nazism = 0	fascism_ideology = 25	falangism = -25	rexism = -25 }
 law_isolationism	= { gen_nazism = 25	fascism_ideology = 0	falangism = 0	rexism = 0 }
+law_canton_system	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 
 # welfare
-law_no_social_security	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
-law_poor_laws			= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
-law_wage_subsidies		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
-law_old_age_pension		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_no_social_security		= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_chiefs_distribute_aid	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_poor_laws				= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_wage_subsidies			= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_old_age_pension			= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 }
 
 neutrality={
@@ -629,6 +701,7 @@ law_mass_conscription	= { despotism = 25	oligarchism = 0		anarchism = 0		moderat
 
 # bureaucracy
 law_hereditary_bureaucrats	= { despotism = 100	oligarchism = 100	anarchism = -100	moderatism = -25	centrism = -25 }
+law_crownland_diets			= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
 law_appointed_bureaucrats	= { despotism = 75	oligarchism = 50	anarchism = -100	moderatism = 50		centrism = 25 }
 law_elected_bureaucrats		= { despotism = -50	oligarchism = -25	anarchism = 25		moderatism = 25		centrism = 75 }
 
@@ -643,13 +716,16 @@ law_child_labor_allowed			= { despotism = 0	oligarchism = 25	anarchism = -100	mo
 law_restricted_child_labor		= { despotism = 25	oligarchism = 0		anarchism = -100	moderatism = 25		centrism = 50 }
 law_compulsory_primary_school	= { despotism = 0	oligarchism = -25	anarchism = 0		moderatism = 50		centrism = 0 }
 
-# church and state
+# church_and_state
 law_state_religion			= { despotism = 50	oligarchism = 25	anarchism = -100	moderatism = 0	centrism = 0 }
+law_millet_system			= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0	centrism = 0 } # TBD
+law_people_of_the_book		= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0	centrism = 0 } # TBD
 law_freedom_of_conscience	= { despotism = 25	oligarchism = 25	anarchism = -100	moderatism = 75	centrism = 100 }
 law_total_separation		= { despotism = 0	oligarchism = 0		anarchism = 100		moderatism = 75	centrism = 50 }
 law_state_atheism			= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0	centrism = 0 } # TBD
 
 # citizenship
+law_subjecthood			= { despotism = 0		oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
 law_ethnostate			= { despotism = 0		oligarchism = 0		anarchism = -100	moderatism = -25	centrism = -25 }
 law_national_supremacy	= { despotism = 0		oligarchism = 0		anarchism = -100	moderatism = -25	centrism = 0 }
 law_racial_segregation	= { despotism = 0		oligarchism = 0		anarchism = -100	moderatism = -25	centrism = 0 }
@@ -658,14 +734,16 @@ law_multicultural		= { despotism = -100	oligarchism = -75	anarchism = 100		moder
 
 # colonial_affairs
 law_no_colonial_affairs		= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
-law_frontier_colonization	= { democratic = 0		communism = 0		fascism = 0			neutrality = 0 } # TBD
+law_frontier_colonization	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
 law_colonial_resettlement	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
 law_colonial_exploitation	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
 
 # distribution of power
 law_autocracy			= { despotism = 10000	oligarchism = 100	anarchism = -10000	moderatism = -50	centrism = -50 }
 law_technocracy			= { despotism = 0		oligarchism = 0		anarchism = -10000	moderatism = 0		centrism = 0 } # TBD
+law_neo_absolutism		= { despotism = 0		oligarchism = 0		anarchism = -10000	moderatism = 0		centrism = 0 } # TBD
 law_oligarchy			= { despotism = 100		oligarchism = 10000	anarchism = -10000	moderatism = 0		centrism = -25 }
+law_organic_regulation	= { despotism = 0		oligarchism = 0		anarchism = -10000	moderatism = 0		centrism = 0 } # TBD
 law_landed_voting		= { despotism = 25		oligarchism = 75	anarchism = -10000	moderatism = 50		centrism = 25 }
 law_wealth_voting		= { despotism = 25		oligarchism = 75	anarchism = -10000	moderatism = 75		centrism = 50 } # Partial TBD
 law_census_voting		= { despotism = 0		oligarchism = 0		anarchism = -10000	moderatism = 100	centrism = 100 }
@@ -724,8 +802,16 @@ law_no_workers_rights	= { despotism = 0	oligarchism = 0		anarchism = 0		moderati
 law_regulatory_bodies	= { despotism = 25	oligarchism = -25	anarchism = -100	moderatism = 25		centrism = 25 }
 law_worker_protections	= { despotism = 0	oligarchism = -50	anarchism = 0		moderatism = 25		centrism = 0 }
 
+# labour_associations
+law_guild_system		= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
+law_combination_acts	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
+law_anti_strike_laws	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
+law_right_to_associate	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
+law_corporatized_unions	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
+
 # land_reform
 law_serfdom						= { despotism = 50	oligarchism = 100	anarchism = -100	moderatism = -50	centrism = 0 }
+law_manorialism					= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
 law_tenant_farmers				= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
 law_commercialized_agriculture	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
 law_homesteading				= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
@@ -744,15 +830,17 @@ law_militarized_police	= { despotism = 50	oligarchism = 50	anarchism = -100	mode
 
 # rights_of_women
 law_no_womens_rights		= { despotism = 0	oligarchism = 0	anarchism = -100	moderatism = -25	centrism = -25 }
+law_women_in_the_fields		= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
 law_women_own_property		= { despotism = 0	oligarchism = 0	anarchism = -100	moderatism = 25		centrism = 25 }
 law_women_in_the_workplace	= { despotism = 0	oligarchism = 0	anarchism = -100	moderatism = 25		centrism = 25 }
 law_womens_suffrage			= { despotism = 0	oligarchism = 0	anarchism = 100		moderatism = 25		centrism = 0 }
 
 # slavery
-law_slavery_banned	= { despotism = 0	oligarchism = -25	anarchism = 100		moderatism = 50		centrism = 25 }
-law_debt_slavery	= { despotism = 25	oligarchism = 25	anarchism = -100	moderatism = 0		centrism = 50 }
-law_slave_trade		= { despotism = 0	oligarchism = 50	anarchism = -10000	moderatism = -50	centrism = 0 }
-law_legacy_slavery	= { despotism = 0	oligarchism = 25	anarchism = -100	moderatism = -25	centrism = 75 }
+law_slavery_banned		= { despotism = 0	oligarchism = -25	anarchism = 100		moderatism = 50		centrism = 25 }
+law_colonial_slavery	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
+law_debt_slavery		= { despotism = 25	oligarchism = 25	anarchism = -100	moderatism = 0		centrism = 50 }
+law_slave_trade			= { despotism = 0	oligarchism = 50	anarchism = -10000	moderatism = -50	centrism = 0 }
+law_legacy_slavery		= { despotism = 0	oligarchism = 25	anarchism = -100	moderatism = -25	centrism = 75 }
 
 # taxation
 law_consumption_based_taxation	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
@@ -766,11 +854,13 @@ law_mercantilism	= { despotism = 50	oligarchism = 50	anarchism = -100	moderatism
 law_protectionism	= { despotism = 50	oligarchism = 50	anarchism = -100	moderatism = 75		centrism = 50 }
 law_free_trade		= { despotism = -25	oligarchism = 0		anarchism = 0		moderatism = 25		centrism = 50 }
 law_isolationism	= { despotism = 25	oligarchism = 25	anarchism = -50		moderatism = -25	centrism = 0 }
+law_canton_system	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
 
 # welfare
-law_no_social_security	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
-law_poor_laws			= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
-law_wage_subsidies		= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
-law_old_age_pension		= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_no_social_security		= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_chiefs_distribute_aid	= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_poor_laws				= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_wage_subsidies			= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
+law_old_age_pension			= { despotism = 0	oligarchism = 0	anarchism = 0	moderatism = 0	centrism = 0 } # TBD
 }
 }

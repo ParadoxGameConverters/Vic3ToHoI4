@@ -363,6 +363,8 @@ void hoi4::AssignPortraits(const std::map<std::string, mappers::CultureQueue>& c
     const int playthrough_id,
     std::map<int, Character>& characters)
 {
+   culture_graphics_mapper.CheckMappings(source_cultures);
+
    std::map<std::string, int> portrait_counts;
 
    for (const auto& [culture, culture_queue]: culture_queues)
