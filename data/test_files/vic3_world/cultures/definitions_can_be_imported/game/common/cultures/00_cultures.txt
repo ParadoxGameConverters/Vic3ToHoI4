@@ -2,6 +2,10 @@ north_german={
 	color= rgb{ 62 77 100 }
 	religion = protestant
 	traits = { german_speaking european_heritage }
+	traditions = { tradition_order tradition_orderly }
+	obsessions = { obsession_rules obsession_punctuality }
+	heritage = heritage_germanic
+	language = language_germanophone
 	male_common_first_names={
 		Wolfgang
 	}
@@ -32,6 +36,10 @@ south_german={
 	color= hsv{ 0.50 0.43 0.45 }
 	religion = catholic
 	traits = { german_speaking european_heritage }
+	traditions = { tradition_order tradition_orderly }
+	obsessions = { obsession_rules obsession_punctuality }
+	heritage = heritage_germanic
+	language = language_germanophone
 	male_common_first_names={
 		Otto
 	}
