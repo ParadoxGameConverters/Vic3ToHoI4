@@ -1,5 +1,6 @@
 sample_group = {
     cultures = { swedish } # In reality, these are probably 3 separate groups
+    heritages = { heritage_nordic }
     traits = { european_heritage }
     ethnicities = { caucasian }
 

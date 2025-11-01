@@ -23,6 +23,7 @@
 
 # sample_group = {
 # cultures = { swedish } # In reality, these are probably 3 separate groups
+# heritages = { heritage_germanic heritage_ashkenazi }
 # traits = { european_heritage }
 # ethnicities = { caucasian }
 

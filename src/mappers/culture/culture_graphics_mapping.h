@@ -33,6 +33,7 @@ struct CultureGraphicsMapping
 {
    std::set<std::string> cultures;
    std::set<std::string> traits;
+   std::set<std::string> heritages;
    std::set<std::string> ethnicities;
 
    GraphicsBlock graphics_block;
