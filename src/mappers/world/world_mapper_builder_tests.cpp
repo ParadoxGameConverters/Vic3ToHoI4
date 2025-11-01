@@ -120,7 +120,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultTechsWorks)
 
 TEST(MappersWorldWorldMapperBuilderTests, AddCultureGraphicsMapperWorks)
 {
-   vic3::CultureDefinition culture = vic3::CultureDefinition("culture_a", {}, {}, {});
+   vic3::CultureDefinition culture = vic3::CultureDefinition({.name = "culture_a"});
    mappers::GraphicsBlock graphics{.graphical_culture = "graphical_culture_a"};
    mappers::CultureGraphicsMapping mapping{
        .cultures = {culture.GetName()},
@@ -136,7 +136,7 @@ TEST(MappersWorldWorldMapperBuilderTests, AddCultureGraphicsMapperWorks)
 
 TEST(MappersWorldWorldMapperBuilderTests, DefaultCultureGraphicsMapperWorks)
 {
-   vic3::CultureDefinition culture = vic3::CultureDefinition("culture_1", {}, {}, {});
+   vic3::CultureDefinition culture = vic3::CultureDefinition({.name = "culture_1"});
    const auto world_mapper = WorldMapperBuilder::CreateNullMapper().DefaultCultureGraphicsMapper().Build();
 
    EXPECT_EQ(world_mapper.culture_graphics_mapper.MatchCultureToGraphics(culture).graphical_culture, "asian_gfx");
