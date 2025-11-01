@@ -22,6 +22,8 @@ class CultureGraphicsMapper
        const std::map<std::string, vic3::CultureDefinition>& cultures) const;
    [[nodiscard]] GraphicsBlock MatchCultureToGraphics(const vic3::CultureDefinition& culture_def) const;
 
+   void CheckMappings(const std::map<std::string, vic3::CultureDefinition>& source_cultures) const;
+
   private:
    std::vector<CultureGraphicsMapping> mappings_;
 };

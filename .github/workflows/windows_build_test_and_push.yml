@@ -72,10 +72,10 @@ jobs:
        echo '# Version info' | out-file data/version.txt -encoding ASCII
        echo '' | out-file data/version.txt -encoding ASCII -append
        echo 'version = "${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}.${{ steps.version_number.outputs.patch }}"' | out-file data/version.txt -encoding ASCII -append
-       echo 'name = "Fioravanzo"' | out-file data/version.txt -encoding ASCII -append
+       echo 'name = "de Gaulle"' | out-file data/version.txt -encoding ASCII -append
        echo 'source = "Vic3"' | out-file data/version.txt -encoding ASCII -append
-       echo 'minSource = "1.8"' | out-file data/version.txt -encoding ASCII -append
-       echo 'maxSource = "1.9"' | out-file data/version.txt -encoding ASCII -append
+       echo 'minSource = "1.10"' | out-file data/version.txt -encoding ASCII -append
+       echo 'maxSource = "1.11"' | out-file data/version.txt -encoding ASCII -append
        echo 'target = "HoI4"' | out-file data/version.txt -encoding ASCII -append
        echo 'minTarget = "1.16"' | out-file data/version.txt -encoding ASCII -append
        echo 'maxTarget = "1.16"' | out-file data/version.txt -encoding ASCII -append

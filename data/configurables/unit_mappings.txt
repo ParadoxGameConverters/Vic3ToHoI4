@@ -166,3 +166,9 @@ pm_field_hospitals = {
   equipment_scale = 10
 }
 
+# Silence warnings resulting from the landships bug.
+combat_unit_type_dreadnought = {}
+combat_unit_type_scout_cruiser = {}
+combat_unit_type_torpedo_boat = {}
+combat_unit_type_ironclad = {}
+
