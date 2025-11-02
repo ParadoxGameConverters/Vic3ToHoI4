@@ -79,6 +79,10 @@ mappers::CultureGraphicsMapper mappers::ImportCultureGraphicsMapper(const std::f
       std::vector<std::string> cultures = commonItems::getStrings(input_stream);
       std::ranges::copy(cultures, std::inserter(mapping.cultures, mapping.cultures.end()));
    });
+   mapping_parser.registerKeyword("heritages", [&mapping](std::istream& input_stream) {
+      std::vector<std::string> heritages = commonItems::getStrings(input_stream);
+      std::ranges::copy(heritages, std::inserter(mapping.heritages, mapping.heritages.end()));
+   });
    mapping_parser.registerKeyword("traits", [&mapping](std::istream& input_stream) {
       std::vector<std::string> traits = commonItems::getStrings(input_stream);
       std::ranges::copy(traits, std::inserter(mapping.traits, mapping.traits.end()));

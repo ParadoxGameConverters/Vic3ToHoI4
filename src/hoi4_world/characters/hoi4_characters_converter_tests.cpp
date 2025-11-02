@@ -690,7 +690,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrou
        {"culture_2", {{"operative_female", {1, 2, 3, 4, 5, 6, 7}}}},
    };
    const std::map<std::string, vic3::CultureDefinition> source_cultures{
-       {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
+       {"culture_2", vic3::CultureDefinition({.name = "culture_2"})},
    };
 
    AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters_one);
@@ -724,7 +724,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlayth
        {"culture_2", {{"operative_female", {1, 2, 3, 4, 5, 6, 7}}}},
    };
    const std::map<std::string, vic3::CultureDefinition> source_cultures{
-       {"culture_2", vic3::CultureDefinition({"culture_2"}, {}, {}, {})},
+       {"culture_2", vic3::CultureDefinition({.name = "culture_2"})},
    };
 
    AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters_one);
@@ -754,11 +754,11 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCul
    };
    // Each culture has an army portrait list of the same length, so they will all be shuffled the same way
    const std::map<std::string, vic3::CultureDefinition> source_cultures{
-       {"culture_3", vic3::CultureDefinition({"culture_3"}, {}, {}, {})},
-       {"culture_4", vic3::CultureDefinition({"culture_4"}, {}, {}, {})},
-       {"culture_5", vic3::CultureDefinition({"culture_5"}, {}, {}, {})},
-       {"culture_6", vic3::CultureDefinition({"culture_6"}, {}, {}, {})},
-       {"culture_7", vic3::CultureDefinition({"culture_7"}, {}, {}, {})},
+       {"culture_3", vic3::CultureDefinition({.name = "culture_3"})},
+       {"culture_4", vic3::CultureDefinition({.name = "culture_4"})},
+       {"culture_5", vic3::CultureDefinition({.name = "culture_5"})},
+       {"culture_6", vic3::CultureDefinition({.name = "culture_6"})},
+       {"culture_7", vic3::CultureDefinition({.name = "culture_7"})},
    };
 
    AssignPortraits(culture_queues, culture_graphics_mapper, source_cultures, 10, characters);

@@ -1579,17 +1579,15 @@ TEST(Hoi4worldCountriesCountryConverter, OnlyConservativeMonarchiesHaveNobleLead
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    mappers::TemplateMap templates;
 
-   const vic3::CultureDefinition culture_def{"culture",
-       {
+   const vic3::CultureDefinition culture_def({.name = "culture",
+       .name_list = {
            .male_common_first = {"president"},
            .female_common_first = {"presidentin"},
            .common_last = {"doe"},
            .noble_last = {"von Doe"},
            .male_regal_first = {"king0", "king1", "king2", "king3", "king4"},
            .female_regal_first = {"queen0", "queen1", "queen2", "queen3", "queen4"},
-       },
-       {},
-       {}};
+       }});
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.culture_definitions = culture_definitions});
 
@@ -1682,14 +1680,12 @@ TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    mappers::TemplateMap templates;
 
-   const vic3::CultureDefinition culture_def{"culture",
-       {
+   const vic3::CultureDefinition culture_def({.name = "culture",
+       .name_list = {
            .male_common_first = {"president"},
            .female_common_first = {"presidentin"},
            .noble_last = {"von Doe"},
-       },
-       {},
-       {}};
+       }});
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.culture_definitions = culture_definitions});
    commonItems::LocalizationDatabase locs("english", {});
@@ -1738,16 +1734,14 @@ TEST(Hoi4worldCountriesCountryConverter, TooFewNobleFirstsAddsCommonFirsts)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    mappers::TemplateMap templates;
 
-   const vic3::CultureDefinition culture_def{"culture",
-       {
+   const vic3::CultureDefinition culture_def({.name = "culture",
+       .name_list = {
            .male_common_first = {"president"},
            .female_common_first = {"presidentin"},
            .noble_last = {"von Doe"},
            .male_regal_first = {"king"},
            .female_regal_first = {"queen"},
-       },
-       {},
-       {}};
+       }});
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.culture_definitions = culture_definitions});
    commonItems::LocalizationDatabase locs("english", {});
@@ -1797,7 +1791,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsUseSentinielValue)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    mappers::TemplateMap templates;
 
-   const vic3::CultureDefinition culture_def{"culture", {.male_common_first = {"president"}}, {}, {}};
+   const vic3::CultureDefinition culture_def({.name = "culture", .name_list = {.male_common_first = {"president"}}});
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.culture_definitions = culture_definitions});
    commonItems::LocalizationDatabase locs("english", {});
@@ -1841,7 +1835,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsLogWarning)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    mappers::TemplateMap templates;
 
-   const vic3::CultureDefinition culture_def{"culture", {.male_common_first = {"president"}}, {}, {}};
+   const vic3::CultureDefinition culture_def({.name = "culture", .name_list = {.male_common_first = {"president"}}});
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.culture_definitions = culture_definitions});
    commonItems::LocalizationDatabase locs("english", {});
@@ -1881,7 +1875,7 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
    std::map<std::string, mappers::CultureQueue> dummy_culture_queues;
    mappers::TemplateMap templates;
 
-   const vic3::CultureDefinition culture_def{"culture", {}, {}, {}};
+   const vic3::CultureDefinition culture_def({.name = "culture"});
    const std::map<std::string, vic3::CultureDefinition> culture_definitions{{"culture", culture_def}};
    const vic3::World source_world = vic3::World(vic3::WorldOptions{.culture_definitions = culture_definitions});
    const mappers::CultureGraphicsMapper culture_graphics_mapper({

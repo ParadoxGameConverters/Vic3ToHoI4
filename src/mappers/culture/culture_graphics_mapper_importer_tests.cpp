@@ -45,9 +45,10 @@ TEST(MappersCultureCultureGraphicsMapperImporterTests, MappingsCanBeImported)
    const CultureGraphicsMapper ideology_mapper =
        ImportCultureGraphicsMapper("test_files/mappers/culture/culture_graphics.txt");
 
-   EXPECT_EQ(ideology_mapper.MatchCultureToGraphics(vic3::CultureDefinition{"swedish", {}, {}, {}}), block);
-   EXPECT_EQ(ideology_mapper.MatchCultureToGraphics(vic3::CultureDefinition{{}, {}, {"european_heritage"}, {}}), block);
-   EXPECT_EQ(ideology_mapper.MatchCultureToGraphics(vic3::CultureDefinition{{}, {}, {}, {"caucasian"}}), block);
+   EXPECT_EQ(ideology_mapper.MatchCultureToGraphics(vic3::CultureDefinition({.name = "swedish"})), block);
+   EXPECT_EQ(ideology_mapper.MatchCultureToGraphics(vic3::CultureDefinition({.heritage = {"heritage_nordic"}})), block);
+   EXPECT_EQ(ideology_mapper.MatchCultureToGraphics(vic3::CultureDefinition({.traits = {"european_heritage"}})), block);
+   EXPECT_EQ(ideology_mapper.MatchCultureToGraphics(vic3::CultureDefinition({.ethnicities = {"caucasian"}})), block);
 }
 
 

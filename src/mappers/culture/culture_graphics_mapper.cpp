@@ -53,11 +53,13 @@ mappers::GraphicsBlock operator+(const mappers::GraphicsBlock& lhs, const mapper
    };
 }
 
-
-mappers::PortraitPaths ValueOr(mappers::PortraitPaths& lhs, mappers::PortraitPaths& mhs, mappers::PortraitPaths& rhs)
+mappers::PortraitPaths ValueOr(mappers::PortraitPaths& lhs,
+    mappers::PortraitPaths& m1hs,
+    mappers::PortraitPaths& m2hs,
+    mappers::PortraitPaths& rhs)
 {
    mappers::PortraitPaths paths;
-   for (const auto& side: {lhs, mhs, rhs})
+   for (const auto& side: {lhs, m1hs, m2hs, rhs})
    {
       for (const auto& [key, portraits]: side)
       {
@@ -121,6 +123,18 @@ GraphicsBlock CultureGraphicsMapper::MatchCultureToGraphics(const vic3::CultureD
       }
    }
 
+   // Fallback to match heritages, there may be more than one match
+   PortraitPaths heritage_paths;
+   for (const auto& mapping: mappings_)
+   {
+      if (mapping.heritages.contains(culture_def.GetHeritage()))
+      {
+         matched = true;
+         heritage_paths = heritage_paths + mapping.graphics_block.portrait_paths;
+         EmplaceUnitGraphics(unit_graphics, mapping.graphics_block);
+      }
+   }
+
    // Fallback to match traits, there may be more than one match
    PortraitPaths trait_paths;
    for (const auto& mapping: mappings_)
@@ -170,7 +184,7 @@ GraphicsBlock CultureGraphicsMapper::MatchCultureToGraphics(const vic3::CultureD
 
    // Fill in lower blocks from higher blocks.
    return {
-       .portrait_paths = ValueOr(culture_paths, trait_paths, ethnicity_paths),
+       .portrait_paths = ValueOr(culture_paths, heritage_paths, trait_paths, ethnicity_paths),
        .graphical_culture = unit_graphics.at("graphical_culture"),
        .graphical_culture_2d = unit_graphics.at("graphical_culture_2d"),
    };

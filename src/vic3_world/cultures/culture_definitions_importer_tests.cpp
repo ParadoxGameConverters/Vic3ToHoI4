@@ -19,6 +19,7 @@ TEST(Vic3WorldCulturesCultureDefinitionsImporter, NoDefinitionsByDefault)
    EXPECT_TRUE(culture_definitions.empty());
 }
 
+
 TEST(Vic3WorldCulturesCultureDefinitionsImporter, DefinitionsCanBeImported)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/cultures/definitions_can_be_imported/game",
@@ -34,7 +35,12 @@ TEST(Vic3WorldCulturesCultureDefinitionsImporter, DefinitionsCanBeImported)
            .male_regal_first = {"Oskar"},
            .female_regal_first = {"Sophie"},
        },
+       "protestant",
        {"german_speaking", "european_heritage"},
+       {"tradition_order", "tradition_orderly"},
+       {"obsession_rules", "obsession_punctuality"},
+       "heritage_germanic",
+       "language_germanophone",
        {"caucasian"});
 
    CultureDefinition two("south_german",
@@ -46,7 +52,12 @@ TEST(Vic3WorldCulturesCultureDefinitionsImporter, DefinitionsCanBeImported)
            .male_regal_first = {"Lugwig"},
            .female_regal_first = {"Charlotte"},
        },
+       "catholic",
        {"german_speaking", "european_heritage"},
+       {"tradition_order", "tradition_orderly"},
+       {"obsession_rules", "obsession_punctuality"},
+       "heritage_germanic",
+       "language_germanophone",
        {"caucasian"});
 
    CultureDefinition three("welsh",
@@ -56,7 +67,12 @@ TEST(Vic3WorldCulturesCultureDefinitionsImporter, DefinitionsCanBeImported)
            .common_last = {"Insole"},
            .noble_last = {"Talbot"},
        },
+       "protestant",
        {"anglophone", "celtic_people", "european_heritage"},
+       {},
+       {},
+       "",
+       "",
        {"caucasian", "welshy"});
 
    EXPECT_THAT(culture_definitions,

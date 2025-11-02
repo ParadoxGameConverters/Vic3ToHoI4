@@ -96,8 +96,8 @@ TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
        }),
        .culture_definitions =
            {
-               {"culture_0", vic3::CultureDefinition({"culture_0"}, {}, {}, {})},
-               {"culture_1", vic3::CultureDefinition({"culture_1"}, {}, {}, {})},
+               {"culture_0", vic3::CultureDefinition({.name = "culture_0"})},
+               {"culture_1", vic3::CultureDefinition({.name = "culture_1"})},
            },
        .characters =
            {

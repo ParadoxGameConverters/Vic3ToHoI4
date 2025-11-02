@@ -1012,8 +1012,8 @@ TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
            },
        .culture_definitions =
            {
-               {"culture_1", vic3::CultureDefinition{"culture_1", {}, {}, {}}},
-               {"culture_2", vic3::CultureDefinition{"culture_2", {}, {}, {}}},
+               {"culture_1", vic3::CultureDefinition({.name = "culture_1"})},
+               {"culture_2", vic3::CultureDefinition({.name = "culture_2"})},
            },
        .characters =
            {
