@@ -102,6 +102,29 @@ GraphicsBlock block3{
     .graphical_culture = "east",
     .graphical_culture_2d = "east_2d",
 };
+GraphicsBlock blocks1_3{
+    .portrait_paths =
+        {
+            {"army", {"army1", "army3"}},
+            {"navy", {"navy1", "navy3"}},
+            {"leader_communism", {"c_leader1", "c_leader3"}},
+            {"leader_democratic", {"d_leader1", "d_leader3"}},
+            {"leader_fascism", {"f_leader1", "f_leader3"}},
+            {"leader_neutrality", {"n_leader1", "n_leader3"}},
+            {"female_leader", {"fem_leader1", "fem_leader3"}},
+            {"advisor_communism", {"c_minister1", "c_minister3"}},
+            {"advisor_democratic", {"d_minister1", "d_minister3"}},
+            {"advisor_fascism", {"f_minister1", "f_minister3"}},
+            {"advisor_neutrality", {"n_minister1", "n_minister3"}},
+            {"operative_male", {"m_op1", "m_op3"}},
+            {"operative_female", {"f_op1", "f_op3"}},
+            {"monarch_male", {"king1", "king3"}},
+            {"monarch_female", {"queen1", "queen3"}},
+            {"council", {"council1", "council3"}},
+        },
+    .graphical_culture = "west",
+    .graphical_culture_2d = "west_2d",
+};
 GraphicsBlock blocks2_3{
     .portrait_paths =
         {
@@ -204,8 +227,8 @@ TEST(MappersCultureCultureGraphicsMapperTests, NoMatchGivesWarning)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   [[maybe_unused]] auto _ = culture_graphics_mapper.MatchCultureToGraphics(
-       vic3::CultureDefinition({.name = "cul2", .traits = {"trait2"}, .ethnicities = {"eth2"}}));
+   [[maybe_unused]] auto _ = culture_graphics_mapper.MatchCultureToGraphics(vic3::CultureDefinition(
+       {.name = "cul2", .traits = {"trait2"}, .heritage = "heritage2", .ethnicities = {"eth2"}}));
 
    std::cout.rdbuf(cout_buffer);
 
@@ -237,7 +260,7 @@ TEST(MappersCultureCultureGraphicsMapperTests, MatchPrimaryCulturesMatchesMultip
 {
    const CultureGraphicsMapper culture_graphics_mapper({mappings});
 
-   EXPECT_EQ(culture_graphics_mapper.MatchPrimaryCulturesToGraphics({"cul2", "cul20"}, culture_defs), blocks2_3);
+   EXPECT_EQ(culture_graphics_mapper.MatchPrimaryCulturesToGraphics({"cul2", "cul20"}, culture_defs), blocks1_3);
 }
 
 
