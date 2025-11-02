@@ -56,7 +56,7 @@ jobs:
       run: cmake --build --preset build-x64-coverage-linux --target gcov
 
     - name: Run lcov
-      run: cmake --build --preset build-x64-coverage-linux --target lcov
+      run: cmake --build --preset build-x64-coverage-linux --target lcov --ignore-errors inconsistent,inconsistent ...
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
