@@ -1,5 +1,6 @@
 #include "src/hoi4_world/roles/triggers/trigger_importer.h"
 
+#include "any_primary_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
@@ -96,6 +97,10 @@ TriggerImporter::TriggerImporter()
 
 
    // country scopes
+   trigger_parser_.registerKeyword("any_primary_culture", [this](std::istream& input) {
+      std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+      triggers_.push_back(std::make_unique<AnyPrimaryCultureTrigger>(std::move(triggers)));
+   });
    trigger_parser_.registerKeyword("tag", [this](std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
       if (const std::optional<std::string> tag_string = trigger_parser_.getNextTokenWithoutMatching(input); tag_string)

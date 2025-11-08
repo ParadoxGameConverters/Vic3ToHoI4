@@ -3,6 +3,7 @@
 
 #include <sstream>
 
+#include "any_primary_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
@@ -520,6 +521,30 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithL
 
 
 // country scopes
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyPrimaryCultureTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  any_primary_culture = {\n";
+   input << "    \nalways = yes\n";
+   input << "    \nalways = no\n";
+   input << "  }\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   std::unique_ptr<Trigger> always_yes_trigger = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> always_no_trigger = std::make_unique<AlwaysTrigger>(false);
+   std::vector<std::unique_ptr<Trigger>> children;
+   children.push_back(std::move(always_yes_trigger));
+   children.push_back(std::move(always_no_trigger));
+   const AnyPrimaryCultureTrigger any_primary_culture_trigger(std::move(children));
+   ASSERT_TRUE(trigger);
+   EXPECT_EQ(*trigger, any_primary_culture_trigger);
+}
+
+
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, TagTriggerCanBeImported)
 {
    std::stringstream input;
