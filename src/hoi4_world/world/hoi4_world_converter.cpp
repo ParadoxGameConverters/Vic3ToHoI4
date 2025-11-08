@@ -341,7 +341,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    hoi4::Buildings buildings = buildings_future.get();
    ProgressManager::AddProgress(5);
 
-   hoi4::World world(hoi4::WorldOptions{.countries = countries,
+   hoi4::World world(hoi4::WorldOptions{
+       .countries = countries,
        .great_powers = great_powers,
        .major_powers = major_powers,
        .states = states,
@@ -349,7 +350,9 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        .buildings = buildings,
        .railways = railways,
        .localizations = localizations,
-       .characters = characters});
+       .characters = characters,
+       .culture_definitions = source_world.GetCultureDefinitions(),
+   });
 
    std::set<DecisionsCategory> decisions_categories;
    std::map<std::string, std::vector<Decision>> decisions_in_categories;
