@@ -1,6 +1,7 @@
 #include "src/hoi4_world/roles/triggers/trigger_importer.h"
 
 #include "any_primary_culture_trigger.h"
+#include "shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
@@ -111,11 +112,20 @@ TriggerImporter::TriggerImporter()
 
 
    // culture scopes
+   // to fix
    trigger_parser_.registerKeyword("has_homeland", [this](std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
       if (const std::optional<std::string> tag_string = trigger_parser_.getNextTokenWithoutMatching(input); tag_string)
       {
          triggers_.push_back(std::make_unique<HasHomelandTrigger>(tag_string.value()));
+      }
+   });
+   trigger_parser_.registerKeyword("shares_heritage_trait_with_culture", [this](std::istream& input) {
+      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      if (const std::optional<std::string> culture_string = trigger_parser_.getNextTokenWithoutMatching(input);
+          culture_string)
+      {
+         triggers_.push_back(std::make_unique<SharesHeritageTraitWithCultureTrigger>(culture_string.value()));
       }
    });
 
@@ -131,6 +141,7 @@ TriggerImporter::TriggerImporter()
       const bool value = value_string == "yes";
       triggers_.push_back(std::make_unique<IsCapitalTrigger>(value));
    });
+   // is_homeland_of_country_cultures - to implement
    trigger_parser_.registerKeyword("is_on_continent", [this]([[maybe_unused]] std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
       const std::string value = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");

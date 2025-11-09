@@ -37,7 +37,7 @@ set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/goo
 add_library(
 	GtestLib
 	${GTEST_SOURCES}
-)
+ )
 
 
 #### Fronter ####
@@ -104,7 +104,7 @@ if (PLATFORM STREQUAL "Windows")
 		${F_UPDATECHECKER_SOURCES}
 		${F_SQLITE_SOURCES}
 		${F_SQLITE3_SOURCES}
-	 )
+	  )
 	 set_target_properties(ConverterFrontend
 		PROPERTIES
 		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
@@ -251,6 +251,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/nand_t
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/nor_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/not_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/or_trigger.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/tag_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/trigger_base.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/trigger_importer.cpp")
@@ -481,6 +482,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/nand_trigger_tes
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/nor_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/not_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/or_trigger_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/tag_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/trigger_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/default_states_importer_tests.cpp")
