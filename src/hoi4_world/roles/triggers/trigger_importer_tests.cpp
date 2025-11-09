@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "any_primary_culture_trigger.h"
+#include "is_homeland_of_country_cultures.h"
 #include "shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
@@ -641,6 +642,22 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWi
    ASSERT_TRUE(trigger);
    const IsCapitalTrigger is_capital_trigger(true);
    EXPECT_EQ(*trigger, is_capital_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandOfCountryCultureTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  is_homeland_of_country_cultures = TAG\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const IsHomelandOfCountryCulture is_homeland_of_country_cultures_trigger("TAG");
+   EXPECT_EQ(*trigger, is_homeland_of_country_cultures_trigger);
 }
 
 

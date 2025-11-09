@@ -1,6 +1,7 @@
 #include "src/hoi4_world/roles/triggers/trigger_importer.h"
 
 #include "any_primary_culture_trigger.h"
+#include "is_homeland_of_country_cultures.h"
 #include "shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
@@ -139,6 +140,11 @@ TriggerImporter::TriggerImporter()
 #pragma warning(push)
       const bool value = value_string == "yes";
       triggers_.push_back(std::make_unique<IsCapitalTrigger>(value));
+   });
+   trigger_parser_.registerKeyword("is_homeland_of_country_cultures", [this]([[maybe_unused]] std::istream& input) {
+      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      const std::string tag = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
+      triggers_.push_back(std::make_unique<IsHomelandOfCountryCulture>(tag));
    });
    trigger_parser_.registerKeyword("is_on_continent", [this]([[maybe_unused]] std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
