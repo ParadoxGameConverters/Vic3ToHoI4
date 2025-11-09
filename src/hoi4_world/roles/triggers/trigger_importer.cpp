@@ -7,6 +7,7 @@
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
+#include "src/hoi4_world/roles/triggers/has_homeland_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
@@ -112,6 +113,13 @@ TriggerImporter::TriggerImporter()
 
 
    // culture scopes
+   trigger_parser_.registerKeyword("has_homeland", [this](std::istream& input) {
+      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      if (const std::optional<std::string> tag_string = trigger_parser_.getNextTokenWithoutMatching(input); tag_string)
+      {
+         triggers_.push_back(std::make_unique<HasHomelandTrigger>(tag_string.value()));
+      }
+   });
    trigger_parser_.registerKeyword("shares_heritage_trait_with_culture", [this](std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
       if (const std::optional<std::string> culture_string = trigger_parser_.getNextTokenWithoutMatching(input);
