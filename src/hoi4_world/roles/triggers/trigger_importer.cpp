@@ -112,7 +112,6 @@ TriggerImporter::TriggerImporter()
 
 
    // culture scopes
-   // to fix
    trigger_parser_.registerKeyword("has_homeland", [this](std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
       if (const std::optional<std::string> tag_string = trigger_parser_.getNextTokenWithoutMatching(input); tag_string)
@@ -141,7 +140,6 @@ TriggerImporter::TriggerImporter()
       const bool value = value_string == "yes";
       triggers_.push_back(std::make_unique<IsCapitalTrigger>(value));
    });
-   // is_homeland_of_country_cultures - to implement
    trigger_parser_.registerKeyword("is_on_continent", [this]([[maybe_unused]] std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
       const std::string value = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
