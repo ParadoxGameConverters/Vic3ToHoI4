@@ -80,6 +80,8 @@ class World
 
    [[nodiscard]] std::map<std::string, Country>& GetModifiableCountries() { return countries_; }
 
+   [[nodiscard]] std::optional<Country> GetCountry(const std::string& tag) const;
+
    void SetDecisionsCategories(std::set<DecisionsCategory> decisions_categories)
    {
       decisions_categories_ = std::move(decisions_categories);
