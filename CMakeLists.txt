@@ -37,7 +37,7 @@ set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/goo
 add_library(
 	GtestLib
 	${GTEST_SOURCES}
-)
+ )
 
 
 #### Fronter ####
@@ -104,7 +104,7 @@ if (PLATFORM STREQUAL "Windows")
 		${F_UPDATECHECKER_SOURCES}
 		${F_SQLITE_SOURCES}
 		${F_SQLITE3_SOURCES}
-	 )
+	  )
 	 set_target_properties(ConverterFrontend
 		PROPERTIES
 		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
@@ -243,13 +243,15 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/stories_creator
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/and_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/any_other_country_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/any_owned_state_trigger.cpp")
-set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/has_homeland_trigger.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/any_primary_culture_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/is_capital_trigger.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/is_homeland_of_country_cultures.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/is_on_continent_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/nand_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/nor_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/not_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/or_trigger.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/tag_trigger.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/trigger_base.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/triggers/trigger_importer.cpp")
@@ -259,6 +261,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/hoi4_states_co
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/states/state_categories.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/technology/technologies.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/technology/technologies_converter.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/world/hoi4_world.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/world/hoi4_world_converter.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/world/hoi4_world_framework_builder.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/mappers/character/character_trait_mapper.cpp")
@@ -472,13 +475,15 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/always_trigger_t
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/and_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/any_other_country_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/any_owned_state_trigger_tests.cpp")
-set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/has_homeland_trigger_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/any_primary_culture_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/is_capital_trigger_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/is_homeland_of_country_cultures_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/is_on_continent_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/nand_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/nor_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/not_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/or_trigger_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/tag_trigger_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/triggers/trigger_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/states/default_states_importer_tests.cpp")

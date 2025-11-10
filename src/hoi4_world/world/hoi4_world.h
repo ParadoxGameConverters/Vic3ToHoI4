@@ -19,6 +19,7 @@
 #include "src/hoi4_world/map/railways.h"
 #include "src/hoi4_world/map/strategic_regions.h"
 #include "src/hoi4_world/states/hoi4_states.h"
+#include "src/vic3_world/cultures/culture_definition.h"
 
 
 
@@ -36,6 +37,7 @@ struct WorldOptions
    Railways railways;
    Localizations localizations;
    std::map<int, Character> characters;
+   std::map<std::string, vic3::CultureDefinition> culture_definitions;
 };
 
 
@@ -51,7 +53,8 @@ class World
        buildings_(std::move(options.buildings)),
        railways_(std::move(options.railways)),
        localizations_(std::move(options.localizations)),
-       characters_(std::move(options.characters))
+       characters_(std::move(options.characters)),
+       culture_definitions_(std::move(options.culture_definitions))
    {
    }
 
@@ -64,6 +67,10 @@ class World
    [[nodiscard]] const Railways& GetRailways() const { return railways_; }
    [[nodiscard]] const Localizations& GetLocalizations() const { return localizations_; }
    [[nodiscard]] const std::map<int, Character>& GetCharacters() const { return characters_; }
+   [[nodiscard]] const std::map<std::string, vic3::CultureDefinition>& GetCultureDefinitions() const
+   {
+      return culture_definitions_;
+   }
    [[nodiscard]] const std::set<DecisionsCategory>& GetDecisionsCategories() const { return decisions_categories_; }
    [[nodiscard]] const std::map<std::string, std::vector<Decision>>& GetDecisionsInCategories() const
    {
@@ -72,6 +79,8 @@ class World
    [[nodiscard]] const std::map<std::string, std::vector<Event>>& GetEvents() const { return country_events_; }
 
    [[nodiscard]] std::map<std::string, Country>& GetModifiableCountries() { return countries_; }
+
+   [[nodiscard]] std::optional<Country> GetCountry(const std::string& tag) const;
 
    void SetDecisionsCategories(std::set<DecisionsCategory> decisions_categories)
    {
@@ -97,6 +106,7 @@ class World
    Railways railways_;
    Localizations localizations_;
    std::map<int, Character> characters_;
+   std::map<std::string, vic3::CultureDefinition> culture_definitions_;
 
    std::set<DecisionsCategory> decisions_categories_;
    std::map<std::string, std::vector<Decision>> decisions_in_categories_;

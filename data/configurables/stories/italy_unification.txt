@@ -20,6 +20,24 @@ unification_italy = {
             factor = 5
         }
 
+        completion_reward = {
+            add_political_power = 50
+            add_war_support = 0.1
+        }
+    }
+
+    # invite italians to join us
+    focus={
+        id = $TAG$_invite_italians
+        icon = GFX_goal_generic_construction
+        relative_position_id = $TAG$_italia_irredenta
+        x = -5
+        y = 1
+        cost = 10
+        prerequisite = { focus = $TAG$_italia_irredenta }
+        ai_will_do = {
+            factor = 5
+        }
 
         completion_reward = {
             add_political_power = 50
@@ -27,32 +45,33 @@ unification_italy = {
         }
     }
 
-    repeat_focus={ #creates wargoal and ai strategy vs another country that owns a core or claim of ITA
+    # Tries to convince other italian countries with italian homelands to unite with Italy
+    repeat_focus={
         trigger={
             any_other_country = {
+                any_primary_culture = {
+                    shares_heritage_trait_with_culture = north_italian
+                }
                 any_owned_state = {
-					OR = {
-						has_homeland = north_italian
-						has_homeland = south_italian
-					}
+                    is_homeland_of_country_cultures = ITA
                 }
             }
         }
         focus={
-            id = $TAG$_invade_$TARGET_ID$
+            id = $TAG$_invite_$TARGET_ID$
             icon = GFX_goal_generic_more_territorial_claims
-            relative_position_id = $TAG$_italia_irredenta
+            relative_position_id = $TAG$_invite_italians
             x = -1
             y = 1
             cost = 10
-            prerequisite = { focus = $TAG$_italia_irredenta }
-            
+            prerequisite = { focus = $TAG$_invite_italians }
+
             available = {
                 $TARGET_ID$ = {
                     can_ROOT_get_wargoal_on_THIS = yes
                 }
             }
-            
+
             ai_will_do = {
                 factor = 1
                     modifier = { #don't try it if we're getting our ass kicked
@@ -71,18 +90,18 @@ unification_italy = {
                                         }
                                     }
                                 }
-                                
+
                             }
                         }
                     }
             }
-            
+
             bypass = {
                 has_war_with = $TARGET_ID$
             }
-            
+
             will_lead_to_war_with = $TARGET_ID$
-            
+
             select_effect = { #should make AI prepare to invade
                 add_ai_strategy = {
                     type = prepare_for_war
@@ -90,7 +109,7 @@ unification_italy = {
                     value = 100
                 }
             }
-            
+
             completion_reward = { #wargoal would be more appropriate as take_claimed_state or such, maybe
                 create_wargoal = {
                     type = annex_everything
@@ -102,10 +121,111 @@ unification_italy = {
                     value = 200
                 }
             }
-            
+
         }
     }
-    
+
+    # expel non-italian nations
+    focus={
+        id = $TAG$_expel_others
+        icon = GFX_goal_generic_construction
+        relative_position_id = $TAG$_italia_irredenta
+        x = 1
+        y = 1
+        cost = 10
+        prerequisite = { focus = $TAG$_italia_irredenta }
+        ai_will_do = {
+            factor = 5
+        }
+
+        completion_reward = {
+            add_political_power = 50
+            add_war_support = 0.1
+        }
+    }
+
+    # creates wargoal and ai strategy vs another country that owns a core or claim of ITA
+    repeat_focus={
+        trigger={
+            any_other_country = {
+                NOT = {
+                    any_primary_culture = {
+                        shares_heritage_trait_with_culture = north_italian
+                    }
+                }
+                any_owned_state = {
+                    is_homeland_of_country_cultures = ITA
+                }
+            }
+        }
+        focus={
+            id = $TAG$_invade_$TARGET_ID$
+            icon = GFX_goal_generic_more_territorial_claims
+            relative_position_id = $TAG$_expel_others
+            x = -1
+            y = 1
+            cost = 10
+            prerequisite = { focus = $TAG$_expel_others }
+
+            available = {
+                $TARGET_ID$ = {
+                    can_ROOT_get_wargoal_on_THIS = yes
+                }
+            }
+
+            ai_will_do = {
+                factor = 1
+                    modifier = { #don't try it if we're getting our ass kicked
+                        factor = 0
+                        surrender_progress > 0.01
+                    }
+                    modifier = { #don't try it if we can't reach them
+                        factor = 0
+                        $TARGET_ID$ = {
+                            NOT = {
+                                OR = {
+                                    is_neighbor_of = $TAG$
+                                    $TARGET_ID$ = {
+                                        any_owned_state = {
+                                            is_coastal = yes
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+            }
+
+            bypass = {
+                has_war_with = $TARGET_ID$
+            }
+
+            will_lead_to_war_with = $TARGET_ID$
+
+            select_effect = { #should make AI prepare to invade
+                add_ai_strategy = {
+                    type = prepare_for_war
+                    id = $TARGET_ID$
+                    value = 100
+                }
+            }
+
+            completion_reward = { #wargoal would be more appropriate as take_claimed_state or such, maybe
+                create_wargoal = {
+                    type = annex_everything
+                    target = $TARGET_ID$
+                }
+                add_ai_strategy = {
+                    type = conquer
+                    id = $TARGET_ID$
+                    value = 200
+                }
+            }
+
+        }
+    }
+
     decisions_categories={
         sample_decision_category={
             icon=generic_form_nation
@@ -113,7 +233,7 @@ unification_italy = {
             }
         }
     }
-    
+
     decisions={
         sample_decision_category={
             decision_one={
@@ -279,7 +399,7 @@ unification_italy_2 = {
             }
         }
     }
-    
+
     events={
         country_event={
             id=sample_event

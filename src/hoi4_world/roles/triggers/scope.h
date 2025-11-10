@@ -6,6 +6,7 @@
 
 #include "src/hoi4_world/countries/hoi4_country.h"
 #include "src/hoi4_world/states/hoi4_state.h"
+#include "src/vic3_world/cultures/culture_definition.h"
 
 
 
@@ -24,6 +25,18 @@ inline bool operator==(const CountryScope& lhs, const CountryScope& rhs)
 }
 
 
+struct CultureScope
+{
+   const vic3::CultureDefinition& culture;
+};
+
+
+inline bool operator==(const CultureScope& lhs, const CultureScope& rhs)
+{
+   return lhs.culture == rhs.culture;
+}
+
+
 struct StateScope
 {
    const State& state;
@@ -36,6 +49,6 @@ inline bool operator==(const StateScope& lhs, const StateScope& rhs)
 }
 
 
-using Scope = std::variant<CountryScope, StateScope>;
+using Scope = std::variant<CountryScope, CultureScope, StateScope>;
 
 }  // namespace hoi4
