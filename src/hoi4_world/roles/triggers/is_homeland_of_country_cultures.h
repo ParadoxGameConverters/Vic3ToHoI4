@@ -15,7 +15,7 @@ namespace hoi4
 class IsHomelandOfCountryCulture: public Trigger
 {
   public:
-   explicit IsHomelandOfCountryCulture(std::string country): country_(country) {}
+   explicit IsHomelandOfCountryCulture(std::string_view country): country_(country) {}
    IsHomelandOfCountryCulture(const IsHomelandOfCountryCulture&) = default;
    IsHomelandOfCountryCulture& operator=(const IsHomelandOfCountryCulture&) = default;
    IsHomelandOfCountryCulture(IsHomelandOfCountryCulture&&) = default;
