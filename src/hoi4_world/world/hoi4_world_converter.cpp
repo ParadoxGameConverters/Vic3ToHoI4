@@ -369,6 +369,12 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
          continue;
       }
 
+      std::set<std::string> role_names;
+      std::ranges::for_each(country_roles, [&role_names](const Role& role) {
+         role_names.insert(role.GetName());
+      });
+      country_itr->second.SetRoles(role_names);
+
       for (const Role& country_role: country_roles)
       {
          for (const DecisionsCategory& role_category: country_role.GetDecisionsCategories())

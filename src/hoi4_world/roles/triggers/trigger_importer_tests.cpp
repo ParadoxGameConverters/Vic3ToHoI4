@@ -10,6 +10,7 @@
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
+#include "src/hoi4_world/roles/triggers/has_role_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
@@ -543,6 +544,22 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyPrimaryCultureTriggerCanBeIm
    const AnyPrimaryCultureTrigger any_primary_culture_trigger(std::move(children));
    ASSERT_TRUE(trigger);
    EXPECT_EQ(*trigger, any_primary_culture_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, HasRoleTriggerBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  has_role = test_role\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const HasRoleTrigger has_role_trigger("test_role");
+   EXPECT_EQ(*trigger, has_role_trigger);
 }
 
 

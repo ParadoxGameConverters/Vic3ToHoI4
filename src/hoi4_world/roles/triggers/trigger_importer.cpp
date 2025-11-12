@@ -7,6 +7,7 @@
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
+#include "src/hoi4_world/roles/triggers/has_role_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
@@ -101,6 +102,14 @@ TriggerImporter::TriggerImporter()
    trigger_parser_.registerKeyword("any_primary_culture", [this](std::istream& input) {
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
       triggers_.push_back(std::make_unique<AnyPrimaryCultureTrigger>(std::move(triggers)));
+   });
+   trigger_parser_.registerKeyword("has_role", [this](std::istream& input) {
+      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      if (const std::optional<std::string> role_string = trigger_parser_.getNextTokenWithoutMatching(input);
+          role_string)
+      {
+         triggers_.push_back(std::make_unique<HasRoleTrigger>(role_string.value()));
+      }
    });
    trigger_parser_.registerKeyword("tag", [this](std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
