@@ -151,10 +151,12 @@ class Country
    [[nodiscard]] const std::vector<TaskForce>& GetTaskForces() const { return task_forces_; }
    [[nodiscard]] const std::vector<Unit>& GetUnits() const { return units_; }
    [[nodiscard]] const std::vector<War>& GetWars() const { return wars_; }
+   [[nodiscard]] bool HasRole(const std::string& role) const { return role_names_.contains(role); }
    [[nodiscard]] const FocusTree& GetFocusTree() const { return focus_tree_; }
 
    void AddWar(War war) { wars_.emplace_back(std::move(war)); }
    void RemovePuppets(const std::set<std::string>& puppet_tags);
+   void SetRoles(const std::set<std::string>& role_names) { role_names_ = role_names; }
    void SetFocusTree(const FocusTree& focus_tree) { focus_tree_ = focus_tree; }
 
    std::partial_ordering operator<=>(const Country&) const = default;
@@ -197,6 +199,7 @@ class Country
    int convoys_;
    std::vector<TaskForce> task_forces_;
    std::vector<War> wars_;
+   std::set<std::string> role_names_;
    FocusTree focus_tree_;
 };
 
