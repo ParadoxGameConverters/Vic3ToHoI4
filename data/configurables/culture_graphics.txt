@@ -197,6 +197,7 @@ african = {
 			}
 		}
 		anarchist = {
+			GFX_portrait_ETH_anarchist_council #DLC BBA
 		}
 		monarchist = {
 			male = {
@@ -301,6 +302,17 @@ arab = {
 			minister = {
 			}
 		}
+		anarchist = {
+			GFX_portrait_ETH_anarchist_council #DLC BBA
+		}
+		monarchist = {
+			male = {
+			}
+			female = {
+			}
+		}
+	}
+	female_portraits = {
 	}
 	operative_portraits = {
 		male = {
@@ -398,6 +410,19 @@ asian = {
 			minister = {
 			}
 		}
+		anarchist = {
+			GFX_portrait_SPR_anarchist_commune #DLC LaR
+		}
+		monarchist = {
+			male = {
+			}
+			female = {
+			}
+		}
+	}
+	female_portraits = {
+		GFX_portrait_BRM_myat_phaya_lat
+		GFX_portrait_Terii_nui_o_Tahiti_a_Pomare # Is actually a generic portrait in game files, which is based on Tetsuko Murakami, a Japanese-American
 	}
 
 	graphical_culture = asian_gfx
@@ -590,29 +615,54 @@ caucasian = {
 indian = {
 	ethnicities = { indian }
 
+	army_portraits = {
+		GFX_Portrait_The_Raj_Army_Generic
+		GFX_Portrait_The_Raj_Army_Generic_2
+		GFX_portrait_india_generic_land_3
+		GFX_portrait_india_generic_land_4
+	}
+	navy_portraits = {
+		GFX_Portrait_The_Raj_Generic_navy_1
+		GFX_Portrait_The_Raj_Generic_navy_2
+	}
 	scientist_portraits = {
 		female = {
-	 		GFX_portrait_generic_asia_female_01
- 			GFX_portrait_generic_asia_female_02
-			GFX_portrait_generic_asia_female_03
-			GFX_portrait_generic_asia_female_04
-			GFX_portrait_generic_asia_female_05
-			GFX_portrait_generic_asia_female_06
-			GFX_portrait_generic_asia_female_07
-			GFX_portrait_generic_asia_female_08
+	 		GFX_portrait_india_generic_operative_female_1
+			GFX_portrait_india_generic_operative_female_2
+			GFX_portrait_india_generic_operative_female_3
+			GFX_portrait_india_generic_operative_female_4
+			GFX_portrait_india_generic_operative_female_5
 		}
 		male = {
-	 		GFX_portrait_generic_asia_male_01
- 			GFX_portrait_generic_asia_male_02
-			GFX_portrait_generic_asia_male_03
-			GFX_portrait_generic_asia_male_04
-			GFX_portrait_generic_asia_male_05
-			GFX_portrait_generic_asia_male_06
-			GFX_portrait_generic_asia_male_07
-			GFX_portrait_generic_asia_male_08
+	 		GFX_portrait_india_generic_operative_male_1
+			GFX_portrait_india_generic_operative_male_2
+			GFX_portrait_india_generic_operative_male_3
+			GFX_portrait_india_generic_operative_male_4
+			GFX_portrait_india_generic_operative_male_5
 		}
 	}
-
+	political_portraits = {
+		communism = {
+			leader = { 
+				GFX_Portrait_The_Raj_Political_Leader_Generic
+			}
+		}
+		democratic = {
+			leader = { 
+				GFX_Portrait_The_Raj_Political_Leader_Generic_2
+			}
+		}
+		fascism = {
+			leader = { 
+				GFX_Portrait_The_Raj_Army_Generic
+			}
+		}
+		neutrality = {
+			leader = { 
+				GFX_Portrait_The_Raj_Political_Leader_Generic
+			}
+		}
+	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
 }
@@ -895,7 +945,7 @@ west_horn_of_african = {
 	graphical_culture_2d = african_2d
 }
 
-### Specific
+### HoI4 Generic
 american = {
 	cultures = { yankee dixie }
 
@@ -1281,47 +1331,6 @@ japanese = {
 	graphical_culture_2d = asian_2d
 }
 
-manchu = {
-    cultures = { manchu } # DLC WTT
-
-    army_portraits = {
-        GFX_portrait_man_zhang_haipeng
-        GFX_portrait_man_aisin_gioro_xiqia
-		GFX_portrait_chi_zhang_xueliang
-		GFX_Portrait_Asia_Generic_land_2
-    }
-
-    leader_portraits = {
-        communism = {
-			leader = {
-				GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
-			}
-        }
-        democratic = {
-			leader = {
-				GFX_portrait_chi_zhang_xueliang
-				GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
-			}
-        }
-        fascism = {
-			leader = {
-            	GFX_portrait_man_zhang_jinghui
-			}
-        }
-        neutrality = {
-			leader = {
-         		GFX_portrait_man_henry_pu_yi_emperor
-			}
-        }
-    }
-    monarch_ideas = {
-		GFX_idea_man_low_legitimacy5
-    }
-
-    graphical_culture = asian_gfx
-    graphical_culture_2d = asian_2d
-}
-
 russian = {
 	cultures = { russian }
 
@@ -1346,4 +1355,129 @@ russian = {
 
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
+}
+
+### Converter specific
+manchu = {
+    cultures = { manchu }
+
+    army_portraits = {
+        GFX_portrait_man_zhang_haipeng
+        GFX_portrait_man_aisin_gioro_xiqia
+	GFX_portrait_chi_zhang_xueliang
+	GFX_Portrait_Asia_Generic_land_2
+    }
+
+    leader_portraits = {
+        communism = {
+		leader = {
+			GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
+		}
+        }
+        democratic = {
+		leader = {
+			GFX_portrait_chi_zhang_xueliang
+			GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
+		}
+        }
+        fascism = {
+		leader = {
+            		GFX_portrait_man_zhang_jinghui
+		}
+        }
+        neutrality = {
+		leader = {
+         		GFX_Portrait_Asia_Generic_land_2 
+		}
+        }
+	monarchist = {
+		male = {
+			GFX_portrait_man_henry_pu_yi_emperor
+		}
+		female =
+			GFX_portrait_man_yoshiko_kawashima
+		}
+    }
+    monarch_ideas = {
+		GFX_idea_man_low_legitimacy5
+    }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+bengali = {
+    cultures = { bengali } # DLC GoE
+
+    leader_portraits = {
+        communism = {
+		leader = {
+			GFX_portrait_RAJ_m_n_roy
+		}
+        }
+        democratic = {
+		leader = {
+			GFX_portrait_BAN_a_k_fazlul_huq
+		}
+        }
+        fascism = {
+		leader = {
+            		GFX_RAJ_subhas_chandra_bose #TFV portrait, Do not place GoE one here!
+		}
+        }
+        neutrality = {
+		leader = {
+         		GFX_portrait_RAJ_huseyn_shaheed_suhrawardy
+		}
+        }
+    }
+    monarch_ideas = {
+		GFX_focus_RAJ_united_bengal
+    }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
+}
+
+north_pakistani = {
+    cultures = { punjabi kashmiri } # DLC GoE
+
+ army_portraits = {
+	GFX_portrait_RAJ_ishar_singh
+	GFX_portrait_RAJ_parkash_singh
+}
+    leader_portraits = {
+        communism = {
+		leader = {
+			GFX_portrait_india_generic_land_3
+		}
+        }
+        democratic = {
+		leader = {
+			GFX_portrait_RAJ_jawaharlal_nehru
+			GFX_portrait_RAJ_shah_nawaz_khan
+		}
+        }
+        fascism = {
+		leader = {
+            		GFX_portrait_RAJ_shah_nawaz_khan
+		}
+        }
+        neutrality = {
+		leader = {
+         		GFX_portrait_india_generic_land_3
+		}
+        }
+	monarchist = {
+		male = {
+			GFX_portrait_RAJ_maharaja_hari_singh
+			GFX_portrait_RAJ_tara_singh # Should really be a religious leader
+		}
+    }
+    monarch_ideas = {
+		
+    }
+
+    graphical_culture = asian_gfx
+    graphical_culture_2d = asian_2d
 }
