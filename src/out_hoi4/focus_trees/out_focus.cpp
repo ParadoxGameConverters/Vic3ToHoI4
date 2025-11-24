@@ -23,6 +23,10 @@ std::ostream& out::operator<<(std::ostream& output, const hoi4::Focus& focus)
    {
       output << "\t\tbypass " << *focus.bypass << "\n";
    }
+   if (focus.will_lead_to_war_with.has_value())
+   {
+      output << "\t\twill_lead_to_war_with = " << *focus.will_lead_to_war_with << "\n";
+   }
    output << "\t\tx = " << focus.x_position << "\n";
    output << "\t\ty = " << focus.y_position << "\n";
    if (focus.relative_position_id.has_value())
