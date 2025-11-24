@@ -15,6 +15,7 @@ link = {
 	hoi4 = infantry_weapons
 	hoi4 = gw_artillery
 	hoi4 = tech_support
+    hoi4 = tech_trucks
 }
 
 link = {
