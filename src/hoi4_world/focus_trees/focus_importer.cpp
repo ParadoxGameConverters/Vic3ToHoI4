@@ -19,7 +19,7 @@ FocusImporter::FocusImporter()
       text_ = commonItems::getString(input_stream);
    });
    focus_parser_.registerKeyword("mutually_exclusive", [this](std::istream& input_stream) {
-      mutually_exclusive_ = commonItems::getString(input_stream);
+      mutually_exclusive_ = commonItems::stringOfItem(input_stream).getString();
    });
    focus_parser_.registerKeyword("bypass", [this](std::istream& input_stream) {
       bypass_ = commonItems::stringOfItem(input_stream).getString();
