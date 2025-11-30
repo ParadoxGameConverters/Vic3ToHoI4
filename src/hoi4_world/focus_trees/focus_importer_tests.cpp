@@ -77,7 +77,7 @@ TEST(Hoi4worldFocustreesFocusimporterTests, ItemsCanBeImported)
    EXPECT_EQ(focus.icon, "test_icon");
    EXPECT_EQ(focus.text.value_or(""), "test_text");
    EXPECT_THAT(focus.prerequisites, testing::ElementsAre("= { test_prerequisite_1 }", "= { test_prerequisite_2 }"));
-   EXPECT_EQ(focus.mutually_exclusive.value_or(""), "= { focus = test_mutually_exclusive}");
+   EXPECT_EQ(focus.mutually_exclusive.value_or(""), "= { focus = test_mutually_exclusive }");
    EXPECT_EQ(focus.bypass.value_or(""), "= { test_bypass }");
    EXPECT_TRUE(focus.tree_starter);
    EXPECT_EQ(focus.x_position, 3);
