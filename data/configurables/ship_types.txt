@@ -54,6 +54,7 @@ mtg_ship_type = {
 mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_heavy
+        basic_heavy_battery
 	}
 	name = "1936 Battleship"
 	type = ship_hull_heavy_2
@@ -97,6 +98,7 @@ mtg_ship_type = {
 mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_light
+        basic_light_battery
 	}
 	name = "1936 Destroyer"
 	type = ship_hull_light_2
@@ -139,6 +141,7 @@ mtg_ship_type = {
 mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_cruiser
+        basic_medium_battery
 	}
 	name = "1936 Heavy Cruiser"
 	type = ship_hull_cruiser_2
@@ -183,6 +186,7 @@ mtg_ship_type = {
 mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_cruiser
+        basic_light_battery
 	}
 	name = "1936 Light Cruiser"
 	type = ship_hull_cruiser_2
