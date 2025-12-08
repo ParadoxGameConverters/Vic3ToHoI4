@@ -85,6 +85,39 @@ TEST(Outhoi4WorldOutworld, TagsFileIsCreated)
 }
 
 
+TEST(Outhoi4WorldOutworld, TagsAliasFileIsCreated)
+{
+   CreateTestFolders("TagsAliasFileIsCreated");
+
+   OutputWorld("TagsAliasFileIsCreated",
+       hoi4::World({.tag_aliases =
+                        {
+                            {"TAG", "ORI", "test_flag"},
+                            {"TWO", "OTH", "another_flag"},
+                        }}),
+       configuration::UseStories::kNo);
+
+   std::ifstream aliases_file("output/TagsAliasFileIsCreated/common/country_tag_aliases/converter_tag_aliases.txt");
+   ASSERT_TRUE(aliases_file.is_open());
+   std::stringstream aliases_file_stream;
+   std::copy(std::istreambuf_iterator<char>(aliases_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(aliases_file_stream));
+   aliases_file.close();
+   EXPECT_EQ(aliases_file_stream.str(),
+       "TAG = {\n"
+       "\toriginal_tag = ORI\n"
+       "\thas_country_flag = test_flag\n"
+       "}\n"
+       "\n"
+       "TWO = {\n"
+       "\toriginal_tag = OTH\n"
+       "\thas_country_flag = another_flag\n"
+       "}\n"
+       "\n");
+}
+
+
 TEST(Outhoi4WorldOutworld, CharactersFilesAreCreated)
 {
    CreateTestFolders("WorldCharactersFilesAreCreated");
