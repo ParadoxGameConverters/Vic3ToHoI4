@@ -51,6 +51,15 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    input << "\tblock_role=unification_role\n";
    input << "\tblock_category=unification_category\n";
    input << "\n";
+   input << "define_alias = {\n";
+   input << "\tcountry_flag = $TAG$_a_flag\n";
+   input << "\talias_identifier = $TAG$_identifier\n";
+   input << "}\n";
+   input << "define_alias = {\n";
+   input << "\tcountry_flag = $TAG$_another_flag\n";
+   input << "\talias_identifier = $TAG$_another_identifier\n";
+   input << "}\n";
+   input << "\n";
    input << "\tshared_focus=army_effort\n";
    input << "\tshared_focus=aviation_effort\n";
    input << "\tfocus={\n";
@@ -128,6 +137,9 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    EXPECT_EQ(role.GetTrigger(), and_trigger_one);
    EXPECT_FLOAT_EQ(role.GetScore(), 100.0F);
    EXPECT_THAT(role.GetBlockers(), testing::ElementsAre("unification_role", "unification_category"));
+   EXPECT_THAT(role.GetAliasDefinitions(),
+       testing::ElementsAre(AliasDefinition{.country_flag = "$TAG$_a_flag", .alias_identifier = "$TAG$_identifier"},
+           AliasDefinition{.country_flag = "$TAG$_another_flag", .alias_identifier = "$TAG$_another_identifier"}));
    EXPECT_THAT(role.GetSharedFocuses(), testing::ElementsAre("army_effort", "aviation_effort"));
    EXPECT_THAT(role.GetFocuses(),
        testing::ElementsAre(Focus{.id = "$TAG$_italia_irredenta"}, Focus{.id = "$TAG$_italia_irredenta_2"}));
