@@ -31,7 +31,7 @@ AliasDefinition AliasDefinitionImporter::ImportAliasDefinition(std::istream& inp
 
    alias_parser_.parseStream(input);
 
-   return AliasDefinition{country_flag_, alias_identifier_};
+   return AliasDefinition{.country_flag = country_flag_, .alias_identifier = alias_identifier_};
 }
 
 }  // namespace hoi4
