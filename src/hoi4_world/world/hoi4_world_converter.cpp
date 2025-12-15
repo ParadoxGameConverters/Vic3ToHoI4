@@ -360,7 +360,51 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
 
    const std::map<std::string, Role> roles = ImportRoles();
    std::map<std::string, Country>& modifiable_countries = world.GetModifiableCountries();
-   for (const auto& [tag, country_roles]: CreateStories(roles, world, modifiable_countries))
+
+   std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories(roles, world, modifiable_countries);
+
+   // Create tag aliases
+   std::map<std::string, std::string> aliases;
+
+   char alias_char = 'A';
+   int alias_number = 0;
+   for (auto& [tag, country_roles]: stories)
+   {
+      for (const Role& country_role: country_roles)
+      {
+         for (const auto& alias_definition: country_role.GetAliasDefinitions())
+         {
+            std::string alias_tag = fmt::format("{}{:0>2}", alias_char, alias_number);
+            alias_number++;
+            if (alias_number > 99)
+            {
+               alias_number = 0;
+               alias_char++;
+            }
+
+            std::string flag = alias_definition.country_flag;
+            while (flag.find("$TAG$") != std::string::npos)
+            {
+               flag.replace(flag.find("$TAG$"), 5, tag);
+            }
+
+            world.AddTagAlias(TagAlias{
+                .alias = alias_tag,
+                .original_tag = tag,
+                .flag = flag,
+            });
+
+            std::string identifier = alias_definition.alias_identifier;
+            while (identifier.find("$TAG$") != std::string::npos)
+            {
+               identifier.replace(identifier.find("$TAG$"), 5, tag);
+            }
+            aliases.emplace(identifier, alias_tag);
+         }
+      }
+   }
+
+   for (const auto& [tag, country_roles]: stories)
    {
       auto country_itr = modifiable_countries.find(tag);
       if (country_itr == modifiable_countries.end())

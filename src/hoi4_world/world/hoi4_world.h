@@ -86,6 +86,7 @@ class World
 
    [[nodiscard]] std::optional<Country> GetCountry(const std::string& tag) const;
 
+   void AddTagAlias(const TagAlias& tag_alias) { tag_aliases_.insert(tag_alias); }
    void SetDecisionsCategories(std::set<DecisionsCategory> decisions_categories)
    {
       decisions_categories_ = std::move(decisions_categories);
