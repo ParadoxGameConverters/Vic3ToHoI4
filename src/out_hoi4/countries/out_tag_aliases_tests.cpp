@@ -26,8 +26,8 @@ TEST(Outhoi4CountriesOuttagaliasesTests, AliasesFileIsCreated)
 
    OutputTagAliases("AliasesFileIsCreated",
        {
-           {"TAG", "ORI", "test_flag"},
-           {"TWO", "OTH", "another_flag"},
+           {.alias = "TAG", .original_tag = "ORI", .flag = "test_flag"},
+           {.alias = "TWO", .original_tag = "OTH", .flag = "another_flag"},
        });
 
    std::ifstream aliases_file("output/AliasesFileIsCreated/common/country_tag_aliases/converter_tag_aliases.txt");

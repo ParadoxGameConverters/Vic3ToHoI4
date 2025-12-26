@@ -92,8 +92,8 @@ TEST(Outhoi4WorldOutworld, TagsAliasFileIsCreated)
    OutputWorld("TagsAliasFileIsCreated",
        hoi4::World({.tag_aliases =
                         {
-                            {"TAG", "ORI", "test_flag"},
-                            {"TWO", "OTH", "another_flag"},
+                            {.alias = "TAG", .original_tag = "ORI", .flag = "test_flag"},
+                            {.alias = "TWO", .original_tag = "OTH", .flag = "another_flag"},
                         }}),
        configuration::UseStories::kNo);
 
