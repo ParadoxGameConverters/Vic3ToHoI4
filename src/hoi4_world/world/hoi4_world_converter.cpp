@@ -404,7 +404,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
       }
    }
 
-    // Apply stories
+   // Apply stories
    for (const auto& [tag, country_roles]: stories)
    {
       auto country_itr = modifiable_countries.find(tag);
