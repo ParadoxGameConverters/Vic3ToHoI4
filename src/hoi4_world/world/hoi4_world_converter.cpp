@@ -404,6 +404,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
       }
    }
 
+    // Apply stories
    for (const auto& [tag, country_roles]: stories)
    {
       auto country_itr = modifiable_countries.find(tag);
@@ -438,7 +439,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
          }
       }
 
-      const FocusTree tree = AssembleTree(country_roles, tag, world);
+      const FocusTree tree = AssembleTree(country_roles, tag, aliases, world);
       country_itr->second.SetFocusTree(tree);
    }
 

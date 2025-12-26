@@ -14,6 +14,7 @@ namespace
 std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
     const hoi4::World& world,
     std::string_view tag,
+    const std::map<std::string, std::string>& aliases,
     std::map<std::string, std::vector<std::string>>& role_lookup)
 {
    std::vector<hoi4::Focus> repeated_focuses;
@@ -65,6 +66,15 @@ std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
          {
             std::string original_id = focus_copy.id;
             focus_copy.ApplyReplacement("$TARGET_ID$", new_id);
+            for (const auto& [identifier, alias_tag]: aliases)
+            {
+               std::string new_identifier = identifier;
+               while (new_identifier.find("$TARGET$") != std::string::npos)
+               {
+                  new_identifier.replace(new_identifier.find("$TARGET$"), 8, alias_tag);
+               }
+               focus_copy.ApplyReplacement(identifier, new_identifier);
+            }
 
             role_lookup[original_id].push_back(focus_copy.id);
             if (auto [target_itr, success] = target_focuses.emplace(original_id, std::vector{focus_copy}); !success)
@@ -168,7 +178,10 @@ void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& 
 
 
 
-hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_view tag, const hoi4::World& world)
+hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles,
+    std::string_view tag,
+    const std::map<std::string, std::string>& aliases,
+    const hoi4::World& world)
 {
    FocusTree tree;
 
@@ -184,7 +197,7 @@ hoi4::FocusTree hoi4::AssembleTree(const std::vector<Role>& roles, std::string_v
       tree.focuses.insert(tree.focuses.end(), focuses.begin(), focuses.end());
 
       // add all repeated focuses to the tree
-      const std::vector<Focus> repeated_focuses = CreateRepeatedFocuses(role, world, tag, role_lookup);
+      const std::vector<Focus> repeated_focuses = CreateRepeatedFocuses(role, world, tag, aliases, role_lookup);
       tree.focuses.insert(tree.focuses.end(), repeated_focuses.begin(), repeated_focuses.end());
    }
 

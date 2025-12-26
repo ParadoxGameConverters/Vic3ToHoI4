@@ -17,7 +17,7 @@ namespace hoi4
 
 TEST(Hoi4worldFocustreesFocustreeassemblerTests, TreeIsEmptyByDefault)
 {
-   const FocusTree focus_tree = AssembleTree({}, "", World({}));
+   const FocusTree focus_tree = AssembleTree({}, "", {}, World({}));
 
    EXPECT_TRUE(focus_tree.shared_focuses.empty());
    EXPECT_TRUE(focus_tree.focuses.empty());
@@ -32,6 +32,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, SharedFocusesAreAddedToTree)
            Role{{.shared_focuses = {"focus_three", "focus_four"}}},
        },
        "",
+       {},
        World({}));
 
    EXPECT_THAT(focus_tree.shared_focuses, testing::ElementsAre("focus_one", "focus_two", "focus_three", "focus_four"));
@@ -47,6 +48,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAreAddedToTree)
            Role{{.focuses = {Focus{.id = "focus_three"}, Focus{.id = "focus_four"}}}},
        },
        "",
+       {},
        World({}));
 
    EXPECT_TRUE(focus_tree.shared_focuses.empty());
@@ -70,6 +72,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAreToTheRightOfSharedFoc
            Role{{.shared_focuses = {"focus_three", "focus_four"}}},
        },
        "",
+       {},
        World({}));
 
    EXPECT_THAT(focus_tree.shared_focuses, testing::ElementsAre("focus_three", "focus_four"));
@@ -93,6 +96,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesHaveTagSubstitutionAppli
            }},
        },
        "REP",
+       {},
        World({}));
 
    EXPECT_TRUE(focus_tree.shared_focuses.empty());
@@ -134,6 +138,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreAddedToTree)
                      }}},
        },
        "THR",
+       {},
        World({
            .countries =
                {
@@ -189,6 +194,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, NoRepeatFocusesAreAddedForInval
                      }}},
        },
        "BAD",
+       {},
        World({
            .countries =
                {
@@ -224,7 +230,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesHaveTargetTagSubst
                                    .relative_position_id = "$TARGET_ID$_focus",
                                    .available = "$TARGET_ID$_available",
                                    .select_effect = "$TARGET_ID$_select_effect",
-                                   .completion_reward = "$TARGET_ID$_completion_reward",
+                                   .completion_reward = "$TARGET_ID$_completion_reward = { $TARGET$_alias }",
                                    .ai_will_do = "$TARGET_ID$_ai_will_do",
                                },
                            }),
@@ -232,6 +238,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesHaveTargetTagSubst
            }},
        },
        "TWO",
+       {{"$TARGET$_alias", "AL1"}},
        World({.countries = {{"ONE", Country({.tag = "ONE"})}, {"TWO", Country({.tag = "TWO"})}}}));
 
    EXPECT_TRUE(focus_tree.shared_focuses.empty());
@@ -243,7 +250,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesHaveTargetTagSubst
            .relative_position_id = "ONE_focus",
            .available = "ONE_available",
            .select_effect = "ONE_select_effect",
-           .completion_reward = "ONE_completion_reward",
+           .completion_reward = "ONE_completion_reward = { AL1_alias }",
            .ai_will_do = "ONE_ai_will_do",
        }));
 }
@@ -287,6 +294,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreBalancedInPosit
            }},
        },
        "FOR",
+       {},
        World({.countries = {
                   {"ONE", Country({.tag = "ONE"})},
                   {"TWO", Country({.tag = "TWO"})},
@@ -339,6 +347,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, PrerequisitesWithRepeatFocusesA
            }},
        },
        "TAG",
+       {},
        World({.countries = {
                   {"ONE", Country({.tag = "ONE"})},
                   {"TWO", Country({.tag = "TWO"})},
@@ -404,6 +413,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAfterRepeatFocusesAreBal
            }},
        },
        "TAG",
+       {},
        World({.countries = {
                   {"ONE", Country({.tag = "ONE"})},
                   {"TWO", Country({.tag = "TWO"})},
