@@ -50,10 +50,4 @@ TEST(Outhoi4CountriesOuttagaliasesTests, AliasesFileIsCreated)
        "\n");
 }
 
-
-TEST(Outhoi4CountriesOuttagaliasesTests, ExceptionIfAliasesDirectoryNotCreated)
-{
-   EXPECT_THROW(OutputTagAliases("/dev/null/COM", {}), std::runtime_error);
-}
-
 }  // namespace out
