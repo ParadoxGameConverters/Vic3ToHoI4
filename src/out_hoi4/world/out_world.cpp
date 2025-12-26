@@ -7,6 +7,7 @@
 #include <ranges>
 
 #include "src/out_hoi4/countries/out_countries.h"
+#include "src/out_hoi4/countries/out_tag_aliases.h"
 #include "src/out_hoi4/decisions/out_decisions.h"
 #include "src/out_hoi4/decisions/out_decisions_categories.h"
 #include "src/out_hoi4/events/out_events.h"
@@ -102,6 +103,7 @@ namespace out
 void OutputWorld(const path& output_name, const hoi4::World& world, configuration::UseStories use_stories)
 {
    OutputCountries(output_name, world.GetCountries(), world.GetCharacters(), use_stories);
+   OutputTagAliases(output_name, world.GetTagAliases());
    OutputMonarchIdeas(output_name, world.GetCountries(), world.GetCharacters());
    OutputStates(output_name, world.GetStates().states);
    OutputStrategicRegions(output_name, world.GetStrategicRegions());

@@ -10,6 +10,7 @@
 #include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/hoi4_world/events/event.h"
 #include "src/hoi4_world/focus_trees/focus.h"
+#include "src/hoi4_world/roles/alias_definition.h"
 #include "src/hoi4_world/roles/repeat_focus.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/trigger_base.h"
@@ -26,6 +27,7 @@ struct RoleOptions
    std::unique_ptr<Trigger> trigger = std::make_unique<AlwaysTrigger>(false);
    float score;
    std::vector<std::string> blockers;
+   std::vector<AliasDefinition> alias_definitions;
    std::vector<std::string> shared_focuses;
    std::vector<Focus> focuses;
    std::vector<RepeatFocus> repeat_focuses;
@@ -45,6 +47,7 @@ class Role
        category_(std::move(options.category)),
        trigger_(std::move(options.trigger)),
        score_(options.score),
+       alias_definitions_(options.alias_definitions),
        blockers_(std::move(options.blockers)),
        shared_focuses_(std::move(options.shared_focuses)),
        focuses_(std::move(options.focuses)),
@@ -65,6 +68,7 @@ class Role
    [[nodiscard]] const Trigger& GetTrigger() const { return *trigger_; }
    [[nodiscard]] float GetScore() const { return score_; }
    [[nodiscard]] const std::vector<std::string>& GetBlockers() const { return blockers_; }
+   [[nodiscard]] const std::vector<AliasDefinition>& GetAliasDefinitions() const { return alias_definitions_; }
    [[nodiscard]] const std::vector<std::string>& GetSharedFocuses() const { return shared_focuses_; }
    [[nodiscard]] const std::vector<Focus>& GetFocuses() const { return focuses_; }
    [[nodiscard]] const std::vector<RepeatFocus>& GetRepeatFocuses() const { return repeat_focuses_; }
@@ -88,6 +92,7 @@ class Role
    std::unique_ptr<Trigger> trigger_ = std::make_unique<AlwaysTrigger>(false);
    float score_;
    std::vector<std::string> blockers_;
+   std::vector<AliasDefinition> alias_definitions_;
    std::vector<std::string> shared_focuses_;
    std::vector<Focus> focuses_;
    std::vector<RepeatFocus> repeat_focuses_;

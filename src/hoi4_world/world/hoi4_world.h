@@ -11,6 +11,7 @@
 
 #include "src/hoi4_world/characters/hoi4_character.h"
 #include "src/hoi4_world/countries/hoi4_country.h"
+#include "src/hoi4_world/countries/tag_alias.h"
 #include "src/hoi4_world/decisions/decision.h"
 #include "src/hoi4_world/decisions/decisions_category.h"
 #include "src/hoi4_world/events/event.h"
@@ -29,6 +30,7 @@ namespace hoi4
 struct WorldOptions
 {
    std::map<std::string, Country> countries;
+   std::set<TagAlias> tag_aliases;
    std::set<std::string> great_powers;
    std::set<std::string> major_powers;
    States states;
@@ -46,6 +48,7 @@ class World
   public:
    explicit World(WorldOptions options):
        countries_(std::move(options.countries)),
+       tag_aliases_(std::move(options.tag_aliases)),
        great_powers_(std::move(options.great_powers)),
        major_powers_(std::move(options.major_powers)),
        states_(std::move(options.states)),
@@ -59,6 +62,7 @@ class World
    }
 
    [[nodiscard]] const std::map<std::string, Country>& GetCountries() const { return countries_; }
+   [[nodiscard]] const std::set<TagAlias>& GetTagAliases() const { return tag_aliases_; }
    [[nodiscard]] const std::set<std::string>& GetGreatPowers() const { return great_powers_; }
    [[nodiscard]] const std::set<std::string>& GetMajorPowers() const { return major_powers_; }
    [[nodiscard]] const States& GetStates() const { return states_; }
@@ -82,6 +86,7 @@ class World
 
    [[nodiscard]] std::optional<Country> GetCountry(const std::string& tag) const;
 
+   void AddTagAlias(const TagAlias& tag_alias) { tag_aliases_.insert(tag_alias); }
    void SetDecisionsCategories(std::set<DecisionsCategory> decisions_categories)
    {
       decisions_categories_ = std::move(decisions_categories);
@@ -98,6 +103,7 @@ class World
 
   private:
    std::map<std::string, Country> countries_;
+   std::set<TagAlias> tag_aliases_;
    std::set<std::string> great_powers_;
    std::set<std::string> major_powers_;
    States states_;

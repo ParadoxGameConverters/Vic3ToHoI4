@@ -37,7 +37,7 @@ set(GTEST_SOURCES ${GTEST_SOURCES} "external/commonItems/external/googletest/goo
 add_library(
 	GtestLib
 	${GTEST_SOURCES}
- )
+  )
 
 
 #### Fronter ####
@@ -104,7 +104,7 @@ if (PLATFORM STREQUAL "Windows")
 		${F_UPDATECHECKER_SOURCES}
 		${F_SQLITE_SOURCES}
 		${F_SQLITE3_SOURCES}
-	  )
+	   )
 	 set_target_properties(ConverterFrontend
 		PROPERTIES
 		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
@@ -234,6 +234,7 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/equipment_va
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/task_force.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/task_force_template.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/military/task_force_templates_builder.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/alias_definition_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/repeat_focus_importer.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/repeat_focus.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/hoi4_world/roles/role.cpp")
@@ -297,6 +298,8 @@ set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/maps/utility.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/characters/out_character.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/countries/out_countries.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/countries/out_country.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/countries/out_tag_alias.cpp")
+set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/countries/out_tag_aliases.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/decisions/out_decision.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/decisions/out_decisions.cpp")
 set(CONVERTER_SOURCES ${CONVERTER_SOURCES} "src/out_hoi4/decisions/out_decisions_categories.cpp")
@@ -385,7 +388,7 @@ if (RUN_CLANG_TIDY)
 endif(RUN_CLANG_TIDY)
 add_library(Vic3ToHoi4lib
 	${CONVERTER_SOURCES}
-)
+ )
 target_precompile_headers(Vic3ToHoi4lib PUBLIC ${PCH_SOURCES})
 if (PLATFORM STREQUAL "Windows")
 	target_compile_options(Vic3ToHoi4lib PRIVATE /permissive /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 
@@ -399,7 +402,7 @@ endif (PLATFORM  STREQUAL "Windows")
 add_executable(
 	Vic3ToHoi4
 	${MAIN_SOURCE}
-)
+ )
 set_target_properties( Vic3ToHoi4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
@@ -468,6 +471,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/division_templates_imp
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/equipment_variants_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/task_force_template_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/task_force_templates_builder_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/alias_definition_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/repeat_focus_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/role_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/roles_importer_tests.cpp")
@@ -527,6 +531,8 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/maps/utility_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/characters/out_character_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/out_countries_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/out_country_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/out_tag_alias_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/countries/out_tag_aliases_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/decisions/out_decision_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/decisions/out_decisions_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/out_hoi4/decisions/out_decisions_categories_tests.cpp")
@@ -601,7 +607,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/vic3_world/world/vic3_world_importer_tests
 add_executable(
 	Vic3ToHoi4Tests
 	${TEST_SOURCES}
-)
+ )
 set_target_properties(Vic3ToHoi4Tests
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
@@ -704,7 +710,7 @@ endif (COVERAGE STREQUAL true)
 add_library(run_clang_tidy
 	${CONVERTER_SOURCES}
 	${TEST_SOURCES}
-)
+ )
 target_link_libraries(run_clang_tidy pthread)
 set_target_properties(run_clang_tidy PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 add_dependencies(run_clang_tidy Vic3ToHoi4 Vic3ToHoi4Tests)
