@@ -1,0 +1,40 @@
+############################
+####	African		####
+############################
+
+Portrait: african_queen_01
+License: Public domain
+Source: https://commons.wikimedia.org/wiki/File:AfricanChoir1891-11.jpg
+
+Portrait: african_queen_02
+License: Attrbution-ShareAlike (CC BY-SA)
+info: Photo by Worm-Petersen, Severim, published by Norsk Teknisk Museum, Cropped and edited in the style of a hoi4 portrait
+Source: https://digitaltmuseum.no/021016126133/madagaskar
+
+Portrait: african_queen_03
+License: Attrbution-ShareAlike (CC BY-SA)
+info: Photo by Worm-Petersen, Severim, published by Norsk Teknisk Museum, Cropped and edited in the style of a hoi4 portrait
+Source: https://digitaltmuseum.no/011014279811/portrett-av-kvinne-madagaskar
+
+############################
+####	Asian		####
+############################
+
+Portrait: asian_queen_01
+License: Public domain
+Source: https://commons.wikimedia.org/wiki/File:Queen_Rambhai_Barni%27s_Tiara.png
+
+############################
+####	European	####
+############################
+
+Portrait: european_king_01
+License: Public domain mark (CC pdm)
+Source: https://digitaltmuseum.no/011013576449/portrett-general-melbye-i-uniform
+
+Portrait: french_king_01
+License1: Public domain
+Source1: https://commons.wikimedia.org/wiki/File:King,_from_a_group_of_Donor_Figures_including_a_King,_Queen,_and_Prince_MET_DP344494.jpg
+License2: Public domain
+Source2: https://commons.wikimedia.org/wiki/File:Fleur_de_lis_flat.svg
+
