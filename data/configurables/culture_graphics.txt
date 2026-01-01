@@ -27,1323 +27,2882 @@
 # traits = { european_heritage }
 # ethnicities = { caucasian }
 
-# 	army_portraits = {
-# 		GFX_Portrait_Example_Generic_land_1
-# 		GFX_Portrait_Example_Generic_land_2
-# 		GFX_Portrait_Example_Generic_land_3
-# 		GFX_Portrait_Example_Generic_land_4
-# 	}
-# 	navy_portraits = {
-# 		GFX_Portrait_sample_portrait_navy
-# 		GFX_Portrait_sample_portrait_navy2
-# 	}
-# 	scientist_portraits = {
-#		female = {
-#	 		GFX_Portrait_sample_portrait_scientist
-# 			GFX_Portrait_sample_portrait_scientist2
-#		}
-#		male = {
-#	 		GFX_Portrait_sample_portrait_scientist3
-# 			GFX_Portrait_sample_portrait_scientist4
-#		}
-# 	}
-# 	political_portraits = {
-# 		communism = {
-# 			leader = {
-# 					GFX_Portrait_sample_portrait_communism
-# 			}
-# 			minister = {
-# 					GFX_Portrait_sample_portrait_communism_small
-# 			}
-# 		}
-# 		democratic = { 
-# 			leader = {
-# 				GFX_Portrait_sample_portrait_democratic
-# 			}
-# 			minister = {
-# 				GFX_Portrait_sample_portrait_democratic_small
-# 			}
-# 		}
-# 		fascism = { 
-# 			leader = {
-# 				GFX_Portrait_sample_portrait_fascism
-# 			}
-# 			minister = {
-# 				GFX_Portrait_sample_portrait_fascism_small
-# 			}
-# 		}
-# 		neutrality = { 
-# 			leader = { # Country leaders, normal portraits
-# 				GFX_Portrait_sample_portrait_neutrality
-# 			}
-# 			minister = { # Political advisors, small portraits
-# 				GFX_Portrait_sample_portrait_neutrality_small
-# 			}
-# 		}
-# 		anarchist = { # Replaces any ideology leader with a council in all anarchist governments
-# 			GFX_Portrait_sample_portrait_council
-# 		}
-# 		monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
-# 			male = {
-# 				GFX_Portrait_sample_portrait_king
-# 			}
-# 			female = {
-# 				GFX_Portrait_sample_portrait_queen
-# 			}
-# 		}
-# 	}
-# 	female_portraits = { # For any non-queen, non-spy use
-# 		GFX_Portrait_GER_sample_portrait_Hitler_Female
-# 	}
-# 	operative_portraits = {
-# 		male = { 
-# 			GFX_Portrait_sample_male_operative
-# 			GFX_Portrait_sample_male_operative2
-# 		}
-# 		female = {
-# 			GFX_Portrait_sample_female_operative
-# 			GFX_Portrait_sample_female_operative2
-# 		}
-# 	}
-# 	monarch_ideas = {
-# 		GFX_Portrait_crowns_sample
-# 	}
+#   army_portraits = {
+#       GFX_Portrait_Example_Generic_land_1
+#       GFX_Portrait_Example_Generic_land_2
+#       GFX_Portrait_Example_Generic_land_3
+#       GFX_Portrait_Example_Generic_land_4
+#   }
+#   navy_portraits = {
+#       GFX_Portrait_sample_portrait_navy
+#       GFX_Portrait_sample_portrait_navy2
+#   }
+#   scientist_portraits = {
+#       female = {
+#           GFX_Portrait_sample_portrait_scientist
+#           GFX_Portrait_sample_portrait_scientist2
+#       }
+#       male = {
+#           GFX_Portrait_sample_portrait_scientist3
+#           GFX_Portrait_sample_portrait_scientist4
+#       }
+#   }
+#   political_portraits = {
+#       communism = {
+#           leader = {
+#                   GFX_Portrait_sample_portrait_communism
+#           }
+#           minister = {
+#                   GFX_Portrait_sample_portrait_communism_small
+#           }
+#       }
+#       democratic = {
+#           leader = {
+#               GFX_Portrait_sample_portrait_democratic
+#           }
+#           minister = {
+#               GFX_Portrait_sample_portrait_democratic_small
+#           }
+#       }
+#       fascism = {
+#           leader = {
+#               GFX_Portrait_sample_portrait_fascism
+#           }
+#           minister = {
+#               GFX_Portrait_sample_portrait_fascism_small
+#           }
+#       }
+#       neutrality = {
+#           leader = { # Country leaders, normal portraits
+#               GFX_Portrait_sample_portrait_neutrality
+#           }
+#           minister = { # Political advisors, small portraits
+#               GFX_Portrait_sample_portrait_neutrality_small
+#           }
+#       }
+#       anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+#           GFX_Portrait_sample_portrait_council
+#       }
+#       monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+#           male = {
+#               GFX_Portrait_sample_portrait_king
+#           }
+#           female = {
+#               GFX_Portrait_sample_portrait_queen
+#           }
+#       }
+#   }
+#   female_portraits = { # For any non-queen, non-spy use
+#       GFX_Portrait_GER_sample_portrait_Hitler_Female
+#   }
+#   operative_portraits = {
+#       male = {
+#           GFX_Portrait_sample_male_operative
+#           GFX_Portrait_sample_male_operative2
+#       }
+#       female = {
+#           GFX_Portrait_sample_female_operative
+#           GFX_Portrait_sample_female_operative2
+#       }
+#   }
+#   monarch_ideas = {
+#       GFX_Portrait_crowns_sample
+#   }
 
-# 	graphical_culture = western_european_gfx
-# 	graphical_culture_2d = western_european_2d
+#   graphical_culture = western_european_gfx
+#   graphical_culture_2d = western_european_2d
 # }
 
-### Vicky ethnicity fallbacks
-# Vanilla vic also has central_african and eastern_african defined, yet unused.
-african = {
-	ethnicities = { african central_african eastern_african }
+#Notes:
+#Due to a shortage of portraits, groups with a need for more portraits are marked with "#WIP(x)"
+#The "x" symbolises the importance on a scale 1-4. where 1 is missing a few portraits, and 4 is missing close to everything.
+#
+#A lot of the groups can be split into more accurate groups at a later date when more portraits are aquired.
 
-	army_portraits = {
-		GFX_Portrait_Africa_Generic_land_1
-		GFX_Portrait_Africa_Generic_land_2
-		GFX_Portrait_Africa_Generic_land_3
-		GFX_Portrait_Africa_Generic_land_4
-		GFX_Portrait_South_Africa_Army_Generic
-		GFX_Portrait_South_Africa_Army_Generic_2
-	}
-	navy_portraits = {
-		GFX_Portrait_Africa_Generic_navy_1
-		GFX_Portrait_Africa_Generic_navy_2
-		GFX_Portrait_Africa_Generic_navy_3
-		GFX_Portrait_Africa_Generic_navy_4
-	}
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_africa_female_01
- 			GFX_portrait_generic_africa_female_02
-			GFX_portrait_generic_africa_female_03
-			GFX_portrait_generic_africa_female_04
-			GFX_portrait_generic_africa_female_05
-			GFX_portrait_generic_africa_female_06
-			GFX_portrait_generic_africa_female_07
-			GFX_portrait_generic_africa_female_08
-			
-		}
-		male = {
-	 		GFX_portrait_generic_africa_male_01
- 			GFX_portrait_generic_africa_male_02
-			GFX_portrait_generic_africa_male_03
-			GFX_portrait_generic_africa_male_04
-			GFX_portrait_generic_africa_male_05
-			GFX_portrait_generic_africa_male_06
-			GFX_portrait_generic_africa_male_07
-			GFX_portrait_generic_africa_male_08
-		}
-	}
-	political_portraits = {
-		communism = {
-			leader = {
-				GFX_Portrait_Africa_Generic_1
-				GFX_Portrait_South_Africa_Political_Leader_Generic
-				GFX_Portrait_South_Africa_Political_Leader_Generic_2
-				GFX_Portrait_Africa_Generic_4
-			}
-			minister = {
-			}
-		}
-		democratic = {
-			leader = {
-				GFX_Portrait_Africa_Generic_2
-				GFX_Portrait_South_Africa_Political_Leader_Generic
-				GFX_Portrait_South_Africa_Political_Leader_Generic_2
-				GFX_Portrait_Africa_Generic_4
-			}
-			minister = {
-			}
-		}
-		fascism = { 
-			leader = {
-				GFX_Portrait_Africa_Generic_3
-				GFX_Portrait_South_Africa_Political_Leader_Generic
-				GFX_Portrait_South_Africa_Political_Leader_Generic_2
-				GFX_Portrait_Africa_Generic_4
-			}
-			minister = {
-			}
-		}
-		neutrality = { 
-			leader = {
-				GFX_Portrait_Africa_Generic_3
-				GFX_Portrait_South_Africa_Political_Leader_Generic
-				GFX_Portrait_South_Africa_Political_Leader_Generic_2
-				GFX_Portrait_Africa_Generic_4
-			}
-			minister = {
-			}
-		}
-		anarchist = {
-		}
-		monarchist = {
-			male = {
-			}
-			female = {
-			}
-		}
-	}
-	female_portraits = {
-	}
-	operative_portraits = {
-		male = {
-			GFX_portrait_africa_generic_operative_male_1
-			GFX_portrait_africa_generic_operative_male_2
-			GFX_portrait_africa_generic_operative_male_3
-			GFX_portrait_africa_generic_operative_male_4
-			GFX_portrait_africa_generic_operative_male_5
-			GFX_portrait_africa_generic_operative_male_6
-			GFX_portrait_africa_generic_operative_male_7
-			GFX_portrait_africa_generic_operative_male_8
-			GFX_portrait_africa_generic_operative_male_9
-		}
-		female = {
-			GFX_portrait_africa_generic_operative_female_1
-			GFX_portrait_africa_generic_operative_female_2
-			GFX_portrait_africa_generic_operative_female_3
-			GFX_portrait_africa_generic_operative_female_4
-			GFX_portrait_africa_generic_operative_female_5
-			GFX_portrait_africa_generic_operative_female_6
-			GFX_portrait_africa_generic_operative_female_7
-			GFX_portrait_africa_generic_operative_female_8
-			GFX_portrait_africa_generic_operative_female_9
-		}
-	}
-	monarch_ideas = {
-	}
 
-	graphical_culture = african_gfx
-	graphical_culture_2d = african_2d
-}
+##### Generic portraits for Ethnicities
 
-arab = {
-	ethnicities = { arab }
-
-	army_portraits = {
-		GFX_Portrait_Arabia_Generic_land_1
-		GFX_Portrait_Arabia_Generic_land_2
-		GFX_Portrait_Arabia_Generic_land_3
-	}
-	navy_portraits = {
-		GFX_Portrait_Arabia_Generic_navy_1
-		GFX_Portrait_Arabia_Generic_navy_2
-		GFX_Portrait_Arabia_Generic_navy_3
-	}
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_arabia_female_01
- 			GFX_portrait_generic_arabia_female_02
-			GFX_portrait_generic_arabia_female_03
-			GFX_portrait_generic_arabia_female_04
-			GFX_portrait_generic_arabia_female_05
-			GFX_portrait_generic_arabia_female_06
-			GFX_portrait_generic_arabia_female_07
-			GFX_portrait_generic_arabia_female_08
-		}
-		male = {
-	 		GFX_portrait_generic_arabia_male_01
- 			GFX_portrait_generic_arabia_male_02
-			GFX_portrait_generic_arabia_male_03
-			GFX_portrait_generic_arabia_male_04
-			GFX_portrait_generic_arabia_male_05
-			GFX_portrait_generic_arabia_male_06
-			GFX_portrait_generic_arabia_male_07
-		}
-	}
-	political_portraits = {
-		communism = {
-			leader = {
-				GFX_Portrait_Arabia_Generic_1
-			}
-			minister = {
-			}
-		}
-		democratic = {
-			leader = {
-				GFX_Portrait_Arabia_Generic_2
-			}
-			minister = {
-			}
-		}
-		fascism = {
-			leader = {
-				GFX_Portrait_Arabia_Generic_3
-			}
-			minister = {
-			}
-		}
-		neutrality = {
-			leader = {
-				GFX_Portrait_Arabia_Generic_3
-			}
-			minister = {
-			}
-		}
-	}
-	operative_portraits = {
-		male = {
-			GFX_portrait_arabia_generic_operative_male_1
-			GFX_portrait_arabia_generic_operative_male_2
-			GFX_portrait_arabia_generic_operative_male_3
-			GFX_portrait_arabia_generic_operative_male_4
-			GFX_portrait_arabia_generic_operative_male_5
-			GFX_portrait_arabia_generic_operative_male_6
-		}
-		female = {
-			GFX_portrait_arabia_generic_operative_female_1
-			GFX_portrait_arabia_generic_operative_female_2
-			GFX_portrait_arabia_generic_operative_female_3
-			GFX_portrait_arabia_generic_operative_female_4
-			GFX_portrait_arabia_generic_operative_female_5
-			GFX_portrait_arabia_generic_operative_female_6
-		}
-	}
-
-	graphical_culture = middle_eastern_gfx
-	graphical_culture_2d = middle_eastern_2d
-}
-
-asian = {
-	ethnicities = { asian circumpolar polynesian central_asian south_east_asian }
-
-	army_portraits = {
-		GFX_Portrait_Asia_Generic_land_1
-		GFX_Portrait_Asia_Generic_land_2
-		GFX_Portrait_Asia_Generic_land_3
-		GFX_Portrait_Asia_Generic_land_4
-		GFX_Portrait_asia_generic_land_5
-	}
-
-	navy_portraits = {
-		GFX_Portrait_Asia_Generic_navy_1
-		GFX_Portrait_Asia_Generic_navy_2
-		GFX_Portrait_Asia_Generic_navy_3
-		GFX_Portrait_asia_generic_navy_4
-	}
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_asia_female_01
- 			GFX_portrait_generic_asia_female_02
-			GFX_portrait_generic_asia_female_03
-			GFX_portrait_generic_asia_female_04
-			GFX_portrait_generic_asia_female_05
-			GFX_portrait_generic_asia_female_06
-			GFX_portrait_generic_asia_female_07
-			GFX_portrait_generic_asia_female_08
-		}
-		male = {
-	 		GFX_portrait_generic_asia_male_01
- 			GFX_portrait_generic_asia_male_02
-			GFX_portrait_generic_asia_male_03
-			GFX_portrait_generic_asia_male_04
-			GFX_portrait_generic_asia_male_05
-			GFX_portrait_generic_asia_male_06
-			GFX_portrait_generic_asia_male_07
-			GFX_portrait_generic_asia_male_08
-		}
-	}
-
-	political_portraits = {
-		communism = {
-			leader = {
-				GFX_Portrait_Asia_Generic_1
-				GFX_portrait_asia_generic_4
-			}
-			minister = {
-			}
-		}
-		democratic = {
-			leader = {
-				GFX_Portrait_Asia_Generic_2
-				GFX_portrait_asia_generic_4
-			}
-			minister = {
-			}
-		}
-		fascism = { 
-			leader = {
-				GFX_Portrait_Asia_Generic_3
-				GFX_portrait_asia_generic_4
-			}
-			minister = {
-			}
-		}
-		neutrality = { 
-			leader = {
-				GFX_Portrait_Asia_Generic_3
-				GFX_portrait_asia_generic_4
-			}
-			minister = {
-			}
-		}
-	}
-
-	graphical_culture = asian_gfx
-	graphical_culture_2d = asian_2d
-}
-
-caucasian = {
-	ethnicities = { caucasian slavic north_caucasian }
-
-	army_portraits = {
-		GFX_Portrait_Europe_Generic_land_1
-		GFX_Portrait_Europe_Generic_land_2
-		GFX_Portrait_Europe_Generic_land_3
-		GFX_Portrait_Europe_Generic_land_4
-		GFX_Portrait_Europe_Generic_land_5
-		GFX_portrait_europe_generic_land_13
-		GFX_Portrait_europe_generic_land_6
-		GFX_portrait_europe_generic_land_7
-		GFX_portrait_europe_generic_land_8
-	}
-	navy_portraits = {
-		GFX_Portrait_Europe_Generic_navy_1
-		GFX_Portrait_Europe_Generic_navy_2
-		GFX_Portrait_Europe_Generic_navy_3
-		GFX_portrait_europe_generic_navy_4
-		GFX_portrait_europe_generic_navy_5
-	}
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_europe_female_01
- 			GFX_portrait_generic_europe_female_02
-			GFX_portrait_generic_europe_female_03
-			GFX_portrait_generic_europe_female_04
-			GFX_portrait_generic_europe_female_05
-			GFX_portrait_generic_europe_female_06
-			GFX_portrait_generic_europe_female_07
-			GFX_portrait_generic_europe_female_08
-			GFX_portrait_generic_europe_female_09
-			GFX_portrait_generic_europe_female_10
-			GFX_portrait_generic_europe_female_11
-			GFX_portrait_generic_europe_female_12
-			GFX_portrait_generic_europe_female_13
-			GFX_portrait_generic_europe_female_14
-			GFX_portrait_generic_europe_female_15
-			GFX_portrait_generic_europe_female_16
-		}
-		male = {
-	 		GFX_portrait_generic_europe_male_01
- 			GFX_portrait_generic_europe_male_02
-			GFX_portrait_generic_europe_male_03
-			GFX_portrait_generic_europe_male_04
-			GFX_portrait_generic_europe_male_05
-			GFX_portrait_generic_europe_male_06
-			GFX_portrait_generic_europe_male_07
-			GFX_portrait_generic_europe_male_08
-			GFX_portrait_generic_europe_male_09
-			GFX_portrait_generic_europe_male_10
-			GFX_portrait_generic_europe_male_11
-			GFX_portrait_generic_europe_male_12
-			GFX_portrait_generic_europe_male_13
-			GFX_portrait_generic_europe_male_14
-			GFX_portrait_generic_europe_male_15
-			GFX_portrait_generic_europe_male_16
-		}
-	}
-	political_portraits = {
-		communism = {
-			leader = {
-				GFX_Portrait_Europe_Generic_1
-				GFX_portrait_europe_generic_4
-				GFX_portrait_europe_generic_5
-				GFX_portrait_europe_generic_6
-				GFX_Portrait_europe_generic_7
-				GFX_portrait_europe_generic_8
-			}
-			minister = {
-			}
-		}
-		democratic = {
-			leader = {
-				GFX_Portrait_Europe_Generic_2
-				GFX_portrait_europe_generic_4
-				GFX_portrait_europe_generic_5
-				GFX_portrait_europe_generic_6
-				GFX_Portrait_europe_generic_7
-				GFX_portrait_europe_generic_8
-			}
-			minister = {
-			}
-		}
-		fascism = {
-			leader = {
-				GFX_Portrait_Europe_Generic_3
-				GFX_portrait_europe_generic_4
-				GFX_portrait_europe_generic_5
-				GFX_portrait_europe_generic_6
-				GFX_Portrait_europe_generic_7
-				GFX_portrait_europe_generic_8
-			}
-			minister = {
-			}
-		}
-		neutrality = {
-			leader = {
-				GFX_Portrait_Europe_Generic_3
-				GFX_portrait_europe_generic_4
-				GFX_portrait_europe_generic_5
-				GFX_portrait_europe_generic_6
-				GFX_Portrait_europe_generic_7
-				GFX_portrait_europe_generic_8
-			}
-			minister = {
-			}
-		}
-	}
-	operative_portraits = {
-		male = {
-			GFX_portrait_europe_generic_operative_male_1
-			GFX_portrait_europe_generic_operative_male_2
-			GFX_portrait_europe_generic_operative_male_3
-			GFX_portrait_europe_generic_operative_male_4
-			GFX_portrait_europe_generic_operative_male_5
-			GFX_portrait_europe_generic_operative_male_6
-			GFX_portrait_europe_generic_operative_male_7
-			GFX_portrait_europe_generic_operative_male_8
-			GFX_portrait_europe_generic_operative_male_9
-			GFX_portrait_europe_generic_operative_male_10
-			GFX_portrait_europe_generic_operative_male_11
-			GFX_portrait_europe_generic_operative_male_13
-			GFX_portrait_europe_generic_operative_male_14
-			GFX_portrait_europe_generic_operative_male_15
-			GFX_portrait_europe_generic_operative_male_16
-			GFX_portrait_europe_generic_operative_male_17
-			GFX_portrait_europe_generic_operative_male_18
-			GFX_portrait_europe_generic_operative_male_19
-			GFX_portrait_europe_generic_operative_male_20
-			GFX_portrait_europe_generic_operative_male_21
-			GFX_portrait_europe_generic_operative_male_22
-			GFX_portrait_europe_generic_operative_male_23
-			GFX_portrait_europe_generic_operative_male_24
-			GFX_portrait_europe_generic_operative_male_25
-		}
-		female = {
-			GFX_portrait_europe_generic_operative_female_1
-			GFX_portrait_europe_generic_operative_female_2
-			GFX_portrait_europe_generic_operative_female_3
-			GFX_portrait_europe_generic_operative_female_4
-			GFX_portrait_europe_generic_operative_female_5
-			GFX_portrait_europe_generic_operative_female_6
-			GFX_portrait_europe_generic_operative_female_7
-			GFX_portrait_europe_generic_operative_female_8
-			GFX_portrait_europe_generic_operative_female_9
-			GFX_portrait_europe_generic_operative_female_10
-			GFX_portrait_europe_generic_operative_female_11
-			GFX_portrait_europe_generic_operative_female_13
-			GFX_portrait_europe_generic_operative_female_14
-			GFX_portrait_europe_generic_operative_female_15
-			GFX_portrait_europe_generic_operative_female_16
-			GFX_portrait_europe_generic_operative_female_17
-			GFX_portrait_europe_generic_operative_female_18
-			GFX_portrait_europe_generic_operative_female_19
-			GFX_portrait_europe_generic_operative_female_20
-			GFX_portrait_europe_generic_operative_female_21
-			GFX_portrait_europe_generic_operative_female_22
-			GFX_portrait_europe_generic_operative_female_23
-			GFX_portrait_europe_generic_operative_female_24
-			GFX_portrait_europe_generic_operative_female_25
-			GFX_portrait_europe_generic_operative_female_26
-		}
-	}
-
-	graphical_culture = western_european_gfx 
-	graphical_culture_2d = western_european_2d
-}
-
-# central_asian = { # In Asian currently
-# 	ethnicities = { central_asian }
-
-# 	graphical_culture = asian_gfx
-# 	graphical_culture_2d = asian_2d
-# }
-
-# circumpolar = { # In Asian currently
-# 	ethnicities = { circumpolar }
-
-# 	graphical_culture = asian_gfx
-# 	graphical_culture_2d = asian_2d
-# }
-
-indian = {
-	ethnicities = { indian }
-
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_asia_female_01
- 			GFX_portrait_generic_asia_female_02
-			GFX_portrait_generic_asia_female_03
-			GFX_portrait_generic_asia_female_04
-			GFX_portrait_generic_asia_female_05
-			GFX_portrait_generic_asia_female_06
-			GFX_portrait_generic_asia_female_07
-			GFX_portrait_generic_asia_female_08
-		}
-		male = {
-	 		GFX_portrait_generic_asia_male_01
- 			GFX_portrait_generic_asia_male_02
-			GFX_portrait_generic_asia_male_03
-			GFX_portrait_generic_asia_male_04
-			GFX_portrait_generic_asia_male_05
-			GFX_portrait_generic_asia_male_06
-			GFX_portrait_generic_asia_male_07
-			GFX_portrait_generic_asia_male_08
-		}
-	}
-
-	graphical_culture = asian_gfx
-	graphical_culture_2d = asian_2d
-}
-
-# native_american = { # In South American currently
-# 	ethnicities = { native_american }
-
-# 	graphical_culture = asian_gfx
-# 	graphical_culture_2d = asian_2d
-# }
-
-# north_caucasian = { # In Caucasian currently
-# 	ethnicities = { north_caucasian }
-
-# 	graphical_culture = eastern_european_gfx
-# 	graphical_culture_2d = eastern_european_2d
-# }
-
-# polynesian = { # In Asian currently
-# 	ethnicities = { polynesian }
-
-# 	graphical_culture = asian_gfx
-# 	graphical_culture_2d = asian_2d
-# }
-
-# slavic = { # In Caucasian currently
-# 	ethnicities = { slavic }
-
-# 	graphical_culture = eastern_european_gfx
-# 	graphical_culture_2d = eastern_european_2d
-# }
-
-south_american = { # Brazilian and such, european heritage
-	ethnicities = { south_american native_american }
-
-	army_portraits = {
-		GFX_Portrait_South_America_Generic_land_1
-		GFX_Portrait_South_America_Generic_land_2
-		GFX_Portrait_South_America_Generic_land_3
-		GFX_Portrait_South_America_Generic_land_4
-		GFX_Portrait_South_America_Generic_land_5
-	}
-	navy_portraits = {
-		GFX_Portrait_South_America_Generic_navy_1
-		GFX_Portrait_South_America_Generic_navy_2
-		GFX_Portrait_South_America_Generic_navy_3
-	}
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_southamerica_female_01
- 			GFX_portrait_generic_southamerica_female_02
-			GFX_portrait_generic_southamerica_female_03
-			GFX_portrait_generic_southamerica_female_04
-			GFX_portrait_generic_southamerica_female_05
-			GFX_portrait_generic_southamerica_female_06
-			GFX_portrait_generic_southamerica_female_07
-			GFX_portrait_generic_southamerica_female_08
-		}
-		male = {
-	 		GFX_portrait_generic_southamerica_male_01
- 			GFX_portrait_generic_southamerica_male_02
-			GFX_portrait_generic_southamerica_male_03
-			GFX_portrait_generic_southamerica_male_04
-			GFX_portrait_generic_southamerica_male_05
-			GFX_portrait_generic_southamerica_male_06
-			GFX_portrait_generic_southamerica_male_07
-			GFX_portrait_generic_southamerica_male_08
-		}
-	}
-	political_portraits = {
-		communism = {
-			leader = {
-				GFX_Portrait_South_America_Generic_1
-				GFX_portrait_south_america_generic_7
-				GFX_portrait_south_america_generic_8
-				GFX_portrait_south_america_generic_9
-			}
-		}
-		democratic = {
-			leader = {
-				GFX_Portrait_South_America_Generic_2
-				GFX_portrait_south_america_generic_7
-				GFX_portrait_south_america_generic_8
-				GFX_portrait_south_america_generic_9
-			}
-		}
-		fascism = { 
-			leader = {
-				GFX_Portrait_South_America_Generic_3
-				GFX_portrait_south_america_generic_7
-				GFX_portrait_south_america_generic_8
-				GFX_portrait_south_america_generic_9
-			}
-		}
-		neutrality = { 
-			leader = {
-				GFX_Portrait_South_America_Generic_3
-				GFX_portrait_south_america_generic_7
-				GFX_portrait_south_america_generic_8
-				GFX_portrait_south_america_generic_9
-			}
-		}
-	}
-	operative_portraits = {
-		male = {
-			GFX_portrait_south_america_generic_operative_male_1
-			GFX_portrait_south_america_generic_operative_male_2
-			GFX_portrait_south_america_generic_operative_male_3
-			GFX_portrait_south_america_generic_operative_male_4
-			GFX_portrait_south_america_generic_operative_male_5
-			GFX_portrait_south_america_generic_operative_male_6
-		}
-		female = {
-			GFX_portrait_south_america_generic_operative_female_1
-			GFX_portrait_south_america_generic_operative_female_2
-			GFX_portrait_south_america_generic_operative_female_3
-			GFX_portrait_south_america_generic_operative_female_4
-			GFX_portrait_south_america_generic_operative_female_5
-			GFX_portrait_south_america_generic_operative_female_6
-		}
-	}
-
-	graphical_culture = southamerican_gfx
-	graphical_culture_2d = southamerican_2d
-}
-
-# south_east_asian = { # In Asian currently
-# 	ethnicities = { south_east_asian }
-
-# 	graphical_culture = asian_gfx
-# 	graphical_culture_2d = asian_2d
-# }
-
-### Group based
-nordic = {
-	traits = { scandinavian_culture_group finnic }
-
-	army_portraits = {
-		GFX_portrait_FIN_carl_mannerheim
-		GFX_Portrait_Europe_Generic_land_5
-		GFX_portrait_europe_generic_land_13
-		GFX_Portrait_europe_generic_land_6
-	}
-	navy_portraits = {
-		GFX_Portrait_Europe_Generic_navy_1
-		GFX_Portrait_Europe_Generic_navy_2
-		GFX_Portrait_Europe_Generic_navy_3
-	}
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_europe_female_01
- 			GFX_portrait_generic_europe_female_02
-			GFX_portrait_generic_europe_female_03
-			GFX_portrait_generic_europe_female_04
-			GFX_portrait_generic_europe_female_05
-			GFX_portrait_generic_europe_female_06
-			GFX_portrait_generic_europe_female_07
-			GFX_portrait_generic_europe_female_08
-			GFX_portrait_generic_europe_female_09
-			GFX_portrait_generic_europe_female_10
-			GFX_portrait_generic_europe_female_11
-			GFX_portrait_generic_europe_female_12
-			GFX_portrait_generic_europe_female_13
-			GFX_portrait_generic_europe_female_14
-			GFX_portrait_generic_europe_female_15
-			GFX_portrait_generic_europe_female_16
-		}
-		male = {
-	 		GFX_portrait_generic_europe_male_01
- 			GFX_portrait_generic_europe_male_02
-			GFX_portrait_generic_europe_male_03
-			GFX_portrait_generic_europe_male_04
-			GFX_portrait_generic_europe_male_05
-			GFX_portrait_generic_europe_male_06
-			GFX_portrait_generic_europe_male_07
-			GFX_portrait_generic_europe_male_08
-			GFX_portrait_generic_europe_male_09
-			GFX_portrait_generic_europe_male_10
-			GFX_portrait_generic_europe_male_11
-			GFX_portrait_generic_europe_male_12
-			GFX_portrait_generic_europe_male_13
-			GFX_portrait_generic_europe_male_14
-			GFX_portrait_generic_europe_male_15
-			GFX_portrait_generic_europe_male_16
-		}
-	}
-	political_portraits = {
-		communism = {
-			leader = {
-				GFX_portrait_SWE_per_albin_hansson
-			}
-		}
-		democratic = {
-			leader = {
-				GFX_portrait_Johan_Nygaardsvold
-				GFX_portrait_Thorvald_Stauning
-			}
-		}
-		fascism = {
-			leader = {
-				GFX_portrait_erik_scavenius
-				GFX_portrait_Vidkun_Quisling
-			}
-		}
-		neutrality = {
-			leader = {
-				GFX_portrait_FIN_kyosti_kallio
-				GFX_portrait_FIN_risto_heikki_ryti
-			}
-		}
-	}
-
-	graphical_culture = western_european_gfx
-	graphical_culture_2d = western_european_2d
-}
-
-west_horn_of_african = {
-	traits = { ethiopian } # DLC BBA 
-
-	army_portraits = {
-		GFX_portrait_ETH_generic_male_1
-		GFX_portrait_ETH_generic_male_2
-		GFX_portrait_ETH_generic_male_3
-		GFX_portrait_ETH_generic_male_4
-	}
-	navy_portraits = {
-		GFX_Portrait_Africa_Generic_navy_1
-		GFX_Portrait_Africa_Generic_navy_2
-		GFX_Portrait_Africa_Generic_navy_3
-	}
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_africa_female_01
- 			GFX_portrait_generic_africa_female_02
-			GFX_portrait_generic_africa_female_03
-			GFX_portrait_generic_africa_female_04
-			GFX_portrait_generic_africa_female_05
-			GFX_portrait_generic_africa_female_06
-			GFX_portrait_generic_africa_female_07
-			GFX_portrait_generic_africa_female_08
-		}
-		male = {
-	 		GFX_portrait_generic_africa_male_01
- 			GFX_portrait_generic_africa_male_02
-			GFX_portrait_generic_africa_male_03
-			GFX_portrait_generic_africa_male_04
-			GFX_portrait_generic_africa_male_05
-			GFX_portrait_generic_africa_male_06
-			GFX_portrait_generic_africa_male_07
-			GFX_portrait_generic_africa_male_08
-		}
-	}
-	political_portraits = {
-		communism = {
-			leader = {
-				GFX_portrait_ETH_generic_male_3
-			}
-		}
-		democratic = {
-			leader = {
-				GFX_portrait_ETH_generic_male_1
-			}
-		}
-		fascism = {
-			leader = {
-				GFX_portrait_ETH_generic_male_2
-				GFX_portrait_ETH_generic_male_4
-			}
-		}
-		neutrality = {
-			leader = {
-				GFX_portrait_ETH_seyoum_mengesha
-				GFX_portrait_ETH_haile_selassie_field_marshal_victorious
-				GFX_portrait_ETH_haile_selassie_victorious
-			}
-		}
-	}
-
-	graphical_culture = african_gfx
-	graphical_culture_2d = african_2d
-}
-
-### Specific
-american = {
-	cultures = { yankee dixie }
-
-	army_portraits = {
-		GFX_Portrait_USA_Generic_land_1
-		GFX_Portrait_USA_Generic_land_2
-		GFX_Portrait_USA_Generic_land_3
-		GFX_Portrait_USA_Generic_land_4
-		GFX_Portrait_USA_Generic_land_5
-		GFX_Portrait_USA_Generic_land_6
-		GFX_Portrait_USA_Generic_land_7
-		GFX_Portrait_USA_Generic_land_8
-		GFX_Portrait_USA_Generic_land_9
-	}
-
-	navy_portraits = {
-		GFX_Portrait_USA_Generic_navy_1
-		GFX_Portrait_USA_Generic_navy_2
-		GFX_Portrait_USA_Generic_navy_3
-	}
-
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_europe_female_01
- 			GFX_portrait_generic_europe_female_02
-			GFX_portrait_generic_europe_female_03
-			GFX_portrait_generic_europe_female_04
-			GFX_portrait_generic_europe_female_05
-			GFX_portrait_generic_europe_female_06
-			GFX_portrait_generic_europe_female_07
-			GFX_portrait_generic_europe_female_08
-			GFX_portrait_generic_europe_female_09
-			GFX_portrait_generic_europe_female_10
-			GFX_portrait_generic_europe_female_11
-			GFX_portrait_generic_europe_female_12
-			GFX_portrait_generic_europe_female_13
-			GFX_portrait_generic_europe_female_14
-			GFX_portrait_generic_europe_female_15
-			GFX_portrait_generic_europe_female_16
-		}
-		male = {
-	 		GFX_portrait_generic_europe_male_01
- 			GFX_portrait_generic_europe_male_02
-			GFX_portrait_generic_europe_male_03
-			GFX_portrait_generic_europe_male_04
-			GFX_portrait_generic_europe_male_05
-			GFX_portrait_generic_europe_male_06
-			GFX_portrait_generic_europe_male_07
-			GFX_portrait_generic_europe_male_08
-			GFX_portrait_generic_europe_male_09
-			GFX_portrait_generic_europe_male_10
-			GFX_portrait_generic_europe_male_11
-			GFX_portrait_generic_europe_male_12
-			GFX_portrait_generic_europe_male_13
-			GFX_portrait_generic_europe_male_14
-			GFX_portrait_generic_europe_male_15
-			GFX_portrait_generic_europe_male_16
-		}
-	}
-
-	graphical_culture = western_european_gfx
-	graphical_culture_2d = western_european_2d
-}
-
-english = {
-	cultures = { english }
-
-	army_portraits = {
-		GFX_Portrait_Britain_Generic_land_1
-		GFX_Portrait_Britain_Generic_land_2
-		GFX_Portrait_Britain_Generic_land_3
-		GFX_Portrait_Britain_Generic_land_4
-		GFX_Portrait_Britain_Generic_land_5
-		GFX_Portrait_Britain_Generic_land_6
-		GFX_Portrait_Britain_Generic_land_7
-		GFX_Portrait_Britain_Generic_land_8
-		GFX_Portrait_Britain_Generic_land_9
-		GFX_Portrait_Britain_Generic_land_10
-	}
-
-	navy_portraits = {
-		GFX_Portrait_Britain_Generic_navy_1
-		GFX_Portrait_Britain_Generic_navy_2
-		GFX_Portrait_Britain_Generic_navy_3
-	}
-
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_europe_female_01
- 			GFX_portrait_generic_europe_female_02
-			GFX_portrait_generic_europe_female_03
-			GFX_portrait_generic_europe_female_04
-			GFX_portrait_generic_europe_female_05
-			GFX_portrait_generic_europe_female_06
-			GFX_portrait_generic_europe_female_07
-			GFX_portrait_generic_europe_female_08
-			GFX_portrait_generic_europe_female_09
-			GFX_portrait_generic_europe_female_10
-			GFX_portrait_generic_europe_female_11
-			GFX_portrait_generic_europe_female_12
-			GFX_portrait_generic_europe_female_13
-			GFX_portrait_generic_europe_female_14
-			GFX_portrait_generic_europe_female_15
-			GFX_portrait_generic_europe_female_16
-		}
-		male = {
-	 		GFX_portrait_generic_europe_male_01
- 			GFX_portrait_generic_europe_male_02
-			GFX_portrait_generic_europe_male_03
-			GFX_portrait_generic_europe_male_04
-			GFX_portrait_generic_europe_male_05
-			GFX_portrait_generic_europe_male_06
-			GFX_portrait_generic_europe_male_07
-			GFX_portrait_generic_europe_male_08
-			GFX_portrait_generic_europe_male_09
-			GFX_portrait_generic_europe_male_10
-			GFX_portrait_generic_europe_male_11
-			GFX_portrait_generic_europe_male_12
-			GFX_portrait_generic_europe_male_13
-			GFX_portrait_generic_europe_male_14
-			GFX_portrait_generic_europe_male_15
-			GFX_portrait_generic_europe_male_16
-		}
-	}
-
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_europe_female_01
- 			GFX_portrait_generic_europe_female_02
-			GFX_portrait_generic_europe_female_03
-			GFX_portrait_generic_europe_female_04
-			GFX_portrait_generic_europe_female_05
-			GFX_portrait_generic_europe_female_06
-			GFX_portrait_generic_europe_female_07
-			GFX_portrait_generic_europe_female_08
-			GFX_portrait_generic_europe_female_09
-			GFX_portrait_generic_europe_female_10
-			GFX_portrait_generic_europe_female_11
-			GFX_portrait_generic_europe_female_12
-			GFX_portrait_generic_europe_female_13
-			GFX_portrait_generic_europe_female_14
-			GFX_portrait_generic_europe_female_15
-			GFX_portrait_generic_europe_female_16
-		}
-		male = {
-	 		GFX_portrait_generic_europe_male_01
- 			GFX_portrait_generic_europe_male_02
-			GFX_portrait_generic_europe_male_03
-			GFX_portrait_generic_europe_male_04
-			GFX_portrait_generic_europe_male_05
-			GFX_portrait_generic_europe_male_06
-			GFX_portrait_generic_europe_male_07
-			GFX_portrait_generic_europe_male_08
-			GFX_portrait_generic_europe_male_09
-			GFX_portrait_generic_europe_male_10
-			GFX_portrait_generic_europe_male_11
-			GFX_portrait_generic_europe_male_12
-			GFX_portrait_generic_europe_male_13
-			GFX_portrait_generic_europe_male_14
-			GFX_portrait_generic_europe_male_15
-			GFX_portrait_generic_europe_male_16
-		}
- 	}
-
-	graphical_culture = western_european_gfx
-	graphical_culture_2d = western_european_2d
-}
-
-french = {
-	cultures = { french }
-
-	army_portraits = {
-		GFX_Portrait_France_Generic_land_1
-		GFX_Portrait_France_Generic_land_2
-		GFX_Portrait_France_Generic_land_3
-		GFX_Portrait_France_Generic_land_4
-		GFX_Portrait_France_Generic_land_5
-		GFX_Portrait_France_Generic_land_6
-		GFX_Portrait_France_Generic_land_7
-		GFX_Portrait_France_Generic_land_8
-		GFX_Portrait_France_Generic_land_9
-	}
-
-	navy_portraits = {
-		GFX_Portrait_France_Generic_navy_1
-		GFX_Portrait_France_Generic_navy_2
-		GFX_Portrait_France_Generic_navy_3
-	}
-
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_europe_female_01
- 			GFX_portrait_generic_europe_female_02
-			GFX_portrait_generic_europe_female_03
-			GFX_portrait_generic_europe_female_04
-			GFX_portrait_generic_europe_female_05
-			GFX_portrait_generic_europe_female_06
-			GFX_portrait_generic_europe_female_07
-			GFX_portrait_generic_europe_female_08
-			GFX_portrait_generic_europe_female_09
-			GFX_portrait_generic_europe_female_10
-			GFX_portrait_generic_europe_female_11
-			GFX_portrait_generic_europe_female_12
-			GFX_portrait_generic_europe_female_13
-			GFX_portrait_generic_europe_female_14
-			GFX_portrait_generic_europe_female_15
-			GFX_portrait_generic_europe_female_16
-		}
-		male = {
-	 		GFX_portrait_generic_europe_male_01
- 			GFX_portrait_generic_europe_male_02
-			GFX_portrait_generic_europe_male_03
-			GFX_portrait_generic_europe_male_04
-			GFX_portrait_generic_europe_male_05
-			GFX_portrait_generic_europe_male_06
-			GFX_portrait_generic_europe_male_07
-			GFX_portrait_generic_europe_male_08
-			GFX_portrait_generic_europe_male_09
-			GFX_portrait_generic_europe_male_10
-			GFX_portrait_generic_europe_male_11
-			GFX_portrait_generic_europe_male_12
-			GFX_portrait_generic_europe_male_13
-			GFX_portrait_generic_europe_male_14
-			GFX_portrait_generic_europe_male_15
-			GFX_portrait_generic_europe_male_16
-		}
-	}
-	
-	graphical_culture = western_european_gfx
-	graphical_culture_2d = western_european_2d
-}
-
-german = {
-	cultures = { north_german south_german }
-
-	army_portraits = {
-		GFX_Portrait_Germany_Generic_land_1
-		GFX_Portrait_Germany_Generic_land_2
-		GFX_Portrait_Germany_Generic_land_3
-		GFX_Portrait_Germany_Generic_land_4
-		GFX_Portrait_Germany_Generic_land_5
-		GFX_Portrait_Germany_Generic_land_6
-		GFX_Portrait_Germany_Generic_land_7
-		GFX_Portrait_Germany_Generic_land_8
-		GFX_Portrait_Germany_Generic_land_9
-	}
-
-	navy_portraits = {
-		GFX_Portrait_Germany_Generic_navy_1
-		GFX_Portrait_Germany_Generic_navy_2
-		GFX_Portrait_Germany_Generic_navy_3
-	}
-
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_europe_female_01
- 			GFX_portrait_generic_europe_female_02
-			GFX_portrait_generic_europe_female_03
-			GFX_portrait_generic_europe_female_04
-			GFX_portrait_generic_europe_female_05
-			GFX_portrait_generic_europe_female_06
-			GFX_portrait_generic_europe_female_07
-			GFX_portrait_generic_europe_female_08
-			GFX_portrait_generic_europe_female_09
-			GFX_portrait_generic_europe_female_10
-			GFX_portrait_generic_europe_female_11
-			GFX_portrait_generic_europe_female_12
-			GFX_portrait_generic_europe_female_13
-			GFX_portrait_generic_europe_female_14
-			GFX_portrait_generic_europe_female_15
-			GFX_portrait_generic_europe_female_16
-		}
-		male = {
-	 		GFX_portrait_generic_europe_male_01
- 			GFX_portrait_generic_europe_male_02
-			GFX_portrait_generic_europe_male_03
-			GFX_portrait_generic_europe_male_04
-			GFX_portrait_generic_europe_male_05
-			GFX_portrait_generic_europe_male_06
-			GFX_portrait_generic_europe_male_07
-			GFX_portrait_generic_europe_male_08
-			GFX_portrait_generic_europe_male_09
-			GFX_portrait_generic_europe_male_10
-			GFX_portrait_generic_europe_male_11
-			GFX_portrait_generic_europe_male_12
-			GFX_portrait_generic_europe_male_13
-			GFX_portrait_generic_europe_male_14
-			GFX_portrait_generic_europe_male_15
-			GFX_portrait_generic_europe_male_16
-		}
-	}
-
-	graphical_culture = western_european_gfx
-	graphical_culture_2d = western_european_2d
-}
-
-italian = {
-	cultures = { north_italian south_italian maltese }
-
-	army_portraits = {
-		GFX_Portrait_Italy_Generic_land_1
-		GFX_Portrait_Italy_Generic_land_2
-		GFX_Portrait_Italy_Generic_land_3
-		GFX_Portrait_Italy_Generic_land_4
-		GFX_Portrait_Italy_Generic_land_5
-		GFX_Portrait_Italy_Generic_land_6
-		GFX_Portrait_Italy_Generic_land_7
-		GFX_Portrait_Italy_Generic_land_8
-	}
-
-	navy_portraits = {
-		GFX_Portrait_Italy_Generic_navy_1
-		GFX_Portrait_Italy_Generic_navy_2
-		GFX_Portrait_Italy_Generic_navy_3
-	}
-
-	scientist_portraits = {
-		female = {
-	 		GFX_portrait_generic_europe_female_01
- 			GFX_portrait_generic_europe_female_02
-			GFX_portrait_generic_europe_female_03
-			GFX_portrait_generic_europe_female_04
-			GFX_portrait_generic_europe_female_05
-			GFX_portrait_generic_europe_female_06
-			GFX_portrait_generic_europe_female_07
-			GFX_portrait_generic_europe_female_08
-			GFX_portrait_generic_europe_female_09
-			GFX_portrait_generic_europe_female_10
-			GFX_portrait_generic_europe_female_11
-			GFX_portrait_generic_europe_female_12
-			GFX_portrait_generic_europe_female_13
-			GFX_portrait_generic_europe_female_14
-			GFX_portrait_generic_europe_female_15
-			GFX_portrait_generic_europe_female_16
-		}
-		male = {
-	 		GFX_portrait_generic_europe_male_01
- 			GFX_portrait_generic_europe_male_02
-			GFX_portrait_generic_europe_male_03
-			GFX_portrait_generic_europe_male_04
-			GFX_portrait_generic_europe_male_05
-			GFX_portrait_generic_europe_male_06
-			GFX_portrait_generic_europe_male_07
-			GFX_portrait_generic_europe_male_08
-			GFX_portrait_generic_europe_male_09
-			GFX_portrait_generic_europe_male_10
-			GFX_portrait_generic_europe_male_11
-			GFX_portrait_generic_europe_male_12
-			GFX_portrait_generic_europe_male_13
-			GFX_portrait_generic_europe_male_14
-			GFX_portrait_generic_europe_male_15
-			GFX_portrait_generic_europe_male_16
-		}
-	}
-	
-	graphical_culture = western_european_gfx
-	graphical_culture_2d = western_european_2d
-}
-
-japanese = {
-	cultures = { japanese }
-	traits = { yamato }
-
-	army_portraits = {
-		GFX_Portrait_Japan_Generic_land_1
-		GFX_Portrait_Japan_Generic_land_2
-		GFX_Portrait_Japan_Generic_land_3
-		GFX_Portrait_Japan_Generic_land_4
-		GFX_Portrait_Japan_Generic_land_5
-		GFX_Portrait_Japan_Generic_land_6
-		GFX_Portrait_Japan_Generic_land_7
-		GFX_Portrait_Japan_Generic_land_8
-		GFX_Portrait_Japan_Generic_land_9
-	}
-
-	navy_portraits = {
-		GFX_Portrait_Japan_Generic_navy_1
-		GFX_Portrait_Japan_Generic_navy_2
-		GFX_Portrait_Japan_Generic_navy_3
-	}
-
-	graphical_culture = asian_gfx
-	graphical_culture_2d = asian_2d
-}
-
-manchu = {
-    cultures = { manchu } # DLC WTT
+#WIP(1)
+caucasian_group = {
+ethnicities = { caucasian slavic }
 
     army_portraits = {
-        GFX_portrait_man_zhang_haipeng
-        GFX_portrait_man_aisin_gioro_xiqia
-		GFX_portrait_chi_zhang_xueliang
-		GFX_Portrait_Asia_Generic_land_2
+        GFX_Portrait_Europe_Generic_land_1
+        GFX_Portrait_Europe_Generic_land_2
+        GFX_Portrait_Europe_Generic_land_3
+        GFX_Portrait_Europe_Generic_land_4
+        GFX_Portrait_Europe_Generic_land_5
+        GFX_portrait_europe_generic_land_13
+        GFX_portrait_europe_generic_land_19
+        GFX_portrait_europe_generic_land_10
+        GFX_portrait_europe_generic_land_11
+        GFX_portrait_europe_generic_land_12
+        GFX_portrait_europe_generic_land_14
+        GFX_portrait_europe_generic_land_15
+        GFX_portrait_europe_generic_land_16
+        GFX_portrait_europe_generic_land_18
     }
-
-    leader_portraits = {
+    navy_portraits = {
+        GFX_Portrait_Europe_Generic_navy_1
+        GFX_Portrait_Europe_Generic_navy_2
+        GFX_Portrait_Europe_Generic_navy_3
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_europe_female_01
+        GFX_portrait_generic_europe_female_02
+        GFX_portrait_generic_europe_female_03
+        GFX_portrait_generic_europe_female_04
+        GFX_portrait_generic_europe_female_05
+        GFX_portrait_generic_europe_female_06
+        GFX_portrait_generic_europe_female_07
+        GFX_portrait_generic_europe_female_08
+        GFX_portrait_generic_europe_female_09
+        GFX_portrait_generic_europe_female_10
+        GFX_portrait_generic_europe_female_11
+        GFX_portrait_generic_europe_female_12
+        GFX_portrait_generic_europe_female_13
+        GFX_portrait_generic_europe_female_14
+        GFX_portrait_generic_europe_female_15
+        GFX_portrait_generic_europe_female_16
+        }
+        male = {
+        GFX_portrait_generic_europe_male_01
+        GFX_portrait_generic_europe_male_02
+        GFX_portrait_generic_europe_male_03
+        GFX_portrait_generic_europe_male_04
+        GFX_portrait_generic_europe_male_05
+        GFX_portrait_generic_europe_male_06
+        GFX_portrait_generic_europe_male_07
+        GFX_portrait_generic_europe_male_08
+        GFX_portrait_generic_europe_male_09
+        GFX_portrait_generic_europe_male_10
+        GFX_portrait_generic_europe_male_11
+        GFX_portrait_generic_europe_male_12
+        GFX_portrait_generic_europe_male_13
+        GFX_portrait_generic_europe_male_14
+        GFX_portrait_generic_europe_male_15
+        GFX_portrait_generic_europe_male_16
+        }
+    }
+     political_portraits = {
         communism = {
-			leader = {
-				GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
-			}
+            leader = {
+                GFX_Portrait_Europe_Generic_1
+                GFX_portrait_GER_weli_kayum_chan
+                GFX_portrait_GER_wilhelm_pieck
+            }
+            minister = {
+                GFX_Portrait_Europe_Generic_1_small
+            }
         }
         democratic = {
-			leader = {
-				GFX_portrait_chi_zhang_xueliang
-				GFX_Portrait_Asia_Generic_land_2 # Zhang Zuolin
-			}
+            leader = {
+                GFX_Portrait_Europe_Generic_2
+                GFX_portrait_europe_generic_5
+                GFX_portrait_europe_generic_4
+            }
+            minister = {
+                GFX_Portrait_Europe_Generic_2_small
+                GFX_portrait_europe_generic_5_small
+                GFX_portrait_europe_generic_4_small
+            }
         }
         fascism = {
-			leader = {
-            	GFX_portrait_man_zhang_jinghui
-			}
+            leader = {
+                GFX_Portrait_Europe_Generic_3
+                GFX_portrait_europe_generic_land_17
+                GFX_portrait_GER_josef_grohe
+            }
+            minister = {
+                GFX_Portrait_Europe_Generic_3_small
+                GFX_portrait_europe_generic_land_17_small
+            }
         }
         neutrality = {
-			leader = {
-         		GFX_portrait_man_henry_pu_yi_emperor
-			}
+            leader = {
+                GFX_Portrait_Europe_Generic_2
+                GFX_portrait_europe_generic_5
+                GFX_portrait_europe_generic_4
+            }
+            minister = {
+                GFX_Portrait_Europe_Generic_2_small
+                GFX_portrait_europe_generic_5_small
+                GFX_portrait_europe_generic_4_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_europe_generic_6
+                GFX_portrait_AOI_amedeo_di_savoia_aosta
+                GFX_portrait_SAX_george_of_saxony
+            }
+            female = {
+                GFX_portrait_UBD_sophie_buxhoeveden
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    GFX_portrait_UBD_sophie_buxhoeveden
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_europe_generic_operative_male_1
+        GFX_portrait_europe_generic_operative_male_2
+        GFX_portrait_europe_generic_operative_male_3
+        GFX_portrait_europe_generic_operative_male_4
+        GFX_portrait_europe_generic_operative_male_5
+        GFX_portrait_europe_generic_operative_male_6
+        GFX_portrait_europe_generic_operative_male_7
+        GFX_portrait_europe_generic_operative_male_8
+        GFX_portrait_europe_generic_operative_male_9
+        GFX_portrait_europe_generic_operative_male_10
+        GFX_portrait_europe_generic_operative_male_11
+        GFX_portrait_europe_generic_operative_male_12
+        GFX_portrait_europe_generic_operative_male_13
+        GFX_portrait_europe_generic_operative_male_14
+        GFX_portrait_europe_generic_operative_male_15
+        }
+        female = {
+        GFX_portrait_europe_generic_operative_female_1
+        GFX_portrait_europe_generic_operative_female_2
+        GFX_portrait_europe_generic_operative_female_3
+        GFX_portrait_europe_generic_operative_female_4
+        GFX_portrait_europe_generic_operative_female_5
+        GFX_portrait_europe_generic_operative_female_6
+        GFX_portrait_europe_generic_operative_female_7
+        GFX_portrait_europe_generic_operative_female_8
+        GFX_portrait_europe_generic_operative_female_9
+        GFX_portrait_europe_generic_operative_female_10
+        GFX_portrait_europe_generic_operative_female_11
+        GFX_portrait_europe_generic_operative_female_13
+        GFX_portrait_europe_generic_operative_female_14
+        GFX_portrait_europe_generic_operative_female_15
         }
     }
     monarch_ideas = {
-		GFX_idea_man_low_legitimacy5
+        GFX_Portrait_crowns_sample
     }
 
-    graphical_culture = asian_gfx
-    graphical_culture_2d = asian_2d
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
 }
 
-russian = {
-	cultures = { russian }
+#WIP(2)
+african_group = {
+ethnicities = { african african_diaspora central_african east_african }
 
-	army_portraits = {
-		GFX_Portrait_Soviet_Generic_land_1
-		GFX_Portrait_Soviet_Generic_land_2
-		GFX_Portrait_Soviet_Generic_land_3
-		GFX_Portrait_Soviet_Generic_land_4
-		GFX_Portrait_Soviet_Generic_land_5
-		GFX_Portrait_Soviet_Generic_land_6
-		GFX_Portrait_Soviet_Generic_land_7
-		GFX_Portrait_Soviet_Generic_land_8
-		GFX_Portrait_Soviet_Generic_land_9
-		GFX_Portrait_Soviet_Magic_Winner
-	}
+    army_portraits = {
+        GFX_Portrait_Africa_Generic_land_1
+        GFX_Portrait_Africa_Generic_land_2
+        GFX_Portrait_Africa_Generic_land_3
+        GFX_Portrait_South_Africa_Army_Generic
+        GFX_Portrait_South_Africa_Army_Generic_2
+        GFX_portrait_africa_generic_land_5
+        GFX_portrait_africa_generic_land_6
+        GFX_portrait_africa_generic_land_7
+    }
+    navy_portraits = {
+        GFX_Portrait_Africa_Generic_navy_1
+        GFX_Portrait_Africa_Generic_navy_2
+        GFX_Portrait_Africa_Generic_navy_3
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_africa_female_01
+        GFX_portrait_generic_africa_female_02
+        GFX_portrait_generic_africa_female_03
+        GFX_portrait_generic_africa_female_04
+        GFX_portrait_generic_africa_female_05
+        GFX_portrait_generic_africa_female_06
+        GFX_portrait_generic_africa_female_07
+        GFX_portrait_generic_africa_female_08
+        }
+        male = {
+        GFX_portrait_generic_africa_male_01
+        GFX_portrait_generic_africa_male_02
+        GFX_portrait_generic_africa_male_03
+        GFX_portrait_generic_africa_male_04
+        GFX_portrait_generic_africa_male_05
+        GFX_portrait_generic_africa_male_06
+        GFX_portrait_generic_africa_male_07
+        GFX_portrait_generic_africa_male_08
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                GFX_Portrait_Africa_Generic_1
+            }
+            minister = {
+                GFX_Portrait_Africa_Generic_1_small
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_Portrait_Africa_Generic_2
+                GFX_Portrait_Africa_Generic_3
+                GFX_portrait_ITA_hamid_idris_awate
+                GFX_portrait_ITA_ibrahim_farag_mohammed
+                GFX_portrait_lib_edwin_barclay
+                GFX_Portrait_South_Africa_Political_Leader_Generic
+                GFX_Portrait_South_Africa_Political_Leader_Generic_2
+            }
+            minister = {
+                GFX_portrait_lib_edwin_barclay_small
+                GFX_Portrait_Africa_Generic_2_small
+                GFX_Portrait_Africa_Generic_3_small
+                GFX_Portrait_South_Africa_Political_Leader_Generic_small
+                GFX_Portrait_South_Africa_Political_Leader_Generic_2_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_Portrait_South_Africa_Army_Generic
+                GFX_Portrait_South_Africa_Army_Generic_2
+            }
+            minister = {
+                GFX_Portrait_South_Africa_Army_Generic_small
+                GFX_Portrait_South_Africa_Army_Generic_2_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_Portrait_Africa_Generic_2
+                GFX_Portrait_Africa_Generic_3
+                GFX_portrait_ITA_hamid_idris_awate
+                GFX_portrait_ITA_ibrahim_farag_mohammed
+                GFX_portrait_lib_edwin_barclay
+                GFX_Portrait_South_Africa_Political_Leader_Generic
+                GFX_Portrait_South_Africa_Political_Leader_Generic_2
+            }
+            minister = {
+                GFX_portrait_lib_edwin_barclay_small
+                GFX_Portrait_Africa_Generic_2_small
+                GFX_Portrait_Africa_Generic_3_small
+                GFX_Portrait_South_Africa_Political_Leader_Generic_small
+                GFX_Portrait_South_Africa_Political_Leader_Generic_2_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_ETH_haile_selassie
+            }
+            female = {
+                GFX_portrait_african_queen_01
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    GFX_portrait_african_female_01
+    GFX_portrait_african_female_02
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_africa_generic_operative_male_1
+        GFX_portrait_africa_generic_operative_male_2
+        GFX_portrait_africa_generic_operative_male_3
+        GFX_portrait_africa_generic_operative_male_4
+        GFX_portrait_africa_generic_operative_male_5
+        GFX_portrait_africa_generic_operative_male_6
+        GFX_portrait_africa_generic_operative_male_7
+        GFX_portrait_africa_generic_operative_male_8
+        GFX_portrait_africa_generic_operative_male_9
+        }
+        female = {
+        GFX_portrait_africa_generic_operative_female_1
+        GFX_portrait_africa_generic_operative_female_2
+        GFX_portrait_africa_generic_operative_female_3
+        GFX_portrait_africa_generic_operative_female_4
+        GFX_portrait_africa_generic_operative_female_5
+        GFX_portrait_africa_generic_operative_female_6
+        GFX_portrait_africa_generic_operative_female_7
+        GFX_portrait_africa_generic_operative_female_8
+        GFX_portrait_africa_generic_operative_female_9
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
 
-	navy_portraits = {
-		GFX_Portrait_Soviet_Generic_navy_1
-		GFX_Portrait_Soviet_Generic_navy_2
-		GFX_Portrait_Soviet_Generic_navy_3
-	}
-
-	graphical_culture = eastern_european_gfx
-	graphical_culture_2d = eastern_european_2d
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
 }
+
+#WIP(2)
+asian_group = {
+ethnicities = { asian central_asian circumpolar polynesian south_east_asian }
+
+    army_portraits = {
+        GFX_Portrait_Asia_Generic_land_1
+        GFX_Portrait_Asia_Generic_land_2
+        GFX_Portrait_Asia_Generic_land_3
+        GFX_Portrait_Asia_Generic_land_4
+        GFX_Portrait_Asia_Generic_land_5
+        GFX_portrait_CHI_chiang_kaishek
+        GFX_portrait_asia_generic_land_7
+        GFX_portrait_asia_generic_land_8
+        GFX_portrait_asia_generic_land_9
+        GFX_portrait_asia_generic_land_10
+        GFX_portrait_asia_generic_land_11
+        GFX_portrait_asia_generic_land_12
+        GFX_portrait_asia_generic_land_13
+        GFX_portrait_asia_generic_land_14
+    }
+    navy_portraits = {
+        GFX_Portrait_Asia_Generic_navy_1
+        GFX_Portrait_Asia_Generic_navy_2
+        GFX_Portrait_Asia_Generic_navy_3
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_asia_female_01
+        GFX_portrait_generic_asia_female_02
+        GFX_portrait_generic_asia_female_03
+        GFX_portrait_generic_asia_female_04
+        GFX_portrait_generic_asia_female_05
+        GFX_portrait_generic_asia_female_06
+        GFX_portrait_generic_asia_female_07
+        GFX_portrait_generic_asia_female_08
+        }
+        male = {
+        GFX_portrait_generic_asia_male_01
+        GFX_portrait_generic_asia_male_02
+        GFX_portrait_generic_asia_male_03
+        GFX_portrait_generic_asia_male_04
+        GFX_portrait_generic_asia_male_05
+        GFX_portrait_generic_asia_male_06
+        GFX_portrait_generic_asia_male_07
+        GFX_portrait_generic_asia_male_08
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                GFX_Portrait_Asia_Generic_1
+                GFX_portrait_prc_mao_zedong
+            }
+            minister = {
+                GFX_Portrait_Asia_Generic_1_small
+                GFX_portrait_PRC_mao_zedong_small
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_Portrait_Asia_Generic_2
+                GFX_Portrait_Asia_Generic_3
+                GFX_portrait_chi_weng_wenhao
+                GFX_portrait_men_demchugdongrub
+            }
+            minister = {
+                GFX_Portrait_Asia_Generic_2_small
+                GFX_Portrait_Asia_Generic_3_small
+                GFX_portrait_men_demchugdongrub_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_portrait_PRC_lin_biao
+                GFX_portrait_Phan_Boi_Chau
+                GFX_portrait_CHI_chiang_kaishek
+                GFX_portrait_li_zongren
+                GFX_portrait_yan_xishan
+                GFX_portrait_sheng_shicai
+                GFX_portrait_xsm_ma_bufang
+                GFX_portrait_yun_long_yun
+            }
+            minister = {
+                GFX_portrait_PRC_lin_biao_small
+                GFX_portrait_li_zongren_small
+                GFX_portrait_yan_xishan_small
+                GFX_portrait_sheng_shicai_small
+                GFX_portrait_xsm_ma_bufang_small
+                GFX_portrait_yun_long_yun_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_Portrait_Asia_Generic_2
+                GFX_Portrait_Asia_Generic_3
+                GFX_portrait_chi_weng_wenhao
+                GFX_portrait_men_demchugdongrub
+            }
+            minister = {
+                GFX_Portrait_Asia_Generic_2_small
+                GFX_Portrait_Asia_Generic_3_small
+                GFX_portrait_men_demchugdongrub_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_Phraya_Phahon
+                GFX_portrait_buthan_jigme_wangchuk
+            }
+            female = {
+                GFX_portrait_asian_queen_01
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    #WIP
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_asia_generic_operative_male_1
+        GFX_portrait_asia_generic_operative_male_2
+        GFX_portrait_asia_generic_operative_male_3
+        GFX_portrait_asia_generic_operative_male_4
+        GFX_portrait_asia_generic_operative_male_5
+        GFX_portrait_asia_generic_operative_male_6
+        GFX_portrait_asia_generic_operative_male_7
+        GFX_portrait_asia_generic_operative_male_8
+        GFX_portrait_asia_generic_operative_male_9
+        }
+        female = {
+        GFX_portrait_asia_generic_operative_female_1
+        GFX_portrait_asia_generic_operative_female_2
+        GFX_portrait_asia_generic_operative_female_3
+        GFX_portrait_asia_generic_operative_female_4
+        GFX_portrait_asia_generic_operative_female_5
+        GFX_portrait_asia_generic_operative_female_6
+        GFX_portrait_asia_generic_operative_female_7
+        GFX_portrait_asia_generic_operative_female_8
+        GFX_portrait_asia_generic_operative_female_9
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(2)
+arab_group = {
+ethnicities = { arab }
+
+    army_portraits = {
+        GFX_portrait_Mohammed_Zahir_Shah
+        GFX_Portrait_Arabia_Generic_land_1
+        GFX_Portrait_Arabia_Generic_land_2
+        GFX_Portrait_Arabia_Generic_land_3
+        GFX_portrait_arabia_generic_land_5
+        GFX_portrait_arabia_generic_land_6
+        GFX_portrait_arabia_generic_land_7
+    }
+    navy_portraits = {
+        GFX_Portrait_Arabia_Generic_navy_1
+        GFX_Portrait_Arabia_Generic_navy_2
+        GFX_Portrait_Arabia_Generic_navy_3
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_arabia_female_01
+        GFX_portrait_generic_arabia_female_02
+        GFX_portrait_generic_arabia_female_03
+        GFX_portrait_generic_arabia_female_04
+        GFX_portrait_generic_arabia_female_05
+        GFX_portrait_generic_arabia_female_06
+        GFX_portrait_generic_arabia_female_07
+        GFX_portrait_generic_arabia_female_08
+        }
+        male = {
+        GFX_portrait_generic_arabia_male_01
+        GFX_portrait_generic_arabia_male_02
+        GFX_portrait_generic_arabia_male_03
+        GFX_portrait_generic_arabia_male_04
+        GFX_portrait_generic_arabia_male_05
+        GFX_portrait_generic_arabia_male_06
+        GFX_portrait_generic_arabia_male_07
+        GFX_portrait_generic_arabia_male_08
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                GFX_Portrait_Arabia_Generic_1
+            }
+            minister = {
+                GFX_Portrait_Arabia_Generic_1_small
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_Portrait_Arabia_Generic_2
+                GFX_Portrait_Arabia_Generic_3
+                GFX_portrait_yemen_imam_yahya
+            }
+            minister = {
+                GFX_Portrait_Arabia_Generic_2_small
+                GFX_Portrait_Arabia_Generic_3_small
+                GFX_portrait_yemen_imam_yahya_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_Portrait_Arabia_Generic_land_1
+                GFX_Portrait_Arabia_Generic_land_2
+                GFX_Portrait_Arabia_Generic_land_3
+            }
+            minister = {
+                GFX_Portrait_Arabia_Generic_land_1_small
+                GFX_Portrait_Arabia_Generic_land_2_small
+                GFX_Portrait_Arabia_Generic_land_3_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_Portrait_Arabia_Generic_2
+                GFX_Portrait_Arabia_Generic_3
+                GFX_portrait_yemen_imam_yahya
+            }
+            minister = {
+                GFX_Portrait_Arabia_Generic_2_small
+                GFX_Portrait_Arabia_Generic_3_small
+                GFX_portrait_yemen_imam_yahya_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_Mohammed_Zahir_Shah
+                GFX_portrait_egy_faud_i
+                GFX_portrait_Reza_Shah_Pahlavi
+                GFX_portrait_oman_said_bin_taimur
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    #WIP
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_arabia_generic_operative_male_1
+        GFX_portrait_arabia_generic_operative_male_2
+        GFX_portrait_arabia_generic_operative_male_3
+        GFX_portrait_arabia_generic_operative_male_4
+        GFX_portrait_arabia_generic_operative_male_5
+        GFX_portrait_arabia_generic_operative_male_6
+        }
+        female = {
+        GFX_portrait_arabia_generic_operative_female_1
+        GFX_portrait_arabia_generic_operative_female_2
+        GFX_portrait_arabia_generic_operative_female_3
+        GFX_portrait_arabia_generic_operative_female_4
+        GFX_portrait_arabia_generic_operative_female_5
+        GFX_portrait_arabia_generic_operative_female_6
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(3)
+Indian_group = {
+ethnicities = { indian }
+
+    army_portraits = {
+        GFX_portrait_india_generic_land_3
+        GFX_portrait_india_generic_land_4
+        GFX_RAJ_kodendera_subayya_thimayya
+        GFX_Portrait_The_Raj_Army_Generic
+        GFX_Portrait_The_Raj_Army_Generic_2
+    }
+    navy_portraits = {
+        GFX_Portrait_The_Raj_Generic_navy_1
+        GFX_Portrait_The_Raj_Generic_navy_2
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_india_female_01
+        GFX_portrait_generic_india_female_02
+        GFX_portrait_generic_india_female_03
+        GFX_portrait_generic_india_female_04
+        GFX_portrait_generic_india_female_05
+        GFX_portrait_generic_india_female_06
+        }
+        male = {
+        GFX_portrait_generic_india_male_01
+        GFX_portrait_generic_india_male_02
+        GFX_portrait_generic_india_male_03
+        GFX_portrait_generic_india_male_04
+        GFX_portrait_generic_india_male_05
+        GFX_portrait_generic_india_male_06
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                #WIP
+            }
+            minister = {
+                #WIP
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_RAJ_krishna_pillai
+                GFX_RAJ_pattabhi_sitaramayya
+                GFX_Portrait_The_Raj_Political_Leader_Generic
+                GFX_Portrait_The_Raj_Political_Leader_Generic_2
+            }
+            minister = {
+                GFX_Portrait_The_Raj_Political_Leader_Generic_small
+                GFX_Portrait_The_Raj_Political_Leader_Generic_2_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_RAJ_veer_savarkar
+            }
+            minister = {
+                GFX_Portrait_The_Raj_Political_Leader_Generic_small
+                GFX_Portrait_The_Raj_Political_Leader_Generic_2_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_RAJ_krishna_pillai
+                GFX_RAJ_pattabhi_sitaramayya
+                GFX_Portrait_The_Raj_Political_Leader_Generic
+                GFX_Portrait_The_Raj_Political_Leader_Generic_2
+            }
+            minister = {
+                GFX_Portrait_The_Raj_Political_Leader_Generic_small
+                GFX_Portrait_The_Raj_Political_Leader_Generic_2_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_nepal_portrait_juddah_rana
+            }
+            female = {
+                GFX_portrait_indian_queen_01
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    GFX_RAJ_lakshmi_sahgal
+    GFX_portrait_indian_female_01
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_india_generic_operative_male_1
+        GFX_portrait_india_generic_operative_male_2
+        GFX_portrait_india_generic_operative_male_3
+        GFX_portrait_india_generic_operative_male_4
+        GFX_portrait_india_generic_operative_male_5
+        }
+        female = {
+        GFX_portrait_india_generic_operative_female_1
+        GFX_portrait_india_generic_operative_female_2
+        GFX_portrait_india_generic_operative_female_3
+        GFX_portrait_india_generic_operative_female_4
+        GFX_portrait_india_generic_operative_female_5
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(4) Native americans is put here while there are no native american portraits
+south_american_group = {
+ethnicities = { south_american native_american }
+
+    army_portraits = {
+        GFX_portrait_Agustin_Pedro_Justo
+        GFX_portrait_BRA_mascarenhas_de_morais
+        GFX_portrait_el_salvador_maximiliano_hernandez_martinez
+        GFX_portrait_nicaragua_portrait_anastasio_somoza_garcia
+        GFX_Portrait_South_America_Generic_land_1
+        GFX_Portrait_South_America_Generic_land_2
+        GFX_Portrait_South_America_Generic_land_3
+        GFX_Portrait_South_America_Generic_land_4
+        GFX_Portrait_South_America_Generic_land_5
+        GFX_portrait_south_america_generic_land_6
+        GFX_portrait_south_america_generic_land_7
+        GFX_portrait_south_america_generic_land_8
+        GFX_portrait_south_america_generic_land_9
+        GFX_portrait_south_america_generic_land_10
+    }
+    navy_portraits = {
+        GFX_Portrait_South_America_Generic_navy_1
+        GFX_Portrait_South_America_Generic_navy_2
+        GFX_Portrait_South_America_Generic_navy_3
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_southamerica_female_01
+        GFX_portrait_generic_southamerica_female_02
+        GFX_portrait_generic_southamerica_female_03
+        GFX_portrait_generic_southamerica_female_04
+        GFX_portrait_generic_southamerica_female_05
+        GFX_portrait_generic_southamerica_female_06
+        GFX_portrait_generic_southamerica_female_07
+        GFX_portrait_generic_southamerica_female_08
+        }
+        male = {
+        GFX_portrait_generic_southamerica_male_01
+        GFX_portrait_generic_southamerica_male_02
+        GFX_portrait_generic_southamerica_male_03
+        GFX_portrait_generic_southamerica_male_04
+        GFX_portrait_generic_southamerica_male_05
+        GFX_portrait_generic_southamerica_male_06
+        GFX_portrait_generic_southamerica_male_07
+        GFX_portrait_generic_southamerica_male_08
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                GFX_portrait_MEX_lazaro_cardenas
+                GFX_Portrait_South_America_Generic_1
+            }
+            minister = {
+                GFX_portrait_MEX_lazaro_cardenas_small
+                GFX_Portrait_South_America_Generic_1_small
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_portrait_argentina_victorio_codovilla
+                GFX_portrait_BRA_plinio_salgado
+                GFX_Portrait_chile_arturo_alessandri
+                GFX_Portrait_columbia_alfonso_lopez
+                GFX_portrait_costa_rica_ricardo_jiminez_oreamuno
+                GFX_portrait_cuba_jose_barnet
+                GFX_portrait_guatemala_jorge_ubico
+                GFX_portrait_panama_harmodio_arias_madrid
+                GFX_Portrait_South_America_Generic_2
+                GFX_Portrait_South_America_Generic_3
+            }
+            minister = {
+                GFX_Portrait_chile_arturo_alessandri_small
+                GFX_Portrait_columbia_alfonso_lopez_small
+                GFX_portrait_costa_rica_ricardo_jiminez_oreamuno_small
+                GFX_portrait_cuba_jose_barnet_small
+                GFX_portrait_guatemala_jorge_ubico_small
+                GFX_portrait_panama_harmodio_arias_madrid_small
+                GFX_Portrait_South_America_Generic_2_small
+                GFX_Portrait_South_America_Generic_3_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_portrait_Agustin_Pedro_Justo
+                GFX_portrait_BRA_mascarenhas_de_morais
+                GFX_portrait_dominca_rafael_trujillo
+                GFX_portrait_el_salvador_maximiliano_hernandez_martinez
+            }
+            minister = {
+                GFX_portrait_BRA_mascarenhas_de_morais_small
+                GFX_portrait_dominca_rafael_trujillo_small
+                GFX_portrait_el_salvador_maximiliano_hernandez_martinez_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_portrait_argentina_victorio_codovilla
+                GFX_portrait_BRA_plinio_salgado
+                GFX_Portrait_chile_arturo_alessandri
+                GFX_Portrait_columbia_alfonso_lopez
+                GFX_portrait_costa_rica_ricardo_jiminez_oreamuno
+                GFX_portrait_cuba_jose_barnet
+                GFX_portrait_guatemala_jorge_ubico
+                GFX_portrait_panama_harmodio_arias_madrid
+                GFX_Portrait_South_America_Generic_2
+                GFX_Portrait_South_America_Generic_3
+            }
+            minister = {
+                GFX_Portrait_chile_arturo_alessandri_small
+                GFX_Portrait_columbia_alfonso_lopez_small
+                GFX_portrait_costa_rica_ricardo_jiminez_oreamuno_small
+                GFX_portrait_cuba_jose_barnet_small
+                GFX_portrait_guatemala_jorge_ubico_small
+                GFX_portrait_panama_harmodio_arias_madrid_small
+                GFX_Portrait_South_America_Generic_2_small
+                GFX_Portrait_South_America_Generic_3_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_BRA_getulio_vargas
+                GFX_Portrait_ecuador_federico_paez
+                GFX_portrait_honduras_portrait_tiburcio_carias_andino
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    GFX_portrait_Fanny_Edelman
+    GFX_HOL_fanny_schoonheyt
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_south_america_generic_operative_male_1
+        GFX_portrait_south_america_generic_operative_male_2
+        GFX_portrait_south_america_generic_operative_male_3
+        GFX_portrait_south_america_generic_operative_male_4
+        GFX_portrait_south_america_generic_operative_male_5
+        GFX_portrait_south_america_generic_operative_male_6
+        }
+        female = {
+        GFX_portrait_south_america_generic_operative_female_1
+        GFX_portrait_south_america_generic_operative_female_2
+        GFX_portrait_south_america_generic_operative_female_3
+        GFX_portrait_south_america_generic_operative_female_4
+        GFX_portrait_south_america_generic_operative_female_5
+        GFX_portrait_south_america_generic_operative_female_6
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+
+##### Portraits for Cultural Heritage
+
+#WIP(1)
+nordic_group = {
+heritages = { heritage_nordic heritage_baltic heritage_sami }
+
+    army_portraits = {
+        GFX_portrait_FIN_aksel_airo
+        GFX_portrait_FIN_erik_heinrichs
+        GFX_portrait_FIN_erkki_raappana
+        GFX_portrait_FIN_hannu_hannuksela
+        GFX_portrait_FIN_hjalmar_siilasvuo
+        GFX_portrait_FIN_juho_heiskanen
+        GFX_portrait_FIN_karl_lennart_oesch
+        GFX_portrait_FIN_matti_aarnio
+        GFX_portrait_FIN_nikke_parmi
+        GFX_portrait_FIN_paavo_talvela
+        GFX_portrait_FIN_ruben_lagus
+        GFX_portrait_FIN_taavetti_laatikainen
+        GFX_portrait_FIN_vilho_petter_nenonen
+        GFX_portrait_FIN_wiljo_einar_tuompo
+        GFX_portrait_FIN_woldemar_hagglund
+        GFX_portrait_FIN_aarne_juutilainen
+        GFX_portrait_FIN_aarne_sihvo
+        GFX_portrait_Finland_Generic_land_1
+        GFX_portrait_Finland_Generic_land_2
+        GFX_portrait_Finland_Generic_land_3
+        GFX_portrait_Finland_Generic_land_4
+        GFX_portrait_Finland_Generic_land_5
+        GFX_portrait_Finland_Generic_land_6
+        GFX_portrait_Finland_Generic_land_7
+    }
+    navy_portraits = {
+        GFX_portrait_FIN_ragnar_hakola
+        GFX_portrait_FIN_svante_sundman
+        GFX_portrait_Finland_Generic_navy_1
+        GFX_portrait_Finland_Generic_navy_2
+        GFX_portrait_Finland_Generic_navy_3
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_europe_female_01
+        GFX_portrait_generic_europe_female_02
+        GFX_portrait_generic_europe_female_03
+        GFX_portrait_generic_europe_female_04
+        GFX_portrait_generic_europe_female_05
+        GFX_portrait_generic_europe_female_06
+        GFX_portrait_generic_europe_female_07
+        GFX_portrait_generic_europe_female_08
+        GFX_portrait_generic_europe_female_09
+        GFX_portrait_generic_europe_female_10
+        GFX_portrait_generic_europe_female_11
+        GFX_portrait_generic_europe_female_12
+        GFX_portrait_generic_europe_female_13
+        GFX_portrait_generic_europe_female_14
+        GFX_portrait_generic_europe_female_15
+        GFX_portrait_generic_europe_female_16
+        }
+        male = {
+        GFX_portrait_generic_europe_male_01
+        GFX_portrait_generic_europe_male_02
+        GFX_portrait_generic_europe_male_03
+        GFX_portrait_generic_europe_male_04
+        GFX_portrait_generic_europe_male_05
+        GFX_portrait_generic_europe_male_06
+        GFX_portrait_generic_europe_male_07
+        GFX_portrait_generic_europe_male_08
+        GFX_portrait_generic_europe_male_09
+        GFX_portrait_generic_europe_male_10
+        GFX_portrait_generic_europe_male_11
+        GFX_portrait_generic_europe_male_12
+        GFX_portrait_generic_europe_male_13
+        GFX_portrait_generic_europe_male_14
+        GFX_portrait_generic_europe_male_15
+        GFX_portrait_generic_europe_male_16
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                #WIP
+            }
+            minister = {
+                #WIP
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_portrait_DEN_erik_scavenius
+                GFX_portrait_Thorvald_Stauning
+                GFX_Portrait_estonia_konstantin_pats
+                GFX_portrait_FIN_juho_kusti_paasikivi
+                GFX_portrait_FIN_pehr_evind_svinhufvud
+                GFX_portrait_FIN_prince_wolfgang_von_hesse
+                GFX_portrait_FIN_kyosti_kallio
+                GFX_portrait_lat_fricis_menders
+                GFX_Portrait_latvia_karlis_ulmanis
+                GFX_portrait_Johan_Nygaardsvold
+                GFX_portrait_SWE_per_albin_hansson
+                GFX_portrait_lat_vilis_lacis
+            }
+            minister = {
+                GFX_Portrait_estonia_konstantin_pats_small
+                GFX_portrait_lat_fricis_menders_small
+                GFX_Portrait_latvia_karlis_ulmanis_small
+                GFX_portrait_lat_vilis_lacis_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_portrait_ICE_sveinn_bjornsson
+                GFX_portrait_NOR_vidkun_quisling_1
+                GFX_portrait_lat_vilis_lacis
+            }
+            minister = {
+                GFX_portrait_ice_sveinn_bjornsson_small
+                GFX_portrait_lat_vilis_lacis_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_portrait_DEN_erik_scavenius
+                GFX_portrait_Thorvald_Stauning
+                GFX_Portrait_estonia_konstantin_pats
+                GFX_portrait_FIN_juho_kusti_paasikivi
+                GFX_portrait_FIN_pehr_evind_svinhufvud
+                GFX_portrait_FIN_prince_wolfgang_von_hesse
+                GFX_portrait_FIN_kyosti_kallio
+                GFX_portrait_lat_fricis_menders
+                GFX_Portrait_latvia_karlis_ulmanis
+                GFX_portrait_Johan_Nygaardsvold
+                GFX_portrait_SWE_per_albin_hansson
+                GFX_portrait_lat_vilis_lacis
+            }
+            minister = {
+                GFX_Portrait_estonia_konstantin_pats_small
+                GFX_portrait_lat_fricis_menders_small
+                GFX_Portrait_latvia_karlis_ulmanis_small
+                GFX_portrait_lat_vilis_lacis_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_FIN_carl_mannerheim
+                GFX_portrait_FIN_risto_ryti
+                GFX_portrait_LIT_Antanas_Gustaitis
+                GFX_Portrait_lithuania_antanas_smetona
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+        GFX_portrait_FIN_fanni_luukkonen
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_europe_generic_operative_male_1
+        GFX_portrait_europe_generic_operative_male_2
+        GFX_portrait_europe_generic_operative_male_3
+        GFX_portrait_europe_generic_operative_male_4
+        GFX_portrait_europe_generic_operative_male_5
+        GFX_portrait_europe_generic_operative_male_6
+        GFX_portrait_europe_generic_operative_male_7
+        GFX_portrait_europe_generic_operative_male_8
+        GFX_portrait_europe_generic_operative_male_9
+        GFX_portrait_europe_generic_operative_male_10
+        GFX_portrait_europe_generic_operative_male_11
+        GFX_portrait_europe_generic_operative_male_12
+        GFX_portrait_europe_generic_operative_male_13
+        GFX_portrait_europe_generic_operative_male_14
+        GFX_portrait_europe_generic_operative_male_15
+        }
+        female = {
+        GFX_portrait_europe_generic_operative_female_1
+        GFX_portrait_europe_generic_operative_female_2
+        GFX_portrait_europe_generic_operative_female_3
+        GFX_portrait_europe_generic_operative_female_4
+        GFX_portrait_europe_generic_operative_female_5
+        GFX_portrait_europe_generic_operative_female_6
+        GFX_portrait_europe_generic_operative_female_7
+        GFX_portrait_europe_generic_operative_female_8
+        GFX_portrait_europe_generic_operative_female_9
+        GFX_portrait_europe_generic_operative_female_10
+        GFX_portrait_europe_generic_operative_female_11
+        GFX_portrait_europe_generic_operative_female_13
+        GFX_portrait_europe_generic_operative_female_14
+        GFX_portrait_europe_generic_operative_female_15
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(1)
+german_group = {
+heritages = { heritage_germanic heritage_netherlandish heritage_settler heritage_ashkenazi }
+
+    army_portraits = {
+        GFX_portrait_GER_erich_koch
+        GFX_portrait_ger_felix_steiner
+        GFX_portrait_GER_hans_krebs
+        GFX_portrait_ger_hans_von_luck
+        GFX_portrait_GER_oswald_lutz
+        GFX_portrait_GER_walter_warlimont
+        GFX_portrait_GER_walther_nehring
+        GFX_portrait_GER_werner_von_blomberg
+        GFX_portrait_GER_werner_von_fritsch
+        GFX_portrait_GER_wilhelm_ritter_von_thoma
+        GFX_portrait_GER_albert_kesselring
+        GFX_portrait_GER_alfred_jodl
+        GFX_portrait_GER_erich_von_manstein
+        GFX_portrait_GER_ernsteberhard_hell
+        GFX_portrait_GER_erwin_rommel
+        GFX_portrait_GER_erwin_von_witzleben
+        GFX_portrait_GER_ewald_von_kleist
+        GFX_portrait_GER_fedor_von_bock
+        GFX_portrait_GER_friedrich_paulus
+        GFX_portrait_GER_friedrich_schulz
+        GFX_Portrait_Germany_Generic_land_1
+        GFX_Portrait_Germany_Generic_land_2
+        GFX_Portrait_Germany_Generic_land_3
+        GFX_Portrait_Germany_Generic_land_4
+        GFX_portrait_GER_georg_von_kuchler
+        GFX_Portrait_Germany_Generic_land_5
+        GFX_portrait_GER_georghans_reinhardt
+        GFX_portrait_GER_gotthard_heinrici
+        GFX_portrait_GER_hasso_von_manteuffel
+        GFX_portrait_GER_heinz_guderian
+        GFX_portrait_GER_hermann_hoth
+        GFX_portrait_GER_johannes_blaskowitz
+        GFX_portrait_GER_sepp_dietrich
+        GFX_portrait_GER_kurt_student
+        GFX_portrait_GER_paul_hausser
+        GFX_portrait_GER_walter_model
+        GFX_portrait_GER_wilhelm_list
+        GFX_portrait_GER_wilhelm_ritter_von_leeb
+        GFX_portrait_chi_alexander_von_falkenhausen
+        GFX_portrait_ger_von_lettow_vorbeck
+    }
+    navy_portraits = {
+        GFX_portrait_GER_rolf_carls
+        GFX_portrait_GER_konstantin_von_neurath
+        GFX_portrait_GER_alfred_saalwachter
+        GFX_portrait_GER_erich_raeder
+        GFX_Portrait_Germany_Generic_navy_1
+        GFX_Portrait_Germany_Generic_navy_2
+        GFX_Portrait_Germany_Generic_navy_3
+        GFX_portrait_GER_gunther_lutjens
+        GFX_portrait_GER_hermann_boehm
+        GFX_portrait_GER_karl_donitz
+        GFX_portrait_GER_wilhelm_marschall
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_europe_female_01
+        GFX_portrait_generic_europe_female_02
+        GFX_portrait_generic_europe_female_03
+        GFX_portrait_generic_europe_female_04
+        GFX_portrait_generic_europe_female_05
+        GFX_portrait_generic_europe_female_06
+        GFX_portrait_generic_europe_female_07
+        GFX_portrait_generic_europe_female_08
+        GFX_portrait_generic_europe_female_09
+        GFX_portrait_generic_europe_female_10
+        GFX_portrait_generic_europe_female_11
+        GFX_portrait_generic_europe_female_12
+        GFX_portrait_generic_europe_female_13
+        GFX_portrait_generic_europe_female_14
+        GFX_portrait_generic_europe_female_15
+        GFX_portrait_generic_europe_female_16
+        }
+        male = {
+        GFX_portrait_generic_europe_male_01
+        GFX_portrait_generic_europe_male_02
+        GFX_portrait_generic_europe_male_03
+        GFX_portrait_generic_europe_male_04
+        GFX_portrait_generic_europe_male_05
+        GFX_portrait_generic_europe_male_06
+        GFX_portrait_generic_europe_male_07
+        GFX_portrait_generic_europe_male_08
+        GFX_portrait_generic_europe_male_09
+        GFX_portrait_generic_europe_male_10
+        GFX_portrait_generic_europe_male_11
+        GFX_portrait_generic_europe_male_12
+        GFX_portrait_generic_europe_male_13
+        GFX_portrait_generic_europe_male_14
+        GFX_portrait_generic_europe_male_15
+        GFX_portrait_generic_europe_male_16
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                GFX_portrait_GER_weli_kayum_chan
+                GFX_portrait_GER_wilhelm_pieck
+            }
+            minister = {
+                #WIP
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_portrait_AUS_kurt_schuschnigg
+                GFX_portrait_GER_arno_schickedanz
+                GFX_portrait_GER_franz_ritter_von_epp
+                GFX_portrait_GER_hans_frank
+                GFX_portrait_GER_heinrich_schnee
+                GFX_portrait_GER_hinrich_lohse
+                GFX_portrait_NOR_josef_terboven
+                GFX_portrait_GER_theodor_seitz
+                GFX_portrait_GER_wilhelm_iv
+                GFX_portrait_GER_konrad_adenauer
+                GFX_portrait_holland_hendrikus_colijn
+                GFX_Portrait_Netherlands_Dirk_Jan_de_Geer
+                GFX_portrait_indonesia_at_van_starkenborgh
+                GFX_portrait_lat_fricis_menders
+                GFX_portrait_lat_vilis_lacis
+                GFX_Portrait_latvia_karlis_ulmanis
+                GFX_portrait_luxembourg_joseph_bech
+            }
+            minister = {
+                GFX_portrait_lat_fricis_menders_small
+                GFX_portrait_lat_vilis_lacis_small
+                GFX_Portrait_latvia_karlis_ulmanis_small
+                GFX_portrait_luxembourg_joseph_bech_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_Portrait_estonia_konstantin_pats
+                GFX_portrait_GER_alfred_rosenberg
+                GFX_portrait_GER_hermann_ehrhardt
+                GFX_portrait_GER_josef_grohe
+                GFX_portrait_GER_siegfried_kasche
+                GFX_portrait_GER_walter_kruger
+                GFX_portrait_HES_philip_of_hesse
+            }
+            minister = {
+                GFX_Portrait_estonia_konstantin_pats_small
+                GFX_portrait_GER_walter_kruger_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_portrait_AUS_kurt_schuschnigg
+                GFX_portrait_GER_arno_schickedanz
+                GFX_portrait_GER_franz_ritter_von_epp
+                GFX_portrait_GER_hans_frank
+                GFX_portrait_GER_heinrich_schnee
+                GFX_portrait_GER_hinrich_lohse
+                GFX_portrait_NOR_josef_terboven
+                GFX_portrait_GER_theodor_seitz
+                GFX_portrait_GER_wilhelm_iv
+                GFX_portrait_GER_konrad_adenauer
+                GFX_portrait_holland_hendrikus_colijn
+                GFX_Portrait_Netherlands_Dirk_Jan_de_Geer
+                GFX_portrait_indonesia_at_van_starkenborgh
+                GFX_portrait_lat_fricis_menders
+                GFX_portrait_lat_vilis_lacis
+                GFX_Portrait_latvia_karlis_ulmanis
+            }
+            minister = {
+                GFX_portrait_lat_fricis_menders_small
+                GFX_portrait_lat_vilis_lacis_small
+                GFX_Portrait_latvia_karlis_ulmanis_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_GER_duke_adolf_friedrich_of_mecklenburg
+                GFX_portrait_PRE_eitel_friedrich
+                GFX_portrait_SAX_george_of_saxony
+                GFX_portrait_WUR_philipp_albrecht
+                GFX_portrait_BAY_rupprecht_of_bavaria
+                GFX_portrait_ger_august_von_mackensen
+                GFX_portrait_ger_wilhelm_ii
+                GFX_portrait_ger_wilhelm_iii
+            }
+            female = {
+                GFX_portrait_UBD_sophie_buxhoeveden
+                GFX_portrait_ger_victoria_louise
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    GFX_portrait_GER_eva_braun
+    GFX_portrait_LUX_charlotte_wilhelmine
+    GFX_portrait_UBD_sophie_buxhoeveden
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_europe_generic_operative_male_1
+        GFX_portrait_europe_generic_operative_male_2
+        GFX_portrait_europe_generic_operative_male_3
+        GFX_portrait_europe_generic_operative_male_4
+        GFX_portrait_europe_generic_operative_male_5
+        GFX_portrait_europe_generic_operative_male_6
+        GFX_portrait_europe_generic_operative_male_7
+        GFX_portrait_europe_generic_operative_male_8
+        GFX_portrait_europe_generic_operative_male_9
+        GFX_portrait_europe_generic_operative_male_10
+        GFX_portrait_europe_generic_operative_male_11
+        GFX_portrait_europe_generic_operative_male_12
+        GFX_portrait_europe_generic_operative_male_13
+        GFX_portrait_europe_generic_operative_male_14
+        GFX_portrait_europe_generic_operative_male_15
+        }
+        female = {
+        GFX_portrait_europe_generic_operative_female_1
+        GFX_portrait_europe_generic_operative_female_2
+        GFX_portrait_europe_generic_operative_female_3
+        GFX_portrait_europe_generic_operative_female_4
+        GFX_portrait_europe_generic_operative_female_5
+        GFX_portrait_europe_generic_operative_female_6
+        GFX_portrait_europe_generic_operative_female_7
+        GFX_portrait_europe_generic_operative_female_8
+        GFX_portrait_europe_generic_operative_female_9
+        GFX_portrait_europe_generic_operative_female_10
+        GFX_portrait_europe_generic_operative_female_11
+        GFX_portrait_europe_generic_operative_female_13
+        GFX_portrait_europe_generic_operative_female_14
+        GFX_portrait_europe_generic_operative_female_15
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(1)
+south_west_slavic_group = {
+heritages = { heritage_south_slavic heritage_west_slavic }
+
+    army_portraits = {
+        GFX_portrait_POL_edward_rydz_smigly
+        GFX_portrait_POL_jozef_haller
+        GFX_portrait_POL_kazimierz_sosnkowski
+        GFX_portrait_POL_lucjan_zeligowski
+        GFX_portrait_POL_marian_kukiel
+        GFX_portrait_POL_tadeusz_kutrzeba
+        GFX_portrait_POL_witold_pilecki
+        GFX_portrait_POL_wladyslaw_sikorski
+        GFX_portrait_UKR_pavlo_shandruk
+        GFX_portrait_yugoslavia_josef_depre
+    }
+    navy_portraits = {
+        GFX_portrait_POL_jozef_unrug
+        GFX_portrait_POL_Stefan_Frankowski
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_europe_female_01
+        GFX_portrait_generic_europe_female_02
+        GFX_portrait_generic_europe_female_03
+        GFX_portrait_generic_europe_female_04
+        GFX_portrait_generic_europe_female_05
+        GFX_portrait_generic_europe_female_06
+        GFX_portrait_generic_europe_female_07
+        GFX_portrait_generic_europe_female_08
+        GFX_portrait_generic_europe_female_09
+        GFX_portrait_generic_europe_female_10
+        GFX_portrait_generic_europe_female_11
+        GFX_portrait_generic_europe_female_12
+        GFX_portrait_generic_europe_female_13
+        GFX_portrait_generic_europe_female_14
+        GFX_portrait_generic_europe_female_15
+        GFX_portrait_generic_europe_female_16
+        }
+        male = {
+        GFX_portrait_generic_europe_male_01
+        GFX_portrait_generic_europe_male_02
+        GFX_portrait_generic_europe_male_03
+        GFX_portrait_generic_europe_male_04
+        GFX_portrait_generic_europe_male_05
+        GFX_portrait_generic_europe_male_06
+        GFX_portrait_generic_europe_male_07
+        GFX_portrait_generic_europe_male_08
+        GFX_portrait_generic_europe_male_09
+        GFX_portrait_generic_europe_male_10
+        GFX_portrait_generic_europe_male_11
+        GFX_portrait_generic_europe_male_12
+        GFX_portrait_generic_europe_male_13
+        GFX_portrait_generic_europe_male_14
+        GFX_portrait_generic_europe_male_15
+        GFX_portrait_generic_europe_male_16
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                GFX_portrait_POL_walery_slawek
+                GFX_portrait_YUG_josip_broz_tito
+            }
+            minister = {
+                GFX_portrait_POL_walery_slawek_small
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_portrait_Vladko_Macek
+                GFX_portrait_Edvard_Benes
+                GFX_portrait_CZE_klement_gottwald
+                GFX_portrait_POL_karol_korytowski
+                GFX_portrait_POL_rudiger_von_der_goltz
+                GFX_portrait_POL_stanislaw_mikolajczyk
+                GFX_portrait_POL_tadeusz_bielecki
+                GFX_portrait_POL_ignacy_moscicki
+                GFX_portrait_POL_wladyslaw_gomulka
+                GFX_portrait_YUG_milan_stojadinovic
+                GFX_portrait_YUG_milan_grol
+            }
+            minister = {
+                GFX_portrait_CZE_klement_gottwald_small
+                GFX_portrait_POL_stanislaw_mikolajczyk_small
+                GFX_portrait_POL_tadeusz_bielecki_small
+                GFX_portrait_POL_ignacy_moscicki_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_portrait_Jaroslav_Krejci
+                GFX_Portrait_estonia_konstantin_pats
+                GFX_portrait_POL_boleslaw_wieniawa_dlugoszowski
+                GFX_portrait_POL_pavel_bermondt_avlov
+                GFX_portrait_POL_stanislaw_sosabowski
+            }
+            minister = {
+                GFX_Portrait_estonia_konstantin_pats_small
+                GFX_portrait_POL_boleslaw_wieniawa_dlugoszowski_small
+                GFX_portrait_POL_stanislaw_sosabowski_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_portrait_Vladko_Macek
+                GFX_portrait_Edvard_Benes
+                GFX_portrait_CZE_klement_gottwald
+                GFX_portrait_POL_karol_korytowski
+                GFX_portrait_POL_rudiger_von_der_goltz
+                GFX_portrait_POL_stanislaw_mikolajczyk
+                GFX_portrait_POL_tadeusz_bielecki
+                GFX_portrait_POL_ignacy_moscicki
+                GFX_portrait_POL_wladyslaw_gomulka
+                GFX_portrait_YUG_milan_stojadinovic
+                GFX_portrait_YUG_milan_grol
+            }
+            minister = {
+                GFX_portrait_CZE_klement_gottwald_small
+                GFX_portrait_POL_stanislaw_mikolajczyk_small
+                GFX_portrait_POL_tadeusz_bielecki_small
+                GFX_portrait_POL_ignacy_moscicki_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_King_Zog
+                GFX_portrait_Ante_Pavelic
+                GFX_portrait_UKR_mykhailo_omelianovych_pavlenko
+                GFX_portrait_YUG_prince_paul
+                GFX_portrait_yugoslavia_peter_ii_old
+                GFX_portrait_yugoslavia_peter_ii_young
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    #WIP
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_europe_generic_operative_male_1
+        GFX_portrait_europe_generic_operative_male_2
+        GFX_portrait_europe_generic_operative_male_3
+        GFX_portrait_europe_generic_operative_male_4
+        GFX_portrait_europe_generic_operative_male_5
+        GFX_portrait_europe_generic_operative_male_6
+        GFX_portrait_europe_generic_operative_male_7
+        GFX_portrait_europe_generic_operative_male_8
+        GFX_portrait_europe_generic_operative_male_9
+        GFX_portrait_europe_generic_operative_male_10
+        GFX_portrait_europe_generic_operative_male_11
+        GFX_portrait_europe_generic_operative_male_12
+        GFX_portrait_europe_generic_operative_male_13
+        GFX_portrait_europe_generic_operative_male_14
+        GFX_portrait_europe_generic_operative_male_15
+        }
+        female = {
+        GFX_portrait_europe_generic_operative_female_1
+        GFX_portrait_europe_generic_operative_female_2
+        GFX_portrait_europe_generic_operative_female_3
+        GFX_portrait_europe_generic_operative_female_4
+        GFX_portrait_europe_generic_operative_female_5
+        GFX_portrait_europe_generic_operative_female_6
+        GFX_portrait_europe_generic_operative_female_7
+        GFX_portrait_europe_generic_operative_female_8
+        GFX_portrait_europe_generic_operative_female_9
+        GFX_portrait_europe_generic_operative_female_10
+        GFX_portrait_europe_generic_operative_female_11
+        GFX_portrait_europe_generic_operative_female_13
+        GFX_portrait_europe_generic_operative_female_14
+        GFX_portrait_europe_generic_operative_female_15
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(1)
+cental_eastern_europe_group = {
+heritages = { heritage_romanian heritage_magyar }
+
+    army_portraits = {
+        GFX_portrait_yugoslavia_josef_depre
+        GFX_Portrait_romania_barbu_paraianu
+        GFX_Portrait_hungary_ferenc_feketehalmy_czeydner
+        GFX_Portrait_hungary_geza_lakatos
+        GFX_Portrait_hungary_ivan_hindy
+        GFX_Portrait_hungary_karoly_beregfy
+        GFX_Portrait_hungary_lajos_veress
+        GFX_Portrait_yugoslavia_ivan_gosnjak
+        GFX_Portrait_yugoslavia_milutin_nedic
+        GFX_Portrait_yugoslavia_petar_kosic
+        GFX_Portrait_yugoslavia_vladimir_cukavac
+        GFX_Portrait_czechoslovakia_josef_snejdarek
+        GFX_Portrait_czechoslovakia_richard_tesarik
+        GFX_Portrait_czechoslovakia_sergej_vojcechovsky
+        GFX_Portrait_czechoslovakia_vojtech_luza
+    }
+    navy_portraits = {
+        GFX_Portrait_hungary_miklos_horthy_admiral
+        GFX_Portrait_romania_michael_i
+        GFX_Portrait_yugoslavia_marijan_polic
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_europe_female_01
+        GFX_portrait_generic_europe_female_02
+        GFX_portrait_generic_europe_female_03
+        GFX_portrait_generic_europe_female_04
+        GFX_portrait_generic_europe_female_05
+        GFX_portrait_generic_europe_female_06
+        GFX_portrait_generic_europe_female_07
+        GFX_portrait_generic_europe_female_08
+        GFX_portrait_generic_europe_female_09
+        GFX_portrait_generic_europe_female_10
+        GFX_portrait_generic_europe_female_11
+        GFX_portrait_generic_europe_female_12
+        GFX_portrait_generic_europe_female_13
+        GFX_portrait_generic_europe_female_14
+        GFX_portrait_generic_europe_female_15
+        GFX_portrait_generic_europe_female_16
+        }
+        male = {
+        GFX_portrait_generic_europe_male_01
+        GFX_portrait_generic_europe_male_02
+        GFX_portrait_generic_europe_male_03
+        GFX_portrait_generic_europe_male_04
+        GFX_portrait_generic_europe_male_05
+        GFX_portrait_generic_europe_male_06
+        GFX_portrait_generic_europe_male_07
+        GFX_portrait_generic_europe_male_08
+        GFX_portrait_generic_europe_male_09
+        GFX_portrait_generic_europe_male_10
+        GFX_portrait_generic_europe_male_11
+        GFX_portrait_generic_europe_male_12
+        GFX_portrait_generic_europe_male_13
+        GFX_portrait_generic_europe_male_14
+        GFX_portrait_generic_europe_male_15
+        GFX_portrait_generic_europe_male_16
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                GFX_Portrait_romania_gheorghe_tatarescu
+                GFX_portrait_YUG_josip_broz_tito
+            }
+            minister = {
+                GFX_portrait_POL_walery_slawek_small
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_portrait_Vladko_Macek
+                GFX_portrait_Edvard_Benes
+                GFX_portrait_CZE_klement_gottwald
+                GFX_Portrait_hungary_matyas_rakosi
+                GFX_Portrait_romania_constantin_ion_parhon
+                GFX_Portrait_romania_octavian_goga
+                GFX_portrait_YUG_milan_stojadinovic
+                GFX_portrait_YUG_milan_grol
+                GFX_Portrait_romania_corneliu_zelea_codreanu
+                GFX_Portrait_hungary_friedrich_franz
+                GFX_Portrait_czechoslovakia_konstantin_von_neurath
+            }
+            minister = {
+                GFX_portrait_CZE_klement_gottwald_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_portrait_Jaroslav_Krejci
+                GFX_Portrait_estonia_konstantin_pats
+                GFX_portrait_HUN_franz_anton_bach
+                GFX_Portrait_hungary_miklos_horthy_admiral
+                GFX_Portrait_romania_armand_calinescu
+                GFX_Portrait_romania_ion_antonescu
+                GFX_Portrait_yugoslavia_ivan_gosnjak
+            }
+            minister = {
+                GFX_Portrait_estonia_konstantin_pats_small
+                GFX_Portrait_hungary_miklos_horthy_admiral_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_portrait_Vladko_Macek
+                GFX_portrait_Edvard_Benes
+                GFX_portrait_CZE_klement_gottwald
+                GFX_Portrait_hungary_matyas_rakosi
+                GFX_Portrait_romania_constantin_ion_parhon
+                GFX_Portrait_romania_octavian_goga
+                GFX_portrait_YUG_milan_stojadinovic
+                GFX_portrait_YUG_milan_grol
+                GFX_Portrait_romania_corneliu_zelea_codreanu
+                GFX_Portrait_hungary_friedrich_franz
+                GFX_Portrait_czechoslovakia_konstantin_von_neurath
+            }
+            minister = {
+                GFX_portrait_CZE_klement_gottwald_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_King_Zog
+                GFX_portrait_Ante_Pavelic
+                GFX_portrait_YUG_prince_paul
+                GFX_portrait_yugoslavia_peter_ii_old
+                GFX_portrait_yugoslavia_peter_ii_young
+                GFX_Portrait_romania_Carol_II
+                GFX_Portrait_hungary_ferenc_feketehalmy_czeydner
+                GFX_Portrait_hungary_ivan_hindy
+                GFX_Portrait_hungary_otto_von_hapsburg
+                GFX_Portrait_yugoslavia_danilo_kalafatovic
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    #WIP
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_europe_generic_operative_male_1
+        GFX_portrait_europe_generic_operative_male_2
+        GFX_portrait_europe_generic_operative_male_3
+        GFX_portrait_europe_generic_operative_male_4
+        GFX_portrait_europe_generic_operative_male_5
+        GFX_portrait_europe_generic_operative_male_6
+        GFX_portrait_europe_generic_operative_male_7
+        GFX_portrait_europe_generic_operative_male_8
+        GFX_portrait_europe_generic_operative_male_9
+        GFX_portrait_europe_generic_operative_male_10
+        GFX_portrait_europe_generic_operative_male_11
+        GFX_portrait_europe_generic_operative_male_12
+        GFX_portrait_europe_generic_operative_male_13
+        GFX_portrait_europe_generic_operative_male_14
+        GFX_portrait_europe_generic_operative_male_15
+        }
+        female = {
+        GFX_portrait_europe_generic_operative_female_1
+        GFX_portrait_europe_generic_operative_female_2
+        GFX_portrait_europe_generic_operative_female_3
+        GFX_portrait_europe_generic_operative_female_4
+        GFX_portrait_europe_generic_operative_female_5
+        GFX_portrait_europe_generic_operative_female_6
+        GFX_portrait_europe_generic_operative_female_7
+        GFX_portrait_europe_generic_operative_female_8
+        GFX_portrait_europe_generic_operative_female_9
+        GFX_portrait_europe_generic_operative_female_10
+        GFX_portrait_europe_generic_operative_female_11
+        GFX_portrait_europe_generic_operative_female_13
+        GFX_portrait_europe_generic_operative_female_14
+        GFX_portrait_europe_generic_operative_female_15
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(2)
+anatolia_balkan_caucasus_group = {
+heritages = { heritage_greek heritage_georgian heritage_armenian heritage_anatolian heritage_north_caucasian heritage_albanian }
+
+    army_portraits = {
+        GFX_Portrait_bulgaria_hristo_lukov
+        GFX_portrait_BUL_boris_iii
+        GFX_portrait_Ante_Pavelic
+        GFX_portrait_GEO_shalva_maglakelidze
+        GFX_portrait_TUR_mustafa_kemal_ataturk_military
+        GFX_portrait_yugoslavia_josef_depre
+        GFX_Portrait_yugoslavia_ivan_gosnjak
+        GFX_Portrait_yugoslavia_milutin_nedic
+        GFX_Portrait_yugoslavia_petar_kosic
+        GFX_Portrait_yugoslavia_vladimir_cukavac
+    }
+    navy_portraits = {
+        GFX_portrait_POL_jozef_unrug
+        GFX_portrait_POL_Stefan_Frankowski
+        GFX_Portrait_hungary_miklos_horthy_admiral
+        GFX_Portrait_yugoslavia_marijan_polic
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_europe_female_01
+        GFX_portrait_generic_europe_female_02
+        GFX_portrait_generic_europe_female_03
+        GFX_portrait_generic_europe_female_04
+        GFX_portrait_generic_europe_female_05
+        GFX_portrait_generic_europe_female_06
+        GFX_portrait_generic_europe_female_07
+        GFX_portrait_generic_europe_female_08
+        GFX_portrait_generic_europe_female_09
+        GFX_portrait_generic_europe_female_10
+        GFX_portrait_generic_europe_female_11
+        GFX_portrait_generic_europe_female_12
+        GFX_portrait_generic_europe_female_13
+        GFX_portrait_generic_europe_female_14
+        GFX_portrait_generic_europe_female_15
+        GFX_portrait_generic_europe_female_16
+        }
+        male = {
+        GFX_portrait_generic_europe_male_01
+        GFX_portrait_generic_europe_male_02
+        GFX_portrait_generic_europe_male_03
+        GFX_portrait_generic_europe_male_04
+        GFX_portrait_generic_europe_male_05
+        GFX_portrait_generic_europe_male_06
+        GFX_portrait_generic_europe_male_07
+        GFX_portrait_generic_europe_male_08
+        GFX_portrait_generic_europe_male_09
+        GFX_portrait_generic_europe_male_10
+        GFX_portrait_generic_europe_male_11
+        GFX_portrait_generic_europe_male_12
+        GFX_portrait_generic_europe_male_13
+        GFX_portrait_generic_europe_male_14
+        GFX_portrait_generic_europe_male_15
+        GFX_portrait_generic_europe_male_16
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                GFX_portrait_GEO_ioseb_jughashvili
+                GFX_portrait_POL_walery_slawek
+                GFX_Portrait_romania_gheorghe_tatarescu
+                GFX_portrait_YUG_josip_broz_tito
+            }
+            minister = {
+                GFX_portrait_POL_walery_slawek_small
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_portrait_BUL_georgi_dimitrov
+                GFX_portrait_Vladko_Macek
+                GFX_portrait_GEO_george_bagration_mukhrani
+                GFX_portrait_GEO_grigol_robakidze
+                GFX_portrait_GEO_kandid_charkviani
+                GFX_portrait_GEO_noe_zhordania
+                GFX_portrait_GRE_ioannis_metaxas
+                GFX_portrait_GRE_markos_vafiadis
+                GFX_Portrait_romania_constantin_ion_parhon
+                GFX_Portrait_romania_octavian_goga
+                GFX_portrait_TUR_mustafa_kemal_ataturk
+                GFX_portrait_TUR_ismet_inonu
+                GFX_portrait_YUG_milan_stojadinovic
+                GFX_portrait_YUG_milan_grol
+            }
+            minister = {
+                GFX_portrait_GRE_markos_vafiadis_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_Portrait_bulgaria_hristo_lukov
+                GFX_portrait_BUL_boris_iii
+                GFX_portrait_GEO_shalva_maglakelidze
+                GFX_Portrait_romania_armand_calinescu
+                GFX_Portrait_romania_ion_antonescu
+                GFX_Portrait_yugoslavia_ivan_gosnjak
+            }
+            minister = {
+                GFX_Portrait_bulgaria_hristo_lukov_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_portrait_BUL_georgi_dimitrov
+                GFX_portrait_Vladko_Macek
+                GFX_portrait_GEO_george_bagration_mukhrani
+                GFX_portrait_GEO_grigol_robakidze
+                GFX_portrait_GEO_kandid_charkviani
+                GFX_portrait_GEO_noe_zhordania
+                GFX_portrait_GRE_ioannis_metaxas
+                GFX_portrait_GRE_markos_vafiadis
+                GFX_Portrait_romania_constantin_ion_parhon
+                GFX_Portrait_romania_octavian_goga
+                GFX_portrait_TUR_mustafa_kemal_ataturk
+                GFX_portrait_TUR_ismet_inonu
+                GFX_portrait_YUG_milan_stojadinovic
+                GFX_portrait_YUG_milan_grol
+            }
+            minister = {
+                GFX_portrait_GRE_markos_vafiadis_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_King_Zog
+                GFX_Portrait_bulgaria_hristo_lukov
+                GFX_portrait_BUL_boris_iii
+                GFX_portrait_Ante_Pavelic
+                GFX_portrait_GEO_giorgi_kvinitadze
+                GFX_portrait_GRE_adolfos_i
+                GFX_portrait_YUG_prince_paul
+                GFX_portrait_yugoslavia_peter_ii_old
+                GFX_portrait_yugoslavia_peter_ii_young
+                GFX_Portrait_yugoslavia_danilo_kalafatovic
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    #WIP
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_europe_generic_operative_male_1
+        GFX_portrait_europe_generic_operative_male_2
+        GFX_portrait_europe_generic_operative_male_3
+        GFX_portrait_europe_generic_operative_male_4
+        GFX_portrait_europe_generic_operative_male_5
+        GFX_portrait_europe_generic_operative_male_6
+        GFX_portrait_europe_generic_operative_male_7
+        GFX_portrait_europe_generic_operative_male_8
+        GFX_portrait_europe_generic_operative_male_9
+        GFX_portrait_europe_generic_operative_male_10
+        GFX_portrait_europe_generic_operative_male_11
+        GFX_portrait_europe_generic_operative_male_12
+        GFX_portrait_europe_generic_operative_male_13
+        GFX_portrait_europe_generic_operative_male_14
+        GFX_portrait_europe_generic_operative_male_15
+        }
+        female = {
+        GFX_portrait_europe_generic_operative_female_1
+        GFX_portrait_europe_generic_operative_female_2
+        GFX_portrait_europe_generic_operative_female_3
+        GFX_portrait_europe_generic_operative_female_4
+        GFX_portrait_europe_generic_operative_female_5
+        GFX_portrait_europe_generic_operative_female_6
+        GFX_portrait_europe_generic_operative_female_7
+        GFX_portrait_europe_generic_operative_female_8
+        GFX_portrait_europe_generic_operative_female_9
+        GFX_portrait_europe_generic_operative_female_10
+        GFX_portrait_europe_generic_operative_female_11
+        GFX_portrait_europe_generic_operative_female_13
+        GFX_portrait_europe_generic_operative_female_14
+        GFX_portrait_europe_generic_operative_female_15
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(2)
+british_group = {
+heritages = { heritage_british }
+
+    army_portraits = {
+        GFX_portrait_ENG_alan_brooke
+        GFX_portrait_ENG_alan_cunningham
+        GFX_portrait_ENG_archibald_wavell
+        GFX_portrait_ENG_arthur_percival
+        GFX_portrait_ENG_bernard_montgomery
+        GFX_portrait_ENG_brian_horrocks
+        GFX_portrait_ENG_claude_auchinleck
+        GFX_Portrait_Britain_Generic_land_1
+        GFX_Portrait_Britain_Generic_land_2
+        GFX_Portrait_Britain_Generic_land_3
+        GFX_Portrait_Britain_Generic_land_4
+        GFX_Portrait_Britain_Generic_land_5
+        GFX_Portrait_Britain_Generic_land_6
+        GFX_Portrait_Britain_Generic_land_7
+        GFX_Portrait_Britain_Generic_land_8
+        GFX_portrait_ENG_george_giffard
+        GFX_portrait_ENG_harold_alexander
+        GFX_portrait_ENG_henry_wilson
+        GFX_portrait_ENG_henry_pownall
+        GFX_portrait_ENG_jock_campbell
+        GFX_portrait_ENG_jackie_smyth
+        GFX_portrait_ENG_john_vereker
+        GFX_portrait_ENG_merton_beckwithsmith
+        GFX_portrait_ENG_miles_dempsey
+        GFX_portrait_ENG_neil_ritchie
+        GFX_portrait_ENG_oliver_leese
+        GFX_portrait_ENG_richard_oconnor
+        GFX_portrait_ENG_thomas_jacomb_hutton
+        GFX_portrait_ENG_thomas_moore
+        GFX_portrait_ENG_william_gott
+        GFX_portrait_ENG_william_platt
+        GFX_portrait_ENG_william_slim
+        GFX_AST_alan_vasey
+        GFX_AST_iven_mackay
+        GFX_CAN_bert_hoffmeister
+        GFX_CAN_charles_foulkes
+    }
+    navy_portraits = {
+        GFX_portrait_CAN_ht_bailliegrohman
+        GFX_portrait_ENG_algernon_willis
+        GFX_portrait_ENG_arthur_power
+        GFX_portrait_ENG_bernard_rawlings
+        GFX_portrait_ENG_bruce_fraser
+        GFX_portrait_ENG_charles_forbes
+        GFX_Portrait_Britain_Generic_navy_1
+        GFX_Portrait_Britain_Generic_navy_2
+        GFX_Portrait_Britain_Generic_navy_3
+        GFX_portrait_ENG_henry_harwood
+        GFX_portrait_ENG_james_fownes_somerville
+        GFX_portrait_ENG_john_cunningham
+        GFX_portrait_ENG_john_tovey
+        GFX_CAN_harry_dewolf
+        GFX_CAN_james_prentice
+        GFX_CAN_leonard_warren_murray
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_europe_female_01
+        GFX_portrait_generic_europe_female_02
+        GFX_portrait_generic_europe_female_03
+        GFX_portrait_generic_europe_female_04
+        GFX_portrait_generic_europe_female_05
+        GFX_portrait_generic_europe_female_06
+        GFX_portrait_generic_europe_female_07
+        GFX_portrait_generic_europe_female_08
+        GFX_portrait_generic_europe_female_09
+        GFX_portrait_generic_europe_female_10
+        GFX_portrait_generic_europe_female_11
+        GFX_portrait_generic_europe_female_12
+        GFX_portrait_generic_europe_female_13
+        GFX_portrait_generic_europe_female_14
+        GFX_portrait_generic_europe_female_15
+        GFX_portrait_generic_europe_female_16
+        }
+        male = {
+        GFX_portrait_generic_europe_male_01
+        GFX_portrait_generic_europe_male_02
+        GFX_portrait_generic_europe_male_03
+        GFX_portrait_generic_europe_male_04
+        GFX_portrait_generic_europe_male_05
+        GFX_portrait_generic_europe_male_06
+        GFX_portrait_generic_europe_male_07
+        GFX_portrait_generic_europe_male_08
+        GFX_portrait_generic_europe_male_09
+        GFX_portrait_generic_europe_male_10
+        GFX_portrait_generic_europe_male_11
+        GFX_portrait_generic_europe_male_12
+        GFX_portrait_generic_europe_male_13
+        GFX_portrait_generic_europe_male_14
+        GFX_portrait_generic_europe_male_15
+        GFX_portrait_generic_europe_male_16
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                #WIP
+            }
+            minister = {
+                #WIP
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_portrait_AST_john_curtin
+                GFX_portrait_AUS_kurt_schuschnigg
+                GFX_portrait_CAN_tim_buck
+                GFX_portrait_CAN_mackenzie_king
+                GFX_portrait_ENG_andrew_cunningham
+                GFX_portrait_Lord_Edward_Halifax
+                GFX_portrait_ENG_neville_chamberlain
+                GFX_portrait_Rajani_Palme_Dutt
+                GFX_portrait_ENG_stanley_baldwin
+                GFX_portrait_ENG_harry_pollitt
+                GFX_portrait_Winston_Churchill
+                GFX_portrait_Eamon_de_Valera
+                GFX_AST_earle_page
+            }
+            minister = {
+                # WIP
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_portrait_ENG_oswald_mosley
+                GFX_CAN_adrien_arcand
+            }
+            minister = {
+                # WIP
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_portrait_AST_john_curtin
+                GFX_portrait_AUS_kurt_schuschnigg
+                GFX_portrait_CAN_tim_buck
+                GFX_portrait_CAN_mackenzie_king
+                GFX_portrait_ENG_andrew_cunningham
+                GFX_portrait_Lord_Edward_Halifax
+                GFX_portrait_ENG_neville_chamberlain
+                GFX_portrait_Rajani_Palme_Dutt
+                GFX_portrait_ENG_stanley_baldwin
+                GFX_portrait_ENG_harry_pollitt
+                GFX_portrait_Winston_Churchill
+                GFX_portrait_Eamon_de_Valera
+                GFX_AST_earle_page
+            }
+            minister = {
+                # WIP
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_Edward_VIII
+                GFX_portrait_George_VI
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    #WIP
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_europe_generic_operative_male_1
+        GFX_portrait_europe_generic_operative_male_2
+        GFX_portrait_europe_generic_operative_male_3
+        GFX_portrait_europe_generic_operative_male_4
+        GFX_portrait_europe_generic_operative_male_5
+        GFX_portrait_europe_generic_operative_male_6
+        GFX_portrait_europe_generic_operative_male_7
+        GFX_portrait_europe_generic_operative_male_8
+        GFX_portrait_europe_generic_operative_male_9
+        GFX_portrait_europe_generic_operative_male_10
+        GFX_portrait_europe_generic_operative_male_11
+        GFX_portrait_europe_generic_operative_male_12
+        GFX_portrait_europe_generic_operative_male_13
+        GFX_portrait_europe_generic_operative_male_14
+        GFX_portrait_europe_generic_operative_male_15
+        }
+        female = {
+        GFX_portrait_europe_generic_operative_female_1
+        GFX_portrait_europe_generic_operative_female_2
+        GFX_portrait_europe_generic_operative_female_3
+        GFX_portrait_europe_generic_operative_female_4
+        GFX_portrait_europe_generic_operative_female_5
+        GFX_portrait_europe_generic_operative_female_6
+        GFX_portrait_europe_generic_operative_female_7
+        GFX_portrait_europe_generic_operative_female_8
+        GFX_portrait_europe_generic_operative_female_9
+        GFX_portrait_europe_generic_operative_female_10
+        GFX_portrait_europe_generic_operative_female_11
+        GFX_portrait_europe_generic_operative_female_13
+        GFX_portrait_europe_generic_operative_female_14
+        GFX_portrait_europe_generic_operative_female_15
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(2)
+french_group = {
+heritages = { heritage_gallic heritage_north_american_settler }
+
+    army_portraits = {
+        GFX_portrait_FRA_alphonse_georges
+        GFX_portrait_FRA_alphonse_juin
+        GFX_portrait_FRA_charles_de_gaulle
+        GFX_portrait_FRA_charles_huntziger
+        GFX_portrait_FRA_edouard_daladier
+        GFX_Portrait_France_Generic_land_1
+        GFX_Portrait_France_Generic_land_2
+        GFX_Portrait_France_Generic_land_3
+        GFX_Portrait_France_Generic_land_4
+        GFX_Portrait_France_Generic_land_5
+        GFX_Portrait_France_Generic_land_6
+        GFX_Portrait_France_Generic_land_9
+        GFX_portrait_FRA_henri_giraud
+        GFX_portrait_FRA_maurice_gamelin
+        GFX_portrait_FRA_maxime_weygand
+        GFX_portrait_Philippe_Petain
+    }
+    navy_portraits = {
+        GFX_portrait_FRA_francois_darlan
+        GFX_Portrait_France_Generic_navy_1
+        GFX_Portrait_France_Generic_navy_2
+        GFX_Portrait_France_Generic_navy_3
+        GFX_portrait_FRA_jean_de_laborde
+        GFX_portrait_FRA_jeanmarie_charles_abrial
+        GFX_portrait_FRA_jeanpierre_esteva
+        GFX_portrait_FRA_rene_emile_godfroy
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_europe_female_01
+        GFX_portrait_generic_europe_female_02
+        GFX_portrait_generic_europe_female_03
+        GFX_portrait_generic_europe_female_04
+        GFX_portrait_generic_europe_female_05
+        GFX_portrait_generic_europe_female_06
+        GFX_portrait_generic_europe_female_07
+        GFX_portrait_generic_europe_female_08
+        GFX_portrait_generic_europe_female_09
+        GFX_portrait_generic_europe_female_10
+        GFX_portrait_generic_europe_female_11
+        GFX_portrait_generic_europe_female_12
+        GFX_portrait_generic_europe_female_13
+        GFX_portrait_generic_europe_female_14
+        GFX_portrait_generic_europe_female_15
+        GFX_portrait_generic_europe_female_16
+        }
+        male = {
+        GFX_portrait_generic_europe_male_01
+        GFX_portrait_generic_europe_male_02
+        GFX_portrait_generic_europe_male_03
+        GFX_portrait_generic_europe_male_04
+        GFX_portrait_generic_europe_male_05
+        GFX_portrait_generic_europe_male_06
+        GFX_portrait_generic_europe_male_07
+        GFX_portrait_generic_europe_male_08
+        GFX_portrait_generic_europe_male_09
+        GFX_portrait_generic_europe_male_10
+        GFX_portrait_generic_europe_male_11
+        GFX_portrait_generic_europe_male_12
+        GFX_portrait_generic_europe_male_13
+        GFX_portrait_generic_europe_male_14
+        GFX_portrait_generic_europe_male_15
+        GFX_portrait_generic_europe_male_16
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                GFX_portrait_fra_rene_nicod
+            }
+            minister = {
+                GFX_portrait_fra_rene_nicod_small
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_portrait_BEL_hubert_pierlot
+                GFX_portrait_FRA_paul_reynaud
+                GFX_portrait_fra_pierre_laval
+                GFX_portrait_fra_maurice_thorez
+                GFX_portrait_fra_leon_blum
+            }
+            minister = {
+                GFX_portrait_FRA_paul_reynaud_small
+                GFX_portrait_fra_pierre_laval_small
+                GFX_portrait_fra_maurice_thorez_small
+                GFX_portrait_fra_leon_blum_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_portrait_FRA_jean_de_lattre_de_tassigny
+                GFX_portrait_FRA_philippe_leclerc
+            }
+            minister = {
+                GFX_portrait_FRA_jean_de_lattre_de_tassigny_small
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_portrait_BEL_hubert_pierlot
+                GFX_portrait_FRA_paul_reynaud
+                GFX_portrait_fra_pierre_laval
+                GFX_portrait_fra_maurice_thorez
+                GFX_portrait_fra_leon_blum
+            }
+            minister = {
+                GFX_portrait_FRA_paul_reynaud_small
+                GFX_portrait_fra_pierre_laval_small
+                GFX_portrait_fra_maurice_thorez_small
+                GFX_portrait_fra_leon_blum_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_european_king_01
+                GFX_portrait_french_king_01
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    #WIP
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_europe_generic_operative_male_1
+        GFX_portrait_europe_generic_operative_male_2
+        GFX_portrait_europe_generic_operative_male_3
+        GFX_portrait_europe_generic_operative_male_4
+        GFX_portrait_europe_generic_operative_male_5
+        GFX_portrait_europe_generic_operative_male_6
+        GFX_portrait_europe_generic_operative_male_7
+        GFX_portrait_europe_generic_operative_male_8
+        GFX_portrait_europe_generic_operative_male_9
+        GFX_portrait_europe_generic_operative_male_10
+        GFX_portrait_europe_generic_operative_male_11
+        GFX_portrait_europe_generic_operative_male_12
+        GFX_portrait_europe_generic_operative_male_13
+        GFX_portrait_europe_generic_operative_male_14
+        GFX_portrait_europe_generic_operative_male_15
+        }
+        female = {
+        GFX_portrait_europe_generic_operative_female_1
+        GFX_portrait_europe_generic_operative_female_2
+        GFX_portrait_europe_generic_operative_female_3
+        GFX_portrait_europe_generic_operative_female_4
+        GFX_portrait_europe_generic_operative_female_5
+        GFX_portrait_europe_generic_operative_female_6
+        GFX_portrait_europe_generic_operative_female_7
+        GFX_portrait_europe_generic_operative_female_8
+        GFX_portrait_europe_generic_operative_female_9
+        GFX_portrait_europe_generic_operative_female_10
+        GFX_portrait_europe_generic_operative_female_11
+        GFX_portrait_europe_generic_operative_female_13
+        GFX_portrait_europe_generic_operative_female_14
+        GFX_portrait_europe_generic_operative_female_15
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(2)
+east_slavic_group = {
+heritages = { heritage_east_slavic heritage_tatar }
+
+    army_portraits = {
+        GFX_portrait_SOV_aleksandr_vasilevsky
+        GFX_portrait_SOV_aleksandr_yegorov
+        GFX_portrait_SOV_andrey_grechko
+        GFX_portrait_SOV_andrey_yeryomenko
+        GFX_portrait_SOV_blyukher
+        GFX_portrait_SOV_boris_shteifon
+        GFX_portrait_SOV_filipp_golikov
+        GFX_portrait_SOV_ivan_chernyakhovsky
+        GFX_portrait_SOV_ivan_konev
+        GFX_portrait_SOV_maks_reyter
+        GFX_portrait_SOV_pavel_rybalko
+        GFX_portrait_SOV_semyon_budyonny
+        GFX_portrait_SOV_semyon_timoshenko
+        GFX_portrait_SOV_vasily_kuznetsov
+        GFX_portrait_SOV_vasily_flug
+        GFX_portrait_SOV_vasily_korzh
+        GFX_portrait_SOV_vasily_primakov
+        GFX_portrait_SOV_yakov_cherevichenko
+        GFX_portrait_SOV_aleksandr_gorbatov
+        GFX_portrait_SOV_aleksandr_vasilevsky
+        GFX_portrait_SOV_andrey_yeryomenko
+        GFX_portrait_SOV_boris_shaposhnikov
+        GFX_portrait_SOV_dmitry_lelyushenko
+        GFX_portrait_SOV_filipp_golikov
+        GFX_Portrait_Soviet_Generic_land_1
+        GFX_Portrait_Soviet_Generic_land_2
+        GFX_Portrait_Soviet_Generic_land_3
+        GFX_Portrait_Soviet_Generic_land_4
+        GFX_Portrait_Soviet_Generic_land_5
+        GFX_portrait_SOV_georgy_zhukov
+        GFX_portrait_SOV_grigory_kulik
+        GFX_portrait_SOV_issa_pliyev
+        GFX_portrait_SOV_ivan_chernyakhovsky
+        GFX_portrait_SOV_ivan_fedyuninsky
+        GFX_Portrait_Soviet_Ivan_Konev
+        GFX_portrait_SOV_ivan_konev
+        GFX_portrait_SOV_kirill_moskalenko
+        GFX_portrait_SOV_kliment_voroshilov
+        GFX_portrait_SOV_konstantin_rokossovsky
+        GFX_portrait_SOV_kuzma_galitsky
+        GFX_portrait_SOV_leonid_govorov
+        GFX_portrait_SOV_maksim_purkayev
+        GFX_portrait_SOV_markian_popov
+        GFX_portrait_SOV_mikhail_tukhachevsky
+        GFX_portrait_SOV_nikandr_chibisov
+        GFX_portrait_SOV_nikolay_berzarin
+        GFX_portrait_SOV_rodion_malinovsky
+        GFX_portrait_SOV_vasily_chuykov
+        GFX_portrait_SOV_semyon_timoshenko
+        GFX_portrait_SOV_vasily_kuznetsov
+        GFX_portrait_SOV_yakov_cherevichenko
+        GFX_portrait_sov_aleksandr_cherepanov
+    }
+    navy_portraits = {
+        GFX_portrait_SOV_generic_marine_infantry
+        GFX_portrait_SOV_leonid_govorov
+        GFX_portrait_SOV_arseny_golovko
+        GFX_portrait_SOV_filipp_oktyabrsky
+        GFX_Portrait_Soviet_Generic_navy_1
+        GFX_Portrait_Soviet_Generic_navy_2
+        GFX_Portrait_Soviet_Generic_navy_3
+        GFX_portrait_SOV_gordey_levchenko
+        GFX_portrait_SOV_sergey_gorshkov
+        GFX_portrait_SOV_vladimir_kasatonov
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_europe_female_01
+        GFX_portrait_generic_europe_female_02
+        GFX_portrait_generic_europe_female_03
+        GFX_portrait_generic_europe_female_04
+        GFX_portrait_generic_europe_female_05
+        GFX_portrait_generic_europe_female_06
+        GFX_portrait_generic_europe_female_07
+        GFX_portrait_generic_europe_female_08
+        GFX_portrait_generic_europe_female_09
+        GFX_portrait_generic_europe_female_10
+        GFX_portrait_generic_europe_female_11
+        GFX_portrait_generic_europe_female_12
+        GFX_portrait_generic_europe_female_13
+        GFX_portrait_generic_europe_female_14
+        GFX_portrait_generic_europe_female_15
+        GFX_portrait_generic_europe_female_16
+        }
+        male = {
+        GFX_portrait_generic_europe_male_01
+        GFX_portrait_generic_europe_male_02
+        GFX_portrait_generic_europe_male_03
+        GFX_portrait_generic_europe_male_04
+        GFX_portrait_generic_europe_male_05
+        GFX_portrait_generic_europe_male_06
+        GFX_portrait_generic_europe_male_07
+        GFX_portrait_generic_europe_male_08
+        GFX_portrait_generic_europe_male_09
+        GFX_portrait_generic_europe_male_10
+        GFX_portrait_generic_europe_male_11
+        GFX_portrait_generic_europe_male_12
+        GFX_portrait_generic_europe_male_13
+        GFX_portrait_generic_europe_male_14
+        GFX_portrait_generic_europe_male_15
+        GFX_portrait_generic_europe_male_16
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                GFX_portrait_SOV_lev_trotsky
+                GFX_portrait_SOV_issa_pliyev
+                GFX_portrait_SOV_lavrenty_beriya
+                GFX_portrait_SOV_andrey_vlasov
+                GFX_portrait_SOV_iosif_stalin
+            }
+            minister = {
+                GFX_portrait_SOV_lavrenty_beriya_small
+                GFX_portrait_SOV_andrey_vlasov_small
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_portrait_BLR_radaslau_astrouski
+                GFX_portrait_SOV_grigory_zinovyev
+                GFX_portrait_SOV_ivan_smirnov
+                GFX_portrait_SOV_lev_dovator
+                GFX_portrait_SOV_lev_kamenev
+            }
+            minister = {
+                GFX_portrait_SOV_grigory_zinovyev_small
+                GFX_portrait_SOV_ivan_smirnov_small
+                GFX_portrait_SOV_lev_dovator_small
+                GFX_portrait_SOV_lev_kamenev_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_portrait_SOV_andrey_shkuro
+                GFX_portrait_SOV_bronislav_kaminski
+                GFX_portrait_SOV_konstantin_voskoboinik
+                GFX_portrait_SOV_pyotr_krasnov
+                GFX_portrait_Stepan_Bandera
+                GFX_portrait_SOV_konstantin_rodzayevsky
+            }
+            minister = {
+                # WIP
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_portrait_BLR_radaslau_astrouski
+                GFX_portrait_SOV_grigory_zinovyev
+                GFX_portrait_SOV_ivan_smirnov
+                GFX_portrait_SOV_lev_dovator
+                GFX_portrait_SOV_lev_kamenev
+            }
+            minister = {
+                GFX_portrait_SOV_grigory_zinovyev_small
+                GFX_portrait_SOV_ivan_smirnov_small
+                GFX_portrait_SOV_lev_dovator_small
+                GFX_portrait_SOV_lev_kamenev_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_SOV_boris_shteifon
+                GFX_portrait_SOV_aleksandr_kerensky
+                GFX_portrait_SOV_semyon_budyonny
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    #WIP
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_europe_generic_operative_male_1
+        GFX_portrait_europe_generic_operative_male_2
+        GFX_portrait_europe_generic_operative_male_3
+        GFX_portrait_europe_generic_operative_male_4
+        GFX_portrait_europe_generic_operative_male_5
+        GFX_portrait_europe_generic_operative_male_6
+        GFX_portrait_europe_generic_operative_male_7
+        GFX_portrait_europe_generic_operative_male_8
+        GFX_portrait_europe_generic_operative_male_9
+        GFX_portrait_europe_generic_operative_male_10
+        GFX_portrait_europe_generic_operative_male_11
+        GFX_portrait_europe_generic_operative_male_12
+        GFX_portrait_europe_generic_operative_male_13
+        GFX_portrait_europe_generic_operative_male_14
+        GFX_portrait_europe_generic_operative_male_15
+        }
+        female = {
+        GFX_portrait_europe_generic_operative_female_1
+        GFX_portrait_europe_generic_operative_female_2
+        GFX_portrait_europe_generic_operative_female_3
+        GFX_portrait_europe_generic_operative_female_4
+        GFX_portrait_europe_generic_operative_female_5
+        GFX_portrait_europe_generic_operative_female_6
+        GFX_portrait_europe_generic_operative_female_7
+        GFX_portrait_europe_generic_operative_female_8
+        GFX_portrait_europe_generic_operative_female_9
+        GFX_portrait_europe_generic_operative_female_10
+        GFX_portrait_europe_generic_operative_female_11
+        GFX_portrait_europe_generic_operative_female_13
+        GFX_portrait_europe_generic_operative_female_14
+        GFX_portrait_europe_generic_operative_female_15
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+#WIP(2)
+italian_group = {
+heritages = { heritage_italic }
+
+    army_portraits = {
+        GFX_portrait_AOI_gugliemo_nasi
+        GFX_portrait_ITA_alessandro_pirzio_biroli
+        GFX_portrait_ITA_alfredo_guzzoni
+        GFX_portrait_ITA_amedeo_guillet
+        GFX_portrait_ITA_annibale_bergonzoli
+        GFX_portrait_ITA_carlo_geloso
+        GFX_portrait_ITA_carlo_vecchiarelli
+        GFX_portrait_ITA_ettore_baldasarre
+        GFX_portrait_ITA_ettore_bastico
+        GFX_portrait_ITA_ezio_rosi
+        GFX_portrait_ITA_francesco_zingales
+        GFX_portrait_ITA_giuseppe_tellera
+        GFX_portrait_ITA_italo_gariboldi
+        GFX_portrait_ITA_mario_roatta
+        GFX_portrait_ITA_mario_robotti
+        GFX_portrait_ITA_mario_vercellino
+        GFX_portrait_ITA_pietro_pintor
+        GFX_portrait_ITA_prince_adalberto
+        GFX_portrait_ITA_prince_filiberto
+        GFX_portrait_ITA_prince_umberto
+        GFX_portrait_ITA_vittorio_ambrosio
+        GFX_Portrait_Italy_Generic_land_1
+        GFX_Portrait_Italy_Generic_land_2
+        GFX_Portrait_Italy_Generic_land_3
+        GFX_Portrait_Italy_Generic_land_5
+        GFX_portrait_ITA_giovanni_messe
+        GFX_portrait_ITA_italo_balbo
+        GFX_portrait_ITA_rodolfo_graziani
+        GFX_portrait_ITA_sebastiano_visconti_prasca
+        GFX_portrait_ITA_ubaldo_soddu
+        GFX_portrait_ITA_ugo_cavallero
+    }
+    navy_portraits = {
+        GFX_portrait_ITA_giuseppe_di_bartolo
+        GFX_portrait_ITA_junio_valerio_borghese
+        GFX_portrait_ITA_prince_aimone
+        GFX_portrait_ITA_alberto_da_zara
+        GFX_portrait_ITA_angelo_iachino
+        GFX_portrait_ITA_carlo_bergamini
+        GFX_Portrait_Italy_Generic_navy_1
+        GFX_Portrait_Italy_Generic_navy_2
+        GFX_Portrait_Italy_Generic_navy_3
+        GFX_portrait_ITA_inigo_campioni
+    }
+    scientist_portraits = {
+        female = {
+        GFX_portrait_generic_europe_female_01
+        GFX_portrait_generic_europe_female_02
+        GFX_portrait_generic_europe_female_03
+        GFX_portrait_generic_europe_female_04
+        GFX_portrait_generic_europe_female_05
+        GFX_portrait_generic_europe_female_06
+        GFX_portrait_generic_europe_female_07
+        GFX_portrait_generic_europe_female_08
+        GFX_portrait_generic_europe_female_09
+        GFX_portrait_generic_europe_female_10
+        GFX_portrait_generic_europe_female_11
+        GFX_portrait_generic_europe_female_12
+        GFX_portrait_generic_europe_female_13
+        GFX_portrait_generic_europe_female_14
+        GFX_portrait_generic_europe_female_15
+        GFX_portrait_generic_europe_female_16
+        }
+        male = {
+        GFX_portrait_generic_europe_male_01
+        GFX_portrait_generic_europe_male_02
+        GFX_portrait_generic_europe_male_03
+        GFX_portrait_generic_europe_male_04
+        GFX_portrait_generic_europe_male_05
+        GFX_portrait_generic_europe_male_06
+        GFX_portrait_generic_europe_male_07
+        GFX_portrait_generic_europe_male_08
+        GFX_portrait_generic_europe_male_09
+        GFX_portrait_generic_europe_male_10
+        GFX_portrait_generic_europe_male_11
+        GFX_portrait_generic_europe_male_12
+        GFX_portrait_generic_europe_male_13
+        GFX_portrait_generic_europe_male_14
+        GFX_portrait_generic_europe_male_15
+        GFX_portrait_generic_europe_male_16
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                #WIP
+            }
+            minister = {
+                #WIP
+            }
+        }
+        democratic = {
+            leader = {
+                GFX_portrait_ALB_tefik_mborja
+                GFX_portrait_italy_ferruccio_parri
+                GFX_portrait_ita_palmiro_togliatti
+            }
+            minister = {
+                GFX_portrait_italy_ferruccio_parri_small
+                GFX_portrait_ita_palmiro_togliatti_small
+            }
+        }
+        fascism = {
+            leader = {
+                GFX_portrait_ITA_mario_berti
+                GFX_portrait_ITA_benito_mussolini
+                GFX_portrait_ITA_pietro_badoglio
+                GFX_portrait_MNT_blazo_dukanovic
+            }
+            minister = {
+                # WIP
+            }
+        }
+        neutrality = {
+            leader = {
+                GFX_portrait_ALB_tefik_mborja
+                GFX_portrait_italy_ferruccio_parri
+                GFX_portrait_ita_palmiro_togliatti
+            }
+            minister = {
+                GFX_portrait_italy_ferruccio_parri_small
+                GFX_portrait_ita_palmiro_togliatti_small
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            #WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                GFX_portrait_AOI_amedeo_di_savoia_aosta
+                GFX_portrait_ITA_ferdinando_adalberto
+                GFX_portrait_ITA_vittorio_emanuele_III
+                GFX_portrait_ITA_emilio_de_bono
+                GFX_portrait_ITA_vittorio_emanuele_III
+                GFX_portrait_italy_emperor_mussolini
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    #WIP
+    }
+    operative_portraits = {
+        male = {
+        GFX_portrait_europe_generic_operative_male_1
+        GFX_portrait_europe_generic_operative_male_2
+        GFX_portrait_europe_generic_operative_male_3
+        GFX_portrait_europe_generic_operative_male_4
+        GFX_portrait_europe_generic_operative_male_5
+        GFX_portrait_europe_generic_operative_male_6
+        GFX_portrait_europe_generic_operative_male_7
+        GFX_portrait_europe_generic_operative_male_8
+        GFX_portrait_europe_generic_operative_male_9
+        GFX_portrait_europe_generic_operative_male_10
+        GFX_portrait_europe_generic_operative_male_11
+        GFX_portrait_europe_generic_operative_male_12
+        GFX_portrait_europe_generic_operative_male_13
+        GFX_portrait_europe_generic_operative_male_14
+        GFX_portrait_europe_generic_operative_male_15
+        }
+        female = {
+        GFX_portrait_europe_generic_operative_female_1
+        GFX_portrait_europe_generic_operative_female_2
+        GFX_portrait_europe_generic_operative_female_3
+        GFX_portrait_europe_generic_operative_female_4
+        GFX_portrait_europe_generic_operative_female_5
+        GFX_portrait_europe_generic_operative_female_6
+        GFX_portrait_europe_generic_operative_female_7
+        GFX_portrait_europe_generic_operative_female_8
+        GFX_portrait_europe_generic_operative_female_9
+        GFX_portrait_europe_generic_operative_female_10
+        GFX_portrait_europe_generic_operative_female_11
+        GFX_portrait_europe_generic_operative_female_13
+        GFX_portrait_europe_generic_operative_female_14
+        GFX_portrait_europe_generic_operative_female_15
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+
+#######################################
+Base_group = {
+heritages = { heritage1 heritage2 }
+
+    army_portraits = {
+        #WIP
+    }
+    navy_portraits = {
+        #WIP
+    }
+    scientist_portraits = {
+        female = {
+        #WIP
+        }
+        male = {
+        #WIP
+        }
+    }
+     political_portraits = {
+        communism = {
+            leader = {
+                #WIP
+            }
+            minister = {
+                #WIP
+            }
+        }
+        democratic = {
+            leader = {
+                #WIP
+            }
+            minister = {
+                # WIP
+            }
+        }
+        fascism = {
+            leader = {
+                #WIP
+            }
+            minister = {
+                # WIP
+            }
+        }
+        neutrality = {
+            leader = { # Country leaders, normal portraits
+                #WIP
+            }
+            minister = { # Political advisors, small portraits
+                # WIP
+            }
+        }
+        anarchist = { # Replaces any ideology leader with a council in all anarchist governments
+            # WIP
+        }
+        monarchist = { # Replaces any ideology leader with a monarch in sufficiently authoritarian monarchies
+            male = {
+                #WIP
+            }
+            female = {
+                #WIP
+            }
+        }
+     }
+    female_portraits = { # For any non-queen, non-spy use
+    #WIP
+    }
+    operative_portraits = {
+        male = {
+        #WIP
+        }
+        female = {
+        #WIP
+        }
+    }
+    monarch_ideas = {
+        GFX_Portrait_crowns_sample
+    }
+
+    graphical_culture = western_european_gfx
+    graphical_culture_2d = western_european_2d
+}
+
+
+

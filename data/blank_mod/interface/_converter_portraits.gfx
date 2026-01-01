@@ -1,15 +1,71 @@
 spriteTypes = {
 
-	### North American Natives
+    ### North American Natives
 
-	spriteType = {
-		name = "GFX_portrait_nunavut_okalik"
-		texturefile = "gfx/leaders/converter/Portrait_Nunavut_Paul_Okalik.dds"
-	}
+    spriteType = {
+        name = "GFX_portrait_nunavut_okalik"
+        texturefile = "gfx/leaders/converter/Portrait_Nunavut_Paul_Okalik.dds"
+    }
 
-	### From vanilla idea -> portrait
-	spriteType = {
-		name = "GFX_portrait_erik_scavenius"
-		texturefile = "gfx/leaders/DEN/Portrait_Denmark_Erik_Scavenius.dds"
-	}
+    ### From vanilla idea -> portrait
+    spriteType = {
+        name = "GFX_portrait_erik_scavenius"
+        texturefile = "gfx/leaders/DEN/Portrait_Denmark_Erik_Scavenius.dds"
+    }
+
+    ############################
+    ####    African         ####
+    ############################
+
+    spriteType = {
+        name = "GFX_portrait_african_queen_01"
+        texturefile = "gfx/leaders/african/african_queen_01.dds"
+    }
+
+    spriteType = {
+        name = "GFX_portrait_african_female_01"
+        texturefile = "gfx/leaders/african/african_queen_02.dds"
+    }
+
+    spriteType = {
+        name = "GFX_portrait_african_female_02"
+        texturefile = "gfx/leaders/african/african_queen_03.dds"
+    }
+
+    ############################
+    ####    Asian           ####
+    ############################
+
+    spriteType = {
+        name = "GFX_portrait_asian_queen_01"
+        texturefile = "gfx/leaders/asian/asian_queen_01.dds"
+    }
+
+    ############################
+    ####    European        ####
+    ############################
+
+    spriteType = {
+        name = "GFX_portrait_european_king_01"
+        texturefile = "gfx/leaders/european/european_king_01.dds"
+    }
+
+    spriteType = {
+        name = "GFX_portrait_french_king_01"
+        texturefile = "gfx/leaders/european/french_king_01.dds"
+    }
+
+    ############################
+    ####    indian          ####
+    ############################
+
+    spriteType = {
+        name = "GFX_portrait_indian_queen_01"
+        texturefile = "gfx/leaders/indian/indian_queen_01.dds"
+    }
+
+    spriteType = {
+        name = "GFX_portrait_indian_female_01"
+        texturefile = "gfx/leaders/indian/indian_queen_02.dds"
+    }
 }
