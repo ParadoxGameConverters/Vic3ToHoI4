@@ -16,12 +16,12 @@ void OutputTagAliases(const std::filesystem::path& output_name, const std::set<h
    std::filesystem::path output_dir = "output" / output_name / "common/country_tag_aliases";
    if (!std::filesystem::create_directories(output_dir) && !std::filesystem::is_directory(output_dir))
    {
-      throw std::runtime_error(fmt::format("Could not create {}", output_dir));
+      throw std::runtime_error(fmt::format("Could not create {}", output_dir.string()));
    }
    std::ofstream tags_file(output_dir / "converter_tag_aliases.txt");
    if (!tags_file.is_open())
    {
-      throw std::runtime_error(fmt::format("Could not open {}/converter_tag_aliases.txt", output_dir));
+      throw std::runtime_error(fmt::format("Could not open {}/converter_tag_aliases.txt", output_dir.string()));
    }
 
    for (const auto& tag_alias: tag_aliases)
