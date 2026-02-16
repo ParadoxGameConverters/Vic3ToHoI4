@@ -41,6 +41,7 @@ sabotaged_resources = {
 	temporary_state_resource_tungsten = sabotaged_tungsten
 	temporary_state_resource_steel = sabotaged_steel
 	temporary_state_resource_chromium = sabotaged_chromium
+	temporary_state_resource_coal = sabotaged_coal
 }
 
 autonomous_state = {
@@ -98,7 +99,7 @@ dense_rural_infrastructure = { #State Modifier
 
 	icon = GFX_modifiers_SOV_civilian_labor_in_defense
 	
-	local_non_core_supply_impact_factor = 0.35
+	local_non_core_supply_impact_factor = 0.4
 }
 
 yellow_river_blown = { #State Modifier
@@ -111,6 +112,7 @@ yellow_river_blown = { #State Modifier
 	state_resources_factor = -0.25
 	local_manpower = -0.5
 	army_speed_factor_for_controller = -0.25
+	local_non_core_supply_impact_factor = 0.15 
 }
 
 kurdish_rebellion = {

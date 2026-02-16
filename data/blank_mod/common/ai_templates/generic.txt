@@ -541,6 +541,48 @@ paratrooper_generic = {
 	}
 }
 
+rangers_generic = {
+
+	role = rangers_role
+	
+	upgrade_prio = {
+		base = 2
+
+		modifier = {
+			factor = 0
+			NOT = {
+				has_tech = rangers_tech
+			}
+		}
+	}
+
+	rangers_default = {
+	
+		upgrade_prio = {
+			base = 1
+
+			modifier = {
+				factor = 1
+			}
+		}
+
+		target_template = {
+			
+			support = {
+				engineer = 1
+				artillery = 1
+				recon = 1
+				logistics_company = 1
+			}
+			
+			regiments = {
+				ranger_battalion = 8
+				artillery_brigade = 2
+			}
+		}
+	}
+}
+
 landcruiser_generic = {
 
 

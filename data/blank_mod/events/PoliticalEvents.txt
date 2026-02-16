@@ -691,7 +691,6 @@ country_event = {
 		}
 
 		add_political_power = -20
-		add_ideas = democratic_opposition_voicing_protests
 		add_timed_idea = { idea = democratic_opposition_voicing_protests days = 730 }
 	}
 }

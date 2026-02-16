@@ -1,0 +1,284 @@
+
+continent = {
+	name = europe
+	army = {
+		male = {
+			
+		}
+	}
+	
+	navy = {
+		male = {
+			"GFX_portrait_europe_generic_navy_4"
+			"GFX_portrait_europe_generic_navy_5"
+			"GFX_portrait_europe_generic_navy_6"
+			"GFX_portrait_europe_generic_navy_7"
+		}
+	}
+	
+	political = {
+		communism = {
+				male = { 
+					
+			}
+		}
+		democratic = {
+				male = { 
+					
+			}
+		}
+		fascism = {
+				male = { 
+					
+			}
+		}
+		neutrality = {
+				male = { 
+					
+			}
+		}
+	}
+
+}
+
+continent = {
+	name = north_america
+	army = {
+		male = {
+			
+		}
+	}
+	
+	navy = {
+		male = {
+			"GFX_portrait_europe_generic_navy_4"
+			"GFX_portrait_europe_generic_navy_5"
+			"GFX_portrait_europe_generic_navy_6"
+			"GFX_portrait_europe_generic_navy_7"
+		}
+	}
+
+	political = {
+		communism = {
+				male = { 
+					
+			}
+		}
+		democratic = {
+				male = { 
+					
+			}
+		}
+		fascism = {
+				male = { 
+						
+			}
+		}
+		neutrality = {
+				male = { 
+						
+			}
+		}
+	}
+
+}
+
+continent = {
+	name = south_america
+	army = {
+		male = {
+			
+		}
+	}
+	
+	navy = {
+		male = {
+			
+		}
+	}
+	
+	political = {
+		communism = {
+				male = { 
+					
+			}
+		}
+		democratic = {
+				male = { 
+					
+			}
+		}
+		fascism = {
+				male = { 
+					
+			}
+		}
+		neutrality = {
+				male = { 
+					 
+			}
+		}
+	}
+
+}
+
+continent = {
+	name = australia
+	army = {
+		male = {
+			
+		}
+	}
+	
+	navy = {
+		male = {
+			"GFX_portrait_europe_generic_navy_4"
+			"GFX_portrait_europe_generic_navy_5"
+			"GFX_portrait_europe_generic_navy_6"
+			"GFX_portrait_europe_generic_navy_7"
+		}
+	}
+	
+	political = {
+		communism = {
+				male = { 
+					
+			}
+		}
+		democratic = {
+				male = {
+					
+			}
+		}
+		fascism = {
+				male = {
+					
+			}
+		}
+		neutrality = {
+				male = {
+					
+			}
+		}
+	}
+
+}
+
+continent = {
+	name = africa
+	army = {
+		male = {
+			
+		}
+	}
+	
+	navy = {
+		male = {
+			"GFX_Portrait_Africa_Generic_navy_5"
+			"GFX_Portrait_Africa_Generic_navy_6"			
+		}
+	}
+	
+	political = {
+		communism = {
+				male = { 
+					
+			}
+		}
+		democratic = {
+				male = { 
+							
+			}
+		}
+		fascism = {
+				male = { 
+					
+			}
+		}
+		neutrality = {
+				male = { 
+					
+			}
+		}
+	}
+
+
+}
+
+continent = {
+	name = asia
+	army = {
+		male = {
+			
+		}
+	}
+	
+	navy = {
+		male = {
+			
+		}
+	}
+
+	political = {
+		communism = {
+				male = {
+					
+			}
+		}
+		democratic = {
+				male = {
+					 
+			}
+		}
+		fascism = {
+				male = {
+					 
+			}
+		}
+		neutrality = {
+				male = {
+					 
+			}
+		}
+	}	
+
+}
+
+continent = {
+	name = middle_east
+	army = {
+		male = {
+			
+		}
+	}
+	
+	navy = {
+		male = {
+		
+		}
+	}
+	
+	political = {
+		communism = {
+				male = { 
+					
+			}
+		}
+		democratic = {
+				male = { 
+					
+			}
+		}
+		fascism = {
+				male = { 
+					
+			}
+		}
+		neutrality = {
+				male = { 
+				 
+			}
+		}
+	}
+
+}

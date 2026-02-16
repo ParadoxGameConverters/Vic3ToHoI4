@@ -15,11 +15,11 @@ debug_decisions = {
 			set_global_flag = show_debug_decisions_flag
 		}
 	}
-
+ 
 	debug_hide_decisions = {
 		priority = -1
 		allowed = {
-			always = yes
+			always = yes 
 		}
 
 		visible = {
@@ -29,6 +29,65 @@ debug_decisions = {
 		}
 		complete_effect = {
 			clr_global_flag = show_debug_decisions_flag
+		}
+	}
+
+	debug_max_infleunce = {
+		priority = -1
+		allowed = {
+			always = yes 
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+			is_in_faction = yes
+		}
+		complete_effect = {
+			add_faction_influence_ratio = 1
+		}
+	}
+
+
+	debug_calc_resources = {
+		priority = 100
+		allowed = {
+			always = yes
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag 
+		}
+		complete_effect = {
+			set_variable = { global.total_amount_of_oil = 0 }
+			set_variable = { global.total_amount_of_coal = 0 }
+			set_variable = { global.total_amount_of_steel = 0 }
+			set_variable = { global.total_amount_of_rubber = 0 }
+			set_variable = { global.total_amount_of_tungsten = 0 }
+			set_variable = { global.total_amount_of_aluminium = 0 }
+			set_variable = { global.total_amount_of_chromium = 0 }
+			every_country = {
+				every_owned_state = {
+					add_to_variable = { global.total_amount_of_oil = resource@oil}
+					add_to_variable = { global.total_amount_of_coal = resource@coal}
+					add_to_variable = { global.total_amount_of_steel = resource@steel}
+					add_to_variable = { global.total_amount_of_rubber = resource@rubber}
+					add_to_variable = { global.total_amount_of_tungsten = resource@tungsten}
+					add_to_variable = { global.total_amount_of_aluminium = resource@aluminium}
+					add_to_variable = { global.total_amount_of_chromium = resource@chromium}
+				}
+			}
+			log = "---------------------------------"
+			log = "[?global.total_amount_of_oil] oil"
+			log = "[?global.total_amount_of_coal] coal"
+			log = "[?global.total_amount_of_steel] steel"
+			log = "[?global.total_amount_of_rubber] rubber"
+			log = "[?global.total_amount_of_tungsten] tungsten"
+			log = "[?global.total_amount_of_aluminium] aluminium"
+			log = "[?global.total_amount_of_chromium] chromium"
 		}
 	}
 	
@@ -804,4 +863,33 @@ debug_decisions = {
 			}
 		}
 	}
+
+	debug_gain_claimed_states = {
+		priority = -1
+		allowed = {
+			always = yes 
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+			any_state = {
+				is_claimed_by = ROOT
+				NOT = {
+					is_owned_by = ROOT
+				}
+			}
+		}
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_claimed_by = ROOT
+				}
+				transfer_state_to = ROOT
+			}
+		}
+	}
+
+
 }

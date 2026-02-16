@@ -1,0 +1,14 @@
+technology_sharing_group = {
+	
+	id = SSB_tech_sharing_group
+	name = SSB_tech_sharing_group_name
+	desc = SSB_tech_sharing_group_desc
+	picture = GFX_technology_sharing_default
+
+	research_sharing_per_country_bonus = 0.1
+
+	available = {
+		has_dynamic_modifier = { modifier = SSB_saadabad_pact }
+	}
+
+}

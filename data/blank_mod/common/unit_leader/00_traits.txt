@@ -2843,6 +2843,17 @@ leader_traits = {
 		planning_skill = -1
 	}
 
+	motivated = { 
+		type = land
+		trait_type = status_trait
+		
+		attack_skill = 1
+
+		non_shared_modifier = {
+			army_morale_factor = 0.10
+		}
+	}
+
 	# defective_geneseed = { #needs more code support, remove before launch
 	# 	type = all
 	# 	trait_type = status_trait
@@ -2936,26 +2947,6 @@ leader_traits = {
 	}
 
 	trait_SPR_anti_stalinist_loyalties = {
-
-		type = all
-		trait_type = personality_trait
-
-		new_commander_weight = {
-			factor = 0
-		}
-	}
-
-	trait_HUN_fascist_sympathies = {
-
-		type = all
-		trait_type = personality_trait
-
-		new_commander_weight = {
-			factor = 0
-		}
-	}
-
-	trait_HUN_vitez = {
 
 		type = all
 		trait_type = personality_trait
@@ -3263,5 +3254,79 @@ leader_traits = {
 			factor = 0  
 		}
 	}
+
+	PRC_survivor_of_the_long_march = {
+		type = { land }
+		trait_type = personality_trait
+		
+		new_commander_weight = {
+			factor = 0  
+		}
+
+		modifier = {
+			out_of_supply_factor = -0.1
+			equipment_capture = 0.03
+		}
+		
+	}
+
+	SIC_dubious_loyalty = {
+		type = { land }
+		trait_type = personality_trait
+		
+		new_commander_weight = {
+			factor = 0  
+		}
+
+		modifier = {
+			
+		}
+		
+	}
+
+	YUN_dubious_loyalty = {
+		type = { land }
+		trait_type = personality_trait
+		
+		new_commander_weight = {
+			factor = 0  
+		}
+
+		modifier = {
+			
+		}
+		
+	}
+	
+	CHI_dubious_loyalty = {
+		type = { land }
+		trait_type = personality_trait
+		
+		new_commander_weight = {
+			factor = 0  
+		}
+
+		modifier = {
+			
+		}
+		
+	}
+
+
+	XSM_dubious_loyalty = {
+		type = { land }
+		trait_type = personality_trait
+		
+		new_commander_weight = {
+			factor = 0  
+		}
+
+		modifier = {
+			
+		}
+		
+	}
+
+
 
 }
