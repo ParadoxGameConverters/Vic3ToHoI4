@@ -284,7 +284,7 @@ technologies = {
 			factor = 2
 			
 			modifier = {
-				factor = 4
+				factor = 5
 				is_major = yes
 			}
 
@@ -1679,22 +1679,24 @@ technologies = {
 		special_project_specialization = { specialization_air }
 
 		ai_will_do = {
-			factor = 5
+			factor = 3
 			modifier = {
 				is_major = yes
-				factor = 5
+				factor = 8
+				date > "1940.6.1"
 			}
 			modifier = {
 				num_of_military_factories < 10
 				factor = 0
 			}
+			
 			modifier = {
 				date > "1941.1.1"
-				factor = 1.5
+				factor = 2
 			}
 			modifier = {
 				date > "1942.1.1"
-				factor = 1.5
+				factor = 2
 			}
 			modifier = {
 				date > "1943.1.1"
