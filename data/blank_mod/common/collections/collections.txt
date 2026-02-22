@@ -116,19 +116,7 @@ europe_non_aligned_countries = {
 			has_government = neutrality 
 		}
 	}
-}	
-
-
-countries_china = {
-	input = game:all_countries
-	name = COLLECTION_COUNTRIES_CHINA
-	operators = {
-		limit = {
-			WTT_is_chinese_country = yes 
-		}
-	}
 }
-
 
 # New Order in Asia etc
 
@@ -454,36 +442,6 @@ states_controlled_by_faction_member_and_core_holder = {
 	name = COLLECTION_STATES_CONTROLLED_BY_FACTION_MEMBER_AND_CORE_HOLDER
 }
 
-the_northern_mandate_states = {
-	input = game:all_states
-	operators = {
-		limit = {
-			CHI_northern_mandate_states = yes
-		}
-	}
-	name = COLLECTION_STATES_IN_ASIA_AND_IN_OCEANIA
-}
-
-the_southern_mandate_states = {
-	input = game:all_states
-	operators = {
-		limit = {
-			CHI_southern_mandate_states = yes
-		}
-	}
-	name = COLLECTION_STATES_IN_ASIA_AND_IN_OCEANIA
-}
-
-the_greater_game_states = {
-	input = game:all_states
-	operators = {
-		limit = {
-			CHI_greater_game_states = yes
-		}
-	}
-	name = COLLECTION_STATES_IN_ASIA_AND_IN_OCEANIA
-}
-
 # New Order in east Asia
 communist_controlled_states_my_continent = {
 	input = game:all_states
@@ -569,33 +527,6 @@ anti_fascist_controlled_states_my_continent = {
 	}
 }
 
-
-
-
-# Balkans Factions
-
-controllable_balkan_states = {
-	input = constant:state_groups.balkans
-	name = COLLECTION_FACTION_BALKAN_STATES
-}
-
-faction_controlled_balkan_states = {
-	input = constant:state_groups.balkans
-	operators = {
-		limit = {
-			is_controlled_by_ROOT_or_ally = yes 
-		}
-	}
-	name = COLLECTION_FACTION_CONTROLLED_BALKAN_STATES
-}
-
-# Little Entente
-controllable_central_powers_border_states = {
-	input = constant:state_groups.central_powers_border_states
-	name = COLLECTION_CENTRAL_POWERS_BORDER_STATES
-}
-
-
 # African Union 
 african_states = {
 	input = game:all_states
@@ -632,66 +563,7 @@ non_colonial_power_controlled_african_states = {
 	name = COLLECTION_NON_COLONIAL_CONTROLLED_AFRICAN_STATES
 }
 
-# Islamic World 
-
-all_islamic_countries = {
-	input = constant:country_groups.islamic_world
-	name = COLLECTION_FACTION_ISLAMIC_COUNTRIES
-}
-
-islamic_faction_members = {
-	input = constant:country_groups.islamic_world
-	operators = {
-		#faction_members
-		limit = {
-			OR = {
-				tag = ROOT
-				is_in_faction_with = ROOT
-			}
-		}
-	}
-	name = COLLECTION_ISLAMIC_FACTION_MEMBERS
-}
-
-# Italian Factions
-
-controllable_mare_nostrum_states = {
-	input = constant:state_groups.mare_nostrum_states
-	name = COLLECTION_FACTION_MARE_NOSTRUM_STATES
-}
-
-faction_controlled_mare_nostrum_states = {
-	input = constant:state_groups.mare_nostrum_states
-	operators = {
-		limit = {
-			is_controlled_by_ROOT_or_ally = yes 
-		}
-	}
-	name = COLLECTION_FACTION_CONTROLLED_MARE_NOSTRUM_STATES
-}
-
-controllable_pax_romana_states = {
-	input = constant:state_groups.pax_romana_states
-	name = COLLECTION_FACTION_PAX_ROMANA_STATES
-}
-
-faction_controlled_pax_romana_states = {
-	input = constant:state_groups.pax_romana_states
-	operators = {
-		limit = {
-			is_controlled_by_ROOT_or_ally = yes 
-		}
-	}
-	name = COLLECTION_FACTION_CONTROLLED_PAX_ROMANA_STATES
-}
-
-
 # Soviet Union related
-comintern_controllable_border_states = {
-	input = constant:state_groups.comintern_starting_border
-	name = COLLECTION_COMINTERN_BORDER_STATES
-
-}
 
 comintern_controlled_border_states = {
 	input = collection:comintern_controllable_border_states

@@ -266,17 +266,29 @@ on_actions = {
 	# FROM is the faction Leader, ROOT is the country leaving the faction
 	on_leave_faction = {
 		effect = {
-			FROM = {
-				add_opinion_modifier = {
-					modifier = faction_traitor
-					target = ROOT
-					days = 365
-				}
 
-				add_opinion_modifier = {
-					modifier = faction_traitor_trade
-					target = ROOT
-					days = 365
+			IF = {
+				limit = {
+					NOT = {
+						ROOT = { #We should remove this
+							has_country_flag = leave_faction_happily_flag
+						}
+						FROM = { is_subject_of = ROOT } # This shouldn't really be possible outside of specific content so best to block
+						ROOT = { is_subject_of = FROM } # If the effect is desired, add something custom
+					}
+				}
+				FROM = {
+					add_opinion_modifier = {
+						modifier = faction_traitor
+						target = ROOT
+						days = 365
+					}
+
+					add_opinion_modifier = {
+						modifier = faction_traitor_trade
+						target = ROOT
+						days = 365
+					}
 				}
 			}
 		}
