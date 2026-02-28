@@ -274,7 +274,7 @@ country_event = {
 	option = { #Reject
 		name = generic.2.f
 		ai_chance = {
-			factor = 50
+			base = 25
 			
 			modifier = {
 				factor = 0.5
@@ -390,6 +390,7 @@ country_event = {
 				has_government = communism
 			}
 		}
+
 	}
 	option = {
 		name = generic.3.e
@@ -557,12 +558,12 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
+			FROM = { save_event_target_as = alliance_inviter }
 			save_event_target_as = alliance_applicant
-			FROM = {
-				save_event_target_as = alliance_inviter
-			}
 		}
 	}
+
+
 
 	is_triggered_only = yes
 	

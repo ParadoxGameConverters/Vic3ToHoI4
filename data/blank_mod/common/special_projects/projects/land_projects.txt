@@ -242,8 +242,8 @@ sp_land_land_cruiser = {
 		modifier = {
 			factor = 0 
 			OR = {
-				FROM = { is_major = no } # Pointless unless we are big enough to do this
-				FROM = { has_government = democratic }# Don't spend the tax payers' money on this, then they won't vote for you again
+				ROOT = { is_major = no } # Pointless unless we are big enough to do this
+				ROOT = { has_government = democratic }# Don't spend the tax payers' money on this, then they won't vote for you again
 			}
 		}
 	}

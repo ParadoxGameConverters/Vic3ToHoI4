@@ -8,6 +8,7 @@ every_possible_country = {
 		NOT = {
 			has_allowed_idea_with_traits = { idea = head_of_intelligence characters = yes }
 		}
+
 		is_dynamic_country = no
 	}
 	generate_character = {
@@ -100,17 +101,6 @@ every_possible_country = {
 			army = { small = GFX_idea_generic_navy_chief_decisive_bat }
 		}
 	}
-	generate_character = {
-		token_base = generic_navy_anti_submarine # token will be TAG_token_base
-		advisor = {
-			slot = navy_chief
-			traits = { navy_anti_submarine_2 }
-			cost = 100
-		}
-		portraits = { 
-			army = { small = GFX_idea_generic_navy_anti_submarine }
-		}
-	}
 	# generic air chiefs
 	generate_character = {
 		token_base = generic_air_close_air_sup # token will be TAG_token_base
@@ -169,6 +159,17 @@ every_possible_country = {
 		}
 		portraits = { 
 			army = { small = GFX_idea_generic_navy_fleet_log }
+		}
+	}
+	generate_character = {
+		token_base = generic_navy_anti_submarine # token will be TAG_token_base
+		advisor = {
+			slot = high_command
+			traits = { navy_anti_submarine_2 }
+			cost = 100
+		}
+		portraits = { 
+			army = { small = GFX_idea_generic_navy_anti_submarine }
 		}
 	}
 	generate_character = {

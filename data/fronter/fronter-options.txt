@@ -46,22 +46,22 @@ option = {
 		}
 	}
 }
-#option = {
-#	name = stories_system
-#	displayName = STORIES_SYSTEM
-#	tooltip = STORIES_SYSTEMTIP
-#	radioSelector = {
-#		radioOption = {
-#			name = no
-#			displayName = NO
-#			tooltip = STORIES_SYSTEMNOTIP
-#			default = false
-#		}
-#		radioOption = {
-#			name = yes
-#			displayName = YES
-#			tooltip = STORIES_SYSTEMYESTIP
-#			default = true
-#		}
-#	}
-#}
+option = {
+	name = stories_system
+	displayName = STORIES_SYSTEM
+	tooltip = STORIES_SYSTEMTIP
+	radioSelector = {
+		radioOption = {
+			name = no
+			displayName = NO
+			tooltip = STORIES_SYSTEMNOTIP
+			default = false
+		}
+		radioOption = {
+			name = yes
+			displayName = YES
+			tooltip = STORIES_SYSTEMYESTIP
+			default = true
+		}
+	}
+}

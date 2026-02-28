@@ -1721,6 +1721,10 @@ political_actions = {
 		days_remove = 120
 		cost = 50
 
+		cancel_trigger = {
+			always = no
+		}
+
 		complete_effect = {
 			add_stability = -0.1
 		}

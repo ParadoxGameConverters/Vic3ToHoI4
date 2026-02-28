@@ -256,6 +256,7 @@ technologies = {
 				localization_key = SP_UNLOCK_PROJECT
 				PROJECT = sp_air_jet_engine	
 			}
+			
 		}				
 
 		research_cost = 2
@@ -283,7 +284,7 @@ technologies = {
 			factor = 2
 			
 			modifier = {
-				factor = 4
+				factor = 5
 				is_major = yes
 			}
 
@@ -742,6 +743,7 @@ technologies = {
 			heavy_air
 			air_equipment
 			cat_strategic_bomber
+			cat_maritime_patrol
 			mio_cat_all_heavy_aircraft_and_modules
 		}
 		special_project_specialization = { specialization_air }
@@ -779,6 +781,7 @@ technologies = {
 			heavy_air
 			air_equipment
 			cat_strategic_bomber
+			cat_maritime_patrol
 			mio_cat_all_heavy_aircraft_and_modules
 		}
 		special_project_specialization = { specialization_air }
@@ -829,6 +832,7 @@ technologies = {
 			heavy_air
 			air_equipment
 			cat_strategic_bomber
+			cat_maritime_patrol
 			mio_cat_all_heavy_aircraft_and_modules
 		}
 		special_project_specialization = { specialization_air }
@@ -861,6 +865,7 @@ technologies = {
 			heavy_air
 			air_equipment
 			cat_strategic_bomber
+			cat_maritime_patrol
 			mio_cat_all_heavy_aircraft_and_modules
 		}
 		special_project_specialization = { specialization_air }
@@ -897,6 +902,7 @@ technologies = {
 			heavy_air
 			jet_technology
 			cat_strategic_bomber
+			cat_maritime_patrol
 			mio_cat_all_heavy_aircraft_and_modules
 		}
 		special_project_specialization = { specialization_air }
@@ -1107,6 +1113,7 @@ technologies = {
 			air_equipment
 			plane_modules_tech
 			cat_air_bombs
+			cat_maritime_patrol
 			mio_cat_all_naval_bomber_and_modules
 			mio_cat_all_medium_aircraft_and_modules
 			mio_cat_all_heavy_aircraft_and_modules
@@ -1149,6 +1156,7 @@ technologies = {
 			air_equipment
 			plane_modules_tech
 			cat_air_bombs
+			cat_maritime_patrol
 			mio_cat_all_naval_bomber_and_modules
 			mio_cat_all_medium_aircraft_and_modules
 			mio_cat_all_heavy_aircraft_and_modules
@@ -1186,6 +1194,7 @@ technologies = {
 			air_equipment
 			plane_modules_tech
 			cat_air_bombs
+			cat_maritime_patrol
 			mio_cat_all_naval_bomber_and_modules
 			mio_cat_all_medium_aircraft_and_modules
 			mio_cat_all_heavy_aircraft_and_modules
@@ -1670,22 +1679,24 @@ technologies = {
 		special_project_specialization = { specialization_air }
 
 		ai_will_do = {
-			factor = 5
+			factor = 3
 			modifier = {
 				is_major = yes
-				factor = 5
+				factor = 8
+				date > "1940.6.1"
 			}
 			modifier = {
 				num_of_military_factories < 10
 				factor = 0
 			}
+			
 			modifier = {
 				date > "1941.1.1"
-				factor = 1.5
+				factor = 2
 			}
 			modifier = {
 				date > "1942.1.1"
-				factor = 1.5
+				factor = 2
 			}
 			modifier = {
 				date > "1943.1.1"

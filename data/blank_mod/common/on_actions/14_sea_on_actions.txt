@@ -1,0 +1,19 @@
+on_actions = {
+
+	# ROOT is winner, FROM is loser (called for all winners against all losers)
+	on_before_peace_conference_start = {
+		effect = {
+			IF = {
+				limit = {
+					ROOT = { NOT = { has_country_flag = peace_winner_flag } }
+				}
+				set_country_flag = peace_winner_flag
+			}
+		}
+	}
+
+
+
+
+
+}

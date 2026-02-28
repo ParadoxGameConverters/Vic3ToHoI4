@@ -236,90 +236,6 @@ AUS_aggression = {
 	production_factory_efficiency_gain_factor = AUS_agrression_production_factory_efficiency_gain_factor
 }
 
-AUS_austromarxism = {
-	enable = { always = yes}
-	icon = GFX_idea_AUS_austromarxism
-	communism_drift = AUS_austromarxism_communism_support
-	democratic_drift = AUS_austromarxism_democratic_support
-	industrial_capacity_factory = AUS_austromarxism_industrial_capacity_factory
-	theorist_cost_factor = AUS_austromarxism_theorist_cost_factor
-	high_command_cost_factor = AUS_austromarxism_high_command_cost_factor
-	party_popularity_stability_factor = AUS_austromarxism_party_popularity_stability_factor
-	production_speed_industrial_complex_factor = AUS_austromarxism_production_speed_industrial_complex_factor
-	production_speed_arms_factory_factor = AUS_austromarxism_production_speed_arms_factory_factor
-	stability_factor = AUS_austromarxism_stability_factor
-	political_power_factor = AUS_austromarxism_political_power_factor
-	justify_war_goal_time = AUS_austromarxism_justify_war_goal_time
-	annex_cost_factor = AUS_austromarxism_annex_cost_factor
-	production_factory_efficiency_gain_factor = AUS_austromarxism_production_factory_efficiency_gain_factor
-	command_power_gain_mult = AUS_austromarxism_command_power_gain_mult
-	planning_speed = AUS_austromarxism_planning_speed
-	max_planning_factor = AUS_austromarxism_max_planning_factor
-	remove_trigger = {
-		AND = {
-			NOT = {
-				has_government = communism
-			}
-		}
-	}
-}
-
-AUS_austrostalinism = {
-	enable = { always = yes}
-	icon = GFX_idea_AUS_austromarxism
-	communism_drift = AUS_austromarxism_communism_support
-	democratic_drift = AUS_austromarxism_democratic_support
-	industrial_capacity_factory = AUS_austromarxism_industrial_capacity_factory
-	theorist_cost_factor = AUS_austromarxism_theorist_cost_factor
-	high_command_cost_factor = AUS_austromarxism_high_command_cost_factor
-	party_popularity_stability_factor = AUS_austromarxism_party_popularity_stability_factor
-	production_speed_industrial_complex_factor = AUS_austromarxism_production_speed_industrial_complex_factor
-	production_speed_arms_factory_factor = AUS_austromarxism_production_speed_arms_factory_factor
-	stability_factor = AUS_austromarxism_stability_factor
-	political_power_factor = AUS_austromarxism_political_power_factor
-	justify_war_goal_time = AUS_austromarxism_justify_war_goal_time
-	annex_cost_factor = AUS_austromarxism_annex_cost_factor
-	production_factory_efficiency_gain_factor = AUS_austromarxism_production_factory_efficiency_gain_factor
-	command_power_gain_mult = AUS_austromarxism_command_power_gain_mult
-	planning_speed = AUS_austromarxism_planning_speed
-	max_planning_factor = AUS_austromarxism_max_planning_factor
-	remove_trigger = {
-		AND = {
-			NOT = {
-				has_government = communism
-			}
-		}
-	}
-}
-
-AUS_austrotrotskyism = {
-	enable = { always = yes}
-	icon = GFX_idea_AUS_austromarxism
-	communism_drift = AUS_austromarxism_communism_support
-	democratic_drift = AUS_austromarxism_democratic_support
-	industrial_capacity_factory = AUS_austromarxism_industrial_capacity_factory
-	theorist_cost_factor = AUS_austromarxism_theorist_cost_factor
-	high_command_cost_factor = AUS_austromarxism_high_command_cost_factor
-	party_popularity_stability_factor = AUS_austromarxism_party_popularity_stability_factor
-	production_speed_industrial_complex_factor = AUS_austromarxism_production_speed_industrial_complex_factor
-	production_speed_arms_factory_factor = AUS_austromarxism_production_speed_arms_factory_factor
-	stability_factor = AUS_austromarxism_stability_factor
-	political_power_factor = AUS_austromarxism_political_power_factor
-	justify_war_goal_time = AUS_austromarxism_justify_war_goal_time
-	annex_cost_factor = AUS_austromarxism_annex_cost_factor
-	production_factory_efficiency_gain_factor = AUS_austromarxism_production_factory_efficiency_gain_factor
-	command_power_gain_mult = AUS_austromarxism_command_power_gain_mult
-	planning_speed = AUS_austromarxism_planning_speed
-	max_planning_factor = AUS_austromarxism_max_planning_factor
-	remove_trigger = {
-		AND = {
-			NOT = {
-				has_government = communism
-			}
-		}
-	}
-}
-
 AUS_peoples_army = {
 	enable = { always = yes }
 	icon = GFX_idea_generic_communist_army
@@ -599,12 +515,12 @@ GER_army_modifier = { #Army NS
 	mechanized_attack_factor = GER_military_mechanized_attack_factor
 	army_org_factor = GER_military_army_org_factor
 	planning_speed = GER_military_planning_speed
-	supply_factor = GER_military_supply_factor
+	supply_consumption_factor = GER_military_supply_consumption_factor #was GER_military_supply_consumption_factor
 	equipment_capture = GER_military_equipment_capture
 	initiative_factor = GER_military_initiative_factor
 	army_fuel_consumption_factor = GER_military_army_fuel_consumption_factor
 	coordination_bonus = GER_military_coordination_bonus
-	air_superiority_bonus_in_combat = GER_military_air_superiority_bonus_in_combat
+	army_bonus_air_superiority_factor = GER_military_air_superiority_bonus_in_combat
 	max_dig_in_factor = GER_military_max_dig_in_factor
 	army_artillery_defence_factor = GER_military_army_artillery_defence_factor
 	special_forces_cap = GER_military_special_forces_cap
@@ -645,12 +561,12 @@ GER_army_communist_modifier = { #Communist Army NS
 	mechanized_attack_factor = GER_military_mechanized_attack_factor
 	army_org_factor = GER_military_army_org_factor
 	planning_speed = GER_military_planning_speed
-	supply_factor = GER_military_supply_factor
+	supply_consumption_factor = GER_military_supply_consumption_factor
 	equipment_capture = GER_military_equipment_capture
 	initiative_factor = GER_military_initiative_factor
 	army_fuel_consumption_factor = GER_military_army_fuel_consumption_factor
 	coordination_bonus = GER_military_coordination_bonus
-	air_superiority_bonus_in_combat = GER_military_air_superiority_bonus_in_combat
+	army_bonus_air_superiority_factor = GER_military_air_superiority_bonus_in_combat
 	max_dig_in_factor = GER_military_max_dig_in_factor
 	army_artillery_defence_factor = GER_military_army_artillery_defence_factor
 	special_forces_cap = GER_military_special_forces_cap
@@ -952,7 +868,6 @@ GER_blitzkrieg_modifier = { #Attack bonuses for Germany in enemy states
 	icon = GFX_modifiers_GER_blitzkrieg
 
 	breakthrough_factor = 0.05
-	army_armor_speed_factor = 0.05
 	army_armor_attack_factor = 0.05
 	#motorized_attack_factor = GER_motor_and_mech_attack_motorized_attack_factor
 	#mechanized_attack_factor = GER_motor_and_mech_attack_mechanized_attack_factor
@@ -962,9 +877,8 @@ GER_blitzkrieg_modifier_lvl_2 = { #Attack bonuses for Germany in enemy states
 	enable = { always = yes } 
 	icon = GFX_modifiers_GER_blitzkrieg
 
-	breakthrough_factor = 0.05
+	breakthrough_factor = 0.075
 	army_armor_attack_factor = 0.1
-	army_armor_speed_factor = 0.1
 	#motorized_attack_factor = GER_motor_and_mech_attack_motorized_attack_factor
 	#mechanized_attack_factor = GER_motor_and_mech_attack_mechanized_attack_factor
 	custom_modifier_tooltip = GER_motor_and_mech_attack_tt 
@@ -975,7 +889,6 @@ GER_blitzkrieg_modifier_lvl_3 = { #Attack bonuses for Germany in enemy states
 
 	breakthrough_factor = 0.1
 	army_armor_attack_factor = 0.15
-	army_armor_speed_factor = 0.1
 	#motorized_attack_factor = GER_motor_and_mech_attack_motorized_attack_factor
 	#mechanized_attack_factor = GER_motor_and_mech_attack_mechanized_attack_factor
 	custom_modifier_tooltip = GER_motor_and_mech_attack_tt 
@@ -1590,7 +1503,7 @@ idea_COG_river_navy = { #STATE MODIFIER
 	remove_trigger = { 
 		COG = { has_capitulated = yes } 
 	}
-	icon = GFX_MODIFIER_NAVAL_INVASION_CAPACITY
+	icon = GFX_MODIFIER_NAVAL_INVASION_DIVISION_CAP
 	army_core_defence_factor = 0.1
 	resistance_target = 0.5
 	resistance_growth_on_our_occupied_states = 0.25

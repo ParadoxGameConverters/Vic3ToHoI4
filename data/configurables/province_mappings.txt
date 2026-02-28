@@ -5261,7 +5261,7 @@
 	link = { vic3 = xFE3A7A vic3 = x79D100 vic3 = x0BCE33 vic3 = x466F9F vic3 = x5E58A8 vic3 = x2BB5C6 vic3 = x75AFE7 hoi4 = 8041 } # STATE_LHASA, STATE_LHASA, STATE_LHASA, Bomê [wood], STATE_LHASA, STATE_LHASA, STATE_LHASA -> Luolong
 	link = { vic3 = x1B383B vic3 = x25DC9E vic3 = x503FF4 vic3 = x67344F vic3 = xA07060 vic3 = xC268D2 vic3 = xFC33A4 vic3 = x7C0E53 vic3 = x4FD34F hoi4 = 10741 } # STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA -> Linzhi
 	link = { vic3 = x256241 vic3 = x5C42DC vic3 = xB5EF16 vic3 = xCCCA27 hoi4 = 10856 } # STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA -> Changdu
-	link = { vic3 = x095F32 vic3 = x2CC414 vic3 = x50C058 vic3 = x527BB9 vic3 = x9640C8 vic3 = x9F73DC vic3 = xA21042 vic3 = xCE3261 vic3 = xD2D422 hoi4 = 10918 } # STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA -> Biru
+	link = { vic3 = x2CC414 vic3 = x50C058 vic3 = x527BB9 vic3 = x9640C8 vic3 = x9F73DC vic3 = xA21042 vic3 = xCE3261 vic3 = xD2D422 vic3 = x095F32 hoi4 = 10918 } # STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA, STATE_LHASA -> Biru
 	link = { comment = "* * STATE_NGARI " }
 	link = { vic3 = x4F7572 vic3 = xA45941 vic3 = xB9B797 vic3 = xE1C6E3 vic3 = x5FCA48 hoi4 = 1961 } # Drongpa [farm], STATE_NGARI, STATE_NGARI, Ngari [city], STATE_NGARI -> Zanda
 	link = { vic3 = x06C5A5 vic3 = x0CA02F vic3 = x26D4BC vic3 = x3242A4 vic3 = x4EA762 vic3 = x805380 vic3 = xC46618 vic3 = xDAE696 vic3 = xE6122E vic3 = xDE0FA1 vic3 = x821542 hoi4 = 1991 } # STATE_NGARI, STATE_NGARI, STATE_NGARI, Raga [wood], STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI, STATE_NGARI -> Gyirong
@@ -5734,16 +5734,17 @@
 	link = { vic3 = x092323 vic3 = x154288 vic3 = xAF900C hoi4 = 4403 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Zhouqu
 	link = { vic3 = x60E0D5 hoi4 = 4925 } # Chengdu [city] -> Chengdu
 	link = { vic3 = x157E2E vic3 = xA1C52B vic3 = x83A248 vic3 = x5304E5 vic3 = x93091D vic3 = x710D15 hoi4 = 4999 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Kangding
-	link = { vic3 = x49C4AB vic3 = x745C03 vic3 = x6FFCF0 hoi4 = 5193 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Jiuzhaigou
+	link = { vic3 = x745C03 hoi4 = 531 } # STATE_SICHUAN -> Longnan
+	link = { vic3 = x49C4AB vic3 = x6FFCF0 hoi4 = 5193 } # STATE_SICHUAN, STATE_SICHUAN -> Jiuzhaigou
 	link = { vic3 = x24A95A vic3 = x735688 vic3 = xB391A8 hoi4 = 7294 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Xichang
-	link = { vic3 = x1C5B2A vic3 = x2332C5 vic3 = x87C535 vic3 = xE9438D hoi4 = 7988 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Maqin
+	link = { vic3 = x1C5B2A vic3 = x2332C5 vic3 = x87C535 vic3 = xE9438D vic3 = x411CFE vic3 = x891A77 hoi4 = 7988 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Maqin
 	link = { vic3 = x0BAD6F vic3 = x143D50 vic3 = x162AC1 vic3 = x7F3356 vic3 = x8C298E vic3 = x8FC46D vic3 = xBAD952 vic3 = xBF0445 vic3 = x09C8CB vic3 = x42DB73 hoi4 = 8104 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Shiqu
 	link = { vic3 = x60B060 vic3 = xAE99AF vic3 = xBE3ADF vic3 = x102905 hoi4 = 9966 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Xiaojin
 	link = { vic3 = x59CA77 vic3 = xD57DC5 vic3 = xF0F6C5 hoi4 = 10726 } # STATE_SICHUAN, STATE_SICHUAN, Xichang [mine] -> Yanyuan
-	link = { vic3 = x9F88D3 vic3 = xAD69D9 vic3 = xC97B8A hoi4 = 10787 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Hongyuan
-	link = { vic3 = x39A321 vic3 = x411CFE vic3 = x7511D0 vic3 = x7D9239 vic3 = xBFC5D3 vic3 = x2F07EE vic3 = x891A77 hoi4 = 10817 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Tongde
+	link = { vic3 = x9F88D3 vic3 = xAD69D9 vic3 = xC97B8A vic3 = x3E073E hoi4 = 10787 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Hongyuan
+	link = { vic3 = x39A321 vic3 = x7511D0 vic3 = x7D9239 vic3 = xBFC5D3 vic3 = x2F07EE hoi4 = 10817 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Tongde
 	link = { vic3 = x11B3F7 vic3 = x12B742 vic3 = x28C7CA vic3 = xF64FC1 hoi4 = 10841 } # STATE_SICHUAN, STATE_SICHUAN, Ya’an [farm], STATE_SICHUAN -> Hanyuan
-	link = { vic3 = x9F1EF5 vic3 = xBB4B6C vic3 = xEA3DB0 vic3 = xFF933F vic3 = x3E073E hoi4 = 10903 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Rangtang
+	link = { vic3 = x9F1EF5 vic3 = xBB4B6C vic3 = xEA3DB0 vic3 = xFF933F hoi4 = 10903 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Rangtang
 	link = { vic3 = x2B4D74 vic3 = x787852 vic3 = xC3C67F vic3 = xCCB937 hoi4 = 12141 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Ya'an
 	link = { vic3 = x4BEFB9 vic3 = xC943C3 hoi4 = 12705 } # STATE_SICHUAN, Luzhou [wood] -> Luzhou
 	link = { vic3 = x2CC651 vic3 = x5D7F15 vic3 = x98345A vic3 = xBC9630 vic3 = xD3C3F5 vic3 = x85F99B hoi4 = 12724 } # STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN, STATE_SICHUAN -> Derong
@@ -5754,7 +5755,7 @@
 	link = { vic3 = x1F78D6 vic3 = x361595 vic3 = xB44B2B vic3 = xC0166A hoi4 = 1114 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Mengzi
 	link = { vic3 = x145038 vic3 = x4BFD9D vic3 = x813682 hoi4 = 1172 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Guangnan
 	link = { vic3 = x3F1A1A hoi4 = 1196 } # STATE_YUNNAN -> Wenshan
-	link = { vic3 = x71C144 vic3 = x9F048D vic3 = x88F06D vic3 = x560DE1 hoi4 = 1319 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Songming
+	link = { vic3 = x71C144 vic3 = x88F06D vic3 = x560DE1 vic3 = x9F048D hoi4 = 1319 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Songming
 	link = { vic3 = x7B64C3 vic3 = x9F3CF8 vic3 = xD77B27 vic3 = xF901AE hoi4 = 1383 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Xinping
 	link = { vic3 = x5B4D62 vic3 = x9CC299 vic3 = xE4031D hoi4 = 1522 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Luquan
 	link = { vic3 = x596A3B vic3 = x620CDD hoi4 = 1653 } # STATE_YUNNAN, STATE_YUNNAN -> Mile
@@ -5763,7 +5764,7 @@
 	link = { vic3 = x1CB687 vic3 = x201A85 vic3 = xB2ED64 hoi4 = 4937 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Yongsheng
 	link = { vic3 = xDA3D4C vic3 = xFE5E24 vic3 = x6B38F7 hoi4 = 5009 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Lincang
 	link = { vic3 = x6A589B vic3 = x258B0E hoi4 = 7446 } # Qujing [mine], STATE_YUNNAN -> Kunming
-	link = { vic3 = x0441DB vic3 = x15778F hoi4 = 7606 } # STATE_YUNNAN, STATE_YUNNAN -> Qujing
+	link = { vic3 = x0441DB vic3 = x15778F vic3 = x171D65 hoi4 = 7606 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Qujing
 	link = { vic3 = x20105C vic3 = x7F74E1 vic3 = x82DE53 vic3 = x96953B vic3 = xE67199 hoi4 = 7965 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, Dali [farm] -> Dali
 	link = { vic3 = x93373E vic3 = xB31532 vic3 = xCEE3D4 vic3 = xCEA509 hoi4 = 7976 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Yunxian
 	link = { vic3 = x208960 vic3 = xD050BA hoi4 = 8023 } # STATE_YUNNAN, STATE_YUNNAN -> Chuxiong
@@ -5773,18 +5774,18 @@
 	link = { vic3 = x1030E0 vic3 = x58693A vic3 = x8DE825 vic3 = xE436A1 hoi4 = 10776 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Pu'er
 	link = { vic3 = x013B73 vic3 = x182F15 vic3 = x4371C1 vic3 = xB789C6 hoi4 = 10863 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Mang
 	link = { vic3 = x869E15 vic3 = xD7C8CD vic3 = xEB44C6 hoi4 = 12262 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Mojiang
-	link = { vic3 = x171D65 vic3 = x78DC66 vic3 = xB75AA7 vic3 = xBE3E11 hoi4 = 12282 } # STATE_YUNNAN, Kunming [city], STATE_YUNNAN, STATE_YUNNAN -> Luliang
+	link = { vic3 = x78DC66 vic3 = xB75AA7 vic3 = xBE3E11 hoi4 = 12282 } # Kunming [city], STATE_YUNNAN, STATE_YUNNAN -> Luliang
 	link = { vic3 = x21761F vic3 = x2C11A0 vic3 = x8F7B8D vic3 = xB8B1E3 vic3 = xE7A2A1 vic3 = xF979F9 vic3 = xFDF8D0 hoi4 = 12789 } # STATE_YUNNAN, STATE_YUNNAN, Lijiang [wood], STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Fugong
 	link = { vic3 = x0DD716 vic3 = xA76417 vic3 = xC5D4FD vic3 = x380CC0 vic3 = xFA541A hoi4 = 12898 } # STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN, STATE_YUNNAN -> Baoshan
 	link = { comment = "* * STATE_GUIZHOU " }
 	link = { vic3 = x14F092 vic3 = x2145E4 hoi4 = 1010 } # STATE_GUIZHOU, STATE_GUIZHOU -> Zunyi
 	link = { vic3 = x392877 vic3 = x3DD0C5 vic3 = xAEBCB8 hoi4 = 1474 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Tongren
 	link = { vic3 = x3254BE vic3 = xE0F060 vic3 = x909000 hoi4 = 1884 } # STATE_GUIZHOU, Anshun [wood], STATE_GUIZHOU -> Xingyi
-	link = { vic3 = x4526DC vic3 = xEE0374 vic3 = x4C694B vic3 = xA61477 hoi4 = 4192 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Liupanshui
+	link = { vic3 = x4526DC vic3 = xEE0374 vic3 = x4C694B hoi4 = 4192 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Liupanshui
 	link = { vic3 = x12DE54 vic3 = x97C139 hoi4 = 4325 } # STATE_GUIZHOU, STATE_GUIZHOU -> Kaiyang
-	link = { vic3 = x785430 vic3 = x957B54 vic3 = xF1F862 hoi4 = 4504 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Anshun
+	link = { vic3 = x785430 vic3 = x957B54 vic3 = xF1F862 vic3 = xA61477 hoi4 = 4504 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Anshun
 	link = { vic3 = x7BC0E9 vic3 = xC80075 hoi4 = 4532 } # STATE_GUIZHOU, STATE_GUIZHOU -> Huishui
-	link = { vic3 = x8B77B9 vic3 = x9F6A1B vic3 = x88C50C hoi4 = 5072 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Bijie
+	link = { vic3 = x8B77B9 vic3 = x9F6A1B vic3 = x88C50C vic3 = xF38277 hoi4 = 5072 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Bijie
 	link = { vic3 = x2DB649 vic3 = x109000 hoi4 = 7521 } # STATE_GUIZHOU, Duyun [mine] -> Liping
 	link = { vic3 = x0398DE vic3 = x6B9BF6 vic3 = x9DDD67 hoi4 = 7549 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Kaili
 	link = { vic3 = x269610 vic3 = x735753 vic3 = xC3B047 hoi4 = 7577 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Yuqing
@@ -5792,7 +5793,7 @@
 	link = { vic3 = xAA4079 vic3 = xC7612E vic3 = xCABB49 vic3 = x4D64C0 hoi4 = 9939 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Sinan
 	link = { vic3 = xDAD8AE vic3 = xEBF671 vic3 = x096C00 hoi4 = 10616 } # STATE_GUIZHOU, STATE_GUIZHOU, Guiyang [city] -> Guiyang
 	link = { vic3 = x21B519 vic3 = x70CB39 vic3 = xFCC7AF hoi4 = 10763 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Qianxi
-	link = { vic3 = x8EF2F9 vic3 = xF38277 vic3 = xF4DC23 hoi4 = 10819 } # STATE_GUIZHOU, STATE_GUIZHOU, STATE_GUIZHOU -> Qianxi
+	link = { vic3 = x8EF2F9 vic3 = xF4DC23 hoi4 = 10819 } # STATE_GUIZHOU, STATE_GUIZHOU -> Qianxi
 	link = { vic3 = x053F4B vic3 = x91CCD7 hoi4 = 12841 } # Zhaotong [farm], STATE_GUIZHOU -> Weining
 	link = { comment = "* * STATE_SHAOZHOU " }
 	link = { vic3 = xE6F815 hoi4 = 1047 } # STATE_SHAOZHOU -> Guangzhou
@@ -5817,41 +5818,41 @@
 	link = { comment = "* * STATE_ALXA " }
 	link = { vic3 = x237BED vic3 = x24ADB5 vic3 = x328F66 vic3 = x9E1C8F vic3 = xB8A865 vic3 = xD830CC vic3 = xDD4350 vic3 = xE7AE13 hoi4 = 4783 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, Shivee Khuren [mine], STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> Dalainhob
 	link = { vic3 = x531F24 vic3 = x60FB3C vic3 = xAE9CAF vic3 = xEFBEBE vic3 = xE60991 vic3 = x53E07B hoi4 = 5031 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, Jinchang [wood] -> Badain Jaran
-	link = { vic3 = x0F7D1A vic3 = xC4F9AD vic3 = xF968DB vic3 = x619001 vic3 = xA0BF03 hoi4 = 7511 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> Jingtai
+	link = { vic3 = xF968DB vic3 = x619001 vic3 = x65A6EE hoi4 = 7511 } # STATE_ALXA, STATE_ALXA, STATE_ALXA -> Jingtai
 	link = { vic3 = x2C3E1C vic3 = x37F2AE vic3 = x44E419 vic3 = xC81F52 vic3 = xCAE233 vic3 = xDAABD8 vic3 = xEC70ED hoi4 = 7727 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> land
-	link = { vic3 = x23F13F vic3 = x65BB92 vic3 = x78913A vic3 = xA34D75 vic3 = xBD1A16 vic3 = xC64CF3 hoi4 = 7803 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> land
-	link = { vic3 = x0A8ABF vic3 = x8CFDEA vic3 = x943F9F vic3 = x95322B vic3 = xDD2DD0 vic3 = x249BF1 hoi4 = 8055 } # Wuda [city], STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> Shizuishan
-	link = { vic3 = x299999 vic3 = x4F79A2 vic3 = x7C853E vic3 = x845D6C vic3 = xAB8C53 vic3 = xB03C26 vic3 = xA5DFC1 vic3 = xB2BC38 hoi4 = 8102 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> land
-	link = { vic3 = x65A6EE vic3 = x8CA3D1 vic3 = x91D0D9 hoi4 = 8127 } # STATE_ALXA, STATE_ALXA, Dinguanying [farm] -> Wuzhong
+	link = { vic3 = x23F13F vic3 = x65BB92 vic3 = x78913A vic3 = xBD1A16 hoi4 = 7803 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> land
+	link = { vic3 = x0A8ABF vic3 = x8CFDEA vic3 = x943F9F vic3 = x95322B hoi4 = 8055 } # Wuda [city], STATE_ALXA, STATE_ALXA, STATE_ALXA -> Shizuishan
+	link = { vic3 = x299999 vic3 = x4F79A2 vic3 = x845D6C vic3 = xAB8C53 vic3 = xA5DFC1 vic3 = xB2BC38 vic3 = xB03C26 vic3 = x7C853E hoi4 = 8102 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> land
+	link = { vic3 = x8CA3D1 vic3 = x91D0D9 hoi4 = 8127 } # STATE_ALXA, Dinguanying [farm] -> Wuzhong
 	link = { vic3 = x3D6CBC vic3 = x44ACDA vic3 = xB06961 hoi4 = 10724 } # STATE_ALXA, STATE_ALXA, STATE_ALXA -> Yinchuan
 	link = { vic3 = x1AD9E9 vic3 = x2938F6 vic3 = x36E525 vic3 = x40D14F vic3 = x9C146E vic3 = x0BC088 vic3 = xCBAD9E vic3 = x406E86 hoi4 = 10770 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> land
 	link = { vic3 = x08F4F9 vic3 = x1045BD vic3 = x1C9DAE vic3 = x23E439 vic3 = x30BDCD vic3 = xB0CF8A vic3 = x822408 hoi4 = 10899 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> land
-	link = { vic3 = x6F9BFD vic3 = xA418FA vic3 = xCA805C vic3 = xE168F6 vic3 = xEAB081 vic3 = xEB46AE vic3 = x700F29 hoi4 = 12750 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> Alxa
-	link = { vic3 = x9582A7 vic3 = xC36EF4 hoi4 = 12776 } # STATE_ALXA, STATE_ALXA -> land
-	link = { vic3 = x2C91D2 vic3 = x5A3C39 vic3 = xC93C5A hoi4 = 12880 } # STATE_ALXA, STATE_ALXA, STATE_ALXA -> Dengkou
+	link = { vic3 = x6F9BFD vic3 = xA418FA vic3 = xE168F6 vic3 = xEAB081 vic3 = xEB46AE vic3 = x700F29 hoi4 = 12750 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> Alxa
+	link = { vic3 = x9582A7 vic3 = xC36EF4 vic3 = xCA805C vic3 = xC4F9AD vic3 = xA0BF03 vic3 = x0F7D1A hoi4 = 12776 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> land
+	link = { vic3 = x2C91D2 vic3 = x5A3C39 vic3 = xC93C5A vic3 = xC64CF3 vic3 = xA34D75 vic3 = xDD2DD0 vic3 = x249BF1 hoi4 = 12880 } # STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA, STATE_ALXA -> Dengkou
 	link = { comment = "* * STATE_HINGGAN " }
-	link = { vic3 = x6C3633 vic3 = x6EB371 vic3 = xCBDEAC hoi4 = 1489 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Xuanhua
+	link = { vic3 = x6EB371 hoi4 = 1489 } # STATE_HINGGAN -> Xuanhua
 	link = { vic3 = xF5F399 hoi4 = 1499 } # STATE_HINGGAN -> Baokang
-	link = { vic3 = x5DEC3D vic3 = xF5B726 vic3 = x601436 vic3 = x205BDC hoi4 = 1502 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Jalaid
+	link = { vic3 = x5DEC3D vic3 = x601436 vic3 = x205BDC hoi4 = 1502 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Jalaid
 	link = { vic3 = xA008AE hoi4 = 1508 } # STATE_HINGGAN -> Ongniud
 	link = { vic3 = x402AA1 vic3 = x7DF862 vic3 = x9D4375 vic3 = xA8F8B1 hoi4 = 1551 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Mandulatu
-	link = { vic3 = x4F7D66 vic3 = x879FAD vic3 = xCB1B7A hoi4 = 1558 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> land
+	link = { vic3 = x4F7D66 hoi4 = 1558 } # STATE_HINGGAN -> land
 	link = { vic3 = x6C1D10 vic3 = xD58188 vic3 = xEF59B7 vic3 = x0C97C7 hoi4 = 1608 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Taibus
 	link = { vic3 = x6EA4B4 vic3 = xCE9058 vic3 = x2F0832 vic3 = x123862 vic3 = x35B5D1 vic3 = xAD1C65 hoi4 = 1627 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Ulanhot
 	link = { vic3 = x3622E3 vic3 = xACE725 vic3 = xF17D94 vic3 = xF612D5 vic3 = x950856 hoi4 = 1796 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> land
-	link = { vic3 = x45139C vic3 = xB2F616 vic3 = xCAE219 vic3 = x3DD007 hoi4 = 1811 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Wuchagou
+	link = { vic3 = x45139C vic3 = xB2F616 vic3 = xCAE219 vic3 = x3DD007 vic3 = xF5B726 hoi4 = 1811 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Wuchagou
 	link = { vic3 = x274966 vic3 = x9A7C60 vic3 = xBCEE88 vic3 = xE1254D vic3 = xF3C61B vic3 = x804F17 hoi4 = 1871 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> land
 	link = { vic3 = x48B165 vic3 = x697F3F vic3 = x7D03D7 hoi4 = 1959 } # STATE_HINGGAN, STATE_HINGGAN, Bayannur [mine] -> Bayannao'er
 	link = { vic3 = x0ED964 vic3 = x43C3CE vic3 = x765C76 vic3 = xC9FE6C vic3 = x4F0969 hoi4 = 2087 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Wuyuan
-	link = { vic3 = x13D9CC vic3 = x9B9AEF vic3 = xF700DB hoi4 = 3427 } # STATE_HINGGAN, STATE_HINGGAN, Ordos [city] -> E'erduosi
+	link = { vic3 = x9B9AEF vic3 = xF700DB vic3 = xB018D2 hoi4 = 3427 } # STATE_HINGGAN, Ordos [city], STATE_HINGGAN -> E'erduosi
 	link = { vic3 = x666827 vic3 = xDBA5F1 vic3 = xBE06BF hoi4 = 3877 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Naiman
 	link = { vic3 = x577A97 vic3 = x7FCC4E vic3 = xA2F841 vic3 = x51049D vic3 = xD40A01 vic3 = x3DE808 hoi4 = 4222 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> land
-	link = { vic3 = x4ABE28 vic3 = x6079C8 hoi4 = 4495 } # STATE_HINGGAN, STATE_HINGGAN -> Fengning
+	link = { vic3 = x4ABE28 vic3 = x6079C8 vic3 = x495253 hoi4 = 4495 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Fengning
 	link = { vic3 = x5DDC82 vic3 = x6265E6 vic3 = x6953F3 vic3 = xD5E9B3 vic3 = xD8D89F hoi4 = 4525 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Baotou
 	link = { vic3 = x0717B0 vic3 = xB4B216 vic3 = xE9A4AD hoi4 = 4555 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Uliastai
 	link = { vic3 = x18F94F vic3 = x7C0109 vic3 = x030522 hoi4 = 4612 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Shangyi
 	link = { vic3 = x212B44 vic3 = x78E67B vic3 = xBF4F34 vic3 = xE6C4C4 hoi4 = 4960 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Dalate
-	link = { vic3 = x4C9D47 vic3 = x6885B9 vic3 = xB018D2 vic3 = xDF1557 hoi4 = 4986 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Etuoke
+	link = { vic3 = x4C9D47 vic3 = x6885B9 vic3 = xDF1557 hoi4 = 4986 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Etuoke
 	link = { vic3 = x89BEED vic3 = xA6838A hoi4 = 6988 } # STATE_HINGGAN, STATE_HINGGAN -> Guojiantun
 	link = { vic3 = x29E1D9 vic3 = xE09080 vic3 = xEA991E hoi4 = 7048 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Shangdu
 	link = { vic3 = x54F824 vic3 = xA05101 hoi4 = 7314 } # STATE_HINGGAN, STATE_HINGGAN -> Yulin
@@ -5859,17 +5860,17 @@
 	link = { vic3 = x2F4B70 vic3 = xB2A065 vic3 = xB539EC vic3 = xBB346C vic3 = x6D0C0D hoi4 = 7578 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> land
 	link = { vic3 = x084245 vic3 = x3925C6 vic3 = xAAA387 hoi4 = 7631 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Chasuqi
 	link = { vic3 = x612E18 vic3 = x9F5DDB vic3 = xD287BA hoi4 = 7648 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Xilinhot
-	link = { vic3 = x499327 vic3 = xB28D24 hoi4 = 7659 } # STATE_HINGGAN, STATE_HINGGAN -> Shenmu
-	link = { vic3 = x9A290F vic3 = x0B083B hoi4 = 7674 } # STATE_HINGGAN, STATE_HINGGAN -> Chicheng
-	link = { vic3 = x367825 vic3 = x771A9C vic3 = x24EFE1 vic3 = xFD0842 hoi4 = 7812 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> land
+	link = { vic3 = x499327 vic3 = xB28D24 vic3 = x13D9CC hoi4 = 7659 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Shenmu
+	link = { vic3 = x6C3633 hoi4 = 13379 } # STATE_HINGGAN -> land
+	link = { vic3 = x9A290F vic3 = x0B083B vic3 = xCBDEAC hoi4 = 7674 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Chicheng
+	link = { vic3 = x771A9C vic3 = x24EFE1 vic3 = xFD0842 hoi4 = 7812 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> land
 	link = { vic3 = xCE4FAC vic3 = x4E8F6B hoi4 = 9831 } # STATE_HINGGAN, STATE_HINGGAN -> Kangping
-	link = { vic3 = x495253 hoi4 = 10331 } # STATE_HINGGAN -> Jingoutun
 	link = { vic3 = x13148D vic3 = xDC7606 hoi4 = 10363 } # STATE_HINGGAN, STATE_HINGGAN -> Aqiwula
 	link = { vic3 = x11D2B4 vic3 = x1920B1 vic3 = x56C873 vic3 = x9FB63F vic3 = x61E50B hoi4 = 10372 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Abag
 	link = { vic3 = x4D9365 vic3 = x74B481 vic3 = xDD248C vic3 = x21B375 hoi4 = 10424 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Huhehaote
 	link = { vic3 = x14B65A vic3 = x1A9CDB hoi4 = 10429 } # STATE_HINGGAN, STATE_HINGGAN -> Holingol
 	link = { vic3 = x4DC0A9 vic3 = x56BACB vic3 = x6FCDE9 vic3 = xBF0E96 hoi4 = 10451 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Zhunge'er
-	link = { vic3 = xB4BD1B hoi4 = 10499 } # STATE_HINGGAN -> Qipanshan
+	link = { vic3 = xB4BD1B vic3 = x4BE93C vic3 = x821CB1 hoi4 = 10499 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Qipanshan
 	link = { vic3 = x09BDB5 vic3 = x35F8B6 vic3 = x52517A vic3 = x72508B vic3 = x9B3D7F vic3 = xAE752D hoi4 = 10629 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Bayannao'er
 	link = { vic3 = x686682 vic3 = x946285 vic3 = x9BB42F vic3 = xA74D78 vic3 = x604C22 hoi4 = 10854 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Wuhai
 	link = { vic3 = x0E4A9E vic3 = xF7EA9D hoi4 = 10880 } # STATE_HINGGAN, STATE_HINGGAN -> Hengshan
@@ -5878,11 +5879,11 @@
 	link = { vic3 = x6BFF9D hoi4 = 1638 } # STATE_HINGGAN -> Bayisingtu
 	link = { vic3 = x3650A5 vic3 = xC2EAB6 hoi4 = 11903 } # STATE_HINGGAN, STATE_HINGGAN -> Kayilü
 	link = { vic3 = x189764 vic3 = xB1199E vic3 = xB4B7CD vic3 = xDAFBB4 vic3 = xF789D7 hoi4 = 12331 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Siziwang
-	link = { vic3 = x6018AE vic3 = x8B4B0F hoi4 = 12337 } # STATE_HINGGAN, STATE_HINGGAN -> Jarud
-	link = { vic3 = x356F29 vic3 = x4BE93C vic3 = x821CB1 vic3 = xE81DA5 hoi4 = 12348 } # Yulin [wood], STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Kesigten
+	link = { vic3 = x6018AE vic3 = x8B4B0F vic3 = xCB1B7A hoi4 = 12337 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Jarud
+	link = { vic3 = x356F29 vic3 = xE81DA5 hoi4 = 12348 } # Yulin [wood], STATE_HINGGAN -> Kesigten
 	link = { vic3 = x3591DF vic3 = x47B534 vic3 = xC3EFFD vic3 = xCEF000 hoi4 = 12403 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Wulanchabu
 	link = { vic3 = x57486F vic3 = x58DF63 vic3 = xC66162 vic3 = xC99C56 vic3 = xCCFC62 hoi4 = 12448 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Erenhot
-	link = { vic3 = x48CB19 vic3 = xD9107C hoi4 = 12469 } # STATE_HINGGAN, STATE_HINGGAN -> Zalantun
+	link = { vic3 = x48CB19 vic3 = xD9107C vic3 = x367825 vic3 = x879FAD hoi4 = 12469 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Zalantun
 	link = { vic3 = x62321E vic3 = xA02978 hoi4 = 12478 } # STATE_HINGGAN, STATE_HINGGAN -> Tianshan
 	link = { vic3 = x7DE432 vic3 = x0B290E vic3 = x5D8002 hoi4 = 12554 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> land
 	link = { vic3 = x509BF7 vic3 = x52BBA8 vic3 = x789EBE vic3 = xF992BD vic3 = x6FF702 hoi4 = 12609 } # STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN, STATE_HINGGAN -> Bayan'obo
@@ -5904,16 +5905,14 @@
 	link = { vic3 = x8D45C0 vic3 = xCC1018 hoi4 = 4134 } # STATE_GUANGXI, Hechi [wood] -> Du'an
 	link = { vic3 = x0422AC vic3 = xE38868 hoi4 = 4628 } # STATE_GUANGXI, STATE_GUANGXI -> Dahua
 	link = { vic3 = xDCC7E1 hoi4 = 4656 } # STATE_GUANGXI -> Jingxi
-	link = { vic3 = x5100A2 hoi4 = 7192 } # STATE_GUANGXI -> Guigang
-	link = { vic3 = xE33EC4 hoi4 = 11983 } # STATE_GUANGXI -> Beiliu
-	link = { vic3 = x0F948D hoi4 = 7044 } # STATE_GUANGXI -> Cenxi
+	link = { vic3 = x5100A2 vic3 = xE33EC4 hoi4 = 7044 } # STATE_GUANGXI, STATE_GUANGXI -> Cenxi
 	link = { vic3 = xE2A874 hoi4 = 7095 } # STATE_GUANGXI -> Liuzhou
 	link = { vic3 = x942ACA hoi4 = 7128 } # STATE_GUANGXI -> Zhongshan
 	link = { vic3 = x37E3AC hoi4 = 7137 } # Nanning [city] -> Nanning
 	link = { vic3 = xDDB27C hoi4 = 7159 } # STATE_GUANGXI -> Leiyang
-	link = { vic3 = xBA0CC4 hoi4 = 4152 } # STATE_GUANGXI -> Wuzhou
+	link = { vic3 = xBA0CC4 vic3 = x0F948D hoi4 = 4152 } # STATE_GUANGXI, STATE_GUANGXI -> Wuzhou
 	link = { vic3 = x09D527 vic3 = x201F22 hoi4 = 7168 } # STATE_GUANGXI, STATE_GUANGXI -> Lipu
-	link = { vic3 = x116561 vic3 = x1380FF hoi4 = 7210 } # STATE_GUANGXI, STATE_GUANGXI -> Zhaoping
+	link = { vic3 = x1380FF vic3 = x116561 hoi4 = 7210 } # STATE_GUANGXI, STATE_GUANGXI -> Zhaoping
 	link = { vic3 = x0359FB hoi4 = 7502 } # STATE_GUANGXI -> Hengyang
 	link = { vic3 = xC3BDF0 hoi4 = 7650 } # STATE_GUANGXI -> Wuming
 	link = { vic3 = x368CDE hoi4 = 9982 } # STATE_GUANGXI -> Zixing
@@ -5927,12 +5926,14 @@
 	link = { vic3 = x505080 vic3 = x6EB824 vic3 = xD8799B hoi4 = 11918 } # Chenzhou [mine], STATE_GUANGXI, STATE_GUANGXI -> Chenzhou
 	link = { vic3 = xA34E72 hoi4 = 12023 } # STATE_GUANGXI -> Pingnan
 	link = { vic3 = x12B2EF hoi4 = 12053 } # STATE_GUANGXI -> Shaoyang
-	link = { vic3 = x432FE3 vic3 = xB0B0E0 hoi4 = 12378 } # STATE_GUANGXI, STATE_GUANGXI -> Ningyuan
-	link = { vic3 = x686CE7 hoi4 = 12407 } # STATE_GUANGXI -> Quanzhou
+	link = { vic3 = xB0B0E0 hoi4 = 12378 } # STATE_GUANGXI -> Ningyuan
+	link = { vic3 = x686CE7 vic3 = x432FE3 hoi4 = 12407 } # STATE_GUANGXI, STATE_GUANGXI -> Quanzhou
 	link = { vic3 = xA98A12 vic3 = xFA9280 hoi4 = 12436 } # STATE_GUANGXI, STATE_GUANGXI -> Hechi
 	link = { comment = "* * STATE_BEIJING " }
 	link = { vic3 = xB00D9D hoi4 = 10068 } # Tianjin [port][farm] -> Tianjin
-	link = { vic3 = xB6039C hoi4 = 11761 hoi4 = 9843 } # STATE_BEIJING -> Langfang, Beijing
+	link = { vic3 = x6583A6 hoi4 = 10331 } # STATE_BEIJING -> Jingoutun
+	link = { vic3 = xD4E0E8 hoi4 = 11761 } # STATE_BEIJING -> Langfang
+	link = { vic3 = xB6039C hoi4 = 9843 } # STATE_BEIJING -> Beijing
 	link = { vic3 = x74A475 hoi4 = 828 } # STATE_BEIJING -> Yangyuan
 	link = { vic3 = xE60560 hoi4 = 6898 } # STATE_BEIJING -> Nanpiao
 	link = { vic3 = xD13996 hoi4 = 3814 } # STATE_BEIJING -> Qinglong
@@ -5941,7 +5942,6 @@
 	link = { vic3 = xAF5387 hoi4 = 934 } # STATE_BEIJING -> Jinzhou
 	link = { vic3 = x3CFF20 hoi4 = 952 } # STATE_BEIJING -> Yanqing
 	link = { vic3 = x58AFAC vic3 = xCDCDEE hoi4 = 1052 } # STATE_BEIJING, STATE_BEIJING -> Luannan
-	link = { vic3 = x166F01 hoi4 = 12026 } # STATE_BEIJING -> Baoding
 	link = { vic3 = x20642C vic3 = x038690 hoi4 = 1137 } # STATE_BEIJING, STATE_BEIJING -> Yuxian
 	link = { vic3 = x1DE6DF vic3 = x231686 hoi4 = 1590 } # STATE_BEIJING, STATE_BEIJING -> Xiheying
 	link = { vic3 = x0E8D56 vic3 = xBDC299 hoi4 = 3828 } # STATE_BEIJING, STATE_BEIJING -> Chaoyang
@@ -5952,24 +5952,24 @@
 	link = { vic3 = x0F5604 hoi4 = 881 } # Chengde [mine] -> Xinglong
 	link = { vic3 = x74DF28 vic3 = x89DBF2 hoi4 = 3955 } # STATE_BEIJING, STATE_BEIJING -> Sanhe
 	link = { vic3 = x248784 vic3 = xFBDEDF vic3 = x3C6EFC vic3 = x6AB0FB vic3 = x6376AC hoi4 = 3978 } # STATE_BEIJING, STATE_BEIJING, STATE_BEIJING, STATE_BEIJING, STATE_BEIJING -> Heshigten
-	link = { vic3 = x9BB46B vic3 = xA8C9D2 hoi4 = 4140 } # Beijing [city], STATE_BEIJING -> Zhuozhou
+	link = { vic3 = x9BB46B vic3 = xA8C9D2 vic3 = x166F01 hoi4 = 4140 } # Beijing [city], STATE_BEIJING, STATE_BEIJING -> Zhuozhou
 	link = { vic3 = x5F795B vic3 = x61E0DD vic3 = x88FF71 hoi4 = 4514 } # STATE_BEIJING, STATE_BEIJING, STATE_BEIJING -> Beipiao
 	link = { vic3 = x4BECCA vic3 = xC905ED hoi4 = 6852 } # STATE_BEIJING, STATE_BEIJING -> Ershijia
-	link = { vic3 = x2167D8 vic3 = xF4B72A hoi4 = 6904 } # STATE_BEIJING, STATE_BEIJING -> Fangshan
+	link = { vic3 = x2167D8 hoi4 = 6904 } # STATE_BEIJING -> Fangshan
 	link = { vic3 = x3A340B hoi4 = 972 } # STATE_BEIJING -> Longhua
 	link = { vic3 = x3E9C33 vic3 = x2AD313 hoi4 = 6937 } # STATE_BEIJING, STATE_BEIJING -> Fengshan
-	link = { vic3 = x15C9C0 vic3 = x5D4C2D hoi4 = 6969 } # STATE_BEIJING, STATE_BEIJING -> Zunhua
+	link = { vic3 = x15C9C0 hoi4 = 6969 } # STATE_BEIJING -> Zunhua
 	link = { vic3 = x2BA1CE vic3 = x4ED08B vic3 = x84B446 hoi4 = 7575 } # STATE_BEIJING, STATE_BEIJING, STATE_BEIJING -> Weichang
 	link = { vic3 = x132B15 vic3 = x2C0AC4 hoi4 = 7633 } # STATE_BEIJING, STATE_BEIJING -> Kalaqin
-	link = { vic3 = xD1BFAF vic3 = x6583A6 hoi4 = 9768 } # STATE_BEIJING, STATE_BEIJING -> Luanping
+	link = { vic3 = xD1BFAF hoi4 = 9768 } # STATE_BEIJING -> Luanping
 	link = { vic3 = x2F7E73 hoi4 = 9776 } # STATE_BEIJING -> Mentougou
 	link = { vic3 = x49C04A hoi4 = 11815 } # STATE_BEIJING -> Panjin
 	link = { vic3 = x1E1B11 hoi4 = 9905 } # STATE_BEIJING -> Qianxi
 	link = { vic3 = xB17E6B hoi4 = 9927 } # STATE_BEIJING -> Yixian
-	link = { vic3 = xB9FF8C hoi4 = 10397 } # STATE_BEIJING -> Zhuolu
+	link = { vic3 = xF4B72A vic3 = xB9FF8C hoi4 = 10397 } # STATE_BEIJING, STATE_BEIJING -> Zhuolu
 	link = { vic3 = x3F46FB vic3 = x8D47D0 hoi4 = 10426 } # STATE_BEIJING, STATE_BEIJING -> Chifeng
 	link = { vic3 = x777A4F hoi4 = 11801 } # STATE_BEIJING -> Yingshouyingzi
-	link = { vic3 = xD4E0E8 hoi4 = 11822 } # STATE_BEIJING -> Tongzhou
+	link = { vic3 = x5D4C2D hoi4 = 11822 } # STATE_BEIJING -> Tongzhou
 	link = { vic3 = x0F88C8 vic3 = x0DC804 hoi4 = 11855 } # STATE_BEIJING, STATE_BEIJING -> Lingyuan
 	link = { vic3 = xF151F1 hoi4 = 12043 } # STATE_BEIJING -> Tangshan
 	link = { comment = "* * STATE_SHENGJING " }
@@ -6026,7 +6026,7 @@
 	link = { vic3 = x659CA2 hoi4 = 3811 } # STATE_OUTER_MANCHURIA -> Chuguyevka
 	link = { vic3 = x8811C4 hoi4 = 6811 } # STATE_OUTER_MANCHURIA -> Linkou
 	link = { vic3 = x1E0962 hoi4 = 3815 } # STATE_OUTER_MANCHURIA -> Qitaihe
-	link = { vic3 = xA748D2 hoi4 = 3843 } # STATE_OUTER_MANCHURIA -> Jidong
+	link = { vic3 = xA748D2 hoi4 = 3843 hoi4 = 5427 } # STATE_OUTER_MANCHURIA -> Jidong, Mishan
 	link = { vic3 = x08BE7F hoi4 = 3977 } # STATE_OUTER_MANCHURIA -> Ussuriysk
 	link = { vic3 = x7D6986 vic3 = xE13F68 hoi4 = 4404 } # Bazhongnuo [wood], STATE_OUTER_MANCHURIA -> land
 	link = { vic3 = x50B7B1 vic3 = x573287 hoi4 = 4841 } # STATE_OUTER_MANCHURIA, STATE_OUTER_MANCHURIA -> De-Kastri
@@ -6067,7 +6067,7 @@
 	link = { vic3 = x0E5076 vic3 = x90E2A0 vic3 = xB7B43B hoi4 = 12189 } # STATE_OUTER_MANCHURIA, STATE_OUTER_MANCHURIA, Boli [city] -> Khabarovsk
 	link = { vic3 = x45A652 hoi4 = 12500 } # STATE_OUTER_MANCHURIA -> Hutou
 	link = { comment = "* * STATE_SOUTHERN_MANCHURIA " }
-	link = { vic3 = x1BD261 hoi4 = 9798 } # STATE_SOUTHERN_MANCHURIA -> Hulin
+	link = { vic3 = x1BD261 vic3 = x842782 hoi4 = 9798 } # STATE_SOUTHERN_MANCHURIA, STATE_SOUTHERN_MANCHURIA -> Hulin
 	link = { vic3 = x54C0A3 hoi4 = 783 } # STATE_SOUTHERN_MANCHURIA -> Suifenhe
 	link = { vic3 = xDF828B hoi4 = 800 } # STATE_SOUTHERN_MANCHURIA -> Xinshi
 	link = { vic3 = xF471D5 hoi4 = 887 } # STATE_SOUTHERN_MANCHURIA -> Liaoyuan
@@ -6091,7 +6091,6 @@
 	link = { vic3 = x158FFA vic3 = x50B15B vic3 = x5BA3EB hoi4 = 4551 } # STATE_SOUTHERN_MANCHURIA, STATE_SOUTHERN_MANCHURIA, STATE_SOUTHERN_MANCHURIA -> Tongjiang
 	link = { vic3 = x7CDF50 hoi4 = 4572 } # STATE_SOUTHERN_MANCHURIA -> Xinjing
 	link = { vic3 = x385E45 vic3 = xC3FFC1 vic3 = x8BA6E3 hoi4 = 4642 } # Tonghua [farm], STATE_SOUTHERN_MANCHURIA, STATE_SOUTHERN_MANCHURIA -> Siping
-	link = { vic3 = x842782 hoi4 = 5427 } # STATE_SOUTHERN_MANCHURIA -> Mishan
 	link = { vic3 = x6AA436 vic3 = xDA5747 hoi4 = 6863 } # STATE_SOUTHERN_MANCHURIA, STATE_SOUTHERN_MANCHURIA -> Baoqing
 	link = { vic3 = xC4B939 hoi4 = 6868 } # STATE_SOUTHERN_MANCHURIA -> Meihekou
 	link = { vic3 = x54B71E hoi4 = 6905 } # STATE_SOUTHERN_MANCHURIA -> Jingyu
@@ -6177,7 +6176,7 @@
 	link = { vic3 = x035212 vic3 = x0DA7AE vic3 = x5B3ADD vic3 = xACAAED hoi4 = 12690 } # STATE_NORTHERN_MANCHURIA, STATE_NORTHERN_MANCHURIA, STATE_NORTHERN_MANCHURIA, STATE_NORTHERN_MANCHURIA -> Alatan Emol
 	link = { vic3 = x243295 vic3 = xFC7079 hoi4 = 13150 } # STATE_NORTHERN_MANCHURIA, STATE_NORTHERN_MANCHURIA -> Bayan Tohoi
 	link = { comment = "* * STATE_SHANXI " }
-	link = { vic3 = xBBD804 hoi4 = 4208 } # STATE_SHANXI -> Laiyuan
+	link = { vic3 = xBBD804 hoi4 = 4208 hoi4 = 10480 } # STATE_SHANXI -> Laiyuan, Lingqiu
 	link = { vic3 = x092D9A hoi4 = 1027 } # STATE_SHANXI -> Hunyuan
 	link = { vic3 = x5DD6C0 vic3 = x62F096 hoi4 = 1034 } # STATE_SHANXI, Linfen [farm] -> Linfen
 	link = { vic3 = xA892F9 vic3 = xD29750 hoi4 = 1180 } # STATE_SHANXI, STATE_SHANXI -> Jincheng
@@ -6196,76 +6195,76 @@
 	link = { vic3 = xF45F74 hoi4 = 7571 } # STATE_SHANXI -> Jiangxian
 	link = { vic3 = x2BAB5F vic3 = xFA7945 hoi4 = 10367 } # Luliang [mine], STATE_SHANXI -> Luliang
 	link = { vic3 = x21C69F hoi4 = 10421 } # STATE_SHANXI -> Changzhi
-	link = { vic3 = x2E331F hoi4 = 10480 } # Datong [wood] -> Lingqiu
 	link = { vic3 = x9090C0 vic3 = xB63C5E hoi4 = 10507 } # STATE_SHANXI, STATE_SHANXI -> Shuozhou
 	link = { vic3 = x149A35 hoi4 = 12078 } # STATE_SHANXI -> Yangquan
 	link = { vic3 = x771E37 vic3 = xBDBFAF hoi4 = 12300 } # STATE_SHANXI, STATE_SHANXI -> Ningwu
 	link = { vic3 = xE75A35 hoi4 = 12344 } # STATE_SHANXI -> Jinzhong
-	link = { vic3 = x1A2B77 hoi4 = 12432 } # STATE_SHANXI -> Datong
+	link = { vic3 = x1A2B77 vic3 = x2E331F hoi4 = 12432 } # STATE_SHANXI, Datong [wood] -> Datong
 	link = { comment = "* * STATE_NINGXIA " }
 	link = { vic3 = x5023A8 vic3 = x6E8E64 vic3 = x909080 vic3 = xFE1D86 hoi4 = 517 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Ansai
-	link = { vic3 = x09BCF6 vic3 = xFB1690 vic3 = xA09080 hoi4 = 531 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Longnan
-	link = { vic3 = x83E09F vic3 = x88DFF1 hoi4 = 556 } # STATE_NINGXIA, STATE_NINGXIA -> Dingxi
-	link = { vic3 = x357B9C vic3 = x4DAD29 hoi4 = 1630 } # STATE_NINGXIA, STATE_NINGXIA -> Baiyin
+	link = { vic3 = x83E09F vic3 = x88DFF1 vic3 = xB4A217 hoi4 = 556 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Dingxi
+	link = { vic3 = x357B9C vic3 = x4DAD29 vic3 = x3C0326 hoi4 = 1630 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Baiyin
 	link = { vic3 = x2FC489 vic3 = xC13263 hoi4 = 1647 } # STATE_NINGXIA, STATE_NINGXIA -> Pingliang
 	link = { vic3 = x074BCB vic3 = x1E4AB9 vic3 = x23D056 hoi4 = 1933 } # STATE_NINGXIA, STATE_NINGXIA, Tianshui [farm] -> Tianshui
 	link = { vic3 = x18598F vic3 = x5EA4EA vic3 = xB2D474 hoi4 = 1985 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Haiyuan
-	link = { vic3 = x059BB6 vic3 = x2EE787 vic3 = x769B1C hoi4 = 2022 } # STATE_NINGXIA, STATE_NINGXIA, Lanzhou [city] -> Linxia
-	link = { vic3 = x8F5E51 vic3 = xC14D4F vic3 = xCCCD99 vic3 = x3C0326 hoi4 = 3742 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Zhongwei
+	link = { vic3 = x059BB6 vic3 = x769B1C vic3 = x5A9612 hoi4 = 2022 } # STATE_NINGXIA, Lanzhou [city], STATE_NINGXIA -> Linxia
+	link = { vic3 = x8F5E51 vic3 = xC14D4F vic3 = xCCCD99 hoi4 = 3742 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Zhongwei
 	link = { vic3 = x90E663 vic3 = xD5965A hoi4 = 3745 } # STATE_NINGXIA, STATE_NINGXIA -> Dingbian
 	link = { vic3 = xB5C560 vic3 = x9101A7 hoi4 = 4313 } # STATE_NINGXIA, STATE_NINGXIA -> Luqu
 	link = { vic3 = x8A81C7 vic3 = xE94A07 hoi4 = 4939 } # STATE_NINGXIA, STATE_NINGXIA -> Jingbian
 	link = { vic3 = xC174DB vic3 = xD8DFAA hoi4 = 5025 } # STATE_NINGXIA, STATE_NINGXIA -> Guyuan
-	link = { vic3 = x5A9612 vic3 = xA1721C vic3 = xB4A217 hoi4 = 6638 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Lanzhou
+	link = { vic3 = xA1721C hoi4 = 6638 } # STATE_NINGXIA -> Lanzhou
 	link = { vic3 = xA762C6 vic3 = xCA217E hoi4 = 7397 } # STATE_NINGXIA, STATE_NINGXIA -> Lintan
 	link = { vic3 = x19B590 vic3 = x584DF4 hoi4 = 7911 } # STATE_NINGXIA, STATE_NINGXIA -> Chengxian
 	link = { vic3 = xF32666 vic3 = x4CCC0E vic3 = x3FC5F7 vic3 = x48175A vic3 = x358CED hoi4 = 8081 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Yanchi
-	link = { vic3 = x1D97FA vic3 = x2030E0 vic3 = xF3DD2F vic3 = xBF3F1F hoi4 = 12797 } # Linxia [mine], STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Hezuo
-	link = { vic3 = x2FF3B4 vic3 = x6CA1B1 vic3 = xCCEDF7 vic3 = xAC32B2 hoi4 = 12882 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA, Longnan [wood] -> Tanchang
+	link = { vic3 = x1D97FA vic3 = x2030E0 vic3 = xBF3F1F vic3 = x2EE787 hoi4 = 12797 } # Linxia [mine], STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Hezuo
+	link = { vic3 = x2FF3B4 vic3 = x6CA1B1 vic3 = xCCEDF7 vic3 = xAC32B2 vic3 = xF3DD2F hoi4 = 12882 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA, Longnan [wood], STATE_NINGXIA -> Tanchang
+	link = { vic3 = xFB1690 vic3 = xA09080 vic3 = x09BCF6 hoi4 = 4295 } # STATE_NINGXIA, STATE_NINGXIA, STATE_NINGXIA -> Hanzhong
 	link = { comment = "* * STATE_GANSU " }
-	link = { vic3 = x429A2D vic3 = x5EBA61 vic3 = x85EDAB vic3 = x8B7A5E vic3 = xA2B075 vic3 = xCF5A60 vic3 = xD00924 vic3 = x98562F hoi4 = 1778 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> land
+	link = { vic3 = x429A2D vic3 = x85EDAB vic3 = xA2B075 vic3 = xCF5A60 vic3 = x98562F hoi4 = 1778 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> land
 	link = { vic3 = x989A23 vic3 = xA2D436 vic3 = xA4641B vic3 = xDED72F vic3 = xFB886B hoi4 = 2028 } # STATE_GANSU, STATE_GANSU, Jiuquan [city], STATE_GANSU, STATE_GANSU -> Jiuquan
-	link = { vic3 = x1E766C vic3 = x66C5EF vic3 = xA9C393 vic3 = xFD3127 hoi4 = 2099 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> Têmqên
 	link = { vic3 = x1628E7 vic3 = x677428 vic3 = xA6E1B1 hoi4 = 4888 } # STATE_GANSU, STATE_GANSU, STATE_GANSU -> Chuankou
 	link = { vic3 = x2FB9C1 vic3 = x619172 vic3 = x8C62C2 vic3 = xF97B78 hoi4 = 5057 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> Yongdeng
-	link = { vic3 = x2A3BA7 vic3 = x3CC0FB vic3 = x7214AC vic3 = xB4ABCE hoi4 = 5076 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> Dangchengwan
+	link = { vic3 = x66C5EF vic3 = xA9C393 vic3 = xFD3127 vic3 = x1E766C vic3 = xB4ABCE vic3 = x7214AC hoi4 = 13381 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> land
+	link = { vic3 = x2A3BA7 vic3 = x3CC0FB vic3 = x935523 vic3 = xBD5671 hoi4 = 5076 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> Dangchengwan
 	link = { vic3 = x1CBDEB vic3 = x26CFB7 vic3 = x46C752 vic3 = xD4F3DE vic3 = xE03060 hoi4 = 5100 } # Zhangye [farm], STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> Zhangye
-	link = { vic3 = x4E6196 vic3 = x7F54BB vic3 = x83F3D4 vic3 = x935523 vic3 = xBD5671 hoi4 = 7971 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> Yumen
+	link = { vic3 = x4E6196 vic3 = x7F54BB vic3 = x83F3D4 vic3 = x8B7A5E vic3 = x5EBA61 vic3 = xD00924 hoi4 = 7971 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> Yumen
 	link = { vic3 = x0CD56E vic3 = x25425B vic3 = x8469FE vic3 = xDB53A0 hoi4 = 7997 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> Qaidam
 	link = { vic3 = x20B9B8 vic3 = x64D221 vic3 = xC6A067 vic3 = x200F1E vic3 = x35E5A6 vic3 = xED5B03 hoi4 = 12327 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> Wuwei
 	link = { vic3 = x0BB1FD vic3 = x1CA516 vic3 = x2A8941 vic3 = xAD8661 vic3 = xE78B94 vic3 = xF91EB1 vic3 = x6DFA0C vic3 = x420171 vic3 = x3CE40F vic3 = x28A469 vic3 = x1FFCB8 vic3 = x0FA31C vic3 = x48D0ED vic3 = x6C0FF5 vic3 = x51C8FE vic3 = xB1C68F vic3 = x31DB5B hoi4 = 12596 } # STATE_GANSU, STATE_GANSU, Dunhuang [mine], STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU, STATE_GANSU -> Aksay
 	link = { vic3 = x1E2B5B vic3 = x5F68D6 vic3 = xE6B547 vic3 = x1A96D6 hoi4 = 12732 } # STATE_GANSU, STATE_GANSU, STATE_GANSU, Xining [wood] -> Xining
 	link = { comment = "* * STATE_XIAN " }
-	link = { vic3 = x32EDB3 vic3 = x434092 vic3 = x3A0F5D vic3 = xA7D4E7 hoi4 = 1458 } # STATE_XIAN, STATE_XIAN, STATE_XIAN, STATE_XIAN -> Yanchuan
+	link = { vic3 = x32EDB3 vic3 = xA7D4E7 vic3 = xF40585 hoi4 = 1458 } # STATE_XIAN, STATE_XIAN, STATE_XIAN -> Yanchuan
 	link = { vic3 = x509080 vic3 = xA5CD14 vic3 = xA64E0F hoi4 = 1976 } # STATE_XIAN, STATE_XIAN, Xi’an [city] -> Xi'an
 	link = { vic3 = x8C9D26 vic3 = x1A1A09 hoi4 = 2006 } # Baoji [mine], STATE_XIAN -> Baoji
 	link = { vic3 = x4A615F vic3 = x9D1667 hoi4 = 4167 } # STATE_XIAN, STATE_XIAN -> Xixiang
 	link = { vic3 = x11F985 vic3 = xC154EE hoi4 = 4256 } # STATE_XIAN, STATE_XIAN -> Ningshan
-	link = { vic3 = x2D169B vic3 = x609C66 vic3 = xAFEA41 hoi4 = 4295 } # STATE_XIAN, STATE_XIAN, STATE_XIAN -> Hanzhong
 	link = { vic3 = x7ED6E0 vic3 = xEB71FF vic3 = x749C07 hoi4 = 5007 } # STATE_XIAN, STATE_XIAN, STATE_XIAN -> Hancheng
 	link = { vic3 = x6BE3E0 hoi4 = 5092 } # STATE_XIAN -> Shangluo
 	link = { vic3 = x2B47B0 vic3 = xD01080 hoi4 = 7208 } # STATE_XIAN, STATE_XIAN -> Yichuan
 	link = { vic3 = x9772CF vic3 = xC9D000 hoi4 = 7406 } # STATE_XIAN, STATE_XIAN -> Zhen'an
 	link = { vic3 = xD35EE3 vic3 = xD01000 hoi4 = 7418 } # STATE_XIAN, STATE_XIAN -> Ankang
 	link = { vic3 = x1FCA38 vic3 = x38D512 vic3 = xADCF92 hoi4 = 8049 } # STATE_XIAN, STATE_XIAN, STATE_XIAN -> Yan'an
-	link = { vic3 = x6F4A61 vic3 = xAD7D71 vic3 = xDC98F0 hoi4 = 10257 } # STATE_XIAN, Hanzhong [farm], STATE_XIAN -> Chenggu
+	link = { vic3 = x6F4A61 vic3 = xAD7D71 vic3 = xDC98F0 vic3 = x609C66 vic3 = xAFEA41 vic3 = x2D169B hoi4 = 10257 } # STATE_XIAN, Hanzhong [farm], STATE_XIAN, STATE_XIAN, STATE_XIAN, STATE_XIAN -> Chenggu
 	link = { vic3 = x63CB81 vic3 = xE5BE65 hoi4 = 10733 } # STATE_XIAN, STATE_XIAN -> Binzhou
 	link = { vic3 = xA82289 vic3 = xF80FD0 hoi4 = 12156 } # STATE_XIAN, STATE_XIAN -> Tongchuan
-	link = { vic3 = x09BD45 vic3 = x3CE218 vic3 = x5E3640 vic3 = x826987 vic3 = xF40585 vic3 = x08880B vic3 = xCBACD2 hoi4 = 12356 } # Yan’an [wood], STATE_XIAN, STATE_XIAN, STATE_XIAN, STATE_XIAN, STATE_XIAN, STATE_XIAN -> Zichang
+	link = { vic3 = x09BD45 vic3 = x3CE218 vic3 = x5E3640 vic3 = x826987 vic3 = x08880B vic3 = xCBACD2 vic3 = x3A0F5D vic3 = x434092 hoi4 = 12356 } # Yan’an [wood], STATE_XIAN, STATE_XIAN, STATE_XIAN, STATE_XIAN, STATE_XIAN, STATE_XIAN, STATE_XIAN -> Zichang
 	link = { vic3 = x6A2E0D vic3 = x5003FE hoi4 = 7301 } # STATE_XIAN, STATE_XIAN -> Weinan
 	link = { vic3 = x6CC278 hoi4 = 12713 } # STATE_XIAN -> Dali
 	link = { comment = "* * STATE_QINGHAI " }
-	link = { vic3 = x752E9C vic3 = x97D0F7 vic3 = xAE2378 vic3 = xF8163B vic3 = xCC0798 hoi4 = 1882 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Madoi
+	link = { vic3 = x752E9C vic3 = xF8163B vic3 = xCC0798 hoi4 = 1882 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Madoi
+	link = { vic3 = x24E110 vic3 = xB05071 vic3 = xD85009 vic3 = x7384EB hoi4 = 2099 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Têmqên
+	link = { vic3 = xA43247 hoi4 = 13380 } # STATE_QINGHAI -> land
 	link = { vic3 = x0CCB8F vic3 = x82F9A2 vic3 = x8FA6BB vic3 = xF58A1A vic3 = x5E0C1F hoi4 = 2053 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Gangca
 	link = { vic3 = x438218 vic3 = x5476D4 vic3 = x5538A6 vic3 = xB179AA vic3 = xB7A66A vic3 = x5ADB03 hoi4 = 4536 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Xinghai
 	link = { vic3 = x21632D vic3 = x4037B8 vic3 = x48C531 vic3 = x592A1D vic3 = x649DE3 vic3 = x843F30 vic3 = xCDBBBB vic3 = xE297F2 vic3 = xF19D57 vic3 = xF7EAC3 vic3 = xFFE05D vic3 = xA005D5 vic3 = x3A7DD1 vic3 = xB6FDB8 vic3 = x55AD3D hoi4 = 4914 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Qumarlêb
 	link = { vic3 = x01EA55 vic3 = x0E7AF6 vic3 = x5F6C64 vic3 = x603060 vic3 = x934412 vic3 = xAFA6D4 vic3 = xC3A077 vic3 = xCF5578 vic3 = xDF82D2 vic3 = xFC7955 vic3 = xF67C16 vic3 = x51E934 vic3 = x879B7B hoi4 = 4964 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, Yushu [wood], STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Yushu
 	link = { vic3 = x111768 vic3 = x118595 vic3 = xF813D9 hoi4 = 7270 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Jainca
 	link = { vic3 = x1AB66B vic3 = x23998A vic3 = x52D6EF vic3 = x5B452E vic3 = x635113 vic3 = x95EBD6 vic3 = xCE8D54 vic3 = xDD43E0 vic3 = xE487C8 vic3 = x7C1B07 hoi4 = 7940 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, Golmud [mine], STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Golmud
-	link = { vic3 = x1C7488 vic3 = x39205F vic3 = x6450DE vic3 = xACBB53 vic3 = xE2B866 vic3 = x7102E1 vic3 = xB8062C hoi4 = 8018 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Dulan
+	link = { vic3 = x1C7488 vic3 = x39205F vic3 = x6450DE vic3 = xACBB53 vic3 = xE2B866 vic3 = x7102E1 vic3 = xB8062C vic3 = xAE2378 vic3 = x97D0F7 hoi4 = 8018 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Dulan
 	link = { vic3 = x1BF6D6 vic3 = x1FBFBC vic3 = x2599E5 vic3 = x30AAC3 vic3 = x6EE031 vic3 = x713CDF vic3 = x7C70E2 vic3 = x8638AC vic3 = xBE9BED vic3 = xCDCC17 vic3 = xD438C6 vic3 = x3B8905 vic3 = xC3B802 hoi4 = 8037 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Dangla
-	link = { vic3 = x351164 vic3 = x6144EE vic3 = xCEF931 vic3 = xF0D030 vic3 = xA43247 hoi4 = 10490 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Qabqa
-	link = { vic3 = x4382DA vic3 = x4F7F80 vic3 = x53C731 vic3 = x60BB6E vic3 = x65C7FB vic3 = xC63AA0 vic3 = xFB6246 vic3 = x2F0405 vic3 = xF79E07 vic3 = xD85009 vic3 = x24E110 vic3 = xB05071 vic3 = x7384EB hoi4 = 10750 } # STATE_QINGHAI, STATE_QINGHAI, Delingha [city], STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Ulan
+	link = { vic3 = x351164 vic3 = x6144EE vic3 = xCEF931 vic3 = xF0D030 hoi4 = 10490 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Qabqa
+	link = { vic3 = x4382DA vic3 = x4F7F80 vic3 = x53C731 vic3 = x60BB6E vic3 = x65C7FB vic3 = xC63AA0 vic3 = xFB6246 vic3 = x2F0405 vic3 = xF79E07 hoi4 = 10750 } # STATE_QINGHAI, STATE_QINGHAI, Delingha [city], STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Ulan
 	link = { vic3 = x059EA0 vic3 = x16B891 vic3 = x41E71B vic3 = xAB9B7F vic3 = xDCCF57 vic3 = xEA9D45 vic3 = x1B5D55 vic3 = xF27128 hoi4 = 10796 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Delhi
 	link = { vic3 = x207F70 vic3 = x2FFEAA vic3 = x578717 vic3 = xA65852 vic3 = xC8B3E2 vic3 = xD81ABC vic3 = x8B7006 vic3 = x9A3932 vic3 = x950F2F vic3 = x1835D1 hoi4 = 10834 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> land
 	link = { vic3 = xA65827 vic3 = xA65C2D vic3 = xAB96DC vic3 = xC2E1A3 vic3 = xD386AD vic3 = xF24B9B vic3 = xF8355E hoi4 = 10865 } # STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI, STATE_QINGHAI -> Tongren
@@ -6300,11 +6299,12 @@
 	link = { vic3 = x260389 hoi4 = 7039 } # STATE_GUANGDONG -> Maoming
 	link = { vic3 = x19FD82 hoi4 = 7152 } # STATE_GUANGDONG -> Jiangmen
 	link = { vic3 = x30B0E0 hoi4 = 994 } # Sanya [mine] -> Sanya
-	link = { vic3 = x477755 hoi4 = 1018 } # STATE_GUANGDONG -> Qinzhou
+	link = { vic3 = x477755 hoi4 = 1018 hoi4 = 7192 } # STATE_GUANGDONG -> Qinzhou, Guigang
 	link = { vic3 = x156AC0 hoi4 = 1038 } # STATE_GUANGDONG -> Danzhou
 	link = { vic3 = xA92B88 vic3 = xCB457A hoi4 = 1070 } # Haikou [wood], STATE_GUANGDONG -> Haikou
 	link = { vic3 = x2C4C48 hoi4 = 1187 } # STATE_GUANGDONG -> Zhaoqing
-	link = { vic3 = x4E581C vic3 = x7131E0 hoi4 = 4023 } # STATE_GUANGDONG, STATE_GUANGDONG -> Beihai
+	link = { vic3 = x7131E0 hoi4 = 11983 } # STATE_GUANGDONG -> Beiliu
+	link = { vic3 = x4E581C hoi4 = 4023 } # STATE_GUANGDONG -> Beihai
 	link = { vic3 = x489AB0 vic3 = x8C9358 hoi4 = 4092 } # STATE_GUANGDONG, STATE_GUANGDONG -> Huaiji
 	link = { vic3 = xF0B061 hoi4 = 4160 hoi4 = 7135 } # STATE_GUANGDONG -> Xuwen, Leizhou
 	link = { vic3 = xB031E0 hoi4 = 4189 } # Macao [port] -> Macau
@@ -6312,10 +6312,10 @@
 	link = { vic3 = x3131E0 vic3 = x475968 hoi4 = 9963 } # STATE_GUANGDONG, STATE_GUANGDONG -> Yangjiang
 	link = { vic3 = xC77200 hoi4 = 11926 } # STATE_GUANGDONG -> Qinbei
 	link = { vic3 = x9A21B1 hoi4 = 10004 } # STATE_GUANGDONG -> Fangchenggang
-	link = { vic3 = xA9B6D4 hoi4 = 10105 } # STATE_GUANGDONG -> Yulin
 	link = { vic3 = xB0B061 hoi4 = 11938 } # STATE_GUANGDONG -> Taishan
 	link = { vic3 = x2BDE7B hoi4 = 11941 } # Guangzhou [city] -> Qingyuan
 	link = { vic3 = x62BF42 hoi4 = 11963 } # STATE_GUANGDONG -> Dongfang
+	link = { vic3 = xA9B6D4 hoi4 = 10105 } # STATE_GUANGDONG -> Yulin
 	link = { vic3 = x85E0D4 hoi4 = 11981 } # STATE_GUANGDONG -> Fort-Bayard
 	link = { vic3 = xDC137A hoi4 = 11990 } # STATE_GUANGDONG -> Wanning
 	link = { comment = "* * STATE_FUJIAN " }
@@ -6373,13 +6373,12 @@
 	link = { vic3 = x38108E hoi4 = 12059 } # STATE_ZHEJIANG -> Zhuji
 	link = { comment = "* * STATE_JIANGSU " }
 	link = { vic3 = x2C1D6B vic3 = xF5F230 hoi4 = 1029 } # STATE_JIANGSU, STATE_JIANGSU -> Lianyungang
-	link = { vic3 = x6B1559 hoi4 = 1076 } # STATE_JIANGSU -> Huai'an
-	link = { vic3 = x11D080 hoi4 = 1121 } # Suqian [city] -> Sihong
+	link = { vic3 = x11D080 hoi4 = 1121 hoi4 = 1076 } # Suqian [city] -> Sihong, Huai'an
 	link = { vic3 = xCFABF8 hoi4 = 1161 } # STATE_JIANGSU -> Wuhe
 	link = { vic3 = x51D0C0 hoi4 = 4001 } # STATE_JIANGSU -> Yangzhou
 	link = { vic3 = xFAE3BB hoi4 = 4005 } # STATE_JIANGSU -> Hongze
-	link = { vic3 = xCEA76B hoi4 = 4031 } # STATE_JIANGSU -> Binahi
-	link = { vic3 = x57F598 hoi4 = 4082 } # Haichow [port] -> Funing
+	link = { vic3 = xCEA76B vic3 = x57F598 hoi4 = 4031 } # STATE_JIANGSU, Haichow [port] -> Binahi
+	link = { vic3 = x6B1559 hoi4 = 4082 } # STATE_JIANGSU -> Funing
 	link = { vic3 = xEF14F8 hoi4 = 4123 } # Huaiyin [mine] -> Baoying
 	link = { vic3 = xDB13A1 hoi4 = 7142 } # Yancheng [farm] -> Xinghua
 	link = { vic3 = xD39CAD hoi4 = 7181 } # Taizhou [wood] -> Gaoyou
@@ -6396,12 +6395,11 @@
 	link = { vic3 = x11A5D0 hoi4 = 996 } # STATE_NANJING -> Yixing
 	link = { vic3 = xF14A5E hoi4 = 1146 } # STATE_NANJING -> Chaohu
 	link = { comment = "* * STATE_HENAN " }
-	link = { vic3 = x985308 hoi4 = 1139 } # STATE_HENAN -> Xinxiang
+	link = { vic3 = x985308 vic3 = x1111C0 vic3 = x1190C0 hoi4 = 1139 } # STATE_HENAN, STATE_HENAN, STATE_HENAN -> Xinxiang
 	link = { vic3 = x390A81 hoi4 = 11931 } # STATE_HENAN -> Luoyang
-	link = { vic3 = x909041 vic3 = x98EC6A vic3 = x1111C0 hoi4 = 1004 } # STATE_HENAN, STATE_HENAN, STATE_HENAN -> Gongyi
+	link = { vic3 = x909041 vic3 = x98EC6A hoi4 = 1004 } # STATE_HENAN, STATE_HENAN -> Gongyi
 	link = { vic3 = xAD3FD2 vic3 = xEF7A33 hoi4 = 1603 } # STATE_HENAN, STATE_HENAN -> Luanchuan
 	link = { vic3 = xA43ACB hoi4 = 4058 } # STATE_HENAN -> Wu'an
-	link = { vic3 = x1190C0 hoi4 = 4114 } # STATE_HENAN -> Fengqiu
 	link = { vic3 = x42D2BF hoi4 = 4144 } # STATE_HENAN -> Xunxian
 	link = { vic3 = x112F90 hoi4 = 4158 } # STATE_HENAN -> Gushi
 	link = { vic3 = xD888E9 hoi4 = 4519 } # STATE_HENAN -> Dengzhou
@@ -6421,25 +6419,26 @@
 	link = { vic3 = x783F2A hoi4 = 10446 } # STATE_HENAN -> Xinyang
 	link = { comment = "* * STATE_ZHILI " }
 	link = { vic3 = xD09080 hoi4 = 1134 } # STATE_ZHILI -> Renqiu
-	link = { vic3 = x76B0CC vic3 = x6850DA hoi4 = 1169 } # STATE_ZHILI, STATE_ZHILI -> Handan
-	link = { vic3 = x5DA25B hoi4 = 1188 } # STATE_ZHILI -> Xingtai
+	link = { vic3 = x0970D9 hoi4 = 12026 } # STATE_ZHILI -> Baoding
+	link = { vic3 = x905101 vic3 = xF9A4A2 hoi4 = 4114 } # STATE_ZHILI, STATE_ZHILI -> Fengqiu
+	link = { vic3 = x76B0CC hoi4 = 1169 } # STATE_ZHILI -> Handan
+	link = { vic3 = x5DA25B vic3 = x6850DA vic3 = x5E5C94 hoi4 = 1188 } # STATE_ZHILI, STATE_ZHILI, STATE_ZHILI -> Xingtai
 	link = { vic3 = x43043A vic3 = x680507 hoi4 = 10022 } # STATE_ZHILI, STATE_ZHILI -> Hejian
 	link = { vic3 = x115101 hoi4 = 10003 } # Dezhou [farm] -> Botou
-	link = { vic3 = x480190 hoi4 = 7092 hoi4 = 4032 } # Hengshui [wood] -> Qinghe, Hengshui
+	link = { vic3 = x480190 hoi4 = 4032 } # Hengshui [wood] -> Hengshui
 	link = { vic3 = x215101 vic3 = xE0D001 hoi4 = 4190 } # STATE_ZHILI, STATE_ZHILI -> Ningjin
 	link = { vic3 = xAD4A5C hoi4 = 4093 } # Shijiazhuang [mine] -> Shijiazhuang
 	link = { vic3 = xE5DAD3 hoi4 = 4137 } # STATE_ZHILI -> Tanggu
-	link = { vic3 = x4E770A vic3 = x0970D9 hoi4 = 6828 } # STATE_ZHILI, STATE_ZHILI -> Dingzhou
+	link = { vic3 = x4E770A hoi4 = 6828 } # STATE_ZHILI -> Dingzhou
 	link = { vic3 = x83E0CF hoi4 = 7000 } # STATE_ZHILI -> Gaocheng
 	link = { vic3 = xF54194 hoi4 = 7109 } # Baoding [city] -> Xinji
 	link = { vic3 = x0FEECE hoi4 = 9969 } # STATE_ZHILI -> Cangzhou
 	link = { vic3 = x1F637F vic3 = xDBD047 hoi4 = 10053 } # STATE_ZHILI, STATE_ZHILI -> Pingshan
-	link = { vic3 = xF9A4A2 vic3 = x905101 hoi4 = 11933 } # STATE_ZHILI, STATE_ZHILI -> Changyuan
 	link = { vic3 = xD8F037 hoi4 = 11944 } # Cangzhou [port] -> Huanghua
 	link = { vic3 = xF7D611 hoi4 = 11962 } # STATE_ZHILI -> Linqing
 	link = { vic3 = xA08982 hoi4 = 11980 } # STATE_ZHILI -> Cangxian
 	link = { vic3 = x1AB7C6 hoi4 = 11996 } # STATE_ZHILI -> Cangzhou
-	link = { vic3 = x5CFC15 vic3 = x5E5C94 vic3 = x81A01A hoi4 = 12062 } # STATE_ZHILI, STATE_ZHILI, STATE_ZHILI -> Zanhuang
+	link = { vic3 = x5CFC15 vic3 = x81A01A hoi4 = 12062 } # STATE_ZHILI, STATE_ZHILI -> Zanhuang
 	link = { comment = "* * STATE_JIANGXI " }
 	link = { vic3 = xCB4590 vic3 = x7830B6 hoi4 = 4081 } # Ganzhou [mine], STATE_JIANGXI -> Anyuan
 	link = { vic3 = xCA0553 vic3 = xD0D000 hoi4 = 7172 } # STATE_JIANGXI, STATE_JIANGXI -> Ji'an
@@ -6563,7 +6562,7 @@
 	link = { vic3 = x39F708 hoi4 = 4205 } # STATE_SHANDONG -> Weihai
 	link = { vic3 = x1D4C25 vic3 = xC14ECA hoi4 = 12045 } # STATE_SHANDONG, STATE_SHANDONG -> Laiwu
 	link = { vic3 = x50D040 hoi4 = 4071 } # STATE_SHANDONG -> Yiyuan
-	link = { vic3 = x1ABD79 hoi4 = 4089 } # STATE_SHANDONG -> Dongying
+	link = { vic3 = x9D1474 hoi4 = 4089 } # Jinan [city] -> Dongying
 	link = { vic3 = xE01180 hoi4 = 4157 } # STATE_SHANDONG -> Zhucheng
 	link = { vic3 = x599BC4 hoi4 = 4181 } # Linyi [farm] -> Zaozhuang
 	link = { vic3 = x41FB70 vic3 = x798677 hoi4 = 4186 } # Yantai [wood], STATE_SHANDONG -> Laiyang
@@ -6572,19 +6571,20 @@
 	link = { vic3 = x4724A9 hoi4 = 7105 } # STATE_SHANDONG -> Laizhou
 	link = { vic3 = x55944E hoi4 = 7160 } # STATE_SHANDONG -> Liaocheng
 	link = { vic3 = x6B8F67 hoi4 = 9971 } # Rizhao [mine] -> Rizhao
-	link = { vic3 = x8064F0 vic3 = xC55E74 hoi4 = 9987 } # STATE_SHANDONG, STATE_SHANDONG -> Puyang
+	link = { vic3 = xC55E74 hoi4 = 7092 } # STATE_SHANDONG -> Qinghe
+	link = { vic3 = x8064F0 hoi4 = 9987 } # STATE_SHANDONG -> Puyang
 	link = { vic3 = xAC24A6 hoi4 = 10000 } # Qingdao [port] -> Qingdao
 	link = { vic3 = xBAA1D3 hoi4 = 1200 } # STATE_SHANDONG -> Yantai
 	link = { vic3 = xAB53A3 hoi4 = 10018 } # STATE_SHANDONG -> Rushan
 	link = { vic3 = xE19708 hoi4 = 4010 } # STATE_SHANDONG -> Qixian
-	link = { vic3 = x83EC09 hoi4 = 7129 } # STATE_SHANDONG -> Lankao
+	link = { vic3 = x83EC09 hoi4 = 7129 hoi4 = 11933 } # STATE_SHANDONG -> Lankao, Changyuan
 	link = { vic3 = x33490F hoi4 = 12069 } # STATE_SHANDONG -> Heze
 	link = { vic3 = x115180 hoi4 = 10043 hoi4 = 9956 } # STATE_SHANDONG -> Shanxian, Xuzhou
 	link = { vic3 = x16E6F3 hoi4 = 10072 } # STATE_SHANDONG -> Jining
-	link = { vic3 = x32CFB2 vic3 = x9D1474 hoi4 = 10102 } # STATE_SHANDONG, Jinan [city] -> Zibo
+	link = { vic3 = x32CFB2 hoi4 = 10102 } # STATE_SHANDONG -> Zibo
 	link = { vic3 = xC13552 hoi4 = 12015 } # STATE_SHANDONG -> Fengxian
 	link = { vic3 = x175EC6 hoi4 = 12074 } # STATE_SHANDONG -> Weifang
-	link = { vic3 = x6BFF52 hoi4 = 12093 } # STATE_SHANDONG -> Wudi
+	link = { vic3 = x6BFF52 vic3 = x1ABD79 hoi4 = 12093 } # STATE_SHANDONG, STATE_SHANDONG -> Wudi
 	link = { comment = "* * STATE_SUZHOU " }
 	link = { vic3 = x86FF7E hoi4 = 1089 hoi4 = 4091 } # Changzhou [farm] -> Taixing, Nantong
 	link = { vic3 = x301000 hoi4 = 12052 } # Nantong [port] -> Kunshan
@@ -7061,7 +7061,8 @@
 	link = { comment = "* * STATE_SEOUL " }
 	link = { vic3 = xFD1E20 hoi4 = 4004 } # STATE_SEOUL -> Donson
 	link = { vic3 = xACB4D5 hoi4 = 7021 } # STATE_SEOUL -> Ko-ryo
-	link = { vic3 = x305000 vic3 = xB05000 hoi4 = 7221 } # Gwangju [wood], Incheon [port] -> Nigawa
+	link = { vic3 = x305000 hoi4 = 1100 } # Gwangju [wood] -> Chu-shu
+	link = { vic3 = xB05000 hoi4 = 7221 } # Incheon [port] -> Nigawa
 	link = { vic3 = xA0E2EE hoi4 = 7125 } # Hanseong [city] -> Keijo
 	link = { vic3 = xA84864 hoi4 = 9936 } # STATE_SEOUL -> Tsutsumikawa
 	link = { vic3 = xE0D3E4 hoi4 = 9981 } # STATE_SEOUL -> Tetsugen
@@ -7071,23 +7072,22 @@
 	link = { vic3 = x709080 hoi4 = 11958 } # STATE_SEOUL -> Tsukakusa
 	link = { comment = "* * STATE_BUSAN " }
 	link = { vic3 = xA00BB8 hoi4 = 10085 } # STATE_BUSAN -> Nanbara
-	link = { vic3 = x9BA8B5 hoi4 = 1054 } # Jinju [wood] -> Shinshu
+	link = { vic3 = x9BA8B5 hoi4 = 1054 hoi4 = 12060 } # Jinju [wood] -> Shinshu, Shogen
 	link = { vic3 = x305080 hoi4 = 4086 } # STATE_BUSAN -> Keizan
 	link = { vic3 = x806A04 hoi4 = 1081 } # Andong [farm][mine] -> Taikyu
 	link = { vic3 = x31D000 hoi4 = 7121 hoi4 = 12089 } # Daegu [city] -> Hoko, Ando
 	link = { vic3 = x076864 hoi4 = 11912 } # STATE_BUSAN -> Taihaku
-	link = { vic3 = xC3F34F hoi4 = 12060 hoi4 = 4056 } # Pusan [port] -> Shogen, Pusan
+	link = { vic3 = xC3F34F hoi4 = 4056 } # Pusan [port] -> Pusan
 	link = { comment = "* * STATE_YANGHO " }
 	link = { vic3 = xB0D080 hoi4 = 1177 } # STATE_YANGHO -> Saishu
 	link = { vic3 = xB0D000 hoi4 = 11977 } # Cheongju [mine] -> Ota
 	link = { vic3 = xA48A8B hoi4 = 7175 hoi4 = 11992 } # STATE_YANGHO -> Kunsan, Nishiyama
-	link = { vic3 = x34B782 hoi4 = 7204 hoi4 = 1100 } # Chungju [wood] -> Ten'an, Chu-shu
-	link = { vic3 = xAE0221 hoi4 = 4126 } # STATE_YANGHO -> Zenshu
-	link = { vic3 = xF91D98 hoi4 = 10110 } # Jeonju [city] -> Koshu
+	link = { vic3 = x34B782 hoi4 = 7204 } # Chungju [wood] -> Ten'an
+	link = { vic3 = xAE0221 vic3 = xF91D98 hoi4 = 4126 } # STATE_YANGHO, Jeonju [city] -> Zenshu
 	link = { vic3 = xBC0C5A hoi4 = 4103 } # STATE_YANGHO -> Eiju
 	link = { vic3 = xF09080 hoi4 = 10115 } # STATE_YANGHO -> Obei
-	link = { vic3 = x8ACAAA vic3 = xD42CA8 hoi4 = 11948 } # Mokpo [port][farm], STATE_YANGHO -> Kiura
-	link = { vic3 = xC81C12 hoi4 = 12085 } # STATE_YANGHO -> Junten
+	link = { vic3 = x8ACAAA hoi4 = 11948 hoi4 = 10110 } # Mokpo [port][farm] -> Kiura, Koshu
+	link = { vic3 = xC81C12 vic3 = xD42CA8 hoi4 = 12085 } # STATE_YANGHO, STATE_YANGHO -> Junten
 	link = { comment = "* * STATE_SARIWON " }
 	link = { vic3 = x92D8ED hoi4 = 848 hoi4 = 10083 } # STATE_SARIWON -> Motoyama, Yotoku
 	link = { vic3 = xCF9212 hoi4 = 3904 } # STATE_SARIWON -> Fuzen
@@ -7137,7 +7137,7 @@
 	link = { vic3 = x660411 hoi4 = 12255 hoi4 = 1392 } # STATE_MALAYA -> Bentong, Temerloh
 	link = { vic3 = xB6B53D hoi4 = 4384 } # STATE_MALAYA -> Bidor
 	link = { vic3 = xC84C4C vic3 = x8E3305 hoi4 = 4412 } # STATE_MALAYA, Kelang [city] -> Seremban
-	link = { vic3 = x76546D hoi4 = 4424 hoi4 = 10313 } # Muar [farm] -> Johore Bahru, Kota Tinggi
+	link = { vic3 = x76546D hoi4 = 4424 hoi4 = 10313 hoi4 = 13376 } # Muar [farm] -> Johore Bahru, Kota Tinggi, land
 	link = { vic3 = xCAB9F2 hoi4 = 7329 } # Kuala Kelantan [wood] -> Kota Bharu
 	link = { vic3 = x08673B vic3 = xD8E596 hoi4 = 7342 } # George Town [mine], STATE_MALAYA -> George Town
 	link = { vic3 = x6CFA94 hoi4 = 7399 } # STATE_MALAYA -> Kuantan
@@ -7149,7 +7149,7 @@
 	link = { vic3 = x0080B0 hoi4 = 4367 } # STATE_MALAYA -> Mersing
 	link = { comment = "* * STATE_NORTH_BORNEO " }
 	link = { vic3 = xCED863 hoi4 = 1306 } # STATE_NORTH_BORNEO -> land
-	link = { vic3 = x763646 hoi4 = 1335 } # STATE_NORTH_BORNEO -> Ba'kelalan
+	link = { vic3 = x763646 hoi4 = 1335 hoi4 = 13377 } # STATE_NORTH_BORNEO -> Ba'kelalan, land
 	link = { vic3 = x905338 hoi4 = 2117 } # STATE_NORTH_BORNEO -> land
 	link = { vic3 = x6D3CF9 hoi4 = 4216 } # STATE_NORTH_BORNEO -> Betong
 	link = { vic3 = x821B67 vic3 = xD0AC5F hoi4 = 4338 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Sapulut
@@ -7162,7 +7162,7 @@
 	link = { vic3 = xC531AE hoi4 = 10212 } # Sabah [port] -> Jesselton
 	link = { vic3 = xC0B7FD vic3 = x461E0E hoi4 = 10240 hoi4 = 10199 } # MANY-TO-MANY: Sandakan [mine], STATE_NORTH_BORNEO -> Lahad Datu, Sandakan
 	link = { vic3 = x002310 vic3 = x242519 hoi4 = 10269 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Long Seridan
-	link = { vic3 = x800170 hoi4 = 7387 } # Brunei [city] -> Kuala Belait
+	link = { vic3 = x800170 hoi4 = 7387 hoi4 = 13378 } # Brunei [city] -> Kuala Belait, land
 	link = { vic3 = xF2BC79 vic3 = x9E0616 hoi4 = 10285 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Miri
 	link = { vic3 = x965EF0 vic3 = xB689E6 hoi4 = 12171 } # STATE_NORTH_BORNEO, STATE_NORTH_BORNEO -> Beaufort
 	link = { vic3 = x2EE734 hoi4 = 12186 hoi4 = 4282 } # STATE_NORTH_BORNEO -> Ranau, Kudat
@@ -7443,7 +7443,7 @@
 	link = { vic3 = x62D16D hoi4 = 12158 } # STATE_MINDANAO -> Glan
 	link = { vic3 = xCAFE73 hoi4 = 12188 hoi4 = 1293 hoi4 = 12160 } # Butuan [wood] -> Tandag, Surigao, Butuan
 	link = { comment = "* * STATE_LUZON " }
-	link = { vic3 = xB0F0E0 hoi4 = 10265 hoi4 = 1221 hoi4 = 12236 } # STATE_LUZON -> Manila, Batangas, Lucena
+	link = { vic3 = xB0F0E0 hoi4 = 1221 hoi4 = 12236 } # STATE_LUZON -> Batangas, Lucena
 	link = { vic3 = x2291B3 hoi4 = 1372 hoi4 = 10306 } # STATE_LUZON -> Daet, Gumaca
 	link = { vic3 = x707061 hoi4 = 1388 hoi4 = 4233 } # STATE_LUZON -> Baler, Dipaculao
 	link = { vic3 = x795BD8 hoi4 = 4101 hoi4 = 4214 } # STATE_LUZON -> Santa Ana, Tuguegarao
@@ -7459,7 +7459,7 @@
 	link = { vic3 = x1B9953 vic3 = xB0F0B0 hoi4 = 7419 } # STATE_LUZON, STATE_LUZON -> Taytay
 	link = { vic3 = x95102A hoi4 = 7439 } # STATE_LUZON -> Casiguran
 	link = { vic3 = x946A22 hoi4 = 10145 hoi4 = 4429 } # STATE_LUZON -> Quezon, Puerto Princesa
-	link = { vic3 = x0D8236 hoi4 = 10236 } # Manila [city] -> Santa Cruz
+	link = { vic3 = x0D8236 hoi4 = 10265 hoi4 = 10236 } # Manila [city] -> Manila, Santa Cruz
 	link = { vic3 = xD2AEEB hoi4 = 10241 } # STATE_LUZON -> Laoag
 	link = { vic3 = x6D44B5 hoi4 = 10272 } # STATE_LUZON -> San Jose
 	link = { vic3 = x5C0D4C hoi4 = 1415 hoi4 = 10165 } # STATE_LUZON -> Dagupan, San Jose
