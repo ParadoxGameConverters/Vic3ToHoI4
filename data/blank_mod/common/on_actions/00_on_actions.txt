@@ -1,4 +1,5 @@
 on_actions = {
+	on_startup = {
 
 		#Setup Asian + Oceania Nations
 		effect = {

@@ -684,3 +684,7 @@ should_play_south_american_music = {
 	capital_scope = { is_on_continent = south_america }
 }
 
+check_allow_alternate_political_events = {
+	always = no
+}
+

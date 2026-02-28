@@ -477,33 +477,6 @@ faction_manifest_between_the_seas = {
 }
 
 
-# Little Entente
-
-faction_manifest_little_entente = {
-	name = little_entente_goal_name
-	description = little_entente_goal_desc
-	is_manifest = yes
-	ratio_progress = {
-		total_amount_collection = collection:controllable_central_powers_border_states
-		completed_amount_collection = collection:central_powers_controlled_central_powers_border_states
-		
-		scale = {
-			stability_factor = 0.1
-		}
-		
-		progress_sections = {
-			manifest_fulfilled = {
-				min = @manifest_fulfilled_value
-	
-				modifier = {
-					war_support_factor = 0.05
-					army_core_defence_factor = 0.1
-				}			
-			}
-		}
-	}
-}
-
 ########################
 
  ##  #  # ### #  #  ##  
@@ -719,33 +692,6 @@ faction_manifest_amerindian_liberation = {
 		}
 	}
 }
-
-# Islamic Brotherhood 
-faction_manifest_islamic_brotherhood = {
-	name = islamic_brotherhood_goal_name
-	description = islamic_brotherhood_goal_desc
-	is_manifest = yes
-	ratio_progress = {
-		total_amount_collection = collection:all_islamic_countries
-		completed_amount_collection = collection:islamic_faction_members
-		
-		scale = {
-			political_power_factor = 0.1
-			army_core_defence_factor = 0.1
-		}
-		
-		progress_sections = {
-			manifest_fulfilled = {
-				min = @manifest_fulfilled_value
-	
-				modifier = {
-					army_core_attack_factor = 0.1
-				}			
-			}
-		}
-	}
-}
-
 
 
 ######################################################

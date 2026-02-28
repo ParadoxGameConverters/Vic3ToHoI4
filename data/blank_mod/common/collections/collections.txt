@@ -563,18 +563,6 @@ non_colonial_power_controlled_african_states = {
 	name = COLLECTION_NON_COLONIAL_CONTROLLED_AFRICAN_STATES
 }
 
-# Soviet Union related
-
-comintern_controlled_border_states = {
-	input = collection:comintern_controllable_border_states
-	name = COLLECTION_CONTROLLED_COMINTERN_BORDER_STATES
-	operators = {
-		limit = {
-			is_controlled_by_ROOT_or_ally = yes 
-		}
-	}
-}
-
 neighboring_states_to_leader = {
 	input = game:all_states
 	name = COLLECTION_NEIGHBORING_STATES

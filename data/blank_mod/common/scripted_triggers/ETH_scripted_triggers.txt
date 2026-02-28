@@ -1,0 +1,22 @@
+#scripted triggers for Ethiopia
+
+
+# Does Ethiopia (or anyone else that want to use this) have a Military Academy? 
+# Add triggers for those countries as needed 
+has_military_academy = {
+}
+
+
+# Does Ethiopia (or anyone else that want to use this) have a Naval Academy? 
+# Add triggers for those countries as needed 
+has_naval_academy = {
+}
+
+# Does Ethiopia (or anyone else that want to use this) have an Air Force Academy? 
+# Add triggers for those countries as needed 
+has_air_academy = {
+}
+# Does Ethiopia (or anyone else that want to use this) have an established Air Force? 
+# Add triggers for those countries as needed 
+has_air_force_command = {
+}
