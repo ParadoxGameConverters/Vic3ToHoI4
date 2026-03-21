@@ -31,6 +31,8 @@ autonomy_state = {
 		peace_score_ratio_transferred_to_overlord = 0.1
 		lend_lease_tension_with_overlord = -0.20
 		resistance_target = -0.1
+		
+		faction_influence_contribution_factor = -0.5
 	}
 	
 	ai_subject_wants_higher = {

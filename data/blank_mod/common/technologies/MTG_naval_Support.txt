@@ -168,11 +168,23 @@ technologies = {
 
 		ai_will_do = {
 			factor = 1
+			
 			modifier = {
 				has_war = yes
 				factor = 10
 			}
+			
+			modifier = {
+				factor = 2
+				date > 1938.1.1
+			}
+
+			modifier = {
+				factor = 2
+				date > 1939.1.1
+			}
 		}
+		
 
 		categories = {
 			naval_artillery

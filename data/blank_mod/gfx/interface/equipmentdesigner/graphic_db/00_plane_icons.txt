@@ -164,6 +164,28 @@ default = {
 		}
 	}
 
+	strat_bomber_intercontinental_equipment = { #Intercontinental Bomber
+		pool = {
+			weight = 2  #This weight is necessary due to being in a different file than the country-specific ones
+			icons = {
+				GFX_strat_bomber_intercontinental_equipment_medium
+			}
+			models = {
+			}
+		}
+	}
+
+	mothership_equipment = { #Mothership
+		pool = {
+			weight = 2  #This weight is necessary due to being in a different file than the country-specific ones
+			icons = {
+				GFX_mothership_equipment_medium
+			}
+			models = {
+			}
+		}
+	}
+
 
 	#######################
 	### MEDIUM AIRFRAME ###
