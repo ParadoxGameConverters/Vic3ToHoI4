@@ -1,7 +1,16 @@
 default = {
+	light_tank_chassis = {
+		pool = {
+			weight = 0.1
+			models = { 
+				light_armor_entity
+			}
+		}
+	}
+
 	light_tank_chassis_0 = {
 		pool = {
-			weight = 2
+			weight = 0.1
 			icons = { 
 				#GFX_gwtank_chassis_medium #French Renault - Former generic Inter-War Light Tank
 				GFX_generic_gw_light_tank_medium
@@ -80,7 +89,7 @@ default = {
 
 	light_tank_flame_chassis = {
 		pool = {
-			weight = 1
+			weight = 5500
 			icons = {
 				GFX_light_flame_tank_medium
 			}
@@ -89,15 +98,25 @@ default = {
 			}
 		}
 	}
-	
+		
+	medium_tank_chassis = {
+		pool = {
+			weight = 0.1
+			 models = { 
+				medium_armor_entity
+			}
+		}
+	}
+
 	medium_tank_chassis_0 = {
 		pool = {
-			weight = 2
+			weight = 0.1
 			icons = { 
 				GFX_generic_gw_medium_tank_medium
 			}
 		}
 	}
+
 	medium_tank_chassis_1 = {
 		pool = {
 			weight = 0.1 #Should appear at the bottom of the list
@@ -172,7 +191,7 @@ default = {
 
 	medium_tank_flame_chassis = {
 		pool = {
-			weight = 1
+			weight = 5500
 			icons = {
 				GFX_medium_flame_tank_medium
 			}
@@ -182,9 +201,17 @@ default = {
 		}
 	}
 
+	heavy_tank_chassis = {
+		pool = {
+			weight = 0.1
+			models = { 
+				heavy_armor_entity
+			}
+		}
+	}
 	heavy_tank_chassis_0 = {
 		pool = {
-			weight = 2
+			weight = 0.1
 			icons = { 
 				GFX_generic_gw_heavy_tank_medium
 			}
@@ -264,7 +291,7 @@ default = {
 
 	heavy_tank_flame_chassis = {
 		pool = {
-			weight = 1
+			weight = 5500
 			icons = {
 				GFX_heavy_flame_tank_medium
 			}
@@ -274,24 +301,56 @@ default = {
 		}
 	}
 
-	super_heavy_tank_chassis_1 = {
+	super_heavy_tank_chassis = {
 		pool = {
+			weight = 0.1
 			icons = { 
 				GFX_generic_super_heavy_tank_medium
+			}
+			models = { 
+				heavy_armor_entity
+			}
+		}
+	}
+	super_heavy_tank_chassis_1 = {
+		pool = {
+			weight = 0.1
+			icons = { 
+				GFX_generic_super_heavy_tank_medium
+			}
+			models = { 
+				heavy_armor_entity
 			}
 		}
 	}
 
 	modern_tank_chassis_1 = {
 		pool = {
+			weight = 0.1 
 			icons = { 
 				GFX_generic_modern_tank_medium
+			}
+			models = {
+				medium_armor_entity
+			}
+		}
+	}
+
+	amphibious_tank_chassis = {
+		pool = {
+			weight = 0.1
+			icons = {
+				GFX_amphibious_tank_chassis_medium
+			}
+			models = {
+				amphibious_armor_entity
 			}
 		}
 	}
 
 	land_cruiser_chassis_1 = {
 		pool = {
+			weight = 5500
 			icons = {
 				GFX_land_cruiser_armor_medium
 			}

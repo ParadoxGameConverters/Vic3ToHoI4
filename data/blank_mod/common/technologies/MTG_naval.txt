@@ -137,6 +137,16 @@ technologies = {
 
 		ai_will_do = {
 			factor = 1
+			
+			modifier = {
+				factor = 1.5
+				date > 1939.1.1
+			}
+
+			modifier = {
+				factor = 1.5
+				date > 1940.1.1
+			}
 		}
 
 		categories = {
@@ -199,8 +209,18 @@ technologies = {
 				has_navy_size = { size < 10 }
 				factor = 0.1
 			}
+			
+			modifier = {
+				factor = 2
+				date > 1938.1.1
+			}
+
+			modifier = {
+				factor = 2
+				date > 1939.1.1
+			}
 		}
-		
+
 		categories = {
 			naval_equipment
 			dd_tech
@@ -491,8 +511,17 @@ technologies = {
 			factor = 2
 
 			modifier = {
-				factor = 2
+				factor = 5
 				anti_submarine_strategy_required_trigger = yes
+			}
+			modifier = {
+				factor = 2
+				date > 1938.6.1
+			}
+
+			modifier = {
+				factor = 2
+				date > 1939.6.1
 			}
 		}
 
@@ -706,6 +735,16 @@ technologies = {
 
 		ai_will_do = {
 			factor = 1
+
+			modifier = {
+				factor = 1.5
+				date > 1939.1.1
+			}
+
+			modifier = {
+				factor = 1.5
+				date > 1940.1.1
+			}
 		}
 
 		categories = {
@@ -1007,6 +1046,15 @@ technologies = {
 				is_major = no
 				factor = 0
 			}
+			modifier = {
+				factor = 1.5
+				date > 1939.1.1
+			}
+
+			modifier = {
+				factor = 1.5
+				date > 1940.1.1
+			}
 		}
 
 		categories = {
@@ -1132,6 +1180,11 @@ technologies = {
 
 		ai_will_do = {
 			factor = 1
+			
+			modifier = {
+				factor = 0
+				date < 1938.1.1
+			}
 
 			modifier = {
 				has_tech = improved_ship_hull_heavy
@@ -1277,7 +1330,16 @@ early_ship_hull_carrier = {
 
 		ai_will_do = {
 			factor = 1
-			
+
+			modifier = {
+				factor = 1.5
+				date > 1939.1.1
+			}
+
+			modifier = {
+				factor = 1.5
+				date > 1940.1.1
+			}
 		}
 
 		categories = {
@@ -1466,7 +1528,16 @@ early_ship_hull_carrier = {
 
 		ai_will_do = {
 			factor = 1
-			
+
+			modifier = {
+				factor = 1.5
+				date > 1939.1.1
+			}
+
+			modifier = {
+				factor = 1.5
+				date > 1940.1.1
+			}
 		}
 
 		categories = {
