@@ -89,6 +89,7 @@ law_parliamentary_republic	= { democratic = 50		communism = 50		fascism = 25	neu
 law_theocracy				= { democratic = -10	communism = -50		fascism = 25	neutrality = 50 }
 law_council_republic		= { democratic = 25		communism = 100		fascism = -50	neutrality = -75 }
 law_corporate_state			= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
+law_colonial_administration	= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
 
 # health_system
 law_no_health_system			= { democratic = 0	communism = -50	fascism = 0	neutrality = 25 }
@@ -115,6 +116,7 @@ law_combination_acts			= { democratic = 0		communism = 0		fascism = 0		neutralit
 law_anti_strike_laws			= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
 law_right_to_associate			= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
 law_corporatized_unions			= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
+law_factory_councils			= { democratic = 0		communism = 0		fascism = 0		neutrality = 0 } # TBD
 
 # land_reform
 law_serfdom						= { democratic = -25	communism = -50	fascism = 0		neutrality = 50 }
@@ -123,6 +125,7 @@ law_tenant_farmers				= { democratic = 0		communism = -25	fascism = 25	neutralit
 law_commercialized_agriculture	= { democratic = 20		communism = -25	fascism = 10	neutrality = 0 }
 law_homesteading				= { democratic = 20		communism = 10	fascism = 0		neutrality = 0 }
 law_collectivized_agriculture	= { democratic = 0		communism = 25	fascism = -50	neutrality = -25 }
+law_latifundias             	= { democratic = 0		communism = 25	fascism = -50	neutrality = -25 }
 
 # migration
 law_no_migration_controls	= { democratic = 10		communism = 0	fascism = 0		neutrality = 0 }
@@ -266,6 +269,7 @@ law_parliamentary_republic	= { conservatism = 25	liberalism = 50		socialism = 50
 law_theocracy				= { conservatism = 50	liberalism = 0		socialism = 0 }
 law_council_republic		= { conservatism = -100	liberalism = -100	socialism = -25 }
 law_corporate_state			= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
+law_colonial_administration	= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 
 # health_system
 law_no_health_system			= { conservatism = 0	liberalism = 0	socialism = 0 }
@@ -292,6 +296,7 @@ law_combination_acts	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 law_anti_strike_laws	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 law_right_to_associate	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 law_corporatized_unions	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
+law_factory_councils	= { conservatism = 0	liberalism = 0	socialism = 0 } # TBD
 
 # land_reform
 law_serfdom						= { conservatism = -25	liberalism = -50	socialism = -75 }
@@ -300,6 +305,7 @@ law_tenant_farmers				= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 law_commercialized_agriculture	= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 law_homesteading				= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 law_collectivized_agriculture	= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
+law_latifundias             	= { conservatism = 0	liberalism = 0		socialism = 0 } # TBD
 
 # migration
 law_no_migration_controls	= { conservatism = 0	liberalism = 25	socialism = 25 }
@@ -438,6 +444,7 @@ law_parliamentary_republic	= { marxism = 25	leninism = 25	stalinism = 0	anti_rev
 law_theocracy				= { marxism = -100	leninism = -75	stalinism = -50	anti_revisionism = -25	anarchist_communism = 0 }
 law_council_republic		= { marxism = 100	leninism = 100	stalinism = 100	anti_revisionism = 100	anarchist_communism = 100 }
 law_corporate_state			= { marxism = 0		leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_colonial_administration	= { marxism = 0		leninism = 0	stalinism = 0	anti_revisionism = 0	anarchist_communism = 0 } # TBD
 
 # health_system
 law_no_health_system			= { marxism = -75	leninism = -75	stalinism = -50	anti_revisionism = -25	anarchist_communism = -50 }
@@ -464,6 +471,7 @@ law_combination_acts	= { marxism = 0	leninism = 0	stalinism = 0		anti_revisionis
 law_anti_strike_laws	= { marxism = 0	leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
 law_right_to_associate	= { marxism = 0	leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
 law_corporatized_unions	= { marxism = 0	leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
+law_factory_councils	= { marxism = 0	leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } # TBD
 
 # land_reform
 law_serfdom						= { marxism = -100	leninism = -100	stalinism = -100	anti_revisionism = -50	anarchist_communism = -100 }
@@ -472,6 +480,7 @@ law_tenant_farmers				= { marxism = 0		leninism = 0	stalinism = 0		anti_revision
 law_commercialized_agriculture	= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } #TBD
 law_homesteading				= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } #TBD
 law_collectivized_agriculture	= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } #TBD
+law_latifundias             	= { marxism = 0		leninism = 0	stalinism = 0		anti_revisionism = 0	anarchist_communism = 0 } #TBD
 
 # migration
 law_no_migration_controls	= { marxism = 100	leninism = 0	stalinism = -50	anti_revisionism = -50	anarchist_communism = 100 }
@@ -610,6 +619,7 @@ law_parliamentary_republic	= { gen_nazism = 75		fascism_ideology = 50	falangism 
 law_theocracy				= { gen_nazism = -25	fascism_ideology = 0	falangism = 75	rexism = 50 }
 law_council_republic		= { gen_nazism = -50	fascism_ideology = 25	falangism = -75	rexism = -100 }
 law_corporate_state			= { gen_nazism = 0		fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_colonial_administration	= { gen_nazism = 0		fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 
 # health_system
 law_no_health_system			= { gen_nazism = -25	fascism_ideology = -25	falangism = -25	rexism = -25 }
@@ -636,6 +646,7 @@ law_combination_acts	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexis
 law_anti_strike_laws	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_right_to_associate	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 law_corporatized_unions	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
+law_factory_councils	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } # TBD
 
 # land_reform
 law_serfdom						= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 25 }
@@ -644,6 +655,7 @@ law_tenant_farmers				= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexi
 law_commercialized_agriculture	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
 law_homesteading				= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
 law_collectivized_agriculture	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
+law_latifundias             	= { gen_nazism = 0	fascism_ideology = 0	falangism = 0	rexism = 0 } #TBD
 
 # migration
 law_no_migration_controls	= { gen_nazism = -100	fascism_ideology = -75	falangism = -75	rexism = -75 }
@@ -782,6 +794,7 @@ law_parliamentary_republic	= { despotism = 75	oligarchism = 100	anarchism = 50		
 law_theocracy				= { despotism = 100	oligarchism = 100	anarchism = -100	moderatism = 0	centrism = 0 }
 law_council_republic		= { despotism = -50	oligarchism = -50	anarchism = 100		moderatism = 0	centrism = 0 }
 law_corporate_state			= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0	centrism = 0 } # TBD
+law_colonial_administration	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0	centrism = 0 } # TBD
 
 # health_system
 law_no_health_system			= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0	centrism = 0 }
@@ -808,6 +821,7 @@ law_combination_acts	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatis
 law_anti_strike_laws	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
 law_right_to_associate	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
 law_corporatized_unions	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
+law_factory_councils	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } # TBD
 
 # land_reform
 law_serfdom						= { despotism = 50	oligarchism = 100	anarchism = -100	moderatism = -50	centrism = 0 }
@@ -816,6 +830,7 @@ law_tenant_farmers				= { despotism = 0	oligarchism = 0		anarchism = 0		moderati
 law_commercialized_agriculture	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
 law_homesteading				= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
 law_collectivized_agriculture	= { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
+law_latifundias	                = { despotism = 0	oligarchism = 0		anarchism = 0		moderatism = 0		centrism = 0 } #TBD
 
 # migration
 law_no_migration_controls	= { despotism = 0	oligarchism = 0		anarchism = 100		moderatism = 0		centrism = 0 }
