@@ -15,13 +15,6 @@
 namespace configuration
 {
 
-enum class UseStories
-{
-   kNo,
-   kYes
-};
-
-
 struct Configuration
 {
    std::filesystem::path vic3_directory;
@@ -33,7 +26,6 @@ struct Configuration
    bool debug = false;
    std::string output_name;
    bool dynamic_resources = true;
-   UseStories use_stories = UseStories::kNo;
 
    void VerifyVic3Path()
    {

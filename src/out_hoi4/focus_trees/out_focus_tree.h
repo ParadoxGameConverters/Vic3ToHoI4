@@ -14,10 +14,7 @@
 namespace out
 {
 
-void OutputFocusTree(const std::filesystem::path& output_name,
-    std::string_view tag,
-    const hoi4::FocusTree& focus_tree,
-    configuration::UseStories use_stories);
+void OutputFocusTree(const std::filesystem::path& output_name, std::string_view tag, const hoi4::FocusTree& focus_tree);
 
 }  // namespace out
 

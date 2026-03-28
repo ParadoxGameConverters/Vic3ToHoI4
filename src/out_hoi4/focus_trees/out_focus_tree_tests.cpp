@@ -22,7 +22,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, NationalFocusFileIsNamedForTag)
 {
    create_directories("output/NationalFocusFileIsNamedForTag/common/national_focus");
 
-   OutputFocusTree("NationalFocusFileIsNamedForTag", "TST", {}, configuration::UseStories::kNo);
+   OutputFocusTree("NationalFocusFileIsNamedForTag", "TST", {});
 
    EXPECT_TRUE(commonItems::DoesFileExist("output/NationalFocusFileIsNamedForTag/common/national_focus/TST_NF.txt"));
 }
@@ -32,7 +32,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, DefaultsAreOutput)
 {
    create_directories("output/DefaultsAreOutput/common/national_focus");
 
-   OutputFocusTree("DefaultsAreOutput", "TST", {}, configuration::UseStories::kNo);
+   OutputFocusTree("DefaultsAreOutput", "TST", {});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/DefaultsAreOutput/common/national_focus/TST_NF.txt"));
    std::ifstream national_focus_file("output/DefaultsAreOutput/common/national_focus/TST_NF.txt");
@@ -69,10 +69,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, SharedFocusesAreOutput)
 {
    create_directories("output/SharedFocusesAreOutput/common/national_focus");
 
-   OutputFocusTree("SharedFocusesAreOutput",
-       "TST",
-       {.shared_focuses = {"shared_focus_one", "shared_focus_two"}},
-       configuration::UseStories::kNo);
+   OutputFocusTree("SharedFocusesAreOutput", "TST", {.shared_focuses = {"shared_focus_one", "shared_focus_two"}});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/SharedFocusesAreOutput/common/national_focus/TST_NF.txt"));
    std::ifstream national_focus_file("output/SharedFocusesAreOutput/common/national_focus/TST_NF.txt");
@@ -111,10 +108,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, FocusesAreOutput)
 {
    create_directories("output/FocusesAreOutput/common/national_focus");
 
-   OutputFocusTree("FocusesAreOutput",
-       "TST",
-       {.focuses = {{.id = "focus_one"}, {.id = "focus_two"}}},
-       configuration::UseStories::kYes);
+   OutputFocusTree("FocusesAreOutput", "TST", {.focuses = {{.id = "focus_one"}, {.id = "focus_two"}}});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/FocusesAreOutput/common/national_focus/TST_NF.txt"));
    std::ifstream national_focus_file("output/FocusesAreOutput/common/national_focus/TST_NF.txt");
@@ -167,10 +161,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, FocusesArentOutputIfNotUsingStoriesSyst
 {
    create_directories("output/FocusesAreOutput/common/national_focus");
 
-   OutputFocusTree("FocusesAreOutput",
-       "TST",
-       {.focuses = {{.id = "focus_one"}, {.id = "focus_two"}}},
-       configuration::UseStories::kNo);
+   OutputFocusTree("FocusesAreOutput", "TST", {.focuses = {{.id = "focus_one"}, {.id = "focus_two"}}});
 
    ASSERT_TRUE(commonItems::DoesFileExist("output/FocusesAreOutput/common/national_focus/TST_NF.txt"));
    std::ifstream national_focus_file("output/FocusesAreOutput/common/national_focus/TST_NF.txt");

@@ -100,9 +100,9 @@ void OutputBookmark(const path& output_name,
 namespace out
 {
 
-void OutputWorld(const path& output_name, const hoi4::World& world, configuration::UseStories use_stories)
+void OutputWorld(const path& output_name, const hoi4::World& world)
 {
-   OutputCountries(output_name, world.GetCountries(), world.GetCharacters(), use_stories);
+   OutputCountries(output_name, world.GetCountries(), world.GetCharacters());
    OutputTagAliases(output_name, world.GetTagAliases());
    OutputMonarchIdeas(output_name, world.GetCountries(), world.GetCharacters());
    OutputStates(output_name, world.GetStates().states);
