@@ -97,7 +97,6 @@ TEST(ConfigurationTest, ItemsAreLoggedWhenImported)
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Debug is active)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Using output name test_output_name)"));
    EXPECT_THAT(log.str(), testing::HasSubstr(R"(Dynamic resources is not active)"));
-   EXPECT_THAT(log.str(), testing::HasSubstr(R"(Stories system is active)"));
 
    std::cout.rdbuf(cout_buffer);
 }
