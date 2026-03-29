@@ -18,8 +18,7 @@ using std::filesystem::path;
 
 void out::OutputCountries(const path& output_name,
     const std::map<std::string, hoi4::Country>& countries,
-    const std::map<int, hoi4::Character>& characters,
-    configuration::UseStories use_stories)
+    const std::map<int, hoi4::Character>& characters)
 {
    std::ofstream tags_file("output" / output_name / "common/country_tags/00_countries.txt");
    if (!tags_file.is_open())
@@ -41,7 +40,7 @@ void out::OutputCountries(const path& output_name,
       }
       OutputCountryUnits(oob_file, country);
       OutputCountryNavy(output_name, country);
-      OutputFocusTree(output_name, tag, country.GetFocusTree(), use_stories);
+      OutputFocusTree(output_name, tag, country.GetFocusTree());
    }
 
    tags_file.close();

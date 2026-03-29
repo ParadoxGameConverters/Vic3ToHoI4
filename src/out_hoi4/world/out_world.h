@@ -14,9 +14,7 @@
 namespace out
 {
 
-void OutputWorld(const std::filesystem::path& output_name,
-    const hoi4::World& world,
-    configuration::UseStories use_stories);
+void OutputWorld(const std::filesystem::path& output_name, const hoi4::World& world);
 
 }  // namespace out
 

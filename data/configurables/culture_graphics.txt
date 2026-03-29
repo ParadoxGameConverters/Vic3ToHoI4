@@ -124,7 +124,7 @@
 
 #WIP(1)
 caucasian_group = {
-ethnicities = { caucasian slavic }
+ethnicities = { caucasian north_caucasian slavic promethean_ethnicity }
 
     army_portraits = {
         GFX_Portrait_Europe_Generic_land_1

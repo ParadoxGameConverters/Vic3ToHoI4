@@ -39,6 +39,8 @@ struct AllDefaultPositions
    DefaultPositions default_stronghold_networks;
    DefaultPositions default_dams;
    DefaultPositions default_locks;
+   DefaultPositions default_naval_supply_hub;
+   DefaultPositions default_naval_headquarters;
 };
 
 
@@ -155,6 +157,14 @@ void ProcessLine(const std::string& line, const maps::MapData& map_data, AllDefa
       else if (matches[2] == "locks_spawn")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_locks);
+      }
+      else if (matches[2] == "naval_supply_hub")
+      {
+         ImportDefaultBuilding(matches, map_data, all_default_positions.default_naval_supply_hub);
+      }
+      else if (matches[2] == "naval_headquarters")
+      {
+         ImportDefaultBuilding(matches, map_data, all_default_positions.default_naval_headquarters);
       }
       else
       {
@@ -741,6 +751,14 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        buildings);
    PlacePredefinedBuildings(states.states, all_default_positions.default_dams, "dam_spawn", buildings);
    PlacePredefinedBuildings(states.states, all_default_positions.default_locks, "locks_spawn", buildings);
+   PlacePredefinedBuildings(states.states,
+       all_default_positions.default_naval_supply_hub,
+       "naval_supply_hub",
+       buildings);
+   PlacePredefinedBuildings(states.states,
+       all_default_positions.default_naval_headquarters,
+       "naval_headquarters",
+       buildings);
 
    return hoi4::Buildings({.buildings = buildings});
 }
