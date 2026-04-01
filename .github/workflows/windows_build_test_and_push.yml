@@ -41,7 +41,7 @@ jobs:
        git tag
 
     - name: "Generate semantic version number"
-      uses: paulhatch/semantic-version@v6.0.1
+      uses: paulhatch/semantic-version@v6.0.2
       id: version_number
       with:
         # The prefix to use to identify tags
