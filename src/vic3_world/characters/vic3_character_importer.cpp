@@ -41,7 +41,7 @@ vic3::CharacterImporter::CharacterImporter()
       }
    });
    character_parser_.registerKeyword("formation", [this](std::istream& input_stream) {
-      formation_id_ = commonItems::getInt(input_stream);
+      formation_id_ = commonItems::getLlong(input_stream);
    });
    character_parser_.registerKeyword("ideology", [this](std::istream& input_stream) {
       ideology_ = commonItems::getString(input_stream);

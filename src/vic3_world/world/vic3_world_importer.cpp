@@ -268,18 +268,18 @@ void AssignCharactersToCountries(const std::map<int, vic3::Character>& character
 }
 
 
-void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryFormation>& military_formations,
+void AssignMilitaryFormationsToCountries(const std::map<int64_t, vic3::MilitaryFormation>& military_formations,
     const std::vector<vic3::CombatUnit>& combat_units,
     std::map<int, vic3::Country>& countries)
 {
-   std::map<int, std::map<int, vic3::MilitaryFormation>> army_formations_by_country;
-   std::map<int, std::map<int, vic3::MilitaryFormation>> navy_formations_by_country;
+   std::map<int, std::map<int64_t, vic3::MilitaryFormation>> army_formations_by_country;
+   std::map<int, std::map<int64_t, vic3::MilitaryFormation>> navy_formations_by_country;
    for (const auto& [formation_number, formation]: military_formations)
    {
       if (formation.type == vic3::MilitaryFormationType::kArmy)
       {
          auto [iterator, success] = army_formations_by_country.emplace(formation.country,
-             std::map<int, vic3::MilitaryFormation>{{formation_number, formation}});
+             std::map<int64_t, vic3::MilitaryFormation>{{formation_number, formation}});
          if (!success)
          {
             iterator->second.emplace(formation_number, formation);
@@ -288,7 +288,7 @@ void AssignMilitaryFormationsToCountries(const std::map<int, vic3::MilitaryForma
       else
       {
          auto [iterator, success] = navy_formations_by_country.emplace(formation.country,
-             std::map<int, vic3::MilitaryFormation>{{formation_number, formation}});
+             std::map<int64_t, vic3::MilitaryFormation>{{formation_number, formation}});
          if (!success)
          {
             iterator->second.emplace(formation_number, formation);
@@ -483,7 +483,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    const std::map<std::string, commonItems::Color> color_definitions = ImportCountryColorDefinitions(mod_filesystem);
    std::map<int, Culture> cultures;
    std::map<int, std::vector<int>> country_character_map;
-   std::map<int, MilitaryFormation> military_formations;
+   std::map<int64_t, MilitaryFormation> military_formations;
    std::vector<CombatUnit> combat_units;
 
    commonItems::parser save_parser;

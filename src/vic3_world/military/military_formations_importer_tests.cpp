@@ -18,7 +18,7 @@ TEST(Vic3worldMilitaryMilitaryFormationsImporter, EmptyInputMeansNoFormations)
    input << "\tdatabase={\n";
    input << "\t}\n";
    input << "}\n";
-   const std::map<int, MilitaryFormation> military_formations = ImportMilitaryFormations(input);
+   const std::map<int64_t, MilitaryFormation> military_formations = ImportMilitaryFormations(input);
 
    EXPECT_TRUE(military_formations.empty());
 }
@@ -42,7 +42,7 @@ TEST(Vic3worldMilitaryMilitaryFormationsImporter, ExtrasAreSkipped)
    std::streambuf* cout_buffer = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
-   [[maybe_unused]] const std::map<int, MilitaryFormation> military_formations = ImportMilitaryFormations(input);
+   [[maybe_unused]] const std::map<int64_t, MilitaryFormation> military_formations = ImportMilitaryFormations(input);
 
    std::cout.rdbuf(cout_buffer);
 
@@ -90,7 +90,7 @@ TEST(Vic3worldMilitaryMilitaryFormationsImporter, FormationsCanBeInput)
    input << "}\n";
    input << "\t}\n";
    input << "}\n";
-   const std::map<int, MilitaryFormation> military_formations = ImportMilitaryFormations(input);
+   const std::map<int64_t, MilitaryFormation> military_formations = ImportMilitaryFormations(input);
 
    EXPECT_THAT(military_formations,
        testing::UnorderedElementsAre(testing::Pair(1234,

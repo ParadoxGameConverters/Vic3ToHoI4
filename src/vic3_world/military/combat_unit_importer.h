@@ -22,7 +22,7 @@ class CombatUnitImporter
    int current_manpower_ = 0;
    std::optional<std::string> type_;
    std::optional<int> country_;
-   std::optional<int> formation_;
+   std::optional<int64_t> formation_;
 };
 
 }  // namespace vic3
