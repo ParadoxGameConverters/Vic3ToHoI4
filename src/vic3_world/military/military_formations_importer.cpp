@@ -14,7 +14,7 @@ std::map<int64_t, vic3::MilitaryFormation> vic3::ImportMilitaryFormations(std::i
 
    const auto& parser_function = [&formation_importer, &military_formations](const std::string& number_string,
                                      std::istream& input_stream) {
-      const int64_t formation_number = commonItems::stringToInteger<int64_t>(number_string);
+      const int64_t formation_number = std::stoll(number_string);
       if (const std::optional<MilitaryFormation> formation = formation_importer.ImportMilitaryFormation(input_stream);
           formation.has_value())
       {
