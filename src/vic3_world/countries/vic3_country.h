@@ -59,8 +59,8 @@ struct CountryOptions
    BudgetLevel tax_level = BudgetLevel::kVeryLow;
    BudgetLevel salary_level = BudgetLevel::kVeryLow;
    BudgetLevel mil_salary_level = BudgetLevel::kVeryLow;
-   std::map<int, MilitaryFormation> army_formations;
-   std::map<int, MilitaryFormation> navy_formations;
+   std::map<int64_t, MilitaryFormation> army_formations;
+   std::map<int64_t, MilitaryFormation> navy_formations;
 };
 
 
@@ -134,8 +134,8 @@ class Country
    [[nodiscard]] BudgetLevel GetTaxLevel() const { return tax_level_; }
    [[nodiscard]] BudgetLevel GetGovernmentSalaryLevel() const { return salary_level_; }
    [[nodiscard]] BudgetLevel GetMilitarySalaryLevel() const { return mil_salary_level_; }
-   [[nodiscard]] const std::map<int, MilitaryFormation>& GetArmyFormations() const { return army_formations_; }
-   [[nodiscard]] const std::map<int, MilitaryFormation>& GetNavyFormations() const { return navy_formations_; }
+   [[nodiscard]] const std::map<int64_t, MilitaryFormation>& GetArmyFormations() const { return army_formations_; }
+   [[nodiscard]] const std::map<int64_t, MilitaryFormation>& GetNavyFormations() const { return navy_formations_; }
 
    void SetColor(commonItems::Color color) { color_ = std::move(color); }
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
@@ -145,11 +145,11 @@ class Country
    void AddInterestGroupId(int ig_id) { ig_ids_.push_back(ig_id); }
    void AddPuppet(int puppet) { puppets_.insert(puppet); }
    void AddOverlord(int overlord) { overlord_ = overlord; }
-   void SetArmyFormations(const std::map<int, MilitaryFormation>& military_formations)
+   void SetArmyFormations(const std::map<int64_t, MilitaryFormation>& military_formations)
    {
       army_formations_ = military_formations;
    }
-   void SetNavyFormations(const std::map<int, MilitaryFormation>& military_formations)
+   void SetNavyFormations(const std::map<int64_t, MilitaryFormation>& military_formations)
    {
       navy_formations_ = military_formations;
    }
@@ -185,8 +185,8 @@ class Country
    BudgetLevel tax_level_;
    BudgetLevel salary_level_;
    BudgetLevel mil_salary_level_;
-   std::map<int, MilitaryFormation> army_formations_;
-   std::map<int, MilitaryFormation> navy_formations_;
+   std::map<int64_t, MilitaryFormation> army_formations_;
+   std::map<int64_t, MilitaryFormation> navy_formations_;
 };
 
 }  // namespace vic3

@@ -13,7 +13,7 @@
 namespace vic3
 {
 
-std::map<int, MilitaryFormation> ImportMilitaryFormations(std::istream& input);
+std::map<int64_t, MilitaryFormation> ImportMilitaryFormations(std::istream& input);
 
 }  // namespace vic3
 

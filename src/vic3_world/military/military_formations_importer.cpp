@@ -6,16 +6,16 @@
 
 
 
-std::map<int, vic3::MilitaryFormation> vic3::ImportMilitaryFormations(std::istream& input)
+std::map<int64_t, vic3::MilitaryFormation> vic3::ImportMilitaryFormations(std::istream& input)
 {
-   std::map<int, vic3::MilitaryFormation> military_formations;
+   std::map<int64_t, vic3::MilitaryFormation> military_formations;
 
    MilitaryFormationImporter formation_importer;
 
    const auto& parser_function = [&formation_importer, &military_formations](const std::string& number_string,
                                      std::istream& input_stream) {
-      const int formation_number = std::stoi(number_string);
-      if (std::optional<MilitaryFormation> formation = formation_importer.ImportMilitaryFormation(input_stream);
+      const int64_t formation_number = std::stoll(number_string);
+      if (const std::optional<MilitaryFormation> formation = formation_importer.ImportMilitaryFormation(input_stream);
           formation.has_value())
       {
          military_formations.emplace(formation_number, *formation);

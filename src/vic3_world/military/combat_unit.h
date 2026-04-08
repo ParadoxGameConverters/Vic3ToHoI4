@@ -15,7 +15,7 @@ struct CombatUnit
    int current_manpower = 0;
    std::optional<std::string> type;
    std::optional<int> country;
-   std::optional<int> formation;
+   std::optional<int64_t> formation;
 
    std::strong_ordering operator<=>(const CombatUnit&) const = default;
 };

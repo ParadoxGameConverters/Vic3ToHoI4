@@ -310,7 +310,7 @@ std::map<int, int> MakeNavalBaseMap(const std::vector<hoi4::State>& states)
 
 
 std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
-    const std::map<int, vic3::MilitaryFormation>& naval_formations,
+    const std::map<int64_t, vic3::MilitaryFormation>& naval_formations,
     const vic3::Buildings& buildings,
     const std::vector<hoi4::TaskForceTemplate>& task_force_templates,
     const std::vector<hoi4::EquipmentVariant>& active_ship_variants,
@@ -449,7 +449,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
 
 
 std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag,
-    const std::map<int, vic3::MilitaryFormation>& military_formations,
+    const std::map<int64_t, vic3::MilitaryFormation>& military_formations,
     const hoi4::States& states,
     const vic3::Buildings& buildings,
     const mappers::UnitMapper& unit_mapper)
@@ -504,7 +504,7 @@ std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag,
 
 std::vector<hoi4::Unit> ConvertArmies(const std::string& tag,
     const mappers::UnitMapper& unit_mapper,
-    const std::map<int, vic3::MilitaryFormation>& military_formations,
+    const std::map<int64_t, vic3::MilitaryFormation>& military_formations,
     const vic3::Buildings& buildings,
     const std::vector<hoi4::DivisionTemplate>& division_templates,
     const hoi4::States& states,
