@@ -2,6 +2,7 @@
 
 #include <external/commonItems/Log.h>
 #include <external/fmt/include/fmt/format.h>
+#include <external/fmt/include/fmt/ranges.h>
 
 #include <numeric>
 #include <ranges>
@@ -410,9 +411,9 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
 
    for (const vic3::MilitaryFormation& naval_formation: naval_formations | std::views::values)
    {
-      for (const auto& [ship_type, number]: naval_formation.units)
+      for (const vic3::CombatUnit& unit: naval_formation.combat_units)
       {
-         pm_amounts[ship_type] += static_cast<float>(number);
+         pm_amounts[unit.type.value_or("")] += static_cast<float>(unit.current_manpower);
       }
 
       hoi4::TaskForce task_force{.location = *default_naval_base};
