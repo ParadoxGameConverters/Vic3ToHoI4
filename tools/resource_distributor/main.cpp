@@ -14,7 +14,7 @@
 class State
 {
   public:
-   State(const std::filesystem::path& path)
+   explicit State(const std::filesystem::path& path)
    {
       parser_.registerKeyword("resources", [this](std::istream& input) {
          const commonItems::assignments resources(input);
