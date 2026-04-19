@@ -320,6 +320,30 @@ void AssignMilitaryFormationsToCountries(const std::map<int64_t, vic3::MilitaryF
 
       formation_itr->second.combat_units.push_back(combat_unit);
    }
+   for (const vic3::CombatUnit& combat_unit : combat_units)
+   {
+       if (!combat_unit.country)
+       {
+           continue;
+       }
+       auto country_itr = navy_formations_by_country.find(combat_unit.country.value());
+       if (country_itr == navy_formations_by_country.end())
+       {
+           continue;
+       }
+
+       if (!combat_unit.formation)
+       {
+           continue;
+       }
+       auto formation_itr = country_itr->second.find(combat_unit.formation.value());
+       if (formation_itr == country_itr->second.end())
+       {
+           continue;
+       }
+
+       formation_itr->second.combat_units.push_back(combat_unit);
+   }
 
    for (const auto& [country_number, army_formations]: army_formations_by_country)
    {
