@@ -26,7 +26,7 @@ namespace
 {
 
 constexpr int kMaxFactorySlots = 12;
-const std::vector<std::string> kResourceNames = {"steel", "oil", "tungsten", "aluminium", "chromium", "rubber"};
+const std::vector<std::string> kResourceNames = {"steel", "oil", "tungsten", "aluminium", "chromium", "rubber", "coal"};
 const std::map<std::string, int> kNavalBasePoints = {{"port", 5}, {"city", 4}, {"mine", 3}, {"farm", 2}, {"wood", 1}};
 
 bool AllVic3ProvincesAreInSameState(const std::vector<std::string>& vic3_provinces,
