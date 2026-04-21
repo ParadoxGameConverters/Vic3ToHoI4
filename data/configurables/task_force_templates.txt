@@ -1,8 +1,8 @@
 # Modern battleship group.
 task_force = {
   cost = {
-    combat_unit_type_battleship = 2
-    combat_unit_type_carrier = 2
+    combat_unit_type_battleship = 2000
+    combat_unit_type_carrier = 2000
   }
   ship = {
     name = "Battleship"
@@ -58,8 +58,8 @@ task_force = {
 # Heavy cruiser backup.
 task_force = {
   cost = {
-    combat_unit_type_battleship = 1
-    combat_unit_type_carrier = 1
+    combat_unit_type_battleship = 1000
+    combat_unit_type_carrier = 1000
   }
   ship = {
     name = "Heavy Cruiser"
@@ -94,7 +94,7 @@ task_force = {
 # Older battleship group.
 task_force = {
   cost = {
-    combat_unit_type_dreadnought = 2
+    combat_unit_type_dreadnought = 2000
   }
   ship = {
     name = "Battleship"
@@ -150,7 +150,7 @@ task_force = {
 # Heavy cruiser backup.
 task_force = {
   cost = {
-    combat_unit_type_dreadnought = 1
+    combat_unit_type_dreadnought = 1000
   }
   ship = {
     name = "Heavy Cruiser"
@@ -185,7 +185,7 @@ task_force = {
 # Modern destroyer flotilla.
 task_force = {
   cost = {
-    combat_unit_type_carrier = 1
+    combat_unit_type_carrier = 1000
   }
   ship = {
     name = "Destroyer"
@@ -220,7 +220,7 @@ task_force = {
 # Older destroyers.
 task_force = {
   cost = {
-    combat_unit_type_destroyer = 10
+    combat_unit_type_destroyer = 10000
   }
   ship = {
     name = "Destroyer"
@@ -256,7 +256,7 @@ task_force = {
 # More modern submarines.
 task_force = {
   cost = {
-    combat_unit_type_submarine = 10
+    combat_unit_type_submarine = 10000
   }
   ship = {
     name = "Submarine"
@@ -291,7 +291,7 @@ task_force = {
 # Older submarines.
 task_force = {
   cost = {
-    combat_unit_type_submarine = 10
+    combat_unit_type_submarine = 10000
   }
   ship = {
     name = "Submarine"
