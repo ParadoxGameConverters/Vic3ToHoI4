@@ -170,7 +170,7 @@ link = { vic = FRS hoi = FOR } # Formosa => Taiwan
 link = { vic = FSA hoi = USA } # Free States of America
 #link = { vic = FTJ hoi = ??? } # Futa Jallon
 #link = { vic = FTR hoi = ??? } # Futa Toro
-#link = { vic = GAL hoi = ??? } # Galicia-Lodomeria
+link = { vic = GAL hoi = GAL } # Galicia-Lodomeria => Galicia and Lodomeria
 #link = { vic = GAO hoi = ??? } # Gao
 link = { vic = GBR hoi = ENG } # Great Britain
 #link = { vic = GCO hoi = ??? } # Gran Colombia
@@ -587,6 +587,9 @@ link = { vic = ZIM hoi = ZIM } # Zimbabwe
 #link = { vic = ??? hoi = NXM } # Ningxia Ma
 #link = { vic = ??? hoi = XIC } # Xi'an 
 #link = { vic = ??? hoi = HBC } # Hebei-Chahar
+
+#link = { vic = ??? hoi = SDL } # Sudetenland
+#link = { vic = ??? hoi = RUT } # Carpatho-Ruthenia
 
 # Reichkommisariats
 #link = { vic = ??? hoi = GEN } # Generalgouvernment
