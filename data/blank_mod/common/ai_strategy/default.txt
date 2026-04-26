@@ -721,7 +721,7 @@ slightly_naval_focused_nation = {
 	ai_strategy = {
 		type = unit_ratio
 		id = screen_ship
-		value = 1
+		value = 4
 	}
 
 	ai_strategy = {
@@ -752,7 +752,7 @@ more_naval_focused_nation = {
 	ai_strategy = {
 		type = unit_ratio
 		id = screen_ship
-		value = 1
+		value = 4
 	}
 
 	ai_strategy = {
@@ -1410,12 +1410,17 @@ default_build_a_nl_facility = {
 		num_of_civilian_factories > 25
 		num_of_military_factories > 25 # Even if we have the base tech, let's wait until we have some kind of capacity
 		nuclear_facility < 1  # one is enough
+		NOT = {
+			any_controlled_state = {
+				nuclear_facility > 0
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = build_building
 		id = nuclear_facility
-		value = 100
+		value = 10
 	}
 }
 
@@ -1423,12 +1428,17 @@ default_build_a_nav_facility = {
 	enable = {
 		num_of_naval_factories > 25 # Only Naval Powers should bother with these unless specifically told to do otherwise
 		naval_facility < 1 # one is enough
+		NOT = {
+			any_controlled_state = {
+				naval_facility > 0
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = build_building
 		id = naval_facility
-		value = 100
+		value = 10
 	}
 }
 
@@ -1436,12 +1446,20 @@ default_build_a_nav_facility = {
 default_build_a_gun_emplacement = {
 	enable = {
 		is_major = yes
+		has_tech = land_multi_charge_large_caliber_gun_tech
+		num_of_military_factories > 50
+		mega_gun_emplacement < 1
+		NOT = {
+			any_controlled_state = {
+				mega_gun_emplacement > 0
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = build_building
 		id = mega_gun_emplacement
-		value = 1
+		value = 10
 	}
 }
 
@@ -1456,12 +1474,17 @@ default_build_a_lw_facility = {
 			has_tech = improved_heavy_tank_chassis
 		}
 		land_facility < 1 # one is enough
+		NOT = {
+			any_controlled_state = {
+				land_facility > 0
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = build_building
 		id = land_facility
-		value = 1
+		value = 10
 	}
 }
 
@@ -1477,12 +1500,17 @@ default_build_an_air_facility = {
 			has_tech = basic_large_airframe
 		}
 		air_facility < 1 # one is enough
+		NOT = {
+			any_controlled_state = {
+				air_facility > 0
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = build_building
 		id = air_facility
-		value = 1
+		value = 10
 	}
 }
 

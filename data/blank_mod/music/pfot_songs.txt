@@ -1,0 +1,41 @@
+
+music_station = "base_music"
+
+
+#### CZE ###
+music = {
+	song = "skoda_lasky"
+	chance = {
+		base = 1
+
+		modifier = {
+			factor = 0.05
+		}
+		modifier = {
+			factor = 2.5
+			has_war = no
+		}
+		modifier = {
+			factor = 10
+			has_war = no
+		}
+	}
+}
+
+music = {
+	song = "truth_prevails"
+	chance = {
+		base = 1
+
+		modifier = {
+			factor = 0.15
+			has_war = no
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_defensive_war = yes
+			}
+		}
+	}
+}
