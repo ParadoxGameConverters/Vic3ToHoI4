@@ -5,9 +5,9 @@ env:
 
 on:
   push:
-    branches: [ main ]
+    branches: [ 0.6_version ]
   pull_request:
-    branches: [ main ]
+    branches: [ 0.6_version ]
   schedule:
     - cron: '0 16 * * 6'
 

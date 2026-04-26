@@ -1,9 +1,9 @@
 name: Run clang-tidy
 on:
   push:
-    branches: [ main ]
+    branches: [ 0.6_version ]
   pull_request:
-    branches: [ main ]
+    branches: [ 0.6_version ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
