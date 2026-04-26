@@ -1,0 +1,198 @@
+#NATIONAL SPIRITS
+#Divided Nation
+CZE_a_divided_nation_dynamic_modifier = { #National Spirit
+	enable = { always = yes }
+	icon = GFX_idea_CZE_divided_nation
+
+	#Initial - These need to match the values of CZE_a_divided_nation_fake_ns if changed
+	stability_factor = CZE_a_divided_nation_stability_factor #-0.15
+	drift_defence_factor = CZE_a_divided_nation_drift_defence_factor #-0.3
+	political_power_cost = CZE_a_divided_nation_political_power_cost #0.25
+
+	remove_trigger = {
+		check_variable = { 
+			CZE_a_divided_nation_stability_factor > 0.01 #Anti-expilot protection, just to be extra safe
+		}
+	}
+}
+#Skoda Works
+CZE_skoda_works_dynamic_modifier = { #National Spirit
+	enable = { always = yes }
+	icon = GFX_idea_CZE_skoda_works
+
+	#Initial
+	custom_modifier_tooltip = CZE_skoda_works_dynamic_custom_modifier_tt
+	#custom_modifier_tooltip = CZE_skoda_works_dynamic_custom_modifier_space_tt
+	industrial_capacity_factory = CZE_skoda_works_dynamic_modifier_industrial_capacity_factory #0.05
+
+	#Future
+	production_factory_max_efficiency_factor = CZE_skoda_works_dynamic_modifier_production_factory_max_efficiency_factor #0
+	production_factory_efficiency_gain_factor = CZE_skoda_works_dynamic_modifier_production_factory_efficiency_gain_factor #0
+	production_speed_buildings_factor = CZE_skoda_works_dynamic_modifier_production_speed_buildings_factor #0
+	production_speed_industrial_complex_factor = CZE_skoda_works_dynamic_modifier_production_speed_industrial_complex_factor #0
+	production_speed_arms_factory_factor = CZE_skoda_works_dynamic_modifier_production_speed_arms_factory_factor #0
+	production_speed_facility_factor = CZE_skoda_works_dynamic_modifier_production_speed_facility_factor #0
+	industrial_capacity_dockyard = CZE_skoda_works_dynamic_modifier_industrial_capacity_dockyard #0
+	production_speed_dockyard_factor = CZE_skoda_works_dynamic_modifier_production_speed_dockyard_factor #0
+	production_speed_synthetic_refinery_factor = CZE_skoda_works_dynamic_modifier_production_speed_synthetic_refinery_factor #0
+	fuel_gain_factor = CZE_skoda_works_dynamic_modifier_fuel_gain_factor #0
+	production_speed_infrastructure_factor = CZE_skoda_works_dynamic_modifier_production_speed_infrastructure_factor #0
+	production_speed_rail_way_factor = CZE_skoda_works_dynamic_modifier_production_speed_rail_way_factor #0
+	industry_air_damage_factor = CZE_skoda_works_dynamic_modifier_industry_air_damage_factor #0
+	line_change_production_efficiency_factor = CZE_skoda_works_dynamic_modifier_line_change_production_efficiency_factor #0
+	equipment_conversion_speed = CZE_skoda_works_dynamic_modifier_equipment_conversion_speed #0
+	production_factory_start_efficiency_factor = CZE_skoda_works_dynamic_modifier_production_factory_start_efficiency_factor #0
+	production_lack_of_resource_penalty_factor = CZE_skoda_works_dynamic_modifier_production_lack_of_resource_penalty_factor #0
+	production_speed_industrial_infrastructure_factor = CZE_skoda_works_dynamic_modifier_production_speed_industrial_infrastructure_factor #0 
+	production_speed_energy_infrastructure_factor = CZE_skoda_works_dynamic_modifier_production_speed_energy_infrastructure_factor #0
+	out_of_power_impact_factor = CZE_skoda_works_dynamic_modifier_out_of_power_impact_factor #0
+}
+
+#Czech Army
+CZE_ceskoslovenska_armada_dynamic_modifier = { #National Spirit
+	enable = { always = yes }
+	icon = GFX_idea_CZE_ceskoslovenska_armada
+	
+	#Initial - These need to match the values of CZE_ceskoslovenska_armada_fake_ns if changed
+	training_time_factor = CZE_ceskoslovenska_armada_training_time_factor #0.10
+	experience_gain_army_unit_factor = CZE_ceskoslovenska_armada_experience_gain_army_unit_factor #0.05
+	army_org_factor = CZE_ceskoslovenska_armada_army_org_factor #-0.15
+	supply_combat_penalties_on_core_factor = CZE_ceskoslovenska_armada_supply_combat_penalties_on_core_factor #-0.10
+	out_of_supply_factor = CZE_ceskoslovenska_armada_out_of_supply_factor #0.10
+
+	#Future
+	conscription_factor = CZE_ceskoslovenska_armada_conscription_factor #0
+	dig_in_speed_factor = CZE_ceskoslovenska_armada_dig_in_speed_factor #0
+	recon_factor_while_entrenched = CZE_ceskoslovenska_armada_recon_factor_while_entrenched #0
+	special_forces_out_of_supply_factor = CZE_ceskoslovenska_armada_special_forces_out_of_supply_factor #0
+	special_forces_cap = CZE_ceskoslovenska_armada_special_forces_cap #0
+	unit_artillery_brigade_design_cost_factor = CZE_ceskoslovenska_armada_unit_artillery_brigade_design_cost_factor #0
+	army_speed_factor = CZE_ceskoslovenska_armada_army_speed_factor #0
+	org_loss_when_moving = CZE_ceskoslovenska_armada_org_loss_when_moving #0
+	army_core_defence_factor = CZE_ceskoslovenska_armada_army_core_defence_factor #0
+	army_armor_speed_factor = CZE_ceskoslovenska_armada_army_armor_speed_factor #0
+	truck_attrition_factor = CZE_ceskoslovenska_armada_truck_attrition_factor #0 
+	army_armor_attack_factor = CZE_ceskoslovenska_armada_army_armor_attack_factor #0
+	field_officer_promotion_penalty = CZE_ceskoslovenska_armada_field_officer_promotion_penalty #0
+	military_leader_cost_factor = CZE_ceskoslovenska_armada_military_leader_cost_factor #0
+	max_dig_in_factor = CZE_ceskoslovenska_armada_max_dig_in_factor #0
+	army_core_attack_factor = CZE_ceskoslovenska_armada_army_core_attack_factor #0
+	coordination_bonus = CZE_ceskoslovenska_armada_coordination_bonus #0
+	army_org_regain = CZE_ceskoslovenska_armada_army_regain #0
+	acclimatization_cold_climate_gain_factor = CZE_ceskoslovenska_armada_acclimatization_cold_climate_gain_factor #0
+	cas_damage_reduction = CZE_ceskoslovenska_armada_cas_damage_reduction #0
+	equipment_capture_factor = CZE_ceskoslovenska_armada_equipment_capture_factor #0
+	intel_from_combat_factor = CZE_ceskoslovenska_armada_intel_from_combat_factor #0
+	experience_gain_army_factor = CZE_ceskoslovenska_armada_experience_gain_army_factor #0
+	modifier_army_sub_unit_militia_defence_factor = CZE_ceskoslovenska_armada_modifier_army_sub_unit_militia_defence_factor #0
+	army_morale_factor = CZE_ceskoslovenska_armada_dynamic_modifier_army_morale_factor #0
+	command_power_gain_mult = CZE_ceskoslovenska_armada_dynamic_modifier_command_power_gain_mult #0
+}
+#Czech Air Force
+CZE_ceskoslovenske_letectvo_dynamic_modifier = { #National Spirit
+	enable = { always = yes }
+	icon = GFX_idea_CZE_ceskoslovenska_letectvo
+	
+	#Initial
+	air_untrained_pilots_penalty_factor = CZE_ceskoslovenske_letectvo_air_untrained_pilots_penalty_factor #-0.25
+	air_training_xp_gain_factor = CZE_ceskoslovenske_letectvo_air_training_xp_gain_factor #-0.05
+	air_volunteer_cap = CZE_ceskoslovenske_letectvo_dynamic_air_volunteer_cap #1
+
+	#Futrue
+	air_accidents_factor = CZE_ceskoslovenske_letectvo_air_accidents_factor #0
+	air_ace_generation_chance_factor = CZE_ceskoslovenske_letectvo_air_ace_generation_chance_factor #0
+	ace_effectiveness_factor = CZE_ceskoslovenske_letectvo_ace_effectiveness_factor #0
+	production_speed_air_base_factor = CZE_ceskoslovenske_letectvo_production_speed_air_base_factor #0
+	production_speed_anti_air_building_factor = CZE_ceskoslovenske_letectvo_production_speed_anti_air_building_factor #0
+	air_home_defence_factor = CZE_ceskoslovenske_letectvo_air_home_defence_factor #0
+	air_superiority_efficiency = CZE_ceskoslovenske_letectvo_air_superiority_efficiency #0
+	air_weather_penalty = CZE_ceskoslovenske_letectvo_air_weather_penalty #0
+	air_wing_xp_loss_when_killed_factor = CZE_ceskoslovenske_letectvo_air_wing_xp_loss_when_killed_factor #0
+	air_range_factor = CZE_ceskoslovenske_letectvo_air_range_factor #0
+	air_strategic_bomber_bombing_factor = CZE_ceskoslovenske_letectvo_air_strategic_bomber_bombing_factor #0
+	air_cas_efficiency = CZE_ceskoslovenske_letectvo_air_cas_efficiency #0
+	air_attack_factor = CZE_ceskoslovenske_letectvo_air_attack_factor #0
+	air_night_penalty = CZE_ceskoslovenske_letectvo_air_night_penalty #0
+}
+#Czech Navy
+CZE_ceskoslovenske_alecne_lodstvo_dynamic_modifier = { #National Spirit
+	enable = { always = yes }
+	icon = GFX_idea_CZE_ceskoslovenska_lodstvo
+
+	#Initial
+	experience_gain_navy_factor = CZE_ceskoslovenske_alecne_lodstvo_experience_gain_navy_factor #0.10
+
+	#Futrue
+	navy_capital_ship_attack_factor = CZE_ceskoslovenske_alecne_lodstvo_navy_capital_ship_attack_factor #0
+	screening_without_screens = CZE_ceskoslovenske_alecne_lodstvo_screening_without_screens #0
+	navy_screen_attack_factor = CZE_ceskoslovenske_alecne_lodstvo_navy_screen_attack_factor #0
+	screening_efficiency = CZE_ceskoslovenske_alecne_lodstvo_screening_efficiency #0 
+	convoy_raiding_efficiency_factor = CZE_ceskoslovenske_alecne_lodstvo_convoy_raiding_efficiency_factor #0 
+	naval_torpedo_reveal_chance_factor = CZE_ceskoslovenske_alecne_lodstvo_naval_torpedo_reveal_chance_factor #0
+	naval_heavy_gun_hit_chance_factor = CZE_ceskoslovenske_alecne_lodstvo_naval_heavy_gun_hit_chance_factor #0
+	navy_capital_ship_defence_factor = CZE_ceskoslovenske_alecne_lodstvo_navy_capital_ship_defence_factor #0
+	navy_screen_defence_factor = CZE_ceskoslovenske_alecne_lodstvo_navy_screen_defence_factor #0
+	navy_submarine_defence_factor = CZE_ceskoslovenske_alecne_lodstvo_navy_submarine_defence_factor #0
+	sortie_efficiency = CZE_ceskoslovenske_alecne_lodstvo_sortie_efficiency #0
+	navy_max_range_factor = CZE_ceskoslovenske_alecne_lodstvo_navy_max_range_factor #0
+}
+
+CZE_first_sudetenland_fortification_program = { #State Modifier
+	enable = { always = yes }
+	icon = GFX_modifiers_generic_defense
+
+    state_bunker_max_level_terrain_limit = 1
+}
+
+CZE_fifth_sudetenland_fortification_network = { #State Modifier
+	enable = { always = yes }
+	icon = GFX_modifiers_SOV_armored_battery
+
+    local_supplies_for_controller = 0.1
+	enemy_attrition = 0.1
+}
+
+CZE_first_sudetenland_fortification_program_GD = { #State Modifier, same as above with extra flavor modifier for GD
+	enable = { always = yes }
+	icon = GFX_modifiers_generic_defense
+	
+    state_bunker_max_level_terrain_limit = 1
+	state_production_speed_stronghold_network_factor = 0.10
+}
+
+CZE_improve_cross_border_rail_connections_modifier = { #State Modifier
+	enable = { always = yes }
+	icon = GFX_modifiers_generic_railways
+	remove_trigger = {
+	}
+	
+	state_production_speed_infrastructure_factor = 0.10
+	state_production_speed_rail_way_factor = 0.10
+
+}
+
+#Raids
+sokolov_raided_limited_success_modifier = {
+	enable = { always = yes }
+	icon = GFX_modifiers_BEL_eben_emael_raided
+	state_repair_speed_bunker_factor = -0.05
+	land_bunker_effectiveness_factor = -0.05
+}
+
+sokolov_raided_success_modifier = {
+	enable = { always = yes }
+	icon = GFX_modifiers_BEL_eben_emael_raided
+
+	land_bunker_effectiveness_factor = -0.25
+	state_repair_speed_bunker_factor = -0.25
+}
+
+sokolov_raided_critical_modifier = {
+	enable = { always = yes }
+	icon = GFX_modifiers_BEL_eben_emael_raided
+
+	land_bunker_effectiveness_factor = -0.50
+	state_repair_speed_bunker_factor = -0.50
+}
+
+
