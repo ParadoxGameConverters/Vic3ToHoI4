@@ -1,13 +1,30 @@
-* Add new banner to data/release_banners
-* Update data/version.txt with new supported versions, new converter version, and name
-* Update Vic3ToHoI4-Installer.iss with new version and name
-* Update data/readme.txt with new supported version and new converter version
-* Update .github/workflows/windows_build_test_and_push.yml with new supported version, new name, filename, tag, and artifact
-* Create commit with MINOR or MAJOR in the commit message as appropriate, and tagged with new version
-* Push and merge on github
-* Wait for build, confirm updates
-* New post on forum thread
-* Update first post on forum thread
-* Post on Patreon
-* Post on reddit
-* Update wiki
+Before merging any PR with changes for the new version:
+	* Edit windows_build_and_test.yml to change the version number in Prepare release, Prepare installer, and Upload binaries to named release
+	* Edit windows_build_and_test.yml to comment out Upload binaries to latest release
+	* Edit publish_commit_id.yml to comment out Publish commit id
+
+After making relevant changes:
+	* Add new banner to data/release_banners
+	* Update data/version.txt with new supported versions, new converter version, and name
+	* Update Vic3ToHoI4-Installer.iss with new version and name
+	* Update data/readme.txt with new supported version and new converter version
+	* Update .github/workflows/windows_build_test_and_push.yml with new supported version, new name, filename, tag, and artifact
+	* Create commit with MINOR or MAJOR in the commit message as appropriate, and tagged with new version
+	* Push and merge on github
+	* Wait for build, confirm updates
+	* Tag the merged commit with the new version number and make a release from the tag
+
+Make a new PR:
+	* Edit windows_build_and_test.yml to restore Upload binaries to latest release
+	* Edit publish_commit_id.yml to restore Publish commit id
+	* Wait for the new build
+	* Confirm it uploaded to the new release
+	* Confirm it did not overwrite the old release
+	* Confirm the commit id was published
+
+Announce the new version:
+	* New post on forum thread
+	* Update first post on forum thread
+	* Post on Patreon
+	* Post on reddit
+	* Update wiki
