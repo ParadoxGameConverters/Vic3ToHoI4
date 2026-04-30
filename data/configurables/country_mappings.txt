@@ -421,6 +421,7 @@ link = { vic = RIO hoi = RIG } # Río Grande
 link = { vic = ROM hoi = ROM } # Romania
 link = { vic = RUS hoi = SOV } # Russia
 link = { vic = RWD hoi = RWA } # Rwanda
+link = { vic = RYU hoi = OKN } # Ryukyu => Okinawa
 link = { vic = SAF hoi = SAF } # South Africa
 link = { vic = SAH hoi = WES } # Sahrawi
 #link = { vic = SAK hoi = ??? } # Siak
@@ -453,6 +454,7 @@ link = { vic = SIN hoi = SIN } # Sindh
 #link = { vic = SKM hoi = ??? } # Sukuma
 #link = { vic = SLK hoi = ??? } # Selk'nam
 #link = { vic = SLS hoi = ??? } # Séliš
+#link = { vic = SKH hoi = ??? } # Sakhalin
 link = { vic = SLO hoi = SLV } # Slovenia
 link = { vic = SLV hoi = SLO } # Slovakia
 #link = { vic = SLW hoi = ??? } # Sulawesi
@@ -515,6 +517,7 @@ link = { vic = UDM hoi = UDM } # Udmurtia
 link = { vic = UKR hoi = UKR } # Ukraine
 #link = { vic = ULR hoi = ??? } # Uluru
 link = { vic = ULS hoi = NIR } # Ulster
+#link = { vic = ULT hoi = ??? } # Ulta
 #link = { vic = UNL hoi = ??? } # United Netherlands
 #link = { vic = UNT hoi = ??? } # United Tribes
 #link = { vic = UOM hoi = ??? } # Michigan
