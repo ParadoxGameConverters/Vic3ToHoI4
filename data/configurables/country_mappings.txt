@@ -47,7 +47,7 @@ link = { vic = BAH hoi = BAH } # Bahamas
 #link = { vic = BAL hoi = ??? } # Bali
 #link = { vic = BAS hoi = ??? } # Bastar
 link = { vic = BAV hoi = BAY } # Bavaria
-#link = { vic = BEI hoi = ??? } # Beiyang
+link = { vic = BEI hoi = HBC } # Beiyang => Hebei-Chahar
 link = { vic = BEL hoi = BEL } # Belgium
 #link = { vic = BEN hoi = ??? } # Benin
 #link = { vic = BER hoi = ??? } # Baroda
@@ -589,7 +589,6 @@ link = { vic = ZIM hoi = ZIM } # Zimbabwe
 #link = { vic = ??? hoi = KHM } # Khotan Ma
 #link = { vic = ??? hoi = NXM } # Ningxia Ma
 #link = { vic = ??? hoi = XIC } # Xi'an 
-#link = { vic = ??? hoi = HBC } # Hebei-Chahar
 
 #link = { vic = ??? hoi = SDL } # Sudetenland
 #link = { vic = ??? hoi = RUT } # Carpatho-Ruthenia
