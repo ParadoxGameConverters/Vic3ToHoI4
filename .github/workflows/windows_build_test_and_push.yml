@@ -75,8 +75,8 @@ jobs:
        echo 'version = "${{ steps.version_number.outputs.major }}.${{ steps.version_number.outputs.minor }}.${{ steps.version_number.outputs.patch }}"' | out-file data/version.txt -encoding ASCII -append
        echo 'name = "Halsey"' | out-file data/version.txt -encoding ASCII -append
        echo 'source = "Vic3"' | out-file data/version.txt -encoding ASCII -append
-       echo 'minSource = "1.12"' | out-file data/version.txt -encoding ASCII -append
-       echo 'maxSource = "1.12"' | out-file data/version.txt -encoding ASCII -append
+       echo 'minSource = "1.13"' | out-file data/version.txt -encoding ASCII -append
+       echo 'maxSource = "1.13"' | out-file data/version.txt -encoding ASCII -append
        echo 'target = "HoI4"' | out-file data/version.txt -encoding ASCII -append
        echo 'minTarget = "1.18"' | out-file data/version.txt -encoding ASCII -append
        echo 'maxTarget = "1.18"' | out-file data/version.txt -encoding ASCII -append
