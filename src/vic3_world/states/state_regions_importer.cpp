@@ -84,7 +84,10 @@ vic3::StateRegions vic3::ImportStateRegions(const commonItems::ModFilesystem& fi
 
    for (const path& state_regions_file: filesystem.GetAllFilesInFolder("map_data/state_regions"))
    {
-      file_parser.parseFile(state_regions_file);
+      if (state_regions_file.extension() == ".txt")
+      {
+         file_parser.parseFile(state_regions_file);
+      }
    }
 
    return {.name_to_region_map = name_to_region_map, .region_indexes = region_indexes};
