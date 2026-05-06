@@ -44,27 +44,33 @@ TEST(Vic3worldCharactersVic3characterimporter, CharacterCanBeImported)
    input << "\tlast_name = \"Wala\"\n";
    input << "\tculture = 1\n";
    input << "\tis_female = yes\n";
+   input << "\tinterest_group = 2\n";
    input << "\trole = politician\n";
    input << "\trole = agitator\n";
    input << "\tideology = \"ideology_0\"\n";
    input << "\trank = commander_rank_5\n";
    input << "\ttraits = { \"trait_0\" \"trait_1\" }\n";
+   input << "\tcountry = 4\n";
    input << "\tformation = 238\n";
    input << "}\n";
 
    const auto character = character_importer.ImportCharacter(1, input);
 
    EXPECT_EQ(character,
-       Character({.id = 1,
+       Character({
+           .id = 1,
            .first_name = "Cabdi",
            .last_name = "Wala",
            .culture_id = 1,
            .is_female = true,
+           .ig_id = 2,
            .roles = {"politician", "agitator"},
            .rank = 5,
            .ideology = "ideology_0",
            .traits = {"trait_0", "trait_1"},
-           .formation_id = 238}));
+           .origin_country_id = 4,
+           .formation_id = 238,
+       }));
 }
 
 
