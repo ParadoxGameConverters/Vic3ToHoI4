@@ -1,4 +1,4 @@
-unification_$TARGET$ = {
+unification_italy = {
     category=unification
 
     #Keep fully Vic3 syntax?
@@ -29,10 +29,10 @@ unification_$TARGET$ = {
         north_italian
         south_italian
     }
-    state_list = {
+    state_list = { #global
         $CULTURE$_states_array
     }
-    country_list = {
+    country_list = { #global
         $CULTURE$_countries_array
     }
     target = italy
@@ -84,7 +84,7 @@ unification_$TARGET$ = {
                 hidden_effect = {
                     every_country = {
                         limit = {
-                            is_in_array = { $CULTURE_SELF$_countries_array = THIS }
+                            is_in_array = { global.$CULTURE_SELF$_countries_array = THIS }
                         }
                         set_country_flag = $TAG$_$CULTURE_SELF$_region_integration_started
                     }
@@ -95,7 +95,7 @@ unification_$TARGET$ = {
                     value = 1
                 }
                 for_each_scope_loop = {
-                    array = $CULTURE_SELF$_countries_array
+                    array = global.$CULTURE_SELF$_countries_array
                     if = {
                         limit = {
                             NOT = { tag = ROOT }
@@ -137,7 +137,7 @@ unification_$TARGET$ = {
             prerequisite = { focus = $TAG$_unite_$CULTURE_SELF$ focus = $TAG$_expel_others_from_$CULTURE_SELF$_states }
             available = {
                 all_of_scopes = {
-                    array = $CULTURE_SELF$_states_array
+                    array = global.$CULTURE_SELF$_states_array
                     is_fully_controlled_by = ROOT
                 }
             }
@@ -147,7 +147,7 @@ unification_$TARGET$ = {
 
             completion_reward = {
                 for_each_scope_loop = {
-                    array = $CULTURE_SELF$_states_array
+                    array = global.$CULTURE_SELF$_states_array
                     add_core_of = ROOT
                 }
             }
@@ -172,7 +172,7 @@ unification_$TARGET$ = {
                 hidden_effect = {
                     every_country = {
                         limit = {
-                            is_in_array = { $CULTURE_OTHER$_nations_array = THIS }
+                            is_in_array = { global.$CULTURE_OTHER$_nations_array = THIS }
                         }
                         set_country_flag = $TAG$_$CULTURE_OTHER$_region_integration_started
                     }
@@ -184,7 +184,7 @@ unification_$TARGET$ = {
                 }
                 else = {
                     for_each_scope_loop = {
-                        array = $CULTURE_OTHER$_nations_array
+                        array = global.$CULTURE_OTHER$_nations_array
                         if = {
                             limit = {
                                 NOT = { tag = ROOT }
@@ -227,7 +227,7 @@ unification_$TARGET$ = {
             prerequisite = { focus = $TAG$_unite_$CULTURE_OTHER$ focus = $TAG$_expel_others_from_$CULTURE_OTHER$_states }
             available = {
                 all_of_scopes = {
-                    array = $CULTURE_OTHER$_states_array
+                    array = global.$CULTURE_OTHER$_states_array
                     is_fully_controlled_by = ROOT
                 }
             }
@@ -237,7 +237,7 @@ unification_$TARGET$ = {
 
             completion_reward = {
                 for_each_scope_loop = {
-                    array = $CULTURE_OTHER$_states_array
+                    array = global.$CULTURE_OTHER$_states_array
                     add_core_of = ROOT
                 }
             }
@@ -271,6 +271,7 @@ unification_$TARGET$ = {
     }
     
     scripted_effects={
+        #need to do some metatriggers/effects here
         $TAG$_unite_$TARGET$_effect = {
             if = {
                 limit = { is_potential_friend_of_ROOT = yes }
