@@ -3,20 +3,21 @@
 
 #include <sstream>
 
-#include "any_primary_culture_trigger.h"
-#include "is_homeland_of_country_cultures.h"
-#include "shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
+#include "src/hoi4_world/roles/triggers/any_primary_culture_trigger.h"
+#include "src/hoi4_world/roles/triggers/country_has_primary_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/has_role_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
+#include "src/hoi4_world/roles/triggers/is_homeland_of_country_cultures.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
 #include "src/hoi4_world/roles/triggers/nor_trigger.h"
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
+#include "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/tag_trigger.h"
 #include "src/hoi4_world/roles/triggers/trigger_importer.h"
 
@@ -544,6 +545,21 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyPrimaryCultureTriggerCanBeIm
    const AnyPrimaryCultureTrigger any_primary_culture_trigger(std::move(children));
    ASSERT_TRUE(trigger);
    EXPECT_EQ(*trigger, any_primary_culture_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, CountryHasPrimaryCultureTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  country_has_primary_culture = cu:test_culture\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger("cu:test_culture");
+   EXPECT_EQ(*trigger, country_has_primary_culture_trigger);
 }
 
 

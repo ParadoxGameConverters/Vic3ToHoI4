@@ -1,19 +1,20 @@
 #include "src/hoi4_world/roles/triggers/trigger_importer.h"
 
-#include "any_primary_culture_trigger.h"
-#include "is_homeland_of_country_cultures.h"
-#include "shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
+#include "src/hoi4_world/roles/triggers/any_primary_culture_trigger.h"
+#include "src/hoi4_world/roles/triggers/country_has_primary_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/has_role_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
+#include "src/hoi4_world/roles/triggers/is_homeland_of_country_cultures.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
 #include "src/hoi4_world/roles/triggers/nor_trigger.h"
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
+#include "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/tag_trigger.h"
 
 
@@ -102,6 +103,11 @@ TriggerImporter::TriggerImporter()
    trigger_parser_.registerKeyword("any_primary_culture", [this](std::istream& input) {
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
       triggers_.push_back(std::make_unique<AnyPrimaryCultureTrigger>(std::move(triggers)));
+   });
+   trigger_parser_.registerKeyword("country_has_primary_culture", [this](std::istream& input) {
+      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      triggers_.push_back(std::make_unique<CountryHasPrimaryCultureTrigger>(
+          trigger_parser_.getNextTokenWithoutMatching(input).value_or("")));
    });
    trigger_parser_.registerKeyword("has_role", [this](std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
