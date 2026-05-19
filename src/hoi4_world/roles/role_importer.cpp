@@ -36,6 +36,9 @@ hoi4::RoleImporter::RoleImporter()
    role_parser_.registerKeyword("category", [this](std::istream& input) {
       role_options_.category = commonItems::getString(input);
    });
+   role_parser_.registerKeyword("story_trigger", [this](std::istream& input) {
+       role_options_.trigger = trigger_importer_.ImportTrigger(input);
+   });
    role_parser_.registerKeyword("trigger", [this](std::istream& input) {
       role_options_.trigger = trigger_importer_.ImportTrigger(input);
    });

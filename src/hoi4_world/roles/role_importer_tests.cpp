@@ -181,4 +181,26 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
            Event{.type = "test_event_type", .id = "$TAG$_another_event"}));
 }
 
+
+TEST(Hoi4worldRolesRoleimporterTests, StoryTriggerWorksForTrigger)
+{
+   std::stringstream input;
+
+   RoleImporter importer;
+   input << " = {\n";
+   input << "\tstory_trigger={\n";
+   input << "\t\ttag = ITA\n";
+   input << "\t\ttag = SIC\n";
+   input << "\t}\n";
+   const Role role = importer.ImportRole("", input);
+
+   std::unique_ptr<Trigger> tag_trigger_ita_one = std::make_unique<TagTrigger>("ITA");
+   std::unique_ptr<Trigger> tag_trigger_sic_one = std::make_unique<TagTrigger>("SIC");
+   std::vector<std::unique_ptr<Trigger>> children_one;
+   children_one.push_back(std::move(tag_trigger_ita_one));
+   children_one.push_back(std::move(tag_trigger_sic_one));
+   const AndTrigger and_trigger_one(std::move(children_one));
+   EXPECT_EQ(role.GetTrigger(), and_trigger_one);
+}
+
 }  // namespace hoi4
