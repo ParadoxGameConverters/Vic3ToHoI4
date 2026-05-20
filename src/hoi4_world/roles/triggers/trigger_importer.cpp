@@ -5,6 +5,7 @@
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_primary_culture_trigger.h"
+#include "src/hoi4_world/roles/triggers/any_scope_state_trigger.h"
 #include "src/hoi4_world/roles/triggers/country_has_primary_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/has_role_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
@@ -32,6 +33,10 @@ TriggerImporter::TriggerImporter()
    trigger_parser_.registerKeyword("any_owned_state", [this]([[maybe_unused]] std::istream& input) {
       std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
       triggers_.push_back(std::make_unique<AnyOwnedStateTrigger>(std::move(triggers)));
+   });
+   trigger_parser_.registerKeyword("any_scope_state", [this]([[maybe_unused]] std::istream& input) {
+      std::vector<std::unique_ptr<Trigger>> triggers = TriggerImporter{}.ImportTriggers(input);
+      triggers_.push_back(std::make_unique<AnyScopeStateTrigger>(std::move(triggers)));
    });
 
 
