@@ -20,6 +20,7 @@
 #include "src/hoi4_world/roles/triggers/nor_trigger.h"
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
+#include "src/hoi4_world/roles/triggers/owner_trigger.h"
 #include "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/tag_trigger.h"
 #include "src/hoi4_world/roles/triggers/trigger_importer.h"
@@ -783,6 +784,22 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsOnContinentTriggerCanBeImport
    ASSERT_TRUE(trigger);
    const IsOnContinentTrigger is_on_continent_trigger("test_continent");
    EXPECT_EQ(*trigger, is_on_continent_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, OwnerTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  owner = TAG\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const OwnerTrigger owner_trigger("TAG");
+   EXPECT_EQ(*trigger, owner_trigger);
 }
 
 }  // namespace hoi4

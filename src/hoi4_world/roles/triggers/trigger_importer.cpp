@@ -17,6 +17,7 @@
 #include "src/hoi4_world/roles/triggers/nor_trigger.h"
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
+#include "src/hoi4_world/roles/triggers/owner_trigger.h"
 #include "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/tag_trigger.h"
 
@@ -177,6 +178,11 @@ TriggerImporter::TriggerImporter()
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
       const std::string value = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
       triggers_.push_back(std::make_unique<IsOnContinentTrigger>(value));
+   });
+   trigger_parser_.registerKeyword("owner", [this]([[maybe_unused]] std::istream& input) {
+      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      const std::string value = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
+      triggers_.push_back(std::make_unique<OwnerTrigger>(value));
    });
    trigger_parser_.IgnoreAndLogUnregisteredItems();
 }
