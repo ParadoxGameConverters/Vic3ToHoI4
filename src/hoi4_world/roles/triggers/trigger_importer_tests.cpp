@@ -13,6 +13,7 @@
 #include "src/hoi4_world/roles/triggers/has_role_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_homeland_of_country_cultures.h"
+#include "src/hoi4_world/roles/triggers/is_homeland_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
 #include "src/hoi4_world/roles/triggers/nor_trigger.h"
@@ -704,6 +705,38 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandOfCountryCultureTrigg
    ASSERT_TRUE(trigger);
    const IsHomelandOfCountryCulture is_homeland_of_country_cultures_trigger("TAG");
    EXPECT_EQ(*trigger, is_homeland_of_country_cultures_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  is_homeland = test_culture\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const IsHomelandTrigger is_homeland_trigger("test_culture");
+   EXPECT_EQ(*trigger, is_homeland_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandTriggerCanBeImportedStripperPrefix)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  is_homeland = cu:test_culture\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const IsHomelandTrigger is_homeland_trigger("test_culture");
+   EXPECT_EQ(*trigger, is_homeland_trigger);
 }
 
 

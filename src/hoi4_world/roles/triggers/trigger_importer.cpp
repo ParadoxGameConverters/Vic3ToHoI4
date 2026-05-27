@@ -10,6 +10,7 @@
 #include "src/hoi4_world/roles/triggers/has_role_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_homeland_of_country_cultures.h"
+#include "src/hoi4_world/roles/triggers/is_homeland_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
 #include "src/hoi4_world/roles/triggers/nor_trigger.h"
@@ -152,6 +153,15 @@ TriggerImporter::TriggerImporter()
 #pragma warning(push)
       const bool value = value_string == "yes";
       triggers_.push_back(std::make_unique<IsCapitalTrigger>(value));
+   });
+   trigger_parser_.registerKeyword("is_homeland", [this]([[maybe_unused]] std::istream& input) {
+      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      std::string culture = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
+      if (culture.starts_with("cu:"))
+      {
+         culture = culture.substr(3, culture.size());
+      }
+      triggers_.push_back(std::make_unique<IsHomelandTrigger>(culture));
    });
    trigger_parser_.registerKeyword("is_homeland_of_country_cultures", [this]([[maybe_unused]] std::istream& input) {
       const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
