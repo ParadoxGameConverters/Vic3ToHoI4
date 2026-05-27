@@ -18,6 +18,7 @@
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
 #include "src/hoi4_world/roles/triggers/owner_trigger.h"
+#include "src/hoi4_world/roles/triggers/root_trigger.h"
 #include "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/tag_trigger.h"
 
@@ -108,6 +109,11 @@ TriggerImporter::TriggerImporter()
 #pragma warning(push)
       const bool value = value_string == "yes";
       triggers_.push_back(std::make_unique<AlwaysTrigger>(value));
+   });
+   trigger_parser_.registerKeyword("ROOT", [this](std::istream& input) {
+      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      std::string value = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
+      triggers_.push_back(std::make_unique<RootTrigger>(value));
    });
 
 

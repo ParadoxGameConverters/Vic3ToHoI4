@@ -21,6 +21,7 @@
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
 #include "src/hoi4_world/roles/triggers/owner_trigger.h"
+#include "src/hoi4_world/roles/triggers/root_trigger.h"
 #include "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/tag_trigger.h"
 #include "src/hoi4_world/roles/triggers/trigger_importer.h"
@@ -582,6 +583,22 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithL
    ASSERT_TRUE(trigger);
    const AlwaysTrigger always_trigger(true);
    EXPECT_EQ(*trigger, always_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, RootTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  ROOT = c:TAG\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const RootTrigger root_trigger("c:TAG");
+   EXPECT_EQ(*trigger, root_trigger);
 }
 
 
