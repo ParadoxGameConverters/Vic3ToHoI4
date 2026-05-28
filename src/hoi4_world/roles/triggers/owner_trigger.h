@@ -15,7 +15,7 @@ namespace hoi4
 class OwnerTrigger: public Trigger
 {
   public:
-   explicit OwnerTrigger(const std::string& owner): owner_(owner) {}
+   explicit OwnerTrigger(std::string_view owner): owner_(owner) {}
    OwnerTrigger(const OwnerTrigger&) = default;
    OwnerTrigger& operator=(const OwnerTrigger&) = default;
    OwnerTrigger(OwnerTrigger&&) = default;
@@ -39,7 +39,7 @@ class OwnerTrigger: public Trigger
    friend void PrintTo(const OwnerTrigger& trigger, std::ostream* os);
 
   private:
-   const std::string owner_;
+   std::string owner_;
 };
 
 }  // namespace hoi4
