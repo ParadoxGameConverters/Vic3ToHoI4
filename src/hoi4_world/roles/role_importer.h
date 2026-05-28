@@ -33,6 +33,7 @@ class RoleImporter
    commonItems::parser role_parser_;
    TriggerImporter trigger_importer_;
    FocusImporter focus_importer_;
+   commonItems::parser focuses_parser_;
    AliasDefinitionImporter alias_definition_importer_;
    RepeatFocusImporter repeat_focus_importer_;
    DecisionsCategoryImporter decisions_category_importer_;
