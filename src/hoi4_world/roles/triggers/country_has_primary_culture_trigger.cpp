@@ -13,7 +13,14 @@ bool CountryHasPrimaryCultureTrigger::IsValid(const Context& context, [[maybe_un
       return false;
    }
 
-   return maybe_country->country.GetPrimaryCultures().contains(culture_);
+    if (culture_.starts_with("cu:"))
+    {
+        return maybe_country->country.GetPrimaryCultures().contains(culture_.substr(3, culture_.length()));
+    }
+    else
+    {
+        return maybe_country->country.GetPrimaryCultures().contains(culture_);
+    }
 }
 
 

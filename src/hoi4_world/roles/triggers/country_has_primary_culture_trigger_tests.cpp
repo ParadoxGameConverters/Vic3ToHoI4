@@ -15,14 +15,17 @@ namespace hoi4
 
 TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, IsValidReturnsTrueIfCountryHasMatchingPrimaryCulture)
 {
-   const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger("cu:test_culture");
+   const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger("test_culture");
 
-   const Country country({.primary_cultures{"cu:test_culture"}});
+   const Country country({.primary_cultures{"test_culture"}});
    const Scope scope = CountryScope{.country = country};
    const Context context{.root = scope, .this_scope = scope, .prev = scope, .from = scope};
    const hoi4::World world({});
 
    EXPECT_TRUE(country_has_primary_culture_trigger.IsValid(context, world));
+
+   const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger_with_cu("cu:test_culture");
+   EXPECT_TRUE(country_has_primary_culture_trigger_with_cu.IsValid(context, world));
 }
 
 
