@@ -1,6 +1,7 @@
 #include "out_world.h"
 
 #include <external/fmt/include/fmt/format.h>
+#include <external/fmt/include/fmt/ranges.h>
 
 #include <cctype>
 #include <fstream>
@@ -30,6 +31,30 @@ using std::filesystem::path;
 
 namespace
 {
+
+void OutputScriptedEffects(const path& output_name, const std::vector<std::string>& scripted_effects)
+{
+   const auto scripted_effects_path = "output" / output_name / "common/scripted_effects";
+   if (!commonItems::DoesFolderExist(scripted_effects_path) &&
+       !std::filesystem::create_directories(scripted_effects_path))
+   {
+      throw std::runtime_error("Could not create " + scripted_effects_path.string());
+   }
+
+   const path scripted_effects_filename =
+       "output" / output_name / "common/scripted_effects/converter_scripted_effects.txt";
+   std::ofstream scripted_effects_file(scripted_effects_filename);
+   if (!scripted_effects_file.is_open())
+   {
+      throw std::runtime_error(fmt::format("Could not create {}", scripted_effects_filename.string()));
+   }
+
+   const std::string output_string = fmt::format("{}", fmt::join(scripted_effects, "\n\n"));
+   scripted_effects_file << output_string;
+
+   scripted_effects_file.close();
+}
+
 
 struct Powers
 {
@@ -116,6 +141,7 @@ void OutputWorld(const path& output_name, const hoi4::World& world)
    OutputDecisionsCategories(output_name, world.GetDecisionsCategories());
    OutputDecisions(output_name, world.GetDecisionsInCategories());
    OutputEvents(output_name, world.GetEvents());
+   OutputScriptedEffects(output_name, world.GetScriptedEffects());
    OutputBookmark(output_name,
        "grand_campaign",
        date("1936.1.1"),

@@ -357,6 +357,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    std::set<DecisionsCategory> decisions_categories;
    std::map<std::string, std::vector<Decision>> decisions_in_categories;
    std::map<std::string, std::vector<Event>> country_events;
+   std::vector<std::string> scripted_effects;
 
    const std::map<std::string, Role> roles = ImportRoles();
    std::map<std::string, Country>& modifiable_countries = world.GetModifiableCountries();
@@ -437,6 +438,15 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
                itr->second.push_back(event);
             }
          }
+        for (const std::string& scripted_effect: country_role.GetScriptedEffects())
+        {
+            std::string updated_scripted_effect = scripted_effect;
+            while (updated_scripted_effect.find("$TAG$") != std::string::npos)
+            {
+                updated_scripted_effect.replace(updated_scripted_effect.find("$TAG$"), 5, tag);
+            }
+            scripted_effects.push_back(updated_scripted_effect);
+        }
       }
 
       const FocusTree tree = AssembleTree(country_roles, tag, aliases, world);
@@ -446,6 +456,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    world.SetDecisionsCategories(decisions_categories);
    world.SetDecisions(decisions_in_categories);
    world.SetCountryEvents(country_events);
+   world.SetScriptedEffects(scripted_effects);
 
    return world;
 }

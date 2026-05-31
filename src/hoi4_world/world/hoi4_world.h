@@ -81,6 +81,7 @@ class World
       return decisions_in_categories_;
    }
    [[nodiscard]] const std::map<std::string, std::vector<Event>>& GetEvents() const { return country_events_; }
+   [[nodiscard]] const std::vector<std::string>& GetScriptedEffects() const { return scripted_effects_; }
 
    [[nodiscard]] std::map<std::string, Country>& GetModifiableCountries() { return countries_; }
 
@@ -101,6 +102,11 @@ class World
       country_events_ = std::move(country_events);
    }
 
+   void SetScriptedEffects(std::vector<std::string> scripted_effects)
+   {
+      scripted_effects_ = std::move(scripted_effects);
+   }
+
   private:
    std::map<std::string, Country> countries_;
    std::set<TagAlias> tag_aliases_;
@@ -118,6 +124,8 @@ class World
    std::map<std::string, std::vector<Decision>> decisions_in_categories_;
 
    std::map<std::string, std::vector<Event>> country_events_;
+
+   std::vector<std::string> scripted_effects_;
 };
 
 }  // namespace hoi4

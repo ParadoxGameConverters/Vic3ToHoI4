@@ -383,6 +383,35 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
 }
 
 
+TEST(Outhoi4WorldOutworld, ScriptedEffectsAreOutput)
+{
+   CreateTestFolders("ScriptedEffectsAreOutput");
+
+   hoi4::World world({});
+   world.SetScriptedEffects({"effect_one = {\n\teffect_text\n}", "effect_two = {\n\tmore_effect_text\n}"});
+
+   OutputWorld("ScriptedEffectsAreOutput", world);
+
+   const path file_path("output/ScriptedEffectsAreOutput/common/scripted_effects/converter_scripted_effects.txt");
+   ASSERT_TRUE(commonItems::DoesFileExist(file_path));
+   std::ifstream scripted_effects_file(file_path);
+   ASSERT_TRUE(scripted_effects_file.is_open());
+   std::stringstream scripted_effects_file_stream;
+   std::copy(std::istreambuf_iterator<char>(scripted_effects_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(scripted_effects_file_stream));
+   scripted_effects_file.close();
+   EXPECT_EQ(scripted_effects_file_stream.str(),
+       "effect_one = {\n"
+       "\teffect_text\n"
+       "}\n"
+       "\n"
+       "effect_two = {\n"
+       "\tmore_effect_text\n"
+       "}");
+}
+
+
 TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
 {
    CreateTestFolders("BookmarkIsOutput");

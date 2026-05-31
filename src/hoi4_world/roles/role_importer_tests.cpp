@@ -120,6 +120,14 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    input << "\t\t}\n";
    input << "\t}\n";
    input << "\t\n";
+   input << "\tscripted_effects={\n";
+   input << "\t\teffect_one = {\n";
+   input << "\t\t\teffect_text\n";
+   input << "\t\t}\n";
+   input << "\t\teffect_two = {\n";
+   input << "\t\t\tmore_effect_text\n";
+   input << "\t\t}\n";
+   input << "\t}\n";
    input << "}\n";
 
    RoleImporter importer;
@@ -179,6 +187,9 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    EXPECT_THAT(role.GetEvents(),
        testing::ElementsAre(Event{.type = "country_event", .id = "$TAG$_an_event"},
            Event{.type = "test_event_type", .id = "$TAG$_another_event"}));
+   EXPECT_THAT(role.GetScriptedEffects(),
+       testing::ElementsAre("effect_one = {\n\t\t\teffect_text\n\t\t}",
+           "effect_two = {\n\t\t\tmore_effect_text\n\t\t}"));
 }
 
 

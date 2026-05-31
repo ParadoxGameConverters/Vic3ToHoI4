@@ -44,6 +44,7 @@ class RoleImporter
    std::string current_decision_category_;
    commonItems::parser events_parser_;
    EventImporter event_importer_;
+   commonItems::parser scripted_effects_parser_;
 };
 
 };  // namespace hoi4

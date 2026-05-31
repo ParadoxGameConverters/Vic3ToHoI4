@@ -33,6 +33,11 @@ hoi4::RoleImporter::RoleImporter()
       role_options_.events.emplace_back(event_importer_.ImportEvent(name, input));
    });
 
+   scripted_effects_parser_.registerRegex(commonItems::catchallRegex, [this](std::string name, std::istream& input) {
+      role_options_.scripted_effects.emplace_back(
+          std::format("{} {}", name, commonItems::stringOfItem(input).getString()));
+   });
+
    focuses_parser_.registerKeyword("shared_focus", [this](std::istream& input) {
       role_options_.shared_focuses.emplace_back(commonItems::getString(input));
    });
@@ -90,6 +95,9 @@ hoi4::RoleImporter::RoleImporter()
    });
    role_parser_.registerKeyword("events", [this](std::istream& input) {
       events_parser_.parseStream(input);
+   });
+   role_parser_.registerKeyword("scripted_effects", [this](std::istream& input) {
+      scripted_effects_parser_.parseStream(input);
    });
 }
 
