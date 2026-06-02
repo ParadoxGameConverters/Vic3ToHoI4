@@ -258,7 +258,14 @@ unification_italy = {
         }
     }
     decisions_categories={
-        # borrow decisions from Rome_Strikes_Back\common\decisions\tesb.txt
+        $TAG$_italian_ambitions = {
+	        priority = 10
+	        icon = generic_political_actions
+
+	        allowed = {
+		        has_completed_focus = $TAG$_italian_ambitions
+	        }
+        }
     }
 
     decisions={

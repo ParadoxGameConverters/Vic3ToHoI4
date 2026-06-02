@@ -425,7 +425,16 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
       {
          for (const DecisionsCategory& role_category: country_role.GetDecisionsCategories())
          {
-            decisions_categories.insert(role_category);
+            DecisionsCategory updated_role_category = role_category;
+            while (updated_role_category.name.find("$TAG$") != std::string::npos)
+            {
+               updated_role_category.name.replace(updated_role_category.name.find("$TAG$"), 5, tag);
+            }
+            while (updated_role_category.allowed.find("$TAG$") != std::string::npos)
+            {
+               updated_role_category.allowed.replace(updated_role_category.allowed.find("$TAG$"), 5, tag);
+            }
+            decisions_categories.insert(updated_role_category);
          }
          for (const auto& [category, decisions]: country_role.GetDecisionsInCategories())
          {
@@ -438,15 +447,15 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
                itr->second.push_back(event);
             }
          }
-        for (const std::string& scripted_effect: country_role.GetScriptedEffects())
-        {
+         for (const std::string& scripted_effect: country_role.GetScriptedEffects())
+         {
             std::string updated_scripted_effect = scripted_effect;
             while (updated_scripted_effect.find("$TAG$") != std::string::npos)
             {
-                updated_scripted_effect.replace(updated_scripted_effect.find("$TAG$"), 5, tag);
+               updated_scripted_effect.replace(updated_scripted_effect.find("$TAG$"), 5, tag);
             }
             scripted_effects.push_back(updated_scripted_effect);
-        }
+         }
       }
 
       const FocusTree tree = AssembleTree(country_roles, tag, aliases, world);
