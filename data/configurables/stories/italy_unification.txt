@@ -177,7 +177,7 @@ unification_italy = {
                     days = 7
                     value = 1
                 }
-                else = {
+                if = {
                     for_each_scope_loop = {
                         array = global.south_italian_nations_array
                         if = {
