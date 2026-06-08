@@ -438,7 +438,30 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
          }
          for (const auto& [category, decisions]: country_role.GetDecisionsInCategories())
          {
-            decisions_in_categories.emplace(category, decisions);
+            std::string updated_category = category;
+            while (updated_category.find("$TAG$") != std::string::npos)
+            {
+               updated_category.replace(updated_category.find("$TAG$"), 5, tag);
+            }
+            std::vector<Decision> updated_decisions;
+            for (const Decision& decision: decisions)
+            {
+               Decision updated_decision = decision;
+               while (updated_decision.name.find("$TAG$") != std::string::npos)
+               {
+                  updated_decision.name.replace(updated_decision.name.find("$TAG$"), 5, tag);
+               }
+               while (updated_decision.name_field.find("$TAG$") != std::string::npos)
+               {
+                  updated_decision.name_field.replace(updated_decision.name_field.find("$TAG$"), 5, tag);
+               }
+               while (updated_decision.visible.find("$TAG$") != std::string::npos)
+               {
+                  updated_decision.visible.replace(updated_decision.visible.find("$TAG$"), 5, tag);
+               }
+               updated_decisions.push_back(updated_decision);
+            }
+            decisions_in_categories.emplace(updated_category, updated_decisions);
          }
          for (const Event& event: country_role.GetEvents())
          {

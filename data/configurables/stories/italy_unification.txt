@@ -269,7 +269,55 @@ unification_italy = {
     }
 
     decisions={
-        # borrow decisions from Rome_Strikes_Back\common\decisions\tesb.txt
+		$TAG$_italian_ambitions = {
+			$TAG$_negotiate_with_north_italian_nations = {
+				icon = generic_form_nation
+				available = {
+					FROM = { is_subject = no }
+				}
+			
+				visible = {
+					has_completed_focus = $TAG$_unite_north_italians
+					FROM = {
+						exists = yes
+					}
+					NOT = {
+						has_country_flag = negotiation_in_progress
+					}
+				}
+				target_trigger = {
+					FROM = {
+						exists = yes
+						is_in_array = {
+							array = global.north_italian_countries_array
+							value = FROM
+						}
+						NOT = { is_subject_of = THIS }
+					}
+				}
+
+				days_re_enable = 120
+				days_remove = 60
+
+				complete_effect = {
+					set_country_flag = {
+						flag = negotiation_in_progress
+						days = 7
+						value = 1
+					}
+				}
+				remove_effect = {
+					FROM = { country_event = { id = $TAG$_unification_italy.10 hours = 12 } }
+				}
+				ai_will_do = {
+					base = 100
+					modifier = {
+						check_variable = { From.integrate_willingness < 0 }
+						factor = 0.001
+					}
+				}
+			}
+		}
     }
     
     scripted_effects={
@@ -281,7 +329,7 @@ unification_italy = {
                     limit = {
                         ROOT = { has_completed_focus = $TAG$_italian_ambitions }
                     }
-                    country_event = { id = unification_italy.10 hours = 12 random_hours = 12 }
+                    country_event = { id = $TAG$_unification_italy.10 hours = 12 random_hours = 12 }
                 }
             }
             else_if = {
@@ -300,9 +348,9 @@ unification_italy = {
 
     events={
         country_event = {
-            id = unification_italy.10
-            title = unification_italy.10.t
-            desc = unification_italy.10.d
+            id = $TAG$_unification_italy.10
+            title = $TAG$_unification_italy.10.t
+            desc = $TAG$_unification_italy.10.d
             picture = GFX_goal_generic_improve_relations
             
             is_triggered_only = yes
@@ -315,7 +363,7 @@ unification_italy = {
 
             # yes
             option = {
-                name = unification_italy.10.a
+                name = $TAG$_unification_italy.10.a
                 FROM = {
                     effect_tooltip = {
                         set_autonomy = {
@@ -323,7 +371,7 @@ unification_italy = {
                             autonomy_state = autonomy_puppet
                         }
                     }
-                    hidden_effect = { country_event = { id = unification_italy.11 hours = 12 } }
+                    hidden_effect = { country_event = { id = $TAG$_unification_italy.11 hours = 12 } }
                 }
                 ai_chance = {
                     factor = 10
@@ -349,7 +397,7 @@ unification_italy = {
 
             # no
             option = {
-                name = unification_italy.10.b
+                name = $TAG$_unification_italy.10.b
                 FROM = {
                     effect_tooltip = {
                         create_wargoal = {
@@ -357,7 +405,7 @@ unification_italy = {
                             target = ROOT
                         }
                     }
-                    hidden_effect = { country_event = { id = unification_italy.12 hours = 12 } }
+                    hidden_effect = { country_event = { id = $TAG$_unification_italy.12 hours = 12 } }
                 }
                 ai_chance = {
                     factor = 10
@@ -383,15 +431,15 @@ unification_italy = {
 
         # [Country] Swears Allegiance
         country_event = {
-            id = unification_italy.11
-            title = unification_italy.11.t
-            desc = unification_italy.11.d
+            id = $TAG$_unification_italy.11
+            title = $TAG$_unification_italy.11.t
+            desc = $TAG$_unification_italy.11.d
             picture = GFX_goal_generic_improve_relations
             
             is_triggered_only = yes
 
             option = {
-                name = unification_italy.11.a
+                name = $TAG$_unification_italy.11.a
                 set_autonomy = {
                     target = FROM
                     autonomy_state = autonomy_puppet
@@ -404,15 +452,15 @@ unification_italy = {
 
         # [Country] Stands Defiant
         country_event = {
-            id = unification_italy.12
-            title = unification_italy.12.t
-            desc = unification_italy.12.d
+            id = $TAG$_unification_italy.12
+            title = $TAG$_unification_italy.12.t
+            desc = $TAG$_unification_italy.12.d
             picture = GFX_goal_generic_improve_relations
             
             is_triggered_only = yes
 
             option = {
-                name = unification_italy.12.a
+                name = $TAG$_unification_italy.12.a
                 create_wargoal = {
                     type = puppet_wargoal_focus
                     target = FROM
