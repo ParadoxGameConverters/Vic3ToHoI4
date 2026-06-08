@@ -62,7 +62,7 @@ unification_italy = {
 
         # invite north italians to join us
         focus={
-            id = $TAG$_unite_north_italian
+            id = $TAG$_unite_north_italians
             text = unite_north_italian
             icon = GFX_goal_generic_construction
             relative_position_id = $TAG$_italian_ambitions
@@ -75,7 +75,7 @@ unification_italy = {
             }
 
             completion_reward = {
-                custom_effect_tooltip = $TAG$_unite_north_italian.tt
+                custom_effect_tooltip = $TAG$_unite_north_italians.tt
                 hidden_effect = {
                     every_country = {
                         limit = {
@@ -129,7 +129,7 @@ unification_italy = {
             x = -1
             y = 1
             cost = 10
-            prerequisite = { focus = $TAG$_unite_north_italian focus = $TAG$_expel_others_from_north_italian_states }
+            prerequisite = { focus = $TAG$_unite_north_italians focus = $TAG$_expel_others_from_north_italian_states }
             available = {
                 all_of_scopes = {
                     array = global.north_italian_states_array
@@ -150,7 +150,7 @@ unification_italy = {
         
         # invite south italians to join us
         focus={
-            id = $TAG$_unite_south_italian
+            id = $TAG$_unite_south_italians
             text = unite_south_italian
             icon = GFX_goal_generic_construction
             relative_position_id = $TAG$_united_north_italian_states
@@ -163,7 +163,7 @@ unification_italy = {
             }
 
             completion_reward = {
-                custom_effect_tooltip = $TAG$_unite_south_italian.tt
+                custom_effect_tooltip = $TAG$_unite_south_italians.tt
                 hidden_effect = {
                     every_country = {
                         limit = {
@@ -219,7 +219,7 @@ unification_italy = {
             x = -1
             y = 1
             cost = 10
-            prerequisite = { focus = $TAG$_unite_south_italian focus = $TAG$_expel_others_from_south_italian_states }
+            prerequisite = { focus = $TAG$_unite_south_italians focus = $TAG$_expel_others_from_south_italian_states }
             available = {
                 all_of_scopes = {
                     array = global.south_italian_states_array
