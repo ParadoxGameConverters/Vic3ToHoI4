@@ -263,7 +263,7 @@ unification_italy = {
 	        icon = generic_political_actions
 
 	        allowed = {
-		        has_completed_focus = $TAG$_italian_ambitions
+		        tag = $TAG$
 	        }
         }
     }
@@ -288,10 +288,7 @@ unification_italy = {
 				target_trigger = {
 					FROM = {
 						exists = yes
-						is_in_array = {
-							array = global.north_italian_countries_array
-							value = FROM
-						}
+						has_country_flag = $TAG$_north_italian_region_integration_started
 						NOT = { is_subject_of = THIS }
 					}
 				}

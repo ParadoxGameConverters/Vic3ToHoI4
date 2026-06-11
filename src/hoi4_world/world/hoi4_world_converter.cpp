@@ -459,15 +459,53 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
                {
                   updated_decision.visible.replace(updated_decision.visible.find("$TAG$"), 5, tag);
                }
+               while (updated_decision.target_trigger.find("$TAG$") != std::string::npos)
+               {
+                  updated_decision.target_trigger.replace(updated_decision.target_trigger.find("$TAG$"), 5, tag);
+               }
+               while (updated_decision.remove_effect.find("$TAG$") != std::string::npos)
+               {
+                  updated_decision.remove_effect.replace(updated_decision.remove_effect.find("$TAG$"), 5, tag);
+               }
                updated_decisions.push_back(updated_decision);
             }
             decisions_in_categories.emplace(updated_category, updated_decisions);
          }
          for (const Event& event: country_role.GetEvents())
          {
-            if (auto [itr, success] = country_events.emplace(tag, std::vector{event}); !success)
+            Event updated_event = event;
+            while (updated_event.id.find("$TAG$") != std::string::npos)
             {
-               itr->second.push_back(event);
+               updated_event.id.replace(updated_event.id.find("$TAG$"), 5, tag);
+            }
+            if (updated_event.title)
+            {
+               while (updated_event.title->find("$TAG$") != std::string::npos)
+               {
+                  updated_event.title->replace(updated_event.title->find("$TAG$"), 5, tag);
+               }
+            }
+            for (std::string& description: updated_event.descriptions)
+            {
+               while (description.find("$TAG$") != std::string::npos)
+               {
+                  description.replace(description.find("$TAG$"), 5, tag);
+               }
+            }
+            for (EventOption& option: updated_event.options)
+            {
+               while (option.name.find("$TAG$") != std::string::npos)
+               {
+                  option.name.replace(option.name.find("$TAG$"), 5, tag);
+               }
+               while (option.hidden_effect.find("$TAG$") != std::string::npos)
+               {
+                  option.hidden_effect.replace(option.hidden_effect.find("$TAG$"), 5, tag);
+               }
+            }
+            if (auto [itr, success] = country_events.emplace(tag, std::vector{updated_event}); !success)
+            {
+               itr->second.push_back(updated_event);
             }
          }
          for (const std::string& scripted_effect: country_role.GetScriptedEffects())
