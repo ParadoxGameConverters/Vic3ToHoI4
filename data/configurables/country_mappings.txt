@@ -200,7 +200,7 @@ link = { vic = HAW hoi = HAW } # Hawaii
 #link = { vic = HEK hoi = ??? } # Hesse-Kassel
 link = { vic = HES hoi = HES } # Hesse
 #link = { vic = HHE hoi = ??? } # Hehe
-#link = { vic = HLA hoi = ??? } # Halia
+link = { vic = HLA hoi = BOU } # Halia => Bougainville
 #link = { vic = HMB hoi = ??? } # Hemba
 #link = { vic = HNA hoi = ??? } # Hunan
 link = { vic = HND hoi = RAJ } # India
