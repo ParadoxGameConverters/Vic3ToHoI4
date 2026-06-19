@@ -505,6 +505,10 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
             {
                updated_event.id.replace(updated_event.id.find("$TAG$"), 5, tag);
             }
+            while (updated_event.event_namespace.find("$TAG$") != std::string::npos)
+            {
+               updated_event.event_namespace.replace(updated_event.event_namespace.find("$TAG$"), 5, tag);
+            }
             if (updated_event.title)
             {
                while (updated_event.title->find("$TAG$") != std::string::npos)
@@ -530,7 +534,8 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
                   option.hidden_effect.replace(option.hidden_effect.find("$TAG$"), 5, tag);
                }
             }
-            if (auto [itr, success] = country_events.emplace(tag, std::vector{updated_event}); !success)
+            if (auto [itr, success] = country_events.emplace(updated_event.event_namespace, std::vector{updated_event});
+                !success)
             {
                itr->second.push_back(updated_event);
             }
