@@ -40,6 +40,8 @@ struct WorldOptions
    Localizations localizations;
    std::map<int, Character> characters;
    std::map<std::string, vic3::CultureDefinition> culture_definitions;
+   // culture -> countries with culture as primary culture
+   std::map<std::string, std::set<std::string>> primary_culture_countries;
 };
 
 
@@ -57,7 +59,8 @@ class World
        railways_(std::move(options.railways)),
        localizations_(std::move(options.localizations)),
        characters_(std::move(options.characters)),
-       culture_definitions_(std::move(options.culture_definitions))
+       culture_definitions_(std::move(options.culture_definitions)),
+       primary_culture_countries_(std::move(options.primary_culture_countries))
    {
    }
 
@@ -74,6 +77,10 @@ class World
    [[nodiscard]] const std::map<std::string, vic3::CultureDefinition>& GetCultureDefinitions() const
    {
       return culture_definitions_;
+   }
+   [[nodiscard]] const std::map<std::string, std::set<std::string>>& GetPrimaryCultureCountries() const
+   {
+      return primary_culture_countries_;
    }
    [[nodiscard]] const std::set<DecisionsCategory>& GetDecisionsCategories() const { return decisions_categories_; }
    [[nodiscard]] const std::map<std::string, std::vector<Decision>>& GetDecisionsInCategories() const
@@ -119,6 +126,8 @@ class World
    Localizations localizations_;
    std::map<int, Character> characters_;
    std::map<std::string, vic3::CultureDefinition> culture_definitions_;
+   // culture -> cultures with countries as primary culture
+   std::map<std::string, std::set<std::string>> primary_culture_countries_;
 
    std::set<DecisionsCategory> decisions_categories_;
    std::map<std::string, std::vector<Decision>> decisions_in_categories_;

@@ -1122,4 +1122,38 @@ TEST(Hoi4worldWorldHoi4worldconverter, WarsAreConverted)
        testing::ElementsAre(War({.original_defender = "TWO", .original_attacker = "TAG"})));
 }
 
+
+TEST(Hoi4worldWorldHoi4worldconverter, PrimaryCultureCountriesAreConverted)
+{
+   const vic3::Country source_country_one({
+       .number = 1,
+       .tag = "TAG",
+       .primary_cultures = {"test_culture"},
+   });
+   const vic3::Country source_country_two({
+       .number = 3,
+       .tag = "TWO",
+       .primary_cultures = {"test_culture", "test_culture_two"},
+   });
+
+   const vic3::World source_world({
+       .countries = {{1, source_country_one}, {3, source_country_two}},
+   });
+
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
+                                                 .AddCountries({{1, "TAG"}, {3, "TWO"}})
+                                                 .DefaultTechMapper()
+                                                 .Build();
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+       source_world,
+       world_mapper,
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
+       }));
+
+   EXPECT_THAT(world.GetPrimaryCultureCountries(),
+       testing::ElementsAre(testing::Pair("test_culture", std::set<std::string>{"TAG", "TWO"}),
+           testing::Pair("test_culture_two", std::set<std::string>{"TWO"})));
+}
+
 }  // namespace hoi4

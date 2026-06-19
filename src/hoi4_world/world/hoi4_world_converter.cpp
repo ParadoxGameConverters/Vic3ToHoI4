@@ -341,6 +341,19 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    hoi4::Buildings buildings = buildings_future.get();
    ProgressManager::AddProgress(5);
 
+   std::map<std::string, std::set<std::string>>
+       primary_culture_countries;  // culture -> cultures with culture as primary culture
+   for (const Country& country: countries | std::views::values)
+   {
+      for (const std::string& culture: country.GetPrimaryCultures())
+      {
+         if (auto [itr, success] = primary_culture_countries.emplace(culture, std::set{country.GetTag()}); !success)
+         {
+            itr->second.insert(country.GetTag());
+         }
+      }
+   }
+
    hoi4::World world(hoi4::WorldOptions{
        .countries = countries,
        .great_powers = great_powers,
@@ -352,6 +365,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        .localizations = localizations,
        .characters = characters,
        .culture_definitions = source_world.GetCultureDefinitions(),
+       .primary_culture_countries = primary_culture_countries,
    });
 
    std::set<DecisionsCategory> decisions_categories;
