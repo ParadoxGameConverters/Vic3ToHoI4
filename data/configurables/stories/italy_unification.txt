@@ -55,8 +55,11 @@ unification_italy = {
             }
 
             completion_reward = {
-                add_political_power = 50
-                add_war_support = 0.1
+                custom_effect_tooltip = $TAG$_italian_ambitions.tt
+                for_each_scope_loop = {
+                    array = global.north_italian_states_array
+                    add_claim_by = FROM
+                }
             }
         }
 
