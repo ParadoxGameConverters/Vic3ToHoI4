@@ -29,7 +29,7 @@ unification_italy = {
     block_category=unification
 
     focuses = {
-        #start of tree for an italian unifier
+        #start of tree for a north italian unifier
         focus={
             id = $TAG$_italian_ambitions
             name = italian_ambitions
@@ -262,9 +262,6 @@ unification_italy = {
 		$TAG$_italian_ambitions = {
 			$TAG$_negotiate_with_north_italian_nations = {
 				icon = generic_form_nation
-				available = {
-					FROM = { is_subject = no }
-				}
 			
 				visible = {
 					has_completed_focus = $TAG$_unite_north_italians
@@ -279,7 +276,6 @@ unification_italy = {
 					FROM = {
 						exists = yes
 						has_country_flag = $TAG$_north_italian_region_integration_started
-						NOT = { is_subject_of = THIS }
 					}
 				}
 
@@ -336,6 +332,7 @@ unification_italy = {
     events={
         country_event = {
             id = $TAG$_unification_italy.10
+            namespace = $TAG$_unification_italy
             title = $TAG$_unification_italy.10.t
             desc = $TAG$_unification_italy.10.d
             picture = GFX_goal_generic_improve_relations
@@ -344,7 +341,7 @@ unification_italy = {
             
             immediate = {
                 hidden_effect = {
-                    check_puppet_willingness_FROM = yes
+                    check_annex_willingness_FROM = yes
                 }
             }
 
@@ -363,15 +360,15 @@ unification_italy = {
                 ai_chance = {
                     factor = 10
                     modifier = {
-                        check_variable = { Root.puppet_willingness > 0 }
+                        check_variable = { Root.annex_willingness > 0 }
                         factor = 2
                     }
                     modifier = {
-                        check_variable = { Root.puppet_willingness > 10 }
+                        check_variable = { Root.annex_willingness > 10 }
                         factor = 2
                     }
                     modifier = {
-                        check_variable = { Root.puppet_willingness > 20 }
+                        check_variable = { Root.annex_willingness > 20 }
                         factor = 2
                     }
                     modifier = {
@@ -387,9 +384,9 @@ unification_italy = {
                 name = $TAG$_unification_italy.10.b
                 FROM = {
                     effect_tooltip = {
-                        create_wargoal = {
-                            type = puppet_wargoal_focus
-                            target = ROOT
+                        annex_country = {
+                            target = FROM
+                            transfer_troops = yes
                         }
                     }
                     hidden_effect = { country_event = { id = $TAG$_unification_italy.12 hours = 12 } }
@@ -397,19 +394,19 @@ unification_italy = {
                 ai_chance = {
                     factor = 10
                     modifier = {
-                        check_variable = { Root.puppet_willingness < 0 }
+                        check_variable = { Root.annex_willingness < 0 }
                         factor = 2
                     }
                     modifier = {
-                        check_variable = { Root.puppet_willingness < 10 }
+                        check_variable = { Root.annex_willingness < 10 }
                         factor = 2
                     }
                     modifier = {
-                        check_variable = { Root.puppet_willingness < 20 }
+                        check_variable = { Root.annex_willingness < 20 }
                         factor = 2
                     }
                     modifier = {
-                        check_variable = { Root.puppet_willingness < 40 }
+                        check_variable = { Root.annex_willingness < 40 }
                         factor = 2
                     }
                 }
@@ -419,6 +416,7 @@ unification_italy = {
         # [Country] Swears Allegiance
         country_event = {
             id = $TAG$_unification_italy.11
+            namespace = $TAG$_unification_italy
             title = $TAG$_unification_italy.11.t
             desc = $TAG$_unification_italy.11.d
             picture = GFX_goal_generic_improve_relations
@@ -427,9 +425,9 @@ unification_italy = {
 
             option = {
                 name = $TAG$_unification_italy.11.a
-                set_autonomy = {
+                annex_country = {
                     target = FROM
-                    autonomy_state = autonomy_puppet
+                    transfer_troops = yes
                 }
                 ai_chance = {
                     factor = 10
@@ -440,6 +438,7 @@ unification_italy = {
         # [Country] Stands Defiant
         country_event = {
             id = $TAG$_unification_italy.12
+            namespace = $TAG$_unification_italy
             title = $TAG$_unification_italy.12.t
             desc = $TAG$_unification_italy.12.d
             picture = GFX_goal_generic_improve_relations
