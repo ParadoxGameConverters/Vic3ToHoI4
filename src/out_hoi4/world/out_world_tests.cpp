@@ -34,6 +34,7 @@ void CreateTestFolders(std::string_view test_name)
    create_directories("output" / test_path / "common/ideas");
    create_directories("output" / test_path / "common/names");
    create_directories("output" / test_path / "common/national_focus");
+   create_directories("output" / test_path / "common/on_actions");
    create_directories("output" / test_path / "history/countries");
    create_directories("output" / test_path / "history/states");
    create_directories("output" / test_path / "history/units");
