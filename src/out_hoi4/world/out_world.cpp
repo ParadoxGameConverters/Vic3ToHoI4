@@ -119,6 +119,40 @@ void OutputBookmark(const path& output_name,
    bookmark_file.close();
 }
 
+
+void OutputCultureArrays(const path& output_name,
+    std::map<std::string, std::set<int>> homelands,
+    std::map<std::string, std::set<std::string>> primary_culture_countries)
+{
+   const path cultures_filename = "output" / output_name / "common/on_actions/converter_cultures.txt";
+   std::ofstream cultures_file(cultures_filename);
+   if (!cultures_file.is_open())
+   {
+      throw std::runtime_error(fmt::format("Could not create {}", cultures_filename.string()));
+   }
+
+   std::println(cultures_file, "on_actions = {{");
+   std::println(cultures_file, "\ton_startup = {{");
+   std::println(cultures_file, "\t\teffect = {{");
+   for (const auto& [culture, states]: homelands)
+   {
+      for (const int state: states)
+      {
+         std::println(cultures_file, "\t\t\tadd_to_array = {{ global.{}_states_array = {} }}", culture, state);
+      }
+   }
+   for (const auto& [culture, countries]: primary_culture_countries)
+   {
+      for (const std::string& country: countries)
+      {
+         std::println(cultures_file, "\t\t\tadd_to_array = {{ global.{}_countries_array = {} }}", culture, country);
+      }
+   }
+   std::println(cultures_file, "\t\t}}");
+   std::println(cultures_file, "\t}}");
+   std::println(cultures_file, "}}");
+}
+
 }  // namespace
 
 
@@ -150,6 +184,7 @@ void OutputWorld(const path& output_name, const hoi4::World& world)
            .great_powers = world.GetGreatPowers(),
            .major_powers = world.GetMajorPowers(),
        });
+   OutputCultureArrays(output_name, world.GetHomelands(), world.GetPrimaryCultureCountries());
 }
 
 }  // namespace out
