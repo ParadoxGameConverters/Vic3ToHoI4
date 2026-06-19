@@ -533,6 +533,13 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
                {
                   option.hidden_effect.replace(option.hidden_effect.find("$TAG$"), 5, tag);
                }
+               for (std::string& script_block: option.script_blocks)
+               {
+                  while (script_block.find("$TAG$") != std::string::npos)
+                  {
+                     script_block.replace(script_block.find("$TAG$"), 5, tag);
+                  }
+               }
             }
             if (auto [itr, success] = country_events.emplace(updated_event.event_namespace, std::vector{updated_event});
                 !success)
