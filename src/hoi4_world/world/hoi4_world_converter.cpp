@@ -341,6 +341,18 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
    hoi4::Buildings buildings = buildings_future.get();
    ProgressManager::AddProgress(5);
 
+   std::map<std::string, std::set<int>> homelands;  // culture -> states with culture as homeland
+   for (auto& state: states.states)
+   {
+      for (const std::string& culture: state.GetHomelands())
+      {
+         if (auto [itr, success] = homelands.emplace(culture, std::set{state.GetId()}); !success)
+         {
+            itr->second.insert(state.GetId());
+         }
+      }
+   }
+
    std::map<std::string, std::set<std::string>>
        primary_culture_countries;  // culture -> cultures with culture as primary culture
    for (const Country& country: countries | std::views::values)
@@ -365,6 +377,7 @@ hoi4::World hoi4::ConvertWorld(const commonItems::ModFilesystem& hoi4_mod_filesy
        .localizations = localizations,
        .characters = characters,
        .culture_definitions = source_world.GetCultureDefinitions(),
+       .homelands = homelands,
        .primary_culture_countries = primary_culture_countries,
    });
 
