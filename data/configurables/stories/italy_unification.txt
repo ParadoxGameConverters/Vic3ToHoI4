@@ -24,19 +24,6 @@ unification_italy = {
         NOT = { ROOT = c:ITA }
     }
 
-    # idea of relevant lists?
-    culture_list = {
-        north_italian
-        south_italian
-    }
-    state_list = { #global
-        $CULTURE$_states_array
-    }
-    country_list = { #global
-        $CULTURE$_countries_array
-    }
-    target = italy
-    target_adj = italian
     score=102
 
     block_category=unification
