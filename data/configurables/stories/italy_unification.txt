@@ -60,6 +60,14 @@ unification_italy = {
             y = 1
             cost = 10
             prerequisite = { focus = $TAG$_italian_ambitions }
+            bypass = {
+                NOT = {
+                    any_country = {
+                        NOT = { tag = ROOT }
+                        is_in_array = { global.north_italian_countries_array = THIS }
+                    }
+                }
+            }
             ai_will_do = {
                 factor = 5
             }
@@ -101,6 +109,14 @@ unification_italy = {
             y = 1
             cost = 10
             prerequisite = { focus = $TAG$_italian_ambitions }
+            bypass = {
+                NOT = {
+                    any_country = {
+                        NOT = { is_in_array = { global.north_italian_countries_array = THIS } }
+                        any_of_scopes = { array = global.north_italian_states_array is_owned_by = PREV }
+                    }
+                }
+            }
             ai_will_do = {
                 factor = 5
             }
@@ -140,6 +156,12 @@ unification_italy = {
                     is_fully_controlled_by = ROOT
                 }
             }
+            bypass = {
+                all_of_scopes = {
+                    array = global.north_italian_states_array
+                    is_core_of = ROOT
+                }
+            }
             ai_will_do = {
                 factor = 5
             }
@@ -162,6 +184,14 @@ unification_italy = {
             y = 1
             cost = 10
             prerequisite = { focus = $TAG$_united_north_italian_states }
+            bypass = {
+                NOT = {
+                    any_country = {
+                        NOT = { tag = ROOT }
+                        is_in_array = { global.south_italian_countries_array = THIS }
+                    }
+                }
+            }
             ai_will_do = {
                 factor = 5
             }
@@ -205,6 +235,14 @@ unification_italy = {
             y = 1
             cost = 10
             prerequisite = { focus = $TAG$_united_north_italian_states }
+            bypass = {
+                NOT = {
+                    any_country = {
+                        NOT = { is_in_array = { global.south_italian_countries_array = THIS } }
+                        any_of_scopes = { array = global.south_italian_states_array is_owned_by = PREV }
+                    }
+                }
+            }
             ai_will_do = {
                 factor = 5
             }
@@ -242,6 +280,12 @@ unification_italy = {
                 all_of_scopes = {
                     array = global.south_italian_states_array
                     is_fully_controlled_by = ROOT
+                }
+            }
+            bypass = {
+                all_of_scopes = {
+                    array = global.south_italian_states_array
+                    is_core_of = ROOT
                 }
             }
             ai_will_do = {
