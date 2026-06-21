@@ -388,6 +388,10 @@ unification_italy = {
 					FROM = {
 						exists = yes
 						has_country_flag = $TAG$_italian_region_acquisition_started
+                        OR = {
+                            any_of_scopes = { array = global.north_italian_states_array is_owned_by = PREV }
+                            any_of_scopes = { array = global.south_italian_states_array is_owned_by = PREV }
+                        }
 					}
 				}
 
