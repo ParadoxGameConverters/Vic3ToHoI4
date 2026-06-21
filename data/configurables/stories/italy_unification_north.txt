@@ -17,18 +17,15 @@ unification_italy_north = {
             }
             NOT = { owner = ROOT }
         }
-        NOT = { ROOT = c:ITA }
     }
 
     score=102
-
-    block_category=unification
 
     focuses = {
         #start of tree for a north italian unifier
         focus={
             id = $TAG$_italian_ambitions
-            name = italian_ambitions
+            text = italian_ambitions
             icon = GFX_goal_generic_construction
             tree_starter = yes
             y = 0
@@ -293,25 +290,6 @@ unification_italy_north = {
                     array = global.south_italian_states_array
                     add_core_of = ROOT
                 }
-            }
-        }
-
-        # Italy is united, proclaim self as Italy
-        focus={
-            id = $TAG$_proclaim_italy
-            text = proclaim_italy
-            icon = GFX_goal_generic_construction
-            relative_position_id = $TAG$_united_south_italian_states
-            x = 0
-            y = 1
-            cost = 10
-            prerequisite = { focus = $TAG$_united_south_italian_states }
-            ai_will_do = {
-                factor = 5
-            }
-
-            completion_reward = {
-                set_cosmetic_tag = ITA
             }
         }
     }
