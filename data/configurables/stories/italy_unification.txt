@@ -3,10 +3,7 @@ unification_italy = {
 
     #Keep fully Vic3 syntax?
     story_trigger={
-        OR = {
-            country_has_primary_culture = cu:north_italian
-            country_has_primary_culture = cu:south_italian
-        }
+        country_has_primary_culture = cu:north_italian
         any_scope_state = {
             is_capital = yes
             OR = {
