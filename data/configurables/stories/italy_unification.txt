@@ -71,7 +71,7 @@ unification_italy = {
                         limit = {
                             is_in_array = { global.north_italian_countries_array = THIS }
                         }
-                        set_country_flag = $TAG$_north_italian_region_integration_started
+                        set_country_flag = $TAG$_italian_region_integration_started
                     }
                 }
                 set_country_flag = {
@@ -113,7 +113,7 @@ unification_italy = {
                             NOT = { is_in_array = { global.north_italian_countries_array = THIS } }
                             any_of_scopes = { array = global.north_italian_states_array is_owned_by = PREV }
                         }
-                        set_country_flag = $TAG$_north_italian_region_acquisition_started
+                        set_country_flag = $TAG$_italian_region_acquisition_started
                     }
                 }
                 set_country_flag = {
@@ -171,9 +171,9 @@ unification_italy = {
                 hidden_effect = {
                     every_country = {
                         limit = {
-                            is_in_array = { global.south_italian_nations_array = THIS }
+                            is_in_array = { global.south_italian_countries_array = THIS }
                         }
-                        set_country_flag = $TAG$_south_italian_region_integration_started
+                        set_country_flag = $TAG$_italian_region_integration_started
                     }
                 }
                 set_country_flag = {
@@ -183,7 +183,7 @@ unification_italy = {
                 }
                 if = {
                     for_each_scope_loop = {
-                        array = global.south_italian_nations_array
+                        array = global.south_italian_countries_array
                         if = {
                             limit = {
                                 NOT = { tag = ROOT }
@@ -210,7 +210,21 @@ unification_italy = {
             }
 
             completion_reward = {
-                #add event chain
+                custom_effect_tooltip = $TAG$_expel_others_from_south_italian_states.tt
+                hidden_effect = {
+                    every_country = {
+                        limit = {
+                            NOT = { is_in_array = { global.south_italian_countries_array = THIS } }
+                            any_of_scopes = { array = global.south_italian_states_array is_owned_by = PREV }
+                        }
+                        set_country_flag = $TAG$_italian_region_acquisition_started
+                    }
+                }
+                set_country_flag = {
+                    flag = negotiation_in_progress
+                    days = 7
+                    value = 1
+                }
             }
         }
 
@@ -274,7 +288,7 @@ unification_italy = {
 
     decisions={
 		$TAG$_italian_ambitions = {
-			$TAG$_negotiate_with_north_italian_nations = {
+			$TAG$_negotiate_with_italian_nations = {
 				icon = generic_form_nation
 			
 				visible = {
@@ -289,7 +303,7 @@ unification_italy = {
 				target_trigger = {
 					FROM = {
 						exists = yes
-						has_country_flag = $TAG$_north_italian_region_integration_started
+						has_country_flag = $TAG$_italian_region_integration_started
 					}
 				}
 
@@ -314,7 +328,7 @@ unification_italy = {
 					}
 				}
 			}
-            $TAG$_negotiate_with_non_north_italian_nations = {
+            $TAG$_negotiate_with_non_italian_nations = {
 				icon = generic_form_nation
 			
 				visible = {
@@ -329,7 +343,7 @@ unification_italy = {
 				target_trigger = {
 					FROM = {
 						exists = yes
-						has_country_flag = $TAG$_north_italian_region_acquisition_started
+						has_country_flag = $TAG$_italian_region_acquisition_started
 					}
 				}
 
