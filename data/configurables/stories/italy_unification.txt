@@ -169,7 +169,7 @@ unification_italy = {
                 }
             }
         }
-        
+
         # invite south italians to join us
         focus={
             id = $TAG$_unite_south_italians
@@ -295,7 +295,7 @@ unification_italy = {
                 }
             }
         }
-        
+
         # Italy is united, proclaim self as Italy
         focus={
             id = $TAG$_proclaim_italy
@@ -317,104 +317,104 @@ unification_italy = {
     }
     decisions_categories={
         $TAG$_italian_ambitions = {
-	        priority = 10
-	        icon = generic_political_actions
+            priority = 10
+            icon = generic_political_actions
 
-	        allowed = {
-		        tag = $TAG$
-	        }
+            allowed = {
+                tag = $TAG$
+            }
         }
     }
 
     decisions={
-		$TAG$_italian_ambitions = {
-			$TAG$_negotiate_with_italian_nations = {
-				icon = generic_form_nation
-			
-				visible = {
-					has_completed_focus = $TAG$_unite_north_italians
-					FROM = {
-						exists = yes
-					}
-					NOT = {
-						has_country_flag = negotiation_in_progress
-					}
-				}
-				target_trigger = {
-					FROM = {
-						exists = yes
-						has_country_flag = $TAG$_italian_region_integration_started
-					}
-				}
+        $TAG$_italian_ambitions = {
+            $TAG$_negotiate_with_italian_nations = {
+                icon = generic_form_nation
 
-				days_re_enable = 120
-				days_remove = 60
+                visible = {
+                    has_completed_focus = $TAG$_unite_north_italians
+                    FROM = {
+                        exists = yes
+                    }
+                    NOT = {
+                        has_country_flag = negotiation_in_progress
+                    }
+                }
+                target_trigger = {
+                    FROM = {
+                        exists = yes
+                        has_country_flag = $TAG$_italian_region_integration_started
+                    }
+                }
 
-				complete_effect = {
-					set_country_flag = {
-						flag = negotiation_in_progress
-						days = 7
-						value = 1
-					}
-				}
-				remove_effect = {
-					FROM = { country_event = { id = $TAG$_unification_italy.10 hours = 12 } }
-				}
-				ai_will_do = {
-					base = 100
-					modifier = {
-						check_variable = { From.integrate_willingness < 0 }
-						factor = 0.001
-					}
-				}
-			}
+                days_re_enable = 120
+                days_remove = 60
+
+                complete_effect = {
+                    set_country_flag = {
+                        flag = negotiation_in_progress
+                        days = 7
+                        value = 1
+                    }
+                }
+                remove_effect = {
+                    FROM = { country_event = { id = $TAG$_unification_italy.10 hours = 12 } }
+                }
+                ai_will_do = {
+                    base = 100
+                    modifier = {
+                        check_variable = { From.integrate_willingness < 0 }
+                        factor = 0.001
+                    }
+                }
+            }
             $TAG$_negotiate_with_non_italian_nations = {
-				icon = generic_form_nation
-			
-				visible = {
-					has_completed_focus = $TAG$_expel_others_from_north_italian_states
-					FROM = {
-						exists = yes
-					}
-					NOT = {
-						has_country_flag = negotiation_in_progress
-					}
-				}
-				target_trigger = {
-					FROM = {
-						exists = yes
-						has_country_flag = $TAG$_italian_region_acquisition_started
+                icon = generic_form_nation
+
+                visible = {
+                    has_completed_focus = $TAG$_expel_others_from_north_italian_states
+                    FROM = {
+                        exists = yes
+                    }
+                    NOT = {
+                        has_country_flag = negotiation_in_progress
+                    }
+                }
+                target_trigger = {
+                    FROM = {
+                        exists = yes
+                        has_country_flag = $TAG$_italian_region_acquisition_started
                         OR = {
                             any_of_scopes = { array = global.north_italian_states_array is_owned_by = PREV }
                             any_of_scopes = { array = global.south_italian_states_array is_owned_by = PREV }
                         }
-					}
-				}
+                    }
+                }
 
-				days_re_enable = 120
-				days_remove = 60
+                days_re_enable = 120
+                days_remove = 60
 
-				complete_effect = {
-					set_country_flag = {
-						flag = negotiation_in_progress
-						days = 7
-						value = 1
-					}
-				}
-				remove_effect = {
-					FROM = { country_event = { id = $TAG$_unification_italy.20 hours = 12 } }
-				}
-				ai_will_do = {
-					base = 100
-					modifier = {
-						check_variable = { From.integrate_willingness < 0 }
-						factor = 0.001
-					}
-				}
-			}
-		}
+                complete_effect = {
+                    set_country_flag = {
+                        flag = negotiation_in_progress
+                        days = 7
+                        value = 1
+                    }
+                }
+                remove_effect = {
+                    FROM = { country_event = { id = $TAG$_unification_italy.20 hours = 12 } }
+                }
+                ai_will_do = {
+                    base = 100
+                    modifier = {
+                        check_variable = { From.integrate_willingness < 0 }
+                        factor = 0.001
+                    }
+                }
+            }
+        }
     }
-    
+
     scripted_effects={
         #need to do some metatriggers/effects here
         $TAG$_unite_italy_effect = {
@@ -448,9 +448,9 @@ unification_italy = {
             title = $TAG$_unification_italy.10.t
             desc = $TAG$_unification_italy.10.d
             picture = GFX_goal_generic_improve_relations
-            
+
             is_triggered_only = yes
-            
+
             immediate = {
                 hidden_effect = {
                     check_annex_willingness_FROM = yes
@@ -532,7 +532,7 @@ unification_italy = {
             title = $TAG$_unification_italy.11.t
             desc = $TAG$_unification_italy.11.d
             picture = GFX_goal_generic_improve_relations
-            
+
             is_triggered_only = yes
 
             option = {
@@ -554,7 +554,7 @@ unification_italy = {
             title = $TAG$_unification_italy.12.t
             desc = $TAG$_unification_italy.12.d
             picture = GFX_goal_generic_improve_relations
-            
+
             is_triggered_only = yes
 
             option = {
@@ -568,7 +568,7 @@ unification_italy = {
                 }
             }
         }
-		
+
         country_event = {
             id = $TAG$_unification_italy.20
             namespace = $TAG$_unification_italy
