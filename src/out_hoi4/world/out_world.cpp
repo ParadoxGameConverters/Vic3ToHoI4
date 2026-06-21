@@ -121,8 +121,8 @@ void OutputBookmark(const path& output_name,
 
 
 void OutputCultureArrays(const path& output_name,
-    std::map<std::string, std::set<int>> homelands,
-    std::map<std::string, std::set<std::string>> primary_culture_countries)
+    const std::map<std::string, std::set<int>>& homelands,
+    const std::map<std::string, std::set<std::string>>& primary_culture_countries)
 {
    const path cultures_filename = "output" / output_name / "common/on_actions/converter_cultures.txt";
    std::ofstream cultures_file(cultures_filename);
