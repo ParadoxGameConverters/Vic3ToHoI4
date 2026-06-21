@@ -1,7 +1,6 @@
 unification_italy = {
     category=unification
 
-    #Keep fully Vic3 syntax?
     story_trigger={
         country_has_primary_culture = cu:north_italian
         any_scope_state = {
