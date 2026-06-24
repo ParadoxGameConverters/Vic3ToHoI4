@@ -38,7 +38,16 @@ unification_italy_north = {
                 custom_effect_tooltip = $TAG$_italian_ambitions.tt
                 for_each_scope_loop = {
                     array = global.north_italian_states_array
-                    add_claim_by = FROM
+                    if = {
+                        limit = {
+                            NOT = {
+                                is_owned_by = root
+                                is_claimed_by = root
+                                is_core_of = root
+                            }
+                        }
+                        add_claim_by = root
+                    }
                 }
             }
         }
@@ -179,7 +188,7 @@ unification_italy_north = {
             prerequisite = { focus = $TAG$_united_north_italian_states }
             bypass = {
                 NOT = {
-                    any_country = {
+                    every_other_country = {
                         NOT = { tag = ROOT }
                         is_in_array = { global.south_italian_countries_array = THIS }
                     }
@@ -192,7 +201,7 @@ unification_italy_north = {
             completion_reward = {
                 custom_effect_tooltip = $TAG$_unite_south_italians.tt
                 hidden_effect = {
-                    every_country = {
+                    every_other_country = {
                         limit = {
                             is_in_array = { global.south_italian_countries_array = THIS }
                         }
@@ -204,15 +213,13 @@ unification_italy_north = {
                     days = 7
                     value = 1
                 }
-                if = {
-                    for_each_scope_loop = {
-                        array = global.south_italian_countries_array
-                        if = {
-                            limit = {
-                                NOT = { tag = ROOT }
-                            }
-                            $TAG$_unite_italy_effect = yes
+                for_each_scope_loop = {
+                    array = global.south_italian_countries_array
+                    if = {
+                        limit = {
+                            NOT = { tag = ROOT }
                         }
+                        $TAG$_unite_italy_effect = yes
                     }
                 }
             }
@@ -308,6 +315,8 @@ unification_italy_north = {
         $TAG$_italian_ambitions = {
             $TAG$_negotiate_with_italian_nations = {
                 icon = generic_form_nation
+                name = negotiate_with_italian_nations
+                desc = negotiate_with_italian_nations_desc
 
                 visible = {
                     has_completed_focus = $TAG$_unite_north_italians
@@ -336,7 +345,7 @@ unification_italy_north = {
                     }
                 }
                 remove_effect = {
-                    FROM = { country_event = { id = $TAG$_unification_italy.10 hours = 12 } }
+                    FROM = { country_event = { id = unification_italy.10 hours = 12 } }
                 }
                 ai_will_do = {
                     base = 100
@@ -348,6 +357,8 @@ unification_italy_north = {
             }
             $TAG$_negotiate_with_non_italian_nations = {
                 icon = generic_form_nation
+                name = negotiate_with_non_italian_nations
+                desc = negotiate_with_non_italian_nations_desc
 
                 visible = {
                     has_completed_focus = $TAG$_expel_others_from_north_italian_states
@@ -380,7 +391,7 @@ unification_italy_north = {
                     }
                 }
                 remove_effect = {
-                    FROM = { country_event = { id = $TAG$_unification_italy.20 hours = 12 } }
+                    FROM = { country_event = { id = unification_italy.20 hours = 12 } }
                 }
                 ai_will_do = {
                     base = 100
@@ -402,7 +413,7 @@ unification_italy_north = {
                     limit = {
                         ROOT = { has_completed_focus = $TAG$_italian_ambitions }
                     }
-                    country_event = { id = $TAG$_unification_italy.10 hours = 12 random_hours = 12 }
+                    country_event = { id = unification_italy.10 hours = 12 random_hours = 12 }
                 }
             }
             else_if = {
@@ -414,264 +425,6 @@ unification_italy_north = {
                     tooltip = $TAG$_claim_states
                     limit = { has_state_flag = original_owner_@PREV is_owned_by_ROOT_or_ally = no }
                     add_claim_by = ROOT
-                }
-            }
-        }
-    }
-
-    events={
-        country_event = {
-            id = $TAG$_unification_italy.10
-            namespace = $TAG$_unification_italy
-            title = $TAG$_unification_italy.10.t
-            desc = $TAG$_unification_italy.10.d
-            picture = GFX_goal_generic_improve_relations
-
-            is_triggered_only = yes
-
-            immediate = {
-                hidden_effect = {
-                    check_annex_willingness_FROM = yes
-                }
-            }
-
-            # yes
-            option = {
-                name = $TAG$_unification_italy.10.a
-                FROM = {
-                    effect_tooltip = {
-                        set_autonomy = {
-                            target = ROOT
-                            autonomy_state = autonomy_puppet
-                        }
-                    }
-                    hidden_effect = { country_event = { id = $TAG$_unification_italy.11 hours = 12 } }
-                }
-                ai_chance = {
-                    factor = 10
-                    modifier = {
-                        check_variable = { Root.annex_willingness > 0 }
-                        factor = 2
-                    }
-                    modifier = {
-                        check_variable = { Root.annex_willingness > 10 }
-                        factor = 2
-                    }
-                    modifier = {
-                        check_variable = { Root.annex_willingness > 20 }
-                        factor = 2
-                    }
-                    modifier = {
-                        is_subject = yes
-                        NOT = { is_subject_of = FROM }
-                        factor = 0
-                    }
-                }
-            }
-
-            # no
-            option = {
-                name = $TAG$_unification_italy.10.b
-                FROM = {
-                    effect_tooltip = {
-                        annex_country = {
-                            target = FROM
-                            transfer_troops = yes
-                        }
-                    }
-                    hidden_effect = { country_event = { id = $TAG$_unification_italy.12 hours = 12 } }
-                }
-                ai_chance = {
-                    factor = 10
-                    modifier = {
-                        check_variable = { Root.annex_willingness < 0 }
-                        factor = 2
-                    }
-                    modifier = {
-                        check_variable = { Root.annex_willingness < 10 }
-                        factor = 2
-                    }
-                    modifier = {
-                        check_variable = { Root.annex_willingness < 20 }
-                        factor = 2
-                    }
-                    modifier = {
-                        check_variable = { Root.annex_willingness < 40 }
-                        factor = 2
-                    }
-                }
-            }
-        }
-
-        # [Country] Swears Allegiance
-        country_event = {
-            id = $TAG$_unification_italy.11
-            namespace = $TAG$_unification_italy
-            title = $TAG$_unification_italy.11.t
-            desc = $TAG$_unification_italy.11.d
-            picture = GFX_goal_generic_improve_relations
-
-            is_triggered_only = yes
-
-            option = {
-                name = $TAG$_unification_italy.11.a
-                annex_country = {
-                    target = FROM
-                    transfer_troops = yes
-                }
-                ai_chance = {
-                    factor = 10
-                }
-            }
-        }
-
-        # [Country] Stands Defiant
-        country_event = {
-            id = $TAG$_unification_italy.12
-            namespace = $TAG$_unification_italy
-            title = $TAG$_unification_italy.12.t
-            desc = $TAG$_unification_italy.12.d
-            picture = GFX_goal_generic_improve_relations
-
-            is_triggered_only = yes
-
-            option = {
-                name = $TAG$_unification_italy.12.a
-                create_wargoal = {
-                    type = annex_everything
-                    target = FROM
-                }
-                ai_chance = {
-                    factor = 10
-                }
-            }
-        }
-
-        country_event = {
-            id = $TAG$_unification_italy.20
-            namespace = $TAG$_unification_italy
-            title = $TAG$_unification_italy.20.t
-            desc = $TAG$_unification_italy.20.d
-            picture = GFX_goal_generic_improve_relations
-
-            is_triggered_only = yes
-
-            immediate = {
-                hidden_effect = {
-                    check_annex_willingness_FROM = yes
-                }
-            }
-
-            # yes
-            option = {
-                name = $TAG$_unification_italy.20.a
-                FROM = {
-                    effect_tooltip = {
-                        set_autonomy = {
-                            target = ROOT
-                            autonomy_state = autonomy_puppet
-                        }
-                    }
-                    hidden_effect = { country_event = { id = $TAG$_unification_italy.21 hours = 12 } }
-                }
-                ai_chance = {
-                    factor = 10
-                    modifier = {
-                        check_variable = { Root.annex_willingness > 0 }
-                        factor = 2
-                    }
-                    modifier = {
-                        check_variable = { Root.annex_willingness > 10 }
-                        factor = 2
-                    }
-                    modifier = {
-                        check_variable = { Root.annex_willingness > 20 }
-                        factor = 2
-                    }
-                    modifier = {
-                        is_subject = yes
-                        NOT = { is_subject_of = FROM }
-                        factor = 0
-                    }
-                }
-            }
-
-            # no
-            option = {
-                name = $TAG$_unification_italy.20.b
-                FROM = {
-                    effect_tooltip = {
-                        create_wargoal = {
-                            type = take_claimed_state
-                            target = ROOT
-                        }
-                    }
-                    hidden_effect = { country_event = { id = $TAG$_unification_italy.22 hours = 12 } }
-                }
-                ai_chance = {
-                    factor = 10
-                    modifier = {
-                        check_variable = { Root.annex_willingness < 0 }
-                        factor = 2
-                    }
-                    modifier = {
-                        check_variable = { Root.annex_willingness < 10 }
-                        factor = 2
-                    }
-                    modifier = {
-                        check_variable = { Root.annex_willingness < 20 }
-                        factor = 2
-                    }
-                    modifier = {
-                        check_variable = { Root.annex_willingness < 40 }
-                        factor = 2
-                    }
-                }
-            }
-        }
-
-        # [Country] gives up North Italian states
-        country_event = {
-            id = $TAG$_unification_italy.21
-            namespace = $TAG$_unification_italy
-            title = $TAG$_unification_italy.21.t
-            desc = $TAG$_unification_italy.21.d
-            picture = GFX_goal_generic_improve_relations
-
-            is_triggered_only = yes
-
-            option = {
-                name = $TAG$_unification_italy.21.a
-                every_owned_state = {
-                    limit = {
-                        is_in_array = { global.north_italian_states_array = THIS }
-                    }
-                    transfer_state_to = FROM
-                }
-                ai_chance = {
-                    factor = 10
-                }
-            }
-        }
-
-        # [Country] Stands Defiant
-        country_event = {
-            id = $TAG$_unification_italy.22
-            namespace = $TAG$_unification_italy
-            title = $TAG$_unification_italy.12.t
-            desc = $TAG$_unification_italy.12.d
-            picture = GFX_goal_generic_improve_relations
-
-            is_triggered_only = yes
-
-            option = {
-                name = $TAG$_unification_italy.22.a
-                create_wargoal = {
-                    type = annex_everything
-                    target = FROM
-                }
-                ai_chance = {
-                    factor = 10
                 }
             }
         }
