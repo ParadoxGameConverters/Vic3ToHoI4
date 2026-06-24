@@ -2,7 +2,6 @@ add_namespace = unification_italy
 
 country_event = {
     id = unification_italy.10
-    namespace = unification_italy
     title = unification_italy.10.t
     desc = unification_italy.10.d
     picture = GFX_goal_generic_improve_relations
@@ -80,7 +79,6 @@ country_event = {
 # [Country] Swears Allegiance
 country_event = {
     id = unification_italy.11
-    namespace = unification_italy
     title = unification_italy.11.t
     desc = unification_italy.11.d
     picture = GFX_goal_generic_improve_relations
@@ -102,7 +100,6 @@ country_event = {
 # [Country] Stands Defiant
 country_event = {
     id = unification_italy.12
-    namespace = unification_italy
     title = unification_italy.12.t
     desc = unification_italy.12.d
     picture = GFX_goal_generic_improve_relations
@@ -123,7 +120,6 @@ country_event = {
 
 country_event = {
     id = unification_italy.20
-    namespace = unification_italy
     title = unification_italy.20.t
     desc = unification_italy.20.d
     picture = GFX_goal_generic_improve_relations
@@ -201,7 +197,6 @@ country_event = {
 # [Country] gives up North Italian states
 country_event = {
     id = unification_italy.21
-    namespace = unification_italy
     title = unification_italy.21.t
     desc = unification_italy.21.d
     picture = GFX_goal_generic_improve_relations
@@ -225,7 +220,6 @@ country_event = {
 # [Country] Stands Defiant
 country_event = {
     id = unification_italy.22
-    namespace = unification_italy
     title = unification_italy.12.t
     desc = unification_italy.12.d
     picture = GFX_goal_generic_improve_relations
