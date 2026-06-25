@@ -20,6 +20,8 @@ unification_italy_north = {
     }
 
     score=102
+    block_role = unification_italy_north
+    block_role = unification_italy_south
 
     focuses = {
         #start of tree for a north italian unifier
@@ -188,7 +190,7 @@ unification_italy_north = {
             prerequisite = { focus = $TAG$_united_north_italian_states }
             bypass = {
                 NOT = {
-                    every_other_country = {
+                    any_other_country = {
                         is_in_array = { global.south_italian_countries_array = THIS }
                     }
                 }

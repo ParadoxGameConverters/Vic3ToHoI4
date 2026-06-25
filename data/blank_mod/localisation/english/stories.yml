@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  negotiate_with_italian_nations:0 "Negotiate with [THIS.GetNameDef]"
  negotiate_with_italian_nations_desc:0 "Try to convince [THIS.GetNameDef] to join our nation."
  negotiate_with_non_italian_nations:0 "Negotiate with [THIS.GetNameDef]"
