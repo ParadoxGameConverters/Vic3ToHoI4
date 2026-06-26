@@ -33,8 +33,29 @@ hoi4::RoleImporter::RoleImporter()
       role_options_.events.emplace_back(event_importer_.ImportEvent(name, input));
    });
 
+   scripted_effects_parser_.registerRegex(commonItems::catchallRegex, [this](std::string name, std::istream& input) {
+      role_options_.scripted_effects.emplace_back(
+          std::format("{} {}", name, commonItems::stringOfItem(input).getString()));
+   });
+
+   focuses_parser_.registerKeyword("shared_focus", [this](std::istream& input) {
+      role_options_.shared_focuses.emplace_back(commonItems::getString(input));
+   });
+   focuses_parser_.registerKeyword("focus", [this](std::istream& input) {
+      role_options_.focuses.emplace_back(focus_importer_.ImportFocus(input));
+   });
+   focuses_parser_.registerKeyword("repeat_focus", [this](std::istream& input) {
+      role_options_.repeat_focuses.emplace_back(repeat_focus_importer_.ImportRepeatFocus(input));
+   });
+   focuses_parser_.registerKeyword("removed_focus", [this](std::istream& input) {
+      role_options_.removed_focuses.emplace_back(commonItems::stringOfItem(input).getString());
+   });
+
    role_parser_.registerKeyword("category", [this](std::istream& input) {
       role_options_.category = commonItems::getString(input);
+   });
+   role_parser_.registerKeyword("story_trigger", [this](std::istream& input) {
+      role_options_.trigger = trigger_importer_.ImportTrigger(input);
    });
    role_parser_.registerKeyword("trigger", [this](std::istream& input) {
       role_options_.trigger = trigger_importer_.ImportTrigger(input);
@@ -63,6 +84,9 @@ hoi4::RoleImporter::RoleImporter()
    role_parser_.registerKeyword("removed_focus", [this](std::istream& input) {
       role_options_.removed_focuses.emplace_back(commonItems::stringOfItem(input).getString());
    });
+   role_parser_.registerKeyword("focuses", [this](std::istream& input) {
+      focuses_parser_.parseStream(input);
+   });
    role_parser_.registerKeyword("decisions_categories", [this](std::istream& input) {
       decisions_categories_parser_.parseStream(input);
    });
@@ -71,6 +95,9 @@ hoi4::RoleImporter::RoleImporter()
    });
    role_parser_.registerKeyword("events", [this](std::istream& input) {
       events_parser_.parseStream(input);
+   });
+   role_parser_.registerKeyword("scripted_effects", [this](std::istream& input) {
+      scripted_effects_parser_.parseStream(input);
    });
 }
 

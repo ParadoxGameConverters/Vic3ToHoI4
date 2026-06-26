@@ -19,6 +19,7 @@ Role::Role(const Role& rhs)
    decisions_categories_ = rhs.decisions_categories_;
    decisions_in_categories_ = rhs.decisions_in_categories_;
    events_ = rhs.events_;
+   scripted_effects_ = rhs.scripted_effects_;
 }
 
 
@@ -36,6 +37,7 @@ Role& Role::operator=(const Role& other)
    decisions_categories_ = other.decisions_categories_;
    decisions_in_categories_ = other.decisions_in_categories_;
    events_ = other.events_;
+   scripted_effects_ = other.scripted_effects_;
 
    return *this;
 }
@@ -102,6 +104,10 @@ std::partial_ordering Role::operator<=>(const Role& other) const
    if (events_ != other.events_)
    {
       return events_ <=> other.events_;
+   }
+   if (scripted_effects_ != other.scripted_effects_)
+   {
+      return scripted_effects_ <=> other.scripted_effects_;
    }
 
    return std::strong_ordering::equal;
@@ -179,6 +185,12 @@ void PrintTo(const Role& role, std::ostream* os)
    {
       PrintTo(event, os);
    }
+   *os << "scripted_effects {\n";
+   for (std::string_view scripted_effect: role.scripted_effects_)
+   {
+      *os << scripted_effect << "\n";
+   }
+   *os << "}\n";
    *os << "}\n";
 }
 

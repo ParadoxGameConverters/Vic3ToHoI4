@@ -1,6 +1,7 @@
 #include "out_world.h"
 
 #include <external/fmt/include/fmt/format.h>
+#include <external/fmt/include/fmt/ranges.h>
 
 #include <cctype>
 #include <fstream>
@@ -30,6 +31,30 @@ using std::filesystem::path;
 
 namespace
 {
+
+void OutputScriptedEffects(const path& output_name, const std::vector<std::string>& scripted_effects)
+{
+   const auto scripted_effects_path = "output" / output_name / "common/scripted_effects";
+   if (!commonItems::DoesFolderExist(scripted_effects_path) &&
+       !std::filesystem::create_directories(scripted_effects_path))
+   {
+      throw std::runtime_error("Could not create " + scripted_effects_path.string());
+   }
+
+   const path scripted_effects_filename =
+       "output" / output_name / "common/scripted_effects/converter_scripted_effects.txt";
+   std::ofstream scripted_effects_file(scripted_effects_filename);
+   if (!scripted_effects_file.is_open())
+   {
+      throw std::runtime_error(fmt::format("Could not create {}", scripted_effects_filename.string()));
+   }
+
+   const std::string output_string = fmt::format("{}", fmt::join(scripted_effects, "\n\n"));
+   scripted_effects_file << output_string;
+
+   scripted_effects_file.close();
+}
+
 
 struct Powers
 {
@@ -94,6 +119,40 @@ void OutputBookmark(const path& output_name,
    bookmark_file.close();
 }
 
+
+void OutputCultureArrays(const path& output_name,
+    const std::map<std::string, std::set<int>>& homelands,
+    const std::map<std::string, std::set<std::string>>& primary_culture_countries)
+{
+   const path cultures_filename = "output" / output_name / "common/on_actions/converter_cultures.txt";
+   std::ofstream cultures_file(cultures_filename);
+   if (!cultures_file.is_open())
+   {
+      throw std::runtime_error(fmt::format("Could not create {}", cultures_filename.string()));
+   }
+
+   std::println(cultures_file, "on_actions = {{");
+   std::println(cultures_file, "\ton_startup = {{");
+   std::println(cultures_file, "\t\teffect = {{");
+   for (const auto& [culture, states]: homelands)
+   {
+      for (const int state: states)
+      {
+         std::println(cultures_file, "\t\t\tadd_to_array = {{ global.{}_states_array = {} }}", culture, state);
+      }
+   }
+   for (const auto& [culture, countries]: primary_culture_countries)
+   {
+      for (const std::string& country: countries)
+      {
+         std::println(cultures_file, "\t\t\tadd_to_array = {{ global.{}_countries_array = {} }}", culture, country);
+      }
+   }
+   std::println(cultures_file, "\t\t}}");
+   std::println(cultures_file, "\t}}");
+   std::println(cultures_file, "}}");
+}
+
 }  // namespace
 
 
@@ -116,6 +175,7 @@ void OutputWorld(const path& output_name, const hoi4::World& world)
    OutputDecisionsCategories(output_name, world.GetDecisionsCategories());
    OutputDecisions(output_name, world.GetDecisionsInCategories());
    OutputEvents(output_name, world.GetEvents());
+   OutputScriptedEffects(output_name, world.GetScriptedEffects());
    OutputBookmark(output_name,
        "grand_campaign",
        date("1936.1.1"),
@@ -124,6 +184,7 @@ void OutputWorld(const path& output_name, const hoi4::World& world)
            .great_powers = world.GetGreatPowers(),
            .major_powers = world.GetMajorPowers(),
        });
+   OutputCultureArrays(output_name, world.GetHomelands(), world.GetPrimaryCultureCountries());
 }
 
 }  // namespace out

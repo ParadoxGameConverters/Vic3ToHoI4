@@ -3,20 +3,26 @@
 
 #include <sstream>
 
-#include "any_primary_culture_trigger.h"
-#include "is_homeland_of_country_cultures.h"
-#include "shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/always_trigger.h"
 #include "src/hoi4_world/roles/triggers/and_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_other_country_trigger.h"
 #include "src/hoi4_world/roles/triggers/any_owned_state_trigger.h"
+#include "src/hoi4_world/roles/triggers/any_primary_culture_trigger.h"
+#include "src/hoi4_world/roles/triggers/any_scope_state_trigger.h"
+#include "src/hoi4_world/roles/triggers/any_state_trigger.h"
+#include "src/hoi4_world/roles/triggers/country_has_primary_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/has_role_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_capital_trigger.h"
+#include "src/hoi4_world/roles/triggers/is_homeland_of_country_cultures.h"
+#include "src/hoi4_world/roles/triggers/is_homeland_trigger.h"
 #include "src/hoi4_world/roles/triggers/is_on_continent_trigger.h"
 #include "src/hoi4_world/roles/triggers/nand_trigger.h"
 #include "src/hoi4_world/roles/triggers/nor_trigger.h"
 #include "src/hoi4_world/roles/triggers/not_trigger.h"
 #include "src/hoi4_world/roles/triggers/or_trigger.h"
+#include "src/hoi4_world/roles/triggers/owner_trigger.h"
+#include "src/hoi4_world/roles/triggers/root_trigger.h"
+#include "src/hoi4_world/roles/triggers/shares_heritage_trait_with_culture_trigger.h"
 #include "src/hoi4_world/roles/triggers/tag_trigger.h"
 #include "src/hoi4_world/roles/triggers/trigger_importer.h"
 
@@ -79,6 +85,64 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOwnedStateTriggerCanBeImport
    children.push_back(std::move(always_no_trigger));
    children.push_back(std::move(tag_trigger));
    const AnyOwnedStateTrigger and_trigger(std::move(children));
+
+   EXPECT_EQ(*trigger, and_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyScopeStateTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  any_scope_state = {\n";
+   input << "    always = yes\n";
+   input << "    always = no\n";
+   input << "    tag = TAG\n";
+   input << "  }";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+
+   std::unique_ptr<Trigger> always_yes_trigger = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> always_no_trigger = std::make_unique<AlwaysTrigger>(false);
+   std::unique_ptr<Trigger> tag_trigger = std::make_unique<TagTrigger>("TAG");
+   std::vector<std::unique_ptr<Trigger>> children;
+   children.push_back(std::move(always_yes_trigger));
+   children.push_back(std::move(always_no_trigger));
+   children.push_back(std::move(tag_trigger));
+   const AnyScopeStateTrigger and_trigger(std::move(children));
+
+   EXPECT_EQ(*trigger, and_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyStateTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  any_state = {\n";
+   input << "    always = yes\n";
+   input << "    always = no\n";
+   input << "    tag = TAG\n";
+   input << "  }";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+
+   std::unique_ptr<Trigger> always_yes_trigger = std::make_unique<AlwaysTrigger>(true);
+   std::unique_ptr<Trigger> always_no_trigger = std::make_unique<AlwaysTrigger>(false);
+   std::unique_ptr<Trigger> tag_trigger = std::make_unique<TagTrigger>("TAG");
+   std::vector<std::unique_ptr<Trigger>> children;
+   children.push_back(std::move(always_yes_trigger));
+   children.push_back(std::move(always_no_trigger));
+   children.push_back(std::move(tag_trigger));
+   const AnyStateTrigger and_trigger(std::move(children));
 
    EXPECT_EQ(*trigger, and_trigger);
 }
@@ -522,6 +586,22 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithL
 }
 
 
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, RootTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  ROOT = c:TAG\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const RootTrigger root_trigger("c:TAG");
+   EXPECT_EQ(*trigger, root_trigger);
+}
+
+
 // country scopes
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyPrimaryCultureTriggerCanBeImported)
 {
@@ -544,6 +624,21 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyPrimaryCultureTriggerCanBeIm
    const AnyPrimaryCultureTrigger any_primary_culture_trigger(std::move(children));
    ASSERT_TRUE(trigger);
    EXPECT_EQ(*trigger, any_primary_culture_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, CountryHasPrimaryCultureTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  country_has_primary_culture = cu:test_culture\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger("cu:test_culture");
+   EXPECT_EQ(*trigger, country_has_primary_culture_trigger);
 }
 
 
@@ -661,6 +756,38 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandOfCountryCultureTrigg
 }
 
 
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  is_homeland = test_culture\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const IsHomelandTrigger is_homeland_trigger("test_culture");
+   EXPECT_EQ(*trigger, is_homeland_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandTriggerCanBeImportedStripperPrefix)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  is_homeland = cu:test_culture\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const IsHomelandTrigger is_homeland_trigger("test_culture");
+   EXPECT_EQ(*trigger, is_homeland_trigger);
+}
+
+
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsOnContinentTriggerCanBeImported)
 {
    std::stringstream input;
@@ -674,6 +801,22 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsOnContinentTriggerCanBeImport
    ASSERT_TRUE(trigger);
    const IsOnContinentTrigger is_on_continent_trigger("test_continent");
    EXPECT_EQ(*trigger, is_on_continent_trigger);
+}
+
+
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, OwnerTriggerCanBeImported)
+{
+   std::stringstream input;
+   input << "= {\n";
+   input << "  owner = TAG\n";
+   input << "}";
+
+   TriggerImporter importer;
+   const std::unique_ptr<Trigger> trigger = importer.ImportTrigger(input);
+
+   ASSERT_TRUE(trigger);
+   const OwnerTrigger owner_trigger("TAG");
+   EXPECT_EQ(*trigger, owner_trigger);
 }
 
 }  // namespace hoi4

@@ -34,6 +34,7 @@ void CreateTestFolders(std::string_view test_name)
    create_directories("output" / test_path / "common/ideas");
    create_directories("output" / test_path / "common/names");
    create_directories("output" / test_path / "common/national_focus");
+   create_directories("output" / test_path / "common/on_actions");
    create_directories("output" / test_path / "history/countries");
    create_directories("output" / test_path / "history/states");
    create_directories("output" / test_path / "history/units");
@@ -383,6 +384,35 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
 }
 
 
+TEST(Outhoi4WorldOutworld, ScriptedEffectsAreOutput)
+{
+   CreateTestFolders("ScriptedEffectsAreOutput");
+
+   hoi4::World world({});
+   world.SetScriptedEffects({"effect_one = {\n\teffect_text\n}", "effect_two = {\n\tmore_effect_text\n}"});
+
+   OutputWorld("ScriptedEffectsAreOutput", world);
+
+   const path file_path("output/ScriptedEffectsAreOutput/common/scripted_effects/converter_scripted_effects.txt");
+   ASSERT_TRUE(commonItems::DoesFileExist(file_path));
+   std::ifstream scripted_effects_file(file_path);
+   ASSERT_TRUE(scripted_effects_file.is_open());
+   std::stringstream scripted_effects_file_stream;
+   std::copy(std::istreambuf_iterator<char>(scripted_effects_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(scripted_effects_file_stream));
+   scripted_effects_file.close();
+   EXPECT_EQ(scripted_effects_file_stream.str(),
+       "effect_one = {\n"
+       "\teffect_text\n"
+       "}\n"
+       "\n"
+       "effect_two = {\n"
+       "\tmore_effect_text\n"
+       "}");
+}
+
+
 TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
 {
    CreateTestFolders("BookmarkIsOutput");
@@ -437,6 +467,50 @@ TEST(Outhoi4WorldOutworld, ExceptionIfBookmarkFileNotCreated)
    remove_all("output/ExceptionIfBookmarkFileNotCreated/common/bookmarks");
 
    EXPECT_THROW(OutputWorld("ExceptionIfBookmarkFileNotCreated", hoi4::World({})), std::runtime_error);
+}
+
+
+TEST(Outhoi4WorldOutworld, CultureArraysIsOutput)
+{
+   CreateTestFolders("CultureArraysIsOutput");
+
+   OutputWorld("CultureArraysIsOutput",
+       hoi4::World({
+           .homelands = {{"test_culture", {1, 2}}, {"test_culture_two", {2}}},
+           .primary_culture_countries = {{"test_culture", {"TAG", "TWO"}}, {"test_culture_two", {"TWO"}}},
+       }));
+
+   const path file_path("output/CultureArraysIsOutput/common/on_actions/converter_cultures.txt");
+   ASSERT_TRUE(commonItems::DoesFileExist(file_path));
+   std::ifstream culture_file(file_path);
+   ASSERT_TRUE(culture_file.is_open());
+   std::stringstream culture_file_stream;
+   std::copy(std::istreambuf_iterator<char>(culture_file),
+       std::istreambuf_iterator<char>(),
+       std::ostreambuf_iterator<char>(culture_file_stream));
+   culture_file.close();
+   EXPECT_EQ(culture_file_stream.str(),
+       "on_actions = {\n"
+       "\ton_startup = {\n"
+       "\t\teffect = {\n"
+       "\t\t\tadd_to_array = { global.test_culture_states_array = 1 }\n"
+       "\t\t\tadd_to_array = { global.test_culture_states_array = 2 }\n"
+       "\t\t\tadd_to_array = { global.test_culture_two_states_array = 2 }\n"
+       "\t\t\tadd_to_array = { global.test_culture_countries_array = TAG }\n"
+       "\t\t\tadd_to_array = { global.test_culture_countries_array = TWO }\n"
+       "\t\t\tadd_to_array = { global.test_culture_two_countries_array = TWO }\n"
+       "\t\t}\n"
+       "\t}\n"
+       "}\n");
+}
+
+
+TEST(Outhoi4WorldOutworld, ExceptionIfCultureArraysFileNotCreated)
+{
+   CreateTestFolders("ExceptionIfCultureArraysFileNotCreated");
+   remove_all("output/ExceptionIfCultureArraysFileNotCreated/common/on_actions");
+
+   EXPECT_THROW(OutputWorld("ExceptionIfCultureArraysFileNotCreated", hoi4::World({})), std::runtime_error);
 }
 
 }  // namespace out

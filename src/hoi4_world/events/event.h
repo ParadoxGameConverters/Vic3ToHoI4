@@ -18,6 +18,7 @@ struct Event
 {
    std::string type;
    std::string id;
+   std::string event_namespace;
    std::optional<std::string> title;
    std::vector<std::string> descriptions;
    std::optional<std::string> picture;

@@ -29,6 +29,7 @@ class EventImporter
    EventOptionImporter option_importer_;
 
    std::string id_;
+   std::string event_namespace_;
    std::optional<std::string> title_;
    std::vector<std::string> descriptions_;
    std::optional<std::string> picture_;

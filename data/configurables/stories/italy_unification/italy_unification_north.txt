@@ -1,0 +1,433 @@
+unification_italy_north = {
+    category=unification
+
+    story_trigger={
+        country_has_primary_culture = cu:north_italian
+        any_scope_state = {
+            is_capital = yes
+            OR = {
+                is_homeland = cu:north_italian
+                is_homeland = cu:south_italian
+            }
+        }
+        any_state = {
+            OR = {
+                is_homeland = cu:north_italian
+                is_homeland = cu:south_italian
+            }
+            NOT = { owner = ROOT }
+        }
+    }
+
+    score=102
+    block_role = unification_italy_north
+    block_role = unification_italy_south
+
+    focuses = {
+        #start of tree for a north italian unifier
+        focus={
+            id = $TAG$_italian_ambitions
+            text = italian_ambitions
+            icon = GFX_goal_generic_construction
+            tree_starter = yes
+            y = 0
+            cost = 10
+            ai_will_do = {
+                factor = 5
+            }
+
+            completion_reward = {
+                custom_effect_tooltip = $TAG$_italian_ambitions.tt
+                for_each_scope_loop = {
+                    array = global.north_italian_states_array
+                    if = {
+                        limit = {
+                            NOT = {
+                                is_owned_by = root
+                                is_claimed_by = root
+                                is_core_of = root
+                            }
+                        }
+                        add_claim_by = root
+                    }
+                }
+            }
+        }
+
+        # invite north italians to join us
+        focus={
+            id = $TAG$_unite_north_italians
+            text = unite_north_italian
+            icon = GFX_goal_generic_construction
+            relative_position_id = $TAG$_italian_ambitions
+            x = -1
+            y = 1
+            cost = 10
+            prerequisite = { focus = $TAG$_italian_ambitions }
+            bypass = {
+                NOT = {
+                    any_country = {
+                        NOT = { tag = ROOT }
+                        is_in_array = { global.north_italian_countries_array = THIS }
+                    }
+                }
+            }
+            ai_will_do = {
+                factor = 5
+            }
+
+            completion_reward = {
+                custom_effect_tooltip = $TAG$_unite_north_italians.tt
+                hidden_effect = {
+                    every_country = {
+                        limit = {
+                            is_in_array = { global.north_italian_countries_array = THIS }
+                        }
+                        set_country_flag = $TAG$_italian_region_integration_started
+                    }
+                }
+                set_country_flag = {
+                    flag = negotiation_in_progress
+                    days = 7
+                    value = 1
+                }
+                for_each_scope_loop = {
+                    array = global.north_italian_countries_array
+                    if = {
+                        limit = {
+                            NOT = { tag = ROOT }
+                        }
+                        $TAG$_unite_italy_effect = yes
+                    }
+                }
+            }
+        }
+
+        # expel non-italian nations from northern italy
+        focus={
+            id = $TAG$_expel_others_from_north_italian_states
+            text = expel_others_from_north_italian_states
+            icon = GFX_goal_generic_construction
+            relative_position_id = $TAG$_italian_ambitions
+            x = 1
+            y = 1
+            cost = 10
+            prerequisite = { focus = $TAG$_italian_ambitions }
+            bypass = {
+                NOT = {
+                    any_country = {
+                        NOT = { is_in_array = { global.north_italian_countries_array = THIS } }
+                        any_of_scopes = { array = global.north_italian_states_array is_owned_by = PREV }
+                    }
+                }
+            }
+            ai_will_do = {
+                factor = 5
+            }
+
+            completion_reward = {
+                custom_effect_tooltip = $TAG$_expel_others_from_north_italian_states.tt
+                hidden_effect = {
+                    every_country = {
+                        limit = {
+                            NOT = { is_in_array = { global.north_italian_countries_array = THIS } }
+                            any_of_scopes = { array = global.north_italian_states_array is_owned_by = PREV }
+                        }
+                        set_country_flag = $TAG$_italian_region_acquisition_started
+                    }
+                }
+                set_country_flag = {
+                    flag = negotiation_in_progress
+                    days = 7
+                    value = 1
+                }
+            }
+        }
+
+        # the north is united
+        focus={
+            id = $TAG$_united_north_italian_states
+            text = united_north_italian_states
+            icon = GFX_goal_generic_construction
+            relative_position_id = $TAG$_expel_others_from_north_italian_states
+            x = -1
+            y = 1
+            cost = 10
+            prerequisite = { focus = $TAG$_unite_north_italians focus = $TAG$_expel_others_from_north_italian_states }
+            available = {
+                all_of_scopes = {
+                    array = global.north_italian_states_array
+                    is_fully_controlled_by = ROOT
+                }
+            }
+            bypass = {
+                all_of_scopes = {
+                    array = global.north_italian_states_array
+                    is_core_of = ROOT
+                }
+            }
+            ai_will_do = {
+                factor = 5
+            }
+
+            completion_reward = {
+                for_each_scope_loop = {
+                    array = global.north_italian_states_array
+                    add_core_of = ROOT
+                }
+            }
+        }
+
+        # invite south italians to join us
+        focus={
+            id = $TAG$_unite_south_italians
+            text = unite_south_italian
+            icon = GFX_goal_generic_construction
+            relative_position_id = $TAG$_united_north_italian_states
+            x = -1
+            y = 1
+            cost = 10
+            prerequisite = { focus = $TAG$_united_north_italian_states }
+            bypass = {
+                NOT = {
+                    any_other_country = {
+                        is_in_array = { global.south_italian_countries_array = THIS }
+                    }
+                }
+            }
+            ai_will_do = {
+                factor = 5
+            }
+
+            completion_reward = {
+                custom_effect_tooltip = $TAG$_unite_south_italians.tt
+                hidden_effect = {
+                    every_other_country = {
+                        limit = {
+                            is_in_array = { global.south_italian_countries_array = THIS }
+                        }
+                        set_country_flag = $TAG$_italian_region_integration_started
+                    }
+                }
+                set_country_flag = {
+                    flag = negotiation_in_progress
+                    days = 7
+                    value = 1
+                }
+                for_each_scope_loop = {
+                    array = global.south_italian_countries_array
+                    if = {
+                        limit = {
+                            NOT = { tag = ROOT }
+                        }
+                        $TAG$_unite_italy_effect = yes
+                    }
+                }
+            }
+        }
+
+        # expel non-italian nations from southern italy
+        focus={
+            id = $TAG$_expel_others_from_south_italian_states
+            text = expel_others_from_south_italian_states
+            icon = GFX_goal_generic_construction
+            relative_position_id = $TAG$_united_north_italian_states
+            x = 1
+            y = 1
+            cost = 10
+            prerequisite = { focus = $TAG$_united_north_italian_states }
+            bypass = {
+                NOT = {
+                    any_other_country = {
+                        NOT = { is_in_array = { global.south_italian_countries_array = THIS } }
+                        any_of_scopes = { array = global.south_italian_states_array is_owned_by = PREV }
+                    }
+                }
+            }
+            ai_will_do = {
+                factor = 5
+            }
+
+            completion_reward = {
+                custom_effect_tooltip = $TAG$_expel_others_from_south_italian_states.tt
+                hidden_effect = {
+                    every_country = {
+                        limit = {
+                            NOT = { is_in_array = { global.south_italian_countries_array = THIS } }
+                            any_of_scopes = { array = global.south_italian_states_array is_owned_by = PREV }
+                        }
+                        set_country_flag = $TAG$_italian_region_acquisition_started
+                    }
+                }
+                set_country_flag = {
+                    flag = negotiation_in_progress
+                    days = 7
+                    value = 1
+                }
+            }
+        }
+
+        # the south is united
+        focus={
+            id = $TAG$_united_south_italian_states
+            text = united_south_italian_states
+            icon = GFX_goal_generic_construction
+            relative_position_id = $TAG$_expel_others_from_south_italian_states
+            x = -1
+            y = 1
+            cost = 10
+            prerequisite = { focus = $TAG$_unite_south_italians focus = $TAG$_expel_others_from_south_italian_states }
+            available = {
+                all_of_scopes = {
+                    array = global.south_italian_states_array
+                    is_fully_controlled_by = ROOT
+                }
+            }
+            bypass = {
+                all_of_scopes = {
+                    array = global.south_italian_states_array
+                    is_core_of = ROOT
+                }
+            }
+            ai_will_do = {
+                factor = 5
+            }
+
+            completion_reward = {
+                for_each_scope_loop = {
+                    array = global.south_italian_states_array
+                    add_core_of = ROOT
+                }
+            }
+        }
+    }
+    decisions_categories={
+        $TAG$_italian_ambitions = {
+            priority = 10
+            icon = generic_political_actions
+
+            allowed = {
+                tag = $TAG$
+            }
+        }
+    }
+
+    decisions={
+        $TAG$_italian_ambitions = {
+            $TAG$_negotiate_with_italian_nations = {
+                icon = generic_form_nation
+                name = negotiate_with_italian_nations
+                desc = negotiate_with_italian_nations_desc
+
+                visible = {
+                    has_completed_focus = $TAG$_unite_north_italians
+                    FROM = {
+                        exists = yes
+                    }
+                    NOT = {
+                        has_country_flag = negotiation_in_progress
+                    }
+                }
+                target_trigger = {
+                    FROM = {
+                        exists = yes
+                        has_country_flag = $TAG$_italian_region_integration_started
+                    }
+                }
+
+                days_re_enable = 120
+                days_remove = 60
+
+                complete_effect = {
+                    set_country_flag = {
+                        flag = negotiation_in_progress
+                        days = 7
+                        value = 1
+                    }
+                }
+                remove_effect = {
+                    FROM = { country_event = { id = unification_italy.10 hours = 12 } }
+                }
+                ai_will_do = {
+                    base = 100
+                    modifier = {
+                        check_variable = { From.integrate_willingness < 0 }
+                        factor = 0.001
+                    }
+                }
+            }
+            $TAG$_negotiate_with_non_italian_nations = {
+                icon = generic_form_nation
+                name = negotiate_with_non_italian_nations
+                desc = negotiate_with_non_italian_nations_desc
+
+                visible = {
+                    has_completed_focus = $TAG$_expel_others_from_north_italian_states
+                    FROM = {
+                        exists = yes
+                    }
+                    NOT = {
+                        has_country_flag = negotiation_in_progress
+                    }
+                }
+                target_trigger = {
+                    FROM = {
+                        exists = yes
+                        has_country_flag = $TAG$_italian_region_acquisition_started
+                        OR = {
+                            any_of_scopes = { array = global.north_italian_states_array is_owned_by = PREV }
+                            any_of_scopes = { array = global.south_italian_states_array is_owned_by = PREV }
+                        }
+                    }
+                }
+
+                days_re_enable = 120
+                days_remove = 60
+
+                complete_effect = {
+                    set_country_flag = {
+                        flag = negotiation_in_progress
+                        days = 7
+                        value = 1
+                    }
+                }
+                remove_effect = {
+                    FROM = { country_event = { id = unification_italy.20 hours = 12 } }
+                }
+                ai_will_do = {
+                    base = 100
+                    modifier = {
+                        check_variable = { From.integrate_willingness < 0 }
+                        factor = 0.001
+                    }
+                }
+            }
+        }
+    }
+
+    scripted_effects={
+        #need to do some metatriggers/effects here
+        $TAG$_unite_italy_effect = {
+            if = {
+                limit = { is_potential_friend_of_ROOT = yes }
+                if = {
+                    limit = {
+                        ROOT = { has_completed_focus = $TAG$_italian_ambitions }
+                    }
+                    country_event = { id = unification_italy.10 hours = 12 random_hours = 12 }
+                }
+            }
+            else_if = {
+                limit = { is_ally_with = ROOT }
+                custom_effect_tooltip = $TAG$_already_allied
+            }
+            else = {
+                every_state = {
+                    tooltip = $TAG$_claim_states
+                    limit = { has_state_flag = original_owner_@PREV is_owned_by_ROOT_or_ally = no }
+                    add_claim_by = ROOT
+                }
+            }
+        }
+    }
+}
