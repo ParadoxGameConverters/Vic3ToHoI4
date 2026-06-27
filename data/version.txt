@@ -1,10 +1,10 @@
 # Version info - if editing, remember to also update the workflow, which generates a fresh copy of this
 
-version = "0.8.0"
+version = "0.9.0"
 name = "Halsey"
 source = "Vic3"
-minSource = "1.12"
-maxSource = "1.12"
+minSource = "1.13"
+maxSource = "1.13"
 target = "HoI4"
 minTarget = "1.18"
 maxTarget = "1.18"

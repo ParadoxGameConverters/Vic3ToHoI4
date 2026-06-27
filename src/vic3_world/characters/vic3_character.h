@@ -58,7 +58,7 @@ class Character
    [[nodiscard]] int GetCultureId() const { return culture_id_; }
    [[nodiscard]] const std::string& GetCulture() const { return culture_; }
    [[nodiscard]] bool IsFemale() const { return is_female_; }
-   [[nodiscard]] int GetIgId() const { return rank_; }
+   [[nodiscard]] int GetIgId() const { return ig_id_; }
    [[nodiscard]] const std::set<std::string>& GetRoles() const { return roles_; }
    [[nodiscard]] int GetRank() const { return rank_; }
    [[nodiscard]] const std::string& GetIdeology() const { return ideology_; }

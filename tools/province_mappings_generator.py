@@ -9,7 +9,7 @@ for filename in os.listdir(directory):
   if os.path.isfile(filename):
     file_string = os.path.splitext(os.path.basename(filename))[0][3:]
     print('\tlink = { comment = "* **********" }')
-    print('\tlink = { comment = ' + file_string + ' }')
+    print('\tlink = { comment = "' + file_string + '" }')
     print('\tlink = { comment = "* **********" }')
     print('\tlink = { comment = "* " }')
 
@@ -21,7 +21,7 @@ for filename in os.listdir(directory):
       if line == '\n':
         continue
       if bracket_level == 0:
-        print('\tlink = { comment = "* * ' + line[:-4] + '" }')
+        print('\tlink = { comment = "* * ' + line[:-5] + '" }')
       if '{' in line:
         bracket_level += 1
       if '}' in line:

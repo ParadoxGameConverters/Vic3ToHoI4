@@ -161,6 +161,8 @@ void vic3::CharacterManager::AssignHomeTagToExiles()
 
 void vic3::CharacterManager::AssignIgToCharacters()
 {
+   int characters_with_ig = 0;
+   int characters_without_ig = 0;
    for (auto& character: characters_ | std::views::values)
    {
       if (exile_pool_.contains(character.GetId()))
@@ -173,18 +175,24 @@ void vic3::CharacterManager::AssignIgToCharacters()
          continue;
       }
 
-      if (const auto itr = character_ig_map_.find(character.GetId()); itr != character_ig_map_.end())
+      if (character.GetIgId() != 0)
+      {
+         characters_with_ig++;
+      }
+      else if (const auto itr = character_ig_map_.find(character.GetId()); itr != character_ig_map_.end())
       {
          character.SetIgId(itr->second);
+         characters_with_ig++;
       }
       else
       {
-         Log(LogLevel::Warning) << fmt::format("Character {} {} with ID: {} has no IG.",
-             character.GetFirstName(),
-             character.GetLastName(),
-             character.GetId());
+         characters_without_ig++;
       }
    }
+
+   Log(LogLevel::Info) << fmt::format("\t{} characters are in interest groups. {} are uninteresting.",
+       characters_with_ig,
+       characters_without_ig);
 }
 
 void vic3::CharacterManager::HireCommanders()
