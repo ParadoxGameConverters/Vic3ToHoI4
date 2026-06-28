@@ -271,6 +271,7 @@ technologies = {
 			ship_radar_2
 			
 		}
+		
 		folder = {
 			name = electronics_folder
 			position = { x = @radar y = 6 }
@@ -287,7 +288,15 @@ technologies = {
 			factor = 1
 			modifier = {
 				date < "1938.1.1"
-				factor = 0.5
+				factor = 0.1
+			}
+			modifier = {
+				date > "1939.6.1"
+				factor = 2
+			}
+			modifier = {
+				date > "1940.6.1"
+				factor = 2
 			}
 		}
 		
@@ -379,7 +388,7 @@ technologies = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				factor = 0.5
+				factor = 0.1
 				date < "1940.1.1"
 			}
 		}

@@ -526,9 +526,6 @@ debug_decisions = {
 	}
 
 
-	#FRA_capture_operative_debug - Removed because references FRA tag
-	#FRA_turn_operative_debug - Removed because references FRA tag
-  
 	harm_operative_debug = {
 		available = {
 			#num_of_operatives > 0

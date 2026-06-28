@@ -27,80 +27,26 @@ faction_goal_unlock_research = {
 	}
 	select_effect = {
 		scope:faction = {
-			set_temp_variable = { total_techs = 0 }
-		}
-		every_collection_element = {
-			input = {
-				input = game:scope
-				operators =  {
-					faction_members
+			set_temp_variable = {
+				total_techs = {
+					value = 0
+					every_collection = {
+						named_collection = faction_members
+						add = {
+							value = num_researched_technologies
+							multiply = {
+								value = 0
+								if = { limit = { value = num_researched_technologies  less_than = 50 }  add = 1.25 }
+								else_if = { limit = { value = num_researched_technologies  less_than = 75 }  add = 1.2 }
+								else_if = { limit = { value = num_researched_technologies  less_than = 100 }  add = 1.15 }
+								else_if = { limit = { value = num_researched_technologies  less_than = 150 }  add = 1.1 }
+								else_if = { limit = { value = num_researched_technologies  less_than = 200 }  add = 1.05 }
+							}
+						}
+					}
+					round = yes
 				}
 			}
-
-			if = {
-				limit = {
-					check_variable = { num_researched_technologies < 50 }
-				}
-				set_temp_variable = { temp_tech = num_researched_technologies }
-				multiply_temp_variable = {
-					var = temp_tech
-					value = 1.25
-				}
-				add_to_temp_variable = { total_techs = temp_tech }
-				set_temp_variable = { temp_tech = 0 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { num_researched_technologies < 75 }
-				}
-				set_temp_variable = { temp_tech = num_researched_technologies }
-				multiply_temp_variable = {
-					var = temp_tech
-					value = 1.2
-				}
-				add_to_temp_variable = { total_techs = temp_tech }
-				set_temp_variable = { temp_tech = 0 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { num_researched_technologies < 100 }
-				}
-				set_temp_variable = { temp_tech = num_researched_technologies }
-				multiply_temp_variable = {
-					var = temp_tech
-					value = 1.15
-				}
-				add_to_temp_variable = { total_techs = temp_tech }
-				set_temp_variable = { temp_tech = 0 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { num_researched_technologies < 150 }
-				}
-				set_temp_variable = { temp_tech = num_researched_technologies }
-				multiply_temp_variable = {
-					var = temp_tech
-					value = 1.1
-				}
-				add_to_temp_variable = { total_techs = temp_tech }
-				set_temp_variable = { temp_tech = 0 }
-			}
-			else_if = {	
-				limit = {
-					check_variable = { num_researched_technologies < 200 }
-				}
-				set_temp_variable = { temp_tech = num_researched_technologies }
-				multiply_temp_variable = {
-					var = temp_tech
-					value = 1.05
-				}
-				add_to_temp_variable = { total_techs = temp_tech }
-				set_temp_variable = { temp_tech = 0 }
-			}
-		}
-		
-		scope:faction = {
-			round_temp_variable = total_techs
 			set_variable = { unlock_military_techs_researched_target = total_techs }
 		}
 	}
@@ -108,77 +54,35 @@ faction_goal_unlock_research = {
 		scope:faction = {
 			hidden_trigger = {
 				tooltip_evaluation = eval
-				set_temp_variable = { unlock_military_techs_researched_compare = 0 }
-				set_temp_variable = { unlock_military_techs_researched_compare_temp_target = 0 }
-				all_collection_elements = {
-					collection = {
-						input = game:scope
-						operators =  { faction_members }
-					}
-					add_to_temp_variable = { unlock_military_techs_researched_compare_temp_target = num_researched_technologies }
-
-					if = {
-						limit = {
-							check_variable = { num_researched_technologies < 50 }
+				set_temp_variable = {
+					unlock_military_techs_researched_compare_temp_target = {
+						value = 0
+						every_collection = {
+							named_collection = faction_members
+							add = num_researched_technologies
 						}
-						set_temp_variable = { temp_tech = num_researched_technologies }
-						multiply_temp_variable = {
-							var = temp_tech
-							value = 1.25
-						}
-						add_to_temp_variable = { unlock_military_techs_researched_compare = temp_tech }
-						set_temp_variable = { temp_tech = 0 }
-					}
-					else_if = {
-						limit = {
-							check_variable = { num_researched_technologies < 75 }
-						}
-						set_temp_variable = { temp_tech = num_researched_technologies }
-						multiply_temp_variable = {
-							var = temp_tech
-							value = 1.2
-						}
-						add_to_temp_variable = { unlock_military_techs_researched_compare = temp_tech }
-						set_temp_variable = { temp_tech = 0 }
-					}
-					else_if = {
-						limit = {
-							check_variable = { num_researched_technologies < 100 }
-						}
-						set_temp_variable = { temp_tech = num_researched_technologies }
-						multiply_temp_variable = {
-							var = temp_tech
-							value = 1.15
-						}
-						add_to_temp_variable = { unlock_military_techs_researched_compare = temp_tech }
-						set_temp_variable = { temp_tech = 0 }
-					}
-					else_if = {
-						limit = {
-							check_variable = { num_researched_technologies < 150 }
-						}
-						set_temp_variable = { temp_tech = num_researched_technologies }
-						multiply_temp_variable = {
-							var = temp_tech
-							value = 1.1
-						}
-						add_to_temp_variable = { unlock_military_techs_researched_compare = temp_tech }
-						set_temp_variable = { temp_tech = 0 }
-					}
-					else_if = {	
-						limit = {
-							check_variable = { num_researched_technologies < 200 }
-						}
-						set_temp_variable = { temp_tech = num_researched_technologies }
-						multiply_temp_variable = {
-							var = temp_tech
-							value = 1.05
-						}
-						add_to_temp_variable = { unlock_military_techs_researched_compare = temp_tech }
-						set_temp_variable = { temp_tech = 0 }
 					}
 				}
-				round_temp_variable = unlock_military_techs_researched_compare
+				set_temp_variable = {
+					unlock_military_techs_researched_compare = {
+						value = 0
+						every_collection = {
+							named_collection = faction_members
+							add = {
+								value = num_researched_technologies
+								multiply = {
+									value = 0
+									if = { limit = { value = num_researched_technologies  less_than = 50 }  add = 1.25 }
+									else_if = { limit = { value = num_researched_technologies  less_than = 75 }  add = 1.2 }
+									else_if = { limit = { value = num_researched_technologies  less_than = 100 }  add = 1.15 }
+									else_if = { limit = { value = num_researched_technologies  less_than = 150 }  add = 1.1 }
+									else_if = { limit = { value = num_researched_technologies  less_than = 200 }  add = 1.05 }
+								}
+							}
+						}
+						round = yes
+					}
+				}
 			}
 
 			if = {
@@ -223,22 +127,17 @@ faction_goal_unlock_military = {
 		FROM = { has_faction_military_unlocked = no }
 	}
 	select_effect = {
-		set_temp_variable = { total_divs = 0 }
-		every_collection_element = {
-			input = {
-				input = game:scope
-				operators =  {
-					faction_members
+		scope:faction = {
+			set_temp_variable = {
+				total_divs = {
+					value = 0
+					every_collection = {
+						named_collection = faction_members
+						add = num_armies
+					}
+					multiply = 1.20
 				}
 			}
-			add_to_temp_variable = { total_divs = num_armies }
-		}
-		
-		multiply_temp_variable = {
-			var = total_divs
-			value = 1.20
-		}
-		scope:faction = {
 			set_variable = { unlock_target = total_divs }
 		}
 	}
@@ -246,15 +145,20 @@ faction_goal_unlock_military = {
 		scope:faction = {
 			hidden_trigger = {
 				tooltip_evaluation = eval
-				set_temp_variable = { unlock_compare = 0 }			
-				all_collection_elements = {
-					collection = {
-						input = game:scope
-						operators =  { faction_members }
+				set_temp_variable = {
+					unlock_compare = {
+						value = 0
+						every_collection = {
+							named_collection = faction_members
+							add = num_armies
+						}
 					}
-					add_to_temp_variable = { unlock_compare = num_armies }
-					set_temp_variable = { unlock_military_techs_researched_compare_temp_target = unlock_compare }
-					multiply_temp_variable = { unlock_military_techs_researched_compare_temp_target = 1.20 }
+				}
+				set_temp_variable = {
+					unlock_military_techs_researched_compare_temp_target = {
+						value = unlock_compare
+						multiply = 1.20
+					}
 				}
 			}
 			if = {
@@ -364,18 +268,24 @@ faction_goal_spy_master = {
 		custom_effect_tooltip = THE_SPY_MASTER
 		add_faction_initiative = 1
 		custom_effect_tooltip = generic_skip_one_line_tt
-		every_faction_member = { 
+		every_faction_member = {
 			limit = {
 				has_intelligence_agency = no
 			}
-			create_intelligence_agency = yes
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_spy_master } }
+				create_intelligence_agency = yes
+			}
 		}
-		every_faction_member = { 
+		every_faction_member = {
 			limit = {
 				has_intelligence_agency = yes
 				NOT = { has_done_agency_upgrade  = upgrade_form_department }
 			}
-			upgrade_intelligence_agency = upgrade_form_department
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_spy_master } }
+				upgrade_intelligence_agency = upgrade_form_department
+			}
 		}
 		every_faction_member = {
 			limit = {
@@ -383,9 +293,12 @@ faction_goal_spy_master = {
 				has_done_agency_upgrade  = upgrade_form_department
 				NOT = { has_done_agency_upgrade = upgrade_crypto_strength }
 			}
-			upgrade_intelligence_agency = upgrade_crypto_strength
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_spy_master } }
+				upgrade_intelligence_agency = upgrade_crypto_strength
+			}
 		}
-		every_faction_member = { 
+		every_faction_member = {
 			limit = {
 				has_intelligence_agency = yes
 				has_done_agency_upgrade = upgrade_crypto_strength
@@ -393,9 +306,12 @@ faction_goal_spy_master = {
 				NOT = { has_done_agency_upgrade = upgrade_crypto_strength_2 }
 			}
 			add_faction_initiative = 1
-			upgrade_intelligence_agency = upgrade_crypto_strength_2
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_spy_master } }
+				upgrade_intelligence_agency = upgrade_crypto_strength_2
+			}
 		}
-		every_faction_member = { 
+		every_faction_member = {
 			limit = {
 				has_intelligence_agency = yes
 				NOT = { agency_upgrade_number > 30 }
@@ -405,7 +321,10 @@ faction_goal_spy_master = {
 				}
 			}
 			add_faction_initiative = 1
-			gain_random_agency_upgrade = yes
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_spy_master } }
+				gain_random_agency_upgrade = yes
+			}
 		}
 		every_faction_member = { # Fallback in case someone completed everything
 			visible_when_empty = no
@@ -414,12 +333,15 @@ faction_goal_spy_master = {
 				agency_upgrade_number > 30
 			}
 			add_faction_initiative = 1
-			add_political_power = 100
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_spy_master } }
+				add_political_power = 100
+			}
 		}
 	}
 	ai_will_do = {
 		base = 1
-		modifier = {  
+		modifier = {
 			add = 2
 			has_intelligence_agency = yes
 		}
@@ -451,19 +373,22 @@ faction_goal_convoy_sufficiency = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		every_faction_member = {
 			tooltip = AT_LEAST_200_CONVOYS
-			visible_when_empty = yes 
+			visible_when_empty = yes
 			limit = {
 				has_navy_size = {
 				    size > 199
 				    type = convoy
 				}
 			}
-			navy_experience = 50
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_convoy_sufficiency } }
+				navy_experience = 50
+			}
 		}
 	}
 	ai_will_do = {
 		base = 1
-		modifier = {  
+		modifier = {
 			add = -1
 			collection_size = {
 				input = {
@@ -745,12 +670,15 @@ faction_goal_military_infrastructure = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			army_experience = 50
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_military_infrastructure } }
+				army_experience = 50
+			}
 		}
 	}
 	ai_will_do = {
 		base = 0
-		modifier = {  
+		modifier = {
 			add = 1
 			has_war = no
 		}
@@ -807,9 +735,12 @@ faction_goal_a_great_fortress = {
 			limit = {
 				NOT = { has_idea = deterrence }
 			}
-			add_timed_idea = {
-				idea = deterrence
-				days = 360
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_a_great_fortress } }
+				add_timed_idea = {
+					idea = deterrence
+					days = 360
+				}
 			}
 		}
 	}
@@ -861,8 +792,11 @@ faction_goal_preemptive_strike_on_fascism = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			army_experience = 25
-			add_war_support = 0.05
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_preemptive_strike_on_fascism } }
+				army_experience = 25
+				add_war_support = 0.05
+			}
 		}
 	}
 	ai_will_do = {
@@ -913,7 +847,10 @@ faction_goal_war_on_communism = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			add_war_support = 0.05
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_war_on_communism } }
+				add_war_support = 0.05
+			}
 		}
 	}
 	ai_will_do = {
@@ -962,7 +899,10 @@ faction_goal_war_on_democracy = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			add_war_support = 0.05
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_war_on_democracy } }
+				add_war_support = 0.05
+			}
 		}
 	}
 	ai_will_do = {
@@ -997,20 +937,23 @@ faction_goal_an_armored_fist = {
 		add_faction_power_projection = 200
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			army_experience = 50 
-			random_character = {
-				tooltip = ONE_PANZER_GENERAL	
-				visible_when_empty = yes
-				limit = {
-					is_unit_leader = yes 
-					OR = {
-						has_trait = armor_officer
-						has_trait = panzer_leader
-						has_trait = panzer_expert 
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_an_armored_fist } }
+				army_experience = 50
+				random_character = {
+					tooltip = ONE_PANZER_GENERAL
+					visible_when_empty = yes
+					limit = {
+						is_unit_leader = yes
+						OR = {
+							has_trait = armor_officer
+							has_trait = panzer_leader
+							has_trait = panzer_expert
+						}
 					}
+					gain_xp = 400
+					add_attack = 1
 				}
-				gain_xp = 400
-				add_attack = 1
 			}
 		}
 	}
@@ -1039,20 +982,23 @@ faction_goal_an_infantry_army = {
 		add_faction_power_projection = 200
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			army_experience = 50 
-			random_character = {
-				tooltip = ONE_INFANTRY_GENERAL
-				visible_when_empty = yes
-				limit = {
-					is_unit_leader = yes 
-					OR = {
-						has_trait = infantry_officer
-						has_trait = infantry_leader
-						has_trait = infantry_expert 
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_an_infantry_army } }
+				army_experience = 50
+				random_character = {
+					tooltip = ONE_INFANTRY_GENERAL
+					visible_when_empty = yes
+					limit = {
+						is_unit_leader = yes
+						OR = {
+							has_trait = infantry_officer
+							has_trait = infantry_leader
+							has_trait = infantry_expert
+						}
 					}
+					gain_xp = 400
+					add_logistics = 1
 				}
-				gain_xp = 400
-				add_logistics = 1
 			}
 		}
 	}

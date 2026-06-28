@@ -101,13 +101,16 @@ faction_goal_resource_control = {
 		custom_effect_tooltip = THE_FACTION_LEADER
 		add_faction_initiative = 1
 		custom_effect_tooltip = generic_skip_one_line_tt
-		every_faction_member = { 
+		every_faction_member = {
 			tooltip = INFLUENCE_TOP_THREE
 			visible_when_empty = yes
 			limit = {
 				faction_influence_rank < 4
 			}
-			add_political_power = 100
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_resource_control } }
+				add_political_power = 100
+			}
 		}
 	}
 	ai_will_do = {
@@ -174,27 +177,30 @@ faction_goal_rule_the_waves = {
 		}
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			random_character = {
-				tooltip = ONE_ADMIRAL	
-				visible_when_empty = yes
-				limit = {
-					is_navy_leader = yes
-					NOT = { has_trait = seawolf }
-					NOT = { has_trait = battleship_adherent }
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_rule_the_waves } }
+				random_character = {
+					tooltip = ONE_ADMIRAL
+					visible_when_empty = yes
+					limit = {
+						is_navy_leader = yes
+						NOT = { has_trait = seawolf }
+						NOT = { has_trait = battleship_adherent }
+					}
+					gain_xp = 400
+					add_coordination = 1
+					add_trait = { trait = battleship_adherent }
 				}
-				gain_xp = 400
-				add_coordination = 1
-				add_trait = { trait = battleship_adherent }
-			}
-			add_mastery = {
-				amount = 100
-				track = capital_ships
-			}
-			add_tech_bonus = {
-				name = rule_the_waves_tech_bonus
-				bonus = 1
-				uses = 1
-				category = naval_equipment
+				add_mastery = {
+					amount = 100
+					track = capital_ships
+				}
+				add_tech_bonus = {
+					name = rule_the_waves_tech_bonus
+					bonus = 1
+					uses = 1
+					category = naval_equipment
+				}
 			}
 		}
 	}
@@ -275,11 +281,14 @@ faction_goal_strategic_bombing_campaign = {
 				name = ALL_FACTION_MEMBERS_WITH_50_BOMBERS
 			}
 			add_faction_initiative = 1
-			add_war_support = 0.1
-			air_experience = 50
-			add_mastery = {
-				amount = 100
-				track = heavy_aircraft
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_strategic_bombing_campaign } }
+				add_war_support = 0.1
+				air_experience = 50
+				add_mastery = {
+					amount = 100
+					track = heavy_aircraft
+				}
 			}
 		}
 	}
@@ -348,12 +357,15 @@ faction_goal_liberate_territory = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			add_stability = 0.1
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_liberate_territory } }
+				add_stability = 0.1
+			}
 		}
 	}
 	ai_will_do = {
 		base = 1
-		modifier = {  
+		modifier = {
 			add = 4 # If lots of territory, prioritize this
 			collection_size = {
 				input = {
@@ -433,7 +445,10 @@ faction_goal_great_offensive = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			add_war_support = 0.1
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_great_offensive } }
+				add_war_support = 0.1
+			}
 		}
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = TARGET_STATE_CONTROLLERS
@@ -501,7 +516,10 @@ faction_goal_defeating_our_enemies = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			add_war_support = 0.1
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_defeating_our_enemies } }
+				add_war_support = 0.1
+			}
 		}
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = PEACE_CONFERENCE_WINNERS
@@ -622,10 +640,13 @@ faction_goal_the_atomic_race = {
 				name = INFLUENCE_TOP_THREE
 			}
 			add_faction_initiative = 1
-			add_breakthrough_progress = {
-				specialization = specialization_nuclear
-				value = 0.25
-			} 
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_the_atomic_race } }
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.25
+				}
+			}
 		}
 	}
 	ai_will_do = {
@@ -683,11 +704,14 @@ faction_goal_defeat_of_communism = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			add_popularity = {
-				ideology = communism
-				popularity = -0.15
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_defeat_of_communism } }
+				add_popularity = {
+					ideology = communism
+					popularity = -0.15
+				}
+				add_political_power = 100
 			}
-			add_political_power = 100
 		}
 	}
 }
@@ -734,11 +758,14 @@ faction_goal_defeat_of_fascism = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			add_popularity = {
-				ideology = fascism
-				popularity = -0.15
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_defeat_of_fascism } }
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.15
+				}
+				add_political_power = 100
 			}
-			add_political_power = 100
 		}
 	}
 }
@@ -788,16 +815,19 @@ faction_goal_defeat_of_anti_fascists = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			add_popularity = {
-				ideology = fascism
-				popularity = 0.2
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_defeat_of_anti_fascists } }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.2
+				}
+				add_political_power = 100
 			}
-			add_political_power = 100
 		}
 	}
 	ai_will_do = {
 		base = 0
-		modifier = { 
+		modifier = {
 			add = 1 # If war with communists you probably hate them
 			any_enemy_country = {
 				has_government = communism
@@ -851,16 +881,19 @@ faction_goal_defeat_of_anti_communists = {
 		custom_effect_tooltip = generic_skip_one_line_tt
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_faction_member = {
-			add_popularity = {
-				ideology = communism
-				popularity = 0.2
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_defeat_of_anti_communists } }
+				add_popularity = {
+					ideology = communism
+					popularity = 0.2
+				}
+				add_political_power = 100
 			}
-			add_political_power = 100
 		}
 	}
 	ai_will_do = {
 		base = 0
-		modifier = { 
+		modifier = {
 			add = 1 # If war with communists you probably hate them
 			any_enemy_country = {
 				has_government = fascism
@@ -906,8 +939,11 @@ faction_goal_the_red_tide = {
 			hidden_effect = {
 				add_faction_initiative = 1
 				add_faction_influence_ratio = 0.05
-				army_experience = 50
-			} 
+				IF = {
+					limit = { NOT = { has_completed_goal = faction_goal_the_red_tide } }
+					army_experience = 50
+				}
+			}
 		}
 		effect_tooltip = {
 			add_faction_initiative = 1

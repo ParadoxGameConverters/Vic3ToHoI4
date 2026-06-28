@@ -223,6 +223,9 @@ foreign_influence = {
 				is_puppet_of = ROOT
 				NOT = { has_government = democratic }
 			}
+			NOT = {
+				has_dlc = "Thunder at Our Gates"
+			}
 		}
 
 		target_array = subjects

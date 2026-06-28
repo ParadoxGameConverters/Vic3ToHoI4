@@ -87,6 +87,8 @@ CZE_ceskoslovenska_armada_dynamic_modifier = { #National Spirit
 	modifier_army_sub_unit_militia_defence_factor = CZE_ceskoslovenska_armada_modifier_army_sub_unit_militia_defence_factor #0
 	army_morale_factor = CZE_ceskoslovenska_armada_dynamic_modifier_army_morale_factor #0
 	command_power_gain_mult = CZE_ceskoslovenska_armada_dynamic_modifier_command_power_gain_mult #0
+	party_popularity_stability_factor = CZE_ceskoslovenska_armada_dynamic_modifier_party_popularity_stability_factor #0
+	mobilization_speed = CZE_ceskoslovenska_armada_dynamic_modifier_mobilization_speed #0
 }
 #Czech Air Force
 CZE_ceskoslovenske_letectvo_dynamic_modifier = { #National Spirit
