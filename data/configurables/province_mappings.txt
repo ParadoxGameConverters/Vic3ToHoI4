@@ -1071,7 +1071,7 @@
 	link = { comment = "* * STATE_LAZIO " }
 	link = { vic3 = xB040A0 hoi4 = 6862 } # Viterbo [wood] -> Viterbo
 	link = { vic3 = x3040A0 hoi4 = 9794 } # Terni [mine] -> Terni
-	link = { vic3 = xB0C0A0 hoi4 = 9904 hoi4 = 11846 } # Frosinone [farm] -> Roma, Anzio
+	link = { vic3 = xB0C0A0 hoi4 = 9904 hoi4 = 11846 hoi4 = 13413 } # Frosinone [farm] -> Roma, Anzio, land
 	link = { vic3 = xB5726E hoi4 = 11751 } # Rome [city][port] -> Civitavecchia
 	link = { comment = "* * STATE_VENETIA " }
 	link = { vic3 = x3083C8 hoi4 = 603 } # Verona [city] -> Verona
@@ -6791,7 +6791,7 @@
 	link = { vic3 = x2E84A3 vic3 = x7070A0 hoi4 = 4330 } # STATE_CAMBODIA, STATE_CAMBODIA -> Suong
 	link = { vic3 = x36D7BA hoi4 = 4359 } # STATE_CAMBODIA -> Koh Kong
 	link = { vic3 = x989BA9 hoi4 = 4639 } # STATE_CAMBODIA -> Kampong Cham
-	link = { vic3 = xFA2C44 hoi4 = 7319 } # STATE_CAMBODIA -> Kampong Chhnang
+	link = { vic3 = xFA2C44 vic3 = x81EF79 hoi4 = 7319 } # STATE_CAMBODIA, STATE_CAMBODIA -> Kampong Chhnang
 	link = { vic3 = xD45279 hoi4 = 7376 } # Phnom Penh [city] -> Phnom Penh
 	link = { vic3 = xDF21D5 hoi4 = 7404 } # STATE_CAMBODIA -> Sre Ambel
 	link = { vic3 = x7A5B5E vic3 = xA0B065 hoi4 = 7432 } # Kampot [port], STATE_CAMBODIA -> Sihanoukville
@@ -6804,11 +6804,11 @@
 	link = { vic3 = xFB565E hoi4 = 10467 } # STATE_CAMBODIA -> Samraong
 	link = { vic3 = x73E2F0 hoi4 = 12150 } # STATE_CAMBODIA -> Saen Monourom
 	link = { vic3 = xF0FC47 hoi4 = 12167 hoi4 = 4596 } # STATE_CAMBODIA -> Stung Treng, Banlung
-	link = { vic3 = x81EF79 vic3 = x810F9E hoi4 = 12191 } # STATE_CAMBODIA, STATE_CAMBODIA -> Pursat
+	link = { vic3 = x810F9E hoi4 = 12191 } # STATE_CAMBODIA -> Pursat
 	link = { vic3 = xEFEF20 hoi4 = 12288 hoi4 = 12260 } # STATE_CAMBODIA -> Svay Rieng, Prey Veng
-	link = { vic3 = x7691D4 vic3 = x9EEF57 hoi4 = 12447 } # STATE_CAMBODIA, STATE_CAMBODIA -> Preah Vihear
+	link = { vic3 = x7691D4 hoi4 = 12447 } # STATE_CAMBODIA -> Preah Vihear
 	link = { vic3 = x1A549C hoi4 = 12460 } # STATE_CAMBODIA -> Anlong Veng
-	link = { vic3 = x65369D vic3 = xB5755C hoi4 = 12475 } # STATE_CAMBODIA, STATE_CAMBODIA -> Roneam
+	link = { vic3 = x65369D vic3 = xB5755C vic3 = x9EEF57 hoi4 = 12475 } # STATE_CAMBODIA, STATE_CAMBODIA, STATE_CAMBODIA -> Roneam
 	link = { vic3 = x0001FF hoi4 = 5236 } # x0001FF -> (Lake)
 	link = { comment = "* * STATE_BANGKOK " }
 	link = { vic3 = x10AFE0 hoi4 = 1427 } # Bangkok [city][port] -> Nakhon Pathom
@@ -6913,7 +6913,7 @@
 	link = { vic3 = x8D0FE2 vic3 = x874BED hoi4 = 10456 } # STATE_LAOS, STATE_LAOS -> Sienghone
 	link = { vic3 = x1F8AE4 hoi4 = 10330 } # STATE_LAOS -> Phiang
 	link = { vic3 = x3130A0 vic3 = xCD2D5D hoi4 = 10356 } # STATE_LAOS, STATE_LAOS -> Pak Lay
-	link = { vic3 = x899047 hoi4 = 10453 } # STATE_LAOS -> Pathoomphone
+	link = { vic3 = x899047 hoi4 = 10453 hoi4 = 13411 } # STATE_LAOS -> Pathoomphone, land
 	link = { vic3 = x1E6D3C hoi4 = 10496 } # Luang Prabang [city] -> Nan
 	link = { vic3 = x7E2810 vic3 = x9EFC82 vic3 = xB0B020 hoi4 = 12332 } # STATE_LAOS, STATE_LAOS, STATE_LAOS -> Paksane
 	link = { comment = "* * STATE_CHIANG_MAI " }
@@ -7135,17 +7135,19 @@
 	link = { comment = "* " }
 	link = { comment = "* * STATE_MALAYA " }
 	link = { vic3 = xCF3E8D hoi4 = 1364 } # STATE_MALAYA -> Ipoh
-	link = { vic3 = x23578B hoi4 = 10297 } # STATE_MALAYA -> Kuala Lumpur
+	link = { vic3 = x23578B hoi4 = 13409 } # STATE_MALAYA -> land
 	link = { vic3 = xAA2287 hoi4 = 1376 } # STATE_MALAYA -> Teluk Anson
-	link = { vic3 = xFCBAFC hoi4 = 10227 } # STATE_MALAYA -> Gua Musang
+	link = { vic3 = xFCBAFC hoi4 = 10227 hoi4 = 13410 } # STATE_MALAYA -> Gua Musang, land
 	link = { vic3 = xE87C53 hoi4 = 4310 } # STATE_MALAYA -> Gerik
 	link = { vic3 = x80C0B0 hoi4 = 4355 hoi4 = 1348 } # STATE_MALAYA -> Kemaman, Tembeling
 	link = { vic3 = x660411 hoi4 = 12255 hoi4 = 1392 } # STATE_MALAYA -> Bentong, Temerloh
 	link = { vic3 = xB6B53D hoi4 = 4384 } # STATE_MALAYA -> Bidor
-	link = { vic3 = xC84C4C vic3 = x8E3305 hoi4 = 4412 } # STATE_MALAYA, Kelang [city] -> Seremban
+	link = { vic3 = xC84C4C hoi4 = 4412 } # STATE_MALAYA -> Seremban
+	link = { vic3 = x8E3305 hoi4 = 10297 } # Kelang [city] -> Kuala Lumpur
 	link = { vic3 = x76546D hoi4 = 4424 hoi4 = 10313 hoi4 = 13376 } # Muar [farm] -> Johore Bahru, Kota Tinggi, land
 	link = { vic3 = xCAB9F2 hoi4 = 7329 } # Kuala Kelantan [wood] -> Kota Bharu
-	link = { vic3 = x08673B vic3 = xD8E596 hoi4 = 7342 } # George Town [mine], STATE_MALAYA -> George Town
+	link = { vic3 = x08673B hoi4 = 13408 } # George Town [mine] -> land
+	link = { vic3 = xD8E596 hoi4 = 7342 } # STATE_MALAYA -> George Town
 	link = { vic3 = x6CFA94 hoi4 = 7399 } # STATE_MALAYA -> Kuantan
 	link = { vic3 = x8080B0 hoi4 = 7427 } # STATE_MALAYA -> Malacca
 	link = { vic3 = xF9F87A hoi4 = 12199 } # STATE_MALAYA -> Kuala Terengganu
@@ -7226,44 +7228,46 @@
 	link = { vic3 = xB944CF hoi4 = 4406 } # STATE_WEST_JAVA -> Bogor
 	link = { vic3 = xD70117 hoi4 = 1386 } # Cirebon [port] -> Cirebon
 	link = { vic3 = xCE4107 hoi4 = 7421 } # STATE_WEST_JAVA -> Bandoeng
-	link = { vic3 = xA0DFEF hoi4 = 4621 } # Banjar [wood] -> Tasikmalaja
+	link = { vic3 = xA0DFEF hoi4 = 4621 hoi4 = 13382 } # Banjar [wood] -> Tasikmalaja, land
 	link = { vic3 = x5CC6B6 hoi4 = 10279 hoi4 = 7381 } # Batavia [city][mine] -> Serang, Batavia
 	link = { vic3 = x71D392 hoi4 = 12249 } # STATE_WEST_JAVA -> Karawang
 	link = { comment = "* * STATE_EAST_JAVA " }
-	link = { vic3 = xA0E070 vic3 = xAD1F3C hoi4 = 4306 } # STATE_EAST_JAVA, STATE_EAST_JAVA -> Pamekasan
-	link = { vic3 = x2060EF hoi4 = 4608 } # STATE_EAST_JAVA -> Soerabaja
+	link = { vic3 = xAD1F3C hoi4 = 13383 hoi4 = 13384 } # STATE_EAST_JAVA -> land, land
+	link = { vic3 = xA0E070 hoi4 = 4306 } # STATE_EAST_JAVA -> Pamekasan
+	link = { vic3 = x2060EF hoi4 = 13403 hoi4 = 4608 } # STATE_EAST_JAVA -> land, Soerabaja
 	link = { vic3 = xD91A27 vic3 = xA8B603 hoi4 = 7654 } # Probolinggo [farm], STATE_EAST_JAVA -> Banjoewangi
 	link = { vic3 = x1D38B7 vic3 = xEF70EC hoi4 = 10479 } # Malang [city][port], Madiun [mine] -> Malang
 	link = { vic3 = xC226AF hoi4 = 12472 } # Pacitan [wood] -> Jember
 	link = { vic3 = x5C2250 hoi4 = 13002 } # STATE_EAST_JAVA -> West Island
 	link = { vic3 = x5C2239 hoi4 = 13005 } # STATE_EAST_JAVA -> Flying Fish Cove
 	link = { comment = "* * STATE_CENTRAL_JAVA " }
-	link = { vic3 = xA06070 hoi4 = 1413 } # Semarang [port][farm] -> Kudus
+	link = { vic3 = xA06070 hoi4 = 1413 hoi4 = 13405 hoi4 = 12277 } # Semarang [port][farm] -> Kudus, land, Samarang
 	link = { vic3 = x14F9F5 vic3 = xEB0621 hoi4 = 4390 } # STATE_CENTRAL_JAVA, STATE_CENTRAL_JAVA -> Bojonegoro
 	link = { vic3 = x01B3D5 vic3 = xA12ED1 hoi4 = 7223 } # STATE_CENTRAL_JAVA, STATE_CENTRAL_JAVA -> Pekalongan
 	link = { vic3 = x727A46 hoi4 = 4434 } # Cilacap [mine] -> Cilacap
 	link = { vic3 = x9C517C hoi4 = 7642 } # STATE_CENTRAL_JAVA -> Purwokerto
-	link = { vic3 = xD19D2E hoi4 = 10135 } # Yogyakarta [city] -> Jogjakarta
-	link = { vic3 = x20DF70 hoi4 = 10491 hoi4 = 1209 } # STATE_CENTRAL_JAVA -> Kediri, Blitar
-	link = { vic3 = x62742E hoi4 = 12277 } # STATE_CENTRAL_JAVA -> Samarang
-	link = { vic3 = x143969 hoi4 = 12293 } # Surakarta [wood] -> Purwodadi
+	link = { vic3 = xD19D2E hoi4 = 10135 hoi4 = 13406 } # Yogyakarta [city] -> Jogjakarta, land
+	link = { vic3 = x20DF70 hoi4 = 1209 } # STATE_CENTRAL_JAVA -> Blitar
+	link = { vic3 = x62742E hoi4 = 13404 } # STATE_CENTRAL_JAVA -> land
+	link = { vic3 = x143969 hoi4 = 12293 hoi4 = 13407 hoi4 = 10491 } # Surakarta [wood] -> Purwodadi, land, Kediri
 	link = { comment = "* * STATE_NORTH_SUMATRA " }
 	link = { vic3 = x35213F vic3 = x8171EA hoi4 = 1277 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Bengkalis
 	link = { vic3 = xDA82F4 hoi4 = 1332 } # STATE_NORTH_SUMATRA -> Tungkal
 	link = { vic3 = x5157D3 vic3 = x7AC280 hoi4 = 1345 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Jambi
 	link = { vic3 = x6ED39E vic3 = xAE71B4 hoi4 = 1373 } # STATE_NORTH_SUMATRA, Jambi [city] -> Muara Bulian
 	link = { vic3 = xD2D88C hoi4 = 1460 } # STATE_NORTH_SUMATRA -> Lingkuang Aua
-	link = { vic3 = xA2F773 vic3 = xDC4677 vic3 = xE4C2D6 hoi4 = 1533 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Baringin
-	link = { vic3 = xA0CEED vic3 = x4E9BC1 hoi4 = 7327 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Duri
-	link = { vic3 = x257D2C vic3 = x79A66E hoi4 = 7368 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Sungai Penuh
+	link = { vic3 = xA2F773 vic3 = xDC4677 hoi4 = 1533 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Baringin
+	link = { vic3 = xA0CEED hoi4 = 7327 } # STATE_NORTH_SUMATRA -> Duri
+	link = { vic3 = x257D2C vic3 = x79A66E vic3 = xE4C2D6 hoi4 = 7368 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Sungai Penuh
 	link = { vic3 = x677AA6 vic3 = x87F7B6 hoi4 = 7463 } # STATE_NORTH_SUMATRA, Bengkalis [farm] -> Dumai
-	link = { vic3 = x5BE3D2 vic3 = x983FEB hoi4 = 10209 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Pangkalan Kerinci
+	link = { vic3 = x983FEB hoi4 = 10209 } # STATE_NORTH_SUMATRA -> Pangkalan Kerinci
 	link = { vic3 = x339E85 vic3 = xD3A66E hoi4 = 10225 } # STATE_NORTH_SUMATRA, Ringat [wood] -> Tembilaham
-	link = { vic3 = x85B004 hoi4 = 10354 } # STATE_NORTH_SUMATRA -> Bukittinggi
+	link = { vic3 = x85B004 vic3 = x4E9BC1 vic3 = xEAF2DC hoi4 = 10354 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Bukittinggi
 	link = { vic3 = x8A3E15 hoi4 = 10382 } # Padang [port] -> Padang
-	link = { vic3 = x9377DF vic3 = xE0A0F0 hoi4 = 12126 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Gunungsitoli
+	link = { vic3 = x9377DF hoi4 = 13396 } # STATE_NORTH_SUMATRA -> land
+	link = { vic3 = xE0A0F0 hoi4 = 12126 hoi4 = 13397 hoi4 = 1428 } # STATE_NORTH_SUMATRA -> Gunungsitoli, land, Tuapejat
 	link = { vic3 = x48428B vic3 = x6021D0 hoi4 = 12168 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Selatpanjang
-	link = { vic3 = x8B7A14 vic3 = xEAF2DC hoi4 = 12181 } # Pekanbaru [mine], STATE_NORTH_SUMATRA -> Pekanbaru
+	link = { vic3 = x8B7A14 vic3 = x5BE3D2 hoi4 = 12181 } # Pekanbaru [mine], STATE_NORTH_SUMATRA -> Pekanbaru
 	link = { vic3 = x7C7431 vic3 = xA1341F hoi4 = 12184 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Sungaiguntung
 	link = { vic3 = xEC5DEA hoi4 = 12212 } # STATE_NORTH_SUMATRA -> Seberida
 	link = { vic3 = x01317D vic3 = x3F7EA0 hoi4 = 12302 } # STATE_NORTH_SUMATRA, STATE_NORTH_SUMATRA -> Kotapinang
@@ -7284,7 +7288,7 @@
 	link = { vic3 = xE49A2F hoi4 = 7308 } # STATE_SOUTH_SUMATRA -> Pagar Alam
 	link = { vic3 = x27FD1C hoi4 = 7384 } # Mentok [farm] -> Pangkal Pinang
 	link = { vic3 = x0F65F5 hoi4 = 7396 } # STATE_SOUTH_SUMATRA -> Teladan
-	link = { vic3 = x00F15A hoi4 = 10194 hoi4 = 1428 } # STATE_SOUTH_SUMATRA -> Bandar Ratu, Tuapejat
+	link = { vic3 = x00F15A hoi4 = 10194 hoi4 = 13395 } # STATE_SOUTH_SUMATRA -> Bandar Ratu, land
 	link = { vic3 = x8527A9 hoi4 = 10294 } # STATE_SOUTH_SUMATRA -> Pamenang
 	link = { vic3 = x42D05B hoi4 = 10322 } # STATE_SOUTH_SUMATRA -> Prabumulih
 	link = { vic3 = x0D0BEB vic3 = x7FFD6B hoi4 = 7440 } # Bengkulu [mine], STATE_SOUTH_SUMATRA -> Lubuklinggau
@@ -7298,13 +7302,17 @@
 	link = { comment = "* * STATE_ACEH " }
 	link = { vic3 = x4544B1 vic3 = xA0DFD0 vic3 = xD5A22C hoi4 = 1648 } # STATE_ACEH, STATE_ACEH, STATE_ACEH -> Langsa
 	link = { vic3 = x388ABB vic3 = xE3CB2E vic3 = x60E050 hoi4 = 4446 } # STATE_ACEH, STATE_ACEH, STATE_ACEH -> Panyambungan
-	link = { vic3 = x4F7793 vic3 = x7E3D68 hoi4 = 4652 } # STATE_ACEH, Medan [city] -> Medan
-	link = { vic3 = x1C8420 vic3 = xC5091B hoi4 = 7658 } # Kuta Raja [port], STATE_ACEH -> Banda Atjeh
-	link = { vic3 = x616150 vic3 = xD4118B hoi4 = 7673 } # STATE_ACEH, STATE_ACEH -> Tanjungbalai
+	link = { vic3 = x7E3D68 hoi4 = 4652 } # Medan [city] -> Medan
+	link = { vic3 = x1C8420 hoi4 = 13398 } # Kuta Raja [port] -> land
+	link = { vic3 = xC5091B hoi4 = 7658 } # STATE_ACEH -> Banda Atjeh
+	link = { vic3 = xD4118B vic3 = x4F7793 hoi4 = 13402 } # STATE_ACEH, STATE_ACEH -> land
+	link = { vic3 = x616150 hoi4 = 7673 } # STATE_ACEH -> Tanjungbalai
 	link = { vic3 = xBE17D2 vic3 = xAB0290 hoi4 = 8360 } # STATE_ACEH, STATE_ACEH -> Subulussalam
 	link = { vic3 = x5BDF4D vic3 = xEB815E hoi4 = 10509 } # STATE_ACEH, Lhokseumawe [mine] -> Lhokseumawe
 	link = { vic3 = x30AED9 vic3 = x9A7E0B hoi4 = 10522 } # STATE_ACEH, Sibolga [farm] -> Limau Purut
-	link = { vic3 = x07B7F0 vic3 = x0DDF49 vic3 = xC266CF hoi4 = 12488 } # Meulaboh [wood], STATE_ACEH, STATE_ACEH -> Lhok Bengkuang
+	link = { vic3 = xC266CF hoi4 = 13401 } # STATE_ACEH -> land
+	link = { vic3 = x07B7F0 hoi4 = 13399 } # Meulaboh [wood] -> land
+	link = { vic3 = x0DDF49 hoi4 = 12488 } # STATE_ACEH -> Lhok Bengkuang
 	link = { comment = "* * STATE_WESTERN_NEW_GUINEA " }
 	link = { vic3 = xA5F7BC vic3 = xCD7250 hoi4 = 1546 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Nabire
 	link = { vic3 = x5541DA vic3 = x95939C hoi4 = 1602 } # STATE_WESTERN_NEW_GUINEA, STATE_WESTERN_NEW_GUINEA -> Sokanggo
@@ -7337,7 +7345,8 @@
 	link = { comment = "* * STATE_MOLUCCAS " }
 	link = { vic3 = x22A870 vic3 = xD02FE9 hoi4 = 1419 } # STATE_MOLUCCAS, STATE_MOLUCCAS -> Gamsungi
 	link = { vic3 = xC1DDAE vic3 = xAF6607 hoi4 = 1574 } # STATE_MOLUCCAS, Ambon [city] -> Ambon
-	link = { vic3 = x0D5E42 vic3 = x91B395 vic3 = xD986F1 hoi4 = 4579 } # STATE_MOLUCCAS, STATE_MOLUCCAS, Tual [wood] -> Tual
+	link = { vic3 = x91B395 vic3 = x0D5E42 hoi4 = 4579 } # STATE_MOLUCCAS, STATE_MOLUCCAS -> Tual
+	link = { vic3 = xD986F1 hoi4 = 13400 } # Tual [wood] -> land
 	link = { vic3 = xF0CE19 vic3 = xF94D86 hoi4 = 7369 } # STATE_MOLUCCAS, STATE_MOLUCCAS -> Mangon
 	link = { vic3 = xB346EB hoi4 = 7413 hoi4 = 10141 } # Tidore [port][mine] -> Ternate, Soagimalaha
 	link = { vic3 = xD3A69B vic3 = xF88172 hoi4 = 7557 } # Kayeli [farm], STATE_MOLUCCAS -> Namlea
@@ -7422,15 +7431,17 @@
 	link = { vic3 = x3CCE91 hoi4 = 1326 hoi4 = 12190 } # Dili [wood] -> Viqueque, Dili
 	link = { vic3 = x5F978F hoi4 = 1339 hoi4 = 4358 hoi4 = 12206 } # STATE_SUNDA_ISLANDS -> Manumutin, Karang Sirih, Oecusse
 	link = { vic3 = x699245 vic3 = xCF8A98 hoi4 = 1355 } # STATE_SUNDA_ISLANDS, Kupang [city] -> Koepang
-	link = { vic3 = x5ABA94 hoi4 = 4273 } # Denpasar [port] -> Denpasar
-	link = { vic3 = x7D205E vic3 = xE90740 hoi4 = 10219 } # STATE_SUNDA_ISLANDS, STATE_SUNDA_ISLANDS -> Kalabahi
-	link = { vic3 = x929145 hoi4 = 12151 } # STATE_SUNDA_ISLANDS -> Sarotai
+	link = { vic3 = x5ABA94 hoi4 = 4273 hoi4 = 13385 hoi4 = 13386 } # Denpasar [port] -> Denpasar, land, land
+	link = { vic3 = xE90740 hoi4 = 13394 } # STATE_SUNDA_ISLANDS -> land
+	link = { vic3 = x7D205E hoi4 = 10219 } # STATE_SUNDA_ISLANDS -> Kalabahi
+	link = { vic3 = x929145 hoi4 = 12151 hoi4 = 13393 } # STATE_SUNDA_ISLANDS -> Sarotai, land
 	link = { vic3 = x4EE71E hoi4 = 12178 } # STATE_SUNDA_ISLANDS -> Baucau
-	link = { vic3 = x28EC3F vic3 = x4CFCE1 hoi4 = 12219 } # STATE_SUNDA_ISLANDS, STATE_SUNDA_ISLANDS -> land
-	link = { vic3 = x108090 hoi4 = 12234 } # STATE_SUNDA_ISLANDS -> Kambajawa
+	link = { vic3 = x28EC3F hoi4 = 12219 } # STATE_SUNDA_ISLANDS -> land
+	link = { vic3 = x4CFCE1 hoi4 = 12234 } # STATE_SUNDA_ISLANDS -> Kambajawa
+	link = { vic3 = x108090 hoi4 = 13392 } # STATE_SUNDA_ISLANDS -> land
 	link = { vic3 = x7F4592 hoi4 = 13001 } # STATE_SUNDA_ISLANDS -> Liquiçá
-	link = { vic3 = x900090 hoi4 = 12162 hoi4 = 10191 } # Bima [mine] -> Bima, Sumbawa Besar
-	link = { vic3 = x100090 hoi4 = 7293 } # Mataram [farm] -> Mataram
+	link = { vic3 = x900090 hoi4 = 12162 hoi4 = 10191 hoi4 = 13388 hoi4 = 13389 hoi4 = 13390 hoi4 = 13391 } # Bima [mine] -> Bima, Sumbawa Besar, land, land, land, land
+	link = { vic3 = x100090 hoi4 = 7293 hoi4 = 13387 } # Mataram [farm] -> Mataram, land
 	link = { comment = "* * STATE_MINDANAO " }
 	link = { vic3 = x988CCA hoi4 = 10328 hoi4 = 1407 } # STATE_MINDANAO -> Baganga, Nabunturan
 	link = { vic3 = xAA1CA3 hoi4 = 4266 } # STATE_MINDANAO -> General Santos
@@ -7526,10 +7537,10 @@
 	link = { vic3 = xA000B0 vic3 = x54BB3D vic3 = x2C2E13 vic3 = x7D7D62 vic3 = x42432A vic3 = x718885 vic3 = x728871 vic3 = x2A4340 vic3 = xDBAE9F vic3 = x887771 vic3 = xF1DBF3 hoi4 = 12148 } # Pouheva [port][farm], Hao [city], STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI -> Pape'ete
 	link = { vic3 = x643424 vic3 = x5E2464 vic3 = x98C69C vic3 = xC6B798 vic3 = xBA6E55 vic3 = x98C3C6 vic3 = x59885E vic3 = x888659 vic3 = x998293 vic3 = xCBC996 vic3 = x0181B0 hoi4 = 10188 } # STATE_TAHITI, STATE_TAHITI, Fakarava [mine], STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, STATE_TAHITI, Rangiroa [wood] -> Uturoa
 	link = { comment = "* * STATE_TONGA " }
-	link = { vic3 = x208030 hoi4 = 7290 hoi4 = 13080 hoi4 = 13050 } # Nuku’alofa [city] -> Apia, Pago Pago, Kanton
-	link = { vic3 = xD98CDA hoi4 = 13048 } # STATE_TONGA -> Teraina
-	link = { vic3 = xC00010 hoi4 = 13049 } # Apia [wood][farm] -> Tabuaeran
-	link = { vic3 = xA7F8A1 hoi4 = 13053 } # Tafuna [port][mine] -> Kiritimati
+	link = { vic3 = xA7F8A1 hoi4 = 13080 } # Tafuna [port][mine] -> Pago Pago
+	link = { vic3 = xD98CDA hoi4 = 13412 } # STATE_TONGA -> land
+	link = { vic3 = xC00010 hoi4 = 7290 } # Apia [wood][farm] -> Apia
+	link = { vic3 = x208030 hoi4 = 13053 hoi4 = 13049 hoi4 = 13048 hoi4 = 13050 } # Nuku’alofa [city] -> Kiritimati, Tabuaeran, Teraina, Kanton
 	link = { comment = "* " }
 	link = { comment = "* **********" }
 	link = { comment = "australasia" }
