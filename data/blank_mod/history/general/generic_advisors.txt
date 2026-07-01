@@ -168,7 +168,7 @@ every_possible_country = {
 			traits = { navy_anti_submarine_2 }
 			cost = 100
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_navy_anti_submarine }
 		}
 	}

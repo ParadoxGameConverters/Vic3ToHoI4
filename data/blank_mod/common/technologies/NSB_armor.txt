@@ -1486,12 +1486,12 @@ technologies = {
 			jungle = {
 				attack = 0.05
 			}
-			urban = {
-				attack = 0.05
-			}
-			fort = {
-				attack = 0.05
-			}
+			#urban = {
+			#	attack = 0.05
+			#}
+			#fort = {
+			#	attack = 0.05
+			#}
 		}
 
 		medium_flame_tank = {
@@ -1504,12 +1504,12 @@ technologies = {
 			jungle = {
 				attack = 0.05
 			}
-			urban = {
-				attack = 0.05
-			}
-			fort = {
-				attack = 0.05
-			}
+			#urban = {
+			#	attack = 0.05
+			#}
+			#fort = {
+			#	attack = 0.05
+			#}
 		}
 
 		heavy_flame_tank = {
@@ -1522,12 +1522,12 @@ technologies = {
 			jungle = {
 				attack = 0.05
 			}
-			urban = {
-				attack = 0.05
-			}
-			fort = {
-				attack = 0.05
-			}
+			#urban = {
+			#	attack = 0.05
+			#}
+			#fort = {
+			#	attack = 0.05
+			#}
 		}
 
 		show_effect_as_desc = yes

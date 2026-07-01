@@ -7,6 +7,7 @@ try_build_civ_in_core_otherwise_build_in_controlled = {
                 size > 0 # use < or >
                 include_locked = yes
             }
+            impassable = no
             is_controlled_by = ROOT
         }
         add_extra_state_shared_building_slots = 1
@@ -31,7 +32,8 @@ try_build_civ_in_core_otherwise_build_in_controlled = {
                     building = industrial_complex
                     size > 0 # use < or >
                     include_locked = yes
-                } 
+                }
+                impassable = no
             }
             add_extra_state_shared_building_slots = 1
             add_building_construction = {
@@ -62,6 +64,7 @@ try_build_dockyard_in_core_otherwise_build_in_controlled = {
                 size > 0 # use < or >
                 include_locked = yes
             }
+            impassable = no
             is_coastal = yes
             is_controlled_by = ROOT
         }
@@ -88,7 +91,8 @@ try_build_dockyard_in_core_otherwise_build_in_controlled = {
                     building = dockyard
                     size > 0 # use < or >
                     include_locked = yes
-                } 
+                }
+                impassable = no
             }
             add_extra_state_shared_building_slots = 1
             add_building_construction = {
@@ -118,6 +122,7 @@ try_build_infra_in_core_otherwise_build_in_controlled = {
         limit = {
             infrastructure < 5
             is_controlled_by = ROOT
+            impassable = no
         }
         add_building_construction = {
              type = infrastructure
@@ -137,6 +142,7 @@ try_build_infra_in_core_otherwise_build_in_controlled = {
         random_controlled_state = {
             limit = {
                 infrastructure < 5
+                impassable = no
             }
             add_building_construction = {
                  type = infrastructure
@@ -166,6 +172,7 @@ try_build_mil_in_core_otherwise_build_in_controlled = {
                 include_locked = yes
             }
             is_controlled_by = ROOT
+            impassable = no
         }
         add_extra_state_shared_building_slots = 1
         add_building_construction = {
@@ -190,6 +197,7 @@ try_build_mil_in_core_otherwise_build_in_controlled = {
                     size > 0 # use < or >
                     include_locked = yes
                 } 
+                impassable = no
             }
             add_extra_state_shared_building_slots = 1
             add_building_construction = {
@@ -259,22 +267,25 @@ calculate_famine_black_market ={
 }
 
 upgrade_ordance_factories_no_aat = {
+    
+
     if = {
         limit = {
-            check_variable = { RAJ.khadi_level = 3 }
+            check_variable = { global.khadi_level = 3 }
         }
         try_build_mil_in_core_otherwise_build_in_controlled = yes
     }
 
-    add_to_variable = { RAJ.khadi_level = 1 }
+    add_to_variable = { global.khadi_level = 1 }
 
 }
 
 upgrade_ordance_factories_art_no_aat = {
     
+
     if = {
         limit = {
-            check_variable = { RAJ.gun_and_shell_level = 3 }
+            check_variable = { global.gun_and_shell_level = 3 }
         }
         add_tech_bonus = {
             bonus = 0.5
@@ -284,7 +295,7 @@ upgrade_ordance_factories_art_no_aat = {
         }
     }
 
-    add_to_variable = { RAJ.gun_and_shell_level = 1 }
+    add_to_variable = { global.gun_and_shell_level = 1 }
 
 }
 

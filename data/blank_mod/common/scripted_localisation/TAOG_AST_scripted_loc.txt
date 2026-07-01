@@ -1,0 +1,795 @@
+# Allows you to create your own dynamic keys
+# to be called in localization.
+# defined_text -> this is it, we're defining the text
+# text -> a discrete entry that can be picked to display in loc.
+# trigger -> determines if a text entry will be picked or not.
+# (The triggers need to be valid for the scope the key is called in
+# (eg Root or From.From).)
+# localization_key -> points to the localization key
+# that'll be used if trigger passes
+
+defined_text = {
+	name = AST_GET_ELECTION_WINNER_LEADER_TEXT
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_ruling_party
+				value = 0
+				compare = equals
+			}
+		}
+		localization_key = "AST_uap_candidate_text"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_ruling_party
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = "AST_alp_candidate_text"
+	}
+}
+
+defined_text = {
+	name = AST_GET_ALP_LEADER_TEXT
+	text = {
+		trigger = {
+			has_country_flag = ben_chifley_leads_alp
+		}
+		localization_key = "[ROOT.AST_ben_chifley.GetName]"
+	}
+	text = {
+		localization_key = "[ROOT.AST_john_curtin.GetName]"
+	}
+}
+
+defined_text = {
+	name = AST_GET_UAP_LEADER_TEXT
+	text = {
+		trigger = {
+			has_country_flag = billy_hughes_leads_uap
+		}
+		localization_key = "[ROOT.AST_billy_hughes.GetName]"
+	}
+	text = {
+		localization_key = "[ROOT.AST_robert_menzies.GetName]"
+	}
+}
+
+defined_text = {
+	name = AST_GET_GOVERNMENT_FORMATION_PERIOD_TITLE
+	text = {
+		trigger = {
+			has_country_flag = AST_election_recently_concluded
+		}
+		localization_key = "AST_government_formation_period_title"
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = AST_GET_GOVERNMENT_FORMATION_PERIOD_TIMER
+	text = {
+		trigger = {
+			has_country_flag = AST_election_recently_concluded
+		}
+		localization_key = "AST_government_formation_period_timer"
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = AST_GET_CONFIRMED_WINNING_PARTY
+	text = {
+		trigger = {
+			has_country_flag = AST_election_recently_concluded
+			check_variable = {
+				var = AST_ruling_party
+				value = 0
+				compare = equals
+			}
+		}
+		localization_key = "AST_uap_confirmed_election_winner_text"
+	}
+	text = {
+		trigger = {
+			has_country_flag = AST_election_recently_concluded
+			check_variable = {
+				var = AST_ruling_party
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = "AST_alp_confirmed_election_winner_text"
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = GET_AST_UAP_RULING
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_ruling_party
+				value = 0 #UAP
+				compare = equals
+			}
+		}
+		localization_key = AST_ruling_party
+	}
+	text = {
+		localization_key = AST_non_ruling_party
+	}
+}
+
+defined_text = {
+	name = GET_AST_ALP_RULING
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_ruling_party
+				value = 1 #ALP
+				compare = equals
+			}
+		}
+		localization_key = AST_ruling_party
+	}
+	text = {
+		localization_key = AST_non_ruling_party
+	}
+}
+
+defined_text = {
+	name = GET_AST_UAP_CLUSTER_UNLOCK
+	text = {
+		trigger = {
+	        check_variable = { #Check if there are more UAP clusters to unlock
+	            var = AST_uap_election_win_count
+	            value = 3
+	            compare = less_than
+	        }
+		}
+		localization_key = AST_uap_cluster_unlock
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = GET_AST_ALP_CLUSTER_UNLOCK
+	text = {
+		trigger = {
+	        check_variable = { #Check if there are more UAP clusters to unlock
+	            var = AST_alp_election_win_count
+	            value = 3
+	            compare = less_than
+	        }
+		}
+		localization_key = AST_alp_cluster_unlock
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = GET_AST_15_NATUNITY
+	text = {
+		trigger = {
+			OR = { 
+                AND = {
+	                check_variable = { #Check if UAP won election
+	                    var = AST_ruling_party
+	                    value = 0 #UAP
+	                    compare = equals
+	                }
+	                check_variable = { #Check if there are more ALP clusters to unlock
+	                    var = AST_alp_election_win_count
+	                    value = 3
+	                    compare = less_than
+	                }
+           		}
+                AND = {
+                    check_variable = { #Check if ALP won election
+                        var = AST_ruling_party
+                        value = 1 #ALP
+                        compare = equals
+                    }
+                    check_variable = { #Check if there are more UAP clusters to unlock
+                        var = AST_UAP_election_win_count
+                        value = 3
+                        compare = less_than
+                    }
+                }
+            }
+		}
+		localization_key = AST_15_natunity
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+
+
+defined_text = {
+	name = AST_GET_UAP_CAMPAIGN_POL_POWER_COST
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_campaigning_for_party
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = "1"
+	}
+	text = {
+		localization_key = ""
+	}
+}
+defined_text = {
+	name = AST_GET_ALP_CAMPAIGN_POL_POWER_COST
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_campaigning_for_party
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = "1"
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+### Cabinet Trust GUI sprites ###
+defined_text = {
+	name = GET_CABINET_TRUST_STATE_1
+	text = {
+		trigger = {
+			check_variable = {
+			var = AST_cabinet_trust_state
+			value = 1
+			compare = equals
+			}
+		}
+		localization_key = "GFX_idea_AST_cabinet_trust1"  
+	}
+	text = {
+		localization_key = "GFX_idea_AST_cabinet_trust1_black"  
+	}
+}
+
+defined_text = {
+	name = GET_CABINET_TRUST_STATE_2
+	text = {
+		trigger = {
+			check_variable = {
+			var = AST_cabinet_trust_state
+			value = 2
+			compare = equals
+			}
+		}
+		localization_key = "GFX_idea_AST_cabinet_trust2" 
+	}
+	text = {
+		localization_key = "GFX_idea_AST_cabinet_trust2_black" 
+	}
+}
+
+defined_text = {
+	name = GET_CABINET_TRUST_STATE_3
+	text = {
+		trigger = {
+			check_variable = {
+			var = AST_cabinet_trust_state
+			value = 3
+			compare = equals
+			}
+		}
+		localization_key = "GFX_idea_AST_cabinet_trust3"
+	}
+	text = {
+		localization_key = "GFX_idea_AST_cabinet_trust3_black"
+	}
+}
+
+defined_text = {
+	name = GET_CABINET_TRUST_STATE_4
+	text = {
+		trigger = {
+			check_variable = {
+			var = AST_cabinet_trust_state
+			value = 4
+			compare = equals
+			}
+		}
+		localization_key = "GFX_idea_AST_cabinet_trust4" 
+	}
+	text = {
+		localization_key = "GFX_idea_AST_cabinet_trust4_black"
+	}
+}
+
+defined_text = {
+	name = GET_CABINET_TRUST_STATE_5
+	text = {
+		trigger = {
+			check_variable = {
+			var = AST_cabinet_trust_state
+			value = 5
+			compare = equals
+			}
+		}
+		localization_key = "GFX_idea_AST_cabinet_trust5"
+	}
+	text = {
+		localization_key = "GFX_idea_AST_cabinet_trust5_black"
+	}
+}
+
+#Not showing fake idea effects in Cabinet Trust gui window, if mission has been completed and actual ideas have been removed = {
+	defined_text = {
+		name = GET_AST_CABINET_TRUST_EFFECTS_1
+		text = {
+			trigger = {
+				has_country_flag = AST_canberra_air_disaster_flag
+			}
+			localization_key = AST_cabinet_trust_state_1_tt
+		}
+		text = {
+			localization_key = "" 
+		}
+	}
+
+	defined_text = {
+		name = GET_AST_CABINET_TRUST_EFFECTS_2
+		text = {
+			trigger = {
+				has_country_flag = AST_canberra_air_disaster_flag
+			}
+			localization_key = AST_cabinet_trust_state_2_tt
+		}
+		text = {
+			localization_key = "" 
+		}
+	}
+
+	defined_text = {
+		name = GET_AST_CABINET_TRUST_EFFECTS_3
+		text = {
+			trigger = {
+				has_country_flag = AST_canberra_air_disaster_flag
+			}
+			localization_key = AST_cabinet_trust_state_3_tt
+		}
+		text = {
+			localization_key = "" 
+		}
+	}
+
+	defined_text = {
+		name = GET_AST_CABINET_TRUST_EFFECTS_4
+		text = {
+			trigger = {
+				has_country_flag = AST_canberra_air_disaster_flag
+			}
+			localization_key = AST_cabinet_trust_state_4_tt
+		}
+		text = {
+			localization_key = "" 
+		}
+	}
+
+	defined_text = {
+		name = GET_AST_CABINET_TRUST_EFFECTS_5
+		text = {
+			trigger = {
+				has_country_flag = AST_canberra_air_disaster_flag
+			}
+			localization_key = "AST_cabinet_trust_state_5_tt"
+		}
+		text = {
+			localization_key = "" 
+		}
+	}
+#}
+
+defined_text = {
+	name = GET_AST_RULING_PARTY
+	text = {
+		trigger = {
+			check_variable = { #UAP Ruling
+				var = AST_ruling_party
+				value = 0
+				compare = equals
+			}
+		}
+		localization_key = AST_ruling_party_uap
+	}
+	text = {
+		trigger = {
+			check_variable = { #ALP Ruling
+				var = AST_ruling_party
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = AST_ruling_party_alp
+	}
+}
+
+defined_text = {
+	name = GET_AST_NON_RULING_PARTY
+	text = {
+		trigger = {
+			check_variable = { #UAP Ruling
+				var = AST_ruling_party
+				value = 0
+				compare = equals
+			}
+		}
+		localization_key = AST_non_ruling_party_alp
+	}
+	text = {
+		trigger = {
+			check_variable = { #ALP Ruling
+				var = AST_ruling_party
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = AST_non_ruling_party_uap
+	}
+}
+
+defined_text = { #Democratic Votes TT
+	name = GET_AST_EXPECTED_WINNER
+	text = {
+		trigger = {
+			OR = {
+                check_variable = {
+                    var = AST_uap_votes_var
+                    value = AST_alp_votes_var
+                    compare = greater_than
+                }
+                AND = {
+                    check_variable = {
+                        var = AST_uap_votes_var
+                        value = AST_alp_votes_var
+                        compare = greater_than_or_equals
+                    }
+                    check_variable = {
+                        var = AST_ruling_party
+                        value = 0
+                        compare = equals
+                    }
+                }
+                AND = {
+                    has_country_flag = AST_election_recently_concluded
+                    check_variable = {
+                        var = AST_ruling_party
+                        value = 0
+                        compare = equals
+                    }
+                }
+            }
+		}
+		localization_key = AST_uap
+	}
+	text = {
+		trigger = {
+			OR = {
+                check_variable = {
+                    var = AST_alp_votes_var
+                    value = AST_uap_votes_var
+                    compare = greater_than
+                }
+                AND = {
+                    check_variable = {
+                        var = AST_alp_votes_var
+                        value = AST_uap_votes_var
+                        compare = greater_than_or_equals
+                    }
+                    check_variable = {
+                        var = AST_ruling_party
+                        value = 1
+                        compare = equals
+                    }
+                }
+                AND = {
+                    has_country_flag = AST_election_recently_concluded
+                    check_variable = {
+                    	var = AST_ruling_party
+                        value = 1
+                        compare = equals
+                    }
+                }
+            }
+        }
+        localization_key = AST_alp
+	}
+}
+
+defined_text = { #Democratic Votes TT
+	name = GET_AST_UAP_DISCOUNT
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_uap_votes_var
+				value = 70
+				compare = greater_than
+			}
+		}
+		localization_key = AST_uap_70_discount
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_uap_votes_var
+				value = 50
+				compare = greater_than
+			}
+		}
+		localization_key = AST_uap_50_discount
+	}
+	text = {
+		localization_key = AST_uap_discount
+	}
+}
+
+defined_text = { #Democratic Votes TT
+	name = GET_AST_ALP_DISCOUNT
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_alp_votes_var
+				value = 70
+				compare = greater_than
+			}
+		}
+		localization_key = AST_alp_70_discount
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_alp_votes_var
+				value = 50
+				compare = greater_than
+			}
+		}
+		localization_key = AST_alp_50_discount
+	}
+	text = {
+		localization_key = AST_alp_discount
+	}
+}
+
+defined_text = { #Democratic Votes TT
+	name = GET_AST_UAP_PARTY_CAMPAIGN
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_campaigning_for_party
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = AST_party_campaign
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = { #Democratic Votes TT
+	name = GET_AST_ALP_PARTY_CAMPAIGN
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_campaigning_for_party
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = AST_party_campaign
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = { #Democratic Votes TT
+	name = GET_LABOR_CAMPAIGN_TOUR
+	text = {
+		trigger = {
+			has_country_flag = AST_labor_campaign_tour_flag
+		}
+		localization_key = AST_labor_campaign_tour_votes
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = { #Democratic Votes TT
+	name = GET_AST_COUNTRY_PARTY_SUPPORT_UAP
+	text = {
+		trigger = {
+			has_idea = AST_country_party_influence_uap
+		}
+		localization_key = AST_country_party_support_uap
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = { #Democratic Votes TT
+	name = GET_AST_COUNTRY_PARTY_SUPPORT_ALP
+	text = {
+		trigger = {
+			has_idea = AST_country_party_influence_alp
+		}
+		localization_key = AST_country_party_support_alp
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = { #Democratic Votes TT
+	name = GET_UAP_VOTES_DAILY_IMPACT
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_uap_votes_daily_var
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = AST_uap_increase_votes_daily_impact
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_uap_votes_daily_var
+				value = 0
+				compare = less_than
+			}
+		}
+		localization_key = AST_uap_decrease_votes_daily_impact
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = { #Democratic Votes TT
+	name = GET_ALP_VOTES_DAILY_IMPACT
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_alp_votes_daily_var
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = AST_alp_increase_votes_daily_impact
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = AST_alp_votes_daily_var 
+				value = 0
+				compare = less_than
+			}
+		}
+		localization_key = AST_alp_decrease_votes_daily_impact
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+
+
+defined_text ={
+	name = CONSCRIPTION_LAW_SO_FAR
+	text = {
+		trigger = {
+			check_variable = { 
+				var = AST_conscription_level_allowed 
+				value = 0 
+				compare = equals
+			}
+		}
+		localization_key = AST_conscription_level_allowed_limited_conscription_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = AST_conscription_level_allowed  
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = AST_conscription_level_allowed_extensive_conscription_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = AST_conscription_level_allowed 
+				value = 2 
+				compare = equals
+			}
+		}
+		localization_key = AST_conscription_level_allowed_service_by_requirement_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = AST_conscription_level_allowed 
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = AST_conscription_level_allowed_all_adults_serve_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = AST_conscription_level_allowed 
+				value = 4	
+				compare = equals
+			}
+		}
+		localization_key = AST_conscription_level_allowed_scraping_the_barrel_tt
+	}
+	text = {
+		localization_key = AST_conscription_level_allowed_scraping_the_barrel_tt
+	}
+}
+
+defined_text = {
+	name = GET_AERODOME_NAME
+	text = {
+		trigger = {
+			owner = {
+				has_government = communism
+			}
+		}
+		localization_key = "AST_aerodrome_of_democracy_communism"
+	}
+	text = {
+		trigger = {
+			owner = {
+				has_government = fascism
+			}
+		}
+		localization_key = "AST_aerodrome_of_democracy_neutrality"
+	}
+	text = {
+		trigger = {
+			owner = {
+				has_government = neutrality
+			}
+		}
+		localization_key = "AST_aerodrome_of_democracy_fascism"
+	}
+	text = {
+		localization_key = "AST_aerodrome_of_democracy_democracy"
+	}
+}

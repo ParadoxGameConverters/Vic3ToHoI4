@@ -615,7 +615,11 @@ on_actions = {
 					trait = sick
 					days = 30
 				}
-				unit_leader_event = { id = generic.17 }
+				set_unit_leader_flag = {
+					flag = recently_sick
+					value = 1
+					days = 180
+				}
 			}
 		}
 	}
@@ -636,7 +640,6 @@ on_actions = {
 					trait = wounded
 					days = 90
 				}
-				unit_leader_event = { id = generic.18 }
 			}
 		}
 	}
@@ -657,7 +660,6 @@ on_actions = {
 					trait = wounded
 					days = 90
 				}
-				unit_leader_event = { id = generic.18 }
 			}
 		}
 	}
@@ -667,6 +669,28 @@ on_actions = {
 			add_timed_unit_leader_trait = {
 				trait = recently_promoted
 				days = 100
+			}
+		}
+	}
+
+	on_deployed_leader_defeated = {
+		effect = {
+			if = {
+				limit = { can_be_captured = yes }
+				# TODO TAOG: a percentage chance to be captured? Other effects otherwise?
+
+
+				capture_by = FROM
+			}
+			else = {
+				# uncapturable leaders (e.g. country leaders) get wounded instead
+				if = {
+					limit = { NOT = { has_trait = wounded } }
+					add_timed_unit_leader_trait = {
+						trait = wounded
+						days = 90
+					}
+				}
 			}
 		}
 	}
@@ -684,7 +708,11 @@ on_actions = {
 							 size > 0
 							 state = PREV
 						}
-						 has_tech = marines_commandos_demolition 
+						has_mastery_level = {
+							amount = 3
+						 	sub_doctrine = marines_1
+						 	#has_tech = marines_commandos_demolition - old equivalent
+						} 
 					}
 					NOT = { has_state_flag = marines_commando_effect }
 					OWNER = { NOT = { tag = ROOT } }
@@ -719,18 +747,25 @@ on_actions = {
 
 	on_unit_leader_promote_from_ranks_veteran = { #Unit leader scope, FROM is unit
 		effect = {
-			FROM = {
-				add_random_valid_trait_from_unit = {
-					character = ROOT
+			if = {
+				limit = {
+					is_navy_leader = yes
+					OWNER = { is_ai = no }
 				}
+				OWNER = { set_country_flag = achievement_navy_promoted_from_ranks }
 			}
-			set_unit_leader_flag = field_promotion_achievement
 		}
 	}
 
 	on_unit_leader_promote_from_ranks_green = { #Unit leader scope, FROM is unit
 		effect = {
-			set_unit_leader_flag = field_promotion_achievement
+			if = {
+				limit = {
+					is_navy_leader = yes
+					OWNER = { is_ai = no }
+				}
+				OWNER = { set_country_flag = achievement_navy_promoted_from_ranks }
+			}
 		}
 	}
 
@@ -750,7 +785,13 @@ on_actions = {
 		effect = {
 			if = {
 				limit = { 
-					FROM = { has_tech = paras_dispersed_drop } 
+					FROM = { 
+						has_mastery_level = {
+							amount = 1
+							sub_doctrine = paratroopers_1
+						}
+						#has_tech = paras_dispersed_drop - old equivalent
+					} 
 					NOT = { 
 						has_state_flag = {
 						    flag = para_drop_effect
@@ -763,7 +804,13 @@ on_actions = {
 			}
 			if = {
 				limit = { 
-					FROM = { has_tech = paras_combat_drop } 
+					FROM = { 
+						has_mastery_level = {
+							amount = 1
+							sub_doctrine = paratroopers_2
+						}
+						#has_tech = paras_combat_drop  - old equivalent
+					} 
 					NOT = { 
 						has_state_flag = {
 						    flag = para_drop_effect
