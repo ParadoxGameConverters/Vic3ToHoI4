@@ -4,14 +4,15 @@ StrikeForce_1 = {
 	}
 	ai_will_do = {
 		factor = 1
-	}	
+	}
+	keep_updated = yes
 	mission = { naval_strike }
 	min_composition = {
-		destroyer = {
-			amount = 6
+		light_cruiser = {
+			amount = 2
 		}
 	}
-	
+
 	optimal_composition = {
 		carrier = {
 			amount = 2
@@ -19,14 +20,17 @@ StrikeForce_1 = {
 		battleship = {
 			amount = 3
 		}
+		battle_cruiser = {
+			amount = 3
+		}
 		heavy_cruiser = {
 			amount = 3
 		}
 		light_cruiser = {
-			amount = 3
+			amount = 4
 		}
 		destroyer = {
-			amount = 18
+			amount = 12
 		}
 	}
 }
@@ -44,8 +48,14 @@ PatrolReconForce_1 = {
 		}
 	}	
 	optimal_composition = {
+		heavy_cruiser = {
+			amount = 1
+		}
 		light_cruiser = {
-			amount = 2
+			amount = 3
+		}
+		destroyer = {
+			amount = 4
 		}
 	}
 }
@@ -101,7 +111,8 @@ ConvoyRaiding_1 = {
 	}
 	ai_will_do = {
 		factor = 1
-	}	
+	}
+	keep_updated = yes
 	mission = { convoy_raiding }
 	min_composition = {
 		submarine = {
@@ -111,7 +122,7 @@ ConvoyRaiding_1 = {
 
 	optimal_composition = {
 		submarine = {
-			amount = 12
+			amount = 8
 		}
 	}
 }
@@ -122,6 +133,7 @@ ConvoySurfaceRaiding_1 = {
 	ai_will_do = {
 		factor = 1
 	}
+	keep_updated = yes
 	mission = { convoy_raiding }
 	min_composition = {
 		battle_cruiser = {
@@ -151,7 +163,7 @@ ConvoyEscort_1 = {
 	
 	optimal_composition = {
 		destroyer = {
-			amount = 10
+			amount = 8
 		}
 	}
 }

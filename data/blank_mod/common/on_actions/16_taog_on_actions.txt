@@ -1,0 +1,101 @@
+ on_actions = {
+
+	on_offer_join_faction = {
+
+		effect = {	#Add to Cominwealth research
+			FROM = {
+				if = {
+					limit = {
+						any_other_country = {
+							is_in_faction_with = FROM
+							is_in_tech_sharing_group = cominwealth_allied_research
+						}
+					}
+					add_to_tech_sharing_group = cominwealth_allied_research
+				}
+			}
+		}
+
+	}
+
+	#FROM is faction leader, ROOT and THIS are the country that joins. 	
+	on_join_faction = {
+
+		effect = {			#Add to Cominwealth research
+			if = {
+				limit = {
+					any_other_country = {
+						is_in_faction_with = ROOT
+						is_in_tech_sharing_group = cominwealth_allied_research
+					}
+				}
+				add_to_tech_sharing_group = cominwealth_allied_research
+			}
+		}
+
+	}
+
+	#FROM - Country (owner)
+	#ROOT - leader
+	#FROMFROM - original owner for exiled leaders
+
+	on_unit_leader_level_up = {
+		effect = {
+			if = { 
+				limit = { 
+					FROM = { 
+						has_country_flag = upgrade_leader_extra_on_level_up #set country flag to trigger this
+					} 
+				}
+
+				FROM = {
+					if = {
+						limit = {
+							check_variable = { extra_stat_on_unit_leader_level_up_override^num > 0 }
+						}
+						#Array that can be used to override the chances of individual stats being picked on leveling up. 
+						# index 0 = attack chance
+						# index 1 = defense chance
+						# index 2 = planning chance
+						# index 3 = logistics chance
+
+						# Example: 
+						# set_variable = { extra_stat_on_unit_leader_level_up_override^0 = 0.10 }
+						# set_variable = { extra_stat_on_unit_leader_level_up_override^1 = 0.20 }
+						# set_variable = { extra_stat_on_unit_leader_level_up_override^2 = 0.30 }
+						# set_variable = { extra_stat_on_unit_leader_level_up_override^3 = 0.40 }
+						# Chance is now 10% for attack, 20% for defense, 30% for planning, 40% for logistics. If no value is set for an index id defaults to 0. If the array doesn't exist everything defaults to 25% per stat
+						character = { 
+							if = { 
+								limit = { is_army_leader = yes }
+							
+								random_list = { 
+									var:extra_stat_on_unit_leader_level_up_override^0 = { add_attack = 1 } 
+									var:extra_stat_on_unit_leader_level_up_override^1 = { add_defense = 1 } 
+									var:extra_stat_on_unit_leader_level_up_override^2 = { add_planning  = 1 } 
+									var:extra_stat_on_unit_leader_level_up_override^3 = { add_logistics  = 1 } 
+								} 
+							}
+						}
+					}
+					else = {
+						#if nothing is set use equal weight (25% per)
+						character = { 
+							if = { 
+								limit = { is_army_leader = yes }
+								
+								random_list = { 
+									1 = { add_attack = 1 } 
+									1 = { add_defense = 1 } 
+									1 = { add_planning  = 1 } 
+									1 = { add_logistics  = 1 } 
+								} 
+							}
+						}
+					}
+				}
+			}
+		}  
+	}
+
+}

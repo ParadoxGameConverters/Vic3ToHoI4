@@ -341,4 +341,19 @@ default = {
 			}
 		}
 	}
+
+	#####################
+	## TRANSPORT PLANE ##
+	#####################
+
+	transport_plane_equipment = {
+		pool = {
+			weight = 0.1
+			icons = {
+			}
+			models = {
+				heavy_plane_entity
+			}
+		}
+	}
 }

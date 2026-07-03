@@ -1,0 +1,425 @@
+# Allows you to create your own dynamic keys
+# to be called in localization.
+# defined_text -> this is it, we're defining the text
+# text -> a discrete entry that can be picked to display in loc.
+# trigger -> determines if a text entry will be picked or not.
+# (The triggers need to be valid for the scope the key is called in
+# (eg Root or From.From).)
+# localization_key -> points to the localization key
+# that'll be used if trigger passes
+
+defined_text = {
+	name = SIA_GetPropagandaCampaignEffects_Left
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_left_icon_frame = constant:propaganda.SIA.propaganda_locked_slot_index }
+		}
+		localization_key = SIA_propaganda_campaign_locked_slot_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_left_icon_frame = 2 }
+		}
+		localization_key = SIA_blood_of_suphan
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_left_icon_frame = 3 }
+		}
+		localization_key = SIA_thai_soldiers_blood
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_left_icon_frame = 4 }
+		}
+		localization_key = SIA_undauntedly_love_nation
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_left_icon_frame = 5 }
+		}
+		localization_key = SIA_the_king_of_krung_thon
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_left_icon_frame = 6 }
+		}
+		localization_key = SIA_the_revolution_of_24th_june
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_left_icon_frame = 7 }
+		}
+		localization_key = SIA_celebrating_the_constitution
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_left_icon_frame = 8 }
+		}
+		localization_key = SIA_suppressing_the_rebellion_of_1933
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_left_icon_frame = constant:propaganda.SIA.propaganda_empty_slot_index }
+		}
+		localization_key = SIA_propaganda_campaign_empty_slot_tt
+	}
+}
+
+defined_text = {
+	name = SIA_GetPropagandaCampaignEffects_Center
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_center_icon_frame = constant:propaganda.SIA.propaganda_locked_slot_index }
+		}
+		localization_key = SIA_propaganda_campaign_locked_slot_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_center_icon_frame = 2 }
+		}
+		localization_key = SIA_blood_of_suphan
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_center_icon_frame = 3 }
+		}
+		localization_key = SIA_thai_soldiers_blood
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_center_icon_frame = 4 }
+		}
+		localization_key = SIA_undauntedly_love_nation
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_center_icon_frame = 5 }
+		}
+		localization_key = SIA_the_king_of_krung_thon
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_center_icon_frame = 6 }
+		}
+		localization_key = SIA_the_revolution_of_24th_june
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_center_icon_frame = 7 }
+		}
+		localization_key = SIA_celebrating_the_constitution
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_center_icon_frame = 8 }
+		}
+		localization_key = SIA_suppressing_the_rebellion_of_1933
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_center_icon_frame = constant:propaganda.SIA.propaganda_empty_slot_index }
+		}
+		localization_key = SIA_propaganda_campaign_empty_slot_tt
+	}
+}
+
+defined_text = {
+	name = SIA_GetPropagandaCampaignEffects_Right
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_right_icon_frame = constant:propaganda.SIA.propaganda_locked_slot_index }
+		}
+		localization_key = SIA_propaganda_campaign_locked_slot_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_right_icon_frame = 2 }
+		}
+		localization_key = SIA_blood_of_suphan
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_right_icon_frame = 3 }
+		}
+		localization_key = SIA_thai_soldiers_blood
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_right_icon_frame = 4 }
+		}
+		localization_key = SIA_undauntedly_love_nation
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_right_icon_frame = 5 }
+		}
+		localization_key = SIA_the_king_of_krung_thon
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_right_icon_frame = 6 }
+		}
+		localization_key = SIA_the_revolution_of_24th_june
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_right_icon_frame = 7 }
+		}
+		localization_key = SIA_celebrating_the_constitution
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_right_icon_frame = 8 }
+		}
+		localization_key = SIA_suppressing_the_rebellion_of_1933
+	}
+	text = {
+		trigger = {
+			check_variable = { SIA_poster_right_icon_frame = constant:propaganda.SIA.propaganda_empty_slot_index }
+		}
+		localization_key = SIA_propaganda_campaign_empty_slot_tt
+	}
+}
+
+defined_text = {
+	name = SIA_GetDaysRemainingLeft
+	text = {
+		trigger = {
+			OR = {
+				check_variable = { SIA_poster_left_icon_frame = 0 }
+				check_variable = { SIA_poster_left_icon_frame = constant:propaganda.SIA.propaganda_locked_slot_index }
+				check_variable = { SIA_poster_left_icon_frame = constant:propaganda.SIA.propaganda_empty_slot_index }
+			}
+		}
+		localization_key = SIA_poster_no_text
+	}
+	text = {
+		localization_key = SIA_poster_left_days_remaining_text
+	}
+}
+
+defined_text = {
+	name = SIA_GetDaysRemainingCenter
+	text = {
+		trigger = {
+			OR = {
+				check_variable = { SIA_poster_center_icon_frame = 0 }
+				check_variable = { SIA_poster_center_icon_frame = constant:propaganda.SIA.propaganda_locked_slot_index }
+				check_variable = { SIA_poster_center_icon_frame = constant:propaganda.SIA.propaganda_empty_slot_index }
+			}
+		}
+		localization_key = SIA_poster_no_text
+	}
+	text = {
+		localization_key = SIA_poster_center_days_remaining_text
+	}
+}
+
+defined_text = {
+	name = SIA_GetDaysRemainingRight
+	text = {
+		trigger = {
+			OR = {
+				check_variable = { SIA_poster_right_icon_frame = 0 }
+				check_variable = { SIA_poster_right_icon_frame = constant:propaganda.SIA.propaganda_locked_slot_index }
+				check_variable = { SIA_poster_right_icon_frame = constant:propaganda.SIA.propaganda_empty_slot_index }
+			}
+		}
+		localization_key = SIA_poster_no_text
+	}
+	text = {
+		localization_key = SIA_poster_right_days_remaining_text
+	}
+}
+
+defined_text = { #Used to change a propaganda campaign GFX, so that it looks aged.
+	name = SIA_GetPropagandaLeftSlotAge
+	text = {
+		trigger = {
+			has_country_flag = SIA_propaganda_left_slot_is_old_flag
+		}
+		localization_key = GFX_SIA_propaganda_strip_aged_1
+	}
+	text = {
+		localization_key = GFX_SIA_propaganda_strip
+	}
+}
+
+defined_text = { #Used to change a propaganda campaign GFX, so that it looks aged.
+	name = SIA_GetPropagandaCenterSlotAge
+	text = {
+		trigger = {
+			has_country_flag = SIA_propaganda_center_slot_is_old_flag
+		}
+		localization_key = GFX_SIA_propaganda_strip_aged_2
+	}
+	text = {
+		localization_key = GFX_SIA_propaganda_strip
+	}
+}
+
+defined_text = { #Used to change a propaganda campaign GFX, so that it looks aged.
+	name = SIA_GetPropagandaRightSlotAge
+	text = {
+		trigger = {
+			has_country_flag = SIA_propaganda_right_slot_is_old_flag
+		}
+		localization_key = GFX_SIA_propaganda_strip_aged_3
+	}
+	text = {
+		localization_key = GFX_SIA_propaganda_strip
+	}
+}
+
+defined_text = {
+	name = SIA_GetCivilianWingStatus
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_full_support }
+		localization_key = idea_SIA_civilian_full_support
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_slight_support }
+		localization_key = idea_SIA_civilian_slight_support
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_opposition }
+		localization_key = idea_SIA_civilian_opposition
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_rebellious }
+		localization_key = idea_SIA_civilian_rebellious
+	}
+	text = {
+		localization_key = idea_SIA_civilian_neutral
+	}
+}
+
+defined_text = {
+	name = SIA_GetMilitaryWingStatus
+	text = {
+		trigger = { has_idea = idea_SIA_military_full_support }
+		localization_key = idea_SIA_military_full_support
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_military_slight_support }
+		localization_key = idea_SIA_military_slight_support
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_military_opposition }
+		localization_key = idea_SIA_military_opposition
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_military_rebellious }
+		localization_key = idea_SIA_military_rebellious
+	}
+	text = {
+		localization_key = idea_SIA_military_neutral
+	}
+}
+
+defined_text = {
+	name = SIA_GetCivilianWingDesc
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_full_support }
+		localization_key = idea_SIA_civilian_full_support_desc
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_slight_support }
+		localization_key = idea_SIA_civilian_slight_support_desc
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_opposition }
+		localization_key = idea_SIA_civilian_opposition_desc
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_rebellious }
+		localization_key = idea_SIA_civilian_rebellious_desc
+	}
+	text = {
+		localization_key = idea_SIA_civilian_neutral_desc
+	}
+}
+
+defined_text = {
+	name = SIA_GetMilitaryWingDesc
+	text = {
+		trigger = { has_idea = idea_SIA_military_full_support }
+		localization_key = idea_SIA_military_full_support_desc
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_military_slight_support }
+		localization_key = idea_SIA_military_slight_support_desc
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_military_opposition }
+		localization_key = idea_SIA_military_opposition_desc
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_military_rebellious }
+		localization_key = idea_SIA_military_rebellious_desc
+	}
+	text = {
+		localization_key = idea_SIA_military_neutral_desc
+	}
+}
+
+defined_text = {
+	name = SIA_GetCivilianWingState
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_full_support }
+		localization_key = SIA_wing_state_full_support
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_slight_support }
+		localization_key = SIA_wing_state_slight_support
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_opposition }
+		localization_key = SIA_wing_state_opposition
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_civilian_rebellious }
+		localization_key = SIA_wing_state_rebellious
+	}
+	text = {
+		localization_key = SIA_wing_state_neutral
+	}
+}
+
+defined_text = {
+	name = SIA_GetMilitaryWingState
+	text = {
+		trigger = { has_idea = idea_SIA_military_full_support }
+		localization_key = SIA_wing_state_full_support
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_military_slight_support }
+		localization_key = SIA_wing_state_slight_support
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_military_opposition }
+		localization_key = SIA_wing_state_opposition
+	}
+	text = {
+		trigger = { has_idea = idea_SIA_military_rebellious }
+		localization_key = SIA_wing_state_rebellious
+	}
+	text = {
+		localization_key = SIA_wing_state_neutral
+	}
+}
+
+
+defined_text = {
+		name = SIA_GetLimitedWarTarget
+	text = {
+		trigger = { has_variable = var:limited_war_target }
+		localization_key = SIA_limited_war_indochina_target
+	}
+
+	text = {
+		trigger = { NOT = { has_variable = var:limited_war_target } }
+		localization_key = SIA_limited_war_indochina_no_target
+	}
+}

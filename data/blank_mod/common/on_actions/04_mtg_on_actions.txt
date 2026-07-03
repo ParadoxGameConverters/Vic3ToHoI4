@@ -1,7 +1,4 @@
 on_actions = {
-	on_new_term_election = {
-	}
-	
 	#Root is exile
 	#From is new host
 	#FromFrom is old host
@@ -86,68 +83,6 @@ on_actions = {
 			}
 			# Cleaning up anti-exploiter divisions
 			delete_unit_template_and_units = { division_template = "Anti-Exploit Punitive Brigade" }
-		}
-	}
-
-	#ROOT is winner #FROM gets annexed - This fires just before FROM gets annexed, meaning the country and everything it owns still exists. It will also fire on_annex and on_civil_war_end
-	on_civil_war_end_before_annexation = {
-		effect = {
-		}
-	}
-
-	#FROM is war target
-	on_declare_war = {
-		effect = {
-		}
-	}	
-
-	on_government_exiled = {
-		effect = {
-		}
-	}
-
-	#ROOT = nation being puppeted, FROM = overlord
-	on_puppet = {
-		effect = {
-		}
-	}
-
-	on_startup = {
-		effect = {
-		}
-	}
-
-	# ROOT is capitulated country, FROM is winner
-	on_capitulation = {
-		effect = {
-		}
-	}
-
-	#ROOT is winner #FROM is loser
-	on_peaceconference_ended = {
-		effect = {
-		}
-	}
-
-	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
-	on_state_control_changed = {
-		effect = {
-		}
-	}
-
-	on_nuke_drop = {
-		effect = {			
-		}
-	}
-
-	# FROM is the sinker, ROOT is the owner of the ship being sunk
-	on_pride_of_the_fleet_sunk = {
-		effect = {
-		}
-	}
-	# FROM is the faction Leader, ROOT is the country leaving the faction 
-	on_leave_faction = {
-		effect = {
 		}
 	}
 }
