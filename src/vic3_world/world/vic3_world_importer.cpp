@@ -37,6 +37,7 @@
 #include "src/vic3_world/military/combat_unit.h"
 #include "src/vic3_world/military/combat_units_importer.h"
 #include "src/vic3_world/military/military_formations_importer.h"
+#include "src/vic3_world/military/ship_versions_importer.hpp"
 #include "src/vic3_world/pacts/pacts_importer.h"
 #include "src/vic3_world/provinces/vic3_province_definitions.h"
 #include "src/vic3_world/provinces/vic3_province_definitions_loader.h"
@@ -509,6 +510,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    std::map<int, std::vector<int>> country_character_map;
    std::map<int64_t, MilitaryFormation> military_formations;
    std::vector<CombatUnit> combat_units;
+   std::map<int64_t, std::string> ship_versions;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("playthrough_id", [&world_options](std::istream& input_stream) {
@@ -576,6 +578,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    });
    save_parser.registerKeyword("diplomatic_plays", [&world_options](std::istream& input_stream) {
       world_options.wars = ImportWars(input_stream);
+   });
+   save_parser.registerKeyword("ship_templates_manager", [&ship_versions](std::istream& input_stream) {
+      ship_versions = ImportShipVersions(input_stream);
    });
    save_parser.registerRegex("SAV.*",
        []([[maybe_unused]] const std::string& unused, [[maybe_unused]] std::istream& input_stream) {
