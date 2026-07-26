@@ -18,6 +18,7 @@ namespace vic3
 constexpr const char* kBuildingTypeBarracks = "building_barracks";
 constexpr const char* kBuildingTypeConscriptionCenter = "building_conscription_center";
 constexpr const char* kBuildingTypeConstructionSector = "building_construction_sector";
+constexpr const char* kBuildingTypeNavalAdministration = "building_naval_administration";
 constexpr const char* kBuildingTypeNavalBase = "building_naval_base";
 constexpr const char* kBuildingTypeOilRig = "building_oil_rig";
 constexpr const char* kBuildingTypePort = "building_port";
