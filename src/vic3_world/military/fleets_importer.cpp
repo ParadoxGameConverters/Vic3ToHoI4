@@ -5,6 +5,7 @@
 #include <istream>
 #include <map>
 #include <optional>
+#include <string>
 #include <vector>
 
 #include "src/vic3_world/database/database_parser.h"
@@ -51,6 +52,27 @@ std::map<int64_t, std::vector<int64_t>> ImportShips(std::istream& input_stream)
    database_parser.parseStream(input_stream);
 
    return ships;
+}
+
+
+std::map<int64_t, std::vector<std::string>> AddShipTypes(const std::map<int64_t, std::string>& ship_versions,
+    const std::map<int64_t, std::vector<int64_t>>& ships)
+{
+   std::map<int64_t, std::vector<std::string>> new_ships;
+   for (const auto [fleet_id, ships_in_fleet]: ships)
+   {
+      std::vector<std::string> ship_types;
+      for (int64_t version: ships_in_fleet)
+      {
+         if (auto itr = ship_versions.find(version); itr != ship_versions.end())
+         {
+            ship_types.push_back(itr->second);
+         }
+      }
+      new_ships.emplace(fleet_id, ship_types);
+   }
+
+   return new_ships;
 }
 
 }  // namespace vic3

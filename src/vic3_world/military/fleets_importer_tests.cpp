@@ -81,4 +81,14 @@ TEST(Vic3worldMilitaryFleetsImporter, MissingTypeMeansNoShip)
    EXPECT_TRUE(ships.empty());
 }
 
+
+TEST(Vic3worldMilitaryFleetsImporter, FleetsCanHaveShipTypesAdded)
+{
+   const std::map<int64_t, std::vector<std::string>> fleets_with_types =
+       AddShipTypes({{1, "type_one"}, {2, "type_two"}}, {{1, {1, 1, 2}}, {2, {3, 2, 1}}});
+   EXPECT_THAT(fleets_with_types,
+       testing::UnorderedElementsAre(testing::Pair(1, std::vector<std::string>{"type_one", "type_one", "type_two"}),
+           testing::Pair(2, std::vector<std::string>{"type_two", "type_one"})));
+}
+
 }  // namespace vic3
