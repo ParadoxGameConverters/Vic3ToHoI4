@@ -36,6 +36,7 @@
 #include "src/vic3_world/laws/laws_importer.h"
 #include "src/vic3_world/military/combat_unit.h"
 #include "src/vic3_world/military/combat_units_importer.h"
+#include "src/vic3_world/military/fleets_importer.hpp"
 #include "src/vic3_world/military/military_formations_importer.h"
 #include "src/vic3_world/military/ship_versions_importer.hpp"
 #include "src/vic3_world/pacts/pacts_importer.h"
@@ -269,10 +270,19 @@ void AssignCharactersToCountries(const std::map<int, vic3::Character>& character
 }
 
 
-void AssignMilitaryFormationsToCountries(const std::map<int64_t, vic3::MilitaryFormation>& military_formations,
+void AssignMilitaryFormationsToCountries(std::map<int64_t, vic3::MilitaryFormation> military_formations,
     const std::vector<vic3::CombatUnit>& combat_units,
+    std::map<int64_t, std::vector<std::string>> ships,
     std::map<int, vic3::Country>& countries)
 {
+   for (auto& [formation_number, formation]: military_formations)
+   {
+      if (auto ships_itr = ships.find(formation_number); ships_itr != ships.end())
+      {
+         formation.ships = ships_itr->second;
+      }
+   }
+
    std::map<int, std::map<int64_t, vic3::MilitaryFormation>> army_formations_by_country;
    std::map<int, std::map<int64_t, vic3::MilitaryFormation>> navy_formations_by_country;
    for (const auto& [formation_number, formation]: military_formations)
@@ -511,6 +521,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    std::map<int64_t, MilitaryFormation> military_formations;
    std::vector<CombatUnit> combat_units;
    std::map<int64_t, std::string> ship_versions;
+   std::map<int64_t, std::vector<int64_t>> fleets_with_ship_versions;
 
    commonItems::parser save_parser;
    save_parser.registerKeyword("playthrough_id", [&world_options](std::istream& input_stream) {
@@ -582,6 +593,9 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    save_parser.registerKeyword("ship_templates_manager", [&ship_versions](std::istream& input_stream) {
       ship_versions = ImportShipVersions(input_stream);
    });
+   save_parser.registerKeyword("ship_manager", [&fleets_with_ship_versions](std::istream& input_stream) {
+      fleets_with_ship_versions = ImportShips(input_stream);
+   });
    save_parser.registerRegex("SAV.*",
        []([[maybe_unused]] const std::string& unused, [[maybe_unused]] std::istream& input_stream) {
        });
@@ -610,7 +624,11 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
    ProgressManager::AddProgress(1);
    AssignCharactersToCountries(world_options.characters, country_character_map, world_options.countries);
    ProgressManager::AddProgress(1);
-   AssignMilitaryFormationsToCountries(military_formations, combat_units, world_options.countries);
+   const auto fleets_with_ship_types = AddShipTypes(ship_versions, fleets_with_ship_versions);
+   AssignMilitaryFormationsToCountries(military_formations,
+       combat_units,
+       fleets_with_ship_types,
+       world_options.countries);
    ProgressManager::AddProgress(1);
    ApplySubjectRelationships(world_options.pacts, world_options.countries);
    ProgressManager::AddProgress(1);
