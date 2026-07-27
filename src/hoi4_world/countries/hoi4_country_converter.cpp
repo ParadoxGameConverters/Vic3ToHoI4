@@ -10,6 +10,7 @@
 
 #include "src/hoi4_world/characters/hoi4_character_converter.h"
 #include "src/hoi4_world/characters/hoi4_characters_converter.h"
+#include "src/hoi4_world/military/ship_converter.hpp"
 #include "src/hoi4_world/military/task_force_template.h"
 #include "src/hoi4_world/states/hoi4_state.h"
 #include "src/hoi4_world/technology/technologies_converter.h"
@@ -294,6 +295,7 @@ void ExtractActiveItems(const std::vector<hoi4::EquipmentVariant>& variants, std
    }
 }
 
+
 std::map<int, int> MakeNavalBaseMap(const std::vector<hoi4::State>& states)
 {
    std::map<int, int> naval_base_locations;
@@ -316,6 +318,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
     const std::vector<hoi4::TaskForceTemplate>& task_force_templates,
     const std::vector<hoi4::EquipmentVariant>& active_ship_variants,
     const std::vector<hoi4::EquipmentVariant>& active_legacy_ship_variants,
+    const hoi4::ShipConverter& ship_converter,
     const hoi4::States& states,
     const std::optional<int> capital_state)
 {
@@ -409,39 +412,70 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       return forces;
    }
 
-   for (const vic3::MilitaryFormation& naval_formation: naval_formations | std::views::values)
+   if (std::ranges::any_of(naval_formations | std::views::values, [](const vic3::MilitaryFormation& naval_formation) {
+          return !naval_formation.ships.empty();
+       }))
    {
-      for (const vic3::CombatUnit& unit: naval_formation.combat_units)
+      for (const vic3::MilitaryFormation& naval_formation: naval_formations | std::views::values)
       {
-         pm_amounts[unit.type.value_or("")] += static_cast<float>(unit.current_manpower);
-      }
-
-      hoi4::TaskForce task_force{.location = *default_naval_base};
-      if (naval_formation.name)
-      {
-         task_force.name = *naval_formation.name;
-      }
-      else if (naval_formation.ordinal_number)
-      {
-         task_force.name = fmt::format("{}. Fleet", *naval_formation.ordinal_number);
-      }
-      else
-      {
-         task_force.name = fmt::format("{}. Fleet", num_fleets);
-      }
-
-      for (const auto& task_force_template: task_force_templates)
-      {
-         if (!task_force_template.AllVariantsActive(active_variants))
+         hoi4::TaskForce task_force{.location = *default_naval_base};
+         if (naval_formation.name)
          {
-            continue;
+            task_force.name = *naval_formation.name;
          }
-         task_force_template.AddShipsIfPossible(task_force.ships, ship_names, pm_amounts);
+         else if (naval_formation.ordinal_number)
+         {
+            task_force.name = fmt::format("{}. Fleet", *naval_formation.ordinal_number);
+         }
+         else
+         {
+            task_force.name = fmt::format("{}. Fleet", num_fleets);
+         }
+
+         task_force.ships = ship_converter.ConvertShips(naval_formation.ships, ship_names);
+         if (!task_force.ships.empty())
+         {
+            forces.push_back(task_force);
+            ++num_fleets;
+         }
       }
-      if (!task_force.ships.empty())
+   }
+   else
+   {
+      for (const vic3::MilitaryFormation& naval_formation: naval_formations | std::views::values)
       {
-         forces.push_back(task_force);
-         ++num_fleets;
+         for (const vic3::CombatUnit& unit: naval_formation.combat_units)
+         {
+            pm_amounts[unit.type.value_or("")] += static_cast<float>(unit.current_manpower);
+         }
+
+         hoi4::TaskForce task_force{.location = *default_naval_base};
+         if (naval_formation.name)
+         {
+            task_force.name = *naval_formation.name;
+         }
+         else if (naval_formation.ordinal_number)
+         {
+            task_force.name = fmt::format("{}. Fleet", *naval_formation.ordinal_number);
+         }
+         else
+         {
+            task_force.name = fmt::format("{}. Fleet", num_fleets);
+         }
+
+         for (const auto& task_force_template: task_force_templates)
+         {
+            if (!task_force_template.AllVariantsActive(active_variants))
+            {
+               continue;
+            }
+            task_force_template.AddShipsIfPossible(task_force.ships, ship_names, pm_amounts);
+         }
+         if (!task_force.ships.empty())
+         {
+            forces.push_back(task_force);
+            ++num_fleets;
+         }
       }
    }
 
@@ -847,6 +881,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
     const mappers::CultureGraphicsMapper& culture_graphics_mapper,
     const mappers::LeaderTypeMapper& leader_type_mapper,
     const mappers::CharacterTraitMapper& character_trait_mapper,
+    const ShipConverter& ship_converter,
     const ConvoyDistributor& convoys,
     const std::vector<hoi4::TaskForceTemplate>& task_force_templates,
     std::map<int, hoi4::Character>& characters,
@@ -892,6 +927,7 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        task_force_templates,
        active_ship_variants,
        active_legacy_ship_variants,
+       ship_converter,
        states,
        capital_state);
 
