@@ -1,6 +1,7 @@
 #include "src/hoi4_world/military/ship_converter.hpp"
 
 #include <external/fmt/include/fmt/format.h>
+#include <external/CommonItems/Log.h>
 
 
 

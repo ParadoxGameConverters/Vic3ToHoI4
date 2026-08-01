@@ -474,6 +474,7 @@ set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/convoy_distributor_bui
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/division_templates_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/equipment_variants_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/ship_converter_tests.cpp")
+set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/ship_mappings_importer_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/task_force_template_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/military/task_force_templates_builder_tests.cpp")
 set(TEST_SOURCES ${TEST_SOURCES} "src/hoi4_world/roles/alias_definition_importer_tests.cpp")

@@ -432,6 +432,7 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
             task_force.name = fmt::format("{}. Fleet", num_fleets);
          }
 
+         Log(LogLevel::Debug) << fmt::format("Converting a task force with {} ships for {}", naval_formation.ships.size(), tag);
          task_force.ships = ship_converter.ConvertShips(naval_formation.ships, ship_names);
          if (!task_force.ships.empty())
          {
