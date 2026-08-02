@@ -2943,7 +2943,6 @@ TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
                    .provinces = {1},
                    .naval_base_location = 1,
                }),
-
        },
        .vic3_state_ids_to_hoi4_state_ids{{1, 1}},
        .hoi4_state_ids_to_owner{{1, "TAG"}},
