@@ -809,13 +809,13 @@ TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
                    .name = "123 Fleet",
                    .ships =
                        {
-                           hoi4::Ship(hoi4::ShipOptions{
+                           hoi4::Ship{
                                .name = "Test Ship",
                                .definition = "test_ship_type",
                                .equipment = "mtg_equipment_template",
                                .legacy_equipment = "legacy_equipment_template",
                                .version = "Test Class",
-                           }),
+                           },
                        },
                    .location = 123,
                },
@@ -823,13 +823,13 @@ TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
                    .name = "456 Fleet",
                    .ships =
                        {
-                           hoi4::Ship(hoi4::ShipOptions{
+                           hoi4::Ship{
                                .name = "Test Ship 2",
                                .definition = "another_ship_type",
                                .equipment = "mtg_equipment_template_2",
                                .legacy_equipment = "legacy_equipment_template_2",
                                .version = "Another Class",
-                           }),
+                           },
                        },
                    .location = 456,
                },

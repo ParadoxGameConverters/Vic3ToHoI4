@@ -1,5 +1,25 @@
 mtg_ship_type = {
 	required_techs = {
+		early_ship_hull_carrier
+	}
+	name = "1936 Carrier"
+	type = ship_hull_carrier_1
+	name_group = CV_HISTORICAL
+	modules = {
+		fixed_ship_deck_slot_1 = ship_deck_space
+		fixed_ship_deck_slot_2 = ship_deck_space
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = carrier_ship_engine_2
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_deck_space
+	}
+	obsolete = no
+}
+
+
+mtg_ship_type = {
+	required_techs = {
 		early_ship_hull_submarine
 	}
 	name = "Early Submarine"
@@ -204,6 +224,21 @@ mtg_ship_type = {
 		rear_1_custom_slot = empty
 	}
 	obsolete = no
+}
+
+
+legacy_ship_type = {
+	required_techs = {
+		early_carrier
+	}
+	name = "1936 Carrier"
+	type = carrier_2
+	upgrades = {
+		ship_deckspace_upgrade = 1
+		carrier_armor_upgrade = 1
+		ship_engine_upgrade = 1
+		ship_reliability_upgrade = 1
+	}
 }
 
 

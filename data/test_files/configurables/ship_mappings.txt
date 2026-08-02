@@ -1,0 +1,15 @@
+ship_type_test = {
+   name = "test name"
+   definition = "test definition"
+   equipment = "test equipment"
+   legacy_equipment = "test legacy equipment"
+   version = "test version"
+}
+
+ship_type_test2 = {
+   name = "test name2"
+   definition = "test definition2"
+   equipment = "test equipment2"
+   legacy_equipment = "test legacy equipment2"
+   version = "test version2"
+}
