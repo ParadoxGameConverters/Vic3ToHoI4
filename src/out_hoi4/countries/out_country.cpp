@@ -279,10 +279,11 @@ void out::OutputCountryHistory(const path& output_name,
    country_history.close();
 }
 
+
 void OutputShip(std::ofstream& navy, std::ofstream& lgcy, const std::string& tag, const hoi4::Ship& ship)
 {
-   navy << fmt::format(kShip, ship.GetName(), ship.GetDefinition(), ship.GetEquipment(), tag, ship.GetVersion());
-   lgcy << fmt::format(kShip, ship.GetName(), ship.GetDefinition(), ship.GetLegacyEquipment(), tag, ship.GetVersion());
+   navy << fmt::format(kShip, ship.name, ship.definition, ship.equipment, tag, ship.version);
+   lgcy << fmt::format(kShip, ship.name, ship.definition, ship.legacy_equipment, tag, ship.version);
 }
 
 

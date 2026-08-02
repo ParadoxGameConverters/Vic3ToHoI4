@@ -573,7 +573,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NavalBasesAreConvertedInCoastalStates)
                                           vic3::GoodsSalesValue{0.0F},
                                           vic3::StaffingLevel{9.0F},
                                           {}),
-                                      vic3::Building(vic3::kBuildingTypeNavalBase,
+                                      vic3::Building(vic3::kBuildingTypeNavalAdministration,
                                           2,
                                           vic3::GoodsSalesValue{0.0F},
                                           vic3::StaffingLevel{10.0F},

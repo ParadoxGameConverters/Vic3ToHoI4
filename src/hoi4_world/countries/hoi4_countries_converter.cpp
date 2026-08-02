@@ -9,6 +9,7 @@
 #include "src/hoi4_world/military/division_templates_importer.h"
 #include "src/hoi4_world/military/equipment_variant.h"
 #include "src/hoi4_world/military/equipment_variants_importer.h"
+#include "src/hoi4_world/military/ship_mappings_importer.hpp"
 #include "src/hoi4_world/military/task_force_template.h"
 #include "src/hoi4_world/military/task_force_templates_builder.h"
 #include "src/mappers/character/character_trait_mapper_importer.h"
@@ -81,6 +82,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
        ImportDivisionTemplates("configurables/division_templates.txt");
    const std::vector<TaskForceTemplate> task_force_templates =
        ImportTaskForceTemplates("configurables/task_force_templates.txt");
+   const ShipConverter ship_converter(ImportShipMappings("configurables/ship_mappings.txt"));
 
    const mappers::LeaderTypeMapper leader_type_mapper =
        mappers::ImportLeaderTypeMapper("configurables/leader_type_mappings.txt");
@@ -112,6 +114,7 @@ std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
           world_mapper.culture_graphics_mapper,
           leader_type_mapper,
           character_trait_mapper,
+          ship_converter,
           convoys,
           task_force_templates,
           characters,
