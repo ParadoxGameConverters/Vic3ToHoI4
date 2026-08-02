@@ -257,6 +257,17 @@ struct PdsFileResult *rakaly_hoi4_file(const char *data_ptr, size_t data_len);
  */
 struct PdsFileResult *rakaly_vic3_file(const char *data_ptr, size_t data_len);
 
+/**
+ * Initializes an EU5 save from a pointer the save data bytes and a number of
+ * those bytes.
+ *
+ * # Safety
+ *
+ * The data is assumed to exist for the duration while the result of this
+ * function lives.
+ */
+struct PdsFileResult *rakaly_eu5_file(const char *data_ptr, size_t data_len);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif  // __cplusplus
@@ -376,6 +387,13 @@ GameFile parseHoi4(const std::string &data) {
 
 GameFile parseVic3(const std::string &data) {
   PdsFileResult *file_result = rakaly_vic3_file(data.c_str(), data.length());
+  unwrapError(rakaly_file_error(file_result));
+  PdsFile *file = rakaly_file_value(file_result);
+  return GameFile(file);
+}
+
+GameFile parseEu5(const std::string &data) {
+  PdsFileResult *file_result = rakaly_eu5_file(data.c_str(), data.length());
   unwrapError(rakaly_file_error(file_result));
   PdsFile *file = rakaly_file_value(file_result);
   return GameFile(file);

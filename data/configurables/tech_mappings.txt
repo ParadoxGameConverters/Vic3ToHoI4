@@ -61,6 +61,7 @@ link = {
 	vic3 = nco_training
 	hoi4 = infantry_weapons1
 	hoi4 = tech_recon
+	hoi4 = marines
 }
 
 # HoI4 Support Weapons I
@@ -72,7 +73,7 @@ link = {
 
 # HoI4 Marines I
 link = {
-	vic3 = battlefleet_tactics
+	vic3 = line_infantry
 	hoi4 = marines
 }
 
@@ -251,11 +252,11 @@ link = {
 	hoi4 = basic_ship_hull_submarine
 }
 
-link = {
-	vic3 = military_aviation
-	limit = R"(has_dlc = "Man the Guns")"
-	hoi4 = improved_airplane_launcher
-}
+#link = {
+#	vic3 = military_aviation
+#	limit = R"(has_dlc = "Man the Guns")"
+#	hoi4 = improved_airplane_launcher
+#}
 
 link = {
 	vic3 = carrier_tech

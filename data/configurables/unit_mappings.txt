@@ -61,6 +61,16 @@ combat_unit_type_light_tanks = {
   light_tank = 0.1
 }
 
+combat_unit_type_low_tier_marines = {
+  marine = 0.1
+}
+combat_unit_type_mid_tier_marines = {
+  marine = 0.2
+}
+combat_unit_type_high_tier_marines = {
+  marine = 0.4
+}
+
 
 pm_no_organization = {}
 pm_general_training = {}
