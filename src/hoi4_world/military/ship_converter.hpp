@@ -15,7 +15,7 @@ namespace hoi4
 class ShipConverter
 {
   public:
-   ShipConverter(std::map<std::string, hoi4::Ship> ship_mappings): ship_mappings_(std::move(ship_mappings)) {}
+   explicit ShipConverter(std::map<std::string, hoi4::Ship> ship_mappings): ship_mappings_(std::move(ship_mappings)) {}
 
    std::vector<hoi4::Ship> ConvertShips(const std::vector<std::string>& vic3_ships,
        std::map<std::string, int>& ship_counts) const;
