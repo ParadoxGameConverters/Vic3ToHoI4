@@ -223,6 +223,13 @@ link = {
 	hoi4 = early_ship_hull_heavy
 }
 
+# HoI4 Early Heavy Ship Hull <- vic3 Invention Navy/Ship Construction/Steam Turbine Ships/Dreadnoughts
+link = {
+	vic3 = dreadnought_tech
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = early_ship_hull_heavy
+}
+
 # HoI4 transport
 link = {
 	vic3 = landing_craft
