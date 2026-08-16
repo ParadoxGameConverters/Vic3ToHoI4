@@ -21,7 +21,7 @@ for filename in os.listdir(directory):
       if line == '\n':
         continue
       if bracket_level == 0:
-        print('\tlink = { comment = "* * ' + line[:-4] + '" }')
+        print('\tlink = { comment = "* * ' + line[:-5] + '" }')
       if '{' in line:
         bracket_level += 1
       if '}' in line:
