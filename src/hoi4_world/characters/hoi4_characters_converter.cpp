@@ -75,7 +75,7 @@ std::pair<int, hoi4::Character> ConvertCountryLeader(const std::map<int, vic3::I
           .first_name = "The",
           .last_name = "Council",
           .culture = *source_country.GetPrimaryCultures().begin(),
-          .roles = {"politician"},
+          .roles = {"character_role_politician"},
       });
 
       return {new_council.GetId(),
@@ -134,7 +134,7 @@ std::pair<FieldMarshalIds, GeneralIds> PickGenerals(const std::map<int, vic3::Ch
    std::ranges::copy_if(source_character_ids, std::back_inserter(ids), [source_characters](const int id) {
       if (const auto& itr = source_characters.find(id); itr != source_characters.end())
       {
-         return itr->second.GetRoles().contains("general");
+         return itr->second.GetRoles().contains("character_role_general") || itr->second.GetRoles().contains("general");
       }
       return false;
    });
@@ -185,12 +185,12 @@ std::tuple<AdmiralIds, AdvisorIds, SpyIds> PickMiscCharacters(const std::map<int
       }
 
       const auto& roles = itr->second.GetRoles();
-      if (roles.contains("admiral"))
+      if (roles.contains("character_role_admiral") || roles.contains("admiral"))
       {
          admiral_ids.emplace(id);
          character_ids.emplace(id);
       }
-      if (roles.contains("politician") && id != leader_id)
+      if ((roles.contains("character_role_politician") || roles.contains("politician")) && id != leader_id)
       {
          advisor_ids.emplace(id);
          character_ids.emplace(id);

@@ -50,12 +50,12 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .rank = 2,
        .traits = {"charismatic"},
    });
-   // Filler General
+   // General with new-style role
    const auto character_four = vic3::Character({
        .id = 4,
        .first_name = "Test",
        .last_name = "Mann",
-       .roles = {"general"},
+       .roles = {"character_role_general"},
        .rank = 2,
        .traits = {"charismatic"},
    });
@@ -78,9 +78,18 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .rank = 2,
        .traits = {"bandit"},
    });
-   // Spy
+   // Admiral with new-syle role
    const auto character_seven = vic3::Character({
        .id = 7,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .roles = {"character_role_admiral"},
+       .rank = 2,
+       .traits = {"bandit"},
+   });
+   // Spy
+   const auto character_eight = vic3::Character({
+       .id = 8,
        .first_name = "Test",
        .last_name = "Mann",
        .roles = {"agitator"},
@@ -88,16 +97,24 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .origin_country_id = 3,
    });
    // Advisor
-   const auto character_eight = vic3::Character({
-       .id = 8,
+   const auto character_nine = vic3::Character({
+       .id = 9,
        .first_name = "Test",
        .last_name = "Mann",
        .roles = {"politician"},
        .traits = {"inspirational_orator"},
    });
+   // Advisor with new-style role
+   const auto character_ten = vic3::Character({
+       .id = 10,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .roles = {"character_role_politician"},
+       .traits = {"inspirational_orator"},
+   });
    // General Advisor
-   const auto character_nine = vic3::Character({
-       .id = 9,
+   const auto character_eleven = vic3::Character({
+       .id = 11,
        .first_name = "Test",
        .last_name = "Mann",
        .roles = {"general", "politician"},
@@ -105,8 +122,8 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .traits = {"charismatic"},
    });
    // Admiral Advisor
-   const auto character_ten = vic3::Character({
-       .id = 10,
+   const auto character_twelve = vic3::Character({
+       .id = 12,
        .first_name = "Test",
        .last_name = "Mann",
        .roles = {"admiral", "politician"},
@@ -126,12 +143,14 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        {8, character_eight},
        {9, character_nine},
        {10, character_ten},
+       {11, character_eleven},
+       {12, character_twelve},
    };
    ConvertCharacters(source_characters,
        "TAG",
        "",
        "sub_ideology",
-       vic3::Country({.head_of_state_id = 2, .character_ids = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}}),
+       vic3::Country({.head_of_state_id = 2, .character_ids = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}}),
        {},
        leader_type_mapper,
        character_trait_mapper,
@@ -218,23 +237,35 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
        .id = 7,
        .first_name = "Test",
        .last_name = "Mann",
-       .spy_data = spy_data,
+       .admiral_data = admiral_data,
    });
    const auto expected_character_eight = Character({
        .id = 8,
        .first_name = "Test",
        .last_name = "Mann",
-       .advisor_data = advisor_data_1,
+       .spy_data = spy_data,
    });
    const auto expected_character_nine = Character({
        .id = 9,
        .first_name = "Test",
        .last_name = "Mann",
-       .general_data = general_data,
-       .advisor_data = advisor_data_2,
+       .advisor_data = advisor_data_1,
    });
    const auto expected_character_ten = Character({
        .id = 10,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .advisor_data = advisor_data_1,
+   });
+   const auto expected_character_eleven = Character({
+       .id = 11,
+       .first_name = "Test",
+       .last_name = "Mann",
+       .general_data = general_data,
+       .advisor_data = advisor_data_2,
+   });
+   const auto expected_character_twelve = Character({
+       .id = 12,
        .first_name = "Test",
        .last_name = "Mann",
        .admiral_data = admiral_data,
@@ -251,7 +282,9 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
            testing::Pair(7, expected_character_seven),
            testing::Pair(8, expected_character_eight),
            testing::Pair(9, expected_character_nine),
-           testing::Pair(10, expected_character_ten)));
+           testing::Pair(10, expected_character_ten),
+           testing::Pair(11, expected_character_eleven),
+           testing::Pair(12, expected_character_twelve)));
 }
 
 
