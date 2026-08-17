@@ -11,7 +11,8 @@ std::optional<hoi4::Admiral> GeneratePossibleAdmiral(const vic3::Character& sour
     const std::set<int>& admiral_ids,
     const mappers::CharacterTraitMapper& character_trait_mapper)
 {
-   if (!source_character.GetRoles().contains("admiral"))
+   if (!source_character.GetRoles().contains("character_role_admiral") &&
+       !source_character.GetRoles().contains("admiral"))
    {
       return std::nullopt;
    }
@@ -28,7 +29,8 @@ std::optional<hoi4::General> GeneratePossibleGeneral(const vic3::Character& sour
     const std::set<int>& general_ids,
     const mappers::CharacterTraitMapper& character_trait_mapper)
 {
-   if (!source_character.GetRoles().contains("general"))
+   if (!source_character.GetRoles().contains("character_role_general") &&
+       !source_character.GetRoles().contains("general"))
    {
       return std::nullopt;
    }
@@ -47,7 +49,8 @@ std::optional<hoi4::Advisor> GeneratePossibleAdvisor(const vic3::Character& sour
     const std::set<int>& advisor_ids,
     const mappers::CharacterTraitMapper& character_trait_mapper)
 {
-   if (!source_character.GetRoles().contains("politician"))
+   if (!source_character.GetRoles().contains("character_role_politician") &&
+       !source_character.GetRoles().contains("politician"))
    {
       return std::nullopt;
    }
@@ -61,6 +64,8 @@ std::optional<hoi4::Advisor> GeneratePossibleAdvisor(const vic3::Character& sour
        .slot = "political_advisor",
    });
 }
+
+
 std::optional<hoi4::Leader> GeneratePossibleLeader(const vic3::Character& source_character,
     const std::string& ideology,
     const int leader_id)
@@ -72,6 +77,8 @@ std::optional<hoi4::Leader> GeneratePossibleLeader(const vic3::Character& source
 
    return hoi4::Leader({.sub_ideology = ideology});
 }
+
+
 std::optional<hoi4::Spy> GeneratePossibleSpy(const vic3::Character& source_character,
     const std::string& tag,
     const mappers::CountryMapper& country_mapper,
@@ -104,6 +111,7 @@ std::optional<hoi4::Spy> GeneratePossibleSpy(const vic3::Character& source_chara
 
    return spy_data;
 }
+
 
 void EnqueueCharacterForPortrait(mappers::CultureQueue& culture_queue,
     const vic3::Character& source_character,

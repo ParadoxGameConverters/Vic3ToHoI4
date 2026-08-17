@@ -240,9 +240,24 @@ void AssignIgsToCountries(std::map<int, vic3::Country>& countries, const std::ma
 
 
 void AssignCharactersToCountries(const std::map<int, vic3::Character>& characters,
-    const std::map<int, std::vector<int>>& country_character_map,
+    std::map<int, std::vector<int>> country_character_map,
     std::map<int, vic3::Country>& countries)
 {
+   if (country_character_map.empty())
+   {
+      for (auto& [character_id, character]: characters)
+      {
+         auto possible_country_id = character.GetOriginCountryId();
+         if (possible_country_id)
+         {
+            if (auto [itr, success] = country_character_map.emplace(*possible_country_id, std::vector{character_id});
+                !success)
+            {
+               itr->second.push_back(character_id);
+            }
+         }
+      }
+   }
    for (const auto& [country_id, character_ids]: country_character_map)
    {
       if (const auto country_itr = countries.find(country_id); country_itr != countries.end())
@@ -252,7 +267,8 @@ void AssignCharactersToCountries(const std::map<int, vic3::Character>& character
             if (const auto& character_itr = characters.find(id); character_itr != characters.end())
             {
                const auto& roles = character_itr->second.GetRoles();
-               if (roles.size() > 1 || (!roles.contains("general") && !roles.contains("admiral")))
+               if (roles.size() > 1 || (!roles.contains("general") && !roles.contains("character_role_general") &&
+                                           !roles.contains("admiral") && !roles.contains("character_role_admiral")))
                {
                   return true;
                }

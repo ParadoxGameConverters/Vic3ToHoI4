@@ -46,6 +46,7 @@ TEST(Vic3worldCharactersVic3characterimporter, CharacterCanBeImported)
    input << "\tis_female = yes\n";
    input << "\trole = politician\n";
    input << "\trole = agitator\n";
+   input << "\tcharacter_roles = { test_role_three test_role_four }\n";
    input << "\tideology = \"ideology_0\"\n";
    input << "\trank = commander_rank_5\n";
    input << "\ttraits = { \"trait_0\" \"trait_1\" }\n";
@@ -60,7 +61,7 @@ TEST(Vic3worldCharactersVic3characterimporter, CharacterCanBeImported)
            .last_name = "Wala",
            .culture_id = 1,
            .is_female = true,
-           .roles = {"politician", "agitator"},
+           .roles = {"politician", "agitator", "test_role_three", "test_role_four"},
            .rank = 5,
            .ideology = "ideology_0",
            .traits = {"trait_0", "trait_1"},
