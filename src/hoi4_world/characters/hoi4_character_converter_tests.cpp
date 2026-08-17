@@ -41,6 +41,39 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConverted)
 }
 
 
+TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConvertedWithNewStyleRoles)
+{
+   std::map<std::string, mappers::CultureQueue> dummy_queue;
+   const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
+
+   const auto source_character = vic3::Character({
+       .id = 1,
+       .roles = {"character_role_admiral"},
+       .rank = 2,
+       .traits = {"bandit"},
+   });
+   const auto expected_data = std::optional<Admiral>({
+       .traits = {"naval_trait_0", "naval_trait_1"},
+       .attack = 2,
+       .defense = 2,
+       .maneuvering = 2,
+       .coordination = 2,
+   });
+   const auto character = ConvertCharacter(source_character,
+       0,
+       {.admiral_ids = {1}},
+       ConvertCharacterLeaderType{""},
+       ConvertCharacterCharacterTagType{""},
+       ConvertCharacterCountryIdeologyType{""},
+       ConvertCharacterSubIdeologyType{""},
+       {},
+       {},
+       character_trait_mapper,
+       dummy_queue);
+   EXPECT_EQ(character, Character({.id = 1, .admiral_data = expected_data}));
+}
+
+
 TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConverted)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
@@ -49,6 +82,39 @@ TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConverted)
    const auto source_character = vic3::Character({
        .id = 1,
        .roles = {"general"},
+       .rank = 2,
+       .traits = {"charismatic"},
+   });
+   const auto expected_data = std::optional<General>({
+       .traits = {"land_trait_0", "land_trait_1"},
+       .attack = 2,
+       .defense = 2,
+       .planning = 2,
+       .logistics = 2,
+   });
+   const auto character = ConvertCharacter(source_character,
+       0,
+       {.general_ids = {1}},
+       ConvertCharacterLeaderType{""},
+       ConvertCharacterCharacterTagType{""},
+       ConvertCharacterCountryIdeologyType{""},
+       ConvertCharacterSubIdeologyType{""},
+       {},
+       {},
+       character_trait_mapper,
+       dummy_queue);
+   EXPECT_EQ(character, Character({.id = 1, .general_data = expected_data}));
+}
+
+
+TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConvertedWithNewStyleRoles)
+{
+   std::map<std::string, mappers::CultureQueue> dummy_queue;
+   const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
+
+   const auto source_character = vic3::Character({
+       .id = 1,
+       .roles = {"character_role_general"},
        .rank = 2,
        .traits = {"charismatic"},
    });
@@ -137,6 +203,29 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeadersCanBeConverted)
    const auto source_character = vic3::Character({
        .id = 1,
        .roles = {"politician"},
+   });
+   const auto expected_data = std::optional<Leader>({.sub_ideology = "test_ideology"});
+   const auto character = ConvertCharacter(source_character,
+       1,
+       {},
+       ConvertCharacterLeaderType{""},
+       ConvertCharacterCharacterTagType{""},
+       ConvertCharacterCountryIdeologyType{""},
+       ConvertCharacterSubIdeologyType{"test_ideology"},
+       {},
+       {},
+       mappers::CharacterTraitMapper({}, {}, {}, {}),
+       dummy_queue);
+   EXPECT_EQ(character, Character({.id = 1, .leader_data = expected_data}));
+}
+
+
+TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeadersCanBeConvertedWithNewStyleRoles)
+{
+   std::map<std::string, mappers::CultureQueue> dummy_queue;
+   const auto source_character = vic3::Character({
+       .id = 1,
+       .roles = {"character_role_politician"},
    });
    const auto expected_data = std::optional<Leader>({.sub_ideology = "test_ideology"});
    const auto character = ConvertCharacter(source_character,
