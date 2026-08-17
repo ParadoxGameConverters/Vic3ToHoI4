@@ -24,7 +24,10 @@ vic3::CharacterImporter::CharacterImporter()
       roles_.emplace(commonItems::getString(input_stream));
    });
    character_parser_.registerKeyword("character_roles", [this](std::istream& input_stream) {
-      roles_.insert_range(commonItems::getStrings(input_stream));
+      for (std::string role: commonItems::getStrings(input_stream))
+      {
+         roles_.insert(role);
+      }
    });
    character_parser_.registerKeyword("rank", [this](std::istream& input_stream) {
       const std::string rank_string = commonItems::getString(input_stream);
