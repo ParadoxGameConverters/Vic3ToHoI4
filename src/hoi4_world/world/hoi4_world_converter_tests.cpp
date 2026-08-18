@@ -1122,4 +1122,97 @@ TEST(Hoi4worldWorldHoi4worldconverter, WarsAreConverted)
        testing::ElementsAre(War({.original_defender = "TWO", .original_attacker = "TAG"})));
 }
 
+
+TEST(Hoi4worldWorldHoi4worldconverter, HomelandsAreIdentified)
+{
+   const std::map<std::string, vic3::StateRegion> state_regions({{"STATE_ONE",
+       vic3::StateRegion(
+           {
+               {"x000005", "city"},
+               {"x000004", "port"},
+               {"x000003", "farm"},
+               {"x000002", "mine"},
+               {"x000001", "wood"},
+           },
+           {})}});
+   const auto province_definitions = vic3::ProvinceDefinitions({
+       "x000001",
+       "x000002",
+       "x000003",
+       "x000004",
+       "x000005",
+       "x000006",
+   });
+
+   const vic3::World source_world(vic3::WorldOptions{
+       .states =
+           {
+               {1,
+                   vic3::State({
+                       .owner_number = 1,
+                       .owner_tag = "TAG",
+                       .provinces = {1, 2, 3},
+                       .homelands = {"test_culture"},
+                   })},
+               {2,
+                   vic3::State({.owner_number = 2,
+                       .owner_tag = "TWO",
+                       .provinces = {4, 5, 6},
+                       .homelands = {"test_culture", "test_culture_two"}})},
+           },
+       .state_regions = state_regions,
+       .province_definitions = province_definitions,
+   });
+
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
+                                                 .AddCountries({{1, "TAG"}, {2, "TWO"}})
+                                                 .AddProvinces({
+                                                     {"x000001", {10}},
+                                                     {"x000002", {20}},
+                                                     {"x000003", {30}},
+                                                     {"x000004", {40}},
+                                                     {"x000005", {50}},
+                                                     {"x000006", {60}},
+                                                     {"x000006", {60}},
+                                                 })
+                                                 .Build();
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+       source_world,
+       world_mapper,
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateDefaultWorldFramework(
+              commonItems::ModFilesystem("test_files/hoi4_world", {}))
+              .Build();
+       }));
+
+   EXPECT_THAT(world.GetHomelands(),
+       testing::ElementsAre(testing::Pair("test_culture", std::set{1, 2}),
+           testing::Pair("test_culture_two", std::set{2})));
+}
+
+
+TEST(Hoi4worldWorldHoi4worldconverter, PrimaryCultureCountriesAreConverted)
+{
+   const vic3::Country source_country_one({.number = 1, .tag = "TAG", .primary_cultures = {"test_culture"}});
+   const vic3::Country source_country_two(
+       {.number = 3, .tag = "TWO", .primary_cultures = {"test_culture", "test_culture_two"}});
+
+   const vic3::World source_world({.countries = {{1, source_country_one}, {3, source_country_two}}});
+
+   const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper()
+                                                 .AddCountries({{1, "TAG"}, {3, "TWO"}})
+                                                 .DefaultTechMapper()
+                                                 .Build();
+   const World world = ConvertWorld(commonItems::ModFilesystem("test_files/hoi4_world", {}),
+       source_world,
+       world_mapper,
+       std::async<>(std::launch::async, []() {
+          return hoi4::WorldFrameworkBuilder::CreateNullWorldFramework().Build();
+       }));
+
+   EXPECT_THAT(world.GetPrimaryCultureCountries(),
+       testing::ElementsAre(testing::Pair("test_culture", std::set<std::string>{"TAG", "TWO"}),
+           testing::Pair("test_culture_two", std::set<std::string>{"TWO"})));
+}
+
 }  // namespace hoi4

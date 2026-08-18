@@ -1,0 +1,40 @@
+unification_italy_proclaim_italy_south = {
+    category=unification
+
+    story_trigger={
+        country_has_primary_culture = cu:south_italian
+        any_scope_state = {
+            is_capital = yes
+            OR = {
+                is_homeland = cu:south_italian
+                is_homeland = cu:north_italian
+            }
+        }
+        NOT = { ROOT = c:ITA }
+    }
+
+    score=101
+    block_role = unification_italy_proclaim_italy_south
+    block_role = unification_italy_proclaim_italy_north
+
+    focuses = {
+        # Italy is united, proclaim self as Italy
+        focus={
+            id = $TAG$_proclaim_italy
+            text = proclaim_italy
+            icon = GFX_goal_generic_construction
+            relative_position_id = $TAG$_united_north_italian_states
+            x = 0
+            y = 1
+            cost = 10
+            prerequisite = { focus = $TAG$_united_north_italian_states }
+            ai_will_do = {
+                factor = 5
+            }
+
+            completion_reward = {
+                set_cosmetic_tag = ITA
+            }
+        }
+    }
+}

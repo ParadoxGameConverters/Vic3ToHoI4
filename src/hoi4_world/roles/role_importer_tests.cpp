@@ -120,6 +120,14 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    input << "\t\t}\n";
    input << "\t}\n";
    input << "\t\n";
+   input << "\tscripted_effects={\n";
+   input << "\t\teffect_one = {\n";
+   input << "\t\t\teffect_text\n";
+   input << "\t\t}\n";
+   input << "\t\teffect_two = {\n";
+   input << "\t\t\tmore_effect_text\n";
+   input << "\t\t}\n";
+   input << "\t}\n";
    input << "}\n";
 
    RoleImporter importer;
@@ -179,6 +187,105 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
    EXPECT_THAT(role.GetEvents(),
        testing::ElementsAre(Event{.type = "country_event", .id = "$TAG$_an_event"},
            Event{.type = "test_event_type", .id = "$TAG$_another_event"}));
+   EXPECT_THAT(role.GetScriptedEffects(),
+       testing::ElementsAre("effect_one = {\n\t\t\teffect_text\n\t\t}",
+           "effect_two = {\n\t\t\tmore_effect_text\n\t\t}"));
+}
+
+
+TEST(Hoi4worldRolesRoleimporterTests, FocusesCanBeImportedInBlock)
+{
+   std::stringstream input;
+   input << " = {\n";
+   input << "focuses={\n";
+   input << "\tshared_focus=army_effort\n";
+   input << "\tshared_focus=aviation_effort\n";
+   input << "\tfocus={\n";
+   input << "\t\tid = $TAG$_italia_irredenta #start of tree for an italian unifier\n";
+   input << "\t}\n";
+   input << "\tfocus={\n";
+   input << "\t\tid = $TAG$_italia_irredenta_2 #start of tree for an italian unifier\n";
+   input << "\t}\n";
+   input << "\n";
+   input << "\trepeat_focus={ #creates wargoal and ai strategy vs another country that owns a core or claim of ITA\n";
+   input << "\t\ttrigger={\n";
+   input << "\t\t\ttag = ITA\n";
+   input << "\t\t\ttag = SIC\n";
+   input << "\t\t}\n";
+   input << "\t\tfocus={\n";
+   input << "\t\t\tid = $TAG$_invade_$TARGET_TAG$\n";
+   input << "\t\t}\n";
+   input << "\t}\n";
+   input << "\trepeat_focus={ #creates wargoal and ai strategy vs another country that owns a core or claim of ITA\n";
+   input << "\t\ttrigger={\n";
+   input << "\t\t\ttag = ITA\n";
+   input << "\t\t\ttag = SIC\n";
+   input << "\t\t}\n";
+   input << "\t\tfocus={\n";
+   input << "\t\t\tid = $TAG$_invade_$TARGET_TAG$_2\n";
+   input << "\t\t}\n";
+   input << "\t}\n";
+   input << "\tremoved_focus={\n";
+   input << "\t\tid = $TAG$_remove_me\n";
+   input << "\t}\n";
+   input << "\tremoved_focus={\n";
+   input << "\t\tid = $TAG$_remove_me_2\n";
+   input << "\t}\n";
+   input << "}\n";
+   input << "}\n";
+
+   RoleImporter importer;
+   const Role role = importer.ImportRole("unification_italy", input);
+
+   EXPECT_THAT(role.GetSharedFocuses(), testing::ElementsAre("army_effort", "aviation_effort"));
+   EXPECT_THAT(role.GetFocuses(),
+       testing::ElementsAre(Focus{.id = "$TAG$_italia_irredenta"}, Focus{.id = "$TAG$_italia_irredenta_2"}));
+
+   std::unique_ptr<Trigger> tag_trigger_ita_two = std::make_unique<TagTrigger>("ITA");
+   std::unique_ptr<Trigger> tag_trigger_sic_two = std::make_unique<TagTrigger>("SIC");
+   std::vector<std::unique_ptr<Trigger>> children_two;
+   children_two.push_back(std::move(tag_trigger_ita_two));
+   children_two.push_back(std::move(tag_trigger_sic_two));
+   std::unique_ptr<AndTrigger> and_trigger_two = std::make_unique<AndTrigger>(std::move(children_two));
+
+   std::unique_ptr<Trigger> tag_trigger_ita_three = std::make_unique<TagTrigger>("ITA");
+   std::unique_ptr<Trigger> tag_trigger_sic_three = std::make_unique<TagTrigger>("SIC");
+   std::vector<std::unique_ptr<Trigger>> children_three;
+   children_three.push_back(std::move(tag_trigger_ita_three));
+   children_three.push_back(std::move(tag_trigger_sic_three));
+   std::unique_ptr<AndTrigger> and_trigger_three = std::make_unique<AndTrigger>(std::move(children_three));
+   EXPECT_THAT(role.GetRepeatFocuses(),
+       testing::ElementsAre(RepeatFocus(std::move(and_trigger_two), {Focus{.id = "$TAG$_invade_$TARGET_TAG$"}}),
+           RepeatFocus(std::move(and_trigger_three), {Focus{.id = "$TAG$_invade_$TARGET_TAG$_2"}})));
+   EXPECT_THAT(role.GetRemovedFocuses(),
+       testing::ElementsAre("= {\n"
+                            "\t\tid = $TAG$_remove_me\n"
+                            "\t}",
+           "= {\n"
+           "\t\tid = $TAG$_remove_me_2\n"
+           "\t}"));
+}
+
+
+TEST(Hoi4worldRolesRoleimporterTests, StoryTriggerWorksForTrigger)
+{
+   std::stringstream input;
+
+   RoleImporter importer;
+   input << " = {\n";
+   input << "\tstory_trigger={\n";
+   input << "\t\ttag = ITA\n";
+   input << "\t\ttag = SIC\n";
+   input << "\t}\n";
+   const Role role = importer.ImportRole("", input);
+
+   std::unique_ptr<Trigger> tag_trigger_ita_one = std::make_unique<TagTrigger>("ITA");
+   std::unique_ptr<Trigger> tag_trigger_sic_one = std::make_unique<TagTrigger>("SIC");
+   std::vector<std::unique_ptr<Trigger>> children_one;
+   children_one.push_back(std::move(tag_trigger_ita_one));
+   children_one.push_back(std::move(tag_trigger_sic_one));
+   const AndTrigger and_trigger_one(std::move(children_one));
+   EXPECT_EQ(role.GetTrigger(), and_trigger_one);
 }
 
 }  // namespace hoi4

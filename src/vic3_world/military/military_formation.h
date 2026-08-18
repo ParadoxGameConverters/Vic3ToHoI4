@@ -30,6 +30,7 @@ struct MilitaryFormation
    std::optional<int> ordinal_number;
    std::map<std::string, int> units;
    std::vector<CombatUnit> combat_units;
+   std::vector<std::string> ships;
 
    std::strong_ordering operator<=>(const MilitaryFormation&) const = default;
 };

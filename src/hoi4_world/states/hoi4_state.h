@@ -87,6 +87,7 @@ class State
    [[nodiscard]] int GetAirBaseLevel() const { return air_base_level_; }
    [[nodiscard]] std::set<std::string> GetCores() const { return cores_; }
    [[nodiscard]] bool HasHomeland(const std::string& homeland) const { return homelands_.contains(homeland); }
+   [[nodiscard]] const std::set<std::string>& GetHomelands() const { return homelands_; }
    [[nodiscard]] float GetVic3Infrastructure() const { return vic3_infrastructure_; }
    [[nodiscard]] int GetInfrastructure() const { return infrastructure_; }
 

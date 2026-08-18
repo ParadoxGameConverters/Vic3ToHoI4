@@ -6,6 +6,8 @@
 
 #include "src/hoi4_world/military/ship.h"
 
+
+
 namespace hoi4
 {
 
@@ -15,11 +17,11 @@ void PrintTo(const TaskForce& force, std::ostream* os)
    for (const auto& ship: force.ships)
    {
       *os << fmt::format("{} {} {} {} {} \n",
-          ship.GetName(),
-          ship.GetDefinition(),
-          ship.GetEquipment(),
-          ship.GetLegacyEquipment(),
-          ship.GetVersion());
+          ship.name,
+          ship.definition,
+          ship.equipment,
+          ship.legacy_equipment,
+          ship.version);
    }
 }
 

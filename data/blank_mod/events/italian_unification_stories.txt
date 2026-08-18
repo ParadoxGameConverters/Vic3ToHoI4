@@ -1,0 +1,259 @@
+add_namespace = unification_italy
+
+country_event = {
+    id = unification_italy.10
+    title = unification_italy.10.t
+    desc = unification_italy.10.d
+    picture = GFX_goal_generic_improve_relations
+
+    is_triggered_only = yes
+
+    immediate = {
+        hidden_effect = {
+            check_annex_willingness_FROM = yes
+        }
+    }
+
+    # yes
+    option = {
+        name = unification_italy.10.a
+        effect_tooltip = {
+            FROM = {
+                annex_country = {
+                    target = PREV
+                    transfer_troops = yes
+                }
+            }
+        }
+        FROM = {
+            hidden_effect = { country_event = { id = unification_italy.11 hours = 12 } }
+        }
+        ai_chance = {
+            factor = 10
+            modifier = {
+                check_variable = { Root.annex_willingness > 0 }
+                factor = 2
+            }
+            modifier = {
+                check_variable = { Root.annex_willingness > 10 }
+                factor = 2
+            }
+            modifier = {
+                check_variable = { Root.annex_willingness > 20 }
+                factor = 2
+            }
+            modifier = {
+                is_subject = yes
+                NOT = { is_subject_of = FROM }
+                factor = 0
+            }
+        }
+    }
+
+    # no
+    option = {
+        name = unification_italy.10.b
+        effect_tooltip = {
+            FROM = {
+                create_wargoal = {
+                    type = annex_everything
+                    target = PREV
+                }
+            }
+        }
+        FROM = {
+            hidden_effect = { country_event = { id = unification_italy.12 hours = 12 } }
+        }
+        ai_chance = {
+            factor = 10
+            modifier = {
+                check_variable = { Root.annex_willingness < 0 }
+                factor = 2
+            }
+            modifier = {
+                check_variable = { Root.annex_willingness < 10 }
+                factor = 2
+            }
+            modifier = {
+                check_variable = { Root.annex_willingness < 20 }
+                factor = 2
+            }
+            modifier = {
+                check_variable = { Root.annex_willingness < 40 }
+                factor = 2
+            }
+        }
+    }
+}
+
+# [Country] Swears Allegiance
+country_event = {
+    id = unification_italy.11
+    title = unification_italy.11.t
+    desc = unification_italy.11.d
+    picture = GFX_goal_generic_improve_relations
+
+    is_triggered_only = yes
+
+    option = {
+        name = unification_italy.11.a
+        annex_country = {
+            target = FROM
+            transfer_troops = yes
+        }
+        ai_chance = {
+            factor = 10
+        }
+    }
+}
+
+# [Country] Stands Defiant
+country_event = {
+    id = unification_italy.12
+    title = unification_italy.12.t
+    desc = unification_italy.12.d
+    picture = GFX_goal_generic_improve_relations
+
+    is_triggered_only = yes
+
+    option = {
+        name = unification_italy.12.a
+        create_wargoal = {
+            type = annex_everything
+            target = FROM
+        }
+        ai_chance = {
+            factor = 10
+        }
+    }
+}
+
+country_event = {
+    id = unification_italy.20
+    title = unification_italy.20.t
+    desc = unification_italy.20.d
+    picture = GFX_goal_generic_improve_relations
+
+    is_triggered_only = yes
+
+    immediate = {
+        hidden_effect = {
+            check_annex_willingness_FROM = yes
+        }
+    }
+
+    # yes
+    option = {
+        name = unification_italy.20.a
+        effect_tooltip = {
+            every_owned_state = {
+                limit = {
+                    is_in_array = { global.north_italian_states_array = THIS }
+                }
+                transfer_state_to = FROM
+            }
+        }
+        FROM = {
+            hidden_effect = { country_event = { id = unification_italy.21 hours = 12 } }
+        }
+        ai_chance = {
+            factor = 10
+            modifier = {
+                check_variable = { Root.annex_willingness > 0 }
+                factor = 2
+            }
+            modifier = {
+                check_variable = { Root.annex_willingness > 10 }
+                factor = 2
+            }
+            modifier = {
+                check_variable = { Root.annex_willingness > 20 }
+                factor = 2
+            }
+            modifier = {
+                is_subject = yes
+                NOT = { is_subject_of = FROM }
+                factor = 0
+            }
+        }
+    }
+
+    # no
+    option = {
+        name = unification_italy.20.b
+        effect_tooltip = {
+            FROM = {
+                create_wargoal = {
+                    type = take_claimed_state
+                    target = PREV
+                }
+            }
+        }
+        FROM = {
+            hidden_effect = { country_event = { id = unification_italy.22 hours = 12 } }
+        }
+        ai_chance = {
+            factor = 10
+            modifier = {
+                check_variable = { Root.annex_willingness < 0 }
+                factor = 2
+            }
+            modifier = {
+                check_variable = { Root.annex_willingness < 10 }
+                factor = 2
+            }
+            modifier = {
+                check_variable = { Root.annex_willingness < 20 }
+                factor = 2
+            }
+            modifier = {
+                check_variable = { Root.annex_willingness < 40 }
+                factor = 2
+            }
+        }
+    }
+}
+
+# [Country] gives up North Italian states
+country_event = {
+    id = unification_italy.21
+    title = unification_italy.21.t
+    desc = unification_italy.21.d
+    picture = GFX_goal_generic_improve_relations
+
+    is_triggered_only = yes
+
+    option = {
+        name = unification_italy.21.a
+        every_owned_state = {
+            limit = {
+                is_in_array = { global.north_italian_states_array = THIS }
+            }
+            transfer_state_to = FROM
+        }
+        ai_chance = {
+            factor = 10
+        }
+    }
+}
+
+# [Country] Stands Defiant
+country_event = {
+    id = unification_italy.22
+    title = unification_italy.12.t
+    desc = unification_italy.12.d
+    picture = GFX_goal_generic_improve_relations
+
+    is_triggered_only = yes
+
+    option = {
+        name = unification_italy.22.a
+        create_wargoal = {
+            type = take_claimed_state
+            target = FROM
+        }
+        ai_chance = {
+            factor = 10
+        }
+    }
+}

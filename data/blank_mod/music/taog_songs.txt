@@ -1,0 +1,53 @@
+music_station = "base_music"
+
+#### AST ###
+music = {
+	song = "australia_music_track"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "march_of_determination"
+
+	chance = {
+		base = 1
+	}
+}
+
+#### INS ###
+music = {
+	song = "free_at_last"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "the_dutch_east_indies_music_track"
+
+	chance = {
+		base = 1
+	}
+}
+
+#### SIA ###
+music = {
+	song = "march_of_the_free"
+
+	chance = {
+		base = 1
+	}
+}
+
+music = {
+	song = "the_struggle_for_power"
+
+	chance = {
+		base = 1
+	}
+}
+

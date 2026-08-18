@@ -24,7 +24,7 @@ jobs:
       run: echo "c:\program files\ninja" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
     - name: "Cloning repo"
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         fetch-depth: 0
         submodules: recursive
@@ -41,7 +41,7 @@ jobs:
        git tag
 
     - name: "Generate semantic version number"
-      uses: paulhatch/semantic-version@v6.0.2
+      uses: paulhatch/semantic-version@v6.0.3
       id: version_number
       with:
         # The prefix to use to identify tags
@@ -78,8 +78,8 @@ jobs:
        echo 'minSource = "1.12"' | out-file data/version.txt -encoding ASCII -append
        echo 'maxSource = "1.12"' | out-file data/version.txt -encoding ASCII -append
        echo 'target = "HoI4"' | out-file data/version.txt -encoding ASCII -append
-       echo 'minTarget = "1.18"' | out-file data/version.txt -encoding ASCII -append
-       echo 'maxTarget = "1.18"' | out-file data/version.txt -encoding ASCII -append
+       echo 'minTarget = "1.19"' | out-file data/version.txt -encoding ASCII -append
+       echo 'maxTarget = "1.19"' | out-file data/version.txt -encoding ASCII -append
        cat data/version.txt
 
     - name: Build with cmake
@@ -151,7 +151,7 @@ jobs:
 
     steps:
     - name: "Cloning repo"
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         submodules: recursive
 

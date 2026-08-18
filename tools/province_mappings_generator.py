@@ -9,7 +9,7 @@ for filename in os.listdir(directory):
   if os.path.isfile(filename):
     file_string = os.path.splitext(os.path.basename(filename))[0][3:]
     print('\tlink = { comment = "* **********" }')
-    print('\tlink = { comment = ' + file_string + ' }')
+    print('\tlink = { comment = "' + file_string + '" }')
     print('\tlink = { comment = "* **********" }')
     print('\tlink = { comment = "* " }')
 

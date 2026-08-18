@@ -41,12 +41,15 @@ armor_generic = {
 				engineer = 1
 				mot_recon = 1
 				artillery = 1
-				anti_tank = 1
 			}
-			
+
+			regimental_support = {
+				anti_tank_battery = 1
+			}
+
 			regiments = {
-				light_armor = 5
-				motorized = 4
+				light_armor = 3
+				motorized = 6
 			}
 		}
 		
@@ -149,14 +152,20 @@ armor_generic = {
 			support = {
 				engineer = 1
 				mot_recon = 1
+				artillery = 1
 				maintenance_company = 1
 				logistics_company = 1
 			}
 			
+			regimental_support = {
+				anti_air_battery = 1
+				anti_tank_battery = 1 
+			}
+
 			regiments = {
-				medium_armor = 4
-				light_armor = 2
-				motorized = 4
+				medium_armor = 2
+				light_armor = 1
+				motorized = 6
 			}
 		}
 		
@@ -188,14 +197,20 @@ armor_generic = {
 			
 			support = {
 				engineer = 1
-				armored_car_recon = 1
+				mot_recon = 1
+				artillery = 1
 				maintenance_company = 1
 				logistics_company = 1
 			}
 			
+			regimental_support = {
+				anti_air_battery = 1
+				anti_tank_battery = 1
+			}
+
 			regiments = {
-				medium_armor = 6
-				motorized = 4
+				medium_armor = 3
+				motorized = 7
 			}
 		}
 		
@@ -222,15 +237,20 @@ armor_generic = {
 			
 			support = {
 				engineer = 1
-				light_tank_recon = 1
+				mot_recon = 1
 				maintenance_company = 1
 				logistics_company = 1
 				signal_company = 1
 			}
 			
+			regimental_support = {
+				anti_air_battery = 1
+				anti_tank_battery = 1
+			}
+
 			regiments = {
-				modern_armor = 6
-				mechanized = 4
+				modern_armor = 3
+				mechanized = 7
 				modern_sp_artillery_brigade = 1
 			}
 		}
@@ -282,7 +302,7 @@ suppression_generic = {
 		base = 0.5
 
 		modifier = {
-			factor = 20
+			factor = 10
 			has_war = yes
 		}
 	}
@@ -303,7 +323,7 @@ suppression_generic = {
 			}
 
 			regiments = {
-				cavalry = 4
+				cavalry = 9
 			}
 		}
 	}
@@ -332,9 +352,12 @@ infantry_generic = {
 			support = {
 				engineer = 1
 				recon = 1
-				logistics_company = 1
-				anti_air = 1
 				artillery = 1
+			}
+
+			regimental_support = {
+				anti_tank_battery = 1
+				fire_support = 1
 			}
 			
 			regiments = {
@@ -364,9 +387,14 @@ infantry_generic = {
 			support = {
 				engineer = 1
 				recon = 1
+				artillery = 1
 				logistics_company = 1
-				anti_air = 1
-				anti_tank = 1
+			}
+
+			regimental_support = {
+				anti_air_battery = 1
+				anti_tank_battery = 1
+				fire_support = 1
 			}
 			
 			regiments = {
@@ -407,13 +435,16 @@ mountaineers_generic = {
 			support = {
 				engineer = 1
 				artillery = 1
-				anti_tank = 1
 				logistics_company = 1
 			}
 			
+			regimental_support = {
+				anti_air_battery = 1
+				anti_tank_battery = 1
+			}
+
 			regiments = {
-				mountaineers = 8
-				artillery_brigade = 2
+				mountaineers = 9
 			}
 		}
 	}
@@ -447,10 +478,16 @@ marines_generic = {
 		target_template = {
 			
 			support = {
-				recon = 1
+				engineer = 1
 				logistics_company = 1
+				artillery = 1
 			}
 			
+			regimental_support = {
+				anti_air_battery = 1
+				anti_tank_battery = 1
+			}
+
 			regiments = {
 				marine = 9
 			}
@@ -488,12 +525,18 @@ marines_generic = {
 			
 			support = {
 				recon = 1
-				logistics_company = 1
 				engineer = 1
+				artillery = 1
+				logistics_company = 1
 			}
 			
+			regimental_support = {
+				anti_air_battery = 1
+				anti_tank_battery = 1
+			}
+
 			regiments = {
-				amphibious_armor = 4
+				amphibious_armor = 3
 				amphibious_mechanized = 6
 			}
 		}
@@ -530,8 +573,11 @@ paratrooper_generic = {
 			
 			support = {
 				engineer = 1
-				artillery = 1
-				anti_tank = 1
+				recon = 1
+			}
+
+			regimental_support = {
+				field_guns = 2
 			}
 			
 			regiments = {
@@ -570,14 +616,18 @@ rangers_generic = {
 			
 			support = {
 				engineer = 1
-				artillery = 1
-				recon = 1
+				rangers_support = 1
 				logistics_company = 1
+				artillery = 1
+			}
+
+			regimental_support = {
+				anti_air_battery = 1
+				anti_tank_battery = 1
 			}
 			
 			regiments = {
-				ranger_battalion = 8
-				artillery_brigade = 2
+				ranger_battalion = 9
 			}
 		}
 	}
@@ -673,6 +723,29 @@ super_heavy_generic = {
 	}
 }
 
+hq_generic = {
+	role = hq_role
+	
+	upgrade_prio = {
+		base = 0
+	}
+
+	hq_default = {
+		upgrade_prio = {
+			base = 0
+		}
+
+		target_template = {
+			support = {
+				hq_support_company = 1
+			}
+			
+			regiments = {
+				infantry = 4
+			}
+		}
+	}
+}
 
 
 # Non-complete list of sub-units
@@ -707,9 +780,15 @@ super_heavy_generic = {
 # - signal_company
 # - maintenance_company
 # - artillery
-# - anti_air
-# - anti_tank
 # - field_hospital
 # - logistics_company
 # - military_police
 # - rocket_artillery
+
+# SUPPORT (REGIMENTAL):
+# - anti_air
+# - anti_tank
+# - field_guns
+# - fire_support
+# - mot_fire_support
+# - rocket_battery

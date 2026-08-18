@@ -40,6 +40,10 @@ struct WorldOptions
    Localizations localizations;
    std::map<int, Character> characters;
    std::map<std::string, vic3::CultureDefinition> culture_definitions;
+   // culture -> states with culture as homeland
+   std::map<std::string, std::set<int>> homelands;
+   // culture -> countries with culture as primary culture
+   std::map<std::string, std::set<std::string>> primary_culture_countries;
 };
 
 
@@ -57,7 +61,9 @@ class World
        railways_(std::move(options.railways)),
        localizations_(std::move(options.localizations)),
        characters_(std::move(options.characters)),
-       culture_definitions_(std::move(options.culture_definitions))
+       culture_definitions_(std::move(options.culture_definitions)),
+       homelands_(std::move(options.homelands)),
+       primary_culture_countries_(std::move(options.primary_culture_countries))
    {
    }
 
@@ -75,12 +81,18 @@ class World
    {
       return culture_definitions_;
    }
+   [[nodiscard]] const std::map<std::string, std::set<int>>& GetHomelands() const { return homelands_; }
+   [[nodiscard]] const std::map<std::string, std::set<std::string>>& GetPrimaryCultureCountries() const
+   {
+      return primary_culture_countries_;
+   }
    [[nodiscard]] const std::set<DecisionsCategory>& GetDecisionsCategories() const { return decisions_categories_; }
    [[nodiscard]] const std::map<std::string, std::vector<Decision>>& GetDecisionsInCategories() const
    {
       return decisions_in_categories_;
    }
    [[nodiscard]] const std::map<std::string, std::vector<Event>>& GetEvents() const { return country_events_; }
+   [[nodiscard]] const std::vector<std::string>& GetScriptedEffects() const { return scripted_effects_; }
 
    [[nodiscard]] std::map<std::string, Country>& GetModifiableCountries() { return countries_; }
 
@@ -101,6 +113,11 @@ class World
       country_events_ = std::move(country_events);
    }
 
+   void SetScriptedEffects(std::vector<std::string> scripted_effects)
+   {
+      scripted_effects_ = std::move(scripted_effects);
+   }
+
   private:
    std::map<std::string, Country> countries_;
    std::set<TagAlias> tag_aliases_;
@@ -113,11 +130,17 @@ class World
    Localizations localizations_;
    std::map<int, Character> characters_;
    std::map<std::string, vic3::CultureDefinition> culture_definitions_;
+   // culture -> states with culture as homeland
+   std::map<std::string, std::set<int>> homelands_;
+   // culture -> cultures with countries as primary culture
+   std::map<std::string, std::set<std::string>> primary_culture_countries_;
 
    std::set<DecisionsCategory> decisions_categories_;
    std::map<std::string, std::vector<Decision>> decisions_in_categories_;
 
    std::map<std::string, std::vector<Event>> country_events_;
+
+   std::vector<std::string> scripted_effects_;
 };
 
 }  // namespace hoi4

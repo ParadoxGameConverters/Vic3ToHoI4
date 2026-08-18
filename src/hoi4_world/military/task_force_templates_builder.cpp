@@ -31,34 +31,34 @@ std::vector<hoi4::TaskForceTemplate> hoi4::ImportTaskForceTemplates(const std::f
    });
    template_parser.registerKeyword("ship", [&ships](std::istream& input_stream) {
       const commonItems::simpleObject ship_values(input_stream);
-      const hoi4::Ship ship(ShipOptions{
+      const hoi4::Ship ship{
           .name = commonItems::remQuotes(ship_values.getValue("name")),
           .definition = ship_values.getValue("definition"),
           .equipment = ship_values.getValue("equipment"),
           .legacy_equipment = ship_values.getValue("legacy_equipment"),
           .version = commonItems::remQuotes(ship_values.getValue("version")),
-      });
-      if (ship.GetName().empty())
+      };
+      if (ship.name.empty())
       {
          Log(LogLevel::Warning) << "Ignore ship without name";
          return;
       }
-      if (ship.GetDefinition().empty())
+      if (ship.definition.empty())
       {
          Log(LogLevel::Warning) << "Ignore ship without definition";
          return;
       }
-      if (ship.GetEquipment().empty())
+      if (ship.equipment.empty())
       {
          Log(LogLevel::Warning) << "Ignore ship without equipment";
          return;
       }
-      if (ship.GetLegacyEquipment().empty())
+      if (ship.legacy_equipment.empty())
       {
          Log(LogLevel::Warning) << "Ignore ship without legacy_equipment";
          return;
       }
-      if (ship.GetVersion().empty())
+      if (ship.version.empty())
       {
          Log(LogLevel::Warning) << "Ignore ship without version";
          return;

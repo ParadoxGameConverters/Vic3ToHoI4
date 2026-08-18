@@ -1,0 +1,26 @@
+is_potential_friend_of_ROOT = {
+	custom_trigger_tooltip = {
+		tooltip = is_potential_friend_of_ROOT_tt
+		exists = yes
+		has_capitulated = no
+		is_puppet = no
+		is_in_faction = no
+		NOT = { has_war_with = ROOT }
+	}
+}
+
+
+
+### State scope
+is_owned_by_ROOT_or_ally = {
+	custom_trigger_tooltip = {
+		tooltip = is_owned_by_ROOT_or_ally
+		OWNER = {
+			OR = {
+				tag = ROOT
+				is_in_faction_with = ROOT
+				is_subject_of = ROOT
+			}
+		}
+	}
+}

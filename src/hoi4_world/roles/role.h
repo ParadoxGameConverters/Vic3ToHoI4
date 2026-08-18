@@ -35,6 +35,7 @@ struct RoleOptions
    std::vector<DecisionsCategory> decisions_categories;
    std::map<std::string, std::vector<Decision>> decisions_in_categories;
    std::vector<Event> events;
+   std::vector<std::string> scripted_effects;
 };
 
 
@@ -55,7 +56,8 @@ class Role
        removed_focuses_(std::move(options.removed_focuses)),
        decisions_categories_(std::move(options.decisions_categories)),
        decisions_in_categories_(std::move(options.decisions_in_categories)),
-       events_(std::move(options.events))
+       events_(std::move(options.events)),
+       scripted_effects_(std::move(options.scripted_effects))
    {
    }
    Role(const Role& rhs);
@@ -79,6 +81,7 @@ class Role
       return decisions_in_categories_;
    }
    [[nodiscard]] const std::vector<Event>& GetEvents() const { return events_; }
+   [[nodiscard]] const std::vector<std::string>& GetScriptedEffects() const { return scripted_effects_; }
 
    std::partial_ordering operator<=>(const Role& other) const;
    bool operator==(const Role& other) const { return (*this <=> other) == std::partial_ordering::equivalent; }
@@ -100,6 +103,7 @@ class Role
    std::vector<DecisionsCategory> decisions_categories_;
    std::map<std::string, std::vector<Decision>> decisions_in_categories_;
    std::vector<Event> events_;
+   std::vector<std::string> scripted_effects_;
 };
 
 }  // namespace hoi4

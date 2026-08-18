@@ -13,6 +13,9 @@ EventImporter::EventImporter()
    event_parser_.registerKeyword("id", [this](std::istream& the_stream) {
       id_ = commonItems::getString(the_stream);
    });
+   event_parser_.registerKeyword("namespace", [this](std::istream& the_stream) {
+      event_namespace_ = commonItems::getString(the_stream);
+   });
    event_parser_.registerKeyword("title", [this](std::istream& the_stream) {
       title_ = commonItems::getString(the_stream);
    });
@@ -53,6 +56,7 @@ EventImporter::EventImporter()
 Event EventImporter::ImportEvent(std::string_view type, std::istream& input)
 {
    id_.clear();
+   event_namespace_.clear();
    title_.reset();
    descriptions_.clear();
    picture_.reset();
@@ -70,6 +74,7 @@ Event EventImporter::ImportEvent(std::string_view type, std::istream& input)
    return {
        .type = std::string(type),
        .id = id_,
+       .event_namespace = event_namespace_,
        .title = title_,
        .descriptions = descriptions_,
        .picture = picture_,

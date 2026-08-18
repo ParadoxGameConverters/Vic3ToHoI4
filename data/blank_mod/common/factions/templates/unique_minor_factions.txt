@@ -121,3 +121,50 @@ faction_template_PRC_asian_democratic_union = {
 	}
 }
 
+##############
+#### TAOG ####
+##############
+faction_template_AST_pacific_resistance = {
+	name = AST_pacific_resistance
+	manifest = faction_manifest_suppress_regional_fascism 
+	icon = GFX_faction_logo_generic_19 
+
+	goals = {
+
+		# Short 
+		faction_goal_unlock_research
+
+		# Medium 
+
+		# Long 
+		faction_goal_defeating_our_enemies
+		
+	}
+
+	default_rules = {
+		dismissal_rule_ideology_not_democratic
+		government_in_exile_allowed
+	}
+}
+
+faction_template_AST_nations_of_the_empire = {
+	name = AST_nations_of_the_empire
+	manifest = faction_manifest_protector_of_peace  
+	icon = GFX_faction_logo_generic_15 
+
+	goals = {
+
+		# Short 
+		faction_goal_unlock_research
+
+		# Medium 
+
+		# Long 
+		faction_goal_industrial_domination
+		
+	}
+
+	default_rules = {
+		government_in_exile_allowed
+	}
+}

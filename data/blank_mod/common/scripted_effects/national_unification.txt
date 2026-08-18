@@ -1,0 +1,199 @@
+check_annex_willingness_FROM = {
+	set_variable = { This.annex_willingness = -45 } #init with -45 willingness (-50 + 5 for shared culture)
+	custom_effect_tooltip = pw.base
+	#check ratio of divisions
+	set_temp_variable = { FROM.num_divs8 = FROM.num_divisions }
+	divide_temp_variable = { FROM.num_divs8 = 8 } #number of FROM's divisions/8
+	set_temp_variable = { FROM.num_divs4 = FROM.num_divisions }
+	divide_temp_variable = { FROM.num_divs4 = 4 } #number of FROM's divisions/4
+	set_temp_variable = { FROM.num_divs2 = FROM.num_divisions }
+	divide_temp_variable = { FROM.num_divs2 = 2 } #number of FROM's divisions/2
+	if = {
+		limit = {
+			check_variable = { This.num_divisions < FROM.num_divs8 } #more than 8 times the divs
+		}
+		add_to_variable = { This.annex_willingness = 40 } #-10
+		custom_effect_tooltip = pw.8div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < FROM.num_divs4 } #more than 4 times the divs
+		}
+		add_to_variable = { This.annex_willingness = 20 } #-30
+		custom_effect_tooltip = pw.4div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < FROM.num_divs2 } #more than double the divs
+		}
+		add_to_variable = { This.annex_willingness = 10 } #-40
+		custom_effect_tooltip = pw.2div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < FROM.num_divisions } #more divs
+		}
+		add_to_variable = { This.annex_willingness = 5 } #-45
+		custom_effect_tooltip = pw.div
+	}
+	#check ruling party popularity
+	set_variable = { FROM.rpp@This = This.party_popularity@ruling_party }
+	subtract_from_variable = { FROM.rpp@This = 50 }
+	divide_variable = { FROM.rpp@This = 5 }
+	round_variable = FROM.rpp@This
+	subtract_from_variable = { This.annex_willingness = FROM.rpp@This } #+-10
+		custom_effect_tooltip = pw.rp
+	#check stability
+	set_variable = { FROM.stab@This = This.stability }
+	multiply_variable = { FROM.stab@This = 10 }
+	subtract_from_variable = { FROM.stab@This = 5 }
+	round_variable = FROM.stab@This
+	subtract_from_variable = { This.annex_willingness = FROM.stab@This } #+-5
+		custom_effect_tooltip = pw.stab
+	#check factory ratio
+	set_temp_variable = { FROM.num_factory8 = FROM.num_of_factories }
+	divide_temp_variable = { FROM.num_factory8 = 8 } #number of FROM's factories/8
+	set_temp_variable = { FROM.num_factory4 = FROM.num_of_factories }
+	divide_temp_variable = { FROM.num_factory4 = 4 } #number of FROM's factories/4
+	set_temp_variable = { FROM.num_factory2 = FROM.num_of_factories }
+	divide_temp_variable = { FROM.num_factory2 = 2 } #number of FROM's factories/2
+	if = {
+		limit = {
+			check_variable = { This.num_of_factories < FROM.num_factory8 } #more than 8 times the facs
+		}
+		add_to_variable = { This.annex_willingness = 20 } #-30
+		custom_effect_tooltip = pw.8fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < FROM.num_factory4 } #more than 4 times the facs
+		}
+		add_to_variable = { This.annex_willingness = 15 } #-35
+		custom_effect_tooltip = pw.4fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < FROM.num_factory2 } #more than double the facs
+		}
+		add_to_variable = { This.annex_willingness = 10 } #-40
+		custom_effect_tooltip = pw.2fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < FROM.num_of_factories } #more facs
+		}
+		add_to_variable = { This.annex_willingness = 5 } #-45
+		custom_effect_tooltip = pw.fac
+	}
+	#check number of states
+	set_temp_variable = { FROM.num_states2 = FROM.num_of_controlled_states }
+	divide_temp_variable = { FROM.num_states2 = 2 } #number of FROM's states/2
+	set_temp_variable = { FROM.2num_states = FROM.num_of_controlled_states }
+	multiply_temp_variable = { FROM.2num_states = 2 } #number of FROM's states/2
+	if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < 2 } #1 state minor
+			FROM = { num_of_controlled_states > 9 }
+		}
+		add_to_variable = { This.annex_willingness = 20 } #-30
+		custom_effect_tooltip = pw.1st
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < 5 } #up to 4 states
+			FROM = { num_of_controlled_states > 19 }
+		}
+		add_to_variable = { This.annex_willingness = 10 } #-30
+		custom_effect_tooltip = pw.minor
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < FROM.num_states2 } #up to half as many as FROM
+		}
+		add_to_variable = { This.annex_willingness = 5 } #-30
+		custom_effect_tooltip = pw.halfst
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < FROM.num_of_controlled_states } #just less than FROM
+		}
+		custom_effect_tooltip = pw.lessst
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states > FROM.2num_states } #more than twice FROM
+		}
+		subtract_from_variable = { This.annex_willingness = 10 } #-30
+		custom_effect_tooltip = pw.twicest
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states > FROM.num_of_controlled_states } #just more than FROM
+		}
+		subtract_from_variable = { This.annex_willingness = 5 } #-30
+		custom_effect_tooltip = pw.morest
+	}
+
+	#opinion
+	set_variable = { FROM.opin@This = This.opinion@FROM }
+	divide_variable = { FROM.opin@This = 10 }
+	round_variable = FROM.opin@This
+	add_to_variable = { This.annex_willingness = FROM.opin@This } #+-10
+		custom_effect_tooltip = pw.opin
+
+
+	if = {
+		limit = {
+			has_government = communism
+		}
+		subtract_from_variable = { This.annex_willingness = 10 }
+		custom_effect_tooltip = pw.comm
+	}
+	if = {
+		limit = {
+			has_government = fascism
+		}
+		subtract_from_variable = { This.annex_willingness = 5 }
+		custom_effect_tooltip = pw.fasc
+	}
+	if = {
+		limit = {
+			has_government = democratic
+		}
+		subtract_from_variable = { This.annex_willingness = 10 }
+		custom_effect_tooltip = pw.demo
+	}
+	if = {
+		limit = {
+			is_owner_neighbor_of = FROM
+		}
+		add_to_variable = { This.annex_willingness = 5 }
+		custom_effect_tooltip = pw.core_n
+	}
+	else_if = {
+		limit = {
+			any_neighbor_country = {
+				is_subject_of = FROM
+			}
+		}
+		add_to_variable = { This.annex_willingness = 5 }
+		custom_effect_tooltip = pw.core_pup
+	}
+	else_if = {
+		limit = {
+			is_neighbor_of = FROM
+		}
+		custom_effect_tooltip = pw.n
+	}
+	else = {
+		subtract_from_variable = { This.annex_willingness = 5 }
+		custom_effect_tooltip = pw.not_n
+	}
+	if = {
+		limit = {
+			has_variable = pw_focus
+		}
+		add_to_variable = { This.annex_willingness = pw_focus }
+		custom_effect_tooltip = pw.focus
+	}
+}
