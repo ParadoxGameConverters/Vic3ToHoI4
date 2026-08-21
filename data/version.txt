@@ -1,7 +1,7 @@
 # Version info - if editing, remember to also update the workflow, which generates a fresh copy of this
 
-version = "0.9.0"
-name = "Halsey"
+version = "1.0.0"
+name = "Ironside"
 source = "Vic3"
 minSource = "1.13"
 maxSource = "1.13"
