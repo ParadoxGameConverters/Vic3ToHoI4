@@ -29,10 +29,12 @@ class CharacterImporter
 
    int culture_id_ = 0;
    bool is_female_ = false;
+   int ig_id_ = 0;
    std::set<std::string> roles_;
    int rank_ = 0;
    std::string ideology_;
    std::set<std::string> traits_;
+   std::optional<int> origin_country_id_;
    std::optional<int64_t> formation_id_;
 };
 

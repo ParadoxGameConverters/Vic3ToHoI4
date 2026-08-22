@@ -83,11 +83,22 @@ void AreVic3ProvincesFromSameState(const std::vector<std::string>& provinces_fro
    {
       for (const auto& province_from_map: provinces_from_map)
       {
-         Log(LogLevel::Debug) << fmt::format(
-             "Province {} is designated as part of {} in Vic3 data and is placed in a mapping with provinces from "
-             "other states.",
-             province_from_map,
-             province_to_state_map.at(province_from_map));
+         if (province_to_state_map.contains(province_from_map))
+         {
+            Log(LogLevel::Debug) << fmt::format(
+                "Province {} is designated as part of {} in Vic3 data and is placed in a mapping with provinces from "
+                "other states.",
+                province_from_map,
+                province_to_state_map.at(province_from_map));
+         }
+         else
+         {
+            Log(LogLevel::Debug) << fmt::format(
+                "Province {} is not designated as part of any state in Vic3 data and is placed in a mapping with "
+                "provinces from "
+                "other states.",
+                province_from_map);
+         }
       }
    }
 }
