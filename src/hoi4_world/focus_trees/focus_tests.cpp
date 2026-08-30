@@ -10,7 +10,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldFocustreesFocusTests, ReplacementIsApplied)
+TEST(Hoi4worldFocustreesFocusTests, ReplacementIsApplied)  // NOLINT(cert-err58-cpp)
 {
    Focus focus;
 

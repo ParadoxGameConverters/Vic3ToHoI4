@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldCulturesCulturesImporter, NoCulturesOnEmptyInput)
+TEST(Vic3WorldCulturesCulturesImporter, NoCulturesOnEmptyInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const std::map<int, Culture> cultures = ImportCultures(input);
@@ -19,7 +19,7 @@ TEST(Vic3WorldCulturesCulturesImporter, NoCulturesOnEmptyInput)
 }
 
 
-TEST(Vic3WorldCulturesCulturesImporter, CulturesCanBeImported)
+TEST(Vic3WorldCulturesCulturesImporter, CulturesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -44,7 +44,7 @@ TEST(Vic3WorldCulturesCulturesImporter, CulturesCanBeImported)
 }
 
 
-TEST(Vic3WorldCulturesCulturesImporter, CulturesSetAsNoneAreMarkedBroken)
+TEST(Vic3WorldCulturesCulturesImporter, CulturesSetAsNoneAreMarkedBroken)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -66,7 +66,7 @@ TEST(Vic3WorldCulturesCulturesImporter, CulturesSetAsNoneAreMarkedBroken)
 }
 
 
-TEST(Vic3WorldCulturesCulturesImporter, CulturesImportsAreLogged)
+TEST(Vic3WorldCulturesCulturesImporter, CulturesImportsAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -92,7 +92,7 @@ TEST(Vic3WorldCulturesCulturesImporter, CulturesImportsAreLogged)
 }
 
 
-TEST(Vic3WorldCulturesCulturesImporter, NonEmptyDeadCulturesAreLogged)
+TEST(Vic3WorldCulturesCulturesImporter, NonEmptyDeadCulturesAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

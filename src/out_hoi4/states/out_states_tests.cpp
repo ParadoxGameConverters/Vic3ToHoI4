@@ -19,7 +19,7 @@ using std::filesystem::create_directories;
 namespace out
 {
 
-TEST(Outhoi4StatesStates, StatesAreOutput)
+TEST(Outhoi4StatesStates, StatesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/StatesAreOutput/history/states");
 

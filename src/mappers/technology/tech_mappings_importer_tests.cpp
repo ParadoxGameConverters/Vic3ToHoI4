@@ -9,7 +9,7 @@
 namespace mappers
 {
 
-TEST(MappersTechnologyTechmappingsimporterTests, TechMappingsAreImported)
+TEST(MappersTechnologyTechmappingsimporterTests, TechMappingsAreImported)  // NOLINT(cert-err58-cpp)
 {
    const std::vector<TechMapping> tech_mappings = ImportTechMappings();
 

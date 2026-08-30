@@ -9,7 +9,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldDecisionsDecisionTests, EqualDecisionsAreEqual)
+TEST(Hoi4worldDecisionsDecisionTests, EqualDecisionsAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const Decision decision{.name = "decision_name"};
    const Decision second_decision{.name = "decision_name"};
@@ -18,7 +18,7 @@ TEST(Hoi4worldDecisionsDecisionTests, EqualDecisionsAreEqual)
 }
 
 
-TEST(Hoi4worldDecisionsDecisionTests, UnequalDecisionsAreUnequal)
+TEST(Hoi4worldDecisionsDecisionTests, UnequalDecisionsAreUnequal)  // NOLINT(cert-err58-cpp)
 {
    const Decision decision{.name = "decision_name"};
    const Decision second_decision{.name = "decision_name_two"};

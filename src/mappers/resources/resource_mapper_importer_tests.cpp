@@ -11,7 +11,7 @@ constexpr float kTolerance = 0.0001F;
 namespace mappers
 {
 
-TEST(MappersResourcesResourceMapperImporterTests, RulesCanBeImported)
+TEST(MappersResourcesResourceMapperImporterTests, RulesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const ResourceMapper mapper = ImportResourceMapper("test_files/configurables/resource_mappings.txt");
    std::vector<vic3::Building> buildings{

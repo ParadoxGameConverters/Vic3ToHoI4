@@ -10,14 +10,14 @@
 namespace mappers
 {
 
-TEST(MappersIdeologyIdeologyMapperTests, NoRulesMeansNoPoints)
+TEST(MappersIdeologyIdeologyMapperTests, NoRulesMeansNoPoints)  // NOLINT(cert-err58-cpp)
 {
    const IdeologyMapper ideology_mapper({}, {});
    EXPECT_TRUE(ideology_mapper.CalculateIdeologyPoints({}).empty());
 }
 
 
-TEST(MappersIdeologyIdeologyMapperTests, IdeologyPointsAreCalculated)
+TEST(MappersIdeologyIdeologyMapperTests, IdeologyPointsAreCalculated)  // NOLINT(cert-err58-cpp)
 {
    const IdeologyMapper ideology_mapper(
        {
@@ -45,14 +45,14 @@ TEST(MappersIdeologyIdeologyMapperTests, IdeologyPointsAreCalculated)
            testing::Pair("neutrality", 25)));
 }
 
-TEST(MappersIdeologyIdeologyMapperTests, NoRulesMeansNeutralityIdeology)
+TEST(MappersIdeologyIdeologyMapperTests, NoRulesMeansNeutralityIdeology)  // NOLINT(cert-err58-cpp)
 {
    const IdeologyMapper ideology_mapper({}, {});
    EXPECT_EQ(ideology_mapper.GetRulingIdeology({}), "neutrality");
 }
 
 
-TEST(MappersIdeologyIdeologyMapperTests, HighestRatedIdeologyWins)
+TEST(MappersIdeologyIdeologyMapperTests, HighestRatedIdeologyWins)  // NOLINT(cert-err58-cpp)
 {
    const IdeologyMapper ideology_mapper(
        {
@@ -77,7 +77,7 @@ TEST(MappersIdeologyIdeologyMapperTests, HighestRatedIdeologyWins)
 }
 
 
-TEST(MappersIdeologyIdeologyMapperTests, NoMatchedLawsMeansNeutralityIdeology)
+TEST(MappersIdeologyIdeologyMapperTests, NoMatchedLawsMeansNeutralityIdeology)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -111,7 +111,7 @@ TEST(MappersIdeologyIdeologyMapperTests, NoMatchedLawsMeansNeutralityIdeology)
 }
 
 
-TEST(MappersIdeologyIdeologyMapperTests, UnmatchedIdeologyMeansDespotismSubIdeology)
+TEST(MappersIdeologyIdeologyMapperTests, UnmatchedIdeologyMeansDespotismSubIdeology)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -126,7 +126,7 @@ TEST(MappersIdeologyIdeologyMapperTests, UnmatchedIdeologyMeansDespotismSubIdeol
 }
 
 
-TEST(MappersIdeologyIdeologyMapperTests, HighestRatedSubIdeologyWins)
+TEST(MappersIdeologyIdeologyMapperTests, HighestRatedSubIdeologyWins)  // NOLINT(cert-err58-cpp)
 {
    const IdeologyMapper ideology_mapper({},
        {
@@ -169,7 +169,7 @@ TEST(MappersIdeologyIdeologyMapperTests, HighestRatedSubIdeologyWins)
 }
 
 
-TEST(MappersIdeologyIdeologyMapperTests, NoMatchedLawsMeansDespotismSubIdeology)
+TEST(MappersIdeologyIdeologyMapperTests, NoMatchedLawsMeansDespotismSubIdeology)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();

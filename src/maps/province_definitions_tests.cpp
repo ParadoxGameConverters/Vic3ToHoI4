@@ -8,7 +8,7 @@
 namespace maps
 {
 
-TEST(MapsProvincedefinitions, LandProvincesDefaultToEmpty)
+TEST(MapsProvincedefinitions, LandProvincesDefaultToEmpty)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions;
 
@@ -16,7 +16,7 @@ TEST(MapsProvincedefinitions, LandProvincesDefaultToEmpty)
 }
 
 
-TEST(MapsProvincedefinitions, LandProvincesAreReturned)
+TEST(MapsProvincedefinitions, LandProvincesAreReturned)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions({.land_provinces = {"1", "2", "3", "4", "0x000005"}});
 
@@ -24,7 +24,7 @@ TEST(MapsProvincedefinitions, LandProvincesAreReturned)
 }
 
 
-TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotLandProvinces)
+TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotLandProvinces)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions;
 
@@ -33,7 +33,7 @@ TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotLandProvinces)
 }
 
 
-TEST(MapsProvincedefinitions, ProvincesCanBeShownAreLandProvinces)
+TEST(MapsProvincedefinitions, ProvincesCanBeShownAreLandProvinces)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions({.land_provinces = {"1", "0x000002"}});
 
@@ -42,7 +42,7 @@ TEST(MapsProvincedefinitions, ProvincesCanBeShownAreLandProvinces)
 }
 
 
-TEST(MapsProvincedefinitions, SeaProvincesAreReturned)
+TEST(MapsProvincedefinitions, SeaProvincesAreReturned)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions({.sea_provinces = {"1", "2", "3", "4", "0x000005"}});
 
@@ -50,7 +50,7 @@ TEST(MapsProvincedefinitions, SeaProvincesAreReturned)
 }
 
 
-TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotSeaProvinces)
+TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotSeaProvinces)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions;
 
@@ -59,7 +59,7 @@ TEST(MapsProvincedefinitions, ProvincesCanBeShownAreNotSeaProvinces)
 }
 
 
-TEST(MapsProvincedefinitions, ProvincesCanBeShownAreSeaProvinces)
+TEST(MapsProvincedefinitions, ProvincesCanBeShownAreSeaProvinces)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions({.sea_provinces = {"1", "0x000002"}});
 
@@ -68,7 +68,7 @@ TEST(MapsProvincedefinitions, ProvincesCanBeShownAreSeaProvinces)
 }
 
 
-TEST(MapsProvincedefinitions, ColorWithNoProvinceReturnsNullopt)
+TEST(MapsProvincedefinitions, ColorWithNoProvinceReturnsNullopt)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions;
 
@@ -76,7 +76,7 @@ TEST(MapsProvincedefinitions, ColorWithNoProvinceReturnsNullopt)
 }
 
 
-TEST(MapsProvincedefinitions, ProvincesCanBeLookedUpByColor)
+TEST(MapsProvincedefinitions, ProvincesCanBeLookedUpByColor)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions(
        {.color_to_province_map = {{{0x01'02'03, "1"}, {0x10'20'30, "0x000010"}}}});
@@ -86,7 +86,7 @@ TEST(MapsProvincedefinitions, ProvincesCanBeLookedUpByColor)
 }
 
 
-TEST(MapsProvincedefinitions, TerrainTypeDefaultsToNullopt)
+TEST(MapsProvincedefinitions, TerrainTypeDefaultsToNullopt)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions;
 
@@ -95,7 +95,7 @@ TEST(MapsProvincedefinitions, TerrainTypeDefaultsToNullopt)
 }
 
 
-TEST(MapsProvincedefinitions, TerrainTypeCanBeLookedUp)
+TEST(MapsProvincedefinitions, TerrainTypeCanBeLookedUp)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions(
        {.terrain_types = {{"1", "test_terrain"}, {"0x000002", "test_terrain_two"}}});
@@ -105,7 +105,7 @@ TEST(MapsProvincedefinitions, TerrainTypeCanBeLookedUp)
 }
 
 
-TEST(MapsProvincedefinitions, ContinentDefaultsToNullopt)
+TEST(MapsProvincedefinitions, ContinentDefaultsToNullopt)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions;
 
@@ -114,7 +114,7 @@ TEST(MapsProvincedefinitions, ContinentDefaultsToNullopt)
 }
 
 
-TEST(MapsProvincedefinitions, ContinentCanBeLookedUp)
+TEST(MapsProvincedefinitions, ContinentCanBeLookedUp)  // NOLINT(cert-err58-cpp)
 {
    const ProvinceDefinitions province_definitions(
        {.continents = {{"1", "test_continent"}, {"0x000002", "test_continent_two"}}});

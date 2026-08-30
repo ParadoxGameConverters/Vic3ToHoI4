@@ -27,7 +27,7 @@ struct Configuration
    std::string output_name;
    bool dynamic_resources = true;
 
-   void VerifyVic3Path()
+   void VerifyVic3Path() const
    {
       if (!commonItems::DoesFolderExist(vic3_directory))
       {
@@ -40,7 +40,7 @@ struct Configuration
       }
    }
 
-   void VerifyHOI4Path()
+   void VerifyHOI4Path() const
    {
       if (!commonItems::DoesFolderExist(hoi4_directory))
       {

@@ -11,7 +11,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesAliasdefinitionimporterTests, DefaultsAreDefaulted)
+TEST(Hoi4worldRolesAliasdefinitionimporterTests, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -23,7 +23,7 @@ TEST(Hoi4worldRolesAliasdefinitionimporterTests, DefaultsAreDefaulted)
 }
 
 
-TEST(Hoi4worldRolesAliasdefinitionimporterTests, ItemsCanBeInput)
+TEST(Hoi4worldRolesAliasdefinitionimporterTests, ItemsCanBeInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "country_flag = $TAG$_test_flag\n";

@@ -51,10 +51,11 @@ class CountryMappingCreator
 
    // Countries should be added with Znn naming scheme. This always succeeds.
    CountryStrategyFn add_country_with_z_;
-
-   // Attempt to name (or defer naming of) a country. Only the first successful strategy will be used.
-   void ExecuteStrategiesForCountry(const vic3::Country& country, const std::vector<CountryStrategyFn>&& strategies);
 };
+
+
+// Attempt to name (or defer naming of) a country. Only the first successful strategy will be used.
+void ExecuteStrategiesForCountry(const vic3::Country& country, const std::vector<CountryStrategyFn>&& strategies);
 
 }  // namespace mappers
 

@@ -13,6 +13,7 @@
 namespace hoi4
 {
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, IsValidReturnsValueInConstructorIfStateIsCapital)
 {
    const State state(42, {.is_capital = true});
@@ -28,6 +29,7 @@ TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, IsValidReturnsValueInConstruct
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, IsValidReturnsInverseOfValueInConstructorIfStateIsNotCapital)
 {
    const State state(42, {.is_capital = false});
@@ -43,7 +45,7 @@ TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, IsValidReturnsInverseOfValueIn
 }
 
 
-TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, FindAllValidReturnsEmptyVector)
+TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, FindAllValidReturnsEmptyVector)  // NOLINT(cert-err58-cpp)
 {
    const State state(42, {.is_capital = false});
    const Scope scope = StateScope{.state = state};
@@ -55,7 +57,7 @@ TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, FindAllValidReturnsEmptyVector
 }
 
 
-TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const IsCapitalTrigger true_trigger(true);
    const IsCapitalTrigger true_trigger_two(true);
@@ -69,7 +71,7 @@ TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersIsCapitalTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    const IsCapitalTrigger true_trigger(true);
    const std::unique_ptr<Trigger> true_copy = true_trigger.Copy();

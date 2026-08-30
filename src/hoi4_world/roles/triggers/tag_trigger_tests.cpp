@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsTrueIfCountryTagMatches)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsTrueIfCountryTagMatches)  // NOLINT(cert-err58-cpp)
 {
    const TagTrigger tag_trigger("TAG");
 
@@ -26,7 +26,7 @@ TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsTrueIfCountryTagMatche
 }
 
 
-TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsFalseIfCountryTagNotMatches)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsFalseIfCountryTagNotMatches)  // NOLINT(cert-err58-cpp)
 {
    const TagTrigger tag_trigger("TAG");
 
@@ -39,7 +39,7 @@ TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsFalseIfCountryTagNotMa
 }
 
 
-TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsFalseIfScopeNotCountry)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsFalseIfScopeNotCountry)  // NOLINT(cert-err58-cpp)
 {
    const TagTrigger tag_trigger("TAG");
 
@@ -52,7 +52,7 @@ TEST(Hoi4worldRolesTriggersTagTriggerTests, IsValidReturnsFalseIfScopeNotCountry
 }
 
 
-TEST(Hoi4worldRolesTriggersTagTriggerTests, FindAllValidReturnsEmptyVector)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, FindAllValidReturnsEmptyVector)  // NOLINT(cert-err58-cpp)
 {
    const TagTrigger tag_trigger("TAG");
 
@@ -65,7 +65,7 @@ TEST(Hoi4worldRolesTriggersTagTriggerTests, FindAllValidReturnsEmptyVector)
 }
 
 
-TEST(Hoi4worldRolesTriggersTagTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const TagTrigger tag_trigger("TAG");
    const TagTrigger tag_trigger_two("TAG");
@@ -76,7 +76,7 @@ TEST(Hoi4worldRolesTriggersTagTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesTriggersTagTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersTagTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    const TagTrigger tag_trigger("TAG");
    const std::unique_ptr<Trigger> tag_copy = tag_trigger.Copy();

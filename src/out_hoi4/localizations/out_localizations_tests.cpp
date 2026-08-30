@@ -20,7 +20,7 @@ using std::filesystem::remove_all;
 namespace out
 {
 
-TEST(Outhoi4LocalizationsOutlocalizationsTests, FoldersAreCreated)
+TEST(Outhoi4LocalizationsOutlocalizationsTests, FoldersAreCreated)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/Outhoi4Localizations/FoldersAreCreated/");
    create_directories("output/Outhoi4Localizations/FoldersAreCreated/");
@@ -41,7 +41,7 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, FoldersAreCreated)
 }
 
 
-TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
+TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/Outhoi4Localizations/CountryLocalizationsAreOutput/");
    create_directories("output/Outhoi4Localizations/CountryLocalizationsAreOutput/");
@@ -191,7 +191,7 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CountryLocalizationsAreOutput)
 }
 
 
-TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
+TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/Outhoi4Localizations/StateLocalizationsAreOutput/");
    create_directories("output/Outhoi4Localizations/StateLocalizationsAreOutput/");
@@ -342,7 +342,7 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, StateLocalizationsAreOutput)
 }
 
 
-TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutput)
+TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/");
    create_directories("output/Outhoi4Localizations/VictoryPointLocalizationsAreOutput/");
@@ -501,7 +501,7 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, VictoryPointLocalizationsAreOutp
 }
 
 
-TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
+TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/");
    create_directories("output/Outhoi4Localizations/CharacterLocalizationsAreOutput/");
@@ -672,7 +672,7 @@ TEST(Outhoi4LocalizationsOutlocalizationsTests, CharacterLocalizationsAreOutput)
 }
 
 
-TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)
+TEST(Outhoi4LocalizationsOutlocalizationsTests, IdeaLocalizationsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/Outhoi4Localizations/IdeaLocalizationsAreOutput/");
    create_directories("output/Outhoi4Localizations/IdeaLocalizationsAreOutput/");

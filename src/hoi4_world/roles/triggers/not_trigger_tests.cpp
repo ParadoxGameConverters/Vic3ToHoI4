@@ -15,7 +15,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesTriggersNotTriggerTests, IsValidReturnsReturnTrueIfAllChildrenFalse)
+TEST(Hoi4worldRolesTriggersNotTriggerTests, IsValidReturnsReturnTrueIfAllChildrenFalse)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(false);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);
@@ -33,7 +33,7 @@ TEST(Hoi4worldRolesTriggersNotTriggerTests, IsValidReturnsReturnTrueIfAllChildre
 }
 
 
-TEST(Hoi4worldRolesTriggersNotTriggerTests, IsValidReturnsFalseIfAnyChildrenTrue)
+TEST(Hoi4worldRolesTriggersNotTriggerTests, IsValidReturnsFalseIfAnyChildrenTrue)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);
@@ -51,7 +51,7 @@ TEST(Hoi4worldRolesTriggersNotTriggerTests, IsValidReturnsFalseIfAnyChildrenTrue
 }
 
 
-TEST(Hoi4worldRolesTriggersNotTriggerTests, FindAllValidReturnsEmptyVector)
+TEST(Hoi4worldRolesTriggersNotTriggerTests, FindAllValidReturnsEmptyVector)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> trigger_two = std::make_unique<AlwaysTrigger>(false);
@@ -70,7 +70,7 @@ TEST(Hoi4worldRolesTriggersNotTriggerTests, FindAllValidReturnsEmptyVector)
 }
 
 
-TEST(Hoi4worldRolesTriggersNotTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersNotTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);
@@ -107,7 +107,7 @@ TEST(Hoi4worldRolesTriggersNotTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesTriggersNotTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersNotTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);

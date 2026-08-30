@@ -10,7 +10,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4MilitaryBattalionTests, ConstructorValuesPassedThrough)
+TEST(Hoi4MilitaryBattalionTests, ConstructorValuesPassedThrough)  // NOLINT(cert-err58-cpp)
 {
    const Battalion battalion("test", 1, 1.0F);
    EXPECT_EQ(battalion.GetType(), "test");
@@ -19,14 +19,14 @@ TEST(Hoi4MilitaryBattalionTests, ConstructorValuesPassedThrough)
    EXPECT_FALSE(battalion.GetLocation().has_value());
 }
 
-TEST(Hoi4MilitaryBattalionTests, CanSetStrength)
+TEST(Hoi4MilitaryBattalionTests, CanSetStrength)  // NOLINT(cert-err58-cpp)
 {
    Battalion battalion("test", 1, 1.0F);
    battalion.AddStrength(1.0F);
    EXPECT_NEAR(battalion.GetStrength(), 2.0F, 0.001F);
 }
 
-TEST(Hoi4MilitaryBattalionTests, CanSetLocation)
+TEST(Hoi4MilitaryBattalionTests, CanSetLocation)  // NOLINT(cert-err58-cpp)
 {
    Battalion battalion("test", 1, 1.0F);
    battalion.SetLocation(11666);

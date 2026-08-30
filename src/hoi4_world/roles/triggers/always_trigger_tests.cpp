@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, IsValidReturnsValueInConstructor)
+TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, IsValidReturnsValueInConstructor)  // NOLINT(cert-err58-cpp)
 {
    const Country country({.tag = "TAG"});
    const Scope scope = CountryScope{.country = country};
@@ -28,7 +28,7 @@ TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, IsValidReturnsValueInConstructor)
 }
 
 
-TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, FindAllValidReturnsEmptyVector)
+TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, FindAllValidReturnsEmptyVector)  // NOLINT(cert-err58-cpp)
 {
    const Country country({.tag = "TAG"});
    const Scope scope = CountryScope{.country = country};
@@ -40,7 +40,7 @@ TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, FindAllValidReturnsEmptyVector)
 }
 
 
-TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const AlwaysTrigger true_trigger(true);
    const AlwaysTrigger true_trigger_two(true);
@@ -54,7 +54,7 @@ TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersAlwaysTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    const AlwaysTrigger true_trigger(true);
    const std::unique_ptr<Trigger> true_copy = true_trigger.Copy();

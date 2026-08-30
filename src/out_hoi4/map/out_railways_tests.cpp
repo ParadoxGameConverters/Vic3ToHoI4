@@ -22,14 +22,14 @@ namespace out
 {
 
 
-TEST(Outhoi4MapOutrailwaysTests, ExceptionForBadPath)
+TEST(Outhoi4MapOutrailwaysTests, ExceptionForBadPath)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/ExceptionForBadPath");
    EXPECT_THROW(OutputRailways("ExceptionForBadPath", {}), std::runtime_error);
 }
 
 
-TEST(Outhoi4MapOutrailwaysTests, FilesAreCreated)
+TEST(Outhoi4MapOutrailwaysTests, FilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/Outhoi4MapOutrailwaysTestsFilesAreCreated");
    create_directories("output/Outhoi4MapOutrailwaysTestsFilesAreCreated/map");
@@ -40,7 +40,7 @@ TEST(Outhoi4MapOutrailwaysTests, FilesAreCreated)
 }
 
 
-TEST(Outhoi4MapOutrailwaysTests, RailwaysAreOutput)
+TEST(Outhoi4MapOutrailwaysTests, RailwaysAreOutput)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/Outhoi4MapBuildingsTestsRailwaysAreOutput");
    create_directories("output/Outhoi4MapBuildingsTestsRailwaysAreOutput/map");

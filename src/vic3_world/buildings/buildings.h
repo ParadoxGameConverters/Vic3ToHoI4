@@ -35,7 +35,7 @@ class Buildings
       }
       return {};
    }
-   [[nodiscard]] const std::optional<vic3::Building> GetBuildingInState(int state_number,
+   [[nodiscard]] std::optional<vic3::Building> GetBuildingInState(int state_number,
        const std::string& building_type) const;
 
 

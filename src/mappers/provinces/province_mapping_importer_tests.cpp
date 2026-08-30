@@ -11,7 +11,7 @@
 namespace mappers
 {
 
-TEST(MappersProvincesProvinceMappingImporterTests, Vic2ProvincesDefaultsToZero)
+TEST(MappersProvincesProvinceMappingImporterTests, Vic2ProvincesDefaultsToZero)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -21,7 +21,7 @@ TEST(MappersProvincesProvinceMappingImporterTests, Vic2ProvincesDefaultsToZero)
 }
 
 
-TEST(MappersProvincesProvinceMappingImporterTests, Vic2ProvincesCanBeAdded)
+TEST(MappersProvincesProvinceMappingImporterTests, Vic2ProvincesCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= { vic3 = 0x000042 vic3 = 0x001440 }";
@@ -32,7 +32,7 @@ TEST(MappersProvincesProvinceMappingImporterTests, Vic2ProvincesCanBeAdded)
 }
 
 
-TEST(MappersProvincesProvinceMappingImporterTests, HoI4ProvincesDefaultsToZero)
+TEST(MappersProvincesProvinceMappingImporterTests, HoI4ProvincesDefaultsToZero)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -42,7 +42,7 @@ TEST(MappersProvincesProvinceMappingImporterTests, HoI4ProvincesDefaultsToZero)
 }
 
 
-TEST(MappersProvincesProvinceMappingImporterTests, HoI4ProvincesCanBeAdded)
+TEST(MappersProvincesProvinceMappingImporterTests, HoI4ProvincesCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= { hoi4 = 42 hoi4 = 144 }";
@@ -53,7 +53,7 @@ TEST(MappersProvincesProvinceMappingImporterTests, HoI4ProvincesCanBeAdded)
 }
 
 
-TEST(MappersProvincesProvinceMappingImporterTests, CommentDefaultsToNullopt)
+TEST(MappersProvincesProvinceMappingImporterTests, CommentDefaultsToNullopt)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -63,7 +63,7 @@ TEST(MappersProvincesProvinceMappingImporterTests, CommentDefaultsToNullopt)
 }
 
 
-TEST(MappersProvincesProvinceMappingImporterTests, CommentCanBeSet)
+TEST(MappersProvincesProvinceMappingImporterTests, CommentCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << R"(= { comment = "test_comment" })";

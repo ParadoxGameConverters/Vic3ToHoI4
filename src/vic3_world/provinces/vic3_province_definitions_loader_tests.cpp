@@ -16,6 +16,7 @@ using std::filesystem::path;
 namespace vic3
 {
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByStrategicRegionFile)
 {
    const auto province_definitions = LoadProvinceDefinitions(
@@ -35,6 +36,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByStr
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByRegionOrderInStrategicRegionFile)
 {
    const auto province_definitions = LoadProvinceDefinitions(
@@ -54,6 +56,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByReg
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByStateRegionIndexingOrder)
 {
    // The state region indexing order is from scanning map_data/state_regions in file order and the order within the
@@ -75,6 +78,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedBySta
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByBottomToTopInMapDataProvincesDotPng)
 {
    const auto province_definitions = LoadProvinceDefinitions(
@@ -93,6 +97,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByBot
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Vic3WorldProvincesVic3ProvinceDefinitionsLoader, DefinitionsAreOrderedByLeftToRightInMapDataProvincesDotPng)
 {
    const auto province_definitions = LoadProvinceDefinitions(

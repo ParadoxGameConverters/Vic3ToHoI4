@@ -42,7 +42,7 @@ void CreateFolders(std::string_view test_name)
 namespace out
 {
 
-TEST(Outhoi4CountriesOutcountriesTests, CountriesFilesAreCreated)
+TEST(Outhoi4CountriesOutcountriesTests, CountriesFilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateFolders("CountriesFilesAreCreated");
 
@@ -75,7 +75,7 @@ TEST(Outhoi4CountriesOutcountriesTests, CountriesFilesAreCreated)
 }
 
 
-TEST(Outhoi4CountriesOutcountriesTests, TagsFileIsCreated)
+TEST(Outhoi4CountriesOutcountriesTests, TagsFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateFolders("TagsFileIsCreated");
 
@@ -99,7 +99,7 @@ TEST(Outhoi4CountriesOutcountriesTests, TagsFileIsCreated)
 }
 
 
-TEST(Outhoi4CountriesOutcountriesTests, ExceptionIfTagsFileNotOpened)
+TEST(Outhoi4CountriesOutcountriesTests, ExceptionIfTagsFileNotOpened)  // NOLINT(cert-err58-cpp)
 {
    EXPECT_THROW(OutputCountries("/dev/null/COM",
                     {
@@ -111,7 +111,7 @@ TEST(Outhoi4CountriesOutcountriesTests, ExceptionIfTagsFileNotOpened)
 }
 
 
-TEST(Outhoi4CountriesOutcountriesTests, CharactersFilesAreCreated)
+TEST(Outhoi4CountriesOutcountriesTests, CharactersFilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateFolders("CharactersFilesAreCreated");
 
@@ -144,7 +144,7 @@ TEST(Outhoi4CountriesOutcountriesTests, CharactersFilesAreCreated)
 }
 
 
-TEST(Outhoi4CountriesOutcountriesTests, CountryHistoryFilesAreCreated)
+TEST(Outhoi4CountriesOutcountriesTests, CountryHistoryFilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateFolders("CountryHistoryFilesAreCreated");
 
@@ -177,7 +177,7 @@ TEST(Outhoi4CountriesOutcountriesTests, CountryHistoryFilesAreCreated)
 }
 
 
-TEST(Outhoi4CountriesOutcountriesTests, DivisionTemplatesAreCopied)
+TEST(Outhoi4CountriesOutcountriesTests, DivisionTemplatesAreCopied)  // NOLINT(cert-err58-cpp)
 {
    CreateFolders("DivisionTemplatesAreCopied");
 
@@ -193,7 +193,7 @@ TEST(Outhoi4CountriesOutcountriesTests, DivisionTemplatesAreCopied)
 }
 
 
-TEST(Outhoi4CountriesOutcountriesTests, NationalFocusFilesAreCreated)
+TEST(Outhoi4CountriesOutcountriesTests, NationalFocusFilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateFolders("NationalFocusFilesAreCreated");
 
@@ -226,7 +226,7 @@ TEST(Outhoi4CountriesOutcountriesTests, NationalFocusFilesAreCreated)
 }
 
 
-TEST(Outhoi4CountriesOutcountriesTests, NavyFilesAreCreated)
+TEST(Outhoi4CountriesOutcountriesTests, NavyFilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateFolders("NavyFilesAreCreated");
 

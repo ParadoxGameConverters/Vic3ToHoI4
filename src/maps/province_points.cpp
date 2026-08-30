@@ -11,7 +11,7 @@ double CalculateDistanceSquared(const maps::Point point, const maps::Point cente
 {
    const auto delta_x = static_cast<double>(point.x) - static_cast<double>(center.x);
    const auto delta_y = static_cast<double>(point.y) - static_cast<double>(center.y);
-   return delta_x * delta_x + delta_y * delta_y;
+   return (delta_x * delta_x) + (delta_y * delta_y);
 }
 
 }  // namespace

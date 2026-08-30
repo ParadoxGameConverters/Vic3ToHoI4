@@ -9,7 +9,7 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldElectionsElectionsImporter, NoElectionsOnEmptyInput)
+TEST(Vic3WorldElectionsElectionsImporter, NoElectionsOnEmptyInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const std::map<int, date> elections = ImportElections(input);
@@ -18,7 +18,7 @@ TEST(Vic3WorldElectionsElectionsImporter, NoElectionsOnEmptyInput)
 }
 
 
-TEST(Vic3WorldElectionsElectionsImporter, ElectionsCanBeImported)
+TEST(Vic3WorldElectionsElectionsImporter, ElectionsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -42,7 +42,7 @@ TEST(Vic3WorldElectionsElectionsImporter, ElectionsCanBeImported)
 }
 
 
-TEST(Vic3WorldElectionsElectionsImporter, ElectionsSetAsNoneAreSkipped)
+TEST(Vic3WorldElectionsElectionsImporter, ElectionsSetAsNoneAreSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -58,7 +58,7 @@ TEST(Vic3WorldElectionsElectionsImporter, ElectionsSetAsNoneAreSkipped)
 
 
 
-TEST(Vic3WorldElectionsElectionsImporter, ElectionsWithoutCountryAreLogged)
+TEST(Vic3WorldElectionsElectionsImporter, ElectionsWithoutCountryAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -82,7 +82,7 @@ TEST(Vic3WorldElectionsElectionsImporter, ElectionsWithoutCountryAreLogged)
            R"([WARNING] Election without a country. Please report to the converters team and upload your save.)"));
 }
 
-TEST(Vic3WorldElectionsElectionsImporter, ElectionsImportsAreLogged)
+TEST(Vic3WorldElectionsElectionsImporter, ElectionsImportsAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

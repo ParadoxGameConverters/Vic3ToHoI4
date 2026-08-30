@@ -12,7 +12,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4WorldMapStrategicRegionsImporter, DefaultsAreEmpty)
+TEST(Hoi4WorldMapStrategicRegionsImporter, DefaultsAreEmpty)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("", {});
    const auto strategic_regions = ImportStrategicRegions(mod_filesystem);
@@ -22,7 +22,7 @@ TEST(Hoi4WorldMapStrategicRegionsImporter, DefaultsAreEmpty)
 }
 
 
-TEST(Hoi4WorldMapStrategicRegionsImporter, StrategicRegionsCanBeImported)
+TEST(Hoi4WorldMapStrategicRegionsImporter, StrategicRegionsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
    const auto strategic_regions = ImportStrategicRegions(mod_filesystem);

@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldBuildingsBuildingImporterTests, DefaultsAreDefaulted)
+TEST(Vic3WorldBuildingsBuildingImporterTests, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -24,7 +24,7 @@ TEST(Vic3WorldBuildingsBuildingImporterTests, DefaultsAreDefaulted)
 }
 
 
-TEST(Vic3WorldBuildingsBuildingImporterTests, ItemsCanBeImported)
+TEST(Vic3WorldBuildingsBuildingImporterTests, ItemsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

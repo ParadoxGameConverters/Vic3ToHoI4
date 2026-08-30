@@ -10,7 +10,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldDecisionsDecisionscategoryimporterTests, DefaultsAreDefaulted)
+TEST(Hoi4worldDecisionsDecisionscategoryimporterTests, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -29,7 +29,7 @@ TEST(Hoi4worldDecisionsDecisionscategoryimporterTests, DefaultsAreDefaulted)
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, ItemsCanBeSet)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, ItemsCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";

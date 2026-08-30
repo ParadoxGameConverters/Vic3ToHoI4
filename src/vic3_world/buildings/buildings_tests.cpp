@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldBuildingsBuildingsImporterTests, NoBuildingsNoGoodsValue)
+TEST(Vic3WorldBuildingsBuildingsImporterTests, NoBuildingsNoGoodsValue)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings;
 
@@ -18,7 +18,7 @@ TEST(Vic3WorldBuildingsBuildingsImporterTests, NoBuildingsNoGoodsValue)
 }
 
 
-TEST(Vic3WorldBuildingsBuildingsImporterTests, TotalGoodsValueInWorldAreReported)
+TEST(Vic3WorldBuildingsBuildingsImporterTests, TotalGoodsValueInWorldAreReported)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings({
        {1,
@@ -36,7 +36,7 @@ TEST(Vic3WorldBuildingsBuildingsImporterTests, TotalGoodsValueInWorldAreReported
 }
 
 
-TEST(Vic3WorldBuildingsBuildingsImporterTests, NonGoodsValueInMissingState)
+TEST(Vic3WorldBuildingsBuildingsImporterTests, NonGoodsValueInMissingState)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings({
        {1,
@@ -54,7 +54,7 @@ TEST(Vic3WorldBuildingsBuildingsImporterTests, NonGoodsValueInMissingState)
 }
 
 
-TEST(Vic3WorldBuildingsBuildingsImporterTests, NonGoodsValueInStateWithNoBuildings)
+TEST(Vic3WorldBuildingsBuildingsImporterTests, NonGoodsValueInStateWithNoBuildings)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings({{1,
                                   {
@@ -71,7 +71,7 @@ TEST(Vic3WorldBuildingsBuildingsImporterTests, NonGoodsValueInStateWithNoBuildin
 }
 
 
-TEST(Vic3WorldBuildingsBuildingsTests, TotalGoodsValueInStateAreReported)
+TEST(Vic3WorldBuildingsBuildingsTests, TotalGoodsValueInStateAreReported)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings({
        {1,
@@ -88,7 +88,7 @@ TEST(Vic3WorldBuildingsBuildingsTests, TotalGoodsValueInStateAreReported)
    EXPECT_EQ(buildings.GetTotalGoodSalesValueInState(2), 0.75F);
 }
 
-TEST(Vic3WorldBuildingsBuildingsTests, BuildingsInNonexistentStateIsEmptyList)
+TEST(Vic3WorldBuildingsBuildingsTests, BuildingsInNonexistentStateIsEmptyList)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings({
        {1,
@@ -105,7 +105,7 @@ TEST(Vic3WorldBuildingsBuildingsTests, BuildingsInNonexistentStateIsEmptyList)
    EXPECT_TRUE(buildings.GetBuildingsInState(100).empty());
 }
 
-TEST(Vic3WorldBuildingsBuildingsTests, BuildingsCanBeReturnedByState)
+TEST(Vic3WorldBuildingsBuildingsTests, BuildingsCanBeReturnedByState)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings({
        {1,
@@ -123,7 +123,7 @@ TEST(Vic3WorldBuildingsBuildingsTests, BuildingsCanBeReturnedByState)
        testing::UnorderedElementsAre(Building("", std::nullopt, 0.5F), Building("", std::nullopt, 0.25F)));
 }
 
-TEST(Vic3WorldBuildingsBuildingsTests, StateBuildingIsReturned)
+TEST(Vic3WorldBuildingsBuildingsTests, StateBuildingIsReturned)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings({
        {1,

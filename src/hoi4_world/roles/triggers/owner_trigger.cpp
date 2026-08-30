@@ -8,7 +8,7 @@ namespace hoi4
 bool OwnerTrigger::IsValid(const Context& context, [[maybe_unused]] const World& world) const
 {
    const StateScope* maybe_state = std::get_if<StateScope>(&context.this_scope);
-   if (!maybe_state)
+   if (maybe_state == nullptr)
    {
       return false;
    }
@@ -16,7 +16,7 @@ bool OwnerTrigger::IsValid(const Context& context, [[maybe_unused]] const World&
    if (owner_ == "ROOT")
    {
       const CountryScope* maybe_root = std::get_if<CountryScope>(&context.root);
-      if (!maybe_root)
+      if (maybe_root == nullptr)
       {
          return false;
       }

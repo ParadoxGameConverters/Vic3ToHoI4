@@ -26,8 +26,28 @@ namespace
 {
 
 constexpr int kMaxFactorySlots = 12;
-const std::vector<std::string> kResourceNames = {"steel", "oil", "tungsten", "aluminium", "chromium", "rubber", "coal"};
-const std::map<std::string, int> kNavalBasePoints = {{"port", 5}, {"city", 4}, {"mine", 3}, {"farm", 2}, {"wood", 1}};
+
+
+constexpr std::vector<std::string>& GetResourceNames()
+{
+   static std::vector<std::string> resource_names =
+       {"steel", "oil", "tungsten", "aluminium", "chromium", "rubber", "coal"};
+   return resource_names;
+}
+
+
+constexpr std::map<std::string, int>& GetNavalBasePoints()
+{
+   static std::map<std::string, int> naval_base_points = {
+       {"port", 5},
+       {"city", 4},
+       {"mine", 3},
+       {"farm", 2},
+       {"wood", 1},
+   };
+   return naval_base_points;
+}
+
 
 bool AllVic3ProvincesAreInSameState(const std::vector<std::string>& vic3_provinces,
     int state_to_match,
@@ -539,7 +559,7 @@ std::optional<int> DetermineNavalBaseLocation(const std::set<int>& hoi4_province
       {
          if (significant_provinces.contains(vic3_prov))
          {
-            points = kNavalBasePoints.at(significant_provinces.at(vic3_prov));
+            points = GetNavalBasePoints().at(significant_provinces.at(vic3_prov));
          }
          if (points > best)
          {
@@ -631,7 +651,7 @@ hoi4::Resources CalculateResources(const mappers::ResourceMapper& resource_mappe
     float fraction)
 {
    hoi4::Resources resources;
-   for (const auto& name: kResourceNames)
+   for (const auto& name: GetResourceNames())
    {
       if (!totals.contains(name))
       {
@@ -737,10 +757,7 @@ std::map<int, int> SetPossibleVictoryPoints(const std::set<int>& hoi4_provinces,
          }
          if (auto [itr, success] = possible_victory_points.emplace(*best_hoi4_province, *possible_vp_value); !success)
          {
-            if (itr->second < *possible_vp_value)
-            {
-               itr->second = *possible_vp_value;
-            }
+            itr->second = std::max(itr->second, *possible_vp_value);
          }
          applied_types.insert(special_province_type);
       }
@@ -897,13 +914,15 @@ void LogIndustryStats(const std::vector<hoi4::State>& hoi4_states,
    {
       Log(LogLevel::Info) << fmt::format("\t\t\t{} states had {} excess slots", num_states, difference);
    }
-   for (const auto& r: resources)
+   for (const auto& resource: resources)
    {
-      Log(LogLevel::Info) << fmt::format("\t\t\tConverter Resource {}:{}", r.first, r.second);
+      Log(LogLevel::Info) << fmt::format("\t\t\tConverter Resource {}:{}", resource.first, resource.second);
    }
-   for (const auto& dr: default_resources)
+   for (const auto& default_resource: default_resources)
    {
-      Log(LogLevel::Info) << fmt::format("\t\t\tDefault Resource {}:{}", dr.first, dr.second);
+      Log(LogLevel::Info) << fmt::format("\t\t\tDefault Resource {}:{}",
+          default_resource.first,
+          default_resource.second);
    }
    Log(LogLevel::Info) << "\t\tTop industrial powers:";
    auto key_view = std::views::keys(accumulator);
@@ -993,7 +1012,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
       const auto& all_buildings = source_world.GetBuildings().GetStorage();
       for (const auto& [id, buildings]: all_buildings)
       {
-         for (const auto& name: kResourceNames)
+         for (const auto& name: GetResourceNames())
          {
             resource_totals[name] += world_mapper.resource_mapper.CalculateScore(name, buildings);
          }
@@ -1044,7 +1063,7 @@ hoi4::States CreateStates(const vic3::World& source_world,
       int total_non_wasteland_provinces = static_cast<int>(hoi4_provinces.size()) - total_wasteland_provinces;
       const int64_t total_manpower = vic3_state_itr->second.GetPopulation();
       const float total_factories =
-          static_cast<float>(source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id)) / 175'000.0F;
+          source_world.GetBuildings().GetTotalGoodSalesValueInState(vic3_state_id) / 175'000.0F;
       const int total_coastal_provinces =
           static_cast<int>(std::ranges::count_if(hoi4_provinces, [&world_framework](int province_id) {
              return world_framework.coastal_provinces.Contains(province_id);

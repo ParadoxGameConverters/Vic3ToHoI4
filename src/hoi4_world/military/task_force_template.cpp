@@ -2,26 +2,16 @@
 
 #include <external/fmt/include/fmt/format.h>
 
+#include <algorithm>
+
 
 
 bool hoi4::TaskForceTemplate::AllVariantsActive(const std::set<std::string>& active_variants) const
 {
-   for (const auto& ship: ships_)
-   {
-      if (!active_variants.contains(ship.equipment))
-      {
-         return false;
-      }
-      if (!active_variants.contains(ship.legacy_equipment))
-      {
-         return false;
-      }
-      if (!active_variants.contains(ship.version))
-      {
-         return false;
-      }
-   }
-   return true;
+   return std::ranges::all_of(ships_, [&active_variants](const hoi4::Ship& ship) {
+      return active_variants.contains(ship.equipment) || active_variants.contains(ship.legacy_equipment) ||
+             active_variants.contains(ship.version);
+   });
 }
 
 

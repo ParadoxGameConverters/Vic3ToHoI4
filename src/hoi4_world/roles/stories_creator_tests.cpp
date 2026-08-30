@@ -12,7 +12,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesStoriescreatorTests, AlwaysRolesAreAppliedToAllCountries)
+TEST(Hoi4worldRolesStoriescreatorTests, AlwaysRolesAreAppliedToAllCountries)  // NOLINT(cert-err58-cpp)
 {
    const Role role(RoleOptions{
        .name = "test_role",
@@ -32,7 +32,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, AlwaysRolesAreAppliedToAllCountries)
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, TagRolesAreAppliedToCountriesWithMatchingTag)
+TEST(Hoi4worldRolesStoriescreatorTests, TagRolesAreAppliedToCountriesWithMatchingTag)  // NOLINT(cert-err58-cpp)
 {
    const Role role(RoleOptions{
        .name = "test_role",
@@ -50,7 +50,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, TagRolesAreAppliedToCountriesWithMatchin
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, RolesWithNoRequirementsAreNotApplied)
+TEST(Hoi4worldRolesStoriescreatorTests, RolesWithNoRequirementsAreNotApplied)  // NOLINT(cert-err58-cpp)
 {
    const Role role(RoleOptions{
        .name = "test_role",
@@ -67,7 +67,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, RolesWithNoRequirementsAreNotApplied)
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoCountries)
+TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoCountries)  // NOLINT(cert-err58-cpp)
 {
    const Role role(RoleOptions{
        .name = "test_role",
@@ -80,7 +80,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoCountries)
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoRoles)
+TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoRoles)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, std::vector<hoi4::Role>> stories = CreateStories({},
        World({}),
@@ -93,7 +93,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, NoStoriesIfNoRoles)
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleScore)
+TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleScore)  // NOLINT(cert-err58-cpp)
 {
    const Role role_one(RoleOptions{
        .name = "test_role_one",
@@ -131,7 +131,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleScore)
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByTagIfScoresAreEqual)
+TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByTagIfScoresAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const Role role_one(RoleOptions{
        .name = "test_role_one",
@@ -169,7 +169,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByTagIfScoresAreEqual)
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleNameIfScoresAndTagsAreEqual)
+TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleNameIfScoresAndTagsAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const Role role_one(RoleOptions{
        .name = "test_role_second",
@@ -204,7 +204,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, StoriesAreSortedByRoleNameIfScoresAndTag
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByName)
+TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByName)  // NOLINT(cert-err58-cpp)
 {
    const Role role(RoleOptions{
        .name = "test_role",
@@ -230,7 +230,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByName)
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByCategory)
+TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByCategory)  // NOLINT(cert-err58-cpp)
 {
    const Role role(RoleOptions{
        .name = "test_role",
@@ -257,7 +257,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, BlockersCanBlockRolesByCategory)
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, MultipleBlockersCanBlockRoles)
+TEST(Hoi4worldRolesStoriescreatorTests, MultipleBlockersCanBlockRoles)  // NOLINT(cert-err58-cpp)
 {
    const Role role(RoleOptions{
        .name = "test_role",
@@ -289,7 +289,7 @@ TEST(Hoi4worldRolesStoriescreatorTests, MultipleBlockersCanBlockRoles)
 }
 
 
-TEST(Hoi4worldRolesStoriescreatorTests, BlockersOnlyBlockWithSameCountry)
+TEST(Hoi4worldRolesStoriescreatorTests, BlockersOnlyBlockWithSameCountry)  // NOLINT(cert-err58-cpp)
 {
    const Role role(RoleOptions{
        .name = "test_role",

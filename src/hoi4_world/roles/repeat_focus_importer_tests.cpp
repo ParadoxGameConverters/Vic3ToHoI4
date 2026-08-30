@@ -14,7 +14,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRepeatfocusimporterTests, DefaultsAreDefaulted)
+TEST(Hoi4worldRolesRepeatfocusimporterTests, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -26,7 +26,7 @@ TEST(Hoi4worldRolesRepeatfocusimporterTests, DefaultsAreDefaulted)
 }
 
 
-TEST(Hoi4worldRolesRepeatfocusimporterTests, ItemsCanBeImported)
+TEST(Hoi4worldRolesRepeatfocusimporterTests, ItemsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "trigger = {\n";

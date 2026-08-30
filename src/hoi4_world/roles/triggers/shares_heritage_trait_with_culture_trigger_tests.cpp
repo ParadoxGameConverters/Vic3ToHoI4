@@ -13,6 +13,7 @@
 namespace hoi4
 {
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersSharesHeritageTraitWithCultureTriggerTests,
     IsValidReturnsTrueIfScopeSharesHeritageTraitWithCulture)
 {
@@ -32,6 +33,7 @@ TEST(Hoi4worldRolesTriggersSharesHeritageTraitWithCultureTriggerTests,
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersSharesHeritageTraitWithCultureTriggerTests, FindAllValidReturnsEmptyVector)
 {
    const vic3::CultureDefinition culture({.name = "scope_culture", .heritage = "test_heritage"});
@@ -50,6 +52,7 @@ TEST(Hoi4worldRolesTriggersSharesHeritageTraitWithCultureTriggerTests, FindAllVa
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersSharesHeritageTraitWithCultureTriggerTests, EquivalentTriggersAreEqual)
 {
    const SharesHeritageTraitWithCultureTrigger good_trigger("good_homeland");
@@ -64,7 +67,7 @@ TEST(Hoi4worldRolesTriggersSharesHeritageTraitWithCultureTriggerTests, Equivalen
 }
 
 
-TEST(Hoi4worldRolesTriggersSharesHeritageTraitWithCultureTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersSharesHeritageTraitWithCultureTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    const SharesHeritageTraitWithCultureTrigger good_trigger("good_homeland");
    const std::unique_ptr<Trigger> true_copy = good_trigger.Copy();

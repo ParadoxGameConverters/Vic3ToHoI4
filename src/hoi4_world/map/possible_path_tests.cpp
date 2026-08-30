@@ -8,7 +8,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldMapPossiblePathTests, DefaultsAreSet)
+TEST(Hoi4worldMapPossiblePathTests, DefaultsAreSet)  // NOLINT(cert-err58-cpp)
 {
    const PossiblePath possible_path;
 
@@ -18,7 +18,7 @@ TEST(Hoi4worldMapPossiblePathTests, DefaultsAreSet)
 }
 
 
-TEST(Hoi4worldMapPossiblePathTests, InitialProvinceCanBeSet)
+TEST(Hoi4worldMapPossiblePathTests, InitialProvinceCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    const PossiblePath possible_path(1);
 
@@ -28,7 +28,7 @@ TEST(Hoi4worldMapPossiblePathTests, InitialProvinceCanBeSet)
 }
 
 
-TEST(Hoi4worldMapPossiblePathTests, ProvincesCanBeAdded)
+TEST(Hoi4worldMapPossiblePathTests, ProvincesCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    PossiblePath possible_path(0);
    possible_path.AddProvince(PossiblePathProvinceType{1}, PossiblePathCostType{0});
@@ -38,7 +38,7 @@ TEST(Hoi4worldMapPossiblePathTests, ProvincesCanBeAdded)
 }
 
 
-TEST(Hoi4worldMapPossiblePathTests, AddedProvincesIncreaseCost)
+TEST(Hoi4worldMapPossiblePathTests, AddedProvincesIncreaseCost)  // NOLINT(cert-err58-cpp)
 {
    PossiblePath possible_path(0);
    possible_path.AddProvince(PossiblePathProvinceType{1}, PossiblePathCostType{2});
@@ -48,7 +48,7 @@ TEST(Hoi4worldMapPossiblePathTests, AddedProvincesIncreaseCost)
 }
 
 
-TEST(Hoi4worldMapPossiblePathTests, ProvinceCanBeReplaced)
+TEST(Hoi4worldMapPossiblePathTests, ProvinceCanBeReplaced)  // NOLINT(cert-err58-cpp)
 {
    PossiblePath possible_path(1);
    possible_path.ReplaceProvinces({3, 4});
@@ -57,7 +57,7 @@ TEST(Hoi4worldMapPossiblePathTests, ProvinceCanBeReplaced)
 }
 
 
-TEST(Hoi4worldMapPossiblePathTests, LevelCanBeSet)
+TEST(Hoi4worldMapPossiblePathTests, LevelCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    PossiblePath possible_path(0);
    possible_path.SetDevelopment(4.2F);
@@ -66,7 +66,7 @@ TEST(Hoi4worldMapPossiblePathTests, LevelCanBeSet)
 }
 
 
-TEST(Hoi4worldMapPossiblePathTests, FirstProvinceCanBeRetrieved)
+TEST(Hoi4worldMapPossiblePathTests, FirstProvinceCanBeRetrieved)  // NOLINT(cert-err58-cpp)
 {
    PossiblePath possible_path(1);
    possible_path.ReplaceProvinces({3, 4});
@@ -75,7 +75,7 @@ TEST(Hoi4worldMapPossiblePathTests, FirstProvinceCanBeRetrieved)
 }
 
 
-TEST(Hoi4worldMapPossiblePathTests, LastProvinceCanBeRetrieved)
+TEST(Hoi4worldMapPossiblePathTests, LastProvinceCanBeRetrieved)  // NOLINT(cert-err58-cpp)
 {
    PossiblePath possible_path(1);
    possible_path.ReplaceProvinces({3, 4});
@@ -84,7 +84,7 @@ TEST(Hoi4worldMapPossiblePathTests, LastProvinceCanBeRetrieved)
 }
 
 
-TEST(Hoi4worldMapPossiblePathTests, LessThanIsBasedOnCostAndReversed)
+TEST(Hoi4worldMapPossiblePathTests, LessThanIsBasedOnCostAndReversed)  // NOLINT(cert-err58-cpp)
 {
    PossiblePath possible_path_one(0);
    possible_path_one.AddProvince(PossiblePathProvinceType{1}, PossiblePathCostType{2});

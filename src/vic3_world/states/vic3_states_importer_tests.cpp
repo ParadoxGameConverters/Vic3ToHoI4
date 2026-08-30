@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldStateVic3statesimporter, NoStatesByDefault)
+TEST(Vic3worldStateVic3statesimporter, NoStatesByDefault)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const auto states = ImportStates(input);
@@ -18,7 +18,7 @@ TEST(Vic3worldStateVic3statesimporter, NoStatesByDefault)
    EXPECT_TRUE(states.empty());
 }
 
-TEST(Vic3worldStateVic3statesimporter, StatesCanBeImported)
+TEST(Vic3worldStateVic3statesimporter, StatesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -37,7 +37,7 @@ TEST(Vic3worldStateVic3statesimporter, StatesCanBeImported)
 }
 
 
-TEST(Vic3worldStateVic3statesimporter, StatesIndexesCanBeSkipped)
+TEST(Vic3worldStateVic3statesimporter, StatesIndexesCanBeSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

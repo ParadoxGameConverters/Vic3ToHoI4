@@ -26,7 +26,7 @@ struct DecisionsCategory
    std::strong_ordering operator<=>(const DecisionsCategory& rhs) const = default;
 
    // This allows the Google test framework to print human-readable DecisionsCategory if a test fails.
-   friend void PrintTo(const DecisionsCategory& repeat_focus, std::ostream* os);
+   friend void PrintTo(const DecisionsCategory& decisions_category, std::ostream* os);
 };
 
 }  // namespace hoi4

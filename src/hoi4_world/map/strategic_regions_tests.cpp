@@ -12,7 +12,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4WorldMapStrategicRegionsTests, StrategicRegionsCanBeUpdated)
+TEST(Hoi4WorldMapStrategicRegionsTests, StrategicRegionsCanBeUpdated)  // NOLINT(cert-err58-cpp)
 {
    StrategicRegions strategic_regions({
        .strategic_regions =
@@ -56,6 +56,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, StrategicRegionsCanBeUpdated)
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4WorldMapStrategicRegionsTests, UnassignedSurroundedProvincesAreAddedToSurroundingRegions)
 {
    StrategicRegions strategic_regions({
@@ -94,7 +95,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, UnassignedSurroundedProvincesAreAddedToS
 }
 
 
-TEST(Hoi4WorldMapStrategicRegionsTests, LeftoverProvincesAreAddedBackToOriginalRegions)
+TEST(Hoi4WorldMapStrategicRegionsTests, LeftoverProvincesAreAddedBackToOriginalRegions)  // NOLINT(cert-err58-cpp)
 {
    StrategicRegions strategic_regions({
        .strategic_regions =
@@ -127,7 +128,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, LeftoverProvincesAreAddedBackToOriginalR
 }
 
 
-TEST(Hoi4WorldMapStrategicRegionsTests, ProvincesInNoRegionAreLogged)
+TEST(Hoi4WorldMapStrategicRegionsTests, ProvincesInNoRegionAreLogged)  // NOLINT(cert-err58-cpp)
 {
    StrategicRegions strategic_regions;
 
@@ -143,7 +144,7 @@ TEST(Hoi4WorldMapStrategicRegionsTests, ProvincesInNoRegionAreLogged)
 }
 
 
-TEST(Hoi4WorldMapStrategicRegionsTests, DesynchronizedInternalsCauseLogging)
+TEST(Hoi4WorldMapStrategicRegionsTests, DesynchronizedInternalsCauseLogging)  // NOLINT(cert-err58-cpp)
 {
    StrategicRegions strategic_regions({
        .original_province_to_strategic_region_map =

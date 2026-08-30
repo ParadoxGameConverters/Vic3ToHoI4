@@ -8,7 +8,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldPact, SubjectRelationshipsAreDetermined)
+TEST(Vic3WorldPact, SubjectRelationshipsAreDetermined)  // NOLINT(cert-err58-cpp)
 {
    const Pact puppet = Pact(PactPartners{.first = 0, .second = 1}, "puppet", date(""), std::nullopt);
    EXPECT_TRUE(puppet.IsSubjectRelationship());

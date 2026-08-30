@@ -20,7 +20,7 @@ using std::filesystem::path;
 namespace out
 {
 
-TEST(Outhoi4EventsOuteventsTests, EventFilesAreCreated)
+TEST(Outhoi4EventsOuteventsTests, EventFilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    OutputEvents("EventFilesAreCreated",
        {
@@ -50,7 +50,7 @@ TEST(Outhoi4EventsOuteventsTests, EventFilesAreCreated)
 }
 
 
-TEST(Outhoi4EventsOuteventsTests, ExceptionIfDirectoryNotCreated)
+TEST(Outhoi4EventsOuteventsTests, ExceptionIfDirectoryNotCreated)  // NOLINT(cert-err58-cpp)
 {
    EXPECT_THROW(OutputEvents("/proc/???",
                     {
@@ -61,11 +61,11 @@ TEST(Outhoi4EventsOuteventsTests, ExceptionIfDirectoryNotCreated)
 }
 
 
-TEST(Outhoi4EventsOuteventsTests, ExceptionIfFileNotCreated)
+TEST(Outhoi4EventsOuteventsTests, ExceptionIfFileNotCreated)  // NOLINT(cert-err58-cpp)
 {
    EXPECT_THROW(OutputEvents("ExceptionIfFileNotCreated",
                     {
-                        {"???/.", {}},
+                        {"?/.", {}},
                         {"TWO", {}},
                     }),
        std::runtime_error);

@@ -9,7 +9,7 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldInterestGroupsInterestGroupImporter, DefaultsDefaultToDefault)
+TEST(Vic3WorldInterestGroupsInterestGroupImporter, DefaultsDefaultToDefault)  // NOLINT(cert-err58-cpp)
 {
    InterestGroupImporter interest_group_importer;
 
@@ -26,7 +26,7 @@ TEST(Vic3WorldInterestGroupsInterestGroupImporter, DefaultsDefaultToDefault)
 }
 
 
-TEST(Vic3WorldInterestGroupsInterestGroupImporter, InterestGroupCanBeImported)
+TEST(Vic3WorldInterestGroupsInterestGroupImporter, InterestGroupCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    InterestGroupImporter interest_group_importer;
 

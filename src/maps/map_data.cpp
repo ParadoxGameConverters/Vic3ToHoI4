@@ -70,12 +70,12 @@ std::optional<maps::Point> maps::MapData::GetCentermostPoint(const std::string& 
 
 std::optional<std::string> maps::MapData::GetProvinceName(const Point& point) const
 {
-   const auto i = points_to_provinces_.find(point);
-   if (i == points_to_provinces_.end())
+   const auto itr = points_to_provinces_.find(point);
+   if (itr == points_to_provinces_.end())
    {
       return std::nullopt;
    }
-   return i->second;
+   return itr->second;
 }
 
 

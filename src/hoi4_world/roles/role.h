@@ -62,8 +62,9 @@ class Role
    }
    Role(const Role& rhs);
    Role& operator=(const Role& other);
-   Role(Role&&) = default;
+   Role(Role&&) noexcept = default;
    Role& operator=(Role&&) = default;
+   ~Role() = default;
 
    [[nodiscard]] const std::string& GetName() const { return name_; }
    [[nodiscard]] const std::string& GetCategory() const { return category_; }

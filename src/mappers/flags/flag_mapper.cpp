@@ -16,6 +16,7 @@ using std::filesystem::path;
 namespace
 {
 
+const std::vector<std::string> kFlagFolders{"", "small", "medium"};
 
 }  // namespace
 
@@ -33,7 +34,7 @@ bool mappers::FlagMapper::CopyFlags(const std::vector<std::string>& tags)
       }
       tags_needing_flags.insert(tag);
    }
-   for (const auto& tag: tags_needing_flags)
+   for (const auto& tag: tags_needing_flags)  // NOLINT(readability-use-anyofallof)
    {
       if (available_flags_.empty())
       {

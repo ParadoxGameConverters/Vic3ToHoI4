@@ -13,6 +13,7 @@
 namespace hoi4
 {
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, IsValidReturnsTrueIfCountryHasMatchingPrimaryCulture)
 {
    const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger("test_culture");
@@ -29,6 +30,7 @@ TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, IsValidReturnsT
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests,
     IsValidReturnsFalseIfCountryLacksMatchingPrimaryCulture)
 {
@@ -43,6 +45,7 @@ TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests,
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, IsValidReturnsFalseIfScopeNotCountry)
 {
    const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger("cu:test_culture");
@@ -56,6 +59,7 @@ TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, IsValidReturnsF
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, FindAllValidReturnsEmptyVector)
 {
    const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger("cu:test_culture");
@@ -69,7 +73,7 @@ TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, FindAllValidRet
 }
 
 
-TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger("cu:test_culture");
    const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger_two("cu:test_culture");
@@ -80,7 +84,7 @@ TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, EquivalentTrigg
 }
 
 
-TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersCountryHasPrimaryCultureTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    const CountryHasPrimaryCultureTrigger country_has_primary_culture_trigger("cu:test_culture");
    const std::unique_ptr<Trigger> trigger_copy = country_has_primary_culture_trigger.Copy();

@@ -10,7 +10,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4MilitaryTaskForceTemplateTests, TracksRequiredVariants)
+TEST(Hoi4MilitaryTaskForceTemplateTests, TracksRequiredVariants)  // NOLINT(cert-err58-cpp)
 {
    const TaskForceTemplate tmpl1({},
        {Ship{
@@ -45,7 +45,7 @@ TEST(Hoi4MilitaryTaskForceTemplateTests, TracksRequiredVariants)
    EXPECT_FALSE(tmpl2.AllVariantsActive({"1936 Ship", "Some Other Ship", "test2"}));
 }
 
-TEST(Hoi4MilitaryTaskForceTemplateTests, AddsShipsAndPaysCosts)
+TEST(Hoi4MilitaryTaskForceTemplateTests, AddsShipsAndPaysCosts)  // NOLINT(cert-err58-cpp)
 {
    const TaskForceTemplate tmpl1({{"pm_basic_bigship", 10.0F}, {"pm_basic_smallship", 10.0F}},
        {

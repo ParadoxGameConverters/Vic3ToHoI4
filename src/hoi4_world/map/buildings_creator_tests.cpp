@@ -8,7 +8,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldMapBuildingsCreatorTests, ExceptionForMissingBuildingsDotTxt)
+TEST(Hoi4worldMapBuildingsCreatorTests, ExceptionForMissingBuildingsDotTxt)  // NOLINT(cert-err58-cpp)
 {
    EXPECT_THROW(ImportBuildings(States(),
                     CoastalProvinces(),
@@ -18,7 +18,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ExceptionForMissingBuildingsDotTxt)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, DefaultsToNoBuildings)
+TEST(Hoi4worldMapBuildingsCreatorTests, DefaultsToNoBuildings)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States(),
        CoastalProvinces(),
@@ -29,7 +29,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DefaultsToNoBuildings)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfState)
+TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfState)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings =
        ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -100,7 +100,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    // clang-format off
    const Buildings
@@ -140,7 +140,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAirportInStateWithNoProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -167,7 +167,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportNotPlacedInProvinceWithNoPoints)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocation)
+TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocation)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings =
        ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -238,6 +238,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacementOverridenByDefaultLocati
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
    const Buildings buildings =
@@ -309,7 +310,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AirportPlacedInCenterOfFirstProvinceOfSt
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvincesOfState)
+TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvincesOfState)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
                                                    .province_to_state_id_map =
@@ -389,7 +390,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvinc
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoAntiAirInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoAntiAirInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
                                                    .province_to_state_id_map =
@@ -459,7 +460,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoAntiAirInStateWithNoProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirNotPlacedInProvincesWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirNotPlacedInProvincesWithNoPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -492,7 +493,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirNotPlacedInProvincesWithNoPoints)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings =
        ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -579,6 +580,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacementOverridenByDefaultLocati
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvincesOfStateIfDefaultNotInState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -659,6 +661,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, AntiAirPlacedInCenterOfFirstThreeProvinc
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixProvincesOfState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
@@ -786,7 +789,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoArmsFactoriesInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoArmsFactoriesInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
                                                    .province_to_state_id_map =
@@ -894,7 +897,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoArmsFactoriesInStateWithNoProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesNotPlacedInProvincesWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesNotPlacedInProvincesWithNoPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -929,7 +932,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesNotPlacedInProvincesWithNoP
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings =
        ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
@@ -1066,6 +1069,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacementOverridenByDefault
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixProvincesOfStateIfDefaultNotInState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
@@ -1193,7 +1197,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, ArmsFactoriesPlacedInCenterOfFirstSixPro
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvincesOfState)
+TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvincesOfState)  // NOLINT(cert-err58-cpp)
 {
    const States states = {.states = {State(1, {.provinces = {1, 2, 3, 4}})},
        .province_to_state_id_map = {
@@ -1288,7 +1292,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoBunkersInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoBunkersInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {})},
        .province_to_state_id_map = {
@@ -1375,7 +1379,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoBunkersInStateWithNoProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, BunkersNotPlacedInProvincesWithNoBorders)
+TEST(Hoi4worldMapBuildingsCreatorTests, BunkersNotPlacedInProvincesWithNoBorders)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -1407,7 +1411,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkersNotPlacedInProvincesWithNoBorders
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
        .province_to_state_id_map = {
@@ -1511,6 +1515,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacementOverridenByDefaultLocatio
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvincesOfStateIfDefaultsNotInState)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -1609,6 +1614,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, BunkerPlacedInCenterOfABorderForAllProvi
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderForAllProvincesOfState)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
@@ -1732,7 +1738,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenNoCoastalProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenNoCoastalProvinces)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {})},
        .province_to_state_id_map = {
@@ -1843,7 +1849,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenNoCoastalProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenCoastalProvincesNotInStates)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenCoastalProvincesNotInStates)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -1957,7 +1963,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoCoastalBunkersWhenCoastalProvincesNotI
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkersNotPlacedInProvincesWithNoBorders)
+TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkersNotPlacedInProvincesWithNoBorders)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -1993,7 +1999,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkersNotPlacedInProvincesWithNo
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
        .province_to_state_id_map = {
@@ -2123,6 +2129,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacementOverridenByDefault
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderForAllProvincesOfStateIfDefaultNotInState)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -2247,6 +2254,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, CoastalBunkerPlacedInCenterOfSeaBorderFo
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCoastalProvinceOfState)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
@@ -2360,7 +2368,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoDockyardInStateWithNoCoastalProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoDockyardInStateWithNoCoastalProvinces)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
        .province_to_state_id_map = {
@@ -2471,7 +2479,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoDockyardInStateWithNoCoastalProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoBorderPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoBorderPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -2576,7 +2584,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardNotPlacedInProvincesWithNoBorder
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
        .province_to_state_id_map = {
@@ -2692,6 +2700,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacementOverridenByDefaultLocat
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCoastalProvinceOfStateIfDefaultNotInState)
 {
    States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
@@ -2805,6 +2814,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, DockyardPlacedInSeaBorderCenterOfFirstCo
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacedInSeaBorderCenterOfFirstCoastalProvinceOfState)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
@@ -2871,7 +2881,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacedInSeaBorderCenterOf
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoFloatingHarborsInStateWithNoCoastalProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoFloatingHarborsInStateWithNoCoastalProvinces)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
        .province_to_state_id_map = {
@@ -2931,7 +2941,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoFloatingHarborsInStateWithNoCoastalPro
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsNotPlacedInProvincesWithNoSeaBorders)
+TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsNotPlacedInProvincesWithNoSeaBorders)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -2963,7 +2973,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsNotPlacedInProvincesWithN
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
        .province_to_state_id_map = {
@@ -3029,6 +3039,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FloatingHarborsPlacementOverridenByDefau
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests,
     FloatingHarborsPlacedInSeaBorderCenterOfFirstCoastalProvinceOfStateIfDefaultNotInActualProvince)
 {
@@ -3094,6 +3105,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests,
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirstSixProvincesOfState)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
@@ -3222,7 +3234,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoIndustrialComplexesInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoIndustrialComplexesInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
                                                    .province_to_state_id_map =
@@ -3330,7 +3342,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoIndustrialComplexesInStateWithNoProvin
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesNotPlacedInProvincesWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesNotPlacedInProvincesWithNoPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -3369,6 +3381,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesNotPlacedInProvincesW
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacementOverridenByDefaultLocations)
 {
    const Buildings buildings =
@@ -3506,6 +3519,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacementOverridenByD
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirstSixProvincesOfStateIfDefaultNotInState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5, 6, 7}})},
@@ -3633,6 +3647,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, IndustrialComplexesPlacedInCenterOfFirst
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAllProvincesOfState)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
@@ -3758,7 +3773,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAl
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoNavalBasesWhenNoCoastalProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoNavalBasesWhenNoCoastalProvinces)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {})},
        .province_to_state_id_map = {
@@ -3869,7 +3884,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoNavalBasesWhenNoCoastalProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesNotPlacedInProvincesWithNoBorders)
+TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesNotPlacedInProvincesWithNoBorders)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -3905,7 +3920,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesNotPlacedInProvincesWithNoBord
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
        .province_to_state_id_map = {
@@ -4038,6 +4053,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacementOverridenByDefaultLoc
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAllProvincesOfStateIfDefaultNotInState)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -4162,7 +4178,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NavalBasesPlacedInCenterOfSeaBorderForAl
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvinceOfState)
+TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvinceOfState)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
        .province_to_state_id_map = {
@@ -4236,7 +4252,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvi
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoNuclearReactorInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoNuclearReactorInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
                                                    .province_to_state_id_map =
@@ -4306,7 +4322,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoNuclearReactorInStateWithNoProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorNotPlacedInProvincesWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorNotPlacedInProvincesWithNoPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -4339,7 +4355,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorNotPlacedInProvincesWithNo
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
                                                    .province_to_state_id_map =
@@ -4417,6 +4433,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacementOverridenByDefaul
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -4490,6 +4507,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NuclearReactorPlacedInCenterOfFirstProvi
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesPlacedInCenterOfABorderForAllProvincesOfState)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4}})},
@@ -4583,7 +4601,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesPlacedInCenterOfABorderForAll
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoSupplyNodesInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoSupplyNodesInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {})}, .province_to_state_id_map = {}});
 
@@ -4659,7 +4677,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoSupplyNodesInStateWithNoProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesNotPlacedInProvincesWithNoBorders)
+TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesNotPlacedInProvincesWithNoBorders)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -4695,7 +4713,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodesNotPlacedInProvincesWithNoBor
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
        .province_to_state_id_map = {
@@ -4799,6 +4817,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacementOverridenByDefaultLoc
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacedInCenterOfABorderForAllProvincesOfStateIfDefaultsNotInState)
 {
    const States states({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -4893,6 +4912,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SupplyNodePlacedInCenterOfABorderForAllP
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstProvinceOfState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -4966,7 +4986,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstPr
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoSyntheticRefineryInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoSyntheticRefineryInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
                                                    .province_to_state_id_map =
@@ -5036,7 +5056,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoSyntheticRefineryInStateWithNoProvince
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryNotPlacedInProvincesWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryNotPlacedInProvincesWithNoPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -5073,6 +5093,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryNotPlacedInProvincesWit
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacementOverridenByDefaultLocations)
 {
    const Buildings buildings =
@@ -5153,6 +5174,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacementOverridenByDef
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -5226,7 +5248,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SyntheticRefineryPlacedInCenterOfFirstPr
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceOfState)
+TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceOfState)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
                                                    .province_to_state_id_map =
@@ -5299,7 +5321,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceO
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoRocketSiteInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoRocketSiteInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
                                                    .province_to_state_id_map =
@@ -5369,7 +5391,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoRocketSiteInStateWithNoProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, RocketSiteNotPlacedInProvincesWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, RocketSiteNotPlacedInProvincesWithNoPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -5402,7 +5424,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSiteNotPlacedInProvincesWithNoPoin
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings =
        ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -5482,6 +5504,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacementOverridenByDefaultLoc
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -5555,7 +5578,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RocketSitePlacedInCenterOfFirstProvinceO
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinceOfState)
+TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinceOfState)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
                                                    .province_to_state_id_map =
@@ -5628,7 +5651,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinc
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoRadarStationInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoRadarStationInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
                                                    .province_to_state_id_map =
@@ -5698,7 +5721,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoRadarStationInStateWithNoProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationNotPlacedInProvincesWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationNotPlacedInProvincesWithNoPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -5731,7 +5754,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationNotPlacedInProvincesWithNoPo
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings =
        ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -5811,6 +5834,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacementOverridenByDefaultL
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -5883,7 +5907,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, RadarStationPlacedInCenterOfFirstProvinc
            .position = {.x_coordinate = 2.0, .y_coordinate = 11.0, .z_coordinate = 2.0, .rotation = 0.0}})}));
 }
 
-TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfState)
+TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfState)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
                                                    .province_to_state_id_map =
@@ -5956,7 +5980,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfS
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoFuelSiloInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoFuelSiloInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
                                                    .province_to_state_id_map =
@@ -6026,7 +6050,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoFuelSiloInStateWithNoProvinces)
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloNotPlacedInProvincesWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloNotPlacedInProvincesWithNoPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -6059,7 +6083,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloNotPlacedInProvincesWithNoPoints
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacementOverridenByDefaultLocations)
+TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacementOverridenByDefaultLocations)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings =
        ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -6139,6 +6163,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacementOverridenByDefaultLocat
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -6212,6 +6237,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, FuelSiloPlacedInCenterOfFirstProvinceOfS
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, SpecialProjectFacilitesPlacedIndefaultLocationsAndOnlyInDefaultLocations)
 {
    const Buildings buildings =
@@ -6303,6 +6329,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, SpecialProjectFacilitesPlacedIndefaultLo
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, LandmarksPlacedIndefaultLocationsAndOnlyInDefaultLocations)
 {
    const Buildings buildings =
@@ -6394,6 +6421,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, LandmarksPlacedIndefaultLocationsAndOnly
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstProvinceOfState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -6467,7 +6495,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstPr
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, NoStrongholdNetworkInStateWithNoProvinces)
+TEST(Hoi4worldMapBuildingsCreatorTests, NoStrongholdNetworkInStateWithNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {})},
                                                    .province_to_state_id_map =
@@ -6537,7 +6565,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, NoStrongholdNetworkInStateWithNoProvince
 }
 
 
-TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkNotPlacedInProvincesWithNoPoints)
+TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkNotPlacedInProvincesWithNoPoints)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -6574,6 +6602,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkNotPlacedInProvincesWit
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacementOverridenByDefaultLocations)
 {
    const Buildings buildings =
@@ -6654,6 +6683,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacementOverridenByDef
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstProvinceOfStateIfDefaultNotInState)
 {
    const Buildings buildings = ImportBuildings(States({.states = {State(1, {.provinces = {1, 2, 3, 4, 5}})},
@@ -6727,6 +6757,7 @@ TEST(Hoi4worldMapBuildingsCreatorTests, StrongholdNetworkPlacedInCenterOfFirstPr
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapBuildingsCreatorTests, DamsPlacedIndefaultLocationsAndOnlyInDefaultLocations)
 {
    const Buildings buildings =

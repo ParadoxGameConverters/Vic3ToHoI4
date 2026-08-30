@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldWarsImporter, WarsCanBeImported)
+TEST(Vic3WorldWarsImporter, WarsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << R"(
@@ -47,7 +47,7 @@ database={
 }
 
 
-TEST(Vic3WorldWarsImporter, InvalidWarsAreSkipped)
+TEST(Vic3WorldWarsImporter, InvalidWarsAreSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << R"(

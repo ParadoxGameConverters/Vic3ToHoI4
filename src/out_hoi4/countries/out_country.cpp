@@ -240,7 +240,7 @@ void out::OutputCountryHistory(const path& output_name,
    }
    country_history << "}\n";
    country_history << fmt::format("set_stability = {}\n", country.GetStability());
-   country_history << fmt::format("set_war_support = {:.2f}\n", country.GetWarSupport());
+   country_history << fmt::format("set_war_support = {:.2f}\n", hoi4::Country::GetWarSupport());
    country_history << "\n";
 
    country_history << country.GetTechnologies();

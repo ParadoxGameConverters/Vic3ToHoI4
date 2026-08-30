@@ -15,22 +15,24 @@
 namespace mappers
 {
 
-// Find root of a function fn using secant approximation.
+// Find root of a function func using secant approximation.
 template <typename T, typename U>
-U FindRoot(const std::function<U(T)>& fn, T x_0, const std::function<T(U)>& x_1_func, int iterations)
+U FindRoot(const std::function<U(T)>& func, T x_0, const std::function<T(U)>& x_1_func, int iterations)
 {
-   U y_0 = fn(x_0);
-   T x_1 = x_1_func(y_0);
-   U y_1 = fn(x_1);
+   constexpr U kEpsilon = 0.005F;
 
-   for (; iterations > 0 && std::abs(y_1) > 0.005; --iterations)
+   U y_0 = func(x_0);
+   T x_1 = x_1_func(y_0);
+   U y_1 = func(x_1);
+
+   for (; iterations > 0 && std::abs(y_1) > kEpsilon; --iterations)
    {
       float new_x = x_1 - (y_1 * (x_1 - x_0) / (y_1 - y_0));
 
       x_0 = x_1;
       y_0 = y_1;
       x_1 = new_x;
-      y_1 = fn(new_x);
+      y_1 = func(new_x);
    }
    return x_1;
 }
@@ -57,8 +59,8 @@ class InfrastructureMapper
 
    int Map(float vic3_infrastructure);
 
-   float GetTargetInfrastructure() { return target_hoi_infra_per_state_; }
-   float GetConvertedInfrastructure()
+   [[nodiscard]] float GetTargetInfrastructure() const { return target_hoi_infra_per_state_; }
+   [[nodiscard]] float GetConvertedInfrastructure() const
    {
       return static_cast<float>(converted_hoi_infra_) / static_cast<float>(converted_hoi_states_);
    }
@@ -70,7 +72,7 @@ class InfrastructureMapper
    /// We use this value instead of the more obvious vic_infra_per_hoi_infra
    /// so that when we set this to 0 during tests, we get a result of 0 hoi
    /// infra instead of infinite hoi infra during the conversion.
-   InfrastructureConversionRatio hoi_infra_per_vic_infra_{0.0f};
+   InfrastructureConversionRatio hoi_infra_per_vic_infra_{0.0F};
    /// <summary>
    /// target additional average hoi infra (amount above 1) per state.
    /// </summary>

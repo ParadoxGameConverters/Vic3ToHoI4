@@ -13,7 +13,7 @@ bool RootTrigger::IsValid(const Context& context, [[maybe_unused]] const World& 
    if (value_.starts_with("c:"))
    {
       const CountryScope* maybe_country = std::get_if<CountryScope>(&context.root);
-      if (!maybe_country)
+      if (maybe_country == nullptr)
       {
          return false;
       }

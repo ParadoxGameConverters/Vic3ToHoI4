@@ -11,7 +11,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4WorldMapStrategicRegionImporter, FilenameIsFromFilename)
+TEST(Hoi4WorldMapStrategicRegionImporter, FilenameIsFromFilename)  // NOLINT(cert-err58-cpp)
 {
    const auto strategic_region = StrategicRegionImporter{}.ImportStrategicRegion(
        "test_files/hoi4_world/map/strategicregions/empty_strategic_region.txt");
@@ -20,7 +20,7 @@ TEST(Hoi4WorldMapStrategicRegionImporter, FilenameIsFromFilename)
 }
 
 
-TEST(Hoi4WorldMapStrategicRegionImporter, DefaultsAreSet)
+TEST(Hoi4WorldMapStrategicRegionImporter, DefaultsAreSet)  // NOLINT(cert-err58-cpp)
 {
    const auto strategic_region = StrategicRegionImporter{}.ImportStrategicRegion(
        "test_files/hoi4_world/map/strategicregions/empty_strategic_region.txt");
@@ -35,7 +35,7 @@ TEST(Hoi4WorldMapStrategicRegionImporter, DefaultsAreSet)
 }
 
 
-TEST(Hoi4WorldMapStrategicRegionImporter, ItemsCanBeImported)
+TEST(Hoi4WorldMapStrategicRegionImporter, ItemsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const auto strategic_region = StrategicRegionImporter{}.ImportStrategicRegion(
        "test_files/hoi4_world/map/strategicregions/test_strategic_region.txt");

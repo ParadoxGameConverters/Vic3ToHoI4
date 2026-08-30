@@ -11,7 +11,7 @@ namespace hoi4
 {
 
 
-TEST(Hoi4worldStatesHoi4state, AirBaseLevelCanBeIncreased)
+TEST(Hoi4worldStatesHoi4state, AirBaseLevelCanBeIncreased)  // NOLINT(cert-err58-cpp)
 {
    hoi4::State test_state(1, {});
    test_state.IncreaseAirBaseLevel(5);
@@ -20,7 +20,7 @@ TEST(Hoi4worldStatesHoi4state, AirBaseLevelCanBeIncreased)
 }
 
 
-TEST(Hoi4worldStatesHoi4state, AirBaseLevelCappedAtTen)
+TEST(Hoi4worldStatesHoi4state, AirBaseLevelCappedAtTen)  // NOLINT(cert-err58-cpp)
 {
    hoi4::State test_state(1, {});
    test_state.IncreaseAirBaseLevel(20);
@@ -28,7 +28,7 @@ TEST(Hoi4worldStatesHoi4state, AirBaseLevelCappedAtTen)
    EXPECT_EQ(test_state.GetAirBaseLevel(), 10);
 }
 
-TEST(Hoi4worldStatesHoi4state, HighestVictoryPointValueCanBeChanged)
+TEST(Hoi4worldStatesHoi4state, HighestVictoryPointValueCanBeChanged)  // NOLINT(cert-err58-cpp)
 {
    hoi4::State test_state(1, {.victory_points = {{1, 1}, {2, 2}}});
    test_state.SetHighestVictoryPointValue(42);
@@ -37,7 +37,7 @@ TEST(Hoi4worldStatesHoi4state, HighestVictoryPointValueCanBeChanged)
 }
 
 
-TEST(Hoi4worldStatesHoi4state, HighestVictoryPointValueCanBeChangedForOneVictoryPoint)
+TEST(Hoi4worldStatesHoi4state, HighestVictoryPointValueCanBeChangedForOneVictoryPoint)  // NOLINT(cert-err58-cpp)
 {
    hoi4::State test_state(1, {.victory_points = {{1, 1}}});
    test_state.SetHighestVictoryPointValue(42);
@@ -46,7 +46,7 @@ TEST(Hoi4worldStatesHoi4state, HighestVictoryPointValueCanBeChangedForOneVictory
 }
 
 
-TEST(Hoi4worldStatesHoi4state, HighestVictoryPointValueLeavesEmptyVictoryPointsAlone)
+TEST(Hoi4worldStatesHoi4state, HighestVictoryPointValueLeavesEmptyVictoryPointsAlone)  // NOLINT(cert-err58-cpp)
 {
    hoi4::State test_state(1, {});
    test_state.SetHighestVictoryPointValue(42);

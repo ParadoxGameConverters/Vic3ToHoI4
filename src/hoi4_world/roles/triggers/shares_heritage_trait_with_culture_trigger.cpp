@@ -8,7 +8,7 @@ namespace hoi4
 bool SharesHeritageTraitWithCultureTrigger::IsValid(const Context& context, [[maybe_unused]] const World& world) const
 {
    const CultureScope* maybe_culture = std::get_if<CultureScope>(&context.this_scope);
-   if (!maybe_culture)
+   if (maybe_culture == nullptr)
    {
       return false;
    }

@@ -14,7 +14,7 @@ namespace hoi4
 {
 
 
-TEST(Hoi4WorldDiplomacyWarTests, OriginalDefenderCanBeConverted)
+TEST(Hoi4WorldDiplomacyWarTests, OriginalDefenderCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    const std::optional<War> war = ConvertWar(vic3::War({.original_attacker = 1, .original_defender = 12}),
        std::set<std::string>{},
@@ -25,10 +25,10 @@ TEST(Hoi4WorldDiplomacyWarTests, OriginalDefenderCanBeConverted)
 }
 
 
-TEST(Hoi4WorldDiplomacyWarTests, WarnIfOriginalDefenderCantBeMapped)
+TEST(Hoi4WorldDiplomacyWarTests, WarnIfOriginalDefenderCantBeMapped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
-   auto std_out_buf = std::cout.rdbuf();
+   auto* std_out_buf = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
    const std::optional<War> war = ConvertWar(vic3::War({.original_attacker = 1, .original_defender = 12}),
@@ -42,7 +42,7 @@ TEST(Hoi4WorldDiplomacyWarTests, WarnIfOriginalDefenderCantBeMapped)
 }
 
 
-TEST(Hoi4WorldDiplomacyWarTests, ExtraDefendersCanBeAdded)
+TEST(Hoi4WorldDiplomacyWarTests, ExtraDefendersCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    const std::optional<War> war =
        ConvertWar(vic3::War({.original_attacker = 1, .original_defender = 12, .defenders = {12, 13, 14, 15}}),
@@ -54,10 +54,10 @@ TEST(Hoi4WorldDiplomacyWarTests, ExtraDefendersCanBeAdded)
 }
 
 
-TEST(Hoi4WorldDiplomacyWarTests, WarnIfExtraDefendersCantBeMapped)
+TEST(Hoi4WorldDiplomacyWarTests, WarnIfExtraDefendersCantBeMapped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
-   auto std_out_buf = std::cout.rdbuf();
+   auto* std_out_buf = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
    const std::optional<War> war =
@@ -72,7 +72,7 @@ TEST(Hoi4WorldDiplomacyWarTests, WarnIfExtraDefendersCantBeMapped)
 }
 
 
-TEST(Hoi4WorldDiplomacyWarTests, OriginalAttackerCanBeConverted)
+TEST(Hoi4WorldDiplomacyWarTests, OriginalAttackerCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    const std::optional<War> war = ConvertWar(vic3::War({.original_attacker = 12, .original_defender = 1}),
        std::set<std::string>{},
@@ -83,10 +83,10 @@ TEST(Hoi4WorldDiplomacyWarTests, OriginalAttackerCanBeConverted)
 }
 
 
-TEST(Hoi4WorldDiplomacyWarTests, WarnIfOriginalAttackerCantBeMapped)
+TEST(Hoi4WorldDiplomacyWarTests, WarnIfOriginalAttackerCantBeMapped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
-   auto std_out_buf = std::cout.rdbuf();
+   auto* std_out_buf = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
    const std::optional<War> war = ConvertWar(vic3::War({.original_attacker = 12, .original_defender = 1}),
@@ -100,7 +100,7 @@ TEST(Hoi4WorldDiplomacyWarTests, WarnIfOriginalAttackerCantBeMapped)
 }
 
 
-TEST(Hoi4WorldDiplomacyWarTests, ExtraAttackersCanBeAdded)
+TEST(Hoi4WorldDiplomacyWarTests, ExtraAttackersCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    const std::optional<War> war =
        ConvertWar(vic3::War({.original_attacker = 12, .attackers = {12, 13, 14, 15}, .original_defender = 1}),
@@ -112,10 +112,10 @@ TEST(Hoi4WorldDiplomacyWarTests, ExtraAttackersCanBeAdded)
 }
 
 
-TEST(Hoi4WorldDiplomacyWarTests, WarnIfExtraAttackersCantBeMapped)
+TEST(Hoi4WorldDiplomacyWarTests, WarnIfExtraAttackersCantBeMapped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
-   auto std_out_buf = std::cout.rdbuf();
+   auto* std_out_buf = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
    const std::optional<War> war =

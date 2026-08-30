@@ -20,7 +20,7 @@ using std::filesystem::path;
 namespace out
 {
 
-TEST(Outhoi4CountriesOuttagaliasesTests, AliasesFileIsCreated)
+TEST(Outhoi4CountriesOuttagaliasesTests, AliasesFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    std::filesystem::remove_all("output/AliasesFileIsCreated");
 

@@ -9,7 +9,7 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, DefaultsDefaultToDefault)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, DefaultsDefaultToDefault)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -20,7 +20,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, DefaultsDefaultToDefault)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CharactersCanBeImported)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CharactersCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -74,7 +74,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CharactersCanBeImported)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CountryCharacterMapCanBeImported)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CountryCharacterMapCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -92,7 +92,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, CountryCharacterMapCanBeIm
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, IgsAreAssigned)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, IgsAreAssigned)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -114,7 +114,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, IgsAreAssigned)
        testing::UnorderedElementsAre(testing::Pair(1, Character({.id = 1, .ig_id = 1})),
            testing::Pair(3, Character({.id = 3, .ig_id = 2}))));
 }
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, EmployedCommandersAreMarked)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, EmployedCommandersAreMarked)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -146,7 +146,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, EmployedCommandersAreMarke
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, TheDeadAreLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, TheDeadAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -175,7 +175,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, TheDeadAreLogged)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsAreAssignedForExiles)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsAreAssignedForExiles)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -200,7 +200,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsAreAssignedForEx
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, WanderingAgitatorsAreLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, WanderingAgitatorsAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -223,7 +223,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, WanderingAgitatorsAreLogge
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, IgsMatchesAreLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, IgsMatchesAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -251,7 +251,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, IgsMatchesAreLogged)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, MissingOriginTagMatchesAreLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, MissingOriginTagMatchesAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -285,7 +285,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, MissingOriginTagMatchesAre
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsMatchesAreLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsMatchesAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -314,7 +314,7 @@ TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OriginTagsMatchesAreLogged
 }
 
 
-TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OldCommanderCountIsLogged)
+TEST(Vic3WorldCharactersVic3CharacterManagerImporter, OldCommanderCountIsLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

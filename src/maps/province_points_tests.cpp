@@ -7,7 +7,7 @@
 namespace maps
 {
 
-TEST(MapsProvincepoints, CentermostIsOriginIfNoPoints)
+TEST(MapsProvincepoints, CentermostIsOriginIfNoPoints)  // NOLINT(cert-err58-cpp)
 {
    const ProvincePoints province_points(std::set<Point>{});
 
@@ -16,7 +16,7 @@ TEST(MapsProvincepoints, CentermostIsOriginIfNoPoints)
 }
 
 
-TEST(MapsProvincepoints, CenterPointIsAverageLatitude)
+TEST(MapsProvincepoints, CenterPointIsAverageLatitude)  // NOLINT(cert-err58-cpp)
 {
    const ProvincePoints province_points({
        Point{.x = 0, .y = 1},
@@ -30,7 +30,7 @@ TEST(MapsProvincepoints, CenterPointIsAverageLatitude)
 }
 
 
-TEST(MapsProvincepoints, CenterPointIsAverageLongitude)
+TEST(MapsProvincepoints, CenterPointIsAverageLongitude)  // NOLINT(cert-err58-cpp)
 {
    const ProvincePoints province_points({
        Point{.x = 1, .y = 0},
@@ -44,7 +44,7 @@ TEST(MapsProvincepoints, CenterPointIsAverageLongitude)
 }
 
 
-TEST(MapsProvincepoints, CentermostPointWhenCenterNotControlled)
+TEST(MapsProvincepoints, CentermostPointWhenCenterNotControlled)  // NOLINT(cert-err58-cpp)
 {
    const ProvincePoints province_points({Point{.x = 1, .y = 0}, Point{.x = 3, .y = 0}, Point{.x = 10, .y = 0}});
 
@@ -53,7 +53,7 @@ TEST(MapsProvincepoints, CentermostPointWhenCenterNotControlled)
 }
 
 
-TEST(MapsProvincepoints, CentermostIsOriginIfNoPointsWhenAddingPoints)
+TEST(MapsProvincepoints, CentermostIsOriginIfNoPointsWhenAddingPoints)  // NOLINT(cert-err58-cpp)
 {
    const ProvincePoints province_points;
 
@@ -62,7 +62,7 @@ TEST(MapsProvincepoints, CentermostIsOriginIfNoPointsWhenAddingPoints)
 }
 
 
-TEST(MapsProvincepoints, CenterPointIsAverageLatitudeWhenAddingPoints)
+TEST(MapsProvincepoints, CenterPointIsAverageLatitudeWhenAddingPoints)  // NOLINT(cert-err58-cpp)
 {
    ProvincePoints province_points;
    province_points.AddPoint(Point{.x = 0, .y = 1});
@@ -75,7 +75,7 @@ TEST(MapsProvincepoints, CenterPointIsAverageLatitudeWhenAddingPoints)
 }
 
 
-TEST(MapsProvincepoints, CenterPointIsAverageLongitudeWhenAddingPoints)
+TEST(MapsProvincepoints, CenterPointIsAverageLongitudeWhenAddingPoints)  // NOLINT(cert-err58-cpp)
 {
    ProvincePoints province_points;
    province_points.AddPoint(Point{.x = 1, .y = 0});
@@ -88,7 +88,7 @@ TEST(MapsProvincepoints, CenterPointIsAverageLongitudeWhenAddingPoints)
 }
 
 
-TEST(MapsProvincepoints, CentermostPointWhenCenterNotControlledWhenAddingPoints)
+TEST(MapsProvincepoints, CentermostPointWhenCenterNotControlledWhenAddingPoints)  // NOLINT(cert-err58-cpp)
 {
    ProvincePoints province_points;
    province_points.AddPoint(Point{.x = 1, .y = 0});

@@ -11,7 +11,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldMilitaryFleetsImporter, ShipsDefaultToEmpty)
+TEST(Vic3worldMilitaryFleetsImporter, ShipsDefaultToEmpty)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -20,7 +20,7 @@ TEST(Vic3worldMilitaryFleetsImporter, ShipsDefaultToEmpty)
 }
 
 
-TEST(Vic3worldMilitaryFleetsImporter, ShipsCanBeImported)
+TEST(Vic3worldMilitaryFleetsImporter, ShipsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -48,7 +48,7 @@ TEST(Vic3worldMilitaryFleetsImporter, ShipsCanBeImported)
 }
 
 
-TEST(Vic3worldMilitaryFleetsImporter, MissingFleetMeansNoShip)
+TEST(Vic3worldMilitaryFleetsImporter, MissingFleetMeansNoShip)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -65,7 +65,7 @@ TEST(Vic3worldMilitaryFleetsImporter, MissingFleetMeansNoShip)
 }
 
 
-TEST(Vic3worldMilitaryFleetsImporter, MissingTypeMeansNoShip)
+TEST(Vic3worldMilitaryFleetsImporter, MissingTypeMeansNoShip)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -82,7 +82,7 @@ TEST(Vic3worldMilitaryFleetsImporter, MissingTypeMeansNoShip)
 }
 
 
-TEST(Vic3worldMilitaryFleetsImporter, FleetsCanHaveShipTypesAdded)
+TEST(Vic3worldMilitaryFleetsImporter, FleetsCanHaveShipTypesAdded)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int64_t, std::vector<std::string>> fleets_with_types =
        AddShipTypes({{1, "type_one"}, {2, "type_two"}}, {{1, {1, 1, 2}}, {2, {3, 2, 1}}});

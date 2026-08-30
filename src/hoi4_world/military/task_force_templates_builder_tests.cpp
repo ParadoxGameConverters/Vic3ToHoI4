@@ -11,14 +11,14 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldMilitaryTaskForceTemplatesBuilderTests, IgnoresBadTaskForceTemplates)
+TEST(Hoi4worldMilitaryTaskForceTemplatesBuilderTests, IgnoresBadTaskForceTemplates)  // NOLINT(cert-err58-cpp)
 {
    const std::vector<TaskForceTemplate> task_forces =
        ImportTaskForceTemplates("test_files/hoi4_world/military/IgnoresBadTaskForceTemplates.txt");
    EXPECT_TRUE(task_forces.empty());
 }
 
-TEST(Hoi4worldMilitaryTaskForceTemplatesBuilderTests, ImportsTaskForceTemplates)
+TEST(Hoi4worldMilitaryTaskForceTemplatesBuilderTests, ImportsTaskForceTemplates)  // NOLINT(cert-err58-cpp)
 {
    const std::vector<TaskForceTemplate> task_forces =
        ImportTaskForceTemplates("test_files/hoi4_world/military/ImportsTaskForceTemplates.txt");

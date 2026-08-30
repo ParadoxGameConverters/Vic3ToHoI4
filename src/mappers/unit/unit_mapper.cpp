@@ -11,13 +11,13 @@
 namespace
 {
 
-void WarnForMissingMapping(const std::string& pm, std::set<std::string>& warned)
+void WarnForMissingMapping(const std::string& production_method, std::set<std::string>& warned)
 {
-   if (warned.contains(pm))
+   if (warned.contains(production_method))
    {
-      Log(LogLevel::Warning) << fmt::format("Missing unit mapping rule for {}", pm);
+      Log(LogLevel::Warning) << fmt::format("Missing unit mapping rule for {}", production_method);
    }
-   warned.insert(pm);
+   warned.insert(production_method);
 }
 
 }  // namespace
@@ -28,12 +28,12 @@ std::vector<hoi4::Battalion> mappers::UnitMapper::MakeBattalions(const std::vect
 {
    int equipment = 0;
    BattalionMap current;
-   for (const auto& pm: methods)
+   for (const auto& production_method: methods)
    {
-      const auto& itr = templates_.find(pm);
+      const auto& itr = templates_.find(production_method);
       if (itr == templates_.end())
       {
-         WarnForMissingMapping(pm, warned_);
+         WarnForMissingMapping(production_method, warned_);
          continue;
       }
 

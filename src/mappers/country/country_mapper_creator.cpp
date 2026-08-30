@@ -18,7 +18,11 @@ using std::filesystem::path;
 namespace
 {
 
-const std::set<std::string> kDisallowedTags{"CON", "PRN", "AUX", "NUL"};
+const std::set<std::string>& GetDisallowedTags()
+{
+   static const std::set<std::string> kDisallowedTags = {"CON", "PRN", "AUX", "NUL"};
+   return kDisallowedTags;
+}
 
 
 std::map<std::string, std::string> ImportMappingRules(const path& country_mappings_file)
@@ -41,7 +45,7 @@ std::map<std::string, std::string> ImportMappingRules(const path& country_mappin
           vic3_tag.clear();
           hoi4_tag.clear();
           mapping_rule_parser.parseStream(input_stream);
-          if (!kDisallowedTags.contains(hoi4_tag))
+          if (!GetDisallowedTags().contains(hoi4_tag))
           {
              country_mapping_rules.emplace(vic3_tag, hoi4_tag);
           }
@@ -59,7 +63,7 @@ std::map<std::string, std::string> ImportMappingRules(const path& country_mappin
 
 bool IsDynamicTag(std::string_view tag)
 {
-   return tag.size() == 3 && tag.starts_with('D') && std::isdigit(tag[1]) && std::isdigit(tag[2]);
+   return tag.size() == 3 && tag.starts_with('D') && (std::isdigit(tag[1]) != 0) && (std::isdigit(tag[2]) != 0);
 }
 
 }  // namespace
@@ -100,7 +104,7 @@ mappers::CountryMappingCreator::CountryMappingCreator(const path& country_mappin
       {
          return false;
       }
-      if (kDisallowedTags.contains(vic3_tag))
+      if (GetDisallowedTags().contains(vic3_tag))
       {
          return false;
       }
@@ -132,11 +136,11 @@ mappers::CountryMappingCreator::CountryMappingCreator(const path& country_mappin
 
 
 // Attempt to name (or defer naming of) a country. Only the first successful strategy will be used.
-void mappers::CountryMappingCreator::ExecuteStrategiesForCountry(const vic3::Country& country,
+void mappers::ExecuteStrategiesForCountry(const vic3::Country& country,
     const std::vector<CountryStrategyFn>&& strategies)
 {
-   static_cast<void>(std::ranges::any_of(strategies, [&country](const CountryStrategyFn& fn) {
-      return fn(country);
+   static_cast<void>(std::ranges::any_of(strategies, [&country](const CountryStrategyFn& function) {
+      return function(country);
    }));
 }
 

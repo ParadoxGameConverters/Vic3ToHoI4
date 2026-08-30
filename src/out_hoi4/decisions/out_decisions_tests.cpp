@@ -33,7 +33,7 @@ namespace out
 {
 
 // Remove this test when decisions are implemented!
-TEST(OutHoI4DecisionsOutDecisions, DecisionsAreOutput)
+TEST(OutHoI4DecisionsOutDecisions, DecisionsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, std::vector<hoi4::Decision>> decisions{
        {"$TAG$_a_decisions_category",

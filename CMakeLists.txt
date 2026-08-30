@@ -400,6 +400,7 @@ if (PREPARE_CLANG_TIDY)
 endif(PREPARE_CLANG_TIDY)
 if (RUN_CLANG_TIDY)
 	set(CMAKE_CXX_CLANG_TIDY clang-tidy --header-filter=.*src.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc)
+	#set(CMAKE_CXX_CLANG_TIDY clang-tidy --header-filter=.*src.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc --fix-errors)
 endif(RUN_CLANG_TIDY)
 add_library(Vic3ToHoi4lib
 	${CONVERTER_SOURCES}

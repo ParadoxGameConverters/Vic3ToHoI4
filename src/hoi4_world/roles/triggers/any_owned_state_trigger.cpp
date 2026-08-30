@@ -11,7 +11,7 @@ namespace hoi4
 bool AnyOwnedStateTrigger::IsValid(const Context& context, const World& world) const
 {
    const CountryScope* maybe_country = std::get_if<CountryScope>(&context.this_scope);
-   if (!maybe_country)
+   if (maybe_country == nullptr)
    {
       return false;
    }
@@ -47,7 +47,7 @@ std::vector<Scope> AnyOwnedStateTrigger::FindAllValid(const Context& context, co
    std::vector<Scope> valid_scopes;
 
    const CountryScope* maybe_country = std::get_if<CountryScope>(&context.this_scope);
-   if (!maybe_country)
+   if (maybe_country == nullptr)
    {
       return {};
    }

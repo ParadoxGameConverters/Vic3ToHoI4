@@ -13,6 +13,7 @@
 namespace hoi4
 {
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersIsHomelandTriggerTests, IsValidReturnsTrueIfStateHasCultureHomeland)
 {
    const State state(42, {.homelands = {"test_culture"}});
@@ -25,6 +26,7 @@ TEST(Hoi4worldRolesTriggersIsHomelandTriggerTests, IsValidReturnsTrueIfStateHasC
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersIsHomelandTriggerTests, IsValidReturnsFalseIfStateHasNotCultureHomeland)
 {
    const State state(42, {});
@@ -37,7 +39,7 @@ TEST(Hoi4worldRolesTriggersIsHomelandTriggerTests, IsValidReturnsFalseIfStateHas
 }
 
 
-TEST(Hoi4worldRolesTriggersIsHomelandTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersIsHomelandTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const IsHomelandTrigger trigger("test_culture");
    const IsHomelandTrigger same_trigger("test_culture");
@@ -51,7 +53,7 @@ TEST(Hoi4worldRolesTriggersIsHomelandTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesTriggersIsHomelandTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersIsHomelandTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    const IsHomelandTrigger trigger("test_culture");
    const std::unique_ptr<Trigger> true_copy = trigger.Copy();

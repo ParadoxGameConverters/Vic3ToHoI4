@@ -11,7 +11,7 @@
 namespace out
 {
 
-TEST(Outhoi4EventOuteventTests, EmptyEventIsOutput)
+TEST(Outhoi4EventOuteventTests, EmptyEventIsOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Event event{.type = "test_type", .id = "test_id"};
 
@@ -27,7 +27,7 @@ TEST(Outhoi4EventOuteventTests, EmptyEventIsOutput)
 }
 
 
-TEST(Outhoi4EventOuteventTests, ItemsAreOutput)
+TEST(Outhoi4EventOuteventTests, ItemsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Event event{
        .type = "test_type",
@@ -96,7 +96,7 @@ TEST(Outhoi4EventOuteventTests, ItemsAreOutput)
 }
 
 
-TEST(Outhoi4EventOuteventTests, FalseItemsAreOutput)
+TEST(Outhoi4EventOuteventTests, FalseItemsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Event event{.type = "test_type", .id = "test_id", .hidden = false, .fire_only_once = false};
 

@@ -10,7 +10,7 @@
 
 namespace out
 {
-TEST(Outhoi4NamesTests, NamesFileIsCreated)
+TEST(Outhoi4NamesTests, NamesFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    std::filesystem::create_directories("output/NamesFileIsCreated/common/names");
 

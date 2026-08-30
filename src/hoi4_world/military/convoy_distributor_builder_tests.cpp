@@ -9,7 +9,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldMilitaryConvoyDistributorBuilderTests, CanBuildConvoyDistributor)
+TEST(Hoi4worldMilitaryConvoyDistributorBuilderTests, CanBuildConvoyDistributor)  // NOLINT(cert-err58-cpp)
 {
    auto distributor = BuildConvoyDistributor("test_files/configurables/convoy_config.txt");
    const std::map<int, vic3::State> states{

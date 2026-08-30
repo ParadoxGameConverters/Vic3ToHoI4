@@ -65,9 +65,9 @@ WorldMapperBuilder& WorldMapperBuilder::DefaultCountryMapper(const vic3::World& 
 
 WorldMapperBuilder& WorldMapperBuilder::AddCountries(const std::map<int, std::string>& countries)
 {
-   for (auto& el: countries)
+   for (const auto& country: countries)
    {
-      this->country_mappings_.insert(el);
+      this->country_mappings_.insert(country);
    }
 
    return *this;
@@ -75,11 +75,11 @@ WorldMapperBuilder& WorldMapperBuilder::AddCountries(const std::map<int, std::st
 
 WorldMapperBuilder& WorldMapperBuilder::AddProvinces(const std::map<std::string, int>& provinces)
 {
-   for (auto& el: provinces)
+   for (const auto& province: provinces)
    {
       // need to wrap second in an extra set of {} to make el.second a list element and not a size
-      std::pair<std::string, std::vector<int>> vic_hoi_elem = {el.first, {el.second}};
-      std::pair<int, std::vector<std::string>> hoi_vic_elem = {el.second, {el.first}};
+      std::pair<std::string, std::vector<int>> vic_hoi_elem = {province.first, {province.second}};
+      std::pair<int, std::vector<std::string>> hoi_vic_elem = {province.second, {province.first}};
       this->hoi_vic_province_mappings_.insert(hoi_vic_elem);
       this->vic_hoi_province_mappings_.insert(vic_hoi_elem);
    }
@@ -104,9 +104,9 @@ WorldMapperBuilder& WorldMapperBuilder::AddTestProvinces(int count)
 
 WorldMapperBuilder& WorldMapperBuilder::AddTechs(const std::vector<mappers::TechMapping>& techs)
 {
-   for (auto& el: techs)
+   for (const auto& tech: techs)
    {
-      this->tech_mappings_.push_back(el);
+      this->tech_mappings_.push_back(tech);
    }
 
    return *this;

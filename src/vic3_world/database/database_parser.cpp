@@ -8,7 +8,7 @@
 namespace vic3
 {
 
-DatabaseParser::DatabaseParser(): commonItems::parser(), db_entry_parser_()
+DatabaseParser::DatabaseParser()
 {
    this->db_entry_parser_.registerRegex(commonItems::integerRegex,
        []([[maybe_unused]] const std::string& key, [[maybe_unused]] std::istream& stream) {
@@ -27,27 +27,26 @@ void SkipSpaces(std::istream& stream)
    }
 }
 
-DatabaseParser::DatabaseParser(commonItems::parsingFunctionStreamOnly single_element_func):
-    commonItems::parser(),
-    db_entry_parser_()
+DatabaseParser::DatabaseParser(commonItems::parsingFunctionStreamOnly single_element_func)
+
 {
    this->db_entry_parser_.registerRegex(commonItems::integerRegex,
        [single_element_func](std::string key, std::istream& stream) {
           // i have a mouth and i must scream
           SkipSpaces(stream);
-          const auto m = static_cast<char>(stream.get());
-          const auto n = static_cast<char>(stream.peek());
-          if (n == ' ')
+          const auto next = static_cast<char>(stream.get());
+          const auto next_next = static_cast<char>(stream.peek());
+          if (next_next == ' ')
           {
              stream.get();
           }
           if (stream.peek() == '{')
           {
-             if (n == ' ')
+             if (next_next == ' ')
              {
-                stream.putback(n);
+                stream.putback(next_next);
              }
-             stream.putback(m);
+             stream.putback(next);
              single_element_func(stream);
           }
           else
@@ -61,27 +60,26 @@ DatabaseParser::DatabaseParser(commonItems::parsingFunctionStreamOnly single_ele
    this->IgnoreAndLogUnregisteredItems();
 }
 
-DatabaseParser::DatabaseParser(commonItems::parsingFunction multi_element_func):
-    commonItems::parser(),
-    db_entry_parser_()
+DatabaseParser::DatabaseParser(commonItems::parsingFunction multi_element_func)
+
 {
    this->db_entry_parser_.registerRegex(commonItems::integerRegex,
        [multi_element_func](std::string key, std::istream& stream) {
           // i have a mouth and i must scream
           SkipSpaces(stream);
-          const auto m = static_cast<char>(stream.get());
-          const auto n = static_cast<char>(stream.peek());
-          if (n == ' ')
+          const auto next = static_cast<char>(stream.get());
+          const auto next_next = static_cast<char>(stream.peek());
+          if (next_next == ' ')
           {
              stream.get();
           }
           if (stream.peek() == '{')
           {
-             if (n == ' ')
+             if (next_next == ' ')
              {
-                stream.putback(n);
+                stream.putback(next_next);
              }
-             stream.putback(m);
+             stream.putback(next);
              multi_element_func(key, stream);
           }
           else

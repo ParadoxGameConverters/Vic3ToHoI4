@@ -9,7 +9,7 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldInterestGroupsInterestGroupsImporter, NoInterestGroupsOnEmptyInput)
+TEST(Vic3WorldInterestGroupsInterestGroupsImporter, NoInterestGroupsOnEmptyInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const std::map<int, InterestGroup> igs = ImportInterestGroups(input);
@@ -18,7 +18,7 @@ TEST(Vic3WorldInterestGroupsInterestGroupsImporter, NoInterestGroupsOnEmptyInput
 }
 
 
-TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsCanBeImported)
+TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -59,7 +59,7 @@ TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsCanBeImported)
 }
 
 
-TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsSetAsNoneAreSkipped)
+TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsSetAsNoneAreSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -73,7 +73,7 @@ TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsSetAsNoneAreSk
 }
 
 
-TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsImportsAreLogged)
+TEST(Vic3WorldInterestGroupsInterestGroupsImporter, InterestGroupsImportsAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

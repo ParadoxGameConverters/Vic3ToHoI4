@@ -8,7 +8,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4MilitaryConvoyDistributorTests, EmptyWorldNoConvoys)
+TEST(Hoi4MilitaryConvoyDistributorTests, EmptyWorldNoConvoys)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    ConvoyDistributor convoy(100, {{"pm_port", 1.0F}});
@@ -16,7 +16,7 @@ TEST(Hoi4MilitaryConvoyDistributorTests, EmptyWorldNoConvoys)
    EXPECT_EQ(convoy.ConvoysFromState(1), 0);
 }
 
-TEST(Hoi4MilitaryConvoyDistributorTests, HandlesUnstaffedPort)
+TEST(Hoi4MilitaryConvoyDistributorTests, HandlesUnstaffedPort)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, vic3::State> states{
        {1, vic3::State({.id = 1})},
@@ -35,7 +35,7 @@ TEST(Hoi4MilitaryConvoyDistributorTests, HandlesUnstaffedPort)
    EXPECT_EQ(convoy.ConvoysFromState(1), 0);
 }
 
-TEST(Hoi4MilitaryConvoyDistributorTests, WeightByProductionMethod)
+TEST(Hoi4MilitaryConvoyDistributorTests, WeightByProductionMethod)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, vic3::State> states{
        {1, vic3::State({.id = 1})},
@@ -70,7 +70,7 @@ TEST(Hoi4MilitaryConvoyDistributorTests, WeightByProductionMethod)
    EXPECT_EQ(convoy.ConvoysFromState(3), 100);
 }
 
-TEST(Hoi4MilitaryConvoyDistributorTests, WeightByStaffingLevel)
+TEST(Hoi4MilitaryConvoyDistributorTests, WeightByStaffingLevel)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, vic3::State> states{
        {1, vic3::State({.id = 1})},
@@ -106,7 +106,7 @@ TEST(Hoi4MilitaryConvoyDistributorTests, WeightByStaffingLevel)
 }
 
 
-TEST(Hoi4MilitaryConvoyDistributorTests, UnknownStateNoConvoys)
+TEST(Hoi4MilitaryConvoyDistributorTests, UnknownStateNoConvoys)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, vic3::State> states{
        {1, vic3::State({.id = 1})},

@@ -4,6 +4,7 @@
 #include <external/fmt/include/fmt/format.h>
 #include <external/fmt/include/fmt/ranges.h>
 
+#include <algorithm>
 #include <numeric>
 #include <ranges>
 #include <vector>
@@ -250,10 +251,7 @@ std::optional<hoi4::Unit> FillTemplate(const hoi4::DivisionTemplate& division,
             continue;
          }
          auto current = battalion.GetStrength();
-         if (current > needed)
-         {
-            current = needed;
-         }
+         current = std::min(current, needed);
          battalion.AddStrength(-current);
          needed -= current;
          // Create division with equipment of worst battalion in it.
@@ -347,9 +345,9 @@ std::vector<hoi4::TaskForce> ConvertNavies(const std::string& tag,
       {
          continue;
       }
-      for (const auto& pm: naval_base->GetProductionMethods())
+      for (const auto& production_method: naval_base->GetProductionMethods())
       {
-         pm_amounts[pm] += naval_base->GetStaffingLevel();
+         pm_amounts[production_method] += naval_base->GetStaffingLevel();
       }
 
       if (!naval_base_locations.contains(hoi4_id))
@@ -512,9 +510,9 @@ std::vector<hoi4::Battalion> DetermineBattalions(const std::string& tag,
           unit_mapper.MakeBattalions(barracks->GetProductionMethods(), static_cast<int>(barracks->GetStaffingLevel()));
       const auto& provinces = states.states[hoi4_id - 1].GetProvinces();
       auto province_itr = provinces.begin();
-      for (auto& b: current)
+      for (auto& battalion: current)
       {
-         b.SetLocation(*province_itr);
+         battalion.SetLocation(*province_itr);
          if (++province_itr == provinces.end())
          {
             province_itr = provinces.begin();
@@ -972,13 +970,13 @@ std::optional<hoi4::Country> hoi4::ConvertCountry(const vic3::World& source_worl
        leader_type_mapper);
 
    std::set<std::string> puppets;
-   for (const auto p: source_country.GetPuppets())
+   for (const auto puppet: source_country.GetPuppets())
    {
-      std::optional<std::string> subject_tag = country_mapper.GetHoiTag(p);
+      std::optional<std::string> subject_tag = country_mapper.GetHoiTag(puppet);
       if (!subject_tag.has_value())
       {
          Log(LogLevel::Error) << "Invalid subject relationship between " << source_country.GetNumber()
-                              << " and nonexistent country " << p;
+                              << " and nonexistent country " << puppet;
          continue;
       }
       puppets.insert(*subject_tag);

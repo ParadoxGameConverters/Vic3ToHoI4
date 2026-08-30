@@ -14,10 +14,11 @@
 namespace
 {
 
+constexpr int kInitialCharacterId = 1000;
 int PickUnusedId(const std::map<int, vic3::Character>& source_characters,
     const std::map<int, hoi4::Character>& characters)
 {
-   static int generated_id = 1000;  // For generating new characters, like councils
+   static int generated_id = kInitialCharacterId;  // For generating new characters, like councils
 
    while (source_characters.contains(generated_id) || characters.contains(generated_id))
    {
@@ -40,18 +41,18 @@ int FindPrimeMinister(const std::map<int, vic3::InterestGroup>& igs, const vic3:
       {
          continue;
       }
-      const auto& ig = ig_itr->second;
+      const auto& interest_group = ig_itr->second;
 
-      if (!ig.IsInGovernment())
+      if (!interest_group.IsInGovernment())
       {
          continue;
       }
 
 
-      if (max_clout < ig.GetClout())
+      if (max_clout < interest_group.GetClout())
       {
-         max_clout = ig.GetClout();
-         prime_minister_id = ig.GetLeader();
+         max_clout = interest_group.GetClout();
+         prime_minister_id = interest_group.GetLeader();
       }
    }
    return prime_minister_id;

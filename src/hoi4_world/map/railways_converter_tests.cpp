@@ -9,7 +9,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysAreCreated)
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysAreCreated)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -56,7 +56,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysAreCreated)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysAreLimitedByNumProvinces)
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysAreLimitedByNumProvinces)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -103,7 +103,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysAreLimitedByNumProvin
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromCity)
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromCity)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "port"},
@@ -152,7 +152,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromCity)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromPortIfNoCity)
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromPortIfNoCity)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "port"},
@@ -199,7 +199,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysStartFromPortIfNoCity
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysFromAnyIfNoCityAndNoPort)
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysFromAnyIfNoCityAndNoPort)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "mine"},
@@ -246,7 +246,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysFromAnyIfNoCityAndNoP
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoRailwaysThroughNonLandProvinces)
+TEST(Hoi4worldMapRailwaysConverterTests, NoRailwaysThroughNonLandProvinces)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -292,7 +292,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoRailwaysThroughNonLandProvinces)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysToSameVic3Province)
+TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysToSameVic3Province)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -337,7 +337,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysToSameVic3Province)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysToSameHoi4Province)
+TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysToSameHoi4Province)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -382,7 +382,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysToSameHoi4Province)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, OneInstanceOfEachIntrastateRailway)
+TEST(Hoi4worldMapRailwaysConverterTests, OneInstanceOfEachIntrastateRailway)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -427,7 +427,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, OneInstanceOfEachIntrastateRailway)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoRailwayForUnmappedProvinces)
+TEST(Hoi4worldMapRailwaysConverterTests, NoRailwayForUnmappedProvinces)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -464,7 +464,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoRailwayForUnmappedProvinces)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoRailwayForProvincesMappedToNothing)
+TEST(Hoi4worldMapRailwaysConverterTests, NoRailwayForProvincesMappedToNothing)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -497,7 +497,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoRailwayForProvincesMappedToNothing)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysForDisconnectedProvinces)
+TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysForDisconnectedProvinces)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -537,7 +537,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoIntrastateRailwaysForDisconnectedProv
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysToNonCityNonPortyardAreTrimmed)
+TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysToNonCityNonPortyardAreTrimmed)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -582,7 +582,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, IntrastateRailwaysToNonCityNonPortyardA
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, InterstateRailwaysAreCreated)
+TEST(Hoi4worldMapRailwaysConverterTests, InterstateRailwaysAreCreated)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -635,7 +635,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, InterstateRailwaysAreCreated)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailwaysToWastelands)
+TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailwaysToWastelands)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -691,7 +691,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailwaysToWastelands)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailroadsForNonBorderingStates)
+TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailroadsForNonBorderingStates)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -733,6 +733,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailroadsForNonBorderingSta
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailroadsForStatesWithoutSignificantProvinces)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
@@ -785,7 +786,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailroadsForStatesWithoutSi
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailwaysForRepeatedSignificantProvince)
+TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailwaysForRepeatedSignificantProvince)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -829,7 +830,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoInterstateRailwaysForRepeatedSignific
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, InterstateRailroadsAreDeduplicated)
+TEST(Hoi4worldMapRailwaysConverterTests, InterstateRailroadsAreDeduplicated)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -877,7 +878,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, InterstateRailroadsAreDeduplicated)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, LowestCostConnectionFormsInterstateRailroad)
+TEST(Hoi4worldMapRailwaysConverterTests, LowestCostConnectionFormsInterstateRailroad)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -956,7 +957,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, LowestCostConnectionFormsInterstateRail
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferShorterPaths)
+TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferShorterPaths)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -1021,7 +1022,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferShorterPaths)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferFewerProvincesIfDistanceIndeterminate)
+TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferFewerProvincesIfDistanceIndeterminate)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -1078,7 +1079,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferFewerProvincesIfDistanceI
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferEasierTerrains)
+TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferEasierTerrains)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x100000", "city"},
@@ -1283,7 +1284,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwaysPreferEasierTerrains)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, RailwaysSharingRouteAreMerged)
+TEST(Hoi4worldMapRailwaysConverterTests, RailwaysSharingRouteAreMerged)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -1348,7 +1349,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwaysSharingRouteAreMerged)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, RailwayLevelsAreSetBasedOnStateInfrastructure)
+TEST(Hoi4worldMapRailwaysConverterTests, RailwayLevelsAreSetBasedOnStateInfrastructure)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, vic3::ProvinceType> significant_vic3_provinces;
    for (int i = 1; i < 102; ++i)
@@ -1428,7 +1429,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, RailwayLevelsAreSetBasedOnStateInfrastr
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, SupplyNodesAreRecorded)
+TEST(Hoi4worldMapRailwaysConverterTests, SupplyNodesAreRecorded)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -1482,7 +1483,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, SupplyNodesAreRecorded)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, NoSupplyNodesInNavalBases)
+TEST(Hoi4worldMapRailwaysConverterTests, NoSupplyNodesInNavalBases)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},
@@ -1537,7 +1538,7 @@ TEST(Hoi4worldMapRailwaysConverterTests, NoSupplyNodesInNavalBases)
 }
 
 
-TEST(Hoi4worldMapRailwaysConverterTests, RailwaysAreMerged)
+TEST(Hoi4worldMapRailwaysConverterTests, RailwaysAreMerged)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::ProvinceType> significant_vic3_provinces{
        {"0x000001", "city"},

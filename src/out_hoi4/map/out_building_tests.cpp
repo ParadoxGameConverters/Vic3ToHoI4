@@ -15,7 +15,7 @@
 namespace out
 {
 
-TEST(Outhoi4MapBuildingTests, BuildingIsOutput)
+TEST(Outhoi4MapBuildingTests, BuildingIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream output;
    const hoi4::Building building({.state_id = 42,
@@ -29,7 +29,7 @@ TEST(Outhoi4MapBuildingTests, BuildingIsOutput)
 }
 
 
-TEST(Outhoi4MapBuildingTests, PositionhasTwoDigitPrecision)
+TEST(Outhoi4MapBuildingTests, PositionhasTwoDigitPrecision)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream output;
    const hoi4::Building building({.state_id = 42,
@@ -43,7 +43,7 @@ TEST(Outhoi4MapBuildingTests, PositionhasTwoDigitPrecision)
 }
 
 
-TEST(Outhoi4MapBuildingTests, MissingConnectingSeaProvinceOutputAsZero)
+TEST(Outhoi4MapBuildingTests, MissingConnectingSeaProvinceOutputAsZero)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream output;
    const hoi4::Building building({.state_id = 42,

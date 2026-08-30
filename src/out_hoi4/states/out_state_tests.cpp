@@ -20,7 +20,7 @@ namespace out
 {
 
 
-TEST(Outhoi4StatesState, ExceptionWhenFileNotOpened)
+TEST(Outhoi4StatesState, ExceptionWhenFileNotOpened)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::State state_one(1, {});
 
@@ -28,7 +28,7 @@ TEST(Outhoi4StatesState, ExceptionWhenFileNotOpened)
 }
 
 
-TEST(Outhoi4StatesState, StateFileIsNamedForId)
+TEST(Outhoi4StatesState, StateFileIsNamedForId)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/StateFileIsNamedForId/history/states");
 
@@ -43,7 +43,7 @@ TEST(Outhoi4StatesState, StateFileIsNamedForId)
 }
 
 
-TEST(Outhoi4StatesState, BasicsAreOutput)
+TEST(Outhoi4StatesState, BasicsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/BasicsAreOutput/history/states");
 
@@ -82,7 +82,7 @@ TEST(Outhoi4StatesState, BasicsAreOutput)
 }
 
 
-TEST(Outhoi4StatesState, IdIsSetById)
+TEST(Outhoi4StatesState, IdIsSetById)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/IdIsSetById/history/states");
 
@@ -114,7 +114,7 @@ TEST(Outhoi4StatesState, IdIsSetById)
 }
 
 
-TEST(Outhoi4StatesState, NameIsSetById)
+TEST(Outhoi4StatesState, NameIsSetById)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NameIsSetById/history/states");
 
@@ -146,7 +146,7 @@ TEST(Outhoi4StatesState, NameIsSetById)
 }
 
 
-TEST(Outhoi4StatesState, ManpowerIsSetByManpower)
+TEST(Outhoi4StatesState, ManpowerIsSetByManpower)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/manpowerIsSetByManpower/history/states");
 
@@ -178,7 +178,7 @@ TEST(Outhoi4StatesState, ManpowerIsSetByManpower)
 }
 
 
-TEST(Outhoi4StatesState, NoResourcesMeansNoResourcesSection)
+TEST(Outhoi4StatesState, NoResourcesMeansNoResourcesSection)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NoResourcesMeansNoResourcesSection/history/states");
 
@@ -217,7 +217,7 @@ TEST(Outhoi4StatesState, NoResourcesMeansNoResourcesSection)
 
 
 
-TEST(Outhoi4StatesState, ResourcesAreOutput)
+TEST(Outhoi4StatesState, ResourcesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NoResourcesMeansNoResourcesSection/history/states");
 
@@ -256,7 +256,7 @@ TEST(Outhoi4StatesState, ResourcesAreOutput)
 }
 
 
-TEST(Outhoi4StatesState, CategoryIsSetByCategory)
+TEST(Outhoi4StatesState, CategoryIsSetByCategory)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/CategoryIsSetByCategory/history/states");
 
@@ -288,7 +288,7 @@ TEST(Outhoi4StatesState, CategoryIsSetByCategory)
 }
 
 
-TEST(Outhoi4StatesState, WastelandsAreImpassable)
+TEST(Outhoi4StatesState, WastelandsAreImpassable)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/WastelandsAreImpassable/history/states");
 
@@ -308,7 +308,7 @@ TEST(Outhoi4StatesState, WastelandsAreImpassable)
 }
 
 
-TEST(Outhoi4StatesState, ProvincesAreOutput)
+TEST(Outhoi4StatesState, ProvincesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/ProvincesAreOutput/history/states");
 
@@ -330,7 +330,7 @@ TEST(Outhoi4StatesState, ProvincesAreOutput)
                           "\t}\n"));
 }
 
-TEST(Outhoi4StatesState, OwnerIsOutput)
+TEST(Outhoi4StatesState, OwnerIsOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/ProvincesAreOutput/history/states");
 
@@ -352,7 +352,7 @@ TEST(Outhoi4StatesState, OwnerIsOutput)
 }
 
 
-TEST(Outhoi4StatesState, VictoryPointsAreOutput)
+TEST(Outhoi4StatesState, VictoryPointsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/VictoryPointsAreOutput/history/states");
 
@@ -383,7 +383,7 @@ TEST(Outhoi4StatesState, VictoryPointsAreOutput)
 }
 
 
-TEST(Outhoi4StatesState, BuildingsAreOutput)
+TEST(Outhoi4StatesState, BuildingsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/BuildingsAreOutput/history/states");
 
@@ -417,7 +417,7 @@ TEST(Outhoi4StatesState, BuildingsAreOutput)
 }
 
 
-TEST(Outhoi4StatesState, DockyardsNotOutputWhenZero)
+TEST(Outhoi4StatesState, DockyardsNotOutputWhenZero)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/DockyardsNotOutputWhenZero/history/states");
 
@@ -450,7 +450,7 @@ TEST(Outhoi4StatesState, DockyardsNotOutputWhenZero)
 }
 
 
-TEST(Outhoi4StatesState, AirBasesNotOutputWhenZero)
+TEST(Outhoi4StatesState, AirBasesNotOutputWhenZero)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/BuildingsAreOutput/history/states");
 
@@ -483,7 +483,7 @@ TEST(Outhoi4StatesState, AirBasesNotOutputWhenZero)
 }
 
 
-TEST(Outhoi4StatesState, NavalBasesCanBeOutput)
+TEST(Outhoi4StatesState, NavalBasesCanBeOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NavalBasesCanBeOutput/history/states");
 
@@ -513,7 +513,7 @@ TEST(Outhoi4StatesState, NavalBasesCanBeOutput)
 }
 
 
-TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLevelIsMissing)
+TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLevelIsMissing)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NavalBasesAreNotOutputWhenLevelIsMissing/history/states");
 
@@ -540,7 +540,7 @@ TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLevelIsMissing)
 }
 
 
-TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLocationIsMissing)
+TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLocationIsMissing)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NavalBasesAreNotOutputWhenLocationIsMissing/history/states");
 
@@ -567,7 +567,7 @@ TEST(Outhoi4StatesState, NavalBasesAreNotOutputWhenLocationIsMissing)
 }
 
 
-TEST(Outhoi4StatesState, AirBaseLevelIsAsSet)
+TEST(Outhoi4StatesState, AirBaseLevelIsAsSet)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/AirBaseLevelIsAsSet/history/states");
 
@@ -595,7 +595,7 @@ TEST(Outhoi4StatesState, AirBaseLevelIsAsSet)
 }
 
 
-TEST(Outhoi4StatesState, CoresCanBeOutput)
+TEST(Outhoi4StatesState, CoresCanBeOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/CoresCanBeOutput/history/states");
 
@@ -623,7 +623,7 @@ TEST(Outhoi4StatesState, CoresCanBeOutput)
                           "\t}\n"));
 }
 
-TEST(Outhoi4StatesState, InfrastructureIsOutput)
+TEST(Outhoi4StatesState, InfrastructureIsOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/infrastructureIsOutput/history/states");
 

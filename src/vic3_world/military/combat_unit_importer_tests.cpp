@@ -12,7 +12,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldMilitaryCombatunitImporter, DefaultsAreDefaulted)
+TEST(Vic3worldMilitaryCombatunitImporter, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    CombatUnitImporter importer;
 
@@ -28,7 +28,7 @@ TEST(Vic3worldMilitaryCombatunitImporter, DefaultsAreDefaulted)
 }
 
 
-TEST(Vic3worldMilitaryCombatunitImporter, ItemsAreInput)
+TEST(Vic3worldMilitaryCombatunitImporter, ItemsAreInput)  // NOLINT(cert-err58-cpp)
 {
    CombatUnitImporter importer;
 

@@ -21,16 +21,16 @@ std::vector<hoi4::DivisionTemplate> hoi4::ImportDivisionTemplates(const std::fil
    });
    template_parser.registerKeyword("regiments", [&battalions](std::istream& input_stream) {
       auto unit_types = commonItems::stringsOfItemNames(input_stream).getStrings();
-      for (const auto& ut: unit_types)
+      for (const auto& unit_type: unit_types)
       {
-         battalions[ut]++;
+         battalions[unit_type]++;
       }
    });
    template_parser.registerKeyword("support", [&support](std::istream& input_stream) {
       auto unit_types = commonItems::stringsOfItemNames(input_stream).getStrings();
-      for (const auto& ut: unit_types)
+      for (const auto& unit_type: unit_types)
       {
-         support[ut]++;
+         support[unit_type]++;
       }
    });
    template_parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

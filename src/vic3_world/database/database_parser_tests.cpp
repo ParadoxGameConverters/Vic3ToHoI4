@@ -9,7 +9,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserForwardsElements)
+TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserForwardsElements)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -47,7 +47,7 @@ TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserForwardsElements)
            testing::Pair("key2", "value2")));
 }
 
-TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserSkipsNoneElements)
+TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserSkipsNoneElements)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -82,7 +82,7 @@ TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserSkipsNoneElements)
            testing::Pair("key2", "value2")));
 }
 
-TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserCanForwardIds)
+TEST(Vic3WorldDatabaseDatabaseParser, DatabaseParserCanForwardIds)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

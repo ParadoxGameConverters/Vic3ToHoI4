@@ -11,7 +11,7 @@
 namespace mappers
 {
 
-TEST(MappersCharacterCharactertraitmapperimporter, MappingsCanBeImported)
+TEST(MappersCharacterCharactertraitmapperimporter, MappingsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");

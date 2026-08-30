@@ -8,7 +8,7 @@ namespace hoi4
 bool IsHomelandOfCountryCulture::IsValid(const Context& context, [[maybe_unused]] const World& world) const
 {
    const StateScope* maybe_state = std::get_if<StateScope>(&context.this_scope);
-   if (!maybe_state)
+   if (maybe_state == nullptr)
    {
       return false;
    }
@@ -19,15 +19,10 @@ bool IsHomelandOfCountryCulture::IsValid(const Context& context, [[maybe_unused]
       return false;
    }
 
-   for (auto primary_culture: possible_country->GetPrimaryCultures())
-   {
-      if (maybe_state->state.HasHomeland(primary_culture))
-      {
-         return true;
-      }
-   }
-
-   return false;
+   return std::ranges::any_of(possible_country->GetPrimaryCultures(),
+       [&maybe_state](const std::string& primary_culture) {
+          return maybe_state->state.HasHomeland(primary_culture);
+       });
 }
 
 

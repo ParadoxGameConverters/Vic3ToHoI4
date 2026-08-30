@@ -7,42 +7,42 @@
 
 namespace mappers
 {
-TEST(MappersInfrastructureInfrastructureMapperTests, FindRootWorks)
+TEST(MappersInfrastructureInfrastructureMapperTests, FindRootWorks)  // NOLINT(cert-err58-cpp)
 {
    // linear function. zero should be -20/3
    const auto func = [](float input) {
-      return 0.6F * input + 4;
+      return (0.6F * input) + 4;
    };
 
    EXPECT_FLOAT_EQ((FindRoot<float, float>(
                        func,
                        0.0F,
-                       []([[maybe_unused]] float f) {
+                       []([[maybe_unused]] float) {
                           return -1.0F;
                        },
                        5)),
        -20.0F / 3.0F);
 }
 
-TEST(MappersInfrastructureInfrastructureMapperTests, TargetInfrastructureIsReadable)
+TEST(MappersInfrastructureInfrastructureMapperTests, TargetInfrastructureIsReadable)  // NOLINT(cert-err58-cpp)
 {
    InfrastructureMapper infrastructure_mapper(InfrastructureConversionRatio{1}, InfrastructureFudgeFactor{0.2F});
    EXPECT_EQ(infrastructure_mapper.GetTargetInfrastructure(), 0);
 }
 
-TEST(MappersInfrastructureInfrastructureMapperTests, ConversionRatioIsReadable)
+TEST(MappersInfrastructureInfrastructureMapperTests, ConversionRatioIsReadable)  // NOLINT(cert-err58-cpp)
 {
    InfrastructureMapper infrastructure_mapper(InfrastructureConversionRatio{1.2F}, InfrastructureFudgeFactor{0.2F});
    EXPECT_EQ(infrastructure_mapper.GetConversionRatio(), 1.2F);
 }
 
-TEST(MappersInfrastructureInfrastructureMapperTests, FudgeFactorIsReadable)
+TEST(MappersInfrastructureInfrastructureMapperTests, FudgeFactorIsReadable)  // NOLINT(cert-err58-cpp)
 {
    InfrastructureMapper infrastructure_mapper(InfrastructureConversionRatio{1}, InfrastructureFudgeFactor{0.2F});
    EXPECT_EQ(infrastructure_mapper.GetFudgeFactor(), 0.2F);
 }
 
-TEST(MappersInfrastructureInfrastructureMapperTests, ConvertedInfrastructureIsReadable)
+TEST(MappersInfrastructureInfrastructureMapperTests, ConvertedInfrastructureIsReadable)  // NOLINT(cert-err58-cpp)
 {
    InfrastructureMapper infrastructure_mapper(InfrastructureConversionRatio{0.5F}, InfrastructureFudgeFactor{0.5F});
    static_cast<void>(infrastructure_mapper.Map(2.0F));  // maps to (0.5*2)+0.5 = 2 additional infra
@@ -50,39 +50,39 @@ TEST(MappersInfrastructureInfrastructureMapperTests, ConvertedInfrastructureIsRe
    EXPECT_EQ(infrastructure_mapper.GetConvertedInfrastructure(), 6.0F / 2.0F);
 }
 
-TEST(MappersInfrastructureInfrastructureMapperTests, Default1Infrastructure)
+TEST(MappersInfrastructureInfrastructureMapperTests, Default1Infrastructure)  // NOLINT(cert-err58-cpp)
 {
    InfrastructureMapper infrastructure_mapper(InfrastructureConversionRatio{0}, InfrastructureFudgeFactor{0});
    EXPECT_EQ(infrastructure_mapper.Map(100.0F), 1);
 }
 
-TEST(MappersInfrastructureInfrastructureMapperTests, Minimum1Infrastructure)
+TEST(MappersInfrastructureInfrastructureMapperTests, Minimum1Infrastructure)  // NOLINT(cert-err58-cpp)
 {
    InfrastructureMapper infrastructure_mapper(InfrastructureConversionRatio{1}, InfrastructureFudgeFactor{0});
    EXPECT_EQ(infrastructure_mapper.Map(0.0F), 1);
 }
 
-TEST(MappersInfrastructureInfrastructureMapperTests, Maximum5Infrastructure)
+TEST(MappersInfrastructureInfrastructureMapperTests, Maximum5Infrastructure)  // NOLINT(cert-err58-cpp)
 {
    InfrastructureMapper infrastructure_mapper(InfrastructureConversionRatio{1}, InfrastructureFudgeFactor{0});
    EXPECT_EQ(infrastructure_mapper.Map(1000.0F), 5);
 }
 
-TEST(MappersInfrastructureInfrastructureMapperTests, RoundingWorks)
+TEST(MappersInfrastructureInfrastructureMapperTests, RoundingWorks)  // NOLINT(cert-err58-cpp)
 {
    InfrastructureMapper infrastructure_mapper(InfrastructureConversionRatio{1}, InfrastructureFudgeFactor{0});
    EXPECT_EQ(infrastructure_mapper.Map(0.5F), 2);
    EXPECT_EQ(infrastructure_mapper.Map(0.49F), 1);
 }
 
-TEST(MappersInfrastructureInfrastructureMapperTests, FudgeFactorWorksPositive)
+TEST(MappersInfrastructureInfrastructureMapperTests, FudgeFactorWorksPositive)  // NOLINT(cert-err58-cpp)
 {
    InfrastructureMapper infrastructure_mapper(InfrastructureConversionRatio{1}, InfrastructureFudgeFactor{0.5F});
    EXPECT_EQ(infrastructure_mapper.Map(0.4F), 2);
    EXPECT_EQ(infrastructure_mapper.Map(5.0F), 5);
 }
 
-TEST(MappersInfrastructureInfrastructureMapperTests, FudgeFactorWorksNegative)
+TEST(MappersInfrastructureInfrastructureMapperTests, FudgeFactorWorksNegative)  // NOLINT(cert-err58-cpp)
 {
    InfrastructureMapper infrastructure_mapper(InfrastructureConversionRatio{1}, InfrastructureFudgeFactor{-0.5F});
    EXPECT_EQ(infrastructure_mapper.Map(0.0F), 1);

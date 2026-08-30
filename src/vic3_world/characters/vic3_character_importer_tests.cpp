@@ -10,7 +10,7 @@ namespace vic3
 {
 
 
-TEST(Vic3worldCharactersVic3characterimporter, DefaultsDefaultToDefault)
+TEST(Vic3worldCharactersVic3characterimporter, DefaultsDefaultToDefault)  // NOLINT(cert-err58-cpp)
 {
    CharacterImporter character_importer;
 
@@ -34,7 +34,7 @@ TEST(Vic3worldCharactersVic3characterimporter, DefaultsDefaultToDefault)
 }
 
 
-TEST(Vic3worldCharactersVic3characterimporter, CharacterCanBeImported)
+TEST(Vic3worldCharactersVic3characterimporter, CharacterCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    CharacterImporter character_importer;
 
@@ -75,7 +75,7 @@ TEST(Vic3worldCharactersVic3characterimporter, CharacterCanBeImported)
 }
 
 
-TEST(Vic3worldCharactersVic3characterimporter, RulerCommanderIsFirstRank)
+TEST(Vic3worldCharactersVic3characterimporter, RulerCommanderIsFirstRank)  // NOLINT(cert-err58-cpp)
 {
    CharacterImporter character_importer;
 
@@ -90,7 +90,7 @@ TEST(Vic3worldCharactersVic3characterimporter, RulerCommanderIsFirstRank)
 }
 
 
-TEST(Vic3worldCharactersVic3characterimporter, InvalidRankIsLogged)
+TEST(Vic3worldCharactersVic3characterimporter, InvalidRankIsLogged)  // NOLINT(cert-err58-cpp)
 {
    CharacterImporter character_importer;
 
@@ -112,7 +112,7 @@ TEST(Vic3worldCharactersVic3characterimporter, InvalidRankIsLogged)
 }
 
 
-TEST(Vic3worldCharactersVic3characterimporter, CultureCanBeSet)
+TEST(Vic3worldCharactersVic3characterimporter, CultureCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    CharacterImporter character_importer;
 
@@ -125,7 +125,7 @@ TEST(Vic3worldCharactersVic3characterimporter, CultureCanBeSet)
 }
 
 
-TEST(Vic3worldCharactersVic3characterimporter, HomeTagCanBeSet)
+TEST(Vic3worldCharactersVic3characterimporter, HomeTagCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    CharacterImporter character_importer;
 
@@ -138,7 +138,7 @@ TEST(Vic3worldCharactersVic3characterimporter, HomeTagCanBeSet)
 }
 
 
-TEST(Vic3worldCharactersVic3characterimporter, IgIdCanBeSet)
+TEST(Vic3worldCharactersVic3characterimporter, IgIdCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    CharacterImporter character_importer;
 
@@ -151,7 +151,7 @@ TEST(Vic3worldCharactersVic3characterimporter, IgIdCanBeSet)
 }
 
 
-TEST(Vic3worldCharactersVic3characterimporter, CommanderCanBeSet)
+TEST(Vic3worldCharactersVic3characterimporter, CommanderCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    CharacterImporter character_importer;
 

@@ -11,7 +11,7 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldPactImporter, DefaultsAreDefaulted)
+TEST(Vic3WorldPactImporter, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    PactImporter importer;
    std::stringstream input;
@@ -30,7 +30,7 @@ TEST(Vic3WorldPactImporter, DefaultsAreDefaulted)
 }
 
 
-TEST(Vic3WorldPactImporter, PactsCanBeImported)
+TEST(Vic3WorldPactImporter, PactsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    PactImporter importer;
    std::stringstream input;
@@ -57,7 +57,7 @@ TEST(Vic3WorldPactImporter, PactsCanBeImported)
 }
 
 
-TEST(Vic3WorldPactImporter, Pre1_5PactsCanBeImported)
+TEST(Vic3WorldPactImporter, Pre1_5PactsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    PactImporter importer;
    std::stringstream input;

@@ -14,7 +14,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRoleimporterTests, DefaultsAreDefaulted)
+TEST(Hoi4worldRolesRoleimporterTests, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -36,7 +36,7 @@ TEST(Hoi4worldRolesRoleimporterTests, DefaultsAreDefaulted)
 }
 
 
-TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
+TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << " = {\n";
@@ -193,7 +193,7 @@ TEST(Hoi4worldRolesRoleimporterTests, ItemsCanBeImported)
 }
 
 
-TEST(Hoi4worldRolesRoleimporterTests, FocusesCanBeImportedInBlock)
+TEST(Hoi4worldRolesRoleimporterTests, FocusesCanBeImportedInBlock)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << " = {\n";
@@ -267,7 +267,7 @@ TEST(Hoi4worldRolesRoleimporterTests, FocusesCanBeImportedInBlock)
 }
 
 
-TEST(Hoi4worldRolesRoleimporterTests, StoryTriggerWorksForTrigger)
+TEST(Hoi4worldRolesRoleimporterTests, StoryTriggerWorksForTrigger)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 

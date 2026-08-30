@@ -8,7 +8,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldCountriesCountry, PuppetsCanBeRemoved)
+TEST(Hoi4worldCountriesCountry, PuppetsCanBeRemoved)  // NOLINT(cert-err58-cpp)
 {
    Country country({.puppets = {"ONE", "TWO", "THR", "FOR"}});
 

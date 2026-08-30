@@ -8,7 +8,7 @@ namespace hoi4
 bool IsOnContinentTrigger::IsValid(const Context& context, [[maybe_unused]] const World& world) const
 {
    const StateScope* maybe_state = std::get_if<StateScope>(&context.this_scope);
-   if (!maybe_state)
+   if (maybe_state == nullptr)
    {
       return false;
    }

@@ -44,7 +44,7 @@ std::map<int, std::string> ImportContinentDefinitions(const commonItems::ModFile
 }  // namespace
 
 
-maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem)
+maps::ProvinceDefinitions hoi4::ImportProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem)
 {
    const std::map<int, std::string> continent_definitions = ImportContinentDefinitions(mod_filesystem);
 
@@ -196,9 +196,11 @@ maps::ProvinceDefinitionsOptions hoi4::ImportProvinceDefinitions(const commonIte
       }
    }
 
-   return {.land_provinces = land_provinces,
+   return maps::ProvinceDefinitions({
+       .land_provinces = land_provinces,
        .sea_provinces = sea_provinces,
        .terrain_types = terrain_types,
        .continents = continents,
-       .color_to_province_map = color_to_province_map};
+       .color_to_province_map = color_to_province_map,
+   });
 }

@@ -10,7 +10,7 @@
 namespace mappers
 {
 
-TEST(MappersUnitUnitMapperTests, NoRulesMeansNoUnits)
+TEST(MappersUnitUnitMapperTests, NoRulesMeansNoUnits)  // NOLINT(cert-err58-cpp)
 {
    TemplateMap templates;
    const UnitMapper unit_mapper(templates);
@@ -18,7 +18,7 @@ TEST(MappersUnitUnitMapperTests, NoRulesMeansNoUnits)
 }
 
 
-TEST(MappersUnitUnitMapperTests, BattalionsAreMade)
+TEST(MappersUnitUnitMapperTests, BattalionsAreMade)  // NOLINT(cert-err58-cpp)
 {
    TemplateMap templates{
        {"trench_infantry", BattalionTemplate(50, {{"infantry", 0.25F}})},
@@ -33,7 +33,7 @@ TEST(MappersUnitUnitMapperTests, BattalionsAreMade)
 }
 
 
-TEST(MappersUnitUnitMapperTests, BattalionsAreMadeFromFormations)
+TEST(MappersUnitUnitMapperTests, BattalionsAreMadeFromFormations)  // NOLINT(cert-err58-cpp)
 {
    TemplateMap templates{
        {"trench_infantry", BattalionTemplate(50, {{"infantry", 0.25F}})},

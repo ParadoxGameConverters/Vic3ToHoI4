@@ -32,21 +32,6 @@ std::vector<Scope> AnyStateTrigger::FindAllValid(const Context& context, const W
 {
    std::vector<Scope> valid_scopes;
 
-   const auto state_is_valid = [context, &world, this](const State& state) {
-      return std::ranges::all_of(children_.begin(),
-          children_.end(),
-          [context, &world, &state](const std::unique_ptr<Trigger>& a) {
-             const Context new_context{
-                 .root = context.root,
-                 .this_scope = StateScope{.state = state},
-                 .prev = context.this_scope,
-                 .from = context.from,
-             };
-             return a->IsValid(new_context, world);
-          });
-   };
-
-
    for (const State& state: world.GetStates().states)
    {
       if (std::ranges::all_of(children_.begin(),

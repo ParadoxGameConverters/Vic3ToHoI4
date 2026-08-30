@@ -10,7 +10,7 @@
 namespace out
 {
 
-TEST(Outhoi4DecisionsOutdecisionTests, EmptyOrBlankItemsAreNotOutput)
+TEST(Outhoi4DecisionsOutdecisionTests, EmptyOrBlankItemsAreNotOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Decision decision{.name = "test_name"};
 
@@ -25,7 +25,7 @@ TEST(Outhoi4DecisionsOutdecisionTests, EmptyOrBlankItemsAreNotOutput)
 }
 
 
-TEST(Outhoi4DecisionsOutdecisionTests, ItemsAreOutput)
+TEST(Outhoi4DecisionsOutdecisionTests, ItemsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Decision decision{
        .name = "test_name",

@@ -12,7 +12,7 @@ namespace hoi4
 {
 
 
-TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsFalseIfTechNotThere)
+TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsFalseIfTechNotThere)  // NOLINT(cert-err58-cpp)
 {
    const Technologies technologies(std::map<std::optional<std::string>, std::set<std::string>>{});
 
@@ -20,7 +20,7 @@ TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsFalseIfTechNotThe
 }
 
 
-TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsTrueIfTechIsThere)
+TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsTrueIfTechIsThere)  // NOLINT(cert-err58-cpp)
 {
    const Technologies technologies({{std::nullopt, {"test_technology"}}});
 
@@ -28,7 +28,7 @@ TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsTrueIfTechIsThere
 }
 
 
-TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsTrueIfTechIsThereWithLimit)
+TEST(Hoi4worldTechnologyTechnologiesTests, HasTechnologyReturnsTrueIfTechIsThereWithLimit)  // NOLINT(cert-err58-cpp)
 {
    const Technologies technologies({{std::nullopt, {"test_technology"}}, {"test_limit", {"test_technology_two"}}});
 

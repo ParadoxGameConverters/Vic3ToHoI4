@@ -13,11 +13,11 @@ namespace
 {
 int GetGeneralSkill(const hoi4::General& general)
 {
-   return 1 + (general.attack + general.defense + general.logistics + general.planning - 4) / 3;
+   return 1 + ((general.attack + general.defense + general.logistics + general.planning - 4) / 3);
 }
 int GetAdmiralSkill(const hoi4::Admiral& admiral)
 {
-   return 1 + (admiral.attack + admiral.defense + admiral.maneuvering + admiral.coordination - 4) / 3;
+   return 1 + ((admiral.attack + admiral.defense + admiral.maneuvering + admiral.coordination - 4) / 3);
 }
 const std::string& ValueOr(const std::string& str, const std::string& val)
 {
@@ -55,9 +55,13 @@ void OutputPortraits(std::ostream& out,
    {
       out << "\t\t\tcivilian = {\n";
       if (is_leader)
+      {
          out << fmt::format("\t\t\t\tlarge = {}\n", portrait_alias);
+      }
       if (!is_general && !is_admiral && is_advisor)
+      {
          out << fmt::format("\t\t\t\tsmall = {}\n", portrait_alias);
+      }
       out << "\t\t\t}\n";
    }
    out << "\t\t}\n";

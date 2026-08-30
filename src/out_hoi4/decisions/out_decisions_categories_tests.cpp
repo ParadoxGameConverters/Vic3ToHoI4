@@ -37,7 +37,7 @@ void CreateFolders(std::string_view test_name)
 namespace out
 {
 
-TEST(Outhoi4DecisionsOutdecisionscategoriesTests, CategoriesFileIsCreated)
+TEST(Outhoi4DecisionsOutdecisionscategoriesTests, CategoriesFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateFolders("CategoriesFileIsCreated");
 

@@ -9,6 +9,11 @@ namespace hoi4
 
 RepeatFocus& RepeatFocus::operator=(const RepeatFocus& other)
 {
+   if (this == &other)
+   {
+      return *this;
+   }
+
    trigger_ = other.trigger_->Copy();
    focuses_ = other.focuses_;
    return *this;

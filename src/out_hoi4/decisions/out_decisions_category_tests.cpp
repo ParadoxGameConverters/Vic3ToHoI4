@@ -11,7 +11,7 @@
 namespace out
 {
 
-TEST(Outhoi4DecisionsOutdecisionscategoryTests, BasicsAreOutput)
+TEST(Outhoi4DecisionsOutdecisionscategoryTests, BasicsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::DecisionsCategory category({.name = "test_name"});
 
@@ -26,7 +26,7 @@ TEST(Outhoi4DecisionsOutdecisionscategoryTests, BasicsAreOutput)
 }
 
 
-TEST(Outhoi4DecisionsOutdecisionscategoryTests, SetItemsAreOutput)
+TEST(Outhoi4DecisionsOutdecisionscategoryTests, SetItemsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::DecisionsCategory category({
        .name = "test_name",

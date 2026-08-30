@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldCountriesCountryConverter, SourceCountryNumberIsFromSourceCountry)
+TEST(Hoi4worldCountriesCountryConverter, SourceCountryNumberIsFromSourceCountry)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "T00"}, {2, "T01"}});
@@ -73,7 +73,7 @@ TEST(Hoi4worldCountriesCountryConverter, SourceCountryNumberIsFromSourceCountry)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
+TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "T00"}, {2, "T01"}});
@@ -135,7 +135,7 @@ TEST(Hoi4worldCountriesCountryConverter, TagIsFromSourceCountry)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
+TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper(std::map<int, std::string>{
        {1, "T00"},
@@ -173,7 +173,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoSourceTag)
 
 
 
-TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
+TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper;
@@ -208,7 +208,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCountryIfNoTagMapping)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, OwnedStatesAreConverted)
+TEST(Hoi4worldCountriesCountryConverter, OwnedStatesAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -270,7 +270,7 @@ TEST(Hoi4worldCountriesCountryConverter, OwnedStatesAreConverted)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
+TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -332,7 +332,7 @@ TEST(Hoi4worldCountriesCountryConverter, CapitalStatesAreConverted)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
+TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -372,7 +372,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoSourceCapitalState)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStates)
+TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStates)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -408,7 +408,7 @@ TEST(Hoi4worldCountriesCountryConverter, NoCapitalStateIfNoStateMappingAndNoStat
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNotConverted)
+TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNotConverted)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -449,7 +449,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestVpStateBecomesCapitalIfCapitalNo
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVpsAreSame)
+TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVpsAreSame)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -490,6 +490,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestIndustryStateBecomesCapitalIfVps
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfIndustriesAreSame)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -531,7 +532,7 @@ TEST(Hoi4worldCountriesCountryConverter, HighestManpowerStateBecomesCapitalIfInd
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersAreSame)
+TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersAreSame)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -572,7 +573,7 @@ TEST(Hoi4worldCountriesCountryConverter, LowestIdStateBecomesCapitalIfManpowersA
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapital)
+TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapital)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -612,7 +613,7 @@ TEST(Hoi4worldCountriesCountryConverter, StatesNotOwnedByCountryCannotBecomeCapi
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, PrimaryCulturesAreCopied)
+TEST(Hoi4worldCountriesCountryConverter, PrimaryCulturesAreCopied)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
@@ -649,7 +650,7 @@ TEST(Hoi4worldCountriesCountryConverter, PrimaryCulturesAreCopied)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
+TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -685,7 +686,7 @@ TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)
+TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -721,7 +722,7 @@ TEST(Hoi4worldCountriesCountryConverter, OutdatedElectionsExtrapolateToPresent)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)
+TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -757,7 +758,7 @@ TEST(Hoi4worldCountriesCountryConverter, FutureElectionsFallbackToPresent)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)
+TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -793,7 +794,7 @@ TEST(Hoi4worldCountriesCountryConverter, ContemporaryElectionsRemainUnchanged)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)
+TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -829,7 +830,7 @@ TEST(Hoi4worldCountriesCountryConverter, InYearFutureElectionsAreCurrentCycle)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, InYearPastElectionsAreNextCycle)
+TEST(Hoi4worldCountriesCountryConverter, InYearPastElectionsAreNextCycle)  // NOLINT(cert-err58-cpp)
 {
    // When election is in the same year as the start date, kick it to next cycle when occurring on or before start date
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -866,7 +867,7 @@ TEST(Hoi4worldCountriesCountryConverter, InYearPastElectionsAreNextCycle)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)
+TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -933,7 +934,7 @@ TEST(Hoi4worldCountriesCountryConverter, RulingIdeologyCanBeConverted)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)
+TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -1010,7 +1011,7 @@ TEST(Hoi4worldCountriesCountryConverter, SubIdeologyCanBeConverted)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
+TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world =
@@ -1049,7 +1050,7 @@ TEST(Hoi4worldCountriesCountryConverter, TechnologiesAreConverted)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
+TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions({.acquired_technologies = {{1, {"source_tech"}}}}));
@@ -1253,7 +1254,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsRequireAllRequiredTechs)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
+TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world =
@@ -1418,7 +1419,7 @@ TEST(Hoi4worldCountriesCountryConverter, VariantsBlockedByAnyBlockingTechs)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, LawsDefaultsToDefaultLaws)
+TEST(Hoi4worldCountriesCountryConverter, LawsDefaultsToDefaultLaws)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -1455,7 +1456,7 @@ TEST(Hoi4worldCountriesCountryConverter, LawsDefaultsToDefaultLaws)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, FascistCountriesGetDifferentEconomicIdeas)
+TEST(Hoi4worldCountriesCountryConverter, FascistCountriesGetDifferentEconomicIdeas)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -1492,7 +1493,7 @@ TEST(Hoi4worldCountriesCountryConverter, FascistCountriesGetDifferentEconomicIde
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, MassConscriptionLeadsToLimitedConscription)
+TEST(Hoi4worldCountriesCountryConverter, MassConscriptionLeadsToLimitedConscription)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
@@ -1531,7 +1532,7 @@ TEST(Hoi4worldCountriesCountryConverter, MassConscriptionLeadsToLimitedConscript
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultToEmpty)
+TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultToEmpty)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -1566,7 +1567,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeasDefaultToEmpty)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, DecentralizedCountriesGetDecentralizedIdeas)
+TEST(Hoi4worldCountriesCountryConverter, DecentralizedCountriesGetDecentralizedIdeas)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -1601,7 +1602,7 @@ TEST(Hoi4worldCountriesCountryConverter, DecentralizedCountriesGetDecentralizedI
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, OnlyConservativeMonarchiesHaveNobleLeaders)
+TEST(Hoi4worldCountriesCountryConverter, OnlyConservativeMonarchiesHaveNobleLeaders)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
 
@@ -1709,7 +1710,7 @@ TEST(Hoi4worldCountriesCountryConverter, OnlyConservativeMonarchiesHaveNobleLead
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)
+TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::Country source_country_one(
@@ -1764,7 +1765,7 @@ TEST(Hoi4worldCountriesCountryConverter, UndefinedNobleFirstsDefaultToCommon)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, TooFewNobleFirstsAddsCommonFirsts)
+TEST(Hoi4worldCountriesCountryConverter, TooFewNobleFirstsAddsCommonFirsts)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::Country source_country_one(
@@ -1823,7 +1824,7 @@ TEST(Hoi4worldCountriesCountryConverter, TooFewNobleFirstsAddsCommonFirsts)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsUseSentinielValue)
+TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsUseSentinielValue)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
@@ -1864,7 +1865,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsUseSentinielValue)
 
 
 
-TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsLogWarning)
+TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsLogWarning)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -1909,7 +1910,7 @@ TEST(Hoi4worldCountriesCountryConverter, MissingNameLocsLogWarning)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
+TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::Country source_country_one({.number = 1, .active_laws = {}, .primary_cultures = {"culture"}});
@@ -1955,7 +1956,7 @@ TEST(Hoi4worldCountriesCountryConverter, GraphicsBlocksAreSet)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
+TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -2026,7 +2027,7 @@ TEST(Hoi4worldCountriesCountryConverter, PuppetsAreConverted)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, OverlordIsConverted)
+TEST(Hoi4worldCountriesCountryConverter, OverlordIsConverted)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "T00"}, {2, "T01"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
@@ -2090,7 +2091,7 @@ TEST(Hoi4worldCountriesCountryConverter, OverlordIsConverted)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)
+TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
 
@@ -2135,7 +2136,7 @@ TEST(Hoi4worldCountriesCountryConverter, SpiesAndLeadersAreSeparated)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
+TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "TWO"}});
 
@@ -2200,7 +2201,7 @@ TEST(Hoi4worldCountriesCountryConverter, CharactersConvert)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
+TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::Country source_country_one({.number = 1, .capital_state = 2, .ig_ids = {1, 2}});
@@ -2293,7 +2294,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportIsConverted)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
+TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::Country source_country_one({.number = 1, .capital_state = 2});
@@ -2331,7 +2332,7 @@ TEST(Hoi4worldCountriesCountryConverter, IdeologySupportDefaultsToAllNeutrality)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, StabilityDefaultsToZero)
+TEST(Hoi4worldCountriesCountryConverter, StabilityDefaultsToZero)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::Country source_country_one({.number = 1, .capital_state = 2});
@@ -2368,7 +2369,7 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityDefaultsToZero)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
+TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::Country source_country_one({.number = 1, .capital_state = 2, .legitimacy = 100});
@@ -2429,7 +2430,7 @@ TEST(Hoi4worldCountriesCountryConverter, StabilityConvertsFromLegitimacy)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
+TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    vic3::Buildings buildings(std::map<int, std::vector<vic3::Building>>{
@@ -2527,7 +2528,7 @@ TEST(Hoi4worldCountriesCountryConverter, UnitsAreConverted)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, WarsDefaultToEmpty)
+TEST(Hoi4worldCountriesCountryConverter, WarsDefaultToEmpty)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "T00"}});
@@ -2563,7 +2564,7 @@ TEST(Hoi4worldCountriesCountryConverter, WarsDefaultToEmpty)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, WarsCanBeAdded)
+TEST(Hoi4worldCountriesCountryConverter, WarsCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world = vic3::World(vic3::WorldOptions());
    const mappers::CountryMapper country_mapper({{1, "T00"}});
@@ -2605,7 +2606,7 @@ TEST(Hoi4worldCountriesCountryConverter, WarsCanBeAdded)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, MonarchIdeaCanBeAdded)
+TEST(Hoi4worldCountriesCountryConverter, MonarchIdeaCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::World source_world = vic3::World(vic3::WorldOptions{});
@@ -2651,7 +2652,7 @@ TEST(Hoi4worldCountriesCountryConverter, MonarchIdeaCanBeAdded)
    EXPECT_THAT(country_one.value_or(Country({})).GetMonarchIdeaIds(), 42);
 }
 
-TEST(Hoi4worldCountriesCountryConverter, ConvoysConvert)
+TEST(Hoi4worldCountriesCountryConverter, ConvoysConvert)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "ABC"}});
    const vic3::Country source_country_one({.number = 1});
@@ -2757,7 +2758,7 @@ TEST(Hoi4worldCountriesCountryConverter, ConvoysConvert)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, OldNaviesConvert)
+TEST(Hoi4worldCountriesCountryConverter, OldNaviesConvert)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}, {2, "ABC"}});
    const vic3::Country source_country_one({.number = 1});
@@ -2910,7 +2911,7 @@ TEST(Hoi4worldCountriesCountryConverter, OldNaviesConvert)
 }
 
 
-TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)
+TEST(Hoi4worldCountriesCountryConverter, NaviesConvert)  // NOLINT(cert-err58-cpp)
 {
    const mappers::CountryMapper country_mapper({{1, "TAG"}});
    const vic3::Country source_country_one({

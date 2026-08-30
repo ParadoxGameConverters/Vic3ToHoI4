@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldTechnologyVic3technologyimporterTests, AcquiredTechnologiesDefaultToEmpty)
+TEST(Vic3WorldTechnologyVic3technologyimporterTests, AcquiredTechnologiesDefaultToEmpty)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const std::map<int, std::set<std::string>> technologies = ImportAcquiredTechnologies(input);
@@ -19,7 +19,7 @@ TEST(Vic3WorldTechnologyVic3technologyimporterTests, AcquiredTechnologiesDefault
 }
 
 
-TEST(Vic3WorldTechnologyVic3technologyimporterTests, AcquiredTechnologiesCanBeImported)
+TEST(Vic3WorldTechnologyVic3technologyimporterTests, AcquiredTechnologiesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -46,7 +46,7 @@ TEST(Vic3WorldTechnologyVic3technologyimporterTests, AcquiredTechnologiesCanBeIm
 }
 
 
-TEST(Vic3WorldTechnologyVic3technologyimporterTests, NoneIsHandledGracefully)
+TEST(Vic3WorldTechnologyVic3technologyimporterTests, NoneIsHandledGracefully)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -69,7 +69,7 @@ TEST(Vic3WorldTechnologyVic3technologyimporterTests, NoneIsHandledGracefully)
 }
 
 
-TEST(Vic3WorldTechnologyVic3technologyimporterTests, MissingCountrySectionMeansNoEntry)
+TEST(Vic3WorldTechnologyVic3technologyimporterTests, MissingCountrySectionMeansNoEntry)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

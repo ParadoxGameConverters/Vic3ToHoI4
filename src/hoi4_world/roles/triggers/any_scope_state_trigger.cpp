@@ -27,7 +27,7 @@ bool AnyScopeStateTrigger::IsValid(const Context& context, const World& world) c
    std::vector<std::reference_wrapper<const State>> owned_states;
 
    const CountryScope* maybe_country = std::get_if<CountryScope>(&context.this_scope);
-   if (maybe_country)
+   if (maybe_country != nullptr)
    {
       const Country& country = maybe_country->country;
       for (const int owned_state: country.GetOwnedStates())
@@ -48,7 +48,7 @@ std::vector<Scope> AnyScopeStateTrigger::FindAllValid(const Context& context, co
    std::vector<Scope> valid_scopes;
 
    const CountryScope* maybe_country = std::get_if<CountryScope>(&context.this_scope);
-   if (!maybe_country)
+   if (maybe_country == nullptr)
    {
       return {};
    }

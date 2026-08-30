@@ -22,7 +22,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
+TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world(vic3::WorldOptions{});
    const mappers::WorldMapper world_mapper = mappers::WorldMapperBuilder::CreateNullMapper().Build();
@@ -41,7 +41,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, EmptyWorldIsEmpty)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const vic3::Country source_country_one({
        .number = 1,
@@ -222,7 +222,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CountriesAreConverted)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::StateRegion> state_regions({{"STATE_ONE",
        vic3::StateRegion(
@@ -307,7 +307,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StatesAreConverted)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
+TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)  // NOLINT(cert-err58-cpp)
 {
    std::map<int, vic3::Country> countries;
    std::map<std::string, vic3::StateRegion> state_regions;
@@ -333,7 +333,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
               },
               {}));
       province_definitions_initializer.emplace_back(fmt::format("x0000{:0>2}", i));
-      buildings_initializer.emplace(i, std::vector{vic3::Building("", i, 1000.0f - static_cast<float>(i))});
+      buildings_initializer.emplace(i, std::vector{vic3::Building("", i, 1000.0F - static_cast<float>(i))});
       scored_countries.emplace(i, i);
       vic3_states.emplace(i,
           vic3::State({.owner_number = i, .owner_tag = fmt::format("x0000{:0>2}", i), .provinces = {i}}));
@@ -410,7 +410,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraVictoryPointValue)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraAirBaseLevel)
+TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraAirBaseLevel)  // NOLINT(cert-err58-cpp)
 {
    const vic3::Country source_country_one({
        .number = 1,
@@ -493,7 +493,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsGetExtraAirBaseLevel)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, CapitalsAreMarkedAsCapitals)
+TEST(Hoi4worldWorldHoi4worldconverter, CapitalsAreMarkedAsCapitals)  // NOLINT(cert-err58-cpp)
 {
    const vic3::Country source_country_one(
        {.number = 1, .tag = "TAG", .color = commonItems::Color{std::array{1, 2, 3}}, .capital_state = 1});
@@ -558,7 +558,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CapitalsAreMarkedAsCapitals)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
+TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)  // NOLINT(cert-err58-cpp)
 {
    const auto province_definitions = vic3::ProvinceDefinitions({
        "x000001",
@@ -668,7 +668,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, StrategicRegionsAreCreated)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
+TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)  // NOLINT(cert-err58-cpp)
 {
    const auto province_definitions = vic3::ProvinceDefinitions({
        "x000001",
@@ -717,7 +717,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, BuildingsAreCreated)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
+TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)  // NOLINT(cert-err58-cpp)
 {
    const vic3::StateRegion vic3_state_region({{"x000001", "city"}, {"x000002", "port"}, {"x000003", "mine"}}, {});
 
@@ -792,7 +792,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, RailwaysAreCreated)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world({
        .countries =
@@ -822,7 +822,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, GreatPowersAreConverted)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World source_world({
        .countries =
@@ -855,7 +855,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, MajorPowersAreConverted)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const vic3::Country source_country_one({
        .number = 1,
@@ -978,7 +978,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, LocalizationsAreConverted)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const vic3::Country source_country_one({
        .number = 1,
@@ -1084,7 +1084,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, CharactersAreConverted)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, WarsAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, WarsAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const vic3::Country source_country_one({
        .number = 1,
@@ -1123,7 +1123,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, WarsAreConverted)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, HomelandsAreIdentified)
+TEST(Hoi4worldWorldHoi4worldconverter, HomelandsAreIdentified)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, vic3::StateRegion> state_regions({{"STATE_ONE",
        vic3::StateRegion(
@@ -1191,7 +1191,7 @@ TEST(Hoi4worldWorldHoi4worldconverter, HomelandsAreIdentified)
 }
 
 
-TEST(Hoi4worldWorldHoi4worldconverter, PrimaryCultureCountriesAreConverted)
+TEST(Hoi4worldWorldHoi4worldconverter, PrimaryCultureCountriesAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const vic3::Country source_country_one({.number = 1, .tag = "TAG", .primary_cultures = {"test_culture"}});
    const vic3::Country source_country_two(

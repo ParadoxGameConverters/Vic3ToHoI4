@@ -32,7 +32,7 @@ namespace hoi4
 {
 
 // trigger scopes
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOtherCountryTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOtherCountryTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -61,7 +61,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOtherCountryTriggerCanBeImpo
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOwnedStateTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOwnedStateTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -90,7 +90,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyOwnedStateTriggerCanBeImport
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyScopeStateTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyScopeStateTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -119,7 +119,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyScopeStateTriggerCanBeImport
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyStateTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyStateTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -149,7 +149,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyStateTriggerCanBeImported)
 
 
 // flow control tools
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AllFalseTriggerCanBeImportedAsNorTrigger)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AllFalseTriggerCanBeImportedAsNorTrigger)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -178,7 +178,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AllFalseTriggerCanBeImportedAsN
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyFalseTriggerCanBeImportedAsNandTrigger)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyFalseTriggerCanBeImportedAsNandTrigger)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -207,7 +207,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyFalseTriggerCanBeImportedAsN
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AndTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AndTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -236,7 +236,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AndTriggerCanBeImported)
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseAndTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseAndTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -265,7 +265,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseAndTriggerCanBeImporte
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, NandTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, NandTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -294,7 +294,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, NandTriggerCanBeImported)
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseNandTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseNandTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -323,7 +323,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseNandTriggerCanBeImport
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, MultipleTopLevelTriggersCountAsAnAndTrigger)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, MultipleTopLevelTriggersCountAsAnAndTrigger)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -350,7 +350,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, MultipleTopLevelTriggersCountAs
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, NorTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, NorTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -379,7 +379,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, NorTriggerCanBeImported)
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseNorTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseNorTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -408,7 +408,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseNorTriggerCanBeImporte
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, NotTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, NotTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -437,7 +437,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, NotTriggerCanBeImported)
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseNotTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseNotTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -466,7 +466,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseNotTriggerCanBeImporte
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, OrTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, OrTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -495,7 +495,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, OrTriggerCanBeImported)
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseOrTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseOrTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -525,7 +525,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, LowercaseOrTriggerCanBeImported
 
 
 // any scope
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, EmptyInputGivesAlwaysYesTrigger)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, EmptyInputGivesAlwaysYesTrigger)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -538,7 +538,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, EmptyInputGivesAlwaysYesTrigger
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithYes)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithYes)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -554,7 +554,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithY
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithNo)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithNo)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -570,7 +570,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithN
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithLoudYes)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithLoudYes)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -586,7 +586,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AlwaysTriggerCanBeImportedWithL
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, RootTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, RootTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -603,7 +603,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, RootTriggerCanBeImported)
 
 
 // country scopes
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyPrimaryCultureTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyPrimaryCultureTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -627,6 +627,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, AnyPrimaryCultureTriggerCanBeIm
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, CountryHasPrimaryCultureTriggerCanBeImported)
 {
    std::stringstream input;
@@ -642,6 +643,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, CountryHasPrimaryCultureTrigger
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, HasRoleTriggerBeImported)
 {
    std::stringstream input;
@@ -658,7 +660,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, HasRoleTriggerBeImported)
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, TagTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, TagTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -675,6 +677,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, TagTriggerCanBeImported)
 
 
 // culture scope
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, SharesHeritageTraitWithCultureTriggerCanBeImported)
 {
    std::stringstream input;
@@ -692,7 +695,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, SharesHeritageTraitWithCultureT
 
 
 // state scope
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWithYes)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWithYes)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -708,7 +711,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWi
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWithNo)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWithNo)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -724,7 +727,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWi
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWithLoudYes)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWithLoudYes)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -740,6 +743,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsCapitalTriggerCanBeImportedWi
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandOfCountryCultureTriggerCanBeImported)
 {
    std::stringstream input;
@@ -756,7 +760,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandOfCountryCultureTrigg
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -772,6 +776,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandTriggerCanBeImported)
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandTriggerCanBeImportedStripperPrefix)
 {
    std::stringstream input;
@@ -788,7 +793,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsHomelandTriggerCanBeImportedS
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsOnContinentTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsOnContinentTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -804,7 +809,7 @@ TEST(Hoi4worldRolesTriggersTriggerimporterTests, IsOnContinentTriggerCanBeImport
 }
 
 
-TEST(Hoi4worldRolesTriggersTriggerimporterTests, OwnerTriggerCanBeImported)
+TEST(Hoi4worldRolesTriggersTriggerimporterTests, OwnerTriggerCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";

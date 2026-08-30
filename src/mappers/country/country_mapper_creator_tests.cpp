@@ -11,7 +11,7 @@
 namespace mappers
 {
 
-TEST(MappersCountryCountryMapperCreator, GeneratedMappingsCanBeCreated)
+TEST(MappersCountryCountryMapperCreator, GeneratedMappingsCanBeCreated)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, vic3::Country> source_countries{{1, vic3::Country({.number = 1})}};
 
@@ -20,7 +20,7 @@ TEST(MappersCountryCountryMapperCreator, GeneratedMappingsCanBeCreated)
 }
 
 
-TEST(MappersCountryCountryMapperCreator, GeneratedMappingsIncrementTheNumericDigits)
+TEST(MappersCountryCountryMapperCreator, GeneratedMappingsIncrementTheNumericDigits)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, vic3::Country> source_countries{
        {1, vic3::Country({.number = 1})},
@@ -33,6 +33,7 @@ TEST(MappersCountryCountryMapperCreator, GeneratedMappingsIncrementTheNumericDig
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(MappersCountryCountryMapperCreator, GeneratedMappingsDecrementTheAlphaWhenTheNumericsRollOver)
 {
    std::map<int, vic3::Country> source_countries;
@@ -47,7 +48,7 @@ TEST(MappersCountryCountryMapperCreator, GeneratedMappingsDecrementTheAlphaWhenT
    EXPECT_EQ(country_mapper.GetHoiTag(101), "Y01");
 }
 
-TEST(MappersCountryCountryMapperCreator, SourceTagAsPrimaryFallback)
+TEST(MappersCountryCountryMapperCreator, SourceTagAsPrimaryFallback)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, vic3::Country> source_countries{
        {1, vic3::Country({.number = 1, .tag = "TAG"})},
@@ -64,7 +65,7 @@ TEST(MappersCountryCountryMapperCreator, SourceTagAsPrimaryFallback)
 }
 
 
-TEST(MappersCountryCountryMapperCreator, DisallowedSourceTagsAreNotPrimaryFallback)
+TEST(MappersCountryCountryMapperCreator, DisallowedSourceTagsAreNotPrimaryFallback)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, vic3::Country> source_countries{
        {1, vic3::Country({.number = 1, .tag = "CON"})},
@@ -81,7 +82,7 @@ TEST(MappersCountryCountryMapperCreator, DisallowedSourceTagsAreNotPrimaryFallba
 }
 
 
-TEST(MappersCountryCountryMapperCreator, CivilWarCountryIsSecondary)
+TEST(MappersCountryCountryMapperCreator, CivilWarCountryIsSecondary)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, vic3::Country> source_countries{
        {1, vic3::Country({.number = 1, .tag = "TAG", .is_civil_war = true})},
@@ -93,7 +94,7 @@ TEST(MappersCountryCountryMapperCreator, CivilWarCountryIsSecondary)
    EXPECT_EQ(country_mapper.GetHoiTag(2), "TAG");
 }
 
-TEST(MappersCountryCountryMapperCreator, MappingsCanComeFromRulesFile)
+TEST(MappersCountryCountryMapperCreator, MappingsCanComeFromRulesFile)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, vic3::Country> source_countries{
        {1, vic3::Country({.number = 1, .tag = "TAG"})},

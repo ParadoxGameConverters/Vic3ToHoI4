@@ -18,7 +18,7 @@
 namespace hoi4
 {
 
-std::map<std::string, Country> ConvertCountries(const vic3::World source_world,
+std::map<std::string, Country> ConvertCountries(const vic3::World& source_world,
     const mappers::WorldMapper& world_mapper,
     const commonItems::LocalizationDatabase& source_localizations,
     const States& states,

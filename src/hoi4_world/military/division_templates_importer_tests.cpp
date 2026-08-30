@@ -13,14 +13,14 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldMilitaryDivisiontemplateimporterTests, DivisionTemplatesCanBeImported)
+TEST(Hoi4worldMilitaryDivisiontemplateimporterTests, DivisionTemplatesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const std::vector<DivisionTemplate> templates =
        ImportDivisionTemplates("test_files/hoi4_world/military/DivisionTemplatesCanBeImported.txt");
 
-   UnitCount bs = {{"test", 2}};
-   UnitCount sp = {{"other", 1}};
-   DivisionTemplate expect("Test Division", bs, sp);
+   UnitCount battalions = {{"test", 2}};
+   UnitCount supports = {{"other", 1}};
+   DivisionTemplate expect("Test Division", battalions, supports);
    EXPECT_THAT(templates, testing::UnorderedElementsAre(expect));
 }
 

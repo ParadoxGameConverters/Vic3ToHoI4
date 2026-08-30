@@ -21,7 +21,7 @@ using std::filesystem::remove_all;
 namespace out
 {
 
-TEST(Outhoi4CountriesOutcountryTests, CommonCountriesFileIsCreatedWithTagForName)
+TEST(Outhoi4CountriesOutcountryTests, CommonCountriesFileIsCreatedWithTagForName)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/CommonCountriesFileIsCreatedWithTagForName/common/countries");
 
@@ -65,7 +65,7 @@ TEST(Outhoi4CountriesOutcountryTests, CommonCountriesFileIsCreatedWithTagForName
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, ExceptionIfCountriesFileNotOpened)
+TEST(Outhoi4CountriesOutcountryTests, ExceptionIfCountriesFileNotOpened)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Country country({.tag = "TAG"});
 
@@ -73,7 +73,7 @@ TEST(Outhoi4CountriesOutcountryTests, ExceptionIfCountriesFileNotOpened)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, DefaultsAreOutputToCommonCountriesFile)
+TEST(Outhoi4CountriesOutcountryTests, DefaultsAreOutputToCommonCountriesFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/DefaultsAreOutputToCommonCountriesFile/common/countries");
 
@@ -98,7 +98,7 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreOutputToCommonCountriesFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, ColorCanBeSetInCommonCountriesFile)
+TEST(Outhoi4CountriesOutcountryTests, ColorCanBeSetInCommonCountriesFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/ColorCanBeSetInCommonCountriesFile/common/countries");
 
@@ -123,7 +123,7 @@ TEST(Outhoi4CountriesOutcountryTests, ColorCanBeSetInCommonCountriesFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, TagsAreAddedToTagsFile)
+TEST(Outhoi4CountriesOutcountryTests, TagsAreAddedToTagsFile)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Country country({.tag = "TAG"});
    const hoi4::Country country_two({.tag = "TWO"});
@@ -149,7 +149,7 @@ TEST(Outhoi4CountriesOutcountryTests, TagsAreAddedToTagsFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, CommonCharactersFileIsCreatedWithTagForName)
+TEST(Outhoi4CountriesOutcountryTests, CommonCharactersFileIsCreatedWithTagForName)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/CommonCharactersFileIsCreatedWithTagForName/common/characters");
 
@@ -217,7 +217,7 @@ TEST(Outhoi4CountriesOutcountryTests, CommonCharactersFileIsCreatedWithTagForNam
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, CountryHistoryFileIsCreatedWithTagForName)
+TEST(Outhoi4CountriesOutcountryTests, CountryHistoryFileIsCreatedWithTagForName)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/CountryHistoryFileIsCreatedWithTagForName/history/countries");
 
@@ -234,7 +234,7 @@ TEST(Outhoi4CountriesOutcountryTests, CountryHistoryFileIsCreatedWithTagForName)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, ExceptionIfHistoryFileNotOpened)
+TEST(Outhoi4CountriesOutcountryTests, ExceptionIfHistoryFileNotOpened)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Country country({.tag = "TAG"});
 
@@ -242,7 +242,7 @@ TEST(Outhoi4CountriesOutcountryTests, ExceptionIfHistoryFileNotOpened)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/DefaultsAreSetInCountryHistoryFile/history/countries");
 
@@ -305,7 +305,7 @@ TEST(Outhoi4CountriesOutcountryTests, DefaultsAreSetInCountryHistoryFile)
    EXPECT_EQ(country_file_stream.str(), expected_one.str());
 }
 
-TEST(Outhoi4CountriesOutcountryTests, ConvoysAreWrittenToCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, ConvoysAreWrittenToCountryHistoryFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/ConvoysAreWrittenToCountryHistoryFile/history/countries");
 
@@ -327,7 +327,7 @@ TEST(Outhoi4CountriesOutcountryTests, ConvoysAreWrittenToCountryHistoryFile)
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr("set_convoys = 11"));
 }
 
-TEST(Outhoi4CountriesOutcountryTests, IdeologyIsSetCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, IdeologyIsSetCountryHistoryFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/IdeologyIsSetCountryHistoryFile/history/countries");
 
@@ -348,7 +348,7 @@ TEST(Outhoi4CountriesOutcountryTests, IdeologyIsSetCountryHistoryFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/IdeasAreOutputToCountryHistoryFile/history/countries");
 
@@ -414,7 +414,7 @@ TEST(Outhoi4CountriesOutcountryTests, IdeasAreOutputToCountryHistoryFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, LawsAreOutputToCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, LawsAreOutputToCountryHistoryFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/IdeasAreOutputToCountryHistoryFile/history/countries");
 
@@ -444,7 +444,7 @@ TEST(Outhoi4CountriesOutcountryTests, LawsAreOutputToCountryHistoryFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, CapitalCanBeSetInCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, CapitalCanBeSetInCountryHistoryFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/CapitalCanBeSetInCountryHistoryFile/history/countries");
 
@@ -465,7 +465,7 @@ TEST(Outhoi4CountriesOutcountryTests, CapitalCanBeSetInCountryHistoryFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, CharactersAreRecruitedInCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, CharactersAreRecruitedInCountryHistoryFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/CharactersAreRecruitedInCountryHistoryFile/history/countries");
 
@@ -492,7 +492,7 @@ TEST(Outhoi4CountriesOutcountryTests, CharactersAreRecruitedInCountryHistoryFile
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, SpiesAreDefinedInCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, SpiesAreDefinedInCountryHistoryFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/SpiesAreDefinedInCountryHistoryFile/history/countries");
 
@@ -536,7 +536,7 @@ TEST(Outhoi4CountriesOutcountryTests, SpiesAreDefinedInCountryHistoryFile)
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)
+TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/EquipmentVariantsAreOutput/history/countries");
 
@@ -649,7 +649,7 @@ TEST(Outhoi4CountriesOutcountryTests, EquipmentVariantsAreOutput)
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected_output));
 }
 
-TEST(Outhoi4CountriesOutcountryTests, OverlordsAreOutputToCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, OverlordsAreOutputToCountryHistoryFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/OverlordsAreOutputToCountryHistoryFile/history/countries");
 
@@ -686,7 +686,7 @@ TEST(Outhoi4CountriesOutcountryTests, OverlordsAreOutputToCountryHistoryFile)
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected));
 }
 
-TEST(Outhoi4CountriesOutcountryTests, FascistOverlordsAreOutputToCountryHistoryFile)
+TEST(Outhoi4CountriesOutcountryTests, FascistOverlordsAreOutputToCountryHistoryFile)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/FascistOverlordsAreOutputToCountryHistoryFile/history/countries");
 
@@ -726,7 +726,7 @@ TEST(Outhoi4CountriesOutcountryTests, FascistOverlordsAreOutputToCountryHistoryF
 }
 
 
-TEST(Outhoi4CountriesOutcountryTests, UnitsAreOutputToCountryOOBFile)
+TEST(Outhoi4CountriesOutcountryTests, UnitsAreOutputToCountryOOBFile)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/UnitsAreOutputToCountryOOBFile/history/units");
    create_directories("output/UnitsAreOutputToCountryOOBFile/history/units");
@@ -765,7 +765,7 @@ TEST(Outhoi4CountriesOutcountryTests, UnitsAreOutputToCountryOOBFile)
    EXPECT_THAT(country_file_stream.str(), testing::HasSubstr(expected));
 }
 
-TEST(Outhoi4CountriesOutcountryTests, NaviesAreOutputToCountryNavalFiles)
+TEST(Outhoi4CountriesOutcountryTests, NaviesAreOutputToCountryNavalFiles)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NaviesAreOutputToCountryNavalFiles/history/units");
 
@@ -797,7 +797,7 @@ TEST(Outhoi4CountriesOutcountryTests, NaviesAreOutputToCountryNavalFiles)
    EXPECT_THAT(legacy_stream.str(), testing::HasSubstr(expected_legacy));
 }
 
-TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)
+TEST(Outhoi4CountriesOutcountryTests, ShipsAreOutputInBothFormats)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/ShipsAreOutputInBothFormats/history/units");
 

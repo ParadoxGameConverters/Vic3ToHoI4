@@ -33,7 +33,7 @@ void InstitutionsImporter::operator()(std::istream& input_stream)
 
    const auto element_parser = [this, &institution_parser](std::istream& input_stream) {
       institution_parser.parseStream(input_stream);
-      if (this->current_institution_.type != "")
+      if (!this->current_institution_.type.empty())
       {
          auto [itr, success] = this->institutions_map_.emplace(this->current_institution_.country,
              std::vector{this->current_institution_});

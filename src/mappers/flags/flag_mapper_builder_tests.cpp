@@ -18,7 +18,7 @@ using std::filesystem::path;
 namespace mappers
 {
 
-TEST(MappersFlagsFlagMapperBuilder, FlagDirsAreCreated)
+TEST(MappersFlagsFlagMapperBuilder, FlagDirsAreCreated)  // NOLINT(cert-err58-cpp)
 {
    FlagMapperBuilder builder;
    EXPECT_TRUE(builder.CreateTargetFolders("FlagDirsAreCreated"));
@@ -31,7 +31,7 @@ TEST(MappersFlagsFlagMapperBuilder, FlagDirsAreCreated)
 }
 
 
-TEST(MappersFlagsFlagMapperBuilder, ForbidIsRespectedAndCustomIsUsed)
+TEST(MappersFlagsFlagMapperBuilder, ForbidIsRespectedAndCustomIsUsed)  // NOLINT(cert-err58-cpp)
 {
    FlagMapperBuilder builder;
    builder.ReadConfig("configurables/flag_mapper_config.txt");

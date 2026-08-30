@@ -51,7 +51,7 @@ void CreateTestFolders(std::string_view test_name)
 namespace out
 {
 
-TEST(Outhoi4WorldOutworld, CountriesFilesAreCreated)
+TEST(Outhoi4WorldOutworld, CountriesFilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("WorldCountriesFilesAreCreated");
 
@@ -64,7 +64,7 @@ TEST(Outhoi4WorldOutworld, CountriesFilesAreCreated)
 }
 
 
-TEST(Outhoi4WorldOutworld, TagsFileIsCreated)
+TEST(Outhoi4WorldOutworld, TagsFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("WorldTagsFileIsCreated");
 
@@ -84,7 +84,7 @@ TEST(Outhoi4WorldOutworld, TagsFileIsCreated)
 }
 
 
-TEST(Outhoi4WorldOutworld, TagsAliasFileIsCreated)
+TEST(Outhoi4WorldOutworld, TagsAliasFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("TagsAliasFileIsCreated");
 
@@ -115,7 +115,7 @@ TEST(Outhoi4WorldOutworld, TagsAliasFileIsCreated)
 }
 
 
-TEST(Outhoi4WorldOutworld, CharactersFilesAreCreated)
+TEST(Outhoi4WorldOutworld, CharactersFilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("WorldCharactersFilesAreCreated");
 
@@ -128,7 +128,7 @@ TEST(Outhoi4WorldOutworld, CharactersFilesAreCreated)
 }
 
 
-TEST(Outhoi4WorldOutworld, NamesFileIsCreated)
+TEST(Outhoi4WorldOutworld, NamesFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("WorldNamesFileIsCreated");
 
@@ -139,7 +139,7 @@ TEST(Outhoi4WorldOutworld, NamesFileIsCreated)
 }
 
 
-TEST(Outhoi4WorldOutworld, CountryHistoryFilesAreCreated)
+TEST(Outhoi4WorldOutworld, CountryHistoryFilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("WorldCountryHistoryFilesAreCreated");
 
@@ -151,7 +151,7 @@ TEST(Outhoi4WorldOutworld, CountryHistoryFilesAreCreated)
 }
 
 
-TEST(Outhoi4WorldOutworld, DivisionTemplatesAreCopied)
+TEST(Outhoi4WorldOutworld, DivisionTemplatesAreCopied)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("WorldDivisionTemplatesAreCopied");
 
@@ -163,7 +163,7 @@ TEST(Outhoi4WorldOutworld, DivisionTemplatesAreCopied)
 }
 
 
-TEST(Outhoi4WorldOutworld, StatesHistoryFilesAreCreatedAndOutput)
+TEST(Outhoi4WorldOutworld, StatesHistoryFilesAreCreatedAndOutput)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("StatesHistoryFilesAreCreatedAreOutput");
 
@@ -175,7 +175,7 @@ TEST(Outhoi4WorldOutworld, StatesHistoryFilesAreCreatedAndOutput)
 }
 
 
-TEST(Outhoi4WorldOutworld, StrategicRegionsFilesAreCreatedAndOutput)
+TEST(Outhoi4WorldOutworld, StrategicRegionsFilesAreCreatedAndOutput)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("StrategicRegionsFilesAreCreatedAndOutput");
 
@@ -193,7 +193,7 @@ TEST(Outhoi4WorldOutworld, StrategicRegionsFilesAreCreatedAndOutput)
 }
 
 
-TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
+TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("BuildingsFileIsCreatedAndOutput");
 
@@ -219,7 +219,7 @@ TEST(Outhoi4WorldOutworld, BuildingsFileIsCreatedAndOutput)
 }
 
 
-TEST(Outhoi4WorldOutworld, RailwaysFileIsCreatedAndOutput)
+TEST(Outhoi4WorldOutworld, RailwaysFileIsCreatedAndOutput)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("RailwaysFileIsCreatedAndOutput");
 
@@ -234,7 +234,7 @@ TEST(Outhoi4WorldOutworld, RailwaysFileIsCreatedAndOutput)
 }
 
 
-TEST(Outhoi4WorldOutworld, SupplyNodesFileIsCreatedAndOutput)
+TEST(Outhoi4WorldOutworld, SupplyNodesFileIsCreatedAndOutput)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("SupplyNodesFileIsCreatedAndOutput");
 
@@ -253,7 +253,7 @@ TEST(Outhoi4WorldOutworld, SupplyNodesFileIsCreatedAndOutput)
 }
 
 
-TEST(Outhoi4WorldOutworld, PortraitsFileIsCreated)
+TEST(Outhoi4WorldOutworld, PortraitsFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("WorldPortraitsFileIsCreated");
 
@@ -264,7 +264,7 @@ TEST(Outhoi4WorldOutworld, PortraitsFileIsCreated)
 }
 
 
-TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
+TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("LocalizationsAreOutput");
 
@@ -384,7 +384,7 @@ TEST(Outhoi4WorldOutworld, LocalizationsAreOutput)
 }
 
 
-TEST(Outhoi4WorldOutworld, ScriptedEffectsAreOutput)
+TEST(Outhoi4WorldOutworld, ScriptedEffectsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("ScriptedEffectsAreOutput");
 
@@ -413,7 +413,7 @@ TEST(Outhoi4WorldOutworld, ScriptedEffectsAreOutput)
 }
 
 
-TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
+TEST(Outhoi4WorldOutworld, BookmarkIsOutput)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("BookmarkIsOutput");
 
@@ -461,7 +461,7 @@ TEST(Outhoi4WorldOutworld, BookmarkIsOutput)
 }
 
 
-TEST(Outhoi4WorldOutworld, ExceptionIfBookmarkFileNotCreated)
+TEST(Outhoi4WorldOutworld, ExceptionIfBookmarkFileNotCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("ExceptionIfBookmarkFileNotCreated");
    remove_all("output/ExceptionIfBookmarkFileNotCreated/common/bookmarks");
@@ -470,7 +470,7 @@ TEST(Outhoi4WorldOutworld, ExceptionIfBookmarkFileNotCreated)
 }
 
 
-TEST(Outhoi4WorldOutworld, CultureArraysIsOutput)
+TEST(Outhoi4WorldOutworld, CultureArraysIsOutput)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("CultureArraysIsOutput");
 
@@ -505,7 +505,7 @@ TEST(Outhoi4WorldOutworld, CultureArraysIsOutput)
 }
 
 
-TEST(Outhoi4WorldOutworld, ExceptionIfCultureArraysFileNotCreated)
+TEST(Outhoi4WorldOutworld, ExceptionIfCultureArraysFileNotCreated)  // NOLINT(cert-err58-cpp)
 {
    CreateTestFolders("ExceptionIfCultureArraysFileNotCreated");
    remove_all("output/ExceptionIfCultureArraysFileNotCreated/common/on_actions");

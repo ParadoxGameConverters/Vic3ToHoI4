@@ -18,7 +18,7 @@ using std::filesystem::create_directories;
 namespace out
 {
 
-TEST(Outhoi4FocustreesOurfocustreeTests, NationalFocusFileIsNamedForTag)
+TEST(Outhoi4FocustreesOurfocustreeTests, NationalFocusFileIsNamedForTag)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NationalFocusFileIsNamedForTag/common/national_focus");
 
@@ -28,7 +28,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, NationalFocusFileIsNamedForTag)
 }
 
 
-TEST(Outhoi4FocustreesOurfocustreeTests, DefaultsAreOutput)
+TEST(Outhoi4FocustreesOurfocustreeTests, DefaultsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/DefaultsAreOutput/common/national_focus");
 
@@ -65,7 +65,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, DefaultsAreOutput)
 }
 
 
-TEST(Outhoi4FocustreesOurfocustreeTests, SharedFocusesAreOutput)
+TEST(Outhoi4FocustreesOurfocustreeTests, SharedFocusesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/SharedFocusesAreOutput/common/national_focus");
 
@@ -104,7 +104,7 @@ TEST(Outhoi4FocustreesOurfocustreeTests, SharedFocusesAreOutput)
 }
 
 
-TEST(Outhoi4FocustreesOurfocustreeTests, FocusesAreOutput)
+TEST(Outhoi4FocustreesOurfocustreeTests, FocusesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/FocusesAreOutput/common/national_focus");
 

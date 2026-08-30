@@ -15,8 +15,21 @@ namespace vic3
 {
 
 // This could be expanded into a mapper between Vic3 pact types and HoI4 autonomous_states
-static const std::set<std::string> kSubjectPactTypes =
-    {"protectorate", "puppet", "dominion", "personal_union", "vassal", "tributary", "chartered_company", "colony"};
+static constexpr std::set<std::string>& GetSubjectPactTypes()
+{
+   static std::set<std::string> subject_pact_types = {
+       "protectorate",
+       "puppet",
+       "dominion",
+       "personal_union",
+       "vassal",
+       "tributary",
+       "chartered_company",
+       "colony",
+   };
+
+   return subject_pact_types;
+}
 
 
 struct PactPartners
@@ -34,8 +47,8 @@ class Pact
    Pact(PactPartners partners, std::string action, date start_date, std::optional<int> forced_duration):
        partners_(partners),
        action_(std::move(action)),
-       start_date_(std::move(start_date)),
-       forced_duration_(std::move(forced_duration))
+       start_date_(start_date),
+       forced_duration_(forced_duration)
    {
    }
 
@@ -43,10 +56,7 @@ class Pact
    [[nodiscard]] std::string GetAction() const { return action_; }
    [[nodiscard]] date GetStartDate() const { return start_date_; }
    [[nodiscard]] std::optional<int> GetForcedDuration() const { return forced_duration_; }
-   [[nodiscard]] bool IsSubjectRelationship() const
-   {
-      return kSubjectPactTypes.find(action_) != kSubjectPactTypes.end();
-   }
+   [[nodiscard]] bool IsSubjectRelationship() const { return GetSubjectPactTypes().contains(action_); }
 
    [[nodiscard]] std::partial_ordering operator<=>(const Pact&) const = default;
 

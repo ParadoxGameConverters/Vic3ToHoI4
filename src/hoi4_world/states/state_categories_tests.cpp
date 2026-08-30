@@ -8,7 +8,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldStatesStatecategoriesTests, DefaultCategoryIsRural)
+TEST(Hoi4worldStatesStatecategoriesTests, DefaultCategoryIsRural)  // NOLINT(cert-err58-cpp)
 {
    const StateCategories categories;
 
@@ -16,7 +16,7 @@ TEST(Hoi4worldStatesStatecategoriesTests, DefaultCategoryIsRural)
 }
 
 
-TEST(Hoi4worldStatesStatecategoriesTests, CategoryCanBeSelected)
+TEST(Hoi4worldStatesStatecategoriesTests, CategoryCanBeSelected)  // NOLINT(cert-err58-cpp)
 {
    const StateCategories categories({{1, "test_category"}});
 
@@ -24,7 +24,7 @@ TEST(Hoi4worldStatesStatecategoriesTests, CategoryCanBeSelected)
 }
 
 
-TEST(Hoi4worldStatesStatecategoriesTests, CategoryGreaterThanOrEqualToNumSlotsIsChosen)
+TEST(Hoi4worldStatesStatecategoriesTests, CategoryGreaterThanOrEqualToNumSlotsIsChosen)  // NOLINT(cert-err58-cpp)
 {
    const StateCategories categories({{1, "test_category_one"}, {3, "test_category_two"}});
 
@@ -33,6 +33,7 @@ TEST(Hoi4worldStatesStatecategoriesTests, CategoryGreaterThanOrEqualToNumSlotsIs
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldStatesStatecategoriesTests, SmallestCategoryGreaterThanOrEqualToNumSlotsIsChosen)
 {
    const StateCategories categories({{1, "test_category"}, {3, "test_category_two"}, {5, "test_category_three"}});

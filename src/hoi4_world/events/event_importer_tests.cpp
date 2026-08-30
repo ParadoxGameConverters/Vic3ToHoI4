@@ -11,7 +11,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldEventsEventImporterTests, ItemsAreDefaulted)
+TEST(Hoi4worldEventsEventImporterTests, ItemsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const Event event = EventImporter{}.ImportEvent("test_type", input);
@@ -33,7 +33,7 @@ TEST(Hoi4worldEventsEventImporterTests, ItemsAreDefaulted)
 }
 
 
-TEST(Hoi4worldEventsEventImporterTests, ItemsCanBeInput)
+TEST(Hoi4worldEventsEventImporterTests, ItemsCanBeInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";
@@ -94,7 +94,7 @@ TEST(Hoi4worldEventsEventImporterTests, ItemsCanBeInput)
 }
 
 
-TEST(Hoi4worldEventsEventImporterTests, BoolsCanBeSetToFalse)
+TEST(Hoi4worldEventsEventImporterTests, BoolsCanBeSetToFalse)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";

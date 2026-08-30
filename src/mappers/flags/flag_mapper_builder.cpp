@@ -20,7 +20,7 @@ using std::filesystem::path;
 namespace
 {
 
-const path kIgnoreFlag("ignore");
+const char* k_ignore_flag = "ignore";
 
 
 }  // namespace
@@ -28,8 +28,6 @@ const path kIgnoreFlag("ignore");
 
 namespace mappers
 {
-
-const std::vector<std::string> kFlagFolders{"", "small", "medium"};
 
 void FlagMapperBuilder::ReadConfig(const path& config_file)
 {
@@ -105,7 +103,7 @@ FlagMapper FlagMapperBuilder::Build(const commonItems::ModFilesystem& hoi4_mod_f
          const auto real_tag = tag.substr(0, 3);
          if (!available_flags.contains(real_tag))
          {
-            available_flags[real_tag] = kIgnoreFlag;
+            available_flags[real_tag] = k_ignore_flag;
          }
          continue;
       }
@@ -118,7 +116,7 @@ FlagMapper FlagMapperBuilder::Build(const commonItems::ModFilesystem& hoi4_mod_f
 
    // Remove the ignore flags so they don't get used for redistribution.
    std::erase_if(available_flags, [](const auto& item) {
-      return item.second == kIgnoreFlag;
+      return item.second == k_ignore_flag;
    });
    FlagMapper flag_mapper(base_folder_, available_flags, custom_flags);
    return flag_mapper;

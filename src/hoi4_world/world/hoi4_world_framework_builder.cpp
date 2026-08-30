@@ -72,7 +72,7 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultStrategicRegions()
    return *this;
 }
 
-WorldFrameworkBuilder& WorldFrameworkBuilder::SetStrategicRegions(const StrategicRegions strategic_regions)
+WorldFrameworkBuilder& WorldFrameworkBuilder::SetStrategicRegions(const StrategicRegions& strategic_regions)
 {
    this->strategic_regions_ = strategic_regions;
    return *this;
@@ -84,9 +84,9 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultDefaultStates()
    return *this;
 }
 
-WorldFrameworkBuilder& WorldFrameworkBuilder::AddDefaultStates(const std::map<int, DefaultState> default_states)
+WorldFrameworkBuilder& WorldFrameworkBuilder::AddDefaultStates(const std::map<int, DefaultState>& default_states)
 {
-   for (auto& state: default_states)
+   for (const auto& state: default_states)
    {
       this->default_states_.emplace(state);
    }
@@ -139,7 +139,7 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::AddLandProvinces(std::vector<std::
 {
    for (const auto& id: province_ids)
    {
-      province_definitions_.land_provinces.emplace(id);
+      province_definitions_.AddLandProvince(id);
    }
    return *this;
 }
@@ -149,7 +149,7 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::AddTestLandProvinces(int count)
    for (int i = 0; i < count; ++i)
    {
       test_province_number_ += 10;
-      province_definitions_.land_provinces.emplace(fmt::format("{}", test_province_number_));
+      province_definitions_.AddLandProvince(fmt::format("{}", test_province_number_));
    }
    return *this;
 }
@@ -158,7 +158,7 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::AddSeaProvinces(std::vector<std::s
 {
    for (const auto& id: province_ids)
    {
-      province_definitions_.sea_provinces.emplace(id);
+      province_definitions_.AddLandProvince(id);
    }
    return *this;
 }
@@ -169,7 +169,7 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::AddProvinceContinents(std::vector<
 {
    for (const std::string& id: province_ids)
    {
-      province_definitions_.continents.emplace(id, continent);
+      province_definitions_.AddProvinceToContinent(id, continent);
    }
    return *this;
 }
@@ -183,7 +183,8 @@ maps::ProvinceDefinitions WorldFrameworkBuilder::CopyProvinceDefinitions()
 
 WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultMapData()
 {
-   map_data_ = maps::MapDataImporter(province_definitions_).ImportMapData(this->hoi4_mod_filesystem_);
+   map_data_ = maps::MapDataImporter(maps::ProvinceDefinitions{province_definitions_})
+                   .ImportMapData(this->hoi4_mod_filesystem_);
    return *this;
 }
 
@@ -197,8 +198,8 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::SetMapData(const maps::MapData& ma
 WorldFrameworkBuilder& WorldFrameworkBuilder::DefaultCoastalProvinces()
 {
    this->coastal_provinces_ = CreateCoastalProvinces(map_data_,
-       LandProvinces{province_definitions_.land_provinces},
-       SeaProvinces{province_definitions_.sea_provinces});
+       LandProvinces{province_definitions_.GetLandProvinces()},
+       SeaProvinces{province_definitions_.GetSeaProvinces()});
    return *this;
 }
 

@@ -20,7 +20,7 @@ using std::filesystem::remove_all;
 namespace out
 {
 
-TEST(Outhoi4MapStrategicregionsTests, FolderIsCreated)
+TEST(Outhoi4MapStrategicregionsTests, FolderIsCreated)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/FolderIsCreated/map");
    create_directories("output/FolderIsCreated/map");
@@ -33,7 +33,7 @@ TEST(Outhoi4MapStrategicregionsTests, FolderIsCreated)
 }
 
 
-TEST(Outhoi4MapStrategicregionsTests, StrategicRegionsAreOutput)
+TEST(Outhoi4MapStrategicregionsTests, StrategicRegionsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/StrategicRegionsAreOutput/map");
    create_directories("output/StrategicRegionsAreOutput/map");

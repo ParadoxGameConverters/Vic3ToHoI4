@@ -16,7 +16,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, IsValidReturnsTrueIfAnyStateTrueForChildren)
+TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, IsValidReturnsTrueIfAnyStateTrueForChildren)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> one_trigger = std::make_unique<IsCapitalTrigger>(true);
 
@@ -38,7 +38,7 @@ TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, IsValidReturnsTrueIfAnyStateTru
 }
 
 
-TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, IsValidReturnsFalseIfNoStateTrueForChildren)
+TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, IsValidReturnsFalseIfNoStateTrueForChildren)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> one_trigger = std::make_unique<IsCapitalTrigger>(true);
    std::unique_ptr<Trigger> two_trigger = std::make_unique<AlwaysTrigger>(true);
@@ -58,7 +58,7 @@ TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, IsValidReturnsFalseIfNoStateTru
 }
 
 
-TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, IsValidReturnsFalseIfNoStates)
+TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, IsValidReturnsFalseIfNoStates)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> one_trigger = std::make_unique<AlwaysTrigger>(true);
 
@@ -74,7 +74,7 @@ TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, IsValidReturnsFalseIfNoStates)
 }
 
 
-TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, FindAllValidReturnsStatesWithTrueCondition)
+TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, FindAllValidReturnsStatesWithTrueCondition)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> capital_trigger = std::make_unique<IsCapitalTrigger>(false);
 
@@ -104,7 +104,7 @@ TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, FindAllValidReturnsStatesWithTr
 }
 
 
-TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);
@@ -141,7 +141,7 @@ TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersAnyStateTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);

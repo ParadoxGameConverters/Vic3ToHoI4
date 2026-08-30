@@ -20,14 +20,14 @@ using std::filesystem::remove_all;
 namespace out
 {
 
-TEST(Outhoi4MapBuildingsTests, ExceptionForBadPath)
+TEST(Outhoi4MapBuildingsTests, ExceptionForBadPath)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/ExceptionForBadPath");
    EXPECT_THROW(OutputBuildings("ExceptionForBadPath", hoi4::Buildings()), std::runtime_error);
 }
 
 
-TEST(Outhoi4MapBuildingsTests, FilesAreCreated)
+TEST(Outhoi4MapBuildingsTests, FilesAreCreated)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/FilesAreCreated");
    create_directories("output/FilesAreCreated/map");
@@ -38,7 +38,7 @@ TEST(Outhoi4MapBuildingsTests, FilesAreCreated)
 }
 
 
-TEST(Outhoi4MapBuildingsTests, BuildingsAreOutput)
+TEST(Outhoi4MapBuildingsTests, BuildingsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/BuildingsAreOutput");
    create_directories("output/BuildingsAreOutput/map");

@@ -8,7 +8,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldMapHoi4provincedefinitionimporter, ExceptionThrownForNoDefinitions)
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, ExceptionThrownForNoDefinitions)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("", {});
 
@@ -18,7 +18,7 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, ExceptionThrownForNoDefinitions
 }
 
 
-TEST(Hoi4worldMapHoi4provincedefinitionimporter, DefinitionsCanBeImported)
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, DefinitionsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
 
@@ -29,7 +29,7 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, DefinitionsCanBeImported)
 }
 
 
-TEST(Hoi4worldMapHoi4provincedefinitionimporter, SeaProvincesAreDetected)
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, SeaProvincesAreDetected)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
 
@@ -39,7 +39,7 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, SeaProvincesAreDetected)
 }
 
 
-TEST(Hoi4worldMapHoi4provincedefinitionimporter, ContinentsAreDetected)
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, ContinentsAreDetected)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world", {});
 
@@ -54,7 +54,7 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, ContinentsAreDetected)
 }
 
 
-TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadRedThrowsException)
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadRedThrowsException)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world/BadRed", {});
 
@@ -67,7 +67,7 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadRedThrowsException)
 }
 
 
-TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadGreenThrowsException)
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadGreenThrowsException)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world/BadGreen", {});
 
@@ -80,7 +80,7 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadGreenThrowsException)
 }
 
 
-TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadBlueThrowsException)
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadBlueThrowsException)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world/BadBlue", {});
 
@@ -93,7 +93,7 @@ TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadBlueThrowsException)
 }
 
 
-TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadContinentThrowsException)
+TEST(Hoi4worldMapHoi4provincedefinitionimporter, BadContinentThrowsException)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/hoi4_world/BadContinent", {});
 

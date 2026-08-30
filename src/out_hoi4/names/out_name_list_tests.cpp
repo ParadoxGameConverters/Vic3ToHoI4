@@ -12,7 +12,7 @@ namespace out
 {
 
 
-TEST(Outhoi4NameLists, NamesAreOutput)
+TEST(Outhoi4NameLists, NamesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::NameList name_list({"male"}, {"female"}, {"surname"}, {"m_surname"}, {"f_surname"});
 
@@ -42,7 +42,7 @@ TEST(Outhoi4NameLists, NamesAreOutput)
 }
 
 
-TEST(Outhoi4NameLists, NamesWrap)
+TEST(Outhoi4NameLists, NamesWrap)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::NameList name_list({"m0", "m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8", "m9", "m10", "m11"},
        {},
@@ -71,7 +71,7 @@ TEST(Outhoi4NameLists, NamesWrap)
 }
 
 
-TEST(Outhoi4NameLists, EmptySpecificSurnamesAreOmitted)
+TEST(Outhoi4NameLists, EmptySpecificSurnamesAreOmitted)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::NameList name_list({}, {}, {}, {}, {});
 
