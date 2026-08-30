@@ -71,7 +71,7 @@ TEST_F(MapMapddataTest, NeighborsDefined)  // NOLINT(cert-err58-cpp)
    EXPECT_THAT(map_data_.GetNeighbors("5"), testing::UnorderedElementsAre("3"));      // defined from above
    EXPECT_THAT(map_data_.GetNeighbors("101"), testing::UnorderedElementsAre("102"));  // non-impassable adjacency
    EXPECT_THAT(map_data_.GetNeighbors("xD00000"),
-       testing::UnorderedElementsAre("x8CC57E"));                             // non-impassable adjacency
+       testing::UnorderedElementsAre("x8CC57E"));                              // non-impassable adjacency
    EXPECT_THAT(map_data_.GetNeighbors("6"), testing::UnorderedElementsAre());  // impossible adjacency removes neighbor
 }
 
