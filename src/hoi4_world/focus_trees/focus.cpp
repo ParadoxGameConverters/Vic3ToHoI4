@@ -11,7 +11,7 @@
 namespace
 {
 
-void ReplaceText(std::string_view to_replace, std::string_view replace_with, std::string to_update)
+void ReplaceText(std::string_view to_replace, std::string_view replace_with, std::string& to_update)
 {
    while (to_update.find(to_replace) != std::string::npos)
    {

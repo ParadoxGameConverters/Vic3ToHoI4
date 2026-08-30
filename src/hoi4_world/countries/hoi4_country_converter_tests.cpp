@@ -682,7 +682,7 @@ TEST(Hoi4worldCountriesCountryConverter, NonDemocraciesPickSentinelElectionYear)
        dummy_culture_queues);
 
    ASSERT_TRUE(country_one.has_value());
-   EXPECT_EQ(country_one.value_or(Country({})).GetLastElection(), date("1933.1.1"));
+   EXPECT_EQ(country_one.value_or(Country({})).GetLastElection(), date("1932.1.1"));
 }
 
 

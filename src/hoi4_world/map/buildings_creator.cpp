@@ -21,7 +21,7 @@ constexpr int kBuildingXCoordinateMatchPosition = 3;
 constexpr int kBuildingYCoordinateMatchPosition = 4;
 constexpr int kBuildingZCoordinateMatchPosition = 5;
 constexpr int kBuildingRotationMatchPosition = 6;
-constexpr int kBuildingConnectingSeaProvinceMatchPosition = 6;
+constexpr int kBuildingConnectingSeaProvinceMatchPosition = 7;
 
 constexpr double kDefaultBuildingHeight = 11.0;
 

@@ -9,7 +9,7 @@
 bool hoi4::TaskForceTemplate::AllVariantsActive(const std::set<std::string>& active_variants) const
 {
    return std::ranges::all_of(ships_, [&active_variants](const hoi4::Ship& ship) {
-      return active_variants.contains(ship.equipment) || active_variants.contains(ship.legacy_equipment) ||
+      return active_variants.contains(ship.equipment) && active_variants.contains(ship.legacy_equipment) &&
              active_variants.contains(ship.version);
    });
 }

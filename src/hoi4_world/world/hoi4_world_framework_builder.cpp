@@ -158,7 +158,7 @@ WorldFrameworkBuilder& WorldFrameworkBuilder::AddSeaProvinces(std::vector<std::s
 {
    for (const auto& id: province_ids)
    {
-      province_definitions_.AddLandProvince(id);
+      province_definitions_.AddSeaProvince(id);
    }
    return *this;
 }

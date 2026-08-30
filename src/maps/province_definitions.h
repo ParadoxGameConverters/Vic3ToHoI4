@@ -40,6 +40,7 @@ class ProvinceDefinitions
    }
 
    void AddLandProvince(std::string_view province) { land_provinces_.emplace(province); }
+   void AddSeaProvince(std::string_view province) { sea_provinces_.emplace(province); }
    void AddProvinceToContinent(std::string_view province, std::string_view continent)
    {
       continents_.emplace(province, continent);

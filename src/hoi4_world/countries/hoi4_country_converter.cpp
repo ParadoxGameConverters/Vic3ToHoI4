@@ -149,7 +149,7 @@ date ConvertElection(const std::optional<date>& vic_election)
 
    if (!vic_election)  // Country has no elections in Vic
    {
-      return date(pivot_date.getYear() + 1, start_date.getMonth(), start_date.getDay());
+      return date(pivot_date.getYear(), start_date.getMonth(), start_date.getDay());
    }
 
    date last_election = vic_election.value();
