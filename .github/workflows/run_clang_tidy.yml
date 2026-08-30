@@ -34,13 +34,6 @@ jobs:
        git -c submodule."external/commonItems".update=none `
            submodule update --init --recursive external\Fronter
 
-    - name: Prepare clang-tidy
-      shell: cmd
-      run: |
-        call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
-        cmake --preset x64-prepare-clang-tidy-windows
-        cmake --build --preset build-x64-prepare-clang-tidy-windows --target Vic3ToHoi4 Vic3ToHoi4Tests -- -j40
-
     - name: Run clang-tidy
       shell: cmd
       run: |
@@ -73,13 +66,6 @@ jobs:
     - name: Install ninja
       run: |
         choco install ninja
-
-    - name: Prepare clang-tidy
-      shell: cmd
-      run: |
-        call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
-        cmake --preset x64-prepare-clang-tidy-windows
-        cmake --build --preset build-x64-prepare-clang-tidy-windows --target Vic3ToHoi4 Vic3ToHoi4Tests -- -j40
 
     - name: Run clang-tidy
       shell: cmd
