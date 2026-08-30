@@ -16,6 +16,7 @@
 namespace hoi4
 {
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, IsValidReturnsTrueIfAnyScopeStateTrueForChildren)
 {
    std::unique_ptr<Trigger> one_trigger = std::make_unique<IsCapitalTrigger>(true);
@@ -42,6 +43,7 @@ TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, IsValidReturnsTrueIfAnySco
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, IsValidReturnsFalseIfNoOwnedStateTrueForChildren)
 {
    std::unique_ptr<Trigger> one_trigger = std::make_unique<IsCapitalTrigger>(true);
@@ -66,7 +68,7 @@ TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, IsValidReturnsFalseIfNoOwn
 }
 
 
-TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, IsValidReturnsFalseIfNoOwnedStates)
+TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, IsValidReturnsFalseIfNoOwnedStates)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> one_trigger = std::make_unique<AlwaysTrigger>(true);
 
@@ -88,6 +90,7 @@ TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, IsValidReturnsFalseIfNoOwn
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, FindAllValidReturnsStatesWithTrueCondition)
 {
    std::unique_ptr<Trigger> capital_trigger = std::make_unique<IsCapitalTrigger>(false);
@@ -122,7 +125,7 @@ TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, FindAllValidReturnsStatesW
 }
 
 
-TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);
@@ -159,7 +162,7 @@ TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, EquivalentTriggersAreEqual
 }
 
 
-TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersAnyScopeStateTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> true_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::unique_ptr<Trigger> false_trigger_one = std::make_unique<AlwaysTrigger>(false);

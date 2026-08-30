@@ -30,13 +30,20 @@ class ProvinceDefinitions
 {
   public:
    ProvinceDefinitions() = default;
-   ProvinceDefinitions(ProvinceDefinitionsOptions options):
+   explicit ProvinceDefinitions(ProvinceDefinitionsOptions options):
        land_provinces_(std::move(options.land_provinces)),
        sea_provinces_(std::move(options.sea_provinces)),
        terrain_types_(options.terrain_types),
        continents_(std::move(options.continents)),
        color_to_province_map_(std::move(options.color_to_province_map))
    {
+   }
+
+   void AddLandProvince(std::string_view province) { land_provinces_.emplace(province); }
+   void AddSeaProvince(std::string_view province) { sea_provinces_.emplace(province); }
+   void AddProvinceToContinent(std::string_view province, std::string_view continent)
+   {
+      continents_.emplace(province, continent);
    }
 
    [[nodiscard]] const std::set<std::string>& GetLandProvinces() const { return land_provinces_; }

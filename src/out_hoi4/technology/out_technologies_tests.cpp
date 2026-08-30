@@ -12,7 +12,7 @@
 namespace out
 {
 
-TEST(Outhoi4TechnologyOutTechnologiesTests, InitialCommentIsOutput)
+TEST(Outhoi4TechnologyOutTechnologiesTests, InitialCommentIsOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Technologies technologies(std::map<std::optional<std::string>, std::set<std::string>>{});
 
@@ -23,7 +23,7 @@ TEST(Outhoi4TechnologyOutTechnologiesTests, InitialCommentIsOutput)
 }
 
 
-TEST(Outhoi4TechnologyOutTechnologiesTests, NoLimitTechnologiesAreOutput)
+TEST(Outhoi4TechnologyOutTechnologiesTests, NoLimitTechnologiesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Technologies technologies({{std::nullopt, {"test_tech_one", "test_tech_two"}}});
 
@@ -42,7 +42,7 @@ TEST(Outhoi4TechnologyOutTechnologiesTests, NoLimitTechnologiesAreOutput)
 }
 
 
-TEST(Outhoi4TechnologyOutTechnologiesTests, LimitTechnologiesAreOutput)
+TEST(Outhoi4TechnologyOutTechnologiesTests, LimitTechnologiesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Technologies technologies({
        {"limit_one", {"test_tech_one", "test_tech_two"}},
@@ -75,7 +75,7 @@ TEST(Outhoi4TechnologyOutTechnologiesTests, LimitTechnologiesAreOutput)
 }
 
 
-TEST(Outhoi4TechnologyOutTechnologiesTests, EmptyLimitTechnologiesAreNotOutput)
+TEST(Outhoi4TechnologyOutTechnologiesTests, EmptyLimitTechnologiesAreNotOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Technologies technologies({
        {"limit_one", {"test_tech_one", "test_tech_two"}},
@@ -100,7 +100,7 @@ TEST(Outhoi4TechnologyOutTechnologiesTests, EmptyLimitTechnologiesAreNotOutput)
 }
 
 
-TEST(Outhoi4TechnologyOutTechnologiesTests, NoLimitTechnologiesAreNotRepeated)
+TEST(Outhoi4TechnologyOutTechnologiesTests, NoLimitTechnologiesAreNotRepeated)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Technologies technologies({
        {std::nullopt, {"test_tech_one", "test_tech_two"}},

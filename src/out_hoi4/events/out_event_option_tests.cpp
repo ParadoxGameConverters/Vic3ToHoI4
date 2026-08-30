@@ -10,7 +10,7 @@
 namespace out
 {
 
-TEST(Outhoi4EventOuteventoptionTests, EmptyOptionIsOutput)
+TEST(Outhoi4EventOuteventoptionTests, EmptyOptionIsOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::EventOption option;
 
@@ -24,7 +24,7 @@ TEST(Outhoi4EventOuteventoptionTests, EmptyOptionIsOutput)
 }
 
 
-TEST(Outhoi4EventOuteventoptionTests, ItemsAreOutput)
+TEST(Outhoi4EventOuteventoptionTests, ItemsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::EventOption option{
        .name = "option_name",

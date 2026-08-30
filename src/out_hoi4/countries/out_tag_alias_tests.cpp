@@ -21,7 +21,7 @@ using std::filesystem::remove_all;
 namespace out
 {
 
-TEST(Outhoi4CounriesOutTagAlias, TagAliasesCanBeOutput)
+TEST(Outhoi4CounriesOutTagAlias, TagAliasesCanBeOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::TagAlias tag_alias = hoi4::TagAlias{.alias = "TAG", .original_tag = "ORG", .flag = "test_flag"};
    std::stringstream output;

@@ -11,7 +11,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldStatesDefaultstatesimporterTests, NoStateFilesMeansNoStates)
+TEST(Hoi4worldStatesDefaultstatesimporterTests, NoStateFilesMeansNoStates)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem filesystem("test_files/hoi4_world/NoStateFilesMeansNoStates", {});
    const auto default_states = ImportDefaultStates(filesystem);
@@ -20,7 +20,7 @@ TEST(Hoi4worldStatesDefaultstatesimporterTests, NoStateFilesMeansNoStates)
 }
 
 
-TEST(Hoi4worldStatesDefaultstatesimporterTests, DefaultStatesCanBeImported)
+TEST(Hoi4worldStatesDefaultstatesimporterTests, DefaultStatesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem filesystem("test_files/hoi4_world/DefaultStatesCanBeImported", {});
    const auto default_states = ImportDefaultStates(filesystem);

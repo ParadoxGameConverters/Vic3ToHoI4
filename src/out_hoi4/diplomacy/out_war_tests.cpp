@@ -14,7 +14,7 @@
 namespace out
 {
 
-TEST(Outhoi4DiplomacyOutWarTests, BasicsAreOutput)
+TEST(Outhoi4DiplomacyOutWarTests, BasicsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::War war({.original_defender = "DEF"});
 
@@ -31,7 +31,7 @@ TEST(Outhoi4DiplomacyOutWarTests, BasicsAreOutput)
 }
 
 
-TEST(Outhoi4DiplomacyOutWarTests, ExtraAttackersCanBeAdded)
+TEST(Outhoi4DiplomacyOutWarTests, ExtraAttackersCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::War war({.original_defender = "DEF", .original_attacker = "ATK", .extra_attackers = {"AT2", "AT3"}});
 
@@ -60,7 +60,7 @@ TEST(Outhoi4DiplomacyOutWarTests, ExtraAttackersCanBeAdded)
 }
 
 
-TEST(Outhoi4DiplomacyOutWarTests, ExtraDefendersCanBeAdded)
+TEST(Outhoi4DiplomacyOutWarTests, ExtraDefendersCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::War war({.original_defender = "DEF", .extra_defenders = {"DF2", "DF3"}, .original_attacker = "ATK"});
 

@@ -8,7 +8,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConverted)
+TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
    const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
@@ -41,7 +41,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConverted)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConvertedWithNewStyleRoles)
+TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConvertedWithNewStyleRoles)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
    const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
@@ -74,7 +74,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralsCanBeConvertedWithNewSty
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConverted)
+TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
    const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
@@ -107,7 +107,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConverted)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConvertedWithNewStyleRoles)
+TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConvertedWithNewStyleRoles)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
    const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
@@ -140,7 +140,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, GeneralsCanBeConvertedWithNewSty
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, FieldMarshalsCanBeConverted)
+TEST(Hoi4worldCharactersHoi4characterconverter, FieldMarshalsCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
    const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
@@ -174,7 +174,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, FieldMarshalsCanBeConverted)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorsCanBeConverted)
+TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorsCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
    const auto source_character = vic3::Character({
@@ -197,7 +197,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorsCanBeConverted)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeadersCanBeConverted)
+TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeadersCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
    const auto source_character = vic3::Character({
@@ -220,6 +220,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeadersCanBeConverted)
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeadersCanBeConvertedWithNewStyleRoles)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
@@ -243,7 +244,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeadersCanBeConvertedWith
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, SpiesCanBeConverted)
+TEST(Hoi4worldCharactersHoi4characterconverter, SpiesCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
    const auto character_trait_mapper = mappers::ImportCharacterTraitMapper("configurables/character_traits.txt");
@@ -273,7 +274,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, SpiesCanBeConverted)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, GenericCharacterDataCanBeConverted)
+TEST(Hoi4worldCharactersHoi4characterconverter, GenericCharacterDataCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> dummy_queue;
    const auto source_character = vic3::Character({
@@ -297,7 +298,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, GenericCharacterDataCanBeConvert
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralPortraitIsEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralPortraitIsEnqueued)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character = vic3::Character({
@@ -321,7 +322,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdmiralPortraitIsEnqueued)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, GeneralPortraitIsEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, GeneralPortraitIsEnqueued)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character = vic3::Character({
@@ -345,7 +346,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, GeneralPortraitIsEnqueued)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorIdeologyPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorIdeologyPortraitsAreEnqueued)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character_c = vic3::Character({
@@ -424,7 +425,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorIdeologyPortraitsAreEnque
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeaderIdeologyPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeaderIdeologyPortraitsAreEnqueued)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character_c = vic3::Character({
@@ -503,7 +504,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CountryLeaderIdeologyPortraitsAr
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, SpyPortraitIsEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, SpyPortraitIsEnqueued)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character = vic3::Character({
@@ -526,7 +527,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, SpyPortraitIsEnqueued)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, FemaleSpyPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, FemaleSpyPortraitsAreEnqueued)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character = vic3::Character({
@@ -550,7 +551,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, FemaleSpyPortraitsAreEnqueued)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, LeaderMilitaryEnqueuesMilitaryPortraits)
+TEST(Hoi4worldCharactersHoi4characterconverter, LeaderMilitaryEnqueuesMilitaryPortraits)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character_g = vic3::Character({
@@ -593,7 +594,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, LeaderMilitaryEnqueuesMilitaryPo
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorMilitaryEnqueuesMilitaryPortraits)
+TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorMilitaryEnqueuesMilitaryPortraits)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character_g = vic3::Character({
@@ -636,7 +637,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AdvisorMilitaryEnqueuesMilitaryP
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, MonarchMilitaryEnqueuesMonarchPortraits)
+TEST(Hoi4worldCharactersHoi4characterconverter, MonarchMilitaryEnqueuesMonarchPortraits)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character = vic3::Character({
@@ -660,7 +661,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, MonarchMilitaryEnqueuesMonarchPo
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, CouncilPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, CouncilPortraitsAreEnqueued)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character_g = vic3::Character({
@@ -684,7 +685,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, CouncilPortraitsAreEnqueued)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, MonarchPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, MonarchPortraitsAreEnqueued)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character = vic3::Character({
@@ -707,7 +708,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, MonarchPortraitsAreEnqueued)
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, FemaleMonarchPortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, FemaleMonarchPortraitsAreEnqueued)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character = vic3::Character({
@@ -731,7 +732,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, FemaleMonarchPortraitsAreEnqueue
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, AllMiscFemalePortraitsAreEnqueued)
+TEST(Hoi4worldCharactersHoi4characterconverter, AllMiscFemalePortraitsAreEnqueued)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, mappers::CultureQueue> culture_queues;
    const auto source_character = vic3::Character({
@@ -756,7 +757,7 @@ TEST(Hoi4worldCharactersHoi4characterconverter, AllMiscFemalePortraitsAreEnqueue
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, PoorlyDefinedCharactersAreLogged)
+TEST(Hoi4worldCharactersHoi4characterconverter, PoorlyDefinedCharactersAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -788,25 +789,25 @@ TEST(Hoi4worldCharactersHoi4characterconverter, PoorlyDefinedCharactersAreLogged
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, RoyalsAreMonarchs)
+TEST(Hoi4worldCharactersHoi4characterconverter, RoyalsAreMonarchs)  // NOLINT(cert-err58-cpp)
 {
    EXPECT_TRUE(HasMonarchs("head_of_state", {"law_monarchy"}));
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, PrimeMinistersArentMonarchs)
+TEST(Hoi4worldCharactersHoi4characterconverter, PrimeMinistersArentMonarchs)  // NOLINT(cert-err58-cpp)
 {
    EXPECT_FALSE(HasMonarchs("prime_minister", {"law_monarchy"}));
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, PresidentsArentMonarchs)
+TEST(Hoi4worldCharactersHoi4characterconverter, PresidentsArentMonarchs)  // NOLINT(cert-err58-cpp)
 {
    EXPECT_FALSE(HasMonarchs("head_of_state", {}));
 }
 
 
-TEST(Hoi4worldCharactersHoi4characterconverter, CouncilsArentMonarchs)
+TEST(Hoi4worldCharactersHoi4characterconverter, CouncilsArentMonarchs)  // NOLINT(cert-err58-cpp)
 {
    EXPECT_FALSE(HasMonarchs("council", {"law_monarchy"}));
 }

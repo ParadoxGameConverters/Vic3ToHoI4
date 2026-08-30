@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldIdeologiesIdeologyimporterTests, DefaultsAreSet)
+TEST(Vic3worldIdeologiesIdeologyimporterTests, DefaultsAreSet)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -20,7 +20,7 @@ TEST(Vic3worldIdeologiesIdeologyimporterTests, DefaultsAreSet)
 }
 
 
-TEST(Vic3worldIdeologiesIdeologyimporterTests, ApprovalsAreImported)
+TEST(Vic3worldIdeologiesIdeologyimporterTests, ApprovalsAreImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "= {\n";

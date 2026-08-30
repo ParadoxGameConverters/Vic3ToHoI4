@@ -60,10 +60,10 @@ WorldBuilder& WorldBuilder::AddStateRegions(const std::map<std::string, StateReg
 
 WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>>& province_sets)
 {
-   for (auto& province_set: province_sets)
+   for (const auto& province_set: province_sets)
    {
       std::set<std::string> province_names = {};
-      for (auto& province_num: province_set)
+      for (const auto& province_num: province_set)
       {
          province_names.emplace(fmt::format("x0000{:0>2}", province_num));
       }
@@ -76,7 +76,7 @@ WorldBuilder& WorldBuilder::AddTestStateRegions(const std::vector<std::set<int>>
 
 WorldBuilder& WorldBuilder::AddBuildings(const std::vector<vic3::Building>& buildings)
 {
-   for (auto& building: buildings)
+   for (const auto& building: buildings)
    {
       const std::optional<int> state_number = building.GetStateNumber();
       if (!state_number.has_value())

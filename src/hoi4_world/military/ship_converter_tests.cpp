@@ -11,7 +11,7 @@
 namespace hoi4
 {
 
-TEST(ShipConverterTests, CanConvertShips)
+TEST(ShipConverterTests, CanConvertShips)  // NOLINT(cert-err58-cpp)
 {
    const ShipConverter ship_converter({
        {
@@ -67,7 +67,7 @@ TEST(ShipConverterTests, CanConvertShips)
 }
 
 
-TEST(ShipConverterTests, ShipsWithMissingDefinitionsAreSkipped)
+TEST(ShipConverterTests, ShipsWithMissingDefinitionsAreSkipped)  // NOLINT(cert-err58-cpp)
 {
    const ShipConverter ship_converter({});
 

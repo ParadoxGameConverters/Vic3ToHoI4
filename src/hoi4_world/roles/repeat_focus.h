@@ -30,6 +30,7 @@ struct RepeatFocus
    {
    }
    RepeatFocus& operator=(RepeatFocus&& other);
+   ~RepeatFocus() = default;
 
    [[nodiscard]] const Trigger& GetTrigger() const { return *trigger_; }
    [[nodiscard]] const std::vector<Focus>& GetFocuses() const { return focuses_; }

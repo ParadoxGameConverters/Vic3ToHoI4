@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build_test_and_publish:
+  run_clang_tidy:
     name: Build, test and publish local
     if: github.repository_owner == 'ParadoxGameConverters'
     runs-on: [self-hosted, windows]
@@ -34,7 +34,7 @@ jobs:
        git -c submodule."external/commonItems".update=none `
            submodule update --init --recursive external\Fronter
 
-    - name: Build with cmake
+    - name: Run clang-tidy
       shell: cmd
       run: |
         call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
@@ -67,7 +67,7 @@ jobs:
       run: |
         choco install ninja
 
-    - name: Build with cmake
+    - name: Run clang-tidy
       shell: cmd
       run: |
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"

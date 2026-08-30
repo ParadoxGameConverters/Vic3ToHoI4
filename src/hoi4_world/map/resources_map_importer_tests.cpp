@@ -11,7 +11,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldMapResourcesmapImporter, MissingFileThrowsException)
+TEST(Hoi4worldMapResourcesmapImporter, MissingFileThrowsException)  // NOLINT(cert-err58-cpp)
 {
    const ResourcesMap resources_map = ImportResources("missing_file.txt");
 
@@ -19,7 +19,7 @@ TEST(Hoi4worldMapResourcesmapImporter, MissingFileThrowsException)
 }
 
 
-TEST(Hoi4worldMapResourcesmapImporter, ResourceMapCanBeImported)
+TEST(Hoi4worldMapResourcesmapImporter, ResourceMapCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const ResourcesMap resources_map =
        ImportResources("test_files/hoi4_world/map/resources_map_importer/resource_map_can_be_imported.txt");

@@ -34,8 +34,8 @@ class Battalion
    [[nodiscard]] const std::optional<int>& GetLocation() const { return location_; }
    [[nodiscard]] float GetStrength() const { return strength_.Get(); }
 
-   void AddStrength(float s) { strength_.Get() += s; }
-   void SetLocation(int l) { location_ = l; }
+   void AddStrength(float strength) { strength_.Get() += strength; }
+   void SetLocation(int location) { location_ = location; }
 
    std::partial_ordering operator<=>(const Battalion& other) const;
    bool operator==(const Battalion& other) const;

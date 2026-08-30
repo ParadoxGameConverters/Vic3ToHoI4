@@ -12,10 +12,10 @@
 namespace
 {
 
-class MapsMapdata: public ::testing::Test
+class MapMapddataTest: public ::testing::Test
 {
   protected:
-   static void SetUpTestSuite()
+   void SetUp() override
    {
       const commonItems::ModFilesystem mod_filesystem("test_files/maps", {});
       const maps::ProvinceDefinitions province_definitions({.color_to_province_map = {
@@ -29,14 +29,11 @@ class MapsMapdata: public ::testing::Test
                                                             }});
       maps::MapDataImporter importer(province_definitions);
 
-      map_data = importer.ImportMapData(mod_filesystem);
+      map_data_ = importer.ImportMapData(mod_filesystem);
    }
 
-   static maps::MapData map_data;
+   maps::MapData map_data_;
 };
-
-
-maps::MapData MapsMapdata::map_data;
 
 }  // namespace
 
@@ -44,7 +41,7 @@ maps::MapData MapsMapdata::map_data;
 namespace maps
 {
 
-TEST_F(MapsMapdata, ExceptionThrownForMissingProvincesBmp)
+TEST_F(MapMapddataTest, ExceptionThrownForMissingProvincesBmp)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("", {});
    const ProvinceDefinitions province_definitions;
@@ -54,7 +51,7 @@ TEST_F(MapsMapdata, ExceptionThrownForMissingProvincesBmp)
 }
 
 
-TEST_F(MapsMapdata, ExceptionThrownForMissingAdjacenciesCsv)
+TEST_F(MapMapddataTest, ExceptionThrownForMissingAdjacenciesCsv)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/maps/nocsv", {});
    const ProvinceDefinitions province_definitions;
@@ -64,34 +61,34 @@ TEST_F(MapsMapdata, ExceptionThrownForMissingAdjacenciesCsv)
 }
 
 
-TEST_F(MapsMapdata, NeighborsDefined)
+TEST_F(MapMapddataTest, NeighborsDefined)  // NOLINT(cert-err58-cpp)
 {
-   EXPECT_THAT(map_data.GetNeighbors("42"), testing::UnorderedElementsAre());        // non-existent province
-   EXPECT_THAT(map_data.GetNeighbors("x000042"), testing::UnorderedElementsAre());   // non-existent province
-   EXPECT_THAT(map_data.GetNeighbors("1"), testing::UnorderedElementsAre("3"));      // defined from above
-   EXPECT_THAT(map_data.GetNeighbors("2"), testing::UnorderedElementsAre("3"));      // defined from right
-   EXPECT_THAT(map_data.GetNeighbors("4"), testing::UnorderedElementsAre("3"));      // defined from left
-   EXPECT_THAT(map_data.GetNeighbors("5"), testing::UnorderedElementsAre("3"));      // defined from above
-   EXPECT_THAT(map_data.GetNeighbors("101"), testing::UnorderedElementsAre("102"));  // non-impassable adjacency
-   EXPECT_THAT(map_data.GetNeighbors("xD00000"),
-       testing::UnorderedElementsAre("x8CC57E"));                             // non-impassable adjacency
-   EXPECT_THAT(map_data.GetNeighbors("6"), testing::UnorderedElementsAre());  // impossible adjacency removes neighbor
+   EXPECT_THAT(map_data_.GetNeighbors("42"), testing::UnorderedElementsAre());        // non-existent province
+   EXPECT_THAT(map_data_.GetNeighbors("x000042"), testing::UnorderedElementsAre());   // non-existent province
+   EXPECT_THAT(map_data_.GetNeighbors("1"), testing::UnorderedElementsAre("3"));      // defined from above
+   EXPECT_THAT(map_data_.GetNeighbors("2"), testing::UnorderedElementsAre("3"));      // defined from right
+   EXPECT_THAT(map_data_.GetNeighbors("4"), testing::UnorderedElementsAre("3"));      // defined from left
+   EXPECT_THAT(map_data_.GetNeighbors("5"), testing::UnorderedElementsAre("3"));      // defined from above
+   EXPECT_THAT(map_data_.GetNeighbors("101"), testing::UnorderedElementsAre("102"));  // non-impassable adjacency
+   EXPECT_THAT(map_data_.GetNeighbors("xD00000"),
+       testing::UnorderedElementsAre("x8CC57E"));                              // non-impassable adjacency
+   EXPECT_THAT(map_data_.GetNeighbors("6"), testing::UnorderedElementsAre());  // impossible adjacency removes neighbor
 }
 
 
-TEST_F(MapsMapdata, SpecifiedBordersCanBeLookedUp)
+TEST_F(MapMapddataTest, SpecifiedBordersCanBeLookedUp)  // NOLINT(cert-err58-cpp)
 {
-   EXPECT_EQ(map_data.GetSpecifiedBorderCenter("42", "x000001"), std::nullopt);  // non-existent province
-   EXPECT_EQ(map_data.GetSpecifiedBorderCenter("1", "x000005"), std::nullopt);   // non-bordering provinces
+   EXPECT_EQ(map_data_.GetSpecifiedBorderCenter("42", "x000001"), std::nullopt);  // non-existent province
+   EXPECT_EQ(map_data_.GetSpecifiedBorderCenter("1", "x000005"), std::nullopt);   // non-bordering provinces
 
    // Bordering provinces
-   const auto border_point = map_data.GetSpecifiedBorderCenter("1", "3");
+   const auto border_point = map_data_.GetSpecifiedBorderCenter("1", "3");
    ASSERT_TRUE(border_point);
    constexpr Point kExpectedPoint{.x = 13, .y = 591};  // y-axis is from the bottom
    EXPECT_EQ(*border_point, kExpectedPoint);
 
    // Impassable border for bordering provinces
-   const auto impassable_border_point = map_data.GetSpecifiedBorderCenter("6", "7");
+   const auto impassable_border_point = map_data_.GetSpecifiedBorderCenter("6", "7");
    ASSERT_TRUE(impassable_border_point);
 
    constexpr Point kExpectedImpassablePoint{.x = 44, .y = 586};  // y-axis is from the bottom
@@ -99,13 +96,13 @@ TEST_F(MapsMapdata, SpecifiedBordersCanBeLookedUp)
 }
 
 
-TEST_F(MapsMapdata, AnyBordersCanBeLookedUp)
+TEST_F(MapMapddataTest, AnyBordersCanBeLookedUp)  // NOLINT(cert-err58-cpp)
 {
-   EXPECT_EQ(map_data.GetAnyBorderCenter("42"), std::nullopt);  // nonexistent province
-   EXPECT_EQ(map_data.GetAnyBorderCenter("8"), std::nullopt);   // province with no borders
+   EXPECT_EQ(map_data_.GetAnyBorderCenter("42"), std::nullopt);  // nonexistent province
+   EXPECT_EQ(map_data_.GetAnyBorderCenter("8"), std::nullopt);   // province with no borders
 
    // bordering provinces
-   const auto border_point = map_data.GetAnyBorderCenter("3");
+   const auto border_point = map_data_.GetAnyBorderCenter("3");
    ASSERT_TRUE(border_point);
 
    constexpr Point kExpectedPoint{.x = 13, .y = 590};  // y-axis is from the bottom
@@ -113,39 +110,39 @@ TEST_F(MapsMapdata, AnyBordersCanBeLookedUp)
 }
 
 
-TEST_F(MapsMapdata, CentralPointCanBeLookedUp)
+TEST_F(MapMapddataTest, CentralPointCanBeLookedUp)  // NOLINT(cert-err58-cpp)
 {
-   const auto central_point = map_data.GetCentermostPoint("3");
+   const auto central_point = map_data_.GetCentermostPoint("3");
 
    EXPECT_EQ(central_point, std::make_optional(Point{13, 586}));
 }
 
 
-TEST_F(MapsMapdata, NulloptForNoCentralPoint)
+TEST_F(MapMapddataTest, NulloptForNoCentralPoint)  // NOLINT(cert-err58-cpp)
 {
-   const auto central_point = map_data.GetCentermostPoint("42");
+   const auto central_point = map_data_.GetCentermostPoint("42");
 
    EXPECT_EQ(central_point, std::nullopt);
 }
 
 
-TEST_F(MapsMapdata, ProvinceNamesCanBeLookedUp)
+TEST_F(MapMapddataTest, ProvinceNamesCanBeLookedUp)  // NOLINT(cert-err58-cpp)
 {
-   EXPECT_EQ(map_data.GetProvinceName({0, 0}), std::nullopt);  // undefined points
+   EXPECT_EQ(map_data_.GetProvinceName({0, 0}), std::nullopt);  // undefined points
 
    // defined points
-   const auto province_name = map_data.GetProvinceName({.x = 13, .y = 595});
+   const auto province_name = map_data_.GetProvinceName({.x = 13, .y = 595});
    ASSERT_TRUE(province_name);
    EXPECT_EQ(*province_name, "1");
 }
 
 
-TEST_F(MapsMapdata, ProvincePointsCanBeLookedUp)
+TEST_F(MapMapddataTest, ProvincePointsCanBeLookedUp)  // NOLINT(cert-err58-cpp)
 {
-   EXPECT_EQ(map_data.GetProvincePoints("42"), std::nullopt);  // undefined province
+   EXPECT_EQ(map_data_.GetProvincePoints("42"), std::nullopt);  // undefined province
 
    // defined province
-   const auto province_points = map_data.GetProvincePoints("1");
+   const auto province_points = map_data_.GetProvincePoints("1");
    ASSERT_TRUE(province_points);
 
    constexpr Point kExpectedPoint{.x = 13, .y = 595};

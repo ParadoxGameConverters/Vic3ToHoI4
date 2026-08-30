@@ -11,7 +11,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldMilitaryShipmappingsimporterTests, RulesCanBeImported)
+TEST(Hoi4worldMilitaryShipmappingsimporterTests, RulesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, Ship> mappings = ImportShipMappings("test_files/configurables/ship_mappings.txt");
 

@@ -2,11 +2,13 @@ cmake_minimum_required(VERSION 3.25)
 set(VERBOSE true)
 
 project(Vic3ToHoi4)
-if (RUN_CLANG_TIDY)
+if (PREPARE_CLANG_TIDY)
+	set(BUILD_TYPE "Clang-tidy")
+elseif (RUN_CLANG_TIDY)
 	set(BUILD_TYPE "Clang-tidy")
 else (RUN_CLANG_TIDY)
 	set(BUILD_TYPE ${CMAKE_BUILD_TYPE})
-endif (RUN_CLANG_TIDY)
+endif (PREPARE_CLANG_TIDY)
 
 set(FRONTER_SOURCE_DIR ${PROJECT_SOURCE_DIR}/external/Fronter/Fronter/Source)
 set(FRONTER_COMMONS_SOURCE_DIR ${PROJECT_SOURCE_DIR}/external/Fronter/commonItems)
@@ -393,8 +395,12 @@ link_directories("./external/rakaly")
 
 add_subdirectory(external/commonItems EXCLUDE_FROM_ALL)
 
+if (PREPARE_CLANG_TIDY)
+    set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+endif(PREPARE_CLANG_TIDY)
 if (RUN_CLANG_TIDY)
 	set(CMAKE_CXX_CLANG_TIDY clang-tidy --header-filter=.*src.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc)
+	#set(CMAKE_CXX_CLANG_TIDY clang-tidy --header-filter=.*src.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc --fix-errors)
 endif(RUN_CLANG_TIDY)
 add_library(Vic3ToHoi4lib
 	${CONVERTER_SOURCES}

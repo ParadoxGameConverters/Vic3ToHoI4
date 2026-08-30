@@ -25,7 +25,10 @@ class IsCapitalTrigger: public Trigger
    [[nodiscard]] bool operator==(const Trigger& rhs) const override { return PolymorphicEquality(*this, rhs); }
    [[nodiscard]] bool operator==([[maybe_unused]] const IsCapitalTrigger& rhs) const { return value_ == rhs.value_; }
    [[nodiscard]] bool operator<(const Trigger& rhs) const override { return PolymorphicLess(*this, rhs); }
-   [[nodiscard]] bool operator<([[maybe_unused]] const IsCapitalTrigger& rhs) const { return value_ < rhs.value_; }
+   [[nodiscard]] bool operator<([[maybe_unused]] const IsCapitalTrigger& rhs) const
+   {
+      return static_cast<int>(value_) < static_cast<int>(rhs.value_);
+   }
 
    [[nodiscard]] std::unique_ptr<Trigger> Copy() const override { return std::make_unique<IsCapitalTrigger>(value_); }
    [[nodiscard]] bool IsValid(const Context& context, const World& world) const override;

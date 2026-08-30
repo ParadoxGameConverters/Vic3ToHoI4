@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
+TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)  // NOLINT(cert-err58-cpp)
 {
    const auto country_mapper = mappers::CountryMapper({{3, "TWO"}});
 
@@ -288,7 +288,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CharactersAreConverted)
 }
 
 
-TEST(Hoi4worldCharactersHoi4charactersconverter, PortraitsAreAssigned)
+TEST(Hoi4worldCharactersHoi4charactersconverter, PortraitsAreAssigned)  // NOLINT(cert-err58-cpp)
 {
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
@@ -402,7 +402,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PortraitsAreAssigned)
 }
 
 
-TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
+TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)  // NOLINT(cert-err58-cpp)
 {
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
@@ -434,6 +434,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, CouncilsAreCreated)
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCollideWithExisting)
 {
    // Have a source character with base genID:1000.
@@ -475,6 +476,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NewlyGeneratedCharactersDontCol
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInCoalitionParties)
 {
    std::map<int, Character> characters;
@@ -564,7 +566,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInCoaliti
 }
 
 
-TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderParty)
+TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderParty)  // NOLINT(cert-err58-cpp)
 {
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;
@@ -653,7 +655,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PrimeMinistersAreFoundInLeaderP
 }
 
 
-TEST(Hoi4worldCharactersHoi4charactersconverter, MonarchIdFromHeadOfStateId)
+TEST(Hoi4worldCharactersHoi4charactersconverter, MonarchIdFromHeadOfStateId)  // NOLINT(cert-err58-cpp)
 {
    std::map<int, Character> characters_map;
    std::map<std::string, mappers::CultureQueue> culture_queues;
@@ -676,7 +678,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, MonarchIdFromHeadOfStateId)
 }
 
 
-TEST(Hoi4worldCharactersHoi4charactersconverter, NoMonarchIdIfShouldHaveMonarchIdeaFalse)
+TEST(Hoi4worldCharactersHoi4charactersconverter, NoMonarchIdIfShouldHaveMonarchIdeaFalse)  // NOLINT(cert-err58-cpp)
 {
    std::map<int, Character> characters_map;
    std::map<std::string, mappers::CultureQueue> culture_queues;
@@ -698,7 +700,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, NoMonarchIdIfShouldHaveMonarchI
 }
 
 
-TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrough)
+TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrough)  // NOLINT(cert-err58-cpp)
 {
    const auto culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
    std::map<int, Character> characters_one{
@@ -732,7 +734,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsPreservedOnSamePlaythrou
 }
 
 
-TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlaythrough)
+TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlaythrough)  // NOLINT(cert-err58-cpp)
 {
    const auto culture_graphics_mapper = mappers::ImportCultureGraphicsMapper("configurables/culture_graphics.txt");
    std::map<int, Character> characters_one{
@@ -766,7 +768,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, OrderIsChangedOnDifferentPlayth
 }
 
 
-TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCultures)
+TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCultures)  // NOLINT(cert-err58-cpp)
 {
    // Have ~5 cultures using the same ~5 portraits in the same input order for 1 character each.
    // Portrait usage will be [2 2 1] instead of [5 0 0]
@@ -810,6 +812,7 @@ TEST(Hoi4worldCharactersHoi4charactersconverter, PreferUnusedPortraitsBetweenCul
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldCharactersHoi4charactersconverter, GetMonarchIdeaNameConcatenatesTagAndCharacterName)
 {
    const std::string idea_name =

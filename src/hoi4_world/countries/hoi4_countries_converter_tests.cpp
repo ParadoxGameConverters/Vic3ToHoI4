@@ -18,7 +18,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)
+TEST(Hoi4worldCountriesCountriesConverter, CountriesAreConverted)  // NOLINT(cert-err58-cpp)
 {
    std::map<int, Character> characters;
    std::map<std::string, mappers::CultureQueue> culture_queues;

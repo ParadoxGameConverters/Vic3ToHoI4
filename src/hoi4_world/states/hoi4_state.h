@@ -16,6 +16,7 @@ namespace hoi4
 {
 
 using StateId = int;
+constexpr int kMaxAirbaseLevel = 10;
 
 
 struct StateOptions
@@ -92,7 +93,7 @@ class State
    [[nodiscard]] int GetInfrastructure() const { return infrastructure_; }
 
    void SetIsCapital(bool value) { is_capital_ = value; }
-   void IncreaseAirBaseLevel(int amount) { air_base_level_ = std::min(air_base_level_ + amount, 10); }
+   void IncreaseAirBaseLevel(int amount) { air_base_level_ = std::min(air_base_level_ + amount, kMaxAirbaseLevel); }
 
    void SetHighestVictoryPointValue(int value);
 

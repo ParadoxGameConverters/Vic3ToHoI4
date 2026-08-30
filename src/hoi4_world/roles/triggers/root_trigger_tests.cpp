@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesTriggersRootTriggerTests, IsValidReturnsIfCountryMatches)
+TEST(Hoi4worldRolesTriggersRootTriggerTests, IsValidReturnsIfCountryMatches)  // NOLINT(cert-err58-cpp)
 {
    const Country country({.tag = "TAG"});
    const Scope country_scope = CountryScope{.country = country};
@@ -37,7 +37,7 @@ TEST(Hoi4worldRolesTriggersRootTriggerTests, IsValidReturnsIfCountryMatches)
 }
 
 
-TEST(Hoi4worldRolesTriggersRootTriggerTests, IsValidReturnsFalseIfRootIsState)
+TEST(Hoi4worldRolesTriggersRootTriggerTests, IsValidReturnsFalseIfRootIsState)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::World world(WorldOptions{});
    const State state(42, {.owner = "TAG"});
@@ -52,7 +52,7 @@ TEST(Hoi4worldRolesTriggersRootTriggerTests, IsValidReturnsFalseIfRootIsState)
 }
 
 
-TEST(Hoi4worldRolesTriggersRootTriggerTests, IsValidReturnsFalseIfRootIsCulture)
+TEST(Hoi4worldRolesTriggersRootTriggerTests, IsValidReturnsFalseIfRootIsCulture)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::World world(WorldOptions{});
    const vic3::CultureDefinition culture({});
@@ -70,7 +70,7 @@ TEST(Hoi4worldRolesTriggersRootTriggerTests, IsValidReturnsFalseIfRootIsCulture)
 }
 
 
-TEST(Hoi4worldRolesTriggersRootTriggerTests, FindAllValidReturnsEmptyVector)
+TEST(Hoi4worldRolesTriggersRootTriggerTests, FindAllValidReturnsEmptyVector)  // NOLINT(cert-err58-cpp)
 {
    const State state(42, {});
    const Scope scope = StateScope{.state = state};
@@ -82,7 +82,7 @@ TEST(Hoi4worldRolesTriggersRootTriggerTests, FindAllValidReturnsEmptyVector)
 }
 
 
-TEST(Hoi4worldRolesTriggersRootTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersRootTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const RootTrigger one_trigger("ONE");
    const RootTrigger one_trigger_two("ONE");
@@ -96,7 +96,7 @@ TEST(Hoi4worldRolesTriggersRootTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesTriggersRootTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersRootTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    const RootTrigger owner_trigger("OWN");
    const std::unique_ptr<Trigger> owner_copy = owner_trigger.Copy();

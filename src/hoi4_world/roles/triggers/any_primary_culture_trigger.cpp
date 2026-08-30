@@ -13,7 +13,7 @@ namespace hoi4
 bool AnyPrimaryCultureTrigger::IsValid(const Context& context, const World& world) const
 {
    const CountryScope* maybe_country = std::get_if<CountryScope>(&context.this_scope);
-   if (!maybe_country)
+   if (maybe_country == nullptr)
    {
       return false;
    }
@@ -54,7 +54,7 @@ std::vector<Scope> AnyPrimaryCultureTrigger::FindAllValid(const Context& context
    std::vector<Scope> valid_scopes;
 
    const CountryScope* maybe_country = std::get_if<CountryScope>(&context.this_scope);
-   if (!maybe_country)
+   if (maybe_country == nullptr)
    {
       return {};
    }

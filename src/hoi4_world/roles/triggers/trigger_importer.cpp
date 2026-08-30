@@ -101,8 +101,8 @@ TriggerImporter::TriggerImporter()
 
    // any scopes
    trigger_parser_.registerKeyword("always", [this](std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      std::string value_string = trigger_parser_.getNextTokenWithoutMatching(input).value_or("no");
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
+      std::string value_string = commonItems::parser::getNextTokenWithoutMatching(input).value_or("no");
 #pragma warning(push)
 #pragma warning(disable : 4242)
       std::ranges::transform(value_string, value_string.begin(), ::tolower);
@@ -111,8 +111,8 @@ TriggerImporter::TriggerImporter()
       triggers_.push_back(std::make_unique<AlwaysTrigger>(value));
    });
    trigger_parser_.registerKeyword("ROOT", [this](std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      std::string value = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
+      std::string value = commonItems::parser::getNextTokenWithoutMatching(input).value_or("");
       triggers_.push_back(std::make_unique<RootTrigger>(value));
    });
 
@@ -123,21 +123,22 @@ TriggerImporter::TriggerImporter()
       triggers_.push_back(std::make_unique<AnyPrimaryCultureTrigger>(std::move(triggers)));
    });
    trigger_parser_.registerKeyword("country_has_primary_culture", [this](std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
       triggers_.push_back(std::make_unique<CountryHasPrimaryCultureTrigger>(
-          trigger_parser_.getNextTokenWithoutMatching(input).value_or("")));
+          commonItems::parser::getNextTokenWithoutMatching(input).value_or("")));
    });
    trigger_parser_.registerKeyword("has_role", [this](std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      if (const std::optional<std::string> role_string = trigger_parser_.getNextTokenWithoutMatching(input);
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
+      if (const std::optional<std::string> role_string = commonItems::parser::getNextTokenWithoutMatching(input);
           role_string)
       {
          triggers_.push_back(std::make_unique<HasRoleTrigger>(role_string.value()));
       }
    });
    trigger_parser_.registerKeyword("tag", [this](std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      if (const std::optional<std::string> tag_string = trigger_parser_.getNextTokenWithoutMatching(input); tag_string)
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
+      if (const std::optional<std::string> tag_string = commonItems::parser::getNextTokenWithoutMatching(input);
+          tag_string)
       {
          triggers_.push_back(std::make_unique<TagTrigger>(tag_string.value()));
       }
@@ -146,8 +147,8 @@ TriggerImporter::TriggerImporter()
 
    // culture scopes
    trigger_parser_.registerKeyword("shares_heritage_trait_with_culture", [this](std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      if (const std::optional<std::string> culture_string = trigger_parser_.getNextTokenWithoutMatching(input);
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
+      if (const std::optional<std::string> culture_string = commonItems::parser::getNextTokenWithoutMatching(input);
           culture_string)
       {
          triggers_.push_back(std::make_unique<SharesHeritageTraitWithCultureTrigger>(culture_string.value()));
@@ -157,8 +158,8 @@ TriggerImporter::TriggerImporter()
 
    // state scopes
    trigger_parser_.registerKeyword("is_capital", [this]([[maybe_unused]] std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      std::string value_string = trigger_parser_.getNextTokenWithoutMatching(input).value_or("no");
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
+      std::string value_string = commonItems::parser::getNextTokenWithoutMatching(input).value_or("no");
 #pragma warning(push)
 #pragma warning(disable : 4242)
       std::ranges::transform(value_string, value_string.begin(), ::tolower);
@@ -167,8 +168,8 @@ TriggerImporter::TriggerImporter()
       triggers_.push_back(std::make_unique<IsCapitalTrigger>(value));
    });
    trigger_parser_.registerKeyword("is_homeland", [this]([[maybe_unused]] std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      std::string culture = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
+      std::string culture = commonItems::parser::getNextTokenWithoutMatching(input).value_or("");
       if (culture.starts_with("cu:"))
       {
          culture = culture.substr(3, culture.size());
@@ -176,18 +177,18 @@ TriggerImporter::TriggerImporter()
       triggers_.push_back(std::make_unique<IsHomelandTrigger>(culture));
    });
    trigger_parser_.registerKeyword("is_homeland_of_country_cultures", [this]([[maybe_unused]] std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      const std::string tag = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
+      const std::string tag = commonItems::parser::getNextTokenWithoutMatching(input).value_or("");
       triggers_.push_back(std::make_unique<IsHomelandOfCountryCulture>(tag));
    });
    trigger_parser_.registerKeyword("is_on_continent", [this]([[maybe_unused]] std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      const std::string value = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
+      const std::string value = commonItems::parser::getNextTokenWithoutMatching(input).value_or("");
       triggers_.push_back(std::make_unique<IsOnContinentTrigger>(value));
    });
    trigger_parser_.registerKeyword("owner", [this]([[maybe_unused]] std::istream& input) {
-      const std::optional<std::string> equals = trigger_parser_.getNextTokenWithoutMatching(input);
-      const std::string value = trigger_parser_.getNextTokenWithoutMatching(input).value_or("");
+      const std::optional<std::string> equals = commonItems::parser::getNextTokenWithoutMatching(input);
+      const std::string value = commonItems::parser::getNextTokenWithoutMatching(input).value_or("");
       triggers_.push_back(std::make_unique<OwnerTrigger>(value));
    });
    trigger_parser_.IgnoreAndLogUnregisteredItems();

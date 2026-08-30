@@ -11,7 +11,7 @@
 namespace mappers
 {
 
-TEST(MappersUnitUnitMapperImporterTests, RulesCanBeImported)
+TEST(MappersUnitUnitMapperImporterTests, RulesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const UnitMapper unit_mapper = ImportUnitMapper("test_files/mappers/unit/unit_mappings.txt");
    const auto battalions =

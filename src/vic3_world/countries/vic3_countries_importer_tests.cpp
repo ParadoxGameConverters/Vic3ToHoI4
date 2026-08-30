@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldCountriesVic3CountriesImporter, NoCountriesByDefault)
+TEST(Vic3WorldCountriesVic3CountriesImporter, NoCountriesByDefault)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const auto countries = ImportCountries({}, input);
@@ -19,7 +19,7 @@ TEST(Vic3WorldCountriesVic3CountriesImporter, NoCountriesByDefault)
 }
 
 
-TEST(Vic3WorldCountriesVic3CountriesImporter, CountriesCanBeImported)
+TEST(Vic3WorldCountriesVic3CountriesImporter, CountriesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -51,7 +51,7 @@ TEST(Vic3WorldCountriesVic3CountriesImporter, CountriesCanBeImported)
 }
 
 
-TEST(Vic3WorldCountriesVic3CountriesImporter, CountryIndexesCanBeSkipped)
+TEST(Vic3WorldCountriesVic3CountriesImporter, CountryIndexesCanBeSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

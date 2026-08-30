@@ -10,7 +10,7 @@
 namespace out
 {
 
-TEST(Outhoi4FocustreesOutfocusTests, DefaultsAreOutput)
+TEST(Outhoi4FocustreesOutfocusTests, DefaultsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -31,7 +31,7 @@ TEST(Outhoi4FocustreesOutfocusTests, DefaultsAreOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, IdIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, IdIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -52,7 +52,7 @@ TEST(Outhoi4FocustreesOutfocusTests, IdIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, IconIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, IconIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -73,7 +73,7 @@ TEST(Outhoi4FocustreesOutfocusTests, IconIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, TextIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, TextIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -95,7 +95,7 @@ TEST(Outhoi4FocustreesOutfocusTests, TextIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, PrerequisitesAreOutput)
+TEST(Outhoi4FocustreesOutfocusTests, PrerequisitesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -118,7 +118,7 @@ TEST(Outhoi4FocustreesOutfocusTests, PrerequisitesAreOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, MutuallyExclusiveIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, MutuallyExclusiveIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -140,7 +140,7 @@ TEST(Outhoi4FocustreesOutfocusTests, MutuallyExclusiveIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, BypassIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, BypassIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -162,7 +162,7 @@ TEST(Outhoi4FocustreesOutfocusTests, BypassIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, PositionsAreOutput)
+TEST(Outhoi4FocustreesOutfocusTests, PositionsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -183,7 +183,7 @@ TEST(Outhoi4FocustreesOutfocusTests, PositionsAreOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, RelativePositionIdIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, RelativePositionIdIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -205,7 +205,7 @@ TEST(Outhoi4FocustreesOutfocusTests, RelativePositionIdIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, CostIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, CostIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -226,7 +226,7 @@ TEST(Outhoi4FocustreesOutfocusTests, CostIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, AvailableIfCapitulatedIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, AvailableIfCapitulatedIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -248,7 +248,7 @@ TEST(Outhoi4FocustreesOutfocusTests, AvailableIfCapitulatedIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, AvailableIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, AvailableIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -270,7 +270,7 @@ TEST(Outhoi4FocustreesOutfocusTests, AvailableIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, CancelIfInvalidIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, CancelIfInvalidIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -292,7 +292,7 @@ TEST(Outhoi4FocustreesOutfocusTests, CancelIfInvalidIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, ContinueIfInvalidIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, ContinueIfInvalidIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -314,7 +314,7 @@ TEST(Outhoi4FocustreesOutfocusTests, ContinueIfInvalidIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, SelectEffectIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, SelectEffectIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -336,7 +336,7 @@ TEST(Outhoi4FocustreesOutfocusTests, SelectEffectIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, CompleteTooltipIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, CompleteTooltipIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -358,7 +358,7 @@ TEST(Outhoi4FocustreesOutfocusTests, CompleteTooltipIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, CompletionRewardIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, CompletionRewardIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -379,7 +379,7 @@ TEST(Outhoi4FocustreesOutfocusTests, CompletionRewardIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, AiWillDoIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, AiWillDoIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 
@@ -401,7 +401,7 @@ TEST(Outhoi4FocustreesOutfocusTests, AiWillDoIsOutput)
 }
 
 
-TEST(Outhoi4FocustreesOutfocusTests, AllowBranchIsOutput)
+TEST(Outhoi4FocustreesOutfocusTests, AllowBranchIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream out;
 

@@ -9,7 +9,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldMilitaryMilitaryFormationImporter, NoCountryNumberMeanNoImport)
+TEST(Vic3worldMilitaryMilitaryFormationImporter, NoCountryNumberMeanNoImport)  // NOLINT(cert-err58-cpp)
 {
    MilitaryFormationImporter importer;
 
@@ -20,7 +20,7 @@ TEST(Vic3worldMilitaryMilitaryFormationImporter, NoCountryNumberMeanNoImport)
 }
 
 
-TEST(Vic3worldMilitaryMilitaryFormationImporter, DefaultsAreDefaulted)
+TEST(Vic3worldMilitaryMilitaryFormationImporter, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    MilitaryFormationImporter importer;
 
@@ -39,7 +39,7 @@ TEST(Vic3worldMilitaryMilitaryFormationImporter, DefaultsAreDefaulted)
 }
 
 
-TEST(Vic3worldMilitaryMilitaryFormationImporter, ItemsCanBeImported)
+TEST(Vic3worldMilitaryMilitaryFormationImporter, ItemsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    MilitaryFormationImporter importer;
 
@@ -92,7 +92,7 @@ TEST(Vic3worldMilitaryMilitaryFormationImporter, ItemsCanBeImported)
 }
 
 
-TEST(Vic3worldMilitaryMilitaryFormationImporter, TypeCanBeFleet)
+TEST(Vic3worldMilitaryMilitaryFormationImporter, TypeCanBeFleet)  // NOLINT(cert-err58-cpp)
 {
    MilitaryFormationImporter importer;
 

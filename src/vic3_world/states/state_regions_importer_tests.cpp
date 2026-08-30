@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
+TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("", {});
    const StateRegions state_regions = ImportStateRegions(mod_filesystem);
@@ -20,7 +20,7 @@ TEST(Vic3worldStatesStateRegionsImporterTests, NoFilesNoRegions)
 }
 
 
-TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
+TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/states/ItemsAreImported/game", {});
    const StateRegions state_regions = ImportStateRegions(mod_filesystem);
@@ -53,7 +53,7 @@ TEST(Vic3worldStatesStateRegionsImporterTests, ItemsAreImported)
 }
 
 
-TEST(Vic3worldStatesStateRegionsImporterTests, BadItemCausesCrash)
+TEST(Vic3worldStatesStateRegionsImporterTests, BadItemCausesCrash)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/states/BadItemCausesCrash/game", {});
    EXPECT_THROW(const auto _ = ImportStateRegions(mod_filesystem), std::runtime_error);

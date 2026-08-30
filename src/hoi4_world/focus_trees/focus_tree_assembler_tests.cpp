@@ -15,7 +15,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, TreeIsEmptyByDefault)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, TreeIsEmptyByDefault)  // NOLINT(cert-err58-cpp)
 {
    const FocusTree focus_tree = AssembleTree({}, "", {}, World({}));
 
@@ -24,7 +24,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, TreeIsEmptyByDefault)
 }
 
 
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, SharedFocusesAreAddedToTree)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, SharedFocusesAreAddedToTree)  // NOLINT(cert-err58-cpp)
 {
    const FocusTree focus_tree = AssembleTree(
        {
@@ -40,7 +40,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, SharedFocusesAreAddedToTree)
 }
 
 
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAreAddedToTree)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAreAddedToTree)  // NOLINT(cert-err58-cpp)
 {
    const FocusTree focus_tree = AssembleTree(
        {
@@ -60,7 +60,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAreAddedToTree)
 }
 
 
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAreToTheRightOfSharedFocuses)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAreToTheRightOfSharedFocuses)  // NOLINT(cert-err58-cpp)
 {
    const FocusTree focus_tree = AssembleTree(
        {
@@ -82,7 +82,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAreToTheRightOfSharedFoc
 }
 
 
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesHaveTagSubstitutionApplied)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesHaveTagSubstitutionApplied)  // NOLINT(cert-err58-cpp)
 {
    const FocusTree focus_tree = AssembleTree(
        {
@@ -108,7 +108,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesHaveTagSubstitutionAppli
 }
 
 
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreAddedToTree)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreAddedToTree)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> always_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::vector<std::unique_ptr<Trigger>> children_one;
@@ -164,7 +164,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreAddedToTree)
 }
 
 
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, NoRepeatFocusesAreAddedForInvalidTag)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, NoRepeatFocusesAreAddedForInvalidTag)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> always_trigger_one = std::make_unique<AlwaysTrigger>(true);
    std::vector<std::unique_ptr<Trigger>> children_one;
@@ -210,6 +210,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, NoRepeatFocusesAreAddedForInval
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesHaveTargetTagSubstitutionApplied)
 {
    std::unique_ptr<Trigger> always_trigger = std::make_unique<AlwaysTrigger>(true);
@@ -256,7 +257,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesHaveTargetTagSubst
 }
 
 
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreBalancedInPosition)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreBalancedInPosition)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> one_trigger = std::make_unique<TagTrigger>("ONE");
    std::unique_ptr<Trigger> three_trigger = std::make_unique<TagTrigger>("THR");
@@ -317,7 +318,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, RepeatFocusesAreBalancedInPosit
 }
 
 
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, PrerequisitesWithRepeatFocusesAreExpanded)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, PrerequisitesWithRepeatFocusesAreExpanded)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> always_trigger = std::make_unique<AlwaysTrigger>(true);
    std::vector<std::unique_ptr<Trigger>> always_trigger_list;
@@ -383,7 +384,7 @@ TEST(Hoi4worldFocustreesFocustreeassemblerTests, PrerequisitesWithRepeatFocusesA
 
 
 // The previous test implicitly covers even numbers of repeat focuses, this one does odd
-TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAfterRepeatFocusesAreBalanced)
+TEST(Hoi4worldFocustreesFocustreeassemblerTests, FocusesAfterRepeatFocusesAreBalanced)  // NOLINT(cert-err58-cpp)
 {
    std::unique_ptr<Trigger> always_trigger = std::make_unique<AlwaysTrigger>(true);
    std::vector<std::unique_ptr<Trigger>> always_trigger_list;

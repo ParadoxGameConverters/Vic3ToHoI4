@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldCountryRankingsCountryRankingsImporter, PowersDefaultToEmpty)
+TEST(Vic3WorldCountryRankingsCountryRankingsImporter, PowersDefaultToEmpty)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -22,7 +22,7 @@ TEST(Vic3WorldCountryRankingsCountryRankingsImporter, PowersDefaultToEmpty)
 }
 
 
-TEST(Vic3WorldCountryRankingsCountryRankingsImporter, PowersCanBeImported)
+TEST(Vic3WorldCountryRankingsCountryRankingsImporter, PowersCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -56,7 +56,7 @@ TEST(Vic3WorldCountryRankingsCountryRankingsImporter, PowersCanBeImported)
 }
 
 
-TEST(Vic3WorldCountryRankingsCountryRankingsImporter, ScoresCanBeImported)
+TEST(Vic3WorldCountryRankingsCountryRankingsImporter, ScoresCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -93,7 +93,7 @@ TEST(Vic3WorldCountryRankingsCountryRankingsImporter, ScoresCanBeImported)
 }
 
 
-TEST(Vic3WorldCountryRankingsCountryRankingsImporter, MissingCountryNumberIsSkipped)
+TEST(Vic3WorldCountryRankingsCountryRankingsImporter, MissingCountryNumberIsSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

@@ -11,7 +11,7 @@
 namespace mappers
 {
 
-TEST(MappersCharacterLeadertypemapper, DefaultToHeadOfStateWhenNoGovernancePrinciple)
+TEST(MappersCharacterLeadertypemapper, DefaultToHeadOfStateWhenNoGovernancePrinciple)  // NOLINT(cert-err58-cpp)
 {
    const LeaderTypeMapper leader_type_mapper =
        ImportLeaderTypeMapper("test_files/configurables/leader_type_mappings.txt");
@@ -20,7 +20,7 @@ TEST(MappersCharacterLeadertypemapper, DefaultToHeadOfStateWhenNoGovernancePrinc
 }
 
 
-TEST(MappersCharacterLeadertypemapper, DefaultToHeadOfStateWhenNoPowerLaw)
+TEST(MappersCharacterLeadertypemapper, DefaultToHeadOfStateWhenNoPowerLaw)  // NOLINT(cert-err58-cpp)
 {
    const LeaderTypeMapper leader_type_mapper =
        ImportLeaderTypeMapper("test_files/configurables/leader_type_mappings.txt");
@@ -29,7 +29,7 @@ TEST(MappersCharacterLeadertypemapper, DefaultToHeadOfStateWhenNoPowerLaw)
 }
 
 
-TEST(MappersCharacterLeadertypemapper, PrimeMinisterMaps)
+TEST(MappersCharacterLeadertypemapper, PrimeMinisterMaps)  // NOLINT(cert-err58-cpp)
 {
    const LeaderTypeMapper leader_type_mapper =
        ImportLeaderTypeMapper("test_files/configurables/leader_type_mappings.txt");
@@ -39,7 +39,7 @@ TEST(MappersCharacterLeadertypemapper, PrimeMinisterMaps)
 }
 
 
-TEST(MappersCharacterLeadertypemapper, CouncilMaps)
+TEST(MappersCharacterLeadertypemapper, CouncilMaps)  // NOLINT(cert-err58-cpp)
 {
    const LeaderTypeMapper leader_type_mapper =
        ImportLeaderTypeMapper("test_files/configurables/leader_type_mappings.txt");
@@ -48,7 +48,7 @@ TEST(MappersCharacterLeadertypemapper, CouncilMaps)
 }
 
 
-TEST(MappersCharacterLeadertypemapper, LeaderTypesSpecificToGovernanceLaw)
+TEST(MappersCharacterLeadertypemapper, LeaderTypesSpecificToGovernanceLaw)  // NOLINT(cert-err58-cpp)
 {
    const LeaderTypeMapper leader_type_mapper =
        ImportLeaderTypeMapper("test_files/configurables/leader_type_mappings.txt");

@@ -104,15 +104,17 @@ std::map<std::string, vic3::CultureDefinition> vic3::ImportCultureDefinitions(
 
           culture_definition_parser.parseStream(input_stream);
           culture_definitions.emplace(culture_name,
-              vic3::CultureDefinition{culture_name,
-                  name_list,
-                  religion,
-                  traits,
-                  traditions,
-                  obsessions,
-                  heritage,
-                  language,
-                  ethnicities});
+              vic3::CultureDefinition{{
+                  .name = culture_name,
+                  .name_list = name_list,
+                  .religion = religion,
+                  .traits = traits,
+                  .traditions = traditions,
+                  .obsessions = obsessions,
+                  .heritage = heritage,
+                  .language = language,
+                  .ethnicities = ethnicities,
+              }});
        });
 
    for (const auto& definition_filename: mod_filesystem.GetAllFilesInFolder("common/cultures/"))

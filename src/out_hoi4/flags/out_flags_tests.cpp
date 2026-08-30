@@ -17,7 +17,7 @@ using std::filesystem::path;
 namespace out
 {
 
-TEST(OutHoI4FlagsOutFlags, FlagFilesAreCopied)
+TEST(OutHoI4FlagsOutFlags, FlagFilesAreCopied)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, hoi4::Country> countries{
        {"TAG", hoi4::Country({.tag = "TAG"})},

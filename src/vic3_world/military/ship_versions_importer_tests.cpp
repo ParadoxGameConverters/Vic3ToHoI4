@@ -11,7 +11,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldMilitaryShipversionsimporterImporter, EmptyManagerGivesNoVersions)
+TEST(Vic3worldMilitaryShipversionsimporterImporter, EmptyManagerGivesNoVersions)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -29,7 +29,7 @@ TEST(Vic3worldMilitaryShipversionsimporterImporter, EmptyManagerGivesNoVersions)
 }
 
 
-TEST(Vic3worldMilitaryShipversionsimporterImporter, VersionsCanBeInput)
+TEST(Vic3worldMilitaryShipversionsimporterImporter, VersionsCanBeInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

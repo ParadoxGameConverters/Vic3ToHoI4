@@ -10,7 +10,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesRolesimporterTests, RolesCanBeImported)
+TEST(Hoi4worldRolesRolesimporterTests, RolesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const std::map<std::string, Role> roles = ImportRoles();
 

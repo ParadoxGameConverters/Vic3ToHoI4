@@ -12,7 +12,7 @@
 namespace out
 {
 
-TEST(Outhoi4PortraitPathTests, PortraitPathsAreOutput)
+TEST(Outhoi4PortraitPathTests, PortraitPathsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const mappers::GraphicsBlock block({
        .portrait_paths =

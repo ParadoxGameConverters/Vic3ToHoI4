@@ -6,8 +6,14 @@
 
 namespace
 {
-std::map<hoi4::Trait, int> used_traits;
+
+std::map<hoi4::Trait, int>& GetUsedTraits()
+{
+   static std::map<hoi4::Trait, int> used_traits;
+   return used_traits;
 }
+
+}  // namespace
 
 mappers::CharacterTraitMapper::CharacterTraitMapper(mappers::AdmiralTraitMap admiral_trait_rules,
     mappers::GeneralTraitMap general_trait_rules,
@@ -20,7 +26,7 @@ mappers::CharacterTraitMapper::CharacterTraitMapper(mappers::AdmiralTraitMap adm
 {
    // Clear used_traits on construction so tests don't get confused
    // by data from previous ones.
-   used_traits.clear();
+   GetUsedTraits().clear();
 }
 
 
@@ -150,7 +156,7 @@ std::set<hoi4::Trait> mappers::CharacterTraitMapper::GetAdvisorMappedTraits(
    int least_used = INT_MAX;
    for (const auto& cand: hoi4_traits)
    {
-      auto curr_use = used_traits[cand];
+      auto curr_use = GetUsedTraits()[cand];
       if (curr_use >= least_used)
       {
          continue;
@@ -163,7 +169,7 @@ std::set<hoi4::Trait> mappers::CharacterTraitMapper::GetAdvisorMappedTraits(
    if (!rarest.empty())
    {
       hoi4_traits.emplace(rarest);
-      used_traits[rarest]++;
+      GetUsedTraits()[rarest]++;
    }
 
    return hoi4_traits;

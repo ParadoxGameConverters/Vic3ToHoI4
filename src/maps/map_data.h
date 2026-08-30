@@ -40,7 +40,7 @@ class MapData
 {
   public:
    MapData() = default;
-   MapData(MapDataOptions options):
+   explicit MapData(MapDataOptions options):
        province_neighbors_(std::move(options.province_neighbors)),
        borders_(std::move(options.borders)),
        the_province_points_(std::move(options.the_province_points)),

@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldTechnologyTechnologiesconverterTests, NoVic3TechsGivesNoHoi4Techs)
+TEST(Hoi4worldTechnologyTechnologiesconverterTests, NoVic3TechsGivesNoHoi4Techs)  // NOLINT(cert-err58-cpp)
 {
    const std::set<std::string> old_technologies;
    const Technologies technologies =
@@ -23,7 +23,7 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, NoVic3TechsGivesNoHoi4Techs)
 }
 
 
-TEST(Hoi4worldTechnologyTechnologiesconverterTests, NonmatchingVic3TechsGiveNoHoi4Techs)
+TEST(Hoi4worldTechnologyTechnologiesconverterTests, NonmatchingVic3TechsGiveNoHoi4Techs)  // NOLINT(cert-err58-cpp)
 {
    const std::set<std::string> old_technologies{"non_matching_tech"};
    const Technologies technologies = ConvertTechnologies(old_technologies, {});
@@ -32,7 +32,7 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, NonmatchingVic3TechsGiveNoHo
 }
 
 
-TEST(Hoi4worldTechnologyTechnologiesconverterTests, MatchingVic3TechGivesHoi4Techs)
+TEST(Hoi4worldTechnologyTechnologiesconverterTests, MatchingVic3TechGivesHoi4Techs)  // NOLINT(cert-err58-cpp)
 {
    const std::set<std::string> old_technologies{"vic3_tech"};
    const Technologies technologies =
@@ -44,7 +44,7 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, MatchingVic3TechGivesHoi4Tec
 }
 
 
-TEST(Hoi4worldTechnologyTechnologiesconverterTests, OnlyOneInstanceOfEachTech)
+TEST(Hoi4worldTechnologyTechnologiesconverterTests, OnlyOneInstanceOfEachTech)  // NOLINT(cert-err58-cpp)
 {
    const std::set<std::string> old_technologies{"vic3_tech", "vic3_tech_two"};
    const Technologies technologies = ConvertTechnologies(old_technologies,
@@ -59,7 +59,7 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, OnlyOneInstanceOfEachTech)
 }
 
 
-TEST(Hoi4worldTechnologyTechnologiesconverterTests, ConvertedTechsAreCategorizedByLimits)
+TEST(Hoi4worldTechnologyTechnologiesconverterTests, ConvertedTechsAreCategorizedByLimits)  // NOLINT(cert-err58-cpp)
 {
    const std::set<std::string> old_technologies{"vic3_non_mtg_naval_tech", "vic3_mtg_naval_tech"};
    const Technologies technologies = ConvertTechnologies(old_technologies,
@@ -79,7 +79,7 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, ConvertedTechsAreCategorized
 }
 
 
-TEST(Hoi4worldTechnologyTechnologiesconverterTests, NoTechIfNotAllRequirementsAreMet)
+TEST(Hoi4worldTechnologyTechnologiesconverterTests, NoTechIfNotAllRequirementsAreMet)  // NOLINT(cert-err58-cpp)
 {
    const std::set<std::string> old_technologies{"requirement1"};
    const Technologies technologies = ConvertTechnologies(old_technologies,
@@ -89,7 +89,7 @@ TEST(Hoi4worldTechnologyTechnologiesconverterTests, NoTechIfNotAllRequirementsAr
 }
 
 
-TEST(Hoi4worldTechnologyTechnologiesconverterTests, MultipleVic3RequirementsCanSucceed)
+TEST(Hoi4worldTechnologyTechnologiesconverterTests, MultipleVic3RequirementsCanSucceed)  // NOLINT(cert-err58-cpp)
 {
    const std::set<std::string> old_technologies{"requirement1", "requirement2"};
    const Technologies technologies = ConvertTechnologies(old_technologies,

@@ -28,9 +28,9 @@ class WorldBuilder
   private:
    WorldBuilder() = default;
    WorldOptions world_options_ = {};
-   std::vector<std::string> province_definitions_ = {};
+   std::vector<std::string> province_definitions_;
    int state_region_number_ = 1;
    int state_number_ = 1;
-   std::map<int, std::vector<vic3::Building>> buildings_ = {};
+   std::map<int, std::vector<vic3::Building>> buildings_;
 };
 }  // namespace vic3

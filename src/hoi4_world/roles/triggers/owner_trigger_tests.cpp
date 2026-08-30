@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesTriggersOwnerTriggerTests, IsValidReturnsIfStateOwnerMatches)
+TEST(Hoi4worldRolesTriggersOwnerTriggerTests, IsValidReturnsIfStateOwnerMatches)  // NOLINT(cert-err58-cpp)
 {
    const State state(42, {.owner = "TAG"});
    const Scope state_scope = StateScope{.state = state};
@@ -28,6 +28,7 @@ TEST(Hoi4worldRolesTriggersOwnerTriggerTests, IsValidReturnsIfStateOwnerMatches)
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersOwnerTriggerTests, IfRootSpecifiedIsValidReturnsIfStateOwnerMatchesRoot)
 {
    const State state(42, {.owner = "TAG"});
@@ -54,7 +55,7 @@ TEST(Hoi4worldRolesTriggersOwnerTriggerTests, IfRootSpecifiedIsValidReturnsIfSta
 }
 
 
-TEST(Hoi4worldRolesTriggersOwnerTriggerTests, FindAllValidReturnsEmptyVector)
+TEST(Hoi4worldRolesTriggersOwnerTriggerTests, FindAllValidReturnsEmptyVector)  // NOLINT(cert-err58-cpp)
 {
    const State state(42, {});
    const Scope scope = StateScope{.state = state};
@@ -66,7 +67,7 @@ TEST(Hoi4worldRolesTriggersOwnerTriggerTests, FindAllValidReturnsEmptyVector)
 }
 
 
-TEST(Hoi4worldRolesTriggersOwnerTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersOwnerTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const OwnerTrigger one_trigger("ONE");
    const OwnerTrigger one_trigger_two("ONE");
@@ -80,7 +81,7 @@ TEST(Hoi4worldRolesTriggersOwnerTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRolesTriggersOwnerTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersOwnerTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    const OwnerTrigger owner_trigger("OWN");
    const std::unique_ptr<Trigger> owner_copy = owner_trigger.Copy();

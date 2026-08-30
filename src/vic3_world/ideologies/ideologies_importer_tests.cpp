@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldIdeologiesIdeologiesimporterTests, IdeologiesAreImported)
+TEST(Vic3worldIdeologiesIdeologiesimporterTests, IdeologiesAreImported)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/ideologies", {});
 

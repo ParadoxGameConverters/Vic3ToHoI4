@@ -8,7 +8,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, NullFrameworkIsEmpty)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, NullFrameworkIsEmpty)  // NOLINT(cert-err58-cpp)
 {
    WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().Build();
 
@@ -19,7 +19,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, NullFrameworkIsEmpty)
    EXPECT_TRUE(world_framework.province_definitions.GetLandProvinces().empty());
 }
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultFrameworkContainsDefaults)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultFrameworkContainsDefaults)  // NOLINT(cert-err58-cpp)
 {
    WorldFramework world_framework =
        WorldFrameworkBuilder::CreateDefaultWorldFramework(commonItems::ModFilesystem("test_files/hoi4_world", {}))
@@ -72,7 +72,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultFrameworkContainsDefaults)
    EXPECT_TRUE(world_framework.coastal_provinces.GetCoastalProvinces().empty());
 }
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultStrategicRegionsHasValues)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultStrategicRegionsHasValues)  // NOLINT(cert-err58-cpp)
 {
    WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().DefaultStrategicRegions().Build();
    EXPECT_THAT(world_framework.strategic_regions.GetStrategicRegions(),
@@ -115,7 +115,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultStrategicRegionsHasValues)
        testing::UnorderedElementsAre(testing::Pair(144, 42), testing::Pair(169, 42)));
 }
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStrategicRegionsWorks)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStrategicRegionsWorks)  // NOLINT(cert-err58-cpp)
 {
    const StrategicRegions strategic_regions({
        .original_province_to_strategic_region_map =
@@ -135,7 +135,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStrategicRegionsWorks)
    EXPECT_EQ(world_framework.strategic_regions.GetProvinceToStrategicRegionMap().at(40), 2);
 }
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddDefaultStatesWorks)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddDefaultStatesWorks)  // NOLINT(cert-err58-cpp)
 {
    const std::map<int, DefaultState> default_states = {
        {1, DefaultState({.provinces = {10, 20}})},
@@ -149,7 +149,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddDefaultStatesWorks)
    EXPECT_EQ(world_framework.default_states.at(2), DefaultState({.impassable = true, .provinces = {30, 40, 50}}));
 }
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddResourcesWorks)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddResourcesWorks)  // NOLINT(cert-err58-cpp)
 {
    WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework()
                                         .AddResources({
@@ -173,13 +173,13 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddResourcesWorks)
    EXPECT_EQ(world_framework.resources_map.at(20), Resources({{"test_resource", 2.0}}));
 }
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultStateCategoriesHasValues)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, DefaultStateCategoriesHasValues)  // NOLINT(cert-err58-cpp)
 {
    WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().DefaultStateCategories().Build();
 
    EXPECT_EQ(world_framework.state_categories.GetBestCategory(12), "megalopolis");
 }
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStateCategoriesWorks)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStateCategoriesWorks)  // NOLINT(cert-err58-cpp)
 {
    WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework()
                                         .SetStateCategories(hoi4::StateCategories({
@@ -193,7 +193,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, SetStateCategoriesWorks)
    EXPECT_EQ(world_framework.state_categories.GetBestCategory(10), "test_category_four");
 }
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddLandProvincesWorks)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddLandProvincesWorks)  // NOLINT(cert-err58-cpp)
 {
    WorldFramework world_framework =
        WorldFrameworkBuilder::CreateNullWorldFramework().AddLandProvinces({"10", "30"}).Build();
@@ -201,14 +201,14 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddLandProvincesWorks)
    EXPECT_THAT(world_framework.province_definitions.GetLandProvinces(), testing::ElementsAreArray({"10", "30"}));
 }
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddTestLandProvincesWorks)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddTestLandProvincesWorks)  // NOLINT(cert-err58-cpp)
 {
    WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework().AddTestLandProvinces(3).Build();
 
    EXPECT_THAT(world_framework.province_definitions.GetLandProvinces(), testing::ElementsAreArray({"10", "20", "30"}));
 }
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddSeaProvincesWorks)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddSeaProvincesWorks)  // NOLINT(cert-err58-cpp)
 {
    WorldFramework world_framework =
        WorldFrameworkBuilder::CreateNullWorldFramework().AddSeaProvinces({"10", "30"}).Build();
@@ -216,7 +216,7 @@ TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddSeaProvincesWorks)
    EXPECT_THAT(world_framework.province_definitions.GetSeaProvinces(), testing::ElementsAreArray({"10", "30"}));
 }
 
-TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddCoastalProvincesWorks)
+TEST(Hoi4worldWorldHoi4worldFrameworkBuilder, AddCoastalProvincesWorks)  // NOLINT(cert-err58-cpp)
 {
    WorldFramework world_framework = WorldFrameworkBuilder::CreateNullWorldFramework()
                                         .AddTestLandProvinces(2)

@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldCountriesVic3country, ColorCanBeSet)
+TEST(Vic3worldCountriesVic3country, ColorCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    Country country({.number = 1});
    country.SetColor(commonItems::Color{std::array<int, 3>{1, 2, 3}});
@@ -20,7 +20,7 @@ TEST(Vic3worldCountriesVic3country, ColorCanBeSet)
 }
 
 
-TEST(Vic3worldCountriesVic3country, GetAcquiredTechEmpty)
+TEST(Vic3worldCountriesVic3country, GetAcquiredTechEmpty)  // NOLINT(cert-err58-cpp)
 {
    const Country country = Country(CountryOptions{
        .number = 2,
@@ -30,7 +30,7 @@ TEST(Vic3worldCountriesVic3country, GetAcquiredTechEmpty)
 }
 
 
-TEST(Vic3worldCountriesVic3country, GetAcquiredTech)
+TEST(Vic3worldCountriesVic3country, GetAcquiredTech)  // NOLINT(cert-err58-cpp)
 {
    const Country country = Country(CountryOptions{
        .number = 1,
@@ -40,7 +40,7 @@ TEST(Vic3worldCountriesVic3country, GetAcquiredTech)
 }
 
 
-TEST(Vic3worldCountriesVic3country, PowerRankWorks)
+TEST(Vic3worldCountriesVic3country, PowerRankWorks)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -69,85 +69,85 @@ TEST(Vic3worldCountriesVic3country, PowerRankWorks)
 
    const CountryRankings country_rankings = ImportCountryRankings(input);
 
-   const Country c1({.number = 1});
-   const Country c2({.number = 2});
-   const Country c3({.number = 3});
+   const Country country_one({.number = 1});
+   const Country country_two({.number = 2});
+   const Country country_three({.number = 3});
 
    const World world({
        .countries =
            {
-               {1, c1},
-               {2, c2},
-               {3, c3},
+               {1, country_one},
+               {2, country_two},
+               {3, country_three},
            },
        .country_rankings = country_rankings,
    });
 
-   EXPECT_EQ(c1.GetCountryRankCategory(world), RankCategory::kGreatPower);
-   EXPECT_EQ(c2.GetCountryRankCategory(world), RankCategory::kMajorPower);
-   EXPECT_EQ(c3.GetCountryRankCategory(world), RankCategory::kMinorPower);
+   EXPECT_EQ(country_one.GetCountryRankCategory(world), RankCategory::kGreatPower);
+   EXPECT_EQ(country_two.GetCountryRankCategory(world), RankCategory::kMajorPower);
+   EXPECT_EQ(country_three.GetCountryRankCategory(world), RankCategory::kMinorPower);
 }
 
 
-TEST(Vic3worldCountriesVic3country, DecentralizedCountriesAreDecentralized)
+TEST(Vic3worldCountriesVic3country, DecentralizedCountriesAreDecentralized)  // NOLINT(cert-err58-cpp)
 {
-   const Country c1({.country_type = "decentralized"});
-   EXPECT_TRUE(c1.IsDecentralized());
+   const Country country_one({.country_type = "decentralized"});
+   EXPECT_TRUE(country_one.IsDecentralized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, ColonalCountriesAreNotDecentralized)
+TEST(Vic3worldCountriesVic3country, ColonalCountriesAreNotDecentralized)  // NOLINT(cert-err58-cpp)
 {
-   const Country c2({.country_type = "colonial"});
-   EXPECT_FALSE(c2.IsDecentralized());
+   const Country country_two({.country_type = "colonial"});
+   EXPECT_FALSE(country_two.IsDecentralized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, UnrecognizedCountriesAreNotDecentralized)
+TEST(Vic3worldCountriesVic3country, UnrecognizedCountriesAreNotDecentralized)  // NOLINT(cert-err58-cpp)
 {
-   const Country c3({.country_type = "unrecognized"});
-   EXPECT_FALSE(c3.IsDecentralized());
+   const Country country_three({.country_type = "unrecognized"});
+   EXPECT_FALSE(country_three.IsDecentralized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, RecognizedCountriesAreNotDecentralized)
+TEST(Vic3worldCountriesVic3country, RecognizedCountriesAreNotDecentralized)  // NOLINT(cert-err58-cpp)
 {
-   const Country c4({.country_type = "recognized"});
-   EXPECT_FALSE(c4.IsDecentralized());
+   const Country country_four({.country_type = "recognized"});
+   EXPECT_FALSE(country_four.IsDecentralized());
 }
 
-TEST(Vic3worldCountriesVic3country, DecentralizedCountriesAreNotRecognized)
+TEST(Vic3worldCountriesVic3country, DecentralizedCountriesAreNotRecognized)  // NOLINT(cert-err58-cpp)
 {
-   const Country c1({.country_type = "decentralized"});
-   EXPECT_FALSE(c1.IsRecognized());
-}
-
-
-TEST(Vic3worldCountriesVic3country, ColonialCountriesAreRecognized)
-{
-   const Country c2({.country_type = "colonial"});
-   EXPECT_TRUE(c2.IsRecognized());
+   const Country country_one({.country_type = "decentralized"});
+   EXPECT_FALSE(country_one.IsRecognized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, UnrecognizedCountriesAreNotRecognized)
+TEST(Vic3worldCountriesVic3country, ColonialCountriesAreRecognized)  // NOLINT(cert-err58-cpp)
 {
-   const Country c3({.country_type = "unrecognized"});
-   EXPECT_FALSE(c3.IsRecognized());
+   const Country country_two({.country_type = "colonial"});
+   EXPECT_TRUE(country_two.IsRecognized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, RecognizedCountriesAreRecognized)
+TEST(Vic3worldCountriesVic3country, UnrecognizedCountriesAreNotRecognized)  // NOLINT(cert-err58-cpp)
 {
-   const Country c4({.country_type = "recognized"});
-   EXPECT_TRUE(c4.IsRecognized());
+   const Country country_three({.country_type = "unrecognized"});
+   EXPECT_FALSE(country_three.IsRecognized());
 }
 
 
-TEST(Vic3worldCountriesVic3country, DefaultLegitimacyZero)
+TEST(Vic3worldCountriesVic3country, RecognizedCountriesAreRecognized)  // NOLINT(cert-err58-cpp)
 {
-   const Country c4({});
-   EXPECT_EQ(c4.GetLegitimacy(), 0);
+   const Country country_four({.country_type = "recognized"});
+   EXPECT_TRUE(country_four.IsRecognized());
+}
+
+
+TEST(Vic3worldCountriesVic3country, DefaultLegitimacyZero)  // NOLINT(cert-err58-cpp)
+{
+   const Country country_four({});
+   EXPECT_EQ(country_four.GetLegitimacy(), 0);
 }
 
 }  // namespace vic3

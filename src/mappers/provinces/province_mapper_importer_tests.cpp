@@ -12,7 +12,7 @@
 namespace mappers
 {
 
-TEST(MappersProvincesProvinceMapperImporterTests, ProvinceMappingsCanBeImported)
+TEST(MappersProvincesProvinceMapperImporterTests, ProvinceMappingsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/empty_definition/", {});
    const auto province_mappings = ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
@@ -30,7 +30,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, ProvinceMappingsCanBeImported)
 }
 
 
-TEST(MappersProvincesProvinceMapperImporterTests, MissingMapDefinitionThrowsException)
+TEST(MappersProvincesProvinceMapperImporterTests, MissingMapDefinitionThrowsException)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/no_definition/", {});
 
@@ -39,7 +39,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, MissingMapDefinitionThrowsExce
 
 
 
-TEST(MappersProvincesProvinceMapperImporterTests, BadLineInMapDefinitionLogsWarning)
+TEST(MappersProvincesProvinceMapperImporterTests, BadLineInMapDefinitionLogsWarning)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* std_out_buf = std::cout.rdbuf();
@@ -54,7 +54,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, BadLineInMapDefinitionLogsWarn
 }
 
 
-TEST(MappersProvincesProvinceMapperImporterTests, MissingHoi4ProvinceMappingLogsWarning)
+TEST(MappersProvincesProvinceMapperImporterTests, MissingHoi4ProvinceMappingLogsWarning)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* std_out_buf = std::cout.rdbuf();
@@ -71,7 +71,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, MissingHoi4ProvinceMappingLogs
 }
 
 
-TEST(MappersProvincesProvinceMapperImporterTests, MissingVic3ProvinceMappingLogsWarning)
+TEST(MappersProvincesProvinceMapperImporterTests, MissingVic3ProvinceMappingLogsWarning)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("./test_files/mappers/provinces/empty_definition/", {});
    const auto province_mappings = ProvinceMapperImporter{mod_filesystem}.ImportProvinceMappings();
@@ -88,7 +88,7 @@ TEST(MappersProvincesProvinceMapperImporterTests, MissingVic3ProvinceMappingLogs
 }
 
 
-TEST(MappersProvincesProvinceMapperImporterTests, ExtraProvinceMappingsLogWarning)
+TEST(MappersProvincesProvinceMapperImporterTests, ExtraProvinceMappingsLogWarning)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* std_out_buf = std::cout.rdbuf();

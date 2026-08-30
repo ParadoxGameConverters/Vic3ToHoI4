@@ -12,7 +12,7 @@ namespace out
 {
 
 
-TEST(Outhoi4Characters, GeneralsAreOutput)
+TEST(Outhoi4Characters, GeneralsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -46,7 +46,7 @@ TEST(Outhoi4Characters, GeneralsAreOutput)
 }
 
 
-TEST(Outhoi4Characters, FieldMarshalsAreOutput)
+TEST(Outhoi4Characters, FieldMarshalsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -81,7 +81,7 @@ TEST(Outhoi4Characters, FieldMarshalsAreOutput)
 }
 
 
-TEST(Outhoi4Characters, AdmiralsAreOutput)
+TEST(Outhoi4Characters, AdmiralsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -115,7 +115,7 @@ TEST(Outhoi4Characters, AdmiralsAreOutput)
 }
 
 
-TEST(Outhoi4Characters, CountryLeadersAreOutput)
+TEST(Outhoi4Characters, CountryLeadersAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -145,7 +145,7 @@ TEST(Outhoi4Characters, CountryLeadersAreOutput)
 }
 
 
-TEST(Outhoi4Characters, AdvisorsAreOutput)
+TEST(Outhoi4Characters, AdvisorsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -177,7 +177,7 @@ TEST(Outhoi4Characters, AdvisorsAreOutput)
        "\t}\n");
 }
 
-TEST(Outhoi4Characters, TraitlessAdvisorsAreNotOutput)
+TEST(Outhoi4Characters, TraitlessAdvisorsAreNotOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -202,7 +202,7 @@ TEST(Outhoi4Characters, TraitlessAdvisorsAreNotOutput)
 }
 
 
-TEST(Outhoi4Characters, LedgerlessAdvisorsAreOutputWithoutLedgers)
+TEST(Outhoi4Characters, LedgerlessAdvisorsAreOutputWithoutLedgers)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -234,7 +234,7 @@ TEST(Outhoi4Characters, LedgerlessAdvisorsAreOutputWithoutLedgers)
 }
 
 
-TEST(Outhoi4Characters, GeneralAdvisorsHaveArmyPortraits)
+TEST(Outhoi4Characters, GeneralAdvisorsHaveArmyPortraits)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -279,7 +279,7 @@ TEST(Outhoi4Characters, GeneralAdvisorsHaveArmyPortraits)
 }
 
 
-TEST(Outhoi4Characters, AdmiralAdvisorsHaveNavyPortraits)
+TEST(Outhoi4Characters, AdmiralAdvisorsHaveNavyPortraits)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -324,7 +324,7 @@ TEST(Outhoi4Characters, AdmiralAdvisorsHaveNavyPortraits)
 }
 
 
-TEST(Outhoi4Characters, WomenAreOutput)
+TEST(Outhoi4Characters, WomenAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -346,7 +346,7 @@ TEST(Outhoi4Characters, WomenAreOutput)
 }
 
 
-TEST(Outhoi4Characters, MaleSpiesAreOutput)
+TEST(Outhoi4Characters, MaleSpiesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -372,7 +372,7 @@ TEST(Outhoi4Characters, MaleSpiesAreOutput)
 }
 
 
-TEST(Outhoi4Characters, FemaleSpiesAreOutput)
+TEST(Outhoi4Characters, FemaleSpiesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -400,7 +400,7 @@ TEST(Outhoi4Characters, FemaleSpiesAreOutput)
 }
 
 
-TEST(Outhoi4Characters, MissingSpiesAreLogged)
+TEST(Outhoi4Characters, MissingSpiesAreLogged)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -422,7 +422,7 @@ TEST(Outhoi4Characters, MissingSpiesAreLogged)
 }
 
 
-TEST(Outhoi4Characters, CharactersWithoutPortraitGetUnknownPortrait)
+TEST(Outhoi4Characters, CharactersWithoutPortraitGetUnknownPortrait)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,
@@ -455,7 +455,7 @@ TEST(Outhoi4Characters, CharactersWithoutPortraitGetUnknownPortrait)
 }
 
 
-TEST(Outhoi4Characters, SpiesWithoutPortraitGetUnknownPortrait)
+TEST(Outhoi4Characters, SpiesWithoutPortraitGetUnknownPortrait)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::Character character({
        .id = 1,

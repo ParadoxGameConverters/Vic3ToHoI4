@@ -27,9 +27,9 @@ class WorldFrameworkBuilder
    WorldFramework Build();
 
    WorldFrameworkBuilder& DefaultStrategicRegions();
-   WorldFrameworkBuilder& SetStrategicRegions(const StrategicRegions strategic_regions);
+   WorldFrameworkBuilder& SetStrategicRegions(const StrategicRegions& strategic_regions);
    WorldFrameworkBuilder& DefaultDefaultStates();
-   WorldFrameworkBuilder& AddDefaultStates(const std::map<int, DefaultState> default_states);
+   WorldFrameworkBuilder& AddDefaultStates(const std::map<int, DefaultState>& default_states);
    WorldFrameworkBuilder& AddResources(ResourcesMap resources);
    WorldFrameworkBuilder& DefaultResourcesMap();
    WorldFrameworkBuilder& DefaultStateCategories();
@@ -70,7 +70,7 @@ class WorldFrameworkBuilder
    ResourcesMap resources_map_;
    StateCategories state_categories_;
    int test_province_number_ = 0;
-   maps::ProvinceDefinitionsOptions province_definitions_;
+   maps::ProvinceDefinitions province_definitions_;
    maps::MapData map_data_;
 
    // requires province_definitions_

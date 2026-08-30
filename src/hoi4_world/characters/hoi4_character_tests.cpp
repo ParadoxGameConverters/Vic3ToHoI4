@@ -7,7 +7,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldCharactersCharacter, PortraitAliasCanBeSet)
+TEST(Hoi4worldCharactersCharacter, PortraitAliasCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    Character character({});
    EXPECT_TRUE(character.GetPortraitAlias().empty());

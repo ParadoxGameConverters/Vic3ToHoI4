@@ -9,7 +9,7 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldCharactersVic3CountryCharacterMapImporter, NoInputIsEmpty)
+TEST(Vic3WorldCharactersVic3CountryCharacterMapImporter, NoInputIsEmpty)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const auto country_character_map = ImportCountryCharacterMap(input);
@@ -18,7 +18,7 @@ TEST(Vic3WorldCharactersVic3CountryCharacterMapImporter, NoInputIsEmpty)
 }
 
 
-TEST(Vic3WorldCharactersVic3CountryCharacterMapImporter, CountryCharacterMapCanBeImported)
+TEST(Vic3WorldCharactersVic3CountryCharacterMapImporter, CountryCharacterMapCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -37,7 +37,7 @@ TEST(Vic3WorldCharactersVic3CountryCharacterMapImporter, CountryCharacterMapCanB
 }
 
 
-TEST(Vic3WorldCharactersVic3CountryCharacterMapImporter, NumberOfMatchesAreLogged)
+TEST(Vic3WorldCharactersVic3CountryCharacterMapImporter, NumberOfMatchesAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

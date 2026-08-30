@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldWorldVic3worldimporter, ExceptionForMissingSave)
+TEST(Vic3worldWorldVic3worldimporter, ExceptionForMissingSave)  // NOLINT(cert-err58-cpp)
 {
    EXPECT_THROW(ImportWorld(
                     configuration::Configuration{
@@ -21,7 +21,7 @@ TEST(Vic3worldWorldVic3worldimporter, ExceptionForMissingSave)
 }
 
 
-TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
+TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)  // NOLINT(cert-err58-cpp)
 {
    const auto world = ImportWorld(
        configuration::Configuration{
@@ -43,7 +43,7 @@ TEST(Vic3worldWorldVic3worldimporter, DefaultsAreCorrect)
 }
 
 
-TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
+TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const auto world = ImportWorld(
        configuration::Configuration{
@@ -251,7 +251,7 @@ TEST(Vic3worldWorldVic3worldimporter, WorldCanBeImported)
 }
 
 
-TEST(Vic3worldWorldVic3worldimporter, ConversionDateIsLogged)
+TEST(Vic3worldWorldVic3worldimporter, ConversionDateIsLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -272,7 +272,7 @@ TEST(Vic3worldWorldVic3worldimporter, ConversionDateIsLogged)
 }
 
 
-TEST(Vic3worldWorldVic3worldimporter, StateWithInvalidOwnerIsLogged)
+TEST(Vic3worldWorldVic3worldimporter, StateWithInvalidOwnerIsLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -293,7 +293,7 @@ TEST(Vic3worldWorldVic3worldimporter, StateWithInvalidOwnerIsLogged)
 }
 
 
-TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)
+TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -327,7 +327,7 @@ TEST(Vic3worldWorldVic3worldimporter, ModsInSaveAreLogged)
 #endif
 }
 
-TEST(Vic3worldWorldVic3worldimporter, PactsBecomeSubjectsAndOverlords)
+TEST(Vic3worldWorldVic3worldimporter, PactsBecomeSubjectsAndOverlords)  // NOLINT(cert-err58-cpp)
 {
    const auto world = ImportWorld(
        configuration::Configuration{
@@ -337,12 +337,12 @@ TEST(Vic3worldWorldVic3worldimporter, PactsBecomeSubjectsAndOverlords)
            .save_game = "test_files/vic3_world/world/test_save.vic3",
        },
        commonItems::ConverterVersion());
-   Country v1 = world.GetCountries().at(1);
-   Country v3 = world.GetCountries().at(3);
-   EXPECT_EQ(v1.GetPuppets(), std::set<int>({3}));
-   EXPECT_EQ(v1.GetOverlord(), std::nullopt);
-   EXPECT_EQ(v3.GetPuppets().size(), 0);
-   EXPECT_EQ(v3.GetOverlord(), std::make_optional(1));
+   Country country_one = world.GetCountries().at(1);
+   Country country_three = world.GetCountries().at(3);
+   EXPECT_EQ(country_one.GetPuppets(), std::set<int>({3}));
+   EXPECT_EQ(country_one.GetOverlord(), std::nullopt);
+   EXPECT_EQ(country_three.GetPuppets().size(), 0);
+   EXPECT_EQ(country_three.GetOverlord(), std::make_optional(1));
 }
 
 

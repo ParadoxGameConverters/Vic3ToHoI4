@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, IsValidReturnsTrueIfStateIsOnContinent)
+TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, IsValidReturnsTrueIfStateIsOnContinent)  // NOLINT(cert-err58-cpp)
 {
    const State state(42, {.continent = "test_continent"});
    const Scope scope = StateScope{.state = state};
@@ -25,6 +25,7 @@ TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, IsValidReturnsTrueIfStateI
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, IsValidReturnsFalseIfStateIsNotOnContinent)
 {
    const State state(42, {.continent = "wrong_continent"});
@@ -37,7 +38,7 @@ TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, IsValidReturnsFalseIfState
 }
 
 
-TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, FindAllValidReturnsEmptyVector)
+TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, FindAllValidReturnsEmptyVector)  // NOLINT(cert-err58-cpp)
 {
    const State state(42, {.continent = "wrong_continent"});
    const Scope scope = StateScope{.state = state};
@@ -49,7 +50,7 @@ TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, FindAllValidReturnsEmptyVe
 }
 
 
-TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const IsOnContinentTrigger is_on_continent_trigger("test_continent");
    const IsOnContinentTrigger is_on_continent_trigger_two("test_continent");
@@ -63,7 +64,7 @@ TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, EquivalentTriggersAreEqual
 }
 
 
-TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRolesTriggersIsOnContinentTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    const IsOnContinentTrigger is_on_continent_trigger("test_continent");
    const std::unique_ptr<Trigger> true_copy = is_on_continent_trigger.Copy();

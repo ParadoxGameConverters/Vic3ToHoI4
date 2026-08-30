@@ -9,7 +9,7 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldCharactersVic3CharactersImporter, NoCharactersOnEmptyInput)
+TEST(Vic3WorldCharactersVic3CharactersImporter, NoCharactersOnEmptyInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const std::map<int, vic3::Character> characters = ImportCharacters(input);
@@ -18,7 +18,7 @@ TEST(Vic3WorldCharactersVic3CharactersImporter, NoCharactersOnEmptyInput)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersCanBeImported)
+TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -80,7 +80,7 @@ TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersCanBeImported)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersSetAsNoneAreSkipped)
+TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersSetAsNoneAreSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -96,7 +96,7 @@ TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersSetAsNoneAreSkipped)
 }
 
 
-TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersImportsAreLogged)
+TEST(Vic3WorldCharactersVic3CharactersImporter, CharactersImportsAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

@@ -9,7 +9,7 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldPactsPactsImporter, NoPactsOnEmptyInput)
+TEST(Vic3WorldPactsPactsImporter, NoPactsOnEmptyInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const std::map<int, Pact> pacts = ImportPacts(input);
@@ -18,7 +18,7 @@ TEST(Vic3WorldPactsPactsImporter, NoPactsOnEmptyInput)
 }
 
 
-TEST(Vic3WorldPactsPactsImporter, PactsCanBeImported)
+TEST(Vic3WorldPactsPactsImporter, PactsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << R"(
@@ -45,7 +45,7 @@ TEST(Vic3WorldPactsPactsImporter, PactsCanBeImported)
 }
 
 
-TEST(Vic3WorldPactsPactsImporter, PactsSetAsNoneAreSkipped)
+TEST(Vic3WorldPactsPactsImporter, PactsSetAsNoneAreSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -60,7 +60,7 @@ TEST(Vic3WorldPactsPactsImporter, PactsSetAsNoneAreSkipped)
 }
 
 
-TEST(Vic3WorldPactsPactsImporter, PactsImportsAreLogged)
+TEST(Vic3WorldPactsPactsImporter, PactsImportsAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << R"(

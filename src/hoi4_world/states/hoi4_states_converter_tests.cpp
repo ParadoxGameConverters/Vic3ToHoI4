@@ -20,7 +20,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
+TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)  // NOLINT(cert-err58-cpp)
 {
    const maps::ProvinceDefinitions hoi4_province_definitions;
    const maps::MapData map_data({.province_definitions = hoi4_province_definitions});
@@ -38,7 +38,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, NoStatesConvertToNoStates)
    EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
-TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
+TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)  // NOLINT(cert-err58-cpp)
 {
    mappers::WorldMapperBuilder world_mapper =
        std::move(mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(6));
@@ -77,7 +77,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAreConverted)
    EXPECT_TRUE(hoi4_states.hoi4_state_ids_to_owner.empty());
 }
 
-TEST(Hoi4worldStatesHoi4statesconverter, ProvincesMapToStates)
+TEST(Hoi4worldStatesHoi4statesconverter, ProvincesMapToStates)  // NOLINT(cert-err58-cpp)
 {
    mappers::WorldMapperBuilder world_mapper =
        std::move(mappers::WorldMapperBuilder::CreateNullMapper().AddTestProvinces(5));
@@ -97,14 +97,14 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvincesMapToStates)
            testing::Pair("x000005", 2)));
 }
 
-TEST(Hoi4worldStatesHoi4statesconverter, DefaultProvinceMapIsEmpty)
+TEST(Hoi4worldStatesHoi4statesconverter, DefaultProvinceMapIsEmpty)  // NOLINT(cert-err58-cpp)
 {
    const auto province_map = MapVic3ProvincesToStates({}, {});
 
    EXPECT_TRUE(province_map.empty());
 }
 
-TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersStates)
+TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersStates)  // NOLINT(cert-err58-cpp)
 {
    mappers::ProvinceMapper province_mapper({},
        {
@@ -155,7 +155,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToCityandPortsOwnersSta
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
+TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)  // NOLINT(cert-err58-cpp)
 {
    mappers::ProvinceMapper province_mapper({},
        {
@@ -204,7 +204,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, SplitProvincesGoToMajorityState)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
+TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)  // NOLINT(cert-err58-cpp)
 {
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
                                   .AddTestStates({{1, 2, 3}, {4, 5, 6}})
@@ -245,7 +245,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, BadNeighborStringsAreSkipped)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
+TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -295,7 +295,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, DisconnectedStatesAreSplit)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
+TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)  // NOLINT(cert-err58-cpp)
 {
    const StrategicRegions strategic_regions({
        .original_province_to_strategic_region_map =
@@ -339,7 +339,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesAllInStrategicRegionAreNotSplit)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
+TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)  // NOLINT(cert-err58-cpp)
 {
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
                                   .AddTestStates({{1, 2, 3}})
@@ -387,7 +387,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, WastelandProvincesAreSplit)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
+TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)  // NOLINT(cert-err58-cpp)
 {
    const maps::ProvinceDefinitions hoi4_province_definitions;
    const maps::MapData map_data({.province_definitions = hoi4_province_definitions});
@@ -406,7 +406,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, StatesWithNoProvincesAreNotConverted)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
+TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -450,7 +450,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, MissingProvinceDefinitionIsLogged)
 
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
+TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)  // NOLINT(cert-err58-cpp)
 {
    mappers::ProvinceMapper province_mapper({},
        {
@@ -517,7 +517,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, UnmappedProvincesAreLogged)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
+TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -561,7 +561,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, ProvinceWithNoStatesAreLogged)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
+TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)  // NOLINT(cert-err58-cpp)
 {
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
                                   .AddStates({
@@ -609,7 +609,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, IdsAreSequentialFromOne)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
+TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)  // NOLINT(cert-err58-cpp)
 {
    vic3::WorldBuilder world = vic3::WorldBuilder::CreateNullWorld()
                                   .AddStates({{1, vic3::State({.owner_number = 1, .provinces = {1, 2, 3}})},
@@ -649,7 +649,7 @@ TEST(Hoi4worldStatesHoi4statesconverter, OwnersAreConverted)
 }
 
 
-TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)
+TEST(Hoi4worldStatesHoi4statesconverter, UnmappedOwnersAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();

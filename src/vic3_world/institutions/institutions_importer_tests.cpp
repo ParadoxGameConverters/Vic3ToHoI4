@@ -9,7 +9,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldInstitutionsInstitutionsImporter, NoInstitutionsOnEmptyInput)
+TEST(Vic3WorldInstitutionsInstitutionsImporter, NoInstitutionsOnEmptyInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    std::map<int, std::vector<Institution>> institutions;
@@ -21,7 +21,7 @@ TEST(Vic3WorldInstitutionsInstitutionsImporter, NoInstitutionsOnEmptyInput)
    EXPECT_TRUE(institutions.empty());
 }
 
-TEST(Vic3WorldInstitutionsInstitutionsImporter, InstitutionsCanBeImported)
+TEST(Vic3WorldInstitutionsInstitutionsImporter, InstitutionsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

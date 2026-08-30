@@ -13,7 +13,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldRoleTriggerTests, IsValidReturnsTrueIfCountryHasRole)
+TEST(Hoi4worldRoleTriggerTests, IsValidReturnsTrueIfCountryHasRole)  // NOLINT(cert-err58-cpp)
 {
    const HasRoleTrigger has_role_trigger("test_role");
 
@@ -27,7 +27,7 @@ TEST(Hoi4worldRoleTriggerTests, IsValidReturnsTrueIfCountryHasRole)
 }
 
 
-TEST(Hoi4worldRoleTriggerTests, IsValidReturnsFalseIfCountryLacksRole)
+TEST(Hoi4worldRoleTriggerTests, IsValidReturnsFalseIfCountryLacksRole)  // NOLINT(cert-err58-cpp)
 {
    const HasRoleTrigger has_role_trigger("test_role");
 
@@ -40,7 +40,7 @@ TEST(Hoi4worldRoleTriggerTests, IsValidReturnsFalseIfCountryLacksRole)
 }
 
 
-TEST(Hoi4worldRoleTriggerTests, IsValidReturnsFalseIfScopeNotCountry)
+TEST(Hoi4worldRoleTriggerTests, IsValidReturnsFalseIfScopeNotCountry)  // NOLINT(cert-err58-cpp)
 {
    const HasRoleTrigger has_role_trigger("test_role");
 
@@ -53,7 +53,7 @@ TEST(Hoi4worldRoleTriggerTests, IsValidReturnsFalseIfScopeNotCountry)
 }
 
 
-TEST(Hoi4worldRoleTriggerTests, FindAllValidReturnsEmptyVector)
+TEST(Hoi4worldRoleTriggerTests, FindAllValidReturnsEmptyVector)  // NOLINT(cert-err58-cpp)
 {
    const HasRoleTrigger has_role_trigger("test_role");
 
@@ -66,7 +66,7 @@ TEST(Hoi4worldRoleTriggerTests, FindAllValidReturnsEmptyVector)
 }
 
 
-TEST(Hoi4worldRoleTriggerTests, EquivalentTriggersAreEqual)
+TEST(Hoi4worldRoleTriggerTests, EquivalentTriggersAreEqual)  // NOLINT(cert-err58-cpp)
 {
    const HasRoleTrigger has_role_trigger("test_role");
    const HasRoleTrigger has_role_trigger_two("test_role");
@@ -77,7 +77,7 @@ TEST(Hoi4worldRoleTriggerTests, EquivalentTriggersAreEqual)
 }
 
 
-TEST(Hoi4worldRoleTriggerTests, CopyReturnsACopy)
+TEST(Hoi4worldRoleTriggerTests, CopyReturnsACopy)  // NOLINT(cert-err58-cpp)
 {
    const HasRoleTrigger has_role_trigger("test_role");
    const std::unique_ptr<Trigger> tag_copy = has_role_trigger.Copy();

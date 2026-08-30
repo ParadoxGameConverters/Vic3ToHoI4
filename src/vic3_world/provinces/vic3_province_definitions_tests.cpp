@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionsCanBeReturned)
+TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionsCanBeReturned)  // NOLINT(cert-err58-cpp)
 {
    std::vector<std::string> province_definitions_map{"x000001", "x000200"};
 
@@ -20,7 +20,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionsCanBeReturned)
 }
 
 
-TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionCanBeLookedUp)
+TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionCanBeLookedUp)  // NOLINT(cert-err58-cpp)
 {
    std::vector<std::string> province_definitions_map{"x000001", "x000200"};
 
@@ -35,7 +35,7 @@ TEST(Vic3WorldProvincesVic3ProvinceDefinitions, DefinitionCanBeLookedUp)
 }
 
 
-TEST(Vic3WorldProvincesVic3ProvinceDefinitions, MissingDefinitionIsNotLookedUp)
+TEST(Vic3WorldProvincesVic3ProvinceDefinitions, MissingDefinitionIsNotLookedUp)  // NOLINT(cert-err58-cpp)
 {
    std::vector<std::string> province_definitions_map{"x000001", "x000200"};
 

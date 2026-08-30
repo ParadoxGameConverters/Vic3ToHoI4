@@ -71,7 +71,7 @@ std::vector<hoi4::Focus> CreateRepeatedFocuses(const hoi4::Role& role,
                std::string new_identifier = identifier;
                while (new_identifier.find("$TARGET$") != std::string::npos)
                {
-                  new_identifier.replace(new_identifier.find("$TARGET$"), 8, alias_tag);
+                  new_identifier.replace(new_identifier.find("$TARGET$"), strlen("$TARGET$"), alias_tag);
                }
                focus_copy.ApplyReplacement(identifier, new_identifier);
             }
@@ -142,7 +142,7 @@ void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& 
             {
                if ((role->second.size() % 2) == 0)
                {
-                  focus.relative_position_id = role->second.at(role->second.size() / 2 - 1);
+                  focus.relative_position_id = role->second.at((role->second.size() / 2) - 1);
                   focus.x_position = 1;
                }
                else
@@ -152,7 +152,7 @@ void UpdatePrerequisites(const std::map<std::string, std::vector<std::string>>& 
                }
             }
 
-            for (auto& new_id: role->second)
+            for (const auto& new_id: role->second)
             {
                if (replace_with.empty())
                {

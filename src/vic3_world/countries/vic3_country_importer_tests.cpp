@@ -11,7 +11,7 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldCountriesCountryImporter, NumberIsAsSet)
+TEST(Vic3WorldCountriesCountryImporter, NumberIsAsSet)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const auto country = CountryImporter{}.ImportCountry(42, input, {});
@@ -21,7 +21,7 @@ TEST(Vic3WorldCountriesCountryImporter, NumberIsAsSet)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
+TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const auto country = CountryImporter{}.ImportCountry(0, input, {});
@@ -45,7 +45,7 @@ TEST(Vic3WorldCountriesCountryImporter, DefaultsAreDefaulted)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
+TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -82,7 +82,7 @@ TEST(Vic3WorldCountriesCountryImporter, ItemsCanBeInput)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, LongSentinelValueMapsToNegativeOne)
+TEST(Vic3WorldCountriesCountryImporter, LongSentinelValueMapsToNegativeOne)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -97,7 +97,7 @@ TEST(Vic3WorldCountriesCountryImporter, LongSentinelValueMapsToNegativeOne)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, Pre1_5DynamicsCanBeImported)
+TEST(Vic3WorldCountriesCountryImporter, Pre1_5DynamicsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -112,7 +112,7 @@ TEST(Vic3WorldCountriesCountryImporter, Pre1_5DynamicsCanBeImported)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, ColorCanBeFromColorDefinitions)
+TEST(Vic3WorldCountriesCountryImporter, ColorCanBeFromColorDefinitions)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -125,7 +125,7 @@ TEST(Vic3WorldCountriesCountryImporter, ColorCanBeFromColorDefinitions)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, MultipleCountriesCanBeImported)
+TEST(Vic3WorldCountriesCountryImporter, MultipleCountriesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    CountryImporter country_importer;
 
@@ -154,7 +154,7 @@ TEST(Vic3WorldCountriesCountryImporter, MultipleCountriesCanBeImported)
    EXPECT_EQ(country_two.value_or(Country({})).GetCapitalState(), std::nullopt);
 }
 
-TEST(Vic3WorldCountriesCountryImporter, CivilWarDetected)
+TEST(Vic3WorldCountriesCountryImporter, CivilWarDetected)  // NOLINT(cert-err58-cpp)
 {
    CountryImporter country_importer;
 
@@ -171,7 +171,7 @@ TEST(Vic3WorldCountriesCountryImporter, CivilWarDetected)
    EXPECT_TRUE(country_one.value_or(Country({})).IsCivilWarCountry());
 }
 
-TEST(Vic3WorldCountriesCountryImporter, ActiveLawsCanBeSet)
+TEST(Vic3WorldCountriesCountryImporter, ActiveLawsCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    Country country({});
    country.SetActiveLaws({"test_law_one", "test_law_two"});
@@ -180,7 +180,7 @@ TEST(Vic3WorldCountriesCountryImporter, ActiveLawsCanBeSet)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, LastElectionCanBeSet)
+TEST(Vic3WorldCountriesCountryImporter, LastElectionCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    Country country({});
    country.SetLastElection(date{"1929.9.9"});
@@ -190,7 +190,7 @@ TEST(Vic3WorldCountriesCountryImporter, LastElectionCanBeSet)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, CharacterIdsCanBeSet)
+TEST(Vic3WorldCountriesCountryImporter, CharacterIdsCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    Country country({});
    country.SetCharacterIds({1, 2, 3});
@@ -199,7 +199,7 @@ TEST(Vic3WorldCountriesCountryImporter, CharacterIdsCanBeSet)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, IgIdsCanBeAdded)
+TEST(Vic3WorldCountriesCountryImporter, IgIdsCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    Country country({});
    country.AddInterestGroupId(1);
@@ -210,7 +210,7 @@ TEST(Vic3WorldCountriesCountryImporter, IgIdsCanBeAdded)
 }
 
 
-TEST(Vic3WorldCountriesCountryImporter, DeadCountriesAreImported)
+TEST(Vic3WorldCountriesCountryImporter, DeadCountriesAreImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -224,7 +224,7 @@ TEST(Vic3WorldCountriesCountryImporter, DeadCountriesAreImported)
    EXPECT_TRUE(country.value_or(Country({})).IsDead());
 }
 
-TEST(Vic3WorldCountriesCountryImporter, CountersSectionParsed)
+TEST(Vic3WorldCountriesCountryImporter, CountersSectionParsed)  // NOLINT(cert-err58-cpp)
 {
    CountryImporter country_importer;
 

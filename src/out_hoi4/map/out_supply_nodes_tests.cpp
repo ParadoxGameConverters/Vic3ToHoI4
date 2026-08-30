@@ -10,13 +10,13 @@
 namespace out
 {
 
-TEST(Outhoi4MapOutsupplynodesTests, ExceptionThrownOnBadPath)
+TEST(Outhoi4MapOutsupplynodesTests, ExceptionThrownOnBadPath)  // NOLINT(cert-err58-cpp)
 {
    ASSERT_THROW(OutputSupplyNodes("OutHoI4Tests/ExceptionThrownOnBadPath", std::set<int>{}), std::runtime_error);
 }
 
 
-TEST(Outhoi4MapOutsupplynodesTests, SupplyNodesAreOutput)
+TEST(Outhoi4MapOutsupplynodesTests, SupplyNodesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    std::filesystem::create_directories("output/Outhoi4MapOutsupplynodesTests/SupplyNodesAreOutput/map");
 

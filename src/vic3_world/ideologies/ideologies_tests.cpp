@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldIdeologiesIdeologiesTests, NoIdeologiesNoApprovals)
+TEST(Vic3worldIdeologiesIdeologiesTests, NoIdeologiesNoApprovals)  // NOLINT(cert-err58-cpp)
 {
    const Ideologies ideologies;
 
@@ -20,7 +20,7 @@ TEST(Vic3worldIdeologiesIdeologiesTests, NoIdeologiesNoApprovals)
 }
 
 
-TEST(Vic3worldIdeologiesIdeologiesTests, MissingIdeologiesNoApprovals)
+TEST(Vic3worldIdeologiesIdeologiesTests, MissingIdeologiesNoApprovals)  // NOLINT(cert-err58-cpp)
 {
    const Ideologies ideologies;
 
@@ -31,7 +31,7 @@ TEST(Vic3worldIdeologiesIdeologiesTests, MissingIdeologiesNoApprovals)
 }
 
 
-TEST(Vic3worldIdeologiesIdeologiesTests, ApprovalsAreCalculated)
+TEST(Vic3worldIdeologiesIdeologiesTests, ApprovalsAreCalculated)  // NOLINT(cert-err58-cpp)
 {
    const Ideologies ideologies({
        {"test_ideology_one", Ideology({{"test_law_one", 2}, {"test_law_two", 3}})},

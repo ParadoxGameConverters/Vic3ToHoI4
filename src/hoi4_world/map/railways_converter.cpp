@@ -278,7 +278,7 @@ double GetDistanceBetweenProvinces(const std::string& province_one,
 
    const int delta_x = province_one_centermost_point->x - province_two_centermost_point->x;
    const int delta_y = province_one_centermost_point->y - province_two_centermost_point->y;
-   return std::sqrt(delta_x * delta_x + delta_y * delta_y);
+   return std::sqrt((delta_x * delta_x) + (delta_y * delta_y));
 }
 
 
@@ -302,7 +302,7 @@ double DeterminePathCost(const maps::ProvinceDefinitions& hoi4_province_definiti
    }
 
    return static_cast<double>(GetCostForTerrainType(*possible_current_terrain_type) +
-                              GetCostForTerrainType(*possible_neighbor_terrain_type) / 2.0F) *
+                              (GetCostForTerrainType(*possible_neighbor_terrain_type) / 2.0F)) *
           GetDistanceBetweenProvinces(neighbor_number, last_province, hoi4_map_data);
 }
 

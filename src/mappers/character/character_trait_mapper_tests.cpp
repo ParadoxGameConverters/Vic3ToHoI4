@@ -12,7 +12,7 @@
 namespace mappers
 {
 
-TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsBasicAdmirals)
+TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsBasicAdmirals)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -27,7 +27,7 @@ TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsBasicAdmirals)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsBasicGenerals)
+TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsBasicGenerals)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -43,7 +43,7 @@ TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsBasicGenerals)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsBasicFieldMarshals)
+TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsBasicFieldMarshals)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -59,7 +59,7 @@ TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsBasicFieldMarshals)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsTraitlessSpies)
+TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsTraitlessSpies)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -67,7 +67,7 @@ TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsTraitlessSpies)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsTraitlessAdvisors)
+TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsTraitlessAdvisors)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -75,7 +75,7 @@ TEST(MappersCharacterCharactertraitmapper, NoMappingsReturnsTraitlessAdvisors)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, AdmiralDataIsMapped)
+TEST(MappersCharacterCharactertraitmapper, AdmiralDataIsMapped)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -90,7 +90,7 @@ TEST(MappersCharacterCharactertraitmapper, AdmiralDataIsMapped)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, GeneralDataIsMapped)
+TEST(MappersCharacterCharactertraitmapper, GeneralDataIsMapped)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -106,7 +106,7 @@ TEST(MappersCharacterCharactertraitmapper, GeneralDataIsMapped)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, FieldMarshalDataIsMapped)
+TEST(MappersCharacterCharactertraitmapper, FieldMarshalDataIsMapped)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -122,7 +122,7 @@ TEST(MappersCharacterCharactertraitmapper, FieldMarshalDataIsMapped)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, SpyDataIsMapped)
+TEST(MappersCharacterCharactertraitmapper, SpyDataIsMapped)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -131,7 +131,7 @@ TEST(MappersCharacterCharactertraitmapper, SpyDataIsMapped)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, AdvisorDataIsMapped)
+TEST(MappersCharacterCharactertraitmapper, AdvisorDataIsMapped)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -142,7 +142,7 @@ TEST(MappersCharacterCharactertraitmapper, AdvisorDataIsMapped)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, AdvisorsUseHighestScoringTrait)
+TEST(MappersCharacterCharactertraitmapper, AdvisorsUseHighestScoringTrait)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -151,7 +151,7 @@ TEST(MappersCharacterCharactertraitmapper, AdvisorsUseHighestScoringTrait)
        testing::UnorderedElementsAre("fortification_engineer"));
 }
 
-TEST(MappersCharacterCharactertraitmapper, AdvisorsUseRarityAsTiebreaker)
+TEST(MappersCharacterCharactertraitmapper, AdvisorsUseRarityAsTiebreaker)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -166,7 +166,7 @@ TEST(MappersCharacterCharactertraitmapper, AdvisorsUseRarityAsTiebreaker)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, AdmiralSkillsAreClampedToOne)
+TEST(MappersCharacterCharactertraitmapper, AdmiralSkillsAreClampedToOne)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");
@@ -181,7 +181,7 @@ TEST(MappersCharacterCharactertraitmapper, AdmiralSkillsAreClampedToOne)
 }
 
 
-TEST(MappersCharacterCharactertraitmapper, GeneralSkillsAreClampedToOne)
+TEST(MappersCharacterCharactertraitmapper, GeneralSkillsAreClampedToOne)  // NOLINT(cert-err58-cpp)
 {
    const CharacterTraitMapper character_trait_mapper =
        ImportCharacterTraitMapper("test_files/configurables/character_traits.txt");

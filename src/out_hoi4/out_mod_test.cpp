@@ -15,13 +15,14 @@
 
 
 using std::filesystem::create_directories;
+using std::filesystem::remove;
 using std::filesystem::remove_all;
 
 
 namespace out
 {
 
-TEST(OutHoi4OutModTest, ModFolderIsCleared)
+TEST(OutHoi4OutModTest, ModFolderIsCleared)  // NOLINT(cert-err58-cpp)
 {
    remove_all("output/test_output");
    ASSERT_TRUE(create_directories("output/test_output"));
@@ -40,7 +41,7 @@ TEST(OutHoi4OutModTest, ModFolderIsCleared)
 }
 
 
-TEST(OutHoi4OutModTest, FolderIsNotLoggedWhenNotCleared)
+TEST(OutHoi4OutModTest, FolderIsNotLoggedWhenNotCleared)  // NOLINT(cert-err58-cpp)
 {
    EXPECT_FALSE(commonItems::DoesFolderExist("output/test_output"));
 
@@ -56,10 +57,10 @@ TEST(OutHoi4OutModTest, FolderIsNotLoggedWhenNotCleared)
 }
 
 
-TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
+TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)  // NOLINT(cert-err58-cpp)
 {
    ClearOutputFolder("status_test_output");
-   remove("output/status_test_output.mod");
+   std::filesystem::remove("output/status_test_output.mod");
 
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -77,20 +78,20 @@ TEST(OutHoi4OutModTest, StatusIsLoggedWhenWritingMod)
 }
 
 
-TEST(OutHoi4OutModTest, ModFolderIsCreated)
+TEST(OutHoi4OutModTest, ModFolderIsCreated)  // NOLINT(cert-err58-cpp)
 {
    ClearOutputFolder("mod_folder_test_output");
-   remove("output/mod_folder_test_output.mod");
+   std::filesystem::remove("output/mod_folder_test_output.mod");
    OutputMod("mod_folder_test_output", GameVersion());
 
    EXPECT_TRUE(commonItems::DoesFolderExist("output/mod_folder_test_output"));
 }
 
 
-TEST(OutHoi4OutModTest, ModFileIsCreated)
+TEST(OutHoi4OutModTest, ModFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    ClearOutputFolder("mod_file_test_output");
-   remove("output/mod_file_test_output.mod");
+   std::filesystem::remove("output/mod_file_test_output.mod");
    OutputMod("mod_file_test_output", GameVersion());
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/mod_file_test_output"));
@@ -121,10 +122,10 @@ TEST(OutHoi4OutModTest, ModFileIsCreated)
 }
 
 
-TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
+TEST(OutHoi4OutModTest, DescriptorFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    ClearOutputFolder("descriptor_file_test_output");
-   remove("output/descriptor_file_test_output.mod");
+   std::filesystem::remove("output/descriptor_file_test_output.mod");
    OutputMod("descriptor_file_test_output", GameVersion());
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/descriptor_file_test_output"));
@@ -155,10 +156,10 @@ TEST(OutHoi4OutModTest, DescriptorFileIsCreated)
 }
 
 
-TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)
+TEST(OutHoi4OutModTest, SupportedVersionIsFromSuppliedVersion)  // NOLINT(cert-err58-cpp)
 {
    ClearOutputFolder("version_test_output");
-   remove("output/version_test_output.mod");
+   std::filesystem::remove("output/version_test_output.mod");
    OutputMod("version_test_output", GameVersion("42.13"));
 
    ASSERT_TRUE(commonItems::DoesFolderExist("output/version_test_output"));

@@ -25,6 +25,11 @@ Role::Role(const Role& rhs)
 
 Role& Role::operator=(const Role& other)
 {
+   if (this == &other)
+   {
+      return *this;
+   }
+
    name_ = other.name_;
    category_ = other.category_;
    trigger_ = other.trigger_->Copy();

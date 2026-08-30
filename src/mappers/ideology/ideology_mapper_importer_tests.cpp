@@ -11,7 +11,7 @@
 namespace mappers
 {
 
-TEST(MappersIdeologyIdeologyMapperImporterTests, RulesCanBeImported)
+TEST(MappersIdeologyIdeologyMapperImporterTests, RulesCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const IdeologyMapper ideology_mapper = ImportIdeologyMapper("test_files/mappers/ideology/ideology_mappings.txt");
 

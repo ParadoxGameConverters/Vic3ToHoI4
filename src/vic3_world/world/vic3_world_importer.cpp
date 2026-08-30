@@ -62,7 +62,7 @@ std::string ReadSave(const path& save_filename)
    Log(LogLevel::Info) << "  -> Opening save";
    std::ifstream save_file(save_filename, std::ios::in | std::ios::binary);
    Log(LogLevel::Info) << "  -> Getting save size";
-   const auto save_size = static_cast<std::basic_string<char>::size_type>(file_size(save_filename));
+   const auto save_size = static_cast<std::basic_string<char>::size_type>(file_size(save_filename));  // NOLINT
    Log(LogLevel::Info) << "  -> Getting string text";
    std::string save_string(save_size, '\0');
    save_file.read(save_string.data(), static_cast<std::streamsize>(save_size));
@@ -245,7 +245,7 @@ void AssignCharactersToCountries(const std::map<int, vic3::Character>& character
 {
    if (country_character_map.empty())
    {
-      for (auto& [character_id, character]: characters)
+      for (const auto& [character_id, character]: characters)
       {
          auto possible_country_id = character.GetOriginCountryId();
          if (possible_country_id)
@@ -460,7 +460,7 @@ vic3::World vic3::ImportWorld(const configuration::Configuration& configuration,
 {
    WorldOptions world_options;
    Log(LogLevel::Info) << "*** Hello Vic3, loading World. ***";
-   std::string save_string = ReadSave(configuration.save_game);
+   std::string save_string = ReadSave(configuration.save_game);  // NOLINT
    Log(LogLevel::Info) << "  -> Parsing save";
    const rakaly::GameFile save = rakaly::parseVic3(save_string);
 

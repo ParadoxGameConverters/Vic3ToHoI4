@@ -12,7 +12,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldLocalizationsLocalizationsconverter, NoCountryMappingsNoCountryLocalizations)
+TEST(Hoi4worldLocalizationsLocalizationsconverter, NoCountryMappingsNoCountryLocalizations)  // NOLINT(cert-err58-cpp)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
    commonItems::LocalizationBlock block_one("VIC", "english");
@@ -32,6 +32,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoCountryMappingsNoCountryLoc
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldLocalizationsLocalizationsconverter, NoVic3LocalizationsNoHoi4CountryLocalizations)
 {
    const commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
@@ -53,7 +54,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoVic3LocalizationsNoHoi4Coun
 }
 
 
-TEST(Hoi4worldLocalizationsLocalizationsconverter, CountryLocalizationsCanBeConverted)
+TEST(Hoi4worldLocalizationsLocalizationsconverter, CountryLocalizationsCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
    commonItems::LocalizationBlock block_one("VIC", "english");
@@ -123,7 +124,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, CountryLocalizationsCanBeConv
 }
 
 
-TEST(Hoi4worldLocalizationsLocalizationsconverter, DynamicCountryLocalizationsCanBeConverted)
+TEST(Hoi4worldLocalizationsLocalizationsconverter, DynamicCountryLocalizationsCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
 
@@ -261,7 +262,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, DynamicCountryLocalizationsCa
 }
 
 
-TEST(Hoi4worldLocalizationsLocalizationsconverter, NoStateNameMappingsNoStateLocalizations)
+TEST(Hoi4worldLocalizationsLocalizationsconverter, NoStateNameMappingsNoStateLocalizations)  // NOLINT(cert-err58-cpp)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
    commonItems::LocalizationBlock block_one("VIC", "english");
@@ -281,6 +282,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoStateNameMappingsNoStateLoc
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldLocalizationsLocalizationsconverter, NoVic3LocalizationsNoHoi4StateLocalizations)
 {
    const commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
@@ -302,7 +304,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoVic3LocalizationsNoHoi4Stat
 }
 
 
-TEST(Hoi4worldLocalizationsLocalizationsconverter, StateLocalizationsCanBeConverted)
+TEST(Hoi4worldLocalizationsLocalizationsconverter, StateLocalizationsCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
    commonItems::LocalizationBlock block_one("REGION_ONE", "english");
@@ -339,7 +341,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, StateLocalizationsCanBeConver
 }
 
 
-TEST(Hoi4worldLocalizationsLocalizationsconverter, NoRegionsNoVictoryPointLocalizations)
+TEST(Hoi4worldLocalizationsLocalizationsconverter, NoRegionsNoVictoryPointLocalizations)  // NOLINT(cert-err58-cpp)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
    commonItems::LocalizationBlock block_one("HUB_NAME_REGION_ONE_city", "english");
@@ -370,6 +372,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoRegionsNoVictoryPointLocali
 }
 
 
+// NOLINTNEXTLINE(cert-err58-cpp)
 TEST(Hoi4worldLocalizationsLocalizationsconverter, NoSignificantProvincesNoVictoryPointLocalizations)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
@@ -403,7 +406,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, NoSignificantProvincesNoVicto
 }
 
 
-TEST(Hoi4worldLocalizationsLocalizationsconverter, VictoryPointLocalizationsCanBeConverted)
+TEST(Hoi4worldLocalizationsLocalizationsconverter, VictoryPointLocalizationsCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
    commonItems::LocalizationBlock block_one("HUB_NAME_REGION_ONE_city", "english");
@@ -447,7 +450,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, VictoryPointLocalizationsCanB
 }
 
 
-TEST(Hoi4worldLocalizationsLocalizationsconverter, SkippedVictoryPointLocalizationsAreLogged)
+TEST(Hoi4worldLocalizationsLocalizationsconverter, SkippedVictoryPointLocalizationsAreLogged)  // NOLINT(cert-err58-cpp)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
    commonItems::LocalizationBlock block_one("HUB_NAME_REGION_ONE_city", "english");
@@ -479,7 +482,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, SkippedVictoryPointLocalizati
 }
 
 
-TEST(Hoi4worldLocalizationsLocalizationsconverter, CharacterLocalizationsCanBeConverted)
+TEST(Hoi4worldLocalizationsLocalizationsconverter, CharacterLocalizationsCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
    commonItems::LocalizationBlock block_one("Doug", "english");
@@ -523,7 +526,7 @@ TEST(Hoi4worldLocalizationsLocalizationsconverter, CharacterLocalizationsCanBeCo
 }
 
 
-TEST(Hoi4worldLocalizationsLocalizationsconverter, IdeaLocalizationsCanBeConverted)
+TEST(Hoi4worldLocalizationsLocalizationsconverter, IdeaLocalizationsCanBeConverted)  // NOLINT(cert-err58-cpp)
 {
    commonItems::LocalizationDatabase vic3_localizations("english", {"spanish"});
    commonItems::LocalizationBlock block_one("male", "english");

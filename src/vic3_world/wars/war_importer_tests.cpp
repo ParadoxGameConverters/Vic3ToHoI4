@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldWarImporter, WarCanBeImported)
+TEST(Vic3WorldWarImporter, WarCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    WarImporter importer;
    std::stringstream input;
@@ -33,7 +33,7 @@ TEST(Vic3WorldWarImporter, WarCanBeImported)
 }
 
 
-TEST(Vic3WorldWarImporter, MissingWarNumberGivesNullopt)
+TEST(Vic3WorldWarImporter, MissingWarNumberGivesNullopt)  // NOLINT(cert-err58-cpp)
 {
    WarImporter importer;
    std::stringstream input;
@@ -48,7 +48,7 @@ TEST(Vic3WorldWarImporter, MissingWarNumberGivesNullopt)
 }
 
 
-TEST(Vic3WorldWarImporter, InvalidWarNumberGivesNullopt)
+TEST(Vic3WorldWarImporter, InvalidWarNumberGivesNullopt)  // NOLINT(cert-err58-cpp)
 {
    WarImporter importer;
    std::stringstream input;
@@ -64,7 +64,7 @@ TEST(Vic3WorldWarImporter, InvalidWarNumberGivesNullopt)
 }
 
 
-TEST(Vic3WorldWarImporter, MissingInitiatorGivesNullopt)
+TEST(Vic3WorldWarImporter, MissingInitiatorGivesNullopt)  // NOLINT(cert-err58-cpp)
 {
    WarImporter importer;
    std::stringstream input;
@@ -79,7 +79,7 @@ TEST(Vic3WorldWarImporter, MissingInitiatorGivesNullopt)
 }
 
 
-TEST(Vic3WorldWarImporter, MissingTargetGivesNullopt)
+TEST(Vic3WorldWarImporter, MissingTargetGivesNullopt)  // NOLINT(cert-err58-cpp)
 {
    WarImporter importer;
    std::stringstream input;
@@ -94,7 +94,7 @@ TEST(Vic3WorldWarImporter, MissingTargetGivesNullopt)
 }
 
 
-TEST(Vic3WorldWarImporter, AttackersAreExtracted)
+TEST(Vic3WorldWarImporter, AttackersAreExtracted)  // NOLINT(cert-err58-cpp)
 {
    WarImporter importer;
    std::stringstream input;
@@ -114,7 +114,7 @@ TEST(Vic3WorldWarImporter, AttackersAreExtracted)
 }
 
 
-TEST(Vic3WorldWarImporter, DefendersAreExtracted)
+TEST(Vic3WorldWarImporter, DefendersAreExtracted)  // NOLINT(cert-err58-cpp)
 {
    WarImporter importer;
    std::stringstream input;

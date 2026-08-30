@@ -22,6 +22,9 @@
 namespace hoi4
 {
 
+constexpr int kLastElectionYear = 1932;
+constexpr int kMaxIdeologySupport = 100;
+
 struct NameList
 {
    std::set<std::string> male_names;
@@ -42,6 +45,7 @@ struct Unit
    std::partial_ordering operator<=>(const Unit&) const = default;
 };
 
+
 struct CountryOptions
 {
    int source_country_number;
@@ -52,8 +56,8 @@ struct CountryOptions
    std::set<std::string> primary_cultures;
    std::string ideology = "neutrality";
    std::string sub_ideology = "despotism";
-   std::map<std::string, int> ideology_support;
-   date last_election{1933, 1, 1};
+   std::map<std::string, int> ideology_support{{"neutrality", kMaxIdeologySupport}};
+   date last_election{kLastElectionYear, 1, 1};
    bool has_elections;
    Technologies technologies;
    std::vector<EquipmentVariant> legacy_ship_variants;
@@ -78,6 +82,7 @@ struct CountryOptions
    std::vector<TaskForce> task_forces;
    std::vector<War> wars;
 };
+
 
 class Country
 {
@@ -147,7 +152,7 @@ class Country
    [[nodiscard]] const std::optional<std::string>& GetOverlord() const { return overlord_; }
    [[nodiscard]] int GetStartingResearchSlots() const { return starting_research_slots_; }
    [[nodiscard]] float GetStability() const { return stability_; }
-   [[nodiscard]] float GetWarSupport() const { return 0.60F; }
+   [[nodiscard]] static float GetWarSupport() { return 0.60F; }
    [[nodiscard]] const std::vector<TaskForce>& GetTaskForces() const { return task_forces_; }
    [[nodiscard]] const std::vector<Unit>& GetUnits() const { return units_; }
    [[nodiscard]] const std::vector<War>& GetWars() const { return wars_; }
@@ -174,8 +179,8 @@ class Country
    std::set<std::string> primary_cultures_;
    std::string ideology_ = "neutrality";
    std::string sub_ideology_ = "despotism";
-   std::map<std::string, int> ideology_support_{{"neutrality", 100}};
-   date last_election_{1933, 1, 1};
+   std::map<std::string, int> ideology_support_{{"neutrality", kMaxIdeologySupport}};
+   date last_election_{kLastElectionYear, 1, 1};
    bool has_elections_ = false;
    Technologies technologies_;
    std::vector<EquipmentVariant> legacy_ship_variants_;

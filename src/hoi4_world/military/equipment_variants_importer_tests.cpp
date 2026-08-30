@@ -11,7 +11,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldMilitaryEquipmentvariantimporterTests, EquipmentVariantsCanBeImported)
+TEST(Hoi4worldMilitaryEquipmentvariantimporterTests, EquipmentVariantsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const std::vector<EquipmentVariant> variants =
        ImportEquipmentVariants("test_files/hoi4_world/military/EquipmentVariantsCanBeImported.txt");

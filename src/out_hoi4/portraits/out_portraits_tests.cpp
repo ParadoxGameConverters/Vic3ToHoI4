@@ -12,7 +12,7 @@
 
 namespace out
 {
-TEST(Outhoi4PortraitsTests, PortraitFileIsCreated)
+TEST(Outhoi4PortraitsTests, PortraitFileIsCreated)  // NOLINT(cert-err58-cpp)
 {
    std::filesystem::create_directories("output/PortraitFileIsCreated/portraits");
 

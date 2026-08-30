@@ -15,6 +15,8 @@ class NamedType
    [[nodiscard]] T& Get() { return value_; }
    [[nodiscard]] T const& Get() const { return value_; }
 
+   std::partial_ordering operator<=>(const NamedType&) const = default;
+
   private:
    T value_;
 };

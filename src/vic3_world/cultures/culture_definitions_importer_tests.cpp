@@ -11,7 +11,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldCulturesCultureDefinitionsImporter, NoDefinitionsByDefault)
+TEST(Vic3WorldCulturesCultureDefinitionsImporter, NoDefinitionsByDefault)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/cultures/no_definitions_by_default/game", {});
    const auto culture_definitions = ImportCultureDefinitions(mod_filesystem);
@@ -20,60 +20,69 @@ TEST(Vic3WorldCulturesCultureDefinitionsImporter, NoDefinitionsByDefault)
 }
 
 
-TEST(Vic3WorldCulturesCultureDefinitionsImporter, DefinitionsCanBeImported)
+TEST(Vic3WorldCulturesCultureDefinitionsImporter, DefinitionsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const commonItems::ModFilesystem mod_filesystem("test_files/vic3_world/cultures/definitions_can_be_imported/game",
        {});
    const auto culture_definitions = ImportCultureDefinitions(mod_filesystem);
 
-   CultureDefinition one("north_german",
-       NameList{
-           .male_common_first = {"Wolfgang"},
-           .female_common_first = {"Friederike"},
-           .common_last = {"Olbers"},
-           .noble_last = {"von_Jons"},
-           .male_regal_first = {"Oskar"},
-           .female_regal_first = {"Sophie"},
-       },
-       "protestant",
-       {"german_speaking", "european_heritage"},
-       {"tradition_order", "tradition_orderly"},
-       {"obsession_rules", "obsession_punctuality"},
-       "heritage_germanic",
-       "language_germanophone",
-       {"caucasian"});
+   CultureDefinition one({
+       .name = "north_german",
+       .name_list =
+           NameList{
+               .male_common_first = {"Wolfgang"},
+               .female_common_first = {"Friederike"},
+               .common_last = {"Olbers"},
+               .noble_last = {"von_Jons"},
+               .male_regal_first = {"Oskar"},
+               .female_regal_first = {"Sophie"},
+           },
+       .religion = "protestant",
+       .traits = {"german_speaking", "european_heritage"},
+       .traditions = {"tradition_order", "tradition_orderly"},
+       .obsessions = {"obsession_rules", "obsession_punctuality"},
+       .heritage = "heritage_germanic",
+       .language = "language_germanophone",
+       .ethnicities = {"caucasian"},
+   });
 
-   CultureDefinition two("south_german",
-       NameList{
-           .male_common_first = {"Otto"},
-           .female_common_first = {"Helmtrude"},
-           .common_last = {"Auerbach"},
-           .noble_last = {"von_Xylander"},
-           .male_regal_first = {"Lugwig"},
-           .female_regal_first = {"Charlotte"},
-       },
-       "catholic",
-       {"german_speaking", "european_heritage"},
-       {"tradition_order", "tradition_orderly"},
-       {"obsession_rules", "obsession_punctuality"},
-       "heritage_germanic",
-       "language_germanophone",
-       {"caucasian"});
+   CultureDefinition two({
+       .name = "south_german",
+       .name_list =
+           NameList{
+               .male_common_first = {"Otto"},
+               .female_common_first = {"Helmtrude"},
+               .common_last = {"Auerbach"},
+               .noble_last = {"von_Xylander"},
+               .male_regal_first = {"Lugwig"},
+               .female_regal_first = {"Charlotte"},
+           },
+       .religion = "catholic",
+       .traits = {"german_speaking", "european_heritage"},
+       .traditions = {"tradition_order", "tradition_orderly"},
+       .obsessions = {"obsession_rules", "obsession_punctuality"},
+       .heritage = "heritage_germanic",
+       .language = "language_germanophone",
+       .ethnicities = {"caucasian"},
+   });
 
-   CultureDefinition three("welsh",
-       NameList{
-           .male_common_first = {"Shadrach"},
-           .female_common_first = {"Gwenllian"},
-           .common_last = {"Insole"},
-           .noble_last = {"Talbot"},
-       },
-       "protestant",
-       {"anglophone", "celtic_people", "european_heritage"},
-       {},
-       {},
-       "",
-       "",
-       {"caucasian", "welshy"});
+   CultureDefinition three({
+       .name = "welsh",
+       .name_list =
+           NameList{
+               .male_common_first = {"Shadrach"},
+               .female_common_first = {"Gwenllian"},
+               .common_last = {"Insole"},
+               .noble_last = {"Talbot"},
+           },
+       .religion = "protestant",
+       .traits = {"anglophone", "celtic_people", "european_heritage"},
+       .traditions = {},
+       .obsessions = {},
+       .heritage = "",
+       .language = "",
+       .ethnicities = {"caucasian", "welshy"},
+   });
 
    EXPECT_THAT(culture_definitions,
        testing::UnorderedElementsAre(testing::Pair("north_german", one),

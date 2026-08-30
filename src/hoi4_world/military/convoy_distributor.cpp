@@ -21,14 +21,14 @@ void ConvoyDistributor::CalculateStateWeights(const vic3::World& source_world)
       }
       const auto& methods = building->GetProductionMethods();
       float pm_weight = 0;
-      for (const auto pm: methods)
+      for (const auto production_method: methods)
       {
-         if (!pm_weights_.contains(pm))
+         if (!pm_weights_.contains(production_method))
          {
-            Log(LogLevel::Warning) << "Unhandled port production method \"" << pm << "\"";
+            Log(LogLevel::Warning) << "Unhandled port production method \"" << production_method << "\"";
             continue;
          }
-         pm_weight = pm_weights_[pm];
+         pm_weight = pm_weights_[production_method];
          break;
       }
       auto state_weight = building->GetStaffingLevel() * pm_weight;

@@ -10,7 +10,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4worldFocustreesFocusimporterTests, DefaultsAreDefaulted)
+TEST(Hoi4worldFocustreesFocusimporterTests, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
 
@@ -41,7 +41,7 @@ TEST(Hoi4worldFocustreesFocusimporterTests, DefaultsAreDefaulted)
 }
 
 
-TEST(Hoi4worldFocustreesFocusimporterTests, ItemsCanBeImported)
+TEST(Hoi4worldFocustreesFocusimporterTests, ItemsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

@@ -20,7 +20,7 @@ namespace out
 {
 
 
-TEST(Outhoi4MapStrategicregionTests, ExceptionWhenFileNotOpened)
+TEST(Outhoi4MapStrategicregionTests, ExceptionWhenFileNotOpened)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::StrategicRegion strategic_region_one({.id = 1});
 
@@ -28,7 +28,7 @@ TEST(Outhoi4MapStrategicregionTests, ExceptionWhenFileNotOpened)
 }
 
 
-TEST(Outhoi4MapStrategicregionTests, FileIsFromFilename)
+TEST(Outhoi4MapStrategicregionTests, FileIsFromFilename)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/FileIsFromFilename/map/strategicregions");
 
@@ -43,7 +43,7 @@ TEST(Outhoi4MapStrategicregionTests, FileIsFromFilename)
 }
 
 
-TEST(Outhoi4MapStrategicregionTests, BasicsAreOutput)
+TEST(Outhoi4MapStrategicregionTests, BasicsAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/BasicsAreOutput/map/strategicregions");
 
@@ -72,7 +72,7 @@ TEST(Outhoi4MapStrategicregionTests, BasicsAreOutput)
 }
 
 
-TEST(Outhoi4MapStrategicregionTests, IdIsOutput)
+TEST(Outhoi4MapStrategicregionTests, IdIsOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/IdIsOutput/map/strategicregions");
 
@@ -101,7 +101,7 @@ TEST(Outhoi4MapStrategicregionTests, IdIsOutput)
 }
 
 
-TEST(Outhoi4MapStrategicregionTests, NameIsOutput)
+TEST(Outhoi4MapStrategicregionTests, NameIsOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NameIsOutput/map/strategicregions");
 
@@ -131,7 +131,7 @@ TEST(Outhoi4MapStrategicregionTests, NameIsOutput)
 }
 
 
-TEST(Outhoi4MapStrategicregionTests, OldProvincesAreNotOutput)
+TEST(Outhoi4MapStrategicregionTests, OldProvincesAreNotOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/OldProvincesAreNotOutput/map/strategicregions");
 
@@ -162,7 +162,7 @@ TEST(Outhoi4MapStrategicregionTests, OldProvincesAreNotOutput)
 }
 
 
-TEST(Outhoi4MapStrategicregionTests, NewProvincesAreOutput)
+TEST(Outhoi4MapStrategicregionTests, NewProvincesAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NewProvincesAreOutput/map/strategicregions");
 
@@ -194,7 +194,7 @@ TEST(Outhoi4MapStrategicregionTests, NewProvincesAreOutput)
 }
 
 
-TEST(Outhoi4MapStrategicregionTests, StaticModifiersAreOutput)
+TEST(Outhoi4MapStrategicregionTests, StaticModifiersAreOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/StaticModifiersAreOutput/map/strategicregions");
 
@@ -231,7 +231,7 @@ TEST(Outhoi4MapStrategicregionTests, StaticModifiersAreOutput)
 }
 
 
-TEST(Outhoi4MapStrategicregionTests, NavalTerrainIsOutput)
+TEST(Outhoi4MapStrategicregionTests, NavalTerrainIsOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/NavalTerrainIsOutput/map/strategicregions");
 
@@ -262,7 +262,7 @@ TEST(Outhoi4MapStrategicregionTests, NavalTerrainIsOutput)
 }
 
 
-TEST(Outhoi4MapStrategicregionTests, WeatherIsOutput)
+TEST(Outhoi4MapStrategicregionTests, WeatherIsOutput)  // NOLINT(cert-err58-cpp)
 {
    create_directories("output/WeatherIsOutput/map/strategicregions");
 

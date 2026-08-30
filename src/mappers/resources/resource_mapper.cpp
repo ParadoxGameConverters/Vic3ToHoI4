@@ -2,21 +2,29 @@
 
 #include <external/commonItems/Log.h>
 
+#include <algorithm>
 #include <set>
+
+
 
 namespace
 {
 
-std::set<std::string> seen;
+std::set<std::string>& GetSeenWarnings()
+{
+   static std::set<std::string> seen;
+   return seen;
+};
+
 
 void Warn(const std::string& hoi_resource)
 {
-   if (seen.contains(hoi_resource))
+   if (GetSeenWarnings().contains(hoi_resource))
    {
       return;
    }
    Log(LogLevel::Warning) << "Configuration for " << hoi_resource << " is missing.";
-   seen.insert(hoi_resource);
+   GetSeenWarnings().insert(hoi_resource);
 }
 
 }  // namespace
@@ -48,10 +56,7 @@ float mappers::ResourceMapper::CalculateScore(const std::string& hoi_resource,
    {
       return base;
    }
-   if (bonus > base)
-   {
-      bonus = base;
-   }
+   bonus = std::min(bonus, base);
    bonus /= base;
    bonus *= score.bonus;
    return base * (1.0F + bonus);

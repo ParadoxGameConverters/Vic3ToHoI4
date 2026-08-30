@@ -15,7 +15,7 @@
 namespace out
 {
 
-TEST(Outhoi4MilitaryEquipmentvariant, VariantCanBeOutput)
+TEST(Outhoi4MilitaryEquipmentvariant, VariantCanBeOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::EquipmentVariant variant(hoi4::EquipmentVariantName{"test_variant"},
        hoi4::EquipmentVariantType{"test_type"},
@@ -35,7 +35,7 @@ TEST(Outhoi4MilitaryEquipmentvariant, VariantCanBeOutput)
 }
 
 
-TEST(Outhoi4MilitaryEquipmentvariant, RequiredTechsAreNotOutput)
+TEST(Outhoi4MilitaryEquipmentvariant, RequiredTechsAreNotOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::EquipmentVariant variant(hoi4::EquipmentVariantName{"test_variant"},
        hoi4::EquipmentVariantType{""},
@@ -54,7 +54,7 @@ TEST(Outhoi4MilitaryEquipmentvariant, RequiredTechsAreNotOutput)
 }
 
 
-TEST(Outhoi4MilitaryEquipmentvariant, BlockingTechsAreNotOutput)
+TEST(Outhoi4MilitaryEquipmentvariant, BlockingTechsAreNotOutput)  // NOLINT(cert-err58-cpp)
 {
    const hoi4::EquipmentVariant variant(hoi4::EquipmentVariantName{"test_variant"},
        hoi4::EquipmentVariantType{""},

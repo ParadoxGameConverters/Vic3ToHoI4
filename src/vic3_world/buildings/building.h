@@ -50,8 +50,7 @@ class Building
    Building(std::string type, std::optional<int> state_number, float goods_sales_value):
        type_(std::move(type)),
        state_number_(state_number),
-       goods_sales_value_(goods_sales_value),
-       production_methods_()
+       goods_sales_value_(goods_sales_value)
    {
    }
 

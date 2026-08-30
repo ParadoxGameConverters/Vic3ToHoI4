@@ -10,8 +10,6 @@
 namespace mappers
 {
 
-extern const std::vector<std::string> kFlagFolders;
-
 class FlagMapper
 {
   public:

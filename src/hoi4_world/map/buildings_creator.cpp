@@ -16,6 +16,26 @@ namespace
 
 using DefaultPositions = std::map<std::pair<int, int>, hoi4::BuildingPosition>;
 
+constexpr int kBuildingNameMatchPosition = 2;
+constexpr int kBuildingXCoordinateMatchPosition = 3;
+constexpr int kBuildingYCoordinateMatchPosition = 4;
+constexpr int kBuildingZCoordinateMatchPosition = 5;
+constexpr int kBuildingRotationMatchPosition = 6;
+constexpr int kBuildingConnectingSeaProvinceMatchPosition = 7;
+
+constexpr double kDefaultBuildingHeight = 11.0;
+
+constexpr int kNumAirbasesPerState = 1;
+constexpr int kNumAntiAirPerState = 3;
+constexpr int kNumArmsFactoriesPerState = 6;
+constexpr int kNumIndustrialComplexesPerState = 6;
+constexpr int kNumNuclearReactorsPerState = 1;
+constexpr int kNumSyntheticRefineriesPerState = 1;
+constexpr int kNumRocketSitesPerState = 1;
+constexpr int kNumRadarStationsPerState = 1;
+constexpr int kNumFuelSilosPerState = 1;
+constexpr int kNumStrongholdNetworksPerState = 1;
+
 
 struct AllDefaultPositions
 {
@@ -49,12 +69,12 @@ void ImportDefaultBuilding(const std::smatch& matches, const maps::MapData& map_
    try
    {
       hoi4::BuildingPosition position;
-      position.x_coordinate = stod(matches[3].str());
-      position.y_coordinate = stod(matches[4].str());
-      position.z_coordinate = stod(matches[5].str());
-      position.rotation = stod(matches[6].str());
+      position.x_coordinate = stod(matches[kBuildingXCoordinateMatchPosition].str());
+      position.y_coordinate = stod(matches[kBuildingYCoordinateMatchPosition].str());
+      position.z_coordinate = stod(matches[kBuildingZCoordinateMatchPosition].str());
+      position.rotation = stod(matches[kBuildingRotationMatchPosition].str());
 
-      auto connecting_sea_province = stoi(matches[7].str());
+      auto connecting_sea_province = stoi(matches[kBuildingConnectingSeaProvinceMatchPosition].str());
 
       if (const auto province_name = map_data.GetProvinceName(
               {.x = static_cast<int>(position.x_coordinate), .y = static_cast<int>(position.z_coordinate)});
@@ -78,97 +98,98 @@ void ProcessLine(const std::string& line, const maps::MapData& map_data, AllDefa
    std::smatch matches;
    if (regex_match(line, matches, pattern))
    {
-      if (matches[2] == "air_base")
+      if (matches[kBuildingNameMatchPosition] == "air_base")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_air_bases);
       }
-      else if (matches[2] == "anti_air_building")
+      else if (matches[kBuildingNameMatchPosition] == "anti_air_building")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_anti_airs);
       }
-      else if (matches[2] == "arms_factory")
+      else if (matches[kBuildingNameMatchPosition] == "arms_factory")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_arms_factories);
       }
-      else if (matches[2] == "bunker")
+      else if (matches[kBuildingNameMatchPosition] == "bunker")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_bunkers);
       }
-      else if (matches[2] == "coastal_bunker")
+      else if (matches[kBuildingNameMatchPosition] == "coastal_bunker")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_coastal_bunkers);
       }
-      else if (matches[2] == "dockyard")
+      else if (matches[kBuildingNameMatchPosition] == "dockyard")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_dockyards);
       }
-      else if (matches[2] == "floating_harbor")
+      else if (matches[kBuildingNameMatchPosition] == "floating_harbor")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_floating_harbors);
       }
-      else if (matches[2] == "industrial_complex")
+      else if (matches[kBuildingNameMatchPosition] == "industrial_complex")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_industrial_complexes);
       }
-      else if (matches[2] == "naval_base_spawn")
+      else if (matches[kBuildingNameMatchPosition] == "naval_base_spawn")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_naval_bases);
       }
-      else if (matches[2] == "nuclear_reactor_spawn")
+      else if (matches[kBuildingNameMatchPosition] == "nuclear_reactor_spawn")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_nuclear_reactors);
       }
-      else if (matches[2] == "supply_node")
+      else if (matches[kBuildingNameMatchPosition] == "supply_node")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_supply_nodes);
       }
-      else if (matches[2] == "synthetic_refinery")
+      else if (matches[kBuildingNameMatchPosition] == "synthetic_refinery")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_synthetic_refineries);
       }
-      else if (matches[2] == "rocket_site_spawn")
+      else if (matches[kBuildingNameMatchPosition] == "rocket_site_spawn")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_rocket_sites);
       }
-      else if (matches[2] == "radar_station")
+      else if (matches[kBuildingNameMatchPosition] == "radar_station")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_radar_stations);
       }
-      else if (matches[2] == "fuel_silo")
+      else if (matches[kBuildingNameMatchPosition] == "fuel_silo")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_fuel_silos);
       }
-      else if (matches[2] == "special_project_facility_spawn")
+      else if (matches[kBuildingNameMatchPosition] == "special_project_facility_spawn")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_special_project_facilities);
       }
-      else if (matches[2] == "landmark_spawn")
+      else if (matches[kBuildingNameMatchPosition] == "landmark_spawn")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_landmarks);
       }
-      else if (matches[2] == "stronghold_network")
+      else if (matches[kBuildingNameMatchPosition] == "stronghold_network")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_stronghold_networks);
       }
-      else if (matches[2] == "dam_spawn")
+      else if (matches[kBuildingNameMatchPosition] == "dam_spawn")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_dams);
       }
-      else if (matches[2] == "locks_spawn")
+      else if (matches[kBuildingNameMatchPosition] == "locks_spawn")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_locks);
       }
-      else if (matches[2] == "naval_supply_hub")
+      else if (matches[kBuildingNameMatchPosition] == "naval_supply_hub")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_naval_supply_hub);
       }
-      else if (matches[2] == "naval_headquarters")
+      else if (matches[kBuildingNameMatchPosition] == "naval_headquarters")
       {
          ImportDefaultBuilding(matches, map_data, all_default_positions.default_naval_headquarters);
       }
       else
       {
-         Log(LogLevel::Warning) << fmt::format("Unhandled building type: {}", matches[2].str());
+         Log(LogLevel::Warning) << fmt::format("Unhandled building type: {}",
+             matches[kBuildingNameMatchPosition].str());
       }
    }
 }
@@ -272,7 +293,7 @@ void PlaceBuildingType(const std::vector<hoi4::State>& states,
             const auto centermost_point = province_points->GetCentermostPoint();
             hoi4::BuildingPosition position;
             position.x_coordinate = centermost_point.x;
-            position.y_coordinate = 11.0;
+            position.y_coordinate = kDefaultBuildingHeight;
             position.z_coordinate = centermost_point.y;
             position.rotation = 0;
 
@@ -322,7 +343,7 @@ void AddBunker(int state_id,
       }
 
       position.x_coordinate = possible_position->x;
-      position.y_coordinate = 11.0;
+      position.y_coordinate = kDefaultBuildingHeight;
       position.z_coordinate = possible_position->y;
       position.rotation = 0.0;
    }
@@ -376,7 +397,7 @@ void AddCoastalBunker(int state_id,
       }
 
       position.x_coordinate = possible_position->x;
-      position.y_coordinate = 11.0;
+      position.y_coordinate = kDefaultBuildingHeight;
       position.z_coordinate = possible_position->y;
       position.rotation = 0.0;
    }
@@ -451,11 +472,10 @@ void PlaceDockyards(const std::vector<hoi4::State>& states,
          {
             hoi4::BuildingPosition position;
             position.x_coordinate = centermost_point->x;
-            position.y_coordinate = 11.0;
+            position.y_coordinate = kDefaultBuildingHeight;
             position.z_coordinate = centermost_point->y;
             position.rotation = 0;
             buildings.emplace_back(hoi4::Building({.state_id = state_id, .type = "dockyard", .position = position}));
-            dockyard_placed = true;
             break;
          }
 
@@ -506,7 +526,7 @@ void AddFloatingHarbors(int state_id,
       }
 
       position.x_coordinate = possible_position->x;
-      position.y_coordinate = 11.0;
+      position.y_coordinate = kDefaultBuildingHeight;
       position.z_coordinate = possible_position->y;
       position.rotation = 0.0;
    }
@@ -576,7 +596,7 @@ void AddNavalBase(int state_id,
       }
 
       position.x_coordinate = possible_position->x;
-      position.y_coordinate = 11.0;
+      position.y_coordinate = kDefaultBuildingHeight;
       position.z_coordinate = possible_position->y;
       position.rotation = 0.0;
    }
@@ -638,7 +658,7 @@ void AddSupplyNodes(int state_id,
       }
 
       position.x_coordinate = possible_position->x;
-      position.y_coordinate = 11.0;
+      position.y_coordinate = kDefaultBuildingHeight;
       position.z_coordinate = possible_position->y;
       position.rotation = 0.0;
    }
@@ -672,18 +692,23 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
 
    const auto& actual_coastal_provinces = coastal_provinces.GetCoastalProvinces();
 
-   PlaceBuildingType(states.states, map_data, all_default_positions.default_air_bases, "air_base", 1, buildings);
+   PlaceBuildingType(states.states,
+       map_data,
+       all_default_positions.default_air_bases,
+       "air_base",
+       kNumAirbasesPerState,
+       buildings);
    PlaceBuildingType(states.states,
        map_data,
        all_default_positions.default_anti_airs,
        "anti_air_building",
-       3,
+       kNumAntiAirPerState,
        buildings);
    PlaceBuildingType(states.states,
        map_data,
        all_default_positions.default_arms_factories,
        "arms_factory",
-       6,
+       kNumArmsFactoriesPerState,
        buildings);
    PlaceBunkers(states.states, map_data, all_default_positions.default_bunkers, buildings);
    PlaceCoastalBunkers(states.province_to_state_id_map,
@@ -705,7 +730,7 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        map_data,
        all_default_positions.default_industrial_complexes,
        "industrial_complex",
-       6,
+       kNumIndustrialComplexesPerState,
        buildings);
    PlaceNavalBases(states.province_to_state_id_map,
        actual_coastal_provinces,
@@ -716,28 +741,33 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        map_data,
        all_default_positions.default_nuclear_reactors,
        "nuclear_reactor",
-       1,
+       kNumNuclearReactorsPerState,
        buildings);
    PlaceSupplyNodes(states.province_to_state_id_map, map_data, all_default_positions.default_supply_nodes, buildings);
    PlaceBuildingType(states.states,
        map_data,
        all_default_positions.default_synthetic_refineries,
        "synthetic_refinery",
-       1,
+       kNumSyntheticRefineriesPerState,
        buildings);
    PlaceBuildingType(states.states,
        map_data,
        all_default_positions.default_rocket_sites,
        "rocket_site_spawn",
-       1,
+       kNumRocketSitesPerState,
        buildings);
    PlaceBuildingType(states.states,
        map_data,
        all_default_positions.default_radar_stations,
        "radar_station",
-       1,
+       kNumRadarStationsPerState,
        buildings);
-   PlaceBuildingType(states.states, map_data, all_default_positions.default_fuel_silos, "fuel_silo", 1, buildings);
+   PlaceBuildingType(states.states,
+       map_data,
+       all_default_positions.default_fuel_silos,
+       "fuel_silo",
+       kNumFuelSilosPerState,
+       buildings);
    PlacePredefinedBuildings(states.states,
        all_default_positions.default_special_project_facilities,
        "special_project_facility_spawn",
@@ -747,7 +777,7 @@ hoi4::Buildings PlaceBuildings(const hoi4::States& states,
        map_data,
        all_default_positions.default_stronghold_networks,
        "stronghold_network",
-       1,
+       kNumStrongholdNetworksPerState,
        buildings);
    PlacePredefinedBuildings(states.states, all_default_positions.default_dams, "dam_spawn", buildings);
    PlacePredefinedBuildings(states.states, all_default_positions.default_locks, "locks_spawn", buildings);

@@ -8,7 +8,7 @@ namespace hoi4
 bool TagTrigger::IsValid(const Context& context, [[maybe_unused]] const World& world) const
 {
    const CountryScope* maybe_country = std::get_if<CountryScope>(&context.this_scope);
-   if (!maybe_country)
+   if (maybe_country == nullptr)
    {
       return false;
    }

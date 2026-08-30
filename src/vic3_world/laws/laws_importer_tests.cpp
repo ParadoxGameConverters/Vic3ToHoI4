@@ -11,7 +11,7 @@ namespace vic3
 {
 
 
-TEST(Vic3WorldLawsLawsImporter, NoLawsOnEmptyInput)
+TEST(Vic3WorldLawsLawsImporter, NoLawsOnEmptyInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const std::map<int, std::set<std::string>> laws = ImportLaws(input);
@@ -20,7 +20,7 @@ TEST(Vic3WorldLawsLawsImporter, NoLawsOnEmptyInput)
 }
 
 
-TEST(Vic3WorldLawsLawsImporter, LawsCanBeImported)
+TEST(Vic3WorldLawsLawsImporter, LawsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -52,7 +52,7 @@ TEST(Vic3WorldLawsLawsImporter, LawsCanBeImported)
 }
 
 
-TEST(Vic3WorldLawsLawsImporter, LawsSetAsNoneAreSkipped)
+TEST(Vic3WorldLawsLawsImporter, LawsSetAsNoneAreSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -67,7 +67,7 @@ TEST(Vic3WorldLawsLawsImporter, LawsSetAsNoneAreSkipped)
 }
 
 
-TEST(Vic3WorldLawsLawsImporter, InactiveLawsAreSkipped)
+TEST(Vic3WorldLawsLawsImporter, InactiveLawsAreSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -84,7 +84,7 @@ TEST(Vic3WorldLawsLawsImporter, InactiveLawsAreSkipped)
 }
 
 
-TEST(Vic3WorldLawsLawsImporter, LawsWithOddActiveBlockAreLogged)
+TEST(Vic3WorldLawsLawsImporter, LawsWithOddActiveBlockAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -110,7 +110,7 @@ TEST(Vic3WorldLawsLawsImporter, LawsWithOddActiveBlockAreLogged)
 }
 
 
-TEST(Vic3WorldLawsLawsImporter, LawsWithoutCountryAreLogged)
+TEST(Vic3WorldLawsLawsImporter, LawsWithoutCountryAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();
@@ -136,7 +136,7 @@ TEST(Vic3WorldLawsLawsImporter, LawsWithoutCountryAreLogged)
 }
 
 
-TEST(Vic3WorldLawsLawsImporter, LawsWithoutNamesAreImported)
+TEST(Vic3WorldLawsLawsImporter, LawsWithoutNamesAreImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -154,7 +154,7 @@ TEST(Vic3WorldLawsLawsImporter, LawsWithoutNamesAreImported)
 }
 
 
-TEST(Vic3WorldLawsLawsImporter, LawsImportsAreLogged)
+TEST(Vic3WorldLawsLawsImporter, LawsImportsAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

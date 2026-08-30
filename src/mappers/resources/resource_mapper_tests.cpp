@@ -8,7 +8,7 @@ constexpr float kTolerance = 0.0001F;
 namespace mappers
 {
 
-TEST(MappersResourcesResourceMapperTests, EmptyMapperNoInfo)
+TEST(MappersResourcesResourceMapperTests, EmptyMapperNoInfo)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, ResourceScore> empty{};
    ResourceMapper mapper(empty);
@@ -19,7 +19,7 @@ TEST(MappersResourcesResourceMapperTests, EmptyMapperNoInfo)
    EXPECT_NEAR(mapper.WorldTotal("some_resource"), 0.0F, kTolerance);
 }
 
-TEST(MappersResourcesResourceMapperTests, ScoresAreCalculated)
+TEST(MappersResourcesResourceMapperTests, ScoresAreCalculated)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, ResourceScore> steel{
        {"steel", {.base = {{"building_iron_mine", 1.0F}}, .bonus_buildings = {}, .bonus = 0.0F, .total = 1.0F}},
@@ -34,7 +34,7 @@ TEST(MappersResourcesResourceMapperTests, ScoresAreCalculated)
    EXPECT_NEAR(mapper.WorldTotal("oil"), 0.0F, kTolerance);
 }
 
-TEST(MappersResourcesResourceMapperTests, BonusIsAppliedAndCapped)
+TEST(MappersResourcesResourceMapperTests, BonusIsAppliedAndCapped)  // NOLINT(cert-err58-cpp)
 {
    std::map<std::string, ResourceScore> scores{
        {

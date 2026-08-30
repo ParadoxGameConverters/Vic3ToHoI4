@@ -10,7 +10,7 @@
 namespace mappers
 {
 
-TEST(Mappers_Provinces_ProvinceMapperTests, Vic3ProvincesCanBeMappedToHoi4)
+TEST(Mappers_Provinces_ProvinceMapperTests, Vic3ProvincesCanBeMappedToHoi4)  // NOLINT(cert-err58-cpp)
 {
    const Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map{{"x000001", {1, 10}},
        {"x000200", {2}},
@@ -27,7 +27,7 @@ TEST(Mappers_Provinces_ProvinceMapperTests, Vic3ProvincesCanBeMappedToHoi4)
 }
 
 
-TEST(Mappers_Provinces_ProvinceMapperTests, Hoi4ProvincesCanBeMappedToVic3)
+TEST(Mappers_Provinces_ProvinceMapperTests, Hoi4ProvincesCanBeMappedToVic3)  // NOLINT(cert-err58-cpp)
 {
    Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map;
    Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map{{1, {"x000001"}},
@@ -44,7 +44,7 @@ TEST(Mappers_Provinces_ProvinceMapperTests, Hoi4ProvincesCanBeMappedToVic3)
 }
 
 
-TEST(Mappers_Provinces_ProvinceMapperTests, NoEquivalentProvincesToNoProvinces)
+TEST(Mappers_Provinces_ProvinceMapperTests, NoEquivalentProvincesToNoProvinces)  // NOLINT(cert-err58-cpp)
 {
    Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map;
    Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map{{1, {"x000001"}},
@@ -57,7 +57,7 @@ TEST(Mappers_Provinces_ProvinceMapperTests, NoEquivalentProvincesToNoProvinces)
 }
 
 
-TEST(Mappers_Provinces_ProvinceMapperTests, EquivalentProvincesAreReturned)
+TEST(Mappers_Provinces_ProvinceMapperTests, EquivalentProvincesAreReturned)  // NOLINT(cert-err58-cpp)
 {
    Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map;
    Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map{{1, {"x000001"}},
@@ -70,7 +70,7 @@ TEST(Mappers_Provinces_ProvinceMapperTests, EquivalentProvincesAreReturned)
 }
 
 
-TEST(Mappers_Provinces_ProvinceMapperTests, MissingVic3ProvinceMappingLogsWarning)
+TEST(Mappers_Provinces_ProvinceMapperTests, MissingVic3ProvinceMappingLogsWarning)  // NOLINT(cert-err58-cpp)
 {
    Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map;
    Hoi4ToVic3ProvinceMapping hoi4_to_vic3_province_map{{1, {"x000001"}},
@@ -80,7 +80,7 @@ TEST(Mappers_Provinces_ProvinceMapperTests, MissingVic3ProvinceMappingLogsWarnin
    const ProvinceMapper province_mappings(vic3_to_hoi4_province_map, hoi4_to_vic3_province_map);
 
    std::stringstream log;
-   auto std_out_buf = std::cout.rdbuf();
+   auto* std_out_buf = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
    province_mappings.CheckAllVic3ProvincesMapped({"x000001", "x000200", "x002000", "0x000012"});
@@ -91,7 +91,7 @@ TEST(Mappers_Provinces_ProvinceMapperTests, MissingVic3ProvinceMappingLogsWarnin
 }
 
 
-TEST(Mappers_Provinces_ProvinceMapperTests, NoLoggingWhenAllProvincesMapped)
+TEST(Mappers_Provinces_ProvinceMapperTests, NoLoggingWhenAllProvincesMapped)  // NOLINT(cert-err58-cpp)
 {
    Vic3ToHoi4ProvinceMapping vic3_to_hoi4_province_map{{"x000001", {1, 10}},
        {"x000200", {2}},
@@ -101,7 +101,7 @@ TEST(Mappers_Provinces_ProvinceMapperTests, NoLoggingWhenAllProvincesMapped)
    const ProvinceMapper province_mappings(vic3_to_hoi4_province_map, hoi4_to_vic3_province_map);
 
    std::stringstream log;
-   auto std_out_buf = std::cout.rdbuf();
+   auto* std_out_buf = std::cout.rdbuf();
    std::cout.rdbuf(log.rdbuf());
 
    province_mappings.CheckAllVic3ProvincesMapped({"x000001", "x000200", "x002000"});

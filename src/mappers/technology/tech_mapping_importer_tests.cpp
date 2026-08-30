@@ -9,7 +9,7 @@
 namespace mappers
 {
 
-TEST(MappersTechnologyTechmappingimporterTests, DefaultsAreEmpty)
+TEST(MappersTechnologyTechmappingimporterTests, DefaultsAreEmpty)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const auto mapping = TechMappingImporter().ImportTechMapping(input);
@@ -20,7 +20,7 @@ TEST(MappersTechnologyTechmappingimporterTests, DefaultsAreEmpty)
 }
 
 
-TEST(MappersTechnologyTechmappingimporterTests, ItemsCanBeSet)
+TEST(MappersTechnologyTechmappingimporterTests, ItemsCanBeSet)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "vic3 = test_item\n";

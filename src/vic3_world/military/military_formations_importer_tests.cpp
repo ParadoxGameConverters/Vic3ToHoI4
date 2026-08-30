@@ -11,7 +11,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldMilitaryMilitaryFormationsImporter, EmptyInputMeansNoFormations)
+TEST(Vic3worldMilitaryMilitaryFormationsImporter, EmptyInputMeansNoFormations)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -24,7 +24,7 @@ TEST(Vic3worldMilitaryMilitaryFormationsImporter, EmptyInputMeansNoFormations)
 }
 
 
-TEST(Vic3worldMilitaryMilitaryFormationsImporter, ExtrasAreSkipped)
+TEST(Vic3worldMilitaryMilitaryFormationsImporter, ExtrasAreSkipped)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -50,7 +50,7 @@ TEST(Vic3worldMilitaryMilitaryFormationsImporter, ExtrasAreSkipped)
 }
 
 
-TEST(Vic3worldMilitaryMilitaryFormationsImporter, FormationsCanBeInput)
+TEST(Vic3worldMilitaryMilitaryFormationsImporter, FormationsCanBeInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";

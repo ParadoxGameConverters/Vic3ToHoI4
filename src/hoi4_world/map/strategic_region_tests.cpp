@@ -10,7 +10,7 @@
 namespace hoi4
 {
 
-TEST(Hoi4WorldMapStrategicRegionTests, NewProvincesDefaultsToEmpty)
+TEST(Hoi4WorldMapStrategicRegionTests, NewProvincesDefaultsToEmpty)  // NOLINT(cert-err58-cpp)
 {
    const StrategicRegion strategic_region({.id = 1});
 
@@ -18,7 +18,7 @@ TEST(Hoi4WorldMapStrategicRegionTests, NewProvincesDefaultsToEmpty)
 }
 
 
-TEST(Hoi4WorldMapStrategicRegionTests, NewProvincesCanBeAdded)
+TEST(Hoi4WorldMapStrategicRegionTests, NewProvincesCanBeAdded)  // NOLINT(cert-err58-cpp)
 {
    StrategicRegion strategic_region({.id = 1});
    strategic_region.AddNewProvince(144);

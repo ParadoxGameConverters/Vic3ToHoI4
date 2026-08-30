@@ -13,7 +13,7 @@ constexpr float kTolerance = 0.0001F;
 namespace mappers
 {
 
-TEST(MappersWorldWorldMapperBuilderTests, NullBuilderOutputsNull)
+TEST(MappersWorldWorldMapperBuilderTests, NullBuilderOutputsNull)  // NOLINT(cert-err58-cpp)
 {
    const auto null_mapper = WorldMapperBuilder::CreateNullMapper().Build();
 
@@ -28,7 +28,7 @@ TEST(MappersWorldWorldMapperBuilderTests, NullBuilderOutputsNull)
    EXPECT_NEAR(null_mapper.resource_mapper.CalculateScore("oil", buildings), 0.0F, kTolerance);
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)
+TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World world(vic3::WorldOptions({.countries = {
                                                    {1, vic3::Country({.number = 1, .tag = "Z00"})},
@@ -42,7 +42,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultBuilderOutputsDefaults)
        testing::UnorderedElementsAre("dest_tech_one", "dest_tech_two"));
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, LoadResourceMappingWorks)
+TEST(MappersWorldWorldMapperBuilderTests, LoadResourceMappingWorks)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World world(vic3::WorldOptions({.countries = {
                                                    {1, vic3::Country({.number = 1, .tag = "Z00"})},
@@ -63,7 +63,7 @@ TEST(MappersWorldWorldMapperBuilderTests, LoadResourceMappingWorks)
    EXPECT_NEAR(world_mapper.resource_mapper.CalculateScore("tungsten", buildings), 0.0F, kTolerance);
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, DefaultCountryWorks)
+TEST(MappersWorldWorldMapperBuilderTests, DefaultCountryWorks)  // NOLINT(cert-err58-cpp)
 {
    const vic3::World world(vic3::WorldOptions({.countries = {
                                                    {1, vic3::Country({.number = 1, .tag = "Z00"})},
@@ -73,7 +73,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultCountryWorks)
    EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(1).value_or(""), "Z00");
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, AddCountryWorks)
+TEST(MappersWorldWorldMapperBuilderTests, AddCountryWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto world_mapper =
        WorldMapperBuilder::CreateNullMapper().AddCountries({{1, "ONE"}}).AddCountries({{2, "TWO"}}).Build();
@@ -82,7 +82,7 @@ TEST(MappersWorldWorldMapperBuilderTests, AddCountryWorks)
    EXPECT_EQ(world_mapper.country_mapper.GetHoiTag(2).value_or(""), "TWO");
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, AddProvincesWorks)
+TEST(MappersWorldWorldMapperBuilderTests, AddProvincesWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto world_mapper =
        WorldMapperBuilder::CreateNullMapper().AddProvinces({{"x00000001", 10}, {"x00000002", 20}}).Build();
@@ -91,7 +91,7 @@ TEST(MappersWorldWorldMapperBuilderTests, AddProvincesWorks)
    EXPECT_THAT(world_mapper.province_mapper.GetHoi4ToVic3ProvinceMapping(10), testing::ElementsAre("x00000001"));
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, AddTestProvincesWorks)
+TEST(MappersWorldWorldMapperBuilderTests, AddTestProvincesWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto world_mapper = WorldMapperBuilder::CreateNullMapper().AddTestProvinces(2).Build();
 
@@ -99,7 +99,7 @@ TEST(MappersWorldWorldMapperBuilderTests, AddTestProvincesWorks)
    EXPECT_THAT(world_mapper.province_mapper.GetHoi4ToVic3ProvinceMapping(20), testing::ElementsAre("x000002"));
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, AddTechsWorks)
+TEST(MappersWorldWorldMapperBuilderTests, AddTechsWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto world_mapper = WorldMapperBuilder::CreateNullMapper()
                                  .AddTechs({{{"vicTech1"}, std::nullopt, {"hoiTech1", "hoiTech2"}}})
@@ -109,7 +109,7 @@ TEST(MappersWorldWorldMapperBuilderTests, AddTechsWorks)
    EXPECT_THAT(world_mapper.tech_mapper.at(0).GetVic3Requirements(), testing::UnorderedElementsAre("vicTech1"));
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, DefaultTechsWorks)
+TEST(MappersWorldWorldMapperBuilderTests, DefaultTechsWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto world_mapper = WorldMapperBuilder::CreateNullMapper().DefaultTechMapper().Build();
 
@@ -118,7 +118,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultTechsWorks)
    EXPECT_THAT(world_mapper.tech_mapper.at(0).GetVic3Requirements(), testing::UnorderedElementsAre("source_tech"));
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, AddCultureGraphicsMapperWorks)
+TEST(MappersWorldWorldMapperBuilderTests, AddCultureGraphicsMapperWorks)  // NOLINT(cert-err58-cpp)
 {
    vic3::CultureDefinition culture = vic3::CultureDefinition({.name = "culture_a"});
    mappers::GraphicsBlock graphics{.graphical_culture = "graphical_culture_a"};
@@ -134,7 +134,7 @@ TEST(MappersWorldWorldMapperBuilderTests, AddCultureGraphicsMapperWorks)
        "graphical_culture_a");
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, DefaultCultureGraphicsMapperWorks)
+TEST(MappersWorldWorldMapperBuilderTests, DefaultCultureGraphicsMapperWorks)  // NOLINT(cert-err58-cpp)
 {
    vic3::CultureDefinition culture = vic3::CultureDefinition({.name = "culture_1"});
    const auto world_mapper = WorldMapperBuilder::CreateNullMapper().DefaultCultureGraphicsMapper().Build();
@@ -142,7 +142,7 @@ TEST(MappersWorldWorldMapperBuilderTests, DefaultCultureGraphicsMapperWorks)
    EXPECT_EQ(world_mapper.culture_graphics_mapper.MatchCultureToGraphics(culture).graphical_culture, "asian_gfx");
 }
 
-TEST(MappersWorldWorldMapperBuilderTests, CopyToVicWorldCopiesProvinces)
+TEST(MappersWorldWorldMapperBuilderTests, CopyToVicWorldCopiesProvinces)  // NOLINT(cert-err58-cpp)
 {
    auto world_mapper = std::move(WorldMapperBuilder::CreateNullMapper().AddTestProvinces(3));
    auto world_builder = vic3::WorldBuilder::CreateNullWorld();

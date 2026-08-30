@@ -9,7 +9,7 @@
 namespace vic3
 {
 
-TEST(Vic3WorldWorldVic3WorldBuilder, NullBuilderOutputsNull)
+TEST(Vic3WorldWorldVic3WorldBuilder, NullBuilderOutputsNull)  // NOLINT(cert-err58-cpp)
 {
    const auto null_world = WorldBuilder::CreateNullWorld().Build();
 
@@ -17,7 +17,7 @@ TEST(Vic3WorldWorldVic3WorldBuilder, NullBuilderOutputsNull)
    EXPECT_TRUE(null_world.GetProvinceDefinitions().GetProvinceDefinitions().empty());
 }
 
-TEST(Vic3WorldWorldVic3WorldBuilder, AddProvincesWorks)
+TEST(Vic3WorldWorldVic3WorldBuilder, AddProvincesWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto null_world = WorldBuilder::CreateNullWorld().AddProvinces({{"prov1"}, {"prov2"}}).Build();
 
@@ -25,7 +25,7 @@ TEST(Vic3WorldWorldVic3WorldBuilder, AddProvincesWorks)
    EXPECT_EQ(null_world.GetProvinceDefinitions().GetProvinceDefinitions().at(1), "prov2");
 }
 
-TEST(Vic3WorldWorldVic3WorldBuilder, AddStatesWorks)
+TEST(Vic3WorldWorldVic3WorldBuilder, AddStatesWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto null_world =
        WorldBuilder::CreateNullWorld().AddStates({{1, State({.owner_number = 1, .provinces = {1, 2, 3}})}}).Build();
@@ -33,7 +33,7 @@ TEST(Vic3WorldWorldVic3WorldBuilder, AddStatesWorks)
    EXPECT_EQ(null_world.GetStates().at(1), State({.owner_number = 1, .provinces = {1, 2, 3}}));
 }
 
-TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStatesWorks)
+TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStatesWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto null_world = WorldBuilder::CreateNullWorld().AddTestStates({{1, 2, 3}, {4, 5}}).Build();
 
@@ -41,7 +41,7 @@ TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStatesWorks)
    EXPECT_EQ(null_world.GetStates().at(2), State({.id = 2, .owner_number = 2, .provinces = {4, 5}}));
 }
 
-TEST(Vic3WorldWorldVic3WorldBuilder, AddStateRegionsWorks)
+TEST(Vic3WorldWorldVic3WorldBuilder, AddStateRegionsWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto null_world = WorldBuilder::CreateNullWorld()
                                .AddStateRegions({
@@ -54,7 +54,7 @@ TEST(Vic3WorldWorldVic3WorldBuilder, AddStateRegionsWorks)
    EXPECT_EQ(null_world.GetStateRegions().at("REGION_TWO"), vic3::StateRegion({{"x000005", "port"}}, {}));
 }
 
-TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStateRegionsWorks)
+TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStateRegionsWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto null_world = WorldBuilder::CreateNullWorld().AddTestStateRegions({{1, 2, 3}, {4, 5}}).Build();
 
@@ -62,7 +62,7 @@ TEST(Vic3WorldWorldVic3WorldBuilder, AddTestStateRegionsWorks)
    EXPECT_EQ(null_world.GetStateRegions().at("REGION_002"), vic3::StateRegion({}, {"x000004", "x000005"}));
 }
 
-TEST(Vic3WorldWorldVic3WorldBuilder, AddBuildingsWorks)
+TEST(Vic3WorldWorldVic3WorldBuilder, AddBuildingsWorks)  // NOLINT(cert-err58-cpp)
 {
    const auto null_world = WorldBuilder::CreateNullWorld()
                                .AddBuildings({vic3::Building("", 1, 700'000), vic3::Building("", 2, 1'400'000)})

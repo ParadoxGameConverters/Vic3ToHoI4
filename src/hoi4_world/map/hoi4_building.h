@@ -25,11 +25,11 @@ struct BuildingOptions
 class Building
 {
   public:
-   Building(BuildingOptions options):
+   explicit Building(BuildingOptions options):
        state_id_(options.state_id),
        type_(std::move(options.type)),
-       position_(std::move(options.position)),
-       connecting_sea_province_(std::move(options.connecting_sea_province))
+       position_(options.position),
+       connecting_sea_province_(options.connecting_sea_province)
    {
    }
 

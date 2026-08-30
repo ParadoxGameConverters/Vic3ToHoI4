@@ -64,6 +64,21 @@
       }
     },
     {
+      "name": "x64-prepare-clang-tidy-windows",
+      "displayName": "x64 Prepare Clang Tidy Windows",
+      "description": "Target Windows (64-bit) with clang-tidy compilation db",
+      "inherits": "windows-base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "PREPARE_CLANG_TIDY": "ON",
+        "CMAKE_BUILD_TYPE": "Release",
+        "PLATFORM": "Windows"
+      }
+    },
+    {
       "name": "x64-clang-tidy-windows",
       "displayName": "x64 Clang Tidy Windows",
       "description": "Target Windows (64-bit) with clang-tidy",
@@ -147,6 +162,16 @@
       "name": "build-x64-clang-tidy-windows",
       "displayName": "x64 clang-tidy",
       "configurePreset": "x64-clang-tidy-windows",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "build-x64-prepare-clang-tidy-windows",
+      "displayName": "x64 prepare clang-tidy",
+      "configurePreset": "x64-prepare-clang-tidy-windows",
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",

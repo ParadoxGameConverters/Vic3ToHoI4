@@ -10,7 +10,7 @@
 namespace vic3
 {
 
-TEST(Vic3worldStateVic3stateimporter, DefaultsAreDefaulted)
+TEST(Vic3worldStateVic3stateimporter, DefaultsAreDefaulted)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    const auto state = StateImporter{}.ImportState("0", input);
@@ -26,7 +26,7 @@ TEST(Vic3worldStateVic3stateimporter, DefaultsAreDefaulted)
 }
 
 
-TEST(Vic3worldStateVic3stateimporter, ExceptionWhenProvinceHasOddNumberOfItems)
+TEST(Vic3worldStateVic3stateimporter, ExceptionWhenProvinceHasOddNumberOfItems)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -39,7 +39,7 @@ TEST(Vic3worldStateVic3stateimporter, ExceptionWhenProvinceHasOddNumberOfItems)
 }
 
 
-TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
+TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -89,7 +89,7 @@ TEST(Vic3worldStateVic3stateimporter, ItemsCanBeInput)
 }
 
 
-TEST(Vic3worldStateVic3stateimporter, PartialIncorporationIsNotIncorporated)
+TEST(Vic3worldStateVic3stateimporter, PartialIncorporationIsNotIncorporated)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -101,7 +101,7 @@ TEST(Vic3worldStateVic3stateimporter, PartialIncorporationIsNotIncorporated)
 }
 
 
-TEST(Vic3worldStateVic3stateimporter, Pre1_3PopStatisticsCanBeImported)
+TEST(Vic3worldStateVic3stateimporter, Pre1_3PopStatisticsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream input;
    input << "={\n";
@@ -122,7 +122,7 @@ TEST(Vic3worldStateVic3stateimporter, Pre1_3PopStatisticsCanBeImported)
 }
 
 
-TEST(Vic3worldStateVic3stateimporter, MultipleStatesCanBeInput)
+TEST(Vic3worldStateVic3stateimporter, MultipleStatesCanBeInput)  // NOLINT(cert-err58-cpp)
 {
    StateImporter state_importer;
 

@@ -35,7 +35,7 @@ path CreateTestFolders(std::string_view test_name)
 namespace mappers
 {
 
-TEST(MappersFlagsFlagMapper, SingleFlagsAreCopied)
+TEST(MappersFlagsFlagMapper, SingleFlagsAreCopied)  // NOLINT(cert-err58-cpp)
 {
    const path base_folder = CreateTestFolders("SingleFlagsAreCopied");
    FlagMapper flag_mapper(base_folder,
@@ -57,7 +57,7 @@ TEST(MappersFlagsFlagMapper, SingleFlagsAreCopied)
 }
 
 
-TEST(MappersFlagsFlagMapper, MultipleFlagsAreCopied)
+TEST(MappersFlagsFlagMapper, MultipleFlagsAreCopied)  // NOLINT(cert-err58-cpp)
 {
    const path base_folder = CreateTestFolders("MultipleFlagsAreCopied");
    FlagMapper flag_mapper(base_folder,
@@ -78,7 +78,7 @@ TEST(MappersFlagsFlagMapper, MultipleFlagsAreCopied)
 }
 
 
-TEST(MappersFlagsFlagMapper, ExistingFlagsAreNotCopied)
+TEST(MappersFlagsFlagMapper, ExistingFlagsAreNotCopied)  // NOLINT(cert-err58-cpp)
 {
    const path base_folder = CreateTestFolders("ExistingFlagsAreNotCopied");
    FlagMapper flag_mapper(base_folder,
@@ -98,7 +98,7 @@ TEST(MappersFlagsFlagMapper, ExistingFlagsAreNotCopied)
 }
 
 
-TEST(MappersFlagsFlagMapper, CustomFlagsAreNotCopied)
+TEST(MappersFlagsFlagMapper, CustomFlagsAreNotCopied)  // NOLINT(cert-err58-cpp)
 {
    const path base_folder = CreateTestFolders("CustomFlagsAreNotCopied");
    FlagMapper flag_mapper(base_folder,

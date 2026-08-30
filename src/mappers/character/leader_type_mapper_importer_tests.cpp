@@ -10,7 +10,7 @@
 namespace mappers
 {
 
-TEST(MappersCharacterLeadertypemapperimporter, MappingsCanBeImported)
+TEST(MappersCharacterLeadertypemapperimporter, MappingsCanBeImported)  // NOLINT(cert-err58-cpp)
 {
    const LeaderTypeMapper leader_type_mapper =
        ImportLeaderTypeMapper("test_files/configurables/leader_type_mappings.txt");
@@ -21,7 +21,7 @@ TEST(MappersCharacterLeadertypemapperimporter, MappingsCanBeImported)
 }
 
 
-TEST(MappersCharacterLeadertypemapperimporter, UnexpectedLeaderTypesAreLogged)
+TEST(MappersCharacterLeadertypemapperimporter, UnexpectedLeaderTypesAreLogged)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream log;
    std::streambuf* cout_buffer = std::cout.rdbuf();

@@ -15,7 +15,7 @@
 namespace out
 {
 
-TEST(Outhoi4MapOutrailwayTests, RailwayIsOutput)
+TEST(Outhoi4MapOutrailwayTests, RailwayIsOutput)  // NOLINT(cert-err58-cpp)
 {
    std::stringstream output;
    const hoi4::Railway railway(42, {2, 4, 8});

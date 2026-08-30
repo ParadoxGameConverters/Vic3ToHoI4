@@ -39,27 +39,6 @@ struct CultureDefinitionOptions
 class CultureDefinition
 {
   public:
-   explicit CultureDefinition(std::string_view name,
-       NameList name_list,
-       std::string_view religion,
-       std::set<std::string> traits,
-       std::set<std::string> traditions,
-       std::set<std::string> obsessions,
-       std::string_view heritage,
-       std::string_view language,
-       std::set<std::string> ethnicities):
-       name_(std::move(name)),
-       name_list_(std::move(name_list)),
-       religion_(std::move(religion)),
-       traits_(std::move(traits)),
-       traditions_(std::move(traditions)),
-       obsessions_(std::move(obsessions)),
-       heritage_(std::move(heritage)),
-       language_(std::move(language)),
-       ethnicities_(std::move(ethnicities))
-   {
-   }
-
    explicit CultureDefinition(CultureDefinitionOptions options):
        name_(std::move(options.name)),
        name_list_(std::move(options.name_list)),

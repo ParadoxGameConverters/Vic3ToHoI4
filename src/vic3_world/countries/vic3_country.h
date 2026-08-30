@@ -46,7 +46,7 @@ struct CountryOptions
    std::optional<int> capital_state;
    std::string country_type;
    bool is_civil_war = false;
-   std::set<std::string> active_laws = {};
+   std::set<std::string> active_laws;
    std::set<int> primary_culture_ids;
    std::set<std::string> primary_cultures;
    std::optional<date> last_election;
@@ -137,7 +137,7 @@ class Country
    [[nodiscard]] const std::map<int64_t, MilitaryFormation>& GetArmyFormations() const { return army_formations_; }
    [[nodiscard]] const std::map<int64_t, MilitaryFormation>& GetNavyFormations() const { return navy_formations_; }
 
-   void SetColor(commonItems::Color color) { color_ = std::move(color); }
+   void SetColor(commonItems::Color color) { color_ = color; }
    void SetActiveLaws(std::set<std::string> active_laws) { active_laws_ = std::move(active_laws); }
    void SetLastElection(date last_election) { last_election_ = last_election; }
    void AddPrimaryCulture(const std::string& culture) { primary_cultures_.emplace(culture); }
